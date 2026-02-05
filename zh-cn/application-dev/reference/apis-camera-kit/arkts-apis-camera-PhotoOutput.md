@@ -112,7 +112,7 @@ capture(setting: PhotoCaptureSetting, callback: AsyncCallback\<void\>): void
 
 | 参数名      | 类型                                         | 必填 | 说明                  |
 | -------- | ------------------------------------------- | ---- | -------------------- |
-| setting  | [PhotoCaptureSetting](arkts-apis-camera-i.md#photocapturesetting) | 是   | 拍照设置。             |
+| setting  | [PhotoCaptureSetting](arkts-apis-camera-i.md#photocapturesetting) | 是   | 拍照设置，传入undefined类型数据按默认设置触发一次拍照处理。             |
 | callback | AsyncCallback\<void\>                        | 是   | 回调函数，用于获取结果。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。  |
 
 **错误码：**
@@ -166,7 +166,7 @@ capture(setting: PhotoCaptureSetting): Promise\<void\>
 
 | 参数名     | 类型                                         | 必填 | 说明      |
 | ------- | ------------------------------------------- | ---- | -------- |
-| setting | [PhotoCaptureSetting](arkts-apis-camera-i.md#photocapturesetting) | 是   | 拍照设置，传入undefined类型数据按默认无参处理。 |
+| setting | [PhotoCaptureSetting](arkts-apis-camera-i.md#photocapturesetting) | 是   | 拍照设置，传入undefined类型数据按默认设置触发一次拍照处理。 |
 
 **返回值：**
 
@@ -213,7 +213,7 @@ function capture(photoOutput: camera.PhotoOutput): void {
 
 on(type: 'photoAvailable', callback: AsyncCallback\<Photo\>): void
 
-注册监听全质量图上报。使用callback异步回调。
+注册监听拍照返回照片上报事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -228,7 +228,7 @@ on(type: 'photoAvailable', callback: AsyncCallback\<Photo\>): void
 | 参数名     | 类型      | 必填 | 说明                                  |
 | -------- | ---------- | --- | ------------------------------------ |
 | type     | string     | 是   | 监听事件，固定为'photoAvailable'，photoOutput创建成功后可监听。 |
-| callback | AsyncCallback\<[Photo](arkts-apis-camera-Photo.md)\> | 是   | 回调函数，用于监听全质量图上报。 |
+| callback | AsyncCallback\<[Photo](arkts-apis-camera-Photo.md)\> | 是   | 回调函数，用于监听拍照返回照片上报事件。 |
 
 **示例：**
 
@@ -254,7 +254,7 @@ function registerPhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): voi
 
 off(type: 'photoAvailable', callback?: AsyncCallback\<Photo\>): void
 
-注销监听全质量图上报。
+注销监听拍照返回照片上报事件。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -621,7 +621,7 @@ setMovingPhotoVideoCodecType(codecType: VideoCodecType): void
 
 | 参数名        | 类型                                  | 必填 |  说明                |
 | ------------- |-------------------------------------|-------| ------------        |
-| codecType     | [VideoCodecType](arkts-apis-camera-e.md#videocodectype13) |  是    |获取动态照片短视频编码类型。  |
+| codecType     | [VideoCodecType](arkts-apis-camera-e.md#videocodectype13) |  是    | 动态照片短视频编码类型。  |
 
 **错误码：**
 

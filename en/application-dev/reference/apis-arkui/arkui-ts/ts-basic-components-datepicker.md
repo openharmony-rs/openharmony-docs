@@ -531,4 +531,5 @@ struct DatePickerExample {
   }
 }
 ```
-![datePicker](figures/DatePickerDemo4.gif)
+
+d

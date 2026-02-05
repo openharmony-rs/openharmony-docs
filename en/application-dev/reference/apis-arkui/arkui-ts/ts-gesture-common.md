@@ -132,7 +132,7 @@ Represents a touch gesture recognizer.
 
 getEventTargetInfo(): EventTargetInfo
 
-Obtains the information about the component corresponding to this gesture recognizer.
+Obtains the information about the component corresponding to this touch gesture recognizer.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -142,13 +142,13 @@ Obtains the information about the component corresponding to this gesture recogn
 
 | Type    | Description       |
 | ------ | --------- |
-| [EventTargetInfo](#eventtargetinfo12) | Information about the component corresponding to the current gesture recognizer.|
+| [EventTargetInfo](#eventtargetinfo12) | Information about the component corresponding to the current touch gesture recognizer.|
 
 ### cancelTouch<sup>20+</sup>
 
 cancelTouch(): void
 
-Sends a touch cancellation event to this gesture recognizer.
+Sends a touch cancellation event to this touch gesture recognizer.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -394,9 +394,9 @@ Obtains the maximum movement distance allowed for gesture recognition by the lon
 
 **Return value**
 
-| Type     | Description        |
+| Type    | Description       |
 | ------ | --------- |
-| number | Maximum movement distance recognized by the long press gesture recognizer, in px.<br/>Value range: (0, +∞). |
+| number | Maximum movement distance recognized by the long press gesture recognizer, in px.<br>Value range: (0, +∞).|
 
 ## SwipeRecognizer<sup>18+</sup>
 
@@ -498,7 +498,7 @@ Obtains the properties of this pan gesture recognizer.
 
 getDirection(): PanDirection
 
-Obtains the recognized direction of this pan gesture recognizer.
+Obtains the recognized direction of the current pan gesture recognizer.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -579,7 +579,7 @@ Defines the gesture event information. Inherits from [BaseEvent](ts-gesture-cust
 | pinchCenterX | number | No| No |X-coordinate of the center of the pinch gesture, in vp, relative to the original area of the current component. This attribute is used for the **PinchGesture** event.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | pinchCenterY | number | No| No |Y-coordinate of the center of the pinch gesture, in vp, relative to the original area of the current component. This attribute is used for the **PinchGesture** event.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | speed<sup>8+</sup> | number | No| No |Swipe gesture speed, that is, the average swipe speed of all fingers relative to the original area of the current component, in vp/s. Used for the **SwipeGesture** event.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| fingerList<sup>8+</sup> | [FingerInfo](./ts-gesture-common.md#fingerinfo8)[] | No| No |List of touch points of the gesture event. If the event input device is touchscreen, the list includes all touch points. If the event input device is mouse or touchpad, the list contains only one touch point.<br>**NOTE**<br>The index of a finger corresponds to its position, that is, the ID of a finger in **fingerList[index]** refers to its index. If a finger is pressed first and does not participate in triggering of the current gesture, its position in **fingerList** is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| fingerList<sup>8+</sup> | [FingerInfo](./ts-gesture-common.md#fingerinfo8)[] | No| No |List of touch points of the gesture event. If the event input device is touchscreen, the list includes all touch points. If the event input device is mouse or touchpad, the list contains only one touch point.<br>**NOTE**<br>1. The index of a finger corresponds to its position, that is, the ID of a finger in **fingerList[index]** refers to its index. If a finger is pressed first and does not participate in triggering of the current gesture, its position in **fingerList** is left empty.<br>2. **fingerList** is empty when gestures are triggered using a keyboard or game controller and no finger information exists.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | fingerInfos<sup>20+</sup> | [FingerInfo](./ts-gesture-common.md#fingerinfo8)[] | No| Yes |Information about touch points of the gesture event. For gesture events initiated by a touchscreen, **fingerInfos** includes information about all touch points. For gesture events initiated by a mouse or touchpad, **fingerInfos** contains only one touch point.<br> **NOTE**<br>**fingerInfos** only records information about effective fingers that participate in the touch. Fingers that are pressed first but do not participate in triggering of the current gesture will not be shown in **fingerInfos**. The default value is an empty array **[]**, and an empty array indicates no effective touch point information.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | velocityX<sup>10+</sup> | number | No| No |Velocity along the x-axis. This parameter is used in [PanGesture](ts-basic-gestures-pangesture.md). The origin of the coordinate axis is the upper left corner of the screen. The velocity is positive if the movement is from left to right, and it is negative if the movement is from right to left. The unit is vp/s.<br>Value range: (-∞, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | velocityY<sup>10+</sup> | number | No| No |Velocity along the y-axis. This parameter is used in [PanGesture](ts-basic-gestures-pangesture.md). The origin of the coordinate axis is the upper left corner of the screen. The velocity is positive if the movement is from top to bottom, and it is negative if the movement is from bottom to top. The unit is vp/s.<br>Value range: (-∞, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -616,7 +616,7 @@ Enumerates gesture competition results.
 
 Enumerates gesture recognizer types.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

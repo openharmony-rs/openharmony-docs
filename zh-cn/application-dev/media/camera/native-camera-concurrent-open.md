@@ -62,7 +62,7 @@
       librawfile.z.so)
    ```
 
-3. 通过[OH_CameraManager_GetCameraDevice](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getcameradevice)方法获取对应的前置相机和后置相机。
+3. 通过[OH_CameraManager_GetCameraDevice](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getcameradevice)方法获取对应的前置相机和后置相机。如果接口返回值为CAMERA_SERVICE_FATAL_ERROR，基于示例中的配置信息，表示当前设备不支持指定位置（前置/后置）的默认类型相机，无法实现多摄同开功能。
 
    ```c++
    void GetSupportedCameras(Camera_Manager *cameraManager)

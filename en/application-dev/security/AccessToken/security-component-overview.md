@@ -31,7 +31,7 @@ Currently, the following security components are available:
 
 - [SaveButton](savebutton.md)
 
-  The **SaveButton** component comes with the privilege for writing data to the media library. After it is integrated into your application and is used for the first time, a dialog box is displayed to ask for user authorization. If the user taps **Allow**, the application automatically obtains the permission to access the media library within one minute. No more dialog box is displayed for authorization.
+  The **SaveButton** component comes with the privilege for writing data to the media library. After it is integrated into your application and is used for the first time, a dialog box is displayed to ask for user authorization. If the user taps **Allow**, the application automatically obtains the permission to access the media library within a short period of time. No more dialog box is displayed for authorization. For API version 19 and earlier, the authorization duration is 10 seconds. For API version 20 and later, the authorization duration is 1 minute.
 
   You can use the **SaveButton** component when your application needs to save image or videos to the media library. This component allows for simpler operations than Pickers, which have to start a system application and have the user select a directory for saving the image or video.
 
@@ -62,6 +62,7 @@ The following figure illustrates the working mechanism.
 6. After the authorization is successful, the security component calls **OnClick()** to notify the application layer of the authorization success.
 
 7. The application calls the corresponding privileged operation, for example, reading pasteboard information and creating a file in the media library.
+
    The permission usage and authorization validity vary with the security component type. For details, see [Security Components](#security-components).
 
 8. The corresponding service calls the permission manager service or security component manager service to obtain the authorization result and return the authentication result.

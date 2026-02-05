@@ -367,7 +367,7 @@ Obtains the pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| int32_t *pixelFormat | Pointer to the pixel format. For details about the available options, please refer to [PIXEL_FORMAT](#pixel_format).|
+| int32_t *pixelFormat | Pointer to the pixel format. For details about the available options, see [PIXEL_FORMAT](#pixel_format).|
 
 **Returns**
 
@@ -392,7 +392,7 @@ Sets the pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| int32_t pixelFormat | Pixel format. For details about the available options, please refer to [PIXEL_FORMAT](#pixel_format).|
+| int32_t pixelFormat | Pixel format. For details about the available options, see [PIXEL_FORMAT](#pixel_format).|
 
 **Returns**
 
@@ -417,7 +417,7 @@ Obtains the source pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| int32_t *srcpixelFormat | Pointer to the pixel format. For details about the available options, please refer to [PIXEL_FORMAT](#pixel_format).|
+| int32_t *srcpixelFormat | Pointer to the pixel format. For details about the available options, see [PIXEL_FORMAT](#pixel_format).|
 
 **Returns**
 
@@ -517,7 +517,7 @@ Obtains the alpha type.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| int32_t *alphaType | Pointer to the alpha type. For details about the available options, please refer to [PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type).|
+| int32_t *alphaType | Pointer to the alpha type. For details about the available options, see [PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type).|
 
 **Returns**
 
@@ -542,7 +542,7 @@ Sets the alpha type.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| int32_t alphaType | Alpha type. For details about the available options, please refer to [PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type).|
+| int32_t alphaType | Alpha type. For details about the available options, see [PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type).|
 
 **Returns**
 
@@ -567,7 +567,7 @@ Obtains the editable flag.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| bool *editable | Pointer to the editable flag.|
+| bool *editable | Pointer to the editable flag. **true** if editable, **false** otherwise.|
 
 **Returns**
 
@@ -592,7 +592,7 @@ Sets the editable flag.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| bool editable | Editable flag.|
+| bool editable | Editable flag. **true** if editable, **false** otherwise.|
 
 **Returns**
 
@@ -765,7 +765,7 @@ Obtains the pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) *info | Pointer to an OH_Pixelmap_ImageInfo struct.|
-| int32_t *pixelFormat | Pointer to the pixel format. For details about the available options, please refer to [PIXEL_FORMAT](#pixel_format).|
+| int32_t *pixelFormat | Pointer to the pixel format. For details about the available options, see [PIXEL_FORMAT](#pixel_format).|
 
 **Returns**
 
@@ -790,7 +790,7 @@ Obtains the default alpha type from OH_PixelmapImageInfo. To obtain the current 
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) *info | Pointer to an OH_Pixelmap_ImageInfo struct.|
-| int32_t *alphaType | Pointer to the alpha type. For details about the available options, please refer to [PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type).|
+| int32_t *alphaType | Pointer to the alpha type. For details about the available options, see [PIXELMAP_ALPHA_TYPE](#pixelmap_alpha_type).|
 
 **Returns**
 
@@ -815,7 +815,7 @@ Obtains the dynamic range of a PixelMap.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) *info | Pointer to an OH_Pixelmap_ImageInfo struct.|
-| bool *isHdr | Indicates whether the image is HDR. The options include **true** (HDR) and **false** (non-HDR).|
+| bool *isHdr | Pointer to whether the image is an HDR image. The value **true** means that the image is an HDR image, and the value **false** means the opposite.|
 
 **Returns**
 
@@ -1410,8 +1410,8 @@ Flips a PixelMap based on a given angle.
 | Name| Description|
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | Pointer to an OH_PixelmapNative object.|
-| bool shouldFilpHorizontally | Whether to flip the image horizontally.|
-| bool shouldFilpVertically | Whether to flip the image vertically.|
+| bool shouldFilpHorizontally | Whether to flip the image horizontally. Whether to flip the image horizontally. **true** to flip the image horizontally, **false** otherwise.|
+| bool shouldFilpVertically | Whether to flip the image vertically. Whether to flip the image vertically. **true** to flip the image vertically, **false** otherwise.|
 
 **Returns**
 
@@ -1914,7 +1914,7 @@ Checks whether a PixelMap is released. If released, any attempt to access the in
 | Name| Description|
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | Pointer to the PixelMap.|
-| bool *released | Check result for whether the PixelMap is released.|
+| bool *released | Release status of the obtained PixelMap. The value **true** means that the PixelMap is released, and **false** means the opposite.|
 
 **Returns**
 

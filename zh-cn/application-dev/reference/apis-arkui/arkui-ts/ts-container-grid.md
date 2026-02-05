@@ -438,7 +438,7 @@ cellLength(value: number)
 
 multiSelectable(value: boolean)
 
-设置是否开启鼠标框选。开启框选后，可以配合GridItem的selected属性和onSelect事件获取GridItem的选中状态，还可以设置[选中态样式](./ts-universal-attributes-polymorphic-style.md)（无默认选中样式）。
+设置是否开启鼠标框选。开启框选后，可以配合GridItem的selected属性和onSelect事件获取GridItem的选中状态，还可以通过[多态样式](./ts-universal-attributes-polymorphic-style.md)设置GridItem的选中态样式（GridItem默认无选中态样式）。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

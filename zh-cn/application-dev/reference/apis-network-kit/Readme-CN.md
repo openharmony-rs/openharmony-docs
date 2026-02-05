@@ -98,3 +98,4 @@
   - [VPN错误码](errorcode-net-vpn.md)
   - [NetworkSecurity错误码](errorcode-net-networkSecurity.md)
   - [内核错误码](errorcode-kernel.md)
+  - [防火墙错误码](errorcode-net-netfirewall.md)

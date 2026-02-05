@@ -207,7 +207,7 @@ struct BorderExample {
 }
 ```
 
-![zh-cn_image_0000001219982705](figures/zh-cn_image_0000001219982705.gif)
+![en-us_image_0000001219982705](figures/en-us_image_0000001219982705.gif)
 
 ### Example 2: Setting the Width and Color of Borders
 

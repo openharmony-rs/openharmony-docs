@@ -17,7 +17,7 @@ The key generated or imported can be used to perform the following operations to
 
 - [Key derivation](huks-key-derivation-overview.md)
 
-The common operations provided do not include the secondary identity authentication for key access control. For details, see [HUKS Key Access Control](huks-identity-authentication-overview.md).
+This section provides examples of the preceding common key operations. Secondary access control is not configured in the following examples. For details about how to configure key access control, see [HUKS Access Control Overview](huks-identity-authentication-overview.md).
 
 ## General Development Process
 
@@ -37,6 +37,6 @@ HUKS operates data based on a key session. The general process is as follows:
 
 You can use [abortSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksabortsession9) to abort the session if an error occurs in any of the preceding steps or the current key operation data is not required.
 
-> **NOTE**
+> **NOTE**<br>
 > - For devices with small memory, you are advised to split data based on the storage capability of the device and cyclically call [initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9) and [finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9).
 > - The session duration refers to the interval between the [initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9) and [finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9) calls. When the system memory is low, the system clears the timeout sessions. Therefore, the session duration should not be too long (not more than 1 minute).

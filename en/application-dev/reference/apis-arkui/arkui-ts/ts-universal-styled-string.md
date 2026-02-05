@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Styled strings are string objects that facilitate the flexible use of text styles. They can be bound to the **Text** component using the [setStyledString](./ts-basic-components-text.md#setstyledstring12) API in **TextController**, and to the **RichEditor** component using the [setStyledString](ts-basic-components-richeditor.md#setstyledstring12) API in **RichEditorStyledStringController**.
+Styled strings are strings with associated style attributes. They can be linked to a **Text** component using the [setStyledString](./ts-basic-components-text.md#setstyledstring12) API  in [TextController](./ts-basic-components-text.md#textcontroller11) and linked to a [RichEditor](./ts-basic-components-richeditor.md) component using the [setStyledString](ts-basic-components-richeditor.md#setstyledstring12) API in [RichEditorStyledStringController](./ts-basic-components-richeditor.md#richeditorstyledstringcontroller12).
 
 >  **NOTE**
 >
@@ -22,7 +22,7 @@ Styled strings are string objects that facilitate the flexible use of text style
 
 * If a styled string conflicts with the current style settings in a component, the style set in the styled string takes effect.
 * If a styled string conflicts with the child components in [Text](./ts-basic-components-text.md), the style set in the styled string is applied to the **Text** component, and style settings of the child components, including [Span](./ts-basic-components-span.md), are ignored.
-* @State is not supported.
+* The [@State](../../../ui/state-management/arkts-state.md) decorator is not supported.
 * To prevent the application from being inadvertently terminated while running in the background, define **StyledString** as a member variable.
 * Creation before [loadContent()](../arkts-apis-window-Window.md#loadcontent9) is not supported.
 
@@ -91,7 +91,7 @@ Checks whether this styled string the same as another styled string.
 
 | Type             |       Description      |
 | ------- | --------------------------------- | 
-| boolean | Whether two styled strings are equal.<br>**true** if the two styled strings are equal; **false** otherwise.<br>**NOTE**<br>The two styled strings are the same if they have the same text and style.<br>**GestureStyle** in styled strings is not compared. This means that, if two styled strings are the same except for the event configured, they are the same.<br>In comparing **CustomSpan** or [LeadingMarginSpan](#leadingmarginspan22) objects, addresses are compared. The objects that have the same address are the same.|
+| boolean | Whether two styled strings are equal.<br>**true** if the two styled strings are equal; **false** otherwise.<br>**NOTE**<br>The two styled strings are the same if they have the same text and style.<br>[GestureStyle](#gesturestyle) in styled strings is not compared. This means that, if two styled strings are the same except for the event configured, they are treated as the same.<br>In comparing [CustomSpan](#customspan) or [LeadingMarginSpan](#leadingmarginspan22) objects, addresses are compared. The objects that have the same address are the same.|
 
 ### subStyledString
 
@@ -167,12 +167,12 @@ Converts an HTML string into a styled string. Currently, the following HTML tags
 For details about how to use this API, see [Example 12: Implementing Conversion Using fromHtml and toHtml](#example-12-implementing-conversion-using-fromhtml-and-tohtml).
 
 | Tag Name| Description                  |
-|-------------|----------------------------|
+| ------------- | ---------------------------- |
 | \<p\>       | Paragraph tag, which separates text into paragraphs.        |
 | \<span\>    | Inline text supporting style configuration. In API version 17 and earlier, the **background-color** attribute set using **\<span\>** does not take effect.    |
 | \<img\>     | Image tag, used to insert an image.                  |
 | \<strong\>  | Bold text tag.                  |
-| \<br\><sup>20+</sup>      | Line break tag.                      |
+| &lt;br&gt;<sup>20+</sup>      | Line break tag.                      |
 | \<b\><sup>20+</sup>       | Bold text tag.                  |
 | \<a\><sup>20+</sup>       | Hyperlink tag.                    |
 | \<i\><sup>20+</sup>       | Italic text tag.                  |
@@ -721,7 +721,7 @@ A constructor used to create a text decorative line style.
 
 | Name | Type                             | Mandatory| Description  |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| value | [DecorationStyleInterface](#decorationstyleinterface) | Yes  | Text decorative line options.<br>Default value:<br>{<br> type: TextDecorationType.None,<br> color: Color.Black,<br> style: TextDecorationStyle.SOLID <br>} |
+| value | [DecorationStyleInterface](#decorationstyleinterface) | Yes  | Text decorative line options.<br>Default value:<br>{<br>&nbsp;type:&nbsp;TextDecorationType.None,<br>&nbsp;color:&nbsp;Color.Black,<br>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br>} |
 
 ### constructor<sup>20+</sup>
 
@@ -737,8 +737,8 @@ Constructor of a text decoration line style, including additional configuration 
 
 | Name | Type                             | Mandatory| Description  |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| value | [DecorationStyleInterface](#decorationstyleinterface) | Yes  | Text decorative line options.<br>Default value:<br>{<br> type: TextDecorationType.None,<br> color: Color.Black,<br> style: TextDecorationStyle.SOLID, <br> thicknessScale: 1.0<br>} |
-| options | [DecorationOptions](#decorationoptions20) | No  | Additional configuration options for the text decoration line.<br>Default value:<br>{<br> enableMultiType: undefined<br>} |
+| value | [DecorationStyleInterface](#decorationstyleinterface) | Yes  | Text decorative line options.<br>Default value:<br>{<br>&nbsp;type:&nbsp;TextDecorationType.None,<br>&nbsp;color:&nbsp;Color.Black,<br>&nbsp;style:&nbsp;TextDecorationStyle.SOLID,&nbsp;<br>&nbsp;thicknessScale:&nbsp;1.0<br>} |
+| options | [DecorationOptions](#decorationoptions20) | No  | Additional configuration options for the text decoration line.<br>Default value:<br>{<br>&nbsp;enableMultiType:&nbsp;undefined<br>} |
 
 ## DecorationStyleInterface
 
@@ -1237,7 +1237,8 @@ Provides the custom drawing information.
 
 ## StyledStringKey
 
-Sets the style key of the styled string.
+Sets the style for a range styled string.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name    | Value| Description                          |
@@ -1341,7 +1342,7 @@ struct styled_string_process_demo {
   fontStyleAttr1: TextStyle = new TextStyle({ fontColor: Color.Blue });
   fontStyleAttr2: TextStyle = new TextStyle({ fontColor: Color.Orange });
   // Create a readable and writable styled string object: mutableStyledString1.
-  mutableStyledString1: MutableStyledString = new MutableStyledString("45-minute workout");
+  mutableStyledString1: MutableStyledString = new MutableStyledString ("45-minute workout");
   // Create the mutableStyledString2 object whose input parameters contain strings and styles.
   mutableStyledString2: MutableStyledString = new MutableStyledString("test hello world", [{
     start: 0,
@@ -2676,7 +2677,7 @@ struct styled_string_set_decorationstyle_demo {
 }
 ```
 
-
+![](figures/styledString_14.png)
 
 ### Sample 14: Obtaining the Image Size in vp
 

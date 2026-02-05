@@ -16,8 +16,6 @@
 
 开发者在使用OH_AudioWorkgroup的API前，需要先用[OH_AudioManager_GetAudioResourceManager](../../reference/apis-audio-kit/capi-native-audio-resource-manager-h.md#oh_audiomanager_getaudioresourcemanager)获取OH_AudioResourceManager实例。
 
-<!-- @[GetAudioResourceManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
-
 ```cpp
 #include <ohaudio/native_audio_resource_manager.h>
 
@@ -28,8 +26,6 @@ OH_AudioManager_GetAudioResourceManager(&resMgr);
 ### 创建音频工作组并将关键线程加入音频工作组
 
 开发者先使用[OH_AudioResourceManager_CreateWorkgroup](../../reference/apis-audio-kit/capi-native-audio-resource-manager-h.md#oh_audioresourcemanager_createworkgroup)创建一个新的音频工作组，再使用[OH_AudioWorkgroup_AddCurrentThread](../../reference/apis-audio-kit/capi-native-audio-resource-manager-h.md#oh_audioworkgroup_addcurrentthread)将关键线程加入音频工作组。
-
-<!-- @[CreateWorkgroup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
 ```cpp
 #include <chrono>
@@ -44,8 +40,6 @@ OH_AudioWorkgroup_AddCurrentThread(grp, &tokenId);
 ### 通知系统音频工作组的开始与结束
 
 当音频工作组开始一个工作周期时，开发者可以通知系统任务的开始时间和预期完成时间。在音频工作组完成当前周期内的工作时，开发者应再次通知系统任务已结束。
-
-<!-- @[OH_AudioWorkgroup_Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
 ```cpp
 constexpr static uint64_t intervalMs = 20;
@@ -64,8 +58,6 @@ while (threadShouldRun) {
 ```
 
 ### 工作组任务结束后进行清理
-
-<!-- @[OH_AudioWorkgroup_RemoveThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
 ```cpp
 // 当线程已经不需要接入分组时，将其从工作组中移除。

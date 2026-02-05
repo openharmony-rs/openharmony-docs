@@ -33,7 +33,7 @@ The table below lists the ExtensionAbility types defined in the system.
 | [BackupExtensionAbility](../reference/apis-core-file-kit/js-apis-application-backupExtensionAbility.md) | Provides extended capabilities for [data backup and restore](../file-management/app-file-backup-overview.md).     | Yes| No|
 |<!--DelRow-->[WindowExtensionAbility](../reference/apis-arkui/js-apis-application-windowExtensionAbility-sys.md)|Provides extended capabilities that allow system applications to pull up and embed UIs of other applications. Third-party application cannot access this ExtensionAbility.| No| No|
 | [EnterpriseAdminExtensionAbility](../reference/apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md)|Provides extended capabilities to handle management events during [enterprise management](../mdm/mdm-kit-admin.md).<br>Example events are application installation events on the device and excessive incorrect lock screen password input events.|Yes| No|
-| [PrintExtensionAbility](../reference/apis-basic-services-kit/js-apis-app-ability-PrintExtensionAbility.md)|Provides extended capabilities for printing photos and documents in office scenarios.|Yes| No|
+| [PrintExtensionAbility](../reference/apis-basic-services-kit/js-apis-app-ability-PrintExtensionAbility.md)|Provides extended capabilities for printing photos and documents in office scenarios. For details, see [PrintExtensionAbility](../basic-services/print/printExtensionAbilityGuide.md).|Yes| No|
 | [ShareExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-shareExtensionAbility.md) | Provides extended capabilities related to the share template service.| Yes| No|
 | [DriverExtensionAbility](../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md)   | Provides extended capabilities for [driver development](../device/driver/driverextensionability.md).     | Yes| No|
 | [ActionExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-actionExtensionAbility.md)| Provides extended capabilities for custom operation service templates.|Yes| No|
@@ -46,6 +46,12 @@ The table below lists the ExtensionAbility types defined in the system.
 | [FaultLogExtensionAbility](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md) | Provides extended capabilities for delayed fault notification.| Yes| No|
 | [WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md) | Provides extended capabilities for web plugins to interface with native applications.| Yes| No|
 | [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) | Provides extended capabilities for sending notifications to third-party wearable devices.| Yes| No|
+| [PhotoEditorExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-photoEditorExtensionAbility.md) | Provides extended capabilities for applications to implement image editing functions.| Yes| No|
+|<!--DelRow-->[AutoFillExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md)| Provides auto-fill and save functions.| No| No|
+| [VpnExtensionAbility](../reference/apis-network-kit/js-apis-VpnExtensionAbility.md) | Provides extended capabilities for third-party VPNs, including lifecycle callbacks such as creation and destruction.| Yes| No|
+| [FormEditExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formEditExtensionAbility.md) | Provides extended editing capabilities for widgets, allowing users to customize widget content, for example, editing a contact widget, modifying contacts displayed in a widget, and editing a weather widget.| Yes| No|
+| [LiveFormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md) | Provides extended animation capabilities for widgets, including overflow animations, rich information notifications, and shallow interactions, greatly enhancing user experience.| Yes| No|
+|<!--DelRow-->[UIServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md)| Provides extended UI capabilities (services with foreground windows) for PCs/2-in-1 devices.| No| No|
 <!--RP2--><!--RP2End-->
 
 > **NOTE**
@@ -73,5 +79,3 @@ The following uses [FormExtensionAbility](../reference/apis-form-kit/js-apis-app
 You do not need to care when to add or delete a widget. The lifecycle of the FormExtensionAbility instance and the lifecycle of the [ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md) process where the FormExtensionAbility instance is located are scheduled and managed by FormManagerService.
 
 ![form_extension](figures/form_extension.png)
-
-<!--no_check-->

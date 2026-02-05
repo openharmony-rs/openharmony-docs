@@ -7,6 +7,8 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+Implements a path operation iterator. You can read path operation instructions by traversing the iterator.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -16,8 +18,6 @@
 > - This module uses the physical pixel unit, px.
 >
 > - The module operates under a single-threaded model. The caller needs to manage thread safety and context state transitions.
-
-Implements a path operation iterator. You can read path operation instructions by traversing the iterator.
 
 ## Modules to Import
 
@@ -134,7 +134,7 @@ Checks whether there is any next operation in the path operation iterator.
 
 | Type   | Description          |
 | ------- | -------------- |
-| boolean | Check result. **true** means yes; **false** otherwise.|
+| boolean | Whether there is any next operation in the path operation iterator. **true** means yes; **false** otherwise.|
 
 **Example**
 

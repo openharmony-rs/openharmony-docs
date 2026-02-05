@@ -709,7 +709,7 @@ export struct DialogAvoidSoftKeyboard {
     NavDestination() {
       Row() {
         Row({ space: 20 }) {
-          // Replace $r('app.string.open_windows') with the actual resource file. In this example, the value in the resource file is "Open."
+          // Replace $r('app.string.open_windows') with the actual resource file. In this example, the value in the resource file is "Open a dialog box."
           Text($r('app.string.open_windows'))
             .fontSize(30)
             .onClick(() => {
@@ -725,6 +725,9 @@ export struct DialogAvoidSoftKeyboard {
   }
 }
 ```
+
+
+ ![UIContextPromptAction](figures/UIContextPromptActionCustomDialog.gif)
 
 ## Obtaining the Dialog Box Status
 
@@ -793,3 +796,5 @@ export struct GetDialogStatus {
   }
 }
 ```
+
+![getState1](figures/getState1.gif)

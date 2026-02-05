@@ -10,9 +10,9 @@ An audio playback application must notice audio stream state changes and perform
 
 ## Reading or Listening for Audio Stream State Changes in the Application
 
-Create an AudioRenderer by referring to [Using AudioRenderer for Audio Playback (ArkTs)](using-audiorenderer-for-playback.md) or [audio.createAudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8). Then obtain the audio stream state changes in either of the following ways.
+Create an **AudioRenderer** by referring to [Using AudioRenderer for Audio Playback (ArkTs)](using-audiorenderer-for-playback.md) or [audio.createAudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8). Then obtain the audio stream state changes in either of the following ways.
 
-- Check the [state](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#properties) of the AudioRenderer.
+- Obtain the [property](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#properties) state of the **AudioRenderer**.
     
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -35,7 +35,7 @@ The application then performs an operation, for example, changing the display of
 
 ## Reading or Listening for Changes in All Audio Streams
 
-If an application needs to obtain the change information about all audio streams, it can use AudioStreamManager to read or listen for the changes of all audio streams.
+If an application needs to obtain the change information about all audio streams, it can use **AudioStreamManager** to read or listen for the changes of all audio streams.
 
 <!--Del-->
 > **NOTE**
@@ -47,13 +47,13 @@ The figure below shows the call relationship of audio stream management.
 
 ![Call relationship of audio stream management](figures/audio-stream-mgmt-invoking-relationship.png)
 
-During application development, you must call [getStreamManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getstreammanager9) to create an AudioStreamManager instance, through which you can manage audio streams.
+During application development, you must call [getStreamManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getstreammanager9) to create an **AudioStreamManager** instance, through which you can manage audio streams.
 
 For details about the APIs, see [AudioStreamManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md).
 
 ## How to Develop
 
-1. Create an AudioStreamManager instance.
+1. Create an **AudioStreamManager** instance.
 
    ```ts
    import { audio } from '@kit.AudioKit';

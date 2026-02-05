@@ -18,9 +18,7 @@
 >
 > 通话场景下，如果蓝牙或星闪设备在线，系统默认使用蓝牙或星闪设备作为输入设备。
 
-<!-- @[set_BluetoothAndNearlinkPreferredRecordCategory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/InputDeviceRoutingSwitching.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';  // 导入audio模块。
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -43,9 +41,7 @@ audioSessionManager.setBluetoothAndNearlinkPreferredRecordCategory(audio.Bluetoo
 >
 > 通话场景下，输入设备跟随当前输出设备，此时其他与通话并发的录音流也会跟随通话输入设备。
 
-<!-- @[select_MediaInputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/InputDeviceRoutingSwitching.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';  // 导入audio模块。
 import { BusinessError } from '@kit.BasicServicesKit';
 

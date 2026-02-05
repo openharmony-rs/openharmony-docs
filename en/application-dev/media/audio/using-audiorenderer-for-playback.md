@@ -6,66 +6,62 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-The AudioRenderer is used to play Pulse Code Modulation (PCM) audio data. Unlike the [AVPlayer](../media/using-avplayer-for-playback.md), the AudioRenderer can perform data preprocessing before audio input. Therefore, the AudioRenderer is more suitable if you have extensive audio development experience and want to implement more flexible playback features.
+The **AudioRenderer** is used to play Pulse Code Modulation (PCM) audio data. Unlike the [AVPlayer](../media/using-avplayer-for-playback.md), the **AudioRenderer** can perform data preprocessing before audio input. Therefore, it is more suitable if you have extensive audio development experience and want to implement more flexible playback features.
 
 ## Development Guidelines
 
-The full rendering process involves creating an AudioRenderer instance, configuring audio rendering parameters, starting and stopping rendering, and releasing the instance. In this topic, you will learn how to use the AudioRenderer to render audio data. Before the development, you are advised to read [AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md) for the API reference.
+The full rendering process involves creating an **AudioRenderer** instance, configuring audio rendering parameters, starting and stopping rendering, and releasing the instance. In this topic, you will learn how to use the **AudioRenderer** to render audio data. Before the development, you are advised to read [AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md) for the API reference.
 
-The figure below shows the state changes of the AudioRenderer. After an AudioRenderer instance is created, different APIs can be called to switch the AudioRenderer to different states and trigger the required behavior. If an API is called when the AudioRenderer is not in the given state, the system may throw an exception or generate other undefined behavior. Therefore, you are advised to check the AudioRenderer state before triggering state transition.
+The figure below shows the state changes of the **AudioRenderer**. After an **AudioRenderer** instance is created, different APIs can be called to switch the **AudioRenderer** to different states and trigger the required behavior. If an API is called when the **AudioRenderer** is not in the given state, the system may throw an exception or generate other undefined behavior. Therefore, you are advised to check the **AudioRenderer** state before triggering state transition.
 
-To prevent the UI thread from being blocked, most AudioRenderer calls are asynchronous. Each API provides the callback and promise functions. The following examples use the callback functions.
+To prevent the UI thread from being blocked, most **AudioRenderer** calls are asynchronous. Each API provides the callback and promise functions. The following examples use the callback functions.
 
 **Figure 1** AudioRenderer state transition
 
 ![AudioRenderer state transition](figures/audiorenderer-status-change.png)
 
-During application development, you are advised to use [on('stateChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#onstatechange8) to subscribe to state changes of the AudioRenderer. This is because some operations can be performed only when the AudioRenderer is in a given state. If the application performs an operation when the AudioRenderer is not in the given state, the system may throw an exception or generate other undefined behavior.
+During application development, you are advised to use [on('stateChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#onstatechange8) to subscribe to state changes of the **AudioRenderer**. This is because some operations can be performed only when the **AudioRenderer** is in a given state. If the application performs an operation when the **AudioRenderer** is not in the given state, the system may throw an exception or generate other undefined behavior.
 
-- **prepared**: The AudioRenderer enters this state by calling [createAudioRenderer()](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8).
-
-- **running**: The AudioRenderer enters this state by calling [start()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#start8) when it is in the **prepared**, **paused**, or **stopped** state.
-
-- **paused**: The AudioRenderer enters this state by calling [pause()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#pause8) when it is in the **running** state. When the audio playback is paused, it can call [start()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#start8) to resume the playback.
-
-- **stopped**: The AudioRenderer enters this state by calling [stop()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#stop8) when it is in the **paused** or **running** state.
-
-- **released**: The AudioRenderer enters this state by calling [release()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#release8) when it is in the **prepared**, **paused**, or **stopped** state. In this state, the AudioRenderer releases all occupied hardware and software resources and will not transit to any other state.
+- **prepared**: The **AudioRenderer** enters this state by calling [audio.createAudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8).
+- **running**: The **AudioRenderer** enters this state by calling [start](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#start8) when it is in the **prepared**, **paused**, or **stopped** state.
+- **paused**: The **AudioRenderer** enters this state by calling [pause](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#pause8) when it is in the **running** state. When the audio playback is paused, it can call [start](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#start8) to resume the playback.
+- **stopped**: The **AudioRenderer** enters this state by calling [stop](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#stop8) when it is in the **paused** or **running** state.
+- **released**: The **AudioRenderer** enters this state by calling [release](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#release8) when it is in the **prepared**, **paused**, or **stopped** state. In this state, the AudioRenderer releases all occupied hardware and software resources and will not transit to any other state.
 
 ### How to Develop
 
-1. Set audio rendering parameters and create an AudioRenderer instance. For details about the parameters, see [AudioRendererOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendereroptions8).
+1. Set audio rendering parameters and create an **AudioRenderer** instance. For details about the parameters, see [AudioRendererOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendereroptions8).
 
-    ```ts
-    import { audio } from '@kit.AudioKit';
+   ```ts
+   import { audio } from '@kit.AudioKit';
 
-    let audioStreamInfo: audio.AudioStreamInfo = {
-      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
-      channels: audio.AudioChannel.CHANNEL_2, // Channel.
-      sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
-      encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
-    };
+   let audioStreamInfo: audio.AudioStreamInfo = {
+     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
+     channels: audio.AudioChannel.CHANNEL_2, // Channel.
+     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
+     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
+   };
 
-    let audioRendererInfo: audio.AudioRendererInfo = {
-      usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // Audio stream usage type: music. Set this parameter based on the service scenario.
-      rendererFlags: 0 // AudioRenderer flag.
-    };
+   let audioRendererInfo: audio.AudioRendererInfo = {
+     usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // Audio stream usage type: music. Set this parameter based on the service scenario.
+     rendererFlags: 0 // AudioRenderer flag.
+   };
 
-    let audioRendererOptions: audio.AudioRendererOptions = {
-      streamInfo: audioStreamInfo,
-      rendererInfo: audioRendererInfo
-    };
+   let audioRendererOptions: audio.AudioRendererOptions = {
+     streamInfo: audioStreamInfo,
+     rendererInfo: audioRendererInfo
+   };
 
-    audio.createAudioRenderer(audioRendererOptions, (err, data) => {
-      if (err) {
-        console.error(`Invoke createAudioRenderer failed, code is ${err.code}, message is ${err.message}`);
-        return;
-      } else {
-        console.info('Invoke createAudioRenderer succeeded.');
-        let audioRenderer = data;
-      }
-    });
-    ```
+   audio.createAudioRenderer(audioRendererOptions, (err, data) => {
+     if (err) {
+       console.error(`Invoke createAudioRenderer failed, code is ${err.code}, message is ${err.message}`);
+       return;
+     } else {
+       console.info('Invoke createAudioRenderer succeeded.');
+       let audioRenderer = data;
+     }
+   });
+   ```
 
 2. Call **on('writeData')** to subscribe to the callback for audio data writing. You are advised to use this function in API version 12, since it returns a callback result.
 
@@ -74,9 +70,7 @@ During application development, you are advised to use [on('stateChange')](../..
      > **NOTE**
      > 
      > - When the amount of data is sufficient to meet the required buffer length of the callback, you should return **audio.AudioDataCallbackResult.VALID**, and the system uses the entire data buffer for playback. Do not return **audio.AudioDataCallbackResult.VALID** in this case, as this leads to audio artifacts such as noise and playback stuttering.
-     > 
      > - When the amount of data is insufficient to meet the required buffer length of the callback, you are advised to return **audio.AudioDataCallbackResult.INVALID**. In this case, the system does not process this portion of audio data but requests data from the application again. Once the buffer is adequately filled, you can return **audio.AudioDataCallbackResult.VALID**.
-     > 
      > - Once the callback function finishes its execution, the audio service queues the data in the buffer for playback. Therefore, do not change the buffered data outside the callback. Regarding the last frame, if there is insufficient data to completely fill the buffer, you must concatenate the available data with padding to ensure that the buffer is full. This prevents any residual dirty data in the buffer from adversely affecting the playback effect.
 
      ```ts
@@ -124,14 +118,11 @@ During application development, you are advised to use [on('stateChange')](../..
      > **NOTE**
      > 
      > - You should avoid registering callbacks on the main thread, as this may cause delayed callback responses and freezes due to blocking by other service processes. You are advised to use an independent asynchronous thread pool to handle callbacks.
- 	   >
      > - Ensure that the callback's data buffer is completely filled to the necessary length to prevent issues such as audio noise and playback stuttering.
-     > 
-     > - If the amount of data is insufficient to fill the data buffer, you are advised to temporarily halt data writing (without pausing the audio stream), block the callback function, and wait until enough data accumulates before resuming writing, thereby ensuring that the buffer is fully filled. If you need to call AudioRenderer APIs after the callback function is blocked, unblock the callback function first.
-     > 
+     > - If the amount of data is insufficient to fill the data buffer, you are advised to temporarily halt data writing (without pausing the audio stream), block the callback function, and wait until enough data accumulates before resuming writing, thereby ensuring that the buffer is fully filled. If you need to call **AudioRenderer** APIs after the callback function is blocked, unblock the callback function first.
      > - If you do not want to play the audio data in this callback function, you can nullify the data block in the callback function. (Once nullified, the system still regards this as part of the written data, leading to silent frames during playback).
-     > 
      > - Once the callback function finishes its execution, the audio service queues the data in the buffer for playback. Therefore, do not change the buffered data outside the callback. Regarding the last frame, if there is insufficient data to completely fill the buffer, you must concatenate the available data with padding to ensure that the buffer is full. This prevents any residual dirty data in the buffer from adversely affecting the playback effect.
+     > - In the data writing callback, avoid coupling with time-consuming service logic or waiting for other service operations (e.g., do not wait for UI rendering while writing data). Otherwise, it may cause delayed data transmission, leading to stuttering.
 
      ```ts
      import { BusinessError } from '@kit.BasicServicesKit';
@@ -163,49 +154,49 @@ During application development, you are advised to use [on('stateChange')](../..
      audioRenderer.on('writeData', writeDataCallback);
      ```
 
-3. Call **start()** to switch the AudioRenderer to the **running** state and start rendering.
+3. Call **start()** to switch the **AudioRenderer** to the **running** state and start rendering.
 
-    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
+   ```ts
+   import { BusinessError } from '@kit.BasicServicesKit';
 
-    audioRenderer.start((err: BusinessError) => {
-      if (err) {
-        console.error(`Renderer start failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('Renderer start success.');
-      }
-    });
-    ```
+   audioRenderer.start((err: BusinessError) => {
+     if (err) {
+       console.error(`Renderer start failed, code is ${err.code}, message is ${err.message}`);
+     } else {
+       console.info('Renderer start success.');
+     }
+   });
+   ```
 
 4. Call **stop()** to stop rendering.
 
-    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
+   ```ts
+   import { BusinessError } from '@kit.BasicServicesKit';
 
-    audioRenderer.stop((err: BusinessError) => {
-      if (err) {
-        console.error(`Renderer stop failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('Renderer stopped.');
-      }
-    });
-    ```
+   audioRenderer.stop((err: BusinessError) => {
+     if (err) {
+       console.error(`Renderer stop failed, code is ${err.code}, message is ${err.message}`);
+     } else {
+       console.info('Renderer stopped.');
+     }
+   });
+   ```
 
 5. Call **release()** to release the instance.
 
-    Applications must properly manage AudioRenderer instances according to their needs, creating them as needed and releasing them promptly. This prevents excessive consumption of audio resources, which can lead to exceptions.
+   Applications must properly manage **AudioRenderer** instances according to their needs, creating them as needed and releasing them promptly. This prevents excessive consumption of audio resources, which can lead to exceptions.
 
-    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
+   ```ts
+   import { BusinessError } from '@kit.BasicServicesKit';
 
-    audioRenderer.release((err: BusinessError) => {
-      if (err) {
-        console.error(`Renderer release failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('Renderer released.');
-      } 
-    });
-    ```
+   audioRenderer.release((err: BusinessError) => {
+     if (err) {
+       console.error(`Renderer release failed, code is ${err.code}, message is ${err.message}`);
+     } else {
+       console.info('Renderer released.');
+     } 
+   });
+   ```
 
 ### Selecting the Correct Stream Usage
 
@@ -224,15 +215,15 @@ The sampling rate refers to the number of samples captured per second for a sing
 
 Resampling involves upsampling (adding samples through interpolation) or downsampling (removing samples through decimation) when there is a mismatch between the input and output audio sampling rates.
 
-The AudioRenderer supports all sampling rates defined in the enum **AudioSamplingRate**.
+The **AudioRenderer** supports all sampling rates defined in the enum **AudioSamplingRate**.
 
-If the input audio sampling rate configured by AudioRenderer is different from the output sampling rate of the device, the system resamples the input audio to match the output sampling rate.
+If the input audio sampling rate configured by **AudioRenderer** is different from the output sampling rate of the device, the system resamples the input audio to match the output sampling rate.
 
 To minimize power consumption from resampling, it is best to use input audio with a sampling rate that matches the output sampling rate of the device. A sampling rate of 48 kHz is highly recommended.
 
 ### Complete Sample Code
 
-Refer to the sample code below to render an audio file using AudioRenderer.
+Refer to the sample code below to render an audio file using **AudioRenderer**.
 
 ```ts
 import { audio } from '@kit.AudioKit';

@@ -14,7 +14,7 @@ The sizing attributes set the width, height, and margins of a component.
 >
 > - When a component's size is set by percentage, the actual size is calculated based on the size of the nearest ancestor node with a fixed size.
 >
-> - Since API version 10, some internal properties related to size setting support the calc calculation feature. For specific supported properties, see the corresponding property description. The calc calculation feature is a function for dynamically computing length values, commonly used to flexibly set layout dimensions (such as width, height, margins, etc.). It allows combining different units and values through mathematical expressions to achieve dynamic responsive design. Note that when using calc, spaces must be used between operators and values. For specific usage scenarios, see [Example 1: Setting the Component Width, Height, Margin, and Padding](#example-1-setting-the-component-width-height-margin-and-padding).
+> - Since API version 10, some internal properties related to size setting support the calc calculation feature. For specific supported properties, see the corresponding property description. The calc calculation feature is a function for dynamically computing length values, commonly used to flexibly set layout dimensions (such as width, height, margins, etc.). It allows combining different units and values through mathematical expressions, and supports the use of operators (addition, subtraction, multiplication, division, and parentheses) to form calculation expressions to achieve dynamic responsive design. Note that when using calc, spaces must be used between operators and values. For specific usage scenarios, see [Example 1: Setting the Component Width, Height, Margin, and Padding](#example-1-setting-the-component-width-height-margin-and-padding).
 
 ## width
 
@@ -234,7 +234,7 @@ Sets the safe area padding. This allows the container to add a component-level s
 
 > **NOTE**
 > 
-> When parent and ancestor containers define component-level safe areas, child components can detect and utilize these areas, referred to as Accumulated Safe Area Expansion (SAE), which represents the maximum extendable length in each direction. When ancestor containers have contiguous **safeAreaPadding** (undivided by margin, border, or padding), SAE accumulates recursively outward until no adjacent outer **safeAreaPadding** exists or the recursion extends beyond the page container. System-level avoid areas (status bar, navigation bar, notch areas, and more**) are treated as the page container's inherent safeAreaPadding** and participate in SAE calculations. For details about the avoid areas, see [expandSafeArea](./ts-universal-attributes-expand-safe-area.md).
+> When parent and ancestor containers define component-level safe areas, child components can detect and utilize these areas, referred to as Accumulated Safe Area Expansion (SAE), which represents the maximum extendable length in each direction. When ancestor containers have contiguous **safeAreaPadding** (undivided by margin, border, or padding), SAE accumulates recursively outward until no adjacent outer **safeAreaPadding** exists or the recursion extends beyond the page container. System-level avoid areas (status bar, navigation bar, notch areas, and more) are treated as the page container's inherent **safeAreaPadding** and participate in SAE calculations. For details about the avoid areas, see [Safe Area](./ts-universal-attributes-expand-safe-area.md).
 >
 >These component-level safe areas can be leveraged by combining with other attributes. For example, setting the [ignoreLayoutSafeArea](./ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20) attribute on a child component allows it to extend its layout into the SAE region.
 
@@ -344,12 +344,17 @@ struct SizeExample {
         // Width: 80; height: 80; margin: 20 (blue area); top, bottom, left, and right paddings: 5, 15, 10, and 20 (white area)
         Row() {
           Row()
-          .size({ width: '100%', height: '100%' })
-          .backgroundColor(Color.Yellow)
+            .size({ width: '100%', height: '100%' })
+            .backgroundColor(Color.Yellow)
         }
         .width(80)
         .height(80)
-        .padding({ top: 5, left: 10, bottom: 15, right: 20 })
+        .padding({
+          top: 5,
+          left: 10,
+          bottom: 15,
+          right: 20
+        })
         .margin(20)
         .backgroundColor(Color.White)
       }.backgroundColor(Color.Blue)
@@ -382,19 +387,37 @@ struct SizeExample {
       }
       .size({ width: '90%', height: 140 })
       .backgroundColor(0xAFEEEE)
+
       // calc calculation feature
       Text('calc:')
         .fontSize(12)
         .fontColor(0xCCCCCC)
         .width('90%')
-      Text('calc test')
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
-        .backgroundColor(0xFFFAF0)
-        .textAlign(TextAlign.Center)
-        .margin('calc(25vp*2)')
-        // If width or height is set to a percentage, the width or height of the parent container are used as the basic value.
-        .size({ width: 'calc(90%)', height: 'calc(50vp + 10%)' })
+      Column() {
+        Row() {
+          Text('width 50%')
+            .fontSize(14)
+            .borderWidth(1)
+            .textAlign(TextAlign.Center)
+            .size({ width: '50%', height: 50 })
+          Text('width 50vp')
+            .fontSize(14)
+            .borderWidth(1)
+            .textAlign(TextAlign.Center)
+            .size({ width: '50vp', height: 50 })
+        }
+        .width('100%')
+        .justifyContent(FlexAlign.Center)
+
+        Text('width:calc(50% + 50vp), height:calc(50%)')
+          .fontSize(14)
+          .borderWidth(1)
+          .fontWeight(FontWeight.Bold)
+          .backgroundColor(0xFFFAF0)
+          .textAlign(TextAlign.Center)
+          .size({ width: 'calc(50% + 50vp)', height: 'calc(50%)' })
+          // If width or height is set to a percentage, the width or height of the parent container are used as the base values. The calculation result of calc for the width equals the sum of the widths of the two text components above.
+      }.width("100%").height(100)
     }
     .width('100%')
     .margin({ top: 5 })

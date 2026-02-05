@@ -373,7 +373,7 @@ When \@ObjectLink decorates a class that extends **Set**, it enables observation
    ```
 
 
-## When to Use
+## Use Scenarios
 
 ### Object Type
 

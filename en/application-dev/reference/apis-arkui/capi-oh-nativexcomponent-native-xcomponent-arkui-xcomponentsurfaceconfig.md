@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_XComponentSurfaceConfig ArkUI_XComponentSurfaceConfig
+```
+
 ## Overview
 
 Defines the surface configuration for the **XComponent**, which specifies whether the **XComponent**'s surface should be treated as opaque during rendering.

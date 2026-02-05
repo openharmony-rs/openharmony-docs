@@ -7,6 +7,8 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+Defines a pen, which is used to describe the style and color to outline a shape.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -14,8 +16,6 @@
 > - This module uses the physical pixel unit, px.
 >
 > - The module operates under a single-threaded model. The caller needs to manage thread safety and context state transitions.
-
-Defines a pen, which is used to describe the style and color to outline a shape.
 
 ## Modules to Import
 

@@ -991,7 +991,7 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 import { print } from '@kit.BasicServicesKit';
 
 print.on('extInfoChange', (extensionId: string, info: string) => {
-    console.info('onExtInfoChange, entensionId : ' + JSON.stringify(extensionId) + ', info : ' + JSON.stringify(info));
+    console.info('onExtInfoChange, extensionId : ' + JSON.stringify(extensionId) + ', info : ' + JSON.stringify(info));
 })
 ```
 
@@ -1703,9 +1703,9 @@ print.queryAllPrintJobs().then(() => {
 })
 ```
 
-## print.queryAllActivePrintJobList<sup>20+</sup>
+## print.queryAllActivePrintJobs<sup>20+</sup>
 
-queryAllActivePrintJobList(): Promise&lt;[PrintJob](#printjob)[]&gt;
+queryAllActivePrintJobs(): Promise&lt;[PrintJob](#printjob)[]&gt;
 
 Queries all active print jobs. This API uses a promise to return the result.
 
@@ -1735,10 +1735,10 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-print.queryAllActivePrintJobList().then((printJobs : print.PrintJob[]) => {
-    console.info('queryPrinqueryAllActivePrintJobListtJobList success, data : ' + JSON.stringify(printJobs));
+print.queryAllActivePrintJobs().then((printJobs : print.PrintJob[]) => {
+    console.info('queryAllActivePrintJobs success, data : ' + JSON.stringify(printJobs));
 }).catch((error: BusinessError) => {
-    console.error('queryAllActivePrintJobList failed, error : ' + JSON.stringify(error));
+    console.error('queryAllActivePrintJobs failed, error : ' + JSON.stringify(error));
 })
 ```
 

@@ -8,15 +8,17 @@
 
 > **NOTE**
 > 
-> **Repeat** is supported since API version 12.
+> - **Repeat** is supported since API version 12.
 > 
-> This topic serves as a development guide. For details about the component API specifications, see [Repeat](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md).
+> - This topic serves as a development guide. For details about the component API specifications, see [Repeat](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md).
+> 
+> - The running effect in this topic may be different from the actual effect because the screen width and height vary with devices.
 
 ## Overview
 
-**Repeat** performs iterative rendering based on array data and is typically used together with container components.
+**Repeat** performs iterative rendering based on array data and is typically used together with scrollable components.
 
-**Repeat** loads child components based on the parent container's effective loading range (visible area + preload area). When scrolling occurs or the array data changes, **Repeat** dynamically recalculates the loading range based on the container's layout process, while managing the creation and destruction of child component nodes. By efficiently updating or reusing component nodes, **Repeat** improves rendering performance. For details, see [Node Update and Reuse Mechanism](#node-update-and-reuse-mechanism).
+**Repeat** loads child components based on the container component's visible area and preload area. When scrolling occurs or the array data changes, **Repeat** dynamically recalculates the range of visible area and preload area based on the container's layout process, while managing the creation and destruction of child component nodes. By efficiently updating or reusing component nodes, **Repeat** improves rendering performance. For details, see [Node Update and Reuse Mechanism](#node-update-and-reuse-mechanism).
 
 > **NOTE**
 > 
@@ -42,13 +44,15 @@ Each iteration can only create one child component, which must be compatible wit
 
 ## How It Works
 
-Child components of **Repeat** are defined using **.each()** and **.template()** properties, with only one child component allowed per instance. During initial page rendering, **Repeat** creates child components on demand based on the current effective loading range (visible area + preload area), as illustrated below.
+Child components of **Repeat** are defined using **.each()** and **.template()** properties, with only one child component allowed per instance. During initial page rendering, **Repeat** creates child components on demand based on the visible area and preload area of the current container component, as illustrated below.
 
 ![Repeat-Render](figures/Repeat-Render.png)
 
 **.each()** applies to the scenario where only one type of child component needs to be rendered in an iteration. The following example demonstrates basic usage of **Repeat**:
 
-```ts
+<!-- @[repeat_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatExample.ets) -->
+
+``` TypeScript
 // Use Repeat in a List container component.
 @Entry
 @ComponentV2 // The V2 decorator is recommended.
@@ -93,7 +97,9 @@ After execution, the UI is displayed as shown below.
 
 The following example demonstrates how to use **Repeat** with multiple rendering templates.
 
-```ts
+<!-- @[repeat_example_with_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatExample2.ets) -->
+
+``` TypeScript
 // Use Repeat in a List container component.
 @Entry
 @ComponentV2 // The V2 decorator is recommended.
@@ -152,39 +158,45 @@ After execution, the UI is displayed as shown below.
 > - Node update: The node is not destroyed, and its properties are updated based on changes to state variables.
 > - Node reuse: The old node is not destroyed but moved to the idle node cache pool. When a new node is needed, **Repeat** obtains a reusable node from the cache pool and updates its properties accordingly.
 
-When scrolling occurs or the array data changes, **Repeat** moves child nodes that fall outside the effective loading range to the cache pool. These nodes are disconnected from the page component tree but not destroyed. When new components are needed, nodes from the cache pool are reused.
+When the scrollable container component is scrolled or the array changes, **Repeat** adds the invalid child component nodes (which are outside the visible area and preload area of the container component) to the idle node cache pool. That is, **Repeat** disconnects the component nodes from the page component tree but does not destroy the nodes. When new components are needed, nodes from the cache pool are reused.
 
 By default, node reuse is enabled for **Repeat**. Since API version 18, you can configure the **reusable** field to specify whether to enable node reuse. For better rendering performance, you are advised to keep node reuse enabled. For a code example, see [VirtualScrollOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions).
 
-Since API version 18, **Repeat** supports L2 caching of frozen custom components. For details, see [Freezing a Custom Component](../state-management/arkts-custom-components-freezeV2.md#repeat).
+Since API version 18, **Repeat** supports [freezing custom components in the cache pool](../state-management/arkts-custom-components-freezeV2.md#repeat) in lazy loading mode.
 
-The following illustrates the rendering logic of child components under typical [scroll](#scrolling-scenario) and [data update](#data-update-scenario) scenarios. In the figure below, the L1 cache represents the effective loading area managed by **Repeat**, and the L2 cache refers to the idle node cache pool for each rendering template.
+The following illustrates the rendering logic of child components under typical [scroll](#scrolling-scenario) and [data update](#data-update-scenario) scenarios.
 
-For this example, we define an array with 20 items. The first 5 items use template type **'aa'**, while the remaining items use template type **'bb'**. The cache pool capacity is set to 3 nodes for template **'aa'** and 4 nodes for template **'bb'**. The size of the preload area of the container component is 2. For demonstration purposes, one idle node is added to the **aa** cache pool, and two in the **bb** cache pool.
+A 20-item array is defined, with the first 5 items using template type **aa** (rendering light blue components) and the remaining items using template type **bb** (rendering orange components). The cache pool capacity is set to 3 nodes for template **'aa'** and 4 nodes for template **'bb'**. The size of the preload area of the container component is 2. For demonstration purposes, one idle node is added to the **aa** cache pool, and two in the **bb** cache pool.
 
-The following figure shows the list node status after initial rendering.
+The list node states during initial rendering are shown below (template type is abbreviated as **ttype** in the figure).
 
-![Repeat-Start](figures/Repeat-Start.PNG)
+![Repeat-Reuse-1](figures/repeat-reuse-1.png)
 
 ### Scrolling Scenario
 
-When the user swipes the screen to the right by the distance of one node, **Repeat** starts to reuse nodes from the cache pool. The node whose index is 10 enters the effective loading area, and its template type is identified as **bb**. Because the **bb** cache pool is not empty, **Repeat** obtains an idle node from this pool for reuse and updates the node's properties. The child component's descendant components involving data items and indexes are updated synchronously based on V2 state management rules. Other nodes within the effective loading area only require index updates.
+When you scroll down the screen by the distance of one node, **Repeat** reuses nodes from the cache pool.
 
-The node whose index is 0 moves out of the effective loading area. When the UI main thread is idle, the system checks whether the **aa** cache pool is full. If it is not full, the system adds the node to the corresponding cache pool; otherwise, **Repeat** destroys redundant nodes.
+(1) The node whose index is 10 enters the preload area, and its template type is calculated as **bb**. Because the **bb** reuse pool is not empty, **Repeat** obtains an idle node from this pool for reuse and updates the node's properties (data item and index). The child component's descendant components involving data items and indexes are updated synchronously based on state management V2 rules.<br>
+(2) The node whose index is 0 slides out of the preload area. When the UI main thread is idle, the system checks whether the **aa** cache pool is full. If it is not full, the system adds the node to the corresponding cache pool;<br>
+(3) Other nodes are still in the container visible area and preload area. Only the index is updated. If a cache pool reaches capacity during this process, excess nodes are destroyed during subsequent UI thread idle periods.
 
-![Repeat-Slide](figures/Repeat-Slide.PNG)
+![Repeat-Reuse-2](figures/repeat-reuse-2.png)
 
 ### Data Update Scenario
 
-Perform the following array update operations based on the previous section: Delete the node whose index is 4 and change **item_7** to **new_7**.
+Perform the following array update operations based on the previous section: Delete the node whose index is 4 and change **07** to **new**.
 
-After the node whose index is 4 is deleted, it is invalidated and added to the **aa** cache pool. The subsequent nodes move leftwards, with the newly entering **item_11** node reusing an idle node in the **bb** cache pool, while other nodes only receive index updates.  
+1. After deleting node whose index is 4, node **05** shifts forward. According to template calculation rules, the new node **05** now has template type **aa**. It directly reuses the old node 04, updates data item and index, and adds the old node **05** to the **bb** cache pool.<br>
+2. The subsequent nodes move leftwards, with the newly entering node **11** reusing an idle node in the **bb** cache pool, while other nodes only receive index updates.<br>
+3. When the node data changes from **07** to **new**, the page detects the data source update and triggers re-rendering. The re-rendering logic in **Repeat** checks whether the node data item at the current index has changed. If only the key value changes but the item remains the same, the UI is not refreshed.
 
-![Repeat-Update1](figures/Repeat-Update1.PNG)
+![Repeat-Reuse-3](figures/repeat-reuse-3.png)
 
-Then, as the **item_5** node moves leftwards and its index is updated to 4, its template type changes to **aa** according to calculation rules. This requires reusing an idle node from the **aa** cache pool and adding the old node back to the **bb** cache pool.  
+### Node Reuse Inspection
 
-![Repeat-Update2](figures/Repeat-Update2.PNG)
+You can verify node reuse using the DevEco Testing tool. After launching the tool, select the utility menu.
+ 
+Choose **UIViewer** from the utility options. This tool captures device snapshots, component tree structures, and node attributes. In the component tree on the right, select the **Repeat** subnode. The node attributes displayed in the lower right corner include the node ID. You can determine whether a component has been reused or newly created by checking whether the node ID remains the same.
 
 ## Key Generation
 
@@ -200,8 +212,52 @@ When using **.key()**, pay attention to the following:
 
 - Even if the array changes, you must ensure that keys remain unique across all items in the array.
 - The **.key()** function must return a consistent key for the same data item across all executions.
+To achieve optimal performance, you are advised to define custom key values that are independent of the index. When the key value of the current item changes, the existing item is destroyed and a new item is created to display the updated content. If the key value is index-dependent, operations such as adding or deleting data items (even those unrelated to the current item) may trigger unnecessary destruction and recreation of nodes, leading to avoidable UI re-rendering.
 - While technically allowed, using **index** in **.key()** is discouraged. Indexes change when items are added, removed, or rearranged, causing keys to shift and forcing **Repeat** to re-create components, which degrades performance.
 - (Recommended) Convert simple-type arrays into class object arrays with a **readonly id** property initialized using a unique value.
+
+Key value generation example:
+
+```ts
+@ObservedV2
+class ExampleData {
+  @Trace str: string;
+  num: number;
+
+  constructor(s: string, n: number) {
+    this.str = s;
+    this.num = n;
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local exampleList: Array<ExampleData> = [];
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 20; i++) {
+      this.exampleList.push(new ExampleData(`data${i}`, i));
+    }
+  }
+
+  build() {
+    Column() {
+      List({ space: 10 }) {
+        Repeat(this.exampleList)
+          .each((obj: RepeatItem<ExampleData>) => {
+            ListItem() {
+              Text(obj.item.str).fontSize(50)
+            }
+          })
+          .key(item => item.str) // The UI is refreshed based on the str attribute. It is recommended to return a stable value in the key generation function. Note that key generation is independent of the item index.
+      }
+    }
+  }
+}
+```
+
+In the preceding sample code, the key value generation function is defined using **.key()**. Each child component's key is derived from the **str** attribute of the **item** object.
 
 ## Precise Lazy Loading
 
@@ -213,10 +269,12 @@ You can set the **totalCount** property of **.virtualScroll()** or the custom **
 
 This example demonstrates how to dynamically load data in the corresponding area during the initial rendering, screen scrolling, and display area navigation for scenarios where the total length of the data source is long.
 
-```ts
+<!-- @[repeat_lazy_loading_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatLazyLoading1.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
-struct RepeatLazyLoading {
+struct RepeatLazyLoadingLongData {
   // Assume that the total length of the data source is 1000. The initial array does not provide data.
   @Local arr: Array<string> = [];
   scroller: Scroller = new Scroller();
@@ -258,10 +316,12 @@ The figure below shows the effect.
 
 This example deals with time-consuming data loading. In the **onLazyLoading** method, placeholders are created for data items, and then data is loaded through asynchronous tasks.
 
-```ts
+<!-- @[repeat_lazy_loading_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatLazyLoading2.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
-struct RepeatLazyLoading {
+struct RepeatLazyLoadingSync {
   @Local arr: Array<string> = [];
   build() {
     Column({ space: 5 }) {
@@ -307,10 +367,12 @@ This example shows how to implement infinite lazy loading of data by using lazy 
 > - Avoid using the **onLazyLoading** method together with the loop mode of **Swipe**. Otherwise, staying at **index = 0** will trigger continuous **onLazyLoading** calls.
 > - Pay special attention to the memory usage to avoid excessive memory consumption caused by continuous data loading.
 
-```ts
+<!-- @[repeat_lazy_loading_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatLazyLoading3.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
-struct RepeatLazyLoading {
+struct RepeatLazyLoadingInfinite {
   @Local arr: Array<string> = [];
   // Provide the initial data required for the first screen display.
   aboutToAppear(): void {
@@ -361,7 +423,9 @@ By using **Repeat** within a **List** component and setting up the [onMove](../.
 
 **Example**
 
-```ts
+<!-- @[repeat_scroll_on_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatVirtualScrollOnMove.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct RepeatVirtualScrollOnMove {
@@ -377,7 +441,7 @@ struct RepeatVirtualScrollOnMove {
     Column() {
       List() {
         Repeat<string>(this.simpleList)
-          // Set onMove to enable drag-and-drop sorting.
+        // Set onMove to enable drag-and-drop sorting.
           .onMove((from: number, to: number) => {
             let temp = this.simpleList.splice(from, 1);
             this.simpleList.splice(to, 0, temp[0]);
@@ -412,13 +476,15 @@ The figure below shows the effect.
 
 ## Content Position Preservation
 
-The content position preservation feature, introduced in API version 20, maintains visible component positions when data is inserted or deleted before the current viewport area.
+The content position preservation feature maintains visible component positions when data is inserted or deleted before the current viewport area.
 
-For this feature to work, the parent container must be a **List** component and the [maintainVisibleContentPosition](../../reference/apis-arkui/arkui-ts/ts-container-list.md#maintainvisiblecontentposition12) attribute must be set to **true**.
+Since API version 20, for this feature to work, the parent container must be a **List** component and the [maintainVisibleContentPosition](../../reference/apis-arkui/arkui-ts/ts-container-list.md#maintainvisiblecontentposition12) attribute must be set to **true**.
 
 **Example**
 
-```ts
+<!-- @[repeat_pre_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/PreInsert.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct PreInsertDemo {
@@ -488,10 +554,13 @@ The figure below shows the effect.
 
 The following sample code shows how to insert, modify, delete, and swap data items in an array using **Repeat**. Select an index from the drop-down list box and click the corresponding button to operate the data item. Click two data items in sequence to swap them.
 
-```ts
+
+<!-- @[repeat_scroll_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatVirtualScroll2T.ets) -->
+
+``` TypeScript
 @ObservedV2
 class Repeat006Clazz {
-  @Trace message: string = '';
+  @Trace public message: string = '';
 
   constructor(message: string) {
     this.message = message;
@@ -500,7 +569,7 @@ class Repeat006Clazz {
 
 @Entry
 @ComponentV2
-struct RepeatVirtualScroll2T {
+struct RepeatVirtualScroll {
   @Local simpleList: Array<Repeat006Clazz> = [];
   private exchange: number[] = [];
   private counter: number = 0;
@@ -569,13 +638,13 @@ struct RepeatVirtualScroll2T {
             this.reloadSelectOptions();
           })
       }
-      Button('Update array length to 5.')
+      Button('Update array length to 5')
         .onClick(() => {
           this.simpleList = this.simpleList.slice(0, 5);
           this.reloadSelectOptions();
         })
 
-      Text('Click on two items to exchange.')
+      Text('Click on two items to exchange')
         .fontSize(15)
         .fontColor(Color.Gray)
 
@@ -634,11 +703,13 @@ This example demonstrates the implementation of 100 items using a custom class *
 
 **Repeat** supports nesting. The sample code is as follows:
 
-```ts
+<!-- @[repeat_nest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/NestedRepeat.ets) -->
+
+``` TypeScript
 // Repeat can be nested in other components.
 @Entry
 @ComponentV2
-struct RepeatNest {
+struct NestedRepeat {
   @Local outerList: string[] = [];
   @Local innerList: number[] = [];
 
@@ -706,10 +777,12 @@ This section provides examples of using **Repeat** within scrollable container c
 
 This example demonstrates how to use **Repeat** in the **List** component.
 
-```ts
+<!-- @[repeat_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/DemoList.ets) -->
+
+``` TypeScript
 class DemoListItemInfo {
-  name: string;
-  icon: Resource;
+  public name: string;
+  public icon: Resource;
 
   constructor(name: string, icon: Resource) {
     this.name = name;
@@ -727,7 +800,7 @@ struct DemoList {
       // app.media.listItem0, app.media.listItem1, and app.media.listItem2 are only examples. Replace them with the actual ones in use.
       this.videoList.push(new DemoListItemInfo('Video' + i,
         i % 3 == 0 ? $r('app.media.listItem0') :
-        i % 3 == 1 ? $r('app.media.listItem1') : $r('app.media.listItem2')));
+          i % 3 == 1 ? $r('app.media.listItem1') : $r('app.media.listItem2')));
     }
   }
 
@@ -766,7 +839,6 @@ struct DemoList {
               }
             })
             .onAppear(() => {
-              console.info('AceTag', obj.item.name);
             })
           })
           .key((item: DemoListItemInfo) => item.name)
@@ -810,10 +882,16 @@ Swipe left and touch the **Delete** button, or touch the button at the bottom to
 
 This example demonstrates how to use **Repeat** in the **Grid** component.
 
-```ts
+<!-- @[repeat_grid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/DemoGrid.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const TAG = '[Sample_RenderingControl]';
+const DOMAIN = 0xF811;
+
 class DemoGridItemInfo {
-  name: string;
-  icon: Resource;
+  public name: string;
+  public icon: Resource;
 
   constructor(name: string, icon: Resource) {
     this.name = name;
@@ -838,7 +916,7 @@ struct DemoGrid {
       // app.media.gridItem0, app.media.gridItem1, and app.media.gridItem2 are only examples. Replace them with the actual ones in use.
       this.itemList.push(new DemoGridItemInfo('Video' + i,
         i % 3 == 0 ? $r('app.media.gridItem0') :
-        i % 3 == 1 ? $r('app.media.gridItem1') : $r('app.media.gridItem2')));
+          i % 3 == 1 ? $r('app.media.gridItem1') : $r('app.media.gridItem2')));
     }
   }
 
@@ -864,7 +942,7 @@ struct DemoGrid {
                   this.isRefreshing = true;
                 })
                 .onAppear(() => {
-                  console.info('AceTag', obj.item.name);
+                  hilog.info(DOMAIN, TAG, 'AceTag', obj.item.name);
                 })
               } else {
                 GridItem() {
@@ -883,7 +961,7 @@ struct DemoGrid {
                 .borderRadius(16)
                 .backgroundColor(Color.White)
                 .onAppear(() => {
-                  console.info('AceTag', obj.item.name);
+                  hilog.info(DOMAIN, TAG, 'AceTag', obj.item.name);
                 })
               }
             })
@@ -904,14 +982,13 @@ struct DemoGrid {
           this.itemList.unshift(new DemoGridItemInfo('refresh', $r('app.media.gridItem0'))); // app.media.gridItem0 is only an example. Replace it with the actual one.
           for (let i = 0; i < 10; i++) {
             // app.media.gridItem0, app.media.gridItem1, and app.media.gridItem2 are only examples. Replace them with the actual ones in use.
-            this.itemList.unshift(new DemoGridItemInfo('New video ' + this.num,
+            this.itemList.unshift(new DemoGridItemInfo('New video' + this.num,
               i % 3 == 0 ? $r('app.media.gridItem0') :
-              i % 3 == 1 ? $r('app.media.gridItem1') : $r('app.media.gridItem2')));
+                i % 3 == 1 ? $r('app.media.gridItem1') : $r('app.media.gridItem2')));
             this.num++;
           }
           this.isRefreshing = false;
         }, 1000);
-        console.info('AceTag', 'onRefreshing');
       })
       .refreshOffset(64)
       .pullToRefresh(true)
@@ -939,23 +1016,19 @@ Swipe down on the screen, touch the **Refresh** button, or touch **Last viewed h
 
 This example demonstrates how to use **Repeat** in the **Swiper** component.
 
-```ts
-const remotePictures: Array<string> = [
-  'https://www.example.com/xxx/0001.jpg', // Set the specific network image address.
-  'https://www.example.com/xxx/0002.jpg',
-  'https://www.example.com/xxx/0003.jpg',
-  'https://www.example.com/xxx/0004.jpg',
-  'https://www.example.com/xxx/0005.jpg',
-  'https://www.example.com/xxx/0006.jpg',
-  'https://www.example.com/xxx/0007.jpg',
-  'https://www.example.com/xxx/0008.jpg',
-  'https://www.example.com/xxx/0009.jpg'
+<!-- @[repeat_swiper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/DemoSwiper.ets) -->
+
+``` TypeScript
+const remotePictures: string[] = [
+  'common/image/image1.png', // Insert the image address.
+  'common/image/image2.png',
+  'common/image/image3.png',
 ];
 
 @ObservedV2
 class DemoSwiperItemInfo {
-  id: string;
-  @Trace url: string = 'default';
+  public id: string;
+  @Trace public url: string = 'default';
 
   constructor(id: string) {
     this.id = id;
@@ -968,7 +1041,7 @@ struct DemoSwiper {
   @Local pics: Array<DemoSwiperItemInfo> = [];
 
   aboutToAppear(): void {
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 3; i++) {
       this.pics.push(new DemoSwiperItemInfo('pic' + i));
     }
     setTimeout(() => {
@@ -991,7 +1064,6 @@ struct DemoSwiper {
             .each((obj: RepeatItem<DemoSwiperItemInfo>) => {
               Image(obj.item.url)
                 .onAppear(() => {
-                  console.info('AceTag', obj.item.id);
                 })
             })
             .key((item: DemoSwiperItemInfo) => item.id)
@@ -1060,10 +1132,12 @@ Based on the aforementioned update logic, **item_0** remains unchanged, **item_1
 
 ### Example
 
-```ts
+<!-- @[repeat_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/NodeUpdateMechanism.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
-struct Parent {
+struct NodeUpdateMechanism {
   @Local simpleList: Array<string> = ['one', 'two', 'three'];
 
   build() {
@@ -1077,11 +1151,11 @@ struct Parent {
           })
 
         Repeat<string>(this.simpleList)
-            .each((obj: RepeatItem<string>)=>{
-              ChildItem({ item: obj.item })
-                .margin({top: 20})
-            })
-            .key((item: string) => item)
+          .each((obj: RepeatItem<string>)=>{
+            ChildItem({ item: obj.item })
+              .margin({top: 20})
+          })
+          .key((item: string) => item)
       }
       .justifyContent(FlexAlign.Center)
       .width('100%')
@@ -1112,14 +1186,17 @@ When the red text component is clicked, the third data item undergoes a content 
 ### Maintaining the Scroll Position When Off-Screen Data Changes
 
 In the following example, changes to off-screen data affect the scroll position of the **List** component.
+
 When a **Repeat** component is declared within a **List** component (as shown in the code below), clicking the insert button adds an element before the first visible item, causing the list to scroll downward unexpectedly.
 
-```ts
+<!-- @[repeat_single](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatTemplateSingle.ets) -->
+
+``` TypeScript
 // Define a class and mark it as observable.
 // Define a custom array in the class and mark it as traceable.
 @ObservedV2
 class ArrayHolder {
-  @Trace arr: Array<number> = [];
+  @Trace public arr: Array<number> = [];
 
   // Constructor used to initialize the array length.
   constructor(count: number) {
@@ -1176,17 +1253,31 @@ The figure below shows the effect.
 ![repeat-case1-wrong](figures/repeat-case1-wrong.gif)
 
 **Implementation After Correction**
+
 To maintain the scroll position during off-screen data changes, use the [onScrollIndex](../arkts-layout-development-create-list.md#handling-scroll-position-changes) callback of the **List** component to listen for scrolling and obtain the scroll position when the list scrolls. Then, use the [scrollToIndex](../../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrolltoindex) API of **Scroller** to lock the scroll position when off-screen data is added or removed.
 
 The following example demonstrates handling of data additions:
 
-```ts
-// The definition of ArrayHolder is the same as that in the demo code above.
+<!-- @[repeat_single_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatTemplateSingle1.ets) -->
 
+``` TypeScript
+// Define a class and mark it as observable.
+// Define a custom array in the class and mark it as traceable.
+@ObservedV2
+class ArrayHolderLocal {
+  @Trace public arr: Array<number> = [];
+
+  // Constructor used to initialize the array length.
+  constructor(count: number) {
+    for (let i = 0; i < count; i++) {
+      this.arr.push(i);
+    }
+  }
+}
 @Entry
 @ComponentV2
-struct RepeatTemplateSingle {
-  @Local arrayHolder: ArrayHolder = new ArrayHolder(100);
+struct RepeatSingle {
+  @Local arrayHolder: ArrayHolderLocal = new ArrayHolderLocal(100);
   @Local totalCount: number = this.arrayHolder.arr.length;
   scroller: Scroller = new Scroller();
 
@@ -1247,11 +1338,13 @@ If the **totalCount** value is greater than the **array.length** value, the appl
 
 This can be implemented using the [onScrollIndex](../arkts-layout-development-create-list.md#handling-scroll-position-changes) callback of the parent component (**List** or **Grid**). The sample code is as follows:
 
-```ts
+<!-- @[repeat_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/EntryCompSucc.ets) -->
+
+``` TypeScript
 @ObservedV2
 class VehicleData {
-  @Trace name: string;
-  @Trace price: number;
+  @Trace public name: string;
+  @Trace public price: number;
 
   constructor(name: string, price: number) {
     this.name = name;
@@ -1316,7 +1409,6 @@ struct EntryCompSucc {
       .childrenMainSize(this.listChildrenSize)
       .alignListItem(ListItemAlign.Center)
       .onScrollIndex((start, end) => {
-        console.log('onScrollIndex', start, end);
         // Lazy loading
         if (this.vehicleItems.length < 50) {
           for (let i = 0; i < 10; i++) {
@@ -1337,103 +1429,75 @@ The figure below shows the effect.
 
 ### Using Repeat with @Builder
 
-When **Repeat** is used together with @Builder, the parameter of the **RepeatItem** type must be passed as a whole to the component for data changes to be detected. If only **RepeatItem.item** or **RepeatItem.index** is passed, UI rendering exceptions will occur.
+When **Repeat** is used in combination with @Builder, passing only **RepeatItem.item** or **RepeatItem.index** by value does not trigger a UI refresh within the @Builder function. To ensure the component responds to data changes, it is advised to [pass parameters by reference](../state-management/arkts-builder.md#by-reference-parameter-passing). Specifically, pass the entire **RepeatItem** object so that the component can observe changes to its internal state. Since API version 20, you can also use the [UIUtils.makeBinding()](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20) function, along with the [Binding](../../reference/apis-arkui/js-apis-stateManagement.md#bindingt20) and [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20) classes, to update state variables within the @Builder function.
 
 The sample code is as follows:
 
 ```ts
+import { UIUtils, Binding } from '@kit.ArkUI';
+
 @Entry
 @ComponentV2
 struct RepeatBuilderPage {
-  @Local simpleList1: Array<number> = [];
-  @Local simpleList2: Array<number> = [];
+  @Local simpleList: Array<number> = [];
 
   aboutToAppear(): void {
     for (let i = 0; i < 100; i++) {
-      this.simpleList1.push(i);
-      this.simpleList2.push(i);
+      this.simpleList.push(i);
     }
-  }
-
-  build() {
-    Column({ space: 20 }) {
-      Text('Repeat + @Builder: Left (incorrect) vs. Right (correct). Scroll to see differences.')
-        .fontSize(15)
-        .fontColor(Color.Gray)
-
-      Row({ space: 20 }) {
-        List({ initialIndex: 5, space: 20 }) {
-          Repeat<number>(this.simpleList1)
-            .each((ri) => {})
-            .virtualScroll({ totalCount: this.simpleList1.length })
-            .templateId((item: number, index: number) => 'default')
-            .template('default', (ri) => {
-              ListItem() {
-                Column() {
-                  Text('Text id = ' + ri.item)
-                    .fontSize(20)
-                  this.buildItem1 (ri.item) // Incorrect. To avoid rendering issues, change it to this.buildItem1(ri).
-                }
-              }
-              .border({ width: 1 })
-              .width('90%')
-            }, { cachedCount: 3 })
-        }
-        .cachedCount(1)
-        .border({ width: 1 })
-        .width('45%')
-        .height('60%')
-
-        List({ initialIndex: 5, space: 20 }) {
-          Repeat<number>(this.simpleList2)
-            .each((ri) => {})
-            .virtualScroll({ totalCount: this.simpleList2.length })
-            .templateId((item: number, index: number) => 'default')
-            .template('default', (ri) => {
-              ListItem() {
-                Column() {
-                  Text('Text id = ' + ri.item)
-                    .fontSize(20)
-                  this.buildItem2(ri) // Correct. The rendering is normal.
-                }
-              }
-              .border({ width: 1 })
-              .width('90%')
-            }, { cachedCount: 3 })
-        }
-        .cachedCount(1)
-        .border({ width: 1 })
-        .width('45%')
-        .height('60%')
-      }
-    }
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
   }
 
   @Builder
-  // The @Builder parameter must be of the RepeatItem type for proper rendering.
-  buildItem1(item: number) {
-    Text('Builder1 id = ' + item)
+  buildItem1(bindingData: Binding<number>) { // Use Binding or MutableBinding to receive input and access the value via the value property.
+    Text('[Binding] item: ' + bindingData.value)
       .fontSize(20)
-      .fontColor(Color.Red)
-      .margin({ top: 2 })
   }
 
   @Builder
   buildItem2(ri: RepeatItem<number>) {
-    Text('Builder2 id = ' + ri.item)
+    Text('[RepeatItem] item: ' + ri.item)
       .fontSize(20)
-      .fontColor(Color.Red)
-      .margin({ top: 2 })
+  }
+
+  @Builder
+  buildItem3(data: number) {
+    Text('[number] item: ' + data)
+      .fontSize(20).fontColor(Color.Red)
+  }
+
+  build() {
+    Column({ space: 10 }) {
+      List({ space: 20 }) {
+        Repeat<number>(this.simpleList)
+          .each((ri) => {
+            ListItem() {
+              Column({ space: 2 }) {
+                this.buildItem1(UIUtils.makeBinding<number>(() => ri.item)) // Use the UIUtils.makeBinding() function to update state variables within the @Builder function.
+                this.buildItem2(ri) // Reference passing: triggers UI refresh on data change.
+                this.buildItem3(ri.item) // Value passing: does not trigger UI refresh.
+              }
+            }.border({ width: 1 })
+          }).virtualScroll()
+      }
+      .cachedCount(1).border({ width: 1 })
+      .width('70%').height('60%').alignListItem(ListItemAlign.Center)
+
+      Button('click to change data.').onClick(() => {
+        this.simpleList[0] = 10000; // Update the first item to 10000.
+      })
+    }
+    .width('100%').height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
 ```
 
-The following figure shows the display effect. Scroll down on the page to observe the difference: The left side demonstrates incorrect usage, while the right side shows the correct usage. (**Text** components are in black, while **Builder** components are in red). The preceding code shows the error-prone scenario during development, where only the value, instead the entire **RepeatItem** object, is passed in the @Builder function.
+<!-- [repeat_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatBuilderPage.ets) -->
 
-![Repeat-Builder](figures/Repeat-Builder.gif)
+In this example, parameters passed to @Builder include the following: **makeBinding()**, reference passing, and value passing. The figure below illustrates the UI behavior. When the button is clicked to update the data, components using value passing will not reflect the change in the UI.
+
+![Repeat-Builder](figures/Repeat-Builder.png)
 
 ### Managing Full-Screen Expansion with expandSafeArea
 
-In versions earlier than API version 18, if a Repeat child component has the **expandSafeArea** property declared, the child component cannot expand to full screen. Since API version 18, child components declaring the **expandSafeArea** property can expand to full screen display.
+In versions earlier than API version 18, if a **Repeat** child component has the **expandSafeArea** attribute declared, the child component cannot expand to full screen. Since API version 18, child components with the declared **expandSafeArea** attribute can expand to full screen.

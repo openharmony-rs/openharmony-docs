@@ -26,7 +26,7 @@ The target component does not support the **preventDefault** functionality.
 
 **Solution**
 
-N/A
+Use the component that supports the **preventDefault** functionality.
 
 ## 106102 Unsupported Component Attributes or Events
 
@@ -62,7 +62,7 @@ The component being used is not a scrollable container.
 
 **Solution**
 
-N/A
+Use a scrollable container.
 
 ## 180002 Buffer Is Not Large Enough
 
@@ -98,7 +98,7 @@ A non-cloned event pointer is passed to the clone event API.
 
 **Solution**
 
-N/A
+Use the cloned event pointer as the API parameter.
 
 ## 180004 Abnormal Component State
 
@@ -116,7 +116,7 @@ The component state is abnormal when the clone event is dispatched to the compon
 
 **Solution**
 
-N/A
+Use the component that has been mounted but is not destroyed.
 
 ## 180005 No Component Hit to Respond to the Event
 
@@ -134,7 +134,7 @@ No component is available to handle the event when the clone event is dispatched
 
 **Solution**
 
-N/A
+Add an event listener for the component, or use a component that supports response to the event.
 
 ## 180102 Gesture Recognizer Type Is Not Supported
 
@@ -152,4 +152,4 @@ The gesture recognizer type specified in the gesture API is not supported.
 
 **Solution**
 
-N/A
+Invoke the gesture recognizer that matches the type.

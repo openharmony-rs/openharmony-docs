@@ -53,7 +53,6 @@ For details about the APIs, see [API Reference](../reference/apis-ability-kit/js
         });
         hilog.info(domain, TAG, 'Application onCreate');
       }
-      //...
     }
     
     export default new MainAbility();
@@ -82,7 +81,6 @@ For details about the APIs, see [API Reference](../reference/apis-ability-kit/js
       onDestroy() {
         hilog.info(domain, TAG, 'Application onDestroy');
       }
-      //...  
     }
     
     export default new PageAbilitySingleton();

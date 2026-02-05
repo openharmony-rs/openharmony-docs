@@ -218,7 +218,7 @@ struct Index {
 
 reuse(param?: Object): void
 
-Triggers component reuse for custom components under this **ComponentContent**. For details about component reuse, see [\@Reusable Decorator: Reusing Components](../../ui/state-management/arkts-reusable.md). For details about the scenarios involving **ComponentContent** unbinding, see [Canceling the Reference to the Entity Node](../../ui/arkts-user-defined-arktsNode-builderNode.md#canceling-the-reference-to-the-entity-node).
+Triggers component reuse for custom components under this **ComponentContent**. For details about component reuse, see [@Reusable Decorator: Reusing V1 Components](../../ui/state-management/arkts-reusable.md). For details about the scenarios involving **ComponentContent** unbinding, see [Canceling the Reference to the Entity Node](../../ui/arkts-user-defined-arktsNode-builderNode.md#canceling-the-reference-to-the-entity-node).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -234,7 +234,7 @@ Triggers component reuse for custom components under this **ComponentContent**. 
 
 recycle(): void
 
-- Triggers recycling of custom components under this **ComponentContent**. Component recycling is part of the component reuse mechanism. For details, see [\@Reusable Decorator: Reusing Components](../../ui/state-management/arkts-reusable.md).
+- Triggers recycling of custom components under this **ComponentContent**. Component recycling is part of the component reuse mechanism. For details, see [@Reusable Decorator: Reusing V1 Components](../../ui/state-management/arkts-reusable.md).
 - **ComponentContent** completes the reuse event transfer between internal and external custom components through **reuse** and **recycle**. For specific usage scenarios, see [Implementing Node Reuse with the BuilderNode reuse and recycle APIs](../../ui/arkts-user-defined-arktsNode-builderNode.md#implementing-node-reuse-with-the-buildernode-reuse-and-recycle-apis).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -896,7 +896,7 @@ struct TextBuilder {
 }
 ```
 
-
+![](figures/component_content_inheritFreezeOptions.gif)
 
 ## ReactiveComponentContent<sup>22+</sup>
 
@@ -993,7 +993,7 @@ struct Index {
 
 reuse(param?: Object): void
 
-Triggers component reuse for custom components under this **ReactiveComponentContent**. For details about component reuse, see [\@Reusable Decorator: Reusing Components](../../ui/state-management/arkts-reusable.md). For details about the scenarios involving **ReactiveComponentContent** unbinding, see [Canceling the Reference to the Entity Node](../../ui/arkts-user-defined-arktsNode-builderNode.md#canceling-the-reference-to-the-entity-node).
+Triggers component reuse for custom components under this **ReactiveComponentContent**. For details about component reuse, see [@Reusable Decorator: Reusing V1 Components](../../ui/state-management/arkts-reusable.md). For details about the scenarios involving **ReactiveComponentContent** unbinding, see [Canceling the Reference to the Entity Node](../../ui/arkts-user-defined-arktsNode-builderNode.md#canceling-the-reference-to-the-entity-node).
 
 **ReactiveComponentContent** completes the reuse event transfer between internal and external custom components through **reuse** and [recycle](#recycle). For specific usage scenarios, see [Implementing Node Reuse with the BuilderNode reuse and recycle APIs](../../ui/arkts-user-defined-arktsNode-builderNode.md#implementing-node-reuse-with-the-buildernode-reuse-and-recycle-apis).
 
@@ -1015,8 +1015,9 @@ For details, see the example in [recycle](#recycle22).
 
 recycle(): void
 
-Recycles the custom component in ReactiveComponentContent. Component recycling is part of the component reuse mechanism. For details, see [\@Reusable Decorator: Reusing Components](../../ui/state-management/arkts-reusable.md).
-ReactiveComponentContent uses [reuse](#reuse) and recycle to transfer reuse events between custom components. For details, see [Implementing Node Reuse with the BuilderNode reuse and recycle APIs](../../ui/arkts-user-defined-arktsNode-builderNode.md#implementing-node-reuse-with-the-buildernode-reuse-and-recycle-apis).
+Recycles the custom component in ReactiveComponentContent. Component recycling is part of the component reuse mechanism. For details, see [@Reusable Decorator: Reusing V1 Components](../../ui/state-management/arkts-reusable.md).
+
+ReactiveBuilderNode completes the reuse event transfer between internal and external custom components through [reuse](#reuse22) and **recycle**. For specific usage scenarios, see [Implementing Node Reuse with the BuilderNode reuse and recycle APIs](../../ui/arkts-user-defined-arktsNode-builderNode.md#implementing-node-reuse-with-the-buildernode-reuse-and-recycle-apis).
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1433,13 +1434,13 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
+![](figures/ReactiveComponentContent_updateConfiguration.gif)
 
 ### flushState<sup>22+</sup>
 
 flushState(): void
 
-Update ReactiveComponentContent. If the bound parameters used in the builder function encapsulated by the [WrappedBuilder](../../ui/state-management/arkts-wrapBuilder.md) object in ReactiveComponentContent are class instances decorated by the V1 decorator (such as @Observed), you need to manually call this API to update data after the data of this class changes. If the bound parameters are class instances decorated by the V2 decorator (such as @ObservedV2), the data can be automatically updated without manual calling.
+Updates **ReactiveComponentContent**. If the bound parameters used in the **builder** function encapsulated by the [WrappedBuilder](../../ui/state-management/arkts-wrapBuilder.md) object in **ReactiveComponentContent** are class instances decorated by the V1 decorator (such as @Observed), you need to manually call this API to update data after the data of this class changes. If the bound parameters are class instances decorated by the V2 decorator (such as @ObservedV2), the data can be automatically updated without manual calling.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1447,7 +1448,7 @@ Update ReactiveComponentContent. If the bound parameters used in the builder fun
 
 **Example**
 
-This example demonstrates the usage of the flushState API in ReactiveComponentContent. By comparing the data update mechanisms of the V1 and V2 decorators, it illustrates the state update strategies under different reactive solutions.
+This example demonstrates the usage of the **flushState** API in **ReactiveComponentContent**. By comparing the data update mechanisms of the V1 and V2 decorators, it illustrates the state update strategies under different reactive solutions.
 
 ```ts
 import {
@@ -1495,7 +1496,7 @@ struct Index {
       Scroll() {
         Column({ space: 12 }) {
           // Create ReactiveComponentContent using the V2 decorator.
-          Button('Binding parameters are decorated with the V2 decorator').onClick(
+          Button('Bound parameters are decorated by the V2 decorator').onClick(
             () => {
               let column = typeNode.createNode(this.getUIContext(), "Column");
               column.initialize();
@@ -1511,7 +1512,7 @@ struct Index {
             })
           
           // Create ReactiveComponentContent using the V1 decorator.
-          Button('Binding parameters are decorated with the V1 decorator').onClick(
+          Button('Bound parameters are decorated by the V1 decorator').onClick(
             () => {
               let column = typeNode.createNode(this.getUIContext(), "Column");
               column.initialize();
@@ -1556,7 +1557,7 @@ struct Index {
 }
 ```
 
-
+![](figures/ReactiveComponentContent_flushState.gif)
 
 ### inheritFreezeOptions<sup>22+</sup>
 
@@ -1762,7 +1763,7 @@ struct TextBuilder {
 }
 ```
 
-
+![](figures/reactive_component_content_inheritFreezeOptions.gif)
 
 ### isDisposed<sup>22+</sup>
 

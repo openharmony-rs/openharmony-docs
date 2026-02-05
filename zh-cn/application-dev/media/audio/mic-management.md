@@ -18,9 +18,7 @@
 
 1. 创建audioVolumeGroupManager对象。
 
-   <!-- @[create_AudioVolumeGroupManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) --> 
-
-   ``` TypeScript
+   ```ts
    import { audio } from '@kit.AudioKit';
 
    let audioVolumeGroupManager: audio.AudioVolumeGroupManager;
@@ -37,9 +35,7 @@
 
    目前此订阅接口在单进程多AudioManager实例的使用场景下，仅最后一个实例的订阅生效，其他实例的订阅会被覆盖（即使最后一个实例没有进行订阅），因此推荐使用单一AudioManager实例进行开发。
 
-   <!-- @[mac_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) --> 
-
-   ``` TypeScript
+   ```ts
    // 监听麦克风状态变化。
    async function on() {
      audioVolumeGroupManager.on('micStateChange', (micStateChange: audio.MicStateChangeEvent) => {
@@ -50,9 +46,7 @@
 
 3. 调用[isMicrophoneMute](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md#ismicrophonemute9)查询麦克风当前静音状态，返回true为静音，false为非静音。
 
-   <!-- @[is_MicrophoneMute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) -->
-
-   ``` TypeScript
+   ```ts
    // 查询麦克风是否静音。
    async function isMicrophoneMute() {
      await audioVolumeGroupManager.isMicrophoneMute().then((value: boolean) => {
@@ -61,10 +55,10 @@
    }
    ```
 
-<!--Del-->
+   <!--Del-->
 4. **（仅对系统应用开放）** 根据查询结果的实际情况，调用[setMicMute](../../reference/apis-audio-kit/js-apis-audio-sys.md#setmicmute11)设置麦克风静音状态，入参输入true为静音，false为非静音。
 
-   ``` TypeScript
+   ```ts
    // 设置麦克风静音，入参为true。
    async function setMicrophoneMuteTrue() {
      await audioVolumeGroupManager.setMicMute(true).then(() => {
@@ -84,7 +78,7 @@
 
 参考以下示例，完成从设置麦克风静音到取消麦克风静音的过程。
 
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 
 let audioVolumeGroupManager: audio.AudioVolumeGroupManager;
@@ -137,4 +131,4 @@ async function test(){
   await isMicrophoneMute();
 }
 ```
-<!--DelEnd--> 
+   <!--DelEnd--> 

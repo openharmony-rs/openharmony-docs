@@ -234,8 +234,7 @@ eSIM.getDownloadableProfileMetadata(1, 0, profile, true).then((data: eSIM.GetDow
 
 ## eSIM.getDownloadableProfiles
 
-getDownloadableProfiles\(slotId: number, portIndex: number,
-forceDisableProfile: boolean\): Promise\<GetDownloadableProfilesResult\>
+getDownloadableProfiles\(slotId: number, portIndex: number, forceDisableProfile: boolean\): Promise\<GetDownloadableProfilesResult\>
 
 获取可用的可下载配置文件列表。使用Promise异步回调。
 
@@ -287,8 +286,7 @@ eSIM.getDownloadableProfiles(1, 0, true).then((data: eSIM.GetDownloadableProfile
 
 ## eSIM.downloadProfile
 
-downloadProfile\(slotId: number, portIndex: number, profile: DownloadableProfile,
-configuration: DownloadConfiguration\): Promise\<DownloadProfileResult\>
+downloadProfile\(slotId: number, portIndex: number, profile: DownloadableProfile, configuration: DownloadConfiguration\): Promise\<DownloadProfileResult\>
 
 下载配置文件。使用Promise异步回调。
 
@@ -509,8 +507,7 @@ eSIM.deleteProfile(1, 'testId').then(() => {
 
 ## eSIM.switchToProfile
 
-switchToProfile\(slotId: number, portIndex: number, iccid: string,
-forceDisableProfile: boolean\): Promise\<ResultCode\>
+switchToProfile\(slotId: number, portIndex: number, iccid: string, forceDisableProfile: boolean\): Promise\<ResultCode\>
 
 切换到(启用)给定的配置文件。使用Promise异步回调。
 

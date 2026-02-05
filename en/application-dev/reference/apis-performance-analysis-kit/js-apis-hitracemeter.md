@@ -9,7 +9,7 @@
 
 The **HiTraceMeter** module provides the functions of tracing service processes and monitoring the system performance. It provides the data needed for HiTraceMeter to carry out performance analysis.
 
-For details about the development process, see [Using HiTraceMeter](../../dfx/hitracemeter-guidelines-arkts.md).
+For details about the development process, see [Using HiTraceMeter (ArkTS)](../../dfx/hitracemeter-guidelines-arkts.md).
 
 > **NOTE**
 >

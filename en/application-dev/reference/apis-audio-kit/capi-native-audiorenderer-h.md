@@ -435,13 +435,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, 
 
 **Description**
 
-Obtains the timestamp and position information of an output audio stream.
-
-This function obtains the actual playback position (specified by **framePosition**) of the audio channel and the timestamp when playing to that position (specified by **timestamp**, in nanoseconds).
-
-When you switch devices or resume playback after a pause, the playback position and timestamp retrieved via this function will temporarily stay in the state they were in before the switch or pause, since the playback channel requires a moment to stabilize.
-
-This function is used to implement audio and video synchronization. It is recommended that the function be called once every minute (at least every 200 ms). Frequent calls may increase power consumption. Therefore, do not frequently query the timestamp when the audio-visual synchronization effect can be ensured.
+Obtains the timestamp and position information of an output audio stream.<br> This function obtains the actual playback position (specified by **framePosition**) of the audio channel and the timestamp when playing to that position (specified by **timestamp**, in nanoseconds).<br> When you switch devices or resume playback after a pause, the playback position and timestamp retrieved via this function will temporarily stay in the state they were in before the switch or pause, since the playback channel requires a moment to stabilize.<br> This function is used to implement audio and video synchronization. It is recommended that the function be called once every minute (at least every 200 ms). Frequent calls may increase power consumption. Therefore, do not frequently query the timestamp when the audio-visual synchronization effect can be ensured.
 
 **Since**: 10
 
@@ -469,13 +463,7 @@ OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* r
 
 **Description**
 
-Obtains the timestamp and position information of an output audio stream. It adapts to the speed adjustment interface.
-
-This information is commonly used for audio and video synchronization.
-
-Note that when the actual playback position (**framePosition**) is 0, the timestamp remains fixed until the stream begins to play. The playback position is also reset when **Flush** is called.
-
-Additionally, changes in the audio stream route, such as switching devices or output types, will reset the playback position, whereas the timestamp keeps increasing. You are advised to call this function to obtain the corresponding value only when the actual playback position and timestamp are stable. This function adapts to the speed adjustment interface. For example, if the playback speed is set to 2x, the rate at which the playback position increases is also twice the normal speed.
+Obtains the timestamp and position information of an output audio stream. It adapts to the speed adjustment interface.<br> This information is commonly used for audio and video synchronization.<br> Note that when the actual playback position (**framePosition**) is 0, the timestamp remains fixed until the stream begins to play. The playback position is also reset when **Flush** is called.<br> Additionally, changes in the audio stream route, such as switching devices or output types, will reset the playback position, whereas the timestamp keeps increasing. You are advised to call this function to obtain the corresponding value only when the actual playback position and timestamp are stable. This function adapts to the speed adjustment interface. For example, if the playback speed is set to 2x, the rate at which the playback position increases is also twice the normal speed.<br>
 
 **Since**: 15
 
@@ -842,9 +830,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetSilentModeAndMixWithOthers(OH_AudioRen
 
 **Description**
 
-Sets the silent mode in concurrent playback for an audio renderer.
-
-If the silent mode in concurrent playback is enabled, the system mutes the audio stream and does not interrupt other audio streams. If the silent mode in concurrent playback is disabled, the audio stream can gain focus based on the system focus strategy.
+Sets the silent mode in concurrent playback for an audio renderer.<br> If the silent mode in concurrent playback is enabled, the system mutes the audio stream and does not interrupt other audio streams. If the silent mode in concurrent playback is disabled, the audio stream can gain focus based on the system focus strategy.
 
 **Since**: 12
 
@@ -896,11 +882,9 @@ OH_AudioStream_Result OH_AudioRenderer_SetDefaultOutputDevice(OH_AudioRenderer* 
 
 **Description**
 
-Sets the default built-in audio output device.
+Sets the default built-in audio output device.<br> This function applies only to the scenario where [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) is set to voice messages, VoIP voice calls, and VoIP video calls and the available device types are the receiver, speaker, and system default device.<br> This function can be called at any time after an AudioRenderer instance is created. The system records the default built-in audio output device set by the application. When the application starts playback, if an external device such as a Bluetooth or wired headset is connected, the system preferentially uses the external device to play sound. Otherwise, the system uses this default device to play sound.<br>
 
-This function applies only to the scenario where [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) is set to voice messages, VoIP voice calls, and VoIP video calls and the available device types are the receiver, speaker, and system default device.
-
-This function can be called at any time after an AudioRenderer instance is created. The system records the default built-in audio output device set by the application. When the application is started, if an external device such as a Bluetooth or wired headset is connected, the system preferentially uses the external device to play sound. Otherwise, the system uses this default device to play sound.
+**Device behavior difference**: If the default audio output device is set to earpiece on a device without a earpiece, the speaker will still be used for audio output.
 
 **Since**: 12
 
@@ -1016,21 +1000,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetLoudnessGain(OH_AudioRenderer* rendere
 
 **Description**
 
-Sets the loudness of audio playback. The default loudness value is 0.0 dB.
-
-The audio stream playback type must be one of the following: 
-
-- Music: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC
-- Movies or videos: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC
-- Audiobooks (including books, crosstalk, and storytelling), listening to news, podcasts, and others: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOK
-
-The latency mode of the audio stream must be [OH_AudioStream_LatencyMode](capi-native-audiostream-base-h.md#oh_audiostream_latencymode).AUDIOSTREAM_LATENCY_MODE_NORMAL.
-
-Loudness settings are not supported for high-definition audio channels.
-
-Due to the buffer between the audio framework and hardware, there may be a delay in the actual effect of loudness adjustment. The delay duration depends on the buffer length.
-
-You are advised to set the loudness before starting playback of different audio streams to achieve the optimal balance effect.
+Sets the loudness of audio playback. The default loudness value is 0.0 dB. The audio stream playback type must be one of the following: Music: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC<br> Movies or videos: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC<br> Audiobooks (including books, crosstalk, and storytelling), listening to news, podcasts, and others: [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOK<br> The latency mode of the audio stream must be [OH_AudioStream_LatencyMode](capi-native-audiostream-base-h.md#oh_audiostream_latencymode).AUDIOSTREAM_LATENCY_MODE_NORMAL.<br> Loudness settings are not supported for high-definition audio channels.<br> Due to the buffer between the audio framework and hardware, there may be a delay in the actual effect of loudness adjustment. The delay duration depends on the buffer length.<br> You are advised to set the loudness before starting playback of different audio streams to achieve the optimal balance effect.
 
 **Since**: 20
 

@@ -104,7 +104,25 @@ The service has been deleted.
 
 **Procedure**
 
-Check whether the MDNS service to be deleted exists.
+Check whether the MDNS service to be registered already exists.
+
+## 2204009 Data Packet Sending Failure
+
+**Error Message**
+
+Failed to send packet.
+
+**Description**
+
+Data packets fail to be sent.
+
+**Possible Causes**
+
+No network is available.
+
+**Procedure**
+
+Check whether the device is connected to an available network.
 
 ## 2204010 Message Sending Failure
 

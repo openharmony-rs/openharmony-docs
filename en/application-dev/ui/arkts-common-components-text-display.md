@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-The **Text** component is used to display textual content. It can be bound to a custom text selection menu, allowing users to select features as needed. Additionally, you can extend this custom menu to add more options, further enhancing the user experience. The **Span** component is used to display inline text. 
+The **Text** component is used to display textual content. It can be bound to a custom text selection menu, allowing users to select features as needed. Additionally, you can extend this custom menu to add more options, further enhancing user experience. The **Span** component is used to display inline text. 
 
 For details, see [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) and [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md).
 
@@ -23,8 +23,7 @@ You can create text in either of the following ways:
   <!-- @[create_a_text_in_one_way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CreateText.ets) -->
   
   ``` TypeScript
-  // Replace $r('app.string.CreateText_Text_new') with the actual resource file. In this example, the value in the resource file is "I am a piece of text."
-  Text($r('app.string.CreateText_Text_new'))
+  Text('I am a piece of text')
   ```
 
 
@@ -71,7 +70,7 @@ The [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) compone
 
 
   <!-- @[create_span](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
-
+  
   ``` TypeScript
   // Replace $r('app.string.TextSpan_textContent_text') with the actual resource file. In this example, the value in the resource file is "I am Text."
   Text($r('app.string.TextSpan_textContent_text')) {
@@ -90,7 +89,7 @@ The [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) compone
 
 
   <!-- @[create_span_with_lines](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
-
+  
   ``` TypeScript
   Text() {
     // Replace $r('app.string.TextSpan_textContent_span_one') with the actual resource file. In this example, the value in the resource file is "I am Span1."
@@ -137,7 +136,7 @@ The [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) compone
 
 
   <!-- @[textspan_onhover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpanOnHover.ets) -->
-
+  
   ``` TypeScript
   // xxx.ets
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -193,7 +192,7 @@ The **Text** component supports custom text style configuration. The following t
 | decoration | Text decoration, such as the line style, color, and thickness.|
 | enableAutoSpacing | Whether to enable automatic spacing between Chinese and Western characters.|
 | enableDataDetector | Whether to enable recognition for special entities within the text.|
-| font | Font-related properties.|
+| font | Font-related attributes.|
 | fontColor | Text color.|
 | fontFamily | Font family.|
 | fontFeature | Typographic features, such as numeric width adjustment.|
@@ -217,7 +216,7 @@ The **Text** component supports custom text style configuration. The following t
 | textIndent | Indent of the first line of text.|
 | textOverflow | Handling of overflow text.|
 | textSelectable | Whether text can be selected.|
-| textVerticalAlign | Vertical alignment of text.|
+| textVerticalAlign | Vertical alignment mode of text paragraphs.|
 | wordBreak | Word breaking rule.|
 
 The following examples demonstrate usage of common APIs.
@@ -691,7 +690,6 @@ The following examples demonstrate usage of common APIs.
   }
   ```
 
-  ![Text_enable_auto_spacing](figures/Text_enable_auto_spacing.gif)
 
 - Since API version 20, you can use [shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#shaderstyle20) to apply gradient color effects to text.
 
@@ -736,7 +734,7 @@ The following examples demonstrate usage of common APIs.
 You can bind the **Text** component to the [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick), [onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch), or other universal events to respond to user operations.
 
   <!-- @[General_Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/GeneralEvents.ets) -->
-
+  
   ``` TypeScript
   // xxx.ets
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -815,6 +813,7 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
       .copyOption(CopyOptions.InApp)
     ```
 
+    ![Text_select_menu](figures/Text_select_menu.jpg)
 
   - Use the [bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#bindselectionmenu11) attribute to bind a custom selection menu to the **Text** component.
 
@@ -836,12 +835,14 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
         onAppear: () => {
           // Replace $r('app.string.SelectMenu_Text_Ejected') with the actual resource file. In this example, the value in the resource file is "This callback is triggered when the custom selection menu is displayed."
           hilog.info(0x0000, 'Sample_TextComponent',
-            resource.resourceToString($r('app.string.SelectMenu_Text_Ejected')));
+            this.getUIContext()
+              .getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_Ejected').id));
         },
         onDisappear: () => {
           // The value in the 'SelectMenu_Text_Close' resource file is 'This callback is triggered when the custom selection menu is closed.'
           hilog.info(0x0000, 'Sample_TextComponent',
-            resource.resourceToString($r('app.string.SelectMenu_Text_Close')));
+            this.getUIContext()
+              .getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_Close').id));
         }
       })
     ```
@@ -909,20 +910,24 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
       if (menuItem.id.equals(TextMenuItemId.of('customMenu2'))) {
         // Replace $r('app.string.SelectMenu_Text_customMenu') with the actual resource file. In this example, the value in the resource file is "Intercept id: customMenu2 start:".
         hilog.info(0x0000, 'Sample_TextComponent',
-          resource.resourceToString($r('app.string.SelectMenu_Text_customMenu')) + textRange.start + '; end:' +
+          this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_customMenu')
+            .id) + textRange.start + '; end:' +
           textRange.end);
         return true;
       }
       if (menuItem.id.equals(TextMenuItemId.COPY)) {
         // Replace $r('app.string.SelectMenu_Text_copy') with the actual resource file. In this example, the value in the resource file is "Intercept COPY start:".
         hilog.info(0x0000, 'Sample_TextComponent',
-          resource.resourceToString($r('app.string.SelectMenu_Text_copy')) + textRange.start + '; end:' + textRange.end);
+          this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_copy').id) +
+          textRange.start + '; end:' + textRange.end);
         return true;
       }
       if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
         // Replace $r('app.string.SelectMenu_Text_SelectionAll') with the actual resource file. In this example, the value in the resource file is "Do not intercept SELECT_ALL start:".
         hilog.info(0x0000, 'Sample_TextComponent',
-          resource.resourceToString($r('app.string.SelectMenu_Text_SelectionAll')) + textRange.start + '; end:' +
+          this.getUIContext()
+            .getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_SelectionAll').id) +
+          textRange.start + '; end:' +
           textRange.end);
         return false;
       }
@@ -981,6 +986,141 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
     }
     ```
 
+### Disabling System Menu Callbacks and Custom Extended Menu Items
+
+Since API version 12, use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12) to disable system menu callbacks and custom extended menu items .
+
+  <!-- @[Custom_Block_Menus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomAndBlockMenus.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  @Entry
+  @Component
+  export struct CustomAndBlockMenus {
+    private static readonly CREATE_MENU_ITEM_ID_1: string = 'create1';
+    private static readonly CREATE_MENU_ITEM_ID_2: string = 'create2';
+    private static readonly PREPARE_MENU_ITEM_ID: string = 'prepare1';
+    @State private text: string = 'Text editMenuOptions';
+    @State private endIndex: number = 0;
+    @State blockCallbackText: string = '';
+  
+    // Auxiliary method for creating a menu item.
+    private createMenuItem(id: string, content: string): TextMenuItem {
+      // Replace $r('app.media.startIcon') with the image resource file you use.
+      return {
+        content: content,
+        icon: $r('app.media.startIcon'),
+        id: TextMenuItemId.of(id)
+      };
+    }
+  
+    // Search for the menu item index.
+    private findMenuItemIndex(menuItems: Array<TextMenuItem>, menuItemId: TextMenuItemId): number {
+      return menuItems.findIndex((item: TextMenuItem) => item.id.equals(menuItemId));
+    }
+  
+    // Callback triggered when a menu is created.
+    private onCreateMenu = (menuItems: Array<TextMenuItem>): Array<TextMenuItem> => {
+      const createItem1: TextMenuItem = this.createMenuItem(
+        CustomAndBlockMenus.CREATE_MENU_ITEM_ID_1,
+        'create1'
+      );
+  
+      const createItem2: TextMenuItem = this.createMenuItem(
+        CustomAndBlockMenus.CREATE_MENU_ITEM_ID_2,
+        'create2'
+      );
+  
+      // Add a custom menu item.
+      menuItems.push(createItem1);
+      menuItems.unshift(createItem2);
+  
+      // Remove unnecessary system menu items.
+      this.removeMenuItemById(menuItems, TextMenuItemId.AI_WRITER);
+      this.removeMenuItemById(menuItems, TextMenuItemId.TRANSLATE);
+  
+      return menuItems;
+    }
+  
+    // Remove a specified menu item.
+    private removeMenuItemById(menuItems: Array<TextMenuItem>, menuItemId: TextMenuItemId): void {
+      const targetIndex: number = this.findMenuItemIndex(menuItems, menuItemId);
+      if (targetIndex !== -1) {
+        menuItems.splice(targetIndex, 1);
+      }
+    }
+  
+    // Callback triggered when a menu item is clicked.
+    private onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange): boolean => {
+      const menuItemId: TextMenuItemId = menuItem.id;
+  
+      // Process the custom menu item.
+      if (menuItemId.equals(TextMenuItemId.of(CustomAndBlockMenus.CREATE_MENU_ITEM_ID_2))) {
+        let msg = 'Intercept id: create2 start:' + textRange.start + '; end:' + textRange.end;
+        this.blockCallbackText = msg
+        return true;
+      }
+  
+      if (menuItemId.equals(TextMenuItemId.of(CustomAndBlockMenus.PREPARE_MENU_ITEM_ID))) {
+        let msg = 'Intercept id: prepare1 start:' + textRange.start + '; end:+' + textRange.end;
+        this.blockCallbackText = msg
+        return true;
+      }
+  
+      // Process the system menu item.
+      if (menuItemId.equals(TextMenuItemId.COPY)) {
+        let msg = 'Intercept COPY start:' + textRange.start + '; end:' + textRange.end;
+        this.blockCallbackText = msg
+        return true;
+      }
+  
+      if (menuItemId.equals(TextMenuItemId.SELECT_ALL)) {
+        let msg = 'Allow SELECT_ALL start:' + textRange.start + '; end:' + textRange.end;
+        this.blockCallbackText = msg
+        return false;
+      }
+  
+      return false;
+    }
+    // Callback triggered when the menu is prepared.
+    private onPrepareMenu = (menuItems: Array<TextMenuItem>): Array<TextMenuItem> => {
+      const prepareItem: TextMenuItem = this.createMenuItem(
+        CustomAndBlockMenus.PREPARE_MENU_ITEM_ID,
+        `prepare1_${this.endIndex}`
+      );
+  
+      menuItems.unshift(prepareItem);
+      return menuItems;
+    }
+    // Edit menu options.
+    @State private editMenuOptions: EditMenuOptions = {
+      onCreateMenu: this.onCreateMenu,
+      onMenuItemClick: this.onMenuItemClick,
+      onPrepareMenu: this.onPrepareMenu
+    };
+    // Callback triggered when the text selection changes.
+    private onTextSelectionChange = (selectionStart: number, selectionEnd: number): void => {
+      this.endIndex = selectionEnd;
+    }
+  
+    build() {
+      NavDestination() {
+        Column() {
+          Text(this.text)
+            .fontSize(20)
+            .copyOption(CopyOptions.LocalDevice)
+            .editMenuOptions(this.editMenuOptions)
+            .margin({ top: 100 })
+            .onTextSelectionChange(this.onTextSelectionChange)
+          Text(this.blockCallbackText).borderWidth(1)
+        }
+        .width('90%')
+        .margin('5%')
+      }
+    }
+  }
+  ```
+
 ### Disabling System Service Menu Items
 
 - Since API version 20, use [disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20) to disable all system service menu items in the text selection menu.
@@ -1031,6 +1171,7 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
   }
   ```
 
+  ![text_disable_system_service_menuItems](figures/text_disable_system_service_menuItems.jpg)
 
 - Since API version 20, use [disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) to disable specified system service menu items in the text selection menu.
 
@@ -1083,12 +1224,14 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
   ```
   
 
+  ![text_disable_menuItems](figures/text_disable_menuItems.jpg)
+
 ### Customizing the Default Menu Refresh Behavior
 
 Since API version 20, the [onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#properties-1) callback is triggered before the menu is displayed when the text selection range changes. You can configure menu data within this callback.
 
   <!-- @[Prepare_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/PrepareMenu.ets) -->
-
+  
   ``` TypeScript
   // Replace $r('app.media.xxx') with the actual resource file.
   // xxx.ets
@@ -1168,7 +1311,7 @@ Since API version 20, the [onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-te
     }
   }
   ```
-
+  
 
 ![text_on_prepare_menu](figures/text_on_prepare_menu.gif)
 
@@ -1178,7 +1321,7 @@ The **Text** component enables AI menu display through the [enableDataDetector](
 
 >  **NOTE**
 >
->  Since API version 20, entity recognition options can be displayed in both text selection menus and right-click context menus. This feature takes effect when [enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#enabledatadetector11) is set to **true** and [copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9) is set to** CopyOptions.LocalDevice**. The menu options include **url** (opening a link), **email** (creating an email), **phoneNumber** (calling), **address** (navigating to the location), and **dateTime** (creating a calendar reminder) in [TextMenuItemId](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12).
+>  Since API version 20, entity recognition options can be displayed in both text selection menus and right-click context menus. This feature takes effect when [enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#enabledatadetector11) is set to **true** and [copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9) is set to **CopyOptions.LocalDevice**. The menu options include **url** (opening a link), **email** (creating an email), **phoneNumber** (calling), **address** (navigating to the location), and **dateTime** (creating a calendar reminder) in [TextMenuItemId](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12).
 >
 >  The selection range must encompass a complete AI entity for the corresponding options to appear.
 
@@ -1202,16 +1345,17 @@ The **Text** component enables AI menu display through the [enableDataDetector](
     })
   ```
   
+
 - Use [dataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#datadetectorconfig11) to customize entity recognition styles. For details, see [TextDataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-text-common.md#textdatadetectorconfig11).
 - Use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12) to adjust the menu position. For implementation details, see [Example 12: Setting Custom Menu Extensions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#example-12-setting-custom-menu-extensions).
 <!--RP2--><!--RP2End-->
 
 ## Implementing Hot Search Rankings
 
-This example demonstrates how to implement a hot search list using the **maxLines**, **textOverflow**, **textAlign**, and **constraintSize** attributes.
+This example demonstrates how to implement a hot search list using the [maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines), [textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow), [textAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textalign), and [constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize) attributes.
 
   <!-- @[the_text_fact_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextHotSearch.ets) -->
-
+  
   ``` TypeScript
   import { ComponentCard } from '../../common/Card';
   
@@ -1315,7 +1459,7 @@ This example demonstrates how to implement a hot search list using the **maxLine
     }
   }
   ```
-
+  
 
 ![en-us_image_0000001562820805](figures/en-us_image_0000001562820805.png)
 <!--RP1--><!--RP1End-->

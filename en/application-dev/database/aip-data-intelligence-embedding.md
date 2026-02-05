@@ -44,18 +44,18 @@ Application data vectorization involves converting raw application data into vec
 
 The following table lists the APIs related to application data vectorization. For more APIs and their usage, see [ArkData Intelligence Platform](../reference/apis-arkdata/js-apis-data-intelligence.md).
 
-| API| Description|
+| API| Description| 
 | -------- | -------- |
-| getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt; | Obtains a text embedding model.|
-| loadModel(): Promise&lt;void&gt; | Loads this text embedding model.|
-| splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt; | Splits text.|
-| getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt; | Obtains the embedding vector of the given text.|
+| getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt; | Obtains a text embedding model.| 
+| loadModel(): Promise&lt;void&gt; | Loads this text embedding model.| 
+| splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt; | Splits text.| 
+| getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt; | Obtains the embedding vector of the given text.| 
 | getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt; | Obtains the embedding vector of a given batch of text.|
-| releaseModel(): Promise&lt;void&gt; | Releases this text embedding model.|
-| getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt; | Obtains an image embedding model.|
-| loadModel(): Promise&lt;void&gt; | Loads this image embedding model.|
-| getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt; | Obtains the embedding vector of the given image.|
-| releaseModel(): Promise&lt;void&gt; | Releases this image embedding model.|
+| releaseModel(): Promise&lt;void&gt; | Releases this text embedding model.| 
+| getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt; | Obtains an image embedding model.| 
+| loadModel(): Promise&lt;void&gt; | Loads this image embedding model.| 
+| getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt; | Obtains the embedding vector of the given image.| 
+| releaseModel(): Promise&lt;void&gt; | Releases this image embedding model.| 
 
 ## How to Develop Text Vectorization
 
@@ -65,7 +65,9 @@ The following table lists the APIs related to application data vectorization. Fo
    import { intelligence } from '@kit.ArkData';
    ```
 
-2. Obtain a text embedding model using the **getTextEmbeddingModel** method. The sample code is as follows:
+2. Obtain a text embedding model.
+
+   Use the **getTextEmbeddingModel** method to obtain a text embedding model. The sample code is as follows:
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -87,7 +89,9 @@ The following table lists the APIs related to application data vectorization. Fo
      })
    ```
 
-3. Load this embedding model using the **loadModel** method. The sample code is as follows:
+3. Load the text embedding model.
+
+   Use the **loadModel** method to load the text embedding model. The sample code is as follows:
 
    ```ts
    textEmbedding.loadModel()
@@ -100,6 +104,7 @@ The following table lists the APIs related to application data vectorization. Fo
    ```
 
 4. Split text. If the data length exceeds the limit, call **splitText()** to split the data into smaller text blocks and then vectorize them.
+
     The sample code is as follows:
 
    ```ts
@@ -119,6 +124,7 @@ The following table lists the APIs related to application data vectorization. Fo
    ```
 
 5. Obtain the embedding vector of the given text using the **getEmbedding** method. The given text can be a single piece of text or a collection of multiple text entries.
+
     The sample code is as follows:
 
    ```ts
@@ -143,7 +149,9 @@ The following table lists the APIs related to application data vectorization. Fo
      })
    ```
 
-6. Release this text embedding model using the **releaseModel** method. The sample code is as follows:
+6. Release the text embedding model.
+
+   Use the **releaseModel** method to release the text embedding model. The sample code is as follows:
 
    ```ts
    textEmbedding.releaseModel()
@@ -163,7 +171,9 @@ The following table lists the APIs related to application data vectorization. Fo
    import { intelligence } from '@kit.ArkData';
    ```
 
-2. Obtain an image embedding model using the **getImageEmbeddingModel** method. The sample code is as follows:
+2. Obtain an image embedding model.
+
+   Use the **getImageEmbeddingModel** method to obtain an image embedding model. The sample code is as follows:
 
    ```ts
    let imageConfig:intelligence.ModelConfig = {
@@ -183,7 +193,9 @@ The following table lists the APIs related to application data vectorization. Fo
      })
    ```
 
-3. Load this image embedding model using the **loadModel** method. The sample code is as follows:
+3. Load the image embedding model.
+
+   Use the **loadModel** method to load the image embedding model. The sample code is as follows:
 
    ```ts
    imageEmbedding.loadModel()
@@ -195,7 +207,9 @@ The following table lists the APIs related to application data vectorization. Fo
      })
    ```
 
-4. Obtain the embedding vector of the given image using the **getEmbedding** method. The sample code is as follows:
+4. Obtain the embedding vector of the given image.
+
+   Use the **getEmbedding** method to obtain the embedding vector of the given image. The sample code is as follows:
 
     ```ts
     let image = "file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg";
@@ -208,7 +222,9 @@ The following table lists the APIs related to application data vectorization. Fo
       })
     ```
 
-5. Release this image embedding model using the **releaseModel** method. The sample code is as follows:
+5. Release the image embedding model.
+
+   Use the **releaseModel** method to release the image embedding model. The sample code is as follows:
 
     ```ts
     imageEmbedding.releaseModel()

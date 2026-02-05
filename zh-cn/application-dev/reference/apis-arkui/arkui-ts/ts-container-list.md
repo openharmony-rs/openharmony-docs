@@ -103,7 +103,7 @@ List(options?: [ListOptions](#listoptions18对象说明))
 
 > **说明：**
 >
-> List组件[通用属性clip](ts-universal-attributes-sharp-clipping.md)的默认值为true。
+> List组件通用属性[clip](ts-universal-attributes-sharp-clipping.md#clip12)的默认值为true。
 
 ### listDirection
 
@@ -316,15 +316,14 @@ multiSelectable(value: boolean)
 
 lanes(value: number | LengthConstrain, gutter?: Dimension)
 
-设置List组件的布局列数或行数。gutter为列间距，当列数大于1时生效。
+设置List组件的布局列数或行数（List垂直滚动时表示列数，水平滚动时表示行数）。
 
-规则如下：
+以列数作为示例，介绍设置规则如下：
 
-- value为number类型时，指定列数或行数，列宽由List组件的交叉轴尺寸除以列数得到。
-- value为LengthConstrain类型时，指定最小和最大的列数或者行数，即lanes的value参数设置为{minLength，maxLength}会根据List组件的宽度自适应决定lanes数量（即列数），保证缩放过程中列的宽度符合{minLength，maxLength}的限制。其中，minLength条件会被优先满足，即优先保证ListItem的交叉轴尺寸符合最小限制。
- - lanes的value参数设置为{minLength，maxLength}，如果父组件交叉轴方向尺寸约束为无穷大时，固定按一列排列，List的列宽等于显示区域内最大的ListItem的列宽。
+- value为number类型时，根据number类型数值指定列数。
+- value为LengthConstrain类型时，LengthConstrain中的minLength表示最小列宽，List组件会根据自身宽度在满足最小列宽情况下计算最大列数。同时，LengthConstrain会作为最大最小布局宽度约束传递给List的子组件，子组件没有设置宽度时会生效该最大最小布局约束。
 - &nbsp;ListItemGroup在多列模式下也是独占一行，ListItemGroup中的ListItem按照List组件的lanes属性设置值来布局。
-- lanes的value参数设置为{minLength，maxLength}时，计算ListItemGroup中的列数时会按照ListItemGroup的交叉轴尺寸计算。当ListItemGroup交叉轴尺寸与List交叉轴尺寸不一致时ListItemGroup中的列数与List中的列数可能不一样。
+- value为LengthConstrain类型时，计算ListItemGroup中的列数时会按照ListItemGroup的自身宽度计算。因此ListItemGroup宽度与List宽度不一致时，ListItemGroup中的列数与List中的列数可能不一样。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -337,7 +336,7 @@ lanes(value: number | LengthConstrain, gutter?: Dimension)
 | 参数名               | 类型                                                         | 必填 | 说明                                     |
 | -------------------- | ------------------------------------------------------------ | ---- | ---------------------------------------- |
 | value                | number&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) | 是   | List组件的布局列数或行数。<br/>默认值：1 <br/>取值范围：[1, +∞)|
-| gutter<sup>10+</sup> | [Dimension](ts-types.md#dimension10)                         | 否   | 列间距。<br />默认值：0 <br/>取值范围：[0, +∞)|
+| gutter<sup>10+</sup> | [Dimension](ts-types.md#dimension10)                         | 否   | 列间距或行间距。<br />默认值：0 <br/>取值范围：[0, +∞)<br/>**说明：**<br/>gutter为列间距或行间距，当列数或行数大于1时生效。|
 
 ### lanes<sup>22+</sup>
 
@@ -1724,7 +1723,7 @@ struct ListExample {
 ### 示例5（跳转准确）
 该示例通过设置[childrenMainSize](#childrenmainsize12)属性，实现了List在子组件高度不一致时调用scrollTo接口也可以跳转准确。
 
-如果配合状态管理V2使用，详情见：[List与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md#滚动组件)。
+如果配合状态管理V2使用，详情见：[List与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#滚动组件)。
 
 ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
 
@@ -2275,34 +2274,40 @@ struct ListExample {
   scrollerForList: Scroller = new Scroller()
   @State contentWidth: number = -1;
   @State contentHeight: number = -1;
+
   build() {
     Column() {
       List({ space: 20, initialIndex: 0, scroller: this.scrollerForList }) {
         ForEach(this.arr, (item: number) => {
           ListItem() {
             Text('' + item)
-              .width('100%').height(100).fontSize(16)
-              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+              .width('100%')
+              .height(100)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
           }
         }, (item: string) => item)
       }
       .width('90%').height('90%')
+
       // 点击按钮来调用contentSize函数获取内容尺寸
       Button('GetContentSize')
-        .onClick(()=> {
-            // Scroller未绑定组件时会抛异常，需要加上try catch保护
-          	try {
-              // 通过调用contentSize函数获取内容尺寸的宽度值
-              this.contentWidth=this.scrollerForList.contentSize().width;
-              // 通过调用contentSize函数获取内容尺寸的高度值
-              this.contentHeight=this.scrollerForList.contentSize().height;
-            } catch (error) {
-              let err: BusinessError = error as BusinessError;
-      		  console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
-            }
+        .onClick(() => {
+          // Scroller未绑定组件时会抛异常，需要加上try catch保护
+          try {
+            // 通过调用contentSize函数获取内容尺寸的宽度值
+            this.contentWidth = this.scrollerForList.contentSize().width;
+            // 通过调用contentSize函数获取内容尺寸的高度值
+            this.contentHeight = this.scrollerForList.contentSize().height;
+          } catch (error) {
+            let err: BusinessError = error as BusinessError;
+            console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+          }
         })
       // 将获取到的内容尺寸信息通过文本进行呈现
-      Text('Width：'+ this.contentWidth+'，Height：'+ this.contentHeight)
+      Text('Width：' + this.contentWidth + '，Height：' + this.contentHeight)
         .fontColor(Color.Red)
         .height(50)
     }

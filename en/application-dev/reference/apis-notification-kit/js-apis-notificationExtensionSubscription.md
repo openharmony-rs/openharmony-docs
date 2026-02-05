@@ -60,6 +60,7 @@ import { common } from '@kit.AbilityKit';
 const DOMAIN = 0x0000;
 
 try {
+  // Obtain the context from the component and ensure that the return value of this.getuIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
     hilog.info(DOMAIN, 'testTag', `openSubscriberSettings success`);

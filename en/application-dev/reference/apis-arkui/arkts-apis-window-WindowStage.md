@@ -50,7 +50,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300005 | This window stage is abnormal. |
 
 **Example**
@@ -112,7 +112,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300005 | This window stage is abnormal. |
 
 **Example**
@@ -172,7 +172,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300005 | This window stage is abnormal. |
 
 **Example**
@@ -1615,10 +1615,7 @@ Enables or disables the auto-save feature for the size of the last closed main w
 
 When the auto-save feature is enabled, within the same UIAbility, the size of the last closed main window is remembered. When this main window is restarted, it will open at the remembered size according to the rules.
 
-The following rules apply in stacking scenarios:
-
-1. If the current instance is a free-form window, the next opened window will adopt the same size when stacked.
-2. If the current instance is maximized or in full-screen mode, the next opened window will maintain the maximized state when stacked.
+The following rules apply in stacking scenarios: 1. If the current instance is a free-form window, the next opened window will adopt the same size when stacked. 2. If the current instance is maximized or in full-screen mode, the next opened window will maintain the maximized state when stacked.
 
 The following table describes the memory rules:
 |Last Window State|Memorizing Rule|
@@ -1832,9 +1829,9 @@ Sets the supported window modes of the main window. This API uses a promise to r
 
 **Device behavior differences**
 
-Before API version 22, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+Before <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this API can be called on a device in [freeform windows](../../windowmanager/window-terminology.md#freeform-window) state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
-Starting from API version 22, this API can be called on a device that supports freeform windows and is in the freeform window state, and the setting takes effect immediately. If the device supports freeform windows but is not in the freeform window state, this API can be property called, and the setting takes effect when the device switches to the freeform window state. If the device does not support freeform windows, error code 801 is returned.
+Starting from <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this API can be called on a device in the freeform window state, and the setting takes effect immediately. If the device supports freeform windows but is not in the freeform window state, this API can be property called, and the setting takes effect when the device switches to the freeform window state. If the device does not support freeform windows, error code 801 is returned.
 
 **Parameters**
 
@@ -1900,9 +1897,9 @@ Sets the supported window modes for the main window and optionally disables the 
 
 **Device behavior differences**
 
-Before API version 22, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+Before <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this API can be called on a device in [freeform windows](../../windowmanager/window-terminology.md#freeform-window) state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
-Starting from API version 22, this API can be called on a device that supports freeform windows and is in the freeform window state, and the setting takes effect immediately. If the device supports freeform windows but is not in the freeform window state, this API can be property called, and the setting takes effect when the device switches to the freeform window state. If the device does not support freeform windows, error code 801 is returned.
+Starting from <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this API can be called on a device in the freeform window state, and the setting takes effect immediately. If the device supports freeform windows but is not in the freeform window state, this API can be property called, and the setting takes effect when the device switches to the freeform window state. If the device does not support freeform windows, error code 801 is returned.
 
 **Parameters**
 

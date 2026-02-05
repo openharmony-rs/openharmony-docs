@@ -33,7 +33,7 @@ Obtains a pre-installed channel ID of this application.
 
 |  Type |  Description |
 | ------ | ----- |
-| string | Channel ID|
+| string | Channel ID obtained.|
 
 **Example**
 

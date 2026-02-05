@@ -196,7 +196,17 @@ friction(value: number | Resource): T
 
 flingSpeedLimit(speedLimit: number): T
 
-限制跟手滑动结束后，Fling动效开始时的最大初始速度。
+限制跟手滑动结束后，惯性动效开始时的最大初始速度。
+ 	 
+> **说明：**
+>
+> - 惯性动效是指手指快速滑动并离开屏幕后，滚动内容继续滚动并逐渐减速停止的效果，也称为惯性滚动。
+>
+> - 惯性动效触发场景包括：惯性手指快速滑动并离手时，或调用[fling](ts-container-scroll.md#fling12)方法。
+>
+> - 使用鼠标滚轮、键盘方向键方式滚动，或通过[scrollTo](ts-container-scroll.md#scrollto)等方法直接滚动到指定位置，不会产生惯性动效。
+>
+> - 如果惯性动效通过[fling](ts-container-scroll.md#fling12)方法触发，则flingSpeedLimit设置不生效。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -206,7 +216,7 @@ flingSpeedLimit(speedLimit: number): T
 
 | 参数名     | 类型   | 必填 | 说明                            |
 | ---------- | ------ | ---- | ------------------------------- |
-| speedLimit | number | 是   | Fling动效开始时的最大初始速度。<br/>默认值：9000<br/>单位：vp/s <br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。|
+| speedLimit | number | 是   | 惯性动效开始时的最大初始速度。<br/>默认值：9000<br/>单位：vp/s <br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。|
 
 **返回值：**
 
@@ -224,9 +234,9 @@ fadingEdge(enabled: Optional&lt;boolean&gt;, options?: FadingEdgeOptions): T
 > 
 > fadingEdge是通过设置[overlay](ts-universal-attributes-overlay.md#overlay)属性和[blendMode](ts-universal-attributes-image-effect.md#blendmode11)属性（参数值为BlendMode.SRC_OVER，BlendApplyType.OFFSCREEN）实现的。当fadingEdge生效时，会覆盖原组件的.overlay()属性和.blendMode()属性。
 >
-> fadingEdge生效时，建议不在设置fadingEdge属性的组件上设置background相关属性，会影响渐隐的显示效果。
+> fadingEdge生效时，建议不在设置fadingEdge属性的组件上设置[background](ts-universal-attributes-background.md#background10)相关属性，会影响渐隐的显示效果。
 >
-> fadingEdge生效时，设置fadingEdge属性的组件会裁剪到边界，在该组件上设置clip属性为false不生效。
+> fadingEdge生效时，设置fadingEdge属性的组件会裁剪到边界，在该组件上设置[clip](ts-universal-attributes-sharp-clipping.md#clip12)属性为false不生效。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -236,8 +246,8 @@ fadingEdge(enabled: Optional&lt;boolean&gt;, options?: FadingEdgeOptions): T
 
 | 参数名  | 类型                                              | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| enabled | Optional&lt;boolean&gt;                           | 是   | 是否开启边缘渐隐效果。设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。<br/>默认值：false |
-| options | [FadingEdgeOptions](#fadingedgeoptions14对象说明) | 否   | 边缘渐隐参数对象。可以通过该对象定义边缘渐隐效果属性，比如设置渐隐长度。<br/>如果设置小于0的值则取默认值，默认长度为32vp。<br/>如果设置的长度超过容器高度的一半时，渐隐长度取容器高度的一半。 |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt;                           | 是   | 是否开启边缘渐隐效果。设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。<br/>默认值：false |
+| options | [FadingEdgeOptions](#fadingedgeoptions14对象说明) \| undefined  | 否   | 边缘渐隐参数对象。可以通过该对象定义边缘渐隐效果属性，比如设置渐隐长度。<br/>如果设置小于0的值或者设置成undefined则取默认值，默认长度为32vp。<br/>如果设置的长度超过容器高度的一半时，渐隐长度取容器高度的一半。 |
 
 **返回值：**
 
@@ -329,7 +339,7 @@ digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>): T
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                         |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| sensitivity | [Optional&lt;CrownSensitivity&gt;](ts-appendix-enums.md#crownsensitivity18) | 是   | 表冠响应灵敏度。<br/>默认值：CrownSensitivity.MEDIUM，响应速度适中。 |
+| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)&gt; | 是   | 表冠响应灵敏度。<br/>默认值：CrownSensitivity.MEDIUM，响应速度适中。 |
 
 **返回值：**
 
@@ -501,7 +511,9 @@ onWillScroll(handler: Optional&lt;OnWillScrollCallback&gt;): T
 
 >**说明：**
 >
-> 从API version 14开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> - 从API version 14开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+>
+> - 调用不带动画的[ScrollEdge](ts-container-scroll.md#scrolledge)和[ScrollToIndex](ts-container-scroll.md#scrolltoindex)时，不触发onWillScroll。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -511,7 +523,7 @@ onWillScroll(handler: Optional&lt;OnWillScrollCallback&gt;): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
-| handler | Optional&lt;[OnWillScrollCallback](#onwillscrollcallback12)&gt; | 是 | 滚动组件滑动前触发的回调。 |
+| handler | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[OnWillScrollCallback](#onwillscrollcallback12)&gt; | 是 | 滚动组件滑动前触发的回调。 |
 
 **返回值：**
 
@@ -560,7 +572,7 @@ onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void): T
 
 > **说明：**
 >
-> 从API version 11开始支持，从API version 12开始废弃，List、Grid和WaterFlow组件的onScroll事件在布局之后触发，建议使用[onDidScroll](#ondidscroll12)替代；Scroll组件的onScroll事件在布局之前触发，建议使用[onWillScroll](#onwillscroll12)替代。
+> 从API version 11开始支持，从API version 12开始废弃，[List](ts-container-list.md)、[Grid](ts-container-grid.md)和[WaterFlow](ts-container-waterflow.md)组件的onScroll事件在布局之后触发，建议使用[onDidScroll](#ondidscroll12)替代；[Scroll](ts-container-scroll.md)组件的onScroll事件在布局之前触发，建议使用[onWillScroll](#onwillscroll12)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -654,7 +666,13 @@ onDidStopDragging(handler: OnDidStopDraggingCallback): T
 
 onWillStartFling(handler: VoidCallback): T
 
-滚动组件将要开始Fling动效时触发。
+滚动组件将要开始惯性动效时触发。
+ 	 
+> **说明：**
+>
+> - 如果惯性动效通过[fling](ts-container-scroll.md#fling12)方法触发，则onWillStartFling不触发。
+>
+> - 惯性动效的触发场景参考[flingSpeedLimit](#flingspeedlimit11)方法的说明。
 
 **卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
 
@@ -666,7 +684,7 @@ onWillStartFling(handler: VoidCallback): T
 
 | 参数名  | 类型                                        | 必填 | 说明                         |
 | ------- | ------------------------------------------ | ---- | ---------------------------- |
-| handler | [VoidCallback](ts-types.md#voidcallback12) | 是   | 滚动组件将要开始Fling动效时触发的回调。 |
+| handler | [VoidCallback](ts-types.md#voidcallback12) | 是   | 滚动组件将要开始惯性动效时触发的回调。 |
 
 **返回值：**
 
@@ -678,7 +696,7 @@ onWillStartFling(handler: VoidCallback): T
 
 onDidStopFling(handler: VoidCallback): T
 
-滚动组件结束Fling动效后触发，进行中的Fling动效被新的滑动事件打断时不触发。
+滚动组件结束惯性动效后触发，进行中的惯性动效被新的滑动事件打断时不触发。
 
 **卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
 
@@ -690,7 +708,7 @@ onDidStopFling(handler: VoidCallback): T
 
 | 参数名  | 类型                                        | 必填 | 说明                         |
 | ------- | ------------------------------------------ | ---- | ---------------------------- |
-| handler | [VoidCallback](ts-types.md#voidcallback12) | 是   | 滚动组件结束Fling动效后触发的回调。 |
+| handler | [VoidCallback](ts-types.md#voidcallback12) | 是   | 滚动组件结束惯性动效后触发的回调。 |
 
 **返回值：**
 
@@ -732,7 +750,7 @@ onDidStopFling(handler: VoidCallback): T
 
 | 名称   | 类型  | 只读 | 可选 | 说明              |
 | ----- | ------| ------- | -- | ----------------- |
-| alwaysEnabled | boolean | 否 | 否 | 组件内容大小小于组件自身时，设置是否开启滑动效果。设置为true开启滑动效果，设置为false关闭滑动效果。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| alwaysEnabled | boolean | 否 | 否 | 组件内容大小小于组件自身时，设置是否开启滑动效果。设置为true开启滑动效果，设置为false关闭滑动效果。[List](ts-container-list.md)、[Grid](ts-container-grid.md)和[WaterFlow](ts-container-waterflow.md)组件默认值是false，[Scroll](ts-container-scroll.md)组件默认值是true。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | effectEdge<sup>18+</sup> | number | 否 | 是 | 设置边缘效果生效的边缘。<br/>如果设置[EffectEdge](#effectedge18枚举说明).START表示只有起始边生效。如果设置[EffectEdge](#effectedge18枚举说明).END表示只有末尾边生效。<br/>默认值为[EffectEdge](#effectedge18枚举说明).START \| [EffectEdge](#effectedge18枚举说明).END表示双边同时生效。当设置为其它异常值时，则默认双边同时生效。<br/>如果需要双边都不生效，可将edgeEffect设置为EdgeEffect.None。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## FadingEdgeOptions<sup>14+</sup>对象说明
@@ -1097,12 +1115,12 @@ type OnDidStopDraggingCallback = (willFling: boolean) => void
 
 | 参数名     | 类型    | 必填 | 说明                                                                              |
 | --------  | ------- | ---- | -------------------------------------------------------------------------------- |
-| willFling | boolean | 是   | 结束拖拽后是否会有Fling动效。返回true代表拖拽结束后有Fling动效，返回false代表没有Fling动效。 |
+| willFling | boolean | 是   | 结束拖拽后是否会有惯性动效。返回true代表拖拽结束后有惯性动效，返回false代表没有惯性动效。 |
 
 ## 示例
 
 ### 示例1（支持滚动手势）
-该示例通过设置enableScrollInteraction属性，实现了使用手势滚动纵向列表，并在当前显示界面发生改变时回调索引。
+该示例通过设置[enableScrollInteraction](ts-container-scrollable-common.md#enablescrollinteraction11)属性，实现了使用手势滚动纵向列表，并在当前显示界面发生改变时回调索引。
 
 ListDataSource说明及完整代码参考[示例1添加滚动事件](./ts-container-list.md#示例1添加滚动事件)。
 
@@ -1171,7 +1189,7 @@ struct ListExample {
 ![zh-cn_image_0000001174264378](figures/zh-cn_image_0000001174264378.gif)
 
 ### 示例2（设置边缘渐隐）
-该示例通过设置fadingEdge属性，实现了List组件开启边缘渐隐效果并设置边缘渐隐长度。
+该示例通过设置[fadingEdge](ts-container-scrollable-common.md#fadingedge14)属性，实现了[List](ts-container-list.md)组件开启边缘渐隐效果并设置边缘渐隐长度。
 
 ListDataSource说明及完整代码参考[示例1添加滚动事件](./ts-container-list.md#示例1添加滚动事件)。
 
@@ -1216,9 +1234,8 @@ struct ListExample {
 ![fadingEdge_list](figures/fadingEdge_list.gif)
 
 ### 示例3（设置裁剪区域）
-该示例通过设置clipContent属性，改变组件的内容层裁剪区域。
+该示例通过设置[clipContent](ts-container-scrollable-common.md#clipcontent14)属性，改变组件的内容层裁剪区域。
 
-<!--code_no_check-->
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';
@@ -1249,7 +1266,7 @@ struct ScrollExample {
       .scrollBar(BarState.Off)
       .friction(0.6)
       .width(300)
-      .height("50%")
+      .height('50%')
       .padding(10)
       .safeAreaPadding(LengthMetrics.vp(10))
       .initialOffset({ yOffset: 80 })

@@ -53,7 +53,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avPlayer: media.AVPlayer;
 media.createAVPlayer((error: BusinessError, video: media.AVPlayer) => {
-  if (video != null) {
+  if (video) {
     avPlayer = video;
     console.info('Succeeded in creating AVPlayer');
   } else {
@@ -72,7 +72,7 @@ Creates an AVPlayer instance. This API uses a promise to return the result.
 >
 > - You are advised to create a maximum of 16 AVPlayer instances for an application in both audio and video playback scenarios.<!--Del-->
 > - The actual number of instances that can be created may be different. It depends on the specifications of the device chip in use. For example, in the case of RK3568, you are advised to create a maximum of 6 AVPlayer instances for an application in audio and video playback scenarios.<!--DelEnd-->
-> - Applications must properly manage AVPlayer instances according to their specific needs, creating and freeing them when necessary. Holding too many AVPlayer instances can lead to high memory usage, and in some cases, the system might terminate applications to free up resources.
+> - Applications should reasonably use AVPlayer objects in accordance with actual service requirements, create them on demand, and release them in a timely manner. This avoids excessive memory consumption caused by holding too many AVPlayer instances, which may result in the system terminating the application.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -82,7 +82,7 @@ Creates an AVPlayer instance. This API uses a promise to return the result.
 
 | Type                           | Description                                                        |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[AVPlayer](arkts-apis-media-AVPlayer.md)> | Promise used to return the result. If the operation is successful, an AVPlayer instance is returned; otherwise, **null** is returned. The instance can be used to play audio and video.|
+| Promise\<[AVPlayer](arkts-apis-media-AVPlayer.md)> | Promise used to return the result. If the operation is successful, an AVPlayer instance is returned for audio and video playback. Otherwise, **null** is returned.|
 
 **Error codes**
 
@@ -99,7 +99,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avPlayer: media.AVPlayer;
 media.createAVPlayer().then((video: media.AVPlayer) => {
-  if (video != null) {
+  if (video) {
     avPlayer = video;
     console.info('Succeeded in creating AVPlayer');
   } else {
@@ -648,7 +648,6 @@ createAudioPlayer(): AudioPlayer
 Creates an AudioPlayer instance in synchronous mode.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [createAVPlayer](#mediacreateavplayer9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioPlayer
@@ -672,7 +671,6 @@ createVideoPlayer(callback: AsyncCallback\<VideoPlayer>): void
 Creates a VideoPlayer instance. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [createAVPlayer](#mediacreateavplayer9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoPlayer
@@ -706,7 +704,6 @@ createVideoPlayer(): Promise\<VideoPlayer>
 Creates a VideoPlayer instance. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [createAVPlayer](#mediacreateavplayer9-1) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoPlayer
@@ -742,7 +739,6 @@ createAudioRecorder(): AudioRecorder
 Creates an AudioRecorder instance to control audio recording. Only one AudioRecorder instance can be created per device.
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [createAVRecorder](#mediacreateavrecorder9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AudioRecorder

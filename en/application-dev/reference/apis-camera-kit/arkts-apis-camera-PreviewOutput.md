@@ -235,10 +235,11 @@ function getSupportedFrameRates(previewOutput: camera.PreviewOutput): Array<came
 
 setFrameRate(minFps: number, maxFps: number): void
 
-Sets a frame rate range for preview streams. The range must be within the supported frame rate range, which can be obtained by calling [getSupportedFrameRates](#getsupportedframerates12).
+Sets a frame rate range for preview streams. The range must be within the supported frame rate range,
+
+which can be obtained by calling [getSupportedFrameRates](#getsupportedframerates12).
 
 > **NOTE**
->
 > This API is valid only in [PhotoSession](arkts-apis-camera-PhotoSession.md) or [VideoSession](arkts-apis-camera-VideoSession.md) mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
@@ -443,8 +444,7 @@ start(callback: AsyncCallback\<void\>): void
 Starts to output preview streams. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.start](arkts-apis-camera-Session.md#start11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.start](arkts-apis-camera-Session.md#start11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -485,8 +485,7 @@ start(): Promise\<void\>
 Starts to output preview streams. This API uses a promise to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.start](arkts-apis-camera-Session.md#start11-1) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.start](arkts-apis-camera-Session.md#start11-1) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -525,8 +524,7 @@ stop(callback: AsyncCallback\<void\>): void
 Stops outputting preview streams. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.stop](arkts-apis-camera-Session.md#stop11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.stop](arkts-apis-camera-Session.md#stop11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -559,8 +557,7 @@ stop(): Promise\<void\>
 Stops outputting preview streams. This API uses a promise to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.stop](arkts-apis-camera-Session.md#stop11-1) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.stop](arkts-apis-camera-Session.md#stop11-1) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -583,4 +580,3 @@ function stopPreviewOutput(previewOutput: camera.PreviewOutput): void {
   });
 }
 ```
-

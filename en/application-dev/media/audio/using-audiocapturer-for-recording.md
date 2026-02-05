@@ -29,109 +29,109 @@ You can call **on('stateChange')** to listen for state changes of the AudioCaptu
    > When the microphone audio source is set ([SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) is set to **SOURCE_TYPE_MIC**, **SOURCE_TYPE_VOICE_RECOGNITION**, **SOURCE_TYPE_VOICE_COMMUNICATION**, **SOURCE_TYPE_VOICE_MESSAGE**, or **SOURCE_TYPE_LIVE**), the permission ohos.permission.MICROPHONE is required. Note that **SOURCE_TYPE_LIVE** is supported since API version 20. For details about how to apply for the permission, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 
    ```ts
-    import { audio } from '@kit.AudioKit';
-    
-    let audioStreamInfo: audio.AudioStreamInfo = {
-      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
-      channels: audio.AudioChannel.CHANNEL_2, // Channel.
-      sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
-      encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
-    };
-    
-    let audioCapturerInfo: audio.AudioCapturerInfo = {
-      source: audio.SourceType.SOURCE_TYPE_MIC, // Audio source type: microphone. Set this parameter based on the service scenario.
-      capturerFlags: 0 // Flag indicating an AudioCapturer.
-    };
-    
-    let audioCapturerOptions: audio.AudioCapturerOptions = {
-      streamInfo: audioStreamInfo,
-      capturerInfo: audioCapturerInfo
-    };
-    
-    audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
-      if (err) {
-        console.error(`Invoke createAudioCapturer failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('Invoke createAudioCapturer succeeded.');
-        let audioCapturer = data;
-      }
-    });
+   import { audio } from '@kit.AudioKit';
+
+   let audioStreamInfo: audio.AudioStreamInfo = {
+     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
+     channels: audio.AudioChannel.CHANNEL_2, // Channel.
+     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
+     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
+   };
+
+   let audioCapturerInfo: audio.AudioCapturerInfo = {
+     source: audio.SourceType.SOURCE_TYPE_MIC, // Audio source type: microphone. Set this parameter based on the service scenario.
+     capturerFlags: 0 // Flag indicating an AudioCapturer.
+   };
+
+   let audioCapturerOptions: audio.AudioCapturerOptions = {
+     streamInfo: audioStreamInfo,
+     capturerInfo: audioCapturerInfo
+   };
+
+   audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
+     if (err) {
+       console.error(`Invoke createAudioCapturer failed, code is ${err.code}, message is ${err.message}`);
+     } else {
+       console.info('Invoke createAudioCapturer succeeded.');
+       let audioCapturer = data;
+     }
+   });
    ```
 
 2. Call **on('readData')** to subscribe to the audio data read callback.
-    > **NOTE**
-    > - **Thread management**: You are advised not to use multiple threads for data reading. If multithreading is necessary for data reading, ensure proper thread management.
-    > - **Thread performance**: Do not execute time-consuming tasks in the thread where the **readData** API resides. Failing to do so may delay the data processing thread's response to callbacks, potentially causing issues like missing audio data, lag, and noise.
-    > - **Callback registration**: You should avoid registering callbacks on the main thread, as this may cause delayed callback responses and freezes due to blocking by other service processes. You are advised to use an independent asynchronous thread pool to handle callbacks. 
+   > **NOTE**
+   > - **Thread management**: You are advised not to use multiple threads for data reading. If multithreading is necessary for data reading, ensure proper thread management.
+   > - **Thread performance**: Do not execute time-consuming tasks in the thread where the **readData** API resides. Failing to do so may delay the data processing thread's response to callbacks, potentially causing issues like missing audio data, lag, and noise.
+   > - **Callback registration**: You should avoid registering callbacks on the main thread, as this may cause delayed callback responses and freezes due to blocking by other service processes. You are advised to use an independent asynchronous thread pool to handle callbacks. 
 
    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { fileIo as fs } from '@kit.CoreFileKit';
-    import { common } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { common } from '@kit.AbilityKit';
 
-    class Options {
-      offset?: number;
-      length?: number;
-    }
+   class Options {
+     offset?: number;
+     length?: number;
+   }
 
-    let bufferSize: number = 0;
-    // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    let path = context.cacheDir;
-    let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
-    let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    let readDataCallback = (buffer: ArrayBuffer) => {
-      let options: Options = {
-        offset: bufferSize,
-        length: buffer.byteLength
-      }
-      fs.writeSync(file.fd, buffer, options);
-      bufferSize += buffer.byteLength;
-    };
+   let bufferSize: number = 0;
+   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   let path = context.cacheDir;
+   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
+   let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+   let readDataCallback = (buffer: ArrayBuffer) => {
+     let options: Options = {
+       offset: bufferSize,
+       length: buffer.byteLength
+     }
+     fs.writeSync(file.fd, buffer, options);
+     bufferSize += buffer.byteLength;
+   };
 
-    audioCapturer.on('readData', readDataCallback);
+   audioCapturer.on('readData', readDataCallback);
    ```
 
 3. Call **start()** to switch the AudioCapturer to the **running** state and start recording.
 
    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
 
-    audioCapturer.start((err: BusinessError) => {
-      if (err) {
-        console.error(`Capturer start failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('Capturer start success.');
-      }
-    });
+   audioCapturer.start((err: BusinessError) => {
+     if (err) {
+       console.error(`Capturer start failed, code is ${err.code}, message is ${err.message}`);
+     } else {
+       console.info('Capturer start success.');
+     }
+   });
    ```
 
 4. Call **stop()** to stop recording.
 
    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
 
-    audioCapturer.stop((err: BusinessError) => {
-      if (err) {
-        console.error(`Capturer stop failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('Capturer stopped.');
-      }
-    });
+   audioCapturer.stop((err: BusinessError) => {
+     if (err) {
+       console.error(`Capturer stop failed, code is ${err.code}, message is ${err.message}`);
+     } else {
+       console.info('Capturer stopped.');
+     }
+   });
    ```
 
 5. Call **release()** to release the instance.
 
    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
 
-    audioCapturer.release((err: BusinessError) => {
-      if (err) {
-        console.error(`capturer release failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('capturer released.');
-      }
-    });
+   audioCapturer.release((err: BusinessError) => {
+     if (err) {
+       console.error(`capturer release failed, code is ${err.code}, message is ${err.message}`);
+     } else {
+       console.info('capturer released.');
+     }
+   });
    ```
 
 ### Complete Sample Code

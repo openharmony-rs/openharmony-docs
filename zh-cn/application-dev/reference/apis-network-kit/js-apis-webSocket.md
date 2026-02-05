@@ -57,7 +57,6 @@ connect(url: string, callback: AsyncCallback\<boolean\>): void
 
 > **说明：**
 >
-> 可通过监听error事件获得该接口的执行结果。
 >
 >callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen)订阅open事件。
 
@@ -117,8 +116,6 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<
 根据URL地址，建立一个WebSocket连接，使用callback异步回调。
 
 > **说明：**
->
-> 可通过监听error事件获得该接口的执行结果，错误发生时会得到错误码：200。
 >
 >callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen)订阅open事件。
 
@@ -187,8 +184,6 @@ connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
 根据URL地址和header，建立一个WebSocket连接。使用Promise异步回调。
 
 > **说明：**
->
-> 可通过监听error事件获得该接口的执行结果，错误发生时会得到错误码：200。
 >
 >callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen)订阅open事件。
 
@@ -917,7 +912,7 @@ start(config: WebSocketServerConfig): Promise\<boolean\>
 
 > **说明：**
 >
-> 可通过监听error事件获得该接口的执行结果，错误码说明参见[webSocket错误码](errorcode-net-webSocket.md)。
+> 在多次调用该接口时，应避免监听同一端口。
 
 **需要权限**: ohos.permission.INTERNET
 
@@ -1531,9 +1526,8 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 | reason | string | 否   |否 |原因值，订阅close事件得到的关闭连接的错误原因。 |
 
 ## ResponseHeaders<sup>12+</sup>
-type ResponseHeaders = {
-  [k: string]: string | string[] | undefined;
-}
+
+type ResponseHeaders = { [k: string]: string | string[] | undefined; }
 
 服务器发送的响应头。
 

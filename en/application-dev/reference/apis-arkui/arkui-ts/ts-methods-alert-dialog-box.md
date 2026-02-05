@@ -12,7 +12,7 @@ You can set the text content and response callback for an alert dialog box.
 >
 > The initial APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is unclear](../../../ui/arkts-global-interface.md). For details, see [UIContext](../arkts-apis-uicontext-uicontext.md).
+> The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is ambiguous](../../../ui/arkts-global-interface.md#ambiguous-ui-context). For details, see [UIContext](../arkts-apis-uicontext-uicontext.md).
 
 ## AlertDialogParam
 
@@ -275,7 +275,7 @@ Shows an alert dialog box.
 
 > **NOTE**
 > 
-> Directly using **AlertDialog** can lead to the issue of [ambiguous UI context](../../../ui/arkts-global-interface.md). To avoid this, obtain the [UIContext](../arkts-apis-uicontext-uicontext.md) object using the **getUIContext()** API and then call the [showAlertDialog](../arkts-apis-uicontext-uicontext.md#showalertdialog) API through this object.
+> Directly using **AlertDialog** can lead to the issue of [ambiguous UI context](../../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [UIContext](../arkts-apis-uicontext-uicontext.md) object using the **getUIContext()** API and then call **AlertDialog.show()** bound to the instance using the [showAlertDialog](../arkts-apis-uicontext-uicontext.md#showalertdialog) API.
 
 ### Example 1: Displaying Dialog Boxes with Different Numbers of Buttons
 

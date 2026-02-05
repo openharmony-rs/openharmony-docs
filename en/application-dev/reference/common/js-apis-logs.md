@@ -367,8 +367,8 @@ If the information to be printed is provided, the information is printed without
 **Example**
 
 ```js
-console.info("outter");
-// outter
+console.info("outer");
+// outer
 console.group();
 console.info("level 1");
 //   level 1
@@ -397,8 +397,8 @@ Creates a new inline group in collapsed mode. The usage and function of this API
 **Example**
 
 ```js
-console.groupCollapsed("outter");
-// outter
+console.groupCollapsed("outer");
+// outer
 console.groupCollapsed();
 console.info("level 1");
 //   level 1
@@ -421,14 +421,14 @@ Reduces the indentation of subsequent lines by two spaces.
 **Example**
 
 ```js
-console.info("outter");
-// outter
+console.info("outer");
+// outer
 console.group();
 console.info("level 1");
 //   level 1
 console.groupEnd();
-console.info("outter");
-// outter
+console.info("outer");
+// outer
 ```
 
 ## console.table<sup>10+</sup>
@@ -609,5 +609,5 @@ Prints information about the current hybrid stack of the calling thread in the m
 ```ts
 console.traceHybridStack();
 // TraceHybridStack:
-// xxxxxxxxxxxxx (information about the current hybrid stack of the calling thread)
+//     xxxxxxxxxx (information about the current hybrid stack of the calling thread)
 ```

@@ -18,7 +18,7 @@ To use the recording capability of OHAudio, you must first import the correspond
 
 ### Linking the Dynamic Library in the CMake Script
 
-``` cmake
+```cmake
 target_link_libraries(sample PUBLIC libohaudio.so)
 ```
 ### Adding Header Files
@@ -61,105 +61,105 @@ The following walks you through how to implement simple recording:
 
 1. Create an audio stream builder.
 
-    ```cpp
-    OH_AudioStreamBuilder* builder;
-    OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_CAPTURER);
-    ```
+   ```cpp
+   OH_AudioStreamBuilder* builder;
+   OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_CAPTURER);
+   ```
 
 2. Set audio stream parameters.
 
-    After creating the builder for audio recording, set the parameters required.
+   After creating the builder for audio recording, set the parameters required.
 
-    ```cpp
-    // Set the audio sampling rate.
-    OH_AudioStreamBuilder_SetSamplingRate(builder, 48000);
-    // Set the number of audio channels.
-    OH_AudioStreamBuilder_SetChannelCount(builder, 2);
-    // Set the audio sampling format.
-    OH_AudioStreamBuilder_SetSampleFormat(builder, AUDIOSTREAM_SAMPLE_S16LE);
-    // Set the encoding type of the audio stream.
-    OH_AudioStreamBuilder_SetEncodingType(builder, AUDIOSTREAM_ENCODING_TYPE_RAW);
-    // Set the usage scenario of the audio capturer.
-    OH_AudioStreamBuilder_SetCapturerInfo(builder, AUDIOSTREAM_SOURCE_TYPE_MIC);
-    ```
+   ```cpp
+   // Set the audio sampling rate.
+   OH_AudioStreamBuilder_SetSamplingRate(builder, 48000);
+   // Set the number of audio channels.
+   OH_AudioStreamBuilder_SetChannelCount(builder, 2);
+   // Set the audio sampling format.
+   OH_AudioStreamBuilder_SetSampleFormat(builder, AUDIOSTREAM_SAMPLE_S16LE);
+   // Set the encoding type of the audio stream.
+   OH_AudioStreamBuilder_SetEncodingType(builder, AUDIOSTREAM_ENCODING_TYPE_RAW);
+   // Set the usage scenario of the audio capturer.
+   OH_AudioStreamBuilder_SetCapturerInfo(builder, AUDIOSTREAM_SOURCE_TYPE_MIC);
+   ```
 
-    The audio data for recording must be read through a callback function, and you must implement the callback function. Starting from API version 12, you can use [OH_AudioStreamBuilder_SetCapturerReadDataCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerreaddatacallback) to set the callback function. For details about its declaration, see [OH_AudioCapturer_OnReadDataCallback](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_onreaddatacallback).
+   The audio data for recording must be read through a callback function, and you must implement the callback function. Starting from API version 12, you can use [OH_AudioStreamBuilder_SetCapturerReadDataCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerreaddatacallback) to set the callback function. For details about its declaration, see [OH_AudioCapturer_OnReadDataCallback](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_onreaddatacallback).
 
 3. Set the callback functions.
 
-    For details about concurrent processing of multiple audio streams, see [Processing Audio Interruption Events](audio-playback-concurrency.md). The procedure is similar, and the only difference is the API programming language in use.
+   For details about concurrent processing of multiple audio streams, see [Processing Audio Interruption Events](audio-playback-concurrency.md). The procedure is similar, and the only difference is the API programming language in use.
 
-    ```cpp
-    // Customize a data reading function.
-    void MyOnReadData(
-        OH_AudioCapturer* capturer,
-        void* userData,
-        void* audioData,
-        int32_t audioDataSize)
-    {
-        // Obtain the recording data of the specified length from the buffer.
-    }
-    // Customize an audio interruption event function.
-    void MyOnInterruptEvent(
-        OH_AudioCapturer* capturer,
-        void* userData,
-        OH_AudioInterrupt_ForceType type,
-        OH_AudioInterrupt_Hint hint)
-    {
-        // Update the capturer status and UI based on the audio interruption information indicated by type and hint.
-    }
-    // Customize an exception callback function.
-    void MyOnError(
-        OH_AudioCapturer* capturer,
-        void* userData,
-        OH_AudioStream_Result error)
-    {
-        // Perform operations based on the audio exception information indicated by error.
-    }
+   ```cpp
+   // Customize a data reading function.
+   void MyOnReadData(
+       OH_AudioCapturer* capturer,
+       void* userData,
+       void* audioData,
+       int32_t audioDataSize)
+   {
+       // Obtain the recording data of the specified length from the buffer.
+   }
+   // Customize an audio interruption event function.
+   void MyOnInterruptEvent(
+       OH_AudioCapturer* capturer,
+       void* userData,
+       OH_AudioInterrupt_ForceType type,
+       OH_AudioInterrupt_Hint hint)
+   {
+       // Update the capturer status and UI based on the audio interruption information indicated by type and hint.
+   }
+   // Customize an exception callback function.
+   void MyOnError(
+       OH_AudioCapturer* capturer,
+       void* userData,
+       OH_AudioStream_Result error)
+   {
+       // Perform operations based on the audio exception information indicated by error.
+   }
 
-    // Configure the callback function for interruption events.
-    OH_AudioCapturer_OnInterruptCallback onInterruptCb = MyOnInterruptEvent;
-    OH_AudioStreamBuilder_SetCapturerInterruptCallback(builder, onInterruptCb, nullptr);
+   // Configure the callback function for interruption events.
+   OH_AudioCapturer_OnInterruptCallback onInterruptCb = MyOnInterruptEvent;
+   OH_AudioStreamBuilder_SetCapturerInterruptCallback(builder, onInterruptCb, nullptr);
 
-    // Configure the callback function for audio exceptions.
-    OH_AudioCapturer_OnErrorCallback onErrorCb = MyOnError;
-    OH_AudioStreamBuilder_SetCapturerErrorCallback(builder, onErrorCb, nullptr);
+   // Configure the callback function for audio exceptions.
+   OH_AudioCapturer_OnErrorCallback onErrorCb = MyOnError;
+   OH_AudioStreamBuilder_SetCapturerErrorCallback(builder, onErrorCb, nullptr);
 
-    // Configure the callback for audio input streams.
-    OH_AudioCapturer_OnReadDataCallback onReadDataCb = MyOnReadData;
-    OH_AudioStreamBuilder_SetCapturerReadDataCallback(builder, onReadDataCb, nullptr);
-    ```
+   // Configure the callback for audio input streams.
+   OH_AudioCapturer_OnReadDataCallback onReadDataCb = MyOnReadData;
+   OH_AudioStreamBuilder_SetCapturerReadDataCallback(builder, onReadDataCb, nullptr);
+   ```
 
 4. Create an audio capturer instance.
 
-    ```cpp
-    OH_AudioCapturer* audioCapturer;
-    OH_AudioStreamBuilder_GenerateCapturer(builder, &audioCapturer);
-    ```
+   ```cpp
+   OH_AudioCapturer* audioCapturer;
+   OH_AudioStreamBuilder_GenerateCapturer(builder, &audioCapturer);
+   ```
 
 5. Use the audio capturer.
 
-    You can use the APIs listed below to control the audio streams.
+   You can use the APIs listed below to control the audio streams.
 
-    | API                                                        | Description        |
-    | ------------------------------------------------------------ | ------------ |
-    | OH_AudioStream_Result OH_AudioCapturer_Start(OH_AudioCapturer* capturer) | Starts the audio capturer.   |
-    | OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer) | Pauses the audio capturer.    |
-    | OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer) | Stops the audio capturer.    |
-    | OH_AudioStream_Result OH_AudioCapturer_Flush(OH_AudioCapturer* capturer) | Flushes obtained audio data.|
-    | OH_AudioStream_Result OH_AudioCapturer_Release(OH_AudioCapturer* capturer) | Releases the audio capturer instance.|
+   | API                                                        | Description        |
+   | ------------------------------------------------------------ | ------------ |
+   | OH_AudioStream_Result OH_AudioCapturer_Start(OH_AudioCapturer* capturer) | Starts the audio capturer.   |
+   | OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer) | Pauses the audio capturer.    |
+   | OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer) | Stops the audio capturer.    |
+   | OH_AudioStream_Result OH_AudioCapturer_Flush(OH_AudioCapturer* capturer) | Flushes obtained audio data.|
+   | OH_AudioStream_Result OH_AudioCapturer_Release(OH_AudioCapturer* capturer) | Releases the audio capturer instance.|
 
-    > **NOTE**
-    >
-    > The execution of audio stream control APIs is time-consuming (for example, a single execution of **OH_AudioRenderer_Stop** generally takes more than 50 ms). Direct calls to these APIs on the main thread should be avoided to prevent interface display freezes.
+   > **NOTE**
+   >
+   > The execution of audio stream control APIs is time-consuming (for example, a single execution of **OH_AudioCapturer_Stop** generally takes more than 50 ms). Direct calls to these APIs on the main thread should be avoided to prevent interface display freezes.
 
 6. Destroy the audio stream builder.
 
-    When the builder is no longer used, release related resources.
+   When the builder is no longer used, release related resources.
 
-    ```cpp
-    OH_AudioStreamBuilder_Destroy(builder);
-    ```
+   ```cpp
+   OH_AudioStreamBuilder_Destroy(builder);
+   ```
 
 ### Setting the Low Latency Mode
 
@@ -195,69 +195,69 @@ Starting from API version 12, the [OH_AudioCapturer_Callbacks](../../reference/a
 
 - Initialize each callback in [OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md) by a custom callback method or a null pointer.
 
-    ```cpp
-    // Customize a data reading function.
-    int32_t MyOnReadData(
-        OH_AudioCapturer* capturer,
-        void* userData,
-        void* buffer,
-        int32_t length)
-    {
-        // Obtain the recording data of the specified length from the buffer.
-        return 0;
-    }
-    // Customize an audio interruption event function.
-    int32_t MyOnInterruptEvent(
-        OH_AudioCapturer* capturer,
-        void* userData,
-        OH_AudioInterrupt_ForceType type,
-        OH_AudioInterrupt_Hint hint)
-    {
-        // Update the capturer status and UI based on the audio interruption information indicated by type and hint.
-        return 0;
-    }
-    OH_AudioCapturer_Callbacks callbacks;
+  ```cpp
+  // Customize a data reading function.
+  int32_t MyOnReadData(
+      OH_AudioCapturer* capturer,
+      void* userData,
+      void* buffer,
+      int32_t length)
+  {
+      // Obtain the recording data of the specified length from the buffer.
+      return 0;
+  }
+  // Customize an audio interruption event function.
+  int32_t MyOnInterruptEvent(
+      OH_AudioCapturer* capturer,
+      void* userData,
+      OH_AudioInterrupt_ForceType type,
+      OH_AudioInterrupt_Hint hint)
+  {
+      // Update the capturer status and UI based on the audio interruption information indicated by type and hint.
+      return 0;
+  }
+  OH_AudioCapturer_Callbacks callbacks;
 
-    // Configure a callback function. If listening is required, assign a value.
-    callbacks.OH_AudioCapturer_OnReadData = MyOnReadData;
-    callbacks.OH_AudioCapturer_OnInterruptEvent = MyOnInterruptEvent;
+  // Configure a callback function. If listening is required, assign a value.
+  callbacks.OH_AudioCapturer_OnReadData = MyOnReadData;
+  callbacks.OH_AudioCapturer_OnInterruptEvent = MyOnInterruptEvent;
 
-    // (Mandatory) If listening is not required, use a null pointer for initialization.
-    callbacks.OH_AudioCapturer_OnStreamEvent = nullptr;
-    callbacks.OH_AudioCapturer_OnError = nullptr;
-    ```
+  // (Mandatory) If listening is not required, use a null pointer for initialization.
+  callbacks.OH_AudioCapturer_OnStreamEvent = nullptr;
+  callbacks.OH_AudioCapturer_OnError = nullptr;
+  ```
 
 - Initialize and clear the struct before using it.
 
-    ```cpp
-    // Customize a data reading function.
-    int32_t MyOnReadData(
-        OH_AudioCapturer* capturer,
-        void* userData,
-        void* buffer,
-        int32_t length)
-    {
-        // Obtain the recording data of the specified length from the buffer.
-        return 0;
-    }
-    // Customize an audio interruption event function.
-    int32_t MyOnInterruptEvent(
-        OH_AudioCapturer* capturer,
-        void* userData,
-        OH_AudioInterrupt_ForceType type,
-        OH_AudioInterrupt_Hint hint)
-    {
-        // Update the capturer status and UI based on the audio interruption information indicated by type and hint.
-        return 0;
-    }
-    OH_AudioCapturer_Callbacks callbacks;
+  ```cpp
+  // Customize a data reading function.
+  int32_t MyOnReadData(
+      OH_AudioCapturer* capturer,
+      void* userData,
+      void* buffer,
+      int32_t length)
+  {
+      // Obtain the recording data of the specified length from the buffer.
+      return 0;
+  }
+  // Customize an audio interruption event function.
+  int32_t MyOnInterruptEvent(
+      OH_AudioCapturer* capturer,
+      void* userData,
+      OH_AudioInterrupt_ForceType type,
+      OH_AudioInterrupt_Hint hint)
+  {
+      // Update the capturer status and UI based on the audio interruption information indicated by type and hint.
+      return 0;
+  }
+  OH_AudioCapturer_Callbacks callbacks;
 
-    // Initialize and clear the struct before using it.
-    memset(&callbacks, 0, sizeof(OH_AudioCapturer_Callbacks));
+  // Initialize and clear the struct before using it.
+  memset(&callbacks, 0, sizeof(OH_AudioCapturer_Callbacks));
 
-    // Configure the required callback functions.
-    callbacks.OH_AudioCapturer_OnReadData = MyOnReadData;
-    callbacks.OH_AudioCapturer_OnInterruptEvent = MyOnInterruptEvent;
-    ```
+  // Configure the required callback functions.
+  callbacks.OH_AudioCapturer_OnReadData = MyOnReadData;
+  callbacks.OH_AudioCapturer_OnInterruptEvent = MyOnInterruptEvent;
+  ```
 <!--RP1-->
 <!--RP1End-->

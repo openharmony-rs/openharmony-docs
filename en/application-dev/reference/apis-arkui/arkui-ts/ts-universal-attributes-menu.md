@@ -1270,7 +1270,7 @@ struct Index {
 
 ```
 
-![bindMenu-CustomBuilder](figures/bindMenuWithCustomBuilder.gif)
+
 
 ### Sample 19 (Displaying Different Menus Based on the Triggering Mode)
 

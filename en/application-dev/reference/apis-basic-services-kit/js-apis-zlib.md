@@ -558,7 +558,7 @@ Creates this checksum object. This API uses a promise to return the result.
 
 | Type                                  | Description                           |
 | -------------------------------------- | ------------------------------- |
-| Promise&lt;[Checksum](#checksum12)&gt; | Promise used to return the result.  |
+| Promise&lt;[Checksum](#checksum12)&gt; | Promise used to return the created checksum object.|
 
 **Example**
 
@@ -619,7 +619,7 @@ Calculates the Adler-32 checksum. This API uses a promise to return the result.
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result.  |
+| Promise&lt;number&gt; | Promise used to return the calculated Adler-32 checksum.|
 
 **Error codes**
 
@@ -671,7 +671,7 @@ Combines two Adler-32 checksums. This API uses a promise to return the result.
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result.  |
+| Promise&lt;number&gt; | Promise used to return the combined Adler-32 checksum.|
 
 **Error codes**
 
@@ -733,7 +733,7 @@ Updates a CRC-32 checksum. This API uses a promise to return the result.
 
 | Type                 | Description                                 |
 | --------------------- | ------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result.  |
+| Promise&lt;number&gt; | Promise used to return the updated CRC-32 checksum.|
 
 **Error codes**
 
@@ -787,7 +787,7 @@ Combines two CRC-32 checksums. This API uses a promise to return the result.
 
 | Type                 | Description                                 |
 | --------------------- | ------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result.  |
+| Promise&lt;number&gt; | Promise used to return the combined CRC-32 checksum.|
 
 **Error codes**
 
@@ -849,7 +849,7 @@ Updates a CRC-64 checksum. This API uses a promise to return the result.
 
 | Type                 | Description                                 |
 | --------------------- | ------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result.  |
+| Promise&lt;number&gt; | Promise used to return the updated CRC-64 checksum.|
 
 **Error codes**
 
@@ -895,7 +895,7 @@ Obtains this CRC-32 checksum table. This API uses a promise to return the result
 
 | Type                              | Description                           |
 | ---------------------------------- | ------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the result.  |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the CRC-32 checksum table.|
 
 **Example**
 
@@ -925,7 +925,7 @@ Obtains this CRC-64 checksum table. This API uses a promise to return the result
 
 | Type                              | Description                           |
 | ---------------------------------- | ------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the result.  |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the CRC-64 checksum table.|
 
 **Example**
 
@@ -955,7 +955,7 @@ Creates this **Zip** instance. This API uses a promise to return the result.
 
 | Type                        | Description                                 |
 | ---------------------------- | ------------------------------------- |
-| Promise&lt;[Zip](#zip12)&gt; | Promise used to return the result.|
+| Promise&lt;[Zip](#zip12)&gt; | Promise used to return the **Zip** instance created.|
 
 **Example**
 
@@ -1011,7 +1011,7 @@ Obtains this stream. This API uses a promise to return the result.
 
 | Type                                | Description                     |
 | ------------------------------------ | ------------------------- |
-| Promise&lt;[ZStream](#zstream12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ZStream](#zstream12)&gt; | Promise used to return the **ZStream** object.|
 
 **Example**
 
@@ -1039,7 +1039,7 @@ Obtains the version information of this zlib library connected. This API uses a 
 
 | Type                 | Description                                   |
 | --------------------- | --------------------------------------- |
-| Promise&lt;string&gt; | Promise used to return the result.  |
+| Promise&lt;string&gt; | Promise used to return the version of the current zlib library.|
 
 **Example**
 
@@ -1067,7 +1067,7 @@ Returns the flags indicating compile-time options. This API uses a promise to re
 
 | Type                 | Description                                   |
 | --------------------- | --------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result.  |
+| Promise&lt;number&gt; | Promise used to return the flags indicating compile-time options.|
 
 **Example**
 
@@ -1103,7 +1103,7 @@ Compresses the source buffer into the destination buffer. This API uses a promis
 
 | Type                                            | Description                                           |
 | ------------------------------------------------ | ----------------------------------------------- |
-| Promise&lt;[ZipOutputInfo](#zipoutputinfo12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ZipOutputInfo](#zipoutputinfo12)&gt; | Promise used to returns the result status and the total size of the destination buffer.|
 
 **Error codes**
 
@@ -1117,15 +1117,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { util } from '@kit.ArkTS';
 import { zlib, BusinessError } from '@kit.BasicServicesKit';
 
-let str = 'hello world!';
-let arrayBufferIn = new ArrayBuffer(str.length);
-let byteArray = new Uint8Array(arrayBufferIn);
-
-for (let i = 0, j = str.length; i < j; i++) {
-  byteArray[i] = str.charCodeAt(i)
-}
+let str = 'hello world! Hello, world!';
+const enc = util.TextEncoder.create('utf-8');
+const u8 = enc.encodeInto(str);
+const arrayBufferIn = u8.buffer.slice(u8.byteOffset, u8.byteOffset + u8.byteLength);
 
 let arrayBufferOut = new ArrayBuffer(100);
 let zip = zlib.createZipSync();
@@ -1160,7 +1158,7 @@ Compresses the source buffer into the destination buffer. This API uses a promis
 
 | Type                                            | Description                                           |
 | ------------------------------------------------ | ----------------------------------------------- |
-| Promise&lt;[ZipOutputInfo](#zipoutputinfo12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ZipOutputInfo](#zipoutputinfo12)&gt; | Promise used to return the result status and the total size of the destination buffer.|
 
 **Error codes**
 
@@ -1175,15 +1173,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { util } from '@kit.ArkTS';
 import { zlib, BusinessError } from '@kit.BasicServicesKit';
 
-let str = 'hello world!';
-let arrayBufferIn = new ArrayBuffer(str.length);
-let byteArray = new Uint8Array(arrayBufferIn);
-
-for (let i = 0, j = str.length; i < j; i++) {
-  byteArray[i] = str.charCodeAt(i)
-}
+let str = 'hello world! Hello, world!';
+const enc = util.TextEncoder.create('utf-8');
+const u8 = enc.encodeInto(str);
+const arrayBufferIn = u8.buffer.slice(u8.byteOffset, u8.byteOffset + u8.byteLength);
 
 let arrayBufferOut = new ArrayBuffer(100);
 let zip = zlib.createZipSync();
@@ -1217,7 +1213,7 @@ Decompresses the compressed data into the raw data. This API uses a promise to r
 
 | Type                                            | Description                                           |
 | ------------------------------------------------ | ----------------------------------------------- |
-| Promise&lt;[ZipOutputInfo](#zipoutputinfo12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ZipOutputInfo](#zipoutputinfo12)&gt; | Promise used to return the result status and the total size of the destination buffer.|
 
 **Error codes**
 
@@ -1278,7 +1274,7 @@ Decompresses the compressed data into the raw data. This API uses a promise to r
 
 | Type                                                        | Description                                                       |
 | ------------------------------------------------------------ | ----------------------------------------------------------- |
-| Promise&lt;[DecompressionOutputInfo](#decompressionoutputinfo12)&gt; | Promise used to return the result.  |
+| Promise&lt;[DecompressionOutputInfo](#decompressionoutputinfo12)&gt; | Promise used to return the result status, total size of the destination buffer, and the length of the source data.|
 
 **Error codes**
 
@@ -1337,7 +1333,7 @@ Calculates the maximum size of the compressed data to be returned. This API uses
 
 | Type                 | Description                             |
 | --------------------- | --------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result.  |
+| Promise&lt;number&gt; | Promise used to return the maximum size of the compressed data.|
 
 **Error codes**
 
@@ -1390,7 +1386,7 @@ Validates the checksum inside the compression stream. This API uses a promise to
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -1449,7 +1445,7 @@ Finds the synchronization point of a decompression stream. This API uses a promi
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -1508,7 +1504,7 @@ Skips invalid compressed data until a possible complete refresh point is found. 
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -1600,7 +1596,7 @@ Resets the state of the decompression stream to retain the allocated Huffman tre
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -1660,7 +1656,7 @@ Initializes the dictionary content of a decompression stream based on the given 
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -1758,7 +1754,7 @@ Resets the status of the specified decompression stream and updates the window s
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -1817,7 +1813,7 @@ Resets the status of the specified decompression stream to the initial state to 
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -1878,7 +1874,7 @@ Sets the initial number of bits and bit value in the specified decompression str
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -1937,7 +1933,7 @@ Marks the location of the input data for random access. This API uses a promise 
 
 | Type                 | Description                       |
 | --------------------- | --------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result.  |
+| Promise&lt;number&gt; | Promise used to return the current location.|
 
 **Error codes**
 
@@ -1996,7 +1992,7 @@ Initializes a decompression stream with the specified **windowBits**. This API u
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -2051,7 +2047,7 @@ Initializes a decompression stream. This API uses a promise to return the result
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -2106,7 +2102,7 @@ Obtains the header information of a gzip file before decompressing data. This AP
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -2166,7 +2162,7 @@ Obtains the content and length of the decompression dictionary used in a decompr
 
 | Type                                                        | Description                                   |
 | ------------------------------------------------------------ | --------------------------------------- |
-| Promise&lt;[DictionaryOutputInfo](#dictionaryoutputinfo12)&gt; | Promise used to return the result.  |
+| Promise&lt;[DictionaryOutputInfo](#dictionaryoutputinfo12)&gt; | Promise used to return the result status and length of the dictionary.|
 
 **Error codes**
 
@@ -2225,7 +2221,7 @@ Releases all dynamically allocated data structs of a decompression stream. This 
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -2289,7 +2285,7 @@ Copies a decompression stream. This API uses a promise to return the result.
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -2349,7 +2345,7 @@ Describes the number of Huffman trees used in a decompression stream. This API u
 
 | Type                 | Description                                         |
 | --------------------- | --------------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result.  |
+| Promise&lt;number&gt; | Promise used to return the number of Huffman trees that have been used.|
 
 **Error codes**
 
@@ -2409,7 +2405,7 @@ Initializes the internal stream state for decompression before using the **infla
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -2444,7 +2440,7 @@ Releases all memory allocated by the **inflateBackInit()** function. This API us
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -2483,7 +2479,7 @@ Implements decompression and uses callbacks to process input and output data. Th
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -2698,7 +2694,7 @@ Inflates data. This API uses a promise to return the result.
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -2785,7 +2781,7 @@ Initializes a compression stream with a specified compression level. This API us
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -2849,7 +2845,7 @@ Initializes a compression stream with the specified compression level, compressi
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -2910,7 +2906,7 @@ Deflates data. This API uses a promise to return the result.
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -2975,7 +2971,7 @@ Releases all dynamically allocated data structs of a compression stream. This AP
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -3045,7 +3041,7 @@ Calculates the maximum size of the compressed data. This API uses a promise to r
 
 | Type                 | Description                             |
 | --------------------- | --------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result.  |
+| Promise&lt;number&gt; | Promise used to return the maximum size of the compressed data.|
 
 **Error codes**
 
@@ -3109,7 +3105,7 @@ Provides the header information of a gzip file when **deflateInit2()** requests 
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -3174,7 +3170,7 @@ Copies a compression stream. This API uses a promise to return the result.
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -3239,7 +3235,7 @@ Initializes the compression dictionary from a given sequence of bytes. This API 
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -3304,7 +3300,7 @@ Obtains the content and length of the decompression dictionary used in a compres
 
 | Type                                                        | Description                                   |
 | ------------------------------------------------------------ | --------------------------------------- |
-| Promise&lt;[DictionaryOutputInfo](#dictionaryoutputinfo12)&gt; | Promise used to return the result.  |
+| Promise&lt;[DictionaryOutputInfo](#dictionaryoutputinfo12)&gt; | Promise used to return the result status and length of the dictionary.|
 
 **Error codes**
 
@@ -3377,7 +3373,7 @@ Fine-tunes the internal compression parameters of **deflate**. This API uses a p
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -3441,7 +3437,7 @@ Equivalent to call the **deflateEnd** API and then the **deflateInit** API. Howe
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -3505,7 +3501,7 @@ Resets the initialized compression stream, but retains the compression parameter
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -3569,7 +3565,7 @@ Returns the number of bytes and bits of output that has been generated but not y
 
 | Type                                                        | Description                                             |
 | ------------------------------------------------------------ | ------------------------------------------------- |
-| Promise&lt;[DeflatePendingOutputInfo](#deflatependingoutputinfo12)&gt; | Promise used to return the result.  |
+| Promise&lt;[DeflatePendingOutputInfo](#deflatependingoutputinfo12)&gt; | Promise used to return the result status, and number of bits and bytes for output.|
 
 **Error codes**
 
@@ -3635,7 +3631,7 @@ Dynamically updates the compression level and compression strategy. This API use
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -3701,7 +3697,7 @@ Inserts bits and values into the compression stream. This API uses a promise to 
 
 | Type                                          | Description                       |
 | ---------------------------------------------- | --------------------------- |
-| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result.  |
+| Promise&lt;[ReturnStatus](#returnstatus12)&gt; | Promise used to return the result status.|
 
 **Error codes**
 
@@ -3967,7 +3963,7 @@ Creates this **GZip** object. This API uses a promise to return the result.
 
 | Type                          | Description                           |
 | ------------------------------ | ------------------------------- |
-| Promise&lt;[GZip](#gzip12)&gt; | Promise used to return the result.  |
+| Promise&lt;[GZip](#gzip12)&gt; | Promise used to return the **GZip** object created.|
 
 **Example**
 
@@ -5537,7 +5533,7 @@ struct Index {
 
 ### gzputc<sup>12+</sup>
 
-gzputc(char: number): Promise&lt;number&gt;
+gzputc(ch: number): Promise&lt;number&gt;
 
 Compresses **char** converted to an unsigned character and writes it to a file. This API uses a promise to return the result.
 
@@ -5549,7 +5545,7 @@ Compresses **char** converted to an unsigned character and writes it to a file. 
 
 | Name| Type  | Mandatory| Description           |
 | ------ | ------ | ---- | --------------- |
-| char   | number | Yes  | Write character ASCII.|
+| ch   | number | Yes  | Write character ASCII.|
 
 **Return value**
 

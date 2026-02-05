@@ -30,7 +30,7 @@ Once an agent-powered reminder is published, the notification center will displa
 
 > **NOTE**
 >
-> This API can be called only after the [NotificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10) permission is obtained.
+> This API can be called only after the [notificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10) permission is obtained.
 >
 > <!--RP1--><!--RP1End-->
 
@@ -84,7 +84,7 @@ If the value of [ReminderRequest.ringDuration](#reminderrequest) is greater than
 
 > **NOTE**
 >
-> This API can be called only after the [NotificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10) permission is obtained.
+> This API can be called only after the [notificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10) permission is obtained.
 >
 > <!--RP1--><!--RP1End-->
 

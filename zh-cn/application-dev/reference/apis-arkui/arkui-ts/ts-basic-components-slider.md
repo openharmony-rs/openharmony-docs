@@ -1463,16 +1463,16 @@ struct SliderExample {
 
 ### 示例6（滑动条设置刻度点无障碍文本）
 
-该示例实现了Slider组件通过showSteps属性设置刻度点的无障碍文本信息。设置后，屏幕阅读器将以设置的无障碍内容进行朗读。
+该示例实现了Slider组件通过[showSteps](#showsteps20)属性设置刻度点的无障碍文本信息。设置后，屏幕阅读器将以设置的无障碍内容进行朗读。从API version 20开始，新增[showSteps](#showsteps20)属性。
 
 ```ts
 
 class SliderBlockBorderColorModifier1 implements AttributeModifier<SliderAttribute>{
   optionMaps:Map<number, SliderStepItemAccessibility> = new Map()
-    .set(1, {text : "123123"})
-    .set(2, {text : "Slider无障碍文本"})
+    .set(1, {text : '123123'})
+    .set(2, {text : 'Slider无障碍文本'})
     .set(3, {text : $r('app.string.stepItemText')})
-    .set(4, {text : "!@#$%^&*()"});
+    .set(4, {text : '!@#$%^&*()'});
   applyNormalAttribute(instance: SliderAttribute): void {
     instance.showSteps(true, {stepsAccessibility: this.optionMaps})
   }
@@ -1484,15 +1484,15 @@ struct SliderExample {
   @State optionMaps:Map<number, SliderStepItemAccessibility> = new Map();
   private  sliderModifier: SliderBlockBorderColorModifier1 =new SliderBlockBorderColorModifier1()
   aboutToAppear(){
-    this.optionMaps.set(1, {text : "123123"})
-    this.optionMaps.set(2, {text : "Slider无障碍文本"})
+    this.optionMaps.set(1, {text : '123123'})
+    this.optionMaps.set(2, {text : 'Slider无障碍文本'})
     this.optionMaps.set(3, {text : $r('app.string.app_name')})
-    this.optionMaps.set(4, {text : "!@#$%^&*()"})
+    this.optionMaps.set(4, {text : '!@#$%^&*()'})
     this.show = true;
   }
   build() {
     Column({ space: 8 }) {
-      Text("show steps").fontSize(12).fontColor(0xCCCCCC).margin(15).width('90%')
+      Text('This is an example for showSteps attribute').fontSize(15).fontColor(0x000000).margin(15).width('90%')
       Row() {
         Slider({
           style: SliderStyle.InSet,
@@ -1505,9 +1505,10 @@ struct SliderExample {
           .stepSize(8)
           .stepColor(Color.Yellow)
           .showSteps(true, {stepsAccessibility: this.optionMaps})
-      } .width('80%').height(300)
+      }.width('80%').height(100)
       Divider()
-      Text("modifier").fontSize(12).fontColor(0xCCCCCC).margin(15).width('90%')
+      Text('This is an example for showSteps attribute with modifier').fontSize(15).fontColor(0x000000).margin(15)
+        .width('90%')
       Row() {
         Slider({
           style: SliderStyle.InSet,
@@ -1520,7 +1521,7 @@ struct SliderExample {
           .stepSize(8)
           .stepColor(Color.Yellow)
           .attributeModifier(this.sliderModifier)
-      } .width('80%').height(300)
+      }.width('80%').height(100)
       Divider()
     }
   }

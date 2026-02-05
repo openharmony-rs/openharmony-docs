@@ -22,23 +22,23 @@ For audio playback applications, you can check whether the device supports spati
 
 Before using any APIs of AudioSpatializationManager, you must call [getSpatializationManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getspatializationmanager18) to obtain an AudioSpatializationManager instance.
 
-  ```ts
-  import { audio } from '@kit.AudioKit';
+```ts
+import { audio } from '@kit.AudioKit';
 
-  let audioManager = audio.getAudioManager();
-  let audioSpatializationManager = audioManager.getSpatializationManager();
-  ```
+let audioManager = audio.getAudioManager();
+let audioSpatializationManager = audioManager.getSpatializationManager();
+```
 
 ### Checking Whether a Device Supports Spatial Audio Rendering
 
 Use the **spatializationSupported** property in [AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor) to check whether a specified device supports spatial audio rendering. You need to use other audio APIs to obtain AudioDeviceDescriptor of a connected device or the current audio device. For example, you can use [getDevicesSync](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getdevicessync10) of the AudioRoutingManager instance created by [getRoutingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getroutingmanager9) to obtain AudioDeviceDescriptor.
 
-  ```ts
-  import { audio } from '@kit.AudioKit';
-  let audioRoutingManager = audioManager.getRoutingManager();
-  let deviceDescriptors = audioRoutingManager.getDevicesSync(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
-  console.info(`Succeeded in getting devices, AudioDeviceDescriptors: ${JSON.stringify(deviceDescriptors)}.`);
-  ```
+```ts
+import { audio } from '@kit.AudioKit';
+let audioRoutingManager = audioManager.getRoutingManager();
+let deviceDescriptors = audioRoutingManager.getDevicesSync(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
+console.info(`Succeeded in getting devices, AudioDeviceDescriptors: ${JSON.stringify(deviceDescriptors)}.`);
+```
 
 ### Checking the Status of Spatial Audio Rendering of the Current Device
 
@@ -60,19 +60,19 @@ Call [on('spatializationEnabledChangeForCurrentDevice')](../../reference/apis-au
 
 If **true** is returned, spatial audio rendering is enabled. If **false** is returned, it is disabled.
 
-  ```ts
-  import { audio } from '@kit.AudioKit';
+```ts
+import { audio } from '@kit.AudioKit';
 
-  audioSpatializationManager.on('spatializationEnabledChangeForCurrentDevice', (isSpatializationEnabledForCurrentDevice: boolean) => {
-    console.info(`Succeeded in using on function, IsSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}.`);
-  });
-  ```
+audioSpatializationManager.on('spatializationEnabledChangeForCurrentDevice', (isSpatializationEnabledForCurrentDevice: boolean) => {
+  console.info(`Succeeded in using on function, IsSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}.`);
+});
+```
 
 **Canceling Listening for Spatial Audio Rendering Status Changes of the Current Device**
 
 Call [off('spatializationEnabledChangeForCurrentDevice')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSpatializationManager.md#offspatializationenabledchangeforcurrentdevice18) to unsubscribe from the spatial audio rendering status change event of the current device.
 
-  ```ts
-  import { audio } from '@kit.AudioKit';
-  audioSpatializationManager.off('spatializationEnabledChangeForCurrentDevice');
-  ```
+```ts
+import { audio } from '@kit.AudioKit';
+audioSpatializationManager.off('spatializationEnabledChangeForCurrentDevice');
+```

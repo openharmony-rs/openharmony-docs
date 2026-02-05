@@ -1,7 +1,7 @@
 # Snapshot Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -26,7 +26,7 @@ The **Image** component fails to decode the image properly or the node fails to 
 
 **Solution**
 
-N/A
+Set the **delay** parameter of a snapshot API to ensure that the image is loaded successfully.
 
 ## 160002 Snapshot Timeout
 
@@ -44,4 +44,4 @@ The required system task is not executed.
 
 **Solution**
 
-N/A
+Use the asynchronous API corresponding to the current snapshot API.

@@ -236,6 +236,7 @@ OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
 The following uses recording as an example. You can use the following APIs to control the start, pause, stop, and release of audio streams.
 
 > **NOTE**
+>
 > When implementing audio monitoring, you need to control both the recording and playback streams to ensure their synchronization.
 
 | API                                                    | Description        |

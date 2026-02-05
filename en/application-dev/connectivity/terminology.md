@@ -49,7 +49,7 @@ Human Interface Device Profile, which enables low-latency bidirectional communic
 ### HID Host
 [HID](#hid) host that processes and receives input data from [HID devices](#hid-device) and performs corresponding operations. Typical devices include mobile phones and tablets.
 ### HOGP
-HID over GATT Profile, which is an HID specification implemented based on the GATT protocol of BLE. It ports traditional HID functions to BLE devices for reuse and is compatible with the HID interaction logic of BLE devices such as keyboards, mouse devices, and selfie sticks.
+HID over GATT Profile, which is an [HID](#hid) specification implemented based on the GATT protocol of [BLE](#ble). It ports traditional [HID](#hid) functions to [BLE](#ble) devices for reuse and is compatible with the [HID](#hid) interaction logic of [BLE](#ble) devices such as keyboards, mouse devices, and selfie sticks.
 ## L
 ### L2CAP
 Logical Link Control and Adaptation Protocol, which supports diverse transmission requirements of upper-layer protocols and applications by providing both connection-oriented and connectionless data services. This protocol also facilitates multiplexing, segmentation, and reassembly, ensuring efficient and reliable data transfer over Bluetooth connections.

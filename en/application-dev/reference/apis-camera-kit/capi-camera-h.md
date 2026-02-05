@@ -116,7 +116,7 @@ Enumerates the camera error codes.
 | CAMERA_DEVICE_DISABLED = 7400108 | The camera is disabled for security reasons.|
 | CAMERA_DEVICE_PREEMPTED = 7400109 | The camera is preempted.|
 | CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 | The configuration conflicts with the current configuration.<br>**Since**: 12|
-| CAMERA_SERVICE_FATAL_ERROR = 7400201 | A fatal error occurs in the camera service, for example, no camera permission, camera service restart, or abnormal cross-process invocation.|
+| CAMERA_SERVICE_FATAL_ERROR = 7400201 | A fatal error occurs in the camera service.<br> for example, no camera permission, camera service restart, or abnormal cross-process invocation.|
 
 ### Camera_Status
 
@@ -264,10 +264,9 @@ Enumerates the exposure modes.
 
 | Enum Item| Description|
 | -- | -- |
-| EXPOSURE_MODE_LOCKED = 0 | Exposure locked.|
-| EXPOSURE_MODE_AUTO = 1 | Auto exposure.|
-| EXPOSURE_MODE_CONTINUOUS_AUTO = 2 | Continuous auto exposure.|
-
+| EXPOSURE_MODE_LOCKED = 0 | Exposure locked. The metering point cannot be set.<br>After this mode is used, the exposure will be locked by default for each photo capture.|
+| EXPOSURE_MODE_AUTO = 1 | Auto exposure. The metering point can be set by calling [OH_CaptureSession_SetMeteringPoint](capi-capture-session-h.md#oh_capturesession_setmeteringpoint).<br>After this mode is used, it takes effect only for the first photo capture.|
+| EXPOSURE_MODE_CONTINUOUS_AUTO = 2 | Continuous auto exposure.<br>After this mode is used, the camera system automatically adjusts the exposure based on the environment changes each time.|
 ### Camera_FocusMode
 
 ```c
@@ -339,14 +338,10 @@ Enumerates the image rotation angles.
 
 | Enum Item| Description|
 | -- | -- |
-| IAMGE_ROTATION_0 = 0 | The image rotates 0 degrees.<br> Starting from API version 22, the enumerated value [CAMERA_IMAGE_ROTATION_0](#camera_imagerotation) is recommended.|
-| CAMERA_IMAGE_ROTATION_0 = 0 | The image rotates 0 degrees.<br>**Since**: 22|
-| IAMGE_ROTATION_90 = 90 | The image rotates 90 degrees.<br> Starting from API version 22, the enumerated value [CAMERA_IMAGE_ROTATION_90](#camera_imagerotation) is recommended.|
-| CAMERA_IMAGE_ROTATION_90 = 90 | The image rotates 90 degrees.<br>**Since**: 22|
-| IAMGE_ROTATION_180 = 180 | The image rotates 180 degrees.<br> Starting from API version 22, the enumerated value [CAMERA_IMAGE_ROTATION_180](#camera_imagerotation) is recommended.|
-| CAMERA_IMAGE_ROTATION_180 = 180 | The image rotates 180 degrees.<br>**Since**: 22|
-| IAMGE_ROTATION_270 = 270 | The image rotates 270 degrees.<br> Starting from API version 22, the enumerated value [CAMERA_IMAGE_ROTATION_270](#camera_imagerotation) is recommended.|
-| CAMERA_IMAGE_ROTATION_270 = 270 | The image rotates 270 degrees.<br>**Since**: 22|
+| IAMGE_ROTATION_0 = 0 | The image rotates 0 degrees.|
+| IAMGE_ROTATION_90 = 90 | The image rotates 90 degrees.|
+| IAMGE_ROTATION_180 = 180 | The image rotates 180 degrees.|
+| IAMGE_ROTATION_270 = 270 | The image rotates 270 degrees.|
 
 ### Camera_QualityLevel
 
@@ -396,12 +391,9 @@ Enumerates the flashlight modes.
 
 | Enum Item| Description|
 | -- | -- |
-| OFF = 0 | The flashlight is always off.<br> Starting from API version 22, the enumerated value [CAMERA_TORCH_MODE_OFF](#camera_torchmode) is recommended.|
-| CAMERA_TORCH_MODE_OFF = 0 | The flashlight is always off.<br>**Since**: 22|
-| ON = 1 | The flashlight is always on.<br> Starting from API version 22, the enumerated value [CAMERA_TORCH_MODE_ON](#camera_torchmode) is recommended.|
-| CAMERA_TORCH_MODE_ON = 1 | The flashlight is always on.<br>**Since**: 22|
-| AUTO = 2 | The flashlight will be turned on automatically based on the ambient lighting level.<br> Starting from API version 22, the enumerated value [CAMERA_TORCH_MODE_AUTO](#camera_torchmode) is recommended.|
-| CAMERA_TORCH_MODE_AUTO = 2 | The flashlight will be turned on automatically based on the ambient lighting level.<br>**Since**: 22|
+| OFF = 0 | The flashlight is always off.|
+| ON = 1 | The flashlight is always on.|
+| AUTO = 2 | The flashlight will be turned on automatically based on the ambient lighting level.|
 
 ### Camera_SmoothZoomMode
 
@@ -417,8 +409,7 @@ Enumerates the smooth zoom modes.
 
 | Enum Item| Description|
 | -- | -- |
-| NORMAL = 0 | Bessel curve mode.<br> Starting from API version 22, the enumerated value [CAMERA_SMOOTH_ZOOM_MODE_NORMAL](#camera_smoothzoommode) is recommended.|
-| CAMERA_SMOOTH_ZOOM_MODE_NORMAL = 0 | Bessel curve mode.<br>**Since**: 22|
+| NORMAL = 0 | Bessel curve mode.|
 
 ### Camera_SystemPressureLevel
 
@@ -509,12 +500,9 @@ Enumerates the fold statuses.
 
 | Enum Item| Description|
 | -- | -- |
-| NON_FOLDABLE = 0 | Unfoldable.<br> Starting from API version 22, the enumerated value [CAMERA_FOLD_STATUS_NON_FOLDABLE](#camera_foldstatus) is recommended.|
-| CAMERA_FOLD_STATUS_NON_FOLDABLE = 0 | Unfoldable.<br>**Since**: 22|
-| EXPANDED = 1 | Unfolded.<br> Starting from API version 22, the enumerated value [CAMERA_FOLD_STATUS_EXPANDED](#camera_foldstatus) is recommended.|
-| CAMERA_FOLD_STATUS_EXPANDED = 1 | Unfolded.<br>**Since**: 22|
-| FOLDED = 2 | Folded.<br> Starting from API version 22, the enumerated value [CAMERA_FOLD_STATUS_FOLDED](#camera_foldstatus) is recommended.|
-| CAMERA_FOLD_STATUS_FOLDED = 2 | Folded.<br>**Since**: 22|
+| NON_FOLDABLE = 0 | Unfoldable.|
+| EXPANDED = 1 | Unfolded.|
+| FOLDED = 2 | Folded.|
 
 ### Camera_QualityPrioritization
 

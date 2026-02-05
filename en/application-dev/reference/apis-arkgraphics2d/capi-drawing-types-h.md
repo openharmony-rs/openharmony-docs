@@ -14,6 +14,8 @@ This file declares the data types of the canvas, brush, pen, bitmap, and path us
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -24,8 +26,9 @@ This file declares the data types of the canvas, brush, pen, bitmap, and path us
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) | OH_Drawing_Point2D | Describes a two-dimensional coordinate point.|
-| [OH_Drawing_Point3D](capi-drawing-oh-drawing-point3d.md) | OH_Drawing_Point3D | Describes a three-dimensional coordinate point.|
+| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) | OH_Drawing_Point2D | Defines a two-dimensional coordinate point.|
+| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) | OH_Drawing_Corner_Radii | Defines a struct for the radii of a rounded corner. The radii consist of the x-axis radius and y-axis radius.|
+| [OH_Drawing_Point3D](capi-drawing-oh-drawing-point3d.md) | OH_Drawing_Point3D | Defines a three-dimensional coordinate point.|
 | [OH_Drawing_Image_Info](capi-drawing-oh-drawing-image-info.md) | OH_Drawing_Image_Info | Describes the image information.|
 | [OH_Drawing_RectStyle_Info](capi-drawing-oh-drawing-rectstyle-info.md) | OH_Drawing_RectStyle_Info | Describes the style of a rectangle.|
 | [OH_Drawing_String](capi-drawing-oh-drawing-string.md) | OH_Drawing_String | Describes a string of characters encoded in UTF-16.|
@@ -78,7 +81,7 @@ This file declares the data types of the canvas, brush, pen, bitmap, and path us
 
 ### OH_Drawing_ColorFormat
 
-```
+```c
 enum OH_Drawing_ColorFormat
 ```
 
@@ -99,7 +102,7 @@ Defines an enum for the storage formats of bitmap pixels.
 
 ### OH_Drawing_AlphaFormat
 
-```
+```c
 enum OH_Drawing_AlphaFormat
 ```
 
@@ -118,7 +121,7 @@ Defines an enum for the alpha formats of bitmap pixels.
 
 ### OH_Drawing_BlendMode
 
-```
+```c
 enum OH_Drawing_BlendMode
 ```
 
@@ -162,7 +165,7 @@ Defines an enum for blend modes. In blend mode, each operation generates a new c
 
 ### OH_Drawing_TextEncoding
 
-```
+```c
 enum OH_Drawing_TextEncoding
 ```
 

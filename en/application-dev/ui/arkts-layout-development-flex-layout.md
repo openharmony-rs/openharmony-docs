@@ -13,8 +13,6 @@ The flex layout, implemented using the [Flex](../reference/apis-arkui/arkui-ts/t
 
 By default, the flex container has a main axis and a cross axis, and child elements are arranged along the main axis. The size of a child element along the main axis is referred to as its main axis size. Similarly, the size of a child element along the cross axis is referred to as its cross axis size.
 
-
-
   **Figure 1** Flex container whose main axis runs in the horizontal direction
 
 ![flex-layout](figures/flex-layout.png)
@@ -601,11 +599,11 @@ When the size of the flex container is not large enough, the following attribute
 
   ![en-us_image_0000001562940505](figures/en-us_image_0000001562940505.png)
 
-- [flexGrow](../reference/apis-arkui//arkui-ts/ts-universal-attributes-flex-layout.md#flexgrow): percentage of the flex container's remaining space that is allocated to the child element. The following example requires the device to be in landscape mode to ensure consistent results. 
+- [flexGrow](../reference/apis-arkui//arkui-ts/ts-universal-attributes-flex-layout.md#flexgrow): percentage of the flex container's remaining space that is allocated to the child element. The following example can be executed only when the device is in landscape mode. Otherwise, the final effect may be different from the one you see in the preview window.
 
   <!-- @[FlexGrow_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexGrow.ets) -->
   
-  ``` TypeScript
+``` TypeScript
   Flex() {
     Text('flexGrow(1)')
       .flexGrow(1)
@@ -623,14 +621,14 @@ When the size of the flex container is not large enough, the following attribute
       .height(100)
       .backgroundColor('#F5DEB3')
   }.width(360).height(120).padding(10).backgroundColor('#AFEEEE')
-  ```
-  
+```
+
   ![en-us_image_0000001562700449](figures/en-us_image_0000001562700449.png)
-  
+
   In the preceding figure, the flex container has a width of 360 vp. The three child elements each have an initial width of 100 vp, with combined left and right margins totaling 20 vp, resulting in a total initial width of 320 vp. The remaining 40 vp of space in the flex container is distributed among the child elements according to their **flexGrow** values. The third child element, which has no **flexGrow** value set, does not participate in the distribution of the remaining space.
-  
+
   After receiving their share of remaining space (40 vp) at a 1:4 ratio, the first and second child elements are at a width of 108 vp (100 vp + 40 vp x 1/5) and 132 vp (100 vp + 40 vp x 4/5), respectively.
-  
+
 - [flexShrink](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink): shrink factor of the child element when the size of all child elements is larger than the flex container.
 
 

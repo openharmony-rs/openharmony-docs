@@ -1,4 +1,4 @@
-# Common Basic Capability<!--common-basic-api-->
+# Common Basic Capabilities<!--common-basic-api-->
 
 <!--Kit: Common-->
 <!--Subsystem: Common-->
@@ -7,12 +7,12 @@
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
 
-- ArkTS APIs<!--common-basic-arkts-->
+- ArkTS API<!--common-basic-arkts-->
   - [Console](js-apis-logs.md)
   - [loadNativeModule (Synchronously and Dynamically Loading a System Library)](js-apis-common-load-native-module.md)
   - [SysCap](js-apis-syscap.md)
   - [Timer](js-apis-timer.md)
-- C APIs<!--common-basic-c-->
+- C API<!--common-basic-c-->
   - Modules<!--common-basic-module-->
     - [Init](init.md)
     - [Memory](capi-memory.md)
@@ -33,6 +33,8 @@
     - [JSVM_TypeTag](capi-jsvm-jsvm-typetag.md)
     - [JSVM_PropertyHandlerConfigurationStruct](capi-jsvm-jsvm-propertyhandlerconfigurationstruct.md)
     - [JSVM_ScriptOrigin](capi-jsvm-jsvm-scriptorigin.md)
+    - [JSVM_CompileOptions](capi-jsvm-jsvm-compileoptions.md) 
+    - [JSVM_CodeCache](capi-jsvm-jsvm-codecache.md)
     - [JSVM_PropertyHandler](capi-jsvm-jsvm-propertyhandler.md)
     - [JSVM_DefineClassOptions](capi-jsvm-jsvm-defineclassoptions.md)
     - [JSVM_VM__*](capi-jsvm-jsvm-vm--8h.md)

@@ -29,6 +29,10 @@ import { inputConsumer } from '@kit.InputKit';
 on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): void
 
 Enables listening for system hotkey change events. This API uses an asynchronous callback to return the system hotkey data when a system hotkey event that meets the specified condition occurs.
+> **NOTE**
+>
+> - You can subscribe to only the Down event of a key, or subscribe to both the Down and Up events of a key.
+> - If you subscribe to only the Up event of a key, the Down event may be consumed by the focus window, and the Up event may not be closed. In this case, check whether the design and implementation are proper.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
