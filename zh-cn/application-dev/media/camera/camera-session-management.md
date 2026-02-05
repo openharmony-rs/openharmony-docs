@@ -12,7 +12,7 @@
 
 - 配置相机的输入流和输出流。相机在拍摄前，必须完成输入输出流的配置。
 
-  配置输入流即添加设备输入，对用户而言，相当于选择设备的某一相机拍摄；配置输出流，即选择数据将以什么形式输出。当应用需要实现拍照时，输出流应配置为预览流和拍照流，预览流的数据将显示在XComponent组件上，拍照流的数据将通过ImageReceiver接口的能力保存到相册中。
+  配置输入流即添加设备输入，对用户而言，相当于选择设备的某一相机拍摄；配置输出流，即选择数据将以什么形式输出。当应用需要实现拍照时，输出流应配置为预览流和拍照流，预览流的数据将显示在[XComponent](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件上，拍照流的数据将通过[ImageReceiver](../../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md)接口的能力保存到相册中。
 
 - 添加闪光灯、调整焦距等配置。具体支持的配置及接口说明请参考[Camera API参考](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
@@ -28,7 +28,7 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. 调用cameraManager中的[createSession](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createsession11)方法创建一个会话。
+2. 调用[cameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)中的[createSession](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createsession11)方法创建一个会话。
      
    ```ts
    // 此处以videoSession为例。
@@ -44,7 +44,7 @@
    }
    ```
 
-3. 调用VideoSession中的[beginConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#beginconfig11)方法配置会话。
+3. 调用[VideoSession](../../reference/apis-camera-kit/arkts-apis-camera-Session.md)中的[beginConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#beginconfig11)方法配置会话。
      
    ```ts
    function beginConfig(videoSession: camera.VideoSession): void {
