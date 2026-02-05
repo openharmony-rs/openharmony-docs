@@ -229,7 +229,7 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 
 3. 按需订阅HTTP流式响应事件
 
-	服务器响应的数据在dataReceive回调中返回，可通过订阅该信息获取服务器响应的数据，其他流式响应事件可按需进行订阅。
+   服务器响应的数据在dataReceive回调中返回，可通过订阅该信息获取服务器响应的数据，其他流式响应事件可按需进行订阅。
   
    <!-- @[request_in_stream_data_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
    
@@ -829,7 +829,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 系统默认信任系统预置的CA证书和用户安装的CA证书，可配置不信任用户安装的CA证书提升安全性。配置不信任用户安装的CA证书可以在src/main/resources/base/profile/network_config.json进行配置，更多网络连接安全相关的配置可以参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)。
 
-```json
+``` json5
 {
   "network-security-config": {
     ... ...
@@ -846,7 +846,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 > 配置优先级规则：组件配置（component-config）> 域名配置（domain-config）> 基础配置（base-config），优先级高的配置会覆盖优先级低的规则。
 
 
-```json
+``` json5
 // src/main/resources/base/profile/network_config.json
 {
   "network-security-config": {
@@ -866,8 +866,8 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     ],
     "component-config": {
         "Request": true // 可选，自API version 20开始支持配置该属性，默认值为true。配置为true表示支持禁止明文传输，false表示不支持禁止明文传输。
-    	"Network Kit": true, // 可选，自API version 20开始支持配置该属性。
-    	"ArkWeb": false // 可选，自API version 20开始支持配置该属性。
+        "Network Kit": true, // 可选，自API version 20开始支持配置该属性。
+        "ArkWeb": false // 可选，自API version 20开始支持配置该属性。
         "Media Kit": false // 可选，自API version 23开始支持配置该属性。
         "Remote Communication Kit": false // 可选，自API version 23开始支持配置该属性。
     }
