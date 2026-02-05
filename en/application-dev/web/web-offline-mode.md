@@ -59,7 +59,7 @@ class Data {
 }
 
 @Builder
-function webBuilder(data:Data) {
+function webBuilder(data: Data) {
   Column() {
     Web({ src: data.url, controller: data.controller })
       .width('100%')
@@ -71,62 +71,66 @@ let wrap = wrapBuilder<Data[]>(webBuilder);
 
 // Used to control and report the behavior of the node in NodeContainer. This function must be used together with NodeContainer.
 export class MyNodeController extends NodeController {
-  private rootnode: BuilderNode<Data[]> | null = null;
+  private rootNode: BuilderNode<Data[]> | null = null;
+
   // This function must be overridden, which is used to construct the number of nodes, return the nodes and attach them to NodeContainer.
   // Call it when the NodeContainer is created or call rebuild() to refresh.
   makeNode(uiContext: UIContext): FrameNode | null {
-    console.log('uicontext is undefined : ' + (uiContext === undefined));
-    if (this.rootnode != null) {
+    console.info('uicontext is undefined : ' + (uiContext === undefined));
+    if (this.rootNode !== null) {
       // Return the FrameNode.
-      return this.rootnode.getFrameNode();
+      return this.rootNode.getFrameNode();
     }
     // Return null to detach the dynamic component from the bound node.
     return null;
   }
+
   // Called when the layout size changes.
   aboutToResize(size: Size) {
-    console.log('aboutToResize width : ' + size.width + ' height : ' + size.height);
+    console.info('aboutToResize width : ' + size.width + ' height : ' + size.height);
   }
 
   // Called when the NodeContainer bound to the controller is about to appear.
   aboutToAppear() {
-    console.log('aboutToAppear');
+    console.info('aboutToAppear');
   }
 
   // Called when the NodeContainer bound to the controller is about to disappear.
   aboutToDisappear() {
-    console.log('aboutToDisappear');
+    console.info('aboutToDisappear');
   }
 
   // This function is a custom function and can be used as an initialization function.
   // Initialize BuilderNode through UIContext, and then initialize the content in @Builder through the build API in BuilderNode.
-  initWeb(url:ResourceStr, uiContext:UIContext, control:WebviewController) {
-    if (this.rootnode != null) {
+  initWeb(url: ResourceStr, uiContext: UIContext, control: WebviewController) {
+    if (this.rootNode !== null) {
       return;
     }
     // Create a node, during which the UIContext should be passed.
-    this.rootnode = new BuilderNode(uiContext);
+    this.rootNode = new BuilderNode(uiContext);
     // Create a dynamic Web component.
-    this.rootnode.build(wrap, { url:url, controller:control });
+    this.rootNode.build(wrap, { url: url, controller: control });
   }
 }
+
 // Create a Map to save the required NodeController.
-let nodeMap:Map<ResourceStr, MyNodeController | undefined> = new Map();
+let nodeMap: Map<ResourceStr, MyNodeController | undefined> = new Map();
 // Create a Map to save the required WebViewController.
-let controllerMap:Map<ResourceStr, WebviewController | undefined> = new Map();
+let controllerMap: Map<ResourceStr, WebviewController | undefined> = new Map();
 
 // UIContext is required for initialization and needs to be obtained from the ability.
 export const createNWeb = (url: ResourceStr, uiContext: UIContext) => {
   // Create a NodeController instance.
   let baseNode = new MyNodeController();
-  let controller = new webview.WebviewController() ;
+  let controller = new webview.WebviewController();
   // Initialize the custom Web component.
   baseNode.initWeb(url, uiContext, controller);
   controllerMap.set(url, controller);
   nodeMap.set(url, baseNode);
 }
+
 // Customize the API for obtaining the NodeController.
-export const getNWeb = (url: ResourceStr) : MyNodeController | undefined => {
+export const getNWeb = (url: ResourceStr): MyNodeController | undefined => {
   return nodeMap.get(url);
 }
 ```
@@ -197,7 +201,7 @@ class Data {
 }
 
 @Builder
-function webBuilder(data:Data) {
+function webBuilder(data: Data) {
   Column() {
     Web({ src: data.url, controller: data.controller })
       .width('100%')
@@ -209,62 +213,66 @@ let wrap = wrapBuilder<Data[]>(webBuilder);
 
 // Used to control and report the behavior of the node in NodeContainer. This function must be used together with NodeContainer.
 export class MyNodeController extends NodeController {
-  private rootnode: BuilderNode<Data[]> | null = null;
+  private rootNode: BuilderNode<Data[]> | null = null;
+
   // This function must be overridden, which is used to construct the number of nodes, return the nodes and attach them to NodeContainer.
   // Call it when the NodeContainer is created or call rebuild() to refresh.
   makeNode(uiContext: UIContext): FrameNode | null {
-    console.log('uicontext is undefined : ' + (uiContext === undefined));
-    if (this.rootnode != null) {
+    console.info('uicontext is undefined : ' + (uiContext === undefined));
+    if (this.rootNode !== null) {
       // Return the FrameNode.
-      return this.rootnode.getFrameNode();
+      return this.rootNode.getFrameNode();
     }
     // Return null to detach the dynamic component from the bound node.
     return null;
   }
+
   // Called when the layout size changes.
   aboutToResize(size: Size) {
-    console.log('aboutToResize width : ' + size.width + ' height : ' + size.height);
+    console.info('aboutToResize width : ' + size.width + ' height : ' + size.height);
   }
 
   // Called when the NodeContainer bound to the controller is about to appear.
   aboutToAppear() {
-    console.log('aboutToAppear');
+    console.info('aboutToAppear');
   }
 
   // Called when the NodeContainer bound to the controller is about to disappear.
   aboutToDisappear() {
-    console.log('aboutToDisappear');
+    console.info('aboutToDisappear');
   }
 
   // This function is a custom function and can be used as an initialization function.
   // Initialize BuilderNode through UIContext, and then initialize the content in @Builder through the build API in BuilderNode.
-  initWeb(url:ResourceStr, uiContext:UIContext, control:WebviewController) {
-    if (this.rootnode != null) {
+  initWeb(url: ResourceStr, uiContext: UIContext, control: WebviewController) {
+    if (this.rootNode !== null) {
       return;
     }
     // Create a node, during which the UIContext should be passed.
-    this.rootnode = new BuilderNode(uiContext);
+    this.rootNode = new BuilderNode(uiContext);
     // Create a dynamic Web component.
-    this.rootnode.build(wrap, { url:url, controller:control });
+    this.rootNode.build(wrap, { url: url, controller: control });
   }
 }
+
 // Create a Map to save the required NodeController.
-let nodeMap:Map<ResourceStr, MyNodeController | undefined> = new Map();
+let nodeMap: Map<ResourceStr, MyNodeController | undefined> = new Map();
 // Create a Map to save the required WebViewController.
-let controllerMap:Map<ResourceStr, WebviewController | undefined> = new Map();
+let controllerMap: Map<ResourceStr, WebviewController | undefined> = new Map();
 
 // UIContext is required for initialization and needs to be obtained from the ability.
 export const createNWeb = (url: ResourceStr, uiContext: UIContext) => {
   // Create a NodeController instance.
   let baseNode = new MyNodeController();
-  let controller = new webview.WebviewController() ;
+  let controller = new webview.WebviewController();
   // Initialize the custom Web component.
   baseNode.initWeb(url, uiContext, controller);
   controllerMap.set(url, controller);
   nodeMap.set(url, baseNode);
 }
+
 // Customize the API for obtaining the NodeController.
-export const getNWeb = (url: ResourceStr) : MyNodeController | undefined => {
+export const getNWeb = (url: ResourceStr): MyNodeController | undefined => {
   return nodeMap.get(url);
 }
 ```
@@ -353,24 +361,27 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 // Common.ets
 import { UIContext } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
-import { NodeController, BuilderNode, Size, FrameNode }  from '@kit.ArkUI';
+import { NodeController, BuilderNode, Size, FrameNode } from '@kit.ArkUI';
+
 // @Builder contains the specific information of the dynamic component.
 // Data is an input parameter of encapsulation class.
-class Data{
+class Data {
   public url: string = 'www.example.com';
   public controller: WebviewController = new webview.WebviewController();
 }
+
 // Use the Boolean variable shouldInactive to stop rendering after the web page is pre-rendered in the background.
 let shouldInactive: boolean = true;
+
 @Builder
-function webBuilder(data:Data) {
+function webBuilder(data: Data) {
   Column() {
     Web({ src: data.url, controller: data.controller })
       .onPageBegin(() => {
         // Call onActive to enable rendering.
         data.controller.onActive();
       })
-      .onFirstMeaningfulPaint(() =>{
+      .onFirstMeaningfulPaint(() => {
         if (!shouldInactive) {
           return;
         }
@@ -382,51 +393,60 @@ function webBuilder(data:Data) {
       .height('100%')
   }
 }
+
 let wrap = wrapBuilder<Data[]>(webBuilder);
+
 // Used to control and report the behavior of the node in NodeContainer. This function must be used together with NodeContainer.
 export class MyNodeController extends NodeController {
-  private rootnode: BuilderNode<Data[]> | null = null;
+  private rootNode: BuilderNode<Data[]> | null = null;
+
   // This function must be overridden, which is used to construct the number of nodes, return the nodes and attach them to NodeContainer.
   // Call it when the NodeContainer is created or call rebuild() to refresh.
   makeNode(uiContext: UIContext): FrameNode | null {
     console.info('uicontext is undifined : ' + (uiContext === undefined));
-    if (this.rootnode != null) {
+    if (this.rootNode !== null) {
       // Return the FrameNode.
-      return this.rootnode.getFrameNode();
+      return this.rootNode.getFrameNode();
     }
     // Return null to detach the dynamic component from the bound node.
     return null;
   }
+
   // Called when the layout size changes.
   aboutToResize(size: Size) {
     console.info('aboutToResize width : ' + size.width + ' height : ' + size.height);
   }
+
   // Called when the NodeContainer bound to the controller is about to appear.
   aboutToAppear() {
     console.info('aboutToAppear');
     // When the page is switched to the foreground, the rendering does not need to be stopped.
     shouldInactive = false;
   }
+
   // Called when the NodeContainer bound to the controller is about to disappear.
   aboutToDisappear() {
     console.info('aboutToDisappear');
   }
+
   // This function is a custom function and can be used as an initialization function.
   // Initialize BuilderNode through UIContext, and then initialize the content in @Builder through the build API in BuilderNode.
-  initWeb(url:string, uiContext:UIContext, control:WebviewController) {
-    if (this.rootnode != null) {
+  initWeb(url: string, uiContext: UIContext, control: WebviewController) {
+    if (this.rootNode !== null) {
       return;
     }
     // Create a node, during which the UIContext should be passed.
-    this.rootnode = new BuilderNode(uiContext);
+    this.rootNode = new BuilderNode(uiContext);
     // Create a dynamic Web component.
-    this.rootnode.build(wrap, { url:url, controller:control });
+    this.rootNode.build(wrap, { url: url, controller: control });
   }
 }
+
 // Create a Map to save the required NodeController.
-let nodeMap:Map<string, MyNodeController | undefined> = new Map();
+let nodeMap: Map<string, MyNodeController | undefined> = new Map();
 // Create a Map to save the required WebViewController.
-let controllerMap:Map<string, WebviewController | undefined> = new Map();
+let controllerMap: Map<string, WebviewController | undefined> = new Map();
+
 // UIContext is required for initialization and needs to be obtained from the ability.
 export const createNWeb = (url: string, uiContext: UIContext) => {
   // Create a NodeController instance.
@@ -437,8 +457,9 @@ export const createNWeb = (url: string, uiContext: UIContext) => {
   controllerMap.set(url, controller)
   nodeMap.set(url, baseNode);
 }
+
 // Customize the API for obtaining the NodeController.
-export const getNWeb = (url : string) : MyNodeController | undefined => {
+export const getNWeb = (url: string): MyNodeController | undefined => {
   return nodeMap.get(url);
 }
 ```
@@ -475,7 +496,7 @@ Reusing and releasing offline **Web** components can optimize memory usage and r
 > **NOTE**
 > - You are advised to use only one **Web** component in each window.
 > - You are advised to reuse offline **Web** components.
-> - You are advised to release u offline **Web** components that are not required.
+> - You are advised to release offline **Web** components that are not required.
 
 ### Reusing Offline Web Components
 
