@@ -20,7 +20,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { ComposeTitleBar } from '@kit.ArkUI';
 ```
 
@@ -82,14 +82,14 @@ import { ComposeTitleBar, Prompt, ComposeTitleBarMenuItem } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
-  //定义右侧菜单项目列表
+  // 定义右侧菜单项目列表
   private menuItems: Array<ComposeTitleBarMenuItem> = [
     {
-      //菜单图片资源
+      // 菜单图片资源
       value: $r('sys.media.ohos_save_button_filled'),
-      //启用图标
+      // 启用图标
       isEnabled: true,
-      //点击菜单时触发事件
+      // 点击菜单时触发事件
       action: () => Prompt.showToast({ message: 'icon 1' }),
     },
     {
@@ -112,7 +112,7 @@ struct Index {
   build() {
     Row() {
       Column() {
-        //分割线
+        // 分割线
         Divider().height(2).color(0xCCCCCC)
         ComposeTitleBar({
           title: '标题',
@@ -132,7 +132,7 @@ struct Index {
           menuItems: this.menuItems,
         })
         Divider().height(2).color(0xCCCCCC)
-        //定义带头像的标题栏
+        // 定义带头像的标题栏
         ComposeTitleBar({
           menuItems: [{
             isEnabled: true, value: $r('sys.media.ohos_save_button_filled'),
@@ -159,20 +159,20 @@ import { ComposeTitleBar, Prompt, ComposeTitleBarMenuItem } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
-  //定义右侧菜单项目列表
+  // 定义右侧菜单项目列表
   private menuItems: Array<ComposeTitleBarMenuItem> = [
     {
-      //菜单图片资源
+      // 菜单图片资源
       value: $r('sys.media.ohos_save_button_filled'),
-      //启用图标
+      // 启用图标
       isEnabled: true,
-      //点击菜单时触发事件
+      // 点击菜单时触发事件
       action: () => Prompt.showToast({ message: 'icon 1' }),
-      //屏幕朗读播报文本，优先级比label高
+      // 屏幕朗读播报文本，优先级比label高
       accessibilityText: '保存',
-      //屏幕朗读是否可以聚焦到
+      // 屏幕朗读是否可以聚焦到
       accessibilityLevel: 'yes',
-      //屏幕朗读最后播报的描述文本
+      // 屏幕朗读最后播报的描述文本
       accessibilityDescription: '点击操作保存图标',
     },
     {
@@ -180,7 +180,7 @@ struct Index {
       isEnabled: true,
       action: () => Prompt.showToast({ message: 'icon 2' }),
       accessibilityText: '复制',
-      //此处为no，屏幕朗读不聚焦
+      // 此处为no，屏幕朗读不聚焦
       accessibilityLevel: 'no',
       accessibilityDescription: '点击操作复制图标',
     },
@@ -205,7 +205,7 @@ struct Index {
   build() {
     Row() {
       Column() {
-        //分割线
+        // 分割线
         Divider().height(2).color(0xCCCCCC)
         ComposeTitleBar({
           title: '标题',
@@ -225,7 +225,7 @@ struct Index {
           menuItems: this.menuItems,
         })
         Divider().height(2).color(0xCCCCCC)
-        //定义带头像的标题栏
+        // 定义带头像的标题栏
         ComposeTitleBar({
           menuItems: [{
             isEnabled: true, value: $r('sys.media.ohos_save_button_filled'),
@@ -254,16 +254,16 @@ import { ComposeTitleBar, Prompt, ComposeTitleBarMenuItem, SymbolGlyphModifier }
 @Entry
 @Component
 struct Index {
-  //定义右侧菜单项目列表
+  // 定义右侧菜单项目列表
   private menuItems: Array<ComposeTitleBarMenuItem> = [
     {
-      //菜单图片资源
+      // 菜单图片资源
       value: $r('sys.symbol.house'),
-      //菜单symbol图标
+      // 菜单symbol图标
       symbolStyle: new SymbolGlyphModifier($r('sys.symbol.bell')).fontColor([Color.Red]),
-      //启用图标
+      // 启用图标
       isEnabled: true,
-      //点击菜单时触发事件
+      // 点击菜单时触发事件
       action: () => Prompt.showToast({ message: 'symbol icon 1' }),
     },
     {
@@ -287,7 +287,7 @@ struct Index {
   build() {
     Row() {
       Column() {
-        //分割线
+        // 分割线
         Divider().height(2).color(0xCCCCCC)
         ComposeTitleBar({
           title: '标题',
@@ -307,7 +307,7 @@ struct Index {
           menuItems: this.menuItems,
         })
         Divider().height(2).color(0xCCCCCC)
-        //定义带头像的标题栏
+        // 定义带头像的标题栏
         ComposeTitleBar({
           menuItems: [{
             isEnabled: true, value: $r('sys.symbol.heart'),

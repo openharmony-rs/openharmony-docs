@@ -20,7 +20,7 @@
 
 ## 导入模块
 
-``` ts
+```ts
 import { TipsDialog, SelectDialog, ConfirmDialog, AlertDialog, LoadingDialog, CustomContentDialog } from '@kit.ArkUI';
 ```
 
@@ -577,7 +577,7 @@ struct Index {
   dialogController: CustomDialogController = new CustomDialogController({
     builder: LoadingDialog({
       content: 'Text',
-      themeColorMode: ThemeColorMode.DARK, //设置弹出框深浅色模式为深色模式
+      themeColorMode: ThemeColorMode.DARK, // 设置弹出框深浅色模式为深色模式
     })
   });
 
@@ -744,7 +744,7 @@ struct Index {
       },
       secondaryButton: {
         value: 'TRUE',
-        defaultFocus: true, //设置该按钮为默认获焦按钮。
+        defaultFocus: true, // 设置该按钮为默认获焦按钮。
         action: () => {}
       },
     })

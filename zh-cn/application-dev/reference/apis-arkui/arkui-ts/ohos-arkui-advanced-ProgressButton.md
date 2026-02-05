@@ -21,7 +21,7 @@
 
 ## 导入模块
 
-``` ts
+```ts
 import { ProgressButton } from '@kit.ArkUI';
 ```
 
@@ -142,7 +142,7 @@ struct Index {
       Scroll() {
         Column({ space: 20 }) {
           ProgressButton({
-            //设置下载按钮颜色
+            // 设置下载按钮颜色
             colorOptions: {
               progressColor: Color.Orange,
               borderColor: Color.Black,
@@ -202,7 +202,7 @@ struct Index {
       Scroll() {
         Column({ space: 20 }) {
           ProgressButton({
-            progressButtonRadius: LengthMetrics.vp(8), //自定义圆角值为8vp
+            progressButtonRadius: LengthMetrics.vp(8), // 自定义圆角值为8vp
             progress: this.progressIndex,
             progressButtonWidth: this.buttonWidth,
             content: this.textState,
