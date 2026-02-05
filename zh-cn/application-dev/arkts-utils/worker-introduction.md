@@ -263,14 +263,14 @@ const workerFA3: worker.ThreadWorker = new worker.ThreadWorker('ThreadFile/worke
 
 3. 在宿主线程中，通过调用ThreadWorker的[constructor()](../reference/apis-arkts/js-apis-worker.md#constructor9)方法创建Worker对象，并注册回调函数。
       <!-- @[create_manager_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/Index.ets) -->
-
-      ```ts
+      
+      ``` TypeScript
       // Index.ets
       @Entry
       @Component
       struct Index {
         @State message: string = 'Hello World';
-
+      
         build() {
           RelativeContainer() {
             Text(this.message)
@@ -284,31 +284,32 @@ const workerFA3: worker.ThreadWorker = new worker.ThreadWorker('ThreadFile/worke
               .onClick(() => {
                 // 创建Worker对象
                 let workerInstance = new worker.ThreadWorker('entry/ets/workers/worker.ets');
-
+      
                 // 注册onmessage回调，捕获宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息。该回调在宿主线程执行
                 workerInstance.onmessage = (e: MessageEvents) => {
                   let data: string = e.data;
                   console.info('workerInstance onmessage is: ', data);
                 }
-
+      
                 // 注册onAllErrors回调，捕获Worker线程的onmessage回调、timer回调以及文件执行等流程产生的全局异常。该回调在宿主线程执行
                 workerInstance.onAllErrors = (err: ErrorEvent) => {
                   console.error('workerInstance onAllErrors message is: ' + err.message);
                 }
-
+      
                 // 注册onmessageerror回调，当Worker对象接收到无法序列化的消息时被调用，在宿主线程执行
                 workerInstance.onmessageerror = () => {
                   console.error('workerInstance onmessageerror');
                 }
-
+      
                 // 注册onexit回调，当Worker销毁时被调用，在宿主线程执行
                 workerInstance.onexit = (e: number) => {
                   // Worker正常退出时，code为0；异常退出时，code为1
                   console.info('workerInstance onexit code is: ', e);
                 }
-
+      
                 // 发送消息给Worker线程
                 workerInstance.postMessage('1');
+                // ...
               })
           }
           .height('100%')
