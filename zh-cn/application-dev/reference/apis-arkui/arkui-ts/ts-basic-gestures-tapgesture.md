@@ -60,24 +60,20 @@ TapGesture(value?: TapGestureParameters)
 
 用于点击手势获取坐标。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| x | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于组件左上角的x坐标。<br/>取值范围：[0, +∞) <br/>单位：vp |
-| y | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于组件左上角的y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp |
-| windowX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于窗口的左上角x坐标。<br/>取值范围：[0, +∞) <br/>单位：vp |
-| windowY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于窗口的左上角y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp |
-| displayX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于屏幕的左上角x坐标。<br/>取值范围：[0, +∞) <br/>单位：vp |
-| displayY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于屏幕的左上角y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp |
+| x | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于组件左上角的x坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| y | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于组件左上角的y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| windowX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于窗口的左上角x坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| windowY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于窗口的左上角y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| displayX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于屏幕的左上角x坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| displayY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于屏幕的左上角y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| globalDisplayX<sup>23+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的x坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 24 |
+| globalDisplayY<sup>23+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 24 |
 
 ## 示例
 
@@ -121,6 +117,7 @@ struct TapGestureExample {
 
 该示例通过TapGesture获取单击手势相关的坐标。
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 @Entry
@@ -155,4 +152,38 @@ struct TapGestureExample {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { Entry, Text, Column, Component, Gesture, TapGesture, GestureEvent } from '@kit.ArkUI';
 
+@Entry
+@Component
+struct TapGestureExample {
+  build() {
+    Column() {
+      Text('Click Once').fontSize(28)
+        .gesture(
+          TapGesture({ count: 1, fingers: 1 })
+            .onAction((event: GestureEvent | undefined) => {
+              if (event) {
+                console.info(`x = ${JSON.stringify(event.tapLocation?.x)}`)
+                console.info(`y = ${JSON.stringify(event.tapLocation?.y)}`)
+                console.info(`windowX = ${JSON.stringify(event.tapLocation?.windowX)}`)
+                console.info(`windowY = ${JSON.stringify(event.tapLocation?.windowY)}`)
+                console.info(`displayX = ${JSON.stringify(event.tapLocation?.displayX)}`)
+                console.info(`displayY = ${JSON.stringify(event.tapLocation?.displayY)}`)
+                // 从API version 24开始，新增globalDisplayX和globalDisplayY属性。
+                console.info(`globalDisplayX = ${JSON.stringify(event.tapLocation?.globalDisplayX)}`)
+                console.info(`globalDisplayY = ${JSON.stringify(event.tapLocation?.globalDisplayY)}`)
+              }
+            })
+        )
+    }
+    .height(200)
+    .width(300)
+    .padding(20)
+    .border({ width: 3 })
+    .margin(30)
+  }
+}
+```
