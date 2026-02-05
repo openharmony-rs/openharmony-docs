@@ -39375,7 +39375,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/oh-package.json5",
 				"functions":[
 					{
-						"end_line":28,
+						"end_line":31,
 						"name":"config_har_dependency",
 						"start_line":16
 					}
