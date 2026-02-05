@@ -132,7 +132,7 @@ async requestAgentUpload(fileName: string, callback: (progress: number, isSuccee
     task.on('completed', async () => {
       logger.info(TAG, `Request upload completed`);
       callback(100, true);
-      //该方法需用户管理任务生命周期，任务结束后调用remove释放task对象
+      // 该方法需用户管理任务生命周期，任务结束后调用remove释放task对象
       request.agent.remove(task.tid);
     })
   }).catch((err: BusinessError) => {
