@@ -276,7 +276,7 @@ Deletes the specified child node from this FrameNode. If this FrameNode is not m
 
 **Error codes**
 
-For details about the error codes, [Custom Node Error Codes](./errorcode-node.md).
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -298,7 +298,7 @@ Clears all child nodes of this FrameNode. If this FrameNode is not modifiable, a
 
 **Error codes**
 
-For details about the error codes, [Custom Node Error Codes](./errorcode-node.md).
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1374,7 +1374,7 @@ The following example shows partial values from the query result of a [Button](a
     "type": "build-in", // "build-in" for built-in components, and "custom" for custom components.
     "$rect": "[498.00, 468.00],[718.00,598.00]", // Coordinates of the upper left corner and lower right corner of the component bounding box.
     "$debugLine ": "", // Component source code debugging information, including the file path and line number.
-    "$attrs": {
+    "$attrs": { // Component attributes. The attributes vary depending on the component. For details about the attributes of each component, see the corresponding component documentation.
         "borderStyle": "BorderStyle.Solid",
         "borderColor": "#FF000000",
         "borderWidth": "0.00vp",
@@ -1525,7 +1525,7 @@ struct Index {
 }
 ```
 
-![en-us_image_dispose](figures/en-us_image_dispose.gif)
+![zh-cn_image_dispose](figures/zh-cn_image_dispose.gif)
 
 ### commonAttribute<sup>12+</sup>
 
@@ -2096,7 +2096,7 @@ Obtains the event binding information for the target node. Returns **undefined**
 
 | Type              | Description              |
 | ------------------ | ------------------ |
-| [InteractionEventBindingInfo](#interactioneventbindinginfo19) \| undefined | Returns an **InteractionEventBindingInfo** object containing event binding details if the interaction event is bound to the current node; returns **undefined** otherwise.|
+| [InteractionEventBindingInfo](#interactioneventbindinginfo19)&nbsp;\|&nbsp;undefined | Returns an **InteractionEventBindingInfo** object containing event binding details if the interaction event is bound to the current node; returns **undefined** otherwise.|
 
 **Example**
 
@@ -2144,7 +2144,7 @@ Adds the polymorphic style states supported by the component.
 
 | Name  | Type                     | Mandatory| Description                                                    |
 | -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
-| uiStates    | number | Yes  | UI states of the target node to be processed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example: targetUIStates = UIState.PRESSED  \|  UIState.FOCUSED.                                      |
+| uiStates    | number | Yes  | UI states of the target node to be processed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example: targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED.                                      |
 | statesChangeHandler | [UIStatesChangeHandler](#uistateschangehandler20) | Yes  | Callback invoked when the state changes.                                          |
 | excludeInner  | boolean | No  | Whether to disable the default state style processing. Default value: **false**.<br> **true**: Disable default state style processing. **false**: Enable default state style processing.|
 
@@ -2166,7 +2166,7 @@ Removes the state processing registration from the component.
 
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| uiStates  | number  | Yes  | UI states to be removed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example: removeUIStates = UIState.PRESSED  \|  UIState.FOCUSED.                         |
+| uiStates  | number  | Yes  | UI states to be removed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example: removeUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED.                         |
 
 **Example**
 
@@ -2195,7 +2195,7 @@ Creates a property animation for the FrameNode.
 
 | Type              | Description              |
 | ------------------ | ------------------ |
-| boolean | Whether the animation is created successfully.<br>Returns **true** if the animation is created successfully. If an end callback is specified in the animation parameters, it will be invoked upon animation completion.<br>Returns **false** if the animation creation fails. The end callback will not be invoked even if specified.<br>Possible failure reasons:<br>Additional notes:<br> 1. The node has been released (the [dispose](#dispose12) API has been called).<br> 2. The node is a built-in component proxy (where [isModifiable](#ismodifiable12) returns **false**).<br> 3. There is an invalid property enumeration or length mismatch between the property type and **startValue** or **endValue** arrays.<br> 4. No start value is available (**startValue** is **undefined** for the first animation of a property) or the start and end values are identical.|
+| boolean | Whether the animation is created successfully.<br>Returns **true** if the animation is created successfully. If an end callback is specified in the animation parameters, it will be invoked upon animation completion.<br>Returns **false** if the animation creation fails. The end callback will not be invoked even if specified.<br>Possible failure reasons:<br>Additional notes:<br> 1.The node has been released (the [dispose](#dispose12) API has been called).<br>2. The node is a built-in component proxy (where [isModifiable](#ismodifiable12) returns **false**).<br>3. There is an invalid property enumeration or length mismatch between the property type and **startValue** or **endValue** arrays.<br>4. No start value is available (**startValue** is **undefined** for the first animation of a property) or the start and end values are identical.|
 
 **Example**
 
@@ -2221,7 +2221,7 @@ Cancels all animations for specified properties on the FrameNode. This API execu
 
 | Type              | Description              |
 | ------------------ | ------------------ |
-| boolean | Animation cancellation status.<br>**true**: successful.<br>**false**: failed.<br>The possible causes are as follows:<br>Additional notes:<br> 1. The node has been released (the [dispose](#dispose12) API has been called).<br> 2. The node is a built-in component proxy (where [isModifiable](#ismodifiable12) returns **false**).<br> 3. The property array contains invalid enumerated values.<br> 4. System error. Example: system IPC communication error.<br>Additional notes:<br> 1. This API returns **true** for properties without active animations, if there are no system errors.<br> 2. Valid parameters with normal node returning **false** indicate a system exception. In this case, you can retry cancellation later or use [createAnimation](#createanimation20) with a zero duration as an alternative.|
+| boolean | Animation cancellation status.<br>**true**: successful.<br>**false**: failed.<br>The possible causes are as follows:<br>Additional notes:<br>1. The node has been released (the [dispose](#dispose12) API has been called).<br>2. The node is a built-in component proxy (where [isModifiable](#ismodifiable12) returns **false**).<br>3. The property array contains invalid enumerated values.<br>4. System error. Example: system IPC communication error.<br>Additional notes:<br>1. This API returns **true** for properties without active animations, if there are no system errors.<br>2. Valid parameters with normal node returning **false** indicate a system exception. In this case, you can retry cancellation later or use [createAnimation](#createanimation20) with a zero duration as an alternative.|
 
 **Example**
 
@@ -2270,7 +2270,7 @@ This API ensures rendering synchronization by triggering immediate property upda
 **Example**
 
 Starting from API version 21, when dynamically switching between nodes using **if/else** statements, you can call **invalidateAttributes** during node creation to trigger immediate attribute updates, preventing visual flickering during component switching.
-
+ 
 ```ts
 // index.ets
 import { FrameNode, NodeController, typeNode, NodeContent } from '@kit.ArkUI';
@@ -2374,7 +2374,7 @@ struct ListNodeTest {
 
 adoptChild(child: FrameNode): void
 
-Adopts the target node as an affiliated node. The adopted node must not have an existing parent. This API is not used to add a node as a child node. Instead, it only allows the node to receive lifecycle callbacks of the corresponding child node.
+Adopts the target node as an affiliated node. The adopted node must not have an existing parent. This operation does not actually add the adopted node as a child node, but merely allows it to receive lifecycle callbacks as if it were a child node.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -2404,7 +2404,7 @@ See [Example of Adopting a Node as an Affiliate](#example-of-adopting-a-node-as-
 
 removeAdoptedChild(child: FrameNode): void
 
-Removes a previously adopted node.
+Removes a previously adopted affiliate node.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -2414,7 +2414,7 @@ Removes a previously adopted node.
 
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| child | [FrameNode](#framenode-1) | Yes  | Node to remove.|
+| child | [FrameNode](#framenode-1) | Yes  | Affiliate node to remove.|
 
 **Error codes**
 
@@ -2546,7 +2546,7 @@ Extends [FrameNode](#framenode-1) to define a FrameNode with specific type const
 
 > **NOTE**
 >
-> The [commonAttribute](#commonattribute12) API is only effective on **CustomFrameNode**. For **TypedFrameNode**, the behavior of** commonAttribute** is undefined. For setting universal attributes, it is recommended that you use the [attribute](#properties) API, such as **node.attribute.backgroundColor(Color.Pink)**, rather than [commonAttribute](#commonattribute12).
+> The [commonAttribute](#commonattribute12) API is only effective on **CustomFrameNode**. For **TypedFrameNode**, the behavior of **commonAttribute** is undefined. For setting universal attributes, it is recommended that you use the [attribute](#properties) API, such as **node.attribute.backgroundColor(Color.Pink)**, rather than [commonAttribute](#commonattribute12).
 
 ## typeNode<sup>12+</sup>
 
@@ -2652,7 +2652,7 @@ Obtains the attributes of a **Text** node. If the node is not created using ArkT
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| TextAttribute \| undefined | Attributes of the **Text** node, or **undefined** if they fail to be obtained.|
+| TextAttribute&nbsp;\|&nbsp;undefined | Attributes of the **Text** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -2862,7 +2862,7 @@ Obtains the attributes of a **Column** node. If the node is not created using Ar
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| ColumnAttribute \| undefined | Attributes of the **Column** node, or **undefined** if they fail to be obtained.|
+| ColumnAttribute&nbsp;\|&nbsp;undefined | Attributes of the **Column** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -2997,7 +2997,7 @@ Obtains the attributes of a **Row** node. If the node is not created using ArkTS
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| RowAttribute \| undefined | Attributes of the **Row** node, or **undefined** if they fail to be obtained.|
+| RowAttribute&nbsp;\|&nbsp;undefined | Attributes of the **Row** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -3136,7 +3136,7 @@ Obtains the attributes of a **Stack** node. If the node is not created using Ark
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| StackAttribute \| undefined | Attributes of the **Stack** node, or **undefined** if they fail to be obtained.|
+| StackAttribute&nbsp;\|&nbsp;undefined | Attributes of the **Stack** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -3429,7 +3429,7 @@ Obtains the Flex node attributes. If the node is not created using ArkTS, cross-
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| FlexAttribute \| undefined | Flex node type. If the operation fails, undefined is returned.|
+| FlexAttribute&nbsp;\|&nbsp;undefined | Flex node type. If the operation fails, undefined is returned.|
 
 **Example**
 
@@ -3585,7 +3585,7 @@ Obtains the attributes of a **Swiper** node. If the node is not created using Ar
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| SwiperAttribute \| undefined | Properties of the **Swiper** node, or **undefined** if they fail to be obtained.|
+| SwiperAttribute&nbsp;\|&nbsp;undefined | Properties of the **Swiper** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -3718,7 +3718,7 @@ Obtains the attributes of a **Progress** node. If the node is not created using 
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| ProgressAttribute \| undefined | Properties of the **Progress** node, or **undefined** if they fail to be obtained.|
+| ProgressAttribute&nbsp;\|&nbsp;undefined | Properties of the **Progress** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -3869,7 +3869,7 @@ Obtains the attributes of a **Scroll** node. If the node is not created using Ar
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| ScrollAttribute \| undefined | Attributes of the **Scroll** node, or **undefined** if they fail to be obtained.|
+| ScrollAttribute&nbsp;\|&nbsp;undefined | Attributes of the **Scroll** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -3896,7 +3896,7 @@ Obtains the **UIScrollEvent** object associated with the **Scroll** node for con
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| [UIScrollEvent](./arkui-ts/ts-container-scroll.md#uiscrollevent19) \| undefined | **UIScrollEvent** object for the **Scroll** node, or **undefined** if it fails to be obtained.|
+| [UIScrollEvent](./arkui-ts/ts-container-scroll.md#uiscrollevent19)&nbsp;\|&nbsp;undefined | **UIScrollEvent** object for the **Scroll** node, or **undefined** if it fails to be obtained.|
 
 **Example**
 
@@ -3922,7 +3922,7 @@ Binds the [Scroller](arkui-ts/ts-container-scroll.md#scroller) to the [Scroll](#
 
 **Error codes**
 
-For details about the error codes, [Custom Node Error Codes](./errorcode-node.md).
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -4030,7 +4030,7 @@ Obtains the attributes of a **RelativeContainer** node. If the node is not creat
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| RelativeContainerAttribute \| undefined | Attributes of the **RelativeContainer** node, or **undefined** if they fail to be obtained.|
+| RelativeContainerAttribute&nbsp;\|&nbsp;undefined | Attributes of the **RelativeContainer** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -4244,7 +4244,7 @@ Obtains the attributes of a [LoadingProgress](arkui-ts/ts-basic-components-loadi
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| LoadingProgressAttribute \| undefined | Properties of the **LoadingProgress** node, or **undefined** if they fail to be obtained.|
+| LoadingProgressAttribute&nbsp;\|&nbsp;undefined | Properties of the **LoadingProgress** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -4539,7 +4539,7 @@ Obtains the attributes of an **Image** node. If the node is not created using Ar
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| ImageAttribute \| undefined | Properties of the **Image** node, or **undefined** if they fail to be obtained.|
+| ImageAttribute&nbsp;\|&nbsp;undefined | Properties of the **Image** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -4704,7 +4704,7 @@ Obtains the **UIListEvent** object associated with the **List** node for configu
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| [UIListEvent](./arkui-ts/ts-container-list.md#uilistevent19) \| undefined | **UIListEvent** object for the **List** node, or **undefined** if it fails to be obtained.|
+| [UIListEvent](./arkui-ts/ts-container-list.md#uilistevent19)&nbsp;\|&nbsp;undefined | **UIListEvent** object for the **List** node, or **undefined** if it fails to be obtained.|
 
 **Example**
 
@@ -4731,7 +4731,7 @@ Obtains the attributes of a **List** node. If the node is not created using ArkT
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| ListAttribute \| undefined | Attributes of the **List** node, or **undefined** if they fail to be obtained.|
+| ListAttribute&nbsp;\|&nbsp;undefined | Attributes of the **List** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -4833,7 +4833,7 @@ Obtains the attributes of a **ListItem** node. If the node is not created using 
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| ListItemAttribute \| undefined | Attributes of the **ListItem** node, or **undefined** if they fail to be obtained.|
+| ListItemAttribute&nbsp;\|&nbsp;undefined | Attributes of the **ListItem** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -4931,7 +4931,7 @@ Obtains the attributes of a **TextInput** node. If the node is not created using
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| TextInputAttribute \| undefined | Properties of the **TextInput** node, or **undefined** if they fail to be obtained.|
+| TextInputAttribute&nbsp;\|&nbsp;undefined | Properties of the **TextInput** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -5136,7 +5136,7 @@ Obtains the attributes of a **Button** node. If the node is not created using Ar
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| ButtonAttribute \| undefined | Attributes of the **Button** node, or **undefined** if they fail to be obtained.|
+| ButtonAttribute&nbsp;\|&nbsp;undefined | Attributes of the **Button** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -5242,7 +5242,7 @@ Obtains the attributes of a **ListItemGroup** node. If the node is not created u
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| ListItemGroupAttribute \| undefined | Attributes of the **ListItemGroup** node, or **undefined** if they fail to be obtained.|
+| ListItemGroupAttribute&nbsp;\|&nbsp;undefined | Attributes of the **ListItemGroup** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -5373,7 +5373,7 @@ Obtains the **UIWaterFlowEvent** object associated with the [WaterFlow](#waterfl
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| [UIWaterFlowEvent](./arkui-ts/ts-container-waterflow.md#uiwaterflowevent19) \| undefined | **UIWaterFlowEvent** object for the **WaterFlow** node, or **undefined** if it fails to be obtained.|
+| [UIWaterFlowEvent](./arkui-ts/ts-container-waterflow.md#uiwaterflowevent19)&nbsp;\|&nbsp;undefined | **UIWaterFlowEvent** object for the **WaterFlow** node, or **undefined** if it fails to be obtained.|
 
 **Example**
 
@@ -5400,7 +5400,7 @@ Obtains the attributes of a **WaterFlow** node. If the node is not created using
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| WaterFlowAttribute \| undefined | Properties of the **WaterFlow** node, or **undefined** if they fail to be obtained.|
+| WaterFlowAttribute&nbsp;\|&nbsp;undefined | Properties of the **WaterFlow** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -5503,7 +5503,7 @@ Obtains the attributes of a **FlowItem** node. If the node is not created using 
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| FlowItemAttribute \| undefined | Properties of the **FlowItem** node, or **undefined** if they fail to be obtained.|
+| FlowItemAttribute&nbsp;\|&nbsp;undefined | Properties of the **FlowItem** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -5696,7 +5696,7 @@ class MyNodeController extends NodeController {
     let parameters: NativeXComponentParameters = {
       type: XComponentType.SURFACE
     };
-    // Create an XComponent object.
+    // Create an XComponent node.
     let xcomponent = typeNode.createNode(uiContext, 'XComponent', parameters);
     xcomponent.attribute.backgroundColor(Color.Red);
     col.appendChild(xcomponent);
@@ -5739,7 +5739,7 @@ Obtain the attributes of an **XComponent** node. If the node is not created usin
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| XComponentAttribute \| undefined | Properties of the **XComponent** node, or **undefined** if they fail to be obtained.|
+| XComponentAttribute&nbsp;\|&nbsp;undefined | Properties of the **XComponent** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -5954,7 +5954,7 @@ Obtains the **UIGridEvent** object associated with the **Grid** node for configu
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| [UIGridEvent](./arkui-ts/ts-container-grid.md#uigridevent19) \| undefined | **UIGridEvent** object for the **Grid** node, or **undefined** if it fails to be obtained.|
+| [UIGridEvent](./arkui-ts/ts-container-grid.md#uigridevent19)&nbsp;\|&nbsp;undefined | **UIGridEvent** object for the **Grid** node, or **undefined** if it fails to be obtained.|
 
 **Example**
 
@@ -5981,7 +5981,7 @@ Obtains the attributes of a **Grid** node. If the node is not created using ArkT
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| GridAttribute \| undefined | Properties of the **Grid** node, or **undefined** if they fail to be obtained.|
+| GridAttribute&nbsp;\|&nbsp;undefined | Properties of the **Grid** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -6084,7 +6084,7 @@ Obtains the attributes of a **GridItem** node. If the node is not created using 
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| GridItemAttribute \| undefined | Properties of the **GridItem** node, or **undefined** if they fail to be obtained.|
+| GridItemAttribute&nbsp;\|&nbsp;undefined | Properties of the **GridItem** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -6346,7 +6346,7 @@ Obtains the attributes of a **TextArea** node. If the node is not created using 
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| TextAreaAttribute \| undefined | Properties of the **TextArea** node, or **undefined** if they fail to be obtained.|
+| TextAreaAttribute&nbsp;\|&nbsp;undefined | Properties of the **TextArea** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -6626,7 +6626,7 @@ Obtains the attributes of a **Checkbox** node. If the node is not created using 
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| CheckboxAttribute \| undefined | Attributes of the **Checkbox** node, or **undefined** if they fail to be obtained.|
+| CheckboxAttribute&nbsp;\|&nbsp;undefined | Attributes of the **Checkbox** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -6933,7 +6933,7 @@ Obtains the attributes of a **Radio** node. If the node is not created using Ark
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| RadioAttribute \| undefined | Properties of the **Radio** node, or **undefined** if they fail to be obtained.|
+| RadioAttribute&nbsp;\|&nbsp;undefined | Properties of the **Radio** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -7075,7 +7075,7 @@ Obtains the attributes of a **Slider** node. If the node is not created using Ar
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| SliderAttribute \| undefined | Properties of the **Slider** node, or **undefined** if they fail to be obtained.|
+| SliderAttribute&nbsp;\|&nbsp;undefined | Properties of the **Slider** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
@@ -7288,7 +7288,7 @@ Obtains the attributes of a **Toggle** node. If the node is not created using Ar
 
 | Type                 | Description     |
 | ------------------ | ------------------ |
-| ToggleAttribute \| undefined | Properties of the **Toggle** node, or **undefined** if they fail to be obtained.|
+| ToggleAttribute&nbsp;\|&nbsp;undefined | Properties of the **Toggle** node, or **undefined** if they fail to be obtained.|
 
 **Example**
 
