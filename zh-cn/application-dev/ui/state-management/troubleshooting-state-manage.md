@@ -51,7 +51,7 @@ message set after Welcome
 ### 第三步：状态变量的赋值是否可被观察
 **状态管理V1**
 
-在状态管理V1中，若开发者确认赋值前后值已发生变化却未能触发UI刷新，应检查当前赋值操作是否可被观察。示例如下。
+在状态管理V1中，若开发者确认赋值前后值已发生变化却未能触发UI刷新，应检查当前赋值操作是否可被观察（从API version 23开始，开发者可以使用[canBeObserved](./arkts-new-canBeObserved.md)接口来判断对象是否可被观察）。示例如下。
 
 在下面的示例中，开发者对`this.inner.value`的赋值无法触发```Text(`Child: inner value: ${this.inner.value}`)```组件的刷新，在遇到这个问题时，应该从以下方面排查当前赋值操作是否是可被观察。
   - [\@Watch](./arkts-watch.md)的监听函数是否执行。
@@ -186,7 +186,7 @@ struct Child {
 - 普通类：
 
   与状态管理V1不同，在状态管理V2观察普通类时，框架不会为其实例创建代理对象，因此无法通过getTarget来判断其是否为代理对象。开发者可以通过以下方式判断：
-  - 通过检查要观察的属性是否是[\@Trace](./arkts-track.md)装饰。
+  - 通过检查要观察的属性是否是[\@Trace](./arkts-new-observedV2-and-trace.md)装饰。
   - 观察ArkUI State泳道是否有状态变量变化信息上报，具体使用方法见[状态管理profiler调优能力](../ui-inspector-profiler.md#状态管理profiler调优能力)。
 - 内置类型（Built-in Types）：
 

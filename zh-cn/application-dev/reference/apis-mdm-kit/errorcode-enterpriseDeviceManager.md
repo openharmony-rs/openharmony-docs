@@ -435,60 +435,44 @@ Add keep alive applications failed.
 3. 检查应用是否实现托盘服务。
 4. 检查应用是否已添加到托盘。
 
-## 9201006 安装企业重签名证书超过数量上限
+## 9201009 日志收集任务创建失败
 
 **错误信息**
 
-The number of certificates has reached the limit.
+Collecting logs, please try again later.
 
 **错误描述**
 
-当企业设备管理已安装的企业重签名证书数量达到10个时，会产生此错误码。
+当企业设备管理创建日志收集任务失败时，会产生此错误码。
 
 **可能原因**
 
-已安装的企业重签名证书数量达到上限。
+当已有一个日志收集任务正在执行时，调用了[systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23)接口创建日志收集任务。
 
 **处理步骤**
 
-检查已安装的企业重签名证书数量是否达到10个，卸载多余证书。
+等前一个日志收集任务完成（即收到[EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonlogcollected23)回调）后，再调用[systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23)接口创建日志收集任务。
 
-## 9201007 企业重签名证书无效
+## 9201010 以太网网络接口配置失败
 
 **错误信息**
 
-The certificate is invalid.
+Ethernet configuration failed. Ethernet device not connected.
 
 **错误描述**
 
-当企业设备管理安装企业重签名证书失败时，会产生此错误码。
+以太网配置失败，或以太网设备未连接。
 
 **可能原因**
 
-该错误码表示企业设备管理安装企业重签名证书失败，可能原因如下。
+该错误码表示以太网配置失败，可能原因如下。
 
-1. 证书无效。
-2. 已安装过同名证书。
-
-**处理步骤**
-
-1. 检查证书是否为有效的企业重签名证书。
-2. 检查是否已安装过同名证书。
-
-## 9201008 企业重签名证书不存在
-
-**错误信息**
-
-The certificate does not exist.
-
-**错误描述**
-
-当企业设备管理卸载企业重签名证书失败时，会产生此错误码。
-
-**可能原因**
-
-卸载的证书不存在。
+1. 网卡未启用。
+2. 网卡名输入错误。
+3. 配置参数错误。
 
 **处理步骤**
 
-检查卸载的证书是否存在。
+1. 检查网卡是否启用。
+2. 检查输入的网卡名是否正确。
+3. 检查配置的参数是否正确。

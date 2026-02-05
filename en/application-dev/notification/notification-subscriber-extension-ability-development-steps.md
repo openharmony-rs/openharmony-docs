@@ -6,31 +6,32 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 ## Available APIs
-| API    | Description| Reference|
-| ----- |---------|----------|
-| onDestroy(): void| Callback to be invoked when the notification subscription extension is destroyed.|For details, see the API description in [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#ondestroy).|
-| onReceiveMessage(): void| Callback to be invoked when the system receives a notification.|For details, see the API description in [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage).|
-| onCancelMessages(): void| Callback to be invoked when notifications are canceled.|For details, see the API description in [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#oncancelmessages).|
+| API                             | Description               |
+| ---------------------------------- | --------------------|
+| [onDestroy(): void](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#ondestroy)                  | Callback to be invoked when the notification subscription extension is destroyed.|
+| [onReceiveMessage(notificationInfo: NotificationInfo): void](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) | Callback to be invoked when a notification is received.|
+| [onCancelMessages(hashCodes: Array\<string>): void](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#oncancelmessages) | Callback to be invoked when notifications are canceled.|
 
 ## Prerequisites
-You have requested the ohos.permission.SUBSCRIBE_NOTIFICATION permission.
+You have requested the [ohos.permission.SUBSCRIBE_NOTIFICATION](../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission.
 
 ## How to Develop
 
 To implement a provider for [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md), you need to create a **NotificationSubscriberExtensionAbility** in [DevEco Studio](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-tools-overview) project. The procedure is as follows:
 
-1. Create the **entry/src/main/ets/notificationsubscriberextability** directory.
+1. Create the **entry/src/main/ets/extensionability** directory.
 
-2. Create the **NotificationSubscriberExtAbility.ets** file in the **entry/src/main/ets/notificationsubscriberextability** directory. The file content is as follows:
-   <!--@[huidiao_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->
+2. Create the **NotificationSubscriberExtAbility.ets** file in the **entry/src/main/ets/extensionability** directory. The file content is as follows:
+   <!--@[callback_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->   
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
    // ...
-   const DOMAIN = 0x0000;
    
-   export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
+   const DOMAIN = 0x0000;
+   // ...
+   export class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
      // ...
      onDestroy(): void {
        hilog.info(DOMAIN, 'testTag', 'onDestroy');
@@ -53,7 +54,7 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
 
 4. After implementing [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md), call the [OpenSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings) API at an appropriate time to open the notification subscription settings screen and guide the user to grant the permission for obtaining notifications from the device. This screen is displayed as a semi-modal dialog box. It is recommended that you provide a notification authorization button on the device management screen. When the user taps the button, the [OpenSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings) API is called.
 
-5. Configure ExtensionAbilities in the **module.json5** file of the application.
+5. Configure **ExtensionAbilities** in the **module.json5** file of the application.
    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/module.json5)-->
    
    ``` JSON5
@@ -82,27 +83,124 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
 ## Sample Code for Classic Bluetooth
 
 1. The following uses classic Bluetooth as an example. You can use BLE for connection as required.
-2. After receiving the message, the user establishes a Bluetooth connection if the connection is invalid.
-3. If the Bluetooth connection already exists, the user directly send the message via Bluetooth.
-4. If the message fails to be sent, the user will re-establish the connection and resume sending it once the connection is successfully established.
-   <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->
+2. After the user receives a message, the application establishes a Bluetooth connection if the current connection is invalid.
+3. If an active Bluetooth connection already exists, the application directly uses this connection to send the message.
+4. If message transmission fails, the application will re-establish the connection and retry sending the message once the connection is successfully established.
+5. The application requests the **ohos.permission.ACCESS_BLUETOOTH** permission. For details about how to configure and apply for permissions, see [Declaring Permissions](../security/AccessToken/declare-permissions.md) and [Requesting User Authorization](../security/AccessToken/request-user-authorization.md).
+   <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->   
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
-   import SppClientManager from '../utils/SppClientManager'
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { socket } from '@kit.ConnectivityKit'
+   import {util} from '@kit.ArkTS'; 
    
    const DOMAIN = 0x0000;
+   class TransferInfo {
+     public type: string = ''
+     public info: notificationExtensionSubscription.NotificationInfo | undefined
+     public cancelHashCodes: Array<string> | undefined
+   }
    
-   export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
+   class SppClientManager {
+     private clientNumber: number = -1;
+     private peerDevice: string = '';
+   
+     constructor(peerDevice: string) {
+       this.peerDevice = peerDevice
+     }
+   
+     public isConnect(): boolean {
+       return this.clientNumber !== -1;
+     }
+   
+     public async startConnect(): Promise<boolean> {
+       let option: socket.SppOptions = {
+         uuid: '00009999-0000-1000-8000-00805F9B34FB',
+         secure: false,
+         type: socket.SppType.SPP_RFCOMM
+       };
+       socket.sppConnect(this.peerDevice, option, (err: BusinessError, num: number) => {
+         if (err) {
+           hilog.error(DOMAIN, 'testTag', `cpp connect failed, errCode: ${err.code}, errMessage: ${err.message}`);
+         } else {
+           hilog.info(DOMAIN, 'testTag', `spp connect success clientNumber: ${num}`);
+           this.clientNumber = num;
+         }
+       });
+       return true
+     }
+   
+     private sendData(jsonStr: string) {
+       if (!this.isConnect()) {
+         hilog.error(DOMAIN, 'testTag', `server is not connected`);
+         return;
+       }
+       if (!jsonStr) {
+         hilog.error(DOMAIN, 'testTag', 'json is empty');
+         return;
+       }
+       hilog.info(DOMAIN, 'testTag', `prepare sending data to client ${this.clientNumber}`);
+       const textEncoder:util.TextEncoder = new util.TextEncoder();
+       const uint8Array: Uint8Array = textEncoder.encodeInto(jsonStr);
+       const arrayBuffer = uint8Array.buffer;
+   
+       socket.sppWrite(this.clientNumber, arrayBuffer);
+       hilog.info(DOMAIN, 'testTag', `sending success size: ${arrayBuffer.byteLength} bytes, data: ${jsonStr}`);
+     }
+   
+     public sendNotificationData(notificationInfo: notificationExtensionSubscription.NotificationInfo) {
+       let info: TransferInfo = {
+         type: 'publish',
+         info: notificationInfo,
+         cancelHashCodes: undefined
+       };
+   
+       let jsonStr = JSON.stringify(info);
+       this.sendData(jsonStr);
+     }
+   
+     public sendCancelNotificationData(cancelHashCodes: Array<string>) {
+       let info: TransferInfo = {
+         type: 'cancel',
+         cancelHashCodes: cancelHashCodes,
+         info: undefined
+       };
+   
+       let jsonStr = JSON.stringify(info);
+       this.sendData(jsonStr);
+     }
+   
+     public read = (dataBuffer: ArrayBuffer) => {
+       let data = new Uint8Array(dataBuffer);
+       hilog.info(DOMAIN, 'testTag', `client data: ${JSON.stringify(data)}`);
+     };
+   
+     public stopConnect() {
+       hilog.info(DOMAIN, 'testTag', `closeSppClient ${this.clientNumber}`);
+       try {
+         socket.off('sppRead', this.clientNumber, this.read);
+       } catch (err) {
+         hilog.error(DOMAIN, 'testTag', `off sppRead errCode: ${err.code}, errMessage: ${err.message}`);
+       }
+       try {
+         socket.sppCloseClientSocket(this.clientNumber);
+         this.clientNumber = -1;
+       } catch (err) {
+         hilog.error(DOMAIN, 'testTag', `stopConnect errCode: ${err.code}, errMessage: ${err.message}`);
+       }
+     }
+   }
+   
+   // export SppClientManager;
+   export class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
      private sppClientManager: SppClientManager | undefined;
-   
      onDestroy(): void {
        hilog.info(DOMAIN, 'testTag', 'onDestroy');
        this.sppClientManager!.stopConnect();
      }
-   
-     //Called back when a notification is published.
+     // Called back when a notification is published.
      onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
        hilog.info(DOMAIN, 'testTag', `on receive message ${JSON.stringify(notificationInfo)}`)
        notificationExtensionSubscription.getSubscribeInfo()
@@ -118,9 +216,11 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
                this.sendPublishWithRetry(notificationInfo);
              }, 3000)
            }
-         })
+         }).catch((err: BusinessError) => {
+         hilog.error(DOMAIN, 'testTag',
+           `notificationExtensionSubscription failed, errCode ${err.code}, errorMessage ${err.message}`);
+       });
      }
-   
      // Sends a publish notification and retries once upon failure.
      private sendPublishWithRetry(notificationInfo: notificationExtensionSubscription.NotificationInfo) {
        try {
@@ -134,7 +234,7 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
        }
      }
    
-     //Called back when notifications is cancelled.
+     // Called back when notifications is cancelled.
      onCancelMessages(hashCodes: Array<string>): void {
        hilog.info(DOMAIN, 'testTag', `on cancel message ${JSON.stringify(hashCodes)}`)
        notificationExtensionSubscription.getSubscribeInfo()
@@ -150,9 +250,10 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
                this.sendCancelWithRetry(hashCodes);
              }, 3000)
            }
-         })
+         }).catch((err: BusinessError) => {
+         hilog.error(DOMAIN, 'testTag', `notificationExtensionSubscription failed, errCode ${err.code}, errorMessage ${err.message}`);
+       });
      }
-   
      // Retries a cancel operation if it fails.
      private sendCancelWithRetry(hashCodes: string[]) {
        try {

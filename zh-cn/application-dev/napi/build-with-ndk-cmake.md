@@ -186,7 +186,7 @@ int sum(int a, int b)
 
    ```shell
     >mkdir build && cd build
-    >cmake -DOHOS_STL=c++_shared -DOHOS_ARCH=arm64-v8a -DOHOS_PLATFORM=OHOS -DCMAKE_TOOLCHAIN_FILE={ohos-sdk}/linux/native/build/cmake/ohos.toolchain.cmake ..
+    >cmake -D OHOS_STL=c++_shared -D OHOS_ARCH=arm64-v8a -D OHOS_PLATFORM=OHOS -D CMAKE_TOOLCHAIN_FILE={ohos-sdk}/linux/native/build/cmake/ohos.toolchain.cmake ..
     >cmake --build .
    ```
 
@@ -194,13 +194,17 @@ int sum(int a, int b)
 
    ```shell
     >mkdir build && cd build
-    >cmake -DOHOS_STL=c++_static -DOHOS_ARCH=arm64-v8a -DOHOS_PLATFORM=OHOS -DCMAKE_TOOLCHAIN_FILE={ohos-sdk}/linux/native/build/cmake/ohos.toolchain.cmake ..
+    >cmake -D OHOS_STL=c++_static -D OHOS_ARCH=arm64-v8a -D OHOS_PLATFORM=OHOS -D CMAKE_TOOLCHAIN_FILE={ohos-sdk}/linux/native/build/cmake/ohos.toolchain.cmake ..
     >cmake --build .
    ```
 
    命令中，OHOS_ARCH与OHOS_PLATFORM两个变量最终会生成clang++的--target命令参数，在此例子中就是--target=arm-linux-ohos和--march=armv7a两个参数。
    
    CMAKE_TOOLCHAIN_FILE指定了toolchain文件，在此文件中默认给clang++设置了--sysroot={ndk_sysroot目录}，告诉编译器查找系统头文件的根目录。
+
+> **注意**：
+>
+> 动态链接在运行时加载库文件，能有效节省磁盘空间和内存，但也增加运行时加载开销，略微影响启动性能。静态链接则将库代码直接嵌入可执行文件，启动快，但生成的文件体积更大，适合对启动性能敏感或运行环境受限的场景，不适用于对磁盘空间敏感的应用或设备。
 
 **windows系统环境下**
 
@@ -218,7 +222,7 @@ Step 1. 同样在工程目录的模块目录下创建 build 文件夹，进入bu
 ```
 > **注意**：
 >
-> 如需debug调试，增加参数 -D CMAKE_BUILD_TYPE=normal；cmake路径和编译工具链ohos.toolchain.cmake路径都是下载好的ndk路径。<br>执行结果如下图：
+> 如需debug调试，增加参数 -D CMAKE_BUILD_TYPE=Debug；cmake路径和编译工具链ohos.toolchain.cmake路径都是下载好的ndk路径。<br>执行结果如下图：
 
 ![zh-cn_image_20-24-01-16-14-58](figures/zh-cn_image_20-24-01-16-14-58.png)
 
@@ -231,3 +235,5 @@ Step 2. 让我们用ninja指令来编译生成目标文件，其位置如下图�
 ninja -f build.ninja 或者用 cmake --build .   执行结果如下：
 
 ![zh-cn_image_20-24-01-16-14-60](figures/zh-cn_image_20-24-01-16-14-60.png)
+
+编译生成的可执行文件位于创建的build目录下的src目录中。

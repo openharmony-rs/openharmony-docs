@@ -596,6 +596,8 @@ setShowOnLockScreen(show: boolean, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
+> 该接口功能仅对系统应用生效。
+> 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用window.setShowOnLockScreen替代，新接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -628,6 +630,8 @@ setShowOnLockScreen(show: boolean): Promise\<void>
 
 > **说明：**
 >
+> 该接口功能仅对系统应用生效。
+> 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用window.setShowOnLockScreen替代，新接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -665,7 +669,9 @@ setWakeUpScreen(wakeUp: boolean, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 12开始废弃，替代接口window.setWakeUpScreen仅面向系统应用开放。
+> 该接口功能仅对系统应用生效。
+>
+> 从API version 7开始支持，从API version 12开始废弃。替代接口window.setWakeUpScreen替代，新接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -697,7 +703,9 @@ setWakeUpScreen(wakeUp: boolean): Promise\<void>
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 12开始废弃，替代接口window.setWakeUpScreen仅面向系统应用开放。
+> 该接口功能仅对系统应用生效。
+>
+> 从API version 7开始支持，从API version 12开始废弃。替代接口window.setWakeUpScreen替代，新接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

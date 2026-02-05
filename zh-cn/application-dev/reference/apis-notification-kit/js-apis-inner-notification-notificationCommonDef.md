@@ -21,7 +21,7 @@
 | 名称   | 类型   | 只读 | 可选 | 说明   |
 | ------ | ------ | ----| -- |  ------ |
 | bundle | string | 否  | 否 | 应用程序的名称。 |
-| uid    | number | 否  | 是 | 应用程序的UID。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)获取，默认为0。 应用分身或车机场景下，此参数为必填项。|
+| uid    | number | 否  | 是 | 应用程序的UID。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)获取，默认为0。 应用分身<!--Del-->或车机<!--DelEnd-->场景下，此参数为必填项。|
 
 ## GrantedBundleInfo<sup>22+</sup>
 

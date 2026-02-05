@@ -19,12 +19,12 @@
 - [生态诉求]：支持第三方穿戴接收系统通知
 <!--DelEnd-->
 - [使用场景]：手机通知同步到穿戴设备
-- [传输方式]：支持低功耗蓝牙（BLE）和传统蓝牙两种同步方式
+- [传输方式]：支持低功耗蓝牙（Bluetooth Low Energy）和传统蓝牙两种同步方式
 
 ### 约束条件
 1. 本示例仅支持标准系统上运行，支持设备：手机和平板。
-2. 本示例为Stage模型，支持API22版本SDK，版本号：6.0.2.54。
-3. 本示例需要使用DevEco Studio 6.0.0 beta5 (Build Version: 6.0.0.848, built on September 12, 2025)才可编译运行。
+2. 本示例为Stage模型，支持API22及以上版本SDK。
+3. 本示例需要使用DevEco Studio 6.0.2 Release (Build Version: 6.0.2.640, built on January 21, 2026)及以上版本才可编译运行。
 4. 三方穿戴应用需申请[ohos.permission.SUBSCRIBE_NOTIFICATION](../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，权限为system_basic级别。
 
 ### 运作机制

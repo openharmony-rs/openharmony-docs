@@ -178,7 +178,7 @@ on(type: 'metadataObjectsAvailable', callback: AsyncCallback\<Array\<MetadataObj
 
 | 参数名      | 类型         | 必填 | 说明                                  |
 | -------- | -------------- | ---- | ------------------------------------ |
-| type     | string         | 是   | 监听事件，固定为'metadataObjectsAvailable'，metadataOutput创建成功后可监听。检测到有效的metadata数据时触发该事件发生并返回相应的metadata数据。 |
+| type     | string         | 是   | 监听事件，固定为'metadataObjectsAvailable'，metadataOutput创建成功后可监听。<br>检测到有效的metadata数据时，触发该事件发生并返回相应的metadata数据。如果输入错误字段，则不会创建有效监听。 |
 | callback | AsyncCallback\<Array\<[MetadataObject](arkts-apis-camera-i.md#metadataobject)\>\> | 是   | 回调函数，用于获取metadata数据。 |
 
 **示例：**
@@ -284,11 +284,13 @@ function unregisterMetadataOutputError(metadataOutput: camera.MetadataOutput): v
 }
 ```
 
-## addMetadataObjectTypes<sup>23</sup> 
+## addMetadataObjectTypes<sup>23+</sup> 
 
 addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 新增需要上报的检测对象类型。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -296,7 +298,7 @@ addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 | 参数名                  | 类型                                               | 必填 | 说明                          |
 | -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| types  | Array\<MetadataObjectType\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
+| types  | Array\<[MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
 
 **错误码：**
 
@@ -324,11 +326,13 @@ function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Ar
 }
 ```
 
-## removeMetadataObjectTypes<sup>23</sup> 
+## removeMetadataObjectTypes<sup>23+</sup> 
 
 removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 删除需要上报的检测对象类型。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -336,7 +340,7 @@ removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 | 参数名                  | 类型                                               | 必填 | 说明                          |
 | -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| types  | Array\<MetadataObjectType\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
+| types  | Array\<[MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)\>  | 是  | metadata流类型信息，通过getSupportedOutputCapability接口获取。 |
 
 **错误码：**
 

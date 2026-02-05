@@ -27,71 +27,64 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 当保存请求完成时所触发的回调接口。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+### onSuccess
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| ---- | ---- | ---- | ---- | ---- |
-| onSuccess | [OnSuccessFn](#onsuccessfn23) | 否    | 否    | 当保存请求成功时，该回调被调用。<br/>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br/>**说明**：<br/>从API version 23开始，原来的onSuccess()方法变更为当前属性，调用方式不变。 |
-| onFailure | [OnFailureFn](#onfailurefn23) | 否    | 否    | 当保存请求失败时，该回调被调用。<br/>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br/>**说明**：<br/>从API version 23开始，原来的onFailure()方法变更为当前属性，调用方式不变。 |
+onSuccess(): void
 
-## OnSuccessFn<sup>23+</sup>
+当保存请求成功时，该回调被调用。
 
-type OnSuccessFn = () => void
-
-当保存请求成功时，会触发该回调。
-
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **示例：**
 
-参见[AutoSaveCallback.onFailure](#onfailurefn23)。
+参见[AutoSaveCallback.onFailure](#onfailure)。
 
-## OnFailureFn<sup>23+</sup>
+### onFailure
 
-type OnFailureFn = () => void
+onFailure(): void
 
-当保存请求失败时，会触发该回调。
+当保存请求失败时，该回调被调用。
 
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **示例：**
 
-```ts
-// Index.ets, 含有账号、密码框等组件的页面
-import { autoFillManager } from '@kit.AbilityKit';
-import { UIContext } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let uiContext = AppStorage.get<UIContext>("uiContext");
-let callback: autoFillManager.AutoSaveCallback = {
-  onSuccess: () => {
-    console.info(`save request on success.`);
-  },
-  onFailure: () => {
-    console.error(`save request on failure.`);
+  ```ts
+  // Index.ets, 含有账号、密码框等组件的页面
+  import { autoFillManager } from '@kit.AbilityKit';
+  import { UIContext } from '@kit.ArkUI';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let uiContext = AppStorage.get<UIContext>("uiContext");
+  let callback: autoFillManager.AutoSaveCallback = {
+    onSuccess: () => {
+      console.info(`save request on success.`);
+    },
+    onFailure: () => {
+      console.error(`save request on failure.`);
+    }
+  };
+  
+  @Entry
+  @Component
+  struct Index {
+    build() {
+      Button('requestAutoSave')
+        .onClick(() => {
+          try {
+            // 发起保存请求
+            autoFillManager.requestAutoSave(uiContext, callback);
+          } catch (error) {
+            console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+          }
+        })
+    }
   }
-};
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Button('requestAutoSave')
-      .onClick(() => {
-        try {
-          // 发起保存请求
-          autoFillManager.requestAutoSave(uiContext, callback);
-        } catch (error) {
-          console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-        }
-      })
-  }
-}
-```
+  ```
 
 > **说明：**
 >

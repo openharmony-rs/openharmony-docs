@@ -30,7 +30,7 @@ publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback\<number>):
 
 > **说明：**
 >
-> 该接口需要申请通知弹窗权限[NotificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)后调用。
+> 该接口需要申请通知弹窗权限[notificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)后调用。
 >
 > <!--RP1--><!--RP1End-->
 
@@ -84,7 +84,7 @@ publishReminder(reminderReq: ReminderRequest): Promise\<number>
 
 > **说明：**
 >
-> 该接口需要申请通知弹窗权限[NotificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)后调用。
+> 该接口需要申请通知弹窗权限[notificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)后调用。
 >
 > <!--RP1--><!--RP1End-->
 
@@ -903,11 +903,11 @@ subscribeReminderState(callback: Callback\<Array\<ReminderState>>): Promise\<voi
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-reminderStateCallback(states: Array<reminderAgentManager.ReminderState>) {
+function reminderStateCallback(states: Array<reminderAgentManager.ReminderState>) {
   console.info('length is : ' + states.length);
 }
 
-reminderAgentManager.subscribeReminderState(this.reminderStateCallback).then(() => {
+reminderAgentManager.subscribeReminderState(reminderStateCallback).then(() => {
   console.info('subscribe succeed');
 }).catch((err: BusinessError) => {
   console.error('promise err code:' + err.code + ' message:' + err.message);
@@ -950,11 +950,11 @@ unsubscribeReminderState(callback?: Callback\<Array\<ReminderState>>): Promise\<
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-reminderStateCallback(states: Array<reminderAgentManager.ReminderState>) {
+function reminderStateCallback(states: Array<reminderAgentManager.ReminderState>) {
   console.info('length is : ' + states.length);
 }
 
-reminderAgentManager.unsubscribeReminderState(this.reminderStateCallback).then(() => {
+reminderAgentManager.unsubscribeReminderState(reminderStateCallback).then(() => {
   console.info('unsubscribe succeed');
 }).catch((err: BusinessError) => {
   console.error('promise err code:' + err.code + ' message:' + err.message);

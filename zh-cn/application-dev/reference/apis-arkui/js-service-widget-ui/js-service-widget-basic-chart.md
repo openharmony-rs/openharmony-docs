@@ -26,7 +26,7 @@
 | type              | string                             | line   | 否   | 设置图表类型（不支持动态修改），可选项有：<br/>-&nbsp;bar：柱状图。<br/>-&nbsp;line：线形图。<br/>-&nbsp;gauge：量规图。<br/>-&nbsp;progress：进度类圆形图表。<br/>-&nbsp;loading：加载类圆形图表。<br/>-&nbsp;rainbow：占比类圆形图表。 |
 | options           | ChartOptions                       | -      | 否   | 图表参数设置，用于设置x轴、y轴的最小值、最大值、刻度数、是否显示，线条宽度、是否平滑等。（不支持动态修改）,量规图不生效。 |
 | datasets          | Array\<ChartDataset>               | -      | 否   | 数据集合，用于设置多条数据集及其背景色，量规图不生效。       |
-| segments          | DataSegment \| Array\<DataSegment> | -      | 否   | 进度类、加载类和占比类圆形图表使用的数据结构。<br/>DataSegment针对进度类和加载类圆形图表使用，Array\<DataSegment>针对占比类图标使用，DataSegment最多9个。 |
+| segments          | DataSegment \| Array\<DataSegment> | -      | 否   | 进度类、加载类和占比类圆形图表使用的数据结构。<br/>DataSegment针对进度类和加载类圆形图表使用，Array\<DataSegment>针对占比类图表使用，DataSegment最多9个。 |
 | effects           | boolean                            | true   | 否   | 是否开启占比类、进度类圆形图表特效。<br/>默认值：true，表示开启占比类、进度类圆形图表特效。                         |
 | animationduration | number                             | 3000   | 否   | 设置占比类圆形图表展开动画时长，单位为ms。                   |
 
@@ -100,7 +100,7 @@
 | description  | string        | -        | 否    | 表示当前点的注释内容。                              |
 | textLocation | string        | -        | 否    | 可选值为：<br>- "top"：注释的绘制位置位于点的上方。<br>- "bottom"：注释的绘制位置位于点的下方。<br>- "none"：不绘制。 |
 | textColor    | &lt;color&gt; | \#000000 | 否    | 表示注释文字的颜色。                               |
-| lineDash     | string        | solid    | 否    | 表示绘制当前线段虚线的样式。<br>- "dashed，&nbsp;5，&nbsp;5"：表示纯虚线，绘制5px的实线后留5px的空白。<br>- “solid”：表示绘制实线。 |
+| lineDash     | string        | solid    | 否    | 表示绘制当前线段虚线的样式。<br>- "dashed,&nbsp;5,&nbsp;5"：表示纯虚线，绘制5px的实线后留5px的空白。<br>- “solid”：表示绘制实线。 |
 | lineColor    | &lt;color&gt; | \#000000 | 否    | 表示绘制当前线段的颜色。此颜色不设置会默认使用整体的strokeColor。   |
 
   **表9** DataSegment

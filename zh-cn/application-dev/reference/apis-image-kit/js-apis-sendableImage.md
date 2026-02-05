@@ -2004,7 +2004,7 @@ createPixelMap(options?: image.DecodingOptions): Promise\<PixelMap>
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| Promise\<[PixelMap]> | Promise实例，用于异步返回创建结果。 |
+| Promise\<[PixelMap](#pixelmap)> | Promise实例，用于异步返回创建结果。 |
 
 **示例：**
 

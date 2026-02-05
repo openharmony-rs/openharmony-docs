@@ -441,7 +441,7 @@ Reads data from the serial port device asynchronously. This API uses a promise t
 |---------|------------|----|------------------|
 | portId  | number     | Yes | Port number.     |
 | buffer  | Uint8Array | Yes | Buffer for reading data.|
-| timeout | number     | No | (Optional) Timeout duration, in ms. The default value is **0**, indicating no timeout. You can set this parameter as required.|
+| timeout | number     | No | Timeout, in milliseconds. If the API has no data in the buffer of the target port, it returns the result after waiting for the specified time. The default value **0** indicates that the API returns the result without waiting.|
 
 **Returns**
 
@@ -528,7 +528,7 @@ Reads data from the serial port device synchronously.
 |---------|------------|----|------------------|
 | portId  | number     | Yes | Port number.|
 | buffer  | Uint8Array | Yes | Buffer for reading data.|
-| timeout | number     | No | (Optional) Timeout duration, in ms. The default value is **0**, indicating no timeout. You can set this parameter as required.|
+| timeout | number     | No | Timeout, in milliseconds. If the API has no data in the buffer of the target port, it returns the result after waiting for the specified time. The default value **0** indicates that the API returns the result without waiting.|
 
 **Returns**
 

@@ -1472,7 +1472,7 @@ restoreWindowStage(localStorage: LocalStorage): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| localStorage | LocalStorage | 是 | 用于恢复window stage的存储数据。 |
+| localStorage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 是 | 用于恢复window stage的存储数据。 |
 
 **错误码：**
 
@@ -3406,7 +3406,9 @@ startSelfUIAbilityInCurrentProcess(want: Want, specifiedFlag: string, options?: 
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：
+- 从API version 23开始，该接口仅在PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+- 从API version 22开始，该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 

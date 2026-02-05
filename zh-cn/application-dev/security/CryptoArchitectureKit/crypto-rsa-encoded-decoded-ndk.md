@@ -28,10 +28,30 @@
 3. 调用[OH_CryptoAsymKeyGenerator_Convert]，传入参数CRYPTO_PEM和编码后的私钥字符串，返回RSA密钥对。
 
 - 编码示例：
-```C++
-#include "CryptoArchitectureKit/crypto_architecture_kit.h"
 
-static OH_Crypto_ErrCode doTestPriKeyPkcs1Encoded()
+  <!-- @[prikey_encoding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/cpp/types/project/prikey_encoding.cpp) -->
+
+``` C++
+#include "CryptoArchitectureKit/crypto_architecture_kit.h"
+#include "file.h"
+
+static OH_Crypto_ErrCode SetParams(OH_CryptoPrivKeyEncodingParams *params)
+{
+    Crypto_DataBlob password = {(uint8_t *)"1234567890", 10};
+    Crypto_DataBlob cipher = {(uint8_t *)"AES-128-CBC", 11};
+    OH_Crypto_ErrCode ret = OH_CryptoPrivKeyEncodingParams_SetParam(params,
+        CRYPTO_PRIVATE_KEY_ENCODING_PASSWORD_STR, &password);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+    ret = OH_CryptoPrivKeyEncodingParams_SetParam(params, CRYPTO_PRIVATE_KEY_ENCODING_SYMMETRIC_CIPHER_STR, &cipher);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+    return CRYPTO_SUCCESS;
+}
+
+OH_Crypto_ErrCode doTestPriKeyPkcs1Encoded()
 {
     OH_CryptoAsymKeyGenerator *keyGen = nullptr;
     OH_Crypto_ErrCode ret = OH_CryptoAsymKeyGenerator_Create("RSA2048", &keyGen);
@@ -58,17 +78,7 @@ static OH_Crypto_ErrCode doTestPriKeyPkcs1Encoded()
         OH_CryptoAsymKeyGenerator_Destroy(keyGen);
         return ret;
     }
-
-    Crypto_DataBlob password = {(uint8_t *)"1234567890", 10};
-    Crypto_DataBlob cipher = {(uint8_t *)"AES-128-CBC", 11};
-    ret = OH_CryptoPrivKeyEncodingParams_SetParam(params, CRYPTO_PRIVATE_KEY_ENCODING_PASSWORD_STR, &password);
-    if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoPrivKeyEncodingParams_Destroy(params);
-        OH_CryptoKeyPair_Destroy(keyPair);
-        OH_CryptoAsymKeyGenerator_Destroy(keyGen);
-        return ret;
-    }
-    ret = OH_CryptoPrivKeyEncodingParams_SetParam(params, CRYPTO_PRIVATE_KEY_ENCODING_SYMMETRIC_CIPHER_STR, &cipher);
+    ret = SetParams(params);
     if (ret != CRYPTO_SUCCESS) {
         OH_CryptoPrivKeyEncodingParams_Destroy(params);
         OH_CryptoKeyPair_Destroy(keyPair);
@@ -92,30 +102,36 @@ static OH_Crypto_ErrCode doTestPriKeyPkcs1Encoded()
 }
 ```
 
+
 - 解码示例：
-```C++
+
+  <!-- @[prikey_decoding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/cpp/types/project/prikey_decoding.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
 #include <string>
+#include "file.h"
 
-static OH_Crypto_ErrCode doTestConvertPemKeyByPromise()
+OH_Crypto_ErrCode doTestPriKeyPkcs1Decoded()
 {
-    std::string priKeyPkcs1EncodingStr = "-----BEGIN RSA PRIVATE KEY-----\n"
-                                         "Proc-Type: 4,ENCRYPTED\n"
-                                         "DEK-Info: AES-128-CBC,815A066131BF05CF87CE610A59CC69AE\n\n"
-                                         "7Jd0vmOmYGFZ2yRY8fqRl3+6rQlFtNcMILvcb5KWHDSrxA0ULmJE7CW0DSRikHoA\n"
-                                         "t0KgafhYXeQXh0dRy9lvVRAFSLHCLJVjchx90V7ZSivBFEq7+iTozVp4AlbgYsJP\n"
-                                         "vx/1sfZD2WAcyMJ7IDmJyft7xnpVSXsyWGTT4f3eaHJIh1dqjwrso7ucAW0FK6rp\n"
-                                         "/TONyOoXNfXtRbVtxNyCWBxt4HCSclDZFvS9y8fz9ZwmCUV7jei/YdzyQI2wnE13\n"
-                                         "W8cKlpzRFL6BWi8XPrUtAw5MWeHBAPUgPWMfcmiaeyi5BJFhQCrHLi+Gj4EEJvp7\n"
-                                         "mP5cbnQAx6+paV5z9m71SKrI/WSc4ixsYYdVmlL/qwAK9YliFfoPl030YJWW6rFf\n"
-                                         "T7J9BUlHGUJ0RB2lURNNLakM+UZRkeE9TByzCzgTxuQtyv5Lwsh2mAk3ia5x0kUO\n"
-                                         "LHg3Eoabhdh+YZA5hHaxnpF7VjspB78E0F9Btq+A41rSJ6zDOdToHey4MJ2nxdey\n"
-                                         "Z3bi81TZ6Fp4IuROrvZ2B/Xl3uNKR7n+AHRKnaAO87ywzyltvjwSh2y3xhJueiRs\n"
-                                         "BiYkyL3/fnocD3pexTdN6h3JgQGgO5GV8zw/NrxA85mw8o9im0HreuFObmNj36T9\n"
-                                         "k5N+R/QIXW83cIQOLaWK1ThYcluytf0tDRiMoKqULiaA6HvDMigExLxuhCtnoF8I\n"
-                                         "iOLN1cPdEVQjzwDHLqXP2DbWW1z9iRepLZlEm1hLRLEmOrTGKezYupVv306SSa6J\n"
-                                         "OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n"
-                                         "-----END RSA PRIVATE KEY-----\n";
+    std::string priKeyPkcs1EncodingStr =
+        "-----BEGIN RSA PRIVATE KEY-----\n"
+         "Proc-Type: 4,ENCRYPTED\n"
+        "DEK-Info: AES-128-CBC,815A066131BF05CF87CE610A59CC69AE\n\n"
+        "7Jd0vmOmYGFZ2yRY8fqRl3+6rQlFtNcMILvcb5KWHDSrxA0ULmJE7CW0DSRikHoA\n"
+        "t0KgafhYXeQXh0dRy9lvVRAFSLHCLJVjchx90V7ZSivBFEq7+iTozVp4AlbgYsJP\n"
+        "vx/1sfZD2WAcyMJ7IDmJyft7xnpVSXsyWGTT4f3eaHJIh1dqjwrso7ucAW0FK6rp\n"
+        "/TONyOoXNfXtRbVtxNyCWBxt4HCSclDZFvS9y8fz9ZwmCUV7jei/YdzyQI2wnE13\n"
+        "W8cKlpzRFL6BWi8XPrUtAw5MWeHBAPUgPWMfcmiaeyi5BJFhQCrHLi+Gj4EEJvp7\n"
+        "mP5cbnQAx6+paV5z9m71SKrI/WSc4ixsYYdVmlL/qwAK9YliFfoPl030YJWW6rFf\n"
+        "T7J9BUlHGUJ0RB2lURNNLakM+UZRkeE9TByzCzgTxuQtyv5Lwsh2mAk3ia5x0kUO\n"
+        "LHg3Eoabhdh+YZA5hHaxnpF7VjspB78E0F9Btq+A41rSJ6zDOdToHey4MJ2nxdey\n"
+        "Z3bi81TZ6Fp4IuROrvZ2B/Xl3uNKR7n+AHRKnaAO87ywzyltvjwSh2y3xhJueiRs\n"
+        "BiYkyL3/fnocD3pexTdN6h3JgQGgO5GV8zw/NrxA85mw8o9im0HreuFObmNj36T9\n"
+        "k5N+R/QIXW83cIQOLaWK1ThYcluytf0tDRiMoKqULiaA6HvDMigExLxuhCtnoF8I\n"
+        "iOLN1cPdEVQjzwDHLqXP2DbWW1z9iRepLZlEm1hLRLEmOrTGKezYupVv306SSa6J\n"
+        "OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n"
+        "-----END RSA PRIVATE KEY-----\n";
 
     OH_CryptoAsymKeyGenerator *keyGen = nullptr;
     OH_Crypto_ErrCode ret = OH_CryptoAsymKeyGenerator_Create("RSA2048", &keyGen);

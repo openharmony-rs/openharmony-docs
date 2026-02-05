@@ -12,14 +12,16 @@
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-**系统能力**：SystemCapability.Notification.Notification
+## NotificationFlags
 
-## 属性
+描述通知标志位。
+
+**系统能力**：SystemCapability.Notification.Notification
 
 | 名称             | 类型                    | 只读 | 可选 | 说明                                         |
 | ---------------- | ---------------------- | ---- | -----|-------------------------------------------- |
-| soundEnabled     | [NotificationFlagStatus](#notificationflagstatus11) | 否  | 是 | 是否启用声音提示功能。设置时仅[TYPE_CLOSE](#notificationflagstatus11)会生效。    |
-| vibrationEnabled | [NotificationFlagStatus](#notificationflagstatus11) | 否  | 是 | 是否启用振动提醒功能。设置时仅[TYPE_CLOSE](#notificationflagstatus11)会生效。 |
+| soundEnabled     | [NotificationFlagStatus](#notificationflagstatus11) | 否  | 是 | 是否启用声音提示功能。从API version 23开始成为可写参数，设置时仅[TYPE_CLOSE](#notificationflagstatus11)会生效。    |
+| vibrationEnabled | [NotificationFlagStatus](#notificationflagstatus11) | 否  | 是 | 是否启用振动提醒功能。从API version 23开始成为可写参数，设置时仅[TYPE_CLOSE](#notificationflagstatus11)会生效。 |
 | bannerEnabled<sup>23+</sup> | [NotificationFlagStatus](#notificationflagstatus11) | 否  | 是 | 是否启用横幅功能。设置时仅[TYPE_CLOSE](#notificationflagstatus11)会生效。 |
 | lockScreenEnabled<sup>23+</sup> | [NotificationFlagStatus](#notificationflagstatus11) | 否  | 是 | 是否启用锁屏功能。设置时仅[TYPE_CLOSE](#notificationflagstatus11)会生效。 |
 

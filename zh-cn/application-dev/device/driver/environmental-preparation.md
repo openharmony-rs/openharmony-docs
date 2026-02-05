@@ -8,9 +8,9 @@
 
 ## 开发工具及配置
 
-DevEco Studio作为驱动开发工具，是进行驱动开发的必备条件之一，我们可以使用该工具进行开发、调试、打包等操作。请下载安装该工具，并参考DevEco Studio使用指南中的创建工程及运行进行基本的操作验证，保证DevEco Studio可正常运行。
+DevEco Studio作为驱动开发工具，是进行驱动开发的必备条件之一，我们可以使用该工具进行开发、调试、打包等操作。请下载安装该工具，并参考工具概述中的创建一个新的工程进行基本的操作验证，保证DevEco Studio可正常运行。
 
-请[下载安装](https://developer.huawei.com/consumer/cn/download/)该工具，并参考[DevEco Studio使用指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-tools-overview)中的[创建工程及运行](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-create-new-project)进行基本的操作验证，保证DevEco Studio可正常运行。
+请使用[华为账号-登录](https://developer.huawei.com/consumer/cn/download/)下载安装该工具，并参考[工具概述](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-tools-overview)中的[创建一个新的工程](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-create-new-project)进行基本的操作验证，保证DevEco Studio可正常运行。
 
 ## SDK版本配置
 
@@ -20,10 +20,10 @@ DevEco Studio作为驱动开发工具，是进行驱动开发的必备条件之�
 
 | NDK接口          | SDK版本    |
 |----------------|----------|
-| USB DDK        | API10及以上 |
-| HID DDK        | API11及以上 |
-| USB Serial DDK | API18及以上 |
-| SCSI Peripheral DDK  | API18及以上 |
+| UsbDdk        | API10及以上 |
+| HidDdk        | API11及以上 |
+| USBSerialDDK | API18及以上 |
+| ScsiPeripheralDDK  | API18及以上 |
 
 ## 检验环境是否搭建成功
 
@@ -33,7 +33,7 @@ DevEco Studio作为驱动开发工具，是进行驱动开发的必备条件之�
 
 ## HDC配置
 
-HDC（HarmonyOS Device Connector）是为开发人员提供的用于调试的命令行工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互，详细参考[HDC配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/hdc)。
+HDC（HarmonyOS Device Connector）是为开发人员提供的用于调试的命令行工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互，详细参考[hdc](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/hdc)配置。
 
 > **注意：**
 >   

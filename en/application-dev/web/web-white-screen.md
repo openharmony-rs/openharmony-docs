@@ -13,7 +13,7 @@ There are many reasons for white screen issues on web pages. This topic describe
 3. In complex layout scenarios, check the rendering mode and component constraints.
 4. Handle the compatibility problem of the HTML5 code.
 5. Check the keywords related to the lifecycle and network loading in the log.
-6. Check whether the Secure Shield mode is enabled. For details about the restrictions after the Secure Shield mode is enabled, see [HTML5 Features Restricted by ArkWeb](./web-secure-shield-mode.md#html5-features-restricted-by-arkweb).
+6. Check whether the [Secure Shield mode](./web-secure-shield-mode.md) is enabled. For details about the restrictions after the Secure Shield mode is enabled, see [HTML5 Features Restricted by ArkWeb](./web-secure-shield-mode.md#html5-features-restricted-by-arkweb)
 
 ## Checking Permissions and Network Status
 If the network or file access permission is not added for the application, or the network status of the device is poor, the **Web** component will fail to be loaded or page elements will be missing, resulting in a white screen.
@@ -403,7 +403,7 @@ The following figure shows the key points contained during the **Web** component
 | event_message: commit navigation in main frame, routing_id: 4, url: *** | The navigation is committed to the child process.|
 | RenderFrameImpl::CommitNavigation,<br> event_message: page load start | The child process receives the commit message.|
 | NWebHandlerDelegate::OnNavigationEntryCommitted,<br> event_message: Commit source_id xxx | The main process receives **DidCommitNavigation**.|
-| event_message: load_timing_info errpr_code:0,...| The main resource loading is complete, and the time required for each phase is displayed.|
+| event_message: load_timing_info error_code:0,...| The main resource loading is complete, and the time required for each phase is displayed.|
 | event_message: MarkFirstContentfulPaint| The tag identifies an element with displayable content.|
 | NWebHandlerDelegate::OnPageVisible| The first frame is displayed.|
 | NWebHandlerDelegate::OnFirstContentfulPaint| The first frame content is displayed.|

@@ -29,10 +29,11 @@ Defines the address information of a Bluetooth device, including the address and
 | -------- | ------ | ---- | ---- | ----------- |
 | address    | string      | No   | No   | Address of the Bluetooth device, for example, XX:XX:XX:XX:XX:XX.|
 | addressType     | [BluetoothAddressType](#bluetoothaddresstype)      | No   | No   | Address type, which can be the actual or virtual MAC address of the Bluetooth device.|
+| rawAddressType<sup>23+</sup>     | [BluetoothRawAddressType](#bluetoothrawaddresstype23)      | No   | Yes   | Bluetooth device address type defined by the Bluetooth protocol, which can be **Public** or **Random**.|
 
 ## BluetoothAddressType
 
-Enumerate the address types of the Bluetooth device. The actual MAC address of a Bluetooth device is private information. During device discovery, the Bluetooth subsystem assigns a virtual MAC address to each Bluetooth device and saves the mapping between the virtual MAC address and the actual MAC address.
+Enumerates the Bluetooth device address types defined by the Bluetooth subsystem. The actual MAC address of a Bluetooth device is private information. During device discovery, the Bluetooth subsystem assigns a virtual MAC address to each Bluetooth device and saves the mapping between the virtual MAC address and the actual MAC address. For details about the address types, see [Bluetooth Device Address Type](../../connectivity/bluetooth/bluetooth-overview.md#bluetooth-device-address-type).
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -40,3 +41,14 @@ Enumerate the address types of the Bluetooth device. The actual MAC address of a
 | ------------------ | ---- | ------ |
 | VIRTUAL        | 1    | Virtual MAC address.|
 | REAL       | 2    | Actual MAC address.|
+
+## BluetoothRawAddressType<sup>23+</sup>
+
+Enumerates the Bluetooth device address types defined by the Bluetooth protocol. For details about the address types, see [Bluetooth Device Address Type](../../connectivity/bluetooth/bluetooth-overview.md#bluetooth-device-address-type).
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+| Name                | Value | Description    |
+| ------------------ | ---- | ------ |
+| PUBLIC        | 0    | Public address type.|
+| RANDOM       | 1    | Random address type.|

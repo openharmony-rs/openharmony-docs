@@ -17,6 +17,8 @@ You can use \@Param, a variable decorator in state management V2, to enhance the
 > The \@Param decorator is supported in custom components decorated with \@ComponentV2 since API version 12.
 >
 > This decorator can be used in atomic services since API version 12.
+>
+> This decorator can be used in ArkTS widgets since API version 23.
 
 ## Overview
 
@@ -35,34 +37,40 @@ You can use \@Param, a variable decorator in state management V2, to enhance the
 ## Limitations of State Management V1 to Accept Decorators Passed in Externally
 State management V1 has multiple decorators that can accept external input, including [\@State](arkts-state.md), [\@Prop](arkts-prop.md), [\@Link](arkts-link.md), and [\@ObjectLink](arkts-observed-and-objectlink.md). These decorators have restrictions and are difficult to distinguish. Improper use of them may cause performance problems.
 
-```ts
+<!-- @[Param_Decorator_Limitations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamDecoratorLimitations.ets) -->
+
+``` TypeScript
 @Observed
 class Region {
-  x: number;
-  y: number;
+  public x: number;
+  public y: number;
+
   constructor(x: number, y: number) {
     this.x = x;
     this.y = y;
   }
 }
+
 @Observed
 class Info {
-  region: Region;
+  public region: Region;
+
   constructor(x: number, y: number) {
     this.region = new Region(x, y);
   }
 }
+
 @Entry
 @Component
 struct Index {
   @State info: Info = new Info(0, 0);
-  
+
   build() {
     Column() {
       Button('change Info')
         .onClick(() => {
           this.info = new Info(100, 100);
-      })
+        })
       Child({
         region: this.info.region,
         regionProp: this.info.region,
@@ -73,6 +81,7 @@ struct Index {
     }
   }
 }
+
 @Component
 struct Child {
   @ObjectLink region: Region;
@@ -80,6 +89,7 @@ struct Child {
   @Prop infoProp: Info;
   @Link infoLink: Info;
   @State infoState: Info = new Info(1, 1);
+
   build() {
     Column() {
       Text(`ObjectLink region: ${this.region.x}-${this.region.y}`)
@@ -95,8 +105,8 @@ In the preceding example, \@State can only receive the reference of info during 
 
 | \@Param Variable Decorator | Description                                                        |
 | ------------------ | ------------------------------------------------------------ |
-| Parameter        | None.                                                        |
-| Allowed local modification      | No. To change the value, use the [\@Event](./arkts-new-event.md) decorator.                       |
+| Parameters        | None                                                        |
+| Allowed local modification      | No If you need to change the value, you can use \@Param with [\@Once](./arkts-new-once.md) to change the local value of the child component. Alternatively, you can use the [\@Event](./arkts-new-event.md) decorator to change the value of the \@Param data source.|
 | Synchronization type          | One-way synchronization from the parent to the child component.                                          |
 | Allowed variable types| Basic types, such as object, class, string, number, boolean, and enum, and built-in types such as Array, Date, Map, and Set. null, undefined, and union types.|
 | Initial value for the decorated variable| Local initialization is allowed. If local initialization is not performed, this parameter must be used together with the [\@Require](./arkts-require.md) decorator and initialization must be passed from the external.|
@@ -114,26 +124,29 @@ In the preceding example, \@State can only receive the reference of info during 
 \@Param decorated variables enjoys observation capability. When a decorated variable changes, the UI component bound to the variable will be re-rendered.
 
 - When the decorated variable is of the boolean, string, or number type, the synchronized change of the data source can be observed.
-
-  ```ts
+  <!-- @[Param_Observe_Change_Variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeVariable.ets) -->
+  
+  ``` TypeScript
   @Entry
   @ComponentV2
   struct Index {
+    // Number of clicks.
     @Local count: number = 0;
     @Local message: string = 'Hello';
     @Local flag: boolean = false;
+  
     build() {
       Column() {
         Text(`Local ${this.count}`)
         Text(`Local ${this.message}`)
         Text(`Local ${this.flag}`)
         Button('change Local')
-          .onClick(()=>{
+          .onClick(() => {
             // Changes to the data source will be synchronized to the child component.
             this.count++;
             this.message += ' World';
             this.flag = !this.flag;
-        })
+          })
         Child({
           count: this.count,
           message: this.message,
@@ -142,11 +155,13 @@ In the preceding example, \@State can only receive the reference of info during 
       }
     }
   }
+  
   @ComponentV2
   struct Child {
     @Require @Param count: number;
     @Require @Param message: string;
     @Require @Param flag: boolean;
+  
     build() {
       Column() {
         Text(`Param ${this.count}`)
@@ -158,26 +173,32 @@ In the preceding example, \@State can only receive the reference of info during 
   ```
 
 - When \@Local is used to decorate a variable of the class object type, only changes to the overall assignment of the class object can be observed. Direct observation of changes to class member property assignments is not supported. Observing class member properties requires the [\@ObservedV2](arkts-new-observedV2-and-trace.md) and [\@Trace](arkts-new-observedV2-and-trace.md) decorators.
-
-  ```ts
+  <!-- @[Param_Observe_Change_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeClass.ets) -->
+  
+  ``` TypeScript
   class RawObject {
-    name: string;
+    public name: string;
+  
     constructor(name: string) {
       this.name = name;
     }
   }
+  
   @ObservedV2
   class ObservedObject {
-    @Trace name: string;
+    @Trace public name: string;
+  
     constructor(name: string) {
       this.name = name;
     }
   }
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local rawObject: RawObject = new RawObject('rawObject');
     @Local observedObject: ObservedObject = new ObservedObject('observedObject');
+  
     build() {
       Column() {
         Text(`${this.rawObject.name}`)
@@ -187,14 +208,14 @@ In the preceding example, \@State can only receive the reference of info during 
             // Changes to the overall assignment of the class object can be observed.
             this.rawObject = new RawObject('new rawObject');
             this.observedObject = new ObservedObject('new observedObject');
-        })
+          })
         Button('change name')
           .onClick(() => {
             // \@Local and \@Param cannot observe the class object properties. Therefore, the changes of rawObject.name cannot be observed.
             this.rawObject.name = 'new rawObject name';
             // The name property of ObservedObject is decorated by @Trace. Therefore, the changes of observedObject.name can be observed.
             this.observedObject.name = 'new observedObject name';
-        })
+          })
         Child({
           rawObject: this.rawObject,
           observedObject: this.observedObject
@@ -202,10 +223,12 @@ In the preceding example, \@State can only receive the reference of info during 
       }
     }
   }
+  
   @ComponentV2
   struct Child {
     @Require @Param rawObject: RawObject;
     @Require @Param observedObject: ObservedObject;
+  
     build() {
       Column() {
         Text(`${this.rawObject.name}`)
@@ -216,14 +239,15 @@ In the preceding example, \@State can only receive the reference of info during 
   ```
 
 - When the decorated variable is a simple type array, the overall or item changes of the array can be observed.
-
-  ```ts
+  <!-- @[Param_Observe_Change_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeArray.ets) -->
+  
+  ``` TypeScript
   @Entry
   @ComponentV2
   struct Index {
-    @Local numArr: number[] = [1,2,3,4,5];
-    @Local dimensionTwo: number[][] = [[1,2,3],[4,5,6]];
-    
+    @Local numArr: number[] = [1, 2, 3, 4, 5];
+    @Local dimensionTwo: number[][] = [[1, 2, 3], [4, 5, 6]];
+  
     build() {
       Column() {
         Text(`${this.numArr[0]}`)
@@ -240,8 +264,8 @@ In the preceding example, \@State can only receive the reference of info during 
           })
         Button('change whole array')
           .onClick(() => {
-            this.numArr = [5,4,3,2,1];
-            this.dimensionTwo = [[7,8,9],[0,1,2]];
+            this.numArr = [5, 4, 3, 2, 1];
+            this.dimensionTwo = [[7, 8, 9], [0, 1, 2]];
           })
         Child({
           numArr: this.numArr,
@@ -250,11 +274,12 @@ In the preceding example, \@State can only receive the reference of info during 
       }
     }
   }
+  
   @ComponentV2
   struct Child {
     @Require @Param numArr: number[];
     @Require @Param dimensionTwo: number[][];
-    
+  
     build() {
       Column() {
         Text(`${this.numArr[0]}`)
@@ -268,31 +293,37 @@ In the preceding example, \@State can only receive the reference of info during 
   ```
 
 - When the decorated variable is of a nested class or is an object array, \@Param cannot observe the change of lower-level object attributes. Observation of lower-level object attributes requires the use of \@ObservedV2 and \@Trace decorators.
-
-  ```ts
+  <!-- @[Param_Observe_Change_Nested_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeNestedClass.ets) -->
+  
+  ``` TypeScript
   @ObservedV2
   class Region {
-    @Trace x: number;
-    @Trace y: number;
+    @Trace public x: number;
+    @Trace public y: number;
+  
     constructor(x: number, y: number) {
       this.x = x;
       this.y = y;
     }
   }
+  
   @ObservedV2
   class Info {
-    @Trace region: Region;
-    @Trace name: string;
+    @Trace public region: Region;
+    @Trace public name: string;
+  
     constructor(name: string, x: number, y: number) {
       this.name = name;
       this.region = new Region(x, y);
     }
   }
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local infoArr: Info[] = [new Info('Ocean', 28, 120), new Info('Mountain', 26, 20)];
     @Local originInfo: Info = new Info('Origin', 0, 0);
+  
     build() {
       Column() {
         ForEach(this.infoArr, (info: Info) => {
@@ -305,6 +336,7 @@ In the preceding example, \@State can only receive the reference of info during 
           Text(`Origin name: ${this.originInfo.name}`)
           Text(`Origin region: ${this.originInfo.region.x}-${this.originInfo.region.y}`)
         }
+  
         Button('change infoArr item')
           .onClick(() => {
             // Because the name property is decorated by @Trace, it can be observed.
@@ -328,6 +360,7 @@ In the preceding example, \@State can only receive the reference of info during 
       }
     }
   }
+  
   @ComponentV2
   struct Child {
     @Param infoArr: Info[] = [];
@@ -362,8 +395,7 @@ In the preceding example, \@State can only receive the reference of info during 
 ## Constraints
 
 The \@Param decorator has the following constraints:
-
-- The \@Param decorator can be used only in custom components decorated with the [\@ComponentV2](arkts-new-componentV2.md) decorator.
+- The \@Param decorator can be used only in custom components decorated with the [\@ComponentV2](./arkts-create-custom-components.md#componentv2) decorator.
 
   ```ts
   @ComponentV2
@@ -413,7 +445,6 @@ The \@Param decorator has the following constraints:
   ```
 
 - The variable decorated by @Param cannot be directly modified in the child component. However, if the decorated variable is of the object type, the attributes of the object can be modified in the child component.
-
   ```ts
   @ObservedV2
   class Info {
@@ -459,37 +490,44 @@ The \@Param decorator has the following constraints:
   }
   ```
 
-## Use Scenarios
+## Use Cases
 
 ### Passing and Synchronizing Variables from the Parent Component to the Child Component
 
 \@Param receives and synchronizes the data passed in by the \@Local or \@Param parent component in real time.
 
-```ts
+<!-- @[Param_Use_Scene_Parent_To_Child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneParentToChild.ets) -->
+
+``` TypeScript
 @ObservedV2
 class Region {
-  @Trace x: number;
-  @Trace y: number;
+  @Trace public x: number;
+  @Trace public y: number;
+
   constructor(x: number, y: number) {
     this.x = x;
     this.y = y;
   }
 }
+
 @ObservedV2
 class Info {
-  @Trace name: string;
-  @Trace age: number;
-  @Trace region: Region;
+  @Trace public name: string;
+  @Trace public age: number;
+  @Trace public region: Region;
+
   constructor(name: string, age: number, x: number, y: number) {
     this.name = name;
     this.age = age;
     this.region = new Region(x, y);
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   @Local infoList: Info[] = [new Info('Alice', 8, 0, 0), new Info('Barry', 10, 1, 20), new Info('Cindy', 18, 24, 40)];
+
   build() {
     Column() {
       ForEach(this.infoList, (info: Info) => {
@@ -504,9 +542,11 @@ struct Index {
     }
   }
 }
+
 @ComponentV2
 struct MiddleComponent {
   @Require @Param info: Info;
+
   build() {
     Column() {
       Text(`name: ${this.info.name}`)
@@ -515,9 +555,11 @@ struct MiddleComponent {
     }
   }
 }
+
 @ComponentV2
 struct SubComponent {
   @Require @Param region: Region;
+
   build() {
     Column() {
       Text(`region: ${this.region.x}-${this.region.y}`)
@@ -527,9 +569,11 @@ struct SubComponent {
 ```
 
 ### Decorating Variables of the Array Type
-\@Param: Decorates an array variable. You can observe the value assignment to the array and the changes brought by the push, pop, shift, unshift, splice, copyWithin, fill, reverse, and sort APIs of the array.
+By using \@Param to decorate the variables of the Array type, you can observe the value assignment to the array and the changes brought by the **push**, **pop**, **shift**, **unshift**, **splice**, **copyWithin**, **fill**, **reverse**, and **sort** APIs of the array.
 
-```ts
+<!-- @[Param_Use_Scene_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneArray.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct Child {
   @Require @Param count: number[];
@@ -544,17 +588,18 @@ struct Child {
     .width('100%')
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
-  @Local count: number[] = [1,2,3];
+  @Local count: number[] = [1, 2, 3];
 
   build() {
     Row() {
       Column() {
         Child({ count: this.count })
         Button('init array').onClick(() => {
-          this.count = [9,8,7];
+          this.count = [9, 8, 7];
         })
         Button('push').onClick(() => {
           this.count.push(0);
@@ -573,13 +618,13 @@ struct Index {
 }
 ```
 
-
-
 ### Decorating Variables of the Date Type
 
-\@Param: Decorates a variable of the Date type. You can observe the overall value assignment of the Date type and the changes brought by the setFullYear, setMonth, setDate, setHours, setMinutes, setSeconds, setMilliseconds, setTime, setUTCFullYear, setUTCMonth, setUTCDate, setUTCHours, setUTCMinutes, setUTCSeconds, setUTCMilliseconds interface of the Date type.
+By using \@Param to decorate the variables of the Date type, you can observe the value changes to the entire **Date** and the changes brought by calling the **Date** APIs: **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, and **setUTCMilliseconds**.
 
-```ts
+<!-- @[Param_Use_Scene_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneDate.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct DateComponent {
   @Param selectedDate: Date = new Date('2024-01-01');
@@ -632,7 +677,9 @@ struct Index {
 
 By using \@Param to decorate the variables of the **Map** type, you can observe the overall value changes to the entire **Map** and the changes brought by calling the **Map** APIs: set, clear, and delete.
 
-```ts
+<!-- @[Param_Use_Scene_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneMap.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct Child {
   @Param value: Map<number, string> = new Map();
@@ -647,6 +694,7 @@ struct Child {
     }
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
@@ -683,7 +731,9 @@ struct Index {
 
 By using \@Param to decorate the variables of the **Set** type, you can observe the overall value changes to the entire **Set** and the changes brought by calling the **Set** APIs: add, clear, and delete.
 
-```ts
+<!-- @[Param_Use_Scene_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneSet.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct Child {
   @Param message: Set<number> = new Set();
@@ -698,6 +748,7 @@ struct Child {
     .width('100%')
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
@@ -731,10 +782,13 @@ struct Index {
 
 \@Param supports null, undefined, and union types. In the following example, **count** is of the **number | undefined** type. Clicking the buttons to change the type of **count** will trigger UI re-rendering.
 
-```ts
+<!-- @[Param_Use_Scene_Unite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneUnite.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
+  // Number of clicks, which is transferred to the subcomponent. The value can be undefined.
   @Local count: number | undefined = 0;
 
   build() {
@@ -750,6 +804,7 @@ struct Index {
 
 @ComponentV2
 struct MyComponent {
+  // Number of clicks, which is used to receive the value transferred by the parent component. The value can be undefined.
   @Param count: number | undefined = 0;
 
   build() {

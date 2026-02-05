@@ -27,7 +27,7 @@ OH_Pixelmap_ImageInfo结构体内容和操作方式如下：
 | uint32_t | rowStride | 行跨距 | [OH_PixelmapImageInfo_GetRowStride](capi-pixelmap-native-h.md#oh_pixelmapimageinfo_getrowstride) | 获取行跨距。|
 | int32_t | pixelFormat| 像素格式 | [OH_PixelmapImageInfo_GetPixelFormat](capi-pixelmap-native-h.md#oh_pixelmapimageinfo_getpixelformat) |获取像素格式。|
 | int32_t | alphaType | 透明度类型 | [OH_PixelmapImageInfo_GetAlphaType](capi-pixelmap-native-h.md#oh_pixelmapimageinfo_getalphatype) |获取透明度类型。|
-| bool | isHdr | 是否为高动态范围的信息 | [OH_PixelmapImageInfo_GetDynamicRange](capi-pixelmap-native-h.md#oh_pixelmapimageinfo_getdynamicrange) |获取Pixelmap是否为高动态范围的信息。|
+| bool | isHdr | 是否为高动态范围（HDR）的信息 | [OH_PixelmapImageInfo_GetDynamicRange](capi-pixelmap-native-h.md#oh_pixelmapimageinfo_getdynamicrange) |获取Pixelmap是否为高动态范围的信息。|
 
 **起始版本：** 12
 
