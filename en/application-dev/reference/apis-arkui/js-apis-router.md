@@ -111,7 +111,7 @@ Navigates to a specified page in the application.
 
 > **NOTE**
 >
-> - This method is supported since API version 9 and deprecated since API version 18. You are advised to use [pushUrl](arkts-apis-uicontext-router.md#pushurl-1) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
+> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [pushUrl](arkts-apis-uicontext-router.md#pushurl-1) instead. Before calling this API, you need to obtain the [Router](arkts-apis-uicontext-router.md) instance using the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
@@ -875,7 +875,7 @@ router.pushNamedRoute({
 
 replaceNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 
-Replaces the current page with another one using the named route and destroys the current page. This API uses a promise to return the result.
+Replaces the current page with another one using the named route and destroys the current page.
 
 > **NOTE**
 >
@@ -941,7 +941,7 @@ router.replaceNamedRoute({
 
 replaceNamedRoute(options: NamedRouterOptions, callback: AsyncCallback&lt;void&gt;): void
 
-Replaces the current page with another one using the named route and destroys the current page. This API uses an asynchronous callback to return the result.
+Replaces the current page with another one using the named route and destroys the current page.
 
 > **NOTE**
 >
@@ -1000,7 +1000,7 @@ router.replaceNamedRoute({
 
 replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;void&gt;
 
-Replaces the current page with another one using the named route and destroys the current page. This API uses a promise to return the result.
+Replaces the current page with another one using the named route and destroys the current page.
 
 > **NOTE**
 >
@@ -1068,7 +1068,7 @@ router.replaceNamedRoute({
 
 replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCallback&lt;void&gt;): void
 
-Replaces the current page with another one using the named route and destroys the current page. This API uses an asynchronous callback to return the result.
+Replaces the current page with another one using the named route and destroys the current page.
 
 > **NOTE**
 >

@@ -312,7 +312,7 @@ Represents a curve object. Different types of curve objects can be created using
 
 ### interpolate<sup>9+</sup>
 
-interpolate(fraction: number): number
+interpolate(fraction:&nbsp;number): number
 
 Calculates the interpolated value along the curve at the specified normalized time point.
 

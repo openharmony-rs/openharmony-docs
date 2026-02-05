@@ -61,7 +61,7 @@ Represents the base class providing overridable methods for [PixelMap](../apis-i
 
 getPixelMap(): image.PixelMap
 
-Obtains this **pixelMap** object.
+Obtains this **PixelMap** instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -75,7 +75,7 @@ Obtains this **pixelMap** object.
 
 **Example**
 
-  ```ts
+```ts
 import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI'
 import { image } from '@kit.ImageKit'
 
@@ -167,7 +167,7 @@ drawable.load().then((result: DrawableDescriptorLoadedResult) => {
 
 ## PixelMapDrawableDescriptor<sup>12+</sup>
 
-Implements a **PixelMapDrawableDescriptor** object , which can be created by passing in a **pixelMap** object. Inherits from [DrawableDescriptor](#drawabledescriptor).
+Implements a **PixelMapDrawableDescriptor** object, which can be created by passing in a **PixelMap** object. Inherits from [DrawableDescriptor](#drawabledescriptor).
 
 ### constructor<sup>12+</sup>
 
@@ -746,7 +746,7 @@ struct Example {
 
 ## AnimationController<sup>21+</sup>
 
-Implements an animation controller object. Provides animation playback control and status query APIs.
+Implements an animation controller object. It provides APIs for playing, stopping, resuming, and pausing animations, as well as querying the status.
 
 ### start<sup>21+</sup>
 

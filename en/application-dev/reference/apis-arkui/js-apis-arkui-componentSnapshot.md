@@ -58,13 +58,12 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Snapshot Error Codes](errorcode-snapshot.md) and [API Call Error Codes](errorcode-internal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message           |
 | -------- | ------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001   | Invalid ID. |
-| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
 
 > **NOTE**
 > 
@@ -147,13 +146,12 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Snapshot Error Codes](errorcode-snapshot.md) and [API Call Error Codes](errorcode-internal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message               |
 | ------ | ------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
-| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
 
 > **NOTE**
 > 
@@ -236,15 +234,13 @@ Renders a custom component in the application background and outputs its snapsho
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Snapshot Error Codes](errorcode-snapshot.md), and [API Call Error Codes](errorcode-internal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | The builder is not a valid build function.                   |
 | 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
-| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
-| 160004   | isAuto(true) is not supported for offscreen node snapshots. |
 
 > **NOTE**
 > 
@@ -352,15 +348,13 @@ Renders a custom component in the application background and outputs its snapsho
 | Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the result.|
 
 **Error codes**
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Snapshot Error Codes](errorcode-snapshot.md), and [API Call Error Codes](errorcode-internal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID | Error Message                                    |
 | ------ | ---------------------------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | The builder is not a valid build function. |
 | 160001 | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
-| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
-| 160004 | isAuto(true) is not supported for offscreen node snapshots. |
 
 > **NOTE**
 > 
@@ -457,14 +451,13 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Snapshot Error Codes](errorcode-snapshot.md), and [API Call Error Codes](errorcode-internal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID | Error Message               |
 | ------ | ------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
-| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
 
 > **NOTE**
 > 
@@ -522,125 +515,6 @@ struct SnapshotExample {
 | scale           | number | No |  Yes| Scale ratio for rendering pixel maps during a snapshot. Note that a high scale ratio may increase the time taken for the snapshot or even result in a snapshot failure.<br>Value range: [0, +∞). If the value is less than or equal to 0, the default value is used.<br> Default value: **1**<br>**NOTE**<br>Avoid capturing images that are excessively large, ideally not larger than the screen size. If the size of the image to capture exceeds device-specific underlying limits, the capture will fail.<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |
 | waitUntilRenderFinished    | boolean | No| Yes | Whether to force the system to wait for all rendering commands to complete before taking the snapshot. The value **true** means to force the system to wait for all rendering commands to complete before taking the snapshot, and **false** means the opposite. This option ensures the snapshot reflects the most up-to-date content and should be enabled whenever possible. Note that enabling this option may increase the time required for the snapshot to complete, which depends on the size of the area that needs to be redrawn at the time.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 12.        |
 | region<sup>15+</sup> | [SnapshotRegionType](#snapshotregiontype15) | No | Yes| Rectangular region for the snapshot. The default region is the entire component.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| colorMode<sup>23+</sup> | [ColorModeOptions](#colormodeoptions23) | No | Yes| Color space used for the snapshot.<br>Default value: **{colorSpace: SRGB, isAuto: false}**<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| dynamicRangeMode<sup>23+</sup> | [DynamicRangeModeOptions](#dynamicrangemodeoptions23) | No | Yes| Dynamic range mode used for the snapshot.<br>Default value: **{dynamicRangeMode: STANDARD, isAuto: false}**<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-
-## ColorModeOptions<sup>23+</sup>
-
-Defines the color space used for the snapshot.
-
-**Atomic service API**: This API can be used in atomic services since API version 23.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name| Type| Read-Only | Optional| Description|
-| ---- | ---- | ---- | ---- | ---- |
-| colorSpace | [colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace) | No| Yes| Color space used for the snapshot.<br>If the target component's color space is known, specify it through **colorSpace** and set **isAuto** to **false** to achieve optimal snapshot quality.<br>The value can be **DISPLAY_P3**, **SRGB**, or **DISPLAY_BT2020_SRGB** in [colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace).<br>Default value: **SRGB**<br>If the value is **undefined**, **null**, or not set, the default value is used. If an abnormal value is used, snapshot capture fails and the error code 160003 is returned.|
-| isAuto | boolean | No| Yes| Whether the system automatically determines the color space to be used.<br>The value **true** means to allow the system to automatically determine the color space to be used, and **false** means to manually set the color space through **colorSpace**. If an invalid value is used, the default value **false** is used.<br>Default value: **false**<br>For offscreen snapshots, this parameter can only be set to **false**. Otherwise, the error code 160004 will be returned.<br>If **isAuto** is set to **true**, you are advised to set **waitUntilRenderFinished** in [SnapshotOptions](#snapshotoptions12) to **true** to ensure that the system can properly detect the used color space.<br>If the color space used by the component is uncertain, you are advised to set **isAuto** to **true** so that the system can automatically determine the color space to be used.<br>When **isAuto** is set to true, the value of **colorSpace** is ignored. In this case, if the target component contains child components in different color spaces, the color space with the highest priority is used for the snapshot. The priority order of the color space is as follows: **DISPLAY_BT2020_SRGB** > **DISPLAY_P3** > **SRGB**.|
-
-**Example**
-
-``` ts  
-import { image } from '@kit.ImageKit';
-import { colorSpaceManager } from '@kit.ArkGraphics2D';
-
-@Entry
-@Component
-struct SnapshotColorModeExample {
-  @State pixmap: image.PixelMap | undefined = undefined;
-
-  build() {
-    Column() {
-      Row() {
-        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.startIcon'))
-          .autoResize(true)
-          .width(200)
-          .height(200)
-          .margin(5)
-          .id("root")
-      }
-
-      Button("click to generate UI snapshot")
-        .onClick(() => {
-          this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
-            if (error) {
-              console.error("error: " + JSON.stringify(error))
-              return;
-            }
-            this.pixmap = pixmap
-          }, {
-            scale: 2,
-            waitUntilRenderFinished: true,
-            // Set the color space to DISPLAY_P3.
-            colorMode: { colorSpace: colorSpaceManager.ColorSpace.DISPLAY_P3, isAuto: false }
-          })
-        }).margin(10)
-    }
-    .width('100%')
-    .height('100%')
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-```
-
-## DynamicRangeModeOptions<sup>23+</sup>
-
-Defines the dynamic range mode used for the snapshot.
-
-**Atomic service API**: This API can be used in atomic services since API version 23.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name| Type| Read-Only | Optional| Description|
-| ---- | ---- | ---- | ---- | ---- |
-| dynamicRangeMode| [DynamicRangeMode](./arkui-ts/ts-basic-components-image.md#dynamicrangemode12)| No| Yes| Dynamic range mode used for the snapshot.<br> By default, the system snapshots in [STANDARD](./arkui-ts/ts-basic-components-image.md#dynamicrangemode12) mode. If the dynamic range mode used by the target component is known, you can specify the dynamic range mode using the **dynamicRangeMode** field and set **isAuto** to **false** to achieve the expected snapshot effect.<br>There are three dynamic range modes available. HDR is applied for **HIGH** and **CONSTRAINT** modes, and SDR is applied for **STANDARD** mode.<br>After a valid dynamic range mode is specified, the dynamic range to be used for the snapshot is determined by both the target component and the specified mode. The details are as follows:<br>1. If SDR is used for the component, SDR is applied for the snapshot even if the dynamic range mode is set to **HIGH**.<br>2. If HDR is used for the component, the specified dynamic range mode is applied for the screenshot.<br>3. If the [color space](#colormodeoptions23) is set to **SRGB** or **DISPLAY_P3**, SDR is applied for the snapshot.<br>4. If both SDR and HDR are used for the child components, HDR is applied for the snapshot.<br>5. If both conditions 3 and 4 are met, SDR is applied for the snapshot.<br>For details about the enum values, see [DynamicRangeMode](./arkui-ts/ts-basic-components-image.md#dynamicrangemode12).<br>Default value: **STANDARD**<br>If the value is **undefined**, **null**, or not set, the default value is used. If an abnormal value is used, snapshot capture fails and the error code 160003 is returned.|
-|isAuto | boolean | No| Yes| Whether the system automatically determines the dynamic range mode to be used.<br>The value **true** means to allow the system to automatically determine the dynamic range mode to be used, and **false** means to manually set the dynamic range mode through **dynamicRangeMode**. If an invalid value is used, the default value **false** is used.<br>Default value: **false**<br>For offscreen snapshots, this parameter can only be set to **false**. Otherwise, the error code 160004 will be returned.<br>If **isAuto** is set to **true**, you are advised to set **waitUntilRenderFinished** in [SnapshotOptions](#snapshotoptions12) to **true** to ensure that the system can properly detect the used dynamic range mode.<br>If the dynamic range mode used by the component is uncertain, you are advised to set **isAuto** to **true** so that the system can automatically determine the dynamic range mode to be used.<br> When **isAuto** is set to true, the value of **dynamicRangeMode** is ignored.|
-
-**Example**
-
-``` ts
-import { image } from '@kit.ImageKit';
-
-@Entry
-@Component
-struct SnapshotDynamicRangeExample {
-  @State pixmap: image.PixelMap | undefined = undefined;
-
-  build() {
-    Column() {
-      Row() {
-        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.startIcon'))
-          .autoResize(true)
-          .width(200)
-          .height(200)
-          .margin(5)
-          .id("root")
-      }
-
-      Button("click to generate UI snapshot")
-        .onClick(() => {
-          this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
-            if (error) {
-              console.error("error: " + JSON.stringify(error))
-              return;
-            }
-            this.pixmap = pixmap
-          }, {
-            scale: 2,
-            waitUntilRenderFinished: true,
-            // Set isAuto to true for the dynamic range mode.
-            dynamicRangeMode: { dynamicRangeMode: DynamicRangeMode.STANDARD, isAuto: true }
-          })
-        }).margin(10)
-    }
-    .width('100%')
-    .height('100%')
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-```
 
 ## SnapshotRegionType<sup>15+</sup>
 
@@ -750,5 +624,3 @@ struct SnapshotExample {
     }.width("100%").align(Alignment.Center)
   }
 }
-
-```
