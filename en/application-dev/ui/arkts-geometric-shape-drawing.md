@@ -94,7 +94,7 @@ The following examples demonstrate how to use **viewPort**:
   
         Row({ space: 10 }) {
           Column() {
-            // Create a Shape component with a 150 x 150 size and yellow background. Set the viewport to 75 x 75.
+            // Create a Shape component with a 150 × 150 size and yellow background. Set the viewport to 75 x 75.
             // Fill the viewport with a blue rectangle and draw a 75-diameter circle in the viewport.
             // After the drawing is complete, the viewport is scaled up to match the component size.
             // Replace $r('app.string.EnlargedCircle') with the actual resource file. In this example, the value in the resource file is "Enlarged Circle component within the shape."
@@ -110,7 +110,7 @@ The following examples demonstrate how to use **viewPort**:
           }
   
           Column() {
-            // Create a Shape component with a 150 x 150 size and yellow background. Set the viewport to 300 x 300.
+            // Create a Shape component with a 150 × 150 size and yellow background. Set the viewport to 300 × 300.
             // Fill the viewport with a green rectangle and draw a 75-diameter circle in the viewport.
             // After the drawing is complete, the viewport is scaled down to match the component size.
             // Replace $r('app.string.ShrunkCircle') with the actual resource file. In this example, the value in the resource file is "Reduced Circle component within the shape."
@@ -132,7 +132,7 @@ The following examples demonstrate how to use **viewPort**:
 
   ![2023032401632](figures/2023032401632.png)
 
-- Create a **Shape** component with a 300 x 300 size and yellow background. Set the viewport to 300 x 300. Fill the viewport with a blue rectangle and draw a 75-radius circle in the viewport.
+- Create a **Shape** component with a 300 × 300 size and yellow background. Set the viewport to 300 × 300. Fill the viewport with a blue rectangle and draw a 75-radius circle in the viewport.
 
   <!-- @[view_port_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ViewPort2.ets) -->
   
@@ -166,7 +166,7 @@ The following examples demonstrate how to use **viewPort**:
 
   ![viewport (2)](figures/viewport (2).jpg)
 
-- Create a **Shape** component with a 300 x 300 size and yellow background. Set the viewport to 300 x 300. Fill the viewport with a blue rectangle and draw a 75-radius circle in the viewport. Then, apply a translation of 150 units right and 150 units down to the viewport.
+- Create a **Shape** component with a 300 × 300 size and yellow background. Set the viewport to 300 × 300. Fill the viewport with a blue rectangle and draw a 75-radius circle in the viewport. Then, apply a translation of 150 units right and 150 units down to the viewport.
 
   <!-- @[view_port_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ViewPort3.ets) -->
   
@@ -406,8 +406,8 @@ You can customize the component style by setting various style attributes.
     @State meshArray: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360];
   
     aboutToAppear(): void {
-      // Replace 'common/image/image.png' with the image resource file you use.
-      let img: ImageBitmap = new ImageBitmap('common/image/image.png');
+      // Replace 'resources/base/media/image.png' with the image resource file you use.
+      let img: ImageBitmap = new ImageBitmap('resources/base/media/image.png');
       ctx.drawImage(img, 0, 0, 100, 100);
       this.pixelMap = ctx.getPixelMap(0, 0, 150, 150);
     }
@@ -415,12 +415,12 @@ You can customize the component style by setting various style attributes.
     build() {
       Column() {
         Image(this.pixelMap)
-          .backgroundColor('Color.Blue')
+          .backgroundColor(Color.Blue)
           .width(150)
           .height(150)
           .onClick(() => {
-            // Replace 'common/image/image.png' with the image resource file you use.
-            let img: ImageBitmap = new ImageBitmap('common/image/image.png');
+            // Replace 'resources/base/media/image.png' with the image resource file you use.
+            let img: ImageBitmap = new ImageBitmap('resources/base/media/image.png');
             ctx.drawImage(img, 0, 0, 100, 100);
             this.pixelMap = ctx.getPixelMap(1, 1, 150, 150);
             this.myNodeController.rebuild();
@@ -511,7 +511,7 @@ You can customize the component style by setting various style attributes.
   > The example uses the **commands** parameter to define the path. For detailed syntax rules of this parameter, see [SVG Path Syntax](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg-path-syntax).
 
   <!-- @[shape_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ShapeExample.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -541,14 +541,14 @@ You can customize the component style by setting various style attributes.
 
 ### Drawing a Circle and Ring
 
-  Draw a circle with a diameter of 150  mm, and a ring with a diameter of 150 mm and a red dotted border. If the width and height differ, the drawing component will use the shorter side as the actual diameter.
+  Draw a circle with a diameter of 150, and a ring with a diameter of 150 and a red dotted border. If the width and height differ, the drawing component will use the shorter side as the actual diameter.
 
   > **NOTE**
   >
   > This example uses the **strokeDashArray** attribute to create a red dashed ring by specifying the pattern of dashes and gaps along the border. For details about **strokeDashArray**, see [strokeDashArray](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#strokedasharray). 
 
   <!-- [circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -557,7 +557,7 @@ You can customize the component style by setting various style attributes.
       Column({ space: 10 }) {
         // Draw a circle whose diameter is 150.
         Circle({ width: 150, height: 150 })
-        // Draw a ring with a diameter of 150 mm and a red dotted border.
+        // Draw a ring with a diameter of 150 and a red dotted border.
         Circle()
           .width(150)
           .height(200)
@@ -565,7 +565,7 @@ You can customize the component style by setting various style attributes.
           .strokeWidth(3)
           .stroke(Color.Red)
           .strokeDashArray([1, 2])
-        // ...
+      // ...
       }.width('100%')
     }
   }
@@ -581,19 +581,19 @@ You can customize the component style by setting various style attributes.
 
 
   <!-- [circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
   struct CircleExample {
     build() {
       Column({ space: 10 }) {
-        // ...
+      // ...
         // Draw a circle whose diameter is 150.
         Circle()
           .width(150)
           .height(200)
-          .backgroundColor(Color.Pink) // This applies to 150 x 200 rectangular background, not the circular content area.
+          .backgroundColor(Color.Pink) // This applies to 150 × 200 rectangular background, not the circular content area.
       }.width('100%')
     }
   }

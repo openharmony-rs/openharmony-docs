@@ -289,7 +289,10 @@ build() {
           })
         })
       Row() {
-        // Replace $r('app.string.AddBuilderDecoratorContent_Button_1') with the actual resource file. In this example, the value in the resource file is "addBuilderSpan."
+        /**
+         * Replace $r('app.string.AddBuilderDecoratorContent_Button_1') with the actual resource file.
+         * In this example, the value in the resource file is "addBuilderSpan."
+         */
         Button($r('app.string.AddBuilderDecoratorContent_Button_1'), {
           buttonStyle: ButtonStyleMode.NORMAL
         })
@@ -502,7 +505,7 @@ You can register callbacks to listen for component events.
 
 Use the [onWillChange](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#onwillchange12) API to add a callback invoked before text or image changes. This callback is applicable to real-time data verification and notification. For example, it can be used to enable features such as detecting sensitive words and displaying an alert dialog box immediately, as well as real-time character count statistics and limitation.
 
-Use the [onDidChange](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#ondidchange12) API to add a callback invoked after text or image changes. This callback applies to content saving and synchronization. For example, it can be used to automatically save the latest content to the local host or synchronizing it to the server. The callback can also be used to update and re-render content status. For example, in a to-do list application, after a user edits a task description in rich‑text format, the callback can update the display style of that task in the list.
+Use the [onDidChange](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#ondidchange12) API to add a callback invoked after text or image changes. This callback applies to content saving and synchronization. For example, it can be used to automatically save the latest content to the local host or synchronizing it to the server. The callback can also be used to update and re-render content status. For example, in a to-do list application, after a user edits a task description in rich-text format, the callback can update the display style of that task in the list.
 
 Note: The **RichEditor** component constructed with [RichEditorStyledStringOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorstyledstringoptions12) does not support these two types of callbacks.
 
