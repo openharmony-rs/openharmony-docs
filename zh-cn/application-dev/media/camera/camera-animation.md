@@ -90,7 +90,7 @@
 
 4. 触发闪黑动效。
 
-   点击或触控拍照按钮，更新StorageLink绑定CaptureClick的值，触发onCaptureClick方法，动效开始播放。
+   点击或触控拍照按钮，更新[StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md)绑定CaptureClick的值，触发onCaptureClick方法，动效开始播放。
 
    ```ts
    onCaptureClick(): void {
@@ -117,7 +117,7 @@
 
 2. 获取预览流截图。
 
-   预览流截图通过图形提供的[image.createPixelMapFromSurface](../../reference/apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11)接口实现，surfaceId为当前预览流的surfaceId，size为当前预览流profile的宽高。创建截图工具类(ts文件)，导入依赖，导出获取截图方法供页面使用，截图工具类实现参考：
+   预览流截图通过图形提供的[image.createPixelMapFromSurface](../../reference/apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11)接口实现，surfaceId为当前预览流的surfaceId，size为当前预览流profile的宽高。创建截图工具类（ts文件），导入依赖，导出获取截图方法供页面使用，截图工具类实现参考：
 
    ```ts
    export class BlurAnimateUtil {
@@ -212,7 +212,7 @@
 
    模糊出现动效：用户点击或触控事件触发预览流截图，显示截图组件，截图清晰到模糊，覆盖旧预览流。
 
-   > 注意：由于图形提供的image.createPixelMapFromSurface接口是截取surface内容获取PixelMap，其内容和XComponent组件绘制逻辑不同，需要根据**前后置**镜头做不同的**图片内容旋转补偿**和**组件旋转补偿**。
+   > 注意：由于图形提供的[image.createPixelMapFromSurface](../../reference/apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11)接口是截取surface内容获取[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)，其内容和[XComponent](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件绘制逻辑不同，需要根据**前后置**镜头做不同的**图片内容旋转补偿**和**组件旋转补偿**。
 
    ```ts
    async showBlurAnim() {
