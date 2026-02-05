@@ -1648,7 +1648,7 @@ struct ParticleExample6 {
       .align(Alignment.Center)
     }
   }
-}
+}  
 ```
 ![](figures/annulusUpdate.gif)
 
