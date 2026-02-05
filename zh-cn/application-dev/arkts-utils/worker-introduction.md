@@ -215,7 +215,7 @@ const workerInstance4: worker.ThreadWorker = new worker.ThreadWorker('../../work
 
 <!-- @[import_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/mainAbility/src/main/ets/MainAbility/StageRulesFa.ets) -->
 
-```ts
+``` TypeScript
 import { worker } from '@kit.ArkTS';
 
 // 主要说明以下三种场景：
