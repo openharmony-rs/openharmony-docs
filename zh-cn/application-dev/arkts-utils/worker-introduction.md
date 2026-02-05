@@ -159,6 +159,7 @@ const workerInstance4: worker.ThreadWorker = new worker.ThreadWorker('../../work
      "author": "",
      "license": "",
      "dependencies": {
+       // ...
        "har": "file:../har"
      }
    }
