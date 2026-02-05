@@ -1518,7 +1518,7 @@ export default class EntryAbility extends UIAbility {
 
 bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a callback used to listen for modal window destruction events is added. This API uses an asynchronous callback to return the result.
+Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a listener for target window destruction events is added. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1529,7 +1529,7 @@ Binds the modal window to the target window. After the binding is successful, th
 | Name      | Type                     | Mandatory| Description                 |
 | ----------- | ------------------------- | ---- | -------------------- |
 | token       | [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) | Yes  | Token of the target window.|
-| deathCallback | Callback&lt;void&gt;        | Yes  | Callback used to listen for modal window destruction events.|
+| deathCallback | Callback&lt;void&gt;        | Yes  | Callback used to listen for target window destruction events.|
 | callback    | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
 
 **Error codes**
@@ -1601,7 +1601,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;): Promise&lt;void&gt;
 
-Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a callback used to listen for modal window destruction events is added. This API uses a promise to return the result.
+Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a listener for target window destruction events is added. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1612,7 +1612,7 @@ Binds the modal window to the target window. After the binding is successful, th
 | Name      | Type                     | Mandatory| Description                 |
 | ----------- | ------------------------- | ---- | -------------------- |
 | token       | [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) | Yes  | Token of the target window.|
-| deathCallback | Callback&lt;void&gt;        | Yes  | Callback used to listen for modal window destruction events.|
+| deathCallback | Callback&lt;void&gt;        | Yes  | Callback used to listen for target window destruction events.|
 
 **Return value**
 
@@ -1687,7 +1687,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback&lt;void&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a callback used to listen for modal window destruction events is added. This API uses an asynchronous callback to return the result.
+Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a listener for target window destruction events is added. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1698,7 +1698,7 @@ Binds the modal window to the target window. After the binding is successful, th
 | Name      | Type                     | Mandatory| Description                 |
 | ----------- | ------------------------- | ---- | -------------------- |
 | requestInfo | [dialogRequest.RequestInfo](../apis-ability-kit/js-apis-app-ability-dialogRequest.md#requestinfo) | Yes  | **RequestInfo** of the target window.|
-| deathCallback | Callback&lt;void&gt;    | Yes  | Callback used to listen for modal window destruction events.|
+| deathCallback | Callback&lt;void&gt;    | Yes  | Callback used to listen for target window destruction events.|
 | callback    | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
 
 **Error codes**
@@ -1758,7 +1758,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback&lt;void&gt;): Promise&lt;void&gt;
 
-Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a callback used to listen for modal window destruction events is added. This API uses a promise to return the result.
+Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a listener for target window destruction events is added. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1769,7 +1769,7 @@ Binds the modal window to the target window. After the binding is successful, th
 | Name      | Type                     | Mandatory| Description                 |
 | ----------- | ------------------------- | ---- | -------------------- |
 | requestInfo | [dialogRequest.RequestInfo](../apis-ability-kit/js-apis-app-ability-dialogRequest.md#requestinfo) | Yes  | **RequestInfo** of the target window.|
-| deathCallback | Callback&lt;void&gt;    | Yes  | Callback used to listen for modal window destruction events.|
+| deathCallback | Callback&lt;void&gt;    | Yes  | Callback used to listen for target window destruction events.|
 
 **Return value**
 

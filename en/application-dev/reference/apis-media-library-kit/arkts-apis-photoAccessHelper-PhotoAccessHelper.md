@@ -27,7 +27,7 @@ Obtains image and video assets. This API uses an asynchronous callback to return
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
- When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
+ When this API is called in picker mode to query the image or video resource corresponding to a specified URI, the'ohos.permission.READ_IMAGEVIDEO' permission is not required. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
 
 **Parameters**
 
@@ -90,7 +90,7 @@ Obtains image and video assets. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
- When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
+ When this API is called in picker mode to query the image or video resource corresponding to a specified URI, the'ohos.permission.READ_IMAGEVIDEO' permission is not required. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
 
 **Parameters**
 
@@ -217,7 +217,7 @@ createAsset(photoType: PhotoType, extension: string, options: CreateOptions, cal
 
 Creates an image or video asset with the specified file type, file name extension, and options. This API uses an asynchronous callback to return the result.
 
-If you do not have the ohos.permission.WRITE_IMAGEVIDEO permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
+If you do not have the 'ohos.permission.WRITE_IMAGEVIDEO' permission, you can create a media asset by using a security component or authorization dialog box. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -276,7 +276,7 @@ createAsset(photoType: PhotoType, extension: string, callback: AsyncCallback&lt;
 
 Creates an image or video asset with the specified file type and file name extension. This API uses an asynchronous callback to return the result.
 
-If you do not have the ohos.permission.WRITE_IMAGEVIDEO permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
+If you do not have the 'ohos.permission.WRITE_IMAGEVIDEO' permission, you can create a media asset by using a security component or authorization dialog box. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -331,7 +331,7 @@ createAsset(photoType: PhotoType, extension: string, options?: CreateOptions): P
 
 Creates an image or video asset with the specified file type, file name extension, and options. This API uses a promise to return the result.
 
-If you do not have the ohos.permission.WRITE_IMAGEVIDEO permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
+If you do not have the 'ohos.permission.WRITE_IMAGEVIDEO' permission, you can create a media asset by using a security component or authorization dialog box. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -630,11 +630,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   }
   let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
       console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-    //file had changed, do something.
+    // file had changed, do something.
   }
   let onCallback2 = (changeData: photoAccessHelper.ChangeData) => {
       console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-    //file had changed, do something.
+    // file had changed, do something.
   }
   // Register onCallback1.
   phAccessHelper.registerChange(photoAsset.uri, false, onCallback1);
@@ -715,7 +715,7 @@ Applies media changes. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 
-If you do not have the ohos.permission.WRITE_IMAGEVIDEO permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
+If you do not have the 'ohos.permission.WRITE_IMAGEVIDEO' permission, you can create a media asset by using a security component or authorization dialog box. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -842,7 +842,7 @@ The dialog box must display the application name, but this cannot be directly ob
 
 > **NOTE**
 >
-> If the passed URI is a sandbox path, photos or videos can be saved but cannot be previewed.
+> If the passed URI is a sandbox path, images or videos can be saved but cannot be previewed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -859,7 +859,7 @@ The dialog box must display the application name, but this cannot be directly ob
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return a URI list. The URIs are granted with the permission for the application to write data. If the URIs fail to be generated, a batch creation error code will be returned.<br>The error code **-3006** means that there are invalid characters; **-2004** means that the image type does not match the file name extension; **-203** means that the file operation is abnormal.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return a URI list. The URIs are granted with the permission for the application to write data. If the URIs fail to be generated, a batch creation error code will be returned.<br>The return values are as follows:<br>- **-3006**: Invalid characters, which are not allowed.<br>-**-2004**: The image type does not match the file name extension.<br>-**-203**: Invalid file operation.|
 
 **Error codes**
 
@@ -907,7 +907,7 @@ createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Pr
 
 Creates an asset with a temporary permission of the given period. When this API is called by an application for the first time, a dialog box will be displayed for the user to confirm whether to save the asset. If the user agrees to save the asset, the asset instance will be created and the file URI granted with the save permission will be returned. The application can write the asset based on the URI.
 
-Within 5 minutes after the user agrees to save the asset, if the same application calls this API again, the authorized URI can be automatically returned without the need to display the conformation dialog box.
+Within 5 minutes after the user agrees to save the asset, if the same application calls this API again, the authorized URI can be automatically returned without the need to display the conformation dialog box. Exiting the application will terminate the authorization, and the user will need to re-trigger the pop-up dialog for authorization confirmation when the application is re-launched.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -981,7 +981,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Array&lt;string&gt;&gt;
 
-<!--RP1--><!--RP1End-->Grants the save permission for URIs. This API uses a promise to return the result.
+<!--RP1--><!--RP1End-->Grants the read permission for unauthorized URIs, returning a list of URIs that have been created and granted the permission.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -997,7 +997,7 @@ requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Arr
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URIs granted with the save permission.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URIs granted with the permission.|
 
 **Error codes**
 

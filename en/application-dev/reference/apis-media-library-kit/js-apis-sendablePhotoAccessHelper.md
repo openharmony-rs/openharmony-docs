@@ -84,7 +84,7 @@ Obtains image and video assets. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-For applications that have not applied for the ohos.permission.READ_IMAGEVIDEO permission, this API can be invoked via Picker to query the image or video resource corresponding to the specified URI. For details, please refer to [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
+Applications without the'ohos.permission.READ_IMAGEVIDEO' permission can call this API in picker mode to query the image or video resource corresponding to a specified URI. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
 
 **Parameters**
 
@@ -218,7 +218,7 @@ createAsset(photoType: PhotoType, extension: string, options?: photoAccessHelper
 
 Creates an image or video asset with the specified file type, file name extension, and options. This API uses a promise to return the result.
 
-If you do not have the ohos.permission.WRITE_IMAGEVIDEO permission, you can create a media asset by using a security component. For details, please refer to [Creating a Media Asset Using a Security Component](../../media/medialibrary/photoAccessHelper-savebutton.md).
+If you do not have the 'ohos.permission.WRITE_IMAGEVIDEO' permission, you can create a media asset by using a security component. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -291,7 +291,7 @@ Before the operation, ensure that the albums to obtain exist.
 
 | Name | Type                                                     | Mandatory| Description                                  |
 | ------- | --------------------------------------------------------- | ---- | -------------------------------------- |
-| type    | [AlbumType](#albumtype)                                   | Yes  | Type of the albums to obtain.                            |
+| type    | [AlbumType](#albumtype)                                   | Yes  | Album type.                            |
 | subtype | [AlbumSubtype](#albumsubtype)                             | Yes  | Subtype of the album.                          |
 | options | [photoAccessHelper.FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | No  | Retrieval options. If this parameter is not specified, the albums are obtained based on the album type by default.|
 
@@ -415,9 +415,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 release(): Promise&lt;void&gt;
 
-Releases the **PhotoAccessHelper** instance.
-Call this method when the APIs of the **PhotoAccessHelper** instance are no longer used.
-This API uses a promise to return the result.
+Releases the **PhotoAccessHelper** instance. Call this method when the APIs of the **PhotoAccessHelper** instance are no longer used. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -656,8 +654,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201      | Permission denied.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.                                        |
 
 **Example**
@@ -1137,7 +1135,7 @@ Provides APIs to manage albums.
 
 | Name        | Type                         | Read-Only                        | Optional| Description            |
 | ------------ | ----------------------------- | ---------------------------- | ---- | ---------------- |
-| albumType    | [AlbumType](#albumtype)       | Yes                          | No  | Type of the album.      |
+| albumType    | [AlbumType](#albumtype)       | Yes                          | No  | Album type.      |
 | albumSubtype | [AlbumSubtype](#albumsubtype) | Yes                          | No  | Subtype of the album.    |
 | albumName    | string                        | Yes for a user album; no for a system album.| No  | Name of the album.      |
 | albumUri     | string                        | Yes                          | No  | URI of the album.       |
@@ -1203,7 +1201,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 ### getAssets
 
-getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
+getAssets(options: photoAccessHelper.FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
 Obtains media assets. This API uses a promise to return the result.
 
@@ -1215,7 +1213,7 @@ Obtains media assets. This API uses a promise to return the result.
 
 | Name | Type                                                     | Mandatory| Description      |
 | ------- | --------------------------------------------------------- | ---- | ---------- |
-| options | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | Yes  | Retrieval options.|
+| options | [photoAccessHelper.FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | Yes  | Retrieval options.|
 
 **Return value**
 
@@ -1229,9 +1227,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201      | Permission denied.                                           |
-| 13900020 | Invalid argument.                                            |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.                                        |
 
 **Example**
