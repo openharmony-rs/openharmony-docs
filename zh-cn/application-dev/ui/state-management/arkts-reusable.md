@@ -540,6 +540,7 @@
 ### 动态布局更新
 
 重复创建与移除视图可能引起频繁的布局计算，从而影响帧率。采用组件复用可以避免不必要的视图创建与布局计算，提升性能。
+
 以下示例中，将Child自定义组件标记为复用组件，通过Button点击更新Child，触发复用。
 
 <!-- @[dynamic_layout_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/DynamicLayoutUpdate.ets) -->
