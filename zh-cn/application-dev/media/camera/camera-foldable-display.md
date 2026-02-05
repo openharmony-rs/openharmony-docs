@@ -138,7 +138,7 @@ function hasCameraAt(cameraManager: camera.CameraManager, cameraPosition: camera
 }
 ```
 ## 摄像头切换逻辑
-在监听到折叠状态发生变化时通过设置被[@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md)修饰的foldStatus变量改变，触发reloadXComponent方法重新加载XComponent组件，从而实现相机的切换逻辑。
+在监听到折叠状态发生变化时通过设置被[@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink)修饰的foldStatus变量改变，触发reloadXComponent方法重新加载XComponent组件，从而实现相机的切换逻辑。
 ## 完整示例
 ```ts
 import { camera } from '@kit.CameraKit';
