@@ -534,7 +534,7 @@ OH_AudioStream_Result OH_AudioRenderer_SetSpeed(OH_AudioRenderer* renderer, floa
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
-| float speed | 设置播放的倍速值（倍速范围：0.25-4.0）。 |
+| float speed | 设置播放的倍速值（倍速范围：[0.25, 4.0]）。 |
 
 **返回：**
 
