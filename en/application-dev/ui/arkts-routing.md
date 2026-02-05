@@ -11,7 +11,7 @@ Page routing refers to the redirection and data transfer between different pages
 
 >**NOTE**
 >
->You are advised to use [Component Navigation (Navigation)](./arkts-navigation-navigation.md), which offers enhanced functionality and customization capabilities, as the routing framework in your application. For details about the differences between **Navigation** and **Router**, see [Transition from Router to Navigation](./arkts-router-to-navigation.md).
+>You are advised to use [component navigation](./arkts-navigation-navigation.md), which offers enhanced functionality and customization capabilities, as the routing framework in your application. For details about the differences between **Navigation** and **Router**, see [Transition from Router to Navigation](./arkts-router-to-navigation.md).
 
 ## Page Redirection
 
@@ -170,7 +170,7 @@ The **Router** module also provides two instance modes: **Standard** and **Singl
   
     build() {
       // ...
-    }
+  }
   ```
   
 
@@ -518,6 +518,7 @@ onBackClick(): void {
 The **this.getUIContext().getRouter().showAlertBeforeBackPage** API receives an object as a parameter. The object contains the following attributes:
 
 **message**: content of the dialog box. The value is of the string type.
+
 If the API is called successfully, the confirmation dialog box is displayed on the target page. Otherwise, an exception is thrown and the error code and error information is obtained through **err.code** and **err.message**.
 
 When the user clicks the back button, a confirmation dialog box is displayed, prompting the user to confirm their operation. If the user selects **Cancel**, the application stays on the current page. If the user selects **OK**, the [back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back) API is called and the redirection is performed based on the parameters.
@@ -526,7 +527,7 @@ When the user clicks the back button, a confirmation dialog box is displayed, pr
 
 To implement a custom confirmation dialog box, use [showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog-1) or create a custom dialog box . This topic uses the APIs in the **PromptAction** module an example to describe how to implement a custom confirmation dialog box.
 
-Directly using **router** can lead to the issue of [ambiguous UI context](./arkts-global-interface.md). To avoid this, obtain a [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) instance using the **getUIContext()** API, and then obtain the **router** object bound to that instance through the [getRouter](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter) API.
+Directly using **router** can lead to the issue of [ambiguous UI context](./arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain a [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) instance using the **getUIContext()** API, and then obtain the **router** object bound to that instance through the [getRouter](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter) API.
 
 In the event callback, call the [showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog-1) API.
 

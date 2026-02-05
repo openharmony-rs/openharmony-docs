@@ -369,7 +369,7 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
   ```c++
   # the minimum version of CMake.
   cmake_minimum_required(VERSION 3.4.1)
-  project(NDKJSBridg)
+  project(NDKJSBridge)
 
   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -1024,7 +1024,7 @@ Use [runJavaScript](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#ru
   ```c++
   # the minimum version of CMake.
   cmake_minimum_required(VERSION 3.4.1)
-  project(NDKJSBridg)
+  project(NDKJSBridge)
 
   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 

@@ -726,6 +726,9 @@ export struct DialogAvoidSoftKeyboard {
 }
 ```
 
+
+ ![UIContextPromptAction](figures/UIContextPromptActionCustomDialog.gif)
+
 ## Obtaining the Dialog Box Status
 
 In service modules, multiple dialog boxes may appear simultaneously. To prevent duplicate openings, check the dialog box status via the controller before display. If a dialog box is already displayed, do not open it again.
@@ -793,3 +796,5 @@ export struct GetDialogStatus {
   }
 }
 ```
+
+![getState1](figures/getState1.gif)

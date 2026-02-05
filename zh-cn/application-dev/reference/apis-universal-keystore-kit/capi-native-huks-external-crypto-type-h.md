@@ -40,8 +40,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| OH_HUKS_EXTERNAL_CRYPTO_MAX_PROVIDER_NAME_LEN 100 | provider名称的最大字节长度。<br>**起始版本：** 22 |
-| OH_HUKS_EXTERNAL_CRYPTO_MAX_RESOURCE_ID_LEN 512 | resourceId名称的最大字节长度。<br>**起始版本：** 22 |
+| OH_HUKS_EXTERNAL_CRYPTO_MAX_PROVIDER_NAME_LEN 100 | 定义provider名称的最大字节长度。<br>**起始版本：** 22 |
+| OH_HUKS_EXTERNAL_CRYPTO_MAX_RESOURCE_ID_LEN   512 | 定义资源ID的最大字节长度。<br>**起始版本：** 22 |
 
 ## 枚举类型说明
 

@@ -1,4 +1,4 @@
-# Component Navigation (Navigation) (Recommended)
+# Component Navigation (Recommended)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
@@ -743,7 +743,7 @@ The sequence of these lifecycle events is illustrated in the figure below.
 - **onInactive**: invoked when the **NavDestination** component becomes inactive (not on top of the stack and inoperable, or on top but blocked by special components).
 - **onHidden**: invoked after the **NavDestination** component is hidden (when a non-top page is pushed into the stack, the top page pops out of the stack, or the application is switched to the background).
 - **onWillDisappear**: invoked before the **NavDestination** component is about to be destroyed. If there is a transition animation, this callback is invoked before the animation (when the top page of the stack pops out of the stack).
-- **onDisappear**: invoked when the **NavDestination** component is unloaded and destroyed from the component tree. It is a universal lifecycle event.
+- **onDisAppear**: invoked when the **NavDestination** component is unloaded and destroyed from the component tree. It is a universal lifecycle event.
 - **aboutToDisappear**: invoked before the custom component is destroyed. The state variable cannot be changed in this callback.
 
 ### Page Listening and Query
@@ -1189,7 +1189,7 @@ The implementation procedure is as follows:
 
 1. Create a navigation home page using the [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) component and create a navigation controller **NavPathStack** to enable transitions between pages.
 
-2. Place a [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) component inside the **Navigation** component to display the first‑level pages available from the home page.
+2. Place a [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) component inside the **Navigation** component to display the first-level pages available from the home page.
 
 3. Attach an **onClick** event to each item in the **List**. Inside the event handler, call the [pushPathByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushpathbyname10) method of the **NavPathStack** controller. When the item is clicked, this method navigates from the current page to the page whose name matches the specified parameter in the routing table.
 

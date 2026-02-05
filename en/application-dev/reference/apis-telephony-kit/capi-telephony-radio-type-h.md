@@ -105,7 +105,7 @@ RAT type of the device.
 | TEL_RADIO_TECHNOLOGY_1XRTT = 2 | Single-Carrier Radio Transmission Technology (1XRTT)|
 | TEL_RADIO_TECHNOLOGY_WCDMA = 3 | Wideband Code Division Multiple Access (WCDMA)|
 | TEL_RADIO_TECHNOLOGY_HSPA = 4 | High Speed Packet Access (HSPA)|
-| TEL_RADIO_TECHNOLOGY_HSPAP = 5 |  High Speed Packet Access Plus (HSPA+)|
+| TEL_RADIO_TECHNOLOGY_HSPAP = 5 | High Speed Packet Access Plus (HSPA+)|
 | TEL_RADIO_TECHNOLOGY_TD_SCDMA = 6 | Time Division-Synchronous Code Division Multiple Access (TD-SCDMA)|
 | TEL_RADIO_TECHNOLOGY_EVDO = 7 | Evolution-Data Optimized (EVDO)|
 | TEL_RADIO_TECHNOLOGY_EHRPD = 8 | Evolved High Rate Package Data (EHRPD)|

@@ -11,6 +11,8 @@ continuationManager模块提供了流转/协同入口管理服务能力，包括
 > **说明：**
 > 
 > 本模块首批接口从API version 8开始支持，从API version 22开始废弃，建议使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)替代。
+>
+> 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -27,6 +29,8 @@ register(callback: AsyncCallback\<number>): void
 > **说明：**
 > 
 > 从API version 9开始废弃，建议使用[ondevicestatechange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -61,6 +65,8 @@ register(options: ContinuationExtraParams, callback: AsyncCallback\<number>): vo
 > **说明：**
 > 
 > 从API version 9开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -100,6 +106,8 @@ register(options?: ContinuationExtraParams): Promise\<number>
 > **说明：**
 > 
 > 从API version 9开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -144,6 +152,8 @@ registerContinuation(callback: AsyncCallback\<number>): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -197,6 +207,8 @@ registerContinuation(options: ContinuationExtraParams, callback: AsyncCallback\<
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -256,6 +268,8 @@ registerContinuation(options?: ContinuationExtraParams): Promise\<number>
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
 **参数：**
@@ -314,6 +328,8 @@ on(type: 'deviceConnect', callback: Callback\<ContinuationResult>): void
 > 
 > 从API version 9开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
 **参数：**
@@ -345,6 +361,8 @@ on(type: 'deviceDisconnect', callback: Callback\<string>): void
 > 
 > 从API version 9开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
 **参数：**
@@ -373,6 +391,8 @@ off(type: 'deviceConnect', callback?: Callback\<ContinuationResult>): void
 > **说明：**
 > 
 > 从API version 9开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -404,6 +424,8 @@ off(type: 'deviceDisconnect', callback?: Callback\<string>): void
 > **说明：**
 > 
 > 从API version 9开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -437,6 +459,8 @@ on(type: 'deviceSelected', token: number, callback: Callback\<Array\<Continuatio
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -493,6 +517,8 @@ on(type: 'deviceUnselected', token: number, callback: Callback\<Array\<Continuat
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -551,6 +577,8 @@ off(type: 'deviceSelected', token: number): void
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
 **参数：**
@@ -599,6 +627,8 @@ off(type: 'deviceUnselected', token: number): void
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
 **参数：**
@@ -643,6 +673,8 @@ startDeviceManager(token: number, callback: AsyncCallback\<void>): void
 > 
 > 从API version 9开始废弃，建议使用[startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)替代。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
 **参数：**
@@ -676,6 +708,8 @@ startDeviceManager(token: number, options: ContinuationExtraParams, callback: As
 > **说明：**
 > 
 > 从API version 9开始废弃，建议使用[startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -716,6 +750,8 @@ startDeviceManager(token: number, options?: ContinuationExtraParams): Promise\<v
 > **说明：**
 > 
 > 从API version 9开始废弃，建议使用[startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -763,6 +799,8 @@ startContinuationDeviceManager(token: number, callback: AsyncCallback\<void>): v
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -816,6 +854,8 @@ startContinuationDeviceManager(token: number, options: ContinuationExtraParams, 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -876,6 +916,8 @@ startContinuationDeviceManager(token: number, options?: ContinuationExtraParams)
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
 **参数：**
@@ -934,6 +976,8 @@ updateConnectStatus(token: number, deviceId: string, status: DeviceConnectState,
 > 
 > 从API version 9开始废弃，建议使用[getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)替代。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
 **参数：**
@@ -970,6 +1014,8 @@ updateConnectStatus(token: number, deviceId: string, status: DeviceConnectState)
 > **说明：**
 > 
 > 从API version 9开始废弃，建议使用[getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -1017,6 +1063,8 @@ updateContinuationState(token: number, deviceId: string, status: DeviceConnectSt
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -1073,6 +1121,8 @@ updateContinuationState(token: number, deviceId: string, status: DeviceConnectSt
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -1133,6 +1183,8 @@ unregister(token: number, callback: AsyncCallback\<void>): void
 > 
 > 从API version 9开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
 **参数：**
@@ -1166,6 +1218,8 @@ unregister(token: number): Promise\<void>
 > **说明：**
 > 
 > 从API version 9开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -1209,6 +1263,8 @@ unregisterContinuation(token: number, callback: AsyncCallback\<void>): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -1262,6 +1318,8 @@ unregisterContinuation(token: number): Promise\<void>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -1317,6 +1375,8 @@ unregisterContinuation(token: number): Promise\<void>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
 | 名称 | 值 | 说明 |
@@ -1335,6 +1395,8 @@ unregisterContinuation(token: number): Promise\<void>
 > 从API version 22开始废弃，建议使用[DeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -1355,6 +1417,8 @@ type ContinuationResult = _ContinuationResult
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
 | 类型 | 说明 |
@@ -1372,6 +1436,8 @@ type ContinuationExtraParams = _ContinuationExtraParams
 > 从API version 10开始支持，从API version 22开始废弃，建议使用[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 

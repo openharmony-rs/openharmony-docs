@@ -31,7 +31,7 @@ The file declares the common enums and structs used by the image interface.
 | [Image_PositionArea](capi-image-nativemodule-image-positionarea.md) | Image_PositionArea | Describes the area of image pixels to be read from or written to.|
 | [Image_Scale](capi-image-nativemodule-image-scale.md) | Image_Scale | Describes the image scaling factor.|
 | [Image_String](capi-image-nativemodule-image-string.md) | Image_String/Image_MimeType | Describes an image string.|
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) | - | Describes the picture metadata.|
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) | OH_PictureMetadata | Describes the picture metadata.|
 
 ### Enums
 
@@ -139,7 +139,7 @@ The file declares the common enums and structs used by the image interface.
 | static const char * OHOS_IMAGE_PROPERTY_SUBJECT_DISTANCE_RANGE = "SubjectDistanceRange" | Distance to the subject.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_IMAGE_UNIQUE_ID = "ImageUniqueID" | Unique identifier assigned to each image.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_GPS_VERSION_ID = "GPSVersionID" | Version of GPSInfoIFD.<br>**Since**: 12|
-| static const char * OHOS_IMAGE_PROPERTY_GPS_ALTITUDE_REF = "GPSAltitudeRef" | Whether the latitude is north or south latitude.<br>**Since**: 12|
+| static const char * OHOS_IMAGE_PROPERTY_GPS_ALTITUDE_REF = "GPSAltitudeRef" | Reference altitude for the GPS altitude.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_GPS_ALTITUDE = "GPSAltitude" | Altitude based on the reference in GPSAltitudeRef.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_GPS_SATELLITES = "GPSSatellites" | GPS satellites used for measurement.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_GPS_STATUS = "GPSStatus" | Status of the GPS receiver when the image was recorded.<br>**Since**: 12|
@@ -175,8 +175,8 @@ The file declares the common enums and structs used by the image interface.
 | static const char * OHOS_IMAGE_PROPERTY_LENS_MODEL = "LensModel" | Model of the lens.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_LENS_SERIAL_NUMBER = "LensSerialNumber" | Serial number of the lens.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_LENS_SPECIFICATION = "LensSpecification" | Specifications of the lens.<br>**Since**: 12|
-| static const char * OHOS_IMAGE_PROPERTY_NEW_SUBFILE_TYPE = "NewSubfileType" | Data type of a subfile, such as a full-resolution image, a thumbnail, or a part of a multi-frame image. The value is a bit mask. The value 0 indicates a full-resolution image, **1** indicates a thumbnail, and **2** indicates a part of a multi-frame image.<br>**Since**: 12|
-| static const char * OHOS_IMAGE_PROPERTY_OFFSET_TIME = "OffsetTime" | Time with an offset from UTC when the image was captured, in the format of ±HH:MM.<br>**Since**: 12|
+| static const char * OHOS_IMAGE_PROPERTY_NEW_SUBFILE_TYPE = "NewSubfileType" | In Exif, the **NewSubfileType** field is used to identify the data type of a subfile. The value is a bit mask. The value 0 indicates a full-resolution image, **1** indicates a thumbnail, and **2** indicates a part of a multi-frame image.<br>**Since**: 12|
+| static const char * OHOS_IMAGE_PROPERTY_OFFSET_TIME = "OffsetTime" | In Exif, the **OffsetTime** field is used to identify the time with an offset from UTC when the image was captured, in the format of ±HH:MM.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_OFFSET_TIME_DIGITIZED = "OffsetTimeDigitized" | Time with an offset from UTC when the image was digitized. It helps to accurately adjust the timestamp.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_OFFSET_TIME_ORIGINAL = "OffsetTimeOriginal" | Time with an offset from UTC when the original image was created. It is critical for time-sensitive applications.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_SOURCE_EXPOSURE_TIMES_OF_COMPOSITE_IMAGE = "SourceExposureTimesOfCompositeImage" | Exposure time of source images of the composite image.<br>**Since**: 12|
@@ -317,7 +317,7 @@ Creates the pointer to an OH_PictureMetadata struct.
 | Name| Description|
 | -- | -- |
 | [Image_MetadataType](#image_metadatatype) metadataType | Metadata type.|
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) **metadata | Double pointer to OH_PictureMetadata.|
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) **metadata | Double pointer to the OH_PictureMetadata struct created.|
 
 **Returns**
 
@@ -341,7 +341,7 @@ Obtains a property of metadata based on the key. The **value.data** obtained thr
 
 | Name| Description|
 | -- | -- |
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to OH_PictureMetadata.|
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to an OH_PictureMetadata struct.|
 | [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the key of the property.|
 | [Image_String](capi-image-nativemodule-image-string.md) *value | Pointer to the value of the property.|
 
@@ -367,7 +367,7 @@ Sets a property of metadata based on the key.
 
 | Name| Description|
 | -- | -- |
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to OH_PictureMetadata.|
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to an OH_PictureMetadata struct.|
 | [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the key of the property.|
 | [Image_String](capi-image-nativemodule-image-string.md) *value | Pointer to the value of the property.|
 
@@ -419,7 +419,7 @@ Releases the pointer to an OH_PictureMetadata struct.
 
 | Name| Description|
 | -- | -- |
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to OH_PictureMetadata.|
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to an OH_PictureMetadata struct.|
 
 **Returns**
 
@@ -443,7 +443,7 @@ Clones metadata.
 
 | Name| Description|
 | -- | -- |
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *oldMetadata | Pointer to OH_PictureMetadata.|
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *oldMetadata | Pointer to an OH_PictureMetadata struct.|
 | [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) **newMetadata | Double pointer to the OH_PictureMetadata struct obtained.|
 
 **Returns**

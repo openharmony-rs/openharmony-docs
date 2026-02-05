@@ -167,7 +167,7 @@ Creates the pointer to an OH_ImageSource_Info object.
 
 | Name| Description|
 | -- | -- |
-| [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) **info | Double pointer to an OH_ImageSource_Info object.|
+| [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) **info | Double pointer to the OH_ImageSource_Info object created.|
 
 **Returns**
 
@@ -245,7 +245,7 @@ Obtains the dynamic range of an image.
 | Name| Description|
 | -- | -- |
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) *info | Pointer to an OH_ImageSource_Info object.|
-| bool *isHdr | Indicates whether the image is HDR. The options include **true** (HDR) and **false** (non-HDR).|
+| bool *isHdr | Whether the image is an HDR image. The value **true** means that the image is an HDR image, and the value **false** means the opposite.|
 
 **Returns**
 
@@ -327,7 +327,7 @@ Creates the pointer to an OH_DecodingOptions object.
 
 | Name| Description|
 | -- | -- |
-| [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) **options | Double pointer to an OH_DecodingOptions object.|
+| [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) **options | Double pointer to the OH_DecodingOptions object created.|
 
 **Returns**
 
@@ -353,7 +353,7 @@ Obtains the pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| int32_t *pixelFormat | Pointer to the pixel format. For details about the available options, see [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format).|
+| int32_t *pixelFormat | Pointer to the pixel format. For details, see [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format). The default value is **RGBA_8888**.|
 
 **Returns**
 
@@ -379,7 +379,7 @@ Sets the pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| int32_t pixelFormat | Pixel format. For details about the available options, see [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format).|
+| int32_t pixelFormat | Pointer to the pixel format. For details, see [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format). The default value is **RGBA_8888**.|
 
 **Returns**
 
@@ -405,7 +405,7 @@ Obtains the index of an image.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| uint32_t *index | Pointer to the index of the image.|
+| uint32_t *index | Pointer to the index of the image to decode. The default value is **0**.|
 
 **Returns**
 
@@ -431,7 +431,7 @@ Sets the index for an image.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| uint32_t index | Index of the image.|
+| uint32_t index | Index of the image to decode. The default value is **0**.|
 
 **Returns**
 
@@ -457,7 +457,7 @@ Obtains the rotation degree.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| float *rotate | Pointer to the angle to rotate, in degrees.|
+| float *rotate | Rotation degree. The default value is **0**.|
 
 **Returns**
 
@@ -483,7 +483,7 @@ Sets the rotation angle.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| float rotate | Angle to rotate, in degrees.|
+| float rotate | Rotation degree. The default value is 0.|
 
 **Returns**
 
@@ -509,7 +509,7 @@ Obtains the desired output size.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| [Image_Size](capi-image-nativemodule-image-size.md) *desiredSize | Pointer to the desired output size.|
+| [Image_Size](capi-image-nativemodule-image-size.md) *desiredSize | Pointer to the desired output size. The default value is the original image size.|
 
 **Returns**
 
@@ -535,7 +535,7 @@ Sets the desired output size.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| [Image_Size](capi-image-nativemodule-image-size.md) *desiredSize | Pointer to the desired output size.|
+| [Image_Size](capi-image-nativemodule-image-size.md) *desiredSize | Pointer to the desired output size. The default value is the original image size.|
 
 **Returns**
 
@@ -561,7 +561,7 @@ Obtains the region to decode.<br> Since the corresponding **SetDesiredRegion** f
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| [Image_Region](capi-image-nativemodule-image-region.md) *desiredRegion | Pointer to the region to decode.|
+| [Image_Region](capi-image-nativemodule-image-region.md) *desiredRegion | Pointer to the region to decode. By default, the entire image is decoded.|
 
 **Returns**
 
@@ -587,7 +587,7 @@ Sets the region to decode.<br> The actual decoding will process the entire origi
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| [Image_Region](capi-image-nativemodule-image-region.md) *desiredRegion | Pointer to the region to decode.|
+| [Image_Region](capi-image-nativemodule-image-region.md) *desiredRegion | Pointer to the region to decode. By default, the entire image is decoded.|
 
 **Returns**
 
@@ -613,7 +613,7 @@ Obtains the desired dynamic range configured during decoding.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| int32_t *desiredDynamicRange | Pointer to the desired dynamic range. For details about the available options, see [IMAGE_DYNAMIC_RANGE](#image_dynamic_range).|
+| int32_t *desiredDynamicRange | Pointer to the desired dynamic range. For details, see [IMAGE_DYNAMIC_RANGE](#image_dynamic_range). The default value is **SDR**.|
 
 **Returns**
 
@@ -639,7 +639,7 @@ Sets the desired dynamic range during decoding.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to an OH_DecodingOptions object.|
-| int32_t desiredDynamicRange | Desired dynamic range. For details about the available options, see [IMAGE_DYNAMIC_RANGE](#image_dynamic_range).|
+| int32_t desiredDynamicRange | Desired dynamic range. For details, see [IMAGE_DYNAMIC_RANGE](#image_dynamic_range). The default value is **SDR**.|
 
 **Returns**
 
@@ -1327,7 +1327,7 @@ Creates the pointer to an OH_DecodingOptionsForPicture object.
 
 | Name| Description|
 | -- | -- |
-| [OH_DecodingOptionsForPicture](capi-image-nativemodule-oh-decodingoptionsforpicture.md) **options | Double pointer to an OH_DecodingOptionsForPicture object.|
+| [OH_DecodingOptionsForPicture](capi-image-nativemodule-oh-decodingoptionsforpicture.md) **options | Double pointer to the OH_DecodingOptionsForPicture object created.|
 
 **Returns**
 

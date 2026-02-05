@@ -57,7 +57,6 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 > **NOTE**
 >
-> You can listen to **error** events to obtain the operation result. 
 >
 >The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen) before calling this API.
 
@@ -117,8 +116,6 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<
 Initiates a WebSocket request to establish a WebSocket connection to a given URL. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
-> You can listen to **error** events to obtain the operation result. If an error occurs, the error code 200 will be returned.
 >
 >The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen) before calling this API.
 
@@ -187,8 +184,6 @@ connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
 Establishes a WebSocket connection to a given URL. This API uses a promise to return the result.
 
 > **NOTE**
->
-> You can listen to **error** events to obtain the operation result. If an error occurs, the error code 200 will be returned.
 >
 >The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen) before calling this API.
 
@@ -917,7 +912,7 @@ Starts the WebSocketServer service based on the specified **config**. This API u
 
 > **NOTE**
 >
-> You can listen for the **error** events to obtain the execution result of this API. For details about the result codes, see [WebSocket Error Codes](errorcode-net-webSocket.md).
+> When this method is called for multiple times, do not listen on the same port.
 
 **Required permission**: ohos.permission.INTERNET
 
@@ -1251,7 +1246,7 @@ Subscribes to the WebSocketServer connection event (the connection between the c
 | Name | Type                   | Mandatory| Description                                                    |
 | -------- | ----------------------- | ---- | ------------------------------------------------------- |
 | type     | string                  | Yes | Event type, which has a fixed value of **connect**. Successful calling of **onconnect()** indicates that a connection is established between the client and server.|
-| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | Yes| Callback used to return the result. which is the information about connected clients.|
+| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | Yes| Callback used to return the result, which is the information about connected clients.|
 
 **Example**
 
@@ -1282,7 +1277,7 @@ Unsubscribes from WebSocketServer connection events (the connection between the 
 | Name | Type                   | Mandatory| Description                                                    |
 | -------- | ----------------------- | ---- | ------------------------------------------- |
 | type     | string                  | Yes | Event type, which has a fixed value of **connect**. Successful calling of **offconnect()** indicates that listening for connection events is canceled successful.|
-| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | No | Callback used to return the result. which is the information about connected clients.|
+| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | No | Callback used to return the result, which is the information about connected clients.|
 
 **Example**
 
@@ -1450,7 +1445,7 @@ Unsubscribes from WebSocketServer error events. This API uses an asynchronous ca
 | Name | Type                   | Mandatory| Description                          |
 | -------- | ------------- | ---- | --------------------------------- |
 | type     | string        | Yes|  Event type, which has a fixed value of **error**. Successful calling of **offerror()** indicates that listening for the **error** events is canceled successfully.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| Callback used to return the result. which is the error code (default value: **200**).                        |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| Callback used to return the result, which is the error code (default value: **200**).                        |
 
 **Example**
 
@@ -1531,9 +1526,8 @@ Represents the result obtained from the **close** event reported when the WebSoc
 | reason | string | No  |No|Error cause for closing the connection.|
 
 ## ResponseHeaders<sup>12+</sup>
-type ResponseHeaders = {
-  [k: string]: string | string[] | undefined;
-}
+
+type ResponseHeaders = { [k: string]: string | string[] | undefined; }
 
 Enumerates the response headers sent by the server.
 

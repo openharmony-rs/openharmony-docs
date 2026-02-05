@@ -1911,7 +1911,7 @@ Defines the parameters for sending SMS messages.
 | slotId<sup>11+</sup>           | number                                                       | Yes  | Slot ID of the SIM card used for sending SMS messages. <br>- **0**: card slot 1<br>- **1**: card slot 2     |
 | mmsc<sup>11+</sup>  | string                                                       | Yes  | MMSC address.                                            |
 | data<sup>11+</sup>          | string                               | Yes  | MMS PDU address.|
-| mmsConfig<sup>11+</sup>    | MmsConfig                                                       | No  | MMS configuration file. For details, see [MmsParams](#mmsparams11).               |
+| mmsConfig<sup>11+</sup>    | MmsConfig                                                       | No  | MMS configuration file. For details, see [MmsConfig](#mmsconfig11).               |
 
 ## MmsConfig<sup>11+</sup>
 

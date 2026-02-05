@@ -146,7 +146,7 @@ export struct ToggleSample {
   pathStack: NavPathStack = new NavPathStack();
 
   build() {
-    NavDestination() {
+    // ...
       Column({ space: 8 }) {
         Column({ space: 8 }) {
           Text('Bluetooth Mode: ' + this.message)
@@ -176,7 +176,7 @@ export struct ToggleSample {
       .width('100%')
       .height('100%')
       .padding({ left: 12, right: 12 })
-    }
+    // ...
     .backgroundColor('#f1f2f3')
     // Replace $r('app.string.ToggleCaseExample_title') with the actual resource file. In this example, the value in the resource file is "Bluetooth."
     .title($r('app.string.ToggleCaseExample_title'))
@@ -186,4 +186,4 @@ export struct ToggleSample {
 
 
 ![en-us_image_0000001511740448](figures/en-us_image_0000001511740448.gif)
-  
+
