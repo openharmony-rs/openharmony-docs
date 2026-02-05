@@ -5,7 +5,7 @@
 <!--Owner: @mzyan-->
 <!--Designer: @liyueric-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 - ArkTS API<!--performance-analysis-arkts-->
   - [@ohos.hichecker (HiChecker)](js-apis-hichecker.md)

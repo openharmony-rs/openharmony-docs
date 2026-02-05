@@ -261,6 +261,8 @@ Disables the device from using the specified network interface.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
+
 **Parameters**
 
 | Name          | Type                                                   | Mandatory| Description                                             |
@@ -312,6 +314,8 @@ Sets the global network proxy.
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -374,6 +378,8 @@ Sets the network proxy for a specified user.
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -544,8 +550,14 @@ try {
 
 addFirewallRule(admin: Want, firewallRule: FirewallRule): void
 
-Adds firewall rules for the device. IPv4 and IPv6 are supported since API version 22. In API version 21 and earlier versions, only IPv4 is supported.<br>
-After a rule with [Action](#action) set to **ALLOW** is added, a rule with **Action** set to **DENY** is added by default to discard or intercept all network data packets that do not meet the **ALLOW** rule.<br>
+Adds firewall rules for the device.
+
+In API version 21 and earlier versions, only IPv4 is supported. IPv4 and IPv6 are supported since API version 22.
+
+[LogType](#logtype23) is supported since API version 23.
+
+After a rule with [Action](#action) set to **ALLOW** is added, a rule with **Action** set to **DENY** is added by default to discard or intercept all network data packets that do not meet the **ALLOW** rule.
+
 After the device is restarted, the firewall rules are cleared.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -553,6 +565,8 @@ After the device is restarted, the firewall rules are cleared.
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -593,7 +607,8 @@ let firewallRule: networkManager.FirewallRule = {
   "direction": networkManager.Direction.OUTPUT,
   "action": networkManager.Action.DENY,
   "protocol": networkManager.Protocol.UDP,
-  "family": 1
+  "family": 1,
+  "logType": networkManager.LogType.NFLOG
 };
 
 try {
@@ -608,7 +623,12 @@ try {
 
 removeFirewallRule(admin: Want, firewallRule?: FirewallRule): void
 
-Removes firewall rules of the device. IPv4 and IPv6 are supported since API version 22. In API version 21 and earlier versions, only IPv4 is supported.<br>
+Removes a firewall rule.
+
+In API version 21 and earlier versions, only IPv4 is supported. IPv4 and IPv6 are supported since API version 22.
+
+[LogType](#logtype23) is supported since API version 23.
+
 If there is no rule with [Action](#action) being **ALLOW** after the rule is removed, the **DENY** rules that are added by default with [addFirewallRule](#networkmanageraddfirewallrule) will be removed.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -616,6 +636,8 @@ If there is no rule with [Action](#action) being **ALLOW** after the rule is rem
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -657,7 +679,8 @@ let firewallRule: networkManager.FirewallRule = {
   "direction": networkManager.Direction.OUTPUT,
   "action": networkManager.Action.DENY,
   "protocol": networkManager.Protocol.UDP,
-  "family": 1
+  "family": 1,
+  "logType": networkManager.LogType.NFLOG
 };
 
 // Remove the specified firewall rule.
@@ -681,7 +704,11 @@ try {
 
 getFirewallRules(admin: Want): Array\<FirewallRule>
 
-Checks firewall rules of the device. IPv4 and IPv6 are supported since API version 22. In API version 21 and earlier versions, only IPv4 is supported.
+Queries firewall rules of a device.
+
+In API version 21 and earlier versions, only IPv4 is supported. IPv4 and IPv6 are supported since API version 22.
+
+[LogType](#logtype23) is supported since API version 23.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -736,15 +763,26 @@ try {
 
 addDomainFilterRule(admin: Want, domainFilterRule: DomainFilterRule): void
 
-Adds domain name filtering rules for the device. IPv4 and IPv6 are supported since API version 22. In API version 21 and earlier versions, only IPv4 is supported.<br>
-After a rule with [Action](#action) set to **ALLOW** is added, a rule with **Action** set to **DENY** is added by default to discard or intercept all packets for domain name resolution that do not meet the **ALLOW** rule.<br>
+Adds domain name filtering rules for the device.
+
+In API version 21 and earlier versions, only IPv4 is supported. IPv4 and IPv6 are supported since API version 22.
+
+[LogType](#logtype23) is supported since API version 23.
+
+After a rule with [Action](#action) set to **ALLOW** is added, a rule with **Action** set to **DENY** is added by default to discard or intercept all packets for domain name resolution that do not meet the **ALLOW** rule.
+
 After the device is restarted, the domain name filtering rules are cleared.
+> **NOTE**
+>
+>To prevent interception rules from becoming ineffective due to DNS caching, it is recommended that you configure domain name filtering rules immediately after the system starts up. If interception fails because of DNS caching, restart the system to clear the cache and restore the interception function.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -780,7 +818,8 @@ let domainFilterRule: networkManager.DomainFilterRule = {
   "domainName": "www.example.com",
   "appUid": "9696",
   "action": networkManager.Action.DENY,
-  "family": 1
+  "family": 1,
+  "logType": networkManager.LogType.NFLOG
 };
 
 try {
@@ -795,7 +834,12 @@ try {
 
 removeDomainFilterRule(admin: Want, domainFilterRule?: DomainFilterRule): void
 
-Removes domain name filtering rules for the device. IPv4 and IPv6 are supported since API version 22. In API version 21 and earlier versions, only IPv4 is supported.<br>
+Removes the domain name filtering rules.
+
+In API version 21 and earlier versions, only IPv4 is supported. IPv4 and IPv6 are supported since API version 22.
+
+[LogType](#logtype23) is supported since API version 23.
+
 If there is no rule with [Action](#action) being **ALLOW** after the rule is removed, the **DENY** rules that are added by default with [addDomainFilterRule](#networkmanageradddomainfilterrule) will be removed.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -803,6 +847,8 @@ If there is no rule with [Action](#action) being **ALLOW** after the rule is rem
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -839,7 +885,8 @@ let domainFilterRule: networkManager.DomainFilterRule = {
   "domainName": "www.example.com",
   "appUid": "9696",
   "action": networkManager.Action.DENY,
-  "family": 1
+  "family": 1,
+  "logType": networkManager.LogType.NFLOG
 };
 
 // Remove the specified firewall rule.
@@ -863,7 +910,11 @@ try {
 
 getDomainFilterRules(admin: Want): Array\<DomainFilterRule>
 
-Checks domain name filtering rules of the device. IPv4 and IPv6 are supported since API version 22. In API version 21 and earlier versions, only IPv4 is supported.
+Obtains domain name filtering rules.
+
+In API version 21 and earlier versions, only IPv4 is supported. IPv4 and IPv6 are supported since API version 22.
+
+[LogType](#logtype23) is supported since API version 23.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -926,6 +977,8 @@ Turns on mobile data.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: If any MDM app disables the mobile data network via [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy), the mobile data network cannot be enabled through this API.
+
 **Parameters**
 
 | Name| Type                                                   | Mandatory| Description          |
@@ -974,6 +1027,8 @@ Turns off mobile data.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: If any MDM app disables the mobile data network via [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy), the mobile data network cannot be disabled through this API.
+
 **Parameters**
 
 | Name| Type                                                   | Mandatory| Description          |
@@ -1020,6 +1075,8 @@ Adds an access point name (APN).
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -1076,6 +1133,8 @@ Deletes the APN.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
+
 **Parameters**
 
 | Name| Type                                                   | Mandatory| Description          |
@@ -1124,6 +1183,8 @@ Updates the APN.
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -1181,6 +1242,8 @@ Sets the preferred APN.
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -1347,6 +1410,8 @@ Sets the IP address of a specific Ethernet interface.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
+
 **Parameters**
 
 | Name| Type                                                   | Mandatory| Description          |
@@ -1364,6 +1429,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 9200012  | Parameter verification failed. |
+| 9201010  | Ethernet configuration failed. Ethernet device not connected. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **Example**
@@ -1396,7 +1462,11 @@ try {
 
 ## FirewallRule
 
-Represents a firewall rule. IPv4 and IPv6 are supported since API version 22. In API version 21 and earlier versions, only IPv4 is supported.<br>
+Represents a firewall rule.
+
+In API version 21 and earlier versions, only IPv4 is supported. IPv4 and IPv6 are supported since API version 22.
+
+[LogType](#logtype23) is supported since API version 23.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1412,10 +1482,15 @@ Represents a firewall rule. IPv4 and IPv6 are supported since API version 22. In
 | action    | [Action](#action)       | No  | Yes|Action to take, that is, receive or discard the data packets.<br>This parameter is mandatory when a firewall filtering rule is added.<br>This parameter is optional when a firewall is removed. If this parameter is left empty, all [Action](#action) chains are cleared, and **srcAddr**, **destAddr**, **srcPort**, **destPort**, and **appUid** must be also left empty.|
 | protocol  | [Protocol](#protocol)   | No  | Yes|Network protocol. If the value is **ALL** or **ICMP**, the settings of **srcPort** and **destPort** are invalid.|
 | family<sup>22+</sup>    | number    | No  | Yes|IP protocol version. The value can be **1** (IPv4) or **2** (IPv6).|
+| logType<sup>23+</sup> | [LogType](#logtype23) | No| Yes|Log type. Currently, only **NFLOG** is supported. This parameter applies only to PCs/2-in-1 devices.<br>When adding a firewall filter rule, this parameter is optional. If configured, it only takes effect when data packets are dropped or rejected.<!--RP1--><!--RP1End--><br>When removing firewall filter rules, this parameter is optional if a chain is cleared. The clearing of the entire chain is not affected. When removing a single rule, the value of this parameter must be the same as that of the rule. Otherwise, the filter rule may have been removed, but logs are still recorded. When removing the same filter rule, you must remove the rule in the sequence in which the rule is added.<br>When obtaining firewall filter rules, the **logType** field can be obtained only when logs take effect.|
 
 ## DomainFilterRule
 
-Represents a domain name filtering rule. IPv4 and IPv6 are supported since API version 22. In API version 21 and earlier versions, only IPv4 is supported.<br>
+Represents a domain name filtering rule.
+
+In API version 21 and earlier versions, only IPv4 is supported. IPv4 and IPv6 are supported since API version 22.
+
+[LogType](#logtype23) is supported since API version 23.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1427,6 +1502,7 @@ Represents a domain name filtering rule. IPv4 and IPv6 are supported since API v
 | action     | [Action](#action) | No  | Yes|Action to take, that is, receive or discard the data packets.<br>This parameter is mandatory when a domain name filtering rule is added.<br>This parameter is optional when a domain name filtering rule is removed. If this parameter is left empty, all [Action](#action) chains are cleared, and **domainName** and **appUid** must be also left empty.|
 | direction<sup>15+</sup> | [Direction](#direction) | No| Yes|Direction chains to which the rule applies.<br>This parameter is optional when a domain name filtering rule is added. If this parameter is set to output chain or input chain, the output chain takes effect. If this parameter is set to a forward chain, **appUid** must be empty. Otherwise, error code 401 will be returned.<br>This parameter is optional when a domain name filtering rule is removed. If the value is empty, all [Direction](#direction) chains are cleared, and **domainName** and **appUid** must be empty.|
 | family<sup>22+</sup>    | number| No  | Yes|IP protocol version. The value can be **1** (IPv4) or **2** (IPv6).|
+| logType<sup>23+</sup> | [LogType](#logtype23) | No| Yes|Log type. Currently, only **NFLOG** is supported. This parameter applies only to PCs/2-in-1 devices.<br>This parameter is optional when you add a domain name filtering rule. If configured, it only takes effect when data packets are dropped or rejected.<!--RP2--><!--RP2End--><br>When removing domain name filter rules, this parameter is optional if a chain is cleared. The clearing of the entire chain is not affected. When removing a single rule, the value of this parameter must be the same as that of the rule. Otherwise, the filter rule may have been removed, but logs are still recorded. When removing the same filter rule, you must remove the rule in the sequence in which the rule is added.<br>When obtaining domain name filter rules, the **logType** field can be obtained only when logs take effect.|
 
 ## Direction
 
@@ -1467,6 +1543,17 @@ Enumerates network protocols.
 | TCP  | 1    | TCP. |
 | UDP  | 2    | UDP. |
 | ICMP | 3    | ICMP.|
+
+## LogType<sup>23+</sup>
+
+Enumerates the log types.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+
+| Name | Value  | Description                                 |
+| ----- | ---- | ------------------------------------- |
+| NFLOG | 0    | Data packet logging function in the kernel Netfilter framework.|
 
 ## InterfaceConfig<sup>23+</sup>
 

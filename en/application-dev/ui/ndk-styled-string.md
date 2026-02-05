@@ -92,6 +92,7 @@ nodeApi->setAttribute(text, NODE_HEIGHT, &textHeightItem);
     ```
 ## Adding a Placeholder
 Placeholders reserve blank areas of specified sizes. While no text is drawn in these areas, they participate in layout measurement and affect text typesetting.
+
 Line height is determined by the larger value between text height and placeholder height.
 
 This example inserts a placeholder between "Hello" and "World!":

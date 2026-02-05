@@ -200,7 +200,7 @@ Sets the power mode of a device. This API uses an asynchronous callback to retur
 | Name  | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | mode     | DevicePowerMode | Yes  | Power mode. The value must be an enum.                                                  |
-| callback | AsyncCallback&lt;void&gt;            | Yes  | Callback invoked to return the result.<br>If the power mode is successfully set, **err** is **undefined**; otherwise, **err** is an error object. |
+| callback | AsyncCallback&lt;void&gt;            | Yes  | Callback invoked to return the result.<br> If the power mode is successfully set, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -359,6 +359,7 @@ try {
 refreshActivity(reason: string): void
 
 Refreshes the device activity status (for example, resetting the screen-off time).
+
 This API takes effect only when the device is active. For details about the device activity status, see [power.isActive](js-apis-power.md#powerisactive9).
 
 **System API**: This is a system API.
@@ -396,9 +397,10 @@ try {
 
 ## power.setPowerKeyFilteringStrategy<sup>21+</sup>
 
-setPowerKeyFilteringStrategy(strategy: PowerKeyFilteringStrategy): void;
+setPowerKeyFilteringStrategy(strategy: PowerKeyFilteringStrategy): void
 
 Sets the power key filtering strategy. After the power service subscribes to the power key event, this API is used to configure the processing mode of this event.
+
 For details about the power key filtering strategy, see [power.PowerKeyFilteringStrategy](js-apis-power.md#powerkeyfilteringstrategy21).
 
 **System API**: This is a system API.

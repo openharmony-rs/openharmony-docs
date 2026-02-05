@@ -215,7 +215,7 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
   <!-- @[Main_WrappedBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/WrappedBuilder.ets) -->
   
   ``` TypeScript
-  import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
+  import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI'; 
   
   class Params {
     public text: string = '';
@@ -234,9 +234,9 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
       Row() {
         Column() {
           Text(this.message)
-            .fontSize(50)
+            .fontSize(40)
             .fontWeight(FontWeight.Bold)
-            .margin({ bottom: 36 })
+            .margin({ bottom: 10 })
             .backgroundColor(Color.Gray)
         }
       }
@@ -247,11 +247,15 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
   function buildText(params: Params) {
     Column() {
       Text(params.text)
-        .fontSize(50)
+        .fontSize(40)
         .fontWeight(FontWeight.Bold)
-        .margin({ bottom: 36 })
+        .margin({ bottom: 10 })
       TextBuilder({ message: params.text }) // Custom component
     }
+    .width('100%')
+    .alignItems(HorizontalAlign.Center)
+    .justifyContent(FlexAlign.Center)
+  
   }
   
   class TextNodeController extends NodeController {
@@ -286,10 +290,10 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
   
     build() {
       Row() {
-        Column() {
+        Column({ space: 25}) {
           NodeContainer(this.textNodeController)
             .width('100%')
-            .height(200)
+            .height(110)
             .backgroundColor('#FFF0F0F0')
           Button('Update')
             .onClick(() => {
@@ -297,6 +301,8 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
               const message = 'Update' + this.count.toString();
               this.textNodeController.update(message);
             })
+            .fontSize(20)
+            .fontWeight(FontWeight.Bold)
         }
         .width('100%')
         .height('100%')
@@ -305,7 +311,7 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
     }
   }
   ```
-
+  
   ![en-us_image_update_BuilderNode](figures/en-us_image_update_BuilderNode.gif)
 
 ## Canceling the Reference to the Entity Node
@@ -1500,7 +1506,7 @@ The BuilderNode has its freeze policy updated only during the tree operations li
 | [NodeContent](../reference/apis-arkui/js-apis-arkui-NodeContent.md) | [addFrameNode](../reference/apis-arkui/js-apis-arkui-NodeContent.md#addframenode12), [removeFrameNode](../reference/apis-arkui/js-apis-arkui-NodeContent.md#removeframenode12)|
 | [NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md) | [makeNode](../reference/apis-arkui/js-apis-arkui-nodeController.md#makenode) |
 | [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md) | [appendChild](../reference/apis-arkui/js-apis-arkui-renderNode.md#appendchild), [insertChildAfter](../reference/apis-arkui/js-apis-arkui-renderNode.md#insertchildafter), [removeChild](../reference/apis-arkui/js-apis-arkui-renderNode.md#removechild), [clearChildren](../reference/apis-arkui/js-apis-arkui-renderNode.md#clearchildren)|
-| [NodeAdaper](../reference/apis-arkui/js-apis-arkui-frameNode.md#nodeadapter12) | Lazy loading operations using [LazyForEach](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)|
+| [NodeAdapter](../reference/apis-arkui/js-apis-arkui-frameNode.md#nodeadapter12) | Lazy loading operations using [LazyForEach](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)|
 
 > **NOTE**
 >
@@ -2443,13 +2449,13 @@ In the preceding example:
 
 3. When **change** is clicked again, the value of **message** changes, triggering only the **onMessageUpdated** callback registered via @Monitor in of the **TabContent** component being displayed. Other inactive **TabContent** components do not trigger @Monitor decorated callbacks.
 
-## Configuring the BuilderNode for Cross-Boundary @Provide-@Consume Communication
+## Configuring the BuilderNode for Cross-Boundary @Provide-@Consume Communication (State Management V1)
 
 Since API version 20, the BuilderNode supports cross-boundary state sharing between [@Consume](./state-management/arkts-provide-and-consume.md) and [@Provide](./state-management/arkts-provide-and-consume.md) through the **BuildOptions** configuration. This feature enables seamless data flow from the host pages into BuilderNode's internal custom components.
 
 For details, see [Example 5: Configuring the BuilderNode for Cross-Boundary @Provide-@Consume Communication](../reference/apis-arkui/js-apis-arkui-builderNode.md#example-5-configuring-the-buildernode-for-cross-boundary-provide-consume-communication).
 
-## Configuring the BuilderNode for Cross-Boundary @Provider-@Consumer Communication
+## Configuring the BuilderNode for Cross-Boundary @Provider-@Consumer Communication (State Management V2)
 
 Since API version 22, the BuilderNode supports cross-boundary state sharing between [@Consumer](./state-management/arkts-new-provider-and-consumer.md) and [@Provider](./state-management/arkts-new-provider-and-consumer.md) through the **BuildOptions** configuration. This feature enables seamless data flow from the host pages into BuilderNode's internal custom components.
     
@@ -2537,7 +2543,7 @@ Pre-rendering is particularly suitable for scenarios such as web page initializa
     // The NodeController instance must be used with a NodeContainer for controlling and feeding back the behavior of the nodes in the NodeContainer.
     export class MyNodeController2 extends NodeController {
       private rootnode: BuilderNode<Data[]> | null = null;
-      // This function must be overridden, which is used to construct the number of nodes and return nodes to be mounted in NodeContainer.
+      // This function must be overridden, which is used to construct the number of nodes, return the nodes, and attach them to NodeContainer.
       // Called when the corresponding NodeContainer is created or called by the rebuild method.
       makeNode(uiContext: UIContext): FrameNode | null {
         hilog.info(0xF811,'testTag','%{public}s',' uicontext is undefined :' + (uiContext === undefined));

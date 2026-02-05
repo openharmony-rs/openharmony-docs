@@ -466,7 +466,7 @@ try {
 
 ## appControl.deleteDisposedStatusSync<sup>10+</sup>
 
-deleteDisposedStatusSync(appId: string, appIndex:? number) : void
+deleteDisposedStatusSync(appId: string, appIndex?: number) : void
 
 以同步方法删除指定应用或分身应用的处置状态。成功返回null，失败抛出对应异常。
 
@@ -490,7 +490,7 @@ deleteDisposedStatusSync(appId: string, appIndex:? number) : void
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
 | 17700005 | The specified app ID is invalid. |
@@ -515,7 +515,7 @@ try {
 
 ## appControl.getDisposedRule<sup>11+</sup>
 
-getDisposedRule(appId: string, appIndex:? number): DisposedRule
+getDisposedRule(appId: string, appIndex?: number): DisposedRule
 
 获取指定应用或分身应用已设置的拦截规则。
 
@@ -545,7 +545,7 @@ getDisposedRule(appId: string, appIndex:? number): DisposedRule
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
 | 17700005 | The specified app ID is invalid. |
@@ -611,9 +611,62 @@ try {
 }
 ```
 
+## appControl.getDisposedRulesByBundle<sup>23+</sup>
+
+getDisposedRulesByBundle(bundleName: string): Array\<DisposedRuleConfiguration>
+
+获取指定应用程序包设置的所有拦截规则。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS 或 ohos.permission.GET_DISPOSED_APP_STATUS
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名       | 类型     | 必填   | 说明                                    |
+| ----------- | ------ | ---- | --------------------------------------- |
+| bundleName  | string | 是    | 表示设置拦截规则的应用程序包的包名。               |
+
+**返回值：**
+
+| 类型                                                      | 说明                   |
+| --------------------------------------------------------- | ---------------------- |
+|Array\<[DisposedRuleConfiguration](#disposedruleconfiguration20)> | 指定应用程序包已设置的拦截规则。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Permission denied. A non-system application is not allowed to call a system API. |
+| 801      | Capability not supported.                                    |
+
+**示例：**
+
+```ts
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'com.example.myapplication';
+
+try {
+  let data = appControl.getDisposedRulesByBundle(bundleName);
+  console.info('getDisposedRulesByBundle successfully. Data: ' + JSON.stringify(data));
+} catch (error) {
+  let message = (error as BusinessError).message;
+  console.error('getDisposedRulesByBundle failed ' + message);
+}
+```
+
 ## appControl.setDisposedRule<sup>11+</sup>
 
-setDisposedRule(appId: string, rule: DisposedRule, appIndex:? number): void
+setDisposedRule(appId: string, rule: DisposedRule, appIndex?: number): void
 
 设置指定应用或分身应用的拦截规则。
 
@@ -638,7 +691,7 @@ setDisposedRule(appId: string, rule: DisposedRule, appIndex:? number): void
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
 | 17700005 | The specified app ID is invalid. |
@@ -772,7 +825,7 @@ struct Index {
 
 ## appControl.setUninstallDisposedRule<sup>15+</sup>
 
-setUninstallDisposedRule(appIdentifier: string, rule: UninstallDisposedRule, appIndex:? number): void
+setUninstallDisposedRule(appIdentifier: string, rule: UninstallDisposedRule, appIndex?: number): void
 
 设置指定应用或分身应用的卸载处置规则。
 
@@ -833,7 +886,7 @@ try {
 
 ## appControl.getUninstallDisposedRule<sup>15+</sup>
 
-getUninstallDisposedRule(appIdentifier: string, appIndex:? number): UninstallDisposedRule
+getUninstallDisposedRule(appIdentifier: string, appIndex?: number): UninstallDisposedRule
 
 获取指定应用或分身应用已设置的卸载处置规则。
 
@@ -847,7 +900,7 @@ getUninstallDisposedRule(appIdentifier: string, appIndex:? number): UninstallDis
 
 | 参数名       | 类型     | 必填   | 说明                                    |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appIdentifier  | string | 是    | 要获取卸载处置规则的应用的appIdentifier。<br> 如果应用没有appIdentifier可使用appId代替。appId是应用的唯一标识，由应用Bundle名称和签名信息决定，设置方法参见[获取应用的appId](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。  |
+| appIdentifier  | string | 是    | 要获取卸载处置规则的应用的appIdentifier。<br> 如果应用没有appIdentifier可使用appId代替。appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。  |
 | appIndex   | number  | 否   | 表示分身应用的索引，默认值为0。<br> appIndex为0时，表示获取主应用的卸载处置规则。appIndex大于0时，表示获取指定分身应用的卸载处置规则。              |
 
 **返回值：**
@@ -888,7 +941,7 @@ try {
 
 ## appControl.deleteUninstallDisposedRule<sup>15+</sup>
 
-deleteUninstallDisposedRule(appIdentifier: string, appIndex:? number): void
+deleteUninstallDisposedRule(appIdentifier: string, appIndex?: number): void
 
 删除指定应用或分身应用的卸载处置规则。
 
@@ -902,7 +955,7 @@ deleteUninstallDisposedRule(appIdentifier: string, appIndex:? number): void
 
 | 参数名       | 类型     | 必填   | 说明                                    |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appIdentifier  | string | 是    | 要删除卸载处置规则的应用的appIdentifier。<br> 如果应用没有appIdentifier可使用appId代替。appId是应用的唯一标识，由应用Bundle名称和签名信息决定，删除方法参见[获取应用的appId](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。  |
+| appIdentifier  | string | 是    | 要删除卸载处置规则的应用的appIdentifier。<br> 如果应用没有appIdentifier可使用appId代替。appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。  |
 | appIndex   | number  | 否   | 表示分身应用的索引，默认值为0。<br> appIndex为0时，表示删除主应用的卸载处置规则。appIndex大于0时，表示删除指定分身应用的卸载处置规则。            |
 
 **错误码：**
@@ -1028,6 +1081,6 @@ try {
 
 | 名称         | 类型                            | 只读 | 可选 | 说明                                                         |
 | ------------ | ------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| appId        | string                          | 否   | 否   | 要被设置拦截规则应用的appId或appIdentifier。appId和appIdentifier可以标识同一个应用，因此针对同一应用如果用appIdentifier设置拦截规则，可以覆盖之前采用appId设置的，反之同理。<br/>**说明：**<br/>appId是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appidentifier)。 |
+| appId        | string                          | 否   | 否   | 要被设置拦截规则应用的appId或appIdentifier。appId和appIdentifier可以标识同一个应用，因此针对同一应用如果用appIdentifier设置拦截规则，可以覆盖之前采用appId设置的，反之同理。<br/>**说明：**<br/> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appidentifier)。 |
 | appIndex     | number                          | 否   | 否   | 表示分身应用的索引，默认值为0。<br/> appIndex为0时，表示设置主应用的拦截规则。appIndex大于0时，表示设置指定分身应用的拦截规则。 |
 | disposedRule | [DisposedRule](#disposedrule11) | 否   | 否   | 表示对应用的拦截规则，包括拦截时将拉起能力的类型等。         |

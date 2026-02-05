@@ -63,7 +63,7 @@
       };
       let kdf = cryptoFramework.createKdf('SCRYPT');
       let secret = await kdf.generateSecret(spec);
-      console.info('key derivation output is ' + secret.data);
+      console.info('key derivation output: ' + secret.data);
     } catch(error) {
       let e: BusinessError = error as BusinessError;
       console.error('key derivation failed, errCode: ' + e.code + ', errMsg: ' + e.message);
@@ -95,9 +95,9 @@
     let kdf = cryptoFramework.createKdf('SCRYPT');
     let kdfPromise = kdf.generateSecret(spec);
     kdfPromise.then((secret) => {
-      console.info('key derivation output is ' + secret.data);
+      console.info('key derivation output: ' + secret.data);
     }).catch((error: BusinessError) => {
-      console.error('key derivation error.');
+      console.error(`key derivation failed: errCode: ${error.code}, message: ${error.message}`);
     });
   }
   ```
@@ -125,7 +125,7 @@
       };
       let kdf = cryptoFramework.createKdf('SCRYPT');
       let secret = kdf.generateSecretSync(spec);
-      console.info('[Sync]key derivation output is ' + secret.data);
+      console.info('[Sync]key derivation output: ' + secret.data);
     } catch(error) {
       let e: BusinessError = error as BusinessError;
       console.error('key derivation failed, errCode: ' + e.code + ', errMsg: ' + e.message);

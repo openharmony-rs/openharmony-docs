@@ -29,8 +29,10 @@ You can display a custom dialog box by creating a dialog controller or by creati
 ### Displaying a Custom Dialog Box Through a Dialog Controller
 
 - Creating a Dialog Controller
+
   [ArkUI_NativeDialogHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog8h.md) represents a pointer to the dialog controller, which you can create by calling the [create](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md#create) API of [ArkUI_NativeDialogAPI_x](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md).
-This API returns data of the **ArkUI_NativeDialogHandle** type.
+
+  This API returns data of the **ArkUI_NativeDialogHandle** type.
   <!-- @[dialog_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
   
   ``` C++
@@ -56,8 +58,10 @@ This API returns data of the **ArkUI_NativeDialogHandle** type.
 ### Displaying a Custom Dialog Box Through a Custom Dialog Content Object
 
 - Creating a Dialog Content Object
+
   You can create a custom dialog content object [ArkUI_CustomDialogOptions](../reference/apis-arkui/capi-arkui-nativemodule-arkui-customdialogoptions.md) by calling the OH_ArkUI_CustomDialog_CreateOptions](../reference/apis-arkui/capi-native-dialog-h.md#oh_arkui_customdialog_createoptions) API,
-which returns a pointer of the **ArkUI_CustomDialogOptions** type.
+
+  which returns a pointer of the **ArkUI_CustomDialogOptions** type.
   <!-- @[dialog_createOption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
   
   ``` C++
@@ -313,7 +317,9 @@ You can create an interactive page to open or close a dialog box.
 ## Managing the Dialog Box Lifecycle
 
 Starting from API version 19, four lifecycle APIs are available for callbacks before and after a dialog box is displayed and closed: **registerOnWillAppear**, **registerOnDidAppear**, **registerOnWillDisappear**, and **registerOnDidDisappear**.
+
 These lifecycle APIs must be called before the **show** API is invoked. The sequence of lifecycle events is as follows:
+
 registerOnWillAppear -> The dialog box display animation starts -> The dialog box display animation ends -> registerOnDidAppear -> The dialog box is fully displayed ->
 registerOnWillDisappear -> The dialog box exit animation starts -> The dialog box exit animation ends -> registerOnDidDisappear -> The dialog box is fully closed
 

@@ -91,7 +91,7 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 ### onComplete
 
-onComplete(callback: VoidCallback)
+onComplete(callback:&nbsp;VoidCallback)
 
 Triggered when the component loading is complete.
 
@@ -107,7 +107,7 @@ Triggered when the component loading is complete.
 
 ### onError
 
-onError(callback: PluginErrorCallback)
+onError(callback:&nbsp;PluginErrorCallback)
 
 Triggered when an error occurs during component loading.
 

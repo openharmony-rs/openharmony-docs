@@ -181,7 +181,7 @@ int (*clear)(OH_VBucket *bucket)
 
 **描述**
 
-将char*值放入给定列名的OH_VBucket对象中。
+清空[OH_VBucket](capi-rdb-oh-vbucket.md)对象。
 
 **起始版本：** 10
 
@@ -205,7 +205,7 @@ int (*destroy)(OH_VBucket *bucket)
 
 **描述**
 
-将char*值放入给定列名的OH_VBucket对象中。
+销毁[OH_VBucket](capi-rdb-oh-vbucket.md)对象，并回收该对象占用的内存。
 
 **起始版本：** 10
 

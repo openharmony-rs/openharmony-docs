@@ -16,6 +16,8 @@
 
 **库：** libnative_vsync.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeVsync
+
 **起始版本：** 9
 
 **相关模块：** [NativeVsync](capi-nativevsync.md)

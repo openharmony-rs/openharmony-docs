@@ -167,7 +167,7 @@ This topic describes how to use the C/C++ APIs provided by HiAppEvent to subscri
    testNapi.registerWatcher();
    ```
 
-8. In the **entry/src/main/ets/pages/Index.ets** file, add the **timeOut500** button with **onClick()** to trigger a main thread jank event when the button is clicked. The sample code is as follows:
+8. In the **entry/src/main/ets/pages/index.ets** file, add a button and simulate a main thread jank event in the **onClick** function. The sample code is as follows:
 
    ```typescript
       Button("timeOut350")
@@ -179,7 +179,7 @@ This topic describes how to use the C/C++ APIs provided by HiAppEvent to subscri
       })
    ```
 
-9. In DevEco Studio, click the **Run** button to run the application project. Click the **timeOut350** button twice consecutively to trigger a main thread jank event.
+9. In DevEco Studio, click the **Run** button to run the application project. Click the **timeOut350** button twice or three times consecutively to trigger a main thread jank event.
 
 ### Verifying the Subscription
 

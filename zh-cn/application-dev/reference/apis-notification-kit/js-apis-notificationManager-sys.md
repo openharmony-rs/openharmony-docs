@@ -2859,7 +2859,7 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//publishAsBundle回调
+// publishAsBundle回调
 let callback = (err: BusinessError): void => {
     if (err) {
         console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
@@ -4620,12 +4620,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let userId : number = 100;
 let trustlist: Array<notificationManager.BundleOption> = [
   {
-    //需根据实际情况进行替换
+    // 需根据实际情况进行替换
     bundle: 'bundleName',
     uid: 0
   },
   {
-    //需根据实际情况进行替换
+    // 需根据实际情况进行替换
     bundle: 'bundleName1',
     uid: 1
   }
@@ -5860,7 +5860,7 @@ isPriorityEnabled(): Promise\<boolean\>
 
 | 类型            | 说明                     |
 |-----------------|-------------------------|
-| Promise\<boolean\> | Promise对象，返回包含通知优先级总开关使能状态的Promise对象。 |
+| Promise\<boolean\> | Promise对象，返回包含通知优先级总开关使能状态的Promise对象。<br> - true：允许设置为优先通知。<br> - false：禁止设置为优先通知。 |
 
 **错误码**：
 
@@ -5882,7 +5882,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 notificationManager.isPriorityEnabled().then((result : boolean) => {
     hilog.info(0x0000, 'testTag', `isPriorityEnabled result is ${result}`);
 }).catch((err: BusinessError) => {
-    hilog.info(0x0000, 'testTag', `isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+    hilog.error(0x0000, 'testTag', `isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -5931,7 +5931,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 notificationManager.setPriorityEnabled(false).then(() => {
     hilog.info(0x0000, 'testTag', `setPriorityEnabled success`);
 }).catch((err: BusinessError) => {
-    hilog.info(0x0000, 'testTag', `setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+    hilog.error(0x0000, 'testTag', `setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -5982,7 +5982,7 @@ const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', 
 notificationManager.isPriorityEnabledByBundle(bundleOption).then((result : notificationManager.PriorityEnableStatus) => {
   hilog.info(0x0000, 'testTag', `isPriorityEnabledByBundle result is ${result}`);
 }).catch((err: BusinessError) => {
-  hilog.info(0x0000, 'testTag', `isPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+  hilog.error(0x0000, 'testTag', `isPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -6031,10 +6031,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
-notificationManager.setPriorityEnabledByBundle(bundleOption, 2 as notificationManager.PriorityEnableStatus).then(() => {
+notificationManager.setPriorityEnabledByBundle(bundleOption, notificationManager.PriorityEnableStatus.ENABLE).then(() => {
   hilog.info(0x0000, 'testTag', `setPriorityEnabledByBundle success`);
 }).catch((err: BusinessError) => {
-  hilog.info(0x0000, 'testTag', `setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+  hilog.error(0x0000, 'testTag', `setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -6085,7 +6085,7 @@ const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', 
 notificationManager.getBundlePriorityConfig(bundleOption).then((value: string) => {
   hilog.info(0x0000, 'testTag', `getBundlePriorityConfig value is ${value}`);
 }).catch((err: BusinessError) => {
-  hilog.info(0x0000, 'testTag', `getBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+  hilog.error(0x0000, 'testTag', `getBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -6137,7 +6137,7 @@ const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', 
 notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').then(() => {
   hilog.info(0x0000, 'testTag', `setBundlePriorityConfig success`);
 }).catch((err: BusinessError) => {
-  hilog.info(0x0000, 'testTag', `setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+  hilog.error(0x0000, 'testTag', `setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -6174,15 +6174,13 @@ onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<number\>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 try{
     notificationManager.onBadgeNumberQuery(
         async (bundleOption: notificationManager.BundleOption) => {
             return 1;
         }
     );
-} catch(err) {
+} catch (err) {
     console.error(`OnBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
@@ -6214,11 +6212,9 @@ offBadgeNumberQuery(): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 try{
     notificationManager.offBadgeNumberQuery();
-} catch(err) {
+} catch (err) {
     console.error(`OffBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
@@ -6574,7 +6570,7 @@ type TriggerType = _TriggerType
 
 | 类型 | 说明 |
 | --- | --- |
-| [_TriggerType](js-apis-inner-notification-notificationRequest-sys.md#triggertype23) | 地理围栏触发类型。 |
+| [_TriggerType](js-apis-inner-notification-notificationRequest-sys.md#triggertype23) | 条件触发类型。 |
 
 ## Trigger <sup>23+</sup>
 
@@ -6590,7 +6586,7 @@ type Trigger = _Trigger
 
 | 类型 | 说明 |
 | --- | --- |
-| [_Trigger](js-apis-inner-notification-notificationRequest-sys.md#trigger23) | 条件类型。 |
+| [_Trigger](js-apis-inner-notification-notificationRequest-sys.md#trigger23) | 触发条件。 |
 
 ## Geofence <sup>23+</sup>
 
@@ -6606,7 +6602,7 @@ type Geofence = _Geofence
 
 | 类型 | 说明 |
 | --- | --- |
-| [_Geofence](js-apis-inner-notification-notificationRequest-sys.md#geofence23) | 地理围栏中心点经度条件类型。 |
+| [_Geofence](js-apis-inner-notification-notificationRequest-sys.md#geofence23) | 地理围栏配置信息。 |
 
 ## CoordinateSystemType <sup>23+</sup>
 

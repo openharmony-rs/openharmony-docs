@@ -18,7 +18,7 @@ To use location services, turn on the Location switch on your device. If the swi
 ## Applying for Permissions
 
 <!--RP1-->
-For details, see [Applying for Location Permissions](../../device/location/location-guidelines.md#how-to-develop).
+For details, see [Applying for Location Permissions (ArkTS)](../../device/location/location-permission-guidelines.md#how-to-develop).
 <!--RP1End-->
 
 ## Modules to Import
@@ -39,13 +39,13 @@ Defines a reverse geocoding request.
 | locale | string | No| Yes| Language used for the location description. **zh** indicates Chinese, and **en** indicates English. The default language is obtained from **Language and region** in **Settings**.|
 | country<sup>12+</sup> | string | No| Yes| Country information. The country code complies with the ISO 3166-1 alpha-2 standard. **CN** indicates China. The default language is obtained from **Language and region** in **Settings**.|
 | latitude | number | No| No| Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported.|
-| longitude | number | No| No| Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
+| longitude | number | No| No| Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
 | maxItems | number | No| Yes| Maximum number of location records to be returned. The specified value must be greater than or equal to **0**. A value smaller than **10** is recommended. The default value is **1**.|
 
 
 ## GeoCodeRequest
 
-Defines a reverse geocoding request.
+Defines a geocoding request.
 
 **System capability**: SystemCapability.Location.Location.Geocoder
 
@@ -70,7 +70,7 @@ Geocoding address information.
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | latitude | number | No| Yes | Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported.|
-| longitude | number | No| Yes | Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
+| longitude | number | No| Yes | Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
 | locale | string | No| Yes | Language used for the location description. **zh** indicates Chinese, and **en** indicates English.|
 | placeName | string | No| Yes | Address information.|
 | countryCode | string | No| Yes | Country code.|
@@ -230,7 +230,7 @@ Location information.
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | latitude | number| No| No| Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| longitude | number| No| No| Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| longitude | number| No| No| Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | altitude | number | No| No| Location altitude, in meters.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | accuracy | number | No| No| Location accuracy, in meters.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | speed | number | No| No|Speed, in m/s.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -274,6 +274,7 @@ Defines a GNSS geofence request.
 | notifications | Array&lt;[NotificationRequest](../apis-notification-kit/js-apis-notification.md#notificationrequest)&gt; | No| Yes| List of notifications for geofence transition events.<br>The sequence of **monitorTransitionEvents** must correspond to that of **notifications**. For example, if **monitorTransitionEvents[0]** is **[GeofenceTransitionEvent](#geofencetransitionevent12).GEOFENCE_TRANSITION_EVENT_ENTER**, **notifications[0]** must be set to the notification that needs to be displayed when a user enters the geofence. The default value is an empty array.|
 | geofenceTransitionCallback | AsyncCallback&lt;[GeofenceTransition](#geofencetransition12)&gt; | No| No| Callback used to receive geofence transition events.|
 | loiterTimeMs<sup>23+</sup> | number | No| Yes| Dwell duration, in milliseconds. You need to pay attention to the **GEOFENCE_TRANSITION_DWELL** event. If the time the device takes to dwell in the polygon geofence reaches the value of this parameter, an **GEOFENCE_TRANSITION_DWELL** event is reported. The detection period of the dwell status is 10,000 ms. For example, if this parameter is set to **15000**, the dwell status is reported when the device dwells in the polygon geofence for more than 20,000 ms. If this parameter is set to **5000**, the dwell status is reported when the device dwells in the polygon geofence for more than 10,000 ms.|
+| fenceExtensionAbilityName<sup>23+</sup> | string | No| Yes| Name of **FenceExtensionAbility**. For details, see [@ohos.app.ability.FenceExtensionAbility (FenceExtensionAbility)](js-apis-app-ability-FenceExtensionAbility.md). To start **FenceExtensionAbility** in the background, you need to apply for the background location permission by referring to the [guide of applying for location permissions](../../device/location/location-permission-guidelines.md#how-to-develop). |
 
 
 ## CountryCode
@@ -459,7 +460,7 @@ Enumerates error codes in a continuous location request.
 | -------- | -------- | -------- |
 | LOCATING_FAILED_DEFAULT   | -1 |  Default value.|
 | LOCATING_FAILED_LOCATION_PERMISSION_DENIED   | -2 | Failed to verify the **ohos.permission.APPROXIMATELY_LOCATION** or **ohos.permission.LOCATION** permission.|
-| LOCATING_FAILED_BACKGROUND_PERMISSION_DENIED    | -3 | Failed to verify the location permission when the application is running in the background. <!--RP3-->For details about how to apply for the location permission, see [Applying for Location Permissions](../../device/location/location-guidelines.md#how-to-develop).<!--RP3End--> |
+| LOCATING_FAILED_BACKGROUND_PERMISSION_DENIED    | -3 | Failed to verify the location permission when the application is running in the background. <!--RP3-->For details about how to apply for the location permission, see [Applying for Location Permissions (ArkTS)](../../device/location/location-permission-guidelines.md#how-to-develop).<!--RP3End--> |
 | LOCATING_FAILED_LOCATION_SWITCH_OFF    | -4 | Location switch turned off.|
 | LOCATING_FAILED_INTERNET_ACCESS_FAILURE    | -5 | Network access denied.|
 
@@ -1073,7 +1074,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
       // Azimuth of the satellite whose ID is ${satelliteId}.
       let azimuth: number = azimuths[i];
       // Carrier frequency of the satellite whose ID is ${satelliteId}.
-      let carrierFrequencie: number = carrierFrequencies[i];
+      let carrierFrequency: number = carrierFrequencies[i];
       if (satelliteConstellations != undefined) {
         // Constellation of the satellite whose ID is ${satelliteId}.
         let satelliteConstellation: geoLocationManager.SatelliteConstellationCategory = satelliteConstellations[i];
@@ -1239,7 +1240,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 on(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): void
 
-Subscribes to status change events of the specified geofence. This API is supported only by certain GNSS chip models. If the required chip model is not available, error code 801 (Capability not supported) will be reported.
+Subscribes to status change events of a specified geofence. This API is supported only by certain GNSS chip models. If the required chip model is not available, error code 801 (Capability not supported) will be reported.
 
 **Permission required**: ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1304,7 +1305,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 off(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): void
 
-Unsubscribes from status change events of the specified geofence. This API is supported only by certain GNSS chip models. If the required chip model is not available, error code 801 (Capability not supported) will be reported.
+Unsubscribes from status change events of a specified geofence. This API is supported only by certain GNSS chip models. If the required chip model is not available, error code 801 (Capability not supported) will be reported.
 
 **Permission required**: ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2356,7 +2357,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 addGnssGeofence(fenceRequest: GnssGeofenceRequest): Promise&lt;number&gt;
 
-Adds a GNSS geofence and subscribes to geofence transition events. This API uses a promise to return the result.
+Adds a GNSS geofence and subscribes to geofence events. This API uses a promise to return the result.
 
 The application can pass a callback to [GnssGeofenceRequest](#gnssgeofencerequest12) to receive geofence transition events. It can also pass [NotificationRequest](../apis-notification-kit/js-apis-notification.md#notificationrequest) so that a notification is displayed when a geofence transition event occurs.
 
@@ -2443,6 +2444,8 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
     notifications: notificationRequestList,
     // Specify the duration during which the device dwells in the geofence. This parameter is optional.
     loiterTimeMs: 10000,
+    // Specify the name of FenceExtensionAbility to be started for the geofence callback. This parameter is optional.
+    fenceExtensionAbilityName: "FenceExtensionAbility",
     // Specify the callback used to receive geofence transition events.
     geofenceTransitionCallback: (err: BusinessError, transition: geoLocationManager.GeofenceTransition) => {
       if (err) {
@@ -2473,7 +2476,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 removeGnssGeofence(geofenceId: number): Promise&lt;void&gt;
 
-Removes a GNSS geofence and unsubscribes from geofence transition events. This API uses a promise to return the result.
+Removes a GNSS geofence and unsubscribes from geofence events. This API uses a promise to return the result.
 
 This API is supported only by certain GNSS chip models. If the required chip model is not available, error code 801 (Capability not supported) will be reported.
 
@@ -2842,7 +2845,7 @@ Obtains the linear distance between two locations.
 
 addBeaconFence(fenceRequest: BeaconFenceRequest): Promise&lt;number&gt;
 
-Subscribes to status change events of the specified beacon fence. This API uses a promise to return the result.
+Adds a beacon fence and subscribes to beacon fence events. This API uses a promise to return the result.
 
 A beacon fence refers to a virtual fence created through the cooperation of a Bluetooth beacon and a mobile phone application. When a user approaches or leaves a specific beacon, the mobile phone application receives a notification.
 
@@ -2934,7 +2937,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 removeBeaconFence(beaconFence?: BeaconFence): Promise&lt;void&gt;
 
-Deletes a beacon fence and unsubscribes from beacon fence events. This API uses a promise to return the result.
+Removes a beacon fence and unsubscribes from beacon fence events. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -3081,9 +3084,9 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   }
   ```
 
-## geoLocationManager.getActiveFences<sup>23+</sup>
+## geoLocationManager.getActiveGeoFences<sup>23+</sup>
 
-getActiveFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
+getActiveGeoFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
 
 Queries the current valid geofence information. This API uses a promise to return the result.
 
@@ -3104,7 +3107,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API.                 |
-|801 | Capability not supported. Failed to call ${geoLocationManager.getActiveFences} due to limited device capabilities.          |
+|801 | Capability not supported. Failed to call ${geoLocationManager.getActiveGeoFences} due to limited device capabilities.          |
 
 **Example**
 
@@ -3112,18 +3115,18 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   import { geoLocationManager } from '@kit.LocationKit';
 
   try {
-    geoLocationManager.getActiveFences().then((res) => {
+    geoLocationManager.getActiveGeoFences().then((res) => {
       if (res) {
-        console.info("fence num:" + res.size());
+        console.info("fence num:" + res.size);
         for (const item of res) {
           console.info("data=" + JSON.stringify(item));
         }
       }
     })
       .catch((error: BusinessError) => {
-        console.error('promise, getActiveFences: error=' + JSON.stringify(error));
+        console.error('promise, getActiveGeoFences: error=' + JSON.stringify(error));
       });
   } catch (error) {
-    console.error("getActiveFences: errCode" + error.code + ", errMessage" + error.message);
+    console.error("getActiveGeoFences: errCode" + error.code + ", errMessage" + error.message);
   }
   ```

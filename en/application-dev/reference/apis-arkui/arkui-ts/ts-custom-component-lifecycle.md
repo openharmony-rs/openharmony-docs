@@ -29,7 +29,7 @@ The **build()** function is used to define the declarative UI description of a c
 
 aboutToAppear?(): void
 
-Invoked after a new instance of the custom component is created and before its **build()** function is executed. You can change state variables in **aboutToAppear**. The change will take effect when you execute the **build()** function next time. The **aboutToAppear** lifecycle callback of a custom component with a [custom layout](./ts-custom-component-layout.md) is invoked during the layout process.
+Invoked after a new instance of the custom component is created and before its **build()** function is executed. You can change [state variables](../../../ui/state-management/arkts-state-management-glossary.md#state-variables) in the **aboutToAppear** function. The change will take effect during the subsequent execution of the **build()** function. The **aboutToAppear** lifecycle callback of a custom component with a [custom layout](./ts-custom-component-layout.md) is invoked during the layout process. For details, see [Custom Component Lifecycle](../../../ui/state-management/arkts-page-custom-components-lifecycle.md).
 
 > **NOTE**
 >
@@ -46,7 +46,7 @@ Invoked after a new instance of the custom component is created and before its *
 
 onDidBuild?(): void
 
-Invoked after the **build()** function of the custom component is executed. You can use this callback for actions that do not directly affect the UI, such as tracking data reporting.
+Invoked after the **build()** function of the custom component is executed. You can use this callback for actions that do not directly affect the UI, such as tracking data reporting. For details, see [Custom Component Lifecycle](../../../ui/state-management/arkts-page-custom-components-lifecycle.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -56,7 +56,7 @@ Invoked after the **build()** function of the custom component is executed. You 
 
 aboutToDisappear?(): void
 
-Invoked when this component is about to disappear. Do not change state variables in the **aboutToDisappear** function as doing this can cause unexpected errors. For example, the modification of the **@Link** decorated variable may cause unstable application running.
+Invoked when this component is about to disappear. Do not change state variables in the **aboutToDisappear** function as doing this can cause unexpected errors. For example, the modification of the **@Link** decorated variable may cause unstable application running. For details, see [Custom Component Lifecycle](../../../ui/state-management/arkts-page-custom-components-lifecycle.md).
 
 > **NOTE**
 >
@@ -146,7 +146,7 @@ struct IndexComponent {
 
 onNewParam?(param: ESObject): void
 
-Invoked when a page in the routing stack is moved to the top of the stack in [single-instance mode](../js-apis-router.md#routermode9). This callback takes effect only for custom components decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry) within the [router](../js-apis-router.md) page stack.
+This callback takes effect only for custom components decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry) within the [router](../js-apis-router.md) page stack. Invoked when a page in the routing stack is moved to the top of the stack in [single-instance mode](../js-apis-router.md#routermode9).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -340,7 +340,7 @@ struct Index {
   @Local condition: boolean = true;
   build() {
     Column() {
-      Button('Recycle/Reuse').onClick(()=>{this.condition=!this.condition;}) // Click to switch the recycle/reuse state.
+      Button('Recycle/Reuse').onClick(()=>{this.condition=!this.condition;}) // Click to switch between the recycle and reuse states.
       if (this.condition) {
         ReusableV2Component()
       }
@@ -490,12 +490,12 @@ ThemeControl.setDefaultTheme(BlueColorsTheme);
 @Component
 struct IndexComponent {
   @State textColor: ResourceColor = $r('sys.color.font_primary');
-  @State columBgColor: ResourceColor = $r('sys.color.background_primary');
+  @State columnBgColor: ResourceColor = $r('sys.color.background_primary');
 
-  // Obtain the Theme object of the current component context. Set textColor and columBgColor in onWillApplyTheme to the color (BlueColorsTheme) of the Theme object in use.
+  // Obtain the Theme object of the current component context. Set textColor and columnBgColor in onWillApplyTheme to the color (BlueColorsTheme) of the Theme object in use.
   onWillApplyTheme(theme: Theme) {
     this.textColor = theme.colors.fontPrimary;
-    this.columBgColor = theme.colors.backgroundPrimary;
+    this.columnBgColor = theme.colors.backgroundPrimary;
     console.info('IndexComponent onWillApplyTheme');
   }
 
@@ -524,7 +524,7 @@ struct IndexComponent {
       .width('100%')
       .height('25%')
       .borderRadius('10vp')
-      .backgroundColor(this.columBgColor)
+      .backgroundColor(this.columnBgColor)
     }
     .padding('16vp')
     .backgroundColor('#dcdcdc')
@@ -562,12 +562,12 @@ ThemeControl.setDefaultTheme(BlueColorsTheme);
 @ComponentV2
 struct IndexComponent {
   @Local textColor: ResourceColor = $r('sys.color.font_primary');
-  @Local columBgColor: ResourceColor = $r('sys.color.background_primary');
+  @Local columnBgColor: ResourceColor = $r('sys.color.background_primary');
 
-  // Obtain the Theme object of the current component context. Set textColor and columBgColor in onWillApplyTheme to the color (BlueColorsTheme) of the Theme object in use.
+  // Obtain the Theme object of the current component context. Set textColor and columnBgColor in onWillApplyTheme to the color (BlueColorsTheme) of the Theme object in use.
   onWillApplyTheme(theme: Theme) {
     this.textColor = theme.colors.fontPrimary;
-    this.columBgColor = theme.colors.backgroundPrimary;
+    this.columnBgColor = theme.colors.backgroundPrimary;
     console.info('IndexComponent onWillApplyTheme');
   }
 
@@ -596,7 +596,7 @@ struct IndexComponent {
       .width('100%')
       .height('25%')
       .borderRadius('10vp')
-      .backgroundColor(this.columBgColor)
+      .backgroundColor(this.columnBgColor)
     }
     .padding('16vp')
     .backgroundColor('#dcdcdc')

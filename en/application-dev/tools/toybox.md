@@ -4,7 +4,7 @@
 <!--Owner: @yan-mingzhen-->
 <!--Designer: @liveery-->
 <!--Tester: @liuhaonan2-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 Toybox is a lightweight collection of Linux command line utilities. It combines many common Linux command line utilities into a single executable file.
 

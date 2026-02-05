@@ -5,7 +5,7 @@
 <!--Owner: @mzyan-->
 <!--Designer: @liyueric-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 - [Performance Analysis Kit简介](performance-analysis-kit-overview.md)
 - 故障检测<!--fault-analysis-->

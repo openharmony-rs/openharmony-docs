@@ -15,7 +15,7 @@ OpenHarmony上的OpenSL ES接口，是早期SDK8版本开始提供，用于支�
 
 OHAudio的开发指南请参考：[推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)。
 
-考虑到一些接入OpenHarmony较早的应用开发者，这里提供了一份OpenSL ES接口切换到OHAudio的对照参考[OpenSL ES接口切换OHAudio参考](replace-opensles-by-ohaudio.md)，便于开发者能够更快的在新版本切换到使用新接口。
+考虑到一些接入OpenHarmony较早的应用开发者，这里提供了一份OpenSL ES接口切换到OHAudio的对照参考：[从OpenSL ES切换到OHAudio(C/C++)](replace-opensles-by-ohaudio.md)，便于开发者能够更快的在新版本切换到使用新接口。
 
 ## OpenHarmony上的OpenSL ES
 

@@ -31,6 +31,7 @@ The [UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExt
 The [UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md) supports the multiton pattern. Each embedded UI corresponds to a UIExtensionAbility instance. In the multiton scenario, the multi-process model is used by default.
 
 When multiple UIExtensionAbility instances exist in an application, these instances can run in independent processes or share one process. They can also be grouped, and each group share one process. You can select a process model based on the **extensionProcessMode** field in the [module.json5](../quick-start/module-configuration-file.md) file. The table below describes the comparison between the process models.
+
 | Process Model| extensionProcessMode Field Value| Description|
 | --------| --------| --------|
 | One process for all UIExtensionAbility instances in the same bundle|bundle| The UIExtensionAbility instances do not need to communicate with each other across IPCs. Their statuses are dependent and affect each other.|
@@ -513,7 +514,9 @@ To implement a provider, create a [UIExtensionAbility](../reference/apis-ability
     ```
 ## Developing the UIExtensionAbility Client
 
-You can load the [UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md) in the application through the [UIExtensionComponent](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md) on the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) page. For example, add the following content to the home page file **pages/Index.ets**:
+You can load the [UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md) in the application through the [UIExtensionComponent](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md) on the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) page.
+
+For example, add the following content to the home page file **pages/Index.ets**:
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

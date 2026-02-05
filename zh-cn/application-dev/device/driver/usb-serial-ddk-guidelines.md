@@ -8,11 +8,11 @@
 
 ## 简介
 
-在工业用途场景中和一些陈旧设备上，都有对非标串口设备的使用需求，例如：温湿度测量计、特殊身份读卡器等，当系统中没有适配该设备的驱动时，会导致设备接入后无法使用。USB Serial DDK（USB Serial Driver Development Kit）是为开发者提供的USB串口驱动程序开发套件，支持开发者基于用户态，在应用层开发USB串口设备驱动。USB Serial DDK提供了一系列主机侧访问设备的接口，包括主机侧打开和关闭接口、串口读写通信等。依赖这些驱动开发接口，该类三方生态外设可顺利接入OpenHarmony，满足生态安全加密场景应用需求。
+在工业用途场景中和一些陈旧设备上，都有对非标串口设备的使用需求，例如：温湿度测量计、特殊身份读卡器等，当系统中没有适配该设备的驱动时，会导致设备接入后无法使用。USBSerialDDK（USB Serial Driver Development Kit）是为开发者提供的USB串口驱动程序开发套件，支持开发者基于用户态，在应用层开发USB串口设备驱动。USBSerialDDK提供了一系列主机侧访问设备的接口，包括主机侧打开和关闭接口、串口读写通信等。依赖这些驱动开发接口，该类三方生态外设可顺利接入OpenHarmony，满足生态安全加密场景应用需求。
 
 ### 基本概念
 
-在进行USB Serial DDK开发前，开发者应了解以下基本概念：
+在进行USBSerialDDK开发前，开发者应了解以下基本概念：
 
 - **USB 串口**
 
@@ -40,19 +40,19 @@
 
 ### 实现原理
 
-非标外设应用通过扩展外设管理服务获取USB串口设备的ID，通过RPC将ID和要操作的动作下发给USB串口驱动应用，USB串口驱动应用通过调用USB Serial DDK接口可设置串口属性（波特率、数据位、校验位等），读取串口数据，DDK接口使用HDI服务将指令下发至内核驱动，内核驱动使用指令与设备通信。
+非标外设应用通过扩展外设管理服务获取USB串口设备的ID，通过RPC将ID和要操作的动作下发给USB串口驱动应用，USB串口驱动应用通过调用USBSerialDDK接口可设置串口属性（波特率、数据位、校验位等），读取串口数据，DDK接口使用HDI服务将指令下发至内核驱动，内核驱动使用指令与设备通信。
 
-**图1** USB Serial DDK调用原理
+**图1** USBSerialDDK调用原理
 
 ![USBSerial_DDK原理图](figures/ddk-schematic-diagram.png)
 
 ### 约束与限制
 
-- USB Serial DDK开放API支持USB串口接口非标外设扩展驱动开发场景。
+- USBSerialDDK开放API支持USB串口接口非标外设扩展驱动开发场景。
 
-- USB Serial DDK开放API使用范围内仅允许DriverExtensionAbility生命周期内使用。
+- USBSerialDDK开放API使用范围内仅允许DriverExtensionAbility生命周期内使用。
 
-- 使用USB Serial DDK开放API需要在module.json5中声明匹配的ACL权限，例如ohos.permission.ACCESS_DDK_USB_SERIAL。
+- 使用USBSerialDDK开放API需要在module.json5中声明匹配的ACL权限，例如ohos.permission.ACCESS_DDK_USB_SERIAL。
 
 ## 环境搭建
 
@@ -64,8 +64,8 @@
 
 | 名称 | 描述 |
 | -------- | -------- |
-| OH_UsbSerial_Init(void) | 初始化USB Serial DDK。 |
-| OH_UsbSerial_Release(void) | 释放USB Serial DDK。 |
+| OH_UsbSerial_Init(void) | 初始化USBSerialDDK。 |
+| OH_UsbSerial_Release(void) | 释放USBSerialDDK。 |
 | OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_Device **dev) | 通过deviceId和interfaceIndex打开USB串口设备。请在设备使用完后调用OH_UsbSerial_Close()关闭设备，否则会造成内存泄漏。 |
 | OH_UsbSerial_Close(UsbSerial_Device **dev) | 关闭USB串口设备，请在设备使用完后关闭设备，否则会造成内存泄漏。 |
 | OH_UsbSerial_Read(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesRead) | 从USB串口设备读取数据到缓冲区。 |
@@ -78,11 +78,11 @@
 | OH_UsbSerial_FlushInput(UsbSerial_Device *dev) | 刷新输入缓冲区，缓冲区中的数据会被立刻清空。 |
 | OH_UsbSerial_FlushOutput(UsbSerial_Device *dev) | 刷新输出缓冲区，缓冲区中的数据会被立刻清空。 |
 
-详细的接口说明请参考[USB Serial DDK](../../reference/apis-driverdevelopment-kit/capi-serialddk.md)。
+详细的接口说明请参考[USBSerialDDK](../../reference/apis-driverdevelopment-kit/capi-serialddk.md)。
 
 ### 开发步骤
 
-以下步骤描述了如何使用 **USB Serial DDK**开发USB串口驱动：
+以下步骤描述了如何使用 **USBSerialDDK**开发USB串口驱动：
 
 **添加动态链接库**
 

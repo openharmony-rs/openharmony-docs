@@ -5,7 +5,7 @@
 <!--Owner: @zyxzyx-->
 <!--Designer: @Maplestroy91-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 
 ## Hiprofiler简介
@@ -764,7 +764,7 @@ CONFIG
 命令中使用了malloc_disable参数用于过滤nativeheap抓栈的数据；添加的restrace_tag参数中没有"RES_GPU_CL_IMAGE", 则不抓取OpenCL image类型的GPU内存分配栈。
 
 
-从API version 23开始支持抓取指定进程创建napi_ref的调用栈，不会抓取弱引用。
+从API version 23开始支持抓取指定进程创建[napi_ref](../napi/use-napi-life-cycle.md#napi_ref)的调用栈，不会抓取创建弱引用的调用栈。
 
 ```shell
 $ hiprofiler_cmd \

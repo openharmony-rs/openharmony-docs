@@ -5,31 +5,29 @@
 <!--Owner: @rr_cn-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 
-当应用的主线程执行耗时任务时，开发者会感知到应用卡顿，但卡顿时间未达到系统设定的[应用冻屏](appfreeze-guidelines.md)时间限制，因此不会生成故障日志。为了更好地定位和分析问题，开发者可以利用[主线程超时事件检测原理](apptask-timeout-guidelines.md#检测原理)，根据生成的采样[主线程超时事件日志规格](apptask-timeout-guidelines.md#日志规格)，主动分析主线程任务的执行情况。
+当应用的主线程执行耗时任务时，开发者会感知到应用卡顿，但卡顿时间未达到系统设定的[应用冻屏](appfreeze-guidelines.md)时间限制，因此不会生成故障日志。为了更好地定位和分析问题，开发者可以查看[主线程超时事件检测原理](apptask-timeout-guidelines.md#检测原理)，根据生成的[主线程超时事件日志规格](apptask-timeout-guidelines.md#日志规格)，分析主线程任务的执行情况。
 
-## 检测原理
+本文面向开发者介绍主线程超时检测原理，以及各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅主线程超时事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。
 
-详见[主线程超时检测原理](apptask-timeout-guidelines.md#检测原理)
+- [订阅主线程超时事件（ArkTS）](hiappevent-watcher-mainthreadjank-events-arkts.md)。
 
-## 接口说明
-
-开发者可以通过HiAppEvent提供接口订阅主线程超时事件“hiAppEvent.event.MAIN_THREAD_JANK”，系统检测到主线程超时后，会抓取维测信息通过HiAppEvent将主线程超时回调给应用进程。
-
-- [订阅主线程超时事件（ArkTS）](hiappevent-watcher-mainthreadjank-events-arkts.md)
-
-- [订阅主线程超时事件（C/C++）](hiappevent-watcher-mainthreadjank-events-ndk.md)
+- [订阅主线程超时事件（C/C++）](hiappevent-watcher-mainthreadjank-events-ndk.md)。
 
 > **说明：**
 >
 > 主线程超时事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，支持在原子化服务场景下使用HiAppEvent 进行订阅，从 API version 22 开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。
 
+## 检测原理
+
+详见[主线程超时检测原理](apptask-timeout-guidelines.md#主线程超时检测)。
+
 ## 自定义参数
 
-setEventConfig接口不提供主线程超时结束自动停止采样栈的功能；从API Version 22开始，提供configEventPolicy接口，该接口提供主线程超时结束自动停止采样栈的功能。
+setEventConfig接口不提供主线程超时结束自动停止采样栈的功能；从API version 22开始，提供configEventPolicy接口，该接口提供主线程超时结束自动停止采样栈的功能。
 
 ### setEventConfig接口说明
 
@@ -156,7 +154,7 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 | sampleInterval | number | 否 | 主线程超时检测间隔和采样间隔。单位：毫秒，默认值：150，取值范围：[50, 500]。 |
 | ignoreStartupTime | number | 否 | 应用启动期间忽略主线程超时检测的时间。单位：秒，默认值：10，最小值：3。 |
 | sampleCount | number | 否 | 主线程超时采样次数。单位：次，默认值：10，最小值：1。<br/>最大值需要结合自定义的sampleInterval进行动态计算，计算公式：sampleCount &lt;= (2500 / sampleInterval - 4)。 |
-| reportTimesPerApp | number | 否 | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br/>默认值：1，单位：次。<br/>开发者选项打开，每小时上报次数范围：[1, 3]。<br/>开发者选项关闭，每分钟上报次数范围：[1, 3]。 |
+| reportTimesPerApp | number | 否 | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br/>默认值：1，单位：次。<br/>每分钟上报次数范围：[1, 3]。 |
 | autoStopSampling | boolean | 否 | 主线程超时结束时，是否自动停止采样主线程堆栈。<br/>true: 超时结束或达到设置的采样次数，停止采样。<br/>false：达到设置的采样次数时停止采样。<br/>默认值：false。 |
 
 1. sampleCount说明：

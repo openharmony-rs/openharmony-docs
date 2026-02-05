@@ -530,6 +530,8 @@ This feature collects GPU, FPS, CPU, DDR, and memory metrics for the entire devi
   >
   >- Screenshots are obtained every 2 seconds.
   >
+  >-  
+  >
   >- When the collection is complete, you can view the screenshots in **data/local/tmp/capture**.
   >
   >- To export the screenshots to drive D, open a new CLI and run the `hdc file recv data/local/tmp/capture/screenCap_1700725192774.png D:\\` command.
@@ -1002,8 +1004,8 @@ If the collection result is saved in a CSV file, perform the following steps to 
     | ChildsharedClean        | Shared unwritten pages of the child process.     |Unit: KB|
     | sharedDirty             | Shared rewritten pages of the process.     |Unit: KB|
     | ChildsharedDirty        | Shared rewritten pages of the child process.     |Unit: KB|
-    | priviateClean           | Private unwritten pages of the process.     |Unit: KB|
-    | ChildpriviateClean      | Private unwritten pages of the child process.     |Unit: KB|
+    | privateClean           | Private unwritten pages of the process.     |Unit: KB|
+    | ChildprivateClean      | Private unwritten pages of the child process.     |Unit: KB|
     | privateDirty            | Private rewritten pages of the process.     |Unit: KB|
     | ChildprivateDirty       | Private rewritten pages of the child process.     |Unit: KB|
     | swapTotal               | Total swap memory of the process.         |Unit: KB|

@@ -29,7 +29,7 @@ Obtains a **ComponentInfo** object based on the component ID and synchronously r
 >
 > - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [getRectangleById](arkts-apis-uicontext-componentutils.md#getrectanglebyid) instead. Before calling this API, you need to obtain the [ComponentUtils](arkts-apis-uicontext-componentutils.md) object using the [getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils) method in [UIContext](arkts-apis-uicontext-uicontext.md).
 >
-> - Since API version 10, you can use the [getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [ComponentUtils](arkts-apis-uicontext-componentutils.md) object associated with the current UI context. This API provides access to component coordinates and size information after the target component completes layout. It is recommended that you invoke this API within [layout completion callbacks](./js-apis-arkui-inspector.md). Note that dynamically created components must be mounted to the node tree before this API can obtain their information, as unmounted components are not measured or laid out by the UI framework. Always ensure that component mounting precedes information retrieval attempts.
+> - Since API version 10, you can use the [getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [ComponentUtils](arkts-apis-uicontext-componentutils.md) object associated with the current UI context. This API provides access to component coordinates and size information after the target component completes layout. It is recommended that you invoke this API within [layout completion callbacks](./js-apis-arkui-inspector.md). Note that dynamically created components must be mounted to the component tree before this API can obtain their information, as unmounted components are not measured or laid out by the UI framework. Always ensure that component mounting precedes information retrieval attempts.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -49,7 +49,7 @@ Obtains a **ComponentInfo** object based on the component ID and synchronously r
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message               |
 | ------ | ------------------- |
@@ -177,11 +177,11 @@ type Matrix4Result = [number,number,number,number,number,number,number,number,nu
 | m32    | number | Yes  | Translation value of the z-axis, in px. The default value is **0** for the identity matrix.|
 | m33    | number | Yes  | Valid in homogeneous coordinates, presenting the perspective projection effect.  |
 
-**Example**
+## Example
 
-> **NOTE**
->
-> You are advised to use [getComponentUtils](./arkts-apis-uicontext-uicontext.md#getcomponentutils) to obtain the **ComponentUtils** object associated with the current UI context.
+### Example 1: Obtaining the ComponentUtils Object
+
+You are advised to use [getComponentUtils](./arkts-apis-uicontext-uicontext.md#getcomponentutils) to obtain the **ComponentUtils** object associated with the current UI context.
 
 ```ts
 import { matrix4, componentUtils } from '@kit.ArkUI';

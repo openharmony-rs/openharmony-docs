@@ -29,7 +29,9 @@ Declares the APIs of **NativeDrawableDescriptor**.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) | ArkUI_DrawableDescriptor | Defines a struct for the **DrawableDescriptor** object.|
+| [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md) | - | Defines an **OH_PixelmapNative** object on the native side using Image Kit.|
 | [OH_PixelmapNative*](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | OH_PixelmapNativeHandle | Defines a struct for the pointer to an **OH_PixelmapNative** object.|
+| [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md) | - | Defines the ArkUI native component instance object.|
 | [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | Defines the pointer type for an ArkUI native component instance object.|
 | [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md) | ArkUI_DrawableDescriptor_AnimationController | Defines the DrawableDescriptor animation controller object.|
 
@@ -456,7 +458,7 @@ Creates an animation controller for the DrawableDescriptor.
 | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | Pointer to a **DrawableDescriptor** object.|
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the component node.|
-| [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md)** controller | Pointer to the created DrawableDescriptor animation controller.|
+| [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md)** controller | Pointer to a **DrawableDescriptor** animation controller.|
 
 **Return value**
 
@@ -480,7 +482,7 @@ Disposes the DrawableDescriptor animation controller.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md)* controller | Pointer to the target DrawableDescriptor animation controller.|
+| [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md)* controller | Pointer to a **DrawableDescriptor** animation controller.|
 
 ### OH_ArkUI_DrawableDescriptor_StartAnimation()
 
@@ -498,7 +500,7 @@ Starts playback from the first frame.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md)* controller | Pointer to the target DrawableDescriptor animation controller.|
+| [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md)* controller | Pointer to a **DrawableDescriptor** animation controller.|
 
 **Return value**
 
@@ -522,7 +524,7 @@ Stops the DrawableDescriptor animation and returns to the first frame.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md)* controller | Pointer to the target DrawableDescriptor animation controller.|
+| [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md)* controller | Pointer to a **DrawableDescriptor** animation controller.|
 
 **Return value**
 
@@ -546,7 +548,7 @@ Resumes the DrawableDescriptor animation from the current frame.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md)* controller | Pointer to the target DrawableDescriptor animation controller.|
+| [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md)* controller | Pointer to a **DrawableDescriptor** animation controller.|
 
 **Return value**
 
@@ -570,7 +572,7 @@ Pauses playback on the current frame.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md)* controller | Pointer to the target DrawableDescriptor animation controller.|
+| [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md)* controller | Pointer to a **DrawableDescriptor** animation controller.|
 
 **Return value**
 
@@ -594,7 +596,7 @@ Obtains the playback status of the DrawableDescriptor animation.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md)* controller | Pointer to the target DrawableDescriptor animation controller.|
+| [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md)* controller | Pointer to a **DrawableDescriptor** animation controller.|
 | [DrawableDescriptor_AnimationStatus](#drawabledescriptor_animationstatus)* status | Playback state of the DrawableDescriptor animation.|
 
 **Return value**

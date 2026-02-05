@@ -48,18 +48,18 @@
 - 异步方法示例：
 
   <!-- @[encrypt_decrypt_chacha20_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20EncryptionDecryptionAsync.ets) -->
-
+  
   ``` TypeScript
-
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-
+  
   function genIvParamsSpec() {
     let ivBlob = generateRandom(16);
     let ivParamsSpec: cryptoFramework.IvParamsSpec = {
@@ -69,7 +69,7 @@
     return ivParamsSpec;
   }
   let ivSpec = genIvParamsSpec();
-
+  
   // 加密消息。
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('ChaCha20');
@@ -88,7 +88,7 @@
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let chacha20Generator = cryptoFramework.createSymKeyGenerator('ChaCha20');
     let symKey = await chacha20Generator.convertKey(symKeyBlob);
-    console.info('convertKey success');
+    console.info('convertKey result: success.');
     return symKey;
   }
   async function main() {
@@ -101,13 +101,13 @@
       let encryptText = await encryptMessagePromise(symKey, plainText);
       let decryptText = await decryptMessagePromise(symKey, encryptText);
       if (plainText.data.toString() === decryptText.data.toString()) {
-        console.info('decrypt ok');
+        console.info('decrypt ok.');
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
-        console.error('decrypt failed');
+        console.error('decrypt failed.');
       }
     } catch (error) {
-      console.error(`decrypt failed, error info is ${error}, error code: ${error.code}`);
+      console.error(`decrypt failed: errCode: ${error.code}, message: ${error.message}`);
     }
   }
   ```
@@ -116,18 +116,18 @@
 - 同步方法示例：
 
   <!-- @[encrypt_decrypt_chacha20_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20EncryptionDecryptionSync.ets) -->
-
+  
   ``` TypeScript
-
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-
+  
   function genIvParamsSpec() {
     let ivBlob = generateRandom(16);
     let ivParamsSpec: cryptoFramework.IvParamsSpec = {
@@ -136,9 +136,9 @@
     };
     return ivParamsSpec;
   }
-
+  
   let ivSpec = genIvParamsSpec();
-
+  
   // 加密消息。
   function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('ChaCha20');
@@ -146,7 +146,7 @@
     let encryptUpdata = cipher.doFinalSync(plainText);
     return encryptUpdata;
   }
-
+  
   // 解密消息。
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('ChaCha20');
@@ -154,15 +154,15 @@
     let decryptdata = decoder.updateSync(cipherText);
     return decryptdata;
   }
-
+  
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let chacha20Generator = cryptoFramework.createSymKeyGenerator('ChaCha20');
     let symKey = chacha20Generator.convertKeySync(symKeyBlob);
-    console.info('convertKeySync success');
+    console.info('convertKeySync result: success.');
     return symKey;
   }
-
+  
   function main() {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159, 83,
@@ -173,13 +173,13 @@
       let encryptText = encryptMessage(symKey, plainText);
       let decryptText = decryptMessage(symKey, encryptText);
       if (plainText.data.toString() === decryptText.data.toString()) {
-        console.info('decrypt ok');
+        console.info('decrypt ok.');
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
         console.error('decrypt failed.');
       }
     } catch (error) {
-      console.error(`decrypt failed, error info is ${error}, error code: ${error.code}`);
+      console.error(`decrypt failed: errCode: ${error.code}, message: ${error.message}`);
     }
   }
   ```

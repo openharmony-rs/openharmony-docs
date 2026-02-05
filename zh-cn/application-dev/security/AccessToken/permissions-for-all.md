@@ -272,36 +272,6 @@
 
 **起始版本**：7
 
-## ohos.permission.MODIFY_AUDIO_SETTINGS
-
-允许应用修改音频设置。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**起始版本**：8
-
-## ohos.permission.RUNNING_LOCK
-
-允许应用获取运行锁，保证应用在后台的持续运行。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**起始版本**：7
-
-## ohos.permission.SET_WALLPAPER
-
-允许应用设置壁纸。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**起始版本**：7
-
 ## ohos.permission.ACCESS_CERT_MANAGER
 
 允许应用进行查询证书及私有凭据等操作。
@@ -312,21 +282,11 @@
 
 **起始版本**：9
 
-## ohos.permission.hsdr.HSDR_ACCESS
-
-允许应用访问安全检测与响应框架。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**起始版本**：10
-
 ## ohos.permission.RUN_DYN_CODE
 
 允许系统方舟运行时引擎在受限模式下执行动态下发的方舟字节码。
 
-该权限相关的API均为系统API，仅部分特定系统应用可申请该权限。 
+该权限相关的API均为系统API，仅部分特定系统应用可申请该权限。
 
 **权限级别**：normal
 
@@ -680,5 +640,19 @@
 **授权方式**：系统授权（system_grant）
 
 **支持设备**：Phone | Tablet
+
+**起始版本**：23
+
+## ohos.permission.ALLOW_COREDUMP
+
+允许系统将应用进程的内存转储到应用沙箱。
+
+应用获取该权限后，表示应用允许系统将本应用的内存，存储到应用沙箱中。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：2in1
 
 **起始版本**：23

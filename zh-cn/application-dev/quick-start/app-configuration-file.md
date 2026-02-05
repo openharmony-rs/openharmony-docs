@@ -60,7 +60,8 @@
       "com.ohos.screenshot",
       "com.ohos.note"
     ],
-    "startMode": "mainTask"
+    "startMode": "mainTask",
+    "buildVersion": "1.0.0"
   }
 }
 ```
@@ -95,7 +96,7 @@ app.json5配置文件包含以下标签。
 | wearable | 标识对wearable设备做的特殊配置，可以配置的属性标签有上文提到的：minAPIVersion。<br/>如果使用该属性对wearable设备做了特殊配置，则应用在wearable设备中会采用此处配置的属性值，并忽略在app.json5公共区域配置的属性值。 | 对象 | 该标签可缺省，缺省时wearable设备使用app.json5公共区域配置的属性值。 |
 | car | 标识对car设备做的特殊配置，可以配置的属性标签有上文提到的：minAPIVersion。<br/>如果使用该属性对car设备做了特殊配置，则应用在car设备中会采用此处配置的属性值，并忽略在app.json5公共区域配置的属性值。 | 对象 | 该标签可缺省，缺省时car设备使用app.json5公共区域配置的属性值。 |
 | default | 标识对default设备做的特殊配置，可以配置的属性标签有上文提到的：minAPIVersion。<br/>如果使用该属性对default设备做了特殊配置，则应用在default设备中会采用此处配置的属性值，并忽略在app.json5公共区域配置的属性值。 | 对象 | 该标签可缺省，缺省时default设备使用app.json5公共区域配置的属性值。 |
-|targetBundleName|标识当前包所指定的目标应用, 标签值的取值规则和范围与bundleName标签一致。配置该标签的应用为具有overlay特征的应用。|字符串|该标签可缺省，缺省值为空。|
+|targetBundleName|标识当前包所指定的目标应用，标签值的取值规则和范围与bundleName标签一致。配置该标签的应用为具有overlay特征的应用。|字符串|该标签可缺省，缺省值为空。|
 |targetPriority|标识当前应用的优先级，取值范围为1~100。配置targetBundleName标签之后，才支持配置该标签。|数值|该标签可缺省，缺省值为1。|
 |generateBuildHash |标识当前应用的所有HAP和HSP是否由打包工具生成哈希值。<br/>该标签配置为true时，该应用下的所有HAP和HSP都会由打包工具生成对应的哈希值。系统OTA升级时，若应用的versionCode保持不变，可根据哈希值判断应用是否需要升级。<br/>-&nbsp;true：当前应用下所有HAP和HSP都会由打包工具生成对应的哈希值。<br/>-&nbsp;false：当前应用下所有HAP和HSP都不会由打包工具生成对应的哈希值。<br/>**说明：**<br/>该标签仅对预置应用生效。|布尔值|该标签可缺省，缺省值为false。|
 | GWPAsanEnabled | 标识应用程序是否开启[GWP-asan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-gwpasan-detection#section2735718353)堆内存检测工具，用于对内存越界、内存释放后使用等内存破坏问题进行分析。<br/>-&nbsp;true：应用程序开启GWP-asan检测。<br/>-&nbsp;false：应用程序不开启GWP-asan检测。 | 布尔值 | 该标签可缺省，缺省值为false。 |
@@ -110,6 +111,7 @@ app.json5配置文件包含以下标签。
 | assetAccessGroups | 配置应用的Group ID，它和Developer ID一起组成群组信息。<br/>打包HAP时，DevEco使用开发者证书对群组信息签名，其中群组信息由Developer ID（由应用市场分配）+ Group ID（开发者配置）组成。<br/>**说明：** <br/>该标签仅在应用主模块（即module.json5中的type字段配置为entry）下生效。<br/>从API version 18开始，支持该标签。| 字符串数组 | 该标签可缺省，缺省值为空。 |
 | appPreloadPhase | 配置[应用预加载](../application-models/preload-application.md)到不同阶段。支持的取值如下：<br/>-processCreated：预加载到进程创建完成阶段。<br/>-abilityStageCreated：预加载到[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)创建完成阶段。<br/>-windowStageCreated：预加载到[WindowStage](../reference/apis-arkui/arkts-apis-window-WindowStage.md)创建完成阶段。<br/>**说明：** <br/>从API version 20开始，支持该标签。<br>仅在PC/2in1设备上生效。<br>仅在应用的entry模块配置有效。<br>该标签仅表示应用自身是否为预加载到所配置阶段做好了准备，最终能否预加载还需要由系统根据用户习惯等信息来决策。| 字符串| 该标签可缺省，缺省时不进行预加载。 |
 | [startMode](../application-models/application-component-configuration-stage.md#应用启动模式配置) | 配置应用的启动模式，支持的取值如下：<br/>-&nbsp;mainTask：主任务模式，表示图标启动后打开主UIAbility。<br/>-&nbsp;recentTask：最近任务模式，表示图标启动后打开最近使用的UIAbility。<br/>**说明：**<br/>从API version 20开始，支持该标签。<br/>仅在launchType为[单实例模式](../application-models/uiability-launch-type.md#singleton启动模式)时生效。<br/>该标签仅支持phone和tablet设备(不包含自由多窗)。 | 字符串 | 该标签可缺省，缺省值为mainTask。 |
+| buildVersion | 标识应用的构建版本号，建议采用“A.B.C”三段式。三段式建议的含义如下：<br/>第一段：主版本号/Major，用于标识重大修改的版本，例如实现新的重大特性或重大变化。<br/>第二段：次版本号/Minor，用于表示实现较突出的特性，例如新特性添加或大问题修复。<br/>第三段：特性版本号/Feature，用于标识规划的新版本特性。<br/>**说明：**<br/>从API version 23开始，支持该标签。<br/>字符串格式要求如下：<br/>-&nbsp;字符串最小长度为1字节，最大长度18字节。<br/>-&nbsp;字符串由数字和'.'组成。<br/>-&nbsp;'.'的数量限制0到2个，不能以'.'开头和结尾，也不能相邻。<br/>-&nbsp;数字段可以为0，但不能以0开头，如"02"，"0123"。 | 字符串 | 该标签可缺省，缺省值为空。 |
 
 ## appEnvironments标签
 

@@ -167,6 +167,7 @@ struct FilterEffectExample {
         .width(100)
         .height(100)
         .backgroundColor('#ADD8E6')
+        // Replace $r("app.media.app_icon") with the resource file you use.
         .backgroundImage($r("app.media.app_icon"))
         .backgroundImageSize({ width: 80, height: 80 })
         .foregroundFilter(this.filterTest1) // Set the blur effect using foregroundFilter.
@@ -176,6 +177,7 @@ struct FilterEffectExample {
         .width(100)
         .height(100)
         .backgroundColor('#ADD8E6')
+        // Replace $r("app.media.app_icon") with the resource file you use.
         .backgroundImage($r("app.media.app_icon"))
         .backgroundImageSize({ width: 80, height: 80 })
         .backgroundFilter(this.filterTest2) // Set the blur effect using backgroundFilter.
@@ -185,6 +187,7 @@ struct FilterEffectExample {
         .width(100)
         .height(100)
         .backgroundColor('#ADD8E6')
+        // Replace $r("app.media.app_icon") with the resource file you use.
         .backgroundImage($r("app.media.app_icon"))
         .backgroundImageSize({ width: 80, height: 80 })
         .compositingFilter(this.filterTest3) // Set the blur effect using compositingFilter.

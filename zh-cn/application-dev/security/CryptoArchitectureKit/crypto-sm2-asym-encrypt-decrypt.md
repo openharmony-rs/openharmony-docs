@@ -36,11 +36,11 @@
 - 异步方法示例：
 
   <!-- @[sm2_encrypt_decrypt_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM2/entry/src/main/ets/pages/sm2/SM2EncryptionDecryptionAsync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   // 加密消息
   async function encryptMessagePromise(publicKey: cryptoFramework.PubKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('SM2_256|SM3');
@@ -48,7 +48,7 @@
     let encryptData = await cipher.doFinal(plainText);
     return encryptData;
   }
-
+  
   // 解密消息
   async function decryptMessagePromise(privateKey: cryptoFramework.PriKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('SM2_256|SM3');
@@ -56,17 +56,17 @@
     let decryptData = await decoder.doFinal(cipherText);
     return decryptData;
   }
-
+  
   // 生成SM2密钥对
   async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
     let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
     let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyData };
     let sm2Generator = cryptoFramework.createAsyKeyGenerator('SM2_256');
     let keyPair = await sm2Generator.convertKey(pubKeyBlob, priKeyBlob);
-    console.info('convertKey success');
+    console.info('convertKey result: success.');
     return keyPair;
   }
-
+  
   async function main() {
     let pkData =
       new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 129, 28, 207, 85, 1, 130, 45, 3, 66, 0,
@@ -86,12 +86,12 @@
     let encryptText = await encryptMessagePromise(pubKey, plainText);
     let decryptText = await decryptMessagePromise(priKey, encryptText);
     if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok');
+      console.info('decrypt ok.');
       // 把Uint8Array按utf-8编码为字符串
       let messageDecrypted = buffer.from(decryptText.data).toString('utf-8');
       console.info('decrypted result string:' + messageDecrypted);
     } else {
-      console.error('decrypt failed');
+      console.error('decrypt failed.');
     }
   }
   ```
@@ -100,11 +100,11 @@
 - 同步方法示例：
 
   <!-- @[sm2_encrypt_decrypt_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM2/entry/src/main/ets/pages/sm2/SM2EncryptionDecryptionSync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   // 加密消息
   function encryptMessage(publicKey: cryptoFramework.PubKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('SM2_256|SM3');
@@ -112,7 +112,7 @@
     let encryptData = cipher.doFinalSync(plainText);
     return encryptData;
   }
-
+  
   // 解密消息
   function decryptMessage(privateKey: cryptoFramework.PriKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('SM2_256|SM3');
@@ -120,17 +120,17 @@
     let decryptData = decoder.doFinalSync(cipherText);
     return decryptData;
   }
-
+  
   // 生成SM2密钥对
   function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
     let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
     let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyData };
     let sm2Generator = cryptoFramework.createAsyKeyGenerator('SM2_256');
     let keyPair = sm2Generator.convertKeySync(pubKeyBlob, priKeyBlob);
-    console.info('convertKeySync success');
+    console.info('convertKeySync result: success.');
     return keyPair;
   }
-
+  
   function main() {
     let pkData =
       new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 129, 28, 207, 85, 1, 130, 45, 3, 66, 0,
@@ -150,12 +150,12 @@
     let encryptText = encryptMessage(pubKey, plainText);
     let decryptText = decryptMessage(priKey, encryptText);
     if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok');
+      console.info('decrypt ok.');
       // 把Uint8Array按utf-8编码为字符串
       let messageDecrypted = buffer.from(decryptText.data).toString('utf-8');
       console.info('decrypted result string:' + messageDecrypted);
     } else {
-      console.error('decrypt failed');
+      console.error('decrypt failed.');
     }
   }
   ```

@@ -437,7 +437,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 分布式账号信息变更、系统账号头像信息变更、系统账号名称变更将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
 
-与这个公共事件相关的接口：setOsAccountName、setOsAccountProfilePhoto, 这些为系统API，setOsAccountDistributedInfon为公共API，具体参看[系统账号接口文档](../js-apis-osAccount.md)、[分布式账号接口文档](../js-apis-distributed-account.md)。
+与这个公共事件相关的接口：setOsAccountName、setOsAccountProfilePhoto, 这些为系统API，setOsAccountDistributedInfo为公共API，具体参看[系统账号接口文档](../js-apis-osAccount.md)、[分布式账号接口文档](../js-apis-distributed-account.md)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 

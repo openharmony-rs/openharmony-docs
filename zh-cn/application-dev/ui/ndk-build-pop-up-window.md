@@ -249,7 +249,7 @@
    }
    ```
 
-2. 创建Button事件的回调函数，当Button点击时触发弹窗显示或关闭。
+2. 创建Button事件的回调函数，当Button被点击时触发弹窗显示或关闭。
 
    - 触发controller弹窗。
 
@@ -320,8 +320,7 @@
 
 这些生命周期方法需要在调用show方法之前调用，生命周期的时序如下：
 
-registerOnWillAppear -> 弹窗显示动画开始 -> 弹窗显示动画结束 -> registerOnDidAppear -> 弹窗显示完成 ->
-registerOnWillDisappear -> 弹窗关闭动画开始 ->  弹窗关闭动画结束 -> registerOnDidDisappear -> 弹窗关闭完成。
+registerOnWillAppear -> 弹窗显示动画开始 -> 弹窗显示动画结束 -> registerOnDidAppear -> 弹窗显示完成 ->registerOnWillDisappear -> 弹窗关闭动画开始 ->  弹窗关闭动画结束 -> registerOnDidDisappear -> 弹窗关闭完成。
 
 创建一个弹窗，弹窗显示和关闭时会触发生命周期的回调函数。其中 ArkUI_NodeContentHandle 类型节点的获取与使用可参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。
 <!-- @[dialog_lifecycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->

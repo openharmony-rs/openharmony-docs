@@ -1128,7 +1128,7 @@ create(id: string, type: WindowType, callback: AsyncCallback&lt;Window&gt;): voi
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[createWindow()](#windowcreatewindow9)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[createWindow()](#windowcreatewindow9)替代。
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -1170,7 +1170,7 @@ create(id: string, type: WindowType): Promise&lt;Window&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[createWindow()](#windowcreatewindow9-1)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[createWindow()](#windowcreatewindow9-1)替代。
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -1213,7 +1213,7 @@ create(ctx: BaseContext, id: string, type: WindowType, callback: AsyncCallback&l
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[createWindow()](#windowcreatewindow9)。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[createWindow()](#windowcreatewindow9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1253,7 +1253,7 @@ create(ctx: BaseContext, id: string, type: WindowType): Promise&lt;Window&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[createWindow()](#windowcreatewindow9-1)。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[createWindow()](#windowcreatewindow9-1)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1295,7 +1295,7 @@ find(id: string, callback: AsyncCallback&lt;Window&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[findWindow()](#windowfindwindow9)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[findWindow()](#windowfindwindow9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1331,7 +1331,7 @@ find(id: string): Promise&lt;Window&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[findWindow()](#windowfindwindow9)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[findWindow()](#windowfindwindow9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

@@ -3,8 +3,8 @@
 <!--Subsystem: Request-->
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
-<!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 The **request** module provides applications with the basic capabilities of file upload and download and background transfer proxy.
 
@@ -124,14 +124,14 @@ Describes the pre-downloaded download information.
 
 ## DownloadError<sup>23+</sup>
 
-Describes the error information returned when a pre-download error occurs.
+Describes the error message returned when a pre-download error occurs.
 
 **System capability**: SystemCapability.Request.FileTransferAgent
 
 | Name         | Type                                   | Read-Only| Optional| Description       |
 |-------------|---------------------------------------|----|----|-----------|
 | errorCode    | [ErrorCode](#errorcode23)       | Yes | No | Specific error type returned by the pre-download error callback.|
-| message     | string         | Yes | No | Description of a [universal error code](../../reference/errorcode-universal.md) or [HTTP error code](../../reference/apis-network-kit/errorcode-net-http.md).|
+| message     | string         | Yes | No | Error message. A [universal error code](../../reference/errorcode-universal.md) or [HTTP error code](../../reference/apis-network-kit/errorcode-net-http.md) is returned.|
 
 ## cacheDownload.download
 
@@ -320,7 +320,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   ```
 
 > **NOTE**
-​>
+>
 > * Network cache files downloaded by the **cacheDownload** module are stored in the cache directory of the application sandbox.
 > * An application can use this API to clear cache files.
 > * Do not modify the cache directory and files directly to avoid function exceptions.
@@ -422,7 +422,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     // Obtain the download information after the download task is complete.
     let downloadInfo = cacheDownload.getDownloadInfo("https://www.example.com");
     if (downloadInfo == undefined) {
-      console.info(`CacheDownload get download info undefined.`);
+      console.error(`CacheDownload get download info undefined.`);
     } else {
       console.info(`CacheDownload get download info : ${JSON.stringify(downloadInfo)}`);
     }
@@ -485,7 +485,7 @@ Subscribes to the pre-download completion events. This API uses an asynchronous 
   
   try {
     const successCallback = () => {
-      console.info("Success callback from cacheDownload");
+      console.info("Succeeded in getting callback from cacheDownload");
     };
     // Subscribe to the pre-download completion events. Callback is invoked when the download is complete.
     cacheDownload.onDownloadSuccess("https://www.example.com", successCallback)
@@ -537,6 +537,8 @@ Unsubscribes from the pre-download completion events. This API uses an asynchron
 
 **System capability**: SystemCapability.Request.FileTransferAgent
 
+**Parameters**
+
 | Name| Type    | Mandatory| Description                  |
 |-----|--------|----|----------------------|
 | url | string | Yes | URL to be unregistered, with a maximum of 8192 bytes.|
@@ -549,7 +551,7 @@ Unsubscribes from the pre-download completion events. This API uses an asynchron
   
   try {
     const successCallback = () => {
-      console.info("Success callback from cacheDownload");
+      console.info("Succeeded in getting callback from cacheDownload");
     };
     // Subscribe to the pre-download completion events. Callback is invoked when the download is complete.
     cacheDownload.onDownloadSuccess("https://www.example.com", successCallback);

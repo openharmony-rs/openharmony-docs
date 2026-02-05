@@ -879,6 +879,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     info.offset = 0;
     // 注意此处和Surface模式不同，pts需要应用填充，可根据预期显示的时间进行计算写入，如：帧数 * 1000000 / frameRate。
     info.pts = 0;
+    // 避免flags随机初始化为AVCODEC_BUFFER_FLAGS_EOS导致使用异常，flags需要赋值如0（普通帧标识）。
+    info.flags = 0;
     OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(bufferInfo->buffer, &info);
     if (setBufferRet != AV_ERR_OK) {
         // 异常处理。
@@ -947,8 +949,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     uint8_t* src = new uint8_t[srcRect.hStride * srcRect.wStride * 3 / 2]; // 源内存区域的指针。
     uint8_t* dstTemp = dst;
     uint8_t* srcTemp = src;
-    rect.height = ((rect.height + 1) / 2)  * 2 // 避免height为奇数；
-    rect.width = ((rect.width + 1) / 2)  * 2 // 避免width为奇数；
+    rect.height = ((rect.height + 1) / 2)  * 2; // 避免height为奇数。
+    rect.width = ((rect.width + 1) / 2)  * 2; // 避免width为奇数。
 
     // Y 将Y区域的源数据复制到另一个区域的目标数据中。
     for (int32_t i = 0; i < rect.height; ++i) {

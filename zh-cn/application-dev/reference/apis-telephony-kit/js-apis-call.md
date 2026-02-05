@@ -48,7 +48,7 @@ dial\(phoneNumber: string, callback: AsyncCallback\<boolean\>\): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.dial("138xxxxxxxx", (err: BusinessError, data: boolean) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -84,7 +84,7 @@ let dialOptions: call.DialOptions = {
     extras: false
 }
 call.dial("138xxxxxxxx", dialOptions, (err: BusinessError, data: boolean) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -124,7 +124,7 @@ let dialOptions: call.DialOptions = {
     extras: false
 }
 call.dial("138xxxxxxxx", dialOptions).then((data: boolean) => {
-    console.log(`dial success, promise: data->${JSON.stringify(data)}`);
+    console.info(`dial success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`dial fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -168,7 +168,7 @@ call.makeCall("138xxxxxxxx", (err: BusinessError) => {
     if (err) {
         console.error(`makeCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`makeCall success`);
+        console.info(`makeCall success`);
     }
 });
 ```
@@ -214,7 +214,7 @@ makeCall\(phoneNumber: string\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 // 从API15开始支持tel格式电话号码，如："tel:13xxxx"
 call.makeCall("138xxxxxxxx").then(() => {
-    console.log(`makeCall success`);
+    console.info(`makeCall success`);
 }).catch((err: BusinessError) => {
     console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -266,7 +266,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let context = this.getUIContext().getHostContext() as Context;
 // 从API15开始支持tel格式电话号码，如："tel:13xxxx"
 call.makeCall(context, "138xxxxxxxx").then(() => {
-    console.log(`makeCall success`);
+    console.info(`makeCall success`);
 }).catch((err: BusinessError) => {
     console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -295,7 +295,7 @@ call.hasCall((err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`hasCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`hasCall success, data->${JSON.stringify(data)}`);
+        console.info(`hasCall success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -321,7 +321,7 @@ hasCall\(\): Promise\<boolean\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.hasCall().then(() => {
-    console.log(`hasCall success`);
+    console.info(`hasCall success`);
 }).catch((err: BusinessError) => {
     console.error(`hasCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -345,7 +345,7 @@ hasCallSync\(\): boolean
 
 ```ts
 let hasCall: boolean = call.hasCallSync();
-console.log(`hasCallSync success, has call is ` + hasCall);
+console.info(`hasCallSync success, has call is ` + hasCall);
 ```
 
 
@@ -372,7 +372,7 @@ call.getCallState((err: BusinessError, data: call.CallState) => {
     if (err) {
         console.error(`getCallState fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getCallState success, data->${JSON.stringify(data)}`);
+        console.info(`getCallState success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -398,7 +398,7 @@ getCallState\(\): Promise\<CallState\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallState().then((data: call.CallState) => {
-    console.log(`getCallState success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCallState success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getCallState fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -422,7 +422,7 @@ getCallStateSync\(\): CallState
 
 ```ts
 let callState: call.CallState = call.getCallStateSync();
-console.log(`the call state is:` + callState);
+console.info(`the call state is:` + callState);
 ```
 
 ## call.hasVoiceCapability<sup>7+</sup>
@@ -441,7 +441,7 @@ hasVoiceCapability\(\): boolean
 
 ```ts
 let result: boolean = call.hasVoiceCapability();
-console.log(`hasVoiceCapability: ${JSON.stringify(result)}`);
+console.info(`hasVoiceCapability: ${JSON.stringify(result)}`);
 ```
 
 ## call.isEmergencyPhoneNumber<sup>7+</sup>
@@ -480,7 +480,7 @@ call.isEmergencyPhoneNumber("138xxxxxxxx", (err: BusinessError, data: boolean) =
     if (err) {
         console.error(`isEmergencyPhoneNumber fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
+        console.info(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -524,7 +524,7 @@ call.isEmergencyPhoneNumber("112", options, (err: BusinessError, data: boolean) 
     if (err) {
         console.error(`isEmergencyPhoneNumber fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
+        console.info(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -570,7 +570,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let options: call.EmergencyNumberOptions = {slotId: 1}
 call.isEmergencyPhoneNumber("138xxxxxxxx", options).then((data: boolean) => {
-    console.log(`isEmergencyPhoneNumber success, promise: data->${JSON.stringify(data)}`);
+    console.info(`isEmergencyPhoneNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isEmergencyPhoneNumber fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -614,7 +614,7 @@ call.formatPhoneNumber("138xxxxxxxx", (err: BusinessError, data: string) => {
     if (err) {
         console.error(`formatPhoneNumber fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
+        console.info(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -661,7 +661,7 @@ call.formatPhoneNumber("138xxxxxxxx", options, (err: BusinessError, data: string
     if (err) {
         console.error(`formatPhoneNumber fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
+        console.info(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -711,7 +711,7 @@ let options: call.NumberFormatOptions = {
     countryCode: "CN"
 }
 call.formatPhoneNumber("138xxxxxxxx", options).then((data: string) => {
-    console.log(`formatPhoneNumber success, promise: data->${JSON.stringify(data)}`);
+    console.info(`formatPhoneNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`formatPhoneNumber fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -756,7 +756,7 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN", (err: BusinessError, data: str
     if (err) {
         console.error(`formatPhoneNumberToE164 fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`formatPhoneNumberToE164 success, data->${JSON.stringify(data)}`);
+        console.info(`formatPhoneNumberToE164 success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -805,11 +805,154 @@ formatPhoneNumberToE164\(phoneNumber: string, countryCode: string\): Promise\<st
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
-    console.log(`formatPhoneNumberToE164 success, promise: data->${JSON.stringify(data)}`);
+    console.info(`formatPhoneNumberToE164 success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`formatPhoneNumberToE164 fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+
+## call.answerCall<sup>23+</sup>
+
+answerCall\(callback: AsyncCallback\<void\>\): void
+
+接听来电。使用callback异步回调。
+
+**需要权限**：ohos.permission.ANSWER_CALL 或 ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+- ohos.permission.ANSWER_CALL权限仅系统应用可申请。
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。返回接听电话成功，err为undefined，否则为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.answerCall((err: BusinessError) => {
+    if (err) {
+        console.error(`answerCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`answerCall success.`);
+    }
+});
+```
+
+
+## call.hangUpCall<sup>23+</sup>
+
+hangUpCall\(callback: AsyncCallback\<void\>\): void
+
+挂断电话。使用callback异步回调。
+
+**需要权限**：ohos.permission.ANSWER_CALL 或 ohos.permission.SET_TELEPHONY_STATE 或 ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+- ohos.permission.ANSWER_CALL、ohos.permission.SET_TELEPHONY_STATE权限仅系统应用可申请。
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当挂断电话成功，err为undefined，否则为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.hangUpCall((err: BusinessError) => {
+    if (err) {
+        console.error(`hangUpCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`hangUpCall success.`);
+    }
+});
+```
+
+
+## call.rejectCall<sup>23+</sup>
+
+rejectCall\(callback: AsyncCallback\<void\>\): void
+
+拒绝来电。使用callback异步回调。
+
+**需要权限**：ohos.permission.ANSWER_CALL 或 ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+- ohos.permission.ANSWER_CALL权限仅系统应用可申请。
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当拒接来电成功，err为undefined，否则为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.rejectCall((err: BusinessError) => {
+    if (err) {
+        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`rejectCall success.`);
+    }
+});
+```
+
 
 ## DialOptions
 
@@ -850,6 +993,26 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
 | TEL_CALL_STATE_OFFHOOK | 2    | 表示至少有一个呼叫处于拨号，并且没有新的来电振铃或等待。 |
 | TEL_CALL_STATE_ANSWERED | 3    | 表示来电已经接听。 |
 | TEL_CALL_STATE_CONNECTED | 4    | 表示电话已经接通中或呼叫保持。                                    |
+
+## CCallState<sup>23+</sup>
+
+运营商通话状态码。
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+| 名称               | 值   | 说明                                                         |
+| ------------------ | ---- | ------------------------------------------------------------ |
+| CCALL_STATE_UNKNOWN       | -1   | 无效状态，当获取呼叫状态失败时返回。                         |
+| CCALL_STATE_ACTIVE       | 0    | 表示当前通话已经接通成功。                                     |
+| CCALL_STATE_HOLDING      | 1    | 表示当前通话处于保持状态。                                    |
+| CCALL_STATE_DIALING      | 2    | 表示去电处于拨号过程中，对端还没有收到振铃期间。 |
+| CCALL_STATE_ALERTING     | 3    | 表示去电处于振铃过程中，对端处于响铃阶段。 |
+| CCALL_STATE_INCOMING     | 4    | 表示收到来电。                                    |
+| CCALL_STATE_WAITING      | 5    | 同一个卡槽上已经存在一路通话的情况下，又收到一路来电。       |
+| CCALL_STATE_DISCONNECTED | 6    | 表示通话已经释放完成。                                 |
+| CCALL_STATE_DISCONNECTING| 7    | 表示通话正在释放中，还没有释放完成。                          |
+| CCALL_STATE_IDLE         | 8    | 表示没有正在进行的呼叫。                                 |
+| CCALL_STATE_ANSWERED     | 9    | 表示来电已经接听。                                     |
 
 
 ## EmergencyNumberOptions<sup>7+</sup>

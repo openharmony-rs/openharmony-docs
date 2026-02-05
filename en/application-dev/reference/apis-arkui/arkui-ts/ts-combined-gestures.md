@@ -1,7 +1,7 @@
 # Combined Gestures
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -29,6 +29,8 @@ GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 
 ## GestureMode
 
+Defines the recognition mode of a gesture group.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -41,10 +43,6 @@ GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 
 
 ## Events
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### onCancel
 

@@ -106,4 +106,4 @@
     - [通用查询(C/C++)](huks-ukey-general-query-ndk.md)
   - 驱动HAP ExtensionAbility适配指导<!--huks-extension-ability-support-->
     - [CryptoExtensionAbility扩展能力介绍](huks-extension-ability-support-overview.md)
-    - [CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)
+    - [CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)<!--RP4--><!--RP4End-->

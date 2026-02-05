@@ -1188,8 +1188,8 @@ export class WindowUtils {
 // 程序入口处的onWindowStageCreate增加对窗口宽高等的抓取
 
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { display, window } from '@kit.ArkUI';
 import { WindowUtils } from '../utils/WindowUtils';
+import { display, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -1209,7 +1209,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
-    // ···
+    // ...
     // 获取窗口宽高
     WindowUtils.window = windowStage.getMainWindowSync();
     WindowUtils.windowWidthPx = WindowUtils.window.getWindowProperties().windowRect.width;
@@ -1280,7 +1280,6 @@ export default class EntryAbility extends UIAbility {
       AppStorage.setOrCreate('currentBreakpoint', this.currentBreakPoint);
     }
   }
-
   onWindowStageDestroy(): void {
     // Main window is destroyed, release UI related resources
     hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageDestroy');
@@ -1817,8 +1816,8 @@ export class WindowUtils {
 // 程序入口处的onWindowStageCreate增加对窗口宽高等的抓取
 
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { display, window } from '@kit.ArkUI';
 import { WindowUtils } from '../utils/WindowUtils';
+import { display, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -1838,7 +1837,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
-    // ···
+    // ...
     // 获取窗口宽高
     WindowUtils.window = windowStage.getMainWindowSync();
     WindowUtils.windowWidthPx = WindowUtils.window.getWindowProperties().windowRect.width;
@@ -1909,7 +1908,6 @@ export default class EntryAbility extends UIAbility {
       AppStorage.setOrCreate('currentBreakpoint', this.currentBreakPoint);
     }
   }
-
   onWindowStageDestroy(): void {
     // Main window is destroyed, release UI related resources
     hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageDestroy');

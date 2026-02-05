@@ -952,7 +952,7 @@ export default class MyAbility extends UIAbility {
 
 ## Caller
 
-调用方Caller UIAbility（仅支持系统应用）可以通过[startAbilityByCall](js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口拉起目标Callee UIAbility（可以为三方应用）。目标UIAbility启动成功后，会返回一个Caller对象给调用方进行通信。
+调用方Caller UIAbility通过[startAbilityByCall](js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口拉起目标Callee UIAbility，目标UIAbility启动成功后，返回一个Caller对象给调用方进行通信。
 
 ### call
 

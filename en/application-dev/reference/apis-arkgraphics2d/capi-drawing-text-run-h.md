@@ -69,7 +69,7 @@ Obtains an array of character indices of glyphs within a specified range of a ru
 | -- | -- |
 | [OH_Drawing_Run](capi-drawing-oh-drawing-run.md)* run | Pointer to an [OH_Drawing_Run](capi-drawing-oh-drawing-run.md) object.|
 | int64_t start | Start position in the run. If a negative number is passed, a null pointer is returned.|
-| int64_t length | Length of the range in the run. If the length is 0, the array of all character indices in the run is obtained. If the length is less than 0, a null pointer is returned.|
+| int64_t length | Length of the range in the run. If the length is **0**, the array of all character indices in the run is obtained. If the length is less than 0, a null pointer is returned.|
 
 **Returns**
 
@@ -272,7 +272,7 @@ Obtains an array of glyphs within the specified range of a run.
 | -- | -- |
 | [OH_Drawing_Run](capi-drawing-oh-drawing-run.md)* run | Pointer to an [OH_Drawing_Run](capi-drawing-oh-drawing-run.md) object.|
 | int64_t start | Start position in the run. If a negative number is passed, a null pointer is returned.|
-| int64_t length | Length of the range in the run. If the length is 0, all character indices of the run are obtained. If the length is less than 0, a null pointer is returned.|
+| int64_t length | Length of the range in the run. If the length is **0**, all character indices of the run are obtained. If the length is less than 0, a null pointer is returned.|
 
 **Returns**
 
@@ -350,7 +350,7 @@ Obtains the positions of glyphs within the specified range of a run.
 | -- | -- |
 | [OH_Drawing_Run](capi-drawing-oh-drawing-run.md)* run | Pointer to an [OH_Drawing_Run](capi-drawing-oh-drawing-run.md) object.|
 | int64_t start | Start position in the run. If a negative number is passed, a null pointer is returned.|
-| int64_t length | Length of the range in the run. If the length is 0, all character indices of the run are obtained. If the length is less than 0, a null pointer is returned.|
+| int64_t length | Length of the range in the run. If the length is **0**, all character indices of the run are obtained. If the length is less than 0, a null pointer is returned.|
 
 **Returns**
 
@@ -507,7 +507,7 @@ Obtains the glyph advance array of a run.
 | -- | -- |
 | [OH_Drawing_Run](capi-drawing-oh-drawing-run.md)* run | Pointer to an [OH_Drawing_Run](capi-drawing-oh-drawing-run.md) object.|
 | uint32_t start | Start position in the run. If a negative number is passed, a null pointer is returned.|
-| uint32_t length | Length specified in the run. **0** means that the value is obtained from the start to the end of the rendering block. A value smaller than 0 means that this method returns a null pointer.|
+| uint32_t length | Length of the range in the run. If the length is **0**, all glyph advances from the start to the end of the run are obtained. If the length is less than 0, a null pointer is returned.|
 
 **Returns**
 

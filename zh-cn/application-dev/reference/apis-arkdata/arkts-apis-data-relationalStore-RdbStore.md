@@ -40,9 +40,9 @@ import { relationalStore } from '@kit.ArkData';
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
 | 14800025  | SQLite: A table in the database is locked. |
@@ -97,6 +97,8 @@ insert(table: string, values: ValuesBucket, callback: AsyncCallback&lt;number&gt
 
 向目标表中插入一行数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -115,8 +117,8 @@ insert(table: string, values: ValuesBucket, callback: AsyncCallback&lt;number&gt
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -179,6 +181,8 @@ insert(table: string, values: ValuesBucket,  conflict: ConflictResolution, callb
 
 向目标表中插入一行数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -198,8 +202,8 @@ insert(table: string, values: ValuesBucket,  conflict: ConflictResolution, callb
 |-----------| ---------------------------------------------------- |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -263,6 +267,8 @@ insert(table: string, values: ValuesBucket):Promise&lt;number&gt;
 
 向目标表中插入一行数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -286,8 +292,8 @@ insert(table: string, values: ValuesBucket):Promise&lt;number&gt;
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -350,6 +356,8 @@ insert(table: string, values: ValuesBucket,  conflict: ConflictResolution):Promi
 
 向目标表中插入一行数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -374,8 +382,8 @@ insert(table: string, values: ValuesBucket,  conflict: ConflictResolution):Promi
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -438,6 +446,8 @@ insertSync(table: string, values: ValuesBucket,  conflict?: ConflictResolution):
 
 向目标表中插入一行数据。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -462,8 +472,8 @@ insertSync(table: string, values: ValuesBucket,  conflict?: ConflictResolution):
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000     | Inner error.                                                 |
-| 14800011     | Failed to open the database because it is corrupted.                                          |
-| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800011     | The current operation failed because the database is corrupted.                                          |
+| 14800014     | The target instance is already closed.                                              |
 | 14800015     | The database does not respond.                                        |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                       |
 | 14800022     | SQLite: Callback routine requested an abort.                 |
@@ -525,6 +535,8 @@ insertSync(table: string, values: sendableRelationalStore.ValuesBucket, conflict
 
 传入Sendable数据，向目标表中插入一行数据。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -549,8 +561,8 @@ insertSync(table: string, values: sendableRelationalStore.ValuesBucket, conflict
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000     | Inner error.                                                 |
-| 14800011     | Failed to open the database because it is corrupted.                                          |
-| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800011     | The current operation failed because the database is corrupted.                                          |
+| 14800014     | The target instance is already closed.                                              |
 | 14800015     | The database does not respond.                                        |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                       |
 | 14800022     | SQLite: Callback routine requested an abort.                 |
@@ -601,6 +613,8 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCal
 
 按每批32766个参数，分批以[ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10)策略写入，参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小，中途失败则立即返回。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 从API version 20开始，支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -621,8 +635,8 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCal
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -697,6 +711,8 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;):Promise&lt;number&
 
 按每批32766个参数，分批以[ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10)策略写入，参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小，中途失败则立即返回。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 从API version 20开始，该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -722,8 +738,8 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;):Promise&lt;number&
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -821,6 +837,8 @@ batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;):number
 
 按每批32766个参数，分批以[ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10)策略写入，参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小，中途失败则立即返回。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -844,8 +862,8 @@ batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;):number
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000     | Inner error.                                                 |
-| 14800011     | Failed to open the database because it is corrupted.                                          |
-| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800011     | The current operation failed because the database is corrupted.                                          |
+| 14800014     | The target instance is already closed.                                              |
 | 14800015     | The database does not respond.                                        |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                       |
 | 14800022     | SQLite: Callback routine requested an abort.                 |
@@ -925,6 +943,8 @@ batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&g
 
 请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -949,8 +969,8 @@ batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&g
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000     | Inner error.                                                 |
-| 14800011     | Failed to open the database because it is corrupted. |
-| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800011     | The current operation failed because the database is corrupted. |
+| 14800014     | The target instance is already closed.                                              |
 | 14800015     | The database does not respond.                                        |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                     |
 | 14800022     | SQLite: Callback routine requested an abort.                 |
@@ -1027,6 +1047,8 @@ batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBuck
 
 请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -1051,8 +1073,8 @@ batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBuck
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000     | Inner error.                                                 |
-| 14800011     | Failed to open the database because it is corrupted. |
-| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800011     | The current operation failed because the database is corrupted. |
+| 14800014     | The target instance is already closed.                                              |
 | 14800015     | The database does not respond.                                        |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                     |
 | 14800022     | SQLite: Callback routine requested an abort.                 |
@@ -1130,6 +1152,8 @@ batchInsertWithReturning(table: string, values: Array\<ValuesBucket\>, config: R
 
 conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确的结果。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **模型约束：** 此接口仅在Stage模型下可用。
@@ -1156,8 +1180,8 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
-| 14800011     | Failed to open the database because it is corrupted.         |
-| 14800014     | The RdbStore or ResultSet is already closed.                 |
+| 14800011     | The current operation failed because the database is corrupted.         |
+| 14800014     | The target instance is already closed.                 |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800024     | SQLite: The database file is locked.                         |
 | 14800025     | SQLite: A table in the database is locked.                   |
@@ -1204,6 +1228,8 @@ batchInsertWithReturningSync(table: string, values: Array\<ValuesBucket\>, confi
 
 conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确的结果。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **模型约束：** 此接口仅在Stage模型下可用。
@@ -1230,8 +1256,8 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
-| 14800011     | Failed to open the database because it is corrupted.         |
-| 14800014     | The RdbStore or ResultSet is already closed.                 |
+| 14800011     | The current operation failed because the database is corrupted.         |
+| 14800014     | The target instance is already closed.                 |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800024     | SQLite: The database file is locked.                         |
 | 14800025     | SQLite: A table in the database is locked.                   |
@@ -1288,8 +1314,8 @@ update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback&
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -1373,8 +1399,8 @@ update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolu
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -1462,8 +1488,8 @@ update(values: ValuesBucket, predicates: RdbPredicates):Promise&lt;number&gt;
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -1552,8 +1578,8 @@ update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolu
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -1642,8 +1668,8 @@ updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictR
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000     | Inner error.                                                 |
-| 14800011     | Failed to open the database because it is corrupted.                                          |
-| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800011     | The current operation failed because the database is corrupted.                                          |
+| 14800014     | The target instance is already closed.                                              |
 | 14800015     | The database does not respond.                                        |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                       |
 | 14800022     | SQLite: Callback routine requested an abort.                 |
@@ -1726,7 +1752,7 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 
 | 类型                                                    | 说明                                            |
 | ------------------------------------------------------- | ----------------------------------------------- |
-| [Result](arkts-apis-data-relationalStore-i.md#result23) | Promise对象。如果操作成功，返回受影响的数据集。 |
+| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)\> | Promise对象。如果操作成功，返回受影响的数据集。 |
 
 **错误码：**
 
@@ -1735,8 +1761,8 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
-| 14800011     | Failed to open the database because it is corrupted.         |
-| 14800014     | The RdbStore or ResultSet is already closed.                 |
+| 14800011     | The current operation failed because the database is corrupted.         |
+| 14800014     | The target instance is already closed.                 |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800024     | SQLite: The database file is locked.                         |
 | 14800025     | SQLite: A table in the database is locked.                   |
@@ -1807,8 +1833,8 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
-| 14800011     | Failed to open the database because it is corrupted.         |
-| 14800014     | The RdbStore or ResultSet is already closed.                 |
+| 14800011     | The current operation failed because the database is corrupted.         |
+| 14800014     | The target instance is already closed.                 |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800024     | SQLite: The database file is locked.                         |
 | 14800025     | SQLite: A table in the database is locked.                   |
@@ -1868,10 +1894,10 @@ delete(predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;):void
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -1931,10 +1957,10 @@ delete(predicates: RdbPredicates):Promise&lt;number&gt;
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -1994,10 +2020,10 @@ deleteSync(predicates: RdbPredicates):number
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000     | Inner error.                                                 |
-| 14800011     | Failed to open the database because it is corrupted.                                          |
-| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800011     | The current operation failed because the database is corrupted.                                          |
+| 14800014     | The target instance is already closed.                                              |
 | 14800015     | The database does not respond.                                        |
-| 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                       |
+| 14800021     | SQLite: Generic error. |
 | 14800022     | SQLite: Callback routine requested an abort.                 |
 | 14800023     | SQLite: Access permission denied.                            |
 | 14800024     | SQLite: The database file is locked.                         |
@@ -2049,7 +2075,7 @@ deleteWithReturning(predicates: RdbPredicates, config: ReturningConfig): Promise
 
 | 类型                                                    | 说明                                            |
 | ------------------------------------------------------- | ----------------------------------------------- |
-| [Result](arkts-apis-data-relationalStore-i.md#result23) | Promise对象。如果操作成功，返回受影响的数据集。 |
+| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)\> | Promise对象。如果操作成功，返回受影响的数据集。 |
 
 **错误码：**
 
@@ -2058,8 +2084,8 @@ deleteWithReturning(predicates: RdbPredicates, config: ReturningConfig): Promise
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
-| 14800011     | Failed to open the database because it is corrupted.         |
-| 14800014     | The RdbStore or ResultSet is already closed.                 |
+| 14800011     | The current operation failed because the database is corrupted.         |
+| 14800014     | The target instance is already closed.                 |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800024     | SQLite: The database file is locked.                         |
 | 14800025     | SQLite: A table in the database is locked.                   |
@@ -2123,8 +2149,8 @@ deleteWithReturningSync(predicates: RdbPredicates, config: ReturningConfig): Res
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
-| 14800011     | Failed to open the database because it is corrupted.         |
-| 14800014     | The RdbStore or ResultSet is already closed.                 |
+| 14800011     | The current operation failed because the database is corrupted.         |
+| 14800014     | The target instance is already closed.                 |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800024     | SQLite: The database file is locked.                         |
 | 14800025     | SQLite: A table in the database is locked.                   |
@@ -2181,7 +2207,7 @@ query(predicates: RdbPredicates, callback: AsyncCallback&lt;ResultSet&gt;):void
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 
 **示例：**
@@ -2239,7 +2265,7 @@ query(predicates: RdbPredicates, columns: Array&lt;string&gt;, callback: AsyncCa
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 
 **示例：**
@@ -2302,7 +2328,7 @@ query(predicates: RdbPredicates, columns?: Array&lt;string&gt;):Promise&lt;Resul
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 
 **示例：**
@@ -2365,7 +2391,7 @@ querySync(predicates: RdbPredicates, columns?: Array&lt;string&gt;):ResultSet
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000     | Inner error.                                                 |
-| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800014     | The target instance is already closed.                                              |
 | 14800015     | The database does not respond.                                        |
 
 **示例：**
@@ -2426,7 +2452,7 @@ queryWithoutRowCount(predicates: RdbPredicates, columns?: Array&lt;string&gt;): 
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 14800014     | The RdbStore or ResultSet is already closed.                 |
+| 14800014     | The target instance is already closed.                 |
 
 **示例：**
 
@@ -2489,7 +2515,7 @@ queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array&lt;string&gt
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 14800014     | The RdbStore or ResultSet is already closed.                 |
+| 14800014     | The target instance is already closed.                 |
 
 **示例：**
 
@@ -2551,7 +2577,7 @@ querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 
 **示例：**
 
@@ -2613,7 +2639,7 @@ querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):Lite
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
-| 14800014     | The RdbStore or ResultSet is already closed. |
+| 14800014     | The target instance is already closed. |
 
 **示例：**
 
@@ -2674,7 +2700,7 @@ remoteQuery(device: string, table: string, predicates: RdbPredicates, columns: A
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 
 **示例：**
 
@@ -2761,7 +2787,7 @@ remoteQuery(device: string, table: string, predicates: RdbPredicates, columns: A
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 
 **示例：**
 
@@ -2839,7 +2865,7 @@ querySql(sql: string, callback: AsyncCallback&lt;ResultSet&gt;):void
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 
 **示例：**
@@ -2917,7 +2943,7 @@ querySql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 
 **示例：**
@@ -2982,7 +3008,7 @@ querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;ResultSet&gt
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 
 **示例：**
@@ -3054,7 +3080,7 @@ querySqlSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):ResultSet
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000     | Inner error.                                                 |
-| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800014     | The target instance is already closed.                                              |
 | 14800015     | The database does not respond.                                        |
 
 **示例：**
@@ -3112,8 +3138,8 @@ executeSql(sql: string, callback: AsyncCallback&lt;void&gt;):void
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -3175,8 +3201,8 @@ executeSql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallbac
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -3243,8 +3269,8 @@ executeSql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;void&gt;
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -3317,8 +3343,8 @@ execute(sql: string, args?: Array&lt;ValueType&gt;):Promise&lt;ValueType&gt;
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -3428,8 +3454,8 @@ execute(sql: string, txId: number, args?: Array&lt;ValueType&gt;): Promise&lt;Va
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -3508,8 +3534,8 @@ executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000     | Inner error.                                                 |
-| 14800011     | Failed to open the database because it is corrupted.                                          |
-| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800011     | The current operation failed because the database is corrupted.                                          |
+| 14800014     | The target instance is already closed.                                              |
 | 14800015     | The database does not respond.                               |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                       |
 | 14800022     | SQLite: Callback routine requested an abort.                 |
@@ -3590,10 +3616,10 @@ getModifyTime(table: string, columnName: string, primaryKeys: PRIKeyType[], call
 | 401       | Parameter error. Possible causes: 1. Need 3 - 4  parameter(s)! 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. 4. The columnName must be not empty string. 5. The PRIKey must be number or string. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -3654,10 +3680,10 @@ getModifyTime(table: string, columnName: string, primaryKeys: PRIKeyType[]): Pro
 | 401       | Parameter error. Possible causes: 1. Need 3 - 4  parameter(s)! 2. The RdbStore must be not nullptr.3. The tablesNames must be not empty string. 4. The columnName must be not empty string. 5. The PRIKey must be number or string. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -3707,10 +3733,10 @@ beginTransaction():void
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: The RdbStore verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -3774,10 +3800,10 @@ beginTrans(): Promise&lt;number&gt;
 | 401       | Parameter error. Possible causes: The RdbStore verification failed. |
 | 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -3850,8 +3876,8 @@ createTransaction(options?: TransactionOptions): Promise&lt;Transaction&gt;
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database is busy.              |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -3897,10 +3923,10 @@ commit():void
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: The RdbStore verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -3966,10 +3992,10 @@ commit(txId : number):Promise&lt;void&gt;
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -4026,10 +4052,10 @@ rollBack():void
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: The RdbStore verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -4104,10 +4130,10 @@ rollback(txId : number):Promise&lt;void&gt;
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -4172,10 +4198,10 @@ backup(destName:string, callback: AsyncCallback&lt;void&gt;):void
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
 | 14800010  | Failed to open or delete the database by an invalid database path. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -4234,10 +4260,10 @@ backup(destName:string): Promise&lt;void&gt;
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -4292,10 +4318,10 @@ restore(srcName:string, callback: AsyncCallback&lt;void&gt;):void
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -4354,10 +4380,10 @@ restore(srcName:string): Promise&lt;void&gt;
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -4413,7 +4439,7 @@ setDistributedTables(tables: Array&lt;string&gt;, callback: AsyncCallback&lt;voi
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 
 **示例：**
 
@@ -4460,7 +4486,7 @@ if (store != undefined) {
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 
 **示例：**
 
@@ -4503,7 +4529,7 @@ setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, callbac
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800051  | The type of the distributed table does not match. |
 
 **示例：**
@@ -4548,7 +4574,7 @@ setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, config:
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800051  | The type of the distributed table does not match. |
 
 **示例：**
@@ -4600,7 +4626,7 @@ if (store != undefined) {
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800051  | The type of the distributed table does not match. |
 
 **示例：**
@@ -4650,7 +4676,7 @@ obtainDistributedTableName(device: string, table: string, callback: AsyncCallbac
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 
 **示例：**
 
@@ -4722,7 +4748,7 @@ if (store != undefined && deviceId != undefined) {
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 
 **示例：**
 
@@ -4783,7 +4809,7 @@ sync(mode: SyncMode, predicates: RdbPredicates, callback: AsyncCallback&lt;Array
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 
 **示例：**
 
@@ -4854,7 +4880,7 @@ if (store != undefined) {
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 
 **示例：**
 
@@ -4915,7 +4941,7 @@ cloudSync(mode: SyncMode, progress: Callback&lt;ProgressDetails&gt;, callback: A
 |-----------|-------|
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The progress must be a callback type. 5. The callback must be a function. |
 | 801       | Capability not supported.       |
-| 14800014  | The RdbStore or ResultSet is already closed.        |
+| 14800014  | The target instance is already closed.        |
 
 **示例：**
 
@@ -4962,7 +4988,7 @@ cloudSync(mode: SyncMode, progress: Callback&lt;ProgressDetails&gt;): Promise&lt
 |-----------|------------------|
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The progress must be a callback type. |
 | 801       | Capability not supported.   |
-| 14800014  | The RdbStore or ResultSet is already closed.           |
+| 14800014  | The target instance is already closed.           |
 
 **示例：**
 
@@ -5005,7 +5031,7 @@ cloudSync(mode: SyncMode, tables: string[], progress: Callback&lt;ProgressDetail
 |-----------|-------|
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type. 6.The callback must be a function.|
 | 801       | Capability not supported.   |
-| 14800014  | The RdbStore or ResultSet is already closed.   |
+| 14800014  | The target instance is already closed.   |
 
 **示例：**
 
@@ -5055,7 +5081,7 @@ cloudSync(mode: SyncMode, tables: string[], progress: Callback&lt;ProgressDetail
 |-----------|---------------|
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type |
 | 801       | Capability not supported.    |
-| 14800014  | The RdbStore or ResultSet is already closed.  |
+| 14800014  | The target instance is already closed.  |
 
 **示例：**
 
@@ -5099,7 +5125,7 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;stri
 |-----------|-------------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
-| 14800014  | The RdbStore or ResultSet is already closed.    |
+| 14800014  | The target instance is already closed.    |
 
 **示例：**
 
@@ -5150,7 +5176,7 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;stri
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
-| 14800014  | The RdbStore or ResultSet is already closed.    |
+| 14800014  | The target instance is already closed.    |
 
 **示例1：type为SUBSCRIBE_TYPE_REMOTE**
 
@@ -5245,7 +5271,7 @@ on(event: string, interProcess: boolean, observer: Callback\<void>): void
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error.    |
-| 14800014  | The RdbStore or ResultSet is already closed.    |
+| 14800014  | The target instance is already closed.    |
 | 14800050  | Failed to obtain the subscription service.    |
 
 **示例：**
@@ -5289,9 +5315,9 @@ on(event: 'autoSyncProgress', progress: Callback&lt;ProgressDetails&gt;): void
 
 | **错误码ID** | **错误信息**    |
 |-----------|--------|
-| 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. 4. The event must be a not empty string. 5. The progress must be function. |
 | 801       | Capability not supported.  |
-| 14800014  | The RdbStore or ResultSet is already closed.     |
+| 14800014  | The target instance is already closed.     |
 
 **示例：**
 
@@ -5337,7 +5363,7 @@ on(event: 'statistics', observer: Callback&lt;SqlExecutionInfo&gt;): void
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported.  |
 | 14800000  | Inner error.  |
-| 14800014  | The RdbStore or ResultSet is already closed.     |
+| 14800014  | The target instance is already closed.     |
 
 **示例：**
 
@@ -5406,7 +5432,7 @@ on(event: 'sqliteErrorOccurred', observer: Callback&lt;ExceptionMessage&gt;): vo
 | **错误码ID** | **错误信息**    |
 |-----------|--------|
 | 801       | Capability not supported.  |
-| 14800014  | The RdbStore or ResultSet is already closed.     |
+| 14800014  | The target instance is already closed.     |
 
 **示例：**
 
@@ -5469,7 +5495,7 @@ on(event: 'perfStat', observer: Callback&lt;SqlExecutionInfo&gt;): void
 | **错误码ID** | **错误信息**    |
 |-----------|--------|
 | 801       | Capability not supported.  |
-| 14800014  | The RdbStore or ResultSet is already closed.     |
+| 14800014  | The target instance is already closed.     |
 
 **示例：**
 
@@ -5541,7 +5567,7 @@ off(event:'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;stri
 |-----------|-------------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
-| 14800014  | The RdbStore or ResultSet is already closed.    |
+| 14800014  | The target instance is already closed.    |
 
 **示例：**
 
@@ -5603,7 +5629,7 @@ off(event:'dataChange', type: SubscribeType, observer?: Callback&lt;Array&lt;str
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
-| 14800014  | The RdbStore or ResultSet is already closed.    |
+| 14800014  | The target instance is already closed.    |
 
 **示例：**
 
@@ -5643,7 +5669,7 @@ try {
 
 off(event: string, interProcess: boolean, observer?: Callback\<void>): void
 
-取消数据变更的事件监听。
+取消数据库的进程内或者进程间事件监听。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -5664,7 +5690,7 @@ off(event: string, interProcess: boolean, observer?: Callback\<void>): void
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported. |
 | 14800000     | Inner error.                           |
-| 14800014  | The RdbStore or ResultSet is already closed.    |
+| 14800014  | The target instance is already closed.    |
 | 14800050     | Failed to obtain the subscription service. |
 
 **示例：**
@@ -5720,7 +5746,7 @@ off(event: 'autoSyncProgress', progress?: Callback&lt;ProgressDetails&gt;): void
 | ------------ |--------------------|
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be valid. 3. The event must be a not empty string. 4. The progress must be function. |
 | 801       | Capability not supported.  |
-| 14800014  | The RdbStore or ResultSet is already closed.       |
+| 14800014  | The target instance is already closed.       |
 
 **示例：**
 
@@ -5777,7 +5803,7 @@ off(event: 'statistics', observer?: Callback&lt;SqlExecutionInfo&gt;): void
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported.  |
 | 14800000  | Inner error.  |
-| 14800014  | The RdbStore or ResultSet is already closed.     |
+| 14800014  | The target instance is already closed.     |
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5815,7 +5841,7 @@ off(event: 'sqliteErrorOccurred', observer?: Callback&lt;ExceptionMessage&gt;): 
 | **错误码ID** | **错误信息**    |
 |-----------|--------|
 | 801       | Capability not supported.  |
-| 14800014  | The RdbStore or ResultSet is already closed.     |
+| 14800014  | The target instance is already closed.     |
 
 **示例：**
 
@@ -5856,7 +5882,7 @@ off(event: 'perfStat', observer?: Callback&lt;SqlExecutionInfo&gt;): void
 | **错误码ID** | **错误信息**    |
 |-----------|--------|
 | 801       | Capability not supported.  |
-| 14800014  | The RdbStore or ResultSet is already closed.     |
+| 14800014  | The target instance is already closed.     |
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5895,7 +5921,7 @@ emit(event: string): void
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported.     |
 | 14800000  | Inner error.   |
-| 14800014  | The RdbStore or ResultSet is already closed.     |
+| 14800014  | The target instance is already closed.     |
 | 14800050  | Failed to obtain the subscription service.    |
 
 
@@ -5911,7 +5937,7 @@ if (store != undefined) {
 
 cleanDirtyData(table: string, cursor: number, callback: AsyncCallback&lt;void&gt;): void
 
-清理云端删除的数据同步到本地后，未自动清理的，且数据的游标（cursor）小于指定游标的数据。
+清理云端删除的数据同步到本地后，未自动清理的，且数据的游标（cursor）小于指定游标的数据。使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -5932,10 +5958,10 @@ cleanDirtyData(table: string, cursor: number, callback: AsyncCallback&lt;void&gt
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. 4. The cursor must be valid cursor. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -5968,7 +5994,7 @@ if (store != undefined) {
 
 cleanDirtyData(table: string, callback: AsyncCallback&lt;void&gt;): void
 
-清理云端删除的数据同步到本地后，未自动清理的所有数据。
+清理云端删除的数据同步到本地后，未自动清理的所有数据。使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -5988,10 +6014,10 @@ cleanDirtyData(table: string, callback: AsyncCallback&lt;void&gt;): void
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s). 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. |
 | 801       | Capability not supported.    |
 | 14800000  | Inner error.        |
-| 14800011  | Failed to open the database because it is corrupted.   |
-| 14800014  | The RdbStore or ResultSet is already closed.       |
+| 14800011  | The current operation failed because the database is corrupted.   |
+| 14800014  | The target instance is already closed.       |
 | 14800015  | The database does not respond.      |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.     |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied.           |
 | 14800024  | SQLite: The database file is locked.        |
@@ -6050,10 +6076,10 @@ cleanDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The tablesNames must be not empty string. 4. The cursor must be valid cursor. |
 | 801       | Capability not supported. |
 | 14800000  | Inner error.            |
-| 14800011  | Failed to open the database because it is corrupted.   |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted.   |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond.   |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.   |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied.          |
 | 14800024  | SQLite: The database file is locked.      |
@@ -6120,11 +6146,11 @@ attach不能并发调用，否则可能出现未响应情况并报错14800015，
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
 | 14800010  | Failed to open or delete the database by an invalid database path.               |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond.                 |
 | 14800016  | The database alias already exists.                |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -6193,13 +6219,13 @@ attach不能并发调用，否则可能出现未响应情况并报错14800015，
 | 801       | Capability not supported. |
 | 14800000  | Inner error. |
 | 14800010  | Failed to open or delete the database by an invalid database path.               |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond.                 |
 | 14800016  | The database alias already exists.                |
 | 14801001  | The operation is supported in the stage model only.                 |
 | 14801002  | Invalid data group ID.                |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -6302,10 +6328,10 @@ detach(attachName: string, waitTime?: number) : Promise&lt;number&gt;
 |-----------|------------------------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error.            |
-| 14800011  | Failed to open the database because it is corrupted.         |
-| 14800014  | The RdbStore or ResultSet is already closed.        |
+| 14800011  | The current operation failed because the database is corrupted.         |
+| 14800014  | The target instance is already closed.        |
 | 14800015  | The database does not respond.         |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.            |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort.       |
 | 14800023  | SQLite: Access permission denied.           |
 | 14800024  | SQLite: The database file is locked.        |
@@ -6368,11 +6394,11 @@ lockRow(predicates: RdbPredicates):Promise&lt;void&gt;
 |-----------|----------------------------------------------------------------------------------------------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error.                                                                                 |
-| 14800011  | Failed to open the database because it is corrupted.                                                                          |
-| 14800014  | The RdbStore or ResultSet is already closed.                                                                              |
+| 14800011  | The current operation failed because the database is corrupted.                                                                          |
+| 14800014  | The target instance is already closed.                                                                              |
 | 14800015  | The database does not respond.                                                                        |
 | 14800018  | No data meets the condition.                                                                 |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                                                       |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort.                                                 |
 | 14800023  | SQLite: Access permission denied.                                                            |
 | 14800024  | SQLite: The database file is locked.                                                         |
@@ -6437,11 +6463,11 @@ unlockRow(predicates: RdbPredicates):Promise&lt;void&gt;
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond.                 |
 | 14800018  | No data meets the condition.                |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -6501,10 +6527,10 @@ queryLockedRow(predicates: RdbPredicates, columns?: Array&lt;string&gt;):Promise
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond.                 |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -6622,8 +6648,8 @@ rekey(cryptoParam?: CryptoParam): Promise\<void>
 | ------------ | ---------------------------------------------------------------------- |
 | 801          | Capability not supported.                                              |
 | 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
-| 14800011     | Failed to open the database because it is corrupted.                   |
-| 14800014     | The RdbStore or ResultSet is already closed.                           |
+| 14800011     | The current operation failed because the database is corrupted.                   |
+| 14800014     | The target instance is already closed.                           |
 | 14800015     | The database does not respond.                                         |
 | 14800021     | SQLite: Generic error.                                                 |
 | 14800023     | SQLite: Access permission denied.                                      |
@@ -6753,7 +6779,7 @@ setLocale(locale: string) : Promise\<void>
 | ------------ | ---------------------------------------------------------------------- |
 | 801          | Capability not supported.                                              |
 | 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
-| 14800014     | The RdbStore or ResultSet is already closed.                           |
+| 14800014     | The target instance is already closed.                           |
 | 14800024     | SQLite: The database file is locked.                                   |
 | 14800026     | SQLite: The database is out of memory.                                 |
 | 14800034     | SQLite: Library used incorrectly.                                         |
@@ -6821,8 +6847,8 @@ rekeyEx(cryptoParam: CryptoParam): Promise\<void>
 | ------------ | ----------------------------------------------------------------------- |
 | 801          | Capability not supported.                                               |
 | 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range.  |
-| 14800011     | Failed to open the database because it is corrupted.                    |
-| 14800014     | The RdbStore or ResultSet is already closed.                            |
+| 14800011     | The current operation failed because the database is corrupted.                    |
+| 14800014     | The target instance is already closed.                            |
 | 14800021     | SQLite: Generic error.                                                  |
 | 14800023     | SQLite: Access permission denied.                                       |
 | 14800024     | SQLite: The database file is locked.                                    |

@@ -81,7 +81,7 @@ export default {
       }
       var elapsed = timestamp - this.startTime;
         if (elapsed < 500) {
-          console.log('callback step timestamp: ' + timestamp);
+          console.info('callback step timestamp: ' + timestamp);
           this.animation = requestAnimationFrame(this.step);
         }
       } else {

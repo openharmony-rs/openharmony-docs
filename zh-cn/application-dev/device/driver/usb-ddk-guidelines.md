@@ -8,13 +8,13 @@
 
 ## 简介
 
-USB DDK（USB Driver Development Kit）是为开发者提供的USB驱动程序开发套件，支持开发者基于用户态，在应用层开发USB设备驱动。提供了一系列主机侧访问设备的接口，包括主机侧打开和关闭接口、管道同步异步读写通信、控制传输、中断传输等。
+UsbDdk（USB Driver Development Kit）是为开发者提供的USB驱动程序开发套件，支持开发者基于用户态，在应用层开发USB设备驱动。提供了一系列主机侧访问设备的接口，包括主机侧打开和关闭接口、管道同步异步读写通信、控制传输、中断传输等。
 
-凡是采用USB总线，通过USB协议传输数据的设备都可以使用USB DDK开发设备驱动。特别是内核标准驱动不支持的扩展外设，可以通过USB DDK开发的扩展外设驱动应用实现其独特的设备能力。
+凡是采用USB总线，通过USB协议传输数据的设备都可以使用UsbDdk开发设备驱动。特别是内核标准驱动不支持的扩展外设，可以通过UsbDdk开发的扩展外设驱动应用实现其独特的设备能力。
 
 ### 基本概念
 
-在进行USB DDK开发前，开发者应了解以下基本概念：
+在进行UsbDdk开发前，开发者应了解以下基本概念：
 
 - **USB**
 
@@ -26,19 +26,19 @@ USB DDK（USB Driver Development Kit）是为开发者提供的USB驱动程序�
 
 ### 实现原理
 
-非标外设应用通过扩展外设管理服务获取USB设备的ID，通过RPC将ID和要操作的动作下发给USB驱动应用，USB驱动应用通过调用USB DDK接口可获取设备描述符，配置描述符，以及发送控制传输，中断传输等请求，DDK接口使用HDI服务将指令下发至内核驱动，内核驱动使用指令与设备通信。
+非标外设应用通过扩展外设管理服务获取USB设备的ID，通过RPC将ID和要操作的动作下发给USB驱动应用，USB驱动应用通过调用UsbDdk接口可获取设备描述符，配置描述符，以及发送控制传输，中断传输等请求，DDK接口使用HDI服务将指令下发至内核驱动，内核驱动使用指令与设备通信。
 
-**图1** USB DDK调用原理
+**图1** UsbDdk调用原理
 
 ![USB_DDK原理图](figures/ddk-schematic-diagram.png)
 
 ## 约束与限制
 
-- USB DDK开放API支持USB接口非标外设扩展驱动开发场景。
+- UsbDdk开放API支持USB接口非标外设扩展驱动开发场景。
 
-- USB DDK开放API仅允许DriverExtensionAbility生命周期内使用。
+- UsbDdk开放API仅允许DriverExtensionAbility生命周期内使用。
 
-- 使用USB DDK开放API需要在module.json5中声明匹配的ACL权限，例如ohos.permission.ACCESS_DDK_USB。
+- 使用UsbDdk开放API需要在module.json5中声明匹配的ACL权限，例如ohos.permission.ACCESS_DDK_USB。
 
 ## 环境搭建
 
@@ -66,11 +66,11 @@ USB DDK（USB Driver Development Kit）是为开发者提供的USB驱动程序�
 | OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap) | 销毁缓冲区。请在缓冲区使用完后及时销毁缓冲区，否则会造成资源泄露。 |
 | OH_Usb_GetDevices(struct Usb_DeviceArray *devices) | 获取USB设备ID列表。请保证传入的指针参数是有效的，申请设备的数量不要超过128个，在使用完结构之后，释放成员内存，否则造成资源泄露。获取到的USB设备ID，已通过驱动配置信息中的vid进行筛选过滤。 |
 
-详细的接口说明请参考[USB DDK](../../reference/apis-driverdevelopment-kit/capi-usbddk.md)。
+详细的接口说明请参考[UsbDdk](../../reference/apis-driverdevelopment-kit/capi-usbddk.md)。
 
 ### 开发步骤
 
-以下步骤描述了如何使用 **USB DDK**开发USB驱动：
+以下步骤描述了如何使用 **UsbDdk**开发USB驱动：
 
 **添加动态链接库**
 
@@ -216,7 +216,7 @@ libusb_ndk.z.so
 
 6. 释放资源。
 
-    在所有请求处理完毕，程序退出前，使用 **usb_ddk_api.h** 的 **OH_Usb_DestroyDeviceMemMap** 接口销毁缓冲区。使用**OH_Usb_ReleaseInterface**释放接口。使用**OH_Usb_Release**释放USB DDK。
+    在所有请求处理完毕，程序退出前，使用 **usb_ddk_api.h** 的 **OH_Usb_DestroyDeviceMemMap** 接口销毁缓冲区。使用**OH_Usb_ReleaseInterface**释放接口。使用**OH_Usb_Release**释放UsbDdk。
 
     <!-- @[driver_usb_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->  
     

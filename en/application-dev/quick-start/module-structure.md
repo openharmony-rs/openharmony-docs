@@ -167,7 +167,6 @@ Example of the metadata attribute:
   "parameters" : [{
     "name" : "a test for metadata parameter",
     "type" : "Float",
-    // "$string:parameters_description" is a file resource index.
     "description" : "$string:parameters_description"
   }],
   "results" : [{
@@ -244,9 +243,6 @@ Setting the application icon to be displayed on the home screen:<br>Set **icon**
 ```json
 {
   "module":{
-
-    // ...
-
     "abilities": [{
       "icon": "$media:icon",
       "label": "Login",
@@ -256,9 +252,6 @@ Setting the application icon to be displayed on the home screen:<br>Set **icon**
         "uris": []
       }]
     }],
-
-    // ...
-
   }
 }
 ```
@@ -306,9 +299,7 @@ Example of the **abilities** attribute structure:
   {
     "name": ".EntryAbility",
     "description": "test main ability",
-    // $media:ic_launcher is a media resource.
     "icon": "$media:ic_launcher",
-    // $string:example is a string resource.
     "label": "$string:example",
     "launchType": "multiton",
     "orientation": "unspecified",
@@ -463,7 +454,7 @@ Example of the **skills** attribute structure:
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | type | Type of the JS component.| String. The value can be **pageAbility** or **form**.| Yes (initial value: **pageAbility**)|
-| syntax | Syntax type of the JS component.| String.The value can be **hml** or **ets**.| Yes (initial value: **hml**)|
+| syntax | Syntax type of the JS component.| String. The value can be **hml** or **ets**.| Yes (initial value: **hml**)|
 
 
 Example of the **js** attribute structure:
@@ -516,7 +507,6 @@ Example of the **shortcuts** attribute structure:
 "shortcuts": [
   {
     "shortcutId": "id",
-    // $string:shortcut is a string resource index.
     "label": "$string:shortcut",
     "intents": [
       {

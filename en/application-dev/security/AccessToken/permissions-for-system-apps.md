@@ -17,6 +17,42 @@ Before requesting permissions for your application, read and understand the [per
 
 For details about the process for requesting permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
 
+## ohos.permission.RUNNING_LOCK
+
+Allows an application to obtain a running lock.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 7
+
+## ohos.permission.SET_WALLPAPER
+
+Allows an application to set wallpapers.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 7
+
+## ohos.permission.MODIFY_AUDIO_SETTINGS
+
+Allows an application to modify audio settings.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 8
+
 ## ohos.permission.RECEIVER_STARTUP_COMPLETED
 
 Allows an application to subscribe to the startup broadcast.
@@ -4036,7 +4072,7 @@ Allows a system service to access and read files in **/data/log/faultlog/faultlo
 
 **Enable via ACL**: true
 
-**Valid since**: 12
+**Valid since**: 13
 
 ## ohos.permission.START_RESTORE_NOTIFICATION
 
@@ -5361,15 +5397,15 @@ Allows an application to dynamically register or remove custom UTD data types.
 
 Allows a system application to access media sharing resources within the camera framework directory.
 
-**Permission level**：system_basic
+**Permission level**: system_basic
 
-**Authorization mode**：system_grant
+**Authorization mode**: system_grant
 
-**Enable via ACL**：true
+**Enable via ACL**: true
 
-**Supported devices**：General
+**Supported devices**: General
 
-**Since**：23
+**Since**: 23
 ## ohos.permission.MANAGE_CLOUD_DATA_SERVICE
 
 Allows an application that has accessed Cloud to manage cloud data.
@@ -5425,3 +5461,63 @@ Allows a system application to access secure access fence capability..
 **Supported devices**: phones | PCs/2-in-1 devices | tablet | tv | car
 
 **Since**: 23
+
+## ohos.permission.ACCESS_MINI_SYSTEM
+ 	 
+Allows a system application to access the runtime capability framework.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 23
+
+## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
+
+Allows a system application to start the preview panel for adding application widgets to the home screen.
+
+With this permission, the system application can help users add the widgets to distribute to the home screen.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
+
+**Since**: 20
+
+## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE_CONTROL
+
+Allows an application to add the WiseCard of other applications.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 23
+
+## ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
+
+Allows an application to acquire the local account authorization.
+
+With this permission, the application can call the API to acquire the local account authorization. Once authorized, the application can handle sensitive tasks like creating or removing local accounts, modifying the local account type, and adjusting time and time zone settings.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: PC/2in1
+
+**Since**: 24

@@ -44,6 +44,7 @@
 | [Camera_ErrorCode OH_PreviewOutput_GetActiveProfile(Camera_PreviewOutput* previewOutput, Camera_Profile** profile)](#oh_previewoutput_getactiveprofile) | - | 获取当前预览输出配置文件。 |
 | [Camera_ErrorCode OH_PreviewOutput_DeleteProfile(Camera_Profile* profile)](#oh_previewoutput_deleteprofile) | - | 删除预览配置文件实例。 |
 | [Camera_ErrorCode OH_PreviewOutput_GetPreviewRotation(Camera_PreviewOutput* previewOutput, int displayRotation, Camera_ImageRotation* imageRotation)](#oh_previewoutput_getpreviewrotation) | - | 获取相机预览旋转角度。 |
+| [Camera_ErrorCode OH_PreviewOutput_GetPreviewRotationWithoutDisplayRotation(Camera_PreviewOutput* previewOutput, Camera_ImageRotation* imageRotation)](#oh_previewoutput_getpreviewrotationwithoutdisplayrotation) | - | 获取相机预览旋转角度。 |
 | [Camera_ErrorCode OH_PreviewOutput_SetPreviewRotation(Camera_PreviewOutput* previewOutput, Camera_ImageRotation previewRotation, bool isDisplayLocked)](#oh_previewoutput_setpreviewrotation) | - | 设置相机预览旋转角度。 |
 | [Camera_ErrorCode OH_PreviewOutput_GetSupportedFrameRates(Camera_PreviewOutput* previewOutput, Camera_FrameRateRange** frameRateRange, uint32_t* size)](#oh_previewoutput_getsupportedframerates) | - | 获取支持的预览输出帧率列表。 |
 | [Camera_ErrorCode OH_PreviewOutput_DeleteFrameRates(Camera_PreviewOutput* previewOutput, Camera_FrameRateRange* frameRateRange)](#oh_previewoutput_deleteframerates) | - | 删除帧率列表。 |
@@ -304,6 +305,31 @@ Camera_ErrorCode OH_PreviewOutput_GetPreviewRotation(Camera_PreviewOutput* previ
 | -- | -- |
 | [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 用于获取预览旋转角度的预览输出实例。 |
 | int displayRotation | 当前显示的旋转角度。 |
+| [Camera_ImageRotation](capi-camera-h.md#camera_imagerotation)* imageRotation | 预览旋转角度结果。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+
+### OH_PreviewOutput_GetPreviewRotationWithoutDisplayRotation()
+
+```c
+Camera_ErrorCode OH_PreviewOutput_GetPreviewRotationWithoutDisplayRotation(Camera_PreviewOutput* previewOutput, Camera_ImageRotation* imageRotation)
+```
+
+**描述**
+
+获取相机预览旋转角度。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 用于获取预览旋转角度的预览输出实例。 |
 | [Camera_ImageRotation](capi-camera-h.md#camera_imagerotation)* imageRotation | 预览旋转角度结果。 |
 
 **返回：**

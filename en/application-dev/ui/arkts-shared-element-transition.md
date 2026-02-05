@@ -70,7 +70,7 @@ struct Index {
       // Replace $r('app.media.sunset_sky') with the actual resource file.
       avatar: $r('app.media.sunset_sky'),
       name: 'Bob',
-      // Replace $r('app.string.shareTransition_text2') with the actual resource file. In this example, the value in the resource file is "Hello World."
+      // Replace $r('app.string.shareTransition_text2') with the actual resource file. In this example, the value in the resource file is "Hello, world."
       message: $r('app.string.shareTransition_text2'),
       // Replace $r('app.media.island') with the actual resource file.
       images: [$r('app.media.island')]
@@ -200,7 +200,7 @@ Use [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecon
 
 ### Using with Stack
 
-With the **Stack** container, where later defined components appear on top, you can control the z-order to ensure that the component is on top after being migrated across nodes. For example, in the scenario of expanding and collapsing widgets, the implementation steps are as follows:
+With the **Stack** container, where later defined components appear on top, you can control the position to ensure that the component is on top after being migrated across nodes. For example, in the scenario of expanding and collapsing widgets, the implementation steps are as follows:
 
 - When expanding a widget, obtain the source node (node A)'s position and migrate the components to a higher-level node (node B) with the same position.
 
@@ -1188,8 +1188,8 @@ export class WindowUtils {
 // Add capture of window width and height in onWindowStageCreate at the application entry.
 
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { display, window } from '@kit.ArkUI';
 import { WindowUtils } from '../utils/WindowUtils';
+import { display, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -1209,7 +1209,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
-    // ···
+    // ...
     // Obtain the window width and height.
     WindowUtils.window = windowStage.getMainWindowSync();
     WindowUtils.windowWidthPx = WindowUtils.window.getWindowProperties().windowRect.width;
@@ -1280,7 +1280,6 @@ export default class EntryAbility extends UIAbility {
       AppStorage.setOrCreate('currentBreakpoint', this.currentBreakPoint);
     }
   }
-
   onWindowStageDestroy(): void {
     // Main window is destroyed, release UI related resources
     hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageDestroy');
@@ -1817,8 +1816,8 @@ export class WindowUtils {
 // Add capture of window width and height in onWindowStageCreate at the application entry.
 
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { display, window } from '@kit.ArkUI';
 import { WindowUtils } from '../utils/WindowUtils';
+import { display, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -1838,7 +1837,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
-    // ···
+    // ...
     // Obtain the window width and height.
     WindowUtils.window = windowStage.getMainWindowSync();
     WindowUtils.windowWidthPx = WindowUtils.window.getWindowProperties().windowRect.width;
@@ -1909,7 +1908,6 @@ export default class EntryAbility extends UIAbility {
       AppStorage.setOrCreate('currentBreakpoint', this.currentBreakPoint);
     }
   }
-
   onWindowStageDestroy(): void {
     // Main window is destroyed, release UI related resources
     hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageDestroy');
@@ -2046,7 +2044,7 @@ struct Index {
       // Replace $r('app.media.sunset_sky') with the actual resource file.
       avatar: $r('app.media.sunset_sky'),
       name: 'Bob',
-      // Replace $r('app.string.shareTransition_text2') with the actual resource file. In this example, the value in the resource file is "Hello World."
+      // Replace $r('app.string.shareTransition_text2') with the actual resource file. In this example, the value in the resource file is "Hello, world."
       message: $r('app.string.shareTransition_text2'),
       // Replace $r('app.media.island') with the actual resource file.
       images: [$r('app.media.island')]

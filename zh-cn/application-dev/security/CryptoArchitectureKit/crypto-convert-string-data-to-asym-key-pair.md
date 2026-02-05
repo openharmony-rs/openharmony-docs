@@ -30,10 +30,10 @@
 
 - 以Promise方式生成RSA密钥对为例：
   <!-- @[specify_pem_string_convert_rsa_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSpecifiedPEMAsymmetricKeyPair/entry/src/main/ets/pages/Promise.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   let priKeyPkcs1Str1024: string =
     '-----BEGIN RSA PRIVATE KEY-----\n' +
       'MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n' +
@@ -56,7 +56,7 @@
       'h7cO51WXMT2gyN45DCQySr/8cLE2UiUVHo7qlrSatdLA9ETtgob3sJ4qTaBg5Lxg\n' +
       'SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n' +
       '-----END RSA PUBLIC KEY-----\n';
-
+  
   async function testPkcs1ToPkcs8ByPromise() {
     let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
     let keyPair = await asyKeyGenerator.convertPemKey(publicPkcs1Str1024, priKeyPkcs1Str1024);
@@ -64,8 +64,8 @@
     let pubPemKey = keyPair.pubKey;
     let priString = priPemKey.getEncodedPem('PKCS8');
     let pubString = pubPemKey.getEncodedPem('X509');
-    console.info('[promise]TestPkcs1ToPkcs8ByPromise priString output is ' + priString);
-    console.info('[promise]TestPkcs1ToPkcs8ByPromise pubString output is ' + pubString);
+    console.info('[promise]TestPkcs1ToPkcs8ByPromise priString output: ' + priString);
+    console.info('[promise]TestPkcs1ToPkcs8ByPromise pubString output: ' + pubString);
   }
   ```
 
@@ -73,10 +73,10 @@
 - 同步返回结果（调用方法[convertPemKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertpemkeysync12)）：
 
   <!-- @[specify_pem_string_convert_rsa_keypair_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSpecifiedPEMAsymmetricKeyPair/entry/src/main/ets/pages/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   let priKeyPkcs1Str1024: string =
     '-----BEGIN RSA PRIVATE KEY-----\n' +
       'MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n' +
@@ -99,24 +99,24 @@
       'h7cO51WXMT2gyN45DCQySr/8cLE2UiUVHo7qlrSatdLA9ETtgob3sJ4qTaBg5Lxg\n' +
       'SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n' +
       '-----END RSA PUBLIC KEY-----\n';
-
+  
   function testPkcs1ToPkcs8BySync() {
     let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
     try {
       let keyPairData = asyKeyGenerator.convertPemKeySync(publicPkcs1Str1024, priKeyPkcs1Str1024);
       if (keyPairData != null) {
-        console.info('[Sync]: convert pem key pair success');
+        console.info('[Sync]: convert pem key pair result: success.');
       } else {
-        console.error('[Sync]: convert pem key pair result fail!');
+        console.error('[Sync]: convert pem key pair result: fail.');
       }
       let priPemKey = keyPairData.priKey;
       let pubPemKey = keyPairData.pubKey;
       let priString = priPemKey.getEncodedPem('PKCS8');
       let pubString = pubPemKey.getEncodedPem('X509');
-      console.info('[Sync]TestPkcs1ToPkcs8BySync priString output is ' + priString);
-      console.info('[Sync]TestPkcs1ToPkcs8BySync pubString output is ' + pubString);
+      console.info('[Sync]TestPkcs1ToPkcs8BySync priString output: ' + priString);
+      console.info('[Sync]TestPkcs1ToPkcs8BySync pubString output: ' + pubString);
     } catch (e) {
-      console.error(`Sync error, ${e.code}, ${e.message}`);
+      console.error(`Sync failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
   ```

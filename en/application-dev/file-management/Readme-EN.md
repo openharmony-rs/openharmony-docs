@@ -22,7 +22,7 @@
   - [Configuring the Application Shared Directory](share-app-file-configuration.md)
   - Application Data Backup and Restore<!--app-file-backup-restore-->
     - [Application Data Backup and Restore Overview](app-file-backup-overview.md)
-    - [Accessing Backup and Restore](app-file-backup-extension.md)
+    - [Accessing Backup and Restore](app-file-backup-extension.md)<!--RP2--><!--RP2End-->
     <!--Del-->
     - [Triggering Backup and Restore (for System Applications Only)](app-file-backup-sys.md)
     <!--DelEnd-->
@@ -44,5 +44,5 @@
 - Distributed File System<!--distributed-fs-->
   - [Distributed File System Overview](distributed-fs-overview.md)
   - [Setting the Security Level of a Distributed File](set-security-label.md)
-  - [Accessing Files Across Devices](file-access-across-devices.md)
+  - [Sharing and Accessing Files Across Devices](file-access-across-devices.md)
   - [Copying Files Across Devices](file-copy-across-devices.md)<!--RP1--><!--RP1End-->
