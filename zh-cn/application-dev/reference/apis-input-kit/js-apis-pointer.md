@@ -510,7 +510,7 @@ ArkTS-Sta: getPointerStyle(windowId: int, callback: AsyncCallback&lt;PointerStyl
 
 | 参数名       | 类型                                       | 必填   | 说明             |
 | -------- | ---------------------------------------- | ---- | -------------- |
-| windowId | ArkTS-Dyn: number<br/>ArkTS-Sta: int     | 是    | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。    |
+| windowId | ArkTS-Dyn: number<br/>ArkTS-Sta: int     | 是    | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyle](#pointersetpointerstyle)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
 | callback | AsyncCallback&lt;[PointerStyle](#pointerstyle)&gt; | 是    | 回调函数，返回鼠标样式类型。 |
 
 **错误码**：
@@ -606,7 +606,7 @@ ArkTS-Sta: getPointerStyle(windowId: int): Promise&lt;PointerStyle&gt;
 
 | 参数名     | 类型   | 必填 | 说明     |
 | -------- | ------ | ---- | -------- |
-| windowId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 窗口id。 |
+| windowId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyle](#pointersetpointerstyle-1)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
 
 **返回值**：
 
@@ -707,7 +707,7 @@ ArkTS-Sta: getPointerStyleSync(windowId: int): PointerStyle
 
 | 参数名     | 类型   | 必填 | 说明     |
 | -------- | ------ | ---- | -------- |
-| windowId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 窗口id。<br>默认值为-1，表示获取全局的鼠标样式。 |
+| windowId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyleSync]
 
 **返回值**：
 
@@ -1165,6 +1165,14 @@ struct Index {
 | LOADING<sup>10+</sup> | 42 | 正在载入动画光标 |![Loading.png](./figures/Loading.png)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | RUNNING<sup>10+</sup> | 43 | 后台运行中动画光标 |![Running.png](./figures/Running.png)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | MIDDLE_BTN_EAST_WEST<sup>18+</sup>          | 44   | 向东西滚动 |![MID_Btn_East_West.png](./figures/MID_Btn_East_West.png)|
+| RUNNING_LEFT<sup>22+</sup>         | 45   | 后台运行中动画光标(拓展1) |![Loading_Left.png](./figures/Loading_Left.png)|
+| RUNNING_RIGHT<sup>22+</sup>         | 46   | 后台运行中动画光标(拓展2) |![Loading_Right.png](./figures/Loading_Right.png)|
+| AECH_DEVELOPER_DEFINED_ICON<sup>22+</sup>         | 47   | 圆形自定义光标 |![Custom_Cursor_Circle.png](./figures/Custom_Cursor_Circle.png)|
+| SCREENRECORDER_CURSOR<sup>20+</sup>         | 48   | 录屏光标  |![ScreenRecorder_Cursor.png](./figures/ScreenRecorder_Cursor.png)|
+| LASER_CURSOR<sup>22+</sup>        | 49   | 悬浮光标。手写笔进入空鼠模式时使用该光标，无法直接使用 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor.png](./figures/Laser_Cursor.png)|
+| LASER_CURSOR_DOT<sup>22+</sup>        | 50   | 点击光标。手写笔进入空鼠模式时使用该光标，无法直接使用 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor_Dot.png](./figures/Laser_Cursor_Dot.png)|
+| LASER_CURSOR_DOT_RED<sup>22+</sup>        | 51   | 激光笔光标。手写笔进入空鼠模式时使用该光标，无法直接使用 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor_Dot_Red.png](./figures/Laser_Cursor_Dot_Red.png)|
+| DEVELOPER_DEFINED_ICON<sup>22+</sup>        | -100 | 自定义光标，开发者可使用[setCustomCursor](#pointersetcustomcursor15)设置自定义光标，不支持使用[setPointerStyle](#pointersetpointerstyle-1)直接设置。 |自定义光标样式，通过接口设置。|
 
 ## pointer.setCustomCursor<sup>11+</sup>
 
