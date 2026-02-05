@@ -12,7 +12,7 @@
 
 详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
-1. 导入[image](../../reference/apis-image-kit/arkts-apis-image-Image.md)接口。获取拍照输出的数据需要用到系统提供的image接口能力，导入image接口的方法如下。
+1. 导入[Image](../../reference/apis-image-kit/arkts-apis-image-Image.md)接口。获取拍照输出的数据需要用到系统提供的Image接口能力，导入Image接口的方法如下。
 
    ```ts
    import { image } from '@kit.ImageKit';

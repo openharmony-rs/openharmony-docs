@@ -44,7 +44,7 @@
    }
    ```
 
-3. 调用[VideoSession](../../reference/apis-camera-kit/arkts-apis-camera-Session.md)中的[beginConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#beginconfig11)方法配置会话。
+3. 调用[VideoSession](../../reference/apis-camera-kit/arkts-apis-camera-VideoSession.md)中的[beginConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#beginconfig11)方法配置会话。
      
    ```ts
    function beginConfig(videoSession: camera.VideoSession): void {
