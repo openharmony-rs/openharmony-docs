@@ -261,7 +261,6 @@ onBundleEnd: AsyncCallback&lt;string, void | string&gt;
 | 13600001 | IPC error.                       |
 | 13900005 | I/O error.                      |
 | 13900011 | Out of memory.                   |
-| 13900020 | Invalid argument.                |
 | 13900025 | No space left on device.         |
 | 13900042 | Unknown error.                   |
 
@@ -646,7 +645,6 @@ getLocalCapabilities(dataList:Array&lt;IncrementalBackupTime&gt;): Promise&lt;Fi
 | 13600001 | IPC error.                                                                                      |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 
