@@ -354,8 +354,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
 9. （可选）调用OH_VideoDecoder_Flush()刷新解码器。
 
-   调用OH_VideoDecoder_Flush接口后，解码器仍处于运行态，但会清除解码器中缓存的输入和输出数据及参数集（如H.264格式的PPS/SPS）。
-   此时需要调用OH_VideoDecoder_Start接口重新开始解码。
+   调用OH_VideoDecoder_Flush接口后，解码器仍处于运行态，但会清除解码器中缓存的输入和输出数据及参数集（如H.264格式的PPS/SPS）。此时需要调用OH_VideoDecoder_Start接口重新开始解码。
 
    ```c++
    // 通过codecMutex来避免调用Flush接口，状态切换后，解码线程还在跑会退出循环的问题。
