@@ -89,6 +89,57 @@ async requestUploadFile(fileName: string, callback: (progress: number, isSuccess
 
 
 <!-- @[upload_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)-->
+
+``` TypeScript
+async requestAgentUpload(fileName: string, callback: (progress: number, isSucceed: boolean) => void,
+  context: common.UIAbilityContext) {
+  // 获取应用文件路径
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+  let url = await urlUtils.getUrl(context);
+  let cacheDir = context.cacheDir;
+
+  let attachments: request.agent.FormItem[] = [{
+    name: 'test',
+    value: [
+      {
+        filename: fileName,
+        path: cacheDir + '/' + fileName,
+      },
+    ]
+  }];
+  let config: request.agent.Config = {
+    action: request.agent.Action.UPLOAD,
+    url: url,
+    mode: request.agent.Mode.FOREGROUND,
+    overwrite: true,
+    method: 'POST',
+    headers: {
+      'key1': 'value1',
+      'key2': 'value2'
+    },
+    data: attachments
+  };
+  request.agent.create(context, config).then((task: request.agent.Task) => {
+    task.start((err: BusinessError) => {
+      if (err) {
+        logger.error(TAG, `Failed to start the upload task, code=${err.code}, message=${err.message}`);
+        return;
+      }
+    });
+    task.on('progress', async (progress) => {
+      logger.info(TAG, `Request upload status ${progress.state}, uploaded ${progress.processed}`);
+    })
+    task.on('completed', async () => {
+      logger.info(TAG, `Request upload completed`);
+      callback(100, true);
+      // 该方法需用户管理任务生命周期，任务结束后调用remove释放task对象
+      request.agent.remove(task.tid);
+    })
+  }).catch((err: BusinessError) => {
+    logger.error(TAG, `Failed to start the upload task, code=${err.code}, message=${err.message}`);
+  });
+}
+```
 <!-- @[upload_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)-->
 
 ``` TypeScript
@@ -133,7 +184,7 @@ async requestAgentUpload(fileName: string, callback: (progress: number, isSuccee
     task.on('completed', async () => {
       logger.info(TAG, `Request upload completed`);
       callback(100, true);
-      //该方法需用户管理任务生命周期，任务结束后调用remove释放task对象
+      // 该方法需用户管理任务生命周期，任务结束后调用remove释放task对象
       request.agent.remove(task.tid);
     })
   }).catch((err: BusinessError) => {
@@ -468,7 +519,7 @@ async mediaFileAgentTask(url: string, callback: (progress: number, isSuccess: bo
       task.on('completed', async (progress) => {
         logger.info(TAG, `Request download completed, ${JSON.stringify(progress)}`);
         callback(100, true);
-        //该方法需用户管理任务生命周期，任务结束后调用remove释放task对象
+        // 该方法需用户管理任务生命周期，任务结束后调用remove释放task对象
         request.agent.remove(task.tid);
       })
     }).catch((err: BusinessError) => {
@@ -507,20 +558,20 @@ async speedLimitDownload(url: string, fileName: string, callback: (progress: num
     // 最低速度限制规则：
     // 1. 若任务速度持续低于设定值（如：16 * 1024 B/s）达到指定时长（如：10s），则任务失败
     // 2. 重置计时条件：
-    //    - 任一秒速度超过最低限速
-    //    - 任务暂停后恢复
-    //    - 任务停止后重启
+    // - 任一秒速度超过最低限速
+    // - 任务暂停后恢复
+    // - 任务停止后重启
     minSpeed: {
       speed: 16 * 1024,
       duration: 10
     },
     // 超时控制规则：
     // 1. 连接超时（connectionTimeout）：
-    //    - 单次连接建立耗时超过设定值（如：60s）则任务失败
-    //    - 多次连接时各次独立计时（不累积）
+    // - 单次连接建立耗时超过设定值（如：60s）则任务失败
+    // - 多次连接时各次独立计时（不累积）
     // 2. 总超时（totalTimeout）：
-    //    - 任务总耗时（含连接+传输时间）超过设定值（如：120s）则失败
-    //    - 暂停期间不计时，恢复后累积计时
+    // - 任务总耗时（含连接+传输时间）超过设定值（如：120s）则失败
+    // - 暂停期间不计时，恢复后累积计时
     // 3. 重置计时条件：任务失败或停止时重置计时
     timeout: {
       connectionTimeout: 60,
@@ -714,4 +765,3 @@ async wantAgentDownload(url: string, fileName: string, callback: (progress: numb
 - 确保在配置`wantAgentInfo`时，填写正确的应用包名和ability名称。
 - `wantAgent`参数需要与`notification`参数配合使用，才能在通知中显示跳转功能。
 - 在实际应用中，建议根据业务需求调整通知的标题、描述、可见性以及其他相关参数。
-
