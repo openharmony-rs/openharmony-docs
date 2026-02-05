@@ -433,7 +433,7 @@
 
 7. 按需触发动效。
 
-   模式切换动效触发：点击或触控模式按钮立即执行doSurfaceShot截图方法，更新StorageLink绑定modeChange的值，触发onModeChange方法，开始动效。
+   模式切换动效触发：点击或触控模式按钮立即执行doSurfaceShot截图方法，更新[StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md)绑定modeChange的值，触发onModeChange方法，开始动效。
 
    ```ts
    onModeChange(): void {
