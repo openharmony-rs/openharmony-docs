@@ -735,9 +735,9 @@ struct Index {
         }),
         action: () => {
         },
-        accessibilityText: '剪贴', //该项屏幕朗读播报文本为‘剪贴’
-        accessibilityDescription: '单指双击即可剪贴', //该项屏幕朗读播报描述为'单指双击即可剪贴'
-        accessibilityLevel: 'yes'  //该项可被无障碍屏幕朗读聚焦
+        accessibilityText: '剪贴', // 该项屏幕朗读播报文本为‘剪贴’
+        accessibilityDescription: '单指双击即可剪贴', // 该项屏幕朗读播报描述为'单指双击即可剪贴'
+        accessibilityLevel: 'yes'  // 该项可被无障碍屏幕朗读聚焦
       })
     )
     this.toolbarList.push(
@@ -751,7 +751,7 @@ struct Index {
         action: () => {
         },
         state: ToolBarV2ItemState.DISABLE,
-        accessibilityLevel: 'no'  //该项将无法被无障碍屏幕朗读聚焦
+        accessibilityLevel: 'no'  // 该项将无法被无障碍屏幕朗读聚焦
       }))
     this.toolbarList.push(
       new ToolBarV2Item({

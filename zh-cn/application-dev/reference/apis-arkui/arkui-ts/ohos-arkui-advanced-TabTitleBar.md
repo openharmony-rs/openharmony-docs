@@ -21,7 +21,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { TabTitleBar } from '@kit.ArkUI';
 ```
 
@@ -96,7 +96,7 @@ import { TabTitleBar, Prompt, TabTitleBarTabItem, TabTitleBarMenuItem } from '@k
 @Component
 struct Index {
   @Builder
-  //定义页签列表关联的页面
+  // 定义页签列表关联的页面
   componentBuilder() {
     Text("#1ABC9C\nTURQUOISE")
       .fontWeight(FontWeight.Bold)
@@ -135,7 +135,7 @@ struct Index {
       .backgroundColor("#3498DB")
   }
 
-  //定义几个左侧的页签项目
+  // 定义几个左侧的页签项目
   private readonly tabItems: Array<TabTitleBarTabItem> =
     [
       { title: '页签1' },
@@ -144,7 +144,7 @@ struct Index {
       { title: 'icon', icon: $r('sys.media.ohos_app_icon') },
       { title: '页签4' },
     ]
-  //定义几个右侧的菜单项目
+  // 定义几个右侧的菜单项目
   private readonly menuItems: Array<TabTitleBarMenuItem> = [
     {
       value: $r('sys.media.ohos_save_button_filled'),
@@ -163,7 +163,7 @@ struct Index {
     },
   ]
 
-  //TabTitleBar效果展示
+  // TabTitleBar效果展示
   build() {
     Row() {
       Column() {
@@ -189,7 +189,7 @@ import { TabTitleBar, Prompt, TabTitleBarTabItem, TabTitleBarMenuItem } from '@k
 @Component
 struct Index {
   @Builder
-  //定义页签列表关联的页面
+  // 定义页签列表关联的页面
   componentBuilder() {
     Text("#1ABC9C\nTURQUOISE")
       .fontWeight(FontWeight.Bold)
@@ -228,7 +228,7 @@ struct Index {
       .backgroundColor("#3498DB")
   }
 
-  //定义几个左侧的页签项目
+  // 定义几个左侧的页签项目
   private readonly tabItems: Array<TabTitleBarTabItem> =
     [
       { title: '页签1' },
@@ -237,14 +237,14 @@ struct Index {
       { title: 'icon', icon: $r('sys.media.ohos_app_icon') },
       { title: '页签4' },
     ]
-  //定义几个右侧的菜单项目
+  // 定义几个右侧的菜单项目
   private readonly menuItems: Array<TabTitleBarMenuItem> = [
     {
       value: $r('sys.media.ohos_save_button_filled'),
       isEnabled: true,
       action: () => Prompt.showToast({ message: "on item click! index 0" }),
       accessibilityText: '保存',
-      //此处为no，屏幕朗读不聚焦
+      // 此处为no，屏幕朗读不聚焦
       accessibilityLevel: 'no',
       accessibilityDescription: '点击操作保存图标'
     },
@@ -260,16 +260,16 @@ struct Index {
       value: $r('sys.media.ohos_ic_public_edit'),
       isEnabled: true,
       action: () => Prompt.showToast({ message: "on item click! index 2" }),
-      //屏幕朗读播报文本，优先级比label高
+      // 屏幕朗读播报文本，优先级比label高
       accessibilityText: '编辑',
-      //屏幕朗读是否可以聚焦到
+      // 屏幕朗读是否可以聚焦到
       accessibilityLevel: 'yes',
-      //屏幕朗读最后播报的描述文本
+      // 屏幕朗读最后播报的描述文本
       accessibilityDescription: '点击操作编辑图标'
     },
   ]
 
-  //TabTitleBar效果展示
+  // TabTitleBar效果展示
   build() {
     Row() {
       Column() {
@@ -294,7 +294,7 @@ import { TabTitleBar, Prompt, TabTitleBarTabItem, TabTitleBarMenuItem, SymbolGly
 @Component
 struct Index {
   @Builder
-  //定义页签列表关联的页面
+  // 定义页签列表关联的页面
   componentBuilder() {
     Text("#1ABC9C\nTURQUOISE")
       .fontWeight(FontWeight.Bold)
@@ -333,7 +333,7 @@ struct Index {
       .backgroundColor("#3498DB")
   }
 
-  //定义几个左侧的页签项目
+  // 定义几个左侧的页签项目
   private readonly tabItems: Array<TabTitleBarTabItem> =
     [
       { title: '页签1' },
@@ -346,7 +346,7 @@ struct Index {
       },
       { title: '页签4' },
     ]
-  //定义几个右侧的菜单项目
+  // 定义几个右侧的菜单项目
   private readonly menuItems: Array<TabTitleBarMenuItem> = [
     {
       value: $r('sys.media.ohos_save_button_filled'),
@@ -354,7 +354,7 @@ struct Index {
       isEnabled: true,
       action: () => Prompt.showToast({ message: "on item click! index 0" }),
       accessibilityText: '保存',
-      //此处为no，屏幕朗读不聚焦
+      // 此处为no，屏幕朗读不聚焦
       accessibilityLevel: 'no',
       accessibilityDescription: '点击操作保存图标'
     },
@@ -372,16 +372,16 @@ struct Index {
       symbolStyle: new SymbolGlyphModifier($r('sys.symbol.ai_edit')),
       isEnabled: true,
       action: () => Prompt.showToast({ message: "on item click! index 2" }),
-      //屏幕朗读播报文本，优先级比label高
+      // 屏幕朗读播报文本，优先级比label高
       accessibilityText: '编辑',
-      //屏幕朗读是否可以聚焦到
+      // 屏幕朗读是否可以聚焦到
       accessibilityLevel: 'yes',
-      //屏幕朗读最后播报的描述文本
+      // 屏幕朗读最后播报的描述文本
       accessibilityDescription: '点击操作编辑图标'
     },
   ]
 
-  //TabTitleBar效果展示
+  // TabTitleBar效果展示
   build() {
     Row() {
       Column() {
