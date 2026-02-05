@@ -3452,6 +3452,7 @@ Writes raw data to this **MessageSequence** object.
 > - This API is supported since API version 9 and deprecated since API version 11. Use [writeRawDataBuffer](#writerawdatabuffer11) instead.
 >
 > - This API cannot be called for multiple times in one parcel communication.
+>
 > - When the data volume is large (greater than 32 KB), the shared memory is used to transmit data. In this case, pay attention to the SELinux configuration.
 
 **System capability**: SystemCapability.Communication.IPC.Core
@@ -3762,6 +3763,8 @@ Provides APIs for reading and writing data in specific format. During RPC, the s
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 9. Use [MessageSequence](#messagesequence9) instead.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 ### create<sup>(deprecated)</sup>
 
@@ -7001,6 +7004,8 @@ try {
 
 Writes an object to a **MessageSequence** and reads it from the **MessageSequence** during IPC.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 ### marshalling<sup>9+</sup>
 
 marshalling(dataOut: MessageSequence): boolean
@@ -7122,6 +7127,8 @@ Writes objects of classes to a **MessageParcel** and reads them from the **Messa
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 9. Use [Parcelable](#parcelable9) instead.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 ### marshalling<sup>(deprecated)</sup>
 
@@ -7253,6 +7260,8 @@ try {
 
 Represents the holder of a remote proxy object. It is used to obtain a proxy object.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 ### asObject
 
 asObject(): IRemoteObject
@@ -7344,6 +7353,8 @@ if (proxy != undefined) {
 
 Subscribes to death notifications of a remote object. When the remote object is dead, the local end will receive a notification and **[onRemoteDied](#onremotedied)** will be called. A remote object is dead when the process holding the object is terminated or the device of the remote object is shut down or restarted. If the local and remote objects belong to different devices, the remote object is dead when the device holding the remote object is detached from the network. 
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 ### onRemoteDied
 
 onRemoteDied(): void
@@ -7413,6 +7424,8 @@ Defines the IPC context, including the PID and UID, local and remote device IDs,
 ## IRemoteObject
 
 Provides methods to query of obtain interface descriptors, add or delete death notifications, dump object status to specific files, and send messages.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 ### getLocalInterface<sup>9+</sup>
 
@@ -7756,6 +7769,8 @@ Checks whether this object is dead.
 ## RemoteProxy
 
 Provides APIs to implement **IRemoteObject**.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 ### Properties
 
@@ -8134,7 +8149,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
 ### getLocalInterface<sup>9+</sup>
 
-getLocalInterface(interface: string): IRemoteBroker
+getLocalInterface(interfaceDes: string): IRemoteBroker
 
 Obtains the **LocalInterface** object of an interface token.
 
@@ -8144,7 +8159,7 @@ Obtains the **LocalInterface** object of an interface token.
 
   | Name   | Type  | Mandatory| Description                  |
   | --------- | ------ | ---- | ---------------------- |
-  | interface | string | Yes  | Interface descriptor.|
+  | interfaceDes | string | Yes  | Interface descriptor.|
 
 **Return value**
 
@@ -8393,7 +8408,7 @@ if (proxy != undefined) {
 
 addDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 
-Adds a callback for receiving the death notifications of the remote object.
+Adds a callback for receiving death notifications of the remote object.
 
 > **NOTE**
 >
@@ -8874,6 +8889,8 @@ if (proxy != undefined) {
 
 Defines the options used to construct the **MessageOption** object.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 ### Properties
 
 **System capability**: SystemCapability.Communication.IPC.Core
@@ -9124,6 +9141,8 @@ try {
 ## IPCSkeleton
 
 Obtains IPC context, including the UID and PID, local and remote device IDs, and whether the method is invoked on the same device.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 ### getContextObject
 
@@ -9586,6 +9605,8 @@ class Stub extends rpc.RemoteObject {
 
 Provides methods to implement **RemoteObject**. The service provider must inherit from this class.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 ### constructor
 
 constructor(descriptor: string)
@@ -9883,8 +9904,8 @@ Provides a response to **sendMessageRequest()**. The server processes the reques
 
 > **NOTE**
 >
-> - You are advised to overload the **onRemoteMessageRequest** method with the **CallingInfo** parameter to implement synchronous and asynchronous message processing.
-> - If both **onRemoteRequest()** and **onRemoteMessageRequest()** are overloaded, only **onRemoteMessageRequest()** takes effect.
+> You are advised to overload the **onRemoteMessageRequest** method with the **CallingInfo** parameter to implement synchronous and asynchronous message processing.
+> If both **onRemoteRequest()** and **onRemoteMessageRequest()** are overloaded, only **onRemoteMessageRequest()** takes effect.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -9996,12 +10017,12 @@ class TestRemoteObject extends rpc.RemoteObject {
 
 onRemoteMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption): boolean | Promise\<boolean>
 
+Called to return a response to **sendMessageRequest()**. The server processes the request synchronously or asynchronously and returns the result in this API.
+
 > **NOTE**
 >
 > - You are advised to overload **onRemoteMessageRequest** preferentially, which implements synchronous and asynchronous message processing.
 > - If both **onRemoteRequest()** and **onRemoteMessageRequest()** are overloaded, only **onRemoteMessageRequest()** takes effect.
-
-Called to return a response to **sendMessageRequest()**. The server processes the request synchronously or asynchronously and returns the result in this API.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -10539,6 +10560,8 @@ Provides methods related to anonymous shared memory objects, including creating,
 
 The shared memory applies only to cross-process communication within the local device.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 ### Properties
 
 **System capability**: SystemCapability.Communication.IPC.Core
@@ -10666,7 +10689,7 @@ For details about the error codes, see [RPC Error Codes](errorcode-rpc.md).
 
   | ID| Error Message|
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br> 1.The number of parameters is incorrect; <br> 2.The passed parameter is not an Ahmem object; <br> 3.The ashmem instance for obtaining packaging is empty. |
+  | 401      | Parameter error. Possible causes: <br> 1.The number of parameters is incorrect; <br> 2.The passed parameter is not an Ashmem object; <br> 3.The ashmem instance for obtaining packaging is empty. |
 
 **Example**
 
