@@ -90,7 +90,7 @@
 
 4. 触发闪黑动效。
 
-   点击或触控拍照按钮，更新[StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink)绑定CaptureClick的值，触发onCaptureClick方法，动效开始播放。
+   点击或触控拍照按钮，更新[@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink)绑定CaptureClick的值，触发onCaptureClick方法，动效开始播放。
 
    ```ts
    onCaptureClick(): void {
