@@ -9,7 +9,7 @@
 
 ## When to Use
 
-To meet the security requirements of sensitive data, the EL5 database is provided to improve the data security when the screen is locked. An application that contains sensitive information creates a database in the [EL5](../reference/apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode) directory after requesting the ohos.permission.PROTECT_SCREEN_LOCK_DATA permission. If the screen is locked (and the **Access** API is not called to obtain the key of the reserved file), the file key will be destroyed, and the database cannot be read or written. After the screen is unlocked, the key is restored and the read and write operations on the database are restored. This mechanism can effectively protect the user data. For details about how to manage the encryption directories, see [Obtaining and Modifying Encryption Levels](../application-models/application-context-stage.md#obtaining-and-modifying-encryption-levels).
+To meet the security requirements of sensitive data, the EL5 database is provided to improve the data security when the screen is locked. An application that contains sensitive information creates a database in the [EL5](../reference/apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode) directory after requesting the **ohos.permission.PROTECT_SCREEN_LOCK_DATA** permission. If the screen is locked (and the **Access** API is not called to obtain the key of the reserved file), the file key will be destroyed, and the database cannot be read or written. After the screen is unlocked, the key is restored and the read and write operations on the database are restored. This mechanism can effectively protect user data.
 
 An application can continue to write data even if the screen is locked, which may lead to data loss. A solution is provided to solve this problem. When the screen is locked, incremental data is stored in an [EL2](../reference/apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode) database. The data temporarily stored in the EL2 database will be moved to the EL5 database when the EL5 database is unlocked. This ensures data security and integrity when the screen is locked.
 
@@ -29,7 +29,7 @@ The following classes are encapsulated to implement the data operations and tran
 
 ## Requesting Permissions
 
-To access the database in the **el5/** directory, the application must have the ohos.permission.PROTECT_SCREEN_LOCK_DATA permission. Add this permission in the **module.json5** file.
+To access the database in the **el5/** directory, the application must have the **ohos.permission.PROTECT_SCREEN_LOCK_DATA** permission. Add this permission in the **module.json5** file.
 
 ```ts
 // module.json5
@@ -337,7 +337,7 @@ export class ECStoreManager {
 
 ### EntryAbility
 
-Register a listener for the COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED event when the simulated application starts, and configure the database information and key status information.
+Register a listener for the **COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED** event when the simulated application starts, and configure the database information and key status information.
 
 <!-- @[EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
@@ -813,7 +813,7 @@ export class ECStoreManager {
 
 ### EntryAbility
 
-Register a listener for the COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED event when the simulated application starts, and configure the database information and key status information.
+Register a listener for the **COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED** event when the simulated application starts, and configure the database information and key status information.
 
 <!-- @[rdb_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
