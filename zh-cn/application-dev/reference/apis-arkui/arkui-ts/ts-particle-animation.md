@@ -1539,19 +1539,18 @@ import { LengthMetrics } from '@kit.ArkUI'
 @Entry
 @Component
 struct ParticleExample6 {
+
   @State radius: number = 1;
-  @State shape: ParticleEmitterShape = ParticleEmitterShape.ANNULUS; // 圆环
+  @State shape: ParticleEmitterShape = ParticleEmitterShape.ANNULUS;
   @State emitRate: number = 200;
-  @State count: number = 4000;
+  @State count: number = 2000;
   private timerID: number = -1;
   private centerX: LengthMetrics = LengthMetrics.percent(0.5);
   private centerY: LengthMetrics = LengthMetrics.percent(0.5);
   private inRadius: LengthMetrics = LengthMetrics.vp(120);
   private outRadius: LengthMetrics = LengthMetrics.vp(120);
-  private startAngle: number = -90;   // 时钟12点钟方向
-  private endAngle: number = -60;   // 时钟1点钟方向
-
-  // 粒子动画，环形发射器的更新参数设置
+  private startAngle: number = 0;
+  private endAngle: number = 90;
   @State emitterProperties: Array<EmitterProperty> = [
     {
       index: 0,
@@ -1560,48 +1559,24 @@ struct ParticleExample6 {
         center:{x:this.centerX, y: this.centerY}, // 圆环的圆心坐标
         outerRadius: this.outRadius, // 圆环的外圆半径
         innerRadius: this.inRadius, // 圆环的内圆半径
-        startAngle: this.startAngle, // 圆环的起始角度
-        endAngle: this.endAngle // 圆环的结束角度
+        startAngle: -90, // 圆环的起始角度
+        endAngle: 0 // 圆环的结束角度
       }
     }
   ]
-
-  // 创建的时候，环形发射器的初始设置
   @State region: ParticleAnnulusRegion = {
     center:{x:this.centerX, y: this.centerY},
     outerRadius: this.outRadius,
     innerRadius: this.inRadius,
     startAngle: -90,
-    endAngle: -60
+    endAngle: 0
   }
 
-  onPageShow(): void {
-    // 创建定时器（每秒更新）
-    this.timerID = setInterval(() => {
-      this.emitterProperties = [
-        {
-          index: 0,
-          emitRate: this.emitRate,
-          annulusRegion: {
-            center:{x:this.centerX, y: this.centerY},
-            outerRadius: this.outRadius,
-            innerRadius: this.inRadius,
-            startAngle: this.startAngle,
-            endAngle: this.endAngle
-          }
-        }
-      ];
-      if (this.endAngle >= 360) {
-        if (this.timerID != -1) {
-          clearInterval(this.timerID);
-        }
-        return;
-      }
-      // 更新角度值（30度/秒）
-      this.startAngle += 30;
-      this.endAngle += 30;
-      console.log("testTag. angle: " + this.startAngle + ", " + this.endAngle);
-    }, 1000);
+  aboutToDisappear(): void {
+    // 页面销毁时清除计时器
+    if (this.timerID != -1) {
+      clearInterval(this.timerID);
+    }
   }
 
   build() {
@@ -1634,6 +1609,39 @@ struct ParticleExample6 {
         }).width('100%')
           .height('100%')
           .emitter(this.emitterProperties)
+          .onClick(()=>{
+            // 清除已有定时器
+            if (this.timerID != -1) {
+              clearInterval(this.timerID);
+            }
+
+            // 创建定时器（每秒更新）
+            this.timerID = setInterval(() => {
+              this.emitterProperties = [
+                {
+                  index: 0,
+                  emitRate: this.emitRate,
+                  annulusRegion: {
+                    center:{x:this.centerX, y: this.centerY},
+                    outerRadius: this.outRadius,
+                    innerRadius: this.inRadius,
+                    startAngle: this.startAngle,
+                    endAngle: this.endAngle
+                  }
+                }
+              ];
+              if (this.endAngle >= 270) {
+                if (this.timerID != -1) {
+                  clearInterval(this.timerID);
+                }
+                return;
+              }
+              // 更新角度值（30度/秒）
+              this.startAngle += 30;
+              this.endAngle += 30;
+            }, 1000);
+
+          })
       }
       .width('100%')
       .height('100%')
