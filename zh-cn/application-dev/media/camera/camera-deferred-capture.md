@@ -15,7 +15,7 @@
 
 应用开发分段式拍照主要分为以下步骤：
 
-- 通过PhotoOutput，监听photoAssetAvailable回调，获取[photoAccessHelper](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)的PhotoAsset对象。
+- 通过PhotoOutput，监听photoAssetAvailable回调，获取[photoAccessHelper](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)的[PhotoAsset](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md)对象。
 - 通过PhotoAsset对象，调用媒体库相关接口，读取或落盘图片。
 
 > **说明：**
