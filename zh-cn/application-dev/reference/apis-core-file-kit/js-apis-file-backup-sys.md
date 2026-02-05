@@ -658,7 +658,7 @@ getLocalCapabilities(dataList:Array&lt;IncrementalBackupTime&gt;): Promise&lt;Fi
     try {
       let backupApps: backup.IncrementalBackupTime[] = [{
         bundleName: "com.example.hiworld",
-        lastIncrementalTime: 1700107870 //调用者根据上次记录的增量备份时间
+        lastIncrementalTime: 1700107870 // 调用者根据上次记录的增量备份时间
       }];
       let fileData = await backup.getLocalCapabilities(backupApps);
       console.info('getLocalCapabilities success');
@@ -1138,12 +1138,12 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileIo as fs, backup } from '@kit.CoreFileKit';
 
-  interface scannedInfos { //用于解析扫描结果
+  interface scannedInfos { // 用于解析扫描结果
     scanned: [];
     scanning: string;
   }
 
-  interface ScannedInfo { //用于解析单个应用的扫描结果
+  interface ScannedInfo {  // 用于解析单个应用的扫描结果
     bundleName: string;
     dataSize: number;
     incDataSize: number;
@@ -1219,7 +1219,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
 
 **异步返回JSON串示例：**
 
-```json
+```json5
 {
  "scanned": [ // 本次扫描完成的应用，已返回结果的应用在下一次回调中不会再继续返回
      {
@@ -2195,6 +2195,7 @@ appendBundles(remoteCapabilitiesFd: number, bundlesToBackup: string[], callback:
 appendBundles(remoteCapabilitiesFd: number, bundlesToBackup: string[], infos?: string[]): Promise&lt;void&gt;
 
 添加需要恢复的应用。从API version 12开始，新增可选参数infos，可携带应用恢复所需信息，infos和bundlesToBackup根据索引一一对应。
+
 当前整个流程中，在获取SessionRestore类的实例后只能调用一次。使用Promise异步回调。
 
 > **说明：**
@@ -2957,7 +2958,7 @@ cancel(bundleName: string): number
     let fileData: backup.FileData = {
       fd: -1
     }
-    fileData = await backup.getLocalCapabilities(); //备份恢复框架提供的getLocalCapabilities接口获取能力集文件。
+    fileData = await backup.getLocalCapabilities(); // 备份恢复框架提供的getLocalCapabilities接口获取能力集文件。
     let backupBundles: Array<string> = ["com.example.helloWorld"];
     sessionRestore.appendBundles(fileData.fd, backupBundles);
   }
@@ -3059,7 +3060,7 @@ cleanBundleTempDir(bundleName: string): Promise&lt;boolean&gt;
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     }
   };
-  let sessionRestore = new backup.SessionRestore(generalCallbacks); //  创建恢复流程
+  let sessionRestore = new backup.SessionRestore(generalCallbacks); // 创建恢复流程
   ```
 
 ### getCompatibilityInfo<sup>20+</sup>
@@ -3144,7 +3145,7 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise&lt;string&gt;
   };
 
   async function getRestoreCompatibilityInfo() {
-    let sessionRestore = new backup.SessionRestore(generalCallbacks); //  创建恢复流程
+    let sessionRestore = new backup.SessionRestore(generalCallbacks); // 创建恢复流程
     let bundleName = "com.example.helloWorld";
     let extInfo = ""; // 空表示无需给应用传额外信息
     try {
@@ -3527,7 +3528,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
 
 **异步返回JSON串示例：**
 
-```json
+```json5
 {
  "scanned": [ // 本次扫描完成的应用，已返回结果的应用在下一次回调中不会再继续返回
      {
@@ -3957,7 +3958,7 @@ cancel(bundleName: string): number
   let backupBundles: Array<backup.IncrementalBackupData> = [];
   let bundleData: backup.IncrementalBackupData = {
     bundleName: "com.example.helloWorld",
-    lastIncrementalTime: 1700107870, //调用者传递上一次备份的时间戳
+    lastIncrementalTime: 1700107870, // 调用者传递上一次备份的时间戳
     manifestFd: 1 // 调用者传递上一次备份的manifest文件句柄
   }
   backupBundles.push(bundleData);
@@ -4061,7 +4062,7 @@ cleanBundleTempDir(bundleName: string): Promise&lt;boolean&gt;
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     }
   };
-  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); //  创建增量备份流程
+  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
   ```
 
 ### getCompatibilityInfo<sup>20+</sup>
@@ -4146,7 +4147,7 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise&lt;string&gt;
   };
 
   async function getIncBackupCompatibilityInfo() {
-    let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); //  创建增量备份流程
+    let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
     let bundleName = "com.example.helloWorld";
     let extInfo = ""; // 空表示无需给应用传额外信息
     try {
