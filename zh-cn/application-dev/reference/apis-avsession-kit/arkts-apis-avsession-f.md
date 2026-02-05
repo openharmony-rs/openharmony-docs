@@ -301,7 +301,7 @@ createController(sessionId: string): Promise\<AVSessionController>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | permission denied. |
+| 201 | Permission denied. |
 | 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
