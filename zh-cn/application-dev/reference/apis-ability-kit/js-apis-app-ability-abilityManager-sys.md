@@ -495,7 +495,7 @@ try {
 }
 ```
 
-## notifySaveAsResult<sup>10+</sup><sup>(deprecated)</sup>
+## notifySaveAsResult<sup>(deprecated)</sup>
 
 notifySaveAsResult(parameter: AbilityResult, requestCode: number, callback: AsyncCallback\<void>): void
 
@@ -562,7 +562,7 @@ try {
 }
 ```
 
-## notifySaveAsResult<sup>10+</sup><sup>(deprecated)</sup>
+## notifySaveAsResult<sup>(deprecated)</sup>
 
 notifySaveAsResult(parameter: AbilityResult, requestCode: number): Promise\<void>
 
