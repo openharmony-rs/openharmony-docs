@@ -12,6 +12,7 @@
 > **说明：**
 >
 > - 本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块仅支持PC/2in1设备。
 > - 仅支持集成了划词扩展的应用调用。
 
 ## 导入模块
@@ -139,6 +140,8 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模式下使用。
+
 **参数：**
 
 | 参数名   | 类型        | 必填 | 说明                     |
@@ -209,6 +212,8 @@ destroyPanel(panel: Panel): Promise\<void>
 销毁划词面板。使用Promise异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模式下使用。
 
 **参数：**
 
@@ -291,6 +296,8 @@ export default ServiceExtAbility;
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模式下使用。
+
 | 名称      | 类型 | 只读 | 可选 | 说明         |
 | --------- | -------- | ---- | ---- | ------------ |
 | selectionType |[SelectionType](#selectiontype)   | 否   | 否   | 触发划词类型。 |
@@ -308,6 +315,12 @@ export default ServiceExtAbility;
 
 ## Panel
 
+划词面板。
+
+**系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模式下使用。
+
 下列API均需使用[createPanel](#createpanel)获取到Panel实例后，通过实例调用。
 
 ### setUiContent
@@ -317,6 +330,8 @@ setUiContent(path: string): Promise\<void>
 为当前的划词面板加载具体页面内容。使用Promise异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模式下使用。
 
 **参数：**
 
@@ -362,6 +377,8 @@ show(): Promise\<void>
 显示划词面板。使用Promise异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模式下使用。
 
 **返回值：**
 
@@ -432,6 +449,8 @@ startMoving(): Promise\<void>
 使当前划词面板可以随鼠标拖动位置。使用Promise异步回调。该接口需要写在onTouch的回调函数中，并且事件类型为TouchType.Down。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模式下使用。
 
 **返回值：**
 
@@ -528,6 +547,8 @@ moveToGlobalDisplay(x: number, y: number): Promise\<void>
 移动划词面板至屏幕指定位置。使用Promise异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模式下使用。
 
 **参数：**
 
@@ -684,6 +705,8 @@ try {
 定义触发划词的类型枚举。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模式下使用。
 
 | 名称         | 值 | 说明               |
 | ------------ | -- | ------------------ |
