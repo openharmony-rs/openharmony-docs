@@ -140,7 +140,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    >
    > 1. 要使能视频解码同步模式，必须将OH_MD_KEY_ENABLE_SYNC_MODE配置为1。
    > 2. 同步模式在调用OH_VideoDecoder_Configure接口前不能调用OH_VideoDecoder_RegisterCallback接口，否则为异步模式。
-   >
+
 
 3. 设置surface。
 
