@@ -11005,8 +11005,6 @@ setUserAgentMetadata(userAgent: string, metaData: UserAgentMetadata): void
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **参数：**
 
 | 参数名              | 类型    | 必填   |  说明 |
@@ -11025,8 +11023,6 @@ getUserAgentMetadata(userAgent: string): UserAgentMetadata
 查询userAgent对应的UserAgent Metadata信息。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
