@@ -2306,7 +2306,7 @@ vp2px(value : number) : number
 
 转换公式为：px值 = vp值 × 像素密度
 
-像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
+像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
 
 > **说明：**
 >
@@ -2364,7 +2364,7 @@ px2vp(value : number) : number
 
 转换公式为：vp值 = px值 ÷ 像素密度
 
-像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
+像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
 
 > **说明：**
 >
@@ -2422,7 +2422,7 @@ fp2px(value : number) : number
 
 转换公式为：px值 = fp值 × 像素密度 × 字体缩放比例
 
-像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
+像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
 
 字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](arkui-ts/ts-types.md#configuration)。
 
@@ -2480,7 +2480,7 @@ px2fp(value : number) : number
 
 转换公式为：fp值 = px值 ÷ 像素密度 ÷ 字体缩放比例
 
-像素密度：当前窗口生效的像素密度值，通常就是屏幕物理像素密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
+像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
 
 字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](arkui-ts/ts-types.md#configuration)。
 
