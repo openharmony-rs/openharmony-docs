@@ -206,7 +206,7 @@ OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
 ```
 
 ## Enabling Mute Suggestion Notifications for Mixed Playback
-Starting from API version 23, when the current application plays audio in the **CONCURRENCYMIXWITH_OTHERS** concurrency mode, if audio from other applications is playing simultaneously, the audio from both will be mixed. In certain scenarios (such as games or broadcasts), applications can enable mute suggestion notifications to enhance user experience.
+Starting from API version 23, when the current application plays audio in the **CONCURRENCY_MIX_WITH_OTHERS** concurrency mode, if audio from other applications is playing simultaneously, the audio from both will be mixed. In certain scenarios (such as games or broadcasts), applications can enable mute suggestion notifications to enhance user experience.
 
 After enabling mute suggestion notifications, if other applications play audio that cannot be played concurrently with the current application while the current application is playing audio, the current application will receive a mute suggestion notification. The current application can either choose to take no action (allowing concurrent playback with other applications) or mute itself to let other applications play audio alone.
 
