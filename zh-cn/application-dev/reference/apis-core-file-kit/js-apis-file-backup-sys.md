@@ -1143,7 +1143,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
     scanning: string;
   }
 
-  interface ScannedInfo {  // 用于解析单个应用的扫描结果
+  interface ScannedInfo { // 用于解析单个应用的扫描结果
     bundleName: string;
     dataSize: number;
     incDataSize: number;
