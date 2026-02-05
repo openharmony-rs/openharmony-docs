@@ -1,4 +1,11 @@
 # Longque-JS-API使用指导
+<!--Kit: NDK Development-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Designer: @knightaoko-->
+<!--Tester: @test_lzz-->
+<!--Adviser: @fang-jinxu-->
+
 Longque JS API 由 Longque JS Engine 提供，适用于在 OpenHarmony 平台构建稳定、高性能的应用。所有 API 均位于 `__Longque__` 对象下。接口的版本可通过 `__Longque__.version` 获得，开发者可使用该版本进行特性判断。
 
 **【注意】：Longque JS API 处于实验阶段，使用前请阅读本文档，评估其稳定性和兼容性。**
@@ -23,7 +30,7 @@ Longque JS API 由 Longque JS Engine 提供，适用于在 OpenHarmony 平台构
 ### 接口描述
 | 接口  | 名称  | 说明 |
 | -- | -- | -- |
-| createDelegate | 创建委托 | 创建 `underlyingObject` 的委托对象，对委托对象的属性读写操作将映射至 `underlyingObject`。通过 `initObject` 指定初始委托对象，通过 `propertyFilterFlags` 指定属性过滤器。默认情况下，将映射 `underlyingObject` 及其原型链上所有可枚举的字符串键属性。
+| createDelegate | 创建委托 | 创建 `underlyingObject` 的委托对象，对委托对象的属性读写操作将映射至 `underlyingObject`。通过 `initObject` 指定初始委托对象，通过 `propertyFilterFlags` 指定属性过滤器。默认情况下，将映射 `underlyingObject` 及其原型链上所有可枚举的字符串键属性。 |
 
 ### 参数
 (1) `underlyingObject`： 必选参数。表示被委托的底层对象。参数要求：
@@ -126,7 +133,7 @@ static int32_t TestJSVM() {
         OH_JSVM_Init(&init_options);
         g_aa++;
     }
-    // 创建JavaScript虚拟机实例,打开虚拟机作用域
+    // 创建JavaScript虚拟机实例，打开虚拟机作用域
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
     memset(&options, 0, sizeof(options));
@@ -157,8 +164,8 @@ static int32_t TestJSVM() {
 }
 ```
 
-预期的输出:
-```
+预期的输出：
+``` ts
 JSVM API TEST: {"42":0,"x":1,"_y":2,"$z":3,"foo":"foo"}
 JSVM API TEST: {"42":0,"x":1,"foo":"foo"}
 JSVM API TEST: {"42":100,"x":1}
@@ -166,7 +173,7 @@ JSVM API TEST: {"42":100,"x":1}
 
 ### 性能测试示例
 
-本示例用于测试使用 Longque JS API 前后的性能。
+本示例用于测试使用Longque JS API前后的性能。
 
 cpp部分代码：
 ``` cpp
@@ -238,7 +245,9 @@ static const char *STR_TASK = R"JS(
       underlying[`key_${i}`] = i;
     }
     const n = 10000;
+    // 测试原js代码的运行时间
     doTest('base', base, underlying, n);
+    // 测试使用Longque JSVM API之后的运行时间
     doTest('opt', opt, underlying, n);
   }
 
@@ -274,7 +283,7 @@ static int32_t TestJSVM() {
         OH_JSVM_Init(&init_options);
         g_aa++;
     }
-    // 创建JavaScript虚拟机实例,打开虚拟机作用域
+    // 创建JavaScript虚拟机实例，打开虚拟机作用域
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
     memset(&options, 0, sizeof(options));
@@ -305,8 +314,8 @@ static int32_t TestJSVM() {
 }
 ```
 
-某次测试的输出:
-```
+某次测试的输出：
+``` ts
 JSVM API TEST: [base] Time cost: 414 ms
 JSVM API TEST: [opt] Time cost: 148 ms
 ```
