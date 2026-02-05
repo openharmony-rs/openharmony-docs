@@ -2686,7 +2686,7 @@ async function test(){
 
 off(type: 'trackInfoUpdate', callback?: Callback\<Array\<MediaDescription>>): void
 
-取消订阅获取轨道变更的事件。
+取消订阅获取轨道信息更新的事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
