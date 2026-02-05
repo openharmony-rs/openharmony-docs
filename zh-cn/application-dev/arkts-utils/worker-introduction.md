@@ -101,7 +101,7 @@ const workerInstance3: worker.ThreadWorker = new worker.ThreadWorker('@har/ets/w
 
 <!-- @[import_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/har/src/main/ets/components/mainpage/MainPage.ets) -->
 
-```ts
+``` TypeScript
 import { worker } from '@kit.ArkTS';
 // 相对路径加载形式：
 // worker线程文件所在路径: "har/src/main/ets/workers/worker.ets"
