@@ -1390,7 +1390,7 @@ In non-silent scenarios, the size of the **predicates** parameter and the total 
 
 In silent scenarios, the total size of the **uri**, **predicates**, and **columns** parameters passed in this API cannot exceed 200 KB. If the size exceeds the limit, the operation fails or an exception is thrown.
 
-When this API is used to query database data, if the query content exceeds the resource limit, the operation fails and an error is returned. You can retry the operation based on the scenario. For details about the resource limit, see [Silent Access via DatamgrService (ArkTS) (for System Applications Only)](../../database/share-data-by-silent-access-sys.md#constraints) and [Sharing Data Using DataShareExtensionAbility (ArkTS) (for System Applications Only)](../../database/share-data-by-datashareextensionability-sys.md#constraints).
+When this API is used to query database data, if the query content exceeds the resource limit, the operation fails and an error is returned. You can retry the operation based on the scenario. For details about the resource limit, see [Silent Access via DatamgrService](../../database/share-data-by-silent-access-sys.md#constraints) and [Sharing Data Using DataShareExtensionAbility](../../database/share-data-by-datashareextensionability-sys.md#constraints).
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -2181,3 +2181,5 @@ if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).notifyChange(changeData);
 }
 ```
+
+  <!--no_check-->

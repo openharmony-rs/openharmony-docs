@@ -13,9 +13,11 @@ This section describes how to resolve text display abnormalities caused by inval
 Invalid UIContext may occur in the following scenarios:
 
 - JavaScript exception: "Node Constructor error, param uiContext error".
+
   This error occurs when an invalid UIContext is used in [custom nodes](./arkts-user-defined-node.md), potentially causing subsequent UI operations to be incorrectly associated with the invalid context.
 
 - Instance status update logs with context instance ID values greater than or equal to 100000 and less than 1000000.
+
   The format of the instance status update log is as follows:
 
   `({currentId}:{trackedId}:{trackedReason})][{bundleName}][{moduleName}][{thisInstanceId}]: window {status}`

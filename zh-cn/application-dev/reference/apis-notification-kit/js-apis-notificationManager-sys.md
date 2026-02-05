@@ -2859,7 +2859,7 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//publishAsBundle回调
+// publishAsBundle回调
 let callback = (err: BusinessError): void => {
     if (err) {
         console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
@@ -4620,12 +4620,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let userId : number = 100;
 let trustlist: Array<notificationManager.BundleOption> = [
   {
-    //需根据实际情况进行替换
+    // 需根据实际情况进行替换
     bundle: 'bundleName',
     uid: 0
   },
   {
-    //需根据实际情况进行替换
+    // 需根据实际情况进行替换
     bundle: 'bundleName1',
     uid: 1
   }
@@ -6031,7 +6031,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
-notificationManager.setPriorityEnabledByBundle(bundleOption, 2 as notificationManager.PriorityEnableStatus).then(() => {
+notificationManager.setPriorityEnabledByBundle(bundleOption, notificationManager.PriorityEnableStatus.ENABLE).then(() => {
   hilog.info(0x0000, 'testTag', `setPriorityEnabledByBundle success`);
 }).catch((err: BusinessError) => {
   hilog.error(0x0000, 'testTag', `setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);

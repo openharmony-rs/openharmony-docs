@@ -19,7 +19,7 @@ The **statistics** module provides APIs to obtain the real-time uplink and downl
 import { statistics } from '@kit.NetworkKit';
 ```
 
-## statistics.getIfaceRxBytes<sup>10+</sup>
+## statistics.getIfaceRxBytes
 
 getIfaceRxBytes(nic: string, callback: AsyncCallback\<number>): void
 
@@ -59,7 +59,7 @@ statistics.getIfaceRxBytes("wlan0", (error: BusinessError, stats: number) => {
 });
 ```
 
-## statistics.getIfaceRxBytes<sup>10+</sup>
+## statistics.getIfaceRxBytes
 
 getIfaceRxBytes(nic: string): Promise\<number>
 
@@ -101,7 +101,7 @@ statistics.getIfaceRxBytes("wlan0").then((stats: number) => {
 });
 ```
 
-## statistics.getIfaceTxBytes<sup>10+</sup>
+## statistics.getIfaceTxBytes
 
 getIfaceTxBytes(nic: string, callback: AsyncCallback\<number>): void
 
@@ -141,7 +141,7 @@ statistics.getIfaceTxBytes("wlan0", (error: BusinessError, stats: number) => {
 });
 ```
 
-## statistics.getIfaceTxBytes<sup>10+</sup>
+## statistics.getIfaceTxBytes
 
 getIfaceTxBytes(nic: string): Promise\<number>
 
@@ -183,7 +183,7 @@ statistics.getIfaceTxBytes("wlan0").then((stats: number) => {
 });
 ```
 
-## statistics.getCellularRxBytes<sup>10+</sup>
+## statistics.getCellularRxBytes
 
 getCellularRxBytes(callback: AsyncCallback\<number>): void
 
@@ -221,7 +221,7 @@ statistics.getCellularRxBytes((error: BusinessError, stats: number) => {
 });
 ```
 
-## statistics.getCellularRxBytes<sup>10+</sup>
+## statistics.getCellularRxBytes
 
 getCellularRxBytes(): Promise\<number>
 
@@ -256,7 +256,7 @@ statistics.getCellularRxBytes().then((stats: number) => {
 });
 ```
 
-## statistics.getCellularTxBytes<sup>10+</sup>
+## statistics.getCellularTxBytes
 
 getCellularTxBytes(callback: AsyncCallback\<number>): void
 
@@ -294,7 +294,7 @@ statistics.getCellularTxBytes((error: BusinessError, stats: number) => {
 });
 ```
 
-## statistics.getCellularTxBytes<sup>10+</sup>
+## statistics.getCellularTxBytes
 
 getCellularTxBytes(): Promise\<number>
 
@@ -329,7 +329,7 @@ statistics.getCellularTxBytes().then((stats: number) => {
 });
 ```
 
-## statistics.getAllRxBytes<sup>10+</sup>
+## statistics.getAllRxBytes
 
 getAllRxBytes(callback: AsyncCallback\<number>): void
 
@@ -368,7 +368,7 @@ statistics.getAllRxBytes((error: BusinessError, stats: number) => {
 });
 ```
 
-## statistics.getAllRxBytes<sup>10+</sup>
+## statistics.getAllRxBytes
 
 getAllRxBytes(): Promise\<number>
 
@@ -404,7 +404,7 @@ statistics.getAllRxBytes().then((stats: number) => {
 });
 ```
 
-## statistics.getAllTxBytes<sup>10+</sup>
+## statistics.getAllTxBytes
 
 getAllTxBytes(callback: AsyncCallback\<number>): void
 
@@ -443,7 +443,7 @@ statistics.getAllTxBytes((error: BusinessError, stats: number) => {
 });
 ```
 
-## statistics.getAllTxBytes<sup>10+</sup>
+## statistics.getAllTxBytes
 
 getAllTxBytes(): Promise\<number>
 
@@ -479,7 +479,7 @@ statistics.getAllTxBytes().then((stats: number) => {
 });
 ```
 
-## statistics.getUidRxBytes<sup>10+</sup>
+## statistics.getUidRxBytes
 
 getUidRxBytes(uid: number, callback: AsyncCallback\<number>): void
 
@@ -518,7 +518,7 @@ statistics.getUidRxBytes(20010038, (error: BusinessError, stats: number) => {
 });
 ```
 
-## statistics.getUidRxBytes<sup>10+</sup>
+## statistics.getUidRxBytes
 
 getUidRxBytes(uid: number): Promise\<number>
 
@@ -559,7 +559,7 @@ statistics.getUidRxBytes(20010038).then((stats: number) => {
 });
 ```
 
-## statistics.getUidTxBytes<sup>10+</sup>
+## statistics.getUidTxBytes
 
 getUidTxBytes(uid: number, callback: AsyncCallback\<number>): void
 
@@ -598,7 +598,7 @@ statistics.getUidTxBytes(20010038, (error: BusinessError, stats: number) => {
 });
 ```
 
-## statistics.getUidTxBytes<sup>10+</sup>
+## statistics.getUidTxBytes
 
 getUidTxBytes(uid: number): Promise\<number>
 
@@ -644,7 +644,7 @@ statistics.getUidTxBytes(20010038).then((stats: number) => {
 
 getSockfdRxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 
-Obtains the downlink data traffic (in bytes) of the specified socket. This API uses an asynchronous callback to return the result.
+Obtains the downlink data traffic of the specified socket. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -683,7 +683,7 @@ statistics.getSockfdRxBytes(sockfd, (error: BusinessError, stats: number) => {
 
 getSockfdRxBytes(sockfd: number): Promise\<number\>
 
-Obtains the downlink data traffic (in bytes) of the specified socket. This API uses a promise to return the result.
+Obtains the downlink data traffic of the specified socket. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -728,7 +728,7 @@ statistics.getSockfdRxBytes(sockfd).then((stats: number) => {
 
 getSockfdTxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 
-Obtains the uplink data traffic (in bytes) of the specified socket. This API uses an asynchronous callback to return the result.
+Obtains the uplink data traffic of the specified socket. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -767,7 +767,7 @@ statistics.getSockfdTxBytes(sockfd, (error: BusinessError, stats: number) => {
 
 getSockfdTxBytes(sockfd: number): Promise\<number\>
 
-Obtains the uplink data traffic (in bytes) of the specified socket. This API uses a promise to return the result.
+Obtains the uplink data traffic of the specified socket. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 

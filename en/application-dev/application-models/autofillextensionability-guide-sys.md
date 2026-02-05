@@ -50,7 +50,7 @@ Before implementing auto-fill for accounts and passwords, manually create an Aut
 
    In the [app.json5 file](../quick-start/app-configuration-file.md) in the **AppScope** directory, set **bundleName** to **com.ohos.passwordbox**. An example configuration is as follows:
 
-   ```json
+   ```json5
    "app": {
      "bundleName": "com.ohos.passwordbox",
       // ...
@@ -61,7 +61,7 @@ Before implementing auto-fill for accounts and passwords, manually create an Aut
 
    Configure an AutoFillExtensionAbility in the [module.json5 file](../quick-start/module-configuration-file.md) in the **entry/src/main/** directory. An example configuration is as follows:
 
-   ```json
+   ```json5
    "extensionAbilities": [
       {
         "name": "AutoFillAbility",
@@ -312,7 +312,7 @@ Before implementing scenario-specific auto-fill, you need to create a SmartAutoF
 
    In the [app.json5 file](../quick-start/app-configuration-file.md) in the **AppScope** directory, set **bundleName** to **com.ohos.textautofill**. An example configuration is as follows:
 
-   ```json
+   ```json5
    "app": {
      "bundleName": "com.ohos.textautofill",
       // ...
@@ -323,7 +323,7 @@ Before implementing scenario-specific auto-fill, you need to create a SmartAutoF
 
    Configure an AutoFillExtensionAbility in the [module.json5 file](../quick-start/module-configuration-file.md) in the **entry/src/main/** directory. An example configuration is as follows:
 
-   ```json
+   ```json5
    "extensionAbilities": [
       {
          "name": "AutoFillAbility",
@@ -362,7 +362,7 @@ struct Index {
       List() {
         ListItemGroup({ style: ListItemGroupStyle.CARD }) {
           ListItem({ style: ListItemStyle.CARD }) {
-            TextInput({placeholder: 'Enter an account.'})
+            TextInput({placeholder: 'Enter an account'})
               .type(InputType.USER_NAME)
               .fontFamily('HarmonyHeiTi')
               .fontColor('#182431')
@@ -383,7 +383,7 @@ struct Index {
 
           // Add a text box of the password type.
           ListItem({ style: ListItemStyle.CARD }) {
-            TextInput({placeholder: 'Enter the password.'})
+            TextInput({placeholder: 'Enter the password'})
               .type(InputType.Password)
               .fontFamily('HarmonyHeiTi')
               .fontColor('#182431')
@@ -436,7 +436,7 @@ struct Index {
         Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
           Column() {
             Row() {
-              Text('Set the type.')
+              Text('Set the type')
                 .fontColor('#99000000')
                 .fontSize(14)
                 .fontWeight(400)

@@ -76,7 +76,7 @@
 
       async selectCastDevice() {
         const avCastPickerOptions: avSession.AVCastPickerOptions = {
-          sessionType: 'vedio',
+          sessionType: 'video',
         };
 
         this.avCastPicker.select(avCastPickerOptions).then(() => {

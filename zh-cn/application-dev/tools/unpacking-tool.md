@@ -25,7 +25,7 @@
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> [--force true]
 ```
 
@@ -45,7 +45,7 @@ java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> 
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode app --app-path <path> --out-path <path> [--force true]
 ```
 
@@ -64,7 +64,7 @@ java -jar app_unpacking_tool.jar --mode app --app-path <path> --out-path <path> 
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode hap --rpcid true --hap-path <path> --out-path <path> [--force true]
 ```
 
@@ -84,7 +84,7 @@ java -jar app_unpacking_tool.jar --mode hap --rpcid true --hap-path <path> --out
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> [--force true] [--libs true] [--cpu-abis option]
 ```
 
@@ -105,7 +105,7 @@ java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> 
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> [--force true]
 ```
 
@@ -124,7 +124,7 @@ java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> 
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> [--force true] [--libs true] [--cpu-abis option]
 ```
 
@@ -145,7 +145,7 @@ java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> 
 
 **示例**
 
-```
+```bash
 java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <path> [--force true]
 ```
 
@@ -235,6 +235,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | compileSdkType                 | String  | 标识编译该应用时使用的sdk类别。   | 仅限API10及以后的应用。   |
 | labels                         | HashMap\<String, String> | 标识多语言应用程序AppJson的标签。 | NA          |
 | descriptions                   | HashMap\<String, String> | 标识多语言应用程序AppJson的说明。 | NA          |
+| buildVersion                    | String  | 标识App中的[buildVersion](../quick-start/app-configuration-file.md#配置文件标签)信息。  | 从API version 23开始支持。          |
 
 ### HapInfo结构体信息
 
