@@ -405,15 +405,15 @@ Allows an application to call the API for restoring factory settings.
 
 Allows a system application to forcibly restore a device to its factory settings, which cannot be interrupted.
 
-**Permission level**：system_core
+**Permission level**: system_core
 
-**Authorization mode**：system_grant
+**Authorization mode**: system_grant
 
-**Supported devices**：general devices
+**Supported devices**: general devices
 
-**Enable via ACL**：true
+**Enable via ACL**: true
 
-**Valid since**：23
+**Valid since** : 23
 
 ## ohos.permission.ASSIST_DEVICE_UPDATE
 
@@ -5299,7 +5299,7 @@ Allows an application to query and configure user identity authentication polici
 
 Allows an application to dynamically register or remove custom UTD data types.
 
-**Permission level**：system_basic
+**Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
