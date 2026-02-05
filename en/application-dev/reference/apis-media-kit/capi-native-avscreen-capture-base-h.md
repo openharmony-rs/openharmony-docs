@@ -377,9 +377,7 @@ typedef void (*OH_AVScreenCaptureOnError)(OH_AVScreenCapture *capture, int32_t e
 
 **Description**
 
-Called when an error occurs during the running of an OH_AVScreenCapture instance.
-
-Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnError](#oh_avscreencapture_onerror) instead.
+Called when an error occurs during the running of an OH_AVScreenCapture instance.<br> Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnError](#oh_avscreencapture_onerror) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -400,9 +398,7 @@ typedef void (*OH_AVScreenCaptureOnAudioBufferAvailable)(OH_AVScreenCapture *cap
 
 **Description**
 
-Called when an audio buffer is available during the running of an OH_AVScreenCapture instance.
-
-Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnBufferAvailable](#oh_avscreencapture_onbufferavailable) instead.
+Called when an audio buffer is available during the running of an OH_AVScreenCapture instance.<br> Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnBufferAvailable](#oh_avscreencapture_onbufferavailable) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -413,7 +409,7 @@ Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnBuffe
 | Parameter| Description|
 | -- | -- |
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | Pointer to the OH_AVScreenCapture instance.|
-|  bool isReady | Whether the audio buffer is available.|
+|  bool isReady | Whether the audio buffer is available. The values include **true** (yes) and **false** (no).|
 | [OH_AudioCaptureSourceType](#oh_audiocapturesourcetype) type | Audio source type.|
 
 ### OH_AVScreenCaptureOnVideoBufferAvailable()
@@ -424,9 +420,7 @@ typedef void (*OH_AVScreenCaptureOnVideoBufferAvailable)(OH_AVScreenCapture *cap
 
 **Description**
 
-Called when a video buffer is available during the running of an OH_AVScreenCapture instance.
-
-Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnBufferAvailable](#oh_avscreencapture_onbufferavailable) instead.
+Called when a video buffer is available during the running of an OH_AVScreenCapture instance.<br> Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnBufferAvailable](#oh_avscreencapture_onbufferavailable) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -437,7 +431,7 @@ Starting from API version 12, you are advised to use [OH_AVScreenCapture_OnBuffe
 | Parameter| Description|
 | -- | -- |
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | Pointer to the OH_AVScreenCapture instance.|
-|  bool isReady | Whether the video buffer is available.|
+|  bool isReady | Whether the video buffer is available. The values include **true** (yes) and **false** (no).|
 
 ### OH_AVScreenCapture_OnStateChange()
 

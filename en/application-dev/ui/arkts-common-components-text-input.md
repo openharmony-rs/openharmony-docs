@@ -249,15 +249,15 @@ TextArea()
 
 ## Adding Events
 
-Input boxes capture user input and upload data. You can bind the following events: **onChange** for retrieving updated text content when the input value changes, **onSubmit** for retrieving text submitted by the user when the **Enter** key is pressed, **onTextSelectionChange** for retrieving handle positions during text selection or cursor position during text editing. You can also bind universal events for basic interactive operations.
+Input boxes capture user input and upload data. You can bind the following events: [onChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onchange) for retrieving updated text content when the input value changes, [onSubmit](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onsubmit) for retrieving text submitted by the user when the **Enter** key is pressed, [onTextSelectionChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ontextselectionchange10) for retrieving handle positions during text selection or caret position during text editing. You can also bind universal events for basic interactive operations.
 
 >  **NOTE**
 >
->  In password mode, when the **showPassword** attribute is configured, add status synchronization logic in the **onSecurityStateChange** callback. For details, see the following example.
+>  In password mode, when the [showPassword](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#showpassword12) attribute is set, add status synchronization logic in the [onSecurityStateChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onsecuritystatechange12) callback. For details, see the following example.
 >
-> The **onWillInsert**, **onDidInsert**, **onWillDelete**, and **onDidDelete** callbacks are only supported with the system input method.
+> The [onWillInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillinsert12), [onDidInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondidinsert12), [onWillDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwilldelete12), and [onDidDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondiddelete12) callbacks are supported with the system input method.
 >
-> [onWillChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillchange15) is triggered after **onWillInsert** and **onWillDelete**, and before **onDidInsert** and **onDidDelete**.
+> [onWillChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillchange15) is triggered after [onWillInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillinsert12) and [onWillDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwilldelete12), and before [onDidInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondidinsert12) and [onDidDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondiddelete12).
 
 <!-- @[TextInputAddEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/TextInputAddEvent.ets) -->
 
@@ -291,6 +291,7 @@ struct TextInputEventAdd {
           \n${this.textStr4}\n${this.textStr5}\n${this.textStr6}
           \n${this.textStr7}\n${this.textStr8}\n${this.textStr9}`)
           .fontSize(20)
+          .width('70%')
         TextInput({ text: this.text, placeholder: 'input your word...', controller: this.controller })
           .type(InputType.Password)
           .showPassword(this.passwordState)
@@ -425,6 +426,7 @@ struct DisableSystemServiceMenuItem {
 }
 ```
 
+![TextInput_disable_system_service_menu_items](figures/TextInput_disable_system_service_menu_items.gif)
 
 Since API version 20, use [disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) to disable specified system service menu items in the text selection menu.
 
@@ -437,8 +439,8 @@ import { TextMenuController } from '@kit.ArkUI';
 @Component
 struct DisableMenuItem {
   aboutToAppear(): void {
-    // Disable search and translate menu items.
-    TextMenuController.disableMenuItems([TextMenuItemId.SEARCH, TextMenuItemId.TRANSLATE])
+    // Disable search, translation, and AI writer.
+    TextMenuController.disableMenuItems([TextMenuItemId.SEARCH, TextMenuItemId.TRANSLATE, TextMenuItemId.AI_WRITER])
   }
 
   aboutToDisappear(): void {
@@ -472,6 +474,7 @@ struct DisableMenuItem {
 }
 ```
 
+![Text_input_disable_menu_items](figures/Text_input_disable_menu_items.png)
 
 ## Autofill
 
@@ -495,7 +498,7 @@ TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
 
   You can control where the ellipsis appears when text overflows using the [ellipsisMode](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ellipsismode18) attribute.
 
-  For the settings to work, **overflow** must be set to **TextOverflow.Ellipsis**. Setting **ellipsisMode** alone does not take effect.
+  For the settings to work, the **ellipsisMode** attribute must be set to **TextOverflow.Ellipsis** together with the [textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textoverflow12) attribute. Setting **ellipsisMode** alone does not take effect.
 
   <!-- @[set_omission_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetProperty.ets) -->
   
@@ -655,7 +658,6 @@ struct CursorAvoid {
 
 ![textinputkeyboardavoid](figures/caretavoid.gif)
 
-
 ## FAQs
 
 ### How Do I Set a Minimum Number of Lines for TextArea and Make It Expand Automatically?
@@ -724,3 +726,5 @@ struct TextExample {
   }
 }
 ```
+
+![textinputkeyboardavoid](figures/textareaHeight.gif)

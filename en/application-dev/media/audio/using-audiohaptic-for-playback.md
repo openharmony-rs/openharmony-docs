@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-AudioHaptic provides APIs for audio-haptic playback and management. It applies to scenarios where haptic feedback needs to be initiated synchronously during audio playback, for example, when there are incoming calls or messages or users are typing.
+**AudioHaptic** provides APIs for audio-haptic playback and management. It applies to scenarios where haptic feedback needs to be initiated synchronously during audio playback, for example, when there are incoming calls or messages or users are typing.
 
 ## Development Guidelines
 
@@ -21,22 +21,27 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
 
 ### How to Develop
 
-1. Obtain an AudioHapticManager instance, and register the audio and haptic sources. For details about the sources supported, see [AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager).
+1. Obtain an **AudioHapticManager** instance, and register the audio and haptic sources. For details about the sources supported, see [AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager).
 
    > **NOTE**
    >
-   > You can register resources using one of the following methods:
-   > - Method 1: Use the [registerSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersource) API to register resources through file URIs.
-   > - Method 2 (recommended): Use [registerSourceFromFd](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersourcefromfd20) to register resources through file descriptors. This API is available from API version 20,
+   > - You can register resources using one of the following methods:
+   >
+   >   Method 1: Use the [registerSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersource) API to register resources through file URIs.
+   >
+   >   Method 2 (recommended): Use [registerSourceFromFd](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersourcefromfd20) to register resources through file descriptors. This API is available from API version 20,
+   >
+   > - A maximum of 128 resources can be registered at the same time for an application. Any attempt to register beyond this limit will fail (returning a negative resource ID). You are advised to reasonably manage the number of registered resources. For resources that are no longer used, you are advised to unregister them in a timely manner.
 
-   <!-- @[get_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
-
-   ``` TypeScript
+   ```ts
    import { audio, audioHaptic } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
 
    let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.getAudioHapticManager();
+
+   // A maximum of 128 resources can be registered at the same time for an application. Any attempt to register beyond this limit will fail (returning a negative resource ID).
+   // You are advised to reasonably manage the number of registered resources. For resources that are no longer used, unregister them in a timely manner.
 
    // Method 1: Use registerSource to register sources.
    let audioUri = 'data/audioTest.wav'; // This is only an example. In actual use, replace the file with the URI of your target audio resource.
@@ -79,9 +84,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
 
 2. Set the parameters of an audio-haptic player. For details, see [AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager).
 
-   <!-- @[set_hapticparam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
-
-   ``` TypeScript
+   ```ts
    let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_FAST;
    audioHapticManagerInstance.setAudioLatencyMode(idForFd, latencyMode);
 
@@ -91,9 +94,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
 
 3. Create an AudioHapticPlayer instance.
 
-   <!-- @[create_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
-
-   ``` TypeScript
+   ```ts
    let options: audioHaptic.AudioHapticPlayerOptions = {muteAudio: false, muteHaptics: false};
    let audioHapticPlayer: audioHaptic.AudioHapticPlayer | undefined = undefined;
 
@@ -107,9 +108,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
 
 4. Call **start()** to start the audio-haptic player.
 
-   <!-- @[haptic_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
-
-   ``` TypeScript
+   ```ts
    audioHapticPlayer.start().then(() => {
      console.info(`Promise returned to indicate that start playing successfully.`);
    }).catch((err: BusinessError) => {
@@ -119,9 +118,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
 
 5. Call **stop()** to stop the audio-haptic player.
 
-   <!-- @[haptic_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
-
-   ``` TypeScript
+   ```ts
    audioHapticPlayer.stop().then(() => {
      console.info(`Promise returned to indicate that stop playing successfully.`);
    }).catch((err: BusinessError) => {
@@ -131,9 +128,7 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
 
 6. Release the AudioHapticPlayer instance.
 
-   <!-- @[haptic_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
-
-   ``` TypeScript
+   ```ts
    audioHapticPlayer.release().then(() => {
      console.info(`Promise returned to indicate that release the audio haptic player successfully.`);
    }).catch((err: BusinessError) => {
@@ -143,9 +138,8 @@ If the audio-haptic player needs to trigger vibration, check whether the applica
 
 7. Unregister the audio and haptic sources.
 
-   <!-- @[haptic_unregist](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
-
-   ``` TypeScript
+   ```ts
+   // For resources that are no longer used, you are advised to unregister them in a timely manner to avoid issues such as resource leaks, exceeding the maximum allowed number of registered resources, or other such issues.
    audioHapticManagerInstance.unregisterSource(idForFd).then(() => {
      console.info(`Promise returned to indicate that unregister source successfully`);
    }).catch((err: BusinessError) => {

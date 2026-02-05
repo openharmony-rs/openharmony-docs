@@ -64,7 +64,8 @@ The **DatamgrService** can serve as a proxy to access the following data:
 ## Constraints
 
 - Currently, only the RDB stores support silent access.
-- The system supports a maximum of 32 concurrent query operations. Excess query requests need to be queued for processing.
+- The system supports a maximum of 32 concurrent query operations. Excess query requests need to be processed with retry logic.
+- After the query is complete, the shared data result set returned should be released promptly after use. For details, see [DataShareResultSet](../reference/apis-arkdata/js-apis-data-DataShareResultSet-sys.md#close).
 - The proxy is not allowed to create a database for persistent data. To create a database, you must start the data provider.
 - If the data provider is an application with a normal signature, the data read/write permission must be system_basic or higher.
 - Calling the silent access API (**insert**, **delete**, **update**, or **query**) must comply with the traffic control mechanism: Every 30 seconds is a traffic control period. If the number of API calls in the traffic control period is greater than or equal to 3000, the API call fails in the remaining time of the traffic control period. The API can be called again in the next traffic control period. Avoid calling the API frequently in a short period of time.
@@ -129,11 +130,12 @@ The following walks you through on how to share an RDB store.
    **module.json5 example**
 
    ```json
-   // The following uses settingsdata as an example.
+   // The following configuration is for demonstration purposes only. Each field must be configured according to the application's specific service requirements and database structure.
    "proxyData": [
      {
-       "uri": "datashareproxy://com.ohos.settingsdata/entry/settingsdata/USER_SETTINGSDATA_SECURE",
-       // Configure permissions based on actual situation. The permissions configured here are examples only.
+       // Modify the URI based on the actual application package name and database conditions. The URI here is for demonstration only.
+       "uri": "datashareproxy://com.ohos.datashareprovider/datapath",
+       // Configure the permissions based on the data access requirements and permission requirements of the application, including application custom permissions, system permissions, or user-authorized permissions. The current permissions are for demonstration purposes only.
        "requiredReadPermission": "ohos.permission.MANAGE_SECURE_SETTINGS",
        "requiredWritePermission": "ohos.permission.MANAGE_SECURE_SETTINGS",
        "metadata": {
@@ -181,7 +183,7 @@ The following walks you through on how to share an RDB store.
 2. Define the URI string for communicating with the data provider.
 
    ```ts
-   let dseUri = ('datashareproxy://com.ohos.settingsdata/entry/settingsdata/USER_SETTINGSDATA_SECURE');
+   let dseUri = 'datashareproxy://com.ohos.datashareprovider/datapath';
    ```
 
 3. Use **createDataShareHelper()** to pass the URI to create a **DataShareHelper** object.
@@ -277,7 +279,7 @@ The following walks you through on how to share an RDB store.
    }
    let templateId: dataShare.TemplateId = {
      subscriberId: "111",
-     bundleNameOfOwner: "com.ohos.settingsdata"
+     bundleNameOfOwner: "com.ohos.datashareprovider"
    }
    // When DatamgrService modifies data, onCallback is invoked to return the data queried based on the rules in the template.
    let result: Array<dataShare.OperationResult> = (dsHelper as dataShare.DataShareHelper).on("rdbDataChange", [dseUri], templateId, onCallback);
@@ -332,10 +334,10 @@ In the **module.json5** file, set the data to be hosted in **proxyData**. For de
 2. Define the URI string for communicating with the data provider.
 
    ```ts
-   let dseUri = ('datashareproxy://com.acts.ohos.data.datasharetest/weather');
+   let dseUri = 'datashareproxy://com.acts.ohos.data.datasharetest/weather';
    ```
 
-3. Create a **DataAbilityHelper** instance.
+3. Create a **DataShareHelper** instance.
 
    ```ts
    let dsHelper: dataShare.DataShareHelper | undefined = undefined;
@@ -409,10 +411,10 @@ The data provider calls the **enableSilentProxy** API to dynamically enable sile
 2. Define the URI string for communicating with the data provider.
 
    ```ts
-   let dseUri = ('datashare:///com.ohos.settingsdata/entry/DB00/TBL00');
+   let dseUri = 'datashare:///com.acts.ohos.data.datasharetest/entry/DB00/TBL00';
    ```
 
-3. Create a **DataAbilityHelper** instance.
+3. Create a **DataShareHelper** instance.
 
    ```ts
    let abilityContext: Context;

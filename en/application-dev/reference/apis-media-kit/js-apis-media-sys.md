@@ -501,12 +501,12 @@ This API can be called only after the [prepare()](arkts-apis-media-AVRecorder.md
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                |
 | -------- | --------------------------------------   |
-|   401    | The parameter check failed. Return by promise.            |
-|   801    | Capability not supported. Return by promise. |
+|   401    | The parameter check failed.            |
+|   801    | Capability not supported.              |
 
 **Example**
 

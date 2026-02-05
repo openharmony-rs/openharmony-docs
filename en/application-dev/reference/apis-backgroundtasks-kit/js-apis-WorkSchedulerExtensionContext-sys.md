@@ -7,9 +7,9 @@
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **WorkSchedulerExtensionContext** module, inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md), provides a context environment for the WorkSchedulerExtensionAbility.
+The **WorkSchedulerExtensionContext** module, inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md), provides a context environment for the **WorkSchedulerExtensionAbility**.
 
-This module provides APIs for accessing the resources of a WorkSchedulerExtensionAbility.
+This module provides APIs for accessing the resources of a **WorkSchedulerExtensionAbility**.
 
 > **NOTE**
 > 
@@ -21,7 +21,7 @@ This module provides APIs for accessing the resources of a WorkSchedulerExtensio
 
 ## How to Use
 
-The context is obtained through a WorkSchedulerExtensionAbility child class instance.
+Obtain the context through a **WorkSchedulerExtensionAbility** child class instance.
 
 ```ts
 import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
@@ -37,17 +37,17 @@ class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
 
 startServiceExtensionAbility(want: Want): Promise\<void>
 
-Starts a ServiceExtensionAbility. This API uses a promise to return the result.
+Starts a **ServiceExtensionAbility**. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
 **Parameters**
 
-| Parameter| Type| Mandatory| Description|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| Information about the **Want** used for starting an ability.|
 
-**Returns**
+**Return value**
 
 | Type| Description|
 | -------- | -------- |
@@ -108,17 +108,17 @@ export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtens
 
 stopServiceExtensionAbility(want: Want): Promise\<void>
 
-Stops a ServiceExtensionAbility. This API uses a promise to return the result.
+Stops a **ServiceExtensionAbility**. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
 **Parameters**
 
-| Parameter| Type| Mandatory| Description|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| Information about the **Want** used for stopping an ability.|
 
-**Returns**
+**Return value**
 
 | Type| Description|
 | -------- | -------- |

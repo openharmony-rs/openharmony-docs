@@ -263,7 +263,7 @@ enum OH_AudioStream_SourceType
 | AUDIOSTREAM_SOURCE_TYPE_INVALID = -1 | 不合法状态。 |
 | AUDIOSTREAM_SOURCE_TYPE_MIC = 0 | 录音。 |
 | AUDIOSTREAM_SOURCE_TYPE_VOICE_RECOGNITION = 1 | 语音识别。 |
-| AUDIOSTREAM_SOURCE_TYPE_PLAYBACK_CAPTURE = 2 | 播放录音。 |
+| AUDIOSTREAM_SOURCE_TYPE_PLAYBACK_CAPTURE = 2 | 播放录音。**废弃版本：** 12<br>**替代接口：** [OH_AVScreenCapture](../apis-media-kit/capi-avscreencapture-oh-avscreencapture.md) |
 | AUDIOSTREAM_SOURCE_TYPE_VOICE_COMMUNICATION = 7 | 通话。 |
 | AUDIOSTREAM_SOURCE_TYPE_VOICE_MESSAGE = 10 | 语音消息。<br>**起始版本：** 12 |
 | AUDIOSTREAM_SOURCE_TYPE_CAMCORDER = 13 | 录像。<br>**起始版本：** 13 |

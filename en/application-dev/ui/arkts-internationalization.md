@@ -63,7 +63,7 @@ Size settings: [padding](../reference/apis-arkui/arkui-ts/ts-universal-attribute
 For example, with **position**, change the absolute directional descriptions of **x** and **y** to the new parameter types of **start** and **end**.
 
   <!-- @[Interface_Layout_Border_Settings](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/internationalization/entry/src/main/ets/homePage/InterfaceLayoutBorderSettings.ets) -->
-  
+
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
   
@@ -88,7 +88,6 @@ For example, with **position**, change the absolute directional descriptions of 
     }
   }
   ```
-  
 
 ### Custom Drawing with the Canvas Component
 
@@ -101,7 +100,7 @@ The drawings and coordinates of the **Canvas** component do not support mirrorin
 3. Only symbols follow the direction setting during text drawing with **CanvasRenderingContext2D**; Latin characters and numbers do not.
 
   <!-- @[Customize_Canvas_Component_Drawing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/internationalization/entry/src/main/ets/homePage/CustomizeCanvasComponentDrawing.ets) -->
-  
+
   ``` TypeScript
   import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
   
@@ -164,8 +163,7 @@ The drawings and coordinates of the **Canvas** component do not support mirrorin
   
   }
   ```
-  
-  
+
 | Before Mirroring         | After Mirroring                                 |
 | ----------- | ----------------------------------- |
 |![](figures/mirroring_2-0.jpg)|![](figures/mirroring_2-1.jpg)|

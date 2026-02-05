@@ -156,7 +156,7 @@ Currently, there are two ways to set the target node:
 
 ### Customizing the Menu Style
 
-When calling **openMenu**, you can customize the menu style using [MenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#menuoptions10). Note that the **title** attribute is not effective, and the **preview** parameter supports only the [MenuPreviewMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#menupreviewmode11) type.
+When calling **openMenu**, you can customize the menu style using [MenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#menuoptions10). Note that the **title** property is not effective, and the **preview** parameter supports only the [MenuPreviewMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#menupreviewmode11) type.
 
   <!-- @[menu_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
 
@@ -166,7 +166,7 @@ When calling **openMenu**, you can customize the menu style using [MenuOptions](
 
 ## Updating the Menu Style
 
-To update the menu style, use the [updateMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatemenu18) API, supported since API version 18. You can update the style fully or incrementally. However, the following attributes cannot be updated: **showInSubWindow** in [MenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#menuoptions10), **preview**, **previewAnimationOptions**, **transition**, **onAppear**, **aboutToAppear**, **onDisappear**, **aboutToDisappear**, **onWillAppear**, **onDidAppear**, **onWillDisappear**, and **onDidDisappear**.
+To update the menu style, use the [updateMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatemenu18) API, supported since API version 18. You can update the style fully or incrementally. However, the following properties cannot be updated: **showInSubWindow** in [MenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#menuoptions10), **preview**, **previewAnimationOptions**, **transition**, **onAppear**, **aboutToAppear**, **onDisappear**, **aboutToDisappear**, **onWillAppear**, **onDidAppear**, **onWillDisappear**, and **onDidDisappear**.
 
 <!-- @[update_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
 

@@ -34,7 +34,7 @@ For details about the APIs, see [RDB](../reference/apis-arkdata/capi-rdb.md).
 
 | API| Description|
 | -------- | -------- |
-| OH_Rdb_ConfigV2 *OH_Rdb_CreateConfig() | Creates an **OH_Rdb_ConfigV2** instance.|
+| OH_Rdb_ConfigV2 *OH_Rdb_CreateConfig() | Creates an **OH_Rdb_ConfigV2** instance. When the instance is no longer required, call **OH_Rdb_DestroyConfig** to destroy it.|
 | int OH_Rdb_SetDatabaseDir(OH_Rdb_ConfigV2 *config, const char *databaseDir) | Sets the database file path for an **OH_Rdb_ConfigV2** instance.|
 | int OH_Rdb_SetStoreName(OH_Rdb_ConfigV2 *config, const char *storeName) | Sets the RDB store name for an **OH_Rdb_ConfigV2** instance.|
 | int OH_Rdb_SetBundleName(OH_Rdb_ConfigV2 *config, const char *bundleName) | Sets the application bundle name for an **OH_Rdb_ConfigV2** instance.|
@@ -57,9 +57,9 @@ For details about the APIs, see [RDB](../reference/apis-arkdata/capi-rdb.md).
 | OH_VBucket_PutAsset(OH_VBucket *bucket, const char *field, Rdb_Asset *value) | Puts an RDB asset into an **OH_VBucket** object.|
 | OH_VBucket_PutAssets(OH_VBucket *bucket, const char *field, Rdb_Asset *value, uint32_t count) | Puts RDB assets into an **OH_VBucket** object.|
 | OH_Rdb_FindModifyTime(OH_Rdb_Store *store, const char *tableName, const char *columnName, OH_VObject *values) | Obtains the last modification time of the data in the specified column of a table.|
-| OH_RDB_TransOptions *OH_RdbTrans_CreateOptions(void) | Creates an **OH_RDB_TransOptions** instance to configure the transaction object.|
+| OH_RDB_TransOptions *OH_RdbTrans_CreateOptions(void) | Creates an **OH_RDB_TransOptions** instance to configure the transaction object. When the instance is no longer required, call **OH_RdbTrans_DestroyOptions** to destroy it.|
 | OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, const char *columns[], int len) | Queries data in the database based on specified conditions.|
-| OH_Data_Values *OH_Values_Create(void) | Creates an **OH_Data_Values** instance.|
+| OH_Data_Values *OH_Values_Create(void) | Creates an **OH_Data_Values** instance. When the instance is no longer required, call **OH_Values_Destroy** to destroy it.|
 | int OH_Data_Asset_SetName(Data_Asset *asset, const char *name) | Sets the name for a data asset.|
 | int OH_Data_Asset_SetUri(Data_Asset *asset, const char *uri) | Sets the absolute path for a data asset.|
 | int OH_Data_Asset_SetPath(Data_Asset *asset, const char *path) | Sets the relative path in the application sandbox directory for a data asset.|
@@ -215,7 +215,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 
 3. Modify or delete data based on the conditions specified by **OH_Predicates**.
 
-   Call **OH_Rdb_Update** to modify data, and call **OH_Rdb_Delete** to delete data. <br>Example:
+   Call **OH_Rdb_Update** to modify data, and call **OH_Rdb_Delete** to delete data.<br>Example:
 
     <!--@[rdb_OH_Rdb_Update_and_UpdateWithConflictResolution](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
@@ -228,7 +228,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     uint8_t arr[] = {1, 2, 3, 4, 5};
     int len = sizeof(arr) / sizeof(arr[0]);
     valueBucket->putBlob(valueBucket, "CODES", arr, len);
-    // Create a predicates object and specify the update condition: NAME is Lisa and SALARY is 100.5.
+    // Create a predicate object and specify the update condition: NAME is Lisa and SALARY is 100.5.
     OH_Predicates *predicates = OH_Rdb_CreatePredicates("EMPLOYEE");
     if (predicates == NULL) {
         OH_LOG_ERROR(LOG_APP, "CreatePredicates failed.");
@@ -463,8 +463,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     ```
 5. Insert, delete, or update data using a transaction object.
 
-   Call **OH_RdbTransOption_SetType** to configure the transaction type to be created.
-   The supported transaction types are **DEFERRED** (default), **IMMEDIATE**, and **EXCLUSIVE**.
+   Call **OH_RdbTransOption_SetType** to configure the type of the transaction to be created. The supported transaction types are **DEFERRED** (default), **IMMEDIATE**, and **EXCLUSIVE**.
 
    Call **OH_Rdb_CreateTransaction** to create a transaction object and use this object to execute the corresponding transaction operation.
 
@@ -643,6 +642,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 6. Attach a database.
    
     Call **OH_Rdb_Attach** to attach an RDB store file to an RDB store so that the data in the attached RDB store can be directly accessed using the SQL statement.
+    
     This API does not support encrypted databases.
 
     After the **attach** API is called, the RDB store is switched to the non-WAL mode, which may undermine the performance. Before switching the mode, ensure that all **OH_Cursor** objects have been destroyed and all write operations have been completed. Otherwise, error 14800015 is reported.

@@ -133,7 +133,7 @@ This API allows you to take screenshots of different screens by setting various 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Display Error Codes](errorcode-display.md).
 
 | ID| Error Message|
 | ------- | -------------------------- |

@@ -44,7 +44,7 @@ Checks whether the SIM card in the specified slot is provided by a specified car
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -92,7 +92,7 @@ Sets the default slot ID of the SIM card that provides voice services. This API 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -144,7 +144,7 @@ Sets the default slot ID of the SIM card that provides voice services. This API 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -193,7 +193,7 @@ Sets a display name for the SIM card in the specified slot. This API uses an asy
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -245,7 +245,7 @@ Sets a display name for the SIM card in the specified slot. This API uses a prom
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -293,7 +293,7 @@ Obtains the name of the SIM card in the specified slot. This API uses an asynchr
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -344,7 +344,7 @@ Obtains the name of the SIM card in the specified slot. This API uses a promise 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -392,7 +392,7 @@ Sets a display number for the SIM card in the specified slot. This API uses an a
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -445,7 +445,7 @@ Sets a display number for the SIM card in the specified slot. This API uses a pr
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -493,7 +493,7 @@ Obtains the display number of the SIM card in the specified slot. This API uses 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -544,7 +544,7 @@ Obtains the display number of the SIM card in the specified slot. This API uses 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -591,7 +591,7 @@ Activates the SIM card in the specified slot. This API uses an asynchronous call
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -642,7 +642,7 @@ Activates the SIM card in the specified slot. This API uses a promise to return 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -689,7 +689,7 @@ Disables the SIM card in the specified slot. This API uses an asynchronous callb
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -740,7 +740,7 @@ Disables the SIM card in the specified slot. This API uses a promise to return t
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -788,7 +788,7 @@ Sets the lock status of the SIM card in the specified slot. This API uses an asy
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -846,7 +846,7 @@ Sets the lock status of the SIM card in the specified slot. This API uses a prom
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -900,7 +900,7 @@ Obtains the lock status of the SIM card in the specified slot. This API uses an 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -953,7 +953,7 @@ Obtains the lock status of the SIM card in the specified slot. This API uses a p
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1003,7 +1003,7 @@ Changes the PIN of the SIM card in the specified slot. This API uses an asynchro
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1057,7 +1057,7 @@ Changes the PIN of the SIM card in the specified slot. This API uses a promise t
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1107,7 +1107,7 @@ Changes PIN 2 of the SIM card in the specified slot. This API uses an asynchrono
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1161,7 +1161,7 @@ Changes PIN 2 of the SIM card in the specified slot. This API uses a promise to 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1210,7 +1210,7 @@ Unlocks the PIN of the SIM card in the specified slot. This API uses an asynchro
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1264,7 +1264,7 @@ Unlocks the PIN of the SIM card in the specified slot. This API uses a promise t
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1315,7 +1315,7 @@ Unlocks the PUK of the SIM card in the specified slot. This API uses an asynchro
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1371,7 +1371,7 @@ Unlocks the PUK of the SIM card in the specified slot. This API uses a promise t
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1422,7 +1422,7 @@ Unlocks the PIN of the SIM card in the specified slot. This API uses an asynchro
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1476,7 +1476,7 @@ Unlocks the PIN of the SIM card in the specified slot. This API uses a promise t
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1527,7 +1527,7 @@ Unlocks the PUK of the SIM card in the specified slot. This API uses an asynchro
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1583,7 +1583,7 @@ Unlocks the PUK of the SIM card in the specified slot. This API uses a promise t
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1633,7 +1633,7 @@ Obtains the ICCID of the SIM card in the specified slot. This API uses an asynch
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1684,7 +1684,7 @@ Obtains the ICCID of the SIM card in the specified slot. This API uses a promise
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1731,7 +1731,7 @@ Obtains the voice mailbox alpha identifier of the SIM card in the specified slot
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1782,7 +1782,7 @@ Obtains the voice mailbox alpha identifier of the SIM card in the specified slot
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1829,7 +1829,7 @@ Obtains the voice mailbox number of the SIM card in the specified slot. This API
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1880,7 +1880,7 @@ Obtains the voice mailbox number of the SIM card in the specified slot. This API
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1930,7 +1930,7 @@ Sets voice mailbox information for the SIM card in the specified slot. This API 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1984,7 +1984,7 @@ Sets voice mailbox information for the SIM card in the specified slot. This API 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2032,7 +2032,7 @@ Obtains the MSISDN of the SIM card in the specified slot. This API uses an async
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2083,7 +2083,7 @@ Obtains the MSISDN of the SIM card in the specified slot. This API uses a promis
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2130,7 +2130,7 @@ Obtains the group identifier level 1 (GID1) of the SIM card in the specified slo
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2181,7 +2181,7 @@ Obtains the GID1 of the SIM card in the specified slot. This API uses a promise 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2228,7 +2228,7 @@ Obtains the international mobile subscriber identity (IMSI) of the SIM card in t
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2279,7 +2279,7 @@ Obtains the IMSI of the SIM card in the specified slot. This API uses a promise 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2326,7 +2326,7 @@ Obtains the carrier configuration of the SIM card in the specified slot. This AP
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2376,7 +2376,7 @@ Obtains the carrier configuration of the SIM card in the specified slot. This AP
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2428,7 +2428,7 @@ Queries contact numbers of the SIM card in the specified slot. This API uses an 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2486,7 +2486,7 @@ Queries contact numbers of the SIM card in the specified slot. This API uses a p
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2541,7 +2541,7 @@ Adds contact numbers to the SIM card in the specified slot. This API uses an asy
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2605,7 +2605,7 @@ Adds contact numbers to the SIM card in the specified slot. This API uses a prom
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2664,7 +2664,7 @@ Deletes contact numbers from the SIM card in the specified slot. This API uses a
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2729,7 +2729,7 @@ Deletes contact numbers from the SIM card in the specified slot. This API uses a
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2788,7 +2788,7 @@ Updates contact numbers for the SIM card in the specified slot. This API uses an
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2853,7 +2853,7 @@ Updates contact numbers for the SIM card in the specified slot. This API uses a 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2907,7 +2907,7 @@ Sends an envelope command to the SIM card in the specified slot. This API uses a
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2959,7 +2959,7 @@ Sends an envelope command to the SIM card in the specified slot. This API uses a
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -3007,7 +3007,7 @@ Sends a terminal response command to the SIM card in the specified slot. This AP
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -3059,7 +3059,7 @@ Sends a terminal response command to the SIM card in the specified slot. This AP
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -3108,7 +3108,7 @@ Unlocks the SIM card in the specified slot. This API uses an asynchronous callba
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -3165,7 +3165,7 @@ Unlocks the SIM card in the specified slot. This API uses a promise to return th
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -3216,7 +3216,7 @@ Obtains the Dual Sim Dual Standby (DSDS) mode supported by the device. This API 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -3262,7 +3262,7 @@ Obtains the Dual Sim Dual Standby (DSDS) mode supported by the device. This API 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -3315,7 +3315,7 @@ Obtains SIM card authentication information. This API uses a promise to return t
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |

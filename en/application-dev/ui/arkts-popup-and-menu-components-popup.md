@@ -250,8 +250,8 @@ export struct CustomPopupExample {
               placement: Placement.Bottom, // Position of the popup.
               popupColor: Color.Pink, // Popup background color
               onStateChange: (e) => {
-              if (!e.isVisible) {
-                this.customPopup = false
+                if (!e.isVisible) {
+                  this.customPopup = false
                 }
               }
             })

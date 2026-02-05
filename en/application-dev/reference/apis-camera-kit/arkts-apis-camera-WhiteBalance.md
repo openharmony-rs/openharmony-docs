@@ -25,9 +25,7 @@ import { camera } from '@kit.CameraKit';
 
 setWhiteBalanceMode(mode: WhiteBalanceMode): void
 
-Sets a white balance mode.
-
-Before the setting, run [isWhiteBalanceModeSupported](arkts-apis-camera-WhiteBalanceQuery.md#iswhitebalancemodesupported20) to check whether the device supports the specified white balance mode.
+Sets a white balance mode. Before the setting, run [isWhiteBalanceModeSupported](arkts-apis-camera-WhiteBalanceQuery.md#iswhitebalancemodesupported20) to check whether the device supports the specified white balance mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 

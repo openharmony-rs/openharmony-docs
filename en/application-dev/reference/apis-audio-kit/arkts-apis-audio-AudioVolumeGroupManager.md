@@ -29,7 +29,6 @@ getVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;): v
 Obtains the volume of a stream. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -62,7 +61,6 @@ getVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 Obtains the volume of a stream. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -94,7 +92,6 @@ getVolumeSync(volumeType: AudioVolumeType): number
 Obtains the volume of a stream. This API returns the result synchronously.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -141,7 +138,6 @@ getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;)
 Obtains the minimum volume allowed for a stream. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -174,7 +170,6 @@ getMinVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 Obtains the minimum volume allowed for a stream. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -206,7 +201,6 @@ getMinVolumeSync(volumeType: AudioVolumeType): number
 Obtains the minimum volume allowed for a stream. This API returns the result synchronously.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -253,7 +247,6 @@ getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;number&gt;)
 Obtains the maximum volume allowed for a stream. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -286,7 +279,6 @@ getMaxVolume(volumeType: AudioVolumeType): Promise&lt;number&gt;
 Obtains the maximum volume allowed for a stream. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -318,7 +310,6 @@ getMaxVolumeSync(volumeType: AudioVolumeType): number
 Obtains the maximum volume allowed for a stream. This API returns the result synchronously.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -365,7 +356,6 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): voi
 Checks whether a stream is muted. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [isSystemMutedForStream](arkts-apis-audio-AudioVolumeManager.md#issystemmutedforstream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -398,7 +388,6 @@ isMute(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 Checks whether a stream is muted. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 9 and deprecated since API version 20. You are advised to use [isSystemMutedForStream](arkts-apis-audio-AudioVolumeManager.md#issystemmutedforstream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -430,7 +419,6 @@ isMuteSync(volumeType: AudioVolumeType): boolean
 Checks whether a stream is muted. This API returns the result synchronously.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 20. You are advised to use [isSystemMutedForStream](arkts-apis-audio-AudioVolumeManager.md#issystemmutedforstream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -556,7 +544,7 @@ try {
 
 on(type: 'ringerModeChange', callback: Callback\<AudioRingMode>): void
 
-Subscribes to the ringer mode change event, which is triggered when [audioringmode](arkts-apis-audio-e.md#audioringmode) is changed. This API uses an asynchronous callback to return the result.
+Subscribes to the ringer mode change event, which is triggered when the [AudioRingMode](arkts-apis-audio-e.md#audioringmode) changes. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -807,7 +795,6 @@ getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: number, device: De
 Obtains the volume gain. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getVolumeInUnitOfDbByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumeinunitofdbbystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -852,7 +839,6 @@ getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: number, device: De
 Obtains the volume gain. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getVolumeInUnitOfDbByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumeinunitofdbbystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
@@ -900,7 +886,6 @@ getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: number, device
 Obtains the volume gain. This API returns the result synchronously.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 20. You are advised to use [getVolumeInUnitOfDbByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumeinunitofdbbystream20) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume

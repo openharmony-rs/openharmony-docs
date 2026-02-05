@@ -35,6 +35,10 @@ onCreate(want: Want): void
 
 Called when the third-party VPN is initialized upon startup.
 
+>  **NOTE**
+>
+>  You are advised to call [onDestroy](#vpnextensionabilityondestroy) to listen to the destruction of the third-party VPN and clear resources in a timely manner.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters**
@@ -45,7 +49,7 @@ Called when the third-party VPN is initialized upon startup.
 
 **Example**
 
-  ```ts
+```ts
 import { VpnExtensionAbility } from '@kit.NetworkKit';
 import { Want } from '@kit.AbilityKit';
 
@@ -54,7 +58,7 @@ class MyVpnExtAbility extends VpnExtensionAbility {
        console.info('MyVpnExtAbility onCreate');
     }
 }
-  ```
+```
 
 ## VpnExtensionAbility.onDestroy
 
@@ -66,7 +70,7 @@ Called when the third-party VPN is destroyed to clear resources.
 
 **Example**
 
-  ```ts
+```ts
 import { VpnExtensionAbility } from '@kit.NetworkKit';
 
 class MyVpnExtAbility extends VpnExtensionAbility {
@@ -74,4 +78,4 @@ class MyVpnExtAbility extends VpnExtensionAbility {
        console.info('MyVpnExtAbility onDestroy');
     }
 }
-  ```
+```

@@ -23,8 +23,9 @@ APIs with the `userId` parameter are provided as enhancement to existing APIs.
 
 When using these APIs, observe the following:
 
-1. You can pass in [HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel) in **options** to specify the security level for the key stored.
-2. If you do not pass [HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel) in **options**, this API uses the key in the CE storage area corresponding to the specified **userId** by default, which is equivalent to passing in [HUKS_AUTH_STORAGE_LEVEL_CE](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel).
+1. The user can also include the [HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) tag in the **options** parameter to specify the DE, CE, or ECE zone of the specified user.
+
+2. If no [HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) tag is passed to the **options** parameter, the key in the CE storage area of the specified **userId** is used by default. That is, if the **HUKS_TAG_AUTH_STORAGE_LEVEL** parameter is not passed, the **HUKS_TAG_AUTH_STORAGE_LEVEL** parameter with the value of [HUKS_AUTH_STORAGE_LEVEL_CE](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksauthstoragelevel11) is passed.
 
 The algorithm specifications and the usage of the APIs are the same as those of the APIs without **userId**.
 

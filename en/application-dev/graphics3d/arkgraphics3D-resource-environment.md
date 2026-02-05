@@ -73,7 +73,7 @@ ArkGraphics 3D allows you to create environment resources and define the backgro
 
   5. Create an environment and bind an image.
 
-     Call **SceneResourceFactory.createEnvironment()** to create an environment object, and call **createImage()** to load an environment map. Set **backgroundType** to the equirectangular map type, bind the image to **environmentImage**, and adjust properties like **indirectDiffuseFactor** to control the ambient lighting intensity.
+     Call **SceneResourceFactory.createEnvironment()** to create an environment object, and call **createImage()** to load an environment map. Set **backgroundType** to an equirectangular projection background, bind the image to **environmentImage**, and then adjust properties such as **indirectDiffuseFactor** to control the intensity of the ambient light.
 
      <!-- @[create_environment_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
      
@@ -138,3 +138,9 @@ ArkGraphics 3D allows you to create environment resources and define the backgro
        });
      ```
 
+<!--RP1-->
+## Samples
+
+The following sample is provided to help you better understand how to efficiently use 3D resources:
+- [3D Engine Interface Example (ArkTS) (API version 12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Graphics/Graphics3d)
+<!--RP1End-->

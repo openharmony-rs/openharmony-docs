@@ -65,7 +65,7 @@ getSupportedSceneModes(camera: CameraDevice): Array\<SceneMode\>
 
 | 参数名         | 类型                                                            | 必填 | 说明                      |
 | ------------ |--------------------------------------------------------------- | -- | -------------------------- |
-| camera | [CameraDevice](arkts-apis-camera-i.md#cameradevice)                              | 是 | 相机设备，通过 [getSupportedCameras](#getsupportedcameras) 接口获取。传参异常时，会返回错误码。       |
+| camera | [CameraDevice](arkts-apis-camera-i.md#cameradevice)                              | 是 | 相机设备，通过[getSupportedCameras](#getsupportedcameras)接口获取。传参异常时，会返回错误码[7400101](./errorcode-camera.md#7400101-无效入参)。       |
 
 **返回值：**
 
@@ -925,7 +925,7 @@ function unregisterTorchStatusChange(cameraManager: camera.CameraManager): void 
 
 ## getCameraDevice<sup>18+</sup>
 
-getCameraDevice(position:CameraPosition, type: CameraType): CameraDevice
+getCameraDevice(position: CameraPosition, type: CameraType): CameraDevice
 
 根据相机位置和相机类型查询对应相机。
 

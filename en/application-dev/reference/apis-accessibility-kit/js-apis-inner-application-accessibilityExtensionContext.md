@@ -33,6 +33,8 @@ class EntryAbility extends AccessibilityExtensionAbility {
 
 Provides attribute names and value types of a node element.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 ### Attributes
@@ -797,6 +799,8 @@ axContext.injectGestureSync(gesturePath);
 ## AccessibilityElement<sup>9+</sup>
 
 Defines the **AccessibilityElement**. Before calling APIs of **AccessibilityElement**, you must call [AccessibilityExtensionContext.getFocusElement()](#accessibilityextensioncontextgetfocuselementdeprecated) or [AccessibilityExtensionContext.getWindowRootElement()](#accessibilityextensioncontextgetwindowrootelementdeprecated) to obtain an **AccessibilityElement** instance.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 

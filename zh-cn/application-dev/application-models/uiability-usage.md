@@ -7,12 +7,15 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件的基本用法包括：指定UIAbility的启动页面以及获取UIAbility的上下文[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。
+本文主要介绍[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件的基本用法，包括：
+- 指定UIAbility的启动页面。
+- 获取UIAbility的上下文[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。
+- 获取UIAbility拉起方的信息。
 
 
 ## 指定UIAbility的启动页面
 
-应用中的[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)在启动过程中，需要指定启动页面，否则应用启动后会因为没有默认加载页面而导致白屏。可以在UIAbility的[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期回调中，通过[WindowStage](../reference/apis-arkui/arkts-apis-window-WindowStage.md)对象的[loadContent()](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)方法设置启动页面。
+应用中的[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)在启动过程中，需要指定启动页面，否则应用启动后会因为没有默认加载页面而导致白屏。可以在UIAbility的[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期回调中，通过[WindowStage](../reference/apis-arkui/arkts-apis-window-WindowStage.md)对象的[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法设置启动页面。
 
 
 <!-- @[onWindowStageCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/entryability/EntryAbility.ets) -->  
@@ -219,7 +222,7 @@ export default class EntryAbility extends UIAbility {
     }
     ```
 
-2. 在UIAbilityB的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期中，获取并打印UIAbilityA的Pid、BundleName和AbilityName。
+2. 在UIAbilityB的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期中，获取UIAbilityA的Pid、BundleName和AbilityName，并通过日志输出。
 
     <!-- @[UIAbilityB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/entryability/UIAbilityB.ets) -->
 

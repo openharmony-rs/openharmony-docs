@@ -61,12 +61,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { eSIM } from '@kit.TelephonyKit';
 
-try {
-    let eid: string = await eSIM.getEid(1);
+eSIM.getEid(1).then((eid) => {
     console.info(`the EID is:` + eid);
-} catch (err) {
-    console.err(`getEid, promise: err->${JSON.stringfy(err)}`)
-}
+}).catch((err:BusinessError<void>) => {
+    console.error(`getEid, promise: err->${JSON.stringify(err)}`)
+});
 ```
 
 ## eSIM.getOsuStatus
@@ -235,8 +234,7 @@ eSIM.getDownloadableProfileMetadata(1, 0, profile, true).then((data: eSIM.GetDow
 
 ## eSIM.getDownloadableProfiles
 
-getDownloadableProfiles\(slotId: number, portIndex: number,
-forceDisableProfile: boolean\): Promise\<GetDownloadableProfilesResult\>
+getDownloadableProfiles\(slotId: number, portIndex: number, forceDisableProfile: boolean\): Promise\<GetDownloadableProfilesResult\>
 
 Obtains the list of downloadable profiles. This API uses a promise to return the result.
 
@@ -288,8 +286,7 @@ eSIM.getDownloadableProfiles(1, 0, true).then((data: eSIM.GetDownloadableProfile
 
 ## eSIM.downloadProfile
 
-downloadProfile\(slotId: number, portIndex: number, profile: DownloadableProfile,
-configuration: DownloadConfiguration\): Promise\<DownloadProfileResult\>
+downloadProfile\(slotId: number, portIndex: number, profile: DownloadableProfile, configuration: DownloadConfiguration\): Promise\<DownloadProfileResult\>
 
 Downloads a profile. This API uses a promise to return the result.
 
@@ -510,8 +507,7 @@ eSIM.deleteProfile(1, 'testId').then(() => {
 
 ## eSIM.switchToProfile
 
-switchToProfile\(slotId: number, portIndex: number, iccid: string,
-forceDisableProfile: boolean\): Promise\<ResultCode\>
+switchToProfile\(slotId: number, portIndex: number, iccid: string, forceDisableProfile: boolean\): Promise\<ResultCode\>
 
 Switches to the specified profile. This API uses a promise to return the result.
 
