@@ -57,7 +57,7 @@ A constructor used to create a **FileUri** instance.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- |--------|
-| uriOrPath | string | Yes| URI or path. URI types:<br>- Application sandbox URI: file://\<bundleName>/\<sandboxPath><br>- User directory file URI: file://docs/storage/Users/currentUser/\<publicPath><br>- User directory media URI: file://media/\<mediaType>/IMG_DATATIME_ID/\<displayName>|
+| uriOrPath | string | Yes| URI or path. URI types:<br>- Application sandbox URI: file://\<bundleName>/\<sandboxPath><br>- User directory file URI: file://docs/storage/Users/currentUser/\<publicPath><br>- User directory media URI: file://media/\<mediaType>/IMG_DATETIME_ID/\<displayName>|
 
 **Error codes**
 

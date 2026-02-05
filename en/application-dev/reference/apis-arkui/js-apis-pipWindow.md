@@ -12,7 +12,7 @@ The module provides basic APIs for manipulating Picture in Picture (PiP). For ex
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - Before <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP function was supported only on phones and tablets. Starting from <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP function is supported on phones, PCs/2-in-1 devices, tablets, and is unavailable on all other devices.
+> - Before <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature was supported only on phones and tablets. Starting from <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported on phones, PCs/2-in-1 devices, tablets, but is unavailable on all other devices.
 >
 > - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 
@@ -279,7 +279,7 @@ Defines the parameters for creating a PiP controller.
 | controlGroups<sup>12+</sup>       | Array<[PiPControlGroup](#pipcontrolgroup12)>                               | No| Yes | A list of optional component groups of the PiP controller. An application can configure whether to display these optional components. If this parameter is not set for an application, the basic components (for example, play/pause of the video playback component group) are displayed. A maximum of three components can be configured in the list.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                         |
 | customUIController<sup>12+</sup>      | [NodeController](js-apis-arkui-nodeController.md)           | No | Yes| Custom UI that can be displayed at the top of the PiP window. If no value is passed, custom UI is not used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                         |
 | localStorage<sup>17+</sup>      | [LocalStorage](../../ui/state-management/arkts-localstorage.md)           | No | Yes| A page-level UI state storage unit. In multi-instance scenarios, it can be used to track the UI state storage object of the main window instance. If no value is passed, you cannot retrieve the main window's UI storage object through the PiP window.<br>**Atomic service API**: This API can be used in atomic services since API version 17.                                                                         |
-| defaultWindowSizeType<sup>19+</sup>| number                                                                     | No  | Yes |  Initial PiP window size.<br>The value **0** means that no size is set, and the window will launch at the size it was before being closed in the previous PiP session.<br>The value **1** means a small window,<br>and **2** means a large window.<br>If no value is passed, **0** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 19.                                                                |
+| defaultWindowSizeType<sup>19+</sup>| number                                                                     | No  | Yes |  Initial PiP window size.<br>The value **0** means that no size is set, and the window will launch at the size it was before being closed in the previous PiP session.<br>**1**: small window<br>**2**: large window<br>If no value is passed, **0** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 19.                                                                |
 | cornerAdsorptionEnabled<sup>22+</sup>| boolean                                                                     | No  | Yes |  Whether the PiP window automatically snaps to screen corners. When this feature is enabled, the screen is divided into four hot zones (top-left, top-right, bottom-left, and bottom-right). When users lift their finger while dragging the PiP window within a hot zone, the PiP window is automatically snapped to the nearest corner.<br>**true**: enables corner snapping.<br>**false**: disables corner snapping.<br>The default value is **true**.<br>**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, it has no effect.<br>**Atomic service API**: This API can be used in atomic services since API version 22.                                                                |
 
 ## PiPWindowSize<sup>15+</sup>
@@ -765,7 +765,7 @@ Updates the PiP node content. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
 | ID| Error Message                                                                                                       |
 |-------|-------------------------------------------------------------------------------------------------------------|
@@ -1172,7 +1172,7 @@ Unsubscribes from the PiP window size change event.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |

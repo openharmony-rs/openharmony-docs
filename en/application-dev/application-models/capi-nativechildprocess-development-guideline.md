@@ -62,7 +62,7 @@ libchild_process.so
     
     ``` C++
     #include <IPCKit/ipc_kit.h>
-    // ···
+    // ...
     #include <IPCKit/ipc_cremote_object.h>
     #include <IPCKit/ipc_cparcel.h>
     #include <IPCKit/ipc_error_code.h>
@@ -108,7 +108,7 @@ libchild_process.so
         return g_ipcStubObj.GetRemoteStub();
     }
     
-    void NativeChildProcessMainProc()
+    void NativeChildProcess_MainProc()
     {
         // Equivalent to the Main function of the child process. It implements the service logic of the child process.
         // ...

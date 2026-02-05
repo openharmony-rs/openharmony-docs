@@ -103,7 +103,7 @@ Subscribes to the event indicating changes to the area where the window cannot b
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-**Example:**
+**Example**
 
 ```ts
 // ExtensionProvider.ts
@@ -143,7 +143,7 @@ Unsubscribes from the event indicating changes to the area where the window cann
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-**Example:**
+**Example**
 
 ```ts
 // ExtensionProvider.ts
@@ -181,7 +181,7 @@ Subscribes to size change events of the component (**EmbeddedComponent** or **UI
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-**Example:**
+**Example**
 
 ```ts
 // ExtensionProvider.ts
@@ -213,7 +213,7 @@ Unsubscribes from size change events of the component (**EmbeddedComponent** or 
 | Name  | Type                 | Mandatory| Description                  |
 | -------- | --------------------- | ---- | ---------------------- |
 | type     | string                | Yes  | Event type. The value is fixed at **'windowSizeChange'**, indicating the component (**EmbeddedComponent** or **UIExtensionComponent**) size change events.|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used to return the current component (**EmbeddedComponent** or **UIExtensionComponent**) size. If a value is passed in, listening will be disabled for the specified event callback. If no value is passed in, all subscriptions to the specified event are canceled.|
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used to return the size of the current component (**EmbeddedComponent** or **UIExtensionComponent**). If a value is passed in, listening will be disabled for the specified event callback. If no value is passed in, all subscriptions to the specified event are canceled.|
 
 **Error codes**
 
@@ -221,7 +221,7 @@ Unsubscribes from size change events of the component (**EmbeddedComponent** or 
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 
-**Example:**
+**Example**
 
 ```ts
 // ExtensionProvider.ts
@@ -274,7 +274,7 @@ Sets whether to hide non-secure windows. This API uses a promise to return the r
 | 1300002  | Abnormal state. Possible causes: <br> 1. Permission denied. Interface caller does not have permission "ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS". <br> 2. The UIExtension window proxy is abnormal. |
 | 1300003  | This window manager service works abnormally. |
 
-**Example:**
+**Example**
 
 ```ts
 // ExtensionProvider.ts
@@ -337,9 +337,9 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 | ------- | ------------------------------ |
 | 401 | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.|
+| 1300002 | This window state is abnormal. |
 
-**Example:**
+**Example**
 
 ```ts
 // ExtensionProvider.ts
@@ -356,6 +356,88 @@ export default class EntryAbility extends UIExtensionAbility {
     };
     // Create a subwindow.
     extensionHostWindow.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
+      .then((subWindow: window.Window) => {
+        subWindow.setUIContent('pages/Index', (err, data) =>{
+          if (err && err.code != 0) {
+            return;
+          }
+          subWindow?.resize(300, 300, (err, data)=>{
+            if (err && err.code != 0) {
+              return;
+            }
+            subWindow?.moveWindowTo(100, 100, (err, data)=>{
+              if (err && err.code != 0) {
+                return;
+              }
+              subWindow?.showWindow((err, data) => {
+                if (err && err.code == 0) {
+                  console.info(`The subwindow has been shown!`);
+                } else {
+                  console.error(`Failed to show the subwindow!`);
+                }
+              });
+            });
+          });
+        });
+      }).catch((error: BusinessError) => {
+        console.error(`Create subwindow failed: ${JSON.stringify(error)}`);
+      })
+  }
+}
+```
+
+### createSubWindowWithOptions<sup>22+</sup>
+
+createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions, followCreatorLifecycle: boolean): Promise&lt;window.Window&gt;
+
+Creates a subwindow under this **UIExtensionHostWindowProxy** instance. By setting **followCreatorLifecycle**, you can control whether the subwindow follows the lifecycle of its creator component (**EmbeddedComponent** or **UIExtensionComponent**). This API uses a promise to return the result.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description          |
+| ------ | ------ | ---- | -------------- |
+| name   | string | Yes  | Name of the subwindow.|
+| subWindowConfig | [window.SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | Yes| Parameters used for creating the subwindow.|
+| followCreatorLifecycle | boolean | Yes  | Whether the subwindow follows the lifecycle of its creator component (**EmbeddedComponent** or **UIExtensionComponent**). **true**: The subwindow is hidden when the component is hidden, and is displayed when the component is displayed. **false**: The visibility of the subwindow does not change with the component.|
+
+**Return value**
+
+| Type                            | Description                                            |
+| -------------------------------- | ------------------------------------------------ |
+| Promise&lt;[window.Window](arkts-apis-window-Window.md)&gt; | Promise used to return the subwindow created.|
+
+**Error codes**
+
+For details about the error codes, see [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | ------------------------------ |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+
+**Example**
+
+```ts
+// ExtensionProvider.ts
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    const subWindowConfig: window.SubWindowOptions = {
+      title: 'This is a subwindow',
+      decorEnabled: true
+    };
+    // Create a subwindow.
+    extensionHostWindow.createSubWindowWithOptions('subWindowForHost', subWindowConfig, true)
       .then((subWindow: window.Window) => {
         subWindow.setUIContent('pages/Index', (err, data) =>{
           if (err && err.code != 0) {
@@ -419,7 +501,7 @@ Adds or deletes the watermark flag for this window. This API uses a promise to r
 | 1300003 | This window manager service works abnormally.  |
 | 1300008 | The display device is abnormal. |
 
-**Example:**
+**Example**
 
 ```ts
 // ExtensionProvider.ts
@@ -483,7 +565,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | 1300002  | Abnormal state. Possible causes: <br> 1. The UIExtension window proxy is abnormal. <br> 2. Not the UIExtensionAbility process calling.                    |
 
-**Example:**
+**Example**
 
 ```ts
 // ExtensionProvider.ts

@@ -614,9 +614,9 @@ Provides a **FileAccessHelper** object.
 
 getRoots() : Promise&lt;RootIterator&gt;
 
-Obtains information about the device root nodes of the file management services associated with the **Helper** object. This API uses a promise to return
+Obtains information about the device root nodes of the file management services associated with the **Helper** object.  
 
-a **RootIterator** object. You can use [next](#next-1) to return [RootInfo](#rootinfo).
+This API uses a promise to return a **RootIterator** object. You can use [next](#next-1) to return [RootInfo](#rootinfo).
 
 **System API**: This is a system API.
 
@@ -669,9 +669,9 @@ async function getRoots() {
 
 getRoots(callback:AsyncCallback&lt;RootIterator&gt;) : void
 
-Obtains information about the device root nodes of the file management services associated with the **Helper** object. This API uses an asynchronous callback to return
+Obtains information about the device root nodes of the file management services associated with the **Helper** object.  
 
-a **RootIterator** object. You can use [next](#next-1) to return [RootInfo](#rootinfo).
+This API uses an asynchronous callback to return a **RootIterator** object. You can use [next](#next-1) to return [RootInfo](#rootinfo).
 
 **System API**: This is a system API.
 
@@ -2424,7 +2424,7 @@ async function moveItemFunc01() {
 }
 ```
 
-Example 2: Move a file or directory with **force** set to **true**.
+Example 2: Copy a file or directory with **force** set to **true**.
 
 ```ts
 import { BusinessError } from '@ohos.base';

@@ -2,17 +2,17 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
-<!--Designer: @pssea6-->
+<!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
-The **&lt;search&gt;** component provides an input area for users to search. For details, see [search](../reference/apis-arkui/arkui-js/js-components-basic-search.md).
+The **\<search>** component provides an input area for users to search. For details, see [search](../reference/apis-arkui/arkui-js/js-components-basic-search.md).
 
 
-## Creating a &lt;search&gt; Component
+## Creating a \<search> Component
 
-Create a **&lt;search&gt;** component in the .hml file under **pages/index**.
+Create a **\<search>** component in the .hml file under **pages/index**.
 
 
 ```html
@@ -35,7 +35,7 @@ Create a **&lt;search&gt;** component in the .hml file under **pages/index**.
 }
 ```
 
-![en-us_image_0000001276003537](figures/en-us_image_0000001276003537.png)
+![en-us_image_0000001218760480](figures/en-us_image_0000001218760480.png)
 
 
 ## Setting Attributes
@@ -63,7 +63,7 @@ Set the **hint**, **icon**, and **searchbutton** to define the hint text, icon, 
 }
 ```
 
-![en-us_image_0000001275923017](figures/en-us_image_0000001275923017.png)
+![en-us_image_0000001183438596](figures/en-us_image_0000001183438596.png)
 
 
 ## Adding Styles
@@ -96,12 +96,12 @@ search{
 }
 ```
 
-![en-us_image_0000001232003020](figures/en-us_image_0000001232003020.gif)
+![en-us_image_0000001228920921](figures/en-us_image_0000001228920921.gif)
 
 
 ## Binding Events
 
-Add the **change**, **search**, **submit**, **share**, and **translate** events to the **&lt;search&gt;** component to perform operations on the input information.
+Add the **change**, **search**, **submit**, **share**, and **translate** events to the **\<search>** component to perform operations on the input information.
 
 
 ```html
@@ -173,12 +173,12 @@ export default {
 }
 ```
 
-![en-us_image_0000001231683164](figures/en-us_image_0000001231683164.gif)
+![en-us_image_0000001182187434](figures/en-us_image_0000001182187434.gif)
 
 
 ## Example Scenario
 
-In this example, you can select the **&lt;search&gt;**, **&lt;textarea&gt;**, or **&lt;input&gt;** component from the drop-down list box to implement the respective function.
+In this example, you can select the **\<search>**, **\<textarea>**, or **\<input>** component from the drop-down list box to implement the respective function.
 
 
 ```html
@@ -263,4 +263,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001232003024](figures/en-us_image_0000001232003024.gif)
+![en-us_image_0000001183283966](figures/en-us_image_0000001183283966.gif)

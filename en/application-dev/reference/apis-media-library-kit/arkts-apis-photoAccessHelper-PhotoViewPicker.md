@@ -16,7 +16,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 select(option?: PhotoSelectOptions) : Promise&lt;PhotoSelectResult&gt;
 
-Starts a **photoPicker** page for the user to select one or more images or videos. This API uses a promise to return the result. You can pass in **PhotoSelectOptions** to specify the type and maximum number of the files to select.
+Starts a **photoPicker** page for the user to select one or more images or videos. This API uses a promise to return the result. You can pass in **PhotoSelectOptions** to specify the type and maximum number of the files to select. A **PhotoSelectResult** object is returned.
 
 > **NOTE**
 >
@@ -40,12 +40,13 @@ Starts a **photoPicker** page for the user to select one or more images or video
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md), and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
 | 13900042      | Unknown error.         |
+| 23800151      |  Scene parameters validate failed, possible causes:1. An illegal enumeration value was passed to PhotoSelectOptions.globalMovingPhotoState. |
 
 **Example**
 
@@ -54,12 +55,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function example01(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
-    let PhotoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
-    PhotoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
-    PhotoSelectOptions.maxSelectNumber = 5;
+    let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
+    photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
+    photoSelectOptions.maxSelectNumber = 5;
     let photoPicker = new photoAccessHelper.PhotoViewPicker();
-    photoPicker.select(PhotoSelectOptions).then((PhotoSelectResult: photoAccessHelper.PhotoSelectResult) => {
-      console.info('PhotoViewPicker.select successfully, PhotoSelectResult uri: ' + JSON.stringify(PhotoSelectResult));
+    photoPicker.select(photoSelectOptions).then((photoSelectResult: photoAccessHelper.PhotoSelectResult) => {
+      console.info('PhotoViewPicker.select successfully, photoSelectResult uri: ' + JSON.stringify(photoSelectResult));
     }).catch((err: BusinessError) => {
       console.error(`PhotoViewPicker.select failed with err: ${err.code}, ${err.message}`);
     });
@@ -93,12 +94,13 @@ Starts a **photoPicker** page for the user to select one or more images or video
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md), and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
 | 13900042      | Unknown error.         |
+| 23800151      |  Scene parameters validate failed, possible causes:1. An illegal enumeration value was passed to PhotoSelectOptions.globalMovingPhotoState. |
 
 **Example**
 
@@ -107,16 +109,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function example02(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
-    let PhotoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
-    PhotoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
-    PhotoSelectOptions.maxSelectNumber = 5;
+    let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
+    photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
+    photoSelectOptions.maxSelectNumber = 5;
     let photoPicker = new photoAccessHelper.PhotoViewPicker();
-    photoPicker.select(PhotoSelectOptions, (err: BusinessError, PhotoSelectResult: photoAccessHelper.PhotoSelectResult) => {
+    photoPicker.select(photoSelectOptions, (err: BusinessError, photoSelectResult: photoAccessHelper.PhotoSelectResult) => {
       if (err) {
         console.error(`PhotoViewPicker.select failed with err: ${err.code}, ${err.message}`);
         return;
       }
-      console.info('PhotoViewPicker.select successfully, PhotoSelectResult uri: ' + JSON.stringify(PhotoSelectResult));
+      console.info('PhotoViewPicker.select successfully, photoSelectResult uri: ' + JSON.stringify(photoSelectResult));
     });
   } catch (error) {
     let err: BusinessError = error as BusinessError;
@@ -147,12 +149,13 @@ Starts a **photoPicker** page for the user to select one or more images or video
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+ For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md), and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 13900042      | Unknown error.         |
+| 23800151      |  Scene parameters validate failed, possible causes:1. An illegal enumeration value was passed to PhotoSelectOptions.globalMovingPhotoState. |
 
 **Example**
 
@@ -162,12 +165,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function example03(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let photoPicker = new photoAccessHelper.PhotoViewPicker();
-    photoPicker.select((err: BusinessError, PhotoSelectResult: photoAccessHelper.PhotoSelectResult) => {
+    photoPicker.select((err: BusinessError, photoSelectResult: photoAccessHelper.PhotoSelectResult) => {
       if (err) {
         console.error(`PhotoViewPicker.select failed with err: ${err.code}, ${err.message}`);
         return;
       }
-      console.info('PhotoViewPicker.select successfully, PhotoSelectResult uri: ' + JSON.stringify(PhotoSelectResult));
+      console.info('PhotoViewPicker.select successfully, photoSelectResult uri: ' + JSON.stringify(photoSelectResult));
     });
   } catch (error) {
     let err: BusinessError = error as BusinessError;

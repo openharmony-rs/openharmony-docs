@@ -522,11 +522,11 @@ The following uses **Grid** as an example to describe the basic procedure for mu
            .opacity(1.0)
            .id('grid' + idx)
        }
-       // ···
+       // ...
        .onDragStart(() => {
        })
        .selectable(true)
-       // ···
+       // ...
      }, (idx: string) => idx)
    }
    ```
@@ -546,10 +546,10 @@ The following uses **Grid** as an example to describe the basic procedure for mu
    
    ``` TypeScript
    .selected(this.isSelectedGrid[idx])
-   // ···
+   // ...
    .onClick(() => {
      this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
-     // ···
+     // ...
    })
    ```
 

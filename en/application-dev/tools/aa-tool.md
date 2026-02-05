@@ -741,7 +741,7 @@ The target application is signed by the release certificate.
 
 **Solution**
 
-Use the debug signing certificate to sign the application again. After the HAP is signed, run the command again.
+Use the debug signing certificate to sign the application again. After the newly signed HAP is installed, run this command again.
 
 ### 10100101 Failed to Obtain Application Information
 
@@ -891,11 +891,13 @@ The application is controlled by the application market.
 
 **Possible Causes**
 
-The target application is suspected to have malicious behavior and is not allowed to start due to application market control.
+- The target application is suspected to have malicious behavior and is not allowed to start due to application market control.
+- The target application is a pre-installed system application, and it is overwritten by a locally compiled version.
 
 **Solution**
 
-It is recommended that end users uninstall the application.
+- For possible cause 1, you are advised to uninstall the application.
+- For possible cause 2, you need to uninstall the application and then install it using the locally compiled version.
 
 ### 10106106 The Target Application Is Managed by EDM
 
@@ -1129,6 +1131,6 @@ The value of the **type** parameter in the signing tool is not **debug**.
 
 **Solution**
 
-Use the debug signature certificate to sign the application again. After the HAP is signed, run the command again.
+Use the debug signing certificate to sign the application again. After the newly signed HAP is installed, run this command again.
 
 For details about the signing tool and certificate, see [Signing Your App/Atomic Service](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing).

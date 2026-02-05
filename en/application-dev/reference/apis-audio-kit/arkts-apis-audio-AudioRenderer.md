@@ -1719,7 +1719,7 @@ Subscribes to the audio interruption event, which is triggered when the audio fo
 
 The AudioRenderer instance proactively gains the focus when the **start** event occurs and releases the focus when the **pause** or **stop** event occurs. Therefore, you do not need to request to gain or release the focus.
 
-After this API is called, an [InterruptEvent](arkts-apis-audio-i.md#interruptevent9) is received when the AudioRenderer instance fails to obtain the focus or an audio interruption event occurs (for example, the audio stream is interrupted by others). It is recommended that the application perform further processing based on the **InterruptEvent** information. For details, see [Introduction to Audio Focus and Audio Sessions](../../media/audio/audio-playback-concurrency.md).
+After this API is called, an [InterruptEvent](arkts-apis-audio-i.md#interruptevent9) is received when the AudioRenderer instance fails to obtain the focus or an audio interruption event occurs (for example, the audio stream is interrupted by others). It is recommended that the application perform further processing based on the **InterruptEvent** information. For details, see [Introduction to Audio Focus](../../media/audio/audio-playback-concurrency.md).
 
 **System capability**: SystemCapability.Multimedia.Audio.Interrupt
 
@@ -2045,7 +2045,7 @@ Unsubscribes from the audio renderer state change event. This API uses an asynch
 
 | Name| Type  | Mandatory| Description                                               |
 | :----- | :----- | :--- | :-------------------------------------------------- |
-| type   | string | Yes  | Event type. The event **'stateChange'** is triggered when the state of the audio renderer is changed.|
+| type   | string | Yes  | Event type. The event **'stateChange'** is triggered when the listening for audio renderer state change event is canceled.|
 | callback | Callback\<[AudioState](arkts-apis-audio-e.md#audiostate8)> | No| Callback used to return the audio status.|
 
 **Error codes**
