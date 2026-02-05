@@ -145,7 +145,8 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 3. 设置surface。
 
    示例中的变量说明如下：
-   - nativeWindow：获取方式请参考[视频解码Surface模式](video-decoding.md#surface模式)的“步骤-6：设置surface”。
+   
+   nativeWindow：获取方式请参考[视频解码Surface模式](video-decoding.md#surface模式)的“步骤-6：设置surface”。
 
     ```c++
     // 设置surface。
