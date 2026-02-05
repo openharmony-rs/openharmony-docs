@@ -430,12 +430,12 @@ async function setupPlayer() {
 
 | 名称              | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ----------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| fd                | number                                                       | 否   | 否   | 录制输出的文件fd。                                           |
-| frameWidth        | number                                                       | 否   | 是   | 录屏的视频宽度，默认屏幕宽度，根据不同屏幕默认值不同，单位px。 |
-| frameHeight       | number                                                       | 否   | 是   | 录屏的视频高度，默认屏幕高度，根据不同屏幕默认值不同，单位px。 |
-| videoBitrate      | number                                                       | 否   | 是   | 录屏的视频比特率，默认10000000。                             |
-| audioSampleRate   | number                                                       | 否   | 是   | 录屏的音频采样率，内录的系统音和外录的麦克风都是用此采样率，默认48000，仅支持设置48000或16000。 |
-| audioChannelCount | number                                                       | 否   | 是   | 录屏的音频通道数，内录的系统音和外录的麦克风都是用此通道数，默认2声道，仅支持设置1或2声道。 |
+| fd                | number                                                       | 否   | 否   | 录制输出的文件fd，取值不小于0。                                           |
+| frameWidth        | number                                                       | 否   | 是   | 录屏的视频宽度，默认屏幕宽度，根据不同屏幕默认值不同，单位px，取值范围：[0, 10240]。 |
+| frameHeight       | number                                                       | 否   | 是   | 录屏的视频高度，默认屏幕高度，根据不同屏幕默认值不同，单位px，取值范围：[0, 4320]。 |
+| videoBitrate      | number                                                       | 否   | 是   | 录屏的视频比特率，默认10000000，取值范围：[1, 30000000]。                             |
+| audioSampleRate   | number                                                       | 否   | 是   | 录屏的音频采样率，内录的系统音和外录的麦克风都是用此采样率，默认48000，仅支持设置48000或16000，取值范围：[12000, 192000]。 |
+| audioChannelCount | number                                                       | 否   | 是   | 录屏的音频通道数，内录的系统音和外录的麦克风都是用此通道数，默认2声道，仅支持设置1或2声道，取值范围：[1, 16]。 |
 | audioBitrate      | number                                                       | 否   | 是   | 录屏的音频比特率，内录的系统音和外录的麦克风都是用此比特率，默认96000。 |
 | preset            | [AVScreenCaptureRecordPreset](arkts-apis-media-e.md#avscreencapturerecordpreset12) | 否   | 是   | 录屏使用的编码和封装格式，默认SCREEN_RECORD_PRESET_H264_AAC_MP4格式。 |
 | displayId<sup>15+</sup>            | number | 否   | 是   | 指定录屏使用的屏幕，默认主屏幕。 |
