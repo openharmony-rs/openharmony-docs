@@ -4766,7 +4766,11 @@ Allows an application to install and uninstall fonts.
 
 **Enable via ACL**: true
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
 **Valid since**: 19
+
+**Changelog**: Since API version 23, this permission is also available on phones.
 
 ## ohos.permission.READ_PARENT_CONTROL_DATA
 
@@ -5397,15 +5401,15 @@ Allows an application to dynamically register or remove custom UTD data types.
 
 Allows a system application to access media sharing resources within the camera framework directory.
 
-**Permission level**：system_basic
+**Permission level**: system_basic
 
-**Authorization mode**：system_grant
+**Authorization mode**: system_grant
 
-**Enable via ACL**：true
+**Enable via ACL**: true
 
-**Supported devices**：General
+**Supported devices**: General
 
-**Since**：23
+**Since**: 23
 ## ohos.permission.MANAGE_CLOUD_DATA_SERVICE
 
 Allows an application that has accessed Cloud to manage cloud data.
