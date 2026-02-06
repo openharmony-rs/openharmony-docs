@@ -39,10 +39,10 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称                | 类型   | 说明                   |
-| ------------------- | ---- | ---------------------- |
-| ageGroup  | [UserAgeGroup](#useragegroup)   | 表示具体的年龄群组（例如，儿童、成人）。 |
-| confidence  | float    | 表示年龄群组检测结果的置信度，取值范围为0~1的浮点数，数值越大代表置信度越高。 |
+| 名称                | 类型   |只读|可选| 说明                   |
+| ------------------- | ---- |----|----| ---------------------- |
+| ageGroup  | [UserAgeGroup](#useragegroup)   |否|是| 表示具体的年龄群组（例如，儿童、成人）。 |
+| confidence  | float    |否|是| 表示年龄群组检测结果的置信度，取值范围为0~1的浮点数，数值越大代表置信度越高。 |
 
 
 ## userStatus.on('userAgeGroupDetected')
@@ -76,7 +76,7 @@ on(type: 'userAgeGroupDetected', callback: Callback&lt;userclassification&gt;): 
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 33900001 | Service exception. Possible causes: <br>1. System error, such as a null pointer and container-related exception. <br>2. Node-API invocation exception, such as invalid Node-API status.|
-| 33900002 | Subscription failed. Possible causes: <br>1. Callback registration failure. <br>2. Failed to bind native object to js wrapper. <br>3. N-API invocation exception, invalid N-API status. <br>4. IPC request exception. |
+| 33900002 | Subscription failed. Possible causes: <br>1. Callback registration failed. <br>2. Failed to bind the native object to the JS wrapper. <br>3. Node-API invocation exception, such as invalid Node-API status. <br>4. IPC request exception. |
 
 **示例**：
 
@@ -124,7 +124,7 @@ onUserAgeGroupDetected(callback: Callback&lt;UserClassification&gt;): void
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 33900001 | Service exception. Possible causes: <br>1. System error, such as a null pointer and container-related exception. <br>2. Node-API invocation exception, such as invalid Node-API status.|
-| 33900002 | Subscription failed. Possible causes: <br>1. Callback registration failure. <br>2. Failed to bind native object to js wrapper. <br>3. N-API invocation exception, invalid N-API status. <br>4. IPC request exception. |
+| 33900002 | Subscription failed. Possible causes: <br>1. Callback registration failed. <br>2. Failed to bind the native object to the JS wrapper. <br>3. Node-API invocation exception, such as invalid Node-API status. <br>4. IPC request exception. |
 
 **示例**：
 

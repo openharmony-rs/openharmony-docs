@@ -20,6 +20,10 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：23
+
 | 名称                | 值   | 说明                   |
 | ------------------- | ---- | ---------------------- |
 | UNKNOWN_STATUS      | 0    | 表示未识别。 |
