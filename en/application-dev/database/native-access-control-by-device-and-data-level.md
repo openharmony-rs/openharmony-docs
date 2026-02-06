@@ -52,7 +52,7 @@ In cross-device data sync, data access is controlled based on the device securit
 |SL4|S1 to S4|
 |SL5|S1 to S4| 
 <!--RP2-->
-The security level of development boards RK3568 and Hi3516 is SL1. The database with data security label S1 can be synced with RK3568 and Hi3516, but the databases with labels S2-S4 cannot.
+The security level of development boards RK3568 and Hi3516 is SL1. The database with data security label S1 can be synced with RK3568 and Hi3516, but the databases with labels S2–S4 cannot.
 <!--RP2End-->
 
 ## How to Develop

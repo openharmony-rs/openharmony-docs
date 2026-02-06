@@ -58,7 +58,7 @@ OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoSt
 
 // Add the created TextStyle object to handler.
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-// Add text to handler.
+// Add the text to handler.
 const char *text = "你好，中文\n";
 OH_Drawing_TypographyHandlerAddText(handler, text);
 
@@ -620,7 +620,7 @@ OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // Enable automatic spacing. The default value is false.
 OH_Drawing_SetTypographyTextAutoSpace(typoStyle, true);
 // Set the text content.
-const char *text = "test©test©test";
+const char *text = "test测试©test©测。";
 
 OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
 // Set the text color, size, and weight. If TextStyle is not set, the default TextStyle in TypographyStyle is used.
@@ -778,7 +778,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-The following figure shows the effect (The black box only shows the text drawing area and is not drawn in actual.).
+The following figure shows the effect (The black box only shows the text drawing area and is not drawn in practice).
 
 ![image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_center.jpg)
 
@@ -865,7 +865,7 @@ OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoSt
 
 // Add the created TextStyle object to handler.
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-// Add text to handler.
+// Add the text to handler.
 const char *text = "Hello World Drawing\n";
 OH_Drawing_TypographyHandlerAddText(handler, text);
 
@@ -940,7 +940,7 @@ OH_Drawing_DestroyTypography(typography);
   
 The following figures show the effect.
 
-| Maximum Line Height| Minimum Line Height| Effect (The black box only shows the text drawing area and is not drawn in actual.)|
+| Maximum Line Height| Minimum Line Height| Effect (The black box only shows the text drawing area and is not drawn in practice.)|
 | -------- | -------- | -------- |
 | 65 | 65 | ![zh-cn_image_maxMinLineHeight65](figures/MaxMinLineHeight65.png) |
 | 200 | 200 | ![zh-cn_image_maxMinLineHeight200](figures/MaxMinLineHeight200.png) |
@@ -990,7 +990,7 @@ OH_Drawing_DestroyTypography(typography);
   
 The following figures show the effect.
 
-| Line Height Scaling Style| Effect (The black box only shows the text drawing area and is not drawn in actual.)|
+| Line Height Scaling Style| Effect (The black box only shows the text drawing area and is not drawn in practice.)|
 | -------- | -------- |
 | TEXT_LINE_HEIGHT_BY_FONT_SIZE | ![zh-cn_image_lineHeightStyleFontSize](figures/LineHeightStyle-FontSize.png) |
 | TEXT_LINE_HEIGHT_BY_FONT_HEIGHT | ![zh-cn_image_lineHeightStyleFontHeight](figures/LineHeightStyle-FontHeight.png) |
@@ -1037,7 +1037,7 @@ OH_Drawing_DestroyTypography(typography);
   
 The following figures show the effect.
 
-| Ascent and Descent| Effect (The black box only shows the text drawing area and is not drawn in actual.)|
+| Ascent and Descent| Effect (The black box only shows the text drawing area and is not drawn in practice.)|
 | -------- | -------- |
 | TEXT_HEIGHT_DISABLE_ALL | ![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
 | TEXT_HEIGHT_ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |

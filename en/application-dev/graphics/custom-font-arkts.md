@@ -100,7 +100,7 @@ The following table lists the APIs for registering and using theme fonts. For de
    let paragraph = paragraphBuilder.build();
    ```
 
-6. To release a custom font, call the unloadFontSync API.
+6. To release a custom font, call the **unloadFontSync** API.
 
    <!-- @[arkts_custom_font_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
    
