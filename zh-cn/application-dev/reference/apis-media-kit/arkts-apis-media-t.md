@@ -201,7 +201,7 @@ type AVRecorderState = 'idle' | 'prepared' | 'started' | 'paused' | 'stopped' | 
 
 type OnAVRecorderStateChangeHandler = (state: AVRecorderState, reason: StateChangeReason) => void
 
-状态机切换事件回调方法。
+录制状态机切换事件回调方法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
