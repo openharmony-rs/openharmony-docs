@@ -10,15 +10,15 @@
 
 - 模式切换动效，使用预览流截图做模糊动效过渡。
   
-   图片为从录像模式切换为拍照模式的效果。
+  图片为从录像模式切换为拍照模式的效果。
 
-   ![](figures/mode-switching.gif)
+  ![](figures/mode-switching.gif)
 
 - 前后置切换动效，使用预览流截图做翻转模糊动效过渡。
 
-   图片为从前置相机切换为后置相机的效果。
+  图片为从前置相机切换为后置相机的效果。
 
-   ![](figures/front-rear-switching.gif)
+  ![](figures/front-rear-switching.gif)
 
 - 拍照闪黑动效，使用闪黑组件覆盖预览流实现闪黑动效过渡。
   
@@ -34,7 +34,9 @@
 
 1. 导入依赖，需要导入相机框架、图片、ArkUI相关领域依赖。
 
-   ```ts
+   <!-- @[import_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    import { camera } from '@kit.CameraKit';
    import { image } from '@kit.ImageKit';
    import { curves } from '@kit.ArkUI';
@@ -46,21 +48,35 @@
 
    属性定义：
 
-   ```ts
-   @State isShowBlack: boolean = false; // 是否显示闪黑组件。
-   @StorageLink('captureClick') @Watch('onCaptureClick') captureClickFlag: number = 0; // 拍照闪黑动效入口。
-   @State flashBlackOpacity: number = 1; // 闪黑组件透明度。
+   <!-- @[anim_states](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   @State isShowBlur: boolean = false;
+   @State isShowBlack: boolean = false;
+   @StorageLink('modeChange') @Watch('onModeChange') modeChangeFlag: number = 0;
+   @StorageLink('switchCamera') @Watch('onSwitchCamera') switchCameraFlag: number = 0;
+   @StorageLink('frameStart') @Watch('onFrameStart') frameStartFlag: number = 0;
+   @StorageLink('captureClick') @Watch('onCaptureClick') captureClickFlag: number = 0;
+   @StorageLink('surfaceShot') screenshotPixelMap: image.PixelMap | undefined = undefined; // 预览流截图。
+   @StorageLink('curPosition') curPosition: number = 0; // 当前镜头前后置状态。
+   @State shotImgBlur: number = 0;
+   @State shotImgOpacity: number = 1;
+   @State shotImgScale: ScaleOptions = { x: 1, y: 1 };
+   @State shotImgRotation: RotateOptions = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_0 }
+   @State flashBlackOpacity: number = 1;
    ```
 
    闪黑组件的实现逻辑参考：
 
-   ```ts
+   <!-- @[flash_black_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // 拍照闪黑及前后置切换时显示，用来遮挡XComponent组件。
    if (this.isShowBlack) {
      Column()
        .key('black')
-       .width(this.getUIContext().px2vp(1080)) // 与预览流XComponent宽高保持一致，图层在预览流之上，截图组件之下。
-       .height(this.getUIContext().px2vp(1920))
+       .width(this.getUIContext().px2vp(Constants.X_COMPONENT_SURFACE_HEIGHT))
+       .height(this.getUIContext().px2vp(Constants.X_COMPONENT_SURFACE_WIDTH))
        .backgroundColor(Color.Black)
        .opacity(this.flashBlackOpacity)
    }
@@ -68,22 +84,23 @@
 
 3. 实现闪黑动效。
 
-   ```ts
-   // @Component修饰组件的内部方法。
-   flashBlackAnim() {
-     console.info('flashBlackAnim E');
-     this.flashBlackOpacity = 1; // 闪黑组件不透明。
-     this.isShowBlack = true; // 显示闪黑组件。
+   <!-- @[flash_black_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   private flashBlackAnim() {
+     Logger.info(TAG, 'flashBlackAnim E');
+     this.flashBlackOpacity = 1;
+     this.isShowBlack = true;
      animateToImmediately({
        curve: curves.interpolatingSpring(1, 1, 410, 38),
-       delay: 50, // 延时50ms，实现黑屏。
+       delay: 50,
        onFinish: () => {
-         this.isShowBlack = false; // 闪黑组件下树。
+         this.isShowBlack = false;
          this.flashBlackOpacity = 1;
-         console.info('flashBlackAnim X');
+         Logger.info(TAG, 'flashBlackAnim X');
        }
      }, () => {
-       this.flashBlackOpacity = 0; // 闪黑组件从不透明到透明。
+       this.flashBlackOpacity = 0;
      })
    }
    ```
@@ -92,14 +109,14 @@
 
    点击或触控拍照按钮，更新[@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink)绑定CaptureClick的值，触发onCaptureClick方法，动效开始播放。
 
-   ```ts
+   <!-- @[capture_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    onCaptureClick(): void {
-     console.info('onCaptureClick');
+     Logger.info(TAG, 'onCaptureClick');
      this.flashBlackAnim();
    }
    ```
-
-
 
 ## 模糊动效
 
@@ -109,7 +126,9 @@
 
 1. 导入依赖，需要导入相机框架、图片、ArkUI相关领域依赖。
 
-   ```ts
+   <!-- @[import_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    import { camera } from '@kit.CameraKit';
    import { image } from '@kit.ImageKit';
    import { curves } from '@kit.ArkUI';
@@ -119,49 +138,43 @@
 
    预览流截图通过图形提供的[image.createPixelMapFromSurface](../../reference/apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11)接口实现，surfaceId为当前预览流的surfaceId，size为当前预览流profile的宽高。创建截图工具类（ts文件），导入依赖，导出获取截图方法供页面使用，截图工具类实现参考：
 
-   ```ts
+   <!-- @[blur_animate_util](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/common/utils/BlurAnimateUtil.ts) -->
+   
+   ``` TypeScript
    export class BlurAnimateUtil {
      public static surfaceShot: image.PixelMap;
+     // ...
    
      /**
-      * 获取surface截图。
+      * 获取surface截图
       * @param surfaceId
       * @returns
       */
      public static async doSurfaceShot(surfaceId: string) {
-       console.info(`doSurfaceShot surfaceId:${surfaceId}.`);
-       if (surfaceId === '') {
-         console.error('surface not ready!');
+       Logger.info(TAG, `doSurfaceShot surfaceId:${surfaceId}.`);
+       if ('' === surfaceId) {
+         Logger.error(TAG, 'surface not ready!');
          return;
        }
        try {
-         if (BlurAnimateUtil.surfaceShot) {
-           await BlurAnimateUtil.surfaceShot.release();
+         if (this.surfaceShot) {
+           await this.surfaceShot.release();
          }
-         BlurAnimateUtil.surfaceShot = await image.createPixelMapFromSurface(surfaceId, {
-           size: { width: 1920, height: 1080 }, // 取预览流profile的宽高。
+         this.surfaceShot = await image.createPixelMapFromSurface(surfaceId, {
+           size: { width: Constants.X_COMPONENT_SURFACE_WIDTH, height: Constants.X_COMPONENT_SURFACE_HEIGHT }, // 取预览流profile的宽高。
            x: 0,
            y: 0
          });
-         let imageInfo: image.ImageInfo = await BlurAnimateUtil.surfaceShot.getImageInfo();
-         console.info('doSurfaceShot surfaceShot:' + JSON.stringify(imageInfo.size));
+         let imageInfo: image.ImageInfo = await this.surfaceShot.getImageInfo();
+         Logger.info('doSurfaceShot surfaceShot:' + JSON.stringify(imageInfo.size));
        } catch (err) {
-         console.error(err);
+         Logger.error(JSON.stringify(err))
        }
      }
    
-     /**
-      * 获取doSurfaceShot得到的截图。
-      * @returns
-      */
-    public static getSurfaceShot(): image.PixelMap | undefined {
-       if (BlurAnimateUtil.surfaceShot === null || BlurAnimateUtil.surfaceShot === undefined) {
-          console.error("SurfaceShot is null!");
-          return undefined;
-        }
-        return BlurAnimateUtil.surfaceShot;
+     public static getSurfaceShot() {
+       return this.surfaceShot;
      }
-  
    }
    ```
 
@@ -171,38 +184,42 @@
 
    属性定义：
 
-   ```ts
-   @State isShowBlur: boolean = false; // 是否显示截图组件。
-   @State isShowBlack: boolean = false; // 闪黑组件，无需使用可以删除。
-   @StorageLink('modeChange') @Watch('onModeChange') modeChangeFlag: number = 0; // 模式切换动效触发入口。
-   @StorageLink('switchCamera') @Watch('onSwitchCamera') switchCameraFlag: number = 0;// 前后置切换动效触发入口。
-   @StorageLink('frameStart') @Watch('onFrameStart') frameStartFlag: number = 0; // 动效消失入口。
-   @State screenshotPixelMap: image.PixelMap | undefined = undefined; // 截图组件PixelMap。
-   @State surfaceId: string = ''; // 当前预览流XComponent的surfaceId。
+   <!-- @[anim_states](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   @State isShowBlur: boolean = false;
+   @State isShowBlack: boolean = false;
+   @StorageLink('modeChange') @Watch('onModeChange') modeChangeFlag: number = 0;
+   @StorageLink('switchCamera') @Watch('onSwitchCamera') switchCameraFlag: number = 0;
+   @StorageLink('frameStart') @Watch('onFrameStart') frameStartFlag: number = 0;
+   @StorageLink('captureClick') @Watch('onCaptureClick') captureClickFlag: number = 0;
+   @StorageLink('surfaceShot') screenshotPixelMap: image.PixelMap | undefined = undefined; // 预览流截图。
    @StorageLink('curPosition') curPosition: number = 0; // 当前镜头前后置状态。
-   @State shotImgBlur: number = 0; // 截图组件模糊度。
-   @State shotImgOpacity: number = 1; // 截图组件透明度。
-   @State shotImgScale: ScaleOptions = { x: 1, y: 1 }; // 截图组件比例。
-   @State shotImgRotation: RotateOptions = { y: 0.5, angle: 0 }; // 截图组件旋转角度。
+   @State shotImgBlur: number = 0;
+   @State shotImgOpacity: number = 1;
+   @State shotImgScale: ScaleOptions = { x: 1, y: 1 };
+   @State shotImgRotation: RotateOptions = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_0 }
+   @State flashBlackOpacity: number = 1;
    ```
 
    截图组件的实现参考：
 
-   ```ts
-   // 截图组件，置于预览流XComponent组件之上。
+   <!-- @[blur_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    if (this.isShowBlur) {
      Column() {
        Image(this.screenshotPixelMap)
          .blur(this.shotImgBlur)
          .opacity(this.shotImgOpacity)
-         .rotate(this.shotImgRotation)// ArkUI提供，用于组件旋转。
+         .rotate(this.shotImgRotation)// ArkUI提供的旋转，用于组件沿指定坐标系进行旋转。
          .scale(this.shotImgScale)
-         .width(this.getUIContext().px2vp(1080)) // 与预览流XComponent宽高保持一致，图层在预览流之上。
-         .height(this.getUIContext().px2vp(1920))
+         .width(this.getUIContext().px2vp(Constants.X_COMPONENT_SURFACE_HEIGHT))
+         .height(this.getUIContext().px2vp(Constants.X_COMPONENT_SURFACE_WIDTH))
          .syncLoad(true)
      }
-     .width(this.getUIContext().px2vp(1080))
-     .height(this.getUIContext().px2vp(1920))
+     .width(this.getUIContext().px2vp(Constants.X_COMPONENT_SURFACE_HEIGHT))
+     .height(this.getUIContext().px2vp(Constants.X_COMPONENT_SURFACE_WIDTH))
    }
    ```
 
@@ -216,44 +233,44 @@
    >
    > 由于图形提供的[image.createPixelMapFromSurface](../../reference/apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11)接口是通过截取surface内容获取[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)，其内容和[XComponent](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件绘制逻辑不同，需要根据**前后置**镜头做不同的**图片内容旋转补偿**和**组件旋转补偿**。
 
-   ```ts
-   async showBlurAnim() {
-     console.info('showBlurAnim E');
+   <!-- @[show_blur_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   private async showBlurAnim() {
+     Logger.info(TAG, 'showBlurAnim E');
      // 获取已完成的surface截图。
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
-     if (shotPixel === undefined) {
-       console.error(`pixelMap is undefined`);
-       return;
-     }
      // 后置。
      if (this.curPosition === 0) {
-       console.info('showBlurAnim BACK');
-       // 直板机后置截图初始内容旋转补偿90°。
-       await shotPixel.rotate(90); // ImageKit提供，用于图片内容旋转。
-       // 直板机后置截图初始组件旋转补偿0°。
-       this.shotImgRotation = { y: 0.5, angle: 0 };
+       Logger.info(TAG, 'showBlurAnim BACK');
+       // 直板机后置截图旋转补偿90°。
+       await shotPixel.rotate(BlurAnimateUtil.IMG_ROTATE_ANGLE_90);
+       // 直板机后置截图初始翻转0°。
+       this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_0 };
      } else {
-       console.info('showBlurAnim FRONT');
-       // 直板机前置截图内容旋转补偿270°。
-       await shotPixel.rotate(270);
-       // 直板机前置截图组件旋转补偿180°。
-       this.shotImgRotation = { y: 0.5, angle: 180 };
+       Logger.info(TAG, 'showBlurAnim FRONT');
+       // 直板机前置截图旋转补偿270°。
+       await shotPixel.rotate(BlurAnimateUtil.IMG_ROTATE_ANGLE_270);
+       // 直板机前置截图镜像补偿。
+       this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_180 };
      }
      this.screenshotPixelMap = shotPixel;
      // 初始化动效参数。
      this.shotImgBlur = 0; // 无模糊。
      this.shotImgOpacity = 1; // 不透明。
-     this.isShowBlur = true;  // 显示截图组件。
+     // 触发页面渲染。
+     this.isShowBlur = true;
      animateToImmediately(
        {
-         duration: 200,
+         duration: BlurAnimateUtil.SHOW_BLUR_DURATION,
          curve: Curve.Friction,
          onFinish: async () => {
-           console.info('showBlurAnim X');
+           Logger.info(TAG, 'showBlurAnim X');
          }
        },
        () => {
-         this.shotImgBlur = 48; // 截图组件模糊度变化动效。
+         // 截图模糊度变化动效。
+         this.shotImgBlur = BlurAnimateUtil.ANIM_MODE_SWITCH_BLUR;
        }
      );
    }
@@ -263,22 +280,25 @@
 
    模糊消失动效：由新模式预览流首帧回调[on('frameStart')](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#onframestart)触发，截图组件模糊到清晰，显示新预览流。
 
-   ```ts
-   hideBlurAnim(): void {
+   <!-- @[hide_blur_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   private hideBlurAnim(): void {
      this.isShowBlack = false;
-     console.info('hideBlurAnim E');
+     Logger.info(TAG, 'hideBlurAnim E');
      animateToImmediately({
-       duration: 200,
+       duration: BlurAnimateUtil.HIDE_BLUR_DURATION,
        curve: Curve.FastOutSlowIn,
        onFinish: () => {
-         this.isShowBlur = false; // 模糊组件下树。
+         // 模糊组件下树。
+         this.isShowBlur = false;
          this.shotImgBlur = 0;
          this.shotImgOpacity = 1;
-         console.info('hideBlurAnim X');
+         Logger.info(TAG, 'hideBlurAnim X');
        }
      }, () => {
        // 截图透明度变化动效。
-       this.shotImgOpacity = 0; // 截图组件透明度变化动效。
+       this.shotImgOpacity = 0;
      });
    }
    ```
@@ -291,142 +311,137 @@
 
    为保证预览流在翻转时不露出，需要构建一个闪黑组件用于遮挡XComponent组件，构建方式参考[闪黑动效](#闪黑动效)-步骤2。
 
-   ```ts
+   <!-- @[rotate_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    /**
-    * 先向外翻转90°，前后置切换触发。
+    * 先向外翻转90°，前后置切换触发
     */
-   async rotateFirstAnim() {
-     console.info('rotateFirstAnim E');
+   private async rotateFirstAnim() {
+     Logger.info(TAG, 'rotateFirstAnim E');
      // 获取已完成的surface截图。
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
-     if (shotPixel === undefined) {
-       console.error(`pixelMap is undefined`);
-       return;
-     }
      // 后置切前置。
      if (this.curPosition === 1) {
-       console.info('rotateFirstAnim BACK');
-       // 直板机后置切前置截图初始内容旋转补偿90°。
-       await shotPixel.rotate(90); // ImageKit提供，用于图片内容旋转。
-       // 直板机后置切前置截图初始组件旋转补偿0°。
-       this.shotImgRotation = { y: 0.5, angle: 0 };
+       Logger.info(TAG, 'rotateFirstAnim BACK');
+       // 直板机后置切前置截图旋转补偿90°。
+       await shotPixel.rotate(BlurAnimateUtil.IMG_ROTATE_ANGLE_90); // Image Kit提供的旋转，用于处理图片本身的旋转。
+       // 直板机后置切前置截图初始翻转0°。
+       this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_0 };
      } else {
-       console.info('rotateFirstAnim FRONT');
-       // 直板机前置切后置截图初始内容旋转补偿270°。
-       await shotPixel.rotate(270);
-       // 直板机前置切后置截图初始组件旋转补偿180°。
-       this.shotImgRotation = { y: 0.5, angle: 180 };
+       Logger.info(TAG, 'rotateFirstAnim FRONT');
+       // 直板机前置切后置截图旋转补偿270°。
+       await shotPixel.rotate(BlurAnimateUtil.IMG_ROTATE_ANGLE_270);
+       // 直板机前置切后置截图初始翻转180°。
+       this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_180 };
      }
      this.screenshotPixelMap = shotPixel;
-     this.isShowBlack = true; // 显示闪黑组件，覆盖预览流保证视觉效果。
-     this.isShowBlur = true; // 显示截图组件。
+     // 触发页面渲染。
+     this.isShowBlack = true;
+     this.isShowBlur = true;
      animateToImmediately(
        {
-         duration: 200,
-         delay: 50, // 时延保证组件缩放模糊动效先行，再翻转,视觉效果更好。
+         duration: BlurAnimateUtil.ROTATION_DURATION,
+         delay: BlurAnimateUtil.FLIP_DELAY, // 时延保证组件缩放模糊动效先行，再翻转后视觉效果更好。
          curve: curves.cubicBezierCurve(0.20, 0.00, 0.83, 1.00),
          onFinish: () => {
-           console.info('rotateFirstAnim X');
-           // 在onFinish后触发二段翻转。
+           Logger.info(TAG, 'rotateFirstAnim X');
+           // 在onFinish后触发二段旋转。
            this.rotateSecondAnim();
          }
        },
        () => {
-         // 截图向外翻转动效。
+         // 截图向翻转动效。
          if (this.curPosition === 1) {
-           this.shotImgRotation = { y: 0.5, angle: 90 };
+           this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_90 };
          } else {
-           this.shotImgRotation = { y: 0.5, angle: 270 };
+           this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_270 };
          }
        }
      )
    }
    
    /**
-    * 再向内翻转90°。
+    * 再向内翻转90°
     */
    async rotateSecondAnim() {
-     console.info('rotateSecondAnim E');
+     Logger.info(TAG, 'rotateSecondAnim E');
      // 获取已完成的surface截图。
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
-     if (shotPixel === undefined) {
-       console.error(`pixelMap is undefined`);
-       return;
-     }
      // 后置。
      if (this.curPosition === 1) {
-       // 直板机后置镜头内容旋转补偿90°。
-       await shotPixel.rotate(90);
-       // 组件旋转调整为-90°，保证二段翻转后，图片不是镜像的。
-       this.shotImgRotation = { y: 0.5, angle: 90 };
+       // 直板机后置镜头旋转补偿90°。
+       await shotPixel.rotate(BlurAnimateUtil.IMG_ROTATE_ANGLE_90); // Image Kit提供的旋转，用于处理图片本身的旋转。
+       // 瞬时调整为-90°，保证二段旋转后，图片不是镜像的。
+       this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_MINUS_90 };
      } else { // 前置。
-       // 直板机前置截图内容旋转补偿270°。
-       await shotPixel.rotate(270);
-       // 直板机前置截图组件旋转补偿180°。
-       this.shotImgRotation = { y: 0.5, angle: 180 };
+       // 直板机前置截图旋转补偿270°。
+       await shotPixel.rotate(BlurAnimateUtil.IMG_ROTATE_ANGLE_270);
+       // 直板机前置截图镜像补偿。
+       this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_180 };
      }
      this.screenshotPixelMap = shotPixel;
+   
      animateToImmediately(
        {
-         duration: 200,
+         duration: BlurAnimateUtil.ROTATION_DURATION,
          curve: curves.cubicBezierCurve(0.17, 0.00, 0.20, 1.00),
          onFinish: () => {
-           console.info('rotateSecondAnim X');
+           Logger.info(TAG, 'rotateSecondAnim X');
          }
        },
        () => {
-         // 截图向内翻转动效，翻转至初始状态。
+         // 截图翻转为初始状态。
          if (this.curPosition === 1) {
-           this.shotImgRotation = { y: 0.5, angle: 0 };
+           this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_0 };
          } else {
-           this.shotImgRotation = { y: 0.5, angle: 180 };
+           this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_180 };
          }
        }
      )
    }
    
    /**
-    * 向外翻转90°同时。
+    * 向外翻转90°同时
     */
    blurFirstAnim() {
-     console.info('blurFirstAnim E');
+     Logger.info(TAG, 'blurFirstAnim E');
      // 初始化动效参数。
      this.shotImgBlur = 0; // 无模糊。
      this.shotImgOpacity = 1; // 不透明。
      this.shotImgScale = { x: 1, y: 1 };
      animateToImmediately(
        {
-         duration: 200,
+         duration: BlurAnimateUtil.ROTATION_DURATION,
          curve: Curve.Sharp,
          onFinish: () => {
-           console.info('blurFirstAnim X');
+           Logger.info(TAG, 'blurFirstAnim X');
            this.blurSecondAnim();
          }
        },
        () => {
-         // 截图模糊动效。
-         this.shotImgBlur = 48;
-         // 截图比例缩小动效。
-         this.shotImgScale = { x: 0.75, y: 0.75 };
+         // 截图模糊度变化动效。
+         this.shotImgBlur = BlurAnimateUtil.ANIM_MODE_SWITCH_BLUR;
+         // 截图比例动效。
+         this.shotImgScale = { x: BlurAnimateUtil.IMG_SCALE, y: BlurAnimateUtil.IMG_SCALE };
        }
      );
    }
    
    /**
-    * 向内翻转90°同时。
+    * 向内翻转90°同时
     */
    blurSecondAnim() {
-     console.info('blurSecondAnim E');
+     Logger.info(TAG, 'blurSecondAnim E');
      animateToImmediately(
        {
-         duration: 200,
+         duration: BlurAnimateUtil.ROTATION_DURATION,
          curve: Curve.Sharp,
          onFinish: () => {
-           console.info('blurSecondAnim X');
+           Logger.info(TAG, 'blurSecondAnim X');
          }
        },
        () => {
-         // 截图比例恢复动效。
          this.shotImgScale = { x: 1, y: 1 };
        }
      )
@@ -437,18 +452,22 @@
 
    模式切换动效触发：点击或触控模式按钮立即执行doSurfaceShot截图方法，更新[@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink)绑定modeChange的值，触发onModeChange方法，开始动效。
 
-   ```ts
+   <!-- @[on_mode_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    onModeChange(): void {
-     console.info('onModeChange');
+     Logger.info(TAG, 'onModeChange');
      this.showBlurAnim();
    }
    ```
 
    前后置切换动效触发：点击或触控前后置切换按钮立即执行doSurfaceShot截图方法，更新[@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink)绑定switchCamera的值，触发onSwitchCamera方法，开始动效。
 
-   ```ts
+   <!-- @[on_switch_camera](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    onSwitchCamera(): void {
-     console.info('onSwitchCamera');
+     Logger.info(TAG, 'onSwitchCamera');
      this.blurFirstAnim();
      this.rotateFirstAnim();
    }
@@ -456,9 +475,11 @@
 
    模糊消失动效触发：监听预览流首帧回调[on('frameStart')](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#onframestart)，更新[@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink)绑定frameStart的值，触发onFrameStart方法，开始动效。
 
-   ```ts
+   <!-- @[on_frame_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/cameraAnimSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    onFrameStart(): void {
-     console.info('onFrameStart');
+     Logger.info(TAG, 'onFrameStart');
      this.hideBlurAnim();
    }
    ```
