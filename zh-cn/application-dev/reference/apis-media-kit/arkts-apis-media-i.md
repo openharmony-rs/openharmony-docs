@@ -85,7 +85,7 @@ import { media } from '@kit.MediaKit';
 function printfItemDescription(obj: media.MediaDescription, key: string) {
   let property: Object = obj[key];
   console.info('audio key is ' + key); // 通过key值获取对应的value。key值具体可见MediaDescriptionKey。
-  console.info('audio value is ' + property); //对应key值得value。其类型可为任意类型，具体key对应value的类型可参考MediaDescriptionKey。
+  console.info('audio value is ' + property); // 对应key值得value。其类型可为任意类型，具体key对应value的类型可参考MediaDescriptionKey。
 }
 
 let avPlayer: media.AVPlayer | undefined = undefined;
@@ -96,7 +96,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
     avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
       if (arrList != null) {
         for (let i = 0; i < arrList.length; i++) {
-          printfItemDescription(arrList[i], media.MediaDescriptionKey.MD_KEY_TRACK_TYPE);  //打印出每条轨道MD_KEY_TRACK_TYPE的值。
+          printfItemDescription(arrList[i], media.MediaDescriptionKey.MD_KEY_TRACK_TYPE);  // 打印出每条轨道MD_KEY_TRACK_TYPE的值。
         }
       } else {
         console.error(`Failed to get TrackDescription, error:${error}`);
