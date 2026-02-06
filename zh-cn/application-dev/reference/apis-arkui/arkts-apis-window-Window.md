@@ -12189,9 +12189,7 @@ try {
 
 ## clearWindowMask<sup>24+</sup>
 
-ArkTs-Dyn: clearWindowMask(): Promise&lt;void&gt;
-
-ArkTs-Sta: clearWindowMask(): Promise&lt;void&gt;
+clearWindowMask(): Promise&lt;void&gt;
 
 清除异形窗口的掩码使其恢复为矩形窗口，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
 
