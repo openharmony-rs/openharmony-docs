@@ -116,7 +116,7 @@ The triggering conditions are related to the code structure, resource consumptio
 3. Locate reports in the list whose names contain **es2abc**.
 4. Double-click the report to view the crash stack.
 
-   If a function is called multiple times consecutively (for example, A → A → A…), the stack may overflow due to deep recursion.
+   If a function is called multiple times consecutively (for example, A → A → A...), the stack may overflow due to deep recursion.
 
 
 > **NOTE**
