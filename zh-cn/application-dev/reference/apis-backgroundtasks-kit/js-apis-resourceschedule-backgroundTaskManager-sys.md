@@ -3,7 +3,9 @@
 本模块提供申请后台任务的接口。当应用退至后台时，开发者可以通过本模块接口为应用申请短时、长时任务，避免应用进程被终止或挂起。
 
 >  **说明：**
-> 
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
 > - 当前页面仅包含本模块的系统接口，其他公开接口请参见[@ohos.resourceschedule.backgroundTaskManager (后台任务管理)](js-apis-resourceschedule-backgroundTaskManager.md)。
@@ -20,18 +22,22 @@ applyEfficiencyResources(request: EfficiencyResourcesRequest): void
 
 申请能效资源。
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API**: 此接口为系统接口。
+**ArkTS-Dyn起始版本：** 9
 
-**参数**：
+**ArkTS-Sta起始版本：** 23
+
+**系统API：** 此接口为系统接口。
+
+**参数：**
 
 | 参数名     | 类型      | 必填   | 说明                                       |
 | ------- | ------- | ---- | ---------------------------------------- |
 | request | [EfficiencyResourcesRequest](#efficiencyresourcesrequest) | 是    | 请求的必要信息，包括资源类型、超时时间等。 |
 
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -46,7 +52,7 @@ applyEfficiencyResources(request: EfficiencyResourcesRequest): void
 | 9800004 | System service operation failed. |
 | 18700001 | Caller information verification failed for an energy resource request. |
 
-**示例**：
+**示例：**
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -73,11 +79,15 @@ resetAllEfficiencyResources(): void
 
 释放已申请的全部能效资源。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API**: 此接口为系统接口。
+**ArkTS-Dyn起始版本：** 9
 
-**错误码**：
+**ArkTS-Sta起始版本：** 23
+
+**系统API：** 此接口为系统接口。
+
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -92,7 +102,7 @@ resetAllEfficiencyResources(): void
 | 9800004 | System service operation failed. |
 | 18700001 | Caller information verification failed for an energy resource request. |
 
-**示例**：
+**示例：**
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -110,17 +120,17 @@ getAllEfficiencyResources(): Promise&lt;EfficiencyResourcesInfo[]&gt;
 
 获取已申请的所有能效资源信息，如能效资源类型等，使用Promise异步回调。
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API**: 此接口为系统接口。
+**系统API：** 此接口为系统接口。
 
-**返回值**：
+**返回值：**
 
 | 类型                                            | 说明          |
 |-----------------------------------------------|-------------|
 |  Promise&lt;[EfficiencyResourcesInfo](#efficiencyresourcesinfo20)[]&gt; | Promise对象，返回所有能效资源信息。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -131,7 +141,7 @@ getAllEfficiencyResources(): Promise&lt;EfficiencyResourcesInfo[]&gt;
 | 18700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 18700004 | System service operation failed. |
 
-**示例**：
+**示例：**
 
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -152,7 +162,11 @@ try {
 
 长时任务模式。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
@@ -162,15 +176,19 @@ try {
 
 能效资源申请参数。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API**: 此接口为系统接口。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**系统API：** 此接口为系统接口。
 
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| resourceTypes   | number  | 否    | 否    | 申请的资源类型。                               |
+| resourceTypes   | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 申请的资源类型。                               |
 | isApply         | boolean | 否    | 否    | 申请或释放资源。<br>- true表示申请资源。<br>- false表示释放部分资源。 |
-| timeOut         | number  | 否    | 否    | 资源使用时间，单位为毫秒。                |
+| timeOut         | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 资源使用时间，单位为毫秒。                |
 | isPersist       | boolean | 否    | 是    | 是否永久持有资源，默认为false。<br>- true表示永久持有。<br>- false表示有限时间内持有。|
 | isProcess       | boolean | 否    | 是    | 进程或应用申请，默认为false。<br>- true表示进程申请。<br>- false表示应用申请。         |
 | reason          | string  | 否    | 否    | 申请资源原因。                |
@@ -179,9 +197,13 @@ try {
 
 能效资源类型。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API**: 此接口为系统接口。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**系统API：** 此接口为系统接口。
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
@@ -199,9 +221,9 @@ try {
 
 能效资源信息。
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API**: 此接口为系统接口。
+**系统API：** 此接口为系统接口。
 
 | 名称                             | 类型      | 只读   | 可选   | 说明          |
 |--------------------------------|---------| ---- | ---- |-------------|

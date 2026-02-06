@@ -4,6 +4,8 @@
 
 >  **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >  本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 >  本模块接口仅可在Stage模型下使用。
@@ -21,6 +23,10 @@ startWork(work: WorkInfo): void
 申请延迟任务。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -76,6 +82,10 @@ stopWork(work: WorkInfo, needCancel?: boolean): void
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名        | 类型                    | 必填   | 说明         |
@@ -124,20 +134,26 @@ stopWork(work: WorkInfo, needCancel?: boolean): void
 
 ## workScheduler.getWorkStatus
 
-getWorkStatus(workId: number, callback : AsyncCallback\<WorkInfo>): void
+ArkTS-Dyn: getWorkStatus(workId: number, callback : AsyncCallback\<WorkInfo>): void
+
+ArkTS-Sta: getWorkStatus(workId: int, callback : AsyncCallback\<WorkInfo>): void
 
 通过workId获取延迟任务，使用Callback异步回调。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名      | 类型                                    | 必填   | 说明                                       |
 | -------- | ------------------------------------- | ---- | ---------------------------------------- |
-| workId   | number                                | 是    | 延迟任务Id。                                 |
+| workId   | ArkTS-Dyn: number <br> ArkTS-Sta: int                                | 是    | 延迟任务Id。                                 |
 | callback | AsyncCallback\<[WorkInfo](#workinfo)> | 是    | 回调函数。如果workId有效，则返回从WorkSchedulerService获取的任务，否则抛出异常。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -149,7 +165,7 @@ getWorkStatus(workId: number, callback : AsyncCallback\<WorkInfo>): void
 | 9700003 | System service operation failed. |
 | 9700004 | Check on workInfo failed. |
 
-**示例**：
+**示例：**
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -165,25 +181,31 @@ getWorkStatus(workId: number, callback : AsyncCallback\<WorkInfo>): void
 
 ## workScheduler.getWorkStatus
 
-getWorkStatus(workId: number): Promise\<WorkInfo>
+ArkTS-Dyn: getWorkStatus(workId: number): Promise\<WorkInfo>
+
+ArkTS-Sta: getWorkStatus(workId: int): Promise\<WorkInfo>
 
 通过workId获取延迟任务，使用Promise异步回调。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名    | 类型     | 必填   | 说明       |
 | ------ | ------ | ---- | -------- |
-| workId | number | 是    | 延迟任务Id。 |
+| workId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是    | 延迟任务Id。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                              | 说明                                       |
 | ------------------------------- | ---------------------------------------- |
 | Promise\<[WorkInfo](#workinfo)> | Promise对象，如果workId有效，则返回从WorkSchedulerService获取的任务，否则抛出异常。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -195,7 +217,7 @@ getWorkStatus(workId: number): Promise\<WorkInfo>
 | 9700003 | System service operation failed. |
 | 9700004 | Check on workInfo failed. |
 
-**示例**：
+**示例：**
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -214,15 +236,15 @@ obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
 
 获取当前应用所有的延迟任务，使用Callback异步回调。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**参数：**
 
 | 参数名      | 类型                   | 必填   | 说明                              |
 | -------- | -------------------- | ---- | ------------------------------- |
 | callback |  AsyncCallback\<void> | 是    | 回调函数，获取成功时，err为undefined，否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -239,15 +261,19 @@ obtainAllWorks(callback : AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
 
 获取当前应用所有的延迟任务，使用Callback异步回调。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名      | 类型                   | 必填   | 说明                              |
 | -------- | -------------------- | ---- | ------------------------------- |
 | callback |  AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt; | 是    | 回调函数，获取成功时，err为undefined，否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -258,7 +284,7 @@ obtainAllWorks(callback : AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
 
-**示例**：
+**示例：**
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -278,15 +304,19 @@ obtainAllWorks(): Promise\<Array\<WorkInfo>>
 
 获取当前应用所有的延迟任务，使用Promise异步回调。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**返回值**：
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
 
 | 类型                                     | 说明                             |
 | -------------------------------------- | ------------------------------ |
 | Promise<Array\<[WorkInfo](#workinfo)>> | Promise对象，返回当前应用所有的延迟任务。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -297,7 +327,7 @@ obtainAllWorks(): Promise\<Array\<WorkInfo>>
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
 
-**示例**：
+**示例：**
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -315,9 +345,13 @@ stopAndClearWorks(): void
 
 停止和取消当前应用所有的延迟任务。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**错误码**：
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -328,7 +362,7 @@ stopAndClearWorks(): void
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
 
-**示例**：
+**示例：**
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -349,16 +383,16 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**参数：**
 
 | 参数名      | 类型                   | 必填   | 说明                                       |
 | -------- | -------------------- | ---- | ---------------------------------------- |
 | workId   | number               | 是    | 指定延迟任务的Id。                                 |
 | callback | AsyncCallback\<void> | 是    | 回调函数。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -372,20 +406,26 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
 ## workScheduler.isLastWorkTimeOut<sup>10+<sup>
 
-isLastWorkTimeOut(workId: number, callback : AsyncCallback\<boolean>): void
+ArkTS-Dyn: isLastWorkTimeOut(workId: number, callback : AsyncCallback\<boolean>): void
+
+ArkTS-Sta: isLastWorkTimeOut(workId: int, callback : AsyncCallback\<boolean>): void
 
 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名      | 类型                   | 必填   | 说明                                       |
 | -------- | -------------------- | ---- | ---------------------------------------- |
-| workId   | number               | 是    | 指定延迟任务的Id。                                 |
+| workId   | ArkTS-Dyn: number <br> ArkTS-Sta: int               | 是    | 指定延迟任务的Id。                                 |
 | callback | AsyncCallback\<boolean> | 是    | 回调函数。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -397,7 +437,7 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<boolean>): void
 | 9700003 | System service operation failed. |
 | 9700004 | Check on workInfo failed. |
 
-**示例**：
+**示例：**
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -413,25 +453,31 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<boolean>): void
 
 ## workScheduler.isLastWorkTimeOut
 
-isLastWorkTimeOut(workId: number): Promise\<boolean>
+ArkTS-Dyn: isLastWorkTimeOut(workId: number): Promise\<boolean>
+
+ArkTS-Sta: isLastWorkTimeOut(workId: int): Promise\<boolean>
 
 检查延迟任务的最后一次执行是否超时，使用Promise形式返回。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名    | 类型     | 必填   | 说明       |
 | ------ | ------ | ---- | -------- |
-| workId | number | 是    | 指定延迟任务的Id。 |
+| workId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是    | 指定延迟任务的Id。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                                       |
 | ----------------- | ---------------------------------------- |
 | Promise\<boolean> | Promise对象。返回true表示指定任务的最后一次执行超时，false表示未超时。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -443,7 +489,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 | 9700003 | System service operation failed. |
 | 9700004 | Check on workInfo failed. |
 
-**示例**：
+**示例：**
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -461,32 +507,40 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 延迟任务的具体信息。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型                                | 必填   | 说明               |
 | --------------- | --------------------------------- | ---- | ---------------- |
-| workId          | number                            | 是    | 延迟任务ID。          |
+| workId          | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 是    | 延迟任务ID。          |
 | bundleName      | string                            | 是    | 延迟任务所在应用的包名。           |
 | abilityName     | string                            | 是    | 包内ability名称。 |
 | networkType     | [NetworkType](#networktype)       | 否    | 网络类型。             |
 | isCharging      | boolean                           | 否    | 是否充电，默认为false。<br>- true表示充电触发延迟回调。<br>- false表示不充电触发延迟回调。|
 | chargerType     | [ChargingType](#chargingtype)     | 否    | 充电类型。             |
-| batteryLevel    | number                            | 否    | 电量。              |
+| batteryLevel    | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 否    | 电量。              |
 | batteryStatus   | [BatteryStatus](#batterystatus)   | 否    | 电池状态。             |
 | storageRequest  | [StorageRequest](#storagerequest) | 否    | 存储状态。             |
 | isRepeat        | boolean                           | 否    | 是否循环任务，默认为false。<br>- true表示循环任务。 <br>- false表示非循环任务。 |
-| repeatCycleTime | number                            | 否    | 循环间隔，单位为毫秒。             |
-| repeatCount     | number                            | 否    | 循环次数。             |
+| repeatCycleTime | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 否    | 循环间隔，单位为毫秒。             |
+| repeatCount     | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 否    | 循环次数。             |
 | isPersisted     | boolean                           | 否    | 注册的延迟任务是否可保存在系统中，默认为false。<br>- true表示可保存，即系统重启后，任务可恢复。<br>- false表示不可保存。|
 | isDeepIdle      | boolean                           | 否    | 是否要求设备进入空闲状态，默认为false。<br>- true表示需要。<br>- false表示不需要。   |
-| idleWaitTime    | number                            | 否    | 空闲等待时间，单位为毫秒。           |
-| parameters      | Record<string, number \| string \| boolean>  | 否    | 携带参数信息。 |
+| idleWaitTime    | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 否    | 空闲等待时间，单位为毫秒。           |
+| parameters      | ArkTS-Dyn: Record<string, number \| string \| boolean> <br> ArkTS-Sta: Record<string, int \| double \| string \| boolean>  | 否    | 携带参数信息。 |
 
 ## NetworkType
 
 触发延迟回调的网络类型。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                     | 值  | 说明                      |
 | ---------------------- | ---- | ----------------------- |
@@ -501,7 +555,11 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 触发延迟回调的充电类型。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                        | 值  | 说明                   |
 | ------------------------- | ---- | -------------------- |
@@ -514,7 +572,11 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 触发延迟回调的电池状态。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                         | 值  | 说明                         |
 | -------------------------- | ---- | -------------------------- |
@@ -526,7 +588,11 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 触发延迟回调的存储状态。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                        | 值  | 说明                             |
 | ------------------------- | ---- | ------------------------------ |

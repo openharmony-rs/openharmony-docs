@@ -4,6 +4,8 @@
 
 >  **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
@@ -23,22 +25,26 @@ requestSuspendDelay(reason: string, callback: Callback&lt;void&gt;): DelaySuspen
 >
 > 短时任务的申请和使用过程中的约束与限制请参考[指南](../../task-management/transient-task.md#约束与限制)。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
-**参数**：
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名      | 类型                   | 必填   | 说明                             |
 | -------- | -------------------- | ---- | ------------------------------ |
 | reason   | string               | 是    | 申请短时任务的原因。                     |
 | callback | Callback&lt;void&gt; | 是    | 短时任务即将超时的回调函数，一般在超时前6秒，通过此回调通知应用。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                    | 说明        |
 | ------------------------------------- | --------- |
 | [DelaySuspendInfo](#delaysuspendinfo) | 返回短时任务信息。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -52,7 +58,7 @@ requestSuspendDelay(reason: string, callback: Callback&lt;void&gt;): DelaySuspen
 | 9900001 | Caller information verification failed for a transient task. |
 | 9900002 | Transient task verification failed. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -76,20 +82,26 @@ try {
 
 ## backgroundTaskManager.getRemainingDelayTime
 
-getRemainingDelayTime(requestId: number, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getRemainingDelayTime(requestId: number, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getRemainingDelayTime(requestId: int, callback: AsyncCallback&lt;int&gt;): void
 
 获取本次短时任务的剩余时间，使用callback异步回调。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
-**参数**：
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名       | 类型                          | 必填   | 说明                                       |
 | --------- | --------------------------- | ---- | ---------------------------------------- |
-| requestId | number                      | 是    | 短时任务的请求ID。                               |
-| callback  | AsyncCallback&lt;number&gt; | 是    | 回调函数，返回本次短时任务的剩余时间，单位：ms。 |
+| requestId | ArkTS-Dyn: number <br> ArkTS-Sta: int                      | 是    | 短时任务的请求ID。                               |
+| callback  | ArkTS-Dyn: AsyncCallback&lt;number&gt; <br> ArkTS-Sta: AsyncCallback&lt;int&gt;| 是    | 回调函数，返回本次短时任务的剩余时间，单位：ms。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -104,7 +116,9 @@ getRemainingDelayTime(requestId: number, callback: AsyncCallback&lt;number&gt;):
 | 9900002 | Transient task verification failed. |
 
 
-**示例**：
+**示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -119,28 +133,49 @@ backgroundTaskManager.getRemainingDelayTime(id, (error: BusinessError, res: numb
 })
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let id: int = 1;
+backgroundTaskManager.getRemainingDelayTime(id, (error: BusinessError, res: int) => {
+    if(error) {
+        console.error(`callback => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
+    } else {
+        console.log('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+    }
+})
+```
+
 
 ## backgroundTaskManager.getRemainingDelayTime
 
-getRemainingDelayTime(requestId: number): Promise&lt;number&gt;
+ArkTS-Dyn: getRemainingDelayTime(requestId: number): Promise&lt;number&gt;
+
+ArkTS-Sta: getRemainingDelayTime(requestId: int): Promise&lt;number&gt;
 
 获取本次短时任务的剩余时间，使用promise异步回调。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
-**参数**：
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名       | 类型     | 必填   | 说明         |
 | --------- | ------ | ---- | ---------- |
-| requestId | number | 是    | 短时任务的请求ID。 |
+| requestId | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是    | 短时任务的请求ID。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                    | 说明                                       |
 | --------------------- | ---------------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回本次短时任务的剩余时间，单位：ms。 |
+| ArkTS-Dyn: Promise&lt;number&gt;  ArkTS-Sta: Promise&lt;int&gt;| Promise对象，返回本次短时任务的剩余时间，单位：ms。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -154,7 +189,7 @@ getRemainingDelayTime(requestId: number): Promise&lt;number&gt;
 | 9900001 | Caller information verification failed for a transient task. |
 | 9900002 | Transient task verification failed. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -170,19 +205,25 @@ backgroundTaskManager.getRemainingDelayTime(id).then((res: number) => {
 
 ## backgroundTaskManager.cancelSuspendDelay
 
-cancelSuspendDelay(requestId: number): void
+ArkTS-Dyn: cancelSuspendDelay(requestId: number): void
+
+ArkTS-Sta: cancelSuspendDelay(requestId: int): void
 
 取消短时任务。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
-**参数**：
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名       | 类型     | 必填   | 说明         |
 | --------- | ------ | ---- | ---------- |
-| requestId | number | 是    | 短时任务的请求ID。 |
+| requestId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是    | 短时任务的请求ID。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -196,7 +237,7 @@ cancelSuspendDelay(requestId: number): void
 | 9900001 | Caller information verification failed for a transient task. |
 | 9900002 | Transient task verification failed. |
 
-**示例**：
+**示例：**
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -215,15 +256,15 @@ getTransientTaskInfo(): Promise&lt;TransientTaskInfo&gt;
 
 获取所有短时任务信息，如当日剩余总配额等，使用Promise异步回调。
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
-**返回值**：
+**返回值：**
 
 | 类型                                      | 说明          |
 |-----------------------------------------|-------------|
 |  Promise&lt;[TransientTaskInfo](#transienttaskinfo20)&gt; | Promise对象，返回所有短时任务信息。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -233,7 +274,7 @@ getTransientTaskInfo(): Promise&lt;TransientTaskInfo&gt;
 | 9900003 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9900004 | System service operation failed. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -256,13 +297,17 @@ startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: Want
 
 申请长时任务，支持申请一种类型，使用callback异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。
 
-**需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**参数**：
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名       | 类型                                 | 必填   | 说明                                       |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
@@ -271,7 +316,7 @@ startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: Want
 | wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) | 是    | 通知参数，用于指定点击长时任务通知后跳转的界面。           |
 | callback  | AsyncCallback&lt;void&gt;          | 是    | 回调函数，申请长时任务成功时，err为undefined，否则为错误对象。    |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -288,7 +333,7 @@ startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: Want
 | 9800006 | Notification verification failed for a continuous task. |
 | 9800007 | Continuous task storage failed. |
 
-**示例**：
+**示例：**
 
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -345,13 +390,17 @@ startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: Want
 
 申请长时任务，支持申请一种类型，使用promise异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。
 
-**需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**参数**：
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名       | 类型                                 | 必填   | 说明                                       |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
@@ -359,13 +408,13 @@ startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: Want
 | bgMode    | [BackgroundMode](#backgroundmode) | 是    | 长时任务类型。                          |
 | wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) | 是    | 通知参数，用于指定点击长时任务通知后跳转的界面。                 |
 
-**返回值**：
+**返回值：**
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
 | Promise\<void> | 无返回结果的Promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -382,7 +431,7 @@ startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: Want
 | 9800006 | Notification verification failed for a continuous task. |
 | 9800007 | Continuous task storage failed. |
 
-**示例**：
+**示例：**
 
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -437,16 +486,20 @@ stopBackgroundRunning(context: Context, callback: AsyncCallback&lt;void&gt;): vo
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**参数**：
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名      | 类型                        | 必填   | 说明                                       |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
 | context  | Context                   | 是    | 应用运行的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数，取消长时任务成功时，err为undefined，否则为错误对象。|
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -461,7 +514,7 @@ stopBackgroundRunning(context: Context, callback: AsyncCallback&lt;void&gt;): vo
 | 9800006 | Notification verification failed for a continuous task. |
 | 9800007 | Continuous task storage failed. |
 
-**示例**：
+**示例：**
 
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -495,21 +548,25 @@ stopBackgroundRunning(context: Context): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**参数**：
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名     | 类型      | 必填   | 说明                                       |
 | ------- | ------- | ---- | ---------------------------------------- |
 | context | Context | 是    | 应用运行的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 
-**返回值**：
+**返回值：**
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
 | Promise\<void> | 无返回结果的Promise对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -524,7 +581,7 @@ stopBackgroundRunning(context: Context): Promise&lt;void&gt;
 | 9800006 | Notification verification failed for a continuous task. |
 | 9800007 | Continuous task storage failed. |
 
-**示例**：
+**示例：**
 
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -552,13 +609,17 @@ startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent
 
 申请长时任务，支持申请多种类型，使用promise异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。
 
-**需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**参数**：
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名       | 类型                                 | 必填   | 说明                                       |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
@@ -566,13 +627,13 @@ startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent
 | bgModes    | string[] | 是    | 长时任务类型，取值范围请参考长时任务类型中的[配置项](../../task-management/continuous-task.md#使用场景)。<br> **说明：** 支持传入一个或多个类型。|
 | wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) | 是    | 通知参数，用于指定点击长时任务通知后跳转的界面。                 |
 
-**返回值**：
+**返回值：**
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
 | Promise\<ContinuousTaskNotification> | Promise对象，返回[ContinuousTaskNotification](#continuoustasknotification12)类型对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -588,7 +649,7 @@ startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent
 | 9800006 | Notification verification failed for a continuous task. |
 | 9800007 | Continuous task storage failed. |
 
-**示例**：
+**示例：**
 
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -684,26 +745,30 @@ updateBackgroundRunning(context: Context, bgModes: string[]): Promise&lt;Continu
 
 更新长时任务类型，使用promise异步回调。长时任务更新成功后，会有通知栏消息，没有提示音。
 
-**需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**参数**：
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名       | 类型                                 | 必填   | 说明                                       |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | 是    | 应用运行的上下文。 |
 | bgModes    | string[] | 是    | 更新后的长时任务类型，取值范围请参考长时任务类型中的[配置项](../../task-management/continuous-task.md#使用场景)。<br> **说明：** 支持传入一个或多个类型。|
 
-**返回值**：
+**返回值：**
 
 | 类型             | 说明               |
 | -------------- | ---------------- |
 | Promise\<ContinuousTaskNotification> | Promise对象，返回[ContinuousTaskNotification](#continuoustasknotification12)类型对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -719,7 +784,7 @@ updateBackgroundRunning(context: Context, bgModes: string[]): Promise&lt;Continu
 | 9800006 | Notification verification failed for a continuous task. |
 | 9800007 | Continuous task storage failed. |
 
-**示例**：
+**示例：**
 
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -753,17 +818,17 @@ getAllContinuousTasks(context: Context): Promise&lt;ContinuousTaskInfo[]&gt;
 
 获取所有长时任务信息，如长时任务Id、长时任务类型等，使用Promise异步回调。
 
-**需要权限**: ohos.permission.KEEP_BACKGROUND_RUNNING
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**参数**：
+**参数：**
 
 | 参数名       | 类型                                 | 必填   | 说明                                       |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | 是    | 应用运行的上下文。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                            | 说明          |
 |-----------------------------------------------|-------------|
@@ -813,18 +878,18 @@ on(type: 'continuousTaskCancel', callback: Callback&lt;ContinuousTaskCancelInfo&
 
 注册长时任务取消的监听，使用callback异步回调。
 
-**需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**参数**：
+**参数：**
 
 | 参数名       | 类型                                 | 必填   | 说明                                       |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
 | type   | string                            | 是    | 取消长时任务，固定取值为'continuousTaskCancel'。 |
 | callback   | Callback\<[ContinuousTaskCancelInfo](#continuoustaskcancelinfo15)>       | 是    | 回调函数，返回长时任务取消原因等信息。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -833,7 +898,7 @@ on(type: 'continuousTaskCancel', callback: Callback&lt;ContinuousTaskCancelInfo&
 | 201 | Permission denied. |
 | 401 | Parameter error. Possible cause: 1. Callback parameter error; 2. Register a exist callback type; 3. Parameter verification failed. |
 
-**示例**：
+**示例：**
 
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -861,18 +926,18 @@ off(type: 'continuousTaskCancel', callback?: Callback&lt;ContinuousTaskCancelInf
 
 解除长时任务取消的监听，使用callback异步回调。
 
-**需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**参数**：
+**参数：**
 
 | 参数名       | 类型                                 | 必填   | 说明                                       |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
 | type   | string                            | 是    | 取消长时任务，固定取值为'continuousTaskCancel'。 |
 | callback   | Callback\<[ContinuousTaskCancelInfo](#continuoustaskcancelinfo15)>       | 否    | 需要取消监听的回调函数，未传入则取消所有注册回调。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -881,7 +946,7 @@ off(type: 'continuousTaskCancel', callback?: Callback&lt;ContinuousTaskCancelInf
 | 201 | Permission denied. |
 | 401 | Parameter error. Possible cause: 1. Callback parameter error; 2. Unregister type has not register; 3. Parameter verification failed. |
 
-**示例**：
+**示例：**
 
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -909,18 +974,18 @@ on(type: 'continuousTaskSuspend', callback: Callback&lt;ContinuousTaskSuspendInf
 
 注册长时任务暂停的监听，使用callback异步回调。
 
-**需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**参数**：
+**参数：**
 
 | 参数名       | 类型                                 | 必填   | 说明                                       |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
 | type   | string                            | 是    | 事件回调类型，固定取值为'continuousTaskSuspend'，表示长时任务暂停。 |
 | callback   | Callback\<[ContinuousTaskSuspendInfo](#continuoustasksuspendinfo20)>       | 是    | 回调函数，返回长时任务暂停原因等信息。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -929,7 +994,7 @@ on(type: 'continuousTaskSuspend', callback: Callback&lt;ContinuousTaskSuspendInf
 | 201 | Permission denied. |
 | 9800005 | Continuous task verification failed. |
 
-**示例**：
+**示例：**
 
 
 ```js
@@ -959,18 +1024,18 @@ off(type: 'continuousTaskSuspend', callback?: Callback&lt;ContinuousTaskSuspendI
 
 取消长时任务暂停的监听，使用callback异步回调。
 
-**需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**参数**：
+**参数：**
 
 | 参数名       | 类型                                 | 必填   | 说明                                       |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
 | type   | string                            | 是    | 事件回调类型，固定取值为'continuousTaskSuspend'，表示长时任务暂停。 |
 | callback   | Callback\<[ContinuousTaskSuspendInfo](#continuoustasksuspendinfo20)>       | 否    | 需要取消监听的回调函数，未传入则取消所有注册的暂停回调。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -979,7 +1044,7 @@ off(type: 'continuousTaskSuspend', callback?: Callback&lt;ContinuousTaskSuspendI
 | 201 | Permission denied. |
 | 9800005 | Continuous task verification failed. |
 
-**示例**：
+**示例：**
 
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -1008,18 +1073,18 @@ on(type: 'continuousTaskActive', callback: Callback&lt;ContinuousTaskActiveInfo&
 
 注册长时任务激活的监听，使用callback异步回调。应用回前台激活暂停的长时任务。
 
-**需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**参数**：
+**参数：**
 
 | 参数名       | 类型                                 | 必填   | 说明                                       |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
 | type   | string                            | 是    | 事件回调类型，固定取值为'continuousTaskActive'，表示长时任务激活。 |
 | callback   | Callback\<[ContinuousTaskActiveInfo](#continuoustaskactiveinfo20)>       | 是    | 回调函数，返回长时任务激活相关信息。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -1028,7 +1093,7 @@ on(type: 'continuousTaskActive', callback: Callback&lt;ContinuousTaskActiveInfo&
 | 201 | Permission denied. |
 | 9800005 | Continuous task verification failed. |
 
-**示例**：
+**示例：**
 
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -1055,18 +1120,18 @@ off(type: 'continuousTaskActive', callback?: Callback&lt;ContinuousTaskActiveInf
 
 取消长时任务激活的监听，使用callback异步回调。
 
-**需要权限:** ohos.permission.KEEP_BACKGROUND_RUNNING
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**参数**：
+**参数：**
 
 | 参数名       | 类型                                 | 必填   | 说明                                       |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
 | type   | string                            | 是    | 事件回调类型，固定取值为'continuousTaskActive'，表示长时任务激活。 |
 | callback   | Callback\<[ContinuousTaskActiveInfo](#continuoustaskactiveinfo20)>       | 否    | 需要取消监听的回调函数，未传入则取消所有注册的激活回调。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -1075,7 +1140,7 @@ off(type: 'continuousTaskActive', callback?: Callback&lt;ContinuousTaskActiveInf
 | 201 | Permission denied. |
 | 9800005 | Continuous task verification failed. |
 
-**示例**：
+**示例：**
 
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -1101,7 +1166,11 @@ export default class EntryAbility extends UIAbility {
 
 短时任务信息。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
@@ -1112,7 +1181,7 @@ export default class EntryAbility extends UIAbility {
 
 所有短时任务信息。
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
 | 名称             | 类型                                      | 只读   | 可选   | 说明              |
 | --------------- |-----------------------------------------| ---- | ---- |-----------------|
@@ -1123,7 +1192,11 @@ export default class EntryAbility extends UIAbility {
 
 长时任务类型。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
@@ -1140,7 +1213,11 @@ export default class EntryAbility extends UIAbility {
 
 长时任务通知信息。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型     | 只读     | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
@@ -1153,7 +1230,7 @@ export default class EntryAbility extends UIAbility {
 
 长时任务取消信息。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
@@ -1164,7 +1241,7 @@ export default class EntryAbility extends UIAbility {
 
 长时任务取消原因。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
@@ -1184,7 +1261,11 @@ export default class EntryAbility extends UIAbility {
 
 长时任务子类型。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**ArkTS-Dyn起始版本：** 16
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
@@ -1194,7 +1275,11 @@ export default class EntryAbility extends UIAbility {
 
 长时任务类型类别。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**ArkTS-Dyn起始版本：** 16
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
@@ -1204,7 +1289,7 @@ export default class EntryAbility extends UIAbility {
 
 长时任务暂停信息。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
@@ -1216,7 +1301,7 @@ export default class EntryAbility extends UIAbility {
 
 长时任务暂停原因。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
@@ -1234,7 +1319,7 @@ export default class EntryAbility extends UIAbility {
 
 长时任务激活信息。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
@@ -1244,7 +1329,7 @@ export default class EntryAbility extends UIAbility {
 
 长时任务信息。
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 | 名称          | 类型       | 只读   | 可选   | 说明                    |
 |-------------|----------| ---- | ---- |-----------------------|
