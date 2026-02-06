@@ -12187,6 +12187,103 @@ try {
 }
 ```
 
+## clearWindowMask<sup>24+</sup>
+
+ArkTs-Dyn: clearWindowMask(): Promise&lt;void&gt;
+
+ArkTs-Sta: clearWindowMask(): Promise&lt;void&gt;
+
+清除异形窗口的掩码使其恢复为矩形窗口，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+**返回值：**
+
+| 类型                                         | 说明                                |
+| :------------------------------------------- | :---------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                                      |
+| :------- | :-------------------------------------------- |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                               |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. 3. The window has not set window mask yet.  |
+| 1300003  | This window manager service works abnormally.                                                                      |
+| 1300004  | Unauthorized operation.  Possible cause: Invalid window type. Only subwindows and float windows are supported.                       |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let maskWidth = windowClass.getWindowProperties().windowRect.width;
+  let maskHeight = windowClass.getWindowProperties().windowRect.height;
+  let windowMask = Array<Array<number>>(maskHeight).fill([]).map((_, row) => {
+    let array = Array<number>(maskWidth);
+    for (let i = 0 ; i < maskWidth; i++) {
+      array[i] = (i + row) > (maskWidth + maskHeight) / 2 ? 1 : 0;
+    }
+    return array;
+  });
+  let promise = windowClass.setWindowMask(windowMask);
+  promise.then(() => {
+    console.info('Succeeded in setting the window mask.');
+    promise = windowClass.clearWindowMask();
+    promise.then(() => {
+      console.info('Succeeded in clearing the window mask.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to clear the window mask. Cause code: ${err.code}, message: ${err.message}`);
+    });
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set the window mask. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set or clear the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let maskWidth = windowClass.getWindowProperties().windowRect.width;
+  let maskHeight = windowClass.getWindowProperties().windowRect.height;
+  let windowMask = Array<Array<Long>>(maskHeight).fill([]).map((_, row) => {
+    let array = Array<Long>(maskWidth);
+    for (let i = 0 ; i < maskWidth; i++) {
+      array[i] = (i + row) > (maskWidth + maskHeight) / 2 ? 1 : 0;
+    }
+    return array;
+  });
+  let promise = windowClass.setWindowMask(windowMask);
+  promise.then(() => {
+    console.info('Succeeded in setting the window mask.');
+    promise = windowClass.clearWindowMask();
+    promise.then(() => {
+      console.info('Succeeded in clearing the window mask.');
+    }).catch((err) => {
+      console.error(`Failed to clear the window mask. Cause code: ${err.code}, message: ${err.message}`);
+    });
+  }).catch((err) => {
+    console.error(`Failed to set the window mask. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set or clear the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## keepKeyboardOnFocus<sup>11+</sup>
 
 keepKeyboardOnFocus(keepKeyboardFlag: boolean): void
