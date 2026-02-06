@@ -538,11 +538,11 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------------------------------|
-| additions | ArkTS-Dyn: {[key:string]:object} </br> ArkTS-Sta: [Record](../../quick-start/introduction-to-arkts.md#record类型的对象字面量)<string, RecordData> | 否 | 是 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty。 |
+| additions | ArkTS-Dyn: Record<string, object> </br> ArkTS-Sta: [Record](../../quick-start/introduction-to-arkts.md#record类型的对象字面量)<string, RecordData> | 否 | 否 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty。 |
 | mimeTypes | Array&lt;string&gt; | 是 | 否 | 剪贴板内容条目的数据类型，非重复的类型列表。 |
-| tag | string | 否 | 是 | 用户自定义标签。 |
+| tag | string | 否 | 否 | 用户自定义标签。 |
 | timestamp | ArkTS-Dyn:number </br> ArkTS-Sta:long | 是 | 否 | 剪贴板数据的写入时间戳（单位：ms）。 |
-| localOnly | boolean | 否 | 是 | 配置剪贴板内容是否为“仅在本地”，默认值为false。其值会被shareOption属性覆盖，推荐使用[ShareOption](#shareoption9)属性。 |
+| localOnly | boolean | 否 | 否 | 配置剪贴板内容是否为“仅在本地”，默认值为false。其值会被shareOption属性覆盖，推荐使用[ShareOption](#shareoption9)属性。 |
 | shareOption<sup>9+</sup> | [ShareOption](#shareoption9) | 否 | 是 | 指示剪贴板数据可以粘贴到的范围。</br> ArkTS-Dyn起始版本: 9 </br> ArkTS-Sta起始版本: 23 |
 
 ## FileConflictOptions<sup>15+</sup>
@@ -593,7 +593,7 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 
 | 名称     | 类型   | 只读 | 可选 | 说明                                                       |
 | -------- | ------ | ---- | ---- | ---------------------------------------------------------- |
-| progress | ArkTS-Dyn:number</br>ArkTS-Sta:int | 是   | 否   | 不使用系统提供的进度条时，系统上报拷贝粘贴任务进度百分比。 |
+| progress | ArkTS-Dyn:number</br>ArkTS-Sta:int | 否  | 否   | 不使用系统提供的进度条时，系统上报拷贝粘贴任务进度百分比。 |
 
 ## ProgressListener<sup>15+</sup>
 
@@ -739,13 +739,13 @@ struct PasteboardTest {
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称                | 类型                                          | 必填 | 说明                                                         |
-| ------------------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| destUri             | string                                        | 否   | 拷贝文件时目标路径。若不支持文件处理，则不需要设置此参数；若应用涉及复杂文件处理策略或需要区分文件多路径存储，建议不设置此参数，由应用自行完成文件copy处理。 |
-| fileConflictOptions | [FileConflictOptions](#fileconflictoptions15) | 否   | 定义文件拷贝冲突时的选项，默认为OVERWRITE。                  |
-| progressIndicator   | [ProgressIndicator](#progressindicator15)     | 是   | 定义进度条指示选项，可选择是否采用系统默认进度显示。         |
-| progressListener    | [ProgressListener](#progresslistener15)       | 否   | 定义进度数据变化的订阅函数，当选择不使用系统默认进度显示时，可设置该项获取粘贴过程的进度。 |
-| progressSignal      | [ProgressSignal](#progresssignal15)           | 否   | 定义进度取消的函数，在粘贴过程中可选择取消任务，且仅当进度指示选项[ProgressIndicator](#progressindicator15)设置为NONE时此参数才有意义。 |
+| 名称                | 类型                                          | 只读 | 可选 | 说明                                                         |
+| ------------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| destUri             | string                                        | 否 | 是 | 拷贝文件时目标路径。若不支持文件处理，则不需要设置此参数；若应用涉及复杂文件处理策略或需要区分文件多路径存储，建议不设置此参数，由应用自行完成文件copy处理，默认为空。 |
+| fileConflictOptions | [FileConflictOptions](#fileconflictoptions15) | 否 | 是 | 定义文件拷贝冲突时的选项，默认为OVERWRITE。                  |
+| progressIndicator   | [ProgressIndicator](#progressindicator15)     | 否 | 否 | 定义进度条指示选项，可选择是否采用系统默认进度显示。         |
+| progressListener    | [ProgressListener](#progresslistener15)       | 否 | 是 | 定义进度数据变化的订阅函数，当选择不使用系统默认进度显示时，可设置该项获取粘贴过程的进度，默认为空。 |
+| progressSignal      | [ProgressSignal](#progresssignal15)           | 否 | 是 | 定义进度取消的函数，在粘贴过程中可选择取消任务，且仅当进度指示选项[ProgressIndicator](#progressindicator15)设置为NONE时此参数才有意义，默认为空。 |
 
 ## PasteDataRecord<sup>7+</sup>
 
@@ -769,7 +769,7 @@ struct PasteboardTest {
 | plainText | string | 是 | 否 | 纯文本内容。|
 | uri | string | 是 | 否 | URI内容。|
 | pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 否 | PixelMap内容。</br> ArkTS-Dyn起始版本: 9 </br> ArkTS-Sta起始版本: 23 |
-| data<sup>9+</sup> | {[mimeType:&nbsp;string]:&nbsp;ArrayBuffer} | 是 | 否 | 自定义数据内容。</br> ArkTS-Dyn起始版本: 9 </br> ArkTS-Sta起始版本: 23 |
+| data<sup>9+</sup> | Record<string, ArrayBuffer> | 是 | 否 | 自定义数据内容。</br> ArkTS-Dyn起始版本: 9 </br> ArkTS-Sta起始版本: 23 |
 
 ### toPlainText<sup>9+</sup>
 
