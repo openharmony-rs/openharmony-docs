@@ -600,12 +600,15 @@ workerPort.onmessage = (e : MessageEvents) => {
 ```
 
 <!-- @[not_recommended_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/mainAbility/src/main/ets/workers/ChildWorker.ets) -->
-```ts
+
+``` TypeScript
 // ChildWorker.ets
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 
+// 子Worker与父Worker通信的对象
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
+// 接收子Worker返回的消息
 workerPort.onmessage = (e: MessageEvents) => {
   console.info('子Worker收到信息 ' + e.data);
 }
