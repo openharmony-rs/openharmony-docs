@@ -35,7 +35,7 @@ import screenLockFileManager from '@ohos.ability.screenLockFileManager';
 
  **ArkTS-Dyn起始版本：** 12
 
- **ArkTS-Sta起始版本：** 23
+ **ArkTS-Sta起始版本：** 22
 
 | 名称           | 值   | 说明                     |
 | -------------- | ---- | ------------------------ |
