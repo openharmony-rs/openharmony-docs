@@ -1269,7 +1269,7 @@ for (let value of pair) {
            buffer: 3,102
            buffer: 4,101
            buffer: 5,114
-  */
+   */
 }
 ```
 
@@ -1539,7 +1539,7 @@ for (const key of numbers) {
            3
            4
            5
-  */
+   */
 }
 ```
 
@@ -3330,7 +3330,7 @@ for (let value of pair) {
            buffer: 102
            buffer: 101
            buffer: 114
-  */
+   */
 }
 ```
 
