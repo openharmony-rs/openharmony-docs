@@ -18,7 +18,7 @@ ArkTS语言支持异步操作，现已增加异步任务的等待和唤醒功能
 
 [Sendable](arkts-sendable.md)共享对象在不同线程控制异步任务等待和唤醒的示例如下：
 
-<!-- @[sendable_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/AsynchronousWaiting/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[sendable_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/AsynchronousWaiting/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { ArkTSUtils, taskpool } from '@kit.ArkTS';
