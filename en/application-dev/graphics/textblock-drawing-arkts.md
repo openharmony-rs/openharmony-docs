@@ -77,7 +77,7 @@ pen.setColor(0xFF, 0xFF, 0x00, 0x00);
 const font = new drawing.Font();
 // Set the font size.
 font.setSize(100);
-// Add the brush stroke effect.
+// Add the pen stroke effect.
 canvas.attachPen(pen);
 // Create a TextBlob object.
 const textBlob = drawing.TextBlob.makeFromString('Hello world', font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
@@ -201,7 +201,8 @@ canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
 
 Single-character drawing is a refined technology for controlling text rendering. Compared with TextBlob drawing, single-character drawing has the following advantages: The font degradation mechanism is used. If a character cannot be displayed in the current font, the system automatically uses the system font to draw the character, improving compatibility with special characters and avoiding character loss. In addition, single-character drawing supports character-by-character configuration of font features (such as ligatures and alternates) to meet complex typography requirements for better user experience. For details about the APIs, see [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#drawsinglecharacter12).
 
-Basic scenario: drawing characters without font features 
+Basic scenario: drawing characters without font features
+
 In common text rendering scenarios where font features are not required, you can use **drawSingleCharacter** to draw a single character and use **measureSingleCharacter** to measure the width of a single character. The sample code and effect are as follows:
 
 <!-- @[arkts_graphics_draw_single_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
@@ -225,7 +226,8 @@ for (let s of text) {
 
 ![Snapshot_drawSingleCharacter](figures/Snapshot_drawSingleCharacter.jpg)
 
-Advanced scenario: drawing characters with font features 
+Advanced scenario: drawing characters with font features
+
 In text rendering scenarios where font features are required, you can use **drawSingleCharacterWithFeatures** to draw a single character and use **measureSingleCharacterWithFeatures** to measure the width of a single character. The sample code and effect are as follows:
 
 <!-- @[arkts_graphics_draw_feature_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->

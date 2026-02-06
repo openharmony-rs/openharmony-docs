@@ -9,6 +9,7 @@
 ## When to Use
 
 The database encryption capability is provided to effectively protect the data stored in a database.
+
 Database encryption allows data to be stored and used in ciphertext, ensuring data confidentiality and integrity.
 
 The encrypted database can be accessed only using an API, and the database file cannot be opened in other ways. Whether a database is encrypted is set when the database is created, and the setting cannot be changed.
@@ -123,6 +124,7 @@ When **isEncrypted** is set to **true**, call **OH_Rdb_SetCryptoParam** to set c
       ```
 
 4. Since API version 22, you can use **OH_Rdb_RekeyEx** to change the key or encryption parameters of an encrypted database as required.
+
    The database key and encryption parameters can be changed in the following scenarios:
     > **NOTE**
     >

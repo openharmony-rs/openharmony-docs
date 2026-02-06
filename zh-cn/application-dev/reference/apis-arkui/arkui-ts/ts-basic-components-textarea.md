@@ -299,7 +299,7 @@ maxLength(value: number)
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| value  | number | 是   | 文本的最大输入字符数。</br> 当value<0时，按照默认值处理，不设限制。 |
+| value  | number | 是   | 文本的最大输入字符数。</br> 当value<0时，按照默认值处理，不设限制。<br>默认值：uint32_max，即2的32次方-1。 |
 
 ### showCounter<sup>10+</sup>
 
