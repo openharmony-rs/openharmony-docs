@@ -219,7 +219,7 @@ PlainArray支持增、删、改、查操作。常用API如下：
 
 此处列举常用的非线性容器HashMap、TreeMap、LightWeightMap、PlainArray的使用示例，包括导入模块、增加元素、访问元素及修改等操作，示例代码如下所示：
 
-<!-- @[nonlinear_container](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/ArkTsContainerLibrary/NonlinearContainers/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[nonlinear_container](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/ArkTsContainerLibrary/NonlinearContainers/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // 导入HashMap,TreeMap,LightWeightMap,PlainArray模块。
