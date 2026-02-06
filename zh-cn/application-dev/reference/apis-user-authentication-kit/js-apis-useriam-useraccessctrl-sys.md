@@ -28,7 +28,7 @@ import { userAccessCtrl } from '@kit.UserAuthenticationKit';
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -46,7 +46,7 @@ import { userAccessCtrl } from '@kit.UserAuthenticationKit';
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -77,7 +77,7 @@ ArkTS-Sta: verifyAuthToken(authToken: Uint8Array, allowableDuration: int): Promi
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 

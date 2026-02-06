@@ -29,11 +29,11 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型                               | 只读 | 可选 | 说明                                                         |
 | -------------- | ---------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| userId<sup>18+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   |要认证的目标用户ID，值为大于等于0的正整数。默认值为当前用户的ID。<br>**ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 22 <br>**系统接口：** 此接口为系统接口。|
+| userId<sup>18+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   |要认证的目标用户ID，值为大于等于0的正整数。默认值为当前用户的ID。<br>**ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 <br>**系统接口：** 此接口为系统接口。|
 
 ## WindowModeType<sup>10+</sup>
 
@@ -43,7 +43,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -60,7 +60,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 类型                                | 只读 | 可选 | 说明                                                         |
 | -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -74,7 +74,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -94,7 +94,7 @@ sendNotice(noticeType: NoticeType, eventData: string): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -162,7 +162,7 @@ on(type: 'command', callback: IAuthWidgetCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onCommand](#oncommand22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCommand](#oncommand23)。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -208,7 +208,7 @@ try {
 }
 ```
 
-### onCommand<sup>22+</sup>
+### onCommand<sup>23+</sup>
 
 onCommand(callback: IAuthWidgetCallback): void
 
@@ -220,7 +220,7 @@ onCommand(callback: IAuthWidgetCallback): void
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -269,7 +269,7 @@ off(type: 'command', callback?: IAuthWidgetCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offCommand](#offcommand22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCommand](#offcommand23)。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -315,7 +315,7 @@ try {
 }
 ```
 
-### offCommand<sup>22+</sup>
+### offCommand<sup>23+</sup>
 
 offCommand(callback?: IAuthWidgetCallback): void
 
@@ -327,7 +327,7 @@ offCommand(callback?: IAuthWidgetCallback): void
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -386,7 +386,7 @@ ArkTS-Sta: getUserAuthWidgetMgr(version: int): UserAuthWidgetMgr
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -447,7 +447,7 @@ try {
 }
 ```
 
-## AuthWidgetCallbackSendCommandFunc<sup>22+</sup>
+## AuthWidgetCallbackSendCommandFunc<sup>23+</sup>
 
 type AuthWidgetCallbackSendCommandFunc = (cmdData: string) => void
 
@@ -457,7 +457,7 @@ type AuthWidgetCallbackSendCommandFunc = (cmdData: string) => void
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -475,11 +475,11 @@ type AuthWidgetCallbackSendCommandFunc = (cmdData: string) => void
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 类型   | 只读 | 可选 | 说明                 |
 | ------------ | ---------- | ---- | ---- | -------------------- |
-| sendCommand  | [AuthWidgetCallbackSendCommandFunc](#authwidgetcallbacksendcommandfunc22) | 否 | 否   | 用于用户认证框架向组件发送命令。  |
+| sendCommand  | [AuthWidgetCallbackSendCommandFunc](#authwidgetcallbacksendcommandfunc23) | 否 | 否   | 用于用户认证框架向组件发送命令。  |
 
 ### sendCommand<sup>10+</sup>
 
@@ -555,11 +555,11 @@ try {
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 值   | 说明       |
 | ----------- | ---- | ---------- |
-| PRIVATE_PIN<sup>14+</sup>  | 16   | 隐私口令。<br> **ArkTS-Dyn起始版本：** 14 <br> **ArkTS-Sta起始版本：** 22 <br>**系统接口：** 此接口为系统接口。 |
+| PRIVATE_PIN<sup>14+</sup>  | 16   | 隐私口令。<br> **ArkTS-Dyn起始版本：** 14 <br> **ArkTS-Sta起始版本：** 23 <br>**系统接口：** 此接口为系统接口。 |
 
 **示例：**
 
@@ -612,7 +612,7 @@ queryReusableAuthResult(authParam: AuthParam): Uint8Array
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
@@ -677,12 +677,12 @@ try {
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统接口：** 此接口为系统接口。
 
 | 名称                    |   值   | 说明                 |
 | ----------------------- | ------ | -------------------- |
-| AUTH_TOKEN_CHECK_FAILED | 12500015      | verifyAuthToken系统接口错误码，表示验证的AuthToken无效。<br/> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 22|
-| AUTH_TOKEN_EXPIRED      | 12500016      | verifyAuthToken系统接口错误码，AuthToken的签发时间至发起验证时的时间间隔超过传入的最大有效时长。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 22|
-| REUSE_AUTH_RESULT_FAILED<sup>20+</sup>| 12500017      | queryReusableAuthResult系统接口错误码，表示复用身份认证结果失败。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 22|
+| AUTH_TOKEN_CHECK_FAILED | 12500015      | verifyAuthToken系统接口错误码，表示验证的AuthToken无效。<br/> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23|
+| AUTH_TOKEN_EXPIRED      | 12500016      | verifyAuthToken系统接口错误码，AuthToken的签发时间至发起验证时的时间间隔超过传入的最大有效时长。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23|
+| REUSE_AUTH_RESULT_FAILED<sup>20+</sup>| 12500017      | queryReusableAuthResult系统接口错误码，表示复用身份认证结果失败。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
