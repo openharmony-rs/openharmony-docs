@@ -1130,7 +1130,7 @@ invalidate(): void
 | wordBreak   | [WordBreak](ts-appendix-enums.md#wordbreak11) | 是    | 是    | 获取属性字符串文本段落的断行规则。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | leadingMargin   | number \| [LeadingMarginPlaceholder](ts-basic-components-richeditor.md#leadingmarginplaceholder11) | 是    | 是   | 获取属性字符串文本段落的缩进。<br/>返回为number类型时，单位为vp。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | paragraphSpacing<sup>19+</sup>  | number | 是    | 是   | 获取属性字符串文本段落的段落间距。<br/>单位：vp<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| textVerticalAlign<sup>20+</sup>  | [TextVerticalAlign](ts-text-common.md#textverticalalign20) | 是    | 是   | 获取属性字符串文本段落在垂直方向的对齐方式。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| textVerticalAlign<sup>20+</sup>  | [TextVerticalAlign](ts-text-common.md#textverticalalign20) | 是    | 是   | 获取属性字符串文本段落在垂直方向的对齐方式。<br>一个段落下使用统一字号必须同时设置行高[lineHeight](ts-basic-components-text.md#lineheight)或者同一个段落不同字号文本混排时才生效。属性字符串[TextStyle](#textstyle)其中的SuperscriptStyle上下角标样式文本也一样参与垂直对齐。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | leadingMarginSpan<sup>22+</sup>   | [LeadingMarginSpan](#leadingmarginspan22) | 是    | 是   | 获取属性字符串文本段落的自定义缩进信息。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | textDirection<sup>23+</sup>  | [TextDirection](ts-text-common.md#textdirection22) |  是  |  是  | 获取文本方向。 <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
