@@ -3855,6 +3855,10 @@ getImmersiveMode(): ImmersiveMode
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                            | 说明       |
@@ -4307,7 +4311,7 @@ hide(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -4347,7 +4351,7 @@ hide(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -4572,8 +4576,8 @@ keyboardController.exitCurrentInputType().then(() => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| start  | number | 否 | 否 | 选中文本的首字符在编辑框的索引值。|
-| end  | number | 否 | 否 | 选中文本的末字符在编辑框的索引值。|
+| start  | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否 | 否 | 选中文本的首字符在编辑框的索引值。|
+| end  | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否 | 否 | 选中文本的末字符在编辑框的索引值。|
 
 ## Movement<sup>10+</sup>
 
@@ -4731,7 +4735,7 @@ ArkTS-Sta: sendKeyFunction(action: int, callback: AsyncCallback&lt;boolean&gt;):
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
  **示例：**
 
@@ -4804,7 +4808,7 @@ ArkTS-Sta: sendKeyFunction(action: int): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -4870,8 +4874,8 @@ ArkTS-Sta: getForward(length: int, callback: AsyncCallback&lt;string&gt;): void
 | 错误码ID | 错误信息                     |
 | -------- | ------------------------------ |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
-| 12800006 | input method controller error. Possible cause: create InputmethodController object failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
 **示例：**
 
@@ -4936,8 +4940,8 @@ ArkTS-Sta: getForward(length: int): Promise&lt;string&gt;
 | 错误码ID | 错误信息                     |
 | -------- | ------------------------------ |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
-| 12800006 | input method controller error. Possible cause: create InputmethodController object failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
 **示例：**
 
@@ -4998,8 +5002,8 @@ ArkTS-Sta: getForwardSync(length: int): string
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
-| 12800006 | input method controller error. Possible cause: create InputmethodController object failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
 **示例：**
 
@@ -5049,8 +5053,8 @@ ArkTS-Sta: getBackward(length: int, callback: AsyncCallback&lt;string&gt;): void
 | 错误码ID | 错误信息                     |
 | -------- | ------------------------------ |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
-| 12800006 | input method controller error. Possible cause: create InputmethodController object failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
 **示例：**
 
@@ -5116,8 +5120,8 @@ ArkTS-Sta: getBackward(length: int): Promise&lt;string&gt;
 | 错误码ID | 错误信息                     |
 | -------- | ------------------------------ |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
-| 12800006 | input method controller error. Possible cause: create InputmethodController object failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
 **示例：**
 
@@ -5180,8 +5184,8 @@ ArkTS-Sta: getBackwardSync(length: int): string
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
-| 12800006 | input method controller error. Possible cause: create InputmethodController object failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
 **示例：**
 
@@ -5230,7 +5234,7 @@ ArkTS-Sta: deleteForward(length: int, callback: AsyncCallback&lt;boolean&gt;): v
 | -------- | -------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -5305,7 +5309,7 @@ ArkTS-Sta: deleteForward(length: int): Promise&lt;boolean&gt;
 | -------- | -------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -5369,7 +5373,7 @@ ArkTS-Sta: deleteForwardSync(length: int): void
 | -------- | -------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -5420,7 +5424,7 @@ ArkTS-Sta: deleteBackward(length: int, callback: AsyncCallback&lt;boolean&gt;): 
 | -------- | -------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -5494,7 +5498,7 @@ ArkTS-Sta: deleteBackward(length: int): Promise&lt;boolean&gt;
 | -------- | -------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -5541,7 +5545,7 @@ ArkTS-Sta: deleteBackwardSync(length: int): void
 | -------- | -------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -5579,7 +5583,7 @@ insertText(text:string, callback: AsyncCallback&lt;boolean&gt;): void
 | -------- | -------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -5631,7 +5635,7 @@ insertText(text:string): Promise&lt;boolean&gt;
 | -------- | -------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -5675,7 +5679,7 @@ insertTextSync(text: string): void
 | -------- | -------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -5710,7 +5714,7 @@ ArkTS-Sta: getEditorAttribute(callback: AsyncCallback&lt;EditorAttribute | null&
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -5753,7 +5757,7 @@ ArkTS-Sta: getEditorAttribute(): Promise&lt;EditorAttribute | null&gt;
 
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -5794,7 +5798,7 @@ ArkTS-Sta: getEditorAttributeSync(): EditorAttribute | null
 
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -5832,7 +5836,7 @@ ArkTS-Sta: moveCursor(direction: int, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -5881,7 +5885,7 @@ ArkTS-Sta: moveCursor(direction: int): Promise&lt;void&gt;
 | 错误码ID | 错误信息                 |
 | -------- | -------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -5922,7 +5926,7 @@ ArkTS-Sta: moveCursorSync(direction: int): void
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -5957,7 +5961,7 @@ selectByRange(range: Range, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -6005,7 +6009,7 @@ selectByRange(range: Range): Promise&lt;void&gt;
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -6045,7 +6049,7 @@ selectByRangeSync(range: Range): void
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -6081,7 +6085,7 @@ selectByMovement(movement: Movement, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -6129,7 +6133,7 @@ selectByMovement(movement: Movement): Promise&lt;void&gt;
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -6152,6 +6156,10 @@ selectByMovementSync(movement: Movement): void
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                   |
@@ -6165,7 +6173,7 @@ selectByMovementSync(movement: Movement): void
 | 错误码ID | 错误信息                   |
 | -------- | -------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 
 **示例：**
 
@@ -6201,12 +6209,12 @@ ArkTS-Sta: getTextIndexAtCursor(callback: AsyncCallback&lt;int&gt;): void
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
-| 12800006 | input method controller error. Possible cause: create InputmethodController object failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
 **示例：**
 
-ArkTs-Dyn示例:
+ArkTS-Dyn示例:
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6220,7 +6228,7 @@ inputClient.getTextIndexAtCursor((err: BusinessError, index: number) => {
 });
 ```
 
-ArkTs-Sta示例:
+ArkTS-Sta示例:
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6260,12 +6268,12 @@ ArkTS-Sta: getTextIndexAtCursor(): Promise&lt;int&gt;
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
-| 12800006 | input method controller error. Possible cause: create InputmethodController object failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
 **示例：**
 
-ArkTs-Dyn示例:
+ArkTS-Dyn示例:
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6277,7 +6285,7 @@ inputClient.getTextIndexAtCursor().then((index: number) => {
 });
 ```
 
-ArkTs-Sta示例:
+ArkTS-Sta示例:
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6315,19 +6323,19 @@ ArkTS-Sta: getTextIndexAtCursorSync(): int
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
-| 12800006 | input method controller error. Possible cause: create InputmethodController object failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
 **示例：**
 
-ArkTs-Dyn示例:
+ArkTS-Dyn示例:
 
 ```ts
 let index: number = inputClient.getTextIndexAtCursorSync();
 console.info(`Succeeded in getTextIndexAtCursorSync, index: ${index}`);
 ```
 
-ArkTs-Sta示例:
+ArkTS-Sta示例:
 
 ```ts
 let index: int = inputClient.getTextIndexAtCursorSync();
@@ -6364,8 +6372,8 @@ sendExtendAction(action: ExtendAction, callback: AsyncCallback&lt;void&gt;): voi
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
-| 12800006 | input method controller error. Possible cause: create InputmethodController object failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
 **示例：**
 
@@ -6416,8 +6424,8 @@ sendExtendAction(action: ExtendAction): Promise&lt;void&gt;
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
-| 12800006 | input method controller error. Possible cause: create InputmethodController object failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800006 | input method controller error. Possible cause: create InputMethodController object failed. |
 
 **示例：**
 
@@ -6467,12 +6475,12 @@ sendPrivateCommand(commandData: Record&lt;string, CommandDataType&gt;): Promise&
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800010 | not the preconfigured default input method. |
 
 **示例：**
 
-ArkTs-Dyn示例:
+ArkTS-Dyn示例:
 
 ```ts
 import { inputMethodEngine } from '@kit.IMEKit';
@@ -6493,7 +6501,7 @@ inputMethodEngine.getinputMethodAbility().on('inputStart', (kbController, textIn
 })
 ```
 
-ArkTs-Sta示例:
+ArkTS-Sta示例:
 
 ```ts
 import { inputMethodEngine } from '@kit.IMEKit';
@@ -6545,7 +6553,7 @@ ArkTS-Sta: getCallingWindowInfo(): Promise&lt;WindowInfo | null&gt;;
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800012 | the input method panel does not exist. |
 | 12800013 | window manager service error.     |
 
@@ -6594,7 +6602,7 @@ setPreviewText(text: string, range: Range): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800011 | text preview not supported.                               |
 
 **示例：**
@@ -6636,7 +6644,7 @@ setPreviewTextSync(text: string, range: Range): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800011 | text preview not supported.                               |
 
 **示例：**
@@ -6675,7 +6683,7 @@ finishTextPreview(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800011 | text preview not supported. |
 
 **示例：**
@@ -6712,7 +6720,7 @@ finishTextPreviewSync(): void
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800011 | text preview not supported. |
 
 **示例：**
@@ -6760,7 +6768,7 @@ sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void&gt;
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
 | 401      | parameter error. Possible causes: 1. Incorrect parameter types. 2. Incorrect parameter length.  |
-| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | 12800009 | input method client detached.               |
 | 12800014 | the input method is in basic mode.          |
 | 12800015 | the other side does not accept the request. |
@@ -6820,7 +6828,7 @@ recvMessage(msgHandler?: MessageHandler): void;
 
 **示例：**
 
-ArkTs-Dyn示例:
+ArkTS-Dyn示例:
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6844,7 +6852,7 @@ inputMethodEngine.getinputMethodAbility()
 
 ```
 
-ArkTs-Sta示例:
+ArkTS-Sta示例:
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -7080,24 +7088,20 @@ inputMethodEngine.getinputMethodAbility()
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称         | 类型 | 只读 | 可选 | 说明               |
 | ------------ | -------- | ---- | ---- | ------------------ |
-| enterKeyType | ArkTS-Dyn: number <br>ArkTS-Sta: int     | 是   | 否   | 编辑框的功能属性，详见[常量中的功能键定义](#常量)。 |
-| inputPattern | ArkTS-Dyn: number <br>ArkTS-Sta: int     | 是   | 否   | 编辑框的文本属性，详见[常量中的编译框定义](#常量)。 |
-| isTextPreviewSupported<sup>12+</sup> | boolean | 否 | 否 | 编辑框是否支持预上屏。<br/>- 值为true，表示支持。<br/>- 值为false，表示不支持。 |
-| bundleName<sup>14+</sup> | string | 是 | 是 | 编辑框所属应用包名；该值可能为""，使用该属性时需要考虑为""的场景。 |
-| immersiveMode<sup>15+</sup> | [ImmersiveMode](#immersivemode15) | 是   | 是   | 输入法沉浸模式。 |
-| windowId<sup>18+</sup> | ArkTS-Dyn: number <br>ArkTS-Sta: int   | 是 | 是 | 编辑框设置所属窗口ID。 |
-| displayId<sup>18+</sup> | ArkTS-Dyn: number <br>ArkTS-Sta: long   | 是   | 是   | 编辑框设置窗口对应的屏幕ID。如果没有设置windowId，取当前焦点窗口屏幕ID。|
-| placeholder<sup>20+</sup> | string | 是 | 是 | 编辑框设置的占位符信息。|
-| abilityName<sup>20+</sup> | string | 是 | 是 | 编辑框设置的ability名称。|
-| capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | 是 | 是 | 编辑框设置大小写模式。如果没有设置或设置非法值，默认不进行任何首字母大写处理。|
-| gradientMode<sup>20+</sup> | [GradientMode](#gradientmode20) | 是 | 是 | 渐变模式。如果没有设置或设置非法值，默认不使用渐变模式。|
-| extraConfig<sup>22+</sup> | [InputMethodExtraConfig](./js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 是 | 是 | 输入法扩展信息。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 ||
+| enterKeyType | ArkTS-Dyn: number <br>ArkTS-Sta: int     | 是   | 否   | 编辑框的功能属性，详见[常量中的功能键定义](#常量)。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| inputPattern | ArkTS-Dyn: number <br>ArkTS-Sta: int     | 是   | 否   | 编辑框的文本属性，详见[常量中的编译框定义](#常量)。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| isTextPreviewSupported<sup>12+</sup> | boolean | 否 | 否 | 编辑框是否支持预上屏。<br/>- 值为true，表示支持。<br/>- 值为false，表示不支持。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| bundleName<sup>14+</sup> | string | 是 | 是 | 编辑框所属应用包名；该值可能为""，使用该属性时需要考虑为""的场景。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| immersiveMode<sup>15+</sup> | [ImmersiveMode](#immersivemode15) | 是   | 是   | 输入法沉浸模式。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| windowId<sup>18+</sup> | ArkTS-Dyn: number <br>ArkTS-Sta: int   | 是 | 是 | 编辑框设置所属窗口ID。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| displayId<sup>18+</sup> | ArkTS-Dyn: number <br>ArkTS-Sta: long   | 是   | 是   | 编辑框设置窗口对应的屏幕ID。如果没有设置windowId，取当前焦点窗口屏幕ID。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| placeholder<sup>20+</sup> | string | 是 | 是 | 编辑框设置的占位符信息。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| abilityName<sup>20+</sup> | string | 是 | 是 | 编辑框设置的ability名称。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | 是 | 是 | 编辑框设置大小写模式。如果没有设置或设置非法值，默认不进行任何首字母大写处理。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| gradientMode<sup>20+</sup> | [GradientMode](#gradientmode20) | 是 | 是 | 渐变模式。如果没有设置或设置非法值，默认不使用渐变模式。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| extraConfig<sup>22+</sup> | [InputMethodExtraConfig](./js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 是 | 是 | 输入法扩展信息。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## KeyEvent
 
@@ -7120,15 +7124,11 @@ inputMethodEngine.getinputMethodAbility()
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称         | 值 | 说明               |
 | ------------ | -- | ------------------ |
-| FLG_FIXED  | 0 | 固定态面板类型。 |
-| FLG_FLOATING | 1 | 悬浮态面板类型。 |
-| FLAG_CANDIDATE<sup>15+</sup> | 2 | 候选词态面板类型。 |
+| FLG_FIXED  | 0 | 固定态面板类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| FLG_FLOATING | 1 | 悬浮态面板类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| FLAG_CANDIDATE<sup>15+</sup> | 2 | 候选词态面板类型。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## PanelType<sup>10+</sup>
 
@@ -7166,7 +7166,7 @@ inputMethodEngine.getinputMethodAbility()
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
@@ -7207,10 +7207,10 @@ inputMethodEngine.getinputMethodAbility()
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| top    | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 否   | 键盘区域的上边界到面板区域上边界的距离，单位为px，该参数为整数。 |
-| bottom | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 否   | 键盘区域的下边界到面板区域下边界的距离，单位为px，该参数为整数。 |
-| left   | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 否   | 键盘区域的左边界到面板区域左边界的距离，单位为px，该参数为整数。 |
-| right  | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 否   | 键盘区域的右边界到面板区域右边界的距离，单位为px，该参数为整数。 |
+| top    | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否   | 否   | 键盘区域的上边界到面板区域上边界的距离，单位为px，该参数为整数。 |
+| bottom | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否   | 否   | 键盘区域的下边界到面板区域下边界的距离，单位为px，该参数为整数。 |
+| left   | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否   | 否   | 键盘区域的左边界到面板区域左边界的距离，单位为px，该参数为整数。 |
+| right  | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否   | 否   | 键盘区域的右边界到面板区域右边界的距离，单位为px，该参数为整数。 |
 
 ## AttachOptions<sup>19+</sup>
 
@@ -7328,11 +7328,15 @@ inputMethodEngine.getinputMethodAbility()
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| bottom | number | 是   | 否   | 键盘区域的下边界到系统面板区域下边界的距离，单位为px，该参数为整数。 |
-| left   | number | 是   | 否   | 键盘区域的左边界到系统面板区域左边界的距离，单位为px，该参数为整数。 |
-| right  | number | 是   | 否   | 键盘区域的右边界到系统面板区域右边界的距离，单位为px，该参数为整数。 |
+| bottom | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 否   | 键盘区域的下边界到系统面板区域下边界的距离，单位为px，该参数为整数。 |
+| left   | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 否   | 键盘区域的左边界到系统面板区域左边界的距离，单位为px，该参数为整数。 |
+| right  | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 否   | 键盘区域的右边界到系统面板区域右边界的距离，单位为px，该参数为整数。 |
 
 ## TextInputClient<sup>(deprecated)</sup>
 
