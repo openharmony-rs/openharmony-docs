@@ -327,7 +327,7 @@ onDatasetChange(dataOperations: DataOperation[]): void
 | 名称 | 类型                      | 只读 | 可选 | 说明                 |
 | ------ | ------------------------- | ---- | ---- | -------------------- |
 | type   | [DataOperationType](#dataoperationtype枚举说明).ADD     | 否 | 否   | 数据添加类型。         |
-| index  | number                    | 否 | 否   | 插入数据索引值。取值范围是[0, 数据源长度-1]。 |
+| index  | number                    | 否 | 否   | 插入数据索引值。取值范围是[0, 数据源长度]。 |
 | count  | number                    | 否 | 是   | 插入数量，默认为1。   |
 | key    | string \| Array\<string\> | 否 | 是   | 为插入的数据分配键值，默认使用原键值。 |
 

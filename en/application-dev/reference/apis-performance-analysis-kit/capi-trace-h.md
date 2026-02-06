@@ -753,7 +753,7 @@ Marks the start of an asynchronous trace.<br> This API is used to start tracing 
 | Name| Description|
 | -- | -- |
 | const char *name | Name of the asynchronous trace.|
-| int32_t taskId | ID of the asynchronous trace. The start and end of an asynchronous trace task do not occur in sequence. Therefore, the start and end of an asynchronous trace need to be matched based on the task name and the unique task ID together.|
+| int32_t taskId | ID of the asynchronous trace. The start and end of an asynchronous trace do not occur in sequence. Therefore, the start and end of an asynchronous trace need to be matched based on the task name and the unique task ID together.|
 
 ### OH_HiTrace_FinishAsyncTrace()
 
@@ -774,7 +774,7 @@ Marks the end of an asynchronous trace.<br> This API is called in the callback f
 | Name| Description|
 | -- | -- |
 | const char *name | Name of the asynchronous trace.|
-| int32_t taskId | ID of the asynchronous trace. The start and end of an asynchronous trace task do not occur in sequence. Therefore, the start and end of an asynchronous trace need to be matched based on the task name and the unique task ID together.|
+| int32_t taskId | ID of the asynchronous trace. The start and end of an asynchronous trace do not occur in sequence. Therefore, the start and end of an asynchronous trace need to be matched based on the task name and the unique task ID together.|
 
 ### OH_HiTrace_CountTrace()
 

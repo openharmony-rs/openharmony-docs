@@ -4644,9 +4644,13 @@ try {
 
 ```
 
-### onCancel<sup>12+</sup>
+### onCancel<sup>(deprecated)</sup>
 
 onCancel(): Promise&lt;string&gt;
+
+> **说明：**
+>
+> 从API version 12开始支持，从API version 24开始废弃。
 
 取消拷贝事件监听。
 

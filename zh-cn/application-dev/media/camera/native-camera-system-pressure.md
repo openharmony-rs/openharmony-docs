@@ -18,19 +18,23 @@
 
 参数的具体内容可参考相机管理器回调接口实例[Camera_SystemPressureLevel](../../reference/apis-camera-kit/capi-camera-h.md#camera_systempressurelevel)。
 
-   ```c++
-   void SystemPressureLevelChangeCallback(Camera_CaptureSession* captureSession, Camera_SystemPressureLevel systemPressureLevel)
-   {
-      OH_LOG_INFO(LOG_APP, "SystemPressureLevelChangeCallback is called.");
-   }
+<!-- @[system_pressure_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
 
-   Camera_ErrorCode RegisterSystemPressureCallback(Camera_CaptureSession* captureSession)
-   {
-       Camera_ErrorCode ret = OH_CaptureSession_RegisterSystemPressureLevelChangeCallback(captureSession,
-          SystemPressureLevelChangeCallback);
-       if (ret != CAMERA_OK) {
-          OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_RegisterSystemPressureLevelChangeCallback failed.");
-       }
-       return ret;
-   }
-   ```
+``` C++
+void SystemPressureLevelChangeCallback(Camera_CaptureSession *captureSession,
+    Camera_SystemPressureLevel systemPressureLevel)
+{
+    OH_LOG_INFO(LOG_APP, "SystemPressureLevelChangeCallback level: %{public}d", systemPressureLevel);
+}
+
+Camera_ErrorCode NDKCamera::RegisterSystemPressureCallback()
+{
+    Camera_ErrorCode ret = OH_CaptureSession_RegisterSystemPressureLevelChangeCallback(
+        captureSession_, SystemPressureLevelChangeCallback);
+    if (ret != CAMERA_OK) {
+        OH_LOG_ERROR(LOG_APP,
+            "OH_CaptureSession_RegisterSystemPressureLevelChangeCallback failed.");
+    }
+    return ret;
+}
+```

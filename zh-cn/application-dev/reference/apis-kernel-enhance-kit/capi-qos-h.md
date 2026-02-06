@@ -60,8 +60,8 @@
 
 | 名称                 | 描述   |
 |--------------------|------|
-| OH_QoS_GewuSession | 会话句柄 |
-| OH_QoS_GewuRequest | 请求句柄 |
+| OH_QoS_GewuSession | 会话句柄。<br>**起始版本：** 20  |
+| OH_QoS_GewuRequest | 请求句柄。<br>**起始版本：** 20 |
 
 ## 枚举类型说明
 

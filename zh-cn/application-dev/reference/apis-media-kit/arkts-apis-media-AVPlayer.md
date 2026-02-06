@@ -2651,7 +2651,7 @@ off(type: 'subtitleUpdate', callback?: Callback\<SubtitleInfo>): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type | string | 是   | 事件回调类型，支持的事件为：'subtitleUpdate'。 |
-| callback | function | 否   | 取消外挂字幕事件的回调方法。 |
+| callback | Callback\<[SubtitleInfo](arkts-apis-media-i.md#subtitleinfo12)> | 否   | 取消外挂字幕事件的回调方法。 |
 
 **示例：**
 
@@ -2756,7 +2756,7 @@ async function test(){
 
 off(type: 'trackInfoUpdate', callback?: Callback\<Array\<MediaDescription>>): void
 
-取消订阅获取轨道变更的事件。
+取消订阅获取轨道信息更新的事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
