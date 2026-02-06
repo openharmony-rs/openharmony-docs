@@ -654,12 +654,12 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 | 名称        | 类型   |只读|可选| 说明                                             |
 | ----------- | -------|----|------|------------------------------------------|
-| type        | number | 否 |否 |1：IP地址或子网，当使用单个IP时，mask字段掩码为32，该场景下必须指定address和mask字段。 <br />2：IP段，该场景下必须指定starIp和endIp字段。  |
+| type        | number | 否 |否 |1：IP地址或子网。该场景下必须指定address和mask字段，当使用单个IP时，mask字段需设置为32。 <br />2：IP段，该场景下必须指定starIp和endIp字段。  |
 | family      | number | 否 | 是|1：表示family地址族设置为IPv4。<br />2：表示family地址族设置为IPv6。  <br />默认IPv4，其他当前不支持。      |
-| address     | string | 否 | 是|IP地址。该场景下必须指定address和mask字段。当type等于1时需要设置，并且仅在type等于1时有效，否则将被忽略。                   |
-| mask        | number | 否 |是 |IPv4：子网掩码。<br />IPv6：前缀。<br />该场景下必须指定address和mask字段。当type等于1时需要设置，并且仅在type等于1时有效，否则将被忽略。       |
-| startIp     | string | 否 |是 |起始IP。该场景下必须指定starIp和endIp字段。当type等于2时需要设置，并且仅在type等于2时有效，范围从0.0.0.1到255.255.255.254，否则将被忽略。                         |
-| endIp       | string | 否 |是 |结束IP。该场景下必须指定starIp和endIp字段。当type等于2时需要设置，并且仅在type等于2时有效，范围从0.0.0.1到255.255.255.254，否则将被忽略。                        |
+| address     | string | 否 | 是|IP地址。当type等于1时需要设置，并且仅在type等于1时有效，否则将被忽略。                   |
+| mask        | number | 否 |是 |IPv4：子网掩码。<br />IPv6：前缀。<br />当type等于1时需要设置，并且仅在type等于1时有效，否则将被忽略。       |
+| startIp     | string | 否 |是 |起始IP。当type等于2时需要设置，并且仅在type等于2时有效，范围从0.0.0.1到255.255.255.254，否则将被忽略。                         |
+| endIp       | string | 否 |是 |结束IP。当type等于2时需要设置，并且仅在type等于2时有效，范围从0.0.0.1到255.255.255.254，否则将被忽略。                        |
 
 ## NetFirewallPortParams
 
