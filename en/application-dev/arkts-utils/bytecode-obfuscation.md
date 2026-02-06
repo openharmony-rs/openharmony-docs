@@ -4,7 +4,7 @@
 <!--Owner: @oatuwwutao; @Graceunderpressure-->
 <!--Designer: @hufeng20-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Glossary
 
@@ -45,19 +45,21 @@ To illustrate, consider this example:
 
 Assume that ArkGuard allows the configuration of a trustlist for specific types. If class A1 is configured in a trustlist with its property prop1, but prop1 in class A2 is not in the trustlist, passing an instance of A2 (a2) to the **test** function would cause issues when accessing the prop1 property.
 
-```typescript
+<!-- @[example_limitation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
+
+``` TypeScript
 // example.ts
 // Before obfuscation:
 class A1 {
-    prop1: string = '';
+  prop1: string = '';
 }
 
 class A2 {
-    prop1: string = '';
+  prop1: string = '';
 }
 
 function test(input: A1) {
-    console.info(input.prop1);
+  console.info(input.prop1);
 }
 
 let a2 = new A2();
@@ -134,11 +136,13 @@ If this option is configured, the default obfuscation capabilities and all confi
 
 Enables property name obfuscation. The effect is as follows:
 
-```ts
+<!-- @[optionExample_enablePropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->
+
+``` TypeScript
 // test.ts
 // Before obfuscation:
 class TestA {
-    static prop1: number = 0;
+  static prop1: number = 0;
 }
 TestA.prop1;
 ```
@@ -153,43 +157,51 @@ TestA.i;
 
 If this option is configured, all property names except the following are obfuscated:
 
-* Property names of classes and objects that are directly imported or exported by using **import** or **export** in case that the **-enable-export-obfuscation** option is not enabled. For example, the property name **data** in the following example is not obfuscated.
+* Property names of classes and objects that are directly imported or exported by using `import` or `export` in case that the `-enable-export-obfuscation` option is not enabled. For example, the property name `data` in the following example is not obfuscated.
 
-    ```ts
-    export class MyClass {
-        data: string;
+    <!-- @[optionExample_enablePropertyObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->    
+    
+    ``` TypeScript
+    // example.ts
+    export class MyClass01 {
+      data1: string;
     }
     ```
 
-* Property names in ArkUI components. For example, **message** and **data** in the following example are not obfuscated.
+* Property names in ArkUI components. For example, `message` and `data` in the following example are not obfuscated.
 
-    ```ts
+    <!-- @[etsOptionExample_enablePropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ets) -->    
+    
+    ``` TypeScript
     // example.ets
     @Component struct MyExample {
-        @State message: string = "hello";
-        data: number[] = [];
-
-        build() {
-        }
+      @State message: string = "hello";
+      data: number[] = [];
+    
+      build() {
+      }
     }
     ```
 
 * Property names specified in [retention options](#-keep-property-name).
 * Property names in the SDK API list. The SDK API list is a set of names automatically extracted from the SDK during build. Its cache file is **systemApiCache.json**, which is stored in **build/default/cache/{...}/release/obfuscation** in the project directory.
-* String literal property names. For example, **firstName** and **personAge** in the following example are not obfuscated.
+* String literal property names. For example, `firstName` and `personAge` in the following example are not obfuscated.
 
-    ```ts
+    <!-- @[optionExample_enablePropertyObfuscation3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->   
+    
+    ``` TypeScript
     let person = {"firstName": "abc"};
     person["personAge"] = 22;
     ```
 
-* Annotation member names. For example, **authorName** and **revision** in the following example are not obfuscated.
+* Annotation member names. For example, `authorName` and `revision` in the following example are not obfuscated.
 
-    ```ts
-    // example.ets
-    @interface MyAnnotation {
-        authorName: string;
-        revision: number;
+    <!-- @[etsOptionExample_enablePropertyObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ets) -->   
+    
+    ``` TypeScript
+    @interface MyAnnotation1 {
+      authorName: string;
+      revision: number;
     }
     ```
 
@@ -206,8 +218,9 @@ To obfuscate string literal property names, you must use this option together wi
 
 According to the preceding configuration, the obfuscation effect of **"fritstName"** and **"personAge"** is as follows:
 
-```ts
-// Before obfuscation:
+<!-- @[optionExample_enableStringPropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
+
+``` TypeScript
 let person = {"firstName": "abc"};
 person["personAge"] = 22;
 ```
@@ -219,38 +232,42 @@ person["b"] = 22;
 ```
 
 **NOTE**
-**1.** If a string literal property name contains special characters, for example, **let obj = {"\n": 123, "": 4, " ": 5}**, you are advised not to use the **-enable-string-property-obfuscation** option because these names may fail to be retained using [retention options](#-keep-property-name). Special characters refer to characters other than lowercase letters a-z, uppercase letters A-Z, digits 0-9, and underscores (_).
+**1.** If a string literal property name contains special characters, for example, `let obj = {"\n": 123, "": 4, " ": 5}`, you are advised not to use the `-enable-string-property-obfuscation` option because these names may fail to be retained using [retention options](#-keep-property-name). Special characters refer to characters other than lowercase letters a-z, uppercase letters A-Z, digits 0-9, and underscores (_).
 
 **2.** The property trustlist of the SDK API list does not contain string constants used in the declaration file. For example, the string **'ohos.want.action.home'** in the example is not included in the property trustlist.
 
-```ts
+<!-- @[optionExample_enableStringPropertyObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->   
+
+``` TypeScript
 // Part of the SDK API file @ohos.app.ability.wantConstant:
 export enum Params {
-    ACTION_HOME = 'ohos.want.action.home'
+  ACTION_HOME = 'ohos.want.action.home'
 }
 // Source code example:
-let params = obj['ohos.want.action.home'];
+let params = obj1['ohos.want.action.home'];
 ```
 
-When the **-enable-string-property-obfuscation** option is used, use the [-keep-property-name](#-keep-property-name) option if you want to retain the property names in the SDK API string constants in the code, for example, **obj['ohos.want.action.home']**.
+When the `-enable-string-property-obfuscation` option is used, use the [-keep-property-name](#-keep-property-name) option if you want to retain the property names in the SDK API string constants in the code, for example, **obj['ohos.want.action.home']**.
 
 ### -enable-toplevel-obfuscation
 
 Enables obfuscation of top-level scope names. The effect is as follows:
 
-```ts
+<!-- @[optionExample_enableToplevelObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->      
+
+``` TypeScript
 // Before obfuscation:
 let count = 0;
 ```
 
-```ts
+``` TypeScript
 // After obfuscation:
 let s = 0;
 ```
 
 If this option is configured, the names of all top-level scopes except the following are obfuscated:
 
-* Names that are directly imported or exported by using **import** or **export** in case that the **-enable-export-obfuscation** option is not enabled.
+* Names that are directly imported or exported by using **import** or **export** in case that the `-enable-export-obfuscation` option is not enabled.
 * Top-level scope names that are not declared in the current file.
 * Top-level scope names specified by [retention options](#-keep-global-name).
 * Top-level scope names in the SDK API list.
@@ -259,14 +276,16 @@ If this option is configured, the names of all top-level scopes except the follo
 
 Enables obfuscation for imported/exported names. The effect is as follows:
 
-```ts
+<!-- @[optionExample_enableExportObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->      
+
+``` TypeScript
 // Before obfuscation:
 namespace ns {
-    export type customT = string;
+  export type customT = string;
 }
 ```
 
-```ts
+``` TypeScript
 // After obfuscation:
 namespace ns {
     export type h = string;
@@ -285,14 +304,17 @@ To obfuscate imported or exported property names, use this option with **-enable
 
 Enables obfuscation of file/folder names. The effect is as follows:
 
-```ts
+<!-- @[optionExample_enableFilenameObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
+
+``` TypeScript
 // Before obfuscation:
 import * as m from '../test1/test2';
 import { foo } from '../test1/test2';
+// ...
 const module = import('../test1/test2');
 ```
 
-```ts
+``` TypeScript
 // After obfuscation:
 import * as m from '../a/b';
 import { foo } from '../a/b';
@@ -309,9 +331,9 @@ If this option is configured, all file/folder names except the following are obf
 
 > **NOTE**
 >
-> For files that the system needs to load files during application running, manually configure them into a trustlist using the [-keep-file-name](#-keep-file-name) option. Otherwise, the application may fail to run.
+> - For files that the system needs to load files during application running, manually configure them into a trustlist using the [-keep-file-name](#-keep-file-name) option. Otherwise, the application may fail to run.
 >
-> The names of the compilation entry file, ability component file, and Worker multithreaded file cannot be obfuscated and have been automatically added to the trustlist in DevEco Studio 5.0.3.500. No manual configuration is required. For other files that cannot be obfuscated, you need to manually configure their names in the trustlist.
+> - The names of the compilation entry file, ability component file, and Worker multithreaded file cannot be obfuscated and have been automatically added to the trustlist in DevEco Studio 5.0.3.500. No manual configuration is required. For other files that cannot be obfuscated, you need to manually configure their names in the trustlist.
 
 ### -compact
 
@@ -319,15 +341,18 @@ Removes unnecessary spaces and all line feeds.
 
 If this option is configured, all code is compressed to one line. The effect is as follows:
 
-```ts
+<!-- @[optionExample_compact](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
+
+``` TypeScript
+// test.ts
 // Before obfuscation:
 class TestA {
-    static prop1: number = 0;
+  static prop1: number = 0;
 }
 TestA.prop1;
 ```
 
-```ts
+``` TypeScript
 // After obfuscation:
 class TestA { static prop1: number = 0; } TestA.prop1;
 ```
@@ -340,14 +365,16 @@ class TestA { static prop1: number = 0; } TestA.prop1;
 
 Removes calls to console.* statements, provided the return value is not used. The effect is as follows:
 
-```ts
+<!-- @[optionExample_removeLog1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->      
+
+``` TypeScript
 // Before obfuscation:
 if (flag) {
-    console.info("hello");
+  console.info("hello");
 }
 ```
 
-```ts
+``` TypeScript
 // After obfuscation:
 if (flag) {
 }
@@ -356,44 +383,42 @@ if (flag) {
 If this option is configured, the console.* statements in the following scenarios are removed:
 
 1. Calls at the top layer of a file.
-
-    Example:
-
-    ```js
+    <!-- @[optionExample_removeLog2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->    
+    
+    ``` TypeScript
     console.info("in tolevel");
     ```
 
 2. Calls within a code block.
-
-    Example:
-
-    ```ts
-    function foo() {
-        console.info('in block');
+    <!-- @[optionExample_removeLog3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
+    
+    ``` TypeScript
+    function foo1() {
+      console.info('in block');
     }
     ```
   
 3. Calls with a module or namespace.
-
-    Example:
-  
-    ```ts
+    <!-- @[optionExample_removeLog4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
+    
+    ``` TypeScript
+    // example.ts
     namespace ns {
-        console.info('in ns');
+      console.info('in ns');
     }
     ```
   
 4. Calls within a **switch** statement.
-
     Example:
-  
-    ```js
+    <!-- @[optionExample_removeLog5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
+    
+    ``` TypeScript
     switch (value) {
-        case 1:
-            console.info("in switch case");
-            break;
-        default:
-            console.info("default");
+      case 1:
+        console.info("in switch case");
+        break;
+      default:
+        console.info("default");
     }
     ```
 
@@ -481,117 +506,131 @@ lastName
 **2.** The property trustlist applies globally. That is, if multiple properties with the same name exist in the code, they will not be confused as long as they match the names in the trustlist configured in **-keep-property-name**.
 
 **Which property names should be retained?**
-
 1. If object properties are defined via string concatenation, variable access, or the **defineProperty** method within the code, these property names should be retained. Example:
 
-```js
-// example.js
-var obj = {x0: 0, x1: 0, x2: 0};
-for (var i = 0; i <= 2; i++) {
-    console.info(obj['x' + i]);  // x0, x1, and x2 should be retained.
-}
+  <!-- @[jsOptionExample_keepPropertyName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.js) -->       
+  
+  ``` JavaScript
+  // example.js
+  let obj = {x0: 0, x1: 0, x2: 0};
+  for (let i = 0; i <= 2; i++) {
+      console.info(obj['x' + i]); // x0, x1, and x2 should be retained.
+  }
+  
+  Object.defineProperty(obj, 'y', {}); // y should be retained.
+  Object.getOwnPropertyDescriptor(obj, 'y'); // y should be retained.
+  console.info(obj.y);
+  
+  obj.s1 = 'a';
+  let key = 's1';
+  console.info(obj[key]); // The variable value s corresponding to key should be retained.
+  
+  obj.t1 = 'b';
+  console.info(obj['t' + '1']); // t1 should be retained.
+  ```
 
-Object.defineProperty(obj, 'y', {});  // y should be retained.
-Object.getOwnPropertyDescriptor(obj, 'y');  // y should be retained.
-console.info(obj.y);
+  For the following string literal property calls, you can choose to retain them.
 
-obj.s1 = 'a';
-let key = 's1';
-console.info(obj[key]);        // The variable value s corresponding to key should be retained.
-
-obj.t1 = 'b';
-console.info(obj['t' + '1']);        // t1 should be retained.
-```
-
-For the following string literal property calls, you can choose to retain them.
-
-```js
-// Obfuscation configuration:
-// -enable-property-obfuscation
-// -enable-string-property-obfuscation
-obj.t = 0;
-console.info(obj['t']); // 't' will be correctly confused, and t can be retained.
-
-obj['v'] = 0;
-console.info(obj['v']); // 'v' will be correctly confused, and v can be retained.
-```
+  <!-- @[optionExample_keepPropertyName1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->       
+  
+  ``` TypeScript
+  // Obfuscation configuration:
+  // -enable-property-obfuscation
+  // -enable-string-property-obfuscation
+  obj2.t = "0";
+  console.info(obj2['t']); // 't' will be correctly confused, and t can be retained.
+  
+  obj2['v'] = "0";
+  console.info(obj2['v']); // 'v' will be correctly confused, and v can be retained.
+  ```
 
 2. In the case of indirect exports, for example, **export MyClass** and **let a = MyClass; export {a}**, if you do not want to obfuscate property names, use [retention options](#retention-options) to retain them. For property names of directly exported classes or objects, such as **firstName** and **personAge** in the following example, if you do not want to obfuscate them, use [retention options](#retention-options) to retain them.
 
-```ts
-// myclass.ts
-export class MyClass {
+  <!-- @[optionExample_keepPropertyName2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->            
+  
+  ``` TypeScript
+  // myclass.ts
+  export class MyClass02 {
     person = {firstName: "123", personAge: 100};
-}
-```
+  }
+  ```
 
 3. If you want to use an API (for example, **foo** in the example) of the .so library in the ArkTS/TS/JS file, manually keep the API name.
 
-```ts
-// src/main/cpp/types/libentry/Index.d.ts
-export const add: (a: number, b: number) => number;
+  <!-- @[dtsOptionExample_keepPropertyName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/cpp/types/libentry/Index.d.ts) -->       
+  
+  ``` TypeScript
+  export const add: (a: number, b: number) => number;
+  ```
 
-// test.ets
-import testNapi from 'library.so'
-
-testNapi.add() // add should be retained. Example: -keep-property-name foo
-```
+  <!-- @[etsOptionExample_keepPropertyName1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ets) -->      
+  
+  ``` TypeScript
+  // test.ets
+  import testNapi from 'libentry.so'
+  // ...
+  testNapi.add(2, 3); // add should be retained. Example: -keep-property-name foo
+  ```
 
 4. Fields used in JSON parsing and object serialization should be retained.
 
-```ts
-// Example JSON file structure (test.json):
-/*
-{
-  "jsonProperty": "value",
-  "otherProperty": "value2"
-}
-*/
-
-import jsonData from './test.json';
-
-let jsonProp = jsonData.jsonProperty; // jsonProperty should be retained.
-
-class jsonTest {
+  <!-- @[optionExample_keepPropertyName3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->        
+  
+  ``` TypeScript
+  // Example JSON file structure (test.json):
+  /*
+  {
+    "jsonProperty": "value",
+    "otherProperty": "value2"
+  }
+  */
+  import jsonData from './test.json';
+  // ...
+  let jsonProp = jsonData.jsonProperty; // jsonProperty should be retained.
+  
+  class jsonTest {
     prop1: string = '';
-    prop2: number = 0;
-}
-let obj = new jsonTest();
-const jsonStr = JSON.stringify(obj); // prop1 and prop2 will be obfuscated and should be retained.
-```
+    prop2: number = 0
+  }
+  
+  let obj = new jsonTest();
+  const jsonStr = JSON.stringify(obj); // prop1 and prop2 will be obfuscated and should be retained.
+  ```
 
 5. Database-related fields should be manually retained. For example, properties in the database key-value pair type (ValuesBucket):
 
-```ts
-const valueBucket: ValuesBucket = {
-    'ID1': ID1, // ID1 should be retained.
-    'NAME1': name, // NAME1 should be retained.
-    'AGE1': age, // AGE1 should be retained.
-    'SALARY1': salary // SALARY1 should be retained.
-}
-```
+  <!-- @[optionExample_keepPropertyName4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->       
+  
+  ``` TypeScript
+  const valueBucket: ValuesBucket = {
+    ID1: 'ID1', // ID1 should be retained.
+    NAME1: 'jack', // NAME1 should be retained.
+    AGE1: 20, // AGE1 should be retained.
+    SALARY1: 100 // SALARY1 should be retained.
+  }
+  ```
 
 6. When custom decorators are used on member variables, member methods, or parameters in the source code, and the intermediate product of source code compilation is a JS file (for example, compiling release-mode source code HAR or source code containing @ts-ignore or @ts-nocheck), the names of these member variables or member methods should be retained. This is because the names of these member variables/methods are hardcoded as string literals during conversion from TS syntax to standard JS syntax.
-
 Example:
 
-```ts
-function CustomDecorator(target: Object, propertyKey: string) {}
-function MethodDecorator(target: Object, propertyKey: string, descriptor: PropertyDescriptor) {}
-function ParamDecorator(target: Object, propertyKey: string, parameterIndex: number) {}
-
-class A {
+  <!-- @[optionExample_keepPropertyName5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->      
+  
+  ``` TypeScript
+  function CustomDecorator(target: Object, propertyKey: string) {}
+  function MethodDecorator(target: Object, propertyKey: string, descriptor: PropertyDescriptor) {}
+  function ParamDecorator(target: Object, propertyKey: string, parameterIndex: number) {}
+  
+  class A {
     // 1. Member variable decorator
     @CustomDecorator
-    propertyName: string = ""   // propertyName should be retained.
+    propertyName1: string = ""   // propertyName1 should be retained.
     // 2. Member method decorator
     @MethodDecorator
-    methodName1(){} // methodName1 should be retained.
+    methodName1() {} // methodName1 should be retained.
     // 3. Method parameter decorator
-    methodName2(@ParamDecorator param: string): void { // methodName2 should be retained.
-    }
-}
-```
+    methodName2(@ParamDecorator param: string): void {} // methodName2 should be retained.
+  }
+  ```
 
 ### -keep-global-name
 
@@ -605,10 +644,13 @@ printPersonName
 
 Names exported from the namespace can also be retained using the **-keep-global-name** option. The following is an example:
 
-```ts
+<!-- @[optionExample_keepGlobalName1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->        
+
+``` TypeScript
+// example.ts
 export namespace Ns {
-    export const myAge = 18; // -keep-global-name myAge: retains variable myAge.
-    export function myFunc () {}; // -keep-global-name myFunc: retains function myFunc.
+  export const myAge = 18 // -keep-global-name myAge: retains variable myAge.
+  export function myFunc() {} // -keep-global-name myFunc: retains function myFunc.
 }
 ```
 
@@ -620,34 +662,42 @@ export namespace Ns {
 
 1. In JS, variables in the top-level scope are properties of **globalThis**. If **globalThis** is used to access a global variable in the code, the variable name should be retained.
 
-Example:
+  Example:
 
-```ts
-var a = 0;
-console.info(globalThis.a);  // a should be retained.
-function foo(){}
-globalThis.foo();           // foo should be retained.
-var c = 0;
-console.info(c);             // c can be correctly obfuscated.
-function bar(){}
-bar();                      // bar can be correctly obfuscated.
-class MyClass {}
-let d = new MyClass();      // MyClass can be correctly obfuscated.
-```
+  <!-- @[optionExample_keepGlobalName2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->      
+
+  ``` TypeScript
+  var a = 0;
+  console.info(globalThis.a);  // a should be retained.
+  function foo2(){}
+  globalThis.foo2();           // foo2 should be retained.
+  var c = "0";
+  console.info(c);             // c can be correctly obfuscated.
+  function bar(){}
+  bar();                      // bar can be correctly obfuscated.
+  class MyClass {}
+  let d = new MyClass();      // MyClass can be correctly obfuscated.
+  ```
 
 2. When importing API names from .so libraries using named imports, if both **-enable-toplevel-obfuscation** and **-enable-export-obfuscation** are configured, the API names should be manually retained.
 
-```ts
-// src/main/cpp/types/libentry/Index.d.ts
-declare function testNapi(): void;
-declare function testNapi1(): void;
+  <!-- @[dtsOptionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
+  
+  ``` TypeScript
+  // src/main/cpp/types/libentry/Index.d.ts
+  declare function testNapi2(): void;
+  declare function testNapi3(): void;
+  ```
 
-// example.ets
-import { testNapi, testNapi1 as myNapi } from 'library.so' // testNapi and testNapi1 should be retained.
-
-testNapi();
-myNapi();
-```
+  <!-- @[etsOptionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ets) -->         
+  
+  ``` TypeScript
+  // example.ets
+  import { testNapi2, testNapi3 as myNapi } from 'libentry.so' // testNapi2 and testNapi3 should be retained.
+  // ...
+  testNapi2();
+  myNapi();
+  ```
 
 ### -keep-file-name
 
@@ -662,39 +712,46 @@ entry
 **Which file names should be retained?**
 1. When **require** is used to import file paths, the path should be retained. This is because ArkTS does not support [CommonJS](../arkts-utils/module-principle.md#commonjs-module) syntax.
 
-```ts
-// example.js
-const module1 = require('./file1')   // file1 should be retained.
-```
+  <!-- @[jsOptionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.js) -->         
+  
+  ``` JavaScript
+  // example.js
+  const module1 = require('./file1'); // file1 should be retained.
+  ```
 
 2. For dynamically imported paths, since it is impossible to determine whether the parameter in the **import** function is a path, the path should be retained.
 
-```ts
-// file2.ts
-export function foo () {}
-```
-```ts
-// main.ts
-const moduleName = './file2'         // The path name file2 corresponding to moduleName should be retained.
-const module2 = import(moduleName)
-```
+  <!-- @[testOptionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/file2.ts) -->        
+  
+  ``` TypeScript
+  // file2.ts
+  export function foo () {}
+  ```
+
+  <!-- @[optionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->       
+  
+  ``` TypeScript
+  // main.ts
+  const moduleName = './file2'         // The path name file2 corresponding to moduleName should be retained.
+  const module2 = import(moduleName)
+  ```
 
 3. When cross-package dynamic routing is used for navigation, the path passed to the dynamic routing should be retained. Dynamic routing provides two modes: system routing table and custom routing table. If a custom routing table is used for redirection, the way to configure a trustlist is consistent with the second dynamic reference scenario. However, if the system routing table is used for redirection, the path corresponding to the **pageSourceFile** field in the **resources/base/profile/route_map.json** file of the module should be added to the trustlist.
 
-```json
-{
-  "routerMap": [
-    {
-      "name": "PageOne",
-      "pageSourceFile": "src/main/ets/pages/directory/PageOne.ets",  // The path should be retained.
-      "buildFunction": "PageOneBuilder",
-      "data": {
-        "description" : "this is PageOne"
+  ```json
+  {
+    "routerMap": [
+      {
+        "name": "PageOne",
+        "pageSourceFile": "src/main/ets/pages/directory/PageOne.ets",  // The path should be retained.
+        "buildFunction": "PageOneBuilder",
+        "data": {
+          "description" : "this is PageOne"
+        }
       }
-    }
-  ]
-}
-```
+    ]
+  }
+  ```
 
 ### -keep-dts
 
