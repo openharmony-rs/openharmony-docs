@@ -106,7 +106,7 @@ function foo() {}; // 原函数名为"foo"
 
 * 如果属性名包含`\`，`.`，为防止二义性，其原函数名会按照匿名函数命名。
    <!-- @[special_with_slash_period](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/OriginalFuncName.ts) -->  
-
+   
    ``` TypeScript
    // OriginalFuncName.ts
    let a = {
