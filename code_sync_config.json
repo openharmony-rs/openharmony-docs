@@ -24745,7 +24745,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template3/Index.ets",
 				"functions":[
 					{
-						"end_line":112,
+						"end_line":111,
 						"name":"animator_template3_start",
 						"start_line":15
 					}
