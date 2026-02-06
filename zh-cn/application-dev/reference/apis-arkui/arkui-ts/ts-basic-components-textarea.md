@@ -299,7 +299,7 @@ maxLength(value: number)
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| value  | number | 是   | 文本的最大输入字符数。</br> 当value<0时，按照默认值处理，不设限制。 |
+| value  | number | 是   | 文本的最大输入字符数。</br> 当value<0时，按照默认值处理，不设限制。<br>默认值：uint32_max，即2的32次方-1。 |
 
 ### showCounter<sup>10+</sup>
 
@@ -1633,9 +1633,9 @@ struct TextAreaExample {
         .backgroundColor('#FFFFFF')
         .maxLength(4)
         .showCounter(true, { thresholdPercentage: 50, highlightBorder: true })
-          //计数器显示效果为用户当前输入字符数/最大字符限制数。最大字符限制数通过maxLength()接口设置。
-          //如果用户当前输入字符数达到最大字符限制乘50%（thresholdPercentage）。字符计数器显示。
-          //用户设置highlightBorder为false时，配置取消红色边框。不设置此参数时，默认为true。
+          // 计数器显示效果为用户当前输入字符数/最大字符限制数。最大字符限制数通过maxLength()接口设置。
+          // 如果用户当前输入字符数达到最大字符限制乘50%（thresholdPercentage）。字符计数器显示。
+          // 用户设置highlightBorder为false时，配置取消红色边框。不设置此参数时，默认为true。
         .onChange((value: string) => {
           this.text = value;
         })
@@ -2414,7 +2414,7 @@ struct TextAreaExample {
 
 从API version 18开始，该示例通过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置字体显示最小与最大范围<!--Del-->（该示例使用系统接口，应用类型需调整为系统应用，可参考HarmonyAppProvision的[系统接口说明](../../../reference/development-intro-api.md#系统接口说明)）<!--DelEnd-->。
 <!--code_no_check-->
-```json
+```json5
 // 开启应用缩放跟随系统
 // AppScope/resources/base，新建文件夹profile。
 // AppScope/resources/base/profile，新建文件configuration.json。
