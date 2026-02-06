@@ -20,7 +20,8 @@ The Network Connection Management module provides basic network management capab
 - Consumer: a user of data networks, for example, an application or a system service.
 - Network probe: a mechanism used to detect the network availability to prevent the switch from an available network to an unavailable network. The probe type can be binding network detection, DNS detection, HTTP detection, or HTTPS detection.
 - Network selection: a mechanism used to select the optimal network when multiple networks coexist. It is triggered when the network status, network information, or network quality evaluation score changes.
-- Default network: network where the default route is located.
+- Default network: the network used by the system by default, which is determined by the system and is irrelevant to whether the application specifies a network. Generally, the network is Wi-Fi, cellular, Ethernet, or Bluetooth.
+- Network handle: unique identifier of the network.
 
 ## When to Use
 

@@ -332,7 +332,7 @@ Defines an enum for **id** in **JSVM_CompileOptions**. Each **id** corresponds t
 | JSVM_COMPILE_CODE_CACHE | JSVM code cache.|
 | JSVM_COMPILE_SCRIPT_ORIGIN | JSVM script origin.|
 | JSVM_COMPILE_COMPILE_PROFILE | JSVM compilation profile.|
-| JSVM_COMPILE_ENABLE_SOURCE_MAP | Source map enablement status of JSVM|
+| JSVM_COMPILE_ENABLE_SOURCE_MAP | Source map enablement status of JSVM.|
 
 ### JSVM_RegExpFlags
 

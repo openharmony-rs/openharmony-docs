@@ -8,54 +8,54 @@
 
 ## Overview
 
-The **XComponent** is a rendering component that can be used for EGL/OpenGL ES and media data output. It uses the held [NativeWindow](../graphics/native-window-guidelines.md) to render graphics and is typically employed to meet complex custom rendering needs, such as displaying camera preview streams and rendering game graphics. You can specify different rendering methods through the **type** field, which are [XComponentType](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#xcomponenttype10).SURFACE and XComponentType.TEXTURE. For the SURFACE type, you display the custom drawing content on the screen separately. For the TEXTURE type, you combine custom drawing content with the content of the **XComponent** and display it on the screen.
+The **XComponent** is a rendering component that can be used for EGL/OpenGL ES and media data output. It uses the held [NativeWindow](../graphics/native-window-guidelines.md) to render graphics and is typically employed to meet advanced custom rendering needs, such as displaying camera preview streams and rendering game graphics. You can specify different rendering methods through the **type** field, which are [XComponentType](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#xcomponenttype10).SURFACE and **XComponentType.TEXTURE**. For the SURFACE type, you display the custom drawing content on the screen separately. For the TEXTURE type, you combine custom drawing content with the content of the **XComponent** and display it on the screen.
 
-You can compare the XComponent component to a canvas. On the canvas, you can use various rendering technologies (such as OpenGL and Vulkan) to draw complex graphics. The XComponent component manages the canvas, including its position, size, and interaction events.
+You can compare the **XComponent** component to a canvas. On the canvas, you can use various rendering technologies (such as OpenGL and Vulkan) to draw complex graphics. The **XComponent** component manages the canvas, including its position, size, and interaction events.
 
 Currently, the **XComponent** component is mainly used in the following two scenarios:
 
 | Type    | Scenario                        |
 | ------------ | -------------------------------- |
-| High-performance rendering  | Game graphics, 3D graphics, complex animations, and more.  |
-| Media data processing| Camera preview, video playback, and image processing|
+| High-performance rendering  | Game graphics, 3D graphics, complex animations, and more  |
+| Media data processing| Camera preview, video playback, image processing, and more|
 
 ## Constraints
 
 If your custom drawn content includes transparent elements, they will blend with the content below the surface. For example, if your content is fully transparent, the background of the **XComponent** is black, and the surface maintains its default size and position, the final display will be a black area.
 
-## XComponent rendering and display principles
+## XComponent Rendering and Display Principles
 
-XComponent holds a surface. You can call APIs such as [NativeWindow](../graphics/native-window-guidelines.md) to allocate and submit a buffer to the graphics queue, and then transfer the self-drawn content to the surface. The main process is as follows:
+The **XComponent** components holds a **Surface**. You can call APIs such as [NativeWindow](../graphics/native-window-guidelines.md) to apply for and submit buffer to the graphics queue, and then transfer self-rendered content to the surface. The main process is as follows:
 
-The application requests a buffer to obtain an idle frame. → The application produces frame data. → The application calls FlushBuffer to submit the frame data to the buffer queue. → The system rendering side obtains the frame by calling AcquireBuffer. → The frame is rendered to the screen. → The system rendering side calls ReleaseBuffer to release the frame.
+The application obtains an idle frame by calling **RequestBuffer** → The application produces frame data → The application calls **FlushBuffer** to submit it to **BufferQueue** → The system rendering side acquires the frame via **AcquireBuffer** → The system renders it to the screen → The system rendering side releases the frame by calling **ReleaseBuffer**.
 
-After the preceding process is complete, the self-drawn content of the application can be displayed in the surface area held by XComponent. XComponent integrates the surface into the UI, and the displayed content is the self-drawn content sent by the developer. By default, the surface matches the size and position of the **XComponent**. Yet, you can adjust its position and size using the [setXComponentSurfaceRect](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#setxcomponentsurfacerect12) API if needed. The **XComponent** is responsible for creating the surface and notifying the application of surface-related information through callbacks. Applications can set the properties of the surface through dedicated APIs. It should be noted that the component itself has no awareness of the actual drawn content and does not provide direct rendering APIs.
+After the preceding process is complete, the self-rendered content of the application can be displayed in the surface held by **XComponent**. **XComponent** integrates the surface into the UI, and the displayed content is the self-drawn content you sent. By default, the surface matches the size and position of the **XComponent**. Yet, you can adjust its position and size using the [setXComponentSurfaceRect](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#setxcomponentsurfacerect12) API if needed. The **XComponent** is responsible for creating the surface and notifying the application of surface-related information through callbacks. Applications can set the properties of the surface through dedicated APIs. It should be noted that the component itself has no awareness of the actual drawn content and does not provide direct rendering APIs.
 
 > **NOTE**
 >
-> The RequestBuffer and FlushBuffer operations mentioned in the main process are generally encapsulated by related APIs (such as the camera module, player module, and OpenGL APIs) in specific scenarios. Therefore, you only need to call these APIs as required, and do not need to directly operate the buffer queue.
+> The **RequestBuffer** and **FlushBuffer** operations mentioned in the main process are generally encapsulated by related APIs (such as the camera module, player module, and OpenGL APIs) in specific scenarios. Therefore, you only need to call these APIs as required, and do not need to directly operate the buffer queue.
 
 ## Creating an XComponent and Managing the Surface Lifecycle
 
-To meet various requirements of developers, XComponent provides multiple creation modes and surface lifecycle management modes. The following describes these modes.
+To meet your various requirements, **XComponent** provides multiple creation modes and surface lifecycle management modes. The following describes these modes.
 
 ### Creating an XComponent
 
-Currently, ArkUI provides three methods for creating UI components: using ./state-management/arkts-declarative-ui-description.md, using ./arkts-user-defined-arktsNode-frameNode.md, and using ./ndk-build-ui-overview.md.
+Currently, ArkUI provides three methods for creating UI components: using [declarative UI description](./state-management/arkts-declarative-ui-description.md), [ArkTS custom component nodes](./arkts-user-defined-arktsNode-frameNode.md), and [NDK APIs](./ndk-build-ui-overview.md).
 
-In general UI development scenarios, you are advised to use ArkTS declarative UI description to create XComponent. For details about the scenarios where ArkTS custom component nodes and NDK APIs are used to create UI components, see the related descriptions of the two methods.
+In general UI development scenarios, you are advised to use ArkTS declarative UI description to create an **XComponent** component. For details about the scenarios where ArkTS custom component nodes and NDK APIs are used to create UI components, see the related descriptions of the two methods.
 
 ### Managing the Lifecycle of the Surface Held by XComponent
 
-As mentioned in the ./state-management/arkts-declarative-ui-description.md rendering principle, XComponent can display the content drawn by the application only when it holds a surface. Therefore, it is important to understand how to obtain the lifecycle of the surface held by XComponent.
+As mentioned in the [XComponent Rendering and Display Principles](#xcomponent-rendering-and-display-principles), the ability of **XComponent** to display self-rendered content relies on **Surface** it holds . Therefore, understanding how to obtain the lifecycle of **Surface** held by **XComponent** is also crucial.
 
-You are advised to use either of the following methods to obtain the lifecycle of the surface held by XComponent: using [XComponentController](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#xcomponentcontroller) to manage the surface lifecycle in ArkTS, or using [OH_ArkUI_SurfaceHolder](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) to manage the surface lifecycle in native code.
+You are advised to use either of the following methods to obtain the lifecycle of **Surface** held by **XComponent**: using [XComponentController](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#xcomponentcontroller) on the ArkTS side, or using [OH_ArkUI_SurfaceHolder](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) to manage the surface lifecycle on the Native side.
 
-If you need to use encapsulated APIs in ArkTS for function development (such as camera preview and video playback) or if you are not sensitive to cross-language performance loss, you are advised to use XComponentController in ArkTS to manage the surface lifecycle. The lifecycle is triggered as follows:
+For scenarios where development is performed using encapsulated interfaces on the ArkTS side (such as camera preview and video playback) or for cross-language development where performance overhead is not a critical concern, you are advised to directly use **XComponentController** on the ArkTS side to manage the lifecycle of **Surface**. The lifecycle is triggered as follows:
 
 - onSurfaceCreated
 
-  Triggered after an XComponent is created and a surface is created.
+  Triggered after an **XComponent** is created and a surface is created.
 
   ArkTS-side sequence
 
@@ -77,11 +77,11 @@ If you need to use encapsulated APIs in ArkTS for function development (such as 
 
   ![OnSurfaceDestroyed](./figures/onSurfaceDestroyed1.png)
 
-For complex interaction logic that requires cross-language development, or when you need to control the creation and destruction of surfaces to achieve optimal rendering performance or meet service requirements, you are advised to use OH_ArkUI_SurfaceHolder on the native side to manage the surface lifecycle. The lifecycle triggering conditions are as follows:
+For complex interactive logic that requires cross-language development, pursuit of extreme rendering performance, or business needs demanding autonomous control over **Surface** creation and destruction, you are advised to use **OHArkUISurfaceHolder** on the Native side to manage the lifecycle of **Surface**. The lifecycle trigger conditions are as follows:
 
 - OnSurfaceCreated   
 
-  Triggering time: This callback is triggered when the XComponent is created and the surface is created, and either of the following conditions is met:
+  Triggered when the **XComponent** component and its **Surface** are created, and either of the following conditions is met:
   1. The component is attached to the component tree with **autoInitialize = true**.
   2. The **OH_ArkUI_XComponent_Initialize** API is called.
 
@@ -104,11 +104,11 @@ For complex interaction logic that requires cross-language development, or when 
 
   ![OnSurfaceDestroyed](./figures/onSurfaceDestroyed2.png)
 
-### XComponent Development Paradigm
+### XComponent Development Paradigms
 
-The following five XComponent development paradigms are available, depending on the combination of [Creating an XComponent](#creating-an-xcomponent) and [Managing the Lifecycle of the Surface Held by an XComponent](#managing-the-lifecycle-of-the-surface-held-by-xcomponent). Except that the XComponentController cannot be used to manage the lifecycle of the surface held by an XComponent created using the NDK API, the other paradigms are as follows:
+By combining the methods for [creating an XComponent](#creating-an-xcomponent) and [managing the lifecycle of the surface held by an XComponent](#managing-the-lifecycle-of-the-surface-held-by-xcomponent), there are currently five **XComponent** development paradigms, except that **XComponent** created using NDK APIs cannot use **XComponentController** on the ArkTS side to manage the lifecycle of **Surface**:
 
-- Create a component using the declarative UI description in ArkTS and use XComponentController to manage the lifecycle of the surface.
+- Create a component using the declarative UI description in ArkTS and use **XComponentController** to manage the lifecycle of **Surface**.
 
   <!-- @[xcomponent_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/ArkTSXComponent/entry/src/main/ets/pages/Index.ets) -->
 
@@ -169,7 +169,7 @@ The following five XComponent development paradigms are available, depending on 
   }
   ```
   
-- You can use the declarative UI description of ArkTS to create components and use OH_ArkUI_SurfaceHolders to manage the lifecycle of surfaces.
+- Use the declarative UI description in ArkTS to create a component and use **OH_ArkUI_SurfaceHolders** to manage the lifecycle of **Surface**.
 
   <!-- @[surface_holder_declarative_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderDeclarative.ets) -->
 
@@ -196,7 +196,7 @@ The following five XComponent development paradigms are available, depending on 
               if (!this.xcNode) {
                 return;
               }
-              native.bindNode('XComponentSurfaceHolder', this.xcNode); // Call the Native side to obtain the SurfaceHolder and bind the surface lifecycle callback.
+              native.bindNode('XComponentSurfaceHolder', this.xcNode); // Cross-language calling to the Native side to obtain SurfaceHolder and bind the Surface lifecycle callback.
             })
             .onDetach(() => {
               native.unbindNode('XComponentSurfaceHolder');
@@ -218,24 +218,24 @@ The following five XComponent development paradigms are available, depending on 
       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
       std::string nodeId = value2String(env, args[0]);
       ArkUI_NodeHandle handle;
-      OH_ArkUI_GetNodeHandleFromNapiValue(env, args[1], &handle); // Obtaining the nodeHandle
-      OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(handle); // Obtain the SurfaceHolder.
+      OH_ArkUI_GetNodeHandleFromNapiValue(env, args[1], &handle);             // Obtain nodeHandle.
+      OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(handle); // Obtain SurfaceHolder.
       nodeHandleMap_[nodeId] = handle;
       surfaceHolderMap_[handle] = holder;
       auto callback = OH_ArkUI_SurfaceCallback_Create(); // Create a SurfaceCallback.
       callbackMap_[holder] = callback;
       auto render = new EGLRender();
-      OH_ArkUI_SurfaceHolder_SetUserData(holder, render); // Save the render in the holder.
+      OH_ArkUI_SurfaceHolder_SetUserData(holder, render);                                // Save render to holder.
       OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative); // Register the OnSurfaceCreated callback.
       OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // Register the OnSurfaceChanged callback.
       OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // Register the OnSurfaceDestroyed callback.
-      OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback); // Register the SurfaceCallback callback.
+      OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback);                // Register the SurfaceCallback callback.
       // ...
       return nullptr;
   }
   ```
   
-- You can use the custom component node of ArkTS to create a component and use XComponentController to manage the lifecycle of the surface.
+- Use the custom component node of ArkTS to create components and use **XComponentController** to manage the lifecycle of **Surface**.
   ``` typescript
   // Override XComponentController to set lifecycle callbacks.
   class MyXComponentController extends XComponentController {
@@ -270,7 +270,7 @@ The following five XComponent development paradigms are available, depending on 
       } catch (error) {
         console.error('Fail to append child: ', error);
       }
-      // Create an XComponent node and bind it to the XComponentController.
+      // Create an XComponent node and bind it to XComponentController.
       this.xComponent =
         typeNode.createNode(uiContext, 'XComponent', { type: XComponentType.SURFACE, controller: this.xcController });
       this.xComponent.attribute
@@ -284,7 +284,7 @@ The following five XComponent development paradigms are available, depending on 
   }
   ```
   
-- You can create a component using the ArkTS custom component node and use OH_ArkUI_SurfaceHolder to manage the lifecycle of the surface.
+- Use the ArkTS custom component nodes to create a component and use **OH_ArkUI_SurfaceHolder** to manage the lifecycle of **Surface**.
   <!-- @[surface_holder_type_node_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderTypeNode.ets) -->
   ``` typescript
   import native from 'libnativerender.so';
@@ -301,7 +301,7 @@ The following five XComponent development paradigms are available, depending on 
         .id(this.xComponentId)
         .focusable(true)
         .focusOnTouch(true)
-      native.bindNode(this.xComponentId, this.xComponent) // Cross-language calling to the native side to bind the surface lifecycle callback.
+      native.bindNode(this.xComponentId, this.xComponent) // Cross-language calling to the Native side to bind the Surface lifecycle callback.
       // ...
     }
   
@@ -346,23 +346,23 @@ The following five XComponent development paradigms are available, depending on 
       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
       std::string nodeId = value2String(env, args[0]);
       ArkUI_NodeHandle handle;
-      OH_ArkUI_GetNodeHandleFromNapiValue(env, args[1], &handle); // Obtaining the nodeHandle
-      OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(handle); // Obtain the SurfaceHolder.
+      OH_ArkUI_GetNodeHandleFromNapiValue(env, args[1], &handle);             // Obtain nodeHandle.
+      OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(handle); // Obtain SurfaceHolder.
       nodeHandleMap_[nodeId] = handle;
       surfaceHolderMap_[handle] = holder;
       auto callback = OH_ArkUI_SurfaceCallback_Create(); // Create a SurfaceCallback.
       callbackMap_[holder] = callback;
       auto render = new EGLRender();
-      OH_ArkUI_SurfaceHolder_SetUserData(holder, render); // Save the render to the holder.
+      OH_ArkUI_SurfaceHolder_SetUserData(holder, render);                                // Save render to holder.
       OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative); // Register the OnSurfaceCreated callback.
       OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // Register the OnSurfaceChanged callback.
       OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // Register the OnSurfaceDestroyed callback.
-      OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback); // Register the SurfaceCallback callback.
+      OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback);                // Register the SurfaceCallback callback.
       return nullptr;
   }
   ```
   
-- Create a component using the NDK interface and use OH_ArkUI_SurfaceHolder to manage the lifecycle of the surface.
+- Use NDK APIs to create components and use **OH_ArkUI_SurfaceHolder** to manage the lifecycle of **Surface**.
   <!-- @[surface_holder_ndk_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderNDK.ets) -->
   ``` typescript
   @Component
@@ -419,7 +419,7 @@ The following five XComponent development paradigms are available, depending on 
             if (userData->find("SurfaceHolder") == std::string::npos) {
                 // ...
             } else {
-                // Create an XComponent component and use SurfaceHolder to manage the Surface lifecycle.
+                // Create an XComponent component and use SurfaceHolder to manage the lifecycle of Surface.
                 testNode = CreateNodeHandleUsingSurfaceHolder(*userData);
             }
             delete userData;
@@ -441,39 +441,39 @@ The following five XComponent development paradigms are available, depending on 
       // ...
       xc = nodeAPI->createNode(ARKUI_NODE_XCOMPONENT); // Create an XComponent node.
       // ...
-      OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(xc); // Obtain the SurfaceHolder.
+      OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(xc); // Obtain SurfaceHolder.
       PluginManager::surfaceHolderMap_[xc] = holder;
       PluginManager::nodeHandleMap_[tag] = xc;
       auto callback = OH_ArkUI_SurfaceCallback_Create(); // Create a SurfaceCallback.
       PluginManager::callbackMap_[holder] = callback;
       auto render = new EGLRender();
-      OH_ArkUI_SurfaceHolder_SetUserData(holder, render); // Save the render to the holder.
+      OH_ArkUI_SurfaceHolder_SetUserData(holder, render);                                // Save render to holder.
       OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative); // Register the OnSurfaceCreated callback.
       OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // Register the OnSurfaceChanged callback.
       OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // Register the OnSurfaceDestroyed callback.
       OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback); // Add the SurfaceCallback callback.
-      if (!nodeAPI->addNodeEventReceiver(xc, onEvent)) { // Add an event listener and return the success code 0.
+      if (!nodeAPI->addNodeEventReceiver(xc, onEvent)) {           // Add an event listener and return the success code 0.
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "addNodeEventReceiver error");
       }
-      if (!nodeAPI->registerNodeEvent(xc, NODE_TOUCH_EVENT, 0, nullptr)) { // Use the C API to register the touch event and return the success code 0.
+      if (!nodeAPI->registerNodeEvent(xc, NODE_TOUCH_EVENT, 0, nullptr)) { // Register the touch event using the C API. The return code 0 indicates success.
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "registerTouchEvent error");
       }
-      nodeAPI->addChild(column, xc); // Mount the XComponent to the column.
+      nodeAPI->addChild(column, xc); // Mount XComponent to Column.
       return column;
   }
   ```
 ## Migrating from OH_NativeXComponent to OH_ArkUI_SurfaceHolder
 
-Starting from API version 8, you can use the APIs related to the [OH_NativeXComponent](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) instance to listen to the lifecycle of the XComponent surface, obtain the NativeWindow instance, and listen to basic events, thereby implementing rendering, drawing, and interaction response. However, using the APIs related to OH_NativeXComponent has the following problems:
+Starting from API version 8, you can use the APIs related to the [OH_NativeXComponent](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) instance to listen to the lifecycle of **Surface** held by the XComponent component, obtain the **NativeWindow** instance, and listen to basic events, thereby implementing rendering, drawing, and interaction response. However, using the APIs related to **OH_NativeXComponent** has the following problems:
 
-- The lifecycle of an OH_NativeXComponent instance is closely related to the XComponent. If you still operate the OH_NativeXComponent instance after the XComponent is destroyed, the app may crash due to stability issues.
-- The interaction event APIs provided by OH_NativeXComponent are not rich enough. Only basic touch, mouse, and keyboard interaction APIs are provided. If you want to identify advanced gestures such as long press and drag, you need to write the identification logic by yourself.
+- The lifecycle of an **OH_NativeXComponent** instance is closely related to the **XComponent** component. If you still operate this instance after the **XComponent** is destroyed, the application may crash due to stability issues.
+- The interaction event APIs provided by **OH_NativeXComponent** are limited, offering only basic touch, mouse, and keyboard interaction APIs. To recognize advanced gestures such as long press or drag, you must implement your own recognition logic.
 
-To solve the preceding problems, you are advised to use the APIs related to OH_ArkUI_SurfaceHolder instead of the APIs related to OH_NativeXComponent. The following uses the ArkTS declarative UI as an example to describe how to switch from using OH_NativeXComponent to using OH_ArkUI_SurfaceHolder to manage the surface lifecycle.
+Given the above issues, you are advised to use the **OHArkUI_SurfaceHolder**-related APIs as a replacement for the **OH_NativeXComponent**-related APIs. The following uses the creation of a component via ArkTS declarative UI description as an example to explain how to switch from managing the **Surface** lifecycle with **OH_NativeXComponent** to managing it with **OH_ArkUI_SurfaceHolderd**.
 
-### Component creation
+### Creating a Component
 
-The main difference in component creation is that when using OH_NativeXComponent, you need to pass the id and libraryname attributes to obtain the corresponding OH_NativeXComponent instance on the native side. However, when using OH_ArkUI_SurfaceHolder to manage the surface lifecycle, you do not need to pass the id and libraryname attributes in the XComponent constructor. Instead, you need to directly pass the FrameNode node corresponding to the component to the native side for lifecycle binding and other settings.
+The main differences during component creation are as follows: When using **OH_NativeXComponent**, the **id** and **libraryname** attributes must be passed to support obtaining the corresponding **OH_NativeXComponent** instance on the Native side. When using **OH_ArkUI_SurfaceHolder** to manage the **Surface** lifecycle, the **XComponent** component no longer requires passing the **id** and **libraryname** attributes in its constructor parameters. Instead, the **FrameNode** node corresponding to the component is directly passed to the Native side for lifecycle binding and other configurations.
 
 - OH_NativeXComponent
   <!-- @[native_xcomponent_declarative_create_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/NativeXComponentDeclarative.ets) -->
@@ -482,7 +482,7 @@ The main difference in component creation is that when using OH_NativeXComponent
   XComponent({
     id: 'xcomponentId',
     type: XComponentType.SURFACE,
-    libraryname: 'nativerender' // Use the id and libraryname attributes to obtain the NativeXComponent on the native side and bind the surface lifecycle.
+    libraryname: 'nativerender' // Use the id and libraryname attributes to obtain NativeXComponent from the native side and bind the Surface lifecycle.
   })
     .onLoad((xComponentContext) => {
       this.xComponentContext = xComponentContext as XComponentContext;
@@ -507,7 +507,7 @@ The main difference in component creation is that when using OH_NativeXComponent
       if (!this.xcNode) {
         return;
       }
-      native.bindNode('XComponentSurfaceHolder', this.xcNode); // calls the native side to obtain the SurfaceHolder and bind the surface lifecycle callback.
+      native.bindNode('XComponentSurfaceHolder', this.xcNode); // Cross-language calling to the Native side to obtain SurfaceHolder and bind the Surface lifecycle callback.
       this.currentStatus = 'index';
     })
     .onDetach(() => {
@@ -516,9 +516,9 @@ The main difference in component creation is that when using OH_NativeXComponent
     })
   ```
 
-### Binding the surface lifecycle.
+### Binding the Surface Lifecycle Callback
 
-The main difference between binding to the surface and binding to the lifecycle is that the APIs for registering lifecycle callbacks are different. The logic executed in the callback remains unchanged.
+The main difference in binding the **Surface** lifecycle callback lies in the APIs used to register lifecycle callbacks, while the logic executed within the specific callbacks remains largely unchanged.
 
 - OH_NativeXComponent
   <!-- @[native_xcomponent_declarative_get_native_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
@@ -546,7 +546,7 @@ The main difference between binding to the surface and binding to the lifecycle 
   
       char idStr[OH_XCOMPONENT_ID_LEN_MAX + 1] = {'\0'};
       uint64_t idSize = OH_XCOMPONENT_ID_LEN_MAX + 1;
-      // Obtain the ID attribute from the NativeXComponent instance to map the ID to the XComponent component on ArkTS.
+      // Obtain the id attribute from the NativeXComponent instance to establish a one-to-one mapping with the XComponent component on the ArkTS side.
       if (OH_NativeXComponent_GetXComponentId(nativeXComponent, idStr, &idSize) != OH_NATIVEXCOMPONENT_RESULT_SUCCESS) {
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
                        "Export: OH_NativeXComponent_GetXComponentId fail");
@@ -559,7 +559,7 @@ The main difference between binding to the surface and binding to the lifecycle 
           context->SetNativeXComponent(id, nativeXComponent);
           auto render = context->GetRender(id);
           if (render != nullptr) {
-              // Register the surface lifecycle.
+              // Register the Surface lifecycle.
               render->RegisterCallback(nativeXComponent);
               render->Export(env, exports);
           }
@@ -592,18 +592,18 @@ The main difference between binding to the surface and binding to the lifecycle 
       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
       std::string nodeId = value2String(env, args[0]);
       ArkUI_NodeHandle handle;
-      OH_ArkUI_GetNodeHandleFromNapiValue(env, args[1], &handle); // Obtaining the nodeHandle
-      OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(handle); // Obtain the SurfaceHolder.
+      OH_ArkUI_GetNodeHandleFromNapiValue(env, args[1], &handle);             // Obtain nodeHandle.
+      OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(handle); // Obtain SurfaceHolder.
       nodeHandleMap_[nodeId] = handle;
       surfaceHolderMap_[handle] = holder;
       auto callback = OH_ArkUI_SurfaceCallback_Create(); // Create a SurfaceCallback.
       callbackMap_[holder] = callback;
       auto render = new EGLRender();
-      OH_ArkUI_SurfaceHolder_SetUserData(holder, render); // Save the render to the holder.
+      OH_ArkUI_SurfaceHolder_SetUserData(holder, render);                                // Save render to holder.
       OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative); // Register the OnSurfaceCreated callback.
       OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // Register the OnSurfaceChanged callback.
       OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // Register the OnSurfaceDestroyed callback.
-      OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback); // Register the SurfaceCallback.
+      OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback);                // Register the SurfaceCallback callback.
       // ...
       return nullptr;
   }
@@ -615,7 +615,7 @@ The differences in obtaining the NativeWindow are as follows:
 
 - OH_NativeXComponent
 
-  Obtain the NativeWindow from the parameter (void *window) returned by the lifecycle callback such as OnSurfaceCreated.
+  Obtain from the parameter (**void *window**) returned by the lifecycle callback such as **OnSurfaceCreated**.
 
   <!-- @[native_xcomponent_get_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   
@@ -640,7 +640,7 @@ The differences in obtaining the NativeWindow are as follows:
 
 - OH_ArkUI_SurfaceHolder
 
-  Call the OH_ArkUI_XComponent_GetNativeWindow API to obtain the NativeWindow from OH_ArkUI_SurfaceHolder.
+  Call the **OH_ArkUI_XComponent_GetNativeWindow** API to obtain the NativeWindow from **OH_ArkUI_SurfaceHolder**.
 
   <!-- @[surface_holder_declarative_get_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   
@@ -654,27 +654,27 @@ The differences in obtaining the NativeWindow are as follows:
 
 ### Listening to Interaction Events
 
-When using the OH_NativeXComponent mode to listen to interaction events, you can only use the related APIs of OH_NativeXComponent to listen to basic events such as touch, mouse, and key events. However, when using the APIs related to OH_ArkUI_SurfaceHolder, you can listen to advanced gestures such as long press and drag in addition to basic events.
+When using **OH_NativeXComponent** to listen to interaction events, you can only use the related APIs of **OH_NativeXComponent** to listen to basic events such as touch, mouse, and key events. However, when using the APIs related to **OH_ArkUI_SurfaceHolder**, you can listen to advanced gestures such as long press and drag in addition to basic events.
 
 - OH_NativeXComponent
 
   <!-- @[native_xcomponent_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
   
   ``` C++
-  renderCallback_.DispatchTouchEvent = DispatchTouchEventCB; // Register the touch event.
+  renderCallback_.DispatchTouchEvent = DispatchTouchEventCB; // Register the touch event callback.
   OH_NativeXComponent_RegisterCallback(nativeXComponent, &renderCallback_);
   mouseCallback_.DispatchMouseEvent = DispatchMouseEventCB;
   mouseCallback_.DispatchHoverEvent = DispatchHoverEventCB;
-  OH_NativeXComponent_RegisterMouseEventCallback(nativeXComponent, &mouseCallback_); // Registering the mouse event
+  OH_NativeXComponent_RegisterMouseEventCallback(nativeXComponent, &mouseCallback_); // Register the mouse event callback.
   
-  OH_NativeXComponent_RegisterFocusEventCallback(nativeXComponent, OnFocusEventCB); // Register the focus event.
-  OH_NativeXComponent_RegisterKeyEventCallback(nativeXComponent, OnKeyEventCB); // Register the key event.
-  OH_NativeXComponent_RegisterBlurEventCallback(nativeXComponent, OnBlurEventCB); // Register the blur event.
+  OH_NativeXComponent_RegisterFocusEventCallback(nativeXComponent, OnFocusEventCB); // Register the focus event callback.
+  OH_NativeXComponent_RegisterKeyEventCallback(nativeXComponent, OnKeyEventCB);  // Register the key event callback.
+  OH_NativeXComponent_RegisterBlurEventCallback(nativeXComponent, OnBlurEventCB); // Register the blur event callback.
   ```
 
 - OH_ArkUI_SurfaceHolder
 
-  The following uses the touch event as an example. For details about the mouse, key, and more gestures, see [Listening to Component Events](./ndk-listen-to-component-events.md).
+  The following uses the touch event callback as an example to demonstrate how to register a callback. For details about how to register the mouse, key, and more event callbacks, see [Listening for Component Events](./ndk-listen-to-component-events.md).
 
   <!-- @[surface_holder_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   
@@ -687,17 +687,17 @@ When using the OH_NativeXComponent mode to listen to interaction events, you can
   }
   ```
 
-## Development Cases
+## Development Example
 
 ### Using NativeWindow on the Native Side for Rendering and Drawing
 
-The following is a complete example of using NativeWindow and EGL APIs for self-drawing. The main development scenarios are as follows:
+The following is a complete example of using **NativeWindow** and **EGL** APIs for self-rendering. The main development scenarios are as follows:
 
 - For **XComponent** components created on the ArkTS side, you can pass the corresponding FrameNode to the native side to obtain an **ArkUI_NodeHandle** object. For **XComponent** components created on the native side, you can directly obtain the **ArkUI_NodeHandle** object. Then, call the **OH_ArkUI_SurfaceHolder_Create** API to create an **OH_ArkUI_SurfaceHolder** instance.
-- Register the corresponding lifecycle callback based on the OH_ArkUI_SurfaceHolder instance to obtain the NativeWindow instance.
-- Use the NativeWindow and EGL APIs to develop custom drawing content, and apply for and submit the buffer to the graphics queue.
-- The accessibility and variable frame rate capabilities of the XComponent are implemented through related APIs based on ArkUI_NodeHandle.
-- You can use the ArkUI NDK APIs to listen to basic events (such as click and touch) and gesture events (such as swipe and zoom) on the XComponent through the ArkUI_NodeHandle object. For details, see [Listening to Component Events](./ndk-listen-to-component-events.md).
+- Register the corresponding lifecycle callback based on the **OH_ArkUI_SurfaceHolder** instance to obtain the **NativeWindow** instance.
+- Use the **NativeWindow** and **EGL** APIs to develop custom drawing content, and apply for and submit the buffer to the graphics queue.
+- The accessibility and variable frame rate capabilities of the **XComponent** are implemented through related APIs based on **ArkUI_NodeHandle**.
+- You can use the ArkUI NDK APIs to listen to basic events (such as click and touch) and gesture events (such as swipe and zoom) on the **XComponent** component through the **ArkUI_NodeHandle** object. For details, see [Listening for Component Events](./ndk-listen-to-component-events.md).
 
 **Available APIs**
 
@@ -747,7 +747,7 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
       needSoftKeyboard: boolean = false;
       @State needSoftKeyboardState: string = 'needSoftKeyboard=' + this.needSoftKeyboard;
       private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-      // Replace $r('app.string.pagethree_text1') with the actual resource file. In this example, the value of the resource file is "The XComponent soft keyboard disappears when you tap it with one finger."
+      // Replace $r('app.string.pagethree_text1') with the actual resource file. In this example, the value of the resource file is "Single-finger tap on XComponent to dismiss the soft keyboard."
       @State text: ResourceStr = $r('app.string.pagethree_text1');
       controller: TextInputController = new TextInputController();
       myNodeController: MyNodeController = new MyNodeController();
@@ -779,7 +779,7 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
             }
           }.height(200)
     
-          // Replace $r('app.string.pagethree_text2') with the actual resource file. In this example, the value of the resource file is "Create/Destroy".
+          // Replace $r('app.string.pagethree_text2') with the actual resource file. In this example, the value of the resource file is "Create/Dispose."
           Button($r('app.string.pagethree_text2')).onClick(() => {
             this.isShow = !this.isShow;
           }).width('50%')
@@ -839,8 +839,8 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
               this.needSoftKeyboard = !this.needSoftKeyboard;
               this.needSoftKeyboardState = 'needSoftKeyboard=' + this.needSoftKeyboard;
               native.setNeedSoftKeyboard(this.myNodeController.xComponentId, this.needSoftKeyboard);
-              // Replace $r('app.string.pagethree_text4') with the actual resource file. In this example, the value of the resource file is "The XComponent soft keyboard does not disappear when you tap it with one finger."
-              // Replace $r('app.string.pagethree_text1') with the actual resource file. In this example, the value of the resource file is "The XComponent soft keyboard disappears when you tap it with one finger."
+              // Replace $r('app.string.pagethree_text4') with the actual resource file. In this example, the value of the resource file is "Single finger tap on XComponent does not dismiss the soft keyboard."
+              // Replace $r('app.string.pagethree_text1') with the actual resource file. In this example, the value of the resource file is "Single-finger tap on XComponent to dismiss the soft keyboard."
               this.text = this.needSoftKeyboard ? $r('app.string.pagethree_text4') : $r('app.string.pagethree_text1')
             })
             .width('50%')
@@ -973,8 +973,8 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
         napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
         std::string nodeId = value2String(env, args[0]);
         ArkUI_NodeHandle handle;
-        OH_ArkUI_GetNodeHandleFromNapiValue(env, args[1], &handle); // Obtaining the nodeHandle
-        OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(handle); // Obtain the SurfaceHolder.
+        OH_ArkUI_GetNodeHandleFromNapiValue(env, args[1], &handle);             // Obtain nodeHandle.
+        OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(handle); // Obtain SurfaceHolder.
         nodeHandleMap_[nodeId] = handle;
         surfaceHolderMap_[handle] = holder;
         auto callback = OH_ArkUI_SurfaceCallback_Create(); // Create a SurfaceCallback.
@@ -1015,7 +1015,7 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
         }
         node = nodeHandleMap_[nodeId];
         OH_ArkUI_XComponent_UnregisterOnFrameCallback(node); // Unregister the frame callback.
-        OH_ArkUI_AccessibilityProvider_Dispose(provider_); // Destroy the ArkUI_AccessibilityProvider.
+        OH_ArkUI_AccessibilityProvider_Dispose(provider_);   // Dispose of the ArkUI_AccessibilityProvider object.
         auto holder = surfaceHolderMap_[node];
         if (PluginManager::callbackMap_.count(holder)) {
             auto callback = PluginManager::callbackMap_[holder];
@@ -1678,17 +1678,17 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
 
     ![Figure](./figures/drawStar.jpeg)
 
-### Using SurfaceId for Rendering and Drawing in ArkTS
+### Using SurfaceId for Rendering on the ArkTS Side
 
-The following is an example of using SurfaceId for rendering and drawing, and the main development scenarios:
+A complete example of using **SurfaceId** for rendering and its primary development scenarios are as follows:
 
-- Create an XComponent in ArkTS and use XComponentController to manage the lifecycle of the surface.
-- Obtain the surface ID in the OnSurfaceCreated callback and pass it to the AVPlayer.
-- Use the surface ID to initialize the AVPlayer and set necessary information for it to play the video.
+- Create an **XComponent** on the ArkTS side and use **XComponentController** to manage the lifecycle of **Surface**.
+- Obtain **surfaceId** in the **OnSurfaceCreated** callback and pass it to **AVPlayer**.
+- Use **surfaceId** to initialize **AVPlayer** and set necessary information for it to play the video.
 
 > **NOTE**
 >
-> For more information about how to use the AVPlayer, see [AVPlayer](../reference/apis-media-kit/arkts-apis-media-AVPlayer.md).
+> For more information about how to use **AVPlayer**, see [AVPlayer](../reference/apis-media-kit/arkts-apis-media-AVPlayer.md).
 
 **Available APIs**
 
@@ -1698,15 +1698,15 @@ The following is an example of using SurfaceId for rendering and drawing, and th
 
 **How to Develop**
 
-The following steps describe how to create an XComponent of the surface type in ArkTS, obtain the surface ID, and pass the surface ID to the AVPlayer to play the video.
+The following demonstrates how to create an **XComponent** of the surface type on the ArkTS side, obtain the surface ID, and pass the surface ID to **AVPlayer** to play the video.
 
-1. Create an XComponent and pass the XComponentController to it.
+1. Create an **XComponent** and pass **XComponentController**.
    <!-- @[av_player_create_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/XComponentAVPlayer.ets) -->
    ``` typescript
    XComponent({ type: XComponentType.SURFACE, controller: this.videoXComponentController })
    ```
 
-2. Register the onSurfaceCreated lifecycle in the XComponentController, obtain the surface ID, and pass the obtained surface ID and the information about the video source to be played to the AVPlayer.
+2. Register the **onSurfaceCreated** lifecycle callback in **XComponentController**, obtain the surface ID, and pass the obtained surface ID and the information about the video source to be played to **AVPlayer**.
    <!-- @[av_player_xcomponent_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/XComponentAVPlayer.ets) -->
    ``` typescript
    class VideoXComponentController extends XComponentController {
@@ -1728,7 +1728,7 @@ The following steps describe how to create an XComponent of the surface type in 
    }
    ```
 
-3. The struct initializes an AVPlayer.
+3. Initialize AVPlayer.
    <!-- @[av_player_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/avplayertool/AVPlayerController.ets) -->
    ``` typescript
    public async initAVPlayer(source: VideoData, surfaceId: string) {
@@ -1837,11 +1837,11 @@ The following steps describe how to create an XComponent of the surface type in 
 
  
 
-- [XComponent3D (API version 10) ](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/XComponent3D)
-- [OpenGL pyramid (API version 10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkOpenGL)
-- [NativeXComponent (API version 19) ](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponentSample)
+-  [XComponent3D (API version 10) ](https://gitc
+-  
+-  
 
  
 
-- [ArkTSXComponent (API version 12) ](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/ArkTSXComponent)
+-  
 <!--RP1End-->

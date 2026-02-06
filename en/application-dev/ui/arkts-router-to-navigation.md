@@ -485,9 +485,7 @@ For **Navigation**, a routing container component, page transition animations ar
 
 ## Shared Element Transition
 
-To animate shared elements during page transitions with **Router**, use the **sharedTransition** API. For details, see
-
-[Shared Element Transition (sharedTransition)](../reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md).
+To animate shared elements during page transitions with **Router**, use the **sharedTransition** API. For details, see [Shared Element Transition (sharedTransition)](../reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md).
 
 To animate shared elements during page transitions with **Navigation**, use the **geometryTransition** API. For details, see [Shared Element Transition](arkts-navigation-navigation.md#defining-a-shared-element-transition).
 

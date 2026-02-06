@@ -184,8 +184,8 @@ Enumerates the **DefaultChangeUri** subtypes.
 
 | Name             | Value                     | Description                                                        |
 | ----------------- | ----------------------- | ------------------------------------------------------------ |
-| DEFAULT_PHOTO_URI | 'file://media/Photo'      | Default **PhotoAsset** URI, which must be used with **forChildUris{true}** to subscribe to change notifications of all photo assets.|
-| DEFAULT_ALBUM_URI | 'file://media/PhotoAlbum' | Default album URI, which must be used with **forChildUris{true}** to subscribe to change notifications of all albums.|
+| DEFAULT_PHOTO_URI | 'file://media/Photo'      | Default **PhotoAsset** URI, which must be used with **forSubUri{true}** to subscribe to change notifications of all photo assets.|
+| DEFAULT_ALBUM_URI | 'file://media/PhotoAlbum' | Default album URI, which must be used with **forSubUri{true}** to subscribe to change notifications of all albums.|
 
 ## PhotoViewMIMETypes
 
@@ -365,6 +365,7 @@ Enumerates the log modes of video files.
 | ----- |  ---- |  ---- |
 | DEFAULT |  0 |  Default type.<br>A value of **0** indicates that the video is either not in log mode or its type has not yet been determined. This value may later be updated to **1** for some videos after type determination, so it is not recommended for use in queries.|
 | LOG_VIDEO |  1 |  Video file in log mode. |
+
 
 ## OperationType<sup>22+</sup>
 

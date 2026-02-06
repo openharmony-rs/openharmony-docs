@@ -108,7 +108,7 @@
     - [\@Env: Environment Variable](arkts-env-system-property.md)
   - Setting Component Navigation and Page Routing<!--arkts-set-navigation-routing-->
     - [Component Navigation and Page Routing Overview](arkts-navigation-introduction.md)
-    - [Component Navigation (Navigation) (Recommended)](arkts-navigation-navigation.md)
+    - [Component Navigation (Recommended)](arkts-navigation-navigation.md)
     - [Page Routing (@ohos.router) (Not Recommended)](arkts-routing.md)
     - [Transition from Router to Navigation](arkts-router-to-navigation.md)
   - Component Layouts<!--arkts-layout-development-->

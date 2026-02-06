@@ -6,9 +6,9 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-This interface provides APIs for audio capture.
+This module provides APIs for audio capture.
 
-Before calling any API in AudioCapturer, you must use [createAudioCapturer](arkts-apis-audio-f.md#audiocreateaudiocapturer8) to create an AudioCapturer instance.
+Before calling any API in AudioCapturer, you need to use [createAudioCapturer](arkts-apis-audio-f.md#audiocreateaudiocapturer8) to create an AudioCapturer instance.
 
 > **NOTE**
 >
@@ -49,7 +49,7 @@ Obtains the audio capturer information. This API uses an asynchronous callback t
 
 | Name  | Type                             | Mandatory| Description                                |
 | :------- | :-------------------------------- | :--- | :----------------------------------- |
-| callback | AsyncCallback<[AudioCapturerInfo](arkts-apis-audio-i.md#audiocapturerinfo8)\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the capturer information obtained; otherwise, **err** is an error object.|
+| callback | AsyncCallback<[AudioCapturerInfo](arkts-apis-audio-i.md#audiocapturerinfo8)\> | Yes  | Callback function. If the operation is successful, **err** is **undefined** and **data** is the capturer information obtained; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -142,7 +142,7 @@ Obtains the stream information of this audio capturer. This API uses an asynchro
 
 | Name  | Type                                                | Mandatory| Description                            |
 | :------- | :--------------------------------------------------- | :--- | :------------------------------- |
-| callback | AsyncCallback<[AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8)\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the stream information obtained; otherwise, **err** is an error object.|
+| callback | AsyncCallback<[AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8)\> | Yes  | Callback function. If the operation is successful, **err** is **undefined** and **data** is the stream information obtained; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -235,7 +235,7 @@ Obtains the stream ID of this audio capturer. This API uses an asynchronous call
 
 | Name  | Type                                                | Mandatory| Description                |
 | :------- | :--------------------------------------------------- | :--- | :------------------- |
-| callback | AsyncCallback<number\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the stream ID obtained; otherwise, **err** is an error object.|
+| callback | AsyncCallback<number\> | Yes  | Callback function. If the operation is successful, **err** is **undefined** and **data** is the stream ID obtained; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -313,7 +313,7 @@ Starts this audio capturer to start capturing audio data. This API uses an async
 
 | Name  | Type                | Mandatory| Description                          |
 | :------- | :------------------- | :--- | :----------------------------- |
-| callback | AsyncCallback<void\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. If the operation fails, an error object with the following error code is returned:<br>Error code 6800301: indicates abnormal status, focus preemption failure, and abnormal system processing. For details, see system logs.|
+| callback | AsyncCallback<void\> | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. If the operation fails, an error object with the following error code is returned:<br>Error code 6800301: indicates abnormal status, focus preemption failure, and abnormal system processing. For details, see system logs.|
 
 **Example**
 
@@ -371,7 +371,7 @@ Stops this audio capturer, ceasing the input audio stream. This API uses an asyn
 
 | Name  | Type                | Mandatory| Description                          |
 | :------- | :------------------- | :--- | :----------------------------- |
-| callback | AsyncCallback<void\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback<void\> | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -429,7 +429,7 @@ Releases this audio capturer. This API uses an asynchronous callback to return t
 
 | Name  | Type                | Mandatory| Description                               |
 | :------- | :------------------- | :--- | :---------------------------------- |
-| callback | AsyncCallback<void\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback<void\> | Yes  | Callback function. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -487,7 +487,7 @@ Obtains the timestamp of the current recording position, measured in nanoseconds
 
 | Name  | Type                  | Mandatory| Description                          |
 | :------- | :--------------------- | :--- | :----------------------------- |
-| callback | AsyncCallback<number\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the number of nanoseconds obtained; otherwise, **err** is an error object.|
+| callback | AsyncCallback<number\> | Yes  | Callback function. If the operation is successful, **err** is **undefined** and **data** is the number of nanoseconds obtained; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -637,7 +637,7 @@ Obtains a reasonable minimum buffer size in bytes for capturing. This API uses a
 
 | Name  | Type                  | Mandatory| Description                                |
 | :------- | :--------------------- | :--- | :----------------------------------- |
-| callback | AsyncCallback<number\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the minimum buffer size obtained; otherwise, **err** is an error object.|
+| callback | AsyncCallback<number\> | Yes  | Callback function. If the operation is successful, **err** is **undefined** and **data** is the minimum buffer size obtained; otherwise, **err** is an error object.|
 
 **Example**
 
@@ -780,7 +780,7 @@ Subscribes to the audio interruption event, which is triggered when the audio fo
 
 The AudioCapturer instance proactively gains the focus when the **start** event occurs and releases the focus when the **pause** or **stop** event occurs. Therefore, you do not need to request to gain or release the focus.
 
-After this API is called, an [InterruptEvent](arkts-apis-audio-i.md#interruptevent9) is received when the AudioCapturer instance fails to obtain the focus or an audio interruption event occurs (for example, the audio stream is interrupted by others). It is recommended that the application perform further processing based on the **InterruptEvent** information. For more information, see [Introduction to Audio Focus](../../media/audio/audio-playback-concurrency.md).
+After this API is called, an [InterruptEvent](arkts-apis-audio-i.md#interruptevent9) is received when the AudioCapturer instance fails to obtain the focus or an audio interruption event occurs (for example, the audio stream is interrupted by others). It is recommended that the application perform further processing based on the **InterruptEvent** information. For details, see [Introduction to Audio Focus](../../media/audio/audio-playback-concurrency.md).
 
 **System capability**: SystemCapability.Multimedia.Audio.Interrupt
 
@@ -1026,7 +1026,7 @@ audioCapturer.off('audioCapturerChange', audioCapturerChangeCallback);
 
 on(type: 'markReach', frame: number, callback: Callback&lt;number&gt;): void
 
-Subscribes to the mark reach event, which is triggered (only once) when the number of frames captured reaches the value of the **frame** parameter. This API uses an asynchronous callback to return the result.
+Subscribes to the mark reached event, which is triggered (only once) when the number of frames captured reaches the value of the **frame** parameter. This API uses an asynchronous callback to return the result.
 
 For example, if **frame** is set to **100**, the callback is invoked when the number of captured frames reaches the 100th frame.
 
@@ -1054,7 +1054,7 @@ audioCapturer.on('markReach', 1000, (position: number) => {
 
 off(type: 'markReach', callback?: Callback&lt;number&gt;): void
 
-Unsubscribes from the mark reach event. This API uses an asynchronous callback to return the result.
+Unsubscribes from the mark reached event. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Audio.Capturer
 
@@ -1087,7 +1087,7 @@ audioCapturer.off('markReach', markReachCallback);
 
 on(type: 'periodReach', frame: number, callback: Callback&lt;number&gt;): void
 
-Subscribes to the period reach event, which is triggered each time the number of frames captured reaches the value of the **frame** parameter. In other words, the information is reported periodically. This API uses an asynchronous callback to return the result.
+Subscribes to the period reached event, which is triggered each time the number of frames captured reaches the value of the **frame** parameter. In other words, the information is reported periodically. This API uses an asynchronous callback to return the result.
 
 For example, if **frame** is set to **10**, the callback is invoked each time 10 frames are captured, for example, when the number of frames captured reaches the 10th frame, 20th frame, and 30th frame.
 
@@ -1115,7 +1115,7 @@ audioCapturer.on('periodReach', 1000, (position: number) => {
 
 off(type: 'periodReach', callback?: Callback&lt;number&gt;): void
 
-Unsubscribes from the period reach event. This API uses an asynchronous callback to return the result.
+Unsubscribes from the mark reached event. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Audio.Capturer
 
@@ -1176,7 +1176,7 @@ audioCapturer.on('stateChange', (state: audio.AudioState) => {
 
 off(type: 'stateChange', callback?: Callback&lt;AudioState&gt;): void
 
-Unsubscribes from the mark reach event. This API uses an asynchronous callback to return the result.
+Unsubscribes from the audio capturer state change event. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Audio.Capturer
 
@@ -1184,7 +1184,7 @@ Unsubscribes from the mark reach event. This API uses an asynchronous callback t
 
 | Name| Type  | Mandatory| Description                                               |
 | :----- | :----- | :--- | :-------------------------------------------------- |
-| type   | string | Yes  | Event type. The event **'stateChange'** is triggered when the state of the audio capturer is changed.|
+| type   | string | Yes  | Event type. The event **'stateChange'** is triggered when the listening for audio capturer state change event is canceled.|
 | callback | Callback\<[AudioState](arkts-apis-audio-e.md#audiostate8)> | No| Callback used to return the audio status.|
 
 **Error codes**

@@ -18,7 +18,7 @@ ArkUI provides four types of damped spring curve APIs:
 
 - [curves.springMotion](../reference/apis-arkui/js-apis-curve.md#curvesspringmotion9): creates a spring animation curve. The animation duration is automatically calculated based on the curve parameters, attribute change values, and initial spring velocity. Manually set animation duration values do not take effect.
 
-  **springMotion** does not provide any API for setting the velocity, as the velocity is obtained through inheritance. For an attribute, if there is already a **springMotion** or [responsiveSpringMotion](../reference/apis-arkui/js-apis-curve.md#curvesresponsivespringmotion9) animation running, a new spring animation will stop the running animation and inherit the current parameters. It is typically used to create an animation with a gesture on the screen. You can use **springMotion** to create an animation for when the user lifts their finger off the screen. At this time, attribute values and velocity are used as the initial values of the new animation. This spring curve API provides default parameters, which you can directly use when appropriate.
+  **springMotion** does not provide any API for setting the velocity, as the velocity is obtained through inheritance. For an attribute, if there is already a **springMotion** or [responsiveSpringMotion](../reference/apis-arkui/js-apis-curve.md#curvesresponsivespringmotion9) animation running, a new spring animation will stop the running animation and inherit the attribute values and velocity of that animation as its initial values. This spring curve API provides default parameters, which you can directly use when appropriate.
 
   ```ts
   function springMotion(response?: number, dampingFraction?: number, overlapDuration?: number): ICurve;
@@ -151,7 +151,5 @@ export struct SpringCurve {
   }
 }
 ```
-
-
 
 ![en-us_image_0000001649089041](figures/spring_curve.gif)

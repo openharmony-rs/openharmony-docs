@@ -929,6 +929,8 @@ getCameraDevice(position: CameraPosition, type: CameraType): CameraDevice
 
 根据相机位置和相机类型查询对应相机。
 
+获取指定[CameraPosition](arkts-apis-camera-e.md#cameraposition)和[CameraType](arkts-apis-camera-e.md#cameratype)的相机镜头，如果该接口返回结果为undefined，表示当前设备未查询到该镜头。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core

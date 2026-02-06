@@ -57,11 +57,11 @@ To detect time-consuming function calls and record them in logs, perform the fol
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // Add a check rule. For details about the rule, see HiChecker.
        hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG|hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
-       let filePath: string = this.context.cacheDir + '/test.JPG';
-       const imageSourceApi: image.ImageSource = image.createImageSource(filePath);
-       const imagePackerApi = image.createImagePacker();
+       let filePath: string = this.context.filesDir + '/test.JPG';
+       const imageSourceObj: image.ImageSource = image.createImageSource(filePath);
+       const imagePackerObj: image.ImagePacker = image.createImagePacker();
        let packOpts: image.PackingOption = { format:"image/jpeg", quality:98 };
-       imagePackerApi.packing(imageSourceApi, packOpts);
+       imagePackerObj.packToData(imageSourceObj, packOpts);
        // The preceding codes trigger the check rule through the image subsystem.
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
      }

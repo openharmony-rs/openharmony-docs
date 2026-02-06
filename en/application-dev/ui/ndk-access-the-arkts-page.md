@@ -218,7 +218,7 @@ Sample code directory structure:
    API declaration:
 
     <!-- @[Cpp_indexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-   
+    
     ``` TypeScript
     // entry/src/main/cpp/types/libentry/Index.d.ts
     export const createNativeRoot: (content: Object) => void;
@@ -228,7 +228,7 @@ Sample code directory structure:
    Native implementation:
 
     <!-- @[napi_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/napi_init.cpp) -->
-   
+    
     ``` C++
     // entry/src/main/cpp/napi_init.cpp
     #include "napi/native_api.h"
@@ -323,12 +323,11 @@ Sample code directory structure:
    Corresponding implementation file:
 
     <!-- @[Cpp_NativeEntry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/NativeEntry.cpp) -->
-   
+    
     ``` C++
     // NativeEntry.cpp
     
     #include <arkui/native_node_napi.h>
-    #include <hilog/log.h>
     #include <js_native_api.h>
     #include "NativeEntry.h"
     #include "NormalTextListExample.h"
@@ -377,7 +376,7 @@ Sample code directory structure:
    (1) Obtain the entry module of ArkUI in the NDK API [ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md), which provides a series of function pointers for component creation, tree construction, attribute setting, and event registration.
    
     <!-- @[Cpp_NativeModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/NativeModule.h) -->
-   
+    
     ``` C
     // NativeModule.h
     // Provide encapsulated APIs for obtaining ArkUI modules on the native side.
@@ -418,7 +417,7 @@ Sample code directory structure:
    (2) Provide base class objects for list and text components to encapsulate common attributes and events.
    
     <!-- @[Cpp_ArkUIBaseNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUIBaseNode.h) -->
-   
+    
     ``` C
     // ArkUIBaseNode.h
     // Provide a base class for component tree operations.
@@ -494,7 +493,7 @@ Sample code directory structure:
     #endif // MYAPPLICATION_ARKUIBASENODE_H
     ```
     <!-- @[Cpp_ArkUINode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUINode.h) -->
-   
+    
     ``` C
     // ArkUINode.h
     // Provide encapsulation of common attributes and events.
@@ -568,7 +567,7 @@ Sample code directory structure:
    (3) Implement the list component.
    
     <!-- @[Cpp_ArkUIListNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUIListNode.h) -->
-   
+    
     ``` C
     // ArkUIListNode.h
     // Provide encapsulation for the list component. 
@@ -602,7 +601,7 @@ Sample code directory structure:
    (4) Implement the list item component.
    
     <!-- @[Cpp_ArkUIListItemNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUIListItemNode.h) -->
-   
+    
     ``` C
     // ArkUIListItemNode.h
     // Provide an encapsulation class for list items
@@ -625,7 +624,7 @@ Sample code directory structure:
    (5) Implement the text component.
    
     <!-- @[Cpp_ArkUITextNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/ArkUITextNode.h) -->
-   
+    
     ``` C
     // ArkUITextNode.h
     // Implement an encapsulation class for the text component.
@@ -685,7 +684,6 @@ Sample code directory structure:
     #include "ArkUIListItemNode.h"
     #include "ArkUIListNode.h"
     #include "ArkUITextNode.h"
-    #include <hilog/log.h>
     
     namespace NativeModule {
     
@@ -699,7 +697,7 @@ Sample code directory structure:
         list->SetScrollBarState(true);
         const int itemCount = 30;
         const int fontSizes = 16;
-        const int screenWidth = 300;
+        const float screenWidth = 1;
         const int defaultHeight = 100;
         // 2: Create a ListItem child component and mount it to the List component.
         for (int32_t i = 0; i < itemCount; ++i) {
@@ -707,9 +705,9 @@ Sample code directory structure:
             auto textNode = std::make_shared<ArkUITextNode>();
             textNode->SetTextContent(std::to_string(i));
             textNode->SetFontSize(fontSizes);
-            textNode->SetFontColor(0xFFff00ff);
+            textNode->SetFontColor(0xFF000000);
             textNode->SetPercentWidth(1);
-            textNode->SetWidth(screenWidth);
+            textNode->SetPercentWidth(screenWidth);
             textNode->SetHeight(defaultHeight);
             textNode->SetBackgroundColor(0xFFfffacd);
             textNode->SetTextAlign(ARKUI_TEXT_ALIGNMENT_CENTER);

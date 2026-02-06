@@ -46,7 +46,6 @@ Specify which boundary of the current component aligns with the anchor. Child co
 * In the horizontal direction, component boundaries can align with the anchor using start (**left**), center (**middle**), or end (**right**) boundaries. When all three boundaries are specified, only the start (**left**) and center (**middle**) boundaries take effect.
 
   ![relative-layout-alignrules01](figures/relative-layout-alignrules01.png)
-
 * In the vertical direction, component boundaries can align with the anchor using top, center, or bottom boundaries. When all three boundaries are specified, only the top and center boundaries take effect.
 
   ![relative-layout-alignrules02](figures/relative-layout-alignrules02.png)
@@ -55,7 +54,7 @@ Specify which boundary of the current component aligns with the anchor. Child co
 
 Anchor configuration defines the positional relationship of a child element relative to its parent container or sibling elements. Specifically, a child element can anchor its position to the relative layout container (**RelativeContainer**), a guideline, a barrier, or another child element.
 
-To properly define an anchor, each child element in **RelativeContainer** must have a unique component ID, which is used to specify anchor relationships. The parent **RelativeContainer** element has a default ID of \_\_container\_\_. Other child element IDs are set using the [id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id) attribute.
+To properly define an anchor, each child element in **RelativeContainer** must have a unique component ID, which is used to specify anchor relationships. The parent **RelativeContainer** element has a default ID of **_\_container\_\_**. Other child element IDs are set using the [id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id) attribute.
 
 > **NOTE**
 >
@@ -250,7 +249,7 @@ Vertical alignment modes include top, center, and bottom, implemented using **Ve
 After relative position alignment, the child component may not reach the desired target position. You can set an offset as needed. When using an offset component as the anchor, the alignment position refers to the position before the offset is applied. Since API version 11, the [Bias](../reference/apis-arkui/arkui-ts/ts-types.md#bias) object has been added. For API version 11 and later, it is recommended that you use **bias** to set additional offsets. For details about how to use **bias**, see [Example 4: Applying Vertical Offsets](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md#example-4-applying-vertical-offsets).
 
   <!-- @[RelativeContainerChildComponentOffset_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerChildComponentOffset.ets) -->
-  
+
   ``` TypeScript
   @Entry
   @Component
@@ -374,7 +373,7 @@ After relative position alignment, the child component may not reach the desired
 You can set components in multiple layout components, such as **Row**, **Column**, **Flex**, and **Stack**, to be aligned based on the relative layout rules.
 
   <!-- @[RelativeContainerDifferentComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerDifferentComponentId.ets) -->
-  
+
   ``` TypeScript
   @Entry
   @Component
