@@ -13,12 +13,12 @@
 2. If the issue is related to obfuscation, review the documentation to understand the capabilities of obfuscation rules and understand when to configure trustlists to avoid issues. The following describes the four options that are enabled by default. For details, see the description of each option.
    1. [-enable-toplevel-obfuscation](source-obfuscation.md#-enable-toplevel-obfuscation): obfuscates top-level scope names.
 
-   2. [-enable-property-obfuscation](source-obfuscation.md#-enable-property-obfuscation): obfuscates property names. Use [-keep-property-name](source-obfuscation.md#-keep-property-name) to configure a trustlist for property names used in network calls, JSON field, dynamic accesses, and so library interfaces.
+   2. [-enable-property-obfuscation](source-obfuscation.md#-enable-property-obfuscation): obfuscates property names. Use [-keep-property-name](source-obfuscation.md#-keep-property-name) to configure a trustlist for property names used in network calls, JSON fields, dynamic accesses, and so library interfaces.
 
    3. [-enable-export-obfuscation](source-obfuscation.md#-enable-export-obfuscation): obfuscates imported or exported names. Generally, this option is used together with `-enable-toplevel-obfuscation` and `-enable-property-obfuscation`. You need to use [-keep-global-name](source-obfuscation.md#-keep-global-name) to configure a trustlist for exported or imported names in scenarios where external APIs of the module cannot be obfuscated.
 
    4. [-enable-filename-obfuscation](source-obfuscation.md#-enable-filename-obfuscation): obfuscates file names. Use [-keep-file-name](source-obfuscation.md#-keep-file-name) to configure a trustlist for file paths and names in dynamically import or runtime loading scenarios.
-3. When checking the scenarios where a trustlist needs to be configured, you are advised to use [ObfuscationHelper](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-build-obfuscation#section19439175917123) to quickly identify the retention options and trustlist fields to be configured. If your issue matches any typical cases listed below, apply the suggested solutions.
+3. When checking the trustlist scenarios, you are advised to [use obfuscation for code hardening](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-build-obfuscation#section19439175917123) to quickly identify the retention options and trustlist fields to be configured. If your issue matches any typical cases listed below, apply the suggested solutions.
 4. If the issue is not covered, use a positive approach to identify the problem (remove specific configuration items if the corresponding functionality is not needed).
 5. Analyze runtime crashes as follows:
    1. Open the application runtime logs or click the** Crash** dialog box in DevEco Studio to find the crash stack.
