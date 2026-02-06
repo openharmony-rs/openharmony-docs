@@ -17,27 +17,9 @@ Worker primarily provides a multithreaded runtime environment for applications, 
 
 The thread that creates a Worker is referred to as the host thread (not limited to the main thread; Worker threads can also create its child Workers). The Worker thread (also called actor thread) is the thread on which the Worker itself runs. Each Worker thread and the host thread have independent instances, including separate execution environments, objects, and code segments. Therefore, there is a certain memory overhead associated with starting each Worker, and the number of Worker threads should be limited. Worker threads and the host thread communicate through a message-passing mechanism, using serialization, reference passing, or ownership transfer to complete the exchange of commands and data.
 
+## Precautions for Creating a Worker
 
-## Precautions for Worker
-
-- A Worker can be created manually or automatically. The automatic mode is recommended. In manual mode, you must also synchronize the related configuration. For details, see [Precautions for Creating a Worker](#precautions-for-creating-a-worker).
-- When using Worker capabilities, the URL of the Worker thread file passed in the constructor varies by API version. For specifics, see [Precautions for File URLs](#precautions-for-file-urls).
-- After a Worker is created, its lifecycle must be managed manually. A maximum of 64 Worker threads can run simultaneously, and the total number cannot exceed 80, including those created with [napi_create_ark_runtime](../reference/native-lib/napi.md#napi_create_ark_runtime). For details, see [Precautions for Lifecycle Management](#precautions-for-lifecycle-management).
-- The context objects in different threads are different. Therefore, Worker threads can use only thread-safe libraries. For example, non-thread-safe UI-related libraries cannot be used in Worker threads.
-- A maximum of 16 MB data can be serialized at a time.
-- When using the Worker module, you are advised to register the **onAllErrors** callback in the host thread in API version 18 or later to capture various exceptions that may occur during the lifecycle of the Worker thread. In versions earlier than API version 18, register the **onerror** callback. If neither of them is registered, JS crash occurs when the Worker thread is abnormal. Note that the **onerror** callback can only capture synchronous exceptions within the **onmessage** callback. Once an exception is captured, the Worker thread will proceed to the destruction process and cannot be used. For details, see [Behavior Differences Between onAllErrors and onerror](#behavior-differences-between-onallerrors-and-onerror).
-- Worker thread files cannot be shared among multiple HAPs.
-- Before referencing a Worker in a HAR or HSP, configure the dependency on the HAR or HSP. For details, see [Referencing a Shared Package](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-har-import).
-- [AppStorage](../ui/state-management/arkts-appstorage.md) cannot be used in Worker threads.
-- Starting from API version 18, the priority of the Worker thread can be specified in the [WorkerOptions](../reference/apis-arkts/js-apis-worker.md#workeroptions) parameter of the constructor.
-- Do not use the **export** syntax to export any content in the Worker file. Otherwise, a JS crash may occur.
-- After the application is suspended, its Worker thread will also be [suspended](../task-management/background-task-overview.md).
-
-In addition to the preceding precautions, pay attention to [concurrency precautions](multi-thread-concurrency-overview.md#concurrency-precautions).
-
-### Precautions for Creating a Worker
-
-The Worker thread file must be placed in the ***{moduleName}*/src/main/ets/** directory to be included in the application package. There are two ways to create Worker thread directories and files: manually and automatically.
+The Worker thread file must be placed in the ***{moduleName}*/src/main/ets/** directory to be included in the application package. You can create a Worker thread directory and file manually or automatically. The automatic mode is recommended. In manual mode, you must also synchronize the related configuration.
 
 - Manual creation: Manually create the **worker.ets** file in the **workers** folder in the **ets** directory, and configure the related field in **build-profile.json5** so that the Worker thread file can be packed into the application package.
 
@@ -69,7 +51,7 @@ The Worker thread file must be placed in the ***{moduleName}*/src/main/ets/** di
 - Automatic mode: DevEco Studio supports one-click generation of Workers. Right-click any position in the {moduleName} directory and choose **New > Worker** to generate the Worker template file and configuration information. There is no need to configure the fields in **build-profile.json5**.
 
 
-### Precautions for File URLs
+## Precautions for File URLs
 
   Before calling an API of the Worker module, you must create a Worker object. The constructor is related to the API version and requires the URL to the Worker thread file to be passed in **scriptURL**.
 
@@ -81,64 +63,147 @@ import { worker } from '@kit.ArkTS';
 const worker1: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/worker.ets');
 ```
 
-**File URL Rules in Stage Model**
+### File URL Rules in Stage Model
 
-The requirements for **scriptURL** in the constructor are as follows:
+The scriptURL can be written in any of the following formats:
 
-- **scriptURL** consists of {moduleName}/ets and {relativePath}.
-- {relativePath} is the relative path of the Worker thread file to the ***{moduleName}*/src/main/ets/** directory.
+Method 1: Use the ***{moduleName}*/ets/*{relativePath}*** format to load the Worker thread file. ***{relativePath}*** is the relative path of the Worker thread file to the ***{moduleName}*/src/main/ets/** directory.
 
-(1) Loading a Worker thread file of an ability
-
-To load the Worker thread file of an ability, use the URL {moduleName}/ets/{relativePath}.
+Path rule: ***{moduleName}*/ets/*{relativePath}***
 
 ```ts
 import { worker } from '@kit.ArkTS';
-
 // URL of the Worker thread file: "entry/src/main/ets/workers/worker.ets"
-const workerStage1: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/worker.ets');
+const workerInstance1: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/worker.ets');
 
 // URL of the Worker thread file: "testworkers/src/main/ets/ThreadFile/workers/worker.ets"
-const workerStage2: worker.ThreadWorker = new worker.ThreadWorker('testworkers/ets/ThreadFile/workers/worker.ets');
+const workerInstance2: worker.ThreadWorker = new worker.ThreadWorker('testworkers/ets/ThreadFile/workers/worker.ets');
 ```
 
-(2) Loading a Worker thread file from an [HSP](../quick-start/in-app-hsp.md)
+Method 2: Use the **@*{moduleName}*/ets/*{relativePath}*** format to load the Worker thread file.
 
-To load the Worker thread file from an HSP, use the URL {moduleName}/ets/{relativePath}.
+Path rule: **@*{moduleName}*/ets/*{relativePath}***
 
 ```ts
 import { worker } from '@kit.ArkTS';
-
-// URL of the Worker thread file: "hsp/src/main/ets/workers/worker.ets"
-const workerStage3: worker.ThreadWorker = new worker.ThreadWorker('hsp/ets/workers/worker.ets');
-```
-
-(3) Loading a Worker thread file from an [HAR](../quick-start/har-package.md)
-
-There are two scenarios for loading a Worker thread file from an HAR:
-
-- @ path loading: All types of modules load the Worker thread file from the local HAR. The URL is @{moduleName}/ets/{relativePath}.
-
-- Relative path loading: The local HAR loads the Worker thread file within the same package. The URL is the relative path of the file where the Worker object is created to the Worker thread file.
-
->**NOTE**
->
->When **useNormalizedOHMUrl** is enabled (the **useNormalizedOHMUrl** field of the **strictMode** property in the application-level **build-profile.json5** file at the same level as the entry in the project directory is set to **true**) or when the HAR is used as a third-party package, the Worker thread file contained the HAR can be loaded using a relative path.
-
-```ts
-import { worker } from '@kit.ArkTS';
-
 // @ path loading:
 // URL of the Worker thread file: "har/src/main/ets/workers/worker.ets"
-const workerStage4: worker.ThreadWorker = new worker.ThreadWorker('@har/ets/workers/worker.ets');
+const workerInstance3: worker.ThreadWorker = new worker.ThreadWorker('@har/ets/workers/worker.ets');
+```
 
+Method 3: Load the worker thread file in relative path mode. (Only intra-package loading is supported. Cross-package loading is not supported.)
+
+Path rule: **../../*{relativePath}***
+
+```ts
+import { worker } from '@kit.ArkTS';
 // Relative path loading:
 // URL of the Worker thread file: "har/src/main/ets/workers/worker.ets"
 // URL of the file where the Worker object is created: "har/src/main/ets/components/mainpage/MainPage.ets"
-const workerStage5: worker.ThreadWorker = new worker.ThreadWorker('../../workers/worker.ets');
+const workerInstance4: worker.ThreadWorker = new worker.ThreadWorker('../../workers/worker.ets');
 ```
 
-**File URL Rules in FA Model**
+The following table lists the detailed file path loading rules.
+
+Each row in the first column of the table indicates the location of the module that loads the Worker thread file, and each column in the first row indicates the location of the Worker thread file to be loaded. The remaining table content specifies whether this type of loading is supported and the corresponding syntax for the path rules.
+
+For example, the cell at the second row and fourth column in the table indicates that the entry module can load the Worker thread file in the hsp module within the application via method 1.
+
+> **NOTE**
+>
+>* When you load Worker thread files from the entry, [feature](../quick-start/hap-package.md), or hsp packages, method 3 is not recommended. Method 1 is preferred, which does not require path concatenation and enables quick creation of Workers.
+>
+>* The path suffix **.ets/ts** of Worker thread files can be omitted.
+>
+>* In scenarios involving cross-source code HSP/HAR packages, you need to configure dependencies for the required HSP/HAR packages in the **oh-package.json5** file corresponding to the module package where the Worker is created. For details, see [Referencing a Shared Package](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-har-import).
+>
+>* When a feature module needs to load Worker thread files from other modules, it must first complete the invocation of the feature module.
+>
+>* When **useNormalizedOHMUrl** is enabled (the **useNormalizedOHMUrl** field of the **strictMode** property in the application-level **build-profile.json5** file at the same level as the entry in the project directory is set to **true**) or when the HAR is used as a third-party package, the Worker thread file contained the HAR can be loaded using a relative path.
+
+| -    | entry     | feature                 | In-app HSP                 | Cross-project HSP| Source-code HAR                  | Third-party HAR                                   |
+|:------- | --------- | ----------------------- | ----------------------- | ------ | ----------------------- | ---------------------------------------- |
+| entry   | Supported (method 1 and 3)| Supported (method 1)                | Supported (method 1)                | Not supported   | Supported (method 2)                | Not supported                                     |
+| feature | Not supported      | Supported (method 1) for cross-package and (method 1 and 3) for intra-package scenarios| Supported (method 1)                | Not supported   | Supported (method 2)                | Not supported                                     |
+| In-app HSP | Not supported      | Supported (method 1)                | Supported (method 1) for cross-package and (method 1 and 3) for intra-package scenarios| Not supported   | Supported (method 2)                | Not supported                                     |
+| Cross-project HSP | Not supported      | Not supported                    | Not supported                    | Not supported   | Not supported                    | Not supported                                     |
+| Source-code HAR  | Not supported      | Supported (method 1)                | Supported (method 1)                | Not supported   | Supported (method 2) for cross-package and (method 2 and 3) for intra-package scenarios| Not supported                                     |
+| Third-party HAR  | Not supported      | Not supported                    | Not supported                    | Not supported   | Not supported                    | Supported (method 3) only for intra-package scenarios|
+
+
+Taking the scenario where the entry module loads a Worker thread file from a source-code HAR package as an example, the detailed steps are as follows:
+
+1. Create an HAR. For details, see [HAR](../quick-start/har-package.md).
+
+2. Create the Worker thread file in the HAR.
+
+   <!-- @[create_har_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/har/src/main/ets/workers/worker.ets) -->
+   
+   ``` TypeScript
+   workerPort.onmessage = (e: MessageEvents) => {
+     console.info('worker thread receive message: ', e.data);
+     workerPort.postMessage('worker thread post message to main thread');
+   }
+   ```
+
+3. Configure the dependency of the HAR in the **oh-package.json5** file of the entry module.
+
+   <!-- @[config_har_dependency](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/oh-package.json5) -->
+   
+   ``` JSON5
+   {
+     "name": "entry",
+     "version": "1.0.0",
+     "description": "Please describe the basic information.",
+     "main": "",
+     "author": "",
+     "license": "",
+     "dependencies": {
+       "har": "file:../har"
+     }
+   }
+   ```
+
+4. Load the Worker thread file from the HAR in the entry module.
+
+   <!-- @[load_har_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/crosshar.ets) -->
+   
+   ``` TypeScript
+   import { worker } from '@kit.ArkTS';
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'Hello World';
+   
+     build() {
+       RelativeContainer() {
+         Text(this.message)
+           .id('HelloWorld')
+           .fontSize(50)
+           .fontWeight(FontWeight.Bold)
+           .alignRules({
+             center: { anchor: '__container__', align: VerticalAlign.Center },
+             middle: { anchor: '__container__', align: HorizontalAlign.Center }
+           })
+           .onClick(() => {
+             // Use @ path loading mode and load the Worker thread file from the HAR.
+             let workerInstance = new worker.ThreadWorker('@har/ets/workers/worker.ets');
+             workerInstance.onmessage = () => {
+               console.info('main thread onmessage');
+             };
+             workerInstance.postMessage('hello world');
+             this.message = 'success';
+           })
+       }
+       .height('100%')
+       .width('100%')
+     }
+   }
+   ```
+
+
+### File URL Rules in FA Model
 
   **scriptURL** in the constructor is the relative path from the Worker thread file to "{moduleName}/src/main/ets/MainAbility".
 
@@ -158,36 +223,21 @@ const workerFA3: worker.ThreadWorker = new worker.ThreadWorker('ThreadFile/worke
 ```
 
 
-### Precautions for Lifecycle Management
+## Precautions for Lifecycle Management
 
-- Creating and destroying Workers consume system resources. Therefore, you are advised to manage created Workers efficiently and reuse them when possible. Idle Workers still occupy resources. When a Worker is no longer needed, call [terminate()](../reference/apis-arkts/js-apis-worker.md#terminate9) or [close()](../reference/apis-arkts/js-apis-worker.md#close9) to destroy it actively. If a Worker is in a non-running state such as destroyed or being destroyed, calling its functional interfaces will throw corresponding errors.
-
-
-- The number of Workers is determined by the memory management policy, with a set memory threshold being the smaller of 1.5 GB and 60% of the device's physical memory. Under memory constraints, a maximum of 64 Workers can run simultaneously. If an attempt is made to create more Workers than this limit, the system displays the error message "Worker initialization failure, the number of Workers exceeds the maximum." The actual number of running Workers will be adjusted in real time based on current memory usage. When the cumulative memory usage of all Workers and the main thread exceeds the set threshold, Out of Memory (OOM) error occurs, and applications may crash.
+- After a Worker is created, its lifecycle must be managed manually. Creating and destroying Workers consume system resources. Therefore, you are advised to manage created Workers efficiently and reuse them when possible. Idle Workers still occupy resources. When a Worker is no longer needed, call [terminate()](../reference/apis-arkts/js-apis-worker.md#terminate9) or [close()](../reference/apis-arkts/js-apis-worker.md#close9) to destroy it actively. Note that after the **terminate()** API or **close()** method is called, the worker thread exits asynchronously. If you register the [onexit()](https://developer.huawei.com/consumer/en/doc/harmonyos-references/js-apis-worker#threadworker9) callback, the thread exits after the **onexit()** callback is complete. If a Worker is in a non-running state such as destroyed or being destroyed, calling its functional interfaces will throw corresponding errors.
 
 
-### Behavior Differences Between onAllErrors and onerror
+- The number of Workers is determined by the memory management policy, with a set memory threshold being the smaller of 1.5 GB and 60% of the device's physical memory. If the memory is sufficient, the system can run a maximum of 64 Workers at the same time, and the total number of runtimes created with [napi_create_ark_runtime](../reference/native-lib/napi.md#napi_create_ark_runtime) cannot exceed 80. If an attempt is made to create more Workers than this limit, the system displays the error message "Worker initialization failure, the number of Workers exceeds the maximum." The actual number of running Workers will be adjusted in real time based on current memory usage. When the cumulative memory usage of all Workers and the main thread exceeds the set threshold, Out of Memory (OOM) error occurs, and applications may crash.
 
-1. Exception Capture Range
+## Other Precautions
 
-    **onAllErrors** can capture global exceptions generated during the **onmessage** callback, timer callback, and file execution of the Worker thread.
-
-    **onerror** can capture only exceptions generated by synchronous methods within the **onmessage** callback of the Worker thread. It cannot capture exceptions from multithreaded callbacks or modularization-related exceptions.
-
-2. Thread State After Exception Capture
-
-    After an exception is captured by **onAllErrors**, the Worker thread remains alive and can continue to be used. This allows you to perform additional operations after an exception is captured, without worrying about the thread being terminated.
-
-    Once an exception is captured by **onerror**, the Worker thread enters the destruction process and cannot be used. This means that after **onerror** is triggered, the Worker thread will be terminated, and subsequent operations cannot proceed.
-
-3. Applicable Scenarios
-
-    **onAllErrors** applies to scenarios where all types of exceptions in the Worker thread need to be captured, especially in complex scenarios where the Worker thread must continue running after an exception occurs.
-
-    **onerror** is appropriate for simple scenarios where only synchronous exceptions in the **onmessage** callback need to be captured. Since the thread is destroyed after an exception is captured, it is best used when the Worker thread is not needed afterward.
-
-    **onAllErrors** is recommended because it provides more comprehensive exception capture capabilities and does not lead to thread termination.
-
+- The context objects in different threads are different. Therefore, Worker threads can use only thread-safe libraries. For example, non-thread-safe UI-related libraries cannot be used in Worker threads.
+- A maximum of 16 MB data can be serialized at a time.
+- [AppStorage](../ui/state-management/arkts-appstorage.md) cannot be used in Worker threads.
+- Do not use the **export** syntax to export any content in the Worker file. Otherwise, a JS crash may occur.
+- After the application is suspended, its Worker thread will also be [suspended](../task-management/background-task-overview.md).
+- In addition to the preceding precautions, pay attention to [concurrency precautions](multi-thread-concurrency-overview.md#concurrency-precautions).
 
 ## Basic Usage Example of Worker
 
@@ -286,77 +336,6 @@ const workerFA3: worker.ThreadWorker = new worker.ThreadWorker('ThreadFile/worke
       }
       ```
       <!-- @[register_callback_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/workers/worker.ets) -->
-
-
-## Loading Worker Across HARs
-
-1. Create an HAR. For details, see [HAR](../quick-start/har-package.md).
-
-2. Create the Worker thread file in the HAR.
-
-   ```ts
-   // worker.ets
-   workerPort.onmessage = (e: MessageEvents) => {
-     console.info('worker thread receive message: ', e.data);
-     workerPort.postMessage('worker thread post message to main thread');
-   }
-   ```
-   <!-- @[create_har_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/har/src/main/ets/workers/worker.ets) -->
-
-3. Configure the dependency of the HAR in the **oh-package.json5** file of the entry module.
-
-   ```ts
-   // Configure the dependency of the HAR in the entry module.
-   {
-     "name": "entry",
-     "version": "1.0.0",
-     "description": "Please describe the basic information.",
-     "main": "",
-     "author": "",
-     "license": "",
-     "dependencies": {
-       "har": "file:../har"
-     }
-   }
-   ```
-   <!-- @[config_har_dependency](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/oh-package.json5) -->
-
-4. Load the Worker thread file from the HAR in the entry module.
-
-   ```ts
-   // Index.ets
-   import { worker } from '@kit.ArkTS';
-
-   @Entry
-   @Component
-   struct Index {
-     @State message: string = 'Hello World';
-
-     build() {
-       RelativeContainer() {
-         Text(this.message)
-           .id('HelloWorld')
-           .fontSize(50)
-           .fontWeight(FontWeight.Bold)
-           .alignRules({
-             center: { anchor: '__container__', align: VerticalAlign.Center },
-             middle: { anchor: '__container__', align: HorizontalAlign.Center }
-           })
-           .onClick(() => {
-             // Use @ path loading mode and load the Worker thread file from the HAR.
-             let workerInstance = new worker.ThreadWorker('@har/ets/workers/worker.ets');
-             workerInstance.onmessage = () => {
-               console.info('main thread onmessage');
-             };
-             workerInstance.postMessage('hello world');
-           })
-       }
-       .height('100%')
-       .width('100%')
-     }
-   }
-   ```
-   <!-- @[load_har_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/crosshar.ets) -->
 
 
 ## Multi-Level Worker Lifecycle Management
