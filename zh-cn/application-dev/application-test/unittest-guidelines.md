@@ -1367,4 +1367,4 @@ export default class TestAbility extends UIAbility {
 2. 可在DevEco Studio的Run/Debug Configurations中修改用例执行超时参数，避免执行超时。
 3. 检查用例代码逻辑，确保断言通过。
 ## 完整示例
-<!--PR3-->[测试框架](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit)<!--PR3End-->
+<!--RP3-->[测试框架](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit)<!--RP3End-->
