@@ -230,7 +230,7 @@
    
    @Concurrent
    async function updateBooks(key: string, value: string) {
-     // 在子线程更新最近访问列表。
+     // 在子线程更新最近访问列表
      await lruCache.put(key, value);
    }
    
@@ -241,7 +241,7 @@
      @State books: string[] = [];
    
      async aboutToAppear () {
-       // 自动获取最近访问的图书列表。
+       // 自动获取最近访问的图书列表
        this.books = await lruCache.keys();
      }
    
@@ -260,7 +260,7 @@
            .padding(10)
            .fontWeight(FontWeight.Bold)
            .onClick(async () => {
-             // 获取绑定的图书信息。
+             // 获取绑定的图书信息
              let value = await lruCache.get(this.books[3]);
              // 更新最近访问列表
              taskpool.execute(updateBooks, this.books[3], value);
@@ -271,9 +271,9 @@
            .padding(10)
            .fontWeight(FontWeight.Bold)
            .onClick(async () => {
-             // 获取绑定的图书信息。
+             // 获取绑定的图书信息
              let value = await lruCache.get(this.books[2]);
-             // 更新最近访问列表。
+             // 更新最近访问列表
              taskpool.execute(updateBooks, this.books[2], value);
              this.getUIContext().getRouter().pushUrl({ url: 'pages/' + value });
            })
@@ -282,9 +282,9 @@
            .padding(10)
            .fontWeight(FontWeight.Bold)
            .onClick(async () => {
-             // 获取绑定的图书信息。
+             // 获取绑定的图书信息
              let value = await lruCache.get(this.books[1]);
-             // 更新最近访问列表。
+             // 更新最近访问列表
              taskpool.execute(updateBooks, this.books[1], value);
              this.getUIContext().getRouter().pushUrl({ url: 'pages/' + value });
            })
@@ -293,9 +293,9 @@
            .padding(10)
            .fontWeight(FontWeight.Bold)
            .onClick(async () => {
-             // 获取绑定的图书信息。
+             // 获取绑定的图书信息
              let value = await lruCache.get(this.books[0]);
-             // 更新最近访问列表。
+             // 更新最近访问列表
              taskpool.execute(updateBooks, this.books[0], value);
              this.getUIContext().getRouter().pushUrl({ url: 'pages/' + value });
            })
