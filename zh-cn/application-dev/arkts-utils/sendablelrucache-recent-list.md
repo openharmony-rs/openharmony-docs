@@ -22,13 +22,13 @@
    // LruCache.ets
    import { ArkTSUtils } from '@kit.ArkTS';
    
-   // 使用use shared标记为共享模块。
+   // 使用use shared标记为共享模块
    'use shared'
    
-   // SendableClass实例对象在不同线程间可共享。
+   // SendableClass实例对象在不同线程间可共享
    @Sendable
    class SendableClass {
-     // 使用SendableLruCache实例对象时需加锁，避免多线程同时操作导致数据不一致。
+     // 使用SendableLruCache实例对象时需加锁，避免多线程同时操作导致数据不一致
      private lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
      private books_: ArkTSUtils.SendableLruCache<string, string> = new ArkTSUtils.SendableLruCache<string, string>(4);
    
@@ -39,7 +39,7 @@
        this.books_.put('first', 'Book1');
      }
    
-     // 封装put、get、keys方法，加锁操作。
+     // 封装put、get、keys方法，加锁操作
      public async put(key: string, value: string) {
        await this.lock_.lockAsync(() => {
          this.books_.put(key, value);
