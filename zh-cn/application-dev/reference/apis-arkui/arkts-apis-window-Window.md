@@ -1113,8 +1113,8 @@ ArkTS-Sta: clientToGlobalDisplay(winX: int, winY: int): Position
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | ----- | -- | --------------------------------------------- |
-| winX | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示以当前窗口左上角为起点，组件在x轴方向移动的值，单位为px。值为正表示右移，值为负表示左移。该参数应该为整数，非整数输入将向下取整。 |
-| winY | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示以当前窗口左上角为起点，组件在y轴方向移动的值，单位为px。值为正表示下移，值为负表示上移。该参数应该为整数，非整数输入将向下取整。 |
+| winX | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示以当前窗口左上角为原点的x轴方向偏移量，单位为px。值为正表示在原点右侧，值为负表示在原点左侧。该参数应该为整数，非整数输入将向下取整。 |
+| winY | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示以当前窗口左上角为原点的y轴方向偏移量，单位为px。值为正表示在原点下方，值为负表示在原点上方。该参数应该为整数，非整数输入将向下取整。 |
 
 **返回值：**
 
@@ -1176,8 +1176,8 @@ ArkTS-Sta: globalDisplayToClient(globalDisplayX: int, globalDisplayY: int): Posi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | ----- | -- | --------------------------------------------- |
-| globalDisplayX | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示以主屏幕左上角为起点，组件在x轴方向移动的值，单位为px。值为正表示右移，值为负表示左移。该参数应该为整数，非整数输入将向下取整。 |
-| globalDisplayY | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示以主屏幕左上角为起点，组件在y轴方向移动的值，单位为px。值为正表示下移，值为负表示上移。该参数应该为整数，非整数输入将向下取整。 |
+| globalDisplayX | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示以当前窗口左上角为原点的x轴方向偏移量，单位为px。值为正表示在原点右侧，值为负表示在原点左侧。该参数应该为整数，非整数输入将向下取整。 |
+| globalDisplayY | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示以当前窗口左上角为原点的y轴方向偏移量，单位为px。值为正表示在原点下方，值为负表示在原点上方。该参数应该为整数，非整数输入将向下取整。 |
 
 **返回值：**
 
