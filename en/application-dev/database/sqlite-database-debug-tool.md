@@ -1,7 +1,7 @@
 # SQLite Debugging Tool
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @MyLinChi-->
+<!--Owner: @linzhuobin1-->
 <!--Designer: @csuxsh-->
 <!--Tester: @zhujieliang-->
 <!--Adviser: @ge-yafang-->
@@ -9,10 +9,13 @@
 SQLite is a lightweight, embedded, serverless relational database management system. Its core advantage is that the entire database is stored in a single file, without the need for an independent server process. It supports cross-platform operation and is widely used in mobile applications, embedded devices, and desktop software.
 
 This debugging tool implements operations on the SQLite database based on the hdc command. It provides an efficient way to manage the SQLite database through the CLI, which is applicable to quick database operations and verification in the development, debugging, and O&M phases.
+
 <!--RP1-->
 >**NOTE**
 >
->The SQLite debugging tool is available since OpenHarmony 6.0.
+> - The SQLite debugging tool is available since OpenHarmony 6.0.
+> 
+> - You can also use DevEco Studio to debug the database. For details, see [App Database Access](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-database-inspector).
 <!--RP1End-->
 
 ## Environment Requirements
@@ -136,7 +139,7 @@ sqlite>.help
 
   ```SQLite
   sqlite3                                                        # Access to the SQLite shell.
-  .open /data/app/el1/100/base/com.test.myapplication/newdb.db    # Open an existing database in the shell.
+  .open /data/app/el1/100/base/com.test.myapplication/newdb.db    # Create and open a database in the shell.
   ```
 
   Alternatively, create a database directly through a command.
