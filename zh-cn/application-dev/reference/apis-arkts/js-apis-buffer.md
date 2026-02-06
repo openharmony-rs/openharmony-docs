@@ -818,7 +818,7 @@ while (!next.done) {
            buffer: 3,102
            buffer: 4,101
            buffer: 5,114
-  */
+   */
   next = pair.next();
 }
 ```
@@ -1034,7 +1034,7 @@ for (const key of keys) {
         3
         4
         5
-*/
+ */
 ```
 
 ### lastIndexOf
@@ -2360,7 +2360,7 @@ while (!next.done) {
            102
            101
            114
-  */
+   */
   next = pair.next();
 }
 ```
