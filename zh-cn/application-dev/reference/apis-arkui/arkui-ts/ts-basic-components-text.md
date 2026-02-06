@@ -1305,7 +1305,10 @@ textVerticalAlign(textVerticalAlign: Optional\<TextVerticalAlign>)
 
 设置文本段落在垂直方向的对齐方式。
 
-与[halfLeading](#halfleading12)同时配置时，halfLeading不生效。
+> **说明：**
+>
+> - 与[halfLeading](#halfleading12)同时配置时，halfLeading不生效。
+> - 一个段落下使用统一字号必须同时设置行高[lineHeight](#lineheight)或者同一个段落不同字号文本混排时才生效。属性字符串[TextStyle](ts-universal-styled-string#textstyle)其中的SuperscriptStyle上下角标样式文本也一样参与垂直对齐。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
