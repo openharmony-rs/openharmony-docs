@@ -85,7 +85,7 @@ Obtains the remaining capacity available in an OH_AVSamplesBuffer instance.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Remaining capacity available in the OH_AVSamplesBuffer instance, in bytes. If **sampleBuffer** or data poniter is nullptr or invalid, **-1** is returned.|
+| int32_t | Remaining capacity available in the OH_AVSamplesBuffer instance, in bytes. If **sampleBuffer** or data pointer is nullptr or invalid, **-1** is returned.|
 
 ### OH_LowPowerAVSink_GetCapability()
 
