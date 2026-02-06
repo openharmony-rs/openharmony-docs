@@ -4343,7 +4343,7 @@ rewindWrite(pos: number): boolean
 
 > **说明：**
 >
-> 从API version 7 开始支持，API version 9 开始废弃，建议使用[reWindWrite](#rewindwrite9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[rewindWrite](#rewindwrite9)替代。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -9225,7 +9225,7 @@ class Stub extends rpc.RemoteObject {
 
 static getCallingUid(): number
 
-静态方法，获取调用者的UID。此方法由RemoteObject对象在onRemoteRequest方法中调用，不在IPC上下文环境（onRemoteRequest）中调用则返回本进程的UID。
+静态方法，获取调用者的UID。此方法由RemoteObject对象在IPC上下文环境（[onRemoteMessageRequest](#onremotemessagerequest9)）中调用，不在则返回本进程的UID。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -9530,7 +9530,8 @@ class Stub extends rpc.RemoteObject {
 
 static restoreCallingIdentity(identity: string): void
 
-静态方法，将UID和PID恢复为远程用户的UID和PID。它通常在使用resetCallingIdentity后调用，需要resetCallingIdentity返回的远程用户的UID和PID。
+静态方法，将UID和PID恢复为远程用户的UID和PID。它通常在使用resetCallingIdentity后调用，需要resetCallingIdentity返回的远程用户的UID和PID。该接口仅支持在IPC上下文（[onRemoteMessageRequest](#onremotemessagerequest9)）中使用，否则直接返回。
+
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
