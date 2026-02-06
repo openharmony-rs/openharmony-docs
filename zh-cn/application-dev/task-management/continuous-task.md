@@ -150,6 +150,10 @@
 4. 申请和取消长时任务。
 
    **设备当前应用**申请和取消长时任务示例代码如下：
+   
+   从API version 15开始，支持通过[on('continuousTaskCancel')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustaskcancel15)实现监听长时任务取消功能。
+   
+   从API version 16开始，支持通过支持通过[BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16)实现蓝牙车钥匙功能。
 
    <!-- @[continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/pages/Index.ets) -->
 
@@ -316,6 +320,10 @@
 5. 申请和取消长时任务async/await写法。
 
    **设备当前应用**申请和取消长时任务async/await写法示例代码如下：
+   
+   从API version 15开始，支持通过[on('continuousTaskCancel')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustaskcancel15)实现监听长时任务取消功能。
+   
+   从API version 16开始，支持通过支持通过[BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16)实现蓝牙车钥匙功能。
 
    <!-- @[continuous_task_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/pages/IndexAsyncAndAwait.ets) -->
 
