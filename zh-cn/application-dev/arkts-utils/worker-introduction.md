@@ -559,36 +559,42 @@ parentWorker.postMessage('宿主线程发送消息给父Worker');
 
 <!-- @[not_recommended_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/mainAbility/src/main/ets/workers/ParentWorker.ets) -->
 
-```ts
+``` TypeScript
 // ParentWorker.ets
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 
+// 父Worker线程中与宿主线程通信的对象
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
 workerPort.onmessage = (e : MessageEvents) => {
   console.info('父Worker收到宿主线程的信息 ' + e.data);
 
-  // 父Worker销毁后创建子Worker，行为不可预期
+  // 父Worker销毁后创建子Worker
   workerPort.close();
   let childWorker = new worker.ThreadWorker('entry/ets/workers/ChildWorker.ets');
 
-  // 子Worker线程未确认创建成功前销毁父Worker，行为不可预期
+  // 子Worker线程未确认创建成功前销毁父Worker
   // let childWorker = new worker.ThreadWorker('entry/ets/workers/ChildWorker.ets');
   // workerPort.close();
 
+  // 接收子Worker返回的消息
   childWorker.onmessage = (e: MessageEvents) => {
     console.info('父Worker收到子Worker的信息 ' + e.data);
   }
 
+  // 子Worker正常退出后的回调
   childWorker.onexit = () => {
     console.info('子Worker退出');
+    // 父Worker已经或即将退出时，再次通过父Worker端口发送消息
     workerPort.postMessage('父Worker向宿主线程发送信息');
   }
 
+  // 子Worker运行过程中发生未被捕获的异常或运行错误时的回调
   childWorker.onAllErrors = (err: ErrorEvent) => {
     console.error('子Worker发生报错 ' + err.message);
   }
 
+  // 向子Worker发送启动消息
   childWorker.postMessage('父Worker向子Worker发送信息');
 }
 ```
