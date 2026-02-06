@@ -11001,7 +11001,7 @@ setUserAgentMetadata(userAgent: string, metaData: UserAgentMetadata): void
 >
 > 如果根据覆盖后的User-Agent未找到UserAgentMetadata，且覆盖后的User-Agent包含系统默认的User-Agent，则将使用系统默认值。
 >
-> 如果 UserAgentMetadata 为空，但覆盖后的 User-Agent 不包含系统默认用户代理，则只会生成低级用户代理客户端提示。
+> 如果根据覆盖后的User-Agent未找到UserAgentMetadata，但覆盖后的 User-Agent 不包含系统默认用户代理，则只会生成低级用户代理客户端提示。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
