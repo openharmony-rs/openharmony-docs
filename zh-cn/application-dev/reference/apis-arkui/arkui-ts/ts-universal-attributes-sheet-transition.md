@@ -919,7 +919,7 @@ struct SheetSideExample {
 }
 ```
 
-![zh-cn_sheet](figures/zh-cn_sheet8_side.png)
+![zh-cn_sheet](figures/sheet8_side.gif)
 
 ### 示例9（半模态ContentCover全屏样式）
 
