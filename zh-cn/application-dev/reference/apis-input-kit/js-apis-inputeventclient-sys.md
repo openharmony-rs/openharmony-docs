@@ -277,7 +277,7 @@ struct Index {
 
 injectMouseEvent(mouseEvent: MouseEventData): void
 
-鼠标/触摸板事件注入。
+鼠标/触控板事件注入。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -291,7 +291,7 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 
 | 参数名       | 类型                    | 必填   | 说明        |
 | -------- | --------------------- | ---- | --------- |
-| mouseEvent | [MouseEventData](#mouseeventdata11) | 是    | 鼠标/触摸板事件注入描述信息。 |
+| mouseEvent | [MouseEventData](#mouseeventdata11) | 是    | 鼠标/触控板事件注入描述信息。 |
 
 **错误码**：
 
@@ -299,6 +299,7 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
+| 201   | Permission denied.  |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -451,7 +452,7 @@ struct Index {
 
 injectTouchEvent(touchEvent: TouchEventData): void
 
-触摸屏事件注入。
+触屏输入事件注入。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -465,7 +466,7 @@ injectTouchEvent(touchEvent: TouchEventData): void
 
 | 参数名       | 类型                    | 必填   | 说明        |
 | -------- | --------------------- | ---- | --------- |
-| touchEvent | [TouchEventData](#toucheventdata11) | 是    | 触摸屏事件注入描述信息。 |
+| touchEvent | [TouchEventData](#toucheventdata11) | 是    | 触屏注入描述信息。 |
 
 **错误码**：
 
@@ -473,6 +474,7 @@ injectTouchEvent(touchEvent: TouchEventData): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
+| 201   | Permission denied.  |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -757,6 +759,7 @@ struct Index {
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
 | touchEvent | [TouchEvent](js-apis-touchevent.md#touchevent) | 否    |  否 | 触摸屏注入描述信息。   |
+| useGlobalCoordinate<sup>20+</sup> | boolean | 否    |  是 | 是否使用全局坐标来计算注入的触屏输入事件。默认值为false，取值为false表示使用以指定屏幕左上角为原点的相对坐标系的坐标来计算注入的触屏输入事件。取值为true表示使用以主屏左上角为原点的全局坐标系的坐标来计算注入的触屏输入事件。   |
 
 ## KeyEventInfo<sup>20+<sup>
 

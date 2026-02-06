@@ -98,6 +98,8 @@ import { Action,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 | rawX        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 输入设备上的x坐标。                          |
 | rawY        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 输入设备上的y坐标。                           |
 | toolType    | [ToolType](#tooltype) | 否    | 否    | 工具类型。                                |
+| globalX<sup>20+</sup> | number | 否    | 是    | 该触屏输入事件以主屏左上角为原点的全局坐标系的X坐标。<!--Del-->作为入参时，若接口参数中的[TouchEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#toucheventdata11)为true，该值必填，当前仅支持整数。若为false，该值无需填写，使用指定屏幕左上角为原点的相对坐标系的X坐标计算注入事件。<!--DelEnd-->作为出参时，由系统上报。 |
+| globalY<sup>20+</sup> | number | 否    | 是    | 该触屏输入事件以主屏左上角为原点的全局坐标系的Y坐标。<!--Del-->作为入参时，若接口参数中的[TouchEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#toucheventdata11)为true，该值必填，当前仅支持整数。若为false，该值无需填写，使用指定屏幕左上角为原点的相对坐标系的Y坐标计算注入事件。<!--DelEnd-->作为出参时，由系统上报。 |
 
 ## TouchEvent
 
@@ -111,5 +113,3 @@ import { Action,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 | touch      | [Touch](#touch)      | 否    | 否    | 当前触屏点信息。 <br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23  |
 | touches    | [Touch](#touch)[]    | 否    | 否    | 所有触屏点。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23     |
 | sourceType | [SourceType](#sourcetype) | 否    | 否    | 触屏来源的设备类型。 |
-| isInject<sup>20+</sup>   | boolean     | 否   | 是    | 是否注入事件。true代表注入，false代表非注入。<br>**ArkTS-Dyn起始版本**：20 <br>**ArkTS-Sta起始版本**：23  |
-

@@ -524,6 +524,8 @@ off(type: 'keyPressed', callback?: Callback&lt;KeyEvent&gt;): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
+**设备行为差异：** API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在其他设备上返回801错误码。
+
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
 **相关接口**: 该接口对应的ArkTS-Sta接口是[offKeyPressed](#inputconsumeroffkeypressed23)。
