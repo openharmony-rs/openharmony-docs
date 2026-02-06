@@ -126,7 +126,7 @@ createAVRecorder(callback: AsyncCallback\<AVRecorder>): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                         |
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | 是   | 回调函数，返回AVRecorder实例，失败时返回null。可用于录制音视频媒体。 |
+| callback | AsyncCallback\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | 是   | 回调函数，返回AVRecorder实例，可用于录制音视频媒体。失败时返回null。 |
 
 **错误码：**
 
@@ -143,7 +143,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let avRecorder: media.AVRecorder;
 
 media.createAVRecorder((error: BusinessError, recorder: media.AVRecorder) => {
-  if (recorder != null) {
+  if (recorder) {
     avRecorder = recorder;
     console.info('Succeeded in creating AVRecorder');
   } else {
@@ -170,7 +170,7 @@ createAVRecorder(): Promise\<AVRecorder>
 
 | 类型                                 | 说明                                                         |
 | ------------------------------------ | ------------------------------------------------------------ |
-| Promise\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | Promise对象，返回AVRecorder实例，失败时返回null。可用于录制音视频媒体。 |
+| Promise\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | Promise对象，返回AVRecorder实例，可用于录制音视频媒体。失败时返回null。 |
 
 **错误码：**
 
@@ -186,7 +186,7 @@ createAVRecorder(): Promise\<AVRecorder>
 import { BusinessError } from '@kit.BasicServicesKit';
 let avRecorder: media.AVRecorder;
 media.createAVRecorder().then((recorder: media.AVRecorder) => {
-  if (recorder != null) {
+  if (recorder) {
     avRecorder = recorder;
     console.info('Succeeded in creating AVRecorder');
   } else {
@@ -232,7 +232,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avTranscoder: media.AVTranscoder | undefined = undefined;
 media.createAVTranscoder().then((transcoder: media.AVTranscoder) => {
-  if (transcoder != null) {
+  if (transcoder) {
     avTranscoder = transcoder;
     console.info('Succeeded in creating AVTranscoder');
   } else {
@@ -272,7 +272,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avMetadataExtractor: media.AVMetadataExtractor;
 media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
   } else {
@@ -310,7 +310,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avMetadataExtractor: media.AVMetadataExtractor;
 media.createAVMetadataExtractor().then((extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
   } else {
@@ -419,7 +419,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 };
 
 media.createSoundPool(5, audioRendererInfo).then((soundpool_: media.SoundPool) => {
-  if (soundpool_ != null) {
+  if (soundpool_) {
     soundPool = soundpool_;
     console.info('Succeeded in creating SoundPool');
   } else {
@@ -457,7 +457,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avScreenCaptureRecorder: media.AVScreenCaptureRecorder;
 media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
-  if (captureRecorder != null) {
+  if (captureRecorder) {
     avScreenCaptureRecorder = captureRecorder;
     console.info('Succeeded in createAVScreenCaptureRecorder');
   } else {
@@ -497,7 +497,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avImageGenerator: media.AVImageGenerator;
 media.createAVImageGenerator((error: BusinessError, generator: media.AVImageGenerator) => {
-  if (generator != null) {
+  if (generator) {
     avImageGenerator = generator;
     console.info('Succeeded in creating AVImageGenerator');
   } else {
@@ -535,7 +535,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avImageGenerator: media.AVImageGenerator;
 media.createAVImageGenerator().then((generator: media.AVImageGenerator) => {
-  if (generator != null) {
+  if (generator) {
     avImageGenerator = generator;
     console.info('Succeeded in creating AVImageGenerator');
   } else {
