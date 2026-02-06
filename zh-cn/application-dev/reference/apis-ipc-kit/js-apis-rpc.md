@@ -537,7 +537,7 @@ getReadPosition(): number
 
   | 类型   | 说明   |
   | ------ | ------ |
-  | number | 返回MessageSequence实例中的当前读取位置。 |
+  | number | 表示返回MessageSequence实例中当前读取位置的字节偏移量。 |
 
 **示例：**
 
@@ -570,7 +570,7 @@ getWritePosition(): number
 
   | 类型   | 说明  |
   | ------ | ----- |
-  | number | 返回MessageSequence实例中的当前写入位置。 |
+  | number | 表示返回MessageSequence实例中当前写入位置的字节偏移量。 |
 
 **示例：**
 
@@ -603,7 +603,7 @@ rewindRead(pos: number): void
 
   | 参数名 | 类型   | 必填 | 说明    |
   | ------ | ------ | ---- | ------- |
-  | pos    | number | 是   | 开始读取数据的目标位置。 |
+  | pos    | number | 是   | 表示开始读取数据的目标位置的字节偏移量。 |
 
 **错误码：**
 
@@ -649,7 +649,7 @@ rewindWrite(pos: number): void
 
   | 参数名 | 类型   | 必填 | 说明  |
   | ------ | ------ | ---- | ----- |
-  | pos    | number | 是   | 开始写入数据的目标位置。 |
+  | pos    | number | 是   | 表示开始写入数据的目标位置的字节偏移量。 |
 
 **错误码：**
 
@@ -2743,6 +2743,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -6285,6 +6286,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -7317,6 +7319,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want  = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -7527,7 +7530,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
 
   | 类型                         | 说明                                      |
   | ---------------------------- | ----------------------------------------- |
-  | Promise&lt;[RequestResult](#requestresult9)&gt; | 返回一个期约，兑现值是requestResult实例。 |
+  | Promise&lt;[RequestResult](#requestresult9)&gt; | Promise对象，返回一个期约，兑现值是requestResult实例。 |
 
 **错误码：**
 
@@ -7562,7 +7565,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 | 类型                                                         | 说明                                          |
 | ------------------------------------------------------------ | --------------------------------------------- |
-| Promise&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | 返回一个期约，兑现值是sendRequestResult实例。 |
+| Promise&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | Promise对象，返回一个期约，兑现值是sendRequestResult实例。 |
 
 ### sendMessageRequest<sup>9+</sup>
 
@@ -7580,7 +7583,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
   | data     | [MessageSequence](#messagesequence9) | 是   | 保存待发送数据的MessageSequence对象。                                            |
   | reply    | [MessageSequence](#messagesequence9) | 是   | 接收应答数据的MessageSequence对象。                                                    |
   | options  | [MessageOption](#messageoption)      | 是   | 本次请求的同异步模式，默认同步调用。                                                   |
-  | callback | AsyncCallback&lt;[RequestResult](#requestresult9)&gt;   | 是   | 接收发送结果的回调。                                                                   |
+  | callback | AsyncCallback&lt;[RequestResult](#requestresult9)&gt;   | 是   | 回调函数。当消息发送成功时，可从RequestResult中读取服务端返回的数据。 |
 
 **错误码：**
 
@@ -7839,6 +7842,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -7904,7 +7908,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
 
   | 类型                         | 说明                                      |
   | ---------------------------- | ----------------------------------------- |
-  | Promise&lt;[RequestResult](#requestresult9)&gt; | 返回一个期约，兑现值是requestResult实例。 |
+  | Promise&lt;[RequestResult](#requestresult9)&gt; | Promise对象，返回一个期约，兑现值是requestResult实例。 |
 
 **错误码：**
 
@@ -7942,6 +7946,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8017,7 +8022,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 | 类型                                                         | 说明                                          |
 | ------------------------------------------------------------ | --------------------------------------------- |
-| Promise&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | 返回一个期约，兑现值是sendRequestResult实例。 |
+| Promise&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | Promise对象，返回一个期约，兑现值是sendRequestResult实例。 |
 
 **示例：**
 
@@ -8047,6 +8052,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8115,7 +8121,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
   | data     | [MessageSequence](#messagesequence9) | 是   | 保存待发送数据的MessageSequence对象。                                            |
   | reply    | [MessageSequence](#messagesequence9) | 是   | 接收应答数据的MessageSequence对象。                                                    |
   | options  | [MessageOption](#messageoption)      | 是   | 本次请求的同异步模式，默认同步调用。                                                   |
-  | callback | AsyncCallback&lt;[RequestResult](#requestresult9)&gt;   | 是   | 接收发送结果的回调。                                                                   |
+  | callback | AsyncCallback&lt;[RequestResult](#requestresult9)&gt;   | 是   | 回调函数。当消息发送成功时，可从RequestResult中读取服务端返回的数据。 |
 
 **错误码：**
 
@@ -8204,6 +8210,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8289,6 +8296,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8367,6 +8375,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8457,6 +8466,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8540,6 +8550,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8631,6 +8642,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8714,6 +8726,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8792,6 +8805,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8860,6 +8874,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8959,7 +8974,7 @@ class TestRemoteObject extends rpc.MessageOption {
 
 isAsync(): boolean
 
-获取SendMessageRequest调用中确定同步或是异步的标志。
+获取[SendMessageRequest](#sendmessagerequest9-2)调用中确定同步或是异步的标志。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -8987,7 +9002,7 @@ try {
 
 setAsync(isAsync: boolean): void
 
-设置SendMessageRequest调用中确定同步或是异步的标志。
+设置[SendMessageRequest](#sendmessagerequest9-2)调用中确定同步或是异步的标志。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -9176,7 +9191,7 @@ try {
 
 static getCallingPid(): number
 
-静态方法，获取调用者的PID。此方法由RemoteObject对象在onRemoteRequest方法中调用，不在IPC上下文环境（onRemoteRequest）中调用则返回本进程的PID。
+静态方法，获取调用者的PID。此方法由RemoteObject对象在IPC上下文环境（[onRemoteMessageRequest](#onremotemessagerequest9)）中调用，不在则返回本进程的PID。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -9718,7 +9733,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
 
 | 类型                                            | 说明                                      |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise&lt;[RequestResult](#requestresult9)&gt; | 返回一个期约，兑现值是RequestResult实例。 |
+| Promise&lt;[RequestResult](#requestresult9)&gt; | Promise对象，返回一个期约，兑现值是RequestResult实例。 |
 
 **错误码：**
 
@@ -9799,7 +9814,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 | 类型                                                         | 说明                                          |
 | ------------------------------------------------------------ | --------------------------------------------- |
-| Promise&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | 返回一个期约，兑现值是sendRequestResult实例。 |
+| Promise&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | Promise对象，返回一个期约，兑现值是sendRequestResult实例。 |
 
 **示例：**
 
@@ -9864,7 +9879,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
 | data          | [MessageSequence](#messagesequence9)                  | 是   | 保存待发送数据的MessageSequence对象。                  |
 | reply         | [MessageSequence](#messagesequence9)                  | 是   | 接收应答数据的MessageSequence对象。                          |
 | options       | [MessageOption](#messageoption)                       | 是   | 本次请求的同异步模式，默认同步调用。                         |
-| callback      | AsyncCallback&lt;[RequestResult](#requestresult9)&gt; | 是   | 接收发送结果的回调。                                         |
+| callback      | AsyncCallback&lt;[RequestResult](#requestresult9)&gt; | 是   | 回调函数。当消息发送成功时，可从RequestResult中读取服务端返回的数据。 |
 
 **错误码：**
 
