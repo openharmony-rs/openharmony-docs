@@ -669,7 +669,7 @@ enum ArkUI_FontStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_FONT_STYLE_NORMAL = 0 | 标准字体样式。 |
-| ARKUI_FONT_STYLE_ITALIC | 斜体字体样式。 |
+| ARKUI_FONT_STYLE_ITALIC = 1 | 斜体字体样式。 |
 
 ### ArkUI_FontWeight
 
@@ -687,20 +687,20 @@ enum ArkUI_FontWeight
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_FONT_WEIGHT_W100 = 0 | 100 |
-| ARKUI_FONT_WEIGHT_W200 | 200 |
-| ARKUI_FONT_WEIGHT_W300 | 300 |
-| ARKUI_FONT_WEIGHT_W400 | 400 |
-| ARKUI_FONT_WEIGHT_W500 | 500 |
-| ARKUI_FONT_WEIGHT_W600 | 600 |
-| ARKUI_FONT_WEIGHT_W700 | 700 |
-| ARKUI_FONT_WEIGHT_W800 | 800 |
-| ARKUI_FONT_WEIGHT_W900 | 900 |
-| ARKUI_FONT_WEIGHT_BOLD | 字体较粗。 |
-| ARKUI_FONT_WEIGHT_NORMAL | 字体粗细正常。 |
-| ARKUI_FONT_WEIGHT_BOLDER | 字体非常粗。 |
-| ARKUI_FONT_WEIGHT_LIGHTER | 字体较细。 |
-| ARKUI_FONT_WEIGHT_MEDIUM | 字体粗细适中。 |
-| ARKUI_FONT_WEIGHT_REGULAR | 字体粗细正常。 |
+| ARKUI_FONT_WEIGHT_W200 = 1 | 200 |
+| ARKUI_FONT_WEIGHT_W300 = 2 | 300 |
+| ARKUI_FONT_WEIGHT_W400 = 3 | 400 |
+| ARKUI_FONT_WEIGHT_W500 = 4 | 500 |
+| ARKUI_FONT_WEIGHT_W600 = 5 | 600 |
+| ARKUI_FONT_WEIGHT_W700 = 6 | 700 |
+| ARKUI_FONT_WEIGHT_W800 = 7 | 800 |
+| ARKUI_FONT_WEIGHT_W900 = 8 | 900 |
+| ARKUI_FONT_WEIGHT_BOLD = 9 | 字体较粗。 |
+| ARKUI_FONT_WEIGHT_NORMAL = 10 | 字体粗细正常。 |
+| ARKUI_FONT_WEIGHT_BOLDER = 11 | 字体非常粗。 |
+| ARKUI_FONT_WEIGHT_LIGHTER = 12 | 字体较细。 |
+| ARKUI_FONT_WEIGHT_MEDIUM = 13 | 字体粗细适中。 |
+| ARKUI_FONT_WEIGHT_REGULAR = 14 | 字体粗细正常。 |
 
 ### ArkUI_TextAlignment
 
@@ -718,9 +718,9 @@ enum ArkUI_TextAlignment
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_ALIGNMENT_START = 0 | 水平对齐首部。 |
-| ARKUI_TEXT_ALIGNMENT_CENTER | 水平居中对齐。 |
-| ARKUI_TEXT_ALIGNMENT_END | 水平对齐尾部。 |
-| ARKUI_TEXT_ALIGNMENT_JUSTIFY | 双端对齐。 |
+| ARKUI_TEXT_ALIGNMENT_CENTER = 1 | 水平居中对齐。 |
+| ARKUI_TEXT_ALIGNMENT_END = 2 | 水平对齐尾部。 |
+| ARKUI_TEXT_ALIGNMENT_JUSTIFY = 3 | 双端对齐。 |
 | ARKUI_TEXT_ALIGNMENT_LEFT_TO_RIGHT = 4 | 从左到右对齐。<br>**起始版本：** 23 |
 | ARKUI_TEXT_ALIGNMENT_RIGHT_TO_LEFT = 5 | 从右到左对齐。<br>**起始版本：** 23 |
 
@@ -740,9 +740,9 @@ enum ArkUI_TextVerticalAlignment
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_VERTICAL_ALIGNMENT_BASELINE = 0 | 基线对齐。 |
-| ARKUI_TEXT_VERTICAL_ALIGNMENT_BOTTOM | 底部对齐。 |
-| ARKUI_TEXT_VERTICAL_ALIGNMENT_CENTER | 居中对齐。 |
-| ARKUI_TEXT_VERTICAL_ALIGNMENT_TOP | 顶部对齐。 |
+| ARKUI_TEXT_VERTICAL_ALIGNMENT_BOTTOM = 1 | 底部对齐。 |
+| ARKUI_TEXT_VERTICAL_ALIGNMENT_CENTER = 2 | 居中对齐。 |
+| ARKUI_TEXT_VERTICAL_ALIGNMENT_TOP = 3 | 顶部对齐。 |
 
 ### ArkUI_TextContentAlign
 
@@ -870,8 +870,8 @@ enum ArkUI_CancelButtonStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_CANCELBUTTON_STYLE_CONSTANT = 0 | 清除按钮常显样式。 |
-| ARKUI_CANCELBUTTON_STYLE_INVISIBLE | 清除按钮常隐样式。 |
-| ARKUI_CANCELBUTTON_STYLE_INPUT | 清除按钮输入样式。 |
+| ARKUI_CANCELBUTTON_STYLE_INVISIBLE = 1 | 清除按钮常隐样式。 |
+| ARKUI_CANCELBUTTON_STYLE_INPUT = 2 | 清除按钮输入样式。 |
 
 ### ArkUI_XComponentType
 
@@ -928,9 +928,9 @@ enum ArkUI_TextDecorationType
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_DECORATION_TYPE_NONE = 0 | 不使用装饰线。 |
-| ARKUI_TEXT_DECORATION_TYPE_UNDERLINE | 文字下划线修饰。 |
-| ARKUI_TEXT_DECORATION_TYPE_OVERLINE | 文字上划线修饰。 |
-| ARKUI_TEXT_DECORATION_TYPE_LINE_THROUGH | 穿过文本的修饰线。 |
+| ARKUI_TEXT_DECORATION_TYPE_UNDERLINE = 1 | 文字下划线修饰。 |
+| ARKUI_TEXT_DECORATION_TYPE_OVERLINE = 2 | 文字上划线修饰。 |
+| ARKUI_TEXT_DECORATION_TYPE_LINE_THROUGH = 3 | 穿过文本的修饰线。 |
 
 ### ArkUI_TextDecorationStyle
 
@@ -948,10 +948,10 @@ enum ArkUI_TextDecorationStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_DECORATION_STYLE_SOLID = 0 | 单实线。 |
-| ARKUI_TEXT_DECORATION_STYLE_DOUBLE | 双实线。 |
-| ARKUI_TEXT_DECORATION_STYLE_DOTTED | 点线。 |
-| ARKUI_TEXT_DECORATION_STYLE_DASHED | 虚线。 |
-| ARKUI_TEXT_DECORATION_STYLE_WAVY | 波浪线。 |
+| ARKUI_TEXT_DECORATION_STYLE_DOUBLE = 1 | 双实线。 |
+| ARKUI_TEXT_DECORATION_STYLE_DOTTED = 2 | 点线。 |
+| ARKUI_TEXT_DECORATION_STYLE_DASHED = 3 | 虚线。 |
+| ARKUI_TEXT_DECORATION_STYLE_WAVY = 4 | 波浪线。 |
 
 ### ArkUI_TextCase
 
@@ -969,8 +969,8 @@ enum ArkUI_TextCase
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_CASE_NORMAL = 0 | 保持原有大小写。 |
-| ARKUI_TEXT_CASE_LOWER | 文本全小写。 |
-| ARKUI_TEXT_CASE_UPPER | 文本全大写。 |
+| ARKUI_TEXT_CASE_LOWER = 1 | 文本全小写。 |
+| ARKUI_TEXT_CASE_UPPER = 2 | 文本全大写。 |
 
 ### ArkUI_CopyOptions
 
@@ -988,9 +988,9 @@ enum ArkUI_CopyOptions
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_COPY_OPTIONS_NONE = 0 | 不支持复制。 |
-| ARKUI_COPY_OPTIONS_IN_APP | 支持应用内复制。 |
-| ARKUI_COPY_OPTIONS_LOCAL_DEVICE | 支持设备内复制。 |
-| ARKUI_COPY_OPTIONS_CROSS_DEVICE | 支持跨设备复制。 |
+| ARKUI_COPY_OPTIONS_IN_APP = 1 | 支持应用内复制。 |
+| ARKUI_COPY_OPTIONS_LOCAL_DEVICE = 2 | 支持设备内复制。 |
+| ARKUI_COPY_OPTIONS_CROSS_DEVICE = 3 | 支持跨设备复制。 |
 
 ### ArkUI_ShadowType
 
@@ -1312,12 +1312,12 @@ enum ArkUI_HitTestMode
 
 | 枚举项 | 描述                                                     |
 | -- |--------------------------------------------------------|
-| ARKUI_HIT_TEST_MODE_DEFAULT = 0 | 默认触摸测试效果。                                              |
-| ARKUI_HIT_TEST_MODE_BLOCK = 1 | 自身响应触摸测试。                                              |
-| ARKUI_HIT_TEST_MODE_TRANSPARENT = 2 | 自身和子节点都响应触摸测试。                                         |
-| ARKUI_HIT_TEST_MODE_NONE = 3 | 自身不响应触摸测试。                                             |
-| ARKUI_HIT_TEST_MODE_BLOCK_HIERARCHY = 4 | 阻止所有优先级较低的兄弟节点和父节点参与触摸测试，自身和子节点响应触摸测试。<br>**起始版本：** 20 |
-| ARKUI_HIT_TEST_MODE_BLOCK_DESCENDANTS = 5 | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试。<br>**起始版本：** 20                     |
+| ARKUI_HIT_TEST_MODE_DEFAULT = 0 | 默认触摸测试效果。自身及子节点响应触摸测试，但阻塞兄弟节点的触摸测试，不影响祖先节点的触摸测试。                                              |
+| ARKUI_HIT_TEST_MODE_BLOCK = 1 | 自身响应触摸测试，阻塞子节点、兄弟节点和祖先节点的触摸测试。                                              |
+| ARKUI_HIT_TEST_MODE_TRANSPARENT = 2 | 自身和子节点都响应触摸测试，不会阻塞兄弟节点和祖先节点的触摸测试。                                         |
+| ARKUI_HIT_TEST_MODE_NONE = 3 | 自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。                                             |
+| ARKUI_HIT_TEST_MODE_BLOCK_HIERARCHY = 4 | 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。<br>**起始版本：** 20 |
+| ARKUI_HIT_TEST_MODE_BLOCK_DESCENDANTS = 5 | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。<br>**起始版本：** 20                     |
 
 ### ArkUI_ShadowStyle
 
@@ -1480,9 +1480,9 @@ enum ArkUI_TextCopyOptions
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_COPY_OPTIONS_NONE = 0 | 不支持复制。 |
-| ARKUI_TEXT_COPY_OPTIONS_IN_APP | 支持应用内复制。 |
-| ARKUI_TEXT_COPY_OPTIONS_LOCAL_DEVICE | 支持设备内复制。 |
-| ARKUI_TEXT_COPY_OPTIONS_CROSS_DEVICE | 支持跨设备复制。 |
+| ARKUI_TEXT_COPY_OPTIONS_IN_APP = 1 | 支持应用内复制。 |
+| ARKUI_TEXT_COPY_OPTIONS_LOCAL_DEVICE = 2 | 支持设备内复制。 |
+| ARKUI_TEXT_COPY_OPTIONS_CROSS_DEVICE = 3 | 支持跨设备复制。 |
 
 ### ArkUI_TextHeightAdaptivePolicy
 
@@ -1500,8 +1500,8 @@ enum ArkUI_TextHeightAdaptivePolicy
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MAX_LINES_FIRST = 0 | 设置文本高度自适应方式为以MaxLines优先。 |
-| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MIN_FONT_SIZE_FIRST | 设置文本高度自适应方式为以缩小字体优先。 |
-| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_LAYOUT_CONSTRAINT_FIRST | 设置文本高度自适应方式为以布局约束（高度）优先。 |
+| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MIN_FONT_SIZE_FIRST = 1 | 设置文本高度自适应方式为以缩小字体优先。 |
+| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_LAYOUT_CONSTRAINT_FIRST = 2 | 设置文本高度自适应方式为以布局约束（高度）优先。 |
 
 ### ArkUI_ScrollNestedMode
 
@@ -1852,9 +1852,9 @@ enum ArkUI_TextOverflow
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_OVERFLOW_NONE = 0 | 文本超长时不裁剪显示。 |
-| ARKUI_TEXT_OVERFLOW_CLIP | 文本超长时进行裁剪显示。 |
-| ARKUI_TEXT_OVERFLOW_ELLIPSIS | 文本超长时显示不下的文本用省略号代替。 |
-| ARKUI_TEXT_OVERFLOW_MARQUEE | 文本超长时以跑马灯的方式展示。 |
+| ARKUI_TEXT_OVERFLOW_CLIP = 1 | 文本超长时进行裁剪显示。 |
+| ARKUI_TEXT_OVERFLOW_ELLIPSIS = 2 | 文本超长时显示不下的文本用省略号代替。 |
+| ARKUI_TEXT_OVERFLOW_MARQUEE = 3 | 文本超长时以跑马灯的方式展示。 |
 
 ### ArkUI_ImageSpanAlignment
 
