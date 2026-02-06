@@ -43,12 +43,12 @@ import { bundleManager } from '@kit.AbilityKit';
 
 | 名称            | 类型   | 只读 | 可选 | 说明                                                        |
 | --------------- | ------ | ---- | ---- | ----------------------------------------------------------- |
-| scheme          | string | 是   | 否   | 标识 URI 协议名，常见的有http、https、file、ftp等。          |
-| host            | string | 是   | 否   | 标识 URI 主机地址部分，仅当 scheme 存在时才生效。            |
-| port            | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 标识 URI 端口，仅当 scheme 和 host 同时存在时才生效。   |
-| path            | string | 是   | 否   | 标识 URI 路径部分，仅当 scheme 和 host 同时存在时才生效。   |
-| pathStartWith   | string | 是   | 否   | 标识 URI 路径部分，用于前缀匹配，仅当 scheme 和 host 同时存在时才生效。 |
-| pathRegex       | string | 是   | 否   | 标识 URI 路径部分，用于正则匹配，仅当 scheme 和 host 同时存在时才生效。 |
+| scheme          | string | 是   | 否   | 标识URI协议名，常见的有http、https、file、ftp等。          |
+| host            | string | 是   | 否   | 标识URI主机地址部分，仅当scheme存在时才生效。            |
+| port            | ArkTS-Dyn: number<br>ArkTS-Sta: string | 是   | 否   | 标识URI端口，仅当scheme和host同时存在时才生效。   |
+| path            | string | 是   | 否   | 标识URI路径部分，仅当 scheme 和 host 同时存在时才生效。   |
+| pathStartWith   | string | 是   | 否   | 标识URI路径部分，用于前缀匹配，仅当scheme和host同时存在时才生效。 |
+| pathRegex       | string | 是   | 否   | 标识URI路径部分，用于正则匹配，仅当scheme和host同时存在时才生效。 |
 | type            | string | 是   | 否   | 标识与Want相匹配的数据类型，使用[MIME（Multipurpose Internet Mail Extensions）类型](../../database/uniform-data-type-descriptors.md#标准化数据类型的定义)规范。 |
 | utd             | string | 是   | 否   | 标识与 Want 相匹配的 URI 的标准化数据类型，适用于分享等场景。 |
 | maxFileSupported | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 对于指定类型的文件，标识一次能接收或打开的最大数量。取值范围：不小于0的整数。 |

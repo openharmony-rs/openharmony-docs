@@ -69,7 +69,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | 名称        | 类型   | 只读 | 可选 | 说明                   |
 | ----------- | ------ | ---- | ---- | ---------------------- |
 | bundleName<sup>10+</sup>  | string | 是   | 否   | 标识当前模块依赖的共享包包名。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
-| moduleName  | string | 是   | 否   | 标识当前模块依赖的共享包模块名。 |
+| moduleName  | string | 是   | 否   | 标识当前模块依赖的共享包模块名。 <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23|
 | versionCode<sup>10+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 标识当前共享包的版本号。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
 
 ## RouterItem<sup>12+</sup>
