@@ -204,7 +204,7 @@ Vector支持增、删、改、查操作，常用API如下：
 
 此处列举常用的线性容器ArrayList、Deque、Stack、List的使用示例，包括导入模块、添加元素、访问元素及修改等操作。示例代码如下所示：
 
-<!-- @[linear_container](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/ArkTsContainerLibrary/LinearContainers/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[linear_container](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/ArkTsContainerLibrary/LinearContainers/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { ArrayList, Deque, Stack, List } from '@kit.ArkTS'; // 导入ArrayList,Deque,Stack,List模块。
