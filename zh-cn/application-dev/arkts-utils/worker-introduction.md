@@ -421,17 +421,18 @@ workerPort.onmessage = (e : MessageEvents) => {
 
 <!-- @[recommended_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/workers/ChildWorker.ets) -->
 
-```ts
+``` TypeScript
 // ChildWorker.ets
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 
-// 创建子Worker线程中与父Worker线程通信的对象
+// 子Worker线程中与父Worker线程通信的对象
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
 workerPort.onmessage = (e: MessageEvents) => {
   if (e.data == '父Worker向子Worker发送信息-推荐示例') {
     // 子Worker线程业务逻辑...
     console.info('业务执行结束，然后子Worker销毁');
+    // 子Worker任务完成后退出
     workerPort.close();
   }
 }
