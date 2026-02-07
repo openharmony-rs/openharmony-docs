@@ -17,6 +17,31 @@
 
 ## 操作步骤
 
+0. 安装测试demo应用
+
+demo应用的module.json5配置文件如下
+
+```JSON5
+{
+  "name": "EntryAbility",
+  "srcEntry": "./ets/entryability/EntryAbility.ets",
+  "icon": "$media:layered_image",
+  "label": "$string:EntryAbility_label",
+  // ···
+  "skills": [
+      "uris": [
+        {
+          "scheme": "demo",
+          "host": "www.example.com",
+          "path": "path1"
+          // ...
+        }
+      ],
+      "domainVerify": false
+    ]
+  }
+``` 
+
 1. 获取当前设备上已安装应用的bundleName。
 
 使用hdc命令行工具，可以获取设备上已安装应用的详细配置信息，包括bundleName、abilityName以及支持的URL Scheme等。这是获取三方应用URL信息最直接有效的方法。
@@ -28,7 +53,7 @@
 hdc shell bm dump -a
 ```
 
-该命令会列出设备上所有已安装应用的基本信息，包括应用名称和bundleName。例如查找应用市场应用：
+该命令会列出设备上所有已安装应用的基本信息，包括应用名称和bundleName。例如查找demo应用：
 
 ```bash
 # 执行命令查看所有应用
@@ -36,16 +61,16 @@ hdc shell bm dump -a
 
 # 输出示例（部分）：
 # ...
-# BundleName: com.huawei.hmsapp.appgallery
+# BundleName: com.example.myapplication
 # ...
 ```
 
-从输出中找到目标应用的bundleName，例如设置应用的bundleName为 `com.huawei.hmsapp.appgallery`。
+从输出中找到目标应用的bundleName，例如设置应用的bundleName为 `com.example.myapplication`。
 
 2. 获取应用的详细配置信息。
 
 ```bash
-hdc shell bm dump -n com.huawei.hmsapp.appgallery
+hdc shell bm dump -n com.example.myapplication
 ```
 
 该命令会输出应用的完整配置信息，包括abilities、skills、uris等配置。
@@ -58,25 +83,23 @@ hdc shell bm dump -n com.huawei.hmsapp.appgallery
   "skills": [
     {
       "actions": [
-        "action.system.home",
-        "ohos.want.action.viewData",
-        "ohos.want.action.appdetail"
+        "ohos.want.action.viewData"
       ],
       "domainVerify": false,
       "entities": [
-        "entity.system.home"
+        "entity.system.browsable"
       ],
       "permissions": [],
       "uris": [
         {
-          "host": "appgallery.huawei.com",
+          "host": "www.example.com",
           "linkFeature": "",
           "maxFileSupported": 0,
-          "path": "",
+          "path": "path1",
           "pathRegex": "",
           "pathStartWith": "",
           "port": "",
-          "scheme": "store",
+          "scheme": "demo",
           "type": "",
           "utd": ""
         }
@@ -87,9 +110,9 @@ hdc shell bm dump -n com.huawei.hmsapp.appgallery
 ```
 
 从配置信息中可以提取出：
-- **scheme**: `store`
-- **host**: `appgallery.huawei.com`
-- **path**: ``
+- **scheme**: `demo`
+- **host**: `www.example.com`
+- **path**: `path1`
 
 3. 将scheme、host和path拼接生成URL信息。
 
@@ -101,33 +124,19 @@ scheme://host:port/path
 
 以应用市场为例：
 ```
-store://appgallery.huawei.com
+demo://www.example.com/path1
 ```
 
 完整的拼接示例：
 
 | 配置项 | 值 |
 |--------|---|
-| scheme | `store` |
-| host | `appgallery.huawei.com` |
+| scheme | `demo` |
+| host | `www.example.com` |
 | port | 未指定（可选） |
-| path | 未指定（可选） |
-| **拼接结果** | `store://appgallery.huawei.com` |
+| path | `path1` |
+| **拼接结果** | `demo://www.example.com/path1` |
 
-
-其他常用应用示例
-
-使用相同的方法，可以获取其他应用的URL配置信息：
-
-```bash
-# 获取视频应用配置
-hdc shell bm dump -n com.huawei.hmsapp.himovie
-# 输出为：himovie://com.huawei.hmsapp.himovie
-
-# 获取联系人应用配置
-hdc shell bm dump -n com.ohos.contacts
-# 输出为：tel://
-```
 
 > **说明：**
 > - 不同应用的bundleName和URL配置可能因版本不同而有所变化
@@ -160,7 +169,7 @@ struct Index {
       .margin({ bottom: '12vp' })
       .onClick(() => {
         let context = GlobalContext.getContext();
-        let link: string = "store://appgallery.huawei.com";
+        let link: string = "demo://www.example.com/path1";
 
         context.openLink(link, { appLinkingOnly: false })
           .then(() => {
