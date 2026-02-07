@@ -3481,7 +3481,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   build() {
     RelativeContainer() {
-      Text()
+      Button("setMouseScrollDirection")
         .onClick(() => {
           try {
             pointer.setMouseScrollDirection(false).then(() => {
@@ -3535,7 +3535,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   build() {
     RelativeContainer() {
-      Text()
+      Button("getMouseScrollDirection")
         .onClick(() => {
           try {
             pointer.getMouseScrollDirection().then((state: boolean) => {
