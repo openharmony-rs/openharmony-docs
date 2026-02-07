@@ -10,13 +10,11 @@ MultiNavigation用于在大尺寸设备上分栏显示、进行路由跳转。
 
 > **说明：**
 >
-> - 该组件从API version 14开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 14开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 由于MultiNavigation存在多重栈嵌套，调用本文档明确说明的不支持接口或不在本文档支持接口列表中的接口(例如getParent、setInterception、pushDestination等)，可能会发生无法预期的问题。
+> 由于MultiNavigation存在多重栈嵌套，调用本文档明确说明的不支持接口或不在本文档支持接口列表中的接口(例如getParent、setInterception、pushDestination等)，可能会发生无法预期的问题。
 >
 > MultiNavigation在深层嵌套场景下，可能存在路由动效异常的问题。
->
-> - 推荐开发者使用[navigation](ts-basic-components-navigation.md)实现分栏效果以及路由跳转。
 
 ## 导入模块
 
