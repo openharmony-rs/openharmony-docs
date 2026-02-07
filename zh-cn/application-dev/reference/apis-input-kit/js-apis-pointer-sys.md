@@ -3440,62 +3440,6 @@ struct Index {
 
 ## pointer.setMouseScrollDirection<sup>24+</sup>
 
-setMouseScrollDirection(state: boolean, callback: AsyncCallback\<void>): void
-
-设置鼠标滚轮滚动的方向，使用AsyncCallback异步方式返回结果。
-
-**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
-
-**系统API**: 此接口为系统接口。
-
-**参数**：
-
-| 参数名   | 类型                 | 必填 | 说明                                                                                                         |
-| -------- | -------------------- | ---- | ------------------------------------------------------------------------------------------------------------ |
-| state    | boolean              | 是   | state为鼠标滚轮滚动的方向。<br>true与鼠标滚轮滚动的方向一致，false与鼠标滚轮滚动的方向相反。<br>默认为true。 |
-| callback | AsyncCallback\<void> | 是   | 回调函数。                                                                                                   |
-
-**错误码**：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                                                                                                       |
-| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| 202      | SystemAPI permission error.                                                                                                                    |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-
-**示例**：
-
-```js
-import { pointer } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            pointer.setMouseScrollDirection(true, (error: BusinessError) => {
-              if (error) {
-                console.error(`setMouseScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-                return;
-              }
-              console.info(`setMouseScrollDirection success`);
-            });
-          } catch (error) {
-            console.error(`setMouseScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
-        })
-    }
-  }
-}
-```
-
-## pointer.setMouseScrollDirection<sup>24+</sup>
-
 setMouseScrollDirection(state: boolean): Promise\<void>
 
 设置鼠标滚轮滚动的方向，使用Promise异步回调。
@@ -3520,10 +3464,11 @@ setMouseScrollDirection(state: boolean): Promise\<void>
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息                                                                                                                                       |
-| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| 202      | SystemAPI permission error.                                                                                                                    |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 错误码ID | 错误信息                        |
+|-------|-----------------------------|
+| 201   | Permission denied.          |
+| 202   | SystemAPI permission error. |
+| 401   | Input service exception.    |
 
 **示例**：
 
@@ -3539,64 +3484,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setMouseScrollDirection (false).then(() => {
+            pointer.setMouseScrollDirection(false).then(() => {
               console.info(`setMouseScrollDirection success`);
             }).catch((error: BusinessError) => {
               console.error(`Set mouse scroll direction failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
             })
           } catch (error) {
             console.error(`setMouseScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
-        })
-    }
-  }
-}
-```
-
-## pointer.getMouseScrollDirection<sup>24+</sup>
-
-getMouseScrollDirection(callback:  AsyncCallback\<boolean>): void
-
-获取鼠标滚轮滚动方向，使用AsyncCallback异步方式返回结果。
-
-**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
-
-**系统API**: 此接口为系统接口。
-
-**参数**：
-
-| 参数名   | 类型                    | 必填 | 说明                                                                                                                  |
-| -------- | ----------------------- | ---- | --------------------------------------------------------------------------------------------------------------------- |
-| callback | AsyncCallback\<boolean> | 是   | 回调函数，异步返回鼠标滚轮滚动方向。<br>true与鼠标滚轮滚动的方向一致，false与鼠标滚轮滚动的方向相反。<br>默认为true。 |
-
-**错误码**：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                                                                                                       |
-| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| 202      | SystemAPI permission error.                                                                                                                    |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-
-**示例**：
-
-```js
-import { pointer } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            pointer.getMouseScrollDirection ((error: BusinessError, state: boolean) => {
-              console.info(`getMouseScrollDirection success, state: ${JSON.stringify(state)}`);
-            });
-          } catch (error) {
-            console.error(`getMouseScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
@@ -3626,8 +3520,9 @@ getMouseScrollDirection(): Promise\<boolean>
 
 | 错误码ID | 错误信息                                                                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| 202      | SystemAPI permission error.                                                                                                                    |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201   | Permission denied.          |
+| 202   | SystemAPI permission error. |
+| 401   | Input service exception.    |
 
 **示例**：
 
