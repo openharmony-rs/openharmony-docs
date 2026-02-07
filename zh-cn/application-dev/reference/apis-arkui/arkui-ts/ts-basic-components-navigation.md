@@ -366,6 +366,10 @@ hideNavBar(value: boolean)
 
 从API version 9开始到API version 10仅在双栏模式下生效。从API version 11开始在单栏、双栏与自适应模式均生效。
 
+> **说明：** 
+>
+> 未避免跳转后导航页重新出现，需同时设置所有子组件Navdestination的hideTitleBar属性值为true。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
