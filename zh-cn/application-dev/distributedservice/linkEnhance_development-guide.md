@@ -72,16 +72,8 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 
 ### 服务端开发指导
 1. 导入所需的模块。
-
-    ArkTS-Dyn示例：
     ```ts
     import {linkEnhance} from '@kit.DistributedServiceKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    ```
-
-    ArkTS-Sta示例：
-    ```ts
-    import linkEnhance from '@ohos.distributedsched.linkEnhance';
     import { BusinessError } from '@kit.BasicServicesKit';
     ```
 2. 在module.json5配置文件中配置分布式数据同步权限ohos.permission.DISTRIBUTED_DATASYNC。
