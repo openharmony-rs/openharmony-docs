@@ -433,7 +433,7 @@ The following walks you through how to implement the entire video decoding proce
     OH_NativeWindow_NativeWindowSetScalingModeV2(nativeWindow, OH_SCALING_MODE_SCALE_CROP_V2);
     ```
 
-    > **NOTE**
+    > **NOTE**<br>
     > If both decoder 1 and decoder 2 are bound to the same NativeWindow using the **OH_VideoDecoder_SetSurface** function, and decoder 2 is running, destroying decoder 1 with **OH_VideoDecoder_Destroy** will cause decoder 2's video playback to freeze.
     >
     > Consider the following approaches:
@@ -1181,7 +1181,7 @@ The following walks you through how to implement the entire video decoding proce
         int32_t width;
         int32_t height;
     };
-
+    
     struct DstRect // Width stride and height stride of the destination buffer. They are set by the caller.
     {
         int32_t wStride;
@@ -1193,7 +1193,7 @@ The following walks you through how to implement the entire video decoding proce
         int32_t wStride;
         int32_t hStride;
     };
-
+    
     Rect rect = {320, 240};
     DstRect dstRect = {320, 240};
     SrcRect srcRect = {320, 256};
@@ -1203,7 +1203,7 @@ The following walks you through how to implement the entire video decoding proce
     uint8_t* srcTemp = src;
     rect.height = ((rect.height + 1) / 2)  * 2 // This ensures the height is always even.
     rect.width = ((rect.width + 1) / 2)  * 2 // This ensures the width is always even.
-
+    
     // Y: Copy the source data in the Y region to the target data in another region.
     for (int32_t i = 0; i < rect.height; ++i) {
         // Copy a row of data from the source to a row of the target.
@@ -1223,7 +1223,7 @@ The following walks you through how to implement the entire video decoding proce
         dstTemp += dstRect.wStride;
         srcTemp += srcRect.wStride;
     }
-
+    
     delete[] dst;
     dst = nullptr;
     delete[] src;

@@ -92,7 +92,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    }
    // (Optional) Create a source resource instance for the URI resource file.
    // OH_AVSource *source = OH_AVSource_CreateWithURI(uri);
-
+   
    // (Optional) Create a source resource instance for the custom data source. Before the operation, you must implement AVSourceReadAt.
    // Add g_filePath when OH_AVSource_CreateWithDataSource is used.
    // g_filePath = filePath ;
@@ -109,36 +109,36 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
    ```c++
    static std::string g_filePath;
-
+   
    enum MediaDataSourceError : int32_t {
       SOURCE_ERROR_IO = -2,
       SOURCE_ERROR_EOF = -1
    };
-
+   
    int32_t AVSourceReadAt(OH_AVBuffer *data, int32_t length, int64_t pos)
    {
       if (data == nullptr) {
          printf("AVSourceReadAt : data is nullptr!\n");
          return MediaDataSourceError::SOURCE_ERROR_IO;
       }
-
+   
       std::ifstream infile(g_filePath, std::ofstream::binary);
       if (!infile.is_open()) {
          printf("AVSourceReadAt : open file failed! file:%s\n", g_filePath.c_str());
          return MediaDataSourceError::SOURCE_ERROR_IO; // Failed to open the file.
       }
-
+   
       infile.seekg(0, std::ios::end);
       int64_t fileSize = infile.tellg();
       if (pos >= fileSize) {
          printf("AVSourceReadAt : pos over or equals file size!\n");
          return MediaDataSourceError::SOURCE_ERROR_EOF; // pos is already at the end of the file and cannot be read.
       }
-
+   
       if (pos + length > fileSize) {
          length of length = fileSize - pos; // When the sum of pos and length exceeds the file size, the data from pos to the end of the file is read.
       }
-
+   
       infile.seekg(pos, std::ios::beg);
       if (length <= 0) {
          printf("AVSourceReadAt : read length less than zero!\n");
@@ -147,11 +147,11 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
       char* buffer = new char[length];
       infile.read(buffer, length);
       infile.close();
-
+   
       memcpy(reinterpret_cast<char *>(OH_AVBuffer_GetAddr(data)),
          buffer, length);
       delete[] buffer;
-
+   
       return length;
    }
    ```
@@ -421,7 +421,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 ## Appendix
 ### Supported File-Level Attributes
 
-> **NOTE**
+> **NOTE**<br>
 > - Attribute data can be obtained only when the file is parsed normally. If the file information is incorrect or missing, the parsing is abnormal and the corresponding data cannot be obtained.
 > - Currently, data in the GBK character set is converted to UTF-8. If other character sets need to be converted to UTF-8, you must handle the conversion. For details, see [icu4c](../../reference/native-lib/icu4c.md).
 > - Starting from API version 23, some OGG format resources, such as **OH_MD_KEY_TITLE, OH_MD_KEY_ARTIST** and **OH_MD_KEY_ALBUM**, are stored in and can be retrieved from track attributes.
