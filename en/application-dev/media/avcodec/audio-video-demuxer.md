@@ -447,7 +447,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
 ### Supported Track-Level Attributes
 
-> **NOTE**
+> **NOTE**<br>
 > Attribute data can be obtained only when the file is parsed normally. If the file information is incorrect or missing, the parsing is abnormal and the corresponding data cannot be obtained.
 > The supported attributes of the auxiliary track must match the actual media type (audio or video).
 > 
