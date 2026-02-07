@@ -4443,6 +4443,69 @@ try {
 }
 ```
 
+## bundleManager.getAllBundleInstallInfo<sup>23+</sup>
+
+getAllBundleInstallInfo(): Promise\<Array\<Record\<string, Object\>\>\>
+
+获取系统内所有应用的扩展安装信息。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**返回值：**
+
+| 类型                                                         | 说明                                |
+| ------------------------------------------------------------ | ----------------------------------- |
+| Promise\<Array\<Record\<string, Object\>\>\> | Promise对象，返回所有应用的扩展安装信息集合列表。 |
+
+**返回扩展安装信息集合字段说明：**
+
+| 名称                      | 类型    | 说明                 |
+| ------------------------- | ------ | -------------------- |
+| compatibleVersion              | number | 运行应用包所需要最低的SDK版本。 |
+| crowdtestDeadline              | number | 众测应用的截止日期（毫秒级时间戳），-1表示无截止日期约束。 |
+| bundleName                     | string | 应用的包名。 |
+| specifiedDistributionType      | string | 返回应用的[分发类型app-distribution-type](../../security/app-provision-structure.md)。 |
+| installSource      | string | 安装来源。 |
+| additionalInfo      | string | 应用的额外信息。 |
+| hashParam      | Record\<string, string\> | module对应的安装卸载哈希参数信息。 |
+| hapPath      | Array\<string\> | HAP文件路径列表。 |
+| requiredDeviceFeatures      | Record\<string, Record\<string, Array\<string\>\>\> | module对应的所需设备能力特征。 |
+| sharedBundleInfo      | Array\<sharedBundleInfo\> | 共享包信息对象列表，详细介绍请参见[共享包信息](js-apis-bundleManager-sharedBundleInfo-sys.md)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | -------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+  bundleManager.getAllBundleInstallInfo().then((data) => {
+    hilog.info(0x0000, 'testTag', 'getAllBundleInstallInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getAllBundleInstallInfo failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllBundleInstallInfo failed. Cause: %{public}s', message);
+}
+```
+
 ## bundleManager.getSpecifiedDistributionType<sup>10+</sup>
 getSpecifiedDistributionType(bundleName: string): string
 
