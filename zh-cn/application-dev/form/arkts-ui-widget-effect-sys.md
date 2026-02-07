@@ -95,14 +95,14 @@
 ![WidgetMaterialVisualEffect](figures/WidgetMaterialVisualEffect.gif)
 
 ## ArkTS卡片新材质背板
-主要对ArkTS卡片的背板生效。
+该特性主要对ArkTS卡片的背板生效。
 
 ### 约束限制
-不能在"transparencyEnabled"字段配置为true的卡片使用。
+不能在配置了"transparencyEnabled"字段为true的卡片上使用。
 
 ### 开发步骤
 1. [创建ArkTS卡片](arkts-ui-widget-creation.md)
-2. 配置`entry/src/main/resources/base/profile/form_config.json`文件。在form_config.json文件中的`metadata`添加`materialBackground`配置项，value为`true`表示卡片需要生效新材质背板，value为`false`表示卡片不需要生效新材质背板，默认value为`false`。
+2. 配置`entry/src/main/resources/base/profile/form_config.json`文件。在form_config.json文件中的`metadata`配置项添加`name`为`materialBackground`字段，`value`为`true`表示卡片需要生效新材质背板，`value`为`false`表示卡片不需要生效新材质背板，默认`value`为`false`。
    ```json
    {
      "forms": [
