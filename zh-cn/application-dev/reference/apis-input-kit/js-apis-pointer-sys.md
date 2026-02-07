@@ -3440,7 +3440,7 @@ struct Index {
 
 ## pointer.setMouseScrollDirection<sup>24+</sup>
 
-setMouseScrollDirection(state: boolean): Promise\<void>
+setMouseScrollDirection(inverted: boolean): Promise\<void>
 
 设置鼠标滚轮滚动的方向，使用Promise异步回调。
 
@@ -3452,7 +3452,7 @@ setMouseScrollDirection(state: boolean): Promise\<void>
 
 | 参数名 | 类型    | 必填 | 说明                                                                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------------------------------------------------------ |
-| state  | boolean | 是   | state为鼠标滚轮滚动的方向。<br>true与鼠标滚轮滚动的方向一致，false与鼠标滚轮滚动的方向相反。<br>默认为true。 |
+| inverted  | boolean | 是   | state为鼠标滚轮滚动的方向。<br>true与鼠标滚轮滚动的方向一致，false与鼠标滚轮滚动的方向相反。<br>默认为true。 |
 
 **返回值**：
 
