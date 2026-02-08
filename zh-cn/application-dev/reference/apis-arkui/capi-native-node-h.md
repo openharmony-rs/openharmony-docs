@@ -3887,7 +3887,7 @@ int32_t OH_ArkUI_Swiper_StartFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)
 
 启动Swiper节点的模拟拖拽操作。调用[OH_ArkUI_Swiper_FakeDragBy](capi-native-node-h.md#oh_arkui_swiper_fakedragby)模拟拖拽动作。调用[OH_ArkUI_Swiper_StopFakeDrag](capi-native-node-h.md#oh_arkui_swiper_stopfakedrag)停止模拟拖拽。<br> 模拟拖拽操作可以被真实拖拽操作打断。如果需要在模拟拖拽期间忽略用户的拖拽事件，请使用[NODE_SWIPER_DISABLE_SWIPE](capi-native-node-h.md#arkui_nodeattributetype)。
 
-**起始版本：** 24
+**起始版本：** 23
 
 **参数：**
 
@@ -3912,7 +3912,7 @@ int32_t OH_ArkUI_Swiper_FakeDragBy(ArkUI_NodeHandle node, float offset, bool* is
 
 通过设置Swiper节点的偏移量模拟拖拽效果。该接口调用前，必须先调用[OH_ArkUI_Swiper_StartFakeDrag](capi-native-node-h.md#oh_arkui_swiper_startfakedrag)启动模拟拖拽。
 
-**起始版本：** 24
+**起始版本：** 23
 
 **参数：**
 
@@ -3938,7 +3938,7 @@ int32_t OH_ArkUI_Swiper_StopFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)
 
 停止对Swiper节点的模拟拖拽。
 
-**起始版本：** 24
+**起始版本：** 23
 
 **参数：**
 
@@ -3963,7 +3963,7 @@ int32_t OH_ArkUI_Swiper_IsFakeDragging(ArkUI_NodeHandle node, bool* isFakeDraggi
 
 获取Swiper节点的模拟拖拽状态。
 
-**起始版本：** 24
+**起始版本：** 23
 
 **参数：**
 
@@ -3988,7 +3988,7 @@ int32_t OH_ArkUI_Swiper_ShowPrevious(ArkUI_NodeHandle node)
 
 显示Swiper节点的上一页。
 
-**起始版本：** 24
+**起始版本：** 23
 
 **参数：**
 
@@ -4012,7 +4012,7 @@ int32_t OH_ArkUI_Swiper_ShowNext(ArkUI_NodeHandle node)
 
 显示Swiper节点的下一页。
 
-**起始版本：** 24
+**起始版本：** 23
 
 **参数：**
 
