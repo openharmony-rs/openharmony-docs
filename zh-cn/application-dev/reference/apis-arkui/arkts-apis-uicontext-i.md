@@ -103,17 +103,17 @@ Swiper子组件的信息。
 | uniqueId  | number | 否 | 否 | Swiper子组件的唯一标识符。   |
 | index     | number | 否 | 否 | Swiper子组件在Swiper中的索引。 |
 
-## BackgroundLuminanceSamplerOptions<sup>24+</sup>
+## BackgroundLuminanceSamplingConfigs<sup>23+</sup>
 
-背景亮度采样的信息。
+背景取色参数配置。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称      | 类型 | 只读  | 可选 | 说明                    |
 | --------- | ---- | ----- | ---- | -----------------------|
-| interval  | number | 否 | 是 | 采样间隔，单位为毫秒，最小值180ms。   |
-| brightThreshold     | number | 否 | 是 | 浅色亮度阈值。 |
-| darkThreshold     | number | 否 | 是 | 深色亮度阈值。 |
-| rect     | Edges\<LengthMetrics\> | 否 | 是 | 相对窗口的采样偏移。 |
+| samplingInterval  | number | 否 | 是 | 取色间隔，单位为毫秒，最小值180ms。   |
+| brightThreshold     | number | 否 | 是 | 浅色亮度阈值：[0, 255]内的整数，设置的深色亮度阈值应小于浅色亮度阈值。 |
+| darkThreshold     | number | 否 | 是 | 深色亮度阈值：[0, 255]内的整数，设置的深色亮度阈值应小于浅色亮度阈值。 |
+| region     | [Edges](./js-apis-arkui-graphics.md#edgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> | 否 | 是 | 相对组件的取色区域偏移，以组件自身的左上定点为基准进行偏移计算。 |
