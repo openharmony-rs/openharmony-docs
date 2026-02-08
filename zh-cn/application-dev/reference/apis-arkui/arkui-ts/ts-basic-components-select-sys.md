@@ -14,7 +14,7 @@
 >
 > - 本文仅介绍当前模块的系统接口，其他公开接口参见[select](./ts-basic-components-select.md)。
 
-## menuSystemMaterial<sup>24+</sup>
+## menuSystemMaterial<sup>23+</sup>
 
 menuSystemMaterial(material:Optional\<SystemUiMaterial>)
 
@@ -24,7 +24,7 @@ menuSystemMaterial(material:Optional\<SystemUiMaterial>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -37,9 +37,9 @@ menuSystemMaterial(material:Optional\<SystemUiMaterial>)
 ## 示例
 ### 示例1（设置Select和下拉菜单系统材质）
 
-该示例通过调用[menuSystemMaterial](#menusystemmaterial24)接口实现下拉菜单系统材质效果，通过[systemMaterial](./ts-universal-attributes-image-effect-sys.md#systemmaterial23)接口实现select组件系统材质效果。
+该示例通过调用[menuSystemMaterial](#menusystemmaterial23)接口实现下拉菜单系统材质效果，通过[systemMaterial](./ts-universal-attributes-image-effect-sys.md#systemmaterial23)接口实现select组件系统材质效果。
 
-从API version 24开始，新增menuSystemMaterial接口。从API version 23开始，新增systemMaterial接口。
+从API version 23开始，新增menuSystemMaterial接口和systemMaterial接口。
 
 ```ts
 import { uiMaterial } from '@kit.ArkUI';
