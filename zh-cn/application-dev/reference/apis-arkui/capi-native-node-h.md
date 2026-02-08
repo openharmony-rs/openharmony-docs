@@ -164,6 +164,12 @@
 | [ArkUI_TouchTestInfo* OH_ArkUI_NodeEvent_GetTouchTestInfo(ArkUI_NodeEvent* nodeEvent)](#oh_arkui_nodeevent_gettouchtestinfo) | - | 获取组件事件中的触摸测试信息。 |
 | [int32_t OH_ArkUI_NativeModule_ConvertPositionToWindow(ArkUI_NodeHandle currentNode, ArkUI_IntOffset localPosition, ArkUI_IntOffset* windowPosition)](#oh_arkui_nativemodule_convertpositiontowindow) | - | 将点的坐标从目标节点的坐标系转换至当前窗口的坐标系。|
 | [int32_t OH_ArkUI_NativeModule_ConvertPositionFromWindow(ArkUI_NodeHandle targetNode, ArkUI_IntOffset windowPosition, ArkUI_IntOffset* localPosition)](#oh_arkui_nativemodule_convertpositionfromwindow) | - | 将点的坐标从当前窗口的坐标系转换至目标节点的坐标系。 |
+| [int32_t OH_ArkUI_Swiper_StartFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)](#oh_arkui_swiper_startfakedrag) | - | 启动Swiper节点的模拟拖拽操作。调用[OH_ArkUI_Swiper_FakeDragBy](capi-native-node-h.md#oh_arkui_swiper_fakedragby)模拟拖拽动作。调用[OH_ArkUI_Swiper_StopFakeDrag](capi-native-node-h.md#oh_arkui_swiper_stopfakedrag)停止模拟拖拽。<br> 模拟拖拽操作可以被真实拖拽操作打断。如果需要在模拟拖拽期间忽略用户的拖拽事件，请使用[NODE_SWIPER_DISABLE_SWIPE](capi-native-node-h.md#arkui_nodeattributetype)。 |
+| [int32_t OH_ArkUI_Swiper_FakeDragBy(ArkUI_NodeHandle node, float offset, bool* isConsumedOffset)](#oh_arkui_swiper_fakedragby) | - | 通过设置Swiper节点的偏移量模拟拖拽效果。该接口调用前，必须先调用[OH_ArkUI_Swiper_StartFakeDrag](capi-native-node-h.md#oh_arkui_swiper_startfakedrag)启动模拟拖拽。 |
+| [int32_t OH_ArkUI_Swiper_StopFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)](#oh_arkui_swiper_stopfakedrag) | - | 停止对Swiper节点的模拟拖拽。 |
+| [int32_t OH_ArkUI_Swiper_IsFakeDragging(ArkUI_NodeHandle node, bool* isFakeDragging)](#oh_arkui_swiper_isfakedragging) | - | 获取Swiper节点的模拟拖拽状态。 |
+| [int32_t OH_ArkUI_Swiper_ShowPrevious(ArkUI_NodeHandle node)](#oh_arkui_swiper_showprevious) | - | 显示Swiper节点的上一页。 |
+| [int32_t OH_ArkUI_Swiper_ShowNext(ArkUI_NodeHandle node)](#oh_arkui_swiper_shownext) | - | 显示Swiper节点的下一页。 |
 
 ### 宏定义
 
@@ -3865,3 +3871,152 @@ int32_t OH_ArkUI_NativeModule_ConvertPositionFromWindow(ArkUI_NodeHandle targetN
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](capi-native-type-h.md#arkui_errorcode) 节点未挂载到节点树上。 |
+
+### OH_ArkUI_Swiper_StartFakeDrag()
+
+```c
+int32_t OH_ArkUI_Swiper_StartFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)
+```
+
+**描述**
+
+启动Swiper节点的模拟拖拽操作。调用[OH_ArkUI_Swiper_FakeDragBy](capi-native-node-h.md#oh_arkui_swiper_fakedragby)模拟拖拽动作。调用[OH_ArkUI_Swiper_StopFakeDrag](capi-native-node-h.md#oh_arkui_swiper_stopfakedrag)停止模拟拖拽。<br> 模拟拖拽操作可以被真实拖拽操作打断。如果需要在模拟拖拽期间忽略用户的拖拽事件，请使用[NODE_SWIPER_DISABLE_SWIPE](capi-native-node-h.md#arkui_nodeattributetype)。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 指定的节点。 |
+| bool* isSuccessful | 模拟拖拽操作是否成功启动。如果模拟拖拽操作成功启动，则返回true。<br> 如果Swiper尚未准备好启动模拟拖拽操作，或者真实拖拽或模拟拖拽操作已在进行中，则返回false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_Swiper_FakeDragBy()
+
+```c
+int32_t OH_ArkUI_Swiper_FakeDragBy(ArkUI_NodeHandle node, float offset, bool* isConsumedOffset)
+```
+
+**描述**
+
+通过设置Swiper节点的偏移量模拟拖拽效果。该接口调用前，必须先调用[OH_ArkUI_Swiper_StartFakeDrag](capi-native-node-h.md#oh_arkui_swiper_startfakedrag)启动模拟拖拽。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 指定的节点。 |
+| float offset | 需要拖拽的偏移量。单位是vp。 |
+| bool* isConsumedOffset | 是否消耗偏移量触发拖拽。如果消耗偏移量触发拖拽，则返回true。<br> 如果未处于模拟拖拽进度，或者未消耗任何偏移量，则返回false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_Swiper_StopFakeDrag()
+
+```c
+int32_t OH_ArkUI_Swiper_StopFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)
+```
+
+**描述**
+
+停止对Swiper节点的模拟拖拽。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 指定的节点。 |
+| bool* isSuccessful | 模拟拖拽操作是否成功停止。如果模拟拖拽成功停止，则返回true。<br> 如果Swiper尚未准备好停止模拟拖拽，或者没有正在进行的模拟拖拽，则返回false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_Swiper_IsFakeDragging()
+
+```c
+int32_t OH_ArkUI_Swiper_IsFakeDragging(ArkUI_NodeHandle node, bool* isFakeDragging)
+```
+
+**描述**
+
+获取Swiper节点的模拟拖拽状态。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 指定的节点。 |
+| bool* isFakeDragging | 是否处于模拟拖拽状态。如果正在进行模拟拖拽操作，则返回true，否则返回false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_Swiper_ShowPrevious()
+
+```c
+int32_t OH_ArkUI_Swiper_ShowPrevious(ArkUI_NodeHandle node)
+```
+
+**描述**
+
+显示Swiper节点的上一页。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 指定的节点。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_Swiper_ShowNext()
+
+```c
+int32_t OH_ArkUI_Swiper_ShowNext(ArkUI_NodeHandle node)
+```
+
+**描述**
+
+显示Swiper节点的下一页。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 指定的节点。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
