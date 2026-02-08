@@ -30,6 +30,7 @@
       - [Class (FocusController)](arkts-apis-uicontext-focuscontroller.md)
       - [Class (Font)](arkts-apis-uicontext-font.md)
       - [Class (FrameCallback)](arkts-apis-uicontext-framecallback.md)
+      - [Class (LuminanceSampler)](arkts-apis-uicontext-luminancesampler.md)
       - [Class (Magnifier)](arkts-apis-uicontext-magnifier.md)
       - [Class (MarqueeDynamicSyncScene)](arkts-apis-uicontext-marqueedynamicsyncscene.md)
       - [Class (MeasureUtils)](arkts-apis-uicontext-measureutils.md)
