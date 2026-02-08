@@ -34,7 +34,7 @@ SaveButton()
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ### SaveButton
 
@@ -50,7 +50,7 @@ SaveButton(options: SaveButtonOptions)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -80,7 +80,7 @@ SaveButton(options: SaveButtonOptions)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -98,7 +98,7 @@ SaveButton(options: SaveButtonOptions)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -113,19 +113,19 @@ SaveButton(options: SaveButtonOptions)
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| DOWNLOAD | 0 | 保存控件的文字描述为“下载”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22|
-| DOWNLOAD_FILE | 1 | 保存控件的文字描述为“下载文件”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22|
-| SAVE | 2 | 保存控件的文字描述为“保存”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22|
-| SAVE_IMAGE | 3 | 保存控件的文字描述为“保存图片”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22|
-| SAVE_FILE | 4 | 保存控件的文字描述为“保存文件”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22|
-| DOWNLOAD_AND_SHARE | 5 | 保存控件的文字描述为“下载分享”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22|
-| RECEIVE | 6 | 保存控件的文字描述为“接收”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22|
-| CONTINUE_TO_RECEIVE | 7 | 保存控件的文字描述为“继续接收”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22|
-| SAVE_TO_GALLERY<sup>12+</sup> | 8 | 保存控件的文字描述为“保存至图库”。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 22|
-| EXPORT_TO_GALLERY<sup>12+</sup> | 9 | 保存控件的文字描述为“导出”。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 22|
-| QUICK_SAVE_TO_GALLERY<sup>12+</sup> | 10 | 保存控件的文字描述为“快速保存图片”。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 22|
-| RESAVE_TO_GALLERY<sup>12+</sup> | 11 | 保存控件的文字描述为“重新保存”。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 22|
-| SAVE_ALL<sup>18+</sup> | 12 | 保存控件的文字描述为“全部保存”。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 22|
+| DOWNLOAD | 0 | 保存控件的文字描述为“下载”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23|
+| DOWNLOAD_FILE | 1 | 保存控件的文字描述为“下载文件”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23|
+| SAVE | 2 | 保存控件的文字描述为“保存”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23|
+| SAVE_IMAGE | 3 | 保存控件的文字描述为“保存图片”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23|
+| SAVE_FILE | 4 | 保存控件的文字描述为“保存文件”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23|
+| DOWNLOAD_AND_SHARE | 5 | 保存控件的文字描述为“下载分享”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23|
+| RECEIVE | 6 | 保存控件的文字描述为“接收”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23|
+| CONTINUE_TO_RECEIVE | 7 | 保存控件的文字描述为“继续接收”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23|
+| SAVE_TO_GALLERY<sup>12+</sup> | 8 | 保存控件的文字描述为“保存至图库”。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
+| EXPORT_TO_GALLERY<sup>12+</sup> | 9 | 保存控件的文字描述为“导出”。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
+| QUICK_SAVE_TO_GALLERY<sup>12+</sup> | 10 | 保存控件的文字描述为“快速保存图片”。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
+| RESAVE_TO_GALLERY<sup>12+</sup> | 11 | 保存控件的文字描述为“重新保存”。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
+| SAVE_ALL<sup>18+</sup> | 12 | 保存控件的文字描述为“全部保存”。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23|
 
 ## SaveButtonOnClickResult
 
@@ -135,9 +135,9 @@ SaveButton(options: SaveButtonOptions)
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| SUCCESS | 0 | 保存控件点击后权限授权成功。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22 |
-| TEMPORARY_AUTHORIZATION_FAILED | 1 | 保存控件点击后权限授权失败。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22 |
-| CANCELED_BY_USER<sup>21+</sup>  | 2 | 保存控件点击后弹窗用户取消授权。 <br/>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 22 |
+| SUCCESS | 0 | 保存控件点击后权限授权成功。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
+| TEMPORARY_AUTHORIZATION_FAILED | 1 | 保存控件点击后权限授权失败。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
+| CANCELED_BY_USER<sup>21+</sup>  | 2 | 保存控件点击后弹窗用户取消授权。 <br/>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 23 |
 
 ## SaveButtonCallback<sup>18+</sup>
 
@@ -151,7 +151,7 @@ type SaveButtonCallback = (event: ClickEvent, result: SaveButtonOnClickResult, e
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -182,7 +182,7 @@ ArkTS-Sta: setIcon(icon: Resource | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -206,7 +206,7 @@ ArkTS-Sta: setText(text: string | Resource | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -228,7 +228,7 @@ ArkTS-Sta: iconSize(size: Dimension | SizeOptions | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -252,7 +252,7 @@ ArkTS-Sta: iconBorderRadius(radius: Dimension | BorderRadiuses | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -276,7 +276,7 @@ ArkTS-Sta: stateEffect(enabled: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -298,7 +298,7 @@ ArkTS-Sta: userCancelEvent(enabled: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 21
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -328,7 +328,7 @@ ArkTS-Sta: onClick(event: SaveButtonCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
