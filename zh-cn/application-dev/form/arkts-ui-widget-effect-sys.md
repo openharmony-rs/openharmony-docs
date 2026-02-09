@@ -6,7 +6,7 @@
 <!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
-从API version 23开始，Form Kit支持系统应用使用新材质，提供炫彩透光视觉效果，提供高端精致的用户体验。
+从API version 23开始，Form Kit支持系统应用使用新材质，提供炫彩透光视觉效果，提升用户体验。
 
 > **说明：**
 >
@@ -16,7 +16,7 @@
 主要是对ArkTS卡片的内容生效，为了达到最佳的显示效果，建议在"transparencyEnabled"字段配置为true的卡片上使用。
 
 ### 开发步骤
-1. [创建ArkTS卡片](arkts-ui-widget-creation.md)
+1. [创建ArkTS卡片](arkts-ui-widget-creation.md)。
 2. 配置`entry/src/main/resources/base/profile/form_config.json`文件。在form_config.json文件中的`metadata`添加`visualEffectType`配置，`immersiveMaterial`表示新材质。
 
    ``` json
@@ -95,14 +95,15 @@
 ![WidgetMaterialVisualEffect](figures/WidgetMaterialVisualEffect.gif)
 
 ## ArkTS卡片新材质背板
-该特性主要对ArkTS卡片的背板生效。
+该特性仅对ArkTS卡片的背板生效。
 
 ### 约束限制
-不能在配置了"transparencyEnabled"字段为true的卡片上使用。
+透明卡片（`transparencyEnabled`字段配置为`true`的卡片）不支持配置新材质背板。透明卡片配置的新材质背板不会生效。
 
 ### 开发步骤
-1. [创建ArkTS卡片](arkts-ui-widget-creation.md)
-2. 配置`entry/src/main/resources/base/profile/form_config.json`文件。在form_config.json文件中的`metadata`配置项添加`name`为`materialBackground`字段，`value`为`true`表示卡片需要生效新材质背板，`value`为`false`表示卡片不需要生效新材质背板，默认`value`为`false`。
+1. [创建ArkTS卡片](arkts-ui-widget-creation.md)。
+2. 配置`entry/src/main/resources/base/profile/form_config.json`文件。在form_config.json文件中的`metadata`配置项添加`name`为`materialBackground`字段。`value`为`true`表示卡片需要生效新材质背板，`false`表示不需要，默认值为`false`。
+
    ```json
    {
      "forms": [
