@@ -237,7 +237,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     ```c++
     // 通过MIME TYPE创建编码器，只能创建系统推荐的特定编解码器。
-    // 只能创建硬件编码器。
+    // 系统优先创建硬件编码器实例，若硬件编码不支持或硬件编码器实例已占满，则创建软件编码器实例。
     OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
     ```
 
@@ -679,7 +679,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     注册回调函数指针集合OH_AVCodecCallback，包括：
     - OH_AVCodecOnError 编码器运行错误，返回的错误码详情请参见[OH_AVCodecOnError](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcodeconerror)；
-    - OH_AVCodecOnStreamChanged 码流信息变化，如格式变化等；
+    - OH_AVCodecOnStreamChanged Buffer模式下，该回调函数无作用；
     - OH_AVCodecOnNeedInputBuffer 运行过程中需要新的输入数据，即编码器已准备好，可以输入YUV/RGB数据；
     - OH_AVCodecOnNewOutputBuffer 运行过程中产生了新的输出数据，即编码完成。
 
