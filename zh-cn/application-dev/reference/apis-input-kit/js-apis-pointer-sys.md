@@ -3464,11 +3464,11 @@ setMouseScrollDirection(inverted: boolean): Promise\<void>
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息                        |
-|-------|-----------------------------|
-| 201   | Permission denied.          |
-| 202   | SystemAPI permission error. |
-| 401   | Input service exception.    |
+| 错误码ID   | 错误信息                        |
+|---------|-----------------------------|
+| 201     | Permission denied.          |
+| 202     | SystemAPI permission error. |
+| 3800001 | Input service exception.    |
 
 **示例**：
 
@@ -3518,11 +3518,11 @@ getMouseScrollDirection(): Promise\<boolean>
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息                                                                                                                                       |
-| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| 201   | Permission denied.          |
-| 202   | SystemAPI permission error. |
-| 401   | Input service exception.    |
+| 错误码ID   | 错误信息                                                                                                                                       |
+|---------| ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| 201     | Permission denied.          |
+| 202     | SystemAPI permission error. |
+| 3800001 | Input service exception.    |
 
 **示例**：
 
