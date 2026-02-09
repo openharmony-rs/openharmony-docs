@@ -588,7 +588,7 @@ off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
 | 参数名    | 类型                     | 必填 | 说明                                                                     |
 | -------- | ------------------------ | ---- |------------------------------------------------------------------------|
 | type     | string                   | 是   | 注销监听事件，固定为'macroStatusChanged'，session创建成功可触发此事件。                      |
-| callback | AsyncCallback\<boolean\> | 否   | 回调函数，可选，如果指定参数则取消对应callback (callback对象不可是匿名函数)，否则参数默认为空，取消所有callback, 返回true表示成功，false表示失败。 |
+| callback | AsyncCallback\<boolean\> | 否   | 回调函数，可选，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则参数默认为空，取消所有callback, 返回true表示成功，false表示失败。 |
 
 
 **示例：**
@@ -605,7 +605,7 @@ onIsoInfoChange(callback: Callback\<IsoInfo\>): void
 
 监听相机感光度（ISO）状态变化，通过注册回调函数获取最新ISO值。
 
-**模型约束：** 此接口仅可在[Stage模型](../../application-models/stage-model-development-overview.md#stage模型开发概述)下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
  
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -637,7 +637,7 @@ offIsoInfoChange(callback?: Callback\<IsoInfo\>): void
 
 取消监听相机感光度（ISO）状态的变化。
 
-**模型约束：** 此接口仅可在[Stage模型](../../application-models/stage-model-development-overview.md#stage模型开发概述)下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
