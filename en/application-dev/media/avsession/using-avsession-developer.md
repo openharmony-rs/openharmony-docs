@@ -18,7 +18,7 @@ An audio and video application needs to access the AVSession service as a provid
 
 The table below lists the key APIs used by the provider. The APIs use either a callback or promise to return the result. The APIs listed below use a callback. They provide the same functions as their counterparts that use a promise.
 
-For details, see [AVSession Management](../../reference/apis-avsession-kit/arkts-apis-avsession.md).
+For details about the APIs, see [Module Description](../../reference/apis-avsession-kit/arkts-apis-avsession.md).
 
 | API| Description| 
 | -------- | -------- |
@@ -294,7 +294,6 @@ To enable an audio and video application to access the AVSession service as a pr
     
    6.1 Listen for fixed playback control commands.
    > **NOTE**
-   >
    > After the provider registers a listener for fixed playback control commands, the commands will be reflected in **getValidCommands()** of the controller. In other words, the controller determines that the command is valid and triggers the corresponding event (not used temporarily) as required. To ensure that the playback control commands delivered by the controller can be executed normally, the provider should not use a null implementation for listening.
 
    Fixed playback control commands on the session side include basic operation commands such as play, pause, previous, and next. For details, see [AVControlCommand](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avcontrolcommand10).
@@ -555,3 +554,8 @@ To enable an audio and video application to access the AVSession service as a pr
       }
       ```
 
+## Samples
+
+The following sample is provided to help you better understand how to develop the provider:
+
+- [AVSession - Provider (ArkTS, Full SDK, API version 10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVSession/MediaProvider)
