@@ -282,15 +282,13 @@ state=S, utime=0, stime=0, priority=0, nice=-20, clk=100
 >
 > 从API version 21开始，出现'Failed to dump normal stacktrace'字样时，系统采取轻量化的frame pointer回溯模式。栈回溯可能中断在非使能frame pointer的库（在GCC编译使用 -fomit-frame-pointer 选项时，编译产物不使能frame pointer），以及受轻量化的限制，单个线程的回栈层数不会超过50层。
 
-从API version 23开始，在线程号下新增线程状态等信息，用于判断是否是系统卡顿导致的问题。其中，state表示当前线程的运行状态，priority和nice表示当前线程的调度优先级，stime和utime表示当前线程运行的时间。对比3S和6S的堆栈运行时间没有发生改变，说明进程未被调度。通过分析业务代码无阻塞调用后，可判断为系统调度问题。线程状态信息在故障日志中具体格式如下：
+从API version 23开始，在线程号下新增线程状态等信息，用于判断是否是系统卡顿导致的问题。其中，state表示当前线程的运行状态，priority和nice表示当前线程的调度优先级，stime和utime表示当前线程运行的时间。对比3S和6S的堆栈运行时间没有发生改变，说明进程未被调度。通过分析业务代码无阻塞调用后，可判断为系统调度问题。线程状态信息获取失败时，以下字段均不显示，线程状态信息在故障日志中具体格式如下：
 
 ```text
 state=S, utime=0, priority=0, nice=-20, clk=100
 ```
 
 字段信息具体解释如下：
-
-线程的运行状态获取失败时，以下字段均不显示。
 
 | 字段 | 说明 |
 | -------- | -------- |
