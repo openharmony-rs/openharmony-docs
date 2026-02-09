@@ -11,7 +11,7 @@
 
 >  **说明：**
 >
-> - 本模块首批接口从API version 14开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口为系统接口。
 
@@ -48,7 +48,7 @@ import { Touch , SwipeInward } from '@kit.InputKit';
 | PINCH_OPENED | 5   | 多指张开。       |
 | GESTURE_END | 6   | 手势结束。       |
 
-## SwipeInward<sup>12+</sup>
+## SwipeInward
 
 向内滑动事件。
 
