@@ -105,7 +105,7 @@
    
    ``` TypeScript
    onPageShow(): void {
-     //创建animatorResult对象
+     // 创建animatorResult对象
      this.animatorOptions = this.getUIContext().createAnimator(this.animatorOption);
      this.animatorOptions.onFrame = (progress: number) => {
        this.translateX = progress;
@@ -113,17 +113,17 @@
          this.translateY = Math.pow(progress - this.topWidth, 2) * this.g;
        }
      }
-     //动画取消时执行方法
+     // 动画取消时执行方法
      this.animatorOptions.onCancel = () => {
        // 请将$r('app.string.cancel')替换为实际资源文件，在本示例中该资源文件的value值为"取消"
        this.animatorStatus = $r('app.string.cancel');
      }
-     //动画完成时执行方法
+     // 动画完成时执行方法
      this.animatorOptions.onFinish = () => {
        // 请将$r('app.string.complete')替换为实际资源文件，在本示例中该资源文件的value值为"完成"
        this.animatorStatus = $r('app.string.complete');
      }
-     //动画重复播放时执行方法
+     // 动画重复播放时执行方法
      this.animatorOptions.onRepeat = () => {
        // 'repeat'资源文件中的value值为'动画重复播放'
        hilog.info(DOMAIN, TAG, this.manager.getStringByNameSync('repeat'));
