@@ -451,7 +451,7 @@ getSync(id: string, options?: SnapshotOptions): image.PixelMap
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                |
 | ------ | ------------------- |
@@ -624,3 +624,4 @@ struct SnapshotExample {
     }.width("100%").align(Alignment.Center)
   }
 }
+```
