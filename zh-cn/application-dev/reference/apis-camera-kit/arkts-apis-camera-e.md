@@ -331,7 +331,7 @@
 | PRECONFIG_1080P         | 1 | 1080P预配置。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。  |
 | PRECONFIG_4K            | 2 | 4K预配置。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。     |
 | PRECONFIG_HIGH_QUALITY  | 3 | 高质量预配置。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。    |
-| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020<sup>23+</sup>  | 4 | 预配置支持预览高动态范围显示和HDR动图拍摄。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020<sup>23+</sup>  | 4 | 预配置支持预览高动态范围显示和HDR动图拍摄。<br>**模型约束：** 此接口仅可在[Stage模型](../../application-models/stage-model-development-overview.md#stage模型开发概述)下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## PreconfigRatio<sup>12+</sup>
 
