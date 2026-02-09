@@ -297,13 +297,13 @@ class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     const STORE_CONFIG: relationalStore.StoreConfig = {
       name: "RdbTest.db",
-      securityLevel: relationalStore.SecurityLevel.S3
+      securityLevel: relationalStore.SecurityLevel.S1
     };
 
     try {
       store = relationalStore.getRdbStoreSync(this.context, STORE_CONFIG);
       console.info('Get RdbStore successfully.');
-    } catch (errr : BusinessError) {
+    } catch (err) {
       console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
     };
   }
