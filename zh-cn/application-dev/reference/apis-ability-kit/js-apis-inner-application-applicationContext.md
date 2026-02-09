@@ -740,7 +740,7 @@ setColorMode(colorMode: ConfigurationConstant.ColorMode): void
 
 | 参数名 | 类型          | 必填 | 说明                 |
 | ------ | ------------- | ---- | -------------------- |
-| colorMode | [ConfigurationConstant.ColorMode](js-apis-app-ability-configurationConstant.md#colormode) | 是   | 深浅色模式，包括：深色模式、浅色模式、跟随系统模式（默认）。 |
+| colorMode | [ConfigurationConstant.ColorMode](js-apis-app-ability-configurationConstant.md#colormode) | 是   | 深浅色模式，包括：深色模式、浅色模式、未设置模式（默认）。 |
 
 **错误码**：
 
