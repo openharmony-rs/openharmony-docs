@@ -349,7 +349,7 @@ getPreviewRotation(displayRotation?: number): ImageRotation
 - 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度。例如，直板机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
 - [屏幕旋转角度](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section15598121101615)：显示设备的屏幕顺时针旋转角度。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在[Stage模型](../../application-models/stage-model-development-overview.md#stage模型开发概述)下使用。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
