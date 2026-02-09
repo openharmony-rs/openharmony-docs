@@ -99,6 +99,7 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 | 5400102  | Operation not allowed. Returned by promise. |
 | 5400106  | Unsupported format. Returned by promise.  |
 | 5400108  | Parameter check failed. Returned by promise. |
+| 5411012  | Http cleartext traffic is not permitted. |
 
 **Example**
 
@@ -108,7 +109,7 @@ import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
 
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
-let pixel_map: image.PixelMap | undefined = undefined;
+let pixelMap: image.PixelMap | undefined = undefined;
 
 // Initialize input parameters.
 let timeUs: number = 0;
@@ -123,10 +124,103 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
-      pixel_map = pixelMap;
+      pixelMap = pixelMap;
     }).catch((error: BusinessError) => {
       console.error(`Failed to fetch FrameByTime, error message:${error.message}`);
     });
+  } else {
+    console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);
+  }
+});
+```
+## fetchFramesByTimes<sup>23+</sup>
+
+fetchFramesByTimes(timesUs: number[], queryOption: AVImageQueryOptions, param: PixelMapParams, callback: OnFrameFetched): void
+
+Obtains video thumbnails in batches. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> - The given video resource is decoded first, and then image frames are extracted from each time point in the **timesUs** array based on the provided **options** and **param**.
+> - When each image extraction is complete, the system calls the callback function and passes the extraction result. Note that the execution order of the callback function may be inconsistent with the time points in the **timesUs** array.
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**Parameters**
+
+| Name  | Type                                        | Mandatory| Description                               |
+| -------- | -------------------------------------------- | ---- | ----------------------------------- |
+| timesUs | number[]                   | Yes  | Set of time points of all thumbnails to be obtained in the video.<br>The unit is microsecond (μs), and the value range of the array length is [0, 4096].|
+| queryOption| [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | Yes  | Relationship between the time passed in and the video frame.|
+| param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)    | Yes  | Format parameters of the thumbnail to be obtained.|
+| callback | [OnFrameFetched](arkts-apis-media-t.md#onframefetched23)    | Yes  | Thumbnail information to be returned and possible exception types.<br>For details about the exception types, see the returned error code information.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                                 |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. Returned by callback. |
+| 5400104  | Fetch timeout. Returned by callback. |
+| 5400106  | Unsupported format. Returned by callback. |
+| 5400105  | Service died. |
+| 5400108  | Parameter check failed. e.g. The size of timesUs is larger than 4096. |
+| 5411012  | Http cleartext not permitted. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+
+// Initialize input parameters.
+let timesUs: number[] = [0];
+let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
+let param: media.PixelMapParams = {
+  width: 300,
+  height: 300
+};
+// Obtain the thumbnail.
+let avMetadataExtractor = await media.createAVMetadataExtractor();
+if (avMetadataExtractor !== null) {
+  console.info('Succeeded in creating AVMetadataExtractor');
+  avMetadataExtractor.fetchFramesByTimes (timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
+    if (err) {
+      console.info(`fetchFramesByTimes callback failed, error = ${JSON.stringify(err)}`);
+      return;
+    }
+    if (frameInfo != undefined && frameInfo.image != undefined) {
+      let pixelMap = frameInfo.image;
+    }});
+}
+```
+
+## cancelAllFetchFrames<sup>23+</sup>
+
+cancelAllFetchFrames(): void
+
+Cancels the ongoing task of obtaining thumbnails in batches. (The thumbnails that have been obtained are not affected.)
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**Example**
+
+```ts
+import { media } from '@kit.MediaKit';
+
+let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
+
+media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
+  if (extractor != null) {
+    avMetadataExtractor = extractor;
+    console.info('Succeeded in creating AVMetadataExtractor');
+    avMetadataExtractor.cancelAllFetchFrames();
   } else {
     console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);
   }
@@ -155,6 +249,7 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 | -------- | ------------------------------------------ |
 | 5400102  | Operation not allowed. Returned by callback. |
 | 5400106  | Unsupported format. Returned by callback.  |
+| 5411012  | Http cleartext traffic is not permitted. |
 
 **Example**
 
@@ -187,7 +282,7 @@ Obtains the media metadata. This API uses a promise to return the result.
 
 | Type          | Description                                    |
 | -------------- | ---------------------------------------- |
-| Promise\<[AVMetadata](arkts-apis-media-i.md#avmetadata11)>  | Promise used to return the result. which is an AVMetadata instance.|
+| Promise\<[AVMetadata](arkts-apis-media-i.md#avmetadata11)>  | Promise used to return the result, which is an AVMetadata instance.|
 
 **Error codes**
 
@@ -197,6 +292,7 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Returned by promise. |
 | 5400106  | Unsupported format. Returned by promise.  |
+| 5411012  | Http cleartext traffic is not permitted. |
 
 **Example**
 

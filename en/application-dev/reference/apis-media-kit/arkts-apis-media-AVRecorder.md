@@ -6,10 +6,6 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
-> **NOTE**
->
-> - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The initial APIs of this interface are supported since API version 9.
 
 AVRecorder is a class for audio and video recording management. It provides APIs to record media assets. Before calling any API in AVRecorder, you must use [createAVRecorder()](arkts-apis-media-f.md#mediacreateavrecorder9) to create an AVRecorder instance.
 
@@ -17,6 +13,8 @@ For details about the audio and video recording demo, see [Audio Recording](../.
 
 > **NOTE**
 >
+> - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this interface are supported since API version 9.
 > To use the camera to record videos, the camera module is required. For details about how to use the APIs provided by the camera module, see [Camera Management](../apis-camera-kit/arkts-apis-camera.md).
 
 ## Modules to Import
@@ -90,7 +88,7 @@ let avRecorderConfig: media.AVRecorderConfig = {
   audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
   videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
   profile : avRecorderProfile,
-  url : 'fd://', // Before passing in an FD to this parameter, the file must be created by the caller and granted with the read and write permissions. Example value: fd://45.
+  url : 'fd://', // Before passing an FD to this parameter, the file must be created by the caller and granted with the read and write permissions. Example value: fd://45.
   metadata: videoMetaData,
   location : { latitude : 30, longitude : 130 }
 };
@@ -168,7 +166,7 @@ let avRecorderConfig: media.AVRecorderConfig = {
   audioSourceType : media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
   videoSourceType : media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
   profile : avRecorderProfile,
-  url : 'fd://', // Before passing in an FD to this parameter, the file must be created by the caller and granted with the read and write permissions. Example value: fd://45.
+  url : 'fd://',  // Before passing an FD to this parameter, the file must be created by the caller and granted with the read and write permissions. Example value: fd://45.
   metadata : videoMetaData,
   location : { latitude : 30, longitude : 130 }
 };
@@ -1407,22 +1405,13 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 <!--code_no_check-->
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
-import { common } from '@kit.AbilityKit'
 let photoAsset: photoAccessHelper.PhotoAsset;
-let context: Context | undefined;
-constructor(context: Context) {
-  this.context = context; // this.getUIContext().getHostContext();
-}
 
 // Example: Process the photoAsset callback and save the video.
-async function saveVideo(asset: photoAccessHelper.PhotoAsset) {
+async function saveVideo(context: Context, asset: photoAccessHelper.PhotoAsset) {
   console.info("saveVideo called");
-  if (!this.context) {
-    console.error('context is undefined');
-    return;
-  }
   try {
-    let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+    let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
     let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
     assetChangeRequest.saveCameraPhoto();
     await phAccessHelper.applyChanges(assetChangeRequest);
@@ -1432,12 +1421,12 @@ async function saveVideo(asset: photoAccessHelper.PhotoAsset) {
   }
 }
 // Subscribe to the photoAsset event.
-avRecorder.on('photoAssetAvailable',  (asset: photoAccessHelper.PhotoAsset) => {
+avRecorder.on('photoAssetAvailable', (asset: photoAccessHelper.PhotoAsset) => {
   console.info('photoAssetAvailable called');
   if (asset != undefined) {
     photoAsset = asset;
     // Process the photoAsset callback.
-    // Example: this.saveVideo (asset);
+    // Example: this.saveVideo(context, asset);
   } else {
     console.error('photoAsset is undefined');
   }

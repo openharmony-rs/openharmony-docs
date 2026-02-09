@@ -15,5 +15,3 @@
   - [DistributedExtensionAbility开发指南（仅对系统应用开放）](distributedextension-guidelines-sys.md)
   <!--DelEnd-->
   - [增强连接开发指南](linkEnhance_development-guide.md)
-- 硬件跨设备连接管理<!--devconnect-distributed-->
-  - [分布式相机开发指南](camera-distributed.md)

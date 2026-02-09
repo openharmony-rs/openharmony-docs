@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-A drag event refers to a sequence of events triggered in the UI when a user drags an object (such as a file, component, or element). These events allow you to customize drag and drop behaviors, enabling functionalities like drag and drop operations and position adjustments.
+A drag event refers to a sequence of events triggered in the UI when a user drags an object (such as a file, component, or element). These events allow you to customize drag behaviors, enabling functions like drag-and-drop and position adjustment.
 
 >  **NOTE**
 >
@@ -31,9 +31,9 @@ To enable drag and drop for other components that support drag actions, set thei
 
 onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | DragItemInfo): T
 
-In the gesture drag scenario, this callback is triggered when the finger is pressed on a draggable component for more than 500 ms and the finger moves more than 10 vp. In the mouse drag scenario, this callback is triggered when the left mouse button is pressed on a draggable component and the mouse moves more than 1 vp.
+In a gesture-based drag scenario, this callback is triggered when a user long‑presses a draggable component for more than 500 ms and then moves the finger more than 10 vp. In a mouse‑drag scenario, it is triggered when the left mouse button is pressed on a draggable component and moved more than 1 vp.
 
-For components that provide default drag and drop capabilities, a custom **onDragStart** event, if set, is executed and:
+For components that provide drag and drop capabilities by default, a custom **onDragStart** event, if set, is executed and:
 - If a custom drag preview is returned, it is used in place of the default drag preview.
 - If drag data is set, it is used in place of the default drag data.
 
@@ -131,7 +131,7 @@ Triggered when a dragged item leaves a valid drop target. This event takes effec
 
 onDrop(event: (event: DragEvent, extraParams?: string) => void): T
 
-The component bound to this event can be used as the drop target. This callback is triggered when the drag-and-drop behavior is stopped within the component scope. If **event.setResult()** is not explicitly called in the **onDrop** callback to set the drag-and-drop result, then: For supported components, the result is determined based on the actual data processed; for other components, the system considers the data as successfully received.
+A component bound with this event can serve as a drop target. This callback is triggered when the drag-and-drop action stops within the bounds of this component If **event.setResult()** is not explicitly called in the **onDrop** callback to set the drag-and-drop result, then: For supported components, the result is determined based on the actual data processed; for other components, the system considers the data as successfully received.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -198,7 +198,7 @@ Triggered when the dragging of the component bound to the event ends.
 
 onPreDrag(callback: Callback\<PreDragStatus>): T
 
-Triggered when the component enters a state prior to a drop and drop operation. For details about the stages before the drag starts, see [PreDragStatus](#predragstatus12). This API cannot be triggered during mouse drag.
+Triggered when the component enters a state prior to a gesture-based drag operation. For details about the state prior to the  drag-and-drop operation, see [PreDragStatus](#predragstatus12). This API cannot be triggered in mouse-based drag scenarios.
 
 > **NOTE**
 >
@@ -224,7 +224,7 @@ Triggered when the component enters a state prior to a drop and drop operation. 
 
 onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configuration?: DragSpringLoadingConfiguration): T
 
-Triggered when a dragged item hovers over the component configured as a drag target with hover detection capability. Only one target can become the responder at any time, and child components always have higher response priority.
+The component bound to this event can be used as serve as a drag‑response target with hover detection capability. When the dragged object hovers over the target, the callback is triggered. Only one target can become the responder at any time, and child components always have higher response priority.
 
 For details about the hover detection triggering mechanism and usage, see [Spring Loading (Hover Detection) Support](../../../ui/arkts-common-events-drag-event.md#spring-loading-hover-detection-support).
 
@@ -256,12 +256,12 @@ Defines the information about the dragged item during drag.
 | Name     | Type                 | Read-Only| Optional  | Description                              |
 | --------- | ---------------------------------------- | ---- | ---- | --------------------------------- |
 | pixelMap  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | No   |  Yes  |Image to be displayed during dragging.|
-| builder   | [CustomBuilder](ts-types.md#custombuilder8) | No   |  Yes  |Custom component to display during dragging. If **pixelMap** is set, this parameter is ignored.<br> **NOTE**<br>Global builder definition is not supported. If the [Image](ts-basic-components-image.md) component is used in the builder, enable synchronous loading whenever possible, that is, set the [syncLoad](ts-basic-components-image.md#syncload8) attribute of the component to **true**. The builder is used only to generate the image displayed during the current dragging. Changes to the builder, if any, apply to the next dragging, but not to the current dragging.<br>When passing parameters to the builder, you are advised to use the builder: ()=>{this.customBuilder()} format to ensure the correctness of this. For details, see [Using Functions Decorated with @Builder as CustomBuilder Types](../../../ui/state-management/arkts-builder.md#using-functions-decorated-with-builder-as-custombuilder-types).|
+| builder   | [CustomBuilder](ts-types.md#custombuilder8) | No   |  Yes  |Custom component to display during dragging. If **pixelMap** is set, this parameter is ignored.<br> **NOTE**<br>Global builder definition is not supported. If the [Image](ts-basic-components-image.md) component is used in the builder, enable synchronous loading whenever possible, that is, set the [syncLoad](ts-basic-components-image.md#syncload8) attribute of the component to **true**. The builder is used only to generate the image displayed during the current dragging. Changes to the builder, if any, apply to the next dragging, but not to the current dragging.<br>When passing the builder as a parameter, the format builder: ()=>{this.customBuilder()} is recommended to ensure correctness of this binding. For details, see [Using Functions Decorated with @Builder as CustomBuilder Types](../../../ui/state-management/arkts-builder.md#using-functions-decorated-with-builder-as-custombuilder-types).|
 | extraInfo | string                                   | No   |  Yes  |Additional information about the dragged item, used to describe the item being dragged.                   |
 
 ## PreviewConfiguration<sup>15+</sup>
 
-Defines the preview image style during a drag operation.
+Configures the style of the preview image during custom drag operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -295,14 +295,14 @@ Defines the preview image style during a drag operation.
 
 | Name    | Type | Read-Only| Optional| Description            |
 | ------ | ------ | ----- | ---- | ------- |
-| useCustomDropAnimation<sup>10+</sup> | boolean | No| No|Whether to disable the default drop animation when the dragging ends.<br>If this parameter is set to **true**, the default drop animation is disabled, and the custom one is used.<br>If this parameter is not set or is set to false, the default drop animation takes effect. When [setResult](#setresult10) is set to DRAG_SUCCESSFUL, the drop animation is a zoom-out animation. When [setResult](#setresult10) is not set to DRAG_SUCCESSFUL, the drop animation is a zoom-in animation.<br>When the default drop animation is not disabled, avoid implementing custom animations to prevent conflicts.<br>Default value: **false**.|
-|dragBehavior<sup>10+</sup> | [DragBehavior](#dragbehavior10) | No| No|Copy or paste mode.<br>Default value: DragBehavior.COPY|
+| useCustomDropAnimation<sup>10+</sup> | boolean | No| No|Whether to disable the default drop animation when the dragging ends.<br>If this parameter is set to **true**, the default drop animation is disabled, and the custom one is used.<br>If this parameter is not set or is set to **false**, the default drop animation takes effect. When [setResult](#setresult10) is set to **DRAG_SUCCESSFUL**, a shrink-out animation takes effect. Otherwise, an expand-out animation takes effect.<br>When the default drop animation is not disabled, avoid implementing custom animations to prevent conflicts.<br>Default value: **false**|
+|dragBehavior<sup>10+</sup> | [DragBehavior](#dragbehavior10) | No| No|Copy or paste mode.<br>Default value: **DragBehavior.COPY**|
 
 ### setData<sup>10+</sup>
 
 setData(unifiedData: UnifiedData): void
 
-Sets data for drag and drop in DragEvent.
+Sets drag-related data in **DragEvent**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -343,7 +343,7 @@ For details about the error codes, see [Drag Event Error Codes](../errorcode-dra
 
 getSummary(): Summary
 
-Obtains the drag data summary, including the data type and size. In the delayed drag scenario, only the data type can be obtained.
+Obtains a summary of drag data, including data type and size information. In a delayed drag scenario, only data type information can be obtained.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -359,7 +359,7 @@ Obtains the drag data summary, including the data type and size. In the delayed 
 
 setResult(dragResult: DragResult): void
 
-Sets the drag result in a drag event.
+Sets the drag result in **DragEvent**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -449,13 +449,13 @@ Obtains the dragging velocity along the main axis.
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
-| number | Dragging velocity along the main axis. The value is the arithmetic square root of the sum of the squares of the speeds in the x and y directions, in vp.|
+| number | Dragging velocity along the main axis. The value is the arithmetic square root of the sum of the squares of the velocities along the x‑axis and y‑axis, in vp.|
 
 ### getWindowX<sup>10+</sup>
 
 getWindowX(): number
 
-Obtains the x-coordinate of the drag position relative to the upper left corner of the window.
+Obtains the x-coordinate of the drag point relative to the upper left corner of the window.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -465,13 +465,13 @@ Obtains the x-coordinate of the drag position relative to the upper left corner 
 
 | Type  | Description                                           |
 | ------ | ----------------------------------------------- |
-| number | X-coordinate of the drag position relative to the upper left corner of the window, in vp.|
+| number | X coordinate of the drag point relative to the upper left corner of the window, in vp.|
 
 ### getWindowY<sup>10+</sup>
 
 getWindowY(): number
 
-Obtains the y-coordinate of the drag position relative to the upper left corner of the window.
+Obtains the y-coordinate of the drag point relative to the upper left corner of the window.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -481,13 +481,13 @@ Obtains the y-coordinate of the drag position relative to the upper left corner 
 
 | Type  | Description                                           |
 | ------ | ----------------------------------------------- |
-| number | Y-coordinate of the drag position relative to the upper left corner of the window, in vp.|
+| number | Y-coordinate of the drag point relative to the upper left corner of the window, in vp.|
 
 ### getDisplayX<sup>10+</sup>
 
 getDisplayX(): number
 
-Obtains the x-coordinate of the drag position relative to the upper left corner of the display.
+Obtains the x-coordinate of the drag point relative to the upper left corner of the screen.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -497,13 +497,13 @@ Obtains the x-coordinate of the drag position relative to the upper left corner 
 
 | Type  | Description                                           |
 | ------ | ----------------------------------------------- |
-| number | X-coordinate of the drag position relative to the upper left corner of the display, in vp.|
+| number | X-coordinate of the drag point relative to the upper left corner of the screen, in vp.|
 
 ### getDisplayY<sup>10+</sup>
 
 getDisplayY(): number
 
-Obtains the y-coordinate of the drag position relative to the upper left corner of the display.
+Obtains the y-coordinate of the drag point relative to the upper left corner of the screen.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -513,7 +513,7 @@ Obtains the y-coordinate of the drag position relative to the upper left corner 
 
 | Type  | Description                                           |
 | ------ | ----------------------------------------------- |
-| number | Y-coordinate of the drag position relative to the upper left corner of the display, in vp.|
+| number | Y-coordinate of the drag point relative to the upper left corner of the screen, in vp.|
 
 ### getModifierKeyState<sup>12+</sup>
 
@@ -549,7 +549,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 
 startDataLoading(options: DataSyncOptions): string
 
-Asynchronously obtains drag data and notifies you of the current data synchronization progress. This API is only supported during the **onDrop** phase.
+Asynchronously obtains drag data and notifies you of the current data synchronization progress. This API is only supported in the **onDrop** callback.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -590,13 +590,13 @@ Sets the execution function of the custom drop animation. This parameter is vali
 
 | Name   | Type | Mandatory| Description     |
 | ------ | ------ | --- | --------- |
-| customDropAnimation | [Callback\<void\>](../../../reference/apis-basic-services-kit/js-apis-base.md#callback)  | Yes|Implement the custom drop animation in this callback function.<br> **NOTE**<br>1. This API is valid only in the onDrop callback.<br> 2. Before using this API, set useCustomDropAnimation to true. Otherwise, this API does not take effect.<br> 3. Do not implement logic unrelated to the animation in the animation callback to avoid affecting performance.|
+| customDropAnimation | [Callback\<void\>](../../../reference/apis-basic-services-kit/js-apis-base.md#callback)  | Yes|Custom drop animation in this callback.<br> **NOTE**<br>1. This API is valid only in the **onDrop** callback.<br> 2. Before using this API, set **useCustomDropAnimation** to **true**. Otherwise, this API does not take effect.<br> 3. Do not implement logic unrelated to the animation in the animation callback to avoid affecting performance.|
 
 ### getDisplayId<sup>20+</sup>
 
 getDisplayId(): number
 
-Obtains the ID of the screen where the current drag event occurs. This method is not supported in the [onDragEnd](ts-universal-events-drag-drop.md#ondragend10) phase.
+Obtains the ID of the screen where the current drag event occurs. This API is not supported in the [onDragEnd](ts-universal-events-drag-drop.md#ondragend10) callback.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -660,7 +660,7 @@ Sets the parameters for deferred data loading from the drag source. This API pro
 
 getX(): number
 
-Obtains the x-coordinate of the drag position relative to the upper left corner of the window, in vp.
+Obtains the x-coordinate of the drag point relative to the upper left corner of the window, in vp.
 
 > **NOTE**
 >
@@ -672,13 +672,13 @@ Obtains the x-coordinate of the drag position relative to the upper left corner 
 
 | Type  | Description                                               |
 | ------ | --------------------------------------------------- |
-| number | X-coordinate of the drag position relative to the upper left corner of the window.<br>Unit: vp.|
+| number | X-coordinate of the drag point relative to the upper left corner of the window.<br>Unit: vp.|
 
 ### getY<sup>(deprecated)</sup>
 
 getY(): number
 
-Obtains the y-coordinate of the drag position relative to the upper left corner of the window, in vp.
+Obtains the y-coordinate of the drag point relative to the upper left corner of the window, in vp.
 
 > **NOTE**
 >
@@ -690,13 +690,13 @@ Obtains the y-coordinate of the drag position relative to the upper left corner 
 
 | Type  | Description                                               |
 | ------ | --------------------------------------------------- |
-| number | Y-coordinate of the drag position relative to the upper left corner of the window.<br>Unit: vp.|
+| number | Y-coordinate of the drag point relative to the upper left corner of the window.<br>Unit: vp.|
 
 ### getGlobalDisplayX<sup>20+</sup>
 
 getGlobalDisplayX(): number
 
-Obtains the x-coordinate of the drag position relative to the upper left corner of the global display.
+Obtains the x-coordinate of the drag point relative to the upper left corner of the global screen.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -706,13 +706,13 @@ Obtains the x-coordinate of the drag position relative to the upper left corner 
 
 | Type  | Description                                               |
 | ------ | --------------------------------------------------- |
-| number | X-coordinate of the drag position relative to the upper left corner of the global display.<br>Unit: vp. Value range: [0, +∞)|
+| number | X-coordinate of the drag point relative to the upper left corner of the global screen.<br>Unit: vp. Value range: [0, +∞)|
 
 ### getGlobalDisplayY<sup>20+</sup>
 
 getGlobalDisplayY(): number
 
-Obtains the y-coordinate of the drag position relative to the upper left corner of the global display.
+Obtains the y-coordinate of the drag point relative to the upper left corner of the global screen.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -722,11 +722,11 @@ Obtains the y-coordinate of the drag position relative to the upper left corner 
 
 | Type  | Description                                               |
 | ------ | --------------------------------------------------- |
-| number | Y-coordinate of the drag position relative to the upper left corner of the global display.<br>Unit: vp. Value range: [0, +∞)|
+| number | Y-coordinate of the drag point relative to the upper left corner of the global screen.<br>Unit: vp. Value range: [0, +∞)|
 
 ## DragResult<sup>10+</sup>
 
-Defines the result of the drag operation and the selection status of the component.
+Defines the result of a drag operation and the drop‑selection state of a component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -734,15 +734,15 @@ Defines the result of the drag operation and the selection status of the compone
 
 | Name  | Value| Description|
 | ----- | -- | --------------- |
-| DRAG_SUCCESSFUL | 0 |The drag is successful. This parameter is used in [onDrop](#ondrop).|
-| DRAG_FAILED | 1 |The drag fails. This parameter is used in [onDrop](#ondrop).|
-| DRAG_CANCELED | 2 |The drag is canceled. This parameter is used in [onDrop](#ondrop).|
-| DROP_ENABLED | 3 |The component can be dropped. This parameter is used in [onDragEnter](#ondragenter), [onDragMove](#ondragmove), and [onDragLeave](#ondragleave).|
-| DROP_DISABLED | 4 |The component cannot be dropped. This parameter is used in [onDragEnter](#ondragenter), [onDragMove](#ondragmove), and [onDragLeave](#ondragleave).|
+| DRAG_SUCCESSFUL | 0 |The drag is successful. This value applies to [onDrop](#ondrop).|
+| DRAG_FAILED | 1 |The drag fails. This value applies to [onDrop](#ondrop).|
+| DRAG_CANCELED | 2 |The drag is canceled. This value applies to [onDrop](#ondrop).|
+| DROP_ENABLED | 3 |The component allows dropping. This value applies to [onDragEnter](#ondragenter), [onDragMove](#ondragmove), and [onDragLeave](#ondragleave).|
+| DROP_DISABLED | 4 |The component does not allow dropping. This value applies to [onDragEnter](#ondragenter), [onDragMove](#ondragmove), and [onDragLeave](#ondragleave).|
 
 ## DragBehavior<sup>10+</sup>
 
-Describes the drag behavior. When [DragResult](#dragresult10) is set to **DROP_ENABLED**, you can define **DragBehavior** as either **COPY** or **MOVE**. When DragBehavior is set to COPY, the corner mark of the dragged object displays a plus sign (+). When DragBehavior is set to MOVE, the corner mark of the dragged object does not display a plus sign (+). **DragBehavior** is used to indicate the intended way of handling data (either copy or move) without governing the actual data processing. This behavior is reported back to the drag source through **onDragEnd**, enabling the drag initiator to distinguish whether the operation results in a copy or a move of the data.
+Describes the drag behavior. When [DragResult](#dragresult10) is set to **DROP_ENABLED**, you can define **DragBehavior** as either **COPY** or **MOVE**. When **DragBehavior** is set to **COPY**, a plus sign will be displayed in the badge of the dragged object. When **DragBehavior** is set to **MOVE**, the plus sign will not be displayed. **DragBehavior** is used to indicate the intended way of handling data (either copy or move) without governing the actual data processing. This behavior is reported back to the drag source through **onDragEnd**, enabling the drag initiator to distinguish whether the operation results in a copy or a move of the data.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -755,7 +755,7 @@ Describes the drag behavior. When [DragResult](#dragresult10) is set to **DROP_E
 
 ## PreDragStatus<sup>12+</sup>
 
-Defines the status of each phase before the drag gesture is triggered.
+Defines the states before the drag gesture is triggered.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -845,7 +845,7 @@ Defines a callback for drag events.
 
 ## DropOptions<sup>15+</sup>
 
-Provides parameters for the drop process.
+Sets parameters for the drop process.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -853,7 +853,7 @@ Provides parameters for the drop process.
 
 | Name    | Type | Read-Only| Optional| Description          |
 | ------ | ------ | ---------------- | ------ | ------ |
-| disableDataPrefetch | boolean  | No | Yes | Whether to disable data prefetching for the drop and drop operation. The value **true** means to disable data prefetching for the drop and drop operation, and **false** means the opposite. Default value: **false**.<br>**NOTE**<br> Set this parameter to **true** when using [startDataLoading](#startdataloading15) to enable data prefetching.|
+| disableDataPrefetch | boolean  | No | Yes | Whether to disable data prefetching for the drag-and-drop operation. The value **true** means to disable data prefetching for the drag-and-drop operation, and **false** means the opposite. Default value: **false**.<br>**NOTE**<br> Set this parameter to **true** when using [startDataLoading](#startdataloading15) to enable data prefetching.|
 
 ## DragSpringLoadingConfiguration<sup>20+</sup>
 
@@ -873,7 +873,7 @@ Defines the configuration parameters for drag hover detection.
 
 type SpringLoadingContext = SpringLoadingContext
 
-Defines the callback context information, which is passed to the application in the hover detection callback to allow the application to access the drag status.
+Defines callback context information, which is passed to the application in the hover detection callback to allow the application to access the drag status.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -881,13 +881,13 @@ Defines the callback context information, which is passed to the application in 
 
 | Type| Description|
 | ----- | ----------------- |
-| [SpringLoadingContext](../js-apis-arkui-dragController.md#springloadingcontext20) | Defines the callback context information, which is passed to the application in the hover detection callback so that the application can access the drag status.|
+| [SpringLoadingContext](../js-apis-arkui-dragController.md#springloadingcontext20) | Callback context information, which is passed to the application in the hover detection callback to allow the application to access the drag status.|
 
 ## Example
 
 ### Example 1: Setting Draggable and Droppable Areas
 
-This example demonstrates the setup for draggable and droppable areas for certain components, such as **Image** and **Text**.
+This example demonstrates how to set draggable and droppable areas for certain components, such as **Image** and **Text**.
 
 ```ts
 // xxx.ets
@@ -917,7 +917,7 @@ struct Index {
     }
   }
 
-  // Obtain Udmf data.
+  // Obtain UDMF data.
   getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void) {
     try {
       let data: UnifiedData = event.getData();
@@ -936,7 +936,7 @@ struct Index {
     }
   }
 
-  // Automatically retry after the first failure to obtain UDMF data
+  // Automatically retry after the first failure to obtain UDMF data.
   getDataFromUdmf(event: DragEvent, callback: (data: DragEvent) => void) {
     if (this.getDataFromUdmfRetry(event, callback)) {
       return;
@@ -946,7 +946,7 @@ struct Index {
     }, 1500);
   }
 
-  // Change the background color based on the stage before drag and drop
+  // Change the background color based on the state before drag.
   private PreDragChange(preDragStatus: PreDragStatus): void {
     if (preDragStatus == PreDragStatus.READY_TO_TRIGGER_DRAG_ACTION) {
       this.backGroundColor = Color.Red;
@@ -1090,7 +1090,7 @@ struct Index {
 
 ### Example 2: Implementing a Custom Drop Animation
 
-From API version 18, this example demonstrates how to implement a drop animation by customizing the [executeDropAnimation](#executedropanimation18) API.
+In API version 18 and later versions, this example demonstrates how to implement a drop animation by using the custom API [executeDropAnimation](#executedropanimation18).
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 
@@ -1149,7 +1149,7 @@ struct DropAnimationExample {
         .margin({ left: 15 })
         .border({ color: Color.Black, width: 1 })
         .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
-        // onDrop callback, which is used to obtain the information and size of the dragged image, update the display, and enable and execute the custom drop animation.
+        // onDrop callback, which is used to obtain the information (size included ) of the dragged image, update the display, and enable and execute the custom drop animation.
         .onDrop((dragEvent: DragEvent) => {
           let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData().getRecords();
           let rect: Rectangle = dragEvent.getPreviewRect();
@@ -1173,7 +1173,7 @@ struct DropAnimationExample {
 
 ### Example 3: Obtaining Data Asynchronously Through Drag-and-Drop
 
-From API version 15, this example shows how to obtain data asynchronously through drag-and-drop by using [startDataLoading](#startdataloading15).
+In API version 15 and later versions, this example shows how to obtain data asynchronously through drag-and-drop by using the [startDataLoading](#startdataloading15) API.
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
@@ -1246,12 +1246,12 @@ struct ImageExample {
             let progressListener: unifiedDataChannel.DataProgressListener =
               (progress: unifiedDataChannel.ProgressInfo, dragData: UnifiedData | null) => {
                 if (dragData != null) {
-                  // Obtain the data record array.
+                  // Obtain the data array.
                   let arr: Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
                   if (arr.length > 0) {
                     // Check whether the first record is of the IMAGE type.
                     if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.IMAGE) {
-                      // If the type matches, record the data URI.
+                      // If the type matches, record the URI.
                       let image = arr[0] as unifiedDataChannel.Image;
                       this.uri = image.imageUri;
                       this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
@@ -1300,7 +1300,7 @@ struct ImageExample {
 ```
 ### Example 4: Obtaining the Screen ID for the Drag Event
 
-From API version 20, this example shows how to obtain the drag event by using the onDragXXX (not onDragEnd) API and obtain the screen ID by calling the [getDisplayId](#getdisplayid20) API in the drag event.
+In API version 20 and later versions, this example shows how to obtain the drag event by calling the onDrag*XXX* (not **onDragEnd**) API and obtain the screen ID by calling the [getDisplayId](#getdisplayid20) API in the drag event.
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
@@ -1479,7 +1479,7 @@ struct Index {
 
 ### Example 5: Obtaining the Package Name and Cross-Device Status
 
-From API version 20, this example shows how to obtain the drag event through the onDragXXX API, obtain the package name by calling the [getDragSource](#getdragsource20) API in the drag event, and obtain the cross-device status by calling the isRemote API.
+In API version 20 and later versions, this example shows how to obtain the drag event by calling the onDrag*XXX* API, obtain the package name by calling the [getDragSource](#getdragsource20) API in the drag event, and obtain the cross-device status by calling the **isRemote** API.
 
 ```ts
 @Entry
@@ -1561,7 +1561,7 @@ struct Index {
 
 ### Example 6: Implementing Hover Detection Support
 
-From API version 20, this example demonstrates how to register a callback via the [onDragSpringLoading](#ondragspringloading20) API and obtain the context (current status and notification sequence) via the [SpringLoadingContext](#springloadingcontext20) API.
+In API version 20 and later versions, this example demonstrates how to register a callback by calling the [onDragSpringLoading](#ondragspringloading20) API and obtain the context (current status and notification sequence) by calling the [SpringLoadingContext](#springloadingcontext20) API.
 
 ```ts
 // xxx.ets
@@ -1645,7 +1645,7 @@ struct Index {
 
 ### Example 7: Delaying Data Provision from the Drag Source
 
-From API version 20, this example shows how to call [setDataLoadParams](#setdataloadparams20) in [onDragStart](#ondragstart) to delay data provision and call [startDataLoading](#startdataloading15) in [onDrop](#ondrop) to asynchronously obtain data.
+In API version 20 and later versions, this example shows how to call [setDataLoadParams](#setdataloadparams20) in [onDragStart](#ondragstart) to delay data provision and call [startDataLoading](#startdataloading15) in [onDrop](#ondrop) to asynchronously obtain data.
 
 ```ts
 import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';

@@ -458,6 +458,7 @@ getSync(id: string, options?: SnapshotOptions): image.PixelMap
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
 
 > **说明：**
 > 
@@ -743,3 +744,4 @@ struct SnapshotExample {
     }.width("100%").align(Alignment.Center)
   }
 }
+```

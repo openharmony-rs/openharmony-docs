@@ -685,7 +685,7 @@ Compiles a JavaScript code snippet and returns the compiled script.
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the input data is a null pointer.         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_CANNOT_RUN_JS](capi-jsvm-types-h.md#jsvm_status): JS execution failed.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_CompileScriptWithOrigin()
 
@@ -717,7 +717,7 @@ Compiles a JavaScript code snippet that contains source map information and retu
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the input data is a null pointer.         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure.<br>         [JSVM_CANNOT_RUN_JS](capi-jsvm-types-h.md#jsvm_status): JS execution failed.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_CompileScriptWithOptions()
 
@@ -2210,7 +2210,7 @@ Obtains the properties of a typed array. If any property is not required, its ou
 | -- | -- |
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) typedarray | **TypedArray** whose properties are to be queried.|
-| [JSVM_TypedarrayType](capi-jsvm-types-h.md#jsvm_typedarraytype)* type | Pointer to the scalar data type of an element in TypedArray.|
+| [JSVM_TypedarrayType](capi-jsvm-types-h.md#jsvm_typedarraytype)* type | Pointer to the scalar data type of an element in **TypedArray**.|
 | size_t* length | Pointer to the number of elements in **TypedArray**.|
 | void** data | Double pointer to the first element in **TypedArray**. The underlying data buffer of the **TypedArray** is adjusted by **byte_offset** so that it points to the first element. If the array length is **0**, **data** may be NULL or any other pointer value.|
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* arraybuffer | Pointer to the **ArrayBuffer** under **TypedArray**.|
@@ -3035,7 +3035,7 @@ Provides a behavior similar to calling the strict equality algorithm (===).
 | -- | -- |
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) lhs | JavaScript value to be checked.|
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) rhs | Another JavaScript value to be checked.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) rhs | JavaScript value to be checked.|
 | bool* result | Pointer to the check result. The value **true** indicates that two **JSVM_Value** objects are strictly equal, and **false** indicates the opposite.|
 
 **Returns**
@@ -3063,7 +3063,7 @@ Provides a behavior similar to calling the loose equality algorithm (==). Regard
 | -- | -- |
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) lhs | JavaScript value to be checked.|
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) rhs | Another JavaScript value to be checked.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) rhs | JavaScript value to be checked.|
 | bool* result | Pointer to the check result. The value **true** indicates that two **JSVM_Value** objects are loosely equal, and **false** indicates the opposite.|
 
 **Returns**
@@ -3284,7 +3284,7 @@ Deletes the **key** property from the object.
 | Name| Description|
 | -- | -- |
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Target object.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object to be checked.|
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) key | Name of the property to be deleted.|
 | bool* result | Pointer to the operation result. The value **true** indicates that the property deletion is successful, and **false** indicates the opposite. **result** can be ignored by passing **NULL** to it.|
 
@@ -3508,7 +3508,7 @@ Deletes the element at the specified index from an object.
 | Name| Description|
 | -- | -- |
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Target object.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object to be checked.|
 | uint32_t index | Index of the element to be deleted.|
 | bool* result | Pointer to the operation result. The value **true** indicates that the element deletion is successful, and **false** indicates the opposite.|
 
