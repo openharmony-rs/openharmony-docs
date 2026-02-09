@@ -614,7 +614,7 @@ console.info(buf.toString('hex'));
 
 ## buffer.from
 
-from(arrayBuffer: ArrayBuffer \| SharedArrayBuffer, byteOffset?: number, length?: number): Buffer
+from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?: number): Buffer
 
 创建与`arrayBuffer`共享内存的指定长度的Buffer对象。
 
@@ -632,7 +632,7 @@ from(arrayBuffer: ArrayBuffer \| SharedArrayBuffer, byteOffset?: number, length?
 | -------- | -------- | -------- | -------- |
 | arrayBuffer | ArrayBuffer&nbsp;\|&nbsp;SharedArrayBuffer | 是 | 实例对象。 |
 | byteOffset | number | 否 | 字节偏移量，默认值：0。 |
-| length | number | 否 | 字节长度， 默认值:（arrayBuffer.byteLength - byteOffset）。 |
+| length | number | 否 | 字节长度， 默认值:（arrayBuffer.byteLength - byteOffset）。在传入null时字节长度为0。 |
 
 **返回值：**
 
@@ -1269,7 +1269,7 @@ for (let value of pair) {
            buffer: 3,102
            buffer: 4,101
            buffer: 5,114
-  */
+   */
 }
 ```
 
@@ -1539,7 +1539,7 @@ for (const key of numbers) {
            3
            4
            5
-  */
+   */
 }
 ```
 
@@ -2993,7 +2993,7 @@ ArkTS-Sta：subarray(start?: int, end?: int): Buffer
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | start | ArkTS-Dyn：number <br> ArkTS-Sta：int | 否 | 截取开始位置。默认值：0。 |
-| end | ArkTS-Dyn：number <br> ArkTS-Sta：int | 否 |  截取结束位置（不包含结束位置）。默认值：当前对象的字节长度。 |
+| end | ArkTS-Dyn：number <br> ArkTS-Sta：int | 否 |  截取结束位置（不包含结束位置）。默认值：当前对象的字节长度。 ArkTS-Dyn：在传入null时返回空Buffer。|
 
 **返回值：**
 
@@ -3330,7 +3330,7 @@ for (let value of pair) {
            buffer: 102
            buffer: 101
            buffer: 114
-  */
+   */
 }
 ```
 
