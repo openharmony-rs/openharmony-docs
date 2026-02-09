@@ -165,7 +165,7 @@
    }
    ```
 
-完整示例如下。
+完整示例如下。  
 
 <!-- @[animator_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template3/Index.ets) -->
 
