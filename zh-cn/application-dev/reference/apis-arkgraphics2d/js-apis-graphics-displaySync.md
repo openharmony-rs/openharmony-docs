@@ -21,7 +21,7 @@ create(): DisplaySync
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -42,7 +42,7 @@ let backDisplaySync: displaySync.DisplaySync = displaySync.create();
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 类型                                      | 只读 | 可选 | 说明                                       |
 | ---------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------ |
@@ -65,7 +65,7 @@ setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange) : void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -102,7 +102,7 @@ on(type: 'frame', callback: Callback\<IntervalInfo\>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onFrame](#onframe22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFrame](#onframe23)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -127,7 +127,7 @@ let callback = (frameInfo: displaySync.IntervalInfo) => {
 backDisplaySync?.on("frame", callback)
 ```
 
-### onFrame()<sup>22+</sup>
+### onFrame()<sup>23+</sup>
 
 onFrame(callback: Callback\<IntervalInfo\>): void
 
@@ -139,7 +139,7 @@ onFrame(callback: Callback\<IntervalInfo\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -168,7 +168,7 @@ off(type: 'frame', callback\?: Callback\<IntervalInfo\>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offFrame](#offframe22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFrame](#offframe23)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -195,7 +195,7 @@ backDisplaySync?.on("frame", callback)
 backDisplaySync?.off("frame", callback)
 ```
 
-### offFrame()<sup>22+</sup>
+### offFrame()<sup>23+</sup>
 
 offFrame(callback\?: Callback\<IntervalInfo\>): void
 
@@ -207,7 +207,7 @@ offFrame(callback\?: Callback\<IntervalInfo\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -238,7 +238,7 @@ start(): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -306,7 +306,7 @@ stop(): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
