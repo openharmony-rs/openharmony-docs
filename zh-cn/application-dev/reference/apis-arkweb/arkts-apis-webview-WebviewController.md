@@ -2164,6 +2164,7 @@ runJavaScript(script: string, callback : AsyncCallback\<string>): void
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 17100003 | Invalid resource path or file type.                          |
 
 **示例：**
 
@@ -2314,6 +2315,7 @@ runJavaScript(script: string): Promise\<string>
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 17100003 | Invalid resource path or file type.                          |
 
 **示例：**
 
