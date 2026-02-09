@@ -41,7 +41,7 @@ Sets the types of data that can be dropped to the component. If **allowDrop** is
 
 | Name| Type                                                        | Mandatory| Description                                           |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| value  | Array\<[UniformDataType](#uniformdatatype)> \| null<sup>12+</sup> \| Array\<string><sup>23+</sup> | Yes  | Types of data that can be dropped to the component. Since API version 12, this parameter can be set to **null** to make the component reject all data types. Since API version 23, the custom data type Array\<string> can be set. The custom data type is a data type string defined by the application. There is no requirement on the string format, but the string cannot be the same as the UniformDataType standard format. You are advised to define the string in an easy-to-remember and easy-to-distinguish manner.|
+| value  | Array\<[UniformDataType](#uniformdatatype)> \| null<sup>12+</sup> \| Array\<string><sup>23+</sup> | Yes  | Types of data that can be dropped to the component. Since API version 12, this parameter can be set to **null** to make the component reject all data types. Starting from API version 23, this parameter can be set to an application-defined data type string array Array\<string> is supported. While there is no strict format requirement for the string, it should not duplicate the format of standard types in **UniformDataType**. You are advised to define them based on the principle of being easy to remember and distinguish.|
 
 **Return value**
 
@@ -148,6 +148,8 @@ Sets the preview image processing mode, badge count, and interaction behavior du
 | T | Current component.|
 
 ## DragPreviewOptions<sup>11+</sup>
+
+Preview image processing mode and badge count during dragging.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1139,43 +1141,44 @@ struct Index {
 }
 ```
 
+![sizeChangeEffect.gif](figures/sizeChangeEffect.gif)
 
 ### Example 12: Setting Dropping of a Custom Component
-In API version 23 and later, this example demonstrates the drag-and-drop dropping functionality for custom components by passing their type through the component's onDragStart interface and setting the target component's allowDrop property to allow dropping of that type.
+In API version 23 and later, this example demonstrates how to implement the drag-and-drop function for a custom component by passing a type through the component's [onDragStart](ts-universal-events-drag-drop.md#ondragstart) API and setting the target component's [allowDrop](#allowdrop) attribute to allow dropping of that type.
 ```ts
 import { unifiedDataChannel } from '@kit.ArkData';
 
 @Entry
 @Component
 struct CustomExample {
-  // Store information about the placed component.
+  // Store information about dropped components.
   @State droppedItems: Array<string> = []
 
   build() {
     Column() {
       // Title.
-      Text ('Custom component dragged and dropped')
+      Text ('Custom Component Drag and Drop')
         .fontSize(25)
         .fontWeight(FontWeight.Bold)
         .margin(10)
 
-      // Container of the drag and drop areas.
+      // Container for the drag and drop area.
       Row() {
-        // Left - drag start area
+        // Left - Drag source area
         Column() {
           Text ('Drag source area')
             .fontSize(18)
             .fontWeight(FontWeight.Medium)
             .margin(10)
 
-          // Custom component (dragable)
-          CustomCard ({title:'Custom Card', color: Color.Blue})
+          // Custom component - dragable
+          CustomCard ({title:'Custom widget', color: Color.Blue})
             .draggable(true)
             .onDragStart((event: DragEvent) => {
               // Construct data of the UnifiedData type.
               let customCardData : Record<string, string> = {
                 'uniformDataType' : 'custom.card',
-                'value':'Custom card'
+                'value':'Custom widget'
               }
               let unifiedRecord = new unifiedDataChannel.UnifiedRecord('custom.card', customCardData);
               let unifiedData = new unifiedDataChannel.UnifiedData(unifiedRecord);
@@ -1187,20 +1190,20 @@ struct CustomExample {
         .width('40%')
         .height(300)
 
-        // Right - Placement area
+        // Right - Drop area
         Column() {
-          Text ('Place area')
+          Text ('Drop area')
             .fontSize(18)
             .fontWeight(FontWeight.Medium)
             .margin(10)
 
-          // Place the content in the area.
+          // Drop area.
           if (this.droppedItems.length === 0) {
-            Text ('Drag the component here.')
+            Text ('Drop the component here.')
               .fontSize(16)
               .opacity(0.6)
           } else {
-            // Display the placed components.
+            // Display the dropped components.
             ForEach(this.droppedItems, (item: string) => {
               CustomCard({ title: item, color: Color.Blue })
             }, (item: string) => item)
@@ -1210,7 +1213,7 @@ struct CustomExample {
         .border({ color: '#ff0e0303', width: 1 })
         .width('40%')
         .height(300)
-        // Allowed type: string array
+        // Allowed drop types in string array format.
         .allowDrop(['custom.card'])
         .onDrop((event: DragEvent) => {
           console.info('setData onDrop success');
@@ -1229,7 +1232,7 @@ struct CustomExample {
       .height('70%')
 
       // Operation description
-      Text ('Operation description: Touch and hold a card on the left and drag it to the area on the right.')
+      Text ('Operation description: Touch and hold a widget on the left and drag it to the area on the right.')
         .fontSize(14)
         .opacity(0.7)
         .margin(10)
@@ -1240,10 +1243,10 @@ struct CustomExample {
   }
 }
 
-// Customize a card component.
+// Custom widget.
 @Component
 struct CustomCard {
-  title: string ='Default title'
+  title: string ='Default Title'
   color: Color = Color.Gray
 
   build() {

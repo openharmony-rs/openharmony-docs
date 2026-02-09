@@ -47,7 +47,6 @@ enabled(value: boolean): T
 @Entry
 @Component
 struct EnabledExample {
-
   build() {
     Flex({ justifyContent: FlexAlign.SpaceAround }) {
       // 点击时无响应

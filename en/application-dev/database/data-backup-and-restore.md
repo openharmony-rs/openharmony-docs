@@ -280,6 +280,8 @@ import { relationalStore } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { hilog } from '@kit.PerformanceAnalysisKit'
+import { UIContext } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 ```
 
 
@@ -287,8 +289,9 @@ import { hilog } from '@kit.PerformanceAnalysisKit'
 <!-- @[backupManually](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
 ``` TypeScript
+/* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
+const context = new UIContext().getHostContext() as common.UIAbilityContext;
 let store: relationalStore.RdbStore | undefined = undefined;
-let context = getContext();
 const STORE_CONFIG: relationalStore.StoreConfig = {
   name: 'RdbTest.db',
   securityLevel: relationalStore.SecurityLevel.S3
@@ -370,7 +373,8 @@ If **allowRebuild** in **StoreConfig** is not set or is set to **false**, set **
 
 ``` TypeScript
 let store: relationalStore.RdbStore | undefined = undefined;
-let context = getContext();
+/* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
+const context = new UIContext().getHostContext() as common.UIAbilityContext;
 try {
   const STORE_CONFIG: relationalStore.StoreConfig = {
     name: 'RdbTest.db',
@@ -415,7 +419,7 @@ The following example contains only the code snippet for the restore process. Th
             /* ...
                Logic for adding, deleting, and modifying data.
                ...
-            */
+             */
             // Throw an exception.
             if (resultSet?.rowCount == -1) {
               resultSet?.isColumnNull(0);
@@ -464,7 +468,8 @@ The following example contains only the code snippet for the restore process. Th
     
     ``` TypeScript
     let store: relationalStore.RdbStore | undefined = undefined;
-    let context = getContext();
+    /* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
+    const context = new UIContext().getHostContext() as common.UIAbilityContext;
     let STORE_CONFIG: relationalStore.StoreConfig = {
       name: 'RdbTest.db',
       securityLevel: relationalStore.SecurityLevel.S3,

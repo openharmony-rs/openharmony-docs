@@ -26,6 +26,7 @@ The file declares the basic concepts of the camera.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
+| [Camera_DeviceQueryInfo](capi-oh-camera-camera-devicequeryinfo.md) | Camera_DeviceQueryInfo | Describes the camera device query information.|
 | [Camera_Size](capi-oh-camera-camera-size.md) | Camera_Size | Describes the parameters related to the size.|
 | [Camera_Profile](capi-oh-camera-camera-profile.md) | Camera_Profile | Describes the profile of a camera stream.|
 | [Camera_FrameRateRange](capi-oh-camera-camera-frameraterange.md) | Camera_FrameRateRange | Describes the frame rate range.|
@@ -48,6 +49,7 @@ The file declares the basic concepts of the camera.
 | [Camera_AutoDeviceSwitchStatusInfo](capi-oh-camera-camera-autodeviceswitchstatusinfo.md) | Camera_AutoDeviceSwitchStatusInfo | Describes the automatic device switching status information.|
 | [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md) | Camera_ConcurrentInfo | Describes the camera's concurrency information.|
 | [Camera_ControlCenterStatusInfo](capi-oh-camera-camera-controlcenterstatusinfo.md) | Camera_ControlCenterStatusInfo | Describes the effect status information of a camera controller.|
+| [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md) | Camera_OcclusionDetectionResult | Describes the check result for whether a camera lens is blocked or dirty.|
 | [Camera_Manager](capi-oh-camera-camera-manager.md) | Camera_Manager | Describes the camera manager.<br> You can call [OH_Camera_GetCameraManager](#oh_camera_getcameramanager) to create such an object.|
 
 ### Enums
@@ -116,7 +118,7 @@ Enumerates the camera error codes.
 | CAMERA_DEVICE_DISABLED = 7400108 | The camera is disabled for security reasons.|
 | CAMERA_DEVICE_PREEMPTED = 7400109 | The camera is preempted.|
 | CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 | The configuration conflicts with the current configuration.<br>**Since**: 12|
-| CAMERA_SERVICE_FATAL_ERROR = 7400201 | The camera service is abnormal, for example, no camera permission, camera service restart, or abnormal cross-process invocation.|
+| CAMERA_SERVICE_FATAL_ERROR = 7400201 | A fatal error occurs in the camera service, for example, no camera permission, camera service restart, or abnormal cross-process invocation.|
 
 ### Camera_Status
 
@@ -230,6 +232,7 @@ Enumerates the camera output formats.
 | CAMERA_FORMAT_JPEG = 2000 | JPEG.|
 | CAMERA_FORMAT_YCBCR_P010 = 2001 | YCBCR P010.<br>**Since**: 12|
 | CAMERA_FORMAT_YCRCB_P010 = 2002 | YCRCB P010.<br>**Since**: 12|
+| CAMERA_FORMAT_HEIC = 2003 | HEIC.<br>**Since**: 23|
 
 ### Camera_FlashMode
 
@@ -247,7 +250,7 @@ Enumerates the flash modes.
 | -- | -- |
 | FLASH_MODE_CLOSE = 0 | The flash is off.|
 | FLASH_MODE_OPEN = 1 | The flash is on.|
-| FLASH_MODE_AUTO = 2 | The flash mode is auto.|
+| FLASH_MODE_AUTO = 2 | The flash is auto.|
 | FLASH_MODE_ALWAYS_OPEN = 3 | The flash is steady on.|
 
 ### Camera_ExposureMode
@@ -264,9 +267,10 @@ Enumerates the exposure modes.
 
 | Enum Item| Description|
 | -- | -- |
-| EXPOSURE_MODE_LOCKED = 0 | Exposure locked.|
-| EXPOSURE_MODE_AUTO = 1 | Auto exposure.|
-| EXPOSURE_MODE_CONTINUOUS_AUTO = 2 | Continuous auto exposure.|
+| EXPOSURE_MODE_LOCKED = 0 | Exposure locked. The metering point cannot be set.<br>After this mode is used, the exposure will be locked by default for each photo capture.|
+| EXPOSURE_MODE_AUTO = 1 | Auto exposure. The metering point can be set by calling [OH_CaptureSession_SetMeteringPoint](capi-capture-session-h.md#oh_capturesession_setmeteringpoint).<br>After this mode is used, it takes effect only for the first photo capture.|
+| EXPOSURE_MODE_CONTINUOUS_AUTO = 2 | Continuous auto exposure.<br>After this mode is used, the camera system automatically adjusts the exposure based on the environment changes each time.|
+
 
 ### Camera_FocusMode
 
@@ -339,14 +343,14 @@ Enumerates the image rotation angles.
 
 | Enum Item| Description|
 | -- | -- |
-| IAMGE_ROTATION_0 = 0 | The image rotates 0 degrees.<br> Starting from API version 22, the enumerated value [CAMERA_IMAGE_ROTATION_0](#camera_imagerotation) is recommended.|
-| CAMERA_IMAGE_ROTATION_0 = 0 | The image rotates 0 degrees.<br>**Since**: 22|
-| IAMGE_ROTATION_90 = 90 | The image rotates 90 degrees.<br> Starting from API version 22, the enumerated value [CAMERA_IMAGE_ROTATION_90](#camera_imagerotation) is recommended.|
-| CAMERA_IMAGE_ROTATION_90 = 90 | The image rotates 90 degrees.<br>**Since**: 22|
-| IAMGE_ROTATION_180 = 180 | The image rotates 180 degrees.<br> Starting from API version 22, the enumerated value [CAMERA_IMAGE_ROTATION_180](#camera_imagerotation) is recommended.|
-| CAMERA_IMAGE_ROTATION_180 = 180 | The image rotates 180 degrees.<br>**Since**: 22|
-| IAMGE_ROTATION_270 = 270 | The image rotates 270 degrees.<br> Starting from API version 22, the enumerated value [CAMERA_IMAGE_ROTATION_270](#camera_imagerotation) is recommended.|
-| CAMERA_IMAGE_ROTATION_270 = 270 | The image rotates 270 degrees.<br>**Since**: 22|
+| IAMGE_ROTATION_0 = 0 | The image rotates 0 degrees.<br> Since API version 23, you are advised to use the new enum value [CAMERA_IMAGE_ROTATION_0](capi-camera-h.md#camera_imagerotation) instead.|
+| CAMERA_IMAGE_ROTATION_0 = 0 | The image rotates 0 degrees.<br>**Since**: 23|
+| IAMGE_ROTATION_90 = 90 | The image rotates 90 degrees.<br> Since API version 23, you are advised to use the new enum value [CAMERA_IMAGE_ROTATION_90](capi-camera-h.md#camera_imagerotation) instead.|
+| CAMERA_IMAGE_ROTATION_90 = 90 | The image rotates 90 degrees.<br>**Since**: 23|
+| IAMGE_ROTATION_180 = 180 | The image rotates 180 degrees.<br> Since API version 23, you are advised to use the new enum value [CAMERA_IMAGE_ROTATION_180](capi-camera-h.md#camera_imagerotation) instead.|
+| CAMERA_IMAGE_ROTATION_180 = 180 | The image rotates 180 degrees.<br>**Since**: 23|
+| IAMGE_ROTATION_270 = 270 | The image rotates 270 degrees.<br> Since API version 23, you are advised to use the new enum value [CAMERA_IMAGE_ROTATION_270](capi-camera-h.md#camera_imagerotation) instead.|
+| CAMERA_IMAGE_ROTATION_270 = 270 | The image rotates 270 degrees.<br>**Since**: 23|
 
 ### Camera_QualityLevel
 
@@ -380,7 +384,9 @@ Enumerates the metadata object types.
 
 | Enum Item| Description|
 | -- | -- |
-| FACE_DETECTION = 0 | Metadata object used for face detection.|
+| FACE_DETECTION = 0 | Metadata object used for face detection.<br> Since API version 23, you are advised to use the new enum value [CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION](capi-camera-h.md#camera_metadataobjecttype) instead.|
+| CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION = 0 | Metadata object used for face detection.<br>**Since**: 23|
+| CAMERA_METADATA_OBJECT_TYPE_HUMAN_BODY = 1 | Metadata object used for body detection.<br>**Since**: 23|
 
 ### Camera_TorchMode
 
@@ -396,12 +402,12 @@ Enumerates the flashlight modes.
 
 | Enum Item| Description|
 | -- | -- |
-| OFF = 0 | The flashlight is always off.<br> Starting from API version 22, the enumerated value [CAMERA_TORCH_MODE_OFF](#camera_torchmode) is recommended.|
-| CAMERA_TORCH_MODE_OFF = 0 | The flashlight is always off.<br>**Since**: 22|
-| ON = 1 | The flashlight is always on.<br> Starting from API version 22, the enumerated value [CAMERA_TORCH_MODE_ON](#camera_torchmode) is recommended.|
-| CAMERA_TORCH_MODE_ON = 1 | The flashlight is always on.<br>**Since**: 22|
-| AUTO = 2 | The flashlight will be turned on automatically based on the ambient lighting level.<br> Starting from API version 22, the enumerated value [CAMERA_TORCH_MODE_AUTO](#camera_torchmode) is recommended.|
-| CAMERA_TORCH_MODE_AUTO = 2 | The flashlight will be turned on automatically based on the ambient lighting level.<br>**Since**: 22|
+| OFF = 0 | The flashlight is always off.<br> Since API version 23, you are advised to use the new enum value [CAMERA_TORCH_MODE_OFF](capi-camera-h.md#camera_torchmode) instead.|
+| CAMERA_TORCH_MODE_OFF = 0 | The flashlight is always off.<br>**Since**: 23|
+| ON = 1 | The flashlight is always on.<br> Since API version 23, you are advised to use the new enum value [CAMERA_TORCH_MODE_ON](capi-camera-h.md#camera_torchmode) instead.|
+| CAMERA_TORCH_MODE_ON = 1 | The flashlight is always on.<br>**Since**: 23|
+| AUTO = 2 | The flashlight will be turned on automatically based on the ambient lighting level.<br> Since API version 23, you are advised to use the new enum value [CAMERA_TORCH_MODE_AUTO](capi-camera-h.md#camera_torchmode) instead.|
+| CAMERA_TORCH_MODE_AUTO = 2 | The flashlight will be turned on automatically based on the ambient lighting level.<br>**Since**: 23|
 
 ### Camera_SmoothZoomMode
 
@@ -417,8 +423,8 @@ Enumerates the smooth zoom modes.
 
 | Enum Item| Description|
 | -- | -- |
-| NORMAL = 0 | Bessel curve mode.<br> Starting from API version 22, the enumerated value [CAMERA_SMOOTH_ZOOM_MODE_NORMAL](#camera_smoothzoommode) is recommended.|
-| CAMERA_SMOOTH_ZOOM_MODE_NORMAL = 0 | Bessel curve mode.<br>**Since**: 22|
+| NORMAL = 0 | Bessel curve mode.<br> Since API version 23, you are advised to use the new enum value [CAMERA_SMOOTH_ZOOM_MODE_NORMAL](capi-camera-h.md#camera_smoothzoommode) instead.|
+| CAMERA_SMOOTH_ZOOM_MODE_NORMAL = 0 | Bessel curve mode.<br>**Since**: 23|
 
 ### Camera_SystemPressureLevel
 
@@ -458,6 +464,7 @@ Enumerates the preconfigured photo resolution types.
 | PRECONFIG_1080P = 1 | 1080p resolution.|
 | PRECONFIG_4K = 2 | 4K resolution.|
 | PRECONFIG_HIGH_QUALITY = 3 | High-quality photos.|
+| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020 = 4 | Resolution that supports HDR preview and GIF photography.<br> **Since**: 23|
 
 ### Camera_PreconfigRatio
 
@@ -509,12 +516,12 @@ Enumerates the fold statuses.
 
 | Enum Item| Description|
 | -- | -- |
-| NON_FOLDABLE = 0 | Unfoldable.<br> Starting from API version 22, the enumerated value [CAMERA_FOLD_STATUS_NON_FOLDABLE](#camera_foldstatus) is recommended.|
-| CAMERA_FOLD_STATUS_NON_FOLDABLE = 0 | Unfoldable.<br>**Since**: 22|
-| EXPANDED = 1 | Unfolded.<br> Starting from API version 22, the enumerated value [CAMERA_FOLD_STATUS_EXPANDED](#camera_foldstatus) is recommended.|
-| CAMERA_FOLD_STATUS_EXPANDED = 1 | Unfolded.<br>**Since**: 22|
-| FOLDED = 2 | Folded.<br> Starting from API version 22, the enumerated value [CAMERA_FOLD_STATUS_FOLDED](#camera_foldstatus) is recommended.|
-| CAMERA_FOLD_STATUS_FOLDED = 2 | Folded.<br>**Since**: 22|
+| NON_FOLDABLE = 0 | Unfoldable.<br> Since API version 23, you are advised to use the new enum value [CAMERA_FOLD_STATUS_NON_FOLDABLE](capi-camera-h.md#camera_foldstatus) instead.|
+| CAMERA_FOLD_STATUS_NON_FOLDABLE = 0 | Unfoldable.<br>**Since**: 23|
+| EXPANDED = 1 | Unfolded.<br> Since API version 23, you are advised to use the new enum value [CAMERA_FOLD_STATUS_EXPANDED](capi-camera-h.md#camera_foldstatus) instead.|
+| CAMERA_FOLD_STATUS_EXPANDED = 1 | Unfolded.<br>**Since**: 23|
+| FOLDED = 2 | Folded.<br> Since API version 23, you are advised to use the new enum value [CAMERA_FOLD_STATUS_FOLDED](capi-camera-h.md#camera_foldstatus) instead.|
+| CAMERA_FOLD_STATUS_FOLDED = 2 | Folded.<br>**Since**: 23|
 
 ### Camera_QualityPrioritization
 
@@ -631,7 +638,7 @@ Obtains a Camera_Manager instance.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_Camera_DeleteCameraManager()
 
@@ -655,4 +662,4 @@ Deletes a Camera_Manager instance.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
