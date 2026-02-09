@@ -1399,7 +1399,7 @@ Worker线程自身的运行环境，GlobalScope类继承[WorkerEventTarget](#wor
 | ---- | ---- | ---- | ---- | ------------------ |
 | data | any  | 是   | 否   | 线程间传递的数据。 |
 
-## MessageType<sup>7+</sup>
+## MessageType
 
 type MessageType = 'message' | 'messageerror';
 
