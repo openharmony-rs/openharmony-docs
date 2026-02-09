@@ -126,7 +126,7 @@ Number of columns in the current grid layout. If this attribute is not set, one 
 
 When the value is of the string type, refer to [columnsTemplate(value: string)](#columnstemplate) for the usage.
 
-When the value is of the **ItemFillPolicy** type, the number of columns is determined based on the [breakpoint type](../../../ ui/arkts-layout-development-grid-layout.md#breakpoints) corresponding to the width of the **Grid** component.
+When the value is of the **ItemFillPolicy** type, the number of columns is determined based on the [breakpoint type](../../../ui/arkts-layout-development-grid-layout.md#breakpoints) corresponding to the width of the **Grid** component.
 
 For example, the **ItemFillPolicy.BREAKPOINT_DEFAULT** component displays two columns when the component width falls within the sm or smaller breakpoint range, three columns for the md breakpoint range, and five columns for the lg or larger breakpoint range, with each column being 1 fr.
 
@@ -686,9 +686,9 @@ This event is triggered when the user long presses a grid item.
 
 Drag gesture recognition is also initiated by a long press, and the event processing mechanism prioritizes child component events. Therefore, when the grid item is bound to the [LongPressGesture](ts-basic-gestures-longpressgesture.md#longpressgesture-1), it cannot be dragged. In light of this, if both long press and drag operations are required on the grid item, you can use the universal drag event.
 
-The floating grid element being dragged can move within the application window. If it is necessary to restrict its movement range, this can be achieved through custom gestures. For details, see [Example 16: Customizing the Drag Effect of GridItem](#example-16-customizing-the-drag-effect-of-griditem).
+The floating grid element being dragged can move within the application window. If it is necessary to restrict its movement range, this can be achieved through custom gestures. For details, see [Example 16: Customizing the Drag Effect for GridItem](#example-16-customizing-the-drag-effect-for-griditem).
 
-Automatic scrolling is not supported when a grid item is dragged to the edge of the grid. You can use the universal drag event to implement this function. For details, see [Example 17: Dragging GridItem Components with Drag Events](#example-17-dragging-griditem-components-with-drag-events). 
+Automatic scrolling is not supported when a grid item is dragged to the edge of the grid. You can use the universal drag event to implement this function. For details, see [Example 17: Dragging GridItem Components with Drag Events](#example-17-dragging-grid-items-with-drag-events). 
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2536,7 +2536,7 @@ struct GridExample {
 }
 ```
 
-![gridScrollWithPanGesture](figures/gridScrollWithPanGesture.gif)
+
 
 ### Example 16: Customizing the Drag Effect for GridItem
 
@@ -3028,7 +3028,7 @@ struct GridExample {
   }
 }
 ```
-![gridContentSize](figures/gridContentSize.gif)
+
 
 ### Example 20: Setting the Multi-selection Gather Animation
 
