@@ -48,7 +48,7 @@ import { Touch , SwipeInward } from '@kit.InputKit';
 | PINCH_OPENED | 5   | 多指张开。       |
 | GESTURE_END | 6   | 手势结束。       |
 
-## SwipeInward<sup>12+</sup>
+## SwipeInward
 
 向内滑动事件。
 
