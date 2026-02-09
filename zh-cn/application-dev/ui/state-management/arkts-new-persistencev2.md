@@ -178,7 +178,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
 5、在API version 23以前，持久化的数据必须是class对象，不支持容器类型（如Array、Set、Map），不支持built-in的构造对象（如String、Number），不支持持久化基本类型（如string、number、boolean）。如果需要持久化非class对象，建议使用[Preferences](../../database/preferences-guidelines.md)进行数据持久化。
 
-- 在API version 23开始，支持持久化Class类型和容器类型（Array、Set、Map，Date）。支持built-in的构造对象类型（如String、Number）及基本类型（如string、number、boolean）作为class属性的持久化（String、Number是不可变的数据对象，没法直接作为[顶层数据类型](#globalconnect顶层持久化数据类型及非顶层数据类型)进行持久化）。
+- 在API version 23开始，支持持久化Class类型和容器类型（Array、Set、Map，Date）。支持built-in的构造对象类型（如String、Number）及基本类型（如string、number、boolean）作为class属性的持久化（String、Number是不可变的数据对象，没法直接作为[顶层数据类型](#globalconnect顶层持久化数据类型及非顶层数据类型)进行持久化）。对于不支持的类型，会抛出运行时报错，从API version 23开始，将返回错误码[140103](../../reference/apis-arkui/errorcode-stateManagement.md#140103-appstoragev2和persistencev2使用不支持的数据类型)。
 
    如下为新增globalConnect支持`Array<ClassA>`类型的持久化示例：
 
@@ -374,7 +374,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
 7、只有[\@Trace](./arkts-new-observedV2-and-trace.md)的数据改变会触发自动持久化，如V1状态变量、[\@Observed](./arkts-observed-and-objectlink.md)对象、普通数据的改变不会触发持久化。
 
-8、connect和globalConnect不建议混用，如果混用，key不能一样，否则应用crash。
+8、connect和globalConnect不建议混用，如果混用，key不能一样，否则应用crash，从API version 23开始，将返回错误码[140105](../../reference/apis-arkui/errorcode-stateManagement.md#140105-persistencev2混用connect和globalconnect并使用相同的key)。
 
 9、PersistenceV2必须与UI实例关联，持久化操作需在UI实例初始化完成后调用（即[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)回调触发后）。
 ```ts
@@ -400,6 +400,10 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 ```
 
 10、如果开发者对数据持久化能力有较强的诉求，例如持久化时机，建议使用[Preferences](../../database/preferences-guidelines.md)进行数据持久化。注意：不允许混用PersistenceV2和Preferences，因为Preferences存储的数据不会有状态变量信息，反序列化的数据不能触发PersistenceV2的自动化存储。
+
+11、当开发者使用globalConnect持久化数据，从磁盘读取数据时，需要保证key数据在持久化前后类型一致，否则会抛出运行时异常，从API version 23开始，将返回错误码[140107](../../reference/apis-arkui/errorcode-stateManagement.md#140107-appstoragev2和persistencev2数据类型不匹配)。
+
+12、globalConnect仅支持设置EL1-EL5加密级别，否则会抛出运行时异常，从API version 23开始，将返回错误码[140106](../../reference/apis-arkui/errorcode-stateManagement.md#140106-使用persistencev2存储数据到不支持的加密级别)，示例见[使用globalConnect存储数据](#使用globalconnect存储数据)。
 
 ## globalConnect支持的类型
 
