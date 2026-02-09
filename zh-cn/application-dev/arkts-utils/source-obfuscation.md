@@ -1518,9 +1518,9 @@ Human
    <!-- @[optionExample_keepComments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->          
    
    ``` TypeScript
-   /*
-   * @class exportClass
-   */
+   /**
+    * @class exportClass
+    */
    export class exportClass {}
    ```
 
