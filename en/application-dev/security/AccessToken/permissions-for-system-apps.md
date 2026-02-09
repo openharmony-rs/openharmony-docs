@@ -5525,3 +5525,31 @@ With this permission, the application can call the API to acquire the local acco
 **Supported devices**: PC/2in1
 
 **Since**: 24
+
+## ohos.permission.GET_AGENT_CARD
+
+Allows a system application to obtain AgentCard information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: General
+
+**Since**: 24
+
+## ohos.permission.CONNECT_AGENT
+
+Allows a system application to connect to the Agent.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: General
+
+**Since**: 24

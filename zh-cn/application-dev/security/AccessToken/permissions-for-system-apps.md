@@ -5514,3 +5514,31 @@
 **支持设备**：PC/2in1
 
 **起始版本**：24
+
+## ohos.permission.GET_AGENT_CARD
+
+允许系统应用获取AgentCard信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：24
+
+## ohos.permission.CONNECT_AGENT
+
+允许系统应用连接智能体。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：24
