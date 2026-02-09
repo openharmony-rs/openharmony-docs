@@ -293,7 +293,7 @@ To enable an audio and video application to access the AVSession service as a pr
    Both fixed playback control commands and advanced playback control events can be listened for.
     
    6.1 Listen for fixed playback control commands.
-   > **NOTE**
+   > **NOTE**<br>
    > After the provider registers a listener for fixed playback control commands, the commands will be reflected in **getValidCommands()** of the controller. In other words, the controller determines that the command is valid and triggers the corresponding event (not used temporarily) as required. To ensure that the playback control commands delivered by the controller can be executed normally, the provider should not use a null implementation for listening.
 
    Fixed playback control commands on the session side include basic operation commands such as play, pause, previous, and next. For details, see [AVControlCommand](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avcontrolcommand10).
