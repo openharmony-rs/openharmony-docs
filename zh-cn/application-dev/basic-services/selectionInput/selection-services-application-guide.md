@@ -27,9 +27,9 @@
 
 1. 创建划词应用工程。
 
-    1.1 打开[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)，点击"File > New > Create Project"创建一个Empty Ability，设备类型勾选"Phone"、"Tablet"、"PC/2in1"
+    1.1 打开[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)，点击"File>New>Create Project"创建一个Empty Ability，设备类型勾选"PC/2in1"。
 
-    1.2 在工程对应的ets目录下，右键选择"New > Directory"，新建两个目录，分别命名为selectionextability、models。
+    1.2 在工程对应的ets目录下，右键选择"New>Directory"，新建两个目录，分别命名为selectionextability、models。
 
     1.3 在selectionextability目录下，新建`SelectionExtAbility.ets`文件；在models目录下，新建`SelectionModel.ets`文件；在目录pages下，新建两个page文件`MainPanel.ets`和`MenuPanel.ets`。目录如下：
 
@@ -50,6 +50,7 @@
     ![划词应用工程](figures/selection-application-project.png)
 
 2. 在[SelectionModel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/models/SelectionModel.ets)文件中，开发者可自定义划词模块管理类，用于统一管理划词内容、窗口等信息。并且实现一些get、set接口，便于信息的类间传递。
+
     ```ts
     import { selectionManager, SelectionExtensionContext } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -117,6 +118,7 @@
     ```
 
 3. 在[SelectionExtAbility.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets)文件中，开发者可实现扩展能力类。该类需要继承[SelectionExtensionAbility](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)，用于划词扩展生命周期的管理。
+
     ```ts
     import { selectionManager, SelectionExtensionAbility} from '@kit.BasicServicesKit';
     import { Want } from '@kit.AbilityKit';
@@ -150,12 +152,14 @@
         selectionManager.destroyPanel(this.panel_);
       }
     }
+
+    export default SelectionExtAbility;
     ```
     上述代码中，划词扩展被拉起时会触发[onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#onconnect)回调，可以在该回调中监听划词事件，完成划词窗口的创建、窗口内容的设定、窗口的移动、窗口的显示和隐藏等操作；当划词扩展退出时会触发[onDisconnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#ondisconnect)回调，可以在该回调中完成窗口销毁的操作。详细内容可参见下面第4步。
 
 
-4. 在划词扩展被拉起时，可以提前创建划词窗口（但不调用[show](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#show)接口），以缩短用户在第一次划词时的响应延迟。同时，可以在[onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#onconnect)中监听划词事件，执行后续的弹窗操作。通过监听[selectionCompleted](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanageronselectioncompleted)获取[SelectionInfo](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectioninfo)其中包含了划词操作的起始和结束坐标等信息。通过调用[getSelectionContent](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanagergetselectioncontent)接口获取划词内容。
-    <!--code_no_check-->
+4. 在划词扩展被拉起时，可以提前创建划词窗口（但不调用[show](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#show)接口），以缩短用户在第一次划词时的响应延迟。同时，可以在[onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#onconnect)中监听划词事件，执行后续的弹窗操作。通过监听[selectionCompleted](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanageronselectioncompleted)获取[SelectionInfo](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectioninfo)其中包含了划词操作的起始和结束坐标等信息。通过调用[getSelectionContent](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#getselectioncontent)接口获取划词内容。
+
     ```ts
     import { selectionManager, PanelInfo, PanelType, SelectionExtensionAbility, BusinessError } from '@kit.BasicServicesKit';
     import { SelectionModel } from '../models/SelectionModel';
@@ -164,7 +168,18 @@
     import { hilog } from '@kit.PerformanceAnalysisKit';
 
     class SelectionAbilityStub extends rpc.RemoteObject {
-      // ... 
+      constructor(des: string) {
+        super(des);
+      }
+
+      onRemoteMessageRequest(
+        code: number,
+        data: rpc.MessageSequence,
+        reply: rpc.MessageSequence,
+        options: rpc.MessageOption
+      ): boolean | Promise<boolean> {
+        return true;
+      }
     }
 
     class SelectionExtAbility extends SelectionExtensionAbility {
@@ -244,15 +259,12 @@
         })
       }
     }
-    ```
 
-5. 在[SelectionExtAbility.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets)文件末尾将扩展能力类导出，供项目中其他类引用。
-    ```ts
     export default SelectionExtAbility;
     ```
 
-6. 在[MenuPanel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets)文件中，开发者可根据业务内容自主实现菜单面板的显示效果，例如提供翻译、查询、扩写等按钮。并且可以通过绑定点击事件，弹出不同的主面板，以展示不同的内容。本示例仅提供了一个简单的点击按钮，用于展示如何弹出主面板。
-    <!--code_no_check-->
+5. 在[MenuPanel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets)文件中，开发者可根据业务内容自主实现菜单面板的显示效果，例如提供翻译、查询、扩写等按钮。并且可以通过绑定点击事件，弹出不同的主面板，以展示不同的内容。本示例仅提供了一个简单的点击按钮，用于展示如何弹出主面板。
+
     ```ts
     import { SelectionModel } from '../models/SelectionModel';
     import { selectionManager, PanelInfo, BusinessError, PanelType, SelectionExtensionContext } from '@kit.BasicServicesKit';
@@ -347,8 +359,8 @@
     }
     ```
 
-7. 在[MainPanel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MainPanel.ets)文件中，开发者可根据业务场景，自行实现主面板的显示效果。本示例仅提供了一个简单的展示划词内容的主面板，具体的业务侧功能需要开发者自行实现。
-    <!--code_no_check-->
+6. 在[MainPanel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MainPanel.ets)文件中，开发者可根据业务场景，自行实现主面板的显示效果。本示例仅提供了一个简单的展示划词内容的主面板，具体的业务侧功能需要开发者自行实现。
+
     ```ts
     import { SelectionModel } from '../models/SelectionModel';
     import { selectionManager } from '@kit.BasicServicesKit';
@@ -389,26 +401,24 @@
     }
     ```
 
-8. 配置[main_pages.json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/resources/base/profile/main_pages.json)文件。
+7. 配置[main_pages.json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/resources/base/profile/main_pages.json)文件。
 
-    在`src`字段中添加新增的`MainPanel`和`MenuPanel`页面。
+    在..\resources\base\profile\main_pages.json文件中的`src`字段中添加新增的`MainPanel`和`MenuPanel`页面。
 
-    ```json
+    ```json5
     "src": [
-        // ...
         "pages/MainPanel",
         "pages/MenuPanel"
     ]
     ```
 
-9.  配置[module.json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/module.json5)文件。
+8.  配置[module.json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/module.json5)文件。
 
     在`extensionAbilities`字段中配置划词扩展类文件路径。
 
     ```json
     {
       "module": {
-      // ...
         "extensionAbilities": [
           {
             "name": "SelectionExtAbility",
@@ -421,22 +431,7 @@
     }
     ```
 
-10. 在SDK的toolchains\modulecheck\module.json中添加划词扩展"selection"。
-
-    ```json
-    // ...
-    "type": {
-      "description": "Indicates the type of the extension.",
-      "type": "string",
-      "enum": [
-        // ...
-        "selection"   // 添加划词扩展类型
-      ]
-    }
-    // ...
-    ```
-
-11. 配置签名。
+9.  配置签名。
 
     点击[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)右上角的"Project Structure"按钮，点击"Signing Configs"按钮，按操作登录华为账号后会自动生成签名。
 

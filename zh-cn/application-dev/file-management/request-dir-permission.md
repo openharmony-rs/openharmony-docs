@@ -56,7 +56,7 @@
 
 
 
-2. 以 Download 目录为例，访问 Download 目录下的文件。
+2. 以Download目录为例，访问Download目录下的文件。
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -99,7 +99,7 @@
    ```
 
 
-3. 以 Download 目录为例，保存文件到 Download 目录。
+3. 以Download目录为例，保存文件到Download目录。
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -131,11 +131,11 @@
 
 ## 通过 C/C++ 接口获取并使用公共目录
 
-除了通过 ArkTS 访问公共目录的方式，也可通过 C/C++ 接口进行目录访问，具体可以参考 [oh_environment.h](../reference/apis-core-file-kit/capi-oh-environment-h.md)。
+除了通过ArkTS访问公共目录的方式，也可通过C/C++接口进行目录访问，具体可以参考 [oh_environment.h](../reference/apis-core-file-kit/capi-oh-environment-h.md)。
 
  **约束限制**
  - 使用此接口，需确认设备具有以下系统能力：SystemCapability.FileManagement.File.Environment.FolderObtain。
- - 三方应用需要访问公共目录时，需通过弹窗授权向用户申请授予 Download 目录权限、Documents 目录权限或 Desktop 目录权限，具体参考[访问控制-向用户申请授权](../security/AccessToken/request-user-authorization.md)。
+ - 三方应用需要访问公共目录时，需通过弹窗授权向用户申请授予Download目录权限、Documents目录权限或Desktop目录权限，具体参考[访问控制-向用户申请授权](../security/AccessToken/request-user-authorization.md)。
 
 ### 接口说明
 
@@ -165,7 +165,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 #include <hilog/log.h>
 ```
 
-1. 调用 OH_Environment_GetUserDownloadDir 接口获取用户 Download 目录沙箱路径，在接口中使用malloc申请的内存需要在使用完后释放因此需要free对应的内存。示例代码如下所示：
+1. 调用OH_Environment_GetUserDownloadDir接口获取用户Download目录沙箱路径，在接口中使用malloc申请的内存需要在使用完后释放因此需要free对应的内存。示例代码如下所示：
 
    ```c++
    #include <cstdlib>
@@ -188,7 +188,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    ```
 
 
-2. 调用 OH_Environment_GetUserDownloadDir 接口获取用户 Download 目录沙箱路径，并查看 Download 目录下的文件。示例代码如下所示：
+2. 调用OH_Environment_GetUserDownloadDir接口获取用户Download目录沙箱路径，并查看Download目录下的文件。示例代码如下所示：
 
    ```c++
    #include <cstdlib>
@@ -230,7 +230,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    ```
 
 
-3. 调用 OH_Environment_GetUserDownloadDir 接口获取用户 Download 目录沙箱路径，并保存 temp.txt 到 Download 目录下。示例代码如下所示：
+3. 调用OH_Environment_GetUserDownloadDir接口获取用户Download目录沙箱路径，并保存temp.txt到Download目录下。示例代码如下所示：
 
    ```c++
    #include <fstream>

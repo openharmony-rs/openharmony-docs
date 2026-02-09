@@ -4766,7 +4766,11 @@ Allows an application to install and uninstall fonts.
 
 **Enable via ACL**: true
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
 **Valid since**: 19
+
+**Changelog**: Since API version 23, this permission is also available on phones.
 
 ## ohos.permission.READ_PARENT_CONTROL_DATA
 
@@ -5518,7 +5522,7 @@ Allows a system application to manage the education space.
 
 **Supported devices**: tablets
 
-**Since**: 24
+**Since**: 23
 
 ## ohos.permission.QUERY_LOCAL_EDUCATION_SPACES
 
@@ -5531,5 +5535,21 @@ Allows a system application to query the education space properties.
 **Enable via ACL**: true
 
 **Supported devices**: tablets
+
+**Since**: 23
+
+## ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
+
+Allows an application to acquire the local account authorization.
+
+With this permission, the application can call the API to acquire the local account authorization. Once authorized, the application can handle sensitive tasks like creating or removing local accounts, modifying the local account type, and adjusting time and time zone settings.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: PC/2in1
 
 **Since**: 24

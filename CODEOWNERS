@@ -644,7 +644,7 @@ zh-cn/application-dev/device/driver/Readme-CN.md  @w00373942 @dong-dongzhen @hu-
 
 
 [开发-Form Kit]
-zh-cn/application-dev/form/  @HelloShuo @cx983299475 @zhaoshaohua_eiln @tang_xian9109  @yangyuecheng
+zh-cn/application-dev/form/  @HelloShuo @cx983299475 @zhaoshaohua_eiln @tang_xian9109
 
 
 [开发-mechanicManager]
@@ -706,7 +706,7 @@ zh-cn/application-dev/dfx/hiappevent-watcher-mainthreadjank-events.md @rr_cn @pe
 zh-cn/application-dev/dfx/hiappevent-watcher-resourceleak-events-arkts.md @xuxinao @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/dfx/hiappevent-watcher-resourceleak-events-ndk.md @xuxinao @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/dfx/hiappevent-watcher-resourceleak-events.md @xuxinao @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/dfx/hichecker-guidelines-arkts.md @lu-tao @martin-duan @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hichecker-guidelines-arkts.md @lu_tao @martin_duan @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/dfx/hicollie-guidelines-ndk.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/dfx/hicollie-settimer-guidelines-ndk.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/dfx/hidebug-guidelines-arkts.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
@@ -2155,20 +2155,20 @@ zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hisyseve
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hicollie.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug-cpuusage.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-jsleakwatcher.md @lu-tao @martin-duan @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-jsleakwatcher.md @lu_tao @martin_duan @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-loglibrary-sys.md @BruceZong @gcw_qzKyUhyU @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug-trace.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-bytrace.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-faultLogger.md @chenshi51 @Maplestory @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiappevent.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hichecker.md @lu-tao @martin-duan @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hichecker.md @lu_tao @martin_duan @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hidebug.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hilog.md @liuyifeifei@buzhenwang @shenchenkai @liyang2235 @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hisysevent-sys.md @lyj_love_code @tangyyan @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hitracechain.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hitracemeter.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md @lu-tao @martin-duan @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md @lu_tao @martin_duan @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-loglibrary-sys.md @BruceZong @gcw_qzKyUhyU @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md @hello_harmony @StevenLai1994 @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionContext.md @hello_harmony @StevenLai1994 @gcw_KuLfPSbe @jinqiuheng
@@ -2259,7 +2259,7 @@ zh-cn/application-dev/reference/apis-driverdevelopment-kit/errorcode-deviceManag
 
 
 [API参考-Form Kit]
-zh-cn/application-dev/reference/apis-form-kit/  @cx983299475  @HelloShuo  @tang_xian9109  @yangyuecheng
+zh-cn/application-dev/reference/apis-form-kit/  @cx983299475  @HelloShuo  @tang_xian9109 @zhaoshaohua_eiln
 
 
 

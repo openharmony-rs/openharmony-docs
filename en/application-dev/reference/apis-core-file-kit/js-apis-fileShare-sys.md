@@ -170,6 +170,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | 202      | The caller is not a system application.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
+| 13900042 | Out of memory.|
 
 **Example**
 

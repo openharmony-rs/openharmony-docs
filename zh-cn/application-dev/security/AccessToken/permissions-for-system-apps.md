@@ -4755,7 +4755,11 @@
 
 **ACL使能**：true
 
+**支持设备**：Phone | PC/2in1 | Tablet
+
 **起始版本**：19
+
+**变更信息**：从API23开始，增加支持在手机上申请。
 
 ## ohos.permission.READ_PARENT_CONTROL_DATA
 
@@ -5507,7 +5511,7 @@
 
 **支持设备**：Tablet
 
-**起始版本**：24
+**起始版本**：23
 
 ## ohos.permission.QUERY_LOCAL_EDUCATION_SPACES
 
@@ -5520,5 +5524,21 @@
 **ACL使能**：true
 
 **支持设备**：Tablet
+
+**起始版本**：23
+
+## ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
+
+允许应用获取本地账号授权。
+
+获取该权限后，应用可调用接口获取本地账号授权，成功获取目标特权的授权后，应用可执行对应的敏感操作（如创建和删除本地账号、修改本地账号类型、修改时间时区等）。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：PC/2in1
 
 **起始版本**：24

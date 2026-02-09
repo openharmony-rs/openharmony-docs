@@ -41,7 +41,8 @@
 | [ArkUI_TranslationOptions](capi-arkui-nativemodule-arkui-translationoptions.md) | ArkUI_TranslationOptions | 定义组件转场时的平移效果对象。 |
 | [ArkUI_ScaleOptions](capi-arkui-nativemodule-arkui-scaleoptions.md) | ArkUI_ScaleOptions | 定义组件转场时的缩放效果对象。 |
 | [ArkUI_RotationOptions](capi-arkui-nativemodule-arkui-rotationoptions.md) | ArkUI_RotationOptions | 定义组件转场时的旋转效果对象。 |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md) | ArkUI_LayoutConstraint | 约束尺寸，组件布局时，进行尺寸范围限制。 |
+| [ArkUI_NativeDialog](capi-arkui-nativemodule-arkui-nativedialog.md) | ArkUI_NativeDialog | 提供ArkUI在Native侧的自定义弹窗控制器对象定义。 |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md) | ArkUI_LayoutConstraint | 布局约束，组件布局时，进行尺寸范围限制。 |
 | [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md) | ArkUI_DrawContext | 定义组件绘制上下文类型结构。 |
 | [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | 定义ArkUI native组件实例对象指针定义。 |
 | [ArkUI_NativeDialog*](capi-arkui-nativemodule-arkui-nativedialog8h.md) | ArkUI_NativeDialogHandle | 定义ArkUI在Native侧的自定义弹窗控制器对象指针。 |
@@ -245,15 +246,15 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Create()](#oh_arkui_layoutconstraint_create) | - | 创建约束尺寸。 |
-| [ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Copy(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_copy) | - | 约束尺寸深拷贝。 |
-| [void* OH_ArkUI_LayoutConstraint_Dispose(ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_dispose) | - | 销毁约束尺寸指针。 |
-| [int32_t OH_ArkUI_LayoutConstraint_GetMaxWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getmaxwidth) | - | 通过约束尺寸获取最大宽度，单位为px。 |
-| [int32_t OH_ArkUI_LayoutConstraint_GetMinWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getminwidth) | - | 通过约束尺寸获取最小宽度，单位为px。 |
-| [int32_t OH_ArkUI_LayoutConstraint_GetMaxHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getmaxheight) | - | 通过约束尺寸获取最大高度，单位为px。 |
-| [int32_t OH_ArkUI_LayoutConstraint_GetMinHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getminheight) | - | 通过约束尺寸获取最小高度，单位为px。 |
-| [int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getpercentreferencewidth) | - | 通过约束尺寸获取宽度百分比基准，单位为px。 |
-| [int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getpercentreferenceheight) | - | 通过约束尺寸获取高度百分比基准，单位为px。 |
+| [ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Create()](#oh_arkui_layoutconstraint_create) | - | 创建布局约束。 |
+| [ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Copy(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_copy) | - | 布局约束深拷贝。 |
+| [void* OH_ArkUI_LayoutConstraint_Dispose(ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_dispose) | - | 销毁布局约束指针。 |
+| [int32_t OH_ArkUI_LayoutConstraint_GetMaxWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getmaxwidth) | - | 通过布局约束获取最大宽度，单位为px。 |
+| [int32_t OH_ArkUI_LayoutConstraint_GetMinWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getminwidth) | - | 通过布局约束获取最小宽度，单位为px。 |
+| [int32_t OH_ArkUI_LayoutConstraint_GetMaxHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getmaxheight) | - | 通过布局约束获取最大高度，单位为px。 |
+| [int32_t OH_ArkUI_LayoutConstraint_GetMinHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getminheight) | - | 通过布局约束获取最小高度，单位为px。 |
+| [int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getpercentreferencewidth) | - | 通过布局约束获取宽度百分比基准。 |
+| [int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getpercentreferenceheight) | - | 通过布局约束获取高度百分比基准。 |
 | [void OH_ArkUI_LayoutConstraint_SetMaxWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setmaxwidth) | - | 设置最大宽度。 |
 | [void OH_ArkUI_LayoutConstraint_SetMinWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setminwidth) | - | 设置最小宽度。 |
 | [void OH_ArkUI_LayoutConstraint_SetMaxHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setmaxheight) | - | 设置最大高度。 |
@@ -299,26 +300,26 @@
 | [int32_t OH_ArkUI_BarrierOption_GetReferencedIdSize(ArkUI_BarrierOption* barrierStyle, int32_t index)](#oh_arkui_barrieroption_getreferencedidsize) | - | 获取屏障的依赖的组件的个数。 |
 | [ArkUI_AlignmentRuleOption* OH_ArkUI_AlignmentRuleOption_Create()](#oh_arkui_alignmentruleoption_create) | - | 创建相对容器中子组件的对齐规则信息。 |
 | [void OH_ArkUI_AlignmentRuleOption_Dispose(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_dispose) | - | 销毁相对容器中子组件的对齐规则信息。 |
-| [void OH_ArkUI_AlignmentRuleOption_SetStart(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)](#oh_arkui_alignmentruleoption_setstart) | - | 设置左对齐参数。 |
-| [void OH_ArkUI_AlignmentRuleOption_SetEnd(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)](#oh_arkui_alignmentruleoption_setend) | - | 设置右对齐参数。 |
-| [void OH_ArkUI_AlignmentRuleOption_SetCenterHorizontal(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)](#oh_arkui_alignmentruleoption_setcenterhorizontal) | - | 设置横向居中对齐方式的参数。 |
-| [void OH_ArkUI_AlignmentRuleOption_SetTop(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)](#oh_arkui_alignmentruleoption_settop) | - | 设置顶部对齐的参数。 |
-| [void OH_ArkUI_AlignmentRuleOption_SetBottom(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)](#oh_arkui_alignmentruleoption_setbottom) | - | 设置底部对齐的参数。 |
-| [void OH_ArkUI_AlignmentRuleOption_SetCenterVertical(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)](#oh_arkui_alignmentruleoption_setcentervertical) | - | 设置纵向居中对齐方式的参数。 |
+| [void OH_ArkUI_AlignmentRuleOption_SetStart(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)](#oh_arkui_alignmentruleoption_setstart) | - | 设置相对布局的左对齐方式。 |
+| [void OH_ArkUI_AlignmentRuleOption_SetEnd(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)](#oh_arkui_alignmentruleoption_setend) | - | 设置相对布局的右对齐方式。 |
+| [void OH_ArkUI_AlignmentRuleOption_SetCenterHorizontal(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)](#oh_arkui_alignmentruleoption_setcenterhorizontal) | - | 设置相对布局的横向居中对齐方式。 |
+| [void OH_ArkUI_AlignmentRuleOption_SetTop(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)](#oh_arkui_alignmentruleoption_settop) | - | 设置相对布局的顶部对齐的方式。 |
+| [void OH_ArkUI_AlignmentRuleOption_SetBottom(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)](#oh_arkui_alignmentruleoption_setbottom) | - | 设置相对布局的底部对齐的方式。 |
+| [void OH_ArkUI_AlignmentRuleOption_SetCenterVertical(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)](#oh_arkui_alignmentruleoption_setcentervertical) | - | 设置相对布局的纵向居中对齐方式。 |
 | [void OH_ArkUI_AlignmentRuleOption_SetBiasHorizontal(ArkUI_AlignmentRuleOption* option, float horizontal)](#oh_arkui_alignmentruleoption_setbiashorizontal) | - | 设置组件在锚点约束下的水平方向上偏移参数。 |
 | [void OH_ArkUI_AlignmentRuleOption_SetBiasVertical(ArkUI_AlignmentRuleOption* option, float vertical)](#oh_arkui_alignmentruleoption_setbiasvertical) | - | 设置组件在锚点约束下的垂直方向上偏移参数。 |
-| [const char* OH_ArkUI_AlignmentRuleOption_GetStartId(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getstartid) | - | 获取左对齐参数的Id。 |
-| [ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetStartAlignment(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getstartalignment) | - | 获取左对齐参数的对齐方式。 |
-| [const char* OH_ArkUI_AlignmentRuleOption_GetEndId(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getendid) | - | 获取右对齐参数。 |
-| [ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetEndAlignment(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getendalignment) | - | 获取右对齐参数。 |
-| [const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdHorizontal(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getcenteridhorizontal) | - | 获取横向居中对齐方式的参数。 |
-| [ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizontal(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getcenteralignmenthorizontal) | - | 获取横向居中对齐方式的参数。 |
-| [const char* OH_ArkUI_AlignmentRuleOption_GetTopId(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_gettopid) | - | 获取顶部对齐的参数。 |
-| [ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetTopAlignment(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_gettopalignment) | - | 获取顶部对齐的参数。 |
-| [const char* OH_ArkUI_AlignmentRuleOption_GetBottomId(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getbottomid) | - | 获取底部对齐的参数。 |
-| [ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetBottomAlignment(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getbottomalignment) | - | 获取底部对齐的参数。 |
-| [const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdVertical(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getcenteridvertical) | - | 获取纵向居中对齐方式的参数。 |
-| [ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getcenteralignmentvertical) | - | 获取纵向居中对齐方式的参数。 |
+| [const char* OH_ArkUI_AlignmentRuleOption_GetStartId(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getstartid) | - | 获取左对齐锚点组件的Id。 |
+| [ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetStartAlignment(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getstartalignment) | - | 获取左对齐方式。 |
+| [const char* OH_ArkUI_AlignmentRuleOption_GetEndId(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getendid) | - | 获取右对齐锚点组件的Id。 |
+| [ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetEndAlignment(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getendalignment) | - | 获取右对齐方式。 |
+| [const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdHorizontal(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getcenteridhorizontal) | - | 获取横向居中对齐锚点组件的Id。 |
+| [ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizontal(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getcenteralignmenthorizontal) | - | 获取横向居中对齐方式。 |
+| [const char* OH_ArkUI_AlignmentRuleOption_GetTopId(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_gettopid) | - | 获取顶部对齐锚点组件的Id。 |
+| [ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetTopAlignment(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_gettopalignment) | - | 获取顶部对齐的方式。 |
+| [const char* OH_ArkUI_AlignmentRuleOption_GetBottomId(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getbottomid) | - | 获取底部对齐锚点组件的Id。 |
+| [ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetBottomAlignment(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getbottomalignment) | - | 获取底部对齐的方式。 |
+| [const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdVertical(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getcenteridvertical) | - | 获取纵向居中对齐锚点组件的Id。 |
+| [ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getcenteralignmentvertical) | - | 获取纵向居中对齐方式。 |
 | [float OH_ArkUI_AlignmentRuleOption_GetBiasHorizontal(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getbiashorizontal) | - | 获取水平方向上的bias值。 |
 | [float OH_ArkUI_AlignmentRuleOption_GetBiasVertical(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getbiasvertical) | - | 获取垂直方向上的bias值。 |
 | [ArkUI_SwiperIndicator* OH_ArkUI_SwiperIndicator_Create(ArkUI_SwiperIndicatorType type)](#oh_arkui_swiperindicator_create) | - | 创建[Swiper](../apis-arkui/arkui-ts/ts-container-swiper.md)组件的导航指示器。 |
@@ -674,7 +675,7 @@ enum ArkUI_Alignment
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ALIGNMENT_TOP_START = 0 | 顶部起始。 |
+| ARKUI_ALIGNMENT_TOP_START = 0 | 顶部起始，该值为默认值。 |
 | ARKUI_ALIGNMENT_TOP = 1 | 顶部居中。 |
 | ARKUI_ALIGNMENT_TOP_END = 2 | 顶部尾端。 |
 | ARKUI_ALIGNMENT_START = 3 | 起始端纵向居中。 |
@@ -720,7 +721,7 @@ enum ArkUI_FontStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_FONT_STYLE_NORMAL = 0 | 标准字体样式。 |
-| ARKUI_FONT_STYLE_ITALIC | 斜体字体样式。 |
+| ARKUI_FONT_STYLE_ITALIC = 1 | 斜体字体样式。 |
 
 ### ArkUI_FontWeight
 
@@ -738,20 +739,20 @@ enum ArkUI_FontWeight
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_FONT_WEIGHT_W100 = 0 | 100 |
-| ARKUI_FONT_WEIGHT_W200 | 200 |
-| ARKUI_FONT_WEIGHT_W300 | 300 |
-| ARKUI_FONT_WEIGHT_W400 | 400 |
-| ARKUI_FONT_WEIGHT_W500 | 500 |
-| ARKUI_FONT_WEIGHT_W600 | 600 |
-| ARKUI_FONT_WEIGHT_W700 | 700 |
-| ARKUI_FONT_WEIGHT_W800 | 800 |
-| ARKUI_FONT_WEIGHT_W900 | 900 |
-| ARKUI_FONT_WEIGHT_BOLD | 字体较粗。 |
-| ARKUI_FONT_WEIGHT_NORMAL | 字体粗细正常。 |
-| ARKUI_FONT_WEIGHT_BOLDER | 字体非常粗。 |
-| ARKUI_FONT_WEIGHT_LIGHTER | 字体较细。 |
-| ARKUI_FONT_WEIGHT_MEDIUM | 字体粗细适中。 |
-| ARKUI_FONT_WEIGHT_REGULAR | 字体粗细正常。 |
+| ARKUI_FONT_WEIGHT_W200 = 1 | 200 |
+| ARKUI_FONT_WEIGHT_W300 = 2 | 300 |
+| ARKUI_FONT_WEIGHT_W400 = 3 | 400 |
+| ARKUI_FONT_WEIGHT_W500 = 4 | 500 |
+| ARKUI_FONT_WEIGHT_W600 = 5 | 600 |
+| ARKUI_FONT_WEIGHT_W700 = 6 | 700 |
+| ARKUI_FONT_WEIGHT_W800 = 7 | 800 |
+| ARKUI_FONT_WEIGHT_W900 = 8 | 900 |
+| ARKUI_FONT_WEIGHT_BOLD = 9 | 字体较粗。 |
+| ARKUI_FONT_WEIGHT_NORMAL = 10 | 字体粗细正常。 |
+| ARKUI_FONT_WEIGHT_BOLDER = 11 | 字体非常粗。 |
+| ARKUI_FONT_WEIGHT_LIGHTER = 12 | 字体较细。 |
+| ARKUI_FONT_WEIGHT_MEDIUM = 13 | 字体粗细适中。 |
+| ARKUI_FONT_WEIGHT_REGULAR = 14 | 字体粗细正常。 |
 
 ### ArkUI_TextAlignment
 
@@ -769,9 +770,9 @@ enum ArkUI_TextAlignment
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_ALIGNMENT_START = 0 | 水平对齐首部。 |
-| ARKUI_TEXT_ALIGNMENT_CENTER | 水平居中对齐。 |
-| ARKUI_TEXT_ALIGNMENT_END | 水平对齐尾部。 |
-| ARKUI_TEXT_ALIGNMENT_JUSTIFY | 双端对齐。 |
+| ARKUI_TEXT_ALIGNMENT_CENTER = 1 | 水平居中对齐。 |
+| ARKUI_TEXT_ALIGNMENT_END = 2 | 水平对齐尾部。 |
+| ARKUI_TEXT_ALIGNMENT_JUSTIFY = 3 | 双端对齐。 |
 | ARKUI_TEXT_ALIGNMENT_LEFT_TO_RIGHT = 4 | 从左到右对齐。<br>**起始版本：** 23 |
 | ARKUI_TEXT_ALIGNMENT_RIGHT_TO_LEFT = 5 | 从右到左对齐。<br>**起始版本：** 23 |
 
@@ -791,9 +792,9 @@ enum ArkUI_TextVerticalAlignment
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_VERTICAL_ALIGNMENT_BASELINE = 0 | 基线对齐。 |
-| ARKUI_TEXT_VERTICAL_ALIGNMENT_BOTTOM | 底部对齐。 |
-| ARKUI_TEXT_VERTICAL_ALIGNMENT_CENTER | 居中对齐。 |
-| ARKUI_TEXT_VERTICAL_ALIGNMENT_TOP | 顶部对齐。 |
+| ARKUI_TEXT_VERTICAL_ALIGNMENT_BOTTOM = 1 | 底部对齐。 |
+| ARKUI_TEXT_VERTICAL_ALIGNMENT_CENTER = 2 | 居中对齐。 |
+| ARKUI_TEXT_VERTICAL_ALIGNMENT_TOP = 3 | 顶部对齐。 |
 
 ### ArkUI_TextContentAlign
 
@@ -921,8 +922,8 @@ enum ArkUI_CancelButtonStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_CANCELBUTTON_STYLE_CONSTANT = 0 | 清除按钮常显样式。 |
-| ARKUI_CANCELBUTTON_STYLE_INVISIBLE | 清除按钮常隐样式。 |
-| ARKUI_CANCELBUTTON_STYLE_INPUT | 清除按钮输入样式。 |
+| ARKUI_CANCELBUTTON_STYLE_INVISIBLE = 1 | 清除按钮常隐样式。 |
+| ARKUI_CANCELBUTTON_STYLE_INPUT = 2 | 清除按钮输入样式。 |
 
 ### ArkUI_XComponentType
 
@@ -979,9 +980,9 @@ enum ArkUI_TextDecorationType
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_DECORATION_TYPE_NONE = 0 | 不使用装饰线。 |
-| ARKUI_TEXT_DECORATION_TYPE_UNDERLINE | 文字下划线修饰。 |
-| ARKUI_TEXT_DECORATION_TYPE_OVERLINE | 文字上划线修饰。 |
-| ARKUI_TEXT_DECORATION_TYPE_LINE_THROUGH | 穿过文本的修饰线。 |
+| ARKUI_TEXT_DECORATION_TYPE_UNDERLINE = 1 | 文字下划线修饰。 |
+| ARKUI_TEXT_DECORATION_TYPE_OVERLINE = 2 | 文字上划线修饰。 |
+| ARKUI_TEXT_DECORATION_TYPE_LINE_THROUGH = 3 | 穿过文本的修饰线。 |
 
 ### ArkUI_TextDecorationStyle
 
@@ -999,10 +1000,10 @@ enum ArkUI_TextDecorationStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_DECORATION_STYLE_SOLID = 0 | 单实线。 |
-| ARKUI_TEXT_DECORATION_STYLE_DOUBLE | 双实线。 |
-| ARKUI_TEXT_DECORATION_STYLE_DOTTED | 点线。 |
-| ARKUI_TEXT_DECORATION_STYLE_DASHED | 虚线。 |
-| ARKUI_TEXT_DECORATION_STYLE_WAVY | 波浪线。 |
+| ARKUI_TEXT_DECORATION_STYLE_DOUBLE = 1 | 双实线。 |
+| ARKUI_TEXT_DECORATION_STYLE_DOTTED = 2 | 点线。 |
+| ARKUI_TEXT_DECORATION_STYLE_DASHED = 3 | 虚线。 |
+| ARKUI_TEXT_DECORATION_STYLE_WAVY = 4 | 波浪线。 |
 
 ### ArkUI_TextCase
 
@@ -1020,8 +1021,8 @@ enum ArkUI_TextCase
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_CASE_NORMAL = 0 | 保持原有大小写。 |
-| ARKUI_TEXT_CASE_LOWER | 文本全小写。 |
-| ARKUI_TEXT_CASE_UPPER | 文本全大写。 |
+| ARKUI_TEXT_CASE_LOWER = 1 | 文本全小写。 |
+| ARKUI_TEXT_CASE_UPPER = 2 | 文本全大写。 |
 
 ### ArkUI_CopyOptions
 
@@ -1039,9 +1040,9 @@ enum ArkUI_CopyOptions
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_COPY_OPTIONS_NONE = 0 | 不支持复制。 |
-| ARKUI_COPY_OPTIONS_IN_APP | 支持应用内复制。 |
-| ARKUI_COPY_OPTIONS_LOCAL_DEVICE | 支持设备内复制。 |
-| ARKUI_COPY_OPTIONS_CROSS_DEVICE | 支持跨设备复制。 |
+| ARKUI_COPY_OPTIONS_IN_APP = 1 | 支持应用内复制。 |
+| ARKUI_COPY_OPTIONS_LOCAL_DEVICE = 2 | 支持设备内复制。 |
+| ARKUI_COPY_OPTIONS_CROSS_DEVICE = 3 | 支持跨设备复制。 |
 
 ### ArkUI_ShadowType
 
@@ -1269,7 +1270,7 @@ enum ArkUI_Axis
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_AXIS_VERTICAL = 0 | 仅支持竖直方向滚动。 |
+| ARKUI_AXIS_VERTICAL = 0 | 仅支持竖直方向滚动，该值为默认值。 |
 | ARKUI_AXIS_HORIZONTAL = 1 | 仅支持水平方向滚动。 |
 
 ### ArkUI_StickyStyle
@@ -1344,7 +1345,7 @@ enum ArkUI_BorderStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_BORDER_STYLE_SOLID = 0 | 显示为一条实线。 |
+| ARKUI_BORDER_STYLE_SOLID = 0 | 显示为一条实线，该值为默认值。 |
 | ARKUI_BORDER_STYLE_DASHED = 1 | 显示为一系列短的方形虚线。 |
 | ARKUI_BORDER_STYLE_DOTTED = 2 | 显示为一系列圆点。 |
 
@@ -1363,12 +1364,12 @@ enum ArkUI_HitTestMode
 
 | 枚举项 | 描述                                                     |
 | -- |--------------------------------------------------------|
-| ARKUI_HIT_TEST_MODE_DEFAULT = 0 | 默认触摸测试效果。                                              |
-| ARKUI_HIT_TEST_MODE_BLOCK = 1 | 自身响应触摸测试。                                              |
-| ARKUI_HIT_TEST_MODE_TRANSPARENT = 2 | 自身和子节点都响应触摸测试。                                         |
-| ARKUI_HIT_TEST_MODE_NONE = 3 | 自身不响应触摸测试。                                             |
-| ARKUI_HIT_TEST_MODE_BLOCK_HIERARCHY = 4 | 阻止所有优先级较低的兄弟节点和父节点参与触摸测试，自身和子节点响应触摸测试。<br>**起始版本：** 20 |
-| ARKUI_HIT_TEST_MODE_BLOCK_DESCENDANTS = 5 | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试。<br>**起始版本：** 20                     |
+| ARKUI_HIT_TEST_MODE_DEFAULT = 0 | 默认触摸测试效果。自身及子节点响应触摸测试，但阻塞兄弟节点的触摸测试，不影响祖先节点的触摸测试。                                              |
+| ARKUI_HIT_TEST_MODE_BLOCK = 1 | 自身响应触摸测试，阻塞子节点、兄弟节点和祖先节点的触摸测试。                                              |
+| ARKUI_HIT_TEST_MODE_TRANSPARENT = 2 | 自身和子节点都响应触摸测试，不会阻塞兄弟节点和祖先节点的触摸测试。                                         |
+| ARKUI_HIT_TEST_MODE_NONE = 3 | 自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。                                             |
+| ARKUI_HIT_TEST_MODE_BLOCK_HIERARCHY = 4 | 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。<br>**起始版本：** 20 |
+| ARKUI_HIT_TEST_MODE_BLOCK_DESCENDANTS = 5 | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。<br>**起始版本：** 20                     |
 
 ### ArkUI_ShadowStyle
 
@@ -1531,9 +1532,9 @@ enum ArkUI_TextCopyOptions
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_COPY_OPTIONS_NONE = 0 | 不支持复制。 |
-| ARKUI_TEXT_COPY_OPTIONS_IN_APP | 支持应用内复制。 |
-| ARKUI_TEXT_COPY_OPTIONS_LOCAL_DEVICE | 支持设备内复制。 |
-| ARKUI_TEXT_COPY_OPTIONS_CROSS_DEVICE | 支持跨设备复制。 |
+| ARKUI_TEXT_COPY_OPTIONS_IN_APP = 1 | 支持应用内复制。 |
+| ARKUI_TEXT_COPY_OPTIONS_LOCAL_DEVICE = 2 | 支持设备内复制。 |
+| ARKUI_TEXT_COPY_OPTIONS_CROSS_DEVICE = 3 | 支持跨设备复制。 |
 
 ### ArkUI_TextHeightAdaptivePolicy
 
@@ -1551,8 +1552,8 @@ enum ArkUI_TextHeightAdaptivePolicy
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MAX_LINES_FIRST = 0 | 设置文本高度自适应方式为以MaxLines优先。 |
-| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MIN_FONT_SIZE_FIRST | 设置文本高度自适应方式为以缩小字体优先。 |
-| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_LAYOUT_CONSTRAINT_FIRST | 设置文本高度自适应方式为以布局约束（高度）优先。 |
+| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MIN_FONT_SIZE_FIRST = 1 | 设置文本高度自适应方式为以缩小字体优先。 |
+| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_LAYOUT_CONSTRAINT_FIRST = 2 | 设置文本高度自适应方式为以布局约束（高度）优先。 |
 
 ### ArkUI_ScrollNestedMode
 
@@ -1903,9 +1904,9 @@ enum ArkUI_TextOverflow
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_OVERFLOW_NONE = 0 | 文本超长时不裁剪显示。 |
-| ARKUI_TEXT_OVERFLOW_CLIP | 文本超长时进行裁剪显示。 |
-| ARKUI_TEXT_OVERFLOW_ELLIPSIS | 文本超长时显示不下的文本用省略号代替。 |
-| ARKUI_TEXT_OVERFLOW_MARQUEE | 文本超长时以跑马灯的方式展示。 |
+| ARKUI_TEXT_OVERFLOW_CLIP = 1 | 文本超长时进行裁剪显示。 |
+| ARKUI_TEXT_OVERFLOW_ELLIPSIS = 2 | 文本超长时显示不下的文本用省略号代替。 |
+| ARKUI_TEXT_OVERFLOW_MARQUEE = 3 | 文本超长时以跑马灯的方式展示。 |
 
 ### ArkUI_ImageSpanAlignment
 
@@ -2085,9 +2086,9 @@ enum ArkUI_Direction
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_DIRECTION_LTR = 0 | 元素从左到右布局。 |
+| ARKUI_DIRECTION_LTR = 0 | 元素从左到右布局，该值为默认值。 |
 | ARKUI_DIRECTION_RTL = 1 | 元素从右到左布局。 |
-| ARKUI_DIRECTION_AUTO = 3 | 使用系统默认布局方向。 |
+| ARKUI_DIRECTION_AUTO = 3 | 使用系统布局方向。 |
 
 ### ArkUI_ItemAlignment
 
@@ -2104,7 +2105,7 @@ enum ArkUI_ItemAlignment
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ITEM_ALIGNMENT_AUTO = 0 | 使用Flex容器中默认配置。 |
+| ARKUI_ITEM_ALIGNMENT_AUTO = 0 | 使用[Flex](..//apis-arkui/arkui-ts/ts-container-flex.md)容器中默认配置，该值为默认值。 |
 | ARKUI_ITEM_ALIGNMENT_START = 1 | 元素在Flex容器中，交叉轴方向首部对齐。 |
 | ARKUI_ITEM_ALIGNMENT_CENTER = 2 | 元素在Flex容器中，交叉轴方向居中对齐。 |
 | ARKUI_ITEM_ALIGNMENT_END = 3 | 元素在Flex容器中，交叉轴方向底部对齐。 |
@@ -2145,10 +2146,10 @@ enum ArkUI_FlexAlignment
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_FLEX_ALIGNMENT_START = 1 | 主轴方向首端对齐。 |
+| ARKUI_FLEX_ALIGNMENT_START = 1 | 主轴方向首端对齐，该值为默认值。 |
 | ARKUI_FLEX_ALIGNMENT_CENTER = 2 | 主轴方向中心对齐。 |
 | ARKUI_FLEX_ALIGNMENT_END = 3 | 主轴方向尾部对齐。 |
-| ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN = 6 | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同，第一个元素行首对齐，最后的元素行尾对齐。 |
+| ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN = 6 | [Flex](..//apis-arkui/arkui-ts/ts-container-flex.md)主轴方向均匀分配弹性元素，相邻元素之间距离相同，第一个元素行首对齐，最后的元素行尾对齐。 |
 | ARKUI_FLEX_ALIGNMENT_SPACE_AROUND = 7 | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同，第一个元素到行首的距离时相邻元素间距离的一半。 |
 | ARKUI_FLEX_ALIGNMENT_SPACE_EVENLY = 8 | Flex主轴方向均匀分配弹性元素，相邻元素之间距离、第一个元素到行首的距离和最后的元素到行尾的距离均相等。 |
 
@@ -2161,13 +2162,13 @@ enum ArkUI_FlexDirection
 **描述：**
 
 
-定义Flex容器的主轴方向。
+定义[Flex](..//apis-arkui/arkui-ts/ts-container-flex.md)容器的主轴方向。
 
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_FLEX_DIRECTION_ROW = 0 | 主轴与行方向一致。 |
+| ARKUI_FLEX_DIRECTION_ROW = 0 | 主轴与行方向一致，该值为默认值。 |
 | ARKUI_FLEX_DIRECTION_COLUMN = 1 | 主轴与列方向一致。 |
 | ARKUI_FLEX_DIRECTION_ROW_REVERSE = 2 | 主轴与行方向相反。 |
 | ARKUI_FLEX_DIRECTION_COLUMN_REVERSE = 3 | 主轴与列方向相反。 |
@@ -2187,7 +2188,7 @@ enum ArkUI_FlexWrap
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_FLEX_WRAP_NO_WRAP = 0 | 单行/单列布局，子项不能超出容器。 |
+| ARKUI_FLEX_WRAP_NO_WRAP = 0 | 单行/单列布局，子项不能超出容器，该值为默认值。 |
 | ARKUI_FLEX_WRAP_WRAP = 1 | 多行/多列布局，子项允许超出容器。 |
 | ARKUI_FLEX_WRAP_WRAP_REVERSE = 2 | 反向多行/多列布局，子项允许超出容器。 |
 
@@ -2350,9 +2351,11 @@ enum ArkUI_EllipsisMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ELLIPSIS_MODE_START = 0 | 省略行首内容。 |
-| ARKUI_ELLIPSIS_MODE_CENTER | 省略行中内容。 |
-| ARKUI_ELLIPSIS_MODE_END | 省略行末内容。 |
+| ARKUI_ELLIPSIS_MODE_START = 0 | 省略行首内容。适用单行文本场景。 |
+| ARKUI_ELLIPSIS_MODE_CENTER = 1 | 省略行中内容。适用单行文本场景。 |
+| ARKUI_ELLIPSIS_MODE_END = 2 | 省略行末内容。适用单行文本和多行文本场景 |
+| ARKUI_ELLIPSIS_MODE_MULTILINE_START = 3 | 省略行首内容。适用单行文本和多行文本场景。<br>**起始版本：** 24 |
+| ARKUI_ELLIPSIS_MODE_MULTILINE_CENTER = 4 | 省略行中内容。适用单行文本和多行文本场景。<br>**起始版本：** 24 |
 
 ### ArkUI_ImageRenderMode
 
@@ -2531,7 +2534,7 @@ enum ArkUI_BarrierDirection
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_BARRIER_DIRECTION_START = 0 | 屏障在其所有referencedId的最左侧。 |
+| ARKUI_BARRIER_DIRECTION_START = 0 | 屏障在其所有[referencedId](..//apis-arkui/arkui-ts/ts-container-relativecontainer.md#barrierstyle12对象说明)的最左侧，该值为默认值。 |
 | ARKUI_BARRIER_DIRECTION_END = 1 | 屏障在其所有referencedId的最右侧。 |
 | ARKUI_BARRIER_DIRECTION_TOP = 2 | 屏障在其所有referencedId的最上方。 |
 | ARKUI_BARRIER_DIRECTION_BOTTOM = 3 | 屏障在其所有referencedId的最下方。 |
@@ -2551,7 +2554,7 @@ enum ArkUI_RelativeLayoutChainStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD = 0 | 组件在约束锚点间均匀分布。 |
+| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD = 0 | 组件在约束锚点间均匀分布，该值为默认值。 |
 | ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD_INSIDE = 1 | 除首尾2个子组件的其他组件在约束锚点间均匀分布。 |
 | ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_PACKED = 2 | 链内子组件无间隙。 |
 
@@ -2903,7 +2906,7 @@ enum ArkUI_SafeAreaType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SAFE_AREA_TYPE_SYSTEM = 1 | 系统默认非安全区域，包括状态栏、导航栏。 |
+| ARKUI_SAFE_AREA_TYPE_SYSTEM = 1 | 系统默认非安全区域，包括状态栏、导航栏，该值为默认值。 |
 | ARKUI_SAFE_AREA_TYPE_CUTOUT = 1 << 1 | 设备的非安全区域，例如刘海屏或挖孔屏区域。 |
 | ARKUI_SAFE_AREA_TYPE_KEYBOARD = 1 << 2 | 软键盘区域。 |
 
@@ -2922,7 +2925,7 @@ enum ArkUI_SafeAreaEdge
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SAFE_AREA_EDGE_TOP = 1 | 上方区域。 |
+| ARKUI_SAFE_AREA_EDGE_TOP = 1 | 上方区域，该值为默认值。 |
 | ARKUI_SAFE_AREA_EDGE_BOTTOM = 1 << 1 | 下方区域。 |
 | ARKUI_SAFE_AREA_EDGE_START = 1 << 2 | 前部区域。 |
 | ARKUI_SAFE_AREA_EDGE_END = 1 << 3 | 尾部区域。 |
@@ -3552,7 +3555,7 @@ ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Create()
 **描述：**
 
 
-创建约束尺寸。
+创建布局约束。
 
 **起始版本：** 12
 
@@ -3560,7 +3563,7 @@ ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Create()
 
 | 类型                          | 说明 |
 |-----------------------------| -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* | 创建约束尺寸的对象指针。 |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* | 创建布局约束的指针。 |
 
 ### OH_ArkUI_LayoutConstraint_Copy()
 
@@ -3571,7 +3574,7 @@ ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Copy(const ArkUI_LayoutConstra
 **描述：**
 
 
-约束尺寸深拷贝。
+布局约束深拷贝。
 
 **起始版本：** 12
 
@@ -3580,13 +3583,13 @@ ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Copy(const ArkUI_LayoutConstra
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 布局约束的指针。 |
 
 **返回：**
 
 | 类型                          | 说明 |
 |-----------------------------| -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* | 新的约束尺寸指针。 |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* | 新的布局约束指针。 |
 
 ### OH_ArkUI_LayoutConstraint_Dispose()
 
@@ -3597,7 +3600,7 @@ void* OH_ArkUI_LayoutConstraint_Dispose(ArkUI_LayoutConstraint* Constraint)
 **描述：**
 
 
-销毁约束尺寸指针。
+销毁布局约束指针。
 
 **起始版本：** 12
 
@@ -3606,7 +3609,7 @@ void* OH_ArkUI_LayoutConstraint_Dispose(ArkUI_LayoutConstraint* Constraint)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 布局约束的指针。 |
 
 **返回：**
 
@@ -3623,7 +3626,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetMaxWidth(const ArkUI_LayoutConstraint* Cons
 **描述：**
 
 
-通过约束尺寸获取最大宽度，单位为px。
+通过布局约束获取最大宽度。
 
 **起始版本：** 12
 
@@ -3632,13 +3635,13 @@ int32_t OH_ArkUI_LayoutConstraint_GetMaxWidth(const ArkUI_LayoutConstraint* Cons
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 布局约束的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 最大宽度。 |
+| int32_t | 最大宽度，单位为px。 |
 
 ### OH_ArkUI_LayoutConstraint_GetMinWidth()
 
@@ -3649,7 +3652,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetMinWidth(const ArkUI_LayoutConstraint* Cons
 **描述：**
 
 
-通过约束尺寸获取最小宽度，单位为px。
+通过布局约束获取最小宽度。
 
 **起始版本：** 12
 
@@ -3658,13 +3661,13 @@ int32_t OH_ArkUI_LayoutConstraint_GetMinWidth(const ArkUI_LayoutConstraint* Cons
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 布局约束的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 最小宽度。 |
+| int32_t | 最小宽度，单位为px。 |
 
 ### OH_ArkUI_LayoutConstraint_GetMaxHeight()
 
@@ -3675,7 +3678,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetMaxHeight(const ArkUI_LayoutConstraint* Con
 **描述：**
 
 
-通过约束尺寸获取最大高度，单位为px。
+通过布局约束获取最大高度。
 
 **起始版本：** 12
 
@@ -3684,13 +3687,13 @@ int32_t OH_ArkUI_LayoutConstraint_GetMaxHeight(const ArkUI_LayoutConstraint* Con
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 布局约束的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 最大高度。 |
+| int32_t | 最大高度，单位为px。 |
 
 ### OH_ArkUI_LayoutConstraint_GetMinHeight()
 
@@ -3701,7 +3704,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetMinHeight(const ArkUI_LayoutConstraint* Con
 **描述：**
 
 
-通过约束尺寸获取最小高度，单位为px。
+通过布局约束获取最小高度。
 
 **起始版本：** 12
 
@@ -3710,13 +3713,13 @@ int32_t OH_ArkUI_LayoutConstraint_GetMinHeight(const ArkUI_LayoutConstraint* Con
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 布局约束的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 最小高度。 |
+| int32_t | 最小高度，单位为px。 |
 
 ### OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth()
 
@@ -3727,7 +3730,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth(const ArkUI_LayoutCon
 **描述：**
 
 
-通过约束尺寸获取宽度百分比基准，单位为px。
+通过布局约束获取宽度百分比基准。
 
 **起始版本：** 12
 
@@ -3736,7 +3739,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth(const ArkUI_LayoutCon
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 布局约束的指针。 |
 
 **返回：**
 
@@ -3753,7 +3756,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight(const ArkUI_LayoutCo
 **描述：**
 
 
-通过约束尺寸获取高度百分比基准，单位为px。
+通过布局约束获取高度百分比基准。
 
 **起始版本：** 12
 
@@ -3762,7 +3765,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight(const ArkUI_LayoutCo
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 布局约束的指针。 |
 
 **返回：**
 
@@ -3788,8 +3791,8 @@ void OH_ArkUI_LayoutConstraint_SetMaxWidth(ArkUI_LayoutConstraint* Constraint, i
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
-| int32_t value | 最大宽度，单位为px。 |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 布局约束的指针。 |
+| int32_t value | 最大宽度，单位为px，取值范围：[0, +∞)。 |
 
 ### OH_ArkUI_LayoutConstraint_SetMinWidth()
 
@@ -3809,8 +3812,8 @@ void OH_ArkUI_LayoutConstraint_SetMinWidth(ArkUI_LayoutConstraint* Constraint, i
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
-| int32_t value | 最小宽度，单位为px。 |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 布局约束的指针。 |
+| int32_t value | 最小宽度，单位为px，取值范围：[0, +∞)。 |
 
 ### OH_ArkUI_LayoutConstraint_SetMaxHeight()
 
@@ -3830,8 +3833,8 @@ void OH_ArkUI_LayoutConstraint_SetMaxHeight(ArkUI_LayoutConstraint* Constraint, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
-| int32_t value | 最大高度，单位为px。 |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 布局约束的指针。 |
+| int32_t value | 最大高度，单位为px，取值范围：[0, +∞)。 |
 
 ### OH_ArkUI_LayoutConstraint_SetMinHeight()
 
@@ -3851,8 +3854,8 @@ void OH_ArkUI_LayoutConstraint_SetMinHeight(ArkUI_LayoutConstraint* Constraint, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
-| int32_t value | 最小高度，单位为px。 |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 布局约束的指针。 |
+| int32_t value | 最小高度，单位为px，取值范围：[0, +∞)。 |
 
 ### OH_ArkUI_LayoutConstraint_SetPercentReferenceWidth()
 
@@ -3872,8 +3875,8 @@ void OH_ArkUI_LayoutConstraint_SetPercentReferenceWidth(ArkUI_LayoutConstraint* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
-| int32_t value | 宽度百分比基准，单位为px。 |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 布局约束的指针。 |
+| int32_t value | 宽度百分比基准，取值范围：[0, +∞)。 |
 
 ### OH_ArkUI_LayoutConstraint_SetPercentReferenceHeight()
 
@@ -3893,8 +3896,8 @@ void OH_ArkUI_LayoutConstraint_SetPercentReferenceHeight(ArkUI_LayoutConstraint*
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 约束尺寸。 |
-| int32_t value | 高度百分比基准，单位为px。 |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 布局约束的指针。 |
+| int32_t value | 高度百分比基准，取值范围：[0, +∞)。 |
 
 ### OH_ArkUI_DrawContext_GetCanvas()
 
@@ -4336,7 +4339,7 @@ ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)
 **描述：**
 
 
-创建RelativeContainer容器内的辅助线信息。
+创建[RelativeContainer](..//apis-arkui/arkui-ts/ts-container-relativecontainer.md)容器内的辅助线信息。
 
 **起始版本：** 12
 
@@ -4345,7 +4348,7 @@ ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t size | 辅助线数量。 |
+| int32_t size | 辅助线数量，取值范围：[0, +∞)。 |
 
 **返回：**
 
@@ -4436,7 +4439,7 @@ void OH_ArkUI_GuidelineOption_SetPositionStart(ArkUI_GuidelineOption* guideline,
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_GuidelineOption](capi-arkui-nativemodule-arkui-guidelineoption.md)* guideline | 辅助线信息。 |
-| float value | 距离容器左侧或者顶部的距离。 |
+| float value | 距离容器左侧或者顶部的距离，单位vp。 |
 | int32_t index | 辅助线索引值。 |
 
 ### OH_ArkUI_GuidelineOption_SetPositionEnd()
@@ -4458,7 +4461,7 @@ void OH_ArkUI_GuidelineOption_SetPositionEnd(ArkUI_GuidelineOption* guideline, f
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_GuidelineOption](capi-arkui-nativemodule-arkui-guidelineoption.md)* guideline | 辅助线信息。 |
-| float value | 距离容器右侧或者底部的距离。 |
+| float value | 距离容器右侧或者底部的距离，单位vp。 |
 | int32_t index | 辅助线索引值。 |
 
 ### OH_ArkUI_GuidelineOption_GetId()
@@ -4587,7 +4590,7 @@ ArkUI_BarrierOption* OH_ArkUI_BarrierOption_Create(int32_t size)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t size | 屏障数量。 |
+| int32_t size | 屏障数量，取值范围：[0, +∞)。 |
 
 **返回：**
 
@@ -4699,8 +4702,8 @@ const char* OH_ArkUI_BarrierOption_GetId(ArkUI_BarrierOption* barrierStyle, int3
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | 辅助线信息。 |
-| int32_t index | 辅助线索引值。 |
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | 屏障信息。 |
+| int32_t index | 屏障索引值。 |
 
 **返回：**
 
@@ -4726,8 +4729,8 @@ ArkUI_BarrierDirection OH_ArkUI_BarrierOption_GetDirection(ArkUI_BarrierOption* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | 辅助线信息。 |
-| int32_t index | 辅助线索引值。 |
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | 屏障信息。 |
+| int32_t index | 屏障索引值。 |
 
 **返回：**
 
@@ -4753,8 +4756,8 @@ const char* OH_ArkUI_BarrierOption_GetReferencedId(ArkUI_BarrierOption* barrierS
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | 辅助线信息。 |
-| int32_t index | 辅助线索引值。 |
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | 屏障信息。 |
+| int32_t index | 屏障索引值。 |
 | int32_t referencedIndex | 依赖的组件Id索引值。 |
 
 **返回：**
@@ -4781,8 +4784,8 @@ int32_t OH_ArkUI_BarrierOption_GetReferencedIdSize(ArkUI_BarrierOption* barrierS
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | 辅助线信息。 |
-| int32_t index | 辅助线索引值。 |
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | 屏障信息。 |
+| int32_t index | 屏障索引值。 |
 
 **返回：**
 
@@ -4838,7 +4841,7 @@ void OH_ArkUI_AlignmentRuleOption_SetStart(ArkUI_AlignmentRuleOption* option, co
 **描述：**
 
 
-设置左对齐参数。
+设置相对布局的左对齐方式。
 
 **起始版本：** 12
 
@@ -4860,7 +4863,7 @@ void OH_ArkUI_AlignmentRuleOption_SetEnd(ArkUI_AlignmentRuleOption* option, cons
 **描述：**
 
 
-设置右对齐参数。
+设置相对布局的右对齐方式。
 
 **起始版本：** 12
 
@@ -4882,7 +4885,7 @@ void OH_ArkUI_AlignmentRuleOption_SetCenterHorizontal(ArkUI_AlignmentRuleOption*
 **描述：**
 
 
-设置横向居中对齐方式的参数。
+设置相对布局的横向居中对齐方式。
 
 **起始版本：** 12
 
@@ -4904,7 +4907,7 @@ void OH_ArkUI_AlignmentRuleOption_SetTop(ArkUI_AlignmentRuleOption* option, cons
 **描述：**
 
 
-设置顶部对齐的参数。
+设置相对布局的顶部对齐的方式。
 
 **起始版本：** 12
 
@@ -4926,7 +4929,7 @@ void OH_ArkUI_AlignmentRuleOption_SetBottom(ArkUI_AlignmentRuleOption* option, c
 **描述：**
 
 
-设置底部对齐的参数。
+设置相对布局的底部对齐的方式。
 
 **起始版本：** 12
 
@@ -4948,7 +4951,7 @@ void OH_ArkUI_AlignmentRuleOption_SetCenterVertical(ArkUI_AlignmentRuleOption* o
 **描述：**
 
 
-设置纵向居中对齐方式的参数。
+设置相对布局的纵向居中对齐方式。
 
 **起始版本：** 12
 
@@ -5012,7 +5015,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetStartId(ArkUI_AlignmentRuleOption* o
 **描述：**
 
 
-获取左对齐参数的Id。
+获取左对齐锚点组件的Id。
 
 **起始版本：** 12
 
@@ -5027,7 +5030,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetStartId(ArkUI_AlignmentRuleOption* o
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 锚点的组件的id值。 |
+| const char* | 左对齐锚点组件的Id。 |
 
 ### OH_ArkUI_AlignmentRuleOption_GetStartAlignment()
 
@@ -5038,7 +5041,7 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetStartAlignment(ArkUI_A
 **描述：**
 
 
-获取左对齐参数的对齐方式。
+获取左对齐方式。
 
 **起始版本：** 12
 
@@ -5064,7 +5067,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetEndId(ArkUI_AlignmentRuleOption* opt
 **描述：**
 
 
-获取右对齐参数。
+获取右对齐锚点组件的Id。
 
 **起始版本：** 12
 
@@ -5079,7 +5082,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetEndId(ArkUI_AlignmentRuleOption* opt
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 右对齐参数id。 |
+| const char* | 右对齐锚点组件的Id。 |
 
 ### OH_ArkUI_AlignmentRuleOption_GetEndAlignment()
 
@@ -5090,7 +5093,7 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetEndAlignment(ArkUI_Ali
 **描述：**
 
 
-获取右对齐参数。
+获取右对齐方式。
 
 **起始版本：** 12
 
@@ -5105,7 +5108,7 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetEndAlignment(ArkUI_Ali
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_HorizontalAlignment](capi-native-type-h.md#arkui_horizontalalignment) | 右对齐参数的对齐方式。 |
+| [ArkUI_HorizontalAlignment](capi-native-type-h.md#arkui_horizontalalignment) | 右对齐方式。 |
 
 ### OH_ArkUI_AlignmentRuleOption_GetCenterIdHorizontal()
 
@@ -5116,7 +5119,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdHorizontal(ArkUI_AlignmentRu
 **描述：**
 
 
-获取横向居中对齐方式的参数。
+获取横向居中对齐锚点组件的Id。
 
 **起始版本：** 12
 
@@ -5131,7 +5134,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdHorizontal(ArkUI_AlignmentRu
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 横向居中对齐方式的参数的id。 |
+| const char* | 横向居中对齐锚点组件的Id。 |
 
 ### OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizontal()
 
@@ -5142,7 +5145,7 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizon
 **描述：**
 
 
-获取横向居中对齐方式的参数。
+获取横向居中对齐方式。
 
 **起始版本：** 12
 
@@ -5157,7 +5160,7 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizon
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_HorizontalAlignment](capi-native-type-h.md#arkui_horizontalalignment) | 横向居中对齐方式的参数的对齐方式。 |
+| [ArkUI_HorizontalAlignment](capi-native-type-h.md#arkui_horizontalalignment) | 横向居中对齐方式。 |
 
 ### OH_ArkUI_AlignmentRuleOption_GetTopId()
 
@@ -5168,7 +5171,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetTopId(ArkUI_AlignmentRuleOption* opt
 **描述：**
 
 
-获取顶部对齐的参数。
+获取顶部对齐锚点组件的Id。
 
 **起始版本：** 12
 
@@ -5183,7 +5186,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetTopId(ArkUI_AlignmentRuleOption* opt
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 顶部对齐的参数id。 |
+| const char* | 顶部对齐锚点组件的Id。 |
 
 ### OH_ArkUI_AlignmentRuleOption_GetTopAlignment()
 
@@ -5194,7 +5197,7 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetTopAlignment(ArkUI_Align
 **描述：**
 
 
-获取顶部对齐的参数。
+获取顶部对齐的方式。
 
 **起始版本：** 12
 
@@ -5209,7 +5212,7 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetTopAlignment(ArkUI_Align
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_VerticalAlignment](capi-native-type-h.md#arkui_verticalalignment) | 顶部对齐的参数的对齐方式。 |
+| [ArkUI_VerticalAlignment](capi-native-type-h.md#arkui_verticalalignment) | 顶部对齐的方式。 |
 
 ### OH_ArkUI_AlignmentRuleOption_GetBottomId()
 
@@ -5220,7 +5223,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetBottomId(ArkUI_AlignmentRuleOption* 
 **描述：**
 
 
-获取底部对齐的参数。
+获取底部对齐锚点组件的Id。
 
 **起始版本：** 12
 
@@ -5235,7 +5238,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetBottomId(ArkUI_AlignmentRuleOption* 
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 底部对齐的参数的id。 |
+| const char* | 底部对齐锚点组件的Id。 |
 
 ### OH_ArkUI_AlignmentRuleOption_GetBottomAlignment()
 
@@ -5246,7 +5249,7 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetBottomAlignment(ArkUI_Al
 **描述：**
 
 
-获取底部对齐的参数。
+获取底部对齐的方式。
 
 **起始版本：** 12
 
@@ -5261,7 +5264,7 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetBottomAlignment(ArkUI_Al
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_VerticalAlignment](capi-native-type-h.md#arkui_verticalalignment) | 底部对齐的参数的对齐方式。 |
+| [ArkUI_VerticalAlignment](capi-native-type-h.md#arkui_verticalalignment) | 底部对齐的方式。 |
 
 ### OH_ArkUI_AlignmentRuleOption_GetCenterIdVertical()
 
@@ -5272,7 +5275,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdVertical(ArkUI_AlignmentRule
 **描述：**
 
 
-获取纵向居中对齐方式的参数。
+获取纵向居中对齐锚点组件的Id。
 
 **起始版本：** 12
 
@@ -5287,7 +5290,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdVertical(ArkUI_AlignmentRule
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 纵向居中对齐方式的参数的id。 |
+| const char* | 纵向居中对齐锚点组件的Id。 |
 
 ### OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical()
 
@@ -5298,7 +5301,7 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical(
 **描述：**
 
 
-获取纵向居中对齐方式的参数。
+获取纵向居中对齐方式。
 
 **起始版本：** 12
 
@@ -5313,7 +5316,7 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical(
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_VerticalAlignment](capi-native-type-h.md#arkui_verticalalignment) | 纵向居中对齐方式的参数的对齐方式。 |
+| [ArkUI_VerticalAlignment](capi-native-type-h.md#arkui_verticalalignment) | 纵向居中对齐方式。 |
 
 ### OH_ArkUI_AlignmentRuleOption_GetBiasHorizontal()
 

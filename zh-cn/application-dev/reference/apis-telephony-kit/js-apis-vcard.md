@@ -32,7 +32,7 @@ importVCard\(context: Context, filePath: string, accountId: number, callback: As
 
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
-| Context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)   | 是   | 应用上下文。 |
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)   | 是   | 应用上下文。 |
 | filePath   | string                      | 是   | VCF(vcard file)文件地址。 |
 | accountId | number | 是                  | 联系人账户ID。|
 | callback | AsyncCallback&lt;void&gt; | 是   |回调函数，返回导入成功或失败的状态码。   |
@@ -83,9 +83,9 @@ importVCard\(context: Context, filePath: string, accountId?: number\): Promise\<
 
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
-| Context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)      | 是   | 应用上下文。 |
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)      | 是   | 应用上下文。 |
 | filePath   | string                      | 是   | VCF(vcard file)文件地址。 |
-| accountId   | number                      | 是   | 联系人账户ID。 |
+| accountId   | number                      | 否   | 联系人账户ID。 |
 
 **返回值：**
 
@@ -139,7 +139,7 @@ importVCard\(context: Context, filePath: string, callback: AsyncCallback\<void\>
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| Context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)  | 是   | 应用上下文。|
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)  | 是   | 应用上下文。|
 | filePath | string | 是   |  VCF(vcard file)文件地址。|
 | callback | AsyncCallback&lt;void&gt; | 是   |回调函数，返回导入成功或失败的状态码。 |
 
@@ -188,9 +188,9 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
-| Context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                    | 是   | 应用上下文。 |
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                    | 是   | 应用上下文。 |
 | predicates| [dataSharePredicates.DataSharePredicates](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md)| 是   | 查询语句。 |
-|  options  | VCardBuilderOptions | 否   | VCard版本与编码类型。|
+|  options  | VCardBuilderOptions | 是   | VCard版本与编码类型。|
 | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。生成的 VCF(vcard file)文件地址。                             |
 
 **错误码：**
@@ -244,9 +244,9 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
-| Context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)               | 是   | 应用上下文。 |
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)               | 是   | 应用上下文。 |
 | predicates | [dataSharePredicates.DataSharePredicates](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md) | 是   | 查询语句。 |
-| options   | VCardBuilderOptions | 是   | VCard版本与编码类型。 |  
+| options   | VCardBuilderOptions | 否   | VCard版本与编码类型。 |  
 
 **返回值：**
 
@@ -306,7 +306,7 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| Context      | [Context](../apis-ability-kit/js-apis-inner-application-context.md)     | 是   | 应用上下文。 |
+| context      | [Context](../apis-ability-kit/js-apis-inner-application-context.md)     | 是   | 应用上下文。 |
 | predicates   | [dataSharePredicates.DataSharePredicates](../../../application-dev/reference/apis-arkdata/js-apis-data-dataSharePredicates.md) | 是   | 查询语句。 |
 | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。生成的 VCF(vcard file)文件地址。|
 

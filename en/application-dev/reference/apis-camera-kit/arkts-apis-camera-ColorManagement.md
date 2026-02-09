@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-ColorManagement inherits from [ColorManagementQuery](arkts-apis-camera-ColorManagementQuery.md).
+**ColorManagement** inherits from [ColorManagementQuery](arkts-apis-camera-ColorManagementQuery.md).
 
 It provides the APIs for color space settings.
 
@@ -33,11 +33,21 @@ Before the setting, call [getSupportedColorSpaces](arkts-apis-camera-ColorManage
 
 An application can deliver different color space parameters to declare its support for P3 and HDR.
 
-If an application does not proactively set the color space, SDR is used by default in photo capture scenarios.
+For different modes, enabling HDR, setting the color space, and configuring [CameraFormat](arkts-apis-camera-e.md#cameraformat) in the camera output stream [profile](arkts-apis-camera-i.md#profile) should match. For details, see the table below. For example, to enable HDR in video recording mode, set [CameraFormat](arkts-apis-camera-e.md#cameraformat) in the camera preview and video output stream [profiles](arkts-apis-camera-i.md#profile) to **CAMERA_FORMAT_YCRCB_P010** and the color space to **2020_HLG_LIMIT**.
 
-To obtain HDR images in photo capture scenarios, set the color space to P3.
+To obtain HDR images in photo mode, set the color space to **DISPLAY_P3** or **BT2020_HLG**. **BT2020_HLG** provides a wider color gamut, and should be used together with the **CameraFormat**, including **CAMERA_FORMAT_YCRCB_P010** and **CAMERA_FORMAT_YCBCR_P010**, to improve the image quality.
 
-For different modes, enabling HDR, setting the color space, and configuring [CameraFormat](arkts-apis-camera-e.md#cameraformat) in the camera output stream [profile](arkts-apis-camera-i.md#profile) should match. For details, see the table below. For example, to enable HDR, set [CameraFormat](arkts-apis-camera-e.md#cameraformat) in the camera preview and video output stream [profiles](arkts-apis-camera-i.md#profile) to **CAMERA_FORMAT_YCRCB_P010** and the color space to **2020_HLG_LIMIT**.
+Since API version 23, you can call the [getSupportedFullOutputCapability](arkts-apis-camera-CameraManager.md#getsupportedfulloutputcapability23) API to check whether the preview format P010 is supported in photo mode.
+ - If the application does not set the color space, the default color space in photo mode is SRGB when the **CameraFormat** is **CAMERA_FORMAT_YUV_420_SP**, and the default color space is **BT2020_HLG** when the **CameraFormat** is **CAMERA_FORMAT_YCRCB_P010** or **CAMERA_FORMAT_YCBCR_P010**.
+ - If the application sets the color space, in photo mode, the **CameraFormat** and **ColorSpace** must be configured according to the following mapping table. Otherwise, an error code will be returned in [setColorSpace](arkts-apis-camera-ColorManagement.md#setcolorspace12) or [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1).
+
+  **Photo Mode**
+
+| SDR/HDR Photo Capture       | CameraFormat| ColorSpace|
+|--------------------|------------| ------------|
+| SDR(Default)       | CAMERA_FORMAT_YUV_420_SP       | SRGB       |
+| HDR P3               | CAMERA_FORMAT_YUV_420_SP | DISPLAY_P3 |
+| HDR BT.2020 | CAMERA_FORMAT_YCRCB_P010,<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG |
 
 In video recording mode, if SDR or HDR VIVID is enabled, the camera format and color space must be configured according to the relationships specified in the table below. Configurations that do not match the table will cause issues such as preview exceptions.
 
@@ -47,13 +57,6 @@ In video recording mode, if SDR or HDR VIVID is enabled, the camera format and c
 |--------------------|--------------------------|------------------|
 | SDR                | CAMERA_FORMAT_YUV_420_SP | BT709_LIMIT      |
 | HDR_VIVID          | CAMERA_FORMAT_YCRCB_P010<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG_LIMIT<br>BT2020_HLG_FULL |
-
-**Photo Mode**
-
-| SDR/HDR Photo Capture       | ColorSpace |
-|--------------------|------------|
-| SDR(Default)       | SRGB       |
-| HDR                | DISPLAY_P3 |
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
