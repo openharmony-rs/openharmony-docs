@@ -29,7 +29,7 @@ struct ParticleExample {
             },
           },
           color:{
-            range:['rgb(39, 135, 217)','rgb(0, 74, 175)'],//初始颜色范围
+            range:['rgb(39, 135, 217)','rgb(0, 74, 175)'], // 初始颜色范围
           },
         },
       ]
@@ -130,7 +130,7 @@ Particle({ particles: [
         ]
       }
     },
-    acceleration: { //加速度的配置，从大小和方向两个维度变化，speed表示加速度大小，angle表示加速度方向
+    acceleration: { // 加速度的配置，从大小和方向两个维度变化，speed表示加速度大小，angle表示加速度方向
       speed: {
         range: [3, 9],
         updater: {
