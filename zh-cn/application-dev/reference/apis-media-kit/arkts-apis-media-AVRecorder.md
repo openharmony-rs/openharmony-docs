@@ -849,7 +849,7 @@ getCurrentAudioCapturerInfo(callback: AsyncCallback\<audio.AudioCapturerChangeIn
 
 获取当前音频采集参数。使用callback异步回调。
 
-在prepare()成功触发后，才能调用此方法。在stop()成功触发后，调用此方法会报错。
+在[prepare()](#prepare9)成功触发后，才能调用此方法。在[stop()](#stop9)成功触发后，调用此方法会报错。
 
 **系统能力**：SystemCapability.Multimedia.Media.AVRecorder
 
@@ -893,7 +893,7 @@ getCurrentAudioCapturerInfo(): Promise\<audio.AudioCapturerChangeInfo>
 
 获取当前音频采集参数。使用Promise异步回调。
 
-在prepare()成功触发后，才能调用此方法。在stop()成功触发后，调用此方法会报错。
+在[prepare()](#prepare9)成功触发后，才能调用此方法。在[stop()](#stop9)成功触发后，调用此方法会报错。
 
 **系统能力**：SystemCapability.Multimedia.Media.AVRecorder
 
@@ -980,7 +980,7 @@ getAudioCapturerMaxAmplitude(): Promise\<number>
 
 获取当前音频最大振幅。使用Promise异步回调。
 
-在prepare()成功触发后，才能调用此方法。在stop()成功触发后，调用此方法会报错。
+在[prepare()](#prepare9)成功触发后，才能调用此方法。在[stop()](#stop9)成功触发后，调用此方法会报错。
 
 调用接口时，获取到的返回值是上一次获取最大振幅的时刻到当前这段区间内的音频最大振幅。例如，在1s时获取了一次最大振幅，到2s时再获取到的最大振幅是1-2s这个区间里面的最大值。
 
