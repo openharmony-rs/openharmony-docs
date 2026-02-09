@@ -20,7 +20,7 @@ import { camera } from '@kit.CameraKit';
 
 ## 属性
 
-**模型约束：** 此接口仅可在[Stage模型](../../application-models/stage-model-development-overview.md#stage模型开发概述)下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -36,7 +36,7 @@ release(): Promise\<void\>
 
 释放输出资源。使用Promise异步回调。
 
-**模型约束：** 此接口仅可在[Stage模型](../../application-models/stage-model-development-overview.md#stage模型开发概述)下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 

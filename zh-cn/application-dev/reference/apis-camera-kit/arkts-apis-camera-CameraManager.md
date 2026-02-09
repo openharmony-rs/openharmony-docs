@@ -132,7 +132,7 @@ getSupportedFullOutputCapability(camera: CameraDevice, mode: SceneMode): CameraO
 >
 > 使用YUV，HEIF或HDR等能力前，需要先显式调用此方法确保获取完整输出能力。
  
-**模型约束：** 此接口仅可在[Stage模型](../../application-models/stage-model-development-overview.md#stage模型开发概述)下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
