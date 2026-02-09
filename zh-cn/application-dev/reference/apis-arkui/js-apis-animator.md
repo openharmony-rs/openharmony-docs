@@ -1120,9 +1120,7 @@ struct AnimatorTest {
 }
 ```
 
-
 ![animator_01](figures/animator_01.gif)
-
 
 ### 位移动画示例（简易入参）
 
