@@ -276,7 +276,7 @@ For details about how to obtain the preview stream data, see [Dual-Channel Previ
 
 ## MetadataObject
 
-Describes the camera metadata, which is the data source of [CameraInput](arkts-apis-camera-CameraInput.md). The metadata is obtained through metadataOutput.on('metadataObjectsAvailable').
+Describes the camera metadata, which is the data source of [CameraInput](arkts-apis-camera-CameraInput.md). The metadata is obtained through **metadataOutput.on('metadataObjectsAvailable')**.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 

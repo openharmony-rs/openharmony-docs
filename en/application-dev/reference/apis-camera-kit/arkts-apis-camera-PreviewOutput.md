@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-PreviewOutput implements preview output. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
+**PreviewOutput** implements preview output. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
 > **NOTE**
 >
@@ -343,9 +343,9 @@ function testGetActiveProfile(previewOutput: camera.PreviewOutput): camera.Profi
 
 getPreviewRotation(displayRotation: number): ImageRotation
 
-Obtains the preview rotation degree.
+Obtains the preview rotation angle.
 
-- Device' natural orientation: The default orientation of the device (phone) is in portrait mode, with the charging port facing downward.
+- Device's natural orientation: The default orientation of the device (phone) is in portrait mode, with the charging port facing downward.
 - Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural direction. The rear camera sensor of a phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural direction.
 - Screen orientation: The top-left corner of the image displayed on the screen is the first pixel, which is the coordinate origin. In the case of lock screen, the direction is the same as the device's natural orientation.
 
@@ -363,7 +363,7 @@ Obtains the preview rotation degree.
 
 |      Type     | Description       |
 | -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Preview rotation degree. If the API call fails, undefined is returned.|
+| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Obtains the preview rotation angle. If the API call fails, undefined is returned.|
 
 **Error codes**
 
@@ -397,7 +397,7 @@ function testGetPreviewRotation(previewOutput: camera.PreviewOutput, imageRotati
 
 setPreviewRotation(previewRotation: ImageRotation, isDisplayLocked?: boolean): void
 
-Sets the preview rotation degree.
+Sets the preview rotation angle.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 

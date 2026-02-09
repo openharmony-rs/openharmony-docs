@@ -1271,13 +1271,15 @@ try {
 
 setKioskFeatures(admin: Want, features: Array\<KioskFeature>): void
 
-设置Kiosk模式的特征。[进入Kiosk模式](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode)后，系统会默认禁用通知中心、控制中心和最近任务栏等能力。可通过本接口解除对部分能力的禁用或恢复禁用。
+设置Kiosk模式的特征。通过本接口可以控制在[Kiosk模式](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode)下能否进入通知中心和控制中心。非Kiosk模式时，本接口可以正常调用，但是不会生效，进入Kiosk模式后才会生效。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_KIOSK
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在PC/2in1设备上调用无效果，在Phone和Tablet设备上可正常调用。
 
 **参数：**
 
@@ -1336,9 +1338,9 @@ Kiosk模式的特征。
 
 addUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
 
-为指定用户添加不可关停应用名单，仅可对已安装应用设置该策略。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。
-若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。
-<br>不可关停应用：用户不能在任务中心上划关闭应用；在设置-应用和元服务中点击应用名称进入详情页面后，页面中的强行停止按钮呈灰色不可用。
+为指定用户添加不可关停应用名单，仅可对已安装应用设置该策略。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。
+
+不可关停应用：用户不能在任务中心上划关闭应用；在设置-应用和元服务中点击应用名称进入详情页面后，页面中的强行停止按钮呈灰色不可用。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -1516,9 +1518,9 @@ try {
 
 addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
 
-为指定用户添加后台防冻结应用名单，仅可对已安装应用设置该策略，该策略重启后失效。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。
-若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。
-<br>冻结操作：对目标应用的挂起、软件资源代理、硬件资源代理和高功耗管控等操作。
+为指定用户添加后台防冻结应用名单，仅可对已安装应用设置该策略，该策略重启后失效。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。
+
+冻结操作：对目标应用的挂起、软件资源代理、硬件资源代理和高功耗管控等操作。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 

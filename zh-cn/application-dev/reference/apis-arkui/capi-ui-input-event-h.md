@@ -1009,7 +1009,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayX(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | float 返回相对于全局显示的X坐标，单位为px。如果发生任何参数错误，例如传递的一个事件没有位置信息，则返回0。 |
+| float | float 返回相对于全局显示的X坐标，单位为px。如果发生任何参数错误，例如传递的一个事件没有位置信息，则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayXByIndex()
 
@@ -1062,7 +1062,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayY(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | float 返回相对于全局显示的Y坐标，单位为px。如果发生任何参数错误，例如传递的一个事件没有位置信息，则返回0。 |
+| float | float 返回相对于全局显示的Y坐标，单位为px。如果发生任何参数错误，例如传递的一个事件没有位置信息，则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex()
 

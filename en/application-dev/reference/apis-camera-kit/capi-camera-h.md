@@ -116,7 +116,7 @@ Enumerates the camera error codes.
 | CAMERA_DEVICE_DISABLED = 7400108 | The camera is disabled for security reasons.|
 | CAMERA_DEVICE_PREEMPTED = 7400109 | The camera is preempted.|
 | CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 | The configuration conflicts with the current configuration.<br>**Since**: 12|
-| CAMERA_SERVICE_FATAL_ERROR = 7400201 | A fatal error occurs in the camera service.<br> for example, no camera permission, camera service restart, or abnormal cross-process invocation.|
+| CAMERA_SERVICE_FATAL_ERROR = 7400201 | A fatal error occurs in the camera service, for example, no camera permission, camera service restart, or abnormal cross-process invocation.|
 
 ### Camera_Status
 
@@ -247,7 +247,7 @@ Enumerates the flash modes.
 | -- | -- |
 | FLASH_MODE_CLOSE = 0 | The flash is off.|
 | FLASH_MODE_OPEN = 1 | The flash is on.|
-| FLASH_MODE_AUTO = 2 | The flash mode is auto.|
+| FLASH_MODE_AUTO = 2 | The flash is auto.|
 | FLASH_MODE_ALWAYS_OPEN = 3 | The flash is steady on.|
 
 ### Camera_ExposureMode

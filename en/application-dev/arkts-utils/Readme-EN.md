@@ -33,7 +33,6 @@
     - Inter-Thread Communication Objects<!--interthread-communication-object-->
       - [Overview of Inter-Thread Communication Objects](serializable-overview.md)
       - [Regular Object](normal-object.md)
-      - [Container Object](container-object.md)
       - [ArrayBuffer Object](arraybuffer-object.md)
       - [SharedArrayBuffer Object](shared-arraybuffer-object.md)
       - [Transferable Object (NativeBinding Object)](transferabled-object.md)

@@ -188,7 +188,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 
-**Example:**
+**Example**
 
 ```ts
 // ExtensionProvider.ts
@@ -275,7 +275,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 
-**Example:**
+**Example**
 
 ```ts
 // ExtensionProvider.ts
@@ -321,7 +321,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 
-**Example:**
+**Example**
 
 ```ts
 // ExtensionProvider.ts
@@ -363,7 +363,7 @@ Creates a subwindow for this window proxy. This API uses a promise to return the
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). and [Window Error Codes](errorcode-window.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
 | ID| Error Message|
 | ------- | ------------------------------ |
@@ -371,7 +371,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. |
 
-**Example:**
+**Example**
 
 ```ts
 // ExtensionProvider.ts
@@ -442,7 +442,7 @@ Sets the events that the component (**EmbeddedComponent** or **UIExtensionCompon
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). and [Window Error Codes](errorcode-window.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
 | ID| Error Message|
 | -------- | ------------------------------ |
@@ -450,7 +450,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1300002  | This window state is abnormal. |
 | 1300003  | This window manager service works abnormally. |
 
-**Example:**
+**Example**
 
 ```ts
 // ExtensionProvider.ts
@@ -548,9 +548,9 @@ Provides the values and reasons returned when the rectangle (position and size) 
 
 ## Example
 
-This example shows how to use all the available APIs in the [EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md). The bundle name of the sample application is **com.example.embeddeddemo**, and the EmbeddedUIExtensionAbility to start is **ExampleEmbeddedAbility**.
+This example shows how to use all the available APIs in the [EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md). The bundle name of the sample application is **com.example.embeddeddemo**, and the **EmbeddedUIExtensionAbility** to start is **ExampleEmbeddedAbility**.
 
-- The EntryAbility (UIAbility) of the sample application loads the **pages/Index.ets** file, whose content is as follows:
+- The **EntryAbility** (**UIAbility**) of the sample application loads the **pages/Index.ets** file, whose content is as follows:
 
   ```ts
   // The UIAbility loads pages/Index.ets when started.
@@ -586,7 +586,7 @@ This example shows how to use all the available APIs in the [EmbeddedUIExtension
   }
   ```
 
-- The EmbeddedUIExtensionAbility to start by the **EmbeddedComponent** is implemented in the **ets/extensionAbility/ExampleEmbeddedAbility** file. The file content is as follows:
+- The **EmbeddedUIExtensionAbility** to start by the **EmbeddedComponent** is implemented in the **ets/extensionAbility/ExampleEmbeddedAbility** file. The file content is as follows:
 
   ```ts
   import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -621,7 +621,7 @@ This example shows how to use all the available APIs in the [EmbeddedUIExtension
   }
   ```
 
-- The entry page file of the EmbeddedUIExtensionAbility is **pages/extension.ets**, whose content is as follows:
+- The entry page file of the **EmbeddedUIExtensionAbility** is **pages/extension.ets**, whose content is as follows:
 
   ```ts
   import { UIExtensionContentSession } from '@kit.AbilityKit';

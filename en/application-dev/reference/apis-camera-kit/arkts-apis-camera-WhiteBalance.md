@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-WhiteBalance inherits from [WhiteBalanceQuery](arkts-apis-camera-WhiteBalanceQuery.md).
+**WhiteBalance** inherits from [WhiteBalanceQuery](arkts-apis-camera-WhiteBalanceQuery.md).
 
 It provides APIs to process white balance, including obtaining and setting the white balance mode and white balance value.
 

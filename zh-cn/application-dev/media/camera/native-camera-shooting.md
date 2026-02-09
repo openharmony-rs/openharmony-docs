@@ -14,13 +14,23 @@
 
 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
-   ```c++
-   // 导入NDK接口头文件。
+   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->
+   
+   ``` C
    #include <cstdint>
-   #include <cstdlib>
-   #include <cstring>
-   #include <string.h>
-   #include <new>
+   #include <native_buffer/buffer_common.h>
+   #include <unistd.h>
+   #include <string>
+   #include <thread>
+   #include <cstdio>
+   #include <fcntl.h>
+   #include <map>
+   #include <string>
+   #include <vector>
+   #include <native_buffer/native_buffer.h>
+   #include "iostream"
+   #include "mutex"
+   
    #include "hilog/log.h"
    #include "ohcamera/camera.h"
    #include "ohcamera/camera_input.h"
@@ -28,8 +38,27 @@
    #include "ohcamera/photo_output.h"
    #include "ohcamera/preview_output.h"
    #include "ohcamera/video_output.h"
+   #include "napi/native_api.h"
    #include "ohcamera/camera_manager.h"
-   #include <multimedia/image_framework/image/image_native.h>
+   #include <window_manager/oh_display_info.h>
+   #include <window_manager/oh_display_manager.h>
+   
+   namespace OHOS_CAMERA_SAMPLE {
+   class NDKCamera {
+     public:
+       struct CameraBuildingConfig {
+           char *str;
+           uint32_t focusMode;
+           uint32_t cameraDeviceIndex;
+           bool isVideo;
+           bool isHdr;
+           char *videoId;
+       };
+       ~NDKCamera();
+       explicit NDKCamera(CameraBuildingConfig config);
+       // ...
+   };
+   } // namespace OHOS_CAMERA_SAMPLE
    ```
 
 2. 在CMake脚本中链接相关动态库。
@@ -51,15 +80,28 @@
 
    通过[OH_CameraManager_CreatePhotoOutputWithoutSurface()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createphotooutputwithoutsurface)方法创建拍照输出流。
 
-   ```c++
-   Camera_PhotoOutput* CreatePhotoOutput(Camera_Manager* cameraManager, const Camera_Profile* photoProfile) {
-       Camera_PhotoOutput* photoOutput = nullptr;
-       // 无需传入surfaceId，直接创建拍照流。
-       Camera_ErrorCode ret = OH_CameraManager_CreatePhotoOutputWithoutSurface(cameraManager, photoProfile, &photoOutput);
-       if (photoOutput == nullptr || ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreatePhotoOutputWithoutSurface failed.");
+   <!-- @[create_photo_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   
+   ``` C++
+   Camera_ErrorCode NDKCamera::CreatePhotoOutputWithoutSurfaceId()
+   {
+       OH_LOG_ERROR(LOG_APP, "CreatePhotoOutputWithoutSurfaceId enter.");
+       profile_ = cameraOutputCapability_->photoProfiles[0];
+       Camera_Profile* profile = cameraOutputCapability_->photoProfiles[0];
+       profile->size.width = NUM_1920;
+       profile->size.height = NUM_1080;
+       profile_ = profile;
+       if (profile_ == nullptr) {
+           OH_LOG_ERROR(LOG_APP, "Get photoProfiles failed.");
+           return CAMERA_INVALID_ARGUMENT;
        }
-       return photoOutput;
+       ret_ = OH_CameraManager_CreatePhotoOutputWithoutSurface(cameraManager_, profile_, &photoOutput_);
+       if (photoOutput_ == nullptr || ret_ != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "CreatePhotoOutputWithoutSurfaceId failed.");
+           return CAMERA_INVALID_ARGUMENT;
+       }
+   // ...
+       return ret_;
    }
    ```
 
@@ -78,150 +120,163 @@
    - 将处理完的buffer通过回调传给ArkTS侧，做图片显示或通过安全控件写文件保存图片。
    - 使用完后解注册单段式拍照回调函数。
 
-     ```c++
+     <!-- @[photo_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+     
+     ``` C++
      // 保存NAPI侧注册的buffer处理回调函数。
-     static void* bufferCb = nullptr;
-     Camera_ErrorCode RegisterBufferCb(void* cb) {
+     Camera_ErrorCode NDKCamera::RegisterBufferCb(void *cb)
+     {
          OH_LOG_INFO(LOG_APP, " RegisterBufferCb start");
          if (cb == nullptr) {
              OH_LOG_INFO(LOG_APP, " RegisterBufferCb invalid error");
              return CAMERA_INVALID_ARGUMENT;
          }
-         bufferCb = cb;
+         g_bufferCb = cb;
          return CAMERA_OK;
      }
-
-     // 单段式拍照回调函数。
-     void OnPhotoAvailable(Camera_PhotoOutput* photoOutput, OH_PhotoNative* photo) {
-         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable start!");
-         OH_ImageNative* imageNative;
-         Camera_ErrorCode errCode = OH_PhotoNative_GetMainImage(photo, &imageNative);
-         if (errCode != CAMERA_OK || imageNative == nullptr) {
-             OH_LOG_ERROR(LOG_APP, "OH_PhotoNative_GetMainImage call failed, errorCode: %{public}d", errCode);
-             return;
+     
+     static bool ProcessImageNative(OH_ImageNative* imageNative, uint32_t** components,
+                                    OH_NativeBuffer** nativeBuffer, size_t* nativeBufferSize)
+     {
+         if (imageNative == nullptr || components == nullptr || nativeBuffer == nullptr || nativeBufferSize == nullptr) {
+             return false;
          }
-         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable errCode:%{public}d imageNative:%{public}p", errCode, imageNative);
-         // 读取OH_ImageNative的size属性。
+     
          Image_Size size;
          Image_ErrorCode imageErr = OH_ImageNative_GetImageSize(imageNative, &size);
          if (imageErr != IMAGE_SUCCESS) {
-              OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetImageSize call failed, errorCode: %{public}d", imageErr);
-              OH_PhotoNative_Release(photo);
-              return;
-          }
-         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d width:%{public}d height:%{public}d", imageErr,
-            size.width, size.height);
-         // 读取OH_ImageNative的组件列表的元素个数。
+             return false;
+         }
+     
          size_t componentTypeSize = 0;
          imageErr = OH_ImageNative_GetComponentTypes(imageNative, nullptr, &componentTypeSize);
          if (imageErr != IMAGE_SUCCESS || componentTypeSize == 0) {
-             OH_LOG_ERROR(LOG_APP, "cOH_ImageNative_GetComponentTypes call failed, errorCode: %{public}d", imageErr);
-             OH_PhotoNative_Release(photo);
-             return;
+             OH_LOG_ERROR(LOG_APP, "GetComponentTypes failed: %{public}d, size: %{public}zu",
+                 imageErr, componentTypeSize);
+             return false;
          }
-         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d componentTypeSize:%{public}zu", imageErr,
-            componentTypeSize);
-         // 读取OH_ImageNative的组件列表。
-         uint32_t* components = new (std::nothrow) uint32_t[componentTypeSize];
-         if (!components) {
-             OH_LOG_ERROR(LOG_APP, "Failed to allocate memory");
-             OH_PhotoNative_Release(photo);
-             return;
+     
+         if (componentTypeSize > (SIZE_MAX / sizeof(uint32_t))) {
+             OH_LOG_ERROR(LOG_APP, "componentTypeSize too large: %{public}zu", componentTypeSize);
+             return false;
          }
-         imageErr = OH_ImageNative_GetComponentTypes(imageNative, &components, &componentTypeSize);
+     
+         uint32_t* compArray = new (std::nothrow) uint32_t[componentTypeSize];
+         if (!compArray) {
+             return false;
+         }
+     
+         size_t tempSize = componentTypeSize;
+         imageErr = OH_ImageNative_GetComponentTypes(imageNative, &compArray, &tempSize);
          if (imageErr != IMAGE_SUCCESS) {
-             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetComponentTypes call failed, errorCode: %{public}d", imageErr);
-             OH_PhotoNative_Release(photo);
-             delete[] components;
-             return;
+             delete[] compArray;
+             return false;
          }
-         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable OH_ImageNative_GetComponentTypes imageErr:%{public}d", imageErr);
-         // 读取OH_ImageNative的第一个组件所对应的缓冲区对象。
-         OH_NativeBuffer* nativeBuffer = nullptr;
-         imageErr = OH_ImageNative_GetByteBuffer(imageNative, components[0], &nativeBuffer);
+         *components = compArray;
+     
+         imageErr = OH_ImageNative_GetByteBuffer(imageNative, compArray[0], nativeBuffer);
          if (imageErr != IMAGE_SUCCESS) {
-             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetByteBuffer call failed, errorCode: %{public}d", imageErr);
-             OH_PhotoNative_Release(photo);
-             delete[] components;
-             return;
+             delete[] compArray;
+             return false;
          }
-         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable OH_ImageNative_GetByteBuffer imageErr:%{public}d", imageErr);
-         // 读取OH_ImageNative的第一个组件所对应的缓冲区大小。
-         size_t nativeBufferSize = 0;
-         imageErr = OH_ImageNative_GetBufferSize(imageNative, components[0], &nativeBufferSize);
+     
+         imageErr = OH_ImageNative_GetBufferSize(imageNative, compArray[0], nativeBufferSize);
          if (imageErr != IMAGE_SUCCESS) {
-             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetBufferSize call failed, errorCode: %{public}d", imageErr);
-             OH_PhotoNative_Release(photo);
-             delete[] components;
-             return;
+             delete[] compArray;
+             return false;
          }
-         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d nativeBufferSize:%{public}zu", imageErr,
-            nativeBufferSize);
-         // 读取OH_ImageNative的第一个组件所对应的像素行宽。
+     
          int32_t rowStride = 0;
-         imageErr = OH_ImageNative_GetRowStride(imageNative, components[0], &rowStride);
-         if (imageErr != IMAGE_SUCCESS) {
-             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetRowStride call failed, errorCode: %{public}d", imageErr);
-             OH_PhotoNative_Release(photo);
-             delete[] components;
-             return;
-         }
-         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d rowStride:%{public}d", imageErr, rowStride);
-         // 读取OH_ImageNative的第一个组件所对应的像素大小。
          int32_t pixelStride = 0;
-         imageErr = OH_ImageNative_GetPixelStride(imageNative, components[0], &pixelStride);
-         if (imageErr != IMAGE_SUCCESS) {
-             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetPixelStride call failed, errorCode: %{public}d", imageErr);
-             OH_PhotoNative_Release(photo);
+         OH_ImageNative_GetRowStride(imageNative, compArray[0], &rowStride);
+         OH_ImageNative_GetPixelStride(imageNative, compArray[0], &pixelStride);
+         OH_LOG_INFO(LOG_APP, "Buffer size: %{public}zu, strides: %{public}d/%{public}d",
+             *nativeBufferSize, rowStride, pixelStride);
+     
+         return true;
+     }
+     
+     
+     static void CleanupResources(OH_ImageNative* imageNative, uint32_t* components,
+                                  OH_NativeBuffer* nativeBuffer, void* virAddr)
+     {
+         if (components) {
              delete[] components;
+         }
+     
+         if (imageNative) {
+             int32_t ret = OH_ImageNative_Release(imageNative);
+             if (ret != 0) {
+                 OH_LOG_ERROR(LOG_APP, "Release image failed: %{public}d", ret);
+             }
+         }
+     
+         if (nativeBuffer && virAddr) {
+             int32_t ret = OH_NativeBuffer_Unmap(nativeBuffer);
+             if (ret != 0) {
+                 OH_LOG_ERROR(LOG_APP, "Unmap buffer failed: %{public}d", ret);
+             }
+         }
+     }
+     
+     void OnPhotoAvailable(Camera_PhotoOutput *photoOutput, OH_PhotoNative *photo)
+     {
+         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable start!");
+     
+         OH_ImageNative *imageNative = nullptr;
+         Camera_ErrorCode errCode = OH_PhotoNative_GetMainImage(photo, &imageNative);
+         if (errCode != CAMERA_OK || !imageNative) {
+             OH_LOG_ERROR(LOG_APP, "GetMainImage failed: %{public}d", errCode);
              return;
          }
-         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d pixelStride:%{public}d", imageErr, pixelStride);
-         // 将ION内存映射到进程空间。
-         void* virAddr = nullptr; // 指向映射内存的虚拟地址，解除映射后这个指针将不再有效。
-         int32_t ret = OH_NativeBuffer_Map(nativeBuffer, &virAddr); // 映射后通过第二个参数virAddr返回内存的首地址。
-         if (ret != 0) {
-             OH_LOG_ERROR(LOG_APP, "OH_NativeBuffer_Map call failed, errorCode: %{public}d", ret);
-             OH_PhotoNative_Release(photo);
-             delete[] components;
+     
+         uint32_t* components = nullptr;
+         OH_NativeBuffer* nativeBuffer = nullptr;
+         size_t nativeBufferSize = 0;
+     
+         if (!ProcessImageNative(imageNative, &components, &nativeBuffer, &nativeBufferSize)) {
+             CleanupResources(imageNative, components, nullptr, nullptr);
              return;
          }
-         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable OH_NativeBuffer_Map err:%{public}d", ret);
-         // 调用NAPI层buffer回调。
-         auto cb = (void (*)(void *, size_t))(bufferCb);
-         if (!virAddr || nativeBufferSize <= 0) {
-           OH_LOG_INFO(LOG_APP, "On buffer callback failed");
-           return;
+     
+         void* virAddr = nullptr;
+         int32_t ret = OH_NativeBuffer_Map(nativeBuffer, &virAddr);
+         if (ret != 0 || !virAddr) {
+             OH_LOG_ERROR(LOG_APP, "Map buffer failed: %{public}d", ret);
+             CleanupResources(imageNative, components, nativeBuffer, nullptr);
+             return;
          }
-         cb(virAddr, nativeBufferSize);
-         // 释放资源。
-         delete[] components;
-         ret = OH_PhotoNative_Release(photo);
-         if (ret != 0) {
-             OH_LOG_ERROR(LOG_APP, "OH_PhotoNative_Release call failed., errorCode: %{public}d", ret);
+     
+         auto cb = (void (*)(void *, size_t))(g_bufferCb);
+         if (cb && virAddr && nativeBufferSize > 0) {
+             cb(virAddr, nativeBufferSize);
+             OH_LOG_INFO(LOG_APP, "Buffer callback called");
+         } else {
+             OH_LOG_ERROR(LOG_APP, "Invalid callback parameters");
          }
-         ret = OH_NativeBuffer_Unmap(nativeBuffer); // 在处理完之后，解除映射并释放缓冲区。
-         if (ret != 0) {
-             OH_LOG_ERROR(LOG_APP, "OH_NativeBuffer_Unmap call failed, errorCode: %{public}d", ret);
-         }
+     
+         CleanupResources(imageNative, components, nativeBuffer, virAddr);
+     
          OH_LOG_INFO(LOG_APP, "OnPhotoAvailable end");
      }
-
-     // 注册单段式拍照回调。
-     Camera_ErrorCode PhotoOutputRegisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput) {
-         OH_LOG_INFO(LOG_APP, "PhotoOutputRegisterPhotoAvailableCallback start!");
-         Camera_ErrorCode ret = OH_PhotoOutput_RegisterPhotoAvailableCallback(photoOutput, OnPhotoAvailable);
+     
+     Camera_ErrorCode NDKCamera::PhotoOutputRegisterPhotoAvailableCallback(void)
+     {
+         OH_LOG_INFO(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback start!");
+         Camera_ErrorCode ret = OH_PhotoOutput_RegisterPhotoAvailableCallback(photoOutput_, OnPhotoAvailable);
          if (ret != CAMERA_OK) {
-             OH_LOG_ERROR(LOG_APP, "PhotoOutputRegisterPhotoAvailableCallback failed.");
+             OH_LOG_INFO(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback failed.");
          }
-         OH_LOG_INFO(LOG_APP, "PhotoOutputRegisterPhotoAvailableCallback return with ret code: %{public}d!", ret);
+         OH_LOG_INFO(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback return with ret code: %{public}d!",
+             ret_);
          return ret;
      }
-
+     
      // 解注册单段式拍照回调。
-     Camera_ErrorCode PhotoOutputUnRegisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput) {
+     Camera_ErrorCode NDKCamera::PhotoOutputUnRegisterPhotoAvailableCallback()
+     {
          OH_LOG_INFO(LOG_APP, "PhotoOutputUnRegisterPhotoAvailableCallback start!");
-         Camera_ErrorCode ret = OH_PhotoOutput_UnregisterPhotoAvailableCallback(photoOutput, OnPhotoAvailable);
+         Camera_ErrorCode ret = OH_PhotoOutput_UnregisterPhotoAvailableCallback(photoOutput_, OnPhotoAvailable);
          if (ret != CAMERA_OK) {
              OH_LOG_ERROR(LOG_APP, "PhotoOutputUnRegisterPhotoAvailableCallback failed.");
          }
@@ -232,19 +287,22 @@
 
      NAPI层buffer回处理参考示例代码：
 
-     ```c++
-     static napi_ref bufferCbRef_ = nullptr;
-     static napi_env env_;
-     size_t g_size = 0;
-
+     <!-- @[napi_buffer_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/main.cpp) -->
+     
+     ``` C++
      // NAPI层buffer回调方法。
-     static void BufferCb(void* buffer, size_t size) {
+     static void BufferCb(void* buffer, size_t size)
+     {
          OH_LOG_INFO(LOG_APP, "BufferCb size:%{public}zu", size);
          g_size = size;
          napi_value asyncResource = nullptr;
          napi_value asyncResourceName = nullptr;
          napi_async_work work;
-
+     
+         if (size == 0 || size > SIZE_MAX) {
+             OH_LOG_ERROR(LOG_APP, "BufferCb size is invalid");
+             return;
+         }
          void* copyBuffer = malloc(size);
          if (copyBuffer == nullptr) {
              return;
@@ -272,12 +330,8 @@
                  }
                  // 调用ArkTS的buffer处理回调函数，将图片arrayBuffer传给页面做显示或保存。
                  napi_call_function(env, nullptr, callback, 1, &arrayBuffer, &retVal);
-                 // 清理内存。
-                 free(data); // 释放在异步工作中分配的内存。
-                 free(copyBuffer);
              },
              copyBuffer, &work);
-
          // 错误检查：创建异步工作失败时释放内存。
          if (status != napi_ok) {
              OH_LOG_ERROR(LOG_APP, "Failed to create async work");
@@ -285,28 +339,6 @@
              return;
          }
          napi_queue_async_work_with_qos(env_, work, napi_qos_user_initiated);
-     }
-
-     // 保存ArkTS侧传入的buffer处理回调函数。
-     static napi_value SetBufferCb(napi_env env, napi_callback_info info) {
-         OH_LOG_INFO(LOG_APP, "SetBufferCb start");
-         napi_value result;
-         napi_get_undefined(env, &result);
-
-         napi_value argValue[1] = {nullptr};
-         size_t argCount = 1;
-         napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr);
-
-         env_ = env;
-         napi_create_reference(env, argValue[0], 1, &bufferCbRef_);
-         if (bufferCbRef_) {
-             OH_LOG_INFO(LOG_APP, "SetBufferCb callbackRef is full");
-         } else {
-             OH_LOG_ERROR(LOG_APP, "SetBufferCb callbackRef is null");
-         }
-         // 注册ArkTS侧buffer回调到NAPI层。
-         RegisterBufferCb((void *)BufferCb);
-         return result;
      }
      ```
 
@@ -316,86 +348,117 @@
 
    配置相机的参数可以调整拍照的一些功能，包括闪光灯、变焦、焦距等。
 
-   ```c++
-   // 判断设备是否支持闪光灯。
-   bool HasFlash(Camera_CaptureSession* captureSession)
+   <!-- @[settings_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   
+   ``` C++
+   Camera_ErrorCode NDKCamera::HasFlashFn(uint32_t mode)
    {
+       Camera_FlashMode flashMode = static_cast<Camera_FlashMode>(mode);
+       // 检查闪光灯。
        bool hasFlash = false;
-       Camera_ErrorCode ret = OH_CaptureSession_HasFlash(captureSession, &hasFlash);
-       if (ret != CAMERA_OK) {
+       Camera_ErrorCode ret = OH_CaptureSession_HasFlash(captureSession_, &hasFlash);
+       if (captureSession_ == nullptr || ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_HasFlash failed.");
        }
        if (hasFlash) {
-           OH_LOG_INFO(LOG_APP, "hasFlash success");
+           OH_LOG_INFO(LOG_APP, "hasFlash success-----");
        } else {
-           OH_LOG_ERROR(LOG_APP, "hasFlash fail");
+           OH_LOG_ERROR(LOG_APP, "hasFlash fail-----");
        }
-       return hasFlash;
-   }
-
-   // 检测闪光灯模式是否支持。
-   bool IsFlashModeSupported(Camera_CaptureSession* captureSession, Camera_FlashMode flashMode)
-   {
+   
+       // 查询闪光灯模式是否支持。
        bool isSupported = false;
-       Camera_ErrorCode ret = OH_CaptureSession_IsFlashModeSupported(captureSession, flashMode, &isSupported);
+       ret = OH_CaptureSession_IsFlashModeSupported(captureSession_, flashMode, &isSupported);
        if (ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_IsFlashModeSupported failed.");
        }
-       return isSupported;
-   }
-   // 在支持flashMode的情况下进行调用OH_CaptureSession_SetFlashMode。
-   Camera_ErrorCode SetFlashMode(Camera_CaptureSession* captureSession, Camera_FlashMode flashMode)
-   {
-       Camera_ErrorCode ret = OH_CaptureSession_SetFlashMode(captureSession, flashMode);
+       if (isSupported) {
+           OH_LOG_INFO(LOG_APP, "isFlashModeSupported success-----");
+       } else {
+           OH_LOG_ERROR(LOG_APP, "isFlashModeSupported fail-----");
+       }
+   
+       // 设置闪光灯模式。
+       ret = OH_CaptureSession_SetFlashMode(captureSession_, flashMode);
        if (ret == CAMERA_OK) {
            OH_LOG_INFO(LOG_APP, "OH_CaptureSession_SetFlashMode success.");
        } else {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetFlashMode failed. %{public}d ", ret);
        }
-       return ret;
-   }
-
-   // 判断是否支持连续自动变焦模式。
-   bool IsFocusModeSupported(Camera_CaptureSession* captureSession, Camera_FocusMode focusMode)
-   {
-       bool isFocusModeSupported = false;
-       Camera_ErrorCode ret = OH_CaptureSession_IsFocusModeSupported(captureSession, focusMode, &isFocusModeSupported);
-       if (ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_IsFocusModeSupported failed.");
-       }
-       return isFocusModeSupported;
-   }
-   // 在支持focusMode的情况下进行OH_CaptureSession_SetFocusMode。
-   Camera_ErrorCode SetFocusMode(Camera_CaptureSession* captureSession, Camera_FocusMode focusMode)
-   {
-       Camera_ErrorCode ret = OH_CaptureSession_SetFocusMode(captureSession, focusMode);
-       if (ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetFocusMode failed. %{public}d ", ret);
-       }
-       return ret;
-   }
-
-   // 获取相机支持的可变焦距比范围。
-   Camera_ErrorCode GetZoomRatioRange(Camera_CaptureSession* captureSession, float* minZoom, float* maxZoom)
-   {
-       Camera_ErrorCode ret = OH_CaptureSession_GetZoomRatioRange(captureSession, minZoom, maxZoom);
-       if (ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetZoomRatioRange failed.");
+   
+       // 获取当前设备的闪光灯模式。
+       ret = OH_CaptureSession_GetFlashMode(captureSession_, &flashMode);
+       if (ret == CAMERA_OK) {
+           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetFlashMode success. flashMode：%{public}d ", flashMode);
        } else {
-           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatioRange success. minZoom: %{public}f, maxZoom:%{public}f",
-               *minZoom, *maxZoom);
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetFlashMode failed. %d ", ret);
        }
        return ret;
    }
    
-   // 设置变焦，zoom需要在可变焦距比范围内。
-   Camera_ErrorCode SetZoomRatio(Camera_CaptureSession* captureSession, float zoom)
+   // 对焦模式。
+   Camera_ErrorCode NDKCamera::IsFocusModeSupported(uint32_t mode)
    {
-       Camera_ErrorCode ret = OH_CaptureSession_SetZoomRatio(captureSession, zoom);
+       Camera_FocusMode focusMode = static_cast<Camera_FocusMode>(mode);
+       ret_ = OH_CaptureSession_IsFocusModeSupported(captureSession_, focusMode, &isFocusModeSupported_);
+       if (&isFocusModeSupported_ == nullptr || ret_ != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "IsFocusModeSupported failed.");
+           return CAMERA_INVALID_ARGUMENT;
+       }
+       return ret_;
+   }
+   
+   Camera_ErrorCode NDKCamera::IsFocusMode(uint32_t mode)
+   {
+       OH_LOG_INFO(LOG_APP, "IsFocusMode start.");
+       Camera_FocusMode focusMode = static_cast<Camera_FocusMode>(mode);
+       ret_ = OH_CaptureSession_IsFocusModeSupported(captureSession_, focusMode, &isFocusModeSupported_);
+       if (&isFocusModeSupported_ == nullptr || ret_ != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "IsFocusModeSupported failed.");
+           return CAMERA_INVALID_ARGUMENT;
+       }
+       ret_ = OH_CaptureSession_SetFocusMode(captureSession_, focusMode);
+       if (ret_ != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "SetFocusMode failed.");
+           return CAMERA_INVALID_ARGUMENT;
+       }
+       ret_ = OH_CaptureSession_GetFocusMode(captureSession_, &focusMode);
+       if (&focusMode == nullptr || ret_ != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "GetFocusMode failed.");
+           return CAMERA_INVALID_ARGUMENT;
+       }
+       OH_LOG_INFO(LOG_APP, "IsFocusMode end.");
+       return ret_;
+   }
+   
+   Camera_ErrorCode NDKCamera::setZoomRatioFn(uint32_t zoomRatio)
+   {
+       float zoom = float(zoomRatio);
+       // 获取支持的缩放范围。
+       float minZoom;
+       float maxZoom;
+       Camera_ErrorCode ret = OH_CaptureSession_GetZoomRatioRange(captureSession_, &minZoom, &maxZoom);
+       if (captureSession_ == nullptr || ret != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetZoomRatioRange failed.");
+       } else {
+           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatioRange success. minZoom: %{public}f, maxZoom:%{public}f",
+               minZoom, maxZoom);
+       }
+   
+       // 设置缩放比例。
+       ret = OH_CaptureSession_SetZoomRatio(captureSession_, zoom);
        if (ret == CAMERA_OK) {
            OH_LOG_INFO(LOG_APP, "OH_CaptureSession_SetZoomRatio success.");
        } else {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetZoomRatio failed. %{public}d ", ret);
+       }
+   
+       // 获取当前设备的缩放比例。
+       ret = OH_CaptureSession_GetZoomRatio(captureSession_, &zoom);
+       if (ret == CAMERA_OK) {
+           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatio success. zoom：%{public}f ", zoom);
+       } else {
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetZoomRatio failed. %{public}d ", ret);
        }
        return ret;
    }
@@ -403,17 +466,28 @@
 
 8. 触发拍照。
 
-   通过[OH_PhotoOutput_Capture()](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_capture)方法，执行拍照任务。
+   通过[OH_PhotoOutput_Capture_WithCaptureSetting()](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_capture_withcapturesetting)方法，执行拍照任务。
 
-   ```c++
-   Camera_ErrorCode Capture(Camera_PhotoOutput* photoOutput)
+   <!-- @[capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   
+   ``` C++
+   Camera_ErrorCode NDKCamera::TakePicture(int32_t degree)
    {
-       Camera_ErrorCode ret = OH_PhotoOutput_Capture(photoOutput);
-       if (ret == CAMERA_OK) {
-           OH_LOG_INFO(LOG_APP, "OH_PhotoOutput_Capture success ");
-       } else {
-           OH_LOG_ERROR(LOG_APP, "OH_PhotoOutput_Capture failed. %d ", ret);
-       }
+       Camera_ErrorCode ret = CAMERA_OK;
+       Camera_ImageRotation imageRotation;
+       bool isMirSupported;
+       OH_PhotoOutput_IsMirrorSupported(photoOutput_, &isMirSupported);
+       OH_PhotoOutput_GetPhotoRotation(photoOutput_, degree, &imageRotation);
+   
+       Camera_PhotoCaptureSetting curPhotoSetting = {
+           quality : QUALITY_LEVEL_HIGH,
+           rotation : imageRotation,
+           mirror : isMirSupported
+       };
+       ret = OH_PhotoOutput_Capture_WithCaptureSetting(photoOutput_, curPhotoSetting);
+       OH_LOG_INFO(LOG_APP, "TakePicture get quality %{public}d, rotation %{public}d, mirror %{public}d",
+           curPhotoSetting.quality, curPhotoSetting.rotation, curPhotoSetting.mirror);
+       OH_LOG_INFO(LOG_APP, "TakePicture ret = %{public}d.", ret);
        return ret;
    }
    ```
@@ -423,36 +497,48 @@
 在相机应用开发过程中，可以随时监听拍照输出流状态，包括拍照流开始、拍照帧的开始与结束、拍照输出流的错误。
 
 - 通过注册固定的onFrameStart回调函数获取监听拍照开始结果，photoOutput创建成功时即可监听，拍照第一次曝光时触发。
-  ```c++
-  void PhotoOutputOnFrameStart(Camera_PhotoOutput* photoOutput)
+
+  <!-- @[photo_output_start_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  
+  ``` C++
+  // PhotoOutput Callback
+  void PhotoOutputOnFrameStart(Camera_PhotoOutput *photoOutput)
   {
       OH_LOG_INFO(LOG_APP, "PhotoOutputOnFrameStart");
   }
-  void PhotoOutputOnFrameShutter(Camera_PhotoOutput* photoOutput, Camera_FrameShutterInfo* info)
+  
+  void PhotoOutputOnFrameShutter(Camera_PhotoOutput *photoOutput, Camera_FrameShutterInfo *info)
   {
       OH_LOG_INFO(LOG_APP, "PhotoOutputOnFrameShutter");
   }
   ```
 
 - 通过注册固定的onFrameEnd回调函数获取监听拍照结束结果，photoOutput创建成功时即可监听。
+
+  <!-- @[photo_output_end_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
   
-  ```c++
-  void PhotoOutputOnFrameEnd(Camera_PhotoOutput* photoOutput, int32_t frameCount)
+  ``` C++
+  void PhotoOutputOnFrameEnd(Camera_PhotoOutput *photoOutput, int32_t frameCount)
   {
       OH_LOG_INFO(LOG_APP, "PhotoOutput frameCount = %{public}d", frameCount);
   }
   ```
 
 - 通过注册固定的onError回调函数获取监听拍照输出流的错误结果。callback返回拍照输出接口使用错误时的对应错误码，错误码类型参见[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)。
+
+  <!-- @[photo_output_error_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
   
-  ```c++
-  void PhotoOutputOnError(Camera_PhotoOutput* photoOutput, Camera_ErrorCode errorCode)
+  ``` C++
+  void PhotoOutputOnError(Camera_PhotoOutput *photoOutput, Camera_ErrorCode errorCode)
   {
       OH_LOG_INFO(LOG_APP, "PhotoOutput errorCode = %{public}d", errorCode);
   }
   ```
-  ```c++
-  PhotoOutput_Callbacks* GetPhotoOutputListener()
+
+  <!-- @[get_photo_output_listener_and_register_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  
+  ``` C++
+  PhotoOutput_Callbacks *NDKCamera::GetPhotoOutputListener(void)
   {
       static PhotoOutput_Callbacks photoOutputListener = {
           .onFrameStart = PhotoOutputOnFrameStart,
@@ -462,12 +548,13 @@
       };
       return &photoOutputListener;
   }
-  Camera_ErrorCode RegisterPhotoOutputCallback(Camera_PhotoOutput* photoOutput)
+  
+  Camera_ErrorCode NDKCamera::PhotoOutputRegisterCallback(void)
   {
-      Camera_ErrorCode ret = OH_PhotoOutput_RegisterCallback(photoOutput, GetPhotoOutputListener());
-      if (ret != CAMERA_OK) {
+      ret_ = OH_PhotoOutput_RegisterCallback(photoOutput_, GetPhotoOutputListener());
+      if (ret_ != CAMERA_OK) {
           OH_LOG_ERROR(LOG_APP, "OH_PhotoOutput_RegisterCallback failed.");
       }
-      return ret;
+      return ret_;
   }
   ```

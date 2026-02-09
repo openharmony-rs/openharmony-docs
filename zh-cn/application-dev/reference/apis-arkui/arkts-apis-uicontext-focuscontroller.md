@@ -148,7 +148,7 @@ struct RequestExample {
             try {
               this.getUIContext().getFocusController().requestFocus("eee");
             } catch (error) {
-              console.error('requestFocus failed code is ' + error.code + ' message is ' + error.message);
+              console.error(`requestFocus failed code is ${error.code} message is ${error.message}`);
             }
           })
       }
@@ -251,10 +251,10 @@ struct ClearFocusExample {
           .fontColor(Color.White)
           .focusOnTouch(true)
           .backgroundColor(Color.Blue)
-          .onClick(()=> {
+          .onClick(() => {
             console.info("button1 onClick");
             this.getUIContext().getFocusController().activate(true);
-            console.info("focus status " + this.getUIContext().getFocusController().isActive());
+            console.info(`focus status ${this.getUIContext().getFocusController().isActive()}`);
           })
         Button('button2')
           .width(200)
@@ -263,10 +263,10 @@ struct ClearFocusExample {
           .focusOnTouch(true)
           .backgroundColor(this.btColor)
           .defaultFocus(true)
-          .onClick(()=> {
+          .onClick(() => {
             console.info("button2 onClick");
             this.getUIContext().getFocusController().activate(false);
-            console.info("focus status " + this.getUIContext().getFocusController().isActive());
+            console.info(`focus status ${this.getUIContext().getFocusController().isActive()}`);
           })
           .onFocus(() => {
             this.btColor = Color.Red;
@@ -304,6 +304,7 @@ setAutoFocusTransfer(isAutoFocusTransfer: boolean): void
 @CustomDialog
 struct CustomDialogExample {
   controller?: CustomDialogController;
+
   build() {
     Column() {
       Text('这是自定义弹窗')
@@ -323,13 +324,14 @@ struct CustomDialogExample {
     }
   }
 }
+
 @Entry
 @Component
 struct CustomDialogUser {
   dialogController: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExample({
-    }),
+    builder: CustomDialogExample({}),
   });
+
   aboutToDisappear() {
     this.dialogController = null;
   }
@@ -372,7 +374,6 @@ setKeyProcessingMode(mode: KeyProcessingMode): void
 @Entry
 @Component
 struct Index {
-
   aboutToAppear() {
     this.getUIContext().getFocusController().setKeyProcessingMode(KeyProcessingMode.ANCESTOR_EVENT);
   }
