@@ -5874,11 +5874,11 @@ async function demo() {
 | OK         | 0    | 函数调用成功。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | STREAM_END | 1    | 函数调用成功，表示已处理了整个数据。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | NEED_DICT  | 2    | 函数调用成功，表示需要预设字典才能继续解压缩。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
-| ERRNO        | -1 | 函数调用失败，表示文件操作错误。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
-| STREAM_ERROR | -2 | 函数调用失败，表示压缩或解压缩流错误。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
-| DATA_ERROR   | -3 | 函数调用失败，表示输入数据不正确。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
-| MEM_ERROR    | -4 | 函数调用失败，表示内存分配失败。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
-| BUF_ERROR    | -5 | 函数调用失败，表示输入缓冲区不正确。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
+| ERRNO<sup>23+</sup>        | -1 | 函数调用失败，表示文件操作错误。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| STREAM_ERROR<sup>23+</sup> | -2 | 函数调用失败，表示压缩或解压缩流错误。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| DATA_ERROR<sup>23+</sup>   | -3 | 函数调用失败，表示输入数据不正确。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| MEM_ERROR<sup>23+</sup>    | -4 | 函数调用失败，表示内存分配失败。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| BUF_ERROR<sup>23+</sup>    | -5 | 函数调用失败，表示输入缓冲区不正确。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 
 ## ZStream<sup>12+</sup>
 
