@@ -18,11 +18,11 @@
 >
 > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](arkts-apis-uicontext-uicontext.md)说明。
 >
-> - 自定义组件中一般会持有一个[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)接口返回的[AnimatorResult](#animatorresult)对象，以保证动画对象不在动画过程中析构，而这个对象也通过回调捕获了自定义组件对象。则需要在自定义组件销毁时的[aboutToDisappear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)中释放动画对象，来避免因为循环依赖导致内存泄漏，详细示例可参考：[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
+> - 自定义组件中通常会持有一个由[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)接口返回的[AnimatorResult](#animatorresult)对象，以确保动画对象在动画过程中不被析构，该对象通过回调捕获了自定义组件对象，因此需要在自定义组件销毁时的[aboutToDisappear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)生命周期中释放动画对象，以避免因循环依赖导致内存泄漏。详细示例可参考：[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
 >
-> - Animator对象析构或主动调用[cancel](#cancel)、[finish](#finish)都会有一次额外的[onFrame](#属性)，返回值是动画终点的值。所以如果在动画过程中调用[cancel](#cancel)、[finish](#finish)会一帧跳变到终点，如果希望在中途停止，可以先将onFrame设置为空函数，再调用[finish](#finish)。
+> - Animator对象析构或主动调用[cancel](#cancel)、[finish](#finish)方法时，都会触发一次额外的[onFrame](#属性)，返回值是动画终点值。因此，如果在动画过程中调用[cancel](#cancel)、[finish](#finish)，会导致属性值在一帧内跳变至终点。若希望动画在中途暂停，可先将onFrame设置为空函数，再调用[finish](#finish)。
 >
-> - 无限循环的Animator动画，当开发者选项设置全局动画速率为0（关闭动画）时，仍执行循环动画。
+> - 对于无限循环的Animator动画，即使开发者选项中将全局动画速率设置为0（关闭动画），循环动画仍会继续执行。
 
 ## 导入模块
 
@@ -1010,7 +1010,7 @@ struct AnimatorTest {
         Column()
           .width(this.columnWidth)
           .height(this.columnHeight)
-          .backgroundColor(Color.Red)
+          .backgroundColor(Color.Blue)
       }
       .width('100%')
       .height(300)
@@ -1119,6 +1119,7 @@ struct AnimatorTest {
   }
 }
 ```
+![animator](figures/animator_01.gif)
 
 ### 位移动画示例（简易入参）
 
