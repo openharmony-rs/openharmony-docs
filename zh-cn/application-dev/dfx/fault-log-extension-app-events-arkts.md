@@ -7,9 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
-从API version 21开始，可以在FaultLogExtensionAbility中使用HiAppEvent事件订阅接口，实现应用故障事件（仅包括[崩溃事件](./hiappevent-watcher-crash-events.md)和[应用冻屏事件](./hiappevent-watcher-freeze-events.md)）的延迟通知。应用因崩溃或冻屏退出后，无法启动或长时间未启动的场景下，可以不依赖应用启动实现故障事件信息的订阅回调。
-
-FaultLogExtensionAbility仅在应用发生崩溃或冻屏事件，并且应用长时间未被重新启动的情况下，用于补充处理故障事件，不能替代[主进程](../application-models/process-model-stage.md#基本进程类型)正常启动时进行故障事件处理。
+从API version 21开始，可以在FaultLogExtensionAbility中使用HiAppEvent事件订阅接口，实现应用故障事件（仅包括[崩溃事件](./hiappevent-watcher-crash-events.md)和[应用冻屏事件](./hiappevent-watcher-freeze-events.md)）的延迟通知。应用因崩溃或冻屏退出后，无法启动或长时间未启动的场景下，可以不依赖应用启动实现故障事件信息的订阅回调。FaultLogExtensionAbility仅用于补充处理故障事件，不能替代[主进程](../application-models/process-model-stage.md#基本进程类型)正常启动时进行故障事件处理。
 
 在应用发生崩溃或者冻屏事件30分钟后，系统拉起FaultLogExtensionAbility进程，实际拉起时间可能会因为系统调度有所延迟。该30分钟是设备在非休眠状态下累积的时间。测试时需要保持测试设备屏幕常亮，防止设备休眠。灭屏状态下设备可能会休眠，导致实际接收到回调的时间延长。
 
@@ -25,8 +23,8 @@ FaultLogExtensionAbility的原理机制如下图所示：
 4. 系统服务感知到应用故障后，采集应用故障信息。
 5. 系统服务采集完应用故障现场信息后，应用退出。
 6. 系统侧根据应用订阅的HiAppEvent订阅事件类型，将采集到的应用故障信息保存进应用的沙箱中。若应用及时重启，HiAppEvent检测到应用沙箱中的未回调处理的故障事件，并且这些事件满足事件观察者A的过滤条件，会触发事件观察者A的回调函数处理事件，由于事件观察者B的回调为空实现不会对相同事件重复处理。
-7. 系统服务创建一个延时30分钟后执行的任务，用于拉起应用的FaultLogExtensionAbility进程。如果任务队列中已存在当前进程的延时拉起任务，则不再创建新的延时任务。
-8. 在FaultLogExtensionAbility进程中添加事件观察者B，该事件观察者B需要开发者自行实现实现正常的回调处理函数，且与之前主进程添加的事件观察者B同名。
+7. 若应用未及时重启处理故障事件，故障发生后系统服务会创建一个延时30分钟后执行的任务，用于拉起应用的FaultLogExtensionAbility进程。如果任务队列中已存在当前进程的延时拉起任务，则不再创建新的延时任务，无论事件是否已被处理，FaultLogExtensionAbility进程都会在10秒后退出。
+8. 在FaultLogExtensionAbility进程中添加事件观察者B，该事件观察者B需要开发者自行实现正常的回调处理函数，且与之前主进程添加的事件观察者B同名。
 9. 由于FaultLogExtensionAbility进程添加事件观察者B和主进程添加的事件观察者B同名，应用沙箱会覆盖之前保存的B的事件订阅过滤条件。
 10. HiAppEvent检测到应用沙箱中存在未回调处理的故障事件，当这些故障事件满足FaultLogExtensionAbility进程中事件观察者B的过滤条件时，会触发事件观察者B的回调处理逻辑。沙箱中存储的未回调的事件信息，会在故障事件被回调处理后删除。
 
