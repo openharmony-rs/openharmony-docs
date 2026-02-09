@@ -149,7 +149,7 @@
        if (want?.parameters?.['ohos.extra.param.key.form_enable_material_background'] !== undefined) {
          // 需要设置背板透明或者还原为默认色
          param['isEnableMaterialBgr'] =
-           Boolean(want?.parameters?.['ohos.extra.param.key.form_enable_material_background']);
+           Boolean(want.parameters.['ohos.extra.param.key.form_enable_material_background']);
        }
        return formBindingData.createFormBindingData(param);
      }
@@ -158,7 +158,7 @@
        let param: Record<string, boolean> = {};
        if (wantParams?.['ohos.extra.param.key.form_enable_material_background'] !== undefined) {
          // 需要设置背板透明或者还原为默认色
-         param['isEnableMaterialBgr'] = Boolean(wantParams?.['ohos.extra.param.key.form_enable_material_background']);
+         param['isEnableMaterialBgr'] = Boolean(wantParams.['ohos.extra.param.key.form_enable_material_background']);
        }
        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
        formProvider.updateForm(formId, formInfo).then(() => {
