@@ -981,4 +981,4 @@ struct ContentCoverExample {
   }
 }
 ```
-![zh-cn_sheet](figures/zh-cn_sheet9_content_cover.gif)
+![zh-cn_sheet](figures/sheet9_content_cover.gif)
