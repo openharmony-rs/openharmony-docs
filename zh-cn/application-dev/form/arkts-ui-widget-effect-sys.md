@@ -92,7 +92,7 @@
    ```
 
 ### 运行结果
-![WidgetMaterialVisualEffect](figures/WidgetMaterialVisualEffect.gif)
+![WidgetMaterialVisualEffect-w100](figures/WidgetMaterialVisualEffect.gif)
 
 ## ArkTS卡片新材质背板
 该特性仅对ArkTS卡片的背板生效。
@@ -220,4 +220,4 @@
    }
    ```
 ### 运行结果
-![新材质背板运行结果](figures/新材质背板运行结果.gif)
+![新材质背板运行结果-w100](figures/新材质背板运行结果.gif)
