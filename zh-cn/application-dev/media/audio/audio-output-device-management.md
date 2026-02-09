@@ -81,7 +81,9 @@ import { audio } from '@kit.AudioKit';  // 导入audio模块。
   });
   // ...
   // 取消监听音频设备状态变化。
-  audioRoutingManager.off('deviceChange');
+  audioRoutingManager.off('deviceChange', (deviceChanged: audio.DeviceChangeAction) => {
+    console.info('Should be no callback.');
+  });
 ```
 
 <!--Del-->
@@ -143,8 +145,8 @@ let rendererInfo: audio.AudioRendererInfo = {
 // ...
 async function getPreferOutputDeviceForRendererInfo() {
   // ...
-  audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo).then((desc: audio.AudioDeviceDescriptors) => {
-    console.info(`device descriptor: ${desc}`);
+  audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo).then((data: audio.AudioDeviceDescriptors) => {
+    console.info(`device descriptor: ${data}`);
 
     // ...
   }).catch((err: BusinessError) => {
@@ -176,7 +178,9 @@ let rendererInfo: audio.AudioRendererInfo = {
   });
   // ...
   // 取消监听最高优先级输出设备变化。
-  audioRoutingManager.off('preferOutputDeviceChangeForRendererInfo');
+  audioRoutingManager.off('preferOutputDeviceChangeForRendererInfo', (desc: audio.AudioDeviceDescriptors) => {
+    console.info('Should be no callback.');
+  });
 ```
 
 ## 通过AudioSession查询和监听音频输出设备
@@ -209,6 +213,10 @@ let audioSessionManager = audioManager.getSessionManager();  // 再调用AudioMa
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
+  let strategy: audio.AudioSessionStrategy = {
+    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_DEFAULT
+  };
+  await audioSessionManager.activateAudioSession(strategy);
   // 设置默认输出设备为本机扬声器。
   audioSessionManager.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
     console.info('setDefaultOutputDevice Success!');
@@ -218,6 +226,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
     // ...
   });
   // ...
+  let strategy: audio.AudioSessionStrategy = {
+    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_DEFAULT
+  };
+  await audioSessionManager.activateAudioSession(strategy);
   // 设置默认输出设备为默认设备,即取消应用设置的默认设备,交由系统选择设备。
   audioSessionManager.setDefaultOutputDevice(audio.DeviceType.DEFAULT).then(() => {
     console.info('setDefaultOutputDevice Success!');

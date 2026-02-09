@@ -38,6 +38,10 @@
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    // ...
+     let strategy: audio.AudioSessionStrategy = {
+       concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_DEFAULT
+     };
+     await audioSessionManager.activateAudioSession(strategy);
      // 设置默认输出设备为本机扬声器。
      audioSessionManager.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
        console.info('setDefaultOutputDevice Success!');
@@ -47,6 +51,10 @@
        // ...
      });
      // ...
+     let strategy: audio.AudioSessionStrategy = {
+       concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_DEFAULT
+     };
+     await audioSessionManager.activateAudioSession(strategy);
      // 设置默认输出设备为默认设备,即取消应用设置的默认设备,交由系统选择设备。
      audioSessionManager.setDefaultOutputDevice(audio.DeviceType.DEFAULT).then(() => {
        console.info('setDefaultOutputDevice Success!');
@@ -75,6 +83,10 @@
    
    let audioSessionManager = audioManager.getSessionManager();  // 再调用AudioManager的方法创建AudioSessionManager实例。
    // ...
+     let strategy: audio.AudioSessionStrategy = {
+       concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_DEFAULT
+     };
+     await audioSessionManager.activateAudioSession(strategy);
      // 设置默认输出设备为本机扬声器。
      audioSessionManager.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
        // ...
@@ -86,6 +98,10 @@
        // ...
      });
      // ...
+     let strategy: audio.AudioSessionStrategy = {
+       concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_DEFAULT
+     };
+     await audioSessionManager.activateAudioSession(strategy);
      // 设置默认输出设备为默认设备,即取消应用设置的默认设备,交由系统选择设备。
      audioSessionManager.setDefaultOutputDevice(audio.DeviceType.DEFAULT).then(() => {
        // ...
