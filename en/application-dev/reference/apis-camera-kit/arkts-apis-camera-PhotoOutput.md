@@ -112,7 +112,7 @@ Captures a photo with the specified photo capture parameters. This API uses an a
 
 | Name     | Type                                        | Mandatory| Description                 |
 | -------- | ------------------------------------------- | ---- | -------------------- |
-| setting  | [PhotoCaptureSetting](arkts-apis-camera-i.md#photocapturesetting) | Yes  | Photo capture settings. If the input data is of the **undefined** type, a photo capture operation is triggered based on the default settings.            |
+| setting  | [PhotoCaptureSetting](arkts-apis-camera-i.md#photocapturesetting) | Yes  | Photo capture settings. If the input data is of the **undefined** type, a photo capture operation is triggered based on the default settings.           |
 | callback | AsyncCallback\<void\>                        | Yes  | Callback used to return the result. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned. |
 
 **Error codes**
@@ -283,6 +283,78 @@ function callback(err: BusinessError, photo: camera.Photo): void {
 
 function unRegisterPhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): void {
   photoOutput.off('photoAvailable', callback);
+}
+```
+
+## onCapturePhotoAvailable<sup>23+</sup>
+
+onCapturePhotoAvailable(callback: Callback\<CapturePhoto\>): void
+
+Subscribes to the events of returning full-quality images and uncompressed images. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> - You cannot call [offCapturePhotoAvailable](#offcapturephotoavailable23) to unregister the callback in the callback listened by this API.
+>
+> - This API can be used to register listeners only when uncompressed images in the YUV format are captured.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name    | Type     | Mandatory| Description                                 |
+| -------- | ---------- | --- | ------------------------------------ |
+| callback | Callback\<[CapturePhoto](arkts-apis-camera-CapturePhoto.md)\> | Yes  | Callback used to listen for the events of returning full-quality images and uncompressed images.|
+
+**Example**
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { image } from '@kit.ImageKit';
+
+function callback(capturePhoto: camera.CapturePhoto): void {
+  let picture: image.Image | image.Picture = capturePhoto.main;
+}
+
+function registerCapturePhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.onCapturePhotoAvailable(callback);
+}
+```
+
+## offCapturePhotoAvailable<sup>23+</sup>
+
+offCapturePhotoAvailable(callback?: Callback\<CapturePhoto\>): void
+
+Unsubscribes from the events of returning full-quality images and uncompressed images. This API uses an asynchronous callback to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name     | Type                   | Mandatory| Description                                      |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| callback | Callback\<[CapturePhoto](arkts-apis-camera-CapturePhoto.md)\> | No | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+
+**Example**
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { image } from '@kit.ImageKit';
+
+function callback(capturePhoto: camera.CapturePhoto): void {
+  let picture: image.Image | image.Picture = capturePhoto.main;
+}
+
+function unRegisterCapturePhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.offCapturePhotoAvailable(callback);
 }
 ```
 
@@ -1061,13 +1133,14 @@ function testGetActiveProfile(photoOutput: camera.PhotoOutput): camera.Profile |
 
 ## getPhotoRotation<sup>12+</sup>
 
-getPhotoRotation(deviceDegree: number): ImageRotation
+getPhotoRotation(deviceDegree?: number): ImageRotation
 
 Obtains the photo rotation angle.
 
-- Device's natural orientation: The default orientation of the device (phone) is in portrait mode, with the charging port facing downward.
-- Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural direction. The rear camera sensor of a phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural direction.
-- Screen orientation: The top-left corner of the image displayed on the screen is the first pixel, which is the coordinate origin. In the case of lock screen, the direction is the same as the device's natural orientation.
+- Device's natural orientation: the default orientation for using a device. For example, the default orientation of the bar-type phone is in portrait mode, with the charging port facing downward.
+- Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural orientation. For example, the rear camera sensor of a bar-type phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural orientation.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -1077,13 +1150,13 @@ Obtains the photo rotation angle.
 
 | Name    | Type        | Mandatory| Description                      |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | number | Yes  | Device rotation angle, measured in degrees, within the range of [0, 360].<br>If the input value goes beyond this range, the system uses the remainder of the input value divided by 360.|
+| deviceDegree | number | No  | Device rotation angle, measured in degrees, within the range of [0, 360].<br>If the input value goes beyond this range, the system uses the remainder of the input value divided by 360.<br>Since API version 23, the input parameter **deviceDegree** is optional. If no parameter is passed, the system obtains the **deviceDegree** value to calculate the photo rotation angle.|
 
 **Return value**
 
 |      Type     | Description       |
 | -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Obtains the photo rotation angle. If the API call fails, undefined is returned.|
+| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Rotation angle of the photo. If the API call fails, undefined is returned.|
 
 **Error codes**
 
@@ -1091,7 +1164,6 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID  | Error Message                        |
 |---------|------------------------------|
-| 7400101 | Parameter missing or parameter type incorrect.  |
 | 7400201 | Camera service fatal error.  |
 
 **Example**
@@ -1111,8 +1183,20 @@ function testGetPhotoRotation(photoOutput: camera.PhotoOutput, deviceDegree : nu
   }
   return photoRotation;
 }
-```
 
+function testGetPhotoRotationWithOutParam(photoOutput: camera.PhotoOutput): camera.ImageRotation {
+  let photoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
+  try {
+    photoRotation = photoOutput.getPhotoRotation();
+    console.info(`Photo rotation is: ${photoRotation}`);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The photoOutput.testGetPhotoRotationWithOutParam call failed. error code: ${err.code}`);
+  }
+  return photoRotation;
+}
+```
 
 ## on('captureStart')<sup>(deprecated)</sup>
 

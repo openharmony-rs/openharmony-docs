@@ -283,3 +283,87 @@ function unregisterMetadataOutputError(metadataOutput: camera.MetadataOutput): v
   metadataOutput.off('error');
 }
 ```
+
+## addMetadataObjectTypes<sup>23+</sup> 
+
+addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
+
+Adds the types of metadata objects to be detected.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name                 | Type                                              | Mandatory| Description                         |
+| -------------------- | -------------------------------------------------- | --- | ---------------------------- |
+| types  | Array\<[MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)\>  | Yes | Metadata object types, which are obtained through **getSupportedOutputCapability**.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 7400101                |  Parameter missing or parameter type incorrect.        |
+| 7400103                |  Session not config.                                   |
+| 7400201                |  Camera service fatal error.                           |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
+  try {
+    metadataOutput.addMetadataObjectTypes(types);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`addMetadataObjectTypes error. error code: ${err.code}`);
+  }
+}
+```
+
+## removeMetadataObjectTypes<sup>23+</sup> 
+
+removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
+
+Removes the types of metadata objects to be detected.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name                 | Type                                              | Mandatory| Description                         |
+| -------------------- | -------------------------------------------------- | --- | ---------------------------- |
+| types  | Array\<[MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)\>  | Yes | Metadata object types, which are obtained through **getSupportedOutputCapability**.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 7400101                |  Parameter missing or parameter type incorrect.                                   |
+| 7400103                |  Session not config.                                   |
+| 7400201                |  Camera service fatal error.                           |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
+  try {
+    metadataOutput.removeMetadataObjectTypes(types);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`removeMetadataObjectTypes error. error code: ${err.code}`);
+  }
+}
+```

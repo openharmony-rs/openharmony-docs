@@ -580,17 +580,6 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
 }
 ```
 
-## CameraOcclusionDetectionResult<sup>12+</sup>
-Describes the status indicating whether the camera is occluded.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-| Name                          | Type                                               | Read-only| Optional| Description               |
-| ----------------------------- | --------------------------------------------------- | ---- | ---- |-------------------|
-| isCameraOccluded                 | boolean              |  Yes | No|Whether the camera is occluded. **true** if occluded, **false** otherwise.       |
-
 ## CameraOutputCapability
 
 Describes the camera output capability.
@@ -623,88 +612,6 @@ Enumerates the camera output formats.
 Defines the camera input object.
 
 It provides camera device information used in [Session](arkts-apis-camera-Session.md).
-
-### on('cameraOcclusionDetection')<sup>12+</sup>
-
-on(type: 'cameraOcclusionDetection', callback: AsyncCallback\<CameraOcclusionDetectionResult\>): void
-
-Subscribes to CameraInput occlusion events. This API uses an asynchronous callback to return the result.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name    | Type                             | Mandatory| Description                                         |
-| -------- | -------------------------------- | --- | ------------------------------------------- |
-| type     | string                           | Yes  | Event type. The value is fixed at **'cameraOcclusionDetection'**. The event can be listened for when a CameraInput instance is created. It is triggered when the occlusion status of the camera module changes, and the occlusion status is returned.|
-| callback | AsyncCallback\<[CameraOcclusionDetectionResult](#cameraocclusiondetectionresult12)\> | Yes  | Callback used to return the occlusion status. |
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202 | Not System Application. |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(err: BusinessError, CameraOcclusionDetectionResult: camera.CameraOcclusionDetectionResult): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error('cameraOcclusionDetection with errorCode = ' + err.code);
-    return;
-  }
-  console.info(`isCameraOccluded : ${CameraOcclusionDetectionResult.isCameraOccluded}`);
-}
-
-function registerCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
-  cameraInput.on('cameraOcclusionDetection', callback);
-}
-```
-
-### off('cameraOcclusionDetection')<sup>12+</sup>
-
-off(type: 'cameraOcclusionDetection', callback?: AsyncCallback\<CameraOcclusionDetectionResult\>): void
-
-Unsubscribes from CameraInput occlusion events.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name    | Type            | Mandatory| Description                                                     |
-| -------- | --------------- | ---- |---------------------------------------------------------|
-| type     | string          | Yes  | Event type. The value is fixed at **'cameraOcclusionDetection'**. The event can be listened for when a CameraInput instance is created.|
-| callback | AsyncCallback\<[CameraOcclusionDetectionResult](#cameraocclusiondetectionresult12)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('cameraOcclusionDetection')** with the specified callback is canceled. (The callback object cannot be an anonymous function.)                 |
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202 | Not System Application. |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(err: BusinessError, CameraOcclusionDetectionResult: camera.CameraOcclusionDetectionResult): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error('cameraOcclusionDetection with errorCode = ' + err.code);
-    return;
-  }
-  console.info(`isCameraOccluded : ${CameraOcclusionDetectionResult.isCameraOccluded}`);
-}
-
-function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
-  cameraInput.off('cameraOcclusionDetection', callback);
-}
-```
 
 ## DepthDataAccuracy<sup>13+</sup>
 
@@ -2255,88 +2162,6 @@ function unregisterQuickThumbnail(photoOutput: camera.PhotoOutput): void {
 
 Implements metadata streams. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
-### addMetadataObjectTypes<sup>13+</sup> 
-
-addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
-
-Adds the types of metadata objects to be detected.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name                 | Type                                              | Mandatory| Description                         |
-| -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| types  | Array\<[MetadataObjectType](#metadataobjecttype)\>  | Yes | Metadata object types, which are obtained through [getSupportedOutputCapability](arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11).|
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202                    |  Not system application.        |
-| 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400103                |  Session not config.                                   |
-| 7400201                |  Camera service fatal error.                           |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
-  try {
-    metadataOutput.addMetadataObjectTypes(types);
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`addMetadataObjectTypes error. error code: ${err.code}`);
-  }
-}
-```
-
-### removeMetadataObjectTypes<sup>13+</sup> 
-
-removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
-
-Removes the types of metadata objects to be detected.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name                 | Type                                              | Mandatory| Description                         |
-| -------------------- | -------------------------------------------------- | --- | ---------------------------- |
-| types  | Array\<[MetadataObjectType](#metadataobjecttype)\>  | Yes | Metadata object types, which are obtained through [getSupportedOutputCapability](arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11).|
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202                    |  Not system application.        |
-| 7400101                |  Parameter missing or parameter type incorrect.                                   |
-| 7400103                |  Session not config.                                   |
-| 7400201                |  Camera service fatal error.                           |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Array<camera.MetadataObjectType>): void {
-  try {
-    metadataOutput.removeMetadataObjectTypes(types);
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`removeMetadataObjectTypes error. error code: ${err.code}`);
-  }
-}
-```
-
 ## MetadataObjectType
 
 Enumerates the types of metadata objects used for camera detection.
@@ -2366,7 +2191,7 @@ Enumerates the types of emotions in the detected human face information.
 
 ## MetadataObject
 
-Implements the basic metadata object used for camera detection. It serves as the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the basic metadata object used for camera detection. It serves as the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2377,7 +2202,7 @@ Implements the basic metadata object used for camera detection. It serves as the
 
 ## MetadataFaceObject<sup>13+</sup>
 
-Implements the human face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the human face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2393,13 +2218,13 @@ Implements the human face metadata object used for camera detection. It inherits
 
 ## MetadataHumanBodyObject<sup>13+</sup>
 
-Implements the human body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the human body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 ## MetadataCatFaceObject<sup>13+</sup>
 
-Implements the cat face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the cat face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2410,13 +2235,13 @@ Implements the cat face metadata object used for camera detection. It inherits f
 
 ## MetadataCatBodyObject<sup>13+</sup>
 
-Implements the cat body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the cat body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 ## MetadataDogFaceObject<sup>13+</sup>
 
-Implements the dog face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the dog face metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -2427,19 +2252,19 @@ Implements the dog face metadata object used for camera detection. It inherits f
 
 ## MetadataDogBodyObject<sup>13+</sup>
 
-Implements the dog body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the dog body metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 ## MetadataSalientDetectionObject<sup>13+</sup>
 
-Implements the salient detection metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the salient detection metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 ## MetadataBarcodeObject<sup>14+</sup>
 
-Implements the barcode metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling metadataOutput.[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
+Implements the barcode metadata object used for camera detection. It inherits from [MetadataObject](#metadataobject) and is the data source of the camera information in [CameraInput](#camerainput). It is obtained by calling **metadataOutput.**[on('metadataObjectsAvailable')](arkts-apis-camera-MetadataOutput.md#onmetadataobjectsavailable).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -3604,7 +3429,7 @@ Obtains the levels that can be set a beauty type. The beauty levels vary accordi
 | AUTO           | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     |Beauty levels supported when **type** is set to **AUTO**. The value **0** means that beauty mode is disabled, and other positive values mean the corresponding automatic beauty levels.   |
 | SKIN_SMOOTH    | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     | Beauty levels supported when **type** is set to **SKIN_SMOOTH**. The value **0** means that the skin smoothing feature is disabled, and other positive values mean the corresponding skin smoothing levels.   |
 | FACE_SLENDER   | [0, 1, 2, 3, 4, 5]      | Beauty levels supported when **type** is set to **FACE_SLENDER**. The value **0** means that the face slimming feature is disabled, and other positive values mean the corresponding face slimming levels.  |
-| SKIN_TONE      | [-1, 16242611]      | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB,<br> for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively.   |
+| SKIN_TONE      | [-1, 16242611]      | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB, for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively.   |
 
 > **NOTE**
 >This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11) instead.
@@ -3928,7 +3753,7 @@ Enumerates the focus tracking modes.
 
 ## FocusTrackingInfo<sup>15+</sup>
 
-Describes the focus tracking information, which is obtained by calling VideoSessionForSys.[on('focusTrackingInfoAvailable')](#onfocustrackinginfoavailable15).
+Describes the focus tracking information, which is obtained by calling **VideoSessionForSys.**[on('focusTrackingInfoAvailable')](#onfocustrackinginfoavailable15).
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -3939,7 +3764,7 @@ Describes the focus tracking information, which is obtained by calling VideoSess
 
 ## LightStatus<sup>18+</sup>
 
-Enumerates the camera light statuses, which are obtained by calling VideoSessionForSys.[on('lightStatusChange')](#onlightstatuschange18).
+Enumerates the camera light statuses, which are obtained by calling **VideoSessionForSys.**[on('lightStatusChange')](#onlightstatuschange18).
 
 **System API**: This is a system API.
 
@@ -4912,6 +4737,7 @@ SlowMotionVideoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorE
 Implements a slow-motion video session, which sets the parameters of the slow-motion video mode and saves all [CameraInput](arkts-apis-camera-CameraInput.md) and [CameraOutput](arkts-apis-camera-CameraOutput.md) instances required to run the camera. It inherits from [Session](arkts-apis-camera-Session.md).
 
 > **NOTE**
+>
 > In slow-motion video mode, only preview streams and video streams can be added.
 ### on('error')<sup>12+</sup>
 
@@ -6098,7 +5924,7 @@ Sets the manual focus distance.
 
 | Name     | Type                    | Mandatory| Description                |
 | -------- | ----------------------- | ---- | ------------------- |
-| distance | number | Yes  | Manual focus distance. The configurable range is a floating-point number between **0** and **1**, where **0** indicates close-up focus and **1** indicates long-distance focus.<br> |
+| distance | number | Yes  | Manual focus distance. The value is a floating-point number in the range [0, 1]. The value **0** indicates a close-up shot, and **1** indicates a long shot.<br> |
 
 **Error codes**
 

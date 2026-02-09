@@ -226,13 +226,12 @@ Enumerates the image quality levels.
 
 Enumerates the metadata object types.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
-
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 | Name                      | Value  | Description             |
 | ------------------------- | ---- | ----------------- |
-| FACE_DETECTION            | 0    | Metadata object used for face detection.|
+| FACE_DETECTION            | 0    | Metadata object used for face detection.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| HUMAN_BODY<sup>23+</sup>     | 1    | Metadata object used for body detection.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## FlashMode
 
@@ -324,16 +323,15 @@ Enumerates the smooth zoom modes.
 
 Enumerates the preconfigured resolution types.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
-
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 | Name                     | Value| Description        |
 |-------------------------|---|------------|
-| PRECONFIG_720P          | 0 | 720p resolution.  |
-| PRECONFIG_1080P         | 1 | 1080p resolution. |
-| PRECONFIG_4K            | 2 | 4K resolution.    |
-| PRECONFIG_HIGH_QUALITY  | 3 | High-quality resolution.   |
+| PRECONFIG_720P          | 0 | 720p resolution.<br>**Atomic service API**: This API can be used in atomic services since API version 19. |
+| PRECONFIG_1080P         | 1 | 1080p resolution.<br>**Atomic service API**: This API can be used in atomic services since API version 19. |
+| PRECONFIG_4K            | 2 | 4K resolution.<br>**Atomic service API**: This API can be used in atomic services since API version 19.    |
+| PRECONFIG_HIGH_QUALITY  | 3 | High-quality resolution.<br>**Atomic service API**: This API can be used in atomic services since API version 19.   |
+| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020<sup>23+</sup>  | 4 | Resolution that supports HDR preview and GIF photography.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## PreconfigRatio<sup>12+</sup>
 

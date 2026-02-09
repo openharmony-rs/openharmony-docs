@@ -122,6 +122,46 @@ function getSupportedOutputCapability(camera: camera.CameraDevice, cameraManager
 }
 ```
 
+## getSupportedFullOutputCapability<sup>23+</sup>
+
+getSupportedFullOutputCapability(camera: CameraDevice, mode: SceneMode): CameraOutputCapability
+
+Obtains the complete output capabilities supported by a specified camera in a specified mode, including YUV, HEIF, and HDR.
+
+> **NOTE**
+>
+> Before using YUV, HEIF, or HDR, you need to explicitly call this method to ensure that the complete output capabilities are obtained.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name        | Type                                                           | Mandatory| Description                     |
+| ------------ |--------------------------------------------------------------- | -- | -------------------------- |
+| camera | [CameraDevice](arkts-apis-camera-i.md#cameradevice)                              | Yes| **CameraDevice** instance, which is obtained through [getSupportedCameras](#getsupportedcameras).      |
+| mode | [SceneMode](arkts-apis-camera-e.md#scenemode11)                              | Yes| Scene mode, which is obtained through [getSupportedSceneModes](#getsupportedscenemodes11).      |
+
+**Return value**
+
+| Type                                            | Description                          |
+| ----------------------------------------------- | ---------------------------- |
+| [CameraOutputCapability](arkts-apis-camera-i.md#cameraoutputcapability)            | Camera output capability obtained.                  |
+
+**Example**
+
+```ts
+import { camera } from '@kit.CameraKit';
+
+function getSupportedFullOutputCapability(camera: camera.CameraDevice, cameraManager: camera.CameraManager, sceneMode: camera.SceneMode): camera.CameraOutputCapability {
+  let cameraOutputCapability: camera.CameraOutputCapability = cameraManager.getSupportedFullOutputCapability(camera, sceneMode);
+  return cameraOutputCapability;
+}
+```
+
 ## isCameraMuted
 
 isCameraMuted(): boolean
@@ -413,13 +453,6 @@ function createPhotoOutput(cameraOutputCapability: camera.CameraOutputCapability
 createVideoOutput(profile: VideoProfile, surfaceId: string): VideoOutput
 
 Creates a **VideoOutput** instance. This API returns the result synchronously.
-
-In video recording mode, if SDR or HDR VIVID is enabled, the camera format and color space must be configured according to the relationships specified in the table below. Configurations that do not match the table will cause issues such as preview exceptions.
-
-| SDR/HDR Photo Capture        | CameraFormat             | ColorSpace       |
-|--------------------|--------------------------|------------------|
-| SDR                | CAMERA_FORMAT_YUV_420_SP | BT709_LIMIT      |
-| HDR_VIVID          | CAMERA_FORMAT_YCRCB_P010<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG_LIMIT<br>BT2020_HLG_FULL |
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -981,6 +1014,56 @@ function getCameraDevice(cameraManager: camera.CameraManager, position: camera.C
 }
 ```
 
+## getCameraDevices<sup>23+</sup>
+
+getCameraDevices(position: CameraPosition, types: Array\<CameraType>, connectType: ConnectionType): Array\<CameraDevice>
+
+Obtains the list of cameras that meet the search criteria based on the camera position, camera types, and connection type.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name     | Type                                                   | Mandatory| Description                                                |
+| ----------- | ------------------------------------------------------- | ---- | ---------------------------------------------------- |
+| position    | [CameraPosition](arkts-apis-camera-e.md#cameraposition) | Yes  | Camera position.|
+| types       | Array\<[CameraType](arkts-apis-camera-e.md#cameratype)>  | Yes  | Array of camera types.|
+| connectType | [ConnectionType](arkts-apis-camera-e.md#connectiontype) | Yes  | Camera connection type.|
+
+**Return value**
+
+| Type                                                      | Description                                                      |
+| ---------------------------------------------------------- | ---------------------------------------------------------- |
+| Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)> | Array of cameras that meet the search criteria.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 7400201 | Camera service fatal error. |
+
+**Example**
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getCameraDevices(cameraManager: camera.CameraManager, position: camera.CameraPosition, types: Array<camera.CameraType>, connectType: camera.ConnectionType): void {
+  try {
+    let cameraDevs: Array<camera.CameraDevice> = [];
+    cameraDevs = cameraManager.getCameraDevices(position, types, connectType);
+  } catch (error) {
+    // If the operation fails, an error code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The getCameraDevices call failed. error code: ${err.code}`);
+  }
+}
+```
+
 ## getCameraConcurrentInfos<sup>18+</sup>
 
 getCameraConcurrentInfos(cameras: Array\<CameraDevice\>): Array\<CameraConcurrentInfo\>
@@ -1070,7 +1153,9 @@ createPhotoOutput(profile: Profile, surfaceId: string): PhotoOutput
 Creates a **PhotoOutput** instance. This API returns the result synchronously.
 
 > **NOTE**
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [createPhotoOutput](#createphotooutput11) instead.
+>
+> - This API is supported since API version 10 and deprecated since API version 11. You are advised to use [createPhotoOutput](#createphotooutput11) instead.
+> - This API can only be used to create a **PhotoOutput** object in JPEG format.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
