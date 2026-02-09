@@ -58,20 +58,26 @@ URL错误，可能原因：
 
 **错误信息**
 
-Invalid resource path or file type.
+1. Invalid resource path or file type.
+2. Calling a JS method that returns an empty ArrayBuffer via runJavaScript.
 
 **错误描述**
 
-resource路径错误。
+1. resource路径错误。
+
+2. 通过runJavaScript调用一个返回空ArrayBuffer的JS方法。
 
 **可能原因**
 
-资源路径下文件不存在或无法访问。
+1. 资源路径下文件不存在或无法访问。
+
+2. 通过runJavaScript调用一个返回空ArrayBuffer的JS方法。
 
 **处理步骤**
 
-请检查输入的resource路径是否正确。
+1. 请检查输入的resource路径是否正确。
 
+2. 使用runJavaScriptExt接口替代runJavaScript接口。
 
 ## 17100004 功能开关未打开
 
