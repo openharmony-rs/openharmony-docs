@@ -3327,6 +3327,13 @@ Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyC
 
 订阅快捷键事件。此接口在智能穿戴、轻量级智能穿戴设备不生效。
 
+> **说明：**
+>
+> 订阅快捷键事件时，对于preKeys和finalKey有以下约束：
+> 1. preKeys：修饰键（包括 Ctrl、Shift 和 Alt）集合，数量范围[1, 4)，无顺序要求。例如，Ctrl+Shift+Esc中，Ctrl+Shift称为修饰键。
+> 2. finalKey：被修饰键，除修饰键和Meta键以外的按键，详细按键介绍请参见[键值](js-apis-keycode.md)。例如，Ctrl+Shift+Esc中，Esc称为被修饰键。
+> 3. preKeys + finalKey 总数不能超过4个，只支持按键按下事件。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
 **设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
