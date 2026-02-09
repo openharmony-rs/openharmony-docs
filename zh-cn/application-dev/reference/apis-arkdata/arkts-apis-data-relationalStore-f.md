@@ -246,7 +246,7 @@ getRdbStoreSync目前不支持多线程并发操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**系统版本：** API 24
+
 
 **跨平台支持：** 支持
 
