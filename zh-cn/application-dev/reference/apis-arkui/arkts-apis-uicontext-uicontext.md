@@ -826,7 +826,7 @@ struct AnimateToImmediatelyExample {
 
 animateTo(value: AnimateParam, event: () => void): void
 
-提供animateTo接口来指定由于闭包代码导致的状态变化插入过渡动效。
+提供animateTo接口，用于为闭包代码中的状态变化添加过渡动画效果。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
