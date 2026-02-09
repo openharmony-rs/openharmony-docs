@@ -4453,7 +4453,7 @@ getAllBundleInstallInfo(): Promise\<Array\<Record\<string, Object\>\>\>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.GET_INSTALLED_BUNDLE_LIST
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -4467,16 +4467,16 @@ getAllBundleInstallInfo(): Promise\<Array\<Record\<string, Object\>\>\>
 
 | 名称                      | 类型    | 说明                 |
 | ------------------------- | ------ | -------------------- |
-| compatibleVersion              | number | 运行应用包所需要最低的SDK版本。 |
-| crowdtestDeadline              | number | 众测应用的截止日期（毫秒级时间戳），-1表示无截止日期约束。 |
+| compatibleVersion              | number | 应用所需要最低的SDK版本。 |
+| crowdtestDeadline              | number | 众测活动的截止日期（毫秒级时间戳），-1表示无截止日期约束。 |
 | bundleName                     | string | 应用的包名。 |
-| specifiedDistributionType      | string | 返回应用的[分发类型app-distribution-type](../../security/app-provision-structure.md)。 |
-| installSource      | string | 安装来源。 |
-| additionalInfo      | string | 应用的额外信息。 |
-| hashParam      | Record\<string, string\> | module对应的安装卸载哈希参数信息。 |
-| hapPath      | Array\<string\> | HAP文件路径列表。 |
-| requiredDeviceFeatures      | Record\<string, Record\<string, Array\<string\>\>\> | module对应的所需设备能力特征。 |
-| sharedBundleInfo      | Array\<sharedBundleInfo\> | 共享包信息对象列表，详细介绍请参见[共享包信息](js-apis-bundleManager-sharedBundleInfo-sys.md)。 |
+| specifiedDistributionType      | string | 应用安装时指定的[分发类型](../../security/app-provision-structure.md)，默认值为空，最大长度128字节。|
+| installSource      | string | 应用的安装来源。 |
+| additionalInfo      | string | 应用安装时的额外信息。 |
+| hashParam      | Array\<Record\<string, string\>\> | 应用模块对应的安装卸载哈希参数信息列表，其中hashParam[i].key表示应用模块的名称；hashParam[i].value表示应用模块对应的哈希值。i为模块索引编号。 |
+| hapPath      | Array\<string\> | 应用安装文件路径列表。 |
+| requiredDeviceFeatures      | Array\<Object\> | 应用模块对应所需设备能力特征列表，其中requiredDeviceFeatures[i].moduleName表示应用模块名称，requiredDeviceFeatures[i].requiredDeviceFeature表示模块对应的所需设备能力特征。 i为模块能力特征列表的索引编号。|
+| sharedBundleInfo      | Array\<Object\> | 应用依赖的共享包信息对象列表，其中sharedBundleInfo[i].name表示共享包的应用包名，sharedBundleInfo[i].sharedModuleInfo[j].name表示共享包包含的模块名称，sharedBundleInfo[i].sharedModuleInfo[j].versionCode表示共享包包含的模块版本号，sharedBundleInfo[i].sharedModuleInfo[j].hapPath表示共享包包含的模块安装路径。i为共享包的索引编号，j为共享包包含的模块索引编号。|
 
 **错误码：**
 
