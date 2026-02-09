@@ -2960,7 +2960,7 @@ struct GridExample {
             }
           })
         // Display the obtained content size.
-        Text('Width:' + this.contentWidth + '，Height:' + this.contentHeight)
+        Text('Width:' + this.contentWidth + ', Height:' + this.contentHeight)
           .fontColor(Color.Red)
           .height(50)
       }
