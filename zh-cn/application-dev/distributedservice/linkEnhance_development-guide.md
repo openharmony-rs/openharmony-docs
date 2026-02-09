@@ -58,9 +58,9 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 | start()                                    | 服务端开启服务。                                                                                         |   
 | stop()                                     | 服务端停止服务。                                                                                           |
 | close()                                    | 销毁Server对象，注销已注册的服务并取消已订阅的所有事件，调用该接口后Server对象将不能再使用。                    |
-| ArkTs-Dyn: on(type: 'acceptConnected')</br>ArtTs-Sta: onAcceptConnected()           | Server端订阅收到对端连接的事件。                                 |
+| ArkTs-Dyn: on(type: 'connectionAccepted')</br>ArtTs-Sta: onConnectionAccepted()           | Server端订阅收到对端连接的事件。                                 |
 | ArkTs-Dyn: on(type: 'serverStopped')</br>ArtTs-Sta: onServerStopped()               | Server端订阅服务状态停止的事件。                                    |
-| ArkTs-Dyn: off(type: 'acceptConnected')</br>ArtTs-Sta: offAcceptConnected()         | Server端取消订阅收到对端连接的事件。                                 |
+| ArkTs-Dyn: off(type: 'connectionAccepted')</br>ArtTs-Sta: offConnectionAccepted()         | Server端取消订阅收到对端连接的事件。                                 |
 | ArkTs-Dyn: off(type: 'serverStopped')</br>ArtTs-Sta: offServerStopped()             | Server端取消订阅服务状态停止的事件。                                    |
 | createServer(name: string)                 | 创建一个server对象。                                                                                      |
 
