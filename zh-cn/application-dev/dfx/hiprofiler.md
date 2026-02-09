@@ -84,8 +84,10 @@ CONFIG
 | -o | 自定义文件保存路径（需要以/data/local/tmp开头）。若不设置路径，则调优数据自动保存至/data/local/tmp/hiprofiler_data.htrace。重复调优会覆盖原来路径的文件。 | 
 | -k | 杀掉已存在的调优服务进程。 | 
 | -s | 拉起调优服务进程。 | 
-| -t | 设置调优持续时间，单位：s。 |
+| -t | 设置调优持续时间，单位：s。若需手动控制采集时长，请使用start/stop参数组合。|
 | --nonblock | 设置hiprofiler_cmd通过非阻塞的方式运行。<br>执行命令后，hiprofiler_cmd转入后台运行，继续执行其他命令。<br>如果不设置该参数，hiprofiler_cmd会阻塞执行，直到该命令结束。<br>**说明**：从API version 23开始支持该参数。 |
+| start | 设置该选项后，直至输入hiprofiler_cmd stop命令才会停止调优。此命令不支持输入-t参数设置调优时间。使用方法是执行hiprofiler_cmd start params， 其中params为hiprofiler_cmd输入的其它参数。使用方法参考[常用命令](#常用命令)。<br>**说明**：从API version 24开始支持该参数。若开启调优后未执行hiprofiler_cmd stop命令，则调优默认3600秒后结束。 |
+| stop | 设置该选项后停止通过start命令开启的调优。<br>**说明**：从API version 24开始支持该参数。start命令需要与stop命令搭配调用， 避免重复开启或者重复关闭调优。|
 
 
 输入完hiprofiler_cmd参数后，需要输入插件配置信息，以&lt;&lt;CONFIG开头，CONFIG结尾。每个插件需要的配置不同，参考[插件参数说明](#插件参数说明)。
@@ -805,6 +807,50 @@ plugin_configs {
   }
 }
 CONFIG
+```
+
+使用动态调优启停方式对com.example.insight_test_stage进程的堆内存分配操作进行抓栈。
+
+调优开始：
+```shell
+$ hiprofiler_cmd start \
+  -c - \
+  -s \
+  -k \
+<<CONFIG
+request_id: 1
+session_config {
+  buffers {
+  pages: 16384
+  }
+}
+plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+  save_file: false
+  smb_pages: 16384
+  max_stack_depth: 20
+  process_name: "com.example.insight_test_stage"
+  string_compressed: true
+  fp_unwind: true
+  blocked: true
+  callframe_compress: true
+  record_accurately: true
+  offline_symbolization: true
+  startup_mode: false
+  statistics_interval: 10
+  sample_interval: 256
+  js_stack_report: 1
+  max_js_stack_depth: 10
+  }
+}
+CONFIG
+```
+
+调优结束：
+```shell
+$ hiprofiler_cmd stop
 ```
 
 ## 常见问题
