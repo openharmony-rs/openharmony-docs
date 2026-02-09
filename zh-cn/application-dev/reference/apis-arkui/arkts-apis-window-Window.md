@@ -16037,6 +16037,79 @@ try {
 }
 ```
 
+## convertOrientationAndRotation<sup>23+</sup>
+
+ArkTS-Dyn: convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, value: number): number
+
+ArkTS-Sta: convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, value: int): int
+
+提供窗口方向、屏幕方向和屏幕角度互相转换的能力。
+
+窗口方向指窗口所在屏幕的方向，以窗口模块对横竖屏的定义方式表示，窗口的方向分别用0、1、2和3表示竖屏、反向横屏、反向竖屏和横屏四个方向，其对横竖屏的定义与[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)和枚举类[Orientation](arkts-apis-window-e.md#orientation9)中对横竖屏的定义一致，如Orientation设置为LANDSCAPE时，窗口方向为横屏。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**设备行为差异：** 该接口在Phone和Tablet设备可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名   | 类型                          | 必填 | 说明                                                    |
+| -------- | ----------------------------- | ---- | ------------------------------------------------------ |
+| from     | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | 是   | 待转换的值的类型。 |
+| to       | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | 是   | 目标值的类型。 |
+| value    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 待转换的值。该参数为整数，浮点数输入将向下取整，取值范围为[0, 3]，范围外为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。|
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回目标类型的转换值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.    |
+| 1300003  | This window manager service works abnormally.        |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+try {
+  let originalValue: number = 0;
+  let fromType: window.RotationInfoType = window.RotationInfoType.WINDOW_ORIENTATION;
+  let toType: window.RotationInfoType = window.RotationInfoType.DISPLAY_ORIENTATION;
+  let convertedValue: number = windowClass.convertOrientationAndRotation(fromType, toType, originalValue);
+  console.info(`Convert ${originalValue} of type: ${fromType} to ${convertedValue} of type: ${toType}`);
+} catch (exception) {
+  console.error(`Failed to convert orientation and rotation between window and display. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+try {
+  let originalValue: int = 0;
+  let fromType: window.RotationInfoType = window.RotationInfoType.WINDOW_ORIENTATION;
+  let toType: window.RotationInfoType = window.RotationInfoType.DISPLAY_ORIENTATION;
+  let convertedValue: int = windowClass.convertOrientationAndRotation(fromType, toType, originalValue);
+  console.info(`Convert ${originalValue} of type: ${fromType} to ${convertedValue} of type: ${toType}`);
+} catch (exception) {
+  let err = exception as BusinessError;
+  console.error(`Failed to convert orientation and rotation between window and display. Cause code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## setWindowSystemBarProperties<sup>(deprecated)</sup>
 
 setWindowSystemBarProperties(systemBarProperties: SystemBarProperties, callback: AsyncCallback&lt;void&gt;): void
