@@ -3,9 +3,9 @@
 > **注意：**
 > 请务必按如下模板反馈PR所携带的修改信息。
 > 请分析是否需要同步合入活跃的发布分支。当前活跃的分支除master外还包括：
-> (API 23 Beta) weekly_20260112
-> (API 22) weekly_20251117
-> (API 20) OpenHarmony-6.0-Release
+> (API 23 Release)  OpenHarmony-6.1-Release
+> (API 23 Beta1)    weekly_20260112
+> (API 22 Release)  weekly_20251117
 
 ## 文档变更类型
 

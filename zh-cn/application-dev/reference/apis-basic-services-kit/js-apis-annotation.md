@@ -66,13 +66,15 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
   ```
 <!--RP1End-->
 
-## SuppressWarnings<sup>23+<sup>
+## SuppressWarnings<sup>23+</sup>
 
 @interface SuppressWarnings {
-  rules: Array\<SuppressWarningsType>;
-}
 
-系统提供的API注解能力，可以用于消除API产生的告警。此注解可以标注在类、函数、变量、类型、接口等API上。在源码用此注解后，编译时会根据配置的规则来抑制对应警告。
+  rules: Array\<SuppressWarningsType>;
+  
+}  
+
+系统提供的API告警屏蔽功能，允许开发者通过注解的方式来抑制API调用时产生的告警。该功能可应用于类、函数、变量、类型、接口等API元素上。在源码中添加相应标注后，编译器会根据预设规则自动屏蔽对应的告警信息。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -86,16 +88,52 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 | ---- | ---- | ---- | --- | -------------------------- |
 | rules | Array<[SuppressWarningsType](#suppresswarningstype23)> | 否 | 否 | 支持告警消除的规则集合|
 
-**示例：**
+**注解使用示例：**
+
+预置条件：工程根目录下build-profile.json5文件设置的compatibleSdkVersion值为20。
+
   ```typescript
-  import { SuppressWarnings, SuppressWarningsType } from '@kit.BasicServicesKit';
+  import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicServicesKit';
+  import wifiManager from '@ohos.wifiManager';
+  wifiManager.startScan();  // 该接口起始版本为21，直接调用会生成兼容性告警。
+  // The 'startScan' API is supported since SDK version 21. However, the current compatible SDK version is 20.
 
   @SuppressWarnings({rules: [SuppressWarningsType.COMPATIBILITY]})
-  function myFunc() {}
+  function myFunc() {
+    wifiManager.startScan(); // 使用@SuppressWarnings注解后，告警被抑制。
+  }
+
+  @SuppressWarnings({rules: [SuppressWarningsType.COMPATIBILITY]})
+  class MyClass {
+    wifiScanResult = wifiManager.startScan(); // 使用@SuppressWarnings注解后，告警被抑制。
+  }
   ```
 
+// @SuppressWarnings \<SuppressWarningsType>
 
-## SuppressWarningsType<sup>23+<sup>
+本功能支持以单行注释形式快速抑制告警。添加注释后，编译器将根据规则自动屏蔽对应的告警信息。
+
+> **说明：**
+>
+> 仅支持单行注释(//)格式，示例：// @SuppressWarnings compatibility
+>
+> 不支持多行注释(/\*\*/)格式，示例：/\* @SuppressWarnings compatibility */
+
+**注释使用示例：**
+
+预置条件：工程根目录下build-profile.json5文件设置的compatibleSdkVersion值为20。
+
+  ```typescript
+  import { Available } from '@kit.BasicServicesKit';
+  import wifiManager from '@ohos.wifiManager';
+  wifiManager.startScan();  // 该接口起始版本为21，直接调用会生成兼容性告警。
+  // The 'startScan' API is supported since SDK version 21. However, the current compatible SDK version is 20.
+
+  // @SuppressWarnings compatibility
+  wifiManager.startScan(); // 使用@SuppressWarnings注释后，告警被抑制。
+  ```
+
+## SuppressWarningsType<sup>23+</sup>
 
 支持消除告警的规则。
 
@@ -110,3 +148,4 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 | 名称                   | 值   | 说明                           |
 | ---------------------- | ---- | ------------------------------ |
 | COMPATIBILITY     | compatibility    | 支持消除兼容性告警。 |
+| SYSCAP     | syscap    | 支持消除多设备告警。 |

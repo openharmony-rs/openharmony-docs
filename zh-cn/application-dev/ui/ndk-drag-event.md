@@ -10,7 +10,7 @@ ArkUI开发框架针对拖拽事件提供了[NODE_ON_PRE_DRAG](../reference/apis
 
 ## 通用拖拽
 
-ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API实现拖拽功能。以下以Image组件为例，详细介绍C API实现拖拽功能的基本步骤，以及在开发过程中需要注意的事项。
+ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API实现拖拽功能。以下以Image组件为例，详细介绍C API实现拖拽功能的基本步骤，以及在开发过程中需要注意的事项。完整示例请参考<!--RP1-->[NativeDragDrop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop)<!--RP1End-->。
 
 1. 组件拖拽设置。
 
@@ -32,8 +32,8 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    dragImage2 = nodeAPI->createNode(ARKUI_NODE_IMAGE);
    SetId(dragImage2, "dragImage");
    SetCommonAttribute(dragImage2, 140.0f, 140.0f, 0xFFFFFFFF, 5.0f);
-   // 图片src/main/ets/resources/seagull.png需要替换为开发者所需的资源文件
-   SetImageSrc(dragImage2, "/resources/seagull.png");
+   // 图片src/main/resources/base/media/seagull.png需要替换为开发者所需的资源文件
+   SetImageSrc(dragImage2, "/resources/base/media/seagull.png");
    OH_ArkUI_SetNodeDraggable(dragImage2, true);
    nodeAPI->registerNodeEvent(dragImage2, NODE_ON_DRAG_START, 1, nullptr);
    ```
@@ -239,7 +239,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
 4. 处理NODE_ON_DRAG_START事件。
 
-   在NODE_ON_DRAG_START事件中，应用可以执行起拖阶段所需的操作，通常涉及处理起拖过程的数据。例如，创建OH_UdmfRecord，将用于拖拽图片所需的数据 imageUri以fileUri类型添加到[OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md)中，接着将OH_UdmfRecord设置到[OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md)中，最后将OH_UdmfData设置到[DragEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-dragevent.md)中。
+   在NODE_ON_DRAG_START事件中，应用可以执行起拖阶段所需的操作，通常涉及处理起拖过程的数据。例如，创建[OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md)，将用于拖拽图片所需的数据imageValue以[OH_UdsFileUri](../reference/apis-arkdata/capi-udmf-oh-udsfileuri.md)类型添加到OH_UdmfRecord中，接着将OH_UdmfRecord设置到[OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md)中，最后将OH_UdmfData设置到[DragEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-dragevent.md)中。
 
    <!-- @[drag_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/thirdmodule.h) -->
    
@@ -249,14 +249,14 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        int returnValue;
        OH_UdmfRecord *record = OH_UdmfRecord_Create();
        OH_UdsFileUri *imageValue = OH_UdsFileUri_Create();
-       // 图片src/main/ets/resources/seagull.png需要替换为开发者所需的资源文件
-       returnValue = OH_UdsFileUri_SetFileUri(imageValue, "/resources/seagull.png");
+       // 图片src/main/resources/base/media/seagull.png需要替换为开发者所需的资源文件
+       returnValue = OH_UdsFileUri_SetFileUri(imageValue, "/resources/base/media/seagull.png");
        returnValue = OH_UdmfRecord_AddFileUri(record, imageValue);
        OH_UdmfData *data = OH_UdmfData_Create();
        returnValue = OH_UdmfData_AddRecord(data, record);
        returnValue = OH_ArkUI_DragEvent_SetData(dragEvent, data);
    }
-   // ···
+   // ...
                case NODE_ON_DRAG_START: {
                    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DRAG_START EventReceiver");
                    SetImageData(dragEvent);
@@ -338,7 +338,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
 ## DragAction主动发起拖拽
 
-除了通用拖拽以外，ArkUI还提供了使用C API实现主动发起拖拽的能力。以下以文本拖拽为例，详细介绍C-API实现主动发起拖拽的基本步骤，以及在开发过程中需要注意的事项。
+除了通用拖拽以外，ArkUI还提供了使用C API实现主动发起拖拽的能力。以下以文本拖拽为例，详细介绍C-API实现主动发起拖拽的基本步骤，以及在开发过程中需要注意的事项。完整示例请参考<!--RP1-->[NativeDragDrop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop)<!--RP1End-->。
 
 1. 节点注册事件。
 

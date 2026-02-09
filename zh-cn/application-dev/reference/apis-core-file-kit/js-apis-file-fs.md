@@ -991,7 +991,7 @@ connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -1041,7 +1041,7 @@ disconnectDfs(networkId: string): Promise&lt;void&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[空间统计错误码](errorcode-filemanagement.md#空间统计错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -4644,9 +4644,13 @@ try {
 
 ```
 
-### onCancel<sup>12+</sup>
+### onCancel<sup>(deprecated)</sup>
 
 onCancel(): Promise&lt;string&gt;
+
+> **说明：**
+>
+> 从API version 12开始支持，从API version 24开始废弃。
 
 取消拷贝事件监听。
 

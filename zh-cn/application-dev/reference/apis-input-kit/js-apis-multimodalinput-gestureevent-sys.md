@@ -18,7 +18,7 @@
 ## 导入模块
 
 ```js
-import { Touch } from '@kit.InputKit';
+import { Touch , SwipeInward } from '@kit.InputKit';
 ```
 
 ## TouchGestureEvent<sup>18+</sup>
@@ -47,3 +47,15 @@ import { Touch } from '@kit.InputKit';
 | PINCH_CLOSED | 4   | 多指捏合。       |
 | PINCH_OPENED | 5   | 多指张开。       |
 | GESTURE_END | 6   | 手势结束。       |
+
+## SwipeInward<sup>12+</sup>
+
+向内滑动事件。
+
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
+
+| 名称               | 类型                      | 只读 | 可选 | 说明             |
+| ------------------ | ------------------------- | ---- | ---- | ---------------- |
+| type      | [ActionType](js-apis-multimodalinput-gestureevent.md#actiontype)  | 否   | 否   |        表示向内滑动事件的类型，固定为SwipeInward。     |
+| x      | number  | 否   | 否   |    滑动事件触发点的横坐标，单位为像素。      |
+| y      | number  | 否   | 否   |     滑动事件触发点的纵坐标，单位为像素。     |

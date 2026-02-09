@@ -6,17 +6,19 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-**RenderingContext** is a rendering context for drawing graphics, text, images, and other objects onto a **Canvas** component.
+After the **CanvasRenderingContext2D** object is bound to the **Canvas** component, you can draw shapes, texts, and images on the **Canvas** component.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> * This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> When you call drawing APIs in this module, the commands are stored in the associated **Canvas** component's command queue. These commands are only executed when the current frame enters the rendering phase and the associated **Canvas** component is visible. Therefore, when the **Canvas** component is invisible (for example, off-screen or hidden), avoid frequent drawing calls to prevent command queue buildup and excessive memory usage. For best practices, see [Controlling Canvas Rendering Based on Component Visibility](../../../ui/arkts-drawing-customization-on-canvas.md#controlling-canvas-rendering-based-on-component-visibility).
+> * It is recommended that the **CanvasRenderingContext2D** object and the **Canvas** component be encapsulated into the same custom component to ensure that the two components correspond to each other and have the same lifecycle.
 >
-> The following path-related APIs apply only to paths created within **CanvasRenderingContext2D** and do not affect paths defined in [OffscreenCanvasRenderingContext2D](./ts-offscreencanvasrenderingcontext2d.md) or [Path2D](./ts-components-canvas-path2d.md): [beginPath](#beginpath), [moveTo](#moveto), [lineTo](#lineto), [closePath](#closepath), [bezierCurveTo](#beziercurveto), [quadraticCurveTo](#quadraticcurveto), [arc](#arc), [arcTo](#arcto), [ellipse](#ellipse), [rect](#rect), and [roundRect](#roundrect20).
+> * When you call drawing APIs in this module, the commands are stored in the associated **Canvas** component's command queue. These commands are only executed when the current frame enters the rendering phase and the associated **Canvas** component is visible. Therefore, when the **Canvas** component is invisible (for example, off-screen or hidden), avoid frequent drawing calls to prevent command queue buildup and excessive memory usage. For best practices, see [Controlling Canvas Rendering Based on Component Visibility](../../../ui/arkts-drawing-customization-on-canvas.md#controlling-canvas-rendering-based-on-component-visibility).
 >
-> If the width or height of the **Canvas** component exceeds 8000 px, the CPU is used for rendering, which can significantly degrade performance.
+> * The following path-related APIs apply only to paths created within **CanvasRenderingContext2D** and do not affect paths defined in [OffscreenCanvasRenderingContext2D](./ts-offscreencanvasrenderingcontext2d.md) or [Path2D](./ts-components-canvas-path2d.md): [beginPath](#beginpath), [moveTo](#moveto), [lineTo](#lineto), [closePath](#closepath), [bezierCurveTo](#beziercurveto), [quadraticCurveTo](#quadraticcurveto), [arc](#arc), [arcTo](#arcto), [ellipse](#ellipse), [rect](#rect), and [roundRect](#roundrect20).
+>
+> * If the width or height of the **Canvas** component exceeds 8000 px, the CPU is used for rendering, which can significantly degrade performance.
 
 ## Constructor
 
@@ -376,9 +378,11 @@ struct MiterLimit {
 
 ### font
 
-Sets the font style for text drawing. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned. Custom fonts registered in API version 20 and later are supported. (The previewer of DevEco Studio does not support custom fonts.)
+Sets the font style for text drawing. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.
 
 Syntax: ctx.font&nbsp;=&nbsp;'font-style&nbsp;font-weight&nbsp;font-size&nbsp;font-family'<br>- (Optional) **font-style**: font style. Available values are **'normal'** and **'italic'**.<br>- (Optional) **font-weight**: font weight. Available values are as follows: **'normal'**, **'bold'**, **'bolder'**, **'lighter'**, **'100'**, **'200'**, **'300'**, **'400'**, **'500'**, **'600'**, **'700'**, **'800'**, **'900'**.<br>- (Optional) **font-size**: font size and line height. The unit must be specified and can be px or vp.<br>- (Optional) **font-family**: font family. Available values are **'sans-serif'**, **'serif'**, and **'monospace'**.
+
+From API version 20, this API is used to set the registered custom font (the previewer of DevEco Studio does not support custom fonts). You can register a custom font in either of the following ways: You can register a custom font by calling the asynchronous API this.uiContext.getFont().[registerFont](../arkts-apis-uicontext-font.md#registerfont) of ArkUI. However, if you call this API immediately after the registration, the custom font may not take effect. Alternatively, you can directly call the fontCollection.[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) API of the font engine to register the custom font. When you directly call the font engine API to register a custom font, the fontCollection instance must be text.FontCollection.getGlobalInstance(), because the component loads fonts from this instance by default. If you use another instance, the custom font may not take effect.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -386,9 +390,6 @@ Syntax: ctx.font&nbsp;=&nbsp;'font-style&nbsp;font-weight&nbsp;font-size&nbsp;fo
 | ------ | ---------- | -------------- | ---------------------------------------- |
 | string | No| No| Default value: **'normal normal 14px sans-serif'**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
-> **NOTE**
->
-> You can register a custom font in either of the following ways: You can register a custom font by calling the asynchronous API this.uiContext.getFont().[registerFont](../arkts-apis-uicontext-font.md#registerfont) of ArkUI. However, if you call this API immediately after the registration, the custom font may not take effect. Alternatively, you can directly call the fontCollection.[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) API of the font engine to register the custom font. When you directly call the font engine API to register a custom font, the fontCollection instance must be text.FontCollection.getGlobalInstance(), because the component loads fonts from this instance by default. If you use another instance, the custom font may not take effect.
 
 ```ts
 // xxx.ets
@@ -826,7 +827,7 @@ struct GlobalCompositeOperation {
 }
 ```
 
-![en-us_image_0000001211898480](figures/en-us_image_0000001211898480.png)
+![en-us_image_0000001238952375](figures/en-us_image_0000001238952375.png)
 
 
 ### shadowBlur
@@ -870,7 +871,7 @@ struct ShadowBlur {
 }
 ```
 
-![en-us_image_0000001256978343](figures/en-us_image_0000001256978343.png)
+![en-us_image_0000001194032456](figures/en-us_image_0000001194032456.png)
 
 
 ### shadowColor
@@ -914,7 +915,7 @@ struct ShadowColor {
 }
 ```
 
-![en-us_image_0000001257138353](figures/en-us_image_0000001257138353.png)
+![en-us_image_0000001239032411](figures/en-us_image_0000001239032411.png)
 
 
 ### shadowOffsetX
@@ -959,7 +960,7 @@ struct ShadowOffsetX {
 }
 ```
 
-![en-us_image_0000001212218436](figures/en-us_image_0000001212218436.png)
+![en-us_image_0000001193872490](figures/en-us_image_0000001193872490.png)
 
 
 ### shadowOffsetY
@@ -1003,7 +1004,7 @@ struct ShadowOffsetY {
 }
 ```
 
-![en-us_image_0000001212378410](figures/en-us_image_0000001212378410.png)
+![en-us_image_0000001238832387](figures/en-us_image_0000001238832387.png)
 
 
 ### imageSmoothingEnabled
@@ -1047,7 +1048,7 @@ struct ImageSmoothingEnabled {
 }
 ```
 
-![en-us_image_0000001211898472](figures/en-us_image_0000001211898472.png)
+![en-us_image_0000001238712415](figures/en-us_image_0000001238712415.png)
 
 
 ### height
@@ -1294,7 +1295,7 @@ Sets the filter of an image. You can combine any number of filters. This attribu
 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| string | No| No| <br>Available values are as follows:<br>- **'none'**: no filter effect.<br>- 'blur(\<length>)': sets Gaussian blur for an image. The value must be greater than or equal to 0. The unit can be px, vp, or rem. The default value is blur(0px).<br>- 'brightness([\<number>\|\<percentage>])': applies a linear multiplication to the image to make it look brighter or darker. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **brightness(1)**.<br>- 'contrast([\<number>\|\<percentage>])': adjusts the image contrast. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **contrast(1)**.<br>- 'grayscale([\<number>\|\<percentage>])': converts the image to a grayscale image. The value can be a number or percentage. The value range is [0, 1]. The default value is **grayscale(0)**.<br>- 'hue-rotate(\<angle>)': Applies hue rotation to an image. The value range is 0–360. The default value is hue-rotate(0).<br>- 'invert([\<number>\|\<percentage>])': inverts the input image. The value can be a number or percentage. The value range is [0, 1]. The default value is **invert (0)**.<br>- 'opacity([\<number>\|\<percentage>])': sets the opacity of the image. The value can be a number or percentage. The value range is [0, 1]. The default value is opacity(1).<br>- 'saturate([\<number>\|\<percentage>])': sets the saturation of the image. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **saturate(1)**.<br>- 'sepia([\<number>\|\<percentage>])': converts the image to dark brown. The value can be a number or percentage. The value range is [0, 1]. The default value is **sepia(0)**.<br>|
+| string | No| No| <br>Available values are as follows:<br>- **'none'**: no filter effect.<br>- 'blur(\<length>)': sets Gaussian blur for an image. The value must be greater than or equal to 0. The unit can be px, vp, or rem. The default value is blur(0px).<br>- 'brightness([\<number>\|\<percentage>])': applies a linear multiplication to the image to make it look brighter or darker. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **brightness(1)**.<br>- 'contrast([\<number>\|\<percentage>])': adjusts the image contrast. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **contrast(1)**.<br>- 'grayscale([\<number>\|\<percentage>])': converts the image to a grayscale image. The value can be a number or percentage. The value range is [0, 1]. The default value is **grayscale(0)**.<br>- 'hue-rotate(\<angle>)': Applies hue rotation to an image. The value range is 0–360. The default value is hue-rotate(0).<br>- 'invert([\<number>\|\<percentage>])': inverts the input image. The value can be a number or percentage. The value range is [0, 1]. The default value is **invert (0)**.<br>- 'opacity([\<number>\|\<percentage>])': sets the opacity of the image. The value can be a number or percentage. The value range is [0, 1]. The default value is **opacity(1)**.<br>- 'saturate([\<number>\|\<percentage>])': sets the saturation of the image. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **saturate(1)**.<br>- 'sepia([\<number>\|\<percentage>])': converts the image to dark brown. The value can be a number or percentage. The value range is [0, 1]. The default value is **sepia(0)**.<br>|
 
 ```ts
   // xxx.ets
@@ -2148,7 +2149,7 @@ struct BezierCurveTo {
 }
 ```
 
-  ![en-us_image_0000001239032415](figures/en-us_image_0000001239032415.png)
+![en-us_image_0000001239032415](figures/en-us_image_0000001239032415.png)
 
 
 ### quadraticCurveTo
@@ -4165,7 +4166,7 @@ Creates a linear gradient.
   }
   ```
 
-  ![en-us_image_0000001194032516](figures/en-us_image_0000001194032516.jpeg)
+  ![en-us_image_0000001194032516](figures/en-us_image_0000001194032516.png)
 
 
 ### createRadialGradient
@@ -4228,7 +4229,7 @@ Creates a linear gradient.
   }
   ```
 
-  ![en-us_image_0000001238952407](figures/en-us_image_0000001238952407.jpeg)
+  ![en-us_image_0000001238952407](figures/en-us_image_0000001238952407.png)
 
 ### createConicGradient<sup>10+</sup>
 
@@ -4285,7 +4286,7 @@ struct CanvasExample {
 }
 ```
 
-  ![en-us_image_0000001239032419](figures/en-us_image_0000001239032420.png)
+![en-us_image_0000001239032419](figures/en-us_image_0000001239032420.png)
 
 ### on('onAttach')<sup>13+</sup>
 

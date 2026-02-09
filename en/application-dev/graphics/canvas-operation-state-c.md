@@ -22,7 +22,7 @@ Common canvas operations are as follows:
 
 ## Clipping
 
-Clipping is a common operation in graphics processing. It is performed on the canvas and can be used to restrict the drawing region. The corresponding effect is displayed only after the clipping operation is performed before drawing.
+Clipping is a common operation in graphics processing. It is performed on the canvas and can be used to restrict the drawing region, confining all drawing operations to the specified area. The corresponding effect is displayed only after the clipping operation is performed before drawing.
 
 The following clipping operations are supported:
 
@@ -125,7 +125,7 @@ The following shows the sample code and effect:
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // Set the fill color.
 OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
-// Set the brush of the canvas.
+// Set the brush for the canvas.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // Create a matrix object that is translated by 300 px in the horizontal and vertical directions.
 OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateTranslation(value300_, value300_);
@@ -158,7 +158,7 @@ The following shows the sample code and effect:
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // Set the fill color.
 OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
-// Set the brush of the canvas.
+// Set the brush for the canvas.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // Create a rotation matrix object. The three parameters are the rotation angle and X and Y coordinates of the rotation center.
 OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreateRotation(45, value200_, value300_);
@@ -191,7 +191,7 @@ The following shows the sample code and effect:
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // Set the fill color.
 OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
-// Set the brush of the canvas.
+// Set the brush for the canvas.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // Create a scaling matrix object. The four parameters are the X and Y coordinates of the rotation center and the scaling factors in the horizontal and vertical directions.
 OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreateScale(2, 2, value200_, value300_);

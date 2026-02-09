@@ -108,7 +108,8 @@ httpRequest.request(// Customize EXAMPLE_URL in extraData on your own. It is up 
     ],
     addressFamily: http.AddressFamily.DEFAULT // Optional. By default, the IPv4 or IPv6 address of the target domain name is selected. Supported since API 15.
     customMethod: 'GET', // Optional. Supported since API 23.
-    maxRedirects: 30 // Optional. The default value is 30. Supported since API 23.
+    maxRedirects: 30, // Optional. The default value is 30. Supported since API 23.
+    sniHostName: "www.example.com" // Optional. Supported since API 23.
   },
   (err: BusinessError, data: http.HttpResponse) => {
     if (!err) {
@@ -121,13 +122,13 @@ httpRequest.request(// Customize EXAMPLE_URL in extraData on your own. It is up 
       console.info('cookies:' + JSON.stringify(data.cookies)); // Cookies are supported since API version 8.
       // Unsubscribe from HTTP Response Header events.
       httpRequest.off('headersReceive');
-      // Call destroy() to destroy the JavaScript object after the HTTP request is complete.
+      // Call destroy() to release resources when the request is no longer needed, preventing memory leaks.
       httpRequest.destroy();
     } else {
       console.error('error:' + JSON.stringify(err));
       // Unsubscribe from HTTP Response Header events.
       httpRequest.off('headersReceive');
-      // Call destroy() to destroy the JavaScript object after the HTTP request is complete.
+      // Call destroy() to release resources when the request is no longer needed, preventing memory leaks.
       httpRequest.destroy();
     }
   });
@@ -145,7 +146,7 @@ createHttp(): HttpRequest
 Creates an HTTP request. You can use this API to initiate or destroy an HTTP request, or enable or disable listening for HTTP Response Header events. To initiate multiple HTTP requests, you must create an **HttpRequest** object for each HTTP request. An **HttpRequest** object corresponds to an HTTP request.
 
 > **NOTE**
-> Call **destroy()** to destroy the **HttpRequest** object when it is no longer needed. Otherwise, resource leakage may occur.
+> When the request is no longer needed, call destroy() to release resources. Otherwise, memory leakage may occur.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -473,7 +474,7 @@ promise.then((data:http.HttpResponse) => {
 
 destroy(): void
 
-Destroys an HTTP request.
+Stops an HTTP request task and releases system resources.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1149,7 +1150,7 @@ Defines the options for initiating an HTTP request.
 | readTimeout                  | number                          | No | Yes | Read timeout duration. The default value is **60000**, in ms. The input value must be an uint32_t integer.<br>The value **0** indicates no timeout.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | connectTimeout               | number                          | No | Yes | Connection timeout interval. The default value is **60000**, in ms. The input value must be an uint32_t integer.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | usingProtocol<sup>9+</sup>   | [HttpProtocol](#httpprotocol9)  | No | Yes | Protocol. The default value is automatically specified by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| usingProxy<sup>10+</sup>     | boolean \| [HttpProxy](js-apis-net-connection.md#httpproxy10)               | No | Yes | HTTP proxy configuration. If this parameter is not set, no proxy is used.<br>- If **usingProxy** is set to **true**, the default network proxy is used. If **usingProxy** is set to **false**, no proxy is used.<br>- If **usingProxy** is of the **HttpProxy** type, the specified network proxy is used. The HttpProxy supports the **username** and **password** fields from API version 22.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| usingProxy<sup>10+</sup>     | boolean \| [HttpProxy](js-apis-net-connection.md#httpproxy10)               | No | Yes | HTTP proxy configuration. If this item is not configured, the system proxy is used by default.<br>- If **usingProxy** is set to **true**, the default network proxy is used. If **usingProxy** is set to **false**, no proxy is used.<br>- If **usingProxy** is of the **HttpProxy** type, the specified network proxy is used. The HttpProxy supports the **username** and **password** fields from API version 22.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | caPath<sup>10+</sup>     | string               | No | Yes | CA certificate data. If this parameter is set and the certificate is valid, the system uses the specified CA certificate and the preset CA certificate. Otherwise, the system uses only the preset CA certificate. The CA certificate path is the sandbox mapping path, which can be obtained by using **UIAbilityContext** APIs. Currently, only **.pem** certificates are supported.<br> The preset CA certificate is available at **/etc/ssl/certs/cacert.pem**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | caData<sup>20+</sup>     | string               | No | Yes | CA certificate data. If this parameter is set and the certificate is valid, the system uses the specified CA certificate and the preset CA certificate. Otherwise, the system uses only the preset CA certificate. If both **caPath** and **caData** are set, **caData** is ignored by the system. Currently, only certificates in **.pem** format are supported. The maximum length is 8000 bytes. Only one certificate can be specified. A certificate chain is not allowed.<br>The preset CA certificate is available at **/etc/ssl/certs/cacert.pem**. This path is the sandbox mapping path, which can be obtained by using **UIAbilityContext** APIs.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | resumeFrom<sup>11+</sup> | number | No| Yes| Download start position. This field can be used only for the GET method. As stipulated in section 3.1 of RFC 7233, servers are allowed to ignore range requests.<br>- If the HTTP PUT method is used, do not use this option because it may conflict with other options.<br>- The value ranges from **1** to **4294967296** (4 GB). If the value is out of this range, this field does not take effect.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
@@ -1166,8 +1167,10 @@ Defines the options for initiating an HTTP request.
 | serverAuthentication<sup>18+</sup> | [ServerAuthentication](#serverauthentication18)                     | No| Yes| Indicates whether to verify the server identity during a secure connection. The identity is not verified by default.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | sslType<sup>20+</sup> | [SslType](#ssltype20) | No| Yes| Security communication protocol. You can use TLS (default) or TLCP. If TLCP is used, the related options (such as **caPath**, **clientCert**, and **clientEncCert**) must be set to valid values.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | clientEncCert<sup>20+</sup> | [ClientCert](#clientcert11) | No| Yes| Client certificate, which is used by the server to verify the client identity.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| customMethod<sup>23+</sup> | string | No| Yes| Custom request method. For example, when the WebDAV extension protocol is implemented, **customMethod** has a higher priority than **method**.<br>- If **customMethod** meets the WebDAV extension protocol request requirements but the server does not support the request, the server response code of the request is usually 405 or 501 (the actual result depends on the server behavior).<br>- If **customMethod** does not meet the WebDAV extension protocol request requirements, the server response code of the request is usually 400 or 405 (the actual result depends on the server behavior).<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| maxRedirects<sup>23+</sup> | number | No| Yes| The maximum number of redirections can be specified for HttpRequest.<br>- The default maximum number of redirections is **30**.<br>- The value range is [0, 2147483647]. If this parameter is set to **0**, redirection is disabled. If the number of redirections exceeds the maximum number of redirections, error code 2300047 is returned. If the value is out of the range, the default value **30** takes effect.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| customMethod<sup>23+</sup> | string | No| Yes| Custom request method. For example, when the WebDAV extension protocol is implemented, **customMethod** has a higher priority than **method**.<br>- The default value is an empty string. The value can contain a maximum of 128 characters. If the value exceeds 128 characters, the setting does not take effect.<br>- If **customMethod** meets the WebDAV extension protocol request requirements but the server does not support the request, the server response code of the request is usually 405 or 501 (the actual result depends on the server behavior).<br>- If **customMethod** does not meet the WebDAV extension protocol request requirements, the server response code of the request is usually 400 or 405 (the actual result depends on the server behavior).|
+| maxRedirects<sup>23+</sup> | number | No| Yes| The maximum number of redirections can be specified for HttpRequest.<br>- The default value is 30.<br>- The value range is [0, 2147483647]. If the value is set to **0**, redirection is disabled. If the number of redirections on the server exceeds the maximum number of redirections, error code 2300047 is returned. If the value is out of the range, the default value **30** takes effect.|
+| sniHostName<sup>23+</sup> | string | No| Yes| Allows the client to declare the target domain name to the server in the TLS handshake phase by configuring the server name indication (SNI). In this way, the server can select the corresponding SSL/TLS certificate based on the domain name for encrypted communication.<br>- The default value is an empty string. The value of **sniHostName** can contain a maximum of 255 characters. If the length limit is exceeded or the value is an empty string, the setting does not take effect.|
+| pathPreference<sup>23+</sup> |[PathPreference](#pathpreference23) | No| Yes|Specifies the network to be activated in an HTTP request.|
 
 ## RequestMethod
 
@@ -1427,7 +1430,7 @@ httpRequest.request("EXAMPLE_URL", (err: BusinessError, data: http.HttpResponse)
     httpRequest.destroy();
   } else {
     console.error('error:' + JSON.stringify(err));
-    // Call destroy() to destroy the JavaScript object after the HTTP request is complete.
+    // Call destroy() to release resources when the request is no longer needed, preventing memory leaks.
     httpRequest.destroy();
   }
 });
@@ -1662,7 +1665,7 @@ Defines the the TLS configuration, including the version and cipher suite.
 | ------------------  |---------------------------------|-------- |-------- |---------------|
 | tlsVersionMin       | [TlsVersion](#tlsversion18)     | No     |No      | Earliest TLS version.    |
 | tlsVersionMax        | [TlsVersion](#tlsversion18)    | No     |No      | Latest TLS version.    |
-| cipherSuites        | [CipherSuite](#ciphersuite18)[] | No     |Yes      | Array of cipher suite types.|
+| cipherSuites        | [CipherSuite](#ciphersuite18)[] | No     |Yes      | Array of cipher suite types. If no cipher suite type is set, all supported cipher suite types are carried by default. For details about the cipher suite types, see [TlsV13SpecificCipherSuite](#tlsv13specificciphersuite18), [TlsV12SpecificCipherSuite](#tlsv12specificciphersuite18) and [TlsV10SpecificCipherSuite](#tlsv10specificciphersuite18).|
 
 ## TlsVersion<sup>18+</sup>
 
@@ -2228,3 +2231,24 @@ httpRequest.request("EXAMPLE_URL", {
   httpRequest.destroy();
 });
 ```
+## PathPreference<sup>23+</sup>
+
+type PathPreference = 'auto' | 'primaryCellular' | 'secondaryCellular'
+
+Enumerates the types of networks specified in an HTTP request.
+
+> **NOTE**
+>
+> It is recommended that this parameter be used in scenarios such as network concurrency.<br>
+> If the specified network is not activated, the system uses the default network.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Communication.NetStack
+
+
+| Type  | Description                                  |
+| ------ | -------------------------------------- |
+| 'auto' |Specifies the default network connection in an HTTP request.|
+| 'primaryCellular' |Specifies the default cellular network connection in an HTTP request when the cellular network is activated.|
+| 'secondaryCellular' |Specifies the cellular network connection of the secondary SIM card in an HTTP request when dual cellular networks are activated.|

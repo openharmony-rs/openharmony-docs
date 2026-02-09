@@ -34,7 +34,7 @@ Check the type of the login user.
 
 **Error Information**
 
-VPN exist already, please execute destory first.
+VPN exist already, please execute destroy first.
 
 **Description**
 

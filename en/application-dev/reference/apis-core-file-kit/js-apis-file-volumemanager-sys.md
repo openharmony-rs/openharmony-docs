@@ -631,7 +631,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 format(volumeId: string, fsType: string, callback: AsyncCallback&lt;void&gt;): void
 
-Formats a volume. This API uses an asynchronous callback to return the result. Currently, only the VFAT and exFAT file systems are supported. Only unmounted volumes can be formatted. After a volume is formatted, the UUID, mounting path, and description of the volume will change.
+Formats a volume. This API uses an asynchronous callback to return the result. Currently, only the virtual file allocation table (VFAT) and exFAT file systems are supported. Only unmounted volumes can be formatted. After a volume is formatted, the UUID, mounting path, and description of the volume will change.
 
 **System API**: This is a system API.
 
@@ -728,7 +728,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 partition(diskId: string, type: number, callback: AsyncCallback&lt;void&gt;): void
 
-Partitions a disk. This API uses a callback to return the result. The system supports access to multi-partition disks. Currently, this API can partition a disk into only one partition.
+Partitions a disk. This API uses an asynchronous callback to return the result. The system supports access to multi-partition disks. Currently, this API can partition a disk into only one partition.
 
 **System API**: This is a system API.
 

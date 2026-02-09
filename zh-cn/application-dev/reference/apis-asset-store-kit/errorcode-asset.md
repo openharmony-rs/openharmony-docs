@@ -1,4 +1,4 @@
-# 关键资产存储服务(ASSET)错误码
+# 关键资产存储服务错误码
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->

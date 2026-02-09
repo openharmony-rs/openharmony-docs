@@ -413,7 +413,7 @@ console.info(stringArray); // Expected output: 1,2,3,4,5
 
 toLocaleString(): string
 
-Generates a string of digits that matches the cultural conventions of the current system locale. Each element converts its digits to a string via its **toLocaleString** API, and these strings are then joined in sequence with commas (,).
+Generates digits that match the cultural conventions of the current system locale. Each element converts its digits to a string via its **toLocaleString** API, and these strings are then joined in sequence with commas (,).
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 

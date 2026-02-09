@@ -240,7 +240,7 @@ struct Index {
             console.info(`gestureInfo Type ${gestureInfo.type.toString()}`);
             console.info(`isSystemGesture ${gestureInfo.isSystemGesture}`);
             console.info(`zqs pressure ${event.pressure}\nfingerList.length ${event.fingerList.length}\ntimeStamp ${event.timestamp}\nsourceType ${event.source.toString()}\n` +
-              `titleX ${event.tiltX}\ntitleY ${event.tiltY}\nrollAngle ${event.rollAngle}\nsourcePool ${event.sourceTool.toString()}`);
+              `tiltX ${event.tiltX}\ntiltY ${event.tiltY}\nrollAngle ${event.rollAngle}\nsourcePool ${event.sourceTool.toString()}`);
             // If the gesture is a long press gesture, check whether the touch position is in the upper half area.
             if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
               if (event.fingerList.length > 0 && event.fingerList[0].localY < 100) {
@@ -310,7 +310,7 @@ struct GestureDetectorExample {
           GestureGroup(GestureMode.Exclusive,
             TapGesture()
               .onAction(() => {
-                this.message = 'Click event'
+                this.message = 'Tap event'
               }),
             LongPressGesture()
               .onAction(() => {

@@ -18,7 +18,7 @@
 
 menuSystemMaterial(material:Optional\<SystemUiMaterial>)
 
-设置Select下拉菜单的系统材质。不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。
+设置Select下拉菜单的系统材质。不同系统材质对应不同的属性影响效果，该接口影响下拉菜单背景色[menuBackgroundColor](ts-basic-components-select.md#menubackgroundcolor18)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)等参数，不建议与上述接口一起使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -37,11 +37,13 @@ menuSystemMaterial(material:Optional\<SystemUiMaterial>)
 ## 示例
 ### 示例1（设置Select和下拉菜单系统材质）
 
-该示例通过调用[menuSystemMaterial](#menusystemmaterial24)和[systemMaterial](./ts-universal-attributes-image-effect-sys.md#systemmaterial23)接口，实现select和下拉菜单系统材质效果。
+该示例通过调用[menuSystemMaterial](#menusystemmaterial24)接口实现下拉菜单系统材质效果，通过[systemMaterial](./ts-universal-attributes-image-effect-sys.md#systemmaterial23)接口实现select组件系统材质效果。
 
 从API version 24开始，新增menuSystemMaterial接口。从API version 23开始，新增systemMaterial接口。
 
 ```ts
+import { uiMaterial } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct Index {
@@ -53,8 +55,8 @@ struct Index {
         { value: 'SelectOption' },
         { value: 'SelectOption' }])
         .value('Click Show Options')
-        .systemMaterial(new uiMaterail.Material({ type: uiMaterail.MaterialType.SEMI_TRANSPARENT }))
-        .menuSystemMaterial(new uiMaterail.Material({ type: uiMaterail.MaterialType.SEMI_TRANSPARENT }))
+        .systemMaterial(new uiMaterial.Material({ type: uiMaterial.MaterialType.SEMI_TRANSPARENT }))
+        .menuSystemMaterial(new uiMaterial.Material({ type: uiMaterial.MaterialType.SEMI_TRANSPARENT }))
     }
     // $r('app.media.img')需要替换为开发者所需的图像资源文件。
     .backgroundImage($r('app.media.img'))
