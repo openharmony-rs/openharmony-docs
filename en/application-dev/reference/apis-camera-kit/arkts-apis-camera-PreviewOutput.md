@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-PreviewOutput implements preview output. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
+**PreviewOutput** implements preview output. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
 > **NOTE**
 >
@@ -238,7 +238,6 @@ setFrameRate(minFps: number, maxFps: number): void
 Sets a frame rate range for preview streams. The range must be within the supported frame rate range, which can be obtained by calling [getSupportedFrameRates](#getsupportedframerates12).
 
 > **NOTE**
->
 > This API is valid only in [PhotoSession](arkts-apis-camera-PhotoSession.md) or [VideoSession](arkts-apis-camera-VideoSession.md) mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
@@ -342,9 +341,9 @@ function testGetActiveProfile(previewOutput: camera.PreviewOutput): camera.Profi
 
 getPreviewRotation(displayRotation: number): ImageRotation
 
-Obtains the preview rotation degree.
+Obtains the preview rotation angle.
 
-- Device' natural orientation: The default orientation of the device (phone) is in portrait mode, with the charging port facing downward.
+- Device's natural orientation: The default orientation of the device (phone) is in portrait mode, with the charging port facing downward.
 - Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural direction. The rear camera sensor of a phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural direction.
 - Screen orientation: The top-left corner of the image displayed on the screen is the first pixel, which is the coordinate origin. In the case of lock screen, the direction is the same as the device's natural orientation.
 
@@ -362,7 +361,7 @@ Obtains the preview rotation degree.
 
 |      Type     | Description       |
 | -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Preview rotation degree. If the API call fails, undefined is returned.|
+| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Obtains the preview rotation angle. If the API call fails, undefined is returned.|
 
 **Error codes**
 
@@ -396,7 +395,7 @@ function testGetPreviewRotation(previewOutput: camera.PreviewOutput, imageRotati
 
 setPreviewRotation(previewRotation: ImageRotation, isDisplayLocked?: boolean): void
 
-Sets the preview rotation degree.
+Sets the preview rotation angle.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -443,8 +442,7 @@ start(callback: AsyncCallback\<void\>): void
 Starts to output preview streams. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.start](arkts-apis-camera-Session.md#start11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.start](arkts-apis-camera-Session.md#start11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -485,8 +483,7 @@ start(): Promise\<void\>
 Starts to output preview streams. This API uses a promise to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.start](arkts-apis-camera-Session.md#start11-1) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.start](arkts-apis-camera-Session.md#start11-1) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -525,8 +522,7 @@ stop(callback: AsyncCallback\<void\>): void
 Stops outputting preview streams. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.stop](arkts-apis-camera-Session.md#stop11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.stop](arkts-apis-camera-Session.md#stop11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -559,8 +555,7 @@ stop(): Promise\<void\>
 Stops outputting preview streams. This API uses a promise to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.stop](arkts-apis-camera-Session.md#stop11-1) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.stop](arkts-apis-camera-Session.md#stop11-1) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -581,87 +576,5 @@ function stopPreviewOutput(previewOutput: camera.PreviewOutput): void {
   }).catch((error: BusinessError) => {
     console.error(`Failed to preview output stop, error code: ${error.code}.`);
   });
-}
-```
-
-## isBandwidthCompressionSupported<sup>23+</sup>
-
-isBandwidthCompressionSupported(): boolean
-
-Checks whether preview bandwidth compression is supported. This involves reducing data volume through encoding to minimize bandwidth usage during transmission.
-
-**Atomic service API**: This API can be used in atomic services since API version 23.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Return value**
-
-| Type           | Description                    |
-| -------------- | ----------------------- |
-| boolean | Check result for the support of preview bandwidth compression. **true** if supported, **false** otherwise.|
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function isBandwidthCompressionSupported(previewOutput: camera.PreviewOutput): boolean {
-  let supported: boolean = false;
-  try {
-    supported = previewOutput.isBandwidthCompressionSupported();
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The previewOutput.isBandwidthCompressionSupported call failed. error code: ${err.code}`);
-  }
-  return supported;
-}
-```
-
-## enableBandwidthCompression<sup>23+</sup>
-
-enableBandwidthCompression(enabled: boolean): void
-
-Enables preview bandwidth compression.
-
-Before enabling this feature, you can call [isBandwidthCompressionSupported](#isbandwidthcompressionsupported23) to check whether the device supports preview bandwidth compression.
-
-> **NOTE**
->
-> This function must be called prior to [Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11). Otherwise, the preview output stream format will be affected.
-
-**Atomic service API**: This API can be used in atomic services since API version 23.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name     | Type                   | Mandatory| Description                                      |
-| -------- | ---------------------- | ---- | ------------------------------------------ |
-| enabled  | boolean | Yes | Whether to enable preview bandwidth compression. **true** to enable, **false** otherwise.|
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
-
-| ID   | Error Message                                          |
-| -------- |----------------------------------------------- |
-| 7400102  | Operation not allowed. |
-| 7400103  | Session not config. |
-| 7400201  | Camera service fatal error. |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function enableBandwidthCompression(previewOutput: camera.PreviewOutput, enabled: boolean): void {
-  try {
-    previewOutput.enableBandwidthCompression(enabled);
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The previewOutput.enableBandwidthCompression call failed. error code: ${err.code}`);
-  }
 }
 ```

@@ -49,8 +49,6 @@ The file declares the preview output concepts.
 | [Camera_ErrorCode OH_PreviewOutput_DeleteFrameRates(Camera_PreviewOutput* previewOutput, Camera_FrameRateRange* frameRateRange)](#oh_previewoutput_deleteframerates) | - | Deletes the frame rate list.|
 | [Camera_ErrorCode OH_PreviewOutput_SetFrameRate(Camera_PreviewOutput* previewOutput, int32_t minFps, int32_t maxFps)](#oh_previewoutput_setframerate) | - | Sets the frame rates for a PreviewOutput instance.|
 | [Camera_ErrorCode OH_PreviewOutput_GetActiveFrameRate(Camera_PreviewOutput* previewOutput, Camera_FrameRateRange* frameRateRange)](#oh_previewoutput_getactiveframerate) | - | Obtains the active frame rates of a PreviewOutput instance.|
-| [Camera_ErrorCode OH_PreviewOutput_IsBandwidthCompressionSupported(Camera_PreviewOutput* previewOutput, bool* isSupported)](#oh_previewoutput_isbandwidthcompressionsupported) | - | Checks whether preview bandwidth compression is supported. This involves reducing data volume through encoding to minimize bandwidth usage during transmission.|
-| [Camera_ErrorCode OH_PreviewOutput_EnableBandwidthCompression(Camera_PreviewOutput* previewOutput, bool enabled)](#oh_previewoutput_enablebandwidthcompression) | - | Enables preview bandwidth compression.<br>This function must be called prior to [OH_CaptureSession_CommitConfig()](capi-capture-session-h.md#oh_capturesession_commitconfig). Otherwise, the preview output stream format will be affected.|
 
 ## Function Description
 
@@ -114,11 +112,10 @@ Defines the callback defined in the [PreviewOutput_Callbacks](capi-oh-camera-pre
 
 [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode)
 
-
 ### OH_PreviewOutput_RegisterCallback()
 
 ```c
-Camera_ErrorCode OH_PreviewOutput_RegisterCallback(Camera_PreviewOutput* previewOutput, PreviewOutput_Callbacks* callback)
+Camera_ErrorCode OH_PreviewOutput_RegisterCallback(Camera_PreviewOutput* previewOutput,PreviewOutput_Callbacks* callback)
 ```
 
 **Description**
@@ -143,7 +140,7 @@ Registers a callback to listen for preview output events.
 ### OH_PreviewOutput_UnregisterCallback()
 
 ```c
-Camera_ErrorCode OH_PreviewOutput_UnregisterCallback(Camera_PreviewOutput* previewOutput, PreviewOutput_Callbacks* callback)
+Camera_ErrorCode OH_PreviewOutput_UnregisterCallback(Camera_PreviewOutput* previewOutput,PreviewOutput_Callbacks* callback)
 ```
 
 **Description**
@@ -289,7 +286,7 @@ Deletes the profile of a PreviewOutput instance.
 ### OH_PreviewOutput_GetPreviewRotation()
 
 ```c
-Camera_ErrorCode OH_PreviewOutput_GetPreviewRotation(Camera_PreviewOutput* previewOutput, int displayRotation, Camera_ImageRotation* imageRotation)
+Camera_ErrorCode OH_PreviewOutput_GetPreviewRotation(Camera_PreviewOutput* previewOutput, int displayRotation,Camera_ImageRotation* imageRotation)
 ```
 
 **Description**
@@ -315,7 +312,7 @@ Obtains the preview rotation angle.
 ### OH_PreviewOutput_SetPreviewRotation()
 
 ```c
-Camera_ErrorCode OH_PreviewOutput_SetPreviewRotation(Camera_PreviewOutput* previewOutput, Camera_ImageRotation previewRotation, bool isDisplayLocked)
+Camera_ErrorCode OH_PreviewOutput_SetPreviewRotation(Camera_PreviewOutput* previewOutput,Camera_ImageRotation previewRotation, bool isDisplayLocked)
 ```
 
 **Description**
@@ -341,7 +338,7 @@ Sets the preview rotation angle.
 ### OH_PreviewOutput_GetSupportedFrameRates()
 
 ```c
-Camera_ErrorCode OH_PreviewOutput_GetSupportedFrameRates(Camera_PreviewOutput* previewOutput, Camera_FrameRateRange** frameRateRange, uint32_t* size)
+Camera_ErrorCode OH_PreviewOutput_GetSupportedFrameRates(Camera_PreviewOutput* previewOutput,Camera_FrameRateRange** frameRateRange, uint32_t* size)
 ```
 
 **Description**
@@ -367,7 +364,7 @@ Obtains the list of frame rates supported by a PreviewOutput instance.
 ### OH_PreviewOutput_DeleteFrameRates()
 
 ```c
-Camera_ErrorCode OH_PreviewOutput_DeleteFrameRates(Camera_PreviewOutput* previewOutput, Camera_FrameRateRange* frameRateRange)
+Camera_ErrorCode OH_PreviewOutput_DeleteFrameRates(Camera_PreviewOutput* previewOutput,Camera_FrameRateRange* frameRateRange)
 ```
 
 **Description**
@@ -392,7 +389,7 @@ Deletes the frame rate list.
 ### OH_PreviewOutput_SetFrameRate()
 
 ```c
-Camera_ErrorCode OH_PreviewOutput_SetFrameRate(Camera_PreviewOutput* previewOutput, int32_t minFps, int32_t maxFps)
+Camera_ErrorCode OH_PreviewOutput_SetFrameRate(Camera_PreviewOutput* previewOutput,int32_t minFps, int32_t maxFps)
 ```
 
 **Description**
@@ -418,7 +415,7 @@ Sets the frame rates for a PreviewOutput instance.
 ### OH_PreviewOutput_GetActiveFrameRate()
 
 ```c
-Camera_ErrorCode OH_PreviewOutput_GetActiveFrameRate(Camera_PreviewOutput* previewOutput, Camera_FrameRateRange* frameRateRange)
+Camera_ErrorCode OH_PreviewOutput_GetActiveFrameRate(Camera_PreviewOutput* previewOutput,Camera_FrameRateRange* frameRateRange)
 ```
 
 **Description**
@@ -440,54 +437,3 @@ Obtains the active frame rates of a PreviewOutput instance.
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
-### OH_PreviewOutput_IsBandwidthCompressionSupported()
-
-```c
-Camera_ErrorCode OH_PreviewOutput_IsBandwidthCompressionSupported(Camera_PreviewOutput* previewOutput, bool* isSupported)
-```
-
-**Description**
-
-Checks whether preview bandwidth compression is supported. This involves reducing data volume through encoding to minimize bandwidth usage during transmission.
-
-**Since**: 23
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | Pointer to the target PreviewOutput instance.|
-| bool* isSupported | Pointer to the check result for the support of bandwidth compression. **true** if supported, **false** otherwise.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
-
-### OH_PreviewOutput_EnableBandwidthCompression()
-
-```c
-Camera_ErrorCode OH_PreviewOutput_EnableBandwidthCompression(Camera_PreviewOutput* previewOutput, bool enabled)
-```
-
-**Description**
-
-Enables preview bandwidth compression.
-
-This function must be called prior to [OH_CaptureSession_CommitConfig()](capi-capture-session-h.md#oh_capturesession_commitconfig). Otherwise, the preview output stream format will be affected.
-
-**Since**: 23
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | Pointer to the target PreviewOutput instance.|
-| bool enabled | Whether to enable preview bandwidth compression. **true** to enable, **false** otherwise.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>     **CAMERA_OPERATION_NOT_ALLOWED**: The operation is not allowed.<br>    **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_CONFIG**: The camera session is not configured.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
