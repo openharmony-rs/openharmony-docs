@@ -35240,9 +35240,9 @@
 						"start_line":184
 					},
 					{
-						"end_line":180,
+						"end_line":191,
 						"name":"Render_SetRendererWriteDataCallback",
-						"start_line":56
+						"start_line":60
 					}
 				]
 			}
@@ -35305,7 +35305,7 @@
 						"start_line":16
 					},
 					{
-						"end_line":214,
+						"end_line":239,
 						"name":"select_MediaInputDevice",
 						"start_line":17
 					}
@@ -35325,9 +35325,9 @@
 						"start_line":184
 					},
 					{
-						"end_line":263,
+						"end_line":286,
 						"name":"Render_CheckLatencyMode",
-						"start_line":260
+						"start_line":284
 					}
 				]
 			}
@@ -35360,22 +35360,22 @@
 						"start_line":16
 					},
 					{
-						"end_line":92,
+						"end_line":108,
 						"name":"get_OutputDevices",
 						"start_line":17
 					},
 					{
-						"end_line":75,
+						"end_line":77,
 						"name":"deviceChange_output",
 						"start_line":18
 					},
 					{
-						"end_line":156,
+						"end_line":187,
 						"name":"get_PreferOutputDeviceForRendererInfo",
 						"start_line":19
 					},
 					{
-						"end_line":123,
+						"end_line":141,
 						"name":"listen_OutputDeviceChangeForRendererInfo",
 						"start_line":20
 					}
@@ -35390,7 +35390,7 @@
 						"start_line":20
 					},
 					{
-						"end_line":157,
+						"end_line":165,
 						"name":"set_DefaultOutputDevice",
 						"start_line":16
 					},
@@ -35415,12 +35415,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/ListenDeviceByAudioSession.ets",
 				"functions":[
 					{
-						"end_line":157,
+						"end_line":165,
 						"name":"set_DefaultOutputDevice",
 						"start_line":16
 					},
 					{
-						"end_line":158,
+						"end_line":166,
 						"name":"setting_DefaultOutputDevice",
 						"start_line":17
 					}
@@ -35435,12 +35435,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets",
 				"functions":[
 					{
-						"end_line":501,
+						"end_line":504,
 						"name":"check_renderstate",
 						"start_line":28
 					},
 					{
-						"end_line":518,
+						"end_line":521,
 						"name":"regist_listeningrendererchange",
 						"start_line":29
 					},
@@ -35450,7 +35450,7 @@
 						"start_line":30
 					},
 					{
-						"end_line":552,
+						"end_line":555,
 						"name":"regist_renderchangechallback",
 						"start_line":31
 					},
@@ -35460,7 +35460,7 @@
 						"start_line":554
 					},
 					{
-						"end_line":604,
+						"end_line":607,
 						"name":"get_allstreaminfo",
 						"start_line":32
 					}
@@ -35580,12 +35580,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp",
 				"functions":[
 					{
-						"end_line":277,
+						"end_line":299,
 						"name":"GetAudioResourceManager",
 						"start_line":23
 					},
 					{
-						"end_line":281,
+						"end_line":303,
 						"name":"CreateWorkgroup",
 						"start_line":26
 					},
@@ -35640,22 +35640,22 @@
 						"start_line":23
 					},
 					{
-						"end_line":462,
+						"end_line":463,
 						"name":"check_spacesound",
 						"start_line":24
 					},
 					{
-						"end_line":471,
+						"end_line":472,
 						"name":"check_isspacesoundon",
 						"start_line":25
 					},
 					{
-						"end_line":487,
+						"end_line":488,
 						"name":"regist_spacesoundcallback",
 						"start_line":26
 					},
 					{
-						"end_line":493,
+						"end_line":495,
 						"name":"unregist_spacesoundcallback",
 						"start_line":27
 					}
@@ -35805,7 +35805,7 @@
 						"start_line":18
 					},
 					{
-						"end_line":151,
+						"end_line":162,
 						"name":"Render_Create",
 						"start_line":34
 					},
@@ -35820,24 +35820,24 @@
 						"start_line":152
 					},
 					{
-						"end_line":181,
+						"end_line":192,
 						"name":"Render_Callback",
-						"start_line":55
+						"start_line":59
 					},
 					{
-						"end_line":195,
+						"end_line":206,
 						"name":"Render_GenerateRenderer",
 						"start_line":38
 					},
 					{
-						"end_line":234,
+						"end_line":254,
 						"name":"Render_SetVolume",
-						"start_line":229
+						"start_line":248
 					},
 					{
-						"end_line":248,
+						"end_line":271,
 						"name":"Render_SetLatencyMode",
-						"start_line":246
+						"start_line":267
 					},
 					{
 						"end_line":192,
@@ -35850,12 +35850,12 @@
 						"start_line":90
 					},
 					{
-						"end_line":336,
+						"end_line":358,
 						"name":"Render_CustomCallback",
 						"start_line":48
 					},
 					{
-						"end_line":356,
+						"end_line":378,
 						"name":"Render_callBackInit",
 						"start_line":49
 					}
@@ -36010,12 +36010,12 @@
 						"start_line":20
 					},
 					{
-						"end_line":381,
+						"end_line":382,
 						"name":"regist_volumechangecallback",
 						"start_line":21
 					},
 					{
-						"end_line":414,
+						"end_line":415,
 						"name":"set_appvolume",
 						"start_line":22
 					},
@@ -36025,7 +36025,7 @@
 						"start_line":417
 					},
 					{
-						"end_line":451,
+						"end_line":452,
 						"name":"Renderset_streamvolume",
 						"start_line":53
 					}
