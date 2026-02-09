@@ -17578,33 +17578,7 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/Drawing.h",
-				"functions":[
-					{
-						"end_line":45,
-						"name":"create_customNode_start",
-						"start_line":43
-					},
-					{
-						"end_line":111,
-						"name":"userdata_start",
-						"start_line":54
-					},
-					{
-						"end_line":83,
-						"name":"nodeCustomEvent_start",
-						"start_line":79
-					},
-					{
-						"end_line":106,
-						"name":"drawCanvas_Start",
-						"start_line":82
-					},
-					{
-						"end_line":116,
-						"name":"drawing_start",
-						"start_line":17
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUICustomNode.h",
@@ -17623,6 +17597,31 @@
 						"end_line":666,
 						"name":"arkUICustomNodeCpp_start",
 						"start_line":28
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/NativeDrawPageSample/entry/src/main/cpp/Drawing.h",
+				"functions":[
+					{
+						"end_line":41,
+						"name":"create_customNode_start",
+						"start_line":39
+					},
+					{
+						"end_line":111,
+						"name":"userdata_start",
+						"start_line":54
+					},
+					{
+						"end_line":79,
+						"name":"nodeCustomEvent_start",
+						"start_line":75
+					},
+					{
+						"end_line":106,
+						"name":"drawCanvas_Start",
+						"start_line":82
 					}
 				]
 			}
