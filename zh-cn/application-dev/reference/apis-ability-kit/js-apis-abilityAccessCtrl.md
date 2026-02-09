@@ -31,7 +31,7 @@ createAtManager(): AtManager
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -63,7 +63,7 @@ ArkTS-Sta: checkAccessToken(tokenID: int, permissionName: Permissions): Promise&
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -131,7 +131,7 @@ ArkTS-Sta: checkAccessTokenSync(tokenID: int, permissionName: Permissions): Gran
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -311,7 +311,7 @@ onSelfPermissionStateChange(permissionList: Array&lt;Permissions&gt;, callback: 
 
 **系统能力：** SystemCapability.Security.AccessToken
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -364,7 +364,7 @@ offSelfPermissionStateChange(permissionList: Array&lt;Permissions&gt;, callback?
 
 **系统能力：** SystemCapability.Security.AccessToken
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -416,7 +416,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -497,7 +497,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -580,7 +580,7 @@ requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permission
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -661,7 +661,7 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -732,7 +732,7 @@ getSelfPermissionStatus(permissionName: Permissions): PermissionStatus
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -796,7 +796,7 @@ openPermissionOnSetting(context: Context, permission: Permissions): Promise&lt;S
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -865,7 +865,7 @@ ArkTS-Sta: verifyAccessTokenSync(tokenID: int, permissionName: Permissions): Gra
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -935,7 +935,7 @@ ArkTS-Sta: verifyAccessToken(tokenID: int, permissionName: Permissions): Promise
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1036,7 +1036,7 @@ atManager.verifyAccessToken(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSION
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称               |    值 | 说明        |
 | ------------------ | ----- | ----------- |
@@ -1053,7 +1053,7 @@ atManager.verifyAccessToken(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSION
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称               |    值 | 说明        |
 | ------------------ | ----- | ----------- |
@@ -1071,7 +1071,7 @@ atManager.verifyAccessToken(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSION
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                     |    值 | 说明              |
 | ----------------------- | ------ | ----------------- |
@@ -1088,7 +1088,7 @@ atManager.verifyAccessToken(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSION
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型                       | 只读 | 可选 | 说明                |
 | -------------- | ------------------------- | ---- | ---- | ------------------ |
@@ -1110,7 +1110,7 @@ type PermissionRequestResult = _PermissionRequestResult
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -1130,7 +1130,7 @@ type Context = _Context
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -1146,7 +1146,7 @@ type Context = _Context
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称               |    值 | 说明        |
 | ------------------ | ----- | ----------- |
@@ -1164,7 +1164,7 @@ type Context = _Context
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称               |    值 | 说明        |
 | ------------------ | ----- | ----------- |
