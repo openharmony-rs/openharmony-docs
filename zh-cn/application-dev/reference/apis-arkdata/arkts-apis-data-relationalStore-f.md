@@ -284,27 +284,30 @@ getRdbStoreSync目前不支持多线程并发操作。
 
 **示例：**
 
-FA模型示例：
+Stage模型示例：
 
-<!--code_no_check_fa-->
-```js
-import { featureAbility } from '@kit.AbilityKit';
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let store: relationalStore.RdbStore | undefined = undefined;
-let context = featureAbility.getContext();
 
-const STORE_CONFIG: relationalStore.StoreConfig = {
-  name: "RdbTest.db",
-  securityLevel: relationalStore.SecurityLevel.S3
-};
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    const STORE_CONFIG: relationalStore.StoreConfig = {
+      name: "RdbTest.db",
+      securityLevel: relationalStore.SecurityLevel.S3
+    };
 
-try {
-  store = relationalStore.getRdbStoreSync(context, STORE_CONFIG);
-  console.info('Get RdbStore successfully.');
-} catch (errr : BusinessError) {
-  console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-};
+    try {
+      store = relationalStore.getRdbStoreSync(this.context, STORE_CONFIG);
+      console.info('Get RdbStore successfully.');
+    } catch (errr : BusinessError) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
 ```
 
 ## relationalStore.deleteRdbStore
