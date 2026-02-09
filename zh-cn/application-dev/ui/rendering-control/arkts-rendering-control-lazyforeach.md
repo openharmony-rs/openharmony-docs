@@ -2112,7 +2112,6 @@ LazyForEach(this.data, (item: string, index: number) => {
 <!-- @[basic_data_source_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/BasicDataSource.ets) -->    
 
 ``` TypeScript
-// BasicDataSource.ets
 // BasicDataSource实现了IDataSource接口，用于管理listener监听，以及通知LazyForEach数据更新
 export class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
@@ -2177,7 +2176,7 @@ export class BasicDataSource implements IDataSource {
     this.listeners.forEach(listener => {
       listener.onDataMove(from, to);
       // 写法2：listener.onDatasetChange(
-      //         [{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
+      // [{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
     });
   }
 
