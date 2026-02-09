@@ -282,8 +282,6 @@ getRdbStoreSync目前不支持多线程并发操作。
 
 **示例：**
 
-Stage模型示例：
-
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
