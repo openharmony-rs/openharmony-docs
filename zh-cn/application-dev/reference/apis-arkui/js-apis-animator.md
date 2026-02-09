@@ -458,8 +458,8 @@ struct AnimatorTest {
       fill: "forwards",
       direction: "normal",
       iterations: 1,
-      begin: 100, //动画插值起点
-      end: 200 //动画插值终点
+      begin: 100, // 动画插值起点
+      end: 200 // 动画插值终点
     })
     this.backAnimator.setExpectedFrameRateRange(expectedFrameRate);
   }
@@ -977,8 +977,8 @@ struct AnimatorTest {
       fill: "forwards",
       direction: "normal",
       iterations: 1,
-      begin: 100, //动画插值起点
-      end: 200 //动画插值终点
+      begin: 100, // 动画插值起点
+      end: 200 // 动画插值终点
     })
     this.backAnimator.onFinish = () => {
       this.flag = true
