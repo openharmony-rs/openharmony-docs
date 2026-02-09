@@ -50,7 +50,7 @@ ArkTS-Sta: onDragStart(event: ((event: DragEvent, extraParams?: string) => Custo
 
 | 参数名      | 类型                            | 必填 | 说明               |
 | ----------- | ------------------------------- | ---- | ------------------ |
-| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => [CustomBuilder](ts-types.md#custombuilder8) &nbsp;\|&nbsp; [DragItemInfo](#dragiteminfo说明)<br/>ArkTS-Sta: (event: [DragEvent](#dragevent7), extraParams?: string) => [CustomBuilder](ts-types.md#custombuilder8) &nbsp;\|&nbsp; [DragItemInfo](#dragiteminfo说明)&nbsp;\|&nbsp;undefined | 是   | 回调函数。<br/> **说明：**<br/> event为拖拽事件信息。<br/> extraParams为拖拽事件额外信息。需要解析为Json格式，参考[extraParams](#extraparams说明)说明。<br/> CustomBuilder为拖拽过程中显示的组件信息，不支持全局builder。 |
+| event    | ArkTS-Dyn: (event: [DragEvent](#dragevent7), extraParams?: string) => [CustomBuilder](ts-types.md#custombuilder8) &nbsp;\|&nbsp; [DragItemInfo](#dragiteminfo说明)<br/>ArkTS-Sta: ((event: [DragEvent](#dragevent7), extraParams?: string) => [CustomBuilder](ts-types.md#custombuilder8) &nbsp;\|&nbsp; [DragItemInfo](#dragiteminfo说明))&nbsp;\|&nbsp;undefined | 是   | 回调函数。<br/> **说明：**<br/> event为拖拽事件信息。<br/> extraParams为拖拽事件额外信息。需要解析为Json格式，参考[extraParams](#extraparams说明)说明。<br/> CustomBuilder为拖拽过程中显示的组件信息，不支持全局builder。 |
 
 **返回值：**
 
