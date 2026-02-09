@@ -129,11 +129,11 @@ struct Index {
           formBindingData: formBindingData.createFormBindingData({}),
           // formBindingData: formBindingData.createFormBindingData({ data: 'share' }),
           callback: (error, formId) => {
-            hilog.info(0x3900, tag, `callback info：error = ${JSON.stringify(error)}, formId = ${formId}`);
+            hilog.info(0x3900, tag, `callback info：formId = ${formId}`);
             if (error?.code === 0) {
               hilog.info(0x3900, tag, "添加至桌面成功")
             } else {
-              hilog.info(0x3900, tag, "添加至桌面失败，请尝试其它添加方式")
+              hilog.error(0x3900, tag, `添加至桌面失败，请尝试其它添加方式, error code: ${error.code}, error message: ${error.message}`)
             }
           },
           style: {
