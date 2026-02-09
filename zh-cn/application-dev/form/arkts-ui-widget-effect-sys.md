@@ -148,7 +148,7 @@
        let param: Record<string, boolean> = {};
        if (want?.parameters?.['ohos.extra.param.key.form_enable_material_background'] !== undefined) {
          // 需要设置背板透明或者还原为默认色
-         param['isEnableMaterialBgr'] =
+         param['isEnableMaterial'] =
            Boolean(want.parameters.['ohos.extra.param.key.form_enable_material_background']);
        }
        return formBindingData.createFormBindingData(param);
@@ -158,7 +158,7 @@
        let param: Record<string, boolean> = {};
        if (wantParams?.['ohos.extra.param.key.form_enable_material_background'] !== undefined) {
          // 需要设置背板透明或者还原为默认色
-         param['isEnableMaterialBgr'] = Boolean(wantParams.['ohos.extra.param.key.form_enable_material_background']);
+         param['isEnableMaterial'] = Boolean(wantParams.['ohos.extra.param.key.form_enable_material_background']);
        }
        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
        formProvider.updateForm(formId, formInfo).then(() => {
@@ -192,7 +192,7 @@
      readonly message: string = 'add detail';
      readonly fullWidthPercent: string = '100%';
      readonly fullHeightPercent: string = '100%';
-     @LocalStorageProp('isEnableMaterialBgr') isEnableMaterialBgr: boolean = false;
+     @LocalStorageProp('isEnableMaterial') isEnableMaterial: boolean = false;
    
      build() {
        Row() {
@@ -206,7 +206,7 @@
        }
        .height(this.fullHeightPercent)
        // this.isEnableMaterialBgr为true代表使能新材质背板，为false表示使用默认背景色
-       .backgroundColor(this.isEnableMaterialBgr ? Color.Transparent : $r('sys.color.comp_background_primary'))
+       .backgroundColor(this.isEnableMaterial ? Color.Transparent : $r('sys.color.comp_background_primary'))
        .onClick(() => {
          postCardAction(this, {
            action: this.actionType,
