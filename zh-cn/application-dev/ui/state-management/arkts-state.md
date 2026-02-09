@@ -153,7 +153,7 @@
 3. 父组件传入undefined时，\@State装饰的变量仍使用本地默认值进行初始化。
    
    <!-- @[state_input_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateInputUndefined.ets) -->
-
+   
    ``` TypeScript
    @Entry
    @Component
