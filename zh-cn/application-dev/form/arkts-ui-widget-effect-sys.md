@@ -13,7 +13,7 @@
 > 本特性对产品功耗、性能要求较高，当前仅在部分旗舰机型上支持，不支持机型上调用后不生效。
 
 ## ArkTS卡片新材质内容
-主要是对ArkTS卡片的内容生效，为了达到最佳的显示效果，建议在"transparencyEnabled"字段配置为true的卡片上使用。
+主要是对ArkTS卡片的内容生效，为了达到最佳的显示效果，建议在透明卡片（`transparencyEnabled`字段配置为`true`的卡片）上使用。
 
 ### 开发步骤
 1. [创建ArkTS卡片](arkts-ui-widget-creation.md)。
