@@ -29,7 +29,7 @@ import { ConfigurationConstant } from '@kit.AbilityKit';
 
 | 名称 | 值 | 说明 | 
 | -------- | -------- | -------- |
-| COLOR_MODE_NOT_SET | -1 | 表示未设置。 |
+| COLOR_MODE_NOT_SET | -1 | 表示未设置颜色模式。 |
 | COLOR_MODE_DARK | 0 | 表示深色模式。 | 
 | COLOR_MODE_LIGHT | 1 | 表示浅色模式。 | 
 
