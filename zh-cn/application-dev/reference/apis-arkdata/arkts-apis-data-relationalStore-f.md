@@ -246,9 +246,7 @@ getRdbStoreSync目前不支持多线程并发操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**跨平台支持：** 支持
+**模型约束：** 此接口仅可在Stage模型下使用
 
 **参数：**
 
