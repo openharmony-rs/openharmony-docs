@@ -42,7 +42,7 @@ Defines an accessibility event.
 | Name     | Type             | Read-Only            | Optional                     | Description                      |
 | --------- |----------------------------------------------------------------|------------------------------------------------------------------------------|------------------------------------| ------------------------------------------------------------ |
 | eventType | [accessibility.EventType](js-apis-accessibility.md#eventtype) \| [accessibility.WindowUpdateType](js-apis-accessibility.md#windowupdatetype) \| [TouchGuideType](#touchguidetype) \| [GestureType](#gesturetype) \| [PageUpdateType](#pageupdatetype) | No  | No  | Event type.<br>**EventType**: accessibility event type.<br>**WindowUpdateType**: window update type.<br>**TouchGuideType**: touch guide type.<br>**GestureType**: gesture type.<br>**PageUpdateType**: page update type.|
-| target    | [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement) | No | Yes   | Target component where the event occurs. |
+| target    | [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement9) | No | Yes   | Target component where the event occurs. |
 | timeStamp | number              | No       | Yes        | Timestamp of the event, in milliseconds. The default value is **0**.                         |
 | elementId<sup>12+</sup> | number            | No            | Yes            | Component ID for auto-focusing. The default value is **0**.                |
 | textAnnouncedForAccessibility<sup>12+</sup> | string    | No          | Yes    | Content for auto-broadcasting. Set the broadcast content based on the actual scenario. No special restrictions.                 |
@@ -53,13 +53,13 @@ Defines an accessibility event.
 
 type AccessibilityElement = _AccessibilityElement
 
-Indicates an accessibility element. For details, see [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement).
+Indicates an accessibility element. For details, see [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement9).
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 | Type                     | Description                    |
 | ----------------------- |------------------------|
-| _AccessibilityElement  | Accessibility element. For details, see [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement).|
+| _AccessibilityElement  | Accessibility element. For details, see [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement9).|
 
 **Example**
 
