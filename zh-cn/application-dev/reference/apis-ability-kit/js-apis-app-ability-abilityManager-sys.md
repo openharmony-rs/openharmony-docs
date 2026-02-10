@@ -503,7 +503,7 @@ notifySaveAsResult(parameter: AbilityResult, requestCode: number, callback: Asyn
 
 > **说明：**
 >
-> 从 API version 10开始支持，从API version 24开始废弃。
+> 从API version 10开始支持，从API version 24开始废弃。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -570,7 +570,7 @@ notifySaveAsResult(parameter: AbilityResult, requestCode: number): Promise\<void
 
 > **说明：**
 >
-> 从 API version 10开始支持，从API version 24开始废弃。
+> 从API version 10开始支持，从API version 24开始废弃。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
