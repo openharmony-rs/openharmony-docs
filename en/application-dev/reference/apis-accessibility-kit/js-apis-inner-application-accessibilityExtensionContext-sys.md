@@ -1157,7 +1157,7 @@ Finds the node element of the current active window based on the element ID. Thi
 
 | Type                                 | Description                              |
 | ----------------------------------- | -------------------------------- |
-| Promise&lt;[AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement9)&gt; | Promise used to return the result.|
+| Promise&lt;[AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement)&gt; | Promise used to return the result.|
 
 **Error codes**
 
@@ -1205,7 +1205,7 @@ Finds all node elements based on the **accessibilityTextHint** text type configu
 
 | Type                                      | Description                           |
 | ---------------------------------------- | ----------------------------- |
-| Promise&lt;Array&lt;[AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement9)&gt;&gt; | Promise used to return the result.|
+| Promise&lt;Array&lt;[AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement)&gt;&gt; | Promise used to return the result.|
 
 **Error codes**
 
