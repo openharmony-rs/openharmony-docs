@@ -1197,6 +1197,14 @@ zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-vector2
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-vector2propertyhandle.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-visibleareaeventoptions.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-waterflowsectionoption.md	@zcdqs  @rongShao-Z @huchuyun		 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-shadowoptions.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-pixelmapnative8h.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule.md	@xiang-shouxing	@fredyuan0912	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-drag-and-drop-h.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
