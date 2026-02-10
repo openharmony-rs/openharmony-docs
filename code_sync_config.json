@@ -17609,7 +17609,7 @@
 						"start_line":39
 					},
 					{
-						"end_line":111,
+						"end_line":108,
 						"name":"userdata_start",
 						"start_line":54
 					},
@@ -17619,7 +17619,7 @@
 						"start_line":75
 					},
 					{
-						"end_line":106,
+						"end_line":103,
 						"name":"drawCanvas_Start",
 						"start_line":82
 					}
