@@ -667,9 +667,7 @@ try {
 
 ## BadgeEnabledChangedCallback<sup>12+</sup>
 
-### (data: EnabledNotificationCallbackData)<sup>12+</sup>
-
-(data: EnabledNotificationCallbackData): void
+type BadgeEnabledChangedCallback = (data: EnabledNotificationCallbackData) => void
 
 注册应用角标使能状态变化的回调函数类型。
 
@@ -707,7 +705,7 @@ try {
 
 ## SystemUpdateCallback<sup>23+</sup>
 
-SystemUpdateCallback = (data: SubscribeCallbackData) => void
+type SystemUpdateCallback = (data: SubscribeCallbackData) => void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
