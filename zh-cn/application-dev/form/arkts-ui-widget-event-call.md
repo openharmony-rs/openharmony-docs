@@ -142,8 +142,8 @@
             hilog.info(DOMAIN_NUMBER, TAG, `FunBCall param:  ${JSON.stringify(data.readString())}`);
             return new MyParcelable(CONST_NUMBER_2, 'bbb');
           });
-        } catch (error: BusinessError) {
-          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee on. error code: ${error.code}, error message: ${error.message}`);
+        } catch (err) {	 
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee on. Cause: ${JSON.stringify(err as BusinessError)}`);
         }
       }
     
@@ -152,8 +152,8 @@
         try {
           this.callee.off('funA');
           this.callee.off('funB');
-        } catch (error: BusinessError) {
-          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee off. error code: ${error.code}, error message: ${error.message}`);
+        } catch (err) {	 
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee off. Cause: ${JSON.stringify(err as BusinessError)}`);
         }
       }
     }
