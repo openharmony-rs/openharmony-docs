@@ -92,7 +92,7 @@ avScreenCaptureRecorder.init(avCaptureConfig).then(() => {
 
 startRecording(): Promise\<void>
 
-开始录屏，在使用前需要先调用init接口。使用Promise异步回调。
+开始录屏，在使用前需要先调用[init](arkts-apis-media-AVScreenCaptureRecorder.md#init12)接口。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -473,7 +473,7 @@ avScreenCaptureRecorder.on('error', (err: BusinessError) => {
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 状态切换事件回调类型，支持的事件：'stateChange'。            |
-| callback<sup>12+</sup> | Callback\<[AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12)> | 否   | 状态切换事件回调方法，[AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12)表示切换到的状态，不填此参数则会取消最后一次订阅事件。 |
+| callback | Callback\<[AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12)> | 否   | 状态切换事件回调方法，[AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12)表示切换到的状态，不填此参数则会取消最后一次订阅事件。 |
 
 **示例：**
 
@@ -494,7 +494,7 @@ off(type: 'error', callback?: ErrorCallback): void
 | 参数名   | 类型     | 必填 | 说明                                                       |
 | -------- | -------- | ---- | ---------------------------------------------------------- |
 | type     | string   | 是   | 状态切换事件回调类型，支持的事件：'error'。                |
-| callback<sup>12+</sup> | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 录屏错误事件回调方法，不填此参数则会取消最后一次订阅事件。 |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 录屏错误事件回调方法，不填此参数则会取消最后一次订阅事件。 |
 
 **示例：**
 
