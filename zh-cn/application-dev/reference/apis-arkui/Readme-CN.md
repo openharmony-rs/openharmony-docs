@@ -301,6 +301,9 @@
     - [Radio](arkui-ts/ts-basic-components-radio.md)
     - [Rating](arkui-ts/ts-basic-components-rating.md)
     - [Select](arkui-ts/ts-basic-components-select.md)
+    <!--Del-->
+    - [Select（系统接口）](arkui-ts/ts-basic-components-select-sys.md)
+    <!--DelEnd-->    
     - [Slider](arkui-ts/ts-basic-components-slider.md)
     - [ArcButton](arkui-ts/ohos-arkui-advanced-ArcButton.md)
     - [ArcSlider](arkui-ts/ohos-arkui-advanced-ArcSlider.md)
