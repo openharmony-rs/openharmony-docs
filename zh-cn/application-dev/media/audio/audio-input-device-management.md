@@ -32,7 +32,7 @@ let audioRoutingManager = audioManager.getRoutingManager();  // 再调用AudioMa
 
 ## 获取输入设备信息
 
-使用getDevices()方法可以获取当前所有输入设备的信息。
+使用[getDevices](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getdevices9)方法可以获取当前所有输入设备的信息。
 
 ```ts
 import { audio } from '@kit.AudioKit';
