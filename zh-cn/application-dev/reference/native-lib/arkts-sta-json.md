@@ -1503,7 +1503,7 @@ static parseJsonElement(text: string, options?: jsonx.ParseOptions): jsonx.JsonE
 | 参数名  | 类型   | 必填  | 说明             |
 | ------ | ------ | ----- | ---------------- |
 | text   | string | 是    | json格式的字符串。 |
-| options | [jsonx.ParseOptions](arkts-sta-jsonx.md)  | 否   | 解析操作参数，默认为undefined。|
+| options | [jsonx.ParseOptions](arkts-sta-jsonx.md#parseoptions)  | 否   | 解析操作参数，默认为undefined。|
 
 **返回值：**
 
@@ -1515,7 +1515,7 @@ static parseJsonElement(text: string, options?: jsonx.ParseOptions): jsonx.JsonE
 
 ```ts
 let text: String = `{\"numberValue\":123456}` 
-let opt: jsonx.ParseOptions = {bigIntMode: jsonx.BigIntMode.ALWAYS_PARSE_AS_BIGINT} as jsonx.ParseOptions //模式为ALWAYS_PARSE_AS_BIGINT，默认转换为bigint类型。
+let opt: jsonx.ParseOptions = {bigIntMode: jsonx.BigIntMode.ALWAYS_PARSE_AS_BIGINT} as jsonx.ParseOptions 
 let result: jsonx.JsonElement = JSON.parseJsonElement(text, opt)	 
 console.info(result.getBigInt("numberValue")) // 123456
 try {	 
@@ -1526,7 +1526,7 @@ try {
 }
 
 text = `{\"numberValue\":9223372036854775807}`
-opt =  { bigIntMode: jsonx.BigIntMode.PARSE_AS_BIGINT } as jsonx.ParseOptions  // 模式为PARSE_AS_BIGINT，数字范围在long范围内转换成long类型，否则转换为bigint类型。
+opt =  { bigIntMode: jsonx.BigIntMode.PARSE_AS_BIGINT } as jsonx.ParseOptions 
 result = JSON.parseJsonElement(text, opt)
 console.info(result.getLong("numberValue")) // 9223372036854775807
 
@@ -1540,7 +1540,7 @@ try {
     console.log(`${err.message}`);	 // Expected long, but element stores different value type. 
 }
 
-opt =  { bigIntMode: jsonx.BigIntMode.DEFAULT } as jsonx.ParseOptions // 默认模式，不转换bigint，超出long范围会报错
+opt =  { bigIntMode: jsonx.BigIntMode.DEFAULT } as jsonx.ParseOptions 
 try {	 
     result = JSON.parseJsonElement(text, opt)
 } catch (error) {	 
@@ -1562,7 +1562,7 @@ static parseJsonElement(text: string, reviver: (key: string, value: jsonx.JsonEl
 | ------- | -------- | ---- | ---------------- |
 | text    | string   | 是   | json格式的字符串。 |
 | reviver | function | 是   | 过滤方法。        |
-| options | [jsonx.ParseOptions](arkts-sta-jsonx.md)  | 否   | 解析操作参数，默认为undefined。|
+| options | [jsonx.ParseOptions](arkts-sta-jsonx.md#parseoptions)  | 否   | 解析操作参数，默认为undefined。|
 
 **返回值：**
 
@@ -1578,7 +1578,7 @@ const reviver = (key: string, value: jsonx.JsonElement): jsonx.JsonElement => {
 };
 
 let text: String = `{\"numberValue\":123456}` 
-let opt: jsonx.ParseOptions = { bigIntMode: jsonx.BigIntMode.ALWAYS_PARSE_AS_BIGINT } as jsonx.ParseOptions // 模式为ALWAYS_PARSE_AS_BIGINT，默认转换为bigint类型。
+let opt: jsonx.ParseOptions = { bigIntMode: jsonx.BigIntMode.ALWAYS_PARSE_AS_BIGINT } as jsonx.ParseOptions 
 let result: jsonx.JsonElement = JSON.parseJsonElement(text, reviver, opt)	 
 console.info(result.getBigInt("numberValue")) // 123456
 try {	 
@@ -1589,7 +1589,7 @@ try {
 }
 
 text = `{\"numberValue\":-9223372036854775807}`
-opt =  { bigIntMode: jsonx.BigIntMode.PARSE_AS_BIGINT } as jsonx.ParseOptions  // 模式为PARSE_AS_BIGINT，数字范围在long范围内转换成long类型，否则转换为bigint类型。
+opt =  { bigIntMode: jsonx.BigIntMode.PARSE_AS_BIGINT } as jsonx.ParseOptions 
 result = JSON.parseJsonElement(text, reviver, opt)
 console.info(result.getLong("numberValue")) // -9223372036854775807
 
@@ -1603,7 +1603,7 @@ try {
     console.log(`${err.message}`); // Expected long, but element stores different value type. 
 }
 
-opt =  { bigIntMode: jsonx.BigIntMode.DEFAULT } as jsonx.ParseOptions // 默认模式，不转换bigint，超出long范围会报错
+opt =  { bigIntMode: jsonx.BigIntMode.DEFAULT } as jsonx.ParseOptions 
 try {	 
     result = JSON.parseJsonElement(text, reviver, opt)
 } catch (error) {	 
