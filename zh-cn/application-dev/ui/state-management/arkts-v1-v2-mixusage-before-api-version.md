@@ -80,6 +80,47 @@
 
 <!-- @[v1_use_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2InV1.ets) -->
 
+``` TypeScript
+@ComponentV2
+struct ChildSix {
+  @Local message: string = 'hello';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.message = 'world';
+        })
+    }
+  }
+}
+
+@Entry
+@Component
+struct IndexSix {
+  @State message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.message = 'world hello';
+        })
+      Divider()
+        .color(Color.Blue)
+      // 可以只是使用无参数的V2组件
+      ChildSix()
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 
 ### 传递未被装饰的变量
 
