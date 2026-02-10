@@ -695,7 +695,7 @@ Requests an animation. This API takes effect only for [scene-based widgets](../.
 > **NOTE**
 >
 > - This API is unavailable in the power-saving mode and will return the error code 16501000.
-> - If the device's thermal level reaches HOT and no tap event occurs, the API returns error code 16501000. If the thermal level reaches OVERHEATED, the API returns error code 16501000 in any case. For details about thermal level information, see [ThermalLevel](../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel).
+> - If the device's thermal level reaches HOT and no tap event occurs, the API returns error code 16501000. If the thermal level reaches OVERHEATED, the API returns error code 16501000 in any case. For details about thermal level information, see [ThermalLevel](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel).
 
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
