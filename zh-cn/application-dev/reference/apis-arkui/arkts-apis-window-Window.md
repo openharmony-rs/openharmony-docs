@@ -3269,7 +3269,7 @@ setPreferredOrientation(orientation: Orientation, callback: AsyncCallback&lt;voi
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3288,8 +3288,8 @@ setPreferredOrientation(orientation: Orientation, callback: AsyncCallback&lt;voi
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300002 | This window state is abnormal. |
+| 401     | Parameter error. Possible cause: Invalid parameter value range. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 
 **示例：**
 
@@ -3378,7 +3378,7 @@ setPreferredOrientation(orientation: Orientation): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3402,8 +3402,8 @@ setPreferredOrientation(orientation: Orientation): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300002 | This window state is abnormal. |
+| 401     | Parameter error. Possible cause: Invalid parameter value range. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 
 **示例：**
 
@@ -3490,7 +3490,7 @@ getPreferredOrientation(): Orientation
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3504,7 +3504,7 @@ getPreferredOrientation(): Orientation
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 
 **示例：**
 
@@ -8815,7 +8815,7 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 
 **ArkTS模式：** 该接口仅适用ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onRotationChange](#onrotationchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onRotationChange](#onrotationchange23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -8881,7 +8881,7 @@ try {
 }
 ```
 
-## onRotationChange()<sup>22+</sup>
+## onRotationChange()<sup>23+</sup>
 
 onRotationChange(callback: RotationChangeCallback&lt;RotationChangeInfo, RotationChangeResult | undefined&gt;): void
 
@@ -8897,7 +8897,7 @@ onRotationChange(callback: RotationChangeCallback&lt;RotationChangeInfo, Rotatio
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在支持sensor旋转且不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
 
@@ -8972,7 +8972,7 @@ off(type: 'rotationChange', callback?: RotationChangeCallback&lt;RotationChangeI
 
 **ArkTS模式：** 该接口仅适用ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offRotationChange](#offrotationchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offRotationChange](#offrotationchange23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -9013,7 +9013,7 @@ try {
 }
 ```
 
-## offRotationChange<sup>22+</sup>
+## offRotationChange<sup>23+</sup>
 
 offRotationChange(callback?: RotationChangeCallback&lt;RotationChangeInfo, RotationChangeResult | undefined&gt;): void
 
@@ -9027,7 +9027,7 @@ offRotationChange(callback?: RotationChangeCallback&lt;RotationChangeInfo, Rotat
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在支持sensor旋转且不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
 
@@ -15582,6 +15582,10 @@ setWindowTransitionAnimation(transitionType: WindowTransitionType, animation: Tr
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用，在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型                                            | 必填 | 说明                                   |
@@ -15602,7 +15606,7 @@ setWindowTransitionAnimation(transitionType: WindowTransitionType, animation: Tr
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal.                               |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003  | This window manager service works abnormally.                |
 | 1300004  | Unauthorized operation.                                      |
 | 1300016  | Parameter error. Possible cause: 1. Invalid parameter range; 2. Invalid parameter length. |
@@ -15666,6 +15670,10 @@ getWindowTransitionAnimation(transitionType: WindowTransitionType): TransitionAn
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用，在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型                                            | 必填 | 说明                                   |
@@ -15685,7 +15693,7 @@ getWindowTransitionAnimation(transitionType: WindowTransitionType): TransitionAn
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal.                               |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003  | This window manager service works abnormally.                |
 | 1300004  | Unauthorized operation.                                      |
 | 1300016  | Parameter error. Possible cause: 1. Invalid parameter range. |
