@@ -807,7 +807,6 @@ ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle, callback: 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-| 202  | Permission denied, non-system app called system api. When the windowId value is -1, the system permission is required to set the global style. |
 
 ArkTS-Dyn示例:
 
@@ -911,7 +910,6 @@ ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle): Promise&l
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-| 202  | Permission denied, non-system app called system api. When the windowId value is -1, the system permission is required to set the global style. |
 
 ArkTS-Dyn示例:
 
@@ -1008,7 +1006,6 @@ ArkTS-Sta: setPointerStyleSync(windowId: int, pointerStyle: PointerStyle): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-| 202  | Permission denied, non-system app called system api. When the windowId value is -1, the system permission is required to set the global style. |
 
 ArkTS-Dyn示例:
 
@@ -1302,6 +1299,11 @@ struct Index {
 自定义光标资源。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：23
+
 | 名称     | 类型     | 只读     | 可选     | 说明     |
 | -------- | ------- | -------- | -------- | ------- |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 否   | 自定义光标。最小限制为资源图本身的最小限制。最大限制为256 x 256px。 |
@@ -1332,6 +1334,10 @@ ArkTS-Sta: setCustomCursor(windowId: int, cursor: CustomCursor, config: CursorCo
 应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
