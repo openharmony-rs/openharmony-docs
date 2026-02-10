@@ -345,7 +345,7 @@ OH_AVFormat_Destroy(dynamicFormat);
 
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
-| OH_AVCapability_GetEncoderComplexityRange | 获取当前编码器支持的复杂度等级范围。当前无编码器支持复杂度配置。 | 
+| OH_AVCapability_GetEncoderComplexityRange | 获取当前编码器支持的复杂度等级范围。 | 
 
 ```c++
 OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, true);
