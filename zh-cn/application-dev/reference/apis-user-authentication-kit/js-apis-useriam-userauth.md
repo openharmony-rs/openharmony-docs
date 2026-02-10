@@ -27,8 +27,8 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 | 名称        | 类型   | 值   | 说明       |
 | ----------- | ---- | ---- | ---------- |
-| MAX_ALLOWABLE_REUSE_DURATION<sup>12+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 300000   | 复用解锁认证结果最大有效时长，值为300000毫秒。 <br/> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| PERMANENT_LOCKOUT_DURATION<sup>22+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 0x7fffffff | 永久冻结时间，值为0x7fffffff毫秒。<br/> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| MAX_ALLOWABLE_REUSE_DURATION<sup>12+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 300000   | 复用解锁认证结果最大有效时长，值为300000毫秒。 <br/> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| PERMANENT_LOCKOUT_DURATION<sup>22+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 0x7fffffff | 永久冻结时间，值为0x7fffffff毫秒。<br/> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 
 ## AuthLockState<sup>22+</sup>
 
@@ -40,7 +40,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 类型    | 只读 | 可选 | 说明                 |
 | ------------ | ---------- | ---- | ---- | -------------------- |
@@ -58,7 +58,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 值   | 说明       |
 | -----------        | ---- | ---------- |
@@ -80,7 +80,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 类型    | 只读 | 可选 | 说明                 |
 | ------------ | ---------- | ---- | ---- | -------------------- |
@@ -95,10 +95,10 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 | 名称        | 值   | 说明       |
 | ----------- | ---- | ---------- |
-| AUTH_TYPE_RELEVANT    | 1   | 与认证类型相关，只有当设备解锁认证结果在有效时间内，并且设备解锁的认证类型匹配上本次认证指定认证类型之一时，可以复用该结果。<br/> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| AUTH_TYPE_IRRELEVANT  | 2   | 与认证类型无关，设备解锁认证结果在有效时间内，可以重复使用。<br/> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| CALLER_IRRELEVANT_AUTH_TYPE_RELEVANT<sup>14+</sup>    | 3   | 与认证类型相关，任意身份认证（包括设备解锁）结果在有效时间内，并且身份认证的认证类型匹配上本次认证指定认证类型之一时，可以复用该结果。<br/> **ArkTS-Dyn起始版本：** 14 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| CALLER_IRRELEVANT_AUTH_TYPE_IRRELEVANT<sup>14+</sup>  | 4   | 与认证类型无关，任意身份认证（包括设备解锁）结果在有效时间内，可以重复使用。<br/> **ArkTS-Dyn起始版本：** 14 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| AUTH_TYPE_RELEVANT    | 1   | 与认证类型相关，只有当设备解锁认证结果在有效时间内，并且设备解锁的认证类型匹配上本次认证指定认证类型之一时，可以复用该结果。<br/> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| AUTH_TYPE_IRRELEVANT  | 2   | 与认证类型无关，设备解锁认证结果在有效时间内，可以重复使用。<br/> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| CALLER_IRRELEVANT_AUTH_TYPE_RELEVANT<sup>14+</sup>    | 3   | 与认证类型相关，任意身份认证（包括设备解锁）结果在有效时间内，并且身份认证的认证类型匹配上本次认证指定认证类型之一时，可以复用该结果。<br/> **ArkTS-Dyn起始版本：** 14 <br> **ArkTS-Sta起始版本：** 23 <br> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| CALLER_IRRELEVANT_AUTH_TYPE_IRRELEVANT<sup>14+</sup>  | 4   | 与认证类型无关，任意身份认证（包括设备解锁）结果在有效时间内，可以重复使用。<br/> **ArkTS-Dyn起始版本：** 14 <br> **ArkTS-Sta起始版本：** 23 <br> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 
 ## ReuseUnlockResult<sup>12+</sup>
 
@@ -113,7 +113,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称         | 类型   | 只读 | 可选 | 说明                 |
@@ -135,7 +135,7 @@ getAuthLockState(authType: UserAuthType): Promise\<AuthLockState>
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -198,7 +198,7 @@ getEnrolledState(authType: UserAuthType): EnrolledState
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -247,11 +247,11 @@ try {
 
 | 名称           | 类型                               | 只读 | 可选 | 说明                                                         |
 | -------------- | ---------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| challenge      | Uint8Array                         |  否  |  否  | 随机挑战值，可用于防重放攻击。最大长度为32字节，可传Uint8Array([])。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| authType       | [UserAuthType](#userauthtype8)[]   |  否  |  否  | 认证类型列表，用来指定用户认证界面提供的认证方法。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| authTrustLevel | [AuthTrustLevel](#authtrustlevel8) |  否  |  否  | 期望达到的认证可信等级。典型操作需要的身份认证可信等级，以及身份认证可信等级的划分请参见[认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| reuseUnlockResult<sup>12+</sup> | [ReuseUnlockResult](#reuseunlockresult12) |  否  |  是  |表示可以复用解锁认证的结果。默认为不复用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| skipLockedBiometricAuth<sup>20+</sup> | boolean |  否  |  是  | 是否跳过已禁用的认证方式自动切换至其它方式的认证。若无可切换的认证方式则关闭控件，返回认证冻结错误码。<br/>true表示生物认证冻结时，跳过倒计时界面直接切换到其他方式的认证；<br/>false表示不跳过；默认为false。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| challenge      | Uint8Array                         |  否  |  否  | 随机挑战值，可用于防重放攻击。最大长度为32字节，可传Uint8Array([])。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| authType       | [UserAuthType](#userauthtype8)[]   |  否  |  否  | 认证类型列表，用来指定用户认证界面提供的认证方法。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| authTrustLevel | [AuthTrustLevel](#authtrustlevel8) |  否  |  否  | 期望达到的认证可信等级。典型操作需要的身份认证可信等级，以及身份认证可信等级的划分请参见[认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| reuseUnlockResult<sup>12+</sup> | [ReuseUnlockResult](#reuseunlockresult12) |  否  |  是  |表示可以复用解锁认证的结果。默认为不复用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| skipLockedBiometricAuth<sup>20+</sup> | boolean |  否  |  是  | 是否跳过已禁用的认证方式自动切换至其它方式的认证。若无可切换的认证方式则关闭控件，返回认证冻结错误码。<br/>true表示生物认证冻结时，跳过倒计时界面直接切换到其他方式的认证；<br/>false表示不跳过；默认为false。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23 <br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
 ## WidgetParam<sup>10+</sup>
 
@@ -261,9 +261,9 @@ try {
 
 | 名称                 | 类型                                | 只读 | 可选 | 说明                                                         |
 | -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| title                | string                              |  否  |  否  | 用户认证界面的标题，建议传入认证目的，例如用于支付、登录应用等，不支持传空字串，最大长度为500字符。 <br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| navigationButtonText | string                              |  否  |  是  | 导航按键的说明文本，最大长度为60字符。在单指纹、单人脸场景下支持，从API 18开始，增加支持人脸+指纹场景。默认为不展示自定义导航按键。 <br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| uiContext<sup>18+</sup>            | Context               |  否  |  是  | 以模应用方式显示身份认证对话框，仅支持在2in1设备上使用，如果没有此参数或其他类型的设备，身份认证对话框将以模系统方式显示。 默认以模系统方式显示身份认证对话框。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 22 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| title                | string                              |  否  |  否  | 用户认证界面的标题，建议传入认证目的，例如用于支付、登录应用等，不支持传空字串，最大长度为500字符。 <br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| navigationButtonText | string                              |  否  |  是  | 导航按键的说明文本，最大长度为60字符。在单指纹、单人脸场景下支持，从API 18开始，增加支持人脸+指纹场景。默认为不展示自定义导航按键。 <br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| uiContext<sup>18+</sup>            | Context               |  否  |  是  | 以模应用方式显示身份认证对话框，仅支持在2in1设备上使用，如果没有此参数或其他类型的设备，身份认证对话框将以模系统方式显示。 默认以模系统方式显示身份认证对话框。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 
 ## UserAuthResult<sup>10+</sup>
 
@@ -275,12 +275,12 @@ try {
 
 | 名称     | 类型                           | 只读 | 可选 | 说明                                                         |
 | -------- | ------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| result   | ArkTS-Dyn: number<br>ArkTS-Sta: int |  否  |  否  | 用户认证结果。若成功返回SUCCESS，若失败返回相应错误码，参见[UserAuthResultCode](#userauthresultcode9)。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22 |
-| token    | Uint8Array                     |  否  |  是  | 认证成功时，返回认证成功的令牌信息。最大长度为1024字节。 <br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22|
-| authType | [UserAuthType](#userauthtype8) |  否  |  是  | 认证成功时，返回认证类型。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22|
-| enrolledState<sup>12+</sup> | [EnrolledState](#enrolledstate12) |  否  |  是  |  认证成功时，返回注册凭据的状态。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22|
+| result   | ArkTS-Dyn: number<br>ArkTS-Sta: int |  否  |  否  | 用户认证结果。若成功返回SUCCESS，若失败返回相应错误码，参见[UserAuthResultCode](#userauthresultcode9)。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
+| token    | Uint8Array                     |  否  |  是  | 认证成功时，返回认证成功的令牌信息。最大长度为1024字节。 <br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23|
+| authType | [UserAuthType](#userauthtype8) |  否  |  是  | 认证成功时，返回认证类型。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23|
+| enrolledState<sup>12+</sup> | [EnrolledState](#enrolledstate12) |  否  |  是  |  认证成功时，返回注册凭据的状态。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23|
 
-## AuthCallbackOnResultFunc<sup>22+</sup>
+## AuthCallbackOnResultFunc<sup>23+</sup>
 
 type AuthCallbackOnResultFunc = (result: UserAuthResult) => void
 
@@ -290,7 +290,7 @@ type AuthCallbackOnResultFunc = (result: UserAuthResult) => void
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -308,11 +308,11 @@ type AuthCallbackOnResultFunc = (result: UserAuthResult) => void
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 类型   | 只读 | 可选 | 说明                 |
 | ------------ | ---------- | ---- | ---- | -------------------- |
-| onResult  | [AuthCallbackOnResultFunc](#authcallbackonresultfunc22) | 否 | 否   | 返回认证结果。认证成功时，可以通过UserAuthResult获取到认证成功的令牌信息。  |
+| onResult  | [AuthCallbackOnResultFunc](#authcallbackonresultfunc23) | 否 | 否   | 返回认证结果。认证成功时，可以通过UserAuthResult获取到认证成功的令牌信息。  |
 
 
 ### onResult<sup>10+</sup>
@@ -626,7 +626,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型                                  | 只读 | 可选 | 说明                              |
 | -------- | ------------------------------------ | ---- | ---- | ------------------------------------ |
@@ -645,7 +645,7 @@ type AuthTipCallback = (authTipInfo: AuthTipInfo) => void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -666,7 +666,7 @@ on(type: 'result', callback: IAuthCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onResult](#onResult22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onResult](#onResult23)。
 
 > **说明：**
 >
@@ -810,7 +810,7 @@ struct Index {
 }
 ```
 
-### onResult<sup>22+</sup>
+### onResult<sup>23+</sup>
 
 onResult(callback: IAuthCallback): void
 
@@ -824,7 +824,7 @@ onResult(callback: IAuthCallback): void
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -969,7 +969,7 @@ off(type: 'result', callback?: IAuthCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offResult](#offResult22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offResult](#offResult23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1037,7 +1037,7 @@ try {
 }
 ```
 
-### offResult<sup>22+</sup>
+### offResult<sup>23+</sup>
 
 offResult(callback?: IAuthCallback): void
 
@@ -1055,7 +1055,7 @@ offResult(callback?: IAuthCallback): void
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1136,7 +1136,7 @@ start(): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -1213,7 +1213,7 @@ cancel(): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -1274,7 +1274,7 @@ on(type: 'authTip', callback: AuthTipCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onAuthTip](#onAuthTip22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAuthTip](#onAuthTip23)。
 
 > **说明：**
 >
@@ -1346,7 +1346,7 @@ try {
 }
 ```
 
-### onAuthTip<sup>22+</sup>
+### onAuthTip<sup>23+</sup>
 
 onAuthTip(callback: AuthTipCallback): void
 
@@ -1360,7 +1360,7 @@ onAuthTip(callback: AuthTipCallback): void
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1433,7 +1433,7 @@ off(type: 'authTip', callback?: AuthTipCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offAuthTip](#offAuthTip22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAuthTip](#offAuthTip23)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1498,7 +1498,7 @@ try {
 }
 ```
 
-### offAuthTip<sup>22+</sup>
+### offAuthTip<sup>23+</sup>
 
 offAuthTip(callback?: AuthTipCallback): void
 
@@ -1516,7 +1516,7 @@ offAuthTip(callback?: AuthTipCallback): void
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1590,7 +1590,7 @@ getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthIns
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2136,7 +2136,7 @@ getAvailableStatus(authType : UserAuthType, authTrustLevel : AuthTrustLevel): vo
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2194,19 +2194,19 @@ try {
 
 | 名称                    |   值   | 说明                 |
 | ----------------------- | ------ | -------------------- |
-| SUCCESS                          | 12500000      | 执行成功。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
-| FAIL                             | 12500001      | 认证失败。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
-| GENERAL_ERROR                    | 12500002      | 操作通用错误。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| CANCELED                         | 12500003      | 认证取消。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
-| TIMEOUT                          | 12500004      | 认证超时。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
-| TYPE_NOT_SUPPORT                 | 12500005      | 认证类型不支持。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| TRUST_LEVEL_NOT_SUPPORT          | 12500006      | 认证等级不支持。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| BUSY                             | 12500007      | 系统繁忙。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
-| INVALID_PARAMETERS<sup>20+</sup> | 12500008      | 参数校验失败。<br/> **ArkTS-Dyn起始版本：** 20<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
-| LOCKED                           | 12500009      | 认证器已锁定。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| NOT_ENROLLED                     | 12500010      | 用户未录入指定的系统身份认证凭据。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| CANCELED_FROM_WIDGET<sup>10+</sup> | 12500011 | 用户取消了系统认证方式，选择应用自定义认证。需调用者拉起自定义认证界面。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PIN_EXPIRED<sup>12+</sup> | 12500013 | 当前的认证操作执行失败。返回这个错误码，表示系统锁屏口令过期。<br/> **ArkTS-Dyn起始版本：** 12<br/> **ArkTS-Sta起始版本：** 22<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| SUCCESS                          | 12500000      | 执行成功。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 23<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
+| FAIL                             | 12500001      | 认证失败。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 23<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
+| GENERAL_ERROR                    | 12500002      | 操作通用错误。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 23<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| CANCELED                         | 12500003      | 认证取消。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 23<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
+| TIMEOUT                          | 12500004      | 认证超时。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 23<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
+| TYPE_NOT_SUPPORT                 | 12500005      | 认证类型不支持。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 23<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| TRUST_LEVEL_NOT_SUPPORT          | 12500006      | 认证等级不支持。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 23<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| BUSY                             | 12500007      | 系统繁忙。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 23<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
+| INVALID_PARAMETERS<sup>20+</sup> | 12500008      | 参数校验失败。<br/> **ArkTS-Dyn起始版本：** 20<br/> **ArkTS-Sta起始版本：** 23<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
+| LOCKED                           | 12500009      | 认证器已锁定。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 23<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| NOT_ENROLLED                     | 12500010      | 用户未录入指定的系统身份认证凭据。<br/> **ArkTS-Dyn起始版本：** 9<br/> **ArkTS-Sta起始版本：** 23<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| CANCELED_FROM_WIDGET<sup>10+</sup> | 12500011 | 用户取消了系统认证方式，选择应用自定义认证。需调用者拉起自定义认证界面。<br/> **ArkTS-Dyn起始版本：** 10<br/> **ArkTS-Sta起始版本：** 23<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| PIN_EXPIRED<sup>12+</sup> | 12500013 | 当前的认证操作执行失败。返回这个错误码，表示系统锁屏口令过期。<br/> **ArkTS-Dyn起始版本：** 12<br/> **ArkTS-Sta起始版本：** 23<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## UserAuth<sup>(deprecated)</sup>
 
@@ -2641,7 +2641,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 值   | 说明       |
 | ----------- | ---- | ---------- |
@@ -2661,7 +2661,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值    | 说明                                                         |
 | ---- | ----- | ------------------------------------------------------------ |
