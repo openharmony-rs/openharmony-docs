@@ -81,11 +81,14 @@ let avCaptureConfig: media.AVScreenCaptureRecordConfig = {
     // 补充其他参数。
 };
 
-avScreenCaptureRecorder.init(avCaptureConfig).then(() => {
-  console.info('Succeeded in initializing avScreenCaptureRecorder');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to init avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
-});
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.init(avCaptureConfig).then(() => {
+    console.info('Succeeded in initializing avScreenCaptureRecorder');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to init avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+
 ```
 
 ## startRecording<sup>12+</sup>
