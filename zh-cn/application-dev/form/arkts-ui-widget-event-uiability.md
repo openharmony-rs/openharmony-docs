@@ -109,7 +109,7 @@
           formProvider.updateForm(curFormId, formMsg).then((data) => {
             hilog.info(DOMAIN_NUMBER, TAG, 'updateForm success.', JSON.stringify(data));
           }).catch((error: BusinessError) => {
-            hilog.error(DOMAIN_NUMBER, TAG, `updateForm failed, error code: ${error.code}, error message: ${error.message}`);
+            hilog.info(DOMAIN_NUMBER, TAG, 'updateForm failed.', JSON.stringify(error));
           });
         }
       }
@@ -126,7 +126,7 @@
     
         windowStage.loadContent('pages/Index', (err, data) => {
           if (err.code) {
-            hilog.error(DOMAIN_NUMBER, TAG, `Failed to load the content. error code: ${err.code}, error message: ${err.message}`);
+            hilog.error(DOMAIN_NUMBER, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
             return;
           }
           hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
@@ -254,7 +254,7 @@
         formProvider.updateForm(curFormId, formMsg).then((data) => {
           hilog.info(DOMAIN_NUMBER, TAG, `updateForm success. ${JSON.stringify(data)}`);
         }).catch((error: BusinessError) => {
-          hilog.error(DOMAIN_NUMBER, TAG, `updateForm failed, error code: ${error.code}, error message: ${error.message}`);
+          hilog.error(DOMAIN_NUMBER, TAG, `updateForm failed: ${JSON.stringify(error)}`);
         });
       }
       return new MyParcelable(CONST_NUMBER_1, 'aaa');
@@ -276,7 +276,7 @@
     
         windowStage.loadContent('pages/Index', (err, data) => {
           if (err.code) {
-            hilog.error(DOMAIN_NUMBER, TAG, `Failed to load the content. error code: ${err.code}, error message: ${err.message}`);
+            hilog.error(DOMAIN_NUMBER, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
             return;
           }
           hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
