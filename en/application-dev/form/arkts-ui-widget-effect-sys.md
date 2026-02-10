@@ -99,7 +99,7 @@ The new material background does not take effect on a transparent widget (widget
 
 ### How to Develop
 1. [Create an ArkTS widget](arkts-ui-widget-creation.md).
-2. Configure the <idp:inline displayname="code" id="code145701445164313">entry/src/main/resources/base/profile/form_config.json</idp:inline> file. Add the `name` field (`materialBackground`) to the `metadata` configuration item in the **form_config.json** file. A `value` of `true` enables the new material background, while `false` (default value) disables it.
+2. Configure the `entry/src/main/resources/base/profile/form_config.json` file. Add the `name` field (`materialBackground`) to the `metadata` configuration item in the **form_config.json** file. A `value` of `true` enables the new material background, while `false` (default value) disables it.
 
    ```json
    {
