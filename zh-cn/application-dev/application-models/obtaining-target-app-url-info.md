@@ -1,4 +1,4 @@
-# 获取被拉起方应用的URL信息
+# 获取目标应用的URL信息
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -9,11 +9,11 @@
 
 ## 场景介绍
 
-开发者在使用[openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起系统应用或三方应用时，需要明确目标应用的信息。本文将介绍如何获取目标应用的URL信息，并提供完整的拉起示例。
+开发者在使用[openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起目标应用时，需要明确目标应用的信息。本文将介绍如何获取目标应用的URL信息，并提供完整的拉起示例。
 
 ## 环境要求
 
-在使用本工具前，开发者需要先获取[hdc工具](../dfx/hdc.md)，执行hdc shell。
+开发者需要先获取[hdc工具](../dfx/hdc.md)，执行hdc shell。
 
 ## 操作步骤
 
