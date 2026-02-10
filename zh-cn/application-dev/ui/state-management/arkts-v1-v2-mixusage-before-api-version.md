@@ -352,6 +352,103 @@ V1装饰器的观测能力是对数据本身做代理，因此当数据存在嵌
 
 <!-- @[observed_object_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/ObserveNestedClasses_ObservedAndObjectLink.ets) -->
 
+``` TypeScript
+@ObservedV2
+class InfoOne {
+  @Trace public myId: number;
+  public name: string;
+
+  constructor(myId?: number, name?: string) {
+    this.myId = myId || 0;
+    this.name = name || 'aaa';
+  }
+}
+
+@Observed
+class MessageInfo1 { // 一层嵌套
+  @Track public info: InfoOne; // 防止messageId改变导致info的连带刷新
+  @Track public messageId: number; // 防止messageId改变导致info的连带刷新
+
+  constructor(info?: InfoOne, messageId?: number) {
+    this.info = info || new InfoOne();
+    this.messageId = messageId || 0;
+  }
+}
+
+@Observed
+class MessageInfoNested1 { // 二层嵌套
+  public messageInfo: MessageInfo1;
+
+  constructor(messageInfo?: MessageInfo1) {
+    this.messageInfo = messageInfo || new MessageInfo1();
+  }
+}
+
+@ComponentV2
+struct GrandSon1 {
+  @Param info: InfoOne = new InfoOne();
+
+  build() {
+    Column() {
+      Text(`ObjectLink info info.myId:${this.info.myId}`) // myId属性被@Trace装饰，可以观测变化
+        .fontSize(30)
+        .onClick(() => {
+          this.info.myId++; // 当前组件和父组件Child1都刷新
+        })
+    }
+  }
+}
+
+@Component
+struct ChildOne {
+  @ObjectLink messageInfo: MessageInfo1;
+
+  build() {
+    Column() {
+      Text(`ObjectLink MessageInfo messageId:${this.messageInfo.messageId}`) // 经过@ObjectLink拆解之后，可以观测一层类属性变化
+        .fontSize(30)
+        .onClick(() => {
+          this.messageInfo.messageId++; // 当前组件UI刷新
+        })
+      Divider()
+        .color(Color.Blue)
+      Text(`ObjectLink MessageInfo info.myId:${this.messageInfo.info.myId}`) // myId属性被@Trace装饰，可以观测变化
+        .fontSize(30)
+        .onClick(() => {
+          this.messageInfo.info.myId++; // 当前组件和GrandSon1子组件的UI都刷新
+        })
+      GrandSon1({ info: this.messageInfo.info }); // 继续拆解一层子组件
+    }
+  }
+}
+
+@Entry
+@Component
+struct IndexOne {
+  @State messageInfoNested: MessageInfoNested1 = new MessageInfoNested1(); // 三层嵌套的数据，如何观测内部。
+
+  build() {
+    Column() {
+      // 观察messageInfoNested，@State只有一层观测能力，无法观察到变化
+      Text(`messageInfoNested messageId:${this.messageInfoNested.messageInfo.messageId}`)
+        .fontSize(30)
+        .onClick(() => {
+          this.messageInfoNested.messageInfo.messageId++; // 当前组件不刷新，子组件Child1的UI刷新
+        })
+      Divider()
+        .color(Color.Blue)
+      // 通过@ObjectLink嵌套观察 messageInfoId
+      ChildOne({ messageInfo: this.messageInfoNested.messageInfo }) // 经过拆分后，使用@ObjectLink拆分可以观察到深一层的变化
+      Divider()
+        .color(Color.Blue)
+    }
+    .height('100%')
+    .width('100%')
+    .margin(10)
+  }
+}
+```
+
 **\@ObservedV2+\@Trace观察class嵌套类**
 
 \@ObservedV2+\@Trace将观测能力实现在类属性上，所以当类属性被\@Trace标记时，无论嵌套多少层，均能观测到变化。以下示例代码中，MessageInfoNested对象及其属性均被\@ObservedV2修饰，在V1组件Index中使用时，不能和V1装饰器一起使用。将messageInfo属性从V1组件传递给V2组件，V2组件Child通过\@Param接收，且修改能被观测。
