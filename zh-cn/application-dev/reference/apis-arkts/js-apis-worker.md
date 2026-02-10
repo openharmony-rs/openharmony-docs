@@ -518,7 +518,7 @@ workerPort.onmessage = (e: MessageEvents): void => {
   try {
     // 调用方法有入参
     let res : string = workerPort.callGlobalCallObjectMethod("myObj", "getMessageWithInput", 0, "hello there!") as string;
-    console.info("worker:", res); //worker: this is a message from TestObj with input: hello there!
+    console.info("worker:", res); // worker: this is a message from TestObj with input: hello there!
   } catch (error) {
     // 异常处理
     console.error("worker: error code is " + error.code + " error message is " + error.message);
@@ -568,7 +568,7 @@ workerInstance.registerGlobalCallObject("myObj", registerObj);
 // 取消对象注册
 workerInstance.unregisterGlobalCallObject("myObj");
 // 取消ThreadWorker实例上的所有对象注册
-//workerInstance.unregisterGlobalCallObject();
+// workerInstance.unregisterGlobalCallObject();
 workerInstance.postMessage("start worker");
 ```
 
@@ -1469,7 +1469,7 @@ workerPort.onmessage = (e: MessageEvents): void => {
   try {
     // 调用方法有入参
     let res : string = workerPort.callGlobalCallObjectMethod("myObj", "getMessageWithInput", 0, "hello there!") as string;
-    console.info("worker:", res); //worker: this is a message from TestObj with input: hello there!
+    console.info("worker:", res); // worker: this is a message from TestObj with input: hello there!
   } catch (error) {
     // 异常处理
     console.error("worker: error code is " + error.code + " error message is " + error.message);
@@ -1672,9 +1672,9 @@ Worker线程自身的运行环境，GlobalScope类继承[WorkerEventTarget](#wor
 | ---- | ---- | ---- | ---- | ------------------ |
 | data | any  | 是   | 否   | 线程间传递的数据。 |
 
-## MessageType<sup>7+</sup>
+## MessageType
 
-type MessageType = 'message' | 'messageerror';
+type MessageType = 'message' | 'messageerror'
 
 表示消息类型。
 
@@ -1874,7 +1874,7 @@ off(type: string, listener?: EventListener): void
 
 ```ts
 const workerInstance = new worker.Worker("workers/worker.ets");
-//使用on接口、once接口或addEventListener接口创建“alert”事件，使用off接口删除事件。
+// 使用on接口、once接口或addEventListener接口创建“alert”事件，使用off接口删除事件。
 workerInstance.off("alert");
 ```
 
