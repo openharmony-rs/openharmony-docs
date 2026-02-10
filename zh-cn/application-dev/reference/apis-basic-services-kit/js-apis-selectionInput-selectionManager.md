@@ -13,6 +13,7 @@
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块仅支持PC/2in1设备。
 > - 仅支持集成了划词扩展的应用调用。
 
 ## 导入模块
@@ -46,7 +47,7 @@ on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
-| 33600003   | Invalid operation. The selection app is not valid. |
+| 33600003   | The application calling the API does not match the application selected in the system settings. |
 
 **示例：**
 
@@ -88,7 +89,7 @@ onSelectionComplete(callback: Callback\<SelectionInfo>): void
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
-| 33600003   | Invalid operation. The selection app is not valid. |
+| 33600003   | The application calling the API does not match the application selected in the system settings. |
 
 **示例：**
 
@@ -271,7 +272,7 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
-| 33600003   | Invalid operation. The selection app is not valid. |
+| 33600003   | The application calling the API does not match the application selected in the system settings. |
 
 **示例：**
 
