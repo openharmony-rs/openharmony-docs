@@ -312,7 +312,7 @@ type SourceCloseCallback = (uuid: number) => void
 **示例：**
 
 ```ts
-import HashMap from '@ohos.util.HashMap';
+import { HashMap } from '@kit.ArkTS';
 
 let requests: HashMap<number, media.MediaSourceLoadingRequest> = new HashMap();
 
