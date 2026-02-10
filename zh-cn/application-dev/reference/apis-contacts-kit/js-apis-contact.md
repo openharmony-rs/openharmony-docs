@@ -4259,7 +4259,7 @@ queryContactsCount(context: Context): Promise&lt;number&gt;
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 获取context。
+// 请在组件内获取context。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let promise = contact.queryContactsCount(context);
 promise.then((data) => {
