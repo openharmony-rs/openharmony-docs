@@ -357,7 +357,6 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
 'use static'
 import { Web, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
@@ -448,7 +447,7 @@ struct WebComponent {
 
 ArkTs-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -568,7 +567,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { Web, Column, Component, Entry, Button, $rawfile } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -628,7 +627,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -752,7 +751,7 @@ struct WebComponent {
 ```
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -818,7 +817,7 @@ struct WebComponent {
 
 Ark-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -887,7 +886,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -953,7 +952,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -1042,7 +1041,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -1121,7 +1120,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -1213,7 +1212,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -1292,7 +1291,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -1527,7 +1526,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -1612,7 +1611,6 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
 'use static'
 
 import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
@@ -1786,7 +1784,6 @@ struct WebComponent {
 ```
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
 'use static'
 import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
@@ -4698,7 +4695,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -5087,7 +5084,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -5165,7 +5162,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -5832,7 +5829,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -6726,7 +6723,6 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
 'use static'
 import { webview } from '@kit.ArkWeb';
 import { Entry, Column, Component, Web, Button } from '@kit.ArkUI';
@@ -8854,7 +8850,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { webview } from '@kit.ArkWeb';
 import { Entry, Column, Component, Web, Button, State } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -8954,7 +8950,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { webview } from '@kit.ArkWeb';
 import { Entry, Column, Component, Web, Button, State } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -10390,7 +10386,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { Web, Column, Component, Entry, Button, State } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -11174,7 +11170,7 @@ struct Index {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { Web, Column, Component, Entry, Button, $rawfile, State } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -12050,7 +12046,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -16166,6 +16162,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
+'use static'
 import { webview } from '@kit.ArkWeb';
 import { Entry, Column, Component, Web } from '@kit.ArkUI';
 
@@ -17836,7 +17833,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
+'use static'
 import { webview } from '@kit.ArkWeb';
 import { Entry, Column, Component, Web } from '@kit.ArkUI';
 @Entry
@@ -17910,7 +17907,6 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
 'use static'
 import { webview } from '@kit.ArkWeb';
 import { Web, Column, Component, Entry } from '@kit.ArkUI';
@@ -17978,6 +17974,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
+'use static'
 import { webview } from '@kit.ArkWeb';
 import { Entry, Column, Component, Web } from '@kit.ArkUI';
 
@@ -18051,6 +18048,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
+'use static'
 import { webview } from '@kit.ArkWeb';
 import { Entry, Column, Component, Button, Web } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';

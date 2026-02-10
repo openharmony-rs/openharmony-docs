@@ -203,43 +203,43 @@ ArkTS-Dyn中使用ArkTS-Sta的DataResubmissionHandler对象。
   ```
   加载的index.html文件。
   ```html
-<!-- index.html -->
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dataSubmit</title>
-    <style>
-        body{
-            background-color:gray;
-        }
-        .box {
-            width: 200px;
-            height: 150px;
-            line-height: 150px;
-            text-align: center;
-            background-color: orange;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-left: -100px;
-            margin-top: -75px;
-         }
-         a{
-            font-size:3em;
-         }
-    </style>
-</head>
-<body>
-<form action="http://httpbin.org/post" method="post">
-    <input type="text" name="username">
-    <div class="box">
-        <input id="submit" type="submit" name="提交">
-    </div>
-</form>
-</body>
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>dataSubmit</title>
+      <style>
+          body{
+              background-color:gray;
+          }
+          .box {
+              width: 200px;
+              height: 150px;
+              line-height: 150px;
+              text-align: center;
+              background-color: orange;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              margin-left: -100px;
+              margin-top: -75px;
+          }
+          a{
+              font-size:3em;
+          }
+      </style>
+  </head>
+  <body>
+  <form action="http://httpbin.org/post" method="post">
+      <input type="text" name="username">
+      <div class="box">
+          <input id="submit" type="submit" name="提交">
+      </div>
+  </form>
+  </body>
   ```
 
 - 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn DataResubmissionHandler的方法。
