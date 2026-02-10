@@ -132,6 +132,9 @@ try {
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback&lt;void&gt;): void
 
 Updates a widget. This API uses an asynchronous callback to return the result.
+> **NOTE**
+>
+> Starting from API version 20, when widget refresh data is updated via shared memory, the total size of the refreshed data must not exceed 10 MB, and the number of refreshed images must not exceed 20. For API version 19 and earlier versions, the upper limit for image files is 5, with a per-image memory limit of 2 MB. Any images that exceed these limits will display abnormally.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -189,6 +192,9 @@ try {
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
 
 Updates a widget. This API uses a promise to return the result.
+> **NOTE**
+>
+> Starting from API version 20, when widget refresh data is updated via shared memory, the total size of the refreshed data must not exceed 10 MB, and the number of refreshed images must not exceed 20. For API version 19 and earlier versions, the upper limit for image files is 5, with a per-image memory limit of 2 MB. Any images that exceed these limits will display abnormally.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -482,8 +488,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | Error Code ID   | Error Message|
 |----------| -------- |
-| 801      | CCapability not supported due to limited device capabilities. |
+| 801      | Capability not supported due to limited device capabilities. |
 | 16500050 | IPC connection error. |
+| 16501015 | Cannot close the widget editing page opened by other apps. |
 
 **Example**
 
@@ -513,7 +520,12 @@ struct Page {
         })
         .onClick(() => {
           console.info(`${TAG} onClick.....`);
-          formProvider.closeFormEditAbility();
+          try {
+            formProvider.closeFormEditAbility();
+            console.info(`${TAG} close FormEditAbility success.`);
+          } catch (error) {
+            console.error(`${TAG} close FormEditAbility faild, code: ${error.code}, message: ${error.message}`);
+          }
         })
     }
     .height('100%')
@@ -680,6 +692,11 @@ try {
 requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt;
 
 Requests an animation. This API takes effect only for [scene-based widgets](../../form/arkts-ui-widget-configuration.md#sceneanimationparams-field). This API uses a promise to return the result.
+> **NOTE**
+>
+> - This API is unavailable in the power-saving mode and will return the error code 16501000.
+> - If the device's thermal level reaches HOT and no tap event occurs, the API returns error code 16501000. If the thermal level reaches OVERHEATED, the API returns error code 16501000 in any case. For details about thermal level information, see [ThermalLevel](../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel).
+
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
