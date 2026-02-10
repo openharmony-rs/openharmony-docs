@@ -570,9 +570,7 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 
 ## BadgeEnabledChangedCallback<sup>12+</sup>
 
-### (data: EnabledNotificationCallbackData)<sup>12+</sup>
-
-(data: EnabledNotificationCallbackData): void
+type BadgeEnabledChangedCallback = (data: EnabledNotificationCallbackData) => void
 
 注册应用角标使能状态变化的回调函数类型。
 
