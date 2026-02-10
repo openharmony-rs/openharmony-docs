@@ -404,7 +404,7 @@
                hilog.info(DOMAIN_NUMBER, TAG, `onRouter`)
              })
              .onError((error) => {
-               hilog.error(DOMAIN_NUMBER, TAG, `onError: ${JSON.stringify(error)}`)
+               hilog.error(DOMAIN_NUMBER, TAG, `onError: code: ${error?.errcode}, message: ${error?.msg}`)
              })
            // ...
            Button($r('app.string.button_update'))
