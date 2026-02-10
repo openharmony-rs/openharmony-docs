@@ -16098,6 +16098,8 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   let originalValue: int = 0;
   let fromType: window.RotationInfoType = window.RotationInfoType.WINDOW_ORIENTATION;
