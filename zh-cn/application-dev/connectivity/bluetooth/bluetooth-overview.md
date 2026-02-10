@@ -38,7 +38,7 @@
 | ------------------ |  ------ |
 | Public Address       | 公共设备地址，该类型地址由IEEE组织分配并保证唯一性，永久不变。|
 | Static Random Address       | 静态随机地址，该类型地址在蓝牙设备上电初始化时随机生成，本次上电周期内不会改变。|
-| Resolvable Private Address      | 可解析私有地址，该类型地址通过一组地址解析秘钥（Identity Resolving Key, IRK）生成，会定期（蓝牙协议建议15分钟更新一次）发生变化。若一个蓝牙设备A拥有另一个蓝牙设备B的IRK，即可通过解析设备B的可解析私有地址来识别设备B。|
+| Resolvable Private Address      | 可解析私有地址，该类型地址通过一组地址解析密钥（Identity Resolving Key, IRK）生成，会定期（蓝牙协议建议15分钟更新一次）发生变化。若一个蓝牙设备A拥有另一个蓝牙设备B的IRK，即可通过解析设备B的可解析私有地址来识别设备B。|
 | Non-resolvable Private Address       | 不可解析私有地址，该类型地址是完全随机的临时地址，会定期（蓝牙协议建议15分钟更新一次）发生变化，难以追踪。|
 
 ## 设备角色
