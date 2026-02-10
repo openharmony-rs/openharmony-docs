@@ -134,7 +134,7 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
 > **说明**
 > 
-> 1. 防火墙规则优先级说明（[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)和[addNetFirewallRule](#netfirewalladdnetfirewallrule)无调用顺序要求）：<br>
+> 1、防火墙规则优先级说明（[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)和[addNetFirewallRule](#netfirewalladdnetfirewallrule)无调用顺序要求）：<br>
 >- 调用[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)设置默认策略为阻止，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：<br>
 >    - 显式阻止规则<br>
 >    - 显式允许规则<br>
@@ -149,12 +149,12 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 >      - 域名规则放行，若以IP方式访问之前经历过域名解析过程，则IP规则拦截或者默认策略拦截是不生效的，最终以IP方式访问是放行的。<br>
 >      - 域名规则放行，若以IP方式访问之前未经历过域名解析过程，则IP规则拦截或者默认策略拦截是生效的，最终以IP方式访问是拦截的。<br>
 >      - 域名规则拦截，则IP规则放行或者默认策略放行是生效的，最终以IP方式访问是放行的。<br>
-> 2. 规则类型补充说明：<br>
+> 2、规则类型补充说明：<br>
 >- 当addNetFirewallRule的入参rule.type配置为RULE_IP时：<br>
 >    - 若rule.action为RULE_ALLOW，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段允许通行；<br>
 >    - 若rule.action 为RULE_DENY，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段拦截。<br>
 >- 当addNetFirewallRule的入参rule.type配置为RULE_DOMAIN时，若rule.domains未配置， 该规则不生效。<br>
-> 3. 防火墙规则添加上限说明： <br>
+> 3、防火墙规则添加上限说明： <br>
 >- 单个系统用户ID添加的防火墙规则上限是1000，若超过该上限，则报错29400001。<br>
 >- 所有的系统用户ID添加的防火墙规则总和的上限是2000，若超过该上限，则报错29400001。<br>
 >- 所有的系统用户ID添加的模糊域名规则总和的上限是100，若超过该上限，则报错29400005。<br>
