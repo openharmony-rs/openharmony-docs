@@ -2,7 +2,7 @@
 
 ## 背景
 
-ArkTS-Sta在ArkTS-Dyn版本的基础上增强了类型安全和并发能力，带来了基于静态类型系统的编译器和运行时实现。为了让开发者能够达到更好的并发性能等目的，可选择ArkTS-Sta作为开发语言，或将存量应用逐步改造为ArkTS-Sta版本。在此场景下，为了让开发者能够复用已有的生态资产，以及让存量应用的开发者可以便捷地逐步迁移到ArkTS-Sta，我们需要提供ArkTS-Sta和ArkTS-Dyn以及TS/JS代码的交互能力。
+ArkTS-Sta增强了ArkTS-Dyn的类型安全和并发能力，引入了静态类型系统的编译器和运行时。为了提升并发性能，建议选择ArkTS-Sta作为开发语言，或逐步将存量应用改造为ArkTS-Sta。为了复用现有生态资产，便于存量应用的开发者迁移，需要提供ArkTS-Sta与ArkTS-Dyn及TS/JS代码的交互能力。
 
 ## 可交互方向
 
@@ -45,21 +45,19 @@ ESValue  -|- (static) load(path: string): ESValue                            // 
           |- ...
 ```
 
-（TODO：加链接）`ESValue`接口说明文档。
-
 ## 交互基本原则
 
-- ArkTS-Sta特有的语言特性不能用于和ArkTS-Dyn交互（比如：重载、注解、final、尾随闭包、function with receiver）。
+- ArkTS-Sta特有的ArkTS-Sta语言特性不能用于和ArkTS-Dyn交互（比如：重载、注解、final、尾随闭包、function with receiver）。
 - ArkTS-Dyn特有的语言特性不能用于和ArkTS-Sta交互（比如：@Sendable/@Concurrenct）。
 - TS特有的语言特性不能用于和ArkTS-Sta交互（比如：decorator、call-signature）。
 - ArkTS-Sta的对象属性在动态上下文使用时有如下特点：
   - 没有自身属性（own property）。
   - 对象和对象的属性都是密封的（sealed）。
-- ArkTS-Sta和JS的交互，需要开发者显式调用API来进行交互。
-- 使用规格之外的交互特性，可能导致未定义的行为，并且后续演进的兼容性无法保证。
+- ArkTS-Sta和JS的交互需要开发者显式调用API。
+- 使用规格之外的交互特性会导致未定义的行为，并且后续演进的兼容性无法保证。
 > **说明：**
 >
-> ArkTS-Sta的对象在动态上下文中没有自身属性，导致在动态上下文中使用JSON.stringify获取ArkTS-Sta对象的json字符串时，不能得到预期的结果。
+> ArkTS-Sta的对象在动态上下文中没有自身属性，导致在动态上下文中使用JSON.stringify获取ArkTS-Sta对象的json字符串时，无法获取到对象属性信息。
 > 本规格仅支持ArkTS-Sta与ArkTS-Dyn、ArkTS-Sta与TS之间的交互，如果希望ArkTS-Sta与JS的直接或间接的易用性交互，开发者需要为JS提供声明文件。
 
 ```javascript
@@ -106,7 +104,7 @@ element0.toNumber()  // 1
 data.setProperty(2, ESValue.wrap(4))
 ```
 
-- ArkTS-Sta和ArkTS-Dyn/TS的交互，不需要开发者显式调用API来进行交互。
+- ArkTS-Sta和ArkTS-Dyn/TS的交互无需开发者显式调用API。
 
 ```typescript
 // file1.ts
@@ -145,7 +143,7 @@ a.say(" cup"); // 打印'world cup'
 支持交互的函数需要满足下面所有条件：
 - 支持交互的函数包括function、方法和getter/setter，不包括lambda。
 - 函数的入参和返回值类型必须是[类型映射](arkts-interop-type-mapping.md)章节中支持的类型。
-- 函数的入参需要是非默认参数，非可选参数，以及非剩余参数。
+- 函数的入参必须是非默认参数、非可选参数以及非剩余参数。
 - 函数必须是非泛型函数，非异步函数。
 - 函数必须是非重载的。
 - 整个函数没有装饰器或注解。
@@ -167,7 +165,7 @@ a.say(" cup"); // 打印'world cup'
 - 整个接口没有装饰器或注解。
 > **说明：**
 >
-> 接口会被映射成接口，接口的属性会被映射成属性，接口的方法会被映射成方法。
+> 接口的属性和方法会被映射成对应的属性和方法。
 
 ### 类
 支持交互的类需要满足下面所有条件：
@@ -182,7 +180,7 @@ a.say(" cup"); // 打印'world cup'
 - 整个类没有装饰器或注解。
 > **说明：**
 >
-> 类会被映射成类，类的方法会被映射为方法。ArkTS-Sta中类的属性会被映射为ArkTS-Dyn的getter/setter方法，ArkTS-Dyn中类的属性会被映射为ArkTS-Sta属性。
+> 类会被映射成类，类的方法会被映射为方法。ArkTS-Sta中类的属性会被映射为ArkTS-Dyn的getter/setter方法，ArkTS-Dyn中类的属性会被映射为ArkTS-Sta的属性。
 
 ## 交互规格
 交互规格基于上面支持的类型。
@@ -201,7 +199,7 @@ a.say(" cup"); // 打印'world cup'
 **位运算**  
 操作数类型需要为number。  
 与或非异或: &, |, ~, ^。  
-以及它们和赋值组合的运算: &=, |=, ^= 。  
+以及它们和赋值组合的运算: &=, |=, ^=。  
 算术左移，算术右移，无符号右移: <<, >>, >>>。  
 以及它们和赋值组合的运算: <<=, >>=, >>>=。  
 **逻辑运算**  
