@@ -34,7 +34,7 @@ import bundle from '@ohos.bundle';
 
 权限等级参考[权限APL等级说明](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)。
 
-## bundle.getBundleInstaller<sup>deprecated<sup>
+## bundle.getBundleInstaller<sup>deprecated</sup>
 
 > **说明：**
 >
@@ -75,7 +75,7 @@ bundle.getBundleInstaller().then((data) => {
 });
 ```
 
-## bundle.getBundleInstaller<sup>deprecated<sup>
+## bundle.getBundleInstaller<sup>deprecated</sup>
 
 > **说明：**
 >
@@ -116,7 +116,7 @@ bundle.getBundleInstaller((err, data) => {
   }
 });
 ```
-## bundle.cleanBundleCacheFiles<sup>8+</sup> <sup>deprecated<sup>
+## bundle.cleanBundleCacheFiles<sup>8+</sup> <sup>deprecated</sup>
 
 > **说明：**
 >
@@ -161,7 +161,7 @@ bundle.cleanBundleCacheFiles(bundleName, err => {
 });
 ```
 
-## bundle.cleanBundleCacheFiles<sup>8+</sup> <sup>deprecated<sup>
+## bundle.cleanBundleCacheFiles<sup>8+</sup> <sup>deprecated</sup>
 
 > **说明：**
 >
@@ -210,7 +210,7 @@ bundle.cleanBundleCacheFiles(bundleName).then(() => {
 });
 ```
 
-## bundle.setApplicationEnabled<sup>8+</sup> <sup>deprecated<sup>
+## bundle.setApplicationEnabled<sup>8+</sup> <sup>deprecated</sup>
 
 > **说明：**
 >
@@ -256,7 +256,7 @@ bundle.setApplicationEnabled(bundleName, false, err => {
 });
 ```
 
-## bundle.setApplicationEnabled<sup>8+</sup> <sup>deprecated<sup>
+## bundle.setApplicationEnabled<sup>8+</sup> <sup>deprecated</sup>
 
 > **说明：**
 >
@@ -306,7 +306,7 @@ bundle.setApplicationEnabled(bundleName, false).then(() => {
 });
 ```
 
-## bundle.setAbilityEnabled<sup>8+</sup> <sup>deprecated<sup>
+## bundle.setAbilityEnabled<sup>8+</sup> <sup>deprecated</sup>
 
 > **说明：**
 >
@@ -336,7 +336,7 @@ SystemCapability.BundleManager.BundleFramework
 | isEnable | boolean                                      | 是   | 指定是否启用应用程序。true表示启用，false禁用。 |
 | callback | AsyncCallback\<void>                         | 是   | 为返回操作结果而调用的回调。                    |
 
-## bundle.setAbilityEnabled<sup>8+</sup> <sup>deprecated<sup>
+## bundle.setAbilityEnabled<sup>8+</sup> <sup>deprecated</sup>
 
 > **说明：**
 >
@@ -392,7 +392,7 @@ bundle.getAbilityInfo(bundleName, abilityName).then((abilityInfo) => {
   console.error('getAbilityInfo failed. Cause: ' + JSON.stringify(error));
 });
 ```
-## bundle.getPermissionDef<sup>8+</sup> <sup>deprecated<sup>
+## bundle.getPermissionDef<sup>8+</sup> <sup>deprecated</sup>
 
 > **说明：**
 >
@@ -436,7 +436,7 @@ bundle.getPermissionDef(permission, (err, data) => {
 });
 ```
 
-## bundle.getPermissionDef<sup>8+</sup> <sup>deprecated<sup>
+## bundle.getPermissionDef<sup>8+</sup> <sup>deprecated</sup>
 
 > **说明：**
 >
