@@ -53,6 +53,24 @@ JsonTypeError的构造函数。
 | ----- | ---- | ---- | ---- |
 | msg | string | 是 | 错误信息。 |
 
+## BigIntMode
+
+parseJsonElement定义处理BigInt的模式。
+
+| 名称 | 值| 说明            |
+| ------ | ------ | --------------- |
+| DEFAULT   | 0 |默认解析成Long类型，当整数小于-(2^63)或大于(2^63-1)时抛出异常，允许转换成BigInt类型。|
+| PARSE_AS_BIGINT   | 1 |当整数小于-(2^63)或大于(2^63-1)时，解析为BigInt，其余解析成Long类型，允许转换成BigInt类型。|
+| ALWAYS_PARSE_AS_BIGINT   | 2 |所有整数都解析为BigInt。|
+
+## ParseOptions
+
+解析的选项，可定义处理BigInt的模式。
+
+| 名称 | 类型| 只读 | 可选 |说明            |
+| ------ | ------ | ---- | ---- | --------------- |
+| bigIntMode   | [BigIntMode](#bigintmode) | 是 | 否 | 定义处理BigInt的模式。|
+
 ## JsonElement
 
 可容纳任何有效JSON值的JSON元素。提供类型安全的JSON值访问接口，包含严格模式和宽松模式两种API。
@@ -828,7 +846,7 @@ objectElem.setElement("name", jsonx.JsonElement.createString("John Doe"));
 objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
 objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
 objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
-objectElem.setElement("num", jsonx.JsonElement.createLong(1000000000000000n));
+objectElem.setElement("num", jsonx.JsonElement.createBigInt(1000000000000000n));
 const result = objectElem.tryGetBigInt("num");
 console.info("result = " + result); // result = 1000000000000000
 const result2 = objectElem.tryGetBigInt("num2", 100n);
