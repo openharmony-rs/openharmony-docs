@@ -137,7 +137,7 @@ ArkTS-Sta: checkAccessTokenSync(tokenID: int, permissionName: Permissions): Gran
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 要校验应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 要校验的目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
 | permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 是   | 需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 
 **返回值：**
@@ -504,7 +504,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | context | [Context](js-apis-inner-application-context.md) | 是 | 请求权限的<!--RP1-->UIAbility<!--RP1End-->的Context。 |
-| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | 是 | 需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
+| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | 是 | 权限名列表，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 
 **返回值：**
 
@@ -870,7 +870,7 @@ ArkTS-Sta: verifyAccessTokenSync(tokenID: int, permissionName: Permissions): Gra
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 要校验应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 要校验的目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
 | permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 是   | 需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 
 **返回值：**
