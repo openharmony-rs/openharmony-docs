@@ -7371,8 +7371,6 @@ restoreMainWindow(wantParameters?: Record<string, Object>): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在Phone设备、Tablet设备和2in1设备上可正常调用，在其他设备中返回801错误码。
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
