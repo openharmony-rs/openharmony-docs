@@ -266,7 +266,7 @@
           // 监听call事件所需的方法
           this.callee.on(MSG_SEND_METHOD, funACall);
         } catch (error) {
-          hilog.error(DOMAIN_NUMBER, TAG, `${MSG_SEND_METHOD} register failed, error code: ${error.code}, error message: ${error.message}`);
+          hilog.error(DOMAIN_NUMBER, TAG, `${MSG_SEND_METHOD} register failed with error ${JSON.stringify(error)}`);
         }
       }
     
