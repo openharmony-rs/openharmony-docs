@@ -32,97 +32,107 @@
 
 3. 调用[OH_CryptoAsymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_final)，传入密文，获取解密后的数据。
 
-```C++
-#include "CryptoArchitectureKit/crypto_architecture_kit.h"
-#include <string.h>
-
-static OH_Crypto_ErrCode doTestRsaEncDec()
-{
-    OH_CryptoAsymKeyGenerator *keyGen = nullptr;
-    OH_Crypto_ErrCode ret = OH_CryptoAsymKeyGenerator_Create("RSA1024", &keyGen);
-    if (ret != CRYPTO_SUCCESS) {
-        return ret;
-    }
-
-    OH_CryptoKeyPair *keyPair = nullptr;
-    ret = OH_CryptoAsymKeyGenerator_Generate(keyGen, &keyPair);
-    if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoAsymKeyGenerator_Destroy(keyGen);
-        return ret;
-    }
-
-    OH_CryptoAsymCipher *cipher = nullptr;
-    ret = OH_CryptoAsymCipher_Create("RSA1024|PKCS1", &cipher);
-    if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKeyPair_Destroy(keyPair);
-        OH_CryptoAsymKeyGenerator_Destroy(keyGen);
-        return ret;
-    }
-
-    ret = OH_CryptoAsymCipher_Init(cipher, CRYPTO_ENCRYPT_MODE, keyPair);
-    if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoAsymCipher_Destroy(cipher);
-        OH_CryptoKeyPair_Destroy(keyPair);
-        OH_CryptoAsymKeyGenerator_Destroy(keyGen);
-        return ret;
-    }
-
-    const char *testData = "Hello, RSA!";
-    Crypto_DataBlob in = {
-        .data = (uint8_t *)testData,
-        .len = strlen(testData)
-    };
-
-    Crypto_DataBlob out = { 0 };
-    ret = OH_CryptoAsymCipher_Final(cipher, &in, &out);
-    if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoAsymCipher_Destroy(cipher);
-        OH_CryptoKeyPair_Destroy(keyPair);
-        OH_CryptoAsymKeyGenerator_Destroy(keyGen);
-        return ret;
-    }
-
-    OH_CryptoAsymCipher_Destroy(cipher);
-    cipher = nullptr;
-    ret = OH_CryptoAsymCipher_Create("RSA1024|PKCS1", &cipher);
-    if (ret != CRYPTO_SUCCESS) {
-        OH_Crypto_FreeDataBlob(&out);
-        OH_CryptoKeyPair_Destroy(keyPair);
-        OH_CryptoAsymKeyGenerator_Destroy(keyGen);
-        return ret;
-    }
-
-    ret = OH_CryptoAsymCipher_Init(cipher, CRYPTO_DECRYPT_MODE, keyPair);
-    if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoAsymCipher_Destroy(cipher);
-        OH_Crypto_FreeDataBlob(&out);
-        OH_CryptoKeyPair_Destroy(keyPair);
-        OH_CryptoAsymKeyGenerator_Destroy(keyGen);
-        return ret;
-    }
-    Crypto_DataBlob decrypted = { 0 };
-    ret = OH_CryptoAsymCipher_Final(cipher, &out, &decrypted);
-    if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoAsymCipher_Destroy(cipher);
-        OH_Crypto_FreeDataBlob(&out);
-        OH_CryptoKeyPair_Destroy(keyPair);
-        OH_CryptoAsymKeyGenerator_Destroy(keyGen);
-        return ret;
-    }
-    if ((decrypted.len != strlen(testData)) || (memcmp(decrypted.data, testData, decrypted.len) != 0)) {
-        OH_Crypto_FreeDataBlob(&decrypted);
-        OH_CryptoAsymCipher_Destroy(cipher);
-        OH_Crypto_FreeDataBlob(&out);
-        OH_CryptoKeyPair_Destroy(keyPair);
-        OH_CryptoAsymKeyGenerator_Destroy(keyGen);
-        return CRYPTO_OPERTION_ERROR;
-    }
-
-    OH_Crypto_FreeDataBlob(&decrypted);
-    OH_CryptoAsymCipher_Destroy(cipher);
-    OH_Crypto_FreeDataBlob(&out);
-    OH_CryptoKeyPair_Destroy(keyPair);
-    OH_CryptoAsymKeyGenerator_Destroy(keyGen);
-    return ret;
-}
-```
+  <!-- @[rsa_pkcs1_encrypt_decrypt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceCpp/entry/src/main/cpp/types/project/rsa/PKCS1_RSA.cpp) -->
+  
+  ``` C++
+  
+  #include "CryptoArchitectureKit/crypto_architecture_kit.h"
+  #include <cstring>
+  
+  static OH_Crypto_ErrCode doRsaEncrypt(const Crypto_DataBlob *plainData, OH_CryptoKeyPair **keyPair,
+      OH_CryptoAsymKeyGenerator **keyGen, Crypto_DataBlob *encryptedData)
+  {
+      OH_Crypto_ErrCode ret = OH_CryptoAsymKeyGenerator_Create("RSA1024", keyGen);
+      if (ret != CRYPTO_SUCCESS) {
+          return ret;
+      }
+  
+      ret = OH_CryptoAsymKeyGenerator_Generate(*keyGen, keyPair);
+      if (ret != CRYPTO_SUCCESS) {
+          OH_CryptoAsymKeyGenerator_Destroy(*keyGen);
+          return ret;
+      }
+  
+      OH_CryptoAsymCipher *cipher = nullptr;
+      ret = OH_CryptoAsymCipher_Create("RSA1024|PKCS1", &cipher);
+      if (ret != CRYPTO_SUCCESS) {
+          OH_CryptoKeyPair_Destroy(*keyPair);
+          OH_CryptoAsymKeyGenerator_Destroy(*keyGen);
+          return ret;
+      }
+  
+      ret = OH_CryptoAsymCipher_Init(cipher, CRYPTO_ENCRYPT_MODE, *keyPair);
+      if (ret != CRYPTO_SUCCESS) {
+          OH_CryptoAsymCipher_Destroy(cipher);
+          OH_CryptoKeyPair_Destroy(*keyPair);
+          OH_CryptoAsymKeyGenerator_Destroy(*keyGen);
+          return ret;
+      }
+  
+      ret = OH_CryptoAsymCipher_Final(cipher, plainData, encryptedData);
+      OH_CryptoAsymCipher_Destroy(cipher);
+      if (ret != CRYPTO_SUCCESS) {
+          OH_CryptoKeyPair_Destroy(*keyPair);
+          OH_CryptoAsymKeyGenerator_Destroy(*keyGen);
+          return ret;
+      }
+  
+      return ret;
+  }
+  
+  static OH_Crypto_ErrCode doRsaDecrypt(const Crypto_DataBlob *encryptedData, OH_CryptoKeyPair *keyPair,
+      const Crypto_DataBlob *expectedPlainData)
+  {
+      OH_CryptoAsymCipher *cipher = nullptr;
+      OH_Crypto_ErrCode ret = OH_CryptoAsymCipher_Create("RSA1024|PKCS1", &cipher);
+      if (ret != CRYPTO_SUCCESS) {
+          return ret;
+      }
+  
+      ret = OH_CryptoAsymCipher_Init(cipher, CRYPTO_DECRYPT_MODE, keyPair);
+      if (ret != CRYPTO_SUCCESS) {
+          OH_CryptoAsymCipher_Destroy(cipher);
+          return ret;
+      }
+  
+      Crypto_DataBlob decrypted = { 0 };
+      ret = OH_CryptoAsymCipher_Final(cipher, encryptedData, &decrypted);
+      OH_CryptoAsymCipher_Destroy(cipher);
+      if (ret != CRYPTO_SUCCESS) {
+          return ret;
+      }
+  
+      if ((decrypted.len != expectedPlainData->len) ||
+          (memcmp(decrypted.data, expectedPlainData->data, decrypted.len) != 0)) {
+          OH_Crypto_FreeDataBlob(&decrypted);
+          return CRYPTO_OPERTION_ERROR;
+      }
+  
+      OH_Crypto_FreeDataBlob(&decrypted);
+      return ret;
+  }
+  
+  OH_Crypto_ErrCode doTestRsaEncDec()
+  {
+      const char *testData = "Hello, RSA!";
+      Crypto_DataBlob plainData = {
+          .data = (uint8_t *)testData,
+          .len = strlen(testData)
+      };
+  
+      OH_CryptoKeyPair *keyPair = nullptr;
+      OH_CryptoAsymKeyGenerator *keyGen = nullptr;
+      Crypto_DataBlob encryptedData = { 0 };
+  
+      OH_Crypto_ErrCode ret = doRsaEncrypt(&plainData, &keyPair, &keyGen, &encryptedData);
+      if (ret != CRYPTO_SUCCESS) {
+          return ret;
+      }
+  
+      ret = doRsaDecrypt(&encryptedData, keyPair, &plainData);
+      OH_Crypto_FreeDataBlob(&encryptedData);
+      OH_CryptoKeyPair_Destroy(keyPair);
+      OH_CryptoAsymKeyGenerator_Destroy(keyGen);
+      return ret;
+  }
+  ```

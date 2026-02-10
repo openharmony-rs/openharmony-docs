@@ -60,7 +60,7 @@ Before getting started, familiarity with the following basics is helpful.
 
 For details about how to obtain the NDK, see <!--RP1-->[Building an NDK Project with CMake](build-with-ndk-cmake.md#downloading-the-ndk)<!--RP1End-->.
 
-- **build** directory: stores the predefined toolchain script file [ohos.toolchain.cmake](build-with-ndk-overview.md#introduction-to-ohostoolchaincmake).
+- **build** directory: stores the predefined toolchain script file <!--RP2-->[ohos.toolchain.cmake](build-with-ndk-overview.md#introduction-to-ohostoolchaincmake).<!--RP2End-->
 
   ![](figures/en-us_image_0000001770128125.png)
 

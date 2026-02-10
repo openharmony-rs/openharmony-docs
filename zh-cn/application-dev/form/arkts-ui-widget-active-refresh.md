@@ -80,7 +80,7 @@
 
 3. 在onFormEvent回调函数的实现中，通过updateForm接口刷新卡片数据。
 
-   <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
+   <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
    
    ``` TypeScript
    // entry/src/main/ets/entryformability/EntryFormAbility.ts
@@ -88,6 +88,7 @@
    import { Configuration, Want } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
+   
    
    // entry/src/main/ets/entryformability/EntryFormAbility.ts
    const TAG: string = 'EntryFormAbility';
@@ -125,10 +126,12 @@
      onFormEvent(formId: string, message: string): void {
        // ...
        hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
+   
        class FormDataClass {
          title: string = 'Title Update.'; // 和卡片布局中对应
          detail: string = 'Description update success.'; // 和卡片布局中对应
        }
+   
        // ...
        let formData = new FormDataClass();
        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
@@ -150,11 +153,14 @@
        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onConfigurationUpdate:' + JSON.stringify(config));
      }
    
+   
      onAcquireFormState(want: Want): formInfo.FormState {
        // ...
        return formInfo.FormState.READY;
      }
+   
    }
+   
    ```
 
 4. 资源文件如下。

@@ -564,6 +564,8 @@ createPixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled:
 
 通过Surface的ID创建一个预览流画面的PixelMap对象。该Surface可能携带旋转或翻转的变换信息。使用Promise异步回调。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **参数：**
@@ -608,6 +610,8 @@ createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnab
 
 通过Surface的ID创建一个预览流画面的PixelMap对象。该Surface可能携带旋转或翻转的变换信息。同步返回PixelMap结果。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **参数：**
@@ -631,7 +635,7 @@ createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnab
 | ------- | --------------------------------------------|
 | 7600104 | Failed to get the data from Surface. |
 | 7600201 | Unsupported operation, e.g. on cross-platform. |
-| 7600206 | Invalid parameter |
+| 7600206 | Invalid parameter. |
 | 7600305 | Failed to create the PixelMap. |
 
 **示例：**

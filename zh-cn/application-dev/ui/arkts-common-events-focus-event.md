@@ -345,7 +345,8 @@ Tab键走焦：按照子节点的挂载顺序循环走焦。
 
 > **说明：**
 >
-> - 这种投影聚焦算法计算的聚焦顺序与组件布局和大小密切相关，建议在组件排列非常规整的场景下使用。如果组件大小不一且存在横向或纵向的交叠关系，则可能会导致聚焦顺序与开发者预期不符。
+> - 这种投影走焦算法计算的走焦顺序与组件布局和大小密切相关，建议在组件排列非常规整的场景下使用。如果组件大小不一且存在横向或纵向的交叠关系，则可能会导致走焦顺序与开发者预期不符。
+>
 > - 如果开发者希望有明确的走焦顺序，建议使用Column/Row等顺序走焦的容器实现。
 
 Flex多行组件布局，组件大小一致，走焦正常。
@@ -1528,12 +1529,15 @@ export struct FocusScopeIdExample {
 
 当组件获焦且存在点击事件（`onClick`）或单指单击事件（`TapGesture`）时，回车和空格会触发对应的事件回调。
 
->  **说明：**
+> **说明：**
 >
->  1. 点击事件（`onClick`）或单指单击事件（`TapGesture`）在回车、空格触发对应事件回调时，默认不冒泡传递，即父组件对应[按键事件](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md)不会被同步触发。
->  2. 按键事件（`onKeyEvent`）默认冒泡传递，即同时会触发父组件的按键事件回调。
->  3. 组件同时存在点击事件（`onClick`）和按键事件（`onKeyEvent`），在回车、空格触发时，两者都会响应。
->  4. 获焦组件响应点击事件（`onClick`），与焦点激活态无关。
+> - 点击事件（`onClick`）或单指单击事件（`TapGesture`）在回车、空格触发对应事件回调时，默认不冒泡传递，即父组件对应[按键事件](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md)不会被同步触发。
+>
+> - 按键事件（`onKeyEvent`）默认冒泡传递，即同时会触发父组件的按键事件回调。
+>
+> - 组件同时存在点击事件（`onClick`）和按键事件（`onKeyEvent`），在回车、空格触发时，两者都会响应。
+>
+> - 从API version 18开始，获焦组件只有在焦点激活态时才会响应点击事件（`onClick`）。
 
    <!-- @[dynamic_focus_on_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusOnClick.ets) -->
    

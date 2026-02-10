@@ -85,7 +85,7 @@
 
 ```html
 <!-- xxx.hml --> 
-<element name='comp' src='../../common/customComponent/customComponent.hml'></element>
+<element name='comp' src='../../common/customComponent/comp.hml'></element>
 
 <div class="container">
     <comp @event_1="click"></comp>
@@ -186,7 +186,7 @@
 
 ```html
 <!-- xxx.hml -->
-<element name='comp' src='../../common/customComponent/customComponent.hml'></element>
+<element name='comp' src='../../common/customComponent/comp.hml'></element>
 
 <div class="container">
     <comp progress="{{clicknow}}" textdata="{{texts}}" if="false" @event_1="click"></comp>
@@ -197,4 +197,4 @@
 
 父子组件之间数据的传递是单向的，只能从父组件传递给子组件，子组件不能直接修改父组件传递下来的值，可以将props传入的值用data接收后作为默认值，再对data的值进行修改。
 
-更多说明请参考[props](../arkui-js/js-components-custom-props.md)文档。
+更多说明请参考[Props](../arkui-js/js-components-custom-props.md#props)文档。

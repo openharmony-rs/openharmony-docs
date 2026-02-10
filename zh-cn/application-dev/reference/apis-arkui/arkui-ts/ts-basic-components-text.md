@@ -165,7 +165,7 @@ baselineOffset(value: number | ResourceStr)
 
 | 参数名 | 类型                       | 必填 | 说明                             |
 | ------ | -------------------------- | ---- | -------------------------------- |
-| value  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本基线的偏移量。<br/>默认值：0 <br>从API version 20开始，支持Resource类型。|
+| value  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本基线的偏移量。<br/>默认值：0 <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
 
 ### bindSelectionMenu<sup>11+</sup>
 
@@ -173,7 +173,7 @@ bindSelectionMenu(spanType: TextSpanType, content: CustomBuilder, responseType: 
 
 设置自定义选择菜单。
 
-bindSelectionMenu的长按响应时长为600ms，bindContextMenu的长按响应时长为800ms，当两者同时绑定且触发方式均为长按时，优先响应bindSelectionMenu。
+bindSelectionMenu的长按响应时长为600ms，[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)的长按响应时长为800ms，当两者同时绑定且触发方式均为长按时，优先响应bindSelectionMenu。
 
 自定义菜单超长时，建议内部嵌套使用[Scroll](./ts-container-scroll.md)组件，避免键盘被遮挡。
 
@@ -396,13 +396,13 @@ enableDataDetector(enable: boolean)
 
 所识别实体的样式如下，即字体颜色改为蓝色、并添加蓝色下划线。
 
-``` ts	
-color: '#ff007dff'	
-decoration:{	
-  type: TextDecorationType.Underline,	
-  color: '#ff007dff',	
-  style: TextDecorationStyle.SOLID	
-}	
+```ts
+color: '#ff007dff'
+decoration:{
+  type: TextDecorationType.Underline,
+  color: '#ff007dff',
+  style: TextDecorationStyle.SOLID
+}
 ```
 
 > **说明：**
@@ -428,7 +428,7 @@ enableHapticFeedback(isEnabled: boolean)
 
 设置是否开启触控反馈。
 
-开启触控反馈时，需要在工程的module.json5中配置requestPermissions字段开启振动权限，配置如下：
+开启触控反馈时，需要在工程的[module.json5配置文件](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段开启振动权限，配置如下：
 
 ```json
 "requestPermissions": [
@@ -649,7 +649,7 @@ fontWeight(value: number | FontWeight | ResourceStr)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal<br/>Wearable设备上默认值为：FontWeight.Regular <br>从API version 20开始，支持Resource类型。|
+| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal<br/>Wearable设备上默认值为：FontWeight.Regular <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
 
 ### fontWeight<sup>12+</sup>
 
@@ -669,7 +669,7 @@ fontWeight(weight: number | FontWeight | ResourceStr, options?: FontSettingOptio
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| weight | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是  | 设置文本字重。number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。 <br>从API version 20开始，支持Resource类型。|
+| weight | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是  | 设置文本字重。number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。 <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
 | options | [FontSettingOptions](ts-text-common.md#fontsettingoptions12对象说明) | 否  | 设置字体配置项。<br/>当options的参数enableVariableFontWeight取值false时，禁用可变字重调节，weight取值为[100, 900]范围内的整百数值时，字重取值为weight。weight是非整百数值时，字重取默认值400。<br/>当options的参数enableVariableFontWeight取值true时，启用可变字重调节，weight取值为[100, 900]范围内任意整数时，字重取值为weight。 |
 
 ### halfLeading<sup>12+</sup>
@@ -698,7 +698,7 @@ heightAdaptivePolicy(value: TextHeightAdaptivePolicy)
 
 - MAX_LINES_FIRST模式：优先使用[maxLines](#maxlines)属性来调整文本高度。如果使用maxLines属性的布局大小超过了布局约束，则尝试在[minFontSize](#minfontsize)和[maxFontSize](#maxfontsize)的范围内缩小字体以显示更多文本。
 
-- MIN_FONT_SIZE_FIRST模式：优先使用minFontSize属性来调整文本高度。如果使用minFontSize属性可以将文本布局在一行中，则尝试在minFontSize和maxFontSize的范围内增大字体并使用最大可能的字体大小在一行内显示，否则按minFontSize显示。
+- MIN_FONT_SIZE_FIRST模式：优先使用minFontSize属性来调整文本高度。如果使用minFontSize属性可以将文本布局在一行中，则尝试在minFontSize和maxFontSize的范围内增大字体并使用最大限度的字体大小在一行内显示，否则按minFontSize显示。
 
 - LAYOUT_CONSTRAINT_FIRST模式：优先使用布局约束来调整文本高度。如果布局大小超过布局约束，则尝试在minFontSize和maxFontSize的范围内缩小字体以满足布局约束。如果将字体大小缩小到minFontSize后，布局大小仍然超过布局约束，则删除超过布局约束的行。
 
@@ -734,7 +734,7 @@ letterSpacing(value: number | ResourceStr)
 
 | 参数名 | 类型                       | 必填 | 说明           |
 | ------ | -------------------------- | ---- | -------------- |
-| value  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本字符间距。<br/>默认值：0<br/>单位：[fp](ts-pixel-units.md) <br>从API version 20开始，支持Resource类型。|
+| value  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本字符间距。<br/>默认值：0<br/>单位：[fp](ts-pixel-units.md) <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
 
 ### lineBreakStrategy<sup>12+</sup>
 
@@ -937,7 +937,7 @@ maxLines(value: number)
 
 设置文本的最大行数。
 
-默认情况下，文本是自动折行的，如果指定此属性，则文本最多不会超过指定的行。如果有多余的文本，可以通过[textOverflow](#textoverflow)来指定截断方式。
+默认情况下，文本是自动折行的，如果指定此属性，则文本最多不会超过指定的行数。如果有多余的文本，可以通过[textOverflow](#textoverflow)来指定截断方式。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -1296,7 +1296,7 @@ textIndent(value: Length)
 
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
-| value  | [Length](ts-types.md#length) | 是   | 首行文本缩进。<br/>默认值：0 |
+| value  | [Length](ts-types.md#length) | 是   | 首行文本缩进。<br/>默认值：0<br/>单位：[fp](ts-pixel-units.md) |
 
 ### textOverflow
 
@@ -1909,7 +1909,13 @@ struct TextExample2 {
 
 ### 示例3（设置文本超长省略）
 
-该示例通过[maxLines](#maxlines)、[textOverflow](#textoverflow)、[ellipsisMode](#ellipsismode11)（从API version 11开始）属性展示了文本超长省略以及调整省略位置的效果，同时，可以通过[marqueeOptions](#marqueeoptions18)（从API version 18开始）配置跑马灯模式下的配置项以及跑马灯动画进行到特定的阶段时，触发的回调[onMarqueeStateChange](#onmarqueestatechange18)（从API version 18开始）。
+该示例通过[maxLines](#maxlines)、[textOverflow](#textoverflow)、[ellipsisMode](#ellipsismode11)属性展示了文本超长省略以及调整省略位置的效果，通过MULTILINE_START和MULTILINE_CENTER两种类型实现了单行文本和多行文本场景下的省略号在行首和行中的效果。同时，可以通过[marqueeOptions](#marqueeoptions18)配置跑马灯模式下的配置项以及跑马灯动画进行到特定的阶段时，触发的回调[onMarqueeStateChange](#onmarqueestatechange18)。
+
+从API version 11开始，通过[ellipsisMode](#ellipsismode11)属性设置文本超长时的显示方式。
+
+从API version 18开始，新增[marqueeOptions](#marqueeoptions18)属性设置跑马灯模式下的配置项，同时新增回调[onMarqueeStateChange](#onmarqueestatechange18)。
+
+从API version 24开始，[EllipsisMode](ts-appendix-enums.md#ellipsismode11)新增了MULTILINE_START和MULTILINE_CENTER枚举。
 
 ```ts
 // xxx.ets
@@ -1918,7 +1924,7 @@ import { LengthMetrics } from '@kit.ArkUI';
 @Extend(Text)
 function style() {
   .textAlign(TextAlign.Center)
-  .fontSize(12)
+  .fontSize(15)
   .border({ width: 1 })
   .padding(10)
   .width('100%')
@@ -1929,15 +1935,21 @@ function style() {
 @Component
 struct TextExample3 {
   @State text: string =
-    'The text component is used to display a piece of textual information.Support universal attributes and universal text attributes.';
+    'The text component is used to display a piece of textual information.' +
+      'Support universal attributes and universal text attributes.' +
+      'The text component is used to display a piece of textual information.' +
+      'Support universal attributes and universal text attributes.';
   @State ellipsisModeIndex: number = 0;
-  @State ellipsisMode: EllipsisMode[] = [EllipsisMode.START, EllipsisMode.CENTER, EllipsisMode.END];
-  @State ellipsisModeStr: string[] = ['START', 'CENTER', 'END'];
+  @State ellipsisMode: EllipsisMode[] =
+    [EllipsisMode.START, EllipsisMode.CENTER, EllipsisMode.END, EllipsisMode.MULTILINE_START,
+      EllipsisMode.MULTILINE_CENTER]; // 从API version 24开始新增MULTILINE_START和MULTILINE_CENTER
+  @State ellipsisModeStr: string[] = ['START', 'CENTER', 'END', 'MULTILINE_START',
+    'MULTILINE_CENTER'];
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
       // 文本超长时显示方式
-      Text('TextOverflow+maxLines').fontSize(9).fontColor(0xCCCCCC)
+      Text('TextOverflow+maxLines').fontSize(12).fontColor(Color.Black)
       // 超出maxLines截断内容展示
       Text('This is the setting of textOverflow to Clip text content This is the setting of textOverflow to None text content. This is the setting of textOverflow to Clip text content This is the setting of textOverflow to None text content.')
         .textOverflow({ overflow: TextOverflow.Clip })
@@ -1950,7 +1962,7 @@ struct TextExample3 {
         .maxLines(1)
         .style()
 
-      Text('marquee').fontSize(9).fontColor(0xCCCCCC)
+      Text('marquee').fontSize(12).fontColor(Color.Black)
       // 设置文本超长时以跑马灯的方式展示
       Text('This is the text with the text overflow set marquee')
         .textOverflow({ overflow: TextOverflow.MARQUEE })
@@ -1976,12 +1988,18 @@ struct TextExample3 {
           }
         })
 
-      Text('ellipsisMode').fontSize(9).fontColor(0xCCCCCC)
       // 设置文本超长时省略号的位置
+      Text('ellipsisMode(单行文本)').fontSize(12).fontColor(Color.Black)
       Text(this.text)
         .textOverflow({ overflow: TextOverflow.Ellipsis })
         .ellipsisMode(this.ellipsisMode[this.ellipsisModeIndex])
         .maxLines(1)
+        .style()
+      Text('ellipsisMode(多行文本)').fontSize(12).fontColor(Color.Black)
+      Text(this.text)
+        .textOverflow({ overflow: TextOverflow.Ellipsis })
+        .ellipsisMode(this.ellipsisMode[this.ellipsisModeIndex])
+        .maxLines(3)
         .style()
 
       Row() {

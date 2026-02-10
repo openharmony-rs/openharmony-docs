@@ -77,7 +77,7 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 12开始废弃，建议使用[XComponent(options: XComponentOptions)](#xcomponent12)替代。
+> 从API version 8开始支持，从API version 12开始废弃，建议使用[XComponent(value: {id: string, type: XComponentType, libraryname?: string, controller?: XComponentController})](#xcomponent10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,9 +124,9 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
   >
   > 不支持foregroundColor、obscured和pixelStretchEffect属性。API version 17及之前，type为SURFACE类型时也不支持动态属性设置、自定义绘制、背景设置(backgroundColor除外)、图像效果(shadow除外)、maskShape和foregroundEffect属性。从API version 18开始，type为SURFACE类型时不支持设置的动态属性包含background、foregroundColor、animation、gesture、priorityGesture、parallelGesture、useEffect、renderGroup、flexGrow、direction、align、useSizeType、clip、geometryTransition、bindPopup、bindMenu、bindContextMenu、bindContentCover、bindSheet、stateStyles、restoreId、onVisibleAreaChange、accessibilityGroup、obscured、reuseId、accessibilityVirtualNode。
   >
-  > 对于TEXTURE和SURFACE类型的XComponent组件，当不设置[renderFit](./ts-universal-attributes-renderfit.md)属性时，取默认值为RenderFit.RESIZE_FILL。
+  > 对于TEXTURE和SURFACE类型的XComponent组件，当不设置[renderFit](./ts-universal-attributes-renderfit.md#renderfit)属性时，取默认值为RenderFit.RESIZE_FILL。
   > 
-  > 对于SURFACE类型的XComponent组件，背景色设置为不透明的纯黑色，在API version 18之前，其[renderFit](./ts-universal-attributes-renderfit.md)通用属性仅支持设置为RenderFit.RESIZE_FILL；在API version 18及之后，支持所有的RenderFit枚举值。
+  > 对于SURFACE类型的XComponent组件，背景色设置为不透明的纯黑色，在API version 18之前，其[renderFit](./ts-universal-attributes-renderfit.md#renderfit18)通用属性仅支持设置为RenderFit.RESIZE_FILL；在API version 18及之后，支持所有的RenderFit枚举值。
   > 
   > 对于使用[ArkUI NDK接口](../../../ui/ndk-access-the-arkts-page.md)创建的XComponent组件，不支持使用属性获取函数[getAttribute](../capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)获取其renderFit属性值。
   
@@ -138,7 +138,7 @@ enableAnalyzer(enable: boolean)
 
 本功能需要搭配XComponentController的[StartImageAnalyzer](#startimageanalyzer12)和[StopImageAnalyzer](#stopimageanalyzer12)一起使用。
 
-不能和[overlay](ts-universal-attributes-overlay.md)属性同时使用，两者同时设置时overlay中CustomBuilder属性将失效。该特性依赖设备能力。
+不能和[overlay](ts-universal-attributes-overlay.md#overlay)属性同时使用，两者同时设置时overlay中CustomBuilder属性将失效。该特性依赖设备能力。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

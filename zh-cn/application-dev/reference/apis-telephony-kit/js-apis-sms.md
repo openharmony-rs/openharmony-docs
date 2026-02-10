@@ -56,7 +56,7 @@ const specification: string = '3gpp';
 // 以数组的形式显示协议数据单元(PDU)，类型为number。
 const pdu: Array<number> = [0x01, 0x00, 0x05, 0x81, 0x01, 0x80, 0xF6, 0x00, 0x00, 0x05, 0xE8, 0x32, 0x9B, 0xFD, 0x06];
 sms.createMessage(pdu, specification, (err: BusinessError, data: sms.ShortMessage) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -104,7 +104,7 @@ const specification: string = '3gpp';
 // 以数组的形式显示协议数据单元(PDU)，类型为number。
 const pdu: Array<number> = [0x01, 0x00, 0x05, 0x81, 0x01, 0x80, 0xF6, 0x00, 0x00, 0x05, 0xE8, 0x32, 0x9B, 0xFD, 0x06];
 sms.createMessage(pdu, specification).then((data: sms.ShortMessage) => {
-    console.log(`createMessage success, promise: data->${JSON.stringify(data)}`);
+    console.info(`createMessage success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`createMessage failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -150,10 +150,10 @@ import { sms } from '@kit.TelephonyKit';
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
-    console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
+    console.info(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
 };
 let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
-    console.log(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
+    console.info(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
 };
 let options: sms.SendMessageOptions = {
     slotId: 0,
@@ -204,10 +204,10 @@ import { sms } from '@kit.TelephonyKit';
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
-    console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 };
 let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
-    console.log(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 };
 let options: sms.SendMessageOptions = {
     slotId: 0,
@@ -219,7 +219,7 @@ let options: sms.SendMessageOptions = {
     deliveryCallback: deliveryCallback
 };
 sms.sendShortMessage(options, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -265,10 +265,10 @@ import { sms } from '@kit.TelephonyKit';
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
-    console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 };
 let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
-    console.log(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 };
 let options: sms.SendMessageOptions = {
     slotId: 0,
@@ -281,7 +281,7 @@ let options: sms.SendMessageOptions = {
 };
 let promise = sms.sendShortMessage(options);
 promise.then(() => {
-    console.log(`sendShortMessage success`);
+    console.info(`sendShortMessage success`);
 }).catch((err: BusinessError) => {
     console.error(`sendShortMessage failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -310,7 +310,7 @@ import { sms } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sms.getDefaultSmsSlotId((err: BusinessError, data: number) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -336,7 +336,7 @@ import { sms } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sms.getDefaultSmsSlotId().then((data: number) => {
-    console.log(`getDefaultSmsSlotId success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getDefaultSmsSlotId success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getDefaultSmsSlotId failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -360,7 +360,7 @@ hasSmsCapability\(\): boolean
 import { sms } from '@kit.TelephonyKit';
 
 let result = sms.hasSmsCapability(); 
-console.log(`hasSmsCapability: ${JSON.stringify(result)}`);
+console.info(`hasSmsCapability: ${JSON.stringify(result)}`);
 ```
 
 ## sms.getDefaultSmsSimId<sup>10+</sup>
@@ -398,7 +398,7 @@ import { sms } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sms.getDefaultSmsSimId((err: BusinessError, data: number) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -438,7 +438,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let promise = sms.getDefaultSmsSimId();
 promise.then((data: number) => {
-    console.log(`getDefaultSmsSimId success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getDefaultSmsSimId success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getDefaultSmsSimId failed, promise: err->${JSON.stringify(err)}`);
 });

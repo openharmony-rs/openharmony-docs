@@ -6,10 +6,6 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
-> **说明：**
->
-> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本Interface首批接口从API version 9开始支持。
 
 音视频录制管理类，用于音视频媒体录制。在调用AVRecorder的方法前，需要先通过[createAVRecorder()](arkts-apis-media-f.md#mediacreateavrecorder9)构建一个AVRecorder实例。
 
@@ -17,6 +13,8 @@
 
 > **说明：**
 >
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本Interface首批接口从API version 9开始支持。
 > 使用相机进行视频录制时，需要与相机模块配合，相机模块接口的使用详情见[相机管理](../apis-camera-kit/arkts-apis-camera.md)。
 
 ## 导入模块
@@ -1195,7 +1193,7 @@ avRecorder.getAVRecorderConfig().then((config: media.AVRecorderConfig) => {
 
 on(type: 'stateChange', callback: OnAVRecorderStateChangeHandler): void
 
-订阅录制状态机AVRecorderState切换的事件，当AVRecorderState状态机发生变化时，会通过订阅的回调方法通知用户。用户只能订阅一个状态机切换事件的回调方法，当用户重复订阅时，以最后一次订阅的回调接口为准。使用callback异步回调。
+订阅录制状态机AVRecorderState切换的事件，当AVRecorderState状态机发生变化时，会通过订阅的回调方法通知用户。用户只能订阅一个录制状态机切换事件的回调方法，当用户重复订阅时，以最后一次订阅的回调接口为准。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1205,8 +1203,8 @@ on(type: 'stateChange', callback: OnAVRecorderStateChangeHandler): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 状态机切换事件回调类型，支持的事件：'stateChange'，用户操作和系统都会触发此事件。 |
-| callback | [OnAVRecorderStateChangeHandler](arkts-apis-media-t.md#onavrecorderstatechangehandler12) | 是   | 回调函数，返回状态机切换事件。 |
+| type     | string   | 是   | 录制状态机切换事件回调类型，支持的事件：'stateChange'，用户操作和系统都会触发此事件。 |
+| callback | [OnAVRecorderStateChangeHandler](arkts-apis-media-t.md#onavrecorderstatechangehandler12) | 是   | 回调函数，返回录制状态机切换事件。 |
 
 **错误码：**
 
@@ -1229,7 +1227,7 @@ avRecorder.on('stateChange', async (state: media.AVRecorderState, reason: media.
 
 off(type: 'stateChange', callback?: OnAVRecorderStateChangeHandler): void
 
-取消订阅播放状态机[AVRecorderState](arkts-apis-media-t.md#avrecorderstate9)切换的事件。使用callback异步回调。
+取消订阅录制状态机[AVRecorderState](arkts-apis-media-t.md#avrecorderstate9)切换的事件。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1239,8 +1237,8 @@ off(type: 'stateChange', callback?: OnAVRecorderStateChangeHandler): void
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| type   | string | 是   | 状态机切换事件回调类型，支持的事件：'stateChange'，用户操作和系统都会触发此事件。 |
-| callback | [OnAVRecorderStateChangeHandler](arkts-apis-media-t.md#onavrecorderstatechangehandler12) | 否   | 回调函数，返回状态机切换事件。<br/>从API version 12开始支持此参数。 |
+| type   | string | 是   | 录制状态机切换事件回调类型，支持的事件：'stateChange'，用户操作和系统都会触发此事件。 |
+| callback<sup>12+</sup> | [OnAVRecorderStateChangeHandler](arkts-apis-media-t.md#onavrecorderstatechangehandler12) | 否   | 回调函数，返回录制状态机切换事件。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br/>从API version 12开始支持此参数。 |
 
 **示例：**
 
@@ -1309,7 +1307,7 @@ off(type: 'error', callback?: ErrorCallback): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 录制错误事件回调类型'error'。 <br>- 'error'：录制过程中发生错误，触发该事件。 |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，返回录制错误事件。<br/>从API version 12开始支持此参数。                   |
+| callback<sup>12+</sup> | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，返回录制错误事件。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br/>从API version 12开始支持此参数。                   |
 
 **示例：**
 
@@ -1368,7 +1366,7 @@ off(type: 'audioCapturerChange', callback?: Callback<audio.AudioCapturerChangeIn
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 录音配置变化的回调类型，支持的事件：'audioCapturerChange'。 |
-| callback | Callback<[audio.AudioCapturerChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)> | 否 | 回调函数，返回变化后的录音配置全量信息。<br/>从API version 12开始支持此参数。|
+| callback<sup>12+</sup> | Callback<[audio.AudioCapturerChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)> | 否 | 回调函数，返回变化后的录音配置全量信息。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br/>从API version 12开始支持此参数。|
 
 **示例：**
 
@@ -1448,7 +1446,7 @@ off(type: 'photoAssetAvailable', callback?: Callback<photoAccessHelper.PhotoAsse
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 录音配置变化的回调类型，支持的事件：'photoAssetAvailable'。 |
-| callback | Callback<[photoAccessHelper.PhotoAsset](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md)> | 否 | 回调函数，返回系统创建的资源文件对应的PhotoAsset对象。|
+| callback | Callback<[photoAccessHelper.PhotoAsset](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md)> | 否 | 回调函数，返回系统创建的资源文件对应的PhotoAsset对象。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。|
 
 **示例：**
 

@@ -229,3 +229,108 @@ async function Clone(context: Context) {
   }
 }
 ```
+
+## getBlob<sup>23+</sup>
+
+getBlob(): Promise\<ArrayBuffer>
+
+以二进制数据的形式获取元数据。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**返回值：**
+
+| 类型                  | 说明                                  |
+| --------------------- | ------------------------------------- |
+| Promise\<ArrayBuffer> | Promise对象，返回元数据的二进制数据。 |
+
+**示例：**
+
+```ts
+import { fileIo as fs } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function GetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let pictureObj: image.Picture = await imageSource.createPicture();
+  let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
+  let metaData: image.Metadata | null = await pictureObj.getMetadata(metadataType);
+  if (metaData != null) {
+    let blob = await metaData.getBlob();
+    if (blob != undefined) {
+      console.info("get blob success");
+    }
+  }
+}
+```
+
+## setBlob<sup>23+</sup>
+
+setBlob(blob: ArrayBuffer): Promise\<void>
+
+使用二进制数据替换当前元数据。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名 | 类型        | 必填 | 说明                 |
+| ------ | ----------- | ---- | -------------------- |
+| blob   | ArrayBuffer | 是   | 要替换的二进制数据。 |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 7600206  | Invalid parameter. Possible causes: The blob is empty or has a length of 0. |
+
+**示例：**
+
+```ts
+import { fileIo as fs } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function setBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let pictureObj: image.Picture = await imageSource.createPicture();
+  let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
+  let metaData: image.Metadata | null = await pictureObj.getMetadata(metadataType);
+  if (metaData != null) {
+    let blob = await metaData.getBlob();
+    if (blob != undefined) {
+      console.info("get blob success");
+      metaData.setBlob(blob);
+    }
+    let new_blob = metaData.getBlob();
+    if (new_blob != undefined) {
+      console.info("new_blob is not undefined");
+    }
+  }
+}
+```

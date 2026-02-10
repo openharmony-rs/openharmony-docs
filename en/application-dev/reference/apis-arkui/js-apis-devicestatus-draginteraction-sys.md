@@ -43,7 +43,7 @@ Defines the data summary of the dragged object.
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Drag
 
-| Name          | Type           | Read-Only| 	Optional| Description                          |
+| Name          | Type           | Read-Only| Optional| Description                          |
 | ---------      | -------------- | ---- | ---- | ------------------------     |
 | dataType     | string          | No  | No  | Type of the dragged object.|
 | dataSize       | number         | No  | No  | Data length of the dragged object.|
@@ -217,8 +217,8 @@ Sets the drag-and-drop switch for a specific application.
 
 | Name     | Type                              | Mandatory| Description                                                                  |
 | --------   | ---------------------------------- | ---- | ---------------------------------------------------------------------- |
-| enabled    | boolean                            | Yes  | State of the drag-and-drop switch.<br>**false**: disabled; **true**: enabled.                                             |
-| bundleName | string                             | Yes  | Bundle name of the target application.                                              |
+| enabled    | boolean                            | Yes  | State of the drag-and-drop switch.<br>**false**: disabled; **true**: enabled.|
+| bundleName | string                             | Yes  | Bundle name of a specified application. The value range is (0, 128].|
 
 **Error codes**
 

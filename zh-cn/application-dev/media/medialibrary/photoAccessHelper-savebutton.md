@@ -78,7 +78,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper): Pro
 
 ## 使用安全控件保存媒体库资源
 
-安全控件的介绍可参考[安全控件的保存控件](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)。
+安全控件的介绍可参考API[SaveButton](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)。保存前可以通过调用[registerChange](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#registerchange)接口注册对默认URI（[DEFAULT_PHOTO_URI](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#defaultchangeuri)）的监听。资源保存成功后，根据接收到该资源的[NOTIFY_ADD](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#notifytype)通知完成后续业务。
 
 下面以使用安全控件创建一张图片资源为例。
 
@@ -86,7 +86,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper): Pro
 
 1. 设置安全控件按钮属性。
 2. 创建安全控件按钮。
-3. 调用[MediaAssetChangeRequest.createImageAssetRequest](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#createimageassetrequest11)和[PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)接口创建图片资源。
+3. 调用[registerChange](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#registerchange)接口注册对默认URI（[DEFAULT_PHOTO_URI](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#defaultchangeuri)）的监听。
+4. 调用[MediaAssetChangeRequest.createImageAssetRequest](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#createimageassetrequest11)和[PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)接口创建图片资源。
+5. 调用[getAsset](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#getasset11)接口获取保存的资产，并获取资产URI。在接收到资产URI的[NOTIFY_ADD](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#notifytype)通知后，完成后续业务。
 
 <!-- @[Creating_Media_Asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene2.ets) -->
 

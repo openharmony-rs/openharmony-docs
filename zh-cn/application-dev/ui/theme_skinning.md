@@ -34,9 +34,10 @@
 
 ## 设置应用内组件自定义主题色
 - 若在页面入口处设置应用内组件自定义主题色，需确保在页面build前执行[ThemeControl](../reference/apis-arkui/js-apis-arkui-theme.md#themecontrol).[setDefaultTheme](../reference/apis-arkui/js-apis-arkui-theme.md#setdefaulttheme)。
+
   示例代码中，[onWillApplyTheme](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12)回调函数用于使自定义组件获取当前生效的Theme对象。
 
-    <!-- @[display_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme1/Theme1.ets) -->
+  <!-- @[display_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme1/Theme1.ets) -->
     
     ``` TypeScript
     // Index.ets
@@ -359,7 +360,7 @@ dark.json数据示例：
 | theme.colors.brand                         | 品牌色 |#ff0a59f7| ![](figures/ff0a59f7.png "#ff0a59f7") |#ff317af7|![](figures/ff317af7.png "#ff317af7")|
 | theme.colors.warning                       | 一级警示色 |#ffe84026| ![](figures/ffe84026.png "#ffe84026") |#ffd94838|![](figures/ffd94838.png "#ffd94838")|
 | theme.colors.alert                         | 二级警示色 |#ffed6f21| ![](figures/ffed6f21.png "#ffed6f21") |#ffdb6b42|![](figures/ffdb6b42.png "#ffdb6b42")|
-| theme.colors.confirm                       | 确认色 |#ff64bb5c| ![](figures/ff64bb5c.png "#ff64bb5c") |#ff5ba854|![](figures/ff5ba854.png "#ff5ba854")|
+| theme.colors.confirm                       | 确认色 |#ff64bb5c| ![](figures/ff64bb5c.png "#ff64bb5c") |#ff5be854|![](figures/ff5be854.png "#ff5be854")|
 | theme.colors.fontPrimary                   | 一级文本 | #e5000000 | ![](figures/e5000000.png "#e5000000") |#e5ffffff|![](figures/e5ffffff.png "#e5ffffff")|
 | theme.colors.fontSecondary                 | 二级文本 | #99000000 | ![](figures/99000000.png "#99000000") |#99ffffff|![](figures/99ffffff.png "#99ffffff")|
 | theme.colors.fontTertiary                  | 三级文本 | #66000000 | ![](figures/66000000.png "#66000000") |#66ffffff|![](figures/66ffffff.png "#66ffffff")|

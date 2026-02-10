@@ -18,7 +18,7 @@ Complex text drawing involves the following scenarios:
 - Style copying, drawing, and display
 
 
-## Multi-language text drawing and display
+## Multi-language Text Drawing and Display
 
 Multi-language support is the foundation of globalized applications. Multi-language text drawing needs to support the character sets of different languages and their unique display requirements, such as right-to-left languages (such as Arabic) or vertical text (such as Chinese). You need to understand the rendering features of different languages to ensure correct text display.
 
@@ -58,7 +58,7 @@ OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoSt
 
 // Add the created TextStyle object to handler.
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-// Add text to handler.
+// Add the text to handler.
 const char *text = "你好，中文\n";
 OH_Drawing_TypographyHandlerAddText(handler, text);
 
@@ -778,7 +778,8 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-The following figure shows the effect (The black box only shows the text drawing area and is not drawn in actual.).
+The following figure shows the effect (The black box only shows the text drawing area and is not drawn in practice).
+
 ![image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_center.jpg)
 
 ### Superscript and Subscript
@@ -864,7 +865,7 @@ OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoSt
 
 // Add the created TextStyle object to handler.
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-// Add text to handler.
+// Add the text to handler.
 const char *text = "Hello World Drawing\n";
 OH_Drawing_TypographyHandlerAddText(handler, text);
 
@@ -1144,4 +1145,5 @@ OH_Drawing_DestroyTypography(typographyCopy);
 ```
 
 ![image_styleCopy_1](figures/image_styleCopy_1.png)
+
 <!--no_check-->

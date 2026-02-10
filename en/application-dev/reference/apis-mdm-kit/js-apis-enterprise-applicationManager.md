@@ -35,13 +35,14 @@ Adds the applications that are not allowed to run by the current or specified us
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>**Note**: In API version 21 and later versions, [appId](../../quick-start/common_problem_of_application.md#what-is-appid) and [appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier) can be transferred. [appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier) is recommended. In API version 20 and earlier versions, only [appId](../../quick-start/common_problem_of_application.md#what-is-appid) can be transferred.|
+| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>Note: From API version 21 onwards, the **appId** and **appIdentifier** of the app can be passed. **appIdentifier** is recommended. In API version 20 and earlier versions, only **appId** can be passed.|
 | accountId | number                                                  | No  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user.|
 
 **Error codes**
@@ -90,13 +91,14 @@ Removes the applications that are not allowed to run by the current user or spec
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>**Note**: Starting from API version 21, elements in the array support the use of both [appId](../../quick-start/common_problem_of_application.md#what-is-appid) and [appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier). Only the passed **appId** (or **appIdentifier**) will be removed, and the **appIdentifier** (or **appId**) of the same application will not be removed. In API version 20 and earlier versions, only **appId** can be transferred.|
+| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>Note: Since API version 21, elements in the array can use **appId** and **appIdentifier**. Only the input **appId** or **appIdentifier** is removed. **appIdentifier** or **appId** of the same app will not be removed. In API version 20 and earlier versions, only **appId** can be transferred.|
 | accountId | number                                                  | No  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user.|
 
 **Error codes**
@@ -156,7 +158,7 @@ Obtains applications that are not allowed to run by the current user or specifie
 
 | Type               | Description                            |
 | ------------------- | -------------------------------- |
-| Array&lt;string&gt; | Applications that are not allowed to run by the current user or specified user.<br>**Note**: For API version 20 and earlier versions, the return value is the [appId](../../quick-start/common_problem_of_application.md#what-is-appid) list. In API version 21 and later versions, the return value is the [appId](../../quick-start/common_problem_of_application.md#what-is-appid) or [appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier) list.|
+| Array&lt;string&gt; | Applications that are not allowed to run by the current user or specified user.<br>Note: For API version 20 and earlier versions, the return value is the **appId** list. In API version 21 and later versions, the return value is the **appId** or **appIdentifier** list.|
 
 **Error codes**
 
@@ -197,11 +199,11 @@ Adds the applications that are allowed to run under specified users.
 
 > **NOTE**
 >
-> 1. Most APIs provided by MDM Kit are available only to MDM applications. When using this API, add the MDM application to the application running trustlist. Otherwise, the MDM application will be prohibited from running, blocking the API call. For details about whether the API is open only to MDM applications, see the module description.
+> - Most APIs provided by MDM Kit are available only to MDM applications. When using this API, add the MDM application to the application running trustlist. Otherwise, the MDM application will be prohibited from running, blocking the API call. For details about whether the API is open only to MDM applications, see the module description.
 >
-> 2. If the application running blocklist is not empty, this API cannot be used to add applications to the running trustlist. Otherwise, the error code 9200010 is reported. APIs related to the application running blocklist include [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)<!--Del-->, [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles), [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-1), and [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-2).
+> - If the application running blocklist is not empty, this API cannot be used to add applications to the running trustlist. Otherwise, the error code 9200010 is reported. APIs related to the application running blocklist include [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)<!--Del-->, [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles), [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-1), and [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-2)<!--DelEnd-->.
 >
-> 3. This API only takes effect for third-party applications. System applications are not subject to this list and are allowed to run by default.<!--DelEnd-->
+> - This API only takes effect for third-party applications. System applications are not subject to this list and are allowed to run by default.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -209,12 +211,14 @@ Adds the applications that are allowed to run under specified users.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
+
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| appIdentifiers    | Array&lt;string&gt;                             | Yes  | Array of [unique identifiers](../../quick-start/common_problem_of_application.md#what-is-appidentifier) of an application. You can call [bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20) to obtain **bundleInfo.signatureInfo.appIdentifier**.<br>Value range:<br> - The total number of entries in this list for a single user must not exceed 200. For example, if 50 entries have been set for user 100 and none for user 101, user 100 can add 150 more entries, while user 101 can add up to 200 entries.|
+| appIdentifiers    | Array&lt;string&gt;                             | Yes  | Array of app unique identifiers. You can obtain **bundleInfo.signatureInfo.appIdentifier** through the [bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20) API.<br>Value range:<br> - The total number of entries in this list for a single user must not exceed 200. For example, if 50 entries have been set for user 100 and none for user 101, user 100 can add 150 more entries, while user 101 can add up to 200 entries.|
 | accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Error codes**
@@ -263,12 +267,14 @@ Removes the applications that are allowed to run by the specified user.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
+
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| appIdentifiers    | Array&lt;string&gt;                             | Yes  | Array of [unique identifiers](../../quick-start/common_problem_of_application.md#what-is-appidentifier) of an application. You can obtain the **bundleInfo.signatureInfo.appIdentifier** by calling the [bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20) API. Value range: The array length cannot exceed 200.|
+| appIdentifiers    | Array&lt;string&gt;                             | Yes  | Array of unique identifiers of an app. You can obtain the **bundleInfo.signatureInfo.appIdentifier** by calling the [bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20) API. Value range: The array length cannot exceed 200.|
 | accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Error codes**
@@ -373,6 +379,8 @@ Adds the auto-start applications for the current user. Applications added to the
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
+
 **Parameters**
 
 | Name       | Type                                                        | Mandatory| Description                                  |
@@ -406,7 +414,7 @@ let autoStartApps: Array<Want> = [
   {
     // Replace it as required.
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EnterpriseAdminAbility'
+    abilityName: 'EntryAbility'
   }
 ];
 
@@ -431,6 +439,8 @@ Removes the auto-start applications for the current user.
 **Device behavior differences**: For API version 20 and earlier versions, this API can be properly called on PCs/2-in-1 devices and does not work on other devices. This API can be used on phones, tablets, PCs/2-in-1 devices since API version 21.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -465,7 +475,7 @@ let autoStartApps: Array<Want> = [
   {
     // Replace it as required.
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EnterpriseAdminAbility'
+    abilityName: 'EntryAbility'
   }
 ];
 
@@ -489,6 +499,8 @@ Removes the specified application from the auto-start application list of a spec
 **Device behavior differences**: For API version 20 and earlier versions, this API can be properly called on PCs/2-in-1 devices and does not work on other devices. This API can be used on phones, tablets, PCs/2-in-1 devices since API version 21.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -524,7 +536,7 @@ let autoStartApps: Array<Want> = [
   // Replace it as required.
   {
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EnterpriseAdminAbility'
+    abilityName: 'EntryAbility'
   }
 ];
 
@@ -597,7 +609,7 @@ try {
 
 addAutoStartApps(admin: Want, autoStartApps: Array\<Want>, accountId: number, disallowModify: boolean): void
 
-Adds a list of applications that automatically start upon system startup for a specified user, and sets whether to forbid the user to manually cancel the automatic startup of applications.<br>Applications can be added to the auto-start list via this API and the [addAutoStartApps](#applicationmanageraddautostartapps) API. Settings from both APIs can take effect simultaneously. For a single user, the auto-start list supports a maximum of 10 applications. For example, if there are already 3 applications in the current list, a maximum of 7 more can be added for the user via this API.
+Adds a list of applications that automatically start upon system startup for a specified user, and sets whether to forbid the user to manually cancel the automatic startup of applications<!--RP4--><!--RP4End-->.<br>Applications can be added to the auto-start list via this API and the [addAutoStartApps](#applicationmanageraddautostartapps) API. Settings from both APIs can take effect simultaneously. For a single user, the auto-start list supports a maximum of 10 applications. For example, if there are already 3 applications in the current list, a maximum of 7 more can be added for the user via this API.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -606,6 +618,8 @@ Adds a list of applications that automatically start upon system startup for a s
 **Device behavior differences**: For API version 20 and earlier versions, this API can be properly called on PCs/2-in-1 devices and does not work on other devices. This API can be used on phones, tablets, PCs/2-in-1 devices since API version 21.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -642,7 +656,7 @@ let autoStartApps: Array<Want> = [
   // Replace it as required.
   {
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EnterpriseAdminAbility'
+    abilityName: 'EntryAbility'
   }
 ];
 
@@ -764,7 +778,7 @@ let wantTemp: Want = {
 let autoStartApp: Want = {
   // Replace it as required.
   bundleName: 'com.example.autoStartApplication',
-  abilityName: 'EnterpriseAdminAbility'
+  abilityName: 'EntryAbility'
 };
 
 try {
@@ -789,6 +803,7 @@ Adds applications to the keep-alive list; once added, the application processes 
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -847,6 +862,8 @@ Adds applications to the keep-alive list; once added, the application processes 
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -907,6 +924,7 @@ Removes a specified application from the keep-alive list.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -962,7 +980,6 @@ Obtains the bundle name of the keep-alive application.
 **Device behavior differences**: This API takes effect only on PCs/2-in-1 devices and does not work on other devices.
 
 **Model restriction**: This API can be used only in the stage model.
-
 
 **Parameters**
 
@@ -1138,6 +1155,8 @@ Kiosk mode is a system-level runtime mode that restricts a device to a single ap
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
+
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
@@ -1279,6 +1298,8 @@ Sets the features of kiosk mode. When [kiosk mode is activated](../apis-ability-
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
+
 **Parameters**
 
 | Name      | Type                                                   | Mandatory| Description                  |
@@ -1349,6 +1370,8 @@ Adding an application that already exists in the list will return success, but t
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
+
 **Parameters**
 
 | Name       | Type                                                        | Mandatory| Description                                  |
@@ -1409,6 +1432,8 @@ Removes the non-stoppable application list for a specified user. If the paramete
 **Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -1517,7 +1542,7 @@ try {
 
 addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
 
-Adds applications to the background freeze-exempt application list for a specified user. This policy applies only to installed applications. If the parameter list contains uninstalled applications, error code 9200012 will be returned. If an application in the list is uninstalled after the policy is set, the uninstalled application will be removed from the list.
+Adds applications to the background freeze-exempt application list for a specified user. This policy applies only to installed applications and becomes invalid after the device is restarted. If the parameter list contains uninstalled applications, error code 9200012 will be returned. If an application in the list is uninstalled after the policy is set, the uninstalled application will be removed from the list.
 
 Adding an application that already exists in the list will return success, but the application will not be added repeatedly to the policy list.
 <br>Freezing operations include suspending the target application, and managing software resource agents, hardware resource agents, and high-power consumption.
@@ -1529,6 +1554,8 @@ Adding an application that already exists in the list will return success, but t
 **Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -1590,6 +1617,8 @@ Removes the background freeze-exempt application list for a specified user. If t
 **Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -1696,7 +1725,7 @@ try {
 
 ## applicationManager.setAbilityDisabled<sup>23+</sup>
 
-setAbilityDisabled(admin: Want, applicationInstance: common.ApplicationInstance, abilityName: string, isDisabled: boolean): void
+setAbilityDisabled(admin: Want, bundleName: string, accountId: number, abilityName: string, isDisabled: boolean): void
 
 Sets whether to disable the Ability component of a specified application (system application or third-party application). Currently, only the UIAbility type is supported. After the UIAbility type is disabled, the UI of the Ability component cannot be started.
 
@@ -1706,12 +1735,15 @@ Sets whether to disable the Ability component of a specified application (system
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
+
 **Parameters**
 
 | Name       | Type                                                        | Mandatory| Description                                  |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                        |
-| applicationInstance  | [common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)      | Yes  | Application instance.|
+| bundleName  | string     | Yes  | App bundle name.|
+| accountId  | number      | Yes  | Account ID. The value is an integer greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 | abilityName  | string      | Yes  | Name of the ability to be disabled or enabled. Currently, only UIAbility is supported.|
 | isDisabled  | boolean      | Yes  | Whether to disable the ability. **true**: Disable the ability. **false**: Enable the ability.|
 
@@ -1739,14 +1771,11 @@ let wantTemp: Want = {
 };
 
 try {
-  let applicationInstance: common.ApplicationInstance = {
-    // Replace it as required.
-    appIdentifier: '0123456789123456789',
-    appIndex: 0,
-    accountId: 100
-  };
+  // Replace it as required.
+  let bundleName: string = "com.example.exampleapplication";
+  let accountId: number = 100;
   let abilityName: string = "EntryAbility";
-  applicationManager.setAbilityDisabled(wantTemp, applicationInstance, abilityName, true);
+  applicationManager.setAbilityDisabled(wantTemp, bundleName, accountId, abilityName, true);
   console.info('Succeeded in setting ability disabled');
 } catch(err) {
   console.error(`Failed to set ability disabled. Code: ${err.code}, message: ${err.message}`);
@@ -1755,7 +1784,7 @@ try {
 
 ## applicationManager.isAbilityDisabled<sup>23+</sup>
 
-isAbilityDisabled(admin: Want, applicationInstance: common.ApplicationInstance, abilityName: string): boolean
+isAbilityDisabled(admin: Want, bundleName: string, accountId: number, abilityName: string): boolean
 
 Checks whether the Ability component of a specified application (system application or third-party application) is disabled.
 
@@ -1770,7 +1799,8 @@ Checks whether the Ability component of a specified application (system applicat
 | Name       | Type                                                        | Mandatory| Description                                  |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                        |
-| applicationInstance  | [common.ApplicationInstance](./js-apis-enterprise-common.md#applicationinstance)      | Yes  | Application instance.|
+| bundleName  | string     | Yes  | App bundle name.|
+| accountId  | number      | Yes  | Account ID. The value is an integer greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 | abilityName  | string      | Yes  | Name of the ability to be disabled or enabled. Currently, only UIAbility is supported.|
 
 **Return value**
@@ -1803,14 +1833,11 @@ let wantTemp: Want = {
 };
 
 try {
-  let applicationInstance: common.ApplicationInstance = {
-    // Replace it as required.
-    appIdentifier: '0123456789123456789',
-    appIndex: 0,
-    accountId: 100
-  };
+  // Replace it as required.
+  let bundleName: string = "com.example.exampleapplication";
+  let accountId: number = 100;
   let abilityName: string = "EntryAbility";
-  let isDisabled: boolean = applicationManager.isAbilityDisabled(wantTemp, applicationInstance, abilityName);
+  let isDisabled: boolean = applicationManager.isAbilityDisabled(wantTemp, bundleName, accountId, abilityName);
   console.info(`Succeeded in querying whether the ability is disabled, isDisabled: ${isDisabled}`);
 } catch(err) {
   console.error(`Failed to query whether the ability is disabled. Code: ${err.code}, message: ${err.message}`);

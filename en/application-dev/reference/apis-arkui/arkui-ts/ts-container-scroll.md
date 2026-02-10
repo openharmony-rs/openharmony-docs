@@ -507,7 +507,7 @@ Trigger conditions:
 
 | Name| Type                             | Mandatory| Description              |
 | ------ | --------------------------------- | ---- | ------------------ |
-| event   | [OnScrollEdgeCallback](#onscrolledgecallback18) | Yes  | Edge position reached by scrolling.<br>For horizontal scrolling, [Edge.Center](ts-appendix-enums.md#edge) represents the start position, and [Edge.Baseline](ts-appendix-enums.md#edge) represents the end position. Note: The enum values [Edge.Center](ts-appendix-enums.md#edge) and [Edge.Baseline](ts-appendix-enums.md#edge) are deprecated. You are advised to use the [onReachStart](ts-container-scrollable-common.md#onreachstart11) and [onReachEnd](ts-container-scrollable-common.md#onreachend11) to detect when the component reaches its boundary.|
+| event   | [OnScrollEdgeCallback](#onscrolledgecallback18) | Yes  | Edge position to scroll to.<br>For horizontal scrolling, [Edge.Center](ts-appendix-enums.md#edge) represents the start position, and [Edge.Baseline](ts-appendix-enums.md#edge) represents the end position. Note: The enum values [Edge.Center](ts-appendix-enums.md#edge) and [Edge.Baseline](ts-appendix-enums.md#edge) are deprecated. You are advised to use the [onReachStart](ts-container-scrollable-common.md#onreachstart11) and [onReachEnd](ts-container-scrollable-common.md#onreachend11) to detect when the component reaches its boundary.|
 
 ### onScrollEnd<sup>(deprecated)</sup>
 
@@ -792,6 +792,7 @@ Scrolls to the specified position.
 scrollEdge(value: Edge, options?: ScrollEdgeOptions)
 
 Scrolls to the edge of the container, regardless of the scroll axis direction. **Edge.Top** and **Edge.Start** produce the same effect, and **Edge.Bottom** and **Edge.End** produce the same effect.
+
 By default, the **Scroll** component comes with an animation, while the **Grid**, **List**, and **WaterFlow** components do not.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -829,7 +830,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 | ID| Error Message|
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 
 ### scrollPage<sup>9+</sup>
 
@@ -1022,7 +1023,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 | ID| Error Message|
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 ### getItemIndex<sup>14+</sup>
 
 getItemIndex(x: number, y: number): number
@@ -1061,7 +1062,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 | ID| Error Message|
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   |The controller not bound to component.                              |
+| 100004   |Controller not bound to a component.                              |
 
 ### contentSize<sup>22+</sup>
 

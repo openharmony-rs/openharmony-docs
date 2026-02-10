@@ -1,11 +1,11 @@
-# Command Line Tools
+# About This Kit
 
 <!--Kit: Common-->
 <!--Subsystem: Common-->
-<!--Owner: @foryourself-->
+<!--Owner: @jinqiuheng-->
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The SDK provides various tools for application development, including log viewing, application installation, and test startup.
 

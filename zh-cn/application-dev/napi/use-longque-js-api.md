@@ -1,4 +1,11 @@
 # Longque-JS-API使用指导
+<!--Kit: NDK Development-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Designer: @knightaoko-->
+<!--Tester: @test_lzz-->
+<!--Adviser: @fang-jinxu-->
+
 Longque JS API 由 Longque JS Engine 提供，适用于在 OpenHarmony 平台构建稳定、高性能的应用。所有 API 均位于 `__Longque__` 对象下。接口的版本可通过 `__Longque__.version` 获得，开发者可使用该版本进行特性判断。
 
 **【注意】：Longque JS API 处于实验阶段，使用前请阅读本文档，评估其稳定性和兼容性。**
@@ -23,7 +30,7 @@ Longque JS API 由 Longque JS Engine 提供，适用于在 OpenHarmony 平台构
 ### 接口描述
 | 接口  | 名称  | 说明 |
 | -- | -- | -- |
-| createDelegate | 创建委托 | 创建 `underlyingObject` 的委托对象，对委托对象的属性读写操作将映射至 `underlyingObject`。通过 `initObject` 指定初始委托对象，通过 `propertyFilterFlags` 指定属性过滤器。默认情况下，将映射 `underlyingObject` 及其原型链上所有可枚举的字符串键属性。
+| createDelegate | 创建委托 | 创建 `underlyingObject` 的委托对象，对委托对象的属性读写操作将映射至 `underlyingObject`。通过 `initObject` 指定初始委托对象，通过 `propertyFilterFlags` 指定属性过滤器。默认情况下，将映射 `underlyingObject` 及其原型链上所有可枚举的字符串键属性。 |
 
 ### 参数
 (1) `underlyingObject`： 必选参数。表示被委托的底层对象。参数要求：
@@ -126,7 +133,7 @@ static int32_t TestJSVM() {
         OH_JSVM_Init(&init_options);
         g_aa++;
     }
-    // 创建JavaScript虚拟机实例,打开虚拟机作用域
+    // 创建JavaScript虚拟机实例，打开虚拟机作用域
     JSVM_VM vm;
     JSVM_CreateVMOptions options;
     memset(&options, 0, sizeof(options));
@@ -157,9 +164,158 @@ static int32_t TestJSVM() {
 }
 ```
 
-预期的输出:
-```
+预期的输出：
+``` ts
 JSVM API TEST: {"42":0,"x":1,"_y":2,"$z":3,"foo":"foo"}
 JSVM API TEST: {"42":0,"x":1,"foo":"foo"}
 JSVM API TEST: {"42":100,"x":1}
+```
+
+### 性能测试示例
+
+本示例用于测试使用Longque JS API前后的性能。
+
+cpp部分代码：
+``` cpp
+// 待执行的js代码
+static const char *STR_TASK = R"JS(
+  // 原始js代码
+  function base(underlying) {
+    var obj = {};
+    var tryDefineProperty = function (key) {
+      if (key.indexOf('_') === 0 || key.indexOf('$') === 0 || key === 'constructor') {
+        return false;
+      }
+      Object.defineProperty(obj, key, {
+        configurable: true,
+        enumerable: true,
+        get: function get() {
+          return underlying[key];
+        },
+        set: function set(value) {
+          return (underlying[key] = value);
+        },
+      });
+      return true;
+    };
+    for (var key in underlying) {
+      if (!tryDefineProperty(key)) {
+        continue;
+      }
+    }
+    return obj;
+  }
+
+  // 使用Longque JSVM API之后的代码
+  function opt(underlying) {
+    var delegate = __Longque__.createDelegate(
+      underlying,
+      undefined,
+      __Longque__.SKIP_PREFIX_UNDERSCORE |
+      __Longque__.SKIP_PREFIX_DOLLAR |
+      __Longque__.SKIP_CONSTRUCTOR,
+    );
+    return delegate;
+  }
+
+  // 性能测试
+  function doTest(tag, func, underlying, times) {
+    const begin = Date.now();
+    var obj = null;
+    for (var i = 0; i < times; ++i) {
+      obj = func(underlying);
+    }
+    const end = Date.now();
+    consoleinfo(`[${tag}] Time cost: ${(end - begin).toFixed(0)} ms`);
+    return obj;
+  }
+
+  function testEntry() {
+    var underlying = {
+      x: 1,
+      y: 2,
+      foo: 'foo',
+      _bar: '_bar',
+      _hi: '_hi',
+      $test: '$test',
+      constructor: 'ctor',
+      pi: 3.14,
+    };
+    for (var i = 0; i < 100; ++i) {
+      underlying[`key_${i}`] = i;
+    }
+    const n = 10000;
+    // 测试原js代码的运行时间
+    doTest('base', base, underlying, n);
+    // 测试使用Longque JSVM API之后的运行时间
+    doTest('opt', opt, underlying, n);
+  }
+
+  testEntry();
+)JS";
+
+// 保证js代码中的打印信息可以正常输出
+static JSVM_Value ConsoleInfo(JSVM_Env env, JSVM_CallbackInfo info) {
+    size_t argc = 1;
+    JSVM_Value args[1];
+    char log[256] = "";
+    size_t logLength = 0;
+    JSVM_CALL(OH_JSVM_GetCbInfo(env, info, &argc, args, NULL, NULL));
+  
+    OH_JSVM_GetValueStringUtf8(env, args[0], log, 255, &logLength);
+    log[255] = 0;
+    OH_LOG_INFO(LOG_APP, "JSVM API TEST: %{public}s", log);
+    return nullptr;
+}
+
+// 注册consoleinfo的方法
+JSVM_CallbackStruct param[] = {
+    {.data = nullptr, .callback = ConsoleInfo},
+};
+JSVM_PropertyDescriptor descriptor[] = {
+    {"consoleinfo", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+};
+
+static int32_t TestJSVM() {
+    JSVM_InitOptions init_options;
+    memset(&init_options, 0, sizeof(init_options));
+    if (g_aa == 0) {
+        OH_JSVM_Init(&init_options);
+        g_aa++;
+    }
+    // 创建JavaScript虚拟机实例，打开虚拟机作用域
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    memset(&options, 0, sizeof(options));
+    CHECK(OH_JSVM_CreateVM(&options, &vm));
+    JSVM_VMScope vm_scope;
+    CHECK(OH_JSVM_OpenVMScope(vm, &vm_scope));
+  
+    JSVM_Env env;
+    CHECK(OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env));
+    JSVM_EnvScope envScope;
+    CHECK_RET(OH_JSVM_OpenEnvScope(env, &envScope));
+    JSVM_HandleScope handlescope;
+    CHECK_RET(OH_JSVM_OpenHandleScope(env, &handlescope));
+    JSVM_Value sourcecodevalue;
+    CHECK_RET(OH_JSVM_CreateStringUtf8(env, STR_TASK, strlen(STR_TASK), &sourcecodevalue));
+    JSVM_Script script;
+    CHECK_RET(OH_JSVM_CompileScript(env, sourcecodevalue, nullptr, 0, true, nullptr, &script));
+    JSVM_Value result;
+    CHECK_RET(OH_JSVM_RunScript(env, script, &result));
+  
+    // 关闭并销毁环境和虚拟机
+    CHECK_RET(OH_JSVM_CloseHandleScope(env, handlescope));
+    CHECK_RET(OH_JSVM_CloseEnvScope(env, envScope));
+    CHECK(OH_JSVM_DestroyEnv(env));
+    CHECK(OH_JSVM_CloseVMScope(vm, vm_scope));
+    CHECK(OH_JSVM_DestroyVM(vm));
+    return 0;
+}
+```
+
+某次测试的输出：
+``` ts
+JSVM API TEST: [base] Time cost: 414 ms
+JSVM API TEST: [opt] Time cost: 148 ms
 ```

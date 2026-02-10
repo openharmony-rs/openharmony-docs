@@ -777,13 +777,13 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
-
 | 名称   | 值 | 说明      |
 | ------ | - | --------- |
-| START  | 0 | 开头省略号，只在[ParagraphStyle](#paragraphstyle)中设置maxLines为1时生效。|
-| MIDDLE | 1 | 中间省略号，只在[ParagraphStyle](#paragraphstyle)中设置maxLines为1时生效。|
-| END    | 2 | 末尾省略号。|
+| START  | 0 | 开头省略号，该枚举值只在[ParagraphStyle](#paragraphstyle)中设置maxLines为1时生效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。|
+| MIDDLE | 1 | 中间省略号，该枚举值只在[ParagraphStyle](#paragraphstyle)中设置maxLines为1时生效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。|
+| END    | 2 | 末尾省略号，该枚举值在[ParagraphStyle](#paragraphstyle)中maxLines设置为任何值时均有效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。|
+| MULTILINE_START<sup>24+</sup> | 3 | 开头省略号，该枚举值在[ParagraphStyle](#paragraphstyle)中maxLines设置为任何值时均有效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。 |
+| MULTILINE_MIDDLE<sup>24+</sup> | 4 | 中间省略号，该枚举值在[ParagraphStyle](#paragraphstyle)中maxLines设置为任何值时均有效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ## TextShadow
 
@@ -1144,11 +1144,11 @@ loadFontSyncWithCheck(name: string, path: string | Resource, index?: number): vo
 
 同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf、ttc。
 
-**卡片能力：** 该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
-**原子化服务API**：该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -1217,11 +1217,11 @@ loadFontWithCheck(name: string, path: string | Resource, index?: number): Promis
 
 加载自定义字体，使用Promise异步回调。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含：ttf、otf、ttc。
 
-**卡片能力：** 该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
-**原子化服务API**：该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **参数：**
 

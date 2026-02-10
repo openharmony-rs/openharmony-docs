@@ -21,6 +21,7 @@
       - [UIAbility组件基本用法](uiability-usage.md)
       - [UIAbility组件与UI的数据同步](uiability-data-sync-with-ui.md)
       - [启动应用内的UIAbility组件](uiability-intra-device-interaction.md)
+      - [通过Call调用实现多端协同](uiability-cross-device-interaction.md)
       - [UIAbility备份恢复](ability-recover-guideline.md)
     - [ExtensionAbility组件](extensionability-overview.md)
       <!--Del-->
@@ -56,9 +57,7 @@
       - [拉起指定应用概述](app-startup-overview.md)
       - [（可选）使用canOpenLink判断应用是否可访问](canopenlink.md)
       - [使用Deep Linking实现应用间跳转](deep-linking-startup.md)
-      <!--Del-->
       - [使用App Linking实现应用间跳转](app-linking-startup.md)
-      <!--DelEnd-->
       - [显式Want跳转切换应用链接跳转适配指导](uiability-startup-adjust.md)
       - [应用链接说明](app-uri-config.md)
     - 拉起指定类型的应用<!--specified-type-app-redirection-->
@@ -168,6 +167,6 @@
     - [Storage接口切换](storage-switch.md)
 <!--DelEnd-->
 - Native子进程开发指导<!--native-childprocess-development-->
-    - [创建Native子进程](capi_nativechildprocess_development_guideline.md)
+    - [创建Native子进程](capi-nativechildprocess-development-guideline.md)
     - [获取Native子进程退出信息](capi-nativechildprocess-exit-info.md)
 - [Ability Kit术语](ability-terminology.md)

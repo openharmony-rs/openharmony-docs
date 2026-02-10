@@ -563,7 +563,7 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_wrap_sendable_with_size | Wraps a native instance into an ArkTS object with the specified size.|
 | napi_unwrap_sendable | Unwraps the native instance from an ArkTS object.|
 | napi_remove_wrap_sendable | Removes and obtains the native instance wrapped by an ArkTS object. After removal, the callback will no longer be triggered and must be manually deleted to free memory.|
-| napi_wrap_enhance | Wraps a Node-API instance into an ArkTS object and specifies the instance size. You can specify whether to execute the registered callback asynchronously (if asynchronous, it must be thread-safe).|
+| napi_wrap_enhance | Wraps a native instance of the specified size into an ArkTS object. During runtime, the instance size is counted and accumulated. When the accumulated size reaches the GC triggering threshold, the garbage collection process is started. You can specify whether to execute the registered callback asynchronously (if asynchronous, it must be thread-safe).|
 | napi_create_ark_context| Creates a context.|
 | napi_switch_ark_context| Switches to the specified runtime context environment.|
 | napi_destroy_ark_context| Destroys the context created by **napi_create_ark_context**.|
@@ -850,6 +850,28 @@ napi_status napi_delete_strong_reference(napi_env env, napi_strong_ref ref)
 
 ```c
 napi_status napi_get_strong_reference_value(napi_env env, napi_strong_ref ref, napi_value* result)
+```
+
+**napi_create_external_string_utf16**
+
+```cpp
+napi_status napi_create_external_string_utf16(napi_env env,
+                                              const char16_t* str,
+                                              size_t length,
+                                              napi_finalize_callback finalize_callback,
+                                              void* finalize_hint,
+                                              napi_value* result);
+```
+
+**napi_create_external_string_ascii**
+
+```cpp
+napi_status napi_create_external_string_ascii(napi_env env,
+                                              const char* str,
+                                              size_t length,
+                                              napi_finalize_callback finalize_callback,
+                                              void* finalize_hint,
+                                              napi_value* result);
 ```
 
 **napi_create_strong_sendable_reference**

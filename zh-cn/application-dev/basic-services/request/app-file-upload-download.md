@@ -10,7 +10,7 @@
 
 ## 上传应用文件
 
-开发者可以使用上传下载模块（[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)）的上传接口将本地文件上传。文件上传过程通过系统服务代理完成。在api12中，`request.agent.create`接口增加了设置代理地址的参数，支持设置自定义代理地址。
+开发者可以使用上传下载模块（[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)）的上传接口将本地文件上传。文件上传过程通过系统服务代理完成。在API version 12中，`request.agent.create`接口增加了设置代理地址的参数，支持设置自定义代理地址。
 
 > **说明：**
 >
@@ -88,8 +88,7 @@ async requestUploadFile(fileName: string, callback: (progress: number, isSuccess
 ```
 
 
-<!-- @[upload_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)-->
-<!-- @[upload_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)-->
+<!-- @[upload_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)--> 
 
 ``` TypeScript
 async requestAgentUpload(fileName: string, callback: (progress: number, isSucceed: boolean) => void,
@@ -133,7 +132,7 @@ async requestAgentUpload(fileName: string, callback: (progress: number, isSuccee
     task.on('completed', async () => {
       logger.info(TAG, `Request upload completed`);
       callback(100, true);
-      //该方法需用户管理任务生命周期，任务结束后调用remove释放task对象
+      // 该方法需用户管理任务生命周期，任务结束后调用remove释放task对象
       request.agent.remove(task.tid);
     })
   }).catch((err: BusinessError) => {
@@ -152,9 +151,8 @@ async requestAgentUpload(fileName: string, callback: (progress: number, isSuccee
 >
 > 使用上传下载模块，需[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
 
-以下示例代码展示了将网络资源文件下载到应用内部文件目录的两种方法：
+以下示例代码展示了将网络资源文件下载到应用内部文件目录的两种方法（示例requestDownloadFile中的clearExistFile方法可点击代码块右下角链接查看）：
 
-<!-- @[request_download_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
 <!-- @[request_download_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
 
 ``` TypeScript
@@ -187,7 +185,6 @@ async requestDownloadFile(url: string, fileName: string, callback: (progress: nu
 }
 ```
 
-<!-- @[download_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
 <!-- @[download_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
 
 ``` TypeScript
@@ -242,7 +239,6 @@ async requestAgentDownload(url: string, fileName: string, callback: (progress: n
 
 开发者可以通过调用[DocumentViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)的[save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save)接口保存文件并获得用户文件的uri，将此uri作为[Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10)的saveas字段值进行下载。
 
-<!-- @[doc_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/DocumentDownload.ets)-->
 <!-- @[doc_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/DocumentDownload.ets)-->
 
 ``` TypeScript
@@ -377,13 +373,13 @@ async audioFileAgentTask(url: string, fileName: string, callback: (progress: num
 
 ### 下载图片或视频类文件
 
-开发者可以通过调用[PhotoAccessHelper](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)的[createAsset()](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#createasset-2)接口创建媒体文件并获取用户文件的URI，将其作为[Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10)的saveas字段值进行下载。
+开发者可以通过调用PhotoAccessHelper[模块描述](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)的[createAsset()](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#createasset-2)接口创建媒体文件并获取用户文件的URI，将其作为[Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10)的saveas字段值进行下载。
 
 需要权限：[ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/restricted-permissions.md#ohospermissionwrite_imagevideo)
 
-权限[ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/restricted-permissions.md#ohospermissionwrite_imagevideo)是[system_basic](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)级别的[受限开放权限](../../security/AccessToken/restricted-permissions.md)，normal等级的应用需要将自身的APL等级声明为system_basic及以上。授权方式为user_grant，需要[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+权限[ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/restricted-permissions.md#ohospermissionwrite_imagevideo)是[权限机制中的基本概念](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)中system_basic(系统基础服务)级别的[受限开放权限](../../security/AccessToken/restricted-permissions.md)，normal等级的应用需要将自身的APL等级声明为system_basic及以上。授权方式为user_grant，需要[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
 
-<!-- @[media_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/MediaDownload.ets)-->
+<!-- @[media_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/MediaDownload.ets)--> 
 
 ``` TypeScript
 async mediaFileAgentTask(url: string, callback: (progress: number, isSuccess: boolean) => void,
@@ -468,7 +464,7 @@ async mediaFileAgentTask(url: string, callback: (progress: number, isSuccess: bo
       task.on('completed', async (progress) => {
         logger.info(TAG, `Request download completed, ${JSON.stringify(progress)}`);
         callback(100, true);
-        //该方法需用户管理任务生命周期，任务结束后调用remove释放task对象
+        // 该方法需用户管理任务生命周期，任务结束后调用remove释放task对象
         request.agent.remove(task.tid);
       })
     }).catch((err: BusinessError) => {
@@ -488,7 +484,7 @@ async mediaFileAgentTask(url: string, callback: (progress: number, isSuccess: bo
 
 以下是对下载任务进行速度限制与超时限制的方式的示例代码演示：
 
-<!-- @[speed_limit_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/SpeedLimitDownload.ets)-->
+<!-- @[speed_limit_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/SpeedLimitDownload.ets)--> 
 
 ``` TypeScript
 async speedLimitDownload(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
@@ -507,20 +503,20 @@ async speedLimitDownload(url: string, fileName: string, callback: (progress: num
     // 最低速度限制规则：
     // 1. 若任务速度持续低于设定值（如：16 * 1024 B/s）达到指定时长（如：10s），则任务失败
     // 2. 重置计时条件：
-    //    - 任一秒速度超过最低限速
-    //    - 任务暂停后恢复
-    //    - 任务停止后重启
+    // - 任一秒速度超过最低限速
+    // - 任务暂停后恢复
+    // - 任务停止后重启
     minSpeed: {
       speed: 16 * 1024,
       duration: 10
     },
     // 超时控制规则：
     // 1. 连接超时（connectionTimeout）：
-    //    - 单次连接建立耗时超过设定值（如：60s）则任务失败
-    //    - 多次连接时各次独立计时（不累积）
+    // - 单次连接建立耗时超过设定值（如：60s）则任务失败
+    // - 多次连接时各次独立计时（不累积）
     // 2. 总超时（totalTimeout）：
-    //    - 任务总耗时（含连接+传输时间）超过设定值（如：120s）则失败
-    //    - 暂停期间不计时，恢复后累积计时
+    // - 任务总耗时（含连接+传输时间）超过设定值（如：120s）则失败
+    // - 暂停期间不计时，恢复后累积计时
     // 3. 重置计时条件：任务失败或停止时重置计时
     timeout: {
       connectionTimeout: 60,
@@ -565,7 +561,7 @@ async speedLimitDownload(url: string, fileName: string, callback: (progress: num
 
 ### HTTP拦截
 
-开发者可以通过设置配置文件实现HTTP拦截功能。上传下载模块在应用配置文件中禁用HTTP后，无法创建明文HTTP传输的上传下载任务。配置文件在APP中的路径是：`src/main/resources/base/profile/network_config.json`。请参考网络管理模块[配置文件](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)，了解需要配置的具体参数。
+开发者可以通过设置配置文件实现HTTP拦截功能。上传下载模块在应用配置文件中禁用HTTP后，无法创建明文HTTP传输的上传下载任务。配置文件在APP中的路径是：`src/main/resources/base/profile/network_config.json`。请参考网络管理模块配置文件[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)，了解需要配置的具体参数。
 
 参考配置文件如下所示：
 
@@ -601,7 +597,7 @@ async speedLimitDownload(url: string, fileName: string, callback: (progress: num
 
 ### 功能介绍
 
-通过在下载任务的配置中设置[wantAgent参数](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentnotification15)，开发者可以指定用户点击通知后要跳转的应用页面及相关参数。当用户点击正在进行或已完成的下载任务通知时，系统会根据wantAgent参数启动指定的应用能力。
+通过在下载任务的配置[request.agent.Notification](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentnotification15)中设置wantAgent参数，开发者可以指定用户点击通知后要跳转的应用页面及相关参数。当用户点击正在进行或已完成的下载任务通知时，系统会根据wantAgent参数启动指定的应用能力。
 
 ### 示例代码
 

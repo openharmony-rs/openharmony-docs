@@ -189,7 +189,7 @@ The following walks you through on how to obtain **belongingToTypes** of a media
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
-    // 1. Import the required modules.
+    // 1. Import modules.
     import { uniformTypeDescriptor } from '@kit.ArkData';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
@@ -260,7 +260,7 @@ The following walks you through on how to obtain MIME types based on the file na
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
-    // 1. Import the required modules.
+    // 1. Import modules.
     import { uniformTypeDescriptor } from '@kit.ArkData';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
@@ -295,7 +295,7 @@ The following walks you through on how to obtain the file name extensions based 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
-    // 1. Import the required modules.
+    // 1. Import modules.
     import { uniformTypeDescriptor } from '@kit.ArkData';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
@@ -320,3 +320,4 @@ The following walks you through on how to obtain the file name extensions based 
       hilog.error(0xFF00, '[Sample_Udmf]', `err message: ${err.message}, err code: ${err.code}`);
     }
     ```
+

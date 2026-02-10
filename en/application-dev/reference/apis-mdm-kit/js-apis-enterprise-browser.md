@@ -36,6 +36,8 @@ Sets the sub-policy for a specified browser.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
+
 **Parameters**
 
 | Name     | Type                                                   | Mandatory| Description                                                        |
@@ -147,6 +149,8 @@ Sets the browser policy. After the setting is successful, the system common even
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 

@@ -198,7 +198,7 @@ on(type: 'inputStart', callback: (kbController: KeyboardController, textInputCli
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 23开始废弃，建议使用[on('inputStart')](#oninputstart9)替代。
+> 从API version 8开始支持，API version 23开始废弃，建议使用[InputMethodAbility#on](#oninputstart9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -228,7 +228,7 @@ off(type: 'inputStart', callback?: (kbController: KeyboardController, textInputC
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 23开始废弃，建议使用[off('inputStart')](#offinputstart9)替代。
+> 从API version 8开始支持，API version 23开始废弃，建议使用[InputMethodAbility#off](#offinputstart9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -257,7 +257,7 @@ on(type: 'keyboardShow'|'keyboardHide', callback: () => void): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 23开始废弃，建议使用[on('keyboardShow'|'keyboardHide')](#onkeyboardshowkeyboardhide9)替代。
+> 从API version 8开始支持，API version 23开始废弃，建议使用[InputMethodAbility#on](#onkeyboardshowkeyboardhide9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -287,7 +287,7 @@ off(type: 'keyboardShow'|'keyboardHide', callback?: () => void): void
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 23开始废弃，建议使用[off('keyboardShow'|'keyboardHide')](#offkeyboardshowkeyboardhide9)替代。
+> 从API version 8开始支持，API version 23开始废弃，建议使用[InputMethodAbility#off](#offkeyboardshowkeyboardhide9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1120,7 +1120,7 @@ off(type: 'keyEvent', callback?: (event: InputKeyEvent) => boolean): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 设置监听类型，固定取值为'keyEvent'。 |
-| callback | function | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。|
+| callback | (event: [InputKeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent)) => boolean | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。|
 
 **示例：**
 

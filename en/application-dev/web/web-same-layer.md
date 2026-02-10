@@ -1002,7 +1002,7 @@ Code on the application side:
 
   export class AVPlayerDemo {
     private count: number = 0;
-    private surfaceID: string = ''; // The surfaceID parameter specifies the window used to display the video. Its value is obtained through XComponent.
+    private surfaceID: string = ''; // The surfaceID parameter specifies the window used to display the video. Its value is obtained through the XComponent.
     private isSeek: boolean = true; // Specify whether the seek operation is supported.
 
     setSurfaceID(surface_id: string){
@@ -1603,6 +1603,7 @@ The values of the attribute are listed in the following table.
   ```
 
 - Example of a frontend page:
+
   The sample code uses the **\<embed>** tag. To use the **\<object>** tag, register it and **\<type>** on the eTS side.
   ```html
     <!--HAP's src/main/resources/rawfile/test.html-->

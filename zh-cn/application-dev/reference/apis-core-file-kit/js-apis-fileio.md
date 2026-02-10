@@ -3714,7 +3714,7 @@ read(): Promise&lt;Dirent&gt;
   ```ts
   import { BusinessError } from '@ohos.base';
   dir.read().then((dirent: fileio.Dirent) => {
-    console.log("read succeed, the name of dirent is " + dirent.name);
+    console.info("read succeed, the name of dirent is " + dirent.name);
   }).catch((err: BusinessError) => {
     console.error("read failed with error:" + err);
   });
@@ -3746,7 +3746,7 @@ read(callback: AsyncCallback&lt;Dirent&gt;): void
   dir.read((err: BusinessError, dirent: fileio.Dirent) => {
     if (dirent) {
       // do something
-      console.log("read succeed, the name of file is " + dirent.name);
+      console.info("read succeed, the name of file is " + dirent.name);
     }
   });
   ```

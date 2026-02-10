@@ -447,7 +447,7 @@ Listens for the start and end of scroll events of a specific scrollable componen
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.|
-| options  | [observer.ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
+| options  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
 | callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | Yes  | Callback used to return the result. Callback used to return the information about the scroll event.                |
 
 **Example**
@@ -469,7 +469,7 @@ Unregisters the listener for the start and end of scroll events of a specific sc
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.|
-| options  | [observer.ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
+| options  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
 | callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | No  | Callback used to return the result. It returns the information about the scroll event. If no parameter is provided, all scroll event listeners are unregistered.                |
 
 **Example**
@@ -608,14 +608,14 @@ struct Index {
       Text(this.message)
         .fontSize(24)
         .fontWeight(FontWeight.Bold)
-      Button('Subscribe to Screen Pixel Density Changes')
+      Button ('Subscribe to Screen Pixel Density Changes')
         .margin({ bottom: 10 })
         .onClick(() => {
           this.message = 'Listener registered';
           // Add event listeners.
           this.getUIContext().getUIObserver().on('densityUpdate', this.densityUpdateCallback);
         })
-      Button('Unsubscribe from Screen Pixel Density Changes')
+      Button ('Unsubscribe from Screen Pixel Density Changes')
         .onClick(() => {
           this.message = 'Listener not registered';
           // Remove event listeners.
@@ -1676,6 +1676,174 @@ Unregisters the listener for tab switching events of the specified [Tabs](arkui-
 
 See the example for [on('tabChange')](#ontabchange22-1).
 
+## on('textChange')<sup>22+</sup>
+
+on(type: 'textChange', callback: Callback\<observer.TextChangeEventInfo\>): void
+
+Listens globally for text input field changes events.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                 | Mandatory| Description                                                                    |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | Yes  | Event type. The value is fixed at **'textChange'**, indicating text input field changes events.|
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | Yes  | Callback used to return the text change information.|
+
+**Example**
+```ts
+import { UIObserver } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextUiObserver {
+  observer: UIObserver = this.getUIContext().getUIObserver();
+  build() {
+    Column() {
+      TextArea({ text: "Hello World TextArea" })
+        .width(336)
+        .height(56)
+        .margin({bottom:5})
+        .backgroundColor('#FFFFFF')
+        .id("TestId1")
+      TextInput({ text: "Hello World TextInput" })
+        .width(336)
+        .height(56)
+        .margin({bottom:5})
+        .backgroundColor('#FFFFFF')
+        .id("TestId2")
+      Search({ value: "Hello World Search" })
+        .width(336)
+        .height(56)
+        .margin({bottom:5})
+        .backgroundColor('#FFFFFF')
+        .id("TestId3")
+      Row() {
+        // Enable global listening.
+        Button('UIObserver on')
+          .onClick(() => {
+            this.observer.on('textChange', (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+        // Disable global listening.
+        Button('UIObserver off')
+          .onClick(() => {
+            this.observer.off('textChange');
+          })
+      }.margin({bottom:5})
+      // Enable and disable listening for a specific ID.
+      Row() {
+        Button('UIObserver TestId1 on')
+          .onClick(() => {
+            this.observer.on('textChange', { id: "TestId1" }, (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+
+        Button('UIObserver TestId1 off')
+          .onClick(() => {
+            this.observer.off('textChange', { id: "TestId1" });
+          })
+      }.margin({bottom:5})
+      Row() {
+        Button('UIObserver TestId2 on')
+          .onClick(() => {
+            this.observer.on('textChange', { id: "TestId2" }, (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+
+        Button('UIObserver TestId2 off')
+          .onClick(() => {
+            this.observer.off('textChange', { id: "TestId2" });
+          })
+      }.margin({bottom:5})
+      Row() {
+        Button('UIObserver TestId3 on')
+          .onClick(() => {
+            this.observer.on('textChange', { id: "TestId3" }, (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+
+        Button('UIObserver TestId3 off')
+          .onClick(() => {
+            this.observer.off('textChange', { id: "TestId3" });
+          })
+      }.margin({bottom:5})
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+## off('textChange')<sup>22+</sup>
+
+off(type: 'textChange', callback?: Callback\<observer.TextChangeEventInfo\>): void
+
+Unregisters the global listener for text input field changes events.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                 | Mandatory| Description                                                                    |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | Yes  | Event type. The value is fixed at **'textChange'**, indicating text input field changes events.|
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | No  | Target listener to unregister. If no parameter is provided, all listeners registered for text input field changes events are unregistered.|
+
+**Example**
+
+For details, see [on('textChange')](#ontextchange22).
+
+## on('textChange')<sup>22+</sup>
+
+on(type: 'textChange', identity: observer.ObserverOptions, callback:Callback\<observer.TextChangeEventInfo\>): void
+
+Listens on the text input component with the specified ID.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                 | Mandatory| Description                                                                    |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | Yes  | Event type. The value is fixed at **'textChange'**, indicating text input field changes events.|
+| identity | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | ID of the text input component to be listened on.                            |
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | Yes  | Callback used to return the result. Returns the text change information.|
+
+**Example**
+
+For details, see [on('textChange')](#ontextchange22).
+
+## off('textChange')<sup>22+</sup>
+
+off(type: 'textChange', identity: observer.ObserverOptions, callback?: Callback\<observer.TextChangeEventInfo\>): void
+
+Disables the listener for the text input component with the specified ID.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                 | Mandatory| Description                                                                    |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | Yes  | Event type. The value is fixed at **'textChange'**, indicating text input field changes events.|
+| identity | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | ID of the text input component to be listened on.|
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | No  | Target listener to unregister. If no parameter is passed, all listeners for the text input component with the specified IDs are canceled.|
+
+**Example**
+
+For details, see [on('textChange')](#ontextchange22).
+
 ## on('beforePanStart')<sup>19+</sup>
 
 on(type: 'beforePanStart', callback: PanListenerCallback): void
@@ -2428,13 +2596,13 @@ Unregisters previously registered window size layout breakpoint change listeners
 
 See the example for [on('windowSizeLayoutBreakpointChange')](#onwindowsizelayoutbreakpointchange22).
 
-## onSwiperContentUpdate<sup>23+</sup>
+## onSwiperContentUpdate<sup>22+</sup>
 
 onSwiperContentUpdate(callback: Callback\<SwiperContentInfo\>): void
 
 Listens for content switching events of the **Swiper** component. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2442,7 +2610,7 @@ Listens for content switching events of the **Swiper** component. This API uses 
 
 | Name  | Type                         | Mandatory| Description                                                        |
 | -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\> | Yes  | Callback used to return the result. It provides the **Swiper** content switching information using a **SwiperContentInfo** object. |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo22)\> | Yes  | Callback used to return the result. It provides the **Swiper** content switching information using a **SwiperContentInfo** object. |
 
 **Example**
 
@@ -2496,13 +2664,13 @@ struct SwiperExample {
 }
 ```
 
-## offSwiperContentUpdate<sup>23+</sup>
+## offSwiperContentUpdate<sup>22+</sup>
 
 offSwiperContentUpdate(callback?: Callback\<SwiperContentInfo\>): void
 
 Unregister the listener for content switching events of the **Swiper** component.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2510,19 +2678,19 @@ Unregister the listener for content switching events of the **Swiper** component
 
 | Name  | Type                        | Mandatory| Description                                                        |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)> | No  | Target listener to unregister. If no parameter is provided, all listeners for the **Swiper** component are unregistered.|
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo22)> | No  | Target listener to unregister. If no parameter is provided, all listeners for the **Swiper** component are unregistered.|
 
 **Example**
 
-See the example for the [onSwiperContentUpdate](#onswipercontentupdate23) API.
+See the example for the [onSwiperContentUpdate](#onswipercontentupdate22) API.
 
-## onSwiperContentUpdate<sup>23+</sup>
+## onSwiperContentUpdate<sup>22+</sup>
 
 onSwiperContentUpdate(config: observer.ObserverOptions, callback: Callback\<SwiperContentInfo\>): void
 
 Listens for content switching events of a specific **Swiper** component identified by its ID. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2531,7 +2699,7 @@ Listens for content switching events of a specific **Swiper** component identifi
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Information about the target **Swiper** component.                                  |
-| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\>  | Yes  | Callback used to return the result. It provides the **Swiper** content switching information using a **SwiperContentInfo** object. |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo22)\>  | Yes  | Callback used to return the result. It provides the **Swiper** content switching information using a **SwiperContentInfo** object. |
 
 **Example**
 
@@ -2586,11 +2754,32 @@ struct SwiperExample {
 }
 ```
 
-## offSwiperContentUpdate<sup>23+</sup>
+## offSwiperContentUpdate<sup>22+</sup>
 
 offSwiperContentUpdate(config: observer.ObserverOptions, callback?: Callback\<SwiperContentInfo\>): void
 
 Unregister the listener for content switching events of a specific **Swiper** component identified by its ID.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Information about the target **Swiper** component.                                  |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo22)\> | No  | Target listener to unregister. If no parameter is provided, all listeners for the **Swiper** component are unregistered.|
+
+**Example**
+
+See the example for the [onSwiperContentUpdate](#onswipercontentupdate22-1) API.
+
+## onRouterPageSizeChange<sup>23+</sup>
+
+onRouterPageSizeChange(callback: Callback\<observer.RouterPageInfo\>): void
+
+Registers a callback that is triggered when the size of the visible router page changes. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -2600,9 +2789,275 @@ Unregister the listener for content switching events of a specific **Swiper** co
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Information about the target **Swiper** component.                                  |
-| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\> | No  | Target listener to unregister. If no parameter is provided, all listeners for the **Swiper** component are unregistered.|
+| callback | Callback\<observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo)\>  | Yes  | Callback used to return the information about the router page. |
 
 **Example**
 
-See the example for the [onSwiperContentUpdate](#onswipercontentupdate23-1) API.
+``` ts
+import { uiObserver } from '@kit.ArkUI';
+
+function myPageRouterPageSizeCallback(info: uiObserver.RouterPageInfo): void {
+  console.info(`testTag pageSize changeTo ${(info && info.size) ? JSON.stringify(info.size) : 'NA'}`);
+}
+
+@Entry
+@Component
+struct QueryRouterPageSize {
+  aboutToAppear(): void {
+    // You can obtain the page size information by registering a listener.
+    this.getUIContext().getUIObserver().onRouterPageSizeChange(myPageRouterPageSizeCallback);
+  }
+
+  aboutToDisappear(): void {
+    this.getUIContext().getUIObserver().offRouterPageSizeChange(myPageRouterPageSizeCallback);
+  }
+
+  build() {
+    Column() {
+      Button('querySize').onClick(() => {
+        // You can also proactively obtain the page size.
+        let info = this.queryRouterPageInfo();
+        console.info(`testTag pageSize: ${info && info.size ? JSON.stringify(info.size) : "NA"}`)
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## offRouterPageSizeChange<sup>23+</sup>
+
+offRouterPageSizeChange(callback?: Callback\<observer.RouterPageInfo\>): void
+
+Removes the listener callback registered using the **onRouterPageSizeChange** API. This API uses an asynchronous callback to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo)\> | No  | Callback to be removed. If no parameter is passed, all callbacks are removed.|
+
+**Example**
+
+See the example for the [onRouterPageSizeChange](#onrouterpagesizechange23) API.
+
+## onNavDestinationSizeChange<sup>23+</sup>
+
+onNavDestinationSizeChange(callback: Callback\<observer.NavDestinationInfo\>): void
+
+Registers a callback that is triggered when the size of the visible navigation destination changes. This API uses an asynchronous callback to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>  | Yes  | Callback used to return navigation destination information. |
+
+**Example**
+
+``` ts
+import { uiObserver } from '@kit.ArkUI';
+
+@Component
+struct PageOneContent {
+  destSizeCallback(info: uiObserver.NavDestinationInfo): void {
+    console.info(`testTag destSize changeTo ${(info && info.size) ? JSON.stringify(info.size) : "NA"}`)
+  }
+
+  aboutToAppear(): void {
+    // You can obtain the size of the navigation destination page by registering a listener.
+    this.getUIContext().getUIObserver().onNavDestinationSizeChange(this.destSizeCallback);
+  }
+
+  aboutToDisappear(): void {
+    this.getUIContext().getUIObserver().offNavDestinationSizeChange(this.destSizeCallback);
+  }
+
+  build() {
+    Column() {
+      Button('queryDestSize').onClick(() => {
+        // You can also proactively obtain the size of the navigation destination page.
+        let info = this.queryNavDestinationInfo();
+        console.info(`testTag destSize: ${(info && info.size) ? JSON.stringify(info.size) : "NA"}`)
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@Component
+struct PageOne {
+  build() {
+    NavDestination() {
+      PageOneContent()
+    }
+    .title('pageOne')
+  }
+}
+
+@Entry
+@Component
+struct QueryNavDestinationSize {
+  private stack: NavPathStack = new NavPathStack();
+
+  aboutToAppear(): void {
+    this.stack.pushPath({name: 'one'});
+  }
+
+  @Builder
+  MyPageMap(name: string) {
+    PageOne()
+  }
+
+  build() {
+    Navigation(this.stack) {
+    }
+    .width('100%')
+    .height('100%')
+    .navDestination(this.MyPageMap)
+    .hideNavBar(true)
+  }
+}
+```
+
+## offNavDestinationSizeChange<sup>23+</sup>
+
+offNavDestinationSizeChange(callback?: Callback\<observer.NavDestinationInfo\>): void
+
+Removes the listener callback registered using the **onNavDestinationSizeChange** API. This API uses an asynchronous callback to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | No  | Callback to be removed. If no parameter is passed, all callbacks are removed.|
+
+**Example**
+
+See the example for the [onNavDestinationSizeChange](#onnavdestinationsizechange23) API.
+
+## onNavDestinationSizeChangeByUniqueId<sup>23+</sup>
+
+onNavDestinationSizeChangeByUniqueId(navigationUniqueId: number, callback: Callback\<observer.NavDestinationInfo\>): void
+
+Registers a callback for listening to the size change of a visible **NavDestination** component that belongs to a specified **Navigation** component. This API uses an asynchronous callback to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| navigationUniqueId | number | Yes| Unique ID of the **Navigation** component to which the **NavDestination** component to be listened belongs, which can be obtained through [queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12).|
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>  | Yes  | Callback used to return navigation destination information. |
+
+**Example**
+
+``` ts
+import { uiObserver } from '@kit.ArkUI';
+
+@Component
+struct PageOneContent {
+  private navUniqueId: number = 0;
+
+  destSizeCallback(info: uiObserver.NavDestinationInfo): void {
+    console.info(`testTag destSize changeTo ${(info && info.size) ? JSON.stringify(info.size) : "NA"}`)
+  }
+
+  aboutToAppear(): void {
+    let navInfo = this.queryNavigationInfo();
+    if (navInfo && navInfo.uniqueId) {
+      this.navUniqueId = navInfo.uniqueId;
+      // You can obtain the size of the navigation destination page by registering a listener.
+      this.getUIContext().getUIObserver().onNavDestinationSizeChangeByUniqueId(this.navUniqueId, this.destSizeCallback);
+    }
+  }
+
+  aboutToDisappear(): void {
+    this.getUIContext().getUIObserver().offNavDestinationSizeChangeByUniqueId(this.navUniqueId, this.destSizeCallback);
+  }
+
+  build() {
+    Column() {
+      Button('queryDestSize').onClick(() => {
+        // You can also proactively obtain the size of the navigation destination page.
+        let info = this.queryNavDestinationInfo();
+        console.info(`testTag destSize: ${(info && info.size) ? JSON.stringify(info.size) : "NA"}`)
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@Component
+struct PageOne {
+  build() {
+    NavDestination() {
+      PageOneContent()
+    }
+    .title('pageOne')
+  }
+}
+
+@Entry
+@Component
+struct QueryNavDestinationSize {
+  private stack: NavPathStack = new NavPathStack();
+
+  aboutToAppear(): void {
+    this.stack.pushPath({name: 'one'});
+  }
+
+  @Builder
+  MyPageMap(name: string) {
+    PageOne()
+  }
+
+  build() {
+    Navigation(this.stack) {
+    }
+    .width('100%')
+    .height('100%')
+    .navDestination(this.MyPageMap)
+    .hideNavBar(true)
+  }
+}
+```
+
+## offNavDestinationSizeChangeByUniqueId<sup>23+</sup>
+
+offNavDestinationSizeChangeByUniqueId(navigationUniqueId: number, callback?: Callback\<observer.NavDestinationInfo\>): void
+
+Removes the listener callback registered using the **onNavDestinationSizeChangeByUniqueId** API. This API uses an asynchronous callback to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| navigationUniqueId | number | Yes| Unique ID of the **Navigation** component to which the **NavDestination** component to be listened belongs, which can be obtained through [queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12).|
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | No  | Callback to be removed. If no parameter is passed, all callbacks with the same **navigationUniqueId** setting are removed.|
+
+**Example**
+
+See the example for the [onNavDestinationSizeChangeByUniqueId](#onnavdestinationsizechangebyuniqueid23) API.

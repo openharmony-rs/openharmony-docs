@@ -710,6 +710,10 @@ int32_t OH_NetConn_QueryTraceRoute(char *destination, NetConn_TraceRouteOption *
 
 查询网络跟踪路由。
 
+> **说明：**
+>
+> 应用调用该接口需申请精确位置权限。<!--RP1-->根据[申请位置权限开发指导](../../device/location/location-permission-guidelines.md)<!--RP1End-->，调用方需同时申请ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION。
+
 **需要权限：** ohos.permission.INTERNET、ohos.permission.LOCATION 和 ohos.permission.ACCESS_NET_TRACE_INFO
 
 **起始版本：** 20

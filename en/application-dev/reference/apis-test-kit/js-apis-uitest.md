@@ -1101,6 +1101,7 @@ let on: On = ON.originalText('123'); // Use the static constructor ON to create 
 ## Component<sup>9+</sup>
 
 Represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection.
+
 All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
 ### click<sup>9+</sup>
@@ -1259,7 +1260,7 @@ Obtains the text information of this component. This API uses a promise to retur
 
 > **NOTE**
 >
-> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API cannot be used to obtain the text information of the component. In this case, you can use [Component.getOriginalText ()](#getoriginaltext20) to obtain the text information of the component.
+> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API cannot be used to obtain the text information of the component. In this case, you can use [Component.getOriginalText ()](#getoriginaltext20) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2320,6 +2321,7 @@ async function demo() {
 ## Driver<sup>9+</sup>
 
 The **Driver** class is the main entry to the UiTest framework. It provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
+
 All APIs provided by this class, except **Driver.create()**, use a promise to return the result and must be invoked using **await**.
 
 ### create<sup>9+</sup>
@@ -5394,6 +5396,7 @@ async function demo() {
 ## UiWindow<sup>9+</sup>
 
 The **UiWindow** class represents a window on the UI and provides APIs for obtaining window attributes, dragging a window, and adjusting the window size.
+
 All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
 ### getBundleName<sup>9+</sup>
@@ -5667,7 +5670,7 @@ Moves a window to the target point. This API uses a promise to return the result
 
 **System capability**: SystemCapability.Test.UiTest
 
-**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices and tablets. If it is called on other device types, error code 17000005 is returned.
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Parameters**
 
@@ -5714,6 +5717,8 @@ Resizes a window based on the specified width, height, and direction. This API u
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Test.UiTest
+
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Parameters**
 
@@ -5762,7 +5767,7 @@ Switches to the split-screen mode. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Test.UiTest
 
-**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices and tablets. If it is called on other device types, error code 17000005 is returned.
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Return value**
 
@@ -5802,7 +5807,7 @@ Maximizes a window. This API uses a promise to return the result. This API is ap
 
 **System capability**: SystemCapability.Test.UiTest
 
-**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices and tablets. If it is called on other device types, error code 17000005 is returned.
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Return value**
 
@@ -5842,7 +5847,7 @@ Minimizes a window. This API uses a promise to return the result. This API is ap
 
 **System capability**: SystemCapability.Test.UiTest
 
-**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices and tablets. If it is called on other device types, error code 17000005 is returned.
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Return value**
 
@@ -5882,7 +5887,7 @@ Resumes a window to its previous mode. This API uses a promise to return the res
 
 **System capability**: SystemCapability.Test.UiTest
 
-**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices and tablets. If it is called on other device types, error code 17000005 is returned.
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Return value**
 
@@ -5922,7 +5927,7 @@ Closes a window. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Test.UiTest
 
-**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices and tablets. If it is called on other device types, error code 17000005 is returned.
+**Device differences**: In API version 22 and earlier versions, this API can be called on PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices. Since API version 23, this API can be called on phones, PCs, 2-in-1 devices, and tablets, and returns the error code **17000005** on other devices.
 
 **Return value**
 
@@ -6600,6 +6605,7 @@ let by: By = BY.type('Text').isAfter(BY.text('123')); // Search for the first Te
 ## UiComponent<sup>(deprecated)</sup>
 
 In **UiTest**, the **UiComponent** class represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection.
+
 All APIs provided in this class use a promise to return the result and must be invoked using **await**.
 
 > **NOTE**
@@ -7063,11 +7069,12 @@ async function demo() {
 ## UiDriver<sup>(deprecated)</sup>
 
 The **UiDriver** class is the main entry to the UiTest framework. It provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
+
 All APIs provided by this class, except **UiDriver.create()**, use a promise to return the result and must be invoked using **await**.
 
 > **NOTE**
 >
-> This method is supported since API version 8 and deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
 
 ### create<sup>(deprecated)</sup>
 

@@ -132,6 +132,9 @@ try {
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback&lt;void&gt;): void
 
 更新指定的卡片，使用callback异步回调。
+> **说明：**
+>
+> 从API version 20开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过20张。API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图片会显示异常。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -189,6 +192,9 @@ try {
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
 
 更新指定的卡片，使用Promise异步回调。
+> **说明：**
+>
+> 从API version 20开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过20张。API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图片会显示异常。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -482,8 +488,9 @@ closeFormEditAbility(isMainPage?: boolean): void
 
 | 错误码ID    | 错误信息 |
 |----------| -------- |
-| 801      | CCapability not supported due to limited device capabilities. |
+| 801      | Capability not supported due to limited device capabilities. |
 | 16500050 | IPC connection error. |
+| 16501015 | Cannot close the widget editing page opened by other apps. |
 
 **示例：**
 
@@ -513,7 +520,12 @@ struct Page {
         })
         .onClick(() => {
           console.info(`${TAG} onClick.....`);
-          formProvider.closeFormEditAbility();
+          try {
+            formProvider.closeFormEditAbility();
+            console.info(`${TAG} close FormEditAbility success.`);
+          } catch (error) {
+            console.error(`${TAG} close FormEditAbility faild, code: ${error.code}, message: ${error.message}`);
+          }
         })
     }
     .height('100%')
@@ -680,6 +692,11 @@ try {
 requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt;
 
 卡片提供方发起互动卡片动效请求，只针对[场景动效类型互动卡片](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)生效，使用Promise异步回调。
+> **说明：**
+>
+> 1. 该接口在省电模式场景下不可使用，会报16501000错误码。
+> 2. 当设备热档位进入HOT场景并且没有点击事件的场景下，该接口会报16501000错误码；当热档位进入OVERHEATED时，任何情况下都会报16501000错误码。热档位信息具体可参考[热档位信息](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel)。
+
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 

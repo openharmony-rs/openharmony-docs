@@ -220,14 +220,14 @@ Obtains the drawing context of the offscreen canvas.
 
 | Name | Type| Mandatory| Description   |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| contextType | string | Yes  | Type of the drawing context of the offscreen canvas. The value can only be **"2d"**.<br>"2d": creates an OffscreenCanvasRenderingContext2D object that represents a two-dimensional rendering context.<br>The values **undefined** and **null** are considered as invalid values, and **undefined** is returned.|
+| contextType | string | Yes  | Type of the drawing context of the offscreen canvas. The value can only be **"2d"**.<br>**"2d"**: creates an **OffscreenCanvasRenderingContext2D** object that represents a two-dimensional rendering context.<br>The values **undefined** and **null** are considered as invalid values, and **undefined** is returned.|
 | options      | [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) | No| Parameters of the **OffscreenCanvasRenderingContext2D** object. For details, see [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings).<br>**undefined** and **null** values are processed based on the default value of [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings).<br>Default value: **null**.|
 
 **Return value**
 
 | Type                                                        | Description                             |
 | ------------------------------------------------------------ | --------------------------------- |
-| [OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md) | Drawing context of the offscreen canvas. If the input parameter contextType of the getContext method is not 2d (including null or undefined), undefined is returned. Before using the method, check whether the return value is undefined.|
+| [OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md) | Drawing context of the offscreen canvas. If the input parameter contextType of the **getContext** method is not **"2d"** (including null or undefined), **undefined** will be returned. Before using the method, check whether the return value is **undefined**.|
 
 **Example**
 
@@ -293,7 +293,7 @@ Since API version 11, when an application creates a [worker thread](../../../ark
 >
 > After an **OffscreenCanvas** object is passed to a thread through **postMessage**, it cannot be passed to any other thread through **postMessage**. Otherwise, an exception is thrown.
 >
-> The content drawn in the Worker thread cannot be previewed in DevEco Studio Previewer.
+> The previewer of DevEco Studio does not support the display of content drawn in the Worker thread.
 
 **Example**
 

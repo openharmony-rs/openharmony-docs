@@ -5,7 +5,7 @@
 <!--Owner: @leiguangyu-->
 <!--Designer: @Maplestroy91-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 hiperf是一款集成多种性能分析功能的命令行工具，可用于分析系统性能瓶颈、定位软件热点及优化代码效率，支持采集和统计程序运行时的性能数据。
 
@@ -336,7 +336,7 @@ $ hiperf record -p 267 -d 10 -s dwarf
 | --app | 采集的应用程序名，以逗号隔开。应用程序必须是启动状态，应用程序未启动时会等待20s，20s内应用程序未启动，命令会自动结束。该参数不能和-a一起使用。 | 
 | --chkms | 设置查询的间隔时间，单位为毫秒，取值范围：1 - 200，默认10。 | 
 | --per-core | 每个CPU核的打印计数。 | 
-| --pre-thread | 每个线程的打印计数。 | 
+| --per-thread | 每个线程的打印计数。 | 
 | --restart | 收集应用启动的性能指标信息，如果进程在30秒内未启动，记录将退出。该参数必须和--app一起使用。 | 
 | --verbose | 输出详细的信息。 | 
 | --dumpoptions | 展示当前列表里所有选项的详细信息。 | 

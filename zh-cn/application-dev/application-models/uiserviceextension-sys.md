@@ -65,7 +65,7 @@
 
 - **onDisconnect**
 
-  当连接断开时，将触发该回调。客户端死亡或者调用[disconnectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectuiserviceextensionability14)方法可以使连接断开。
+  当连接断开时，将触发该回调。客户端退出或者调用[disconnectUIServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectuiserviceextensionability14)方法可以使连接断开。
 
 - **onDestroy**
   
@@ -171,7 +171,6 @@
     ```json
     {
       "module": {
-        // ...
         "extensionAbilities": [
           {
             "name": "UIServiceExtAbility",
@@ -249,9 +248,8 @@ struct Index {
 
       build() {
         Column() {
-          //...
           Row() {
-            //...
+            // ...
           }.onClick(() => {
             const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
             const want: Want = {
@@ -293,9 +291,8 @@ struct Index {
 
       build() {
         Column() {
-          //...
           Row() {
-            //...
+            // ...
           }.onClick(() => {
             const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
             // this.uiServiceProxy是连接时保存的proxy对象

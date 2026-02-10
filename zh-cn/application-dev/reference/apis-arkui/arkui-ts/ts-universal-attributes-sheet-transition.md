@@ -48,7 +48,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 >
 > 2. 为了使isShow参数值与半模态界面的状态同步，建议使用[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定isShow参数。从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 >
-> 3. 在半模态单挡位向上拖拽或是多挡位上滑换档情况下，内容在拖拽结束或换挡结束后更新显示区域。
+> 3. 在半模态单挡位向上拖拽或是多挡位上滑换挡情况下，内容在拖拽结束或换挡结束后更新显示区域。
 >
 > 4. 半模态是一个严格和宿主节点绑定在一起的弹窗。若是想实现类似“页面显示的瞬间就弹出半模态”的效果，请确认宿主节点是否已挂载上树。若宿主节点还没上树就将isShow置为true，半模态将不生效。建议使用[onAppear](ts-universal-events-show-hide.md#onappear)函数，确保在宿主节点挂载后再显示半模态。
 > 尤其是 [SheetMode](#sheetmode12枚举说明) = EMBEDDED 时，除宿主节点外，还需确保对应的页面节点成功挂载。
@@ -66,7 +66,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | 名称              | 类型                                       | 只读 | 可选   | 说明              |
 | --------------- | --------------------------- | ------------- | ---- | --------------- |
 | height          | [SheetSize](#sheetsize枚举说明)&nbsp;\|&nbsp;[Length](ts-types.md#length) | 否 | 是   | 半模态高度，默认是LARGE。<br/>**说明：**<br/>1. API version 14开始，底部弹窗横屏时，无状态栏则最大高度为距离屏幕顶部8vp，有状态栏则最大高度为距离状态栏8vp。<br/>2. 底部弹窗时，当设置detents时，该属性设置无效。<br />3. 底部弹窗竖屏时，最大高度为距离状态栏8vp。<br />4. 居中弹窗和跟手弹窗设置类型为SheetSize.LARGE和SheetSize.MEDIUM无效，显示默认高度560vp。<br/>5. 居中弹窗和跟手弹窗最小高度为320vp，最大高度为窗口短边的90%。<br/>6. 居中弹窗和跟手弹窗当使用Length设置的高度时，高度大于最大高度，则显示最大高度，小于最小高度，则显示最小高度。<br/>7. 如果半模态使用SheetSize.FIT_CONTENT自适应模式，且类型设置为居中弹窗或跟手弹窗，API version 22及之前版本，高度大于最大高度时显示最大高度，高度小于最小高度时显示最小高度。从API version 23开始，高度大于最大高度时显示最大高度，高度小于最小高度时按照实际自适应高度生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| detents<sup>11+</sup> | [([SheetSize](#sheetsize枚举说明) \| [Length](ts-types.md#length)), ( [SheetSize](#sheetsize枚举说明) \| [Length](ts-types.md#length))?, ([SheetSize](#sheetsize枚举说明) \| [Length](ts-types.md#length))?] | 否 | 是 | 半模态页面的切换高度档位。<br/>**说明：**<br/>从API version 12开始，底部弹窗横屏时该属性设置生效。<br/>底部弹窗竖屏生效，元组中第一个高度为初始高度。<br />面板可跟手滑动切换档位，松手后是否滑动至目标档位有两个判断条件：速度和距离。速度超过阈值，则执行滑动至与手速方向一致的目标档位；速度小于阈值，则引入距离判断条件，当位移距离>当前位置与目标位置的1/2，滑动至与手速方向一致的目标档位，位移距离当前位置与目标位置的1/2，返回至当前档位。速度阈值：1000，距离阈值：50%。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| detents<sup>11+</sup> | [([SheetSize](#sheetsize枚举说明) \| [Length](ts-types.md#length)), ( [SheetSize](#sheetsize枚举说明) \| [Length](ts-types.md#length))?, ([SheetSize](#sheetsize枚举说明) \| [Length](ts-types.md#length))?] | 否 | 是 | 半模态页面的切换高度挡位。<br/>**说明：**<br/>从API version 12开始，底部弹窗横屏时该属性设置生效。<br/>底部弹窗竖屏生效，元组中第一个高度为初始高度。<br />面板可跟手滑动切换挡位，松手后是否滑动至目标挡位有两个判断条件：速度和距离。速度超过阈值，则执行滑动至与手速方向一致的目标挡位；速度小于阈值，则引入距离判断条件，当位移距离>当前位置与目标位置的1/2，滑动至与手速方向一致的目标挡位，位移距离当前位置与目标位置的1/2，返回至当前挡位。速度阈值：1000，距离阈值：50%。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | preferType<sup>11+</sup> | [SheetType](#sheettype11枚举说明) | 否 | 是 | 半模态页面的样式。<br/>**说明：**<br/>半模态在不同窗口所支持的显示类型：<br/>1. 宽度 < 600vp：底部、全屏。默认底部样式。<br/>2. 600vp <= 宽度 < 840vp：底部、居中、跟手、侧边、全屏。默认居中样式。<br/>3. 宽度 >= 840vp：底部、居中、跟手、侧边、全屏。默认跟手样式。<br/>4. API version 20开始，窗口宽度大于600vp时，preferType支持设置为SheetType.SIDE。<br/>5. API version 20开始，preferType支持设置为SheetType.CONTENT_COVER，支持设置为全屏模态样式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | showClose<sup>11+</sup> | boolean \| [Resource](ts-types.md#resource) | 否 | 是 | 是否显示关闭图标。<br/> 2in1设备默认无按钮底板。<br/> 默认值：true。<br/> true：显示关闭图标。<br/> false：不显示关闭图标。<br/>**说明：**<br/>Resource需要为boolean类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | dragBar         | boolean                                  | 否 | 是    | 是否显示控制条。<br/> 默认值：true <br/>true：显示控制条。<br/>false：不显示控制条。<br/>**说明：**<br/>半模态面板的detents属性设置多个不同高度并且设置生效时，默认显示控制条。否则不显示控制条。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -77,8 +77,8 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | shouldDismiss<sup>11+</sup> | (sheetDismiss: [SheetDismiss](#sheetdismiss11)) => void | 否 | 是 | 半模态页面交互式关闭回调函数。<br/>**说明：**<br/>当用户执行下拉关闭、侧拉关闭、点击遮罩层关闭、点击关闭按钮的交互操作时，如果已注册回调函数，模态窗口将不会立即关闭。要关闭半模态，需在回调函数中调用shouldDismiss.dismiss()方法来实现。<br/>如果不注册该回调函数，则用户执行下拉关闭、侧拉关闭、点击遮罩层关闭、点击关闭按钮的交互操作时，正常关闭半模态，无其他行为。<br/>侧拉关闭又包含侧滑（左滑/右滑）、三键back、键盘ESC关闭。<br/>建议在[二次确认](../../../ui/arkts-sheet-page.md#二次确认能力)场景使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | onWillDismiss<sup>12+</sup> | [Callback](./ts-types.md#callback12)<[DismissSheetAction](#dismisssheetaction12)> | 否 | 是    | 半模态页面的交互式关闭回调函数。允许开发者注册，以获取关闭操作的类型，并决定是否关闭半模态状态。<br/>**说明：**<br />当用户执行下拉关闭、侧拉关闭、点击遮罩层关闭、点击关闭按钮的交互操作时，若已注册回调函数，则不会立即关闭页面，而是由开发者通过回调函数[DismissSheetAction](#dismisssheetaction12)中的reason参数判断关闭操作的类型，进而根据具体原因自主选择是否关闭半模态页面。<br/>如果不注册该回调函数，则用户执行关闭操作时，正常关闭半模态，无其他行为。<br/>侧拉关闭又包含侧滑（左滑/右滑）、三键back、键盘ESC关闭。<br />在onWillDismiss回调中，不能再做onWillDismiss拦截。<br />建议在[二次确认](../../../ui/arkts-sheet-page.md#二次确认能力)场景使用。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | onWillSpringBackWhenDismiss<sup>12+</sup> | [Callback](./ts-types.md#callback12)<[SpringBackAction](#springbackaction12)> | 否 | 是    | 半模态页面交互式关闭前控制回弹函数。允许开发者注册，以控制半模态页面交互式关闭时的回弹效果。<br/>**说明：**<br />当用户触发执行下拉关闭操作并同时注册该回调函数与shouldDismiss或onWillDismiss时，由开发者控制下滑关闭时是否回弹。在回调函数中可以通过调用springBack来实现回弹效果。也可以通过不调用springBack来取消回弹效果。<br />若不注册该回调函数，但注册shouldDismiss或onWillDismiss时，则默认在下拉关闭时，会触发回弹效果，回弹后再根据shouldDismiss或onWillDismiss内的回调行为决定半模态是否关闭。<br />如果不注册该回调函数，且未注册shouldDismiss或onWillDismiss时，默认在下滑关闭时，触发半模态关闭。<br />侧边弹窗样式则是在侧拉关闭场景生效springBack。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| onHeightDidChange<sup>12+</sup> | Callback&lt;number&gt; | 否 | 是 | 半模态页面高度变化回调函数。<br/>**说明：**<br/>底部弹窗时，只有档位变化和拖拽跟手才返回每一帧高度，拉起半模态和避让软键盘只返回最后的高度，其他弹窗只在半模态拉起返回最后高度。<br/>返回值为px。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| onDetentsDidChange<sup>12+</sup> | Callback&lt;number&gt; | 否 | 是 | 半模态页面档位变化回调函数。<br/>**说明：**<br/>底部弹窗时，档位变化返回最后的高度。<br/>返回值为px。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| onHeightDidChange<sup>12+</sup> | Callback&lt;number&gt; | 否 | 是 | 半模态页面高度变化回调函数。<br/>**说明：**<br/>底部弹窗时，只有挡位变化和拖拽跟手才返回每一帧高度，拉起半模态和避让软键盘只返回最后的高度，其他弹窗只在半模态拉起返回最后高度。<br/>返回值为px。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| onDetentsDidChange<sup>12+</sup> | Callback&lt;number&gt; | 否 | 是 | 半模态页面挡位变化回调函数。<br/>**说明：**<br/>底部弹窗时，挡位变化返回最后的高度。<br/>返回值为px。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | onWidthDidChange<sup>12+</sup> | Callback&lt;number&gt; | 否 | 是 | 半模态页面宽度变化回调函数。<br/>**说明：**<br/>宽度变化时返回最后的宽度。<br/>返回值为px。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | onTypeDidChange<sup>12+</sup> | Callback&lt;[SheetType](#sheettype11枚举说明)&gt; | 否 | 是 | 半模态页面形态变化回调函数。<br/>**说明：**<br/>形态变化时返回最后的形态。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | borderWidth<sup>12+</sup> | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeWidths](ts-types.md#edgewidths9)&nbsp;\|&nbsp;[LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>  | 否 | 是 | 设置半模态页面的边框宽度。<br />可分别设置4个边框宽度。<br />默认值：0<br /> 百分比参数方式：以父元素半模态页面宽的百分比来设置半模态页面的边框宽度。<br />当半模态页面左边框和右边框大于半模态页面宽度，半模态页面上边框和下边框大于半模态页面高度，显示可能不符合预期。<br />**说明：**<br />底部弹窗时，底部边框宽度设置无效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -425,12 +425,12 @@ struct SheetTransitionExample {
 
 ![zh-cn_sheet](figures/zh-cn_sheet1.gif)
 
-### 示例2（设置三个不同高度的档位）
+### 示例2（设置三个不同高度的挡位）
 
-使用bindSheet的detents属性设置三个不同高度的档位。
+使用bindSheet的detents属性设置三个不同高度的挡位。
 
-1. dragBar拖拽条只在多个档位高度时生效；
-2. 区别于height属性在不同时刻设置不同档位的能力，多档位能力有手势切换档位高度的效果，且更适合固定高度区间的场景；
+1. dragBar拖拽条只在多个挡位高度时生效；
+2. 区别于height属性在不同时刻设置不同挡位的能力，多挡位能力有手势切换挡位高度的效果，且更适合固定高度区间的场景；
 3. 若高度范围不确定，且可能存在大于3个不同高度的场景，不建议使用detents属性。
 
 ```ts
@@ -575,13 +575,13 @@ struct bindSheetExample {
 
           onWillDismiss: ((dismissSheetAction: DismissSheetAction) => {
             if (dismissSheetAction.reason == DismissReason.SLIDE_DOWN) {
-              dismissSheetAction.dismiss(); //注册dismiss行为
+              dismissSheetAction.dismiss();// 注册dismiss行为
             }
           }),
 
           onWillSpringBackWhenDismiss: ((SpringBackAction: SpringBackAction) => {
-            //没有注册springBack，下拉半模态页面无回弹行为
-            //SpringBackAction.springBack();
+          // 没有注册springBack，下拉半模态页面无回弹行为
+          // SpringBackAction.springBack();
           }),
         })
     }
@@ -592,7 +592,7 @@ struct bindSheetExample {
 
 ### 示例5（设置内容区刷新时机）
 
-ScrollSizeMode.CONTINUOUS 持续更新内容适合detents多档位切换场景。
+ScrollSizeMode.CONTINUOUS 持续更新内容适合detents多挡位切换场景。
 
 建议在builder内减少UI加载耗时的操作，滑动时内容实时刷新对性能要求较高。
 
@@ -638,11 +638,11 @@ struct Index {
   }
 }
 ```
-跟手触发档位切换时，松手才触发面板内容高度刷新
+跟手触发挡位切换时，松手才触发面板内容高度刷新
 
 ![zh-cn_sheet](figures/zh-cn_sheet5_ltr.gif)
 
-跟手触发档位切换时，跟手时期就会触发面板内容高度刷新
+跟手触发挡位切换时，跟手时期就会触发面板内容高度刷新
 
 ![zh-cn_sheet](figures/zh-cn_sheet5_rtl.gif)
 
@@ -651,7 +651,7 @@ struct Index {
 通过设置SheetKeyboardAvoidMode为RESIZE_ONLY，当键盘高度变化时，根据高度变化实现滚动组件的滚动。
 
 ```ts
-//xxx.ets
+// xxx.ets
 import window from '@ohos.window';
 import { BusinessError } from '@ohos.base';
 

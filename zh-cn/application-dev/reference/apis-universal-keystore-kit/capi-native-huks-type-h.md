@@ -80,7 +80,7 @@
 | OH_HUKS_BITS_PER_BYTE 8 | 每个字节的比特位数。<br>**起始版本：** 9 |
 | OH_HUKS_MAX_KEY_SIZE 2048 | 密钥最大字节长度。<br>**起始版本：** 9 |
 | OH_HUKS_AE_NONCE_LEN 12 | AEAD一次性随机数的字节长度。<br>**起始版本：** 9 |
-| OH_HUKS_MAX_KEY_ALIAS_LEN 128 | 密钥别名最大字节长度。<br>**起始版本：** 9 |
+| OH_HUKS_MAX_KEY_ALIAS_LEN 64 | 密钥别名最大字节长度。<br>**起始版本：** 9 |
 | OH_HUKS_MAX_PROCESS_NAME_LEN 50 | 进程名最大字节长度。<br>**起始版本：** 9 |
 | OH_HUKS_MAX_RANDOM_LEN 1024 | 随机数的最大字节长度。<br>**起始版本：** 9 |
 | OH_HUKS_SIGNATURE_MIN_SIZE 64 | 签名结果的最小字节长度。<br>**起始版本：** 9 |
@@ -90,7 +90,7 @@
 | TOKEN_CHALLENGE_LEN 32 | 在进行访问控制时挑战值的字节长度。<br>**起始版本：** 9 |
 | SHA256_SIGN_LEN 32 | SHA256签名的字节长度。<br>**起始版本：** 9 |
 | TOKEN_SIZE 32 | 在进行访问控制时挑战值的字节长度。<br>**起始版本：** 9 |
-| MAX_AUTH_TIMEOUT_SECOND 600 | 最大用户认证超时时间。<br>**起始版本：** 9 |
+| MAX_AUTH_TIMEOUT_SECOND 60 | 最大用户认证超时时间。<br>**起始版本：** 9 |
 | SECURE_SIGN_VERSION 0x01000001 | 安全签名数据的版本。<br>**起始版本：** 9 |
 
 ## 枚举类型说明
@@ -511,7 +511,9 @@ enum OH_Huks_AuthStorageLevel
 | OH_HUKS_AUTH_STORAGE_LEVEL_DE = 0 | 表示密钥仅在开机后可访问。 |
 | OH_HUKS_AUTH_STORAGE_LEVEL_CE = 1 | 表示密钥仅在首次解锁后可访问。 |
 | OH_HUKS_AUTH_STORAGE_LEVEL_ECE = 2 | 表示密钥仅在解锁状态时可访问。 |
-
+> **说明：**
+>
+>  业务在使用存储等级为ECE的密钥时，建议通过感知[锁屏事件](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_screen_locked)来清理使用该密钥创建的会话资源，以保证安全性。
 ### OH_Huks_ChallengeType
 
 ```c

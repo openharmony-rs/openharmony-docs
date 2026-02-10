@@ -213,7 +213,7 @@
     private data: BasicDataSource = new BasicDataSource();
   
     aboutToAppear(): void {
-      for (let index = 1; index < 20; index++) { // 循环20次
+      for (let index = 1; index <= 20; index++) { // 循环20次
         this.data.dataArray.push(index);
       }
     }
@@ -643,7 +643,7 @@ struct Child {
     private data: MyDataSource = new MyDataSource();
   
     aboutToAppear() {
-      for (let i = 1; i < 1000; i++) { // 循环1000次
+      for (let i = 1; i <= 1000; i++) { // 循环1000次
         this.data.pushData(i + '');
       }
     }
@@ -870,7 +870,7 @@ struct Index {
       this.data.pushData(i.toString());
     }
 
-    for (let i = 30; i < 80; i++) { // 循环80次
+    for (let i = 30; i <= 80; i++) { // 循环50次
       this.data02.pushData(i.toString());
     }
   }
@@ -879,13 +879,13 @@ struct Index {
     Column() {
       Row() {
         Button('clear').onClick(() => {
-          for (let i = 1; i < 50; i++) { // 循环50次
+          for (let i = 1; i <= 50; i++) { // 循环50次
             this.dataSource.pop();
           }
         }).height(40)
 
         Button('update').onClick(() => {
-          for (let i = 1; i < 50; i++) { // 循环50次
+          for (let i = 1; i <= 50; i++) { // 循环50次
             let obj = new ListItemObject();
             obj.id = i;
             obj.uuid = Math.random().toString();
@@ -969,7 +969,7 @@ class ListItemObject {
 
 示例中使用\@Reusable装饰器修饰GridItem中的自定义组件ReusableChildComponent，即表示其具备组件复用的能力。
 
-使用aboutToReuse可以在 Grid 滑动时，从复用缓存中加入到组件树之前触发，从而更新组件状态变量，展示正确内容。
+使用aboutToReuse可以在Grid滑动时，从复用缓存中加入到组件树之前触发，从而更新组件状态变量，展示正确内容。
 
 需要注意的是无需在aboutToReuse中对[\@Link](arkts-link.md)、[\@StorageLink](arkts-appstorage.md#storagelink)、[\@ObjectLink](arkts-observed-and-objectlink.md)、[\@Consume](arkts-provide-and-consume.md)等自动更新值的状态变量进行更新，可能触发不必要的组件刷新。
 
@@ -1008,7 +1008,7 @@ struct MyComponent {
   private data: MyDataSource = new MyDataSource();
 
   aboutToAppear() {
-    for (let i = 1; i < 1000; i++) { // 循环1000次
+    for (let i = 1; i <= 1000; i++) { // 循环1000次
       this.data.pushData(i);
     }
   }
@@ -1080,7 +1080,7 @@ struct ReusableChildComponent {
     private listeners: DataChangeListener[] = [];
   
     constructor() {
-      for (let i = 0; i <= 60; i++) { // 循环60次
+      for (let i = 0; i < 60; i++) { // 循环60次
         this.dataArray.push(i);
       }
     }

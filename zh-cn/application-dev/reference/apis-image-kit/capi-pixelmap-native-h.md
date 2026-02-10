@@ -568,7 +568,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetEditable(OH_Pixelmap_Initial
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | 被操作的OH_Pixelmap_InitializationOptions指针。 |
-| bool *editable | 可编辑标志。 |
+| bool *editable | 可编辑标志。true表示可编辑，false表示不可编辑。 |
 
 **返回：**
 
@@ -593,7 +593,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetEditable(OH_Pixelmap_Initial
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | 被操作的OH_Pixelmap_InitializationOptions指针。 |
-| bool editable | 可编辑标志。 |
+| bool editable | 可编辑标志。true表示可编辑，false表示不可编辑。 |
 
 **返回：**
 
@@ -816,7 +816,7 @@ Image_ErrorCode OH_PixelmapImageInfo_GetDynamicRange(OH_Pixelmap_ImageInfo *info
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) *info | 被操作的OH_Pixelmap_ImageInfo指针。 |
-| bool *isHdr | 表示是否为HDR。true表示是HDR，false表示不是HDR。 |
+| bool *isHdr | 表示是否为高动态范围（HDR）的信息。true表示是高动态范围的信息，false表示不是高动态范围的信息。 |
 
 **返回：**
 
@@ -1411,8 +1411,8 @@ Image_ErrorCode OH_PixelmapNative_Flip(OH_PixelmapNative *pixelmap, bool shouldF
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 被操作的OH_PixelmapNative指针。 |
-| bool shouldFilpHorizontally | 是否水平翻转图像。 |
-| bool shouldFilpVertically | 是否垂直翻转图像。 |
+| bool shouldFilpHorizontally | 是否水平翻转图像。true表示进行水平翻转，false表示不进行水平翻转。 |
+| bool shouldFilpVertically | 是否垂直翻转图像。true表示进行垂直翻转，false表示不进行垂直翻转。 |
 
 **返回：**
 
@@ -1947,7 +1947,7 @@ Image_ErrorCode OH_PixelmapNative_IsReleased(OH_PixelmapNative *pixelmap, bool *
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 被检测的PixelMap。 |
-| bool *released | PixelMap是否已被释放。 |
+| bool *released | 获取的PixelMap的释放状态。true表示已被释放，false表示未被释放。 |
 
 **返回：**
 

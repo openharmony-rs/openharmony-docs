@@ -1201,7 +1201,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
 
   let info: photoAccessHelper.FormInfo = {
-    //formId是一个由纯数字组成的字符串，uri为图库中存在的图片的uri信息，图库中无图片创建卡片时uri需为空字符串。
+    // formId是一个由纯数字组成的字符串，uri为图库中存在的图片的uri信息，图库中无图片创建卡片时uri需为空字符串。
     formId : "20230116123",
     uri: photoAsset.uri,
   }
@@ -1270,7 +1270,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
 
   let info: photoAccessHelper.FormInfo = {
-    //formId是一个由纯数字组成的字符串，uri为图库中存在的图片的uri信息，图库中无图片创建卡片时uri需为空字符串。
+    // formId是一个由纯数字组成的字符串，uri为图库中存在的图片的uri信息，图库中无图片创建卡片时uri需为空字符串。
     formId: "20230116123",
     uri: photoAsset.uri,
   }
@@ -1323,7 +1323,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('removeFormInfoDemo');
   let info: photoAccessHelper.FormInfo = {
-    //formId是一个由纯数字组成的字符串，移除卡片的时候uri填空即可。
+    // formId是一个由纯数字组成的字符串，移除卡片的时候uri填空即可。
     formId: "20230116123",
     uri: "",
   }
@@ -1383,7 +1383,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('removeFormInfoDemo');
   let info: photoAccessHelper.FormInfo = {
-    //formId是一个由纯数字组成的字符串，移除卡片的时候uri填空即可。
+    // formId是一个由纯数字组成的字符串，移除卡片的时候uri填空即可。
     formId: "20230116123",
     uri: "",
   }
@@ -1431,7 +1431,7 @@ createAssetsForApp(bundleName: string, appName: string, tokenId: number, photoCr
 | -------- | ---------------------------------------- |
 | 201 |  Permission denied.         |
 | 202 |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 13900020 | Invalid argument. Possible causes: 1. The photoCreationConfigs is empty; 2. Incorrect photoCreationConfigs format. |
 | 14000011       | Internal system error.         |
 
 **示例：**
@@ -1757,8 +1757,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('startThumbnailCreationTask test start');
     phAccessHelper.startThumbnailCreationTask(predicates, testCallBack, (err, state) =>{
         if(err) {
-          console.log("error message: "+err?.message)
-          console.log("error code: " +err?.code)
+          console.error("error message: " + err?.message)
+          console.error("error code: " + err?.code)
           return
         }
         console.info(`startThumbnailCreationTask: response state ${state}`);
@@ -3811,6 +3811,63 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
+### isMediaDataReady<sup>24+</sup>
+isMediaDataReady(mediaDataKey: string): Promise&lt;boolean&gt;
+
+判断指定的媒体数据是否已经准备完成。
+
+​**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| mediaDataKey | string | 是   | 查询的媒体数据类型。<br>当前支持配置的取值为"date_added_year"，表示查询资产的添加时间（年月日）数据是否准备完成。|
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示媒体数据准备完成；返回false表示媒体数据未准备完成。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails, unsupported media data type. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('isMediaDataReady demo');
+
+  try {
+    let ready: boolean = await phAccessHelper.isMediaDataReady('date_added_year');
+    if (ready) {
+      console.info('date_added_year media data is ready.');
+    } else {
+      console.info('date_added_year media data is not ready.');
+    }
+  } catch (err) {
+    console.error(`isMediaDataReady failed: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## getAlbumIdByBundleName<sup>22+</sup>
 
 getAlbumIdByBundleName(bundleName: string): Promise&lt;number&gt;
@@ -4992,7 +5049,7 @@ createTemporaryCompatibleDuplicate(): Promise&lt;void&gt;
 | -------- | ---------------------------------------- |
 | 201   | Permission denied.        |
 | 202   | Called by non-system application.         |
-| 23800151    | Scene parameters validate failed, possible causes:<br>1. The original file does not exist locally in PhotoAsset;<br>2. The original file format is not within the supported range<br>3. The original file is a temporary file or is being editted.|
+| 23800151    | Scene parameters validate failed, possible causes:<br>1. The original file does not exist locally in PhotoAsset;<br>2. The original file format is not within the supported range<br>3. The original file is a temporary file or is being edited.|
 | 23800301   |Internal system error.It is recommended to retry and check the logs.Possible causes:<br> 1. Database corrupted.2. The file system is abnormal.3. The IPC request timed out.   |
 
 **示例：**
@@ -5692,15 +5749,12 @@ getThumbnailData(type: ThumbnailType): Promise&lt;ArrayBuffer&gt;
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
-错误码13900012，请参考[开发准备](../../media/medialibrary/photoAccessHelper-preparation.md)。
-
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission denied.  | 
 | 202      | Called by non-system application. |
-| 13900012     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. | 
+| 14000011       | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
 
@@ -6385,8 +6439,7 @@ getSelectedAssets(optionCheck: FetchOptions, filter?: string): Promise\<FetchRes
 
 **示例：**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper
-](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -6435,7 +6488,7 @@ async function example1(phAccessHelper: photoAccessHelper.PhotoAccessHelper) : P
       return;
     }
     let photoAssetList = fetchResult.getAllObjects();
-    console.info('get selected assets in album sucess');
+    console.info('get selected assets in album success');
   } catch (err) {
     console.error(`get selected assets in album fail, error: ${err?.code}, ${err?.message}`);
   }
@@ -7437,13 +7490,78 @@ async function example(context: Context, assetUri: string) {
 }
 ```
 
+### deleteAssetsPermanentlyWithUri<sup>24+</sup>
+
+static deleteAssetsPermanentlyWithUri(context: Context, assetUris: string[]): Promise\<void\>
+
+通过资产URI批量彻底删除照片或视频，不经过回收站。使用promise异步回调。
+
+> **说明：**
+>
+> - 对仅存在于本端设备的资产、仅存在于云端的资产、存在于本端设备和云端的资产，均可以彻底删除，不经过回收站。
+> - 此操作不可逆。执行此操作后文件资源将被彻底删除，请谨慎操作。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型             | 必填   | 说明    |
+| ---- | -------------- | ---- | ----- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 传入Ability实例的Context。 |
+| assetUris | string[] | 是    | 待删除的图片或视频URI数组，数组中元素个数不超过500个。 |
+
+**返回值：**
+
+| 类型                  | 说明         |
+| ------------------- | ---------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201   | Permission denied.       |
+| 202   | Called by nonsystem application.       |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Asset uri array size is empty or bigger than 500 . |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes:1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. | 
+
+**示例：**
+
+```ts
+async function example(context: Context, assetUri: string) {
+    console.info('deleteAssetsPermanentlyWithUri');
+    try {
+      await photoAccessHelper.MediaAssetChangeRequest.deleteAssetsPermanentlyWithUri(context, [assetUri]);
+      console.info('deleteAssetsPermanentlyWithUri success.');
+    } catch (err) {
+      console.error(`deleteAssetsPermanentlyWithUri failed with error: ${err.code}, ${err.message}`);
+    }
+}
+```
+
 ## MediaAssetsChangeRequest<sup>11+</sup>
 
 批量资产变更请求。
 
+### 属性
+
 **系统接口**：此接口为系统接口。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称           | 类型    | 只读   | 可选  | 说明   |
+| ------------ | ------ | ---- | ---- | ------- |
+| comment<sup>23+</sup>    | string | 是    | 否   | 用于[MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11)类型校验。<br>如果类（如MediaAssetsChangeRequest）对象可以访问，就说明该类是MediaChangeRequest的实现类。 |
 
 ### constructor<sup>11+</sup>
 
@@ -9342,8 +9460,6 @@ static createAnalysisAlbumRequest(context: Context, name: string, subtype: Album
 > 相册名的参数规格如下：
 > - 相册名字符串长度为[1, 255]。
 > - 不允许出现非法英文字符，包括：. .. \ / : * ? " ' ` < > | { } [ ]
-> - 英文字符不区分大小写。
-> - 不允许相册名重复命名。
 
 ​**模型约束**：此接口仅可在Stage模型下使用。
 
@@ -11335,7 +11451,7 @@ removeCustomRecords(optionCheck: FetchOptions): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 202 | Called by non-system application. |
-| 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The fileter criteria or fetchColumns that are not supported by options are transferred |
+| 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The filter criteria or fetchColumns that are not supported by options are transferred |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -11463,7 +11579,7 @@ async function example(context: Context) {
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| userId<sup>18+</sup> | number  | 否   | 指定访问空间的Id。默认值为-1。<br>当需要作为[PhotoViewPicker.select](arkts-apis-photoAccessHelper-PhotoViewPicker.md#select)的选择参数时，请申请ohos.permission.INTERACTA_CROSS_LOCAL_ACCOUNTS。<br>**系统接口**：此接口为系统接口。 |
+| userId<sup>18+</sup> | number  | 否   | 指定访问空间的Id。默认值为-1。<br>当需要作为[PhotoViewPicker.select](arkts-apis-photoAccessHelper-PhotoViewPicker.md#select)的选择参数时，请申请ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。<br>**系统接口**：此接口为系统接口。 |
 
 **示例：**
 
@@ -11557,7 +11673,7 @@ async function example(context: Context) {
 | DATE_TRASHED  | 'date_trashed'  | 删除日期（删除文件时间距1970年1月1日的秒数值）。**系统接口**：此接口为系统接口。                 |
 | HIDDEN  | 'hidden'            | 文件的隐藏状态。**系统接口**：此接口为系统接口。                               |
 | CAMERA_SHOT_KEY  | 'camera_shot_key'  | 锁屏相机拍照或录像的标记字段（仅开放给系统相机,其key值由系统相机定义）。**系统接口**：此接口为系统接口。            |
-| USER_COMMENT<sup>10+</sup>  | 'user_comment'            | 用户注释信息。**系统接口**：此接口为系统接口。           |
+| USER_COMMENT  | 'user_comment'            | 用户注释信息。**系统接口**：此接口为系统接口。           |
 | DATE_YEAR<sup>11+</sup>  | 'date_year'            | 创建文件的年份。**系统接口**：此接口为系统接口。           |
 | DATE_MONTH<sup>11+</sup>  | 'date_month'            | 创建文件的月份。**系统接口**：此接口为系统接口。           |
 | DATE_DAY<sup>11+</sup>  | 'date_day'            | 创建文件的日期。**系统接口**：此接口为系统接口。           |
@@ -11580,6 +11696,9 @@ async function example(context: Context) {
 | COMPOSITE_DISPLAY_STATUS<sup>22+</sup> | 'composite_display_status' | 复合图资产显示状态。**系统接口**：此接口为系统接口。 |
 | VIDEO_MODE<sup>22+</sup>  | 'video_mode' | 视频文件的log模式。**系统接口**：此接口为系统接口。 |
 | EDIT_DATA_EXIST<sup>22+</sup>  | 'edit_data_exist' | 资产的编辑数据已存在。**系统接口**：此接口为系统接口。 |
+| DATE_ADDED_YEAR<sup>24+</sup>  | 'date_added_year' | 资产添加时间的年份。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| DATE_ADDED_MONTH<sup>24+</sup> | 'date_added_month'| 资产添加时间的月份。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| DATE_ADDED_DAY<sup>24+</sup>   | 'date_added_day'  | 资产添加时间的日期。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 
 ## AlbumKeys
 
@@ -11887,7 +12006,7 @@ async function example(context: Context) {
 | HIDE_LOCATION_ONLY |  1 |  脱敏地理位置信息。 |
 | HIDE_SHOOTING_PARAM_ONLY |  2 |  脱敏拍摄参数。 |
 | NO_HIDE_SENSITIVE_TYPE |  3 |  不脱敏。 |
-| DEFAULT<sup>22+</sup> |  4 |  根据[ohos.permission.MEDIA_LOCATION](../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限进行脱敏。规格为：<br>- 有ohos.permission.MEDIA_LOCATION权限：不脱敏。<br>- 无ohos.permission.MEDIA_LOCATION权限：脱敏地理位置和拍摄参数。 |
+| DEFAULT<sup>23+</sup> |  4 |  根据[ohos.permission.MEDIA_LOCATION](../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限进行脱敏。规格为：<br>- 有ohos.permission.MEDIA_LOCATION权限：不脱敏。<br>- 无ohos.permission.MEDIA_LOCATION权限：脱敏地理位置信息。 |
 
 ## CloudEnhancementTaskStage<sup>13+</sup>
 

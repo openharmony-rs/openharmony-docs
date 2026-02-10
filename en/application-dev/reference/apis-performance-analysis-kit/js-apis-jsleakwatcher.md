@@ -5,7 +5,7 @@
 <!--Owner: @lu-tao-->
 <!--Designer: @martin-duan-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 This module provides the capability of monitoring whether JS objects are leaked.
 
@@ -14,7 +14,7 @@ This module provides the capability of monitoring whether JS objects are leaked.
 > The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
-<!--code_no_check-->
+
 ```js
 import { jsLeakWatcher } from '@kit.PerformanceAnalysisKit';
 ```

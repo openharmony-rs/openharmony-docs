@@ -13,7 +13,7 @@ photoAccessHelper提供监听指定媒体资源变更的接口。
 > 在进行功能开发前，请查阅[开发准备](photoAccessHelper-preparation.md)，了解如何获取相册管理模块实例和如何申请相册管理模块功能开发相关权限。
 > 文档中使用到photoAccessHelper的地方默认为使用[开发准备](photoAccessHelper-preparation.md)中获取的对象，如未添加此段代码报photoAccessHelper未定义的错误请自行添加。
 
-媒体资源变更通知相关接口的异步调用仅支持使用callback方式。以下只列出部分接口使用方式，其他使用方式可以查阅[API参考](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)。
+媒体资源变更通知相关接口的异步调用仅支持使用callback方式。以下只列出部分接口使用方式，其他使用方式可以查阅[模块描述](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)。
 
 如无特别说明，文档中涉及的待获取资源均视为已预置且数据库中存在相应数据。若按示例代码执行后资源为空，请确认文件是否已预置，以及数据库中是否存在该文件的数据。
 
@@ -28,7 +28,7 @@ photoAccessHelper提供监听指定媒体资源变更的接口。
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'和'ohos.permission.WRITE_IMAGEVIDEO'。
+- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'和'ohos.permission.WRITE_IMAGEVIDEO'。
 
 以对一张图片注册监听为例，通过删除图片触发回调。
 
@@ -79,7 +79,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'和'ohos.permission.WRITE_IMAGEVIDEO'。
+- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'和'ohos.permission.WRITE_IMAGEVIDEO'。
 
 以对一个用户相册注册监听为例，通过重命名相册触发回调。
 
@@ -145,7 +145,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'和'ohos.permission.WRITE_IMAGEVIDEO'。
+- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'和'ohos.permission.WRITE_IMAGEVIDEO'。
 
 下面以对所有PhotoAsset注册监听，通过将被监听的PhotoAsset删除触发监听回调为例。
 
@@ -195,7 +195,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'和'ohos.permission.WRITE_IMAGEVIDEO'。
+- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'和'ohos.permission.WRITE_IMAGEVIDEO'。
 
 下面以取消对图片指定的监听为例，取消监听后，删除图片不再触发对应的监听回调。
 

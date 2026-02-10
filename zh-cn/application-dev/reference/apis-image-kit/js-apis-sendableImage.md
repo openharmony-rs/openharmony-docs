@@ -33,7 +33,7 @@ createPixelMap(colors: ArrayBuffer, options: image.InitializationOptions): Promi
 | 参数名  | 类型                                             | 必填 | 说明                                                             |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
 | colors  | ArrayBuffer                                      | 是   | 默认按照BGRA_8888格式处理的颜色数组。                                        |
-| options | [image.InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建像素的属性，包括透明度，尺寸，缩略值，像素格式和是否可编辑。 |
+| options | [image.InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建像素的属性，包括透明度，尺寸，缩放值，像素格式和是否可编辑。 |
 
 **返回值：**
 
@@ -221,7 +221,7 @@ createPixelMapSync(colors: ArrayBuffer, options: image.InitializationOptions): P
 | 参数名  | 类型                                             | 必填 | 说明                                                             |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
 | colors  | ArrayBuffer                                      | 是   | BGRA_8888格式的颜色数组。                                        |
-| options | [image.InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建像素的属性，包括透明度，尺寸，缩略值，像素格式和是否可编辑。 |
+| options | [image.InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建像素的属性，包括透明度，尺寸，缩放值，像素格式和是否可编辑。 |
 
 **返回值：**
 | 类型                             | 说明                  |
@@ -2004,7 +2004,7 @@ createPixelMap(options?: image.DecodingOptions): Promise\<PixelMap>
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| Promise\<[PixelMap]> | Promise实例，用于异步返回创建结果。 |
+| Promise\<[PixelMap](#pixelmap)> | Promise实例，用于异步返回创建结果。 |
 
 **示例：**
 

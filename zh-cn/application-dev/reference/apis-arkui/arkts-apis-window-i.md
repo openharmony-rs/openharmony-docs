@@ -95,9 +95,11 @@
 | width  | number   | 否   | 否   | 矩形区域的宽度，单位为px，该参数应为整数。 |
 | height | number   | 否   | 否   | 矩形区域的高度，单位为px，该参数应为整数。 |
 
-## RectInVp<sup>23+</sup>
+## RectInVP<sup>23+</sup>
 
 窗口矩形区域，单位为vp。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -143,10 +145,10 @@
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |
 | visible    | boolean       | 否   | 否   | 避让区域是否可见。true表示可见；false表示不可见。 |
-| leftRect   | [RectInVp](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的左侧的矩形区，单位为vp。 |
-| topRect    | [RectInVp](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的顶部的矩形区，单位为vp。 |
-| rightRect  | [RectInVp](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的右侧的矩形区，单位为vp。 |
-| bottomRect | [RectInVp](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的底部的矩形区，单位为vp。 |
+| leftRect   | [RectInVP](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的左侧的矩形区，单位为vp。 |
+| topRect    | [RectInVP](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的顶部的矩形区，单位为vp。 |
+| rightRect  | [RectInVP](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的右侧的矩形区，单位为vp。 |
+| bottomRect | [RectInVP](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的底部的矩形区，单位为vp。 |
 
 ## UIEnvWindowAvoidAreaInfoPX<sup>23+</sup>
 
@@ -190,6 +192,8 @@
 ## SizeInVP<sup>23+</sup>
 
 窗口大小，单位为vp。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -276,7 +280,9 @@
 
 ## WindowLimits<sup>11+</sup>
 
-窗口尺寸限制参数。应用可以通过[getWindowLimits](arkts-apis-window-Window.md#getwindowlimits11)获得当前的窗口尺寸限制（单位为px）；从API version 22开始，还可以通过[getWindowLimitsVP](arkts-apis-window-Window.md#getwindowlimitsvp22)获取（单位为vp）。
+窗口尺寸限制参数。
+
+不同类型窗口系统限定尺寸存在差异，应用可以通过[getWindowLimits](arkts-apis-window-Window.md#getwindowlimits11)获得当前窗口的尺寸限制（单位为px）；从API version 22开始，还可以通过[getWindowLimitsVP](arkts-apis-window-Window.md#getwindowlimitsvp22)获取窗口尺寸限制（单位为vp）。
 
 窗口存在默认系统大小限制，应用可以通过[setWindowLimits](arkts-apis-window-Window.md#setwindowlimits11)设置窗口尺寸限制，或在应用[module.json5配置文件中的abilities标签](../../quick-start/module-configuration-file.md#abilities标签)中配置该属性。
 
@@ -286,13 +292,23 @@
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-| 名称      | 类型   | 只读 | 可选 | 说明                                                         |
+> **说明：**
+>
+> 针对maxWidth、maxHeight、minWidth、minHeight属性：
+>
+> - 默认单位为px，从API version 22开始支持通过pixelUnit设置单位为px或vp。
+> - 参数为整数，浮点数会向下取整。
+> - 默认值为0，表示属性不发生变化。
+> - 可生效范围下限值：系统限定的最小高度/宽度。
+> - 可生效范围上限值：系统限定的最大高度/宽度。
+
+| 名称      | 类型   | 只读 | 可选 | 说明                                                          |
 | :-------- | :----- | :--- | :--- | :----------------------------------------------------------- |
-| maxWidth  | number | 否   | 是   | 窗口的最大宽度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最大宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| maxHeight | number | 否   | 是   | 窗口的最大高度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最大高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| minWidth  | number | 否   | 是   | 窗口的最小宽度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最小宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| minHeight | number | 否   | 是   | 窗口的最小高度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最小高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | 否 | 是 | 窗口尺寸限制的单位，默认为px。可显式设置为px或vp。|
+| maxWidth  | number | 否   | 是   | 窗口的最大宽度。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| maxHeight | number | 否   | 是   | 窗口的最大高度。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| minWidth  | number | 否   | 是   | 窗口的最小宽度。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| minHeight | number | 否   | 是   | 窗口的最小高度。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | 否 | 是 | 窗口尺寸限制的单位，默认为px。可显式设置为px或vp。 |
 
 ## TitleButtonRect<sup>11+</sup>
 
@@ -438,6 +454,7 @@
 | 名称             | 类型                                                                     | 只读 | 可选 | 说明                                                         |
 | ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | animationParams             | [StartAnimationParams](arkts-apis-window-i.md#startanimationparams20)                 | 否   | 是   | 启动动画参数配置。默认值为undefined，若不配置将保持系统默认动效。 |
+| needAnimation<sup>23+</sup> | boolean | 否 | 是 | 是否启用窗口创建动效。<br>传入true时，跟随系统默认动效。传入false时，表示关闭窗口创建动效，仅在[自由窗口状态](../../windowmanager/window-terminology.md#自由窗口)的情况下生效。<br>此参数不填时，默认为undefined，跟随系统默认动效。<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## Callback<sup>15+</sup>
 
@@ -483,6 +500,7 @@
 ## RotationChangeResult<sup>19+</sup>
 
 应用在窗口旋转变化时返回的信息，系统会根据此信息改变当前窗口矩形区域大小。当返回主窗口旋转变化的信息时，系统不改变主窗口的大小。
+
 应用窗口与系统窗口大小存在限制，具体限制与相关规则可见[resize](arkts-apis-window-Window.md#resize9)。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
@@ -508,7 +526,7 @@
 | modalityType<sup>14+</sup>    | [ModalityType](arkts-apis-window-e.md#modalitytype14) | 否 | 是 | 子窗口模态类型，仅当子窗口启用模态属性时生效。WINDOW_MODALITY表示子窗口模态类型为模窗口子窗，APPLICATION_MODALITY表示子窗口模态类型为模应用子窗。不设置，则默认为WINDOW_MODALITY。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。       |
 | windowRect<sup>18+</sup>    | [Rect](arkts-apis-window-i.md#rect7) | 否 | 是 | 子窗口矩形区域，其中子窗口存在大小限制，具体参考[resize()](arkts-apis-window-Window.md#resize9)方法。不设置且未调用[showWindow()](arkts-apis-window-Window.md#showwindow9)显示前，则默认为{left: 0, top: 0, width: 0, height: 0}。具体参考[设置应用子窗口](../../windowmanager/application-window-stage.md#设置应用子窗口)开发指南。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | zLevel<sup>18+</sup>    | number | 否 | 是 | 子窗口层级级别，仅当子窗口未启用模态属性，即未设置isModal时生效。该参数是整数，取值范围为[-10000, 10000]，浮点数输入将向下取整。不设置，则默认为0。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
-| maximizeSupported<sup>19+</sup>    | boolean | 否 | 是 | 子窗口是否支持最大化特性。true表示子窗口支持最大化，false表示子窗口不支持最大化。不设置，则默认为false。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** 该参数在2in1设备、Tablet设备的[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下可正常调用，在其他设备类型中作为入参使用时，对应接口不生效不报错。|
+| maximizeSupported<sup>19+</sup>    | boolean | 否 | 是 | 子窗口是否支持最大化特性。true表示子窗口支持最大化，false表示子窗口不支持最大化。不设置，则默认为false。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** 该参数在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上，作为入参使用时，对应接口不生效不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上，作为入参使用时，对应接口不生效不报错，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效。|
 | outlineEnabled<sup>20+</sup>    | boolean | 否 | 是 | 子窗口是否显示描边。true表示子窗口显示描边，false表示子窗口不显示描边。不设置，则默认为false。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** 该参数在2in1设备中可正常调用，在其他设备类型中作为入参使用时，对应接口不生效不报错。|
 
 ## KeyFramePolicy<sup>20+</sup>

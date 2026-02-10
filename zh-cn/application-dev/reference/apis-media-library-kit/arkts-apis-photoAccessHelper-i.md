@@ -24,9 +24,17 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 >
 > 媒体变更请求必须在调用[applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)后才会生效。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+### 属性
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称           | 类型    | 只读   | 可选  | 说明   |
+| ------------ | ------ | ---- | ---- | ------- |
+| comment<sup>23+</sup>    | string | 是    | 否   | 用于MediaChangeRequest类型校验。<br>如果类（如[MediaAssetChangeRequest](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md)或[MediaAlbumChangeRequest](arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md)）对象可以访问，就说明该类是MediaChangeRequest的实现类。 |
 
 ## CreateOptions
 
@@ -229,3 +237,16 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | type       | [NotifyChangeType](arkts-apis-photoAccessHelper-e.md#notifychangetype20)  | 否 | 否 | 相册变更的通知类型。 |
 | albumChangeDatas   | [AlbumChangeData](#albumchangedata20)[] \| null | 否 | 否 | 变更的相册数组。如果需要重新查询所有相册，albumChangeDatas为null。  |
 | isForRecheck          | boolean  | 否 | 否 | 应用是否应该重新查询所有相册信息。true表示需要重新查询所有相册，false表示无需查询所有相册。<br>**注意：**<br>在大量相册操作或者异常通知的场景下，应用收到的isForRecheck为true，表示重新查询所有相册信息。  |
+
+## GridPinchMode<sup>23+</sup>
+ 	  	 
+picker内宫格的捏合模式。
+
+**模型约束**： 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+    
+| 名称                   | 类型                | 只读 | 可选 | 说明           |
+| ---- | ---- | ---- | ---- | ---- |
+| gridPinchModeType       | [GridPinchModeType](arkts-apis-photoAccessHelper-e.md#gridpinchmodetype23)  | 否 | 是 | 宫格捏合模式类型，配置即支持捏合功能，反之不支持捏合功能。 |
+| defaultGridLevel | [GridLevel](arkts-apis-photoAccessHelper-e.md#gridlevel23) | 否 | 是 | 拉起picker后宫格档位，默认为STANDARD。 |

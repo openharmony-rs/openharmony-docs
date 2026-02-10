@@ -9,7 +9,7 @@
 
 开发者可以调用本模块的Native API接口，完成视频编码，即将未压缩的视频数据压缩成视频码流。
 
-<!--RP3--><!--RP3End-->
+具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
 
 当前支持的编码能力请参考[AVCodec支持的格式](avcodec-support-formats.md#视频编码)。
 
@@ -387,7 +387,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_MATRIX_COEFFICIENTS, matrix);
     OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_I_FRAME_INTERVAL, iFrameInterval);
     OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_PROFILE, profile);
-    //只有当OH_BitrateMode = BITRATE_MODE_CQ时，才需要配置OH_MD_KEY_QUALITY。
+    // 只有当OH_BitrateMode = BITRATE_MODE_CQ时，才需要配置OH_MD_KEY_QUALITY。
     if (rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_CQ)) {
         OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_QUALITY, quality);
     } else if (rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_SQR)) {
@@ -879,6 +879,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     info.offset = 0;
     // 注意此处和Surface模式不同，pts需要应用填充，可根据预期显示的时间进行计算写入，如：帧数 * 1000000 / frameRate。
     info.pts = 0;
+    // 避免flags随机初始化为AVCODEC_BUFFER_FLAGS_EOS导致使用异常，flags需要赋值如0（普通帧标识）。
+    info.flags = 0;
     OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(bufferInfo->buffer, &info);
     if (setBufferRet != AV_ERR_OK) {
         // 异常处理。
@@ -947,12 +949,12 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     uint8_t* src = new uint8_t[srcRect.hStride * srcRect.wStride * 3 / 2]; // 源内存区域的指针。
     uint8_t* dstTemp = dst;
     uint8_t* srcTemp = src;
-    rect.height = ((rect.height + 1) / 2)  * 2 // 避免height为奇数；
-    rect.width = ((rect.width + 1) / 2)  * 2 // 避免width为奇数；
+    rect.height = ((rect.height + 1) / 2)  * 2; // 避免height为奇数。
+    rect.width = ((rect.width + 1) / 2)  * 2; // 避免width为奇数。
 
     // Y 将Y区域的源数据复制到另一个区域的目标数据中。
     for (int32_t i = 0; i < rect.height; ++i) {
-        //将源数据的一行数据复制到目标数据的一行中。
+        // 将源数据的一行数据复制到目标数据的一行中。
         memcpy(dstTemp, srcTemp, rect.width);
         // 更新源数据和目标数据的指针，进行下一行的复制。每更新一次源数据和目标数据的指针都向下移动一个wStride。
         dstTemp += dstRect.wStride;

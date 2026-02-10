@@ -129,7 +129,7 @@ try {
 
 ## formProvider.updateForm
 
-updateForm(formId: string, formBindingData: formBindingData.FormBindingData,callback: AsyncCallback&lt;void&gt;): void
+updateForm(formId: string, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback&lt;void&gt;): void
 
 Updates a widget. This API uses an asynchronous callback to return the result.
 

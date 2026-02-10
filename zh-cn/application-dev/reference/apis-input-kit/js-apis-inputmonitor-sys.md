@@ -81,7 +81,7 @@ struct Index {
 
 on(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void
 
-监听全局鼠标事件。
+监听全局鼠标事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -135,7 +135,7 @@ struct Index {
 
 on(type: 'mouse', rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): void
 
-监听鼠标事件，当鼠标移动至指定矩形区域内时，触发回调任务。
+监听鼠标事件，当鼠标移动至指定矩形区域内时，触发回调任务。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -301,7 +301,7 @@ struct Index {
 
 off(type: 'mouse', receiver?: Callback&lt;MouseEvent&gt;): void
 
-取消监听全局鼠标事件。
+取消监听全局鼠标事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -438,7 +438,7 @@ struct Index {
 
 on(type: 'pinch', receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt;): void
 
-监听全局触控板的捏合事件。
+监听全局触控板的捏合事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -491,7 +491,7 @@ struct Index {
 
 off(type: 'pinch', receiver?: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt;): void
 
-取消监听全局触控板的捏合事件。
+取消监听全局触控板的捏合事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -578,7 +578,7 @@ struct Index {
 
 on(type: 'threeFingersSwipe', receiver: Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt;): void
 
-监听全局触控板的三指滑动事件。
+监听全局触控板的三指滑动事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -631,7 +631,7 @@ struct Index {
 
 off(type: 'threeFingersSwipe', receiver?: Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt;): void
 
-取消监听全局触控板的三指滑动事件。
+取消监听全局触控板的三指滑动事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -718,7 +718,7 @@ struct Index {
 
 on(type: 'fourFingersSwipe', receiver: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
 
-监听全局触控板的四指滑动事件。
+监听全局触控板的四指滑动事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -771,7 +771,7 @@ struct Index {
 
 off(type: 'fourFingersSwipe', receiver?: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
 
-取消监听全局触控板的四指滑动事件。
+取消监听全局触控板的四指滑动事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -858,7 +858,7 @@ struct Index {
 
 on(type: 'rotate', fingers: number, receiver: Callback&lt;Rotate&gt;): void
 
-监听全局触控板的旋转事件。
+监听全局触控板的旋转事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -913,7 +913,7 @@ struct Index {
 
 off(type: 'rotate', fingers: number, receiver?: Callback&lt;Rotate&gt;): void
 
-取消监听全局触控板的旋转事件。
+取消监听全局触控板的旋转事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1001,7 +1001,7 @@ struct Index {
 
 on(type: 'pinch', fingers: number, receiver: Callback&lt;Pinch&gt;): void
 
-监听全局触控板的捏合事件。
+监听全局触控板的捏合事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1056,7 +1056,7 @@ struct Index {
 
 off(type: 'pinch', fingers: number, receiver?: Callback&lt;Pinch&gt;): void
 
-取消监听全局触控板的捏合事件。
+取消监听全局触控板的捏合事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1144,7 +1144,7 @@ struct Index {
 
 on(type: 'threeFingersTap', receiver: Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt;): void
 
-监听全局触控板的三指轻点事件。
+监听全局触控板的三指轻点事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1197,7 +1197,7 @@ struct Index {
 
 off(type: 'threeFingersTap', receiver?: Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt;): void
 
-取消监听全局触控板的三指轻点事件。
+取消监听全局触控板的三指轻点事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1284,7 +1284,7 @@ struct Index {
 
 on(type: 'touchscreenSwipe', fingers: number, receiver: Callback&lt;TouchGestureEvent&gt;): void
 
-监听触摸屏滑动手势事件。
+监听触摸屏滑动手势事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1339,7 +1339,7 @@ struct Index {
 
 off(type: 'touchscreenSwipe', fingers: number, receiver?: Callback&lt;TouchGestureEvent&gt;): void
 
-取消监听触摸屏滑动手势事件。
+取消监听触摸屏滑动手势事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1424,7 +1424,7 @@ struct Index {
 
 on(type: 'touchscreenPinch', fingers: number, receiver: Callback&lt;TouchGestureEvent&gt;): void
 
-监听触摸屏捏合手势事件。
+监听触摸屏捏合手势事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1479,7 +1479,7 @@ struct Index {
 
 off(type: 'touchscreenPinch', fingers: number, receiver?: Callback&lt;TouchGestureEvent&gt;): void
 
-取消监听触摸屏捏合手势事件。
+取消监听触摸屏捏合手势事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1564,7 +1564,7 @@ struct Index {
 
 on(type: 'keyPressed', keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEvent&gt;): void
 
-监听指定按键的按下抬起事件，支持监听META_LEFT键、META_RIGHT键、电源键、音量键。
+监听指定按键的按下抬起事件，支持监听META_LEFT键、META_RIGHT键、电源键、音量键。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1619,7 +1619,7 @@ struct Index {
 
 off(type: 'keyPressed', receiver?: Callback&lt;KeyEvent&gt;): void
 
-取消监听按键按下抬起事件。支持取消监听META_LEFT键、META_RIGHT键、电源键、音量键。需和inputMonitor.on('keyPressed')配套使用。
+取消监听按键按下抬起事件。支持取消监听META_LEFT键、META_RIGHT键、电源键、音量键。需和inputMonitor.on('keyPressed')配套使用。使用callback异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -1746,6 +1746,144 @@ try {
   const code = (error as BusinessError).code;
   const message = (error as BusinessError).message;
   console.error(`queryTouchEvents failed, error code: ${code}, message: ${message}.`);
+}
+```
+
+## inputMonitor.on('swipeInward')<sup>12+</sup>
+
+on(type: 'swipeInward', receiver: Callback&lt;SwipeInward&gt;): void
+
+监听向内滑动事件。使用callback异步回调。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**参数：**
+
+| 参数名   | 类型                                                        | 必填 | 说明                                 |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
+| type     | string                                                      | 是   | 输入事件类型，取唯一值'SwipeInward'。 |
+| receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward12)&gt;    | 是   | 回调函数，返回[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward12)&gt;。         |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Permission denied, non-system app called system api.         |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputMonitor.on('swipelnward', (SwipeInward) => {
+              console.info(`Monitor on success ${JSON.stringify(SwipeInward)}`);
+              return false;
+            });
+          } catch (error) {
+            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+## inputMonitor.off('swipeInward')<sup>12+</sup>
+
+off(type: 'swipeInward', receiver?: Callback&lt;SwipeInward&gt;): void
+
+取消监听向内滑动事件。使用callback异步回调。
+
+**需要权限：** ohos.permission.INPUT_MONITORING
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 输入事件类型，取值'swipeInward'。                    |
+| receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward12)&gt; | 否   | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.   |
+| 202  | SystemAPI permission error.  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputMonitor, SwipeInward } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        // 取消监听单个回调函数
+        let callback = (swipeInward: SwipeInward) => {
+          console.info(`Monitor on success ${JSON.stringify(swipeInward)}`);
+          return false;
+        };
+        try {
+          inputMonitor.on('swipeInward', callback);
+          inputMonitor.off("swipeInward", callback);
+          console.info(`Monitor off success`);
+        } catch (error) {
+          console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        }
+      })
+  }
+}
+}
+```
+
+```js
+import { inputMonitor, SwipeInward } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        // 取消监听所有回调函数
+        let callback = (swipeInward: SwipeInward) => {
+          console.info(`Monitor on success ${JSON.stringify(swipeInward)}`);
+          return false;
+        };
+        try {
+          inputMonitor.on('swipeInward', callback);
+          inputMonitor.off("swipeInward");
+          console.info(`Monitor off success`);
+        } catch (error) {
+          console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+        }
+      })
+  }
+}
 }
 ```
 

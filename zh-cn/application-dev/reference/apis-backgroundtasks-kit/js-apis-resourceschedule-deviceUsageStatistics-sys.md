@@ -333,7 +333,7 @@ queryAppGroup(bundleName : string): Promise&lt;number&gt;
 **示例**：
 
 ```javascript
-//有bundleName的promise
+// 有bundleName的promise
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName: string = "com.ohos.camera";

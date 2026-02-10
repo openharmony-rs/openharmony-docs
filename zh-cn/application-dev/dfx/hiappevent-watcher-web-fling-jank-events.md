@@ -5,7 +5,7 @@
 <!--Owner: @pxlstrong-->
 <!--Designer: @pxlstrong-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 [ArkWeb](../web/web-component-overview.md)提供了Web组件，用于在应用程序中显示Web页面内容，为开发者提供了丰富的控制Web页面能力。页面滑动一般分为两个阶段：拖滑和抛滑。拖滑指触摸屏幕时的滑动。抛滑指在手指离开屏幕后，页面仍以一定速度滑动。从API version 23开始，支持订阅ArkWeb抛滑丢帧事件，用户在使用应用时滑动web页面，如果出现抛滑丢帧且卡顿持续时间超过50ms及以上，就会被定义为ArkWeb抛滑丢帧，并生成相关丢帧数据。

@@ -585,8 +585,8 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
        }
        int32_t ImageSrc(std::string src)
        {
-           ArkUI_AttributeItem NODE_IAMGE_SRC_VALUE = {.string = src.c_str()};
-           return api_->setAttribute(node_, NODE_IMAGE_SRC, &NODE_IAMGE_SRC_VALUE);
+           ArkUI_AttributeItem NODE_IMAGE_SRC_VALUE = {.string = src.c_str()};
+           return api_->setAttribute(node_, NODE_IMAGE_SRC, &NODE_IMAGE_SRC_VALUE);
        }
        int32_t ImageSyncLoad()
        {

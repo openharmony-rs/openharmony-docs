@@ -31,13 +31,13 @@ Line(options?: LineOptions)
 
 **Parameters**
 
-| Name| Type| Mandatory| Description
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [LineOptions](ts-drawing-components-line.md#lineoptions18) | No| Options for drawing a line.<br>The values undefined and null are invalid.|
+| options | [LineOptions](ts-drawing-components-line.md#lineoptions18) | No| Options for drawing a line.<br>The **undefined** and **null** values are treated as invalid.|
 
 ## LineOptions<sup>18+</sup>
 
-Describes the options for drawing a line.
+Drawing attributes of the line component.
 
 > **NOTE**
 >
@@ -52,7 +52,7 @@ Describes the options for drawing a line.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | width<sup>7+</sup> | [Length](ts-types.md#length) | No| Yes| Width.<br>If the value is invalid or the default value is used, the width required for the content is used.<br>Default unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| height<sup>7+</sup> | [Length](ts-types.md#length) | No| Yes| Height.<br>If the value is invalid or not specified, the height required by the content is used.<br>Default unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| height<sup>7+</sup> | [Length](ts-types.md#length) | No| Yes| Height.<br>If the value is invalid or the default value is used, the height required for the content is used.<br>Default unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## Attributes
 
@@ -62,7 +62,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 startPoint(value: Array&lt;any&gt;)
 
-Sets the coordinates (relative coordinates) of the start point of the line. The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) attribute can be dynamically set. If the value is abnormal, the default value is used.
+Sets the start point (relative coordinate) of a line. The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) attribute can be dynamically set. If the value is abnormal, the default value is used.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -74,13 +74,13 @@ Sets the coordinates (relative coordinates) of the start point of the line. The 
 
 | Name| Type                                     | Mandatory| Description                                                        |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;any&gt; | Yes  | Coordinates (relative coordinates) of the start point of the line, in vp.<br>Default value: **[0, 0]**<br>If the value is undefined or null, the default value is used.|
+| value  | Array&lt;any&gt; | Yes  | Coordinates (relative coordinates) of the start point of the line, in vp.<br>Default value: **[0, 0]**<br>The **undefined** and **null** values are treated as the default value.|
 
 ### endPoint
 
 endPoint(value: Array&lt;any&gt;)
 
-Sets the coordinates (relative coordinates) of the end point of the line. The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) can be used to dynamically set attributes. If an exception occurs, the default value is used.
+Sets the end point of a line (relative coordinate). The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) can be used to dynamically set attributes. If an exception occurs, the default value is used.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -92,13 +92,13 @@ Sets the coordinates (relative coordinates) of the end point of the line. The [a
 
 | Name| Type                                     | Mandatory| Description                                                        |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;any&gt; | Yes  | Coordinates (relative coordinates) of the end point of the line, in vp.<br>Default value: **[0, 0]**<br>If the value is undefined or null, the default value is used.|
+| value  | Array&lt;any&gt; | Yes  | Coordinates (relative coordinates) of the end point of the line, in vp.<br>Default value: **[0, 0]**<br>The **undefined** and **null** values are treated as the default value.|
 
 ### fill
 
 fill(value: ResourceColor)
 
-Sets the color of the fill area. The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) can be used to dynamically set attributes. This attribute has no effect for the **Line** component, which cannot be used to draw a closed shape.
+Sets the color of the fill area. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). This attribute has no effect for the **Line** component, which cannot be used to draw a closed shape.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -110,7 +110,7 @@ Sets the color of the fill area. The [attributeModifier](ts-universal-attributes
 
 | Name| Type                                      | Mandatory| Description                                  |
 | ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the fill area.<br>Default value: **Color.Black**<br>If the value is undefined, null, NaN, or Infinity, the default value is used.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the fill area.<br>Default value: **Color.Black**<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.|
 
 ### fillOpacity
 
@@ -128,13 +128,13 @@ Sets the opacity of the fill area. This attribute can be dynamically set using [
 
 | Name| Type                                                        | Mandatory| Description                          |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------ |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Opacity of the fill area.<br>**NOTE**<br>If the value is in number format, the value range is [0.0, 1.0]. If the given value is less than 0.0, the value is 0.0. If the given value is greater than 1.0, the value is 1.0. Other abnormal values are processed as 1.0.<br>If the value is in string format, it can be a string of the value in number format. The value range is the same as that in number format.<br>If the value is in resource format, it can be a string in the system or application resources. The value range is the same as that in number format.<br>If the value is NaN, the value is processed as 0.0. If the value is undefined, null, or Infinity, the value is processed as 1.0.<br>Default value: **1.0**|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Opacity of the fill area.<br>**NOTE**<br>For the number type, the value range is [0.0, 1.0]. A value less than 0.0 is treated as **0.0**. A value greater than 1.0 is treated as **1.0**. Any other value is treated as **1.0**.<br>If the value is in string format, it can be a string of the value in number format. The value range is the same as that in number format.<br>If the value is in resource format, it can be a string in the system or application resources. The value range is the same as that in number format.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.<br>Default value: **1.0**.|
 
 ### stroke
 
 stroke(value: ResourceColor)
 
-Sets the stroke color. You can dynamically set this attribute using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is not set, the default border opacity is 0, that is, there is no border.
+Sets the stroke color. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is not set, the default stroke opacity is **0**, meaning no border is displayed.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -146,13 +146,13 @@ Sets the stroke color. You can dynamically set this attribute using [attributeMo
 
 | Name| Type                                      | Mandatory| Description      |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Stroke color.<br>If the value is undefined or null, the default value is used. If the value is NaN or Infinity, the value is processed as Color.Black.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Stroke color.<br>Invalid values **undefined** and **null** are treated as the default value. The **NaN** and **Infinity** values are treated as **Color.Black**.|
 
 ### strokeDashArray
 
 strokeDashArray(value: Array&lt;any&gt;)
 
-Sets stroke dashes. The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) can be dynamically set. Line segments may overlap when they intersect. The value must be greater than or equal to 0. Invalid values are treated as the default value.
+Sets the stroke dashes. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). Line segments may overlap when they intersect. The value must be greater than or equal to 0. Invalid values are treated as the default value.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -164,13 +164,13 @@ Sets stroke dashes. The [attributeModifier](ts-universal-attributes-attribute-mo
 
 | Name| Type                                     | Mandatory| Description                     |
 | ------ | ----------------------------------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | Yes  | Array defining the dash pattern for the line outline. Elements alternate between dash length and gap length.<br>Default value: [] (empty array)<br>Default unit: vp<br>If the value is undefined or null, the default value is used.<br>**NOTE**<br>Empty array: solid line<br>Even-numbered array: Elements cycle sequentially, for example, [a, b, c, d] represents: dash a -> gap b -> dash c -> gap d -> dash a -> ...<br>Odd-numbered array: Elements are duplicated to create an even-numbered array, for example, [a, b, c] becomes [a, b, c, a, b, c], representing: dash a -> gap b -> dash c -> gap a -> dash b -> gap c -> dash a -> ...|
+| value  | Array&lt;any&gt; | Yes  | Array defining the dash pattern for the line outline. Elements alternate between dash length and gap length.<br>Default value: [] (empty array)<br>Default unit: vp<br>The **undefined** and **null** values are treated as the default value.<br>**NOTE**<br>Empty array: solid line<br>Even-numbered array: Elements cycle sequentially, for example, [a, b, c, d] represents: dash a -> gap b -> dash c -> gap d -> dash a -> ...<br>Odd-numbered array: Elements are duplicated to create an even-numbered array, for example, [a, b, c] becomes [a, b, c, a, b, c], representing: dash a -> gap b -> dash c -> gap a -> dash b -> gap c -> dash a -> ...|
 
 ### strokeDashOffset
 
 strokeDashOffset(value: number | string)
 
-Sets the offset of the border drawing start point. The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) can be dynamically set.
+Sets the offset of the start point for drawing the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -182,13 +182,13 @@ Sets the offset of the border drawing start point. The [attributeModifier](ts-un
 
 | Name| Type                      | Mandatory| Description                                |
 | ------ | -------------------------- | ---- | ------------------------------------ |
-| value  | number \| string | Yes  | Offset of the start point for drawing the stroke.<br>Default value: **0**<br>Default unit: vp<br>If the value is undefined or null, the default value is used. If the value is NaN or Infinity, strokeDashArray becomes invalid.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Offset of the start point for drawing the stroke.<br>Default value: **0**<br>Default unit: vp<br>If the value is undefined or null, the default value is used. If the value is NaN or Infinity, strokeDashArray becomes invalid.|
 
 ### strokeLineCap
 
 strokeLineCap(value: LineCapStyle)
 
-Sets the cap style of the stroke. You can call this method to dynamically set attributes through [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+Sets the offset of the end point for drawing the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -200,13 +200,13 @@ Sets the cap style of the stroke. You can call this method to dynamically set at
 
 | Name| Type                                             | Mandatory| Description                                            |
 | ------ | ------------------------------------------------- | ---- | ------------------------------------------------ |
-| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | Yes  | Cap style of the stroke.<br>Default value: **LineCapStyle.Butt**<br>If the parameter value is undefined, null, NaN, or Infinity, the default value is used.|
+| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | Yes  | Cap style of the stroke.<br>Default value: **LineCapStyle.Butt**<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.|
 
 ### strokeLineJoin
 
 strokeLineJoin(value: LineJoinStyle)
 
-Sets the join style of the stroke. You can call this method to dynamically set attributes through [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The Line component does not support corners. Therefore, this attribute setting is invalid.
+Sets the join style of the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). This attribute has no effect for the **Line** component, which does not support corners.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -218,13 +218,13 @@ Sets the join style of the stroke. You can call this method to dynamically set a
 
 | Name| Type                                               | Mandatory| Description                                              |
 | ------ | --------------------------------------------------- | ---- | -------------------------------------------------- |
-| value  | [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) | Yes  | Join style of the stroke.<br>Default value: **LineJoinStyle.Miter**<br>If the parameter value is undefined, null, NaN, or Infinity, the default value is used.|
+| value  | [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) | Yes  | Join style of the stroke.<br>Default value: **LineJoinStyle.Miter**<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.|
 
 ### strokeMiterLimit
 
 strokeMiterLimit(value: number | string)
 
-Sets the limit value when the sharp angle is drawn as a miter. This attribute can be dynamically set in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The Line component does not support acute angle rendering. This attribute is invalid.
+Sets the maximum value for rendering an acute angle as an oblique angle. This attribute can be dynamically set in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). This attribute has no effect for the **Line** component, which cannot be used to draw a shape with a sharp angle.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -236,7 +236,7 @@ Sets the limit value when the sharp angle is drawn as a miter. This attribute ca
 
 | Name| Type                      | Mandatory| Description                                  |
 | ------ | -------------------------- | ---- | -------------------------------------- |
-| value  | number \| string | Yes  | Limit value when the sharp angle is drawn as a miter.<br>Default value: **4**<br>If the value is undefined, null, or NaN, the default value is used. If the value is Infinity, stroke becomes invalid.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Limit value when the sharp angle is drawn as a miter.<br>Default value: **4**<br>If the value is undefined, null, or NaN, the default value is used. If the value is Infinity, stroke becomes invalid.|
 
 ### strokeOpacity
 
@@ -254,13 +254,13 @@ Sets the stroke opacity. This attribute can be dynamically set using [attributeM
 
 | Name| Type                                                        | Mandatory| Description                      |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------- |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Stroke opacity.<br>Default value: transparency set by the [stroke](#stroke) API.<br>If the value is NaN, the value is 0.0. If the value is undefined, null, or Infinity, the value is 1.0.|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Stroke opacity.<br>Default value: opacity set by the [stroke](#stroke) API.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.|
 
 ### strokeWidth
 
 strokeWidth(value: Length)
 
-Sets the stroke width. You can call this method to set the attribute dynamically in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If of the string type, this parameter cannot be set in percentage. A percentage is processed as 1px.
+Sets the stroke width. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If of the string type, this parameter cannot be set in percentage. A percentage is processed as 1px.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -401,7 +401,7 @@ struct LineExample1 {
 
 ### Example 3: Setting the Stroke Dashes
 
-This example demonstrates how to use **strokeDashArray** to set the stroke dashes of a line.
+Draw the border gaps of a line using the strokeDashArray attribute.
 
 ```ts
 // xxx.ets
@@ -511,7 +511,7 @@ The following example shows how to use attributeModifier to dynamically set the 
 class MyLineModifier implements AttributeModifier<LineAttribute> {
   applyNormalAttribute(instance: LineAttribute): void {
     // A line with the start point (10, 10), end point (120, 10), stroke color #2787D9, stroke dash [20], left offset 15, line end style as a semicircle, stroke opacity 0.5, stroke width 10, and anti-aliasing enabled.
-    instance.startPoint([10,10])
+    instance.startPoint([10, 10])
     instance.endPoint([120, 10])
     instance.stroke("#2787D9")
     instance.strokeDashArray([20])

@@ -14,7 +14,7 @@ Implements a **GeolocationPermissions** object.
 >
 > - The initial APIs of this class are supported since API version 9.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 >
 > - You must load the **Web** component before calling the APIs in **GeolocationPermissions**.
 
@@ -148,7 +148,7 @@ Obtains the geolocation permission status of the specified origin. This API uses
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | origin   | string                 | Yes  | Index of the origin.                                          |
 | callback | AsyncCallback\<boolean> | Yes  | Callback used to return the geolocation permission status of the specified origin.<br>If the operation is successful, the value **true** means that the geolocation permission is granted, and **false** means the opposite.<br>If the operation fails, the geolocation permission status of the specified origin is not found.|
-| incognito<sup>11+</sup>    | boolean | No  | Whether to obtain the geolocation permission status of the specified origin in incognito mode. The value **true** means to obtain the geolocation permission status of the specified origin in incognito mode, and **false** means the opposite.<br>Default value: **false**.|
+| incognito<sup>11+</sup>    | boolean | No  | Whether to obtain the geolocation permission status of the specified origin in incognito mode. The value **true** means to obtain the geolocation permission status of the specified origin in incognito mode, and **false** means the opposite.<br>Default value: **false**.<br>If **null** or **undefined** is passed, error code **401** is thrown.|
 
 **Error codes**
 
@@ -207,7 +207,7 @@ Obtains the geolocation permission status of the specified origin. This API uses
 | Name| Type| Mandatory| Description            |
 | ------ | -------- | ---- | -------------------- |
 | origin | string   | Yes  | Index of the origin.|
-| incognito<sup>11+</sup>    | boolean | No  | Whether to obtain the geolocation permission status of the specified origin in incognito mode. The value **true** means to obtain the geolocation permission status of the specified origin in incognito mode, and **false** means the opposite.<br>Default value: **false**.|
+| incognito<sup>11+</sup>    | boolean | No  | Whether to obtain the geolocation permission status of the specified origin in incognito mode. The value **true** means to obtain the geolocation permission status of the specified origin in incognito mode, and **false** means the opposite.<br>Default value: **false**.<br>If **null** or **undefined** is passed, error code **401** is thrown.|
 
 **Return value**
 
@@ -271,7 +271,7 @@ Obtains the geolocation permission status of all origins. This API uses an async
 | Name  | Type                        | Mandatory| Description                                    |
 | -------- | ---------------------------- | ---- | ---------------------------------------- |
 | callback | AsyncCallback\<Array\<string>> | Yes  | Callback used to return the geolocation permission status of all origins.|
-| incognito<sup>11+</sup>    | boolean | No  | Whether to obtain the geolocation permission status of all origins in incognito mode. The value **true** means to obtain the geolocation permission status of all origins in incognito mode, and **false** means the opposite.<br>Default value: **false**.|
+| incognito<sup>11+</sup>    | boolean | No  | Whether to obtain the geolocation permission status of all origins in incognito mode. The value **true** means to obtain the geolocation permission status of all origins in incognito mode, and **false** means the opposite.<br>Default value: **false**.<br>If **null** or **undefined** is passed, error code **401** is thrown.|
 
 **Error codes**
 
@@ -328,7 +328,7 @@ Obtains the geolocation permission status of all origins. This API uses a promis
 
 | Name  | Type                        | Mandatory| Description                                    |
 | -------- | ---------------------------- | ---- | ---------------------------------------- |
-| incognito<sup>11+</sup>   | boolean | No  | Whether to obtain the geolocation permission status of all origins in incognito mode. The value **true** means to obtain the geolocation permission status of all origins in incognito mode, and **false** means the opposite.<br>Default value: **false**.|
+| incognito<sup>11+</sup>   | boolean | No  | Whether to obtain the geolocation permission status of all origins in incognito mode. The value **true** means to obtain the geolocation permission status of all origins in incognito mode, and **false** means the opposite.<br>Default value: **false**.<br>If **null** or **undefined** is passed, error code **401** is thrown.|
 
 **Return value**
 

@@ -363,15 +363,15 @@ export function func() {
 
     ```text
     used file 1: &entry/src/main/ets/pages/1&, cost time: 0.248ms
-        parentModule 1: &entry/src/main/ets/pages/outter& a
+        parentModule 1: &entry/src/main/ets/pages/outer& a
     ```  
 
     对应写法示例：
 
     ```ts
-    // entry/src/main/ets/pages/outter.ets
-    import { a } from './1' // outter文件从1文件中加载了a变量
-    console.info("example ", a); // a变量在outter文件执行时就被使用
+    // entry/src/main/ets/pages/outer.ets
+    import { a } from './1' // outer文件从1文件中加载了a变量
+    console.info("example ", a); // a变量在outer文件执行时就被使用
     ```  
 
 - 场景2：通过静态加载所加载的文件，存在多个父文件。  
@@ -379,16 +379,16 @@ export function func() {
     ```text
     // 说明：显示顺序不代表父文件的加载顺序。
     used file 1: &entry/src/main/ets/pages/1&, cost time: 0.248ms
-       parentModule 1: &entry/src/main/ets/pages/outter& a
+       parentModule 1: &entry/src/main/ets/pages/outer& a
        parentModule 2: &entry/src/main/ets/pages/innerinner& a
     ```
 
     对应写法示例：
 
     ```ts
-    // entry/src/main/ets/pages/outter.ets
-    import { a } from './1' // outter文件从1文件中加载了a变量
-    console.info("example ", a); // a变量在outter文件执行时就被使用
+    // entry/src/main/ets/pages/outer.ets
+    import { a } from './1' // outer文件从1文件中加载了a变量
+    console.info("example ", a); // a变量在outer文件执行时就被使用
 
     // entry/src/main/ets/pages/innerinner.ets
     import { a } from './1' // innerinner文件从1文件中加载了a变量
@@ -399,13 +399,13 @@ export function func() {
 
     ```text
     used file 1: &entry/src/main/ets/pages/1&, cost time: 0.248ms
-       parentModule 1: &entry/src/main/ets/pages/outter& a
+       parentModule 1: &entry/src/main/ets/pages/outer& a
     ```
 
     对应写法示例：
 
     ```ts
-    // entry/src/main/ets/pages/outter.ets
+    // entry/src/main/ets/pages/outer.ets
     import { a , b } from './1' // 加载1文件的多个变量
     console.info("example ", a); // a被使用
     export function myFunc() {

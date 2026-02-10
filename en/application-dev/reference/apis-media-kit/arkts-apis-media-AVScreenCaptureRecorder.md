@@ -81,7 +81,7 @@ let avCaptureConfig: media.AVScreenCaptureRecordConfig = {
 };
 
 avScreenCaptureRecorder.init(avCaptureConfig).then(() => {
-    console.info('Succeeded in initing avScreenCaptureRecorder');
+    console.info('Succeeded in initializing avScreenCaptureRecorder');
 }).catch((err: BusinessError) => {
     console.error(`Failed to init avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
 });
@@ -162,6 +162,7 @@ avScreenCaptureRecorder.stopRecording().then(() => {
 skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
 
 During screen capture, the application can exempt its privacy windows from security purposes. This API uses a promise to return the result.
+
 For example, if a user enters a password in this application during screen capture, the application will not display a black screen.
 
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture

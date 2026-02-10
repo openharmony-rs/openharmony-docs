@@ -48,6 +48,9 @@
 | [OH_MPEG4Profile](#oh_mpeg4profile) | OH_MPEG4Profile | MPEG4档次。 |
 | [OH_H263Profile](#oh_h263profile) | OH_H263Profile | H.263档次。 |
 | [OH_VC1Profile](#oh_vc1profile) | OH_VC1Profile | VC-1档次。 |
+| [OH_AV1Profile](#oh_av1profile) | OH_AV1Profile | AV1档次。 |
+| [OH_VP9Profile](#oh_vp9profile) | OH_VP9Profile | VP9档次。 |
+| [OH_WVC1Profile](#oh_wvc1profile) | OH_WVC1Profile | WVC1档次。 |
 | [OH_WMV3Profile](#oh_wmv3profile) | OH_WMV3Profile | WMV3档次。 |
 | [OH_AVOutputFormat](#oh_avoutputformat) | OH_AVOutputFormat | 封装器支持的输出文件格式。 |
 | [OH_AVSeekMode](#oh_avseekmode) | OH_AVSeekMode | 跳转模式。 |
@@ -63,6 +66,9 @@
 | [OH_MPEG4Level](#oh_mpeg4level) | OH_MPEG4Level | MPEG4级别。 |
 | [OH_H263Level](#oh_h263level) | OH_H263Level | H.263级别。 |
 | [OH_VC1Level](#oh_vc1level) | OH_VC1Level | VC-1级别。 |
+| [OH_AV1Level](#oh_av1level) | OH_AV1Level | AV1级别。 |
+| [OH_VP9Level](#oh_vp9level) | OH_VP9Level | VP9级别。 |
+| [OH_WVC1Level](#oh_wvc1level) | OH_WVC1Level | WVC1级别。 |
 | [OH_WMV3Level](#oh_wmv3level) | OH_WMV3Level | WMV3级别。 |
 | [OH_TemporalGopReferenceMode](#oh_temporalgopreferencemode) | OH_TemporalGopReferenceMode | 时域图片组参考模式。 |
 | [OH_BitrateMode](#oh_bitratemode) | OH_BitrateMode | 编码器的比特率模式。 |
@@ -95,6 +101,15 @@
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_MPEG2 | 视频MPEG2编解码器的MIME类型。<br>**起始版本：** 17<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_H263 | H.263视频编解码器的MIME类型。<br>**起始版本：** 17<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_VC1 | VC-1视频编解码器的MIME类型。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_AV1 | AV1视频编解码器的MIME类型。<br>**起始版本：** 23 |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_VP9 | VP9视频编解码器的MIME类型。<br>**起始版本：** 23 |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_VP8 | VP8视频编解码器的MIME类型。<br>**起始版本：** 23 |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_RV30 | RV30视频编解码器的MIME类型。<br>**起始版本：** 23 |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_RV40 | RV40视频编解码器的MIME类型。<br>**起始版本：** 23 |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_WVC1 | WVC1视频编解码器的MIME类型。<br>**起始版本：** 23 |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_DVVIDEO | DVVIDEO（Digital Video）视频编解码器的MIME类型。支持DV NTSC、DV PAL与DVCPRO HD。<br>**起始版本：** 23 |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_RAWVIDEO | RAWVIDEO视频编解码器的MIME类型。<br>**起始版本：** 23 |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_MPEG1 | MPEG1视频编解码器的MIME类型。<br>**起始版本：** 23 |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_MSVIDEO1 | MSVIDEO1（Microsoft Video 1）视频编解码器的MIME类型。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_WMV3 | WMV3视频编解码器的MIME类型。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_MJPEG | MJPEG（Motion JPEG）视频编解码器的MIME类型。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
@@ -124,6 +139,9 @@
 | const char * OH_AVCODEC_MIMETYPE_SUBTITLE_WEBVTT | WEBVTT字幕解封装器的MIME类型。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_RAW | RAW音频码流的MIME类型。<br>**起始版本：** 18<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_G711A | G711A音频解码器的MIME类型。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_AVCODEC_MIMETYPE_AUDIO_COOK | COOK（RealAudio Cook）音频解码器的MIME类型。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_AVCODEC_MIMETYPE_AUDIO_DTS | DTS（Digital Theater Systems）音频解码器的MIME类型。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_AVCODEC_MIMETYPE_AUDIO_DVAUDIO | DVAUDIO（Digital Video Audio）音频解码器的MIME类型。<br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_ED_KEY_TIME_STAMP | 表示surfacebuffer时间戳的键，值类型为int64_t。<br>**起始版本：** 9<br>**废弃版本：** 14<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_ED_KEY_EOS | 表示surfacebuffer流结束符的键，值类型为int32_t。<br>**起始版本：** 9<br>**废弃版本：** 14<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_TRACK_TYPE | 轨道媒体类型的键，值类型为int32_t，请参见[OH_MediaType](capi-native-avcodec-base-h.md#oh_mediatype)。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
@@ -219,7 +237,7 @@
 | const char * OH_MD_KEY_TRACK_REFERENCE_TYPE | 媒体文件辅助轨类型，值类型为string。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_TRACK_DESCRIPTION | 媒体文件辅助轨描述信息，值类型为string。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_ENABLE_SYNC_MODE | 使能音视频编解码同步模式的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。配置非0值将按照配置1处理，表示使能。该键是可选。<br>如果使能，需要注意：<br> 1. 编解码器不可设置回调函数。<br> 2. 必须使用缓冲区查询接口替代回调。<br> 3. 只能在Configure阶段使用。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_MD_KEY_VIDEO_DECODER_BLANK_FRAME_ON_SHUTDOWN | 用于指定视频解码器关闭时是否输出空白帧的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。配置非0值将按照配置1处理，表示使能。该键是可选的且仅用于视频解码Surface模式。<br> 使能后，视频解码器在停止或释放时将输出空白帧（通常为黑色），以确保显示设备平滑过渡到无信号状态。该机制可避免因解码器突然终止导致的显示残留或画面闪烁问题。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_VIDEO_DECODER_BLANK_FRAME_ON_SHUTDOWN | 用于指定视频解码器关闭时是否输出空白帧的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。配置非0值将按照配置1处理，表示使能。该键是可选的且仅用于视频解码Surface模式。<br> 使能后，调用[OH_VideoDecoder_Stop](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_stop)接口或者[OH_VideoDecoder_Destroy](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_destroy)接口时，视频解码器将输出空白帧（通常为黑色）。该机制可避免因解码器突然终止导致的显示残留。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_NATIVE_BUFFER_FORMAT | 用于查询视频编解码中native buffer像素格式的键，值类型为int32_t。<br> 具体取值请参见[OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format)中定义的像素格式。该键主要用于以下两种场景：<br> 1. 视频解码：调用[OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription)接口或[OH_AVCodecOnStreamChanged](capi-native-avcodec-base-h.md#oh_avcodeconstreamchanged)，从返回的OH_AVFormat对象中获取当前输出格式。<br> 2. 视频编码：调用[OH_VideoEncoder_GetInputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputdescription)接口，从返回的OH_AVFormat对象中获取当前输入格式。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_BUFFER_SKIP_SAMPLES_INFO | OH_AVBuffer中携带的键，用于跳过音频解码输出的数据。以采样点为单位，值类型为uint8_t*，当使用mp3、vorbis、opus解码器解码时，可设置该键。<br> 仅音频的起始、末尾帧携带该键，该键是可选的。使用方法一：解封装时获取该信息并设置到解码输入的OH_AVBuffer。<br> 1. 从[OH_AVCodecCallback](capi-codecbase-oh-avcodeccallback.md)的回调函数[OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)里获取解码用的OH_AVBuffer。<br> 2. 调用[OH_AVDemuxer_ReadSampleBuffer](capi-native-avdemuxer-h.md#oh_avdemuxer_readsamplebuffer)接口读取音频数据，该接口会自行设置OH_MD_KEY_BUFFER_SKIP_SAMPLES_INFO。<br> 3. 调用[OH_AudioCodec_PushInputBuffer](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_pushinputbuffer)输入OH_AVBuffer进行解码。<br> 使用方法二：构造该键需要的数据并设置到解码输入的OH_AVBuffer。<br> 开发者需要先创建一个10字节uint8_t[]类型的数组，具体结构如下：<br> 1. 数组0~3，这4个字节表示从当前帧第一个采样点开始往后跳过的采样点数，以小端序存储uint32_t值。<br> 2. 数组4~7，这4个字节表示从当前帧最后一个采样点开始往前跳过的采样点数（不大于1帧采样点数），以小端序存储uint32_t值。<br> 3. 数组8~9，这2个字节填0即可。<br><br>**起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 
@@ -435,6 +453,59 @@ VC-1档次。
 | VC1_PROFILE_MAIN = 1 | 主档次。 |
 | VC1_PROFILE_ADVANCED = 2 | 高级档次。 |
 
+### OH_AV1Profile
+
+```c
+enum OH_AV1Profile
+```
+
+**描述**
+
+AV1档次。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| AV1_PROFILE_MAIN = 0 | 主档次。 |
+| AV1_PROFILE_HIGH = 1 | 高级档次。 |
+| AV1_PROFILE_PROFESSIONAL = 2 | 专业档次。 |
+
+### OH_VP9Profile
+
+```c
+enum OH_VP9Profile
+```
+
+**描述**
+
+VP9档次。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| VP9_PROFILE_0 = 0 | 0档次。 |
+| VP9_PROFILE_1 = 1 | 1档次。 |
+| VP9_PROFILE_2 = 2 | 2档次。 |
+| VP9_PROFILE_3 = 3 | 3档次。 |
+
+### OH_WVC1Profile
+
+```c
+enum OH_WVC1Profile
+```
+
+**描述**
+
+WVC1档次。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| WVC1_PROFILE_ADVANCED = 0 | 高级档次。 |
+
 ### OH_WMV3Profile
 
 ```c
@@ -540,7 +611,7 @@ enum OH_BitsPerSample
 | 枚举项 | 描述 |
 | -- | -- |
 | SAMPLE_U8 = 0 | 8位无符号整数采样。 |
-| SAMPLE_S16LE = 1 | 16位有符号整数交样。 |
+| SAMPLE_S16LE = 1 | 16位有符号整数采样。 |
 | SAMPLE_S24LE = 2 | 24位有符号整数采样。 |
 | SAMPLE_S32LE = 3 | 32位有符号整数采样。 |
 | SAMPLE_F32LE = 4 | 32位浮点采样。 |
@@ -840,6 +911,94 @@ VC-1级别。
 | VC1_LEVEL_LOW = 5 | 低级别。 |
 | VC1_LEVEL_MEDIUM = 6 | 中级别。 |
 | VC1_LEVEL_HIGH = 7 |  高级别。 |
+
+### OH_AV1Level
+
+```c
+enum OH_AV1Level
+```
+
+**描述**
+
+AV1级别。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| AV1_LEVEL_20 = 0 | 2.0级别。 |
+| AV1_LEVEL_21 = 1 | 2.1级别。 |
+| AV1_LEVEL_22 = 2 | 2.2级别。 |
+| AV1_LEVEL_23 = 3 | 2.3级别。 |
+| AV1_LEVEL_30 = 4 | 3.0级别。 |
+| AV1_LEVEL_31 = 5 | 3.1级别。 |
+| AV1_LEVEL_32 = 6 | 3.2级别。 |
+| AV1_LEVEL_33 = 7 | 3.3级别。 |
+| AV1_LEVEL_40 = 8 | 4.0级别。 |
+| AV1_LEVEL_41 = 9 | 4.1级别。 |
+| AV1_LEVEL_42 = 10 | 4.2级别。 |
+| AV1_LEVEL_43 = 11 | 4.3级别。 |
+| AV1_LEVEL_50 = 12 | 5.0级别。 |
+| AV1_LEVEL_51 = 13 | 5.1级别。 |
+| AV1_LEVEL_52 = 14 | 5.2级别。 |
+| AV1_LEVEL_53 = 15 | 5.3级别。 |
+| AV1_LEVEL_60 = 16 | 6.0级别。 |
+| AV1_LEVEL_61 = 17 | 6.1级别。 |
+| AV1_LEVEL_62 = 18 | 6.2级别。 |
+| AV1_LEVEL_63 = 19 | 6.3级别。 |
+| AV1_LEVEL_70 = 20 | 7.0级别。 |
+| AV1_LEVEL_71 = 21 | 7.1级别。 |
+| AV1_LEVEL_72 = 22 | 7.2级别。 |
+| AV1_LEVEL_73 = 23 | 7.3级别。 |
+
+### OH_VP9Level
+
+```c
+enum OH_VP9Level
+```
+
+**描述**
+
+VP9级别。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| VP9_LEVEL_1 = 0 | 1级别。 |
+| VP9_LEVEL_11 = 1 | 1.1级别。 |
+| VP9_LEVEL_2 = 2 | 2级别。 |
+| VP9_LEVEL_21 = 3 | 2.1级别。 |
+| VP9_LEVEL_3 = 4 | 3级别。 |
+| VP9_LEVEL_31 = 5 | 3.1级别。 |
+| VP9_LEVEL_4 = 6 | 4级别。 |
+| VP9_LEVEL_41 = 7 | 4.1级别。 |
+| VP9_LEVEL_5 = 8 | 5级别。 |
+| VP9_LEVEL_51 = 9 | 5.1级别。 |
+| VP9_LEVEL_52 = 10 | 5.2级别。 |
+| VP9_LEVEL_6 = 11 | 6级别。 |
+| VP9_LEVEL_61 = 12 | 6.1级别。 |
+| VP9_LEVEL_62 = 13 | 6.2级别。 |
+
+### OH_WVC1Level
+
+```c
+enum OH_WVC1Level
+```
+
+**描述**
+
+WVC1级别。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| WVC1_LEVEL_L0 = 0 | L0级别。 |
+| WVC1_LEVEL_L1 = 1 | L1级别。 |
+| WVC1_LEVEL_L2 = 2 | L2级别。 |
+| WVC1_LEVEL_L3 = 3 | L3级别。 |
+| WVC1_LEVEL_L4 = 4 | L4级别。 |
 
 ### OH_WMV3Level
 

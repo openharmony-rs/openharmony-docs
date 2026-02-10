@@ -193,6 +193,7 @@
       - [拖拽控制](arkui-ts/ts-universal-attributes-drag-drop.md)
       - [拖拽排序](arkui-ts/ts-universal-attributes-drag-sorting.md)
       - [悬浮态效果](arkui-ts/ts-universal-attributes-hover-effect.md)
+      - [点击音效](arkui-ts/ts-universal-attributes-click-sound.md)
       - 触摸交互控制<!--touch-interactions-->
         - [触摸热区设置](arkui-ts/ts-universal-attributes-touch-target.md)
         - [触摸测试控制](arkui-ts/ts-universal-attributes-hit-test-behavior.md)
@@ -203,6 +204,9 @@
       - [Popup控制](arkui-ts/ts-universal-attributes-popup.md)
       - [Tips控制](arkui-ts/ts-universal-attributes-tips.md)
       - [菜单控制](arkui-ts/ts-universal-attributes-menu.md)
+      <!--Del-->
+      - [菜单控制（系统接口）](arkui-ts/ts-universal-attributes-menu-sys.md)
+      <!--DelEnd-->
     - [无障碍属性](arkui-ts/ts-universal-attributes-accessibility.md)
     - 模态转场设置<!--transition-->
       - [全屏模态转场](arkui-ts/ts-universal-attributes-modal-transition.md)
@@ -210,7 +214,7 @@
       <!--Del-->
       - [半模态转场 (系统接口)](arkui-ts/ts-universal-attributes-sheet-transition-sys.md)
       <!--DelEnd-->
-    - 动态属性与自定义<!--attibute-modifier-property-->
+    - 动态属性与自定义<!--attribute-modifier-property-->
       - [动态属性设置](arkui-ts/ts-universal-attributes-attribute-modifier.md)
       - [动态手势设置](arkui-ts/ts-universal-attributes-gesture-modifier.md)
       - [自定义绘制](arkui-ts/ts-universal-attributes-draw-modifier.md)
@@ -290,7 +294,7 @@
     - [Toggle](arkui-ts/ts-basic-components-toggle.md)
     - [Checkbox](arkui-ts/ts-basic-components-checkbox.md)
     - [CheckboxGroup](arkui-ts/ts-basic-components-checkboxgroup.md)
-    - [Picker](arkui-ts/ts-container-picker.md)
+    - [UIPickerComponent](arkui-ts/ts-container-ui-picker-component.md)
     - [CalendarPicker](arkui-ts/ts-basic-components-calendarpicker.md)
     - [DatePicker](arkui-ts/ts-basic-components-datepicker.md)
     - [TextPicker](arkui-ts/ts-basic-components-textpicker.md)
@@ -298,6 +302,9 @@
     - [Radio](arkui-ts/ts-basic-components-radio.md)
     - [Rating](arkui-ts/ts-basic-components-rating.md)
     - [Select](arkui-ts/ts-basic-components-select.md)
+    <!--Del-->    
+    - [Select（系统接口）](arkui-ts/ts-basic-components-select-sys.md)
+    <!--DelEnd-->
     - [Slider](arkui-ts/ts-basic-components-slider.md)
     - [ArcButton](arkui-ts/ohos-arkui-advanced-ArcButton.md)
     - [ArcSlider](arkui-ts/ohos-arkui-advanced-ArcSlider.md)
@@ -321,6 +328,7 @@
     <!--Del-->
     - [文本组件公共接口 (系统接口)](arkui-ts/ts-text-common-sys.md)
     - [TextInput (系统接口)](arkui-ts/ts-basic-components-textinput-sys.md)
+    - [TextArea (系统接口)](arkui-ts/ts-basic-components-textarea-sys.md)
     - [属性字符串 (系统接口)](arkui-ts/ts-universal-styled-string-sys.md)
     - [RichEditor(系统接口)](arkui-ts/ts-basic-components-richeditor-sys.md)
     <!--DelEnd-->
@@ -604,8 +612,10 @@
     - [ArkUI_GestureEventTargetInfo](capi-arkui-nativemodule-arkui-gestureeventtargetinfo.md)
     - [ArkUI_ParallelInnerGestureEvent](capi-arkui-nativemodule-arkui-parallelinnergestureevent.md)
     - [ArkUI_TouchRecognizer](capi-arkui-nativemodule-arkui-touchrecognizer.md)
+    - [ArkUI_TouchRecognizer*](capi-arkui-nativemodule-arkui-touchrecognizerhandle.md)
     - [ArkUI_TouchRecognizerHandle*](capi-arkui-nativemodule-arkui-touchrecognizerhandlearray.md)
-    - [ArkUI_GestureRecognizerHandle*](capi-arkui-nativemodule-arkui-gesturerecognizerhandle.md)
+    - [ArkUI_GestureRecognizer*](capi-arkui-nativemodule-arkui-gesturerecognizerhandle.md)
+    - [ArkUI_GestureRecognizerHandle*](capi-arkui-nativemodule-arkui-gesturerecognizerhandlearray.md)
     - [ArkUI_AccessibleAction](capi-arkui-accessibility-arkui-accessibleaction.md)
     - [ArkUI_AccessibleRect](capi-arkui-accessibility-arkui-accessiblerect.md)
     - [ArkUI_AccessibleRangeInfo](capi-arkui-accessibility-arkui-accessiblerangeinfo.md)
@@ -630,7 +640,7 @@
     - [OH_NativeXComponent_ExtraMouseEventInfo](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-extramouseeventinfo.md)
     - [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)
     - [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)
-    - [OHNativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md)
+    - [NativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md)
     - [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)
     - [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)
     - [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)
@@ -650,11 +660,18 @@
     - [ArkUI_IntSize](capi-arkui-nativemodule-arkui-intsize.md)
     - [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)
     - [ArkUI_Margin](capi-arkui-nativemodule-arkui-margin.md)
+    - [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)
+    - [ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)
+    - [ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)
+    - [ArkUI_Matrix4TranslationOptions](capi-arkui-nativemodule-arkui-matrix4translationoptions.md)
+    - [ArkUI_PointF](capi-arkui-nativemodule-arkui-pointf.md)
     - [ArkUI_TranslationOptions](capi-arkui-nativemodule-arkui-translationoptions.md)
     - [ArkUI_ScaleOptions](capi-arkui-nativemodule-arkui-scaleoptions.md)
     - [ArkUI_RotationOptions](capi-arkui-nativemodule-arkui-rotationoptions.md)
+    - [ArkUI_NativeDialog](capi-arkui-nativemodule-arkui-nativedialog.md)
     - [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)
     - [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)
+    - [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md)
     - [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md)
     - [ArkUI_NativeDialog*](capi-arkui-nativemodule-arkui-nativedialog8h.md)
     - [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)
@@ -693,7 +710,7 @@
     - [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)
     - [ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)
     - [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)
-    - [ArkUI_TextMarqueeOption](capi-arkui-nativemodule-arkui-textmarqueeoption.md)
+    - [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)
     - [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)
     - [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)
     - [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)

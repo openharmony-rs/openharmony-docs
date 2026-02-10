@@ -4,7 +4,7 @@
 <!--Owner: @chenshi51-->
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 
@@ -191,10 +191,10 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |
-| rss | number | 进程实际占用内存大小，单位KB。 |
-| sys_free_mem | number | 空闲内存大小，单位KB。 |
-| sys_avail_mem | number | 可用内存大小，单位KB。 |
-| sys_total_mem | number | 总内存大小，单位KB。 |
+| rss | number | 进程实际占用内存大小，单位KB。对应[cppcrash日志](cppcrash-guidelines.md#日志规格)或[jscrash日志](jscrash-guidelines.md#日志规格)中Process Memory字段。|
+| sys_free_mem | number | 空闲内存大小，单位KB。对应[cppcrash日志](cppcrash-guidelines.md#日志规格)或[jscrash日志](jscrash-guidelines.md#日志规格)中Device Memory字段的Free。|
+| sys_avail_mem | number | 可用内存大小，单位KB。对应[cppcrash日志](cppcrash-guidelines.md#日志规格)或[jscrash日志](jscrash-guidelines.md#日志规格)中Device Memory字段的Available。|
+| sys_total_mem | number | 总内存大小，单位KB。对应[cppcrash日志](cppcrash-guidelines.md#日志规格)或[jscrash日志](jscrash-guidelines.md#日志规格)中Device Memory字段的Total。|
 
 ## 崩溃事件自定义参数设置
 

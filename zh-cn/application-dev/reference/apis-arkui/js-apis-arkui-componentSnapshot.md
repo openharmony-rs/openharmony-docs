@@ -17,7 +17,7 @@
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 对于使用[XComponent](arkui-ts/ts-basic-components-xcomponent.md)的场景，例如：Video或者相机流媒体展示类组件，不建议使用组件截图相关接口，建议从[surface](../apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11)直接获取图片。
+> - 对于使用[XComponent](arkui-ts/ts-basic-components-xcomponent.md)的场景，例如：Video或者相机流媒体展示类组件，不建议使用组件截图相关接口，建议使用[createPixelMapFromSurface](../apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11)直接获取图片。
 >
 > - 如果组件自身内容不能填满组件大小区域，那么剩余位置截图返回的内容为透明像素。如果组件使用了[图像效果](arkui-ts/ts-universal-attributes-image-effect.md)类属性或其他的效果类属性，则可能产生非用户预期的截图结果。请排查是否需要填充组件透明内容区域，或使用[窗口截图](arkts-apis-window-Window.md#snapshot9)替代。
 >
@@ -58,13 +58,12 @@ get(id: string, callback: AsyncCallback<image.PixelMap>, options?: SnapshotOptio
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID | 错误信息            |
 | -------- | ------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001   | Invalid ID. |
-| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
 
 > **说明：**
 > 
@@ -147,13 +146,12 @@ get(id: string, options?: SnapshotOptions): Promise<image.PixelMap>
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[接口调用异常错误码](errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                |
 | ------ | ------------------- |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
-| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
 
 > **说明：**
 > 
@@ -243,8 +241,6 @@ createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | The builder is not a valid build function.                   |
 | 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
-| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
-| 160004   | isAuto(true) is not supported for offscreen node snapshots. |
 
 > **说明：**
 > 
@@ -359,8 +355,6 @@ createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boo
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | The builder is not a valid build function. |
 | 160001 | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
-| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
-| 160004 | isAuto(true) is not supported for offscreen node snapshots. |
 
 > **说明：**
 > 
@@ -750,3 +744,4 @@ struct SnapshotExample {
     }.width("100%").align(Alignment.Center)
   }
 }
+```
