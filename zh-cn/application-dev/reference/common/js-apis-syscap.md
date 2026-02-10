@@ -41,10 +41,10 @@ if (isLocationAvailable) {
             console.error('err=' + JSON.stringify(err));
         }
         if (location) {
-            console.log('location=' + JSON.stringify(location));
+            console.info('location=' + JSON.stringify(location));
         }
     });
 } else {
-    console.log('Location not by this device.');
+    console.info('Location not by this device.');
 }
   ```
