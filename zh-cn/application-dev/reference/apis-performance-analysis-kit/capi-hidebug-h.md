@@ -396,9 +396,12 @@ HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatc
 **描述**
 
 通过设置基础库C库中的MallocDispatch表，将原始内存操作函数（例如：malloc/free/calloc/realloc/mmap/munmap）临时替换为开发者自定义的内存操作函数， MallocDispatch表是基础库C库中封装malloc/calloc/realloc/free等内存操作函数的结构体。HiDebug_MallocDispatch只是MallocDispatch结构体的一部分。
+
 > **注意**：
 >
-> 禁止在自定义内存操作函数中直接调用libc标准库中的malloc/free/calloc/realloc/mmap/munmap等内存操作函数，否则会导致死锁。禁止在自定义malloc方法中使用hilog打印日志，否则会导致死锁。
+> 禁止在自定义内存操作函数中直接调用libc标准库中的malloc/free/calloc/realloc/mmap/munmap等内存操作函数，否则会导致死锁。
+>
+> 禁止在自定义malloc方法中使用hilog打印日志，否则会导致死锁。
 
 **起始版本：** 20
 
