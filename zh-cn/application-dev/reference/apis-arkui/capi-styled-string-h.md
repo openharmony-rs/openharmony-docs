@@ -8,7 +8,7 @@
 
 ## 概述
 
-在Native侧定义ArkUIText组件的文本样式和文本布局管理器。
+在Native侧定义[组件类型](../apis-arkui/capi-native-node-h.md#arkui_nodetype)为ARKUI_NODE_TEXT的组件的文本样式和文本布局管理器。
 
 **引用文件：** <arkui/styled_string.h>
 
