@@ -98,9 +98,9 @@ Enumerates charging states.
 
 | Name     | Value | Description           |
 | ------- | ---- | --------------- |
-| NONE    | 0    | Unknown state.    |
+| NONE    | 0    | The battery is not being charged.    |
 | ENABLE  | 1    | The battery is being charged. |
-| DISABLE | 2    | The battery is not being charged. |
+| DISABLE | 2    | The battery charging is stopped. |
 | FULL    | 3    | The battery is fully charged.|
 
 ## BatteryHealthState
