@@ -21799,6 +21799,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateInputUndefined.ets",
+				"functions":[
+					{
+						"end_line":43,
+						"name":"state_input_undefined",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
@@ -23774,6 +23784,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageOne.ets",
+				"functions":[
+					{
+						"end_line":59,
+						"name":"appstorage_page_one",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
@@ -24888,6 +24908,26 @@
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeThisObject.ets",
 				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeUndefined.ets",
+				"functions":[
+					{
+						"end_line":43,
+						"name":"provide_consume_undefined",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeArraySync.ets",
+				"functions":[
+					{
+						"end_line":78,
+						"name":"provide_consume_array_sync",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
@@ -26014,6 +26054,26 @@
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFifteen.ets",
 				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwenty.ets",
+				"functions":[
+					{
+						"end_line":44,
+						"name":"prop_twenty_start",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageNineteen.ets",
+				"functions":[
+					{
+						"end_line":75,
+						"name":"prop_nineteen_start",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -26290,6 +26350,16 @@
 					{
 						"end_line":52,
 						"name":"localStorage_page_two_single_syn",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalArraySample.ets",
+				"functions":[
+					{
+						"end_line":59,
+						"name":"localStorage_local_array_sample",
 						"start_line":15
 					}
 				]
