@@ -1052,7 +1052,7 @@ ArkTS-Dyn示例：
 
 ArkTS-Sta示例：
   ```ts
-  // xxx.ets
+  'use static'
   import { Web, Column, Component, Entry, OnPageBeginEvent } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -1119,7 +1119,7 @@ ArkTS-Dyn示例：
 
 ArkTS-Sta示例：
   ```ts
-  // xxx.ets
+  'use static'
   import { Web, Column, Component, Entry, OnPageEndEvent } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -1186,7 +1186,7 @@ ArkTS-Dyn示例：
 
 ArkTS-Sta示例：
   ```ts
-  // xxx.ets
+  'use static'
   import { Web, Column, Component, Entry, OnLoadStartedEvent } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -1253,7 +1253,7 @@ ArkTS-Dyn示例：
 
 ArkTS-Sta示例：
   ```ts
-  // xxx.ets
+  'use static'
   import { Web, Column, Component, Entry, OnLoadFinishedEvent } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -1321,7 +1321,6 @@ ArkTS-Sta: onProgressChange(callback: Callback\<OnProgressChangeEvent\> | undefi
 
 ArkTS-Sta示例：
   ```ts
-  // xxx.ets
   'use static'
   import { webview } from '@kit.ArkWeb';
   import { Entry, Column, Component, Web, OnProgressChangeEvent } from '@kit.ArkUI';
@@ -2798,7 +2797,7 @@ ArkTS-Sta: onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticat
   ArkTS-Sta示例：
 
   ```ts
-  // xxx.ets API version 22
+  'use static'
   import { webview } from '@kit.ArkWeb';
   import { Entry, Component, Column, Web } from "@ohos.arkui.component"
   import { UIContext } from '@ohos.arkui.UIContext';
@@ -5500,7 +5499,7 @@ ArkTS-Dyn示例：
 
 ArkTS-Sta示例：
   ```ts
-  // xxx.ets
+  'use static'
   import { Web, Column, Component, Entry, OnLoadInterceptEvent } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
 
@@ -6941,7 +6940,6 @@ ArkTS-Dyn示例：
 
 ArkTS-Sta示例：
   ```ts
-  // xxx.ets
   'use static'
   import { webview } from '@kit.ArkWeb';
   import { Web, Column, Component, Entry, WebResourceRequest, $rawfile } from '@kit.ArkUI';
@@ -9171,7 +9169,7 @@ ArkTS-Dyn示例：
 
   ArkTS-Sta示例：
   ```ts
-  // xxx.ets
+  'use static'
   import { webview } from '@kit.ArkWeb';
   import { Entry, Column, Component, Web } from '@kit.ArkUI';
   @Entry
