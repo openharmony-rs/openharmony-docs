@@ -28,7 +28,7 @@ setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void
 
 Disallows a feature.
 
-**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS<sup>15+</sup>
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS, ohos.permission.PERSONAL_MANAGE_RESTRICTIONS<sup>15+</sup>, or ohos.permission.ENTERPRISE_MANAGE_NETWORK (The required permissions vary depending on the feature to be set. For details, see Table 1.)
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -43,39 +43,39 @@ Disallows a feature.
 | disallow | boolean                                                 | Yes  | Whether to disallow the feature. The value **true** means to disallow the feature; the value **false** means the opposite.                       |
 
 **Table 1 Supported features**
-|Feature|Description|
-|--------------|---------------------|
-|bluetooth|Device Bluetooth capability. If a Bluetooth device blocklist or trustlist is configured via [addDisallowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanageradddisallowedbluetoothdevices20) or [addAllowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanageraddallowedbluetoothdevices), disabling Bluetooth via this API takes priority. The blocklist or trustlist will only take effect after Bluetooth is re-enabled.|
-|modifyDateTime|Device capability to modify system time.|
-|printer|Device printing capability. Currently, this feature is available only for PCs/2-in-1 devices. Disabling printing via this API overrides the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14) setting for specific users.|
-|hdc|Capability for other devices to connect to and debug this device via HDC. Disabling this capability prevents external devices from connecting or debugging via HDC.|
-|microphone|Device microphone capability.|
-|fingerprint|Device fingerprint authentication capability. Calling this API will trigger a policy conflict if fingerprint authentication has already been disabled for a user via [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14).|
-|usb|Device USB capability. Disabling this capability prohibits the use of external USB devices (the device cannot act as a USB host to connect external devices).<br>A policy conflict occurs in the following scenarios:<br>1. A list of allowed USB devices has been configured via the [addAllowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageraddallowedusbdevices) API.<br>2. USB storage device access policy has been set to read-only or disabled via the [setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy) API.<br>3. Specific USB device types have been blocked via the [addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14) API.<br>4. USB storage write access has been disabled for specific users via the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14) API.|
-|wifi|Device Wi-Fi capability.|
-|tethering<sup>14+</sup>|Network tethering capability (the ability to share the device's internet connection with other devices, that is, hotspot sharing).|
-|inactiveUserFreeze<sup>14+</sup>|Capability of freezing inactive users. When this capability is disabled, non-**UIAbility** processes will generally not be frozen, and background tasks requested by **UIAbility** (such as transient tasks, continuous tasks, deferred tasks, or energy efficiency resources) will also not be frozen. Currently, this capability is supported only on PCs/2-in-1 devices. When the system switches to the enterprise space user, the personal space users are inactive users.|
-|camera<sup>14+</sup>|Device camera capability.|
-|mtpClient<sup>18+</sup>|Media Transfer Protocol (MTP) client capability (including read and write capabilities), currently supported only on PC/2-in-1 devices. MTP allows users to linearly access media files on mobile devices. A policy conflict occurs if this API is used to disable MTP client capability after MTP client write access has been disabled for specific users via [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14).|
-|mtpServer<sup>18+</sup>|MTP server capability, currently supported only on phone and tablets.|
-|sambaClient<sup>20+</sup>|Samba client capability, currently supported only on PC/2-in-1 devices. <br>Samba is a free software that implements the SMB protocol on Linux and UNIX systems, consisting of both server and client programs. <br>Server Messages Block (SMB) is a communication protocol for sharing files and printers over the local area network (LAN), enabling access to shared file systems, printers, and other resources between devices on the same LAN. As a client/server protocol, SMB allows clients to access shared resources hosted on servers.|
-|sambaServer<sup>20+</sup>|Samba server capability, currently supported only on PC/2-in-1 devices.|
-|backupAndRestore<sup>20+</sup>|Backup and restore capability. If this feature is disabled, the **Settings** > **System** > **Backup & Restore** and **Settings** > **Cloud** options will become unavailable. Currently, this feature is supported only on smartphones and tablets. To completely disable the backup and restore capability, you are advised to call [applicationManager.addDisallowedRunningBundlesSync](./js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync) to disable applications with this feature, such as Backup & Restore, HiSuite, and Cloud.|
-|maintenanceMode<sup>20+</sup>|Device maintenance mode capability.|
-|mms<sup>20+</sup>|Multimedia Messaging Service (MMS) capability to receive and send multimedia messages. Currently, this feature is supported only on smartphones and tablets.|
-|sms<sup>20+</sup>|Short Messaging Service (SMS) capability to receive and send SMS messages. Currently, this feature is supported only on smartphones and tablets.|
-|mobileData<sup>20+</sup>|Cellular data capability, which is supported only on smartphones and tablets.|
-|airplaneMode<sup>20+</sup>|Airplane mode capability, which is supported only on smartphones and tablets.|
-|vpn<sup>20+</sup>|Virtual Private Network (VPN) capability.|
-|notification<sup>20+</sup>|Device notification capability. Disabling this feature prevents system applications and third-party applications from displaying notifications. The notification capability of system services is not affected.|
-|nfc<sup>20+</sup>|Near Field Communication (NFC) capability.|
-|privateSpace<sup>20+</sup>|Privacy space creation capability, which is supported only on smartphones and tablets. This setting does not affect existing private spaces.|
-|telephoneCall<sup>20+</sup>|Call capability. Disabling this feature blocks incoming or outgoing calls. Currently, this feature is supported only on smartphones and tablets.|
-|appClone<sup>21+</sup>|[Application clone capability](../../quick-start/app-clone.md). When this feature is disabled, new application clones cannot be created. This feature is invalid for the application clone that has been created.|
-|externalStorageCard<sup>21+</sup> |External storage capability. Disabling this feature prohibits the use of external storage and unmounts currently connected external storage. If files are in use during unmounting, unmounting may fail with error code 9200013.<br>After external storage is disabled and then enabled again, you need to manually reconnect the external storage.|
-|randomMac<sup>21+</sup>|Random MAC address capability for Wi-Fi connections. When this feature is disabled, only the device's physical MAC address can be used for Wi-Fi connections.|
-|unmuteDevice<sup>22+</sup>|Device audio playback capability. When this feature is disabled, media playback will be muted, while [cellular calls](../../media/audio/audio-call-overview.md) remain unaffected.|
-|hdcRemote<sup>22+</sup>|Capability of the device to debug other devices through HDC. Currently, this feature can be set only for PCs/2-in-1 devices. Disabling this capability prevents debugging smartphones, tablets, PCs, smart watches, and other devices via HDC.|
+|Feature|Description|Required Permission|
+|--------------|---------------------|--------------|
+|bluetooth|Device Bluetooth capability. If a Bluetooth device blocklist or trustlist is configured via [addDisallowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanageradddisallowedbluetoothdevices20) or [addAllowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanageraddallowedbluetoothdevices), disabling Bluetooth via this API takes priority. The blocklist or trustlist will only take effect after Bluetooth is re-enabled.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
+|modifyDateTime|Device capability to modify system time.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|printer|Device printing capability. Currently, this feature is available only for PCs/2-in-1 devices. Disabling printing via this API overrides the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14) setting for specific users.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|hdc|Capability for other devices to connect to and debug this device via HDC. Disabling this capability prevents external devices from connecting or debugging via HDC.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
+|microphone|Device microphone capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
+|fingerprint|Device fingerprint authentication capability. Calling this API will trigger a policy conflict if fingerprint authentication has already been disabled for a user via [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14).|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|usb|Device USB capability. Disabling this capability prohibits the use of external USB devices (the device cannot act as a USB host to connect external devices).<br>A policy conflict occurs in the following scenarios:<br>1. A list of allowed USB devices has been configured via the [addAllowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageraddallowedusbdevices) API.<br>2. USB storage device access policy has been set to read-only or disabled via the [setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy) API.<br>3. Specific USB device types have been blocked via the [addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14) API.<br>4. USB storage write access has been disabled for specific users via the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14) API.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
+|wifi|Device Wi-Fi capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
+|tethering<sup>14+</sup>|Network tethering capability (the ability to share the device's internet connection with other devices, that is, hotspot sharing).|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
+|inactiveUserFreeze<sup>14+</sup>|Capability of freezing inactive users. When this capability is disabled, non-**UIAbility** processes will generally not be frozen, and background tasks requested by **UIAbility** (such as transient tasks, continuous tasks, deferred tasks, or energy efficiency resources) will also not be frozen. Currently, this capability is supported only on PCs/2-in-1 devices. When the system switches to the enterprise space user, the personal space users are inactive users.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|camera<sup>14+</sup>|Device camera capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
+|mtpClient<sup>18+</sup>|Media Transfer Protocol (MTP) client capability (including read and write capabilities), currently supported only on PC/2-in-1 devices. MTP allows users to linearly access media files on mobile devices. A policy conflict occurs if this API is used to disable MTP client capability after MTP client write access has been disabled for specific users via [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14).|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|mtpServer<sup>18+</sup>|MTP server capability, currently supported only on phone and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|sambaClient<sup>20+</sup>|Samba client capability, currently supported only on PC/2-in-1 devices. <br>Samba is a free software that implements the SMB protocol on Linux and UNIX systems, consisting of both server and client programs. <br>Server Messages Block (SMB) is a communication protocol for sharing files and printers over the local area network (LAN), enabling access to shared file systems, printers, and other resources between devices on the same LAN. As a client/server protocol, SMB allows clients to access shared resources hosted on servers.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|sambaServer<sup>20+</sup>|Samba server capability, currently supported only on PC/2-in-1 devices.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|backupAndRestore<sup>20+</sup>|Backup and restore capability. If this feature is disabled, the **Settings** > **System** > **Backup & Restore** and **Settings** > **Cloud** options will become unavailable. Currently, this feature is supported only on smartphones and tablets. To completely disable the backup and restore capability, you are advised to call [applicationManager.addDisallowedRunningBundlesSync](./js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync) to disable applications with this feature, such as Backup & Restore, HiSuite, and Cloud.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|maintenanceMode<sup>20+</sup>|Device maintenance mode capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|mms<sup>20+</sup>|Multimedia Messaging Service (MMS) capability to receive and send multimedia messages. Currently, this feature is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|sms<sup>20+</sup>|Short Messaging Service (SMS) capability to receive and send SMS messages. Currently, this feature is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|mobileData<sup>20+</sup>|Cellular data capability, which is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_NETWORK|
+|airplaneMode<sup>20+</sup>|Airplane mode capability, which is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_NETWORK|
+|vpn<sup>20+</sup>|Virtual Private Network (VPN) capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|notification<sup>20+</sup>|Device notification capability. Disabling this feature prevents system applications and third-party applications from displaying notifications. The notification capability of system services is not affected.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|nfc<sup>20+</sup>|Near Field Communication (NFC) capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|privateSpace<sup>20+</sup>|Privacy space creation capability, which is supported only on smartphones and tablets. This setting does not affect existing private spaces.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|telephoneCall<sup>20+</sup>|Call capability. Disabling this feature blocks incoming or outgoing calls. Currently, this feature is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|appClone<sup>21+</sup>|[Application clone capability](../../quick-start/app-clone.md). When this feature is disabled, new application clones cannot be created. This feature is invalid for the application clone that has been created.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|externalStorageCard<sup>21+</sup> |External storage capability. Disabling this feature prohibits the use of external storage and unmounts currently connected external storage. If files are in use during unmounting, unmounting may fail with error code 9200013.<br>After external storage is disabled and then enabled again, you need to manually reconnect the external storage.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|randomMac<sup>21+</sup>|Random MAC address capability for Wi-Fi connections. When this feature is disabled, only the device's physical MAC address can be used for Wi-Fi connections.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|unmuteDevice<sup>22+</sup>|Device audio playback capability. When this feature is disabled, media playback will be muted, while [cellular calls](../../media/audio/audio-call-overview.md) remain unaffected.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|hdcRemote<sup>22+</sup>|Capability of the device to debug other devices through HDC. Currently, this feature can be set only for PCs/2-in-1 devices. Disabling this capability prevents debugging smartphones, tablets, PCs, smart watches, and other devices via HDC.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 <!--RP1--><!--RP1End-->
 
 **Error codes**
@@ -116,7 +116,7 @@ getDisallowedPolicy(admin: Want \| null, feature: string): boolean
 
 Queries whether a feature is disabled.
 
-**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS<sup>15+</sup>
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS, ohos.permission.PERSONAL_MANAGE_RESTRICTIONS<sup>15+</sup>, or ohos.permission.ENTERPRISE_MANAGE_NETWORK (The required permissions vary depending on the feature to be queried. For details, see Table 2.)
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -130,39 +130,39 @@ Queries whether a feature is disabled.
 | feature | string                                                  | Yes  | For features that can be queried, see Table 2.<br> **NOTE**<br>Since API version 15, applications granted with the ohos.permission.PERSONAL_MANAGE_RESTRICTIONS permission and [activated as device administrator applications](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15) can obtain the following features: **bluetooth**, **hdc**, **microphone**, **usb**, **wifi**, **tethering**, and **camera**<!--RP4--><!--RP4End-->.|
 
 **Table 2** Features that can be queried
-|Feature|Description|
-|--------------|---------------------|
-|bluetooth|Device Bluetooth capability.|
-|modifyDateTime|Device capability to modify system time.|
-|printer|Device printing capability. Currently, this feature is available only for PCs/2-in-1 devices.|
-|hdc|Capability for other devices to connect to and debug this device via HDC.|
-|microphone|Device microphone capability.|
-|fingerprint|Device fingerprint authentication capability.|
-|usb|Device USB capability. Disabling this capability prohibits the use of external USB devices (the device cannot act as a USB host to connect external devices).|
-|wifi|Device Wi-Fi capability.|
-|tethering<sup>14+</sup>|Network tethering capability (the ability to share the device's internet connection with other devices, that is, hotspot sharing).|
-|inactiveUserFreeze<sup>14+</sup>|Capability of freezing inactive users. When this capability is disabled, non-**UIAbility** processes will generally not be frozen, and background tasks requested by **UIAbility** (such as transient tasks, continuous tasks, deferred tasks, or energy efficiency resources) will also not be frozen. Currently, this capability is supported only on PCs/2-in-1 devices. When the system switches to the enterprise space user, the personal space users are inactive users.|
-|camera<sup>14+</sup>|Device camera capability.|
-|mtpClient<sup>18+</sup>|Media Transfer Protocol (MTP) client capability (including read and write capabilities), currently supported only on PC/2-in-1 devices. MTP allows users to linearly access media files on mobile devices.|
-|mtpServer<sup>18+</sup>|MTP server capability, currently supported only on phone and tablets.|
-|sambaClient<sup>20+</sup>|Samba client capability, currently supported only on PC/2-in-1 devices. <br>Samba is a free software that implements the SMB protocol on Linux and UNIX systems, consisting of both server and client programs. <br>Server Messages Block (SMB) is a communication protocol for sharing files and printers over the local area network (LAN), enabling access to shared file systems, printers, and other resources between devices on the same LAN. As a client/server protocol, SMB allows clients to access shared resources hosted on servers.|
-|sambaServer<sup>20+</sup>|Samba server capability, currently supported only on PC/2-in-1 devices.|
-|backupAndRestore<sup>20+</sup>|Backup and restore capability. If this feature is disabled, the **Settings** > **System** > **Backup & Restore** and **Settings** > **Cloud** options will become unavailable. Currently, this feature is supported only on smartphones and tablets.|
-|maintenanceMode<sup>20+</sup>|Device maintenance mode capability.|
-|mms<sup>20+</sup>|Multimedia Messaging Service (MMS) capability to receive and send multimedia messages. Currently, this feature is supported only on smartphones and tablets.|
-|sms<sup>20+</sup>|Short Messaging Service (SMS) capability to receive and send SMS messages. Currently, this feature is supported only on smartphones and tablets.|
-|mobileData<sup>20+</sup>|Cellular data capability, which is supported only on smartphones and tablets.|
-|airplaneMode<sup>20+</sup>|Airplane mode capability, which is supported only on smartphones and tablets.|
-|vpn<sup>20+</sup>|Virtual Private Network (VPN) capability.|
-|notification<sup>20+</sup>|Device notification capability.|
-|nfc<sup>20+</sup>|Near Field Communication (NFC) capability.|
-|privateSpace<sup>20+</sup>|Privacy space creation capability, which is supported only on smartphones and tablets.|
-|telephoneCall<sup>20+</sup>|Call capability. Disabling this feature blocks incoming or outgoing calls. Currently, this feature is supported only on smartphones and tablets.|
-|appClone<sup>21+</sup>|[Application clone capability](../../quick-start/app-clone.md). When this feature is disabled, new application clones cannot be created.|
-|externalStorageCard<sup>21+</sup> |External storage capability.|
-|randomMac<sup>21+</sup>|Random MAC address capability for Wi-Fi connections.|
-|unmuteDevice<sup>22+</sup>|Device audio playback capability. When this feature is disabled, media playback will be muted, while [cellular calls](../../media/audio/audio-call-overview.md) remain unaffected.|
-|hdcRemote<sup>22+</sup>|Capability of the device to debug other devices through HDC. Currently, this feature can be set only for PCs/2-in-1 devices.|
+|Feature|Description|Required Permission|
+|--------------|---------------------|--------------|
+|bluetooth|Device Bluetooth capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
+|modifyDateTime|Device capability to modify system time.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|printer|Device printing capability. Currently, this feature is available only for PCs/2-in-1 devices.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|hdc|Capability for other devices to connect to and debug this device via HDC.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
+|microphone|Device microphone capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
+|fingerprint|Device fingerprint authentication capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|usb|Device USB capability. Disabling this capability prohibits the use of external USB devices (the device cannot act as a USB host to connect external devices).|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
+|wifi|Device Wi-Fi capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
+|tethering<sup>14+</sup>|Network tethering capability (the ability to share the device's internet connection with other devices, that is, hotspot sharing).|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
+|inactiveUserFreeze<sup>14+</sup>|Capability of freezing inactive users. When this capability is disabled, non-**UIAbility** processes will generally not be frozen, and background tasks requested by **UIAbility** (such as transient tasks, continuous tasks, deferred tasks, or energy efficiency resources) will also not be frozen. Currently, this capability is supported only on PCs/2-in-1 devices. When the system switches to the enterprise space user, the personal space users are inactive users.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|camera<sup>14+</sup>|Device camera capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
+|mtpClient<sup>18+</sup>|Media Transfer Protocol (MTP) client capability (including read and write capabilities), currently supported only on PC/2-in-1 devices. MTP allows users to linearly access media files on mobile devices.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|mtpServer<sup>18+</sup>|MTP server capability, currently supported only on phone and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|sambaClient<sup>20+</sup>|Samba client capability, currently supported only on PC/2-in-1 devices. <br>Samba is a free software that implements the SMB protocol on Linux and UNIX systems, consisting of both server and client programs. <br>Server Messages Block (SMB) is a communication protocol for sharing files and printers over the local area network (LAN), enabling access to shared file systems, printers, and other resources between devices on the same LAN. As a client/server protocol, SMB allows clients to access shared resources hosted on servers.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|sambaServer<sup>20+</sup>|Samba server capability, currently supported only on PC/2-in-1 devices.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|backupAndRestore<sup>20+</sup>|Backup and restore capability. If this feature is disabled, the **Settings** > **System** > **Backup & Restore** and **Settings** > **Cloud** options will become unavailable. Currently, this feature is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|maintenanceMode<sup>20+</sup>|Device maintenance mode capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|mms<sup>20+</sup>|Multimedia Messaging Service (MMS) capability to receive and send multimedia messages. Currently, this feature is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|sms<sup>20+</sup>|Short Messaging Service (SMS) capability to receive and send SMS messages. Currently, this feature is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|mobileData<sup>20+</sup>|Cellular data capability, which is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_NETWORK|
+|airplaneMode<sup>20+</sup>|Airplane mode capability, which is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_NETWORK|
+|vpn<sup>20+</sup>|Virtual Private Network (VPN) capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|notification<sup>20+</sup>|Device notification capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|nfc<sup>20+</sup>|Near Field Communication (NFC) capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|privateSpace<sup>20+</sup>|Privacy space creation capability, which is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|telephoneCall<sup>20+</sup>|Call capability. Disabling this feature blocks incoming or outgoing calls. Currently, this feature is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|appClone<sup>21+</sup>|[Application clone capability](../../quick-start/app-clone.md). When this feature is disabled, new application clones cannot be created.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|externalStorageCard<sup>21+</sup> |External storage capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|randomMac<sup>21+</sup>|Random MAC address capability for Wi-Fi connections.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|unmuteDevice<sup>22+</sup>|Device audio playback capability. When this feature is disabled, media playback will be muted, while [cellular calls](../../media/audio/audio-call-overview.md) remain unaffected.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|hdcRemote<sup>22+</sup>|Capability of the device to debug other devices through HDC. Currently, this feature can be set only for PCs/2-in-1 devices.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 <!--RP2--><!--RP2End-->
 
 **Return value**

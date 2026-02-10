@@ -445,7 +445,7 @@ struct BindContextMenuDemo {
   private menu: string[] = [this.context.resourceManager.getStringByNameSync('modal_transition_text25'),
     this.context.resourceManager.getStringByNameSync('modal_transition_text26'),
     this.context.resourceManager.getStringByNameSync('modal_transition_text27')];
-  // Replace $r('app.media.xxx') with the actual resource file.
+  // Replace $r('app.media.xxx') with the image resource file you use.
   private pics: Resource[] = [$r('app.media.icon_1'), $r('app.media.icon_2')];
 
   // Use @Builder to build custom menu items.
@@ -591,18 +591,18 @@ import { common } from '@kit.AbilityKit';
 @Component
 struct ModalTransitionWithIf {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  // Replace $r('app.string.modal_transition_text29') with the actual resource file. In this example, the value in the resource file is "Bluetooth."
-  private listArr: ResourceStr[] = ['WLAN', $r('app.string.modal_transition_text29'),
-    // Replace $r('app.string.modal_transition_text30') with the actual resource file. In this example, the value in the resource file is "Personal hotspot."
-    $r('app.string.modal_transition_text30'),
-    // Replace $r('app.string.modal_transition_text31') with the actual resource file. In this example, the value in the resource file is "Connect and share."
-    $r('app.string.modal_transition_text31')];
-  // Replace $r('app.string.modal_transition_text32') with the actual resource file. In this example, the value in the resource file is "Projection."
-  private shareArr: ResourceStr[] = [$r('app.string.modal_transition_text32'),
-    // Replace $r('app.string.modal_transition_text33') with the actual resource file. In this example, the value in the resource file is "Print."
-    $r('app.string.modal_transition_text33'), 'VPN',
-    // Replace $r('app.string.modal_transition_text34') with the actual resource file. In this example, the value in the resource file is "Private DNS."
-    $r('app.string.modal_transition_text34'), 'NFC'];
+  // In the resources\base\element\string.json file, set name to 'modal_transition_text29' and value to a non-null string.
+  private listArr: ResourceStr[] = ['WLAN', this.context.resourceManager.getStringByNameSync('modal_transition_text29'),
+    // In the resources\base\element\string.json file, set name to 'modal_transition_text30' and value to a non-null string.
+    this.context.resourceManager.getStringByNameSync('modal_transition_text30'),
+    // In the resources\base\element\string.json file, set name to 'modal_transition_text31' and value to a non-null string.
+    this.context.resourceManager.getStringByNameSync('modal_transition_text31')];
+  // In the resources\base\element\string.json file, set name to 'modal_transition_text32' and value to a non-null string.
+  private shareArr: ResourceStr[] = [this.context.resourceManager.getStringByNameSync('modal_transition_text32'),
+    // In the resources\base\element\string.json file, set name to 'modal_transition_text33' and value to a non-null string.
+    this.context.resourceManager.getStringByNameSync('modal_transition_text33'), 'VPN',
+    // In the resources\base\element\string.json file, set name to 'modal_transition_text34' and value to a non-null string.
+    this.context.resourceManager.getStringByNameSync('modal_transition_text34'), 'NFC'];
   // Step 1: Define a state variable to control page display.
   @State isShowShare: boolean = false;
 

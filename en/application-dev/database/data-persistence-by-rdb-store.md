@@ -385,7 +385,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
    }
    if (store !== undefined) {
      try {
-       const resultSet = await store.querySql('SELECT name FROM example WHERE example MATCH ?', ['Test']);
+       const resultSet = await store.querySql('SELECT name FROM example WHERE example MATCH ?', ['测试']);
        while (resultSet.goToNextRow()) {
          const name = resultSet.getValue(resultSet.getColumnIndex('name'));
          hilog.info(DOMAIN, 'rdbDataPersistence', `name=${name}`);
@@ -522,8 +522,4 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
 <!--RP1-->
 <!--RP1End-->
 
-##  
-
- 
-
--  
+<!--no_check-->

@@ -10,7 +10,7 @@ Different input devices generate distinct types of basic events, which are trigg
 
 - Input device (source type): hardware that produces low-level input events, such as a touchscreen, mouse, touchpad, keyboard, or joystick.
 - Input tool (source tool): physical tool used to interact with the input device. For example, a finger or stylus can generate touch events on a touchscreen.
-
+ 
 In many cases, the input device and tool may be the same. For example, the mouse and keyboard serve as both the device and the tool.
 
 >  **NOTE**

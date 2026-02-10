@@ -6,11 +6,9 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-AutoDeviceSwitch inherits from [AutoDeviceSwitchQuery](arkts-apis-camera-AutoDeviceSwitchQuery.md).
+**AutoDeviceSwitch** inherits from [AutoDeviceSwitchQuery](arkts-apis-camera-AutoDeviceSwitchQuery.md) and is used to enable or disable automatic camera switch. This capability can be used only on foldable devices. For details about the development, see [Practices for Automatic Camera Switching (ArkTS)](../../media/camera/camera-auto-switch.md).
 
-It is used to enable or disable automatic camera switching.
-
-It is recommended that the system automatically handle input device switching, session configuration, and parameter continuity during automatic camera switching. If the system detects that the zoom ranges of the two cameras are different during camera switching, it will notify the application of the zoom range change through the **isDeviceCapabilityChanged** field in [AutoDeviceSwitchStatus](arkts-apis-camera-i.md#autodeviceswitchstatus13). However, the application still needs to handle the UX change (for example, for the zoom range adjustment, the application needs to obtain data again through the [getZoomRatioRange](arkts-apis-camera-ZoomQuery.md#getzoomratiorange11) API and update the UX). Therefore, this function is more suitable for scenarios where the UX interaction is simplified.
+It is recommended that the system automatically handle input device switching, session configuration, and parameter continuity during automatic camera switch. If the system detects that the zoom ranges of the two cameras are different during camera switching, it will notify the application through the **isDeviceCapabilityChanged** field in [AutoDeviceSwitchStatus](arkts-apis-camera-i.md#autodeviceswitchstatus13). However, the application still needs to handle the UX change. For example, for the zoom range adjustment, the application needs to call [getZoomRatioRange](arkts-apis-camera-ZoomQuery.md#getzoomratiorange11) to obtain data and update the UX. Therefore, **AutoDeviceSwitch** is more applicable to simplified UX interactions.
 
 > **NOTE**
 >
@@ -27,7 +25,7 @@ import { camera } from '@kit.CameraKit';
 
 enableAutoDeviceSwitch(enabled: boolean): void
 
-Enables or disables automatic camera switching. You can use [isAutoDeviceSwitchSupported](arkts-apis-camera-AutoDeviceSwitchQuery.md#isautodeviceswitchsupported13) to check whether the device supports automatic camera switching.
+Enables or disables automatic camera switch. You can use [isAutoDeviceSwitchSupported](arkts-apis-camera-AutoDeviceSwitchQuery.md#isautodeviceswitchsupported13) to check whether the device supports automatic camera switch.
 
 > **NOTE**
 > This API is used only for foldable devices with multiple front cameras. In different fold states, the system can automatically switch to an available front camera. It does not enable automatic switching between front and rear cameras.
@@ -40,7 +38,7 @@ Enables or disables automatic camera switching. You can use [isAutoDeviceSwitchS
 
 | Name        | Type | Mandatory| Description |
 | ----------- |---------------------- |---| -------------------------- |
-| enabled | boolean  | Yes| Whether to enable automatic camera switching. **true** to enable, **false** otherwise.  |
+| enabled | boolean  | Yes| Whether to enable automatic camera switch. **true** to enable, **false** otherwise.  |
 
 **Error codes**
 
@@ -63,7 +61,7 @@ function enableAutoDeviceSwitch(session: camera.PhotoSession, isEnable: boolean)
     session.enableAutoDeviceSwitch(isEnable);
   } catch (error) {
     let err = error as BusinessError;
-    console.error(`The enableAutoDeviceSwitch call failed, error code: ${err.code}`);
+    console.error(`The enableAutoDeviceSwitch call failed, error code: ${err.code}, error message: ${err.message}`);
   }
 }
 ```

@@ -8,7 +8,7 @@
 
 将所支持格式的图片文件解码成[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)，以便在应用或系统中显示或处理图片。当前支持的图片文件格式包括JPEG、PNG、GIF、WebP、BMP、SVG、ICO、DNG、HEIC。不同硬件设备的支持情况可能不同。
 
-从API version 22开始支持对部分专业相机格式图片的预览图解码，具体格式包括：CR2、CR3、ARW、NEF、RAF、NRW、ORF、RW2、PEF、SRW。
+从API version 22开始，支持对专业相机拍摄的CR2、CR3、ARW、NEF、RAF、NRW、ORF、RW2、PEF、SRW格式图片内嵌的预览图（通常为JPEG格式）进行解码。该解码能力不受运行设备类型限制。
 
 ## 开发步骤
 

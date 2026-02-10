@@ -673,7 +673,7 @@ Triggered to notify the host application that the page loading starts. This meth
 
 > **NOTE**
 >
-> - When the document of the pop-up window is modified by JavaScript before being loaded, **onLoadStarted** is simulated and the URL is set to null, because displaying the URL that is being loaded may be insecure. <b class="+ topic/ph hi-d/b " id="b145733136532">onPageBegin</b> will not be simulated.
+> - When the document of the pop-up window is modified by JavaScript before being loaded, **onLoadStarted** is simulated and the URL is set to null, because displaying the URL that is being loaded may be insecure. **onPageBegin** will not be simulated.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

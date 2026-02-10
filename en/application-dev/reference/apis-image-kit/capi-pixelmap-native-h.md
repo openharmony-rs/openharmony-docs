@@ -367,7 +367,7 @@ Obtains the pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| int32_t *pixelFormat | Pixel format. For details about the available options, see [PIXEL_FORMAT](#pixel_format).|
+| int32_t *pixelFormat | Pointer to the pixel format. For details about the available options, see [PIXEL_FORMAT](#pixel_format).|
 
 **Returns**
 
@@ -567,7 +567,7 @@ Obtains the editable flag.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| bool *editable | Pointer to the editable flag.|
+| bool *editable | Pointer to the editable flag. **true** if editable, **false** otherwise.|
 
 **Returns**
 
@@ -592,7 +592,7 @@ Sets the editable flag.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| bool editable | Editable flag.|
+| bool editable | Editable flag. **true** if editable, **false** otherwise.|
 
 **Returns**
 
@@ -815,7 +815,7 @@ Obtains the dynamic range of a PixelMap.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) *info | Pointer to an OH_Pixelmap_ImageInfo struct.|
-| bool *isHdr | Indicates whether the image is HDR. The options include **true** (HDR) and **false** (non-HDR).|
+| bool *isHdr | Pointer to whether the image is an HDR image. The value **true** means that the image is an HDR image, and the value **false** means the opposite.|
 
 **Returns**
 

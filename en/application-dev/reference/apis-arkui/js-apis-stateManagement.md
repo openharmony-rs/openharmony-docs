@@ -51,8 +51,8 @@ Stores key-value pair data in the application memory. If the given key already e
 | Name  | Type  | Mandatory| Description              |
 | -------- | ------ | ---- | ---------------------- |
 | type | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst) | Yes  | Type. If no key is specified, the name of the type is used as the key.|
-| keyOrDefaultCreator | string&nbsp;\|&nbsp;[StorageDefaultCreator\<T\>](#storagedefaultcreatort) | No  | Key, or constructor for obtaining the default value.|
-| defaultCreator | StorageDefaultCreator\<T\> | No  | Constructor for obtaining the default value.|
+| keyOrDefaultCreator | string&nbsp;\|&nbsp;[StorageDefaultCreator\<T\>](#storagedefaultcreatort) | No  | Key, or constructor for obtaining the default value. The default value is **undefined**.|
+| defaultCreator | StorageDefaultCreator\<T\> | No  | Constructor for obtaining the default value. The default value is **undefined**.|
 
 >**NOTE**
 >
@@ -104,7 +104,7 @@ Removes the specified key-value pair from [AppStorageV2](../../ui/state-manageme
 
 | Name  | Type  | Mandatory| Description              |
 | -------- | ------ | ---- | ---------------------- |
-| keyOrType | string \| TypeConstructorWithArgs\<T\> | Yes  | Key to be removed. If a type is specified, the key to be removed is the name of that type.|
+| keyOrType | string \| [TypeConstructorWithArgs](#typeconstructorwithargst)\<T\> | Yes  | Key to be removed. If a type is specified, the key to be removed is the name of that type.|
 
 >**NOTE**
 >
@@ -162,7 +162,7 @@ Inherits from [AppStorageV2](#appstoragev2). For details, see [PersistenceV2: Pe
 
 static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefined
 
-Stores key-value pair data on the application disk. If the given key already exists in [PersistenceV2](../../ui/state-management/arkts-new-persistencev2.md), the corresponding value is returned. Otherwise, a default value is constructed using the default value constructor and returned. If **globalConnect** is used for an @ObservedV2 decorated object, changes to the object's @Trace properties will trigger automatic refresh of the associated object, while changes to non-@Trace properties will not. If necessary, the **PersistenceV2.save** API can be called to store the data manually.
+Stores key-value pair data on the application disk. If the given key already exists in [PersistenceV2](../../ui/state-management/arkts-new-persistencev2.md), the corresponding value is returned. Otherwise, a default value is constructed using the default value constructor and returned. If **globalConnect** is used for an [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md) decorated object, changes to the object's [\@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md) properties will trigger automatic refresh of the associated object, while changes to non-@Trace properties will not. If necessary, the [PersistenceV2.save](#save) API can be called to store the data manually.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -205,7 +205,7 @@ This example is provided for you to understand the usage of **globalConnect**. Y
 
 <!--code_no_check-->
 ```ts
-import { PersistenceV2, Type, ConnectOptions } from '@kit.ArkUI';
+import { PersistenceV2, Type } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
 @ObservedV2
@@ -499,7 +499,7 @@ static makeV1Observed\<T extends object\>(source: T): T
 
 Wraps an unobservable object into an object that is observable by V1 state management. This API is equivalent to @Observed and can be used to initialize @ObjectLink.
 
-This API can be used in conjunction with [enableV2Compatibility](#enablev2compatibility19) for scenarios where V1 and V2 state management are mixed. For details, see [Mixing Use of State Management V1 and V2](../../ui/state-management/arkts-v1-v2-mixusage.md).
+This API can be used together with [enableV2Compatibility](#enablev2compatibility19) in scenarios where state management V1 and V2 are used together. For details, see [Mixing Use of State Management V1 and V2](../../ui/state-management/arkts-v1-v2-mixusage.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -566,7 +566,7 @@ struct Child {
 ### makeBinding<sup>20+</sup>
 static makeBinding\<T\>(getter: GetterCallback\<T\>): Binding\<T\>
 
-Creates a read-only one-way data binding instance, which is used to construct the argument of the **Binding** type in the \@Builder function.
+Creates a read-only one-way data binding instance, which is used to construct the arguments of the **Binding** type in the [\@Builder](../../ui/state-management/arkts-builder.md) function.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -714,7 +714,7 @@ Dynamically adds a listener to the state variable of state management V2. For de
 | target | object | Yes  | Target object. Only [\@ComponentV2](../../ui/state-management/arkts-create-custom-components.md#componentv2) and [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md) instances are supported.<br>If an unsupported type is provided, a runtime error is thrown. For error code details, see the table below.|
 | path | string \| string[]    | Yes  | Name path of the variable to be listened for. You can specify a path or pass a string array to specify multiple variable paths to be listened for at a time.<br>Only string and string array are supported. If an unsupported type is provided, a runtime error is thrown. For error code details, see the table below.|
 | monitorCallback | [MonitorCallback](#monitorcallback20)   | Yes  | Listener function registered with the corresponding state variable. That is, when the state variable corresponding to the path changes, a specific function is called.<br>If an unsupported type is provided, a runtime error is thrown. For error code details, see the table below.|
-| options | [MonitorOptions](#monitoroptions20)   | No  | Configuration item of the listener function. For details, see [MonitorOptions](#monitoroptions20).|
+| options | [MonitorOptions](#monitoroptions20)   | No  | Configuration item of the listener. For details, see [MonitorOptions](#monitoroptions20). By default, the asynchronous callback is used.|
 
 
 **Error codes**
@@ -1400,7 +1400,7 @@ Defines a callback used to obtain a value.
 **Example**
 
 ```ts
-import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+import { Binding, UIUtils } from '@kit.ArkUI';
 
 @Builder
 function CustomButton(num1: Binding<number>) {
@@ -1452,7 +1452,7 @@ Defines a callback used to set a value.
 **Example**
 
 ```ts
-import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+import { MutableBinding, UIUtils } from '@kit.ArkUI';
 
 @Builder
 function CustomButton(num2: MutableBinding<number>) {
@@ -1510,7 +1510,7 @@ Obtains a bound value.
 **Example**
 
 ```ts
-import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+import { Binding, UIUtils } from '@kit.ArkUI';
 
 @Builder
 function CustomButton(num1: Binding<number>) {
@@ -1581,7 +1581,7 @@ Provides a **get** accessor to obtain the current bound value.
 **Example**
 
 ```ts
-import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+import { MutableBinding, UIUtils } from '@kit.ArkUI';
 
 @Builder
 function CustomButton(num2: MutableBinding<number>) {
@@ -1616,4 +1616,3 @@ struct CompV2 {
   }
 }
 ```
-<!--no_check-->

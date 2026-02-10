@@ -1329,8 +1329,6 @@
           - [DistributedExtensionAbility开发指南（仅对系统应用开放）](distributedservice/distributedextension-guidelines-sys.md)
           <!--DelEnd-->
           - [增强连接开发指南](distributedservice/linkEnhance_development-guide.md)
-        - 硬件跨设备连接管理<!--devconnect-distributed-->
-          - [分布式相机开发指南](distributedservice/camera-distributed.md)
       - Network Kit（网络服务）<!--network-kit-->
         - [Network Kit简介](network/net-mgmt-overview.md)
         - 访问网络<!--network-kit-data-transmission-->
@@ -1996,7 +1994,7 @@
         <!--DelEnd-->
         - [清除跨设备场景下的重复通知](notification/notification-distributed-messageid.md)
       - 通知订阅扩展能力<!--notification-subscriber-extension-ability-->
-        - [通知订阅扩展能力概述](notification/notification-subscriber-extension-ability.md)
+        - [NotificationSubscriberExtensionAbility (开发概述)](notification/notification-subscriber-extension-ability.md)
         - [通知订阅扩展能力开发步骤](notification/notification-subscriber-extension-ability-development-steps.md)
   - AI<!--ai-->
     - MindSpore Lite Kit（昇思推理框架服务）<!--mindspore-lite-kit-->
@@ -2027,7 +2025,7 @@
       - C/C++标准库<!--c-cpp-->
         - [C/C++标准库机制概述](napi/c-cpp-overview.md)
         - [fdsan使用指导](napi/fdsan.md)
-      - 使用Node-API实现跨语言交互<!--using-napi-interaction-with-cpp-->
+      - 使用Node-API实现ArkTS/JS与C/C++语言交互<!--using-napi-interaction-with-cpp-->
         - [Node-API简介](napi/napi-introduction.md)
         - [Node-API接口返回状态码介绍](napi/napi_status_introduction.md)
         - [Node-API支持的数据类型和接口](napi/napi-data-types-interfaces.md)

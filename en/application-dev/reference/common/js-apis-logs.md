@@ -128,7 +128,7 @@ Prints warning information in formatted output mode.
 
 ```js
 const str = "name should be string";
-console.warn('warn: %d', str); // Print the warning information with arguments in the message replaced.
+console.warn('warn: %d', str);  // Print the warning information with arguments in the message replaced.
 // warn: name should be string
 console.warn('warn:', str);  // Print the message and other information.
 // warn: name should be string

@@ -68,7 +68,7 @@ connect(url: string, callback: AsyncCallback\<boolean\>): void
 
 >**注意：**
 >
->URL地址长度不能超过1024个字符，否则会连接失败。从API15开始，URL地址长度限制由1024修改为2048。
+>URL地址长度不能超过1024个字符，否则会连接失败。从API version 15开始，URL地址长度限制由1024修改为2048。
 
 **参数：**
 
@@ -127,7 +127,7 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<
 
 >**注意：**
 >
->URL地址长度不能超过1024个字符，否则会连接失败。
+>URL地址长度不能超过1024个字符，否则会连接失败。从API version 15开始，URL地址长度限制由1024修改为2048。
 
 **参数：**
 
@@ -195,7 +195,7 @@ connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
 
 >**注意：** 
 >
->URL地址长度不能超过1024个字符，否则会连接失败。
+>URL地址长度不能超过1024个字符，否则会连接失败。从API version 15开始，URL地址长度限制由1024修改为2048。
 
 **参数：**
 

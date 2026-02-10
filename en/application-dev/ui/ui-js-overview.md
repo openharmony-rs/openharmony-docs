@@ -15,9 +15,7 @@ For details about the components to support better application development, see 
 
 ArkUI with the JavaScript-compatible web-like development paradigm consists of the following layers: application layer, frontend framework layer, engine layer, and porting layer.
 
-
-
-![en-us_image_0000001223127696](figures/en-us_image_0000001223127696.png)
+![en-us_image_0000001117452952](figures/en-us_image_0000001117452952.png)
 
 - **Application Layer**
 
@@ -33,4 +31,4 @@ ArkUI with the JavaScript-compatible web-like development paradigm consists of t
 
 - **Porting Layer**
 
-  Abstracts the platform layer to provide abstract interfaces to connect to the platform. For example, event interconnection, rendering pipeline interconnection, and lifecycle interconnection.
+  Abstracts the platform layer to provide abstract APIs to connect to the platform. For example, event interconnection, rendering pipeline interconnection, and lifecycle interconnection.

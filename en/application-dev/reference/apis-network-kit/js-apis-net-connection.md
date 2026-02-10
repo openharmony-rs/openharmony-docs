@@ -7,7 +7,7 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
-The **connection** module provides basic network management capabilities. With the APIs provided by this module, you can obtain the default active data network or the list of all active data networks, enable or disable the airplane mode, and obtain network capability information.
+The network connection management module provides basic network management capabilities. You can obtain the default active network, the list of all active networks, and network capability information.
 
 > **NOTE**
 >
@@ -25,11 +25,11 @@ import { connection } from '@kit.NetworkKit';
 
 createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnection
 
-Creates a **NetConnection** object, where [netSpecifier](#netspecifier) specifies the network, and **timeout** specifies the timeout duration in ms. **timeout** is configurable only when **netSpecifier** is specified. If neither of them is present, the default network is used.
+Creates a **NetConnection** object, which can be used to listen for the network status. [netSpecifier](#netspecifier) indicates the network feature to be listened on, and **timeout** indicates the timeout duration (ms). **netSpecifier** is a mandatory parameter for **timeout**. If neither of them is present, the default network is used.
 
 >**NOTE**
 >
->The number of callback functions registered by **createNetConnection** cannot exceed 2000. Otherwise, network listening cannot be registered.
+>If the network status needs to be listened on, after creating a **NetConnection** object, you need to call [register](#register) to register the notification of the specified network status change.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -39,27 +39,36 @@ Creates a **NetConnection** object, where [netSpecifier](#netspecifier) specifie
 
 | Name      | Type                         | Mandatory| Description                                                        |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
-| netSpecifier | [NetSpecifier](#netspecifier) | No  | Network specifier, which specifies the network capability. If this parameter is left unspecified, the default network is used.                  |
-| timeout      | number                        | No  | Timeout interval for obtaining the network specified by **netSpecifier**. The input value must be an uint32_t integer. This parameter is valid only when **netSpecifier** is present. The default value is **0**.|
+| netSpecifier | [NetSpecifier](#netspecifier) | No  | Network feature of the network to be listened on. If this parameter is not specified, the default network is listened on.                  |
+| timeout      | number                        | No  | Timeout interval for obtaining the network specified by **netSpecifier**. The input value must be an uint32_t integer. This parameter is valid only when **netSpecifier** is present. The default value is **0**.<br>**Note**: If the network to be listened on does not exist, the system attempts to activate the network. If the timeout interval is exceeded and the network status listening is registered, the **netUnavailable** event is triggered.|
 
 **Return value**
 
 | Type                           | Description                |
 | ------------------------------- | -------------------- |
-| [NetConnection](#netconnection) | Handle of the network specified by **netSpecifier**.|
+| [NetConnection](#netconnection) | Type of the network connection object to be listened on.|
 
 **Example**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
 
-// Use the default network. No parameter needs to be passed.
+// Example 1: Only the default network is concerned. You do not need to specify the netSpecifier parameter. If the timeout parameter is not passed, the timeout interval is not used. In this case, the value of timeout is 0.
 let netConnection = connection.createNetConnection();
 
-// Use the cellular network. Pass in network capabilities as needed. If the timeout parameter is not present, the value is 0, which indicates no timeout limit.
+// Example 2: Only the cellular network is concerned. You need to specify the network type as cellular.
+let timeout = 1000;
 let netConnectionCellular = connection.createNetConnection({
   netCapabilities: {
     bearerTypes: [connection.NetBearType.BEARER_CELLULAR]
+  }
+}, timeout);
+
+// Example 3: Both the cellular and Wi-Fi networks are concerned. You need to specify the network type as cellular and Wi-Fi.
+let netConnectionCellularAndWifi = connection.createNetConnection({
+  netCapabilities: {
+    bearerTypes: [connection.NetBearType.BEARER_CELLULAR,
+      connection.NetBearType.BEARER_WIFI]
   }
 });
 ```
@@ -68,7 +77,7 @@ let netConnectionCellular = connection.createNetConnection({
 
 getDefaultNet(callback: AsyncCallback\<NetHandle>): void
 
-Obtains the default network ID. This API uses an asynchronous callback to return the result.
+Obtains the network handle used by the system by default, including the network ID. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -78,7 +87,7 @@ Obtains the default network ID. This API uses an asynchronous callback to return
 >
 >- Generally, the priority is as follows: Ethernet (PC) | Bluetooth (watch) > Wi-Fi > Cellular. In special cases, the actual returned result prevails.
 >
->- NetHandle uniquely identifies a network. If no network is available, 0 is returned. This ID can be used by other APIs [getNetCapabilities](#connectiongetnetcapabilities) to query more network information.
+>- [NetHandle](#nethandle) is the unique identifier of the network. If no network is available, **0** is returned. It can be used by [getNetCapabilities](#connectiongetnetcapabilities) to query more network information.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -90,7 +99,7 @@ Obtains the default network ID. This API uses an asynchronous callback to return
 
 | Name  | Type                                   | Mandatory| Description                                                        |
 | -------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[NetHandle](#nethandle)> | Yes  | Callback used to return the result. If the default activated data network is obtained successfully, **error** is **undefined** and **data** is the default activated data network. Otherwise, **error** is an error object.|
+| callback | AsyncCallback\<[NetHandle](#nethandle)> | Yes  | Callback used to return the result. When the network handle of the default activated network is successfully obtained, **error** is **undefined** and **data** is the network handle of the default network; otherwise, **error** is an error object.|
 
 **Error codes**
 
@@ -114,7 +123,7 @@ connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
     console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
     return;
   }
-  console.info("Succeeded to get data " + JSON.stringify(data));
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -122,7 +131,7 @@ connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
 
 getDefaultNet(): Promise\<NetHandle>
 
-Obtains the default network ID. This API uses a promise to return the result.
+Obtains the network handle used by the system by default, including the network ID. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -132,7 +141,7 @@ Obtains the default network ID. This API uses a promise to return the result.
 >
 >- Generally, the priority is as follows: Ethernet (PC) | Bluetooth (watch) > Wi-Fi > Cellular. In special cases, the actual returned result prevails.
 >
->- NetHandle uniquely identifies a network. If no network is available, 0 is returned. This ID can be used by other APIs [getNetCapabilities](#connectiongetnetcapabilities) to query more network information.
+>- [NetHandle](#nethandle) is the unique identifier of the network. If no network is available, **0** is returned. It can be used by [getNetCapabilities](#connectiongetnetcapabilities) to query more network information.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -144,7 +153,7 @@ Obtains the default network ID. This API uses a promise to return the result.
 
 | Type                             | Description                                 |
 | --------------------------------- | ------------------------------------- |
-| Promise\<[NetHandle](#nethandle)> | Promise used to return the result.|
+| Promise\<[NetHandle](#nethandle)> | Promise used to return the network handle of the default network.|
 
 **Error codes**
 
@@ -170,7 +179,7 @@ connection.getDefaultNet().then((data: connection.NetHandle) => {
 
 getDefaultNetSync(): NetHandle
 
-Obtains the default network ID used by the system.
+Obtains the network handle used by the system by default, including the network ID. This API returns the result synchronously.
 
 > **NOTE**
 >
@@ -180,7 +189,7 @@ Obtains the default network ID used by the system.
 >
 >- Generally, the priority is as follows: Ethernet (PC) | Bluetooth (watch) > Wi-Fi > Cellular. In special cases, the actual returned result prevails.
 >
->- NetHandle uniquely identifies a network. If no network is available, 0 is returned. This ID can be used by other APIs [getNetCapabilities](#connectiongetnetcapabilities) to query more network information.
+>- [NetHandle](#nethandle) is the unique identifier of the network. If no network is available, **0** is returned. It can be used by [getNetCapabilities](#connectiongetnetcapabilities) to query more network information.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -192,7 +201,7 @@ Obtains the default network ID used by the system.
 
 | Type     | Description                              |
 | --------- | ---------------------------------- |
-| [NetHandle](#nethandle) | Handle of the default active data network.|
+| [NetHandle](#nethandle) | Network handle of the default network.|
 
 **Error codes**
 
@@ -276,7 +285,12 @@ httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse
 
 getDefaultHttpProxy(callback: AsyncCallback\<HttpProxy>): void
 
-Obtains the default HTTP proxy configuration of the network. If the global proxy is set, the global HTTP proxy configuration is returned. If [setAppNet](#connectionsetappnet9) is used to bind the application to the network specified by [NetHandle](#nethandle), the HTTP proxy configuration of this network is returned. In other cases, the HTTP proxy configuration of the default network is returned. This API uses an asynchronous callback to return the result.
+Obtains the default HTTP proxy configuration of the network. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+>- If the global proxy is set, the global proxy configuration is returned.
+>- If [setAppNet](#connectionsetappnet9) is used to bind the application to the network specified by [NetHandle](#nethandle), the HTTP proxy configuration of this network is returned. In other cases, the HTTP proxy configuration of the default network is returned.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -314,7 +328,12 @@ connection.getDefaultHttpProxy((error: BusinessError, data: connection.HttpProxy
 
 getDefaultHttpProxy(): Promise\<HttpProxy>
 
-Obtains the default HTTP proxy configuration of the network. If the global proxy is set, the global HTTP proxy configuration is returned. If [setAppNet](#connectionsetappnet9) is used to bind the application to the network specified by [NetHandle](#nethandle), the HTTP proxy configuration of this network is returned. In other cases, the HTTP proxy configuration of the default network is returned. This API uses a promise to return the result.
+Obtains the default HTTP proxy configuration of the network. This API uses a promise to return the result.
+
+> **NOTE**
+>
+>- If the global proxy is set, the global proxy configuration is returned.
+>- If [setAppNet](#connectionsetappnet9) is used to bind the application to the network specified by [NetHandle](#nethandle), the HTTP proxy configuration of this network is returned. In other cases, the HTTP proxy configuration of the default network is returned.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -350,7 +369,7 @@ connection.getDefaultHttpProxy().then((data: connection.HttpProxy) => {
 
 getAppNet(callback: AsyncCallback\<NetHandle>): void
 
-Obtains information about the network bound to an application. This API uses an asynchronous callback to return the result.
+Obtains the network handle bound to an application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -389,7 +408,7 @@ connection.getAppNet((error: BusinessError, data: connection.NetHandle) => {
 
 getAppNet(): Promise\<NetHandle>
 
-Obtains information about the network bound to an application. This API uses a promise to return the result.
+Obtains the network information bound to an application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -425,7 +444,7 @@ connection.getAppNet().then((data: connection.NetHandle) => {
 
 getAppNetSync(): NetHandle
 
-Obtains information about the network bound to an application. This API returns the result synchronously.
+Obtains the network information bound to an application. This API returns the result synchronously.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -456,7 +475,7 @@ let netHandle = connection.getAppNetSync();
 
 setAppNet(netHandle: NetHandle, callback: AsyncCallback\<void>): void
 
-Binds an application to the network specified by **netHandle**, so that the application can access the external network only through this network, so that the application can access the external network only through this network. This API uses an asynchronous callback to return the result.
+Binds an application to the network specified by **netHandle**, so that the application can access the external network only through this network. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -466,8 +485,25 @@ Binds an application to the network specified by **netHandle**, so that the appl
 
 | Name   | Type                   | Mandatory| Description                                                        |
 | --------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| netHandle | [NetHandle](#nethandle) | Yes  | Handle of the data network.                                            |
+| netHandle | [NetHandle](#nethandle) | Yes  | Network handle.                                            |
 | callback  | AsyncCallback\<void>    | Yes  | Callback used to return the result. If the application is successfully bound to the specified network, **error** is **undefined**. Otherwise, **error** is an error object.|
+
+>**NOTE**
+>
+> To unbind the application from the specified network, call [setAppNet](#connectionsetappnet9) and pass a **NetHandle** object with **netId** set to **0**. For details, see the following example.
+
+```ts
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
+    if (error) {
+      console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
+      return;
+    }
+    console.info("Succeeded to get data: " + JSON.stringify(data));
+  });
+});
+```
 
 **Error codes**
 
@@ -492,6 +528,7 @@ connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle)
     // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
     return;
   }
+  // The application accesses the network using the default network.
   connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
     if (error) {
       console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
@@ -516,7 +553,23 @@ Binds an application to the network specified by **netHandle**, so that the appl
 
 | Name   | Type                                                        | Mandatory| Description            |
 | --------- | ------------------------------------------------------------ | ---- | ---------------- |
-| netHandle | [NetHandle](#nethandle)                                      | Yes  | Handle of the data network.|
+| netHandle | [NetHandle](#nethandle)                                      | Yes  | Network handle.|
+
+>**NOTE**
+>
+> To unbind the application from the specified network, call [setAppNet](#connectionsetappnet9) and pass a **NetHandle** object with **netId** set to **0**. For details, see the following example.
+```ts
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
+    if (error) {
+      console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
+      return;
+    }
+    console.info("Succeeded to get data: " + JSON.stringify(data));
+  });
+});
+```
 
 **Return value**
 
@@ -570,7 +623,7 @@ Obtains the list of all connected networks. This API uses an asynchronous callba
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;Array&lt;[NetHandle](#nethandle)&gt;&gt; | Yes| Callback used to return the result. If the list of all connected networks is obtained successfully, **error** is **undefined** and **data** is the list of activated data networks. Otherwise, **error** is an error object. If Wi-Fi and cellular data are both enabled, and no application specifies the use of cellular data, only Wi-Fi is activated. In this case, only the NetHandle of Wi-Fi is returned. The NetHandle of Wi-Fi and cellular data can be obtained at the same time only when a specific application enables the cellular network.|
+| callback | AsyncCallback&lt;Array&lt;[NetHandle](#nethandle)&gt;&gt; | Yes| Callback used to return the result. If the list of all connected networks is obtained successfully, **error** is **undefined** and **data** is the list of activated networks. Otherwise, **error** is an error object.<br> Note: If Wi-Fi and cellular data are both enabled, and no application specifies the use of cellular data, only Wi-Fi is activated. In this case, only the **NetHandle** of Wi-Fi is returned. The NetHandle of Wi-Fi and cellular data can be obtained at the same time only when a specific application enables the cellular network.|
 
 **Error codes**
 
@@ -612,7 +665,7 @@ Obtains the list of all connected networks. This API uses a promise to return th
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;Array&lt;[NetHandle](#nethandle)&gt;&gt; | Promise used to return the result.|
+| Promise&lt;Array&lt;[NetHandle](#nethandle)&gt;&gt; | Promise used to return the list of activated networks.|
 
 **Error codes**
 
@@ -648,7 +701,7 @@ Obtains the list of all connected networks. This API returns the result synchron
 
 | Type     | Description                              |
 | --------- | ---------------------------------- |
-| Array&lt;[NetHandle](#nethandle)&gt; | List of all connected data networks.|
+| Array&lt;[NetHandle](#nethandle)&gt; | Returns the list of all networks that are in the connected state.|
 
 **Error codes**
 
@@ -672,7 +725,7 @@ let netHandle = connection.getAllNetsSync();
 
 getConnectionProperties(netHandle: NetHandle, callback: AsyncCallback\<ConnectionProperties>): void
 
-Obtains connection properties of the network specified by **netHandle**. This API uses an asynchronous callback to return the result.
+Obtains the connection information of the data network specified by **NetHandle**, including the NIC name, domain name, link information, route information, network address, and maximum transmission unit. This API uses an asynchronous callback to return the result.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -682,7 +735,7 @@ Obtains connection properties of the network specified by **netHandle**. This AP
 
 | Name   | Type                                                        | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| netHandle | [NetHandle](#nethandle)                                      | Yes  | Handle of the data network.                                            |
+| netHandle | [NetHandle](#nethandle)                                      | Yes  | Network handle.                                            |
 | callback  | AsyncCallback\<[ConnectionProperties](#connectionproperties)> | Yes  | Callback used to return the result. If the connection properties of the network specified by **netHandle** is obtained successfully, **error** is **undefined** and **data** is the obtained network connection information. Otherwise, **error** is an error object.|
 
 **Error codes**
@@ -703,6 +756,7 @@ For details about the error codes, see [Network Connection Management Error Code
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Example: Obtain the connection information of the default network.
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   if (netHandle.netId == 0) {
     // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
@@ -722,7 +776,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 getConnectionProperties(netHandle: NetHandle): Promise\<ConnectionProperties>
 
-Obtains connection properties of the network specified by **netHandle**. This API uses a promise to return the result.
+Obtains the connection information of the data network specified by **NetHandle**, including the NIC name, domain name, link information, route information, network address, and maximum transmission unit. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -738,7 +792,7 @@ Obtains connection properties of the network specified by **netHandle**. This AP
 
 | Type                                                   | Description                             |
 | ------------------------------------------------------- | --------------------------------- |
-| Promise\<[ConnectionProperties](#connectionproperties)> | Promise used to return the result.|
+| Promise\<[ConnectionProperties](#connectionproperties)> | Promise used to return the network connection information.|
 
 **Error codes**
 
@@ -773,7 +827,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 getConnectionPropertiesSync(netHandle: NetHandle): ConnectionProperties
 
-Obtains network connection information based on the specified **netHandle**.
+Obtains the connection information of the data network specified by **NetHandle**, including the NIC name, domain name, link information, route information, network address, and maximum transmission unit. This API returns the result synchronously.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -783,7 +837,7 @@ Obtains network connection information based on the specified **netHandle**.
 
 | Name   | Type                   | Mandatory| Description            |
 | --------- | ----------------------- | ---- | ---------------- |
-| netHandle | [NetHandle](#nethandle) | Yes  | Handle of the data network.|
+| netHandle | [NetHandle](#nethandle) | Yes  | Network handle.|
 
 **Return value**
 
@@ -828,7 +882,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 getNetCapabilities(netHandle: NetHandle, callback: AsyncCallback\<NetCapabilities>): void
 
-Obtains capability information of the network specified by **netHandle**. This API uses an asynchronous callback to return the result.
+Obtains the network capability set of the data network specified by **NetHandle**, including the uplink and downlink bandwidth, specific network capabilities, and network type. This API uses an asynchronous callback to return the result.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -840,8 +894,8 @@ Obtains capability information of the network specified by **netHandle**. This A
 
 | Name   | Type                                               | Mandatory| Description                                                        |
 | --------- | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| netHandle | [NetHandle](#nethandle)                             | Yes  | Handle of the data network.                                            |
-| callback  | AsyncCallback\<[NetCapabilities](#netcapabilities)> | Yes  | Callback used to return the result. If the capability information of the network specified by **netHandle** is obtained successfully, **error** is **undefined** and **data** is the obtained network capability information. Otherwise, **error** is an error object.|
+| netHandle | [NetHandle](#nethandle)                             | Yes  | Network handle.                                            |
+| callback  | AsyncCallback\<[NetCapabilities](#netcapabilities)> | Yes  | Callback used to return the result. If the capability set of the network corresponding to netHandle is successfully obtained, **error** is **undefined**, and **data** is the obtained network capability set. Otherwise, **error** is an error object.|
 
 **Error codes**
 
@@ -882,7 +936,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 getNetCapabilities(netHandle: NetHandle): Promise\<NetCapabilities>
 
-Obtains capability information of the network specified by **netHandle**. This API uses a promise to return the result.
+Obtains the network capability set of the data network specified by **NetHandle**, including the uplink and downlink bandwidth, specific network capabilities, and network type. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -894,13 +948,13 @@ Obtains capability information of the network specified by **netHandle**. This A
 
 | Name   | Type                   | Mandatory| Description            |
 | --------- | ----------------------- | ---- | ---------------- |
-| netHandle | [NetHandle](#nethandle) | Yes  | Handle of the data network.|
+| netHandle | [NetHandle](#nethandle) | Yes  | Network handle.|
 
 **Return value**
 
 | Type                                         | Description                             |
 | --------------------------------------------- | --------------------------------- |
-| Promise\<[NetCapabilities](#netcapabilities)> | Promise used to return the result.|
+| Promise\<[NetCapabilities](#netcapabilities)> | Promise used to return the network capability set.|
 
 **Error codes**
 
@@ -937,7 +991,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 getNetCapabilitiesSync(netHandle: NetHandle): NetCapabilities
 
-Obtains capability information of the network specified by **netHandle**. This API returns the result synchronously.
+Obtains the network capability information of the data network specified by **NetHandle**, including the uplink and downlink bandwidth, specific network capabilities, and network type. This API returns the result synchronously.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -949,13 +1003,13 @@ Obtains capability information of the network specified by **netHandle**. This A
 
 | Name   | Type                   | Mandatory| Description            |
 | --------- | ----------------------- | ---- | ---------------- |
-| netHandle | [NetHandle](#nethandle) | Yes  | Handle of the data network.|
+| netHandle | [NetHandle](#nethandle) | Yes  | Network handle.|
 
 **Return value**
 
 | Type                                         | Description                             |
 | --------------------------------------------- | --------------------------------- |
-| [NetCapabilities](#netcapabilities) | Network capability information.|
+| [NetCapabilities](#netcapabilities) | Network capability set.|
 
 **Error codes**
 
@@ -994,7 +1048,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 isDefaultNetMetered(callback: AsyncCallback\<boolean>): void
 
-Checks whether the data traffic over the current network is metered. For example, data traffic over Wi-Fi is not metered, whereas that over cellular networks is. This API uses an asynchronous callback to return the result.
+Checks whether the data traffic over the current default network is metered. For example, data traffic over Wi-Fi is not metered, whereas that over cellular networks is. This API uses an asynchronous callback to return the result.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -1004,7 +1058,7 @@ Checks whether the data traffic over the current network is metered. For example
 
 | Name  | Type                   | Mandatory| Description                                  |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback\<boolean> | Yes  | Callback used to return the result. The value **true** indicates that the data traffic over the current network is metered, and the value **false** indicates the opposite.|
+| callback | AsyncCallback\<boolean> | Yes  | Callback used to return the result. Returns whether data traffic over the current network is metered. The value **true** indicates that the data traffic is metered, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -1033,7 +1087,7 @@ connection.isDefaultNetMetered((error: BusinessError, data: boolean) => {
 
 isDefaultNetMetered(): Promise\<boolean>
 
-Checks whether the data traffic over the current network is metered. For example, data traffic over Wi-Fi is not metered, whereas that over cellular networks is. This API uses a promise to return the result.
+Checks whether the data traffic over the current default network is metered. For example, data traffic over Wi-Fi is not metered, whereas that over cellular networks is. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -1043,7 +1097,7 @@ Checks whether the data traffic over the current network is metered. For example
 
 | Type             | Description                                           |
 | ----------------- | ----------------------------------------------- |
-| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the data traffic over the current network is metered, and the value **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return the result. Whether data traffic over the current network is metered. The value **true** indicates that the data traffic is metered, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -1103,7 +1157,7 @@ let isMetered = connection.isDefaultNetMeteredSync();
 
 hasDefaultNet(callback: AsyncCallback\<boolean>): void
 
-Checks whether the default data network is activated. This API uses an asynchronous callback to return the result. You can use [getDefaultNet](#connectiongetdefaultnet) to obtain the default data network, if any.
+Checks whether there is an available network. This API uses an asynchronous callback to return the result. If there is an available network, [getDefaultNet](#connectiongetdefaultnet) can be used to obtain the default network handle.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -1113,7 +1167,7 @@ Checks whether the default data network is activated. This API uses an asynchron
 
 | Name  | Type                   | Mandatory| Description                                  |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback\<boolean> | Yes  | Callback used to return the result. The value **true** indicates that the default data network is activated, and the value **false** indicates the opposite.|
+| callback | AsyncCallback\<boolean> | Yes  | Callback used to return the result. Returns whether there is an available network. The value **true** indicates that a network is available, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -1142,7 +1196,7 @@ connection.hasDefaultNet((error: BusinessError, data: boolean) => {
 
 hasDefaultNet(): Promise\<boolean>
 
-Checks whether the default data network is activated. This API uses a promise to return the result. You can use [getDefaultNet](#connectiongetdefaultnet) to obtain the default data network, if any.
+Checks whether there is an available network. This API uses a promise to return the result. If there is an available network, [getDefaultNet](#connectiongetdefaultnet) can be used to obtain the default network handle.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -1152,7 +1206,7 @@ Checks whether the default data network is activated. This API uses a promise to
 
 | Type             | Description                                           |
 | ----------------- | ----------------------------------------------- |
-| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the default data network is activated, and the value **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return the result. Returns whether there is an available network. The value **true** indicates that a network is available, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -1178,7 +1232,7 @@ connection.hasDefaultNet().then((data: boolean) => {
 
 hasDefaultNetSync(): boolean
 
-Checks whether the default data network is activated. This API returns the result synchronously.
+Checks whether there is an available network. This API returns the result synchronously.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -1188,7 +1242,7 @@ Checks whether the default data network is activated. This API returns the resul
 
 | Type             | Description                                           |
 | ----------------- | ----------------------------------------------- |
-| boolean | Boolean value indicating whether the default data network is activated. The value **true** indicates that the default data network is activated, and the value **false** indicates the opposite.|
+| boolean | Returns whether there is an available network. The value **true** indicates that a network is available, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -1205,7 +1259,7 @@ For details about the error codes, see [Network Connection Management Error Code
 ```ts
 import { connection } from '@kit.NetworkKit';
 
-let isDefaultNet = connection.hasDefaultNetSync();
+let hasDefaultNet = connection.hasDefaultNetSync();
 ```
 
 
@@ -1213,7 +1267,11 @@ let isDefaultNet = connection.hasDefaultNetSync();
 
 reportNetConnected(netHandle: NetHandle, callback: AsyncCallback&lt;void&gt;): void
 
-Reports a network connection event to the network management module. This API uses an asynchronous callback to return the result.
+Reports the network availability to the network management module. This API uses an asynchronous callback to return the result.
+
+>**NOTE**
+>
+>This API is used by the browser to connect to the portal network. After the network authentication is successful, the browser reports the network connection success to the network management module. The network management module then triggers network detection and updates the network status.
 
 **Permission required**: ohos.permission.GET_NETWORK_INFO and ohos.permission.INTERNET
 
@@ -1223,7 +1281,7 @@ Reports a network connection event to the network management module. This API us
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| netHandle | [NetHandle](#nethandle) | Yes| Handle of the data network. For details, see [NetHandle](#nethandle).|
+| netHandle | [NetHandle](#nethandle) | Yes| Network handle. For details, see [NetHandle](#nethandle).|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the network status is reported successfully, **error** is **undefined**. Otherwise, **error** is an error object.|
 
 **Error codes**
@@ -1255,7 +1313,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 reportNetConnected(netHandle: NetHandle): Promise\<void\>
 
-Reports a network connection event to the network management module. This API uses a promise to return the result.
+Reports that the network is available to the network management module. This API uses a promise to return the result.
 
 **Permission required**: ohos.permission.GET_NETWORK_INFO and ohos.permission.INTERNET
 
@@ -1265,7 +1323,7 @@ Reports a network connection event to the network management module. This API us
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| netHandle | [NetHandle](#nethandle) | Yes| Handle of the data network. For details, see [NetHandle](#nethandle).|
+| netHandle | [NetHandle](#nethandle) | Yes| Network handle. For details, see [NetHandle](#nethandle).|
 
 **Return value**
 | Type| Description|
@@ -1300,7 +1358,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 reportNetDisconnected(netHandle: NetHandle, callback: AsyncCallback&lt;void&gt;): void
 
-Reports a network disconnection event to the network management module. This API uses an asynchronous callback to return the result.
+Reports the network unavailability to the network management module. This API uses an asynchronous callback to return the result.
 
 **Permission required**: ohos.permission.GET_NETWORK_INFO and ohos.permission.INTERNET
 
@@ -1310,7 +1368,7 @@ Reports a network disconnection event to the network management module. This API
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| netHandle | [NetHandle](#nethandle) | Yes| Handle of the data network. For details, see [NetHandle](#nethandle).|
+| netHandle | [NetHandle](#nethandle) | Yes| Network handle. For details, see [NetHandle](#nethandle).|
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the network status is reported successfully, **error** is **undefined**. Otherwise, **error** is an error object.|
 
 **Error codes**
@@ -1350,7 +1408,7 @@ connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle)
 
 reportNetDisconnected(netHandle: NetHandle): Promise&lt;void&gt;
 
-Reports a network disconnection event to the network management module. This API uses a promise to return the result.
+Reports the network unavailability to the network management module. This API uses a promise to return the result.
 
 **Permission required**: ohos.permission.GET_NETWORK_INFO and ohos.permission.INTERNET
 
@@ -1360,12 +1418,12 @@ Reports a network disconnection event to the network management module. This API
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| netHandle | [NetHandle](#nethandle) | Yes| Handle of the data network. For details, see [NetHandle](#nethandle).|
+| netHandle | [NetHandle](#nethandle) | Yes| Network handle.|
 
 **Return value**
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise Promise that returns no value.|
 
 **Error codes**
 
@@ -1395,7 +1453,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 getAddressesByName(host: string, callback: AsyncCallback\<Array\<NetAddress>>): void
 
-Obtains all IP addresses by using the specified network to resolve the host name. This API uses an asynchronous callback to return the result.
+Obtain all IP addresses of the default network by resolving the host name. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -1439,7 +1497,7 @@ connection.getAddressesByName("xxxx", (error: BusinessError, data: connection.Ne
 
 getAddressesByName(host: string): Promise\<Array\<NetAddress\>\>
 
-Obtains all IP addresses by using the specified network to resolve the host name. This API uses a promise to return the result.
+Obtain all IP addresses of the default network by resolving the host name. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -1455,7 +1513,7 @@ Obtains all IP addresses by using the specified network to resolve the host name
 
 | Type                                       | Description                         |
 | ------------------------------------------- | ----------------------------- |
-| Promise\<Array\<[NetAddress](#netaddress)>> | Promise used to return the result.|
+| Promise\<Array\<[NetAddress](#netaddress)>> | Promise used to return the result. All IP addresses.|
 
 **Error codes**
 
@@ -1484,6 +1542,10 @@ connection.getAddressesByName("xxxx").then((data: connection.NetAddress[]) => {
 addCustomDnsRule(host: string, ip: Array\<string\>, callback: AsyncCallback\<void\>): void
 
 Adds custom DNS rules for the specified host of the current application. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> You can call [removeCustomDnsRule](#connectionremovecustomdnsrule11) to delete a custom DNS rule or call [clearCustomDnsRules](#connectionclearcustomdnsrules11) to delete all custom DNS rules of the current application.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -1531,6 +1593,10 @@ connection.addCustomDnsRule("xxxx", ["xx.xx.xx.xx","xx.xx.xx.xx"], (error: Busin
 addCustomDnsRule(host: string, ip: Array\<string\>): Promise\<void\>
 
 Adds custom DNS rules for the specified host of the current application. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> You can call [removeCustomDnsRule](#connectionremovecustomdnsrule11) to delete a custom DNS rule or call [clearCustomDnsRules](#connectionclearcustomdnsrules11) to delete all custom DNS rules of the current application.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -1582,6 +1648,10 @@ removeCustomDnsRule(host: string, callback: AsyncCallback\<void\>): void
 
 Removes the custom DNS rules of the specified host from the current application. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> You can call [addCustomDnsRule](#connectionaddcustomdnsrule11) to add a custom rule.
+
 **Required permissions**: ohos.permission.INTERNET
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
@@ -1627,6 +1697,10 @@ connection.removeCustomDnsRule("xxxx", (error: BusinessError, data: void) => {
 removeCustomDnsRule(host: string): Promise\<void\>
 
 Removes the custom DNS rules of the specified host from the current application. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> You can call [addCustomDnsRule](#connectionaddcustomdnsrule11) to add a custom rule.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -1675,7 +1749,7 @@ connection.removeCustomDnsRule("xxxx").then(() => {
 
 clearCustomDnsRules(callback: AsyncCallback\<void\>): void
 
-Removes all custom DNS rules from the current application. This API uses an asynchronous callback to return the result.
+Removes all custom DNS rules of the current application. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -1718,7 +1792,7 @@ connection.clearCustomDnsRules((error: BusinessError, data: void) => {
 
 clearCustomDnsRules(): Promise\<void\>
 
-Removes all custom DNS rules from the current application. This API uses a promise to return the result.
+Removes all custom DNS rules of the current application. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -1758,13 +1832,12 @@ connection.clearCustomDnsRules().then(() => {
 
 setPacFileUrl(pacFileUrl: string): void
 
-Set the URL of the Proxy Auto-Configuration Script (PAC) and enable the PAC proxy capability, for example, http://127.0.0.1:21998/PacProxyScript.pac. You can obtain the proxy information by parsing the URL.
- 	 
+Set the URL of the Proxy Auto-Configuration Script (PAC) and enable the PAC proxy capability, for example, http://127.0.0.1:21998/PacProxyScript.pac. You can call [findProxyForUrl](#connectionfindproxyforurl20) to parse the URL and obtain the proxy information.
+
 >**NOTE**
 >
 > 1. Currently, this API can be used to parse scripts and enable the PAC proxy capability only on PCs. For other device types, only the script address is saved and the PAC proxy capability is not enabled.<br>
 > 2. This API does not verify the URL authenticity. After the URL is set on the PC, the PAC proxy is started. If the URL is incorrect, the proxy fails to be started and the error code 2100002 is returned.
-
 
 **Required permissions**: ohos.permission.SET_PAC_URL
 
@@ -1829,7 +1902,7 @@ console.info(pacFileUrl);
 findProxyForUrl(url: string): string
 
 Parses the specified URL proxy address based on the configured PAC script and returns the corresponding PAC proxy information.
- 	 
+
 > **NOTE**
 >
 > 1. You can use [setPacFileUrl](#connectionsetpacfileurl20) or [setPacUrl](#connectionsetpacurl15) to set the PAC script.<br>
@@ -1948,7 +2021,7 @@ Sets extended attributes of the network specified by **netHandle** to indicate i
 
 | Name   | Type                                             | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| netHandle | [NetHandle](#nethandle)                                         | Yes  | Handle of the data network.          |
+| netHandle | [NetHandle](#nethandle)                                         | Yes  | Network handle.          |
 | netExtAttribute | string                                      | Yes  | Extended network attributes.                                        |
 
 **Return value**
@@ -2005,7 +2078,7 @@ Sets extended attributes of the network specified by **netHandle** to indicate i
 
 | Name   | Type                                             | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| netHandle | [NetHandle](#nethandle)                  | Yes  | Handle of the data network.            |
+| netHandle | [NetHandle](#nethandle)                  | Yes  | Network handle.            |
 | netExtAttribute | string                             | Yes  | Extended network attributes.     |
 
 **Error codes**
@@ -2046,13 +2119,13 @@ Obtains the extended attributes of the network specified by **netHandle** to det
 
 | Name   | Type                     | Mandatory| Description                          |
 | --------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| netHandle | [NetHandle](#nethandle)                | Yes  | Handle of the data network.            |
+| netHandle | [NetHandle](#nethandle)                | Yes  | Network handle.            |
 
 **Return value**
 
 | Type                  | Description                   |
 | ---------------------- | ----------------------- |
-| Promise\<string\> | Promise used to return the result.  |
+| Promise\<string\> | Promise used to return the network extension attributes.|
 
 **Error codes**
 
@@ -2098,7 +2171,7 @@ Obtains the extended attributes of the network specified by **netHandle** to det
 
 | Name   | Type                                             | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| netHandle | [NetHandle](#nethandle)                   | Yes  | Handle of the data network.        |
+| netHandle | [NetHandle](#nethandle)                   | Yes  | Network handle.        |
 
 **Return value**
 
@@ -2141,7 +2214,7 @@ Obtains information about entries in the IP neighbor table of the local device, 
 >
 > This interface is used to obtain the cached data of the IP neighbor table, not the data of all connections on the LAN.
 >
-> This API is used when you need to check network exceptions and parse the mapping between IP addresses and MAC addresses.
+> This API is used to check network exceptions and parse the mapping between IP addresses and MAC addresses.
 
 **Required permissions**: ohos.permission.GET_NETWORK_INFO and ohos.permission.GET_IP_MAC_INFO
 
@@ -2183,7 +2256,7 @@ connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
 
 ## NetConnection
 
-Represents the network connection handle.
+Network connection object type.
 
 > **NOTE**
 >
@@ -2531,9 +2604,9 @@ netCon.unregister((error: BusinessError) => {
 
 ## NetHandle
 
-Defines the handle of the data network.
+Network handle.
 
-Before invoking **NetHandle** APIs, call **getNetHandle** to obtain a **NetHandle** object.
+Before invoking **NetHandle** APIs, call **getNetHandle** to obtain a **NetHandle** object. For example, you can call [getDefaultNet](#connectiongetdefaultnet) to obtain the network handle of the default network.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -2541,7 +2614,7 @@ Before invoking **NetHandle** APIs, call **getNetHandle** to obtain a **NetHandl
 
 | Name   | Type  | Read Only|Optional|Description                     |
 | ------ | ------ | --- |---|------------------------- |
-| netId  | number | No| No |  Network ID. The value **0** indicates no default network. Any other value must be greater than or equal to 100.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| netId  | number | No| No |  Network ID. The value **0** indicates that there is no default network. The other valid values must be greater than or equal to **100**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ### bindSocket<sup>9+</sup>
 
@@ -2794,7 +2867,7 @@ Obtains all IP addresses by using the network specified by **NetHandle** to reso
 
 | Type                                       | Description                         |
 | ------------------------------------------- | ----------------------------- |
-| Promise\<Array\<[NetAddress](#netaddress)>> | Promise used to return the result.|
+| Promise\<Array\<[NetAddress](#netaddress)>> | Promise used to return all IP addresses.|
 
 **Error codes**
 
@@ -2896,7 +2969,7 @@ Obtains the first IP address by using the network specified by **NetHandle** to 
 
 | Type                               | Description                           |
 | ----------------------------------- | ------------------------------- |
-| Promise\<[NetAddress](#netaddress)> | Promise used to return the result.|
+| Promise\<[NetAddress](#netaddress)> | Promise used to return the first IP address.|
 
 **Error codes**
 
@@ -3020,7 +3093,7 @@ Provides an instance that bears data network capabilities.
 
 | Name   | Type  | Read Only|Optional|Description                     |
 | ------ | ------ | --- |---|------------------------- |
-| netHandle               | [NetHandle](#nethandle)              |  No| No | Handle of the data network.                                               |
+| netHandle               | [NetHandle](#nethandle)              |  No| No | Network handle.                                               |
 | netCap                  |  [NetCapabilities](#netcapabilities) |  No| No |  Network transmission capabilities and bearer types of the data network.                           |
 
 ## NetCapabilities
@@ -3046,8 +3119,8 @@ Defines the network connection properties.
 
 | Name   | Type  | Read Only|Optional|Description                     |
 | ------ | ------ | --- |---|------------------------- |
-| netHandle            | [NetHandle](#nethandle)                             | No| No  |Data network handle.|
-| connectionProperties | [ConnectionProperties](#connectionproperties)       | No| No  |Network connection properties.          |
+| netHandle            | [NetHandle](#nethandle)                             | No| No  |Network handle.|
+| connectionProperties | [ConnectionProperties](#connectionproperties)       | No| No  |Defines the network connection properties.          |
 
 ## NetBlockStatusInfo<sup>11+</sup>
 
@@ -3059,7 +3132,7 @@ Obtains the network block status information.
 
 | Name   | Type  | Read Only|Optional|Description                     |
 | ------ | ------ | --- |---|------------------------- |
-| netHandle            | [NetHandle](#nethandle)               | No| No  |Data network handle.  |
+| netHandle            | [NetHandle](#nethandle)               | No| No  |Network handle.  |
 | blocked              | boolean                               | No| No  | Whether the current network is blocked. The value **true** indicates that the network is congested, and the value **false** indicates the opposite.|
 
 ## ConnectionProperties
@@ -3067,7 +3140,7 @@ Obtains the network block status information.
 Defines the network connection properties.
 >**NOTE**
 >
-> The values of linkAddresses, routes, and dnses may be empty.
+> The values of **linkAddresses**, **routes**, and **dnses** may be empty. You need to protect the empty values. You are advised to check whether the objects exist before using the values. 
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -3092,7 +3165,7 @@ Defines network route information.
 | destination    | [LinkAddress](#linkaddress) | No| No|Destination address.      |
 | gateway        | [NetAddress](#netaddress)   | No| No|Gateway address.      |
 | hasGateway     | boolean                     | No| No| Whether a gateway is present. Whether a gateway is available. The value **true** indicates that a gateway is available, and the value **false** indicates the opposite.    |
-| isDefaultRoute | boolean                     | No| No| Whether the route is the default one. Whether the route is the default route. The value **true** indicates that the route is the default route, and the value **false** indicates the opposite. IPv4 default route: The destination address of the route is **0.0.0.0/0**. IPv6 default route: The destination address of the route **is::/0**.|
+| isDefaultRoute | boolean                     | No| No| Whether the route is the default one. Whether the route is the default route. The value **true** indicates that the route is the default route, and the value **false** indicates the opposite.<br>  Note: The IPv4 default route refers to the route whose destination address is **0.0.0.0/0**. The IPv6 default route refers to the route whose destination address is **::/0**.|
 | isExcludedRoute<sup>20+</sup>| boolean                     | No| Yes|Whether the route is excluded. The value **true** indicates that the route is excluded, and the value **false** indicates the opposite.|
 
 ## LinkAddress
@@ -3132,7 +3205,7 @@ Defines an HTTP request, which can be created using [http.createHttp](js-apis-ht
 
 |       Type      |            Description            |
 | ---------------- | --------------------------- |
-| http.HttpRequest | HTTP request task. You need to obtain an HTTP request task before calling **HttpRequest** APIs .|
+| http.HttpRequest | HTTP request task. You need to obtain an HTTP request task before calling **HttpRequest** APIs.|
 
 ## TCPSocket
 

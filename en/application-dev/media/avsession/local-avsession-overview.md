@@ -91,4 +91,4 @@ async function createController() {
 ```
 <!--DelEnd-->
 
-For more information about AVSessionManager APIs, see [API Reference](../../reference/apis-avsession-kit/arkts-apis-avsession.md).
+For more APIs of AVSessionManager, see [Module Description](../../reference/apis-avsession-kit/arkts-apis-avsession.md).

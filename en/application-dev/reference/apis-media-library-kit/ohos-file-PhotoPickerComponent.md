@@ -89,7 +89,7 @@ Describes the configuration of a Picker. It inherits from [photoAccessHelper.Bas
 | gridMargin<sup>14+</sup>        | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)                        | No | Yes| Margin of the component on a grid page.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | photoBrowserMargin<sup>14+</sup>    | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)                        | No | Yes| Margin of the component on a photo browser page.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | singleLineConfig<sup>20+</sup>             | [SingleLineConfig](#singlelineconfig20)                                                | No | Yes| Single-line display mode of a grid page. In single-line mode, the component does not provide functions for viewing a larger image. The component does not support callbacks related to large images, and the PickerController does not support APIs related to large images, making API calls ineffective.<br>**Atomic service API**: This API can be used in atomic services since API version 20.     |  
-| uiComponentColorMode<sup>20+</sup>             | [PickerColorMode](#pickercolormode)                                                | No | Yes| Dark/Light color mode (excluding the background color) of other components on the Picker grid page, including the search box, camera entry, safety tips for using Gallery, and recommendation bubble. This attribute is usually used together with **backgroundColor**. The default value is **PickerColorMode.AUTO**, which follows the system's dark/light color mode.<br>When setting this attribute, avoid using **PickerColorMode.LIGHT** with a dark backgroundColor, as it may make components or text hard to see. Avoid using **PickerColorMode.DARK** with a light backgroundColor for the same reason.<br>**Atomic service API**: This API can be used in atomic services since API version 20. |
+| uiComponentColorMode<sup>20+</sup>             | [PickerColorMode](#pickercolormode)                                                | No | Yes| Picker color mode. Dark/Light color mode (excluding the background color) of other components on the Picker grid page, including the search box, camera entry, safety tips for using Gallery, and recommendation bubble. This attribute is usually used together with **backgroundColor**. The default value is **PickerColorMode.AUTO**, which follows the system's dark/light color mode.<br>When setting this attribute, avoid using **PickerColorMode.LIGHT** with a dark backgroundColor, as it may make components or text hard to see. Avoid using **PickerColorMode.DARK** with a light backgroundColor for the same reason.<br>**Atomic service API**: This API can be used in atomic services since API version 20. |
 | gridStartOffset<sup>20+</sup>    | number                              | No | Yes | Space between the top of the component and the first row of the grid thumbnail. The default value is **0**, in vp.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | gridEndOffset<sup>20+</sup>    | number                              | No | Yes| Space between the bottom of the component and the last row of the grid thumbnail. The default value is **0**, in vp.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | pickerIndex<sup>21+</sup>    | number                              | No | Yes | Unique serial number used to distinguish different picker components. The default value is **-1**, indicating that no distinction is made.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
@@ -202,7 +202,7 @@ Sends data of the specified type to the **PhotoPickerComponent**.
 
 addData(dataType: DataType, data: Object): void
 
-Sends additional configuration data to the **PhotoPickerComponent**. The [DataType](#datatype) parameter identifies the type of data to send, and only the **SET_BADGE_CONFIGS** type is supported currently.
+Sends additional configuration data to the **PhotoPickerComponent**. The [DataType](#datatype) parameter identifies the type of data to send, and only the **SET_BADGE_CONFIGS** type is supported for this method currently.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
@@ -219,7 +219,7 @@ Sends additional configuration data to the **PhotoPickerComponent**. The [DataTy
 
 deleteData(dataType: DataType, data: Object): void
 
-Sends removal configuration data to the **PhotoPickerComponent**. The [DataType](#datatype) parameter identifies the type of data being sent, and only the **SET_BADGE_CONFIGS** type is supported currently.
+Sends removal configuration data to the **PhotoPickerComponent**. The [DataType](#datatype) parameter identifies the type of data being sent, and only the **SET_BADGE_CONFIGS** type is supported for this method currently.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
@@ -236,7 +236,7 @@ Sends removal configuration data to the **PhotoPickerComponent**. The [DataType]
 
 setMaxSelected(maxSelected: MaxSelected): void
 
-Sets the maximum number of images, videos, or images and videos that can be selected on a real-time basis.
+Sets the maximum number of images, videos, or images and videos that can be selected in real time.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -353,7 +353,7 @@ Updates the attributes of the **PhotoPickerComponent**. This API uses a promise 
 
 ## BaseItemInfo
 
-Represents basic image and video information.
+Represents the image and video information.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -699,7 +699,7 @@ import {
   videoPlayStateChangedCallback,
   VideoPlayerState,
   photoAccessHelper
-} from '@kit.MediaLibraryKit'
+} from '@kit.MediaLibraryKit';
 import { dataSharePredicates } from '@kit.ArkData';
 import { common } from '@kit.AbilityKit';
 

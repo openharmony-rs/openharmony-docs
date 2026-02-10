@@ -72,7 +72,7 @@ static createImageAssetRequest(context: Context, fileUri: string): MediaAssetCha
 
 Creates an image asset change request.
 
-Use **fileUri** to specify the data source of the asset to be created. For details, see [FileUri](../apis-core-file-kit/js-apis-file-fileuri.md).
+Data source of the asset to be created. For details, see [@ohos.file.fileuri (File URI)](../apis-core-file-kit/js-apis-file-fileuri.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -126,7 +126,7 @@ static createVideoAssetRequest(context: Context, fileUri: string): MediaAssetCha
 
 Creates a video asset change request.
 
-Use **fileUri** to specify the data source of the asset to be created. For details, see [FileUri](../apis-core-file-kit/js-apis-file-fileuri.md).
+Data source of the asset to be created. For details, see [@ohos.file.fileuri (File URI)](../apis-core-file-kit/js-apis-file-fileuri.md).
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -514,7 +514,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 addResource(type: ResourceType, fileUri: string): void
 
-Adds a resource using [fileUri](../apis-core-file-kit/js-apis-file-fileuri.md).
+Adds resources from the application sandbox based on the file URI. For details about the data source, see [@ohos.file.fileuri (File URI)](../apis-core-file-kit/js-apis-file-fileuri.md).
 
 > **NOTE**
 >

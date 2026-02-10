@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-CameraInput defines the camera input object.
+**CameraInput** defines the camera input object.
 
 It provides camera device information used in [Session](arkts-apis-camera-Session.md).
 
@@ -340,7 +340,7 @@ function unregisterCameraInputError(cameraInput: camera.CameraInput, camera: cam
 
 isPhysicalCameraOrientationVariable(): boolean
 
-Checks whether the physical camera orientation is adjustable in different fold states of a device.
+Checks whether the physical camera orientation is adjustable in different fold states of the device.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -350,7 +350,7 @@ Checks whether the physical camera orientation is adjustable in different fold s
 
 | Type       | Description                                        |
 | ---------- | -------------------------------------------- |
-| boolean    | Check result for whether the physical camera orientation is adjustable in different fold states of a device. **true** if adjustable, **false** otherwise. If the API call fails, undefined is returned.|
+| boolean    | Check result for whether the physical camera orientation is adjustable. **true** if adjustable, **false** otherwise. If the API call fails, undefined is returned.|
 
 **Example**
 
