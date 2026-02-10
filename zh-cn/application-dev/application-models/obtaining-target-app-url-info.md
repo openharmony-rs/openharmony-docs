@@ -17,7 +17,7 @@
 
 ## 操作步骤
 
-0. 安装测试demo应用
+1. 安装测试demo应用
 
 demo应用的module.json5配置文件如下
 
@@ -42,7 +42,7 @@ demo应用的module.json5配置文件如下
   }
 ``` 
 
-1. 获取当前设备上已安装应用的bundleName。
+2. 获取当前设备上已安装应用的bundleName。
 
 使用hdc命令行工具，可以获取设备上已安装应用的详细配置信息，包括bundleName、abilityName以及支持的URL Scheme等。这是获取三方应用URL信息最直接有效的方法。
 
@@ -67,7 +67,7 @@ hdc shell bm dump -a
 
 从输出中找到目标应用的bundleName，例如设置应用的bundleName为 `com.example.myapplication`。
 
-2. 获取应用的详细配置信息。
+3. 获取应用的详细配置信息。
 
 ```bash
 hdc shell bm dump -n com.example.myapplication
@@ -114,7 +114,7 @@ hdc shell bm dump -n com.example.myapplication
 - **host**: `www.example.com`
 - **path**: `path1`
 
-3. 将scheme、host和path拼接生成URL信息。
+4. 将scheme、host和path拼接生成URL信息。
 
 根据获取到的配置信息，按照URL格式拼接应用链接：
 
@@ -122,7 +122,7 @@ hdc shell bm dump -n com.example.myapplication
 scheme://host:port/path
 ```
 
-以应用市场为例：
+以demo应用为例：
 ```
 demo://www.example.com/path1
 ```
@@ -144,11 +144,11 @@ demo://www.example.com/path1
 > - 如果应用未配置skills中的uris字段，则不支持通过Deep Linking方式拉起
 
 
-4. 调试验证
+5. 调试验证
 
 使用[openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起应用的基本步骤如下：
 
-以下为通过openLink接口拉起应用市场的完整示例。在实现时请注意：
+以下为通过openLink接口拉起demo应用的完整示例。在实现时请注意：
 
 - **URL配置验证**：在使用目标应用的URL之前，务必验证其正确性，避免因URL错误导致拉起失败。
 - **应用安装检测**：在拉起目标应用前，建议先检测应用是否已安装。
