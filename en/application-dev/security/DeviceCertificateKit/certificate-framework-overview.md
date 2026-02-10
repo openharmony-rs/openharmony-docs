@@ -20,7 +20,7 @@ The certificate framework provides APIs for parsing, serializing, signing an X.5
 
 Before you get started, familiarity with the basic certificate concepts is helpful, which include but are not limited to the following:
 
-- Digital certificate<br>- X.509 (also referred to as "X509" in this document)<br>- Certificate chain<br>- To Be Signed (TBS)<br>- CRL
+- Digital certificate<br>- X.509 (also referred to as "X509" in this document)<br>- Certificate chain<br>- To Be Signed (TBS, which refers to the data structure to be signed in an X.509 certificate, including the version number, serial number, signature algorithm identifier, issuer, validity period, subject, subject public key information, and extension)<br>- CRL
 
 ## Certificate Specifications
 
