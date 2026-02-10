@@ -139,6 +139,91 @@ struct IndexSix {
 
 <!-- @[v1_to_v2_state_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1StateVariablesToV2CustomComponent.ets) -->
 
+``` TypeScript
+class InfoFour {
+  public myId: number;
+  public name: string;
+
+  constructor(myId?: number, name?: string) {
+    this.myId = myId || 0;
+    this.name = name || 'aaa';
+  }
+}
+
+@ComponentV2
+struct ChildFour {
+  // V2对数据输入有严格的管理，从父组件接受数据时，必须@Param装饰器进行数据接收
+  @Param @Once message: string = 'hello';
+  @Param @Once undefinedVal: string | undefined = undefined; // 使用了@Once可以修改@Param装饰的变量
+  @Param info: InfoFour = new InfoFour();
+  @Require @Param set: Set<number>;
+
+  build() {
+    Column() {
+      Text(`child message:${this.message}`) // 显示string
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.message = 'world';
+        })
+      Divider()
+        .color(Color.Blue)
+      Text(`undefinedVal:${this.undefinedVal}`) // 显示undefinedVal
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.undefinedVal = 'change to define';
+        })
+      Divider()
+        .color(Color.Blue)
+      Text(`info id:${this.info.myId}`) // 显示info:myId
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.info.myId++;
+        })
+      Divider()
+        .color(Color.Blue)
+      ForEach(Array.from(this.set.values()), (item: number) => { // 显示Set
+        Text(`${item}`)
+          .fontSize(30)
+      })
+    }
+    .margin(5)
+  }
+}
+
+@Entry
+@Component
+struct Index4 {
+  @State message: string = 'Hello World'; // 简单类型数据，支持
+  @State undefinedVal: undefined = undefined; // 简单类型数据，undefined，支持
+  @State info: InfoFour = new InfoFour(); // Class类型，不支持传递，编译器报错；消除编译错误请去掉@State
+  @State set: Set<number> = new Set([10, 20]); // 内置类型，不支持传递，编译器报错；消除编译错误请去掉@State
+
+  build() {
+    Column() {
+      Text(`message:${this.message}`)
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.message = 'world hello';
+        })
+      Divider()
+        .color(Color.Blue)
+      ChildFour({
+        message: this.message,
+        undefinedVal: this.undefinedVal,
+        info: this.info,
+        set: this.set
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 
 ### 传递class类型状态变量
 
