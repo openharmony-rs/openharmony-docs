@@ -36,7 +36,7 @@ canIUse(syscap: string): boolean
 
 **示例：**
 
-  ```js
+```js
 import { geoLocationManager } from '@kit.LocationKit'
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -53,4 +53,4 @@ if (isLocationAvailable) {
 } else {
     console.info('Location not by this device.');
 }
-  ```
+```
