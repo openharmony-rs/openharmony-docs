@@ -1205,26 +1205,4 @@ struct TextInputExample {
 
 V2迁移策略：装饰器修改为V1的同时，$$直接替换为!!。
 
-``` TypeScript
-@Entry
-@ComponentV2
-struct TextInputExampleV2 {
-  @Local text: string = '';
-  controller: TextInputController = new TextInputController();
-
-  build() {
-    Column({ space: 20 }) {
-      Text(this.text)
-      // V2中直接用!!替换$$
-      TextInput({ text: this.text!!, placeholder: 'input your word...', controller: this.controller })
-        .placeholderColor(Color.Grey)
-        .placeholderFont({ size: 14, weight: 400 })
-        .caretColor(Color.Blue)
-        .width(300)
-    }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
-  }
-}
-```
+<!-- @[sync_state_manager_!!](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExampleV2.ets) -->

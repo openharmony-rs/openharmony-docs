@@ -768,141 +768,26 @@ struct NavigationContentMsgStack {
 
 为了解决不同Ability之间数据的共享，LocalStorage支持跨Ability存取数据。
 
-对于该场景，V2可结合\@ObservedV2+\@Trace创建可观测的全局单例对象，定义Map类型存储不同Ability页面的数据，从而实现不同Ability之间数据共享。
+对于该场景，V2可结合\@ObservedV2+\@Trace创建可观测的全局单例对象，定义Map类型存储不同Ability页面的数据，从而实现不同Ability之间数据共享。启动Ability可以参考[specified启动模式](../../application-models/uiability-launch-type.md#specified启动模式)
 
 **主页面**
 
-``` TypeScript
-import { common, Want } from '@kit.AbilityKit';
-
-@Entry
-@Component
-struct Index {
-  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
-  build() {
-    Column() {
-      Text("使用文件管理器，使用本应用打开多个PDF")
-        .fontSize($r('app.float.page_text_font_size'))
-        .fontWeight(FontWeight.Bold)
-        .alignRules({
-          center: { anchor: '__container__', align: VerticalAlign.Center },
-          middle: { anchor: '__container__', align: HorizontalAlign.Center }
-        })
-      Button('Jump to PDFA').onClick(() => {
-        let wantInfo: Want = {
-          bundleName: 'com.ex.pdf',
-          abilityName: 'PDFAbility',
-          uri: 'PDFA',
-          parameters: {
-            key: 'PDFA',
-            value: "PDFA-1111111111",
-          }
-        };
-        this.context.startAbility(wantInfo);
-      })
-      Button('Jump to PDFB').onClick(() => {
-        let wantInfo: Want = {
-          bundleName: 'com.ex.pdf',
-          abilityName: 'PDFAbility',
-          uri: 'PDFB',
-          parameters: {
-            key: 'PDFB',
-            value: "PDFB-22222222222",
-          }
-        };
-        this.context.startAbility(wantInfo);
-      })
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
+<!-- @[Internal_localStorage_multi_instance_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/Index.ets) -->
 
 V2:
 
 使用\@ObservedV2+\@Trace定义全局可观测单例，通过全局的map对象进行数据关联，这种方式需要开发者自行建立唯一的key和value关系。注意单例单独封装存放。
 
-``` TypeScript
-@ObservedV2
-export default class PDFData {
-  // 单例实例
-  private static instance_: PDFData | null = null;
-  @Trace data: Map<string, string> = new Map();
-  @Trace flag: string = '';
+<!-- @[Internal_localStorage_multi_instance_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/model/PDFData.ets) -->
 
-  private constructor() {
-  }
 
-  static getInstance(): PDFData {
-    if (!PDFData.instance_) {
-      PDFData.instance_ = new PDFData();
-    }
-    return PDFData.instance_;
-  }
 
-  setData(key: string, value: string) {
-    this.data.set(key, value);
-  }
+<!-- @[Internal_localStorage_multi_instance_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/PdfEntryAbility.ets) -->
 
-  getData() {
-    return this.data
-  }
 
-  setFlage(value: string) {
-    this.flag = value
-  }
 
-  getFlag() {
-    return this.flag
-  }
-}
-```
+<!-- @[Internal_localStorage_multi_instance_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/PDF.ets) -->
 
-``` TypeScript
-import { UIAbility, Want } from "@kit.AbilityKit";
-import { window } from "@kit.ArkUI";
-import PDFData from '../model/PDFData';
-
-export default class PDFAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    // 用单例存储数据
-    const data = this.launchWant.parameters as Record<string, string>;
-    PDFData.getInstance().setData(data.key, data.value);
-    PDFData.getInstance().setFlage(this.launchWant.uri || '');
-    windowStage.loadContent('pages/PDF').catch();
-  }
-}
-```
-
-``` TypeScript
-import PDFData from '../model/PDFData';
-
-@Entry
-@ComponentV2
-struct PDF {
-  @Local message: string = 'uri';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .fontSize($r('app.float.page_text_font_size'))
-        .fontWeight(FontWeight.Bold)
-    }
-    .backgroundColor(Color.Pink)
-    .height('100%')
-    .width('100%')
-  }
-
-  aboutToAppear(): void {
-    // 此处只做简略显示uri，实际功能为打开渲染PDF文件
-    const key: string = PDFData.getInstance().getFlag();
-    // 根据唯一标识，从单例中获取页面对应数据
-    this.message = PDFData.getInstance().getData().get(key) || '';
-  }
-}
-```
 
 
 ## AppStorage->AppStorageV2
