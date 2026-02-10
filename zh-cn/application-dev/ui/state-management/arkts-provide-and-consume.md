@@ -88,7 +88,7 @@
 
 - 当装饰的数据类型为class或者Object的时候，可以观察到赋值和属性赋值的变化（属性为Object.keys(observedObject)返回的所有属性）。
 
-- 当装饰Array时，可以观察到数组本身、数组项的赋值及其API操作带来的变化。
+- 当装饰Array时，可以观察到数组本身、数组项的赋值及其API操作带来的变化。详见[装饰Array类型变量](#装饰array类型变量)。
 
 - 当装饰的对象是Date时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性，详见[装饰Date类型变量](#装饰date类型变量)。
 
@@ -130,35 +130,35 @@
 
 2. \@Consume装饰的变量不能在构造参数中传入初始化，否则编译时会报错。\@Consume仅能通过key来匹配对应的\@Provide变量或者从API version 20开始设置默认值进行初始化。
 
-    【反例】
-  
-    ```ts
-    @Component
-    struct Child {
-      @Consume msg: string;
-    
-      build() {
-        Text(this.msg)
-      }
-    }
-    
-    @Entry
-    @Component
-    struct Parent {
-      @Provide message: string = 'Hello';
-    
-      build() {
-        Column() {
-          // 错误写法，不允许外部传入初始化
-          Child({msg: 'Hello'})
-        }
-      }
-    }
-    ```
+   【反例】
+
+   ```ts
+   @Component
+   struct Child {
+     @Consume msg: string;
+   
+     build() {
+       Text(this.msg)
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Parent {
+     @Provide message: string = 'Hello';
+   
+     build() {
+       Column() {
+         // 错误写法，不允许外部传入初始化
+         Child({msg: 'Hello'})
+       }
+     }
+   }
+   ```
 
    【正例】
    <!-- @[provide_consume_proper_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemo.ets) -->
-   
+
    ``` TypeScript
    @Component
    struct Child {
@@ -233,7 +233,7 @@
 
    【正例】
    <!-- @[provide_consume_proper_demo_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemoTwo.ets) -->
-   
+
    ``` TypeScript
    @Component
    struct Child {
@@ -271,76 +271,114 @@
 6. 从API version 20开始，支持跨BuilderNode配对\@Provide/\@Consume。在BuilderNode上树时，\@Consume通过key匹配找到最近的\@Provide，两者类型需要一致，如果不一致，则会抛出运行时错误。
 
    需要注意类型不相等判断，包括类实例的判断，比如：
-```ts
-class A {}
-class B {}
-// 两个message都为object类型，但其构造函数不同，属于不同类型
-@Provide message: A = new A();
-@Consume message: B = new B();
-```
-在非BuilderNode场景中，仍建议配对的\@Provide/\@Consume类型一致。虽然在运行时不会有强校验，但在\@Consume装饰的变量初始化时，会隐式转换成\@Provide装饰变量的类型。
 
-<!-- @[provide_consume_Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeBuilderNode.ets) -->
+   ```ts
+   class A {}
+   class B {}
+   // 两个message都为object类型，但其构造函数不同，属于不同类型
+   @Provide message: A = new A();
+   @Consume message: B = new B();
+   ```
 
-``` TypeScript
-import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
+   在非BuilderNode场景中，仍建议配对的\@Provide/\@Consume类型一致。虽然在运行时不会有强校验，但在\@Consume装饰的变量初始化时，会隐式转换成\@Provide装饰变量的类型。
 
-@Builder
-function buildText() {
-  Column() {
-    Child()
-  }
-}
+   <!-- @[provide_consume_Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeBuilderNode.ets) -->
+   
+   ``` TypeScript
+   import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
+   
+   @Builder
+   function buildText() {
+     Column() {
+       Child()
+     }
+   }
+   
+   class TextNodeController extends NodeController {
+     private builderNode: BuilderNode<[]> | null = null;
+   
+     constructor() {
+       super();
+     }
+   
+     makeNode(context: UIContext): FrameNode | null {
+       this.builderNode = new BuilderNode(context);
+       // 配置跨BuilderNode支持@Provide/@Consume
+       this.builderNode.build(wrapBuilder(buildText), undefined,
+         { enableProvideConsumeCrossing: true });
+       // 将BuilderNode的根节点挂载到NodeContainer
+       return this.builderNode.getFrameNode();
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     @Provide message: string = 'hello';
+     controller: TextNodeController = new TextNodeController();
+   
+     build() {
+       Column() {
+         NodeContainer(this.controller)
+           .width('100%')
+           .height(100)
+       }
+       .width('100%')
+       .height('100%')
+     }
+   }
+   
+   
+   @Component
+   struct Child {
+     // Child通过BuilderNode上树后，@Consume和Index中的@Provide建立连接时发现类型不一致，抛出运行时错误
+     @Consume message: number = 0;
+   
+     build() {
+       Column() {
+         Text(`@Consume ${this.message}`)
+       }
+     }
+   }
+   ```
 
-class TextNodeController extends NodeController {
-  private builderNode: BuilderNode<[]> | null = null;
-
-  constructor() {
-    super();
-  }
-
-  makeNode(context: UIContext): FrameNode | null {
-    this.builderNode = new BuilderNode(context);
-    // 配置跨BuilderNode支持@Provide/@Consume
-    this.builderNode.build(wrapBuilder(buildText), undefined,
-      { enableProvideConsumeCrossing: true });
-    // 将BuilderNode的根节点挂载到NodeContainer
-    return this.builderNode.getFrameNode();
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @Provide message: string = 'hello';
-  controller: TextNodeController = new TextNodeController();
-
-  build() {
-    Column() {
-      NodeContainer(this.controller)
-        .width('100%')
-        .height(100)
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
-
-@Component
-struct Child {
-  // Child通过BuilderNode上树后，@Consume和Index中的@Provide建立连接时发现类型不一致，抛出运行时错误
-  @Consume message: number = 0;
-
-  build() {
-    Column() {
-      Text(`@Consume ${this.message}`)
-    }
-  }
-}
-```
+7. 父组件传入undefined时，\@Provide装饰的变量仍使用本地默认值进行初始化。
+   
+   <!-- @[provide_consume_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeUndefined.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   struct Parent {
+     @State count: number | undefined = undefined;
+   
+     build() {
+       Column() {
+         Text(`Parent count value: ${this.count}`)
+           .fontSize(20)
+           .margin(10)
+         Child({ count: this.count })
+       }
+     }
+   }
+   
+   @Component
+   struct Child {
+     @Provide count: number | undefined = 0;
+   
+     build() {
+       Column() {
+         Text(`Child count value: ${this.count}`)
+           .fontSize(20)
+           .margin(10)
+       }
+     }
+   }
+   ```
 
 ## 使用场景
+
+### @Provide变量与@Consume变量建立双向绑定
 
 以下示例是@Provide变量与后代组件中@Consume变量进行双向同步的场景。当分别点击ToDo和ToDoItem组件内的Button时，count的更改会双向同步在ToDo和ToDoItem中。
 
@@ -390,6 +428,77 @@ struct ToDo {
       Button(`count(${this.count}), count + 1`)
         .onClick(() => this.count += 1)
       ToDoDemo()
+    }
+  }
+}
+```
+
+### 装饰Array类型变量
+
+以下示例中，message类型为`number[]`，点击Button改变message的值，视图会随之刷新。
+
+<!-- @[provide_consume_array_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeArraySync.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct Index {
+  @Provide message: number[] = [0, 1, 2, 3];
+
+  build() {
+    Column() {
+      ForEach(this.message, (item: number) => {
+        Text(`Provide ${item}`)
+          .fontSize(20)
+          .margin(10)
+      })
+      // 新增数组元素，触发UI刷新
+      Button('Push element')
+        .onClick(() => {
+          this.message.push(4);
+        })
+        .width(300)
+        .margin(10)
+      // 删除数组元素，触发UI刷新
+      Button('Pop element')
+        .onClick(() => {
+          this.message.pop();
+        })
+        .width(300)
+        .margin(10)
+      Child()
+    }
+  }
+}
+
+@Component
+struct Child {
+  @Consume message: number[] = [0, 1, 2, 3];
+
+  build() {
+    Row() {
+      Column() {
+        ForEach(this.message, (item: number) => {
+          Text(`Consume ${item}`)
+            .fontSize(20)
+            .margin(10)
+        })
+        // 对数组整体重新赋值，触发UI刷新
+        Button('Reset array')
+          .onClick(() => {
+            this.message = [9, 8, 7, 6];
+          })
+          .width(300)
+          .margin(10)
+        // 更新数组元素，触发UI刷新
+        Button('Modify element[0]')
+          .onClick(() => {
+            this.message[0] = 10;
+          })
+          .width(300)
+          .margin(10)
+      }
+      .width('100%')
     }
   }
 }
