@@ -12,7 +12,7 @@ typedef struct OH_ArkUI_TextEditorStyledStringController OH_ArkUI_TextEditorStyl
 
 ## 概述
 
-定义文本选择菜单选项。
+定义属性字符串控制器。
 
 **起始版本：** 24
 

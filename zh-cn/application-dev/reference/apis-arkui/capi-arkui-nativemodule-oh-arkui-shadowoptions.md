@@ -12,7 +12,7 @@ typedef struct OH_ArkUI_ShadowOptions OH_ArkUI_ShadowOptions
 
 ## 概述
 
-定义文本选择菜单选项。
+定义阴影选项。
 
 **起始版本：** 24
 
