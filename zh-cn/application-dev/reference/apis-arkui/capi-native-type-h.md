@@ -701,9 +701,9 @@ enum ArkUI_ImageRepeat
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_IMAGE_REPEAT_NONE = 0 | 不重复。 |
-| ARKUI_IMAGE_REPEAT_X | 在X轴方向重复。 |
-| ARKUI_IMAGE_REPEAT_Y | 在Y轴方向重复。 |
-| ARKUI_IMAGE_REPEAT_XY | 在X轴和Y轴方向重复。 |
+| ARKUI_IMAGE_REPEAT_X = 1 | 在X轴方向重复。 |
+| ARKUI_IMAGE_REPEAT_Y = 2 | 在Y轴方向重复。 |
+| ARKUI_IMAGE_REPEAT_XY = 3 | 在X轴和Y轴方向重复。 |
 
 ### ArkUI_FontStyle
 
@@ -959,10 +959,10 @@ enum ArkUI_ProgressType
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_PROGRESS_TYPE_LINEAR = 0 | 线性样式。 |
-| ARKUI_PROGRESS_TYPE_RING | 环形无刻度样式。 |
-| ARKUI_PROGRESS_TYPE_ECLIPSE | 圆形样式。 |
-| ARKUI_PROGRESS_TYPE_SCALE_RING | 环形有刻度样式。 |
-| ARKUI_PROGRESS_TYPE_CAPSULE | 胶囊样式。 |
+| ARKUI_PROGRESS_TYPE_RING = 1 | 环形无刻度样式。 |
+| ARKUI_PROGRESS_TYPE_ECLIPSE = 2 | 圆形样式。 |
+| ARKUI_PROGRESS_TYPE_SCALE_RING = 3 | 环形有刻度样式。 |
+| ARKUI_PROGRESS_TYPE_CAPSULE = 4 | 胶囊样式。 |
 
 ### ArkUI_TextDecorationType
 
@@ -1097,9 +1097,9 @@ enum ArkUI_TextPickerRangeType
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXTPICKER_RANGETYPE_SINGLE = 0 | 单列数据选择器。 |
-| ARKUI_TEXTPICKER_RANGETYPE_MULTI | 多列数据选择器。 |
-| ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT | 支持图片资源的单列数据选择器。 |
-| ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT | 支持联动的多列数据选择器。 |
+| ARKUI_TEXTPICKER_RANGETYPE_MULTI = 1 | 多列数据选择器。 |
+| ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT = 2 | 支持图片资源的单列数据选择器。 |
+| ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT = 3 | 支持联动的多列数据选择器。 |
 
 ### ArkUI_AccessibilityCheckedState
 
@@ -1744,8 +1744,8 @@ enum ArkUI_ImageSize
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_IMAGE_SIZE_AUTO = 0 | 保持原图的比例不变。 |
-| ARKUI_IMAGE_SIZE_COVER | 保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界。 |
-| ARKUI_IMAGE_SIZE_CONTAIN | 保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内。 |
+| ARKUI_IMAGE_SIZE_COVER = 1 | 保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界。 |
+| ARKUI_IMAGE_SIZE_CONTAIN = 2 | 保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内。 |
 
 ### ArkUI_AdaptiveColor
 
@@ -1945,21 +1945,21 @@ enum ArkUI_ObjectFit
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_OBJECT_FIT_CONTAIN = 0 | 保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内。 |
-| ARKUI_OBJECT_FIT_COVER | 保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界。 |
-| ARKUI_OBJECT_FIT_AUTO | 自适应显示。 |
-| ARKUI_OBJECT_FIT_FILL | 不保持宽高比进行放大缩小，使得图片充满显示边界。 |
-| ARKUI_OBJECT_FIT_SCALE_DOWN | 保持宽高比显示，图片缩小或者保持不变。 |
-| ARKUI_OBJECT_FIT_NONE | 保持原有尺寸显示。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_START | 图片大小不变，在image组件中顶部起始端对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP | 图片大小不变，在image组件中顶部横向居中对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_END | 图片大小不变，在image组件中顶部尾端对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_START | 图片大小不变，在image组件中起始端纵向居中对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_CENTER | 图片大小不变，在image组件中横向和纵向居中对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_END | 图片大小不变，在image组件中尾端纵向居中对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_START | 图片大小不变，在image组件中底部起始端对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM | 图片大小不变，在image组件中底部横向居中对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END | 图片大小不变，在image组件中底部尾端对齐。 |
-| ARKUI_OBJECT_FIT_NONE_MATRIX | 不改变图像原始大小，需要配合NODE_IMAGE_IMAGE_MATRIX使用。<br/>**起始版本：** 21 |
+| ARKUI_OBJECT_FIT_COVER = 1 | 保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界。 |
+| ARKUI_OBJECT_FIT_AUTO = 2 | 自适应显示。 |
+| ARKUI_OBJECT_FIT_FILL = 3 | 不保持宽高比进行放大缩小，使得图片充满显示边界。 |
+| ARKUI_OBJECT_FIT_SCALE_DOWN = 4 | 保持宽高比显示，图片缩小或者保持不变。 |
+| ARKUI_OBJECT_FIT_NONE = 5 | 保持原有尺寸显示。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_START = 6 | 图片大小不变，在image组件中顶部起始端对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP = 7 | 图片大小不变，在image组件中顶部横向居中对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_END = 8 | 图片大小不变，在image组件中顶部尾端对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_START = 9 | 图片大小不变，在image组件中起始端纵向居中对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_CENTER = 10 | 图片大小不变，在image组件中横向和纵向居中对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_END = 11 | 图片大小不变，在image组件中尾端纵向居中对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_START = 12 | 图片大小不变，在image组件中底部起始端对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM = 13 | 图片大小不变，在image组件中底部横向居中对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END = 14 | 图片大小不变，在image组件中底部尾端对齐。 |
+| ARKUI_OBJECT_FIT_NONE_MATRIX = 15 | 不改变图像原始大小，需要配合NODE_IMAGE_IMAGE_MATRIX使用。<br/>**起始版本：** 21 |
 
 ### ArkUI_ImageInterpolation
 
@@ -1977,9 +1977,9 @@ enum ArkUI_ImageInterpolation
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_IMAGE_INTERPOLATION_NONE = 0 | 不使用图片插值。 |
-| ARKUI_IMAGE_INTERPOLATION_LOW | 低图片插值。 |
-| ARKUI_IMAGE_INTERPOLATION_MEDIUM | 中图片插值。 |
-| ARKUI_IMAGE_INTERPOLATION_HIGH | 高图片插值，插值质量最高。 |
+| ARKUI_IMAGE_INTERPOLATION_LOW = 1 | 低图片插值。 |
+| ARKUI_IMAGE_INTERPOLATION_MEDIUM = 2 | 中图片插值。 |
+| ARKUI_IMAGE_INTERPOLATION_HIGH = 3 | 高图片插值，插值质量最高。 |
 
 ### ArkUI_DynamicRangeMode
 
@@ -2227,8 +2227,8 @@ enum ArkUI_CalendarAlignment
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_CALENDAR_ALIGNMENT_START = 0 | 选择器和入口组件左对齐方式。 |
-| ARKUI_CALENDAR_ALIGNMENT_CENTER | 选择器和入口组件居中对齐方式。 |
-| ARKUI_CALENDAR_ALIGNMENT_END | 选择器和入口组件右对齐方式。 |
+| ARKUI_CALENDAR_ALIGNMENT_CENTER = 1 | 选择器和入口组件居中对齐方式。 |
+| ARKUI_CALENDAR_ALIGNMENT_END = 2 | 选择器和入口组件右对齐方式。 |
 
 ### ArkUI_MaskType
 
@@ -2373,7 +2373,7 @@ enum ArkUI_ImageRenderMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_IMAGE_RENDER_MODE_ORIGINAL = 0 | 原色渲染模式。 |
-| ARKUI_IMAGE_RENDER_MODE_TEMPLATE | 黑白渲染模式。 |
+| ARKUI_IMAGE_RENDER_MODE_TEMPLATE = 1 | 黑白渲染模式。 |
 
 ### ArkUI_TransitionEdge
 
@@ -8043,7 +8043,7 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawable
 **描述：**
 
 
-使用 DrawableDescriptor 对象创建帧图片信息，图片格式为Resource和PixelMap。
+使用[DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象创建帧图片信息，图片格式为Resource和PixelMap。
 
 **起始版本：** 12
 
@@ -9617,7 +9617,7 @@ ArkUI_TextPickerRangeContentArray* OH_ArkUI_TextPickerRangeContentArray_Create(i
 **描述：**
 
 
-创建TextPickerRangeContent数组的对象。
+创建[TextPickerRangeContent](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md)数组的对象。
 
 **起始版本：** 19
 
@@ -9706,7 +9706,7 @@ ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContent
 
 **描述：**
 
-创建TextCascadePickerRangeContent数组对象。
+创建[TextCascadePickerRangeContent](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)数组对象。
 
 **起始版本：** 19
 
