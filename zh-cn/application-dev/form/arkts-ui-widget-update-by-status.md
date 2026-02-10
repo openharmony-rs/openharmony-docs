@@ -179,7 +179,7 @@
             await storeDB.put('A' + formId, 'false');
             await storeDB.put('B' + formId, 'false');
             await storeDB.flush();
-          }).catch((err: BusinessError) => {	 
+          }).catch((err: BusinessError) => {
             hilog.info(DOMAIN_NUMBER, TAG, `Failed to get preferences. ${JSON.stringify(err)}`);
           });
         }
@@ -194,7 +194,7 @@
           hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded to get preferences.');
           await storeDB.delete('A' + formId);
           await storeDB.delete('B' + formId);
-        }).catch((err: BusinessError) => {	 
+        }).catch((err: BusinessError) => {
           hilog.info(DOMAIN_NUMBER, TAG, `Failed to get preferences. ${JSON.stringify(err)}`);
         });
       }
@@ -226,7 +226,7 @@
             await formProvider.updateForm(formId, formInfo);
           }
           hilog.info(DOMAIN_NUMBER, TAG, `Update form success stateA:${stateA} stateB:${stateB}.`);
-        }).catch((err: BusinessError) => {	 
+        }).catch((err: BusinessError) => {
           hilog.info(DOMAIN_NUMBER, TAG, `Failed to get preferences. ${JSON.stringify(err)}`);
         });
       }
@@ -247,7 +247,7 @@
             await storeDB.put('B' + formId, msg.selectB);
           }
           await storeDB.flush();
-        }).catch((err: BusinessError) => {	 
+        }).catch((err: BusinessError) => {
           hilog.info(DOMAIN_NUMBER, TAG, `Failed to get preferences. ${JSON.stringify(err)}`);
         });
       }
