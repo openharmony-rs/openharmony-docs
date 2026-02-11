@@ -99,11 +99,11 @@ Column()
 
 可以通过设置属性，控制默认的多层级手势事件竞争流程，更好地实现手势事件。
 
-目前，responseRegion属性和hitTestBehavior属性可以控制Touch事件的分发，从而可以影响到onTouch事件和手势的响应。而绑定手势方法属性可以控制手势的竞争从而影响手势的响应，但不能影响到onTouch事件。
+目前，通过设置[触摸热区](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md)和[触摸测试](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md)可以控制Touch事件的分发，从而可以影响到onTouch事件和手势的响应。而绑定手势方法属性可以控制手势的竞争从而影响手势的响应，但不能影响到onTouch事件。
 
-### responseRegion对手势和事件的控制
+### 触摸热区对手势和事件的控制
 
-[responseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion)属性可以实现组件的响应区域范围的变化。响应区域范围可以超出或者小于组件的布局范围。
+通过[responseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion)和[mouseResponseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#mouseresponseregion10)属性可以设置组件的触摸热区。从API version 22开始，支持通过[responseRegionList](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregionlist22)设置组件的触摸热区。触摸热区范围可以超出或者小于组件的布局范围。
 
 <!-- @[response_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
 
@@ -128,7 +128,7 @@ Column() {
 
 此外，responseRegion属性支持由多个Rect组成的数组作为入参，以支持更多开发需求。
 
-### hitTestBehavior对手势和事件的控制
+### 触摸测试对手势和事件的控制
 
 [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)属性可以实现在复杂的多层级场景下，一些组件能够响应手势和事件，而一些组件不能响应手势和事件。
 
