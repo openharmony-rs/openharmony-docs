@@ -53,7 +53,7 @@ type DataLevel = 's0' | 's1' | 's2' | 's3' | 's4'
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 ## securityLabel.setSecurityLabel
 
@@ -65,7 +65,7 @@ setSecurityLabel(path:string, type:DataLevel):Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -132,7 +132,7 @@ setSecurityLabel(path:string, type:DataLevel, callback: AsyncCallback&lt;void&gt
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -197,7 +197,7 @@ setSecurityLabelSync(path:string, type:DataLevel):void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -238,7 +238,7 @@ getSecurityLabel(path:string):Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -304,7 +304,7 @@ getSecurityLabel(path:string, callback:AsyncCallback&lt;string&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -368,7 +368,7 @@ getSecurityLabelSync(path:string):string
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

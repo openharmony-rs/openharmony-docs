@@ -57,7 +57,7 @@ ArkTS-Sta: stat(file: string | int): Promise&lt;Stat&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -119,7 +119,7 @@ ArkTS-Sta: stat(file: string | int, callback: AsyncCallback&lt;Stat&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -176,7 +176,7 @@ ArkTS-Sta: statSync(file: string | int): Stat
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -215,15 +215,15 @@ access(path: string, mode?: AccessModeType): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 
 | 参数名             | 类型                                | 必填 | 说明                                                     |
 | ------------------ | ----------------------------------- | ---- | -------------------------------------------------------- |
-| path               | string                              | 是   | 文件或目录应用沙箱路径。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20                                 |
-| mode<sup>12+</sup> | [AccessModeType](#accessmodetype12) | 否   | 文件或目录校验的权限。不填该参数则默认校验文件是否存在。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20 |
+| path               | string                              | 是   | 文件或目录应用沙箱路径。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                 |
+| mode<sup>12+</sup> | [AccessModeType](#accessmodetype12) | 否   | 文件或目录校验的权限。不填该参数则默认校验文件是否存在。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 **返回值：**
 
@@ -282,16 +282,16 @@ access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise&lt;boo
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 
 | 参数名             | 类型                                | 必填 | 说明                     |
 | ------------------ | ----------------------------------- | ---- | ------------------------ |
-| path               | string                              | 是   | 文件或目录应用沙箱路径。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20 |
-| mode<sup>12+</sup> | [AccessModeType](#accessmodetype12) | 是   | 文件或目录校验的权限。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20   |
-| flag<sup>12+</sup> | [AccessFlagType](#accessflagtype12) | 是   | 文件或目录校验的位置。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20   |
+| path               | string                              | 是   | 文件或目录应用沙箱路径。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| mode<sup>12+</sup> | [AccessModeType](#accessmodetype12) | 是   | 文件或目录校验的权限。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23   |
+| flag<sup>12+</sup> | [AccessFlagType](#accessflagtype12) | 是   | 文件或目录校验的位置。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23   |
 
 **返回值：**
 
@@ -352,7 +352,7 @@ access(path: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -417,15 +417,15 @@ accessSync(path: string, mode?: AccessModeType): boolean
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 
 | 参数名             | 类型                                | 必填 | 说明                                                           |
 | ------------------ | ----------------------------------- | ---- | -------------------------------------------------------------- |
-| path               | string                              | 是   | 文件或目录应用沙箱路径。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20                                       |
-| mode<sup>12+</sup> | [AccessModeType](#accessmodetype12) | 否   | 文件或目录校验的权限。不填该参数则默认校验文件或目录是否存在。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20 |
+| path               | string                              | 是   | 文件或目录应用沙箱路径。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                       |
+| mode<sup>12+</sup> | [AccessModeType](#accessmodetype12) | 否   | 文件或目录校验的权限。不填该参数则默认校验文件或目录是否存在。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 **返回值：**
 
@@ -466,16 +466,16 @@ accessSync(path: string, mode: AccessModeType, flag: AccessFlagType): boolean
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 
 | 参数名             | 类型                                | 必填 | 说明                   |
 | ------------------ | ----------------------------------- | ---- | ---------------------- |
-| path               | string                              | 是   | 文件应用沙箱路径。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20     |
-| mode<sup>12+</sup> | [AccessModeType](#accessmodetype12) | 是   | 文件或目录校验的权限。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20 |
-| flag<sup>12+</sup> | [AccessFlagType](#accessflagtype12) | 是   | 文件或目录校验的位置。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 20 |
+| path               | string                              | 是   | 文件应用沙箱路径。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23     |
+| mode<sup>12+</sup> | [AccessModeType](#accessmodetype12) | 是   | 文件或目录校验的权限。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| flag<sup>12+</sup> | [AccessFlagType](#accessflagtype12) | 是   | 文件或目录校验的位置。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 **返回值：**
 
@@ -520,7 +520,7 @@ ArkTS-Sta: close(file: int | File): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -584,7 +584,7 @@ ArkTS-Sta: close(file: int | File, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -645,7 +645,7 @@ ArkTS-Sta: closeSync(file: int | File): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -679,7 +679,7 @@ copy(srcUri: string, destUri: string, options?: CopyOptions): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -777,7 +777,7 @@ copy(srcUri: string, destUri: string, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -858,7 +858,7 @@ copy(srcUri: string, destUri: string, options: CopyOptions, callback: AsyncCallb
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -954,7 +954,7 @@ ArkTS-Sta: copyFile(src: string | int, dest: string | int, mode?: int): Promise&
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1020,7 +1020,7 @@ ArkTS-Sta: copyFile(src: string | int, dest: string | int, mode: int, callback: 
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1083,7 +1083,7 @@ ArkTS-Sta: copyFile(src: string | int, dest: string | int, callback: AsyncCallba
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1145,7 +1145,7 @@ ArkTS-Sta: copyFileSync(src: string | int, dest: string | int, mode?: int): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1180,7 +1180,7 @@ ArkTS-Sta: copyDir(src: string, dest: string, mode?: int): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1243,7 +1243,7 @@ copyDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, 
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTs-Sta接口是[copyDirWithConflictFiles](#fscopydirwithconflictfiles22)。
+**相关接口：** 该接口对应的ArkTs-Sta接口是[copyDirWithConflictFiles](#fscopydirwithconflictfiles23)。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1284,7 +1284,7 @@ fs.copyDir(srcPath, destPath, 0, (err: BusinessError<Array<ConflictFiles>>) => {
 });
 ```
 
-## fs.copyDirWithConflictFiles<sup>22+</sup>
+## fs.copyDirWithConflictFiles<sup>23+</sup>
 
 copyDirWithConflictFiles(src: string, dest: string, mode: int, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
@@ -1296,7 +1296,7 @@ copyDirWithConflictFiles(src: string, dest: string, mode: int, callback: AsyncCa
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1345,7 +1345,7 @@ copyDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<Conflic
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTs-Sta接口是[copyDirWithConflictFiles](#fscopydirwithconflictfiles22-1)。
+**相关接口：** 该接口对应的ArkTs-Sta接口是[copyDirWithConflictFiles](#fscopydirwithconflictfiles23-1)。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1385,7 +1385,7 @@ fs.copyDir(srcPath, destPath, (err: BusinessError<Array<ConflictFiles>>) => {
 });
 ```
 
-## fs.copyDirWithConflictFiles<sup>22+</sup>
+## fs.copyDirWithConflictFiles<sup>23+</sup>
 
 copyDirWithConflictFiles(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
@@ -1399,7 +1399,7 @@ copyDirWithConflictFiles(src: string, dest: string, callback: AsyncCallback\<voi
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1449,7 +1449,7 @@ ArkTS-Sta: copyDirSync(src: string, dest: string, mode?: int): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1491,7 +1491,7 @@ ArkTS-Sta: dup(fd: int): File
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1647,7 +1647,7 @@ setxattr(path: string, key: string, value: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1716,7 +1716,7 @@ setxattrSync(path: string, key: string, value: string): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1780,7 +1780,7 @@ getxattr(path: string, key: string): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1846,7 +1846,7 @@ getxattrSync(path: string, key: string): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1916,7 +1916,7 @@ mkdir(path: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1974,7 +1974,7 @@ mkdir(path: string, recursion: boolean): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2035,7 +2035,7 @@ mkdir(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2091,7 +2091,7 @@ mkdir(path: string, recursion: boolean, callback: AsyncCallback&lt;void&gt;): vo
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2149,7 +2149,7 @@ mkdirSync(path: string): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2181,7 +2181,7 @@ mkdirSync(path: string, recursion: boolean): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2216,7 +2216,7 @@ ArkTS-Sta: open(path: string, mode?: int): Promise&lt;File&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2283,7 +2283,7 @@ ArkTS-Sta: open(path: string, mode: int, callback: AsyncCallback&lt;File&gt;): v
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2343,7 +2343,7 @@ open(path: string, callback: AsyncCallback&lt;File&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2404,7 +2404,7 @@ ArkTS-Sta: openSync(path: string, mode?: int): File
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2448,7 +2448,7 @@ ArkTS-Sta: read(fd: int, buffer: ArrayBuffer, options?: ReadOptions): Promise&lt
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2526,7 +2526,7 @@ ArkTS-Sta: read(fd: int, buffer: ArrayBuffer, options?: ReadOptions, callback: A
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2599,7 +2599,7 @@ ArkTS-Sta: readSync(fd: int, buffer: ArrayBuffer, options?: ReadOptions): long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2647,7 +2647,7 @@ rmdir(path: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2711,7 +2711,7 @@ rmdir(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2772,7 +2772,7 @@ rmdirSync(path: string): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2804,7 +2804,7 @@ unlink(path: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2864,7 +2864,7 @@ unlink(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2921,7 +2921,7 @@ unlinkSync(path: string): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2955,7 +2955,7 @@ ArkTS-Sta: write(fd: int, buffer: ArrayBuffer | string, options?: WriteOptions):
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3027,7 +3027,7 @@ ArkTS-Sta: write(fd: int, buffer: ArrayBuffer | string, options?: WriteOptions, 
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3094,7 +3094,7 @@ ArkTS-Sta: writeSync(fd: int, buffer: ArrayBuffer | string, options?: WriteOptio
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3141,7 +3141,7 @@ ArkTS-Sta: truncate(file: string | int, len?: long): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3206,7 +3206,7 @@ ArkTS-Sta: truncate(file: string | int, len?: long, callback: AsyncCallback&lt;v
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3268,7 +3268,7 @@ ArkTS-Sta: truncateSync(file: string | int, len?: long): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3310,7 +3310,7 @@ readLines(filePath: string, options?: Options): Promise&lt;ReaderIterator&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3381,7 +3381,7 @@ readLines(filePath: string, options?: Options, callback: AsyncCallback&lt;Reader
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3449,7 +3449,7 @@ readLinesSync(filePath: string, options?: Options): ReaderIterator
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3490,7 +3490,7 @@ for (let it = readerIterator.next(); !it.done; it = readerIterator.next()) {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 ### next<sup>11+</sup>
 
@@ -3502,7 +3502,7 @@ next(): ReaderIteratorResult
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3567,7 +3567,7 @@ fs.readLines(filePath, options).then((readerIterator: fs.ReaderIterator) => {
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称  | 类型    | 说明                                                        |
@@ -3587,7 +3587,7 @@ readText(filePath: string, options?: ReadTextOptions): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3648,7 +3648,7 @@ readText(filePath: string, options?: ReadTextOptions, callback: AsyncCallback&lt
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3722,7 +3722,7 @@ readTextSync(filePath: string, options?: ReadTextOptions): string
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3769,7 +3769,7 @@ lstat(path: string): Promise&lt;Stat&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3827,7 +3827,7 @@ lstat(path: string, callback: AsyncCallback&lt;Stat&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3882,7 +3882,7 @@ lstatSync(path: string): Stat
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3926,7 +3926,7 @@ rename(oldPath: string, newPath: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3993,7 +3993,7 @@ rename(oldPath: string, newPath: string, callback: AsyncCallback&lt;void&gt;): v
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4057,7 +4057,7 @@ renameSync(oldPath: string, newPath: string): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4091,7 +4091,7 @@ ArkTS-Sta: fsync(fd: int): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4157,7 +4157,7 @@ ArkTS-Sta: fsync(fd: int, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4218,7 +4218,7 @@ ArkTS-Sta: fsyncSync(fd: int): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4252,7 +4252,7 @@ ArkTS-Sta: fdatasync(fd: int): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4318,7 +4318,7 @@ ArkTS-Sta: fdatasync(fd: int, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4379,7 +4379,7 @@ ArkTS-Sta: fdatasyncSync(fd: int): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4411,7 +4411,7 @@ symlink(target: string, srcPath: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4472,7 +4472,7 @@ symlink(target: string, srcPath: string, callback: AsyncCallback&lt;void&gt;): v
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4530,7 +4530,7 @@ symlinkSync(target: string, srcPath: string): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4566,7 +4566,7 @@ listFile(path: string, options?: ListFileOptions): Promise<string[]>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4653,7 +4653,7 @@ listFile(path: string, options?: ListFileOptions, callback: AsyncCallback<string
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4737,7 +4737,7 @@ listFileSync(path: string, options?: ListFileOptions): string[]
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4790,7 +4790,7 @@ ArkTS-Sta: lseek(fd: int, offset: long, whence?: WhenceType): long
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4837,7 +4837,7 @@ ArkTS-Sta: moveDir(src: string, dest: string, mode?: int): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4899,7 +4899,7 @@ moveDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, 
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTs-Sta接口是[moveDirWithConflictFiles](#fsmovedirwithconflictfiles22)。
+**相关接口：** 该接口对应的ArkTs-Sta接口是[moveDirWithConflictFiles](#fsmovedirwithconflictfiles23)。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -4939,7 +4939,7 @@ fs.moveDir(srcPath, destPath, 1, (err: BusinessError<Array<ConflictFiles>>) => {
 });
 ```
 
-## fs.moveDirWithConflictFiles<sup>22+</sup>
+## fs.moveDirWithConflictFiles<sup>23+</sup>
 
 moveDirWithConflictFiles(src: string, dest: string, mode: int, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
@@ -4955,7 +4955,7 @@ moveDirWithConflictFiles(src: string, dest: string, mode: int, callback: AsyncCa
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5008,7 +5008,7 @@ moveDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<Conflic
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTs-Sta接口是[moveDirWithConflictFiles](#fsmovedirwithconflictfiles22-1)。
+**相关接口：** 该接口对应的ArkTs-Sta接口是[moveDirWithConflictFiles](#fsmovedirwithconflictfiles23-1)。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -5047,7 +5047,7 @@ fs.moveDir(srcPath, destPath, (err: BusinessError<Array<ConflictFiles>>) => {
 });
 ```
 
-## fs.moveDirWithConflictFiles<sup>22+</sup>
+## fs.moveDirWithConflictFiles<sup>23+</sup>
 
 moveDirWithConflictFiles(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
@@ -5065,7 +5065,7 @@ moveDirWithConflictFiles(src: string, dest: string, callback: AsyncCallback\<voi
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5119,7 +5119,7 @@ ArkTS-Sta: moveDirSync(src: string, dest: string, mode?: int): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5172,7 +5172,7 @@ ArkTS-Sta: moveFile(src: string, dest: string, mode?: int): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5240,7 +5240,7 @@ ArkTS-Sta: moveFile(src: string, dest: string, mode: int, callback: AsyncCallbac
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5303,7 +5303,7 @@ moveFile(src: string, dest: string, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5367,7 +5367,7 @@ ArkTS-Sta: moveFileSync(src: string, dest: string, mode?: int): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5401,7 +5401,7 @@ mkdtemp(prefix: string): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5457,7 +5457,7 @@ mkdtemp(prefix: string, callback: AsyncCallback&lt;string&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5510,7 +5510,7 @@ mkdtempSync(prefix: string): string
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5548,7 +5548,7 @@ ArkTS-Sta: utimes(path: string, mtime: double): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5584,7 +5584,7 @@ ArkTS-Sta: createRandomAccessFile(file: string | File, mode?: int): Promise&lt;R
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5652,7 +5652,7 @@ createRandomAccessFile(file: string | File, callback: AsyncCallback&lt;RandomAcc
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5715,7 +5715,7 @@ ArkTS-Sta: createRandomAccessFile(file: string | File, mode: int, callback: Asyn
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5779,7 +5779,7 @@ ArkTS-Sta: createRandomAccessFile(file: string | File, mode?: int, options?: Ran
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5847,7 +5847,7 @@ ArkTS-Sta: createRandomAccessFileSync(file: string | File, mode?: int): RandomAc
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5891,7 +5891,7 @@ options?: RandomAccessFileOptions): RandomAccessFile
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5934,7 +5934,7 @@ createStream(path: string, mode: string): Promise&lt;Stream&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5997,7 +5997,7 @@ createStream(path: string, mode: string, callback: AsyncCallback&lt;Stream&gt;):
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6057,7 +6057,7 @@ createStreamSync(path: string, mode: string): Stream
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6101,7 +6101,7 @@ ArkTS-Sta: fdopenStream(fd: int, mode: string): Promise&lt;Stream&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6176,7 +6176,7 @@ ArkTS-Sta: fdopenStream(fd: int, mode: string, callback: AsyncCallback&lt;Stream
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6248,7 +6248,7 @@ ArkTS-Sta: fdopenStreamSync(fd: int, mode: string): Stream
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6292,7 +6292,7 @@ createReadStream(path: string, options?: ReadStreamOptions ): ReadStream
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6364,7 +6364,7 @@ createWriteStream(path: string, options?: WriteStreamOptions): WriteStream
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6438,7 +6438,7 @@ AtomicFile是一个用于对文件进行原子读写操作的类。
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 ### constructor<sup>15+</sup>
 
@@ -6450,7 +6450,7 @@ constructor(path: string)
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6471,7 +6471,7 @@ getBaseFile(): File
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -6540,7 +6540,7 @@ openRead(): ReadStream
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -6627,7 +6627,7 @@ readFully(): ArrayBuffer
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -6710,7 +6710,7 @@ startWrite(): WriteStream
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -6775,7 +6775,7 @@ finishWrite(): void
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -6833,7 +6833,7 @@ failWrite(): void
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -6893,7 +6893,7 @@ delete(): void
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -6969,7 +6969,7 @@ ArkTS-Sta: createWatcher(path: string, events: int, listener: WatchEventListener
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7027,7 +7027,7 @@ watcher.stop();
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7044,7 +7044,7 @@ watcher.stop();
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
@@ -7063,7 +7063,7 @@ watcher.stop();
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称          | 类型                               | 只读 | 可选 | 说明                 |
@@ -7079,7 +7079,7 @@ watcher.stop();
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 ### cancel<sup>12+</sup>
 
@@ -7091,7 +7091,7 @@ cancel(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -7193,7 +7193,7 @@ onCancel(): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -7225,7 +7225,7 @@ copySignal.onCancel().then(() => {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称             | 类型                                    | 只读 | 可选 | 说明           |
@@ -7241,7 +7241,7 @@ copySignal.onCancel().then(() => {
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 | 类型                                       | 说明         |
@@ -7270,25 +7270,25 @@ let copyOption: fs.CopyOptions = {
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
 
 | 名称                   | 类型                                 | 只读 | 可选 | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | ---------------------- | ------------------------------------ | ---- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| ino                    | bigint                               | 是   | 否   | 标识该文件。通常同设备上的不同文件的INO不同。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| mode                   | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 是   | 否   | 表示文件权限，各特征位的含义如下：<br/>**说明**：以下值为八进制，取得的返回值为十进制，请换算后查看。<br/>-&nbsp;0o400：用户读。对于普通文件，所有者可读取文件；对于目录，所有者可读取目录项。<br/>-&nbsp;0o200：用户写。对于普通文件，所有者可写入文件；对于目录，所有者可创建/删除目录项。<br/>-&nbsp;0o100：用户执行。对于普通文件，所有者可执行文件；对于目录，所有者可在目录中搜索给定路径名。<br/>-&nbsp;0o040：用户组读。对于普通文件，所有用户组可读取文件；对于目录，所有用户组可读取目录项。<br/>-&nbsp;0o020：用户组写。对于普通文件，所有用户组可写入文件；对于目录，所有用户组可创建/删除目录项。<br/>-&nbsp;0o010：用户组执行。对于普通文件，所有用户组可执行文件；对于目录，所有用户组是否可在目录中搜索给定路径名。<br/>-&nbsp;0o004：其他读。对于普通文件，其余用户可读取文件；对于目录，其他用户组可读取目录项。<br/>-&nbsp;0o002：其他写。对于普通文件，其余用户可写入文件；对于目录，其他用户组可创建/删除目录项。<br/>-&nbsp;0o001：其他执行。对于普通文件，其余用户可执行文件；对于目录，其他用户组可在目录中搜索给定路径名。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20 |
-| uid                    | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 是   | 否   | 文件所有者的ID。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| gid                    | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 是   | 否   | 文件所有组的ID。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| size                   | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 是   | 否   | 文件的大小，以字节为单位。仅对普通文件有效。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| atime                  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 否   | 上次访问该文件的时间，表示距1970年1月1日0时0分0秒的秒数。<br>**注意**：目前用户数据分区默认以“noatime”方式挂载，atime更新被禁用。  <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| mtime                  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 否   | 上次修改该文件的时间，表示距1970年1月1日0时0分0秒的秒数。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| ctime                  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 否   | 最近改变文件状态的时间，表示距1970年1月1日0时0分0秒的秒数。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| atimeNs<sup>15+</sup>  | bigint                               | 是   | 是   | 上次访问该文件的时间，表示距1970年1月1日0时0分0秒的纳秒数。<br>**注意**：目前用户数据分区默认以“noatime”方式挂载，atime更新被禁用。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| mtimeNs<sup>15+</sup>  | bigint                               | 是   | 是   | 上次修改该文件的时间，表示距1970年1月1日0时0分0秒的纳秒数。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| ctimeNs<sup>15+</sup>  | bigint                               | 是   | 是   | 最近改变文件状态的时间，表示距1970年1月1日0时0分0秒的纳秒数。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| location<sup>11+</sup> | [LocaltionType](#locationtype11)     | 是   | 否   | 文件的位置，表示该文件是本地文件或者云端文件。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ino                    | bigint                               | 是   | 否   | 标识该文件。通常同设备上的不同文件的INO不同。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| mode                   | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 是   | 否   | 表示文件权限，各特征位的含义如下：<br/>**说明**：以下值为八进制，取得的返回值为十进制，请换算后查看。<br/>-&nbsp;0o400：用户读。对于普通文件，所有者可读取文件；对于目录，所有者可读取目录项。<br/>-&nbsp;0o200：用户写。对于普通文件，所有者可写入文件；对于目录，所有者可创建/删除目录项。<br/>-&nbsp;0o100：用户执行。对于普通文件，所有者可执行文件；对于目录，所有者可在目录中搜索给定路径名。<br/>-&nbsp;0o040：用户组读。对于普通文件，所有用户组可读取文件；对于目录，所有用户组可读取目录项。<br/>-&nbsp;0o020：用户组写。对于普通文件，所有用户组可写入文件；对于目录，所有用户组可创建/删除目录项。<br/>-&nbsp;0o010：用户组执行。对于普通文件，所有用户组可执行文件；对于目录，所有用户组是否可在目录中搜索给定路径名。<br/>-&nbsp;0o004：其他读。对于普通文件，其余用户可读取文件；对于目录，其他用户组可读取目录项。<br/>-&nbsp;0o002：其他写。对于普通文件，其余用户可写入文件；对于目录，其他用户组可创建/删除目录项。<br/>-&nbsp;0o001：其他执行。对于普通文件，其余用户可执行文件；对于目录，其他用户组可在目录中搜索给定路径名。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| uid                    | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 是   | 否   | 文件所有者的ID。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| gid                    | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 是   | 否   | 文件所有组的ID。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| size                   | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 是   | 否   | 文件的大小，以字节为单位。仅对普通文件有效。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| atime                  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 否   | 上次访问该文件的时间，表示距1970年1月1日0时0分0秒的秒数。<br>**注意**：目前用户数据分区默认以“noatime”方式挂载，atime更新被禁用。  <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| mtime                  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 否   | 上次修改该文件的时间，表示距1970年1月1日0时0分0秒的秒数。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ctime                  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 否   | 最近改变文件状态的时间，表示距1970年1月1日0时0分0秒的秒数。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| atimeNs<sup>15+</sup>  | bigint                               | 是   | 是   | 上次访问该文件的时间，表示距1970年1月1日0时0分0秒的纳秒数。<br>**注意**：目前用户数据分区默认以“noatime”方式挂载，atime更新被禁用。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| mtimeNs<sup>15+</sup>  | bigint                               | 是   | 是   | 上次修改该文件的时间，表示距1970年1月1日0时0分0秒的纳秒数。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ctimeNs<sup>15+</sup>  | bigint                               | 是   | 是   | 最近改变文件状态的时间，表示距1970年1月1日0时0分0秒的纳秒数。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| location<sup>11+</sup> | [LocaltionType](#locationtype11)     | 是   | 否   | 文件的位置，表示该文件是本地文件或者云端文件。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
 > **说明：**
 >
@@ -7304,7 +7304,7 @@ isBlockDevice(): boolean
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -7334,7 +7334,7 @@ isCharacterDevice(): boolean
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -7366,7 +7366,7 @@ isDirectory(): boolean
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -7396,7 +7396,7 @@ isFIFO(): boolean
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -7428,7 +7428,7 @@ isFile(): boolean
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -7458,7 +7458,7 @@ isSocket(): boolean
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -7488,7 +7488,7 @@ isSymbolicLink(): boolean
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -7514,7 +7514,7 @@ let isSymbolicLink = fs.statSync(filePath).isSymbolicLink();
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 ### close
 
@@ -7528,7 +7528,7 @@ close(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -7583,7 +7583,7 @@ close(callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7641,7 +7641,7 @@ closeSync(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -7667,7 +7667,7 @@ flush(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -7724,7 +7724,7 @@ flush(callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7784,7 +7784,7 @@ flushSync(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -7813,7 +7813,7 @@ ArkTS-Sta: write(buffer: ArrayBuffer | string, options?: WriteOptions): Promise&
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7892,7 +7892,7 @@ ArkTS-Sta: write(buffer: ArrayBuffer | string, options?: WriteOptions, callback:
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7972,7 +7972,7 @@ ArkTS-Sta: writeSync(buffer: ArrayBuffer | string, options?: WriteOptions): long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8022,7 +8022,7 @@ ArkTS-Sta: read(buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;long&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8107,7 +8107,7 @@ ArkTS-Sta: read(buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCallb
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8189,7 +8189,7 @@ ArkTS-Sta: readSync(buffer: ArrayBuffer, options?: ReadOptions): long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8233,16 +8233,16 @@ stream.close();
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
 
 | 名称               | 类型                              | 只读 | 可选 | 说明                                                                                          |
 | ------------------ | --------------------------------- | ---- | ---- | --------------------------------------------------------------------------------------------- |
-| fd                 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 打开的文件描述符。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 20 |
-| path<sup>10+</sup> | string                            | 是   | 否   | 文件路径。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 20                                                                                    |
-| name<sup>10+</sup> | string                            | 是   | 否   | 文件名。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 20                                                                                      |
+| fd                 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 打开的文件描述符。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| path<sup>10+</sup> | string                            | 是   | 否   | 文件路径。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23                                                                                    |
+| name<sup>10+</sup> | string                            | 是   | 否   | 文件名。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23                                                                                      |
 
 ### getParent<sup>11+</sup>
 
@@ -8254,7 +8254,7 @@ getParent(): string
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -8287,7 +8287,7 @@ lock(exclusive?: boolean): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8351,7 +8351,7 @@ lock(exclusive?: boolean, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8410,7 +8410,7 @@ tryLock(exclusive?: boolean): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8443,7 +8443,7 @@ unlock(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -8494,7 +8494,7 @@ onStatus(networkId: string, status: number): void;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
@@ -8516,7 +8516,7 @@ ArkTS-Sta: setFilePointer(filePointer:long): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8548,7 +8548,7 @@ close(): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -8574,7 +8574,7 @@ ArkTS-Sta: write(buffer: ArrayBuffer | string, options?: WriteOptions): Promise&
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8663,7 +8663,7 @@ ArkTS-Sta: write(buffer: ArrayBuffer | string, options?: WriteOptions, callback:
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8749,7 +8749,7 @@ ArkTS-Sta: writeSync(buffer: ArrayBuffer | string, options?: WriteOptions): long
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8797,7 +8797,7 @@ ArkTS-Sta: read(buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;long&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8882,7 +8882,7 @@ ArkTS-Sta: read(buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCallb
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8966,7 +8966,7 @@ ArkTS-Sta: readSync(buffer: ArrayBuffer, options?: ReadOptions): long
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9025,7 +9025,7 @@ getReadStream(): ReadStream
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -9054,7 +9054,7 @@ getWriteStream(): WriteStream
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -9079,7 +9079,7 @@ randomAccessFile.close();
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 ### start<sup>10+</sup>
 
@@ -9091,7 +9091,7 @@ start(): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -9116,7 +9116,7 @@ stop(): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -9139,7 +9139,7 @@ open接口flags参数常量。文件打开标签。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称       | 类型                              | 值        | 说明                                                                                                                                  |
@@ -9165,7 +9165,7 @@ open接口flags参数常量。文件打开标签。
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称              | 类型                                 | 必选 | 说明                                                                                     |
@@ -9185,7 +9185,7 @@ open接口flags参数常量。文件打开标签。
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称     | 类型   | 说明               |
@@ -9201,7 +9201,7 @@ open接口flags参数常量。文件打开标签。
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称     | 类型   | 说明                   |
@@ -9216,7 +9216,7 @@ open接口flags参数常量。文件打开标签。
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称     | 值 | 说明                     |
@@ -9233,7 +9233,7 @@ open接口flags参数常量。文件打开标签。
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称  | 值 | 说明             |
@@ -9251,7 +9251,7 @@ open接口flags参数常量。文件打开标签。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称       | 值 | 说明                   |
@@ -9269,7 +9269,7 @@ open接口flags参数常量。文件打开标签。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称  | 值 | 说明             |
@@ -9286,7 +9286,7 @@ open接口flags参数常量。文件打开标签。
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称   | 类型                               | 必选 | 说明                                                                                                             |
@@ -9302,7 +9302,7 @@ open接口flags参数常量。文件打开标签。
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称     | 类型                               | 必选 | 说明                                                                                                                                                      |
@@ -9319,7 +9319,7 @@ open接口flags参数常量。文件打开标签。
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称     | 类型                               | 必选 | 说明                                                                                                                                                                                        |
@@ -9338,7 +9338,7 @@ open接口flags参数常量。文件打开标签。
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称      | 类型                               | 必选 | 说明                                                                                                                                                                                        |
@@ -9355,7 +9355,7 @@ open接口flags参数常量。文件打开标签。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
@@ -9377,7 +9377,7 @@ ArkTS-Sta: seek(offset: long, whence?: WhenceType): long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9418,7 +9418,7 @@ close(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -9438,7 +9438,7 @@ rs.close();
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
@@ -9460,7 +9460,7 @@ ArkTS-Sta: seek(offset: long, whence?: WhenceType): long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9501,7 +9501,7 @@ close(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -9523,7 +9523,7 @@ ws.close();
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称  | 类型                               | 必选 | 说明                                                             |
@@ -9539,7 +9539,7 @@ ws.close();
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称  | 类型                               | 必选 | 说明                                                             |
@@ -9555,7 +9555,7 @@ ws.close();
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称  | 类型                               | 必选 | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
