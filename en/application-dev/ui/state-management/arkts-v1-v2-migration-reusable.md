@@ -1,35 +1,40 @@
 # Migration for Component Reuse
-
-<!--Kit: ArkUI-->
-<!--Subsystem: ArkUI-->
-<!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
-<!--Tester: @zhangwenhan12-->
+<!--Kit: ArkUI--> 
+<!--Subsystem: ArkUI--> 
+<!--Owner: @jiyujia926--> 
+<!--Designer: @s10021109--> 
+<!--Tester: @zhangwenhan12--> 
 <!--Adviser: @zhang_yixin13-->
 
 This document describes how to migrate components from V1 to V2, involving the following decorators.
 
-| V1 Decorator                       | V2 Decorator                             |
-| --------------------------------- | --------------------------------------- |
-| [\@Reusable](./arkts-reusable.md) | [\@ReusableV2](arkts-new-reusableV2.md) |
 
-## @Reusable->@ReusableV2 Migration Rule
+| V1 Decorator| V2 Decorator|
+| -------- | -------- |
+| [@Reusable](./arkts-reusable.md) | [@ReusableV2](./arkts-new-reusableV2.md) |
+
+
+## \@Reusable->\@ReusableV2 Migration Rule
+
 
 ### V1 to V2 Component Migration
 
 **Migration Rules**
 
-- Migrate the parent custom component decorated by @Component to @ComponentV2.
+- Migrate the parent custom component decorated by \@Component to \@ComponentV2.
 
-- Migrate the child custom component decorated by @Reusable to @ReusableV2.
-- For details about the migration of state variables in a component, see arkts-v1-v2-migration-inner-component.md.
+- Migrate the child custom component decorated by \@Reusable to \@ReusableV2.
+
+- For details about the migration of state variables in a component, see [Migration for Component State Variables](./arkts-v1-v2-migration-inner-component.md)
+
 
 ### aboutToRecycle and aboutToReuse Migration
 
 **Migration Rules**
 
 - The [aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10) lifecycle does not need to be changed and can be retained.
-- The [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse18) lifecycle is optimized in component reuse V2. Parameters are removed, and [state variables are automatically reset before reuse](arkts-new-reusableV2.md#resetting-state-variables-in-components-before-reuse). You do not need to manually assign initial values in aboutToReuse.
+
+- The [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse18) lifecycle has been optimized in component reuse V2. Parameters have been removed, and all state variables are automatically reset before reuse (for details, refer to [Resetting State Variables in Components Before Reuse](./arkts-new-reusableV2.md#resetting-state-variables-in-components-before-reuse)), eliminating the need for developers to manually assign them back to their initial values in **aboutToReuse**.
 
 ```ts
 // Original V1 component.
@@ -80,11 +85,12 @@ struct ReusableV2Component {
 }
 ```
 
+
 ### reuseId->reuse
 
 **Migration Rules**
 
-In component reuse V1, the [reuseId](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md) attribute is used to mark the reuse group of a component. After the migration to component reuse V2, the [reuse](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md) attribute needs to be used.
+In component reuse V1, the [reuseId](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid) attribute is used to mark the reuse group of a component. After the migration to component reuse V2, the [reuse](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md#reuse) attribute needs to be used.
 
 ```ts
 // V1 original writing method
@@ -93,28 +99,31 @@ ReusableComponent().reuseId('groupA')
 ReusableV2Component().reuse({reuseId: () => 'groupA'})
 ```
 
+
 ### Component Freezing
 
 **Migration Rules**
 
-In component reuse V1, components in the reuse pool are frozen only when the [freezeWhenInactive](arkts-custom-components-freeze.md) switch is turned on. In component reuse V2, the freezing function is automatically enabled. For details, see [Component Freezing in the Reuse Phase](arkts-new-reusableV2.md#component-freezing-in-the-reuse-phase).
+In component reuse V1, components in the reuse pool are frozen only when the **freezeWhenInactive** switch is turned on. For details, see [Custom Component Freezing Function](./arkts-custom-components-freeze.md). In component reuse V2, the freezing function is automatically enabled. For details, see [Component Freezing in the Reuse Phase](./arkts-new-reusableV2.md#component-freezing-in-the-reuse-phase).
+
 
 ### LazyForEach->Repeat
 
 **Migration Rules**
 
-In component reuse V1, LazyForEach is often used with component reuse to implement high-performance lazy loading. In component reuse V2, you are advised to use [Repeat](../rendering-control/arkts-new-rendering-control-repeat.md) instead of [LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md). Repeat can reuse components. Compared with LazyForEach, Repeat has a simpler API and better performance. For details about how to migrate LazyForEach to Repeat, see [Migrating from LazyForEach to Repeat](../rendering-control/arkts-lazyforeach-repeat-migration-guide.md).
+In component reuse V1, LazyForEach is often used with component reuse to implement high-performance lazy loading. In component reuse V2, you are advised to use [Repeat](../rendering-control/arkts-new-rendering-control-repeat.md) instead of [LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md). Repeat can reuse components. Compared with LazyForEach, Repeat has a simpler API and better performance. For details about how to migrate **LazyForEach** to **Repeat**, see [Migrating from LazyForEach to Repeat](./arkts-v1-v2-migration-rendering-control-repeat.md#migrating-from-lazyforeach-to-repeat).
+
 
 ## @Reusable -> @ReusableV2 Migration Example
 
+
 ### if Statement
 
-For details about the @Reusable usage example, see [Dynamic Layout Update](arkts-reusable.md#dynamic-layout-update).
+For details about the \@Reusable usage example, see [Dynamic Layout Update](./arkts-reusable.md#dynamic-layout-update).
 
-The sample code snippet of if for @ReusableV2 is as follows:
+The sample code snippet of **if** for \@ReusableV2 is as follows:
 
 ```ts
-// xxx.ets
 @ObservedV2
 class Message {
   @Trace value: string | undefined;
@@ -169,13 +178,12 @@ struct Child {
 }
 ```
 
+
 ### List Scrolling with Repeat
 
-You are advised to use Repeat instead of LazyForEach to implement lazy loading in state management V2.
+For details about the \@Reusable usage example, see [List Scrolling with LazyForEach](./arkts-reusable.md#list-scrolling-with-lazyforeach).
 
-For details about the @Reusable usage example, see [List Scrolling with LazyForEach](arkts-reusable.md#list-scrolling-with-lazyforeach).
-
-The sample code snippet of list scrolling with Repeat for @ReusableV2 is as follows:
+The sample code snippet of list scrolling with **Repeat** for \@ReusableV2 is as follows:
 
 ```ts
 @Entry
@@ -226,13 +234,12 @@ export struct CardViewV2 {
 }
 ```
 
+
 ### List Scrolling with if Statements
 
-You are advised to use Repeat instead of LazyForEach to implement lazy loading in state management V2.
+For details about the \@Reusable usage example, see [List Scrolling with if Statements](./arkts-reusable.md#list-scrolling-with-if-statements).
 
-For details about the @Reusable usage example, see [List Scrolling with if Statements](arkts-reusable.md#list-scrolling-with-if-statements).
-
-The sample code snippet of list scrolling with if statements for @ReusableV2 is as follows:
+The sample code snippet of list scrolling with **if** statements for \@ReusableV2 is as follows:
 
 ```ts
 @Entry
@@ -317,13 +324,14 @@ export struct OneMoment {
 }
 ```
 
-### List Scrolling with Repeat Non-Lazy Loading
 
-In state management V2, you are advised to use the [Lazy Loading Disablement](../rendering-control/arkts-new-rendering-control-repeat.md#lazy-loading-disablement) to replace [ForEach](../rendering-control/arkts-rendering-control-foreach.md) for cyclic rendering.
+### List Scrolling with Repeat Full Loading
 
-For details about the @Reusable usage example, see [List Scrolling with ForEach](arkts-reusable.md#list-scrolling-with-foreach).
+In state management V2, you are advised to use the [Lazy Loading Disablement](../rendering-control/arkts-new-rendering-control-repeat.md#lazy-loading-disablement) instead of [ForEach](../rendering-control/arkts-rendering-control-foreach.md) to implement cyclic rendering.
 
-The sample code snippet of list scrolling with Repeat non-lazy loading for @ReusableV2 is as follows:
+For details about the \@Reusable usage example, see [List Scrolling with ForEach](./arkts-reusable.md#list-scrolling-with-foreach).
+
+The sample code snippet of list scrolling with **Repeat** full loading for \@ReusableV2 is as follows:
 
 ```ts
 // xxx.ets
@@ -420,13 +428,12 @@ class ListItemObject {
 }
 ```
 
+
 ### Grid
 
-You are advised to use Repeat instead of LazyForEach to implement lazy loading in state management V2.
+For details about the \@Reusable usage example, see [Grid](./arkts-reusable.md#grid).
 
-For details about the @Reusable usage example, see [Grid](arkts-reusable.md#grid).
-
-The sample code snippet of Grid for @ReusableV2 is as follows:
+The sample code snippet of Grid for \@ReusableV2 is as follows:
 
 ```ts
 @Entry
@@ -487,13 +494,12 @@ struct ReusableV2ChildComponent {
 }
 ```
 
+
 ### WaterFlow
 
-You are advised to use Repeat instead of LazyForEach to implement lazy loading in state management V2.
+For details about the \@Reusable usage example, see [WaterFlow](./arkts-reusable.md#waterflow).
 
-For details about the @Reusable usage example, see [WaterFlow](arkts-reusable.md#waterflow).
-
-The sample code snippet of WaterFlow for @ReusableV2 is as follows:
+The sample code snippet of WaterFlow for \@ReusableV2 is as follows:
 
 ```ts
 @ReusableV2
@@ -576,13 +582,12 @@ struct Index {
 }
 ```
 
+
 ### Swiper
 
-You are advised to use Repeat instead of LazyForEach to implement lazy loading in state management V2.
+For details about the \@Reusable usage example, see [Swiper](./arkts-reusable.md#swiper).
 
-For details about the @Reusable usage example, see [Swiper](arkts-reusable.md#swiper).
-
-The sample code snippet of Swiper for @ReusableV2 is as follows:
+The sample code snippet of Swiper for \@ReusableV2 is as follows:
 
 ```ts
 @Entry
@@ -671,16 +676,14 @@ struct QuestionSwiperItem {
     })
   }
 }
-
 ```
+
 
 ### List Scrolling with ListItemGroup
 
-You are advised to use Repeat instead of LazyForEach to implement lazy loading in state management V2.
+For details about the \@Reusable usage example, see [List Scrolling with ListItemGroup](./arkts-reusable.md#list-scrolling-with-listitemgroup).
 
-For details about the @Reusable usage example, see [List Scrolling with ListItemGroup](arkts-reusable.md#list-scrolling-with-listitemgroup).
-
-The sample code snippet of list scrolling with ListItemGroup for @ReusableV2 is as follows:
+The sample code snippet of list scrolling with ListItemGroup for \@ReusableV2 is as follows:
 
 ```ts
 @Entry
@@ -746,11 +749,12 @@ class DataSrc {
 }
 ```
 
+
 ### Scenarios Involving Multiple Item Types
 
-For details about the @Reusable usage example, see [Scenarios Involving Multiple Item Types](arkts-reusable.md#scenarios-involving-multiple-item-types).
+For details about the \@Reusable usage example, see [Multiple Item Types](arkts-reusable.md#multiple-item-types).
 
-The sample code for using multiple item types of @ReusableV2 is as follows:
+The sample code for using multiple item types of \@ReusableV2 is as follows:
 
 **Standard**
 
@@ -821,7 +825,7 @@ struct ReusableV2Component {
 
 **Composite**
 
-There are multiple differences between reusable components, but they usually share common child components. After the three reusable components are converted into the [@Builder](arkts-builder.md) function in composite mode, the shared child components are placed under the parent component MyComponentV2. The reuse cache is shared at the parent component level for child component reuse, reducing resource consumption during component creation.
+There are multiple differences between reusable components, but they usually share common child components. After the three reusable components are converted into the [@Builder](./arkts-builder.md) function in composite mode, the shared child components are placed under the parent component **MyComponentV2**. The reuse cache is shared at the parent component level for child component reuse, reducing resource consumption during component creation.
 
 ```ts
 @Entry
