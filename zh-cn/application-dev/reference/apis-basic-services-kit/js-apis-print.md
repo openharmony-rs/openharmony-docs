@@ -508,7 +508,7 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-//传入文件的uri
+// 传入文件的uri
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)], (err: BusinessError, printTask: print.PrintTask) => {
     if (err) {
@@ -558,7 +558,7 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-//传入文件的uri
+// 传入文件的uri
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.on('succeed', () => {
@@ -1704,3 +1704,125 @@ print.connectPrinter(printerId).then(() => {
     console.error('failed to connect Printer because : ' + JSON.stringify(error));
 })
 ```
+
+## startPrint<sup>23+</sup>
+
+startPrint(job: PrintJobData): Promise&lt;void&gt;
+
+打印接口，传入文件或者二进制数据进行打印，使用Promise异步回调。
+
+**需要权限：** ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| job | [PrintJobData](#printjobdata23) | 是 | 打印任务数据。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import fs from "@ohos.file.fs";
+
+let tempPath = '/data/stroage/el2/base/haps/entry/files/note.jpg';
+let file: fs.File;
+file = fs.openSync(tempPath, 4);
+
+let printJobData: print.printJobData = {
+    printerId: "printerId",
+    jobName: "jobName",
+    documentFormat: print.PrintDocumentFormat.DOCUMENT_FORMAT_AUTO,
+    docFlavor: print.DocFlavor.FILE_DESCRIPTOR,
+    copyNumber: 1,
+    isLandscape: 0,
+    colorMode: print.PrintColorMode.COLOR_MODE_MONOCHROME,
+    dulpexMode: print.PrintDuplexMode.DUPLEX_MODE_NONE,
+    pageSize: {id: "ISO_A4", name: "ISO_A4", width:8268, height: 11692},
+    fdList: [file.fd],
+}
+print.startPrint(printJobData).then(() => {
+    console.info('start print success');
+}).catch((error: BusinessError) => {
+    console.error('failed to print because : ' + JSON.stringify(error));
+})
+```
+## PrintDocumentFormat<sup>23+</sup>
+
+打印数据格式的枚举。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| DOCUMENT_FORMAT_AUTO | 0 | 表示自动检测格式。 |
+| DOCUMENT_FORMAT_JPEG | 1 | 表示Jpeg格式。 |
+| DOCUMENT_FORMAT_PDF | 2 | 表示PDF格式。 |
+| DOCUMENT_FORMAT_POSTSCRIPT | 3 | 表示PostScript格式。 |
+| DOCUMENT_FORMAT_TEXT | 4 | 表示文本格式。 |
+| DOCUMENT_FORMAT_RAW | 5 | 表示RAW格式。 |
+
+## DocFlavor<sup>23+</sup>
+
+打印数据来源形式的枚举。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| FILE_DESCRIPTOR | 0 | 表示文件数据。 |
+| BYTES | 1 | 表示二进制数据。 |
+
+## printJobData<sup>23+</sup>
+
+定义打印任务的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| printerId | string | 否 | 否 | 表示打印机ID。 |
+| jobName | string | 否 | 否 | 表示打印任务名称。 |
+| documentFormat | [PrintDocumentFormat](#printdocumentformat23) | 否 | 否 | 表示打印数据格式。 |
+| docFlavor | [DocFlavor](#docflavor23) | 否 | 否 | 表示打印数据来源形式。 |
+| copyNumber | number | 否 | 否 | 表示文件列表副本数。 |
+| isLandscape | boolean | 否 | 否 | 表示是否横向打印。true表示横向打印，false表示纵向打印。默认值为false。 |
+| colorMode | [PrintColorMode](#printcolormode11) | 否 | 否 | 表示色彩模式。 |
+| duplexMode | [PrintDuplexMode](#printduplexmode11) | 否 | 否 | 表示单双面打印模式。 |
+| pageSize | [PrintPageSize](./js-apis-print.md#printpagesize11) | 否 | 否 | 表示选定的页面尺寸。 |
+| jobId | string | 否 | 是 | 表示打印任务的唯一标识符。 |
+| fdList | Array&lt;number&gt; | 否 | 是 | 表示待打印文件fd列表。 |
+| binaryData | Uint8Array | 否 | 是 | 表示待打印二进制数据。 |
+| printQuality | [PrintQuality](#printquality14) | 否 | 是 | 表示打印质量。 |
+| mediaType | string | 否 | 是 | 表示打印纸张类型。 |
+| isBorderless | boolean | 否 | 是 | 表示是否无边框打印。true表示无边框打印，false表示有边框打印。默认值为true。 |
+| isAutoRotate | boolean | 否 | 是 | 表示是否自动旋转页面。true表示自动旋转页面，false表示不自动旋转页面。默认值为true。 |
+| isReverse | boolean | 否 | 是 | 表示是否逆序打印。true表示逆序打印，false表示顺序打印。默认值为false。 |
+| isCollate | boolean | 否 | 是 | 表示打印顺序方式。true表示逐页打印，false表示逐份打印。默认值为true。 |
+| isSequential | boolean | 否 | 是 | 表示是否按照页面顺序打印。 |
+| options | string | 否 | 是 | 表示以JSON格式字符串化的对象。 |
