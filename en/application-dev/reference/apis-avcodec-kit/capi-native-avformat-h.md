@@ -252,7 +252,7 @@ bool OH_AVFormat_SetUintValue(struct OH_AVFormat *format, const char *key, uint3
 
 **Description**
 
-Assigns an unsigned int value to the key of an OH_AVFormat instance. This API can be used to set only parameters of the unsigned int type. For details, see [native_avcodec_base.h](capi-native-avcodec-base-h.md#variable).
+Assigns an unsigned int value to the key of an OH_AVFormat instance. This API can be used to set only parameters of the unsigned int type. For details, see [native_avcodec_base.h](capi-native-avcodec-base-h.md#variables).
 
 **Since**: 23
 
