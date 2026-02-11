@@ -46,7 +46,7 @@ int32_t (*animateTo)(ArkUI_ContextHandle context, ArkUI_AnimateOption* option, A
 
 > **说明：**
 >
-> [event闭包]中要设置的组件属性，必须在其之前设置过。
+> event[闭包](../../quick-start/introduction-to-arkts.md###闭包)中要设置的组件属性，必须在其之前设置过。
 
 **参数：**
 
