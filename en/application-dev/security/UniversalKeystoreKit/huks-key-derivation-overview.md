@@ -23,17 +23,17 @@ The key management service specifications include mandatory specifications and o
 **You are advised to use mandatory specifications in your development for compatibility purposes.**
 <!--DelEnd-->
 
-The derived key is the key session result obtained by the service based on the three-segment mode. The service can determine whether the derived key is managed by the HUKS (that is, the key never leaves the [TEE](huks-concepts.md#tee)). or independent service management.
+The derived key is the key session result obtained by the service based on the three-segment mode. The service can determine whether the derived key is managed by the HUKS (that is, the key never leaves the [TEE](huks-concepts.md#tee)) or independent service management.
 
 > **NOTE**<br>
 > PBKDF2 and HKDF do not support derivation based on non-HUKS-managed keys, for example, user passwords. For details about key escrow, see [Key Import Overview and Algorithm Specifications](huks-key-import-overview.md).
 
 | Algorithm/MD| Algorithm/Length of the Base Key| Available Algorithm/Length of the Derived Key| API Version| <!--DelCol5-->Mandatory|
 | -------- | -------- | -------- | -------- | -------- |
-| HKDF/SHA256 | AES/192-256 | AES/128/192/256<br>HMAC/8-1024<br>SM4/128 | 8+ | Yes|
+| HKDF/SHA256 | AES/192/256 | AES/128/192/256<br>HMAC/8-1024<br>SM4/128 | 8+ | Yes|
 | HKDF/SHA384 | AES/256 | AES/128/192/256<br>HMAC/8-1024<br>SM4/128 | 8+ | Yes|
 | HKDF/SHA512 | AES/256 | AES/128/192/256<br>HMAC/8-1024<br>SM4/128 | 8+ | Yes|
-| PBKDF2/SHA256 | AES/192-256 | AES/128/192/256<br>HMAC/8-1024<br>SM4/128 | 8+ | Yes|
+| PBKDF2/SHA256 | AES/192/256 | AES/128/192/256<br>HMAC/8-1024<br>SM4/128 | 8+ | Yes|
 | PBKDF2/SHA384 | AES/256 | AES/128/192/256<br>HMAC/8-1024<br>SM4/128 | 8+ | Yes|
 | PBKDF2/SHA512 | AES/256 | AES/128/192/256<br>HMAC/8-1024<br>SM4/128 | 8+ | Yes|
 <!--RP1--><!--RP1End-->
