@@ -82,10 +82,10 @@ export default {
   getInfo() {        
     device.getInfo({            
       success: function(data) {                
-        console.log('Device information obtained successfully. Device brand:' + data.brand);            
+        console.info('Device information obtained successfully. Device brand:' + data.brand);            
       },            
       fail: function(data, code) {                
-        console.log('Failed to obtain device information. Error code:'+ code + '; Error information: ' + data);            
+        console.info('Failed to obtain device information. Error code:'+ code + '; Error information: ' + data);            
       },        
     });    
   },
