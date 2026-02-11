@@ -12,7 +12,7 @@ typedef struct OH_ArkUI_TextEditorSelectionMenuOptions OH_ArkUI_TextEditorSelect
 
 ## 概述
 
-定义文本选择菜单选项。
+定义文本编辑器的文本选择菜单选项。
 
 **起始版本：** 24
 

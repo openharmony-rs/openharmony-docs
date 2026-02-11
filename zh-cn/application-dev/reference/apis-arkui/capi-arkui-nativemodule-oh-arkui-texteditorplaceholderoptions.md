@@ -12,7 +12,7 @@ typedef struct OH_ArkUI_TextEditorPlaceholderOptions OH_ArkUI_TextEditorPlacehol
 
 ## 概述
 
-定义无输入时的提示文本选项。
+定义文本编辑器无输入时的提示文本选项。
 
 **起始版本：** 24
 

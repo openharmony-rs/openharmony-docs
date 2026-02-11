@@ -12,7 +12,7 @@ typedef struct OH_ArkUI_TextEditorTextStyle OH_ArkUI_TextEditorTextStyle
 
 ## 概述
 
-定义文本样式。
+定义文本编辑器的文本样式。
 
 **起始版本：** 24
 

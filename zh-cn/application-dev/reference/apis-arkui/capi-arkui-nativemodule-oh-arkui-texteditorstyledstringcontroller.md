@@ -12,7 +12,7 @@ typedef struct OH_ArkUI_TextEditorStyledStringController OH_ArkUI_TextEditorStyl
 
 ## 概述
 
-定义属性字符串控制器。
+定义文本编辑器的属性字符串控制器。
 
 **起始版本：** 24
 

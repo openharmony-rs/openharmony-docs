@@ -12,7 +12,7 @@ typedef struct OH_ArkUI_TextEditorParagraphStyle OH_ArkUI_TextEditorParagraphSty
 
 ## 概述
 
-定义段落样式。
+定义文本编辑器的段落样式。
 
 **起始版本：** 24
 
