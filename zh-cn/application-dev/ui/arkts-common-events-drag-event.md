@@ -166,8 +166,9 @@
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
+   
    const DOMAIN = 0x0000;
-   const TAG = 'DefaultDragError: '
+   const TAG = 'DefaultDragError: ';
    ```
 
    <!-- @[generate_pix_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
@@ -185,7 +186,6 @@
    }
    
    // ...
-   
    // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
    private getComponentSnapshot(): void {
      this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
@@ -292,8 +292,7 @@
        callback(event);
        return true;
      } catch (e) {
-       hilog.error(DOMAIN, TAG, '%{public}s', (e as BusinessError).code + ', message: ' +
-       (e as BusinessError).message);
+       hilog.error(DOMAIN, TAG, `${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
        return false;
      }
    }
@@ -332,6 +331,7 @@ import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0x0000;
 const TAG = 'DefaultDragError: ';
 
@@ -368,8 +368,7 @@ export struct DefaultDrag {
       callback(event);
       return true;
     } catch (e) {
-      hilog.error(DOMAIN, TAG, '%{public}s', (e as BusinessError).code + ', message: ' +
-      (e as BusinessError).message);
+      hilog.error(DOMAIN, TAG, `${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
       return false;
     }
   }
@@ -382,7 +381,6 @@ export struct DefaultDrag {
       this.getDataFromUdmfRetry(event, callback);
     }, 1500);
   }
-
 
   // 调用componentSnapshot中的createFromBuilder接口截取自定义builder的截图
   private getComponentSnapshot(): void {
@@ -397,7 +395,6 @@ export struct DefaultDrag {
         this.pixmap = pixmap;
       });
   }
-
 
   build() {
     // ...
@@ -493,6 +490,7 @@ export struct DefaultDrag {
         }
         .height('100%')
       }
+      
       // ...
 }
 ```

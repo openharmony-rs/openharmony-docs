@@ -225,7 +225,7 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
         const char* darkMsg;
     };
     
-    //注册回调函数
+    // 注册回调函数
     void onColorModeChange(ArkUI_SystemColorMode colorMode, void *userData)
     {
         ColorModeInfo* info = static_cast<ColorModeInfo*>(userData);
