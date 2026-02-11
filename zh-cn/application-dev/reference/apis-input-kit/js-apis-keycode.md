@@ -20,7 +20,7 @@ import { KeyCode } from '@kit.InputKit';
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-**ArkTS-Dyn起始版本**：12
+**ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
 

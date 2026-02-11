@@ -112,31 +112,28 @@ import { Action, Button, Axis, AxisValue, MouseEvent } from '@kit.InputKit';
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-**ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：23
 
 | 名称             | 类型        | 只读   | 可选   | 说明                                       |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
-| action         | [Action](#action)      | 否    | 否    | 鼠标事件动作。                                   |
-| screenX        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标光标在屏幕中的横坐标。                             |
-| screenY        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标光标在屏幕中的纵坐标。                             |
-| windowX        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标所在窗口的横坐标。                               |
-| windowY        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标所在窗口的纵坐标。                               |
-| rawDeltaX      | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标本次操作横坐标偏移值。 |
-| rawDeltaY      | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标本次操作纵坐标偏移值。                          |
-| button         | [Button](#button)      | 否    | 否    | 鼠标按钮。                       |
-| pressedButtons | [Button](#button)[]    | 否    | 否    | 当前处于按下状态的鼠标按钮。                              |
-| axes           | [AxisValue](#axisvalue)[] | 否    | 否    | 事件包含的所有轴数据。                               |
-| pressedKeys    | [KeyCode](js-apis-keycode.md#keycode)[]   | 否    | 否    | 当前处于按下状态的按键列表。                            |
-| ctrlKey        | boolean     | 否    | 否    | 当前ctrlKey是否处于按下状态。 <br>true表示处于按下状态，false表示处于抬起状态。    |
-| altKey         | boolean     | 否    | 否    | 当前altKey是否处于按下状态。 <br>true表示处于按下状态，false表示处于抬起状态。                         |
-| shiftKey       | boolean     | 否    | 否    | 当前shiftKey是否处于按下状态。 <br>true表示处于按下状态，false表示处于抬起状态。                       |
-| logoKey        | boolean     | 否    | 否    | 当前logoKey是否处于按下状态。 <br>true表示处于按下状态，false表示处于抬起状态。                        |
-| fnKey          | boolean     | 否    | 否    | 当前fnKey是否处于按下状态。 <br>true表示处于按下状态，false表示处于抬起状态。                          |
-| capsLock       | boolean     | 否    | 否    | 当前capsLock是否处于激活状态。 <br>true表示激活状态，false表示处于未激活状态。  |
-| numLock        | boolean     | 否    | 否    | 当前numLock是否处于激活状态。 <br>true表示激活状态，false表示处于未激活状态。                        |
-| scrollLock     | boolean     | 否    | 否    | 当前scrollLock是否处于激活状态。 <br>true表示激活状态，false表示处于未激活状态。                     |
-| toolType<sup>11+</sup> | [ToolType](#tooltype11) | 否    | 否    | 工具类型。                     |
-| globalX<sup>20+</sup> | number | 否    | 是    | 该鼠标事件以主屏左上角为原点的全局坐标系的X坐标。<!--Del-->作为入参时，若接口参数中的[MouseEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#mouseeventdata11)为true，该值必填，当前仅支持整数。若为false，该值无需填写，使用指定屏幕左上角为原点的相对坐标系的X坐标计算注入事件。<!--DelEnd-->作为出参时，由系统上报。 |
-| globalY<sup>20+</sup> | number | 否    | 是    | 该鼠标事件以主屏左上角为原点的全局坐标系的Y坐标。<!--Del-->作为入参时，若接口参数中的[MouseEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#mouseeventdata11)为true，该值必填，当前仅支持整数。若为false，该值无需填写，使用指定屏幕左上角为原点的相对坐标系的Y坐标计算注入事件。<!--DelEnd-->作为出参时，由系统上报。 |
+| action         | [Action](#action)      | 否    | 否    | 鼠标事件动作。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                                   |
+| screenX        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标光标在屏幕中的横坐标。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                             |
+| screenY        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标光标在屏幕中的纵坐标。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                             |
+| windowX        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标所在窗口的横坐标。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                               |
+| windowY        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标所在窗口的纵坐标。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                               |
+| rawDeltaX      | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标本次操作横坐标偏移值。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23 |
+| rawDeltaY      | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标本次操作纵坐标偏移值。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                          |
+| button         | [Button](#button)      | 否    | 否    | 鼠标按钮。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                       |
+| pressedButtons | [Button](#button)[]    | 否    | 否    | 当前处于按下状态的鼠标按钮。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                              |
+| axes           | [AxisValue](#axisvalue)[] | 否    | 否    | 事件包含的所有轴数据。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                               |
+| pressedKeys    | [KeyCode](js-apis-keycode.md#keycode)[]   | 否    | 否    | 当前处于按下状态的按键列表。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                            |
+| ctrlKey        | boolean     | 否    | 否    | 当前ctrlKey是否处于按下状态。 <br>true表示处于按下状态，false表示处于抬起状态。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23    |
+| altKey         | boolean     | 否    | 否    | 当前altKey是否处于按下状态。 <br>true表示处于按下状态，false表示处于抬起状态。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                         |
+| shiftKey       | boolean     | 否    | 否    | 当前shiftKey是否处于按下状态。 <br>true表示处于按下状态，false表示处于抬起状态。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                       |
+| logoKey        | boolean     | 否    | 否    | 当前logoKey是否处于按下状态。 <br>true表示处于按下状态，false表示处于抬起状态。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                        |
+| fnKey          | boolean     | 否    | 否    | 当前fnKey是否处于按下状态。 <br>true表示处于按下状态，false表示处于抬起状态。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                          |
+| capsLock       | boolean     | 否    | 否    | 当前capsLock是否处于激活状态。 <br>true表示激活状态，false表示处于未激活状态。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23  |
+| numLock        | boolean     | 否    | 否    | 当前numLock是否处于激活状态。 <br>true表示激活状态，false表示处于未激活状态。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                        |
+| scrollLock     | boolean     | 否    | 否    | 当前scrollLock是否处于激活状态。 <br>true表示激活状态，false表示处于未激活状态。<br>**ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23                     |
+| toolType<sup>11+</sup> | [ToolType](#tooltype11) | 否    | 否    | 工具类型。<br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：23                     |
+| globalX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 该鼠标事件以主屏左上角为原点的全局坐标系的X坐标。<!--Del-->作为入参时，若接口参数中的[MouseEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#mouseeventdata11)为true，该值必填，当前仅支持整数。若为false，该值无需填写，使用指定屏幕左上角为原点的相对坐标系的X坐标计算注入事件。<!--DelEnd-->作为出参时，由系统上报。<br>**ArkTS-Dyn起始版本**：20 <br>**ArkTS-Sta起始版本**：23 |
+| globalY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 该鼠标事件以主屏左上角为原点的全局坐标系的Y坐标。<!--Del-->作为入参时，若接口参数中的[MouseEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#mouseeventdata11)为true，该值必填，当前仅支持整数。若为false，该值无需填写，使用指定屏幕左上角为原点的相对坐标系的Y坐标计算注入事件。<!--DelEnd-->作为出参时，由系统上报。<br>**ArkTS-Dyn起始版本**：20 <br>**ArkTS-Sta起始版本**：23 |

@@ -96,7 +96,7 @@ import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ActionType } from '
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Core
 
-**ArkTS-Dyn起始版本**：11
+**ArkTS-Dyn起始版本**：10
 
 **ArkTS-Sta起始版本**：23
 
