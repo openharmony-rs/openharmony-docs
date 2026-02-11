@@ -9,7 +9,7 @@
 
 You can call native APIs to perform video decoding, which decodes media data into a YUV file or renders it.
 
-<!--RP3--><!--RP3End-->
+For details about the implementation, see [Samples](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec).
 
 For details about the supported decoding capabilities, see [AVCodec Supported Formats](avcodec-support-formats.md#video-decoding).
 
@@ -39,15 +39,13 @@ Through the VideoDecoder module, your application can implement the following ke
 
 1. Surface output and buffer output differ in data output modes.
 2. They are applicable to different scenarios.
-    - Surface output indicates that the OHNativeWindow is used to transfer output data. It supports connection with other modules, such as the **XComponent**.
-    - Buffer output indicates that decoded data is output in shared memory mode.
+   - Surface output indicates that the OHNativeWindow is used to transfer output data. It supports connection with other modules, such as the **XComponent**.
+   - Buffer output indicates that decoded data is output in shared memory mode.
 
 3. The two also differ slightly in the API calling modes:
-    - In surface mode, you can choose to call **OH_VideoDecoder_FreeOutputBuffer** to free the output buffer (without rendering the data). In buffer mode, you must call **OH_VideoDecoder_FreeOutputBuffer** to free the output buffer.
-    - In surface mode, you must call [OH_VideoDecoder_SetSurface](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setsurface) to set an OHNativeWindow before the decoder is ready. After the decoder starts, you can call [OH_VideoDecoder_RenderOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbuffer) to display and then release the decoded frame, or call [OH_VideoDecoder_RenderOutputBufferAtTime](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime) to display the decoded frame at a specified time and then release it. To implement audio-video synchronization or control the display speed, you are advised to call **OH_VideoDecoder_RenderOutputBufferAtTime**.
-    - In buffer mode, an application can obtain the shared memory address and data from the output buffer. In surface mode, an application can obtain the data from the output buffer.
-
-4. Data transfer performance in surface mode is better than that in buffer mode.
+   - In surface mode, you can choose to call **OH_VideoDecoder_FreeOutputBuffer** to free the output buffer (without rendering the data). In buffer mode, you must call **OH_VideoDecoder_FreeOutputBuffer** to free the output buffer.
+   - In surface mode, you must call [OH_VideoDecoder_SetSurface](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setsurface) to set an OHNativeWindow before the decoder is ready. After the decoder starts, you can call [OH_VideoDecoder_RenderOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbuffer) to display and then release the decoded frame, or call [OH_VideoDecoder_RenderOutputBufferAtTime](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime) to display the decoded frame at a specified time and then release it. To implement audio-video synchronization or control the display speed, you are advised to call **OH_VideoDecoder_RenderOutputBufferAtTime**.
+   - In buffer mode, an application can obtain the shared memory address and data from the output buffer. In surface mode, an application can obtain the data from the output buffer.
 
 For details about the development procedure, see [Surface Mode](#surface-mode) and [Buffer Mode](#buffer-mode).
 
@@ -70,9 +68,9 @@ The following figure shows the interaction between states.
    - When the decoder is in the Error state, you can either call **OH_VideoDecoder_Reset** to switch it to the Initialized state or call **OH_VideoDecoder_Destroy** to switch it to the Released state.
 
 6. The Executing state has three substates: Flushed, Running, and End-of-Stream.
-    - After **OH_VideoDecoder_Start** is called, the decoder enters the Running substate immediately.
-    - When the decoder is in the Executing state, you can call **OH_VideoDecoder_Flush** to switch it to the Flushed substate.
-    - After all data to be processed is transferred to the decoder, the [AVCODEC_BUFFER_FLAGS_EOS](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags) flag is added to the last input buffer in the input buffers queue. Once this flag is detected, the decoder transits to the End-of-Stream substate. In this state, the decoder does not accept new inputs, but continues to generate outputs until it reaches the tail frame.
+   - After **OH_VideoDecoder_Start** is called, the decoder enters the Running substate immediately.
+   - When the decoder is in the Executing state, you can call **OH_VideoDecoder_Flush** to switch it to the Flushed substate.
+   - After all data to be processed is transferred to the decoder, the [AVCODEC_BUFFER_FLAGS_EOS](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags) flag is added to the last input buffer in the input buffers queue. Once this flag is detected, the decoder transits to the End-of-Stream substate. In this state, the decoder does not accept new inputs, but continues to generate outputs until it reaches the tail frame.
 
 7. When the decoder is no longer needed, you must call **OH_VideoDecoder_Destroy** to destroy the decoder instance, which then transitions to the Released state.
 
@@ -327,7 +325,7 @@ The following walks you through how to implement the entire video decoding proce
     target_link_libraries(sample PUBLIC libnative_drm.so)
     ```
 
-    <!--RP4-->The sample code is as follows:<!--RP4End-->
+    <!--RP4-->The sample code is as follows.<!--RP4End-->
 
     ```c++
     // Create a media key system based on the media key system information. The following uses com.clearplay.drm as an example.
@@ -436,7 +434,6 @@ The following walks you through how to implement the entire video decoding proce
     ```
 
     > **NOTE**
-    >
     > If both decoder 1 and decoder 2 are bound to the same NativeWindow using the **OH_VideoDecoder_SetSurface** function, and decoder 2 is running, destroying decoder 1 with **OH_VideoDecoder_Destroy** will cause decoder 2's video playback to freeze.
     >
     > Consider the following approaches:
@@ -498,7 +495,7 @@ The following walks you through how to implement the entire video decoding proce
     target_link_libraries(sample PUBLIC libnative_media_avcencinfo.so)
     ```
 
-    The sample code is as follows:
+    In the code snippet below, the following variable is used:
     - **buffer**: parameter passed by the callback function **OnNeedInputBuffer**.
     ```c++
     uint32_t keyIdLen = DRM_KEY_ID_SIZE;
@@ -599,8 +596,7 @@ The following walks you through how to implement the entire video decoding proce
     }
     ```
 
-12. Call **OH_VideoDecoder_RenderOutputBuffer()** or **OH_VideoDecoder_RenderOutputBufferAtTime()** to render the data and free the output buffer,
-    or call **OH_VideoDecoder_FreeOutputBuffer()** to directly free the output buffer.
+12. Call **OH_VideoDecoder_RenderOutputBuffer()** or **OH_VideoDecoder_RenderOutputBufferAtTime()** to render the data and free the output buffer, or call **OH_VideoDecoder_FreeOutputBuffer()** to directly free the output buffer.
 
     In the following example, the member variables of **bufferInfo** are as follows:
     - **index**: parameter passed by the callback function **OnNewOutputBuffer**, which uniquely corresponds to the buffer.
@@ -935,7 +931,7 @@ The following walks you through how to implement the entire video decoding proce
     target_link_libraries(sample PUBLIC libnative_drm.so)
     ```
 
-    The sample code is as follows:
+    The sample code is as follows.
 
     ```c++
     // Create a media key system based on the media key system information. The following uses com.clearplay.drm as an example.
@@ -1032,7 +1028,7 @@ The following walks you through how to implement the entire video decoding proce
 
     The procedure is the same as that in surface mode and is not described here.
 
-    The sample code is as follows:
+    The sample code is as follows.
 
     ```c++
     uint32_t keyIdLen = DRM_KEY_ID_SIZE;
@@ -1176,7 +1172,7 @@ The following walks you through how to implement the entire video decoding proce
     #include <string.h>
     ```
 
-    The sample code is as follows:
+    The sample code is as follows.
 
     ```c++
     // Obtain the width and height of the source buffer by using the callback function OnStreamChanged or OH_VideoDecoder_GetOutputDescription.

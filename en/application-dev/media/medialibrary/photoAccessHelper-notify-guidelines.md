@@ -11,10 +11,9 @@ The photoAccessHelper module provides APIs to listen for changes of specified me
 > **NOTE**
 >
 > Before you get started, obtain a PhotoAccessHelper instance and apply for required permissions. For details, see [Before You Start](photoAccessHelper-preparation.md).
->
 > Unless otherwise specified, the PhotoAccessHelper instance obtained in [Before You Start](photoAccessHelper-preparation.md) is used to call photoAccessHelper APIs. If the code for obtaining the PhotoAccessHelper instance is missing, an error will be reported to indicate that photoAccessHelper is not defined.
 
-The APIs related to media asset change notifications can be called asynchronously only in callback mode. This topic covers only some of these APIs. For details about all available APIs, see [Module Description](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md).
+The APIs related to media asset change notifications can be called asynchronously only in callback mode. This document covers only some of these APIs. For details about all available APIs, see [Module Description](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md).
 
 Unless otherwise specified, all the media assets to be obtained in this document exist in the database. If no media asset is obtained when the sample code is executed, check whether the media assets exist in the database.
 
@@ -29,7 +28,7 @@ Register a listener for a PhotoAsset instance. When the observed PhotoAsset chan
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 The following example describes how to register a listener for an image and then delete the image. A callback will be invoked when the image is deleted.
 
@@ -73,7 +72,7 @@ Register a listener for an album. When the observed album changes, the registere
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 The following example describes how to register a listener for a user album and then rename the album. A callback will be invoked when the album is renamed.
 
@@ -128,7 +127,7 @@ Register a listener for all PhotoAsset instance. When a PhotoAsset instance chan
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 The following example describes how to register a listener for all media assets and then delete a media asset. A callback will be invoked when the media asset is deleted.
 
@@ -171,7 +170,7 @@ Use [unRegisterChange](../../reference/apis-media-library-kit/arkts-apis-photoAc
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 The following example describes how to unregister the listening for an image and then delete the image. The unregistered listener callback will not be invoked when the image is deleted.
 
