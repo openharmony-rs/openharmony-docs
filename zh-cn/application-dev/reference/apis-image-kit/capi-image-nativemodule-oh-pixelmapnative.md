@@ -29,7 +29,7 @@ OH_PixelmapNative结构体内容和操作方式如下：
 |float, float, | scaleX, scaleY | scaleX沿X轴缩放比例、scaleY沿Y轴缩放比例 |[OH_PixelmapNative_Scale](capi-pixelmap-native-h.md#oh_pixelmapnative_scale) | 根据输入的宽高对图片进行缩放。|
 | float, float| x, y | x平移量、y平移量 | [OH_PixelmapNative_Translate](capi-pixelmap-native-h.md#oh_pixelmapnative_translate) | 根据输入的坐标对图片进行位置变换。|
 | float | angle | 旋转角度 |[OH_PixelmapNative_Rotate](capi-pixelmap-native-h.md#oh_pixelmapnative_rotate) | 根据输入的角度对图片进行旋转。|
-| bool, bool | shouldFilpHorizontally, shouldFilpVertically | 是否水平翻转图像、是否垂直翻转图像。 | [OH_PixelmapNative_Flip](capi-pixelmap-native-h.md#oh_pixelmapnative_flip) | 根据输入的条件对图片进行翻转。|
+| bool, bool | shouldFlipHorizontally, shouldFlipVertically | 是否水平翻转图像、是否垂直翻转图像。 | [OH_PixelmapNative_Flip](capi-pixelmap-native-h.md#oh_pixelmapnative_flip) | 根据输入的条件对图片进行翻转。|
 | Image_Region | region | 裁剪区间 | [OH_PixelmapNative_Crop](capi-pixelmap-native-h.md#oh_pixelmapnative_crop) | 根据输入的尺寸对图片进行裁剪。|
 
 **起始版本：** 12
