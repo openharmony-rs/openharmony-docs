@@ -2873,6 +2873,7 @@ ArkTS-Sta: onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticat
 
      ```ts
      // GlobalContext.ets
+     'use static'
      export class GlobalContext {
        private constructor() {}
        private static instance: GlobalContext = new GlobalContext();
@@ -3017,6 +3018,7 @@ ArkTS-Sta: onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticat
      ArkTS-Sta示例：
 
      ```ts
+     'use static'
      import { Entry, Text, Column, Component, Button, Web,     AlertDialogParamWithConfirm, UIContext, State, Row } from '@kit.ArkUI'
      import { common, Want, bundleManager} from '@kit.AbilityKit';
      import { webview } from '@kit.ArkWeb';

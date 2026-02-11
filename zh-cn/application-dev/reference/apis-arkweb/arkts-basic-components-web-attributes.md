@@ -3777,6 +3777,7 @@ ArkTS-Sta: registerNativeEmbedRule(tag: string | undefined, type: string | undef
   ArkTS-Sta示例：
   ```ts
   // xxx.ets
+'use static'
 import { Entry, Component, Web, Column } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
