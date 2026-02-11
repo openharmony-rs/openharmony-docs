@@ -345,6 +345,7 @@ abilities示例：
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:red",
         "removeMissionAfterTerminate": true,
+        "allowSelfRedirect": true,  // 从API version 23开始，支持该标签
         "orientation": "$string:orientation",
         "supportWindowMode": [
           "fullscreen",
