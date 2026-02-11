@@ -48,7 +48,7 @@ getImageInfo(index: number, callback: AsyncCallback\<ImageInfo>): void
 
 | 参数名   | 类型                                   | 必填 | 说明                                     |
 | -------- | -------------------------------------- | ---- | ---------------------------------------- |
-| index    | number                                 | 是   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N+1张图片。单帧图片场景中index取值只能为0，动图等多帧图片场景中index的取值范围为：0~（帧数-1）。                   |
+| index    | number                                 | 是   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N+1张图片。单帧图片场景中index取值只能为0，动图等多帧图片场景中index的取值范围为：[0, (帧数-1)]。                   |
 | callback | AsyncCallback<[ImageInfo](arkts-apis-image-i.md#imageinfo)> | 是   | 回调函数。当获取图片信息成功，err为undefined，data为获取到的图片信息；否则为错误对象。 |
 
 **示例：**
@@ -117,7 +117,7 @@ getImageInfo(index?: number): Promise\<ImageInfo>
 
 | 参数名| 类型   | 必填 | 说明                                  |
 | ----- | ------ | ---- | ------------------------------------- |
-| index | number | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N+1张图片。单帧图片场景中index取值只能为0，动图等多帧图片场景中index的取值范围为：0~（帧数-1）。 |
+| index | number | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N+1张图片。单帧图片场景中index取值只能为0，动图等多帧图片场景中index的取值范围为：[0, (帧数-1)]。 |
 
 **返回值：**
 
@@ -156,7 +156,7 @@ getImageInfoSync(index?: number): ImageInfo
 
 | 参数名| 类型   | 必填 | 说明                                  |
 | ----- | ------ | ---- | ------------------------------------- |
-| index | number | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N+1张图片。单帧图片场景中index取值只能为0，动图等多帧图片场景中index的取值范围为：0~（帧数-1）。 |
+| index | number | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N+1张图片。单帧图片场景中index取值只能为0，动图等多帧图片场景中index的取值范围为：[0, (帧数-1)]。 |
 
 **返回值：**
 
@@ -780,7 +780,7 @@ createPictureAtIndex(index: number): Promise\<Picture>
 
 | 参数名 | 类型    | 必填 | 说明                                              |
 | ------ | ------ | ---- | ------------------------------------------------ |
-| index  | number | 是   | 解码图片序号。图片序号有效的取值范围为：[0，帧数-1]。 |
+| index  | number | 是   | 解码图片序号。图片序号有效的取值范围为：[0, (帧数-1)]。 |
 
 **返回值：**
 
