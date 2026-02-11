@@ -3,14 +3,13 @@
 本模块提供系统相关的或者增强的[国际化](../../internationalization/i18n-l10n.md)能力，包括区域管理、电话号码处理、日历等，相关接口为[ECMA 402](https://dev.ecma-international.org/publications-and-standards/standards/ecma-402/)标准中未定义的补充接口。[Intl模块](js-apis-intl.md)提供了ECMA 402标准定义的基础国际化接口，与本模块共同使用可提供完整地国际化能力。
 
 >  **说明：**
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 >  - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 >  - 本模块接口依据[CLDR](https://cldr.unicode.org) 国际化数据库进行处理，随着CLDR演进，本模块接口处理结果可能发生变化。其中，API version 12对应[CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42)，具体数据变化请参考官方链接。
 >
 >  - 从API version 11开始，本模块部分接口支持在ArkTS卡片中使用。
->
->  - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 
 ## 导入模块
@@ -30,6 +29,10 @@ static getDisplayCountry(country: string, locale: string, sentenceCase?: boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -80,6 +83,10 @@ static getDisplayLanguage(language: string, locale: string, sentenceCase?: boole
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名          | 类型      | 必填   | 说明               |
@@ -128,6 +135,10 @@ static getSystemLanguages(): Array&lt;string&gt;
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                  | 说明           |
@@ -149,6 +160,10 @@ static getSystemCountries(language: string): Array&lt;string&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -197,6 +212,10 @@ static isSuggested(language: string, region?: string): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -250,6 +269,10 @@ static getSystemLanguage(): string
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明      |
@@ -270,6 +293,10 @@ static getSystemRegion(): string
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -292,7 +319,11 @@ static getSystemLocale(): string
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 9
 
 **返回值：**
 
@@ -315,6 +346,10 @@ static getSystemLocaleInstance(): Intl.Locale
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 | 类型     | 说明      |
@@ -340,6 +375,10 @@ static is24HourClock(): boolean
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型      | 说明                                       |
@@ -362,6 +401,10 @@ static getPreferredLanguageList(): Array&lt;string&gt;
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                  | 说明        |
@@ -383,6 +426,10 @@ static getFirstPreferredLanguage(): string
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明             |
@@ -403,6 +450,10 @@ static setAppPreferredLanguage(language: string): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -441,6 +492,10 @@ static getAppPreferredLanguage(): string
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明       |
@@ -463,6 +518,10 @@ static getUsingLocalDigit(): boolean
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型      | 说明                                       |
@@ -483,6 +542,10 @@ static getSimplifiedLanguage(language?: string): string
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -530,6 +593,10 @@ static getTemperatureType(): TemperatureType
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明            |
@@ -550,6 +617,10 @@ static getTemperatureName(type: TemperatureType): string
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -599,6 +670,10 @@ static getFirstDayOfWeek(): WeekDay
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明            |
@@ -618,6 +693,10 @@ static getFirstDayOfWeek(): WeekDay
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | CELSIUS | 1 | 摄氏度。 |
@@ -631,6 +710,10 @@ static getFirstDayOfWeek(): WeekDay
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -652,6 +735,10 @@ isRTL(locale: string): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -680,6 +767,10 @@ getCalendar(locale: string, type? : string): Calendar
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -710,6 +801,10 @@ constructor(locale?: string)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -747,6 +842,10 @@ findEntityInfo(text: string): Array&lt;EntityInfoItem&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -794,6 +893,10 @@ findEntityInfo(text: string): Array&lt;EntityInfoItem&gt;
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称  | 类型   | 只读   | 可选   | 说明                |
 | ---- | ---- | ---- | ---- | ----------------- |
 | type | string | 否    | 否    | 实体的类型，当前支持phone_number和date类型。phone_number表示实体类型是电话号码，date表示实体类型是时间日期。 |
@@ -811,6 +914,10 @@ setTime(date: Date): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -838,6 +945,10 @@ ArkTS-Sta: setTime(time: double): void
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明                                       |
@@ -861,6 +972,10 @@ ArkTS-Sta: set(year: int, month: int, date:int, hour?: int, minute?: int, second
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -889,6 +1004,10 @@ setTimeZone(timezone: string): void
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明                        |
@@ -911,6 +1030,10 @@ getTimeZone(): string
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -938,6 +1061,10 @@ ArkTS-Sta: getFirstDayOfWeek(): int
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明                    |
@@ -962,6 +1089,10 @@ ArkTS-Sta: setFirstDayOfWeek(value: int): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -988,6 +1119,10 @@ ArkTS-Sta: getMinimalDaysInFirstWeek(): int
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明           |
@@ -1012,6 +1147,10 @@ ArkTS-Sta: setMinimalDaysInFirstWeek(value: int): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1038,6 +1177,10 @@ ArkTS-Sta: get(field: string): int
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1095,6 +1238,10 @@ getDisplayName(locale: string): string
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明                                       |
@@ -1123,6 +1270,10 @@ isWeekend(date?: Date): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1157,6 +1308,10 @@ ArkTS-Sta: add(field: string, amount: int): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1202,6 +1357,10 @@ ArkTS-Sta: getTimeInMillis(): long
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型      | 说明                                  |
@@ -1227,6 +1386,10 @@ ArkTS-Sta: compareDays(date: Date): int
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1276,6 +1439,10 @@ constructor(country: string, options?: PhoneNumberFormatOptions)
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明               |
@@ -1298,6 +1465,10 @@ isValidNumber(phoneNumber: string): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1330,6 +1501,10 @@ format(phoneNumber: string): string
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1370,6 +1545,10 @@ getLocationName(phoneNumber: string, locale: string): string
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明   |
@@ -1399,6 +1578,10 @@ getLocationName(phoneNumber: string, locale: string): string
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型     | 只读   | 可选   | 说明                                       |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
 | type | string | 否    | 是    | 表示对电话号码格式化的类型，取值包括：'E164',&nbsp;'INTERNATIONAL',&nbsp;'NATIONAL',&nbsp;'RFC3966',&nbsp;'TYPING'。<br>-在API version 8版本，type为必填项。 <br>-API version 9版本开始，type为选填项。<br>-API version 12版本开始支持TYPING，表示对拨号中的电话号码实时格式化。|
@@ -1411,6 +1594,10 @@ getLocationName(phoneNumber: string, locale: string): string
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 类型     | 只读   | 可选   | 说明                                       |
 | ------------- | ------ | ---- | ---- | ---------------------------------------- |
@@ -1427,6 +1614,10 @@ getInstance(locale?: string): IndexUtil
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1459,6 +1650,10 @@ getIndexList(): Array&lt;string&gt;
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                  | 说明                 |
@@ -1484,6 +1679,10 @@ addLocale(locale: string): void
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明                           |
@@ -1505,6 +1704,10 @@ getIndex(text: string): string
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1534,6 +1737,10 @@ getLineInstance(locale: string): BreakIterator
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1566,6 +1773,10 @@ setLineBreakText(text: string): void
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明                      |
@@ -1588,6 +1799,10 @@ getLineBreakText(): string
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1615,6 +1830,10 @@ ArkTS-Sta: current(): int
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明                          |
@@ -1640,6 +1859,10 @@ ArkTS-Sta: first(): int
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1667,6 +1890,10 @@ ArkTS-Sta: last(): int
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明                 |
@@ -1692,6 +1919,10 @@ ArkTS-Sta: next(index?: int): int
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1727,6 +1958,10 @@ ArkTS-Dyn: previous(): int
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明                                       |
@@ -1754,6 +1989,10 @@ ArkTS-Sta: following(offset: int): int
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1789,6 +2028,10 @@ ArkTS-Sta: isBoundary(offset: int): boolean
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明          |
@@ -1820,6 +2063,10 @@ getTimeZone(zoneID?: string): TimeZone
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明    |
@@ -1849,6 +2096,10 @@ getID(): string
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明           |
@@ -1871,6 +2122,10 @@ getDisplayName(locale?: string, isDST?: boolean): string
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1904,6 +2159,10 @@ ArkTS-Sta: getRawOffset(): int
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明                  |
@@ -1928,6 +2187,10 @@ ArkTS-Sta: getOffset(date?: double): int
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1958,6 +2221,10 @@ static getAvailableIDs(): Array&lt;string&gt;
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                  | 说明          |
@@ -1981,6 +2248,10 @@ static getAvailableZoneCityIDs(): Array&lt;string&gt;
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                  | 说明            |
@@ -2002,6 +2273,10 @@ static getCityDisplayName(cityID: string, locale: string): string
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2032,6 +2307,10 @@ static getTimezoneFromCity(cityID: string): TimeZone
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明     |
@@ -2060,6 +2339,10 @@ ArkTS-Sta: static getTimezonesByLocation(longitude: double, latitude: double): A
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2110,6 +2393,10 @@ getZoneRules(): ZoneRules
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型     | 说明                 |
@@ -2153,6 +2440,10 @@ nextTransition(date?: number): ZoneOffsetTransition
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明     |
@@ -2191,6 +2482,10 @@ getMilliseconds(): number
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型       | 说明         |
@@ -2219,6 +2514,10 @@ getOffsetAfter(): number
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型       | 说明         |
@@ -2246,6 +2545,10 @@ getOffsetBefore(): number
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2279,6 +2582,10 @@ static getAvailableIDs(): string[]
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型       | 说明         |
@@ -2302,6 +2609,10 @@ static getInstance(id: string): Transliterator
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2330,6 +2641,10 @@ transform(text: string): string
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2377,6 +2692,10 @@ static isDigit(char: string): boolean
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明    |
@@ -2404,6 +2723,10 @@ static isSpaceChar(char: string): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2433,6 +2756,10 @@ static isWhitespace(char: string): boolean
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明    |
@@ -2460,6 +2787,10 @@ static isRTL(char: string): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2489,6 +2820,10 @@ static isIdeograph(char: string): boolean
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明    |
@@ -2516,6 +2851,10 @@ static isLetter(char: string): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2545,6 +2884,10 @@ static isLowerCase(char: string): boolean
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明    |
@@ -2573,6 +2916,10 @@ static isUpperCase(char: string): boolean
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明    |
@@ -2600,6 +2947,10 @@ static getType(char: string): string
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2667,6 +3018,10 @@ static unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: number, locale: 
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                     | 必填   | 说明                                       |
@@ -2701,6 +3056,10 @@ static getDateOrder(locale: string): string
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明                        |
@@ -2730,6 +3089,10 @@ ArkTS-Sta: static getTimePeriodName(hour:int, locale?: string): string
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2774,6 +3137,10 @@ static getBestMatchLocale(locale: string, localeList: string[]): string
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2821,6 +3188,10 @@ static getThreeLetterLanguage(locale: string): string
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                     |
@@ -2865,6 +3236,10 @@ static getThreeLetterRegion(locale: string): string
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                     |
@@ -2908,6 +3283,10 @@ static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: Intl
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2958,7 +3337,11 @@ static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: intl
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -3013,6 +3396,10 @@ static getInstance(mode: NormalizerMode): Normalizer
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明                        |
@@ -3056,6 +3443,10 @@ normalize(text: string): string
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明                        |
@@ -3097,6 +3488,10 @@ normalize(text: string): string
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | NFC | 1 | NFC范式。 |
@@ -3117,6 +3512,10 @@ constructor(icsPath: String)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3154,6 +3553,10 @@ isHoliday(date?: Date): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3203,6 +3606,10 @@ ArkTS-Sta: getHolidayInfoItemArray(year?: int): Array&lt;[HolidayInfoItem](#holi
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |   参数名  |      类型      | 必填 |     说明      |
@@ -3246,6 +3653,10 @@ ArkTS-Sta: getHolidayInfoItemArray(year?: int): Array&lt;[HolidayInfoItem](#holi
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | --------------- | ------  | ------  | --------------------------------------- |
 | baseName        | string          |   否    |   否    | 节假日的英文名称。              |
@@ -3262,6 +3673,10 @@ ArkTS-Sta: getHolidayInfoItemArray(year?: int): Array&lt;[HolidayInfoItem](#holi
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | -----------------| ------  | ------  | --------------------------------------- |
 | language        | string           |   否    |   否    | 语言，例如ar，en，tr。          |
@@ -3277,6 +3692,10 @@ getSimpleDateTimeFormatByPattern(pattern: string, locale?: Intl.Locale): SimpleD
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3322,7 +3741,11 @@ getSimpleDateTimeFormatByPattern(pattern: string, locale?: intl.Locale): SimpleD
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -3369,6 +3792,10 @@ getSimpleDateTimeFormatBySkeleton(skeleton: string, locale?: Intl.Locale): Simpl
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明                                       |
@@ -3413,7 +3840,11 @@ getSimpleDateTimeFormatBySkeleton(skeleton: string, locale?: intl.Locale): Simpl
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -3462,6 +3893,10 @@ format(date: Date): string
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明                |
@@ -3508,6 +3943,10 @@ getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.Locale): SimpleN
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明                                       |
@@ -3552,7 +3991,11 @@ getSimpleNumberFormatBySkeleton(skeleton: string, locale?: intl.Locale): SimpleN
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -3603,6 +4046,10 @@ ArkTS-Sta: format(value: double): string
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填   | 说明                |
@@ -3639,7 +4086,11 @@ constructor(numberFormat: intl.NumberFormat | SimpleNumberFormat, options?: Styl
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -3694,6 +4145,10 @@ ArkTS-Sta: format(value: double): StyledString
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3754,6 +4209,10 @@ ArkTS-Sta: format(value: double): StyledString
 
 **系统能力：** SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | --------------- | ------  | ------  | --------------------------------------- |
 | integer        | [TextStyle](../apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) |   否    |   是    |  指定整数部分的文本样式。默认值：默认的文本样式。     |
@@ -3769,7 +4228,11 @@ getDisplayCountry(country: string, locale: string, sentenceCase?: boolean): stri
 
 从API version 9开始不再维护，建议使用[System.getDisplayCountry](#getdisplaycountry9)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3799,7 +4262,11 @@ getDisplayLanguage(language: string, locale: string, sentenceCase?: boolean): st
 
 从API version 9开始不再维护，建议使用[System.getDisplayLanguage](#getdisplaylanguage9)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3830,7 +4297,11 @@ getSystemLanguage(): string
 
 从API version 9开始不再维护，建议使用[System.getSystemLanguage](#getsystemlanguage9)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -3852,7 +4323,11 @@ getSystemRegion(): string
 
 从API version 9开始不再维护，建议使用[System.getSystemRegion](#getsystemregion9)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -3874,7 +4349,11 @@ getSystemLocale(): string
 
 从API version 9开始不再维护，建议使用[System.getSystemLocaleInstance](#getsystemlocaleinstance20)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -3896,7 +4375,11 @@ is24HourClock(): boolean
 
 从API version 9开始不再维护，建议使用[System.is24HourClock](#is24hourclock9)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -3920,7 +4403,11 @@ set24HourClock(option: boolean): boolean
 
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3951,7 +4438,11 @@ addPreferredLanguage(language: string, index?: number): boolean
 
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -3985,7 +4476,11 @@ removePreferredLanguage(index: number): boolean
 
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4015,7 +4510,11 @@ getPreferredLanguageList(): Array&lt;string&gt;
 
 从API version 8开始支持，从API version 9开始不再维护，建议使用[System.getPreferredLanguageList](#getpreferredlanguagelist9)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -4037,7 +4536,11 @@ getFirstPreferredLanguage(): string
 
 从API version 8开始支持，从API version 9开始不再维护，建议使用[System.getFirstPreferredLanguage](#getfirstpreferredlanguage9)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -4062,7 +4565,11 @@ unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: number, locale: string,
 
 从API version 8开始支持，从API version 9开始不再维护，建议使用[unitConvert](#unitconvert9)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4092,7 +4599,11 @@ isDigit(char: string): boolean
 
 从API version 8开始支持，从API version 9开始不再维护，建议使用[isDigit](#isdigit9)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4115,7 +4626,11 @@ isSpaceChar(char: string): boolean
 
 从API version 8开始支持，从API version 9开始不再维护，建议使用[isSpaceChar](#isspacechar9)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4138,7 +4653,11 @@ isWhitespace(char: string): boolean
 
 从API version 8开始支持，从API version 9开始不再维护，建议使用[isWhitespace](#iswhitespace9)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4161,7 +4680,11 @@ isRTL(char: string): boolean
 
 从API version 8开始支持，从API version 9开始不再维护，建议使用[isRTL](#isrtl9)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4184,7 +4707,11 @@ isIdeograph(char: string): boolean
 
 从API version 8开始支持，从API version 9开始不再维护，建议使用[isIdeograph](#isideograph9)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4207,7 +4734,11 @@ isLetter(char: string): boolean
 
 从API version 8开始支持，从API version 9开始不再维护，建议使用[isLetter](#isletter9)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4230,7 +4761,11 @@ isLowerCase(char: string): boolean
 
 从API version 8开始支持，从API version 9开始不再维护，建议使用[isLowerCase](#islowercase9)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4253,7 +4788,11 @@ isUpperCase(char: string): boolean
 
 从API version 8开始支持，从API version 9开始不再维护，建议使用[isUpperCase](#isuppercase9)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4276,7 +4815,11 @@ getType(char: string): string
 
 从API version 8开始支持，从API version 9开始不再维护，建议使用[getType](#gettype9)代替。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
