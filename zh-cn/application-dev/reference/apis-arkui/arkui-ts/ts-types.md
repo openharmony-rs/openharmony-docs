@@ -1540,7 +1540,7 @@ type ResponsiveFillType = PresetFillType
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 23
 
 | 类型                    | 说明                        |
 | --------------------- | ------------------------- |
@@ -1558,7 +1558,7 @@ type ResponsiveFillType = PresetFillType
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型 |只读|可选| 说明             |
 | ------ | ---- |------|------| ---------------- |
@@ -1576,7 +1576,7 @@ type ResponsiveFillType = PresetFillType
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 类型                                                         | 只读 | 可选 | 说明                                   |
 | ----- | ------------------------------------------------------------ | ---- | -- | -------------------------------------- |

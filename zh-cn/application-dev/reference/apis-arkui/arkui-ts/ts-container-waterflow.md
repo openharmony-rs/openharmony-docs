@@ -273,9 +273,7 @@ ArkTS-Sta: type GetItemMainSizeByIndex = (index: int) => double
 
 ### columnsTemplate
 
-ArkTS-Dyn: columnsTemplate(value: string)
-
-ArkTS-Sta: columnsTemplate(value: string | undefined)
+columnsTemplate(value: string)
 
 设置当前瀑布流组件布局列的数量，不设置时默认1列。
 
@@ -283,21 +281,19 @@ ArkTS-Sta: columnsTemplate(value: string | undefined)
 
 可使用columnsTemplate('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp，使用方法参见示例2。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                           |
 | ------ | ------ | ---- | ---------------------------------------------- |
-| value  | ArkTS-Dyn: string<br/>ArkTS-Sta: string&nbsp;\|&nbsp;undefined | 是   | 当前瀑布流组件布局列的数量。<br/>取值为undefined时，当前瀑布流组件布局列的数量为1列。 |
+| value  | string | 是   | 当前瀑布流组件布局列的数量。 |
 
 ### columnsTemplate<sup>22+</sup>
 
@@ -317,9 +313,11 @@ ArkTS-Sta: columnsTemplate(value: string | ItemFillPolicy | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
