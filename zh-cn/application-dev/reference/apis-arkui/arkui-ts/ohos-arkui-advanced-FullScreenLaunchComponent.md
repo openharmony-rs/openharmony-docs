@@ -34,6 +34,36 @@ import { FullScreenLaunchComponent } from '@ohos.arkui.advanced.FullScreenLaunch
 ## 事件
 不支持[通用事件](ts-component-general-events.md)。
 
+## Type
+
+### ContentBuilder
+
+type ContentBuilder = () => void
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+### RecordData
+
+type RecordData = undefined | null | Object | Record<string, RecordData> | Array\<RecordData\>
+
+允许不传值，或直接传入null、undefined，或定义指定格式的Record类型、Array类型。
+
+取值类型为下表类型中的并集。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型 | 说明 |
+| - | - |
+| undefined | 表示可以不传值或者传入undefined。|
+| null | 表示可以不传值或者传入null。|
+| Object | 表示值类型为Object对象，可取任意值。|
+| Record\<string, RecordData\> | 表示值为一个Record，键为string类型，值为RecordData类型 |
+| Array\<RecordData\> | 表示值为一个Array数组，数组元素类型为RecordData类型 |
+
 ## FullScreenLaunchComponent
 
 FullScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: AtomicServiceOptions, onError?: ErrorCallback, onTerminated?: Callback\<TerminationInfo> })
@@ -44,12 +74,12 @@ FullScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: A
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| content | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<void><br>ArkTS-Sta: ContentBuilder | 是 | \@BuilderParam | 可以使用组件组合来自定义拉起原子化服务前的占位图标，实现类似大桌面应用图标的效果。点击占位组件后，将拉起原子化服务。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本:** 12|
-| appId | string | 是 | - |  需要拉起的原子化服务appId，appId是原子化服务的唯一标识。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本:** 12<br>**ArkTS-Sta起始版本:** 23<!--RP1--><!--RP1End-->|
-| options | [AtomicServiceOptions](../../apis-ability-kit/js-apis-app-ability-atomicServiceOptions.md) | 否 | - | 拉起原子化服务参数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本:** 12<br>**ArkTS-Sta起始版本:** 23 |
-| onError<sup>18+<sup> | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否 | - | 被拉起的嵌入式运行原子化服务在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本:** 18<br>**ArkTS-Sta起始版本:** 23 |
-| onTerminated<sup>18+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)> | 否 | - | 被拉起的嵌入式运行原子化服务通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)或者[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)正常退出时，触发本回调函数。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本:** 18<br>**ArkTS-Sta起始版本:** 23 |
-| onReceive<sup>20+<sup> | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, Object>><br>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, RecordData>> | 否 | - | 被拉起的嵌入式运行原子化服务通过[Window](../../../windowmanager/application-window-stage.md)调用API时，触发本回调。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本:** 20<br>**ArkTS-Sta起始版本:** 23 |
+| content | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<void><br>ArkTS-Sta: ContentBuilder | 是 | \@BuilderParam | 可以使用组件组合来自定义拉起原子化服务前的占位图标，实现类似大桌面应用图标的效果。点击占位组件后，将拉起原子化服务。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 12|
+| appId | string | 是 | - |  需要拉起的原子化服务appId，appId是原子化服务的唯一标识。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23<!--RP1--><!--RP1End-->|
+| options | [AtomicServiceOptions](../../apis-ability-kit/js-apis-app-ability-atomicServiceOptions.md) | 否 | - | 拉起原子化服务参数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| onError<sup>18+<sup> | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否 | - | 被拉起的嵌入式运行原子化服务在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| onTerminated<sup>18+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)> | 否 | - | 被拉起的嵌入式运行原子化服务通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)或者[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)正常退出时，触发本回调函数。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| onReceive<sup>20+<sup> | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, Object>><br>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, RecordData>> | 否 | - | 被拉起的嵌入式运行原子化服务通过[Window](../../../windowmanager/application-window-stage.md)调用API时，触发本回调。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 
 > **说明：**
 >
