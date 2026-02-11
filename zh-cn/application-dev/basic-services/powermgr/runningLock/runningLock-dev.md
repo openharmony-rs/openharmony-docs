@@ -21,6 +21,7 @@
 
 
 - SDK版本配置：
+
   RunningLockType.BACKGROUND_USER_IDLE类型的运行锁，所需SDK版本为API version 23及以上才可使用。
 
 
