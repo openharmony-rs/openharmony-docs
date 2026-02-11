@@ -25,7 +25,7 @@ ArkTS-Sta: getFreeSize(path:string): Promise&lt;long&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -105,7 +105,7 @@ ArkTS-Sta: getFreeSize(path:string, callback:AsyncCallback&lt;long&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -183,7 +183,7 @@ ArkTS-Sta: getFreeSizeSync(path:string): long
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -255,7 +255,7 @@ ArkTS-Sta: getTotalSize(path: string): Promise&lt;long&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -336,7 +336,7 @@ ArkTS-Sta: getTotalSize(path: string, callback: AsyncCallback&lt;long&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -414,7 +414,7 @@ ArkTS-Sta: getTotalSizeSync(path: string): long
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
