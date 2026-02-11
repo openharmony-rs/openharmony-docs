@@ -32,7 +32,7 @@ struct loadFontSyncCard {
   build() {
     Column({ space: 10 }) {
       Text(this.content)
-        .fontFamily("custom") // 在此处声明组件使用自定义字体
+        .fontFamily("custom")  // 在此处声明组件使用自定义字体
       Button("load font")
         .onClick(() => {
           // 在此处加载自定义字体文件
