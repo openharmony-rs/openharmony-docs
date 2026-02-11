@@ -7,7 +7,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-This module provides common event capabilities to publish, subscribe to, and unsubscribe from common events.
+This module provides common event capabilities, including publishing, subscribing to, and unsubscribing from common events.
 
 > **NOTE**
 >

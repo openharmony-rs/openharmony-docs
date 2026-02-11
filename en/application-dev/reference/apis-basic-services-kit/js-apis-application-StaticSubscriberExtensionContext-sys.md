@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-The **StaticSubscriberExtensionContext** module, inherited from **StaticSubscriberExtensionAbility**, provides context for StaticSubscriberExtensionAbilities.
+The **StaticSubscriberExtensionContext** module, inherited from **ExtensionContext**, provides context for StaticSubscriberExtensionAbilities.
 
 You can use the APIs of this module to start StaticSubscriberExtensionAbilities.
 
