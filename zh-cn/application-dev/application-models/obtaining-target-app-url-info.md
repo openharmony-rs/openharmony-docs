@@ -9,7 +9,7 @@
 
 ## 场景介绍
 
-开发者在使用[openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起目标应用时，需要明确目标应用的信息。本文将介绍如何获取目标应用的URL信息，并提供完整的拉起示例。
+开发者在使用[uiAbilityContext.openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起目标应用时，需要明确目标应用的信息。本文将介绍如何获取目标应用的URL信息，并提供完整的拉起示例。
 
 ## 环境要求
 
@@ -17,9 +17,9 @@
 
 ## 操作步骤
 
-1. 安装测试demo应用
+1. 安装测试应用
 
-    demo应用的module.json5配置文件如下
+    应用的目标UIAbility在[module.json5](../quick-start/app-configuration-file.md)中的配置如下
 
     ```JSON5
     {
@@ -37,35 +37,27 @@
               // ...
             }
           ],
-          "domainVerify": false
+          "domainVerify": false,
+          // ...
         ]
       }
     ``` 
 
 2. 获取当前设备上已安装应用的bundleName。
 
-    使用hdc命令行工具，可以获取设备上已安装应用的详细配置信息，包括bundleName、abilityName以及支持的URL Scheme等。这是获取三方应用URL信息最直接有效的方法。
+    开发者可以使用命令行工具中的[bm工具](../tools/bm-tool.md)，通过bundleName获取设备上已安装应用的详细配置信息，包括abilityName以及支持的URL Scheme等。这是获取第三方应用URL信息最直接的方法。
 
-
-    通过以下命令查看设备上已安装的所有应用列表，找到目标应用的包名：
-
-    ```bash
-    hdc shell bm dump -a
-    ```
-
-    该命令会列出设备上所有已安装应用的基本信息，包括应用名称和bundleName。例如查找demo应用：
+    执行以下命令，获取设备中已安装的应用列表。在输出结果中查找目标应用对应的bundleName，例如测试应用的bundleName为 `com.example.myapplication`。
 
     ```bash
     # 执行命令查看所有应用
     hdc shell bm dump -a
 
-    输出示例（部分）：
+    # 输出示例（部分）：
     # ...
-    # BundleName: com.example.myapplication
+    com.example.myapplication
     # ...
     ```
-
-    从输出中找到目标应用的bundleName，例如设置应用的bundleName为 `com.example.myapplication`。
 
 3. 获取应用的详细配置信息。
 
@@ -73,12 +65,10 @@
     hdc shell bm dump -n com.example.myapplication
     ```
 
-    该命令会输出应用的完整配置信息，包括abilities、skills、uris等配置。
-
-    在输出中查找 `skills` 部分，可以看到该应用支持的URL Scheme配置：
+    该命令会输出应用的完整配置信息，包括abilities、skills、uris等配置。通过查看输出中的`skills`部分，获取应用支持的URL Scheme配置。
 
     ```json5
-    # 输出示例（skills部分）：
+    // 输出示例（skills部分）：
     {
       "skills": [
         {
@@ -109,7 +99,7 @@
     }
     ```
 
-    从配置信息中可以提取出：
+    根据配置信息，提取的关键参数如下：
     - **scheme**: `demo`
     - **host**: `www.example.com`
     - **path**: `path1`
@@ -122,7 +112,7 @@
     scheme://host:port/path
     ```
 
-    以demo应用为例：
+    以测试应用为例：
     ```
     demo://www.example.com/path1
     ```
@@ -135,7 +125,7 @@
     | host | `www.example.com` |
     | port | 未指定（可选） |
     | path | `path1` |
-    | **拼接结果** | `demo://www.example.com/path1` |
+    | 拼接结果 | `demo://www.example.com/path1` |
 
 
     > **说明：**
@@ -147,30 +137,28 @@
 
 5. 调试验证
 
-    使用[openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起应用的基本步骤如下。
+    以下为通过[uiAbilityContext.openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起测试应用的完整示例。在实现时请注意：
 
-    以下为通过openLink接口拉起demo应用的完整示例。在实现时请注意：
+    - URL配置验证：在使用目标应用的URL之前，务必验证其正确性，避免因URL错误导致拉起失败。
+    - 应用安装检测：在拉起目标应用前，建议先检测应用是否已安装。
 
-    - **URL配置验证**：在使用目标应用的URL之前，务必验证其正确性，避免因URL错误导致拉起失败。
-    - **应用安装检测**：在拉起目标应用前，建议先检测应用是否已安装。
-
-    **Index.ets示例代码如下：**
     ```ts
+    // Index.ets示例代码如下：
+    import {common} from '@kit.AbilityKit'
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-    import { GlobalContext } from '../common/   GlobalContext';
 
     @Entry
     @Component
     struct Index {
       build() {
-        Button('start link', { type: ButtonType.Capsule, stateEffect: true })
+        Button('openLink', { type: ButtonType.Capsule, stateEffect: true })
           .width('87%')
           .height('5%')
           .margin({ bottom: '12vp' })
           .onClick(() => {
-            let context = GlobalContext.getContext();
-            let link: string = "demo://www.example.com/   path1";
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            let link: string = 'demo://www.example.com/path1';
 
             context.openLink(link, { appLinkingOnly: false })
               .then(() => {
@@ -188,5 +176,4 @@
 
 - [使用Deep Linking实现应用间跳转](deep-linking-startup.md)
 - [应用链接说明](app-uri-config.md)
-- [openLink接口文档](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)
 - [OpenLinkOptions接口文档](../reference/apis-ability-kit/js-apis-app-ability-openLinkOptions.md)
