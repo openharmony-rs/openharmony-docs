@@ -15,7 +15,7 @@
 
 **错误信息**
 
-Parameter error. causes: 1. Parameter verification failed.
+Parameter error. Possible causes: 1. Parameter verification failed.
 
 **错误描述**
 
