@@ -329,7 +329,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
     vpnConnection.destroy().then(() => {
       console.info("destroy success.");
     }).catch((error : BusinessError) => {
-      console.error("destroy fail" + JSON.stringify(error));
+      console.error(destroy fail. Code:${error.code}, message:${error.message});
     });
   }
   SetupVpn() {
