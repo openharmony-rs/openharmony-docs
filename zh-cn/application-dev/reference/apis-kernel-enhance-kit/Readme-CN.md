@@ -7,7 +7,7 @@
 <!--Adviser: @fang-jinxu-->
 
 - C API<!--kernel-c-->
-  - 模块<!--kernel-moudle-->
+  - 模块<!--kernel-module-->
     - [QoS](capi-qos.md)
   - 头文件<!--kernel-headerfile-->
     - [qos.h](capi-qos-h.md)
