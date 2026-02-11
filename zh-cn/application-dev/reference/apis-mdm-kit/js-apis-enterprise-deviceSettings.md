@@ -261,3 +261,130 @@ deviceSettings.setUnlockWallpaper(wantTemp, fd).then(() => {
   console.error(`Failed to set lock wallpaper. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+## deviceSettings.setValueForAccount<sup>24+</sup>
+
+setValueForAccount(admin: Want, item: SettingsItem, accountId: number, value: string): void
+
+设置指定用户的设备设置策略。该接口可以设置指定用户在设置应用中的某个参数，比如设置用户100的设备名称等。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| item   | [SettingsItem](#settingsitem24)                                                  | 是   | 设备设置策略类型。|
+| accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。                       |
+| value  | string                                                  | 是   | 策略类型值。<br/>当item为[SettingsItem.DEVICE_NAME](#settingsitem24)时，value为设备名称的字符串。 字符串长度范围：大于等于1，小于等于100。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { deviceSettings } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // 需根据实际情况进行替换
+  let accountId = 100;
+  let deviceName: string = "deviceName"
+  deviceSettings.setValueForAccount(wantTemp, deviceSettings.SettingsItem.DEVICE_NAME, accountId, deviceName);
+  console.info('Succeeded in setting device name.');
+} catch (err) {
+  console.error(`Failed to set device name. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## deviceSettings.getValueForAccount<sup>24+</sup>
+
+getValueForAccount(admin: Want, item: SettingsItem, accountId: number): string
+
+获取指定用户的设备设置策略。该接口可以获取指定用户在设置应用中的某个参数，比如获取用户100的设备名称等。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| item   | [SettingsItem](#settingsitem24)                         | 是   | 设备设置策略类型。|
+| accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。  |
+
+**返回值：**
+
+| 类型   | 说明                                                         |
+| ------ | ------------------------------------------------------------ |
+| string | 策略类型值。<br/>当item为[SettingsItem.DEVICE_NAME](#settingsitem24)时，返回设备名称。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { deviceSettings } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // 需根据实际情况进行替换
+  let accountId = 100;
+  let result: string = deviceSettings.getValueForAccount(wantTemp, deviceSettings.SettingsItem.DEVICE_NAME, accountId);
+  console.info(`Succeeded in getting device name, result : ${result}`);
+} catch (err) {
+  console.error(`Failed to get device name. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## SettingsItem<sup>24+</sup>
+ 	 
+设置的策略类型。
+ 	 
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+
+| 名称 | 值   | 说明           |
+| ---- | ---- | -------------- |
+| DEVICE_NAME   | 0    | 设备名称。 |

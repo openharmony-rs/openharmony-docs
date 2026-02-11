@@ -8607,8 +8607,8 @@ setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
 2.应用资源目录及其子目录（应用资源目录通过Ability Kit中的[Context.resourceDir](../apis-ability-kit/js-apis-inner-application-context.md#context)获取），例如：
 
-* /data/storage/el1/bundle/entry/resource/resfile
-* /data/storage/el1/bundle/entry/resource/resfile/example
+* /data/storage/el1/bundle/entry/resources/resfile
+* /data/storage/el1/bundle/entry/resources/resfile/example
 
 3.从API version 21开始，还包括了应用缓存目录及其子目录（应用缓存目录通过Ability Kit中的[Context.cacheDir](../apis-ability-kit/js-apis-inner-application-context.md#context)获取），例如：
 
@@ -11001,7 +11001,7 @@ setUserAgentMetadata(userAgent: string, metaData: UserAgentMetadata): void
 >
 > 如果根据覆盖后的User-Agent未找到UserAgentMetadata，且覆盖后的User-Agent包含系统默认的User-Agent，则将使用系统默认值。
 >
-> 如果 UserAgentMetadata 为空，但覆盖后的 User-Agent 不包含系统默认用户代理，则只会生成低级用户代理客户端提示。
+> 如果根据覆盖后的User-Agent未找到UserAgentMetadata，但覆盖后的 User-Agent 不包含系统默认用户代理，则只会生成低级用户代理客户端提示。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -11065,9 +11065,9 @@ setUrlTrustList(urlTrustList: string, allowOpaqueOrigin: boolean, supportWildcar
 | 字段   | 参数类型 | 必填 | 参数描述                  |
 | -------- | -------- | ---- | ------------------------- |
 | scheme | string | 否 | 可选参数，不设置即不匹配该项，支持协议：http、https。 |
-| host | string | 是 | 必选参数。<br/>当supportWildcard为false时，精准匹配，即url的host字段和规则字段完全一致才会放行，可允许同一host多条规则同时生效。<br/>当supportWildcard为true时，允许使用通配符\*进行任意字符串匹配，匹配规则如下：<br/>1. host以“.”进行分段。<br/>2. 一个通配符\*只能匹配一个段。例如`www.*.com`只能匹配`www.example.com`，不能匹配`www.example1.example2.com`。<br/>3. 可以使用多个通配符匹配多个段。例如`www.*.*`，可以匹配`www.example.com`，不能匹配`www.example1.example2.com`。<br/>4. 通配符只能单独使用，不支持连续多个\*或者与其他的字符串一起使用，例如`**.example.com`，或者`*ww.example.com`是不支持的。 |
+| host | string | 是 | 必选参数。<br/>当supportWildcard为false时，精准匹配，即url的host字段和规则字段完全一致才会放行，可允许同一host多条规则同时生效。<br/>当supportWildcard为true时，允许使用通配符\*进行任意字符串匹配，匹配规则如下：<br/>1. host以“.”进行分段。<br/>2. 一个通配符\*只能匹配一个段。例如`www.*.com`只能匹配`www.example.com`，不能匹配`www.example1.example2.com`。<br/>3. 可以使用多个通配符匹配多个段。例如`www.*.*`，可以匹配`www.example.com`，不能匹配`www.example1.example2.com`。<br/>4. 通配符只能单独使用，不支持连续多个\*或者与其他的字符串一起使用，例如`**.example.com`，或者`*ww.example.com`是不支持的。<br/>5. 通配符不能用在IP地址的匹配上。例如`127.0.0.*`无法匹配`127.0.0.1`。<br/>6. 如果是非ASCII的host（例如中文域名等），需要提前进行IDN转换。 |
 | port | number | 否 | 可选字段，不设置即不匹配该项。 |
-| path | string | 否 | 可选字段，不设置即不匹配该项。<br/>当supportWildcard为false时，匹配方式为前缀匹配，以`pathA/pathB/pathC`为例：`pathA/pathB/pathC`三级目录下全部允许访问，其中pathC必须是完整的目录名或者文件名，不允许部分匹配。<br/>当supportWildcard为true时，允许使用通配符\*进行任意字符串匹配，匹配规则如下：<br/>1. path以“/”进行分段。<br/>2. 如果通配符\*不是最后一段，那只能匹配一个段。例如`pathA/*/pathD`，只能匹配`pathA/pathB/pathD`，不能匹配`pathA/pathB/pathC/pathD`。<br/>3. 如果通配符\*是最后一段，则可以匹配后续的多个段。例如`pathA/*`，可以匹配`pathA/pathB`，也可以匹配`pathA/pathB/pathC`；也可以匹配文件类例如`pathA/xxx.txt`。<br/>4. 通配符只能单独使用，不支持多个\*或者与其他的字符串一起使用，例如`**/pathA/pathB`，或者`path*/pathB/pathC`是不支持的。 |
+| path | string | 否 | 可选字段，不设置即不匹配该项。<br/>当supportWildcard为false时，匹配方式为前缀匹配，以`pathA/pathB/pathC`为例：`pathA/pathB/pathC`三级目录下全部允许访问，其中pathC必须是完整的目录名或者文件名，不支持部分匹配。<br/>当supportWildcard为true时，允许使用通配符\*进行任意字符串匹配，匹配规则如下：<br/>1. path以“/”进行分段。<br/>2. 如果通配符\*不是最后一段，那只能匹配一个段。例如`pathA/*/pathD`，只能匹配`pathA/pathB/pathD`，不能匹配`pathA/pathB/pathC/pathD`。<br/>3. 如果通配符\*是最后一段，则可以匹配后续的多个段。例如`pathA/*`，可以匹配`pathA/pathB`，也可以匹配`pathA/pathB/pathC`；也可以匹配文件类例如`pathA/xxx.txt`。<br/>4. 通配符只能单独使用，不支持多个\*或者与其他的字符串一起使用，例如`**/pathA/pathB`，或者`path*/pathB/pathC`是不支持的。<br/>5. 规则中url部分需要做url encoded转换。 |
 
 **错误码：**
 

@@ -2018,7 +2018,7 @@ systemPasteboard.getData().then((pasteData: pasteboard.PasteData) => {
 
 hasRemoteData(): boolean
 
-Checks whether the pasteboard data is on a remote device. It takes a long time to transfer data across devices. Therefore, if the pasteboard data is on a remote device, you are advised not to perform either of the following operations in the UI thread:<br>1. Check whether the pasteboard data contains custom data types.<br>2. Read the pasteboard data.
+Checks whether the pasteboard data is on a remote device. It takes a long time to transfer data across devices. Therefore, if the pasteboard data is on a remote device, you are advised not to check whether the pasteboard data contains custom data types or read the pasteboard data.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
@@ -2028,7 +2028,7 @@ Checks whether the pasteboard data is on a remote device. It takes a long time t
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Returns a check result indicating whether the pasteboard data is on a remote device. The value **true** indicates that the pasteboard data is on a remote device, and **false** indicates the opposite. The default value can be **true** or **false**.|
+| boolean | Returns the check result. The value **true** indicates that the pasteboard data is on a remote device, and **false** indicates the opposite. Default value: **false**.|
 
 **Example**
 

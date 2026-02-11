@@ -78,8 +78,9 @@ class MyButtonModifier implements GestureModifier {
         new TapGestureHandler({
           count: 2,
           fingers: 1,
+          // 从API version 23开始，新增distanceThreshold属性
           distanceThreshold: 100
-        })//从API version 23开始，新增distanceThreshold属性。
+        })
           .tag("aaa")
           .onAction((event: GestureEvent) => {
             console.info('Gesture Info is', JSON.stringify(event));

@@ -46,8 +46,6 @@
     - Buffer模式下，开发者通过OH_VideoEncoder_PushInputBuffer接口输入数据；Surface模式下，开发者应在编码器就绪前调用OH_VideoEncoder_GetSurface接口，获取OHNativeWindow用于传递视频数据。
     - Buffer模式下，开发者通过OH_AVBuffer中的attr传入结束flag，编码器读取到尾帧后，停止编码；Surface模式下，需要调用OH_VideoEncoder_NotifyEndOfStream接口通知编码器输入流结束。
 
-4. Surface模式的数据流转性能优于Buffer模式。
-
 两种模式的开发步骤详细说明请参考：[Surface模式](#surface模式)和[Buffer模式](#buffer模式)。
 
 ## 状态机调用关系
@@ -237,7 +235,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     ```c++
     // 通过MIME TYPE创建编码器，只能创建系统推荐的特定编解码器。
-    // 只能创建硬件编码器。
+    // 系统优先创建硬件编码器实例，若硬件编码不支持或硬件编码器实例已占满，则创建软件编码器实例。
     OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
     ```
 
