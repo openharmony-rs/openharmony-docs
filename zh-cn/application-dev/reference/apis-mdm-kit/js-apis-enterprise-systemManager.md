@@ -928,7 +928,7 @@ try {
 
 addKeyEventPolicies(admin: Want, keyPolicies: Array&lt;KeyEventPolicy&gt;): void
 
-添加按键事件处理策略。系统触发按键事件时，若匹配下发的按键事件策略，将通过[EnterpriseAdminExtensionAbility.onKeyEvent](./js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)回调通知MDM应用，并携带匹配策略的按键事件信息。 
+添加按键事件处理策略。系统触发按键事件时，若匹配下发的按键事件策略，将通过[EnterpriseAdminExtensionAbility.onKeyEvent](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)回调通知MDM应用，并携带匹配策略的按键事件信息。 
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -943,7 +943,7 @@ addKeyEventPolicies(admin: Want, keyPolicies: Array&lt;KeyEventPolicy&gt;): void
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| keyPolicies     | Array&lt;[KeyEventPolicy](#keyeventpolicy23)&gt; | 是   | 按键策略。支持物理按键（电源键、音量加、音量减），导航键（回退、主页、最近打开）。物理键支持任意组合为组合键，导航键不支持组合。组合键事件响应详见[按键事件回调](./js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)接口。 |
+| keyPolicies     | Array&lt;[KeyEventPolicy](#keyeventpolicy23)&gt; | 是   | 按键策略。支持物理按键（电源键、音量加、音量减），导航键（回退、主页、最近打开）。物理键支持任意组合为组合键，导航键不支持组合。组合键事件响应详见[按键事件回调](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)接口。 |
 
 **错误码**：
 
@@ -1388,7 +1388,7 @@ try {
 
 ## KeyCode<sup>23+</sup>
 
-按键编码。[添加按键事件策略](#systemmanageraddkeyeventpolicies23)、[删除按键事件策略](#systemmanagerremovekeyeventpolicies23)、[获取按键事件策略](#systemmanagergetkeyeventpolicies23)和[按键事件回调](./js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)接口通过按键编码映射到设备对应实际按键。
+按键编码。[添加按键事件策略](#systemmanageraddkeyeventpolicies23)、[删除按键事件策略](#systemmanagerremovekeyeventpolicies23)、[获取按键事件策略](#systemmanagergetkeyeventpolicies23)和[按键事件回调](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)接口通过按键编码映射到设备对应实际按键。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1414,11 +1414,11 @@ try {
 | 名称               | 值  | 说明    |
 | -----------------  | ---- | ----- |
 | INTERCEPTION     | 0 |  拦截消息。设置后仅会拦截当前按键事件，系统不会再处理该事件，按键回调接口也不会响应按键事件。例如：下发电源键拦截策略后，按电源键无任何响应，无法关机，无法锁屏，仅影响开机状态下电源键事件，关机时可通过电源键正常开机。 |
-| CUSTOM        | 1 | 拦截并转发消息。 设置后会拦截当前按键事件，系统不会再处理该事件，同时通过[EnterpriseAdminExtensionAbility.onKeyEvent](./js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)回调接口将发生的按键事件通知给MDM应用，通知MDM应用处理该事件的过程不会阻塞系统后续的其他事件处理。|
+| CUSTOM        | 1 | 拦截并转发消息。 设置后会拦截当前按键事件，系统不会再处理该事件，同时通过[EnterpriseAdminExtensionAbility.onKeyEvent](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)回调接口将发生的按键事件通知给MDM应用，通知MDM应用处理该事件的过程不会阻塞系统后续的其他事件处理。|
 
 ## KeyEvent<sup>23+</sup>
 
-按键事件。[EnterpriseAdminExtensionAbility.onKeyEvent](./js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)按键事件回调触发时，传递当前按键事件信息。
+按键事件。[EnterpriseAdminExtensionAbility.onKeyEvent](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)按键事件回调触发时，传递当前按键事件信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
