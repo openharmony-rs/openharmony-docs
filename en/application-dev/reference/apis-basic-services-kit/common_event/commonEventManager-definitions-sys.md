@@ -55,7 +55,7 @@ When a new application starts to be installed by a specified user on the device,
 
 ### COMMON_EVENT_BUNDLE_RESOURCES_CHANGED<sup>15+</sup>
 
-Indicates the common event of updating bundle management resource data.
+Indicates that the bundle management resource data has updated.
 
 This common event is sent when the bundle management resource data is updated in scenarios such as language or theme switching.
 
@@ -287,7 +287,7 @@ After a user is locked, the common event service is triggered to publish this ev
 
 ## Core File Kit
 
-This document lists the common system events provided by the file management subsystem to applications. Applications can use [APIs](../js-apis-commonEventManager.md) to subscribe to common system events.
+This topic lists the common system events provided by the file management subsystem to applications. Applications can use [APIs](../js-apis-commonEventManager.md) to subscribe to common system events.
 
 
 ### COMMON_EVENT_VOLUME_REMOVED
