@@ -24,7 +24,7 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称 |  值|  说明 |
 | ----- |  ---- |  ---- |
@@ -48,7 +48,7 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称 |  值|  说明 |
 | ----- |  ---- |  ---- |
@@ -71,12 +71,12 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
-| 名称     | 类型   | 必填 | 说明 |
-| ---------- | ------ | ---- | ---- |
-| state | [SyncState](#syncstate12) | 是   | 枚举值，端云同步状态。|
-| error | [ErrorType](#errortype12) | 是   | 枚举值，同步失败错误类型。|
+| 名称     | 类型   | 只读 | 可选 | 说明 |
+| ---------- | ------ | ---- | ---- | ---- |
+| state | [SyncState](#syncstate12) | 否   | 否   | 枚举值，端云同步状态。|
+| error | [ErrorType](#errortype12) | 否   | 否   | 枚举值，同步失败错误类型。|
 
 ## State<sup>11+</sup>
 
@@ -86,7 +86,7 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称 |  值|  说明 |
 | ----- |  ---- |  ---- |
@@ -105,15 +105,15 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
-| 名称     | 类型   | 必填 | 说明 |
-| ---------- | ------ | ---- | ---- |
-| state | [State](#state11) | 是   | 枚举值，云文件下载状态。|
-| processed | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 已下载数据大小，取值范围[0，9223372036854775807]（单位：Byte）。|
-| size | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 当前云文件大小，取值范围[0，9223372036854775807]（单位：Byte）。|
-| uri | string | 是   | 当前云文件URI。|
-| error | [DownloadErrorType](#downloaderrortype11) | 是   | 下载的错误类型。|
+| 名称     | 类型   | 只读 | 可选 | 说明 |
+| ---------- | ------ | ---- | ---- | ---- |
+| state | [State](#state11) | 否   | 否   | 枚举值，云文件下载状态。|
+| processed | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 已下载数据大小，取值范围[0，9223372036854775807]（单位：Byte）。|
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 当前云文件大小，取值范围[0，9223372036854775807]（单位：Byte）。|
+| uri | string | 否   | 否   | 当前云文件URI。|
+| error | [DownloadErrorType](#downloaderrortype11) | 否   | 否   | 下载的错误类型。|
 
 ## FileSync<sup>12+</sup>
 
@@ -123,7 +123,7 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 ### constructor<sup>12+</sup>
 
@@ -135,7 +135,7 @@ constructor()
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -159,7 +159,7 @@ on(event: 'progress', callback: Callback\<SyncProgress>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onProgress](./js-apis-file-cloudsync.md#onprogress20)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[onProgress](./js-apis-file-cloudsync.md#onprogress23)。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -192,7 +192,7 @@ on(event: 'progress', callback: Callback\<SyncProgress>): void
   fileSync.on('progress', callback);
   ```
 
-### onProgress<sup>20+</sup>
+### onProgress<sup>23+</sup>
 
 onProgress(callback: Callback\<SyncProgress>): void
 
@@ -204,7 +204,7 @@ onProgress(callback: Callback\<SyncProgress>): void
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -240,7 +240,7 @@ off(event: 'progress', callback?: Callback\<SyncProgress>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offProgress](./js-apis-file-cloudsync.md#offprogress20)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[offProgress](./js-apis-file-cloudsync.md#offprogress23)。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -276,7 +276,7 @@ off(event: 'progress', callback?: Callback\<SyncProgress>): void
   fileSync.off('progress', callback);
   ```
 
-### offProgress<sup>20+</sup>
+### offProgress<sup>23+</sup>
 
 offProgress(callback?: Callback\<SyncProgress>): void
 
@@ -288,7 +288,7 @@ offProgress(callback?: Callback\<SyncProgress>): void
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -329,7 +329,7 @@ start(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -399,7 +399,7 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -463,7 +463,7 @@ stop(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -520,7 +520,7 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -581,7 +581,7 @@ ArkTS-Sta: getLastSyncTime(): Promise&lt;long&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -642,7 +642,7 @@ ArkTS-Sta: getLastSyncTime(callback: AsyncCallback&lt;long&gt;): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -705,7 +705,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 ### construct<sup>11+</sup>
 
@@ -717,7 +717,7 @@ constructor()
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -739,7 +739,7 @@ on(event: 'progress', callback: Callback\<DownloadProgress>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onProgress](./js-apis-file-cloudsync.md#onprogress20-1)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[onProgress](./js-apis-file-cloudsync.md#onprogress23-1)。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -778,7 +778,7 @@ on(event: 'progress', callback: Callback\<DownloadProgress>): void
   }
   ```
 
-### onProgress<sup>20+</sup>
+### onProgress<sup>23+</sup>
 
 onProgress(callback: Callback\<DownloadProgress>): void
 
@@ -790,7 +790,7 @@ onProgress(callback: Callback\<DownloadProgress>): void
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -831,7 +831,7 @@ off(event: 'progress', callback?: Callback\<DownloadProgress>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offProgress](./js-apis-file-cloudsync.md#offprogress20-1)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[offProgress](./js-apis-file-cloudsync.md#offprogress23-1)。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -872,7 +872,7 @@ off(event: 'progress', callback?: Callback\<DownloadProgress>): void
   }
   ```
 
-### offProgress<sup>20+</sup>
+### offProgress<sup>23+</sup>
 
 offProgress(callback?: Callback\<DownloadProgress>): void
 
@@ -884,7 +884,7 @@ offProgress(callback?: Callback\<DownloadProgress>): void
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -929,7 +929,7 @@ start(uri: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1016,7 +1016,7 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1087,7 +1087,7 @@ stop(uri: string, needClean?: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1159,7 +1159,7 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1225,7 +1225,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称 |  值|  说明 |
 | ----- |  ---- |  ---- |
@@ -1246,7 +1246,7 @@ registerChange(uri: string, recursion: boolean, callback: Callback&lt;ChangeData
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1316,7 +1316,7 @@ unregisterChange(uri: string): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1382,7 +1382,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称 |  值|  说明 |
 | ----- |  ---- |  ---- |
@@ -1399,10 +1399,10 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
-| 名称     | 类型   | 必填 | 说明 |
-| ---------- | ------ | ---- | ---- |
-| type | [NotifyType](#notifytype12) | 是   | 更改的通知类型。|
-| isDirectory | Array&lt;boolean&gt; | 是   | 指示更改的URI是否为目录。true：是目录。false：非目录。|
-| uris | Array&lt;string&gt; | 是   | 需要更改的URI列表。|
+| 名称     | 类型   | 只读 | 可选 | 说明 |
+| ---------- | ------ | ---- | ---- | ---- |
+| type | [NotifyType](#notifytype12) | 否   | 否   | 更改的通知类型。|
+| isDirectory | Array&lt;boolean&gt; | 否   | 否   | 指示更改的URI是否为目录。true：是目录。false：非目录。|
+| uris | Array&lt;string&gt; | 否   | 否   | 需要更改的URI列表。|
