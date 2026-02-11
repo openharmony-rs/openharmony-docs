@@ -111,7 +111,7 @@ In component reuse V1, components in the reuse pool are frozen only when the **f
 
 **Migration Rules**
 
-In component reuse V1, LazyForEach is often used with component reuse to implement high-performance lazy loading. In component reuse V2, you are advised to use [Repeat](../rendering-control/arkts-new-rendering-control-repeat.md) instead of [LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md). Repeat can reuse components. Compared with LazyForEach, Repeat has a simpler API and better performance. For details about how to migrate **LazyForEach** to **Repeat**, see [Migrating from LazyForEach to Repeat](./arkts-v1-v2-migration-rendering-control-repeat.md#migrating-from-lazyforeach-to-repeat).
+In component reuse V1, LazyForEach is often used with component reuse to implement high-performance lazy loading. In component reuse V2, you are advised to use [Repeat](../rendering-control/arkts-new-rendering-control-repeat.md) instead of [LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md). Repeat can reuse components. Compared with LazyForEach, Repeat has a simpler API and better performance. For details about how to migrate **LazyForEach** to **Repeat**, see Migrating from LazyForEach to Repeat.
 
 
 ## @Reusable -> @ReusableV2 Migration Example
@@ -750,9 +750,9 @@ class DataSrc {
 ```
 
 
-### Scenarios Involving Multiple Item Types
+### Multiple Item Types
 
-For details about the \@Reusable usage example, see [Multiple Item Types](arkts-reusable.md#multiple-item-types).
+For details about the \@Reusable usage example, see [Multiple Item Types](./arkts-reusable.md#multiple-item-types).
 
 The sample code for using multiple item types of \@ReusableV2 is as follows:
 
