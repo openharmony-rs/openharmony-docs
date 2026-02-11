@@ -136,7 +136,7 @@ For details about the error codes, see [backgroundProcessManager Error Codes](er
 | 201      | Permission denied. |
 | 801      | Capability not supported. |
 | 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. PowerSaveMode status is out of range. |
-| 31800003      | Setup error, This setting is overridden by setting in Task Manager. |
+| 31800003      | Setup erro, This setting is overridden by settings in Task Manager. |
 | 31800004      | The setting failed due to system scheduling reasons. |
 
 **Example**
@@ -224,4 +224,3 @@ Specifies the power saving mode.
 |-----|----|-------|
 | EFFICIENCY_MODE | 1 | Efficiency mode. Applications set to this mode will not enter the power saving mode, where fewer CPU resources are available.|
 | DEFAULT_MODE | 2 | Default mode. Applications set to this mode may follow the system to enter the power saving mode.|
-
