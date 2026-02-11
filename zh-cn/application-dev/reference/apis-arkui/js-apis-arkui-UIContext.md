@@ -8280,6 +8280,13 @@ pushNamedRoute(options: router.NamedRouterOptions): Promise&lt;void&gt;
 
 跳转到指定的命名路由页面，通过Promise获取跳转异常的返回结果。
 
+
+> **说明：**
+>
+> - 以下规则适用于下列所有命名路由类接口：[pushNamedRoute](js-apis-arkui-UIContext.md#pushnamedroute)、[pushNamedRoute](js-apis-arkui-UIContext.md#pushnamedroute-1)、[pushNamedRoute](js-apis-arkui-UIContext.md#pushnamedroute-2)、[pushNamedRoute](js-apis-arkui-UIContext.md#pushnamedroute-3)、[replaceNamedRoute](js-apis-arkui-UIContext.md#replacenamedroute)、[replaceNamedRoute](js-apis-arkui-UIContext.md#replacenamedroute-1)、[replaceNamedRoute](js-apis-arkui-UIContext.md#replacenamedroute-2)和[replaceNamedRoute](js-apis-arkui-UIContext.md#replacenamedroute-3)。
+>   - 在ArkTS-Dyn中，通过import导入依赖的页面文件，实现命名路由的注册。
+>   - 在ArkTS-Sta中，通过initModule导入依赖的页面文件，且开发者需要在TopLevel上调用，确保收集依赖（收集需要跳转的页面的相关信息），并在路由跳转时再调用一次initModule方法实现命名路由的注册。命名路由跳转成功，依赖于initModule初始化路由相关环境。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -8309,47 +8316,290 @@ pushNamedRoute(options: router.NamedRouterOptions): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
+// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
+import { router } from '@kit.ArkUI';
+import('library/src/main/ets/pages/Index'); // 引入共享包中的命名路由页面
+
+class RouterTmp{
+  Standard:router.RouterMode = router.RouterMode.Standard;
+}
+let rtm:RouterTmp = new RouterTmp();
 
 @Entry
 @Component
 struct Index {
-  async routePage() {
-    this.getUIContext().getRouter().pushNamedRoute({
-        name: 'myPage',
-        params: {
-          data1: 'message',
-          data2: {
-            data3: [123, 456, 789]
-          }
-        }
-      })
-      .then(() => {
-        console.info('succeeded');
-      })
-      .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
-      })
-  }
-
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Button() {
-        Text('next page')
-          .fontSize(25)
-          .fontWeight(FontWeight.Bold)
-      }.type(ButtonType.Capsule)
+      Button('push NamedRoute with promise').type(ButtonType.Capsule)
       .margin({ top: 20 })
-      .backgroundColor('#ccc')
       .onClick(() => {
-        this.routePage();
+        this.getUIContext().getRouter().pushNamedRoute({
+          name: 'myPage',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
+            }
+          }
+        })
+        .then(() => {
+          console.info('succeeded');
+        })
+        .catch((error: BusinessError) => {
+          console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        })
+      })
+
+      Button('push NamedRoute with asyncCallback').type(ButtonType.Capsule)
+      .margin({ top: 20 })
+      .onClick(() => {
+        this.getUIContext().getRouter().pushNamedRoute({
+          name: 'myPage',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
+            }
+          }
+        }, (err: Error) => {
+          if (err) {
+            let message = (err as BusinessError).message;
+            let code = (err as BusinessError).code;
+            console.error(`pushNamedRoute failed, code is ${code}, message is ${message}`);
+            return;
+          }
+          console.info('pushNamedRoute success');
+        })
+      })
+
+      Button('push NamedRoute with promise and standard mode').type(ButtonType.Capsule)
+      .margin({ top: 20 })
+      .onClick(() => {
+        this.getUIContext().getRouter().pushNamedRoute({
+          name: 'myPage',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
+            }
+          }
+        }, rtm.Standard)
+        .then(() => {
+          console.info('succeeded');
+        })
+        .catch((error: BusinessError) => {
+          console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        })
+      })
+
+      Button('push NamedRoute with asyncCallback and standard mode').type(ButtonType.Capsule)
+      .margin({ top: 20 })
+      .onClick(() => {
+        this.getUIContext().getRouter().pushNamedRoute({
+          name: 'myPage',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
+            }
+          }
+        }, rtm.Standard, (err: Error) => {
+          if (err) {
+            let message = (err as BusinessError).message;
+            let code = (err as BusinessError).code;
+            console.error(`pushNamedRoute failed, code is ${code}, message is ${message}`);
+            return;
+          }
+          console.info('pushNamedRoute success');
+        })
       })
     }
     .width('100%')
     .height('100%')
   }
 }
+```
+
+```ts
+// library/src/main/ets/pages/Index.ets
+// library为新建共享包自定义的名字
+@Entry({ routeName: 'myPage' })
+@Component
+export struct MyComponent {
+  build() {
+    Row() {
+      Column() {
+        Text('Library Page')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+使用命名路由方式跳转时，需要在当前应用包的oh-package.json5文件中配置依赖。
+```json
+  ...
+"dependencies": {
+  "library": "file:../library",
+}
+  ...
+```
+
+ArkTS-Sta示例：
+```ts
+// Index.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+import router from '@ohos.router';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { Flex, Button, Text, FlexDirection, ItemAlign, FlexAlign, FontWeight, ButtonType, Entry, Component, ClickEvent } from '@ohos.arkui.component';
+import type { AsyncCallback } from '@ohos.base';
+initModule('library/Index'); // 收集依赖
+
+class RouterTmp {
+  Standard: router.RouterMode = router.RouterMode.Standard;
+}
+
+let rtm: RouterTmp = new RouterTmp();
+
+interface Data2 {
+  data3: int[]
+}
+
+interface Param {
+  data1: string,
+  data2: Data2
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Button('push NamedRoute with promise').type(ButtonType.Capsule)
+      .onClick((e?: ClickEvent) => {
+        initModule('library/Index'); // 命名路由注册
+        this.getUIContext().getRouter().pushNamedRoute({
+          name: 'myPage',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
+            }
+          } as Param
+        } as router.NamedRouterOptions)
+        .then(() => {
+          console.info('succeeded');
+        })
+        .catch((error: Error) => {
+          console.error(`pushNamedRoute failed, code is ${error.code}, message is ${error.message}`);
+        })
+      })
+
+      Button('push NamedRoute with asyncCallback').type(ButtonType.Capsule)
+      .onClick((e?: ClickEvent) => {
+        initModule('library/Index'); // 命名路由注册
+        this.getUIContext().getRouter().pushNamedRoute({
+          name: 'myPage',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
+            }
+          } as Param
+        } as router.NamedRouterOptions, (err: BusinessError | null) => {
+          if (err) {
+            let message = (err as BusinessError).message;
+            let code = (err as BusinessError).code;
+            console.error(`pushNamedRoute failed, code is ${code}, message is ${message}`);
+            return;
+          }
+          console.info('pushNamedRoute success');
+        })
+      })
+
+      Button('push NamedRoute with promise and standard mode').type(ButtonType.Capsule)
+      .onClick((e?: ClickEvent) => {
+        initModule('library/Index'); // 命名路由注册
+        this.getUIContext().getRouter().pushNamedRoute({
+          name: 'myPage',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
+            }
+          } as Param
+        } as router.NamedRouterOptions, rtm.Standard)
+        .then(() => {
+          console.info('succeeded');
+        })
+        .catch((error: Error) => {
+          console.error(`pushNamedRoute failed, code is ${error.code}, message is ${error.message}`);
+        })
+      })
+
+      Button('push NamedRoute with asyncCallback and standard mode').type(ButtonType.Capsule)
+      .onClick((e?: ClickEvent) => {
+        initModule('library/Index'); // 命名路由注册
+        this.getUIContext().getRouter().pushNamedRoute({
+          name: 'myPage',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
+            }
+          } as Param
+        } as router.NamedRouterOptions, rtm.Standard, (err: BusinessError | null) => {
+          if (err) {
+            let message = (err as BusinessError).message;
+            let code = (err as BusinessError).code;
+            console.error(`pushNamedRoute failed, code is ${code}, message is ${message}`);
+            return;
+          }
+          console.info('pushNamedRoute success');
+        })
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+```ts
+import { Row, Button, Column, FontWeight, Entry, Component, Text } from '@ohos.arkui.component';
+// library/src/main/ets/components/MainPage.ets
+// library为新建共享包自定义的名字
+@Entry({ routeName: 'myPage' })
+@Component
+export struct MainPage {
+  build() {
+    Row() {
+      Column() {
+        Text('Library Page')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+使用命名路由方式跳转时，需要在当前应用包的oh-package.json5文件中配置依赖。
+```json
+  ...
+"dependencies": {
+  "library": "file:../library",
+}
+  ...
 ```
 
 ### pushNamedRoute
@@ -8382,50 +8632,8 @@ pushNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt;vo
 
 **示例：**
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+参考[pushNamedRoute](js-apis-arkui-UIContext.md#pushnamedroute)中的示例代码。
 
-@Entry
-@Component
-struct Index {
-  async routePage() {
-    this.getUIContext().getRouter().pushNamedRoute({
-      name: 'myPage',
-      params: {
-        data1: 'message',
-        data2: {
-          data3: [123, 456, 789]
-        }
-      }
-    }, (err: Error) => {
-      if (err) {
-        let message = (err as BusinessError).message;
-        let code = (err as BusinessError).code;
-        console.error(`pushNamedRoute failed, code is ${code}, message is ${message}`);
-        return;
-      }
-      console.info('pushNamedRoute success');
-    })
-  }
-
-  build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Button() {
-        Text('next page')
-          .fontSize(25)
-          .fontWeight(FontWeight.Bold)
-      }.type(ButtonType.Capsule)
-      .margin({ top: 20 })
-      .backgroundColor('#ccc')
-      .onClick(() => {
-        this.routePage();
-      })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
 ### pushNamedRoute
 
 pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise&lt;void&gt;
@@ -8462,54 +8670,7 @@ pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Pro
 
 **示例：**
 
-```ts
-import { router } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class RouterTmp{
-  Standard:router.RouterMode = router.RouterMode.Standard;
-}
-let rtm:RouterTmp = new RouterTmp();
-
-@Entry
-@Component
-struct Index {
-  async routePage() {
-    this.getUIContext().getRouter().pushNamedRoute({
-        name: 'myPage',
-        params: {
-          data1: 'message',
-          data2: {
-            data3: [123, 456, 789]
-          }
-        }
-      }, rtm.Standard)
-      .then(() => {
-        console.info('succeeded');
-      })
-      .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
-      })
-  }
-
-  build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Button() {
-        Text('next page')
-          .fontSize(25)
-          .fontWeight(FontWeight.Bold)
-      }.type(ButtonType.Capsule)
-      .margin({ top: 20 })
-      .backgroundColor('#ccc')
-      .onClick(() => {
-        this.routePage();
-      })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+参考[pushNamedRoute](js-apis-arkui-UIContext.md#pushnamedroute)中的示例代码。
 
 ### pushNamedRoute
 
@@ -8542,57 +8703,7 @@ pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, call
 
 **示例：**
 
-```ts
-import { router } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class RouterTmp {
-  Standard: router.RouterMode = router.RouterMode.Standard;
-}
-
-let rtm: RouterTmp = new RouterTmp();
-
-@Entry
-@Component
-struct Index {
-  async routePage() {
-    this.getUIContext().getRouter().pushNamedRoute({
-      name: 'myPage',
-      params: {
-        data1: 'message',
-        data2: {
-          data3: [123, 456, 789]
-        }
-      }
-    }, rtm.Standard, (err: Error) => {
-      if (err) {
-        let message = (err as BusinessError).message;
-        let code = (err as BusinessError).code;
-        console.error(`pushNamedRoute failed, code is ${code}, message is ${message}`);
-        return;
-      }
-      console.info('pushNamedRoute success');
-    })
-  }
-
-  build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Button() {
-        Text('next page')
-          .fontSize(25)
-          .fontWeight(FontWeight.Bold)
-      }.type(ButtonType.Capsule)
-      .margin({ top: 20 })
-      .backgroundColor('#ccc')
-      .onClick(() => {
-        this.routePage();
-      })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+参考[pushNamedRoute](js-apis-arkui-UIContext.md#pushnamedroute)中的示例代码。
 
 ### replaceNamedRoute
 
@@ -8628,44 +8739,291 @@ replaceNamedRoute(options: router.NamedRouterOptions): Promise&lt;void&gt;
 
 **示例：**
 
+
+ArkTS-Dyn示例：
 ```ts
+// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
+import { router } from '@kit.ArkUI';
+import('library/src/main/ets/pages/Index'); // 引入共享包中的命名路由页面
+
+class RouterTmp{
+  Standard:router.RouterMode = router.RouterMode.Standard;
+}
+let rtm:RouterTmp = new RouterTmp();
 
 @Entry
 @Component
 struct Index {
-  async routePage() {
-    this.getUIContext().getRouter().replaceNamedRoute({
-        name: 'myPage',
-        params: {
-          data1: 'message'
-        }
-      })
-      .then(() => {
-        console.info('succeeded');
-      })
-      .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
-      })
-  }
-
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Button() {
-        Text('next page')
-          .fontSize(25)
-          .fontWeight(FontWeight.Bold)
-      }.type(ButtonType.Capsule)
+      Button('replace NamedRoute with promise').type(ButtonType.Capsule)
       .margin({ top: 20 })
-      .backgroundColor('#ccc')
       .onClick(() => {
-        this.routePage();
+        this.getUIContext().getRouter().replaceNamedRoute({
+          name: 'myPage',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
+            }
+          }
+        })
+        .then(() => {
+          console.info('succeeded');
+        })
+        .catch((error: BusinessError) => {
+          console.error(`replaceNamedRoute failed, code is ${error.code}, message is ${error.message}`);
+        })
+      })
+
+      Button('replace NamedRoute with asyncCallback').type(ButtonType.Capsule)
+      .margin({ top: 20 })
+      .onClick(() => {
+        this.getUIContext().getRouter().replaceNamedRoute({
+          name: 'myPage',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
+            }
+          }
+        }, (err: Error) => {
+          if (err) {
+            let message = (err as BusinessError).message;
+            let code = (err as BusinessError).code;
+            console.error(`replaceNamedRoute failed, code is ${code}, message is ${message}`);
+            return;
+          }
+          console.info('replaceNamedRoute success');
+        })
+      })
+
+      Button('replace NamedRoute with promise and standard mode').type(ButtonType.Capsule)
+      .margin({ top: 20 })
+      .onClick(() => {
+        this.getUIContext().getRouter().replaceNamedRoute({
+          name: 'myPage',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
+            }
+          }
+        }, rtm.Standard)
+        .then(() => {
+          console.info('succeeded');
+        })
+        .catch((error: BusinessError) => {
+          console.error(`replaceNamedRoute failed, code is ${error.code}, message is ${error.message}`);
+        })
+      })
+
+      Button('replace NamedRoute with asyncCallback and standard mode').type(ButtonType.Capsule)
+      .margin({ top: 20 })
+      .onClick(() => {
+        this.getUIContext().getRouter().replaceNamedRoute({
+          name: 'myPage',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
+            }
+          }
+        }, rtm.Standard, (err: Error) => {
+          if (err) {
+            let message = (err as BusinessError).message;
+            let code = (err as BusinessError).code;
+            console.error(`replaceNamedRoute failed, code is ${code}, message is ${message}`);
+            return;
+          }
+          console.info('replaceNamedRoute success');
+        })
       })
     }
     .width('100%')
     .height('100%')
   }
 }
+```
+
+```ts
+// library/src/main/ets/pages/Index.ets
+// library为新建共享包自定义的名字
+@Entry({ routeName: 'myPage' })
+@Component
+export struct MyComponent {
+  build() {
+    Row() {
+      Column() {
+        Text('Library Page')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+使用命名路由方式跳转时，需要在当前应用包的oh-package.json5文件中配置依赖。
+```json
+  ...
+"dependencies": {
+  "library": "file:../library",
+}
+  ...
+```
+
+ArkTS-Sta示例：
+```ts
+// Index.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+import router from '@ohos.router';
+import { UIContext } from '@ohos.arkui.UIContext';
+import { Flex, Button, Text, FlexDirection, ItemAlign, FlexAlign, FontWeight, ButtonType, Entry, Component, ClickEvent } from '@ohos.arkui.component';
+import type { AsyncCallback } from '@ohos.base';
+initModule('library/Index'); // 收集依赖
+
+class RouterTmp {
+  Standard: router.RouterMode = router.RouterMode.Standard;
+}
+
+let rtm: RouterTmp = new RouterTmp();
+
+interface Data2 {
+  data3: int[]
+}
+
+interface Param {
+  data1: string,
+  data2: Data2
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Button('replace NamedRoute with promise').type(ButtonType.Capsule)
+      .onClick((e?: ClickEvent) => {
+        initModule('library/Index'); // 命名路由注册
+        this.getUIContext().getRouter().replaceNamedRoute({
+          name: 'myPage',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
+            }
+          } as Param
+        } as router.NamedRouterOptions)
+        .then(() => {
+          console.info('succeeded');
+        })
+        .catch((error: Error) => {
+          console.error(`replaceUrl failed, code is ${error.code}, message is ${error.message}`);
+        })
+      })
+
+      Button('replace NamedRoute with asyncCallback').type(ButtonType.Capsule)
+      .onClick((e?: ClickEvent) => {
+        initModule('library/Index'); // 命名路由注册
+        this.getUIContext().getRouter().replaceNamedRoute({
+          name: 'myPage',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
+            }
+          } as Param
+        } as router.NamedRouterOptions, (err: BusinessError | null) => {
+          if (err) {
+            let message = (err as BusinessError).message;
+            let code = (err as BusinessError).code;
+            console.error(`replaceNamedRoute failed, code is ${code}, message is ${message}`);
+            return;
+          }
+          console.info('replaceNamedRoute success');
+        })
+      })
+
+      Button('replace NamedRoute with promise and standard mode').type(ButtonType.Capsule)
+      .onClick((e?: ClickEvent) => {
+        initModule('library/Index'); // 命名路由注册
+        this.getUIContext().getRouter().replaceNamedRoute({
+          name: 'myPage',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
+            }
+          } as Param
+        } as router.NamedRouterOptions, rtm.Standard)
+        .then(() => {
+          console.info('succeeded');
+        })
+        .catch((error: Error) => {
+          console.error(`replaceUrl failed, code is ${error.code}, message is ${error.message}`);
+        })
+      })
+
+      Button('replace NamedRoute with asyncCallback and standard mode').type(ButtonType.Capsule)
+      .onClick((e?: ClickEvent) => {
+        initModule('library/Index'); // 命名路由注册
+        this.getUIContext().getRouter().replaceNamedRoute({
+          name: 'myPage',
+          params: {
+            data1: 'message',
+            data2: {
+              data3: [123, 456, 789]
+            }
+          } as Param
+        } as router.NamedRouterOptions, rtm.Standard, (err: BusinessError | null) => {
+          if (err) {
+            let message = (err as BusinessError).message;
+            let code = (err as BusinessError).code;
+            console.error(`replaceNamedRoute failed, code is ${code}, message is ${message}`);
+            return;
+          }
+          console.info('replaceNamedRoute success');
+        })
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+```ts
+import { Row, Button, Column, FontWeight, Entry, Component, Text } from '@ohos.arkui.component';
+// library/src/main/ets/components/MainPage.ets
+// library为新建共享包自定义的名字
+@Entry({ routeName: 'myPage' })
+@Component
+export struct MainPage {
+  build() {
+    Row() {
+      Column() {
+        Text('Library Page')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+使用命名路由方式跳转时，需要在当前应用包的oh-package.json5文件中配置依赖。
+```json
+  ...
+"dependencies": {
+  "library": "file:../library",
+}
+  ...
 ```
 
 ### replaceNamedRoute
@@ -8697,47 +9055,7 @@ replaceNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt
 
 **示例：**
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  async routePage() {
-    this.getUIContext().getRouter().replaceNamedRoute({
-      name: 'myPage',
-      params: {
-        data1: 'message'
-      }
-    }, (err: Error) => {
-      if (err) {
-        let message = (err as BusinessError).message;
-        let code = (err as BusinessError).code;
-        console.error(`replaceNamedRoute failed, code is ${code}, message is ${message}`);
-        return;
-      }
-      console.info('replaceNamedRoute success');
-    })
-  }
-
-  build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Button() {
-        Text('next page')
-          .fontSize(25)
-          .fontWeight(FontWeight.Bold)
-      }.type(ButtonType.Capsule)
-      .margin({ top: 20 })
-      .backgroundColor('#ccc')
-      .onClick(() => {
-        this.routePage();
-      })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+参考[replaceNamedRoute](js-apis-arkui-UIContext.md#replacenamedroute)中的示例代码。
 
 ### replaceNamedRoute
 
@@ -8775,52 +9093,7 @@ replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): 
 
 **示例：**
 
-```ts
-import { router } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class RouterTmp {
-  Standard: router.RouterMode = router.RouterMode.Standard;
-}
-
-let rtm: RouterTmp = new RouterTmp();
-
-@Entry
-@Component
-struct Index {
-  async routePage() {
-    this.getUIContext().getRouter().replaceNamedRoute({
-        name: 'myPage',
-        params: {
-          data1: 'message'
-        }
-      }, rtm.Standard)
-      .then(() => {
-        console.info('succeeded');
-      })
-      .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
-      })
-  }
-
-  build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Button() {
-        Text('next page')
-          .fontSize(25)
-          .fontWeight(FontWeight.Bold)
-      }.type(ButtonType.Capsule)
-      .margin({ top: 20 })
-      .backgroundColor('#ccc')
-      .onClick(() => {
-        this.routePage();
-      })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+参考[replaceNamedRoute](js-apis-arkui-UIContext.md#replacenamedroute)中的示例代码。
 
 ### replaceNamedRoute
 
@@ -8852,54 +9125,7 @@ replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, c
 
 **示例：**
 
-```ts
-import { router } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class RouterTmp {
-  Standard: router.RouterMode = router.RouterMode.Standard;
-}
-
-let rtm: RouterTmp = new RouterTmp();
-
-@Entry
-@Component
-struct Index {
-  async routePage() {
-    this.getUIContext().getRouter().replaceNamedRoute({
-      name: 'myPage',
-      params: {
-        data1: 'message'
-      }
-    }, rtm.Standard, (err: Error) => {
-      if (err) {
-        let message = (err as BusinessError).message;
-        let code = (err as BusinessError).code;
-        console.error(`replaceNamedRoute failed, code is ${code}, message is ${message}`);
-        return;
-      }
-      console.info('replaceNamedRoute success');
-    })
-  }
-
-  build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Button() {
-        Text('next page')
-          .fontSize(25)
-          .fontWeight(FontWeight.Bold)
-      }.type(ButtonType.Capsule)
-      .margin({ top: 20 })
-      .backgroundColor('#ccc')
-      .onClick(() => {
-        this.routePage();
-      })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+参考[replaceNamedRoute](js-apis-arkui-UIContext.md#replacenamedroute)中的示例代码。
 
 ### back
 
