@@ -13,7 +13,7 @@ The VideoEncoder module provides the APIs for video encoding.
 You can refer to the corresponding development guide and samples based on your development requirements.
 
 - [Video Encoding](../../media/avcodec/video-encoding.md)
-- [Temporal Layered Video Encoding](../../media/avcodec/video-encoding-temporal-scalability.md)
+- [Temporally Scalable Video Coding](../../media/avcodec/video-encoding-temporal-scalability.md)
 
 **System capability**: SystemCapability.Multimedia.Media.VideoEncoder
 
