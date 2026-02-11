@@ -84,7 +84,7 @@ Obtains image and video assets. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-Applications without the'ohos.permission.READ_IMAGEVIDEO' permission can call this API in picker mode to query the image or video resource corresponding to a specified URI. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
+Applications without the 'ohos.permission.READ_IMAGEVIDEO' permission can call this API in picker mode to query the image or video resource corresponding to a specified URI. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
 
 **Parameters**
 
