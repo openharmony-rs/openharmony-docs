@@ -251,7 +251,7 @@ ArkUI_AnimationCurve OH_ArkUI_AnimateOption_GetCurve(ArkUI_AnimateOption* option
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve) | 动画曲线。 |
+| [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve) | 动画曲线。option异常时返回-1。 |
 
 ### OH_ArkUI_AnimateOption_GetDelay()
 
@@ -271,7 +271,7 @@ int32_t OH_ArkUI_AnimateOption_GetDelay(ArkUI_AnimateOption* option)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。option异常时返回0。 |
 
 **返回：**
 
@@ -1403,7 +1403,7 @@ ArkUI_AnimationFillMode OH_ArkUI_AnimatorOption_GetFill(ArkUI_AnimatorOption* op
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode) | 执行后是否恢复到初始状态。option异常时返回默认值。 |
+| [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode) | 执行后是否恢复到初始状态。option异常时返回-1。 |
 
 ### OH_ArkUI_AnimatorOption_GetDirection()
 
@@ -1429,7 +1429,7 @@ ArkUI_AnimationDirection OH_ArkUI_AnimatorOption_GetDirection(ArkUI_AnimatorOpti
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_AnimationDirection](capi-native-type-h.md#arkui_animationdirection) | 动画播放方向。option异常时返回默认值。 |
+| [ArkUI_AnimationDirection](capi-native-type-h.md#arkui_animationdirection) | 动画播放方向。option异常时返回-1。 |
 
 ### OH_ArkUI_AnimatorOption_GetCurve()
 
