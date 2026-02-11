@@ -247,7 +247,7 @@ struct ImageExample {
   @State aBlockArr: string[] = [];
   @State bBlockArr: string[] = [];
   @State AVisible: Visibility = Visibility.Visible;
-  @State dragSuccess :Boolean = false;
+  @State dragSuccess: Boolean = false;
 
   build() {
     Column() {
@@ -263,7 +263,7 @@ struct ImageExample {
           .draggable(true)
           .onDragEnd((event: DragEvent) => {
             let ret = event.getResult();
-            if(ret == 0) {
+            if (ret == 0) {
               console.info("enter ret == 0")
               this.AVisible = Visibility.Hidden;
             } else {
@@ -273,21 +273,22 @@ struct ImageExample {
           })
       }
       .margin({ bottom: 20 })
+
       Row() {
-        Column(){
+        Column() {
           Text('不允许释放区域')
             .fontSize('15dp')
             .height('10%')
-          List(){
-            ForEach(this.aBlockArr, (item:string, index) => {
+          List() {
+            ForEach(this.aBlockArr, (item: string, index) => {
               ListItem() {
                 Image(item)
                   .width(100)
                   .height(100)
-                  .border({width: 1})
+                  .border({ width: 1 })
               }
-              .margin({ left: 30 , top : 30})
-            }, (item:string) => item)
+              .margin({ left: 30, top: 30 })
+            }, (item: string) => item)
           }
           .height('90%')
           .width('100%')
@@ -297,37 +298,38 @@ struct ImageExample {
             this.aBlockArr.splice(JSON.parse(extraParams as string)?.insertIndex, 0, this.uri);
             console.info("ondrop not udmf data");
           })
-          .border({width: 1})
+          .border({ width: 1 })
         }
         .height("50%")
         .width("45%")
         .border({ width: 1 })
         .margin({ left: 12 })
-        Column(){
+
+        Column() {
           Text('可释放区域')
             .fontSize('15dp')
             .height('10%')
-          List(){
-            ForEach(this.bBlockArr, (item:string, index) => {
+          List() {
+            ForEach(this.bBlockArr, (item: string, index) => {
               ListItem() {
                 Image(item)
                   .width(100)
                   .height(100)
-                  .border({width: 1})
+                  .border({ width: 1 })
               }
-              .margin({ left: 30 , top : 30})
-            }, (item:string) => item)
+              .margin({ left: 30, top: 30 })
+            }, (item: string) => item)
           }
-          .border({width: 1})
+          .border({ width: 1 })
           .height('90%')
           .width('100%')
           .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
           .onDrop((event?: DragEvent, extraParams?: string) => {
             console.info("enter onDrop")
-            let dragData:UnifiedData = (event as DragEvent).getData() as UnifiedData;
-            if(dragData != undefined) {
-              let arr:Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
-              if(arr.length > 0) {
+            let dragData: UnifiedData = (event as DragEvent).getData() as UnifiedData;
+            if (dragData != undefined) {
+              let arr: Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
+              if (arr.length > 0) {
                 let image = arr[0] as unifiedDataChannel.Image;
                 this.uri = image.imageUri;
                 this.bBlockArr.splice(JSON.parse(extraParams as string)?.insertIndex, 0, this.uri);
@@ -361,8 +363,9 @@ struct ImageExample {
 // xxx.ets
 @Entry
 @Component
-struct DragPreviewDemo{
-  @Builder dragPreviewBuilder() {
+struct DragPreviewDemo {
+  @Builder
+  dragPreviewBuilder() {
     Column() {
       Text("dragPreview")
         .width(150)
@@ -375,7 +378,8 @@ struct DragPreviewDemo{
     }
   }
 
-  @Builder MenuBuilder() {
+  @Builder
+  MenuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
       Text("menu item 1")
         .fontSize(15)
@@ -427,7 +431,7 @@ struct DragPreviewDemo{
 // xxx.ets
 @Entry
 @Component
-struct dragPreviewOptionsDemo{
+struct dragPreviewOptionsDemo {
   build() {
     Row() {
       Column() {
@@ -441,12 +445,22 @@ struct dragPreviewOptionsDemo{
         Image($r('app.media.image'))
           .margin({ top: 10 })
           .width("30%")
-          .border({ radius: { topLeft: 1, topRight: 2, bottomLeft: 4, bottomRight: 8 } })
+          .border({
+            radius: {
+              topLeft: 1,
+              topRight: 2,
+              bottomLeft: 4,
+              bottomRight: 8
+            }
+          })
           .draggable(true)
           .onDragStart(() => {
             console.info("Image onDragStart")
           })
-          .dragPreviewOptions({ mode: [ DragPreviewMode.ENABLE_DEFAULT_SHADOW, DragPreviewMode.ENABLE_DEFAULT_RADIUS, DragPreviewMode.ENABLE_DRAG_ITEM_GRAY_EFFECT ] })
+          .dragPreviewOptions({
+            mode: [DragPreviewMode.ENABLE_DEFAULT_SHADOW, DragPreviewMode.ENABLE_DEFAULT_RADIUS,
+              DragPreviewMode.ENABLE_DRAG_ITEM_GRAY_EFFECT]
+          })
       }
       .width("100%")
       .height("100%")
@@ -466,9 +480,10 @@ struct dragPreviewOptionsDemo{
 @Entry
 @Component
 struct Example {
-  @State numbers: number[] = [0, 1, 2, 3, 4 , 5, 6, 7, 8]
+  @State numbers: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+
   build() {
-    Column({ space: 5}) {
+    Column({ space: 5 }) {
       Grid() {
         ForEach(this.numbers, (item: number) => {
           GridItem() {
@@ -481,11 +496,11 @@ struct Example {
           .height(90)
           .selectable(true)
           .selected(true)
-          .dragPreviewOptions({}, {isMultiSelectionEnabled:true})
-          .onDragStart(()=>{
+          .dragPreviewOptions({}, { isMultiSelectionEnabled: true })
+          .onDragStart(() => {
 
           })
-    }, (item: string) => item)
+        }, (item: string) => item)
       }
       .columnsTemplate('1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr')
@@ -506,9 +521,10 @@ struct Example {
 @Entry
 @Component
 struct Example {
-  @State numbers: number[] = [0, 1, 2, 3, 4 , 5, 6, 7, 8]
+  @State numbers: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+
   build() {
-    Column({ space: 5}) {
+    Column({ space: 5 }) {
       Grid() {
         ForEach(this.numbers, (item: number) => {
           GridItem() {
@@ -521,11 +537,11 @@ struct Example {
           .height(90)
           .selectable(true)
           .selected(true)
-          .dragPreviewOptions({}, {isMultiSelectionEnabled:true, defaultAnimationBeforeLifting:true})
-          .onDragStart(()=>{
+          .dragPreviewOptions({}, { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true })
+          .onDragStart(() => {
 
           })
-    }, (item: string) => item)
+        }, (item: string) => item)
       }
       .columnsTemplate('1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr')
@@ -548,7 +564,7 @@ import { ImageModifier } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct dragPreviewOptionsDemo{
+struct dragPreviewOptionsDemo {
   @State myModifier: ImageAttribute = new ImageModifier().opacity(0.5)
   @State vis: boolean = true
   @State changeValue: string = ''
@@ -556,17 +572,18 @@ struct dragPreviewOptionsDemo{
   @State positionInfo: CaretOffset = { index: 0, x: 0, y: 0 }
   controller: SearchController = new SearchController()
   @State OpacityIndex: number = 0
-  @State OpacityList:(number | undefined | null)[]=[
-    0.3,0.5,0.7,1,-50,0,10,undefined,null
+  @State OpacityList: (number | undefined | null)[] = [
+    0.3, 0.5, 0.7, 1, -50, 0, 10, undefined, null
   ]
+
   build() {
     Row() {
       Column() {
         Text(this.OpacityList[this.OpacityIndex] + "")
         Button("Opacity")
-          .onClick(()=> {
+          .onClick(() => {
             this.OpacityIndex++
-            if(this.OpacityIndex > this.OpacityList.length - 1){
+            if (this.OpacityIndex > this.OpacityList.length - 1) {
               this.OpacityIndex = 0
             }
           })
@@ -575,7 +592,9 @@ struct dragPreviewOptionsDemo{
           .margin({ top: 10 })
           .width("100%")
           .draggable(true)
-          .dragPreviewOptions({modifier: this.myModifier.opacity(this.OpacityList[this.OpacityIndex]) as ImageModifier})
+          .dragPreviewOptions({
+            modifier: this.myModifier.opacity(this.OpacityList[this.OpacityIndex]) as ImageModifier
+          })
       }
       .width("50%")
       .height("50%")
@@ -822,8 +841,9 @@ struct ImageDrag {
 // xxx.ets
 @Entry
 @Component
-struct DragPreviewDemo{
-  @Builder MenuBuilder() {
+struct DragPreviewDemo {
+  @Builder
+  MenuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
       Text("menu item 1")
         .fontSize(15)
@@ -852,7 +872,8 @@ struct DragPreviewDemo{
         Image($r('app.media.app_icon'))
           .width("30%")
           .draggable(true)
-          .dragPreviewOptions({}, {isMultiSelectionEnabled:true, defaultAnimationBeforeLifting:true, enableHapticFeedback: true})
+          .dragPreviewOptions({},
+            { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true, enableHapticFeedback: true })
           .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
           .onDragStart(() => {
             console.info("Image onDragStart")
@@ -885,6 +906,7 @@ struct LiftingExampleDemo {
         .backgroundColor(Color.Green)
     }
   }
+
   @Builder
   MenuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
@@ -907,6 +929,7 @@ struct LiftingExampleDemo {
     }
     .width(100)
   }
+
   build() {
     Column() {
       Column() {
@@ -931,6 +954,7 @@ struct LiftingExampleDemo {
             delayCreating: true
           })
       }.width("%")
+
       Column() {
         Text("仅用于浮起效果")
           .fontSize(30)
@@ -1176,9 +1200,9 @@ struct CustomExample {
             .draggable(true)
             .onDragStart((event: DragEvent) => {
               // 构造符合UnifiedData类型的数据
-              let customCardData : Record<string, string> = {
-                'uniformDataType' : 'custom.card',
-                'value' : '自定义卡片'
+              let customCardData: Record<string, string> = {
+                'uniformDataType': 'custom.card',
+                'value': '自定义卡片'
               }
               let unifiedRecord = new unifiedDataChannel.UnifiedRecord('custom.card', customCardData);
               let unifiedData = new unifiedDataChannel.UnifiedData(unifiedRecord);
