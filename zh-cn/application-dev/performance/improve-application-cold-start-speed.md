@@ -11,7 +11,7 @@
 
 ## 分析应用冷启动耗时
 
-应用冷启动过程可分成以下五个阶段：应用进程创建&初始化、Application&Ability初始化、Ability/AbilityStage生命周期、加载绘制首页、网络数据二次刷新，如下图：
+应用冷启动过程大致可分成以下五个阶段：应用进程创建&初始化、Application&Ability初始化、Ability/AbilityStage生命周期、加载绘制首页、网络数据二次刷新，如下图：
 
 ![](figures/application-cold-start.png)
 
