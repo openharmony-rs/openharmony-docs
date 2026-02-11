@@ -8032,6 +8032,7 @@ ArkTS-Sta示例：
 
 ```ts
 // xxx.ets
+'use static'
 import { Entry, Component, Column, Button, Web } from '@ohos.arkui.component'
 import { BusinessError } from '@ohos.base'
 import { webview } from '@kit.ArkWeb';
