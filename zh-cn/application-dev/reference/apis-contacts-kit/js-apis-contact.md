@@ -54,12 +54,11 @@ addContact(context: Context, contact: Contact, callback: AsyncCallback&lt;number
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.addContact(context, {
     name: {
@@ -104,7 +103,7 @@ addContact(contact: Contact, callback: AsyncCallback&lt;number&gt;): void
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
   
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.addContact(context, {
     name: {
@@ -162,12 +161,11 @@ addContact(context: Context, contact: Contact): Promise<number&gt;
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.addContact(context, {
     name: {
@@ -261,14 +259,13 @@ deleteContact(context: Context, key: string, callback: AsyncCallback&lt;void&gt;
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
  // 通过selectContacts接口选择联系人。
   contact.selectContacts().then((data) => {
-    // 获取context。
+    // 请在组件内获取context。
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // 第二个参数传入选择联系人的key值
     contact.deleteContact(context, data[0].key, (err: BusinessError) => {
@@ -311,7 +308,7 @@ deleteContact(key: string, callback: AsyncCallback&lt;void&gt;): void
 
   // 通过selectContacts接口选择联系人。
   contact.selectContacts().then((data) => {
-    // 获取context。
+    // 请在组件内获取context。
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // 第一个参数传入选择联系人的key值
     contact.deleteContact(data[0].key, (err: BusinessError) => {
@@ -362,14 +359,13 @@ deleteContact(context: Context,  key: string): Promise&lt;void&gt;
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
   // 通过selectContacts接口选择联系人。
   contact.selectContacts().then((data) => {
-    // 获取context。
+    // 请在组件内获取context。
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // 第二个参数传入选择联系人的key值
     let promise = contact.deleteContact(context, data[0].key);
@@ -459,14 +455,13 @@ updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;voi
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
   // 通过selectContacts接口选择联系人。
   contact.selectContacts().then((data) => {
-    // 获取context。
+    // 请在组件内获取context。
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     contact.updateContact(context, {
       id: data[0].id,  // 选择联系人的id。
@@ -516,7 +511,7 @@ updateContact(contact: Contact, callback: AsyncCallback&lt;void&gt;): void
 
   // 通过selectContacts接口选择联系人。
   contact.selectContacts().then((data) => {
-    // 获取context。
+    // 请在组件内获取context。
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     contact.updateContact(context, {
       id: data[0].id,  // 选择联系人的id。
@@ -570,14 +565,13 @@ updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, cal
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
   // 通过selectContacts接口选择联系人。
   contact.selectContacts().then((data) => {
-    // 获取context。
+    // 请在组件内获取context。
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     contact.updateContact(context, {
       id: data[0].id,  // 选择联系人的id。
@@ -689,14 +683,13 @@ updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): P
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
   // 通过selectContacts接口选择联系人。
   contact.selectContacts().then((data) => {
-    // 获取context。
+    // 请在组件内获取context。
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     let promise = contact.updateContact(context, {
       id: data[0].id,  // 选择联系人的id。
@@ -807,12 +800,11 @@ isLocalContact(context: Context,  id: number, callback: AsyncCallback&lt;boolean
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.isLocalContact(context, /*id*/1, (err: BusinessError, data) => {
     if (err) {
@@ -896,12 +888,11 @@ isLocalContact(context: Context,  id: number): Promise&lt;boolean&gt;
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.isLocalContact(context, /*id*/1);
   promise.then((data) => {
@@ -983,12 +974,11 @@ isMyCard(context: Context,  id: number, callback: AsyncCallback&lt;boolean&gt;):
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.isMyCard(context, /*id*/1, (err: BusinessError, data) => {
     if (err) {
@@ -1072,12 +1062,11 @@ isMyCard(context: Context,  id: number): Promise&lt;boolean&gt;
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.isMyCard(context, /*id*/1);
   promise.then((data) => {
@@ -1158,12 +1147,11 @@ queryMyCard(context: Context,  callback: AsyncCallback&lt;Contact&gt;): void
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryMyCard(context, (err: BusinessError, data) => {
     if (err) {
@@ -1241,12 +1229,11 @@ queryMyCard(context: Context,  attrs: ContactAttributes, callback: AsyncCallback
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryMyCard(context, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
@@ -1334,12 +1321,11 @@ queryMyCard(context: Context,  attrs?: ContactAttributes): Promise&lt;Contact&gt
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryMyCard(context, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
@@ -1640,12 +1626,11 @@ queryContact(context: Context,  key: string,  callback: AsyncCallback&lt;Contact
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContact(context, 'xxx', (err: BusinessError, data) => {
     if (err) {
@@ -1725,12 +1710,11 @@ queryContact(context: Context,  key: string, holder: Holder, callback: AsyncCall
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContact(context, 'xxx', {
     holderId: 1,
@@ -1819,12 +1803,11 @@ queryContact(context: Context,  key: string,  attrs: ContactAttributes, callback
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContact(context, 'xxx', {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
@@ -1910,12 +1893,11 @@ queryContact(context: Context,  key: string, holder: Holder, attrs: ContactAttri
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContact(context, 'xxx', {
     holderId: 1,
@@ -2015,12 +1997,11 @@ queryContact(context: Context,  key: string, holder?: Holder, attrs?: ContactAtt
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryContact(context, 'xxx', {
     holderId: 1,
@@ -2115,12 +2096,11 @@ queryContacts(context: Context,  callback: AsyncCallback&lt;Array&lt;Contact&gt;
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContacts(context, (err: BusinessError, data) => {
     if (err) {
@@ -2198,12 +2178,11 @@ queryContacts(context: Context,  holder: Holder, callback: AsyncCallback&lt;Arra
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContacts(context, {
     holderId: 1,
@@ -2290,12 +2269,11 @@ queryContacts(context: Context,  attrs: ContactAttributes, callback: AsyncCallba
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContacts(context, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
@@ -2379,12 +2357,11 @@ queryContacts(context: Context,  holder: Holder, attrs: ContactAttributes, callb
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContacts(context, {
     holderId: 1,
@@ -2482,12 +2459,11 @@ queryContacts(context: Context,  holder?: Holder, attrs?: ContactAttributes): Pr
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryContacts(context, {
     holderId: 1,
@@ -2582,12 +2558,11 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, callback: Asy
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', (err: BusinessError, data) => {
     if (err) {
@@ -2667,12 +2642,11 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
     holderId: 1,
@@ -2761,12 +2735,11 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, attrs: Contac
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
@@ -2852,12 +2825,11 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
     holderId: 1,
@@ -2957,12 +2929,11 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Hold
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
     holderId: 1,
@@ -3058,12 +3029,11 @@ queryContactsByEmail(context: Context,  email: string, callback: AsyncCallback&l
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByEmail(context, 'xxx@email.com', (err: BusinessError, data) => {
     if (err) {
@@ -3143,12 +3113,11 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, callback:
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByEmail(context, 'xxx@email.com', {
     holderId: 1,
@@ -3237,12 +3206,11 @@ queryContactsByEmail(context: Context,  email: string, attrs: ContactAttributes,
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByEmail(context, 'xxx@email.com', {
     attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
@@ -3328,12 +3296,11 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, attrs: Co
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByEmail(context, 'xxx@email.com', {
     holderId: 1,
@@ -3433,12 +3400,11 @@ queryContactsByEmail(context: Context,  email: string, holder?: Holder, attrs?: 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryContactsByEmail(context, 'xxx@email.com', {
     holderId: 1,
@@ -3531,12 +3497,11 @@ queryGroups(context: Context,  callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryGroups(context, (err: BusinessError, data) => {
     if (err) {
@@ -3614,12 +3579,11 @@ queryGroups(context: Context,  holder: Holder, callback: AsyncCallback&lt;Array&
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryGroups(context, {
     holderId: 1,
@@ -3711,12 +3675,11 @@ queryGroups(context: Context,  holder?: Holder): Promise&lt;Array&lt;Group&gt;&g
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryGroups(context, {
     holderId: 1,
@@ -3805,12 +3768,11 @@ queryHolders(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryHolders(context, (err: BusinessError, data) => {
     if (err) {
@@ -3892,12 +3854,11 @@ queryHolders(context: Context): Promise&lt;Array&lt;Holder&gt;&gt;
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryHolders(context);
   promise.then((data) => {
@@ -3973,12 +3934,11 @@ queryKey(context: Context,  id: number, callback: AsyncCallback&lt;string&gt;): 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryKey(context, /*id*/1, (err: BusinessError, data) => {
     if (err) {
@@ -4058,12 +4018,11 @@ queryKey(context: Context,  id: number, holder: Holder, callback: AsyncCallback&
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryKey(context, /*id*/1, {
     holderId: 1,
@@ -4157,12 +4116,11 @@ queryKey(context: Context,  id: number, holder?: Holder): Promise&lt;string&gt;
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
+  // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryKey(context, /*id*/1, {
     holderId: 1,
@@ -4310,12 +4268,11 @@ addContactViaUI(context: Context, contact: Contact): Promise&lt;number&gt;
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-<!--code_no_check-->
 ```js
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 获取context。
+// 请在组件内获取context。
 let contactInfo: contact.Contact = {
   name: {
     fullName: 'xxx'
@@ -4375,12 +4332,11 @@ saveToExistingContactViaUI(context: Context, contact: Contact): Promise&lt;numbe
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-<!--code_no_check-->
 ```js
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 获取context。
+// 请在组件内获取context。
 let contactInfo: contact.Contact = {
   id: 1,
   name: {
@@ -5018,7 +4974,7 @@ phoneNumber.phoneNumber = "138xxxxxxxx";
 
 > **说明：**
 >
->  从API version 22开始，支持通过uri和[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)格式设置联系人头像资源(暂不支持通过[addContactViaUI](#contactaddcontactviaui15)、[saveToExistingContactViaUI](#contactsavetoexistingcontactviaui15)接口设置)。<br/>
+>  从API version 22开始，支持通过uri和[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)格式设置和读取联系人头像资源(暂不支持通过[addContactViaUI](#contactaddcontactviaui15)、[saveToExistingContactViaUI](#contactsavetoexistingcontactviaui15)接口设置)。<br/>
 uri为可访问的联系人头像文件地址，[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)为通过联系人头像资源生成的[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)对象。<br/>
 >  读取联系人头像资源仅支持uri格式，该格式仅支持以[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)方式打开，无法直接在Image组件内显示，需读取后转换为[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)格式显示。
 
