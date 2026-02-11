@@ -199,7 +199,7 @@ uint32_t OH_ArkUI_AnimateOption_GetDuration(ArkUI_AnimateOption* option)
 
 | 类型 | 说明 |
 | -- | -- |
-| uint32_t | 持续时间。 |
+| uint32_t | 持续时间。option异常时返回0。 |
 
 ### OH_ArkUI_AnimateOption_GetTempo()
 
@@ -225,7 +225,7 @@ float OH_ArkUI_AnimateOption_GetTempo(ArkUI_AnimateOption* option)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 动画播放速度。取值范围：[0, +∞)。 |
+| float | 动画播放速度。取值范围：[0, +∞)。option异常时返回0.0。 |
 
 ### OH_ArkUI_AnimateOption_GetCurve()
 
@@ -277,7 +277,7 @@ int32_t OH_ArkUI_AnimateOption_GetDelay(ArkUI_AnimateOption* option)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 动画延迟播放时间。 |
+| int32_t | 动画延迟播放时间。option异常时返回0。 |
 
 ### OH_ArkUI_AnimateOption_GetIterations()
 
@@ -303,7 +303,7 @@ int32_t OH_ArkUI_AnimateOption_GetIterations(ArkUI_AnimateOption* option)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 动画播放次数。 |
+| int32_t | 动画播放次数。option异常时返回0。 |
 
 ### OH_ArkUI_AnimateOption_GetPlayMode()
 
@@ -329,7 +329,7 @@ ArkUI_AnimationPlayMode OH_ArkUI_AnimateOption_GetPlayMode(ArkUI_AnimateOption* 
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode) | 动画播放模式。 |
+| [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode) | 动画播放模式。option异常时返回默认值。 |
 
 ### OH_ArkUI_AnimateOption_GetExpectedFrameRateRange()
 
@@ -355,7 +355,7 @@ ArkUI_ExpectedFrameRateRange* OH_ArkUI_AnimateOption_GetExpectedFrameRateRange(A
 
 | 类型                                | 说明 |
 |-----------------------------------| -- |
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* | 动画的期望帧率，单位为帧/秒（fps）。 |
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* | 动画的期望帧率，单位为帧/秒（fps）。option异常时返回NULL。 |
 
 ### OH_ArkUI_AnimateOption_SetDuration()
 
@@ -579,7 +579,7 @@ ArkUI_KeyframeAnimateOption* OH_ArkUI_KeyframeAnimateOption_Create(int32_t size)
 
 | 类型                               | 说明 |
 |----------------------------------| -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* | 关键帧动画参数对象。size小于0时返回NULL。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* | 关键帧动画参数对象。size小于0时返回NULL，option异常时返回NULL。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_Dispose()
 
@@ -823,7 +823,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_GetDelay(ArkUI_KeyframeAnimateOption* opt
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 整体延时时间，单位为ms（毫秒）。 |
+| int32_t | 整体延时时间，单位为ms（毫秒）。option异常时返回0。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_GetIterations()
 
@@ -849,7 +849,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_GetIterations(ArkUI_KeyframeAnimateOption
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 动画播放次数。 |
+| int32_t | 动画播放次数。option异常时返回0。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_GetExpectedFrameRate()
 
@@ -875,7 +875,7 @@ ArkUI_ExpectedFrameRateRange* OH_ArkUI_KeyframeAnimateOption_GetExpectedFrameRat
 
 | 类型                                | 说明 |
 |-----------------------------------| -- |
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* | 关键帧动画参数的期望帧率。 |
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* | 关键帧动画参数的期望帧率。option异常时返回NULL。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_GetDuration()
 
@@ -902,7 +902,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_GetDuration(ArkUI_KeyframeAnimateOption* 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 持续时间，单位为ms（毫秒）。 |
+| int32_t | 持续时间，单位为ms（毫秒）。option异常时返回0。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_GetCurve()
 
@@ -929,7 +929,7 @@ ArkUI_CurveHandle OH_ArkUI_KeyframeAnimateOption_GetCurve(ArkUI_KeyframeAnimateO
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 动画曲线。函数参数异常时返回NULL。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 动画曲线。option异常时返回NULL。 |
 
 ### OH_ArkUI_AnimatorOption_Create()
 
@@ -959,7 +959,7 @@ ArkUI_AnimatorOption* OH_ArkUI_AnimatorOption_Create(int32_t keyframeSize)
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_AnimatorOption* | animator动画对象参数指针。size小于0时返回NULL。 |
+| ArkUI_AnimatorOption* | animator动画对象参数指针。size小于0时返回NULL，option异常时返回NULL。 |
 
 ### OH_ArkUI_AnimatorOption_Dispose()
 
@@ -1324,7 +1324,7 @@ int32_t OH_ArkUI_AnimatorOption_GetDuration(ArkUI_AnimatorOption* option)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 动画播放的时长，单位毫秒。 |
+| int32_t | 动画播放的时长，单位毫秒。option异常时返回0。 |
 
 ### OH_ArkUI_AnimatorOption_GetDelay()
 
@@ -1350,7 +1350,7 @@ int32_t OH_ArkUI_AnimatorOption_GetDelay(ArkUI_AnimatorOption* option)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 动画延时播放时长，单位毫秒。 |
+| int32_t | 动画延时播放时长，单位毫秒。option异常时返回0。 |
 
 ### OH_ArkUI_AnimatorOption_GetIterations()
 
@@ -1376,7 +1376,7 @@ int32_t OH_ArkUI_AnimatorOption_GetIterations(ArkUI_AnimatorOption* option)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 动画播放次数。 |
+| int32_t | 动画播放次数。option异常时返回0。 |
 
 ### OH_ArkUI_AnimatorOption_GetFill()
 
@@ -1402,7 +1402,7 @@ ArkUI_AnimationFillMode OH_ArkUI_AnimatorOption_GetFill(ArkUI_AnimatorOption* op
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode) | 执行后是否恢复到初始状态。 |
+| [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode) | 执行后是否恢复到初始状态。option异常时返回默认值。 |
 
 ### OH_ArkUI_AnimatorOption_GetDirection()
 
@@ -1428,7 +1428,7 @@ ArkUI_AnimationDirection OH_ArkUI_AnimatorOption_GetDirection(ArkUI_AnimatorOpti
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_AnimationDirection](capi-native-type-h.md#arkui_animationdirection) | 动画播放方向。 |
+| [ArkUI_AnimationDirection](capi-native-type-h.md#arkui_animationdirection) | 动画播放方向。option异常时返回默认值。 |
 
 ### OH_ArkUI_AnimatorOption_GetCurve()
 
@@ -1454,7 +1454,7 @@ ArkUI_CurveHandle OH_ArkUI_AnimatorOption_GetCurve(ArkUI_AnimatorOption* option)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 动画插值曲线。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 动画插值曲线。option异常时返回NULL。 |
 
 ### OH_ArkUI_AnimatorOption_GetBegin()
 
@@ -1480,7 +1480,7 @@ float OH_ArkUI_AnimatorOption_GetBegin(ArkUI_AnimatorOption* option)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 动画插值起点。 |
+| float | 动画插值起点。option异常时返回0.0。 |
 
 ### OH_ArkUI_AnimatorOption_GetEnd()
 
@@ -1506,7 +1506,7 @@ float OH_ArkUI_AnimatorOption_GetEnd(ArkUI_AnimatorOption* option)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 动画插值终点。 |
+| float | 动画插值终点。option异常时返回0.0。 |
 
 ### OH_ArkUI_AnimatorOption_GetExpectedFrameRateRange()
 
