@@ -380,7 +380,7 @@
 
 **取值：** "usual.event.RESTORE_START"
 
-### COMMON_EVENT_CLOUD_DISK_STATE_CHANGED<sup>21+<sup>
+### COMMON_EVENT_CLOUD_DISK_STATE_CHANGED<sup>21+</sup>
 
 提示云盘同步根已更新。
 
@@ -428,7 +428,7 @@
 **取值：** usual.event.SMS_RECEIVED_COMPLETED
 
 
-### COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED<sup>10+<sup>
+### COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED<sup>10+</sup>
 
 提示紧急小区广播短信接收完成。
 
@@ -443,7 +443,7 @@
 **取值：** usual.event.SMS_EMERGENCY_CB_RECEIVE_COMPLETED
 
 
-### COMMON_EVENT_SMS_CB_RECEIVE_COMPLETED<sup>10+<sup>
+### COMMON_EVENT_SMS_CB_RECEIVE_COMPLETED<sup>10+</sup>
 
 提示小区广播短信接收完成。
 
