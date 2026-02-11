@@ -10,7 +10,7 @@
 ## 导入模块
 
 ```ts
-import { usbManager } from '@kit.BasicServicesKit';
+import usbManager from '@ohos.usbManager';
 ```
 
 ## addRight <sup>(deprecated)</sup>

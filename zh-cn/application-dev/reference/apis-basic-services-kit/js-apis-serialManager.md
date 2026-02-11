@@ -9,7 +9,7 @@
 ## 导入模块
 
 ```ts
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.usbManager.serial';
 ```
 
 ## serialManager.getPortList
@@ -39,7 +39,7 @@ getPortList(): Readonly&lt;SerialPort&gt;[]
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口设备清单 
 let portList: serialManager.SerialPort[] = serialManager.getPortList();
@@ -97,7 +97,7 @@ ArkTS-Sta: hasSerialRight(portId: int): boolean
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 let portList: serialManager.SerialPort[] = serialManager.getPortList();
@@ -162,7 +162,7 @@ ArkTS-Sta: requestSerialRight(portId: int): Promise&lt;boolean&gt;
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 let portList: serialManager.SerialPort[] = serialManager.getPortList();
@@ -228,7 +228,7 @@ ArkTS-Sta: open(portId: int): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 let portList: serialManager.SerialPort[] = serialManager.getPortList();
@@ -307,7 +307,7 @@ ArkTS-Sta: getAttribute(portId: int): Readonly&lt;[SerialAttribute](#serialattri
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 let portList: serialManager.SerialPort[] = serialManager.getPortList();
@@ -393,7 +393,7 @@ ArkTS-Sta: setAttribute(portId: int, attribute: [SerialAttribute](#serialattribu
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 let portList: serialManager.SerialPort[] = serialManager.getPortList();
@@ -490,7 +490,7 @@ ArkTS-Sta: read(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 let portList: serialManager.SerialPort[] = serialManager.getPortList();
@@ -581,7 +581,7 @@ ArkTS-Sta: readSync(portId: int, buffer: Uint8Array, timeout?: int): int
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 let portList: serialManager.SerialPort[] = serialManager.getPortList();
@@ -673,7 +673,7 @@ ArkTS-Sta: write(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 let portList: serialManager.SerialPort[] = serialManager.getPortList();
@@ -764,7 +764,7 @@ ArkTS-Sta: writeSync(portId: int, buffer: Uint8Array, timeout?: int): int
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 let portList: serialManager.SerialPort[] = serialManager.getPortList();
@@ -846,7 +846,7 @@ ArkTS-Sta: close(portId: int): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 let portList: serialManager.SerialPort[] = serialManager.getPortList();
@@ -928,7 +928,7 @@ ArkTS-Sta: cancelSerialRight(portId: int): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 let portList: serialManager.SerialPort[] = serialManager.getPortList();

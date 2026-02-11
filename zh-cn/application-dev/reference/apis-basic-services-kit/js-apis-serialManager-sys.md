@@ -11,7 +11,7 @@
 ## 导入模块
 
 ```ts
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.usbManager.serial';
 ```
 
 ## serialManager.addSerialRight
@@ -60,7 +60,7 @@ serialManager.requestSerialRight会触发弹窗请求用户授权；addSerialRig
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 let portList: serialManager.SerialPort[] = serialManager.getPortList();

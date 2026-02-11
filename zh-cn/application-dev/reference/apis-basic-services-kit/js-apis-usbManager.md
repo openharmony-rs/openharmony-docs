@@ -9,7 +9,7 @@
 ## 导入模块
 
 ```ts
-import { usbManager } from '@kit.BasicServicesKit';
+import usbManager from '@ohos.usbManager';
 ```
 
 ## usbManager.getDevices
@@ -351,7 +351,7 @@ let device: usbManager.USBDevice = devicesList[0];
 usbManager.requestRight(device.name);
 let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
 let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
-let ret: int= usbManager.claimInterface(devicepipe, interfaces);
+let ret: int = usbManager.claimInterface(devicepipe, interfaces);
 console.log(`claimInterface = ${ret}`);
 ```
 
@@ -743,20 +743,11 @@ ArkTS-Sta: usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceReques
 **示例：**
 
 ```ts
-class PARA {
-  bmRequestType: int = 0
-  bRequest: int = 0
-  wValue: int = 0
-  wIndex: int = 0
-  wLength: int = 0
-  data: Uint8Array = new Uint8Array()
-}
-
-let param: PARA = {
+let param: usbManager.USBDeviceRequestParams = {
   bmRequestType: 0x80,
   bRequest: 0x06,
 
-  wValue:0x01 << 8 | 0,
+  wValue: 0x01 << 8 | 0,
   wIndex: 0,
   wLength: 18,
   data: new Uint8Array(18)
@@ -901,6 +892,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
 <!--code_no_check-->
 ```ts
+import { BusinessError } from '@kit.BasicServiceKit';
 //usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 //把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 //才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
@@ -917,7 +909,7 @@ let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
   return value.direction === 0 && value.type === 2
 })
 //获取设备的第一个id。
-let ret: int  = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
+let ret: int = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
 
 let transferParams: usbManager.UsbDataTransferParams = {
   devPipe: devicepipe,
@@ -926,15 +918,16 @@ let transferParams: usbManager.UsbDataTransferParams = {
   type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_BULK,
   timeout: 2000,
   length: 10, 
-  callback: () => {},
+  callback: (p1: BusinessError<void> | null, p2: usbManager.SubmitTransferCallback | undefined) => {
+  },
   userData: new Uint8Array(10),
   buffer: new Uint8Array(10),
   isoPacketCount: 0,
 };
 try {
-  transferParams.endpoint=endpoint?.address as int ;
-  transferParams.callback=(err, callBackData: usbManager.SubmitTransferCallback)=>{
-    console.info('callBackData =' +JSON.stringify(callBackData));
+  transferParams.endpoint = endpoint?.address as int;
+  transferParams.callback = (err, callBackData: usbManager.SubmitTransferCallback | undefined) => {
+    console.info('callBackData =' + JSON.stringify(callBackData));
   }
   usbManager.usbSubmitTransfer(transferParams); 
   console.info('USB transfer request submitted.');
@@ -993,6 +986,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 <!--code_no_check-->
 ```ts
+import { BusinessError } from '@kit.BasicServiceKit';
 //usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 //把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 //才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
@@ -1009,7 +1003,7 @@ let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
   return value.direction === 0 && value.type === 2
 })
 //获取设备的第一个id。
-let ret: int  = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
+let ret: int = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
 let transferParams: usbManager.UsbDataTransferParams = {
   devPipe: devicepipe,
   flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
@@ -1017,15 +1011,16 @@ let transferParams: usbManager.UsbDataTransferParams = {
   type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_BULK,
   timeout: 2000,
   length: 10, 
-  callback: () => {},
+  callback: (p1: BusinessError<void> | null, p2: usbManager.SubmitTransferCallback | undefined) => {
+  },
   userData: new Uint8Array(10),
   buffer: new Uint8Array(10),
   isoPacketCount: 0,
 };
 try {
-  transferParams.endpoint=endpoint?.address as int ;
-  transferParams.callback=(err, callBackData: usbManager.SubmitTransferCallback)=>{
-    console.info('callBackData =' +JSON.stringify(callBackData));
+  transferParams.endpoint = endpoint?.address as int;
+  transferParams.callback = (err, callBackData: usbManager.SubmitTransferCallback | undefined) => {
+    console.info('callBackData =' + JSON.stringify(callBackData));
   }
   usbManager.usbSubmitTransfer(transferParams);
   usbManager.usbCancelTransfer(transferParams);
