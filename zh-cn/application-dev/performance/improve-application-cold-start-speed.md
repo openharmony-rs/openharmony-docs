@@ -88,8 +88,10 @@
 
 应用冷启动过程中，会在**HandleLaunchAbility**中执行冷启动相关.ets文件，所有被主页面import的.ets文件均会被执行，包括数据结构、变量、全局函数的初始化等。首页需要用到的变量及函数等可能来源于其他ets文件，通过export的形式提供给首页使用。 
 
-例：Numbers文件导出`export One`，需要在MainPage.ets中使用，尽量直接导入或者只嵌套一层Index文件，即在MainPage.ets中直接`import { One } from './Numbers'`。避免在Utils文件`export * from './Numbers'`，在SecondPage文件再次`export * from './Utils'`，最后在A文件中`import * from './SecondPage'`。  
-以下为示例代码：  
+例：Numbers文件导出`export One`，需要在MainPage.ets中使用，尽量直接导入或者只嵌套一层Index文件，即在MainPage.ets中直接`import { One } from './Numbers'`。避免在Utils文件`export * from './Numbers'`，在SecondPage文件再次`export * from './Utils'`，最后在A文件中`import * from './SecondPage'`。 
+
+以下为示例代码：
+
 【优化前】存在多层嵌套export *的方式全量导出。
 ```ts
 // Numbers.ets
@@ -147,6 +149,7 @@ import { One } from './Numbers';
 应用程序加载过程中，需要使用不同模块中的变量或函数，通常应用开发者会将相同类型的变量或函数放在同一个工具类文件当中，使用时通过import的方式引入对应的模块，当工具类中存在较多暴露函数或变量时，推荐直接import对应的变量，可以减少该阶段中.ets文件执行耗时，即减少文件中所有export变量的初始化过程。  
 
 以下为示例代码：  
+
 【优化前】Index.ets中使用 import * as nm from '../utils/Numbers'。
 ```ts
 // Index.ets
