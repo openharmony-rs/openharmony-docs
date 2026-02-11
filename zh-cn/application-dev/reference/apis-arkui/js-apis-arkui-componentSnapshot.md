@@ -84,6 +84,7 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
         Image($r('app.media.img'))
           .autoResize(true)
           .width(200)
@@ -97,7 +98,7 @@ struct SnapshotExample {
           // 建议使用this.getUIContext().getComponentSnapshot().get()
           componentSnapshot.get("root", (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error("error: " + JSON.stringify(error))
+              console.error(`error:${JSON.stringify(error)}`)
               return;
             }
             this.pixmap = pixmap
@@ -172,6 +173,7 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
         Image($r('app.media.img'))
           .autoResize(true)
           .width(200)
@@ -187,7 +189,7 @@ struct SnapshotExample {
             .then((pixmap: image.PixelMap) => {
               this.pixmap = pixmap
             }).catch((err: Error) => {
-            console.error("error: " + err)
+            console.error(`error:${err}`)
           })
         }).margin(10)
     }
@@ -286,7 +288,7 @@ struct OffscreenSnapshotExample {
           },
             (error: Error, pixmap: image.PixelMap) => {
               if (error) {
-                console.error("error: " + JSON.stringify(error))
+                console.error(`error:${JSON.stringify(error)}`)
                 return;
               }
               this.pixmap = pixmap
@@ -404,10 +406,10 @@ struct OffscreenSnapshotExample {
               // ....
               // 获取组件大小和位置
               let info = this.getUIContext().getComponentUtils().getRectangleById("builder")
-              console.info(info.size.width + ' ' + info.size.height + ' ' + info.localOffset.x + ' ' +
-              info.localOffset.y + ' ' + info.windowOffset.x + ' ' + info.windowOffset.y)
+              console.info(`${info.size.width} ${info.size.height} ${info.localOffset.x} ${
+              info.localOffset.y} ${info.windowOffset.x} ${info.windowOffset.y}`)
             }).catch((err: Error) => {
-            console.error("error: " + err)
+            console.error(`error:${err}`)
           })
         })
       Image(this.pixmap)
@@ -478,6 +480,7 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
         Image($r('app.media.img'))
           .autoResize(true)
           .width(200)
@@ -493,7 +496,7 @@ struct SnapshotExample {
             let pixelmap = componentSnapshot.getSync("root", { scale: 2, waitUntilRenderFinished: true })
             this.pixmap = pixelmap
           } catch (error) {
-            console.error("getSync errorCode: " + error.code + " message: " + error.message)
+            console.error(`getSync errorCode:${error.code} message:${error.message}`)
           }
         }).margin(10)
     }
@@ -617,7 +620,7 @@ struct SnapshotExample {
               })
             this.pixmap = pixelmap
           } catch (error) {
-            console.error("getSync errorCode: " + error.code + " message: " + error.message)
+            console.error(`getSync errorCode:${error.code} message:${error.message}`)
           }
         }).margin(10)
       Image(this.pixmap).border({ color: Color.Black, width: 2 }).width("600px")

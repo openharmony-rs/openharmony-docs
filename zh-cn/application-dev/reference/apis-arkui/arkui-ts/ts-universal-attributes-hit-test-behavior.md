@@ -54,26 +54,26 @@ struct HitTestBehaviorExample {
     Stack() {
       Button('outer button')
         .onTouch((event) => {
-          console.info('outer button touched type: ' + (event as TouchEvent).type)
+          console.info(`outer button touched type: ${(event as TouchEvent).type}`)
         })
       // inner stack
       Stack() {
         Button('inner button')
           .onTouch((event) => {
-            console.info('inner button touched type: ' + (event as TouchEvent).type)
+            console.info(`inner button touched type: ${(event as TouchEvent).type}`)
           })
       }
       .width("100%").height("100%")
       .hitTestBehavior(HitTestMode.Block)
       .onTouch((event) => {
-        console.info('stack touched type: ' + (event as TouchEvent).type)
+        console.info(`stack touched type: ${(event as TouchEvent).type}`)
       })
 
       Text('Transparent')
         .hitTestBehavior(HitTestMode.Transparent)
         .width("100%").height("100%")
         .onTouch((event) => {
-          console.info('text touched type: ' + (event as TouchEvent).type)
+          console.info(`text touched type: ${(event as TouchEvent).type}`)
         })
     }.width(300).height(300)
   }
@@ -95,7 +95,7 @@ struct BlockHierarchy {
       Stack() {
         Button('outer button')
           .onTouch((event) => {
-            console.info('HitTestMode outer button touched type: ' + (event as TouchEvent).type);
+            console.info(`HitTestMode outer button touched type: ${(event as TouchEvent).type}`);
           })
           .width(200)
           .height(200)
@@ -108,7 +108,7 @@ struct BlockHierarchy {
             .width(150)
             .height(150)
             .onTouch((event) => {
-              console.info('HitTestMode button150 touched type: ' + (event as TouchEvent).type);
+              console.info(`HitTestMode button150 touched type: ${(event as TouchEvent).type}`);
             })
             .hitTestBehavior(HitTestMode.Transparent)
           Button()
@@ -117,7 +117,7 @@ struct BlockHierarchy {
             .width(100)
             .height(100)
             .onTouch((event) => {
-              console.info('HitTestMode button100 touched type: ' + (event as TouchEvent).type);
+              console.info(`HitTestMode button100 touched type: ${(event as TouchEvent).type}`);
             })
             .hitTestBehavior(HitTestMode.Transparent)
           Button()
@@ -126,7 +126,7 @@ struct BlockHierarchy {
             .width(50)
             .height(50)
             .onTouch((event) => {
-              console.info('HitTestMode button050 touched type: ' + (event as TouchEvent).type);
+              console.info(`HitTestMode button050 touched type: ${(event as TouchEvent).type}`);
             })
             .hitTestBehavior(HitTestMode.Transparent)
         }
@@ -134,24 +134,24 @@ struct BlockHierarchy {
         // 设置触摸测试模式，自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试
         .hitTestBehavior(HitTestMode.BLOCK_HIERARCHY)
         .onTouch((event) => {
-          console.info('HitTestMode stack touched type: ' + (event as TouchEvent).type);
+          console.info(`HitTestMode stack touched type: ${(event as TouchEvent).type}`);
         })
 
         Text('Transparent')
           .hitTestBehavior(HitTestMode.Transparent)
           .width("100%").height("100%")
           .onTouch((event) => {
-            console.info('HitTestMode text touched type: ' + (event as TouchEvent).type);
+            console.info(`HitTestMode text touched type: ${(event as TouchEvent).type}`);
           })
       }.width(300).height(300)
       .borderWidth(2)
       .onTouch((event) => {
-        console.info('HitTestMode father stack touched type: ' + (event as TouchEvent).type);
+        console.info(`HitTestMode father stack touched type: ${(event as TouchEvent).type}`);
       })
     }.width(500).height(500)
     .borderWidth(2)
     .onTouch((event) => {
-      console.info('HitTestMode grandfather stack touched type: ' + (event as TouchEvent).type);
+      console.info(`HitTestMode grandfather stack touched type: ${(event as TouchEvent).type}`);
     })
   }
 }
@@ -172,7 +172,7 @@ struct BlockDescendants {
       Stack() {
         Button('outer button')
           .onTouch((event) => {
-            console.info('HitTestMode outer button touched type: ' + (event as TouchEvent).type);
+            console.info(`HitTestMode outer button touched type: ${(event as TouchEvent).type}`);
           })
           .width(200)
           .height(200)
@@ -183,31 +183,31 @@ struct BlockDescendants {
             .width(100)
             .height(100)
             .onTouch((event) => {
-              console.info('HitTestMode inner button touched type: ' + (event as TouchEvent).type);
+              console.info(`HitTestMode inner button touched type: ${(event as TouchEvent).type}`);
             })
         }
         .width("100%").height("100%")
         // 设置触摸测试模式，自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试
         .hitTestBehavior(HitTestMode.BLOCK_DESCENDANTS)
         .onTouch((event) => {
-          console.info('HitTestMode stack touched type: ' + (event as TouchEvent).type);
+          console.info(`HitTestMode stack touched type: ${(event as TouchEvent).type}`);
         })
 
         Text('Transparent')
           .hitTestBehavior(HitTestMode.Transparent)
           .width("100%").height("100%")
           .onTouch((event) => {
-            console.info('HitTestMode text touched type: ' + (event as TouchEvent).type);
+            console.info(`HitTestMode text touched type: ${(event as TouchEvent).type}`);
           })
       }.width(300).height(300)
       .borderWidth(2)
       .onTouch((event) => {
-        console.info('HitTestMode father stack touched type: ' + (event as TouchEvent).type);
+        console.info(`HitTestMode father stack touched type: ${(event as TouchEvent).type}`);
       })
     }.width(500).height(500)
     .borderWidth(2)
     .onTouch((event) => {
-      console.info('HitTestMode grandfather stack touched type: ' + (event as TouchEvent).type);
+      console.info(`HitTestMode grandfather stack touched type: ${(event as TouchEvent).type}`);
     })
   }
 }
