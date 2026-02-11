@@ -63,6 +63,7 @@ type RecordData = undefined | null | Object | Record<string, RecordData> | Array
 ## FullScreenLaunchComponent
 
 ArkTS-Dyn: FullScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: AtomicServiceOptions, onError?: ErrorCallback, onTerminated?: Callback\<TerminationInfo>, onReceive?: Callback<Record<string, Object>> })
+
 ArkTS-Sta: FullScreenLaunchComponent({ content: ContentBuilder, appId: string, options?: AtomicServiceOptions, onError?: ErrorCallback, onTerminated?: Callback\<TerminationInfo>, onReceive?: Callback<Record<string, RecordData>> })
 
 **装饰器类型：**\@Component
