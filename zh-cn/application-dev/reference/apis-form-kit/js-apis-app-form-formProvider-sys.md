@@ -81,7 +81,7 @@ try {
       console.error(`callback error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
       return;
     }
-    console.info(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
+    console.info(`formProvider requestPublishForm, form ID is: ${data}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -142,7 +142,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.info(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
+    console.info(`formProvider requestPublishForm, form ID is: ${data}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -205,7 +205,7 @@ let want: Want = {
 };
 try {
   formProvider.requestPublishForm(want).then((data: string) => {
-    console.info(`formProvider requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
+    console.info(`formProvider requestPublishForm success, form ID is : ${data}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -272,7 +272,7 @@ try {
               console.error(`callback error, code: ${error.code}, message: ${error.message})`);
               return;
             }
-            console.info(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
+            console.info(`formProvider requestPublishForm, form ID is: ${data}`);
           });
         } catch (error) {
           console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -335,7 +335,7 @@ try {
       };
       try {
         formProvider.requestPublishForm(want).then((data: string) => {
-          console.info(`formProvider requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
+          console.info(`formProvider requestPublishForm success, form ID is : ${data}`);
         }).catch((error: BusinessError) => {
           console.error(`promise error, code: ${error.code}, message: ${error.message})`);
         });

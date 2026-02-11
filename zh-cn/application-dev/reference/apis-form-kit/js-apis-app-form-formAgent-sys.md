@@ -180,7 +180,7 @@ let want: Want = {
 };
 try {
   formAgent.requestPublishForm(want).then((data: string) => {
-    console.info(`formAgent requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
+    console.info(`formAgent requestPublishForm success, form ID is : ${data}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
