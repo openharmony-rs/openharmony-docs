@@ -1738,8 +1738,8 @@ enum ArkUI_AnimationPlayMode
 | -- | -- |
 | ARKUI_ANIMATION_PLAY_MODE_NORMAL = 0 | 动画正向播放。 |
 | ARKUI_ANIMATION_PLAY_MODE_REVERSE = 1 | 动画反向播放。 |
-| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE = 2 | 动画在奇数次（1、3、5...）正向播放，在偶数次（2、4、6...）反向播放。 |
-| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE = 3 | 动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。 |
+| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE = 2 | 动画交替循环播放，在奇数次（1、3、5...）正向播放，在偶数次（2、4、6...）反向播放。 |
+| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE = 3 | 动画反向交替循环播放，在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。 |
 
 ### ArkUI_ImageSize
 
@@ -2716,8 +2716,8 @@ enum ArkUI_AnimationDirection
 | -- | -- |
 | ARKUI_ANIMATION_DIRECTION_NORMAL = 0 | 动画正向循环播放。 |
 | ARKUI_ANIMATION_DIRECTION_REVERSE = 1 | 动画反向循环播放。 |
-| ARKUI_ANIMATION_DIRECTION_ALTERNATE = 2 | 动画交替循环播放，奇数次正向播放，偶数次反向播放。 |
-| ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE = 3 | 动画反向交替循环播放，奇数次反向播放，偶数次正向播放。 |
+| ARKUI_ANIMATION_DIRECTION_ALTERNATE = 2 | 动画交替循环播放，在奇数次（1、3、5...）正向播放，在偶数次（2、4、6...）反向播放。 |
+| ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE = 3 | 动画反向交替循环播放，在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。 |
 
 ### ArkUI_ListItemSwipeActionState
 
