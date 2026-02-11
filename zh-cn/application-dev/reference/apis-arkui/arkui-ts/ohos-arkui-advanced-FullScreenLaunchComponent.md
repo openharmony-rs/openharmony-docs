@@ -48,7 +48,7 @@ type ContentBuilder = () => void
 
 type RecordData = undefined | null | Object | Record<string, RecordData> | Array\<RecordData\>
 
-允许不传值，或直接传入null、undefined，或定义指定格式的Record类型、Array类型。
+允许不传值，或直接传入null、undefined、Object对象类型，或定义指定格式的Record类型、Array类型。
 
 取值类型为下表类型中的并集。
 
