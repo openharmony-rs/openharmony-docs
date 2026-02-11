@@ -25,14 +25,18 @@
     - [Constants](arkts-apis-audio-c.md)
     - [Types](arkts-apis-audio-t.md)
   - [@ohos.multimedia.audioHaptic (Audio-Haptic)](js-apis-audioHaptic.md)
+  - [@ohos.multimedia.systemSoundManager (System Sound Management)](js-apis-systemSoundManager.md)
   <!--Del-->
   - [@ohos.multimedia.audio (Audio Management) (System API)](js-apis-audio-sys.md)
   - [@ohos.multimedia.audioHaptic (Audio-Haptic) (System API)](js-apis-audioHaptic-sys.md)
   - [@ohos.multimedia.systemSoundManager (System Sound Management) (System API)](js-apis-systemSoundManager-sys.md)
-  - multimedia
+  <!--DelEnd-->
+  - multimedia<!--audio-multimedia-->
+    - [SystemSoundPlayer (Sound Effect Player)](js-apis-inner-multimedia-systemSoundPlayer.md)
+    <!--Del-->
     - [ringtonePlayer (Ringtone Player) (System API)](js-apis-inner-multimedia-ringtonePlayer-sys.md)
     - [systemTonePlayer (System Alert Tone Player) (System API)](js-apis-inner-multimedia-systemTonePlayer-sys.md)
-  <!--DelEnd-->
+    <!--DelEnd-->
 - ArkTS Components<!--audio-comp-->
   - [@ohos.multimedia.avVolumePanel (Volume Panel)](ohos-multimedia-avvolumepanel.md)
 - C APIs<!--audio-c-->
@@ -80,6 +84,10 @@
     - [OH_AudioSuitePipelineStruct](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)
     - [OH_AudioNodeStruct](capi-ohaudiosuite-oh-audionodestruct.md)
     - [OH_AudioNodeBuilderStruct](capi-ohaudiosuite-oh-audionodebuilderstruct.md)
+    - [OH_AudioSuite_SpaceRenderPositionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderpositionparams.md)
+    - [OH_AudioSuite_PureVoiceChangeOption](capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md)
+    - [OH_AudioSuite_SpaceRenderExtensionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderextensionparams.md)
+    - [OH_AudioSuite_SpaceRenderRotationParams](capi-ohaudiosuite-oh-audiosuite-spacerenderrotationparams.md)
 - Error Codes<!--audio-arkts-errcode-->
   - [Audio Error Codes](errorcode-audio.md)
   <!--Del-->
