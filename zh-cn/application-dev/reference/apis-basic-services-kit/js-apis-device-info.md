@@ -31,7 +31,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | 名称 | 类型 | 只读 | 说明 |
 | -------- | -------- | -------- | -------- |
 | deviceType | string | 是 | 设备类型。详细请参考[deviceTypes标签](../../quick-start/module-configuration-file.md#devicetypes标签)。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br/>示例：<!--RP1-->wearable<!--RP1End-->|
-| manufacturer | string | 是 | 设备厂家名称。<br/>示例：HUAWEI |
+| manufacture | string | 是 | 设备厂家名称。<br/>示例：HUAWEI |
 | brand | string | 是 | 设备品牌名称。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br/>示例：HUAWEI |
 | marketName | string | 是 | 外部产品系列。<br/>示例：<!--RP2-->Mate XX<!--RP2End--> |
 | productSeries | string | 是 | 产品系列。<br/>示例：<!--RP3-->TAS<!--RP3End--> |
