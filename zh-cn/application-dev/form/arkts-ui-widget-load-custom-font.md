@@ -13,7 +13,7 @@ API version 22开始新增了[ohos.graphics.text.FontCollection.getLocalInstance
 
 2. 在项目`entry\src\main\resources\rawfile`目录下添加自定义字体文件`xxx.ttf`。
 
-3. 页面布局代码实现`entry/src/main/ets/widget/pages/WidgetCard.ets`
+3. 页面布局代码实现`entry/src/main/ets/widget/pages/WidgetCard.ets`。
 
     在卡片页面中布局两个按钮，点击按钮`load font`或按钮`unload font`，调用本地字体集实例的loadFontSync、unloadFontSync进行字体的加载、卸载。
 
