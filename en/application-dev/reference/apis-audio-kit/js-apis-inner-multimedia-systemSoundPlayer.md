@@ -30,7 +30,7 @@ load(soundType: systemSoundManager.SystemSoundType): Promise&lt;void&gt;
 
 Loads the system sound effect. This API uses a promise to return the result.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
@@ -74,7 +74,7 @@ play(soundType: systemSoundManager.SystemSoundType): Promise&lt;void&gt;
 
 Plays the system sound effect. This API uses a promise to return the result.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
@@ -118,7 +118,7 @@ unload(soundType: systemSoundManager.SystemSoundType): Promise&lt;void&gt;
 
 Unloads the system sound effect that has been loaded. This API uses a promise to return the result.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
@@ -161,7 +161,7 @@ release(): Promise&lt;void&gt;
 
 Releases the system sound effect player. This API uses a promise to return the result.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.SystemSound.Core
 
