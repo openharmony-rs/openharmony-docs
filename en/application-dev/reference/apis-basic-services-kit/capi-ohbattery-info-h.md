@@ -40,7 +40,7 @@ Declares the battery APIs that are used to obtain the current battery capacity a
 
 | Name| Description|
 | -- | -- |
-| static const char * COMMON_EVENT_KEY_CAPACITY = "soc" | Defines the common event indicating a battery capacity change.<br>**Since**: 13<br>**System capability**: SystemCapability.PowerManager.BatteryManager.Core|
+| static const char * COMMON_EVENT_KEY_CAPACITY = "soc" | Defines the common event indicating a battery capacity change.<br>**Since**: 13|
 | static const char * COMMON_EVENT_KEY_CHARGE_STATE = "chargeState" | Defines the common event indicating a charging status change.<br>**Since**: 13|
 | static const char * COMMON_EVENT_KEY_PLUGGED_TYPE = "pluggedType" | Defines the common event indicating a battery plugged type change.<br>**Since**: 13|
 
@@ -107,4 +107,4 @@ Obtains the battery plugged type.
 
 | Type| Description|
 | -- | -- |
-| [BatteryInfo_BatteryPluggedType](#batteryinfo_batterypluggedtype) | Returns {@link BatteryInfo_BatteryPluggedType#PLUGGED_TYPE_NONE} if there is no power supply;<br>returns [PLUGGED_TYPE_AC](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in AC charging mode;<br>returns [PLUGGED_TYPE_USB](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in USB DC charging mode;<br>returns [PLUGGED_TYPE_WIRELESS](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in wireless charging mode;<br>returns [PLUGGED_TYPE_BUTT](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the battery plugged type is unknown. |
+| [BatteryInfo_BatteryPluggedType](#batteryinfo_batterypluggedtype) | Returns [PLUGGED_TYPE_NONE](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is removed;<br>         returns [PLUGGED_TYPE_AC](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in AC charging mode;<br>         returns [PLUGGED_TYPE_USB](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in USB DC charging mode;<br>         returns [PLUGGED_TYPE_WIRELESS](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in wireless charging mode;<br>         returns [PLUGGED_TYPE_BUTT](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the battery plugged type is unknown.|
