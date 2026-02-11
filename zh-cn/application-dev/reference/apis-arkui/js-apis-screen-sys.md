@@ -659,7 +659,7 @@ setVirtualScreenSurface(screenId:number, surfaceId: string, callback: AsyncCallb
 **示例：**
 
 ```ts
-//Index.ets
+// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -736,7 +736,7 @@ setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-//Index.ets
+// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
