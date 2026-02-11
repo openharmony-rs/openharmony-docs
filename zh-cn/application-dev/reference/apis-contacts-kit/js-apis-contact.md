@@ -806,7 +806,7 @@ isLocalContact(context: Context,  id: number, callback: AsyncCallback&lt;boolean
 
   // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  contact.isLocalContact(context, /*id*/1, (err: BusinessError, data) => {
+  contact.isLocalContact(context, 1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to isLocalContact. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -841,7 +841,7 @@ isLocalContact(id: number, callback: AsyncCallback&lt;boolean&gt;): void
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  contact.isLocalContact(/*id*/1, (err: BusinessError, data) => {
+  contact.isLocalContact(1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to isLocalContact. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -894,7 +894,7 @@ isLocalContact(context: Context,  id: number): Promise&lt;boolean&gt;
 
   // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  let promise = contact.isLocalContact(context, /*id*/1);
+  let promise = contact.isLocalContact(context, 1);
   promise.then((data) => {
     console.info(`Succeeded in isLocalContact. data->${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
@@ -933,7 +933,7 @@ isLocalContact(id: number): Promise&lt;boolean&gt;
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let promise = contact.isLocalContact(/*id*/1);
+  let promise = contact.isLocalContact(1);
   promise.then((data) => {
     console.info(`Succeeded in isLocalContact. data->${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
@@ -980,7 +980,7 @@ isMyCard(context: Context,  id: number, callback: AsyncCallback&lt;boolean&gt;):
 
   // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  contact.isMyCard(context, /*id*/1, (err: BusinessError, data) => {
+  contact.isMyCard(context, 1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to isMyCard. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -1015,7 +1015,7 @@ isMyCard(id: number, callback: AsyncCallback&lt;boolean&gt;): void
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  contact.isMyCard(/*id*/1, (err: BusinessError, data) => {
+  contact.isMyCard(1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to isMyCard. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -1068,7 +1068,7 @@ isMyCard(context: Context,  id: number): Promise&lt;boolean&gt;
 
   // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  let promise = contact.isMyCard(context, /*id*/1);
+  let promise = contact.isMyCard(context, 1);
   promise.then((data) => {
     console.info(`Succeeded in isMyCard. data->${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
@@ -1107,7 +1107,7 @@ isMyCard(id: number): Promise&lt;boolean&gt;
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let promise = contact.isMyCard(/*id*/1);
+  let promise = contact.isMyCard(1);
   promise.then((data) => {
     console.info(`Succeeded in isMyCard. data->${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
@@ -3940,7 +3940,7 @@ queryKey(context: Context,  id: number, callback: AsyncCallback&lt;string&gt;): 
 
   // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  contact.queryKey(context, /*id*/1, (err: BusinessError, data) => {
+  contact.queryKey(context, 1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Key. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -3975,7 +3975,7 @@ queryKey(id: number, callback: AsyncCallback&lt;string&gt;): void
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  contact.queryKey(/*id*/1, (err: BusinessError, data) => {
+  contact.queryKey(1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Key. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -4024,7 +4024,7 @@ queryKey(context: Context,  id: number, holder: Holder, callback: AsyncCallback&
 
   // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  contact.queryKey(context, /*id*/1, {
+  contact.queryKey(context, 1, {
     holderId: 1,
     bundleName: "",
     displayName: ""
@@ -4064,7 +4064,7 @@ queryKey(id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;): voi
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  contact.queryKey(/*id*/1, {
+  contact.queryKey(1, {
     holderId: 1,
     bundleName: "",
     displayName: ""
@@ -4122,7 +4122,7 @@ queryKey(context: Context,  id: number, holder?: Holder): Promise&lt;string&gt;
 
   // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  let promise = contact.queryKey(context, /*id*/1, {
+  let promise = contact.queryKey(context, 1, {
     holderId: 1,
     bundleName: "",
     displayName: ""
@@ -4166,7 +4166,7 @@ queryKey(id: number, holder?: Holder): Promise&lt;string&gt;
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let promise = contact.queryKey(/*id*/1, {
+  let promise = contact.queryKey(1, {
     holderId: 1,
     bundleName: "",
     displayName: ""
