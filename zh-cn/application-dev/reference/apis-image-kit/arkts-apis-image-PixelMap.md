@@ -6,9 +6,9 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @w_Machine_cc-->
 
-图像像素类，用于读取或写入图像数据以及获取图像信息。在调用PixelMap的方法前，需要先通过[image.createPixelMap](arkts-apis-image-f.md#imagecreatepixelmap8)创建一个PixelMap实例。目前pixelmap序列化大小最大128MB，超过会送显失败。大小计算方式为(宽\*高\*每像素占用字节数)。
+图像像素类，用于读取或写入图像数据以及获取图像信息。在调用PixelMap的方法前，需要先通过[image.createPixelMap](arkts-apis-image-f.md#imagecreatepixelmap8)创建一个PixelMap实例。目前PixelMap序列化大小最大128MB，超过会送显失败。大小计算方式为（宽\*高\*[每像素占用字节数](arkts-apis-image-e.md#pixelmapformat7)）。
 
-从API version 11开始，PixelMap支持通过worker跨线程调用。当PixelMap通过[Worker](../apis-arkts/js-apis-worker.md)跨线程后，原线程的PixelMap的所有接口均不能调用，否则将报错501 服务器不具备完成请求的功能。
+从API version 11开始，PixelMap支持通过[Worker](../apis-arkts/js-apis-worker.md)跨线程调用。当PixelMap通过[Worker](../apis-arkts/js-apis-worker.md)跨线程后，原线程的PixelMap的所有接口均不能调用，否则将报错501 服务器不具备完成请求的功能。
 
 在调用PixelMap的方法前，可以通过[image.createPixelMap](arkts-apis-image-f.md#imagecreatepixelmap8)传入像素数据创建一个PixelMap对象，也可以通过[ImageSource](arkts-apis-image-ImageSource.md)进行图片解码创建PixelMap对象。
 
@@ -973,7 +973,7 @@ function OpacitySync(pixelMap:image.PixelMap) {
 
 createAlphaPixelmap(): Promise\<PixelMap>
 
-根据Alpha通道的信息，来生成一个仅包含Alpha通道信息的pixelmap，可用于阴影效果，yuv格式不支持此接口。使用Promise异步回调。
+根据Alpha通道的信息，来生成一个仅包含Alpha通道信息的PixelMap，可用于阴影效果，yuv格式不支持此接口。使用Promise异步回调。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1007,7 +1007,7 @@ async function CreateAlphaPixelmap(pixelMap:image.PixelMap) {
 
 createAlphaPixelmap(callback: AsyncCallback\<PixelMap>): void
 
-根据Alpha通道的信息，来生成一个仅包含Alpha通道信息的pixelmap，可用于阴影效果，yuv格式不支持此接口，使用callback形式返回。
+根据Alpha通道的信息，来生成一个仅包含Alpha通道信息的PixelMap，可用于阴影效果，yuv格式不支持此接口，使用callback形式返回。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1744,7 +1744,7 @@ rotate(angle: number, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 1. 图片旋转的角度取值范围：0-360。超出取值范围时，根据圆周360度自动矫正。例如，-100度与260度效果相同。
+> 1. 图片旋转的角度取值范围：[0, 360]。超出取值范围时，根据圆周360度自动矫正。例如，-100度与260度效果相同。
 > 2. 如果图片旋转的角度不是90的整数倍，旋转后图片的尺寸会发生改变。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
@@ -1788,7 +1788,7 @@ rotate(angle: number): Promise\<void>
 
 > **说明：**
 >
-> 1. 图片旋转的角度取值范围：0-360。超出取值范围时，根据圆周360度自动矫正。例如，-100度与260度效果相同。
+> 1. 图片旋转的角度取值范围：[0, 360]。超出取值范围时，根据圆周360度自动矫正。例如，-100度与260度效果相同。
 > 2. 如果图片旋转的角度不是90的整数倍，旋转后图片的尺寸会发生改变。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
@@ -1834,7 +1834,7 @@ rotateSync(angle: number): void
 
 > **说明：**
 >
-> 1. 图片旋转的角度取值范围：0-360。超出取值范围时，根据圆周360度自动矫正。例如，-100度与260度效果相同。
+> 1. 图片旋转的角度取值范围：[0, 360]。超出取值范围时，根据圆周360度自动矫正。例如，-100度与260度效果相同。
 > 2. 如果图片旋转的角度不是90的整数倍，旋转后图片的尺寸会发生改变。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
