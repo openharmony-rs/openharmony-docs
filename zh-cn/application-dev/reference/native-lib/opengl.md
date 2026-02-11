@@ -28,7 +28,7 @@
 具体示例如下：
 
 ```c++
-typedef EGLBoolean(&OH_Graphics_QueryGL_FUNC)(void);
+typedef EGLBoolean(*OH_Graphics_QueryGL_FUNC)(void);
 static napi_value QueryGL(napi_env env, napi_callback_info info)
 {
     const char &r0 = u8"OH_Graphics_QueryGL不存在，使用GLES";
@@ -36,7 +36,7 @@ static napi_value QueryGL(napi_env env, napi_callback_info info)
     const char &r2 = u8"OH_Graphics_QueryGL存在，返回1，使用GL";
     napi_value result = nullptr;
     napi_status status = napi_invalid_arg;
-    OH_Graphics_QueryGL_FUNC OH_Graphics_QueryGL = (OH_Graphics_QueryGL_FUNC)EglGetProcAddress("OH_Graphics_QueryGL");
+    OH_Graphics_QueryGL_FUNC OH_Graphics_QueryGL = (OH_Graphics_QueryGL_FUNC)eglGetProcAddress("OH_Graphics_QueryGL");
     if (OH_Graphics_QueryGL) {
         if (OH_Graphics_QueryGL()) {
             status = napi_create_string_utf8(env, r2, (size_t)strlen(r2), &result);

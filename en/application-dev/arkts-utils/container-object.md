@@ -12,7 +12,7 @@ Currently, the [TreeSet](../reference/apis-arkts/js-apis-treeset.md) object supp
 
 > **NOTE**
 >
-> - Since API version 22, TreeSet can be used for cross-thread data transfer.
+> - Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, TreeSet can be used for cross-thread data transfer.
 > 
 > - When passing container objects across threads, only data can be transmitted, and custom methods will be lost. If custom methods are required, you need to mark them as Sendable functions using the [@Sendable decorator](arkts-sendable.md#sendable-decorator), after which the custom methods can be passed across threads.
 

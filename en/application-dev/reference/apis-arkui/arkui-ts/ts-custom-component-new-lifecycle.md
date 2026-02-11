@@ -52,7 +52,7 @@ For details, see [Lifecycle Example](#lifecycle-example).
 
 ComponentBuilt: MethodDecorator
 
-Decorates a function that is called after the **build()** function of the custom component is executed for the first time, that is, when the component status changes from from **CustomComponentLifecycleState.APPEARED** to **CustomComponentLifecycleState.BUILT**. You can use this callback for actions that do not affect the UI, such as tracking data reporting.
+Decorates a function that is called after the **build()** function of the custom component is executed for the first time, that is, when the component status changes from **CustomComponentLifecycleState.APPEARED** to **CustomComponentLifecycleState.BUILT**. You can use this callback for actions that do not affect the UI, such as tracking data reporting.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 

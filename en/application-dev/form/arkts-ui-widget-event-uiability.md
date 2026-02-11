@@ -16,9 +16,10 @@ With the router event, a touch on the widget can start the associated applicatio
 
 - In the widget page code, register the **onClick** event callback of the button and call the **postCardAction** API in the callback to trigger the router event to start the UIAbility in the foreground.
   
-    <!-- @[widget_updt_router_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdaterouter/pages/WidgetUpdateRouterCard.ets) -->
+    <!-- @[widget_update_router_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdaterouter/pages/WidgetUpdateRouterCard.ets) --> 
     
     ``` TypeScript
+    // entry/src/main/ets/widgetupdaterouter/pages/WidgetUpdateRouterCard.ets
     let storageUpdateRouter = new LocalStorage();
     
     @Entry(storageUpdateRouter)
@@ -79,6 +80,7 @@ With the router event, a touch on the widget can start the associated applicatio
     <!-- @[widget_event_router_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts) -->
     
     ``` TypeScript
+    // entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { window } from '@kit.ArkUI';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -137,9 +139,10 @@ With the router event, a touch on the widget can start the associated applicatio
 
 - In the widget page code, register the **onClick** event callback of the button and call the **postCardAction** API in the callback to trigger the call event to start the UIAbility in the background.
   
-    <!-- @[widget_update_call_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdatecall/pages/WidgetUpdateCallCard.ets) -->
+    <!-- @[widget_update_call_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdatecall/pages/WidgetUpdateCallCard.ets) --> 
     
     ``` TypeScript
+    // entry/src/main/ets/widgetupdatecall/pages/WidgetUpdateCallCard.ets
     let storageUpdateCall = new LocalStorage();
     
     @Entry(storageUpdateCall)
@@ -198,9 +201,10 @@ With the router event, a touch on the widget can start the associated applicatio
   
 - Listen for the method required by the call event in the **onCreate** callback of the UIAbility, and then call the [updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform) API in the corresponding method to update the widget.
   
-    <!-- @[widget_callee_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts) -->
+    <!-- @[widget_callee_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts) --> 
     
     ``` TypeScript
+    // entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { window } from '@kit.ArkUI';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -264,7 +268,6 @@ With the router event, a touch on the widget can start the associated applicatio
         } catch (error) {
           hilog.error(DOMAIN_NUMBER, TAG, `${MSG_SEND_METHOD} register failed with error ${JSON.stringify(error)}`);
         }
-        ;
       }
     
       onWindowStageCreate(windowStage: window.WindowStage): void {

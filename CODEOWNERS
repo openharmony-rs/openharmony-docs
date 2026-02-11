@@ -504,7 +504,7 @@ zh-cn/application-dev/web/web-set-back-forward-cache.md @aohui @glzt2l @HelloShu
 zh-cn/application-dev/web/app-takeovers-web-media.md @qiu-gongkai @glzt2l @HelloShuo @d0ub1eh
 zh-cn/application-dev/web/web-clipboard.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 zh-cn/application-dev/web/web-component-migrate.md @libing23232323 @glzt2l @HelloShuo @zhu-sheng-le
-zh-cn/application-dev/web/web-component-overview.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/web/web-component-overview.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/web/web-content-scrolling.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 zh-cn/application-dev/web/web-crashpad.md @hjoksky @glzt2l @HelloShuo @StringChen
 zh-cn/application-dev/web/web-createpdf.md @handyohos @glzt2l @HelloShuo @zhang-yinglie
@@ -747,8 +747,8 @@ zh-cn/application-dev/inputmethod/inputmethod_application_guide.md  @murphy84  @
 zh-cn/application-dev/inputmethod/switch_inputmehod_guide.md  @murphy84  @zhang_yixin13  
 
 [开发-Input kit]
-zh-cn/application-dev/device/input  @zhang_yixin13  @hanruofei @Lyuxin
-zh-cn/application-dev/dfx/uinput.md @zhaoxueyuan @hanruofei @Lyuxin @zhang_yixin13
+zh-cn/application-dev/device/input  @zhang_yixin13  @hanyi1150 @Lyuxin
+zh-cn/application-dev/dfx/uinput.md @zhaoxueyuan @hanyi1150 @Lyuxin @zhang_yixin13
 
 [开发-IPC Kit]
 zh-cn/application-dev/connectivity/ipc-rpc-overview.md @zhang_yixin13 @xdx1921  @zhaopeng_gitee @Lyuxin
@@ -1255,7 +1255,7 @@ zh-cn/application-dev/reference/apis-arkui/errorcode-xcomponent.md	@dutie123	@fr
 zh-cn/application-dev/reference/apis-arkui/js-apis-animator.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-AttributeUpdater.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-builderNode.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-ComponentContent.md	@liyi0309	@lxl007	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-ComponentContent.md	@ZhangYu-Home	@khq	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-componentSnapshot.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-componentUtils.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-Content.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
@@ -1786,47 +1786,47 @@ zh-cn/application-dev/reference/apis-arkui/errorcode-display.md @ge-yafang @acha
 
 
 [API参考-ArkWeb]
-zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-e.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-e.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-f.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md @handyohos @glzt2l @HelloShuo @zhang-yinglie
-zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-i.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-i.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-MediaSourceInfo.md @qiu-gongkai @glzt2l @HelloShuo @d0ub1eh
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerBridge.md @qiu-gongkai @glzt2l @HelloShuo @d0ub1eh
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerHandler.md @qiu-gongkai @glzt2l @HelloShuo @d0ub1eh
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerSurfaceInfo.md @qiu-gongkai @glzt2l @HelloShuo @d0ub1eh
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-PdfData.md @qiu-gongkai @glzt2l @HelloShuo @d0ub1eh
-zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-t.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-t.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-WebDataBase.md @handyohos @glzt2l @HelloShuo @yjone
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-WebStorage.md @handyohos @glzt2l @HelloShuo @yjone
-zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-WebviewController.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
-zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
-zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-attributes.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-WebviewController.md @kurli1 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview.md @kurli1 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-attributes.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-ControllerHandler.md @libing23232323 @glzt2l @HelloShuo @zhu-sheng-le
-zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-e.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-e.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-EventResult.md @LongLie @glzt2l @HelloShuo @yp99ustc
-zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-events.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-events.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-FileSelectorResult.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-FullScreenExitHandler.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
-zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-i.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-i.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-JsGeolocation.md @handyohos @glzt2l @HelloShuo @zhang-yinglie
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-JsResult.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-PermissionRequest.md @qiu-gongkai @glzt2l @HelloShuo @d0ub1eh
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-ScreenCaptureHandler.md @qiu-gongkai @glzt2l @HelloShuo @d0ub1eh
-zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-t.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-t.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-WebContextMenuParam.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
-zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-WebController.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-WebController.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-WebKeyboardController.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
-zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
-zh-cn/application-dev/reference/apis-arkweb/capi-arkweb-interface-h.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
-zh-cn/application-dev/reference/apis-arkweb/capi-arkweb-type-h.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
-zh-cn/application-dev/reference/apis-arkweb/capi-native-interface-arkweb-h.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web.md @kurli1 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/capi-arkweb-interface-h.md @kurli1 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/capi-arkweb-type-h.md @kurli1 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/capi-native-interface-arkweb-h.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/capi-web-arkweb-anynativeapi.md @libing23232323 @glzt2l @HelloShuo @zhu-sheng-le
-zh-cn/application-dev/reference/apis-arkweb/capi-web-arkweb-componentapi.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
-zh-cn/application-dev/reference/apis-arkweb/capi-web-arkweb-controllerapi.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
-zh-cn/application-dev/reference/apis-arkweb/capi-web.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
-zh-cn/application-dev/reference/apis-arkweb/errorcode-webview.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/capi-web-arkweb-componentapi.md @kurli1 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/capi-web-arkweb-controllerapi.md @kurli1 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/capi-web.md @kurli1 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/errorcode-webview.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-netErrorList.md @aohui @glzt2l @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md @libing23232323 @glzt2l @HelloShuo @zhu-sheng-le
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md @libing23232323 @glzt2l @HelloShuo @zhu-sheng-le
@@ -2268,7 +2268,7 @@ zh-cn/application-dev/reference/apis-ime-kit/ @murphy84 @zhang_yixin13
 
 
 [API参考-Input Kit]
-zh-cn/application-dev/reference/apis-input-kit/ @zhang_yixin13   @hanruofei @Lyuxin
+zh-cn/application-dev/reference/apis-input-kit/ @zhang_yixin13   @hanyi1150 @Lyuxin
 
 
 [API参考-IPC Kit]
