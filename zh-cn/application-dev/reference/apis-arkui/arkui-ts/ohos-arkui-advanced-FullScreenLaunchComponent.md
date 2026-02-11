@@ -15,13 +15,9 @@
 > 如果需要在该组件中实现可嵌入式运行的原子化服务，必须继承自[EmbeddableUIAbility](../../apis-ability-kit/js-apis-app-ability-embeddableUIAbility.md)。否则，系统无法保证原子化服务功能正常。
 
 ## 导入模块
-ArkTS-Dyn导入模块：
+
 ```ts
 import { FullScreenLaunchComponent } from '@kit.ArkUI';
-```
-ArkTS-Sta导入模块：
-```ts
-import { FullScreenLaunchComponent } from '@ohos.arkui.advanced.FullScreenLaunchComponent';
 ```
 
 ## 子组件
@@ -74,7 +70,7 @@ FullScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: A
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| content | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<void><br>ArkTS-Sta: [ContentBuilder](#contentbuilder) | 是 | \@BuilderParam | 可以使用组件组合来自定义拉起原子化服务前的占位图标，实现类似大桌面应用图标的效果。点击占位组件后，将拉起原子化服务。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 12|
+| content | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<void><br>ArkTS-Sta: [ContentBuilder](#contentbuilder) | 是 | \@BuilderParam | 可以使用组件组合来自定义拉起原子化服务前的占位图标，实现类似大桌面应用图标的效果。点击占位组件后，将拉起原子化服务。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
 | appId | string | 是 | - |  需要拉起的原子化服务appId，appId是原子化服务的唯一标识。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23<!--RP1--><!--RP1End-->|
 | options | [AtomicServiceOptions](../../apis-ability-kit/js-apis-app-ability-atomicServiceOptions.md) | 否 | - | 拉起原子化服务参数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | onError<sup>18+<sup> | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否 | - | 被拉起的嵌入式运行原子化服务在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
