@@ -12861,9 +12861,9 @@
 						"start_line":108
 					},
 					{
-						"end_line":86,
+						"end_line":87,
 						"name":"shade_change_event",
-						"start_line":57
+						"start_line":58
 					}
 				]
 			},
@@ -14380,7 +14380,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Sequence.ets",
 				"functions":[
 					{
-						"end_line":84,
+						"end_line":91,
 						"name":"sequence_identification",
 						"start_line":15
 					}
@@ -14390,7 +14390,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Parallel.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":47,
 						"name":"parallel_recognition",
 						"start_line":16
 					}
@@ -14400,7 +14400,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Exclusive.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":47,
 						"name":"mutual_exclusion",
 						"start_line":16
 					}
@@ -14410,7 +14410,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/SceneExample.ets",
 				"functions":[
 					{
-						"end_line":76,
+						"end_line":78,
 						"name":"scene_example",
 						"start_line":16
 					}
@@ -20609,14 +20609,14 @@
 						"start_line":152
 					},
 					{
-						"end_line":28,
+						"end_line":29,
 						"name":"drag_hilog_const",
 						"start_line":24
 					},
 					{
-						"end_line":102,
+						"end_line":101,
 						"name":"generate_pix_map",
-						"start_line":39
+						"start_line":40
 					},
 					{
 						"end_line":195,
@@ -20636,7 +20636,7 @@
 					{
 						"end_line":85,
 						"name":"data_delayed_retry",
-						"start_line":56
+						"start_line":57
 					},
 					{
 						"end_line":170,
@@ -20644,7 +20644,7 @@
 						"start_line":159
 					},
 					{
-						"end_line":234,
+						"end_line":233,
 						"name":"default_drag",
 						"start_line":16
 					}
