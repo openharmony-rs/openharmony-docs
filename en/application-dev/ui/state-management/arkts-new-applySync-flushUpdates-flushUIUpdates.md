@@ -11,13 +11,13 @@ To synchronize the update of state management V2 and animation effects such as [
 
 > **NOTE**
 >
-> Since API version 22, you can use the applySync, flushUpdates, and flushUIUpdates APIs in UIUtils to implement synchronous dirty data marking for status management V2.
+> Since API version 22, you can use the applySync, flushUpdates, and flushUIUpdates APIs in UIUtils to implement synchronous dirty data marking for state management V2.
 
 ## Overview
 
-Unlike state management V1, state management V2 does not immediately [mark the variable as dirty](./arkts-state-management-glossary.md#mark-dirty). Instead, it throws a Promise microtask (with a lower priority than a macrotask). The microtask processes the dirty marking of the custom component only after the current macrotask is executed. For details about the differences, see [Differences Between State Management V1 and V2 Update Mechanisms](./arkts-v1-v2-update-difference.md#differences-between-v1-state-variable-update-and-v2-state-variable-update) The animateTo animation immediately refreshes the marked dirty node to determine the first frame of the animation. If the V2 state variable is used in the animation and the state variable is modified before the animation, the first frame of the animation does not meet the expectation because the change of the state variable is not marked dirty when animateTo is called. Therefore, the **applySync**, **flushUpdates**, and **flushUIUpdates** APIs are introduced to implement the synchronization of dirty data in the status management V2 and ensure that the animation effect reaches the expected effect.
+Unlike state management V1, state management V2 does not immediately [mark the variable as dirty](./arkts-state-management-glossary.md#mark-dirty). Instead, it throws a Promise microtask (with a lower priority than a macrotask). The microtask processes the dirty marking of the custom component only after the current macrotask is executed. For details about the differences, see [Differences Between V1 State Variable Update and V2 State Variable Update](./arkts-v1-v2-update-difference.md#differences-between-v1-state-variable-update-and-v2-state-variable-update). The animateTo animation immediately refreshes the marked dirty node to determine the first frame of the animation. If the V2 state variable is used in the animation and the state variable is modified before the animation, the first frame of the animation does not meet the expectation because the change of the state variable is not marked dirty when animateTo is called. Therefore, the **applySync**, **flushUpdates**, and **flushUIUpdates** APIs are introduced to achieve synchronized dirty marking for state management V2, thus ensuring that animation effects meet expectations.
 
-To use the **applySync/flushUpdates/flushUIUpdates** API, you need to import the UIUtils tool.
+To use the **applySync/flushUpdates/flushUIUpdates** APIs, you need to import the UIUtils tool.
 
 ```ts
 import { UIUtils } from '@kit.ArkUI';
@@ -25,25 +25,27 @@ import { UIUtils } from '@kit.ArkUI';
 
 ## Use Rules
 
-- The applySync interface is used to synchronously update a specified state variable. This API receives a closure function and updates only the modification in the closure function, including updating the [@Computed](./arkts-new-computed.md) calculation and [@Monitor](./arkts-new-monitor.md) callback and re-render the UI node.
-
-  ```ts
+- The **applySync** API is used to synchronously refresh the specified state variables. It accepts a closure function and only refreshes the modifications made within the closure function, including updating [@Computed](./arkts-new-computed.md) calculations, triggering [@Monitor](./arkts-new-monitor.md) callbacks, and re-rendering UI nodes.
+  
+  <!-- @[ApplySyncUse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/ApplySyncUse.ets) -->
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local w: number = 50; // Width.
     @Local h: number = 50; // Height.
     @Local message: string = 'Hello';
-
+  
     @Monitor('message')
     onMessageChange(monitor: IMonitor) {
       monitor.dirty.forEach((path: string) => {
         console.info(`${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
       });
     }
-
+  
     build() {
       Column() {
         Button('change size')
@@ -55,7 +57,7 @@ import { UIUtils } from '@kit.ArkUI';
               this.h = 100;
               this.message = 'Hello World';
             });
-
+  
             this.getUIContext().animateTo({
               duration: 1000
             }, () => {
@@ -64,6 +66,7 @@ import { UIUtils } from '@kit.ArkUI';
               this.message = 'Hello ArkUI';
             });
           })
+          // ...
         Column() {
           Text(`${this.message}`)
         }
@@ -78,24 +81,26 @@ import { UIUtils } from '@kit.ArkUI';
   ![applySync-flushUpdates-flushUIUpdates](./figures/applySync-flushUpdates-flushUIUpdates.gif)
   
 - The **flushUpdates** API is used to synchronously refresh all state variable modifications before this function is called, including updating the @Computed calculation, @Monitor callback, and re-rendering the UI node.
-
-  ```ts
+  
+  <!-- @[FlushUpdatesUse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/FlushUpdatesUse.ets) -->
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local w: number = 50; // Width.
     @Local h: number = 50; // Height.
     @Local message: string = 'Hello';
-
+  
     @Monitor('message')
     onMessageChange(monitor: IMonitor) {
       monitor.dirty.forEach((path: string) => {
         console.info(`${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
       });
     }
-
+  
     build() {
       Column() {
         Button('change size')
@@ -106,7 +111,7 @@ import { UIUtils } from '@kit.ArkUI';
             this.h = 100;
             this.message = 'Hello World';
             UIUtils.flushUpdates();
-
+  
             this.getUIContext().animateTo({
               duration: 1000
             }, () => {
@@ -115,6 +120,7 @@ import { UIUtils } from '@kit.ArkUI';
               this.message = 'Hello ArkUI';
             });
           })
+          // ...
         Column() {
           Text(`${this.message}`)
         }
@@ -128,43 +134,46 @@ import { UIUtils } from '@kit.ArkUI';
 
   ![applySync-flushUpdates-flushUIUpdates](./figures/applySync-flushUpdates-flushUIUpdates.gif)
   
-- The applySync and flushUpdates APIs perform the @Computed calculation and @Monitor callback at the same time. As a result, in the preceding sample code, the @Monitor callback is triggered twice in a click event, which may be inconsistent with the developer's expectation. Therefore, the flushUIUpdates API is introduced, this API is used only to synchronously refresh all UI nodes before this function is called. The @Computed calculation and @Monitor callback are not performed.
-
-  ```ts
+- The mentioned **applySync** and **flushUpdates** APIs both synchronously execute @Computed calculations and trigger @Monitor callbacks. This causes two @Monitor callbacks to be triggered by a single click event in the above sample code, which may be inconsistent with your expectations. For this reason, the **flushUIUpdates** API is introduced. It is only used to synchronously refresh all UI nodes modified before the function is called, and does not execute @Computed calculations or trigger @Monitor callbacks.
+  
+  <!-- @[FlushUIUpdatesUse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/FlushUIUpdatesUse.ets) -->
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local message: string = 'Hello';
-
+  
     @Monitor('message')
     onMessageChange(monitor: IMonitor) {
       monitor.dirty.forEach((path: string) => {
         console.info(`${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
       });
     }
-
+  
     build() {
       Column() {
         Text(`message: ${this.message}`)
         Button('change size')
           .margin(20)
           .onClick(() => {
-            // test1: Call all the applySync API. The log is printed twice.
+            // test1: Call the applySync API. The log is printed twice.
             // UIUtils.applySync(() => {
             //   this.message = 'Hello World';
             // })
-            
+  
             // test2: Call the flushUpdates API. The log is printed twice.
             // this.message = 'Hello World';
             // UIUtils.flushUpdates();
-            
+  
             // test3: Call the flushUIUpdates API. The log is printed once.
             this.message = 'Hello World';
             UIUtils.flushUIUpdates();
             this.message = 'Hello ArkUI';
           })
+          // ...
       }
     }
   }
@@ -172,17 +181,19 @@ import { UIUtils } from '@kit.ArkUI';
 
 ## Constraints
 
-- If the applySync function is nested in the applySync closure function, the inner applySync function is skipped, undefined is returned, and the warning message "UIUtils.applySync will be skipped when called within another UIUtils.applySync. The inner UIUtils.applySync will return undefined" is printed.
-
-  ```ts
+- If **applySync** is called nestedly within the closure function of another applySync, the inner **applySync** will be skipped and return **undefined**, and the warning message "UIUtils.applySync will be skipped when called within another UIUtils.applySync. The inner UIUtils.applySync will return undefined" will be printed.
+  
+  <!-- @[ApplySyncNestApplySync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/ApplySyncNestApplySync.ets) -->
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local w: number = 50; // Width.
     @Local h: number = 50; // Height.
-
+  
     build() {
       Column() {
         Button('change size')
@@ -191,12 +202,12 @@ import { UIUtils } from '@kit.ArkUI';
             // Values are changed additionally before the animation is executed.
             UIUtils.applySync(() => {
               this.w = 100;
-              // The inner applySync will be skipped.
+              // The inner applySync is skipped.
               UIUtils.applySync(() => {
                 this.h = 100;
               });
             });
-
+  
             this.getUIContext().animateTo({
               duration: 1000
             }, () => {
@@ -204,6 +215,7 @@ import { UIUtils } from '@kit.ArkUI';
               this.h = 200;
             });
           })
+          // ...
         Column() {
           Text('BOX')
         }
@@ -215,17 +227,19 @@ import { UIUtils } from '@kit.ArkUI';
   }
   ```
 
-- Calling the flushUpdates or flushUIUpdates API in the applySync closure does not take effect. At the same time, the corresponding warning information "UIUtils.flushUpdates will be skipped when called within UIUtils.applySync" or "UIUtils.flushUIUpdates will be skipped when called within UIUtils.applySync" is printed.
-
-  ```ts
+- Calling the **flushUpdates** or **flushUIUpdates** API in the **applySync** closure function will have no effect, and the warning message "UIUtils.flushUpdates will be skipped when called within UIUtils.applySync"/"UIUtils.flushUIUpdates will be skipped when called within UIUtils.applySync" will be printed.
+  
+  <!-- @[ApplySyncNestOthers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/ApplySyncNestOthers.ets) -->
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local w: number = 50; // Width.
     @Local h: number = 50; // Height.
-
+  
     build() {
       Column() {
         Button('change size')
@@ -239,7 +253,7 @@ import { UIUtils } from '@kit.ArkUI';
             });
             this.h = 100;
             UIUtils.flushUpdates(); // Take effect.
-
+  
             this.getUIContext().animateTo({
               duration: 1000
             }, () => {
@@ -247,6 +261,7 @@ import { UIUtils } from '@kit.ArkUI';
               this.h = 200;
             });
           })
+          // ...
         Column() {
           Text('BOX')
         }
@@ -258,18 +273,20 @@ import { UIUtils } from '@kit.ArkUI';
   }
   ```
   
-- The applySync, flushUpdates, and flushUIUpdates APIs cannot be called in the getter method decorated by @Computed. Otherwise, an error is reported during running. The error message is "The function is not allowed to be called in @Computed", and the error code is [140001](../../reference/apis-arkui/errorcode-stateManagement.md#140001-invalid-invocation-of-applysync-flushupdates-or-flushuiupdates).
-
-  ```ts
+- Calling the **applySync**, **flushUpdates**, and **flushUIUpdates** APIs within the **getter** methods decorated with @Computed is not supported; otherwise, a runtime error is reported. The error message is "The function is not allowed to be called in @Computed", and the error code is [140001](../../reference/apis-arkui/errorcode-stateManagement.md#140001-invalid-invocation-of-applysync-flushupdates-or-flushuiupdates).
+  
+  <!-- @[CallInComputed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/CallInComputed.ets) -->
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Page {
     @Local firstName: string = 'Hua';
     @Local lastName: string = 'Li';
     @Local count: number = 0;
-
+  
     @Computed
     get fullName() {
       // An error is reported when applySync, flushUpdates, and flushUIUpdates are called in computed.
@@ -280,7 +297,7 @@ import { UIUtils } from '@kit.ArkUI';
       });
       return this.firstName + ' ' + this.lastName;
     }
-
+  
     build() {
       Column() {
         Text(`${this.fullName}`)
@@ -294,16 +311,18 @@ import { UIUtils } from '@kit.ArkUI';
   }
   ```
 
-- The flushUpdates and flushUIUpdates APIs cannot be called in the @Monitor callback function. Otherwise, an error is reported during running. The error message is "The function is not allowed to be called in @Monitor", and the error code is [140002](../../reference/apis-arkui/errorcode-stateManagement.md#140002-invalid-invocation-of-flushupdates-or-flushuiupdates)
-
-  ```ts
+- Calling the flushUpdates and flushUIUpdates APIs in the @Monitor callback function is not supported. Otherwise, an error is reported. The error message is "The function is not allowed to be called in @Monitor", and the error code is [140002](../../reference/apis-arkui/errorcode-stateManagement.md#140002-invalid-invocation-of-flushupdates-or-flushuiupdates).
+  
+  <!-- @[CallInMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/CallInMonitor.ets) -->
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Page {
     @Local count: number = 0;
-
+  
     @Monitor('count')
     onCountChange(monitor: IMonitor) {
       monitor.dirty.forEach((path: string) => {
@@ -312,13 +331,15 @@ import { UIUtils } from '@kit.ArkUI';
       UIUtils.flushUpdates(); // An error is reported when flushUpdates is called in the monitor.
       UIUtils.flushUIUpdates(); // An error is reported when flushUIUpdates is called in the monitor.
     }
-
+  
     build() {
       Column() {
         Text(`${this.count}`)
-        Button('change count').onClick(() => {
+        Button('change count')
+          .onClick(() => {
           this.count++;
-        })
+          })
+          // ...
       }
     }
   }
@@ -328,9 +349,11 @@ import { UIUtils } from '@kit.ArkUI';
 
 ### Animation Scenario
 
-The asynchronous dirty data marking logic of the status management V2 conflicts with the logic for animateTo to immediately refresh dirty nodes. As a result, no animation is displayed when animateTo is triggered in @Monitor. The expected effect can be achieved by using the applySync API to synchronize the changes of status variables. The following is an example:
+There is a conflict between the asynchronous dirty marking logic of state management V2 and the logic where **animateTo** immediately refreshes dirty nodes, which causes no animation to be displayed when **animateTo** is triggered in @Monitor. The expected effect can be achieved by using the **applySync** API to synchronize the changes of state variables. The following is an example:
 
-```ts
+<!-- @[AnimateToUse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/AnimateToUse.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @Entry
@@ -352,7 +375,7 @@ struct Index {
     this.getUIContext().animateTo({
       duration: 1000
     }, () => {
-      // Call the applySync API to synchronously refresh the animation tail frame. If this API is not called, the animation is not displayed.
+      // Call the applySync API to synchronously refresh the animation tail frame. Otherwise, the animation is not displayed.
       UIUtils.applySync(() => {
         this.x = 100;
         this.y = 100;
@@ -374,6 +397,7 @@ struct Index {
           x: this.x,
           y: this.y
         })
+        // ...
     }
     .height('100%')
     .width('100%')
@@ -385,16 +409,18 @@ struct Index {
 
 ### Routing Scenario
 
-To set [shared transition](../../reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md#sharedtransition) in the routing scenario, use the **applySync** API to refresh the **name** value during transition. In the following sample code, when the index page is redirected to the PageTransitionTwo page, the IDs of the two pages do not match, and no transition effect is displayed. When the index page is returned from the PageTransitionTwo page, the IDs of the two pages match, and a transition effect is generated.
+To set [shared transition](../../reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md#sharedtransition) in the routing scenario, use the **applySync** API to refresh the **name** value during transition. In the following sample code, when navigating from the index page to the **PageTransitionTwo** page, the IDs of the two pages do not match, and the page transition animation fails to play. When the index page is returned from the **PageTransitionTwo** page, the IDs of the two pages match, and the page transition displayed.
 
-```ts
-// Index.ets
+<!-- @[PageUse_PageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/PageUse.ets) -->
+
+``` TypeScript
+// PageUse.ets
 
 import { UIUtils, AppStorageV2 } from '@kit.ArkUI';
 
 @ObservedV2
 export class Info {
-  @Trace name: string = '';
+  @Trace public name: string = '';
 }
 
 @Entry
@@ -416,19 +442,22 @@ struct SharedTransitionExample {
     .alignItems(HorizontalAlign.Start)
     .onClick(() => {
       UIUtils.applySync(() => {
-        this.info.name = 'id1'; // Mismatched
+        this.info.name = 'id1'; // Not matched.
       });
       this.getUIContext().getRouter().pushUrl({ url: 'pages/PageTransitionTwo' })
     })
+    // ...
   }
 }
 ```
 
-```ts
+<!-- @[PageUse_PageTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/PageTransitionTwo.ets) -->
+
+``` TypeScript
 // PageTransitionTwo.ets
 
 import { UIUtils, AppStorageV2 } from '@kit.ArkUI';
-import { Info } from './Index'
+import { Info } from './PageUse';
 
 @Entry
 @ComponentV2
@@ -442,10 +471,11 @@ struct PageBExample {
         .sharedTransition('sharedImage', { duration: 800, curve: Curve.Linear, delay: 100 })
         .onClick(() => {
           UIUtils.applySync(() => {
-            AppStorageV2.connect(Info, () => new Info())!.name = 'sharedImage'; // Matching
+            AppStorageV2.connect(Info, () => new Info())!.name = 'sharedImage'; // Matched.
           });
           this.getUIContext().getRouter().back();
         })
+        // ...
     }
     .width('100%')
     .height('100%')

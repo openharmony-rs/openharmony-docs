@@ -18,7 +18,7 @@
 >
 > \@Provider and \@Consumer decorators can be used in atomic services since API version 12.
 >
-> Since API version 22, you can set the [BuildOptions](../../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12) parameter **enableProvideConsumeCrossing** to **true** in [BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) to enable cross-[BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) two-way synchronization for \@Provider and \@Consumer. After BuilderNode is mounted to the custom component node tree, \@Consumer re-obtains the latest \@Provider data and establishes a bidirectional synchronization relationship with the @Provider. For details, see [Using \@Consumer to Establish Two-Way Synchronization with \@Provider in the Cross-BuilderNode Scenario](#using-consumer-to-establish-two-way-synchronization-with-provider-in-the-cross-buildernode-scenario).
+> Since API version 22, you can set the [BuildOptions](../../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12) parameter **enableProvideConsumeCrossing** to **true** in [BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) to enable cross-[BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) two-way synchronization for \@Provider and \@Consumer. After BuilderNode is mounted to the custom component node tree, \@Consumer re-obtains the latest \@Provider data and establishes a two-way synchronization relationship with it. For details, see [Using \@Consumer to Establish Two-Way Synchronization with \@Provider in the Cross-BuilderNode Scenario](#using-consumer-to-establish-two-way-synchronization-with-provider-in-the-cross-buildernode-scenario).
 >
 > \@Provider and \@Consumer decorators can be used in ArkTS cards since API version 23.
 
@@ -28,7 +28,7 @@
 
 \@Consumer obtains data. It can obtain the \@Provider data of the nearest parent node by binding the same **key**. If the \@Provider data cannot be found, the local default value will be used. For details, see the following.
 
-![ProviderConsumer_1](./figures/Provider_Consumer_1.PNG)
+![ProviderConsumer_1](./figures/Provider_Consumer_1.png)
 
 Data types decorated by \@Provider and \@Consumer must be the same.
 
@@ -650,8 +650,8 @@ struct Child {
 
 In the preceding example:
 
-- \@Consumer in Parent searches upwards for **@Provider() val: number = 10** defined in Index and initializes it to **10**.
-- \@Consumer in Child is searched upwards. After **@Provider() val: number = 20** defined in Parent is found, \@Consumer stops and is initialized to **20**.
+- \@Consumer in **Parent** searches upwards for **@Provider() val: number = 10** defined in **Index** and initializes it to **10**.
+- \@Consumer in **Child** is searched upwards. After **@Provider() val: number = 20** defined in **Parent** is found, \@Consumer stops and is initialized to **20**.
 
 ### Initializing \@Param by \@Provider and \@Consumer
 
@@ -704,9 +704,9 @@ struct Child {
 
 In the preceding example:
 
-- Bidirectional data binding is established between the variable val decorated by \@Provider in Index and the variable val decorated by \@Consumer in Parent. The variable val2 decorated by \@Param in Parent receives data from the data source val in Index and synchronizes the changes. The variable val decorated by \@Param in Child receives data from the data source val in Parent and synchronizes the changes.
-- Click the button in Parent to trigger the change of **@Consumer() val**. The change is synchronized to **@Provider() val** in Index and **@Param val** in Child, and the corresponding UI is refreshed.
-- The change of **@Provider() val** in the index is synchronized to **@Param val2** in the parent, which corresponds to UI update.
+- Two-way data binding is established between the variable val decorated by \@Provider in **Index** and the variable **val** decorated by \@Consumer in **Parent**. The variable **val2** decorated by \@Param in **Parent** receives data from the data source **val** in **Index** and synchronizes the changes. The variable **val** decorated by \@Param in **Child** receives data from the data source **val** in **Parent** and synchronizes the changes.
+- Click the button in **Parent** to trigger the change of **@Consumer() val**. The change is synchronized to **@Provider() val** in **Index** and **@Param val** in **Child**, and the corresponding UI is refreshed.
+- The change of **@Provider() val** in the **Index** is synchronized to **@Param val2** in the parent, which corresponds to UI update.
 
 ### Using \@Consumer to Establish Two-Way Synchronization with \@Provider in the Cross-BuilderNode Scenario
 
@@ -715,11 +715,11 @@ In the preceding example:
 > Since API version 22, cross-BuilderNode pairing of @Provider and @Consumer is supported.
 
 The following provides an example to implement the following functions:
-1. BuilderNode builds a component tree through [global custom builder function](arkts-builder.md#global-custom-builder-function). The root [FrameNode](../../reference/apis-arkui/js-apis-arkui-frameNode.md) node of the component tree can be obtained through [getFrameNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md#getframenode). This node can be directly returned by [NodeController](../../reference/apis-arkui/js-apis-arkui-nodeController.md) and mounted to the [NodeContainer](../../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md) node.
-2. When mounted to the custom component node tree, BuilderNode is mounted to the custom component using the addBuilderNode method. In this case, \@Consumer under BuilderNode searches for \@Provider upwards and finds the nearest \@Provider based on the key matching rule, a bidirectional synchronization relationship is established between the and \@Provider. If no matched \@Provider is found, the default value of \@Consumer is used.
-3. After the bidirectional synchronization relationship is established, if the value of the \@Provider decorative variable is different from the default value of the \@Consumer, the \@Monitor method of the \@Consumer and the \@Monitor method of the variable that has the synchronization relationship with the \@Consumer are called back. For example: \@Consumer instructs \@Param in its subcomponents to trigger the \@Monitor method.
-4. After the BuilderNode is unloaded from the component tree, the \@Consumer attempts to search for the corresponding \@Provider again. If the paired \@Provider cannot be found after the BuilderNode is unloaded from the component tree, the two-way synchronization relationship with the \@Provider is disconnected, and the variables decorated by the \@Consumer are restored to the default values.
-5. \@Consumer disconnects from \@Provider. When the default value is restored, the system checks whether the value of the \@Consumer decorative variable changes compared with the default value changed from \@Provider to \@Consumer. If yes, the \@Monitor method of the \@Consumer and the \@Monitor method of the variable that has a synchronization relationship with the \@Consumer are called back.
+1. BuilderNode constructs the component tree through a [global custom builder function](arkts-builder.md#global-custom-builder-function). The root [FrameNode](../../reference/apis-arkui/js-apis-arkui-frameNode.md) of the component tree can be obtained via [getFrameNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md#getframenode), and this node can be directly returned by [NodeController](../../reference/apis-arkui/js-apis-arkui-nodeController.md) and mounted under the [NodeContainer](../../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md) node.
+2. When mounting to the custom component node tree, **BuilderNode** is mounted under the custom component via the **addBuilderNode** method. At this point, the \@Consumer under the **BuilderNode** searches upward for \@Provider; after finding the nearest \@Provider according to the key matching rules, it establishes a two-way synchronization relationship with the \@Provider. If no matched \@Provider is found, the default value of \@Consumer is used.
+3. After a two-way synchronization relationship is established, if the value of the variable decorated by \@Provider is different from the default value of \@Consumer, the framework will trigger a callback for the \@Monitor method of \@Consumer, as well as the \@Monitor methods of variables that have a synchronization relationship with \@Consumer. For example: \@Consumer notifies the \@Param in its child components to trigger the \@Monitor method.
+4. After **BuilderNode** is unmounted from the component tree, \@Consumer attempts to find the corresponding \@Provider again. If it finds that the previously paired \@Provider can no longer be located after being unmounted from the component tree, it disconnects the two-way synchronization relationship with the \@Provider, and the variable decorated by \@Consumer is restored to its default value.
+5. When \@Consumer disconnects the connection with \@Provider and reverts to its default value, it determines whether the value of the variable decorated by \@Consumer has changed relative to the shift from the \@Provider value to the \@Consumer default value. If there is a change, it triggers a callback for the \@Monitor method of \@Consumer, as well as the \@Monitor methods of variables that have a synchronization relationship with this \@Consumer.
 
 <!-- @[Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/BuilderNode.ets) -->
 
@@ -750,7 +750,7 @@ class TextNodeController extends NodeController {
   addBuilderNode(): void {
     if (globalBuilderNode === null && this.uiContext) {
       globalBuilderNode = new BuilderNode(this.uiContext);
-      // Build BuilderNode and TestRemove as a subcomponent.
+      // Construct BuilderNode, with TestRemove as a child component.
       globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, { enableProvideConsumeCrossing: true });
     }
     if (this.rootNode && globalBuilderNode) {
@@ -786,25 +786,25 @@ struct RemoChildDisconnectProvider {
     Column({ space: 8 }) {
       Text(`Provider: ${this.content}`)
 
-      // Add BuilderNode. @Consumer and @Provider establish bidirectional synchronization.
+      // Add BuilderNode, @Consumer establishes two-way synchronization with @Provider.
       Button('add child')
         .onClick(() => {
           this.controllerIndex.addBuilderNode();
         })
 
-      // Remove BuilderNode, disconnect @Consumer from @Provider, and restore the default value.
+      // Remove BuilderNode, @Consumer disconnects the connection with @Provider and reverts to the default value.
       Button('remove child')
         .onClick(() => {
           this.controllerIndex.removeBuilderNode();
         })
 
-      // Release the child node TestRemove of BuilderNode, destroy the child node, and trigger the aboutToDisappear callback of the child node.
+      // The child node TestRemove of BuilderNode is released. Subsequently, this child node is destroyed, which triggers the aboutToDisappear callback of the child node.
       Button('dispose child')
         .onClick(() => {
           this.controllerIndex.disposeNode();
         })
 
-      // @Provider/@Consumer bidirectional synchronization update
+      // Two-way synchronous update of @Provider/@Consumer
       Button('change Provider')
         .onClick(() => {
           this.content += 'Pro';
@@ -832,7 +832,7 @@ struct TestRemove {
     Column() {
       Text('Consumer ' + this.content)
 
-      // Refresh the Text component bound to @Provider and @Consumer and call back the @Monitor method of @Provider and @Consumer.
+      // The Text component bound to @Provider and @Consumer is refreshed, and the @Monitor methods of @Provider and @Consumer are triggered.
       Button('change cc')
         .onClick(() => {
           this.content += 'cc';
@@ -845,7 +845,7 @@ struct TestRemove {
 
 In the preceding example:
 
-- Click **add Child**. In **TestRemove**, find \@Provider in the nearest **RemoChildDisconnectProvider**, and change the value of \@Consumer from the default value to the value of \@Provider, call back the \@Monitor method of \@Consumer.
-- After \@Provider and \@Consumer are paired, a bidirectional synchronization relationship is established. Click **change Provider** and **Text(change cc)**. The Text component bound to \@Provider and \@Consumer is refreshed, and the \@Monitor method of \@Provider and \@Consumer is called back.
-- Click **remove Child**. The BuilderNode child node is unloaded from the component tree. \@Consumer in **TestRemove** is disconnected from \@Provider in **RemoChildDisconnectProvider**. \@Consumer in **TestRemove** is restored to the default value, call back the \@Monitor method of \@Consumer.
-- Click **dispose Child** to release the child node **TestRemove** under BuilderNode. Then destroy the child node and execute the aboutToDisappear callback function.
+- When **add Child** is clicked, the \@Consumer in **TestRemove** finds the nearest \@Provider in **RemoChildDisconnectProvider** upward, updates the \@Consumer from the default value to the value of the \@Provider, and triggers the \@Monitor method of the \@Consumer.
+- After \@Provider and \@Consumer are paired, a two-way synchronization relationship is established. When **change Provider** and **Text(**change cc**)** is clicked, the **Text** components bound to \@Provider and \@Consumer refresh, and the \@Monitor methods of \@Provider and \@Consumer are triggered.
+- When **remove Child** is clicked, the child node of **BuilderNode** is unmounted from the component tree; the \@Consumer in **TestRemove** disconnects the connection with the \@Provider in **RemoChildDisconnectProvider**, the \@Consumer in **TestRemove** reverts to its default value, and the \@Monitor method of the \@Consumer is triggered.
+- When **dispose Child** is clicked, the child node **TestRemove** under **BuilderNode** is released. Subsequently, this child node is destroyed, and the **aboutToDisappear** callback is executed.
