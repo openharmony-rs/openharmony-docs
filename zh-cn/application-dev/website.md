@@ -459,15 +459,19 @@
           - 语法糖<!--arkts-state-management-syntactic-sugar-->
             - [$$语法：系统组件双向同步](ui/state-management/arkts-two-way-sync.md)
             - [!!语法：双向绑定](ui/state-management/arkts-new-binding.md)
-          - 状态管理V1向V2迁移指导<!--arkts-state-management-v1-v2-migration-guide-->
-            - [V1->V2迁移指导概述](ui/state-management/arkts-v1-v2-migration.md)
-            - [组件内状态变量迁移指导](ui/state-management/arkts-v1-v2-migration-inner-component.md)
-            - [数据对象状态变量的迁移指导](ui/state-management/arkts-v1-v2-migration-inner-class.md)
-            - [应用内状态变量和其他场景迁移指导](ui/state-management/arkts-v1-v2-migration-application-and-others.md)
-            - [组件复用迁移指导](ui/state-management/arkts-v1-v2-migration-reusable.md)
-          - 状态管理V1和V2混合使用<!--v1v2-mixing-->
-            - [自定义组件混用场景指导](ui/state-management/arkts-custom-component-mixed-scenarios.md)
-            - [状态管理V1V2混用文档](ui/state-management/arkts-v1-v2-mixusage.md)
+          - 状态管理V1-V2迁移指导<!--arkts-v1-v2-guide-->
+            - [V1-V2迁移概述](ui/state-management/arkts-v1-v2-migration.md)
+            - 状态管理V1向V2迁移场景<!--arkts-state-management-v1-v2-migration-guide-->
+              - [组件内状态变量迁移](ui/state-management/arkts-v1-v2-migration-inner-component.md)
+              - [数据对象状态变量迁移](ui/state-management/arkts-v1-v2-migration-inner-class.md)
+              - [应用内状态变量迁移](ui/state-management/arkts-v1-v2-migration-application.md)
+              - [组件复用迁移](ui/state-management/arkts-v1-v2-migration-reusable.md)
+              - [循环渲染迁移](ui/state-management/arkts-v1-v2-migration-rendering-control-repeat.md)
+              - [内置对象的迁移](ui/state-management/arkts-v1-v2-migration-inner-object.md)
+              - [AnimateTo使用迁移](ui/state-management/arkts-v1-v2-migration-animateTo.md)
+            - 状态管理V1和V2混用场景<!--v1v2-mixing-->
+              - [状态管理V1和V2混用指导（API version 19前）](ui/state-management/arkts-v1-v2-mixusage-before-api-version.md)
+              - [状态管理V1和V2混用指导（API version 19及之后）](ui/state-management/arkts-v1-v2-mixusage.md)
           - [状态管理常见问题](ui/state-management/arkts-state-management-faq.md)
             - [组件内状态管理常见问题](ui/state-management/arkts-state-management-faq-inner-component.md)
             - [数据对象状态管理常见问题](ui/state-management/arkts-state-management-faq-inner-class.md)
@@ -1325,8 +1329,6 @@
           - [DistributedExtensionAbility开发指南（仅对系统应用开放）](distributedservice/distributedextension-guidelines-sys.md)
           <!--DelEnd-->
           - [增强连接开发指南](distributedservice/linkEnhance_development-guide.md)
-        - 硬件跨设备连接管理<!--devconnect-distributed-->
-          - [分布式相机开发指南](distributedservice/camera-distributed.md)
       - Network Kit（网络服务）<!--network-kit-->
         - [Network Kit简介](network/net-mgmt-overview.md)
         - 访问网络<!--network-kit-data-transmission-->
@@ -1992,7 +1994,7 @@
         <!--DelEnd-->
         - [清除跨设备场景下的重复通知](notification/notification-distributed-messageid.md)
       - 通知订阅扩展能力<!--notification-subscriber-extension-ability-->
-        - [通知订阅扩展能力概述](notification/notification-subscriber-extension-ability.md)
+        - [NotificationSubscriberExtensionAbility (开发概述)](notification/notification-subscriber-extension-ability.md)
         - [通知订阅扩展能力开发步骤](notification/notification-subscriber-extension-ability-development-steps.md)
   - AI<!--ai-->
     - MindSpore Lite Kit（昇思推理框架服务）<!--mindspore-lite-kit-->
@@ -2023,7 +2025,7 @@
       - C/C++标准库<!--c-cpp-->
         - [C/C++标准库机制概述](napi/c-cpp-overview.md)
         - [fdsan使用指导](napi/fdsan.md)
-      - 使用Node-API实现跨语言交互<!--using-napi-interaction-with-cpp-->
+      - 使用Node-API实现ArkTS/JS与C/C++语言交互<!--using-napi-interaction-with-cpp-->
         - [Node-API简介](napi/napi-introduction.md)
         - [Node-API接口返回状态码介绍](napi/napi_status_introduction.md)
         - [Node-API支持的数据类型和接口](napi/napi-data-types-interfaces.md)

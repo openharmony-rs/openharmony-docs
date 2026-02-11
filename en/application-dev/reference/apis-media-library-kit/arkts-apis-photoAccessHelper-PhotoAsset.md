@@ -640,7 +640,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getReadOnlyFd(callback: AsyncCallback&lt;number&gt;): void
 
-Opens the current file in read-only mode. This API uses an asynchronous callback to return the result.
+Opens this file in read-only mode. This API uses an asynchronous callback to return the result.
 
 The returned FD must be closed when it is not required.
 

@@ -238,25 +238,25 @@ export struct CustomPopupExample {
 
   build() {
     NavDestination() {
-      Column() {
-        Button('CustomPopupOptions')
-          .id('CustomPopupOptions')
-          .margin({ top: 300 })
-          .onClick(() => {
-            this.customPopup = !this.customPopup;
-          })
-          .bindPopup(this.customPopup, {
-            builder: this.popupBuilder, // Content of the popup.
-            placement: Placement.Bottom, // Position of the popup.
-            popupColor: Color.Pink, // Popup background color
-            onStateChange: (e) => {
-              if (!e.isVisible) {
-                this.customPopup = false
+        Column() {
+          Button('CustomPopupOptions')
+            .id('CustomPopupOptions')
+            .margin({ top: 300 })
+            .onClick(() => {
+              this.customPopup = !this.customPopup;
+            })
+            .bindPopup(this.customPopup, {
+              builder: this.popupBuilder, // Content of the popup.
+              placement: Placement.Bottom, // Position of the popup.
+              popupColor: Color.Pink, // Popup background color
+              onStateChange: (e) => {
+                if (!e.isVisible) {
+                  this.customPopup = false
                 }
               }
             })
         }
-      .height('100%')
+        .height('100%')
     }
     // ...
   }

@@ -402,9 +402,9 @@ With this permission, the software can obtain 802.1X packets and add information
 
 ## ohos.permission.SUPPORT_INSTALL_ON_U1
 
-Allows an application to be installed under User1.
+Allows a normal enterprise application to be installed under the specific user.
 
-User1 is a user who supports third-party applications running in singleton mode.
+The specific user is a user who supports third-party applications running in singleton mode.
 
 **Permission level**: system_basic
 

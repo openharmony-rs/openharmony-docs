@@ -643,6 +643,6 @@ struct MyComponent {
 
 ### \@Component与\@ComponentV2混用
 
-在将\@Component装饰的自定义组件与\@ComponentV2装饰的自定义组件混合使用时，可参考[混用文档](./arkts-custom-component-mixed-scenarios.md)。
+在将\@Component装饰的自定义组件与\@ComponentV2装饰的自定义组件混合使用时，<!--RP1-->可参考[状态管理V1和V2混用场景](./arkts-v1-v2-mixusage-before-api-version.md)<!--RP1End-->。
 
 <!--no_check-->

@@ -93,6 +93,7 @@ class BufferQueue {
     // 尝试获取锁
     if (this.mutex.lock()) {
       if (this.queue.empty()) {
+        this.mutex.unlock();
         res = 1;
         return res;
       }

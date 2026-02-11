@@ -19,6 +19,8 @@ DSoftBus provides stable and reliable underlying channels for cross-device commu
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> **Model restriction**: This API can be used only in the stage model.
 
 ## Importing modules
 
@@ -43,6 +45,8 @@ Opens a proxy channel. This API uses a promise to return the result.
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -120,6 +124,8 @@ Closes a proxy channel that has been opened.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type                                      | Mandatory  | Description      |
@@ -176,6 +182,8 @@ Sends data to the peer end. This API uses a promise to return the result.
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -247,6 +255,8 @@ Subscribes to data receiving events. This API returns the result asynchronously 
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type                                      | Mandatory  | Description      |
@@ -306,6 +316,8 @@ Unsubscribes from data receiving events.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type                                      | Mandatory  | Description      |
@@ -362,6 +374,8 @@ Subscribes to channel state change events. This API returns the result asynchron
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -421,6 +435,8 @@ Unsubscribes from channel state change events.
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 

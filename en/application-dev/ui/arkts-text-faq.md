@@ -30,7 +30,7 @@ Set the [wordBreak](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md
 
 The sample code is as follows:
   <!-- @[Word_Break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/WordBreakd.ets) -->
-
+  
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   @Entry
@@ -84,7 +84,7 @@ Set [heightAdaptivePolicy](../reference/apis-arkui/arkui-ts/ts-basic-components-
 
 The sample code is as follows:
   <!-- @[Height_AdaptivePolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/HeightAdaptivePolicy.ets) --> 
-
+  
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   
@@ -163,7 +163,7 @@ Implementation steps:
 Example:
 
   <!-- @[Length_Metric](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/LengthMetric.ets) --> 
-
+  
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
   import { common } from '@kit.AbilityKit';
@@ -272,7 +272,7 @@ How do I convert emoji codes to images and display them alongside text in the **
 Parse emoji codes using a regular expression, map them to image resources, and display both text and emojis using [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) and [ImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md).
 
   <!-- @[Displayed_Together](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisplayedTogether.ets) -->
-
+  
   ``` TypeScript
   // Replace $r('app.media.xxx') with the actual resource file.
   import { common } from '@kit.AbilityKit';
@@ -389,7 +389,7 @@ Let the text wrap automatically. When the **Text** component's [height](../refer
 This example limits the **Text** component to three lines:
 
   <!-- @[Text_Long](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLong.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -425,7 +425,7 @@ This example limits the **Text** component to three lines:
 Solution 1 truncates content. To display all text, place the **Text** component inside a [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md) container. This way, users can swipe to view the full content.
 
   <!-- @[Text_Long_Tow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLongTow.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component

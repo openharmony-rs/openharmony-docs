@@ -9,7 +9,7 @@
 
 开发者可以调用本模块的Native API接口，完成视频解码，即将媒体数据解码成YUV文件或送显。
 
-<!--RP3--><!--RP3End-->
+具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
 
 当前支持的解码能力请参考[AVCodec支持的格式](avcodec-support-formats.md#视频解码)。
 
@@ -39,15 +39,13 @@
 
 1. 两者数据的输出方式不同。
 2. 两者的适用场景不同：
-    - surface输出是指用OHNativeWindow来传递输出数据，可以与其他模块对接，例如XComponent。
-    - buffer输出是指经过解码的数据会以共享内存的方式输出。
+   - surface输出是指用OHNativeWindow来传递输出数据，可以与其他模块对接，例如XComponent。
+   - buffer输出是指经过解码的数据会以共享内存的方式输出。
 
 3. 在接口调用的过程中，两种方式的接口调用方式基本一致，但存在以下差异点：
-    - 在Surface模式下，可选择调用OH_VideoDecoder_FreeOutputBuffer接口丢弃输出帧（不送显）；在Buffer模式下，应用必须调用OH_VideoDecoder_FreeOutputBuffer接口释放数据。
-    - Surface模式下，应用在解码器就绪前，必须调用[OH_VideoDecoder_SetSurface](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setsurface)接口设置OHNativeWindow。启动后，调用[OH_VideoDecoder_RenderOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbuffer)接口显示并释放解码帧，或调用[OH_VideoDecoder_RenderOutputBufferAtTime](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime)接口在指定时间点显示并释放解码帧。如需实现音画同步或者控制显示速度，建议优先调用OH_VideoDecoder_RenderOutputBufferAtTime接口送显。
-    - 输出回调传出的buffer，在Buffer模式下，可以获取共享内存的地址和数据信息；在Surface模式下，只能获取buffer的数据信息。
-
-4. Surface模式的数据流转性能优于Buffer模式。
+   - 在Surface模式下，可选择调用OH_VideoDecoder_FreeOutputBuffer接口丢弃输出帧（不送显）；在Buffer模式下，应用必须调用OH_VideoDecoder_FreeOutputBuffer接口释放数据。
+   - Surface模式下，应用在解码器就绪前，必须调用[OH_VideoDecoder_SetSurface](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setsurface)接口设置OHNativeWindow。启动后，调用[OH_VideoDecoder_RenderOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbuffer)接口显示并释放解码帧，或调用[OH_VideoDecoder_RenderOutputBufferAtTime](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime)接口在指定时间点显示并释放解码帧。如需实现音画同步或者控制显示速度，建议优先调用OH_VideoDecoder_RenderOutputBufferAtTime接口送显。
+   - 输出回调传出的buffer，在Buffer模式下，可以获取共享内存的地址和数据信息；在Surface模式下，只能获取buffer的数据信息。
 
 两种模式的开发步骤详细说明请参考：[Surface模式](#surface模式)和[Buffer模式](#buffer模式)。
 
@@ -70,9 +68,9 @@
    - Error状态下，可以调用解码器OH_VideoDecoder_Reset接口将解码器移到Initialized状态；或者调用OH_VideoDecoder_Destroy接口移动到最后的Released状态。
 
 6. Executing状态具有三个子状态：Flushed、Running和End-of-Stream：
-    - 在调用了OH_VideoDecoder_Start接口之后，解码器立即进入Running子状态。
-    - 对于处于Executing状态的解码器，可以调用OH_VideoDecoder_Flush接口返回到Flushed子状态。
-    - 当待处理数据全部传递给解码器后，在input buffers队列中为最后一个入队的input buffer中添加[AVCODEC_BUFFER_FLAGS_EOS](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)标记，遇到这个标记时，解码器会转换为End-of-Stream子状态。在此状态下，解码器不再接受新的输入，但是仍然会继续生成输出，直到输出到达尾帧。
+   - 在调用了OH_VideoDecoder_Start接口之后，解码器立即进入Running子状态。
+   - 对于处于Executing状态的解码器，可以调用OH_VideoDecoder_Flush接口返回到Flushed子状态。
+   - 当待处理数据全部传递给解码器后，在input buffers队列中为最后一个入队的input buffer中添加[AVCODEC_BUFFER_FLAGS_EOS](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)标记，遇到这个标记时，解码器会转换为End-of-Stream子状态。在此状态下，解码器不再接受新的输入，但是仍然会继续生成输出，直到输出到达尾帧。
 
 7. 使用完解码器后，必须调用OH_VideoDecoder_Destroy接口销毁解码器实例，使解码器进入Released状态。
 
@@ -598,8 +596,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     }
     ```
 
-12. 调用OH_VideoDecoder_RenderOutputBuffer()/OH_VideoDecoder_RenderOutputBufferAtTime()显示并释放解码帧，
-    或调用OH_VideoDecoder_FreeOutputBuffer()释放解码帧。
+12. 调用OH_VideoDecoder_RenderOutputBuffer()/OH_VideoDecoder_RenderOutputBufferAtTime()显示并释放解码帧，或调用OH_VideoDecoder_FreeOutputBuffer()释放解码帧。
 
     以下示例中，bufferInfo的成员变量：
     - index：回调函数OnNewOutputBuffer传入的参数，与buffer唯一对应的标识；
@@ -1209,7 +1206,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
     // Y 将Y区域的源数据复制到另一个区域的目标数据中。
     for (int32_t i = 0; i < rect.height; ++i) {
-        //将源数据的一行数据复制到目标数据的一行中。
+        // 将源数据的一行数据复制到目标数据的一行中。
         memcpy(dstTemp, srcTemp, rect.width);
         // 更新源数据和目标数据的指针，进行下一行的复制。每更新一次源数据和目标数据的指针都向下移动一个wStride。
         dstTemp += dstRect.wStride;

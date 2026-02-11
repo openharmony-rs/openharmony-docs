@@ -221,7 +221,7 @@ The first execution of TaskPool tasks is slow, with a delay of several hundred m
 
    ```ts
    // Versions earlier than API version 20
-   [ecmascript] Unsupport serialize object type: 
+   [ecmascript] Unsupported serialize object type: 
    [ecmascript] ValueSerialize: serialize data is incomplete
 
    // API version 20 and later
@@ -238,7 +238,7 @@ The input parameters and return value of the concurrent function used by the Tas
 1. The application throws an exception indicating input parameter serialization failure when starting a task because it passes an unsupported object type for inter-thread communication into the concurrent function. 
 **Solution**: Check the input parameters of the concurrent function based on [Inter-thread Communication Objects](../reference/apis-arkts/js-apis-taskpool.md#sequenceable-data-types).
 
-2. The application throws an exception indicating input parameter serialization failure when starting a task, and HiLog prints the error log **Unsupport serialize object type: Proxy**. (For API version 20 and later versions, the error log **Serialize error: Serialize don't support object type: Proxy** is printed.) Based on the error log, the application passes a proxy object into the concurrent function. The parameter uses the @State decorator, causing the original object to become a Proxy object, which is not a supported object type for inter-thread communication. 
+2. The application throws an exception indicating input parameter serialization failure when starting a task, and HiLog prints the error log **Unsupported serialize object type: Proxy**. (For API version 20 and later versions, the error log **Serialize error: Serialize don't support object type: Proxy** is printed.) Based on the error log, the application passes a proxy object into the concurrent function. The parameter uses the @State decorator, causing the original object to become a Proxy object, which is not a supported object type for inter-thread communication. 
 **Solution**: TaskPool does not support complex types decorated with @State and @Prop. For details, see [Precautions for TaskPool](taskpool-introduction.md#precautions-for-taskpool). The application should remove the @State decorator.
 
 3. The application throws an exception indicating return value serialization failure when executing a task. The code check shows that the return value of the concurrent function is an unsupported serialization type.

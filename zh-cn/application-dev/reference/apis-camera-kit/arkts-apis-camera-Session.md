@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-会话类，保存一次相机运行所需要的所有资源[CameraInput](arkts-apis-camera-CameraInput.md)、[CameraOutput](arkts-apis-camera-CameraOutput.md)，并向相机设备申请完成相机功能(录像，拍照)。
+会话类，保存一次相机运行所需要的所有资源[CameraInput](arkts-apis-camera-CameraInput.md)、[CameraOutput](arkts-apis-camera-CameraOutput.md)，并向相机设备申请完成相机功能（录像，拍照）。
 
 > **说明：**
 >

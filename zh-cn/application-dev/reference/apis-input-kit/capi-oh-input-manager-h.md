@@ -175,7 +175,7 @@
 | [Input_Result OH_Input_GetAllSystemHotkeys(Input_Hotkey **hotkey, int32_t *count)](#oh_input_getallsystemhotkeys) | - | 获取设置的所有快捷键。 |
 | [void OH_Input_SetRepeat(Input_Hotkey* hotkey, bool isRepeat)](#oh_input_setrepeat) | - | 设置是否上报重复key事件。 |
 | [Input_Result OH_Input_GetRepeat(const Input_Hotkey* hotkey, bool *isRepeat)](#oh_input_getrepeat) | - | 获取是否上报重复key事件。 |
-| [Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyCallback callback)](#oh_input_addhotkeymonitor) | - | 订阅快捷键事件。此接口在智能穿戴、轻量级智能穿戴设备不生效。 |
+| [Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyCallback callback)](#oh_input_addhotkeymonitor) | - | 订阅快捷键事件。 |
 | [Input_Result OH_Input_RemoveHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyCallback callback)](#oh_input_removehotkeymonitor) | - | 取消订阅快捷键。 |
 | [Input_Result OH_Input_RegisterDeviceListener(Input_DeviceListener* listener)](#oh_input_registerdevicelistener) | - | 注册设备热插拔的监听器。 |
 | [Input_Result OH_Input_UnregisterDeviceListener(Input_DeviceListener* listener)](#oh_input_unregisterdevicelistener) | - | 取消注册设备热插拔的监听。 |
@@ -2598,7 +2598,7 @@ Input_Result OH_Input_AddKeyEventMonitor(Input_KeyEventCallback callback)
 
 **描述**
 
-添加按键事件监听。
+添加按键事件监听。重复添加只有第一次生效，后续添加请求将被忽略。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -2629,7 +2629,7 @@ Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback)
 
 **描述**
 
-添加鼠标事件监听,包含鼠标点击，移动，不包含滚轮事件，滚轮事件归属于轴事件。
+添加鼠标事件监听，包含鼠标点击，移动，不包含滚轮事件，滚轮事件归属于轴事件。
 
 该接口处于录屏场景时才允许调用，否则调用该接口不生效。
 
@@ -2912,7 +2912,7 @@ Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, In
 
 **描述**
 
-添加按键事件的拦截，重复添加只有第一次生效。仅在应用获焦时拦截按键事件。
+添加按键事件的拦截，重复添加只有第一次生效，后续添加请求返回错误码[INPUT_REPEAT_INTERCEPTOR](#input_result)。仅在应用获焦时拦截按键事件。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -2944,7 +2944,7 @@ Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *c
 
 **描述**
 
-添加输入事件拦截，包括鼠标、触屏和轴事件，重复添加只有第一次生效。仅命中应用窗口时拦截输入事件。
+添加输入事件拦截，包括鼠标、触屏和轴事件。重复添加只有第一次生效，后续添加请求返回错误码[INPUT_REPEAT_INTERCEPTOR](#input_result)。仅命中应用窗口时拦截输入事件。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -3325,7 +3325,13 @@ Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyC
 
 **描述**
 
-订阅快捷键事件。此接口在智能穿戴、轻量级智能穿戴设备不生效。
+订阅快捷键事件。
+
+> **说明：**
+>
+> 订阅快捷键事件时，对于preKeys和finalKey有以下约束：
+> 1. preKeys：修饰键（包括 Ctrl、Shift 和 Alt）集合，数量范围[1, 4]，无顺序要求。例如，Ctrl+Shift+Esc中，Ctrl+Shift称为修饰键。
+> 2. finalKey：被修饰键，除修饰键和Meta键以外的按键，详细按键介绍请参见[按键设备的键值](capi-oh-key-code-h.md)。例如，Ctrl+Shift+Esc中，Esc称为被修饰键。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -3345,7 +3351,7 @@ Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyC
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_AddHotkeyMonitor 函数错误码。<br>         [INPUT_SUCCESS](#input_result) 表示订阅组合按键成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 参数检查失败。<br>         [INPUT_OCCUPIED_BY_SYSTEM](#input_result) 该快捷键已被系统占用，可以通过接口[OH_Input_GetAllSystemHotkeys](#oh_input_getallsystemhotkeys)查询所有的系统快捷键。<br>         [INPUT_OCCUPIED_BY_OTHER](#input_result) 已被抢占订阅。<br>         [INPUT_DEVICE_NOT_SUPPORTED](#input_result) 表示不支持该功能。 |
+| [Input_Result](#input_result) | OH_Input_AddHotkeyMonitor 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 表示订阅组合按键成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 参数检查失败。<br>         [INPUT_OCCUPIED_BY_SYSTEM](#input_result) 该快捷键已被系统占用，可以通过接口[OH_Input_GetAllSystemHotkeys](#oh_input_getallsystemhotkeys)查询所有的系统快捷键。<br>         [INPUT_OCCUPIED_BY_OTHER](#input_result) 已被抢占订阅。<br>         [INPUT_DEVICE_NOT_SUPPORTED](#input_result) 表示不支持该功能。 |
 
 ### OH_Input_RemoveHotkeyMonitor()
 

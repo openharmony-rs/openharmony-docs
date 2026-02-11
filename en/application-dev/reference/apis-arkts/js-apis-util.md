@@ -2442,6 +2442,10 @@ afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 
 Performs subsequent operations after a value is removed. The subsequent operations must be implemented by developers. This API is called during deletion operations, such as [get<sup>9+</sup>](#get9), [put<sup>9+</sup>](#put9), [remove<sup>9+</sup>](#remove9), [clear<sup>9+</sup>](#clear9), and [updateCapacity<sup>9+</sup>](#updatecapacity9).
 
+> **NOTE**
+>
+> If the callback method is executed after [clear<sup>9+</sup>](#clear9) and [updateCapacity<sup>9+</sup>](#updatecapacity9) are called and the input **key** and **value** parameters are of the MapIterator type, perform subsequent operations by referring to example 2.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Utils.Lang
@@ -2463,7 +2467,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
-**Example**
+**Example 1**
 
 ```ts
 class ChildLRUCache<K, V> extends util.LRUCache<K, V> {
@@ -2486,6 +2490,61 @@ let lru = new ChildLRUCache<number, number>(2);
 lru.put(1, 1);
 lru.put(2, 2);
 lru.put(3, 3);
+```
+
+**Example 2**
+
+```ts
+class TestClass {
+  str:string = '';
+  constructor(input: string) {
+    this.str = input;
+  }
+}
+
+class ChildLRUCache extends util.LRUCache<string, TestClass> {
+  constructor(capacity?: number) {
+    super(capacity);
+  }
+
+  afterRemoval(isEvict: boolean, key: string, value: TestClass, newValue: TestClass): void {
+    if(value.toString().indexOf('[object Map Iterator]') >= 0) {
+      console.info('Entered via clear');
+      console.info('isEvict = ' + isEvict);
+      const keysIterator = (key as ESObject as IterableIterator<string>);
+      const valuesIterator = (value as ESObject as IterableIterator<TestClass>);
+
+      let keyEntry = keysIterator.next();
+      let valueEntry = valuesIterator.next();
+      while (!keyEntry.done && !valueEntry.done) {
+        console.info(`key = ${keyEntry.value}, valueStr = ${valueEntry.value.str}`);
+        keyEntry = keysIterator.next();
+        valueEntry = valuesIterator.next();
+      }
+    } else {
+      console.info('Entered via put');
+      console.info('isEvict = ' + isEvict);
+      console.info('key = ' + key + '  valueStr = ' + value.str);
+    }
+  }
+}
+let test1 = new TestClass('testA');
+let test2 = new TestClass('testB');
+let test3 = new TestClass('testC');
+let lru = new ChildLRUCache(2);
+lru.put('aa', test1);
+lru.put('bb', test2);
+lru.put('cc', test3);    // Remove the key-value pair for 'aa'.
+lru.clear();             // Clear the entire cache buffer.
+/*
+Output: Entered via put.
+         isEvict = true
+         key = aa  valueStr = testA
+         Entered via clear.
+         isEvict = false
+         key = bb, valueStr = testB
+         key = cc, valueStr = testC
+*/
 ```
 
 ### contains<sup>9+</sup>

@@ -41,7 +41,7 @@ Sets the types of data that can be dropped to the component. If **allowDrop** is
 
 | Name| Type                                                        | Mandatory| Description                                           |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| value  | Array\<[UniformDataType](#uniformdatatype)> \| null<sup>12+</sup> | Yes  | Types of data that can be dropped to the component. Since API version 12, this parameter can be set to **null** to make the component reject all data types.|
+| value  | Array\<[UniformDataType](#uniformdatatype)> \| null<sup>12+</sup> | Yes   | Types of data that can be dropped to the component. Since API version 12, this parameter can be set to **null** to make the component reject all data types.|
 
 **Return value**
 
@@ -148,6 +148,8 @@ Sets the preview image processing mode, badge count, and interaction behavior du
 | T | Current component.|
 
 ## DragPreviewOptions<sup>11+</sup>
+
+Preview image processing mode and badge count during dragging.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1139,4 +1141,4 @@ struct Index {
 }
 ```
 
-
+![sizeChangeEffect.gif](figures/sizeChangeEffect.gif)

@@ -77,7 +77,7 @@ pen.setColor(0xFF, 0xFF, 0x00, 0x00);
 const font = new drawing.Font();
 // Set the font size.
 font.setSize(100);
-// Add the brush stroke effect.
+// Add the pen stroke effect.
 canvas.attachPen(pen);
 // Create a TextBlob object.
 const textBlob = drawing.TextBlob.makeFromString('Hello world', font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
@@ -118,7 +118,7 @@ pen.setColor(0xFF, 0xFF, 0x00, 0x00);
 const font = new drawing.Font();
 // Set the font size.
 font.setSize(100);
-// Add the brush stroke effect.
+// Add the pen stroke effect.
 canvas.attachPen(pen);
 // Create a TextBlob object.
 const textBlob = drawing.TextBlob.makeFromString(STROKE_SAMPLE, font, drawing.TextEncoding.TEXT_ENCODING_UTF8);

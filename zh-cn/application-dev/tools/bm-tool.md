@@ -2846,7 +2846,8 @@ error: Failed to install the HAP because the device is unauthorized, make sure t
 **处理步骤**
 
 <!--RP6-->
-<!--RP6End-->重新[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。
+重新[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。
+<!--RP6End-->
 
 
 ### 9568380 卸载系统应用失败

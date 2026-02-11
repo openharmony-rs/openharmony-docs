@@ -399,7 +399,22 @@ The preceding APIs are core APIs used in this topic. For details about all APIs 
     ]
     ```
 
-9. Configure the **module.json5** file.
+9. Add the extension **"selection"** to the **toolchains\modulecheck\module.json** file of the SDK.
+
+    ```json
+    // ...
+    "type": {
+      "description": "Indicates the type of the extension.",
+      "type": "string",
+      "enum": [
+        // ...
+        "selection"   // Add the word selection extension type.
+      ]
+    }
+    // ...
+    ```
+
+10. Configure the **module.json5** file.
 
     Configure the path of the SelectionExtensionAbility file in the **extensionAbilities** field.
 
@@ -419,7 +434,18 @@ The preceding APIs are core APIs used in this topic. For details about all APIs 
     }
     ```
 
-10. Sign.
+11. Set your application as a system application in the debugging phase.
+
+    Change the value of **app-feature** to **hos_system_app** in **toolchains\lib\UnsgnedReleasedProfileTemplate.json** of the SDK.
+
+    ```json
+    {
+      // ...
+      "app-feature": "hos_system_app"   // Change the value from hos_normal_app to hos_system_app.
+    }
+    ```
+
+12. Sign.
 
     Click **Project Structure** in the upper right corner of [DevEco Studio](https://developer.huawei.com/consumer/en/deveco-studio/) and click **Signing Configs**. After you log in to your HUAWEI ID, a signature is automatically generated.
 

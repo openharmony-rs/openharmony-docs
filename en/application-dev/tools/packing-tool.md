@@ -1433,7 +1433,7 @@ In multi-project packing mode, the two HAPs or HSPs specified by **--app-list**,
 
 **Solution**
 
-Ensure that the HAPs or HSPs specified by **--app-list**,**--hap-list**, and**--hsp-list** have different file names.
+Ensure that the HAPs or HSPs specified by **--app-list**,**--hap-list**, and **--hsp-list** have different file names.
 
 ### 10012046 Failed to Parse the config.json File
 **Error Message**
@@ -1734,7 +1734,7 @@ In the **module.json** file, an element in the **proxyData** tag under the **mod
 
 Check the **module.json** file and ensure that each element in the **proxyData** tag under the **module** tag contains the **uri** tag.
 
-### 10013010 Failed to Check the bundleTyp Consistency
+### 10013010 Failed to Check the bundleType Consistency
 **Error Message**
 
 Failed to check the consistency of bundleType.
@@ -2127,6 +2127,7 @@ An exception occurs when the file is compressed.
 **Solution**
 
 Check the error information based on **Error Message:** in the log.
+
 Check the system logs and ensure that the file system and disk are normal.
 
 ### 10014009 Failed to Delete File
@@ -2145,6 +2146,7 @@ The file is occupied by another process.
 **Solution**
 
 Check the file path based on **Error Message:** in the log.
+
 Ensure that the file is not occupied by another process and manually delete the file.
 
 ### 10015001 File I/O Exception
@@ -2297,6 +2299,7 @@ Two or more **module.json** files in the packed HAPs or HSPs have identical **mo
 **Solution**
 
 Locate the faulty HAP or HSP based on **Error Message:** in the log.
+
 Check the **module.json** file of each HAP or HSP to be packed. Ensure that the values of the **module/package** tag are unique, and that the values of the **module/deviceType** and **module/metadata/resource/distributionFilter** properties do not intersect.
 
 ### 10016006 Invalid HAP File
@@ -2687,6 +2690,7 @@ The directory to be packed is empty.
 **Solution**
 
 This is only an alarm and does not need to be handled.
+
 Check the empty file directory to be packed based on **Error Message:** and ensure that the file directory meets the requirements.
 
 ### 10018005 Failed to Pack the libs Directory

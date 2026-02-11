@@ -40,7 +40,6 @@ isAutoDeviceSwitchSupported(): boolean
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // 本示例用于查询折叠屏设备是否支持自动切换相机镜头。
 // 当示例代码返回true时，可继续使用enableAutoDeviceSwitch使能自动切换摄像头能力。
