@@ -27,4 +27,4 @@ Defines a struct for the string list.
 | Name| Description|
 | -- | -- |
 | uint32_t count | Number of strings.|
-| char **list | String pointer array.|
+| char **list | Double pointer to the string array.|
