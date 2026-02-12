@@ -315,7 +315,7 @@ try { // 在此处执行错误返回false，成功就返回true
 }
 ```
 
-test.js代码，将js代码编译为.abc文件，步骤如下：
+test.js代码，将JS代码编译为.abc文件，步骤如下：
 
 1. 在SDK的ets/build-tools/ets-loader/bin/ark/build-win/bin目录下放置test.js文件
 2. 执行命令如es2abc.exe test.js  --output test.abc后便可生成test.abc文件

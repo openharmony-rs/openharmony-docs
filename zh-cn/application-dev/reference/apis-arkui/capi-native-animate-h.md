@@ -43,6 +43,7 @@
 
 ### 函数
 
+<!--Table: 40%; 60%-->
 | 名称 | 描述 |
 | -- | -- |
 | [ArkUI_AnimateOption* OH_ArkUI_AnimateOption_Create()](#oh_arkui_animateoption_create) | 创建动画效果参数。 |
@@ -728,7 +729,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDuration(ArkUI_KeyframeAnimateOption* 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 |
-| int32_t value | 持续时间，单位为ms（毫秒）。 |
+| int32_t value | 关键帧动画的持续时间，单位为ms（毫秒）。 |
 | int32_t index | 状态索引值。 |
 
 **返回：**

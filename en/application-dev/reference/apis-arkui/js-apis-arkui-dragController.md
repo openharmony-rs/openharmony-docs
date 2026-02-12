@@ -1104,7 +1104,7 @@ struct DragControllerPage {
               extraParams: ''
             }
             let eve: DragInfo = new DragInfo();
-            this.getUIContext().getDragController().executeDrag(() => { // You are advised to usethis.getUIContext().getDragController().executeDrag().
+            this.getUIContext().getDragController().executeDrag(() => { // You are advised to use this.getUIContext().getDragController().executeDrag().
               this.DraggingBuilder()
             }, dragInfo, (err , eve) => {
               hilog.info(0x0000, `${JSON.stringify(err)}`, '')

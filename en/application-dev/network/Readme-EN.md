@@ -7,7 +7,7 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
-- [Introduction to Network Kit](net-mgmt-overview.md)
+- [About This Kit](net-mgmt-overview.md)
 
 - [Network Kit Terms](network-terminology.md)
 

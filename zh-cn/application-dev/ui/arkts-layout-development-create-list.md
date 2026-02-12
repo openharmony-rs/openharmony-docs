@@ -89,7 +89,7 @@ List组件交叉轴方向在没有设置尺寸时，其尺寸默认自适应父�
 
 List组件主轴默认是垂直方向，即默认情况下不需要手动设置List方向，就可以构建一个垂直滚动列表。
 
-若是水平滚动列表场景，将List的listDirection属性设置为Axis.Horizontal即可实现。listDirection默认为Axis.Vertical，即主轴默认是垂直方向。
+若是水平滚动列表场景，将List的[listDirection](../reference/apis-arkui/arkui-ts/ts-container-list.md#listdirection)属性设置为Axis.Horizontal即可实现。listDirection默认为Axis.Vertical，即主轴默认是垂直方向。
 
 
 ```ts
@@ -569,7 +569,10 @@ struct ContactsList {
           if (itemGroup.contacts) {
             LazyForEach(new ContactsGroupDataSource(itemGroup.contacts), (item: Contact) => {
               ListItem() {
-                // ...
+                Row() {
+ 	                Image(item.icon).width(40).height(40).margin(10)
+ 	                Text(item.name).fontSize(20)
+ 	              }.width('100%').justifyContent(FlexAlign.Start)
               }
             }, (item: Contact) => JSON.stringify(item))
           }
@@ -1224,29 +1227,45 @@ List() {
 
 2. 构造列表结构，同时把[stackFromEnd](../reference/apis-arkui/arkui-ts/ts-container-list.md#stackfromend19)接口值设置为true，即可实现List列表在底部插入数据时，内容向上滚动。
 
-    ```ts
-    @State messages: Message[] = [
-        { id: 1, content: '欢迎来到直播间！', sender: '系统' },
-        { id: 2, content: '大家好啊~', sender: '主播' }
-    ];
-    build() {
-      Column() {
-        List({ space: 10 }) {
-          ForEach(this.messages, (item: Message) => {
-            ListItem() {
-              this.MessageItem(item)
-            }
-          }, (item: Message) => item.id.toString())
-        }
-        .stackFromEnd(true)
-        .layoutWeight(1)
-        .alignListItem(ListItemAlign.Center)
-        // ...
-      }
-      .width('100%')
-      .height('100%')
-    }
-    ```
+   ``` ts
+   @Builder
+   MessageItem(message:Message) 
+   {
+     Column() {
+       Text(`${message.sender}: ${message.content}`)
+       .fontSize(16)
+       .textAlign(TextAlign.Start)
+       .padding(10)
+       .backgroundColor(message.sender === 'system' ? '#F0F0F0' : '#E6F3FF')
+       .borderRadius(8)
+     }
+     .width('100%')
+     .alignItems(HorizontalAlign.Start)
+     .margin({ bottom: 8 })
+   }
+
+   @State messages: Message[] = [
+     { id: 1, content: '欢迎来到直播间！', sender: '系统' },
+     { id: 2, content: '大家好啊~', sender: '主播' }
+   ];
+   build() {
+     Column() {
+       List({ space: 10 }) {
+         ForEach(this.messages, (item: Message) => {
+           ListItem() {
+             this.MessageItem(item)
+           }
+         }, (item: Message) => item.id.toString())
+       }
+       .stackFromEnd(true)
+       .layoutWeight(1)
+       .alignListItem(ListItemAlign.Center)
+       // ...
+     }
+     .width('100%')
+     .height('100%')
+   }
+   ```
 
 ## 支持滑动离手事件
 

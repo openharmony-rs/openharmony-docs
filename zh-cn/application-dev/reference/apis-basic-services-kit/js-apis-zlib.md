@@ -1117,15 +1117,13 @@ compress(dest: ArrayBuffer, source: ArrayBuffer, sourceLen?: number): Promise&lt
 **示例：**
 
 ```ts
+import { util } from '@kit.ArkTS';
 import { zlib, BusinessError } from '@kit.BasicServicesKit';
 
-let str = 'hello world!';
-let arrayBufferIn = new ArrayBuffer(str.length);
-let byteArray = new Uint8Array(arrayBufferIn);
-
-for (let i = 0, j = str.length; i < j; i++) {
-  byteArray[i] = str.charCodeAt(i)
-}
+let str = 'hello world! 你好，世界！';
+const enc = util.TextEncoder.create('utf-8');
+const u8 = enc.encodeInto(str);
+const arrayBufferIn = u8.buffer.slice(u8.byteOffset, u8.byteOffset + u8.byteLength);
 
 let arrayBufferOut = new ArrayBuffer(100);
 let zip = zlib.createZipSync();
@@ -1175,15 +1173,13 @@ compress2(dest: ArrayBuffer, source: ArrayBuffer, level: CompressLevel, sourceLe
 **示例：**
 
 ```ts
+import { util } from '@kit.ArkTS';
 import { zlib, BusinessError } from '@kit.BasicServicesKit';
 
-let str = 'hello world!';
-let arrayBufferIn = new ArrayBuffer(str.length);
-let byteArray = new Uint8Array(arrayBufferIn);
-
-for (let i = 0, j = str.length; i < j; i++) {
-  byteArray[i] = str.charCodeAt(i)
-}
+let str = 'hello world! 你好，世界！';
+const enc = util.TextEncoder.create('utf-8');
+const u8 = enc.encodeInto(str);
+const arrayBufferIn = u8.buffer.slice(u8.byteOffset, u8.byteOffset + u8.byteLength);
 
 let arrayBufferOut = new ArrayBuffer(100);
 let zip = zlib.createZipSync();
@@ -5539,7 +5535,7 @@ struct Index {
 
 ### gzputc<sup>12+</sup>
 
-gzputc(char: number): Promise&lt;number&gt;
+gzputc(ch: number): Promise&lt;number&gt;
 
 将转换为无符号字符的c压缩并写入文件。使用Promise异步回调。
 
@@ -5551,7 +5547,7 @@ gzputc(char: number): Promise&lt;number&gt;
 
 | 参数名 | 类型   | 必填 | 说明            |
 | ------ | ------ | ---- | --------------- |
-| char   | number | 是   | 写入字符ASCII。 |
+| ch   | number | 是   | 写入字符ASCII。 |
 
 **返回值：**
 

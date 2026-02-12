@@ -145,7 +145,7 @@ registerContinuation(callback: AsyncCallback\<number>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -195,7 +195,7 @@ registerContinuation(options: ContinuationExtraParams, callback: AsyncCallback\<
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -254,7 +254,7 @@ registerContinuation(options?: ContinuationExtraParams): Promise\<number>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -428,7 +428,7 @@ on(type: 'deviceSelected', token: number, callback: Callback\<Array\<Continuatio
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -480,7 +480,7 @@ on(type: 'deviceUnselected', token: number, callback: Callback\<Array\<Continuat
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -532,7 +532,7 @@ off(type: 'deviceSelected', token: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -576,7 +576,7 @@ off(type: 'deviceUnselected', token: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -737,7 +737,7 @@ startContinuationDeviceManager(token: number, callback: AsyncCallback\<void>): v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -787,7 +787,7 @@ startContinuationDeviceManager(token: number, options: ContinuationExtraParams, 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -847,7 +847,7 @@ startContinuationDeviceManager(token: number, options?: ContinuationExtraParams)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -981,7 +981,7 @@ updateContinuationState(token: number, deviceId: string, status: DeviceConnectSt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -1038,7 +1038,7 @@ updateContinuationState(token: number, deviceId: string, status: DeviceConnectSt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -1163,7 +1163,7 @@ unregisterContinuation(token: number, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -1217,7 +1217,7 @@ unregisterContinuation(token: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |

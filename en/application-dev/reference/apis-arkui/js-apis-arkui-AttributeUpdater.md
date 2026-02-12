@@ -30,8 +30,7 @@ import { AttributeUpdater } from '@kit.ArkUI';
 >  
 >  3. An **AttributeUpdater** object can only be associated with one component at a time; otherwise, the set attributes may only take effect on one component.
 >  
->  4. You need to ensure the type matching of **T** and **C** in **AttributeUpdater** yourself. For example, if **T** is ImageAttribute, **C** should be ImageInterface;
->  otherwise, it may cause functionality issues when **updateConstructorParams** is used.
+>  4. You need to ensure the type matching of **T** and **C** in **AttributeUpdater** yourself. For example, if **T** is ImageAttribute, **C** should be ImageInterface; otherwise, it may cause functionality issues when **updateConstructorParams** is used.
 >  
 >  5. Currently, **updateConstructorParams** supports only the following components: **Button**, **Image**, **Text**, **Span**, **SymbolSpan**, **ImageSpan**.
 >  

@@ -10,7 +10,7 @@
 
 ## 上传应用文件
 
-开发者可以使用上传下载模块（[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)）的上传接口将本地文件上传。文件上传过程通过系统服务代理完成。在api12中，`request.agent.create`接口增加了设置代理地址的参数，支持设置自定义代理地址。
+开发者可以使用上传下载模块（[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)）的上传接口将本地文件上传。文件上传过程通过系统服务代理完成。在API version 12中，`request.agent.create`接口增加了设置代理地址的参数，支持设置自定义代理地址。
 
 > **说明：**
 >

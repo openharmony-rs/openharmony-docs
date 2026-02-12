@@ -58,7 +58,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 | on(type: 'connectResult')                  | 订阅连接结果通知变化的事件。                                                                              |
 | on(type: 'disconnected')                   | 订阅连接状态断开的事件。                                                                                  |
 | on(type: 'dataReceived')                   | 注册收数据的通知事件。                                                                                    |
-| createConnection(deviceId：string,name:string)| 创建一个connection对象。                                                                              |
+| createConnection(deviceId: string,name:string)| 创建一个connection对象。                                                                              |
 | start()                                    | 服务端开启服务。                                                                                         |   
 | stop()                                     | 服务端停止服务。                                                                                           |
 | close()                                    | 销毁Server对象，注销已注册的服务并取消已订阅的所有事件，调用该接口后Server对象将不能再使用。                    |

@@ -29,7 +29,7 @@
       var param = "param: JavaScript Hello World!";
       function htmlTestParam(param) {
           document.getElementById('text').style.color = 'green';
-          console.log(param);
+          console.info(param);
       }
       // 无参函数。
       function htmlTest() {

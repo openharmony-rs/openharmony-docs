@@ -2238,7 +2238,7 @@ pause(): Promise&lt;void&gt;
 **示例：**
 
   ```js
-  downloadTask.pause().then((result: boolean) => {    
+  downloadTask.pause().then(() => {    
     console.info('Succeeded in pausing the download task.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
@@ -2277,7 +2277,7 @@ pause(callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
   ```js
-  downloadTask.pause((err: BusinessError, result: boolean)=>{
+  downloadTask.pause((err: BusinessError) => {
     if(err) {
       console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -2318,7 +2318,7 @@ resume(): Promise&lt;void&gt;
 **示例：**
 
   ```js
-  downloadTask.resume().then((result: boolean) => {
+  downloadTask.resume().then(() => {
     console.info('Succeeded in resuming the download task.')
   }).catch((err: BusinessError) => {
     console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
@@ -2357,7 +2357,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
   ```js
-  downloadTask.resume((err: BusinessError, result: boolean)=>{
+  downloadTask.resume((err: BusinessError) => {
     if (err) {
       console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
       return;

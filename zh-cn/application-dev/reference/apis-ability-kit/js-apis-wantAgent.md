@@ -782,7 +782,7 @@ wantAgent.getWantAgent({
 | 名称                | 值             | 说明                                                         |
 | ------------------- | -------------- | ------------------------------------------------------------ |
 | ONE_TIME_FLAG       | 0 | WantAgent仅能使用一次。                                      |
-| NO_BUILD_FLAG       | 1 | 如果说明WantAgent对象不存在，则不创建它，直接返回null。      |
+| NO_BUILD_FLAG       | 1 | 如果指定WantAgent对象不存在，则不创建它，直接返回null。      |
 | CANCEL_PRESENT_FLAG | 2 | 在生成一个新的WantAgent对象前取消已存在的一个WantAgent对象。 |
 | UPDATE_PRESENT_FLAG | 3 | 使用新的WantAgent的额外数据替换已存在的WantAgent中的额外数据。 |
 | CONSTANT_FLAG       | 4 | WantAgent是不可变的。                                        |

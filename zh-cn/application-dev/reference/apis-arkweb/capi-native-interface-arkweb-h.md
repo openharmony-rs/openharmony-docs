@@ -202,7 +202,7 @@ void OH_NativeArkWeb_RegisterJavaScriptProxy(const char* webTag, const char* obj
 | const char** methodList | 注入函数列表的名称。 |
 | [NativeArkWeb_OnJavaScriptProxyCallback](#nativearkweb_onjavascriptproxycallback)* callback | 注入的回调函数。 |
 | int32_t size | 注入的回调函数的个数。 |
-| bool needRefresh | 是否需要刷新页面。 |
+| bool needRefresh | 是否需要刷新页面。true：刷新页面，false：不刷新页面。|
 
 ### OH_NativeArkWeb_UnregisterJavaScriptProxy()
 

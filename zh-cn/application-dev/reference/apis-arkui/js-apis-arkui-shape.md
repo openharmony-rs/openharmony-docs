@@ -6,14 +6,12 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-在 clipShape 和 maskShape 接口中可以传入对应的形状。
+在[clipShape](arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape12)和[maskShape](arkui-ts/ts-universal-attributes-sharp-clipping.md#maskshape12)接口中可以传入对应的形状。
 
 
 > **说明：**
 >
-> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -466,10 +464,12 @@ position(position: Position): T
 | ------ | ------------------------ |
 | T | 返回当前对象。 |
 
-## **示例**
+## 示例
+
+该示例主要演示通过[clipShape](arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape12)和[maskShape](arkui-ts/ts-universal-attributes-sharp-clipping.md#maskshape12)将图片裁剪和遮罩成不同形状。
 
 ```ts
-import { CircleShape, EllipseShape, PathShape, RectShape } from "@kit.ArkUI";
+import { CircleShape, EllipseShape, PathShape, RectShape } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -477,21 +477,25 @@ struct ShapeExample {
   build() {
     Column({ space: 15 }) {
       Text('CircleShape, position').fontSize(20).width('75%').fontColor('#DCDCDC')
+      // $r('app.media.startIcon')需替换为开发者所需的资源文件
       Image($r('app.media.startIcon'))
         .clipShape(new CircleShape({ width: '280px', height: '280px' }).position({ x: '20px', y: '20px' }))
         .width('500px').height('280px')
 
       Text('EllipseShape, offset').fontSize(20).width('75%').fontColor('#DCDCDC')
+      // $r('app.media.startIcon')需替换为开发者所需的资源文件
       Image($r('app.media.startIcon'))
         .clipShape(new EllipseShape({ width: '350px', height: '280px' }).offset({ x: '10px', y: '10px' }))
         .width('500px').height('280px')
 
       Text('PathShape, fill').fontSize(20).width('75%').fontColor('#DCDCDC')
+      // $r('app.media.startIcon')需替换为开发者所需的资源文件
       Image($r('app.media.startIcon'))
         .maskShape(new PathShape().commands('M100 0 L200 240 L0 240 Z').fill(Color.Red))
         .width('500px').height('280px')
     
       Text('RectShape, width, height, fill').fontSize(20).width('75%').fontColor('#DCDCDC')
+      // $r('app.media.startIcon')需替换为开发者所需的资源文件
       Image($r('app.media.startIcon'))
         .maskShape(new RectShape().width('350px').height('280px').fill(Color.Red))
         .width('500px').height('280px')
@@ -501,3 +505,5 @@ struct ShapeExample {
   }
 }
 ```
+
+![shape](figures/shape.png)
