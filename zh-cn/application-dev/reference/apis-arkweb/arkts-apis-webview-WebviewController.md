@@ -507,6 +507,7 @@ struct WebComponent {
 ArkTs-Sta示例：
 ```ts
 // xxx.ets
+'use static'
 import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -17174,6 +17175,7 @@ ArkTS-Sta示例：
 
 ```ts
 // EntryAbility.ets
+'use static'
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import Want from '@ohos.app.ability.Want';
@@ -17251,6 +17253,7 @@ ArkTS-Sta示例：
 
 ```ts
 // xxx.ets
+'use static'
 import { Entry, Component, Column, Button } from '@ohos.arkui.component'
 import { BusinessError } from '@ohos.base'
 import { webview } from '@kit.ArkWeb';

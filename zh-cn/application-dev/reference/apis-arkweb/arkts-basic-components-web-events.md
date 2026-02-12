@@ -6135,6 +6135,7 @@ ArkTS-Sta示例：
 
 ```ts
 // xxx.ets
+'use static'
 import { Entry, Component, Column, Web } from '@ohos.arkui.component'
 import { webview } from '@kit.ArkWeb';
 
