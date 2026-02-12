@@ -134,16 +134,16 @@
           // 监听call事件所需的方法并调用
           this.callee.on('funA', (data: rpc.MessageSequence) => {
             // 获取call事件中传递的所有参数
-            hilog.info(DOMAIN_NUMBER, TAG, `FunACall param:  ${JSON.stringify(data.readString())}`);
+            hilog.info(DOMAIN_NUMBER, TAG, `FunACall param:  ${data.readString()}`);
             return new MyParcelable(CONST_NUMBER_1, 'aaa');
           });
           this.callee.on('funB', (data: rpc.MessageSequence) => {
             // 获取call事件中传递的所有参数
-            hilog.info(DOMAIN_NUMBER, TAG, `FunBCall param:  ${JSON.stringify(data.readString())}`);
+            hilog.info(DOMAIN_NUMBER, TAG, `FunBCall param:  ${data.readString()}`);
             return new MyParcelable(CONST_NUMBER_2, 'bbb');
           });
-        } catch (err) {
-          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee on. Cause: ${JSON.stringify(err as BusinessError)}`);
+        } catch (error) {
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee on. error code: ${error.code}, error message: ${error.message}`);
         }
       }
     
@@ -152,8 +152,8 @@
         try {
           this.callee.off('funA');
           this.callee.off('funB');
-        } catch (err) {
-          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee off. Cause: ${JSON.stringify(err as BusinessError)}`);
+        } catch (error) {
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee off. error code: ${error.code}, error message: ${error.message}`);
         }
       }
     }
