@@ -178,7 +178,7 @@ request(url: string, callback: AsyncCallback\<HttpResponse\>): void
 
 > **说明：**
 >
->(1) 此接口仅支持接收5MB以内的数据，如果需要接收超过5MB的数据，则需主动在[HttpRequestOptions](#httprequestoptions)的maxLimit中进行设置，或者使用[requestInStream](#requestinstream10)接口发起流式请求。自API Version 23开始，本接口支持的最大接收数据量为50MB，小于23版本的仍然为5MB，超过5MB会接收失败。<br>
+>(1) 此接口仅支持接收5MB以内的数据，如果需要接收超过5MB的数据，则需主动在[HttpRequestOptions](#httprequestoptions)的maxLimit中进行设置，或者使用[requestInStream](#requestinstream10)接口发起流式请求。自API version 23开始，本接口支持的最大接收数据量为50MB，小于23版本的仍然为5MB，超过5MB会接收失败。<br>
 >(2) 如需传入cookies，请开发者自行在参数options中添加。<br>
 >(3) 若URL包含中文或其他语言，需先调用encodeURL(URL)编码，再发起请求。
 
@@ -264,7 +264,7 @@ request(url: string, options: HttpRequestOptions, callback: AsyncCallback\<HttpR
 
 > **说明：**
 >
->(1) 此接口仅支持接收5MB以内的数据，如果需要接收超过5MB的数据，则需主动在[HttpRequestOptions](#httprequestoptions)的maxLimit中进行设置，或者使用[requestInStream](#requestinstream10)接口发起流式请求。自API Version 23开始，本接口支持的最大接收数据量为50MB，小于23版本的仍然为5MB，超过5MB会接收失败。<br>
+>(1) 此接口仅支持接收5MB以内的数据，如果需要接收超过5MB的数据，则需主动在[HttpRequestOptions](#httprequestoptions)的maxLimit中进行设置，或者使用[requestInStream](#requestinstream10)接口发起流式请求。自API version 23开始，本接口支持的最大接收数据量为50MB，小于23版本的仍然为5MB，超过5MB会接收失败。<br>
 >(2) 如需传入cookies，请开发者自行在参数options中添加。<br>
 >(3) 若URL包含中文或其他语言，需先调用encodeURL(URL)编码，再发起请求。
 
@@ -373,7 +373,7 @@ request(url: string, options? : HttpRequestOptions): Promise\<HttpResponse\>
 
 > **说明：**
 >
->(1) 此接口仅支持接收5MB以内的数据，如果需要接收超过5MB的数据，则需主动在[HttpRequestOptions](#httprequestoptions)的maxLimit中进行设置，或者使用[requestInStream](#requestinstream10)接口发起流式请求。自API Version 23开始，本接口支持的最大接收数据量为50MB，小于23版本的仍然为5MB，超过5MB会接收失败。<br>
+>(1) 此接口仅支持接收5MB以内的数据，如果需要接收超过5MB的数据，则需主动在[HttpRequestOptions](#httprequestoptions)的maxLimit中进行设置，或者使用[requestInStream](#requestinstream10)接口发起流式请求。自API ersion 23开始，本接口支持的最大接收数据量为50MB，小于23版本的仍然为5MB，超过5MB会接收失败。<br>
 >(2) 如需传入cookies，请开发者自行在参数options中添加。<br>
 >(3) 若URL包含中文或其他语言，需先调用encodeURL(URL)编码，再发起请求。
 
