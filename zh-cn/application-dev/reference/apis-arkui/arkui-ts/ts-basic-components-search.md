@@ -1099,7 +1099,7 @@ onEditChange(callback:&nbsp;Callback<&nbsp;boolean&nbsp;>)
 
 | 参数名    | 类型                                | 必填 | 说明                 |
 | --------- | ---------------------------------- | ---- | -------------------- |
-| callback | &nbsp;Callback<&nbsp;boolean&nbsp;> | 是   | 编辑状态改变回调，其返回值为true表示正在输入。 |
+| callback | &nbsp;Callback<&nbsp;boolean&nbsp;> | 是   | 编辑状态改变回调，其返回值为true表示正在输入，false表示无焦点，无法输入文字。 |
 
 ### onWillInsert<sup>12+</sup>
 
