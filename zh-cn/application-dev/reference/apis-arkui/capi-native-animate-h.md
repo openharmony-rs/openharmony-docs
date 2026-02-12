@@ -418,7 +418,7 @@ void OH_ArkUI_AnimateOption_SetCurve(ArkUI_AnimateOption* option, ArkUI_Animatio
 | 参数项 | 描述 | 异常值行为 |
 | -- | -- | -- |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 | option为NULL时，操作无效。 |
-| [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve) value | 动画曲线。默认值：ARKUI_CURVE_LINEAR（0），建议使用ARKUI_CURVE_EASE_IN_OUT（4）获得更平滑的动画效果。 | value小于0时，按0处理；value大于预设最大值时，按最大值处理。 |
+| [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve) value | 动画曲线。默认值：[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)（0），建议使用[ARKUI_CURVE_EASE_IN_OUT](capi-native-type-h.md#arkui_animationcurve)（4）获得更平滑的动画效果。 | value小于0时，按0处理；value大于预设最大值时，按最大值处理。 |
 
 ### OH_ArkUI_AnimateOption_SetDelay()
 
@@ -1142,7 +1142,7 @@ int32_t OH_ArkUI_AnimatorOption_SetCurve(ArkUI_AnimatorOption* option, ArkUI_Cur
 | 参数项 | 描述 | 异常值行为 |
 | -- | -- | -- |
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 | option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | 动画插值曲线。默认值：ARKUI_CURVE_LINEAR（0），建议使用ARKUI_CURVE_EASE_IN_OUT（4）获得更平滑的动画效果。 | value为NULL时，使用默认曲线ARKUI_CURVE_LINEAR（0）。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | 动画插值曲线。默认值：[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)（0），建议使用[ARKUI_CURVE_EASE_IN_OUT](capi-native-type-h.md#arkui_animationcurve)（4）获得更平滑的动画效果。 | value为NULL时，使用默认曲线[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)（0）。 |
 
 **返回：**
 

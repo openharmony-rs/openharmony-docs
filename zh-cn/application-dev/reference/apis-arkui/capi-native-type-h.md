@@ -1425,7 +1425,7 @@ enum ArkUI_AnimationCurve
 | ARKUI_CURVE_EASE = 1 | 动画以低速开始，然后加快，在结束前变慢。 |
 | ARKUI_CURVE_EASE_IN = 2 | 动画以低速开始。 |
 | ARKUI_CURVE_EASE_OUT = 3 | 动画以低速结束。 |
-| ARKUI_CURVE_EASE_IN_OUT = 4 | 动画以低速开始和结束。 |
+| ARKUI_CURVE_EASE_IN_OUT = 4 | 动画以低速开始和结束，提供平滑自然的动画过渡效果。 |
 | ARKUI_CURVE_FAST_OUT_SLOW_IN = 5 | 动画标准曲线。 |
 | ARKUI_CURVE_LINEAR_OUT_SLOW_IN = 6 | 动画减速曲线。 |
 | ARKUI_CURVE_FAST_OUT_LINEAR_IN = 7 | 动画加速曲线。 |
