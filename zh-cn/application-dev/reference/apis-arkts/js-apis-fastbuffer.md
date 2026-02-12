@@ -1937,7 +1937,7 @@ subarray(start?: number, end?: number): FastBuffer
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | start | number | 否 | 截取开始位置。默认值：0。 |
-| end | number | 否 |  截取结束位置（不包含结束位置）。默认值：当前对象的字节长度。取值范围：start <= end <= this.length |
+| end | number | 否 |  截取结束位置（不包含结束位置）。默认值：当前对象的字节长度。取值范围：start <= end <= this.length。在传入null时返回空FastBuffer。 |
 
 **返回值：**
 
@@ -2779,7 +2779,7 @@ writeIntBE(value: number, offset: number, byteLength: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | value | number | 是 | 写入Buffer的数据。取值范围取决于byteLength。  |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - byteLength。 |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - byteLength。传入null或undefined时偏移量为0。 |
 | byteLength | number | 是 | 要写入的字节数。 |
 
 
@@ -2824,7 +2824,7 @@ writeIntLE(value: number, offset: number, byteLength: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | value | number | 是 | 写入Buffer的数据。取值范围取决于byteLength。 |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - byteLength。 |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - byteLength。传入null或undefined时偏移量为0。 |
 | byteLength | number | 是 | 要写入的字节数。 |
 
 
@@ -3098,7 +3098,7 @@ writeUIntBE(value: number, offset: number, byteLength: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | value | number | 是 | 写入Buffer的数据。取值范围取决于byteLength。 |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - byteLength。 |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - byteLength。传入null或undefined时偏移量为0。 |
 | byteLength | number | 是 | 要写入的字节数。 |
 
 
@@ -3142,7 +3142,7 @@ writeUIntLE(value: number, offset: number, byteLength: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | value | number | 是 | 写入Buffer的数据。取值范围取决于byteLength。 |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - byteLength。 |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - byteLength。传入null或undefined时偏移量为0。 |
 | byteLength | number | 是 | 要写入的字节数。 |
 
 
