@@ -628,13 +628,13 @@ Provides **PasteDataRecord** APIs. A **PasteDataRecord** is an abstract definiti
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| htmlText| string | Yes| No| HTML content.|
+| htmlText | string | Yes| No| HTML content.|
 | want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| No| Want content.|
 | mimeType | string | Yes| No| Default data type.|
 | plainText | string | Yes| No| Plain text.|
 | uri | string | Yes| No| URI content.|
 | pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes| No| Pixel map.|
-| data<sup>9+</sup> | Record<string, ArrayBuffer>; | Yes| No| Content of custom data.|
+| data<sup>9+</sup> | {[mimeType:&nbsp;string]:&nbsp;ArrayBuffer} | Yes| No| Content of custom data.|
 
 ### toPlainText<sup>9+</sup>
 
@@ -1244,7 +1244,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | Error Code ID| Error Message|
 | -------- | -------- |
 | 12900001 | The index is out of the record. |
-| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1359,7 +1359,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | Error Code ID| Error Message|
 | -------- | -------- |
 | 12900001 | The index is out of the record. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
 **Example**
 
@@ -1392,7 +1392,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | Error Code ID| Error Message|
 | -------- | -------- |
 | 12900001 | The index is out of the record. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
 **Example**
 
@@ -2012,32 +2012,6 @@ systemPasteboard.getData().then((pasteData: pasteboard.PasteData) => {
 }).catch((err: BusinessError) => {
     console.error('Failed to get PasteData. Cause: ' + err.message);
 });
-```
-
-### hasRemoteData<sup>24+</sup>
-
-hasRemoteData(): boolean
-
-Checks whether the pasteboard data is on a remote device. It takes a long time to transfer data across devices. Therefore, if the pasteboard data is on a remote device, you are advised not to perform either of the following operations in the UI thread:<br>1. Check whether the pasteboard data contains custom data types.<br>2. Read the pasteboard data.
-
-**Atomic service API**: This API can be used in atomic services since API version 24.
-
-**System capability**: SystemCapability.MiscServices.Pasteboard
-
-**Return value**
-
-| Type| Description|
-| -------- | -------- |
-| boolean | Returns a check result indicating whether the pasteboard data is on a remote device. The value **true** indicates that the pasteboard data is on a remote device, and **false** indicates the opposite. The default value can be **true** or **false**.|
-
-**Example**
-
-```ts
-const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
-
-let result: boolean = systemPasteboard.hasRemoteData();
-console.info(`Succeeded in checking the remote data. Result: ${result}`);
-
 ```
 
 ### hasData<sup>9+</sup>
