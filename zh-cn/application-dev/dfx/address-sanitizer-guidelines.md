@@ -512,12 +512,7 @@ Use After Free at 0x5bab376000 (0 bytes into a 64-byte allocation at 0x5bab37600
 
 | 故障特征   | 聚类特征 |
 |---|---|
-| 故障类型 | Use After Free  |
 | 故障特征1-使用栈 | /data/storage/el1/bundle/libs/arm64/libsample.so+0x7ba4<br>/data/storage/el1/bundle/libs/arm64/libsample.so+0x849c |
 | 故障特征2-释放栈 | /data/storage/el1/bundle/libs/arm64/libsample.so+0x7b9c<br>/data/storage/el1/bundle/libs/arm64/libsample.so+0x849c |
 
 开发者可通过比对聚类特征来归并AddrSanitizer故障，也可对特征内容进行哈希运算生成Fingerprint以用于问题分类统计与自动化分析。
-
-```text
-Fingerprint=hash(故障类型+故障特征1+故障特征2)
-```
