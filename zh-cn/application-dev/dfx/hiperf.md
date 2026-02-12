@@ -1,4 +1,4 @@
-``# hiperf
+# hiperf
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
