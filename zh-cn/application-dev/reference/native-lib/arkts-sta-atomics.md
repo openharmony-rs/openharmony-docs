@@ -445,10 +445,11 @@ console.info("res is:" + re) //12
 
 ## notify
 
-static notify(typedArray: Int32Array | BigInt64Array, index: number, count?: number): int  
+static notify(typedArray: Int32Array | BigInt64Array, index: number, count?: number): int
 
 唤醒一些在等待typedArray[index]的Waiter。count可以指定唤醒Waiter的个数。  
 调用Atomics.wait(typedArray, index, value)会在typedArray[index]处产生一个Waiter。  
+wait等待时会将控制权让出，切换到其他任务执行，因此wait任务和notify任务可在同一线程中执行。
 
 **参数：**
 | 名称     | 类型                                    | 必填 | 说明                   |
@@ -706,10 +707,11 @@ console.info("res is:" + re) //36
 
 ## wait
 
-static wait(typedArray: Int32Array, index: number, value: number, timeout?: number): string  
+static wait(typedArray: Int32Array, index: number, value: number, timeout?: number): string
 
 验证typedArray[index]是否等于value。如果不相等就直接返回"not-equal"。如果相等则进行等待状态。  
-等待状态下如果收到notify，则结束等待并返回"ok"，如果设置了timeout超时时间，超过超时时间则不再等待并返回"time-out"，否则一直等待。    
+当处于等待状态时，若收到notify信号，则结束等待并返回"ok"；如果设置了timeout超时时间，超过超时时间则不再等待并返回"time-out"，否则一直等待。  
+wait等待时会将控制权让出，切换到其他任务执行，因此wait任务和notify任务可在同一线程中执行。
 
 **参数：**
 | 名称     | 类型                                    | 必填 | 说明                   |
@@ -758,10 +760,11 @@ function testMain(): void {
 ```
 ## wait
 
-static wait(typedArray: BigInt64Array, index: nubmer, value: bigint, timeout?: number): string  
+static wait(typedArray: BigInt64Array, index: nubmer, value: bigint, timeout?: number): string
 
 验证typedArray[index]是否等于value。如果不相等就直接返回"not-equal"。如果相等则进行等待状态。  
-等待状态下如果收到notify，则结束等待并返回"ok"，如果设置了timeout超时时间，超过超时时间则不再等待并返回"time-out"，否则一直等待。    
+当处于等待状态时，若收到notify信号，则结束等待并返回"ok"；如果设置了timeout超时时间，超过超时时间则不再等待并返回"time-out"，否则一直等待。  
+wait等待时会将控制权让出，切换到其他任务执行，因此wait任务和notify任务可在同一线程中执行。
 
 **参数：**
 | 名称     | 类型                                    | 必填 | 说明                   |
@@ -815,6 +818,7 @@ async static waitAsync(typedArray: Int32Array | BigInt64Array, index: number, va
 
 等待共享内存的特定位置，与wait不同，不会阻塞调用者。  
 等待结果可通过返回值获得。  
+wait等待时会将控制权让出，切换到其他任务执行，因此wait任务和notify任务可在同一线程中执行。
 
 **参数：**
 | 名称     | 类型                                    | 必填 | 说明                   |
