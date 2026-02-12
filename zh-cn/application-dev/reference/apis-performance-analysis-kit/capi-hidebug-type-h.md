@@ -39,6 +39,7 @@ HiDebug模块代码结构体定义。
 | [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md) | HiDebug_ProcessSamplerConfig | 采样配置的结构定义。 |
 | [HiDebug_Backtrace_Object__*](capi-hidebug-hidebug-backtrace-object--8h.md) | HiDebug_Backtrace_Object | 用于栈回溯及栈解析的对象。 |
 | [HiDebug_ThreadCpuUsage*](capi-hidebug-hidebug-threadcpuusage.md) | HiDebug_ThreadCpuUsagePtr | HiDebug_ThreadCpuUsage指针定义。 |
+| [HiDebug_RssInfo](capi-hidebug-hidebug-rssinfo.md) | HiDebug_RssInfo | 应用程序进程使用的物理内存信息结构类型定义。 |
 
 ### 枚举
 
