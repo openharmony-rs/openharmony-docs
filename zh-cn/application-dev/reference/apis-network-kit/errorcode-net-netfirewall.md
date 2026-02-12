@@ -98,7 +98,8 @@ domain类型的防火墙规则中，域名规则数量超过最大值。
 
 **可能原因**
 
-添加/更新的一条domain规则里的域名参数NetFirewallDomainParams的个数大于100个。
+1、添加/更新的一条domain规则里的域名参数NetFirewallDomainParams的个数大于100个。
+2、单个用户userid的所有domain规则里的域名参数NetFirewallDomainParams的个数大于1000个。
 
 **处理步骤**
 
