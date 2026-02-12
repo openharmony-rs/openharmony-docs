@@ -21,17 +21,21 @@ import { relationalStore } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| columnNames | Array&lt;string&gt; | 是 | 否 | 获取结果集中所有列的名称。当结果集中包含重名列时，获取的列名会不符合预期，建议使用[getColumnNames](#getcolumnnames23)接口获取。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| columnCount | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 否 | 获取结果集中列的数量。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| rowCount | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 否 | 获取结果集中行的数量。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| rowIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 否 | 获取结果集当前行的索引位置，默认值为-1。索引位置下标从0开始。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| isAtFirstRow | boolean | 是 | 否 | 检查结果集指针是否位于第一行（行索引为0），true表示位于第一行，false表示不位于第一行。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 9 |
-| isAtLastRow | boolean | 是 | 否 | 检查结果集指针是否位于最后一行，true表示位于最后一行，false表示不位于最后一行。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 9 |
-| isEnded | boolean | 是 | 否 | 检查结果集指针是否位于最后一行之后，true表示位于最后一行之后，false表示不位于最后一行之后。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 9 |
-| isStarted | boolean | 是 | 否 | 检查指针是否移动过，true表示指针已移动过，false表示指针未移动过。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 9 |
-| isClosed | boolean | 是 | 否 | 检查当前结果集是否关闭，true表示结果集已关闭，false表示结果集未关闭。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 9 |
+| columnNames | Array&lt;string&gt; | 是 | 否 | 获取结果集中所有列的名称。当结果集中包含重名列时，获取的列名会不符合预期，建议使用[getColumnNames](#getcolumnnames23)接口获取。|
+| columnCount | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 否 | 获取结果集中列的数量。|
+| rowCount | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 否 | 获取结果集中行的数量。|
+| rowIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 否 | 获取结果集当前行的索引位置，默认值为-1。索引位置下标从0开始。|
+| isAtFirstRow | boolean | 是 | 否 | 检查结果集指针是否位于第一行（行索引为0），true表示位于第一行，false表示不位于第一行。|
+| isAtLastRow | boolean | 是 | 否 | 检查结果集指针是否位于最后一行，true表示位于最后一行，false表示不位于最后一行。|
+| isEnded | boolean | 是 | 否 | 检查结果集指针是否位于最后一行之后，true表示位于最后一行之后，false表示不位于最后一行之后。|
+| isStarted | boolean | 是 | 否 | 检查指针是否移动过，true表示指针已移动过，false表示指针未移动过。|
+| isClosed | boolean | 是 | 否 | 检查当前结果集是否关闭，true表示结果集已关闭，false表示结果集未关闭。|
 
 ## getColumnNames<sup>23+</sup>
 
