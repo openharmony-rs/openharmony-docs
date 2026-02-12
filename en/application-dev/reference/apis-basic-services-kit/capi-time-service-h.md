@@ -12,6 +12,8 @@ Declares the APIs for obtaining the time and time zone.
 
 **Library**: libtime_service_ndk.so
 
+**File to include**: <BasicServicesKit/time_service.h>
+
 **System capability**: SystemCapability.MiscServices.Time
 
 **Since**: 12
