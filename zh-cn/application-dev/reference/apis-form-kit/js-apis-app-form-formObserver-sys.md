@@ -1398,7 +1398,7 @@ try {
           }
         });
       } catch (error: BusinessError) {
-        hilog.error(DOMAIN, TAG, 'formObserverStaticTest001 catch error');
+        hilog.error(DOMAIN, TAG, `formObserverStaticTest001 catch error, code: ${error?.code}  message: ${error?.message}`);
       }
     }
   }).catch((error: Error) => {
@@ -1636,24 +1636,13 @@ ArkTS-Sta示例：
 import { formInfo, formObserver } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let formInstanceFilter: formInfo.FormProviderFilter = {
-  bundleName: "com.example.formprovide",
-  abilityName: "EntryFormAbility",
-  formName: "widget",
-  moduleName: "entry"
-}
 try {
-  formObserver.getRunningFormInfosByFilter(formInstanceFilter,
-    (error: BusinessError | null, data: formInfo.RunningFormInfo[] | undefined) => {
-      if (error) {
-        console.error(`error, code: ${error.code}, message: ${error.message}`);
-      } else {
-        if (data !== undefined) {
-          for (let runningFormInfo of data) {
-            console.info(`formObserver getRunningFormInfos, hostBundleName : ${runningFormInfo.hostBundleName}`);
-          }
-        }
-      }
+  formObserver.getRunningFormInfos(true, 'com.example.ohos.formjsdemo')
+    .then((data: Array<formInfo.RunningFormInfo>) => {
+      console.info(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+    })
+    .catch((error) => {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
     });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -2524,6 +2513,12 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.off('router', hostBundleName, callback);
 ```
 
+> **说明：**
+>
+> - on('route', callback)与off('route', callback)相对应；
+> - on('route', bundleName, callback)与off('route', bundleName, callback)相对应；
+> - 订阅（on）只能由自己对应的取消订阅接口（off）取消。
+
 ## offRouter<sup>23+</sup>
 
 offRouter(hostBundleName?: string, observerCallback?: Callback\<formInfo.RunningFormInfo\>): void
@@ -2582,6 +2577,12 @@ try {
   hilog.error(DOMAIN, TAG, `formObserverStaticTest015 catch error, code: ${code}, message: ${message})`);
 }
 ```
+
+> **说明：**
+>
+> - onRouter(callback)与offRouter(callback)相对应；
+> - onRouter(bundleName, callback)与offRouter( bundleName, callback)相对应；
+> - 订阅（onRouter）只能由自己对应的取消订阅接口（offRouter）取消。
 
 ## on('message')<sup>11+</sup>
 
@@ -2827,6 +2828,12 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.off('message', hostBundleName, callback);
 ```
 
+> **说明：**
+>
+> - on('message', callback)与off('message', callback)相对应；
+> - on('message', bundleName, callback)与off('message', bundleName, callback)相对应；
+> - 订阅（on）只能由自己对应的取消订阅接口（off）取消。
+
 ## offMessage<sup>23+</sup>
 
 offMessage(hostBundleName?: string, observerCallback?: Callback<formInfo.RunningFormInfo>): void
@@ -2885,6 +2892,12 @@ try {
   hilog.error(DOMAIN, TAG, `formObserverStaticTest013 catch error, code: ${code}, message: ${message})`);
 }
 ```
+
+> **说明：**
+>
+> - onMessage(callback)与offMessage(callback)相对应；
+> - onMessage(bundleName, callback)与offMessage( bundleName, callback)相对应；
+> - 订阅（onMessage）只能由自己对应的取消订阅接口（offMessage）取消。
 
 ## on('call')<sup>11+</sup>
 
@@ -3126,6 +3139,12 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.off('call', hostBundleName, callback);
 ```
 
+> **说明：**
+>
+> - on('call', callback)与off('call', callback)相对应；
+> - on('call', bundleName, callback)与off('call', bundleName, callback)相对应；
+> - 订阅（on）只能由自己对应的取消订阅接口（off）取消。
+
 ## offCall<sup>23+</sup>
 
 offCall(hostBundleName?: string, observerCallback?: Callback\<formInfo.RunningFormInfo\>): void
@@ -3182,3 +3201,9 @@ try {
   hilog.error(DOMAIN, TAG, `formObserverStaticTest011 catch error, code: ${error.code} message: ${error.message}`);
 }
 ```
+
+> **说明：**
+>
+> - onCall(callback)与offCall(callback)相对应；
+> - onCall(bundleName, callback)与offCall( bundleName, callback)相对应；
+> - 订阅（onCall）只能由自己对应的取消订阅接口（offCall）取消。

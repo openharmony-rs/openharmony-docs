@@ -57,7 +57,44 @@ requestPublishForm(want: Want, formBindingData: formBindingData.FormBindingData,
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { formBindingData, formProvider } from '@kit.FormKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let want: Want = {
+  abilityName: 'FormAbility',
+  parameters: {
+    'ohos.extra.param.key.form_dimension': 2,
+    'ohos.extra.param.key.form_name': 'widget',
+    'ohos.extra.param.key.module_name': 'entry'
+  }
+};
+try {
+  let param: Record<string, string> = {
+    'temperature': '22c',
+    'time': '22:00'
+  }
+  let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+  formProvider.requestPublishForm(want, obj, (error: BusinessError, data: string) => {
+    if (error) {
+      console.error(`callback error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+      return;
+    }
+    console.info(`formProvider requestPublishForm, form ID is: ${data}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
 import { formBindingData, formProvider } from '@kit.FormKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -123,7 +160,39 @@ requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { formProvider } from '@kit.FormKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let want: Want = {
+  abilityName: 'FormAbility',
+  parameters: {
+    'ohos.extra.param.key.form_dimension': 2,
+    'ohos.extra.param.key.form_name': 'widget',
+    'ohos.extra.param.key.module_name': 'entry'
+  }
+};
+try {
+  formProvider.requestPublishForm(want, (error: BusinessError, data: string) => {
+    if (error) {
+      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      return;
+    }
+    console.info(`formProvider requestPublishForm, form ID is: ${data}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
 import { formProvider } from '@kit.FormKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -190,7 +259,37 @@ requestPublishForm(want: Want, formBindingData?: formBindingData.FormBindingData
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { formProvider } from '@kit.FormKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let want: Want = {
+  abilityName: 'FormAbility',
+  parameters: {
+    'ohos.extra.param.key.form_dimension': 2,
+    'ohos.extra.param.key.form_name': 'widget',
+    'ohos.extra.param.key.module_name': 'entry'
+  }
+};
+try {
+  formProvider.requestPublishForm(want).then((data: string) => {
+    console.info(`formProvider requestPublishForm success, form ID is : ${data}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
 import { formProvider } from '@kit.FormKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -247,6 +346,8 @@ isRequestPublishFormSupported(callback: AsyncCallback&lt;boolean&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formProvider } from '@kit.FormKit';
 import { Want } from '@kit.AbilityKit';
@@ -285,6 +386,50 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formProvider } from '@kit.FormKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+try {
+  let callback: AsyncCallback<boolean> = (error: BusinessError | null, isSupported: boolean | undefined) => {
+    if (error) {
+      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+    } else {
+      if (isSupported) {
+        let want: Want = {
+          abilityName: 'FormAbility',
+          parameters: {
+            'ohos.extra.param.key.form_dimension': 2,
+            'ohos.extra.param.key.form_name': 'widget',
+            'ohos.extra.param.key.module_name': 'entry'
+          } as Record<string, RecordData>
+        };
+        try {
+          let callback: AsyncCallback<string> = (error: BusinessError | null, data: string | undefined) => {
+            if (error) {
+              console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+              return;
+            }
+            console.info(`formProvider requestPublishForm, form ID is: ${data}`);
+          }
+          formProvider.requestPublishForm(want, callback);
+        } catch (error) {
+          console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+        }
+      }
+    }
+  }
+  formProvider.isRequestPublishFormSupported(callback);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
 ## isRequestPublishFormSupported
 
 isRequestPublishFormSupported(): Promise&lt;boolean&gt;
@@ -317,6 +462,8 @@ isRequestPublishFormSupported(): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formProvider } from '@kit.FormKit';
 import { Want } from '@kit.AbilityKit';
@@ -344,6 +491,44 @@ try {
       }
     }
   }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formProvider } from '@kit.FormKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+try {
+  formProvider.isRequestPublishFormSupported().then((isSupported: boolean) => {
+    if (isSupported) {
+      let want: Want = {
+        abilityName: 'FormAbility',
+        parameters: {
+          'ohos.extra.param.key.form_dimension': 2,
+          'ohos.extra.param.key.form_name': 'widget',
+          'ohos.extra.param.key.module_name': 'entry'
+        } as Record<string,RecordData>
+      };
+      try {
+        formProvider.requestPublishForm(want).then((data: string) => {
+          console.info(`formProvider requestPublishForm success, form ID is : ${data}`);
+        }).catch((error) => {
+          console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+        });
+      } catch (error) {
+        console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+      }
+    }
+  }).catch((error) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
 } catch (error) {
@@ -391,6 +576,8 @@ activateSceneAnimation(formId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -401,6 +588,27 @@ try {
   formProvider.activateSceneAnimation(formId).then(() => {
     console.info('activateSceneAnimation succeed.');
   }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288';
+
+try {
+  formProvider.activateSceneAnimation(formId).then(() => {
+    console.info('activateSceneAnimation succeed.');
+  }).catch((error) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
 } catch (error) {
@@ -448,6 +656,8 @@ deactivateSceneAnimation(formId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -458,6 +668,27 @@ try {
   formProvider.deactivateSceneAnimation(formId).then(() => {
     console.info('deactivateSceneAnimation succeed.');
   }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288';
+
+try {
+  formProvider.deactivateSceneAnimation(formId).then(() => {
+    console.info('deactivateSceneAnimation succeed.');
+  }).catch((error) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
 } catch (error) {
