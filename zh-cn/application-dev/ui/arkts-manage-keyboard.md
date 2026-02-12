@@ -271,6 +271,29 @@ struct demo_text_1 {
 以下示例展示了如何通过[TextInputController](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textinputcontroller8)收起软键盘。
 
 <!-- @[textInputController_CloseKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/TextInputControllerCloseKeyboard.ets) --> 
+
+``` TypeScript
+struct textInputControllerCloseKeyboard {
+  controller: TextInputController = new TextInputController();
+  @State inputValue: string = '';
+
+  build() {
+    NavDestination() {
+    Column({ space: 30 }) {
+      // 请将$r('app.string.close_keyboard')替换为实际资源文件，在本示例中该资源文件的value值为"close keyboard"
+      Button($r('app.string.close_keyboard')).onClick(() => {
+        this.controller.stopEditing()
+      })
+      TextInput({ controller: this.controller, text: this.inputValue })
+    }
+    .width('80%')
+    .height('100%')
+    .margin('10%')
+    .justifyContent(FlexAlign.Center)
+    }
+  }
+}
+```
 ![stopEditing](figures/stopEditing.gif)
 
 ### 焦点转移到不需要软键盘的组件
