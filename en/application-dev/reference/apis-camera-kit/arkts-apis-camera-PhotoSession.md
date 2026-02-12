@@ -6,11 +6,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-PhotoSession inherits from [Session](arkts-apis-camera-Session.md), [Flash](arkts-apis-camera-Flash.md), [AutoExposure](arkts-apis-camera-AutoExposure.md), [WhiteBalance](arkts-apis-camera-WhiteBalance.md), [Focus](arkts-apis-camera-Focus.md), [Zoom](arkts-apis-camera-Zoom.md), [ColorManagement](arkts-apis-camera-ColorManagement.md), [AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md), and [Macro](arkts-apis-camera-Macro.md).
+**PhotoSession** inherits from [Session](arkts-apis-camera-Session.md), [Flash](arkts-apis-camera-Flash.md), [AutoExposure](arkts-apis-camera-AutoExposure.md), [WhiteBalance](arkts-apis-camera-WhiteBalance.md), [Focus](arkts-apis-camera-Focus.md), [Zoom](arkts-apis-camera-Zoom.md), [ColorManagement](arkts-apis-camera-ColorManagement.md), [AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md), and [Macro](arkts-apis-camera-Macro.md).
 
 It implements a photo session, which provides operations on the flash, exposure, white balance, focus, zoom, color space, and macro mode.
 
-PhotoSession is provided for the default photo mode. It is used to take standard photos. It supports multiple photo formats and resolutions, which are suitable for most daily photo capture scenarios.
+**PhotoSession** is provided for the default photo mode. It is used to take standard photos. It supports multiple photo formats and resolutions, which are suitable for most daily photo capture scenarios.
 
 > **NOTE**
 >
@@ -117,7 +117,7 @@ function testPreconfig(photoSession: camera.PhotoSession, preconfigType: camera.
 
 on(type: 'error', callback: ErrorCallback): void
 
-Subscribes to PhotoSession error events. This API uses an asynchronous callback to return the result.
+Subscribes to **PhotoSession** error events. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -152,7 +152,7 @@ function registerSessionError(photoSession: camera.PhotoSession): void {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-Unsubscribes from PhotoSession error events. This API uses a callback to return the result.
+Unsubscribes from **PhotoSession** error events. This API uses a callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
