@@ -1739,7 +1739,7 @@ onRotate(fingers: int, receiver: Callback&lt;Rotate&gt;): void
 
 | 参数名       | 类型                         | 必填   | 说明                  |
 | -------- | -------------------------- | ---- | ------------------- |
-| fingers     | int                     | 是    | 旋转的手指数，目前支持监听手指数是2。 |
+| fingers     | int                     | 是    | 旋转的手指数，手指数不能小于0，当前仅支持收到旋转手势的回调。 |
 | receiver | Callback&lt;[Rotate](js-apis-multimodalinput-gestureevent.md#rotate11)&gt; | 是    | 回调函数，异步上报旋转输入事件。  |
 
 **错误码**：
@@ -1893,7 +1893,7 @@ offRotate(fingers: int, receiver?: Callback&lt;Rotate&gt;): void
 
 | 参数名       | 类型                         | 必填   | 说明                  |
 | -------- | -------------------------- | ---- | ------------------- |
-| fingers     | int                     | 是    | 旋转的手指数，目前支持监听手指数是2。 |
+| fingers     | int                     | 是    | 旋转的手指数，手指数不能小于0，当前仅支持收到旋转手势的回调。 |
 | receiver | Callback&lt;[Rotate](js-apis-multimodalinput-gestureevent.md#rotate11)&gt; | 否    | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
 
 **错误码**：
@@ -2047,7 +2047,7 @@ onPinch(fingers: int, receiver: Callback&lt;Pinch&gt;): void
 
 | 参数名       | 类型                         | 必填   | 说明                  |
 | -------- | -------------------------- | ---- | ------------------- |
-| fingers     | int                     | 是    | 捏合的手指数，取值范围：大于等于2。 |
+| fingers     | int                     | 是    | 捏合的手指数，手指数不能小于0，当前仅支持收到捏合手势的回调。 |
 | receiver | Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt; | 是    | 回调函数，异步上报捏合输入事件。  |
 
 **错误码**：
@@ -2201,7 +2201,7 @@ offPinch(fingers: int, receiver?: Callback&lt;Pinch&gt;): void
 
 | 参数名       | 类型                         | 必填   | 说明                  |
 | -------- | -------------------------- | ---- | ------------------- |
-| fingers     | int                     | 是    | 捏合的手指数，取值范围：大于等于2。 |
+| fingers     | int                     | 是    | 捏合的手指数，手指数不能小于0，当前仅支持收到捏合手势的回调。 |
 | receiver | Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt; | 否    | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
 
 **错误码**：
