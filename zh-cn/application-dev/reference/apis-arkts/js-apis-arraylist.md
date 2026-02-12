@@ -34,7 +34,7 @@ import { ArrayList } from '@kit.ArkTS';
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -53,7 +53,7 @@ ArrayList的构造函数。
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -90,7 +90,7 @@ add(element: T): boolean
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -164,7 +164,7 @@ ArkTS-Sta: insert(element: T, index: int): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -224,7 +224,7 @@ has(element: T): boolean
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -269,7 +269,7 @@ ArkTS-Sta: getIndexOf(element: T): int
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -337,7 +337,7 @@ ArkTS-Sta: getLastIndexOf(element: T): int
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -405,7 +405,7 @@ ArkTS-Sta: removeByIndex(index: int): T
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -478,7 +478,7 @@ remove(element: T): boolean
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -540,7 +540,7 @@ ArkTS-Sta: removeByRange(fromIndex: int, toIndex: int): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -645,25 +645,25 @@ arrayList.replaceAllElements((value: number): number => {
 });
 ```
 
-### replaceAllElements<sup>20+</sup>
+### replaceAllElements<sup>23+</sup>
 
 replaceAllElements(callbackfn: ArrayListReplaceCb\<T\>): void
 
 用户操作ArrayList中的元素，用操作后的元素替换原元素并返回操作后的元素。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callbackFn | [ArrayListReplaceCb\<T\>](#arraylistreplacecbt20) | 是 | 回调函数。 |
+| callbackFn | [ArrayListReplaceCb\<T\>](#arraylistreplacecbt23) | 是 | 回调函数。 |
 
 **示例：**
 
@@ -740,25 +740,25 @@ arrayList.forEach((value: number, index?: number) => {
  * /
 ```
 
-### forEach<sup>20+</sup>
+### forEach<sup>23+</sup>
 
 forEach(callbackfn: ArrayListForEachCb\<T\>): void
 
 通过回调函数来遍历ArrayList实例对象上的元素以及元素对应的下标。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callbackFn | [ArrayListForEachCb\<T\>](#arraylistforeachcbt20) | 是 | 回调函数。 |
+| callbackFn | [ArrayListForEachCb\<T\>](#arraylistforeachcbt23) | 是 | 回调函数。 |
 
 **示例：**
 
@@ -788,13 +788,13 @@ sort(comparator?: ArrayListComparatorFn\<T\>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| comparator | [ArrayListComparatorFn\<T\>](#arraylistcomparatorfnt20) | 否 | 回调函数，默认为升序排序的回调函数。<br> API version22开始发生兼容性变更，在API version21及之前的版本其类型为：`(firstValue: T, secondValue: T) => number`。 |
+| comparator | [ArrayListComparatorFn\<T\>](#arraylistcomparatorfnt23) | 否 | 回调函数，默认为升序排序的回调函数。<br> API version22开始发生兼容性变更，在API version21及之前的版本其类型为：`(firstValue: T, secondValue: T) => number`。 |
 
 **ArkTS-Dyn错误码：**
 
@@ -863,7 +863,7 @@ ArkTS-Sta: subArrayList(fromIndex: int, toIndex: int): ArrayList&lt;T&gt;
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -935,7 +935,7 @@ clear(): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -981,7 +981,7 @@ clone(): ArrayList&lt;T&gt;
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 **返回值：**
@@ -1038,7 +1038,7 @@ ArkTS-Sta: getCapacity(): int
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1092,7 +1092,7 @@ convertToArray(): Array&lt;T&gt;
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1146,7 +1146,7 @@ isEmpty(): boolean
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1202,7 +1202,7 @@ ArkTS-Sta: \[index: int\]: T
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1273,7 +1273,7 @@ ArkTS-Sta: increaseCapacityTo(newCapacity: int): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1338,7 +1338,7 @@ trimToCurrentLength(): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -1431,19 +1431,19 @@ while(!temp.done) {
 }
 ```
 
-### $_iterator<sup>20+</sup>
+### $_iterator<sup>23+</sup>
 
 \$_iterator\(): IterableIterator&lt;T&gt;
 
 返回一个迭代器，迭代器的每一项都是一个JavaScript对象，并返回该对象。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1480,19 +1480,21 @@ while(!temp.done) {
  * */
 ```
 
-### ArrayListComparatorFn\<T\><sup>20+</sup>
+### ArrayListComparatorFn\<T\><sup>23+</sup>
 
-type ArrayListComparatorFn\<T\> = (firstValue: T, secondValue: T) => double
+ArkTS-Dyn: type ArrayListComparatorFn\<T\> = (firstValue: T, secondValue: T) => number
+
+ArkTS-Sta: type ArrayListComparatorFn\<T\> = (firstValue: T, secondValue: T) => double
 
 ArrayList中sort方法的回调函数。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1501,19 +1503,25 @@ ArrayList中sort方法的回调函数。
 | firstValue | T | 是 | 前一项元素。 |
 | secondValue | T | 是 | 后一项元素。 |
 
-### ArrayListForEachCb\<T\><sup>20+</sup>
+**返回值：**
+
+| 类型 | 说明  |
+| -------- | -------- |
+| ArkTS-Dyn: number <br> ArkTS-Sta: double| 比较函数的结果返回值。  |
+
+### ArrayListForEachCb\<T\><sup>23+</sup>
 
 type ArrayListForEachCb\<T\> = (value: T, index: int, arrlist: ArrayList\<T\>) => void
 
 ArrayList中forEach方法的回调函数。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1521,21 +1529,21 @@ ArrayList中forEach方法的回调函数。
 | -------- | -------- | -------- | -------- |
 | value | T | 是 | 当前遍历到的元素。 |
 | index | int | 是 | 当前遍历到的下标值。 |
-| arrlist | [ArrayList&lt;T&gt;](#arraylist) | 是 | 当前调用[forEach](#foreach20)方法的实例对象。 |
+| arrlist | [ArrayList&lt;T&gt;](#arraylist) | 是 | 当前调用[forEach](#foreach23)方法的实例对象。 |
 
-### ArrayListReplaceCb\<T\><sup>20+</sup>
+### ArrayListReplaceCb\<T\><sup>23+</sup>
 
 type ArrayListReplaceCb\<T\> = (value: T, index: int, arrlist: ArrayList\<T\>) => T
 
 ArrayList中replaceAllElements方法的回调函数。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1543,4 +1551,10 @@ ArrayList中replaceAllElements方法的回调函数。
 | -------- | -------- | -------- | -------- |
 | value | T | 是 | 当前遍历到的元素。 |
 | index | int | 是 | 当前遍历到的下标值。 |
-| arrlist | [ArrayList&lt;T&gt;](#arraylist) | 是 | 当前调用[replaceAllElements](#replaceallelements20)方法的实例对象。 |
+| arrlist | [ArrayList&lt;T&gt;](#arraylist) | 是 | 当前调用[replaceAllElements](#replaceallelements23)方法的实例对象。 |
+
+**返回值：**
+
+| 类型 | 说明  |
+| -------- | -------- |
+| T | replaceAllElements方法的返回值。  |
