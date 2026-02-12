@@ -39843,7 +39843,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/cpp/types/libentry/Index.d.ets",
 				"functions":[
 					{
-						"end_line":25,
+						"end_line":27,
 						"name":"export_myObject",
 						"start_line":15
 					}
@@ -40338,7 +40338,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ExecuteFailedTask.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":38,
 						"name":"unsupport_task",
 						"start_line":15
 					}
@@ -40348,7 +40348,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ExecuteSupportTask.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":38,
 						"name":"support_task",
 						"start_line":15
 					}
@@ -40358,7 +40358,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/TestInstancof.ets",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":37,
 						"name":"test_instanceof",
 						"start_line":15
 					}
@@ -40368,14 +40368,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets",
 				"functions":[
 					{
-						"end_line":25,
+						"end_line":27,
 						"name":"define_sendable",
 						"start_line":15
 					},
 					{
-						"end_line":39,
+						"end_line":43,
 						"name":"define_sendableTwo",
-						"start_line":27
+						"start_line":29
 					}
 				]
 			},
@@ -40393,7 +40393,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteMismatchTypeOne.ets",
 				"functions":[
 					{
-						"end_line":28,
+						"end_line":29,
 						"name":"define_resolveOne",
 						"start_line":15
 					}
@@ -40413,7 +40413,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteMismatchTypeThree.ets",
 				"functions":[
 					{
-						"end_line":33,
+						"end_line":35,
 						"name":"define_resolveThree",
 						"start_line":15
 					}
@@ -40423,7 +40423,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SaveResult.ets",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":36,
 						"name":"save_result",
 						"start_line":15
 					}
@@ -40468,7 +40468,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseTransferable/entry/src/main/cpp/types/libentry/Index.d.ts",
 				"functions":[
 					{
-						"end_line":23,
+						"end_line":28,
 						"name":"declare_function",
 						"start_line":15
 					}
@@ -40888,7 +40888,7 @@
 						"start_line":90
 					},
 					{
-						"end_line":140,
+						"end_line":127,
 						"name":"getter_setter_methods",
 						"start_line":109
 					},
@@ -41493,9 +41493,9 @@
 						"start_line":231
 					},
 					{
-						"end_line":259,
+						"end_line":260,
 						"name":"ts_no_structural_typing_two",
-						"start_line":245
+						"start_line":246
 					},
 					{
 						"end_line":279,
@@ -41698,7 +41698,7 @@
 						"start_line":34
 					},
 					{
-						"end_line":734,
+						"end_line":58,
 						"name":"no_any_unknown",
 						"start_line":47
 					},
@@ -43340,29 +43340,29 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets",
 				"functions":[
 					{
-						"end_line":27,
+						"end_line":29,
 						"name":"test_wordBoundaryInArkRegex",
-						"start_line":21
+						"start_line":23
 					},
 					{
-						"end_line":41,
+						"end_line":43,
 						"name":"test_lookbehindWithNestedLookahead",
-						"start_line":37
+						"start_line":39
 					},
 					{
-						"end_line":56,
+						"end_line":58,
 						"name":"test_regexIgnoreCaseCaseFolding",
-						"start_line":51
+						"start_line":53
 					},
 					{
-						"end_line":75,
+						"end_line":77,
 						"name":"test_regexLastIndexWithEmptyGroupInGlobalUnicodeMode",
-						"start_line":66
+						"start_line":68
 					},
 					{
-						"end_line":91,
+						"end_line":93,
 						"name":"test_beforeRegexHyphenInCharacterClass",
-						"start_line":85
+						"start_line":87
 					},
 					{
 						"end_line":101,
@@ -43370,9 +43370,9 @@
 						"start_line":97
 					},
 					{
-						"end_line":119,
+						"end_line":121,
 						"name":"test_namedCaptureGroupAccess",
-						"start_line":113
+						"start_line":115
 					},
 					{
 						"end_line":133,
@@ -43380,9 +43380,9 @@
 						"start_line":129
 					},
 					{
-						"end_line":149,
+						"end_line":151,
 						"name":"test_beforeRegexAlternationOperator",
-						"start_line":143
+						"start_line":145
 					},
 					{
 						"end_line":156,
@@ -43390,9 +43390,9 @@
 						"start_line":152
 					},
 					{
-						"end_line":180,
+						"end_line":182,
 						"name":"test_beforeStringReplaceWithEmptySearchValue",
-						"start_line":174
+						"start_line":176
 					},
 					{
 						"end_line":188,
@@ -43460,7 +43460,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/Sendable/CopyEntry.ets",
 				"functions":[
 					{
-						"end_line":29,
+						"end_line":30,
 						"name":"copy_entry_class",
 						"start_line":16
 					}
@@ -43490,7 +43490,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/WorkerPostMessageSendable.ets",
 				"functions":[
 					{
-						"end_line":75,
+						"end_line":76,
 						"name":"multi_worker_high_performance_communication",
 						"start_line":16
 					}
@@ -43580,7 +43580,7 @@
 						"start_line":300
 					},
 					{
-						"end_line":353,
+						"end_line":332,
 						"name":"highlight_brace_correctExample",
 						"start_line":323
 					},
@@ -43700,12 +43700,12 @@
 						"start_line":567
 					},
 					{
-						"end_line":583,
+						"end_line":586,
 						"name":"noESObject_app_incorrectExample",
 						"start_line":16
 					},
 					{
-						"end_line":587,
+						"end_line":590,
 						"name":"noESObject_app_correctExample",
 						"start_line":20
 					},
