@@ -54,7 +54,7 @@ int32_t (*animateTo)(ArkUI_ContextHandle context, ArkUI_AnimateOption* option, A
 |-----------------------------------------------------------------------------------------------------| -- |
 | [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context                           | UIContext实例。 |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option                       | 设置动画效果相关参数。 |
-| [ArkUI_ContextCallback](capi-arkui-nativemodule-arkui-contextcallback.md)* update                   | 指定动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
+| [ArkUI_ContextCallback](capi-arkui-nativemodule-arkui-contextcallback.md)* update                   | 指定动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。<br>**说明**：在闭包函数中要设置的组件属性，必须在其之前设置过。 |
 | [ArkUI_AnimateCompleteCallback](capi-arkui-nativemodule-arkui-animatecompletecallback.md)* complete | 设置动画播放完成回调参数。 |
 
 **返回：**
