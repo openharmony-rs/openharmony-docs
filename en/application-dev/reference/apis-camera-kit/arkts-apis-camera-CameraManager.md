@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-**CameraManager** implements camera management. Before calling any API in CameraManager, you must use [getCameraManager](arkts-apis-camera-f.md#cameragetcameramanager) to obtain a **CameraManager** instance.
+**CameraManager** implements camera management. Before calling any API in **CameraManager**, you must use [getCameraManager](arkts-apis-camera-f.md#cameragetcameramanager) to obtain a **CameraManager** instance.
 
 > **NOTE**
 >
@@ -453,6 +453,13 @@ function createPhotoOutput(cameraOutputCapability: camera.CameraOutputCapability
 createVideoOutput(profile: VideoProfile, surfaceId: string): VideoOutput
 
 Creates a **VideoOutput** instance. This API returns the result synchronously.
+
+In video recording mode, if SDR or HDR VIVID is enabled, the camera format and color space must be configured according to the relationships specified in the table below. Configurations that do not match the table will cause issues such as preview exceptions.
+
+| SDR/HDR Photo Capture        | CameraFormat             | ColorSpace       |
+|--------------------|--------------------------|------------------|
+| SDR                | CAMERA_FORMAT_YUV_420_SP | BT709_LIMIT      |
+| HDR_VIVID          | CAMERA_FORMAT_YCRCB_P010<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG_LIMIT<br>BT2020_HLG_FULL |
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 

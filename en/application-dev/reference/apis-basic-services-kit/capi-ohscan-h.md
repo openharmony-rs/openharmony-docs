@@ -283,7 +283,7 @@ Starts scanning.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-**Required permissions**: code ohos.permission.PRINT
+**Required permissions**: ohos.permission.PRINT
 
 **Since**: 12
 
