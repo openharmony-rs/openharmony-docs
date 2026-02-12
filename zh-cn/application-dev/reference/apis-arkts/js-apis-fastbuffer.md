@@ -1937,7 +1937,7 @@ subarray(start?: number, end?: number): FastBuffer
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | start | number | 否 | 截取开始位置。默认值：0。 |
-| end | number | 否 |  截取结束位置（不包含结束位置）。默认值：当前对象的字节长度。取值范围：start <= end <= this.length。在传入null时返回空FastBuffer。 |
+| end | number | 否 |  截取结束位置（不包含结束位置）。默认值：当前对象的字节长度。取值范围：start <= end <= this.length。传入null时返回空FastBuffer。 |
 
 **返回值：**
 
