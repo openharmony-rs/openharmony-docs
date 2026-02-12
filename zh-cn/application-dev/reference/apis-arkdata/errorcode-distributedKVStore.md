@@ -14,7 +14,7 @@
 
 **错误信息**
 
-Over max  limit.
+Over max  limits.
 
 **错误描述**
 
