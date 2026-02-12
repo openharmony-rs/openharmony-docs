@@ -302,7 +302,7 @@ Defines a callback used to return the file write-back result.
 
 | Name             | Description           |
 | ------------------- | --------------- |
-| (const char \*jobId | Pointer to the print job ID.|
+| const char \*jobId | Pointer to the print job ID.|
 | uint32_t code       | File write-back result. |
 
 ### Print_OnStartLayoutWrite()
@@ -321,7 +321,7 @@ Defines a callback to be invoked when the file write-back starts.
 
 | Name                                                      | Description                |
 | ------------------------------------------------------------ | -------------------- |
-| (const char \*jobId                                          | Pointer to the print job ID.     |
+| const char \*jobId                                          | Pointer to the print job ID.     |
 | uint32_t fd                                                  | File descriptor to write.|
 | [const Print_PrintAttributes](capi-oh-print-print-printattributes.md) \*oldAttrs | Pointer to the old attribute.      |
 | [const Print_PrintAttributes](capi-oh-print-print-printattributes.md) \*newAttrs | Pointer to the new attribute.        |
@@ -343,7 +343,7 @@ Defines a callback to be invoked when the print job state changes.
 
 | Name             | Description                |
 | ------------------- | -------------------- |
-| (const char \*jobId | Pointer to the print job ID.     |
+| const char \*jobId | Pointer to the print job ID.     |
 | uint32_t state      | Print job state.|
 
 ### Print_PrinterDiscoveryCallback()
@@ -362,7 +362,7 @@ Defines a callback used to return the discovered printers.
 
 | Name                                                      | Description                        |
 | ------------------------------------------------------------ | ---------------------------- |
-| (Print_DiscoveryEvent event                                  | Printer discovery event.|
+| Print_DiscoveryEvent event                                  | Printer discovery event.|
 | [const Print_PrinterInfo](capi-oh-print-print-printerinfo.md) \*printerInfo | Printer information when the discovery event occurs.|
 
 ### Print_PrinterChangeCallback()
@@ -381,7 +381,7 @@ Defines a callback to be invoked when a printer is changed.
 
 | Name                                                      | Description                              |
 | ------------------------------------------------------------ | ---------------------------------- |
-| (Print_PrinterEvent event                                    | Printer change event during the running of the print service.|
+| Print_PrinterEvent event                                    | Printer change event during the running of the print service.|
 | [const Print_PrinterInfo](capi-oh-print-print-printerinfo.md) \*printerInfo | Printer information when the change event occurs.      |
 
 ### OH_Print_Init()
