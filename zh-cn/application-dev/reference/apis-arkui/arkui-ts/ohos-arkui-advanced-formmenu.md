@@ -41,13 +41,13 @@ import { AddFormMenuItem } from '@kit.ArkUI';
 
 ## AddFormMenuItem 
 
-
+```ts
 AddFormMenuItem(
   want: Want,
   componentId: string,
   options?: AddFormOptions
 ): void
-
+```
 
 **装饰器类型：**@Builder
 
