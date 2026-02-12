@@ -68,16 +68,24 @@ getInfo(options?: GetDeviceOptions): void
 **示例：**
 
 ```typescript
-export default {    
-  getInfo() {        
-    device.getInfo({            
-      success: function(data) {                
-        console.info('Device information obtained successfully. Device brand:' + data.brand);            
-      },            
-      fail: function(data, code) {                
-        console.info('Failed to obtain device information. Error code:'+ code + '; Error information: ' + data);            
-      },        
-    });    
-  },
+export default class Page {
+  getInfo() {
+    interface DeviceData {
+      brand: string;
+    }
+
+    try {
+      device.getInfo({
+        success: (data: DeviceData) => {
+          console.info('Device information obtained successfully. Device brand:' + data.brand);
+        },
+        fail: (data: string, code: number) => {
+          console.info('Failed to obtain device information. Error code:' + code + '; Error information: ' + data);
+        },
+      });
+    } catch (error) {
+      console.error('Device information API is not supported');
+    }
+  }
 }
 ```
