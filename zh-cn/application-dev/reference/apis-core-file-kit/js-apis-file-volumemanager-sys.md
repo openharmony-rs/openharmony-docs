@@ -677,7 +677,7 @@ format(volumeId: string, fsType: string, callback: AsyncCallback&lt;void&gt;): v
 
 partition(diskId: string, type: number): Promise&lt;void&gt;
 
-异步对磁盘设备进行分区，使用Promise异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。
+异步对磁盘设备进行分区，使用Promise异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。不支持光盘设备的格式化。
 
 **系统接口**：此接口为系统接口。
 
@@ -728,7 +728,7 @@ partition(diskId: string, type: number): Promise&lt;void&gt;
 
 partition(diskId: string, type: number, callback: AsyncCallback&lt;void&gt;): void
 
-异步对磁盘进行分区，使用callback异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。
+异步对磁盘进行分区，使用callback异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。不支持光盘设备的格式化。
 
 **系统接口**：此接口为系统接口。
 
@@ -785,4 +785,4 @@ partition(diskId: string, type: number, callback: AsyncCallback&lt;void&gt;): vo
 | removable   | boolean | 否 | 否 | 表示卷设备是否可移除，当前仅支持可移除存储设备。true为可移除；false为不可移除。 |
 | state       | number  | 否 | 否 | 卷设备状态标识：<br>0：卸载状态 UNMOUNTED。<br> 1：检查状态 CHECKING。<br> 2：挂载状态 MOUNTED。<br> 3：正在弹出状态 EJECTING。          |
 | path        | string  | 否 | 否 | 卷设备的挂载地址，一般为/mnt/data/external/{uuid}。         |
-| fsType<sup>12+</sup>        | string  | 否 | 否 | 文件系统的类型，常见有ext2、vfat、NTFS等。       |
+| fsType<sup>12+</sup>        | string  | 否 | 否 | 文件系统的类型，常见有ext2、vfat、NTFS、ISO9660、UDF等。       |
