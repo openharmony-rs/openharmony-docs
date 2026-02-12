@@ -5528,7 +5528,7 @@ on(type: 'touchOutside', callback: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onTouchOutside](#ontouchoutside22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onTouchOutside](#ontouchoutside23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -5563,7 +5563,7 @@ try {
 }
 ```
 
-## onTouchOutside<sup>22+</sup>
+## onTouchOutside<sup>23+</sup>
 
 onTouchOutside(callback: Callback&lt;void&gt;): void
 
@@ -5575,7 +5575,7 @@ onTouchOutside(callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5606,7 +5606,7 @@ off(type: 'touchOutside', callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offTouchOutside](#offtouchoutside22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offTouchOutside](#offtouchoutside23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -5645,7 +5645,7 @@ try {
 }
 ```
 
-## offTouchOutside<sup>22+</sup>
+## offTouchOutside<sup>23+</sup>
 
 offTouchOutside(callback?: Callback&lt;void&gt;): void
 
@@ -5657,7 +5657,7 @@ offTouchOutside(callback?: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5933,7 +5933,7 @@ on(type: 'dialogTargetTouch', callback: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onDialogTargetTouch](#ondialogtargettouch22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDialogTargetTouch](#ondialogtargettouch23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -5966,7 +5966,7 @@ try {
 }
 ```
 
-## onDialogTargetTouch<sup>22+</sup>
+## onDialogTargetTouch<sup>23+</sup>
 
 onDialogTargetTouch(callback: Callback&lt;void&gt;): void
 
@@ -5978,7 +5978,7 @@ onDialogTargetTouch(callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6011,7 +6011,7 @@ off(type: 'dialogTargetTouch', callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offDialogTargetTouch](#offdialogtargettouch22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDialogTargetTouch](#offdialogtargettouch23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -6048,7 +6048,7 @@ try {
 }
 ```
 
-## offDialogTargetTouch<sup>22+</sup>
+## offDialogTargetTouch<sup>23+</sup>
 
 offDialogTargetTouch(callback?: Callback&lt;void&gt;): void
 
@@ -6060,7 +6060,7 @@ offDialogTargetTouch(callback?: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6913,7 +6913,7 @@ on(type: 'noInteractionDetected', timeout: number, callback: Callback&lt;void&gt
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onNoInteractionDetected](#onnointeractiondetected22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onNoInteractionDetected](#onnointeractiondetected23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -6950,7 +6950,7 @@ try {
 }
 ```
 
-## onNoInteractionDetected()<sup>22+</sup>
+## onNoInteractionDetected()<sup>23+</sup>
 
 onNoInteractionDetected(timeout: long, callback: Callback&lt;void&gt;): void
 
@@ -6962,7 +6962,7 @@ onNoInteractionDetected(timeout: long, callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7006,7 +7006,7 @@ off(type: 'noInteractionDetected', callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offNoInteractionDetected](#offnointeractiondetected22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offNoInteractionDetected](#offnointeractiondetected23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -7046,7 +7046,7 @@ try {
 }
 ```
 
-## offNoInteractionDetected()<sup>22+</sup>
+## offNoInteractionDetected()<sup>23+</sup>
 
 offNoInteractionDetected(callback?: Callback&lt;void&gt;): void
 
@@ -7058,7 +7058,7 @@ offNoInteractionDetected(callback?: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9058,6 +9058,8 @@ on(eventType: 'uiExtensionSecureLimitChange', callback: Callback&lt;boolean&gt;)
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
 **参数：**
 
 | 参数名   | 类型                           | 必填 | 说明                                                     |
@@ -9096,6 +9098,8 @@ off(eventType: 'uiExtensionSecureLimitChange', callback?: Callback&lt;boolean&gt
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -10331,7 +10335,7 @@ setWindowTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): v
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -10347,7 +10351,7 @@ setWindowTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): v
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -10404,7 +10408,7 @@ setWindowTouchable(isTouchable: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -10425,7 +10429,7 @@ setWindowTouchable(isTouchable: boolean): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -13861,7 +13865,7 @@ setDialogBackGestureEnabled(enabled: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
