@@ -11,7 +11,7 @@
   - [NDK工程构建概述](build-with-ndk-overview.md)
   - [使用DevEco Studio模板构建NDK工程](build-with-ndk-ide.md)
   - [使用命令行CMake构建NDK工程](build-with-ndk-cmake.md)
-  - [在NDK工程中使用预构建库](build-with-ndk-prebuilts.md)
+  - [在NDK工程中使用预构建库](build-with-ndk-prebuilts.md)<!--RP1--><!--RP1End-->
 - 代码开发<!--coding-->
   - [代码开发概述](develop-code-overview.md)
   - C/C++标准库<!--c-cpp-->
@@ -131,7 +131,7 @@
     - [NativeBundle开发指导](native-bundle-guidelines.md)
 - 调试和性能分析<!--debugging-profiling-->
   - [调试和性能分析概述](debug-performance-profiling-overview.md)
-  - [C/C++内存错误检测](debug-asan.md)
+  - [C/C++内存错误检测](debug-asan.md)<!--RP2--><!--RP2End-->
 - 硬件兼容性<!--hardware-compatibility-->
   - [硬件兼容性简介](hw-guide.md)
   - [OpenHarmony ABI](ohos-abi.md)
