@@ -1,10 +1,17 @@
 # ArkGuard字节码混淆工具概述
+<!--Kit: ArkTS-->
+<!--Subsystem: ArkCompiler-->
+<!--Owner: @oatuwwutao; @Graceunderpressure-->
+<!--Designer: @hufeng20-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @jinqiuheng-->
 
-ArkGuard提供了基础字节码混淆能力，将代码中的函数名、类名、文件名等名字变成简短无意义的名字，提高通过阅读代码猜测其用途的难度。由于混淆后的工程源码中元素名称缩短，有时也可以通过混淆来降低包大小。
+从API version 20开始，ArkGuard提供了基础字节码混淆能力，将代码中的函数名、类名、文件名等名字变成简短无意义的名字，从API version 23开始，ArkGuard针对ArkTS-Sta语言提供了静态字节码混淆能力，将代码中的类名，方法名，属性名，目录，文件名等变成简短无意义的名字，提高通过阅读代码猜测其用途的难度。由于混淆后的工程源码中元素名称缩短，有时也可以通过混淆来降低包大小。
 
 本章节详细介绍了ArkGuard字节码混淆工具的使用方法和特点，旨在帮助开发者高效地利用ArkGuard进行字节码混淆，从而提升代码的复杂度，增加逆向工程的难度。
 
 相比源码混淆，字节码混淆的混淆对象是字节码文件。
+
 
 - [ArkGuard字节码混淆原理及功能](bytecode-obfuscation.md)：说明混淆能力范围（包括默认混淆能力）、混淆流程机制以及各种混淆选项和保留选项的使用方法、混淆规则的合并策略。另外，介绍了ArkGuard在语言环境下的局限性。
 
