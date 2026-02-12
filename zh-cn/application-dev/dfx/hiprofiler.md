@@ -809,7 +809,7 @@ plugin_configs {
 CONFIG
 ```
 
-使用动态调优启停方式对com.example.insight_test_stage进程的堆内存分配操作进行抓栈。
+使用手动控制采集时长调优启停方式对com.example.insight_test_stage进程的堆内存分配操作进行抓栈。
 
 调优开始：
 ```shell
