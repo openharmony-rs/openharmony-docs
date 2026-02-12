@@ -41,12 +41,7 @@ int32_t (*animateTo)(ArkUI_ContextHandle context, ArkUI_AnimateOption* option, A
 
 **描述：**
 
-
 显式动画接口。
-
-> **说明：**
->
-> update[闭包](../../quick-start/introduction-to-arkts.md###闭包)函数中要设置的组件属性，必须在其之前设置过。
 
 **参数：**
 
