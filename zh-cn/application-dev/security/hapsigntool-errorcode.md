@@ -467,7 +467,7 @@ key alias not found.
 
 **错误信息**
 
-Key alias is exist.
+Key alias already exists.
 
 **错误描述**
 

@@ -23,7 +23,7 @@
 2. 通过Trace中的tag信息可以进一步确定标脏的组件ID。
 ![](./figures/componentid.png)
 
-3. 如果有明确的组件ID则可以直接使用inspector工具确定异常组件，如果组件ID是-1则大概率是空跑问题，可通过场景二分法确定。
+3. 如果有明确的组件ID则可以直接使用inspector工具确定异常组件，如果组件ID是-1，则通过场景二分法确定。
 ### 使用inspector工具
 ![](./figures/inspector.png)
 通过使用Trace分析法获取组件ID后可以通过inspector工具或者抓取组件树的方法进一步确定异常组件的位置。
