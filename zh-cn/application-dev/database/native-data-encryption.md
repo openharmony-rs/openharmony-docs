@@ -75,7 +75,7 @@
       如果开发者不关心加密算法及参数，使用默认加密配置即可，无需创建和配置自定义加密参数。
 
       <!-- @[CustomizedConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
-    
+      
       ``` C++
       OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
       OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");
@@ -93,7 +93,7 @@
       // 使用指定的密钥打开加密数据库。不指定则由数据库负责生成并保存密钥，并使用生成的密钥。
       const int32_t length = 6;
       OH_Crypto_SetEncryptionKey(cryptoParam, key, length);
-      // 秘钥信息使用完之后要清空
+      // 密钥信息使用完之后要清空
       for (size_t i = 0; i < sizeof(key); i++) {
           key[i] = 0;
       }
