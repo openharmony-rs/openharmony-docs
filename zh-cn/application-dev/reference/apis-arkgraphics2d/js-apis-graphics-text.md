@@ -1234,6 +1234,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 21
+
 **ArkTS-Sta起始版本：** 23
 
 | 名称   | 值 | 说明      |
