@@ -3999,6 +3999,46 @@ enableAutoFill(value: boolean)
   </html>
   ```
 
+## enableDefaultContextMenu<sup>24+</sup>
+
+enableDefaultContextMenu(enable: boolean)
+
+设置是否启用默认右键上下文菜单，默认不启用。
+
+<!--RP1-->
+> **说明：**
+>
+> 当设置了[onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9)回调并在回调中返回true时，本接口的设置不生效。
+<!--RP1End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                                    |
+| ------- | ------- | ---- | --------------------------------------- |
+| enable  | boolean | 是   | 是否启用默认右键上下文菜单，true表示启用，false表示不启用。<br>传入undefined或null时为false。 |
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .enableDefaultContextMenu(true)
+      }
+    }
+  }
+  ```
+
 ## password<sup>(deprecated)</sup>
 
 password(password: boolean)
