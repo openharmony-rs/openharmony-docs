@@ -116,25 +116,25 @@
        <!-- @[example_openObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
        
        ``` TypeScript
-       // 静态定义，动态访问：属性名在对象定义时是静态的，但访问时通过动态构建属性名（通常使用字符串拼接）来访问。
-       // example.ts
+       // 静态定义，动态访问：属性名在对象定义时是静态的，但访问时通过动态构建属性名（通常使用字符串拼接）来访问
+       // ArkGuardAbility.ts
        const obj001 = {
-         staticName: 'value'  // 静态定义属性。
+         staticName: 'value'  // 静态定义属性
        };
-       const fieldName = 'static' + 'Name';  // 动态构建属性名，需使用-keep-property-name staticName来保留该属性名。
-       console.info(obj001[fieldName]);  // 使用方括号语法动态访问属性。
+       const fieldName = 'static' + 'Name';  // 动态构建属性名，需使用-keep-property-name staticName来保留该属性名
+       console.info(obj001[fieldName]);  // 使用方括号语法动态访问属性
        ```
 
        <!-- @[example_openObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->      
        
        ``` TypeScript
-       // 动态定义，静态访问：属性名通过动态表达式在对象定义时确定，但访问时直接使用点语法（假设你知道属性名的结果）。
-       // example.ts
+       // 动态定义，静态访问：属性名通过动态表达式在对象定义时确定，但访问时直接使用点语法（假设开发者知道属性名的结果）
+       // ArkGuardAbility.ts
        const dynamicExpression = 'dynamicPropertyName';
        const obj002 = {
-         [dynamicExpression]: 'value'  // 动态定义属性。
+         [dynamicExpression]: 'value'  // 动态定义属性
        };
-       console.info(obj002.dynamicPropertyName);//使用点语法静态访问属性，需使用-keep-property-name dynamicPropertyName来保留该属性名。
+       console.info(obj002.dynamicPropertyName);// 使用点语法静态访问属性，需使用-keep-property-name dynamicPropertyName来保留该属性名
        ```
     2. 若代码中使用点语法访问未在ArkTS/TS/JS代码中定义的字段，比如访问native实现的so库，字段固定的json文件与数据库等场景：
         1. 若在代码中引用so库的api，如```import testNapi from 'library.so';testNapi.foo();```需要使用`-keep-property-name` foo保留属性名称。

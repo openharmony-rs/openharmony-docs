@@ -120,14 +120,14 @@ interface TestObj {
 interface TestStr {
   info: string;
 }
-// ...
+  // ...
   /*
    * 将原始JSON字符串`{"info": "{"name": "zhangsan", "age": 18}"}`
    * 修改为`{"info": {"name": "zhangsan", "age": 18}}`。
    * */
   let jsonStr = `{"info": {"name": "zhangsan", "age": 18}}`;
   let obj1  = JSON.parse(jsonStr) as TestObj;
-  console.info(JSON.stringify(obj1));    //{"info":{"name":"zhangsan","age":18}}
+  console.info(JSON.stringify(obj1));    // {"info":{"name":"zhangsan","age":18}}
   // 获取JSON字符串中的name信息
   console.info(obj1.info.name); // zhangsan
 ```
@@ -151,10 +151,10 @@ interface TestObj {
 interface TestStr {
   info: string;
 }
-// ...
+  // ...
   /*
-   * 将原始JSON字符串`{"info": "{"name": "zhangsan", "age": 18}"}`进行双重转义，
-   * 修改为`{"info": "{\\"name\\": \\"zhangsan\\", \\"age\\": 18}"}`。
+   * 将原始JSON字符串`{"info": "{"name": "zhangsan", "age": 18}"}`进行双重转义
+   * 修改为`{"info": "{\\"name\\": \\"zhangsan\\", \\"age\\": 18}"}`
    * */
   let jsonStr = `{"info": "{\\"name\\": \\"zhangsan\\", \\"age\\": 18}"}`;
   let obj2 = JSON.parse(jsonStr) as TestStr;

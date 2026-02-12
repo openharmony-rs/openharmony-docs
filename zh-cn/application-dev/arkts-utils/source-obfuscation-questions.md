@@ -374,9 +374,9 @@ addNum
 <!-- @[call_want](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// 混淆前。
+// 混淆前
 import { Want } from '@kit.AbilityKit';
-// ...
+  // ...
   let petalMapWant: Want = {
     bundleName: 'com.example.myapplication',
     uri: 'maps://',

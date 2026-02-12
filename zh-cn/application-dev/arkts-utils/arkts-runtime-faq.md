@@ -18,8 +18,8 @@
 let str = '\u2642';
 let res = str.replace(/\b/g, '/');
 console.info('res = ' + res);
-// 期望输出: res = ♂。
-// 实际输出: res = /♂/。
+// 期望输出: res = ♂
+// 实际输出: res = /♂/
 ```
 
 规避方案：暂无。
@@ -34,8 +34,8 @@ console.info('res = ' + res);
 
 ``` TypeScript
 console.info(`res:${'abcdef'.match(/(?<=ab(?=c)cd)ef/)}`);
-// 期望输出: res:ef。
-// 实际输出: res:null。
+// 期望输出: res:ef
+// 实际输出: res:null
 ```
 
 规避方案：使用/(?<=abcd)ef/代替/(?<=ab(?=c)cd)ef/。
@@ -47,8 +47,8 @@ console.info(`res:${'abcdef'.match(/(?<=ab(?=c)cd)ef/)}`);
 ``` TypeScript
 let res = /\u{10400}/ui.test('\u{10428}');
 console.info('res = ' + res);
-// 期望输出: res = true。
-// 实际输出: res = false。
+// 期望输出: res = true
+// 实际输出: res = false
 ```
 
 规避方案：暂无。
@@ -64,8 +64,8 @@ let u = /()/ug;
 u.lastIndex = 1;
 u.exec(L + T + L + T);
 console.info('u.lastIndex = ' + u.lastIndex);
-// 期望输出: u.lastIndex = 0。
-// 实际输出: u.lastIndex = 1。
+// 期望输出: u.lastIndex = 0
+// 实际输出: u.lastIndex = 1
 ```
 
 规避方案：暂无。
@@ -78,8 +78,8 @@ console.info('u.lastIndex = ' + u.lastIndex);
 let str = 'a-b';
 let reg = /[+-\s]/;
 console.info('reg.exec(str) = ' + reg.exec(str));
-// 期望输出: reg.exec(str) = -。
-// 实际输出: reg.exec(str) = null。
+// 期望输出: reg.exec(str) = -
+// 实际输出: reg.exec(str) = null
 ```
 
 规避方案：使用转义后的"-"。
@@ -100,8 +100,8 @@ console.info('reg.exec(str) = ' + reg.exec(str));
 let reg = new RegExp('(a)(?<b>b)');
 let res = reg.exec('ab');
 console.info('JSON.stringify(res?.groups) = ' + JSON.stringify(res?.groups));
-// 期望输出: JSON.stringify(res?.groups) = {'b':'b'}。
-// 实际输出: JSON.stringify(res?.groups) = {'b':'a'}。
+// 期望输出: JSON.stringify(res?.groups) = {'b':'b'}
+// 实际输出: JSON.stringify(res?.groups) = {'b':'a'}
 ```
 
 
@@ -125,8 +125,8 @@ console.info('JSON.stringify(res?.groups) = {\'b\':' + JSON.stringify(res[2]) + 
 let reg = /a(?:|x)$/;
 let res = reg.exec('ax');
 console.info('JSON.stringify(res) = ' + JSON.stringify(res));
-// 期望输出: JSON.stringify(res) = ['ax']。
-// 实际输出: JSON.stringify(res) = null。
+// 期望输出: JSON.stringify(res) = ['ax']
+// 实际输出: JSON.stringify(res) = null
 ```
 
 
@@ -265,8 +265,8 @@ try {
 let str = 'dddd';
 let res = str.replace('', 'abc');
 console.info('res = ' + res);
-// 期望输出: res = abcdddd。
-// 实际输出: res = dddd。
+// 期望输出: res = abcdddd
+// 实际输出: res = dddd
 ```
 
 规避方案：使用正则表达式 `/^/` 表示字符串起始符，作为第一个参数。

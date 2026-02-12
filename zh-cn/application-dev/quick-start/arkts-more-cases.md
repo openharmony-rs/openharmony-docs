@@ -72,8 +72,8 @@ function printObj(obj: string) {
   console.info(obj);
   // ...
 }
-// ...
-          printObj('abc'); // abc
+
+printObj('abc'); // abc
 ```
 
 ### 标注JSON.parse返回值类型
@@ -592,8 +592,8 @@ class C {
   }
 }
 
-let s: C = new C(-2);   //抛出异常
-let t: C = { value: -2 }; //ArkTS不支持
+let s: C = new C(-2);   // 抛出异常
+let t: C = { value: -2 }; // ArkTS不支持
 ```
 
 如果允许使用`C`来标注object literal的类型，变量`t`会导致行为的二义性。ArkTS禁止通过object literal绕过这一行为。

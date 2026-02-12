@@ -66,12 +66,12 @@ Swift和ArkTS在函数方面语法趋同，细节上有差别。
 <!-- @[swift_function_definition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// 常规函数定义，与Swift类似。
+// 常规函数定义，与Swift类似
 function add(x: number, y: number): number {
   return x + y;
 }
-// ...
-  // 简洁的箭头函数形式，类似Swift的闭包语法。
+  // ...
+  // 简洁的箭头函数形式，类似Swift的闭包语法
   const multiply = (a: number, b: number): number => a * b;
 ```
 
@@ -82,26 +82,26 @@ function add(x: number, y: number): number {
    **ArkTS示例：** ArkTS函数重载
 
    <!-- @[function_overload_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->    
-
+   
    ``` TypeScript
-   function foo(x: number): void;            /*  第一个函数定义。  */
-   function foo(x: string): void;            /*  第二个函数定义。  */
-   function foo(x: number | string): void {  /*  函数实现。       */
+   function foo(x: number): void;            /* 第一个函数定义。 */
+   function foo(x: string): void;            /* 第二个函数定义。 */
+   function foo(x: number | string): void {  /* 函数实现。 */
    }
-   // ...
-     foo(123);     //  OK，使用第一个定义。
-     foo('aa'); // OK，使用第二个定义。
+     // ...
+     foo(123);     // OK，使用第一个定义
+     foo('aa'); // OK，使用第二个定义
    ```
 
 2. ArkTS可选参数使用`?`，如`function foo(name?: string)`，而非Swift的默认值语法。
 
    <!-- @[optional_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->    
-
+   
    ``` TypeScript
-   function foo2(name?: string) {}  /*  name为可选参数。  */
-   // ...
-     foo2('hello');     //  OK，传入name参数。
-     foo2();     //  OK，不传name参数。
+   function foo2(name?: string) {}  /* name为可选参数。 */
+     // ...
+     foo2('hello');     // OK，传入name参数
+     foo2();     // OK，不传name参数
    ```
 
 ### 基础类库
@@ -219,13 +219,13 @@ class B {
 function callFunction(fn: () => void) {
   fn();
 }
-// ...
+  // ...
   let a: A = new A();
   let b: B = new B();
 
-  // callFunction(a.foo); // 程序crash。this的上下文发生了变化。
-  // b.callFunction(a.foo); // 程序crash。this的上下文发生了变化。
-  b.callFunction(a.foo.bind(b)) // 输出'I'm B'。
+  // callFunction(a.foo); // 程序crash。this的上下文发生了变化
+  // b.callFunction(a.foo); // 程序crash。this的上下文发生了变化
+  b.callFunction(a.foo.bind(b)) // 输出'I'm B'
 ```
 
 ## 类型系统

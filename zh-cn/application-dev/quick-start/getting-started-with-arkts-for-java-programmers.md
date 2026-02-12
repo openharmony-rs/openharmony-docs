@@ -115,9 +115,9 @@ function foo(x: number): void;            /* 第一个函数定义 */
 function foo(x: string): void;            /* 第二个函数定义 */
 function foo(x: number | string): void {  /* 函数实现 */
 }
-// ...
-  foo(123);     //  OK，使用第一个定义。
-  foo('aa'); // OK，使用第二个定义。
+  // ...
+  foo(123);     // OK，使用第一个定义
+  foo('aa'); // OK，使用第二个定义
 ```
 
 ### 基础类库
@@ -233,13 +233,13 @@ class B {
 function callFunction(fn: () => void) {
   fn();
 }
-// ...
+  // ...
   let a: A = new A();
   let b: B = new B();
 
-  // callFunction(a.foo); // 程序crash。this的上下文发生了变化。
-  // b.callFunction(a.foo); // 程序crash。this的上下文发生了变化。
-  b.callFunction(a.foo.bind(b)) // 输出'I am B'。
+  // callFunction(a.foo); // 程序crash。this的上下文发生了变化
+  // b.callFunction(a.foo); // 程序crash。this的上下文发生了变化
+  b.callFunction(a.foo.bind(b)) // 输出'I am B'
 ```
 
 ## 类型系统

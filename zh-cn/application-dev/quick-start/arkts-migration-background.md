@@ -198,7 +198,7 @@ foo(c);
     export let v = 0;
     console.info(`u: ${u}`);
     
-    //应用加载失败
+    // 应用加载失败
     ```
 
 **与标准TS/JS的差异**

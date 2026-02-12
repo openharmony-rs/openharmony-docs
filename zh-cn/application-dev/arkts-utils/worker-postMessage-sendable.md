@@ -22,6 +22,7 @@
      type: string;
      // 文件路径
      filePath: string;
+   
      constructor(type: string, filePath: string) {
        this.type = type;
        this.filePath = filePath;
@@ -52,7 +53,7 @@
    const copyWorker1 = new worker.ThreadWorker('entry/ets/workers/ChildWorker.ets');
    const copyWorker2 = new worker.ThreadWorker('entry/ets/workers/ChildWorker.ets');
    
-   workerPort.onmessage = (e : MessageEvents) => {
+   workerPort.onmessage = (e: MessageEvents) => {
      let array = e.data as collections.Array<CopyEntry>;
      sum = array.length;
      for (let i = 0; i < array.length; i++) {
@@ -69,7 +70,7 @@
      }
    }
    
-   copyWorker1.onmessage = async (e : MessageEvents) => {
+   copyWorker1.onmessage = async (e: MessageEvents) => {
      console.info('copyWorker1 onmessage:' + e.data);
      await asyncLock.lockAsync(() => {
        count1--;
@@ -86,7 +87,7 @@
      })
    }
    
-   copyWorker2.onmessage = async (e : MessageEvents) => {
+   copyWorker2.onmessage = async (e: MessageEvents) => {
      console.info('copyWorker2 onmessage:' + e.data);
      await asyncLock.lockAsync(() => {
        count2--;
@@ -103,11 +104,11 @@
      })
    }
    
-   workerPort.onmessageerror = (e : MessageEvents) => {
+   workerPort.onmessageerror = (e: MessageEvents) => {
      console.error('onmessageerror:' + e.data);
    }
    
-   workerPort.onerror = (e : ErrorEvent) => {
+   workerPort.onerror = (e: ErrorEvent) => {
      console.error('onerror:' + e.message);
    }
    ```
@@ -116,23 +117,23 @@
    
    ``` TypeScript
    // ChildWorker.ets
-   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker} from '@kit.ArkTS'
+   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS'
    import { CopyEntry } from '../Sendable/CopyEntry'
    
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
    
-   workerPort.onmessage = (e : MessageEvents) => {
+   workerPort.onmessage = (e: MessageEvents) => {
      let data = e.data as CopyEntry;
      // 中间copy操作省略
      console.info(data.filePath);
      workerPort.postMessageWithSharedSendable('done');
    }
    
-   workerPort.onmessageerror = (e : MessageEvents) => {
+   workerPort.onmessageerror = (e: MessageEvents) => {
      console.error('onmessageerror:' + e.data);
    }
    
-   workerPort.onerror = (e : ErrorEvent) => {
+   workerPort.onerror = (e: ErrorEvent) => {
      console.error('onerror:' + e.message);
    }
    ```
@@ -182,6 +183,7 @@
    @Component
    struct Index {
      @State message: string = 'Hello World';
+   
      build() {
        Row() {
          Column() {
