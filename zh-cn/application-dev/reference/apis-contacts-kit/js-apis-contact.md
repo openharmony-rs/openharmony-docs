@@ -5038,7 +5038,7 @@ phoneNumber.phoneNumber = "138xxxxxxxx";
 >
 >  从API version 22开始，支持通过uri和[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)格式设置联系人头像资源(暂不支持通过[addContactViaUI](#contactaddcontactviaui15)、[saveToExistingContactViaUI](#contactsavetoexistingcontactviaui15)接口设置)。<br/>
 uri为可访问的联系人头像文件地址，[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)为通过联系人头像资源生成的[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)对象。<br/>
->  从API version 22开始，读取联系人头像资源仅支持uri格式，该格式仅支持以[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)方式打开，无法直接在Image组件内显示，需读取后转换为[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)格式显示。
+>  从API version 22开始，支持通过uri格式读取联系人头像资源，该格式仅支持以[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)方式打开，无法直接在Image组件内显示，需读取后转换为[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)格式显示。
 
 **系统能力**：SystemCapability.Applications.ContactsData
 
