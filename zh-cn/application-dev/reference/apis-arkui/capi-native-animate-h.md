@@ -171,9 +171,9 @@ void OH_ArkUI_AnimateOption_Dispose(ArkUI_AnimateOption* option)
 
 **参数：**
 
-| 参数项 | 描述 | 异常值行为 |
-| -- | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 | option为NULL时，操作无效。 |
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。 |
 
 ### OH_ArkUI_AnimateOption_GetDuration()
 
@@ -191,9 +191,9 @@ uint32_t OH_ArkUI_AnimateOption_GetDuration(ArkUI_AnimateOption* option)
 
 **参数：**
 
-| 参数项 | 描述 | 异常值行为 |
-| -- | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 | option为NULL时，返回0。 |
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，返回0。 |
 
 **返回：**
 
@@ -217,9 +217,9 @@ float OH_ArkUI_AnimateOption_GetTempo(ArkUI_AnimateOption* option)
 
 **参数：**
 
-| 参数项 | 描述 | 异常值行为 |
-| -- | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 | option为NULL时，返回0.0。 |
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，返回0.0。 |
 
 **返回：**
 
@@ -243,9 +243,9 @@ ArkUI_AnimationCurve OH_ArkUI_AnimateOption_GetCurve(ArkUI_AnimateOption* option
 
 **参数：**
 
-| 参数项 | 描述 | 异常值行为 |
-| -- | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 | option为NULL时，返回-1。 |
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，返回-1。 |
 
 **返回：**
 
@@ -269,9 +269,9 @@ int32_t OH_ArkUI_AnimateOption_GetDelay(ArkUI_AnimateOption* option)
 
 **参数：**
 
-| 参数项 | 描述 | 异常值行为 |
-| -- | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 | option为NULL时，返回0。 |
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，返回0。 |
 
 **返回：**
 
@@ -295,9 +295,9 @@ int32_t OH_ArkUI_AnimateOption_GetIterations(ArkUI_AnimateOption* option)
 
 **参数：**
 
-| 参数项 | 描述 | 异常值行为 |
-| -- | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 | option为NULL时，返回0。 |
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，返回0。 |
 
 **返回：**
 
@@ -321,9 +321,9 @@ ArkUI_AnimationPlayMode OH_ArkUI_AnimateOption_GetPlayMode(ArkUI_AnimateOption* 
 
 **参数：**
 
-| 参数项 | 描述 | 异常值行为 |
-| -- | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 | option为NULL时，返回-1。 |
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，返回-1。 |
 
 **返回：**
 
@@ -347,9 +347,9 @@ ArkUI_ExpectedFrameRateRange* OH_ArkUI_AnimateOption_GetExpectedFrameRateRange(A
 
 **参数：**
 
-| 参数项 | 描述 | 异常值行为 |
-| -- | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 | option为NULL时，返回NULL。 |
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，返回NULL。 |
 
 **返回：**
 
@@ -373,10 +373,10 @@ void OH_ArkUI_AnimateOption_SetDuration(ArkUI_AnimateOption* option, int32_t val
 
 **参数：**
 
-| 参数项 | 描述 | 异常值行为 |
-| -- | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 | option为NULL时，操作无效。 |
-| int32_t value | 持续时间，单位为ms（毫秒）。取值范围：[0, +∞)。 | value小于0时，按0处理。 |
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。 |
+| int32_t value | 持续时间，单位为ms（毫秒）。取值范围：[0, +∞)。<br>value小于0时，按0处理。 |
 
 ### OH_ArkUI_AnimateOption_SetTempo()
 
@@ -396,7 +396,7 @@ void OH_ArkUI_AnimateOption_SetTempo(ArkUI_AnimateOption* option, float value)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。option为NULL时，操作无效。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。 |
 | float value | 动画播放速度。取值范围：[0, +∞)。<br/>**说明：**<br/>传入小于0的数值，会默认设置为1。 |
 
 ### OH_ArkUI_AnimateOption_SetCurve()
@@ -415,10 +415,10 @@ void OH_ArkUI_AnimateOption_SetCurve(ArkUI_AnimateOption* option, ArkUI_Animatio
 
 **参数：**
 
-| 参数项 | 描述 | 异常值行为 |
-| -- | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 | option为NULL时，操作无效。 |
-| [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve) value | 动画曲线。默认值：[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)（0），建议使用[ARKUI_CURVE_EASE_IN_OUT](capi-native-type-h.md#arkui_animationcurve)（4）获得更平滑的动画效果。 | value小于0时，按0处理；value大于预设最大值时，按最大值处理。 |
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。 |
+| [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve) value | 动画曲线。默认值：[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)（0），建议使用[ARKUI_CURVE_EASE_IN_OUT](capi-native-type-h.md#arkui_animationcurve)（4）获得更平滑的动画效果。<br>value小于0时，按0处理；value大于预设最大值时，按最大值处理。 |
 
 ### OH_ArkUI_AnimateOption_SetDelay()
 
@@ -436,10 +436,10 @@ void OH_ArkUI_AnimateOption_SetDelay(ArkUI_AnimateOption* option, int32_t value)
 
 **参数：**
 
-| 参数项 | 描述 | 异常值行为 |
-| -- | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 | option为NULL时，操作无效。 |
-| int32_t value | 动画延迟播放时间，单位为ms（毫秒）。取值范围：[0, +∞)。默认值：0（立即播放）。 | value小于0时，按0处理。 |
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。 |
+| int32_t value | 动画延迟播放时间，单位为ms（毫秒）。取值范围：[0, +∞)。默认值：0（立即播放）。<br>value小于0时，按0处理。 |
 
 ### OH_ArkUI_AnimateOption_SetIterations()
 
@@ -457,10 +457,10 @@ void OH_ArkUI_AnimateOption_SetIterations(ArkUI_AnimateOption* option, int32_t v
 
 **参数：**
 
-| 参数项 | 描述 | 异常值行为 |
-| -- | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 | option为NULL时，操作无效。 |
-| int32_t value | 动画播放次数。取值范围：[-1, +∞)，其中-1表示无限次播放。默认值：1（播放一次）。 | value小于-1时，按1处理。 |
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。 |
+| int32_t value | 动画播放次数。取值范围：[-1, +∞)，其中-1表示无限次播放。默认值：1（播放一次）。<br>value小于-1时，按1处理。 |
 
 ### OH_ArkUI_AnimateOption_SetPlayMode()
 
@@ -1678,6 +1678,7 @@ float OH_ArkUI_AnimatorOnFrameEvent_GetValue(ArkUI_AnimatorOnFrameEvent* event)
 
 获取动画帧回调事件对象中的插值结果。
 
+
 **起始版本：** 12
 
 
@@ -1691,7 +1692,7 @@ float OH_ArkUI_AnimatorOnFrameEvent_GetValue(ArkUI_AnimatorOnFrameEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 动画插值结果。<br/>**说明：** <br/>在动画过程中，插值结果根据动画参数在插值起点[float OH_ArkUI_AnimatorOption_GetBegin(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getbegin)和插值终点[float OH_ArkUI_AnimatorOption_GetEnd(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getend)间变化。 |
+| float | 动画插值结果。<br/>**说明：** <br/>在动画过程中，插值结果根据动画参数在插值起点[OH_ArkUI_AnimatorOption_SetBegin](#OH_ArkUI_AnimatorOption_SetBegin)和插值终点[OH_ArkUI_AnimatorOption_SetEnd](#oh_arkui_animatoroption_setend)间变化。 |
 
 ### OH_ArkUI_AnimatorOption_RegisterOnFrameCallback()
 
