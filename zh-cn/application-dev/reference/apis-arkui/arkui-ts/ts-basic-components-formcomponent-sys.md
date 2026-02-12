@@ -356,7 +356,7 @@ onUpdate(callback:&nbsp;Callback[\<FormCallbackInfo>](#formcallbackinfo12))&nbsp
 
 该示例创建一张2 * 2尺寸大小的卡片，并注册事件回调。
 ```ts
-//card.ets
+// card.ets
 @Entry
 @Component
 struct CardExample {
