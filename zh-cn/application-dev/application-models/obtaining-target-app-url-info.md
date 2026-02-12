@@ -9,17 +9,9 @@
 
 ## 场景介绍
 
-开发者在使用[uiAbilityContext.openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起目标应用时，需要明确目标应用的信息。本文将介绍如何获取目标应用的URL信息，并提供完整的拉起示例。
+开发者在使用[uiAbilityContext.openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起目标应用时，需要传入目标应用的URL信息。本章节主要介绍如何获取目标应用的URL信息。
 
-## 环境要求
-
-开发者需要先获取[hdc工具](../dfx/hdc.md)，执行hdc shell。
-
-## 操作步骤
-
-1. 安装测试应用
-
-    应用的目标UIAbility在[module.json5](../quick-start/app-configuration-file.md)中的配置如下
+假设目标应用的UIAbility的[module.json5](../quick-start/app-configuration-file.md)配置信息如下：
 
     ```JSON5
     {
@@ -43,29 +35,32 @@
       }
     ``` 
 
-2. 获取当前设备上已安装应用的bundleName。
+## 环境要求
 
-    开发者可以使用命令行工具中的[bm工具](../tools/bm-tool.md)，通过bundleName获取设备上已安装应用的详细配置信息，包括abilityName以及支持的URL Scheme等。这是获取第三方应用URL信息最直接的方法。
+开发者需要先获取[hdc工具](../dfx/hdc.md)，执行hdc shell。
 
-    执行以下命令，获取设备中已安装的应用列表。在输出结果中查找目标应用对应的bundleName，例如测试应用的bundleName为 `com.example.myapplication`。
+## 操作步骤
 
+1. 使用bm工具，获取目标应用的bundleName。
+
+  （1）获取当前设备上所有已安装应用的bundleName，保存结果。
     ```bash
-    # 执行命令查看所有应用
     hdc shell bm dump -a
-
-    # 输出示例（部分）：
-    # ...
-    com.example.myapplication
-    # ...
     ```
 
-3. 获取应用的详细配置信息。
+  （2）安装目标应用。
 
+  （3）再次获取当前设备上所有已安装应用的bundleName，并与之前保存的结果进行对比。新增的bundleName即为`com.example.myapplication`。
+
+2. 根据bundleName，获取应用的uris信息。
+
+  （1）使用bm工具，获取应用的完整配置信息，包括abilities、skills、uris等配置。
+    
     ```bash
     hdc shell bm dump -n com.example.myapplication
     ```
 
-    该命令会输出应用的完整配置信息，包括abilities、skills、uris等配置。通过查看输出中的`skills`部分，获取应用支持的URL Scheme配置。
+  （2）通过查看输出中的`skills`部分，获取应用支持的URL Scheme配置。
 
     ```json5
     // 输出示例（skills部分）：
@@ -99,12 +94,7 @@
     }
     ```
 
-    根据配置信息，提取的关键参数如下：
-    - **scheme**: `demo`
-    - **host**: `www.example.com`
-    - **path**: `path1`
-
-4. 将scheme、host和path拼接生成URL信息。
+3. 将scheme、host和path拼接生成URL信息。
 
     根据获取到的配置信息，按照URL格式拼接应用链接：
 
@@ -112,7 +102,7 @@
     scheme://host:port/path
     ```
 
-    以测试应用为例：
+    以目标应用为例：
     ```
     demo://www.example.com/path1
     ```
@@ -130,21 +120,22 @@
 
     > **说明：**
     >
-    > - 不同应用的bundleName和URL配置可能因版本不同而有所变化
-    > - 建议在实际使用前，通过hdc命令确认目标应用的最新配置信息
-    > - 如果应用未配置skills中的uris字段，则不支持通过Deep Linking方式拉起
+    > - 不同应用的bundleName和URL配置可能因版本不同而有所变化。
+    > - 建议在实际使用前，通过hdc命令确认目标应用的最新配置信息。
+    > - 如果应用未配置skills中的uris字段，则不支持通过Deep Linking方式拉起。
 
+4. 使用Deep Linking方式拉起目标应用
 
-5. 调试验证
-
-    以下为通过[uiAbilityContext.openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起测试应用的完整示例。在实现时请注意：
+    以下为通过[uiAbilityContext.openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起目标应用的完整示例。在实现时请注意：
 
     - URL配置验证：在使用目标应用的URL之前，务必验证其正确性，避免因URL错误导致拉起失败。
     - 应用安装检测：在拉起目标应用前，建议先检测应用是否已安装。
 
+    <!-- @[start Deep Linking](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/    ObtainingTargetAppUrlInfo/entry/src/main/ets/pages/Index.ets) -->
+
     ```ts
     // Index.ets示例代码如下：
-    import {common} from '@kit.AbilityKit'
+    import { common } from '@kit.AbilityKit'
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
 
