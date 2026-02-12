@@ -265,7 +265,7 @@ inputFilter(value: ResourceStr, error?: (value: string) => void)
 | 参数名 | 类型                                   | 必填 | 说明                               |
 | ------ | -------------------------------------- | ---- | ---------------------------------- |
 | value  | [ResourceStr](ts-types.md#resourcestr) | 是   | 正则表达式。                       |
-| error  | (value: string) => void                | 否   | 正则匹配失败时， 返回被过滤的内容。正则匹配成功时，无返回。 |
+| error  | (value: string) => void                | 否   | 正则匹配失败时，返回被过滤的内容。正则匹配成功时，无返回。 |
 
 ### copyOption<sup>9+</sup>
 
@@ -580,7 +580,7 @@ lineHeight(value: number | string | Resource)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 文本的文本行高。需要显式指定[像素单位](ts-pixel-units.md)，如'10px'，也可设置百分比字符串，如'100%'。<br>说明：不指定像素单位时，默认单位fp，如'10'，等同于10。 |
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 文本的文本行高。需要显式指定[像素单位](ts-pixel-units.md)，如'10px'，也可设置百分比字符串，如'100%'。<br>**说明**：不指定像素单位时，默认单位fp，如'10'，等同于10。 |
 
 >  **说明：**
 >  
@@ -656,7 +656,7 @@ Font Feature当前支持的属性见[fontFeature属性列表](ts-basic-component
 
 设置Font Feature属性，Font Feature是OpenType字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。
 
-更多Font Feature能力介绍可参考[The font-feature-settings property](https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop)和[The complete CSS demo for opentype features](https://sparanoid.com/lab/opentype-features/)。
+更多Font Feature能力介绍可参考[font-feature-settings 属性](https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop)和[OpenType 字体功能的完整 CSS 演示](https://sparanoid.com/lab/opentype-features/)。
 ### wordBreak<sup>12+</sup>
 
 wordBreak(value: WordBreak)
@@ -2517,7 +2517,6 @@ struct TextAreaExample {
 | ---------------------------------- | ------------------------------------ |
 | ![](figures/TextArea_font_scale1.png)  | ![](figures/TextArea_font_scale2.png)  |
 <!--RP1End-->
-![textAreaMinMaxFontScale](figures/textAreaMinMaxFontScale.png)
 
 ### 示例18（设置选中指定区域的文本内容）
 
