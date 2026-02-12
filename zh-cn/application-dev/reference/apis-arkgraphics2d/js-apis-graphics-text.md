@@ -4940,7 +4940,7 @@ ArkTS-Sta: getPositions(range: Range): Array<common2D.Point> | undefined
 
 | 类型                   | 说明                                   |
 | ---------------------- | ------------------------------------- |
-| ArkTS-Dyn: Array<[common2D.Point](js-apis-graphics-common2D.md#point12)><br>ArkTS-Dyn: Array<[common2D.Point](js-apis-graphics-common2D.md#point12)> \| undefined  | 该排版单元中每个字形相对于每行的字形位置。 |
+| ArkTS-Dyn: Array<[common2D.Point](js-apis-graphics-common2D.md#point12)><br>ArkTS-Sta: Array<[common2D.Point](js-apis-graphics-common2D.md#point12)> \| undefined  | 该排版单元中每个字形相对于每行的字形位置。 |
 
 **示例：**
 
