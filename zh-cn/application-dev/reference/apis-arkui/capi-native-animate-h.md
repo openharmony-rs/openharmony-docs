@@ -181,10 +181,6 @@ void OH_ArkUI_AnimateOption_Dispose(ArkUI_AnimateOption* option)
 uint32_t OH_ArkUI_AnimateOption_GetDuration(ArkUI_AnimateOption* option)
 ```
 
-**描述：**
-
-
-获取动画持续时间，单位为ms（毫秒）。
 
 **起始版本：** 12
 
@@ -199,7 +195,7 @@ uint32_t OH_ArkUI_AnimateOption_GetDuration(ArkUI_AnimateOption* option)
 
 | 类型 | 说明 |
 | -- | -- |
-| uint32_t | 持续时间。option异常时返回0。 |
+| uint32_t | 动画持续时间，单位为ms（毫秒）。option异常时返回0。 |
 
 ### OH_ArkUI_AnimateOption_GetTempo()
 
@@ -1678,9 +1674,7 @@ float OH_ArkUI_AnimatorOnFrameEvent_GetValue(ArkUI_AnimatorOnFrameEvent* event)
 
 获取动画帧回调事件对象中的插值结果。
 
-
 **起始版本：** 12
-
 
 **参数：**
 
