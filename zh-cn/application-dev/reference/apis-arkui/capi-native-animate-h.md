@@ -617,7 +617,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* opt
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 | int32_t value | 动画播放延的时间。单位为ms（毫秒）。取值范围：(-∞, +∞)。默认值：0（不延迟）。delay>=0为延迟播放，delay<0表示提前播放。对于delay<0的情况：当delay的绝对值小于实际动画时长，动画将在开始后第一帧直接运动到delay绝对值的时刻的状态；当delay的绝对值大于等于实际动画时长，动画将在开始后第一帧直接运动到终点状态。其中实际动画时长等于单次动画时长乘以动画播放次数。 |
 
 **返回：**
@@ -644,8 +644,8 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetIterations(ArkUI_KeyframeAnimateOption
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| int32_t value | 动画播放次数。取值范围：[-1, +∞)，其中设置为0时不播放，-1表示无限次播放。默认值：1（播放一次）。<br>value小于-1时，操作无效，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| int32_t value | 动画播放次数。取值范围：[-1, +∞)，其中设置为0时不播放，-1表示无限次播放。默认值：1（播放一次）。<br>value小于-1时，操作无效，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 
 **返回：**
@@ -672,7 +672,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAn
 
 | 参数项                                     | 描述 |
 |-----------------------------------------| -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 | void* userData                          | 用户自定义对象指针。<br>不涉及异常值处理。 |
 | void (\*onFinish)(void\* userData)                                | 回调方法。<br/>- userData：回调函数的入参，用户自定义对象指针。<br>onFinish为NULL时，操作无效。 |
 
@@ -700,8 +700,8 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetExpectedFrameRate(ArkUI_KeyframeAnimat
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* frameRate | 关键帧动画的期望帧率。<br>frameRate为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* frameRate | 关键帧动画的期望帧率。<br>frameRate为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -727,9 +727,9 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDuration(ArkUI_KeyframeAnimateOption* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 | int32_t value | 关键帧动画的持续时间，单位为ms（毫秒），默认值1000ms。取值范围：[0, +∞)。<br>value小于0时，按0处理。 |
-| int32_t index | 状态索引值。<br>index小于0时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| int32_t index | 状态索引值。<br>index小于0时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -759,9 +759,9 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetCurve(ArkUI_KeyframeAnimateOption* opt
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | 该关键帧使用的动画曲线。默认值：EASE_IN_OUT（4）。 |
-| int32_t index | 状态索引值。取值范围：[0, size-1]，其中size为关键帧动画状态数。<br>index小于0或index超出范围时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | 该关键帧使用的动画曲线。默认值：[ARKUI_CURVE_EASE_IN_OUT](capi-native-type-h.md#arkui_animationcurve)（4）。<br>value |
+| int32_t index | 状态索引值。取值范围：[0, size-1]，其中size为关键帧动画状态数。<br>index小于0或index超出范围时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -787,10 +787,10 @@ int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnEventCallback(ArkUI_KeyframeAni
 
 | 参数项                                     | 描述 |
 |-----------------------------------------| -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 | void* userData                          | 用户定义对象指针。<br>不涉及异常值处理。 |
 | void (\*event)(void\* userData)                                   | 闭包函数。<br>event为NULL时，操作无效。 |
-| int32_t index                           | 状态索引值。取值范围：[0, size-1]，其中size为关键帧动画状态数。<br>index小于0或index超出范围时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| int32_t index                           | 状态索引值。取值范围：[0, size-1]，其中size为关键帧动画状态数。<br>index小于0或index超出范围时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -997,8 +997,8 @@ int32_t OH_ArkUI_AnimatorOption_SetDuration(ArkUI_AnimatorOption* option, int32_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| int32_t value | 播放的时长，单位为ms（毫秒），默认值0ms。取值范围：[0, +∞)。<br>value小于0时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| int32_t value | 播放的时长，单位为ms（毫秒），默认值0ms。取值范围：[0, +∞)。<br>value小于0时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -1024,7 +1024,7 @@ int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t v
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 | int32_t value | 延时播放的时间。单位为ms（毫秒）。取值范围：(-∞, +∞)。默认值：0（不延迟）。delay>=0为延迟播放，delay<0表示提前播放。对于delay<0的情况：当delay的绝对值小于实际动画时长，动画将在开始后第一帧直接运动到delay绝对值的时刻的状态；当delay的绝对值大于等于实际动画时长，动画将在开始后第一帧直接运动到终点状态。其中实际动画时长等于单次动画时长乘以动画播放次数。 |
 
 **返回：**
@@ -1055,7 +1055,7 @@ int32_t OH_ArkUI_AnimatorOption_SetIterations(ArkUI_AnimatorOption* option, int3
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 | int32_t value | 取值范围：[-1, +∞)，其中设置为0时不播放，-1表示无限次播放。默认值：1（播放一次）。<br>value小于-1时，操作无效。 |
 
 
@@ -1083,8 +1083,8 @@ int32_t OH_ArkUI_AnimatorOption_SetFill(ArkUI_AnimatorOption* option, ArkUI_Anim
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode) value | 动画执行后是否恢复到初始状态。默认值：ARKUI_ANIMATION_FILL_MODE_FORWARDS（1，保持最后状态）。<br>value小于0时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode) value | 动画执行后是否恢复到初始状态。默认值：ARKUI_ANIMATION_FILL_MODE_FORWARDS（1，保持最后状态）。<br>value小于0时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -1110,8 +1110,8 @@ int32_t OH_ArkUI_AnimatorOption_SetDirection(ArkUI_AnimatorOption* option, ArkUI
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| [ArkUI_AnimationDirection](capi-native-type-h.md#arkui_animationdirection) value | 动画播放方向。<br>value小于0时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| [ArkUI_AnimationDirection](capi-native-type-h.md#arkui_animationdirection) value | 动画播放方向。<br>value小于0时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -1142,7 +1142,7 @@ int32_t OH_ArkUI_AnimatorOption_SetCurve(ArkUI_AnimatorOption* option, ArkUI_Cur
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 | [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | 动画插值曲线。默认值：[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)（0），建议使用[ARKUI_CURVE_EASE_IN_OUT](capi-native-type-h.md#arkui_animationcurve)（4）获得更平滑的动画效果。<br>value为NULL时，使用默认曲线[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)（0）。 |
 
 **返回：**
@@ -1173,7 +1173,7 @@ int32_t OH_ArkUI_AnimatorOption_SetBegin(ArkUI_AnimatorOption* option, float val
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 | float value | 动画插值起点。<br>不涉及异常值处理。 |
 
 **返回：**
@@ -1204,7 +1204,7 @@ int32_t OH_ArkUI_AnimatorOption_SetEnd(ArkUI_AnimatorOption* option, float value
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 | float value | 动画插值终点。<br>不涉及异常值处理。 |
 
 **返回：**
@@ -1231,8 +1231,8 @@ int32_t OH_ArkUI_AnimatorOption_SetExpectedFrameRateRange(ArkUI_AnimatorOption* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* value | 期望的帧率范围对象。<br>value为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* value | 期望的帧率范围对象。<br>value为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -1258,10 +1258,10 @@ int32_t OH_ArkUI_AnimatorOption_SetKeyframe(ArkUI_AnimatorOption* option, float 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| float time | 关键帧时间。取值范围：[0, 1], 必须是递增。默认值：按索引均匀分布（如第1帧为0.0，第2帧为0.5，第3帧为1.0）。<br>time小于0或time大于1时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| float time | 关键帧时间。取值范围：[0, 1], 必须是递增。默认值：按索引均匀分布（如第1帧为0.0，第2帧为0.5，第3帧为1.0）。<br>time小于0或time大于1时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 | float value | 关键帧数值。默认值：0.0（起始值）。<br>不涉及异常值处理。 |
-| int32_t index | 关键帧的索引值。<br>index小于0时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| int32_t index | 关键帧的索引值。<br>index小于0时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -1291,9 +1291,9 @@ int32_t OH_ArkUI_AnimatorOption_SetKeyframeCurve(ArkUI_AnimatorOption* option, A
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 | [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | 动画插值曲线。默认值：线性插值（NULL）。<br>value为NULL时，使用线性插值（NULL）。 |
-| int32_t index | 关键帧的索引值。<br>index小于0时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| int32_t index | 关键帧的索引值。<br>index小于0时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
 
