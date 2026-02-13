@@ -754,6 +754,71 @@ setOsAccountName(localId: number, localName: string): Promise&lt;void&gt;
   }
   ```
 
+### setOsAccountType<sup>24+</sup>
+
+setOsAccountType(localId: number, type: OsAccountType, options?: SetOsAccountTypeOptions): Promise&lt;void&gt;
+
+设置指定系统账号的账号类型。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**参数：**
+
+| 参数名  | 类型                                                 | 必填 | 说明                     |
+| ------- | ---------------------------------------------------- | ---- | ------------------------ |
+| localId | number                                               | 是   | 系统账号ID。             |
+| type    | [OsAccountType](js-apis-osAccount.md#osaccounttype)  | 是   | 系统账号类型。           |
+| options | [SetOsAccountTypeOptions](#setosaccounttypeoptions24) | 否   | 设置系统账号类型的选项。默认为空。 |
+
+**返回值：**
+
+| 类型                | 说明                                   |
+| ------------------- | -------------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Not system application.                                      |
+| 204      | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint. 2. The required privilege for the operation has not been granted. |
+| 12300001 | The system service works abnormally.                         |
+| 12300002 | Invalid type or options.                                     |
+| 12300003 | Account not found.                                           |
+| 12300008 | Restricted OS account.                                       |
+| 12300010 | Service busy. Possible causes: The target account is being operated. |
+| 12300023 | The number of accounts of the specified type has reached the upper limit. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+let localId: number = 100;
+let type: osAccount.OsAccountType = osAccount.OsAccountType.ADMIN;
+let options: osAccount.SetOsAccountTypeOptions = {
+  token: new Uint8Array([0, 1, 2, 3])
+};
+try {
+  accountManager.setOsAccountType(localId, type, options).then(() => {
+    console.info('setOsAccountType successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`setOsAccountType failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`setOsAccountType exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ### queryMaxOsAccountNumber
 
 queryMaxOsAccountNumber(callback: AsyncCallback&lt;number&gt;): void
@@ -6457,3 +6522,15 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | ADD_CREDENTIAL      | 1   | 表示添加凭据的变更类型。 |
 | UPDATE_CREDENTIAL   | 2   | 表示更新凭据的变更类型。 |
 | DELETE_CREDENTIAL   | 3   | 表示删除凭据的变更类型。 |
+
+## SetOsAccountTypeOptions<sup>24+</sup>
+
+设置系统账号类型的选项。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+| 名称  | 类型       | 只读 | 可选 | 说明                         |
+| ----- | ---------- | ---- | ---- | ---------------------------- |
+| token | Uint8Array | 否   | 是   | 表示从认证管理接口获取的token。默认为空。 |
