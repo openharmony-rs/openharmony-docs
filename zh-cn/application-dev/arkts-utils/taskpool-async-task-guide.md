@@ -24,13 +24,13 @@ TaskPool支持使用异步队列来控制任务的并发度，能有效避免资
 
 2. 定义耗时任务。
 
-   <!-- @[collect_frame](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/TaskpoolAsyncLevel.ets) -->   
+   <!-- @[collect_frame](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/TaskpoolAsyncLevel.ets) -->
    
    ``` TypeScript
    // TaskpoolAsyncLevel.ets
    @Concurrent
    function collectFrame() {
-     // 采集数据，并且进行处理。
+     // 采集数据，并且进行处理
      // 模拟处理过程，这里是个耗时任务，持续时间为30秒
      let t = new Date().getTime()
      while (new Date().getTime() - t < 30000) {
@@ -42,10 +42,10 @@ TaskPool支持使用异步队列来控制任务的并发度，能有效避免资
 
 3. 创建异步队列并执行采集任务。
 
-   <!-- @[trigger_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/TaskpoolAsyncLevel.ets) -->   
+   <!-- @[trigger_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/TaskpoolAsyncLevel.ets) -->
    
    ``` TypeScript
-   // TaskpoolAsyncLevel.ets。
+   // TaskpoolAsyncLevel.ets
    @Entry
    @Component
    struct TaskpoolAsyncLevel {
@@ -60,7 +60,7 @@ TaskPool支持使用异步队列来控制任务的并发度，能有效避免资
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
              .onClick(async () => {
-               // 创建并发度为5的异步队列，等待队列个数为5，当加入的任务数量超过5时，等待列表中处于队头的任务会被丢弃。
+               // 创建并发度为5的异步队列，等待队列个数为5，当加入的任务数量超过5时，等待列表中处于队头的任务会被丢弃
                let asyncRunner:taskpool.AsyncRunner = new taskpool.AsyncRunner('async', 5, 5);
                // 触发采集任务
                for (let i = 0; i < 20; i++) {

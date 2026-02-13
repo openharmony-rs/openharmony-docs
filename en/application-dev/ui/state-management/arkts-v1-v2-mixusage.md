@@ -1,239 +1,142 @@
-# Mixing Use of State Management V1 and V2
-<!--Kit: ArkUI-->
-<!--Subsystem: ArkUI-->
-<!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
-<!--Tester: @TerryTsao-->
+# Mixed Use of State Management V1 and V2 (API Version 19 and Later)
+<!--Kit: ArkUI--> 
+<!--Subsystem: ArkUI--> 
+<!--Owner: @liwenzhen3--> 
+<!--Designer: @s10021109--> 
+<!--Tester: @TerryTsao--> 
 <!--Adviser: @zhang_yixin13-->
 
 ## Overview
 
-During the evolution of the state management framework, state managements V1 and V2 are launched based on API version 7 and API version 12, respectively. For applications that have used state management V1 and need to be migrated to state management V2, see [Migrating Applications from V1 to V2](./arkts-v1-v2-migration.md).
-
-For large applications, V1 and V2 may coexist during migration. Before API version 19, strict verification is performed on mixed usage, especially for complex object transfers. For details, see [Mixing Use of Custom Components](./arkts-custom-component-mixed-scenarios.md). To facilitate smooth migration to V2, restrictions on mixed usage are reduced starting from API version 19. For details, see [Check Rule](#check-rule). In addition, new methods [enableV2Compatibility](../../reference/apis-arkui/js-apis-stateManagement.md#enablev2compatibility19) and [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19) are provided to address mixed usage issues during migration.
+To facilitate smooth migration to state management V2, constraints on the mixed use of state management V1 and V2 are reduced since API version 19. For details about the changes, see [Constraints](#constraints). In addition, new methods [enableV2Compatibility](../../reference/apis-arkui/js-apis-stateManagement.md#enablev2compatibility19) and [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19) are provided to address mixed usage issues during migration.
 
 > **NOTE**
->
+> 
 > In this topic, the symbol "->" is used to indicate the transfer of variables. For example, "V1 -> V2" indicates that the state variable of V1 is transferred to the V2.
 
 
-## Check Rule
-Before API version 19, the rules for mixing state management V1 and V2 are as follows:
-1. V1 decorators cannot be used with [@ObservedV2](./arkts-new-observedV2-and-trace.md).
-2. V2 decorators cannot be used with [@Observed](./arkts-observed-and-objectlink.md).
-3. Only simple types can be transferred from V1 to V2. Complex types (built-in types), including Array, Map, Set, and Date, are not allowed.
-4. Simple types or a common class can be transferred from V2 to V1, but built-in types such as Array, Map, Set, or Date are not allowed.
-5. [\@Link](./arkts-link.md) in V1 complies with the original initialization rules and can be initialized only by V1 state variables. For details, see [\@Link Initialization Rules](./arkts-link.md#variable-transferaccess-rules).
+## Constraints
 
-Since API version 19, the first and fifth rules are still disabled, and the second to fourth rules are enabled. The following table lists the verification during compilation.
+1. V1 decorators cannot be used with [@ObservedV2](./arkts-new-observedV2-and-trace.md). \@ObservedV2/\@Trace has its own independent observation capability, which can be used in [@ComponentV2](./arkts-create-custom-components.md#componentv2) and [@Component](./arkts-create-custom-components.md#component) independently. The state management framework does not allow the observation capability of \@ObservedV2/\@Trace to be used with the observation capability of V1. Therefore, the prohibition persists.
 
-| Scenario | Earlier than API Version 19| API Version 19 and Later |
-|------|----|------|
-| V1 decorators used with @ObservedV2  | Error| Error|
-| V2 decorators used with @Observed| Error| No error reported|
-| Common class transferred from V1 to V2 | Error| No error reported|
-| Built-in types (Array, Map, Set, Date) transferred from V1 to V2 | Error| No error reported|
-| @Observed decorated class transferred from V1 to V2 | Error| No error reported|
-| @ObservedV2 decorated class transferred from V2 to V1 | Error| Error|
-| Built-in types (Array, Map, Set, Date) transferred from V2 to V1 | Error| No error reported|
-| @ObjectLink initialized by a class not decorated with @Observed | Error| No error reported|
+2. V2->V1: V1 does not support the use of decorators to receive the class decorated by \@ObservedV2. Otherwise, a compilation error is reported.
 
-The first item is still prohibited because \@ObservedV2/\@Trace has its own independent observation capability, which can be used not only in [\@ComponentV2](./arkts-create-custom-components.md#componentv2) but also in [\@Component](./arkts-create-custom-components.md#component). The status management framework does not want the observation capability of \@ObservedV2/\@Trace to be used together with that of \@ObservedV1. Therefore, the prohibition status remains unchanged.
+3. [\@Link](./arkts-link.md) in V1 complies with the original initialization rules and can be initialized only by V1 state variables. For details, see [\@Link Initialization Rules](./arkts-link.md#variable-transferaccess-rules). Because [@Link](./arkts-link.md) in V1 can only establish a two-way synchronization relationship with the V1 state variable, you can use \@Param and \@Event to implement two-way synchronization in V2. For details, see [@Link -> @Param/@Event](./arkts-v1-v2-migration-inner-component.md#link---paramevent).
 
-The fifth item is still prohibited because the \@Link in V1 can only establish a bidirectional synchronization relationship with the V1 state variable. To implement bidirectional synchronization in V2, the [@Param](./arkts-new-param.md) and [@Event](./arkts-new-event.md) can be used. For details, see [\@Link -> \@Param and \@Event Migration Example](./arkts-v1-v2-migration-inner-component.md#link---paramevent).
 
 ## APIs are added.
+
 ### makeV1Observed
 
-The [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19) API wraps non-observable objects into observable objects of state management V1. The capability is equivalent to @Observed. The return value can be used to initialize @ObjectLink.
+The [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19) API encapsulates non-observable objects into observable objects of status management V1. **makeV1Observed** has the same capability as \@Observed, and its return value can be used to initialize \@ObjectLink.
 
->**NOTE**
->
->Starting from API version 19, you can use the **makeV1Observed** API in UIUtils to wrap non-observable objects into observable objects of state management V1.
+> **NOTE**
+> 
+> Starting from API version 19, you can use the **makeV1Observed** API in UIUtils to wrap non-observable objects into observable objects of state management V1.
 
-**API description**
+**API Description**
 - **makeV1Observed** is used together with **enableV2Compatibility** for V2 -> V1 transfer.
 - **makeV1Observed** converts a common class, Array, Map, Set, or Date type to a state variable of V1. Its capability is equivalent to \@Observed. Therefore, the return value can be used to initialize \@ObjectLink.
 - If the data received by **makeV1Observed** is already the state variable of V1, **makeV1Observed** returns itself without any change.
 - **makeV1Observed** does not execute recursively. It only wraps the first layer into the state variable of V1.
 
-Item
-- The [collections](../../reference/apis-arkts/arkts-apis-arkts-collections.md) type and [\@Sendable](../../arkts-utils/arkts-sendable.md) decorated classes are not supported.
+**Constraints**
+
+<!--PR1-->
+- The [collections](../../reference/apis-arkts/arkts-apis-arkts-collections.md) type and [@Sendable](../../arkts-utils/arkts-sendable.md) decorated classes are not supported.
+<!--PR1End-->
+
 - Non-object types are not supported.
+
 - **undefined** and **null** are not supported.
+
 - The return values of \@ObservedV2 and [makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved), and variables of built-in types (such as Array, Map, Set, and Date) decorated with V2 decorators are not supported.
 
 
 ### enableV2Compatibility
 
-[enableV2Compatibility](../../reference/apis-arkui/js-apis-stateManagement.md#enablev2compatibility19) enables the V2 observation capability for V1 state variables, allowing V1 state variables to be observed within @ComponentV2.
+[enableV2Compatibility](../../reference/apis-arkui/js-apis-stateManagement.md#enablev2compatibility19) enables the observation capability of V2 for the state variable of V1, that is, the state variable of V1 can be observed in \@ComponentV2.
 
->**NOTE**
->
->Starting from API version 19, you can use the **enableV2Compatibility** API in UIUtils to make V1 state variables compatible with V2.
+> **NOTE**
+> 
+> Starting from API version 19, you can use the **enableV2Compatibility** API in UIUtils to make V1 state variables compatible with V2.
 
-**API description**
+**API Description**
+
 - This API is mainly used in the V1 -> V2 transfer. After the state variable of V1 calls this API and is transferred to \@ComponentV2, the change can be observed in V2 to implement associated data update.
-- **enableV2Compatibility** applies only to V1 state variables. V1 state variables are decorated with V1 decorators (\@Observed, [\@State](./arkts-state.md), [\@Prop](./arkts-prop.md), [\@Link](./arkts-link.md), [\@Provide](./arkts-provide-and-consume.md), [\@Consume](./arkts-provide-and-consume.md), and [\@ObjectLink](./arkts-observed-and-objectlink.md) where \@ObjectLink must be an instance decorated by \@Observed or the return value of **makeV1Observed**). Otherwise, the input parameter itself is returned.
-- **enableV2Compatibility** recursively traverses all properties of the class and all subitems of Array, Set, or Map until non-V1 state variable data is found.
 
-Item
+- **enableV2Compatibility** applies only to V1 state variables. The state variable of V1 is a variable decorated by the decorator of V1, such as \@Observed, [@State](./arkts-state.md), [@Prop](./arkts-prop.md), [@Link](./arkts-link.md), [@Provide](./arkts-provide-and-consume.md), [@Consume](./arkts-provide-and-consume.md), and [@ObjectLink](./arkts-observed-and-objectlink.md) (\@ObjectLink must be an instance decorated by \@Observed or the return value of **makeV1Observed**). Otherwise, the input parameter itself is returned.
+
+- **enableV2Compatibility** recursively traverses all properties of the class and all subitems of the Array, Set, and Map until data of non-V1 state variables is found. Then, the traversal of the current branch is stopped.
+
+**Constraints**
+
 - Non-object types are not supported.
 - **undefined** and **null** are not supported.
 - Non-V1 state variable data is not supported.
 - The return values of \@ObservedV2 and [makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved), and variables of built-in types (such as Array, Map, Set, and Date) decorated with V2 decorators are not supported.
 
-## Mixed Use Paradigm
-
-Based on the [enableV2Compatibility](../../reference/apis-arkui/js-apis-stateManagement.md#enablev2compatibility19) and [makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19) interfaces, the V1V2 mixed normal form is as follows:
-
-### V1->V2
-- The state variable of V1 is transferred to [\@Param](./arkts-new-param.md) of V2. UIUtils.enableV2Compatibility is called to enable the state variable of V1 to be observed in \@ComponentV2. For details about the complete example, see [Common Scenarios](#common-scenarios).
-
-<!-- @[state_manage_mixed_paradigm_v1_to_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateManageMixedParadigmV1ToV2.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-@Observed
-class ObservedClass {
-}
-
-@Entry
-@Component
-struct CompV1 {
-  @State observedClass: ObservedClass = new ObservedClass();
-
-  build() {
-    Column() {
-      CompV2({ observedClass: UIUtils.enableV2Compatibility(this.observedClass) })
-    }
-  }
-}
-
-@ComponentV2
-struct CompV2 {
-  @Param observedClass: ObservedClass = new ObservedClass();
-
-  build() {
-  }
-}
-```
-
-- The state variables of V1 can be used to observe the first-layer properties. After **UIUtils.enableV2Compatibility** is called to transfer the variables to \@Param, \@Param is able to observe the changes of the first-layer properties.
-
-The following table lists the observation capability in specific scenarios after **enableV2Compatibility** is called.
-
-| \@Component (Parent) - > \@ComponentV2 (Child) | Observation Capability|
-|------|----|
-| Regular variables| No. **enableV2Compatibility** supports only state variables of V1.|
-| \@Observed decorated class  | The first-layer properties can be observed.|
-| Variable decorated by the decorator of V1, whose type is Array, Map, Set, or Date. | API calls can be observed.|
-| Variable decorated by the decorator of V1, whose type is class decorated by non-\@Observed. | The first-layer properties can be observed. Note that if the data source is \@ObjectLink, it must be the instance of the \@Observed decorated class or the return value of **makeV1Observed**.|
-| Normal array. The array item is the class decorated by \@Observed. | No. The outer array is a non-V1 state variable, so this API does not take effect and the data source itself is returned.|
-| Variable decorated by the decorator of V1, whose type is a normal array. The array item is the class decorated by \@Observed. | In \@Component, only the first layer can be observed. To observe the deeper layers, use \@ObjectLink together. You can observe the deeper layers in \@ComponentV2.|
-| \@ObservedV2 decorated class | Observable in V1 and V2. The observation capability is derived from the \@ObservedV2 and \@Trace capabilities. **enableV2Compatibility** does not take effect.|
-| Variable decorated by the decorator of V1, whose type is a normal array. The array item is the class decorated by \@ObservedV2.| Observable because **enableV2Compatibility** makes the outer array observable in V2. The property observation capability of the class decorated by \@ObservedV2 is derived from \@ObservedV2 and \@Trace, and is irrelevant to **enableV2Compatibility**.|
-
-### V2->V1
-
-When V2 is changed to V1, you are advised to use **UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())**. If this object is the observable data of V1, only **UIUtils.enableV2Compatibility** needs to be called. For details about the complete example, see [Common Scenarios](#common-scenarios).
-
-<!-- @[state_manage_mixed_paradigm_v2_to_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateManageMixedParadigmV2ToV1.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-@Observed
-class ObservedClass {
-}
-
-@Entry
-@ComponentV2
-struct CompV2 {
-  @Local observedClass: ObservedClass = UIUtils.enableV2Compatibility(new ObservedClass());
-
-  build() {
-    Column() {
-      CompV1({ observedClass: this.observedClass })
-    }
-  }
-}
-
-@Component
-struct CompV1 {
-  @ObjectLink observedClass: ObservedClass;
-
-  build() {
-  }
-}
-```
-
-The following table lists the specific scenarios.
-
-| \@ComponentV2 (Parent) -> \@Component (Child) | Observation Capability|
-|------|----|
-| \@Observed decorated nested class| In \@ComponentV2, you can observe the changes of nested properties.|
-| Normal class | Observable. Call **makeV1Observed** to execute **enableV2Compatibility** properly.|
-| Array\<number\> or other simple arrays | Observable. **makeV1Observed** needs to be called.<br>Example: **@Local local : Array\<number> = UIUtils.enableV2Compatibility(UIUtils.makeV1Observed([1, 2, 3]))**|
-| Array\<ObservedClass\> (The array item is a class decorated by \@Observed.) | Observable. **makeV1Observed** needs to be called.<br>Example: **@Local local : Array\<ObservedClass> = UIUtils.enableV2Compatibility(UIUtils.makeV1Observed([new ObservedClass()]))**|
-|  Array\<Array\<number\>\>: two-dimensional array, array item, or other simple types| Observable. **makeV1Observed** needs to be called.<br>Example: **@Local local : Array<Array\<number>>> = UIUtils.enableV2Compatibility(UIUtils.makeV1Observed([UIUtils.makeV1Observed([1, 2, 3])]))**|
-
-
 ## Mixed Use Rules
-- V1-> When V2 transfers complex data, enableV2Compatibility needs to be called. Otherwise, data association between V1 and V2 cannot be implemented. You are advised to call enableV2Compatibility at the construction point of the V2 component. Otherwise, when a value is assigned to a variable, you need to manually call enableV2Compatibility again.
 
-```ts
-// Recommended usage: When this.state is set to new ObservedClass (), UIUtils.enableV2Compatibility does not need to be called to reduce the code amount.
-SubComponentV2({param: UIUtils.enableV2Compatibility(this.state)})
+- When complex data is transferred from V1 to V2, call **enableV2Compatibility**; otherwise, data association between V1 and V2 cannot be implemented. It is recommended that **enableV2Compatibility** be called at the construction position of the V2 component. Otherwise, **enableV2Compatibility** needs to be manually called again when a value is assigned to the entire variable. 
 
-// This method is not recommended. When a value is assigned to the state as a whole, UIUtils.enableV2Compatibility needs to be called again.
-// Otherwise, the variable of V1 transferred to SubComponentV2 cannot be observed in V2.
-// @State state: ObservedClass = UIUtils.enableV2Compatibility(new ObservedClass());
-// this.state = UIUtils.enableV2Compatibility(new ObservedClass());
-SubComponentV2({param: this.state})
-```
+  ```ts
+  // Recommended usage. UIUtils.enableV2Compatibility does not need to be called when this.state = new ObservedClass(), reducing the code amount.
+  SubComponentV2({param: UIUtils.enableV2Compatibility(this.state)})
+  
+  // Not recommended. When a value is assigned to the state as a whole, UIUtils.enableV2Compatibility needs to be called again.
+  // Otherwise, the variable of V1 transferred to SubComponentV2 cannot be observed in V2.
+  // @State state: ObservedClass = UIUtils.enableV2Compatibility(new ObservedClass());
+  // this.state = UIUtils.enableV2Compatibility(new ObservedClass());
+  SubComponentV2({param: this.state})
+  ```
 
-- When complex data is transferred from V2 to V1, preferentially declare the state variable data of V1 in V2 and call **UIUtils.enableV2Compatibility**. This is because in state management V1, state variables have the capability of observing the first layer by default, while state management V2 has only the capability of observing itself. If you want to associate data between V1 and V2, you need to call **UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())** to align the observation capabilities of both state managements.
+- When complex data is transferred from V2 to V1, declare the data as V1 state variable data in V2 and call **UIUtils.enableV2Compatibility**. This is because in state management V1, state variables have the capability of observing the top-level properties by default, while in state management V2, they only have the capability of observing themselves. If data association is required, **UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())** needs to be called to align the observation capabilities of both parties. 
 
-```ts
-// Recommended usage
-@Local unObservedClass: UnObservedClass = UIUtils.enableV2Compatibility(UIUtils.makeV1Observed(new UnObservedClass()));
+  ```ts
+  // Recommended usage
+  @Local unObservedClass: UnObservedClass = UIUtils.enableV2Compatibility(UIUtils.makeV1Observed(new UnObservedClass()));
+  
+  // Recommended usage. ObservedClass is a class decorated by @Observed.
+  @Local observedClass: ObservedClass = UIUtils.enableV2Compatibility(new ObservedClass());
+  ```
 
-// Recommended usage. ObservedClass is a class decorated by @Observed.
-@Local observedClass: ObservedClass = UIUtils.enableV2Compatibility(new ObservedClass());
-```
 - **UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())** does not change the observation capabilities of V1 and V2.
-    - In V1, **UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())** is equal to the observation capability of V1, which can observe the value assignment of the data and the first-layer property. If in-depth observation is required, \@ObjectLink should be used together.
-    - In V2, **UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())** can be used to observe deeper layers, but each layer must be a class decorated by \@Observed or a return value of **makeV1Observed**.
-- After **UIUtils.enableV2Compatibility** is called, the observation capability of V2 is enabled for new data by default. However, you need to ensure that the new data is also the class decorated by \@Observed or the return value of **makeV1Observed**. For details about the complete example, see [Common Scenarios](#nested-types).
-```ts
-let arr: Array<ArrayItem> = UIUtils.enableV2Compatibility(UIUtils.makeV1Observed(new ArrayItem()));
+  - In V1, **UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())** is equal to the observation capability of V1, which can observe the value assignment of the data and the top-level property. In-depth observation cannot be performed. If in-depth observation is required, \@ObjectLink must be used together.
+  - In V2, **UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())** can be used for in-depth observation, but each layer must be a class decorated by \@Observed or a return value of **makeV1Observed**.
+  - If **enableV2Compatibility** and **makeV1Observed** are not used, a dual proxy problem occurs. As a result, the same state object is generated by the V1 and V2 state management systems at the same time, causing an observation logic conflict.
 
-arr.push(new ArrayItem()); // The new data is not a state variable of V1. Therefore, the observation capability of V2 is unavailable.
-arr.push(UIUtils.makeV1Observed(new ArrayItem())); // The new data is the state variable of V1, which can be observed in V2 by default.
-```
-- For built-in types, such as Array, Map, Set, and Date, both V1 and V2 can observe the changes caused by their own value assignment and API calls. Although developers can refresh data in some simple scenarios without calling UIUtils.enableV2Compatibility, the performance is poor due to dual proxies, therefore, you are advised to use **UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())**. For details, see [Common Scenarios](#built-in-types).
-- For a class with the [\@Track](./arkts-track.md) decorative attribute, the class does not crash when the non-\@Track decorative attribute is used in \@ComponentV2 but still crashes when the non-\@Track decorative attribute is used in \@Component. For details, see [Common Scenarios](#observed-decorated-class).
+- When V2 observation capabilities is enabled for the data (that is, after calling **UIUtils.enableV2Compatibility**), V2 observation capabilities is enabled for newly added data by default. However, you need to ensure that the newly added data is a class decorated with \@Observed or the return value of **makeV1Observed**. For details, see [Transferring the Nested Type (V1->V2)](#transferring-the-nested-type-v1-v2) and [Transferring the Nested Type (V2->V1)](#transferring-the-nested-type-v2-v1). 
+  ```ts
+  let arr: Array<ArrayItem> = UIUtils.enableV2Compatibility(UIUtils.makeV1Observed(new ArrayItem()));
+  
+  arr.push(new ArrayItem()); // The new data is not a state variable of V1. Therefore, the observation capability of V2 is unavailable.
+  arr.push(UIUtils.makeV1Observed(new ArrayItem())); // The new data is the state variable of V1, which can be observed in V2 by default.
+  ```
+
+- For built-in types, such as Array, Map, Set, and Date, both V1 and V2 can observe the changes caused by their own value assignment and API calls. Although you can refresh data in some simple scenarios without calling UIUtils.enableV2Compatibility, a dual proxy problem may occur, resulting in poor performance. Therefore, you are advised to use UIUtils.enableV2Compatibility(UIUtils.makeV1Observed()). For details, see [Transferring the Built-in Type (V1->V2)](#transferring-the-built-in-type-v1-v2), [Transferring the Built-in Type (V2->V1)](#transferring-the-built-in-type-v2-v1).
+
+- For a class with properties decorated with [@Track](./arkts-track.md), using the properties not decorated with \@Track will not crash in \@ComponentV2 but will crash in \@Component. For details, see [Transferring the Class Type (V1->V2)](#transferring-the-class-type-v1-v2), [Transferring the Class Type (V2->V1)](#transferring-the-class-type-v2-v1).
 
 When calling the two APIs to use V1 and V2 together, you can comply with the logic shown in the following figure.
 
 ![mix-usage](./figures/V1V2_mix_usage.png)
 
 
-## Common Scenarios
-### Normal JS Object
+## Using V2 Custom Components in V1
 
-**V1->V2**
 
-**Recommended Statement**
+### Transferring the Class Type (V1->V2)
+
+**Common Class**
+
+In the following code, when the state variable of V1 is transferred to V2, the **enableV2Compatibility** API is called, which enables the V1 variable **observedClass** to have the observation capability in V2 components.
 
 <!-- @[state_mixed_scene_js_v1_v2_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneJsV1V2Recommend.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
-@Observed
 class ObservedClass {
   public name: string = 'Tom';
 }
@@ -248,6 +151,59 @@ struct CompV1 {
       Text(`@State observedClass: ${this.observedClass.name}`)
         .onClick(() => {
           this.observedClass.name += '!'; // Refresh
+        })
+      // Call UIUtils.enableV2Compatibility to enable V1 state variables to have the observation capability in @ComponentV2.
+      CompV2({ observedClass: UIUtils.enableV2Compatibility(this.observedClass) })
+    }
+  }
+}
+
+@ComponentV2
+struct CompV2 {
+  @Param observedClass: ObservedClass = new ObservedClass();
+
+  build() {
+    // After V2 observation capabilities are enabled for V1 state variables, their top-level property changes can be observed in V2.
+    Text(`@Param observedClass: ${this.observedClass.name}`)
+      .onClick(() => {
+        this.observedClass.name += '!'; // Refresh
+      })
+  }
+}
+```
+
+**\@Observed and \@Track Decorated Class**
+
+For a class decorated with \@Observed, variables decorated with the **enableV2Compatibility** API are transferred from V1 to V2. The \@Track-decorated properties of the variable can be observed in both V1 and V2. However, non-\@Track-decorated properties used in the UI of V1 will result in runtime errors, while those used in V2 will not report errors, but the UI will not respond to updates.
+
+In the following example:
+
+- **name** is a \@Track decorated property, which is observable in both V1 and V2.
+
+- **count** is a non-\@Track decorated property and is invalid in both V1 and V2 UIs.
+  - In V1, if a non-\@Track decorated property is used in the UI, an error is reported during runtime.
+  - In V2, if a non-\@Track decorated property is used in the UI, no error is reported, but the UI does not respond to updates.
+
+
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+@Observed
+class ObservedClass {
+  @Track public name: string = 'a';
+  public count: number = 0;
+}
+
+@Entry
+@Component
+struct CompV1 {
+  @State observedClass: ObservedClass = new ObservedClass();
+
+  build() {
+    Column() {
+      Text(`@State observedClass: ${this.observedClass.name}`)
+        .onClick(() => {
+          this.observedClass.name += 'a'; // Trigger refresh.
         })
       // Call UIUtils.enableV2Compatibility to enable the state variable of V1 to be observed in @ComponentV2.
       CompV2({ observedClass: UIUtils.enableV2Compatibility(this.observedClass) })
@@ -260,271 +216,26 @@ struct CompV2 {
   @Param observedClass: ObservedClass = new ObservedClass();
 
   build() {
-    // After the observation capability of V2 is enabled for the state variable of V1, the first-layer changes can be observed in V2.
-    Text(`@Param observedClass: ${this.observedClass.name}`)
-      .onClick(() => {
-        this.observedClass.name += '!'; // Refresh
-      })
-  }
-}
-```
-
-**Not Recommended Statement**
-
-In the following example, when the state variable of V1 is transferred to V2, the **enableV2Compatibility** API is not called, and the observation capability of V2 is not enabled. Therefore, **observedClass** cannot observe the change of the **name** property in **CompV2**. The observation capabilities of the same state variable in **CompV1** and **CompV2** are different.
-
-<!-- @[state_mixed_scene_js_v1_v2_not_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneJsV1V2NotRecommend.ets) -->
-
-``` TypeScript
-@Observed
-class ObservedClass {
-  public name: string = 'Tom';
-}
-
-@Entry
-@Component
-struct CompV1 {
-  @State observedClass: ObservedClass = new ObservedClass();
-
-  build() {
     Column() {
-      Text(`@State observedClass: ${this.observedClass.name}`)
+      // After the observation capability of V2 is enabled for the state variable of V1, the first-layer changes can be observed in V2.
+      Text(`@Param observedClass: ${this.observedClass.name}`)
         .onClick(() => {
           this.observedClass.name += '!'; // Refresh
         })
-      // The enableV2Compatibility API is not called. The state variable of V1 cannot be observed in CompV2.
-      // The change of name cannot be observed in CompV2.
-      CompV2({ observedClass: this.observedClass })
-    }
-  }
-}
 
-@ComponentV2
-struct CompV2 {
-  @Param observedClass: ObservedClass = new ObservedClass();
-
-  build() {
-    Text(`@Param observedClass: ${this.observedClass.name}`)
-      .onClick(() => {
-        this.observedClass.name += '!'; // Do not refresh.
-      })
-  }
-}
-```
-
-**V2->V1**
-
-**Recommended Statement**
-
-In V2-> In the V1 transfer scenario, to align the observation capabilities of V2 and V1, the makeV1Observed interface needs to be called in V2. In addition, the observation capability of V2 needs to be enabled by calling the enableV2Compatibility interface. Therefore, the recommended writing method is as follows:
-
-<!-- @[state_mixed_scene_js_v2_v1_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneJsV2V1Recommend.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-class ObservedClass {
-  public name: string = 'Tom';
-}
-
-@Entry
-@ComponentV2
-struct CompV2 {
-  @Local observedClass: ObservedClass = UIUtils.enableV2Compatibility(UIUtils.makeV1Observed(new ObservedClass()));
-
-  build() {
-    Column() {
-      // @Local can only observe itself.
-      // However, UIUtils.makeV1Observed is called to change @Local to the state variable of V1, whose first-layer changes are observable.
-      // Call UIUtils.enableV2Compatibility to make it observable in V2.
-      // Currently, you can observe the changes of the first-layer properties.
-      Text(`@Local observedClass: ${this.observedClass.name}`)
-        .onClick(() => {
-          this.observedClass.name += '!'; // Refresh
-        })
-      // @ObjectLink can receive the instance of the @Observed decorated class or the return value of makeV1Observed.
-      CompV1({ observedClass: this.observedClass })
-    }
-  }
-}
-
-@Component
-struct CompV1 {
-  @ObjectLink observedClass: ObservedClass;
-
-  build() {
-    // The change of the first layer can be observed in CompV1.
-    Text(`@ObjectLink observedClass: ${this.observedClass.name}`)
-      .onClick(() => {
-        this.observedClass.name += '!'; // Refresh
-      })
-  }
-}
-```
-**Not Recommended Statement**
-
-The observation capabilities of V1 and V2 are different. If **UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())** is not called to directly transfer data, the data is not updated or the update behavior is inconsistent.
-
-<!-- @[state_mixed_scene_js_v2_v1_not_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneJsV2V1NotRecommend.ets) -->
-
-``` TypeScript
-class ObservedClass {
-  public name: string = 'Tom';
-}
-
-@Entry
-@ComponentV2
-struct CompV2 {
-  @Local observedClass: ObservedClass = new ObservedClass();
-
-  build() {
-    Column() {
-      // @Local can only observe itself. Property changes cannot be observed here.
-      Text(`@Local observedClass: ${this.observedClass.name}`)
-        .onClick(() => {
-          this.observedClass.name += '!'; // Do not refresh.
-        })
-      // @ObjectLink cannot receive instances of non-@Observed decorated classes or return values of makeV1Observed.
-      // The log indicates that the current ObjectLink is assigned an invalid value.
-      CompV1({ observedClass1: this.observedClass, observedClass2: this.observedClass })
-    }
-  }
-}
-
-@Component
-struct CompV1 {
-  @ObjectLink observedClass1: ObservedClass;
-  @State observedClass2: ObservedClass = new ObservedClass();
-
-  build() {
-    Column() {
-      // The value of @ObjectLink is invalid and does not respond to the UI re-render.
-      Text(`@ObjectLink observedClass: ${this.observedClass1.name}`)
-        .onClick(() => {
-          this.observedClass1.name += '!'; // Do not refresh.
-        })
-
-      // Different from @ObjectLink, @State wraps unobservable objects into observable objects of V1 by default. The changes of itself and attributes can be observed.
-      Text(`@State observedClass: ${this.observedClass2.name}`)
-        .onClick(() => {
-          this.observedClass2.name += '!'; // Refresh
-        })
-    }
-  }
-}
-```
-
-### \@Observed Decorated Class
-
-**V1->V2**
-
-In the following example:
-- **ObservedClass** is the class decorated by \@Observed and enables the observation capability in V2.
-- **name** is a @Track decorated property and is observable in both V1 and V2.
-- **count** is a non-@Track decorated property and is invalid in the UIs of V1 and V2.
-    - In V1, if a non-@Track decorated property is used on the UI, an error is reported during runtime.
-    - In V2, no error is reported during runtime when non-@Track decorated properties are used on the UI, but the refresh is not responded.
-
-<!-- @[state_mixed_scene_observed_class_v1_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneObservedClassV1V2.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-@Observed
-class ObservedClass {
-  @Track public name: string = 'a';
-  public count: number = 0;
-}
-
-@Entry
-@Component
-struct CompV1 {
-  @State observedClass: ObservedClass = new ObservedClass();
-
-  build() {
-    Column() {
-      Text(`name: ${this.observedClass.name}`).onClick(() => {
-        // Trigger the refresh.
-        this.observedClass.name += 'a';
-      })
-
-      CompV2({ observedClass: UIUtils.enableV2Compatibility(this.observedClass) })
-    }
-  }
-}
-
-@ComponentV2
-struct CompV2 {
-  @Param observedClass: ObservedClass = new ObservedClass();
-
-  build() {
-    // The system does not crash when a non-@Track variable is used in V2, but the refresh is not responded as well.
-    Text(`count: ${this.observedClass.count}`).onClick(() => {
-      // No refresh is triggered.
-      this.observedClass.count++;
-    })
-  }
-}
-```
-
-**V2->V1**
-
-- **ObservedClass** is a class decorated by \@Observed. Therefore, when **UIUtils.enableV2Compatibility** is transferred to V1, **UIUtils.makeV1Observed** does not need to be called.
-- Only the \@Track decorated variables can be observed in V1 and V2. If a non-\@Track variable is used in V1, an error is reported on the UI. In V2, no error is reported but the variable does not respond to the refresh.
-
-<!-- @[state_mixed_scene_observed_class_v2_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneObservedClassV2V1.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-@Observed
-class ObservedClass {
-  @Track public name: string = 'a';
-  public count: number = 0;
-}
-
-@Entry
-@ComponentV2
-struct CompV1 {
-  @Local observedClass: ObservedClass = UIUtils.enableV2Compatibility(new ObservedClass());
-
-  build() {
-    Column() {
-      Text(`name: ${this.observedClass.name}`).onClick(() => {
-        // Trigger the refresh.
-        this.observedClass.name += 'a';
-      })
-      // The system does not crash when a non-@Track variable is used in V2, but the refresh is not responded as well.
+      // If a non-@Track variable is used, the system does not crash in V2, but does not respond to updates.
       Text(`count: ${this.observedClass.count}`).onClick(() => {
-        this.observedClass.count++;
-      })
-
-      CompV2({ observedClass: this.observedClass })
-    }
-  }
-}
-
-@Component
-struct CompV2 {
-  @ObjectLink observedClass: ObservedClass;
-
-  build() {
-    Column() {
-      Text(`count: ${this.observedClass.name}`).onClick(() => {
-        // Trigger the refresh.
-        this.observedClass.name += 'a';
+        this.observedClass.count++; // No update is triggered.
       })
     }
   }
 }
 ```
 
-### Built-In Types
-The following uses Array as an example.
 
-**V1->V2**
+### Transferring the Built-in Type (V1->V2)
 
-**Recommended Statement**
+The following uses Array as an example. You are advised to call **enableV2Compatibility** and **makeV1Observed** to avoid the dual proxy problem of V1 and V2.
 
 <!-- @[state_mixed_scene_built_type_v1_v2_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneBuiltTypeV1V2Recommend.ets) -->
 
@@ -542,8 +253,8 @@ struct ArrayCompV1 {
         // Click to trigger the changes of ArrayCompV1 and ArrayCompV2.
         this.arr[0]++;
       })
-      // When the variable is transferred to V2, it is found that the current proxy is wrapped by makeV1Observed and the observation capability of V2 is enabled.
-      // In ArrayCompV2, Param does not wrap the proxy again to avoid the dual proxy problem.
+      // When the variable is transferred to V2, it is found that the current proxy is encapsulated by makeV1Observed and the V2 observation capability is enabled.
+      // In ArrayCompV2, Param does not encapsulate the proxy again to avoid the dual proxy problem.
       ArrayCompV2({ arr: UIUtils.enableV2Compatibility(this.arr) })
     }
     .height('100%')
@@ -566,140 +277,13 @@ struct ArrayCompV2 {
 }
 ```
 
-**Not Recommended Statement**
 
-In the following example, if enableV2Compatibility and makeV1Observed are not called, the V1 and V2 proxies are faulty.
-
-<!-- @[state_mixed_scene_built_type_v1_v2_not_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneBuiltTypeV1V2NotRecommend.ets) -->
-
-``` TypeScript
-@Entry
-@Component
-struct ArrayCompV1 {
-  @State arr: Array<number> = [1, 2, 3];
-
-  build() {
-    Column() {
-      Text(`V1 ${this.arr[0]}`).onClick(() => {
-        // V1 proxy, which can trigger the refresh of ArrayCompV1 and instruct ArrayCompV2 to update the value of @Param.
-        this.arr[0]++;
-      })
-      // After being transferred to ArrayCompV2, the variable will be wrapped with a proxy of V2.
-      ArrayCompV2({ arr: this.arr })
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-
-@ComponentV2
-struct ArrayCompV2 {
-  @Param arr: Array<number> = [1, 2, 3];
-
-  build() {
-    Column() {
-      Text(`V2 ${this.arr[0]}`).onClick(() => {
-        // V1V2 dual proxy, which can trigger the refresh of ArrayCompV1 and ArrayCompV2.
-        this.arr[0]++;
-      })
-    }
-  }
-}
-```
-
-**V2->V1**
-
-**Recommended Statement**
-
-<!-- @[state_mixed_scene_built_type_v2_v1_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneBuiltTypeV2V1Recommend.ets) -->
-
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-@Entry
-@ComponentV2
-struct ArrayCompV2 {
-  @Local arr: Array<number> = UIUtils.enableV2Compatibility(UIUtils.makeV1Observed([1, 2, 3]));
-
-  build() {
-    Column() {
-      Text(`V2 ${this.arr[0]}`).fontSize(20).onClick(() => {
-        // Click to trigger changes in V2 and synchronize the change to the @ObjectLink of V1.
-        this.arr[0]++;
-      })
-      ArrayCompV1({ arr: this.arr })
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-
-@Component
-struct ArrayCompV1 {
-  @ObjectLink arr: Array<number>;
-
-  build() {
-    Column() {
-      Text(`V1 ${this.arr[0]}`).fontSize(20).onClick(() => {
-        // Click to trigger the change of V1 and synchronize the change to V2 in a two-way manner.
-        this.arr[0]++;
-      })
-    }
-  }
-}
-```
-
-**Not Recommended Statement**
-
-In the following example, **enableV2Compatibility** and **makeV1Observed** are not called, and \@ObjectLink is initialized illegally so that it cannot observe the property changes.
-
-However, because the state variables of V2 are transferred to \@ObjectLink, the refresh in V2 can be triggered.
-
-<!-- @[state_mixed_scene_built_type_v2_v1_not_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneBuiltTypeV2V1NotRecommend.ets) -->
-
-``` TypeScript
-@Entry
-@ComponentV2
-struct ArrayCompV2 {
-  @Local arr: Array<number> = [1, 2, 3];
-
-  build() {
-    Column() {
-      Text(`V2 ${this.arr[0]}`).fontSize(20).onClick(() => {
-        // Click to trigger changes in V2.
-        this.arr[0]++;
-      })
-      // The data passed to @ObjectLink is not @Observed or makeV1Observed data
-      // Invalid operation. @ObjectLink cannot observe property changes.
-      ArrayCompV1({ arr: this.arr })
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-
-@Component
-struct ArrayCompV1 {
-  @ObjectLink arr: Array<number>;
-
-  build() {
-    Column() {
-      Text(`V1 ${this.arr[0]}`).fontSize(20).onClick(() => {
-        // V2 is refreshed while V1 is not.
-        this.arr[0]++;
-      })
-    }
-  }
-}
-```
-
-### **Two-Dimensional Array**
-
-**V1->V2**
+### Transferring a Two-Dimensional Array (V1->V2)
 
 In the following example:
+
 - **makeV1Observed** is used to change the inner array of the two-dimensional array to the state variables of V1.
-- When the state variables of V1 are passed to the child component of V2, **enableV2Compatibility** is called to make them observable in V2 and avoid the dual proxy of V1 and V2.
+- When the state variables of V1 are transferred to V2 child components, enableV2Compatibility is called to enable the V2 observation capability and avoid the dual proxy problem.
 
 <!-- @[state_mixed_scene_two_bit_array_v1_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneTwoBitArrayV1V2.ets) --> 
 
@@ -736,22 +320,22 @@ struct IndexPage {
         Item({ itemArr: UIUtils.enableV2Compatibility(itemArr) })
       }, (itemArr: Array<string>) => JSON.stringify(itemArr) + Math.random())
       Divider()
-      // Add an element to the array arr[0].
+      // Add an element to arr[0].
       Button('@State push two-dimensional array item')
         .onClick(() => {
           this.arr[0].push('strawberry');
         })
-      // Add an element to the array arr.
+      // Add an element to arr.
       Button('@State push array item')
         .onClick(() => {
           this.arr.push(UIUtils.makeV1Observed(['pear']));
         })
-      // Change the value of the array item arr[0][0].
+      // Change the value of arr[0][0].
       Button('@State change two-dimensional array first item')
         .onClick(() => {
           this.arr[0][0] = 'APPLE';
         })
-      // Modify the first element of the array arr.
+      // Modify the first element of arr.
       Button('@State change array first item')
         .onClick(() => {
           this.arr[0] = UIUtils.makeV1Observed(['watermelon']);
@@ -761,90 +345,12 @@ struct IndexPage {
 }
 ```
 
-**V2->V1**
 
-In the following example:
-- **makeV1Observed** is used to change the inner array of the two-dimensional array to the state variables of V1. **enableV2Compatibility** is called to make them observable in V2 and avoid the dual proxy of V1 and V2.
-- In V1, \@ObjectLink is used to receive the inner array of the two-dimensional array. Because the inner array is the return value of **makeV1Observed**, the refresh response is normal when **Button('@ObjectLink push')** is clicked.
+### Transferring the Nested Type (V1->V2)
 
-<!-- @[state_mixed_scene_two_bit_array_v2_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneTwoBitArrayV2V1.ets) --> 
+You can implement deep observation based on \@Observed and \@ObjectLink in state management V1. The following code example shows the nested scenario:
 
-``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-
-@Component
-struct Item {
-  @ObjectLink itemArr: Array<string>;
-
-  build() {
-    Row() {
-      ForEach(this.itemArr, (item: string, index: number) => {
-        Text(`${index}: ${item}`)
-      }, (item: string) => item + Math.random())
-      // Add an array element.
-      Button('@ObjectLink push')
-        .onClick(() => {
-          this.itemArr.push('ObjectLink');
-        })
-    }
-  }
-}
-
-@Entry
-@ComponentV2
-struct IndexPage {
-  @Local arr: Array<Array<string>> =
-    UIUtils.enableV2Compatibility(UIUtils.makeV1Observed([UIUtils.makeV1Observed(['apple']),
-      UIUtils.makeV1Observed(['banana']), UIUtils.makeV1Observed(['orange'])]));
-
-  build() {
-    Column() {
-      ForEach(this.arr, (itemArr: Array<string>) => {
-        Item({ itemArr: itemArr })
-      }, (itemArr: Array<string>) => JSON.stringify(itemArr) + Math.random())
-      Divider()
-      // Add an element to the array arr[0].
-      Button('@Local push two-dimensional array item')
-        .onClick(() => {
-          this.arr[0].push('strawberry');
-        })
-      // Add an element to the array arr.
-      Button('@Local push array item')
-        .onClick(() => {
-          this.arr.push(UIUtils.makeV1Observed(['pear']));
-        })
-      // Change the value of the array item arr[0][0].
-      Button('@Local change two-dimensional array first item')
-        .onClick(() => {
-          this.arr[0][0] = 'APPLE';
-        })
-      // Modify the first element of the array arr.
-      Button('@Local change array first item')
-        .onClick(() => {
-          this.arr[0] = UIUtils.makeV1Observed(['watermelon']);
-        })
-    }
-  }
-}
-```
-
-### **Nested Types**
-
-**V1->V2**
-
-The following shows an example of the nested scenario,
-
-which can be summarized as follows:
-- \@State can observe only the first-layer changes. To perform in-depth observation, variables should be transferred to \@ObjectLink.
-- The change of the second layer of \@State cannot cause the refresh of the current layer. However, the change can be observed by \@ObjectLink and \@Param and triggers the re-render of the associated components.
-- \@ObjectLink and \@Param are referenced by the same object. If their properties are changed, other references are refreshed.
-- When being transferred to the V2 subcomponent **NestedClassV2**, **enableV2Compatibility** is called to enable the V2 observation capability.
-- If you do not call **enableV2Compatibility** when passing it to V2, \@Param cannot observe the attributes of the object.
-```ts
-// Not recommended.
-NestedClassV2({ outer: this.outer })
-```
-A complete example is as follows:
+When the **outer** class is transferred to the V2 child component **NestedClassV2**, **enableV2Compatibility** is called to enable the V2 observation capability. If **enableV2Compatibility** is not called when transferring the object to V2, \@Param cannot observe the object properties.
 
 <!-- @[state_mixed_scene_nested_type_v1_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneNestedTypeV1V2.ets) -->
 
@@ -894,7 +400,7 @@ struct NestedClassV1 {
       Text(`@State outer.outerValue can update ${this.outer.outerValue}`)
         .fontSize(20)
         .onClick(() => {
-          // @State can observe the first-layer changes.
+          // @State can observe the top-level changes.
           // Notify @ObjectLink and @Param of the change.
           this.outer.outerValue += '!';
         })
@@ -906,9 +412,9 @@ struct NestedClassV1 {
           // However, the change will be observed by @ObjectLink and @Param.
           this.outer.inner.innerValue += '!';
         })
-      // Transfer inner to @ObjectLink to observe the property change of inner.
+      // Transfer inner to @ObjectLink to observe the change of the inner property.
       NestedClassV1ObjectLink({ inner: this.outer.inner })
-      // Pass the data for enabling enableV2Compatibility to V2.
+      // Transfer the data processed by enableV2Compatibility to V2.
       NestedClassV2({ outer: UIUtils.enableV2Compatibility(this.outer) })
     }
     .height('100%')
@@ -939,13 +445,13 @@ struct NestedClassV2 {
       Text(`@Param outer.outerValue can update ${this.outer.outerValue}`)
         .fontSize(20)
         .onClick(() => {
-          // The value changes at the first layer can be observed.
+          // The top-level changes can be observed.
           this.outer.outerValue += '!';
         })
       Text(`@Param outer.inner.innerValue can update ${this.outer.inner.innerValue}`)
         .fontSize(20)
         .onClick(() => {
-          // Changes on the second layer can be obtained. @Param and @ObjectLink are referenced by the same object, which also triggers a refresh.
+          // The changes at the second layer can be observed. @Param and @ObjectLink are referenced by the same object and also trigger the refresh.
           this.outer.inner.innerValue += '!';
         })
 
@@ -968,10 +474,241 @@ struct NestedClassV2 {
 }
 ```
 
-**V2->V1**
+The refresh behavior of the preceding example can be summarized as follows:
 
-- In the following example, **outer** in **NestedClassV2** calls **UIUtils.enableV2Compatibility**, and each layer is the return value of **UIUtils.makeV1Observed**. Therefore, outer has the deep observation capability in V2.
-- In V1, only the changes at the first layer can be observed. Therefore, multiple layers of custom components are required, and each layer uses \@ObjectLink to receive data to implement in-depth observation.
+- \@State can observe only the top-level changes. To perform in-depth observation, variables should be transferred to \@ObjectLink.
+
+- The change of the second layer of \@State cannot cause the refresh of the current layer. However, the change can be observed by \@ObjectLink and \@Param and triggers the re-render of the associated components.
+
+- \@ObjectLink and \@Param are referenced by the same object. If their properties are changed, other references are refreshed.
+
+
+## Using V1 Custom Components in V2
+
+
+### Transferring the Class Type (V2->V1)
+
+**Common Class**
+
+The observation capabilities of V1 and V2 are different. If **UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())** is not called to directly transfer data, the data is not updated or the update behavior is inconsistent.
+
+<!-- @[state_mixed_scene_js_v2_v1_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneJsV2V1Recommend.ets) -->
+
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+class ObservedClass {
+  public name: string = 'Tom';
+}
+
+@Entry
+@ComponentV2
+struct CompV2 {
+  @Local observedClass: ObservedClass = UIUtils.enableV2Compatibility(UIUtils.makeV1Observed(new ObservedClass()));
+
+  build() {
+    Column() {
+      // @Local can only observe itself.
+      // However, UIUtils.makeV1Observed is called to change @Local to the state variable of V1, whose top-level changes are observable.
+      // Call UIUtils.enableV2Compatibility to make it observable in V2.
+      // Currently, the top-level property changes can be observed.
+      Text(`@Local observedClass: ${this.observedClass.name}`)
+        .onClick(() => {
+          this.observedClass.name += '!'; // Refresh
+        })
+      // @ObjectLink can accept instances of classes decorated with @Observed or the return values of makeV1Observed.
+      CompV1({ observedClass: this.observedClass })
+    }
+  }
+}
+
+@Component
+struct CompV1 {
+  @ObjectLink observedClass: ObservedClass;
+
+  build() {
+    // The top-level changes can be observed in CompV1.
+    Text(`@ObjectLink observedClass: ${this.observedClass.name}`)
+      .onClick(() => {
+        this.observedClass.name += '!'; // Refresh
+      })
+  }
+}
+```
+
+**\@Observed and \@Track Decorated Class**
+
+In the following example:
+
+- ObservedClass is a class decorated with \@Observed, so there is no need to call **UIUtils.makeV1Observed** again when transferring it to V1 and calling **UIUtils.enableV2Compatibility**.
+- Only the \@Track decorated variables can be observed in V1 and V2. Properties not decorated with \@Track causes runtime errors when they are used on the V1 UI. In V2, no error is reported but the UI does not respond to updates.
+
+<!-- @[state_mixed_scene_observed_class_v2_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneObservedClassV2V1.ets) -->
+
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+@Observed
+class ObservedClass {
+  @Track public name: string = 'a';
+  public count: number = 0;
+}
+
+@Entry
+@ComponentV2
+struct CompV1 {
+  @Local observedClass: ObservedClass = UIUtils.enableV2Compatibility(new ObservedClass());
+
+  build() {
+    Column() {
+      Text(`name: ${this.observedClass.name}`).onClick(() => {
+        // Trigger the refresh.
+        this.observedClass.name += 'a';
+      })
+      // The system does not crash when a non-@Track variable is used in V2, but the refresh is not responded as well.
+      Text(`count: ${this.observedClass.count}`).onClick(() => {
+        this.observedClass.count++;
+      })
+
+      CompV2({ observedClass: this.observedClass })
+    }
+  }
+}
+
+@Component
+struct CompV2 {
+  @ObjectLink observedClass: ObservedClass;
+
+  build() {
+    Column() {
+      Text(`count: ${this.observedClass.name}`).onClick(() => {
+        // Trigger the refresh.
+        this.observedClass.name += 'a';
+      })
+    }
+  }
+}
+```
+
+
+### Transferring the Built-in Type (V2->V1)
+
+If you declare **\@Local arr: Array\<number> = UIUtils.enableV2Compatibility(UIUtils.makeV1Observed([1, 2, 3]))** in V2, V2 can observe changes to the properties because the variable is decorated with the \@Local decorator. However, if **enableV2Compatibility** and **makeV1Observed** are not called, V1 cannot observe the property changes. Therefore, you need to call **UIUtils.enableV2Compatibility(UIUtils.makeV1Observed())** to allow V1 to observe property changes.
+
+<!-- @[state_mixed_scene_built_type_v2_v1_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneBuiltTypeV2V1Recommend.ets) -->
+
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct ArrayCompV2 {
+  @Local arr: Array<number> = UIUtils.enableV2Compatibility(UIUtils.makeV1Observed([1, 2, 3]));
+
+  build() {
+    Column() {
+      Text(`V2 ${this.arr[0]}`).fontSize(20).onClick(() => {
+        // Click to trigger changes in V2 and synchronize the change to the @ObjectLink of V1.
+        this.arr[0]++;
+      })
+      ArrayCompV1({ arr: this.arr })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Component
+struct ArrayCompV1 {
+  @ObjectLink arr: Array<number>;
+
+  build() {
+    Column() {
+      Text(`V1 ${this.arr[0]}`).fontSize(20).onClick(() => {
+        // Click to trigger the change of V1 and synchronize the change to V2 in a two-way manner.
+        this.arr[0]++;
+      })
+    }
+  }
+}
+```
+
+
+### Transferring a Two-Dimensional Array (V2->V1)
+
+In the following example:
+
+- **makeV1Observed** is used to change the inner array of the two-dimensional array to the state variables of V1. **enableV2Compatibility** is called to enable the V2 observation capability and avoid the dual proxy problem.
+- In V1, when using \@ObjectLink to receive the inner arrays (the return value of makeV1Observed) of a 2D array, clicking the **Button('@ObjectLink push')** will trigger normal UI refreshes.
+
+<!-- @[state_mixed_scene_two_bit_array_v2_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneTwoBitArrayV2V1.ets) --> 
+
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+@Component
+struct Item {
+  @ObjectLink itemArr: Array<string>;
+
+  build() {
+    Row() {
+      ForEach(this.itemArr, (item: string, index: number) => {
+        Text(`${index}: ${item}`)
+      }, (item: string) => item + Math.random())
+      // Add an array element.
+      Button('@ObjectLink push')
+        .onClick(() => {
+          this.itemArr.push('ObjectLink');
+        })
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct IndexPage {
+  @Local arr: Array<Array<string>> =
+    UIUtils.enableV2Compatibility(UIUtils.makeV1Observed([UIUtils.makeV1Observed(['apple']),
+      UIUtils.makeV1Observed(['banana']), UIUtils.makeV1Observed(['orange'])]));
+
+  build() {
+    Column() {
+      ForEach(this.arr, (itemArr: Array<string>) => {
+        Item({ itemArr: itemArr })
+      }, (itemArr: Array<string>) => JSON.stringify(itemArr) + Math.random())
+      Divider()
+      // Add an element to arr[0].
+      Button('@Local push two-dimensional array item')
+        .onClick(() => {
+          this.arr[0].push('strawberry');
+        })
+      // Add an element to arr.
+      Button('@Local push array item')
+        .onClick(() => {
+          this.arr.push(UIUtils.makeV1Observed(['pear']));
+        })
+      // Change the value of arr[0][0].
+      Button('@Local change two-dimensional array first item')
+        .onClick(() => {
+          this.arr[0][0] = 'APPLE';
+        })
+      // Modify the first element of arr.
+      Button('@Local change array first item')
+        .onClick(() => {
+          this.arr[0] = UIUtils.makeV1Observed(['watermelon']);
+        })
+    }
+  }
+}
+```
+
+
+### Transferring the Nested Type (V2->V1)
+
+In the following example:
+
+- In NestedClassV2, **outer** calls **UIUtils.enableV2Compatibility**, and each layer is the return value of **UIUtils.makeV1Observed**. Therefore, outer has the in-depth observation capability in V2.
+- In V1, only the top-level changes can be observed. Therefore, multiple layers of custom components are required, and \@ObjectLink needs to be used together at each layer to receive the corresponding state data, thereby achieving the capability of deep observation.
 
 <!-- @[state_mixed_scene_nested_type_v2_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneNestedTypeV2V1.ets) -->
 
@@ -1021,7 +758,7 @@ struct NestedClassV2 {
       Text(`@Local outer.outerValue can update ${this.outer.outerValue}`)
         .fontSize(20)
         .onClick(() => {
-          // The changes at the first layer can be observed.
+          // The top-level changes can be observed.
           this.outer.outerValue += '!';
         })
 
@@ -1031,7 +768,7 @@ struct NestedClassV2 {
           // The changes at the second layer can be observed.
           this.outer.inner.innerValue += '!';
         })
-      // Transfer inner to @ObjectLink to observe the property change of inner.
+      // Transfer inner to @ObjectLink to observe the change of the inner property.
       NestedClassV1ObjectLink({ inner: this.outer.inner })
     }
     .height('100%')
@@ -1073,7 +810,7 @@ struct NestedClassV1ObjectLinkArray {
       })
 
       Button('@ObjectLink change the last Item').onClick(() => {
-        // Observe the property change of the last array item in NestedClassV1ObjectLinkArrayItem.
+        // Property changes of the last array item can be observed in NestedClassV1ObjectLinkArrayItem.
         this.arr[this.arr.length - 1].value++;
       })
     }

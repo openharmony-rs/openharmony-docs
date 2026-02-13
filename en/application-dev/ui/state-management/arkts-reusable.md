@@ -213,7 +213,7 @@ When developing complex UIs, rendering efficiency is a key consideration. For ex
     private data: BasicDataSource = new BasicDataSource();
   
     aboutToAppear(): void {
-      for (let index = 1; index < 20; index++) { // Loop 20 times.
+      for (let index = 1; index <= 20; index++) { // Loop 20 times.
         this.data.dataArray.push(index);
       }
     }
@@ -269,7 +269,7 @@ When developing complex UIs, rendering efficiency is a key consideration. For ex
 
 - Custom components decorated with @Reusable should maintain the same component structure before and after reuse. Otherwise, child components may be created or destroyed during the reuse process, reducing reuse efficiency and performance, and potentially causing abnormal application behavior.<br>
   For child components created during reuse, the framework will call the **aboutToReuse** method followed by the **aboutToAppear** method after their creation. When **aboutToReuse** is called, since **aboutToAppear** has not yet been executed and internal child components have not been created, unexpected behavior may occur. After calling **aboutToReuse**, the framework will then call **aboutToAppear** to initialize the component.<br>
-  For scenarios where component structures differ, you must differentiate them by setting different **reuseId** values. For details, see [Scenarios Involving Multiple Item Types](#scenarios-involving-multiple-item-types).
+  For scenarios where component structures differ, you must differentiate them by setting different **reuseId** values. For details, see [Multiple Item Types](#multiple-item-types).
 
   **Incorrect Usage**
 
@@ -643,7 +643,7 @@ struct Child {
     private data: MyDataSource = new MyDataSource();
   
     aboutToAppear() {
-      for (let i = 1; i < 1000; i++) { // Loop 1000 times.
+      for (let i = 1; i <= 1000; i++) { // Loop 1000 times.
         this.data.pushData(i + '');
       }
     }
@@ -870,7 +870,7 @@ struct Index {
       this.data.pushData(i.toString());
     }
 
-    for (let i = 30; i < 80; i++) { // Loop 80 times.
+    for (let i = 30; i <= 80; i++) { // Loop 50 times.
       this.data02.pushData(i.toString());
     }
   }
@@ -879,13 +879,13 @@ struct Index {
     Column() {
       Row() {
         Button('clear').onClick(() => {
-          for (let i = 1; i < 50; i++) { // Loop 50 times.
+          for (let i = 1; i <= 50; i++) { // Loop 50 times.
             this.dataSource.pop();
           }
         }).height(40)
 
         Button('update').onClick(() => {
-          for (let i = 1; i < 50; i++) { // Loop 50 times.
+          for (let i = 1; i <= 50; i++) { // Loop 50 times.
             let obj = new ListItemObject();
             obj.id = i;
             obj.uuid = Math.random().toString();
@@ -1008,7 +1008,7 @@ struct MyComponent {
   private data: MyDataSource = new MyDataSource();
 
   aboutToAppear() {
-    for (let i = 1; i < 1000; i++) { // Loop 1000 times.
+    for (let i = 1; i <= 1000; i++) { // Loop 1000 times.
       this.data.pushData(i);
     }
   }
@@ -1080,7 +1080,7 @@ struct ReusableChildComponent {
     private listeners: DataChangeListener[] = [];
   
     constructor() {
-      for (let i = 0; i <= 60; i++) { // Loop 60 times.
+      for (let i = 0; i < 60; i++) { // Loop 60 times.
         this.dataArray.push(i);
       }
     }
@@ -1549,7 +1549,7 @@ struct ReusableChildComponent {
   }
   ```
 
-### Scenarios Involving Multiple Item Types
+### Multiple Item Types
 
 **Standard**
 

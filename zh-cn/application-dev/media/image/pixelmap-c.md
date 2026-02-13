@@ -152,7 +152,7 @@ Image_ErrorCode PixelmapTest()
 }
 
 // PixelMap预乘/非预乘格式转换示例。
-Image_ErrorCode PixelmapConverAlphaTypeTest()
+Image_ErrorCode PixelmapConvertAlphaTypeTest()
 {
     uint8_t data[96];
     size_t dataSize = 96;
@@ -173,7 +173,7 @@ Image_ErrorCode PixelmapConverAlphaTypeTest()
     OH_PixelmapNative *SrcPixelmap = nullptr;
     Image_ErrorCode errCode = OH_PixelmapNative_CreatePixelmap(data, dataSize, createOpts, &SrcPixelmap);
     if (errCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "PixelmapConverAlphaTypeTest CreateSrcPixelMap failed, errCode: %{public}d.", errCode);
+        OH_LOG_ERROR(LOG_APP, "PixelmapConvertAlphaTypeTest CreateSrcPixelMap failed, errCode: %{public}d.", errCode);
     }
 
     // 创建预乘格式的位图实例，该DstPixelmap实例将用于保存SrcPixelmap转换AlphaType后的数据。
@@ -181,13 +181,13 @@ Image_ErrorCode PixelmapConverAlphaTypeTest()
     OH_PixelmapInitializationOptions_SetAlphaType(createOpts, PIXELMAP_ALPHA_TYPE_PREMULTIPLIED);
     errCode = OH_PixelmapNative_CreatePixelmap(data, dataSize, createOpts, &DstPixelmap);
     if (errCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "PixelmapConverAlphaTypeTest CreateDstPixelMap failed, errCode: %{public}d.", errCode);
+        OH_LOG_ERROR(LOG_APP, "PixelmapConvertAlphaTypeTest CreateDstPixelMap failed, errCode: %{public}d.", errCode);
     }
 
     // 转换AlphaType，SrcPixelmap的数据将被转换为预乘格式，并保存到DstPixelmap中。
     errCode = OH_PixelmapNative_ConvertAlphaFormat(SrcPixelmap, DstPixelmap, true);
     if (errCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "PixelmapConverAlphaTypeTest ConvertAlphaFormat failed, errCode: %{public}d.", errCode);
+        OH_LOG_ERROR(LOG_APP, "PixelmapConvertAlphaTypeTest ConvertAlphaFormat failed, errCode: %{public}d.", errCode);
     }
 
     // 释放Pixelmap，InitializationOptions实例。

@@ -36,7 +36,7 @@ let audioRoutingManager = audioManager.getRoutingManager(); // 再调用AudioMan
 
 ## 获取输入设备信息
 
-使用getDevices()方法可以获取当前所有输入设备的信息。
+使用[getDevices](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getdevices9)方法可以获取当前所有输入设备的信息。
 
 <!-- @[getDevices_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->
 

@@ -104,6 +104,7 @@
     - [通用查询介绍及规格](huks-ukey-general-query-overview.md)
     - [通用查询(ArkTS)](huks-ukey-general-query-arkts.md)
     - [通用查询(C/C++)](huks-ukey-general-query-ndk.md)
+  - [Ukey流程示例指导](huks-ukey-best-dev.md)
   - 驱动HAP ExtensionAbility适配指导<!--huks-extension-ability-support-->
     - [CryptoExtensionAbility扩展能力介绍](huks-extension-ability-support-overview.md)
     - [CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)<!--RP4--><!--RP4End-->
