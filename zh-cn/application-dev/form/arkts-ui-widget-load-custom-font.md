@@ -24,7 +24,7 @@ import { text } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
-struct loadFontSyncCard {
+struct LoadFontSyncCard {
   // 在这里使用getLocalInstance访问本地字体集实例
   private fc: text.FontCollection = text.FontCollection.getLocalInstance();
   @State content: string = "默认字体";
