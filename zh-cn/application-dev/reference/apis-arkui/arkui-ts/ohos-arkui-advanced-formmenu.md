@@ -133,7 +133,7 @@ struct Index {
             if (error?.code === 0) {
               hilog.info(0x3900, tag, "添加至桌面成功")
             } else {
-              hilog.error(0x3900, tag, `添加至桌面失败，请尝试其它添加方式, error code: ${error.code}, error message: ${error.message}`)
+              hilog.error(0x3900, tag, `添加至桌面失败，请尝试其它添加方式, error code: ${error?.code}, error message: ${error?.message}`)
             }
           },
           style: {
