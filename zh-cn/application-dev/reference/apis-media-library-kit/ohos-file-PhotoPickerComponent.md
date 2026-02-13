@@ -88,8 +88,8 @@ Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-p
 | maxSelectedReminderMode         | [ReminderMode](#remindermode)           | 否  | 是 | 选择数量达到最大时的提示方式。包括弹toast提示、不提示以及蒙层提示，默认为弹toast提示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                         |
 | orientation                     | [PickerOrientation](#pickerorientation) | 否  | 是 | 宫格页面滑动预览方向，包括水平和竖直两个方向，默认为竖直方向（该能力从API version 20开始支持，API version 20之前系统默认为竖直方向）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                 |
 | selectMode                      | [SelectMode](#selectmode)               | 否  | 是  | 选择模式。包括多选和单选，默认为多选。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                      |
-| maxPhotoSelectNumber            | number                                  | 否  | 是 | 图片最大的选择数量。最大值为500，受到最大选择总数的限制。默认为500。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
-| maxVideoSelectNumber            | number                                  | 否  | 是 | 视频最大的选择数量。最大值为500，受到系统中所有媒体文件最大选择总数的限制。默认为500。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
+| maxPhotoSelectNumber            | number                                  | 否  | 是 | 图片最大的选择数量。最大值为500，受到最大选择总数的限制。默认为500。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
+| maxVideoSelectNumber            | number                                  | 否  | 是 | 视频最大的选择数量。最大值为500，受到系统中所有媒体文件最大选择总数的限制。默认为500。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
 | isSlidingSelectionSupported<sup>13+</sup>     | boolean                                 | 否  | 是 | 是否支持滑动多选，true表示支持。默认不支持。重复选择场景不支持滑动多选。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。                                            |
 | photoBrowserCheckboxPosition<sup>13+</sup>    | [number, number]                        | 否  | 是 | 设置大图页checkbox的位置。第一个参数为X方向偏移量，第二个参数为Y方向偏移量。传参范围0-1，代表距离组件左上角0%-100%的偏移量。默认值为[0, 0]。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | gridMargin<sup>14+</sup>        | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)                        | 否  | 是 | 设置组件宫格页margin。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
@@ -204,6 +204,8 @@ type ItemClickedNotifyCallback = (itemInfo: ItemInfo, clickType: ClickType) => v
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**参数：**
+
 | 参数名 | 类型                            | 必填 | 说明 |
 | ----- |-------------------------------| ----- |----------------------------------------------|
 | itemInfo    | [ItemInfo](#iteminfo) | 是    | 被点击的宫格类型。包括缩略图宫格和相机宫格。 |
@@ -237,7 +239,7 @@ type PhotoBrowserChangeStartCallback = (targetPhotoInfo: BaseItemInfo) => void
 
 | 参数名 | 类型                            | 必填 | 说明 |
 | ----- |-------------------------------| ----- |----------------------------------------------|
-| targetPhotoInfo  | [baseItemInfo](#baseiteminfo) | 是 | 照片的基本信息。 |
+| targetPhotoInfo  | [BaseItemInfo](#baseiteminfo) | 是 | 照片的基本信息。 |
 
 ## PinchGridSwitchedCallback<sup>23+</sup>
 
@@ -532,7 +534,7 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 | mimeType | string                | 否 | 是   | 图片、视频的mimeType。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
 | width    | number                | 否 | 是   | 图片、视频的宽（单位：像素）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
 | height   | number                | 否 | 是   | 图片、视频的高（单位：像素）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
-| size     | number                | 否 | 是   | 图片、视频的大小（单位：字节）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。     |
+| size     | number                | 否 | 是   | 图片、视频的大小（单位：字节）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。     |
 | duration   | number                | 否 | 是   | 视频的时长（单位：毫秒），图片/动态图片时返回-1。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | photoSubType<sup>21+</sup>   | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | 否 | 是   | 图片类型，包括DEFAULT、MOVING_PHOTO和BRUST。<br>非特殊类型图片默认为DEFAULT（0）。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
 | dynamicRangeType<sup>21+</sup>   | [photoAccessHelper.DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | 否 | 是   | 媒体文件动态范围模型，包括HDR和SDR。<br>对于movingPhoto专指封面图片的动态范围类型。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。|
