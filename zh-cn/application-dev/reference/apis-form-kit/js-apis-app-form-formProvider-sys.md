@@ -95,9 +95,10 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
+import { AsyncCallback } from '@ohos.base';
 import { formBindingData, formProvider } from '@kit.FormKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 
 let want: Want = {
   abilityName: 'FormAbility',
@@ -105,7 +106,7 @@ let want: Want = {
     'ohos.extra.param.key.form_dimension': 2,
     'ohos.extra.param.key.form_name': 'widget',
     'ohos.extra.param.key.module_name': 'entry'
-  }
+  } as Record<string, RecordData>
 };
 try {
   let param: Record<string, string> = {
@@ -113,13 +114,14 @@ try {
     'time': '22:00'
   }
   let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
-  formProvider.requestPublishForm(want, obj, (error: BusinessError, data: string) => {
+  let callback: AsyncCallback<string> = (error: BusinessError | null, data: string | undefined) => {
     if (error) {
       console.error(`callback error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
       return;
     }
     console.info(`formProvider requestPublishForm, form ID is: ${data}`);
-  });
+  };
+  formProvider.requestPublishForm(want, obj, callback);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
 }
@@ -193,9 +195,10 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
+import { AsyncCallback } from '@ohos.base';
 import { formProvider } from '@kit.FormKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 
 let want: Want = {
   abilityName: 'FormAbility',
@@ -203,16 +206,17 @@ let want: Want = {
     'ohos.extra.param.key.form_dimension': 2,
     'ohos.extra.param.key.form_name': 'widget',
     'ohos.extra.param.key.module_name': 'entry'
-  }
+  } as Record<string, RecordData>
 };
 try {
-  formProvider.requestPublishForm(want, (error: BusinessError, data: string) => {
+  let callback: AsyncCallback<string> = (error: BusinessError | null, data: string | undefined) => {
     if (error) {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
     console.info(`formProvider requestPublishForm, form ID is: ${data}`);
-  });
+  };
+  formProvider.requestPublishForm(want, callback);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
 }
@@ -292,7 +296,7 @@ ArkTS-Sta示例：
 
 import { formProvider } from '@kit.FormKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 
 let want: Want = {
   abilityName: 'FormAbility',
@@ -300,12 +304,12 @@ let want: Want = {
     'ohos.extra.param.key.form_dimension': 2,
     'ohos.extra.param.key.form_name': 'widget',
     'ohos.extra.param.key.module_name': 'entry'
-  }
+  } as Record<string, RecordData>
 };
 try {
   formProvider.requestPublishForm(want).then((data: string) => {
     console.info(`formProvider requestPublishForm success, form ID is : ${data}`);
-  }).catch((error: BusinessError) => {
+  }).catch((error) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
 } catch (error) {
@@ -391,6 +395,7 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
+import { AsyncCallback } from '@ohos.base';
 import { formProvider } from '@kit.FormKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
@@ -416,14 +421,14 @@ try {
               return;
             }
             console.info(`formProvider requestPublishForm, form ID is: ${data}`);
-          }
+          };
           formProvider.requestPublishForm(want, callback);
         } catch (error) {
           console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
         }
       }
     }
-  }
+  };
   formProvider.isRequestPublishFormSupported(callback);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -516,7 +521,7 @@ try {
           'ohos.extra.param.key.form_dimension': 2,
           'ohos.extra.param.key.form_name': 'widget',
           'ohos.extra.param.key.module_name': 'entry'
-        } as Record<string,RecordData>
+        } as Record<string, RecordData>
       };
       try {
         formProvider.requestPublishForm(want).then((data: string) => {
@@ -770,7 +775,7 @@ const want: Want = {
     'ohos.extra.param.key.form_dimension': 2,
     'ohos.extra.param.key.form_name': 'widget',
     'ohos.extra.param.key.module_name': 'entry'
-  } as Record<string,RecordData>
+  } as Record<string, RecordData>
 };
 try {
   formProvider.openFormManagerCrossBundle(want);

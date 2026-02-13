@@ -1976,7 +1976,7 @@ const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
 
 try {
-  formObserver.getRunningFormInfos(true).then((data: formInfo.RunningFormInfo[]) => {   zg+= 无此接口
+  formObserver.getRunningFormInfos(true).then((data: formInfo.RunningFormInfo[]) => {
     if (data !== undefined) {
       for (let runningFormInfo of data) {
         console.info(`formObserver getRunningFormInfos, hostBundleName : ${runningFormInfo.hostBundleName}`);
@@ -2080,7 +2080,7 @@ const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
 
 try {
-  formObserver.getRunningFormInfos().then((data: formInfo.RunningFormInfo[]) => {   zg+= 无此接口
+  formObserver.getRunningFormInfos().then((data: formInfo.RunningFormInfo[]) => {
     if (data !== undefined) {
       for (let runningFormInfo of data) {
         console.info(`formObserver getRunningFormInfos, hostBundleName : ${runningFormInfo.hostBundleName}`);
