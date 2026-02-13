@@ -19,8 +19,8 @@
       - [密钥导入介绍及算法规格](huks-key-import-overview.md)
       - [明文导入密钥(ArkTS)](huks-import-key-in-plaintext-arkts.md)
       - [明文导入密钥(C/C++)](huks-import-key-in-plaintext-ndk.md)
-      - [加密导入密钥(ArkTS)](huks-import-wrapped-key-arkts.md)
-      - [加密导入密钥(C/C++)](huks-import-wrapped-key-ndk.md)
+      - [安全导入密钥(ArkTS)](huks-import-wrapped-key-arkts.md)
+      - [安全导入密钥(C/C++)](huks-import-wrapped-key-ndk.md)
       - [数字信封导入密钥(ArkTS)](huks-import-envelop-key-arkts.md)
       - [数字信封导入密钥(C/C++)](huks-import-envelop-key-ndk.md)
   - 密钥使用<!--huks-key-use-->
