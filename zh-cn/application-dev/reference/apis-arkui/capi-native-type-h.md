@@ -2134,7 +2134,7 @@ enum ArkUI_ColorStrategy
 **描述：**
 
 
-前景色枚举值。
+前景和背景的枚举值。
 
 **起始版本：** 12
 
@@ -2424,7 +2424,7 @@ enum ArkUI_FinishCallbackType
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_FINISH_CALLBACK_REMOVED = 0 | 当整个动画结束并立即删除时，将触发回调。 |
-| ARKUI_FINISH_CALLBACK_LOGICALLY = 1 | 当动画在逻辑上处于下降状态，但可能仍处于其长尾状态时，将触发回调。长尾状态是指动画将要完全停止前的的一段惯性变化： |
+| ARKUI_FINISH_CALLBACK_LOGICALLY = 1 | 当动画在逻辑上处于下降状态，但可能仍处于其长尾状态时，将触发回调。长尾状态是指动画即将完全停止前的残余变化过程，此时动画的数值变化已非常微小，接近目标值。 |
 
 ### ArkUI_ListItemAlignment
 
