@@ -69,7 +69,7 @@ struct Index {
 
 这个路径可以利用DevEco Studio查看。
 
-![image.png](https://raw.gitcode.com/user-images/assets/9122179/46b8e000-1659-4637-b0b8-33543af7f414/image.png 'image.png')
+![image.png](figures/arkweb-visible-sandbox-path.png 'image.png')
 
 3. 获取dmp文件后进行解析，具体步骤如下：
 
