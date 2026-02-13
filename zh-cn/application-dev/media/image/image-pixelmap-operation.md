@@ -125,7 +125,7 @@
 
 > **说明：**
 >
-> 该方法仅支持以下像素格式的PixelMap：RGBA_8888，BGRA_8888、RGBA_F16。
+> 该方法仅支持以下像素格式的PixelMap：RGBA_8888、BGRA_8888、RGBA_F16。
 
 1. 完成[图片解码](image-decoding.md)，获取两张宽度相同且像素格式相同的PixelMap位图对象。
 
