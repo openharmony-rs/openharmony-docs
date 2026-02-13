@@ -958,7 +958,7 @@ ArkUI_AnimatorOption* OH_ArkUI_AnimatorOption_Create(int32_t keyframeSize)
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_AnimatorOption* | animator动画对象参数指针。size小于0时返回NULL，option异常时返回NULL。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* | animator动画对象参数指针。size小于0时返回NULL，option异常时返回NULL。 |
 
 ### OH_ArkUI_AnimatorOption_Dispose()
 
@@ -1174,7 +1174,7 @@ int32_t OH_ArkUI_AnimatorOption_SetBegin(ArkUI_AnimatorOption* option, float val
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
-| float value | 动画插值起点。<br>不涉及异常值处理。 |
+| float value | 动画插值起点。取值范围：(-∞, +∞)。 |
 
 **返回：**
 
@@ -1205,7 +1205,7 @@ int32_t OH_ArkUI_AnimatorOption_SetEnd(ArkUI_AnimatorOption* option, float value
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
-| float value | 动画插值终点。<br>不涉及异常值处理。 |
+| float value | 动画插值终点。取值范围：(-∞, +∞)。 |
 
 **返回：**
 
@@ -1260,7 +1260,7 @@ int32_t OH_ArkUI_AnimatorOption_SetKeyframe(ArkUI_AnimatorOption* option, float 
 | -- | -- |
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 | float time | 关键帧时间。取值范围：[0, 1], 必须是递增。默认值：按索引均匀分布（如第1帧为0.0，第2帧为0.5，第3帧为1.0）。<br>time小于0或time大于1时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
-| float value | 关键帧数值。默认值：0.0（起始值）。<br>不涉及异常值处理。 |
+| float value | 关键帧数值。取值范围：(-∞, +∞)。 |
 | int32_t index | 关键帧的索引值。<br>index小于0时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
