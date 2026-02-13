@@ -139,7 +139,7 @@ enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt | LeakWatcherC
 | -------- | -------- | -------- | -------- |
 | isEnabled | boolean | 是| 是否使能js对象内存泄漏检测功能。true：开启js内存泄漏检测功能；false：关闭js内存泄漏检测功能。|
 | configs | Array&lt;string&gt; | 是| 配置项，数组中每个元素为监测具体对象的类型。<br>可配置项包括：XComponent，NodeContainer，Window，CustomComponent和Ability。<br>**说明**：传入空数组代表监测以上全部对象。 |
-| configs | LeakWatcherConfig | 是| 配置项，对象中包含多个用于内存泄漏监测的配置属性。<br>可配置项包括：objectWatcher: string，objectUniqueIDs: Array<number>，checkInterval: number，retainedVisibleThreshold: number，retainedInvisibleThreshold: number，maxStoredHeapDumps: number，dumpHeapWaitTimeMs: number，whiteList: Array<string>。<br>**说明**：对象中类型传入空值或假值代表该属性设置为默认值。|
+| configs | LeakWatcherConfig | 是| 配置项，对象中包含多个用于内存泄漏监测的配置属性。<br>可配置项包括：objectWatcher: string，objectUniqueIDs: Array&lt;number&gt;，checkInterval: number，retainedVisibleThreshold: number，retainedInvisibleThreshold: number，maxStoredHeapDumps: number，dumpHeapWaitTimeMs: number，whiteList: Array&lt;string&gt;。<br>**说明**：对象中类型传入空值或假值代表该属性设置为默认值。|
 | callback | Callback&lt;Array&lt;string&gt;&gt; | 是| 回调函数，用于接收jsLeakWatcher.enableLeakWatcher接口的返回的内存泄漏的对象。<br>回调函数中传入一个数组对象，索引0为泄漏列表文件名，后缀为.jsleaklist；索引1为虚拟机内存快照文件名，后缀为.rawheap。|
 
 
