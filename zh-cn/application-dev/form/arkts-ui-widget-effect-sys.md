@@ -68,7 +68,7 @@
 
    @Entry
    @ComponentV2
-   struct WidgetctrlCard {
+   struct WidgetCard {
      build() {
        Stack() {
          Column() {
