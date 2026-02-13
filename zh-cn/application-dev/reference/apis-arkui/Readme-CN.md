@@ -21,6 +21,9 @@
     - [@ohos.arkui.theme(主题换肤)](js-apis-arkui-theme.md)
     - @ohos.arkui.UIContext (UIContext)<!--js-apis-arkui-uicontext-->
       - [模块描述](arkts-apis-uicontext.md)
+      <!--Del-->
+      - [模块描述(系统接口)](arkts-apis-uicontext-sys.md)
+      <!--DelEnd-->
       - [Class (ComponentSnapshot)](arkts-apis-uicontext-componentsnapshot.md)
       - [Class (ComponentUtils)](arkts-apis-uicontext-componentutils.md)
       - [Class (ContextMenuController)](arkts-apis-uicontext-contextmenucontroller.md)
@@ -30,7 +33,9 @@
       - [Class (FocusController)](arkts-apis-uicontext-focuscontroller.md)
       - [Class (Font)](arkts-apis-uicontext-font.md)
       - [Class (FrameCallback)](arkts-apis-uicontext-framecallback.md)
-      - [Class (LuminanceSampler)](arkts-apis-uicontext-luminancesampler.md)
+      <!--Del-->
+      - [Class (LuminanceSampler)(系统接口)](arkts-apis-uicontext-luminancesampler-sys.md)
+      <!--DelEnd-->
       - [Class (Magnifier)](arkts-apis-uicontext-magnifier.md)
       - [Class (MarqueeDynamicSyncScene)](arkts-apis-uicontext-marqueedynamicsyncscene.md)
       - [Class (MeasureUtils)](arkts-apis-uicontext-measureutils.md)
@@ -46,6 +51,9 @@
       - [Class (UIObserver)](arkts-apis-uicontext-uiobserver.md)
       - [Interface (AtomicServiceBar)](arkts-apis-uicontext-atomicservicebar.md)
       - [Interfaces (其他)](arkts-apis-uicontext-i.md)
+      <!--Del-->
+      - [Interfaces (其他)(系统接口)](arkts-apis-uicontext-i-sys.md)
+      <!--DelEnd-->
       - [Enums](arkts-apis-uicontext-e.md)
       - [Types](arkts-apis-uicontext-t.md)
     - [@ohos.arkui.uiExtension (uiExtension)](js-apis-arkui-uiExtension.md)
