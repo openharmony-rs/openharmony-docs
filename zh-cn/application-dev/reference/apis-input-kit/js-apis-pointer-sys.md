@@ -5393,3 +5393,177 @@ struct Index {
   }
 }
 ```
+
+## pointer.setMouseScrollDirection<sup>24+</sup>
+
+setMouseScrollDirection(state: boolean): Promise\<void>
+
+设置鼠标滚轮滚轴的方向，使用Promise异步方式返回结果。
+
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**系统API**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
+**参数**：
+
+| 参数名    | 类型     | 必填   | 说明                                  |
+| ----- | ------ | ---- | ----------------------------------- |
+| inverted | boolean| 是    |  inverted为鼠标滚轮滚动的方向。<br>true与鼠标滚轮滚动手指的方向一致，false与鼠标滚轮滚动手指的方向相反。<br>默认为true。|
+
+**返回值**：
+
+| 参数                  | 说明               |
+| ------------------- | ---------------- |
+| Promise\<void> | Promise对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.  |
+| 202  | SystemAPI permission error.  |
+| 3800001  | Input Service Exception. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```js
+import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setMouseScrollDirection (false).then(() => {
+              console.log(`setMouseScrollDirection success`);
+            });
+          } catch (error) {
+            console.error(`setMouseScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setMouseScrollDirection (false).then(() => {
+              console.log(`setMouseScrollDirection success`);
+            });
+          } catch (error) {
+            console.error(`setMouseScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+## pointer.getMouseScrollDirection<sup>24+</sup>
+
+getMouseScrollDirection(): Promise\<boolean>
+
+获取鼠标滚轮滚轴方向，使用Promise异步方式返回结果。
+
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**系统API**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
+**返回值**：
+
+| 参数                    | 说明                  |
+| --------------------- | ------------------- |
+| Promise\<boolean> | Promise实例，异步返回鼠标滚轮滚轴方向。<br>true与鼠标滚轮滚动的手指方向一致，false与鼠标滚轮滚动的手指方向相反。<br>默认为true。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission denied.  |
+| 202  | SystemAPI permission error.  |
+| 3800001  | Input Service Exception. |
+
+**示例：**
+
+ArkTS-Dyn示例:
+
+```js
+import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.getMouseScrollDirection().then((state: boolean) => {
+              console.log(`getMouseScrollDirection success, state: ${JSON.stringify(state)}`);
+            });
+          } catch (error) {
+            console.error(`getMouseScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.getTouchpadScrollDirection().then((state: boolean) => {
+              console.log(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
+            });
+          } catch (error) {
+            console.error(`getTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
