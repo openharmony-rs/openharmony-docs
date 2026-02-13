@@ -10438,14 +10438,14 @@ Changing the z-level of a child window using this API will not cause a focus swi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                                     |
-| ------- | --------------------------------------------- |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801     | Capability not supported. Function setSubWindowZLevel can not work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
-| 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only sub windows are supported. |
-| 1300009 | The parent window is invalid.                 |
+| ID| Error Message                                                                                                                                  |
+| ------- |------------------------------------------------------------------------------------------------------------------------------------------------|
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801     | Capability not supported. Function setSubWindowZLevel can not work correctly due to limited device capabilities.                               |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.                                                         |
+| 1300003 | This window manager service works abnormally.                                                                                                  |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only non-modal sub windows are supported.                                         |
+| 1300009 | The parent window is invalid.                                                                                                                  |
 
 **Example**
 
