@@ -371,4 +371,4 @@ Obtains the media key system information. The media key system information can b
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         AV_ERR_OPERATE_NOT_PERMIT: The demuxer engine is not initialized or fails to be initialized.<br>         **AV_ERR_INVALID_VAL**:<br>                           1. The value of **demuxer** is nullptr or does not point to a demuxer instance.<br>                           2. The value of **mediaKeySystemInfo** is nullptr.|
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The demuxer engine is not initialized or fails to be initialized.<br>         **AV_ERR_INVALID_VAL**:<br>                           1. The value of **demuxer** is nullptr or does not point to a demuxer instance.<br>                           2. The value of **mediaKeySystemInfo** is nullptr.|

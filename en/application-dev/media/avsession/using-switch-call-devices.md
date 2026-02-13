@@ -60,6 +60,34 @@ Currently, the system provides the default style and custom style for the **AVCa
    }
    ```
 
+   Alternatively, create the **AVCastPickerHelper** component.
+
+   ```ts
+   import { common } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { avSession } from '@kit.AVSessionKit';
+
+   class MyPage {
+      private avCastPicker: avSession.AVCastPickerHelper;
+
+      constructor(context: common.Context) {
+        this.avCastPicker = new avSession.AVCastPickerHelper(context);
+      }
+
+      async selectCastDevice() {
+        const avCastPickerOptions: avSession.AVCastPickerOptions = {
+          sessionType: 'video',
+        };
+
+        this.avCastPicker.select(avCastPickerOptions).then(() => {
+          console.info('select successfully');
+        }).catch((err: BusinessError) => {
+          console.error('AVCastPicker.select failed with err: ${err.code}, ${err.message}');
+        });
+      }
+    }
+   ```
+
 3. Create an AudioRenderer of the VOICE_COMMUNICATION type and start playing. For details about the implementation, see [Developing Audio Call](../audio/audio-call-development.md).
 
    ```ts

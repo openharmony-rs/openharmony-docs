@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-CaptureSession implements a capture session, which saves all [CameraInput](arkts-apis-camera-CameraInput.md) and [CameraOutput](arkts-apis-camera-CameraOutput.md) instances required to run the camera and requests the camera to complete shooting or video recording.
+**CaptureSession** implements a capture session, which saves all [CameraInput](arkts-apis-camera-CameraInput.md) and [CameraOutput](arkts-apis-camera-CameraOutput.md) instances required to run the camera and requests the camera to complete shooting or video recording.
 
 > **NOTE**
 >
@@ -561,7 +561,7 @@ Checks whether the camera device has flash.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| boolean    | Check result for whether the camera device has flashes. **true** if it has flashes, **false** otherwise. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| boolean    | Check result for whether the camera device has flash. **true** if it has flash, **false** otherwise. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
 
 **Error codes**
 
@@ -1219,7 +1219,7 @@ function getFocusMode(captureSession: camera.CaptureSession): camera.FocusMode |
 
 setFocusPoint(point: Point): void
 
-Sets the focal point. The focal point must be in the coordinate system (0-1), where the top-left corner is {0, 0} and the top-right corner is {1, 1}.
+Sets the focal point. The focal point must be in the coordinate system (0-1), where the top-left corner is {0, 0} and the bottom-right corner is {1, 1}.
 
 The coordinate system is based on the horizontal device direction with the device's charging port on the right. If the layout of the preview screen of an application is based on the vertical direction with the charging port on the lower side, the layout width and height are {w, h}, and the touch point is {x, y}, then the coordinate point after conversion is {y/h, 1-x/w}.
 

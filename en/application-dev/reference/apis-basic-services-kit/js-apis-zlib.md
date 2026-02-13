@@ -6,7 +6,7 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The Zip module provides APIs for file compression and decompression.
+The **Zip** module provides APIs for file compression and decompression.
 
 > **NOTE**
 >
@@ -1103,7 +1103,7 @@ Compresses the source buffer into the destination buffer. This API uses a promis
 
 | Type                                            | Description                                           |
 | ------------------------------------------------ | ----------------------------------------------- |
-| Promise&lt;[ZipOutputInfo](#zipoutputinfo12)&gt; | Promise used to returns the result status and the total size of the destination buffer.|
+| Promise&lt;[ZipOutputInfo](#zipoutputinfo12)&gt; | Promise used to return the result status and the total size of the destination buffer.|
 
 **Error codes**
 
@@ -4018,7 +4018,7 @@ Associates gzip file with the file descriptor (fd) and opens the file for readin
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | fd     | number | Yes  | File descriptor. Generally, the value is obtained by calling the **open** method or other methods.|
-| mode   | string | Yes  | Specifies the access mode.                                          |
+| mode   | string | Yes  | Specifies the access mode. For details, see the description of [gzopen](#gzopen12).           |
 
 **Return value**
 
@@ -4158,10 +4158,10 @@ Opens the .gz file in the specified path for reading and decompressing, or compr
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                |
-| ------ | ------ | ---- | -------------------- |
-| path   | string | Yes  | Path of the file to be opened.|
-| mode   | string | Yes  | Specifies a method for opening a file.  |
+| Name| Type  | Mandatory| Description                                                        |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| path   | string | Yes  | Path of the file to be opened.                                        |
+| mode   | string | Yes  | Specifies a mode for opening a file.<br>Basic modes (one of the following must be selected):<br>- **"r"** or **"rb"**: read mode. The system automatically detects and decompresses the gzip file. If the file is not in gzip format, the original data is directly read.<br>- **"w"** or **"wb"**: write mode. The system creates a new file and compresses data.<br>- **"a"** or **"ab"**: append mode. The system appends a new gzip stream to the end of the existing file without verifying the format of the original file.<br>Optional function parameters (can be used together):<br>- Compression level: **0** (no compression) to **9** (maximum compression). The default compression level is **6**. This parameter must be used together with the write or append mode.<br>- Compression strategy: **"f"** (filtering strategy), **"h"** (Huffman coding strategy), **"R"** (RLE compression strategy), or **"F"** (fixed encoding strategy). You can only select one of the strategies.<br>- Transparent mode: **"T"**. In this mode, data is not compressed and no gzip header is generated during writing (a common file is generated). This parameter is mutually exclusive with the compression strategy parameter.<br>- Exclusive creation: **"x"**. The file fails to be opened if it already exists. This parameter must be used together with the write or append mode.<br>- Close-on-exec flag: **"e"**. This parameter is used to set the **FD_CLOEXEC** property of the file descriptor (system-dependent).<br>Examples:<br>- **"r"**: read mode. Data is read in binary format.<br>- **"rb"**: read mode. Data is read in binary format.<br>- **"wb6"**: write mode. Data is written in binary format with the compression level of 6.<br>- **"wb9f"**: write mode. Data is written in binary format with the maximum compression level and filtering strategy.<br>- **"wbT"**: write mode. Data is not compressed and a common file is generated.<br>- **"wbx"**: write mode. Data is written to the exclusively created file in binary format.<br>- **"abx"**: append mode. Data is appended and written to the exclusively created file in binary format.|
 
 **Return value**
 

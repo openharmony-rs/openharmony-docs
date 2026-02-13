@@ -48,7 +48,7 @@ The file declares the basic concepts of the camera.
 | [Camera_AutoDeviceSwitchStatusInfo](capi-oh-camera-camera-autodeviceswitchstatusinfo.md) | Camera_AutoDeviceSwitchStatusInfo | Describes the automatic device switching status information.|
 | [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md) | Camera_ConcurrentInfo | Describes the camera's concurrency information.|
 | [Camera_ControlCenterStatusInfo](capi-oh-camera-camera-controlcenterstatusinfo.md) | Camera_ControlCenterStatusInfo | Describes the effect status information of a camera controller.|
-| [Camera_Manager](capi-oh-camera-camera-manager.md) | Camera_Manager | Describes the camera manager.<br> You can call [OH_Camera_GetCameraManager](#oh_camera_getcameramanager) to create such an object.|
+| [Camera_Manager](capi-oh-camera-camera-manager.md) | Camera_Manager | Describes the camera manager.<br>You can call [OH_Camera_GetCameraManager](#oh_camera_getcameramanager) to create such an object.|
 
 ### Enums
 
@@ -116,7 +116,7 @@ Enumerates the camera error codes.
 | CAMERA_DEVICE_DISABLED = 7400108 | The camera is disabled for security reasons.|
 | CAMERA_DEVICE_PREEMPTED = 7400109 | The camera is preempted.|
 | CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 | The configuration conflicts with the current configuration.<br>**Since**: 12|
-| CAMERA_SERVICE_FATAL_ERROR = 7400201 | A fatal error occurs in the camera service.<br> for example, no camera permission, camera service restart, or abnormal cross-process invocation.|
+| CAMERA_SERVICE_FATAL_ERROR = 7400201 | A fatal error occurs in the camera service, for example, no camera permission, camera service restart, or abnormal cross-process invocation.|
 
 ### Camera_Status
 
@@ -153,7 +153,7 @@ Enumerates the camera scene modes.
 | -- | -- |
 | NORMAL_PHOTO = 1 | Normal photo mode.|
 | NORMAL_VIDEO = 2 | Normal video mode.|
-| SECURE_PHOTO = 12 | Secure mode.|
+| SECURE_PHOTO = 12 | Secure mode, which is mainly provided for high-security applications like banking that require features such as biometric verification. The secure mode requires the encryption algorithm framework and trusted application services. For details, see [Device Certificate Kit](../../security/DeviceCertificateKit/device-certificate-kit-intro.md).|
 
 ### Camera_Position
 
@@ -247,7 +247,7 @@ Enumerates the flash modes.
 | -- | -- |
 | FLASH_MODE_CLOSE = 0 | The flash is off.|
 | FLASH_MODE_OPEN = 1 | The flash is on.|
-| FLASH_MODE_AUTO = 2 | The flash mode is auto.|
+| FLASH_MODE_AUTO = 2 | The flash is auto.|
 | FLASH_MODE_ALWAYS_OPEN = 3 | The flash is steady on.|
 
 ### Camera_ExposureMode

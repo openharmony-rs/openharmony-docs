@@ -148,6 +148,40 @@
 
 2. \@State不支持装饰Function类型的变量，框架会抛出运行时错误。
 
+3. 父组件传入undefined时，\@State装饰的变量仍使用本地默认值进行初始化。
+    
+    <!-- @[state_input_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateInputUndefined.ets) -->
+
+    ``` TypeScript
+    @Entry
+    @Component
+    struct Parent {
+      @State count: number | undefined = undefined;
+    
+      build() {
+        Column() {
+          Text(`Parent count value: ${this.count}`)
+            .fontSize(20)
+            .margin(10)
+          Child({ count: this.count })
+        }
+      }
+    }
+    
+    @Component
+    struct Child {
+      @State count: number | undefined = 0;
+    
+      build() {
+        Column() {
+          Text(`Child count value: ${this.count}`)
+            .fontSize(20)
+            .margin(10)
+        }
+      }
+    }
+    ```
+
 ## 使用场景
 
 ### 装饰简单类型的变量

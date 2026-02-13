@@ -1596,6 +1596,10 @@ uninstall(admin: Want, bundleName: string, callback: AsyncCallback&lt;void&gt;):
 
 卸载当前用户下的指定应用程序包，且不保留应用程序包数据。使用callback异步回调。
 
+> **说明：**
+>
+> 当应用为不可卸载的预置应用或者通过[addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync)接口设置了不允许卸载时，调用此接口卸载应用会返回401错误码。
+
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -1650,6 +1654,10 @@ bundleManager.uninstall(wantTemp, 'bundleName', (err) => {
 uninstall(admin: Want, bundleName: string, userId: number, callback: AsyncCallback&lt;void&gt;): void
 
 卸载指定用户下（由参数userId指定）的指定应用程序包，且不保留应用程序包数据。使用callback异步回调。
+
+> **说明：**
+>
+> 当应用为不可卸载的预置应用或者通过[addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync)接口设置了不允许卸载时，调用此接口卸载应用会返回401错误码。
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -1707,6 +1715,10 @@ uninstall(admin: Want, bundleName: string, isKeepData: boolean, callback: AsyncC
 
 卸载当前用户下的指定应用程序包，选择是否保留应用程序包数据（由isKeepData指定）。使用callback异步回调。
 
+> **说明：**
+>
+> 当应用为不可卸载的预置应用或者通过[addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync)接口设置了不允许卸载时，调用此接口卸载应用会返回401错误码。
+
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -1762,6 +1774,10 @@ bundleManager.uninstall(wantTemp, 'bundleName', true, (err) => {
 uninstall(admin: Want, bundleName: string, userId: number, isKeepData: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 卸载指定用户下（由参数userId指定）的指定应用程序包接口，选择是否保留应用程序包数据（由isKeepData指定）。使用callback异步回调。
+
+> **说明：**
+>
+> 当应用为不可卸载的预置应用或者通过[addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync)接口设置了不允许卸载时，调用此接口卸载应用会返回401错误码。
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 

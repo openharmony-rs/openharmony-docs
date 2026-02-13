@@ -58,7 +58,7 @@ Creates a timer. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > 
-> This function must be used together with [systemTimer.destroyTimer](#systemtimerdestroytimer). Otherwise, memory leakage occurs.
+> This API must be used together with [systemTimer.destroyTimer](#systemtimerdestroytimer). Otherwise, memory leakage occurs.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -109,7 +109,7 @@ Creates a timer. This API uses a promise to return the timer ID.
 
 > **NOTE**
 > 
-> This function must be used together with [systemTimer.destroyTimer](#systemtimerdestroytimer). Otherwise, memory leakage occurs.
+> This API must be used together with [systemTimer.destroyTimer](#systemtimerdestroytimer). Otherwise, memory leakage occurs.
 
 **System capability**: SystemCapability.MiscServices.Time
 

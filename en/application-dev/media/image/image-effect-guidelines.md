@@ -184,7 +184,7 @@ Add the following dynamic link libraries based on the image type: **libpixelmap.
    (2) Implement **imageEffect.getSurfaceId** at the native C++ layer.
 
    ```c++
-   // Create a NativeWindow instance based on the surface ID. Note that the instance must be released by calling OH_NativeWindow_DestoryNativeWindow when it is no longer needed.
+   // Create a NativeWindow instance based on the surface ID. Note that the instance must be released by calling OH_NativeWindow_DestroyNativeWindow when it is no longer needed.
    uint64_t outputSurfaceId;
    std::istrstream iss(outputSurfaceIdStr);
    issue >> outputSurfaceId;
@@ -201,7 +201,7 @@ Add the following dynamic link libraries based on the image type: **libpixelmap.
        OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetOutputSurface fail!");
        return;
    }
-   // Obtain the input surface. Note that the obtained inputNativeWindow instance must be released by calling OH_NativeWindow_DestoryNativeWindow when it is no longer needed.
+   // Obtain the input surface. Note that the obtained inputNativeWindow instance must be released by calling OH_NativeWindow_DestroyNativeWindow when it is no longer needed.
    OHNativeWindow *inputNativeWindow = nullptr;
    errorCode = OH_ImageEffect_GetInputSurface(imageEffect, &inputNativeWindow);
    if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
@@ -508,4 +508,8 @@ To implement and register a custom filter, perform the following steps:
   OH_EffectFilter_ReleaseFilterNames();
   ```
 
-<!--no_check-->
+## Samples
+
+The following samples are provided to help you better understand how to use the image effect for development:
+
+- [ImageEffect (API12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/ImageEffect)

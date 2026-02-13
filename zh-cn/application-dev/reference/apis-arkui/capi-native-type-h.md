@@ -190,8 +190,8 @@
 | [ArkUI_RenderFit](#arkui_renderfit)                                 | ArkUI_RenderFit   | 定义动画终态内容大小与位置的枚举值。 |
 | [ArkUI_SwiperIndicatorType](#arkui_swiperindicatortype)             | ArkUI_SwiperIndicatorType       | 定义Swiper组件的导航指示器类型。             |
 | [ArkUI_AnimationDirection](#arkui_animationdirection)               | ArkUI_AnimationDirection        | 动画播放模式。                           |
-| [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate)   | ArkUI_ListItemSwipeActionState  | 定义 Listitem 组件SwipeAction方法的显隐模式。 |
-| [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect)     | ArkUI_ListItemSwipeEdgeEffect   | 定义 Listitem 组件SwipeAction方法的滚动模式。 |
+| [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate)   | ArkUI_ListItemSwipeActionState  | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[SwipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的显隐模式。 |
+| [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect)     | ArkUI_ListItemSwipeEdgeEffect   | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[SwipeAction](./arkui-ts/ts-container-listitem.md#listitem10)方法的滚动模式。 |
 | [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) | ArkUI_ListItemSwipeActionDirection | ListItem划出菜单的展开方向。 |
 | [ArkUI_AnimationStatus](#arkui_animationstatus)                     | ArkUI_AnimationStatus           | 定义帧动画的播放状态。                       |
 | [ArkUI_AnimationFillMode](#arkui_animationfillmode)                 | ArkUI_AnimationFillMode         | 定义帧动画组件在动画开始前和结束后的状态。             |
@@ -200,7 +200,7 @@
 | [ArkUI_SafeAreaType](#arkui_safeareatype)                           | ArkUI_SafeAreaType              | 定义扩展安全区域的枚举值。                     |
 | [ArkUI_SafeAreaEdge](#arkui_safeareaedge)                           | ArkUI_SafeAreaEdge              | 定义扩展安全区域的方向的枚举值。                  |
 | [ArkUI_FocusMove](#arkui_focusmove)                                 | ArkUI_FocusMove                 | 定义焦点移动方向的枚举值。                     |
-| [ArkUI_ListItemGroupArea](#arkui_listitemgrouparea)                 | ArkUI_ListItemGroupArea         | 定义 ListItemGroup 组件区域。            |
+| [ArkUI_ListItemGroupArea](#arkui_listitemgrouparea)                 | ArkUI_ListItemGroupArea         | 定义ListItemGroup组件区域。            |
 | [ArkUI_KeyboardAvoidMode](#arkui_keyboardavoidmode)                 | ArkUI_KeyboardAvoidMode         | 键盘避让模式。                           |
 | [ArkUI_HoverModeAreaType](#arkui_hovermodeareatype)                 | ArkUI_HoverModeAreaType         | 悬停态显示区域。                          |
 | [ArkUI_ExpandMode](#arkui_expandmode)                               | ArkUI_ExpandMode                | 定义子节点展开模式枚举值。                     |
@@ -596,9 +596,9 @@ enum ArkUI_ImageRepeat
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_IMAGE_REPEAT_NONE = 0 | 不重复。 |
-| ARKUI_IMAGE_REPEAT_X | 在X轴方向重复。 |
-| ARKUI_IMAGE_REPEAT_Y | 在Y轴方向重复。 |
-| ARKUI_IMAGE_REPEAT_XY | 在X轴和Y轴方向重复。 |
+| ARKUI_IMAGE_REPEAT_X = 1 | 在X轴方向重复。 |
+| ARKUI_IMAGE_REPEAT_Y = 2 | 在Y轴方向重复。 |
+| ARKUI_IMAGE_REPEAT_XY = 3 | 在X轴和Y轴方向重复。 |
 
 ### ArkUI_FontStyle
 
@@ -616,7 +616,7 @@ enum ArkUI_FontStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_FONT_STYLE_NORMAL = 0 | 标准字体样式。 |
-| ARKUI_FONT_STYLE_ITALIC | 斜体字体样式。 |
+| ARKUI_FONT_STYLE_ITALIC = 1 | 斜体字体样式。 |
 
 ### ArkUI_FontWeight
 
@@ -634,20 +634,20 @@ enum ArkUI_FontWeight
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_FONT_WEIGHT_W100 = 0 | 100 |
-| ARKUI_FONT_WEIGHT_W200 | 200 |
-| ARKUI_FONT_WEIGHT_W300 | 300 |
-| ARKUI_FONT_WEIGHT_W400 | 400 |
-| ARKUI_FONT_WEIGHT_W500 | 500 |
-| ARKUI_FONT_WEIGHT_W600 | 600 |
-| ARKUI_FONT_WEIGHT_W700 | 700 |
-| ARKUI_FONT_WEIGHT_W800 | 800 |
-| ARKUI_FONT_WEIGHT_W900 | 900 |
-| ARKUI_FONT_WEIGHT_BOLD | 字体较粗。 |
-| ARKUI_FONT_WEIGHT_NORMAL | 字体粗细正常。 |
-| ARKUI_FONT_WEIGHT_BOLDER | 字体非常粗。 |
-| ARKUI_FONT_WEIGHT_LIGHTER | 字体较细。 |
-| ARKUI_FONT_WEIGHT_MEDIUM | 字体粗细适中。 |
-| ARKUI_FONT_WEIGHT_REGULAR | 字体粗细正常。 |
+| ARKUI_FONT_WEIGHT_W200 = 1 | 200 |
+| ARKUI_FONT_WEIGHT_W300 = 2 | 300 |
+| ARKUI_FONT_WEIGHT_W400 = 3 | 400 |
+| ARKUI_FONT_WEIGHT_W500 = 4 | 500 |
+| ARKUI_FONT_WEIGHT_W600 = 5 | 600 |
+| ARKUI_FONT_WEIGHT_W700 = 6 | 700 |
+| ARKUI_FONT_WEIGHT_W800 = 7 | 800 |
+| ARKUI_FONT_WEIGHT_W900 = 8 | 900 |
+| ARKUI_FONT_WEIGHT_BOLD = 9 | 字体较粗。 |
+| ARKUI_FONT_WEIGHT_NORMAL = 10 | 字体粗细正常。 |
+| ARKUI_FONT_WEIGHT_BOLDER = 11 | 字体非常粗。 |
+| ARKUI_FONT_WEIGHT_LIGHTER = 12 | 字体较细。 |
+| ARKUI_FONT_WEIGHT_MEDIUM = 13 | 字体粗细适中。 |
+| ARKUI_FONT_WEIGHT_REGULAR = 14 | 字体粗细正常。 |
 
 ### ArkUI_TextAlignment
 
@@ -665,9 +665,9 @@ enum ArkUI_TextAlignment
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_ALIGNMENT_START = 0 | 水平对齐首部。 |
-| ARKUI_TEXT_ALIGNMENT_CENTER | 水平居中对齐。 |
-| ARKUI_TEXT_ALIGNMENT_END | 水平对齐尾部。 |
-| ARKUI_TEXT_ALIGNMENT_JUSTIFY | 双端对齐。 |
+| ARKUI_TEXT_ALIGNMENT_CENTER = 1 | 水平居中对齐。 |
+| ARKUI_TEXT_ALIGNMENT_END = 2 | 水平对齐尾部。 |
+| ARKUI_TEXT_ALIGNMENT_JUSTIFY = 3 | 双端对齐。 |
 
 ### ArkUI_TextVerticalAlignment
 
@@ -685,9 +685,9 @@ enum ArkUI_TextVerticalAlignment
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_VERTICAL_ALIGNMENT_BASELINE = 0 | 基线对齐。 |
-| ARKUI_TEXT_VERTICAL_ALIGNMENT_BOTTOM | 底部对齐。 |
-| ARKUI_TEXT_VERTICAL_ALIGNMENT_CENTER | 居中对齐。 |
-| ARKUI_TEXT_VERTICAL_ALIGNMENT_TOP | 顶部对齐。 |
+| ARKUI_TEXT_VERTICAL_ALIGNMENT_BOTTOM = 1 | 底部对齐。 |
+| ARKUI_TEXT_VERTICAL_ALIGNMENT_CENTER = 2 | 居中对齐。 |
+| ARKUI_TEXT_VERTICAL_ALIGNMENT_TOP = 3 | 顶部对齐。 |
 
 ### ArkUI_TextContentAlign
 
@@ -795,8 +795,8 @@ enum ArkUI_CancelButtonStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_CANCELBUTTON_STYLE_CONSTANT = 0 | 清除按钮常显样式。 |
-| ARKUI_CANCELBUTTON_STYLE_INVISIBLE | 清除按钮常隐样式。 |
-| ARKUI_CANCELBUTTON_STYLE_INPUT | 清除按钮输入样式。 |
+| ARKUI_CANCELBUTTON_STYLE_INVISIBLE = 1 | 清除按钮常隐样式。 |
+| ARKUI_CANCELBUTTON_STYLE_INPUT = 2 | 清除按钮输入样式。 |
 
 ### ArkUI_XComponentType
 
@@ -832,10 +832,10 @@ enum ArkUI_ProgressType
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_PROGRESS_TYPE_LINEAR = 0 | 线性样式。 |
-| ARKUI_PROGRESS_TYPE_RING | 环形无刻度样式。 |
-| ARKUI_PROGRESS_TYPE_ECLIPSE | 圆形样式。 |
-| ARKUI_PROGRESS_TYPE_SCALE_RING | 环形有刻度样式。 |
-| ARKUI_PROGRESS_TYPE_CAPSULE | 胶囊样式。 |
+| ARKUI_PROGRESS_TYPE_RING = 1 | 环形无刻度样式。 |
+| ARKUI_PROGRESS_TYPE_ECLIPSE = 2 | 圆形样式。 |
+| ARKUI_PROGRESS_TYPE_SCALE_RING = 3 | 环形有刻度样式。 |
+| ARKUI_PROGRESS_TYPE_CAPSULE = 4 | 胶囊样式。 |
 
 ### ArkUI_TextDecorationType
 
@@ -853,9 +853,9 @@ enum ArkUI_TextDecorationType
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_DECORATION_TYPE_NONE = 0 | 不使用装饰线。 |
-| ARKUI_TEXT_DECORATION_TYPE_UNDERLINE | 文字下划线修饰。 |
-| ARKUI_TEXT_DECORATION_TYPE_OVERLINE | 文字上划线修饰。 |
-| ARKUI_TEXT_DECORATION_TYPE_LINE_THROUGH | 穿过文本的修饰线。 |
+| ARKUI_TEXT_DECORATION_TYPE_UNDERLINE = 1 | 文字下划线修饰。 |
+| ARKUI_TEXT_DECORATION_TYPE_OVERLINE = 2 | 文字上划线修饰。 |
+| ARKUI_TEXT_DECORATION_TYPE_LINE_THROUGH = 3 | 穿过文本的修饰线。 |
 
 ### ArkUI_TextDecorationStyle
 
@@ -873,10 +873,10 @@ enum ArkUI_TextDecorationStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_DECORATION_STYLE_SOLID = 0 | 单实线。 |
-| ARKUI_TEXT_DECORATION_STYLE_DOUBLE | 双实线。 |
-| ARKUI_TEXT_DECORATION_STYLE_DOTTED | 点线。 |
-| ARKUI_TEXT_DECORATION_STYLE_DASHED | 虚线。 |
-| ARKUI_TEXT_DECORATION_STYLE_WAVY | 波浪线。 |
+| ARKUI_TEXT_DECORATION_STYLE_DOUBLE = 1 | 双实线。 |
+| ARKUI_TEXT_DECORATION_STYLE_DOTTED = 2 | 点线。 |
+| ARKUI_TEXT_DECORATION_STYLE_DASHED = 3 | 虚线。 |
+| ARKUI_TEXT_DECORATION_STYLE_WAVY = 4 | 波浪线。 |
 
 ### ArkUI_TextCase
 
@@ -894,8 +894,8 @@ enum ArkUI_TextCase
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_CASE_NORMAL = 0 | 保持原有大小写。 |
-| ARKUI_TEXT_CASE_LOWER | 文本全小写。 |
-| ARKUI_TEXT_CASE_UPPER | 文本全大写。 |
+| ARKUI_TEXT_CASE_LOWER = 1 | 文本全小写。 |
+| ARKUI_TEXT_CASE_UPPER = 2 | 文本全大写。 |
 
 ### ArkUI_CopyOptions
 
@@ -913,9 +913,9 @@ enum ArkUI_CopyOptions
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_COPY_OPTIONS_NONE = 0 | 不支持复制。 |
-| ARKUI_COPY_OPTIONS_IN_APP | 支持应用内复制。 |
-| ARKUI_COPY_OPTIONS_LOCAL_DEVICE | 支持设备内复制。 |
-| ARKUI_COPY_OPTIONS_CROSS_DEVICE | 支持跨设备复制。 |
+| ARKUI_COPY_OPTIONS_IN_APP = 1 | 支持应用内复制。 |
+| ARKUI_COPY_OPTIONS_LOCAL_DEVICE = 2 | 支持设备内复制。 |
+| ARKUI_COPY_OPTIONS_CROSS_DEVICE = 3 | 支持跨设备复制。 |
 
 ### ArkUI_ShadowType
 
@@ -970,9 +970,9 @@ enum ArkUI_TextPickerRangeType
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXTPICKER_RANGETYPE_SINGLE = 0 | 单列数据选择器。 |
-| ARKUI_TEXTPICKER_RANGETYPE_MULTI | 多列数据选择器。 |
-| ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT | 支持图片资源的单列数据选择器。 |
-| ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT | 支持联动的多列数据选择器。 |
+| ARKUI_TEXTPICKER_RANGETYPE_MULTI = 1 | 多列数据选择器。 |
+| ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT = 2 | 支持图片资源的单列数据选择器。 |
+| ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT = 3 | 支持联动的多列数据选择器。 |
 
 ### ArkUI_AccessibilityCheckedState
 
@@ -1161,10 +1161,10 @@ enum ArkUI_StickyStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_STICKY_STYLE_NONE = 0 | ListItemGroup的header不吸顶，footer不吸底。 |
+| ARKUI_STICKY_STYLE_NONE = 0 | [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md)的[header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)不吸顶，[footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)不吸底。 |
 | ARKUI_STICKY_STYLE_HEADER = 1 | ListItemGroup的header吸顶，footer不吸底。 |
-| ARKUI_STICKY_STYLE_FOOTER = 2 | ListItemGroup的footer吸底，header不吸顶。 |
-| ARKUI_STICKY_STYLE_BOTH = 3 | ListItemGroup的footer吸底，header吸顶。 |
+| ARKUI_STICKY_STYLE_FOOTER = 2 | ListItemGroup的header不吸顶，footer吸底。 |
+| ARKUI_STICKY_STYLE_BOTH = 3 | ListItemGroup的header吸顶，footer吸底。 |
 
 ### ArkUI_ContentClipMode
 
@@ -1405,9 +1405,9 @@ enum ArkUI_TextCopyOptions
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_COPY_OPTIONS_NONE = 0 | 不支持复制。 |
-| ARKUI_TEXT_COPY_OPTIONS_IN_APP | 支持应用内复制。 |
-| ARKUI_TEXT_COPY_OPTIONS_LOCAL_DEVICE | 支持设备内复制。 |
-| ARKUI_TEXT_COPY_OPTIONS_CROSS_DEVICE | 支持跨设备复制。 |
+| ARKUI_TEXT_COPY_OPTIONS_IN_APP = 1 | 支持应用内复制。 |
+| ARKUI_TEXT_COPY_OPTIONS_LOCAL_DEVICE = 2 | 支持设备内复制。 |
+| ARKUI_TEXT_COPY_OPTIONS_CROSS_DEVICE = 3 | 支持跨设备复制。 |
 
 ### ArkUI_TextHeightAdaptivePolicy
 
@@ -1425,8 +1425,8 @@ enum ArkUI_TextHeightAdaptivePolicy
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MAX_LINES_FIRST = 0 | 设置文本高度自适应方式为以MaxLines优先。 |
-| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MIN_FONT_SIZE_FIRST | 设置文本高度自适应方式为以缩小字体优先。 |
-| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_LAYOUT_CONSTRAINT_FIRST | 设置文本高度自适应方式为以布局约束（高度）优先。 |
+| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MIN_FONT_SIZE_FIRST = 1 | 设置文本高度自适应方式为以缩小字体优先。 |
+| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_LAYOUT_CONSTRAINT_FIRST = 2 | 设置文本高度自适应方式为以布局约束（高度）优先。 |
 
 ### ArkUI_ScrollNestedMode
 
@@ -1617,8 +1617,8 @@ enum ArkUI_ImageSize
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_IMAGE_SIZE_AUTO = 0 | 保持原图的比例不变。 |
-| ARKUI_IMAGE_SIZE_COVER | 保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界。 |
-| ARKUI_IMAGE_SIZE_CONTAIN | 保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内。 |
+| ARKUI_IMAGE_SIZE_COVER = 1 | 保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界。 |
+| ARKUI_IMAGE_SIZE_CONTAIN = 2 | 保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内。 |
 
 ### ArkUI_AdaptiveColor
 
@@ -1777,9 +1777,9 @@ enum ArkUI_TextOverflow
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TEXT_OVERFLOW_NONE = 0 | 文本超长时不裁剪显示。 |
-| ARKUI_TEXT_OVERFLOW_CLIP | 文本超长时进行裁剪显示。 |
-| ARKUI_TEXT_OVERFLOW_ELLIPSIS | 文本超长时显示不下的文本用省略号代替。 |
-| ARKUI_TEXT_OVERFLOW_MARQUEE | 文本超长时以跑马灯的方式展示。 |
+| ARKUI_TEXT_OVERFLOW_CLIP = 1 | 文本超长时进行裁剪显示。 |
+| ARKUI_TEXT_OVERFLOW_ELLIPSIS = 2 | 文本超长时显示不下的文本用省略号代替。 |
+| ARKUI_TEXT_OVERFLOW_MARQUEE = 3 | 文本超长时以跑马灯的方式展示。 |
 
 ### ArkUI_ImageSpanAlignment
 
@@ -1818,21 +1818,21 @@ enum ArkUI_ObjectFit
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_OBJECT_FIT_CONTAIN = 0 | 保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内。 |
-| ARKUI_OBJECT_FIT_COVER | 保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界。 |
-| ARKUI_OBJECT_FIT_AUTO | 自适应显示。 |
-| ARKUI_OBJECT_FIT_FILL | 不保持宽高比进行放大缩小，使得图片充满显示边界。 |
-| ARKUI_OBJECT_FIT_SCALE_DOWN | 保持宽高比显示，图片缩小或者保持不变。 |
-| ARKUI_OBJECT_FIT_NONE | 保持原有尺寸显示。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_START | 图片大小不变，在image组件中顶部起始端对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP | 图片大小不变，在image组件中顶部横向居中对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_END | 图片大小不变，在image组件中顶部尾端对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_START | 图片大小不变，在image组件中起始端纵向居中对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_CENTER | 图片大小不变，在image组件中横向和纵向居中对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_END | 图片大小不变，在image组件中尾端纵向居中对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_START | 图片大小不变，在image组件中底部起始端对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM | 图片大小不变，在image组件中底部横向居中对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END | 图片大小不变，在image组件中底部尾端对齐。 |
-| ARKUI_OBJECT_FIT_NONE_MATRIX | 不改变图像原始大小，需要配合NODE_IMAGE_IMAGE_MATRIX使用。<br/>**起始版本：** 21 |
+| ARKUI_OBJECT_FIT_COVER = 1 | 保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界。 |
+| ARKUI_OBJECT_FIT_AUTO = 2 | 自适应显示。 |
+| ARKUI_OBJECT_FIT_FILL = 3 | 不保持宽高比进行放大缩小，使得图片充满显示边界。 |
+| ARKUI_OBJECT_FIT_SCALE_DOWN = 4 | 保持宽高比显示，图片缩小或者保持不变。 |
+| ARKUI_OBJECT_FIT_NONE = 5 | 保持原有尺寸显示。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_START = 6 | 图片大小不变，在image组件中顶部起始端对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP = 7 | 图片大小不变，在image组件中顶部横向居中对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_END = 8 | 图片大小不变，在image组件中顶部尾端对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_START = 9 | 图片大小不变，在image组件中起始端纵向居中对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_CENTER = 10 | 图片大小不变，在image组件中横向和纵向居中对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_END = 11 | 图片大小不变，在image组件中尾端纵向居中对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_START = 12 | 图片大小不变，在image组件中底部起始端对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM = 13 | 图片大小不变，在image组件中底部横向居中对齐。 |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END = 14 | 图片大小不变，在image组件中底部尾端对齐。 |
+| ARKUI_OBJECT_FIT_NONE_MATRIX = 15 | 不改变图像原始大小，需要配合NODE_IMAGE_IMAGE_MATRIX使用。<br/>**起始版本：** 21 |
 
 ### ArkUI_ImageInterpolation
 
@@ -1850,9 +1850,9 @@ enum ArkUI_ImageInterpolation
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_IMAGE_INTERPOLATION_NONE = 0 | 不使用图片插值。 |
-| ARKUI_IMAGE_INTERPOLATION_LOW | 低图片插值。 |
-| ARKUI_IMAGE_INTERPOLATION_MEDIUM | 中图片插值。 |
-| ARKUI_IMAGE_INTERPOLATION_HIGH | 高图片插值，插值质量最高。 |
+| ARKUI_IMAGE_INTERPOLATION_LOW = 1 | 低图片插值。 |
+| ARKUI_IMAGE_INTERPOLATION_MEDIUM = 2 | 中图片插值。 |
+| ARKUI_IMAGE_INTERPOLATION_HIGH = 3 | 高图片插值，插值质量最高。 |
 
 ### ArkUI_DynamicRangeMode
 
@@ -2100,8 +2100,8 @@ enum ArkUI_CalendarAlignment
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_CALENDAR_ALIGNMENT_START = 0 | 选择器和入口组件左对齐方式。 |
-| ARKUI_CALENDAR_ALIGNMENT_CENTER | 选择器和入口组件居中对齐方式。 |
-| ARKUI_CALENDAR_ALIGNMENT_END | 选择器和入口组件右对齐方式。 |
+| ARKUI_CALENDAR_ALIGNMENT_CENTER = 1 | 选择器和入口组件居中对齐方式。 |
+| ARKUI_CALENDAR_ALIGNMENT_END = 2 | 选择器和入口组件右对齐方式。 |
 
 ### ArkUI_MaskType
 
@@ -2244,7 +2244,7 @@ enum ArkUI_ImageRenderMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_IMAGE_RENDER_MODE_ORIGINAL = 0 | 原色渲染模式。 |
-| ARKUI_IMAGE_RENDER_MODE_TEMPLATE | 黑白渲染模式。 |
+| ARKUI_IMAGE_RENDER_MODE_TEMPLATE = 1 | 黑白渲染模式。 |
 
 ### ArkUI_TransitionEdge
 
@@ -2293,13 +2293,13 @@ enum ArkUI_ListItemAlignment
 **描述：**
 
 
-交叉轴方向的布局方式。
+交叉轴方向的布局方式，默认值为ARKUI_LIST_ITEM_ALIGNMENT_START。
 
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_LIST_ITEM_ALIGNMENT_START = 0 | ListItem在List中，交叉轴方向首部对齐。 |
+| ARKUI_LIST_ITEM_ALIGNMENT_START = 0 | [ListItem](./arkui-ts/ts-container-listitem.md#listitem10)在List中，交叉轴方向首部对齐。 |
 | ARKUI_LIST_ITEM_ALIGNMENT_CENTER = 1 | ListItem在List中，交叉轴方向居中对齐。 |
 | ARKUI_LIST_ITEM_ALIGNMENT_END = 2 | ListItem在List中，交叉轴方向尾部对齐。 |
 
@@ -2586,7 +2586,7 @@ enum ArkUI_ListItemSwipeActionState
 **描述：**
 
 
-定义 Listitem 组件SwipeAction方法的显隐模式。
+定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[SwipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的显隐模式，默认值为ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED。
 
 **起始版本：** 12
 
@@ -2605,7 +2605,7 @@ enum ArkUI_ListItemSwipeEdgeEffect
 **描述：**
 
 
-定义 Listitem 组件SwipeAction方法的滚动模式。
+定义Listitem组件[SwipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的滚动模式，默认值为ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING。
 
 **起始版本：** 12
 
@@ -2830,14 +2830,14 @@ enum ArkUI_ListItemGroupArea
 **描述：**
 
 
-定义 ListItemGroup 组件区域。
+定义[ListItemGroup](./arkui-ts/ts-container-listitemgroup.md)组件区域，默认值为ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE。
 
 **起始版本：** 15
 
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE = 0 | ListItemGroup区域外。 |
-| ARKUI_LIST_ITEM_SWIPE_AREA_NONE = 1 | ListItemGroup没有header、footer和ListItem时的区域。 |
+| ARKUI_LIST_ITEM_SWIPE_AREA_NONE = 1 | ListItemGroup没有[header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)、[footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)和[ListItem](./arkui-ts/ts-container-listitem.md#listitem10)时的区域。 |
 | ARKUI_LIST_ITEM_SWIPE_AREA_ITEM = 2 | ListItemGroup的ListItem区域。 |
 | ARKUI_LIST_ITEM_SWIPE_AREA_HEADER = 3 | ListItemGroup的header区域。 |
 | ARKUI_LIST_ITEM_SWIPE_AREA_FOOTER = 4 | ListItemGroup的footer区域。 |
@@ -2931,7 +2931,7 @@ enum ArkUI_RouterPageState
 **描述：**
 
 
-定义[Router Page](js-apis-router.md)（路由页面）的状态。
+定义[Router Page](arkts-apis-uicontext-router.md)（路由页面）的状态。
 
 **起始版本：** 12
 
@@ -5612,7 +5612,7 @@ void OH_ArkUI_SwiperIndicator_SetSelectedColor(ArkUI_SwiperIndicator* indicator,
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md)* indicator | 导航指示器对象指针。 |
-| uint32_t selectedColor | 颜色类型，0xargb格式，形如 0xFFFF0000 表示红色。 |
+| uint32_t selectedColor | 颜色类型，0xargb格式，形如0xFFFF0000表示红色。<br/>默认值：'\#007DFF'，蓝色。 |
 
 ### OH_ArkUI_SwiperIndicator_GetSelectedColor()
 
@@ -7022,7 +7022,7 @@ int32_t OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect(ArkUI_ListItemSwipeActi
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 滑动效果。默认返回值：ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING。 |
+| int32_t | 滑动效果。默认返回值：[ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING](#arkui_listitemswipeedgeeffect)。 |
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange()
 
@@ -7703,7 +7703,7 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawable
 **描述：**
 
 
-使用 DrawableDescriptor 对象创建帧图片信息，图片格式为Resource和PixelMap。
+使用[DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象创建帧图片信息，图片格式为Resource和PixelMap。
 
 **起始版本：** 12
 
@@ -9226,7 +9226,7 @@ ArkUI_TextPickerRangeContentArray* OH_ArkUI_TextPickerRangeContentArray_Create(i
 **描述：**
 
 
-创建TextPickerRangeContent数组的对象。
+创建[TextPickerRangeContent](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md)数组的对象。
 
 **起始版本：** 19
 
@@ -9315,7 +9315,7 @@ ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContent
 
 **描述：**
 
-创建TextCascadePickerRangeContent数组对象。
+创建[TextCascadePickerRangeContent](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)数组对象。
 
 **起始版本：** 19
 

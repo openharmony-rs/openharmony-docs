@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-当应用进行音频输出时，系统会根据音频流类型选择对应的输出设备（STREAM_USAGE_MUSIC：扬声器发声；STREAM_USAGE_VOICE_COMMUNICATION：听筒发声）。如果系统提供的默认输出设备不满足应用需求，应用可通过`AVCastPicker`或`setDefaultOutputDevice`实现音频输出设备路由切换。
+当应用进行音频输出时，系统会根据音频流类型选择对应的输出设备（[STREAM_USAGE_MUSIC](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)：扬声器发声；[STREAM_USAGE_VOICE_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)：听筒发声）。如果系统提供的默认输出设备不满足应用需求，应用可通过`AVCastPicker`或`setDefaultOutputDevice`实现音频输出设备路由切换。
 
 ## 媒体类应用实现输出设备路由切换
 

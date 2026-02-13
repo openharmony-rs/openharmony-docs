@@ -9,7 +9,7 @@
 
 You can call native APIs to perform video encoding, which compresses video data into a video stream.
 
-<!--RP3--><!--RP3End-->
+For details about the implementation, see [Samples](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec).
 
 For details about the supported encoding capabilities, see [AVCodec Supported Formats](avcodec-support-formats.md#video-encoding).
 
@@ -314,7 +314,6 @@ The following walks you through how to implement the entire video encoding proce
     ```
 
     > **NOTE**
-    > 
     > In the callback functions, pay attention to multi-thread synchronization for operations on the data queue.
     >
 
@@ -388,7 +387,7 @@ The following walks you through how to implement the entire video encoding proce
     OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_MATRIX_COEFFICIENTS, matrix);
     OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_I_FRAME_INTERVAL, iFrameInterval);
     OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_PROFILE, profile);
-    // Configure OH_MD_KEY_QUALITY only when OH_BitrateMode = BITRATE_MODE_CQ is used.
+    // Configure OH_MD_KEY_QUALITY only when OH_BitrateMode is set to BITRATE_MODE_CQ.
     if (rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_CQ)) {
         OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_QUALITY, quality);
     } else if (rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_SQR)) {
@@ -407,7 +406,6 @@ The following walks you through how to implement the entire video encoding proce
     ```
 
     > **NOTE**
-    > 
     > If an optional parameter is incorrectly configured, the error code **AV_ERR_INVALID_VAL** is returned. However, **OH_VideoEncoder_Configure()** does not fail. Instead, its execution continues with the default value.
     >
 
@@ -881,6 +879,8 @@ The following walks you through how to implement the entire video encoding proce
     info.offset = 0;
     // Unlike the surface mode, in buffer mode, the application must explicitly set pts. Compute it based on the intended display time, for example, frameIndex * 1000000 / frameRate.
     info.pts = 0;
+    // To prevent the flags from being randomly initialized to AVCODEC_BUFFER_FLAGS_EOS and causing abnormal usage, the flags must be assigned a value such as 0 (identifier for normal frames).
+    info.flags = 0;
     OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(bufferInfo->buffer, &info);
     if (setBufferRet != AV_ERR_OK) {
         // Handle exceptions.

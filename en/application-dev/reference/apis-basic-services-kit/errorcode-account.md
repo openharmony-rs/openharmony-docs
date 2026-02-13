@@ -636,7 +636,6 @@ The application does not exist.
 
 **Possible Causes**
 
-
 1. The target application does not exist when the application permission is set.
 2. The target application does not exist when the application permission is authorized.
 

@@ -419,7 +419,7 @@ function releaseInterface() {
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
-  let ret: number = usbManager.claimInterface(devicepipe, interfaces);
+  let ret: number= usbManager.claimInterface(devicepipe, interfaces);
   ret = usbManager.releaseInterface(devicepipe, interfaces);
   console.info(`releaseInterface = ${ret}`);
 }
@@ -641,7 +641,7 @@ Performs control transfer. This API uses a promise to return the result.
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe. You need to call **connectDevice** to obtain its value.|
 | controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | Yes| Control transfer parameters. Set the parameters as required. For details, see the USB protocol.|
-| timeout | number | No| (Optional) Timeout duration, in ms. The default value is **0**. You can set this parameter as required.|
+| timeout | number | No| Timeout interval, in milliseconds. This parameter is optional. If the control transfer is complete within the specified time, the size of the transferred or received data block is returned; otherwise, a timeout error is returned. The default value is **0**, indicating that the system waits infinitely until the control transfer is complete. Set this parameter as required.|
 
 **Return value**
 
@@ -707,7 +707,7 @@ Performs control transfer. This API uses a promise to return the result.
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the USB device.|
 | requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | Yes| Control transfer parameters. Set the parameters as required. For details, see the USB protocol.|
-| timeout | number | No| (Optional) Timeout duration, in ms. The default value is **0**, indicating no timeout.|
+| timeout | number | No| Timeout interval, in milliseconds. This parameter is optional. If the control transfer is complete within the specified time, the size of the transferred or received data block is returned; otherwise, a timeout error is returned. The default value is **0**, indicating that the system waits infinitely until the control transfer is complete. Set this parameter as required.|
 
 **Return value**
 
@@ -782,7 +782,7 @@ Performs bulk transfer. This API uses a promise to return the result.
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe. You need to call **connectDevice** to obtain its value.|
 | endpoint | [USBEndpoint](#usbendpoint) | Yes| USB endpoint, which is used to determine the USB interface for data transfer. You need to call **getDevices** to obtain the device information list and endpoint. Wherein, **address** is used to determine the endpoint address, **direction** is used to determine the endpoint direction, and **interfaceId** is used to determine the USB interface to which the endpoint belongs. Other parameters are passed transparently.|
 | buffer | Uint8Array | Yes| Buffer used to write or read data.|
-| timeout | number | No| (Optional) Timeout duration, in ms. The default value is **0**. You can set this parameter as required.|
+| timeout | number | No| Timeout interval, in milliseconds. This parameter is optional. If the bulk transfer is complete within the specified time, the size of the transferred or received data block is returned; otherwise, a timeout error is returned. The default value is **0**, indicating that the system waits infinitely until the control transfer is complete. Set this parameter as required.|
 
 **Return value**
 

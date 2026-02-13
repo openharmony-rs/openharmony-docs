@@ -33,7 +33,7 @@
 
 2. 调用[on('micStateChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md#onmicstatechange9)监听麦克风状态变化，当麦克风静音状态发生变化时将通知应用。
 
-   目前此订阅接口在单进程多AudioManager实例的使用场景下，仅最后一个实例的订阅生效，其他实例的订阅会被覆盖（即使最后一个实例没有进行订阅），因此推荐使用单一AudioManager实例进行开发。
+   目前此订阅接口在单进程多[AudioManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md)实例的使用场景下，仅最后一个实例的订阅生效，其他实例的订阅会被覆盖（即使最后一个实例没有进行订阅），因此推荐使用单一AudioManager实例进行开发。
 
    ```ts
    // 监听麦克风状态变化。

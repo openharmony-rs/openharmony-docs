@@ -92,7 +92,7 @@
 
 设置焦点模式的方法：
 
-- 若[使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)，则可以通过修改AVPlayer的[audioInterruptMode](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md)属性进行设置。
+- 若[使用AVPlayer播放音频(ArkTS)](../media/using-avplayer-for-playback.md)，则可以通过修改AVPlayer的[audioInterruptMode](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#属性)属性进行设置。
 
 - 若[使用AVPlayer播放音频(C/C++)](../media/using-ndk-avplayer-for-playback.md)，则可以调用[OH_AVPlayer_SetAudioInterruptMode](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiointerruptmode)函数进行设置。
 
@@ -174,7 +174,7 @@ import { audio } from '@kit.AudioKit';  // 导入audio模块。
 import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
 
 let isPlay: boolean; // 是否正在播放，实际开发中，对应与音频播放状态相关的模块。
-let isDucked: boolean; //是否降低音量，实际开发中，对应与音频音量相关的模块。
+let isDucked: boolean; // 是否降低音量，实际开发中，对应与音频音量相关的模块。
 let started: boolean; // 标识符，记录“开始播放（start）”操作是否成功。
 
 async function onAudioInterrupt(): Promise<void> {

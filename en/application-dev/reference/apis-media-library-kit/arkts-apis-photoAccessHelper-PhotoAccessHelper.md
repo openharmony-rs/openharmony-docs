@@ -27,7 +27,7 @@ Obtains image and video assets. This API uses an asynchronous callback to return
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
- When this API is called in picker mode to query the image or video resource corresponding to a specified URI, the'ohos.permission.READ_IMAGEVIDEO' permission is not required. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
+ When this API is called in picker mode to query the image or video resource corresponding to a specified URI, the 'ohos.permission.READ_IMAGEVIDEO' permission is not required. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
 
 **Parameters**
 
@@ -90,7 +90,7 @@ Obtains image and video assets. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
- When this API is called in picker mode to query the image or video resource corresponding to a specified URI, the'ohos.permission.READ_IMAGEVIDEO' permission is not required. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
+ When this API is called in picker mode to query the image or video resource corresponding to a specified URI, the 'ohos.permission.READ_IMAGEVIDEO' permission is not required. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
 
 **Parameters**
 
@@ -907,7 +907,7 @@ createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Pr
 
 Creates an asset with a temporary permission of the given period. When this API is called by an application for the first time, a dialog box will be displayed for the user to confirm whether to save the asset. If the user agrees to save the asset, the asset instance will be created and the file URI granted with the save permission will be returned. The application can write the asset based on the URI.
 
-Within 5 minutes after the user agrees to save the asset, if the same application calls this API again, the authorized URI can be automatically returned without the need to display the conformation dialog box. Exiting the application will terminate the authorization, and the user will need to re-trigger the pop-up dialog for authorization confirmation when the application is re-launched.
+Within 5 minutes after the user agrees to save the asset, if the same application calls this API again, the authorized URI can be automatically returned without the need to display the confirmation dialog box. Exiting the application will terminate the authorization, and the user will need to re-trigger the pop-up dialog for authorization confirmation when the application is re-launched.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
