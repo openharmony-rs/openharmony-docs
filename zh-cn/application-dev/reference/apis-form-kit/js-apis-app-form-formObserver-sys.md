@@ -265,8 +265,8 @@ formObserver.off('formAdd', bundleName, callback);
 ```
 > **说明：**
 >
-> - on('formAdd', callback)与off('formAdd', callback)相对应；
-> - on('formAdd', bundleName, callback)与off('formAdd', bundleName, callback)相对应；
+> - on('formAdd', callback)与off('formAdd', callback)相对应。
+> - on('formAdd', bundleName, callback)与off('formAdd', bundleName, callback)相对应。
 > - 订阅（on）只能由自己对应的取消订阅接口（off）取消。
 
 ## offFormAdd<sup>23+</sup>
@@ -330,8 +330,8 @@ try {
 
 > **说明：**
 >
-> - onFormAdd(callback)与offFormAdd(callback)相对应；
-> - onFormAdd(bundleName, callback)与offFormAdd(bundleName, callback)相对应；
+> - onFormAdd(callback)与offFormAdd(callback)相对应。
+> - onFormAdd(bundleName, callback)与offFormAdd(bundleName, callback)相对应。
 > - 订阅（onFormAdd）只能由自己对应的取消订阅接口（offFormAdd）取消。
 
 ## on('formRemove')
@@ -584,8 +584,8 @@ formObserver.off('formRemove', bundleName, callback);
 ```
 > **说明：**
 >
-> - on('formRemove', callback)与off('formRemove', callback)相对应；
-> - on('formRemove', bundleName, callback)与off('formRemove', bundleName, callback)相对应；
+> - on('formRemove', callback)与off('formRemove', callback)相对应。
+> - on('formRemove', bundleName, callback)与off('formRemove', bundleName, callback)相对应。
 > - 订阅（on）只能由自己对应的取消订阅接口（off）取消。
 
 ## offFormRemove<sup>23+</sup>
@@ -649,8 +649,8 @@ try {
 
 > **说明：**
 >
-> - onFormRemove(callback)与offFormRemove(callback)相对应；
-> - onFormRemove(bundleName, callback)与offFormRemove( bundleName, callback)相对应；
+> - onFormRemove(callback)与offFormRemove(callback)相对应。
+> - onFormRemove(bundleName, callback)与offFormRemove( bundleName, callback)相对应。
 > - 订阅（onFormRemove）只能由自己对应的取消订阅接口（offFormRemove）取消。
 
 ## on('notifyVisible')
@@ -914,8 +914,8 @@ formObserver.off('notifyVisible', bundleName, callback);
 
 > **说明：**
 >
-> - on('notifyVisible', callback)与off('notifyVisible', callback)相对应；
-> - on('notifyVisible', bundleName, callback)与off('notifyVisible', bundleName, callback)相对应；
+> - on('notifyVisible', callback)与off('notifyVisible', callback)相对应。
+> - on('notifyVisible', bundleName, callback)与off('notifyVisible', bundleName, callback)相对应。
 > - 订阅（on）只能由自己对应的取消订阅接口（off）取消。
 
 ## offNotifyVisible<sup>23+</sup>
@@ -979,8 +979,8 @@ try {
 
 > **说明：**
 >
-> - onNotifyVisible(callback)与offNotifyVisible(callback)相对应；
-> - onNotifyVisible(bundleName, callback)与offNotifyVisible( bundleName, callback)相对应；
+> - onNotifyVisible(callback)与offNotifyVisible(callback)相对应。
+> - onNotifyVisible(bundleName, callback)与offNotifyVisible( bundleName, callback)相对应。
 > - 订阅（onNotifyVisible）只能由自己对应的取消订阅接口（offNotifyVisible）取消。
 
 ## on('notifyInvisible')
@@ -1242,8 +1242,8 @@ formObserver.off('notifyInvisible', bundleName, callback);
 
 > **说明：**
 >
-> - on('notifyInvisible', callback)与off('notifyInvisible', callback)相对应；
-> - on('notifyInvisible', bundleName, callback)与off('notifyInvisible', bundleName, callback)相对应；
+> - on('notifyInvisible', callback)与off('notifyInvisible', callback)相对应。
+> - on('notifyInvisible', bundleName, callback)与off('notifyInvisible', bundleName, callback)相对应。
 > - 订阅（on）只能由自己对应的取消订阅接口（off）取消。
 
 ## offNotifyInvisible<sup>23+</sup>
@@ -1307,8 +1307,8 @@ try {
 
 > **说明：**
 >
-> - onNotifyInvisible(callback)与offNotifyInvisible(callback)相对应；
-> - onNotifyInvisible(bundleName, callback)与offNotifyInvisible(bundleName, callback)相对应；
+> - onNotifyInvisible(callback)与offNotifyInvisible(callback)相对应。
+> - onNotifyInvisible(bundleName, callback)与offNotifyInvisible(bundleName, callback)相对应。
 > - 订阅（onNotifyInvisible）只能由自己对应的取消订阅接口（offNotifyInvisible）取消。
 
 ## getRunningFormInfos
@@ -2469,8 +2469,8 @@ formObserver.off('router', hostBundleName, callback);
 
 > **说明：**
 >
-> - on('route', callback)与off('route', callback)相对应；
-> - on('route', bundleName, callback)与off('route', bundleName, callback)相对应；
+> - on('route', callback)与off('route', callback)相对应。
+> - on('route', bundleName, callback)与off('route', bundleName, callback)相对应。
 > - 订阅（on）只能由自己对应的取消订阅接口（off）取消。
 
 ## offRouter<sup>23+</sup>
@@ -2534,8 +2534,8 @@ try {
 
 > **说明：**
 >
-> - onRouter(callback)与offRouter(callback)相对应；
-> - onRouter(bundleName, callback)与offRouter( bundleName, callback)相对应；
+> - onRouter(callback)与offRouter(callback)相对应。
+> - onRouter(bundleName, callback)与offRouter( bundleName, callback)相对应。
 > - 订阅（onRouter）只能由自己对应的取消订阅接口（offRouter）取消。
 
 ## on('message')<sup>11+</sup>
@@ -2784,8 +2784,8 @@ formObserver.off('message', hostBundleName, callback);
 
 > **说明：**
 >
-> - on('message', callback)与off('message', callback)相对应；
-> - on('message', bundleName, callback)与off('message', bundleName, callback)相对应；
+> - on('message', callback)与off('message', callback)相对应。
+> - on('message', bundleName, callback)与off('message', bundleName, callback)相对应。
 > - 订阅（on）只能由自己对应的取消订阅接口（off）取消。
 
 ## offMessage<sup>23+</sup>
@@ -2849,8 +2849,8 @@ try {
 
 > **说明：**
 >
-> - onMessage(callback)与offMessage(callback)相对应；
-> - onMessage(bundleName, callback)与offMessage( bundleName, callback)相对应；
+> - onMessage(callback)与offMessage(callback)相对应。
+> - onMessage(bundleName, callback)与offMessage( bundleName, callback)相对应。
 > - 订阅（onMessage）只能由自己对应的取消订阅接口（offMessage）取消。
 
 ## on('call')<sup>11+</sup>
@@ -3095,8 +3095,8 @@ formObserver.off('call', hostBundleName, callback);
 
 > **说明：**
 >
-> - on('call', callback)与off('call', callback)相对应；
-> - on('call', bundleName, callback)与off('call', bundleName, callback)相对应；
+> - on('call', callback)与off('call', callback)相对应。
+> - on('call', bundleName, callback)与off('call', bundleName, callback)相对应。
 > - 订阅（on）只能由自己对应的取消订阅接口（off）取消。
 
 ## offCall<sup>23+</sup>
@@ -3158,6 +3158,6 @@ try {
 
 > **说明：**
 >
-> - onCall(callback)与offCall(callback)相对应；
-> - onCall(bundleName, callback)与offCall( bundleName, callback)相对应；
+> - onCall(callback)与offCall(callback)相对应。
+> - onCall(bundleName, callback)与offCall( bundleName, callback)相对应。
 > - 订阅（onCall）只能由自己对应的取消订阅接口（offCall）取消。
