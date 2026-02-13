@@ -327,7 +327,7 @@ from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?:
 | -------- | -------- | -------- | -------- |
 | arrayBuffer | ArrayBuffer&nbsp;\|&nbsp;SharedArrayBuffer | 是 | 实例对象。 |
 | byteOffset | number | 否 | 字节偏移量，默认值：0。 |
-| length | number | 否 | 字节长度， 默认值:（arrayBuffer.byteLength - byteOffset）。取值范围：0 <= length <= arrayBuffer.byteLength - byteOffset。传入null时返回空FastBuffer |
+| length | number | 否 | 字节长度， 默认值:（arrayBuffer.byteLength - byteOffset）。取值范围：0 <= length <= arrayBuffer.byteLength - byteOffset。传入null时返回空FastBuffer。 |
 
 **返回值：**
 
@@ -542,7 +542,7 @@ fastbuffer.transcode支持的编码：'ascii' | 'utf8' | 'utf16le'| 'ucs2' | 'la
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | source | [FastBuffer](#fastbuffer)&nbsp;\|&nbsp;Uint8Array | 是 | 实例对象。 |
-| fromEnc | string | 是 | 当前编码。 支持的格式范围为[BufferEncoding](#bufferencoding)。传入空字符串时当前编码为'utf8'。 |
+| fromEnc | string | 是 | 当前编码格式。支持的格式范围为BufferEncoding。传入空字符串时，表示使用编码格式'utf8'。 |
 | toEnc | string | 是 | 目标编码。 支持的格式范围为[BufferEncoding](#bufferencoding)。 |
 
 **返回值：**
