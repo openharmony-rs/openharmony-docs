@@ -10,7 +10,7 @@
 
 声明用于查询终端设备信息的API。
 
-**引用文件：** <startup/init/syscap/include/deviceinfo.h>
+**引用文件：** <deviceinfo.h>
 
 **库：** libdeviceinfo_ndk.z.so
 
