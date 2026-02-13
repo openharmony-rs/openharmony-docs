@@ -188,8 +188,20 @@ import { b } from "./mod1";         // 再次获取"mod1"内属性，未标记la
 
 ```typescript
 // build-profile.json5
-"arkOptions":{
-    "reExportCheckMode":"compatible"
+{
+  "app": {
+    ...,
+    "products": [
+      {
+        ...,
+        "buildOption": {
+          "arkOptions": {
+            "reExportCheckMode": "compatible"
+          }
+        }
+      }
+    ]
+  }
 }
 ```
 
@@ -372,6 +384,9 @@ export function func() {
     // entry/src/main/ets/pages/outer.ets
     import { a } from './1' // outer文件从1文件中加载了a变量
     console.info("example ", a); // a变量在outer文件执行时就被使用
+
+    // entry/src/main/ets/pages/1.ets
+    export let a = "a";
     ```  
 
 - 场景2：通过静态加载所加载的文件，存在多个父文件。  
@@ -393,6 +408,9 @@ export function func() {
     // entry/src/main/ets/pages/innerinner.ets
     import { a } from './1' // innerinner文件从1文件中加载了a变量
     console.info("example ", a); // a变量在innerinner文件执行时就被使用
+
+    // entry/src/main/ets/pages/1.ets
+    export let a = "a";
     ```  
 
 - 场景3：通过静态加载所加载的文件，存在多个导出，但是只显示了一部分。
@@ -428,6 +446,9 @@ export function func() {
     import("./1").then((ns:ESObject) => {
         console.info('import file 1 success');
     });
+
+    // entry/src/main/ets/pages/1.ets
+    export let a = "a";
     ```
 
 - 场景5：通过loadContent、pushUrl等接口加载的文件，其父文件（parentModule）统一显示为EntryPoint。
@@ -456,8 +477,11 @@ export function func() {
     // entry/src/main/ets/pages/1.ets
     import { a } from './under1' // 加载under1文件的变量
     export function myFunc() {
-     return a; // a未被使用
+        return a; // a未被使用
     }
+
+    // entry/src/main/ets/pages/under1.ets
+    export let a = "a";
     ```  
 
     可使用延迟加载：
@@ -466,7 +490,7 @@ export function func() {
     // entry/src/main/ets/pages/1.ets
     import lazy { a } from './under1' // 不在此处触发under1文件的加载
     export function myFunc() {
-     return a; // 此时触发under1文件的加载
+        return a; // 此时触发under1文件的加载
     }
     ```
 
@@ -477,7 +501,10 @@ export function func() {
 下述例子中A文件被引用，在应用启动到点击按钮的这段时间里，A文件并没有被实际执行，在冷启动阶段加载A文件的行为属于冗余。
 
 ```javascript
-// A为任意可以被引入的ets文件
+// A.ets
+export let A = "A";
+
+// Index.ets
 import { A } from "./A";
 
 @Entry
