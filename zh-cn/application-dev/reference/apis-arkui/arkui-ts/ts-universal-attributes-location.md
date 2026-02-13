@@ -589,8 +589,7 @@ struct Example3 {
 
 ### 示例4（镜像效果）
 
-通用布局属性支持[镜像能力](./../../../ui/arkts-internationalization.md#使用镜像能力)。
-下述示例从上到下依次通过[position](#position)，[offset](#offset)，[markAnchor](#markanchor)实现镜像效果，为对比镜像前后的差异，浅蓝色对应镜像前效果，深蓝色对应镜像后效果。
+通用布局属性支持[使用镜像能力](./../../../ui/arkts-internationalization.md#使用镜像能力)。下述示例从上到下依次通过[position](#position)、[offset](#offset)和[markAnchor](#markanchor)实现镜像效果，为对比镜像前后的差异，浅蓝色对应镜像前效果，深蓝色对应镜像后效果。
 
 ```ts
 // xxx.ets
