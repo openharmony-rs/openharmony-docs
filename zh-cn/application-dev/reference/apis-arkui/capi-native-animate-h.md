@@ -457,7 +457,7 @@ void OH_ArkUI_AnimateOption_SetIterations(ArkUI_AnimateOption* option, int32_t v
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。 |
-| int32_t value | 动画播放次数。取值范围：[-1, +∞)，其中-1表示无限次播放。默认值：1（播放一次）。<br>value小于-1时，按1处理。 |
+| int32_t value | 动画播放次数。取值范围：[-1, +∞)，其中设置为0时不播放，-1表示无限次播放。默认值：1（播放一次）。<br>value小于-1时，操作无效。 |
 
 ### OH_ArkUI_AnimateOption_SetPlayMode()
 
@@ -634,7 +634,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetIterations(ArkUI_KeyframeAnimateOption
 **描述：**
 
 
-设置关键帧动画的动画播放次数。默认播放一次，设置为-1时表示无限次播放。设置为0时表示无动画效果。
+设置关键帧动画的动画播放次数。
 
 **起始版本：** 12
 
@@ -644,7 +644,8 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetIterations(ArkUI_KeyframeAnimateOption
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| int32_t value | 动画播放次数。取值范围：[-1, +∞)，其中-1表示无限次播放，0表示无动画效果。超出范围返回错误码。<br>value小于-1时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| int32_t value | 动画播放次数。取值范围：[-1, +∞)，其中设置为0时不播放，-1表示无限次播放。默认值：1（播放一次）。<br>value小于-1时，操作无效，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+
 
 **返回：**
 
@@ -1040,7 +1041,7 @@ int32_t OH_ArkUI_AnimatorOption_SetIterations(ArkUI_AnimatorOption* option, int3
 **描述：**
 
 
-设置animator动画播放次数。设置为0时不播放，设置为-1时无限次播放。
+设置animator动画播放次数。
 
 > **说明：**
 >
@@ -1054,7 +1055,8 @@ int32_t OH_ArkUI_AnimatorOption_SetIterations(ArkUI_AnimatorOption* option, int3
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| int32_t value | 动画播放次数。默认值：1（播放一次），设置为0时不播放，设置为-1时无限次播放。<br>value小于-1时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| int32_t value | 取值范围：[-1, +∞)，其中设置为0时不播放，-1表示无限次播放。默认值：1（播放一次）。<br>value小于-1时，操作无效。 |
+
 
 **返回：**
 
