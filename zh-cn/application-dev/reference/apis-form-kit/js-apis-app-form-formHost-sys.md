@@ -2669,7 +2669,7 @@ try {
     console.error(`formHost recover forms error, code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
-  console.info(`catch error, code: ${e.code}, message: ${e.message}`);
+  console.error(`catch error, code: ${e.code}, message: ${e.message}`);
 }
 ```
 ## recycleForms<sup>12+</sup>
