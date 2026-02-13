@@ -388,7 +388,7 @@ struct CardExample {
           }
         })
         .onError((error)=>{
-          console.error(`fail to add form, error code: ${error.errcode}, error message: ${error.msg}`);
+          console.error(`fail to add form, error code: ${error?.errcode}, error message: ${error?.msg}`);
         })
         .onUninstall((form: FormCallbackInfo)=>{
           console.info(`uninstall form success : ${form?.id}`);
