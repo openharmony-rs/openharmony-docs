@@ -912,7 +912,7 @@ struct Index {
                 let targetWindowId = 2;
                 let promise = window.shiftAppWindowTouchEvent(sourceWindowId, targetWindowId, event.touches[0].id);
                 promise.then(() => {
-                  console.info('Succeeded in shifting app window touch event');
+                  console.info(`Succeeded in shifting app window touch event`);
                 }).catch((err) => {
                   console.error(`Failed to shift app window touch event. Cause code: ${err.code}, message: ${err.message}`);
                 });
