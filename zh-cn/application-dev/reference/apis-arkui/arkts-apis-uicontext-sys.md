@@ -1,4 +1,4 @@
-# 模块描述
+# 模块描述(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiang-shouxing-->
@@ -13,15 +13,17 @@
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[模块描述](arkts-apis-uicontext.md)。
 
 ## 导入模块
 
 ```ts
 import {
-  AtomicServiceBar, ComponentUtils, ContextMenuController, CursorController, DragController, Font, KeyboardAvoidMode, MediaQuery, OverlayManager,
-  PromptAction, Router, UIContext, ResolvedUIContext, UIInspector, UIObserver, PageInfo, SwiperDynamicSyncScene, SwiperDynamicSyncSceneType, MeasureUtils, FrameCallback,
-  OverlayManagerOptions, TargetInfo, MarqueeDynamicSyncScene, MarqueeDynamicSyncSceneType, Magnifier
+  BackgroundLuminanceSamplingConfigs, LuminanceSampler
 } from "@kit.ArkUI";
 ```
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口**：此接口为系统接口。
