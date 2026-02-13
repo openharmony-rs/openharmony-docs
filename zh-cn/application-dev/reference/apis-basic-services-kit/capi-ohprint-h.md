@@ -54,6 +54,7 @@
 | [Print_Quality](#print_quality)                       | Print_Quality            | 表示打印质量。               |
 | [Print_DocumentFormat](#print_documentformat)         | Print_DocumentFormat     | 表示文档的 MIME 媒体类型。   |
 | [Print_JobDocAdapterState](#print_jobdocadapterstate) | Print_JobDocAdapterState | 表示打印任务文档适配器状态。 |
+| [OH_Print_JobState](#oh_print_jobstate)               | OH_Print_JobState        | 表示打印任务状态。 |
 
 ### 函数
 
@@ -82,6 +83,8 @@
 | [Print_ErrorCode OH_Print_UpdatePrinterProperties(const char *printerId, const Print_PropertyList *propertyList)](#oh_print_updateprinterproperties) | -                              | 此 API 根据属性键值对列表设置打印机属性。                    |
 | [Print_ErrorCode OH_Print_RestorePrinterProperties(const char *printerId, const Print_StringList *propertyKeyList)](#oh_print_restoreprinterproperties) | -                              | 此 API 根据属性关键字列表将打印机属性恢复为默认设置。        |
 | [Print_ErrorCode OH_Print_StartPrintByNative(const char *printJobName, Print_PrintDocCallback printDocCallback, void *context)](#oh_print_startprintbynative) | -                              | 此 API 提供启动打印对话框的能力。                            |
+| [typedef void(*OH_Print_OnJobStateChanged)(const char *jobId, OH_Print_JobState state)](#oh_print_onjobstatechanged) | -                              | 打印任务状态回调。                            |
+| [Print_ErrorCode OH_Print_StartPrintWithJobStateCallback(const Print_PrintJob *printJob, OH_Print_OnJobStateChanged jobStateChangedCb)](#oh_print_startprintwithjobstatecallback) | -                              | 此API下发打印任务，并附带任务状态变更回调功能。                            |
 
 ## 枚举类型说明
 
@@ -283,6 +286,24 @@ enum Print_JobDocAdapterState
 | PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_CANCELED = 5 | 因取消导致的打印任务预览能力销毁。 |
 | PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_STARTED = 6  | 因启动导致的打印任务预览能力销毁。 |
 
+## OH_Print_JobState
+
+```c
+enum OH_Print_JobState
+```
+
+**描述**
+
+表示打印任务状态。
+
+**起始版本：** 24
+
+| 名称                 | 值  | 说明          |
+| -------------------- | -- |-------------- |
+| OH_PRINT_JOB_SUCCEED | 0  | 打印任务成功。 |
+| OH_PRINT_JOB_FAIL    | 1  | 打印任务失败。 |
+| OH_PRINT_JOB_CANCEL  | 2  | 打印任务取消。 |
+| OH_PRINT_JOB_BLOCK   | 3  | 打印任务阻塞。 |
 
 ## 函数说明
 
@@ -830,3 +851,59 @@ Print_ErrorCode OH_Print_StartPrintByNative(const char *printJobName, Print_Prin
 | 类型                                                 | 说明                                                         |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
 | [Print_ErrorCode](capi-ohprint-h.md#print_errorcode) | 返回 [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode) 表示执行成功。<br>         [PRINT_ERROR_NO_PERMISSION](capi-ohprint-h.md#print_errorcode) 需要 ohos.permission.PRINT 权限。<br>         [PRINT_ERROR_RPC_FAILURE](capi-ohprint-h.md#print_errorcode) 无法连接到打印服务。 |
+
+### OH_Print_OnJobStateChanged()
+
+```c
+typedef void(*OH_Print_OnJobStateChanged)(const char *jobId, OH_Print_JobState state)
+```
+
+**描述**
+
+打印任务状态回调。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项              | 描述                 |
+| ------------------- | -------------------- |
+| const char \*jobId | 打印任务的ID。      |
+| [OH_Print_JobState](#oh_print_jobstate) state      | 当前打印任务的状态。 |
+
+### OH_Print_StartPrintWithJobStateCallback()
+
+```c
+Print_ErrorCode OH_Print_StartPrintWithJobStateCallback(const Print_PrintJob *printJob, OH_Print_OnJobStateChanged jobStateChangedCb)
+```
+
+**描述**
+
+此API下发打印任务，并附带任务状态变更回调功能。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**需要权限：** ohos.permission.PRINT
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项                                                       | 描述                 |
+| ------------------------------------------------------------ | -------------------- |
+| const [Print_PrintJob](capi-oh-print-print-printjob.md) *printJob           | 打印任务结构体。   |
+| [OH_Print_OnJobStateChanged](#oh_print_onjobstatechanged) jobStateChangedCb | 打印任务状态回调。 |
+
+
+**返回：**
+
+| 名称      | 值                        | 说明                             |
+| ---------------------------------------------------- | -----------------------|---------------------------------------- |
+| [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode) | 0 | 执行成功。 |
+| [PRINT_ERROR_NO_PERMISSION](capi-ohprint-h.md#print_errorcode) | 201 | 需要 [ohos.permission.PRINT](../../security/AccessToken/permissions-for-all.md#ohospermissionprint) 权限。 |
+| [PRINT_ERROR_INVALID_PARAMETER](capi-ohprint-h.md#print_errorcode) | 401 | 参数之一为NULL或关键字列表为空。 |
+| [PRINT_ERROR_GENERIC_FAILURE](capi-ohprint-h.md#print_errorcode) | 24300001 | 无法复制回调函数。 |
+| [PRINT_ERROR_RPC_FAILURE](capi-ohprint-h.md#print_errorcode) | 24300002 | 无法连接到打印服务。 |
+| [PRINT_ERROR_SERVER_FAILURE](capi-ohprint-h.md#print_errorcode) | 24300003 | 打印服务中无法创建打印任务结构体。 |
+| [PRINT_ERROR_INVALID_PRINTER](capi-ohprint-h.md#print_errorcode) | 24300005 | 无法找到指定打印机的属性。 |
+| [PRINT_ERROR_INVALID_PRINT_JOB](capi-ohprint-h.md#print_errorcode) | 24300006 | 无法在任务队列中找到该任务。 |

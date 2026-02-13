@@ -200,6 +200,13 @@ Print_PrintJob* printJob = new Print_PrintJob{ jobName,
                                                DOCUMENT_FORMAT_PDF,
                                                printerInfo->defaultValue.otherDefaultValues, };
 Print_ErrorCode ret = OH_Print_StartPrintJob(printJob);
+
+static void JobStateChangedCb(const char *jobId, OH_Print_JobState state)
+{
+    // 开发者根据任务id管理任务状态的逻辑
+}
+// 跟踪打印任务状态
+Print_ErrorCode ret = OH_Print_StartPrintWithJobStateCallback(printJob, JobStateChangedCb);
 delete printJob;
 
 // 不再使用打印服务时释放资源
