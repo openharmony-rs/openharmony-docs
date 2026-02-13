@@ -45,7 +45,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 | ------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | context | [FormExtensionContext](js-apis-inner-application-formExtensionContext.md) | 否   | 否   | FormExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 | onStop<sup>23+</sup> | [onStopFn](#onstopfn23) | 否   | 是   | 当卡片提供方的卡片进程退出时，触发该回调。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23|
-| <sup>23+</sup> | [OnAcquireFormStateFn](#onacquireformstatefn23) | 否 | 是 | 卡片提供方接收查询卡片状态通知接口，默认返回卡片初始状态(该方法可以选择性重写)。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23 |
+| onAcquireFormState<sup>23+</sup> | [OnAcquireFormStateFn](#onacquireformstatefn23) | 否 | 是 | 卡片提供方接收查询卡片状态通知接口，默认返回卡片初始状态（该方法可以选择性重写）。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23 |
 
 ### FormExtensionAbility.onAddForm
 
