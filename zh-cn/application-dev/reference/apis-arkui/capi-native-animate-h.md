@@ -426,7 +426,7 @@ void OH_ArkUI_AnimateOption_SetDelay(ArkUI_AnimateOption* option, int32_t value)
 **描述：**
 
 
-设置动画延迟播放时间，单位为ms（毫秒）。
+设置动画延迟播放时间。
 
 **起始版本：** 12
 
@@ -436,7 +436,8 @@ void OH_ArkUI_AnimateOption_SetDelay(ArkUI_AnimateOption* option, int32_t value)
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。 |
-| int32_t value | 动画延迟播放时间，单位为ms（毫秒）。取值范围：[0, +∞)。默认值：0（立即播放）。<br>value小于0时，按0处理。 |
+| int32_t value | 动画延迟播放时间，单位为ms（毫秒）。取值范围：(-∞, +∞)。默认值：0（不延迟）。delay>=0为延迟播放，delay<0表示提前播放。对于delay<0的情况：当delay的绝对值小于实际动画时长，动画将在开始后第一帧直接运动到delay绝对值的时刻的状态；当delay的绝对值大于等于实际动画时长，动画将在开始后第一帧直接运动到终点状态。其中实际动画时长等于单次动画时长乘以动画播放次数。 |
+
 
 ### OH_ArkUI_AnimateOption_SetIterations()
 
@@ -607,7 +608,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* opt
 **描述：**
 
 
-设置关键帧动画的整体延时时间，单位为ms（毫秒），默认不延时播放。
+设置关键帧动画的整体延时时间。
 
 **起始版本：** 12
 
@@ -617,7 +618,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* opt
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| int32_t value | 延时时间, 单位为ms（毫秒）。取值范围：[0, +∞)。<br>value小于0时，按0处理。 |
+| int32_t value | 动画播放延的时间。单位为ms（毫秒）。取值范围：(-∞, +∞)。默认值：0（不延迟）。delay>=0为延迟播放，delay<0表示提前播放。对于delay<0的情况：当delay的绝对值小于实际动画时长，动画将在开始后第一帧直接运动到delay绝对值的时刻的状态；当delay的绝对值大于等于实际动画时长，动画将在开始后第一帧直接运动到终点状态。其中实际动画时长等于单次动画时长乘以动画播放次数。 |
 
 **返回：**
 
@@ -1014,7 +1015,7 @@ int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t v
 **描述：**
 
 
-设置animator动画延时播放时长，单位为ms（毫秒）。
+设置animator动画延时播放的时间。
 
 **起始版本：** 12
 
@@ -1024,7 +1025,7 @@ int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t v
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| int32_t value | 延时播放时长，单位为ms（毫秒）。<br>value小于0时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| int32_t value | 延时播放的时间。单位为ms（毫秒）。取值范围：(-∞, +∞)。默认值：0（不延迟）。delay>=0为延迟播放，delay<0表示提前播放。对于delay<0的情况：当delay的绝对值小于实际动画时长，动画将在开始后第一帧直接运动到delay绝对值的时刻的状态；当delay的绝对值大于等于实际动画时长，动画将在开始后第一帧直接运动到终点状态。其中实际动画时长等于单次动画时长乘以动画播放次数。 |
 
 **返回：**
 
