@@ -22,6 +22,100 @@
 >
 > - 与OverlayManager相关的属性推荐采用AppStorage来进行应用全局存储，以免切换页面后属性值发生变化从而导致业务错误。
 
+## openOrderOverlay<sup>26.0.0+</sup>
+
+openOrderOverlay<T extends Object>(content: ComponentContent<T>, options?: OrderOverlayOptions): Promise<void>
+
+打开浮层。
+
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名     | 类型                                       | 必填   | 说明          |
+| ------- | ---------------------------------------- | ---- | ----------- |
+| content | [ComponentContent](js-apis-arkui-ComponentContent.md) | 是    | 在OverlayManager的新节点上添加此content。 <br>**说明：** <br/> 新增的节点默认处于页面居中位置，按层级堆叠。|
+| options | [OrderOverlayOptions](#orderoverlayoptions2600) | 否    | 浮层的配置选项。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[弹窗错误码](errorcode-promptAction.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 103307 | 由于系统弹出窗口，无法打开浮层。 |
+
+**示例：**
+
+```ts
+import { ComponentContent, OverlayManager, LevelOrder, LevelMode } from '@kit.ArkUI';
+
+class Params {
+  text: string = "";
+  offset: Position;
+
+  constructor(text: string, offset: Position) {
+    this.text = text;
+    this.offset = offset;
+  }
+}
+
+@Builder
+function builderText(params: Params) {
+  Column() {
+    Text(params.text)
+      .fontSize(30)
+      .fontWeight(FontWeight.Bold)
+  }.offset(params.offset)
+}
+
+@Entry
+@Component
+struct OverlayExample {
+  @State message: string = 'ComponentContent';
+  private uiContext: UIContext = this.getUIContext();
+  private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
+
+  build() {
+    Column({ space: 5 }) {
+      Button("打开浮层").onClick(() => {
+        let componentContent = new ComponentContent(
+          this.uiContext, wrapBuilder<[Params]>(builderText),
+          new Params(this.message, { x: 0, y: 110 })
+        );
+        let options: OrderOverlayOptions = {
+          levelOrder: LevelOrder.clamp(100),
+          levelMode: LevelMode.OVERLAY
+        };
+        this.overlayNode.openOrderOverlay(componentContent, options);
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## OrderOverlayOptions<sup>26.0.0+</sup>
+
+浮层的配置选项。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| levelOrder | [LevelOrder](js-apis-promptAction.md#levelorder18) | 否 | 浮层的显示顺序。 |
+| levelMode | [LevelMode](js-apis-promptAction.md#levelmode18) | 否 | 浮层的显示模式。 |
+| levelUniqueId | int | 否 | 路由或导航页面中任意节点的uniqueId。 |
+
 ## addComponentContent<sup>12+</sup>
 
 addComponentContent(content: ComponentContent, index?: number): void
