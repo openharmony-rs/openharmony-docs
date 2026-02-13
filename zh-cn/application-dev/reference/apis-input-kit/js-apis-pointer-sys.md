@@ -5442,7 +5442,7 @@ import { pointer } from '@kit.InputKit';
 struct Index {
   build() {
     RelativeContainer() {
-      Text()
+      Text("setMouseScrollDirection")
         .onClick(() => {
           try {
             pointer.setMouseScrollDirection (false).then(() => {
@@ -5462,14 +5462,14 @@ ArkTS-Sta示例：
 ```ts
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { pointer } from '@kit.InputKit';
-import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct Index {
   build() {
     RelativeContainer() {
-      Text()
+      Text("setMouseScrollDirection")
         .onClick(() => {
           try {
             pointer.setMouseScrollDirection (false).then(() => {
@@ -5526,7 +5526,7 @@ import { pointer } from '@kit.InputKit';
 struct Index {
   build() {
     RelativeContainer() {
-      Text()
+      Text("getMouseScrollDirection")
         .onClick(() => {
           try {
             pointer.getMouseScrollDirection().then((state: boolean) => {
@@ -5553,7 +5553,7 @@ import { pointer } from '@kit.InputKit';
 struct Index {
   build() {
     RelativeContainer() {
-      Text()
+      Text("getMouseScrollDirection")
         .onClick(() => {
           try {
             pointer.getTouchpadScrollDirection().then((state: boolean) => {
