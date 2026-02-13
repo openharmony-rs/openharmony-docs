@@ -13,6 +13,8 @@
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
 > - 本模块接口为系统接口。
+> 
+> - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 
 ## 导入模块
 
@@ -367,6 +369,8 @@ makeUnique(uniqueScreen: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**设备行为差异：** 该接口在Phone设备、PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效不报错。
+
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明          |
@@ -653,7 +657,7 @@ setVirtualScreenSurface(screenId:number, surfaceId: string, callback: AsyncCallb
 **示例：**
 
 ```ts
-//Index.ets
+// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -730,7 +734,7 @@ setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-//Index.ets
+// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
