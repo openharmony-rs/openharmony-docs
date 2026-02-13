@@ -31,9 +31,9 @@ Before the setting, call [getSupportedColorSpaces](arkts-apis-camera-ColorManage
 
 **P3 and HDR Imaging**  
 
-An application can deliver different color space parameters to declare its support for P3 and HDR.
+An application can deliver different color space parameters to declare its support for P3 and HDR. If an application does not proactively set the color space, SDR is used by default in photo and video recording modes.
 
-For different modes, enabling HDR, setting the color space, and configuring [CameraFormat](arkts-apis-camera-e.md#cameraformat) in the camera output stream [profile](arkts-apis-camera-i.md#profile) should match. For details, see the table below. For example, to enable HDR in video recording mode, set [CameraFormat](arkts-apis-camera-e.md#cameraformat) in the camera preview and video output stream [profiles](arkts-apis-camera-i.md#profile) to **CAMERA_FORMAT_YCRCB_P010** and the color space to **2020_HLG_LIMIT**.
+For different modes, enabling HDR, setting the color space, and configuring [CameraFormat](arkts-apis-camera-e.md#cameraformat) in the camera output stream [profile](arkts-apis-camera-i.md#profile) should match. For details, see the table below. For example, to enable HDR in video recording mode, set [CameraFormat](arkts-apis-camera-e.md#cameraformat) in the camera preview and video output stream [profiles](arkts-apis-camera-i.md#profile) to **CAMERA_FORMAT_YCRCB_P010** and the color space to **BT2020_HLG_LIMIT**.
 
 To obtain HDR images in photo mode, set the color space to **DISPLAY_P3** or **BT2020_HLG**. **BT2020_HLG** provides a wider color gamut, and should be used together with the **CameraFormat**, including **CAMERA_FORMAT_YCRCB_P010** and **CAMERA_FORMAT_YCBCR_P010**, to improve the image quality.
 
@@ -55,8 +55,9 @@ In video recording mode, if SDR or HDR VIVID is enabled, the camera format and c
 
 | SDR/HDR Photo Capture        | CameraFormat             | ColorSpace       |
 |--------------------|--------------------------|------------------|
-| SDR                | CAMERA_FORMAT_YUV_420_SP | BT709_LIMIT      |
-| HDR_VIVID          | CAMERA_FORMAT_YCRCB_P010<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG_LIMIT<br>BT2020_HLG_FULL |
+| SDR(Default)               | CAMERA_FORMAT_YUV_420_SP | BT709_LIMIT      |
+| HDR_VIVID          | CAMERA_FORMAT_YCRCB_P010 | BT2020_HLG_LIMIT,<br>BT2020_HLG |
+| HDR_VIVID          | CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG_LIMIT,<br>BT2020_HLG |
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
