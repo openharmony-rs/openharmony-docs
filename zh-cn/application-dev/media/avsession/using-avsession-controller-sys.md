@@ -35,33 +35,33 @@ OpenHarmony系统预置的播控中心，作为媒体会话控制方与音视频
 | createController(sessionId: string, callback: AsyncCallback&lt;AVSessionController&gt;): void | 创建媒体会话控制器。 | 
 | sendSystemAVKeyEvent(event: KeyEvent, callback: AsyncCallback&lt;void&gt;): void | 向置顶会话发送按键命令。 |  
 | sendSystemControlCommand(command: AVControlCommand, callback: AsyncCallback&lt;void&gt;): void | 向置顶会话发送播控命令。 | 
-| getHistoricalSessionDescriptors(maxSize: number, callback: AsyncCallback\<Array\<Readonly\<AVSessionDescriptor>>>): void<sup>10+<sup> | 获取历史会话的描述符。 |
+| getHistoricalSessionDescriptors(maxSize: number, callback: AsyncCallback\<Array\<Readonly\<AVSessionDescriptor>>>): void<sup>10+</sup> | 获取历史会话的描述符。 |
 
 ### 通过AVSessionController对象调用的接口
 
 | 接口名 | 说明 |
 | -------- | -------- |
-| getAVPlaybackState(callback: AsyncCallback&lt;AVPlaybackState&gt;): void<sup>10+<sup> | 获取当前会话播放状态相关信息。 |
-| getAVMetadata(callback: AsyncCallback&lt;AVMetadata&gt;): void<sup>10+<sup> | 获取会话元数据。 |
-| getOutputDevice(callback: AsyncCallback&lt;OutputDeviceInfo&gt;): void<sup>10+<sup> | 获取播放设备信息。 |
-| sendAVKeyEvent(event: KeyEvent, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 发送按键事件到会话。|
-| getLaunchAbility(callback: AsyncCallback&lt;WantAgent&gt;): void<sup>10+<sup> | 获取应用在会话中保存的WantAgent对象。 |
-| isActive(callback: AsyncCallback&lt;boolean&gt;): void<sup>10+<sup> | 判断会话是否被激活。 |
-| destroy(callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 销毁当前控制器，销毁后当前控制器不再可用。 |
-| getValidCommands(callback: AsyncCallback&lt;Array&lt;AVControlCommandType&gt;&gt;): void<sup>10+<sup> | 获取会话支持的有效命令。 |
-| sendControlCommand(command: AVControlCommand, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 通过会话控制器发送命令到其对应的会话。 |
-| sendCommonCommand(command: string, args: {[key: string]: Object}, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 通过会话控制器发送自定义命令到其对应的会话。 |
-| getAVQueueItems(callback: AsyncCallback&lt;Array&lt;AVQueueItem&gt;&gt;): void<sup>10+<sup> | 获取当前播放列表相关信息。 |
-| getAVQueueTitle(callback: AsyncCallback&lt;string&gt;): void<sup>10+<sup> | 获取当前播放列表的名称。 |
-| skipToQueueItem(itemId: number, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | 设置指定播放列表单项的ID，发送给session端处理，session端可以选择对这个单项歌曲进行播放。 |
-| getExtras(callback: AsyncCallback&lt;{[key: string]: Object}&gt;): void<sup>10+<sup> | 获取媒体提供方设置的自定义媒体数据包。 |
-| getOutputDeviceSync(): OutputDeviceInfo<sup>10+<sup> | 使用同步方法获取当前输出设备信息。 |
-| getAVPlaybackStateSync(): AVPlaybackState<sup>10+<sup> | 使用同步方法获取当前会话播放状态相关信息。 |
-| getAVMetadataSync(): AVMetadata<sup>10+<sup> | 使用同步方法获取当前会话元数据信息。 |
-| getAVQueueTitleSync(): string<sup>10+<sup> | 使用同步方法当前播放列表的名称。 |
-| getAVQueueItemsSync(): Array&lt;AVQueueItem&gt;<sup>10+<sup> | 使用同步方法获取当前播放列表相关信息。 |
-| isActiveSync(): boolean<sup>10+<sup> | 使用同步方法判断会话是否被激活。 |
-| getValidCommandsSync(): Array&lt;AVControlCommandType&gt;<sup>10+<sup> | 使用同步方法获取会话支持的有效命令。 |
+| getAVPlaybackState(callback: AsyncCallback&lt;AVPlaybackState&gt;): void<sup>10+</sup> | 获取当前会话播放状态相关信息。 |
+| getAVMetadata(callback: AsyncCallback&lt;AVMetadata&gt;): void<sup>10+</sup> | 获取会话元数据。 |
+| getOutputDevice(callback: AsyncCallback&lt;OutputDeviceInfo&gt;): void<sup>10+</sup> | 获取播放设备信息。 |
+| sendAVKeyEvent(event: KeyEvent, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 发送按键事件到会话。|
+| getLaunchAbility(callback: AsyncCallback&lt;WantAgent&gt;): void<sup>10+</sup> | 获取应用在会话中保存的WantAgent对象。 |
+| isActive(callback: AsyncCallback&lt;boolean&gt;): void<sup>10+</sup> | 判断会话是否被激活。 |
+| destroy(callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 销毁当前控制器，销毁后当前控制器不再可用。 |
+| getValidCommands(callback: AsyncCallback&lt;Array&lt;AVControlCommandType&gt;&gt;): void<sup>10+</sup> | 获取会话支持的有效命令。 |
+| sendControlCommand(command: AVControlCommand, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 通过会话控制器发送命令到其对应的会话。 |
+| sendCommonCommand(command: string, args: {[key: string]: Object}, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 通过会话控制器发送自定义命令到其对应的会话。 |
+| getAVQueueItems(callback: AsyncCallback&lt;Array&lt;AVQueueItem&gt;&gt;): void<sup>10+</sup> | 获取当前播放列表相关信息。 |
+| getAVQueueTitle(callback: AsyncCallback&lt;string&gt;): void<sup>10+</sup> | 获取当前播放列表的名称。 |
+| skipToQueueItem(itemId: number, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | 设置指定播放列表单项的ID，发送给session端处理，session端可以选择对这个单项歌曲进行播放。 |
+| getExtras(callback: AsyncCallback&lt;{[key: string]: Object}&gt;): void<sup>10+</sup> | 获取媒体提供方设置的自定义媒体数据包。 |
+| getOutputDeviceSync(): OutputDeviceInfo<sup>10+</sup> | 使用同步方法获取当前输出设备信息。 |
+| getAVPlaybackStateSync(): AVPlaybackState<sup>10+</sup> | 使用同步方法获取当前会话播放状态相关信息。 |
+| getAVMetadataSync(): AVMetadata<sup>10+</sup> | 使用同步方法获取当前会话元数据信息。 |
+| getAVQueueTitleSync(): string<sup>10+</sup> | 使用同步方法当前播放列表的名称。 |
+| getAVQueueItemsSync(): Array&lt;AVQueueItem&gt;<sup>10+</sup> | 使用同步方法获取当前播放列表相关信息。 |
+| isActiveSync(): boolean<sup>10+</sup> | 使用同步方法判断会话是否被激活。 |
+| getValidCommandsSync(): Array&lt;AVControlCommandType&gt;<sup>10+</sup> | 使用同步方法获取会话支持的有效命令。 |
 
 ## 开发步骤
 
