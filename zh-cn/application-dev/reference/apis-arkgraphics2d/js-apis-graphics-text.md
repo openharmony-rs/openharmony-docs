@@ -1568,7 +1568,7 @@ struct Index {
 
 | 名称        | 类型                      | 只读 | 可选 | 说明                                    |
 | ----------- | ------------------------- | ---- | --- | --------------------------------------- |
-| fitStrRange | Array\<[Range](#range)\>  | 否   | 否   | 适合段落矩形区域的字符串字符范围数组。       |
+| fitStrRange | Array\<[Range](#range)\>  | 否   | 否   | 布局后可以容纳的字符范围数组。       |
 | correctRect  | [TextRectSize](#textrectsize) | 否   | 否   | 布局后段落的矩形尺寸。 |
 
 ## Paragraph
@@ -1729,7 +1729,7 @@ layoutWithConstraints(size: TextRectSize): TextLayoutResult
 
 | 类型                                        | 说明                                    |
 | ------------------------------------------- | --------------------------------------- |
-| [TextLayoutResult](#textlayoutresult) | 所需的矩形尺寸和实际适合段落的字符范围。|
+| [TextLayoutResult](#textlayoutresult) | 布局后的实际尺寸和排版后容下的字符范围。|
 
 **示例：**
 
@@ -1737,6 +1737,9 @@ layoutWithConstraints(size: TextRectSize): TextLayoutResult
 let size: text.TextRectSize = { width: 200, height: 100 };
 let result = paragraph.layoutWithConstraints(size);
 console.log('Width: ' + result.correctRect.width + ', Height: ' + result.correctRect.height);
+for (let i = 0; i < result.fitStrRange.length; ++i) {
+  console.log('fitRange: [' + result.fitStrRange[i].start + ', ' + result.fitStrRange[i].end + ']');
+}
 ```
 
 ### paint
