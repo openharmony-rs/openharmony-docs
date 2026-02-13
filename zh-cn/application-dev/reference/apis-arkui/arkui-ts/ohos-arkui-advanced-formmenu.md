@@ -64,7 +64,7 @@ AddFormMenuItem(
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 22
+**ArkTs-Sta起始版本：** 23
 
 **参数：**
 
@@ -82,7 +82,7 @@ AddFormMenuItem(
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 22
+**ArkTs-Sta起始版本：** 23
 
 **参数：**
 | 名称             | 类型|只读|可选| 说明                                                      |
@@ -100,7 +100,7 @@ AddFormMenuItem(
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 22
+**ArkTs-Sta起始版本：** 23
 
 **参数：**
 | 名称 | 类型 | 只读 |可选| 说明 |

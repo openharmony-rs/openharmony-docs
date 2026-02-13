@@ -82,10 +82,39 @@ createFormBindingData(obj?: Object | string): FormBindingData
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
-
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { formBindingData } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+try {
+  let file = fileIo.openSync('/path/to/form.png');
+  let formImagesParam: Record<string, number> = {
+    'image': file.fd
+  };
+  let createFormBindingDataParam: Record<string, string | Object> = {
+    'name': '21°',
+    'imgSrc': 'image',
+    'formImages': formImagesParam
+  };
+
+  formBindingData.createFormBindingData(createFormBindingDataParam);
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`catch error, code: ${code}, message: ${message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
 import { formBindingData } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';

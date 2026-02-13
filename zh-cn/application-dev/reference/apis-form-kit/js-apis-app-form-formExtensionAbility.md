@@ -44,8 +44,8 @@ import { FormExtensionAbility } from '@kit.FormKit';
 | 名称    | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | context | [FormExtensionContext](js-apis-inner-application-formExtensionContext.md) | 否   | 否   | FormExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| onStop<sup>23+</sup> | [onStopFn](#onstopfn23) | 否   | 是   | 当卡片提供方的卡片进程退出时，触发该回调。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23|
-| onAcquireFormState<sup>23+</sup> | [onAcquireFormState](#onacquireformstatefn23) | 否 | 是 | 卡片提供方接收查询卡片状态通知接口，默认返回卡片初始状态(该方法可以选择性重写)。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23 |
+| onStop<sup>23+</sup> | [onStopFn](#onstopfn23) | 否   | 是   | 当卡片提供方的卡片进程退出时，触发该回调。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23|
+| <sup>23+</sup> | [OnAcquireFormStateFn](#onacquireformstatefn23) | 否 | 是 | 卡片提供方接收查询卡片状态通知接口，默认返回卡片初始状态(该方法可以选择性重写)。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23 |
 
 ### FormExtensionAbility.onAddForm
 
@@ -139,7 +139,24 @@ onCastToNormalForm(formId: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { FormExtensionAbility } from '@kit.FormKit';
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onCastToNormalForm(formId: string) {
+    // 卡片提供方收到卡片使用方将临时卡片转常态卡片的通知时触发，开发者需根据实际需求做相应的处理
+    console.info(`FormExtensionAbility onCastToNormalForm, formId: ${formId}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
 import { FormExtensionAbility } from '@kit.FormKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
@@ -279,7 +296,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
       formProvider.updateForm(keys[i], obj2).then(() => {
         console.info(`FormExtensionAbility context updateForm`);
       }).catch((error: BusinessError) => {
-        console.error(`Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
+        console.error(`Operation updateForm failed. code: ${error.code}, message: ${error.message}`);
       });
     }
   }
@@ -325,7 +342,23 @@ onFormEvent(formId: string, message: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { FormExtensionAbility } from '@kit.FormKit';
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onFormEvent(formId: string, message: string) {
+    console.info(`FormExtensionAbility onFormEvent, formId: ${formId}, message: ${message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
 import { FormExtensionAbility } from '@kit.FormKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
@@ -359,7 +392,23 @@ onRemoveForm(formId: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { FormExtensionAbility } from '@kit.FormKit';
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onRemoveForm(formId: string) {
+    console.info(`FormExtensionAbility onRemoveForm, formId: ${formId}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
 import { FormExtensionAbility } from '@kit.FormKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
@@ -393,7 +442,26 @@ onConfigurationUpdate(newConfig: Configuration): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+import { FormExtensionAbility } from '@kit.FormKit';
+import { Configuration } from '@kit.AbilityKit';
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onConfigurationUpdate(newConfig: Configuration) {
+    // 仅当前formExtensionAbility存活时更新配置才会触发此生命周期。
+    // 需要注意：formExtensionAbility创建后10秒内无操作将会被清理。
+    console.info(`onConfigurationUpdate, config language: ${newConfig.language}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
 import { FormExtensionAbility } from '@kit.FormKit';
 import { Configuration } from '@kit.AbilityKit';
 
@@ -501,6 +569,8 @@ onFormLocationChanged(formId: string, newFormLocation: formInfo.FormLocation): v
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formBindingData, FormExtensionAbility, formInfo } from '@kit.FormKit';
 import { Want } from '@kit.AbilityKit';
@@ -512,6 +582,29 @@ export default class EntryFormAbility extends FormExtensionAbility {
     };
     return formBindingData.createFormBindingData(formData);
   }
+
+  onFormLocationChanged(formId: string, newFormLocation: formInfo.FormLocation) {
+    console.info("EntryFormAbility onFormLocationChanged current location: " + newFormLocation);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formBindingData, FormExtensionAbility, formInfo } from '@kit.FormKit';
+import { Want } from '@kit.AbilityKit';
+
+export default class EntryFormAbility extends FormExtensionAbility {
+  onAddForm(want: Want) {
+    let formData: Record<string, string | Object> = {
+      'data': 'addForm'
+    };
+    return formBindingData.createFormBindingData(formData);
+  }
+
   onFormLocationChanged(formId: string, newFormLocation: formInfo.FormLocation) {
     console.info("EntryFormAbility onFormLocationChanged current location: " + newFormLocation);
   }
@@ -544,6 +637,8 @@ onSizeChanged(formId: string, newDimension: formInfo.FormDimension, newRect: for
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { FormExtensionAbility, formInfo } from '@kit.FormKit';
 
@@ -553,6 +648,21 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { FormExtensionAbility, formInfo } from '@kit.FormKit';
+
+export default class MyFormExtensionAbility extends FormExtensionAbility {
+  onSizeChanged(formId: string, newDimension: formInfo.FormDimension, newRect: formInfo.Rect) {
+    console.info(`FormExtensionAbility onSizeChanged, formId: ${formId}, newDimension: ${newDimension}`);
+  }
+}
+```
+
 
 ## OnStopFn<sup>23+</sup>
 
