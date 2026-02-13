@@ -774,6 +774,55 @@ struct NavigationContentMsgStack {
 
 <!-- @[Internal_localStorage_multi_instance_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/Index.ets) -->
 
+``` TypeScript
+// Index.ets
+import { common, Want } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  build() {
+    Column() {
+      Text('使用文件管理器，使用本应用打开多个PDF')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+      Button('Jump to PDF_A').onClick(() => {
+        let wantInfo: Want = {
+          bundleName: 'com.samples.paradigmstatemanagement',
+          abilityName: 'PdfEntryAbility',
+          uri: 'PDF_A',
+          parameters: {
+            key: 'PDF_A',
+            value: 'PDF_A-1111111111',
+          }
+        };
+        this.context.startAbility(wantInfo);
+      })
+      Button('Jump to PDF_B').onClick(() => {
+        let wantInfo: Want = {
+          bundleName: 'com.samples.paradigmstatemanagement',
+          abilityName: 'PdfEntryAbility',
+          uri: 'PDF_B',
+          parameters: {
+            key: 'PDF_B',
+            value: 'PDF_B-22222222222',
+          }
+        };
+        this.context.startAbility(wantInfo);
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 V2:
 
 使用\@ObservedV2+\@Trace定义全局可观测单例，通过全局的map对象进行数据关联，这种方式需要开发者自行建立唯一的key和value关系。注意单例单独封装存放。
