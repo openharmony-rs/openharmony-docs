@@ -343,7 +343,7 @@ answerCall(callId?: number\): Promise\<void\>
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callId | number | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API Version 9开始为可选参数。<br/>不填该参数则接通最近一通正在响铃的来电。|
+| callId | number | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API version 9开始为可选参数。<br/>不填该参数则接通最近一通正在响铃的来电。|
 
 **返回值：**
 
@@ -441,7 +441,7 @@ hangUpCall\(callId?: number\): Promise\<void\>
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callId | number | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API Version 9开始为可选参数。</br>不填该参数则挂断最近一通正在进行/拨号/连接的通话。|
+| callId | number | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API version 9开始为可选参数。</br>不填该参数则挂断最近一通正在进行/拨号/连接的通话。|
 
 **返回值：**
 
@@ -593,7 +593,7 @@ rejectCall\(callId?: number, options?: RejectMessageOptions\): Promise\<void\>
 
 | 参数名  | 类型                                           | 必填 | 说明                                                         |
 | ------- | ---------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callId  | number                                         | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API Version 9开始为可选参数。<br/>不填该参数则拒接最近一通正在响铃的来电。|
+| callId  | number                                         | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API version 9开始为可选参数。<br/>不填该参数则拒接最近一通正在响铃的来电。|
 | options | [RejectMessageOptions](#rejectmessageoptions7) | 否   | 拒绝消息选项。不填该参数则不会发送拒接短信。|
 
 **返回值：**
