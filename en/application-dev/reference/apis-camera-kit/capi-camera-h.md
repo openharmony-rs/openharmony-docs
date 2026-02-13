@@ -118,7 +118,7 @@ Enumerates the camera error codes.
 | CAMERA_DEVICE_DISABLED = 7400108 | The camera is disabled for security reasons.|
 | CAMERA_DEVICE_PREEMPTED = 7400109 | The camera is preempted.|
 | CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 | The configuration conflicts with the current configuration.<br>**Since**: 12|
-| CAMERA_SERVICE_FATAL_ERROR = 7400201 | A fatal error occurs in the camera service, for example, no camera permission, camera service restart, or abnormal cross-process invocation.|
+| CAMERA_SERVICE_FATAL_ERROR = 7400201 | The camera service is abnormal, for example, no camera permission, camera service restart, or abnormal cross-process invocation.|
 
 ### Camera_Status
 
@@ -155,7 +155,7 @@ Enumerates the camera scene modes.
 | -- | -- |
 | NORMAL_PHOTO = 1 | Normal photo mode.|
 | NORMAL_VIDEO = 2 | Normal video mode.|
-| SECURE_PHOTO = 12 | Secure mode.|
+| SECURE_PHOTO = 12 | Secure mode, which is mainly provided for high-security applications like banking that require features such as biometric verification. The secure mode requires the encryption algorithm framework and trusted application services. For details, see [Device Certificate Kit](../../security/DeviceCertificateKit/device-certificate-kit-intro.md).|
 
 ### Camera_Position
 
