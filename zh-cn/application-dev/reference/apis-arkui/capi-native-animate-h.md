@@ -2359,7 +2359,7 @@ ArkUI_TransitionEffect* OH_ArkUI_CreateAsymmetricTransitionEffect(ArkUI_Transiti
 
 > **说明：**
 >
-> 如不通过asymmetric函数构造TransitionEffect，则表明该效果在组件出现和消失时均生效。
+> 如果不通过该函数构造[ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)，则表明该效果在组件出现和消失时均生效。
 
 **起始版本：** 12
 
@@ -2437,7 +2437,7 @@ int32_t OH_ArkUI_TransitionEffect_SetAnimation(ArkUI_TransitionEffect* effect, A
 
 > **说明：**
 >
-> 如果通过combine进行转场效果的组合，前一转场效果的动画参数也可用于后一转场效果。
+> 如果通过[OH_ArkUI_TransitionEffect_Combine](#OH_ArkUI_TransitionEffect_Combine)进行转场效果的组合，前一转场效果的动画参数也可用于后一转场效果。
 
 **起始版本：** 12
 
