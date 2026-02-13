@@ -64,7 +64,7 @@
    `entry/src/main/ets/widget/pages/WidgetCard.ets`完整代码。
 
    ``` TypeScript
-   import { hdsMaterial } from '@kit.UIDesignKit';
+   import  {hdsMaterial}  from '@hms.hds.hdsMaterial';
 
    @Entry
    @ComponentV2
@@ -73,17 +73,17 @@
        Stack() {
          Column() {
            // 使用场景枚举调用
-           Button('hdsMaterial button', { buttonStyle: ButtonStyleMode.NORMAL })
+           Button('hdsMaterial button', {buttonStyle: ButtonStyleMode.NORMAL})
              .width(300)
              .height(80)
              .systemMaterial(new hdsMaterial.Material({
                backgroundMaterial: {
-                 type: hdsMaterial.MaterialType.IMMERSIVE, // 材质类型:沉浸式材质
+                 type: hdsMaterial.MaterialType.IMMERSIVE,   // 材质类型:沉浸式材质
                  scenario: hdsMaterial.ScenarioType.GENERAL, // 场景:通用
-                 level: hdsMaterial.MaterialLevel.ADAPTIVE   // 材质分档:自适应
+                 level: hdsMaterial.MaterialLevel.ADAPTIVE   // 材质分档:自适应 
                }
              }))
-             .margin({ top: 10 })
+             .margin({top: 10})
          }
          .height('100%')
          .width('100%')
