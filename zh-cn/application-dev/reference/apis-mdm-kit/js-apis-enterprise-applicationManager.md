@@ -1307,7 +1307,7 @@ setKioskFeatures(admin: Want, features: Array\<KioskFeature>): void
 | 参数名       | 类型                                                    | 必填 | 说明                   |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。         |
-| features | Array&lt;[KioskFeature](#kioskfeature20)&gt;           | 是   | Kiosk模式的特征集合。 <br> 当传入空数组时，系统会清空之前下发过的特征，恢复到Kiosk模式的默认状态，即禁用通知中心、控制中心和最近任务栏等能力。|
+| features | Array&lt;[KioskFeature](#kioskfeature20)&gt;           | 是   | Kiosk模式的特征集合。 <br> 当传入空数组时，系统会清空之前下发过的特征，恢复到Kiosk模式的默认状态，即禁用通知中心、控制中心、最近任务栏和侧边dock(侧边dock默认状态下能左滑悬停展示，设置后左滑悬停不展示)等能力。|
 
 **错误码**：
 
@@ -1334,6 +1334,8 @@ let wantTemp: Want = {
 let kioskFeatures: Array<applicationManager.KioskFeature> = [];
 kioskFeatures.push(applicationManager.KioskFeature.ALLOW_NOTIFICATION_CENTER);
 kioskFeatures.push(applicationManager.KioskFeature.ALLOW_CONTROL_CENTER);
+kioskFeatures.push(applicationManager.KioskFeature.ALLOW_GESTURE_CONTROL);
+kioskFeatures.push(applicationManager.KioskFeature.ALLOW_SIDE_DOCK);
 try {
   applicationManager.setKioskFeatures(wantTemp, kioskFeatures);
   console.info('Succeeded in setting kiosk feature.');
@@ -1354,6 +1356,8 @@ Kiosk模式的特征。
 | ----------------------------| ----| ------------------------------- |
 | ALLOW_NOTIFICATION_CENTER   | 1   | 允许进入通知中心。 |
 | ALLOW_CONTROL_CENTER        | 2   | 允许进入控制中心。 |
+| ALLOW_GESTURE_CONTROL       | 3   | 允许底部手势导航。 |
+| ALLOW_SIDE_DOCK        | 4   | 允许侧边dock。 |
 
 ## applicationManager.addUserNonStopApps<sup>22+</sup>
 
