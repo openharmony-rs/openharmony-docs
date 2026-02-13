@@ -47,7 +47,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | displayVersion | string | 是 | 产品版本。<br/>示例：<!--RP8-->XXX X.X.X.X<!--RP8End--> |
 | incrementalVersion | string | 是 | 差异版本号。<br/>示例：default |
 | osReleaseType | string | 是 | 系统的发布类型，取值为：<br/>-&nbsp;Canary：面向特定开发者发布的早期预览版本，不承诺API稳定性。<br/>-&nbsp;Beta：面向开发者公开发布的Beta版本，不承诺API稳定性。<br/>-&nbsp;Release：面向开发者公开发布的正式版本，承诺API稳定性。<br/>示例：<!--RP9-->Canary/Beta/Release<!--RP9End--> |
-| osFullName | string | 是 | 系统版本，版本格式OpenHarmony-x.x.x.x,x为数值。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br/>示例：<!--RP10-->Openharmony-5.0.0.1<!--RP10End--> |
+| osFullName | string | 是 | 系统版本，版本格式OpenHarmony-x.x.x.x<!--RP12-->,x为数值。<!--RP12End--><br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br/>示例：<!--RP10-->Openharmony-5.0.0.1<!--RP10End--> |
 | majorVersion | number | 是 | Major版本号，随主版本更新增加，值为osFullName中的第一位数值，建议直接使用deviceInfo.majorVersion获取，可提升效率，不建议开发者解析osFullName获取。<br/>示例：5 |
 | seniorVersion | number | 是 | Senior版本号，随局部架构、重大特性增加，值为osFullName中的第二位数值，建议直接使用deviceInfo.seniorVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：0 |
 | featureVersion | number | 是 | Feature版本号，标识规划的新特性版本，值为osFullName中的第三位数值，建议直接使用deviceInfo.featureVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：0 |
