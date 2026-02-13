@@ -55,6 +55,7 @@
       - [Array](builtin/arkts-dyn-to-sta-builtin-Array.md)
       - [Constructor](builtin/arkts-dyn-to-sta-builtin-Constructor.md)
       - [ReadOnly](builtin/arkts-dyn-to-sta-builtin-ReadOnly.md)
+      - [Annotations](builtin/arkts-dyn-to-sta-builtin-annotations.md)
       - [stdlib1](builtin/arkts-dyn-to-sta-builtin-stdlib1.md)
       - [stdlib2](builtin/arkts-dyn-to-sta-builtin-stdlib2.md)
       - [stdlib3](builtin/arkts-dyn-to-sta-builtin-stdlib3.md)
