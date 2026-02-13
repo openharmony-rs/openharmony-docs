@@ -831,7 +831,23 @@ V2:
 
 ``` TypeScript
 // model/PDFData.ets
-@ObservedV2
+<!-- @[Internal_localStorage_multi_instance_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/PdfEntryAbility.ets) -->
+
+``` TypeScript
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import PDFData from './model/PDFData';
+
+export default class PDFAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // 用单例存储数据
+    const data = this.launchWant.parameters as Record<string, string>;
+    PDFData.getInstance().setData(data.key, data.value);
+    PDFData.getInstance().setFlage(this.launchWant.uri || '');
+    windowStage.loadContent('pages/internalmigrate/LocalStorageMultiInstance/PDF').catch();
+  }
+}
+```
 export default class PDFData {
   // 单例实例
   private static instance_: PDFData | null = null;
