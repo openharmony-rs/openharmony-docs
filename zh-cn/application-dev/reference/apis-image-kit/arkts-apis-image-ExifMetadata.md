@@ -126,7 +126,7 @@ import { image } from '@kit.ImageKit';
 | meteringMode                        | number                                             | 否   | 是   | 测光模式。                                                   |
 | lightSource                         | number                                             | 否   | 是   | 光源。                                                       |
 | flash                               | number                                             | 否   | 是   | 闪光。                                                       |
-| focalLength                         | number                                             | 否   | 是   | 焦距。，单位为毫米。                                                       |
+| focalLength                         | number                                             | 否   | 是   | 焦距。单位为毫米。                                                       |
 | subjectArea                         | number[]                                           | 否   | 是   | 用于指示主要对象在整个场景中的位置和区域。                   |
 | makerNote                           | ArrayBuffer                                        | 否   | 是   | Exif/相机文件系统设计规则DCF（Design rule for Camera File system）写入器制造商记录所需信息的标签。                     |
 | userComment                         | string                                             | 否   | 是   | 用户评论。                                                   |
