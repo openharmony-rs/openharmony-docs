@@ -2052,7 +2052,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringCurve(float velocity, float mass, f
 **描述：**
 
 
-构造弹簧曲线对象，曲线形状由弹簧参数决定，动画时长受animation、animateTo中的duration参数控制。
+构造弹簧曲线对象，曲线形状由弹簧参数决定，动画时长受[animation](../../apis-arkui/arkui-ts/ts-animatorproperty.md)、[animateTo](../../apis-arkui/arkts-apis-uicontext-uicontext.md)中的duration参数控制。
 
 **起始版本：** 12
 
@@ -2085,7 +2085,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringMotion(float response, float dampin
 
 > **说明：**
 >
-> 动画时间由曲线参数决定，不受animation、animateTo中的duration参数控制。
+> 动画时间由曲线参数决定，不受[animation](../../apis-arkui/arkui-ts/ts-animatorproperty.md)、[animateTo](../../apis-arkui/arkts-apis-uicontext-uicontext.md)中的duration参数控制。
 
 **起始版本：** 12
 
@@ -2117,7 +2117,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateResponsiveSpringMotion(float response, fl
 
 > **说明：**
 >
-> 动画时间由曲线参数决定，不受animation、animateTo中的duration参数控制。
+> 动画时间由曲线参数决定，不受[animation](../../apis-arkui/arkui-ts/ts-animatorproperty.md)、[animateTo](../../apis-arkui/arkts-apis-uicontext-uicontext.md)中的duration参数控制。
 
 **起始版本：** 12
 
@@ -2149,7 +2149,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateInterpolatingSpring(float velocity, float
 
 > **说明：**
 >
-> 动画时间由曲线参数决定，不受animation、animateTo中的duration参数控制。
+> 动画时间由曲线参数决定，不受[animation](../../apis-arkui/arkui-ts/ts-animatorproperty.md)、[animateTo](../../apis-arkui/arkts-apis-uicontext-uicontext.md)中的duration参数控制。
 
 **起始版本：** 12
 
