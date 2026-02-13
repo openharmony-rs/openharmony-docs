@@ -1092,9 +1092,9 @@ atManager.grantPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags
 
 ### revokePermission<sup>21+</sup>
 
-ArkTS-Dyn: revokePermission(tokenID: number, permissionName: Permissions, permissionFlags: number): Promise&lt;void&gt;
+ArkTS-Dyn: revokePermission(tokenID: number, permissionName: Permissions, permissionFlags: number, killProcess?: boolean): Promise&lt;void&gt;
 
-ArkTS-Sta: revokePermission(tokenID: int, permissionName: Permissions, permissionFlags: int): Promise&lt;void&gt;
+ArkTS-Sta: revokePermission(tokenID: int, permissionName: Permissions, permissionFlags: int, killProcess?: boolean): Promise&lt;void&gt;
 
 撤销应用权限。使用Promise异步回调。
 
@@ -1115,6 +1115,7 @@ ArkTS-Sta: revokePermission(tokenID: int, permissionName: Permissions, permissio
 | tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
 | permissionName | Permissions              | 是   | 被撤销的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 | permissionFlags  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗，用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
+| killProcess | boolean | 否 | 是否终止应用进程。<br>- true表示终止应用进程。<br>- false表示不终止应用进程。<br>- 默认值为true。<br>**起始版本**：26.0.0 |
 
 **返回值：**
 
@@ -1128,13 +1129,12 @@ ArkTS-Sta: revokePermission(tokenID: int, permissionName: Permissions, permissio
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. Interface caller does not have permission "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
-| 202 | Not System App. Interface caller is not a system app. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
+| 201 | Permission denied. The interface invoker does not have permission "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
+| 202 | Not a system application. The interface invoker is not a system application. |
+| 12100001 | Invalid parameter. The token ID is 0, the permission name exceeds 256 characters or is not declared in the module.json file, or the value of flags is invalid. |
 | 12100002 | The specified tokenID does not exist. |
 | 12100003 | The specified permission does not exist. |
-| 12100006 | The application specified by the tokenID is not allowed to be revoked with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
+| 12100006 | The specified permission is not allowed to be revoked from the application specified by the tokenID. Either the application is a sandbox or the tokenID is from a remote device. |
 | 12100007 | The service is abnormal. |
 | 12100014 | Unexpected permission. The specified permission is not a user_grant or manual_settings permission. |
 
@@ -1148,6 +1148,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let tokenID: number = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
 let permissionFlags: number = 2;
+// 不终止应用进程
+atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, false).then(() => {
+  console.info('revokePermission success');
+}).catch((err: BusinessError) => {
+  console.error(`revokePermission fail, code: ${err.code}, message: ${err.message}`);
+});
+// 终止应用进程（默认行为）
 atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('revokePermission success');
 }).catch((err: BusinessError) => {
@@ -1163,6 +1170,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let tokenID: int = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
 let permissionFlags: int = 2;
+// 不终止应用进程
+atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, false).then(() => {
+  console.info('revokePermission success');
+}).catch((err: BusinessError): void => {
+  console.error(`revokePermission fail, code: ${err.code}, message: ${err.message}`);
+});
+// 终止应用进程（默认行为）
 atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('revokePermission success');
 }).catch((err: BusinessError): void => {
