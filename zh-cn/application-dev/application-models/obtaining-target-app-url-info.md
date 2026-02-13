@@ -144,7 +144,7 @@
     > - 建议在实际使用前，通过hdc命令确认目标应用的最新配置信息。
     > - 如果应用未配置skills中的uris字段，则不支持通过Deep Linking方式拉起。
 
-4. 使用Deep Linking方式拉起目标应用
+4. 使用Deep Linking方式拉起目标应用。
 
     以下为通过[uiAbilityContext.openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起目标应用的完整示例。在实现时请注意：
 
@@ -183,7 +183,7 @@
     }
     ```
 
-5. 调试验证
+5. 调试验证。
 
     安装并启动步骤4中的拉起方应用后，点击openLink按钮即可拉起目标应用，演示效果如下：
 
