@@ -61,7 +61,7 @@ struct Index {
 }
 ```
 
-以上demo将所有的dmp文件都复制到可查看的沙箱路径中，也可以搜索hilog日志“.dmp”得到dmp文件名，这样就可以将某个dmp文件移动到另一个沙箱路径下了，具体的路径为
+以上demo将所有的dmp文件都复制到可查看的沙箱路径中，也可以搜索hilog日志“.dmp”得到dmp文件名，这样就可以将某个dmp文件复制到另一个沙箱路径下了，具体的路径为
 
   ```c
   /data/app/el2/100/base/应用包名/haps/entry/files/
