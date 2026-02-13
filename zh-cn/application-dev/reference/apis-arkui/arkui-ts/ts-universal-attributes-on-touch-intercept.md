@@ -75,7 +75,7 @@ struct Index {
         // 使用touches时需要先校验是否为空
         if (event && event.touches) {
           let touches = event.touches;
-          for(let i = 0; touches[i] != null; i++) {
+          for (let i = 0; touches[i] != null; i++) {
             console.info('onTouchIntercept touches:', JSON.stringify(touches[i]));
           }
         }

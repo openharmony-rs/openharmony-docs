@@ -12,7 +12,7 @@ typedef struct {...} Print_Range
 
 ## Overview
 
-Defines a struct for the print range.
+Defines a struct for the page range to print.
 
 **Since**: 13
 

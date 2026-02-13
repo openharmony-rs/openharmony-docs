@@ -1473,7 +1473,7 @@ In multi-project packing mode, the two HAPs or HSPs specified by **--app-list**,
 
 **Solution**
 
-Ensure that the HAPs or HSPs specified by **--app-list**,**--hap-list**, and**--hsp-list** have different file names.
+Ensure that the HAPs or HSPs specified by **--app-list**,**--hap-list**, and **--hsp-list** have different file names.
 
 ### 10012046 Failed to Parse the config.json File
 **Error Message**
@@ -1774,7 +1774,7 @@ In the **module.json** file, an element in the **proxyData** tag under the **mod
 
 Check the **module.json** file and ensure that each element in the **proxyData** tag under the **module** tag contains the **uri** tag.
 
-### 10013010 Failed to Check the bundleTyp Consistency
+### 10013010 Failed to Check the bundleType Consistency
 **Error Message**
 
 Failed to check the consistency of bundleType.
