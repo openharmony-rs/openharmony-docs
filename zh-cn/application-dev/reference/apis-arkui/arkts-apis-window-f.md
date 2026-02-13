@@ -810,7 +810,9 @@ struct Index {
 ```
 
 ## window.shiftAppWindowTouchEvent<sup>20+</sup>
-shiftAppWindowTouchEvent(sourceWindowId: number, targetWindowId: number, fingerId: number): Promise&lt;void&gt;
+ArkTs-Dyn: shiftAppWindowTouchEvent(sourceWindowId: number, targetWindowId: number, fingerId: number): Promise&lt;void&gt;
+
+ArkTs-Sta: shiftAppWindowTouchEvent(sourceWindowId: int, targetWindowId: int, fingerId: int): Promise&lt;void&gt;
 
 主窗口和子窗口可正常调用，用于将触屏输入事件从源窗口转移到目标窗口。使用Promise异步回调。
 
@@ -828,9 +830,9 @@ shiftAppWindowTouchEvent(sourceWindowId: number, targetWindowId: number, fingerI
 
 | 参数名          | 类型   | 必填  | 说明                    |
 | -------------- | ------ | ----- | ----------------------- |
-| sourceWindowId | number | 是    | 源窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。该参数应为大于0的整数，小于等于0时会返回错误码1300016。            |
-| targetWindowId | number | 是    | 目标窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。该参数应为大于0的整数，小于等于0时会返回错误码1300016。             |
-| fingerId | number | 是    | 触屏事件的手指唯一标识符。推荐使用[TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明)对象中touches属性获取id。该参数应为大于等于0的整数，小于0时会返回错误码1300016。             |
+| sourceWindowId | ArkTS-Dyn: number</br>ArkTS-Sta: int | 是    | 源窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。该参数应为大于0的整数，小于等于0时会返回错误码1300016。            |
+| targetWindowId | ArkTS-Dyn: number</br>ArkTS-Sta: int | 是    | 目标窗口id。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。该参数应为大于0的整数，小于等于0时会返回错误码1300016。             |
+| fingerId | ArkTS-Dyn: number</br>ArkTS-Sta: int | 是    | 触屏事件的手指唯一标识符。推荐使用[TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明)对象中touches属性获取id。该参数应为大于等于0的整数，小于0时会返回错误码1300016。             |
 
 **返回值：**
 
@@ -851,6 +853,8 @@ shiftAppWindowTouchEvent(sourceWindowId: number, targetWindowId: number, fingerI
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range.|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // ets/pages/Index.ets
@@ -878,6 +882,43 @@ struct Index {
                 });
               } catch (exception) {
                 console.error(`Failed to shift app touch event. Cause code: ${exception.code}, message: ${exception.message}`);
+              }
+            }
+          })
+      }.width('100%')
+    }.height('100%').width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// ets/pages/Index.ets
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Blank('160')
+          .color(Color.Blue)
+          .onTouch((event: TouchEvent) => {
+            if (event.type === TouchType.Down) {
+              try {
+                let sourceWindowId = 1;
+                let targetWindowId = 2;
+                let promise = window.shiftAppWindowTouchEvent(sourceWindowId, targetWindowId, event.touches[0].id);
+                promise.then(() => {
+                  console.info('Succeeded in shifting app window touch event');
+                }).catch((err) => {
+                  console.error(`Failed to shift app window touch event. Cause code: ${err.code}, message: ${err.message}`);
+                });
+              } catch (exception) {
+                let err = exception as BusinessError;
+                console.error(`Failed to shift app touch event. Cause code: ${err.code}, message: ${err.message}`);
               }
             }
           })
