@@ -8776,7 +8776,7 @@ setWindowTopmost(isWindowTopmost: boolean): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-// ets/pages/Index.ets
+// Index.ets
 import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
