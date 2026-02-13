@@ -811,7 +811,7 @@ Describes the configuration of the edit box.
 | inputAttribute  | [InputAttribute](#inputattribute10) | No| No| Edit box attribute.|
 | cursorInfo  | [CursorInfo](#cursorinfo10) | No| Yes| Cursor information.|
 | selection  | [Range](#range10) | No| Yes| Text selection range.|
-| windowId  | number | No| Yes| ID of the window where the edit box is located. The value must be an integer.<br>You are advised to call [getWindowProperties()](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
+| windowId  | number | No| Yes| ID of the window where the edit box is located. The value must be an integer.<br>You are advised to call [getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
 | newEditBox<sup>20+</sup> | boolean | No| Yes| Whether the edit box is new. The value **true** means the edit box is new; the value **false** means the opposite.|
 | capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | No| Yes| Whether to capitalize the first letter in the edit box. If it is not set or is set to an invalid value, the first letter is not capitalized by default.|
 
@@ -3759,7 +3759,7 @@ showOptionalInputMethods(callback: AsyncCallback&lt;boolean&gt;): void
 Displays a dialog box for selecting an input method. This API uses an asynchronous callback to return the result.
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 18. You are advised to use [inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog) instead.
+> This API is supported since API version 9 and deprecated since API version 18. You are advised to use [InputMethodListDialog](js-apis-inputmethodlist.md#inputmethodlistdialog) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -3803,7 +3803,7 @@ Displays a dialog box for selecting an input method. This API uses a promise to 
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 18. You are advised to use [inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog) instead.
+> This API is supported since API version 9 and deprecated since API version 18. You are advised to use [InputMethodListDialog](js-apis-inputmethodlist.md#inputmethodlistdialog) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -3907,7 +3907,7 @@ Displays a dialog box for selecting an input method. This API uses an asynchrono
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [InputMethodListDialog](js-apis-inputmethodlist.md#inputmethodlistdialog) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -3939,7 +3939,7 @@ Displays a dialog box for selecting an input method. This API uses a promise to 
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [InputMethodListDialog](js-apis-inputmethodlist.md#inputmethodlistdialog) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 

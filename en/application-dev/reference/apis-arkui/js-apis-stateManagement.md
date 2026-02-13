@@ -51,8 +51,8 @@ Stores key-value pair data in the application memory. If the given key already e
 | Name  | Type  | Mandatory| Description              |
 | -------- | ------ | ---- | ---------------------- |
 | type | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst) | Yes  | Type. If no key is specified, the name of the type is used as the key.|
-| keyOrDefaultCreator | string&nbsp;\|&nbsp;[StorageDefaultCreator\<T\>](#storagedefaultcreatort) | No  | Key, or constructor for obtaining the default value.|
-| defaultCreator | StorageDefaultCreator\<T\> | No  | Constructor for obtaining the default value.|
+| keyOrDefaultCreator | string&nbsp;\|&nbsp;[StorageDefaultCreator\<T\>](#storagedefaultcreatort) | No  | Key, or constructor for obtaining the default value. The default value is **undefined**.|
+| defaultCreator | StorageDefaultCreator\<T\> | No  | Constructor for obtaining the default value. The default value is **undefined**.|
 
 >**NOTE**
 >
@@ -104,7 +104,7 @@ Removes the specified key-value pair from [AppStorageV2](../../ui/state-manageme
 
 | Name  | Type  | Mandatory| Description              |
 | -------- | ------ | ---- | ---------------------- |
-| keyOrType | string \| TypeConstructorWithArgs\<T\> | Yes  | Key to be removed. If a type is specified, the key to be removed is the name of that type.|
+| keyOrType | string \| [TypeConstructorWithArgs](#typeconstructorwithargst)\<T\> | Yes  | Key to be removed. If a type is specified, the key to be removed is the name of that type.|
 
 >**NOTE**
 >
@@ -162,7 +162,7 @@ Inherits from [AppStorageV2](#appstoragev2). For details, see [PersistenceV2: Pe
 
 static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefined
 
-Stores key-value pair data on the application disk. If the given key already exists in [PersistenceV2](../../ui/state-management/arkts-new-persistencev2.md), the corresponding value is returned. Otherwise, a default value is constructed using the default value constructor and returned. If **globalConnect** is used for an @ObservedV2 decorated object, changes to the object's @Trace properties will trigger automatic refresh of the associated object, while changes to non-@Trace properties will not. If necessary, the **PersistenceV2.save** API can be called to store the data manually.
+Stores key-value pair data on the application disk. If the given key already exists in [PersistenceV2](../../ui/state-management/arkts-new-persistencev2.md), the corresponding value is returned. Otherwise, a default value is constructed using the default value constructor and returned. If **globalConnect** is used for an [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md) decorated object, changes to the object's [\@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md) properties will trigger automatic refresh of the associated object, while changes to non-@Trace properties will not. If necessary, the [PersistenceV2.save](#save) API can be called to store the data manually.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -205,7 +205,7 @@ This example is provided for you to understand the usage of **globalConnect**. Y
 
 <!--code_no_check-->
 ```ts
-import { PersistenceV2, Type, ConnectOptions } from '@kit.ArkUI';
+import { PersistenceV2, Type } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
 
 @ObservedV2
@@ -245,11 +245,13 @@ const p3: Sample = PersistenceV2.globalConnect({
 
 ```
 ### globalConnect<sup>23+</sup>
- static globalConnect\<T extends CollectionType<S\>, S extends object\>(
-  type: ConnectOptionsCollections\<T, S\> | ConnectOptions\<T\>
-  ): T | undefined
 
-Stores key-value pair data on the application disk. Supports the persistence of the following collection types: [Array, Map, Set, Date, collections.Array, collections.Map, collections.Set](../../ui/state-management/arkts-new-persistencev2.md#collection-types-supported-by-globalconnect). Note that when persisting data of the Array\<ClassA> type, you need to call [makeObserved](#makeobserved) to make the returned object observed. Multi-level nested sets are not supported. For example, **Array<Array\<ClassA>>** persistence is not supported.
+static globalConnect\<T extends CollectionType<S\>, S extends object\>( <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;type: ConnectOptionsCollections\<T, S\> | ConnectOptions\<T\> <br>
+): T | undefined
+
+Stores key-value pair data on the application disk. Supports the persistence of the following collection types: [Array, Map, Set, Date, collections.Array, collections.Map, and collections.Set](../../ui/state-management/arkts-new-persistencev2.md#types-supported-by-globalconnect). Note that when persisting data of the **Array\<ClassA>** type, you need to call [makeObserved](#makeobserved) to make the returned object observed. Multi-level nested sets are not supported. For example, **Array<Array\<ClassA>>** persistence is not supported.
+
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -261,11 +263,11 @@ Stores key-value pair data on the application disk. Supports the persistence of 
 
 | Name  | Type  | Mandatory| Description              |
 | -------- | ------ | ---- | ---------------------- |
-| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollections23)\| [ConnectOptions\<T\>](#connectoptions18)|  Yes  | Passed **globalConnect** parameters. For details, see the description of **ConnectOptions** and **ConnectOptionsCollections**. If **defaultSubCreator** is provided in **ConnectOptionsCollections**, **defaultCreator** must be provided. The collection item type S must be the same as the return type of **defaultSubCreator**.|
+| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollections23)\| [ConnectOptions\<T\>](#connectoptions18) |  Yes  | Passed **globalConnect** parameters. For details, see the description of **ConnectOptions** and **ConnectOptionsCollections**.<br>If **defaultSubCreator** is provided in **ConnectOptionsCollections**, **defaultCreator** must be provided. Otherwise, the persistence fails. The collection item type S must be the same as the return type of **defaultSubCreator**. If the return types are inconsistent, an error will be reported during compilation.|
 
-When you use **defaultSubCreator** in **globalConnect**, you must provide **defaultCreator**. The return type of the **defaultSubCreator** function must be the same as the collection item type returned by **defaultCreator**.
-When **globalConnect** persists data of the **Array\<ClassA>** type, you need to use the **defaultSubCreator** option to instruct the state management framework to create an instance of **ClassA**. The following is an example of using **globalConnect** to persist data of the **Array\<ClassA>** type:
+When you use **defaultSubCreator** in **globalConnect**, you must provide **defaultCreator**. The return type of the **defaultSubCreator** function must be the same as the collection item type returned by **defaultCreator**.<br>When **globalConnect** persists data of the **Array\<ClassA>** type, you need to use the **defaultSubCreator** option to instruct the state management framework to create an instance of **ClassA**. The following is an example of using **globalConnect** to persist data of the **Array\<ClassA>** type:
 
+<!--code_no_check-->
 ```typescript
 class ClassA {
   propA: number;
@@ -303,7 +305,7 @@ import { PersistenceV2, ConnectOptions } from '@kit.ArkUI';
 struct Page1 {
   // globalConnect supports the persistence of data of the Map type.
   @Local map: Map<number, number> = PersistenceV2.globalConnect({
-    type: Map<number, number>, defaultCreator: () => new Map<number, number>();
+    type: Map<number, number>, defaultCreator: () => new Map<number, number>()
   })!
   output: string[] = [];
 
@@ -424,12 +426,13 @@ Defines the parameter type for [globalConnect](#globalconnect23) API. ConnectOpt
 
 |Parameter  |Type   |Read-Only  |Optional   |Description     |
 |--------|------------|------------|-----------|--------------|
-|defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |No  |Yes  |Persists container data. **defaultSubCreator** should be provided together with **defaultCreator**; otherwise, the container data cannot be persisted. The collection item type **S** must be the same as the return type of **defaultSubCreator**.|
+|defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |No  |Yes  |Persists container data. **defaultSubCreator** should be provided together with **defaultCreator**; otherwise, the container data cannot be persisted. The collection item type **S** must be the same as the return type of **defaultSubCreator**. If **defaultSubCreator** is provided but **defaultCreator** is not, the persistence fails.|
 |defaultSubCreator   | [StorageDefaultCreator\<S\>](#storagedefaultcreatort)   |No  |Yes  |Persists container data. If the return value of **defaultSubCreator** is **undefined** or **null**, the persistence fails. When a user-defined class collection (such as **Array\<ClassA>**) is persisted, the generic type **T** in **defaultCreator** is **Array\<ClassA>**, and **S** in **defaultSubCreator** is **ClassA**.|
 
 The following shows the examples of **StorageDefaultCreator\<T>** and **StorageDefaultCreator\<S>**:
 
 **Example**
+<!--code_no_check-->
 ```typescript
 class ClassA {
   propA: number;
@@ -448,6 +451,64 @@ struct Page {
     defaultSubCreator: () => UIUtils.makeObserved(new ClassA())
   })!
   // ...
+}
+```
+
+If the return value of **StorageDefaultCreator\<S>** is **undefined** or **null**, the persistence fails. If **StorageDefaultCreator\<S>** is directly set to **undefined** or **null**, the state management framework persists data based on the original type (such as **Object**), but will lose the methods in the **class** object. In the following example, if **StorageDefaultCreator\<S>** is directly set to **undefined** or **null**, the **report** method in the **ClassA** object will be lost during persistence.
+
+```typescript
+import { PersistenceV2, UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@ObservedV2
+class ClassA {
+  @Trace public propA: string = '';
+  @Trace public propB: string = '';
+
+  public report(): string {
+    return `${this.propA} - ${this.propB}`;
+  }
+}
+
+@Entry
+@ComponentV2
+struct Comp {
+  // Persist the top-level data whose type is Array<ClassA>.
+  @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
+    type: Array<ClassA>,
+    defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
+    // The return value of defaultSubCreator is set to `undefined` or `null` (defaultSubCreator: () => undefined), and the persistence fails.
+    // defaultSubCreator is directly set to `undefined` or `null` (defaultSubCreator: undefined), and the methods in ClassA will be lost during persistence.
+    defaultSubCreator: undefined
+  })!;
+
+  aboutToAppear(): void {
+    if (this.arr.length) {
+      // Step 3: Access the application again. During the persistence, the method in `ClassA` is lost. When the `report` method in the `ClassA` object is called, the error message "undefined is not callable" is displayed.
+      hilog.info(0xFF00, 'testTag', '%{public}s', this.arr[0].report());
+    }
+  }
+  build() {
+    Column() {
+      Repeat(this.arr)
+        .each(ri => {
+          Row() {
+            Text(`propA '${ri.item.propA}'`)
+            Text(`propB '${ri.item.propB}'`)
+            Text(`report?.() '${ri.item.report?.()}'`)
+          }
+        })
+      // Step 1: Click "add item". The message `propA 'a' propB 'b'report?.'a' - 'b'` is displayed.
+      // Step 2: Close the application.
+      Button('add item')
+        .onClick(() => {
+          let temp: ClassA = new ClassA();
+          temp.propA = 'a';
+          temp.propB = 'b';
+          this.arr.push(temp);
+        })
+    }
+  }
 }
 ```
 
@@ -501,10 +562,10 @@ Defines the decorator and component information associated with the observable o
 
 | Parameter| Type| Read-Only | Optional| Description    |
 | ------ | ---- | ---- |---- | ------------ |
-| decoratorName | string  | No| No  | Decorator name.<br>For a V1 object, the value is the name of the decorator associated with the object.<br> If the V1 object uses [@Track](./../../ui/state-management/arkts-track.md), the value is **'@Track'**.<br> If the V2 object uses [@Trace](./../../ui/state-management/arkts-new-observedV2-and-trace.md), the value is **'@Trace'**.<br> If the V2 object uses [makeObserved](#makeobserved), the value is **'MakeObserved'**.<br> If the V2 object uses [enableV2Compatibility](#enablev2compatibility19), the value is **'EnableV2Compatible'**.<br> If the V2 object uses built-in data, the value is **'ProxyObservedV2'**.|
+| decoratorName | string  | No| No  | Decorator name.<br>For a V1 object, the value is the name of the decorator associated with the object.<br>If the V1 object uses [@Track](./../../ui/state-management/arkts-track.md), the value is **'@Track'**.<br>If the V2 object uses [@Trace](./../../ui/state-management/arkts-new-observedV2-and-trace.md), the value is **'@Trace'**.<br>If the V2 object uses [makeObserved](#makeobserved), the value is **'MakeObserved'**.<br>If the V2 object uses [enableV2Compatibility](#enablev2compatibility19), the value is **'EnableV2Compatible'**.<br>If the V2 object uses built-in data, the value is **'ProxyObservedV2'**. |
 | stateVariableName | string  | No| No  | Name of the attribute decorated by the decorator.|
-| owningComponentOrClassName | string  | No| No  | Component name.<br>A component name is returned by the V1 object.<br> An object name is returned by the V1 object using [@Track](./../../ui/state-management/arkts-track.md) or V2 object.|
-| owningComponentId | number  | No| No  | Component ID.<br>A component ID is returned by the V1 object.<br> **-1** is returned by the V1 object using [@Track](./../../ui/state-management/arkts-track.md) or V2 object.|
+| owningComponentOrClassName | string  | No| No  | Component or object name.<br>For a V1 object, the component name is returned.<br>For a V1 object whose properties are decorated by the [@Track](./../../ui/state-management/arkts-track.md) decorator, the object name is returned.<br>For a V2 object, the object name is returned.|
+| owningComponentId | number  | No| No  | Component ID.<br>For a V1 object, the component ID is returned.<br>For the V1 object whose properties are decorated by the [@Track](./../../ui/state-management/arkts-track.md) decorator or for the V2 object, **-1** is returned instead of the component ID.|
 | dependentInfo | Array<[ElementInfo](#elementinfo23)>  | No| No  | Information about the component that uses the observable object. If the object is not used in any UI, an empty array is returned.|
 
 ## ElementInfo<sup>23+</sup>
@@ -877,7 +938,7 @@ static makeV1Observed\<T extends object\>(source: T): T
 
 Wraps an unobservable object into an object that is observable by V1 state management. This API is equivalent to @Observed and can be used to initialize @ObjectLink.
 
-This API can be used in conjunction with [enableV2Compatibility](#enablev2compatibility19) for scenarios where V1 and V2 state management are mixed. For details, see [Mixing Use of State Management V1 and V2](../../ui/state-management/arkts-v1-v2-mixusage.md).
+This API can be used together with [enableV2Compatibility](#enablev2compatibility19) in scenarios where state management V1 and V2 are used together. For details, see [Mixing Use of State Management V1 and V2](../../ui/state-management/arkts-v1-v2-mixusage.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -944,7 +1005,7 @@ struct Child {
 ### makeBinding<sup>20+</sup>
 static makeBinding\<T\>(getter: GetterCallback\<T\>): Binding\<T\>
 
-Creates a read-only one-way data binding instance, which is used to construct the argument of the **Binding** type in the \@Builder function.
+Creates a read-only one-way data binding instance, which is used to construct the arguments of the **Binding** type in the [\@Builder](../../ui/state-management/arkts-builder.md) function.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -994,7 +1055,7 @@ struct CompV2 {
          * @returns Read-only Binding<number> object.
          *
          * Features:
-         * 1. The value is recalculated each time when .value is accessed.
+         * 1. The value is recalculated each time .value is accessed.
          * 2. The value cannot be directly modified.
          */
         UIUtils.makeBinding<number>(
@@ -1092,7 +1153,7 @@ Dynamically adds a listener to the state variable of state management V2. For de
 | target | object | Yes  | Target object. Only [\@ComponentV2](../../ui/state-management/arkts-create-custom-components.md#componentv2) and [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md) instances are supported.<br>If an unsupported type is provided, a runtime error is thrown. For error code details, see the table below.|
 | path | string \| string[]    | Yes  | Name path of the variable to be listened for. You can specify a path or pass a string array to specify multiple variable paths to be listened for at a time.<br>Only string and string array are supported. If an unsupported type is provided, a runtime error is thrown. For error code details, see the table below.|
 | monitorCallback | [MonitorCallback](#monitorcallback20)   | Yes  | Listener function registered with the corresponding state variable. That is, when the state variable corresponding to the path changes, a specific function is called.<br>If an unsupported type is provided, a runtime error is thrown. For error code details, see the table below.|
-| options | [MonitorOptions](#monitoroptions20)   | No  | Configuration item of the listener function. For details, see [MonitorOptions](#monitoroptions20).|
+| options | [MonitorOptions](#monitoroptions20)   | No  | Configuration item of the listener. For details, see [MonitorOptions](#monitoroptions20). By default, the asynchronous callback is used.|
 
 
 **Error codes**
@@ -1778,7 +1839,7 @@ Defines a callback used to obtain a value.
 **Example**
 
 ```ts
-import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+import { Binding, UIUtils } from '@kit.ArkUI';
 
 @Builder
 function CustomButton(num1: Binding<number>) {
@@ -1830,7 +1891,7 @@ Defines a callback used to set a value.
 **Example**
 
 ```ts
-import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+import { MutableBinding, UIUtils } from '@kit.ArkUI';
 
 @Builder
 function CustomButton(num2: MutableBinding<number>) {
@@ -1888,7 +1949,7 @@ Obtains a bound value.
 **Example**
 
 ```ts
-import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+import { Binding, UIUtils } from '@kit.ArkUI';
 
 @Builder
 function CustomButton(num1: Binding<number>) {
@@ -1959,7 +2020,7 @@ Provides a **get** accessor to obtain the current bound value.
 **Example**
 
 ```ts
-import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
+import { MutableBinding, UIUtils } from '@kit.ArkUI';
 
 @Builder
 function CustomButton(num2: MutableBinding<number>) {
@@ -1994,4 +2055,3 @@ struct CompV2 {
   }
 }
 ```
-<!--no_check-->

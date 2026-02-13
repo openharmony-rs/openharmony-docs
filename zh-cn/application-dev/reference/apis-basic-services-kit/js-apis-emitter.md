@@ -615,7 +615,7 @@ getListenerCount(eventId: number | string): number
 **示例：**
 
 ```ts
-let count = emitter.getListenerCount("eventId");
+let count: number = emitter.getListenerCount("eventId");
 ```
 
 ## EventPriority

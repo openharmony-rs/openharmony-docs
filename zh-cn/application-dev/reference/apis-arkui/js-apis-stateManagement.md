@@ -310,9 +310,9 @@ struct Page1 {
   output: string[] = [];
 
   // 启动应用，第一次进入，展示restored Map.size=0, map.get(0)=undefined, map.get(1)=undefined, map.get(2)=undefined
-  // 杀掉应用，第二次进入，展示restored Map.size=1, map.get(0)=0, map.get(1)=undefined, map.get(2)=undefined
-  // 杀掉应用，第三次进入，展示restored Map.size=2, map.get(0)=0, map.get(1)=1, map.get(2)=undefined
-  // 杀掉应用，第四次进入，展示restored Map.size=3, map.get(0)=0, map.get(1)=1, map.get(2)=2
+  // 关闭应用，第二次进入，展示restored Map.size=1, map.get(0)=0, map.get(1)=undefined, map.get(2)=undefined
+  // 关闭应用，第三次进入，展示restored Map.size=2, map.get(0)=0, map.get(1)=1, map.get(2)=undefined
+  // 关闭应用，第四次进入，展示restored Map.size=3, map.get(0)=0, map.get(1)=1, map.get(2)=2
   aboutToAppear(): void {
     const restoredMapSize = this.map.size;
     this.output.push(`restored Map.size=${restoredMapSize}, map.get(0)=${this.map.get(0)}, map.get(1)=${this.map.get(1)}, map.get(2)=${this.map.get(2)}`);
@@ -1766,7 +1766,7 @@ struct Index {
 
 type TypeDecorator = \<T\>(type: TypeConstructor\<T\>) => PropertyDecorator
 
-属性装饰器。
+属性装饰器，用于装饰嵌套类中属于自定义class类的属性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1817,6 +1817,27 @@ struct Index {
         })
     }
   }
+}
+```
+
+在使用@Type装饰嵌套类属性时，仅支持自定义class类型，传入其他类型会持久化失败。
+<!--code_no_check-->
+```ts
+@ObservedV2
+class SampleChild {
+  @Trace id: number = 0;
+  count: number = 10;
+}
+
+@ObservedV2
+class Sample {
+  // 建议用法，装饰自定义Sample类中的sampleChild属性，其类型为SampleChild类型
+  @Type(SampleChild)
+  @Trace sampleChild: SampleChild = new SampleChild();
+
+  // 不建议用法，装饰的嵌套类属性类型是Array<number>
+  @Type(Array<number>)
+  @Trace value: Array<Array<number>> = new Array();
 }
 ```
 

@@ -44,7 +44,6 @@ Sets the fixed sleep time.
 
 **Since**: 10
 
-
 **Parameters**
 
 | Name| Description|
