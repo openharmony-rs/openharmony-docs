@@ -72,7 +72,7 @@ OpenHarmony系统预置的播控中心，作为媒体会话控制方与音视频
    媒体会话控制方可以获取当前系统中所有的AVSessionDescriptor，并创建每个会话对应的AVSessionController，从而对系统中的音视频应用进行统一的播放控制。
 
    ```ts
-   //导入AVSessionManager模块。
+   // 导入AVSessionManager模块。
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
    import { BusinessError } from '@kit.BasicServicesKit';
 
