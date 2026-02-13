@@ -428,6 +428,7 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
+import { AsyncCallback } from '@ohos.base';
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
