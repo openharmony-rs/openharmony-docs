@@ -501,7 +501,7 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundColor(ArkUI_CustomDialogOptions* opti
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| uint32_t backgroundColor | 弹窗背景颜色。 |
+| uint32_t backgroundColor | 弹窗背景颜色，0xARGB格式。 |
 
 **返回：**
 
@@ -528,10 +528,10 @@ int32_t OH_ArkUI_CustomDialog_SetCornerRadius(ArkUI_CustomDialogOptions* options
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| float topLeft | 弹窗左上角的圆角半径。 |
-| float topRight | 弹窗右上角的圆角半径。 |
-| float bottomLeft | 弹窗左下角的圆角半径。 |
-| float bottomRight | 弹窗右下角的圆角半径。 |
+| float topLeft | 弹窗左上角的圆角半径，单位：vp。 |
+| float topRight | 弹窗右上角的圆角半径，单位：vp。 |
+| float bottomLeft | 弹窗左下角的圆角半径，单位：vp。 |
+| float bottomRight | 弹窗右下角的圆角半径，单位：vp。 |
 
 **返回：**
 
@@ -589,10 +589,10 @@ int32_t OH_ArkUI_CustomDialog_SetBorderColor(ArkUI_CustomDialogOptions* options,
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| uint32_t top | 弹窗上边框的颜色。 |
-| uint32_t right | 弹窗右边框的颜色。 |
-| uint32_t bottom | 弹窗下边框的颜色。 |
-| uint32_t left | 弹窗左边框的颜色。 |
+| uint32_t top | 弹窗上边框的颜色，0xARGB格式。 |
+| uint32_t right | 弹窗右边框的颜色，0xARGB格式。 |
+| uint32_t bottom | 弹窗下边框的颜色，0xARGB格式。 |
+| uint32_t left | 弹窗左边框的颜色，0xARGB格式。 |
 
 **返回：**
 
@@ -619,10 +619,10 @@ int32_t OH_ArkUI_CustomDialog_SetBorderStyle(ArkUI_CustomDialogOptions* options,
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| int32_t top | 弹窗上边框的样式。 |
-| int32_t right | 弹窗右边框的样式。 |
-| int32_t bottom | 弹窗下边框的样式。 |
-| int32_t left | 弹窗左边框的样式。 |
+| int32_t top | 弹窗上边框的样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)，默认值为ARKUI_BORDER_STYLE_SOLID。 |
+| int32_t right | 弹窗右边框的样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)，默认值为ARKUI_BORDER_STYLE_SOLID。 |
+| int32_t bottom | 弹窗下边框的样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)，默认值为ARKUI_BORDER_STYLE_SOLID。 |
+| int32_t left | 弹窗左边框的样式，参数类型[ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle)，默认值为ARKUI_BORDER_STYLE_SOLID。 |
 
 **返回：**
 
@@ -787,8 +787,8 @@ int32_t OH_ArkUI_CustomDialog_SetAlignment(ArkUI_CustomDialogOptions* options, i
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
 | int32_t alignment | 弹窗的对齐模式，参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)。 |
-| float offsetX | 弹窗的水平偏移量，浮点型。 |
-| float offsetY | 弹窗的垂直偏移量，浮点型。 |
+| float offsetX | 弹窗的水平偏移量，浮点型，单位：vp。 |
+| float offsetY | 弹窗的垂直偏移量，浮点型，单位：vp。 |
 
 **返回：**
 
