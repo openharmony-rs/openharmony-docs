@@ -316,7 +316,7 @@ from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?:
 | -------- | -------- | -------- | -------- |
 | arrayBuffer | ArrayBuffer&nbsp;\|&nbsp;SharedArrayBuffer | 是 | 实例对象。 |
 | byteOffset | number | 否 | 字节偏移量，默认值：0。 |
-| length | number | 否 | 字节长度， 默认值:（arrayBuffer.byteLength - byteOffset）。取值范围：0 <= length <= arrayBuffer.byteLength - byteOffset |
+| length | number | 否 | 字节长度， 默认值:（arrayBuffer.byteLength - byteOffset）。取值范围：0 <= length <= arrayBuffer.byteLength - byteOffset。传入null时返回空FastBuffer。 |
 
 **返回值：**
 
@@ -530,7 +530,7 @@ fastbuffer.transcode支持的编码：'ascii' | 'utf8' | 'utf16le'| 'ucs2' | 'la
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | source | [FastBuffer](#fastbuffer)&nbsp;\|&nbsp;Uint8Array | 是 | 实例对象。 |
-| fromEnc | string | 是 | 当前编码。 支持的格式范围为[BufferEncoding](#bufferencoding)。 |
+| fromEnc | string | 是 | 当前编码格式。支持的格式范围为BufferEncoding。传入空字符串时，表示使用编码格式'utf8'。 |
 | toEnc | string | 是 | 目标编码。 支持的格式范围为[BufferEncoding](#bufferencoding)。 |
 
 **返回值：**
@@ -713,7 +713,7 @@ while (!next.done) {
            fastbuffer: 3,102
            fastbuffer: 4,101
            fastbuffer: 5,114
-  */
+   */
   next = pair.next();
 }
 ```
@@ -920,7 +920,7 @@ for (const key of numbers) {
            3
            4
            5
-  */
+   */
 }
 ```
 
@@ -957,7 +957,7 @@ while (!next.done) {
            102
            101
            114
-  */
+   */
   next = pair.next();
 }
 ```
@@ -2016,7 +2016,7 @@ subarray(start?: number, end?: number): FastBuffer
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | start | number | 否 | 截取开始位置。默认值：0。 |
-| end | number | 否 |  截取结束位置（不包含结束位置）。默认值：当前对象的字节长度。取值范围：start <= end <= this.length |
+| end | number | 否 |  截取结束位置（不包含结束位置）。默认值：当前对象的字节长度。取值范围：start <= end <= this.length。传入null时返回空FastBuffer。 |
 
 **返回值：**
 
@@ -2858,7 +2858,7 @@ writeIntBE(value: number, offset: number, byteLength: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | value | number | 是 | 写入Buffer的数据。取值范围取决于byteLength。  |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - byteLength。 |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - byteLength。传入null或undefined时偏移量为0。 |
 | byteLength | number | 是 | 要写入的字节数。 |
 
 
@@ -2903,7 +2903,7 @@ writeIntLE(value: number, offset: number, byteLength: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | value | number | 是 | 写入Buffer的数据。取值范围取决于byteLength。 |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - byteLength。 |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - byteLength。传入null或undefined时偏移量为0。 |
 | byteLength | number | 是 | 要写入的字节数。 |
 
 
@@ -3177,7 +3177,7 @@ writeUIntBE(value: number, offset: number, byteLength: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | value | number | 是 | 写入Buffer的数据。取值范围取决于byteLength。 |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - byteLength。 |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - byteLength。传入null或undefined时偏移量为0。 |
 | byteLength | number | 是 | 要写入的字节数。 |
 
 
@@ -3221,7 +3221,7 @@ writeUIntLE(value: number, offset: number, byteLength: number): number
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | value | number | 是 | 写入Buffer的数据。取值范围取决于byteLength。 |
-| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - byteLength。 |
+| offset | number | 是 | 偏移量。默认值：0。取值范围：0 <= offset <= this.length - byteLength。传入null或undefined时偏移量为0。 |
 | byteLength | number | 是 | 要写入的字节数。 |
 
 
