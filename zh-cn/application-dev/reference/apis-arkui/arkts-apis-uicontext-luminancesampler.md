@@ -14,7 +14,7 @@
 >
 > - 本Class首批接口从API version 23开始支持。
 >
-> - 以下API需先使用UIContext中的[getLuminanceSampler](js-apis-arkui-UIContext-sys.md#getluminancesampler23)方法获取到PromptAction对象，再通过该对象调用对应方法。
+> - 以下API需先使用UIContext中的getLuminanceSampler方法获取到PromptAction对象，再通过该对象调用对应方法。
 
 ## setBackgroundLuminanceSamplingConfigs<sup>23+</sup>
 
