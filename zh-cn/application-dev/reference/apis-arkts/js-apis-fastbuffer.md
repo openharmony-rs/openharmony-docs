@@ -725,7 +725,7 @@ while (!next.done) {
            fastbuffer: 3,102
            fastbuffer: 4,101
            fastbuffer: 5,114
-  */
+   */
   next = pair.next();
 }
 ```
@@ -933,7 +933,7 @@ for (const key of keys) {
         3
         4
         5
-*/
+ */
 ```
 
 ### values
@@ -969,7 +969,7 @@ while (!next.done) {
            102
            101
            114
-  */
+   */
   next = pair.next();
 }
 ```
