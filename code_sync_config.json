@@ -45627,5 +45627,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/ndk-grid.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/ArkUIGridNode.h",
+				"functions":[
+					{
+						"end_line":93,
+						"name":"grid_define",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridRectByIndexExample.cpp",
+				"functions":[
+					{
+						"end_line":72,
+						"name":"grid_columns_and_rows",
+						"start_line":64
+					},
+					{
+						"end_line":105,
+						"name":"grid_get_rect_by_index",
+						"start_line":78
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridIrregularIndexesExample.cpp",
+				"functions":[
+					{
+						"end_line":47,
+						"name":"grid_columns",
+						"start_line":42
+					},
+					{
+						"end_line":130,
+						"name":"grid_group_indexes",
+						"start_line":124
+					}
+				]
+			}
+		]
 	}
 ]
