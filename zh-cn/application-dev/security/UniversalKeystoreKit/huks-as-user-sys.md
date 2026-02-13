@@ -34,7 +34,7 @@
 | [generateKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksgeneratekeyitemasuser)              |   生成密钥。           |  [generateKeyItem](huks-key-generation-arkts.md)             |
 | [deleteKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksdeletekeyitemasuser)                  |   删除密钥。           |  [deleteKeyItem](huks-delete-key-arkts.md)               |
 | [importKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksimportkeyitemasuser)                  |   明文导入密钥。      |  [importKeyItem](huks-import-key-in-plaintext-arkts.md)                |
-| [importWrappedKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksimportwrappedkeyitemasuser)    |  加密导入密钥。        |  [importWrappedKeyItem](huks-import-wrapped-key-arkts.md)             |
+| [importWrappedKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksimportwrappedkeyitemasuser)    |  安全导入密钥。        |  [importWrappedKeyItem](huks-import-wrapped-key-arkts.md)             |
 | [exportKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksexportkeyitemasuser)                  |   导出密钥。        |  [exportKeyItem](huks-export-key-arkts.md)                |
 | [getKeyItemPropertiesAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#huksgetkeyitempropertiesasuser)    |  获取密钥属性。     |  [getKeyItemProperties](huks-obtain-key-properties-arkts.md)             |
 | [hasKeyItemAsUser](../../reference/apis-universal-keystore-kit/js-apis-huks-sys.md#hukshaskeyitemasuser)                        |  查询密钥是否存在。    |  [hasKeyItem](huks-check-key-arkts.md)               |
