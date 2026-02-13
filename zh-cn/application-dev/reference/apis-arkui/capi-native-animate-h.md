@@ -362,7 +362,7 @@ void OH_ArkUI_AnimateOption_SetDuration(ArkUI_AnimateOption* option, int32_t val
 **描述：**
 
 
-设置动画持续时间，单位为ms（毫秒）。
+设置动画持续时间。
 
 **起始版本：** 12
 
@@ -372,7 +372,7 @@ void OH_ArkUI_AnimateOption_SetDuration(ArkUI_AnimateOption* option, int32_t val
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。 |
-| int32_t value | 持续时间，单位为ms（毫秒）。取值范围：[0, +∞)。<br>value小于0时，按0处理。 |
+| int32_t value | 动画持续时间，单位为ms（毫秒）。取值范围：[0, +∞)。<br>value小于0时，按0处理。 |
 
 ### OH_ArkUI_AnimateOption_SetTempo()
 
@@ -728,7 +728,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDuration(ArkUI_KeyframeAnimateOption* 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| int32_t value | 关键帧动画的持续时间，单位为ms（毫秒）。取值范围：[0, +∞)。<br>value小于0时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| int32_t value | 关键帧动画的持续时间，单位为ms（毫秒），默认值1000ms。取值范围：[0, +∞)。<br>value小于0时，按0处理。 |
 | int32_t index | 状态索引值。<br>index小于0时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 **返回：**
@@ -998,7 +998,7 @@ int32_t OH_ArkUI_AnimatorOption_SetDuration(ArkUI_AnimatorOption* option, int32_
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
-| int32_t value | 播放的时长，单位毫秒。<br>value小于0时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
+| int32_t value | 播放的时长，单位为ms（毫秒），默认值0ms。取值范围：[0, +∞)。<br>value小于0时，返回错误码ARKUI_ERROR_CODE_PARAM_INVALID。 |
 
 **返回：**
 
