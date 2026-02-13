@@ -4017,7 +4017,7 @@ enableDefaultContextMenu(enable: boolean)
 
 | 参数名  | 类型    | 必填 | 说明                                    |
 | ------- | ------- | ---- | --------------------------------------- |
-| enable  | boolean | 是   | 是否启用默认右键上下文菜单，true表示启用，false表示不启用。<br>传入undefined或null时为false。 |
+| enable  | boolean | 是   | 是否启用默认右键上下文菜单，true表示启用，false表示不启用。默认值为false。<br>传入undefined或null时为false。 |
 
 **示例：**
 
