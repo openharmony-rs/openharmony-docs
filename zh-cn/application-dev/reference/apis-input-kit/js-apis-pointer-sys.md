@@ -5400,6 +5400,8 @@ setMouseScrollDirection(state: boolean): Promise\<void>
 
 设置鼠标滚轮滚轴的方向，使用Promise异步方式返回结果。
 
+**需要权限**: ohos.permission.INPUT_DEVICE_CONTROLLER
+
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **系统API**: 此接口为系统接口。
@@ -5489,6 +5491,8 @@ struct Index {
 getMouseScrollDirection(): Promise\<boolean>
 
 获取鼠标滚轮滚轴方向，使用Promise异步方式返回结果。
+
+**需要权限**: ohos.permission.INPUT_DEVICE_CONTROLLER
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
