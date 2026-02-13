@@ -829,6 +829,43 @@ V2:
 
 <!-- @[Internal_localStorage_multi_instance_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/model/PDFData.ets) -->
 
+``` TypeScript
+// model/PDFData.ets
+@ObservedV2
+export default class PDFData {
+  // 单例实例
+  private static instance_: PDFData | null = null;
+  @Trace private data: Map<string, string> = new Map();
+  @Trace private flag: string = '';
+
+  private constructor() {
+  }
+
+  static getInstance(): PDFData {
+    if (!PDFData.instance_) {
+      PDFData.instance_ = new PDFData();
+    }
+    return PDFData.instance_;
+  }
+
+  setData(key: string, value: string) {
+    this.data.set(key, value);
+  }
+
+  getData() {
+    return this.data;
+  }
+
+  setFlage(value: string) {
+    this.flag = value;
+  }
+
+  getFlag() {
+    return this.flag;
+  }
+}
+```
+
 
 
 <!-- @[Internal_localStorage_multi_instance_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/PdfEntryAbility.ets) -->
