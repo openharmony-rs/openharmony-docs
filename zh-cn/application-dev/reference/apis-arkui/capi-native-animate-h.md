@@ -1388,7 +1388,7 @@ ArkUI_AnimationFillMode OH_ArkUI_AnimatorOption_GetFill(ArkUI_AnimatorOption* op
 **描述：**
 
 
-获取animator动画执行后是否恢复到初始状态。
+获取animator动画执行时组件在动画开始前和结束后的状态。
 
 **起始版本：** 12
 
@@ -1403,7 +1403,7 @@ ArkUI_AnimationFillMode OH_ArkUI_AnimatorOption_GetFill(ArkUI_AnimatorOption* op
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode) | 执行后是否恢复到初始状态。option异常时返回-1。 |
+| [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode) | 动画执行时组件在动画开始前和结束后的状态。option异常时返回-1。 |
 
 ### OH_ArkUI_AnimatorOption_GetDirection()
 
