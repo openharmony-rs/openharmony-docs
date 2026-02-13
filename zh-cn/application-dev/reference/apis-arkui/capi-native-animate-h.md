@@ -1650,8 +1650,7 @@ void* OH_ArkUI_AnimatorOnFrameEvent_GetUserData(ArkUI_AnimatorOnFrameEvent* even
 
 **描述：**
 
-
-获取动画事件对象中的用户自定义对象。
+获取动画的帧事件中的用户自定义对象。
 
 **起始版本：** 12
 
@@ -2006,7 +2005,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateStepsCurve(int32_t count, bool end)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t count | 阶梯的数量，需要为正整数，取值范围：[1, +∞)。 |
+| int32_t count | 阶梯的数量，需要为正整数，取值范围：[1, +∞)。<br>count值异常时，操作无效。 |
 | bool end | 在每个间隔的起点或是终点发生阶跃变化。true：在终点发生阶跃变化。false：在起点发生阶跃变化。 |
 
 **返回：**
