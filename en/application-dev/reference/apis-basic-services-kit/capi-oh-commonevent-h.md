@@ -13,6 +13,8 @@ Defines the APIs for subscribing to and unsubscribing from common events and enu
 
 **Library**: libohcommonevent.so
 
+**File to include**: <BasicServicesKit/oh_commonevent.h>
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 12

@@ -184,7 +184,7 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 
 | 参数名       | 类型                    | 必填   | 说明        |
 | -------- | --------------------- | ---- | --------- |
-| mouseEvent | [MouseEventData](#mouseeventdata11) | 是    | 鼠标/触控板事件注入描述信息。 |
+| mouseEvent | [MouseEventData](#mouseeventdata11) | 是    | 鼠标/触控板事件注入描述信息。此参数中[Action](js-apis-mouseevent.md#action)属性不支持设置为CANCEL。 |
 
 **错误码**：
 
@@ -298,7 +298,7 @@ injectTouchEvent(touchEvent: TouchEventData): void
 
 | 参数名       | 类型                    | 必填   | 说明        |
 | -------- | --------------------- | ---- | --------- |
-| touchEvent | [TouchEventData](#toucheventdata11) | 是    | 触屏注入描述信息。 |
+| touchEvent | [TouchEventData](#toucheventdata11) | 是    | 触屏注入描述信息。此参数中[Action](js-apis-touchevent.md#action)属性不支持设置为CANCEL。 |
 
 **错误码**：
 

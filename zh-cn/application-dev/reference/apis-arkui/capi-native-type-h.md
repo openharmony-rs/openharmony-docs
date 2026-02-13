@@ -2931,7 +2931,7 @@ enum ArkUI_RouterPageState
 **描述：**
 
 
-定义[Router Page](js-apis-router.md)（路由页面）的状态。
+定义[Router Page](arkts-apis-uicontext-router.md)（路由页面）的状态。
 
 **起始版本：** 12
 
@@ -5612,7 +5612,7 @@ void OH_ArkUI_SwiperIndicator_SetSelectedColor(ArkUI_SwiperIndicator* indicator,
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md)* indicator | 导航指示器对象指针。 |
-| uint32_t selectedColor | 颜色类型，0xargb格式，形如 0xFFFF0000 表示红色。 |
+| uint32_t selectedColor | 颜色类型，0xargb格式，形如0xFFFF0000表示红色。<br/>默认值：'\#007DFF'，蓝色。 |
 
 ### OH_ArkUI_SwiperIndicator_GetSelectedColor()
 

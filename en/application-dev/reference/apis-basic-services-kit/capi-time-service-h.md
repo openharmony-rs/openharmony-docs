@@ -12,6 +12,8 @@ Declares the APIs for obtaining the time and time zone.
 
 **Library**: libtime_service_ndk.so
 
+**File to include**: <BasicServicesKit/time_service.h>
+
 **System capability**: SystemCapability.MiscServices.Time
 
 **Since**: 12
@@ -75,7 +77,7 @@ Obtains the current system time zone.
 | Name| Description|
 | -- | -- |
 | char *timeZone | Pointer to the string array of time zone IDs. If the timezone is obtained, its ID is written. Otherwise, an empty string is written. The string ends with **\0**.|
-| uint32_t len | Length of a string array of time zone IDs without maximum limit. You are advised to apply for sufficient memory for at less 31 bytes.|
+| uint32_t len | Length of a string array of time zone IDs without maximum limit. You are advised to apply for sufficient memory for at least 31 bytes.|
 
 **Returns**
 

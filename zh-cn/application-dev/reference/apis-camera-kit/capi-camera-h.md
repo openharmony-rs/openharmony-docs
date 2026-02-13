@@ -153,7 +153,7 @@ enum Camera_SceneMode
 | -- | -- |
 | NORMAL_PHOTO = 1 | 普通相机模式。 |
 | NORMAL_VIDEO = 2 | 普通视频模式。 |
-| SECURE_PHOTO = 12 | 安全相机模式。 |
+| SECURE_PHOTO = 12 | 安全相机模式，主要为银行等有活体检测等安全诉求的应用提供。安全相机的使用需要加密算法框架及可信应用服务，详情请参见[Device Certificate Kit简介](../../security/DeviceCertificateKit/device-certificate-kit-intro.md)。 |
 
 ### Camera_Position
 

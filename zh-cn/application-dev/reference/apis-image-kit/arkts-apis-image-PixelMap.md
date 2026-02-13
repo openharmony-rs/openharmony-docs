@@ -2129,10 +2129,10 @@ getColorSpace(): colorSpaceManager.ColorSpaceManager
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 62980101| If the image data abnormal.            |
-| 62980103| If the image data unsupport.             |
-| 62980115| If the image parameter invalid.            |
+| -------- | ------------------------------------------ |
+| 62980101 | The image data is abnormal.                |
+| 62980103 | The image data is not supported.           |
+| 62980115 | Invalid image parameter.                   |
 
 **示例：**
 

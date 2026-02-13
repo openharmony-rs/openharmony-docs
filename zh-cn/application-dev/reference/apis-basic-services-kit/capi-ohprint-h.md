@@ -302,7 +302,7 @@ typedef void(*Print_WriteResultCallback)(const char *jobId, uint32_t code)
 
 | 参数项              | 描述            |
 | ------------------- | --------------- |
-| (const char \*jobId | 打印任务的 ID。 |
+| const char \*jobId | 打印任务的 ID。 |
 | uint32_t code       | 写文件的结果。  |
 
 ### Print_OnStartLayoutWrite()
@@ -321,7 +321,7 @@ typedef void(*Print_OnStartLayoutWrite)(const char *jobId, uint32_t fd, const Pr
 
 | 参数项                                                       | 描述                 |
 | ------------------------------------------------------------ | -------------------- |
-| (const char \*jobId                                          | 打印任务的 ID。      |
+| const char \*jobId                                          | 打印任务的 ID。      |
 | uint32_t fd                                                  | 待写入的文件描述符。 |
 | [const Print_PrintAttributes](capi-oh-print-print-printattributes.md) \*oldAttrs | 上一次的属性。       |
 | [const Print_PrintAttributes](capi-oh-print-print-printattributes.md) \*newAttrs | 当前的属性。         |
@@ -343,7 +343,7 @@ typedef void(*Print_OnJobStateChanged)(const char *jobId, uint32_t state)
 
 | 参数项              | 描述                 |
 | ------------------- | -------------------- |
-| (const char \*jobId | 打印任务的 ID。      |
+| const char \*jobId | 打印任务的 ID。      |
 | uint32_t state      | 当前打印任务的状态。 |
 
 ### Print_PrinterDiscoveryCallback()
@@ -362,7 +362,7 @@ typedef void (*Print_PrinterDiscoveryCallback)(Print_DiscoveryEvent event, const
 
 | 参数项                                                       | 描述                         |
 | ------------------------------------------------------------ | ---------------------------- |
-| (Print_DiscoveryEvent event                                  | 打印机发现过程中的发现事件。 |
+| Print_DiscoveryEvent event                                  | 打印机发现过程中的发现事件。 |
 | [const Print_PrinterInfo](capi-oh-print-print-printerinfo.md) \*printerInfo | 发现事件发生时的打印机信息。 |
 
 ### Print_PrinterChangeCallback()
@@ -381,7 +381,7 @@ typedef void (*Print_PrinterChangeCallback)(Print_PrinterEvent event, const Prin
 
 | 参数项                                                       | 描述                               |
 | ------------------------------------------------------------ | ---------------------------------- |
-| (Print_PrinterEvent event                                    | 打印服务运行期间的打印机变更事件。 |
+| Print_PrinterEvent event                                    | 打印服务运行期间的打印机变更事件。 |
 | [const Print_PrinterInfo](capi-oh-print-print-printerinfo.md) \*printerInfo | 变更事件发生时的打印机信息。       |
 
 ### OH_Print_Init()

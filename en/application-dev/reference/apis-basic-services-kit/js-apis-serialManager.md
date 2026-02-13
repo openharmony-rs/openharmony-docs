@@ -27,7 +27,7 @@ Obtains the serial port device list, including the device name and port number.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
-**Returns**
+**Return value**
 
 | Type                                       | Description         |
 |-------------------------------------------|-------------|
@@ -70,7 +70,7 @@ Checks whether the application has the permission to access the serial port devi
 |--------|--------|----|-------------------------------------|
 | portId | number | Yes | Port number.|
 
-**Returns**
+**Return value**
 
 | Type     | Description              |
 |---------|------------------|
@@ -131,7 +131,7 @@ Requests the permission for the application to access the serial port device. Af
 |--------|--------|----|-------------------------------------|
 | portId | number | Yes | Port number.|
 
-**Returns**
+**Return value**
 
 | Type                    | Description           |
 |------------------------|---------------|
@@ -268,7 +268,7 @@ Obtains the configuration parameters of a specified serial port.
 |--------|--------|----|-------------|
 | portId | number | Yes | Port number.|
 
-**Returns**
+**Return value**
 
 | Type    | Description         |
 |--------|-------------|
@@ -441,9 +441,9 @@ Reads data from the serial port device asynchronously. This API uses a promise t
 |---------|------------|----|------------------|
 | portId  | number     | Yes | Port number.     |
 | buffer  | Uint8Array | Yes | Buffer for reading data.|
-| timeout | number     | No | Timeout, in milliseconds. If the API has no data in the buffer of the target port, it returns the result after waiting for the specified time. The default value **0** indicates that the API returns the result without waiting.|
+| timeout | number     | No | Timeout interval, in milliseconds. If there is no data in the buffer of the target port, this API returns the result after waiting for the specified time. The default value **0** indicates that the API returns the result without waiting.|
 
-**Returns**
+**Return value**
 
 | Type                   | Description            |
 |-----------------------|----------------|
@@ -528,9 +528,9 @@ Reads data from the serial port device synchronously.
 |---------|------------|----|------------------|
 | portId  | number     | Yes | Port number.|
 | buffer  | Uint8Array | Yes | Buffer for reading data.|
-| timeout | number     | No | Timeout, in milliseconds. If the API has no data in the buffer of the target port, it returns the result after waiting for the specified time. The default value **0** indicates that the API returns the result without waiting.|
+| timeout | number     | No | Timeout interval, in milliseconds. If there is no data in the buffer of the target port, this API returns the result after waiting for the specified time. The default value **0** indicates that the API returns the result without waiting.|
 
-**Returns**
+**Return value**
 
 | Type    | Description         |
 |--------|-------------|
@@ -616,9 +616,9 @@ Writes data to the serial port device asynchronously. This API uses a promise to
 |---------|------------|----|------------------|
 | portId  | number     | Yes | Port number.     |
 | buffer  | Uint8Array | Yes | Buffer for writing data.|
-| timeout | number     | No | (Optional) Timeout duration, in ms. The default value is **0**, indicating no timeout. You can set this parameter as required.|
+| timeout | number     | No | Timeout interval, in milliseconds. Whether the buffer of the target port is writable within the specified time. If yes, the API is processed properly; otherwise, a timeout message is returned after the specified time. The default value **0** indicates that the API returns the result immediately when the target port is not writable.|
 
-**Returns**
+**Return value**
 
 | Type                   | Description         |
 |-----------------------|-------------|
@@ -704,9 +704,9 @@ Writes data to the serial port device synchronously.
 |---------|------------|----|------------------|
 | portId  | number     | Yes | Port number.    |
 | buffer  | Uint8Array | Yes | Destination buffer for writing data.|
-| timeout | number     | No | (Optional) Timeout duration, in ms. The default value is **0**, indicating no timeout. You can set this parameter as required.|
+| timeout | number     | No | Timeout interval, in milliseconds. Whether the buffer of the target port is writable within the specified time. If yes, the API is processed properly; otherwise, a timeout message is returned after the specified time. The default value **0** indicates that the API returns the result immediately when the target port is not writable.|
 
-**Returns**
+**Return value**
 
 | Type    | Description         |
 |--------|-------------|
