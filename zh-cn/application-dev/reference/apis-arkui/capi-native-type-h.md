@@ -2403,10 +2403,10 @@ enum ArkUI_TransitionEdge
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TRANSITION_EDGE_TOP = 0 | 窗口的上边缘。 |
-| ARKUI_TRANSITION_EDGE_BOTTOM = 1 | 窗口的下边缘。 |
-| ARKUI_TRANSITION_EDGE_START = 2 | 窗口的左边缘。 |
-| ARKUI_TRANSITION_EDGE_END = 3 | 窗口的右边缘。 |
+| ARKUI_TRANSITION_EDGE_TOP = 0 | 转场从窗口的上边缘滑入和滑出。 |
+| ARKUI_TRANSITION_EDGE_BOTTOM = 1 | 转场从窗口的下边缘滑入和滑出。 |
+| ARKUI_TRANSITION_EDGE_START = 2 | 转场从窗口的左边缘滑入和滑出。 |
+| ARKUI_TRANSITION_EDGE_END = 3 | 转场从窗口的右边缘滑入和滑出。 |
 
 ### ArkUI_FinishCallbackType
 
@@ -2417,7 +2417,7 @@ enum ArkUI_FinishCallbackType
 **描述：**
 
 
-在动画中定义onFinish回调的类型。
+在动画中定义[onFinish](../../apis-arkui/arkui-ts/ts-transition-animation-component.md#transition)回调的类型。
 
 **起始版本：** 12
 
