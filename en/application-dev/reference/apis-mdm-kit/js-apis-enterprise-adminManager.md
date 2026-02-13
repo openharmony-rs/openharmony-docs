@@ -421,7 +421,7 @@ Enables the device administrator application to open a page for the BYOD adminis
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | type  | [AdminType](#admintype15)             | Yes   | Type of the activated device administrator application. Only the **ADMIN_TYPE_BYOD** type is supported. |
 | context  | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | Yes| Context information of the administrator application.|
-| parameters  | Record\<string, string> | Yes| Custom parameters. The key value must contain **activateId** and may optionally include **customizedInfo** and **localDeactivationPolicy**.<br>- **activatedId**: project activation ID.<br>- **customizedInfo**: enterprise-defined information. <!--RP1--><!--RP1End-->.|
+| parameters  | Record\<string, string> | Yes| Custom parameters. The key value must contain **activateId** and may optionally include **customizedInfo**.<br>- **activatedId**: project activation ID.<br>- **customizedInfo**: enterprise-defined information. <!--RP1--><!--RP1End-->.|
 
 **Error codes**
 
