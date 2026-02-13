@@ -8,7 +8,7 @@
 
 使用[AVRecorder](media-kit-intro.md#avrecorder)可以实现音频录制功能，本开发指导将以“开始录制-暂停录制-恢复录制-停止录制”的一次流程为例，向开发者讲解AVRecorder音频录制相关功能。
 
-在进行应用开发的过程中，开发者可以通过AVRecorder的state属性，主动获取当前状态或使用on('stateChange')方法监听状态变化。开发过程中必须严格遵循状态机要求，例如只能在started状态下调用pause()接口，只能在paused状态下调用resume()接口。
+在进行应用开发的过程中，开发者可以通过AVRecorder的state属性，主动获取当前状态或使用[on('stateChange')](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#onstatechange9)方法监听状态变化。开发过程中必须严格遵循状态机要求，例如只能在started状态下调用[pause](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#pause9-1)接口，只能在paused状态下调用[resume](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#resume9-1)接口。
 
 **图1** 录制状态变化示意图
 
@@ -78,7 +78,7 @@
    });
    ```
 
-3. 配置音频录制参数，调用prepare()接口，此时进入prepared状态。
+3. 配置音频录制参数，调用[prepare](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#prepare9-1)接口，此时进入prepared状态。
 
    > **说明：**
    > 配置参数需要注意：
@@ -89,6 +89,7 @@
    >   如果只需要录制音频，请不要设置视频相关配置参数；如果需要录制视频，可以参考[视频录制开发指导](video-recording.md)进行开发。直接设置视频相关参数会导致后续步骤报错。
    > - 需要使用支持的[录制规格](media-kit-intro.md#支持的格式)，具体录制参数需严格契合既定的[录制参数配置](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9)。
    > - 录制输出的url地址（即示例里avConfig中的url），形式为fd://xx (fd number)。需要基础文件操作接口（[Core File Kit的ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)）实现应用文件访问能力，获取方式参考[应用文件访问与管理](../../file-management/app-file-access.md)。
+   > - 示例中配置的audioCodec音频编码格式、aacProfile音频编码扩展格式、fileFormat封装格式请参考[录制参数配置](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9)。
 
    ```ts
    import { media } from '@kit.MediaKit';
@@ -98,10 +99,10 @@
    let avProfile: media.AVRecorderProfile = {
      audioBitrate: 112000, // 音频比特率。
      audioChannels: 2, // 音频声道数。
-     audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式，当前支持AAC、MP3和G711MU。从API version 18开始支持AMR_NB、AMR_WB。
-     aacProfile: media.AacProfile.AAC_HE, // 音频编码扩展格式，从API version 22开始支持AAC_HE和AAC_HE_V2。
+     audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式。
+     aacProfile: media.AacProfile.AAC_HE, // 音频编码扩展格式。
      audioSampleRate: 48000, // 音频采样率。
-     fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // 封装格式，当前支持MP4、M4A、MP3、WAV、AMR和AAC。
+     fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // 封装格式。
    };
    
    const context: Context = this.getUIContext().getHostContext()!; // 参考应用文件访问与管理。
@@ -124,42 +125,42 @@
    }
    ```
 
-4. 开始录制，调用start()接口，此时进入started状态。
+4. 开始录制，调用[start](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#start9-1)接口，此时进入started状态。
 
    ```ts
    // 开始录制。
    await this.avRecorder?.start();
    ```
 
-5. 暂停录制，调用pause()接口，此时进入paused状态。
+5. 暂停录制，调用[pause](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#pause9-1)接口，此时进入paused状态。
 
    ```ts
    // 暂停录制。
    await this.avRecorder?.pause();
    ```
 
-6. 恢复录制，调用resume()接口，此时再次进入started状态。
+6. 恢复录制，调用[resume](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#resume9-1)接口，此时再次进入started状态。
 
    ```ts
    // 恢复录制。
    await this.avRecorder?.resume();
    ```
 
-7. 停止录制，调用stop()接口，此时进入stopped状态。
+7. 停止录制，调用[stop](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#stop9-1)接口，此时进入stopped状态。
 
    ```ts
    // 停止录制。
    await this.avRecorder?.stop();
    ```
 
-8. 重置资源，调用reset()重新进入idle状态，允许重新配置录制参数。
+8. 重置资源，调用[reset](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#reset9-1)接口，重新进入idle状态，允许重新配置录制参数。
 
    ```ts
    // 重置资源。
    await this.avRecorder?.reset();
    ```
 
-9. 销毁实例，调用release()进入released状态，退出录制。
+9. 销毁实例，调用[release](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#release9-1)接口，进入released状态，退出录制。
 
    ```ts
    // 销毁实例。
@@ -207,10 +208,10 @@ async function audioRecording(context: common.Context): Promise<void> {
   let avProfile: media.AVRecorderProfile = {
     audioBitrate: 112000, // 音频比特率。
     audioChannels: 2, // 音频声道数。
-    audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式，当前支持AAC、MP3和G711MU。从API version 18开始支持AMR_NB、AMR_WB。
-    aacProfile: media.AacProfile.AAC_HE, // 音频编码扩展格式，从API version 22开始支持AAC_HE和AAC_HE_V2。
+    audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式。
+    aacProfile: media.AacProfile.AAC_HE, // 音频编码扩展格式。
     audioSampleRate: 48000, // 音频采样率。
-    fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // 封装格式，当前支持MP4、M4A、MP3、WAV、AMR和AAC。
+    fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // 封装格式。
   };
   let avConfig: media.AVRecorderConfig = {
     audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC, // 音频输入源，这里设置为麦克风。
