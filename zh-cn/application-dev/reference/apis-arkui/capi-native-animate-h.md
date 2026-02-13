@@ -674,7 +674,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAn
 |-----------------------------------------| -- |
 | [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 | void* userData                          | 用户自定义对象指针。<br>不涉及异常值处理。 |
-| void (\*onFinish)(void\* userData)                                | 回调方法。<br/>- userData：回调函数的入参，用户自定义对象指针。<br>onFinish为NULL时，操作无效。 |
+| void (\*onFinish)(void\* userData)                                | 回调方法。<br/>userData：回调函数的入参，用户自定义对象指针。<br>onFinish为NULL时，操作无效。 |
 
 **返回：**
 
