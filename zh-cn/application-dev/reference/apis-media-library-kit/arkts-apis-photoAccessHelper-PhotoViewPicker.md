@@ -52,7 +52,7 @@ select(option?: PhotoSelectOptions) : Promise&lt;PhotoSelectResult&gt;
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
 | 13900042      | Unknown error.         |
-| 23800151      |  Scene parameters validate failed, possible causes:1. An illegal enumeration value was passed to PhotoSelectOptions.globalMovingPhotoState. |
+| 23800151      |  Scene parameters validate failed, possible causes:1. An illegal enumeration value was passed to PhotoSelectOptions.globalMovingPhotoState. Only MOVING_PHOTO_ENABLE and MOVING_PHOTO_DISABLE are supported for configuration; |
 
 **示例：**
 
@@ -106,7 +106,7 @@ select(option: PhotoSelectOptions, callback: AsyncCallback&lt;PhotoSelectResult&
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
 | 13900042      | Unknown error.         |
-| 23800151      |  Scene parameters validate failed, possible causes:1. An illegal enumeration value was passed to PhotoSelectOptions.globalMovingPhotoState. |
+| 23800151      |  Scene parameters validate failed, possible causes:1. An illegal enumeration value was passed to PhotoSelectOptions.globalMovingPhotoState. Only MOVING_PHOTO_ENABLE and MOVING_PHOTO_DISABLE are supported for configuration; |
 
 **示例：**
 
@@ -161,7 +161,6 @@ select(callback: AsyncCallback&lt;PhotoSelectResult&gt;) : void
 | -------- | ---------------------------------------- |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 13900042      | Unknown error.         |
-| 23800151      |  Scene parameters validate failed, possible causes:1. An illegal enumeration value was passed to PhotoSelectOptions.globalMovingPhotoState. |
 
 **示例：**
 
