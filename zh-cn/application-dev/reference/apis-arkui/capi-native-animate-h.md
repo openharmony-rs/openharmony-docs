@@ -395,6 +395,7 @@ void OH_ArkUI_AnimateOption_SetTempo(ArkUI_AnimateOption* option, float value)
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。 |
 | float value | 动画播放速度。取值范围：[0, +∞)。<br/>**说明：**<br/>传入小于0的数值，会默认设置为1。 |
 
+
 ### OH_ArkUI_AnimateOption_SetCurve()
 
 ```c
