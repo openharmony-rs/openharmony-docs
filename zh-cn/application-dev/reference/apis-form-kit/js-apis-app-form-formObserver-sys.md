@@ -50,7 +50,7 @@ import { formObserver } from '@kit.FormKit';
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info(`a new form added, data: ${JSON.stringify(data)}`);
+  console.info(`a new form added, formId: ${data.formId}`);
 }
 
 formObserver.on('formAdd', callback);
@@ -153,7 +153,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info(`a new form added, data: ${JSON.stringify(data)}`);
+  console.info(`a new form added, formId: ${data.formId}`);
 }
 
 formObserver.on('formAdd', bundleName, callback);
@@ -257,7 +257,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info(`a new form added, data: ${JSON.stringify(data)}`);
+  console.info(`a new form added, formId: ${data.formId}`);
 }
 
 formObserver.off('formAdd', bundleName, callback);
@@ -370,7 +370,7 @@ try {
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info(`form deleted, data: ${JSON.stringify(data)}`);
+  console.info(`form deleted, formId: ${data.formId}`);
 }
 
 formObserver.on('formRemove', callback);
@@ -473,7 +473,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info(`form deleted, data: ${JSON.stringify(data)}`);
+  console.info(`form deleted, formId: ${data.formId}`);
 }
 
 formObserver.on('formRemove', bundleName, callback);
@@ -577,7 +577,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info(`a new form added, data: ${JSON.stringify(data)}`);
+  console.info(`a new form added, formId: ${data.formId}`);
 }
 
 formObserver.off('formRemove', bundleName, callback);
@@ -691,7 +691,7 @@ on(type: 'notifyVisible', observerCallback: Callback&lt;Array&lt;formInfo.Runnin
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.info(`form change visibility, data: ${JSON.stringify(data)}`);
+  console.info(`form change visibility, formId: ${data.formId}`);
 }
 
 formObserver.on('notifyVisible', callback);
@@ -799,7 +799,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.info(`form change visibility, data: ${JSON.stringify(data)}`);
+  console.info(`form change visibility, item count: ${data.length}`);
 }
 
 formObserver.on('notifyVisible', bundleName, callback);
@@ -906,7 +906,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.info(`form change visibility, data: ${JSON.stringify(data)}`);
+  console.info(`form change visibility, item count: ${data.length}`);
 }
 
 formObserver.off('notifyVisible', bundleName, callback);
@@ -1021,7 +1021,7 @@ try {
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.info(`form change invisibility, data: ${JSON.stringify(data)}`);
+  console.info(`form change invisibility, item count: ${data.length}`);
 }
 
 formObserver.on('notifyInvisible', callback);
@@ -1128,7 +1128,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.info(`form change invisibility, data: ${JSON.stringify(data)}`);
+  console.info(`form change invisibility, item count: ${data.length}`);
 }
 
 formObserver.on('notifyInvisible', bundleName, callback);
@@ -1234,7 +1234,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.info(`form change invisibility, data: ${JSON.stringify(data)}`);
+  console.info(`form change invisibility, item count: ${data.length}`);
 }
 
 formObserver.off('notifyInvisible', bundleName, callback);
@@ -1357,7 +1357,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+      console.info(`formObserver getRunningFormInfos, item count: ${data.length}`);
     }
   }, 'com.example.ohos.formjsdemo');
 } catch(error) {
@@ -1378,36 +1378,16 @@ const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
 
 try {
-  formObserver.getRunningFormInfos().then((data: formInfo.RunningFormInfo[]) => {
-    if (data !== undefined) {
-      for (let runningFormInfo of data) {
-        console.info(`formObserver getRunningFormInfos, hostBundleName : ${runningFormInfo.hostBundleName}`);
-      }
-    }
-    if (data.length === 0) {
-      console.info('testTag', 'formObserverStaticTest001 getRunningFormInfos no data');
+  let callback: AsyncCallback<Array<formInfo.RunningFormInfo>> = (error: BusinessError | null, data: Array<formInfo.RunningFormInfo> | undefined) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      try {
-        formObserver.getRunningFormInfoById(data[0].formId, (error: BusinessError<void> | null,
-          data: formInfo.RunningFormInfo | undefined) => {
-          if (error?.code !== 0) {
-            console.error('testTag',
-              `formObserverStaticTest001 callback error, code: ${error?.code}  message: ${error?.message}`);
-          } else {
-            console.info('testTag', `formObserverStaticTest001 callback success`);
-          }
-        });
-      } catch (error: BusinessError) {
-        hilog.error(DOMAIN, TAG, `formObserverStaticTest001 catch error, code: ${error?.code}  message: ${error?.message}`);
-      }
+      console.info(`formObserver getRunningFormInfos, item count: ${data?.length}`);
     }
-  }).catch((error: Error) => {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getRunningFormInfos error, code: ${code}, message: ${message}`);
-  });
-} catch (err: Error) {
-  console.error('testTag', `getRunningFormInfos error, code: ${err?.code}, error message: ${err?.message}`);
+  };
+  formObserver.getRunningFormInfos(callback, 'com.example.ohos.formjsdemo');
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -1458,7 +1438,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+      console.info(`formObserver getRunningFormInfos, item count: ${data.length}`);
     }
   }, true, 'com.example.ohos.formjsdemo');
 } catch(error) {
@@ -1539,7 +1519,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formObserver.getRunningFormInfos('com.example.ohos.formjsdemo').then((data: formInfo.RunningFormInfo[]) => {
-    console.info(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+    console.info(`formObserver getRunningFormInfos, item count: ${data.length}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1619,7 +1599,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formObserver.getRunningFormInfos(true, 'com.example.ohos.formjsdemo').then((data: formInfo.RunningFormInfo[]) => {
-    console.info(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+    console.info(`formObserver getRunningFormInfos, item count: ${data.length}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1639,7 +1619,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   formObserver.getRunningFormInfos(true, 'com.example.ohos.formjsdemo')
     .then((data: Array<formInfo.RunningFormInfo>) => {
-      console.info(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+      console.info(`formObserver getRunningFormInfos, item count: ${data?.length}`);
     })
     .catch((error) => {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
@@ -1706,7 +1686,7 @@ let formInstanceFilter: formInfo.FormProviderFilter = {
 }
 try {
   formObserver.getRunningFormInfosByFilter(formInstanceFilter).then((data: formInfo.RunningFormInfo[]) => {
-    console.info('formObserver getRunningFormInfosByFilter success, data:' + JSON.stringify(data));
+    console.info(`formObserver getRunningFormInfosByFilter success, item count: ${data.length}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1800,7 +1780,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formObserver getRunningFormInfosByFilter, data: ${JSON.stringify(data)}`);
+      console.info(`formObserver getRunningFormInfosByFilter, item count: ${data.length}`);
     }
   });
 } catch(error) {
@@ -1892,7 +1872,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formId: string = '12400633174999288';
 try {
   formObserver.getRunningFormInfoById(formId).then((data: formInfo.RunningFormInfo) => {
-    console.info('formObserver getRunningFormInfoById success, data:' + JSON.stringify(data));
+    console.info(`formObserver getRunningFormInfoById success, formId: ${data.formId}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1908,43 +1888,16 @@ ArkTS-Sta示例：
 
 import { formInfo, formObserver } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const DOMAIN: int = 0x0000;
-const TAG: string = 'testTag formAgentTest';
-
+let formId: string = '12400633174999288';
 try {
-  formObserver.getRunningFormInfos((error: BusinessError<void> | null,
-    data: formInfo.RunningFormInfo[] | undefined) => {
-    if (error?.code !== 0) {
-      console.error('testTag', `getRunningFormInfos error, code: ${error?.code} message: ${error?.message}`);
-    } else {
-      if (data != undefined) {
-        for (let runningFormInfo of data) {
-          console.info(`formObserver getRunningFormInfos, hostBundleName : ${runningFormInfo.hostBundleName}`);
-        }
-      }
-      if (data === undefined || data.length === 0) {
-        console.error('testTag', 'formObserverStaticTest002 getRunningFormInfos callback no data');
-      } else {
-        try {
-          formObserver.getRunningFormInfoById(data[0].formId).then((data) => {
-            console.info('testTag', `formObserverStaticTest002 promise success`);
-          }).catch((error: Error) => {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            hilog.error(DOMAIN, TAG, `formObserverStaticTest002 promise error, code: ${code} message: ${message}`);
-          });
-          console.info('testTag', 'formObserverStaticTest002 getRunningFormInfoById success');
-        } catch (error: BusinessError) {
-          hilog.error(DOMAIN, TAG,
-            `formObserverStaticTest002 catch error, code: ${error.code} message: ${error.message}`);
-        }
-      }
-    }
+  formObserver.getRunningFormInfoById(formId).then((data: formInfo.RunningFormInfo) => {
+    console.info(`formObserver getRunningFormInfoById success, formId: ${data.formId}`);
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch (err: Error) {
-  console.error('testTag', `getRunningFormInfos error code: ${err?.code}, error message: ${err?.message}`);
+} catch(error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -2001,7 +1954,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formId: string = '12400633174999288';
 try {
   formObserver.getRunningFormInfoById(formId, true).then((data: formInfo.RunningFormInfo) => {
-    console.info('formObserver getRunningFormInfoById success, data:' + JSON.stringify(data));
+    console.info(`formObserver getRunningFormInfoById success, formId: ${data.formId}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -2023,7 +1976,7 @@ const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
 
 try {
-  formObserver.getRunningFormInfos(true).then((data: formInfo.RunningFormInfo[]) => {
+  formObserver.getRunningFormInfos(true).then((data: formInfo.RunningFormInfo[]) => {   zg+= 无此接口
     if (data !== undefined) {
       for (let runningFormInfo of data) {
         console.info(`formObserver getRunningFormInfos, hostBundleName : ${runningFormInfo.hostBundleName}`);
@@ -2106,7 +2059,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formObserver getRunningFormInfoById, data: ${JSON.stringify(data)}`);
+      console.info(`formObserver getRunningFormInfoById, formId: ${data.formId}`);
     }
   });
 } catch(error) {
@@ -2127,7 +2080,7 @@ const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
 
 try {
-  formObserver.getRunningFormInfos().then((data: formInfo.RunningFormInfo[]) => {
+  formObserver.getRunningFormInfos().then((data: formInfo.RunningFormInfo[]) => {   zg+= 无此接口
     if (data !== undefined) {
       for (let runningFormInfo of data) {
         console.info(`formObserver getRunningFormInfos, hostBundleName : ${runningFormInfo.hostBundleName}`);
@@ -2212,7 +2165,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formObserver getRunningFormInfoById, data: ${JSON.stringify(data)}`);
+      console.info(`formObserver getRunningFormInfoById, formId: ${data.formId}`);
     }
   });
 } catch(error) {
@@ -2305,7 +2258,7 @@ try {
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info('Router event listening in registered form.' + JSON.stringify(data));
+  console.info(`Router event listening in registered form, formId: ${data.formId}`);
 };
 formObserver.on('router', callback);
 ```
@@ -2406,7 +2359,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info('Router event listening in registered form.' + JSON.stringify(data));
+  console.info(`Router event listening in registered form, formId: ${data.formId}`);
 };
 formObserver.on('router', hostBundleName, callback);
 ```
@@ -2508,7 +2461,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info('Unregister form router event Listening.' + JSON.stringify(data));
+  console.info(`Unregister form router event Listening, formId: ${data.formId}`);
 };
 formObserver.off('router', hostBundleName, callback);
 ```
@@ -2620,7 +2573,7 @@ on(type: 'message', observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;):
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info('Message event listening in registered form.' + JSON.stringify(data));
+  console.info(`Message event listening in registered form, formId: ${data.formId}`);
 };
 formObserver.on('message', callback);
 ```
@@ -2721,7 +2674,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info('Message event listening in registered form.' + JSON.stringify(data));
+  console.info(`Message event listening in registered form, formId: ${data.formId}`);
 };
 formObserver.on('message', hostBundleName, callback);
 ```
@@ -2823,7 +2776,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info('Unregister form Message event Listening.' + JSON.stringify(data));
+  console.info(`Unregister form Message event Listening, formId: ${data.formId}`);
 };
 formObserver.off('message', hostBundleName, callback);
 ```
@@ -2935,7 +2888,7 @@ on(type: 'call', observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): vo
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info('Call event listening in registered form.' + JSON.stringify(data));
+  console.info(`Call event listening in registered form, formId: ${data.formId}`);
 };
 formObserver.on('call', callback);
 ```
@@ -3034,7 +2987,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info('Call event listening in registered form.' + JSON.stringify(data));
+  console.info(`Call event listening in registered form, formId: ${data.formId}`);
 };
 formObserver.on('call', hostBundleName, callback);
 ```
@@ -3134,7 +3087,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info('Unregister form Call event Listening.' + JSON.stringify(data));
+  console.info(`Unregister form Call event Listening, formId: ${data.formId}`);
 };
 formObserver.off('call', hostBundleName, callback);
 ```
