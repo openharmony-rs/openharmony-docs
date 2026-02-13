@@ -137,6 +137,24 @@ The current FrameNode is not on the main tree.
 
 将当前节点挂载到主节点树上，再执行当前操作。
 
+## 100031 由transferDynamic获得的FrameNode不支持部分接口
+
+**错误信息**
+
+frameNode created by transferDynamic not support something.
+
+**错误描述**
+
+由[transferDynamic](../apis-arkts/js-apis-transfer.md#transfertransferdynamic)获得的[FrameNode](./js-apis-arkui-frameNode.md)不支持部分接口，具体请参考[isTransferred](./js-apis-arkui-frameNode.md#istransferred20)。
+
+**可能原因**
+
+由transferDynamic获得的FrameNode不支持部分接口。
+
+**处理步骤**
+
+由transferDynamic获得FrameNode后，请勿使用不支持的接口。
+
 ## 106103 对应的操作不支持ArkTS创建的节点
 
 **错误信息**
