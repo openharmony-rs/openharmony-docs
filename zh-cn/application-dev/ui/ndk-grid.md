@@ -105,7 +105,7 @@ private:
 
 <!-- @[grid_columns_and_rows](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridRectByIndexExample.cpp) -->
 
-```cpp
+``` C++
 auto grid = std::make_shared<ArkUIGridNode>();
 grid->SetPercentWidth(0.9f);
 grid->SetHeight(SIX_ROWS * ITEM_HEIGHT + (SIX_ROWS - 1) * ROWS_GAP);
