@@ -14,6 +14,42 @@
 
 <!-- @[Local_Question_V1_animateTo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionV1animateTo.ets) -->   
 
+``` TypeScript
+@Entry
+@Component
+struct Index {
+  @State w: number = 50; // 宽度
+  @State h: number = 50; // 高度
+  @State message: string = 'Hello';
+
+  build() {
+    Column() {
+      Button('change size')
+        .margin(20)
+        .onClick(() => {
+          // 在执行动画前，存在额外的修改
+          this.w = 100;
+          this.h = 100;
+          this.message = 'Hello World';
+          this.getUIContext().animateTo({
+            duration: 1000
+          }, () => {
+            this.w = 200;
+            this.h = 200;
+            this.message = 'Hello ArkUI';
+          })
+        })
+      Column() {
+        Text(`${this.message}`)
+      }
+      .backgroundColor('#ff17a98d')
+      .width(this.w)
+      .height(this.h)
+    }
+  }
+}
+```
+
 预期动画效果：绿色矩形从长宽100变为200，字符串从Hello World变为Hello ArkUI。
 
 ![arkts-new-local-animateTo-2](./figures/arkts-new-local-animateTo-2.gif)
