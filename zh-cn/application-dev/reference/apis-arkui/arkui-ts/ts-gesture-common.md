@@ -584,7 +584,7 @@ getDistanceMap(): Map\<SourceTool, number\>
 | velocityX<sup>10+</sup> | number | 否 | 否  |用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的x轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从左往右为正，反之为负。单位为vp/s。<br/>取值范围：(-∞,  +∞) <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | velocityY<sup>10+</sup> | number | 否 | 否  |用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的y轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从上往下为正，反之为负。单位为vp/s。<br/>取值范围：(-∞,  +∞) <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | velocity<sup>10+</sup> | number | 否 | 否  |用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的主方向速度。为xy轴方向速度的平方和的算术平方根。单位为vp/s。<br/>取值范围：[0,  +∞) <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| tapLocation<sup>20+</sup> | [EventLocationInfo](ts-basic-gestures-tapgesture.md#eventlocationinfo20) | 否 | 是  |用于点击手势中，获取当前手势的坐标信息。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| tapLocation<sup>20+</sup> | [EventLocationInfo](ts-basic-gestures-tapgesture.md#eventlocationinfo20) | 否 | 是  |用于点击手势中，获取当前手势的坐标信息。在非点击手势中，tapLocation返回值为undefined。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
 ## GestureMask枚举说明
 
