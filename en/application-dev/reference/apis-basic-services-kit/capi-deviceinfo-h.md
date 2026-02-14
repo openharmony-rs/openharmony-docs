@@ -10,6 +10,8 @@
 
 Declares the APIs for querying device information.
 
+**File to include**: <deviceinfo.h>
+
 **Library**: libdeviceinfo_ndk.z.so
 
 **System capability**: SystemCapability.Startup.SystemInfo
@@ -70,7 +72,7 @@ Obtains the device type.
 
 | Type| Description|
 | -- | -- |
-| const char | Returns one of the following values:<br>**phone** (or **default**)<br>**wearable**<br>**liteWearable**<br>**tablet**<br>**tv**<br>**car**<br>**smartVision** |
+| const char | Returns one of the following values:<br>**phone** (or **default**),<br>**wearable**,<br>**liteWearable**,<br>**tablet**,<br>**tv**,<br>**car**,<br>**smartVision**|
 
 ### OH_GetManufacture()
 
