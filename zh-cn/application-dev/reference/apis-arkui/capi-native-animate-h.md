@@ -756,7 +756,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetCurve(ArkUI_KeyframeAnimateOption* opt
 
 > **说明：**
 >
-> 由于[springMotion](./js-apis-curve.md#curvesspringmotion9)、[responsiveSpringMotion](./js-apis-curve.md#curvesresponsivespringmotion9)、[interpolatingSpring](./js-apis-curve.md#curvesinterpolatingspring9)曲线时长不生效，故不支持这三种曲线。
+> 由于[springMotion](#OH_ArkUI_Curve_CreateSpringMotion)、[responsiveSpringMotion](#OH_ArkUI_Curve_CreateResponsiveSpringMotion)、[interpolatingSpring](#OH_ArkUI_Curve_CreateInterpolatingSpring)曲线时长不生效，故不支持这三种曲线。
 
 **起始版本：** 12
 
@@ -1138,7 +1138,7 @@ int32_t OH_ArkUI_AnimatorOption_SetCurve(ArkUI_AnimatorOption* option, ArkUI_Cur
 
 > **说明：**
 >
-> 不支持[springCurve](#OH_ArkUI_Curve_CreateSpringCurve)、[springMotion](./js-apis-curve.md#curvesspringmotion9)、[responsiveSpringMotion](./js-apis-curve.md#curvesresponsivespringmotion9)、[interpolatingSpring](./js-apis-curve.md#curvesinterpolatingspring9)，[customCurve](#OH_ArkUI_Curve_CreateCustomCurve)动画曲线。
+> 不支持[springCurve](#OH_ArkUI_Curve_CreateSpringCurve)、[springMotion](#OH_ArkUI_Curve_CreateSpringMotion)、[responsiveSpringMotion](#OH_ArkUI_Curve_CreateResponsiveSpringMotion)、[interpolatingSpring](#OH_ArkUI_Curve_CreateInterpolatingSpring)，[customCurve](#OH_ArkUI_Curve_CreateCustomCurve)动画曲线。
 
 
 **起始版本：** 12
@@ -1288,7 +1288,7 @@ int32_t OH_ArkUI_AnimatorOption_SetKeyframeCurve(ArkUI_AnimatorOption* option, A
 
 > **说明：**
 >
-> 不支持[springCurve](#OH_ArkUI_Curve_CreateSpringCurve)、[springMotion](./js-apis-curve.md#curvesspringmotion9)、[responsiveSpringMotion](./js-apis-curve.md#curvesresponsivespringmotion9)、[interpolatingSpring](./js-apis-curve.md#curvesinterpolatingspring9)，[customCurve](#OH_ArkUI_Curve_CreateCustomCurve)动画曲线。
+> 不支持[springCurve](#OH_ArkUI_Curve_CreateSpringCurve)、[springMotion](#OH_ArkUI_Curve_CreateSpringMotion)、[responsiveSpringMotion](#OH_ArkUI_Curve_CreateResponsiveSpringMotion)、[interpolatingSpring](#OH_ArkUI_Curve_CreateInterpolatingSpring)，[customCurve](#OH_ArkUI_Curve_CreateCustomCurve)动画曲线。
 
 **起始版本：** 12
 
