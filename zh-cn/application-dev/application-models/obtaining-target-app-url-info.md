@@ -23,7 +23,7 @@
       "skills": [
           "uris": [
             {
-              "scheme": "demo",
+              "scheme": "appurl",
               "host": "www.example.com",
               "path": "path1"
               // ...
@@ -43,41 +43,42 @@
 
 1. 使用bm工具，获取目标应用的bundleName。
 
-  （1）获取当前设备上所有已安装应用的bundleName，保存结果。
+    1.1获取当前设备上所有已安装应用的bundleName，保存结果。
+
     ```bash
     hdc shell bm dump -a
     ```
 
-  （2）安装目标应用。
+    1.2 安装目标应用。
 
-  （3）再次获取当前设备上所有已安装应用的bundleName，并与之前保存的结果进行对比。新增的bundleName即为`com.example.myapplication`。
+    1.3 再次获取当前设备上所有已安装应用的bundleName，并与之前保存的结果进行对比。新增的bundleName即为`com.example.myapplication`。
 
 2. 根据bundleName，获取目标应用的`Mission ID`。
 
-  （1）使用aa工具，获取目标应用的abilityName。
+    2.1 使用aa工具，获取目标应用的abilityName。
 
     ```bash
-    hdc shell "aa dump -l | grep com.example.myapplication"
+    hdc shell "aa dump -l | grep com.examplmyapplication"
     ```
 
-  (2) 通过查看输出中的`Mission ID`部分，获取abilityName即为`EntryAbility`。
+    2.2 通过查看输出中的`Mission ID`部分，获取abilityName即为`EntryAbility`。
 
     ```bash
     # 执行结果
-    Mission ID #48  mission name #[#com.example.myapplication:entry:EntryAbility]  lockedState #0  mission affinity #[]
+    Mission ID #48  mission name #[#com.example.  myapplication:entry:EntryAbility]  lockedStat#0     mission affinity #[]
           app name [com.example.myapplication]
           bundle name [com.example.myapplication]
     ```
 
 3. 根据bundleName，获取应用的uris信息。
 
-  （1）使用bm工具，获取应用的完整配置信息，包括abilities、skills、uris等配置。
+    3.1 使用bm工具，获取应用的完整配置信息，包括abilities、skills、uris等配置。
     
     ```bash
     hdc shell bm dump -n com.example.myapplication
     ```
 
-  （2）通过查看输出中`name`为的`EntryAbility`下方的`skills`部分，获取应用支持的URL Scheme配置。
+    3.2 通过查看输出中`name`为的`EntryAbility`下方的`skills`部分，获取应用支持的URL Scheme配置。
 
     ```json5
     // 输出示例（skills部分）：
@@ -104,7 +105,7 @@
               "pathRegex": "",
               "pathStartWith": "",
               "port": "",
-              "scheme": "demo",
+              "scheme": "appurl",
               "type": "",
               "utd": ""
             }
@@ -124,18 +125,18 @@
 
     以目标应用为例：
     ```
-    demo://www.example.com/path1
+    appurl://www.example.com/path1
     ```
 
     完整的拼接示例：
 
     | 配置项 | 值 |
     |--------|---|
-    | scheme | `demo` |
+    | scheme | `appurl` |
     | host | `www.example.com` |
     | port | 未指定（可选） |
     | path | `path1` |
-    | 拼接结果 | `demo://www.example.com/path1` |
+    | 拼接结果 | `appurl://www.example.com/path1` |
 
 
     > **说明：**
@@ -169,7 +170,7 @@
           .margin({ bottom: '12vp' })
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-            let link: string = 'demo://www.example.com/path1';
+            let link: string = 'appurl://www.example.com/path1';
 
             context.openLink(link, { appLinkingOnly: false })
               .then(() => {
@@ -188,5 +189,6 @@
     安装并启动步骤4中的拉起方应用后，点击openLink按钮即可拉起目标应用，演示效果如下：
 
     **图1** 拉起目标应用演示
+
     ![obtaining-target-app-url-info](figures/obtaining-target-app-url-info.gif) 
 
