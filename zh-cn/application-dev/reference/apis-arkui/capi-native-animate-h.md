@@ -1697,7 +1697,7 @@ float OH_ArkUI_AnimatorOnFrameEvent_GetValue(ArkUI_AnimatorOnFrameEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 动画插值结果。<br/>**说明：** <br/>在动画过程中，插值结果根据动画参数在插值起点[OH_ArkUI_AnimatorOption_SetBegin](#OH_ArkUI_AnimatorOption_SetBegin)和插值终点[OH_ArkUI_AnimatorOption_SetEnd](#oh_arkui_animatoroption_setend)间变化。 |
+| float | 动画插值结果。<br/>**说明：** <br/>在动画过程中，插值结果根据动画参数在插值起点[OH_ArkUI_AnimatorOption_SetBegin](#oh_arkui_animatoroption_setbegin)和插值终点[OH_ArkUI_AnimatorOption_SetEnd](#oh_arkui_animatoroption_setend)间变化。 |
 
 ### OH_ArkUI_AnimatorOption_RegisterOnFrameCallback()
 
@@ -2444,7 +2444,7 @@ int32_t OH_ArkUI_TransitionEffect_SetAnimation(ArkUI_TransitionEffect* effect, A
 
 > **说明：**
 >
-> 如果通过[OH_ArkUI_TransitionEffect_Combine](#OH_ArkUI_TransitionEffect_Combine)进行转场效果的组合，前一转场效果的动画参数也可用于后一转场效果。
+> 如果通过[OH_ArkUI_TransitionEffect_Combine](#oh_arkui_transitioneffect_combine)进行转场效果的组合，前一转场效果的动画参数也可用于后一转场效果。
 
 **起始版本：** 12
 
