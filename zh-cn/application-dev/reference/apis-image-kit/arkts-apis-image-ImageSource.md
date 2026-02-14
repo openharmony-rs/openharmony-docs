@@ -207,7 +207,7 @@ getImageProperty(key:PropertyKey, options?: ImagePropertyOptions): Promise\<stri
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -264,7 +264,7 @@ getImageProperties(key: Array&#60;PropertyKey&#62;): Promise<Record<PropertyKey,
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -320,6 +320,7 @@ getImagePropertySync(key:PropertyKey): string
 **错误码：**
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 7700101  | Bad source. e.g.,1. Image has invalid width or height. 2. Image source incomplete. 3. Read image data failed. 4. Codec create failed.|
@@ -372,7 +373,7 @@ modifyImageProperty(key: PropertyKey, value: string): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -428,7 +429,7 @@ modifyImageProperties(records: Record<PropertyKey, string|null>): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -741,7 +742,7 @@ createPicture(options?: DecodingOptionsForPicture): Promise\<Picture>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1242,7 +1243,7 @@ createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: Allocato
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1312,7 +1313,7 @@ createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: Allo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1762,9 +1763,9 @@ modifyImageProperty(key: string, value: string): Promise\<void>
 
 > **说明：**
 >
-> 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
+> - 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
 >
-> 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty11)代替。
+> - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty11)代替。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1809,9 +1810,9 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback\<void>):
 
 > **说明：**
 >
-> 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
+> - 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
 >
-> 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty11)代替。
+> - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty11)代替。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
