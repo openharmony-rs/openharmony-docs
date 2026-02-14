@@ -1811,7 +1811,7 @@ Defines a print job.
 | documentFormat | [PrintDocumentFormat](#printdocumentformat23) | No| No| Format of the print data.|
 | docFlavor | [DocFlavor](#docflavor23) | No| No| Data source type.|
 | copyNumber | number | No| No| Number of file list copies.|
-| isLandscape | boolean | No| No| Whether the printing is in landscape mode. The value **true** means that the printing is in landscape mode; **false** means the printing is in portrait mode The default value is **false**.|
+| isLandscape | boolean | No| No| Whether pages are printed in landscape mode. The value **true** indicates that pages are printed in landscape mode, and **false** indicates that pages are printed in portrait mode. The default value is **false**.|
 | colorMode | [PrintColorMode](#printcolormode11) | No| No| Color mode.|
 | duplexMode | [PrintDuplexMode](#printduplexmode11) | No| No| Simplex or duplex mode.|
 | pageSize | [PrintPageSize](./js-apis-print.md#printpagesize11) | No| No| Selected page size.|
