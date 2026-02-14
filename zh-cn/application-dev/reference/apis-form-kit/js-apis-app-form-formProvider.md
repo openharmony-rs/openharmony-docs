@@ -429,7 +429,7 @@ ArkTS-Sta示例：
 'use static'
 
 import { AsyncCallback } from '@ohos.base';
-import { formProvider } from '@kit.FormKit';
+import { formProvider, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
@@ -687,6 +687,7 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
+import { State } from '@ohos.arkui.stateManagement'
 import { formProvider } from '@kit.FormKit';
 
 const TAG: string = 'FormEditDemo-Page] -->';
