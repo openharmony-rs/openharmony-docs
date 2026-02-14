@@ -1030,9 +1030,7 @@ try {
 }
 ```
 
-## onSystemUpdate<sup>23+</sup>
-
-onSystemUpdate?: SystemUpdateCallback
+## 属性
 
 通知系统属性值变化的回调函数。
 
@@ -1048,9 +1046,9 @@ onSystemUpdate?: SystemUpdateCallback
 
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| ------------ | ------------------------ | ---- | -------------------------- |
-| onSystemUpdate | [SystemUpdateCallback](#systemupdatecallback23) | 否 | 返回携带系统属性值的通知信息。 |
+| 名称   | 类型    | 只读 | 可选 | 说明             |
+| ------ | ------- | ---- | --- | ---------------- |
+| onSystemUpdate | [SystemUpdateCallback](#systemupdatecallback23) | 否 | 是 | 返回携带系统属性值的通知信息。 |
 
 **示例：**
 
@@ -1059,7 +1057,7 @@ ArkTS-Dyn示例：
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onSystemUpdate: (data: notificationSubscribe.SubscribeCallbackData) => {
     let req = data.request;
-    console.info(`onSystemUpdate callback req.priorityType:: ${req.priorityNotificationType}`);
+    console.info(`onSystemUpdate callback req.priorityType: ${req.priorityNotificationType}`);
   }
 };
 try {
@@ -1074,7 +1072,7 @@ ArkTS-Sta示例：
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onSystemUpdate: (data: notificationSubscribe.SubscribeCallbackData) => {
     let req = data.request;
-    console.info(`onSystemUpdate callback req.priorityType:: ${req.priorityNotificationType}`);
+    console.info(`onSystemUpdate callback req.priorityType: ${req.priorityNotificationType}`);
   }
 };
 try {
@@ -1232,6 +1230,6 @@ type SystemUpdateCallback = (data: SubscribeCallbackData) => void
 
 **ArkTS-Sta起始版本**：23
 
-| 名称        | 类型   | 只读 | 可选 | 说明     |
-| ----------- | ------ | ---- | ---- |------------ |
-| data | [SubscribeCallbackData](#subscribecallbackdata) | 是 | 是 | 返回携带系统属性值的通知信息。 |
+| 参数名       | 类型   | 必填 | 说明         |
+| ----------- | ------ | ---- | ------------ |
+| data | [SubscribeCallbackData](#subscribecallbackdata) | 是 | 返回携带系统属性值的通知信息。 |
