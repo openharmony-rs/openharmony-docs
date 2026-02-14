@@ -92,7 +92,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formId: string = '12400633174999288';
 try {
   formProvider.setFormNextRefreshTime(formId, 5, (error: BusinessError): void => {
-    if (error != 0) {
+    if (error?.code != 0) {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
