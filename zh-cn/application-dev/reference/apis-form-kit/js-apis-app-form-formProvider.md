@@ -269,8 +269,8 @@ try {
   }
   let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   formProvider.updateForm(formId, obj, (error) => {
-    if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+    if (error?.code != 0) {
+      console.error(`callback error, code: ${error?.code}, message: ${error?.message})`);
       return;
     }
     console.info(`formProvider updateForm success`);
@@ -412,8 +412,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formProvider.getFormsInfo((error, data) => {
-    if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+    if (error?.code != 0) {
+      console.error(`callback error, code: ${error?.code}, message: ${error?.message})`);
       return;
     }
     console.info(`formProvider getFormsInfo, item count: ${data?.length}`);
@@ -434,8 +434,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let callback: AsyncCallback<Array<formInfo.FormInfo>> = (error: BusinessError | null, data: Array<formInfo.FormInfo> | undefined) => {
-    if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+    if (error?.code != 0) {
+      console.error(`callback error, code: ${error?.code}, message: ${error?.message})`);
       return;
     }
     console.info(`formProvider getFormsInfo, item count: ${data?.length}`);

@@ -115,7 +115,7 @@ try {
   }
   let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   let callback: AsyncCallback<string> = (error: BusinessError | null, data: string | undefined) => {
-    if (error) {
+    if (error?.code != 0) {
       console.error(`callback error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
       return;
     }
@@ -210,8 +210,8 @@ let want: Want = {
 };
 try {
   let callback: AsyncCallback<string> = (error: BusinessError | null, data: string | undefined) => {
-    if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+    if (error?.code != 0) {
+      console.error(`callback error, code: ${error?.code}, message: ${error?.message})`);
       return;
     }
     console.info(`formProvider requestPublishForm, form ID is: ${data}`);
@@ -402,8 +402,8 @@ import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 
 try {
   let callback: AsyncCallback<boolean> = (error: BusinessError | null, isSupported: boolean | undefined) => {
-    if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+    if (error?.code != 0) {
+      console.error(`callback error, code: ${error?.code}, message: ${error?.message})`);
     } else {
       if (isSupported) {
         let want: Want = {
@@ -416,8 +416,8 @@ try {
         };
         try {
           let callback: AsyncCallback<string> = (error: BusinessError | null, data: string | undefined) => {
-            if (error) {
-              console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+            if (error?.code != 0) {
+              console.error(`callback error, code: ${error?.code}, message: ${error?.message})`);
               return;
             }
             console.info(`formProvider requestPublishForm, form ID is: ${data}`);

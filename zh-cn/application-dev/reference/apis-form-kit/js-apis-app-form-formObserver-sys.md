@@ -1380,8 +1380,8 @@ const TAG: string = 'testTag formAgentTest';
 
 try {
   let callback: AsyncCallback<Array<formInfo.RunningFormInfo>> = (error: BusinessError | null, data: Array<formInfo.RunningFormInfo> | undefined) => {
-    if (error) {
-      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    if (error?.code != 0) {
+      console.error(`error, code: ${error?.code}, message: ${error?.message}`);
     } else {
       console.info(`formObserver getRunningFormInfos, item count: ${data?.length}`);
     }
@@ -1457,8 +1457,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formObserver.getRunningFormInfos((error: BusinessError | null, data: formInfo.RunningFormInfo[] | undefined) => {
-    if (error) {
-      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    if (error?.code != 0) {
+      console.error(`error, code: ${error?.code}, message: ${error?.message}`);
     } else {
       if (data !== undefined) {
         for (let runningFormInfo of data) {
@@ -1806,8 +1806,8 @@ let formInstanceFilter: formInfo.FormProviderFilter = {
 try {
   formObserver.getRunningFormInfosByFilter(formInstanceFilter,
     (error: BusinessError | null, data: formInfo.RunningFormInfo[] | undefined) => {
-      if (error) {
-        console.error(`error, code: ${error.code}, message: ${error.message}`);
+      if (error?.code != 0) {
+        console.error(`error, code: ${error?.code}, message: ${error?.message}`);
       } else {
         if (data != undefined) {
           for (let runningFormInfo of data) {
