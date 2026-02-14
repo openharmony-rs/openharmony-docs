@@ -57,7 +57,7 @@ Read [AVMetadataExtractor](../../reference/apis-media-kit/capi-avmetadataextract
     OH_AVMetadataExtractor* mainExtractor = OH_AVMetadataExtractor_Create();
     ```
 
-2. Call [OH_AVMetadataExtractor_SetFDSoucre()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_setfdsource) to set the file descriptor of a media resource.
+2. Call [OH_AVMetadataExtractor_SetFDSource()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_setfdsource) to set the file descriptor of a media resource.
 
    If different AVMetadataExtractor or [AVImageGenerator](../../reference/apis-media-kit/capi-avimagegenerator.md) instances need to operate the same resource, the file descriptor needs to be opened for multiple times. Therefore, do not share a file descriptor.
     ```c
