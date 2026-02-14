@@ -1081,10 +1081,8 @@ showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSet
 ```ts 
 import { dataSharePredicates } from '@kit.ArkData'; 
 
-
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) { 
   console.info('ShowSingleAssetCreationDialogExDemo.'); 
-
 
   try { 
     // 获取需要保存到媒体库的位于应用沙箱的图片/视频uri。 
