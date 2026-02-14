@@ -1541,7 +1541,7 @@ struct Index {
 | start | number | 否   | 否   | 区间左侧端点索引，整数。|
 | end   | number | 否   | 否   | 区间右侧端点索引，整数。|
 
-## TextRectSize
+## TextRectSize<sup>24+</sup>
 
 文本布局后的矩形尺寸。值为浮点数，单位为px。
 
@@ -1556,7 +1556,7 @@ struct Index {
 | width  | number | 否   | 否   | 文本矩形的宽度，浮点数，单位为px。|
 | height | number | 否   | 否   | 文本矩形的高度，浮点数，单位为px。|
 
-## TextLayoutResult
+## TextLayoutResult<sup>24+</sup>
 
 文本布局结果。
 
@@ -1736,9 +1736,9 @@ layoutWithConstraints(size: TextRectSize): TextLayoutResult
 ```ts
 let size: text.TextRectSize = { width: 200, height: 100 };
 let result = paragraph.layoutWithConstraints(size);
-console.log('Width: ' + result.correctRect.width + ', Height: ' + result.correctRect.height);
+console.info('Width: ' + result.correctRect.width + ', Height: ' + result.correctRect.height);
 for (let i = 0; i < result.fitStrRange.length; ++i) {
-  console.log('fitRange: [' + result.fitStrRange[i].start + ', ' + result.fitStrRange[i].end + ']');
+  console.info('fitRange: [' + result.fitStrRange[i].start + ', ' + result.fitStrRange[i].end + ']');
 }
 ```
 
