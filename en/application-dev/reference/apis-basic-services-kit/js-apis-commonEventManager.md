@@ -427,8 +427,8 @@ setTimeout(() => {
         console.error(`Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
         return;
       }
-      // If the subscriber is no longer used, set it to undefined to avoid memory leakage.
-      subscriber = undefined;
+      // If the subscriber is no longer used, set it to null to avoid memory leakage.
+      subscriber = null;
       console.info(`Succeeded in unsubscribing.`);
     });
   } catch (error) {
