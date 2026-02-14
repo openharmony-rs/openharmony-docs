@@ -1223,6 +1223,25 @@ Failed to traverse the query data partition directory.
 **处理步骤**
 
 重启设备后重试。
+
+### 13600018 查询系统数据大小失败
+
+**错误信息**
+
+Failed to query the system data size.
+
+**错误描述**
+
+查询系统数据大小失败。
+
+**可能原因**
+
+底层文件系统异常。
+
+**处理步骤**
+
+重启设备后重试。
+
 ## 公共文件访问错误码
 
 ### 14300001 IPC通信失败
