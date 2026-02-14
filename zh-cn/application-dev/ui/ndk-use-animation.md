@@ -281,16 +281,16 @@
 ``` C
 // ArkUIColumnNode为工程内封装的node类型
 auto column = std::make_shared<ArkUIColumnNode>();
-//设置宽度为300，NUM_300 = 300
+// 设置宽度为300，NUM_300 = 300
 column->SetWidth(NUM_300);
-//设置高度为250，NUM_250 = 250
+// 设置高度为250，NUM_250 = 250
 column->SetHeight(NUM_250);
 // 创建文本节点，内容区介绍“这是关键帧动画”
 auto textNode = std::make_shared<ArkUITextNode>();
 textNode->SetTextContent("这是关键帧动画");
-//设置宽度为120，NUM_120 = 120
+// 设置宽度为120，NUM_120 = 120
 textNode->SetWidth(NUM_120);
-//设置高度为120，NUM_120 = 120
+// 设置高度为120，NUM_120 = 120
 textNode->SetHeight(NUM_50);
 // 创建button，后续创建的关键帧动画作用在button组件上
 auto button = std::make_shared<ArkUIButtonNode>();
