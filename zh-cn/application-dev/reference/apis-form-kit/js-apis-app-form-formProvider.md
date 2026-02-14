@@ -92,7 +92,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formId: string = '12400633174999288';
 try {
   formProvider.setFormNextRefreshTime(formId, 5, (error: BusinessError): void => {
-    if (error) {
+    if (error != 0) {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
@@ -507,6 +507,7 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
+import { AsyncCallback } from '@ohos.base';
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -515,13 +516,14 @@ const filter: formInfo.FormInfoFilter = {
   moduleName: 'entry'
 };
 try {
-  formProvider.getFormsInfo(filter, (error, data) => {
-    if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+  let callback: AsyncCallback<Array<formInfo.FormInfo>> = (error: BusinessError | null, data: Array<formInfo.FormInfo> | undefined) => {
+    if (error?.code != 0) {
+      console.error(`callback error, code: ${error?.code}, message: ${error?.message})`);
       return;
     }
     console.info(`formProvider getFormsInfo, item count: ${data?.length}`);
-  });
+  };
+  formProvider.getFormsInfo(filter, callback);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
 }
