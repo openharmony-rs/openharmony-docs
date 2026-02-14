@@ -16,7 +16,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_BOOT_COMPLETED](commonEventManager-definitions-sys.md#common_event_boot_completed)替代。
+  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用COMMON_EVENT_BOOT_COMPLETED替代。
 
   - 值：usual.event.BOOT_COMPLETED
   - 订阅者所需权限：ohos.permission.RECEIVER_STARTUP_COMPLETED（该权限仅系统应用可申请）
@@ -458,7 +458,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_USER_SWITCHED](commonEventManager-definitions-sys.md#common_event_user_switched)替代。
+  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用COMMON_EVENT_USER_SWITCHED替代。
 
   - 值：usual.event.USER_SWITCHED
   - 订阅者所需权限：ohos.permission.MANAGE_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
@@ -1088,7 +1088,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_USER_ADDED](commonEventManager-definitions-sys.md#common_event_user_added)替代。
+  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用COMMON_EVENT_USER_ADDED替代。
 
   - 值：usual.event.USER_ADDED
   - 订阅者所需权限：ohos.permission.MANAGE_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
@@ -1098,7 +1098,7 @@
 
   > **说明：**
   >
-  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用[COMMON_EVENT_USER_REMOVED](commonEventManager-definitions-sys.md#common_event_user_removed)替代。
+  > 从API version 7 开始支持，从API version 9 开始废弃，建议使用COMMON_EVENT_USER_REMOVED替代。
 
   - 值：usual.event.USER_REMOVED
   - 订阅者所需权限：ohos.permission.MANAGE_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
