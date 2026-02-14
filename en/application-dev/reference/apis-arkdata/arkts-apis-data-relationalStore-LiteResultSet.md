@@ -587,7 +587,7 @@ getDouble(columnIndex: number): number
 
 Obtains the value in the specified column in the current row as a Double.
 
-If the data type of the current column is INTEGER, DOUBLE, or TEXT, the value is converted to the Double type and returned. Non-numeric TEXT and BLOB types return **0**. If the content of the column is null/empty, **0.0** is returned.<br>
+If the data type of the current column is INTEGER, DOUBLE, or TEXT, the value is converted to the Double type and returned. Non-numeric TEXT and BLOB types return **0.0**. If the content of the column is null/empty, **0.0** is returned.<br>
 If the data type of the current column is ASSET, ASSETS, FLOATVECTOR, or BIGINT, 14800041 is returned.<br>
 
 **Model restriction**: This API can be used only in the stage model.
