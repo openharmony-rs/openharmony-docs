@@ -1410,7 +1410,7 @@ on(eventType: 'windowStageEvent', callback: Callback&lt;WindowStageEventType&gt;
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowStageEvent](#onwindowstageevent22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowStageEvent](#onwindowstageevent23)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1513,7 +1513,7 @@ off(eventType: 'windowStageEvent', callback?: Callback&lt;WindowStageEventType&g
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowStageEvent](#offwindowstageevent22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowStageEvent](#offwindowstageevent23)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1788,7 +1788,7 @@ on(eventType: 'windowStageClose', callback: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowStageClose](#onwindowstageclose22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowStageClose](#onwindowstageclose23)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1920,7 +1920,7 @@ off(eventType: 'windowStageClose', callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowStageClose](#offwindowstageclose22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowStageClose](#offwindowstageclose23)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

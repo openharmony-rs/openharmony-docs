@@ -6113,7 +6113,7 @@ on(type: 'windowEvent', callback: Callback&lt;WindowEventType&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowEvent](#onwindowevent22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowEvent](#onwindowevent23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -6188,7 +6188,7 @@ off(type: 'windowEvent', callback?: Callback&lt;WindowEventType&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowEvent](#offwindowevent22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowEvent](#offwindowevent23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -6466,7 +6466,7 @@ on(type: 'windowVisibilityChange', callback: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowVisibilityChange](#onwindowvisibilitychange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowVisibilityChange](#onwindowvisibilitychange23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -6558,7 +6558,7 @@ off(type: 'windowVisibilityChange', callback?: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowVisibilityChange](#offwindowvisibilitychange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowVisibilityChange](#offwindowvisibilitychange23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -8164,7 +8164,7 @@ on(type:  'subWindowClose', callback: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSubWindowClose](#onsubwindowclose22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSubWindowClose](#onsubwindowclose23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -8262,7 +8262,7 @@ off(type: 'subWindowClose', callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offSubWindowClose](#offsubwindowclose22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSubWindowClose](#offsubwindowclose23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
