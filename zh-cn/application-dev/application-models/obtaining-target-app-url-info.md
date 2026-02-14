@@ -163,23 +163,33 @@
     @Entry
     @Component
     struct Index {
-      build() {
-        Button('openLink', { type: ButtonType.Capsule, stateEffect: true })
-          .width('87%')
-          .height('5%')
-          .margin({ bottom: '12vp' })
-          .onClick(() => {
-            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-            let link: string = 'appurl://www.example.com/path1';
+      @State message: string = '拉起目标应用';
 
-            context.openLink(link, { appLinkingOnly: false })
-              .then(() => {
-                hilog.info(0x0000, 'testTag', `Succeeded in opening link.`);
-              })
-              .catch((error: BusinessError) => {
-                hilog.error(0x0000, 'testTag', `Failed to open link, code: ${error.code}, message: ${error.message}`);
-              });
-          })
+      build() {
+        RelativeContainer() {
+          Button(this.message)
+            .id('HelloWorld')
+            .fontSize($r('app.float.page_text_font_size'))
+            .fontWeight(FontWeight.Bold)
+            .alignRules({
+              center: { anchor: '__container__', align: VerticalAlign.Center },
+              middle: { anchor: '__container__', align: HorizontalAlign.Center }
+            })
+            .onClick(() => {
+              let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+              let link: string = 'appurl://www.example.com/path1';
+
+              context.openLink(link, { appLinkingOnly: false })
+                .then(() => {
+                  hilog.info(0x0000, 'testTag', `Succeeded in opening link.`);
+                })
+                .catch((error: BusinessError) => {
+                  hilog.error(0x0000, 'testTag', `Failed to open link, code: ${error.code}, message: ${error.message}`);
+                });
+            })
+        }
+        .height('100%')
+        .width('100%')
       }
     }
     ```
