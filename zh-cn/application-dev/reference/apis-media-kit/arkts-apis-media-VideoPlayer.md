@@ -855,7 +855,7 @@ if (videoPlayer) {
   (videoPlayer as media.VideoPlayer).setSpeed(speed).then((result: number) => {
     console.info('Succeeded in setting Speed');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to set Speed, error:${error}`);//todo:: error.
+    console.error(`Failed to set Speed, error:${error}`);// todo:: error.
   });
 }
 ```
@@ -1025,5 +1025,5 @@ import { BusinessError } from '@kit.BasicServicesKit';
 videoPlayer.on('error', (error: BusinessError) => {  // 设置'error'事件回调。
   console.error(`video error called, error: ${error}`);
 });
-videoPlayer.url = 'fd://error';  //设置错误的播放地址，触发'error'事件。
+videoPlayer.url = 'fd://error';  // 设置错误的播放地址，触发'error'事件。
 ```
