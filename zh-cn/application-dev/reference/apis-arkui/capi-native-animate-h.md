@@ -68,7 +68,7 @@
 | [void OH_ArkUI_KeyframeAnimateOption_Dispose(ArkUI_KeyframeAnimateOption* option)](#oh_arkui_keyframeanimateoption_dispose) | 销毁关键帧动画参数。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setdelay) | 设置关键帧动画的整体延时时间，单位为ms（毫秒），默认不延时播放。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetIterations(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setiterations) | 设置关键帧动画的动画播放次数。默认播放一次，设置为-1时表示无限次播放。设置为0时表示无动画效果。 |
-| [int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAnimateOption* option, void* userData, void (\*onFinish)(void* userData))](#oh_arkui_keyframeanimateoption_registeronfinishcallback) | 设置关键帧动画播放完成回调。当[关键帧动画](../../reference/apis-arkui/arkui-ts/ts-keyframeAnimateTo.md#关键帧动画)所有次数播放完成后调用。 |
+| [int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAnimateOption* option, void* userData, void (\*onFinish)()(void* userData))](#oh_arkui_keyframeanimateoption_registeronfinishcallback) | 设置关键帧动画播放完成回调。当[关键帧动画](./arkui-ts/ts-keyframeAnimateTo.md#关键帧动画)所有次数播放完成后调用。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetExpectedFrameRate(ArkUI_KeyframeAnimateOption* option, ArkUI_ExpectedFrameRateRange* frameRate)](#oh_arkui_keyframeanimateoption_setexpectedframerate) | 设置关键帧动画期望帧率。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetDuration(ArkUI_KeyframeAnimateOption* option, int32_t value, int32_t index)](#oh_arkui_keyframeanimateoption_setduration) | 设置关键帧动画某段关键帧动画的持续时间，单位为ms（毫秒）。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetCurve(ArkUI_KeyframeAnimateOption* option, ArkUI_CurveHandle value, int32_t index)](#oh_arkui_keyframeanimateoption_setcurve) | 设置关键帧动画某段关键帧使用的动画曲线。 |
@@ -442,7 +442,7 @@ void OH_ArkUI_AnimateOption_SetDelay(ArkUI_AnimateOption* option, int32_t value)
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。 |
-| int32_t value | 动画延迟播放时间，单位为ms（毫秒）。取值范围：(-∞, +∞)。默认值：0（不延迟）。delay>=0为延迟播放，delay<0表示提前播放。对于delay<0的情况：当delay的绝对值小于实际动画时长，动画将在开始后第一帧直接运动到delay绝对值的时刻的状态；当delay的绝对值大于等于实际动画时长，动画将在开始后第一帧直接运动到终点状态。其中实际动画时长等于单次动画时长乘以动画播放次数。 |
+| int32_t value | 动画延迟播放时间，单位为ms（毫秒）。取值范围：(-∞, +∞)。默认值：0（不延迟）。value>=0为延迟播放，value<0表示提前播放。对于value<0的情况：当value的绝对值小于实际动画时长，动画将在开始后第一帧直接运动到value绝对值的时刻的状态；当value的绝对值大于等于实际动画时长，动画将在开始后第一帧直接运动到终点状态。其中实际动画时长等于单次动画时长乘以动画播放次数。 |
 
 
 ### OH_ArkUI_AnimateOption_SetIterations()
@@ -624,7 +624,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* opt
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
-| int32_t value | 动画播放延的时间。单位为ms（毫秒）。取值范围：(-∞, +∞)。默认值：0（不延迟）。delay>=0为延迟播放，delay<0表示提前播放。对于delay<0的情况：当delay的绝对值小于实际动画时长，动画将在开始后第一帧直接运动到delay绝对值的时刻的状态；当delay的绝对值大于等于实际动画时长，动画将在开始后第一帧直接运动到终点状态。其中实际动画时长等于单次动画时长乘以动画播放次数。 |
+| int32_t value | 动画延迟播放时间，单位为ms（毫秒）。取值范围：(-∞, +∞)。默认值：0（不延迟）。value>=0为延迟播放，value<0表示提前播放。对于value<0的情况：当value的绝对值小于实际动画时长，动画将在开始后第一帧直接运动到value绝对值的时刻的状态；当value的绝对值大于等于实际动画时长，动画将在开始后第一帧直接运动到终点状态。其中实际动画时长等于单次动画时长乘以动画播放次数。 |
 
 **返回：**
 
@@ -669,7 +669,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAn
 **描述：**
 
 
-设置关键帧动画播放完成回调。当[关键帧动画](../../reference/apis-arkui/arkui-ts/ts-keyframeAnimateTo.md#关键帧动画)所有次数播放完成后调用。
+设置关键帧动画播放完成回调。当[关键帧动画](./arkui-ts/ts-keyframeAnimateTo.md#关键帧动画)所有次数播放完成后调用。
 
 **起始版本：** 12
 
@@ -1031,7 +1031,7 @@ int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t v
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
-| int32_t value | 延时播放的时间。单位为ms（毫秒）。取值范围：(-∞, +∞)。默认值：0（不延迟）。delay>=0为延迟播放，delay<0表示提前播放。对于delay<0的情况：当delay的绝对值小于实际动画时长，动画将在开始后第一帧直接运动到delay绝对值的时刻的状态；当delay的绝对值大于等于实际动画时长，动画将在开始后第一帧直接运动到终点状态。其中实际动画时长等于单次动画时长乘以动画播放次数。 |
+| int32_t value | 动画延迟播放时间，单位为ms（毫秒）。取值范围：(-∞, +∞)。默认值：0（不延迟）。value>=0为延迟播放，value<0表示提前播放。对于value<0的情况：当value的绝对值小于实际动画时长，动画将在开始后第一帧直接运动到value绝对值的时刻的状态；当value的绝对值大于等于实际动画时长，动画将在开始后第一帧直接运动到终点状态。其中实际动画时长等于单次动画时长乘以动画播放次数。 |
 
 **返回：**
 
@@ -1170,7 +1170,7 @@ int32_t OH_ArkUI_AnimatorOption_SetBegin(ArkUI_AnimatorOption* option, float val
 
 > **说明：**
 >
-> 当Animator动画为[关键帧动画](../../reference/apis-arkui/arkui-ts/ts-keyframeAnimateTo.md#关键帧动画)时，此方法不生效。
+> 当Animator动画为[关键帧动画](./arkui-ts/ts-keyframeAnimateTo.md#关键帧动画)时，此方法不生效。
 
 **起始版本：** 12
 
@@ -1201,7 +1201,7 @@ int32_t OH_ArkUI_AnimatorOption_SetEnd(ArkUI_AnimatorOption* option, float value
 
 > **说明：**
 >
-> 当Animator动画为[关键帧动画](../../reference/apis-arkui/arkui-ts/ts-keyframeAnimateTo.md#关键帧动画)时，此方法不生效。
+> 当Animator动画为[关键帧动画](./arkui-ts/ts-keyframeAnimateTo.md#关键帧动画)时，此方法不生效。
 
 **起始版本：** 12
 
@@ -2058,7 +2058,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringCurve(float velocity, float mass, f
 **描述：**
 
 
-构造弹簧曲线对象，曲线形状由弹簧参数决定，动画时长受[animation](../../apis-arkui/arkui-ts/ts-animatorproperty.md)、[animateTo](../../apis-arkui/arkts-apis-uicontext-uicontext.md)中的duration参数控制。
+构造弹簧曲线对象，曲线形状由弹簧参数决定，动画时长受[animation](./arkui-ts/ts-animatorproperty.md)、[animateTo](./arkui-ts/ts-uicontext-uicontext.md)中的duration参数控制。
 
 **起始版本：** 12
 
@@ -2091,7 +2091,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringMotion(float response, float dampin
 
 > **说明：**
 >
-> 动画时间由曲线参数决定，不受[animation](../../apis-arkui/arkui-ts/ts-animatorproperty.md)、[animateTo](../../apis-arkui/arkts-apis-uicontext-uicontext.md)中的duration参数控制。
+> 动画时间由曲线参数决定，不受[animation](./arkui-ts/ts-animatorproperty.md)、[animateTo](./arkui-ts/ts-uicontext-uicontext.md)中的duration参数控制。
 
 **起始版本：** 12
 
@@ -2123,7 +2123,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateResponsiveSpringMotion(float response, fl
 
 > **说明：**
 >
-> 动画时间由曲线参数决定，不受[animation](../../apis-arkui/arkui-ts/ts-animatorproperty.md)、[animateTo](../../apis-arkui/arkts-apis-uicontext-uicontext.md)中的duration参数控制。
+> 动画时间由曲线参数决定，不受[animation](./arkui-ts/ts-animatorproperty.md)、[animateTo](./arkui-ts/ts-uicontext-uicontext.md)中的duration参数控制。
 
 **起始版本：** 12
 
@@ -2155,7 +2155,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateInterpolatingSpring(float velocity, float
 
 > **说明：**
 >
-> 动画时间由曲线参数决定，不受[animation](../../apis-arkui/arkui-ts/ts-animatorproperty.md)、[animateTo](../../apis-arkui/arkts-apis-uicontext-uicontext.md)中的duration参数控制。
+> 动画时间由曲线参数决定，不受[animation](./arkui-ts/ts-animatorproperty.md)、[animateTo](./arkui-ts/ts-uicontext-uicontext.md)中的duration参数控制。
 
 **起始版本：** 12
 
