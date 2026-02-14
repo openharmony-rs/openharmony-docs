@@ -182,6 +182,12 @@ uint32_t OH_ArkUI_AnimateOption_GetDuration(ArkUI_AnimateOption* option)
 ```
 
 
+**描述：**
+
+
+获取动画持续时间，单位ms（毫秒）。
+
+
 **起始版本：** 12
 
 
