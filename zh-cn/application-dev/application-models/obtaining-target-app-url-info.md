@@ -9,126 +9,125 @@
 
 ## 场景介绍
 
-开发者在使用[uiAbilityContext.openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起目标应用时，需要传入目标应用的URL信息。本章节主要介绍如何获取目标应用的URL信息。
+开发者在使用[UIAbilityContext.openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起目标应用时，需要传入目标应用的URL信息。本章节主要介绍如何获取目标应用的URL信息。
 
-假设目标应用的UIAbility的[module.json5](../quick-start/app-configuration-file.md)配置信息如下：
+假设目标应用的UIAbility的[module.json5](../quick-start/module-configuration-file.md)配置信息如下：
 
-    ```JSON5
+```json5
+{
+  "name": "EntryAbility",
+  "srcEntry": "./ets/entryability/EntryAbility.ets",
+  "icon": "$media:layered_image",
+  "label": "$string:EntryAbility_label",
+  // ···
+  "skills": [
     {
-      "name": "EntryAbility",
-      "srcEntry": "./ets/entryability/EntryAbility.ets",
-      "icon": "$media:layered_image",
-      "label": "$string:EntryAbility_label",
-      // ···
-      "skills": [
-          "uris": [
-            {
-              "scheme": "appurl",
-              "host": "www.example.com",
-              "path": "path1"
-              // ...
-            }
-          ],
-          "domainVerify": false,
+      "uris": [
+        {
+          "scheme": "appurl",
+          "host": "www.example.com",
+          "path": "path1"
           // ...
-        ]
-      }
-    ``` 
+        }
+      ],
+      "domainVerify": false,
+    }
+    // ...
+  ]
+}
+```
 
 ## 环境要求
 
-开发者需要先获取[hdc工具](../dfx/hdc.md)，执行hdc shell。
+开发者需要先获取[hdc工具](../dfx/hdc.md)。
 
 ## 操作步骤
 
-1. 使用bm工具，获取目标应用的bundleName。
+1. 使用[bm工具](../tools/bm-tool.md)获取目标应用的bundleName。
 
-    1.1获取当前设备上所有已安装应用的bundleName，保存结果。
+    1. 获取当前设备上所有已安装应用的bundleName，保存结果。
 
-    ```bash
-    hdc shell bm dump -a
-    ```
+        ```bash
+        hdc shell bm dump -a
+        ```
 
-    1.2 安装目标应用。
+    2. 安装目标应用。
 
-    1.3 再次获取当前设备上所有已安装应用的bundleName，并与之前保存的结果进行对比。新增的bundleName即为`com.example.myapplication`。
+    3. 再次获取当前设备上所有已安装应用的bundleName，并与之前保存的结果进行对比。
 
-2. 根据bundleName，获取目标应用的`Mission ID`。
+        新增的bundleName即为目标应用包名，本例中假设为`com.example.myapplication`。
 
-    2.1 使用aa工具，获取目标应用的abilityName。
+2. 根据bundleName获取目标应用的`Mission ID`。
 
-    ```bash
-    hdc shell "aa dump -l | grep com.examplmyapplication"
-    ```
+    1. 使用[aa工具](../tools/aa-tool.md)，获取目标应用的abilityName。
 
-    2.2 通过查看输出中的`Mission ID`部分，获取abilityName即为`EntryAbility`。
+        ```bash
+        hdc shell "aa dump -l | grep com.examplmyapplication"
+        ```
 
-    ```bash
-    # 执行结果
-    Mission ID #48  mission name #[#com.example.  myapplication:entry:EntryAbility]  lockedStat#0     mission affinity #[]
-          app name [com.example.myapplication]
-          bundle name [com.example.myapplication]
-    ```
+    2. 通过查看输出中的`Mission ID`部分，获取abilityName即为`EntryAbility`。
 
-3. 根据bundleName，获取应用的uris信息。
+        ```bash
+        # 执行结果
+        Mission ID #48  mission name #[#com.example.myapplication:entry:EntryAbility] lockedStat#0 mission affinity #[]
+              app name [com.example.myapplication]
+              bundle name [com.example.myapplication]
+        ```
 
-    3.1 使用bm工具，获取应用的完整配置信息，包括abilities、skills、uris等配置。
+3. 根据bundleName获取应用的uris信息。
+
+    1. 使用bm工具，获取应用的完整配置信息，包括abilities、skills、uris等配置。
     
-    ```bash
-    hdc shell bm dump -n com.example.myapplication
-    ```
+        ```bash
+        hdc shell bm dump -n com.example.myapplication
+        ```
 
-    3.2 通过查看输出中`name`为的`EntryAbility`下方的`skills`部分，获取应用支持的URL Scheme配置。
+    2. 通过查看输出中`name`为的`EntryAbility`下方的`skills`部分，获取应用支持的URL Scheme配置。
 
-    ```json5
-    // 输出示例（skills部分）：
-    // ...
-    "name": "EntryAbility",
-    // ...
-    {
-      "skills": [
+        ```json5
+        // 输出示例（skills部分）：
+        // ...
+        "name": "EntryAbility",
+        // ...
         {
-          "actions": [
-            "ohos.want.action.viewData"
-          ],
-          "domainVerify": false,
-          "entities": [
-            "entity.system.browsable"
-          ],
-          "permissions": [],
-          "uris": [
+          "skills": [
             {
-              "host": "www.example.com",
-              "linkFeature": "",
-              "maxFileSupported": 0,
-              "path": "path1",
-              "pathRegex": "",
-              "pathStartWith": "",
-              "port": "",
-              "scheme": "appurl",
-              "type": "",
-              "utd": ""
+              "actions": [
+                "ohos.want.action.viewData"
+              ],
+              "domainVerify": false,
+              "entities": [
+                "entity.system.browsable"
+              ],
+              "permissions": [],
+              "uris": [
+                {
+                  "host": "www.example.com",
+                  "linkFeature": "",
+                  "maxFileSupported": 0,
+                  "path": "path1",
+                  "pathRegex": "",
+                  "pathStartWith": "",
+                  "port": "",
+                  "scheme": "appurl",
+                  "type": "",
+                  "utd": ""
+                }
+              ]
             }
           ]
         }
-      ]
-    }
-    ```
+        ```
 
-3. 将scheme、host和path拼接生成URL信息。
+3. 根据获取到的配置信息拼接生成URL信息。
 
-    根据获取到的配置信息，按照URL格式拼接应用链接：
+    URL格式如下：
 
     ```
     scheme://host:port/path
     ```
 
-    以目标应用为例：
-    ```
-    appurl://www.example.com/path1
-    ```
-
-    完整的拼接示例：
+    以目标应用为例，其URL构成如下：
 
     | 配置项 | 值 |
     |--------|---|
@@ -136,8 +135,12 @@
     | host | `www.example.com` |
     | port | 未指定（可选） |
     | path | `path1` |
-    | 拼接结果 | `appurl://www.example.com/path1` |
 
+    根据上述参数，拼接得到的完整URL为：
+
+    ```
+    appurl://www.example.com/path1
+    ```
 
     > **说明：**
     >
@@ -147,12 +150,15 @@
 
 4. 使用Deep Linking方式拉起目标应用。
 
-    以下为通过[uiAbilityContext.openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起目标应用的完整示例。在实现时请注意：
+    以下为通过[UIAbilityContext.openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起目标应用的完整示例。
 
-    - URL配置验证：在使用目标应用的URL之前，务必验证其正确性，避免因URL错误导致拉起失败。
-    - 应用安装检测：在拉起目标应用前，建议先检测应用是否已安装。
+    > **说明：**
+    >
+    > - URL配置验证：在使用目标应用的URL之前，务必验证其正确性，避免因URL错误导致拉起失败。
+    >
+    > - 应用安装检测：在拉起目标应用前，建议先检测应用是否已安装。
 
-    <!-- @[start Deep Linking](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/   ObtainingTargetAppUrlInfo/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[Start_Deep_Linking](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ObtainingTargetAppUrlInfo/entry/src/main/ets/pages/Index.ets) -->
 
     ```ts
     // Index.ets示例代码如下：
@@ -162,41 +168,35 @@
 
     @Entry
     @Component
-    struct Index {
-      @State message: string = '拉起目标应用';
-
+    struct SpecifiedPage {
+    
       build() {
-        RelativeContainer() {
-          Button(this.message)
-            .id('HelloWorld')
-            .fontSize($r('app.float.page_text_font_size'))
-            .fontWeight(FontWeight.Bold)
-            .alignRules({
-              center: { anchor: '__container__', align: VerticalAlign.Center },
-              middle: { anchor: '__container__', align: HorizontalAlign.Center }
-            })
-            .onClick(() => {
-              let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-              let link: string = 'appurl://www.example.com/path1';
-
-              context.openLink(link, { appLinkingOnly: false })
-                .then(() => {
-                  hilog.info(0x0000, 'testTag', `Succeeded in opening link.`);
-                })
-                .catch((error: BusinessError) => {
-                  hilog.error(0x0000, 'testTag', `Failed to open link, code: ${error.code}, message: ${error.message}`);
-                });
-            })
+        Row() {
+          Column() {
+            Button("拉起目标应用")
+              .onClick(() => {
+                let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+                let link: string = 'appurl://www.example.com/path1';
+    
+                context.openLink(link, { appLinkingOnly: false })
+                  .then(() => {
+                    hilog.info(0x0000, 'testTag', `Succeeded in opening link.`);
+                  })
+                  .catch((error: BusinessError) => {
+                    hilog.error(0x0000, 'testTag', `Failed to open link, code: ${error.code}, message: ${error.message}`);
+                  });
+              })
+          }
+          .width('100%')
         }
         .height('100%')
-        .width('100%')
       }
     }
     ```
 
 5. 调试验证。
 
-    安装并启动步骤4中的拉起方应用后，点击openLink按钮即可拉起目标应用，演示效果如下：
+    安装并启动拉起方应用后，点击"拉起目标应用"按钮即可拉起目标应用，演示效果如下：
 
     **图1** 拉起目标应用演示
 
