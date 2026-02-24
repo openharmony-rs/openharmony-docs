@@ -553,28 +553,5 @@ void OH_HiDebug_ResetCrashObj(uint64_t crashObj)
 | -- | -- |
 | uint64_t crashObj | 函数OH_HiDebug_SetCrashObj的返回值。 |
 
-### OH_HiDebug_GetRssInfo()
-
-```c
-HiDebug_ErrorCode OH_HiDebug_GetRssInfo(HiDebug_RssInfo *rssInfo);
-```
-
-**描述**
-
-获取应用程序进程的物理内存使用信息。
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [HiDebug_RssInfo](capi-hidebug-hidebug-rssinfo.md) *rssMemInfo | 表示指向[HiDebug_GetRssInfo](capi-hidebug-hidebug-rssinfo.md)。函数调用后，若结构体数据为空，则表明调用失败。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果具体可参考[HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode)：<br>         HIDEBUG_SUCCESS 成功获取到应用程序进程的物理内存使用数据。<br>         HIDEBUG_INVALID_ARGUMENT 无效参数。<br>         HIDEBUG_TRACE_ABNORMAL 系统内部错误。 |
 
 
