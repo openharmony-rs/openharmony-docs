@@ -154,6 +154,7 @@
       - [AbilityStageMonitor](js-apis-inner-application-abilityStageMonitor.md)
       - [AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md)
       - [AbilityStateData](js-apis-inner-application-abilityStateData.md)
+      - [AgentCard](js-apis-inner-application-AgentCard.md)
       - [ApplicationContext (应用上下文)](js-apis-inner-application-applicationContext.md)
       - [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md)
       - [AppServiceExtensionContext (应用后台服务扩展组件上下文)](js-apis-inner-application-appServiceExtensionContext.md)
