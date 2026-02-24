@@ -56,6 +56,7 @@
 | [InputEvent_SourceType](#inputevent_sourcetype) | InputEvent_SourceType | 输入事件源类型。 |
 | [Input_KeyboardType](#input_keyboardtype) | Input_KeyboardType | 输入设备的键盘类型。 |
 | [Input_Result](#input_result) | Input_Result | 返回值枚举值。 |
+| [Input_TouchEventToolType](#input_toucheventtooltype) | Input_TouchEventToolType | 输入设备的触屏事件工具类型。 |
 
 ### 函数
 
@@ -237,10 +238,10 @@
 | [Input_Result OH_Input_GetCursorInfo(Input_CursorInfo* cursorInfo, OH_PixelmapNative** pixelmap)](#oh_input_getcursorinfo) | - | 查询当前鼠标光标信息，包括光标显示状态、光标样式、光标大小档位、光标颜色。如果pixelmap参数非空，且光标样式为[DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle)，则会同时返回光标的PixelMap位图对象。 |
 | [Input_Result OH_Input_SetTouchEventPressure(struct Input_TouchEvent* touchEvent, double pressure)](#oh_input_settoucheventpressure) | - | 设置触屏输入事件的压力。 |
 | [double OH_Input_GetTouchEventPressure(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventpressure) | - | 获取触屏输入事件的压力。 |
-| [void OH_Input_SetTouchEventWindowX(struct Input_TouchEvent* touchEvent, int32_t windowX)](#oh_input_settoucheventwindowx) | - | 设置触屏输入事件的窗口X坐标。 |
-| [int32_t OH_Input_GetTouchEventWindowX(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventwindowx) | - | 获取触屏输入事件的窗口X坐标。|
-| [void OH_Input_SetTouchEventWindowY(struct Input_TouchEvent* touchEvent, int32_t windowY)](#oh_input_settoucheventwindowy) | - | 设置触屏输入事件的窗口Y坐标。|
-| [int32_t OH_Input_GetTouchEventWindowY(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventwindowy) | - | 获取触屏输入事件的窗口Y坐标。|
+| [void OH_Input_SetTouchEventWindowX(struct Input_TouchEvent* touchEvent, int32_t windowX)](#oh_input_settoucheventwindowx) | - | 设置触屏输入事件以指定窗口左上角为原点的相对坐标系的X坐标。 |
+| [int32_t OH_Input_GetTouchEventWindowX(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventwindowx) | - | 获取触屏输入事件以指定窗口左上角为原点的相对坐标系的X坐标。|
+| [void OH_Input_SetTouchEventWindowY(struct Input_TouchEvent* touchEvent, int32_t windowY)](#oh_input_settoucheventwindowy) | - | 设置触屏输入事件以指定窗口左上角为原点的相对坐标系的Y坐标。|
+| [int32_t OH_Input_GetTouchEventWindowY(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventwindowy) | - | 获取触屏输入事件以指定窗口左上角为原点的相对坐标系的Y坐标。|
 | [void OH_Input_SetTouchEventDownTime(struct Input_TouchEvent* touchEvent, int64_t downTime)](#oh_input_settoucheventdowntime) | - | 设置触屏输入事件的按下时间。|
 | [int64_t OH_Input_GetTouchEventDownTime(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventdowntime) | - | 获取触屏输入事件的按下时间。|
 | [Input_Result OH_Input_SetTouchEventToolType(struct Input_TouchEvent* touchEvent, Input_TouchEventToolType toolType)](#oh_input_settoucheventtooltype) | - | 设置触屏输入事件的工具类型。|
@@ -470,7 +471,7 @@ enum Input_TouchEventToolType
 | -- | -- |
 | TOOL_TYPE_FINGER = 0 | 表示手指。 |
 | TOOL_TYPE_PEN = 1 | 表示手写笔设备。 |
-| TOOL_TYPE_RUBBER = 2 | 表示橡胶类设备。 |
+| TOOL_TYPE_RUBBER = 2 | 表示橡皮檫类设备。 |
 | TOOL_TYPE_BRUSH = 3 | 表示画笔类设备。 |
 | TOOL_TYPE_PENCIL = 4 | 表示铅笔类设备。 |
 | TOOL_TYPE_AIRBRUSH = 5 | 表示喷枪类设备。 |
@@ -4913,7 +4914,7 @@ Input_Result OH_Input_SetTouchEventPressure(struct Input_TouchEvent* touchEvent,
 | 参数项 | 描述 |
 | -- | -- |
 | struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
-| double pressure | 压力值，范围[0, 1]。 |
+| double pressure | 压力值，范围[0.0, 1.0]，当前触屏可感知的最小压力程度为0.0，最大压力程度为1.0，无单位。 |
 
 **返回：**
 
@@ -4945,7 +4946,7 @@ double OH_Input_GetTouchEventPressure(const struct Input_TouchEvent* touchEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| double | 压力值。 |
+| double | 压力值，无单位。 |
 
 ### OH_Input_SetTouchEventWindowX()
 
@@ -4955,7 +4956,7 @@ void OH_Input_SetTouchEventWindowX(struct Input_TouchEvent* touchEvent, int32_t 
 
 **描述**
 
-设置触屏输入事件的窗口X坐标。
+设置触屏输入事件以指定窗口左上角为原点的相对坐标系的X坐标。
 
 **设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
@@ -4966,7 +4967,7 @@ void OH_Input_SetTouchEventWindowX(struct Input_TouchEvent* touchEvent, int32_t 
 | 参数项 | 描述 |
 | -- | -- |
 | struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
-| int32_t windowX | 窗口X坐标。 |
+| int32_t windowX | 指定窗口左上角为原点的相对坐标系的X坐标，单位：px。 |
 
 ### OH_Input_GetTouchEventWindowX()
 
@@ -4976,7 +4977,7 @@ int32_t OH_Input_GetTouchEventWindowX(const struct Input_TouchEvent* touchEvent)
 
 **描述**
 
-获取触屏输入事件的窗口X坐标。
+获取触屏输入事件以指定窗口左上角为原点的相对坐标系的X坐标。
 
 **设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
@@ -4992,7 +4993,7 @@ int32_t OH_Input_GetTouchEventWindowX(const struct Input_TouchEvent* touchEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 窗口X坐标。 |
+| int32_t | 指定窗口左上角为原点的相对坐标系的X坐标，单位：px。 |
 
 ### OH_Input_SetTouchEventWindowY()
 
@@ -5002,7 +5003,7 @@ void OH_Input_SetTouchEventWindowY(struct Input_TouchEvent* touchEvent, int32_t 
 
 **描述**
 
-设置触屏输入事件的窗口Y坐标。
+设置触屏输入事件以指定窗口左上角为原点的相对坐标系的Y坐标。
 
 **设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
@@ -5013,7 +5014,7 @@ void OH_Input_SetTouchEventWindowY(struct Input_TouchEvent* touchEvent, int32_t 
 | 参数项 | 描述 |
 | -- | -- |
 | struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
-| int32_t windowY | 窗口Y坐标。 |
+| int32_t windowY | 指定窗口左上角为原点的相对坐标系的Y坐标，单位：px。 |
 
 ### OH_Input_GetTouchEventWindowY()
 
@@ -5023,7 +5024,7 @@ int32_t OH_Input_GetTouchEventWindowY(const struct Input_TouchEvent* touchEvent)
 
 **描述**
 
-获取触屏输入事件的窗口Y坐标。
+获取触屏输入事件以指定窗口左上角为原点的相对坐标系的Y坐标。
 
 **设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
@@ -5039,7 +5040,7 @@ int32_t OH_Input_GetTouchEventWindowY(const struct Input_TouchEvent* touchEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 窗口Y坐标。 |
+| int32_t | 指定窗口左上角为原点的相对坐标系的Y坐标，单位：px。 |
 
 ### OH_Input_SetTouchEventDownTime()
 
@@ -5060,7 +5061,7 @@ void OH_Input_SetTouchEventDownTime(struct Input_TouchEvent* touchEvent, int64_t
 | 参数项 | 描述 |
 | -- | -- |
 | struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
-| int64_t downTime | 按下时间。 |
+| int64_t downTime | 触屏输入事件的按下时间，表示系统启动运行至今逝去的微秒数。 |
 
 ### OH_Input_GetTouchEventDownTime()
 
@@ -5086,7 +5087,7 @@ int64_t OH_Input_GetTouchEventDownTime(const struct Input_TouchEvent* touchEvent
 
 | 类型 | 说明 |
 | -- | -- |
-| int64_t | 按下时间。 |
+| int64_t | 触屏输入事件的按下时间，表示系统启动运行至今逝去的微秒数。 |
 
 ### OH_Input_SetTouchEventToolType()
 
