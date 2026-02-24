@@ -1097,6 +1097,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.error('showSingleAssetCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message); 
   } 
 }
+```
 
 ## createAssetWithShortTermPermission<sup>12+</sup>
 
