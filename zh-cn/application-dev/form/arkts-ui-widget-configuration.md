@@ -112,7 +112,7 @@
 | groupId | 表示一组卡片的共同id。多张卡片的groupId相同且resizable为true时，多张卡片的supportDimensions配置共享，推荐多张卡片功能相同且需要调整卡片尺寸时配置。<br>示例一：卡片A的groupId配置为'1'，resizeable配置为true，supportDimension为2\*2。卡片B的groupId配置为'1'，resizeable配置为true，supportDimension为2\*4。那么支持卡片A、B之间调整大小。<br>示例二：当supportDimension存在多个，resizable设置为true时，优先在同一张卡片之间调整大小。卡片A的resizeable配置为true，supportDimension为2\*2、2\*4，支持卡片A的两个尺寸之间调整大小。<br>示例三：卡片A的groupId配置为'1'，resizeable配置为true，supportDimension为1\*2。卡片B的groupId配置为'1'，resizeable配置为true，supportDimension为2\*2、2\*4、4\*4。卡片A可以调整到卡片B的默认尺寸，卡片B只支持在B卡片支持的三个尺寸之间调整大小，无法调整为卡片A。<br/>**说明：**<br/>从API version 20开始，支持该字段。 | 字符串 | 可缺省，空字符串。 |
 | [supportDeviceTypes](#supportdevicetypes标签) | 表示特定卡片支持的设备类型。例如，卡片的supportDeviceTypes字段配置了“phone”、“tablet”、“tv”，那么该卡片就支持在手机、平板、大屏上面显示。<br/>**说明：**<br/>从API version 22开始，支持该字段。 | 字符串数组 | 可缺省，缺省值：["phone", "tablet", "tv", "wearable", "car", "2in1"]。 |
 | [supportDevicePerformanceClasses](#supportdeviceperformanceclasses标签) | 表示特定卡片支持的设备性能等级信息。例如，卡片的supportDevicePerformanceClasses字段配置了“high”、“medium”、“low”，那么该卡片就支持在性能等级为“high”、“medium”、“low”设备上面显示。<br/>**说明：**<br/>从API version 22开始，支持该字段。 | 字符串数组 | 可缺省，缺省值：["high", "medium", "low"]。 |
-| [standby](#standby标签) | <!--RP8-->横屏待机显示界面<!--RP8End-->卡片扩展字段。<br/>**说明：**<br/>从API version 23开始，支持该字段。依赖系统实现横屏待机显示应用后展示 | 对象 | 可缺省，属性缺省值见[standby标签](#standby标签)。 |
+| [standby](#standby标签) | 待机屏保显示页面卡片扩展字段。<br/>**说明：**<br/>从API version 23开始，支持该字段。依赖系统实现横屏待机显示应用后展示 | 对象 | 可缺省，属性缺省值见[standby标签](#standby标签)。 |
 
 ### supportDeviceTypes标签
 
@@ -203,13 +203,13 @@
 
 ### standby标签
 
-此标签标识standby对象的内部结构说明。应用通过开放能力申请，且卡片isSupported配置为true才支持在横屏待机显示界面展示。
+此标签标识standby对象的内部结构说明。应用通过开放能力申请，且卡片isSupported配置为true才支持在待机屏保显示界面展示。
 
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| isSupported | 标识卡片是否支持在横屏待机显示界面展示。<br/>-&nbsp;true：表示卡片支持在横屏待机显示界面展示。<br/>-&nbsp;false：表示卡片不支持在横屏待机显示界面展示。 | 布尔值 | 可缺省，缺省值为true。|
-| isAdapted | 标识卡片是否针对横屏待机显示界面做过适配，配置成true，会把卡片布局组件中backgroudimage移除。<br/>-&nbsp;true：表示卡片适配过横屏待机显示界面。<br/>-&nbsp;false：表示卡片没有适配过横屏待机显示界面。 | 布尔值 | 可缺省，缺省值为false。 |
-| isPrivacySensitive | 标识卡片是否是隐私敏感卡片，隐私敏感卡片在横屏待机显示界面展示会用蒙层覆盖。<br/>-&nbsp;true：表示卡片是隐私敏感卡片。<br/>-&nbsp;false：表示卡片不是隐私敏感卡片。 | 布尔值 | 可缺省，缺省值为false。 |
+| isSupported | 标识卡片是否支持在待机屏保显示界面展示。<br/>-&nbsp;true：表示卡片支持在待机屏保显示界面展示。<br/>-&nbsp;false：表示卡片不支持在待机屏保显示界面展示。 | 布尔值 | 可缺省，缺省值为true。|
+| isAdapted | 标识卡片是否针对待机屏保显示界面做过适配，配置成true，会把卡片布局组件中backgroudimage移除。<br/>-&nbsp;true：表示卡片适配过待机屏保显示界面。<br/>-&nbsp;false：表示卡片没有适配过待机屏保显示界面。 | 布尔值 | 可缺省，缺省值为false。 |
+| isPrivacySensitive | 标识卡片是否是隐私敏感卡片，隐私敏感卡片在待机屏保显示界面展示会用蒙层覆盖。<br/>-&nbsp;true：表示卡片是隐私敏感卡片。<br/>-&nbsp;false：表示卡片不是隐私敏感卡片。 | 布尔值 | 可缺省，缺省值为false。 |
 
    ```json5
    {
