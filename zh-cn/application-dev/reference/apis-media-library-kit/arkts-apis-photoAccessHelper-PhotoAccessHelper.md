@@ -1070,7 +1070,7 @@ showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSet
 | -------- | ---------------------------------------- |
 | 23800301 |Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
- **示例：** 
+**示例：**
  
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。	 
 
