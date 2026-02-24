@@ -45672,5 +45672,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/form/arkts-ui-widget-load-custom-font.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/CustomFontWidgetCards/entry/src/main/ets/widget/pages/WidgetCard.ets",
+				"functions":[
+					{
+						"end_line":47,
+						"name":"loadFontSyncCard",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
