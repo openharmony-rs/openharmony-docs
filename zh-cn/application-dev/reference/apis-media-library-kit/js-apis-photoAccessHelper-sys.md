@@ -10614,9 +10614,9 @@ async function example(context: Context) {
 }
 ```
 
-### startDownloadSpecificCloudMedia<sup>24+</sup>
+### startDownloadSpecificCloudMedia<sup>21+</sup>
 
-startDownloadSpecificCloudMedia(assetUris: string[], taskSequence?: int): Promise\<Map\<string, CloudAssetDownloadCode\>\>
+startDownloadSpecificCloudMedia(assetUris: string[], taskSequence?: number): Promise\<Map\<string, CloudAssetDownloadCode\>\>
 
 开始云端媒体资产批量下载任务。使用Promise异步回调。
 
@@ -10631,7 +10631,7 @@ startDownloadSpecificCloudMedia(assetUris: string[], taskSequence?: int): Promis
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
 | assetUris | string[] | 是   | 需要下载的原图和视频的uri列表。 |
-| taskSequence | int | 否   | 应用设置的序号, 值应大于等于0。 |
+| taskSequence | number | 否   | 应用设置的序号, 值应大于等于0。 |
 
 **返回值：**
 
@@ -11009,7 +11009,7 @@ queryDownloadSpecificCloudMediaTaskCountAndSize(predicates: dataSharePredicates.
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise\<int[]\> | Promise对象，返回总量和大小。 |
+| Promise\<int[]\> | Promise对象，返回下载任务的总量和大小。 |
 
 **错误码：**
 
@@ -12748,7 +12748,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## CloudDownloadNetworkPolicy<sup>24+</sup>
 
-枚举，批量下载网络策略类型。
+枚举，批量下载网络策略类型枚举。
 
 **系统接口**：此接口为系统接口。
 
@@ -12758,4 +12758,4 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | ----- |  ---- |  ---- |
 | DEFAULT |  0 |  默认，仅wifi下载。|
 | CELL |  1 |  蜂窝网络可下载。  |
-| WIFI |  1 |  WIFI网络可下载。  |
+| WIFI |  2 |  WIFI网络可下载。  |
