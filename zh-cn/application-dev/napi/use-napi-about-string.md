@@ -376,6 +376,8 @@ static napi_value CreateExternalStringUtf16(napi_env env, napi_callback_info inf
         nullptr,                // 传递给析构回调函数的hint参数，本例不需要
         &result                 // 接受创建的ArkTS字符串值
     );
+    // 重要：str 指向的内存必须在 ArkTS string 对象的整个生命周期内保持有效，
+    // 而且在调用此接口后，str 指向的内存内容必须保持不可变。任何对该内存的写入操作都可能导致程序崩溃。
     if (status != napi_ok) {
         // 处理错误
         delete[] str;
@@ -440,6 +442,8 @@ static napi_value CreateExternalStringAscii(napi_env env, napi_callback_info inf
         nullptr,                // 传递给析构回调函数的hint参数，本例不需要
         &result                 // 接受创建的ArkTS字符串值
     );
+    // 重要：str 指向的内存必须在 ArkTS string 对象的整个生命周期内保持有效，
+    // 而且在调用此接口后，str 指向的内存内容必须保持不可变。任何对该内存的写入操作都可能导致程序崩溃。
     if (status != napi_ok) {
         // 处理错误
         delete[] str;
