@@ -54,6 +54,7 @@
 
 ### 函数
 
+<!--Table: 40%; 20%; 40%-->
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [ArkUI_NodeEventType OH_ArkUI_NodeEvent_GetEventType(ArkUI_NodeEvent* event)](#oh_arkui_nodeevent_geteventtype) | - | 获取组件事件类型。 |
@@ -163,6 +164,13 @@
 | [ArkUI_TouchTestInfo* OH_ArkUI_NodeEvent_GetTouchTestInfo(ArkUI_NodeEvent* nodeEvent)](#oh_arkui_nodeevent_gettouchtestinfo) | - | 获取组件事件中的触摸测试信息。 |
 | [int32_t OH_ArkUI_NativeModule_ConvertPositionToWindow(ArkUI_NodeHandle currentNode, ArkUI_IntOffset localPosition, ArkUI_IntOffset* windowPosition)](#oh_arkui_nativemodule_convertpositiontowindow) | - | 将点的坐标从目标节点的坐标系转换至当前窗口的坐标系。|
 | [int32_t OH_ArkUI_NativeModule_ConvertPositionFromWindow(ArkUI_NodeHandle targetNode, ArkUI_IntOffset windowPosition, ArkUI_IntOffset* localPosition)](#oh_arkui_nativemodule_convertpositionfromwindow) | - | 将点的坐标从当前窗口的坐标系转换至目标节点的坐标系。 |
+| [int32_t OH_ArkUI_Swiper_StartFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)](#oh_arkui_swiper_startfakedrag) | - | 启动Swiper节点的模拟拖拽操作。调用[OH_ArkUI_Swiper_FakeDragBy](capi-native-node-h.md#oh_arkui_swiper_fakedragby)模拟拖拽动作。调用[OH_ArkUI_Swiper_StopFakeDrag](capi-native-node-h.md#oh_arkui_swiper_stopfakedrag)停止模拟拖拽。<br> 模拟拖拽操作可以被真实拖拽操作打断。如果需要在模拟拖拽期间忽略用户的拖拽事件，请使用[NODE_SWIPER_DISABLE_SWIPE](capi-native-node-h.md#arkui_nodeattributetype)。 |
+| [int32_t OH_ArkUI_Swiper_FakeDragBy(ArkUI_NodeHandle node, float offset, bool* isConsumedOffset)](#oh_arkui_swiper_fakedragby) | - | 通过设置Swiper节点的偏移量模拟拖拽效果。该接口调用前，必须先调用[OH_ArkUI_Swiper_StartFakeDrag](capi-native-node-h.md#oh_arkui_swiper_startfakedrag)启动模拟拖拽。 |
+| [int32_t OH_ArkUI_Swiper_StopFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)](#oh_arkui_swiper_stopfakedrag) | - | 停止对Swiper节点的模拟拖拽。 |
+| [int32_t OH_ArkUI_Swiper_IsFakeDragging(ArkUI_NodeHandle node, bool* isFakeDragging)](#oh_arkui_swiper_isfakedragging) | - | 获取Swiper节点的模拟拖拽状态。 |
+| [int32_t OH_ArkUI_Swiper_ShowPrevious(ArkUI_NodeHandle node)](#oh_arkui_swiper_showprevious) | - | 显示Swiper节点的上一页。 |
+| [int32_t OH_ArkUI_Swiper_ShowNext(ArkUI_NodeHandle node)](#oh_arkui_swiper_shownext) | - | 显示Swiper节点的下一页。 |
+| [int32_t OH_ArkUI_NativeModule_GetPageRootNodeHandleByContext(ArkUI_ContextHandle context, ArkUI_NodeHandle* rootNode)](#oh_arkui_nativemodule_getpagerootnodehandlebycontext) | - | 获得指定的UIContext对应窗口中的页面根节点。 |
 
 ### 宏定义
 
@@ -210,12 +218,13 @@ enum ArkUI_NodeType
 | ARKUI_NODE_IMAGE_ANIMATOR = 19 | 帧动画组件。                               |
 | ARKUI_NODE_XCOMPONENT_TEXTURE | TEXTURE类型XComponent。<br>**起始版本：** 18 |
 | ARKUI_NODE_CHECKBOX_GROUP = 21 | 复选框组。<br>**起始版本：** 15                |
+| ARKUI_NODE_TEXT_EDITOR = 22 | 文本编辑器。<br>**起始版本：** 24 |
 | ARKUI_NODE_STACK = MAX_NODE_SCOPE_NUM | 堆叠容器。                                |
 | ARKUI_NODE_SWIPER | 翻页容器。                                |
 | ARKUI_NODE_SCROLL | 滚动容器。                                |
-| ARKUI_NODE_LIST | 列表。                                  |
-| ARKUI_NODE_LIST_ITEM | 列表项。                                 |
-| ARKUI_NODE_LIST_ITEM_GROUP | 列表item分组。                            |
+| ARKUI_NODE_LIST = 1003 | 列表。                                  |
+| ARKUI_NODE_LIST_ITEM = 1004 | 列表项。                                 |
+| ARKUI_NODE_LIST_ITEM_GROUP = 1005 | 列表item分组。                            |
 | ARKUI_NODE_COLUMN | 垂直布局容器。                              |
 | ARKUI_NODE_ROW | 水平布局容器。                              |
 | ARKUI_NODE_FLEX | 弹性布局容器。                              |
@@ -248,7 +257,7 @@ enum ArkUI_NodeAttributeType
 | NODE_WIDTH = 0 | 宽度属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：宽度数值，单位为vp；<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：宽度数值，单位为vp；|
 | NODE_HEIGHT = 1 | 高度属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：高度数值，单位为vp；<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：高度数值，单位为vp；|
 | NODE_BACKGROUND_COLOR = 2 | 背景色属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].u32：背景色数值，0xargb格式，形如 0xFFFF0000 表示红色；<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].u32：背景色数值，0xargb格式，形如 0xFFFF0000 表示红色；|
-| NODE_BACKGROUND_IMAGE = 3 | 背景色图片属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string: 图片地址。API version 22及之前版本，支持网络图片资源地址、本地图片资源地址、Base64和PixelMap资源，不支持svg图片、gif和webp等类型的动图。 从API version 23开始，新增支持webp和gif类型的动图，显示动图第一帧，不支持其他类型的动图。<br> .value[0]?.i32：可选值，repeat参数，参数类型[ArkUI_ImageRepeat](capi-native-type-h.md#arkui_imagerepeat)，默认值为ARKUI_IMAGE_REPEAT_NONE；<br> .object：PixelMap 图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string: 图片地址。API version 22及之前版本，支持网络图片资源地址、本地图片资源地址、Base64和PixelMap资源，不支持svg图片、gif和webp等类型的动图。 从API version 23开始，新增支持webp和gif类型的动图，显示动图第一帧，不支持其他类型的动图。<br> .value[0].i32：repeat参数，参数类型[ArkUI_ImageRepeat](capi-native-type-h.md#arkui_imagerepeat)；<br> .object：PixelMap 图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)；<br>.object参数和.string参数二选一，不可同时设置。|
+| NODE_BACKGROUND_IMAGE = 3 | 背景色图片属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string: 图片地址。API version 22及之前版本，支持网络图片资源地址、本地图片资源地址、Base64和[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)资源，不支持[svg](arkui-js/js-components-svg.md)图片、gif和webp等类型的动图。 从API version 23开始，新增支持webp和gif类型的动图，显示动图第一帧，不支持其他类型的动图。<br> .value[0]?.i32：可选值，repeat参数，参数类型[ArkUI_ImageRepeat](capi-native-type-h.md#arkui_imagerepeat)，默认值为ARKUI_IMAGE_REPEAT_NONE；<br> .object：PixelMap 图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string: 图片地址。API version 22及之前版本，支持网络图片资源地址、本地图片资源地址、Base64和PixelMap资源，不支持svg图片、gif和webp等类型的动图。 从API version 23开始，新增支持webp和gif类型的动图，显示动图第一帧，不支持其他类型的动图。<br> .value[0].i32：repeat参数，参数类型[ArkUI_ImageRepeat](capi-native-type-h.md#arkui_imagerepeat)；<br> .object：PixelMap 图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)；<br>.object参数和.string参数二选一，不可同时设置。|
 | NODE_PADDING = 4 | 内间距属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式有两种：<br> 1：上下左右四个位置的内间距值相等。<br> .value[0].f32：内间距数值，单位为vp；<br> 2：分别指定上下左右四个位置的内间距值。<br> .value[0].f32：上内间距数值，单位为vp；<br> .value[1].f32：右内间距数值，单位为vp；<br> .value[2].f32：下内间距数值，单位为vp；<br> .value[3].f32：左内间距数值，单位为vp；<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：上内间距数值，单位为vp；<br> .value[1].f32：右内间距数值，单位为vp；<br> .value[2].f32：下内间距数值，单位为vp；<br> .value[3].f32：左内间距数值，单位为vp；|
 | NODE_ID = 5 | 组件ID属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string: ID的内容；<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string: ID的内容；|
 | NODE_ENABLED = 6 | 设置组件是否可交互，支持属性设置，属性重置和属性获取。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：false表示不可交互，true表示可交互；<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：0表示不可交互，1表示可交互；|
@@ -270,7 +279,7 @@ enum ArkUI_NodeAttributeType
 | NODE_VISIBILITY = 22 | 组件是否可见属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：控制当前组件显示或隐藏，参数类型[ArkUI_Visibility](capi-native-type-h.md#arkui_visibility)，默认值为ARKUI_VISIBILITY_VISIBLE。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：控制当前组件显示或隐藏，参数类型[ArkUI_Visibility](capi-native-type-h.md#arkui_visibility)，默认值为ARKUI_VISIBILITY_VISIBLE。|
 | NODE_CLIP = 23 | 组件进行裁剪、遮罩处理属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：控制是否对子组件超出当前组件范围外的区域进行裁剪，0表示不裁切，1表示裁切。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：控制是否对子组件超出当前组件范围外的区域进行裁剪，0表示不裁切，1表示裁切。|
 | NODE_CLIP_SHAPE = 24 | 组件上指定形状的裁剪，支持属性设置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式，共有4种类型： <br> 1.rect类型： <br> .value[0].i32：裁剪类型，参数类型[ArkUI_ClipType](capi-native-type-h.md#arkui_cliptype)，ARKUI_CLIP_TYPE_RECTANGLE； <br> .value[1].f32：矩形宽度； <br> .value[2].f32：矩形高度； <br> .value[3].f32：矩形圆角宽度； <br> .value[4].f32：矩形圆角高度； <br> .value[5]?.f32：矩形形状的左上圆角半径； <br> .value[6]?.f32：矩形形状的左下圆角半径； <br> .value[7]?.f32：矩形形状的右上圆角半径； <br> .value[8]?.f32：矩形形状的右下圆角半径； <br> .object：参数类型为[ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)，矩形形状的坐标偏移量，在仅传入.object参数时生效； <br> 2.circle类型： <br> .value[0].i32：裁剪类型，参数类型[ArkUI_ClipType](capi-native-type-h.md#arkui_cliptype)，ARKUI_CLIP_TYPE_CIRCLE； <br> .value[1].f32：圆形宽度； <br> .value[2].f32：圆形高度； <br> .object：参数类型为[ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)，圆形坐标偏移量，在仅传入.object参数时生效； <br> 3.ellipse类型： <br> .value[0].i32：裁剪类型，参数类型[ArkUI_ClipType](capi-native-type-h.md#arkui_cliptype)，ARKUI_CLIP_TYPE_ELLIPSE； <br> .value[1].f32：椭圆形宽度； <br> .value[2].f32：椭圆形高度； <br> .object：参数类型为[ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)，椭圆形坐标偏移量，在仅传入.object参数时生效； <br> 4.path类型： <br> .value[0].i32：裁剪类型，参数类型[ArkUI_ClipType](capi-native-type-h.md#arkui_cliptype)，ARKUI_CLIP_TYPE_PATH； <br> .value[1].f32：路径宽度； <br> .value[2].f32：路径高度； <br> .string：路径绘制的命令字符串； <br> .object：参数类型为[ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)，路径绘制的命令，在仅传入.object参数时生效； <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式，共有4种类型： <br> 1.rect类型： <br> .value[0].i32：裁剪类型，参数类型[ArkUI_ClipType](capi-native-type-h.md#arkui_cliptype)，ARKUI_CLIP_TYPE_RECTANGLE； <br> .value[1].f32：矩形宽度； <br> .value[2].f32：矩形高度； <br> .value[3].f32：矩形圆角宽度； <br> .value[4].f32：矩形圆角高度； <br> .value[5]?.f32：矩形形状的左上圆角半径； <br> .value[6]?.f32：矩形形状的左下圆角半径； <br> .value[7]?.f32：矩形形状的右上圆角半径； <br> .value[8]?.f32：矩形形状的右下圆角半径； <br> .value[9]?.f32：矩形形状的横坐标偏移； <br> .value[10]?.f32：矩形形状的纵坐标偏移； <br> 2.circle类型： <br> .value[0].i32：裁剪类型，参数类型[ArkUI_ClipType](capi-native-type-h.md#arkui_cliptype)，ARKUI_CLIP_TYPE_CIRCLE； <br> .value[1].f32：圆形宽度； <br> .value[2].f32：圆形高度； <br> .value[3]?.f32：圆形横坐标偏移； <br> .value[4]?.f32：圆形纵坐标偏移； <br> 3.ellipse类型： <br> .value[0].i32：裁剪类型，参数类型[ArkUI_ClipType](capi-native-type-h.md#arkui_cliptype)，ARKUI_CLIP_TYPE_ELLIPSE； <br> .value[1].f32：椭圆形宽度； <br> .value[2].f32：椭圆形高度； <br> .value[3]?.f32：椭圆形横坐标偏移； <br> .value[4]?.f32：椭圆形纵坐标偏移； <br> 4.path类型： <br> .value[0].i32：裁剪类型，参数类型[ArkUI_ClipType](capi-native-type-h.md#arkui_cliptype)，ARKUI_CLIP_TYPE_PATH； <br> .value[1].f32：路径宽度； <br> .value[2].f32：路径高度； <br> .string：路径绘制的命令字符串； |
-| NODE_TRANSFORM = 25 | 矩阵变换功能，可对图形进行平移、旋转和缩放等，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0...15].f32: 16个浮点数字。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0...15].f32: 16个浮点数字。|
+| NODE_TRANSFORM = 25 | 矩阵变换功能，可对图形进行平移、旋转和缩放等，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式，包含2种类型： <br> .value[0...15].f32：16个浮点数。此时[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中的size取值不应为0。 <br> .object是指向[ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)的指针，此时[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中的size取值为0。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0...15].f32: 16个浮点数字。|
 | NODE_HIT_TEST_BEHAVIOR = 26 | 触摸测试类型，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：控制当前组件的触摸测试类型，参数类型[ArkUI_HitTestMode](capi-native-type-h.md#arkui_hittestmode)，默认值为ARKUI_HIT_TEST_MODE_DEFAULT。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：控制当前组件的触摸测试类型，参数类型ArkUI_HitTestMode，默认值为ARKUI_HIT_TEST_MODE_DEFAULT。 |
 | NODE_POSITION = 27 | 元素左上角相对于父容器左上角偏移位置，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：x轴坐标。 <br> .value[1].f32: y轴坐标。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：x轴坐标。 <br> .value[1].f32: y轴坐标。 |
 | NODE_SHADOW = 28 | 阴影效果属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：设置当前组件阴影效果，参数类型[ArkUI_ShadowStyle](capi-native-type-h.md#arkui_shadowstyle)。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：设置当前组件阴影效果，参数类型[ArkUI_ShadowStyle](capi-native-type-h.md#arkui_shadowstyle)。 |
@@ -301,7 +310,7 @@ enum ArkUI_NodeAttributeType
 | NODE_FOREGROUND_COLOR = 53 | 前景颜色属性，支持属性设置和属性获取接口。属性重置接口无效果。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式，支持两种入参格式：<br> 1：.value[0].u32：颜色数值，0xargb类型，如0xFFFF0000表示红色；<br> 2：.value[0].i32：颜色数值枚举ArkUI_ColoringStrategy；<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].u32：颜色数值，0xargb类型；|
 | NODE_OFFSET = 54 | 组件子元素相对组件自身的额外偏移属性，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32 表示x轴方向的偏移值, 单位为vp。 <br> .value[1].f32 表示y轴方向的偏移值, 单位为vp。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32 表示x轴方向的偏移值, 单位为vp。 <br> .value[1].f32 表示y轴方向的偏移值, 单位为vp。|
 | NODE_MARK_ANCHOR = 55 | 组件子元素在位置定位时的锚点属性，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32 表示锚点x坐标值, 单位为vp。 <br> .value[1].f32 表示锚点y坐标值, 单位为vp。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32 表示锚点x坐标值, 单位为vp。 <br> .value[1].f32 表示锚点y坐标值, 单位为vp。  |
-| NODE_BACKGROUND_IMAGE_POSITION = 56 | 背景图在组件中显示位置，即相对于组件左上角的坐标，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：x轴方向的位置，单位为px。 <br> .value[1].f32：y轴方向的位置, 单位为px。<br> .value[2].?i32：对齐模式。参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)。默认值为ARKUI_ALIGNMENT_TOP_START。**起始版本：** 21 <br> .value[3].?i32：布局方向。参数类型为[ArkUI_Direction](capi-native-type-h.md#arkui_direction)。默认值为ARKUI_DIRECTION_AUTO。**起始版本：** 21 <br> 在大部分场景下，这个参数都应该被设置成AUTO，这个模式允许系统自动处理布局方向，如果在某些场景下需要保持特定的方向，设置这个属性为LTR（Left-to-Right）或者RTL（Right-to-Left）。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：x轴方向的位置，单位为px。 <br> .value[1].f32：y轴方向的位置，单位为px。<br> .value[2].i32：对齐模式。参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)。默认值为ARKUI_ALIGNMENT_TOP_START。**起始版本：** 21 <br> .value[3].i32：布局方向。参数类型为[ArkUI_Direction](capi-native-type-h.md#arkui_direction)。默认值为ARKUI_DIRECTION_AUTO。**起始版本：** 21|
+| NODE_BACKGROUND_IMAGE_POSITION = 56 | 背景图在组件中显示位置，即相对于组件左上角的坐标，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：x轴方向的位置，单位为px。 <br> .value[1].f32：y轴方向的位置, 单位为px。<br> .value[2].?i32：对齐模式。参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)。默认值为ARKUI_ALIGNMENT_TOP_START。**起始版本：** 12 <br> .value[3].?i32：布局方向。参数类型为[ArkUI_Direction](capi-native-type-h.md#arkui_direction)。默认值为ARKUI_DIRECTION_AUTO。**起始版本：** 12 <br> 在大部分场景下，这个参数都应该被设置成AUTO，这个模式允许系统自动处理布局方向，如果在某些场景下需要保持特定的方向，设置这个属性为LTR（Left-to-Right）或者RTL（Right-to-Left）。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：x轴方向的位置，单位为px。 <br> .value[1].f32：y轴方向的位置，单位为px。<br> .value[2].i32：对齐模式。参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)。默认值为ARKUI_ALIGNMENT_TOP_START。**起始版本：** 12 <br> .value[3].i32：布局方向。参数类型为[ArkUI_Direction](capi-native-type-h.md#arkui_direction)。默认值为ARKUI_DIRECTION_AUTO。**起始版本：** 12|
 | NODE_ALIGN_RULES = 57 | 相对容器中子组件的对齐规则属性，支持属性设置，属性重置，获取属性接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.object：使用[ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)对象作为组件的对齐规则。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .object：使用[ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)对象作为组件的对齐规则。 |
 | NODE_ALIGN_SELF = 58 | 设置子组件在父容器交叉轴的对齐格式，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：设置子组件在父容器交叉轴的对齐格式类型， <br> 参数类型[ArkUI_ItemAlignment](capi-native-type-h.md#arkui_itemalignment)，默认值为ARKUI_ITEM_ALIGNMENT_AUTO。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：设置子组件在父容器交叉轴的对齐格式类型， <br> 参数类型[ArkUI_ItemAlignment](capi-native-type-h.md#arkui_itemalignment)，默认值为ARKUI_ITEM_ALIGNMENT_AUTO。 |
 | NODE_FLEX_GROW = 59 | 设置组件在父容器的剩余空间所占比例，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：父容器的剩余空间所占比例。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：父容器的剩余空间所占比例。 |
@@ -340,7 +349,7 @@ enum ArkUI_NodeAttributeType
 | NODE_EXPAND_SAFE_AREA = 92 | 定义控制组件扩展其安全区域，支持属性设置，属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式： <br> .value[0]?.u32：扩展安全区域的枚举值集合[ArkUI_SafeAreaType](capi-native-type-h.md#arkui_safeareatype)，例如：ARKUI_SAFE_AREA_TYPE_SYSTEM \| ARKUI_SAFE_AREA_TYPE_CUTOUT；<br> .value[1]?.u32：扩展安全区域的方向枚举值集合[ArkUI_SafeAreaEdge](capi-native-type-h.md#arkui_safeareaedge)；例如：ARKUI_SAFE_AREA_EDGE_TOP \| ARKUI_SAFE_AREA_EDGE_BOTTOM；<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.value[0].u32：扩展安全区域；<br>.value[1].u32：扩展安全区域的方向。|
 | NODE_VISIBLE_AREA_CHANGE_RATIO = 93 | 定义控制组件触发可视区域面积变更事件的可视区域面积占组件本身面积的比例阈值。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式： <br> .value[...].f32：占比数值，输入范围0-1。<br> .?object：参数类型为[ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)。 <br>**起始版本：** 22<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[...].f32：占比数值。<br>.object：返回类型为[ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)。<br>**起始版本：** 22 |
 | NODE_TRANSITION = 94 | 定义组件插入和删除时显示过渡动效，支持属性设置，属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式： <br> .object：参数类型为[ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .object：参数类型为[ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)。  |
-| NODE_UNIQUE_ID = 95 | 组件标识ID，支持属性获取。<br />组件标识ID只读，且进程内唯一。|
+| NODE_UNIQUE_ID<sup>(deprecated)</sup> &nbsp;= 95 | 组件标识ID，支持属性获取。<br />组件标识ID只读，且进程内唯一。<br>**废弃版本：** 从API version 12开始支持，从API version 20开始废弃。建议使用[OH_ArkUI_NodeUtils_GetNodeUniqueId](#oh_arkui_nodeutils_getnodeuniqueid)替代。|
 | NODE_FOCUS_BOX = 96 | 设置当前组件系统焦点框样式。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32: 焦点框相对组件边缘的距离。 <br> 正数代表外侧，负数代表内侧。 <br> 不支持百分比。 <br> .value[1].f32: 焦点框宽度。 不支持负数和百分比。 <br> .value[2].u32: 焦点框颜色。 |
 | NODE_CLICK_DISTANCE = 97 | 组件所绑定的点击手势移动距离限制，支持属性设置。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32 表示识别点击手势时允许手指在该范围内移动，单位为vp。  |
 | NODE_TAB_STOP = 98 | 控制焦点是否能停在当前组件，支持属性设置，属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式： <br> .value[0].i32：参数类型为1表示焦点能停在当前组件，为0表示焦点不能停在当前组件。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：参数类型为1表示焦点停在当前组件，为0表示焦点未停在当前组件。<br>**起始版本：** 14  |
@@ -355,6 +364,7 @@ enum ArkUI_NodeAttributeType
 |NODE_POSITION_EDGES = 107|设置组件相对容器内容区边界的位置，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .object：组件相对容器内容区边界的位置；参数类型为[ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .object： 组件相对容器内容区边界的位置；参数类型为[ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)。<br>**起始版本：** 21 |
 |NODE_ALLOW_FORCE_DARK = 108|设置组件是否启用反色能力，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：反色能力；参数取值为0或1，取值为0表示不启用反色能力，取值为1表示启用反色能力。<br>**起始版本：** 21 |
 |NODE_PIXEL_ROUND = 109|设置组件的像素取整策略，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.object：组件的像素取整策略；参数类型为[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.object：组件的像素取整策略；参数类型为[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)。<br>**起始版本：** 21 |
+|NODE_ENABLE_CLICK_SOUND_EFFECT = 110| 设置组件是否启用默认点击音效。此功能仅在TV上生效，在其他设备上启用默认点击音效也不会播放音效。是否能够发音依赖设备声音相关的设置，如静音模式下不会播放音效。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.value[0].i32：参数取值为1或0，1表示启用默认点击音效，0表示禁用默认点击音效，默认值为1。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.value[0].i32：表示此节点是否启用了默认的点击音效。参数取值为1或0，1表示启用默认点击音效，0表示禁用默认点击音效。<br>**起始版本：** 24 |
 |NODE_MOTION_PATH = 111 | 设置组件的运动路径属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.object：指向路径动画的运动路径配置项的指针；参数类型为[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.object：指向路径动画的运动路径配置项的指针；参数类型为[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)。<br>**起始版本：** 23 |
 |NODE_HOVER_EFFECT = 112|定义组件被悬停时的效果。该属性可根据需要通过API进行设置、重置和获取。<br>设置该属性时，[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数的格式：<br> .value[0].i32：组件在悬停状态下的悬停效果。参数类型为[ArkUI_HoverEffect](capi-native-type-h.md#arkui_hovereffect)。默认值为<b>ARKUI_HOVER_EFFECT_AUTO</b>。<br>返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)的格式：<br>.value[0].i32： 组件在悬停状态下的悬停效果。参数类型为[ArkUI_HoverEffect](capi-native-type-h.md#arkui_hovereffect)。<br>**起始版本：** 23 |
 |NODE_FOCUS_SCOPE_ID = 113|将容器设置为具有特定标识符的焦点组，支持属性设置、属性重置和属性获取接口。<br>设置该属性时，[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数的格式：<br>.string：焦点作用域标识符。<br> .value[0].i32：该作用域是否为焦点组，默认值为0。取值范围为1或0。1表示设置为焦点组。0表示组件未被设置为焦点组。<br> .value[1].i32：箭头键是否可以将焦点从焦点组内部移至外部，仅当isGroup为true时有效，默认值为1。取值范围为1或0。1表示箭头键可以将焦点从焦点组内部移至外部，0表示箭头键无法将焦点从焦点组内部移至外部。<br>属性获取方法的返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.string：焦点作用域标识符。<br> .value[0].i32： 该作用域是否为焦点组，默认值为0。取值范围为1或0。1表示设置为焦点组。0表示组件未被设置为焦点组。<br> .value[1].i32： 箭头键是否可以将焦点从焦点组内部移至外部，仅当isGroup为true时有效，默认值为1。取值范围为1或0。1表示箭头键可以将焦点从焦点组内部移至外部，0表示箭头键无法将焦点从焦点组内部移至外部。<br>**起始版本：** 23 |
@@ -417,7 +427,7 @@ enum ArkUI_NodeAttributeType
 | NODE_TEXT_COMPRESS_LEADING_PUNCTUATION = 1048 | 文本行首标点压缩开关，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否打开行首标点压缩开关。<br> true表示开启行首标点压缩，false表示关闭行首标点压缩。默认值false。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否打开行首标点压缩开关。<br>**起始版本：** 23 |
 | NODE_TEXT_INCLUDE_FONT_PADDING = 1049 | 设置是否在首行和尾行增加间距以避免文字截断。 <br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：设置是否在首行和尾行增加间距以避免文字截断。true表示开启增加间距，false表示关闭增加间距。默认值：false。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否在首行和尾行增加间距。true表示增加间距，false表示不增加间距。 <br>**起始版本：** 23 |
 | NODE_TEXT_FALLBACK_LINE_SPACING = 1050 | 针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。 <br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：支持行高基于文字实际高度自适应。true表示开启自适应，false表示关闭自适应。默认值：false。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否开启行高基于文字实际高度自适应。true表示开启自适应，false表示关闭自适应。 <br>**起始版本：** 23 |
-| NODE_TEXT_MARQUEE_OPTIONS = 1051 | 文本跑马灯模式配置项，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .object：文本跑马灯模式配置，参数类型为[ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .object：文本跑马灯模式配置，参数类型为[ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoption.md)。 <br>**起始版本：** 23   |
+| NODE_TEXT_MARQUEE_OPTIONS = 1051 | 文本跑马灯模式配置项，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .object：文本跑马灯模式配置，参数类型为[ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .object：文本跑马灯模式配置，参数类型为[ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)。 <br>**起始版本：** 23   |
 | NODE_TEXT_DIRECTION  = 1052 | 文本排版方向。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：表示文本的排版方向，取[ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection)枚举值。默认值为ARKUI_TEXT_DIRECTION_DEFAULT。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：表示文本的排版方向，对应取值及含义请参考[ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection)枚举值。 <br>**起始版本：** 23 |
 | NODE_TEXT_SELECTED_DRAG_PREVIEW_STYLE = 1053 | 用于设置文本选中状态下的拖拽预览样式。<br>设置属性[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式： <br> .object：文本选中状态下的拖拽预览样式。参数类型为[ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)。 <br> 返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)的格式：<br> .object：文本选中状态下的拖拽预览样式。参数类型为[ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)。 <br>**起始版本：** 23 |
 | NODE_SPAN_CONTENT = MAX_NODE_SCOPE_NUM * ARKUI_NODE_SPAN = 2000 | 文本内容属性，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .string 表示span的文本内容。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .string 表示span的文本内容。  |
@@ -429,7 +439,7 @@ enum ArkUI_NodeAttributeType
 | NODE_IMAGE_SPAN_BASELINE_OFFSET = 3003 | imageSpan组件的基线偏移量属性，支持属性设置，属性重置和属性获取接口。偏移量数值为正数时向上偏移，负数时向下偏移，默认值0，单位为fp。 <br>     <br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：偏移量数值，单位为fp； <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].f32：偏移量数值，单位为fp。 <br>**起始版本：** 13  |
 | NODE_IMAGE_SPAN_COLOR_FILTER = 3004 | 图片滤镜效果属性，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32 ~ .value[19].f32：表示滤镜矩阵数组。 <br> .size：表示滤镜数组大小为5x4。 <br> .object：颜色滤波器指针，参数类型为[OH_Drawing_ColorFilter](../apis-arkgraphics2d/capi-drawing-oh-drawing-colorfilter.md)。<br>.object和.size参数只能二选一，不可同时设置。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32 ~ .value[19].f32：表示滤镜矩阵数组。 <br> .size：表示滤镜数组大小为5x4。 <br> .object：颜色滤波器指针，参数类型为[OH_Drawing_ColorFilter](../apis-arkgraphics2d/capi-drawing-oh-drawing-colorfilter.md)。<br> **起始版本：** 22 |
 | NODE_IMAGE_SPAN_SUPPORT_SVG2 = 3005 | 通过启用SVG新解析能力开关设置SVG解析功能支持的范围，支持属性设置，属性重置，属性获取接口。ImageSpan组件创建后，不支持动态修改该属性的值。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：是否启用SVG新解析能力开关。true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：是否启用SVG新解析能力开关。<br>**起始版本：** 22 |
-| NODE_IMAGE_SRC = MAX_NODE_SCOPE_NUM * ARKUI_NODE_IMAGE = 4000 | image组件设置图片地址属性，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string 表示image组件地址。 <br> .object 表示 PixelMap 图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)；<br>.object参数和.string参数二选一，不可同时设置。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string 表示image组件地址。 <br> .object 表示 PixelMap 图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。|
+| NODE_IMAGE_SRC = MAX_NODE_SCOPE_NUM * ARKUI_NODE_IMAGE = 4000 | [image](arkui-ts/ts-basic-components-image.md)组件设置图片地址属性，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string 表示image组件地址。 <br> .object 表示 PixelMap 图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)；<br>.object参数和.string参数二选一，不可同时设置。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string 表示image组件地址。 <br> .object 表示 PixelMap 图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。|
 | NODE_IMAGE_OBJECT_FIT = 4001 | 图片填充效果属性，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32 表示图片填充效果，取[ArkUI_ObjectFit](capi-native-type-h.md#arkui_objectfit)枚举值。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32 表示图片填充效果，取[ArkUI_ObjectFit](capi-native-type-h.md#arkui_objectfit)枚举值。|
 | NODE_IMAGE_INTERPOLATION = 4002 | 图片插值效果属性，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32 表示插值效果，取[ArkUI_ImageInterpolation](capi-native-type-h.md#arkui_imageinterpolation)枚举值。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32 表示插值效果，取[ArkUI_ImageInterpolation](capi-native-type-h.md#arkui_imageinterpolation)枚举值。  |
 | NODE_IMAGE_OBJECT_REPEAT = 4003 | 图片重复样式属性，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32 表示图片重复样式，取[ArkUI_ImageRepeat](capi-native-type-h.md#arkui_imagerepeat)枚举值。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32 表示图片重复样式，取[ArkUI_ImageRepeat](capi-native-type-h.md#arkui_imagerepeat)枚举值。  |
@@ -502,11 +512,13 @@ enum ArkUI_NodeAttributeType
 | NODE_TEXT_INPUT_ENABLE_SELECTED_DATA_DETECTOR = 7038 | 开启选中词文本识别。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：开启选中词文本识别，true表示开启识别，false表示关闭识别。默认值：true。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否开启选中词文本识别。<br>**起始版本：** 22 |
 | NODE_TEXT_INPUT_SHOW_COUNTER = 7040 | 设置输入的字符数超过阈值时是否显示计数器并设置计数器样式，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：是否开启计数器。值为true表示开启计数器，值为false表示不开启计数器。<br> .value[1]?.f32：可输入字符数占最大字符限制的百分比值，超过此值时显示计数器，取值范围[1, 100]，小数时向下取整，若超出取值范围，则接口属性设置不生效。<br> 输入字符超出限制时高亮边框，true表示高亮边框，false表示为不高亮边框。<br> .object：计数器配置，配置属性为文本输入框未达到最大字符数时计数器的颜色以及超出最大字符数时计数器的颜色。参数类型为 [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：是否开启计数器。<br> .value[1].f32：可输入字符数占最大字符限制的百分比值，超过此值时显示计数器，取值范围[1, 100]。<br> .value[2].i32：输入字符超出限制时高亮边框，true表示高亮边框，false表示为不高亮边框，默认高亮。<br> .object：计数器配置，配置属性为文本输入框未达到最大字符数时计数器的颜色以及超出最大字符数时计数器的颜色。参数类型为[ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)。<br>**起始版本：** 22   |
 | NODE_TEXT_INPUT_TEXT_CONTENT_CONTROLLER_BASE = 7041 | 用于设置或获取文本输入控制器。<br>设置属性[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.object：文本内容基础控制器。参数类型为[ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)。<br>返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)的格式：<br>.object：文本内容基础控制器。参数类型为[ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)。<br>**起始版本：** 23       |
+| NODE_TEXT_INPUT_ELLIPSIS_MODE = 7042 | 设置单行文本输入框中文本省略位置，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：参数类型[ArkUI_EllipsisMode](capi-native-type-h.md#arkui_ellipsismode)。默认值为ARKUI_ELLIPSIS_MODE_END。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：参数类型[ArkUI_EllipsisMode](capi-native-type-h.md#arkui_ellipsismode)。 <br>**起始版本：** 24 |
 | NODE_TEXT_INPUT_COMPRESS_LEADING_PUNCTUATION  = 7044 | 设置输入字符行首标点压缩开关，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否打开行首标点压缩开关。<br> true表示开启行首标点压缩，false表示关闭行首标点压缩。默认值false。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否打开行首标点压缩开关。<br>**起始版本：** 23 |
-| NODE_TEXT_INPUT_INCLUDE_FONT_PADDING = 7045 | 设置单行输入框内文字是否在首行和尾行增加间距以避免文字截断。 <br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：设置输入框内文字是否在首行和尾行增加间距以避免文字截断。true表示开启增加间距，false表示关闭增加间距。默认值：false。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否在首行和尾行增加间距。true表示增加间距，false表示不增加间距。 <br>**起始版本：** 23 |
+| NODE_TEXT_INPUT_INCLUDE_FONT_PADDING = 7045 | 设置单行输入框内文字是否在首行顶部和尾行底部增加间距以避免文字截断。 <br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：设置输入框内文字是否在首行顶部和尾行底部增加间距以避免文字截断。true表示开启增加间距，false表示关闭增加间距。默认值：false。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否在首行顶部和尾行底部增加间距。true表示增加间距，false表示不增加间距。 <br>**起始版本：** 23 |
 | NODE_TEXT_INPUT_FALLBACK_LINE_SPACING = 7046 | 针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。 <br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：支持行高基于文字实际高度自适应。true表示开启自适应，false表示关闭自适应。默认值：false。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否开启行高基于文字实际高度自适应。true表示开启自适应，false表示关闭自适应。 <br>**起始版本：** 23 |
 | NODE_TEXT_INPUT_DIRECTION = 7047 | 单行输入框的文本排版方向。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：表示文本的排版方向，取[ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection)枚举值。默认值为ARKUI_TEXT_DIRECTION_DEFAULT。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：表示文本的排版方向，对应取值及含义请参考[ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection)枚举值。 <br>**起始版本：** 23 |
 | NODE_TEXT_INPUT_SELECTED_DRAG_PREVIEW_STYLE  = 7048 | 用于设置文本输入框内文本选中状态下的拖拽预览样式。<br>设置属性[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式： <br> .object：文本选中状态下的拖拽预览样式。参数类型为[ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)。 <br> 返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)的格式：<br> .object：文本选中状态下的拖拽预览样式。参数类型为[ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)。 <br>**起始版本：** 23 |
+| NODE_TEXT_INPUT_TEXT_OVERFLOW = 7049 | 单行文本输入框中文本超长时的显示方式属性，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：表示文本超长时的显示方式[ArkUI_TextOverflow](capi-native-type-h.md#arkui_textoverflow)。内联模式非编辑态下默认值为ARKUI_TEXT_OVERFLOW_ELLIPSIS，内联模式编辑态下默认值为ARKUI_TEXT_OVERFLOW_CLIP。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：表示文本超长时的显示方式[ArkUI_TextOverflow](capi-native-type-h.md#arkui_textoverflow)。 <br>**起始版本：** 24 |
 | NODE_TEXT_AREA_PLACEHOLDER = MAX_NODE_SCOPE_NUM * ARKUI_NODE_TEXT_AREA = 8000 | 多行文本输入框的默认提示文本内容属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string：默认提示文本的内容。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string：默认提示文本的内容。 |
 | NODE_TEXT_AREA_TEXT = 8001 | 多行文本输入框的默认文本内容属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string：默认文本的内容。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string：默认文本的内容。 |
 | NODE_TEXT_AREA_MAX_LENGTH = 8002 | 输入框支持的最大文本数属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：最大文本数的数字。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：最大文本数的数字。|
@@ -544,11 +556,13 @@ enum ArkUI_NodeAttributeType
 | NODE_TEXT_AREA_SCROLL_BAR_COLOR = 8035 | 设置输入框滚动条颜色，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].u32：滚动条颜色数值。0xargb类型。默认值：0x66182431，显示为灰色。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].u32：滚动条颜色数值。<br>**起始版本：** 22 |
 | NODE_TEXT_AREA_CUSTOM_KEYBOARD = 8036 | 设置文本输入框的自定义键盘。支持属性设置、属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .object：自定义键盘，参数类型[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。<br> .value[0]?.i32：设置自定义键盘是否支持避让功能。<br>true表示支持避让，false表示不支持避让。<br>默认值：false<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .object：自定义键盘，参数类型[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。<br> .value[0].i32：设置自定义键盘是否支持避让功能。<br>**起始版本：** 22 |
 | NODE_TEXT_AREA_TEXT_CONTENT_CONTROLLER_BASE = 8037 | 用于设置或获取文本区域控制器。<br>设置属性[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.object：文本内容基础控制器，参数类型为[ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)。<br>获取属性时[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.object：文本内容基础控制器，参数类型为[ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)。<br>**起始版本：** 23 |
+| NODE_TEXT_AREA_ELLIPSIS_MODE = 8038 | 设置多行文本输入框中文本省略位置，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：参数类型[ArkUI_EllipsisMode](capi-native-type-h.md#arkui_ellipsismode)。默认值为ARKUI_ELLIPSIS_MODE_END。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：参数类型[ArkUI_EllipsisMode](capi-native-type-h.md#arkui_ellipsismode)。 <br>**起始版本：** 24 |
 | NODE_TEXT_AREA_COMPRESS_LEADING_PUNCTUATION  = 8040 | 设置输入字符行首标点压缩开关，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否打开行首标点压缩开关。<br> true表示开启行首标点压缩，false表示关闭行首标点压缩。默认值false。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否打开行首标点压缩开关。<br>**起始版本：** 23 |
 | NODE_TEXT_AREA_INCLUDE_FONT_PADDING = 8041 | 设置多行输入框内文字是否在首行和尾行增加间距以避免文字截断。 <br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：设置输入框内文字是否在首行和尾行增加间距以避免文字截断。true表示开启增加间距，false表示关闭增加间距。默认值：false。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：输入框内文字是否在首行和尾行增加间距。true表示增加间距，false表示不增加间距。<br>**起始版本：** 23 |
 | NODE_TEXT_AREA_FALLBACK_LINE_SPACING = 8042 | 针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。 <br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：支持行高基于文字实际高度自适应。true表示开启自适应，false表示关闭自适应。默认值：false。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：是否开启行高基于文字实际高度自适应。true表示开启自适应，false表示关闭自适应。 <br>**起始版本：** 23 |
 | NODE_TEXT_AREA_DIRECTION = 8044 | 多行输入框的文本排版方向。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：表示文本的排版方向，取[ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection)枚举值。默认值为ARKUI_TEXT_DIRECTION_DEFAULT。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：表示文本的排版方向，对应取值及含义请参考[ArkUI_TextDirection](capi-native-type-h.md#arkui_textdirection)枚举值。 <br>**起始版本：** 23 |
 | NODE_TEXT_AREA_SELECTED_DRAG_PREVIEW_STYLE = 8045 | 用于设置多行文本输入框内文本选中状态下的拖拽预览样式。<br>设置属性[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式： <br> .object：文本选中状态下的拖拽预览样式。参数类型为[ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)。 <br> 返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)的格式：<br> .object：文本选中状态下的拖拽预览样式。参数类型为[ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)。 <br>**起始版本：** 23 |
+| NODE_TEXT_AREA_TEXT_OVERFLOW = 8046 | 多行文本输入框中文本超长时的显示方式属性，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：表示文本超长时的显示方式[ArkUI_TextOverflow](capi-native-type-h.md#arkui_textoverflow)。默认值为ARKUI_TEXT_OVERFLOW_CLIP。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：表示文本超长时的显示方式[ArkUI_TextOverflow](capi-native-type-h.md#arkui_textoverflow)。 <br>**起始版本：** 24 |
 | NODE_BUTTON_LABEL = MAX_NODE_SCOPE_NUM * ARKUI_NODE_BUTTON = 9000 | button按钮的文本内容属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string：默认文本的内容。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string：默认文本的内容。 |
 | NODE_BUTTON_TYPE = 9001 | Button按钮的样式属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：设置Button按钮的样式，参数类型[ArkUI_ButtonType](capi-native-type-h.md#arkui_buttontype)，默认值为ARKUI_BUTTON_TYPE_CAPSULE。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：获取Button按钮的样式，参数类型[ArkUI_ButtonType](capi-native-type-h.md#arkui_buttontype)，默认值为ARKUI_BUTTON_TYPE_CAPSULE。  |
 | NODE_BUTTON_MIN_FONT_SCALE = 9002 | Button按钮的最小字体缩放倍数属性，支持属性设置，属性重置和属性获取。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32: 设置Button按钮的最小字体缩放倍数，默认单位fp。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32: 获取Button按钮的最小字体缩放倍数，默认单位fp。<br>**起始版本：** 18  |
@@ -635,6 +649,34 @@ enum ArkUI_NodeAttributeType
 | NODE_CHECKBOX_GROUP_SELECTED_COLOR = 21002 | CheckBoxGroup多选框选中状态颜色, 支持属性设置，属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式： <br> .value[0].u32: CheckBoxGroup多选框选中状态颜色, 0xARGB格式。例如0xFF1122FF。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].u32:  CheckBoxGroup多选框选中状态颜色, 0xARGB格式。例如0xFF1122FF。<br>**起始版本：** 15   |
 | NODE_CHECKBOX_GROUP_UNSELECTED_COLOR = 21003 | CheckBoxGroup多选框未选中边框颜色, 支持属性设置，属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式： <br> .value[0].u32: 边框颜色, 类型为0xargb，如0xFF1122FF。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].u32: 边框颜色, 类型为0xargb，如0xFF1122FF。<br>**起始版本：** 15   |
 | NODE_CHECKBOX_GROUP_MARK = 21004 | CheckBoxGroup多选框内部图标样式, 支持属性设置，属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式： <br> .value[0].u32: 边框颜色, 类型为0xargb，如0xFF1122FF；<br> .value[1]?.f32: 可选，内部图标大小，单位vp；<br> .value[2]?.f32: 可选，内部图标粗细，单位vp，默认值2。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].u32: 边框颜色, 类型为0xargb，如0xFF1122FF；<br> .value[1]?.f32: 可选，内部图标大小，单位vp；<br> .value[2]?.f32: 可选，内部图标粗细，单位vp，默认值2。<br>**起始版本：** 15  |
+| NODE_TEXT_EDITOR_ENTER_KEY_TYPE | TextEditor组件回车键类型，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：回车键类型，参数类型[ArkUI_EnterKeyType](capi-native-type-h.md#arkui_enterkeytype)，默认值为ARKUI_ENTER_KEY_TYPE_NEW_LINE。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：回车键类型，参数类型[ArkUI_EnterKeyType](capi-native-type-h.md#arkui_enterkeytype)。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_CARET_COLOR | TextEditor组件光标颜色，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].u32：光标颜色，采用0xARGB格式，例如0xFFFF0000表示红色。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].u32：光标颜色，采用0xARGB格式。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_SCROLL_BAR_COLOR | TextEditor组件滚动条颜色，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.data[0].u32：滚动条颜色，采用0xARGB格式。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.data[0].u32：滚动条颜色，采用0xARGB格式。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_BAR_STATE | TextEditor组件滚动条显示模式，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：文本区域的滚动条显示模式，参数类型[ArkUI_BarState](capi-native-type-h.md#arkui_barstate)，默认值为ARKUI_BAR_STATE_AUTO。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：文本区域的滚动条显示模式，参数类型[ArkUI_BarState](capi-native-type-h.md#arkui_barstate)。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_ENABLE_DATA_DETECTOR | TextEditor组件文本实体识别功能开关，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：是否启用文本实体识别功能，0表示禁用，1表示启用，默认值为0。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：是否启用了文本实体识别功能。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_DATA_DETECTOR_CONFIG | TextEditor组件识别配置，支持属性设置和属性重置。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.object：识别配置，参数类型[ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_EDIT_MENU_OPTIONS | TextEditor组件扩展菜单选项，支持属性设置和属性重置。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.object：扩展菜单选项，参数类型[[ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_PLACEHOLDER | TextEditor组件无输入时的提示文本选项，支持属性设置和属性重置。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.object：无输入时的提示文本选项，参数类型[ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_STYLED_STRING_CONTROLLER | TextEditor组件属性字符串控制器，支持属性设置。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.object：属性字符串控制器，参数类型[ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_ENABLE_PREVIEW_TEXT | TextEditor组件预上屏功能开关，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：是否启用预上屏功能，0表示禁用，1表示启用，默认值为1。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：是否启用预上屏功能，0表示禁用，1表示启用。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_LAYOUT_MANAGER | TextEditor组件TextLayoutManager获取，支持属性获取。属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.object：布局管理器，参数类型[ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_ENABLE_SELECTED_DATA_DETECTOR | TextEditor组件文本选择识别AI菜单开关，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：是否启用文本选择识别的AI菜单，0表示禁用，1表示启用，默认值为1。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：是否启用了文本选择识别的AI菜单。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_SELECTED_BACKGROUND_COLOR | TextEditor组件选中内容背景颜色，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.data[0].u32：选中内容的背景颜色，采用0xARGB格式。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.data[0].u32：选中内容的背景颜色，采用0xARGB格式。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_ENABLE_KEYBOARD_ON_FOCUS | TextEditor组件非点击获焦时拉起输入法开关，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：非点击获焦时是否拉起输入法，0表示不拉起，1表示拉起，默认值为1。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：非点击获焦时是否拉起输入法，0表示不拉起，1表示拉起。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_MAX_LENGTH | TextEditor组件最大字符数，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：最大字符数。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：最大字符数。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_MAX_LINES | TextEditor组件内容最大行数，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：文本编辑器中内容的最大行数。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：文本编辑器中内容的最大行数。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_ENABLE_HAPTIC_FEEDBACK | TextEditor组件触觉反馈开关，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：是否在文本编辑器中启用触觉反馈，0表示不启用，1表示启用，默认值为1。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：是否启用了触觉反馈，0表示不启用，1表示启用。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_COPY_OPTIONS | TextEditor组件复制选项，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：复制选项，参数类型[ArkUI_CopyOptions](capi-native-type-h.md#arkui_copyoptions)，默认值为ARKUI_COPY_OPTIONS_LOCAL_DEVICE。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：复制选项，参数类型[ArkUI_CopyOptions](capi-native-type-h.md#arkui_copyoptions)。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_KEYBOARD_APPEARANCE | TextEditor组件键盘外观，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：键盘外观，参数类型[ArkUI_KeyboardAppearance](capi-native-type-h.md#arkui_keyboardappearance)，默认值为ARKUI_KEYBOARD_APPEARANCE_NONE_IMMERSIVE。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：键盘外观，参数类型[ArkUI_KeyboardAppearance](capi-native-type-h.md#arkui_keyboardappearance)。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_STOP_BACK_PRESS | TextEditor组件是否阻止返回事件传播，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：是否阻止返回事件传播，0表示不阻止，1表示阻止，默认值为0。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：是否阻止返回事件传播，0表示不阻止，1表示阻止。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_ENABLE_AUTO_SPACING | TextEditor组件中西文自动间距开关，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：是否启用自动间距，0表示不启用，1表示启用，默认值为0。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：是否启用自动间距，0表示不启用，1表示启用。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_CUSTOM_KEYBOARD | TextEditor组件自定义键盘，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.object：自定义键盘，参数类型[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。<br>.value[0]?.i32：设置自定义键盘是否支持避让功能，0表示不支持，1表示支持，默认值为0。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.object：自定义键盘，参数类型[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。<br>.value[0].i32：设置自定义键盘是否支持避让功能，0表示不支持，1表示支持。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_BIND_SELECTION_MENU | TextEditor组件自定义文本选择菜单绑定，支持属性设置和属性重置。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.object：文本选择菜单，参数类型[ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_INCLUDE_FONT_PADDING | TextEditor组件首行末行防截断间距开关，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：是否添加间距，0表示不添加，1表示添加，默认值为0。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：是否添加间距，0表示不添加，1表示添加。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_FALLBACK_LINE_SPACING | TextEditor组件行高自适应开关，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：行高是否自适应，0表示不自适应，1表示自适应，默认值为0。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：行高是否自适应，0表示不自适应，1表示自适应。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_COMPRESS_LEADING_PUNCTUATION | TextEditor组件行首标点符号压缩开关，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：是否启用标点符号压缩，0表示不启用，1表示启用，默认值为0。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：是否启用标点符号压缩，0表示不启用，1表示启用。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_SELECTED_DRAG_PREVIEW_STYLE | TextEditor组件选中拖拽预览样式，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.object：选中拖拽预览样式配置，参数类型[ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.object：选中拖拽预览样式配置，参数类型[ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_SINGLE_LINE | TextEditor组件单行模式开关，支持属性设置、属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：是否启用单行模式，0表示不启用，1表示启用，默认值为0。<br>属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：<br>.value[0].i32：是否启用单行模式，0表示不启用，1表示启用。<br>**起始版本：** 24 |
 | NODE_CHECKBOX_GROUP_SHAPE = 21005 | CheckBoxGroup组件形状, 支持属性设置，属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式： <br> .value[0].i32: 组件形状，参数类型[ArkUI_CheckboxShape](capi-native-type-h.md#arkui_checkboxshape)。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32: 组件形状，参数类型[ArkUI_CheckboxShape](capi-native-type-h.md#arkui_checkboxshape)。<br>**起始版本：** 15  |
 | NODE_STACK_ALIGN_CONTENT = MAX_NODE_SCOPE_NUM * ARKUI_NODE_STACK = 1000000 | 设置子组件在容器内的对齐方式，支持属性设置，属性重置和属性获取接口。该属性与通用属性NODE_ALIGNMENT同时设置时，后设置的属性生效。<br> <br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32： 对齐方式，数据类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)，默认值ARKUI_ALIGNMENT_CENTER。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32： 对齐方式，数据类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)。 |
 | NODE_SCROLL_BAR_DISPLAY_MODE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_SCROLL = 1002000 | 设置滚动条状态，支持属性设置，属性重置和属性获取接口。List/Scroll/WaterFlow从API version 12开始支持，Grid从API version 22开始支持。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：滚动条状态，数据类型[ArkUI_ScrollBarDisplayMode](capi-native-type-h.md#arkui_scrollbardisplaymode)，List、Grid、Scroll组件默认值为ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO，WaterFlow组件默认值为ARKUI_SCROLL_BAR_DISPLAY_MODE_OFF。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：滚动条状态，数据类型[ArkUI_ScrollBarDisplayMode](capi-native-type-h.md#arkui_scrollbardisplaymode)。 |
@@ -665,7 +707,7 @@ enum ArkUI_NodeAttributeType
 | NODE_SCROLL_ZOOM_SCALE = 1002025 | 设置滚动内容缩放比例。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：设置内容缩放比例，默认值：1<br>取值范围：(0, +∞)，小于或等于0时按默认值1处理。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：获取内容缩放比例。 <br>**起始版本：** 20  |
 | NODE_SCROLL_ENABLE_BOUNCES_ZOOM = 1002026 | 设置是否支持过缩放回弹效果。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：是否支持过缩放回弹效果，0：不支持，1：支持。默认值：1 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：是否支持过缩放回弹效果，0：不支持，1：支持。 <br>**起始版本：** 20    |
 | NODE_LIST_DIRECTION = MAX_NODE_SCOPE_NUM * ARKUI_NODE_LIST = 1003000 | 设置List组件排列方向。支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：List组件排列方向，数据类型[ArkUI_Axis](capi-native-type-h.md#arkui_axis)，默认值ARKUI_AXIS_VERTICAL。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：List组件排列方向，数据类型[ArkUI_Axis](capi-native-type-h.md#arkui_axis)。 |
-| NODE_LIST_STICKY = 1003001 | 配合ListItemGroup组件使用，设置ListItemGroup中header和footer是否要吸顶或吸底，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：配合ListItemGroup组件使用，设置ListItemGroup中header和footer是否要吸顶或吸底。数据类型[ArkUI_StickyStyle](capi-native-type-h.md#arkui_stickystyle)，默认值ARKUI_STICKY_STYLE_NONE。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：配合ListItemGroup组件使用，设置ListItemGroup中header和footer是否要吸顶或吸底。数据类型[ArkUI_StickyStyle](capi-native-type-h.md#arkui_stickystyle)。 |
+| NODE_LIST_STICKY = 1003001 | 配合ListItemGroup组件使用，设置ListItemGroup中[header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)和[footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)是否要吸顶或吸底，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：配合ListItemGroup组件使用，设置ListItemGroup中header和footer是否要吸顶或吸底。数据类型[ArkUI_StickyStyle](capi-native-type-h.md#arkui_stickystyle)，默认值ARKUI_STICKY_STYLE_NONE。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：配合ListItemGroup组件使用，设置ListItemGroup中header和footer是否要吸顶或吸底。数据类型[ArkUI_StickyStyle](capi-native-type-h.md#arkui_stickystyle)。 |
 | NODE_LIST_SPACE = 1003002 | 设置列表项间距，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：子组件主轴方向的间隔。默认值0。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：子组件主轴方向的间隔。 |
 | NODE_LIST_NODE_ADAPTER = 1003003 | list组件适配器，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .object：使用[ArkUI_NodeAdapter](capi-arkui-nativemodule-arkui-nodeadapter8h.md)对象作为适配器。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .object：返回值格式为[ArkUI_NodeAdapter](capi-arkui-nativemodule-arkui-nodeadapter8h.md)。|
 | NODE_LIST_CACHED_COUNT = 1003004 | list组件Adapter缓存数量，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：配合List组件Adapter使用，设置adapter中的缓存数量。<br> .value[1]?.i32：是否显示缓存节点，0：不显示，1：显示，默认值：0。该参数从API version 15开始支持。<br> .value[2]?.i32: 设置List最大缓存数量，默认值与第一个参数相同。该参数从API version 22开始支持。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：adapter中的缓存数量。<br> .value[1].i32：是否显示缓存节点，0：不显示，1：显示。该参数从API version 15开始支持。<br> .value[2]?.i32: List最大缓存数量。该参数从API version 22开始支持。 |
@@ -793,6 +835,7 @@ enum ArkUI_NodeEventType
 
 **起始版本：** 12
 
+<!--Table: 30%; 70%-->
 | 枚举项 | 描述  |
 | -- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | NODE_TOUCH_EVENT = 0 | 手势事件类型。事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)。 |
@@ -828,6 +871,9 @@ enum ArkUI_NodeEventType
 | NODE_ON_SIZE_CHANGE = 30 | 定义尺寸变化事件。当组件尺寸发生变化时会触发该事件。<br> 事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含4个参数：<br> <b>ArkUI_NodeComponentEvent.data[0].f32</b>: 尺寸组件变化前的宽度。<br> <b>ArkUI_NodeComponentEvent.data[1].f32</b>: 尺寸组件变化前的高度。<br> <b>ArkUI_NodeComponentEvent.data[2].f32</b>: 尺寸组件变化后的宽度。<br> <b>ArkUI_NodeComponentEvent.data[3].f32</b>: 尺寸组件变化后的高度。 <br>**起始版本：** 21   |
 | NODE_ON_COASTING_AXIS_EVENT = 31 | 定义惯性滚动轴事件。当用户在触控板上使用双指滑动一定距离并快速抬手时，系统会根据手指抬起时的速度，按照一定的衰减曲线持续构造事件。您可以监听此类事件来处理常规滚动轴事件之后的抛滑效果。<br> 当事件回调发生时，可以通过[OH_ArkUI_NodeEvent_GetInputEvent](#oh_arkui_nodeevent_getinputevent)从[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中获得[ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)对象。并通过[OH_ArkUI_UIInputEvent_GetCoastingAxisEvent](capi-ui-input-event-h.md#oh_arkui_uiinputevent_getcoastingaxisevent)从[ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)对象中获取[ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md)对象，使用OH_ArkUI_CoastingAxisEvent_XXX系列接口可以从该对象中获取更多信息。 <br>**起始版本：** 22   |
 | NODE_ON_CHILD_TOUCH_TEST = 32 | 定义子组件的预触摸测试。调用此事件以指定如何对当前组件的子组件执行触摸测试。该事件在组件被触摸时触发。<br> 当事件回调发生时，可以通过[OH_ArkUI_NodeEvent_GetTouchTestInfo](#oh_arkui_nodeevent_gettouchtestinfo)从[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中获得[ArkUI_TouchTestInfo](./capi-arkui-nativemodule-arkui-touchtestinfo.md)对象。并通过[OH_ArkUI_TouchTestInfo_GetTouchTestInfoList](./capi-ui-input-event-h.md#oh_arkui_touchtestinfo_gettouchtestinfolist)从[ArkUI_TouchTestInfo](./capi-arkui-nativemodule-arkui-touchtestinfo.md)对象中获取触摸测试信息中的触摸测试信息项列表，使用[OH_ArkUI_TouchTestInfoItem_GetXXX](./capi-ui-input-event-h.md#oh_arkui_touchtestinfoitem_getx)系列接口可以获取更多信息。使用[OH_ArkUI_TouchTestInfo_SetTouchResultStrategy](./capi-ui-input-event-h.md#oh_arkui_touchtestinfo_settouchresultstrategy)设置触摸测试策略。使用[OH_ArkUI_TouchTestInfo_SetTouchResultId](./capi-ui-input-event-h.md#oh_arkui_touchtestinfo_settouchresultid)设置命中测试过程中需要作用的子组件。<br>**起始版本：** 22  |
+| NODE_ON_CUSTOM_OVERFLOW_SCROLL = 34 | 定义[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)节点内容滚动事件。该事件在组件内容发生滚动时触发。<br> 当事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含2个参数：<br> <b>ArkUI_NodeComponentEvent.data[0].i32</b>：正在滚动的子组件id。<br> <b>ArkUI_NodeComponentEvent.data[1].f32</b>：节点滚动的偏移量，单位为px。<br>**起始版本：** 24 |
+| NODE_ON_STACK_OVERFLOW_SCROLL = 35 | 定义[ARKUI_NODE_STACK](capi-native-node-h.md#arkui_nodetype)节点内容滚动事件。该事件在组件内容发生滚动时触发。<br> 当事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含2个参数：<br> <b>ArkUI_NodeComponentEvent.data[0].i32</b>：正在滚动的子组件id。<br> <b>ArkUI_NodeComponentEvent.data[1].f32</b>：节点滚动的偏移量，单位为px。<br>**起始版本：** 24 |
+| NODE_ON_NEED_SOFTKEYBOARD = 36 | 用于设置事件回调。当组件获得焦点时，获焦组件触发该事件。<br> 当事件回调发生时，[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型值为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)不包含参数。<br> 系统会根据回调函数返回值判断是否需要键盘。<br> 可通过[OH_ArkUI_NodeEvent_SetReturnNumberValue](#oh_arkui_nodeevent_setreturnnumbervalue)接口设置是否需要键盘。<br> 返回值中index为0的value.i32表示是否需要键盘。<br> 取值为0：不需要键盘；取值为1：需要键盘。<br>**起始版本：** 24 |
 | NODE_TEXT_ON_DETECT_RESULT_UPDATE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_TEXT = 1000 | 文本设置TextDataDetectorConfig且识别成功时，触发onDetectResultUpdate回调。触发该事件的条件：文本设置TextDataDetectorConfig且识别成功后。<br> 事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md)。<br> [ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md)中包含1个参数：<br> <b>ArkUI_StringAsyncEvent.pStr</b>：表示文本识别的结果，Json格式。  |
 | NODE_TEXT_SPAN_ON_LONG_PRESS = 1001 | Span组件长按事件。组件被长按时触发此回调。<br> 事件回调发生时，可从事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中获取ArkUI_UIInputEvent。<br>**起始版本：** 20   |
 | NODE_IMAGE_ON_COMPLETE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_IMAGE = 4000 | 图片加载成功事件。触发该事件的条件 ：图片数据加载成功和解码成功均触发该回调。<br> 事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含9个参数：<br> <b>ArkUI_NodeComponentEvent.data[0].i32</b>：表示加载状态，0表示数据加载成功，1表示解码成功。<br> <b>ArkUI_NodeComponentEvent.data[1].f32</b>：表示图片的宽度，单位px。<br> <b>ArkUI_NodeComponentEvent.data[2].f32</b>：表示图片的高度，单位px。<br> <b>ArkUI_NodeComponentEvent.data[3].f32</b>：表示当前组件的宽度，单位px。<br> <b>ArkUI_NodeComponentEvent.data[4].f32</b>：表示当前组件的高度，单位px。<br> <b>ArkUI_NodeComponentEvent.data[5].f32</b>：图片绘制区域相对组件X轴位置，单位px。<br> <b>ArkUI_NodeComponentEvent.data[6].f32</b>：图片绘制区域相对组件Y轴位置，单位px。<br> <b>ArkUI_NodeComponentEvent.data[7].f32</b>：图片绘制区域宽度，单位px。<br> <b>ArkUI_NodeComponentEvent.data[8].f32</b>：图片绘制区域高度，单位px。  |
@@ -878,6 +924,13 @@ enum ArkUI_NodeEventType
 | NODE_IMAGE_ANIMATOR_EVENT_ON_CANCEL = 19003 | 定义帧动画返回最初状态时的状态回调。触发该事件的条件：<br> 1、帧动画返回最初状态时。<br> 事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中不包含参数。 |
 | NODE_IMAGE_ANIMATOR_EVENT_ON_FINISH = 19004 | 定义帧动画播放完成时或者停止播放时的状态回调。触发该事件的条件：<br> 1、帧动画播放完成时或停止播放时。<br> 事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中不包含参数。  |
 | NODE_CHECKBOX_GROUP_EVENT_ON_CHANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_CHECKBOX_GROUP = 21000 | 定义ARKUI_NODE_CHECKBOX_GROUP的选中状态或群组内的Checkbox的选中状态发生变化时，触发该回调。事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_StringAsyncEvent](capi-arkui-nativemodule-arkui-stringasyncevent.md)。<br> <b>ArkUI_StringAsyncEvent.pStr</b>Name: 被选中的checkbox的名字;Status:0: 表示群组多选择框全部选择。1: 群组多选择框部分选择。2: 群组多选择框全部没有选择。<br>**起始版本：** 15   |
+| NODE_TEXT_EDITOR_ON_SELECTION_CHANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_TEXT_EDITOR = 22000 | 定义TextEditor组件中选区或光标位置发生变化时触发的事件。<br>事件回调触发时，[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)包含两个参数：<br><b>ArkUI_NodeComponentEvent.data[0].i32</b>：选区起始索引。<br><b>ArkUI_NodeComponentEvent.data[1].i32</b>：选区结束索引。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_ON_READY = 22001 | 定义TextEditor组件首次初始化完成时触发的事件。<br>事件回调触发时，[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_ON_PASTE = 22002 | 定义TextEditor组件执行粘贴时触发的事件。<br>系统会根据回调函数返回值判断是否拦截组件的默认行为。<br>可通过[OH_ArkUI_NodeEvent_SetReturnNumberValue](#oh_arkui_nodeevent_setreturnnumbervalue)设置返回值。<br>返回值中索引为0的value.i32表示是否拦截组件的默认行为。<br>0：不拦截。1：拦截。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_ON_EDITING_CHANGE = 22003 | 定义TextEditor组件编辑状态发生变化时触发的事件。<br>事件回调触发时，[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)包含一个参数：<br><b>ArkUI_NodeComponentEvent.data[0].i32</b>：组件的编辑状态。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_ON_SUBMIT = 22004 | 定义TextEditor组件输入法的回车键被按下时触发的事件。<br>事件回调触发时，[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br>[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)包含一个参数：<br><b>ArkUI_NodeComponentEvent.data[0].i32</b>：输入法的回车键类型[ArkUI_EnterKeyType](capi-native-type-h.md#arkui_enterkeytype)。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_ON_CUT = 22005 | 定义TextEditor组件执行剪切时触发的事件。<br>系统会根据回调函数返回值判断是否拦截组件的默认行为。<br>可通过[OH_ArkUI_NodeEvent_SetReturnNumberValue](#oh_arkui_nodeevent_setreturnnumbervalue)设置返回值。<br>返回值中索引为0的value.i32表示是否拦截组件的默认行为。<br>0：不拦截。1：拦截。<br>**起始版本：** 24 |
+| NODE_TEXT_EDITOR_ON_COPY = 22006 | 定义TextEditor组件执行复制时触发的事件。<br>系统会根据回调函数返回值判断是否拦截组件的默认行为。<br>可通过[OH_ArkUI_NodeEvent_SetReturnNumberValue](#oh_arkui_nodeevent_setreturnnumbervalue)设置返回值。<br>返回值中索引为0的value.i32表示是否拦截组件的默认行为。<br>0：不拦截。1：拦截。<br>**起始版本：** 24 |
 | NODE_SWIPER_EVENT_ON_CHANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_SWIPER = 1001000 | 定义ARKUI_NODE_SWIPER当前元素索引变化时触发事件回调。事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含1个参数：<br> <b>ArkUI_NodeComponentEvent.data[0].i32</b>：表示当前显示元素的索引。  |
 | NODE_SWIPER_EVENT_ON_ANIMATION_START = 1001001 | 定义ARKUI_NODE_SWIPER切换动画开始时触发回调。事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含5个参数：<br> <b>ArkUI_NodeComponentEvent.data[0].i32</b>：表示当前显示元素的索引。<br> <b>ArkUI_NodeComponentEvent.data[1].i32</b>：表示切换动画目标元素的索引。<br> <b>ArkUI_NodeComponentEvent.data[2].f32</b>：表示主轴方向上当前显示元素相对Swiper起始位置的位移。<br> <b>ArkUI_NodeComponentEvent.data[3].f32</b>：表示主轴方向上目标元素相对Swiper起始位置的位移。<br> <b>ArkUI_NodeComponentEvent.data[4].f32</b>：表示离手速度。  |
 | NODE_SWIPER_EVENT_ON_ANIMATION_END = 1001002 | 定义ARKUI_NODE_SWIPER切换动画结束是触发回调。事件回调发生时，事件参数[ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)对象中的联合体类型为[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)。<br> [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)中包含2个参数：<br> <b>ArkUI_NodeComponentEvent.data[0].i32</b>：表示当前显示元素的索引。<br> <b>ArkUI_NodeComponentEvent.data[1].f32</b>：表示主轴方向上当前显示元素相对Swiper起始位置的位移。  |
@@ -3812,7 +3865,7 @@ int32_t OH_ArkUI_NativeModule_ConvertPositionToWindow(ArkUI_NodeHandle currentNo
 
 将点的坐标从指定节点的坐标系转换至当前窗口的坐标系。节点的坐标系考虑节点本身的变换，例如，节点A的变换效果为向左平移100，会使得其坐标系中的点的坐标也向左平移100。
 
-![](./arkui-ts/figures/ConvertToWindow.png)
+![](./figures/ConvertToWindow.png)
 
 如上图所示，将指定节点坐标系中的坐标(x0, y0)转换成窗口坐标系的坐标，结果为(x1, y1)。
 
@@ -3842,7 +3895,7 @@ int32_t OH_ArkUI_NativeModule_ConvertPositionFromWindow(ArkUI_NodeHandle targetN
 
 将点的坐标从当前窗口的坐标系转换至目标节点的坐标系。节点的坐标系考虑节点本身的变换，例如，节点A的变换效果为向左平移100，会使得其坐标系中的点的坐标也向左平移100。
 
-![](./arkui-ts/figures/ConvertFromWindow.png)
+![](./figures/ConvertFromWindow.png)
 
 如上图所示，将窗口坐标系中的坐标(x1, y1)转换成目标节点坐标系的坐标，结果为(x0, y0)。
 
@@ -3861,3 +3914,177 @@ int32_t OH_ArkUI_NativeModule_ConvertPositionFromWindow(ArkUI_NodeHandle targetN
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](capi-native-type-h.md#arkui_errorcode) 节点未挂载到节点树上。 |
+
+### OH_ArkUI_Swiper_StartFakeDrag()
+
+```c
+int32_t OH_ArkUI_Swiper_StartFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)
+```
+
+**描述**
+
+启动Swiper节点的模拟拖拽操作。调用[OH_ArkUI_Swiper_FakeDragBy](capi-native-node-h.md#oh_arkui_swiper_fakedragby)模拟拖拽动作。调用[OH_ArkUI_Swiper_StopFakeDrag](capi-native-node-h.md#oh_arkui_swiper_stopfakedrag)停止模拟拖拽。<br> 模拟拖拽操作可以被真实拖拽操作打断。如果需要在模拟拖拽期间忽略用户的拖拽事件，请使用[NODE_SWIPER_DISABLE_SWIPE](capi-native-node-h.md#arkui_nodeattributetype)。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 指定的节点。 |
+| bool* isSuccessful | 模拟拖拽操作是否成功启动。如果模拟拖拽操作成功启动，则返回true。<br> 如果Swiper尚未准备好启动模拟拖拽操作，或者真实拖拽或模拟拖拽操作已在进行中，则返回false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_Swiper_FakeDragBy()
+
+```c
+int32_t OH_ArkUI_Swiper_FakeDragBy(ArkUI_NodeHandle node, float offset, bool* isConsumedOffset)
+```
+
+**描述**
+
+通过设置Swiper节点的偏移量模拟拖拽效果。该接口调用前，必须先调用[OH_ArkUI_Swiper_StartFakeDrag](capi-native-node-h.md#oh_arkui_swiper_startfakedrag)启动模拟拖拽。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 指定的节点。 |
+| float offset | 需要拖拽的偏移量。单位是vp。 |
+| bool* isConsumedOffset | 是否消耗偏移量触发拖拽。如果消耗偏移量触发拖拽，则返回true。<br> 如果未处于模拟拖拽进度，或者未消耗任何偏移量，则返回false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_Swiper_StopFakeDrag()
+
+```c
+int32_t OH_ArkUI_Swiper_StopFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)
+```
+
+**描述**
+
+停止对Swiper节点的模拟拖拽。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 指定的节点。 |
+| bool* isSuccessful | 模拟拖拽操作是否成功停止。如果模拟拖拽成功停止，则返回true。<br> 如果Swiper尚未准备好停止模拟拖拽，或者没有正在进行的模拟拖拽，则返回false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_Swiper_IsFakeDragging()
+
+```c
+int32_t OH_ArkUI_Swiper_IsFakeDragging(ArkUI_NodeHandle node, bool* isFakeDragging)
+```
+
+**描述**
+
+获取Swiper节点的模拟拖拽状态。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 指定的节点。 |
+| bool* isFakeDragging | 是否处于模拟拖拽状态。如果正在进行模拟拖拽操作，则返回true，否则返回false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_Swiper_ShowPrevious()
+
+```c
+int32_t OH_ArkUI_Swiper_ShowPrevious(ArkUI_NodeHandle node)
+```
+
+**描述**
+
+显示Swiper节点的上一页。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 指定的节点。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_Swiper_ShowNext()
+
+```c
+int32_t OH_ArkUI_Swiper_ShowNext(ArkUI_NodeHandle node)
+```
+
+**描述**
+
+显示Swiper节点的下一页。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 指定的节点。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_NativeModule_GetPageRootNodeHandleByContext()
+
+```c
+ int32_t OH_ArkUI_NativeModule_GetPageRootNodeHandleByContext(ArkUI_ContextHandle context, ArkUI_NodeHandle* rootNode)
+```
+
+**描述**
+
+获取指定实例的页面的根节点。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context | UI实例对象指针。 |
+| [ArkUI_NodeHandle*](capi-arkui-nativemodule-arkui-node8h.md) rootNode | 目标根节点的句柄。如果上下文对应的页面没有根节点，则所指向的值将被设置为null。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>   [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化错误。<br> [ARKUI_ERROR_CODE_UI_CONTEXT_INVALID](capi-native-type-h.md#arkui_errorcode) 实例异常。<br>               [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |

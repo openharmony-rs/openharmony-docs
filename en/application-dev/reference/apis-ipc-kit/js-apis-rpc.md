@@ -2781,7 +2781,7 @@ try {
           hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, errCode: ' + result.errCode);
         }
       }).catch((e: Error) => {
-        hilog.error(0x0000, 'testTag', 'sendMessageRequest got exception: ' + e);
+        hilog.error(0x0000, 'testTag', 'sendMessageRequest got exception: ' + JSON.stringify(e));
       }).finally (() => {
         hilog.info(0x0000, 'testTag', 'sendMessageRequest ends, reclaim parcel');
         data.reclaim();
@@ -3452,6 +3452,7 @@ Writes raw data to this **MessageSequence** object.
 > - This API is supported since API version 9 and deprecated since API version 11. Use [writeRawDataBuffer](#writerawdatabuffer11) instead.
 >
 > - This API cannot be called for multiple times in one parcel communication.
+>
 > - When the data volume is large (greater than 32 KB), the shared memory is used to transmit data. In this case, pay attention to the SELinux configuration.
 
 **System capability**: SystemCapability.Communication.IPC.Core
@@ -3763,6 +3764,8 @@ Provides APIs for reading and writing data in specific format. During RPC, the s
 >
 > This API is supported since API version 7 and deprecated since API version 9. Use [MessageSequence](#messagesequence9) instead.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 ### create<sup>(deprecated)</sup>
 
 static create(): MessageParcel
@@ -4059,7 +4062,6 @@ import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let data = rpc.MessageParcel.create();
   let data = rpc.MessageParcel.create();
   let result = data.getCapacity();
   hilog.info(0x0000, 'testTag', 'capacity is ' + result);
@@ -6321,7 +6323,7 @@ try {
         hilog.error(0x0000, 'testTag', 'sendRequest failed, errCode: ' + result.errCode);
       }
     }).catch((e: Error) => {
-      hilog.error(0x0000, 'testTag', 'sendRequest got exception: ' + e);
+      hilog.error(0x0000, 'testTag', 'sendRequest got exception: ' + JSON.stringify(e));
     }).finally (() => {
       hilog.info(0x0000, 'testTag', 'sendRequest ends, reclaim parcel');
       data.reclaim();
@@ -7002,6 +7004,8 @@ try {
 
 Writes an object to a **MessageSequence** and reads it from the **MessageSequence** during IPC.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 ### marshalling<sup>9+</sup>
 
 marshalling(dataOut: MessageSequence): boolean
@@ -7123,6 +7127,8 @@ Writes objects of classes to a **MessageParcel** and reads them from the **Messa
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 9. Use [Parcelable](#parcelable9) instead.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 ### marshalling<sup>(deprecated)</sup>
 
@@ -7254,6 +7260,8 @@ try {
 
 Represents the holder of a remote proxy object. It is used to obtain a proxy object.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 ### asObject
 
 asObject(): IRemoteObject
@@ -7345,6 +7353,8 @@ if (proxy != undefined) {
 
 Subscribes to death notifications of a remote object. When the remote object is dead, the local end will receive a notification and **[onRemoteDied](#onremotedied)** will be called. A remote object is dead when the process holding the object is terminated or the device of the remote object is shut down or restarted. If the local and remote objects belong to different devices, the remote object is dead when the device holding the remote object is detached from the network. 
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 ### onRemoteDied
 
 onRemoteDied(): void
@@ -7409,11 +7419,13 @@ Defines the IPC context, including the PID and UID, local and remote device IDs,
 | callerTokenId | number | Yes  | No  | Token ID of the caller.|
 | remoteDeviceId   | string | Yes  | No  | Remote device ID. This parameter is valid only in RPC scenarios.  |
 | localDeviceId   | string | Yes  | No  | Local device ID. This parameter is valid only in RPC scenarios.  |
-| isLocalCalling   | boolean | Yes  | No  | Whether the peer end of the current communication is a process on the local device.  |
+| isLocalCalling   | boolean | Yes  | No  | Whether the peer end of the current communication is a process on the local device. Returns **true** if the local and peer processes are on the same device; returns **false** otherwise.  |
 
 ## IRemoteObject
 
 Provides methods to query of obtain interface descriptors, add or delete death notifications, dump object status to specific files, and send messages.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 ### getLocalInterface<sup>9+</sup>
 
@@ -7483,7 +7495,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
   | Name | Type                                     | Mandatory| Description                                                                                  |
   | ------- | ----------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-  | code    | number                                    | Yes  | Message code (1-16777215) called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
+  | code    | number                                    | Yes  | Message code [1-16777215] called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
   | data    | [MessageParcel](#messageparceldeprecated) | Yes  | **MessageParcel** object holding the data to send.                                             |
   | reply   | [MessageParcel](#messageparceldeprecated) | Yes  | **MessageParcel** object that receives the response.                                                     |
   | options | [MessageOption](#messageoption)           | Yes  | Request sending mode, which can be synchronous (default) or asynchronous.                                                  |
@@ -7506,7 +7518,7 @@ Sends a **MessageSequence** message to the remote process in synchronous or asyn
 
   | Name | Type                                | Mandatory| Description                                                                                  |
   | ------- | ------------------------------------ | ---- | -------------------------------------------------------------------------------------- |
-  | code    | number                               | Yes  | Message code (1-16777215) called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
+  | code    | number                               | Yes  | Message code [1-16777215] called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
   | data    | [MessageSequence](#messagesequence9) | Yes  | **MessageSequence** object holding the data to send.                                           |
   | reply   | [MessageSequence](#messagesequence9) | Yes  | **MessageSequence** object that receives the response.                                                   |
   | options | [MessageOption](#messageoption)      | Yes  | Request sending mode, which can be synchronous (default) or asynchronous.                                                  |
@@ -7541,7 +7553,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
   | Name | Type                                     | Mandatory| Description                                                                                  |
   | ------- | ----------------------------------------  | ---- | -------------------------------------------------------------------------------------- |
-  | code    | number                                    | Yes  | Message code (1-16777215) called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
+  | code    | number                                    | Yes  | Message code [1-16777215] called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
   | data    | [MessageParcel](#messageparceldeprecated) | Yes  | **MessageParcel** object holding the data to send.                                             |
   | reply   | [MessageParcel](#messageparceldeprecated) | Yes  | **MessageParcel** object that receives the response.                                                     |
   | options | [MessageOption](#messageoption)           | Yes  | Request sending mode, which can be synchronous (default) or asynchronous.                                                  |
@@ -7564,7 +7576,7 @@ Sends a **MessageSequence** message to the remote process in synchronous or asyn
 
   | Name  | Type                                | Mandatory| Description                                                                                  |
   | -------- | ------------------------------------ | ---- | -------------------------------------------------------------------------------------- |
-  | code     | number                               | Yes  | Message code (1-16777215) called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
+  | code     | number                               | Yes  | Message code [1-16777215] called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
   | data     | [MessageSequence](#messagesequence9) | Yes  | **MessageSequence** object holding the data to send.                                           |
   | reply    | [MessageSequence](#messagesequence9) | Yes  | **MessageSequence** object that receives the response.                                                   |
   | options  | [MessageOption](#messageoption)      | Yes  | Request sending mode, which can be synchronous (default) or asynchronous.                                                  |
@@ -7594,7 +7606,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| code     | number                                                       | Yes  | Message code (1-16777215) called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
+| code     | number                                                       | Yes  | Message code [1-16777215] called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
 | data     | [MessageParcel](#messageparceldeprecated)                    | Yes  | **MessageParcel** object holding the data to send.                   |
 | reply    | [MessageParcel](#messageparceldeprecated)                    | Yes  | **MessageParcel** object that receives the response.                           |
 | options  | [MessageOption](#messageoption)                              | Yes  | Request sending mode, which can be synchronous (default) or asynchronous.                        |
@@ -7604,7 +7616,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
 registerDeathRecipient(recipient: DeathRecipient, flags: number): void
 
-Registers a callback for receiving death notifications of the remote object. This method is called if the remote object process matching the **RemoteProxy** object is killed.
+Registers a callback for receiving death notifications of the remote object.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -7629,7 +7641,7 @@ For details about the error codes, see [RPC Error Codes](errorcode-rpc.md).
 
 addDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 
-Adds a callback for receiving death notifications of the remote object. This method is called if the remote object process matching the **RemoteProxy** object is killed.
+Adds a callback for receiving death notifications of the remote object.
 
 > **NOTE**
 >
@@ -7758,6 +7770,8 @@ Checks whether this object is dead.
 
 Provides APIs to implement **IRemoteObject**.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 ### Properties
 
 **System capability**: SystemCapability.Communication.IPC.Core
@@ -7786,7 +7800,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
   | Name | Type                                     | Mandatory| Description                                                                                  |
   | ------- | ----------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-  | code    | number                                    | Yes  | Message code (1-16777215) called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
+  | code    | number                                    | Yes  | Message code [1-16777215] called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
   | data    | [MessageParcel](#messageparceldeprecated) | Yes  | **MessageParcel** object holding the data to send.                                             |
   | reply   | [MessageParcel](#messageparceldeprecated) | Yes  | **MessageParcel** object that receives the response.                                                     |
   | options | [MessageOption](#messageoption)           | Yes  | Request sending mode, which can be synchronous (default) or asynchronous.                                                  |
@@ -7881,7 +7895,7 @@ Sends a **MessageSequence** message to the remote process in synchronous or asyn
 
   | Name | Type                                | Mandatory| Description                                                                                  |
   | ------- | ------------------------------------ | ---- | -------------------------------------------------------------------------------------- |
-  | code    | number                               | Yes  | Message code (1-16777215) called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
+  | code    | number                               | Yes  | Message code [1-16777215] called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
   | data    | [MessageSequence](#messagesequence9) | Yes  | **MessageSequence** object holding the data to send.                                           |
   | reply   | [MessageSequence](#messagesequence9) | Yes  | **MessageSequence** object that receives the response.                                                   |
   | options | [MessageOption](#messageoption)      | Yes  | Request sending mode, which can be synchronous (default) or asynchronous.                                                  |
@@ -7966,7 +7980,7 @@ try {
         hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, errCode: ' + result.errCode);
       }
     }).catch((e: Error) => {
-      hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + e);
+      hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + JSON.stringify(e));
     }).finally (() => {
       hilog.info(0x0000, 'testTag', 'sendMessageRequest ends, reclaim parcel');
       data.reclaim();
@@ -7994,7 +8008,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
   | Name | Type                                     | Mandatory| Description                                                                                  |
   | ------- | ----------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-  | code    | number                                    | Yes  | Message code (1-16777215) called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
+  | code    | number                                    | Yes  | Message code [1-16777215] called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
   | data    | [MessageParcel](#messageparceldeprecated) | Yes  | **MessageParcel** object holding the data to send.                                             |
   | reply   | [MessageParcel](#messageparceldeprecated) | Yes  | **MessageParcel** object that receives the response.                                                     |
   | options | [MessageOption](#messageoption)           | Yes  | Request sending mode, which can be synchronous (default) or asynchronous.                                                  |
@@ -8073,7 +8087,7 @@ try {
         hilog.error(0x0000, 'testTag', 'sendRequest failed, errCode: ' + result.errCode);
       }
     }).catch((e: Error) => {
-      hilog.error(0x0000, 'testTag', 'sendRequest failed, error: ' + e);
+      hilog.error(0x0000, 'testTag', 'sendRequest failed, error: ' + JSON.stringify(e));
     }).finally (() => {
       hilog.info(0x0000, 'testTag', 'sendRequest ends, reclaim parcel');
       data.reclaim();
@@ -8097,7 +8111,7 @@ Sends a **MessageSequence** message to the remote process in synchronous or asyn
 
   | Name  | Type                                | Mandatory| Description                                                                                  |
   | -------- | ------------------------------------ | ---- | -------------------------------------------------------------------------------------- |
-  | code     | number                               | Yes  | Message code (1-16777215) called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
+  | code     | number                               | Yes  | Message code [1-16777215] called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
   | data     | [MessageSequence](#messagesequence9) | Yes  | **MessageSequence** object holding the data to send.                                           |
   | reply    | [MessageSequence](#messagesequence9) | Yes  | **MessageSequence** object that receives the response.                                                   |
   | options  | [MessageOption](#messageoption)      | Yes  | Request sending mode, which can be synchronous (default) or asynchronous.                                                  |
@@ -8127,7 +8141,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| code     | number                                                       | Yes  | Message code (1-16777215) called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
+| code     | number                                                       | Yes  | Message code [1-16777215] called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
 | data     | [MessageParcel](#messageparceldeprecated)                    | Yes  | **MessageParcel** object holding the data to send.                   |
 | reply    | [MessageParcel](#messageparceldeprecated)                    | Yes  | **MessageParcel** object that receives the response.                           |
 | options  | [MessageOption](#messageoption)                              | Yes  | Request sending mode, which can be synchronous (default) or asynchronous.                        |
@@ -8135,7 +8149,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
 ### getLocalInterface<sup>9+</sup>
 
-getLocalInterface(interface: string): IRemoteBroker
+getLocalInterface(interfaceDes: string): IRemoteBroker
 
 Obtains the **LocalInterface** object of an interface token.
 
@@ -8145,7 +8159,7 @@ Obtains the **LocalInterface** object of an interface token.
 
   | Name   | Type  | Mandatory| Description                  |
   | --------- | ------ | ---- | ---------------------- |
-  | interface | string | Yes  | Interface descriptor.|
+  | interfaceDes | string | Yes  | Interface descriptor.|
 
 **Return value**
 
@@ -8305,7 +8319,7 @@ if (proxy != undefined) {
 
 registerDeathRecipient(recipient: DeathRecipient, flags: number): void
 
-Registers a callback for receiving death notifications of the remote object. This method is called if the remote object process matching the **RemoteProxy** object is killed.
+Registers a callback for receiving death notifications of the remote object.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -8394,7 +8408,7 @@ if (proxy != undefined) {
 
 addDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 
-Adds a callback for receiving the death notifications of the remote object, including the death notifications of the remote proxy.
+Adds a callback for receiving death notifications of the remote object.
 
 > **NOTE**
 >
@@ -8875,6 +8889,8 @@ if (proxy != undefined) {
 
 Defines the options used to construct the **MessageOption** object.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 ### Properties
 
 **System capability**: SystemCapability.Communication.IPC.Core
@@ -9125,6 +9141,8 @@ try {
 ## IPCSkeleton
 
 Obtains IPC context, including the UID and PID, local and remote device IDs, and whether the method is invoked on the same device.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 ### getContextObject
 
@@ -9587,6 +9605,8 @@ class Stub extends rpc.RemoteObject {
 
 Provides methods to implement **RemoteObject**. The service provider must inherit from this class.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 ### constructor
 
 constructor(descriptor: string)
@@ -9629,7 +9649,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
   | Name | Type                                     | Mandatory| Description                                                                                  |
   | ------- | ----------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-  | code    | number                                    | Yes  | Message code (1-16777215) called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
+  | code    | number                                    | Yes  | Message code [1-16777215] called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
   | data    | [MessageParcel](#messageparceldeprecated) | Yes  | **MessageParcel** object holding the data to send.                                             |
   | reply   | [MessageParcel](#messageparceldeprecated) | Yes  | **MessageParcel** object that receives the response.                                                     |
   | options | [MessageOption](#messageoption)           | Yes  | Request sending mode, which can be synchronous (default) or asynchronous.                                                  |
@@ -9689,7 +9709,7 @@ Sends a **MessageSequence** message to the remote process in synchronous or asyn
 
   | Name | Type                                | Mandatory| Description                                                                                  |
   | ------- | ------------------------------------ | ---- | -------------------------------------------------------------------------------------- |
-  | code    | number                               | Yes  | Message code (1-16777215) called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
+  | code    | number                               | Yes  | Message code [1-16777215] called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
   | data    | [MessageSequence](#messagesequence9) | Yes  | **MessageSequence** object holding the data to send.                                           |
   | reply   | [MessageSequence](#messagesequence9) | Yes  | **MessageSequence** object that receives the response.                                                   |
   | options | [MessageOption](#messageoption)      | Yes  | Request sending mode, which can be synchronous (default) or asynchronous.                                                  |
@@ -9743,7 +9763,7 @@ try {
         hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, errCode: ' + result.errCode);
       }
     }).catch((e: Error) => {
-      hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + e);
+      hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + JSON.stringify(e));
     }).finally (() => {
       hilog.info(0x0000, 'testTag', 'sendMessageRequest ends, reclaim parcel');
       data.reclaim();
@@ -9770,7 +9790,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
   | Name | Type                                     | Mandatory| Description                                                                                  |
   | ------- | ----------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-  | code    | number                                    | Yes  | Message code (1-16777215) called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
+  | code    | number                                    | Yes  | Message code [1-16777215] called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
   | data    | [MessageParcel](#messageparceldeprecated) | Yes  | **MessageParcel** object holding the data to send.                                             |
   | reply   | [MessageParcel](#messageparceldeprecated) | Yes  | **MessageParcel** object that receives the response.                                                     |
   | options | [MessageOption](#messageoption)           | Yes  | Request sending mode, which can be synchronous (default) or asynchronous.                                                  |
@@ -9817,7 +9837,7 @@ try {
       hilog.error(0x0000, 'testTag', 'sendRequest failed, errCode: ' + result.errCode);
     }
   }).catch((e: Error) => {
-    hilog.error(0x0000, 'testTag', 'sendRequest failed, error: ' + e);
+    hilog.error(0x0000, 'testTag', 'sendRequest failed, error: ' + JSON.stringify(e));
   }).finally (() => {
     hilog.info(0x0000, 'testTag', 'sendRequest ends, reclaim parcel');
     data.reclaim();
@@ -9840,7 +9860,7 @@ Sends a **MessageSequence** message to the remote process in synchronous or asyn
 
 | Name       | Type                                                 | Mandatory| Description                                                        |
 | ------------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| code          | number                                                | Yes  | Message code (1-16777215) called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
+| code          | number                                                | Yes  | Message code [1-16777215] called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
 | data          | [MessageSequence](#messagesequence9)                  | Yes  | **MessageSequence** object holding the data to send.                 |
 | reply         | [MessageSequence](#messagesequence9)                  | Yes  | **MessageSequence** object that receives the response.                         |
 | options       | [MessageOption](#messageoption)                       | Yes  | Request sending mode, which can be synchronous (default) or asynchronous.                        |
@@ -9870,7 +9890,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
 | Name       | Type                                                        | Mandatory| Description                                                        |
 | ------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| code          | number                                                       | Yes  | Message code (1-16777215) called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
+| code          | number                                                       | Yes  | Message code [1-16777215] called by the request, which is determined by the communication parties. If the method is generated by an IDL tool, the message code is automatically generated by the IDL tool.|
 | data          | [MessageParcel](#messageparceldeprecated)                    | Yes  | **MessageParcel** object holding the data to send.                   |
 | reply         | [MessageParcel](#messageparceldeprecated)                    | Yes  | **MessageParcel** object that receives the response.                           |
 | options       | [MessageOption](#messageoption)                              | Yes  | Request sending mode, which can be synchronous (default) or asynchronous.                        |
@@ -9884,8 +9904,8 @@ Provides a response to **sendMessageRequest()**. The server processes the reques
 
 > **NOTE**
 >
-> - You are advised to overload the **onRemoteMessageRequest** method with the **CallingInfo** parameter to implement synchronous and asynchronous message processing.
-> - If both **onRemoteRequest()** and **onRemoteMessageRequest()** are overloaded, only **onRemoteMessageRequest()** takes effect.
+> You are advised to overload the **onRemoteMessageRequest** method with the **CallingInfo** parameter to implement synchronous and asynchronous message processing.
+> If both **onRemoteRequest()** and **onRemoteMessageRequest()** are overloaded, only **onRemoteMessageRequest()** takes effect.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -9897,7 +9917,7 @@ Provides a response to **sendMessageRequest()**. The server processes the reques
   | data   | [MessageSequence](#messagesequence9) | Yes  | **MessageSequence** object that holds the parameters called by the client.|
   | reply  | [MessageSequence](#messagesequence9) | Yes  | **MessageSequence** object to which the result is written.          |
   | options | [MessageOption](#messageoption)      | Yes  | Whether the operation is synchronous or asynchronous.                 |
-  | callingInfo | [CallingInfo](#callinginfo23)      | Yes  | IPC context.                 |
+  | callingInfo | [CallingInfo](#callinginfo23)      | No  | IPC context.                 |
 
 **Return value**
 
@@ -9917,10 +9937,10 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 
   onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption, callingInfo?: CallingInfo): boolean | Promise<boolean> {
+    option: rpc.MessageOption, callingInfo?: rpc.CallingInfo): boolean | Promise<boolean> {
     if (code === 1) {
       hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
-      let pid = callingInfo.callerPid;
+      let pid = callingInfo?.callerPid;
       return true;
     } else {
       hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
@@ -9942,10 +9962,10 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 
   async onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption, callingInfo?: CallingInfo): Promise<boolean> {
+    option: rpc.MessageOption, callingInfo?: rpc.CallingInfo): Promise<boolean> {
     if (code === 1) {
       hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
-      let pid = callingInfo.callerPid;
+      let pid = callingInfo?.callerPid;
     } else {
       hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
       return false;
@@ -9980,52 +10000,14 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
     // Only onRemoteMessageRequest is executed.
   onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption, callingInfo?: CallingInfo): boolean | Promise<boolean> {
+    option: rpc.MessageOption, callingInfo?: rpc.CallingInfo): boolean | Promise<boolean> {
     if (code === 1) {
       hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
-      let pid = callingInfo.callerPid;
+      let pid = callingInfo?.callerPid;
     } else {
       hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
       return false;
     }
-    return true;
-  }
-}
-```
-
-  **Example**: Overload **onRemoteMessageRequest** and **onRemoteRequest** to process requests asynchronously.
-
-```ts
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-
-  onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
-    if (code === 1) {
-      hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteRequest is called');
-      return true;
-    } else {
-      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
-      return false;
-    }
-  }
-  // Only onRemoteMessageRequest is executed.
-  async onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption, callingInfo?: CallingInfo): Promise<boolean> {
-    if (code === 1) {
-      hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
-      let pid = callingInfo.callerPid;
-    } else {
-      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
-      return false;
-    }
-    await new Promise((resolve: (data: rpc.RequestResult) => void) => {
-      setTimeout(resolve, 100);
-    })
     return true;
   }
 }
@@ -10035,12 +10017,12 @@ class TestRemoteObject extends rpc.RemoteObject {
 
 onRemoteMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption): boolean | Promise\<boolean>
 
+Called to return a response to **sendMessageRequest()**. The server processes the request synchronously or asynchronously and returns the result in this API.
+
 > **NOTE**
 >
 > - You are advised to overload **onRemoteMessageRequest** preferentially, which implements synchronous and asynchronous message processing.
 > - If both **onRemoteRequest()** and **onRemoteMessageRequest()** are overloaded, only **onRemoteMessageRequest()** takes effect.
-
-Called to return a response to **sendMessageRequest()**. The server processes the request synchronously or asynchronously and returns the result in this API.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -10071,7 +10053,7 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 
   onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption): boolean | Promise<boolean> {
+    option: rpc.MessageOption): boolean {
     if (code === 1) {
       hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
       return true;
@@ -10139,43 +10121,6 @@ class TestRemoteObject extends rpc.RemoteObject {
       hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
       return false;
     }
-    return true;
-  }
-}
-```
-
-  **Example**: Overload **onRemoteMessageRequest** and **onRemoteRequest** to process requests asynchronously.
-
-```ts
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-
-  onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
-    if (code === 1) {
-      hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteRequest is called');
-      return true;
-    } else {
-      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
-      return false;
-    }
-  }
-  // Only onRemoteMessageRequest is executed.
-  async onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption): Promise<boolean> {
-    if (code === 1) {
-      hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
-    } else {
-      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
-      return false;
-    }
-    await new Promise((resolve: (data: rpc.RequestResult) => void) => {
-      setTimeout(resolve, 100);
-    })
     return true;
   }
 }
@@ -10615,6 +10560,8 @@ Provides methods related to anonymous shared memory objects, including creating,
 
 The shared memory applies only to cross-process communication within the local device.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 ### Properties
 
 **System capability**: SystemCapability.Communication.IPC.Core
@@ -10742,7 +10689,7 @@ For details about the error codes, see [RPC Error Codes](errorcode-rpc.md).
 
   | ID| Error Message|
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br> 1.The number of parameters is incorrect; <br> 2.The passed parameter is not an Ahmem object; <br> 3.The ashmem instance for obtaining packaging is empty. |
+  | 401      | Parameter error. Possible causes: <br> 1.The number of parameters is incorrect; <br> 2.The passed parameter is not an Ashmem object; <br> 3.The ashmem instance for obtaining packaging is empty. |
 
 **Example**
 

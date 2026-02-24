@@ -9,7 +9,7 @@
 
 开发者可以调用本模块的Native API接口，完成视频编码，即将未压缩的视频数据压缩成视频码流。
 
-<!--RP3--><!--RP3End-->
+具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
 
 当前支持的编码能力请参考[AVCodec支持的格式](avcodec-support-formats.md#视频编码)。
 
@@ -45,8 +45,6 @@
 3. 在接口调用的过程中，两种方式的接口调用方式基本一致，但存在以下差异点：
     - Buffer模式下，开发者通过OH_VideoEncoder_PushInputBuffer接口输入数据；Surface模式下，开发者应在编码器就绪前调用OH_VideoEncoder_GetSurface接口，获取OHNativeWindow用于传递视频数据。
     - Buffer模式下，开发者通过OH_AVBuffer中的attr传入结束flag，编码器读取到尾帧后，停止编码；Surface模式下，需要调用OH_VideoEncoder_NotifyEndOfStream接口通知编码器输入流结束。
-
-4. Surface模式的数据流转性能优于Buffer模式。
 
 两种模式的开发步骤详细说明请参考：[Surface模式](#surface模式)和[Buffer模式](#buffer模式)。
 
@@ -237,7 +235,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     ```c++
     // 通过MIME TYPE创建编码器，只能创建系统推荐的特定编解码器。
-    // 只能创建硬件编码器。
+    // 系统优先创建硬件编码器实例，若硬件编码不支持或硬件编码器实例已占满，则创建软件编码器实例。
     OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
     ```
 
@@ -387,7 +385,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_MATRIX_COEFFICIENTS, matrix);
     OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_I_FRAME_INTERVAL, iFrameInterval);
     OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_PROFILE, profile);
-    //只有当OH_BitrateMode = BITRATE_MODE_CQ时，才需要配置OH_MD_KEY_QUALITY。
+    // 只有当OH_BitrateMode = BITRATE_MODE_CQ时，才需要配置OH_MD_KEY_QUALITY。
     if (rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_CQ)) {
         OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_QUALITY, quality);
     } else if (rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_SQR)) {
@@ -954,7 +952,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     // Y 将Y区域的源数据复制到另一个区域的目标数据中。
     for (int32_t i = 0; i < rect.height; ++i) {
-        //将源数据的一行数据复制到目标数据的一行中。
+        // 将源数据的一行数据复制到目标数据的一行中。
         memcpy(dstTemp, srcTemp, rect.width);
         // 更新源数据和目标数据的指针，进行下一行的复制。每更新一次源数据和目标数据的指针都向下移动一个wStride。
         dstTemp += dstRect.wStride;

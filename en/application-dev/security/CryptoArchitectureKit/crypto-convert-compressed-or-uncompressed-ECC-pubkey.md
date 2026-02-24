@@ -15,7 +15,7 @@ Currently, only the X.509-certified compressed or uncompressed ECC public key da
 
 ##  Converting Uncompressed Public Key Data to Compressed Public Key Data
 
-1. Encapsulate uncompressed ECC public key data of the Uint8Array type into a **DataBlob** object.
+1. Encapsulate uncompressed ECC public key data of the Uint8Array type into a [DataBlob](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#datablob) object.
 You can pass either the public key or the private key. In the following example, an uncompressed public key is passed.
 2. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) with the string parameter **'ECC_BrainPoolP256r1'** to create an asymmetric key generator (**AsyKeyGenerator**) object for a 256-bit ECC key pair.
 3. Call [AsyKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-3) to convert the **DataBlob** object into an asymmetric key (**KeyPair**) object.

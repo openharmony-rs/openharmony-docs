@@ -14,6 +14,8 @@
 >
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 该组件仅可在Stage模型下使用。
+>
 > - 如果SubHeader设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SubHeader本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SubHeader设置通用属性和通用事件。
 
 
@@ -439,7 +441,7 @@ struct SubHeaderExample {
       })
       Divider().color('grey').width('100%').height('2vp')
       SubHeader({
-        //左侧select 右侧是icon_(依次获焦)
+        // 左侧select 右侧是icon_(依次获焦)
         select: {
           options: [{ value: 'aaa' }, { value: 'bbb' }, { value: 'ccc' }],
           value: 'selectDemo',
@@ -471,7 +473,9 @@ struct SubHeaderExample {
 ![figures/zh-cn_image_subheader_example08](figures/zh-cn_image_subheader_example08.png)
 
 ### 示例9（右侧按钮设置默认获焦）
-从API version 18开始，该示例通过设置SubHeader的右侧按钮属性defaultFocus使其默认获焦。
+在获焦状态下，该示例通过设置SubHeader的右侧按钮属性defaultFocus使其默认获焦。
+
+从API version 18开始，在[OperationOption](#operationoption)中新增defaultFocus接口。
 ```ts
 import { Prompt, OperationType, SubHeader } from '@kit.ArkUI';
 

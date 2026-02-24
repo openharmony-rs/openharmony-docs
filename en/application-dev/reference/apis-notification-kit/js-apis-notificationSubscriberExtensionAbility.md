@@ -16,7 +16,6 @@ NotificationSubscriberExtensionAbility is the base class for notification subscr
 ## Modules to Import
 
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
 ```
 
@@ -41,12 +40,11 @@ Called when the notification subscription extension is destroyed.
 **Example**:
 
 ```ts
-const DOMAIN = 0x0000;
 const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
   onDestroy(): void {
-    hilog.info(DOMAIN, 'testTag', `${TAG} onDestroy`);
+    console.info(`${TAG} onDestroy`);
   }
 }
 ```
@@ -68,12 +66,11 @@ Called when a notification is received.
 **Example**:
 
 ```ts
-const DOMAIN = 0x0000;
 const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
   onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
-    hilog.info(DOMAIN, 'testTag', `${TAG} onReceiveMessage. notificationInfo: ${JSON.stringify(notificationInfo)}`);
+    console.info(`${TAG} onReceiveMessage. notificationInfo: ${JSON.stringify(notificationInfo)}`);
   }
 }
 ```
@@ -95,12 +92,11 @@ Called when notifications are canceled.
 **Example**:
 
 ```ts
-const DOMAIN = 0x0000;
 const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
     onCancelMessages(hashCodes: Array<string>): void {
-        hilog.info(DOMAIN, 'testTag', `${TAG} onCancelMessages. hashCodes: ${JSON.stringify(hashCodes)}`);
+        console.info(`${TAG} onCancelMessages. hashCodes: ${JSON.stringify(hashCodes)}`);
     }
 }
 ```

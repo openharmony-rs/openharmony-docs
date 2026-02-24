@@ -21,6 +21,10 @@ Unspecified error.
 
 This error code is reported if an unspecified error occurs.
 
+**Possible Cause**
+
+An unknown SSL error occurs.
+
 **Solution**
 
 Check the input parameters, captured exceptions, and debug and log information.

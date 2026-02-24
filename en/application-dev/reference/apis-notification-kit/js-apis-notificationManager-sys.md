@@ -1061,7 +1061,7 @@ Sets the slot flags for a specified application. This API uses a promise to retu
 | Name  | Type        | Mandatory| Description      |
 | ------ | ------------ | ---- | ---------- |
 | bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
-| slotFlags   | number | Yes  | Notification slot flags.<br>- Bit 0: sound alert. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 1: locking the screen. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 2: banner. The value **0** means to disable the feature, and **1** means the opposite.<br>- BIt 3: turning on the screen. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 4: vibration. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 5: notification icon in the status bar. The value **0** means to disable the feature, and **1** means the opposite.|
+| slotFlags   | number | Yes  | Notification slot flags.<br>- Bit 0: sound alert. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 1: locking the screen. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 2: banner. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 3: turning on the screen. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 4: vibration. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 5: notification icon in the status bar. The value **0** means to disable the feature, and **1** means the opposite.|
 
 **Return value**
 
@@ -1250,7 +1250,7 @@ Obtains the notification slot flag of a specified application. This API uses a p
 
 | Type                                                       | Description                                                        |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-|  Promise\<number\>| Promise used to return the notification slot flag.<br>- Bit 0: sound alert. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 1: locking the screen. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 2: banner. The value **0** means to disable the feature, and **1** means the opposite.<br>- BIt 3: turning on the screen. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 4: vibration. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 5: notification icon in the status bar. The value **0** means to disable the feature, and **1** means the opposite.|
+|  Promise\<number\>| Promise used to return the notification slot flag.<br>- Bit 0: sound alert. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 1: locking the screen. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 2: banner. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 3: turning on the screen. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 4: vibration. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 5: notification icon in the status bar. The value **0** means to disable the feature, and **1** means the opposite.|
 
 **Error codes**
 
@@ -4620,12 +4620,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let userId : number = 100;
 let trustlist: Array<notificationManager.BundleOption> = [
   {
-    // Replace with actual values.
+    // Replace it as required.
     bundle: 'bundleName',
     uid: 0
   },
   {
-    // Replace with actual values.
+    // Replace it as required.
     bundle: 'bundleName1',
     uid: 1
   }
@@ -5860,7 +5860,7 @@ Checks whether the priority notification is enabled.
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<boolean\> | Promise used to return the result.|
+| Promise\<boolean\> | Promise used to return the result.<br>- **true**: The priority notification is enabled.<br>- **false**: The priority notification is disabled.|
 
 **Error codes**
 
@@ -5882,7 +5882,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 notificationManager.isPriorityEnabled().then((result : boolean) => {
     hilog.info(0x0000, 'testTag', `isPriorityEnabled result is ${result}`);
 }).catch((err: BusinessError) => {
-    hilog.info(0x0000, 'testTag', `isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+    hilog.error(0x0000, 'testTag', `isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -5931,7 +5931,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 notificationManager.setPriorityEnabled(false).then(() => {
     hilog.info(0x0000, 'testTag', `setPriorityEnabled success`);
 }).catch((err: BusinessError) => {
-    hilog.info(0x0000, 'testTag', `setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+    hilog.error(0x0000, 'testTag', `setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -5982,7 +5982,7 @@ const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', 
 notificationManager.isPriorityEnabledByBundle(bundleOption).then((result : notificationManager.PriorityEnableStatus) => {
   hilog.info(0x0000, 'testTag', `isPriorityEnabledByBundle result is ${result}`);
 }).catch((err: BusinessError) => {
-  hilog.info(0x0000, 'testTag', `isPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+  hilog.error(0x0000, 'testTag', `isPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -6031,10 +6031,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
-notificationManager.setPriorityEnabledByBundle(bundleOption, 2 as notificationManager.PriorityEnableStatus).then(() => {
+notificationManager.setPriorityEnabledByBundle(bundleOption, notificationManager.PriorityEnableStatus.ENABLE).then(() => {
   hilog.info(0x0000, 'testTag', `setPriorityEnabledByBundle success`);
 }).catch((err: BusinessError) => {
-  hilog.info(0x0000, 'testTag', `setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+  hilog.error(0x0000, 'testTag', `setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -6085,7 +6085,7 @@ const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', 
 notificationManager.getBundlePriorityConfig(bundleOption).then((value: string) => {
   hilog.info(0x0000, 'testTag', `getBundlePriorityConfig value is ${value}`);
 }).catch((err: BusinessError) => {
-  hilog.info(0x0000, 'testTag', `getBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+  hilog.error(0x0000, 'testTag', `getBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -6137,7 +6137,7 @@ const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', 
 notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').then(() => {
   hilog.info(0x0000, 'testTag', `setBundlePriorityConfig success`);
 }).catch((err: BusinessError) => {
-  hilog.info(0x0000, 'testTag', `setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+  hilog.error(0x0000, 'testTag', `setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -6174,15 +6174,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 try{
     notificationManager.onBadgeNumberQuery(
         async (bundleOption: notificationManager.BundleOption) => {
             return 1;
         }
     );
-} catch(err) {
+} catch (err) {
     console.error(`OnBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
@@ -6214,11 +6212,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 try{
     notificationManager.offBadgeNumberQuery();
-} catch(err) {
+} catch (err) {
     console.error(`OffBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
@@ -6559,3 +6555,83 @@ System notification button.
 | Type| Description|
 | --- | --- |
 | [_NotificationIconButton](js-apis-inner-notification-notificationContent-sys.md#notificationiconbutton18) | System notification button.|
+
+## TriggerType <sup>23+</sup>
+
+type TriggerType = _TriggerType
+
+Enumerates the trigger types.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+| Type| Description|
+| --- | --- |
+| [_TriggerType](js-apis-inner-notification-notificationRequest-sys.md#triggertype23) | Condition trigger type.|
+
+## Trigger <sup>23+</sup>
+
+type Trigger = _Trigger
+
+Defines the details for triggering a geofence.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+| Type| Description|
+| --- | --- |
+| [_Trigger](js-apis-inner-notification-notificationRequest-sys.md#trigger23) | Trigger condition.|
+
+## Geofence <sup>23+</sup>
+
+type Geofence = _Geofence
+
+Defines the configuration of a geofence.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+| Type| Description|
+| --- | --- |
+| [_Geofence](js-apis-inner-notification-notificationRequest-sys.md#geofence23) | Geofence configuration information.|
+
+## CoordinateSystemType <sup>23+</sup>
+
+type CoordinateSystemType = _CoordinateSystemType
+
+Enumerates the coordinate systems of a geofence.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+| Type| Description|
+| --- | --- |
+| [_CoordinateSystemType](js-apis-inner-notification-notificationRequest-sys.md#coordinatesystemtype23) | Type of the geofence coordinate system.|
+
+## MonitorEvent <sup>23+</sup>
+
+type MonitorEvent = _MonitorEvent
+
+Enumerates the event types of monitoring a geofence.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+| Type| Description|
+| --- | --- |
+| [_MonitorEvent](js-apis-inner-notification-notificationRequest-sys.md#monitorevent23) | Event type of monitoring a geofence.|

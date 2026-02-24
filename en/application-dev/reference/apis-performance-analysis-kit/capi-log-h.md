@@ -5,7 +5,7 @@
 <!--Owner: @liuyifeifei; @buzhenwang-->
 <!--Designer: @shenchenkai-->
 <!--Tester: @liyang2235-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
@@ -35,11 +35,13 @@ Defines the logging functions of the HiLog module. Before outputting logs, you m
 
 | Name| Description|
 | -- | -- |
-| OH_LOG_DEBUG(type, ...) ((void)OH_LOG_Print((type), LOG_DEBUG, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | Indicates DEBUG logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br>**Since**: 8|
-| OH_LOG_INFO(type, ...) ((void)OH_LOG_Print((type), LOG_INFO, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | Indicates INFO logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br>**Since**: 8|
-| OH_LOG_WARN(type, ...) ((void)OH_LOG_Print((type), LOG_WARN, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | Indicates WARN logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br>**Since**: 8|
-| OH_LOG_ERROR(type, ...) ((void)OH_LOG_Print((type), LOG_ERROR, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | Indicates ERROR logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br>**Since**: 8|
-| OH_LOG_FATAL(type, ...) ((void)OH_LOG_Print((type), LOG_FATAL, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | Indicates FATAL logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br><br>**Since**: 8|
+| OH_LOG_DEBUG(type, ...) ((void)OH_LOG_Print((type), LOG_DEBUG, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | Indicates DEBUG logs. This is a function-like macro. Before using this macro, define **LOG_DOMAIN** and **LOG_TAG** at the beginning of the source file.<br>**Since**: 8|
+| OH_LOG_INFO(type, ...) ((void)OH_LOG_Print((type), LOG_INFO, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | Indicates INFO logs. This is a function-like macro. Before using this macro, define **LOG_DOMAIN** and **LOG_TAG** at the beginning of the source file.<br>**Since**: 8|
+| OH_LOG_WARN(type, ...) ((void)OH_LOG_Print((type), LOG_WARN, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | Indicates WARN logs. This is a function-like macro. Before using this macro, define **LOG_DOMAIN** and **LOG_TAG** at the beginning of the source file.<br>**Since**: 8|
+| OH_LOG_ERROR(type, ...) ((void)OH_LOG_Print((type), LOG_ERROR, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | Indicates ERROR logs. This is a function-like macro. Before using this macro, define **LOG_DOMAIN** and **LOG_TAG** at the beginning of the source file.<br>**Since**: 8|
+| OH_LOG_FATAL(type, ...) ((void)OH_LOG_Print((type), LOG_FATAL, LOG_DOMAIN, LOG_TAG, \_\_VA_ARGS__)) | Indicates FATAL logs. This is a function-like macro. Before using this macro, define **LOG_DOMAIN** and **LOG_TAG** at the beginning of the source file.<br><br>**Since**: 8|
+|LOG_DOMAIN| Specifies the service domain of the output log. The default value is **0**. The value range is 0x0 to 0xFFFF. If the value of **domainID** exceeds the range, the log cannot be printed.<br>**Since**: 8|
+|LOG_TAG | Identifies the class or service behavior where the log is called. The value is a string constant, which is **NULL** by default. The maximum length is 31 bytes. If the length exceeds 31 bytes, the log will be truncated. The value must be a non-null string. Otherwise, the log cannot be printed. Chinese characters are not recommended, because they may cause garbled characters or alignment issues.<br>**Since**: 8|
 
 ### Functions
 
@@ -269,7 +271,7 @@ OH_LOG_DEBUG(type, ...)((void)OH_LOG_Print((type), LOG_DEBUG, LOG_DOMAIN, LOG_TA
 
 **Description**
 
-Indicates DEBUG logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br>
+Indicates DEBUG logs. This is a function-like macro. Before using this macro, define **LOG_DOMAIN** and **LOG_TAG** at the beginning of the source file.<br>
 
 **Since**: 8
 
@@ -294,7 +296,7 @@ OH_LOG_INFO(type, ...)((void)OH_LOG_Print((type), LOG_INFO, LOG_DOMAIN, LOG_TAG,
 
 **Description**
 
-Indicates INFO logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br>
+Indicates INFO logs. This is a function-like macro. Before using this macro, define **LOG_DOMAIN** and **LOG_TAG** at the beginning of the source file.<br>
 
 **Since**: 8
 
@@ -319,7 +321,7 @@ OH_LOG_WARN(type, ...)((void)OH_LOG_Print((type), LOG_WARN, LOG_DOMAIN, LOG_TAG,
 
 **Description**
 
-Indicates WARN logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.
+Indicates WARN logs. This is a function-like macro. Before using this macro, define **LOG_DOMAIN** and **LOG_TAG** at the beginning of the source file.
 
 **Since**: 8
 
@@ -344,7 +346,7 @@ OH_LOG_ERROR(type, ...)((void)OH_LOG_Print((type), LOG_ERROR, LOG_DOMAIN, LOG_TA
 
 **Description**
 
-Indicates ERROR logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.
+Indicates ERROR logs. This is a function-like macro. Before using this macro, define **LOG_DOMAIN** and **LOG_TAG** at the beginning of the source file.
 
 **Since**: 8
 
@@ -369,7 +371,7 @@ OH_LOG_FATAL(type, ...)((void)OH_LOG_Print((type), LOG_FATAL, LOG_DOMAIN, LOG_TA
 
 **Description**
 
-Indicates FATAL logs. This is a function-like macro. Before calling this function, define the log service domain and log tag. Generally, you need to define them at the beginning of the source file.<br>
+Indicates FATAL logs. This is a function-like macro. Before using this macro, define **LOG_DOMAIN** and **LOG_TAG** at the beginning of the source file.<br>
 
 **Since**: 8
 

@@ -151,4 +151,4 @@ getErrorDescription(): string \| null
 
 | 类型           | 说明                                                      |
 | --------------| --------------------------------------------------------- |
-| string \| null | 若发生异常或返回类型不支持时，将其序列化为字符串类型并返回；否则，返回null。 |
+| string \| null | 若JavaScript脚本执行过程中发生异常，或返回值为object类型，系统会将其格式化为"Not support type: <{exception\|object}>"字符串返回，该字符串长度不超过2048个字符，超长部分将被截断；若object对象中包含callback类型的成员，则序列化时将自动忽略该成员；其余情况，接口均返回null。 |

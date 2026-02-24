@@ -173,7 +173,7 @@ Swipe gestures hide the soft keyboard. The figure below demonstrates this dismis
 
 Navigating away from the text input pages hides the keyboard.
 
-For details about the page navigation syntax, see [Component Navigation (Navigation) (Recommended)](./arkts-navigation-navigation.md).
+For details about the page navigation syntax, see [Page Routing](./arkts-navigation-jump.md).
 
 Source page:
 

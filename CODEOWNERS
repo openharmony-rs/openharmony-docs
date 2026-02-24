@@ -57,7 +57,7 @@ zh-cn/application-dev/quick-start/app-structure.md @Brilliantry_Rui  @hanfeng6  
 zh-cn/application-dev/quick-start/module-structure.md @Brilliantry_Rui  @hanfeng6  @kongjing2  @jiangminsen
 
 [入门-资源分类与访问]
-zh-cn/application-dev/quick-start/resource-categories-and-access.md @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/quick-start/resource-categories-and-access.md @ningningW @liule_123 @lpw_work @buda_wy
 
 [入门-学习Arkts语言]
 zh-cn/application-dev/quick-start/arkts-get-started.md @zhang_yixin13 @qyhuo32
@@ -266,8 +266,10 @@ zh-cn/application-dev/ui/arkts-advanced-components-arcbutton.md	@liyi0309	@lxl00
 zh-cn/application-dev/ui/arkts-animation-smoothing.md	@CCFFWW	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-animation.md	@CCFFWW	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-animator.md	@CCFFWW	@lxl007	@Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-arkui-frameNode-faq.md @sunbees	@liuli0427	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-attribute-animation-apis.md	@CCFFWW	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-attribute-animation-overview.md	@CCFFWW	@lxl007	@Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-attribute-modifier-faq.md @sunbees	@liuli0427	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-base-dialog-overview.md	@houguobiao	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-blur-effect.md	@CCFFWW	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-clip-shape.md	@CCFFWW	@lxl007	@Brilliantry_Rui
@@ -502,7 +504,7 @@ zh-cn/application-dev/web/web-set-back-forward-cache.md @aohui @glzt2l @HelloShu
 zh-cn/application-dev/web/app-takeovers-web-media.md @qiu-gongkai @glzt2l @HelloShuo @d0ub1eh
 zh-cn/application-dev/web/web-clipboard.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 zh-cn/application-dev/web/web-component-migrate.md @libing23232323 @glzt2l @HelloShuo @zhu-sheng-le
-zh-cn/application-dev/web/web-component-overview.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/web/web-component-overview.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/web/web-content-scrolling.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 zh-cn/application-dev/web/web-crashpad.md @hjoksky @glzt2l @HelloShuo @StringChen
 zh-cn/application-dev/web/web-createpdf.md @handyohos @glzt2l @HelloShuo @zhang-yinglie
@@ -642,7 +644,7 @@ zh-cn/application-dev/device/driver/Readme-CN.md  @w00373942 @dong-dongzhen @hu-
 
 
 [开发-Form Kit]
-zh-cn/application-dev/form/  @HelloShuo @cx983299475 @zhaoshaohua_eiln @tang_xian9109  @yangyuecheng
+zh-cn/application-dev/form/  @HelloShuo @cx983299475 @zhaoshaohua_eiln @tang_xian9109
 
 
 [开发-mechanicManager]
@@ -667,68 +669,68 @@ zh-cn/application-dev/ffrt/Readme-CN.md @chuchihtung @yanleo @geoffrey_guo @huan
 
 
 [开发-DFX]
-zh-cn/application-dev/dfx/address-sanitizer-guidelines.md @mlkgeek @StevenLai1994 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/appfreeze-guidelines.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/appkilled-guidelines.md @xuxinao @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/apprecovery-guidelines.md  @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/apptask-timeout-guidelines.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/cppcrash-guidelines.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/errormanager-guidelines.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/event-subscription-overview.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/fault-detection-overview.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/fault-log-extension-app-events-arkts.md @chenshi51 @Maplestory91 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hdc.md @kunsilva @weimingjin @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-event-reporting.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-faq.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-intro.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-address-sanitizer-events-arkts.md @mlkgeek @StevenLai1994 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-address-sanitizer-events-ndk.md @mlkgeek @StevenLai1994 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-address-sanitizer-events.md @mlkgeek @StevenLai1994 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-app-events-arkts.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-app-events-ndk.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-app-killed-events-arkts.md @xuxinao @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-app-killed-events-ndk.md @xuxinao @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-app-killed-events.md @xuxinao @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-apphicollie-events-arkts.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-apphicollie-events-ndk.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-apphicollie-events.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-crash-events-arkts.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-crash-events-ndk.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-crash-events.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-freeze-events-arkts.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-freeze-events-ndk.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-freeze-events.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-mainthreadjank-events-arkts.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-mainthreadjank-events-ndk.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-mainthreadjank-events.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-resourceleak-events-arkts.md @xuxinao @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-resourceleak-events-ndk.md @xuxinao @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiappevent-watcher-resourceleak-events.md @xuxinao @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hichecker-guidelines-arkts.md @lu-tao @martin-duan @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hicollie-guidelines-ndk.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hicollie-settimer-guidelines-ndk.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hidebug-guidelines-arkts.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hidebug-guidelines-ndk.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hidebug-guidelines.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hidumper.md @m0_55013956 @milkbread123 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hilog-guidelines-arkts.md @liuyifeifei@buzhenwang @shenchenkai @liyang2235 @foryourself
-zh-cn/application-dev/dfx/hilog-guidelines-ndk.md @liuyifeifei@buzhenwang @shenchenkai @liyang2235 @foryourself
-zh-cn/application-dev/dfx/hilog.md @liuyifeifei@buzhenwang @shenchenkai @liyang2235 @foryourself
-zh-cn/application-dev/dfx/hiperf.md @leiguangyu @Maplestroy @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hiprofiler.md @zyxzyx @Maplestroy @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hisysevent-sys.md @lyj_love_code @tangyyan @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hitrace.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hitracechain-guidelines-arkts.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hitracechain-guidelines-ndk.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hitracechain-intro.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hitracemeter-guidelines-arkts.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hitracemeter-guidelines-ndk.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hitracemeter-intro.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/hitracemeter-view.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/jscrash-guidelines.md @wanghuan2025 @Maplestory @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/performance-analysis-kit-overview.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/performance-analysis-kit-terminology.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/dfx/Readme-CN.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
+zh-cn/application-dev/dfx/address-sanitizer-guidelines.md @mlkgeek @StevenLai1994 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/appfreeze-guidelines.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/appkilled-guidelines.md @xuxinao @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/apprecovery-guidelines.md  @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/apptask-timeout-guidelines.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/cppcrash-guidelines.md @chenshi51 @Maplestory @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/errormanager-guidelines.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/event-subscription-overview.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/fault-detection-overview.md @mzyan @liyueric @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/fault-log-extension-app-events-arkts.md @chenshi51 @Maplestory91 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hdc.md @kunsilva @weimingjin @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-event-reporting.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-faq.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-intro.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-address-sanitizer-events-arkts.md @mlkgeek @StevenLai1994 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-address-sanitizer-events-ndk.md @mlkgeek @StevenLai1994 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-address-sanitizer-events.md @mlkgeek @StevenLai1994 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-app-events-arkts.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-app-events-ndk.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-app-killed-events-arkts.md @xuxinao @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-app-killed-events-ndk.md @xuxinao @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-app-killed-events.md @xuxinao @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-apphicollie-events-arkts.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-apphicollie-events-ndk.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-apphicollie-events.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-crash-events-arkts.md @chenshi51 @Maplestory @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-crash-events-ndk.md @chenshi51 @Maplestory @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-crash-events.md @chenshi51 @Maplestory @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-freeze-events-arkts.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-freeze-events-ndk.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-freeze-events.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-mainthreadjank-events-arkts.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-mainthreadjank-events-ndk.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-mainthreadjank-events.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-resourceleak-events-arkts.md @xuxinao @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-resourceleak-events-ndk.md @xuxinao @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiappevent-watcher-resourceleak-events.md @xuxinao @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hichecker-guidelines-arkts.md @lu_tao @martin_duan @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hicollie-guidelines-ndk.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hicollie-settimer-guidelines-ndk.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hidebug-guidelines-arkts.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hidebug-guidelines-ndk.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hidebug-guidelines.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hidumper.md @m0_55013956 @milkbread123 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hilog-guidelines-arkts.md @liuyifeifei@buzhenwang @shenchenkai @liyang2235 @jinqiuheng
+zh-cn/application-dev/dfx/hilog-guidelines-ndk.md @liuyifeifei@buzhenwang @shenchenkai @liyang2235 @jinqiuheng
+zh-cn/application-dev/dfx/hilog.md @liuyifeifei@buzhenwang @shenchenkai @liyang2235 @jinqiuheng
+zh-cn/application-dev/dfx/hiperf.md @leiguangyu @Maplestroy @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hiprofiler.md @zyxzyx @Maplestroy @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hisysevent-sys.md @lyj_love_code @tangyyan @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hitrace.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hitracechain-guidelines-arkts.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hitracechain-guidelines-ndk.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hitracechain-intro.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hitracemeter-guidelines-arkts.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hitracemeter-guidelines-ndk.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hitracemeter-intro.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hitracemeter-view.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/jscrash-guidelines.md @wanghuan2025 @Maplestory @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/performance-analysis-kit-overview.md @mzyan @liyueric @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/performance-analysis-kit-terminology.md @mzyan @liyueric @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/Readme-CN.md @mzyan @liyueric @gcw_KuLfPSbe @jinqiuheng
 
 [开发-IDL]
 zh-cn/application-dev/IDL/ @huipeizi @liveery @alien0208
@@ -745,8 +747,8 @@ zh-cn/application-dev/inputmethod/inputmethod_application_guide.md  @murphy84  @
 zh-cn/application-dev/inputmethod/switch_inputmehod_guide.md  @murphy84  @zhang_yixin13  
 
 [开发-Input kit]
-zh-cn/application-dev/device/input  @zhang_yixin13  @hanruofei @Lyuxin
-zh-cn/application-dev/dfx/uinput.md @zhaoxueyuan @hanruofei @Lyuxin @zhang_yixin13
+zh-cn/application-dev/device/input  @zhang_yixin13  @hanyi1150 @Lyuxin
+zh-cn/application-dev/dfx/uinput.md @zhaoxueyuan @hanyi1150 @Lyuxin @zhang_yixin13
 
 [开发-IPC Kit]
 zh-cn/application-dev/connectivity/ipc-rpc-overview.md @zhang_yixin13 @xdx1921  @zhaopeng_gitee @Lyuxin
@@ -800,7 +802,7 @@ zh-cn/application-dev/napi/neural-network-runtime-guidelines.md @ge-yafang @prin
 
 [开发-NDK]
 zh-cn/application-dev/napi/  @fang-jinxu
-zh-cn/application-dev/napi/rawfile-guidelines.md @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/napi/rawfile-guidelines.md @ningningW @liule_123 @lpw_work @buda_wy
 zh-cn/application-dev/napi/usb-ddk-guidelines.md @Kevin-Lau @liuhonggang123
 
 
@@ -934,10 +936,10 @@ zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiExt
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md @huipeizi @xhz-sz @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-viewData-sys.md @huipeizi @ccllee1 @lixueqing513
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-uripermissionmanager-sys.md @huipeizi @ccllee1 @lixueqing513
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-appRecovery.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-errorManager.md  @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-errorObserver.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-loopObserver.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-appRecovery.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-errorManager.md  @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-errorObserver.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-loopObserver.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
 
 
 
@@ -1195,6 +1197,14 @@ zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-vector2
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-vector2propertyhandle.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-visibleareaeventoptions.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-waterflowsectionoption.md	@zcdqs  @rongShao-Z @huchuyun		 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-shadowoptions.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-pixelmapnative8h.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule.md	@xiang-shouxing	@fredyuan0912	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-drag-and-drop-h.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
@@ -1253,7 +1263,7 @@ zh-cn/application-dev/reference/apis-arkui/errorcode-xcomponent.md	@dutie123	@fr
 zh-cn/application-dev/reference/apis-arkui/js-apis-animator.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-AttributeUpdater.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-builderNode.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-ComponentContent.md	@liyi0309	@lxl007	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-ComponentContent.md	@ZhangYu-Home	@khq	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-componentSnapshot.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-componentUtils.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-Content.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
@@ -1784,47 +1794,47 @@ zh-cn/application-dev/reference/apis-arkui/errorcode-display.md @ge-yafang @acha
 
 
 [API参考-ArkWeb]
-zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-e.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-e.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-f.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md @handyohos @glzt2l @HelloShuo @zhang-yinglie
-zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-i.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-i.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-MediaSourceInfo.md @qiu-gongkai @glzt2l @HelloShuo @d0ub1eh
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerBridge.md @qiu-gongkai @glzt2l @HelloShuo @d0ub1eh
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerHandler.md @qiu-gongkai @glzt2l @HelloShuo @d0ub1eh
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerSurfaceInfo.md @qiu-gongkai @glzt2l @HelloShuo @d0ub1eh
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-PdfData.md @qiu-gongkai @glzt2l @HelloShuo @d0ub1eh
-zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-t.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-t.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-WebDataBase.md @handyohos @glzt2l @HelloShuo @yjone
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-WebStorage.md @handyohos @glzt2l @HelloShuo @yjone
-zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-WebviewController.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
-zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
-zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-attributes.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-WebviewController.md @kurli1 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview.md @kurli1 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-attributes.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-ControllerHandler.md @libing23232323 @glzt2l @HelloShuo @zhu-sheng-le
-zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-e.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-e.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-EventResult.md @LongLie @glzt2l @HelloShuo @yp99ustc
-zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-events.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-events.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-FileSelectorResult.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-FullScreenExitHandler.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
-zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-i.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-i.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-JsGeolocation.md @handyohos @glzt2l @HelloShuo @zhang-yinglie
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-JsResult.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-PermissionRequest.md @qiu-gongkai @glzt2l @HelloShuo @d0ub1eh
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-ScreenCaptureHandler.md @qiu-gongkai @glzt2l @HelloShuo @d0ub1eh
-zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-t.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-t.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-WebContextMenuParam.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
-zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-WebController.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-WebController.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-WebKeyboardController.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
-zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
-zh-cn/application-dev/reference/apis-arkweb/capi-arkweb-interface-h.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
-zh-cn/application-dev/reference/apis-arkweb/capi-arkweb-type-h.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
-zh-cn/application-dev/reference/apis-arkweb/capi-native-interface-arkweb-h.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web.md @kurli1 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/capi-arkweb-interface-h.md @kurli1 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/capi-arkweb-type-h.md @kurli1 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/capi-native-interface-arkweb-h.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/capi-web-arkweb-anynativeapi.md @libing23232323 @glzt2l @HelloShuo @zhu-sheng-le
-zh-cn/application-dev/reference/apis-arkweb/capi-web-arkweb-componentapi.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
-zh-cn/application-dev/reference/apis-arkweb/capi-web-arkweb-controllerapi.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
-zh-cn/application-dev/reference/apis-arkweb/capi-web.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
-zh-cn/application-dev/reference/apis-arkweb/errorcode-webview.md @ctqctq99 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/capi-web-arkweb-componentapi.md @kurli1 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/capi-web-arkweb-controllerapi.md @kurli1 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/capi-web.md @kurli1 @glzt2l @HelloShuo @yp99ustc
+zh-cn/application-dev/reference/apis-arkweb/errorcode-webview.md @kurli1 @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-netErrorList.md @aohui @glzt2l @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md @libing23232323 @glzt2l @HelloShuo @zhu-sheng-le
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md @libing23232323 @glzt2l @HelloShuo @zhu-sheng-le
@@ -2113,64 +2123,64 @@ zh-cn/application-dev/reference/apis-ffrt-kit/capi-type-def-h.md @chuchihtung @y
 zh-cn/application-dev/reference/apis-ffrt-kit/Readme-CN.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @lotsof @sunxuhao @jinqiuheng
 
 [API参考-DFX]
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-cfg-h.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-event-h.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-h.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-hiappevent-appeventgroup.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-hiappevent-appeventinfo.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-hiappevent-config.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-hiappevent-processor.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-hiappevent-watcher.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-param-h.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-paramlistnode8h.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hicollie-h.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hicollie-hicollie-detectionparam.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hicollie-hicollie-settimerparam.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hicollie.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-h.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-backtrace-object--8h.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-jsstackframe.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-mallocdispatch.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-memorylimit.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-nativememinfo.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-nativestackframe.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-stackframe.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-systemmeminfo.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-threadcpuusage.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-type-h.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hilog.md @liuyifeifei@buzhenwang @shenchenkai @liyang2235 @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hitrace-hitraceid.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hitrace.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-log-h.md @liuyifeifei @buzhenwang @shenchenkai @liyang2235 @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-trace-h.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-graphicsmemorysummary.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-processsamplerconfig.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-faultlogger.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiappevent.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hisysevent-sys.md @lyj_love_code @tangyyan @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hicollie.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug-cpuusage.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-jsleakwatcher.md @lu-tao @martin-duan @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-loglibrary-sys.md @BruceZong @gcw_qzKyUhyU @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug-trace.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-bytrace.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-faultLogger.md @chenshi51 @Maplestory @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiappevent.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hichecker.md @lu-tao @martin-duan @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hidebug.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hilog.md @liuyifeifei@buzhenwang @shenchenkai @liyang2235 @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hisysevent-sys.md @lyj_love_code @tangyyan @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hitracechain.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hitracemeter.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md @lu-tao @martin-duan @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-loglibrary-sys.md @BruceZong @gcw_qzKyUhyU @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md @hello_harmony @StevenLai1994 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionContext.md @hello_harmony @StevenLai1994 @gcw_KuLfPSbe @foryourself
-zh-cn/application-dev/reference/apis-performance-analysis-kit/Readme-CN.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-cfg-h.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-event-h.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-h.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-hiappevent-appeventgroup.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-hiappevent-appeventinfo.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-hiappevent-config.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-hiappevent-processor.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-hiappevent-watcher.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-param-h.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent-paramlistnode8h.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hiappevent.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hicollie-h.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hicollie-hicollie-detectionparam.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hicollie-hicollie-settimerparam.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hicollie.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-h.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-backtrace-object--8h.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-jsstackframe.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-mallocdispatch.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-memorylimit.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-nativememinfo.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-nativestackframe.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-stackframe.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-systemmeminfo.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-threadcpuusage.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-type-h.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hilog.md @liuyifeifei@buzhenwang @shenchenkai @liyang2235 @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hitrace-hitraceid.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hitrace.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-log-h.md @liuyifeifei @buzhenwang @shenchenkai @liyang2235 @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-trace-h.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-graphicsmemorysummary.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-processsamplerconfig.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-faultlogger.md @chenshi51 @Maplestory @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiappevent.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hisysevent-sys.md @lyj_love_code @tangyyan @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hicollie.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug-cpuusage.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-jsleakwatcher.md @lu_tao @martin_duan @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-loglibrary-sys.md @BruceZong @gcw_qzKyUhyU @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug-trace.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-bytrace.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-faultLogger.md @chenshi51 @Maplestory @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiappevent.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hichecker.md @lu_tao @martin_duan @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hidebug.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hilog.md @liuyifeifei@buzhenwang @shenchenkai @liyang2235 @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hisysevent-sys.md @lyj_love_code @tangyyan @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hitracechain.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hitracemeter.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md @lu_tao @martin_duan @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-loglibrary-sys.md @BruceZong @gcw_qzKyUhyU @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md @hello_harmony @StevenLai1994 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionContext.md @hello_harmony @StevenLai1994 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/Readme-CN.md @mzyan @liyueric @gcw_KuLfPSbe @jinqiuheng
 
 
 [API参考-Distributed Service Kit]
@@ -2257,7 +2267,7 @@ zh-cn/application-dev/reference/apis-driverdevelopment-kit/errorcode-deviceManag
 
 
 [API参考-Form Kit]
-zh-cn/application-dev/reference/apis-form-kit/  @cx983299475  @HelloShuo  @tang_xian9109  @yangyuecheng
+zh-cn/application-dev/reference/apis-form-kit/  @cx983299475  @HelloShuo  @tang_xian9109 @zhaoshaohua_eiln
 
 
 
@@ -2266,7 +2276,7 @@ zh-cn/application-dev/reference/apis-ime-kit/ @murphy84 @zhang_yixin13
 
 
 [API参考-Input Kit]
-zh-cn/application-dev/reference/apis-input-kit/ @zhang_yixin13   @hanruofei @Lyuxin
+zh-cn/application-dev/reference/apis-input-kit/ @zhang_yixin13   @hanyi1150 @Lyuxin
 
 
 [API参考-IPC Kit]
@@ -2287,28 +2297,28 @@ zh-cn/application-dev/reference/apis-localization-kit/capi-i18n-annualtimezoneru
 zh-cn/application-dev/reference/apis-localization-kit/capi-i18n-timezonerules.md  @ningningW @yliupy @sunyaozu @lpw_work
 zh-cn/application-dev/reference/apis-localization-kit/capi-i18n-timezonerulequery.md  @ningningW @yliupy @sunyaozu @lpw_work
 
-zh-cn/application-dev/reference/apis-localization-kit/js-apis-resource-manager.md  @ningningW @lliule21 @lpw_work @budda-wang 
-zh-cn/application-dev/reference/apis-localization-kit/js-apis-sendable-resource-manager.md  @ningningW @lliule21 @lpw_work @budda-wang
-zh-cn/application-dev/reference/apis-localization-kit/js-apis-rawFileDescriptor.md @ningningW @lliule21 @lpw_work @budda-wang
-zh-cn/application-dev/reference/apis-localization-kit/js-apis-resource.md  @ningningW @lliule21 @lpw_work @budda-wangk
-zh-cn/application-dev/reference/apis-localization-kit/js-apis-sendableResource.md  @ningningW @lliule21 @lpw_work @budda-wang
-zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile.md   @ningningW @lliule21 @lpw_work @budda-wang 
-zh-cn/application-dev/reference/apis-localization-kit/capi-resourcemanager.md   @ningningW @lliule21 @lpw_work @budda-wang
-zh-cn/application-dev/reference/apis-localization-kit/capi-ohresmgr-h.md @ningningW @lliule21 @lpw_work @budda-wang
-zh-cn/application-dev/reference/apis-localization-kit/capi-raw-dir-h.md  @ningningW @lliule21 @lpw_work @budda-wang
-zh-cn/application-dev/reference/apis-localization-kit/capi-raw-file-h.md  @ningningW @lliule21 @lpw_work @budda-wang
-zh-cn/application-dev/reference/apis-localization-kit/capi-raw-file-manager-h.md @ningningW @lliule21 @lpw_work @budda-wang
-zh-cn/application-dev/reference/apis-localization-kit/capi-resmgr-common-h.md  @ningningW @lliule21 @lpw_work @budda-wang
-zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-rawdir.md   @ningningW @lliule21 @lpw_work @budda-wang
-zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-rawfiledescriptor.md   @ningningW @lliule21 @lpw_work @budda-wang 
-zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-rawfiledescriptor64.md   @ningningW @lliule21 @lpw_work @budda-wang
-zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-rawfile.md   @ningningW @lliule21 @lpw_work @budda-wang
-zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-rawfile64.md   @ningningW @lliule21 @lpw_work @budda-wang
-zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-nativeresourcemanager.md   @ningningW @lliule21 @lpw_work @budda-wang
-zh-cn/application-dev/reference/apis-localization-kit/capi-resourcemanager-resourcemanager-configuration.md   @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/js-apis-resource-manager.md  @ningningW @liule_123 @lpw_work @buda_wy 
+zh-cn/application-dev/reference/apis-localization-kit/js-apis-sendable-resource-manager.md  @ningningW @liule_123 @lpw_work @buda_wy
+zh-cn/application-dev/reference/apis-localization-kit/js-apis-rawFileDescriptor.md @ningningW @liule_123 @lpw_work @buda_wy
+zh-cn/application-dev/reference/apis-localization-kit/js-apis-resource.md  @ningningW @liule_123 @lpw_work @buda_wyk
+zh-cn/application-dev/reference/apis-localization-kit/js-apis-sendableResource.md  @ningningW @liule_123 @lpw_work @buda_wy
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile.md   @ningningW @liule_123 @lpw_work @buda_wy 
+zh-cn/application-dev/reference/apis-localization-kit/capi-resourcemanager.md   @ningningW @liule_123 @lpw_work @buda_wy
+zh-cn/application-dev/reference/apis-localization-kit/capi-ohresmgr-h.md @ningningW @liule_123 @lpw_work @buda_wy
+zh-cn/application-dev/reference/apis-localization-kit/capi-raw-dir-h.md  @ningningW @liule_123 @lpw_work @buda_wy
+zh-cn/application-dev/reference/apis-localization-kit/capi-raw-file-h.md  @ningningW @liule_123 @lpw_work @buda_wy
+zh-cn/application-dev/reference/apis-localization-kit/capi-raw-file-manager-h.md @ningningW @liule_123 @lpw_work @buda_wy
+zh-cn/application-dev/reference/apis-localization-kit/capi-resmgr-common-h.md  @ningningW @liule_123 @lpw_work @buda_wy
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-rawdir.md   @ningningW @liule_123 @lpw_work @buda_wy
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-rawfiledescriptor.md   @ningningW @liule_123 @lpw_work @buda_wy 
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-rawfiledescriptor64.md   @ningningW @liule_123 @lpw_work @buda_wy
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-rawfile.md   @ningningW @liule_123 @lpw_work @buda_wy
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-rawfile64.md   @ningningW @liule_123 @lpw_work @buda_wy
+zh-cn/application-dev/reference/apis-localization-kit/capi-rawfile-nativeresourcemanager.md   @ningningW @liule_123 @lpw_work @buda_wy
+zh-cn/application-dev/reference/apis-localization-kit/capi-resourcemanager-resourcemanager-configuration.md   @ningningW @liule_123 @lpw_work @buda_wy
 
-zh-cn/application-dev/reference/apis-localization-kit/js-apis-font-manager-sys.md  @ningningW @lliule21 @lpw_work @budda-wang
-zh-cn/application-dev/reference/apis-localization-kit/errorcode-font-manager.md @ningningW @lliule21 @lpw_work @budda-wang
+zh-cn/application-dev/reference/apis-localization-kit/js-apis-font-manager-sys.md  @ningningW @liule_123 @lpw_work @buda_wy
+zh-cn/application-dev/reference/apis-localization-kit/errorcode-font-manager.md @ningningW @liule_123 @lpw_work @buda_wy
 
 
 [API参考-Location Kit]
@@ -2443,17 +2453,17 @@ zh-cn/application-dev/tools/unpacking-tool.md @Brilliantry_Rui @jsjzju @lixueqin
 zh-cn/application-dev/tools/app-check-tool.md @Brilliantry_Rui  @hanfeng6  @kongjing2  
 zh-cn/application-dev/tools/cem-tool.md @fang-jinxu @dongqingran @wulong158 @wanghong1997
 zh-cn/application-dev/tools/anm-tool.md @fang-jinxu @dongqingran @wulong158 @wanghong1997
-zh-cn/application-dev/tools/restool.md   @ningningW @lliule21 @lpw_work @budda-wang
-zh-cn/application-dev/tools/rawheap-translator.md @wanghuan2025 @wanghuan2025 @kir175 @zsw_zhushiwei @foryourself
-zh-cn/application-dev/tools/toybox.md @yan-mingzhen @liveery @liuhaonan2 @foryourself
-zh-cn/application-dev/tools/command-line-tools-overview.md @foryourself @lingminghw @RayShih @foryourself
-zh-cn/application-dev/tools/Readme-CN.md @foryourself @lingminghw @RayShih @foryourself
+zh-cn/application-dev/tools/restool.md   @ningningW @liule_123 @lpw_work @buda_wy
+zh-cn/application-dev/tools/rawheap-translator.md @wanghuan2025 @wanghuan2025 @kir175 @zsw_zhushiwei @jinqiuheng
+zh-cn/application-dev/tools/toybox.md @yan-mingzhen @liveery @liuhaonan2 @jinqiuheng
+zh-cn/application-dev/tools/command-line-tools-overview.md @jinqiuheng @lingminghw @RayShih @jinqiuheng
+zh-cn/application-dev/tools/Readme-CN.md @jinqiuheng @lingminghw @RayShih @jinqiuheng
 
 
 [FAQ]
 zh-cn/application-dev/faqs/faqs-ability.md @huipeizi @ccllee1 @lixueqing513
 zh-cn/application-dev/faqs/faqs-bundle-management.md @Brilliantry_Rui  @changzheng6   @kongjing2  @small_bricklayer
 zh-cn/application-dev/faqs/faqs-event-notification.md @fang-jinxu @dongqingran @wulong158 @wanghong1997
-zh-cn/application-dev/faqs/faqs-dfx.md @mzyan @liyueric @gcw_KuLfPSbe @foryourself
+zh-cn/application-dev/faqs/faqs-dfx.md @mzyan @liyueric @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/faqs/faqs-file-management.md @wangke25	@bubble_mao @gzhuangzhuang @gsl_1234	@liuhonggang123	@jinqiuheng
 

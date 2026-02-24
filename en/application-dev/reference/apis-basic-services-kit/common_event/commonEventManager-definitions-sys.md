@@ -13,9 +13,9 @@ Common event types are defined in [Support enumeration of the ohos.commonEventMa
 
 > **NOTE**
 >
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
 > The current page contains only the system APIs of this module. For details about other public APIs, see [System Common Events](../common_event/commonEventManager-definitions.md).
-
-
 
 
 ## Ability Kit
@@ -55,7 +55,7 @@ When a new application starts to be installed by a specified user on the device,
 
 ### COMMON_EVENT_BUNDLE_RESOURCES_CHANGED<sup>15+</sup>
 
-Indicates the common event of updating bundle management resource data.
+Indicates that the bundle management resource data has updated.
 
 This common event is sent when the bundle management resource data is updated in scenarios such as language or theme switching.
 
@@ -287,7 +287,7 @@ After a user is locked, the common event service is triggered to publish this ev
 
 ## Core File Kit
 
-This document lists the common system events provided by the file management subsystem to applications. Applications can use [APIs](../js-apis-commonEventManager.md) to subscribe to common system events.
+This topic lists the common system events provided by the file management subsystem to applications. Applications can use [APIs](../js-apis-commonEventManager.md) to subscribe to common system events.
 
 
 ### COMMON_EVENT_VOLUME_REMOVED
@@ -380,7 +380,7 @@ When a data migration application starts the backup and restore framework to per
 
 **Value**: "usual.event.RESTORE_START"
 
-### COMMON_EVENT_CLOUD_DISK_STATE_CHANGED<sup>21+<sup>
+### COMMON_EVENT_CLOUD_DISK_STATE_CHANGED<sup>21+</sup>
 
 Indicates that the sync root of the cloud disk has been updated.
 

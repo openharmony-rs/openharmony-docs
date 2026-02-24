@@ -35,6 +35,8 @@ Sets a location service policy.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy exclusivity](../../mdm/mdm-kit-multi-mdm.md#rule-2-policy-exclusivity).
+
 **Parameters**
 
 | Name  | Type                                 | Mandatory  | Description     |

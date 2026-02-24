@@ -8,11 +8,11 @@
 
 This section describes the common problems of in-app state management and other common problems.
 
-## Error Reported When the ArkUI Decorator Is Used in Concurrent Threads
+## Errors Caused by Using ArkUI Decorators in Concurrent Threads
 
 ### Lazy Loading of Files Containing Decorators
 
-The state manager decorator can be used only in the UI thread and cannot be used in the [multithreaded concurrency](../../arkts-utils/multi-thread-concurrency-overview.md) where the ArkUI framework is not loaded. The concurrent thread does not load the complete ArkUI framework logic. Therefore, the status management decorator defined in the framework is not loaded to the concurrent thread. If the status management decorator is used in concurrent threads, **ReferenceError: xxx is not defined** is displayed. In the following example, although the concurrent thread does not use the class decorated by [\@Observed](./arkts-observed-and-objectlink.md), the error information of **ReferenceError: Observed is not defined** is still printed. This is because when the concurrent thread parses the file dependency layer by layer, the file is finally loaded to the **Observed.ets** file that defines the \@Observed decorator. As a result, this error is triggered.
+State management decorators are restricted to being used in the UI thread and cannot be used in [concurrent threads](../../arkts-utils/multi-thread-concurrency-overview.md) in which the ArkUI framework is not loaded. Since the complete ArkUI framework logic is not loaded in concurrent threads, the state management decorators defined in the framework are not loaded into the concurrent threads. If the state management decorator is used in concurrent threads, "ReferenceError: xxx is not defined" is displayed. In the following example, although concurrent threads do not actually use the class decorated with [\@Observed](./arkts-observed-and-objectlink.md), the error message "ReferenceError: Observed is not defined" is displayed. This is because when concurrent threads parse file dependencies layer by layer, they eventually load the **Observed.ets** file where the \@Observed decorator is defined, thus triggering this error.
 
 **Incorrect Usage**
 
@@ -127,7 +127,7 @@ export class Person {
 }
 ```
 
-You can use [lazy import](../../arkts-utils/arkts-lazy-import.md) to lazily load the file that contains the decorator. The subthread does not load the file.
+Use [lazy import](../../arkts-utils/arkts-lazy-import.md) for lazy loading of files with decorators. Child threads will not load the corresponding files.
 
 **Correct Usage**
 
@@ -210,7 +210,7 @@ workerPort.onerror = (err: ErrorEvent) => {
 
 ``` TypeScript
 // src/main/ets/pages/LazyImportFuncPos.ets
-// Use lazy import to lazy load the file that contains the decorator.
+// Use lazy import for lazy loading of files with decorators.
 import lazy { innerTest } from './LazyImportObservedPos';
 
 export function testWithObserved(): void {
@@ -245,7 +245,7 @@ export class Person {
 
 ### Isolation of the Decorator Usage
 
-The status management decorator is defined in the file where the function called in the subthread is located. During loading, the status management decorator is also loaded to the corresponding file, and a **ReferenceError** is reported. The called function and the definition of the state manager decorator exist in the same file. Therefore, lazy loading cannot solve this problem. In this case, you can remove the called function from the file and define it separately.
+When state management decorators are defined in the file where the functions called in child threads are located, the corresponding file is also loaded during the loading process, and a "ReferenceError" is printed. Since the called functions and the definitions of state management decorators exist in the same file, the lazy loading method cannot solve this problem. In this case, the called functions can be moved out of the file and defined separately.
 
 **Incorrect Usage**
 

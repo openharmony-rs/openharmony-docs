@@ -38,8 +38,8 @@ arkOptions中types字段示例：
 ```
 
 types字段支持填写包名、包所在位置的相对路径以及声明文件所在相对路径，仅支持当前模块内的查找，若目录下存在同名文件（后缀不同），默认加载顺序.d.ets > .d.ts。<br />
-（1）填写包名方式：通过包名到oh_modules/@types/目录查找包名中定义的声明文件，如"chai"。<br />
-（2）填写包所在相对路径方式：支持在基于build-profile.json5的相对路径中查找定义的声明文件，如"./oh_modules/@types/mocha"。<br />
+（1）填写包名方式：通过包名到oh_modules/@types/目录查找包名中定义的声明文件，如"node"。<br />
+（2）填写包所在相对路径方式：支持在基于build-profile.json5的相对路径中查找定义的声明文件，如"./oh_modules/@types/node"。<br />
 （3）填写声明文件所在相对路径方式：支持查找相对路径下的声明文件，如"./src/main/ets/pages/global"。
 
 ### 注意事项
@@ -75,7 +75,7 @@ let c: Global.ObjectType;
 
 ### maxFlowDepth配置文件标签说明
 
-  arkOptions下tscConfig中maxFlowDepth字段配置文件标签说明：
+arkOptions下tscConfig中maxFlowDepth字段配置文件标签说明：
 
 | 属性名称 | 含义 | 配置范围 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -84,6 +84,7 @@ let c: Global.ObjectType;
 ### arkOptions下的tscConfig中maxFlowDepth字段配置说明
 
 arkOptions/tscConfig中maxFlowDepth字段展示。
+
 在工程级目录下的build-profile.json5配置文件buildOption标签的arkOptions/tscConfig属性中添加maxFlowDepth字段。
 
 <!-- @[add_tscConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/build-profile.json5) --> 

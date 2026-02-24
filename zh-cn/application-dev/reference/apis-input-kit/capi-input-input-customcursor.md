@@ -25,5 +25,5 @@ typedef struct Input_CustomCursor Input_CustomCursor
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Input_CustomCursor_Create](capi-oh-input-manager-h.md#oh_input_customcursor_create) | 创建自定义鼠标光标资源对象。 |
+| [OH_Input_CustomCursor_Create](capi-oh-input-manager-h.md#oh_input_customcursor_create) | 创建自定义鼠标光标资源对象。通过调用[OH_Input_CustomCursor_Destroy](capi-oh-input-manager-h.md#oh_input_customcursor_destroy)销毁自定义鼠标光标资源对象。 |
 | [OH_Input_CustomCursor_Destroy](capi-oh-input-manager-h.md#oh_input_customcursor_destroy) | 销毁自定义鼠标光标资源对象。 |

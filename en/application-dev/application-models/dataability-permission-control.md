@@ -12,10 +12,10 @@ The DataAbility uses permission control to determine whether an ability can acce
 
 ## Static Permission Control
 
-The DataAbility functions as the server. When being started, the DataAbility verifies the client permissions against the settings of the optional fields **readPermission**, **writePermission**, and **Permission** fields in the **config.json** file. The following is an example:
+The DataAbility functions as the server. When being started, the DataAbility verifies the client permissions against the settings of the optional fields **readPermission**, **writePermission**, and **Permission** in the **config.json** file. The following is an example:
 
 
-```json
+```json5
 "abilities": [
   // ...
   {
@@ -37,7 +37,7 @@ The DataAbility functions as the server. When being started, the DataAbility ver
  The client permission is configured in **reqPermissions** under **module** in the **config.json** file. The following is an example:
 
 
-```json
+```json5
 {
   // ...
   "module": {
