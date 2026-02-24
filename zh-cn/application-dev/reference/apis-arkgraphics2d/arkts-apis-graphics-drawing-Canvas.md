@@ -2076,11 +2076,17 @@ class DrawingRenderNode extends RenderNode {
 
 ## drawSingleCharacterWithFeatures<sup>20+</sup>
 
-drawSingleCharacterWithFeatures(text: string, font: Font, x: number, y: number, features: Array\<FontFeature\>): void
+ArkTS-Dyn: drawSingleCharacterWithFeatures(text: string, font: Font, x: number, y: number, features: Array\<FontFeature\>): void
+
+ArkTS-Sta: drawSingleCharacterWithFeatures(text: string, font: Font, x: double, y: double, features: Array\<FontFeature\>): void
 
 绘制单个字符，字符带有字体特征。当前字型中的字体不支持待绘制字符时，退化到使用系统字体绘制字符。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数**
 
@@ -2088,8 +2094,8 @@ drawSingleCharacterWithFeatures(text: string, font: Font, x: number, y: number, 
 | ------ | ------------------- | ---- | ----------- |
 | text | string | 是 | 待绘制的单个字符，字符串长度必须为1。 |
 | font   | [Font](arkts-apis-graphics-drawing-Font.md) | 是   | 字型对象。  |
-| x | number | 是 | 所绘制字符基线左端点的横坐标，该参数为浮点数。 |
-| y | number | 是 | 所绘制字符基线左端点的纵坐标，该参数为浮点数。 |
+| x | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 所绘制字符基线左端点的横坐标，该参数为浮点数。 |
+| y | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 所绘制字符基线左端点的纵坐标，该参数为浮点数。 |
 | features | Array\<[FontFeature](arkts-apis-graphics-drawing-i.md#fontfeature20)\> | 是 | 字体特征对象数组。参数为空数组时使用TTF(TrueType Font)文件中预设的字体特征。|
 
 **错误码：**
@@ -2116,8 +2122,8 @@ class DrawingRenderNode extends RenderNode {
     let fontFeatures : Array<drawing.FontFeature> = [];
     fontFeatures.push({name: 'calt', value: 0});
     canvas.attachBrush(brush);
-    canvas.drawSingleCharacterWithFeatures("你", font, 100, 100, fontFeatures);
-    canvas.drawSingleCharacterWithFeatures("好", font, 180, 100, fontFeatures);
+    canvas.drawSingleCharacterWithFeatures("你", font, 100.0, 100.0, fontFeatures);
+    canvas.drawSingleCharacterWithFeatures("好", font, 180.0, 100.0, fontFeatures);
     canvas.detachBrush();
   }
 }
