@@ -119,11 +119,14 @@ startRecording(): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-avScreenCaptureRecorder.startRecording().then(() => {
-  console.info('Succeeded in starting avScreenCaptureRecorder');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to start avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
-});
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.startRecording().then(() => {
+    console.info('Succeeded in starting avScreenCaptureRecorder');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to start avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+  });
+}
 ```
 
 ## stopRecording<sup>12+</sup>
@@ -154,11 +157,14 @@ stopRecording(): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-avScreenCaptureRecorder.stopRecording().then(() => {
-  console.info('Succeeded in stopping avScreenCaptureRecorder');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to stop avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
-});
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.stopRecording().then(() => {
+    console.info('Succeeded in stopping avScreenCaptureRecorder');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to stop avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+  });
+}
 ```
 
 ## skipPrivacyMode<sup>12+</sup>
@@ -197,12 +203,15 @@ skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let windowIDs = [];
-avScreenCaptureRecorder.skipPrivacyMode(windowIDs).then(() => {
-  console.info('Succeeded in skipping privacy mode');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to skip privacy mode. Code: ${err.code}, message: ${err.message}`);
-});
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+if (avScreenCaptureRecorder != undefined) {
+  let windowIDs = [];
+  avScreenCaptureRecorder.skipPrivacyMode(windowIDs).then(() => {
+    console.info('Succeeded in skipping privacy mode');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to skip privacy mode. Code: ${err.code}, message: ${err.message}`);
+  });
+}
 ```
 
 ## setMicEnabled<sup>12+</sup>
@@ -239,11 +248,14 @@ setMicEnabled(enable: boolean): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-avScreenCaptureRecorder.setMicEnabled(true).then(() => {
-  console.info('Succeeded in setting microphone enabled.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to set microphone enabled. Code: ${err.code}, message: ${err.message}`);
-});
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.setMicEnabled(true).then(() => {
+    console.info('Succeeded in setting microphone enabled.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set microphone enabled. Code: ${err.code}, message: ${err.message}`);
+  });
+}
 ```
 
 ## setPickerMode<sup>22+</sup>
@@ -281,11 +293,14 @@ setPickerMode(pickerMode: PickerMode): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-avScreenCaptureRecorder.setPickerMode(media.PickerMode.WINDOW_ONLY).then(() => {
-  console.info('Succeeded in setting picker mode.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to set picker mode. Code: ${err.code}, message: ${err.message}`);
-});
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.setPickerMode(media.PickerMode.WINDOW_ONLY).then(() => {
+    console.info('Succeeded in setting picker mode.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set picker mode. Code: ${err.code}, message: ${err.message}`);
+  });
+}
 ```
 
 ## excludePickerWindows<sup>22+</sup>
@@ -325,11 +340,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let excludedWindows: Array<number> = [101, 102, 103];
 
-avScreenCaptureRecorder.excludePickerWindows(excludedWindows).then(() => {
-  console.info('Succeeded in excluding picker windows.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to exclude picker windows. Code: ${err.code}, message: ${err.message}`);
-});
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.excludePickerWindows(excludedWindows).then(() => {
+    console.info('Succeeded in excluding picker windows.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to exclude picker windows. Code: ${err.code}, message: ${err.message}`);
+  });
+}
 ```
 
 ## presentPicker<sup>22+</sup>
@@ -365,11 +383,14 @@ presentPicker(): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-avScreenCaptureRecorder.presentPicker().then(() => {
-  console.info('Succeeded in presenting picker avScreenCaptureRecorder.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to present picker avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
-});
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.presentPicker().then(() => {
+    console.info('Succeeded in presenting picker avScreenCaptureRecorder.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to present picker avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+  });
+}
 ```
 
 ## release<sup>12+</sup>
@@ -400,11 +421,14 @@ release(): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-avScreenCaptureRecorder.release().then(() => {
-  console.info('Succeeded in releasing avScreenCaptureRecorder');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to release avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
-});
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.release().then(() => {
+    console.info('Succeeded in releasing avScreenCaptureRecorder');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to release avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+  });
+}
 ```
 
 ## on('stateChange')<sup>12+</sup>
@@ -425,9 +449,14 @@ on(type: 'stateChange', callback: Callback\<AVScreenCaptureStateCode>): void
 **示例：**
 
 ```ts
-avScreenCaptureRecorder.on('stateChange', (state: media.AVScreenCaptureStateCode) => {
-    console.info('avScreenCaptureRecorder stateChange to ' + state);
-});
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.on('stateChange', (state: media.AVScreenCaptureStateCode) => {
+      console.info('avScreenCaptureRecorder stateChange to ' + state);
+  });
+}
 ```
 
 ## on('error')<sup>12+</sup>
@@ -458,9 +487,14 @@ on(type: 'error', callback: ErrorCallback): void
 **示例：**
 
 ```ts
-avScreenCaptureRecorder.on('error', (err: BusinessError) => {
-  console.error(`avScreenCaptureRecorder error: Code: ${err.code}, message: ${err.message}`);
-});
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.on('error', (err: BusinessError) => {
+    console.error(`avScreenCaptureRecorder error: Code: ${err.code}, message: ${err.message}`);
+  });
+}
 ```
 
 ## off('stateChange')<sup>12+</sup>
@@ -481,7 +515,12 @@ avScreenCaptureRecorder.on('error', (err: BusinessError) => {
 **示例：**
 
 ```ts
-avScreenCaptureRecorder.off('stateChange');
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.off('stateChange');
+}
 ```
 
 ## off('error')<sup>12+</sup>
@@ -502,5 +541,10 @@ off(type: 'error', callback?: ErrorCallback): void
 **示例：**
 
 ```ts
-avScreenCaptureRecorder.off('error');
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.off('error');
+}
 ```
