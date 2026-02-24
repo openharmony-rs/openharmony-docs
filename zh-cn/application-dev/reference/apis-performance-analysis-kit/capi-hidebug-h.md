@@ -51,7 +51,6 @@
 | [HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerConfig* config, OH_HiDebug_ThreadLiteSamplingCallback stacksCallback)](#oh_hidebug_requestthreadlitesampling) | - | 对指定的数个线程进行Perf采样，并在调用结束后返回采样栈内容。注意：调用该函数后会阻塞当前线程，直至采样过程完全结束。系统对该接口的调用次数有严格限制，频繁调用超出限额后，将返回[HIDEBUG_RESOURCE_UNAVAILABLE](capi-hidebug-type-h.md#hidebug_errorcode)错误码。 |
 | [uint64_t OH_HiDebug_SetCrashObj(HiDebug_CrashObjType type, void* addr)](#oh_hidebug_setcrashobj) | - | 将维测信息添加到崩溃日志中，与[OH_HiDebug_ResetCrashObj](capi-hidebug-h.md#oh_hidebug_resetcrashobj)配对使用。若程序在OH_HiDebug_SetCrashObj与OH_HiDebug_ResetCrashObj之间发生崩溃，会将OH_HiDebug_SetCrashObj设置的维测信息添加到记录本次崩溃的日志中。 |
 | [void OH_HiDebug_ResetCrashObj(uint64_t crashObj)](#oh_hidebug_resetcrashobj) | - | 将维测信息对象还原到使用OH_HiDebug_SetCrashObj之前的状态。 |
-| [HiDebug_ErrorCode OH_HiDebug_GetRssInfo(HiDebug_RssInfo *rssInfo);](#oh_hidebug_getrssinfo) | - | 获取应用程序进程的物理内存使用信息。 |
 
 ## 函数说明
 
@@ -552,6 +551,5 @@ void OH_HiDebug_ResetCrashObj(uint64_t crashObj)
 | 参数项 | 描述 |
 | -- | -- |
 | uint64_t crashObj | 函数OH_HiDebug_SetCrashObj的返回值。 |
-
 
 
