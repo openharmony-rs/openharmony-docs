@@ -768,7 +768,7 @@ struct NavigationContentMsgStack {
 
 为了解决不同Ability之间数据的共享，LocalStorage支持跨Ability存取数据。
 
-对于该场景，V2可结合\@ObservedV2+\@Trace创建可观测的全局单例对象，定义Map类型存储不同Ability页面的数据，从而实现不同Ability之间数据共享。启动Ability可以参考[specified启动模式](../../application-models/uiability-launch-type.md#specified启动模式)
+对于该场景，V2可结合\@ObservedV2+\@Trace创建可观测的全局单例对象，定义Map类型存储不同Ability页面的数据，从而实现不同Ability之间数据共享。启动Ability可以参考[specified启动模式](../../application-models/uiability-launch-type.md#specified启动模式)。
 
 **主页面**
 
