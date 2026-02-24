@@ -120,9 +120,9 @@ Decorates a function that is called when a reusable custom component is re-added
 
 > **NOTE**
 >
-> -  The value of **param** is not **undefined** in the callback of the reused state management V1 component.
+> -  The value of **params** is not **undefined** in the callback of the reused state management V1 component.
 >
-> -  The value of **param** is **undefined** in the callback of the reused state management V2 component.
+> -  The value of **params** is **undefined** in the callback of the reused state management V2 component.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -134,7 +134,7 @@ Decorates a function that is called when a reusable custom component is re-added
 
 | Parameter | Type    | Mandatory  | Description                                      |
 | ---- | ------ | ---- | ------- |
-| params   | Record\<string, Object \| undefined \| null> | No   | The value of **param** is not **undefined** in the reuse callback of the V1 component. The value of **param** is **undefined** in the reuse callback of the V2 component.|
+| params   | Record\<string, Object \| undefined \| null> | No   | The value is not **undefined** in the reuse callback of the V1 component and is **undefined** in the reuse callback of the V2 component.|
 
 **Example**
 
@@ -144,7 +144,7 @@ For details, see [Lifecycle Example](#lifecycle-example).
 
 ComponentRecycle: MethodDecorator
 
-Decorates a function that is called when the necessary recycling operations defined in the application are performed. That is, this function is triggeredd when the component status changes from **CustomComponentLifecycleState.BUILT** to **CustomComponentLifecycleState.RECYCLED**. At last, the function decorated by **\@ComponentRecycle** recursively traverses all child components, and the **\@ComponentRecycle** decorated function in each recycled child component will be called.
+Decorates a function that is called when the necessary recycling operations defined in the application are performed. That is, this function is triggered when the component status changes from **CustomComponentLifecycleState.BUILT** to **CustomComponentLifecycleState.RECYCLED**. At last, the function decorated by **\@ComponentRecycle** recursively traverses all child components, and the **\@ComponentRecycle** decorated function in each recycled child component will be called.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -303,7 +303,7 @@ Called when a custom component is detached from the main tree. You can use this 
 
 aboutToReuse?(params?: Record<string, Object | undefined | null>): void
 
-Called when a reusable custom component is re-added to the node tree from the cache to receive the component constructors. The value of **param** is not **undefined** in the reuse callback of the V1 component. The value of **param** is **undefined** in the reuse callback of the V2 component.
+Called when a reusable custom component is re-added to the node tree from the cache to receive the component constructors. The value of **params** is not **undefined** in the reuse callback of the V1 component. The value of **params** is **undefined** in the reuse callback of the V2 component.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -315,7 +315,7 @@ Called when a reusable custom component is re-added to the node tree from the ca
 
 | Parameter | Type    | Mandatory  | Description                                      |
 | ---- | ------ | ---- | ------- |
-| params   | Record\<string, Object \| undefined \| null> | No   | The value of **param** is not **undefined** in the reuse callback of the V1 component. The value of **param** is **undefined** in the reuse callback of the V2 component.|
+| params   | Record\<string, Object \| undefined \| null> | No   | The value is not **undefined** in the reuse callback of the V1 component and is **undefined** in the reuse callback of the V2 component.|
 
 ### aboutToRecycle
 
