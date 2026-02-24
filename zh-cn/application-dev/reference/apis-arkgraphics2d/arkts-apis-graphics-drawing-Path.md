@@ -37,7 +37,7 @@ constructor()
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -59,7 +59,7 @@ constructor(path: Path)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -86,13 +86,13 @@ set(src: Path): void
 
 使用另一个路径对当前路径进行更新。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -105,9 +105,9 @@ set(src: Path): void
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 let path: drawing.Path = new drawing.Path();
-path.moveTo(0, 0);
-path.lineTo(0, 700);
-path.lineTo(700, 0);
+path.moveTo(0.0, 0.0);
+path.lineTo(0.0, 700.0);
+path.lineTo(700.0, 0.0);
 path.close();
 let path1: drawing.Path = new drawing.Path();
 path1.set(path);
@@ -127,7 +127,7 @@ ArkTS-Dyn: moveTo(x: double, y: double) : void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -167,7 +167,7 @@ ArkTS-Sta: lineTo(x: double, y: double) : void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -208,7 +208,7 @@ ArkTS-Sta: arcTo(x1: double, y1: double, x2: double, y2: double, startDeg: doubl
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -253,7 +253,7 @@ ArkTS-Sta: quadTo(ctrlX: double, ctrlY: double, endX: double, endY: double): voi
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -296,7 +296,7 @@ ArkTS-Sta: conicTo(ctrlX: double, ctrlY: double, endX: double, endY: double, wei
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -339,7 +339,7 @@ ArkTS-Sta: cubicTo(ctrlX1: double, ctrlY1: double, ctrlX2: double, ctrlY2: doubl
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -384,7 +384,7 @@ ArkTS-Sta: rMoveTo(dx: double, dy: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -424,7 +424,7 @@ ArkTS-Sta: rLineTo(dx: double, dy: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -464,7 +464,7 @@ ArkTS-Sta: rQuadTo(dx1: double, dy1: double, dx2: double, dy2: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -506,7 +506,7 @@ ArkTS-Sta: rConicTo(ctrlX: double, ctrlY: double, endX: double, endY: double, we
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -549,7 +549,7 @@ ArkTS-Sta: rCubicTo(ctrlX1: double, ctrlY1: double, ctrlX2: double, ctrlY2: doub
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -595,7 +595,7 @@ ArkTS-Sta: addArc(rect: common2D.Rect, startAngle: double, sweepAngle: double): 
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -635,7 +635,7 @@ ArkTS-Sta: addCircle(x: double, y: double, radius: double, pathDirection?: PathD
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -676,7 +676,7 @@ ArkTS-Sta: addOval(rect: common2D.Rect, start: int, pathDirection?: PathDirectio
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -714,7 +714,7 @@ addRect(rect: common2D.Rect, pathDirection?: PathDirection): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -751,7 +751,7 @@ addRoundRect(roundRect: RoundRect, pathDirection?: PathDirection): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -789,7 +789,7 @@ addPath(path: Path, matrix?: Matrix | null): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -830,7 +830,7 @@ transform(matrix: Matrix): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -872,7 +872,7 @@ ArkTS-Sta: contains(x: double, y: double): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -909,36 +909,37 @@ console.info("test contains: " + path.contains(60.0, 60.0));
 
 ## setLastPoint<sup>20+</sup>
 
-setLastPoint(x: number, y: number): void
+ArkTS-Dyn: setLastPoint(x: number, y: number): void
+
+ArkTS-Sta: setLastPoint(x: double, y: double): void
 
 修改路径的最后一个点。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
 
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型                                    | 必填 | 说明                                                         |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| x      | number | 是   | 指定点的x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
-| y      | number | 是   | 指定点的y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
+| x      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 指定点的x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
+| y      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 指定点的y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
 
 **示例：**
-
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 const path = new drawing.Path();
-path.moveTo(0, 0);
-path.lineTo(0, 700);
+path.moveTo(0.0, 0.0);
+path.lineTo(0.0, 700.0);
 let isEmpty = path.isEmpty();
 console.info('isEmpty:', isEmpty);
 path.reset();
 isEmpty = path.isEmpty();
 console.info('isEmpty:', isEmpty);
-path.setLastPoint(50, 50);
+path.setLastPoint(50.0, 50.0);
 isEmpty = path.isEmpty();
 console.info('isEmpty:', isEmpty);
 ```
@@ -953,7 +954,7 @@ setFillType(pathFillType: PathFillType): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -980,21 +981,23 @@ path.setFillType(drawing.PathFillType.WINDING);
 
 ## getFillType<sup>20+</sup>
 
-getFillType(): PathFillType
+ArkTS-Dyn: getFillType(): PathFillType
+
+ArkTS-Sta: getFillType(): PathFillType | undefined
 
 获取路径的填充类型。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
 
+**ArkTS-Sta起始版本：** 24
+
 **返回值：**
 
 | 类型                                               | 说明                   |
 | -------------------------------------------------- | ---------------------- |
-| [PathFillType](arkts-apis-graphics-drawing-e.md#pathfilltype12) | 路径填充类型。 |
+| ArkTS-Dyn: [PathFillType](arkts-apis-graphics-drawing-e.md#pathfilltype12)<br/>ArkTS-Sta: [PathFillType](arkts-apis-graphics-drawing-e.md#pathfilltype12) \| undefined | 路径填充类型。 |
 
 **示例：**
 
@@ -1018,7 +1021,7 @@ ArkTS-Sta: getBounds(): common2D.Rect | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1066,7 +1069,7 @@ addPolygon(points: Array\<common2D.Point>, close: boolean): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1113,7 +1116,7 @@ ArkTS-Sta: offset(dx: double, dy: double): Path | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1157,7 +1160,7 @@ op(path: Path, pathOp: PathOp): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1201,7 +1204,7 @@ close(): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -1224,7 +1227,7 @@ reset(): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -1243,19 +1246,19 @@ rewind(): void
 
 将路径内添加的各类点/线清空，但是保留内存空间。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **示例：**
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 let path = new drawing.Path();
-path.moveTo(10,10);
-path.lineTo(20,20);
+path.moveTo(10.0, 10.0);
+path.lineTo(20.0, 20.0);
 path.rewind();
 let empty = path.isEmpty();
 console.info('empty : ', empty);
@@ -1267,11 +1270,11 @@ isEmpty(): boolean
 
 判断路径是否为空。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -1284,8 +1287,8 @@ isEmpty(): boolean
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 let path = new drawing.Path();
-path.moveTo(10,10);
-path.lineTo(20,20);
+path.moveTo(10.0, 10.0);
+path.lineTo(20.0, 20.0);
 let isEmpty = path.isEmpty();
 console.info('isEmpty:', isEmpty);
 ```
@@ -1296,11 +1299,11 @@ isRect(rect: common2D.Rect | null): boolean
 
 判断路径是否构成矩形。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1344,7 +1347,7 @@ ArkTS-Sta: getLength(forceClosed: boolean): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1381,7 +1384,7 @@ ArkTS-Sta: getPositionAndTangent(forceClosed: boolean, distance: double, positio
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1437,7 +1440,7 @@ ArkTS-Sta: getSegment(forceClosed: boolean, start: double, stop: double, startWi
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1478,7 +1481,7 @@ isClosed(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1513,7 +1516,7 @@ ArkTS-Sta: getMatrix(forceClosed: boolean, distance: double, matrix: Matrix, fla
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1562,7 +1565,7 @@ buildFromSvgString(str: string): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1610,7 +1613,7 @@ ArkTS-Sta: getPathIterator(): PathIterator | undefined
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1629,7 +1632,9 @@ let iter = path.getPathIterator();
 
 ## approximate<sup>20+</sup>
 
-approximate(acceptableError: number): Array\<number>
+ArkTS-Dyn: approximate(acceptableError: number): Array\<number>
+
+ArkTS-Sta: approximate(acceptableError: double): Array\<double> | undefined
 
 将当前路径转化为由连续直线段构成的近似路径。
 
@@ -1639,23 +1644,23 @@ approximate(acceptableError: number): Array\<number>
 > - 当acceptableError特别大时，路径会极度简化，保留少量关键点，可能会丢失原有形状。
 > - 对于椭圆等曲线，当acceptableError过大时，拟合结果通常只包含椭圆的分段贝塞尔曲线的起止点，椭圆形会被极度简化为多边形。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| acceptableError | number | 是 | 表示路径上每条线段的可接受误差。该参数为浮点数，不应小于0，当参数小于0时报错。 |
+| acceptableError | ArkTS-Dyn: number<br/>ArkTS-Sta:double | 是 | 表示路径上每条线段的可接受误差。该参数为浮点数，不应小于0，当参数小于0时报错。 |
 
 **返回值：**
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| Array\<number> | 返回包含近似路径的点的数组，至少包含两个点。每个点由三个值组成：<br>1. 该点所在的位置距离路径起点的长度比例值，范围为[0.0, 1.0]。<br>2. 点的x坐标。<br>3. 点的y坐标。 |
+| ArkTS-Dyn: Array\<number><br/>ArkTS-Sta:Array\<double> \| undefined | 返回包含近似路径的点的数组，至少包含两个点。每个点由三个值组成：<br>1. 该点所在的位置距离路径起点的长度比例值，范围为[0.0, 1.0]。<br>2. 点的x坐标。<br>3. 点的y坐标。 |
 
 **错误码：**
 
@@ -1666,6 +1671,8 @@ approximate(acceptableError: number): Array\<number>
 | 25900001 | Parameter error.Possible causes: Incorrect parameter range. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
@@ -1679,24 +1686,40 @@ for (let i = 0; i < points.length; i += 3) {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+path.moveTo(100.0, 100.0);
+path.lineTo(500.0, 500.0);
+let points: double[] = path.approximate(0.5);
+for (let i = 0; i < points.length; i += 3) {
+  console.info("PathApproximate Fraction =" + points[i] + ", X =" + points[i + 1] + ", Y =" + points[i + 2] + "\n");
+}
+```
+
 ## interpolate<sup>20+</sup>
 
-interpolate(other: Path, weight: number, interpolatedPath: Path): boolean
+ArkTS-Dyn: interpolate(other: Path, weight: number, interpolatedPath: Path): boolean
+
+ArkTS-Sta: interpolate(other: Path, weight: double, interpolatedPath: Path): boolean
 
 根据给定的权重，在当前路径和另一条路径之间进行插值，并将结果存储在目标路径对象中。两条路径点数相同即可插值成功，目标路径按照当前路径的结构进行创建。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
 | other | [Path](arkts-apis-graphics-drawing-Path.md) | 是 | 表示另一条路径对象。 |
-| weight | number | 是 | 表示插值权重，必须在[0.0, 1.0]范围内。该参数为浮点数。 |
+| weight | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 表示插值权重，必须在[0.0, 1.0]范围内。该参数为浮点数。 |
 | interpolatedPath | [Path](arkts-apis-graphics-drawing-Path.md) | 是 | 表示用于存储插值结果的目标路径对象。 |
 
 **返回值：**
@@ -1739,11 +1762,11 @@ isInterpolate(other: Path): boolean
 
 判断当前路径与另一条路径在结构和操作顺序上是否完全一致，以确定两条路径是否兼容插值。若路径中包含圆锥曲线（Conic）操作，则对应操作的权重值也必须一致，才能视为兼容插值。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1763,11 +1786,11 @@ isInterpolate(other: Path): boolean
 import { drawing } from '@kit.ArkGraphics2D';
 
 let path: drawing.Path = new drawing.Path();
-path.moveTo(0, 0);
-path.lineTo(100, 100);
+path.moveTo(0.0, 0.0);
+path.lineTo(100.0, 100.0);
 let other: drawing.Path = new drawing.Path();
-other.moveTo(0, 1);
-other.lineTo(200, 200);
+other.moveTo(0.0, 1.0);
+other.lineTo(200.0, 200.0);
 if (path.isInterpolate(other)) {
   console.info('isInterpolate return true');
 } else {
@@ -1821,7 +1844,6 @@ toggleInverseFillType(): void
 
 **示例：**
 
-ArkTS-Dyn示例：
 ``` ts
 import { drawing } from '@kit.ArkGraphics2D';
 
@@ -1829,13 +1851,4 @@ let path: drawing.Path = new drawing.Path();
 path.setFillType(drawing.PathFillType.WINDING);
 path.toggleInverseFillType();
 console.info("path fillType = ", path.getFillType());
-```
-
-ArkTS-Sta示例：
-``` ts
-import { drawing } from '@kit.ArkGraphics2D';
-
-let path: drawing.Path = new drawing.Path();
-path.setFillType(drawing.PathFillType.WINDING);
-path.toggleInverseFillType();
 ```
