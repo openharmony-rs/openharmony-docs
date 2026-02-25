@@ -640,7 +640,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetIterations(ArkUI_KeyframeAnimateOption
 **描述：**
 
 
-设置关键帧动画的动画播放次数。默认值播放一次，设置为-1表示无限次播放，设置为0时表示无动画效果。
+设置关键帧动画的动画播放次数。默认播放一次，设置为-1表示无限次播放，设置为0时表示无动画效果。
 
 **起始版本：** 12
 
@@ -1048,7 +1048,7 @@ int32_t OH_ArkUI_AnimatorOption_SetIterations(ArkUI_AnimatorOption* option, int3
 **描述：**
 
 
-设置animator动画播放次数。
+设置animator动画播放次数。默认播放一次，设置为-1时表示无限次播放，设置为0时表示无动画效果。
 
 > **说明：**
 >
