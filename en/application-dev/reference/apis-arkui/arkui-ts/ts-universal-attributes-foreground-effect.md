@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-You can apply different visual effects to foreground subjects.
+You can set the foreground effect for a component.
 
 >  **NOTE**
 >
@@ -35,6 +35,7 @@ Sets the foreground effect of the component.
 | T | Current component.|
 
 ## ForegroundEffectOptions<sup>12+</sup>
+
 Describes the foreground effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -43,7 +44,7 @@ Describes the foreground effect.
 
 | Name       |   Type        |   Read-Only|   Optional|  Description                       |
 | ----         |  ----         |   ---- |   ---- | --------------------------  |
-| radius       | number        |   No  |   No  |   Blur radius. Value range: [0, +∞). Default value: **0**.<br> This parameter takes effect only within the component scope. When it is used with other APIs, the effect beyond the component scope does not apply.    |
+| radius       | number        |   No  |   No  |   Blur radius. The value range is [0, +∞).<br> This parameter takes effect only within the component scope. When it is used with other APIs, the effect beyond the component scope does not apply.    |
 
 ## Example
 
@@ -70,6 +71,7 @@ struct Index {
 ```
 
 Below is how the component looks with the foreground effect applied.
+
 **radius** indicates the blur radius. A larger value creates a more blurred effect.
 
 ![foregroundColor_circle](figures/foregroundEffect.jpg)

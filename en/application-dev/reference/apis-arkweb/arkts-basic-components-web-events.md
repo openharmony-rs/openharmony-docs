@@ -2384,7 +2384,7 @@ Called to notify the user that the geolocation information obtaining request is 
   <html>
   <body>
   <p id="locationInfo">Location information</p>
-  <button onclick="getLocation()">Obtain location</button>
+  <button onclick="getLocation()">Obtain Location</button>
   <script>
   var locationInfo=document.getElementById("locationInfo");
   function getLocation(){
@@ -2688,9 +2688,9 @@ Triggered to notify the user of a new window creation request when [multiWindowA
         .allowWindowOpenMethod(true)
         .onWindowNewExt((event) => {
           // Open a new window using the event.navigationPolicy request.
-          console.log("navigationAction: ", event.navigationPolicy)
+          console.info("navigationAction: ", event.navigationPolicy)
           // Create a new window based on the size and position information in event.windowFeatures.
-          console.log("windowFeatures: ", JSON.stringify(event.windowFeatures))
+          console.info("windowFeatures: ", JSON.stringify(event.windowFeatures))
           if (this.dialogController) {
             this.dialogController.close();
           }
@@ -4759,7 +4759,11 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 
 Triggered when an error occurs during web page loading of main resources. You can use this API to customize the error display page.
 
-In addition, this feature takes effect only after the default error page is enabled by calling the [setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20) API.
+> **NOTE**
+>
+> This feature takes effect only after the default error page is enabled by calling the [setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20) API.
+>
+> If the error code obtained through [errorPageEvent.error.getErrorCode()](./arkts-basic-components-web-WebResourceError.md#geterrorcode) is greater than 0, it indicates an HTTP error. If the error code is less than 0, it indicates a network error.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -5138,7 +5142,7 @@ You can use the **startCamera**, **stopCamera**, and **closeCamera** APIs to ena
    <body>
      <video id="video" width="400px" height="400px" autoplay="autoplay">
      </video>
-     <input type="button" title="HTML5 camera" value="Enable camera" onclick="getMedia()"/>
+     <input type="button" title="HTML5 Camera" value="Enable Camera" onclick="getMedia()" />
      <script>
        function getMedia() {
          let constraints = {
@@ -5281,7 +5285,7 @@ You can use the **resumeMicrophone**, **pauseMicrophone**, and **stopMicrophone*
    <body>
      <video id="video" width="400px" height="400px" autoplay="autoplay">
      </video>
-     <input type="button" title="HTML5 microphone" value="Enable microphone" onclick="getMedia()" />
+     <input type="button" title="HTML5 Microphone" value="Enable Microphone" onclick="getMedia()" />
      <script>
        function getMedia() {
          let constraints = {

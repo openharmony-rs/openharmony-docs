@@ -378,53 +378,6 @@ call.answerCall(1).then(() => {
 ```
 
 
-## call.answerCall<sup>9+</sup>
-
-answerCall\(callback: AsyncCallback\<void\>\): void
-
-接听来电。使用callback异步回调。
-
-**系统接口：** 此接口为系统接口。
-
-**需要权限**：ohos.permission.ANSWER_CALL
-
-**系统能力**：SystemCapability.Telephony.CallManager
-
-**参数：**
-
-| 参数名   | 类型                      | 必填 | 说明       |
-| -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回接听电话的结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                     |
-| -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
-| 202      | Non-system applications use system APIs.     |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Operation failed. Cannot connect to service. |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error code.                          |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-call.answerCall((err: BusinessError) => {
-    if (err) {
-        console.error(`answerCall fail, err->${JSON.stringify(err)}`);
-    } else {
-        console.info(`answerCall success.`);
-    }
-});
-```
-
-
 ## call.hangUpCall<sup>9+</sup>
 
 hangUpCall\(callId: number, callback: AsyncCallback\<void\>\): void
@@ -520,54 +473,6 @@ call.hangUpCall(1).then(() => {
     console.info(`hangUpCall success.`);
 }).catch((err: BusinessError) => {
     console.error(`hangUpCall fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
-
-## call.hangUpCall<sup>9+</sup>
-
-hangUpCall\(callback: AsyncCallback\<void\>\): void
-
-挂断电话。使用callback异步回调。
-
-**系统接口：** 此接口为系统接口。
-
-**需要权限**：ohos.permission.ANSWER_CALL
-
-**系统能力**：SystemCapability.Telephony.CallManager
-
-**参数：**
-
-| 参数名   | 类型                      | 必填 | 说明       |
-| -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回挂断电话的结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                     |
-| -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
-| 202      | Non-system applications use system APIs.     |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Operation failed. Cannot connect to service. |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error code.                          |
-
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-call.hangUpCall((err: BusinessError) => {
-    if (err) {
-        console.error(`hangUpCall fail, err->${JSON.stringify(err)}`);
-    } else {
-        console.info(`hangUpCall success.`);
-    }
 });
 ```
 
@@ -724,53 +629,6 @@ call.rejectCall(1, rejectMessageOptions).then(() => {
     console.info(`rejectCall success.`);
 }).catch((err: BusinessError) => {
     console.error(`rejectCall fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
-
-## call.rejectCall<sup>9+</sup>
-
-rejectCall\(callback: AsyncCallback\<void\>\): void
-
-拒绝来电。使用callback异步回调。
-
-**系统接口：** 此接口为系统接口。
-
-**需要权限**：ohos.permission.ANSWER_CALL
-
-**系统能力**：SystemCapability.Telephony.CallManager
-
-**参数：**
-
-| 参数名   | 类型                      | 必填 | 说明       |
-| -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回拒接电话的结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                     |
-| -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
-| 202      | Non-system applications use system APIs.     |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Operation failed. Cannot connect to service. |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error code.                          |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-call.rejectCall((err: BusinessError) => {
-    if (err) {
-        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
-    } else {
-        console.info(`rejectCall success.`);
-    }
 });
 ```
 

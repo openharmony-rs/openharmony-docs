@@ -197,7 +197,7 @@ struct Index {
           .width(100)
           .height(100)
         // Apply brand to the input box cursor color.
-        TextInput({placeholder: 'Enter your text here'})
+        TextInput({placeholder: 'input your word...'})
           .width('80%')
           .height(40)
           .margin(20)

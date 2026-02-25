@@ -991,7 +991,7 @@ connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -1041,7 +1041,7 @@ disconnectDfs(networkId: string): Promise&lt;void&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[空间统计错误码](errorcode-filemanagement.md#空间统计错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -2880,6 +2880,10 @@ symlink(target: string, srcPath: string): Promise&lt;void&gt;
 
 基于文件路径创建符号链接，使用promise异步回调。
 
+> **说明：**
+>
+> 从API version 11开始，不支持三方应用使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -2918,6 +2922,10 @@ symlink(target: string, srcPath: string, callback: AsyncCallback&lt;void&gt;): v
 
 基于文件路径创建符号链接，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 11开始，不支持三方应用使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -2952,6 +2960,10 @@ symlink(target: string, srcPath: string, callback: AsyncCallback&lt;void&gt;): v
 symlinkSync(target: string, srcPath: string): void
 
 以同步的方法基于文件路径创建符号链接。
+
+> **说明：**
+>
+> 从API version 11开始，不支持三方应用使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -2997,7 +3009,7 @@ listFile(path: string, options?: ListFileOptions): Promise<string[]>
 
   | 类型                   | 说明         |
   | --------------------- | ---------- |
-  | Promise&lt;string[]&gt; | Promise对象。返回文件名数组。 |
+  | Promise&lt;string[]&gt; | Promise对象。返回文件名数组，默认以'utf-8'编码。|
 
 **错误码：**
 
@@ -3044,7 +3056,7 @@ listFile(path: string, options?: ListFileOptions, callback: AsyncCallback<string
   | ------ | ------ | ---- | --------------------------- |
   | path | string | 是    | 目录的应用沙箱路径。 |
   | options | [ListFileOptions](#listfileoptions11) | 否    | 文件过滤选项。默认不进行过滤。 |
-  | callback | AsyncCallback&lt;string[]&gt; | 是    | 异步列出文件名数组之后的回调。              |
+  | callback | AsyncCallback&lt;string[]&gt; | 是    | 异步列出文件名数组之后的回调，默认以'utf-8'编码。|
 
 
 **错误码：**
@@ -3101,7 +3113,7 @@ listFileSync(path: string, options?: ListFileOptions): string[]
 
   | 类型                   | 说明         |
   | --------------------- | ---------- |
-  | string[] | 返回文件名数组。 |
+  | string[] | 返回文件名数组，默认以'utf-8'编码。 |
 
 **错误码：**
 
@@ -4374,6 +4386,7 @@ try {
   let file = new fs.AtomicFile(`${pathDir}/write.txt`);
   let writeStream = file.startWrite();
   writeStream.write("hello, world", "utf-8", ()=> {
+    file.finishWrite();
     console.info('AtomicFile write finished!');
   })
 } catch (err) {

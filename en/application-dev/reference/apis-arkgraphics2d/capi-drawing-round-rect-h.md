@@ -14,6 +14,8 @@ This file declares the functions related to the rounded rectangle in the drawing
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -41,7 +43,7 @@ This file declares the functions related to the rounded rectangle in the drawing
 
 ### OH_Drawing_CornerPos
 
-```
+```c
 enum OH_Drawing_CornerPos
 ```
 
@@ -63,7 +65,7 @@ Defines an enum for the corner positions of a rounded rectangle.
 
 ### OH_Drawing_RoundRectCreate()
 
-```
+```c
 OH_Drawing_RoundRect* OH_Drawing_RoundRectCreate(const OH_Drawing_Rect* rect, float xRad, float yRad)
 ```
 
@@ -92,7 +94,7 @@ Creates an **OH_Drawing_RoundRect** object. This API may return an error code. F
 
 ### OH_Drawing_RoundRectCopy()
 
-```
+```c
 OH_Drawing_RoundRect* OH_Drawing_RoundRectCopy(const OH_Drawing_RoundRect* roundRect)
 ```
 
@@ -119,7 +121,7 @@ Creates a copy of a rounded rectangle.
 
 ### OH_Drawing_RoundRectSetCorner()
 
-```
+```c
 void OH_Drawing_RoundRectSetCorner(OH_Drawing_RoundRect* roundRect,OH_Drawing_CornerPos pos, OH_Drawing_Corner_Radii radii)
 ```
 
@@ -138,11 +140,11 @@ Sets the radii of the specified rounded corner in this rounded rectangle.<br>Thi
 | -- | -- |
 | [OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md)* roundRect | Pointer to an **OH_Drawing_RoundRect** object.|
 | [OH_Drawing_CornerPos](#oh_drawing_cornerpos) pos | Position of the rounded corner. For details about the available options, see [OH_Drawing_CornerPos](capi-drawing-round-rect-h.md#oh_drawing_cornerpos).|
-| OH_Drawing_Corner_Radii radii | OH_Drawing_Corner_Radii struct, including the radii on the X axis and Y axis. A radius less than or equal to 0 is invalid.|
+| [OH_Drawing_Corner_Radii](capi-drawing-oh-drawing-point2d.md) radii | OH_Drawing_Corner_Radii struct, including the radii on the X axis and Y axis. A radius less than or equal to 0 is invalid.|
 
 ### OH_Drawing_RoundRectGetCorner()
 
-```
+```c
 OH_Drawing_Corner_Radii OH_Drawing_RoundRectGetCorner(OH_Drawing_RoundRect* roundRect, OH_Drawing_CornerPos pos)
 ```
 
@@ -166,11 +168,11 @@ Obtains the radii of the specified rounded corner in a rounded rectangle.<br>Thi
 
 | Type| Description|
 | -- | -- |
-| OH_Drawing_Corner_Radii | Returns an OH_Drawing_Corner_Radii struct, including the radii on the X axis and Y axis.|
+| [OH_Drawing_Corner_Radii](capi-drawing-oh-drawing-point2d.md) | Returns an OH_Drawing_Corner_Radii struct, including the radii on the X axis and Y axis.|
 
 ### OH_Drawing_RoundRectDestroy()
 
-```
+```c
 void OH_Drawing_RoundRectDestroy(OH_Drawing_RoundRect* roundRect)
 ```
 
@@ -191,7 +193,7 @@ Destroys an **OH_Drawing_RoundRect** object and reclaims the memory occupied by 
 
 ### OH_Drawing_RoundRectOffset()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_RoundRectOffset(OH_Drawing_RoundRect* roundRect, float dx, float dy)
 ```
 
@@ -208,7 +210,7 @@ Translates a rounded rectangle by an offset along the X axis and Y axis.
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md)* roundRect | Pointer to the [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) object.|
+| [OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md)* roundRect | Pointer to an [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) object.|
 | float dx | X offset.|
 | float dy | Y offset.|
 

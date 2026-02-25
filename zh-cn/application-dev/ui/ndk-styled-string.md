@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 部分框架或应用具备自研的文字排版能力，在移植时，这些能力会被对接到[方舟2D图形服务的文本引擎](../graphics/complex-text-c.md)。为了避免开发者重复开发文本组件，Text组件提供了接口[NODE_TEXT_CONTENT_WITH_STYLED_STRING](../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)，可以直接渲染方舟文本引擎生成的文本。
 
-以下场景基于[接入ArkTS页面章节](../ui/ndk-access-the-arkts-page.md)，阐述了如何创建字体引擎文本，并利用Text组件进行渲染显示。
+以下场景基于[接入ArkTS页面章节](../ui/ndk-access-the-arkts-page.md)，阐述了如何创建字体引擎文本，并利用[Text组件](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)进行渲染显示。
 
 > **说明：**
 >
@@ -19,7 +19,7 @@
 
 ## 创建Text组件
 
-创建文本组件时，无需配置文字颜色、字体大小等样式属性，因为这些属性通过字体引擎接口设置。但仍需设置基础的通用属性，如宽度和高度。如果不指定，组件自动适应文本的宽度和高度。
+创建文本组件时，无需配置文字颜色、字体大小等样式属性，因为这些属性通过字体引擎接口设置。但仍需设置基础的[通用属性](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)，如宽度和高度。如果不指定，组件自动适应文本的宽度和高度。
 <!-- @[obtain_create_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StyledStringNDK/entry/src/main/cpp/manager.cpp) -->
 
 ``` C++
@@ -91,7 +91,9 @@ nodeApi->setAttribute(text, NODE_HEIGHT, &textHeightItem);
     OH_ArkUI_StyledString_PopTextStyle(styledString);
     ```
 ## 添加占位
+
 占位保留指定大小的空白区域，此区域不绘制文字，但参与布局测量，影响文字排版。
+
 行高是文字高度与占位高度中的较大值。
 
 以下示例展示在`Hello`与`World!`中间插入占位。
@@ -148,8 +150,6 @@ OH_ArkUI_StyledString_PopTextStyle(styledString);
 ## 销毁对象
 
 Text组件不对本文涉及的任何对象的生命周期进行管理，需由开发者自行负责。字体引擎接口均配有相应的销毁方法。
-
-上述涉及的字体引擎接口都有对应的销毁方法。
 
 `OH_Drawing_DestroyTextStyle(OH_Drawing_TextStyle *style)`：销毁文本样式对象。
 

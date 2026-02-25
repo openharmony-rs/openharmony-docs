@@ -13,6 +13,8 @@
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
+>
+> 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -27,6 +29,8 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback, 
 注册任务状态监听。使用callback异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -92,6 +96,8 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback):
 注册任务状态监听。使用promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -161,6 +167,8 @@ unRegisterMissionListener(parameter: MissionDeviceInfo, callback: AsyncCallback&
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 **参数：**
@@ -207,6 +215,8 @@ unRegisterMissionListener(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 取消任务状态监听。使用promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -255,6 +265,8 @@ startSyncRemoteMissions(parameter: MissionParameter, callback: AsyncCallback&lt;
 开始同步远端设备的任务列表。使用callback异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -306,6 +318,8 @@ startSyncRemoteMissions(parameter: MissionParameter): Promise&lt;void&gt;
 开始同步远端设备的任务列表。使用promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -361,6 +375,8 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo, callback: AsyncCallback&lt;
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 **参数：**
@@ -409,6 +425,8 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 停止同步远端设备的任务列表。使用promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -460,6 +478,8 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback, callba
 通过指定任务ID（missionId）的方式进行迁移任务。使用callback异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS，ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -526,6 +546,8 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback): Promi
 通过指定任务ID（missionId）的方式进行迁移任务。使用promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS，ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -595,6 +617,8 @@ continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback&lt;void&
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS，ohos.permission.DISTRIBUTED_DATASYNC
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 **参数：**
@@ -653,6 +677,8 @@ continueMission(parameter: ContinueMissionInfo): Promise&lt;void&gt;
 通过指定包名（bundleName）的方式进行迁移任务。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS，ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -716,6 +742,8 @@ on(type: 'continueStateChange',  callback: Callback&lt;ContinueCallbackInfo&gt;)
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 **参数：**
@@ -756,6 +784,8 @@ off(type: 'continueStateChange',  callback?: Callback&lt;ContinueCallbackInfo&gt
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 **参数：**
@@ -794,6 +824,8 @@ type MissionCallback = _MissionCallback
 
 作为可以[registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener)的入参，表示开始同步后，建立的回调函数。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 | 类型 | 说明 |
@@ -805,6 +837,8 @@ type MissionCallback = _MissionCallback
 type MissionParameter = _MissionParameter
 
 作为[startSyncRemoteMissions](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerstartsyncremotemissions)的入参，表示同步时所需参数的枚举。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -818,6 +852,8 @@ type MissionDeviceInfo = _MissionDeviceInfo
 
 可以作为[registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener)的入参，表示注册监听时所需参数的枚举。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 | 类型 | 说明 |
@@ -827,6 +863,8 @@ type MissionDeviceInfo = _MissionDeviceInfo
 ## ContinueState<sup>10+</sup>
 
 当前任务流转状态的枚举。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -838,6 +876,8 @@ type MissionDeviceInfo = _MissionDeviceInfo
 ## ContinueCallbackInfo<sup>11+</sup>
 
 当前任务流转状态监听的回调信息，包含流转状态和流转信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 

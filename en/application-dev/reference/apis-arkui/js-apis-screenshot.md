@@ -10,7 +10,7 @@ The module provides the screen capture capability.
 
 >  **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -61,7 +61,7 @@ Describes the screenshot options.
 
 pick(): Promise&lt;PickInfo&gt;
 
-Takes a screenshot. Currently, this API only supports taking screenshots of the screen with displayId 0. This API uses a promise to return the result.
+Obtains this screenshot. Currently, only the screenshot of the display whose ID is **0** can be obtained. (If a screenshot of the extended screen is needed, you can use the [capture](#screenshotcapture14) API.) This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -108,6 +108,7 @@ try {
 capture(options?: CaptureOption): Promise&lt;image.PixelMap&gt;
 
 Takes a screenshot of the entire screen. This API uses a promise to return the result.
+
 This API allows you to take screenshots of different screens by setting various **displayId** values, but only full-screen captures are supported. The [pick](#screenshotpick) API allows you to take screenshots of a specified region.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.

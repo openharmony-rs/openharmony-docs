@@ -56,16 +56,16 @@ stateStyles(value: StateStyles): T
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| normal | any | 否 | 是 | 组件无状态时的样式。只支持传入[@Styles](../../../ui/state-management/arkts-style.md)修饰的样式代码块。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| pressed | any | 否 | 是 | 组件按下状态的样式。只支持传入@Styles修饰的样式代码块。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| disabled | any | 否 | 是 | 组件禁用状态的样式。只支持传入@Styles修饰的样式代码块。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| focused | any | 否 | 是 | 组件获焦状态的样式。只支持传入@Styles修饰的样式代码块。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| clicked | any | 否 | 是 | 组件点击状态的样式。只支持传入@Styles修饰的样式代码块。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| selected<sup>10+</sup> | object | 否 | 是 | 组件选中状态的样式。只支持传入@Styles修饰的样式代码块。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
+| normal | any | 否 | 是 | 组件无状态时的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| pressed | any | 否 | 是 | 组件按下状态的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| disabled | any | 否 | 是 | 组件禁用状态的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| focused | any | 否 | 是 | 组件获焦状态的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| clicked | any | 否 | 是 | 组件点击状态的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| selected<sup>10+</sup> | object | 否 | 是 | 组件选中状态的样式。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
 
 **selected选中状态说明**
 
-- 当前多态样式的选中状态样式依赖组件选中属性值，可以使用[onClick](ts-universal-events-click.md)修改属性值，或使用属性自带[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定功能。
+- 当前多态样式的选中状态样式依赖组件选中属性值，可以使用[点击事件](ts-universal-events-click.md)修改属性值，或使用属性自带[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定功能。
 
 - 当前支持selected的组件及其参数/属性值：
 

@@ -18,7 +18,7 @@ Intended only for the **UIExtensionComponent** that has process isolation requir
 
 ## Modules to Import
 
-```
+```ts
 import { uiExtensionHost } from '@kit.ArkUI';
 ```
 

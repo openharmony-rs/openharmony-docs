@@ -834,6 +834,7 @@ Defines the enrollment engine configuration.
 ## SensibilityType
 
 Enumerates wakeup sensibility types.
+
 A sensibility type maps to a wakeup threshold. A higher sensibility indicates a lower threshold and a higher wakeup probability.
 
 **System capability**: SystemCapability.AI.IntelligentVoice.Core

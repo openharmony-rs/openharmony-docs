@@ -35,16 +35,16 @@
 
 1. 内容处于最顶部（内容不可滚动时以此状态处理）
 
-   上滑时，优先向上扩展面板档位，如无档位可扩展，则滚动内容
+   上滑时，优先向上扩展面板挡位，如无挡位可扩展，则滚动内容
 
-   下滑时，优先向下收缩面板档位，如无档位可收缩，则关闭面板
+   下滑时，优先向下收缩面板挡位，如无挡位可收缩，则关闭面板
 2. 内容处于中间位置（可上下滚动）
 
    上/下滑时，优先滚动内容，直至页面内容到达底部/顶部
 
 3. 内容处于底部位置（内容可滚动时）
 
-   上滑时，呈现内容区域回弹效果，不切换档位
+   上滑时，呈现内容区域回弹效果，不切换挡位
 
    下滑时，滚动内容直到到达顶部
 
@@ -210,17 +210,19 @@ struct OnWillDismiss_Dismiss {
 ## 屏蔽部分关闭行为
 
 由于声明了onWillDismiss接口，半模态的关闭行为都需要dismiss处理。可以通过if等逻辑自定义处理关闭逻辑。
+
 下述示例显示半模态页面只在下滑的时候关闭。
 
 ```ts
 onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
   if (DismissSheetAction.reason === DismissReason.SLIDE_DOWN) {
-    DismissSheetAction.dismiss(); //注册dismiss行为
+    DismissSheetAction.dismiss();// 注册dismiss行为
   }
 }),
 ```
 
 同理可以结合`onWillSpringBackWhenDismiss`接口实现更好的下滑体验。
+
 类比`onWillDismiss`，在声明了`onWillSpringBackWhenDismiss`后，半模态下滑时的回弹操作需要使用 `SpringBackAction.springBack()`处理，无此逻辑则不会回弹。
 
 具体代码如下，在半模态下滑的时候无需回弹。
@@ -228,12 +230,12 @@ onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
 ```ts
 onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
   if (DismissSheetAction.reason === DismissReason.SLIDE_DOWN) {
-    DismissSheetAction.dismiss(); //注册dismiss行为
+    DismissSheetAction.dismiss();// 注册dismiss行为
   }
 }),
 
 onWillSpringBackWhenDismiss: ((SpringBackAction: SpringBackAction) => {
- //没有注册springBack，下拉半模态页面无回弹行为
+// 没有注册springBack，下拉半模态页面无回弹行为
 }),
 ```
 

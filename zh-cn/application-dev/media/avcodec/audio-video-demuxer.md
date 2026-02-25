@@ -82,7 +82,9 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
       printf("get stat failed");
       return;
    }
-   // 为 fd 资源文件创建 source 资源实例, 传入 offset 不为文件起始位置或 size 不为文件大小时，可能会因不能获取完整数据导致 source 创建失败、或后续解封装失败等问题。
+   // 注意：offset（文件起始偏移）、fileSize（文件大小）需与待解析文件匹配。
+   // fd 指向单个资源文件时，offset为0、fileSize为资源文件大小。
+   // fd 指向多个连续拼接的资源文件时（如多个mp3二进制拼接）：offset、fileSize 按待解析文件实际偏移和大小设置。
    OH_AVSource *source = OH_AVSource_CreateWithFD(fd, 0, fileSize);
    if (source == nullptr) {
       printf("create source failed");
@@ -139,7 +141,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
       infile.seekg(pos, std::ios::beg);
       if (length <= 0) {
-         printf("AVSourceReadAt : raed length less than zero!\n");
+         printf("AVSourceReadAt : read length less than zero!\n");
          return MediaDataSourceError::SOURCE_ERROR_IO;
       }
       char* buffer = new char[length];
@@ -197,9 +199,9 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    }
    // 注意事项：
    // 1. customKey需与封装时写入的key完全一致（含完整命名层级），
-   //    示例key仅为演示，实际应替换为用户自定义的字符串。
-   //    例：封装时写入key为"com.openharmony.custom.meta.abc.efg"，
-   //       获取时必须使用完整key，截断使用"com.openharmony.custom.meta.abc"会失败。
+   // 示例key仅为演示，实际应替换为用户自定义的字符串。
+   // 例：封装时写入key为"com.openharmony.custom.meta.abc.efg"，
+   // 获取时必须使用完整key，截断使用"com.openharmony.custom.meta.abc"会失败。
    // 2. value类型需与封装时数据类型匹配，示例为string类型。其余类型需调用对应接口，支持int/float类型；API version 20起，支持buffer类型。
    const char *customKey = "com.openharmony.custom.meta.string"; // 替换为实际封装时使用的完整key。
    const char *customValue;
