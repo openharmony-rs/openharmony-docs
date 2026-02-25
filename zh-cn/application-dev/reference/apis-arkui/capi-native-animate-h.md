@@ -368,7 +368,7 @@ void OH_ArkUI_AnimateOption_SetDuration(ArkUI_AnimateOption* option, int32_t val
 **描述：**
 
 
-设置动画持续时间。
+设置动画持续时间。单位为ms（毫秒）。
 
 **起始版本：** 12
 
