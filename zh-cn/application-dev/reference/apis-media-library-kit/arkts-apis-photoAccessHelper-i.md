@@ -250,5 +250,5 @@ picker内宫格的捏合模式。
     
 | 名称                   | 类型                | 只读 | 可选 | 说明           |
 | ---- | ---- | ---- | ---- | ---- |
-| gridPinchModeType       | [GridPinchModeType](arkts-apis-photoAccessHelper-e.md#gridpinchmodetype23)  | 否 | 是 | 宫格捏合模式类型，配置即支持捏合功能，反之不支持捏合功能。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-| defaultGridLevel | [GridLevel](arkts-apis-photoAccessHelper-e.md#gridlevel23) | 否 | 是 | 拉起picker后宫格档位，默认为STANDARD。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| gridPinchModeType       | [GridPinchModeType](arkts-apis-photoAccessHelper-e.md#gridpinchmodetype23)  | 否 | 是 | 宫格捏合模式类型，配置即支持捏合功能，反之不支持捏合功能。 |
+| defaultGridLevel | [GridLevel](arkts-apis-photoAccessHelper-e.md#gridlevel23) | 否 | 是 | 拉起picker后宫格档位，默认为STANDARD。 |
