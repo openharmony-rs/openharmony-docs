@@ -254,8 +254,8 @@
       - [属性修改器 (AttributeModifier)](arkts-user-defined-extension-attributeModifier.md)
       - [属性更新器 (AttributeUpdater)](arkts-user-defined-extension-attributeUpdater.md)
   - [UI国际化](arkts-internationalization.md)
-  - 无障碍与适老化<!--arkts-support-accessibility-friendliness-->
-    - [支持无障碍](arkts-universal-attributes-accessibility.md)
+  - 无障碍与适老化<!--arkts-support-accessibility-friendliness--><!--RP2-->
+    - [支持无障碍](arkts-universal-attributes-accessibility.md)<!--RP2End-->
     - [支持适老化](arkui-support-for-aging-adaptation.md)
   - 主题设置<!--arkts-theme-->
     - [应用深浅色适配](ui-dark-light-color-adaptation.md)
