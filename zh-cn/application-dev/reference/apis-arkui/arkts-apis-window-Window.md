@@ -4622,7 +4622,7 @@ try {
 }
 ```
 
-## onKeyboardHeightChange<sup>22+</sup>
+## onKeyboardHeightChange<sup>23+</sup>
 
 onKeyboardHeightChange(callback: Callback&lt;int&gt;): void
 
@@ -4634,7 +4634,7 @@ onKeyboardHeightChange(callback: Callback&lt;int&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4709,7 +4709,7 @@ try {
 }
 ```
 
-## offKeyboardHeightChange<sup>22+</sup>
+## offKeyboardHeightChange<sup>23+</sup>
 
 offKeyboardHeightChange(callback?: Callback&lt;int&gt;): void
 
@@ -4721,7 +4721,7 @@ offKeyboardHeightChange(callback?: Callback&lt;int&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4801,7 +4801,7 @@ try {
 }
 ```
 
-## onKeyboardWillShow<sup>22+</sup>
+## onKeyboardWillShow<sup>23+</sup>
 
 onKeyboardWillShow(callback: Callback&lt;KeyboardInfo&gt;): void
 
@@ -4815,7 +4815,7 @@ onKeyboardWillShow(callback: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4900,7 +4900,7 @@ try {
 }
 ```
 
-## offKeyboardWillShow<sup>22+</sup>
+## offKeyboardWillShow<sup>23+</sup>
 
 offKeyboardWillShow(callback?: Callback&lt;KeyboardInfo&gt;): void
 
@@ -4912,7 +4912,7 @@ offKeyboardWillShow(callback?: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4999,7 +4999,7 @@ try {
 }
 ```
 
-## onKeyboardWillHide<sup>22+</sup>
+## onKeyboardWillHide<sup>23+</sup>
 
 onKeyboardWillHide(callback: Callback&lt;KeyboardInfo&gt;): void
 
@@ -5013,7 +5013,7 @@ onKeyboardWillHide(callback: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5098,7 +5098,7 @@ try {
 }
 ```
 
-## offKeyboardWillHide<sup>22+</sup>
+## offKeyboardWillHide<sup>23+</sup>
 
 offKeyboardWillHide(callback?: Callback&lt;KeyboardInfo&gt;): void
 
@@ -5110,7 +5110,7 @@ offKeyboardWillHide(callback?: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5195,7 +5195,7 @@ try {
 }
 ```
 
-## onKeyboardDidShow<sup>22+</sup>
+## onKeyboardDidShow<sup>23+</sup>
 
 onKeyboardDidShow(callback: Callback&lt;KeyboardInfo&gt;): void
 
@@ -5210,7 +5210,7 @@ onKeyboardDidShow(callback: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5289,7 +5289,7 @@ try {
 }
 ```
 
-## offKeyboardDidShow<sup>22+</sup>
+## offKeyboardDidShow<sup>23+</sup>
 
 offKeyboardDidShow(callback?: Callback&lt;KeyboardInfo&gt;): void
 
@@ -5301,7 +5301,7 @@ offKeyboardDidShow(callback?: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5383,7 +5383,7 @@ try {
 }
 ```
 
-## onKeyboardDidHide<sup>22+</sup>
+## onKeyboardDidHide<sup>23+</sup>
 
 onKeyboardDidHide(callback: Callback&lt;KeyboardInfo&gt;): void
 
@@ -5398,7 +5398,7 @@ onKeyboardDidHide(callback: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5477,7 +5477,7 @@ try {
 }
 ```
 
-## offKeyboardDidHide<sup>22+</sup>
+## offKeyboardDidHide<sup>23+</sup>
 
 offKeyboardDidHide(callback?: Callback&lt;KeyboardInfo&gt;): void
 
@@ -5489,7 +5489,7 @@ offKeyboardDidHide(callback?: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8657,7 +8657,7 @@ try {
 }
 ```
 
-## onWindowHighlightChange<sup>22+</sup>
+## onWindowHighlightChange<sup>23+</sup>
 
 onWindowHighlightChange(callback: Callback&lt;boolean&gt;): void
 
@@ -8667,7 +8667,7 @@ onWindowHighlightChange(callback: Callback&lt;boolean&gt;): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowHighlightChange')](#onwindowhighlightchange15)。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -8754,7 +8754,7 @@ try {
 }
 ```
 
-## offWindowHighlightChange<sup>22+</sup>
+## offWindowHighlightChange<sup>23+</sup>
 
 offWindowHighlightChange(callback?: Callback&lt;boolean&gt;): void
 
@@ -8764,7 +8764,7 @@ offWindowHighlightChange(callback?: Callback&lt;boolean&gt;): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowHighlightChange')](#offwindowHighlightChange22)。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -9887,7 +9887,7 @@ setWindowFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): v
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9961,7 +9961,7 @@ setWindowFocusable(isFocusable: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12307,7 +12307,7 @@ keepKeyboardOnFocus(keepKeyboardFlag: boolean): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -13356,7 +13356,7 @@ isFocused(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -13834,7 +13834,7 @@ raiseToAppTop(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -13925,7 +13925,7 @@ setRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -15153,7 +15153,7 @@ setExclusivelyHighlighted(exclusivelyHighlighted: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -15234,7 +15234,7 @@ isWindowHighlighted(): boolean
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
