@@ -15,7 +15,7 @@
 
 ## 导入模块
 
-``` ts
+```
 import { AtomicServiceNavigation } from '@kit.ArkUI';
 ```
 
@@ -27,7 +27,7 @@ import { AtomicServiceNavigation } from '@kit.ArkUI';
 
 ## AtomicServiceNavigation
 
-``` ts
+```
 AtomicServiceNavigation({
     navPathStack?: NavPathStack,
     navigationContent: Callback<void>,
