@@ -19,7 +19,7 @@ For details about the process for requesting permissions, see [Workflow for Requ
 
 ## ohos.permission.RUNNING_LOCK
 
-Allows an application to obtain a running lock.
+Allows an application to obtain a running lock to keep running in the background.
 
 **Permission level**: normal
 
@@ -5283,7 +5283,7 @@ Allows an application to query and configure user identity authentication polici
 **Valid since**: 18
 
 ## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
-
+ 	
 Allows a system application to start the preview panel for adding application widgets to the home screen.
 
 With this permission, the system application can help users add the widgets to distribute to the home screen.
@@ -5294,6 +5294,6 @@ With this permission, the system application can help users add the widgets to d
 
 **Enable via ACL**: true
 
-**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
+**Device**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
 
-**Since**: 20
+**Valid since**: 20

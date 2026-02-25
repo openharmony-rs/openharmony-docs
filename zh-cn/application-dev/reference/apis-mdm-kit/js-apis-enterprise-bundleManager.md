@@ -518,6 +518,10 @@ uninstall(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean
 
 卸载当前/指定用户下的指定包接口，选择是否保留包数据（由isKeepData指定）。使用promise异步回调。
 
+> **说明：**
+>
+> 当应用为不可卸载的预置应用或者通过[addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync)接口设置了不允许卸载时，调用此接口卸载应用会返回401错误码。
+
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -770,7 +774,7 @@ import { Want } from '@kit.AbilityKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -821,7 +825,7 @@ import { Want } from '@kit.AbilityKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -875,7 +879,7 @@ import { Want } from '@kit.AbilityKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.edmtest',
   abilityName: 'EnterpriseAdminAbility'
 };

@@ -191,7 +191,41 @@ struct Father {
 
 ## 限制条件
 
-\@Prop装饰变量时会进行深拷贝，在拷贝的过程中除了基本类型、Map、Set、Date、Array外，都会丢失类型。例如，对于通过NAPI提供的复杂类型（如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)），由于其部分实现在Native侧，因此无法在ArkTS侧通过深拷贝获得完整的数据；同样，RegExp类型在拷贝过程中会丢失原类型，导致被\@Prop装饰后无法调用正则相关函数。
+- \@Prop装饰变量时会进行深拷贝，在拷贝的过程中除了基本类型、Map、Set、Date、Array外，都会丢失类型。例如，对于通过NAPI提供的复杂类型（如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)），由于其部分实现在Native侧，因此无法在ArkTS侧通过深拷贝获得完整的数据；同样，RegExp类型在拷贝过程中会丢失原类型，导致被\@Prop装饰后无法调用正则相关函数。
+
+- 父组件传入undefined时，\@Prop装饰的变量仍使用本地默认值进行初始化。
+  
+  <!-- @[prop_twenty_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwenty.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct Parent {
+    @State count: number | undefined = undefined;
+  
+    build() {
+      Column() {
+        Text(`Parent count value: ${this.count}`)
+          .fontSize(20)
+          .margin(10)
+        Child({ count: this.count })
+      }
+    }
+  }
+  
+  @Component
+  struct Child {
+    @Prop count: number | undefined = 0;
+  
+    build() {
+      Column() {
+        Text(`Child count value: ${this.count}`)
+          .fontSize(20)
+          .margin(10)
+      }
+    }
+  }
+  ```
 
 ## 使用场景
 
@@ -722,13 +756,80 @@ struct Child {
 
 ![Video-prop-UsageScenario-three](figures/Video-prop-UsageScenario-three.gif)
 
+### 装饰Array类型变量
+
+在下面的示例中，message类型为`number[]`，点击Button改变message的值，视图会随之刷新。
+
+<!-- @[prop_nineteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageNineteen.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct Index {
+  @State message: number[] = [0, 1, 2, 3];
+
+  build() {
+    Column() {
+      Child({ message: this.message })
+    }
+  }
+}
+
+@Component
+struct Child {
+  @Prop message: number[] = [0, 1, 2, 3];
+
+  build() {
+    Row() {
+      Column() {
+        ForEach(this.message, (item: number) => {
+          Text(`${item}`)
+            .fontSize(20)
+            .margin(10)
+        })
+        // 新增数组元素，触发UI刷新
+        Button('Push element')
+          .onClick(() => {
+            this.message.push(4);
+          })
+          .width(300)
+          .margin(10)
+        // 删除数组元素，触发UI刷新
+        Button('Pop element')
+          .onClick(() => {
+            this.message.pop();
+          })
+          .width(300)
+          .margin(10)
+        // 对数组整体重新赋值，触发UI刷新
+        Button('Reset array')
+          .onClick(() => {
+            this.message = [9, 8, 7, 6];
+          })
+          .width(300)
+          .margin(10)
+        // 更新数组元素，触发UI刷新
+        Button('Modify element[0]')
+          .onClick(() => {
+            this.message[0] = 10;
+          })
+          .width(300)
+          .margin(10)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ### 装饰Map类型变量
 
 > **说明：**
 >
 > 从API version 11开始，\@Prop支持Map类型。
 
-在下面的示例中，value类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
+在下面的示例中，value类型为Map\<number, string\>，点击Button改变value的值，视图会随之刷新。
 
 <!-- @[prop_ten_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTen.ets) -->
 

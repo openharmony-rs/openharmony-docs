@@ -16,7 +16,7 @@ Shape clipping changes the visible portion of a component through clipping or ma
 
 clip(value: boolean): T
 
-Sets whether to clip the areas of child components that extend beyond this component's bounds, that is, whether to perform clipping based on the edge contour of the parent container If this API is not used, the area beyond the current component is not cropped by default.
+Sets whether to clip the areas of child components that extend beyond this component's bounds, that is, whether to perform clipping based on the edge contour of the parent container If this API is not used, the area of child components extending beyond the current component's bounds is not clipped by default.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,7 +28,7 @@ Sets whether to clip the areas of child components that extend beyond this compo
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Sets whether to crop the child component based on the edge outline of the current component.<br>The value **true** means to clip the areas of child components that extend beyond the current component's bounds, and **false** means the opposite.<br>Note: If this parameter is set to **true**, child components exceeding the current component's bounds will not respond to bound gesture events.|
+| value  | boolean | Yes  | Whether to clip the areas of child components that extend beyond the current component's bounds.<br>The value **true** means to clip the areas of child components that extend beyond the current component's bounds, and **false** means the opposite.<br>Note: If this parameter is set to **true**, child components exceeding the current component's bounds will not respond to bound gesture events.|
 
 **Return value**
 
@@ -40,7 +40,7 @@ Sets whether to clip the areas of child components that extend beyond this compo
 
 clip(clip: Optional\<boolean>): T
 
-Sets whether to clip the areas of child components that extend beyond this component's bounds, that is, whether to perform clipping based on the edge contour of the parent container If this API is not used, the area beyond the current component is not cropped by default. Compared with [clip<sup>12+</sup>](#clip12), this function supports the undefined type.
+Sets whether to clip the areas of child components that extend beyond this component's bounds, that is, whether to perform clipping based on the edge contour of the parent container If this API is not used, the area of child components extending beyond the current component's bounds is not clipped by default. Compared with [clip<sup>12+</sup>](#clip12), this API supports the **undefined** type.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +52,7 @@ Sets whether to clip the areas of child components that extend beyond this compo
 
 | Name| Type              | Mandatory                                                        | Description|
 | ------ | ------------------ | ------------------------------------------------------------ | ---- |
-| clip   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes| Sets whether to crop the child component based on the edge outline of the current component.<br>Note: If this parameter is set to **true**, child components exceeding the current component's bounds will not respond to bound gesture events.<br>If **clip** is set to **undefined**, clipping is disabled, and child components are not clipped.   |
+| clip   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes| Whether to clip the areas of child components that extend beyond the current component's bounds.<br>Note: If this parameter is set to **true**, child components exceeding the current component's bounds will not respond to bound gesture events.<br>If **clip** is set to **undefined**, clipping is disabled, and child components are not clipped.   |
 
 **Return value**
 
@@ -124,7 +124,7 @@ Clips this component according to the specified shape (which may include positio
 
 clipShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>): T
 
-Clips this component according to the specified shape (which may include position information). Compared with [clipShape<sup>12+</sup>](#clipshape12), this function supports the undefined type.
+Clips this component according to the specified shape (which may include position information). Compared with [clipShape<sup>12+</sup>](#clipshape12), this API supports the **undefined** type.
 
 > **NOTE** 
 >
@@ -242,7 +242,7 @@ Adds a mask to the component to indicate the progress.
 
 mask(mask: Optional\<ProgressMask>): T
 
-Adds a mask to the component to indicate the progress. Compared with [mask<sup>12+</sup>](#mask12), this function supports the undefined type.
+Adds a mask to the component to indicate the progress. Compared with [mask<sup>12+</sup>](#mask12), this API supports the **undefined** type.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -316,7 +316,7 @@ Adds a mask of the specified shape to the component.
 
 maskShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>): T
 
-Adds a mask of the specified shape to the component. Compared with [maskShape<sup>12+</sup>](#maskshape12), this function supports the undefined type.
+Adds a mask of the specified shape to the component. Compared with [maskShape<sup>12+</sup>](#maskshape12), this API supports the **undefined** type.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -398,7 +398,7 @@ Updates the color of the progress mask.
 
 enableBreathingAnimation(value: boolean): void
 
-Sets whether to enable the breathing animation when the progress indicator is full. If this interface is not set, the breathing halo animation is disabled by default.
+Sets whether to enable the breathing animation when the progress indicator is full. If this API is not set, the breathing animation is disabled by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -408,14 +408,14 @@ Sets whether to enable the breathing animation when the progress indicator is fu
 
 | Name| Type                                  | Mandatory| Description        |
 | ------ | ------------------------------------------ | ---- | ---------------- |
-| value  | boolean | Yes  | Whether to enable the breathing halo animation.<br>true: The breathing halo animation is enabled.<br>false: The breathing halo animation is disabled.|
+| value  | boolean | Yes  | Whether to enable the breathing animation.<br>**true**: The breathing animation is enabled.<br>**false**: The breathing halo animation is disabled.|
 
 
 ## Example
 
 ### Example 1: Using Different Clipping Attributes
 
-In this example, [clipShape](#clipshape12), [clip](#clip12), and [maskShape](#maskshape12) are used to crop and mask an image.
+This example demonstrates how to clip and mask an image using [clipShape](#clipshape12), [clip](#clip12), and [maskShape](#maskshape12).
 
 ```ts
 // xxx.ets
@@ -461,9 +461,9 @@ struct ClipAndMaskExample {
 
 ![clipAndMask](figures/clipAndMask.PNG)
 
-### Example 2: Implementing a Component Mask
+### Example 2: Implementing Component Masking
 
-In this example, [mask](#mask12) is used to mask an image.
+This example demonstrates how to mask an image using [mask](#mask12).
 
 ```ts
 @Entry

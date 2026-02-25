@@ -979,7 +979,7 @@ setSpeed(speed: number): void
 
 | 参数名 | 类型                                     | 必填 | 说明                   |
 | ------ | ---------------------------------------- | ---- |----------------------|
-| speed | number | 是   | 设置播放的倍速值（倍速范围：0.25-4.0）。 |
+| speed | number | 是   | 设置播放的倍速值（倍速范围：[0.25, 4.0]）。 |
 
 **错误码：**
 
@@ -2037,7 +2037,7 @@ audioRenderer.on('stateChange', (state: audio.AudioState) => {
 
 off(type: 'stateChange', callback?: Callback&lt;AudioState&gt;): void
 
-取消监听到达标记事件。使用callback异步回调。
+取消监听状态变化事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -2045,7 +2045,7 @@ off(type: 'stateChange', callback?: Callback&lt;AudioState&gt;): void
 
 | 参数名 | 类型   | 必填 | 说明                                                |
 | :----- | :----- | :--- | :-------------------------------------------------- |
-| type   | string | 是   | 事件回调类型，支持的事件为'stateChange'，当取消监听到达标记事件时，触发该事件。 |
+| type   | string | 是   | 事件回调类型，支持的事件为'stateChange'，当取消监听状态变化事件时，触发该事件。 |
 | callback | Callback\<[AudioState](arkts-apis-audio-e.md#audiostate8)> | 否 | 回调函数，返回当前音频的状态。 |
 
 **错误码：**

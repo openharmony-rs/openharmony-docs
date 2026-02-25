@@ -13,7 +13,7 @@ This topic walks you through on how to create a **TrustAnchor** object array fro
 
 1. Import the [cert](../../reference/apis-device-certificate-kit/js-apis-cert.md) module.
 
-2. Use [cert.createTrustAnchorsWithKeyStore](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatetrustanchorswithkeystore12) to create a **TrustAnchor** array object based on the .p12 file.
+2. Use [cert.createTrustAnchorsWithKeyStore](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatetrustanchorswithkeystore12) to create an [X509TrustAnchor](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509trustanchor11) array object based on the .p12 file.
 
   ```ts
   import { cert } from '@kit.DeviceCertificateKit';

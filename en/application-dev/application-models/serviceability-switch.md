@@ -20,7 +20,7 @@ The procedure for switching a ServiceAbility for a system application is similar
 
    The table below describes the lifecycle comparison of the ServiceAbility and ServiceExtensionAbility.
 
-     | ServiceAbility| ServiceExtensionAbility| Comparison Description| 
+   | ServiceAbility| ServiceExtensionAbility| Comparison Description| 
    | -------- | -------- | -------- |
    | onStart(): void | onCreate(want: Want): void | The two methods have the same invoking time. In the stage model, the **want** parameter is added so that you can obtain parameters during creation.| 
    | onCommand(want: Want, startId: number): void | onRequest(want: Want, startId: number): void | The two methods have the same meaning, invoking time, and parameters.| 
@@ -34,7 +34,7 @@ The procedure for switching a ServiceAbility for a system application is similar
 
 In the stage model, third-party applications cannot provide services for other third-party applications. You can select a switching solution based on your service requirements.
 
-  | Service Type| Switching Solution| 
+| Service Type| Switching Solution| 
 | -------- | -------- |
 | Providing services for other third-party applications| Match a scenario-specific [ExtensionAbility](extensionability-overview.md).| 
 | In-application: providing public use when it is running in the foreground| Extract the component code as a common module for other components to use.| 

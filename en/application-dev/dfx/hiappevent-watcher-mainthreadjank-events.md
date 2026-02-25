@@ -11,13 +11,7 @@
 
 When an application's main thread executes a time-consuming task, you may detect that the application freezes. However, the freeze time does not reach the threshold specified by [application freeze detection](appfreeze-guidelines.md). Therefore, no fault log is generated. To better locate and analyze problems, you can utilize the generated [main thread jank event log specifications](apptask-timeout-guidelines.md#log-specifications) to analyze the execution status of the main thread task by referring to the [main thread jank event detection principles](apptask-timeout-guidelines.md#detection-principles).
 
-## Detection Principles
-
-For details, see [main thread jank event detection principles](apptask-timeout-guidelines.md#detection-principles).
-
-## Available APIs
-
-You can subscribe to the main thread jank event (**hiAppEvent.event.MAIN_THREAD_JANK**) using the APIs provided by HiAppEvent. After detecting a main thread jank event, the system captures debugging information. You can listen for main thread jank events using **HiAppEvent** and obtain the related information in the callback function.
+This topic describes the main thread jank detection principles, fields, and specifications. You can subscribe to main thread jank events using the ArkTS and C/C++ APIs provided by **HiAppEvent**. For details, see the following documents:
 
 - [Subscribing to Main Thread Jank Events (ArkTS)](hiappevent-watcher-mainthreadjank-events-arkts.md)
 
@@ -26,6 +20,10 @@ You can subscribe to the main thread jank event (**hiAppEvent.event.MAIN_THREAD_
 > **NOTE**
 >
 > Mainthread jank events can be subscribed to using HiAppEvent in [application clones](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/app-clone) and atomic services. Since API version 22, this feature is also supported for [input method applications](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/inputmethod-application-guide).
+
+## Detection Principles
+
+For details, see [Main Thread Timeout Detection Principles](apptask-timeout-guidelines.md#main-thread-timeout-detection).
 
 ## Custom Parameters
 

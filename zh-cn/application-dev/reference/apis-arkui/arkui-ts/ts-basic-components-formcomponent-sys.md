@@ -322,7 +322,7 @@ onUpdate(callback:&nbsp;Callback[\<FormCallbackInfo>](#formcallbackinfo12))&nbsp
 
 该示例创建一张2 * 2尺寸大小的卡片，并注册事件回调。
 ```ts
-//card.ets
+// card.ets
 @Entry
 @Component
 struct CardExample {
@@ -345,7 +345,7 @@ struct CardExample {
         .size({width:360,height:360})
         .visibility(Visibility.Visible)
         .onAcquired((form: FormCallbackInfo)=>{
-          console.info(`form info : ${JSON.stringify(form)}`);
+          console.info(`form info : ${form?.id}`);
           // Invalid form id
           if (form.id == -1) {
             this.formId = form.idString;
@@ -353,11 +353,11 @@ struct CardExample {
             this.formId = form.id.toString();
           }
         })
-        .onError((err)=>{
-          console.error(`fail to add form, err: ${JSON.stringify(err)}`);
+        .onError((error)=>{
+          console.error(`fail to add form, error code: ${error?.errcode}, error message: ${error?.msg}`);
         })
         .onUninstall((form: FormCallbackInfo)=>{
-          console.info(`uninstall form success : ${JSON.stringify(form)}`);
+          console.info(`uninstall form success : ${form?.id}`);
           // Invalid form id
           if (form.id == -1) {
             this.formId = form.idString;
@@ -366,7 +366,7 @@ struct CardExample {
           }
         })
         .onUpdate((form: FormCallbackInfo)=>{
-          console.info(`form update done : ${JSON.stringify(form)}`);
+          console.info(`form update done : ${form?.id}`);
         })
     }
     .width('100%')

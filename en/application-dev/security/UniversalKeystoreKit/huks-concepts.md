@@ -1,4 +1,4 @@
-# Basic Concepts of HUKS
+# Basic Concepts of Local Key Management
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -12,7 +12,6 @@ Familiarity with the following concepts is helpful because they are used through
 ## TEE
 
 Trusted Execution Environment (TEE) is a secure area of a main processor of a smartphone, tablet, or a mobile device. Any data in the TEE cannot be read or tampered with by any code outside it. The TEE provides a secure execution environment for trusted applications (TAs) to ensure end-to-end security by features, such as isolated execution, integrity of applications, confidentiality of their assets, and data access permissions.
-
 
 ## Key Material Format
 
@@ -30,7 +29,7 @@ The following figure illustrates the structure of the RSA key material. For deta
 
 The key algorithm is a value of [HuksKeyAlg](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeyalg).
 
-```
+```ts
 let rsa2048KeyPairMaterial = new Uint8Array([
     0x01, 0x00, 0x00, 0x00, // Key algorithm: huks.HuksKeyAlg.HUKS_ALG_RSA = 1
     0x00, 0x08, 0x00, 0x00, // Key size (bit): 2048
@@ -107,7 +106,7 @@ When a public key is exported or imported, the key material is encapsulated in t
 
 The following is ECC public key in DER format:
 
-```
+```ts
 let eccP256PubKey = new Uint8Array([
     0x30, 0x59, 0x30, 0x13, 0x06, 0x07, 0x2a, 0x86, 0x48, 0xce, 0x3d, 0x02, 0x01, 0x06, 0x08, 0x2a,
     0x86, 0x48, 0xce, 0x3d, 0x03, 0x01, 0x07, 0x03, 0x42, 0x00, 0x04, 0xc0, 0xfe, 0x1c, 0x67, 0xde,
@@ -128,7 +127,7 @@ The following is an example of the RSA private key material.
 
 ![priKey](figures/priKey.png)
 
-```
+```ts
 let rsa2048PrivateKeyMaterial = new Uint8Array([
     0x01, 0x00, 0x00, 0x00, // Key algorithm: huks.HuksKeyAlg.HUKS_ALG_RSA = 1
     0x00, 0x08, 0x00, 0x00, // Key size (bit): 2048

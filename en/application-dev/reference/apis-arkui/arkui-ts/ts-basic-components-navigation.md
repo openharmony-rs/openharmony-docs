@@ -1867,7 +1867,7 @@ Display mode of the navigation page. When **Navigation** is displayed in split-c
 
 > **NOTE**
 >
-> For simplicity, **calcNavBarWidth** is defined as follows: Component width – minContentWidth – Divider width (1 px)
+> For simplicity, **calcNavBarWidth** is defined as follows: Component width - minContentWidth - Divider width (1 px)
 
 ## NavigationOperation<sup>11+</sup>
 
@@ -4611,7 +4611,7 @@ Configure **"routerMap": "$profile:router_map"** in the **module** field of the 
 
 ### Example 14: Setting the Navigation Split-Column Mode
 
-This example demonstrates a **Navigation** component in split‑column mode, where the right pane shows a default placeholder page. It also uses [navBarWidthRange](#navbarwidthrange10) to set the minimum and maximum width of the navigation page.
+This example demonstrates a **Navigation** component in split-column mode, where the right pane shows a default placeholder page. It also uses [navBarWidthRange](#navbarwidthrange10) to set the minimum and maximum width of the navigation page.
 
 Before running this example, you need to set **orientation** to **auto_rotation** in the **abilities** field of the project configuration file [module.json5](../../../quick-start/module-configuration-file.md).
 
@@ -4737,7 +4737,7 @@ struct NavigationExample {
 }
 ```
 
-
+![navigation_navbarwidthrange](figures/navigation_navbarwidthrange.gif)
 
 ### Example 15: Enabling and Disabling Navigation Toolbar Adaptation
 
@@ -5325,4 +5325,4 @@ Configure **"routerMap": "$profile:router_map"** in the **module** field of the 
 >
 > 5. Click the application. The displayed page is still the page after the jump button is clicked.
 
-
+![navigation_recoverable.gif](figures/navigation_recoverable.gif)

@@ -815,7 +815,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let bundleName: string = "com.demo.a";
 let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
 downgradeMgr.startDownload((data: cloudSyncManager.DownloadProgress) => {
-  console.info(`Dwongrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+  console.info(`Downgrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
 }).then(() => {
   console.info("Downgrade started successfully.");
 }).catch((err: BusinessError) => {

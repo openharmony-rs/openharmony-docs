@@ -22,7 +22,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so
 
 **Signing**
 
-1. Obtain [keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22) as **resourceId** (also as a key alias) by referring to [certificate management for applications](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22), [open the resource](huks-open-close-resource-ndk.md#opening-resources), and complete PIN authentication.
+1. Obtain [keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22) as **resourceId** and the key alias by calling the [certificate selection API](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22) provided by the certificate management system, [open the resource](huks-open-close-resource-ndk.md#opening-resources), and complete the PIN authentication.
 
 2. Specify the plaintext to be signed.
 
@@ -34,7 +34,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so
 
 **Signature verification**
 
-1. Obtain [keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22) as **resourceId** (also as a key alias) by referring to [certificate management for applications](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22), and [open the resource](huks-open-close-resource-ndk.md#opening-resources).
+1. Obtain [keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22) as **resourceId** and the key alias by calling the [certificate selection API](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22) provided by the certificate management system, and [open the resource](huks-open-close-resource-ndk.md#opening-resources).
 
 2. Obtain the signature to be verified.
 
@@ -197,4 +197,3 @@ static napi_value SignVerifyKey(napi_env env, napi_callback_info info)
     return ret;
 }
 ```
-<!--no_check-->

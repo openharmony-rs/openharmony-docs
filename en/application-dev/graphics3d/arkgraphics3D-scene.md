@@ -11,7 +11,7 @@ A 3D scene consists of three essential parts: light, camera, and model.
 - The camera acts as a viewer of the 3D scene. In essence, 3D rendering is to observe a 3D scene from a perspective and project it to a 2D image. Without a camera, no rendering result is obtained.
 - A model in a 3D scene is used to describe a shape, structure, and appearance of an object, and generally has attributes such as meshes, materials, textures, and animations. Popular 3D model formats are OBJ, FBX, and glTF.
 
-After a model is loaded, it can be rendered using the ArkUI component [Component3D](../reference/apis-arkui/arkui-ts/ts-basic-components-component3d.md). You can also call ArkTS APIs to modify the camera and light settings, which will help you achieve the desired perspective and lighting conditions. The ArkTS APIs can use NAPIs to call the capabilities implemented by C++ APIs in AGP.
+After a model is loaded, it can be presented to users through the [Component3D](../reference/apis-arkui/arkui-ts/ts-basic-components-component3d.md) rendering component of ArkUI. Component3D is responsible for rendering the ArkGraphics 3D scene onto the interface. In the custom scene mode, you can use ArkTS APIs to create and manage camera and light sources nodes, thereby setting appropriate viewing angles and lighting effects. In the automatic scene mode, the framework will automatically create basic cameras and lighting based on the model. The ArkTS APIs can use NAPIs to call the capabilities implemented by C++ APIs in AGP.
 
 ![3D scene display process](./figures/scene.PNG)
 

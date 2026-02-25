@@ -121,13 +121,13 @@ OH_ArkUI_StyledString_PopTextStyle(styledString);
 - Text Layout
 
   After configuring text styles and content, call the font engine API [OH_Drawing_TypographyLayout](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographylayout) to perform text layout, specifying the maximum width. Text will automatically wrap if it exceeds this width.
-  
+    
     > **NOTE**
     >
     > Text that has not been laid out is not displayed.
 
     <!-- @[obtain_create_text_typography](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StyledStringNDK/entry/src/main/cpp/manager.cpp) -->
-  
+    
     ``` C++
     OH_Drawing_Typography *typography = OH_ArkUI_StyledString_CreateTypography(styledString);
     // Call the font engine layout method. The width must match the width of the Text component.
@@ -149,8 +149,6 @@ OH_ArkUI_StyledString_PopTextStyle(styledString);
 ## Destroying an Object
 
 The **Text** component does not manage the lifecycle of any objects involved in this process. You are responsible for this.  
-
-The text engine APIs involved all have corresponding destruction methods.
 
 **OH_Drawing_DestroyTextStyle(OH_Drawing_TextStyle *style)**: destroys the text style object.
 

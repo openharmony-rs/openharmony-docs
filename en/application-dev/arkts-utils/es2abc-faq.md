@@ -116,7 +116,7 @@ The triggering conditions are related to the code structure, resource consumptio
 3. Locate reports in the list whose names contain **es2abc**.
 4. Double-click the report to view the crash stack.
 
-   If a function is called multiple times consecutively (for example, A → A → A…), the stack may overflow due to deep recursion.
+   If a function is called multiple times consecutively (for example, A → A → A...), the stack may overflow due to deep recursion.
 
 
 > **NOTE**
@@ -138,7 +138,7 @@ Typical code structures that may trigger stack overflow include:
 
 3. Overlong chain expression
    - A large number of consecutive type assertion chains. For example, `a as Int as Int as Int ...`.
-   - Other similar chain operations that cause an extremely deep expression tree
+   - Other similar chain operations that cause an extremely deep expression tree.
 
 When a stack overflow occurs, check the crash log for repeated invocations of the same function. If the same call chain is repeated dozens or even hundreds of times, the parser triggers an abnormally deep recursion while processing a piece of source code. Finally, the call depth exceeds the limit of the stack space, causing a stack overflow and crash.
 

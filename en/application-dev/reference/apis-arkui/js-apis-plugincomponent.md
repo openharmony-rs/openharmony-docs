@@ -47,7 +47,7 @@ Defines a key-value pair data structure that conforms to JSON format.
 
 | Name   | Type  | Mandatory| Description                       |
 | ------- | ------ | ---- | --------------------------- |
-|  [key: string]  | number \| string \| boolean \| [] \| [KVObject](#kvobject)  | No  | Key-value pair.<br>**number**: numeric value type.<br> **string**: string value type. The value can be an empty string.<br> **boolean**: boolean value type.<br> **[]**: empty array value.<br>**[KVObject](#kvobject)**: nested KVObject value type.           |
+|  [key: string]  | number \| string \| boolean \| [] \| [KVObject](#kvobject)  | No  | Key-value pair.<br>**number**: numeric value type.<br> **string**: string value type. The value can be an empty string.<br> **boolean**: boolean value type.<br> **[]**: empty array value.<br>[KVObject](#kvobject): nested KVObject value type.           |
 
 
 ### PushParameters

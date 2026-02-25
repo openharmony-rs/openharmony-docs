@@ -10,7 +10,7 @@
 > 
 > The initial APIs of this module are supported since API version 22. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
-For details about the development, see [\@Env](../../../ui/arkts-env-system-property.md).
+For details about the developer guide, see [\@Env Developer Guide](../../../ui/arkts-env-system-property.md).
 
 
 ## \@Env
@@ -63,6 +63,7 @@ Defines the @Env decorator type.
 
 **Error codes**
 
+For details, see [@Env Error Codes](../errorcode-env.md).
 | ID| Error Message|
 | ------- | -------------------------------- |
 |140000|Invalid key for @Env|
@@ -77,4 +78,4 @@ Defines the enumerated values of the environment variable.
 
 | Name       | Value  | Description                                      |
 | ----------- | ---- | ------------------------------------------------------------ |
-|BREAK_POINT|'system.arkui.breakpoint'|[@Env](#env) variable parameter. You can obtain the [WindowSizeLayoutBreakpointInfo](../js-apis-arkui-observer.md#windowsizelayoutbreakpointinfo22) instance through \@Env(SystemProperties.BREAK_POINT).<br>When this decorator is declared in [\@Component](../../../ui/state-management/arkts-create-custom-components.md#component) or [\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2), it is used to obtain the size layout breakpoint information of the window where the current custom component is located.
+|BREAK_POINT|'system.arkui.breakpoint'|[@Env](#env) variable parameter. You can obtain the [WindowSizeLayoutBreakpointInfo](../js-apis-arkui-observer.md#windowsizelayoutbreakpointinfo22) instance through \@Env(SystemProperties.BREAK_POINT).<br>When this decorator is declared in [\@Component](../../../ui/state-management/arkts-create-custom-components.md#component) or [\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2), it is used to obtain the size layout breakpoint information of the window where the current custom component is located.|

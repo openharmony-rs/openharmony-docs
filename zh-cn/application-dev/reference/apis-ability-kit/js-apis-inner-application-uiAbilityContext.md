@@ -1518,7 +1518,7 @@ restoreWindowStage(localStorage: LocalStorage): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| localStorage | LocalStorage | 是 | 用于恢复window stage的存储数据。 |
+| localStorage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 是 | 用于恢复window stage的存储数据。 |
 
 **错误码：**
 

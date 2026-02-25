@@ -25,5 +25,5 @@ typedef struct Input_MouseEvent Input_MouseEvent
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Input_CreateMouseEvent](capi-oh-input-manager-h.md#oh_input_createmouseevent) | 创建鼠标事件对象。 |
+| [OH_Input_CreateMouseEvent](capi-oh-input-manager-h.md#oh_input_createmouseevent) | 创建鼠标事件对象。通过调用[OH_Input_DestroyMouseEvent](capi-oh-input-manager-h.md#oh_input_destroymouseevent)销毁鼠标事件对象。 |
 | [OH_Input_DestroyMouseEvent](capi-oh-input-manager-h.md#oh_input_destroymouseevent) | 销毁鼠标事件对象。 |

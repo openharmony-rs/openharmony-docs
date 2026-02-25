@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-CameraInput defines the camera input object.
+**CameraInput** defines the camera input object.
 
 It provides camera device information used in [Session](arkts-apis-camera-Session.md).
 
@@ -326,7 +326,7 @@ Unsubscribes from CameraInput error events.
 | -------- | -------------------------------- | --- | ------------------------------------------- |
 | type     | string                           | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a CameraInput instance is created. This event is triggered and the result is returned when an error occurs on the camera device. For example, if the camera device is unavailable or a conflict occurs, the error information is returned.|
 | camera   | [CameraDevice](arkts-apis-camera-i.md#cameradevice)    | Yes  | Camera device.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No  | Callback used to return the result. If this parameter is specified, only the corresponding callback will be unregistered (the callback object cannot be an anonymous function); otherwise, all registered callbacks will be unregistered.|
 
 **Example**
 

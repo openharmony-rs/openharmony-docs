@@ -802,7 +802,7 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    #endif // MYAPPLICATION_UITIMER_H
    ```
 
-7. Use the page structure from the [Integrating with ArkTS Page](ndk-access-the-arkts-page.md) section, and continue with the [timer module simple implementation](ndk-embed-arkts-components.md), making the **Refresh** component the parent component of the text list.
+7. Use the page structure described in [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md), making the **Refresh** component the parent component of the text list.
    <!-- @[mixed_refresh_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/MixedRefreshExample.h) -->
    
    ``` C

@@ -6,7 +6,7 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
-The request module provides applications with basic upload, download, and background transmission agent capabilities.
+The **request** module provides applications with basic upload, download, and background transmission agent capabilities.
 
 - Currently, the **request** module cannot be called in extensions.
 
@@ -2380,7 +2380,7 @@ Defines the download task configuration.
 | enableRoaming | boolean | No| Yes| Whether download is allowed on a roaming network. The value **true** means the download is allowed, and **false** means the opposite. The default value is **false**.|
 | description | string | No| Yes| Description of the download session. The default value is an empty string.|
 | filePath<sup>7+</sup> | string | No| Yes| Path where the downloaded file is stored. The default value is the cache directory of the caller (that is, the input **context**). The default file name is the part truncated from the last slash (/) in the URL.<br>- In the FA model, use the [Context.getCacheDir](../apis-ability-kit/js-apis-inner-app-context.md#contextgetcachedir) method to obtain the application storage path.<br>- In the Stage model, use the **AbilityContext** class in [Context (Context Base Class of the Stage Model)](../apis-ability-kit/js-apis-inner-application-context.md) to obtain the file path.|
-| networkType | number | No| Yes| Network type allowed for download. The default value can be **NETWORK_MOBILE** or **NETWORK_WIFI**.<br>- **NETWORK_MOBILE**: 0x00000001<br>- **NETWORK_WIFI**: 0x00010000|
+| networkType | number | No| Yes| Network type that can be used for download. The allowed network type is determined by bitwise operation of [network type constants](#constants). The following settings are supported:<br>- Only the cellular network is supported. The parameter is **NETWORK_MOBILE** or **0x00000001**.<br>- Only WLAN is supported. The parameter is **NETWORK_WIFI** or **0x00010000**.<br>- Both cellular network and WLAN are supported, which is the default settings. The parameter is **NETWORK_MOBILE \| NETWORK_WIFI** or **0x00010001**.<br>When the parameter is **NETWORK_MOBILE \| NETWORK_WIFI**, the **enableMetered** and **enableRoaming** parameters do not take effect.|
 | title | string | No| Yes| Download task name.|
 | background<sup>9+</sup> | boolean | No| Yes| Whether to enable the background task notification. When this parameter is enabled, the download status is displayed in the notification panel. The value **true** means the parameter is enabled, and **false** means the opposite. The default value is **false**.|
 
@@ -5617,7 +5617,7 @@ Creates a group based on [GroupConfig](#requestagentgroupconfig15). This API use
 
 | Type               | Description                              |
 |-------------------|----------------------------------|
-| Promise\<string\> | Promise used to return the result.|
+| Promise\<string\> | Promise used to return the ID of the created group.|
 
 **Error codes**
 

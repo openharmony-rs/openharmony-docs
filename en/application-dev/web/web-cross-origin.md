@@ -118,8 +118,8 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
 
   2. The application resource directory and its subdirectories, which can be obtained through [Context.resourceDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context), such as:
 
-  * /data/storage/el1/bundle/entry/resource/resfile
-  * /data/storage/el1/bundle/entry/resource/resfile/example
+  * /data/storage/el1/bundle/entry/resources/resfile
+  * /data/storage/el1/bundle/entry/resources/resfile/example
 
   3. Since API version 21, the application cache directory is obtained through [Context.cacheDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context). Example subdirectories are as follows:
 

@@ -6,10 +6,6 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
-> **NOTE**
->
-> - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The initial APIs of this interface are supported since API version 9.
 
 AVRecorder is a class for audio and video recording management. It provides APIs to record media assets. Before calling any API in AVRecorder, you must use [createAVRecorder()](arkts-apis-media-f.md#mediacreateavrecorder9) to create an AVRecorder instance.
 
@@ -17,6 +13,8 @@ For details about the audio and video recording demo, see [Audio Recording](../.
 
 > **NOTE**
 >
+> - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this interface are supported since API version 9.
 > To use the camera to record videos, the camera module is required. For details about how to use the APIs provided by the camera module, see [Camera Management](../apis-camera-kit/arkts-apis-camera.md).
 
 ## Modules to Import
@@ -1359,7 +1357,7 @@ avRecorder.on('audioCapturerChange',  (audioCapturerChangeInfo: audio.AudioCaptu
 
 off(type: 'audioCapturerChange', callback?: Callback<audio.AudioCapturerChangeInfo>): void
 
-Subscribes to audio capturer configuration changes. This API uses an asynchronous callback to return the result.
+Unsubscribes from audio capturer configuration changes. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.AVRecorder
 

@@ -447,7 +447,7 @@ Listens for the start and end of scroll events of a specific scrollable componen
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.|
-| options  | [observer.ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
+| options  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
 | callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | Yes  | Callback used to return the result. Callback used to return the information about the scroll event.                |
 
 **Example**
@@ -469,7 +469,7 @@ Unregisters the listener for the start and end of scroll events of a specific sc
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.|
-| options  | [observer.ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
+| options  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
 | callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | No  | Callback used to return the result. It returns the information about the scroll event. If no parameter is provided, all scroll event listeners are unregistered.                |
 
 **Example**
@@ -608,14 +608,14 @@ struct Index {
       Text(this.message)
         .fontSize(24)
         .fontWeight(FontWeight.Bold)
-      Button('Subscribe to Screen Pixel Density Changes')
+      Button ('Subscribe to Screen Pixel Density Changes')
         .margin({ bottom: 10 })
         .onClick(() => {
           this.message = 'Listener registered';
           // Add event listeners.
           this.getUIContext().getUIObserver().on('densityUpdate', this.densityUpdateCallback);
         })
-      Button('Unsubscribe from Screen Pixel Density Changes')
+      Button ('Unsubscribe from Screen Pixel Density Changes')
         .onClick(() => {
           this.message = 'Listener not registered';
           // Remove event listeners.
@@ -1675,6 +1675,174 @@ Unregisters the listener for tab switching events of the specified [Tabs](arkui-
 **Example**
 
 See the example for [on('tabChange')](#ontabchange22-1).
+
+## on('textChange')<sup>22+</sup>
+
+on(type: 'textChange', callback: Callback\<observer.TextChangeEventInfo\>): void
+
+Listens globally for text input field changes events.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                 | Mandatory| Description                                                                    |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | Yes  | Event type. The value is fixed at **'textChange'**, indicating text input field changes events.|
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | Yes  | Callback used to return the text change information.|
+
+**Example**
+```ts
+import { UIObserver } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextUiObserver {
+  observer: UIObserver = this.getUIContext().getUIObserver();
+  build() {
+    Column() {
+      TextArea({ text: "Hello World TextArea" })
+        .width(336)
+        .height(56)
+        .margin({bottom:5})
+        .backgroundColor('#FFFFFF')
+        .id("TestId1")
+      TextInput({ text: "Hello World TextInput" })
+        .width(336)
+        .height(56)
+        .margin({bottom:5})
+        .backgroundColor('#FFFFFF')
+        .id("TestId2")
+      Search({ value: "Hello World Search" })
+        .width(336)
+        .height(56)
+        .margin({bottom:5})
+        .backgroundColor('#FFFFFF')
+        .id("TestId3")
+      Row() {
+        // Enable global listening.
+        Button('UIObserver on')
+          .onClick(() => {
+            this.observer.on('textChange', (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+        // Disable global listening.
+        Button('UIObserver off')
+          .onClick(() => {
+            this.observer.off('textChange');
+          })
+      }.margin({bottom:5})
+      // Enable and disable listening for a specific ID.
+      Row() {
+        Button('UIObserver TestId1 on')
+          .onClick(() => {
+            this.observer.on('textChange', { id: "TestId1" }, (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+
+        Button('UIObserver TestId1 off')
+          .onClick(() => {
+            this.observer.off('textChange', { id: "TestId1" });
+          })
+      }.margin({bottom:5})
+      Row() {
+        Button('UIObserver TestId2 on')
+          .onClick(() => {
+            this.observer.on('textChange', { id: "TestId2" }, (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+
+        Button('UIObserver TestId2 off')
+          .onClick(() => {
+            this.observer.off('textChange', { id: "TestId2" });
+          })
+      }.margin({bottom:5})
+      Row() {
+        Button('UIObserver TestId3 on')
+          .onClick(() => {
+            this.observer.on('textChange', { id: "TestId3" }, (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+
+        Button('UIObserver TestId3 off')
+          .onClick(() => {
+            this.observer.off('textChange', { id: "TestId3" });
+          })
+      }.margin({bottom:5})
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+## off('textChange')<sup>22+</sup>
+
+off(type: 'textChange', callback?: Callback\<observer.TextChangeEventInfo\>): void
+
+Unregisters the global listener for text input field changes events.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                 | Mandatory| Description                                                                    |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | Yes  | Event type. The value is fixed at **'textChange'**, indicating text input field changes events.|
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | No  | Target listener to unregister. If no parameter is provided, all listeners registered for text input field changes events are unregistered.|
+
+**Example**
+
+For details, see [on('textChange')](#ontextchange22).
+
+## on('textChange')<sup>22+</sup>
+
+on(type: 'textChange', identity: observer.ObserverOptions, callback:Callback\<observer.TextChangeEventInfo\>): void
+
+Listens on the text input component with the specified ID.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                 | Mandatory| Description                                                                    |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | Yes  | Event type. The value is fixed at **'textChange'**, indicating text input field changes events.|
+| identity | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | ID of the text input component to be listened on.                            |
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | Yes  | Callback used to return the result. Returns the text change information.|
+
+**Example**
+
+For details, see [on('textChange')](#ontextchange22).
+
+## off('textChange')<sup>22+</sup>
+
+off(type: 'textChange', identity: observer.ObserverOptions, callback?: Callback\<observer.TextChangeEventInfo\>): void
+
+Disables the listener for the text input component with the specified ID.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                 | Mandatory| Description                                                                    |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | Yes  | Event type. The value is fixed at **'textChange'**, indicating text input field changes events.|
+| identity | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | ID of the text input component to be listened on.|
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | No  | Target listener to unregister. If no parameter is passed, all listeners for the text input component with the specified IDs are canceled.|
+
+**Example**
+
+For details, see [on('textChange')](#ontextchange22).
 
 ## on('beforePanStart')<sup>19+</sup>
 

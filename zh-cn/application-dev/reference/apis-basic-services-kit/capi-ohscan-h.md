@@ -10,6 +10,8 @@
 
 声明用于发现和连接扫描仪、从扫描仪扫描图像、获取页面扫描进度和设置扫描图像参数等功能的API
 
+**引用文件：** <BasicServicesKit/ohscan.h>
+
 **库：** libohscan.so
 
 **系统能力：** SystemCapability.Print.PrintFramework
@@ -281,7 +283,7 @@ int32_t OH_Scan_StartScan(const char* scannerId, bool batchMode)
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**需要权限：** code ohos.permission.PRINT
+**需要权限：** ohos.permission.PRINT
 
 **起始版本：** 12
 

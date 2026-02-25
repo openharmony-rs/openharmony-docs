@@ -51,7 +51,7 @@ Read the [API reference](../../reference/apis-image-kit/arkts-apis-image-ImageSo
        return fd;
      }
      ```
-     
+      
    - Method 3: Obtain the array buffer of the resource file through the resource manager. For details, see [ResourceManager API Reference](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfilecontent9-1). To use this method, you must import the \@kit.LocalizationKit module first.
 
      <!-- @[get_fileBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
@@ -72,7 +72,7 @@ Read the [API reference](../../reference/apis-image-kit/arkts-apis-image-ImageSo
        }
      }
      ```
-     
+      
    - Method 4: Obtain the raw file descriptor of the resource file through the resource manager. For details, see [ResourceManager API Reference](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9-1). To use this method, you must import the \@kit.LocalizationKit module first.
    
      <!-- @[get_RawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
@@ -143,7 +143,7 @@ Read the [API reference](../../reference/apis-image-kit/arkts-apis-image-ImageSo
      let decodingOptions: image.DecodingOptions = {
        editable: true,
        desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
-       // If AUTO is passed in, decoding is performed based on the image format and device capabilities. If the image is an HDR resource and the device supports HDR decoding, an HDR PixelMap is obtained after decoding.
+       // If AUTO is passed, decoding is performed based on the image format and device capabilities. If the image is an HDR resource and the device supports HDR decoding, an HDR PixelMap is obtained after decoding.
        desiredDynamicRange: image.DecodingDynamicRange.HDR,
      };
    
@@ -166,7 +166,7 @@ Read the [API reference](../../reference/apis-image-kit/arkts-apis-image-ImageSo
      }
    }
    ```
-   
+      
    After the decoding is complete and the PixelMap is obtained, you can perform subsequent [image processing](image-transformation.md).
    
 5. Release the PixelMap and ImageSource instances.
@@ -187,6 +187,14 @@ Read the [API reference](../../reference/apis-image-kit/arkts-apis-image-ImageSo
    > **NOTE**
    > 1. When to release the ImageSource instance: After successfully executing **createPixelMap** and obtaining the PixelMap instance, if you are certain that no other APIs of ImageSource will be used, you can manually release the ImageSource instance. Since the PixelMap instance obtained from decoding is independent, releasing the ImageSource instance will not make the PixelMap instance unusable.
    > 2. When to release the PixelMap instance: If you are using the [**Image** component](../../reference/apis-arkui/arkui-ts/ts-basic-components-image.md) for displaying images, there is no need to manually release the PixelMap instance, as the Image component will automatically manage the PixelMap instance passed to it. If your application handles the PixelMap instance on its own, you are advised to manually release the PixelMap instance of the old page during page transitions or when the application switches to the background. In scenarios where memory resources are tight, you are advised to release the PixelMap instances of all invisible pages except the current one.
+
+## Samples
+
+The following samples are provided to help you better understand how to develop image decoding:
+
+- [Image Editing (ArkTS)](https://gitcode.com/openharmony/codelabs/tree/master/Media/ImageEdit)
+
+- [Image Editing (JS)](https://gitcode.com/openharmony/codelabs/tree/master/Media/ImageEditorTemplate)
 
 <!--RP1-->
 <!--RP1End-->

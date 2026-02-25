@@ -45,7 +45,8 @@ When an API related to a continuous task is called, the read or write operation 
 
 1. The data object fails to be read or written during IPC.
 2. The memory fails to be allocated for the read or write operation.
-<br>During RPC, the sender can use the **write()** method provided by **MessageParcel** to write data in specific format to a **MessageParcel** object. The receiver can use the **read()** method provided by **MessageParcel** to read data in specific format from a **MessageParcel** object.
+
+   During RPC, the sender can use the **write()** method provided by **MessageParcel** to write data in specific format to a **MessageParcel** object. The receiver can use the **read()** method provided by **MessageParcel** to read data in specific format from a **MessageParcel** object.
 
 **Solution**
 
@@ -151,7 +152,7 @@ This error code is reported when notification verification in a continuous task 
 
 **Solution**
 
-1. Check for the continuous task resources **ohos.backgroundtaskmgr.resources**.
+1. Check whether the continuous task resource **ohos.backgroundtaskmgr.resources** exists.
 2. Try again later or restart the device.
 
 ## 9800007 Continuous Task Storage Failure
@@ -234,7 +235,8 @@ When an API related to a transient task is called, the read or write operation f
 
 1. The data object fails to be read or written during IPC.
 2. The memory fails to be allocated for the read or write operation.
-<br>During RPC, the sender can use the **write()** method provided by **MessageParcel** to write data in specific format to a **MessageParcel** object. The receiver can use the **read()** method provided by **MessageParcel** to read data in specific format from a **MessageParcel** object.
+
+   During RPC, the sender can use the **write()** method provided by **MessageParcel** to write data in specific format to a **MessageParcel** object. The receiver can use the **read()** method provided by **MessageParcel** to read data in specific format from a **MessageParcel** object.
 
 **Solution**
 
@@ -292,7 +294,8 @@ When an API related to efficiency resources is called, the read or write operati
 
 1. The data object fails to be read or written during IPC.
 2. The memory fails to be allocated for the read or write operation.
-<br>During RPC, the sender can use the **write()** method provided by **MessageParcel** to write data in specific format to a **MessageParcel** object. The receiver can use the **read()** method provided by **MessageParcel** to read data in specific format from a **MessageParcel** object.
+
+   During RPC, the sender can use the **write()** method provided by **MessageParcel** to write data in specific format to a **MessageParcel** object. The receiver can use the **read()** method provided by **MessageParcel** to read data in specific format from a **MessageParcel** object.
 
 **Solution**
 

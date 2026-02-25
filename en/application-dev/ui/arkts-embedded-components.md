@@ -87,7 +87,7 @@ export struct Embedded {
       }
       .height('100%')
     }
-    // ...
+      // ...
   }
 }
 ```
@@ -188,13 +188,12 @@ The following is an implementation of the entry component of the provider applic
 ``` TypeScript
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 
-let storage = LocalStorage.getShared();
-
-@Entry(storage)
+@Entry()
 @Component
 struct Extension {
   @State message: string = 'EmbeddedUIExtensionAbility Index';
-  private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
+  private storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  private session: UIExtensionContentSession | undefined = this.storage?.get<UIExtensionContentSession>('session');
 
   build() {
     Column() {

@@ -886,17 +886,19 @@ selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attri
 
 showInSubWindow(showInSubWindow:Optional\<boolean>)
 
-设置Select的Menu是否显示在子窗中。
+设置下拉菜单是否显示在子窗中。未通过该接口设置时，下拉菜单默认不显示在子窗中。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**设备行为差异：** 在PC/2in1设备中可生效，在其他设备类型中不生效。
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| showInSubWindow  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 设置Select的Menu是否显示在子窗中。<br>true代表Select的Menu显示在子窗中，仅对2in1设备生效。<br>false代表Select的Menu不显示在子窗中。<br>默认值：2in1设备为true，其他设备为false。 |
+| showInSubWindow  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 设置下拉菜单是否显示在子窗中。<br>true代表下拉菜单显示在子窗中。<br>false代表下拉菜单不显示在子窗中。 |
 
 ## ArrowPosition<sup>10+</sup>枚举说明
 

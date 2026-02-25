@@ -975,7 +975,7 @@ Memory copy failed.
 
 **错误信息**
 
-Unsupported operation.
+Unsupported operation, e.g. on cross-platform.
 
 **错误描述**
 
@@ -1121,7 +1121,7 @@ Bad source.
 
 **错误信息**
 
-Unsupported mimetype.
+Unsupported MIME type.
 
 **错误描述**
 
@@ -1175,7 +1175,7 @@ Unsupported allocator type, e.g., use share memory to decode a HDR image as only
 
 **错误信息**
 
-Unsupported metadata. For example, the property key is not supported, or the property value is invalid.
+Unsupported metadata.
 
 **错误描述**
 
@@ -1207,6 +1207,20 @@ Unsupported options, e.g, cannot convert image into desired pixel format.
 **处理步骤**
 
 检查选项参数配置。
+
+## 7700204 无效参数
+
+**错误信息**
+
+Invalid parameter. Possible causes: 1. The index is negative. 2. The index is greater than or equal to the number of frames in the image.
+
+**可能原因**
+
+输入的参数无效。
+
+**处理步骤**
+
+检查并重新输入正确的参数。
 
 ## 7700301 解码失败
 

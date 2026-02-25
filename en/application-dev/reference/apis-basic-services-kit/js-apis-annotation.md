@@ -48,17 +48,17 @@ Annotates the minimum available version supported by an API. This annotation cap
   @Available({minApiVersion: '22'}) // Annotates the minimum available version of the class. The default system type is OpenHarmony.
   class MyClass {}
 
-  // Not recommended: If the compatibleSdkVersion value set in the build-profile.json5 file in the project root directory is less than 22 and the myFunc method is directly called without version check, the compiler throws an alarm at the call of myFunc, indicating that the method may fail to run on devices of earlier versions.
+  // Not recommended: If the compatibleSdkVersion value set in the build-profile.json5 file in the project root directory is less than 22 and the myFunc method is directly called without version check, the compiler throws a warning at the call of myFunc, indicating that the method may fail to run on devices of earlier versions.
   myFunc();
 
-  // Recommended approach 1: Use deviceInfo.sdkApiVersion to obtain the API version of system software for judgment, which can prevent exceptions on devices of earlier versions and eliminate compilation alarms.
+  // Recommended approach 1: Use deviceInfo.sdkApiVersion to obtain the API version of system software for judgment, which can prevent exceptions on devices of earlier versions and eliminate compilation warnings.
   if (deviceInfo.sdkApiVersion >= 22) {
     myFunc();
   } else {
     // Select an approach for devices of earlier versions based on the service logic.
   }
 
-  // Recommended approach 2: Annotate the start version information of @Available on the parent function (or class) where myFunc is called. If the new version number is not lower than the minimum available version of myFunc, the compilation alarm is cleared.
+  // Recommended approach 2: Annotate the start version information of @Available on the parent function (or class) where myFunc is called. If the new version number is not lower than the minimum available version of myFunc, the compilation warning is cleared.
   @Available({minApiVersion: 'OpenHarmony 22'})
   function myNewFunc() {
     myFunc();

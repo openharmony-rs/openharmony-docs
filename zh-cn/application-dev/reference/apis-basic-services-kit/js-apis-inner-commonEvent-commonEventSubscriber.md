@@ -22,7 +22,7 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
-let subscriber: commonEventManager.CommonEventSubscriber;
+let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // 订阅者信息
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
 	events: ['event']
@@ -1104,8 +1104,8 @@ getSubscribeInfoSync(): CommonEventSubscribeInfo
 <!--code_no_check-->
 
 ```ts
-let subscribeInfo = subscriber.getSubscribeInfoSync();
-console.info(`Succeeded in getting subscribe info, subscribe info is ${JSON.stringify(subscribeInfo)}`);
+let subscribeInfo1 = subscriber.getSubscribeInfoSync();
+console.info(`Succeeded in getting subscribe info, subscribe info is ${JSON.stringify(subscribeInfo1)}`);
 ```
 
 ### finishCommonEvent<sup>9+</sup>

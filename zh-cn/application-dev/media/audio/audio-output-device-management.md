@@ -37,10 +37,11 @@ let audioRoutingManager = audioManager.getRoutingManager();  // 再调用AudioMa
 | BLUETOOTH_SCO | 7 | 蓝牙设备SCO（Synchronous&nbsp;Connection&nbsp;Oriented）连接。 | 
 | BLUETOOTH_A2DP | 8 | 蓝牙设备A2DP（Advanced&nbsp;Audio&nbsp;Distribution&nbsp;Profile）连接。 | 
 | USB_HEADSET | 22 | USB耳机，带麦克风。 | 
+| NEARLINK | 31 | 星闪设备。 | 
 
 ### 获取输出设备信息
 
-使用getDevices()方法可以获取当前所有输出设备的信息。
+使用[getDevices](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getdevices9)方法可以获取当前所有输出设备的信息。
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -113,7 +114,7 @@ async function selectOutputDevice() {
 
 ### 获取最高优先级输出设备信息
 
-使用getPreferOutputDeviceForRendererInfo()方法, 可以获取当前最高优先级的输出设备。
+使用[getPreferOutputDeviceForRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getpreferoutputdeviceforrendererinfo10)方法, 可以获取当前最高优先级的输出设备。
 
 > **说明：**
 >
@@ -158,7 +159,7 @@ audioRoutingManager.off('preferOutputDeviceChangeForRendererInfo');
 ```
 
 ## 通过AudioSession查询和监听音频输出设备
-应用使用播放器的SDK播放音频流，不持有AudioRenderer对象，因此无法灵活控制播放设备的选择和状态监听。从API version 20开始，AudioSession不仅增加了焦点管理功能，还提供了音频输出设备管理功能，包括设置默认输出设备和监听设备变化。请参考以下文档获取更多信息：
+应用使用播放器的SDK播放音频流，不持有[AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md)对象，因此无法灵活控制播放设备的选择和状态监听。从API version 20开始，AudioSession不仅增加了焦点管理功能，还提供了音频输出设备管理功能，包括设置默认输出设备和监听设备变化。请参考以下文档获取更多信息：
 - ArkTS API：[AudioSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md)
 - C API：[native_audio_session_manager.h](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md)
 
@@ -215,7 +216,7 @@ console.info('getDefaultOutputDevice Success, deviceType: ${deviceType}');
 
 > **说明：**
 >
->`currentOutputDeviceChangedCallback`包含设备变更的原因及推荐的后续操作。应用应根据不同的变更原因进行处理，并按系统推荐的操作继续或停止当前播放。
+> `currentOutputDeviceChangedCallback`包含设备变更的原因及推荐的后续操作。应用应根据不同的变更原因进行处理，并按系统推荐的操作继续或停止当前播放。
 
 ```ts
 import { audio } from '@kit.AudioKit';

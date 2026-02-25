@@ -42,7 +42,7 @@ setAlwaysOnVpnEnabled(enable: boolean, bundleName: string): Promise\<void>
 | 参数名     | 类型    | 必填 | 说明                                                    |
 | ---------- | ------- | ---- | ------------------------------------------------------- |
 | enable     | boolean | 是   | always on启用或禁用。true：always on启用；false：always on禁用。                                   |
-| bundleName | string  | 是   | 设置了always on vpn的包名，通常指三方应用的bundleName。 |
+| bundleName | string  | 是   | 设置了always on vpn的包名，是指三方应用的bundleName。 |
 
 **返回值：**
 

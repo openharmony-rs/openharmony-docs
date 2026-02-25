@@ -7,12 +7,11 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
 
-应用开发过程中，需要使用字符串、颜色、字体、间距和图标等资源。不同设备或配置下，这些资源的值会有所不同。本文档对资源类型进行介绍，并提供资源开发指导。
+## 功能介绍
 
-根据来源差异，可以将资源分为：
+在应用开发中，常需使用字符串、颜色、字体、间距和图标等资源。为了让应用在不同设备（如手机、平板、车机）和配置（如语言、屏幕密度、颜色模式）下都能提供最佳体验，系统支持通过资源动态匹配机制，自动为各类场景选取最合适的资源。本文档将介绍资源类型与组织方式，并提供资源开发指导。
 
-- 应用资源：开发者在应用中自定义的资源，可以利用资源文件管理资源在不同的设备或配置中的表现。
-- 系统资源：系统提供的资源，开发者可以通过[主题图标库](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol/)获取系统symbol图标资源信息、通过[系统资源分层设计表](https://gitcode.com/openharmony/docs/blob/master/zh-cn/design/ux-design/design-resources.md)获取系统颜色、间距、圆角等资源信息。此外，系统颜色资源还可以通过[系统色彩全量表](https://developer.huawei.com/consumer/cn/doc/design-guides/color-0000001776857164#section17672143841113)获取，系统色彩全量表与系统资源分层设计表内的资源不重合，均为推荐使用的系统颜色资源。<br>表格中未列出的其他系统资源均为系统组件和底层能力参数，推荐开发者优先使用上述表格中提供的系统资源。
+根据来源差异，资源可分为系统资源和应用资源。系统资源是系统提供的资源，<!--RP2-->开发者可以在[global_system_resources](https://gitcode.com/openharmony/global_system_resources/tree/master/systemres/main/resources/base/element)中获取系统symbol图标、颜色、间距、字符等资源信息。<!--RP2End-->其中symbol图标还可通过[SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md)对图标颜色等进一步设置。应用资源是开发者在应用中自定义的资源，可以利用资源文件管理资源在不同的设备或配置中的表现。
 
 ## 资源分类
 
@@ -408,20 +407,14 @@ string资源配置attr属性示例如下，其中string1字符串被标记为不
 
 ### 系统资源
 
-开发者可以通过[主题图标库](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol/)获取系统symbol图标资源信息、通过[系统资源分层设计表](https://gitcode.com/openharmony/docs/blob/master/zh-cn/design/ux-design/design-resources.md)获取系统颜色、间距、圆角等资源信息。此外，系统颜色资源还可以通过[系统色彩全量表](https://developer.huawei.com/consumer/cn/doc/design-guides/color-0000001776857164#section17672143841113)获取，系统色彩全量表与系统资源分层设计表内的资源不重合，均为推荐使用的系统颜色资源。
-
-获取的symbol图标资源可通过[SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md)对图标颜色等进一步设置。
-
 对于系统资源，可以通过`$r('sys.type.name')`的形式访问。其中，sys表示系统资源，type为资源类型，取值包括“color”、“float”、“string”、“media”、“symbol”，name为资源名称。
 
 > **说明：**
-> - 上述表格中未列出的其他系统资源均为系统组件和底层能力参数，推荐开发者优先使用上述表格中提供的系统资源。
->
 > - 对于系统预置应用，建议使用系统资源；对于三方应用，可以根据需要选择使用系统资源或自定义应用资源。
 >
 > - 仅声明式开发范式支持使用系统资源。
 >
-> - 当前，界面显示时默认使用的系统字体是鸿蒙黑体（HarmonyOS Sans），支持的字符范围是[中文编码字符集GB18030-2022（级别一/级别二）](https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=A1931A578FE14957104988029B0833D3)。若要显示的字符不在鸿蒙黑体支持的字符范围内，系统会在其他支持该字符的字体中选择优先级最高的字体用来显示。关于系统字体的优先级顺序，可以查看设备上的配置文件`system/etc/fontconfig.json`。
+> - 界面显示时默认使用的系统字体是鸿蒙黑体（HarmonyOS Sans），支持的字符范围是[中文编码字符集GB18030-2022（级别一/级别二）](https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=A1931A578FE14957104988029B0833D3)。若要显示的字符不在鸿蒙黑体支持的字符范围内，系统会在其他支持该字符的字体中选择优先级最高的字体用来显示。关于系统字体的优先级顺序，可以查看设备上的配置文件`/system/etc/fontconfig.json`。
 
 <!-- @[system_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Index.ets) -->
 
