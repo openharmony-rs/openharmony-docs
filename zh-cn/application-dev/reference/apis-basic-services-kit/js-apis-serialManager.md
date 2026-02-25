@@ -606,7 +606,7 @@ function readSync() {
 
 write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-向串口设备同步写数据，每次写入数据长度不超过4kb，数据过大会导致数据丢失，长数据建议分包写入。
+向串口设备异步写数据，每次写入数据长度不超过4kb，数据过大会导致数据丢失，长数据建议分包写入。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
