@@ -8,8 +8,9 @@
 
 > **注意**：
 >
-> 为了避免后续修改代码影响现网问题分析定位，建议开发者在版本发布时，本地备份build/default/cache/default/default@XXXCompileArkTS/esmodule/release/obfuscation 路径下的全部内容； 有条件的可以直接备份release目录。
-> 静态字节码混淆，备份build/default/cache/default/default@CompileSta ticArkTS/obfuscation路径下的全部内容；有条件的可以直接备份default@CompileStaticArkTS目录。 
+> 为了避免后续修改代码影响现网问题分析定位，建议开发者在版本发布时，本地备份build/default/cache/default/default@XXXCompileArkTS/esmodule/release/obfuscation路径下的全部内容；有条件的可以直接备份release目录。
+>
+> 静态字节码混淆，备份build/default/cache/default/default@CompileStaticArkTS/obfuscation路径下的全部内容；有条件的可以直接备份default@CompileStaticArkTS目录。
 
 ## 字节码混淆开启步骤
 
@@ -22,6 +23,7 @@
 从API version 20开始，字节码混淆能力已在系统中集成，从API version 23开始，静态字节码混淆能力已在系统中集成，可通过以下方式在DevEco Studio开启使用。
 
 * 开启混淆开关
+
     在本模块`build-profile.json5`配置文件中的`arkOptions.obfuscation.ruleOptions`字段中，通过`enable`字段配置是否开启混淆。
 
     <!-- @[set_openObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/build-profile.json5) -->    
@@ -50,7 +52,11 @@
     > 字节码har被集成的时候，不会二次混淆。
 
 * 配置混淆规则
-    **字节码混淆中**，打开字节码混淆开关，仅开启默认混淆功能，默认混淆范围为非顶层作用域的函数、类。如需开启更多混淆功能，请在`files`字段指定的混淆配置文件`obfuscation-rules.txt`中进行选项配置。需要注意的是，不同版本的DevEco Studio，`obfuscation-rules.txt`文件中的默认值可能会有所不同。
+
+    **字节码混淆中**，打开字节码混淆开关，仅开启默认混淆功能，默认混淆范围为非顶层作用域的函数、类。如需开启更多混淆功能，请在`files`字段指定的混淆配置文件`obfuscation-rules.txt`中进行选项配置。
+    
+    需要注意的是，不同版本的DevEco Studio，`obfuscation-rules.txt`文件中的默认值可能会有所不同。
+    
     以DevEco Studio5.0.3.600及更高版本为例，混淆配置文件如下所示，该配置内容表示开启属性名称混淆、顶层作用域名称混淆、文件名混淆及导入导出名称混淆功能：
 
     ```txt
@@ -74,24 +80,19 @@
     混淆选项的配置推荐参考[字节码混淆选项配置指导](#字节码混淆选项配置指导)，混淆过程中涉及的所有配置文件的详情介绍请参考[三种混淆配置文件](#三种混淆配置文件)。
     > **说明：**
     >
-    > 新建工程默认关闭混淆功能。如果开发者希望开启混淆，需要将模块的`build-profile.json5`文件中的`ruleOptions.enable`字段的值设置为`true`。同时需要将混淆规则配置文件`obfuscation-rules.txt`的`-enable-bytecode-obfuscation`、`-enable-bytecode-obfuscation-debugging`选项按需启用；此外，混淆规则配置文件中默认开启了四项推荐的混淆选项：`-enable-property-obfuscation`、`-enable-toplevel-obfuscation`、`-enable-filename-obfuscation`和`-enable-export-obfuscation`，开发者可以根据需要进一步修改混淆配置。
+    > 新建工程默认关闭混淆功能。如果开发者希望开启混淆，需要将模块的`build-profile.json5`文件中的`ruleOptions.enable`字段的值设置为`true`。同时需要将混淆规则配置文件`obfuscation-rules.txt`的`-enable-bytecode-obfuscation`、`-enable-bytecode-obfuscation-debugging`选项按需启用；
+    >
+    >此外，混淆规则配置文件中默认开启了四项推荐的混淆选项：`-enable-property-obfuscation`、`-enable-toplevel-obfuscation`、`-enable-filename-obfuscation`和`-enable-export-obfuscation`，开发者可以根据需要进一步修改混淆配置。
 
-   **静态字节码混淆中**，打开静态字节码混淆开关，默认所有名称都将被混淆，main函数，构造函数和系统函数除外。如需保留名称，请在files字段指定的混淆配置文件obfuscation-rules.txt中进行选项配置。需要注意的是，不同版本的DevEco Studio，obfuscation-rules.txt文件中的默认值可能会有所不同。
-
+   **静态字节码混淆中**，打开静态字节码混淆开关，默认所有名称都将被混淆，main函数，构造函数和系统函数除外。如需保留名称，请在files字段指定的混淆配置文件`obfuscation-rules.txt`中进行选项配置。
+   
     以DevEco Studio6.0.0.600及更高版本为例，混淆配置文件如下所示，该配置内容表示保留ClassName和该类的所有成员、方法：
     
     ```
     -keep class entry.src.GrammarTest.Toplevel.class.ClassName {*;}
     ```
 
-    开发者还可以使用#在混淆规则文件中进行注释，每行以`#`开头的文本会被当做是注释。使用方法如下，`#`后为注释内容：
-   
-    ```
-    # options:
-    # -disable-obfuscation
-    -keep
-    ```
-    混淆过程中涉及的所有配置文件的详情介绍请参考[静态字节码混淆配置文件](#静态字节码混淆配置文件)。
+    混淆过程中涉及的所有配置文件的详情介绍请参考[三种混淆配置文件](#三种混淆配置文件)。
 
     > **说明：**
     > 
@@ -99,21 +100,25 @@
    
 
 * 指定release编译
+
     字节码混淆当前仅支持release编译，不支持debug编译。即开启混淆开关后，若为release编译则会进行混淆，若为debug编译则不会进行混淆。开发者可参考[指定构建模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)查看和修改构建模式。
 
     > **注意**
     >
     > release编译与debug编译的区别并不只包含混淆，若需要明确应用行为差异是否由于混淆，应该通过开启或关闭混淆开关排查，而不是仅通过切换release或debug编译来区分。
 
+
 ### 三种混淆配置文件
 
 * `obfuscation-rules.txt`
+
     不论是HAP、HAR还是HSP，在本模块的`build-profile.json5`配置文件中都有`arkOptions.obfuscation.ruleOptions.files`字段，用于指定在编译本模块时需要生效的混淆规则，新建工程时会创建默认文件`obfuscation-rules.txt`。
     >注意：
     >
     >静态字节码混淆目前仅支持 `obfuscation-rules.txt`配置文件，且仅支持HAP
 
 * `consumer-rules.txt`
+
     对于HAR和HSP模块，在`build-profile.json5`中包含`arkOptions.obfuscation.consumerFiles`字段，**用于指定当本包被依赖时，期望在其他模块生效的混淆规则**，新建HAR或HSP模块时会创建默认文件`consumer-rules.txt`。它与`obfuscation-rules.txt`字段的区别是：**`obfuscation-rules.txt`在编译本模块时生效，`consumer-rules.txt`在编译依赖本模块的其他模块时生效**。
 
     <!-- @[set_openObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/build-profile.json5) -->      
@@ -131,6 +136,7 @@
     ```
 
 * `obfuscation.txt`
+
     不同于以上两种开发者可自行修改的配置文件，`obfuscation.txt`是在编译构建HAR或HSP时根据`consumer-rules.txt`和依赖模块的混淆规则文件自动生成的文件，它作为一种编译产物存在于发布的HAR或HSP包中，用于在其他应用使用该发布包时应用相应的混淆规则。`obfuscation.txt`内容的生成逻辑请参考[混淆规则合并策略](bytecode-obfuscation.md#混淆规则合并策略)。
 
     > **说明**
@@ -176,7 +182,7 @@
         ```
 
     2. 若代码中使用点语法访问未在ArkTS/TS/JS代码中定义的字段，比如访问native实现的so库，字段固定的json文件与数据库等场景：
-        1. 若在代码中引用so库的api，如`import testNapi from 'library.so'`; `testNapi.foo()`;需要使用`-keep-property-name`，foo保留属性名称。
+        1. 若在代码中引用so库的api，如`import testNapi from 'library.so'`；`testNapi.foo()`;需要使用`-keep-property-name`，foo保留属性名称。
         2. 若在代码中使用json文件中的字段，需要使用`-keep-property-name`保留json文件中的字段名称。
         3. 若在代码中使用数据库相关的字段，需要使用`-keep-property-name`保留数据库中的字段名称。
     3. 若构建HAR模块并发布给其他模块使用的情况，要在HAR模块中的consumer-rules.txt文件中将不能被二次混淆的属性使用`-keep-property-name`保留。consumer-rules.txt文件在构建HAR时会生成obfuscation.txt文件。此HAR被其它模块依赖时，DevEco Studio会解析obfuscation.txt文件，读取文件中的白名单。
