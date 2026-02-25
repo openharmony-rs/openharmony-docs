@@ -432,7 +432,7 @@ void OH_ArkUI_AnimateOption_SetDelay(ArkUI_AnimateOption* option, int32_t value)
 **描述：**
 
 
-设置动画延迟播放时间。
+设置动画延迟播放时间。单位为ms（毫秒）。
 
 **起始版本：** 12
 
