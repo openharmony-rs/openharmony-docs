@@ -1,4 +1,4 @@
-# @ohos.selectionInput.selectionManager (划词管理)
+# @ohos.selectionInput.selectionManager (划词管理)(系统接口)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: SelectionInput-->
@@ -11,8 +11,10 @@
 
 > **说明：**
 >
-> - 本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 仅支持集成了划词扩展的应用调用。
+> - 本模块仅支持PC/2in1设备。
+> - 本模块接口为系统接口。
 
 ## 导入模块
 
@@ -20,9 +22,7 @@
 import { selectionManager } from '@kit.BasicServicesKit';
 ```
 
-## selectionManager
-
-### selectionManager.on('selectionCompleted')
+## selectionManager.on('selectionCompleted')
 
 selectionManager.on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 
@@ -59,7 +59,7 @@ try {
 }
 ```
 
-### selectionManager.off('selectionCompleted')
+## selectionManager.off('selectionCompleted')
 
 selectionManager.off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 
@@ -91,9 +91,9 @@ try {
 }
 ```
 
-### selectionManager.getSelectionContent()
+## getSelectionContent()<sup>22+</sup>
 
-selectionManager.getSelectionContent(): Promise\<string>
+getSelectionContent(): Promise\<string>
 
 获取选中文本的内容。使用Promise异步回调。
 
@@ -131,13 +131,13 @@ selectionManager.on('selectionCompleted', async (info: selectionManager.Selectio
 });
 ```
 
-### selectionManager.createPanel
+## createPanel
 
 createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
 创建划词面板。使用Promise异步回调。
 
-单个划词应用仅允许创建一个[主面板类型](./js-apis-selectionInput-selectionPanel.md)和一个[菜单面板类型](./js-apis-selectionInput-selectionPanel.md)的窗口。
+单个划词应用仅允许创建一个[主面板类型](./js-apis-selectionInput-selectionPanel-sys.md)和一个[菜单面板类型](./js-apis-selectionInput-selectionPanel-sys.md)的窗口。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -146,12 +146,12 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 | 参数名   | 类型        | 必填 | 说明                     |
 | ------- | ----------- | ---- | ------------------------ |
 | ctx     | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 当前划词面板依赖的上下文信息。 |
-| info    | [PanelInfo](./js-apis-selectionInput-selectionPanel.md)   | 是   | 划词面板信息。 |
+| info    | [PanelInfo](./js-apis-selectionInput-selectionPanel-sys.md)   | 是   | 划词面板信息。 |
 
 **返回值：**
 | 类型   | 说明                                                                 |
 | ------- | ------------------------------------------------------------------ |
-| Promise\<[Panel](#selectionmanagerpanel)> | Promise对象，返回当前创建的划词面板对象。  |
+| Promise\<[Panel](#panel)> | Promise对象，返回当前创建的划词面板对象。  |
 
 **错误码：**
 
@@ -204,9 +204,9 @@ class ServiceExtAbility extends SelectionExtensionAbility {
 export default ServiceExtAbility;
 ```
 
-### selectionManager.destroyPanel
+## destroyPanel
 
-selectionManager.destroyPanel(panel: Panel): Promise\<void>
+destroyPanel(panel: Panel): Promise\<void>
 
 销毁划词面板。使用Promise异步回调。
 
@@ -216,7 +216,7 @@ selectionManager.destroyPanel(panel: Panel): Promise\<void>
 
 | 参数名   | 类型        | 必填 | 说明                     |
 | ---------| ----------- | ---- | ------------------------ |
-| panel    | [Panel](#selectionmanagerpanel)       | 是   | 要销毁的面板对象。      |
+| panel    | [Panel](#panel)       | 是   | 要销毁的面板对象。      |
 
 **返回值：**
 | 类型    | 说明                                                                 |
@@ -287,7 +287,7 @@ class ServiceExtAbility extends SelectionExtensionAbility {
 export default ServiceExtAbility;
 ```
 
-### SelectionInfo
+## SelectionInfo
 
 划词事件信息。
 
@@ -308,9 +308,13 @@ export default ServiceExtAbility;
 | windowID      |number| 否   | 否   | 被划词应用的窗口ID。 |
 | bundleName    |string| 否   | 否   | 被划词应用的bundleName。 |
 
-## selectionManager.Panel
+## Panel
 
-下列API均需使用[createPanel](#selectionmanagercreatepanel)获取到Panel实例后，通过实例调用。
+划词面板。
+
+**系统能力：** SystemCapability.SelectionInput.Selection
+
+下列API均需使用[createPanel](#createpanel)获取到Panel实例后，通过实例调用。
 
 ### setUiContent
 
@@ -342,7 +346,7 @@ setUiContent(path: string): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -381,7 +385,7 @@ show(): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -416,7 +420,7 @@ hide(): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -473,7 +477,6 @@ RelativeContainer() {
 })
 ```
 
-<!--Del-->
 ### moveTo
 
 moveTo(x: number, y: number): Promise\<void>
@@ -507,59 +510,12 @@ moveTo(x: number, y: number): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
 try {
   selectionPanel.moveTo(200, 200).then(() => {
-    console.info('Succeeded in moving the panel.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to move panel: ${JSON.stringify(err)}`);
-  });
-} catch (err) {
-  console.error(`Failed to move panel: ${JSON.stringify(err)}`);
-}
-```
-<!--DelEnd-->
-
-### moveToGlobalDisplay
-
-moveToGlobalDisplay(x: number, y: number): Promise\<void>
-
-移动划词面板至屏幕指定位置。使用Promise异步回调。
-
-**系统能力：** SystemCapability.SelectionInput.Selection
-
-**参数：**
-
-| 参数名   | 类型                   | 必填 | 说明     |
-| -------- | ---------------------- | ---- | -------- |
-| x | number | 是   |x轴方向移动的值，单位为px。|
-| y | number | 是   |y轴方向移动的值，单位为px。|
-
-**返回值：**
-
-| 类型   | 说明                             |
-| ------- | ------------------------------ |
-| Promise\<void> | Promise对象，无返回结果。  |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)。
-
-| 错误码ID   | 错误信息                       |
-| ---------- | ----------------------------- |
-| 33600001   | Selection service exception. |
-| 33600002   | This selection window has been destroyed. |
-
-**示例：**
-
-```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  selectionPanel.moveToGlobalDisplay(200, 200).then(() => {
     console.info('Succeeded in moving the panel.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to move panel: ${JSON.stringify(err)}`);
@@ -585,7 +541,7 @@ on(type: 'destroyed', callback: Callback\<void>): void
 | callback | Callback\<void> | 是   | 回调函数。       |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -614,7 +570,7 @@ off(type: 'destroyed', callback?: Callback\<void>): void
 | callback | Callback\<void> | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。|
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -641,7 +597,7 @@ on(type: 'hidden', callback: Callback\<void>): void
 | callback | Callback\<void> | 是   | 回调函数，返回当前划词服务的信息。       |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -670,7 +626,7 @@ off(type: 'hidden', callback?: Callback\<void>): void
 | callback | Callback\<void> | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -681,7 +637,7 @@ try {
 }
 ```
 
-### SelectionType
+## SelectionType
 
 定义触发划词的类型枚举。
 
