@@ -27,7 +27,7 @@ Enumerates the touch event types.
 
 | Name    | Value  | Description  |
 | ------ | ------ | ---- |
-| CANCEL | 0 | Touch cancellation.|
+| CANCEL | 0 | Touch cancellation. The down event of the touchscreen is interrupted unexpectedly and does not close normally. For example, the **CANCEL** event is triggered when the finger is pressed but not lifted, the screen is rotated or folded, or a new hover occurs.|
 | DOWN   | 1 | Touch press.|
 | MOVE   | 2 | Touch moving.|
 | UP     | 3 | Touch release.|

@@ -25,9 +25,7 @@ ArcButton({
   })
 })
 ```
-- [label](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions): sets the text displayed on the button.
-- [position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions): sets the type of the button.
-- [styleMode](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions): sets the style mode of the button.
+  [label](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions): sets the text displayed on the button.<br>[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions): sets the type of the button.<br>[styleMode](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions): sets the style mode of the button.
 
   ![top](figures/ArcButtonTop.png)
 
@@ -175,15 +173,18 @@ To run this sample code, wearable device support is required. In the project con
 ``` TypeScript
 import { LengthMetrics, LengthUnit, ArcButton, ArcButtonOptions, ArcButtonStyleMode } from '@kit.ArkUI';
 
+const BRIGHT_NESS_VALUE = 30;
+const BRIGHT_NESS_VALUE_DEFAULT = 50;
+
 @Entry
 @ComponentV2
 struct BrightnessPage {
-  @Local brightnessValue: number = 30;
-  private defaultBrightnessValue: number = 50;
+  @Local brightnessValue: number = BRIGHT_NESS_VALUE;
+  private defaultBrightnessValue: number = BRIGHT_NESS_VALUE_DEFAULT;
 
   build() {
     RelativeContainer() {
-      // Replace $r('app.string.Reset') with the resource file you use.
+      // Replace $r('app.string.Brightness') with the actual resource file. In this example, the value in the resource file is "Set brightness."
       Text($r('app.string.Brightness'))
         .fontColor(Color.White)
         .id('id_brightness_set_text')
@@ -224,7 +225,7 @@ struct BrightnessPage {
 
       ArcButton({
         options: new ArcButtonOptions({
-          // Replace $r('app.string.Reset') with the resource file you use.
+          // Replace $r('app.string.Reset') with the actual resource file. In this example, the value in the resource file is "Reset."
           label: $r('app.string.Reset'),
           styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
           fontSize: new LengthMetrics(19, LengthUnit.FP),

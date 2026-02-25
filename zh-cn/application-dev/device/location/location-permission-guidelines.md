@@ -1,8 +1,14 @@
-# 申请位置权限开发指导(ArkTS)
+# 申请位置权限开发指导
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @xxthadsl-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @gcw_MslijYkf-->
+<!--Adviser: @RayShih-->
 
 ## 场景概述
 
-应用在使用[Location Kit](../../reference/apis-location-kit/js-apis-geoLocationManager.md)系统能力前，需要检查是否已经获取用户授权访问设备位置信息。如未获得授权，可以向用户申请需要的位置权限。
+应用在使用Location Kit系统能力前，需要检查是否已经获取用户授权访问设备位置信息。如未获得授权，可以向用户申请需要的位置权限。
 
 系统提供的定位权限有：
 
@@ -12,7 +18,7 @@
 
 - ohos.permission.LOCATION_IN_BACKGROUND：用于应用切换到后台仍然需要获取定位信息的场景。
 
-Location Kit接口对权限的要求参见：[Location Kit](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
+Location Kit接口对权限的要求参见：[Location Kit API参考](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
 
 ## 开发步骤
 
@@ -31,6 +37,4 @@ Location Kit接口对权限的要求参见：[Location Kit](../../reference/apis
 
 长时任务申请可参考：[长时任务介绍](../../task-management/continuous-task.md)<!--Del-->，[长时任务开发示例](../../performance/reasonable-running-backgroundTask.md#长时任务)<!--DelEnd-->。
 
-
-<!--RP1-->
-<!--RP1End-->
+<!--RP1--><!--RP1End-->

@@ -8,6 +8,7 @@
 <!--Adviser: @fang-jinxu-->
 
 The **deviceAttest** module provides attestation of devices in OpenHarmony by comparing the device information with that stored in the cloud.
+
 You can use the APIs provided by the **deviceAttest** module to obtain the device attestation result.
 
 > **NOTE**

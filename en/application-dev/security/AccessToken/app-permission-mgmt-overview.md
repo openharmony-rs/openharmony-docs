@@ -9,7 +9,7 @@
 
 ## Introduction
 
-The system provides a common permission access mode to allow applicaitons to access system resources (such as contacts) and system capabilities (such as cameras and microphones), thereby protecting system data (including user personal data) and functions from improper or malicious use.
+The system provides a common permission access mode to allow applications to access system resources (such as contacts) and system capabilities (such as cameras and microphones), thereby protecting system data (including user personal data) and functions from improper or malicious use.
 
 Application permissions are used to protect:
 

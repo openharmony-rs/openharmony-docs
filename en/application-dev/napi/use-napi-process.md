@@ -220,10 +220,10 @@ The case of the module name to import must be the same as that registered. For e
 
 ### Multithread Processing
 
-Each engine instance corresponds to a JS thread. The objects of an instance cannot be operated across threads. Otherwise, the application crashes. Observe the following rules:
+Each engine instance corresponds to an ArkTS thread. The objects of an instance cannot be operated across threads. Otherwise, the application crashes. Observe the following rules:
 
-- The Node-API can be used only by JS threads.
-- The input parameter **env** of a native API can be bound to a JS thread only when the thread is created.
+- The Node-API can be used only by ArkTS threads.
+- The input parameter **env** of a native API can be bound to an ArkTS thread and can be used only by the thread that creates the env.
 - Data created using Node-APIs must be released before **env** is completely destroyed. Otherwise, memory leaks may be caused. In addition, accessing or using the data after **napi_env** is destroyed may cause the process to crash.
 
 

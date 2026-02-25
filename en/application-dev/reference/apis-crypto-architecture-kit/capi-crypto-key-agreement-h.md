@@ -33,8 +33,8 @@ Defines key agreement APIs.
 
 | Name| Description|
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoKeyAgreement_Create(const char *algoName, OH_CryptoKeyAgreement **ctx)](#oh_cryptokeyagreement_create) | Creates a key agreement instance based on the given algorithm name.|
-| [OH_Crypto_ErrCode OH_CryptoKeyAgreement_GenerateSecret(OH_CryptoKeyAgreement *ctx, OH_CryptoPrivKey *privkey, OH_CryptoPubKey *pubkey, Crypto_DataBlob *secret)](#oh_cryptokeyagreement_generatesecret) | Generates the secret value of key agreement.|
+| [OH_Crypto_ErrCode OH_CryptoKeyAgreement_Create(const char *algoName, OH_CryptoKeyAgreement **ctx)](#oh_cryptokeyagreement_create) | Creates a key agreement instance based on the given algorithm name.<br> Note: The created resource must be destroyed by calling [OH_CryptoKeyAgreement_Destroy](capi-crypto-key-agreement-h.md#oh_cryptokeyagreement_destroy).|
+| [OH_Crypto_ErrCode OH_CryptoKeyAgreement_GenerateSecret(OH_CryptoKeyAgreement *ctx, OH_CryptoPrivKey *privkey, OH_CryptoPubKey *pubkey, Crypto_DataBlob *secret)](#oh_cryptokeyagreement_generatesecret) | Generates the secret value of key agreement.<br> Note: After the use is complete, the memory for storing the **secret** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
 | [void OH_CryptoKeyAgreement_Destroy(OH_CryptoKeyAgreement *ctx)](#oh_cryptokeyagreement_destroy) | Destroys a key agreement instance.|
 
 ## Function Description
@@ -47,10 +47,9 @@ OH_Crypto_ErrCode OH_CryptoKeyAgreement_Create(const char *algoName, OH_CryptoKe
 
 **Description**
 
-Creates a key agreement instance based on the given algorithm name.
+Creates a key agreement instance based on the given algorithm name.<br> Note: The created resource must be destroyed by calling [OH_CryptoKeyAgreement_Destroy](capi-crypto-key-agreement-h.md#oh_cryptokeyagreement_destroy).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -68,15 +67,14 @@ Creates a key agreement instance based on the given algorithm name.
 ### OH_CryptoKeyAgreement_GenerateSecret()
 
 ```c
-OH_Crypto_ErrCode OH_CryptoKeyAgreement_GenerateSecret(OH_CryptoKeyAgreement *ctx, OH_CryptoPrivKey *privkey,OH_CryptoPubKey *pubkey, Crypto_DataBlob *secret)
+OH_Crypto_ErrCode OH_CryptoKeyAgreement_GenerateSecret(OH_CryptoKeyAgreement *ctx, OH_CryptoPrivKey *privkey, OH_CryptoPubKey *pubkey, Crypto_DataBlob *secret)
 ```
 
 **Description**
 
-Generates the secret value of key agreement.
+Generates the secret value of key agreement.<br> Note: After the use is complete, the memory for storing the **secret** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -104,7 +102,6 @@ void OH_CryptoKeyAgreement_Destroy(OH_CryptoKeyAgreement *ctx)
 Destroys a key agreement instance.
 
 **Since**: 20
-
 
 **Parameters**
 

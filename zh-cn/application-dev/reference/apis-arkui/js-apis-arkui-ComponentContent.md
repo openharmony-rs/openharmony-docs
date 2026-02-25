@@ -1,9 +1,9 @@
 # ComponentContent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyi0309-->
-<!--Designer: @liyi0309-->
-<!--Tester: @lxl007-->
+<!--Owner: @ZhangYu-Home-->
+<!--Designer: @ZhangYu-Home-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 有两种创建实体封装组件的方式。开发者在开发过程中任选下面方式其一即可。
@@ -203,7 +203,7 @@ struct Index {
 
                 setTimeout(() => {
                   contentNode.update(new Params("new message"));
-                }, 2000);    //2秒后自动更新弹窗内容文本
+                }, 2000);    // 2秒后自动更新弹窗内容文本
             })
       }
       .width('100%')
@@ -287,7 +287,7 @@ class Params {
 function buildNode(param: Params = new Params("hello")) {
   Row() {
     Text(`C${param.item} -- `)
-    ReusableChildComponent2({ item: param.item }) //该自定义组件在ComponentContent中无法被正确复用
+    ReusableChildComponent2({ item: param.item }) // 该自定义组件在ComponentContent中无法被正确复用
   }
 }
 
@@ -470,14 +470,14 @@ struct Index {
                     .then(() => {
                       console.info('customDialog closed.');
                       if (contentNode !== null) {
-                        contentNode.dispose();   //释放contentNode
+                        contentNode.dispose();   // 释放contentNode
                       }
                     }).catch((error: BusinessError) => {
                       let message = (error as BusinessError).message;
                       let code = (error as BusinessError).code;
                       console.error(`closeCustomDialog args error code is ${code}, message is ${message}`);
                     })
-                }, 2000);     //2秒后自动关闭
+                }, 2000);     // 2秒后自动关闭
             })
       }
       .width('100%')
@@ -580,7 +580,7 @@ struct FrameNodeTypeTest {
   }
 
   aboutToDisappear(): void {
-    //移除map中的引用，并将自定义节点释放
+    // 移除map中的引用，并将自定义节点释放
     this.myNodeController.deleteNode();
   }
 
@@ -665,7 +665,7 @@ struct Index {
                   console.info('customDialog closed.');
                   if (contentNode !== null) {
                     this.beforeDispose = contentNode.isDisposed() ? 'before dispose componentContent isDisposed is true' : 'before dispose componentContent isDisposed is false';
-                    contentNode.dispose();   //释放contentNode
+                    contentNode.dispose();   // 释放contentNode
                     this.afterDispose = contentNode.isDisposed() ? 'after dispose componentContent isDisposed is true' : 'after dispose componentContent isDisposed is false';
                   }
                 }).catch((error: BusinessError) => {
@@ -673,7 +673,7 @@ struct Index {
                 let code = (error as BusinessError).code;
                 console.error(`closeCustomDialog args error code is ${code}, message is ${message}`);
               })
-            }, 1000);     //1秒后自动关闭
+            }, 1000);     // 1秒后自动关闭
           })
         Text(this.beforeDispose)
           .fontSize(25)
@@ -1202,11 +1202,11 @@ struct Index {
 
 dispose(): void
 
+立即释放当前ReactiveComponentContent对象对[实体节点](../../ui/arkts-user-defined-node.md#基本概念)的引用关系。关于ReactiveComponentContent的解绑场景请参见[解除实体节点引用关系](../../ui/arkts-user-defined-arktsNode-builderNode.md#解除实体节点引用关系)。
+
 > **说明：**
 >
 > ReactiveComponentContent对象调用dispose接口后，会与后端实体节点解除引用关系。若前端ReactiveComponentContent对象无法释放，容易导致内存泄漏。建议开发者在不需要操作该ReactiveComponentContent对象时，主动调用dispose释放后端节点，以减少引用关系的复杂性，降低内存泄漏风险。
-
-立即释放当前ReactiveComponentContent对象对[实体节点](../../ui/arkts-user-defined-node.md#基本概念)的引用关系。关于ReactiveComponentContent的解绑场景请参见[解除实体节点引用关系](../../ui/arkts-user-defined-arktsNode-builderNode.md#解除实体节点引用关系)。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1227,7 +1227,7 @@ import {
   FrameNode
 } from '@kit.ArkUI';
 
-//dispose
+// dispose
 @Builder
 function buildText(
   MsgAge: MutableBinding<number>,

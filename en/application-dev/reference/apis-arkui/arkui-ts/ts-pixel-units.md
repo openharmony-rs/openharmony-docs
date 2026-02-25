@@ -12,9 +12,9 @@ ArkUI provides four pixel units, with vp as the reference data unit.
 >
 > - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The following APIs are deprecated since API version 18: vp2px, px2vp, fp2px, px2fp, lpx2px, px2lpx. Directly using these can lead to the issue of [ambiguous UI context](../../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [UIContext](../arkts-apis-uicontext-uicontext.md) object using the **getUIContext()** API and then call the[vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12)/[px2vp](../arkts-apis-uicontext-uicontext.md#px2vp12)/[fp2px](../arkts-apis-uicontext-uicontext.md#fp2px12)/[px2fp](../arkts-apis-uicontext-uicontext.md#px2fp12)/[lpx2px](../arkts-apis-uicontext-uicontext.md#lpx2px12)/[px2lpx](../arkts-apis-uicontext-uicontext.md#px2lpx12) API through this object.
+> - Directly using vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx may cause issues due to [ambiguous UI context](../../../ui/arkts-global-interface.md#ambiguous-ui-context). The following APIs are deprecated since API version 18. It is recommended to obtain a [UIContext](../arkts-apis-uicontext-uicontext.md) instance via **getUIContext()** and then use the [vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12)/[px2vp](../arkts-apis-uicontext-uicontext.md#px2vp12)/[fp2px](../arkts-apis-uicontext-uicontext.md#fp2px12)/[px2fp](../arkts-apis-uicontext-uicontext.md#px2fp12)/[lpx2px](../arkts-apis-uicontext-uicontext.md#lpx2px12)/[px2lpx](../arkts-apis-uicontext-uicontext.md#px2lpx12) under **UIContext** to call instance-bound APIs.
 >
-> - If no UI instance is created, vp2px/px2vp performs conversion using the default screen's virtual pixel ratio. In this case, you can replace vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx with UIContext. For details, see [Replacing Pixel Unit Conversion APIs with UIContext APIs](../../../ui/arkts-global-interface.md#replacing-pixel-unit-conversion-apis-with-uicontext-apis).
+> - When no UI instance is created, vp2px/px2vp uses the default screen's virtual pixel ratio for conversion. In this scenario, if you need to replace this API with a UIContext-based one, refer to [Replacing Pixel Unit Conversion APIs with UIContext APIs](../../../ui/arkts-global-interface.md#replacing-pixel-unit-conversion-apis-with-uicontext-apis).
 
 
 | Name| Description                                                        |
@@ -32,7 +32,9 @@ Converts a value in units of vp to a value in units of px.
 
 > **NOTE**
 >
-> By default, the virtual pixel ratio of the screen where the current UI instance is located is used for conversion. If the UI instance is unclear, the virtual pixel ratio of the default screen is used instead.
+> By default, the virtual pixel ratio of the screen hosting the current UI instance is used for unit conversion. If the UI instance cannot be identified, the virtual pixel ratio of the default screen is used instead, which may lead to unexpected conversion results.
+>
+> This API is supported since API version 7 and deprecated since API version 18. You are advised to use [vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12) instead.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -44,7 +46,7 @@ Converts a value in units of vp to a value in units of px.
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | Yes  | Converts a value in units of vp to a value in units of px.<br>Value range: (-∞, +∞).|
+| value | number | Yes  | Value to convert.<br>Value range: (-∞, +∞).|
 
 **Return value**
 
@@ -60,7 +62,9 @@ Converts a value in units of px to a value in units of vp.
 
 > **NOTE**
 >
-> By default, the virtual pixel ratio of the screen where the current UI instance is located is used for conversion. If the UI instance is unclear, the virtual pixel ratio of the default screen is used instead.
+> By default, the virtual pixel ratio of the screen hosting the current UI instance is used for unit conversion. If the UI instance cannot be identified, the virtual pixel ratio of the default screen is used instead, which may lead to unexpected conversion results.
+>
+> This API is supported since API version 7 and deprecated since API version 18. You are advised to use [px2vp](../arkts-apis-uicontext-uicontext.md#px2vp12) instead.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -72,7 +76,7 @@ Converts a value in units of px to a value in units of vp.
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | Yes  | Converts a value in units of px to a value in units of vp.<br>Value range: (-∞, +∞).|
+| value | number | Yes  | Value to convert.<br>Value range: (-∞, +∞).|
 
 **Return value**
 
@@ -86,6 +90,10 @@ fp2px(value: number): number
 
 Converts a value in units of fp to a value in units of px.
 
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 18. You are advised to use [fp2px](../arkts-apis-uicontext-uicontext.md#fp2px12) instead.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -96,7 +104,7 @@ Converts a value in units of fp to a value in units of px.
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | Yes  | Converts a value in units of fp to a value in units of px.<br>Value range: (-∞, +∞).|
+| value | number | Yes  | Value to convert.<br>Value range: (-∞, +∞).|
 
 **Return value**
 
@@ -110,6 +118,10 @@ px2fp(value: number): number
 
 Converts a value in units of px to a value in units of fp.
 
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 18. You are advised to use [px2fp](../arkts-apis-uicontext-uicontext.md#px2fp12) instead.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -120,7 +132,7 @@ Converts a value in units of px to a value in units of fp.
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | Yes  | Converts a value in units of px to a value in units of fp.<br>Value range: (-∞, +∞).|
+| value | number | Yes  | Value to convert.<br>Value range: (-∞, +∞).|
 
 **Return value**
 
@@ -134,6 +146,10 @@ lpx2px(value: number): number
 
 Converts a value in units of lpx to a value in units of px.
 
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 18. You are advised to use [lpx2px](../arkts-apis-uicontext-uicontext.md#lpx2px12) instead.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -144,7 +160,7 @@ Converts a value in units of lpx to a value in units of px.
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | Yes  | Converts a value in units of lpx to a value in units of px.<br>Value range: (-∞, +∞).|
+| value | number | Yes  | Value to convert.<br>Value range: (-∞, +∞).|
 
 **Return value**
 
@@ -158,6 +174,10 @@ px2lpx(value: number): number
 
 Converts a value in units of px to a value in units of lpx.
 
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 18. You are advised to use [px2lpx](../arkts-apis-uicontext-uicontext.md#px2lpx12) instead.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -168,7 +188,7 @@ Converts a value in units of px to a value in units of lpx.
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | Yes  | Converts a value in units of px to a value in units of lpx.<br>Value range: (-∞, +∞).|
+| value | number | Yes  | Value to convert.<br>Value range: (-∞, +∞).|
 
 **Return value**
 

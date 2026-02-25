@@ -1,4 +1,4 @@
-# @ohos.multimodalAwareness.metadataBinding (Metadata Binding)
+# @ohos.multimodalAwareness.metadataBinding (Metadata Binding) (System API)
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: Msdp-->
 <!--Owner: @codexu62-->

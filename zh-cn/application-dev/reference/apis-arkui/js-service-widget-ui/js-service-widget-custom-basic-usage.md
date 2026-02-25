@@ -85,7 +85,7 @@
 
 ```html
 <!-- xxx.hml --> 
-<element name='comp' src='../../common/customComponent/customComponent.hml'></element>
+<element name='comp' src='../../common/customComponent/comp.hml'></element>
 
 <div class="container">
     <comp @event_1="click"></comp>
@@ -186,7 +186,7 @@
 
 ```html
 <!-- xxx.hml -->
-<element name='comp' src='../../common/customComponent/customComponent.hml'></element>
+<element name='comp' src='../../common/customComponent/comp.hml'></element>
 
 <div class="container">
     <comp progress="{{clicknow}}" textdata="{{texts}}" if="false" @event_1="click"></comp>

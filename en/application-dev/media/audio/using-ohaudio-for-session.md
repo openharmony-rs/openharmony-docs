@@ -16,7 +16,10 @@ This topic describes the usage and precautions of the C APIs related to the audi
 
 To use the audio session manager provided by OHAudio, add the corresponding header file.
 
+The examples in each of the following steps are code snippets. You can click the link at the bottom right of the sample code to obtain the [complete sample codes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC).
+
 ### Linking the Dynamic Library in the CMake Script
+
 
 ``` cmake
 target_link_libraries(sample PUBLIC libohaudio.so)
@@ -26,18 +29,29 @@ target_link_libraries(sample PUBLIC libohaudio.so)
 
 Include the [native_audio_session_manager.h](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md) header file so that the application can use the functions related to audio playback.
 
-```cpp
-#include <ohaudio/native_audio_session_manager.h>
+<!-- @[cimport_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+
+``` C++
+#include "ohaudio/native_audio_session_manager.h"
 ```
 
 ## Obtaining an Audio Session Manager
 
 Create an [OH_AudioSessionManager](../../reference/apis-audio-kit/capi-ohaudio-oh-audiosessionmanager.md) instance. Before using any APIs of OH_AudioSessionManager, you must use [OH_AudioManager_GetAudioSessionManager](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiomanager_getaudiosessionmanager) to obtain an OH_AudioSessionManager instance.
 
-  ```cpp
-  OH_AudioSessionManager *audioSessionManager;
-  OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
-  ```
+<!-- @[cget_sessionmanager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+
+``` C++
+OH_AudioSessionManager *audioSessionManager;
+// ...
+    OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
+    OH_AudioCommon_Result result = OH_AudioSessionManager_RegisterStateChangeCallback(audioSessionManager,
+                                                                                      AudioSessionStateChangedCallback);
+    if (resultManager == 0) {
+        OH_LOG_Print(LOG_APP, LOG_INFO, g_audioSessionVariable->globalResmgr, SESSION_TAG,
+                     " OH_AudioManager_GetAudioSessionManager success! ");
+    }
+```
 
 ## Activating an Audio Session
 
@@ -45,27 +59,37 @@ Call [OH_AudioSessionManager_ActivateAudioSession](../../reference/apis-audio-ki
 
 During the activation, specify an [audio session strategy](../../reference/apis-audio-kit/capi-ohaudio-oh-audiosession-strategy.md). The strategy contains the [OH_AudioSession_ConcurrencyMode](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosession_concurrencymode) parameter, which is used to declare the audio concurrency strategy.
 
-  ```cpp
-  OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
+<!-- @[cactive_sessionmanager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 
-  OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
-  ```
+``` C++
+// In this example, CONCURRENCY_MIX_WITH_OTHERS is selected. You can change the strategy as needed.
+OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
+    
+// Set an audio concurrency mode and activate an audio session.
+OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
+```
 
 ## Checking Whether an Audio Session Is Activated
 
 Call [OH_AudioSessionManager_IsAudioSessionActivated](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_isaudiosessionactivated) to check whether an audio session is activated.
 
-  ```cpp
-  bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
-  ```
+<!-- @[ccheck_isactivated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+
+``` C++
+bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
+```
 
 ## Deactivating an Audio Session
 
 Call [OH_AudioSessionManager_DeactivateAudioSession](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_deactivateaudiosession) to deactivate an audio session.
 
-  ```cpp
-  OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
-  ```
+<!-- @[cdeactive_audiosession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+
+``` C++
+OH_AudioCommon_Result result;
+// ...
+result = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
+```
 
 ## Listening for Audio Session Deactivation Events
 
@@ -77,144 +101,192 @@ Upon this event, the application can perform operations based on service require
 
 ### Defining a Callback
 
-  ```cpp
-  int32_t MyAudioSessionDeactivatedCallback(OH_AudioSession_DeactivatedEvent event)
-  {
-    switch(event.reason) {
-      case DEACTIVATED_LOWER_PRIORITY:
-        // The application focus is preempted.
-        return 0;
-      case DEACTIVATED_TIMEOUT:
-        // A timeout error occurs.
-        return 0;
+<!-- @[cint_deacticatedcallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+
+``` C++
+int32_t MyAudioSessionDeactivatedCallback(OH_AudioSession_DeactivatedEvent event)
+{
+    switch (event.reason) {
+        case DEACTIVATED_LOWER_PRIORITY:
+          // The application focus is preempted.
+            return 0;
+        case DEACTIVATED_TIMEOUT:
+          // A timeout error occurs.
+            return 0;
     }
-  }
-  ```
+}
+
+OH_AudioSessionManager *audioSessionManager;
+```
 
 ### Registering a Callback to Listen for Audio Session Deactivation Events
 
 Call [OH_AudioSessionManager_RegisterSessionDeactivatedCallback](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_registersessiondeactivatedcallback) to register a callback to listen for audio session deactivation events.
 
-```cpp
-OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager, MyAudioSessionDeactivatedCallback);
+<!-- @[cregist_deacticatedcallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+
+``` C++
+OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(
+    audioSessionManager, MyAudioSessionDeactivatedCallback);
 ```
 
 ### Unregistering the Callback Used to Listen for Audio Session Deactivation Events
 
 Call [OH_AudioSessionManager_UnregisterSessionDeactivatedCallback](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_unregistersessiondeactivatedcallback) to cancel listening for audio session deactivation events.
 
-```cpp
-OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager, MyAudioSessionDeactivatedCallback);
+<!-- @[cunregist_deacticatedcallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+
+``` C++
+OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(
+    audioSessionManager, MyAudioSessionDeactivatedCallback);
 ```
 
 **Below is a comprehensive example of creating, activating, and listening for an audio session:**
 
 Refer to the sample code below to complete the process of creating, activating, and listening of an audio session.
 
-  ```cpp
-  #include <cstdint>
-  #include "ohaudio/native_audio_session_manager.h"
+<!-- @[csessionactive_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 
-  int32_t MyAudioSessionDeactivatedCallback(OH_AudioSession_DeactivatedEvent event)
-  {
-    switch(event.reason) {
-      case DEACTIVATED_LOWER_PRIORITY:
-        // The application focus is preempted.
-        return 0;
-      case DEACTIVATED_TIMEOUT:
-        // A timeout error occurs.
-        return 0;
+``` C++
+#include <cstdint>
+#include "ohaudio/native_audio_session_manager.h"
+// ...
+int32_t MyAudioSessionDeactivatedCallback(OH_AudioSession_DeactivatedEvent event)
+{
+    switch (event.reason) {
+        case DEACTIVATED_LOWER_PRIORITY:
+          // The application focus is preempted.
+            return 0;
+        case DEACTIVATED_TIMEOUT:
+          // A timeout error occurs.
+            return 0;
     }
-  }
+}
 
-  OH_AudioSessionManager *audioSessionManager;
+OH_AudioSessionManager *audioSessionManager;
+// ...
+    OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
+    // ...
+    OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
+    
+    // Set an audio concurrency mode and activate an audio session.
+    OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
+    // Check whether the audio session is activated.
+    bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
+    if (isActivated) {
+        OH_LOG_Print(LOG_APP, LOG_INFO, g_audioSessionVariable->globalResmgr, SESSION_TAG,
+                     " AudioSessionManager is activated! ");
+    }
+    // Listen for audio session deactivation events.
+    OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(
+        audioSessionManager, MyAudioSessionDeactivatedCallback);
+    // ...
+    // Cancel listening for audio session deactivation events.
+    result = OH_AudioSessionManager_UnregisterStateChangeCallback(audioSessionManager,
+                                                                  AudioSessionStateChangedCallback);
+    // ...
+    // Deactivate the audio session.
+    result = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
+```
 
-  // Create an OH_AudioSessionManager instance.
-  OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
-
-  OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
-
-  // Set an audio concurrency mode and activate an audio session.
-  OH_AudioCommon_Result resultActivate = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
-
-  // Check whether the audio session is activated.
-  bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
-
-  // Listen for audio session deactivation events.
-  OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(audioSessionManager, MyAudioSessionDeactivatedCallback);
-
-  // After the audio session is activated, the application can perform operations such as playing, pausing, stopping, and releasing audio streams.
-
-  // Cancel listening for audio session deactivation events.
-  OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(audioSessionManager, MyAudioSessionDeactivatedCallback);
-
-  // Deactivate the audio session.
-  OH_AudioCommon_Result resultDeactivate = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
-  ```
 ## Requesting Focus by Setting Audio Session Scene Parameters
 The application requests focus using an audio session. Call [OH_AudioSessionManager_SetScene](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) to set the scene parameters, and then call [OH_AudioSessionManager_ActivateAudioSession](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession) to activate the audio session.
 
-  ```cpp
-  OH_AudioSessionManager_SetScene(audioSessionManager, AUDIO_SESSION_SCENE_MEDIA);
+<!-- @[cset_audioscene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 
-  OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
+``` C++
+// In this example, AUDIO_SESSION_SCENE_MEDIA is selected. You can change the session scene as needed.
+OH_AudioSessionManager_SetScene(audioSessionManager, AUDIO_SESSION_SCENE_MEDIA);
+// ...
+// In this example, CONCURRENCY_MIX_WITH_OTHERS is selected. You can change the strategy as needed.
+OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
+    
+// Set an audio concurrency mode and activate an audio session.
+OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
+```
 
-  OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
-  ```
+## Enabling Mute Suggestion Notifications for Mixed Playback
+Starting from API version 23, when the current application plays audio in the **CONCURRENCYMIXWITH_OTHERS** concurrency mode, if audio from other applications is playing simultaneously, the audio from both will be mixed. In certain scenarios (such as games or broadcasts), applications can enable mute suggestion notifications to enhance user experience.
+
+After enabling mute suggestion notifications, if other applications play audio that cannot be played concurrently with the current application while the current application is playing audio, the current application will receive a mute suggestion notification. The current application can either choose to take no action (allowing concurrent playback with other applications) or mute itself to let other applications play audio alone.
+
+To enable mute suggestion notifications for mixed playback, you need to first call [OH_AudioSessionManager_SetScene](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) to set scene parameters and subscribe to the [OH_AudioSession_StateChangeHint](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint) audio session state change event. After enabling, call [OH_AudioSessionManager_ActivateAudioSession](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession) to activate the **AudioSession**. A prerequisite for enabling mute suggestion notifications is that [OH_AudioSession_ConcurrencyMode](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosession_concurrencymode) must be set to **CONCURRENCY_MIX_WITH_OTHERS**.
+
+<!-- @[cenable_muteSuggestion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+
+``` C++
+// In this example, AUDIO_SESSION_SCENE_MEDIA is selected. You can change the session scene as needed.
+OH_AudioSessionManager_SetScene(audioSessionManager, AUDIO_SESSION_SCENE_MEDIA);
+// Enable mute suggestions for mixed playback.
+OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthers(audioSessionManager, true);
+// ...
+OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
+    
+// Set an audio concurrency mode and activate an audio session.
+OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
+```
 
 ## Listening for Audio Session Focus State Change events
 Listen for audio session focus state changes through [OH_AudioSession_StateChangedEvent](../../reference/apis-audio-kit/capi-ohaudio-oh-audiosession-statechangedevent.md).
 
 **Below is a comprehensive example of requesting focus for an audio session and listening for focus change events:**
 
-  ```cpp
-  OH_AudioSessionManager *audioSessionManager;
+<!-- @[clistencallback_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 
-  // Create an OH_AudioSessionManager instance.
-  OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
+``` C++
+OH_AudioSessionManager *audioSessionManager;
 
-  void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
-  {
-    switch(event.stateChangeHint) {
-      case AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE:
-        // The system has paused the audio stream (focus is temporarily lost). To ensure state consistency, the application needs to switch to the audio paused state.
-        // Temporarily losing focus: When other audio streams release focus, the application will receive a resume event and can resume playback.
-        break;
-      case AUDIO_SESSION_STATE_CHANGE_HINT_RESUME:
-        // The system has resumed the audio session.
-        break;
-      case AUDIO_SESSION_STATE_CHANGE_HINT_STOP:
-        // The system has stopped the audio stream (focus is permanently lost). To ensure state consistency, the application should switch to the audio paused state.
-        // Permanently losing focus: No audio focus event will be received. The user must manually trigger the operation to resume playback.
-        break;
-      case AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP:
-        // The system has stopped the audio session (permanently losing focus) due to inactivity. The application should switch to the audio paused state.
-        // Permanently losing focus: No audio focus event will be received. The user must manually trigger the operation to resume playback.
-        break;
-      case AUDIO_SESSION_STATE_CHANGE_HINT_DUCK:
-        // The system has ducked the volume down (to 20% of the normal volume by default).
-        break;
-      case AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK:
-        // The system has restored the audio volume to normal.
-        break;
-      default:
-        break;
+void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
+{
+    switch (event.stateChangeHint) {
+        case AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE:
+          // The system has paused the audio stream (focus is temporarily lost). To ensure state consistency, the application needs to switch to the audio paused state.
+          // Temporarily losing focus: When other audio streams release focus, the application will receive a resume event and can resume playback.
+            break;
+        case AUDIO_SESSION_STATE_CHANGE_HINT_RESUME:
+          // The system has resumed the audio session.
+            break;
+        case AUDIO_SESSION_STATE_CHANGE_HINT_STOP:
+          // The system has stopped the audio stream (focus is permanently lost). To ensure state consistency, the application should switch to the audio paused state.
+          // Permanently losing focus: No audio focus event will be received. The user must manually trigger the operation to resume playback.
+            break;
+        case AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP:
+          // This branch indicates that the system has stopped the AudioSession (permanently losing focus) due to no audio stream playback for an extended period.
+          // This prevents long-term invalid occupation of system resources. To maintain state consistency, the application needs to switch to the audio pause state.
+          // Permanently losing focus: No audio focus event will be received. The user must manually trigger the operation to resume playback.
+            break;
+        case AUDIO_SESSION_STATE_CHANGE_HINT_DUCK:
+          // The system has ducked the volume down (to 20% of the normal volume by default).
+            break;
+        case AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK:
+          // The system has restored the audio volume to normal.
+            break;
+        case AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION:
+          // This branch indicates that another application has started playing non-mixed audio, and the system may decide whether to mute the current application.
+            break;
+        case AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION:
+          // This branch indicates that another application has finished playing non-mixed audio, and the system may decide whether to unmute the current application.
+            break;
+        default:
+            break;
     }
-  }
-
-  OH_AudioCommon_Result result = OH_AudioSessionManager_RegisterStateChangeCallback(audioSessionManager, AudioSessionStateChangedCallback);
-
-  // In this example, AUDIO_SESSION_SCENE_MEDIA is selected. You can change the session scene as needed.
-  OH_AudioSessionManager_SetScene(audioSessionManager, AUDIO_SESSION_SCENE_MEDIA);
-
-  // In this example, CONCURRENCY_MIX_WITH_OTHERS is selected. You can change the strategy as needed.
-  OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
-
-  result = OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
-
-  // Start multiple audio renderers or other audio playback as needed.
-
-  result = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
-
-  result = OH_AudioSessionManager_UnregisterStateChangeCallback(audioSessionManager, AudioSessionStateChangedCallback);
-  ```
+}
+// ...
+    OH_AudioCommon_Result result = OH_AudioSessionManager_RegisterStateChangeCallback(audioSessionManager,
+                                                                                      AudioSessionStateChangedCallback);
+    // ...
+    // In this example, AUDIO_SESSION_SCENE_MEDIA is selected. You can change the session scene as needed.
+    OH_AudioSessionManager_SetScene(audioSessionManager, AUDIO_SESSION_SCENE_MEDIA);
+    // Enable mute suggestions for mixed playback.
+    OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthers(audioSessionManager, true);
+    // In this example, CONCURRENCY_MIX_WITH_OTHERS is selected. You can change the strategy as needed.
+    OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
+    
+    // Set an audio concurrency mode and activate an audio session.
+    OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
+    // ...
+    result = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
+    // ...
+    OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(
+        audioSessionManager, MyAudioSessionDeactivatedCallback);
+```

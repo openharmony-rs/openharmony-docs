@@ -20,8 +20,6 @@ Declares the APIs of **NativeGesture**.
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Sample**: <!--RP1-->[NdkGestureSetting](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureSetting)<!--RP1End-->, <!--RP2-->[NdkGestureNestScroll](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureNestScroll)<!--RP2End-->, <!--RP3-->[NdkGestureBlocking](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureBlocking)<!--RP3End-->
-
 ## Summary
 
 ### Structs
@@ -119,6 +117,14 @@ Declares the APIs of **NativeGesture**.
 |----------|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
 | uint32_t | ArkUI_GestureDirectionMask | Defines a set of gesture directions.<br>Example: **ArkUI_GestureDirectionMask directions = GESTURE_DIRECTION_LEFT \| GESTURE_DIRECTION_RIGHT**.<br>This example indicates that the leftward and rightward directions are supported.|
 | uint32_t | ArkUI_GestureEventActionTypeMask   | Defines a set of gesture event types. Example: **ArkUI_GestureEventActionTypeMask actions = GESTURE_EVENT_ACTION_ACCEPT \| GESTURE_EVENT_ACTION_UPDATE**.                  |
+
+### Example
+
+| Name|  Description|
+| -- | -- |
+| <!--RP1-->[NdkGestureSetting](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureSetting)<!--RP1End--> | Examples demonstrating gesture binding, gesture removal, and custom gesture detection are added since API version 20.|
+| <!--RP2-->[NdkGestureNestScroll](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureNestScroll)<!--RP2End--> | Examples demonstrating nested scrolling through gesture APIs are added since API version 20.|
+| <!--RP3-->[NdkGestureBlocking](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureBlocking)<!--RP3End--> | Examples demonstrating gesture interception are added since API version 20.|
 
 ## Enum Description
 

@@ -13,12 +13,13 @@
 
 **获取属性**
 
-1. 通过[证书管理应用](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId，并[打开资源](huks-open-close-resource-ndk.md#打开资源)。
+1. 通过证书管理系统能力提供的[证书选择接口](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)作为resourceId，并[打开资源](huks-open-close-resource-ndk.md#打开资源)。
 
 2. 构造输入参数propertyId和可选输入参数[param](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoparam)。
 
 3. 调用[getProperty](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetproperty)获取属性信息。
 
+## 开发案例
 
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';

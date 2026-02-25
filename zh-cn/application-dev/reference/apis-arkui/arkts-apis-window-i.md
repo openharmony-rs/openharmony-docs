@@ -23,8 +23,8 @@
 | name       | string                     | 否 | 否 | 窗口名称。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core                                               |
 | windowType | [WindowType](arkts-apis-window-e.md#windowtype7) | 否 | 否 | 窗口类型。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core                        |
 | ctx        | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 否 | 是 | 当前应用上下文信息。不设置，则默认为空。<br>FA模型下不需要使用该参数，即可创建子窗口，使用该参数时会报错。<br>Stage模型必须使用该参数，用于创建悬浮窗、模态窗或系统窗口。 <br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| displayId  | number                     | 否 | 是 | 当前屏幕ID。不设置，则默认为-1，跟随父窗口，该参数应为整数。<br>设置后对屏幕ID进行校验，小于0或屏幕ID不存在时，返回401错误码。<br>扩展屏、异源虚拟屏场景下，全局悬浮窗可通过设置屏幕ID显示在指定屏幕上。<br>模态窗、系统窗设置屏幕ID无效，默认跟随父窗口。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core     |
-| parentId   | number                     | 否 | 是 | 父窗口ID。不设置，则默认为-1，默认父窗为当前应用上下文对应主窗，该参数应为整数。<br>FA模型下，对传入父窗口ID进行校验，小于0或父窗口ID不存在时，返回1300009错误码。<br>Stage模型下，该参数设置无效。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core                                               |
+| displayId  | number                     | 否 | 是 | 当前屏幕ID。不设置，则默认为父窗口屏幕ID。<br>该参数应为非负整数，且对应屏幕ID存在。<br>扩展屏、异源虚拟屏场景下，全局悬浮窗可通过设置屏幕ID显示在指定屏幕上。<br>模态窗、系统窗设置屏幕ID无效，默认为父窗口屏幕ID。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core     |
+| parentId   | number                     | 否 | 是 | 父窗口ID。不设置，则默认为-1，默认父窗为当前应用上下文对应主窗。<br>FA模型下，该参数应为非负整数，且对应父窗口ID存在。<br>Stage模型下，该参数设置无效。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core                                               |
 | decorEnabled<sup>12+</sup> | boolean | 否 | 是 | 是否显示窗口装饰，仅在windowType为TYPE_DIALOG时生效。true表示显示，false表示不显示。此参数默认值为false。<br>**系统能力：** SystemCapability.Window.SessionManager |
 | title<sup>12+</sup> | string| 否 | 是 | `decorEnabled`属性设置为true时，窗口的标题内容。标题显示区域最右端不超过系统三键区域最左端，超过部分以省略号表示。不设置，则默认为空字符串。 <br>**系统能力：** SystemCapability.Window.SessionManager |
 
@@ -280,23 +280,34 @@
 
 ## WindowLimits<sup>11+</sup>
 
-窗口尺寸限制参数。应用可以通过[getWindowLimits](arkts-apis-window-Window.md#getwindowlimits11)获得当前的窗口尺寸限制（单位为px）；从API version 22开始，还可以通过[getWindowLimitsVP](arkts-apis-window-Window.md#getwindowlimitsvp22)获取（单位为vp）。
+窗口尺寸限制参数，应用可以通过[getWindowLimits](arkts-apis-window-Window.md#getwindowlimits11)获得当前窗口的尺寸限制（单位为px）；从API version 22开始，还可以通过[getWindowLimitsVP](arkts-apis-window-Window.md#getwindowlimitsvp22)获取窗口尺寸限制（单位为vp）。
 
-窗口存在默认系统大小限制，应用可以通过[setWindowLimits](arkts-apis-window-Window.md#setwindowlimits11)设置窗口尺寸限制，或在应用[module.json5配置文件中的abilities标签](../../quick-start/module-configuration-file.md#abilities标签)中配置该属性。
+窗口尺寸限制的最终生效结果由默认系统限制、应用配置和运行时设置的数据取交集得到，优先级从高到低依次为：
 
-从API version 17开始，还可以在[startAbility](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)拉起窗口时通过[StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)指定窗口尺寸限制。
-
-最终生效结果由默认系统限制和应用设置的数据取交集得到。
+1. 应用通过[setWindowLimits](arkts-apis-window-Window.md#setwindowlimits11)设置窗口尺寸限制。
+2. 应用在[startAbility](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)拉起窗口时通过[StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)指定窗口尺寸限制（API version 17开始支持）。
+3. 应用在[module.json5配置文件中的abilities标签](../../quick-start/module-configuration-file.md#abilities标签)中配置windowLimits。
+4. 默认系统限制（基于不同产品和窗口类型，其windowLimits系统默认限制存在差异）。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-| 名称      | 类型   | 只读 | 可选 | 说明                                                         |
+> **说明：**
+>
+> 针对maxWidth、maxHeight、minWidth、minHeight属性：
+>
+> - 默认单位为px，从API version 22开始支持通过pixelUnit设置单位为px或vp。
+> - 参数为整数，浮点数会向下取整。
+> - 默认值为0，表示属性不发生变化。
+> - 可生效范围下限值：系统限定的最小高度/宽度。
+> - 可生效范围上限值：系统限定的最大高度/宽度。
+
+| 名称      | 类型   | 只读 | 可选 | 说明                                                          |
 | :-------- | :----- | :--- | :--- | :----------------------------------------------------------- |
-| maxWidth  | number | 否   | 是   | 窗口的最大宽度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最大宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| maxHeight | number | 否   | 是   | 窗口的最大高度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最大高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| minWidth  | number | 否   | 是   | 窗口的最小宽度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最小宽度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| minHeight | number | 否   | 是   | 窗口的最小高度。默认单位为px，从API version 22开始，支持通过pixelUnit设置单位为px或vp。该参数为整数，若设置浮点数则向下取整。<br>默认值为0，表示该属性不发生变化。在OpenHarmony 5.0.2之前，可生效范围下限值为0；从OpenHarmony 5.0.2开始，可生效范围下限值为1。可生效范围上限值为系统限定的最小高度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | 否 | 是 | 窗口尺寸限制的单位，默认为px。可显式设置为px或vp。|
+| maxWidth  | number | 否   | 是   | 窗口的最大宽度。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| maxHeight | number | 否   | 是   | 窗口的最大高度。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| minWidth  | number | 否   | 是   | 窗口的最小宽度。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| minHeight | number | 否   | 是   | 窗口的最小高度。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | 否 | 是 | 窗口尺寸限制的单位，默认为px。可显式设置为px或vp。 |
 
 ## TitleButtonRect<sup>11+</sup>
 
@@ -488,6 +499,7 @@
 ## RotationChangeResult<sup>19+</sup>
 
 应用在窗口旋转变化时返回的信息，系统会根据此信息改变当前窗口矩形区域大小。当返回主窗口旋转变化的信息时，系统不改变主窗口的大小。
+
 应用窗口与系统窗口大小存在限制，具体限制与相关规则可见[resize](arkts-apis-window-Window.md#resize9)。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。

@@ -23,7 +23,9 @@ The **DataShareExtensionAbility** module provides data share services based on t
 import { DataShareExtensionAbility } from '@kit.ArkData';
 ```
 
-## Properties
+## DataShareExtensionAbility
+
+### Properties
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Provider
 
@@ -31,7 +33,7 @@ import { DataShareExtensionAbility } from '@kit.ArkData';
 | -------- | -------- | -------- | -------- | -------- |
 | context<sup>10+</sup> | [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)  | Yes| No|Context of the DataShare ExtensionAbility.|
 
-## onCreate
+### onCreate
 
 onCreate?(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
@@ -78,17 +80,9 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## UpdateOperation<sup>12+</sup>
 
-Represents the batch update operation information.
 
-**System capability**: SystemCapability.DistributedDataManager.DataShare.Provider
-
-| Name           | Type                                                        | Mandatory| Description          |
-| --------------- | ------------------------------------------------------------ | ---- | -------------- |
-| UpdateOperation | [dataShare.UpdateOperation](js-apis-data-dataShare-sys.md#updateoperation12) | Yes  | Data to update.|
-
-## insert
+### insert
 
 insert?(uri: string, valueBucket: ValuesBucket, callback: AsyncCallback&lt;number&gt;): void
 
@@ -128,7 +122,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## update
+### update
 
 update?(uri: string, predicates: dataSharePredicates.DataSharePredicates, valueBucket: ValuesBucket, callback: AsyncCallback&lt;number&gt;): void
 
@@ -167,7 +161,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## batchUpdate<sup>12+</sup>
+### batchUpdate<sup>12+</sup>
 
 batchUpdate?( operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt; , callback:  AsyncCallback&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt;): void
 
@@ -216,7 +210,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## delete
+### delete
 
 delete?(uri: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback&lt;number&gt;): void
 
@@ -254,7 +248,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## query
+### query
 
 query?(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;Object&gt;): void
 
@@ -296,7 +290,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## batchInsert
+### batchInsert
 
 batchInsert?(uri: string, valueBuckets: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;number&gt;): void
 
@@ -335,7 +329,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## normalizeUri
+### normalizeUri
 
 normalizeUri?(uri: string, callback: AsyncCallback&lt;string&gt;): void
 
@@ -371,7 +365,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
-## denormalizeUri
+### denormalizeUri
 
 denormalizeUri?(uri: string, callback: AsyncCallback&lt;string&gt;): void
 
@@ -406,3 +400,12 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
   }
 };
 ```
+## UpdateOperation<sup>12+</sup>
+
+Represents the batch update operation information.
+
+**System capability**: SystemCapability.DistributedDataManager.DataShare.Provider
+
+| Name           | Type                                                        | Mandatory| Description          |
+| --------------- | ------------------------------------------------------------ | ---- | -------------- |
+| UpdateOperation | [dataShare.UpdateOperation](js-apis-data-dataShare-sys.md#updateoperation12) | Yes  | Data to update.|

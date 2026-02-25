@@ -793,13 +793,13 @@ import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// WantAgent object
+// WantAgent object.
 let wantAgentData: WantAgent;
 // triggerInfo
 let triggerInfo: wantAgent.TriggerInfo = {
-  code: 0 // Custom result code.
+  code: 0 // Custom result code
 };
-// WantAgentInfo object
+// WantAgentInfo object.
 let wantAgentInfo: wantAgent.WantAgentInfo = {
   wants: [
     {
@@ -827,7 +827,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-// getWantAgent callback
+// getWantAgent callback.
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.info(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
@@ -877,7 +877,7 @@ Two WantAgent objects are considered equal if they are created by the same appli
 | Name      | Type                    | Mandatory| Description                                   |
 | ---------- | ------------------------ | ---- | --------------------------------------- |
 | agent      | WantAgent                | Yes  | The first WantAgent object.                          |
-| otherAgent | WantAgent                | Yes  | The second WantAgent object.                          |
+| otherAgent | WantAgent                | Yes  | Target WantAgent object.                          |
 | callback   | AsyncCallback\<boolean\> | Yes  | Callback used to return the result, indicating whether the two WantAgent objects are equal. **true** if equal, **false** otherwise.|
 
 **Error codes**
@@ -895,10 +895,10 @@ import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// WantAgent object
+// WantAgent object.
 let wantAgent1: WantAgent;
 let wantAgent2: WantAgent;
-// WantAgentInfo object
+// WantAgentInfo object.
 let wantAgentInfo: wantAgent.WantAgentInfo = {
   wants: [
     {
@@ -926,7 +926,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-// getWantAgent callback
+// getWantAgent callback.
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
@@ -973,7 +973,7 @@ Two WantAgent objects are considered equal if they are created by the same appli
 | Name      | Type     | Mandatory| Description         |
 | ---------- | --------- | ---- | ------------- |
 | agent      | WantAgent | Yes  | The first WantAgent object.|
-| otherAgent | WantAgent | Yes  | The second WantAgent object.|
+| otherAgent | WantAgent | Yes  | Target WantAgent object.|
 
 **Return value**
 
@@ -996,10 +996,10 @@ import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// WantAgent object
+// WantAgent object.
 let wantAgent1: WantAgent;
 let wantAgent2: WantAgent;
-// WantAgentInfo object
+// WantAgentInfo object.
 let wantAgentInfo: wantAgent.WantAgentInfo = {
   wants: [
     {
@@ -1027,7 +1027,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-// getWantAgent callback
+// getWantAgent callback.
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
@@ -1088,9 +1088,9 @@ import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// WantAgent object
+// WantAgent object.
 let wantAgentData: WantAgent;
-// WantAgentInfo object
+// WantAgentInfo object.
 let wantAgentInfo: wantAgent.WantAgentInfo = {
   wants: [
     {
@@ -1118,7 +1118,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-// getWantAgent callback
+// getWantAgent callback.
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
@@ -1187,9 +1187,9 @@ import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// WantAgent object
+// WantAgent object.
 let wantAgentData: WantAgent;
-// WantAgentInfo object
+// WantAgentInfo object.
 let wantAgentInfo: wantAgent.WantAgentInfo = {
   wants: [
     {
@@ -1217,7 +1217,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-// getWantAgent callback
+// getWantAgent callback.
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
