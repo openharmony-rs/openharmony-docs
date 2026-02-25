@@ -429,6 +429,60 @@ struct V2Comp {
 
 <!-- @[v1_to_v2_observedV2_trace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1ToV2_ObservedV2AndTrace.ets) -->
 
+``` TypeScript
+@ObservedV2
+class InfoTen {
+  @Trace public myId: number;
+  public name: string;
+
+  constructor(myId?: number, name?: string) {
+    this.myId = myId || 0;
+    this.name = name || 'aaa';
+  }
+}
+
+@ComponentV2
+struct ChildTen {
+  // V2对数据输入有严格的管理，从父组件接受数据时，必须@Param装饰器进行数据接收
+  @Param info: InfoTen = new InfoTen();
+
+  build() {
+    Column() {
+      Text(`Child-V2 info id:${this.info.myId}`)
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.info.myId++; // 刷新
+        })
+    }
+  }
+}
+
+@Entry
+@Component
+struct IndexTen {
+  // @State info: InfoTen = new InfoTen(); // 错误写法。Class类型，不支持传递，编译器报错；消除编译错误请去掉@State
+  info: InfoTen = new InfoTen(); // 正确写法
+
+  build() {
+    Column() {
+      Text(`Parent-V1 info id:${this.info.myId}`)
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.info.myId++; // 刷新
+        })
+
+      ChildTen({
+        info: this.info,
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 
 
 ### 传递嵌套对象
