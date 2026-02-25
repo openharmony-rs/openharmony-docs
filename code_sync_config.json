@@ -985,7 +985,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":127,
+						"end_line":122,
 						"name":"input_case_input_index",
 						"start_line":16
 					}
