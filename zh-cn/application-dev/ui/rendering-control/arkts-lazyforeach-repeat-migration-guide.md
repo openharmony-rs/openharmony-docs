@@ -21,7 +21,7 @@ LazyForEach根据数据源循环渲染子组件。
 **示例1 - 迁移前**
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: string[] = [];
@@ -181,7 +181,8 @@ struct MyComponent {
 
 ```ts
 @Entry
-@ComponentV2 // 使用状态管理V2
+@ComponentV2
+  // 使用状态管理V2
 struct MyComponent {
   @Local data: Array<string> = []; // 数据源为状态管理V2装饰的数组
 
@@ -226,7 +227,7 @@ struct MyComponent {
 **示例2 - 迁移前**
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: string[] = [];
@@ -387,21 +388,33 @@ struct MyComponent {
     Column({ space: 3 }) {
       // 点击追加子组件
       Button('Add new item')
-        .onClick(() => { this.data.push(`New item ${this.count++}`); })
+        .onClick(() => {
+          this.data.push(`New item ${this.count++}`);
+        })
       // 点击删除子组件
       Button('Delete item 0')
-        .onClick(() => { this.data.splice(0, 1); })
+        .onClick(() => {
+          this.data.splice(0, 1);
+        })
       // 点击交换子组件
       Button('Swap item 0 and item 1')
-        .onClick(() => { let temp: string = this.data[0];
-                         this.data[0] = this.data[1];
-                         this.data[1] = temp; })
+        .onClick(() => {
+          let temp: string = this.data[0];
+          this.data[0] = this.data[1];
+          this.data[1] = temp;
+        })
       // 点击修改单个子组件
       Button('Change item 0')
-        .onClick(() => { this.data.splice(0, 1, `Changed item ${this.count++}`); })
+        .onClick(() => {
+          this.data.splice(0, 1, `Changed item ${this.count++}`);
+        })
       // 点击修改多个子组件
       Button('Change all items')
-        .onClick(() => { this.data = this.data.map((item: string) => { return 'Changed ' + item; }); })
+        .onClick(() => {
+          this.data = this.data.map((item: string) => {
+            return 'Changed ' + item;
+          });
+        })
       List({ space: 3 }) {
         Repeat(this.data)
           .each((repeatItem: RepeatItem<string>) => {
@@ -436,7 +449,7 @@ LazyForEach可以使用[@Observed与@ObjectLink](../state-management/arkts-obser
 **示例3 - 迁移前**
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 **/
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -569,7 +582,7 @@ struct MyComponent {
 **示例4 - 迁移前**
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 **/
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -724,7 +737,7 @@ struct ChildComponent {
 **示例5 - 迁移前**
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 **/
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -862,7 +875,7 @@ LazyForEach的[onMove](../../reference/apis-arkui/arkui-ts/ts-universal-attribut
 **示例6 - 迁移前**
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: string[] = [];
@@ -990,7 +1003,7 @@ LazyForEach自身并不具备组件复用能力，为实现组件复用，需要
 **示例7 - 迁移前**
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 **/
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -1205,7 +1218,7 @@ LazyForEach自身并不具备模板渲染能力。为实现模板渲染能力，
 **示例8 - 迁移前**
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 **/
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -1589,8 +1602,7 @@ class BasicDataSource implements IDataSource {
   notifyDataMove(from: number, to: number): void {
     this.listeners.forEach(listener => {
       listener.onDataMove(from, to);
-      // 写法2：listener.onDatasetChange(
-      //         [{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
+      // 写法2：listener.onDatasetChange([{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
     });
   }
 
