@@ -62,7 +62,8 @@ Repeat通过[.each()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-r
 ``` TypeScript
 // 在List容器组件中使用Repeat
 @Entry
-@ComponentV2 // 推荐使用V2装饰器
+@ComponentV2
+  // 推荐使用V2装饰器
 struct RepeatExample {
   @Local dataArr: Array<string> = []; // 数据源
 
@@ -412,6 +413,7 @@ struct RepeatLazyLoadingLongData {
   // 假设数据源总长度较长，为1000。初始数组未提供数据。
   @Local arr: Array<string> = [];
   scroller: Scroller = new Scroller();
+
   build() {
     Column({ space: 5 }) {
       // 初始显示位置为index = 100，数据可通过懒加载自动获取。
@@ -419,9 +421,13 @@ struct RepeatLazyLoadingLongData {
         Repeat(this.arr)
           .virtualScroll({
             // 期望的数据源总长度为1000。
-            onTotalCount: () => { return 1000; },
+            onTotalCount: () => {
+              return 1000;
+            },
             // 实现数据懒加载。
-            onLazyLoading: (index: number) => { this.arr[index] = index.toString(); }
+            onLazyLoading: (index: number) => {
+              this.arr[index] = index.toString();
+            }
           })
           .each((obj: RepeatItem<string>) => {
             ListItem() {
@@ -433,10 +439,13 @@ struct RepeatLazyLoadingLongData {
           })
       }
       .height('80%')
-      .border({ width: 1})
+      .border({ width: 1 })
+
       // 显示位置跳转至index = 500，数据可通过懒加载自动获取。
       Button('ScrollToIndex 500')
-        .onClick(() => { this.scroller.scrollToIndex(500); })
+        .onClick(() => {
+          this.scroller.scrollToIndex(500);
+        })
     }
   }
 }
@@ -508,20 +517,26 @@ struct RepeatLazyLoadingSync {
 @ComponentV2
 struct RepeatLazyLoadingInfinite {
   @Local arr: Array<string> = [];
+
   // 提供首屏显示所需的初始数据。
   aboutToAppear(): void {
     for (let i = 0; i < 15; i++) {
       this.arr.push(i.toString());
     }
   }
+
   build() {
     Column({ space: 5 }) {
       List({ space: 5 }) {
         Repeat(this.arr)
           .virtualScroll({
             // 数据无限懒加载。
-            onTotalCount: () => { return this.arr.length + 1; },
-            onLazyLoading: (index: number) => { this.arr[index] = index.toString(); }
+            onTotalCount: () => {
+              return this.arr.length + 1;
+            },
+            onLazyLoading: (index: number) => {
+              this.arr[index] = index.toString();
+            }
           })
           .each((obj: RepeatItem<string>) => {
             ListItem() {
@@ -533,7 +548,7 @@ struct RepeatLazyLoadingInfinite {
           })
       }
       .height('100%')
-      .border({ width: 1})
+      .border({ width: 1 })
       // 建议设置cachedCount > 0。
       .cachedCount(1)
     }

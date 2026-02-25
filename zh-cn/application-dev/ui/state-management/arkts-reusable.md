@@ -648,7 +648,6 @@ struct Child {
       }
     }
   
-    // ...
     build() {
       Column() {
         List() {
@@ -705,6 +704,7 @@ struct Index {
   aboutToAppear(): void {
     for (let i = 0; i < 20; i++) { // 循环20次
       let title = i + 1 + 'test_if';
+      // 请开发者自行在src/main/resources/base/media路径下添加app.media.app_icon图片，否则运行时会因资源缺失而Image空白。
       this.dataSource.pushData(new FriendMoment(i.toString(), title, 'app.media.app_icon'));
     }
 
