@@ -1072,7 +1072,7 @@ finish(handle: Uint8Array, signature?: Uint8Array): Promise\<CMResult>
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | handle | Uint8Array                   | 是   | 表示初始化操作返回的句柄，最大长度为8字节。 |
-| signature | Uint8Array                   | 否   | 表示用于验签的签名数据，签名操作不需要传递。 |
+| signature | Uint8Array                   | 否   | 表示用于验签操作的签名数据，仅验签操作需要指定。 |
 
 **返回值**：
 
