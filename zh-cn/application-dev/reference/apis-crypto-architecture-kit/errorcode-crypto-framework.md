@@ -11,15 +11,15 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
-## 17620001 内存错误
+## 17620001 内存操作失败
 
 **错误信息**
 
-Memory error.
+Memory operation failed.
 
 **错误描述**
 
-内存错误。
+内存操作失败。
 
 **可能原因**
 
@@ -30,15 +30,15 @@ Memory error.
 1. 检查当前系统功能是否正常。
 2. 业务检查数据是否超长，导致系统无法分配内存。
 
-## 17620002 运行时错误
+## 17620002 ArkTS和C之间转换参数失败
 
 **错误信息**
 
-Runtime error.
+Failed to convert parameters between arkts and c.
 
 **错误描述**
 
-运行时外部错误。
+ArkTS和C之间转换参数失败。
 
 **可能原因**
 

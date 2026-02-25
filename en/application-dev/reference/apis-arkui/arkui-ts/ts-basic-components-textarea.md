@@ -478,7 +478,7 @@ type(value: TextAreaType)
 
 Sets the text box type.
 
-Different TextAreaTypes start the corresponding keyboard and restrict the input.
+Different **TextAreaType** values trigger corresponding keyboard types and enforce input restrictions.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1447,7 +1447,7 @@ IMEClient is valid only during the execution of onWillAttachIME and cannot be ca
 
 ## TextAreaController<sup>8+</sup>
 
-The controller of the TextArea component is inherited from [TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase). The involved interfaces are [getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect), [getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount), [getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11), [addText](ts-universal-attributes-text-style.md#addtext15), [deleteText](ts-universal-attributes-text-style.md#deletetext15), [getSelection](ts-universal-attributes-text-style.md#getselection15), [clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17), [setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22), [deleteBackward](ts-universal-attributes-text-style.md#deletebackward23)<!--Del--&gt, and system interface [getText](ts-text-common-sys.md#gettext19)<!--DelEnd--&gt.
+The controller of the TextArea component is inherited from [TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase). The involved APIs are [getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect), [getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount), [getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11), [addText](ts-universal-attributes-text-style.md#addtext15), [deleteText](ts-universal-attributes-text-style.md#deletetext15), [getSelection](ts-universal-attributes-text-style.md#getselection15), [clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17), [setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22), [deleteBackward](ts-universal-attributes-text-style.md#deletebackward23)<!--Del-->, and system interface [getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2361,7 +2361,7 @@ struct TextAreaExample {
         .fontWeight(FontWeight.Bold)
         .fontFamily('HarmonyOS Sans')
         .inputFilter('[a-zA-Z]+', (value) => { // Only alphabetic input is allowed.
-          console.error(`unsupport char ${value}`);
+          console.error(`unsupported char ${value}`);
         })
         .copyOption(CopyOptions.LocalDevice)
         .enableKeyboardOnFocus(false)
@@ -2550,7 +2550,7 @@ struct TextAreaExample {
 }
 ```
 
-![textAreaSetTextSelection](figures/textAreaSetTextSelection.gif)
+
 
 ### Example 19: Setting Text Stroke
 
@@ -2610,10 +2610,10 @@ struct TextAreaExample {
     Row() {
       Column() {
         Text('Automatic spacing: Enabled').margin(5)
-        TextArea({text: 'Auto Spacing'})
+        TextArea ({text:'Auto Spacing'})
           .enableAutoSpacing(true)
         Text('Automatic spacing: Disabled').margin(5)
-        TextArea({text: 'Auto Spacing'})
+        TextArea ({text:'Auto Spacing'})
           .enableAutoSpacing(false)
       }.height('100%')
     }
@@ -3077,7 +3077,7 @@ struct TextAreaExample {
 
 In this example, [scrollToVisible](./ts-universal-attributes-text-style.md#scrolltovisible23) is used to scroll the text outside the visible area to the visible area.
 
-The scrollToVisible API is added since API version 23.
+The **scrollToVisible** API is added since API version 23.
 
 ```ts
 // xxx.ets

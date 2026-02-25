@@ -80,7 +80,7 @@ The following demonstrates how to add a widget to the home screen and update the
 
 3. In the implementation of **onFormEvent**, call the **updateForm** API to update the widget data.
 
-   <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
+   <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
    
    ``` TypeScript
    // entry/src/main/ets/entryformability/EntryFormAbility.ts
@@ -88,6 +88,7 @@ The following demonstrates how to add a widget to the home screen and update the
    import { Configuration, Want } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
+   
    
    // entry/src/main/ets/entryformability/EntryFormAbility.ts
    const TAG: string = 'EntryFormAbility';
@@ -125,10 +126,12 @@ The following demonstrates how to add a widget to the home screen and update the
      onFormEvent(formId: string, message: string): void {
        // ...
        hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
+   
        class FormDataClass {
          title: string = 'Title Update.'; // It matches the widget layout.
          detail: string = 'Description update success.'; // It matches the widget layout.
        }
+   
        // ...
        let formData = new FormDataClass();
        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
@@ -150,11 +153,14 @@ The following demonstrates how to add a widget to the home screen and update the
        hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onConfigurationUpdate:' + JSON.stringify(config));
      }
    
+   
      onAcquireFormState(want: Want): formInfo.FormState {
        // ...
        return formInfo.FormState.READY;
      }
+   
    }
+   
    ```
 
 4. The resource file is as follows:
@@ -173,7 +179,7 @@ The following demonstrates how to add a widget to the home screen and update the
    	    },
    	    {
    	      "name": "update",
-   	      "value": "Update"
+   	      "value": "update"
    	    }
       ]
    }

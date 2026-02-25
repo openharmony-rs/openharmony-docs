@@ -6,11 +6,11 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-栅格布局容器根节点，使用grid-row与grid-col进行栅格布局。API具体描述请参考[Grid-container](../reference/apis-arkui/arkui-js/js-components-grid-container.md)。
+栅格布局容器根节点，使用grid-row与grid-col进行栅格布局。API具体描述请参考[grid-container](../reference/apis-arkui/arkui-js/js-components-grid-container.md)。
 
 ## 创建grid-container组件
 
-在pages/index目录下的hml文件中创建一个grid-container组件，并添加[Grid-row](../reference/apis-arkui/arkui-js/js-components-grid-row.md)子组件。
+在pages/index目录下的hml文件中创建一个grid-container组件，并添加[grid-row](../reference/apis-arkui/arkui-js/js-components-grid-row.md)子组件。
 
 ```html
 <!-- index.hml -->

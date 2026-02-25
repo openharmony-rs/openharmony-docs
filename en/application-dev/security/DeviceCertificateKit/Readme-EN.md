@@ -30,4 +30,3 @@
   - [Application Certificate Development](certManager-private-credential-guidelines.md)
   - [CA Certificate Development](certManager-ca-certs-guidelines.md)
   - [Certificate Management Dialog Box Development](certManagerDialog-guidelines.md)
-<!--no_check-->

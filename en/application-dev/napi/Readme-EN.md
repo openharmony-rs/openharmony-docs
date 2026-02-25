@@ -115,6 +115,7 @@
         - [JSVM Tuning Practices](jsvm-optimizations.md)
     - JSVM Performance Debugging Guides<!--jsvm-performance-->
       - [Collecting V8 Trace Data Using HiSmartPerf](use-jsvm-about-v8-trace.md)
+      - [Analyzing Web Page Memory Using DevTools](use-jsvm-about-analyze-memory-usage.md)
   - Longque-JS-API<!--longque-->
     - [Using Longque JS APIs](use-longque-js-api.md)
   - OpenMP Support<!--openmp-->

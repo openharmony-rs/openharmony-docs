@@ -30,7 +30,7 @@ Set the [wordBreak](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md
 
 The sample code is as follows:
   <!-- @[Word_Break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/WordBreakd.ets) -->
-  
+
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   @Entry
@@ -70,7 +70,7 @@ The sample code is as follows:
 
 **Solution**
 
-Calculate the truncated characters and append an expansion indicator (such as "…") at the end of the line as part of the component content. For details about the implementation, see [the API for converting a styled string to a paragraph array](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)<!--RP1--><!--RP1End-->.
+Calculate the truncated characters and append an expansion indicator (such as "...") at the end of the line as part of the component content. For details about the implementation, see [the API for converting a styled string to a paragraph array](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)<!--RP1--><!--RP1End-->.
 
 ### How Do I Implement Automatic Ellipsis for Overflowing Text?
 
@@ -84,7 +84,7 @@ Set [heightAdaptivePolicy](../reference/apis-arkui/arkui-ts/ts-basic-components-
 
 The sample code is as follows:
   <!-- @[Height_AdaptivePolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/HeightAdaptivePolicy.ets) --> 
-  
+
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   
@@ -132,7 +132,7 @@ The sample code is as follows:
 
 **Question**
 
-How do I add tags (for example, "Topic" or "Top1") before or after text and customize their [background styles](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md) and [sizes](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md)?
+How do I add tags (for example, "Topic" or "Top1") before or after text and customize their [backgrounds](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md) and [sizes](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md)?
 
 **Solution 1**
 
@@ -163,7 +163,7 @@ Implementation steps:
 Example:
 
   <!-- @[Length_Metric](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/LengthMetric.ets) --> 
-  
+
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
   import { common } from '@kit.AbilityKit';
@@ -272,7 +272,7 @@ How do I convert emoji codes to images and display them alongside text in the **
 Parse emoji codes using a regular expression, map them to image resources, and display both text and emojis using [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) and [ImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md).
 
   <!-- @[Displayed_Together](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisplayedTogether.ets) -->
-  
+
   ``` TypeScript
   // Replace $r('app.media.xxx') with the actual resource file.
   import { common } from '@kit.AbilityKit';
@@ -389,7 +389,7 @@ Let the text wrap automatically. When the **Text** component's [height](../refer
 This example limits the **Text** component to three lines:
 
   <!-- @[Text_Long](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLong.ets) -->
-  
+
   ``` TypeScript
   @Entry
   @Component
@@ -425,7 +425,7 @@ This example limits the **Text** component to three lines:
 Solution 1 truncates content. To display all text, place the **Text** component inside a [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md) container. This way, users can swipe to view the full content.
 
   <!-- @[Text_Long_Tow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLongTow.ets) -->
-  
+
   ``` TypeScript
   @Entry
   @Component

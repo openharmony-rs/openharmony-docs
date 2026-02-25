@@ -243,6 +243,8 @@ struct ParameterValue {
 
 5. \@Builder的参数必须按照对象字面量的形式，把所需属性一一传入，才会触发动态渲染UI，请参考[@Builder存在两个或两个以上参数](#builder存在两个或两个以上参数)。
 
+6. 不允许在\@Builder函数里修改参数的属性，否则会抛出运行时错误，从API version 23开始，将返回错误码[140109](../../reference/apis-arkui/errorcode-stateManagement.md#140109-builder非法触发参数属性赋值)，示例请参考[在@Builder装饰的函数内部修改入参内容](#在builder装饰的函数内部修改入参内容)。
+
 
 ## 使用场景
 
@@ -767,7 +769,7 @@ struct ParentPage {
 
 ![arkts-builder-usage-scenario6](figures/arkts-builder-usage-scenario6.gif)
 
-当通过引用传递方式向`@Builder`传递参数时，若参数为`@Local`装饰的对象，对该对象进行整体赋值会触发`@Builder`中UI刷新。
+当通过引用传递方式向`@Builder`传递参数时，若参数为[`@Local`](arkts-new-local.md)装饰的对象，对该对象进行整体赋值会触发`@Builder`中UI刷新。
 
 <!-- @[builder_function_combined_with_the_v2_decorator_and_local](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderCombinedLocal.ets) -->
 
@@ -1230,7 +1232,7 @@ struct Parent3 {
 
 【反例】
 
-在@ComponentV2装饰的自定义组件中，使用简单数据类型不可以触发UI的刷新。
+在[@ComponentV2](arkts-create-custom-components.md#componentv2)装饰的自定义组件中，使用简单数据类型不可以触发UI的刷新。
 
 <!-- @[dynamic_rerendering_with_component_v2_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/DynamicIncorrectUsage.ets) -->
 
@@ -1706,9 +1708,9 @@ struct MakeBindingTest2 {
 }
 ```
 
-### 在\@Builder装饰的函数内部修改入参内容
+### 在@Builder装饰的函数内部修改入参内容
 
-不使用[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)的情况下，在\@Builder装饰的函数内部修改参数值，修改不会生效且可能造成运行时错误。
+不使用[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)的情况下，在\@Builder装饰的函数内部修改参数值，修改不会生效且可能造成运行时错误。从API version 23开始，将返回错误码[140109](../../reference/apis-arkui/errorcode-stateManagement.md#140109-builder非法触发参数属性赋值)。
 
 【反例】
 <!-- @[changing_input_parameters_builder_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ChangingIncorrectUsage.ets) -->

@@ -77,6 +77,7 @@
             - [UIAbility组件基本用法](application-models/uiability-usage.md)
             - [UIAbility组件与UI的数据同步](application-models/uiability-data-sync-with-ui.md)
             - [启动应用内的UIAbility组件](application-models/uiability-intra-device-interaction.md)
+            - [通过Call调用实现多端协同](application-models/uiability-cross-device-interaction.md)
             - [UIAbility备份恢复](application-models/ability-recover-guideline.md)
           - [ExtensionAbility组件](application-models/extensionability-overview.md)
             <!--Del-->
@@ -457,15 +458,19 @@
           - 语法糖<!--arkts-state-management-syntactic-sugar-->
             - [$$语法：系统组件双向同步](ui/state-management/arkts-two-way-sync.md)
             - [!!语法：双向绑定](ui/state-management/arkts-new-binding.md)
-          - 状态管理V1向V2迁移指导<!--arkts-state-management-v1-v2-migration-guide-->
-            - [V1->V2迁移指导概述](ui/state-management/arkts-v1-v2-migration.md)
-            - [组件内状态变量迁移指导](ui/state-management/arkts-v1-v2-migration-inner-component.md)
-            - [数据对象状态变量的迁移指导](ui/state-management/arkts-v1-v2-migration-inner-class.md)
-            - [应用内状态变量和其他场景迁移指导](ui/state-management/arkts-v1-v2-migration-application-and-others.md)
-            - [组件复用迁移指导](ui/state-management/arkts-v1-v2-migration-reusable.md)
-          - 状态管理V1和V2混合使用<!--v1v2-mixing-->
-            - [自定义组件混用场景指导](ui/state-management/arkts-custom-component-mixed-scenarios.md)
-            - [状态管理V1V2混用文档](ui/state-management/arkts-v1-v2-mixusage.md)
+          - 状态管理V1-V2迁移指导<!--arkts-v1-v2-guide-->
+            - [V1-V2迁移概述](ui/state-management/arkts-v1-v2-migration.md)
+            - 状态管理V1向V2迁移场景<!--arkts-state-management-v1-v2-migration-guide-->
+              - [组件内状态变量迁移](ui/state-management/arkts-v1-v2-migration-inner-component.md)
+              - [数据对象状态变量迁移](ui/state-management/arkts-v1-v2-migration-inner-class.md)
+              - [应用内状态变量迁移](ui/state-management/arkts-v1-v2-migration-application.md)
+              - [组件复用迁移](ui/state-management/arkts-v1-v2-migration-reusable.md)
+              - [循环渲染迁移](ui/state-management/arkts-v1-v2-migration-rendering-control-repeat.md)
+              - [内置对象的迁移](ui/state-management/arkts-v1-v2-migration-inner-object.md)
+              - [AnimateTo使用迁移](ui/state-management/arkts-v1-v2-migration-animateTo.md)
+            - 状态管理V1和V2混用场景<!--v1v2-mixing-->
+              - [状态管理V1和V2混用指导（API version 19前）](ui/state-management/arkts-v1-v2-mixusage-before-api-version.md)
+              - [状态管理V1和V2混用指导（API version 19及之后）](ui/state-management/arkts-v1-v2-mixusage.md)            
           - [状态管理常见问题](ui/state-management/arkts-state-management-faq.md)
             - [组件内状态管理常见问题](ui/state-management/arkts-state-management-faq-inner-component.md)
             - [数据对象状态管理常见问题](ui/state-management/arkts-state-management-faq-inner-class.md)
@@ -1335,8 +1340,6 @@
           - [DistributedExtensionAbility开发指南（仅对系统应用开放）](distributedservice/distributedextension-guidelines-sys.md)
           <!--DelEnd-->
           - [增强连接开发指南](distributedservice/linkEnhance_development-guide.md)
-        - 硬件跨设备连接管理<!--devconnect-distributed-->
-          - [分布式相机开发指南](distributedservice/camera-distributed.md)
       - Network Kit（网络服务）<!--network-kit-->
         - [Network Kit简介](network/net-mgmt-overview.md)
         - 访问网络<!--network-kit-data-transmission-->
@@ -2002,7 +2005,7 @@
         <!--DelEnd-->
         - [清除跨设备场景下的重复通知](notification/notification-distributed-messageid.md)
       - 通知订阅扩展能力<!--notification-subscriber-extension-ability-->
-        - [通知订阅扩展能力概述](notification/notification-subscriber-extension-ability.md)
+        - [NotificationSubscriberExtensionAbility (开发概述)](notification/notification-subscriber-extension-ability.md)
         - [通知订阅扩展能力开发步骤](notification/notification-subscriber-extension-ability-development-steps.md)
   - AI<!--ai-->
     - MindSpore Lite Kit（昇思推理框架服务）<!--mindspore-lite-kit-->
@@ -2033,7 +2036,7 @@
       - C/C++标准库<!--c-cpp-->
         - [C/C++标准库机制概述](napi/c-cpp-overview.md)
         - [fdsan使用指导](napi/fdsan.md)
-      - 使用Node-API实现跨语言交互<!--using-napi-interaction-with-cpp-->
+      - 使用Node-API实现ArkTS/JS与C/C++语言交互<!--using-napi-interaction-with-cpp-->
         - [Node-API简介](napi/napi-introduction.md)
         - [Node-API接口返回状态码介绍](napi/napi_status_introduction.md)
         - [Node-API支持的数据类型和接口](napi/napi-data-types-interfaces.md)
@@ -2284,6 +2287,7 @@
           - [@ohos.app.ability.UIExtensionAbility (带界面的ExtensionAbility组件)](reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)
           - [@ohos.app.ability.UIExtensionContentSession (UIExtensionAbility界面操作类)](reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md)
           - [@ohos.app.ability.sendableContextManager (sendable上下文管理)](reference/apis-ability-kit/js-apis-app-ability-sendableContextManager.md)
+          - [@ohos.app.ability.systemConfiguration (系统环境变量变化监听器)](reference/apis-ability-kit/js-apis-app-ability-systemConfiguration.md)
           - [@ohos.app.appstartup.StartupConfig (启动框架配置信息)](reference/apis-ability-kit/js-apis-app-appstartup-startupConfig.md)
           - [@ohos.app.appstartup.StartupConfigEntry (启动框架配置)](reference/apis-ability-kit/js-apis-app-appstartup-startupConfigEntry.md)
           - [@ohos.app.appstartup.StartupListener (启动框架任务监听器)](reference/apis-ability-kit/js-apis-app-appstartup-startupListener.md)
@@ -2961,6 +2965,7 @@
             - [拖拽控制](reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md)
             - [拖拽排序](reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md)
             - [悬浮态效果](reference/apis-arkui/arkui-ts/ts-universal-attributes-hover-effect.md)
+            - [点击音效](reference/apis-arkui/arkui-ts/ts-universal-attributes-click-sound.md)
             - 触摸交互控制<!--touch-interactions-->
               - [触摸热区设置](reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md)
               - [触摸测试控制](reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md)
@@ -3394,6 +3399,8 @@
             - [继承样式](reference/apis-arkui/arkui-js/js-components-custom-style.md)
             - [slot插槽](reference/apis-arkui/arkui-js/js-components-custom-slot.md)
             - [生命周期定义](reference/apis-arkui/arkui-js/js-components-custom-lifecycle.md)
+          - 全局接口
+            - [旋转表冠事件监听](reference/apis-arkui/arkui-js/js-components-common-monitorcrownevents.md)
           - [动态创建组件](reference/apis-arkui/arkui-js/js-components-create-elements.md)
           - [数据类型说明](reference/apis-arkui/arkui-js/js-appendix-types.md)
         - 兼容JS的类Web开发范式（ArkUI.Lite）<!--arkui-js-lite-comp-->
@@ -3434,6 +3441,8 @@
           - 画布组件<!--js-lite-canvas-comp-->
             - [canvas组件](reference/apis-arkui/arkui-js-lite/js-lite-components-canvas-canvas.md)
             - [CanvasRenderingContext2D对象](reference/apis-arkui/arkui-js-lite/js-lite-components-canvas-canvasrenderingcontext2d.md)
+          - 全局接口
+            - [旋转表冠事件监听](reference/apis-arkui/arkui-js-lite/js-lite-common-monitorcrownevents.md)
         - JS服务卡片UI组件<!--arkui-card-comp-->
           - 框架说明<!--card-comp-framework-overview-->
             - [文件组织](reference/apis-arkui/js-service-widget-ui/js-service-widget-file.md)
@@ -3632,7 +3641,7 @@
           - [ArkUI_PixelRoundPolicy](reference/apis-arkui/capi-arkui-nativemodule-arkui-pixelroundpolicy.md)
           - [ArkUI_StyledString](reference/apis-arkui/capi-arkui-nativemodule-arkui-styledstring.md)
           - [ArkUI_TextLayoutManager](reference/apis-arkui/capi-arkui-nativemodule-arkui-textlayoutmanager.md)
-          - [ArkUI_TextMarqueeOption](reference/apis-arkui/capi-arkui-nativemodule-arkui-textmarqueeoption.md)
+          - [ArkUI_TextMarqueeOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-textmarqueeoptions.md)
           - [ArkUI_UIInputEvent](reference/apis-arkui/capi-arkui-eventmodule-arkui-uiinputevent.md)
           - [ArkUI_ShowCounterConfig](reference/apis-arkui/capi-arkui-nativemodule-arkui-textshowcounterconfig.md)
           - [ArkUI_TextContentBaseController](reference/apis-arkui/capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)

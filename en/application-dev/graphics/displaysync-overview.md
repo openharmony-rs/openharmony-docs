@@ -8,7 +8,7 @@
 
 Nowadays, low-temperature polycrystalline oxide (LTPO) screens are widely used. This type of screen supports switching between frame rates at multiple levels.
 
-For fast-changing content, such as shooting games and interactive animations, a high frame rate is required. It ensures smooth images while causing a high power consumption.
+For fast-changing content, such as shooting games and interactive animations, a high frame rate is required. It ensures smooth images while causing high power consumption.
 
 For slow-changing content, such as game halls and clock update animations, a low frame rate is used. It consumes less power and does not cause frame freezing.
 
@@ -26,6 +26,7 @@ The variable frame rate capability allows you to specify the frame rate in diffe
 
 ## Working Principles
 The variable frame rate provides the basic frame rate configuration for animation components, **XComponent**, and UI components.
+
 After a valid expected frame rate is set, the system collects the configured frame rate and divides the frequency on the rendering pipeline.
 
 ![Schematic diagram of variable frame rate](./figures/displaysync-architecture.jpg)

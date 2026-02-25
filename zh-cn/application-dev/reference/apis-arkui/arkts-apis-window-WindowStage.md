@@ -961,6 +961,67 @@ export struct Index {
 }
 ```
 
+## releaseUIContent<sup>24+</sup>
+
+releaseUIContent(): Promise&lt;void&gt;
+
+销毁WindowStage的主窗页面内容，使用Promise异步回调。<br>如果应用在前台时调用该接口，页面内容不会立即销毁，会等到应用退后台后再销毁。在主窗没有加载页面内容时调用该接口不生效不报错。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+
+  windowStage?: window.WindowStage;
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('onWindowStageCreate');
+    this.windowStage = windowStage;
+    try {
+      let promise = windowStage.loadContent('pages/page');
+      promise.then(() => {
+        console.info('Succeeded in loading the content.');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to load the content. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+
+  onBackground():  void {
+    try {
+      this.windowStage?.releaseUIContent().then(() => {
+        console.info('Succeeded in releasing the content.');
+      });
+    } catch (exception) {
+      console.error(`Failed to release the content. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+};
+```
+
 ## on('windowStageEvent')<sup>9+</sup>
 
 on(eventType: 'windowStageEvent', callback: Callback&lt;WindowStageEventType&gt;): void
@@ -1479,7 +1540,7 @@ setCustomDensity(density: number, applyToSubWindow?: boolean): void
 | 参数名           | 类型    | 必填 | 说明                         |
 | ---------------- | ------- | ---- | ---------------------------- |
 | density | number | 是   | 自定义显示大小缩放系数。该参数为浮点数，取值范围为[0.5, 4.0]或-1.0。4.0表示窗口可显示的最大显示大小缩放系数，-1.0表示窗口使用系统显示大小缩放系数。 |
-| applyToSubWindow | boolean | 否   | 设置当前已创建的子窗和系统窗口是否跟随立即跟随主窗口更新customDensity并重新布局。设置为true时，表示立即跟随主窗生效；设置为false时，表示不会立即跟随主窗生效，而是在子窗或系统窗口下一次位置、大小、系统缩放大小等窗口布局信息变化时跟随主窗的customDensity变化重新布局。默认值为false。 |
+| applyToSubWindow | boolean | 否   | 设置当前已创建的子窗和系统窗口是否立即跟随主窗口更新customDensity并重新布局。设置为true时，表示立即跟随主窗生效；设置为false时，表示不会立即跟随主窗生效，而是在子窗或系统窗口下一次位置、大小、系统缩放大小等窗口布局信息变化时跟随主窗的customDensity变化重新布局。默认值为false。 |
 
 **错误码：**
 

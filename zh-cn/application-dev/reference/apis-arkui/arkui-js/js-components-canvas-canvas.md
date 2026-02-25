@@ -93,9 +93,9 @@ toDataURL(type?: string, quality?: number): string
 
 ```html
 <!-- xxx.hml -->
-<div>
-  <canvas ref="canvas1" style="width: 200px; height: 150px; background-color: #ffff00;"></canvas>
-  <input type="button" style="width: 180px; height: 60px;" value="fillStyle" onclick="handleClick" />
+<div style="margin: 100; flex-direction: column">
+  <canvas ref="canvas1" style="width: 200px; height: 150px; background-color: rgb(213, 213, 213);"></canvas>
+  <input type="button" style="width: 180px; height: 60px; margin: 13;" value="fillStyle" onclick="handleClick" />
 </div>
 ```
 
@@ -110,3 +110,5 @@ export default {
   }
 }
 ```
+
+![zh-cn_image_js_canvas_canvas](figures/zh-cn_image_js_canvas_canvas.png)

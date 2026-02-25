@@ -162,13 +162,13 @@ dataMigration(callback: DataMigrationCallback): int
   dataMigration() {
     const callback: fontManager.DataMigrationCallback = {
       onHeartBeat: () => {
-        console.log('onHeartBeat callback');
+        console.info('onHeartBeat callback');
       },
       onProgress(progress : fontManager.DataMigrationProgress) => {
-        console.log('onProgress callback');
+        console.info('onProgress callback');
       },
       onResult(result : int) => {
-        console.log('onResult callback');
+        console.info('onResult callback');
       }
     }
     try {
@@ -200,13 +200,13 @@ onHeartBeat(): void
   dataMigration() {
     const callback: fontManager.DataMigrationCallback = {
       onHeartBeat: () => {
-        console.log('onHeartBeat callback');
+        console.info('onHeartBeat callback');
       },
       onProgress(progress : fontManager.DataMigrationProgress) => {
-        console.log('onProgress callback');
+        console.info('onProgress callback');
       },
       onResult(result : int) => {
-        console.log('onResult callback');
+        console.info('onResult callback');
       }
     }
     try {
@@ -240,13 +240,13 @@ onProgress(progress : DataMigrationProgress): void
   dataMigration() {
     const callback: fontManager.DataMigrationCallback = {
       onHeartBeat: () => {
-        console.log('onHeartBeat callback');
+        console.info('onHeartBeat callback');
       },
       onProgress(progress : fontManager.DataMigrationProgress) => {
-        console.log('onProgress callback');
+        console.info('onProgress callback');
       },
       onResult(result : int) => {
-        console.log('onResult callback');
+        console.info('onResult callback');
       }
     }
     try {
@@ -280,13 +280,13 @@ onResult(result : int): void
   dataMigration() {
     const callback: fontManager.DataMigrationCallback = {
       onHeartBeat: () => {
-        console.log('onHeartBeat callback');
+        console.info('onHeartBeat callback');
       },
       onProgress(progress : fontManager.DataMigrationProgress) => {
-        console.log('onProgress callback');
+        console.info('onProgress callback');
       },
       onResult(result : int) => {
-        console.log('onResult callback');
+        console.info('onResult callback');
       }
     }
     try {

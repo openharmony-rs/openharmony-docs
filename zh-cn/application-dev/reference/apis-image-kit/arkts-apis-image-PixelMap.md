@@ -6,7 +6,7 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @w_Machine_cc-->
 
-图像像素类，用于读取或写入图像数据以及获取图像信息。在调用PixelMap的方法前，需要先通过[image.createPixelMap](arkts-apis-image-f.md#imagecreatepixelmap8)创建一个PixelMap实例。目前pixelmap序列化大小最大128MB，超过会送显失败。大小计算方式为(宽\*高\*每像素占用字节数)。
+图像像素类，用于读取或写入图像数据以及获取图像信息。在调用PixelMap的方法前，需要先通过[image.createPixelMap](arkts-apis-image-f.md#imagecreatepixelmap8)创建一个PixelMap实例。目前pixelmap序列化大小最大128MB，超过会送显失败。大小计算方式为(宽\*高\*[每像素占用字节数](arkts-apis-image-e.md#pixelmapformat7))。
 
 从API version 11开始，PixelMap支持通过worker跨线程调用。当PixelMap通过[Worker](../apis-arkts/js-apis-worker.md)跨线程后，原线程的PixelMap的所有接口均不能调用，否则将报错501 服务器不具备完成请求的功能。
 
@@ -2129,10 +2129,10 @@ getColorSpace(): colorSpaceManager.ColorSpaceManager
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 62980101| If the image data abnormal.            |
-| 62980103| If the image data unsupport.             |
-| 62980115| If the image parameter invalid.            |
+| -------- | ------------------------------------------ |
+| 62980101 | The image data is abnormal.                |
+| 62980103 | The image data is not supported.           |
+| 62980115 | Invalid image parameter.                   |
 
 **示例：**
 

@@ -208,9 +208,9 @@ struct AddLog {
 
 ## 限制条件
 
-- 如果class类中使用了\@Track装饰器，那么该class类中非\@Track装饰的属性不能在\@Component UI中使用，包括不能绑定在组件上、不能用于初始化子组件，错误的使用将导致运行时报错，详见[在UI中使用非\@Track装饰的属性发生运行时报错](#在ui中使用非track装饰的属性发生运行时报错)；可以在非UI中使用非\@Track装饰的属性，如事件回调函数中、生命周期函数中等。
+- 如果class类中使用了\@Track装饰器，那么该class类中非\@Track装饰的属性不能在\@Component UI中使用，包括不能绑定在组件上、不能用于初始化子组件，错误的使用将导致运行时报错，从API version 23开始，将返回错误码[140110](../../reference/apis-arkui/errorcode-stateManagement.md#140110-在ui中使用非track装饰的属性发生运行时报错)，详见[在UI中使用非\@Track装饰的属性发生运行时报错](#在ui中使用非track装饰的属性发生运行时报错)；可以在非UI中使用非\@Track装饰的属性，如事件回调函数中、生命周期函数中等。
 
-- API version 19及以后，\@Track使用在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)的UI中，不会引起运行时报错，但依旧不会刷新，详见[常见场景](./arkts-v1-v2-mixusage.md#observed装饰的class)。
+- API version 19及以后，\@Track使用在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)的UI中，不会引起运行时报错，但依旧不会刷新，详见[\@Observed+\@Track装饰的class（V1->V2）](./arkts-v1-v2-mixusage.md#传递class类型v1-v2)、[@Observed+\@Track装饰的class（V2->V1）](./arkts-v1-v2-mixusage.md#传递class类型v2-v1)。
 
 - 建议开发者不要混用包含\@Track的class对象和不包含\@Track的class对象，如联合类型中、类继承中等，容易在UI中误用非\@Track装饰的属性，导致运行时报错。
 
@@ -288,7 +288,7 @@ struct AddLog {
 
 ### 在UI中使用非\@Track装饰的属性发生运行时报错
 
-在UI中使用非\@Track装饰的属性，运行时会报错。
+在UI中使用非\@Track装饰的属性，运行时会报错，从API version 23开始，将返回错误码140110。需要给`age`也添加\@Track装饰器。
 
 ```ts
 class Person {

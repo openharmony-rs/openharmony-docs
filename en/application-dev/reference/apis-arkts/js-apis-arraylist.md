@@ -520,7 +520,7 @@ Sorts elements in an ArrayList according to the order defined by the specified c
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| comparator | [ArrayListComparatorFn\<T\>](#arraylistcomparatorfnt22) | No| Callback invoked for sorting. The default value is the callback function for sorting elements in ascending order.<br> There has been a compatibility change since API version 22. In API version 21 and earlier versions, the type is `(firstValue: T, secondValue: T) => number`.|
+| comparator | [ArrayListComparatorFn\<T\>](#arraylistcomparatorfnt23) | No| Callback invoked for sorting. The default value is the callback function for sorting elements in ascending order.<br> There has been a compatibility change since API version 23. In API version 22 and earlier versions, the type is `(firstValue: T, secondValue: T) => number`.|
 
 **Error codes**
 
@@ -929,13 +929,13 @@ while(!temp.done) {
 // value: 4
 ```
 
-### ArrayListComparatorFn\<T\><sup>22+</sup>
+### ArrayListComparatorFn\<T\><sup>23+</sup>
 
 type ArrayListComparatorFn\<T\> = (firstValue: T, secondValue: T) => number
 
 Callback function of the **sort** method in ArrayList.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.Utils.Lang
 

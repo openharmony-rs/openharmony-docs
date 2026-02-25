@@ -345,7 +345,8 @@ The projection-based focus traversal algorithm determines the next focus based o
 
 > **NOTE**
 >
-> - The focus order calculated by the projection-based focusing algorithm is closely related to the component layout and size. It is recommended for use in scenarios where components are arranged in a regular and uniform manner. If components have varying sizes and overlap horizontally or vertically, the resulting focus order may deviate from the expected sequence.
+> - The focus traveral order calculated by the projection-based focus traversal algorithm is closely related to the component layout and size. It is recommended for use in scenarios where components are arranged in a regular and uniform manner. If components have varying sizes and overlap horizontally or vertically, the resulting focus traversal order may deviate from the expected sequence.
+>
 > - If a clear focus order is required, it is recommended that you use containers that support sequential focusing, such as **Column** or **Row**.
 
 When components in a **Flex** multi-line layout have uniform sizes, focus traversal works as expected.
@@ -1528,12 +1529,15 @@ The preceding example includes three steps:
 
 When a component is in focus and has either an **onClick** or **TapGesture** event defined, pressing the **Enter** key or spacebar triggers the associated event callback.
 
->  **NOTE**
+> **NOTE**
 >
->  1. If the **onClick** or **TapGesture** event is triggered by pressing the **Enter** key or spacebar, the event does not bubble up by default. This means that the parent component's corresponding [key event](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md) is not triggered synchronously.
->  2. The key event (**onKeyEvent**) bubbles up by default, which means that it will also trigger the parent component's key event callback.
->  3. If the component has both an **onClick** event and an **onKeyEvent**, pressing the **Enter** key or spacebar trigger both events.
->  4. The component's response to the **onClick** event is independent of whether the focus is activated or not.
+> - If the **onClick** or **TapGesture** event is triggered by pressing the **Enter** key or spacebar, the event does not bubble up by default. This means that the parent component's corresponding [key event](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md) is not triggered synchronously.
+>
+> - The key event (**onKeyEvent**) bubbles up by default, which means that it will also trigger the parent component's key event callback.
+>
+> - If the component has both an **onClick** event and an **onKeyEvent**, pressing the **Enter** key or spacebar trigger both events.
+>
+> - Since API version 18, the focused component responds to the **onClick** event only when the focus is active.
 
    <!-- @[dynamic_focus_on_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusOnClick.ets) -->
    

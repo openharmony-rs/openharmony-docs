@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-When the same compute logic is repeatedly bound in the UI, the \@Computed decorator helps prevent redundant calculations. A computed property is evaluated only once when its dependent state variables change, addressing performance issues caused by repeated calculations in the UI. Example:
+When developers repeatedly bind the same calculation logic to the UI, to prevent redundant calculations, the \@Computed property can be used. A computed property is calculated only once when its dependent state variables change, addressing performance issues caused by repeated calculations in the UI. Example:
 
 <!-- @[computed_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedProperty.ets) -->
 
@@ -25,7 +25,7 @@ Text(`${this.sum}`) // Read the cached value from the @Computed sum, avoiding re
 Text(`${this.sum}`) // Read the cached value from the @Computed sum, avoiding redundant calculations.
 ```
 
-Before reading this topic, it is recommended to familiarize yourself with [\@ComponentV2](./arkts-create-custom-components.md#componentv2), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and [\@Local](./arkts-new-local.md).
+Before reading this topic, it is advised to familiarize yourself with [\@ComponentV2](./arkts-create-custom-components.md#componentv2), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and [\@Local](./arkts-new-local.md).
 
 >**NOTE**
 >
@@ -110,7 +110,7 @@ get varName(): T {
 
 - In \@Computed decorated getter methods, do not modify properties involved in the calculation to prevent infinite recomputation leading to application freezes.
 
-  In the following example, the calculation of fullName1 triggers the change of this.lastName. The change of this.lastName triggers the calculation of fullName2. In the calculation of fullName2, this.firstName is changed, and the recalculation of fullName1 is triggered again, as a result, cyclic calculation is performed, causing app freezing.
+  In the following example, calculating **fullName1** triggers the change of **this.lastName**; the change of **this.lastName** triggers the calculation of **fullName2.** During the calculation of **fullName2**, **this.firstName** is changed, which triggers the recalculation of **fullName1** again, resulting in circular calculation and eventually causing application freezing.
 
   ```ts
   @Entry
@@ -142,7 +142,7 @@ get varName(): T {
   }
   ```
 
-- \@Computed cannot be used together with [!! Syntax: Enabling Two-Way Binding](./arkts-new-binding.md#overview). \@Computed decorates the getter accessor, which is not synchronized by subcomponents and cannot be assigned a value. Custom setter implementations for computed properties will not take effect and will result in a compile-time error.
+- \@Computed cannot be used together with [!! for two-way binding](./arkts-new-binding.md#overview). Properties decorated with \@Computed are getter accessors. They are not synchronized by child components and cannot be assigned. Custom setter implementations for computed properties will not take effect and will result in a compilation error.
 
   ```ts
   @ComponentV2

@@ -466,6 +466,24 @@ cachedMaxCount(count: number, mode: TabsCacheMode)
 | count  | number                                                      | 是   | 子组件的最大缓存个数。超出范围时自动释放不再需要的子组件。<br/>取值范围：[0, +∞)。|
 | mode   | [TabsCacheMode](#tabscachemode19枚举说明)                   | 是   | 子组件的缓存模式。<br/>默认值：TabsCacheMode.CACHE_BOTH_SIDE   |
 
+### nestedScroll<sup>24+</sup>
+
+nestedScroll(value: TabsNestedScrollMode | undefined)
+
+设置Tabs组件与其父组件的嵌套滚动模式。未通过该接口设置时，默认嵌套滚动模式为[SELF_ONLY](#tabsnestedscrollmode24枚举说明)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                        | 必填 | 说明                                                         |
+| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| value   | [TabsNestedScrollMode](#tabsnestedscrollmode24枚举说明) \| undefined                | 是   | Tabs组件和父组件的嵌套滚动模式。<br/>设置undefined时，Tabs自身滚动，不与父组件联动。   |
+
 ## DividerStyle<sup>10+</sup>对象说明
 
 分割线样式对象。
@@ -577,6 +595,21 @@ type CommonModifier = CommonModifier
 | --------------------- | -- | ---------------------------------------- |
 | CACHE_BOTH_SIDE       | 0  | 缓存当前显示的子组件和其两侧的子组件。即当设置cachedMaxCount属性的count值为n时，最多缓存2n+1个子组件。 |
 | CACHE_LATEST_SWITCHED | 1  | 缓存当前显示的子组件和最近切换过的子组件。即当设置cachedMaxCount属性的count值为n时，最多缓存n+1个子组件。 |
+
+## TabsNestedScrollMode<sup>24+</sup>枚举说明
+
+Tabs组件和父组件的嵌套滚动模式枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称                  | 值 | 说明                                     |
+| --------------------- | -- | ---------------------------------------- |
+| SELF_ONLY       | 0  | Tabs自身滚动，不与父组件联动。 |
+| SELF_FIRST | 1  | Tabs自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则Tabs触发边缘效果。 |
 
 ## 事件
 
@@ -1859,7 +1892,7 @@ struct TabsCustomAnimationExample {
 本示例通过onContentWillChange实现了自定义页面手势滑动切换拦截。
 
 ```ts
-//xxx.ets
+// xxx.ets
 @Entry
 @Component
 struct TabsExample {
@@ -2712,7 +2745,7 @@ struct TabsExample {
 
 该示例通过设置[cachedMaxCount](#cachedmaxcount19)属性，实现了Tabs子组件的释放。
 
-从API version 18开始，新增了cachedMaxCount接口。
+从API version 19开始，新增了cachedMaxCount接口。
 
 ```ts
 @Entry
@@ -3082,3 +3115,70 @@ struct TabsDidScrollExample {
 ```
 
 ![tabs_didScroll](figures/tabs_didScroll.gif)
+
+### 示例23（Tabs嵌套滚动）
+
+该示例展示了如何通过[nestedScroll](#nestedscroll24)接口设置Tabs嵌套滚动效果。
+
+从API version 24开始，新增nestedScroll接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TabsExample {
+  @State text: string = '文本';
+  @State barMode: BarMode = BarMode.Fixed;
+  build() {
+    Column() {
+      Row() {
+
+        Tabs() {
+          TabContent() {
+            Tabs() {
+              TabContent() {
+                Column().width('100%').height('100%').backgroundColor(Color.Blue)
+              }.tabBar(SubTabBarStyle.of('子页a'))
+
+              TabContent() {
+                Column().width('100%').height('100%').backgroundColor(Color.Green)
+              }.tabBar(SubTabBarStyle.of('子页b'))
+
+              TabContent() {
+                Column().width('100%').height('100%').backgroundColor(Color.Pink)
+              }.tabBar(SubTabBarStyle.of('子页c'))
+            }
+            .nestedScroll(TabsNestedScrollMode.SELF_FIRST)
+          }.tabBar(SubTabBarStyle.of("首页1"))
+
+
+          TabContent() {
+            Tabs() {
+              TabContent() {
+                Column().width('100%').height('100%').backgroundColor(Color.Blue)
+              }.tabBar(SubTabBarStyle.of('子页d'))
+
+              TabContent() {
+                Column().width('100%').height('100%').backgroundColor(Color.Green)
+              }.tabBar(SubTabBarStyle.of('子页e'))
+
+              TabContent() {
+                Column().width('100%').height('100%').backgroundColor(Color.Pink)
+              }.tabBar(SubTabBarStyle.of('子页f'))
+            }
+            .nestedScroll(TabsNestedScrollMode.SELF_FIRST)
+          }.tabBar(SubTabBarStyle.of('首页2'))
+
+        }
+        .height('100%')
+        .backgroundColor(0xf1f3f5)
+        .barMode(this.barMode)
+      }
+      .width('100%')
+      .height('100%')
+      .padding('24vp')
+    }
+  }
+}
+```
+![tabs_nestedScroll](figures/tabs_nestedscroll.gif)

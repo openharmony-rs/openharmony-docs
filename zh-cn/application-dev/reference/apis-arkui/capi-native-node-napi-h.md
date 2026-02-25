@@ -35,7 +35,7 @@
 | [int32_t OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue(napi_env env, napi_value value, ArkUI_DrawableDescriptor** drawableDescriptor)](#oh_arkui_getdrawabledescriptorfromresourcenapivalue) | 将ArkTS侧创建的$r资源对象映射到Native侧的ArkUI_DrawableDescriptor。 |
 | [ArkUI_ErrorCode OH_ArkUI_GetNavigationId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getnavigationid) | 获取当前节点所在的Navigation组件的ID。 |
 | [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationName(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getnavdestinationname) | 获取当前节点所在的NavDestination组件的名称。 |
-| [ArkUI_ErrorCode OH_ArkUI_GetNavStackLength(ArkUI_NodeHandle node, int32_t* length)](#oh_arkui_getnavstacklength) | 根据给定索引值，获取当前节点所在的Navigation栈的长度。 |
+| [ArkUI_ErrorCode OH_ArkUI_GetNavStackLength(ArkUI_NodeHandle node, int32_t* length)](#oh_arkui_getnavstacklength) | 获取当前节点所在的Navigation栈的长度。 |
 | [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationNameByIndex(ArkUI_NodeHandle node, int32_t index, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getnavdestinationnamebyindex) | 根据给定索引值，获取当前节点所在的Navigation栈中对应位置的页面名称。索引值从0开始计数，0为栈底。 |
 | [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getnavdestinationid) | 获取当前节点所在的NavDestination组件的ID。 |
 | [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationState(ArkUI_NodeHandle node, ArkUI_NavDestinationState* state)](#oh_arkui_getnavdestinationstate) | 获取当前节点所在的NavDestination组件的状态。 |
@@ -146,7 +146,7 @@ int32_t OH_ArkUI_GetDrawableDescriptorFromNapiValue(napi_env env, napi_value val
 **描述：**
 
 
-将ArkTS侧创建的DrawableDescriptor对象映射到Native侧的ArkUI_DrawableDescriptor。
+将ArkTS侧创建的[DrawableDescriptor](arkui-ts/ts-basic-components-image.md#drawabledescriptor10)对象映射到Native侧的[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。
 
 **起始版本：** 12
 
@@ -174,7 +174,7 @@ int32_t OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue(napi_env env, napi_v
 **描述：**
 
 
-将ArkTS侧创建的$r资源对象映射到Native侧的ArkUI_DrawableDescriptor。
+将ArkTS侧创建的[$r](js-apis-arkui-resource.md)资源对象映射到Native侧的[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。
 
 **起始版本：** 12
 
@@ -202,7 +202,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavigationId(ArkUI_NodeHandle node, char* buffer, in
 **描述：**
 
 
-获取当前节点所在的Navigation组件的ID。
+获取当前节点所在的[Navigation](arkui-ts/ts-basic-components-navigation.md)组件的ID。
 
 **起始版本：** 12
 
@@ -220,7 +220,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavigationId(ArkUI_NodeHandle node, char* buffer, in
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 错误码。<br>        [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>        [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>        [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) 查询信息失败，可能因为当前节点不在Navigation中。<br>        [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) 给定的buffer size小于可以容纳目标的最小缓冲区大小。 |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 错误码。<br>        [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>        [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>        [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) 查询信息失败，可能因为当前节点不在Navigation中。<br>        [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) 数据大小超过指定的缓冲区大小。 |
 
 ### OH_ArkUI_GetNavDestinationName()
 
@@ -231,7 +231,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationName(ArkUI_NodeHandle node, char* buff
 **描述：**
 
 
-获取当前节点所在的NavDestination组件的名称。
+获取当前节点所在的[NavDestination](arkui-ts/ts-basic-components-navdestination.md)组件的名称。
 
 **起始版本：** 12
 
@@ -260,7 +260,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavStackLength(ArkUI_NodeHandle node, int32_t* lengt
 **描述：**
 
 
-根据给定索引值，获取当前节点所在的Navigation栈的长度。
+获取当前节点所在的Navigation栈的长度。
 
 **起始版本：** 12
 
@@ -287,7 +287,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationNameByIndex(ArkUI_NodeHandle node, int
 **描述：**
 
 
-根据给定索引值，获取当前节点所在的Navigation栈中对应位置的页面名称。索引值从0开始计数，0为栈底。
+根据给定索引值，获取当前节点所在的Navigation栈中的页面名称。索引值从0开始计数，0为栈底。
 
 **起始版本：** 12
 
@@ -335,7 +335,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationId(ArkUI_NodeHandle node, char* buffer
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 错误码。<br>        [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>        [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>        [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) 查询信息失败，可能因为当前节点不在Navigation中。<br>        [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) 给定的buffer size小于可以容纳目标的最小缓冲区大小。 |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 错误码。<br>        [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>        [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>        [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) 查询信息失败，可能因为当前节点不在Navigation中。<br>        [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) 数据大小超过指定的缓冲区大小。 |
 
 ### OH_ArkUI_GetNavDestinationState()
 
@@ -426,7 +426,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageIndex(ArkUI_NodeHandle node, int32_t* inde
 **描述：**
 
 
-获取当前节点所在页面在Router页面栈中的索引。
+获取当前节点所在[Router](arkts-apis-uicontext-router.md)页面栈中的索引。
 
 **起始版本：** 12
 
@@ -453,7 +453,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageName(ArkUI_NodeHandle node, char* buffer, 
 **描述：**
 
 
-获取当前节点所在页面的名称。
+获取当前节点所在Router页面的名称。
 
 **起始版本：** 12
 
@@ -482,7 +482,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPagePath(ArkUI_NodeHandle node, char* buffer, 
 **描述：**
 
 
-获取当前节点所在页面的Page组件的路径。
+获取当前节点所在Router页面的路径。
 
 **起始版本：** 12
 
@@ -492,7 +492,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPagePath(ArkUI_NodeHandle node, char* buffer, 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 指定的节点。 |
-| char* buffer | 缓冲区，Page Path写入该内存区域。 |
+| char* buffer | 缓冲区，页面路径写入该内存区域。 |
 | int32_t bufferSize | 缓冲区大小。 |
 | int32_t* writeLength | 在返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)时表示实际写入到缓冲区的字符串长度。                     在返回[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode)时表示可以容纳目标的最小缓冲区大小。 |
 
@@ -511,7 +511,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageState(ArkUI_NodeHandle node, ArkUI_RouterP
 **描述：**
 
 
-获取当前节点所在页面的Page组件的状态。
+获取当前节点所在Router页面的状态。
 
 **起始版本：** 12
 
@@ -521,7 +521,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageState(ArkUI_NodeHandle node, ArkUI_RouterP
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 指定的节点。 |
-| [ArkUI_RouterPageState](capi-native-type-h.md#arkui_routerpagestate)* state | Router Page的状态值写回该参数中。 |
+| [ArkUI_RouterPageState](capi-native-type-h.md#arkui_routerpagestate)* state | Router页面的状态值写回该参数中。 |
 
 **返回：**
 
@@ -538,7 +538,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageId(ArkUI_NodeHandle node, char* buffer, in
 **描述：**
 
 
-获取当前节点所在页面的Page组件的ID。
+获取当前节点所在Router页面的ID。
 
 **起始版本：** 12
 
@@ -548,7 +548,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageId(ArkUI_NodeHandle node, char* buffer, in
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 指定的节点。 |
-| char* buffer | 缓冲区，Page Id写入该内存区域。 |
+| char* buffer | 缓冲区，页面Id写入该内存区域。 |
 | int32_t bufferSize | 缓冲区大小。 |
 | int32_t* writeLength | 在返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)时表示实际写入到缓冲区的字符串长度。                     在返回[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode)时表示可以容纳目标的最小缓冲区大小。 |
 
@@ -556,7 +556,7 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageId(ArkUI_NodeHandle node, char* buffer, in
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 错误码。<br>        [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>        [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>        [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) 查询信息失败。<br>        [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) 给定的buffer size小于可以容纳目标的最小缓冲区大小。 |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 错误码。<br>        [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>        [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>        [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) 查询信息失败。<br>        [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) 数据大小超过指定的缓冲区大小。 |
 
 ### OH_ArkUI_InitModuleForArkTSEnv()
 
@@ -622,7 +622,7 @@ int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | UIContext对象，用以绑定实例。 |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [UIContext](arkui-ts/ts-custom-component-api.md#uicontext)对象指针，用以绑定实例。 |
 | void* userData | 自定义事件参数，当事件触发时在回调参数中携带回来。 |
 | callback | 自定义回调函数。 |
 | uint64_t nanoTimestamp | 帧信号的时间戳。 |
@@ -643,7 +643,7 @@ int32_t OH_ArkUI_PostIdleCallback(ArkUI_ContextHandle uiContext, void* userData,
 **描述：**
 
 
-注册一个回调函数，在下一帧渲染结束后如果距离下一个Vsync信号到来剩余时间大于1ms时，该回调函数将被执行；如果剩余时间小于1ms时，回调函数将被顺延至当某个下一帧的剩余时间大于1ms时再执行。如果当前没有下一帧，将自动请求下一帧。
+注册一个回调函数，在下一帧渲染结束后如果距离下一帧到来剩余时间大于1ms时，该回调函数将被执行；如果剩余时间小于1ms时，回调函数将被顺延至当某个下一帧的剩余时间大于1ms时再执行。如果当前没有下一帧，将自动请求下一帧。
 
 **起始版本：** 20
 

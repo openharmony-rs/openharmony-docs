@@ -56,7 +56,7 @@ You can disable the default transition animations in either of the following way
 >
 > When both [customNavContentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11) and [customTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#customtransition15) are used, **customNavContentTransition** takes precedence.
 
-## Shared Element Transition
+## Defining a Shared Element Transition
 
 You can implement shared element transitions between **NavDestination** components using [geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md#geometrytransition). The following is an example. Ensure that the default transition animations are disabled for pages configured with shared element transitions. Otherwise, the default animations and shared element animations will be superimposed, resulting in an abnormal effect.
 

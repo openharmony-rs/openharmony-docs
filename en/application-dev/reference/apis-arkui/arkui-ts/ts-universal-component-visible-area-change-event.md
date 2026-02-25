@@ -61,9 +61,9 @@ Called when the visible area of the component changes. You can use **measureFrom
 
 | Name| Type                                               | Mandatory| Description                                                        |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| ratios | Array&lt;number&gt;                                 | Yes  | Threshold array. Each threshold represents a ratio of a visible area of the component to an area of the component. This callback is invoked when the ratio of the component's visible area to its total area is greater than or less than the threshold. The value of each threshold ranges from 0.0 to 1.0. If a threshold value is less than 0.0, it is clamped to 0.0; if it is greater than 1.0, it is clamped to 1.0.<br>**NOTE**<br>When the value is close to the boundary 0 or 1, it is rounded off with a round-off error not greater than 0.001. For example, 0.9997 is rounded off to 1.|
+| ratios | Array&lt;number&gt;                                 | Yes  | Threshold array. Each threshold represents the ratio of the component's visible area to its own total area. This callback is invoked when the ratio of the component's visible area to its total area is greater than or less than the threshold. The value of each threshold ranges from 0.0 to 1.0. If a threshold value is less than 0.0, it is clamped to 0.0; if it is greater than 1.0, it is clamped to 1.0.<br>**NOTE**<br>When the value is close to the boundary 0 or 1, it is rounded off with a round-off error not greater than 0.001. For example, 0.9997 is rounded off to 1.|
 | event  | [VisibleAreaChangeCallback](./ts-universal-component-visible-area-change-event.md#visibleareachangecallback12) | Yes  | Callback for visible area changes of the component.|
-| measureFromViewport  | boolean | Yes | Visible area calculation mode.<br>**true**: considers the parent's [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute. If [clip](./ts-universal-attributes-sharp-clipping.md#clip12) is **false**, areas of the child component beyond the parent's bounds are counted as visible; if [clip](./ts-universal-attributes-sharp-clipping.md#clip12) is **true**, such areas are counted as invisible. **false**: ignores the parent's [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute, treating areas beyond the parent's bounds as invisible.<br>When **measureFromViewport** is set to **true**, and an ancestor node has the [scale](ts-universal-attributes-transformation.md#scale) attribute set, the visible area of the component will be correctly calculated.|
+| measureFromViewport  | boolean | Yes | Visible area calculation mode.<br>**true**: considers the parent's [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute. If [clip](./ts-universal-attributes-sharp-clipping.md#clip12) is **false**, areas of the child component beyond the parent's bounds are counted as visible; if [clip](./ts-universal-attributes-sharp-clipping.md#clip12) is **true**, such areas are counted as invisible. **false**: ignores the parent's [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute, treating areas beyond the parent's bounds as invisible.<br>When **measureFromViewport** is set to **true**, and an ancestor node has the [scale](ts-universal-attributes-transformation.md#scale) attribute set, the component's visible ratio will be correctly calculated.|
 
 **Return value**
 
@@ -88,7 +88,7 @@ Configures a callback for the **onVisibleAreaApproximateChange** event, with opt
 
 > **NOTE**
 >
-> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 23.
 
 **Atomic service API**: This API can be used in atomic services since API version 17.
 
@@ -129,7 +129,7 @@ Describes visible area change configuration options.
 | ------ | --------------------------------------------------- | ---- | -------- | ------------------------------------------------------------ |
 | ratios | Array&lt;number&gt;                                 | No| No  | Threshold array. Each threshold represents a ratio of the component's visible area (that is, the area of the component that is visible on screen; only the area within the parent component is counted) to the component's total area. The value of each threshold ranges from 0.0 to 1.0. If a threshold value is less than 0.0, it is clamped to 0.0; if it is greater than 1.0, it is clamped to 1.0.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | expectedUpdateInterval | number | No| Yes| Expected calculation interval, in ms.<br>Default value: **1000**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| measureFromViewport<sup>22+</sup> | boolean | No| Yes| Visible area calculation mode.<br>**true**: considers the parent's [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute. If [clip](./ts-universal-attributes-sharp-clipping.md#clip12) is **false**, areas of the child component beyond the parent's bounds are counted as visible; if [clip](./ts-universal-attributes-sharp-clipping.md#clip12) is **true**, such areas are counted as invisible. **false**: ignores the parent's [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute, treating areas beyond the parent's bounds as invisible.<br>Default value: **false**.<br>If **measureFromViewport** is set to **true**, and an ancestor node has the [scale](ts-universal-attributes-transformation.md#scale) attribute set, the visible area of the component will be correctly calculated.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| measureFromViewport<sup>22+</sup> | boolean | No| Yes| Visible area calculation mode.<br>**true**: considers the parent's [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute. If [clip](./ts-universal-attributes-sharp-clipping.md#clip12) is **false**, areas of the child component beyond the parent's bounds are counted as visible; if [clip](./ts-universal-attributes-sharp-clipping.md#clip12) is **true**, such areas are counted as invisible. **false**: ignores the parent's [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute, treating areas beyond the parent's bounds as invisible.<br>Default value: **false**.<br>When **measureFromViewport** is set to **true**, and an ancestor node has the [scale](ts-universal-attributes-transformation.md#scale) attribute set, the component's visible ratio will be correctly calculated.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 
 ## VisibleAreaChangeCallback<sup>12+</sup>
 
@@ -146,7 +146,7 @@ Represents a callback for visible area changes of the component.
 | Name           | Type              | Mandatory     | Description                                      |
 | ------------- | ------------------   | ------------- | ---------------------- |
 | isExpanding | boolean | Yes| Whether the component's visible area has increased or decreased relative to its total area since the last callback. The value **true** indicates that the visible area has increased, and **false** indicates that the visible area has decreased.|
-| currentRatio | number | Yes| Ratio of the visible area of a component to its own area when a callback is triggered.|
+| currentRatio | number | Yes| Ratio of the component's visible area to its own area at the moment the callback is triggered.|
 
 ## Example
 
@@ -356,9 +356,9 @@ struct ScrollExample {
 ```
 ![en-us_visible_area_change.gif](figures/en-us_visible_area_change.gif)
 
-### Example 3: Allowing the Child Component to Display Beyond the Parent Component When measureFromViewport Is Set to true
+### Example 3: Setting measureFromViewport When a Child Component Extend Beyond the Parent for Display
 
-Starting from API version 22, this example demonstrates the effect comparison of setting **measureFromViewport** in the **onVisibleAreaChange** event. The core difference lies in the returned component visibility ratio (**currentRatio**): When **measureFromViewport** is set to **true**, the returned **currentRatio** value is more consistent with the actual display effect. The **currentRatio** value varies slightly on different devices.
+In API version 22 and later versions, this example demonstrates the effect comparison of setting **measureFromViewport** in the **onVisibleAreaChange** event. The core difference lies in the returned component visible ratio (**currentRatio**): When **measureFromViewport** is set to **true**, the returned **currentRatio** value better aligns with the actual visual effect. The **currentRatio** value varies slightly on different devices.
 
 ```ts
 @Entry
@@ -380,13 +380,13 @@ struct OnVisibleAreaChangeSample {
           .height(120)
           .width(120)
           .offset({ x: 0, y: 60 })
-          // If measureFromViewport is set to true and clip (true) is not set for the parent component, any area of the child component that extends beyond its parent component is regarded as a visible area.
+          // If measureFromViewport is set to true and clip(true) is not set for the parent component, any area of the child component that extends beyond its parent component's bounds is regarded as a visible area.
           .onVisibleAreaApproximateChange({
             ratios: [0.0, 1.0],
             expectedUpdateInterval: 500,
             measureFromViewport: true
           }, (isExpanding: boolean, currentRatio: number) => {
-            console.log(`onVisibleAreaApproximateChange1 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
+            console.info(`onVisibleAreaApproximateChange1 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
           })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
             this.ratio1 = currentRatio
@@ -411,10 +411,10 @@ struct OnVisibleAreaChangeSample {
           .height(120)
           .width(120)
           .offset({ x: 0, y: 60 })
-          // If measureFromViewport is not set, the default value false is used. If clip (true) is not set for the parent component, any area of a component that extends beyond its parent component regarded as an invisible area.
+          // If measureFromViewport is not set (which will be treated as false) and clip(true) is not set for the parent component, any area of the child component that extends beyond its parent component's bounds is regarded as an invisible area.
           .onVisibleAreaApproximateChange({ ratios: [0.0, 1.0], expectedUpdateInterval: 500 },
             (isExpanding: boolean, currentRatio: number) => {
-              console.log(`onVisibleAreaApproximateChange2 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
+              console.info(`onVisibleAreaApproximateChange2 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
             })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
             this.ratio2 = currentRatio
@@ -439,13 +439,13 @@ struct OnVisibleAreaChangeSample {
           .height(120)
           .width(120)
           .offset({ x: 0, y: 60 })
-          // If measureFromViewport is set to true and clip is set to true for the parent component, any area of the child component that extends beyond its parent component regarded as an invisible area.
+          // If measureFromViewport is set to true and clip(true) is set for the parent component, any area of the child component that extends beyond its parent component regarded as an invisible area.
           .onVisibleAreaApproximateChange({
             ratios: [0.0, 1.0],
             expectedUpdateInterval: 500,
             measureFromViewport: true
           }, (isExpanding: boolean, currentRatio: number) => {
-            console.log(`onVisibleAreaApproximateChange3 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
+            console.info(`onVisibleAreaApproximateChange3 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
           })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
             this.ratio3 = currentRatio

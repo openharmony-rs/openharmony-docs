@@ -426,7 +426,7 @@ createPhotoAsset(photoType: PhotoType, extension: string, title?: string): Promi
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
 | 23800151 | The scenario parameter verification fails.Possible causes: 1. The extension format is unsupported. 2. Title contains unsupported character, such as . .. \ / : * ? " ' ` < > \| { } [ ]. 3. The title is an empty string 4. The total length of title and extension is more than 255. |
-| 23800301 | Internal systtem error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2.The fille system is abnormal; 3. The IPC request time out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2.The file system is abnormal; 3. The IPC request time out. |
 
 **示例：**
 
@@ -1299,7 +1299,7 @@ requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;R
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800301 |  Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301 |  Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**
 
@@ -2073,7 +2073,7 @@ onSinglePhotoAlbumChange(album: Album, callback: Callback&lt;AlbumChangeInfos&gt
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The same callback is registered repeatedly. 2. Album has been removed. 3. The uri of the a invalid.|
-| 23800301 | - Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**
 

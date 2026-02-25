@@ -59,6 +59,7 @@ libnative_buffer.so
     ```
 
 2. Map the ION memory allocated to an **OH_NativeBuffer** instance to the process address space.
+
     Call **OH_NativeBuffer_Map** if the application needs to access the memory space of the buffer.
     <!-- @[nativebuffer_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 

@@ -710,6 +710,10 @@ Sets the hover effect of the component.
 
 Sets the response logic and node blocking rules for the hit test.
 
+> **NOTE**
+>
+> When multiple nodes in a **Stack** component have overlapping touch areas, if the touch point hits a child component of the topmost node, only the topmost node will undergo hit testing by default. In this case, touch testing for lower-layer nodes can only be triggered by setting the [hitTestBehavior](./ts-universal-attributes-hit-test-behavior.md#hittestbehavior) of the topmost node to **HitTestMode.Transparent**.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name         | Description                                      |
@@ -961,9 +965,9 @@ Sets the action type of a mouse operation.
 | Release |   2   | The mouse button is released.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | Move    |   3   | The mouse cursor moves.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
 | Hover   |   4   | The mouse pointer is hovered on an element.<br>Note: This value has no effect.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
-| ENTER_WINDOW<sup>23+</sup>   |   4   | The mouse pointer moves into the window.<br>**Atomic service API**: This API can be used in atomic services since API version 23.  |
-| LEAVE_WINDOW<sup>23+</sup>   |   5   | The mouse pointer moves out of the window.<br>**Atomic service API**: This API can be used in atomic services since API version 23.  |
-| CANCEL<sup>18+</sup>  |  13  | The mouse button action is canceled. It is triggered in the following scenarios:<br>1. Component focus loss: This action is triggered when a currently focused component loses focus due to a system event (such as pop-up interruption or app switching).<br>2. Event interruption: During a mouse operation, if a higher-priority event occurs (such as a system-level gesture or forced event stream recycling), causing the current mouse operation to be forcibly terminated.<br>3. Abnormal state exit: In scenarios such as component destruction or abnormal rendering environment, unfinished mouse events are marked as canceled.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| ENTER_WINDOW<sup>23+</sup>   |   4   | The mouse pointer moves into the window.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.  |
+| LEAVE_WINDOW<sup>23+</sup>   |   5   | The mouse pointer moves out of the window.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.  |
+| CANCEL<sup>18+</sup>  |  13  | The mouse button action is canceled. It is triggered in the following scenarios:<br>1. Component focus loss: This action is triggered when a currently focused component loses focus due to a system event (such as pop-up interruption or app switching).<br>2. Event interruption: During a mouse operation, if a higher-priority event occurs (such as a system-level gesture or forced event stream recycling), causing the current mouse operation to be forcibly terminated.<br>3. Abnormal state exit: In scenarios such as component destruction or abnormal rendering environment, unfinished mouse events are marked as canceled.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## ModifierKey<sup>10+</sup>
 
@@ -1135,7 +1139,7 @@ Enumerates pixel rounding modes.
 
 ## PresetFillType<sup>22+</sup>
 
-Enumerates column count policies for different [responsive breakpoints](../../../ui/arkts-layout-development-grid-layout.md#breakpoints).
+Enumerates column count policies for different [breakpoints](../../../ui/arkts-layout-development-grid-layout.md#breakpoints).
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 

@@ -1,7 +1,7 @@
 # 基础类型定义
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -853,11 +853,14 @@ type ResponsiveFillType = PresetFillType
 ## Bias对象说明
 
 设置组件在锚点约束下的偏移参数。
-<br/>以水平方向Bias为例，其值为组件到左锚点的距离 D<sub>start</sub>与组件到水平方向锚点间总距离 D<sub>start</sub> +  D<sub>end</sub>的比值。镜像语言下，D<sub>start</sub>为组件到右锚点的距离。下图中D<sub>width</sub>表示组件宽度。
-<br/>![bias_horizontal_example.png](figures/bias_horizontal_example.png)
-<br/>竖直方向同理，其值为组件到上锚点的距离D<sub>top</sub>与组件到竖直方向锚点间总距离D<sub>top</sub> + D<sub>bottom</sub>的比值。下图中D<sub>height</sub>表示组件高度。
-<br/>![bias_vertical_example.png](figures/bias_vertical_example.png)
 
+以水平方向Bias为例，其值为组件到左锚点的距离 D<sub>start</sub>与组件到水平方向锚点间总距离 D<sub>start</sub> +  D<sub>end</sub>的比值。镜像语言下，D<sub>start</sub>为组件到右锚点的距离。下图中D<sub>width</sub>表示组件宽度。
+
+![bias_horizontal_example.png](figures/bias_horizontal_example.png)
+
+竖直方向同理，其值为组件到上锚点的距离D<sub>top</sub>与组件到竖直方向锚点间总距离D<sub>top</sub> + D<sub>bottom</sub>的比值。下图中D<sub>height</sub>表示组件高度。
+
+![bias_vertical_example.png](figures/bias_vertical_example.png)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

@@ -21,6 +21,7 @@
       - [Using Custom Fonts in ArkTS Widgets](arkts-ui-widget-load-custom-font.md)
       <!--Del-->
       - [Glass Material Adaptation for ArkTS Widgets (for System Applications Only)](arkts-ui-widget-visual-effect-sys.md)
+      - [New Material Adaptation for ArkTS Widgets (for System Applications Only)](arkts-ui-widget-effect-sys.md)
       <!--DelEnd-->
     - ArkTS Widget Update<!--arkts-ui-widget-interaction-->
       - [Overview of ArkTS Widget Update](arkts-ui-widget-interaction-overview.md)
@@ -55,8 +56,8 @@
       - [Developing a Scene-based Widget](arkts-ui-liveform-sceneanimation-development.md)
       <!--Del-->
       - [Developing a Scene-based Widget (for System Applications)](arkts-ui-liveform-sceneanimation-development-sys.md)
-  - [ArkTS Widget Adaptation FAQs](arkts-ui-widget-adapt-faq.md)
       <!--DelEnd-->
+  - [ArkTS Widget Adaptation FAQs](arkts-ui-widget-adapt-faq.md)
 - JS Widget Development<!--form-js-ui-->
   - [JS Widget Overview](js-ui-widget-overview.md)
   - [Developing a JS Widget (Stage Model)](js-ui-widget-development.md)
