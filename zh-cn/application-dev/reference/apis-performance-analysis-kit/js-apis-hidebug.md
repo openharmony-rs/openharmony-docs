@@ -1453,7 +1453,7 @@ getRssInfo(): RssInfo
 
 > **注意**：
 >
-> 读取/proc/{pid}/status耗时很短，与`getAppNativeMemInfo`接口中获取的`rss`值相比存在一点误差，但该接口更加轻量，为避免应用丢帧或卡顿推荐使用该接口。
+> 读取/proc/{pid}/status耗时很短，与[hidebug.getAppNativeMemInfo](#hidebug.getAppNativeMemInfo)接口中获取的`rss`值相比存在一点误差，但该接口更加轻量，为避免应用丢帧或卡顿推荐使用该接口。
 
 **返回值**：
 
