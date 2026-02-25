@@ -694,6 +694,20 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：20
 
+## ohos.permission.AUTO_RESTORE_MAIN_WINDOW
+
+允许应用使用全局闪控球的自动恢复到应用主窗口的能力。
+
+<!--RP66--><!--RP66End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：24
+
 ## ohos.permission.DLP_GET_HIDE_STATUS
 
 允许应用使用信息隐藏接口，获取信息隐藏状态的能力。

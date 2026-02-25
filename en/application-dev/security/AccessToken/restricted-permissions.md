@@ -681,7 +681,7 @@ Allows an application to use the Native Development Kit (NDK) of the passkey ser
 
 ## ohos.permission.USE_FLOAT_BALL
 
-Allows an application to use the global float ball.
+Allows an application to use the global floating ball.
 
 <!--RP46--><!--RP46End-->
 
@@ -692,6 +692,20 @@ Allows an application to use the global float ball.
 **Device**: phones | tablets
 
 **Since**: 20
+
+## ohos.permission.AUTO_RESTORE_MAIN_WINDOW
+
+Allow the application to automatically restore its main window through the global floating ball.
+
+<!--RP66--><!--RP66End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Device**: phones | tablets
+
+**Since**: 24
 
 ## ohos.permission.DLP_GET_HIDE_STATUS
 
