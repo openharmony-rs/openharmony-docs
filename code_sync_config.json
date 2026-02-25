@@ -1228,6 +1228,11 @@
 						"end_line":181,
 						"name":"module_pages",
 						"start_line":23
+					},
+					{
+						"end_line":182,
+						"name":"module_abilities_metadata",
+						"start_line":22
 					}
 				]
 			},
