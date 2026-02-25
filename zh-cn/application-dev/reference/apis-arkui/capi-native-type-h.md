@@ -8521,7 +8521,7 @@ float OH_ArkUI_CustomSpanMeasureInfo_GetFontSize(ArkUI_CustomSpanMeasureInfo* in
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 父节点Text的字体大小。若函数参数异常，返回0.0f。<br> 异常返回原因：传入参数验证失败，参数不能为空。 |
+| float | 父节点Text的字体大小，单位为fp。若函数参数异常，返回0.0f。<br> 异常返回原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_CustomSpanMetrics_Create()
 
@@ -8581,7 +8581,7 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, fl
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* metrics | CustomSpanMetrics实例。 |
-| float width | 宽度大小，单位为vp。 |
+| float width | 宽度大小，单位为vp。默认值为0.0f，负值与默认值效果一致。 |
 
 **返回：**
 
@@ -8608,7 +8608,7 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, f
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* metrics | CustomSpanMetrics实例。 |
-| float height | 高度大小，单位为vp。 |
+| float height | 高度大小，单位为vp。默认值为0.0f，负值与默认值效果一致。 |
 
 **返回：**
 
@@ -8679,7 +8679,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | x轴偏移值。若函数参数异常，返回0.0f。<br> 异常返回原因：传入参数验证失败，参数不能为空。 |
+| float | x轴偏移值，单位为px。若函数参数异常，返回0.0f。<br> 异常返回原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_CustomSpanDrawInfo_GetLineTop()
 
@@ -8705,7 +8705,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetLineTop(ArkUI_CustomSpanDrawInfo* info)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 上边距值。若函数参数异常，返回0.0f。<br> 异常返回原因：传入参数验证失败，参数不能为空。 |
+| float | 上边距值，单位为px。若函数参数异常，返回0.0f。<br> 异常返回原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_CustomSpanDrawInfo_GetLineBottom()
 
@@ -8731,7 +8731,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 下边距值。若函数参数异常，返回0.0f。<br> 异常返回原因：传入参数验证失败，参数不能为空。 |
+| float | 下边距值，单位为px。若函数参数异常，返回0.0f。<br> 异常返回原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_CustomSpanDrawInfo_GetBaseline()
 
@@ -8757,7 +8757,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 基线偏移量值。若函数参数异常，返回0.0f。<br> 异常返回原因：传入参数验证失败，参数不能为空。 |
+| float | 基线偏移量值，单位为px。若函数参数异常，返回0.0f。<br> 异常返回原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_CustomProperty_Destroy()
 
@@ -8982,7 +8982,7 @@ void OH_ArkUI_ProgressLinearStyleOption_SetSmoothEffectEnabled(ArkUI_ProgressLin
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ProgressLinearStyleOption](capi-arkui-nativemodule-arkui-progresslinearstyleoption.md)* option | 线性进度条样式信息。 |
-| bool enabled | 进度平滑动效的开关。开启平滑动效后设置进度，进度会从当前值渐变至设定值，否则进度从当前值突变至设定值。默认值：true。 |
+| bool enabled | 进度平滑动效的开关。开启平滑动效后设置进度，进度会从当前值渐变至设定值，否则进度从当前值突变至设定值。<br/>true：表示开启进度平滑动效。<br/>false：表示关闭进度平滑动效。<br/>默认值：true。 |
 
 ### OH_ArkUI_ProgressLinearStyleOption_SetScanEffectEnabled()
 
@@ -9003,7 +9003,7 @@ void OH_ArkUI_ProgressLinearStyleOption_SetScanEffectEnabled(ArkUI_ProgressLinea
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ProgressLinearStyleOption](capi-arkui-nativemodule-arkui-progresslinearstyleoption.md)* option | 线性进度条样式信息。 |
-| bool enabled | 扫光效果的开关。默认值：false。 |
+| bool enabled | 扫光效果的开关。<br/>true：表示开启扫光效果。<br/>false：表示关闭扫光效果。<br/>默认值：false。 |
 
 ### OH_ArkUI_ProgressLinearStyleOption_SetStrokeWidth()
 
@@ -9071,7 +9071,7 @@ bool OH_ArkUI_ProgressLinearStyleOption_GetSmoothEffectEnabled(ArkUI_ProgressLin
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 是否开启平滑动效。 |
+| bool | 是否开启平滑动效。<br/>true：表示开启进度平滑动效。<br/>false：表示关闭进度平滑动效。<br/>默认值：true。 |
 
 ### OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled()
 
@@ -9097,7 +9097,7 @@ bool OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled(ArkUI_ProgressLinea
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 是否开启扫光效果。 |
+| bool | 是否开启扫光效果。<br/>true：表示开启扫光效果。<br/>false：表示关闭扫光效果。<br/>默认值：false。 |
 
 ### OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth()
 
