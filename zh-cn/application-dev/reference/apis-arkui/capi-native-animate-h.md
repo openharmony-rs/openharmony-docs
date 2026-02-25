@@ -613,7 +613,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* opt
 **描述：**
 
 
-设置关键帧动画的整体延时时间。单位为ms（毫秒），默认不延时播放。
+设置关键帧动画的整体延时时间，单位为ms（毫秒），默认不延时播放。
 
 **起始版本：** 12
 
