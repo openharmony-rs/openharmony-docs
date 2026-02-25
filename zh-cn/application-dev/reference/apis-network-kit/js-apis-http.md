@@ -2242,8 +2242,6 @@ HTTP请求指定特定网络的类型枚举。
 > 推荐在网络并发等场景下使用。<br>
 > 当指定的网络没有激活时，系统按照指定默认网络处理。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Communication.NetStack
 
 
