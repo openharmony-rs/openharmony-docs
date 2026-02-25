@@ -338,43 +338,49 @@ struct Index {
     // this.avPlayer.url = "http://media.iyuns.top:1000/dash/720p/720-1/720-1.mpd";
 
     // 情况四：通过setMediaSource设置自定义头域及播放优选参数实现初始播放参数设置，以流媒体HTTP点播为例。
-    // let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://media.iyuns.top:1000/http/720p_1m.mp4", {"":""});
-    // // 设置播放策略，设置为缓冲区数据为20s。
-    // let playbackStrategy : media.PlaybackStrategy = {preferredBufferDuration: 20};
-    // // 为avPlayer设置媒体来源和播放策略。
-    // this.avPlayer.setMediaSource(mediaSource, playbackStrategy);
+    /*
+    let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://media.iyuns.top:1000/http/720p_1m.mp4", {"":""});
+    // 设置播放策略，设置为缓冲区数据为20s。
+    let playbackStrategy : media.PlaybackStrategy = {preferredBufferDuration: 20};
+    // 为avPlayer设置媒体来源和播放策略。
+    this.avPlayer.setMediaSource(mediaSource, playbackStrategy);
+     **/
 
     // 情况五：HLS切码率。
-    // this.avPlayer.url = "https://upftimae.dailyworkout.cn/videos/course/c800f81a209b5ee7891f1128ed301db/4/master.m3u8";
-    // let bitrate: number = 0;
-    // // 监听当前HLS协议流可用的码率。
-    // this.avPlayer.on('availableBitrates', (bitrates: Array<number>) => {
-    //   console.info('availableBitrates called, and availableBitrates length is: ' + bitrates.length);
-    //   this.bitrate = bitrates[0]; // 保存需要切换的码率。
-    // })
-    // // 监听码率设置是否生效。
-    // this.avPlayer.on('bitrateDone', (bitrate: number) => {
-    //   console.info('bitrateDone called, and bitrate value is: ' + bitrate);
-    // })
+    /*
+    this.avPlayer.url = "https://upftimae.dailyworkout.cn/videos/course/c800f81a209b5ee7891f1128ed301db/4/master.m3u8";
+    let bitrate: number = 0;
+    // 监听当前HLS协议流可用的码率。
+    this.avPlayer.on('availableBitrates', (bitrates: Array<number>) => {
+      console.info('availableBitrates called, and availableBitrates length is: ' + bitrates.length);
+      this.bitrate = bitrates[0]; // 保存需要切换的码率。
+    })
+    // 监听码率设置是否生效。
+    this.avPlayer.on('bitrateDone', (bitrate: number) => {
+      console.info('bitrateDone called, and bitrate value is: ' + bitrate);
+    })
+     **/
 
     // 情况六：DASH切换音视频轨道。
-    // this.avPlayer.url = "http://poster-inland.hwcloudtest.cn/AiMaxEngine/ProductionEnvVideo/DASH_SDR_MultiAudio_MultiSubtitle_yinHeHuWeiDui3/DASH_SDR_MultiAudio_MultiSubtitle_yinHeHuWeiDui3.mpd";
-    // //
-    // this.avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
-    //   if (arrList != null) {
-    //     for (let i = 0; i < arrList.length; i++) {
-    //       let propertyIndex: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX];
-    //       let propertyType: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_TYPE];
-    //       let propertyWidth: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_WIDTH];
-    //       let propertyHeight: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_HEIGHT];
-    //       if (propertyType == media.MediaType.MEDIA_TYPE_VID && propertyWidth == 1920 && propertyHeight == 1080) {
-    //         this.videoTrackIndex = parseInt(propertyIndex.toString()); // 获取1080p视频轨道索引。
-    //       }
-    //     }
-    //   } else {
-    //     console.error(`getTrackDescription fail, error:${error}`);
-    //   }
-    // });
+    /*
+    this.avPlayer.url = "http://poster-inland.hwcloudtest.cn/AiMaxEngine/ProductionEnvVideo/DASH_SDR_MultiAudio_MultiSubtitle_yinHeHuWeiDui3/DASH_SDR_MultiAudio_MultiSubtitle_yinHeHuWeiDui3.mpd";
+    //
+    this.avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
+      if (arrList != null) {
+        for (let i = 0; i < arrList.length; i++) {
+          let propertyIndex: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_INDEX];
+          let propertyType: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_TRACK_TYPE];
+          let propertyWidth: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_WIDTH];
+          let propertyHeight: Object = arrList[i][media.MediaDescriptionKey.MD_KEY_HEIGHT];
+          if (propertyType == media.MediaType.MEDIA_TYPE_VID && propertyWidth == 1920 && propertyHeight == 1080) {
+            this.videoTrackIndex = parseInt(propertyIndex.toString()); // 获取1080p视频轨道索引。
+          }
+        }
+      } else {
+        console.error(`getTrackDescription fail, error:${error}`);
+      }
+    });
+     **/
   }
 
   // HLS切换码率。
@@ -402,11 +408,13 @@ struct Index {
       console.error(`${this.tag}: selectTrack failed, error message is = ${JSON.stringify(error.message)}`);
     }
     // 取消选择目标视频轨道。
-    // try {
-    //   this.avPlayer.deselectTrack(track);
-    // } catch (error) {
-    //   console.error(`${this.tag}: deselectTrack failed, error message is = ${JSON.stringify(error.message)}`);
-    // }
+    /*
+    try {
+      this.avPlayer.deselectTrack(track);
+    } catch (error) {
+      console.error(`${this.tag}: deselectTrack failed, error message is = ${JSON.stringify(error.message)}`);
+    }
+     **/
   }
 
   avPlay(): void {
