@@ -25,7 +25,7 @@ export const add: (a: number, b: number) => number;
 
 ``` TypeScript
 // NameImport.ets
-import { add } from 'libentry.so'
+import { add } from 'libentry.so';
 add(2, 3);
 ```
 
@@ -43,7 +43,7 @@ export const add: (a: number, b: number) => number;
 
 ``` TypeScript
 // DefaultImport.ets
-import entry from 'libentry.so'
+import entry from 'libentry.so';
 entry.add(2, 3);
 ```
 
@@ -61,7 +61,7 @@ export const add: (a: number, b: number) => number;
 
 ``` TypeScript
 // NamespaceImport.ets
-import * as entry from 'libentry.so'
+import * as entry from 'libentry.so';
 entry.add(2, 3);
 ```
 
@@ -109,14 +109,14 @@ export const add: (a: number, b: number) => number;
 
 ``` TypeScript
 // NamespaceExport.ets
-export * from 'libentry.so'
+export * from 'libentry.so';
 ```
 
 <!-- @[namespaceImport_fromExport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NamespaceImportFromExport.ets) -->    
 
 ``` TypeScript
 // NamespaceImportFromExport.ets
-import { add } from './NamespaceExport'
+import { add } from './NamespaceExport';
 add(2, 3);
 ```
 
@@ -160,7 +160,7 @@ import('libentry.so').then((entry:ESObject) => {
 
 ``` TypeScript
 // DynamicExport.ets
-import entry from 'libentry.so'
+import entry from 'libentry.so';
 export { entry }
 ```
 

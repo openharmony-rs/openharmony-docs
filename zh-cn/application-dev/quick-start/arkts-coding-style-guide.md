@@ -867,7 +867,8 @@ export function getObject1(value: number): I {
 <!-- @[noESObject_app_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
-import { getObject1 } from './lib'
+// Index.ets
+import { getObject1 } from './lib';
 // ...
 let obj1: I = getObject1(123);
 ```
@@ -892,8 +893,8 @@ export function getObject2(value: number): I {
 <!-- @[noESObject_app_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
-// app.ets
-import { getObject2, I } from './lib'
+// Index.ets
+import { getObject2, I } from './lib';
 // ...
 let obj2: I = getObject2(123);
 ```
