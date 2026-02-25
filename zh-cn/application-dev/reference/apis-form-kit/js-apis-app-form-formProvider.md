@@ -61,6 +61,8 @@ ArkTS-Sta: setFormNextRefreshTime(formId: string, minute: int, callback: AsyncCa
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -69,6 +71,28 @@ let formId: string = '12400633174999288';
 try {
   formProvider.setFormNextRefreshTime(formId, 5, (error: BusinessError): void => {
     if (error) {
+      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      return;
+    }
+    console.info(`formProvider setFormNextRefreshTime success`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288';
+try {
+  formProvider.setFormNextRefreshTime(formId, 5, (error: BusinessError): void => {
+    if (error?.code != 0) {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
@@ -204,6 +228,8 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData,call
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formBindingData, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -218,6 +244,33 @@ try {
   formProvider.updateForm(formId, obj, (error: BusinessError) => {
     if (error) {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      return;
+    }
+    console.info(`formProvider updateForm success`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formBindingData, formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288';
+try {
+  let param: Record<string, string> = {
+    'temperature': '22c',
+    'time': '22:00'
+  }
+  let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+  formProvider.updateForm(formId, obj, (error) => {
+    if (error?.code != 0) {
+      console.error(`callback error, code: ${error?.code}, message: ${error?.message})`);
       return;
     }
     console.info(`formProvider updateForm success`);
@@ -270,6 +323,8 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Pr
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formBindingData, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -284,6 +339,31 @@ try {
   formProvider.updateForm(formId, obj).then(() => {
     console.info(`formProvider updateForm success`);
   }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formBindingData, formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288';
+let param: Record<string, string> = {
+  'temperature': '22c',
+  'time': '22:00'
+}
+let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+try {
+  formProvider.updateForm(formId, obj).then(() => {
+    console.info(`formProvider updateForm success`);
+  }).catch((error) => {
     console.error(`promise error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
   });
 } catch (error) {
@@ -324,18 +404,43 @@ getFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): voi
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formProvider.getFormsInfo((error, data) => {
-    if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+    if (error?.code != 0) {
+      console.error(`callback error, code: ${error?.code}, message: ${error?.message})`);
       return;
     }
-    console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getFormsInfo, item count: ${data?.length}`);
   });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { AsyncCallback } from '@ohos.base';
+import { formProvider, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let callback: AsyncCallback<Array<formInfo.FormInfo>> = (error: BusinessError | null, data: Array<formInfo.FormInfo> | undefined) => {
+    if (error?.code != 0) {
+      console.error(`callback error, code: ${error?.code}, message: ${error?.message})`);
+      return;
+    }
+    console.info(`formProvider getFormsInfo, item count: ${data?.length}`);
+  }
+  formProvider.getFormsInfo(callback);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
 }
@@ -374,6 +479,8 @@ getFormsInfo(filter: formInfo.FormInfoFilter, callback: AsyncCallback&lt;Array&l
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -388,8 +495,35 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getFormsInfo, item count: ${data?.length}`);
   });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { AsyncCallback } from '@ohos.base';
+import { formInfo, formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const filter: formInfo.FormInfoFilter = {
+  // get info of forms belong to module entry.
+  moduleName: 'entry'
+};
+try {
+  let callback: AsyncCallback<Array<formInfo.FormInfo>> = (error: BusinessError | null, data: Array<formInfo.FormInfo> | undefined) => {
+    if (error?.code != 0) {
+      console.error(`callback error, code: ${error?.code}, message: ${error?.message})`);
+      return;
+    }
+    console.info(`formProvider getFormsInfo, item count: ${data?.length}`);
+  };
+  formProvider.getFormsInfo(filter, callback);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
 }
@@ -434,6 +568,8 @@ getFormsInfo(filter?: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.For
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -444,8 +580,31 @@ const filter: formInfo.FormInfoFilter = {
 };
 try {
   formProvider.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
-    console.info(`formProvider getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getFormsInfo, item count: ${data?.length}`);
   }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formInfo, formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const filter: formInfo.FormInfoFilter = {
+  // get info of forms belong to module entry.
+  moduleName: 'entry'
+};
+try {
+  formProvider.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
+    console.info(`formProvider getFormsInfo, item count: ${data?.length}`);
+  }).catch((error) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
 } catch (error) {
@@ -488,6 +647,8 @@ openFormEditAbility(abilityName: string, formId: string, isMainPage?: boolean): 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formProvider } from '@kit.FormKit';
 
@@ -512,6 +673,40 @@ struct Page {
           center: { anchor: '__container__', align: VerticalAlign.Top },
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
+        .onClick(() => {
+          console.info(`${TAG} onClick.....`);
+          formProvider.openFormEditAbility('ability://EntryFormEditAbility', '1386529921');
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { State } from '@ohos.arkui.stateManagement'
+import { formProvider } from '@kit.FormKit';
+
+const TAG: string = 'FormEditDemo-Page] -->';
+
+@Component
+struct Page {
+  @State message: string = 'Hello World';
+
+  aboutToAppear(): void {
+    console.info(`${TAG} aboutToAppear.....`);
+  }
+
+  build() {
+    Column() {
+      Text(this.message)
+        .id('PageHelloWorld')
+        .fontSize(50)
         .onClick(() => {
           console.info(`${TAG} onClick.....`);
           formProvider.openFormEditAbility('ability://EntryFormEditAbility', '1386529921');
@@ -558,6 +753,8 @@ openFormManager(want: Want): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -571,6 +768,31 @@ const want: Want = {
     'ohos.extra.param.key.form_name': 'widget',
     'ohos.extra.param.key.module_name': 'entry'
   },
+};
+try {
+  formProvider.openFormManager(want);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formProvider } from '@kit.FormKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+
+const want: Want = {
+  bundleName: 'com.example.formbutton',
+  abilityName: 'EntryFormAbility',
+  parameters: {
+    'ohos.extra.param.key.form_dimension': 2,
+    'ohos.extra.param.key.form_name': 'widget',
+    'ohos.extra.param.key.module_name': 'entry'
+  } as Record<string,RecordData>
 };
 try {
   formProvider.openFormManager(want);
@@ -628,7 +850,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const formId: string = '388344236';
 try {
   formProvider.getPublishedFormInfoById(formId).then((data: formInfo.FormInfo) => {
-    console.info(`formProvider getPublishedFormInfoById, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getPublishedFormInfoById, bundleName: ${data.bundleName}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -679,7 +901,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formProvider.getPublishedFormInfos().then((data: formInfo.FormInfo[]) => {
-    console.info(`formProvider getPublishedFormInfos, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getPublishedFormInfos, item count: ${data.length}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -932,7 +1154,7 @@ let formId: string = '12400633174999288';
 
 try {
   formProvider.getFormRect(formId).then((data: formInfo.Rect) => {
-    console.info(`getFormRect succeed, data: ${JSON.stringify(data)}`);
+    console.info(`getFormRect succeed, width: ${data.width} height: ${data.height}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -1003,6 +1225,8 @@ getPublishedRunningFormInfoById(formId: string): Promise&lt;formInfo.RunningForm
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1011,8 +1235,29 @@ const formId: string = '388344236';
 
 try {
   formProvider.getPublishedRunningFormInfoById(formId).then((data: formInfo.RunningFormInfo) => {
-    console.info(`formProvider getPublishedRunningFormInfoById, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getPublishedRunningFormInfoById, formId: ${data.formId}`);
   }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formInfo, formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const formId: string = '388344236';
+
+try {
+  formProvider.getPublishedRunningFormInfoById(formId).then((data: formInfo.RunningFormInfo) => {
+    console.info(`formProvider getPublishedRunningFormInfoById, formId: ${data.formId}`);
+  }).catch((error) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
@@ -1052,14 +1297,35 @@ getPublishedRunningFormInfos(): Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formProvider.getPublishedRunningFormInfos().then((data: formInfo.RunningFormInfo[]) => {
-    console.info(`formProvider getPublishedRunningFormInfos, data: ${JSON.stringify(data)}`);
+    console.info(`formProvider getPublishedRunningFormInfos`);
   }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formInfo, formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formProvider.getPublishedRunningFormInfos().then((data: Array<formInfo.RunningFormInfo>) => {
+    console.info(`formProvider getPublishedRunningFormInfos`);
+  }).catch((error) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
 } catch (error) {
@@ -1078,6 +1344,10 @@ reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1104,6 +1374,8 @@ reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1124,6 +1396,31 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { formProvider } from '@kit.FormKit';
+
+try {
+  let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  //请开发者替换为实际请求更新的卡片信息
+  let moduleName: string = 'entry';
+  let abilityName: string = 'EntryFormAbility';
+  let formName: string = 'formName';
+  formProvider.reloadForms(context, moduleName, abilityName, formName).then((reloadNum: int) => {
+    console.info(`reloadForms success, reload number: ${reloadNum}`);
+  }).catch((error) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
 ## formProvider.reloadAllForms<sup>22+</sup>
 
 reloadAllForms(context: UIAbilityContext): Promise&lt;number&gt;
@@ -1135,6 +1432,10 @@ reloadAllForms(context: UIAbilityContext): Promise&lt;number&gt;
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1158,6 +1459,8 @@ reloadAllForms(context: UIAbilityContext): Promise&lt;number&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1175,4 +1478,23 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
 
+```ts
+'use static'
+
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { formProvider } from '@kit.FormKit';
+
+try {
+  let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  formProvider.reloadAllForms(context).then((reloadNum: int) => {
+    console.info(`reloadAllForms success, reload number: ${reloadNum}`);
+  }).catch((error) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
