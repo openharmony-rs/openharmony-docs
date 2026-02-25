@@ -130,6 +130,92 @@ struct IndexSix {
 
 <!-- @[v1_to_v2_common_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1CommonVariablesToV2CustomComponent.ets) -->
 
+``` TypeScript
+class InfoTwo {
+  public myId: number;
+  public name: string;
+
+  constructor(myId?: number, name?: string) {
+    this.myId = myId || 0;
+    this.name = name || 'aaa';
+  }
+}
+
+@ComponentV2
+struct ChildTwo {
+  // V2对数据输入有严格的管理，从父组件接受数据时，必须@Param装饰器进行数据接收
+  @Param @Once message: string = 'hello'; // 可以观测到变化，同步回父组件依赖@Event，使用了@Once可以修改@Param装饰的变量
+  @Param @Once undefinedVal: string | undefined = undefined; // 使用了@Once可以修改@Param装饰的变量
+  @Param info: InfoTwo = new InfoTwo(); // 观测不到类属性变化
+  @Require @Param set: Set<number>;
+
+  build() {
+    Column() {
+      Text(`child message:${this.message}`) // 显示message变量
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.message = 'world'; // 刷新当前组件
+        })
+
+      Divider()
+        .color(Color.Blue)
+      Text(`undefinedVal:${this.undefinedVal}`) // 显示undefinedVal变量
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.undefinedVal = 'change to define'; // 刷新当前组件
+        })
+      Divider()
+        .color(Color.Blue)
+      Text(`info id:${this.info.myId}`) // 显示info.myId变量
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.info.myId++; // 不刷新
+        })
+      Divider()
+        .color(Color.Blue)
+      ForEach(Array.from(this.set.values()), (item: number) => { // 显示set变量
+        Text(`${item}`)
+          .fontSize(30)
+      })
+    }
+    .margin(5)
+  }
+}
+
+@Entry
+@Component
+struct IndexTwo {
+  message: string = 'Hello World'; // 简单数据
+  undefinedVal: undefined = undefined; // 简单类型，undefined
+  info: InfoTwo = new InfoTwo(); // Class类型
+  set: Set<number> = new Set([10, 20]); // 内置类型
+
+  build() {
+    Column() {
+      Text(`message:${this.message}`)
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.message = 'world hello';
+        })
+      Divider()
+        .color(Color.Blue)
+      ChildTwo({
+        message: this.message,
+        undefinedVal: this.undefinedVal,
+        info: this.info,
+        set: this.set
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 
 
 ### 传递简单类型状态变量
