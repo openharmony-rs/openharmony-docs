@@ -483,7 +483,7 @@ void OH_ArkUI_AnimateOption_SetPlayMode(ArkUI_AnimateOption* option, ArkUI_Anima
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。 |
 | [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode) value | 动画播放模式。默认值：[ARKUI_ANIMATION_PLAY_MODE_NORMAL](capi-native-type-h.md#arkui_animationplaymode)。<br>value值异常时，操作无效。 |
 
 ### OH_ArkUI_AnimateOption_SetExpectedFrameRateRange()
