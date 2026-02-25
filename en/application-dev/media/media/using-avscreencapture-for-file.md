@@ -76,7 +76,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
         .audioChannels = 2,
         .audioSource = OH_ALL_PLAYBACK
     };
-
+    //Configure audio output specifications for screen capture. audioBitrate ensures that the bit rate of the output file matches the expected bit rate and has no strong correlation with audioSampleRate.
     OH_AudioEncInfo audioEncInfo = {
         .audioBitrate = 48000,
         .audioCodecformat = OH_AAC_LC
@@ -205,6 +205,7 @@ void OnUserSelected(OH_AVScreenCapture* capture, OH_AVScreenCapture_UserSelectio
 
 // Call StartScreenCapture to start screen capture.
 static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
+    // Initialize the screen capture parameters and pass an OH_AVScreenCaptureConfig struct.
     OH_AVScreenCaptureConfig config;
     OH_AudioCaptureInfo micCapInfo = {
         .audioSampleRate = 48000, 
@@ -256,7 +257,6 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     // Instantiate AVScreenCapture.
     capture = OH_AVScreenCapture_Create();
 
-    // Initialize the screen capture parameters and pass in an OH_AVScreenRecorderConfig struct.
     OH_RecorderInfo recorderInfo;
     const std::string SCREEN_CAPTURE_ROOT = "/data/storage/el2/base/files/";
     outputFd = open((SCREEN_CAPTURE_ROOT + "screen01.mp4").c_str(), O_RDWR | O_CREAT, 0777);

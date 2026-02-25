@@ -14,7 +14,7 @@ During application development, you can use the **state** property of the AVReco
 
 **Figure 1** Recording state transition
 
-![Recording state change](figures/recording-status-change-ndk.png)
+![Recording status change](figures/audio-recording-status-change.png)
 
 For details about the states, see [AVRecorderState](../../reference/apis-media-kit/arkts-apis-media-t.md#avrecorderstate9).
 
@@ -31,8 +31,6 @@ Before your development, configure the following permissions for your applicatio
 
 ## How to Develop
 
-> **NOTE**
->
 > To record only audio, you do not need to set video-related parameters such as **videoFrameWidth** and **videoFrameHeight**. Similarly, to record only videos, you do not need to set audio-related parameters such as **audioBitrate** and **audioChannels**.
 
 
@@ -186,9 +184,6 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
     
        config.profile.fileFormat = AVRECORDER_CFT_MPEG_4A;
        config.fileGenerationMode = AVRECORDER_APP_CREATE;
-
-       config.metadata.location.latitude = 27.791863;
-       config.metadata.location.longitude = 64.574687;
     }
 
     // Prepare for recording.

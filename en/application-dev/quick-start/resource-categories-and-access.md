@@ -12,7 +12,8 @@ During application development, you may need to use different resources, such as
 Resources are classified into the following types based on their sources:
 
 - Application resources: resources customized by developers in applications. You can use resource files to manage resources on different devices or configurations.
-- System resources: resources provided by the system. You can obtain system icon resources from [HarmonyOS Symbol](https://developer.huawei.com/consumer/en/design/harmonyos-symbol/) and system color, spacing, and rounded corner resources from the [system resource layer design table](https://gitcode.com/openharmony/docs/blob/master/en/design/ux-design/design-resources.md). In addition, you can obtain system color resources from [full table of basic and semantic tokens](https://developer.huawei.com/consumer/en/doc/design-guides/color-0000001776857164#section17672143841113). The resources in this table do not overlap with those in the system resource layer design table. Both are recommended system color resources.<br>Other system resources that are not listed in the tables are system component and underlying capability parameters. You are advised to use the system resources provided in the preceding tables.
+- System resources: resources provided by the system. <!--RP2-->You can obtain system resources, such as symbol icons, colors, spacing, and characters, from [global_system_resources](https://gitcode.com/openharmony/global_system_resources/tree/master/systemres/main/resources/base/element).<!--RP2End-->
+
 
 ## Resource Categories
 
@@ -246,7 +247,7 @@ If the **attr** attribute is not configured, a string is translated by default.
 
 | Name       | Type                   |  Description  |
 | --------- | ----------------------- |  ---- |
-| translatable |  boolean |  Whether the string needs to be translated.<br>**true**: The string needs to be translated.<br> **false**: The string does not need to be translated.|
+| translatable |  boolean |  Whether the string needs to be translated.<br>  **true**: The string needs to be translated.<br> **false**: The string does not need to be translated.|
 | priority    | string   |  Translation status of the string.<br>**code**: untranslated<br>**translate**: translated but not verified<br>**LT**: translated and verified<br>**customer**: custom  |
 
 ### Constraints
@@ -597,7 +598,7 @@ Overlay is a resource replacement mechanism. With overlay resource packages, you
 ### Using overlay in dynamic mode
 
 1. Place the overlay resource package in the target application installation path. For example, for the com.example.overlay application, place the overlay resource package in **data/app/el1/bundle/public/com.example.overlay/**.
-2. The application uses [addResource(path)](../reference/apis-localization-kit/js-apis-resource-manager.md#addresource10) to load overlay resources and uses [removeResource(path)](../reference/apis-localization-kit/js-apis-resource-manager.md#removeresource10) to remove overlay resources. The path to an overlay resource consists of the application's sandbox root directory (obtained through **getContext().bundleCodeDir**) and the overlay resource bundle name. For example, **let path = getContext().bundleCodeDir + "overlay *resource bundle name*"**, such as **/data/storage/el1/bundle/overlayResourcePackageName**.
+2. The application uses [addResource(path)](../reference/apis-localization-kit/js-apis-resource-manager.md#addresource10) to load overlay resources and uses [removeResource(path)](../reference/apis-localization-kit/js-apis-resource-manager.md#removeresource10) to remove overlay resources. The path to an overlay resource consists of the application's sandbox root directory (obtained through **getContext().bundleCodeDir**) and the overlay resource bundle name. For example, **let path = getContext().bundleCodeDir + "overlay *resource bundle name*"**, such as **/data/storage/el1/bundle/overlayResourceBundleName**.
 
 ### Using overlay in static mode
 
