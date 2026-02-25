@@ -441,12 +441,12 @@ removeOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
-| 12300010 | Service busy. Possible causes: The target account is being operated. |
+| 12300010 | Service busy. Possible causes: The target account is being operated on. |
 
 **示例：**
 
@@ -502,7 +502,7 @@ removeOsAccount(localId: number): Promise&lt;void&gt;
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -530,6 +530,72 @@ removeOsAccount(localId: number): Promise&lt;void&gt;
     console.error(`removeOsAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
+
+### removeOsAccount<sup>24+</sup>
+
+removeOsAccount(localId: number, options: RemoveOsAccountOptions): Promise&lt;void&gt;
+
+根据删除选项，删除指定系统账号。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**参数：**
+
+| 参数名  | 类型   | 必填 | 说明                               |
+| ------- | ------ | ---- | --------------------------------- |
+| localId | number | 是   | 系统账号ID。 |
+| options | [RemoveOsAccountOptions](#removeosaccountoptions24) | 是   | 删除系统账号的选项。|
+
+**返回值：**
+
+| 类型                | 说明                                  |
+| ------------------- | ------------------------------------ |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息             |
+| -------- | ------------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid localId or options.    |
+| 12300003 | Account not found. |
+| 12300008 | Restricted Account. |
+| 12300010 | Service busy. Possible causes: The target account is being operated on. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+let accountName: string = 'testAccountName';
+let token: Uint8Array = new Uint8Array([0]);
+let options: osAccount.RemoveOsAccountOptions = {
+  token: token,
+}
+try {
+  accountManager.createOsAccount(accountName, osAccount.OsAccountType.NORMAL,
+    (err: BusinessError, osAccountInfo: osAccount.OsAccountInfo)=>{
+      accountManager.removeOsAccount(osAccountInfo.localId, options).then(() => {
+        console.info('removeOsAccount successfully');
+      }).catch((err: BusinessError) => {
+        console.error(`removeOsAccount failed, code is ${err.code}, message is ${err.message}`);
+      });
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`removeOsAccount exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ### setOsAccountConstraints
 
@@ -1050,13 +1116,14 @@ createOsAccount(localName: string, type: OsAccountType, callback: AsyncCallback&
 | -------- | ------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localName or type. |
 | 12300004 | Local name already exists. |
 | 12300005 | Multi-user not supported. |
 | 12300006 | Unsupported account type. |
 | 12300007 | The number of accounts has reached the upper limit. |
+| 12300023 | The number of accounts of the specified type has reached the upper limit. |
 
 **示例：**
 
@@ -1111,7 +1178,7 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 | -------- | ------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localName, type or options. |
 | 12300004 | Local name already exists. |
@@ -1119,6 +1186,7 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 | 12300006 | Unsupported account type. |
 | 12300007 | The number of accounts has reached the upper limit. |
 | 12300015 | The short name already exists. |
+| 12300023 | The number of accounts of the specified type has reached the upper limit. |
 
 **示例：**
 
@@ -1170,7 +1238,7 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, cal
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 801 | Capability not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type or domainInfo. |
@@ -1178,6 +1246,7 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, cal
 | 12300005 | Multi-user not supported. |
 | 12300006 | Unsupported account type. |
 | 12300007 | The number of accounts has reached the upper limit. |
+| 12300023 | The number of accounts of the specified type has reached the upper limit. |
 
 **示例：**
 
@@ -1234,7 +1303,7 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, opt
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 801 | Capability not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type, domainInfo or options. |
@@ -1243,6 +1312,7 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, opt
 | 12300006 | Unsupported account type. |
 | 12300007 | The number of accounts has reached the upper limit. |
 | 12300015 | The short name already exists. |
+| 12300023 | The number of accounts of the specified type has reached the upper limit. |
 
 **示例：**
 
@@ -6352,6 +6422,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | shortName | string | 否 | 否   | 表示账号短名称（用作个人文件夹目录）。 <br/>**约束：** <br>1. 不允许出现的字符：\< \> \| : " * ? / \\<br>2. 不允许独立出现的字符串：.或..<br>3. 长度不超过255个字符。|
 | disallowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用禁止名单，名单中的应用不可被安装在设备上，默认为空列表。|
 | allowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用允许名单，仅名单中的应用可以被安装在设备上，默认为std::nullopt。|
+| token<sup>24+</sup> | Uint8Array | 否   | 是   | 表示从认证管理接口获取的token，默认为空。 |
 
 ## CreateOsAccountForDomainOptions<sup>12+</sup>
 
@@ -6360,6 +6431,18 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+## RemoveOsAccountOptions<sup>24+</sup>
+
+表示用于删除系统账号的可选参数。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+| 名称  | 类型       | 只读 | 可选 | 说明                         |
+| ----- | ---------- | ---- | ---- | ---------------------------- |
+| token | Uint8Array | 否   | 是   | 表示从认证管理接口获取的token，默认为空。   |
 
 ## GetAuthInfoOptions<sup>12+</sup>
 
