@@ -143,7 +143,7 @@ class InfoTwo {
 
 @ComponentV2
 struct ChildTwo {
-  // V2对数据输入有严格的管理，从父组件接受数据时，必须@Param装饰器进行数据接收
+  // V2对数据输入有严格的管理，从父组件接受数据时，必须通过@Param装饰器进行数据接收
   @Param @Once message: string = 'hello'; // 可以观测到变化，同步回父组件依赖@Event，使用了@Once可以修改@Param装饰的变量
   @Param @Once undefinedVal: string | undefined = undefined; // 使用了@Once可以修改@Param装饰的变量
   @Param info: InfoTwo = new InfoTwo(); // 观测不到类属性变化
@@ -443,7 +443,7 @@ class InfoTen {
 
 @ComponentV2
 struct ChildTen {
-  // V2对数据输入有严格的管理，从父组件接受数据时，必须@Param装饰器进行数据接收
+  // V2对数据输入有严格的管理，从父组件接受数据时，必须通过@Param装饰器进行数据接收
   @Param info: InfoTen = new InfoTen();
 
   build() {
@@ -542,7 +542,7 @@ struct GrandSon1 {
       Text(`ObjectLink info info.myId:${this.info.myId}`) // myId属性被@Trace装饰，可以观测变化
         .fontSize(30)
         .onClick(() => {
-          this.info.myId++; // 当前组件和父组件Child1都刷新
+          this.info.myId++; // 当前组件和父组件ChildOne都刷新
         })
     }
   }
