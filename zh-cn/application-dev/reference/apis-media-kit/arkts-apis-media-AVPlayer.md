@@ -3071,8 +3071,8 @@ getPlaybackStatisticMetrics(): Promise\<PlaybackMetrics>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let avPlayer: media.AVPlayer | undefined = undefined;
-let playbackMetrics: media.PlaybackMetrics | undefined = undefined;
+let avPlayer: media.AVPlayer | undefined;
+let playbackMetrics: media.PlaybackMetrics | undefined;
 media.createAVPlayer(async (err: BusinessError, player: media.AVPlayer) => {
   if (player != null) {
     avPlayer = player;
