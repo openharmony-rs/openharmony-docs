@@ -143,7 +143,7 @@ class InfoTwo {
 
 @ComponentV2
 struct ChildTwo {
-  // V2对数据输入有严格的管理，从父组件接受数据时，必须通过@Param装饰器进行数据接收
+  // V2对数据输入有严格的管理，从父组件传入数据时，必须使用@Param装饰器进行数据接收。
   @Param @Once message: string = 'hello'; // 可以观测到变化，同步回父组件依赖@Event，使用了@Once可以修改@Param装饰的变量
   @Param @Once undefinedVal: string | undefined = undefined; // 使用了@Once可以修改@Param装饰的变量
   @Param info: InfoTwo = new InfoTwo(); // 观测不到类属性变化
@@ -239,7 +239,7 @@ class InfoFour {
 
 @ComponentV2
 struct ChildFour {
-  // V2对数据输入有严格的管理，从父组件接受数据时，必须通过@Param装饰器进行数据接收
+  // V2对数据输入有严格的管理，从父组件传入数据时，必须使用@Param装饰器进行数据接收。
   @Param @Once message: string = 'hello';
   @Param @Once undefinedVal: string | undefined = undefined; // 使用了@Once可以修改@Param装饰的变量
   @Param info: InfoFour = new InfoFour();
@@ -443,7 +443,7 @@ class InfoTen {
 
 @ComponentV2
 struct ChildTen {
-  // V2对数据输入有严格的管理，从父组件接受数据时，必须通过@Param装饰器进行数据接收
+  // V2对数据输入有严格的管理，从父组件传入数据时，必须使用@Param装饰器进行数据接收。
   @Param info: InfoTen = new InfoTen();
 
   build() {
