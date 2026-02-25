@@ -45692,5 +45692,55 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/task-management/agent-powered-reminder.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets",
+				"functions":[
+					{
+						"end_line":20,
+						"name":"reminder_import",
+						"start_line":16
+					},
+					{
+						"end_line":259,
+						"name":"timer_reminder",
+						"start_line":245
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets",
+				"functions":[
+					{
+						"end_line":77,
+						"name":"calendar_reminder",
+						"start_line":55
+					},
+					{
+						"end_line":103,
+						"name":"publish_reminder",
+						"start_line":98
+					},
+					{
+						"end_line":154,
+						"name":"cancel_reminder",
+						"start_line":151
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/AlarmClockReminder.ets",
+				"functions":[
+					{
+						"end_line":84,
+						"name":"alarm_reminder",
+						"start_line":56
+					}
+				]
+			}
+		]
 	}
 ]
