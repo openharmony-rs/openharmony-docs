@@ -432,8 +432,8 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 |-------------|----------------------------------------------------------------| ----- |-------------------|
 | trustedUris     | Array&lt;string&gt; | 是 | 需要保存到图库的应用沙箱图片/视频uri。trustedUris一般来自[replacePhotoPickerPreview](#replacephotopickerpreview15)替换显示成功的newUri。 |
 | callback  | AsyncCallback&lt;Array&lt;string&gt;&gt;          | 是 | 返回保存后新生成的媒体库文件对应的uri。             |
-| configs | Array&lt;[photoAccessHelper.PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt;          | 否 | 需要保存的文件对应的配置参数。<br>**注意：**<br>传入'subtype'选项，配置项不生效，仅支持保存DEFAULT类型图片。             |
-| saveMode | [SaveMode](#savemode15)           | 否 | 图片保存模式。             |
+| configs | Array&lt;[photoAccessHelper.PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt;          | 否 | 需要保存的文件对应的配置参数。<br>**注意：**<br>传入'subtype'选项，配置项不生效，仅支持保存DEFAULT类型图片。<br>默认为对应trustedUris里mediaItem的title、fileNameExtension、photoType，subtype默认为DEFAULT。             |
+| saveMode | [SaveMode](#savemode15)           | 否 | 图片保存模式。<br>默认是SAVE_AS保存为新图片。            |
 
 ### updatePickerOptions<sup>22+</sup>
 
@@ -478,8 +478,8 @@ saveTrustedPhotoAssetsEx(trustedUris: Array\<string>,settings?: Array\<photoAcce
 | 参数名        | 类型                                                                                                   | 必填  | 说明                |
 |-------------- |-------------------------------------------------------------------------------------------------------| ----- |-------------------|
 | trustedUris   | Array&lt;string&gt;                                                                                   | 是 | 需要保存到图库的应用沙箱图片或视频URI。<br>trustedUris一般来自[replacePhotoPickerPreview](#replacephotopickerpreview15)替换显示成功后的应用沙箱图片或视频newUri。 |
-| settings       | Array&lt;[photoAccessHelper.CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23)&gt;| 否 | 需要保存的文件对应的配置参数。|
-| saveMode      | [SaveMode](#savemode15)                                                                               | 否 | 图片或视频的保存模式。               |
+| settings       | Array&lt;[photoAccessHelper.CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23)&gt;| 否 | 需要保存的文件对应的配置参数。<br>默认为对应trustedUris里mediaItem的title、fileNameExtension和photoType。|
+| saveMode      | [SaveMode](#savemode15)                                                                               | 否 | 图片或视频的保存模式。<br>默认是SAVE_AS保存为新图片。               |
 
 **返回值**：
 
