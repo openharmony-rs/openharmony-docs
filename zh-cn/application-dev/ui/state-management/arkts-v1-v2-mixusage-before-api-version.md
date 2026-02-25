@@ -239,7 +239,7 @@ class InfoFour {
 
 @ComponentV2
 struct ChildFour {
-  // V2对数据输入有严格的管理，从父组件接受数据时，必须@Param装饰器进行数据接收
+  // V2对数据输入有严格的管理，从父组件接受数据时，必须通过@Param装饰器进行数据接收
   @Param @Once message: string = 'hello';
   @Param @Once undefinedVal: string | undefined = undefined; // 使用了@Once可以修改@Param装饰的变量
   @Param info: InfoFour = new InfoFour();
@@ -797,7 +797,7 @@ struct IndexFive {
 
 **定义\@ObserveV2修饰的class**
 
-V1装饰器不能和\@ObservedV2一起使用。在以下示例代码中，Info类被\@observedV2装饰，V1组件接收变量时，info变量不能被V1装饰器修饰，但通过修改可以刷新UI，依赖的是\@ObservedV2+\@Trace的观测能力。
+V1装饰器不能和\@ObservedV2一起使用。在以下示例代码中，InfoNine类被\@observedV2装饰，V1组件接收变量时，info变量不能被V1装饰器修饰，但通过修改可以刷新UI，依赖的是\@ObservedV2+\@Trace的观测能力。
 
 <!-- @[v2_to_v1_observedV2_trace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2ToV1_ObservedV2AndTrace.ets) -->
 
