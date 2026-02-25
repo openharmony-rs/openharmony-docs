@@ -43300,7 +43300,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/build-profile.json5",
 				"functions":[
 					{
-						"end_line":30,
+						"end_line":28,
 						"name":"add_types",
 						"start_line":23
 					}
