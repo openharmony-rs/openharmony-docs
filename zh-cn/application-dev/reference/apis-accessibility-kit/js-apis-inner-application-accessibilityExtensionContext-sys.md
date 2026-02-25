@@ -1170,7 +1170,7 @@ findElement(type: 'elementId', condition: number): Promise\<AccessibilityElement
 import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//elementId为10
+// elementId为10
 let condition = 10;
 
 // rootElement是AccessibilityElement的实例
@@ -1327,7 +1327,7 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<voi
 
 **示例：**
 ```ts
-//无参数Action示例：
+// 无参数Action示例：
 import { AccessibilityAction } from '@kit.AccessibilityKit';
 
 // rootElement是AccessibilityElement的实例
@@ -1343,7 +1343,7 @@ try {
 
 
 ```ts
-//有参数Action示例：
+// 有参数Action示例：
 import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
 
 try {
@@ -1361,7 +1361,7 @@ try {
 ```
 
 ```ts
-//有参数Action示例：
+// 有参数Action示例：
 import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
 
 try {
