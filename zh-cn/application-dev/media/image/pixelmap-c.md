@@ -200,7 +200,7 @@ Image_ErrorCode PixelmapConvertAlphaTypeTest()
 
 **提取图片平均颜色示例**
 
-通过将图片缩放到较小尺寸（如32x32），遍历所有像素计算RGB平均值来获取图片的主色调。
+通过将图片缩放到较小尺寸，遍历所有像素计算RGB平均值来获取图片的主色调。
 
 ```c++
 #include <cmath>
@@ -215,10 +215,10 @@ struct AverageColor {
 
 // 提取图片平均颜色
 // 基本思路：
-// 1. 将原始PixelMap缩放到较小尺寸（如32x32），减少像素数量以提高计算效率
-// 2. 读取缩放后的像素数据
-// 3. 遍历所有像素，累加R、G、B通道的值
-// 4. 计算各通道的平均值作为最终颜色
+// 1. 将原始PixelMap缩放到较小尺寸（如32像素×32像素），减少像素数量以提高计算效率。
+// 2. 读取缩放后的像素数据。
+// 3. 遍历所有像素，累加R、G、B通道的值。
+// 4. 计算各通道的平均值作为最终颜色。
 Image_ErrorCode ExtractAverageColor(OH_PixelmapNative* pixelmap, AverageColor& avgColor)
 {
     if (pixelmap == nullptr) {
@@ -226,7 +226,7 @@ Image_ErrorCode ExtractAverageColor(OH_PixelmapNative* pixelmap, AverageColor& a
         return IMAGE_BAD_PARAMETER;
     }
 
-    // 获取原始图片信息，判断是否需要缩放
+    // 获取原始图片信息，判断是否需要缩放。
     OH_Pixelmap_ImageInfo* imageInfo;
     OH_PixelmapImageInfo_Create(&imageInfo);
     Image_ErrorCode errCode = OH_PixelmapNative_GetImageInfo(pixelmap, imageInfo);
@@ -241,12 +241,12 @@ Image_ErrorCode ExtractAverageColor(OH_PixelmapNative* pixelmap, AverageColor& a
     OH_PixelmapImageInfo_GetHeight(imageInfo, &height);
     OH_PixelmapImageInfo_Release(imageInfo);
 
-    // 定义缩小后的目标尺寸（32x32是经验值，平衡性能和准确度）
+    // 定义缩小后的目标尺寸（32像素×32像素是经验值，平衡性能和准确度）。
     const uint32_t SAMPLE_SIZE = 32;
 
-    // 如果图片较大，先进行缩放处理
+    // 如果图片较大，先进行缩放处理。
     if (width > SAMPLE_SIZE || height > SAMPLE_SIZE) {
-        // 计算缩放比例
+        // 计算缩放比例。
         double scaleX = (double)SAMPLE_SIZE / width;
         double scaleY = (double)SAMPLE_SIZE / height;
 
@@ -258,11 +258,11 @@ Image_ErrorCode ExtractAverageColor(OH_PixelmapNative* pixelmap, AverageColor& a
             return errCode;
         }
     } else {
-        // 图片较小，直接使用原图
+        // 图片较小，直接使用原图。
         pixelmap = pixelmap;
     }
 
-    // 重新获取缩放后的图片信息
+    // 重新获取缩放后的图片信息。
     OH_PixelmapImageInfo_Create(&imageInfo);
     errCode = OH_PixelmapNative_GetImageInfo(pixelmap, imageInfo);
     if (errCode != IMAGE_SUCCESS) {
@@ -280,11 +280,11 @@ Image_ErrorCode ExtractAverageColor(OH_PixelmapNative* pixelmap, AverageColor& a
     OH_PixelmapImageInfo_GetAlphaType(imageInfo, &alphaType);
     OH_PixelmapImageInfo_Release(imageInfo);
     if (pixelFormat != PIXEL_FORMAT_RGBA_8888) {
-        // 此案例中只处理RGBA格式
+        // 此案例中只处理RGBA格式。
         return IMAGE_BAD_SOURCE;
     }
 
-    // 读取像素数据
+    // 读取像素数据。
     size_t bufferSize = rowStride * scaledHeight;
     uint8_t* pixelData = new uint8_t[bufferSize];
     errCode = OH_PixelmapNative_ReadPixels(pixelmap, pixelData, &bufferSize);
@@ -294,10 +294,10 @@ Image_ErrorCode ExtractAverageColor(OH_PixelmapNative* pixelmap, AverageColor& a
         return errCode;
     }
 
-    // 根据像素格式确定每像素字节数
+    // 根据像素格式确定每像素字节数。
     constexpr int bytesPerPixel = 4; // 默认RGBA_8888
 
-    // 累加RGB值
+    // 累加RGB值。
     uint64_t totalR = 0, totalG = 0, totalB = 0;
     uint32_t pixelCount = 0;
 
@@ -312,9 +312,9 @@ Image_ErrorCode ExtractAverageColor(OH_PixelmapNative* pixelmap, AverageColor& a
         }
     }
 
-    // 释放资源
+    // 释放资源。
     delete[] pixelData;
-    // 计算平均值
+    // 计算平均值。
     if (pixelCount > 0) {
         avgColor.r = (uint8_t)(totalR / pixelCount);
         avgColor.g = (uint8_t)(totalG / pixelCount);
