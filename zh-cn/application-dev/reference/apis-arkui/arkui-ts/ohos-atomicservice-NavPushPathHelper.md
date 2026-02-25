@@ -671,6 +671,7 @@ export struct PageOne {
 ```
 
 工程配置文件module.json5中配置 {"routerMap": "$profile:route_map"}，在route_map.json文件配置如下：
+
 ```json
 {
   "routerMap": [
@@ -729,6 +730,7 @@ export struct PageTwo {
 ```
 
 工程配置文件module.json5中配置 {"routerMap": "$profile:route_map"}，在route_map.json文件配置如下：
+
 ```json
 {
   "routerMap": [
