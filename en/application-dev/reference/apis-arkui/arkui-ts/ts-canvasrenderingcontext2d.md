@@ -6,17 +6,19 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-**RenderingContext** is a rendering context for drawing graphics, text, images, and other objects onto a **Canvas** component.
+After the **CanvasRenderingContext2D** object is bound to the **Canvas** component, you can draw shapes, texts, and images on the **Canvas** component.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> * This API is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> When you call drawing APIs in this module, the commands are stored in the associated **Canvas** component's command queue. These commands are only executed when the current frame enters the rendering phase and the associated **Canvas** component is visible. Therefore, when the **Canvas** component is invisible (for example, off-screen or hidden), avoid frequent drawing calls to prevent command queue buildup and excessive memory usage. For best practices, see [Controlling Canvas Rendering Based on Component Visibility](../../../ui/arkts-drawing-customization-on-canvas.md#controlling-canvas-rendering-based-on-component-visibility).
+> * It is recommended that the **CanvasRenderingContext2D** object and the **Canvas** component be encapsulated into the same custom component, ensuring a one-to-one correspondence and consistent lifecycle between them.
 >
-> The following path-related APIs apply only to paths created within **CanvasRenderingContext2D** and do not affect paths defined in [OffscreenCanvasRenderingContext2D](./ts-offscreencanvasrenderingcontext2d.md) or [Path2D](./ts-components-canvas-path2d.md): [beginPath](#beginpath), [moveTo](#moveto), [lineTo](#lineto), [closePath](#closepath), [bezierCurveTo](#beziercurveto), [quadraticCurveTo](#quadraticcurveto), [arc](#arc), [arcTo](#arcto), [ellipse](#ellipse), [rect](#rect), and [roundRect](#roundrect20).
+> * When you call drawing APIs in this module, the commands are stored in the associated **Canvas** component's command queue. These commands are only executed when the current frame enters the rendering phase and the associated **Canvas** component is visible. Therefore, when the **Canvas** component is invisible (for example, off-screen or hidden), avoid frequent drawing calls to prevent command queue buildup and excessive memory usage. For best practices, see [Controlling Canvas Rendering Based on Component Visibility](../../../ui/arkts-drawing-customization-on-canvas.md#controlling-canvas-rendering-based-on-component-visibility).
 >
-> If the width or height of the **Canvas** component exceeds 8000 px, the CPU is used for rendering, which can significantly degrade performance.
+> * The following path-related APIs apply only to paths created within **CanvasRenderingContext2D** and do not affect paths defined in [OffscreenCanvasRenderingContext2D](./ts-offscreencanvasrenderingcontext2d.md) or [Path2D](./ts-components-canvas-path2d.md): [beginPath](#beginpath), [moveTo](#moveto), [lineTo](#lineto), [closePath](#closepath), [bezierCurveTo](#beziercurveto), [quadraticCurveTo](#quadraticcurveto), [arc](#arc), [arcTo](#arcto), [ellipse](#ellipse), [rect](#rect), and [roundRect](#roundrect20).
+>
+> * When the width or height of the **Canvas** component exceeds 8000 px, rendering via the CPU causes significant performance degradation.
 
 ## Constructor
 
@@ -24,7 +26,7 @@
 
 constructor(settings?: RenderingContextSettings)
 
-Constructs a canvas object. You can configure parameters of the CanvasRenderingContext2D object.
+Constructs a canvas object, which supports configuration of parameters for the **CanvasRenderingContext2D** object.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -104,11 +106,11 @@ struct LengthMetricsUnitDemo {
 
 > **NOTE**
 >
-> The string format of fillStyle, shadowColor, and strokeStyle is rgb(255, 255, 255), rgba(255, 255, 255, 1.0), or #FFFFFF.
+> The string format of **fillStyle**, **shadowColor**, and **strokeStyle** is **rgb(255, 255, 255)**, **rgba(255, 255, 255, 1.0)**, or **#FFFFFF**.
 
 ### fillStyle
 
-Sets the fill color to be drawn. This property is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined will be returned.
+Sets the fill color for rendering. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -118,7 +120,7 @@ Sets the fill color to be drawn. This property is read-only. You can set its val
 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| string&nbsp;\|number<sup>10+</sup>&nbsp;\|[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md) | No| No| - When the type is string, this attribute indicates the color of the fill area. For details about the color format, see the description for the string type in [ResourceColor](ts-types.md#resourcecolor).<br>- When the type is number, this attribute indicates the color of the fill area. Fully transparent colors are not supported. For details about the color format, see the description for the number type in [ResourceColor](ts-types.md#resourcecolor).<br>- When the type is **CanvasGradient**, this attribute indicates a gradient object, which is created using the **[createLinearGradient](#createlineargradient)** API.<br>- When the type is **CanvasPattern**, this attribute indicates a pattern, which is created using the **[createPattern](#createpattern)** API.<br>Default value: **'#000000'** (black)<br>Invalid values do not take effect.|
+| string&nbsp;\|number<sup>10+</sup>&nbsp;\|[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md) | No| No| - When the type is string, this attribute indicates the color of the fill area. For details about the color format, see the description for the string type in [ResourceColor](ts-types.md#resourcecolor).<br>- When the type is number, this attribute indicates the color of the fill area. Fully transparent colors are not supported. For details about the color format, see the description for the number type in [ResourceColor](ts-types.md#resourcecolor).<br>- When the type is **CanvasGradient**, this attribute indicates a gradient object, which is created via the [createLinearGradient](#createlineargradient) API.<br>- When the type is **CanvasPattern**, this attribute indicates a pattern, which is created via the [createPattern](#createpattern) API.<br>Default value: **'#000000'** (black)<br>Invalid values do not take effect.|
 
 ```ts
 // xxx.ets
@@ -150,7 +152,7 @@ struct FillStyleExample {
 
 ### lineWidth
 
-Sets the width of a line to be drawn. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain the current value by reading. If you try to read the value, undefined is returned.
+Sets the line width. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -160,7 +162,7 @@ Sets the width of a line to be drawn. This attribute is read-only. You can set i
 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| number | No| No| Default value: **1** (px)<br>Default unit: vp<br> The value of lineWidth cannot be 0 or a negative number. If the value is 0, a negative number, or NaN, the default value is used. If the value is Infinity, the lineWidth attribute is abnormal.|
+| number | No| No| Default value: **1** (px)<br>Default unit: vp<br> The value of **lineWidth** cannot be **0** or a negative number. Values of **0**, negative numbers, and **NaN** are handled with the default value. **Infinity** will cause an exception on the **lineWidth** attribute.|
 
 ```ts
 // xxx.ets
@@ -192,7 +194,7 @@ struct LineWidthExample {
 
 ### strokeStyle
 
-Sets the color of a line. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain the current value by reading. If you try to read the value, undefined is returned.
+Sets the stroke color. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -202,7 +204,7 @@ Sets the color of a line. This attribute is read-only. You can set its value usi
 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| string&nbsp;\|number<sup>10+</sup>&nbsp;\|[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md)  | No| No| <br>- When the type is string, this attribute indicates the stroke color. For details about the color format, see the description for the string type in [ResourceColor](ts-types.md#resourcecolor).<br>- When the type is number, this attribute indicates the stroke color. Fully transparent colors are not supported. For details about the color format, see the description for the number type in [ResourceColor](ts-types.md#resourcecolor).<br>- When the type is **CanvasGradient**, this attribute indicates a gradient object, which is created using the **[createLinearGradient](#createlineargradient)** API.<br>- When the type is **CanvasPattern**, this attribute indicates a pattern, which is created using the **[createPattern](#createpattern)** API.<br>Default value: **'#000000'** (black)<br>Invalid values do not take effect.|
+| string&nbsp;\|number<sup>10+</sup>&nbsp;\|[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md)  | No| No| <br>- When the type is string, this attribute indicates the stroke color. For details about the color format, see the description for the string type in [ResourceColor](ts-types.md#resourcecolor).<br>- When the type is number, this attribute indicates the stroke color. Fully transparent colors are not supported. For details about the color format, see the description for the number type in [ResourceColor](ts-types.md#resourcecolor).<br>- When the type is **CanvasGradient**, this attribute indicates a gradient object, which is created via the [createLinearGradient](#createlineargradient) API.<br>- When the type is **CanvasPattern**, this attribute indicates a pattern, which is created via the [createPattern](#createpattern) API.<br>Default value: **'#000000'** (black)<br>Invalid values do not take effect.|
 
 ```ts
 // xxx.ets
@@ -236,7 +238,7 @@ struct StrokeStyleExample {
 
 ### lineCap
 
-Style of the line endpoint. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.
+Sets the line caps. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -277,12 +279,12 @@ struct LineCapExample {
 }
 ```
 
-![en-us_image_0000001212378406](figures/en-us_image_0000001212378406.png)
+![en-us_image_0000001238952373](figures/en-us_image_0000001238952373.png)
 
 
 ### lineJoin
 
-Style of the intersection point between line segments. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.
+Sets the line join. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -292,7 +294,7 @@ Style of the intersection point between line segments. This attribute is read-on
 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| [CanvasLineJoin](#canvaslinejoin) | No| No| <br>The options are as follows:<br>- **'round'**: The shape used to join line segments is a sector, whose radius at the rounded corner is equal to the line width.<br>- **'bevel'**: The shape used to join line segments is a triangle. The rectangular corner of each line is independent.<br>- **'miter'**: The shape used to join line segments has a mitered corner by extending the outside edges of the lines until they meet. You can view the effect of this attribute in **miterLimit**.<br>Default value: **'miter'**|
+| [CanvasLineJoin](#canvaslinejoin) | No| No| <br>Available values are as follows:<br>- **'round'**: The shape used to join line segments is a sector, whose radius at the rounded corner is equal to the line width.<br>- **'bevel'**: The shape used to join line segments is a triangle. The rectangular corner of each line is independent.<br>- **'miter'**: The shape used to join line segments has a mitered corner by extending the outside edges of the lines until they meet. You can view the effect of this attribute in **miterLimit**.<br>Default value: **'miter'**|
 
 ```ts
 // xxx.ets
@@ -329,7 +331,7 @@ struct LineJoinExample {
 
 ### miterLimit
 
-Sets the miter limit, which specifies the distance between the inner and outer angles at the intersection of lines. This attribute takes effect only when lineJoin is set to miter. This attribute is a write-only attribute. You can assign a value to it, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined will be returned.
+Sets the miter limit, which specifies the distance between the inner and outer angles at line joins. This attribute takes effect only when **lineJoin** is set to **miter**. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -339,7 +341,7 @@ Sets the miter limit, which specifies the distance between the inner and outer a
 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| number | No| No| Default value: **10** (px)<br>Unit: px<br>The value of miterLimit cannot be 0 or a negative number. If the value is 0, a negative number, or NaN, the default value is used. If the value is Infinity, the miterLimit attribute is abnormal.|
+| number | No| No| Default value: **10** (px)<br>Unit: px<br>The value of **miterLimit** cannot be **0** or a negative number. Values of **0**, negative numbers, and **NaN** are handled with the default value. **Infinity** will cause an exception on the **miterLimit** attribute.|
 
 ```ts
 // xxx.ets
@@ -376,9 +378,11 @@ struct MiterLimit {
 
 ### font
 
-Sets the font style for text drawing. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned. Custom fonts registered in API version 20 and later are supported. (The previewer of DevEco Studio does not support custom fonts.)
+Sets the text font. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
-Syntax: ctx.font&nbsp;=&nbsp;'font-style&nbsp;font-weight&nbsp;font-size&nbsp;font-family'<br>- (Optional) **font-style**: font style. Available values are **'normal'** and **'italic'**.<br>- (Optional) **font-weight**: font weight. Available values are as follows: **'normal'**, **'bold'**, **'bolder'**, **'lighter'**, **'100'**, **'200'**, **'300'**, **'400'**, **'500'**, **'600'**, **'700'**, **'800'**, **'900'**.<br>- (Optional) **font-size**: font size and line height. The unit must be specified and can be px or vp.<br>- (Optional) **font-family**: font family. Available values are **'sans-serif'**, **'serif'**, and **'monospace'**.
+Syntax: ctx.font&nbsp;=&nbsp;'font-style&nbsp;font-weight&nbsp;font-size&nbsp;font-family'<br>- (Optional) **font-style**: font style. Available values are **normal** and **italic**.<br>- (Optional) **font-weight**: font weight. Available values are as follows: **normal**, **bold**, **bolder**, **lighter**, **100**, **200**, **300**, **400**, **500**, **600**, **700**, **800**, **900**.<br>- (Optional) **font-size**: font size and line height. The unit can be px or vp and must be specified.<br>- (Optional) **font-family**: font family. Available values are **sans-serif**, **serif**, and **monospace**.
+
+Starting from API version 20, this API is used to set registered custom fonts (the DevEco Studio Previewer does not support custom fonts). You can register a custom font in either of the following ways: <br>Register a custom font by calling the asynchronous API this.uiContext.getFont().[registerFont](../arkts-apis-uicontext-font.md#registerfont) of ArkUI. Immediate rendering after calling this API may result in the custom font not taking effect. <br>Directly call the fontCollection.[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) API of the font engine to register the custom font. In this case, the **fontCollection** instance must be **text.FontCollection.getGlobalInstance()** because the component loads fonts from this instance by default. If you use another instance, the custom font may not take effect.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -386,9 +390,6 @@ Syntax: ctx.font&nbsp;=&nbsp;'font-style&nbsp;font-weight&nbsp;font-size&nbsp;fo
 | ------ | ---------- | -------------- | ---------------------------------------- |
 | string | No| No| Default value: **'normal normal 14px sans-serif'**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
-> **NOTE**
->
-> You can register a custom font in either of the following ways: You can register a custom font by calling the asynchronous API this.uiContext.getFont().[registerFont](../arkts-apis-uicontext-font.md#registerfont) of ArkUI. However, if you call this API immediately after the registration, the custom font may not take effect. Alternatively, you can directly call the fontCollection.[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) API of the font engine to register the custom font. When you directly call the font engine API to register a custom font, the fontCollection instance must be text.FontCollection.getGlobalInstance(), because the component loads fonts from this instance by default. If you use another instance, the custom font may not take effect.
 
 ```ts
 // xxx.ets
@@ -407,16 +408,16 @@ struct FontDemo {
         .height('100%')
         .backgroundColor('rgb(213,213,213)')
         .onReady(() => {
-          // Common font style, normal weight, font size: 30 px, font family: sans-serif
+          // Normal font style, normal weight, font size of 30 px, and font family of sans-serif
           this.context.font = 'normal normal 30px sans-serif'
           this.context.fillText("Hello px", 20, 60)
-          // Italic style, bold, font size: 30 vp, font family: monospace
+          // Italic style, bold, font size of 30 vp, and font family of monospace
           this.context.font = 'italic bold 30vp monospace'
           this.context.fillText("Hello vp", 20, 100)
           // Load the custom font file HarmonyOS_Sans_Thin_Italic.ttf in the rawfile directory.
           let fontCollection = text.FontCollection.getGlobalInstance();
           fontCollection.loadFontSync('HarmonyOS_Sans_Thin_Italic', $rawfile("HarmonyOS_Sans_Thin_Italic.ttf"))
-          // Bold, font size: 30 vp, font family: HarmonyOS_Sans_Thin_Italic
+          // Bold, font size of 30 vp, and font family of HarmonyOS_Sans_Thin_Italic
           this.context.font = "bold 30vp HarmonyOS_Sans_Thin_Italic"
           this.context.fillText("Hello customFont", 20, 140)
         })
@@ -431,7 +432,7 @@ struct FontDemo {
 
 ### textAlign
 
-Sets the text alignment mode during text drawing. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.
+Sets the text alignment type. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -441,7 +442,7 @@ Sets the text alignment mode during text drawing. This attribute is read-only. Y
 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| [CanvasTextAlign](#canvastextalign) | No| No| In the LTR layout mode, 'start' is the same as 'left'. In the RTL layout mode, 'start' is the same as 'right'.<br>Default value: 'left'<br>|
+| [CanvasTextAlign](#canvastextalign) | No| No| In the **ltr** layout mode, the value **'start'** equals **'left'**. In the **rtl** layout mode, the value **'start'** equals **'right'**.<br>Default value: **'left'**<br>|
 
 ```ts
 // xxx.ets
@@ -481,12 +482,12 @@ struct CanvasExample {
 }
 ```
 
-![en-us_image_0000001256978351](figures/en-us_image_0000001256978351.png)
+![en-us_image_0000001238832385](figures/en-us_image_0000001238832385.png)
 
 
 ### textBaseline
 
-Sets the horizontal alignment mode during text drawing. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.
+Sets the horizontal alignment baseline for text rendering. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -541,7 +542,7 @@ struct TextBaseline {
 
 ### globalAlpha
 
-Sets the transparency. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain the current value through a read operation. If you attempt to read the value, undefined is returned.
+Sets the opacity. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -551,7 +552,7 @@ Sets the transparency. This attribute is read-only. You can set its value throug
 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| number | No| No| The value range is [0.0, 1.0]. 0.0 indicates completely transparent, and 1.0 indicates completely opaque. If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. In API version 18 and later versions, if NaN or Infinity is set, the current API does not take effect. The drawing method with valid parameters is drawn normally.<br>Default value: **1.0**.|
+| number | No| No| The value range is [0.0, 1.0]. **0.0** indicates completely transparent, and **1.0** indicates completely opaque. If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.<br>In versions earlier than API version 18, if **NaN **or **Infinity** is set, rendering APIs cannot be called for rendering after this API. In API version 18 and later versions, if **NaN** or **Infinity** is set, the current API does not take effect, and other rendering APIs with valid arguments can be called normally.<br>Default value: **1.0**|
 
 ```ts
 // xxx.ets
@@ -586,7 +587,7 @@ struct GlobalAlpha {
 
 ### lineDashOffset
 
-Sets the dashed line offset of the canvas. The value is of the float type. This property takes effect only when setLineDash is called. This property is a write-only property. You can assign a value to it, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined will be returned.
+Sets the dashed line offset of the canvas. The value is of the float type. This attribute takes effect only when **setLineDash** is set. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -596,7 +597,7 @@ Sets the dashed line offset of the canvas. The value is of the float type. This 
 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| number | No| No| In versions earlier than API version 18, if NaN or Infinity is set, the line with the dashed line style is drawn as a solid line. In API version 18 and later versions, if NaN or Infinity is set, the current API does not take effect. The line with the dashed line style is drawn as a dashed line.<br>Default value: **0.0**<br>Default unit: vp<br>Invalid values **NaN** and **Infinity** are treated as the default value.|
+| number | No| No| In versions earlier than API version 18, if **NaN** or **Infinity** is set, dashed lines are rendered as solid lines. In API version 18 and later versions, if **NaN** or **Infinity** is set, the current API does not take effect, and dashed lines are rendered normally.<br>Default value: **0.0**<br>Default unit: vp<br>Invalid values **NaN** and **Infinity** are treated as the default value.|
 
 ``` ts
 // xxx.ets
@@ -617,8 +618,8 @@ struct LineDashOffset {
       fill: 'none',
       direction: 'normal',
       iterations: -1,
-      begin: 0, // Start point of the animation interpolation
-      end: 1 // End point of the animation interpolation.}
+      begin: 0, // Start point of the animation interpolation.
+      end: 1 // End point of the animation interpolation.
     });
     this.animator.onFrame = (value: number) => {
       this.context.reset();
@@ -656,7 +657,7 @@ struct LineDashOffset {
 
 ### globalCompositeOperation
 
-Sets the blending mode. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.
+Sets the composite operation. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -698,7 +699,7 @@ struct GlobalCompositeOperation {
   build() {
     Column() {
       Row() {
-        // 1. source-over: The new image is overlaid on the original image (default behavior).
+        // 1. source-over: The new shape is overlaid on the original shape. This attribute is used by default.
         Canvas(this.context1)
           .width('45%')
           .borderWidth(1)
@@ -706,12 +707,12 @@ struct GlobalCompositeOperation {
           .onReady(() => {
             let ctx1 = this.context1;
             ctx1.fillStyle = 'rgb(39,135,217)';
-            ctx1.fillRect(25, 25, 75, 75); // Original image
+            ctx1.fillRect(25, 25, 75, 75); // Original shape
             ctx1.globalCompositeOperation = 'source-over'; // Default value, which can be omitted.
             ctx1.fillStyle = 'rgb(23,169,141)';
-            ctx1.fillRect(75, 75, 75, 75); // New image overlaying the original image.
+            ctx1.fillRect(75, 75, 75, 75); // Display the new shape overlaid on the original shape.
           })
-        // 2. destination-out: The new image erases the original image. (This is the core logic of the eraser.)
+        // 2. destination-out: The original shape is erased in the area of the new shape. (This is the core logic of the eraser.)
         Canvas(this.context2)
           .width('45%')
           .borderWidth(1)
@@ -721,7 +722,7 @@ struct GlobalCompositeOperation {
             // Draw the background first.
             ctx2.fillStyle = 'rgb(39,135,217)';
             ctx2.fillRect(0, 0, ctx2.width, ctx2.height);
-            // Set the blending mode to erase.
+            // Set the composite operation to destination-out.
             ctx2.globalCompositeOperation = 'destination-out';
             // Draw a circle as the eraser.
             ctx2.beginPath();
@@ -732,84 +733,84 @@ struct GlobalCompositeOperation {
       .height('30%')
 
       Row() {
-        // 3. source-in: Only the overlapping part between the new image and the original image is retained. (Clipping or masking)
+        // 3. source-in: Only the overlapping part between the new shape and the original shape is retained (clipping or masking).
         Canvas(this.context3)
           .width('45%')
           .borderWidth(1)
           .margin(5)
           .onReady(() => {
             let ctx3 = this.context3;
-            // Draw the original image (circle mask) first.
+            // Draw the original shape (circle mask) first.
             ctx3.beginPath();
             ctx3.arc(ctx3.width / 2, ctx3.height / 2, 80, 0, Math.PI * 2);
             ctx3.fillStyle = '#fff';
             ctx3.fill();
-            // Set the blending mode.
+            // Set the composite operation.
             ctx3.globalCompositeOperation = 'source-in';
-            // Draw the new image (gradient rectangle).
+            // Draw a new shape (gradient rectangle).
             const gradient = ctx3.createLinearGradient(0, 0, ctx3.width, ctx3.height);
             gradient.addColorStop(0, 'rgb(23,169,141)');
             gradient.addColorStop(1, 'rgb(39,135,217)');
             ctx3.fillStyle = gradient;
-            ctx3.fillRect(0, 0, 200, 200); // Only the circular area displays the gradient.
+            ctx3.fillRect(0, 0, 200, 200); // Display gradient only in the circular area.
           })
-        // 4. lighter: The new image is overlaid with the original image (the luminance is added, and the color filtering effect is displayed).
+        // 4. lighter: The new shape is overlaid on the original shape (the luminance is added, and the color filtering effect is achieved).
         Canvas(this.context4)
           .width('45%')
           .borderWidth(1)
           .margin(5)
           .onReady(() => {
             let ctx4 = this.context4;
-            // Original image (a semitransparent red circle)
+            // Original shape (a semi-transparent red circle)
             ctx4.beginPath();
             ctx4.arc(70, 100, 50, 0, Math.PI * 2);
             ctx4.fillStyle = 'rgba(234, 67, 53, 0.7)';
             ctx4.fill();
-            // Set the blending mode.
+            // Set the composite operation.
             ctx4.globalCompositeOperation = 'lighter';
-            // New image (a semitransparent blue circle)
+            // New shape (a semi-transparent blue circle)
             ctx4.beginPath();
             ctx4.arc(110, 100, 50, 0, Math.PI * 2);
             ctx4.fillStyle = 'rgba(66, 133, 244, 0.7)';
-            ctx4.fill(); // The overlapping area turns purple (the luminance is added).
+            ctx4.fill(); // The overlapping area turns purple (luminance blending).
           })
       }
       .height('30%')
 
       Row() {
-        // 5. destination-atop: Only the overlapping part of the original image and the new image is retained, and other parts are removed.
+        // 5. destination-atop: retains the overlapping part of the original and new shapes and removes other parts.
         Canvas(this.context5)
           .width('45%')
           .borderWidth(1)
           .margin(5)
           .onReady(() => {
             let ctx5 = this.context5;
-            // Original image (a green rectangle)
+            // Original shape (a green rectangle)
             ctx5.fillStyle = 'rgb(23,169,141)';
             ctx5.fillRect(0, 0, ctx5.width, ctx5.height);
-            // Set the blending mode.
+            // Set the composite operation.
             ctx5.globalCompositeOperation = 'destination-atop';
-            // New image (a small circle)
+            // New shape (a small circle)
             ctx5.beginPath();
             ctx5.arc(ctx5.width / 2, ctx5.height / 2, 60, 0, Math.PI * 2);
             ctx5.fillStyle = '#000';
             ctx5.fill(); // Only the overlapping part of the rectangle and circle is retained.
           })
-        // 6. Text mask (advanced usage of "source-in")
+        // 6. Text mask (advanced usage of source-in)
         Canvas(this.context6)
           .width('45%')
           .borderWidth(1)
           .margin(5)
           .onReady(() => {
             let ctx6 = this.context6
-            // Draw text first (as a mask).
+            // Draw the text first (as a mask).
             ctx6.font = 'bold 40vp';
             ctx6.textAlign = 'center';
             ctx6.textBaseline = 'middle';
             ctx6.fillText('CANVAS', ctx6.width / 2, ctx6.height / 2);
-            // Set the blending mode.
+            // Set the composite operation.
             ctx6.globalCompositeOperation = 'source-in';
-            // Draw a gradient background (displayed only in the text area).
+            // Draw the gradient background (displayed only in the text area).
             let textGradient = ctx6.createLinearGradient(50, 0, 300, 100);
             textGradient.addColorStop(0.0, 'rgb(39,135,217)');
             textGradient.addColorStop(0.5, 'rgb(255,238,240)');
@@ -826,12 +827,12 @@ struct GlobalCompositeOperation {
 }
 ```
 
-![en-us_image_0000001211898480](figures/en-us_image_0000001211898480.png)
+![en-us_image_0000001238952375](figures/en-us_image_0000001238952375.png)
 
 
 ### shadowBlur
 
-Sets the blur level when a shadow is drawn. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.
+Sets the blur level for drawing shadows. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -841,7 +842,7 @@ Sets the blur level when a shadow is drawn. This attribute is read-only. You can
 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| number | No| No| A larger value indicates a more blurry shadow. The value is of the float type. The value must be greater than or equal to 0.<br>Default value: **0.0**<br>Unit: px<br>The value of shadowBlur cannot be a negative number. If the value is a negative number, NaN, or Infinity, the default value is used.|
+| number | No| No| Blur level. A larger value produces a greater blur effect. The value is of float type and must be greater than or equal to 0.<br>Default value: **0.0**<br>Unit: px<br>The value of **shadowBlur** cannot be a negative number. A negative number, **NaN**, and **Infinity** are treated as the default value.|
 
 ```ts
 // xxx.ets
@@ -870,12 +871,12 @@ struct ShadowBlur {
 }
 ```
 
-![en-us_image_0000001256978343](figures/en-us_image_0000001256978343.png)
+![en-us_image_0000001194032456](figures/en-us_image_0000001194032456.png)
 
 
 ### shadowColor
 
-Sets the shadow color when a shadow is drawn. This attribute is read-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.
+Sets the shadow color. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -885,7 +886,7 @@ Sets the shadow color when a shadow is drawn. This attribute is read-only. You c
 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| string | No| No| For details about the color notation, see the description of the string type in [ResourceColor](ts-types.md#resourcecolor).<br>Default value: transparent black|
+| string | No| No| For details about the color format, see the description for the string type in [ResourceColor](ts-types.md#resourcecolor).<br>Default value: **'#00000000'** (transparent black)|
 
 ```ts
 // xxx.ets
@@ -914,12 +915,12 @@ struct ShadowColor {
 }
 ```
 
-![en-us_image_0000001257138353](figures/en-us_image_0000001257138353.png)
+![en-us_image_0000001239032411](figures/en-us_image_0000001239032411.png)
 
 
 ### shadowOffsetX
 
-Horizontal offset of the shadow relative to the original object. This property is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.
+Sets the horizontal offset between the drawn shadow and the original object. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -959,12 +960,12 @@ struct ShadowOffsetX {
 }
 ```
 
-![en-us_image_0000001212218436](figures/en-us_image_0000001212218436.png)
+![en-us_image_0000001193872490](figures/en-us_image_0000001193872490.png)
 
 
 ### shadowOffsetY
 
-Vertical offset of the shadow relative to the original object. This property is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.
+Sets the vertical offset between the drawn shadow and the original object. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -1003,12 +1004,12 @@ struct ShadowOffsetY {
 }
 ```
 
-![en-us_image_0000001212378410](figures/en-us_image_0000001212378410.png)
+![en-us_image_0000001238832387](figures/en-us_image_0000001238832387.png)
 
 
 ### imageSmoothingEnabled
 
-Whether to adjust the image smoothness when drawing an image. The value true indicates that the image smoothness is adjusted, and the value false indicates that the image smoothness is not adjusted. This property is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read the value, undefined is returned.
+Indicates whether to apply image smoothing adjustments when drawing images. The value **true** means to enable smoothing ,and **false** means to disable it. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -1018,7 +1019,7 @@ Whether to adjust the image smoothness when drawing an image. The value true ind
 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| boolean | No| No| Default value: **true**.|
+| boolean | No| No| Default value: **true**|
 
 ```ts
 // xxx.ets
@@ -1027,7 +1028,7 @@ Whether to adjust the image smoothness when drawing an image. The value true ind
 struct ImageSmoothingEnabled {
   private settings: RenderingContextSettings = new RenderingContextSettings(true)
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  // Replace "common/images/icon.jpg" with the image resource file required by the developer.
+  // Replace "common/images/icon.jpg" with the image resource file you use.
   private img:ImageBitmap = new ImageBitmap("common/images/icon.jpg")
   
   build() {
@@ -1047,7 +1048,7 @@ struct ImageSmoothingEnabled {
 }
 ```
 
-![en-us_image_0000001211898472](figures/en-us_image_0000001211898472.png)
+![en-us_image_0000001238712415](figures/en-us_image_0000001238712415.png)
 
 
 ### height
@@ -1144,7 +1145,7 @@ FrameNode instance of the **Canvas** component associated with **CanvasRendering
 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| [FrameNode](../../apis-arkui/js-apis-arkui-frameNode.md) | Yes| No| Default value: **null**.|
+| [FrameNode](../../apis-arkui/js-apis-arkui-frameNode.md) | Yes| No| Default value: **null**|
 
 ```ts
 import { FrameNode } from '@kit.ArkUI'
@@ -1191,7 +1192,7 @@ struct CanvasExample {
 
 ### imageSmoothingQuality
 
-Sets the image smoothing level when imageSmoothingEnabled is true. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.
+Sets the image smoothing quality when **imageSmoothingEnabled** is set to **true**. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -1201,7 +1202,7 @@ Sets the image smoothing level when imageSmoothingEnabled is true. This attribut
 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| [ImageSmoothingQuality](#imagesmoothingquality) | No| No| Default value: "low"|
+| [ImageSmoothingQuality](#imagesmoothingquality) | No| No| Default value: **"low"**|
 
 ```ts
   // xxx.ets
@@ -1237,7 +1238,7 @@ Sets the image smoothing level when imageSmoothingEnabled is true. This attribut
 
 ### direction
 
-Sets the text direction used for text drawing. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.
+Sets the text direction. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -1247,7 +1248,7 @@ Sets the text direction used for text drawing. This attribute is read-only. You 
 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| [CanvasDirection](#canvasdirection) | No| No| Default value: "inherit"|
+| [CanvasDirection](#canvasdirection) | No| No| Default value: **"inherit"**|
 
 ```ts
   // xxx.ets
@@ -1284,7 +1285,7 @@ Sets the text direction used for text drawing. This attribute is read-only. You 
 
 ### filter
 
-Sets the filter of an image. You can combine any number of filters. This attribute is read-only. You can set its value using an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, undefined is returned.
+Sets the filter for an image. Any number of filters can be combined. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -1294,7 +1295,7 @@ Sets the filter of an image. You can combine any number of filters. This attribu
 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| string | No| No| <br>Available values are as follows:<br>- **'none'**: no filter effect.<br>- 'blur(\<length>)': sets Gaussian blur for an image. The value must be greater than or equal to 0. The unit can be px, vp, or rem. The default value is blur(0px).<br>- 'brightness([\<number>\|\<percentage>])': applies a linear multiplication to the image to make it look brighter or darker. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **brightness(1)**.<br>- 'contrast([\<number>\|\<percentage>])': adjusts the image contrast. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **contrast(1)**.<br>- 'grayscale([\<number>\|\<percentage>])': converts the image to a grayscale image. The value can be a number or percentage. The value range is [0, 1]. The default value is **grayscale(0)**.<br>- 'hue-rotate(\<angle>)': Applies hue rotation to an image. The value range is 0–360. The default value is hue-rotate(0).<br>- 'invert([\<number>\|\<percentage>])': inverts the input image. The value can be a number or percentage. The value range is [0, 1]. The default value is **invert (0)**.<br>- 'opacity([\<number>\|\<percentage>])': sets the opacity of the image. The value can be a number or percentage. The value range is [0, 1]. The default value is opacity(1).<br>- 'saturate([\<number>\|\<percentage>])': sets the saturation of the image. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **saturate(1)**.<br>- 'sepia([\<number>\|\<percentage>])': converts the image to dark brown. The value can be a number or percentage. The value range is [0, 1]. The default value is **sepia(0)**.<br>|
+| string | No| No| <br>Available values are as follows:<br>- **'none'**: no filter effect.<br>- 'blur(\<length>)': applies the Gaussian blur to the image. The value must be greater than or equal to 0. The unit can be px, vp, or rem. The default value is **blur(0px)**.<br>- 'brightness([\<number>\|\<percentage>])': applies a linear multiplication to the image to make it look brighter or darker. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **brightness(1)**.<br>- 'contrast([\<number>\|\<percentage>])': adjusts the image contrast. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **contrast(1)**.<br>- 'grayscale([\<number>\|\<percentage>])': converts the image to a grayscale image. The value can be a number or percentage. The value range is [0, 1]. The default value is **grayscale(0)**.<br>- 'hue-rotate(\<angle>)': applies hue rotation to the image. The value ranges from 0deg to 360deg. The default value is **hue-rotate(0deg)**.<br>- 'invert([\<number>\|\<percentage>])': inverts the input image. The value can be a number or percentage. The value range is [0, 1]. The default value is **invert (0)**.<br>- 'opacity([\<number>\|\<percentage>])': sets the opacity of the image. The value can be a number or percentage. The value range is [0, 1]. The default value is **opacity(1)**.<br>- 'saturate([\<number>\|\<percentage>])': sets the saturation of the image. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **saturate(1)**.<br>- 'sepia([\<number>\|\<percentage>])': converts the image to dark brown. The value can be a number or percentage. The value range is [0, 1]. The default value is **sepia(0)**.<br>|
 
 ```ts
   // xxx.ets
@@ -1359,7 +1360,7 @@ Sets the filter of an image. You can combine any number of filters. This attribu
 
 ### letterSpacing<sup>18+</sup>
 
-This property is used to specify the spacing between letters when text is drawn. This property is read-only. You can set its value through an assignment statement, but cannot obtain the current value through a read operation. If you attempt to read the value, undefined is returned.
+Sets the letter spacing. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1367,7 +1368,7 @@ This property is used to specify the spacing between letters when text is drawn.
 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| string&nbsp;\| [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| No| Spacing between characters.<br>When the LengthMetrics type is used:<br>The spacing is set according to the specified unit.<br>The FP, PERCENT, and LPX units are not supported and will be treated as invalid values.<br>Negative and fractional values are supported. When set to a fraction, the spacing is not rounded.<br>When the string type is used:<br>Percentage values are not supported and will be treated as invalid.<br>Negative and fractional values are supported. When set to a fraction, the spacing is not rounded.<br>If no unit is specified (for example, **letterSpacing = '10'**) and **LengthMetricsUnit** is not set, the default unit is vp.<br>If **LengthMetricsUnit** is set to px, the default unit is px.<br>If a unit is specified (for example, **letterSpacing='10vp'**), the spacing is set according to the specified unit.<br>Default value: **0** (Invalid values are treated as the default value.)<br>**NOTE**<br>The LengthMetrics type is recommended for better performance.|
+| string&nbsp;\| [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| No| Spacing between characters.<br>When the LengthMetrics type is used:<br>The spacing is set according to the specified unit.<br>The FP, PERCENT, and LPX units are not supported and will be treated as invalid values.<br>Negative and fractional values are supported. When set to a fraction, the spacing is not rounded.<br>When the string type is used:<br>Percentage values are not supported and will be treated as invalid.<br>Negative and decimal values are supported. When set to a decimal value, the spacing is not rounded.<br>If no unit is specified (for example, **letterSpacing = '10'**) and **LengthMetricsUnit** is not set, the default unit is vp.<br>If **LengthMetricsUnit** is set to px, the default unit is px.<br>If the value of **letterSpacing** is specified with a unit (for example, **letterSpacing='10vp'**), the letter spacing is set based on the specified unit.<br>Default value: **0** (Invalid values are treated as the default value.)<br>**NOTE**<br>The LengthMetrics type is recommended for better performance.|
 
 ```ts
   // xxx.ets
@@ -1403,7 +1404,7 @@ This property is used to specify the spacing between letters when text is drawn.
 
 ## Methods
 
-Calls to the following methods on hidden pages will result in cache data. Therefore, avoid frequently refreshing the canvas on hidden pages.
+Calls the following methods on hidden pages will result in cache data. Therefore, avoid frequent canvas refreshes on hidden pages.
 
 ### fillRect
 
@@ -1421,10 +1422,10 @@ Fills a rectangle on the canvas.
 
 | Name    | Type    | Mandatory| Description           |
 | ------ | ------ | ---- | ------------- |
-| x      | number | Yes | X coordinate of the upper left corner of the rectangle.<br>If the value is undefined, null, NaN, or Infinity, no drawing is performed.<br>Default unit: vp|
-| y      | number | Yes | Y coordinate of the upper left corner of the rectangle.<br>If the value is undefined, null, NaN, or Infinity, no drawing is performed.<br>Default unit: vp|
-| w      | number | Yes | Width of the rectangle.<br>If the value is undefined, null, NaN, or Infinity, no drawing is performed.<br>Default unit: vp|
-| h      | number | Yes | Height of the rectangle.<br>If the value is undefined, null, NaN, or Infinity, no drawing is performed.<br>Default unit: vp|
+| x      | number | Yes | X-coordinate of the rectangle's top-left corner.<br>**undefined**, **null**, **NaN**, and **Infinity** are treated as invalid values and no rendering will be performed.<br>Default unit: vp|
+| y      | number | Yes | Y-coordinate of the rectangle's top-left corner.<br>**undefined**, **null**, **NaN**, and **Infinity** are treated as invalid values and no rendering will be performed.<br>Default unit: vp|
+| w      | number | Yes | Width of the rectangle.<br>**undefined**, **null**, **NaN**, and **Infinity** are treated as invalid values and no rendering will be performed.<br>Default unit: vp|
+| h      | number | Yes | Height of the rectangle.<br>**undefined**, **null**, **NaN**, and **Infinity** are treated as invalid values and no rendering will be performed.<br>Default unit: vp|
 
 **Example**
 
@@ -1459,7 +1460,7 @@ Fills a rectangle on the canvas.
 
 strokeRect(x: number, y: number, w: number, h: number): void
 
-Draws an outlined rectangle on the canvas.
+Draws an outlined rectangle on the canvas without filling its interior.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -1471,10 +1472,10 @@ Draws an outlined rectangle on the canvas.
 
 | Name  | Type    | Mandatory  | Description          |
 | ---- | ------ | ----  | ------------ |
-| x    | number | Yes    | X coordinate of the upper left corner of the rectangle.<br>If the value is undefined, null, NaN, or Infinity, no drawing is performed.<br>Default unit: vp|
-| y    | number | Yes    | Y coordinate of the upper left corner of the rectangle.<br>If the value is undefined, null, NaN, or Infinity, no drawing is performed.<br>Default unit: vp|
-| w    | number | Yes    | Width of the rectangle.<br>If the value is undefined, null, NaN, or Infinity, no drawing is performed.<br>Default unit: vp|
-| h    | number | Yes    | Height of the rectangle.<br>If the value is undefined, null, NaN, or Infinity, no drawing is performed.<br>Default unit: vp|
+| x    | number | Yes    | X-coordinate of the rectangle's top-left corner.<br>**undefined**, **null**, **NaN**, and **Infinity** are treated as invalid values and no rendering will be performed.<br>Default unit: vp|
+| y    | number | Yes    | Y-coordinate of the rectangle's top-left corner.<br>**undefined**, **null**, **NaN**, and **Infinity** are treated as invalid values and no rendering will be performed.<br>Default unit: vp|
+| w    | number | Yes    | Width of the rectangle.<br>**undefined**, **null**, **NaN**, and **Infinity** are treated as invalid values and no rendering will be performed.<br>Default unit: vp|
+| h    | number | Yes    | Height of the rectangle.<br>**undefined**, **null**, **NaN**, and **Infinity** are treated as invalid values and no rendering will be performed.<br>Default unit: vp|
 
 **Example**
 
@@ -1521,10 +1522,10 @@ Clears the content in a rectangle on the canvas.
 
 | Name  | Type    | Mandatory | Description |
 | ---- | ------ | ---- | ------------- |
-| x    | number | Yes| X coordinate of the upper left corner of the rectangle.<br>If the value is undefined, null, NaN, or Infinity, no drawing is performed.<br>Default unit: vp|
-| y    | number | Yes| Y coordinate of the upper left corner of the rectangle.<br>If the value is undefined, null, NaN, or Infinity, no drawing is performed.<br>Default unit: vp|
-| w    | number | Yes| Width of the rectangle.<br>If the value is undefined, null, NaN, or Infinity, no drawing is performed.<br>Default unit: vp|
-| h    | number | Yes| Height of the rectangle.<br>If the value is undefined, null, NaN, or Infinity, no drawing is performed.<br>Default unit: vp|
+| x    | number | Yes| X-coordinate of the rectangle's top-left corner.<br>**undefined**, **null**, **NaN**, and **Infinity** are treated as invalid values and no rendering will be performed.<br>Default unit: vp|
+| y    | number | Yes| Y-coordinate of the rectangle's top-left corner.<br>**undefined**, **null**, **NaN**, and **Infinity** are treated as invalid values and no rendering will be performed.<br>Default unit: vp|
+| w    | number | Yes| Width of the rectangle.<br>**undefined**, **null**, **NaN**, and **Infinity** are treated as invalid values and no rendering will be performed.<br>Default unit: vp|
+| h    | number | Yes| Height of the rectangle.<br>**undefined**, **null**, **NaN**, and **Infinity** are treated as invalid values and no rendering will be performed.<br>Default unit: vp|
 
 **Example**
 
@@ -1573,10 +1574,10 @@ Draws filled text on the canvas.
 
 | Name      | Type    | Mandatory  | Description|
 | -------- | ------ | ---- | --------------- |
-| text     | string | Yes   | Text to draw.<br>If the value is undefined or null, no drawing is performed.|
-| x        | number | Yes   | X coordinate of the start point for drawing text.<br>If the value is undefined, null, NaN, or Infinity, no drawing is performed.<br>Default unit: vp|
-| y        | number | Yes   | Y coordinate of the start point for drawing text.<br>If the value is undefined, null, NaN, or Infinity, no drawing is performed.<br>Default unit: vp|
-| maxWidth | number | No   | Maximum width allowed for the text.<br>If the value is null, no drawing is performed. If the value is undefined, NaN, or Infinity, the default value is used.<br>Default value: no width restriction<br>Default unit: vp|
+| text     | string | Yes   | Text to draw.<br>**undefined** and **null** are treated as invalid values and no rendering will be performed.|
+| x        | number | Yes   | X-coordinate of the start point for text rendering.<br>**undefined**, **null**, **NaN**, and **Infinity** are treated as invalid values and no rendering will be performed.<br>Default unit: vp|
+| y        | number | Yes   | Y-coordinate of the start point for text rendering.<br>**undefined**, **null**, **NaN**, and **Infinity** are treated as invalid values and no rendering will be performed.<br>Default unit: vp|
+| maxWidth | number | No   | Maximum width allowed for the text.<br>**null** is treated as an invalid value and no rendering will be performed. **undefined**, **NaN**, or **Infinity** is treated as the default value.<br>Default value: no width restriction<br>Default unit: vp|
 
 **Example**
 
@@ -1612,7 +1613,7 @@ Draws filled text on the canvas.
 
 strokeText(text: string, x: number, y: number, maxWidth?: number): void
 
-Draws a text stroke on the canvas.
+Draws stroked text on the canvas.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -1624,10 +1625,10 @@ Draws a text stroke on the canvas.
 
 | Name      | Type    | Mandatory| Description    |
 | -------- | ------ | ---- | --------------- |
-| text     | string | Yes   | Text to draw.<br>If the value is undefined or null, no drawing is performed.|
-| x        | number | Yes   | X coordinate of the start point for drawing text.<br>If the value is undefined, null, NaN, or Infinity, no drawing is performed.<br>Default unit: vp|
-| y        | number | Yes   | Y coordinate of the start point for drawing text.<br>If the value is undefined, null, NaN, or Infinity, no drawing is performed.<br>Default unit: vp|
-| maxWidth | number | No   | Maximum width of the text.<br>If the value is null, no drawing is performed. If the value is undefined, NaN, or Infinity, the default value is used.<br>Default unit: vp<br>Default value: no width restriction|
+| text     | string | Yes   | Text to draw.<br>**undefined** and **null** are treated as invalid values and no rendering will be performed.|
+| x        | number | Yes   | X-coordinate of the start point for text rendering.<br>**undefined**, **null**, **NaN**, and **Infinity** are treated as invalid values and no rendering will be performed.<br>Default unit: vp|
+| y        | number | Yes   | Y-coordinate of the start point for text rendering.<br>**undefined**, **null**, **NaN**, and **Infinity** are treated as invalid values and no rendering will be performed.<br>Default unit: vp|
+| maxWidth | number | No   | Maximum width of the text.<br>**null** is treated as an invalid value and no rendering will be performed. **undefined**, **NaN**, or **Infinity** is treated as the default value.<br>Default unit: vp<br>Default value: no width restriction|
 
 **Example**
 
@@ -1663,7 +1664,7 @@ Draws a text stroke on the canvas.
 
 measureText(text: string): TextMetrics
 
-Measures the specified text to obtain its width. This API returns a **TextMetrics** object. Note that the width obtained may vary by device.
+Returns a **TextMetrics** object used to obtain the width of specified text. Note that the width obtained may vary by device.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -1675,7 +1676,7 @@ Measures the specified text to obtain its width. This API returns a **TextMetric
 
 | Name  | Type    | Mandatory  | Description        |
 | ---- | ------ | ---- |---------- |
-| text | string | Yes | Text to be measured.<br>If the input value is undefined or null, the value is calculated as "undefined" or "null".|
+| text | string | Yes | Text to measure.<br>If the input value is **undefined** or **null**, the value is calculated based on "undefined" or "null".|
 
 **Return value**
 
@@ -1775,7 +1776,7 @@ Strokes (outlines) a specified path.
 
 | Name  | Type     | Mandatory  | Description    |
 | ---- | ---------------------------------------- | ---- | ------------ |
-| path | [Path2D](ts-components-canvas-path2d.md) | Yes| A **Path2D** path to draw.<br>If the value is undefined or null, no drawing is performed.|
+| path | [Path2D](ts-components-canvas-path2d.md) | Yes| **Path2D** path to draw.<br>**undefined** and **null** are treated as invalid values and no rendering will be performed.|
 
  **Example**
 
@@ -1864,7 +1865,7 @@ Creates a drawing path.
 
 moveTo(x: number, y: number): void
 
-Moves a drawing path to a target position on the canvas.
+Moves a drawing path from the current position to a target position on the canvas.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -1876,14 +1877,14 @@ Moves a drawing path to a target position on the canvas.
 
 | Name  | Type    | Mandatory  | Description       |
 | ---- | ------ | ---- | --------- |
-| x    | number | Yes   | X coordinate of the target position.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| y    | number | Yes   | Y coordinate of the target position.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| x    | number | Yes   | X-coordinate of the target position.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| y    | number | Yes   | Y-coordinate of the target position.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
 
 > **NOTE**
 >
-> In versions earlier than API version 18, if the moveTo API is not called or the moveTo API is called with invalid parameters, the path starts from (0,0).
+> In versions earlier than API version 18, if the **moveTo** API is not called or invalid arguments are passed to it, the path starts from (0,0).
 >
-> In API version 18 and later versions, if the moveTo API is not called or the moveTo API is called with invalid parameters, the path starts from the start point in the lineTo, arcTo, bezierCurveTo, or quadraticCurveTo API that is called for the first time.
+> Starting from API version 18, if the **moveTo** API is not executed or invalid arguments are passed to it, the path will begin at the start point of the first valid call to **lineTo**, **arcTo**, **bezierCurveTo**, or **quadraticCurveTo**.
 
 **Example**
 
@@ -1921,7 +1922,7 @@ Moves a drawing path to a target position on the canvas.
 
 lineTo(x: number, y: number): void
 
-Connects the current point to a target position using a straight line.
+Connects the current point to a target position using a line.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -1933,8 +1934,8 @@ Connects the current point to a target position using a straight line.
 
 | Name  | Type    | Mandatory  | Description       |
 | ---- | ------ | ---- | --------- |
-| x    | number | Yes   | X coordinate of the target position.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| y    | number | Yes   | Y coordinate of the target position.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| x    | number | Yes   | X-coordinate of the target position.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| y    | number | Yes   | Y-coordinate of the target position.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
 
 **Example**
 
@@ -1972,7 +1973,7 @@ Connects the current point to a target position using a straight line.
 
 closePath(): void
 
-Closes the current path to form a closed path.
+Draws a closed path.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -2030,14 +2031,14 @@ Creates a pattern for image filling based on a specified source image and repeti
 
 | Name | Type | Mandatory | Description |
 | ---------- | ---------- | ---- | ---------------------------------------- |
-| image  | [ImageBitmap](ts-components-canvas-imagebitmap.md) | Yes | Source image. For details, see **ImageBitmap**.<br>The **undefined** and **null** values are treated as invalid.|
-| repetition | string \| null  | Yes | Repetition mode.<br>**'repeat'**: The image is repeated along both the x-axis and y-axis.<br>**'repeat-x'**: The image is repeated along the x-axis.<br>**'repeat-y'**: The image is repeated along the y-axis.<br>**'no-repeat'**: The image is not repeated.<br>**'clamp'**: Coordinates outside the original bounds are clamped to the edge of the image.<br>**'mirror'**: The image is mirrored with each repetition along the x-axis and y-axis.<br>The **undefined** and **null** values are treated as invalid.|
+| image  | [ImageBitmap](ts-components-canvas-imagebitmap.md) | Yes | Source image. For details, see **ImageBitmap**.<br>**undefined** and **null** are treated as invalid values.|
+| repetition | string \| null  | Yes | Repetition mode.<br>**'repeat'**: The image is repeated along both the x-axis and y-axis.<br>**'repeat-x'**: The image is repeated along the x-axis.<br>**'repeat-y'**: The image is repeated along the y-axis.<br>**'no-repeat'**: The image is not repeated.<br>**'clamp'**: Coordinates outside the original bounds are clamped to the edge of the image.<br>**'mirror'**: The image is mirrored with each repetition along the x-axis and y-axis.<br>**undefined** and **null** are treated as invalid values.|
 
 **Return value**
 
 | Type                                      | Description                     |
 | ---------------------------------------- | ----------------------- |
-| [CanvasPattern](ts-components-canvas-canvaspattern.md) \| null | Created pattern for image filling based on a specified source image and repetition mode.|
+| [CanvasPattern](ts-components-canvas-canvaspattern.md) \| null | Pattern for image filling based on a specified source image and repetition mode.|
 
 **Example**
 
@@ -2048,7 +2049,7 @@ Creates a pattern for image filling based on a specified source image and repeti
   struct CreatePattern {
     private settings: RenderingContextSettings = new RenderingContextSettings(true)
     private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-    // Replace "common/images/icon.jpg" with the image resource file required by the developer.
+    // Replace "common/images/icon.jpg" with the image resource file you use.
     private img:ImageBitmap = new ImageBitmap("common/images/icon.jpg")
 
     build() {
@@ -2078,7 +2079,7 @@ Creates a pattern for image filling based on a specified source image and repeti
 
 bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void
 
-Path for creating a cubic Bezier curve.
+Creates a path for a cubic Bezier curve.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -2090,12 +2091,12 @@ Path for creating a cubic Bezier curve.
 
 | Name  | Type    | Mandatory  | Description |
 | ---- | ------ | ---- | -------------- |
-| cp1x | number | Yes | X coordinate of the first parameter of the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| cp1y | number | Yes | Y coordinate of the first parameter of the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| cp2x | number | Yes | X coordinate of the second parameter of the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| cp2y | number | Yes | Y coordinate of the second parameter of the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| x    | number | Yes | X coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| y    | number | Yes | Y coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| cp1x | number | Yes | X-coordinate of the first parameter of the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| cp1y | number | Yes | Y-coordinate of the first parameter of the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| cp2x | number | Yes | X-coordinate of the second parameter of the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| cp2y | number | Yes | Y-coordinate of the second parameter of the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| x    | number | Yes | X-coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| y    | number | Yes | Y-coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
 
 **Example**
 
@@ -2148,14 +2149,14 @@ struct BezierCurveTo {
 }
 ```
 
-  ![en-us_image_0000001239032415](figures/en-us_image_0000001239032415.png)
+![en-us_image_0000001239032415](figures/en-us_image_0000001239032415.png)
 
 
 ### quadraticCurveTo
 
 quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
 
-Creates a quadratic Bezier curve.
+Create a path for a quadratic Bezier curve.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -2167,10 +2168,10 @@ Creates a quadratic Bezier curve.
 
 | Name  | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
-| cpx  | number | Yes   | X coordinate of the Bezier curve parameter.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| cpy  | number | Yes   | Y coordinate of the Bezier curve parameter.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| x    | number | Yes   | X coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| y    | number | Yes   | Y coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| cpx  | number | Yes   | X-coordinate of the Bezier curve parameter.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| cpy  | number | Yes   | Y-coordinate of the Bezier curve parameter.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| x    | number | Yes   | X-coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| y    | number | Yes   | Y-coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
 
 **Example**
 
@@ -2208,7 +2209,7 @@ struct QuadraticCurveTo {
           ctx.arc(this.end.x, this.end.y, 5, 0, 2 * Math.PI); // End point
           ctx.fill();
 
-          // Control points
+          // Control point
           ctx.fillStyle = 'rgb(23,169,141)';
           ctx.beginPath();
           ctx.arc(this.cp.x, this.cp.y, 5, 0, 2 * Math.PI);
@@ -2240,12 +2241,12 @@ Draws an arc on the canvas.
 
 | Name      | Type     | Mandatory  | Description        |
 | ---------------- | ------- | ---- | ---------- |
-| x                | number  | Yes | X coordinate of the center point of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| y                | number  | Yes | Y coordinate of the center point of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| radius           | number  | Yes | Radius of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| startAngle       | number  | Yes | Start radian of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Unit: radian|
-| endAngle         | number  | Yes | End radian of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Unit: radian|
-| counterclockwise | boolean | No | Whether to draw the arc counterclockwise.<br>true: Draw an arc counterclockwise.<br>false: Draw an arc clockwise.<br>Default value: false. If null or undefined is set, the default value is used. |
+| x                | number  | Yes | X-coordinate of the center point of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| y                | number  | Yes | Y-coordinate of the center point of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| radius           | number  | Yes | Radius of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| startAngle       | number  | Yes | Start radian of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Unit: radian|
+| endAngle         | number  | Yes | End radian of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Unit: radian|
+| counterclockwise | boolean | No | Whether to draw the arc counterclockwise.<br>**true**: Draw the arc counterclockwise.<br>**false**: Draw the arc clockwise.<br>The default value is **false**. If this parameter is set to **null** or **undefined**, the default value is used. |
 
 **Example**
 
@@ -2294,11 +2295,11 @@ Creates a circular arc using the given control points and radius.
 
 | Name    | Type    | Mandatory  | Description         |
 | ------ | ------ | ---- | --------------- |
-| x1     | number | Yes   | X coordinate of the first control point.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| y1     | number | Yes   | Y coordinate of the first control point.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| x2     | number | Yes   | X coordinate of the second control point.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| y2     | number | Yes   | Y coordinate of the second control point.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| radius | number | Yes   | Radius of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| x1     | number | Yes   | X-coordinate of the first control point.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| y1     | number | Yes   | Y-coordinate of the first control point.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| x2     | number | Yes   | X-coordinate of the second control point.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| y2     | number | Yes   | Y-coordinate of the second control point.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| radius | number | Yes   | Radius of the arc.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
 
 **Example**
 
@@ -2377,14 +2378,14 @@ Draws an ellipse in the specified rectangular region on the canvas.
 
 | Name              | Type     | Mandatory  | Description                                      |
 | ---------------- | ------- | ---- | ---------------------------------------- |
-| x                | number  | Yes| X coordinate of the ellipse center.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| y                | number  | Yes| Y coordinate of the ellipse center.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| radiusX          | number  | Yes| Radius of the ellipse on the x-axis.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| radiusY          | number  | Yes| Radius of the ellipse on the y-axis.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| rotation         | number  | Yes| Rotation angle of the ellipse.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Unit: radian|
-| startAngle       | number  | Yes| Angle of the start point for drawing the ellipse.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Unit: radian|
-| endAngle         | number  | Yes| Angle of the end point for drawing the ellipse.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Unit: radian|
-| counterclockwise | boolean | No| Whether to draw the ellipse in the counterclockwise direction.<br>true: Draw an ellipse in the counterclockwise direction.<br>false: Draw an ellipse in the clockwise direction.<br>Default value: false. If this parameter is set to null or undefined, the default value is used. |
+| x                | number  | Yes| X-coordinate of the ellipse center.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| y                | number  | Yes| Y-coordinate of the ellipse center.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| radiusX          | number  | Yes| Radius of the ellipse on the x-axis.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| radiusY          | number  | Yes| Radius of the ellipse on the y-axis.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| rotation         | number  | Yes| Rotation angle of the ellipse.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Unit: radian|
+| startAngle       | number  | Yes| Angle of the start point for drawing the ellipse.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Unit: radian|
+| endAngle         | number  | Yes| Angle of the end point for drawing the ellipse.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Unit: radian|
+| counterclockwise | boolean | No| Whether to draw the ellipse counterclockwise.<br>**true**: Draw the ellipse counterclockwise.<br>**false**: Draw the ellipse clockwise.<br>The default value is **false**. If this parameter is set to **null** or **undefined**, the default value is used. |
 
 **Example**
 
@@ -2436,10 +2437,10 @@ Creates a rectangle on the canvas.
 
 | Name  | Type    | Mandatory  | Description           |
 | ---- | ------ | ---- | ------------- |
-| x    | number | Yes   | X coordinate of the upper left corner of the rectangle.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| y    | number | Yes   | Y coordinate of the upper left corner of the rectangle.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| w    | number | Yes   | Width of the rectangle.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| h    | number | Yes   | Height of the rectangle.<br>In versions earlier than API version 18, **NaN** or **Infinity** values prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| x    | number | Yes   | X-coordinate of the rectangle's top-left corner.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| y    | number | Yes   | Y-coordinate of the rectangle's top-left corner.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| w    | number | Yes   | Width of the rectangle.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| h    | number | Yes   | Height of the rectangle.<br>In versions earlier than API version 18, **NaN** or **Infinity** value prevents the entire path from rendering, and **null** or **undefined** value causes the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
 
 **Example**
 
@@ -2474,7 +2475,7 @@ Creates a rectangle on the canvas.
 
 roundRect(x: number, y: number, w: number, h: number, radii?: number | Array\<number>): void
 
-Creates a rounded rectangle path. This method does not directly render content. To draw the rounded rectangle on the canvas, use the fill or stroke method.
+Creates a rounded rectangle path. This API does not directly render content. To draw the rounded rectangle on the canvas, use **fill** or **stroke**.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 20.
 
@@ -2486,11 +2487,11 @@ Creates a rounded rectangle path. This method does not directly render content. 
 
 | Name  | Type    | Mandatory  | Description           |
 | ---- | ------ | ---- | ------------- |
-| x    | number | Yes   | X coordinate of the upper left corner of the rectangle.<br>If the value is null, 0 is used. If the value is undefined, the value is invalid and the drawing is not performed.<br>If you want to draw a complete rectangle, the value range is [0, Canvas width).<br>Default unit: vp|
-| y    | number | Yes   | Y coordinate of the upper left corner of the rectangle.<br>If the value is null, 0 is used. If the value is undefined, it is regarded as an invalid value and the drawing is not performed.<br>If you want to draw a complete rectangle, the value range is [0, Canvas height).<br>Default unit: vp|
-| w    | number | Yes   | Width of the rectangle. A negative value indicates that the rectangle is drawn from left to right.<br>If the value is null, 0 is used. If the value is undefined, it is regarded as an invalid value and the drawing is not performed.<br>If you want to draw a complete rectangle, the value range is [-x, Canvas width - x].<br>Default unit: vp|
-| h    | number | Yes   | Height of the rectangle. A negative value indicates that the rectangle is drawn from bottom to top.<br>If the value is null, 0 is used. If the value is undefined, it is regarded as an invalid value and the drawing is not performed.<br>If you want to draw a complete rectangle, the value range is [-y, Canvas height - y].<br>Default unit: vp|
-| radii | number \| Array\<number> | No| Number or list of the arc radius used for the rectangle corner.<br>If the parameter type is number, the arc radius of all rectangle corners is the number.<br>If the parameter type is Array\<number>, the number is 1 to 4.<br>[Arc radius of all rectangle corners]<br>[Arc radius of the upper left and lower right rectangle corners, and arc radius of the upper right and lower left rectangle corners]<br>[Arc radius of the upper left rectangle corner, arc radius of the upper right and lower left rectangle corners, and arc radius of the lower right rectangle corner]<br>[Arc radius of the upper left rectangle corner, arc radius of the upper right rectangle corner, arc radius of the lower right rectangle corner, and arc radius of the lower left rectangle corner]<br>If the value of radii is negative or the number of lists is not within the range of [1, 4], error code 103701 is reported.<br>Default value: 0. If the value is null or undefined, the default value is used.<br>If the arc radius exceeds the width and height of the rectangle, the arc radius is scaled proportionally to the width and height of the rectangle.<br>Default unit: vp|
+| x    | number | Yes   | X-coordinate of the rectangle's top-left corner.<br>The value **null** is treated as **0**, and **undefined** is treated as an invalid value, indicating no rendering.<br>To draw a complete rectangle, the value range is [0, Canvas width).<br>Default unit: vp|
+| y    | number | Yes   | Y-coordinate of the rectangle's top-left corner.<br>The value **null** is treated as **0**, and **undefined** is treated as an invalid value, indicating no rendering.<br>To draw a complete rectangle, the value range is [0, Canvas height).<br>Default unit: vp|
+| w    | number | Yes   | Width of the rectangle. A negative value indicates that the rectangle is drawn from right to left.<br>The value **null** is treated as **0**, and **undefined** is treated as an invalid value, indicating no rendering.<br>To draw a complete rectangle, the value range is [-x, Canvas width - x].<br>Default unit: vp|
+| h    | number | Yes   | Height of the rectangle. A negative value indicates upward drawing.<br>The value **null** is treated as **0**, and **undefined** is treated as an invalid value, indicating no rendering.<br>To draw a complete rectangle, the value range is [-y, Canvas height - y].<br>Default unit: vp|
+| radii | number \| Array\<number> | No| Number or list of arc radii used for the rectangle corners.<br>If the parameter type is number, it applies to the arc radius of all rectangle corners.<br>If the parameter type is Array\<number>, the array contains 1 to 4 numbers, interpreted as follows:<br>[Arc radius of all rectangle corners]<br>[Arc radius of the top-left and bottom-right rectangle corners, and arc radius of the top-right and bottom-left rectangle corners]<br>[Arc radius of the top-left rectangle corner, arc radius of the top-right and bottom-left rectangle corners, and arc radius of the bottom-right rectangle corner]<br>[Arc radius of the top-left rectangle corner, arc radius of the top-right rectangle corner, arc radius of the bottom-right rectangle corner, and arc radius of the bottom-left rectangle corner]<br>If **radii** contains a negative number or the number of items in the list is not within [1,4], error code 103701 is reported.<br>Default value: **0**. **null** and **undefined** are treated as the default value.<br>If the arc radius exceeds the width and height of the rectangle, it will be proportionally scaled down to match the corresponding dimensions.<br>Default unit: vp|
 
 **Error codes**
 
@@ -2502,19 +2503,19 @@ For details about the error codes, see [Canvas Component Error Codes](../errorco
 
 **Example**
 
-This example shows how to draw six rounded rectangles.
+The following example shows how to draw six rounded rectangles:
 
-1. Create a rounded rectangle with the start point (10vp, 10vp), width and height of 100vp, and arc radius of 10vp for the four rectangle corners, and fill the rounded rectangle.
+1. Create a rounded rectangle with the start point at (10 vp, 10 vp), width and height of 100 vp, and arc radius of 10 vp for the four rectangle corners, and fill the rectangle.
 
-2. Create a rounded rectangle with the start point (120vp, 10vp), width and height of 100 vp, and four rounded corners with a radius of 10 vp, and fill the rectangle.
+2. Create a rounded rectangle with the start point at (120 vp, 10 vp), width and height of 100 vp, and arc radius of 10 vp for the four rectangle corners, and fill the rectangle.
 
-3. Create a rounded rectangle with the start point (10vp, 120vp), width and height of 100 vp, rounded corners with a radius of 10 vp in the upper left and lower right corners, and rounded corners with a radius of 20 vp in the upper right and lower left corners, and outline the rounded rectangle.
+3. Create a rounded rectangle with the start point at (10 vp, 120 vp), width and height of 100 vp, arc radius of 10 vp for the top-left and bottom-right rectangle corners, arc radius of 20 vp for the top-right and bottom-left rectangle corners, and stroke the rectangle.
 
-4. Create a rounded rectangle with the start point (120vp, 120vp), width and height of 100 vp, rounded corners with a radius of 10 vp in the upper left corner, rounded corners with a radius of 20 vp in the upper right and lower left corners, and rounded corners with a radius of 30 vp in the lower right corner, and outline the rounded rectangle.
+4. Create a rounded rectangle with the start point at (120 vp, 120 vp), width and height of 100 vp, arc radius of 10 vp for the top-left rectangle corner, arc radius of 20 vp for the top-right and bottom-left rectangle corners, arc radius of 30 vp for the bottom-right rectangle corner, and stroke the rectangle.
 
-5. Create a rounded rectangle with the start point (10vp, 230vp), width and height of 100 vp, rounded corners with a radius of 10 vp in the upper left corner, rounded corners with a radius of 20 vp in the upper right corner, rounded corners with a radius of 30 vp in the lower right corner, and rounded corners with a radius of 40 vp in the lower left corner, and outline the rounded rectangle.
+5. Create a rounded rectangle with the start point at (10 vp, 230 vp), width and height of 100 vp, and the radius of the top-left, top-right, bottom-right, and bottom-left rounded corners of 10 vp, 20 vp, 30 vp, and 40 vp, respectively. Then, stroke the rectangle.
 
-6. Create a rounded rectangle with the start point (220vp, 330vp), width and height of -100 vp, rounded corners with a radius of 10 vp in the upper left corner, rounded corners with a radius of 20 vp in the upper right corner, rounded corners with a radius of 30 vp in the lower right corner, and rounded corners with a radius of 40 vp in the lower left corner, and outline the rounded rectangle.
+6. Create a rounded rectangle with the start point at (220 vp, 330 vp), width and height of -100 vp, and the radius of the top-left, top-right, bottom-right, and bottom-left rounded corners of 10 vp, 20 vp, 30 vp, and 40 vp, respectively. Then, stroke the rectangle.
 
   ```ts
   // xxx.ets
@@ -2536,19 +2537,19 @@ This example shows how to draw six rounded rectangles.
             try {
               this.context.fillStyle = '#707070'
               this.context.beginPath()
-              // Create a rounded rectangle with the start point (10vp, 10vp), width and height of 100 vp, and four rounded corners with a radius of 10 vp.
+              // Create a rounded rectangle with the start point at (10 vp, 10 vp), width and height of 100 vp, and arc radius of 10 vp for the four rectangle corners.
               this.context.roundRect(10, 10, 100, 100, 10)
-              // Create a rounded rectangle with the start point (120vp, 10vp), width and height of 100 vp, and four rounded corners with a radius of 10 vp.
+              // Create a rounded rectangle with the start point at (120 vp, 10 vp), width and height of 100 vp, and arc radius of 10 vp for the four rectangle corners.
               this.context.roundRect(120, 10, 100, 100, [10])
               this.context.fill()
               this.context.beginPath()
-              // Create a rounded rectangle with the start point (10vp, 120vp), width and height of 100 vp, and four rounded corners with a radius of 10 vp in the upper left and lower right corners, and a radius of 20 vp in the upper right and lower left corners.
+              // Create a rounded rectangle with the start point at (10 vp, 120 vp), width and height of 100 vp, arc radius of 10 vp for the top-left and bottom-right rectangle corners, and arc radius of 20 vp for the top-right and bottom-left rectangle corners.
               this.context.roundRect(10, 120, 100, 100, [10, 20])
-              // Create a rounded rectangle with the start point (120vp, 120vp), width and height of 100 vp, and four rounded corners with a radius of 10 vp in the upper left corner, a radius of 20 vp in the upper right and lower left corners, and a radius of 30 vp in the lower right corner.
+              // Create a rounded rectangle with the start point at (120 vp, 120 vp), width and height of 100 vp, arc radius of 10 vp for the top-left rectangle corner, arc radius of 20 vp for the top-right and bottom-left rectangle corners, and arc radius of 30 vp for the bottom-right rectangle corner.
               this.context.roundRect(120, 120, 100, 100, [10, 20, 30])
-              // Create a rounded rectangle with the start point (10vp, 230vp), width and height of 100 vp, and four rounded corners with a radius of 10 vp in the upper left corner, a radius of 20 vp in the upper right corner, a radius of 30 vp in the lower right corner, and a radius of 40 vp in the lower left corner.
+              // Create a rounded rectangle with the start point at (10 vp, 230 vp), width and height of 100 vp, and the radius of the top-left, top-right, bottom-right, and bottom-left rounded corners of 10 vp, 20 vp, 30 vp, and 40 vp, respectively.
               this.context.roundRect(10, 230, 100, 100, [10, 20, 30, 40])
-              // Create a rounded rectangle with the start point (220vp, 330vp), width and height of -100 vp, and four rounded corners with a radius of 10 vp in the upper left corner, a radius of 20 vp in the upper right corner, a radius of 30 vp in the lower right corner, and a radius of 40 vp in the lower left corner.
+              // Create a rounded rectangle with the start point at (220 vp, 330 vp), width and height of -100 vp, and the radius of the top-left, top-right, bottom-right, and bottom-left rounded corners of 10 vp, 20 vp, 30 vp, and 40 vp, respectively.
               this.context.roundRect(220, 330, -100, -100, [10, 20, 30, 40])
               this.context.stroke()
             } catch (error) {
@@ -2581,7 +2582,7 @@ Fills the current path.
 
 | Name| Type            | Mandatory  | Description   |
 | -------- | -------------- | ---- | ---------------------------------------- |
-| fillRule | [CanvasFillRule](#canvasfillrule) | No   | Rule by which to determine whether a point is inside or outside the area to fill.<br>The options are "nonzero" and "evenodd".<br>The **undefined** and **null** values are treated as the default value.<br>Default value: "nonzero"|
+| fillRule | [CanvasFillRule](#canvasfillrule) | No   | Rule by which to determine whether a point is inside or outside the area to fill.<br>The options are **"nonzero"** and **"evenodd"**.<br>Invalid values **undefined** and **null** are treated as the default value.<br>Default value: **"nonzero"**|
 
 
 **Example**  
@@ -2617,7 +2618,7 @@ Fills the current path.
 
 fill(path: Path2D, fillRule?: CanvasFillRule): void
 
-Fills the specified path.
+Fills a specified path.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -2629,8 +2630,8 @@ Fills the specified path.
 
 | Name   | Type            | Mandatory  | Description |
 | -------- | -------------- | ---- | ---------------------------------------- |
-| path     | [Path2D](ts-components-canvas-path2d.md)         | Yes | A **Path2D** path to fill.<br>The **undefined** and **null** values are treated as invalid.|
-| fillRule | [CanvasFillRule](#canvasfillrule) | No   | Rule by which to determine whether a point is inside or outside the area to fill.<br>The options are "nonzero" and "evenodd".<br>The **undefined** and **null** values are treated as the default value.<br>Default value: "nonzero"|
+| path     | [Path2D](ts-components-canvas-path2d.md)         | Yes | **Path2D** path to fill.<br>**undefined** and **null** are treated as invalid values.|
+| fillRule | [CanvasFillRule](#canvasfillrule) | No   | Rule by which to determine whether a point is inside or outside the area to fill.<br>The options are **"nonzero"** and **"evenodd"**.<br>Invalid values **undefined** and **null** are treated as the default value.<br>Default value: **"nonzero"**|
 
 
 **Example**  
@@ -2675,7 +2676,7 @@ struct Fill {
 
 clip(fillRule?: CanvasFillRule): void
 
-Sets the current path to a clipping area.
+Sets the current path to a clipping path.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -2687,7 +2688,7 @@ Sets the current path to a clipping area.
 
 | Name      | Type            | Mandatory  | Description                           |
 | -------- | -------------- | ---- | ---------------------------------------- |
-| fillRule | [CanvasFillRule](#canvasfillrule) | No| Rule by which to determine whether a point is inside or outside the area to clip.<br>The options are "nonzero" and "evenodd".<br>The **undefined** and **null** values are treated as the default value.<br>Default value: "nonzero"|
+| fillRule | [CanvasFillRule](#canvasfillrule) | No| Rule by which to determine whether a point is inside or outside the area to clip.<br>The options are **"nonzero"** and **"evenodd"**.<br>Invalid values **undefined** and **null** are treated as the default value.<br>Default value: **"nonzero"**|
 
 **Example**
 
@@ -2737,8 +2738,8 @@ Sets a specified path as the clipping path.
 
 | Name     | Type            | Mandatory  | Description         |
 | -------- | -------------- | ---- | ---------------------------------------- |
-| path     | [Path2D](ts-components-canvas-path2d.md)         | Yes   | A **Path2D** path to use as a clipping area.<br>The **undefined** and **null** values are treated as invalid.|
-| fillRule | [CanvasFillRule](#canvasfillrule) | No | Rule by which to determine whether a point is inside or outside the area to clip.<br>The options are "nonzero" and "evenodd".<br>The **undefined** and **null** values are treated as the default value.<br>Default value: "nonzero"|
+| path     | [Path2D](ts-components-canvas-path2d.md)         | Yes   |  **Path2D** path to clip.<br>**undefined** and **null** are treated as invalid values.|
+| fillRule | [CanvasFillRule](#canvasfillrule) | No | Rule by which to determine whether a point is inside or outside the area to clip.<br>The options are **"nonzero"** and **"evenodd"**.<br>Invalid values **undefined** and **null** are treated as the default value.<br>Default value: **"nonzero"**|
 
 
 **Example**
@@ -2935,7 +2936,7 @@ Rotates a canvas clockwise around its coordinate axes.
 
 | Name   | Type    | Mandatory  | Description                                      |
 | ----- | ------ | ---- |  ---------------------------------------- |
-| angle | number | Yes  | Clockwise rotation angle. You can convert degrees to radians using the following formula: degree * Math.PI/180.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this API does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this API does not take effect. If other valid parameters are passed, the drawing method is drawn normally.<br>Unit: radian|
+| angle | number | Yes  | Clockwise rotation angle. You can convert degrees to radians using the following formula: degree * Math.PI/180.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Unit: radian|
 
 **Example**
 
@@ -2983,8 +2984,8 @@ Scales the canvas based on the given scale factors.
 
 | Name  | Type    | Mandatory | Description   |
 | ---- | ------ | ---- | ----------- |
-| x    | number | Yes | Horizontal scale factor.<br>In versions earlier than API version 18, if this parameter is set to NaN or Infinity, the drawing method executed after this method cannot be drawn. Setting this parameter to 0, a negative number, null, or undefined will invalidate the current API. In API version 18 and later, if this parameter is set to NaN, Infinity, 0, a negative number, null, or undefined, the current API will not take effect. Other drawing methods with valid parameters can be drawn normally.|
-| y    | number | Yes | Sets the vertical scaling value. Negative numbers are not supported.<br>In versions earlier than API version 18, if this parameter is set to NaN or Infinity, the drawing method executed after this method cannot be drawn. Setting this parameter to 0, a negative number, null, or undefined will invalidate the current API. In API version 18 and later, if this parameter is set to NaN, Infinity, 0, a negative number, null, or undefined, the current API will not take effect. Other drawing methods with valid parameters can be drawn normally.|
+| x    | number | Yes | Horizontal scale factor.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **0**, **null**, **undefined**, and negative numbers cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **0**, **null**, **undefined**, and negative numbers cause the current API to have no effect, and other APIs with valid arguments continue to render correctly.|
+| y    | number | Yes | Vertical scaling factor. Negative numbers are not supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **0**, **null**, **undefined**, and negative numbers cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **0**, **null**, **undefined**, and negative numbers cause the current API to have no effect, and other APIs with valid arguments continue to render correctly.|
 
 **Example**
 
@@ -3034,7 +3035,7 @@ Defines a transformation matrix. To transform a graph, you only need to set para
 > 
 > The coordinates of each point in the graph after transformation can be calculated using the following formula:
 >
-> The following formulas calculate coordinates of the transformed graph. **x** and **y** represent coordinates before transformation, and **x'** and **y'** represent coordinates after transformation.
+> **x** and **y** represent coordinates before transformation, and **x'** and **y'** represent coordinates after transformation.
 >
 > - x' = a \* x + c \* y + e
 >
@@ -3044,12 +3045,12 @@ Defines a transformation matrix. To transform a graph, you only need to set para
 
 | Name  | Type    | Mandatory| Description|
 | ---- | ------ | ---- | -------------------- |
-| a    | number | Yes   | Cell in the first row and first column of the transformation matrix. scaleX: horizontal scaling value. A negative value is supported.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this API does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this API does not take effect. If other valid parameters are passed, the drawing method is normal.|
-| b    | number | Yes   | Cell in the first row and first column of the transformation matrix. skewY: vertical skewing value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally. |
-| c    | number | Yes   | Cell in the first row and second column of the transformation matrix. skewX: horizontal skew value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally. |
-| d    | number | Yes   | Cell in the second row and second column of the transformation matrix. scaleY: vertical scale value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.|
-| e    | number | Yes   | Cell in the first row and third column of the transformation matrix. translateX: horizontal translation value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.<br>Default unit: vp|
-| f    | number | Yes   | Cell in the second row and third column of the transformation matrix. translateY: vertical translation value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.<br>Default unit: vp|
+| a    | number | Yes   | Cell at row 1, column 1 of the transformation matrix. **scaleX**: horizontal scaling value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.|
+| b    | number | Yes   | Cell at row 2, column 1 of the transformation matrix. **skewY**: vertical skewing value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly. |
+| c    | number | Yes   | Cell at row 1, column 2 of the transformation matrix. **skewX**: horizontal skewing value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly. |
+| d    | number | Yes   | Cell at row 2, column 2 of the transformation matrix. **scaleY**: vertical scaling value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.|
+| e    | number | Yes   | Cell at row 1, column 3 of the transformation matrix. **translateX**: horizontal translation distance. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| f    | number | Yes   | Cell at row 2, column 3 of the transformation matrix. **translateY**: vertical translation distance. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
 
 **Example**
 
@@ -3103,7 +3104,7 @@ Resets the existing transformation matrix and creates a new transformation matri
 >
 > The coordinates of each point in the graph after transformation can be calculated using the following formula:
 >
-> The following formulas calculate coordinates of the transformed graph. **x** and **y** represent coordinates before transformation, and **x'** and **y'** represent coordinates after transformation.
+> **x** and **y** represent coordinates before transformation, and **x'** and **y'** represent coordinates after transformation.
 >
 > - x' = a \* x + c \* y + e
 >
@@ -3113,12 +3114,12 @@ Resets the existing transformation matrix and creates a new transformation matri
 
 | Name  | Type    | Mandatory| Description|
 | ---- | ------ | ---- | -------------------- |
-| a    | number | Yes   | scaleX: horizontal scaling value. A negative value is supported.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this API does not take effect. In API version 18 and later versions, if NaN, Infinity, null, or undefined is set, this API does not take effect. If other valid parameters are passed, the drawing method is normal.|
-| b    | number | Yes   | skewY: vertical skewing value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally. |
-| c    | number | Yes   | skewX: horizontal skew value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally. |
-| d    | number | Yes   | scaleY: vertical scale value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.|
-| e    | number | Yes   | translateX: horizontal translation value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.<br>Default unit: vp|
-| f    | number | Yes   | translateY: vertical translation value. A negative value is supported.<br>If NaN or Infinity is set before API version 18, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.<br>Default unit: vp|
+| a    | number | Yes   | **scaleX**: horizontal scaling value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.|
+| b    | number | Yes   | **skewY**: vertical skewing value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly. |
+| c    | number | Yes   | **skewX**: horizontal skewing value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly. |
+| d    | number | Yes   | **scaleY**: vertical scaling value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.|
+| e    | number | Yes   | **translateX**: horizontal translation distance. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| f    | number | Yes   | **translateY**: vertical translation distance. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
 
 **Example**
 
@@ -3171,7 +3172,7 @@ Resets the current transformation to the identity matrix, and then creates a new
 
 | Name | Type| Mandatory| Description |
 | --------- | ---------------------------------------- | ---- | ----- |
-| transform | [Matrix2D](ts-components-canvas-matrix2d.md) | No| Transformation matrix.<br>If the value is undefined or null, the value is invalid.<br>Default value: **null**.|
+| transform | [Matrix2D](ts-components-canvas-matrix2d.md) | No| Transformation matrix.<br>**undefined** and **null** are treated as invalid values.<br>Default value: **null**|
 
 **Example**
 
@@ -3232,7 +3233,7 @@ Obtains the current transformation matrix being applied to the context.
 
 | Type                                      | Description   |
 | ---------------------------------------- | ----- |
-| [Matrix2D](ts-components-canvas-matrix2d.md) | Transformation matrix that is currently applied to the context.|
+| [Matrix2D](ts-components-canvas-matrix2d.md) | Current transformation matrix applied to the context.|
 
 **Example**
 
@@ -3296,8 +3297,8 @@ Moves the origin of the coordinate system.
 
 | Name  | Type    | Mandatory  | Description|
 | ---- | ------ | ---- | -------- |
-| x    | number | Yes  | Distance to translate on the x-axis.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.<br>Default unit: vp|
-| y    | number | Yes  | Distance to translate on the y-axis.<br>In versions earlier than API version 18, if NaN or Infinity is set, the drawing method executed after this method cannot be drawn. If null or undefined is set, this method does not take effect. If NaN, Infinity, null, or undefined is set for API version 18 or later, this method does not take effect. If other valid parameters are passed, the drawing method is drawn normally.<br>Default unit: vp|
+| x    | number | Yes  | Distance to translate on the x-axis.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| y    | number | Yes  | Distance to translate on the y-axis.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** value causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
 
 **Example**
 
@@ -3346,9 +3347,9 @@ Draws an image on the canvas.
 
 | Name | Type | Mandatory | Description|
 | ----- | ---------------------------------------- | ---- | ---------------------------------------- |
-| image | [ImageBitmap](ts-components-canvas-imagebitmap.md) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Image resource. For details, see **ImageBitmap** or PixelMap.<br>If the value is undefined or null, no drawing is performed.|
-| dx    | number                                   | Yes | X coordinate of the upper left corner of the drawing area on the canvas.<br>If the value is undefined or null, the value is 0 and will not be drawn. If the value is NaN or Infinity, the value is invalid and will not be drawn.<br>Default unit: vp|
-| dy    | number                                   | Yes | Y coordinate of the upper left corner of the drawing area on the canvas.<br>If the value is undefined or null, the value is 0 and will not be drawn. If the value is NaN or Infinity, the value is invalid and will not be drawn.<br>Default unit: vp|
+| image | [ImageBitmap](ts-components-canvas-imagebitmap.md) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Image resource. For details, see **ImageBitmap** or **PixelMap**.<br>**undefined** and **null** are treated as invalid values and no rendering will be performed.|
+| dx    | number                                   | Yes | X-coordinate of the top-left corner of the drawing area on the canvas.<br>Invalid values **undefined** and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>Default unit: vp|
+| dy    | number                                   | Yes | Y-coordinate of the top-left corner of the drawing area on the canvas.<br>Invalid values **undefined** and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>Default unit: vp|
 
 **Example**
 
@@ -3384,7 +3385,7 @@ Draws an image on the canvas.
 
 drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh: number): void
 
-Stretch or compress the image.
+Draws an image by stretching or compressing it to the specified dimensions.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9, except that **PixelMap** objects are not supported.
 
@@ -3396,11 +3397,11 @@ Stretch or compress the image.
 
 | Name | Type | Mandatory | Description|
 | ----- | ---------------------------------------- | ---- | ---------------------------------------- |
-| image | [ImageBitmap](ts-components-canvas-imagebitmap.md) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Image resource. For details, see **ImageBitmap** or PixelMap.<br>If the value is undefined or null, no drawing is performed.|
-| dx    | number                                   | Yes | X coordinate of the upper left corner of the drawing area on the canvas.<br>If the value is undefined or null, the value is 0 and will not be drawn. If the value is NaN or Infinity, the value is invalid and will not be drawn.<br>Default unit: vp|
-| dy    | number                                   | Yes | Y coordinate of the upper left corner of the drawing area on the canvas.<br>If the value is undefined or null, the value is 0 and will not be drawn. If the value is NaN or Infinity, the value is invalid and will not be drawn.<br>Default unit: vp|
-| dw    | number                                   | Yes | Width of the drawing area. If the width of the drawing area is different from that of the cropped image, the latter will be stretched or compressed to the former.<br>If the value is a negative number, undefined, or null, the value is 0; if the value is NaN or Infinity, the value is invalid and the image is not drawn.<br>Default unit: vp|
-| dh    | number                                   | Yes | Height of the drawing area. If the height of the drawing area is different from that of the cropped image, the latter will be stretched or compressed to the former.<br>If the value is a negative number, undefined, or null, the value is 0; if the value is NaN or Infinity, the value is invalid and the image is not drawn.<br>Default unit: vp|
+| image | [ImageBitmap](ts-components-canvas-imagebitmap.md) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Image resource. For details, see **ImageBitmap** or **PixelMap**.<br>**undefined** and **null** are treated as invalid values and no rendering will be performed.|
+| dx    | number                                   | Yes | X-coordinate of the top-left corner of the drawing area on the canvas.<br>Invalid values **undefined** and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>Default unit: vp|
+| dy    | number                                   | Yes | Y-coordinate of the top-left corner of the drawing area on the canvas.<br>Invalid values **undefined** and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>Default unit: vp|
+| dw    | number                                   | Yes | Width of the drawing area. If the width of the drawing area is different from that of the cropped image, the latter will be stretched or compressed to the former.<br>Negative values, **undefined**, and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>Default unit: vp|
+| dh    | number                                   | Yes | Height of the drawing area. If the height of the drawing area is different from that of the cropped image, the latter will be stretched or compressed to the former.<br>Negative values, **undefined**, and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>Default unit: vp|
 
 **Example**
 
@@ -3436,7 +3437,7 @@ Stretch or compress the image.
 
 drawImage(image: ImageBitmap | PixelMap, sx: number, sy: number, sw: number, sh: number, dx: number, dy: number, dw: number, dh: number): void
 
-Stretch or compress the cropped image and draw it.
+Draws a cropped portion of an image by stretching or compressing it to the specified dimensions.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9, except that **PixelMap** objects are not supported.
 
@@ -3448,15 +3449,15 @@ Stretch or compress the cropped image and draw it.
 
 | Name | Type | Mandatory | Description|
 | ----- | ---------------------------------------- | ---- | ---------------------------------------- |
-| image | [ImageBitmap](ts-components-canvas-imagebitmap.md) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Image resource. For details, see **ImageBitmap** or PixelMap.<br>If the value is undefined or null, no drawing is performed.|
-| sx    | number                                   | Yes | X coordinate of the upper left corner of the rectangle used to crop the source image.<br>If the value is undefined or null, the value 0 is used. If the value is NaN or Infinity, the value is invalid and the image is not drawn.<br>If the image type is ImageBitmap, the default unit is vp.<br>If the image type is PixelMap, the default unit is px before API version 18, and the default unit is vp in API version 18 and later versions.|
-| sy    | number                                   | Yes | Y coordinate of the upper left corner of the rectangle used to crop the source image.<br>If the value is undefined or null, the value 0 is used. If the value is NaN or Infinity, the value is invalid and the image is not drawn.<br>If the image type is ImageBitmap, the default unit is vp.<br>If the image type is PixelMap, the default unit is px before API version 18, and the default unit is vp in API version 18 and later versions. |
-| sw    | number                                   | Yes | Target width to crop the source image.<br>If the value is a negative number, undefined, or null, the value 0 is used. If the value is NaN or Infinity, the value is invalid and the image is not drawn.<br>If the image type is ImageBitmap, the default unit is vp.<br>If the image type is PixelMap, the default unit is px before API version 18, and the default unit is vp in API version 18 and later versions. |
-| sh    | number                                   | Yes | Target height to crop the source image.<br>If the value is a negative number, undefined, or null, the value 0 is used. If the value is NaN or Infinity, the value is invalid and the image is not drawn.<br>If the image type is ImageBitmap, the default unit is vp.<br>If the image type is PixelMap, the default unit is px before API version 18, and the default unit is vp in API version 18 and later versions. |
-| dx    | number                                   | Yes | X coordinate of the upper left corner of the drawing area on the canvas.<br>If the value is undefined or null, the value is 0 and will not be drawn. If the value is NaN or Infinity, the value is invalid and will not be drawn.<br>Default unit: vp|
-| dy    | number                                   | Yes | Y coordinate of the upper left corner of the drawing area on the canvas.<br>If the value is undefined or null, the value is 0 and will not be drawn. If the value is NaN or Infinity, the value is invalid and will not be drawn.<br>Default unit: vp|
-| dw    | number                                   | Yes | Width of the drawing area.<br>If the value is a negative number, undefined, or null, the value 0 is used. If the value is NaN or Infinity, the value is invalid and the image is not drawn. If the width of the drawing area is different from that of the cropped image, the latter will be stretched or compressed to the former.<br>Default unit: vp|
-| dh    | number                                   | Yes | Height of the drawing area.<br>Negative numbers, undefined, and null are processed as 0, and NaN and Infinity are processed as invalid values and not drawn. If the height of the drawing area is different from that of the cropped image, the latter will be stretched or compressed to the former.<br>Default unit: vp|
+| image | [ImageBitmap](ts-components-canvas-imagebitmap.md) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Image resource. For details, see **ImageBitmap** or **PixelMap**.<br>**undefined** and **null** are treated as invalid values and no rendering will be performed.|
+| sx    | number                                   | Yes | X-coordinate of the top-left corner of the rectangle used to crop the source image.<br>Invalid values **undefined** and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>If the type of **image** is **ImageBitmap**, the default unit is vp.<br>If the type of **image** is **PixelMap**, the default unit is px in versions earlier than API version 18 and vp in API version 18 and later.|
+| sy    | number                                   | Yes | Y-coordinate of the top-left corner of the rectangle used to crop the source image.<br>Invalid values **undefined** and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>If the type of **image** is **ImageBitmap**, the default unit is vp.<br>If the type of **image** is **PixelMap**, the default unit is px in versions earlier than API version 18 and vp in API version 18 and later. |
+| sw    | number                                   | Yes | Target width to crop the source image.<br>Negative values, **undefined**, and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>If the type of **image** is **ImageBitmap**, the default unit is vp.<br>If the type of **image** is **PixelMap**, the default unit is px in versions earlier than API version 18 and vp in API version 18 and later. |
+| sh    | number                                   | Yes | Target height to crop the source image.<br>Negative values, **undefined**, and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>If the type of **image** is **ImageBitmap**, the default unit is vp.<br>If the type of **image** is **PixelMap**, the default unit is px in versions earlier than API version 18 and vp in API version 18 and later. |
+| dx    | number                                   | Yes | X-coordinate of the top-left corner of the drawing area on the canvas.<br>Invalid values **undefined** and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>Default unit: vp|
+| dy    | number                                   | Yes | Y-coordinate of the top-left corner of the drawing area on the canvas.<br>Invalid values **undefined** and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>Default unit: vp|
+| dw    | number                                   | Yes | Width of the drawing area.<br>Negative values, **undefined**, and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed. If the width of the drawing area is different from that of the cropped image, the latter will be stretched or compressed to the former.<br>Default unit: vp|
+| dh    | number                                   | Yes | Height of the drawing area.<br>Negative values, **undefined**, and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed. If the height of the drawing area is different from that of the cropped image, the latter will be stretched or compressed to the former.<br>Default unit: vp|
 
 **Example**
 
@@ -3493,7 +3494,7 @@ Stretch or compress the cropped image and draw it.
 
 createImageData(sw: number, sh: number): ImageData
 
-Creates a blank [ImageData](ts-components-canvas-imagedata.md) object of a specified size. This API involves time-consuming memory copy. Therefore, avoid frequent calls to it. The example is the same as that of **putImageData**.
+Creates a blank [ImageData](ts-components-canvas-imagedata.md) object of a specified size. This API involves time-consuming memory copy. Therefore, avoid frequent calls to it. The **createImageData** example is identical to the [putImageData](#putimagedata) example.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -3505,8 +3506,8 @@ Creates a blank [ImageData](ts-components-canvas-imagedata.md) object of a speci
 
 | Name  | Type    | Mandatory  | Description|
 | ---- | ------ | ---- | ------------- |
-| sw   | number | Yes| Width of the **ImageData** object.<br>If the value is undefined, null, NaN, or Infinity, the value 0 is used.<br>Default unit: vp|
-| sh   | number | Yes| Height of the **ImageData** object.<br>If the value is undefined, null, NaN, or Infinity, the value 0 is used.<br>Default unit: vp|
+| sw   | number | Yes| Width of the **ImageData** object.<br>Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br>Default unit: vp|
+| sh   | number | Yes| Height of the **ImageData** object.<br>Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br>Default unit: vp|
 
  **Return value**
 
@@ -3518,7 +3519,7 @@ Creates a blank [ImageData](ts-components-canvas-imagedata.md) object of a speci
 
 createImageData(imageData: ImageData): ImageData
 
-Creates an [ImageData](ts-components-canvas-imagedata.md) object with the same width and height of an existing **ImageData** object. This API involves time-consuming memory copy. Therefore, avoid frequent calls to it. The example is the same as that of **putImageData**.
+Creates an [ImageData](ts-components-canvas-imagedata.md) object with the same width and height of an existing **ImageData** object. This API involves time-consuming memory copy. Therefore, avoid frequent calls to it. The **createImageData** example is identical to the [putImageData](#putimagedata) example.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -3530,7 +3531,7 @@ Creates an [ImageData](ts-components-canvas-imagedata.md) object with the same w
 
 | Name| Type | Mandatory| Description |
 | --------- | ---------------------------------------- | ---- | ----------------- |
-| imageData | [ImageData](ts-components-canvas-imagedata.md) | Yes| Existing **ImageData** object.<br>If the value is undefined or null, the image data object with the width and height of 0 is used.|
+| imageData | [ImageData](ts-components-canvas-imagedata.md) | Yes| Existing **ImageData** object.<br>Values **undefined** and **null** are treated as **ImageData** with its width and height set to **0**.|
 
   **Return value**
 
@@ -3543,7 +3544,7 @@ Creates an [ImageData](ts-components-canvas-imagedata.md) object with the same w
 
 getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap
 
-Creates a [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) object based on the pixels in the specified area of the current canvas. This API involves memory copy, which is time-consuming. Therefore, avoid frequent use of this API.
+Obtains the [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) object created with the pixels within the specified area on the canvas. This API involves time-consuming memory copy. Therefore, avoid frequent calls to it.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3553,10 +3554,10 @@ Creates a [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) object b
 
 | Name  | Type    | Mandatory| Description|
 | ---- | ------ | ---- | --------------- |
-| sx   | number | Yes | X coordinate of the upper left corner of the output area.<br>If the value is undefined, null, NaN, or Infinity, 0 is used.<br>Default unit: vp|
-| sy   | number | Yes | Y coordinate of the upper left corner of the output area.<br>If the value is undefined, null, NaN, or Infinity, 0 is used.<br>Default unit: vp|
-| sw   | number | Yes | Width of the output area.<br>If the value is undefined, null, NaN, or Infinity, 0 is used.<br>Default unit: vp|
-| sh   | number | Yes | Height of the output area.<br>If the value is undefined, null, NaN, or Infinity, 0 is used.<br>Default unit: vp|
+| sx   | number | Yes | X-coordinate of the top-left corner of the output area.<br>Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br>Default unit: vp|
+| sy   | number | Yes | Y-coordinate of the top-left corner of the output area.<br>Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br>Default unit: vp|
+| sw   | number | Yes | Width of the output area.<br>Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br>Default unit: vp|
+| sh   | number | Yes | Height of the output area.<br>Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br>Default unit: vp|
 
 **Return value**
 
@@ -3568,7 +3569,7 @@ Creates a [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) object b
 
 > **NOTE**
 >
-> DevEco Studio Previewer does not support displaying content drawn using **setPixelMap**.
+> The DevEco Studio Previewer does not support displaying content drawn with **setPixelMap**.
 
   ```ts
   // xxx.ets
@@ -3604,7 +3605,7 @@ Creates a [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) object b
 
 setPixelMap(value?: PixelMap): void
 
-Draws the current [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) object on the canvas. The example is the same as that of **getPixelMap**.
+Draws the input [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) object on the canvas. The example is the same as that of **getPixelMap**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3614,7 +3615,7 @@ Draws the current [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) 
 
 | Name  | Type    | Mandatory  | Description|
 | ---- | ------ | ---- | --------------- |
-|  value  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | No| PixelMap object that contains pixel values.<br>If the value is undefined or null, the value is invalid and will not be drawn.<br>Default value: **null**.|
+|  value  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | No| **PixelMap** object that contains pixel values.<br>**undefined** and **null** are treated as invalid values and no rendering will be performed.<br>Default value: **null**|
 
 ### getImageData
 
@@ -3632,10 +3633,10 @@ Obtains the [ImageData](ts-components-canvas-imagedata.md) object created with t
 
 | Name| Type| Mandatory  | Description |
 | ---- | ------ | ---- | --------------- |
-| sx   | number | Yes| X coordinate of the upper left corner of the output area.<br>If the value is undefined, null, NaN, or Infinity, 0 is used.<br>Default unit: vp|
-| sy   | number | Yes| Y coordinate of the upper left corner of the output area.<br>If the value is undefined, null, NaN, or Infinity, 0 is used.<br>Default unit: vp|
-| sw   | number | Yes| Width of the output area.<br>If the value is undefined, null, NaN, or Infinity, 0 is used.<br>Default unit: vp|
-| sh   | number | Yes| Height of the output area.<br>If the value is undefined, null, NaN, or Infinity, 0 is used.<br>Default unit: vp|
+| sx   | number | Yes| X-coordinate of the top-left corner of the output area.<br>Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br>Default unit: vp|
+| sy   | number | Yes| Y-coordinate of the top-left corner of the output area.<br>Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br>Default unit: vp|
+| sw   | number | Yes| Width of the output area.<br>Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br>Default unit: vp|
+| sh   | number | Yes| Height of the output area.<br>Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br>Default unit: vp|
 
   **Return value**
 
@@ -3693,9 +3694,9 @@ Puts an [ImageData](ts-components-canvas-imagedata.md) object onto a rectangular
 
 | Name| Type| Mandatory | Description|
 | ----------- | ---------------------------------------- | ---- | ----------------------------- |
-| imageData   | [ImageData](ts-components-canvas-imagedata.md) | Yes   | **ImageData** object with pixels to put onto the canvas.<br>If the value is undefined or null, no drawing is performed.|
-| dx          | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | X-axis offset of the rectangular area on the canvas.<br>Abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
-| dy          | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | Y-axis offset of the rectangular area on the canvas.<br>Abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
+| imageData   | [ImageData](ts-components-canvas-imagedata.md) | Yes   | **ImageData** object with pixels to put onto the canvas.<br>**undefined** and **null** are treated as invalid values and no rendering will be performed.|
+| dx          | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | X-axis offset of the rectangular area on the canvas.<br>Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br>Default unit: vp|
+| dy          | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | Y-axis offset of the rectangular area on the canvas.<br>Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br>Default unit: vp|
 
 **Example**
 
@@ -3737,7 +3738,7 @@ Puts an [ImageData](ts-components-canvas-imagedata.md) object onto a rectangular
 
 putImageData(imageData: ImageData, dx: number | string, dy: number | string, dirtyX: number | string, dirtyY: number | string, dirtyWidth: number | string, dirtyHeight: number | string): void
 
-Fills the new rectangular area using the [ImageData](ts-components-canvas-imagedata.md) data after cropping.
+Fills the new rectangular area with the [ImageData](ts-components-canvas-imagedata.md) data after cropping.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -3749,13 +3750,13 @@ Fills the new rectangular area using the [ImageData](ts-components-canvas-imaged
 
 | Name| Type| Mandatory | Description|
 | ----------- | ---------------------------------------- | ---- | ----------------------------- |
-| imageData   | [ImageData](ts-components-canvas-imagedata.md) | Yes   | **ImageData** object with pixels to put onto the canvas.<br>If the value is undefined or null, no drawing is performed.|
-| dx          | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | X-axis offset of the rectangular area on the canvas.<br>Abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
-| dy          | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | Y-axis offset of the rectangular area on the canvas.<br>Abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
-| dirtyX      | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | X-axis offset of the upper left corner of the rectangular area relative to that of the source image.<br>If the value is undefined, null, NaN, or Infinity, it is processed as 0.<br>Default unit: vp|
-| dirtyY      | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | Y-axis offset of the upper left corner of the rectangular area relative to that of the source image.<br>The abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
-| dirtyWidth  | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | Width of the rectangular area to crop the source image.<br>The abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
-| dirtyHeight | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | Height of the rectangular area to crop the source image.<br>The abnormal values undefined, null, NaN, and Infinity are processed as 0.<br>Default unit: vp|
+| imageData   | [ImageData](ts-components-canvas-imagedata.md) | Yes   | **ImageData** object with pixels to put onto the canvas.<br>**undefined** and **null** are treated as invalid values and no rendering will be performed.|
+| dx          | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | X-axis offset of the rectangular area on the canvas.<br>Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br>Default unit: vp|
+| dy          | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | Y-axis offset of the rectangular area on the canvas.<br>Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br>Default unit: vp|
+| dirtyX      | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | X-axis offset of the upper left corner of the rectangular area relative to that of the source image.<br>Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br>Default unit: vp|
+| dirtyY      | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | Y-axis offset of the upper left corner of the rectangular area relative to that of the source image.<br>Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br>Default unit: vp|
+| dirtyWidth  | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | Width of the rectangular area to crop the source image.<br>Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br>Default unit: vp|
+| dirtyHeight | number&nbsp;\|&nbsp;string<sup>10+</sup> | Yes   | Height of the rectangular area to crop the source image.<br>Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br>Default unit: vp|
 
 **Example**
 
@@ -3810,7 +3811,7 @@ Sets the dash line style.
 
 | Name     | Type     | Mandatory | Description|
 | -------- | -------- | ------- | ------------ |
-| segments | number[] | Yes| An array of numbers that specify distances to alternately draw a line and a gap.<br>If the value is undefined or null, the value is invalid.<br>Default unit: vp|
+| segments | number[] | Yes| An array of numbers that specify distances to alternately draw a line and a gap.<br>**undefined** and **null** are treated as invalid values.<br>Default unit: vp|
 
 **Example**
 
@@ -3972,8 +3973,8 @@ Creates a data URL that contains a representation of an image. This API involves
 
 | Name    | Type  | Mandatory | Description |
 | ------- | ------ | ---- | ---------------------------------------- |
-| type    | string | No | Image format.<br>The options are "image/png", "image/jpeg", and "image/webp".<br>The **undefined** and **null** values are treated as the default value.<br>Default value: image/png           |
-| quality | any | No | Image quality, which ranges from 0 to 1, when the image format is **image/jpeg** or **image/webp**. If the set value is beyond the value range, the default value **0.92** is used.<br>Undefined, null, NaN, and Infinity values are processed as default values.<br>Default value: 0.92|
+| type    | string | No | Image format.<br>The options are **image/png**, **image/jpeg**, and **image/webp**.<br>Invalid values **undefined** and **null** are treated as the default value.<br>Default value: **image/png**           |
+| quality | any | No | Image quality, which ranges from 0 to 1, when the image format is **image/jpeg** or **image/webp**. If the set value is beyond the value range, the default value **0.92** is used.<br>Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as the default value.<br>Default value: **0.92**|
 
 **Return value**
 
@@ -4021,7 +4022,7 @@ Restores the saved drawing context.
 
 > **NOTE**
 >
-> When the number of calls to **restore()** does not exceed the number of calls to **save()**, this API pops the saved drawing state from the stack and restores the properties, clipping path, and transformation matrix of the **CanvasRenderingContext2D** object.<br>
+> When the number of calls to **restore()** does not exceed the number of calls to **save()**, this API pops the saved drawing state from the stack and restores the attributes, clipping path, and transformation matrix of the **CanvasRenderingContext2D** object.<br>
 > If the number of calls to **restore()** exceeds the number of calls to **save()**, this API does nothing.<br>
 > If there is no saved state, this API does nothing.
 
@@ -4123,10 +4124,10 @@ Creates a linear gradient.
 
 | Name  | Type    | Mandatory| Description  |
 | ---- | ------ | ---- | -------- |
-| x0   | number | Yes | X coordinate of the start point.<br>If the value is undefined or null, the return value is undefined. If the value is NaN or Infinity, the value is invalid.<br>Default unit: vp|
-| y0   | number | Yes | Y coordinate of the start point.<br>If the value is undefined or null, the return value is undefined. If the value is NaN or Infinity, the value is invalid.<br>Default unit: vp|
-| x1   | number | Yes | X coordinate of the end point.<br>If the value is undefined or null, the return value is undefined. If the value is NaN or Infinity, the value is invalid.<br>Default unit: vp|
-| y1   | number | Yes | Y coordinate of the end point.<br>If the value is undefined or null, the return value is undefined. If the value is NaN or Infinity, the value is invalid.<br>Default unit: vp|
+| x0   | number | Yes | X-coordinate of the start point.<br>If the value is **undefined** or **null**, this API returns **undefined**. **NaN** and **Infinity** are treated as invalid values.<br>Default unit: vp|
+| y0   | number | Yes | Y-coordinate of the start point.<br>If the value is **undefined** or **null**, this API returns **undefined**. **NaN** and **Infinity** are treated as invalid values.<br>Default unit: vp|
+| x1   | number | Yes | X-coordinate of the end point.<br>If the value is **undefined** or **null**, this API returns **undefined**. **NaN** and **Infinity** are treated as invalid values.<br>Default unit: vp|
+| y1   | number | Yes | Y-coordinate of the end point.<br>If the value is **undefined** or **null**, this API returns **undefined**. **NaN** and **Infinity** are treated as invalid values.<br>Default unit: vp|
 
 **Return value**
 
@@ -4165,14 +4166,14 @@ Creates a linear gradient.
   }
   ```
 
-  ![en-us_image_0000001194032516](figures/en-us_image_0000001194032516.jpeg)
+  ![en-us_image_0000001194032516](figures/en-us_image_0000001194032516.png)
 
 
 ### createRadialGradient
 
 createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): CanvasGradient
 
-Creates a linear gradient.
+Creates a radial gradient.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -4184,12 +4185,12 @@ Creates a linear gradient.
 
 | Name  | Type    | Mandatory  | Description   |
 | ---- | ------ | ---- | ----------------- |
-| x0   | number | Yes | X coordinate of the center of the start circle.<br>Undefined and null values will cause this API to return undefined. NaN and Infinity are processed as invalid values.<br>Default unit: vp|
-| y0   | number | Yes | Y coordinate of the center of the start circle.<br>Undefined and null values will cause this API to return undefined. NaN and Infinity are processed as invalid values.<br>Default unit: vp|
-| r0   | number | Yes | Radius of the start circle, which must be a non-negative finite number.<br>Undefined and null values will cause this API to return undefined. NaN and Infinity are processed as invalid values.<br>Default unit: vp|
-| x1   | number | Yes | X coordinate of the center of the end circle.<br>Undefined and null values will cause this API to return undefined. NaN and Infinity are processed as invalid values.<br>Default unit: vp|
-| y1   | number | Yes | Y coordinate of the center of the end circle.<br>Undefined and null values will cause this API to return undefined. NaN and Infinity are processed as invalid values.<br>Default unit: vp|
-| r1   | number | Yes | Radius of the end circle, which must be a non-negative finite number.<br>Undefined and null values will cause this API to return undefined. NaN and Infinity are processed as invalid values.<br>Default unit: vp|
+| x0   | number | Yes | X-coordinate of the center of the start circle.<br>If the value is **undefined** or **null**, this API returns **undefined**. **NaN** and **Infinity** are treated as invalid values.<br>Default unit: vp|
+| y0   | number | Yes | Y-coordinate of the center of the start circle.<br>If the value is **undefined** or **null**, this API returns **undefined**. **NaN** and **Infinity** are treated as invalid values.<br>Default unit: vp|
+| r0   | number | Yes | Radius of the start circle, which must be a non-negative finite number.<br>If the value is **undefined** or **null**, this API returns **undefined**. **NaN** and **Infinity** are treated as invalid values.<br>Default unit: vp|
+| x1   | number | Yes | X-coordinate of the center of the end circle.<br>If the value is **undefined** or **null**, this API returns **undefined**. **NaN** and **Infinity** are treated as invalid values.<br>Default unit: vp|
+| y1   | number | Yes | Y-coordinate of the center of the end circle.<br>If the value is **undefined** or **null**, this API returns **undefined**. **NaN** and **Infinity** are treated as invalid values.<br>Default unit: vp|
+| r1   | number | Yes | Radius of the end circle, which must be a non-negative finite number.<br>If the value is **undefined** or **null**, this API returns **undefined**. **NaN** and **Infinity** are treated as invalid values.<br>Default unit: vp|
 
 **Return value**
 
@@ -4228,7 +4229,7 @@ Creates a linear gradient.
   }
   ```
 
-  ![en-us_image_0000001238952407](figures/en-us_image_0000001238952407.jpeg)
+  ![en-us_image_0000001238952407](figures/en-us_image_0000001238952407.png)
 
 ### createConicGradient<sup>10+</sup>
 
@@ -4244,9 +4245,9 @@ Creates a conic gradient.
 
 | Name  | Type    | Mandatory| Description |
 | ---------- | ------ | ---- | ----------------------------------- |
-| startAngle | number | Yes   | Angle at which the gradient starts. The angle measurement starts horizontally from the right side of the center and moves clockwise.<br>The abnormal values undefined and null are processed as 0, and NaN and Infinity are processed as invalid values.<br>Unit: radian|
-| x          | number | Yes   | X coordinate of the center of the conic gradient,<br>The abnormal values undefined and null are processed as 0, and NaN and Infinity are processed as invalid values.<br>Default unit: vp|
-| y          | number | Yes   | Y coordinate of the center of the conic gradient,<br>The abnormal values undefined and null are processed as 0, and NaN and Infinity are processed as invalid values.<br>Default unit: vp|
+| startAngle | number | Yes   | Angle at which the gradient starts. The angle measurement starts horizontally from the right side of the center and moves clockwise.<br>Invalid values **undefined** and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid.<br>Unit: radian|
+| x          | number | Yes   | X-coordinate of the center of the conic gradient.<br>Invalid values **undefined** and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid.<br>Default unit: vp|
+| y          | number | Yes   | Y-coordinate of the center of the conic gradient.<br>Invalid values **undefined** and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid.<br>Default unit: vp|
 
 **Return value**
 
@@ -4285,7 +4286,7 @@ struct CanvasExample {
 }
 ```
 
-  ![en-us_image_0000001239032419](figures/en-us_image_0000001239032420.png)
+![en-us_image_0000001239032419](figures/en-us_image_0000001239032420.png)
 
 ### on('onAttach')<sup>13+</sup>
 
@@ -4301,8 +4302,8 @@ Subscribes to the event when a **CanvasRenderingContext2D** object is bound to a
 
 | Name| Type     | Mandatory| Description                                                                  |
 | ------ | --------- | ---- | ---------------------------------------------------------------------- |
-| type   | string | Yes  | Subscribes to the callback triggered when the CanvasRenderingContext2D object is bound to the Canvas component.<br>The **undefined** and **null** values are treated as invalid.|
-| callback   | () => void | Yes  | Subscribes to the callback triggered when the CanvasRenderingContext2D object is bound to the Canvas component.<br>The abnormal value undefined or null is processed as an invalid value.|
+| type   | string | Yes  | Event type, which is **'onAttach'** in this case.<br>**undefined** and **null** are treated as invalid values.|
+| callback   | () => void | Yes  | Callback triggered when the **CanvasRenderingContext2D** object is bound to the **Canvas** component.<br>**undefined** and **null** are treated as invalid values.|
 
 > **NOTE**
 >
@@ -4328,8 +4329,8 @@ Subscribes to the event when a **CanvasRenderingContext2D** object is unbound fr
 
 | Name| Type     | Mandatory| Description                                                                  |
 | ------ | --------- | ---- | ---------------------------------------------------------------------- |
-| type   | string | Yes  | Subscribes to the callback triggered when the CanvasRenderingContext2D object is unbound from the Canvas component.<br>The **undefined** and **null** values are treated as invalid.|
-| callback   | () => void | Yes  | Subscribes to the callback triggered when the CanvasRenderingContext2D object is unbound from the Canvas component.<br>The **undefined** and **null** values are treated as invalid.|
+| type   | string | Yes  | Event type, which is **'onDetach'** in this case.<br>**undefined** and **null** are treated as invalid values.|
+| callback   | () => void | Yes  | Callback triggered when the **CanvasRenderingContext2D** object is unbound from the **Canvas** component.<br>**undefined** and **null** are treated as invalid values.|
 
 > **NOTE**
 >
@@ -4352,8 +4353,8 @@ Unsubscribes from the event when a **CanvasRenderingContext2D** object is bound 
 
 | Name| Type     | Mandatory| Description                                                                  |
 | ------ | --------- | ---- | ---------------------------------------------------------------------- |
-| type   | string | Yes  | Event type, which is **'onAttach'** in this case.<br>The **undefined** and **null** values are treated as invalid.|
-| callback   | () => void | No  | If this parameter is left empty, all callbacks triggered after the CanvasRenderingContext2D object is bound to the Canvas component are canceled.<br>If this parameter is not left empty, the callback corresponding to the binding is canceled.<br>The **undefined** and **null** values are treated as invalid.|
+| type   | string | Yes  | Event type, which is **'onAttach'** in this case.<br>**undefined** and **null** are treated as invalid values.|
+| callback   | () => void | No  | If this parameter is left empty, all callbacks triggered after the **CanvasRenderingContext2D** object is bound to the **Canvas** component are unsubscribed.<br>If this parameter is not left empty, the callback corresponding to the bind event is unsubscribed.<br>**undefined** and **null** are treated as invalid values.|
 
 ### off('onDetach')<sup>13+</sup>
 
@@ -4369,8 +4370,8 @@ Unsubscribes from the event when a **CanvasRenderingContext2D** object is unboun
 
 | Name| Type     | Mandatory| Description                                                                  |
 | ------ | --------- | ---- | ---------------------------------------------------------------------- |
-| type   | string | Yes  | Event type, which is **'onDetach'** in this case.<br>The **undefined** and **null** values are treated as invalid.|
-| callback   | () => void | No  | Callback to unregister.<br>If this parameter is not left empty, the callback triggered when the binding between CanvasRenderingContext2D and Canvas is canceled is unregistered.<br>The **undefined** and **null** values are treated as invalid.|
+| type   | string | Yes  | Event type, which is **'onDetach'** in this case.<br>**undefined** and **null** are treated as invalid values.|
+| callback   | () => void | No  | If this parameter is left empty, all callbacks triggered after the **CanvasRenderingContext2D** object is unbound from the **Canvas** component are unsubscribed.<br>If this parameter is not left empty, the callback corresponding to the unbind event is unsubscribed.<br>**undefined** and **null** are treated as invalid values.|
 
 **Example**
 
@@ -4471,11 +4472,11 @@ struct AttachDetachExample {
 
 startImageAnalyzer(config: ImageAnalyzerConfig): Promise\<void>
 
-Configures and starts the AI analysis function using a promise for asynchronous callback. Before using this function, set [enableAnalyzer](ts-components-canvas-canvas.md#enableanalyzer12) to true to enable the AI image analysis capability.<br>Because the image frame used for analysis is the one captured when this API is called, pay attention to the invoking time of this API.<br>If this method is repeatedly called before the execution is complete, an error callback is triggered. For the sample code, see the code for **stopImageAnalyzer**.
+Configures and starts the AI analyzer. This API uses a promise to return the result. Before use, set [enableAnalyzer](ts-components-canvas-canvas.md#enableanalyzer12) to **true** to enable the image AI analyzer.<br>Because the image frame used for analysis is the one captured when this API is called, pay attention to the invoking time of this API.<br>Repeated calls to this method before completion trigger an error callback. For the sample code, see the code for **stopImageAnalyzer**.
 
 > **NOTE**
 > 
-> The type of the AI analyzer cannot be dynamically modified.
+> The image analysis type cannot be dynamically modified.
 > When image changes are detected, the analysis result is automatically destroyed. You can call this API again to start analysis.
 > This API depends on device capabilities. If it is called on an incompatible device, an error code is returned.
 
@@ -4487,7 +4488,7 @@ Configures and starts the AI analysis function using a promise for asynchronous 
 
 | Name| Type     | Mandatory| Description                                                                  |
 | ------ | --------- | ---- | ---------------------------------------------------------------------- |
-| config   | [ImageAnalyzerConfig](ts-image-common.md#imageanalyzerconfig12) | Yes  | Settings of the AI analyzer.<br>The **undefined** and **null** values are treated as invalid.|
+| config   | [ImageAnalyzerConfig](ts-image-common.md#imageanalyzerconfig12) | Yes  | Settings of the AI analyzer.<br>**undefined** and **null** are treated as invalid values.|
 
 **Return value**
 
@@ -4509,7 +4510,7 @@ For details about the error codes, see [AI Image Analyzer Error Codes](errorcode
 
 stopImageAnalyzer(): void
 
-Stops AI image analysis. The content displayed by the AI analyzer will be destroyed.
+Stops AI image analysis. The content displayed by the AI image analyzer will be destroyed.
 
 > **NOTE**
 > 
@@ -4534,7 +4535,7 @@ struct ImageAnalyzerExample {
   private config: ImageAnalyzerConfig = {
     types: [ImageAnalyzerType.SUBJECT, ImageAnalyzerType.TEXT]
   }
-  // Replace 'common/images/example.png' with the image resource file required by the developer.
+  // Replace 'common/images/example.png' with the image resource file you use.
   private img = new ImageBitmap('common/images/example.png')
   private aiController: ImageAnalyzerController = new ImageAnalyzerController()
   private options: ImageAIOptions = {
@@ -4585,13 +4586,11 @@ struct ImageAnalyzerExample {
 }
 ```
 
-![canvasImageAnalyzer](figures/canvasImageAnalyzer.png)
-
 ## CanvasDirection
 
 type CanvasDirection = "inherit" | "ltr" | "rtl"
 
-Defines the text direction. The value type is a union of the types listed in the table below.
+Defines the current text direction. The value type is a union of the types listed in the table below.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -4601,7 +4600,7 @@ Defines the text direction. The value type is a union of the types listed in the
 
 | Type     | Description                 |
 | ------- | ------------------- |
-| inherit | Inherits the text direction set by the general attributes of the canvas component. If the direction attribute is not set for the canvas component, the text direction of the system is used.|
+| inherit | Inherits the text direction set in the general attributes of the canvas component. If the **direction** attribute is not set on the canvas component, the system text direction is used.|
 | ltr     | The text direction is from left to right.              |
 | rtl     | The text direction is from right to left.              |
 
@@ -4619,8 +4618,8 @@ Defines the fill pattern algorithm used to determine whether a point is inside o
 
 | Type     | Description   |
 | ------- | ----- |
-| evenodd | The inside part of a shape is determined based on whether the counting result is an odd number or not.<br>This rule determines whether a point is inside a shape by shooting a ray from the point in any direction and counting the number of intersections between the ray and the shape path. If the number of intersections is odd, the point is inside the shape. Otherwise, the point is outside the shape.|
-| nonzero | The inside part of a shape is determined based on whether the counting result is zero or not.<br>This rule determines whether a point is inside a shape by shooting a ray from the point in any direction and checking the intersections between the ray and the shape path. The initial count is 0. A direction value is specified for each line segment of the path. The count is incremented by 1 each time the path crosses the ray from left to right, and decremented by 1 each time the path crosses the ray from right to left. If the final result is 0, the point is outside the shape. Otherwise, the point is inside the shape.|
+| evenodd | The inside part of a shape is determined based on whether the counting result is an odd number or not.<br>This rule determines whether a point is inside a shape by casting a ray from the point on the canvas in any direction and counting the number of intersections between the ray and the shape path. If the number of intersections is odd, the point is inside the shape. Otherwise, the point is outside the shape.|
+| nonzero | The inside part of a shape is determined based on whether the counting result is zero or not.<br>This rule determines whether a point is inside a shape by casting a ray from the point on the canvas in any direction and checking the intersections between the ray and the shape path. The initial count is **0**: assign a direction value to each segment of the path, add 1 each time the path crosses the ray from left to right, and subtract 1 each time it crosses the ray from right to left. If the final result is **0**, the point is outside the shape. Otherwise, the point is inside the shape.|
 
 **Example**
 
@@ -4643,17 +4642,17 @@ struct Index {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.font = '60px sans-serif'
           offContext.fillStyle = 'rgb(39, 135, 217)';
-          // Nonzero winding rule (nonzero)
+          // Non-zero rule (nonzero).
           offContext.beginPath();
           offContext.arc(100, 100, 60, 0, Math.PI * 2);
           offContext.arc(100, 100, 20, 0, Math.PI * 2);
-          offContext.fill('nonzero'); // Use the nonzero winding rule.
+          offContext.fill('nonzero'); // Use the non-zero rule.
           offContext.fillText('nonzero', 65, 200)
-          // Even-odd winding rule (evenodd)
+          // Even-odd rule (evenodd).
           offContext.beginPath();
           offContext.arc(250, 100, 60, 0, Math.PI * 2);
           offContext.arc(250, 100, 20, 0, Math.PI * 2);
-          offContext.fill('evenodd'); // Use the even-odd winding rule.
+          offContext.fill('evenodd'); // Use the even-odd rule.
           offContext.fillText('evenodd', 215, 200)
           let image = this.offCanvas.transferToImageBitmap()
           this.context.transferFromImageBitmap(image)
@@ -4671,7 +4670,7 @@ struct Index {
 
 type CanvasLineCap = "butt" | "round" | "square"
 
-Defines the type of the endpoint of each line segment. The value type is a union of the types listed in the table below.
+Defines the end caps for each line being drawn. The value type is a union of the types listed in the table below.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -4689,7 +4688,7 @@ Defines the type of the endpoint of each line segment. The value type is a union
 
 type CanvasLineJoin = "bevel" | "miter" | "round"
 
-Defines the type of two connected parts (line segments, arcs, and curves) whose lengths are not 0. The value type is a union of the types listed in the table below.
+Defines the type of join between two non-zero-length segments (lines, arcs, and curves). The value type is a union of the types listed in the table below.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -4740,7 +4739,7 @@ Defines the text baseline type. The value type is a union of the types listed in
 | alphabetic  | The text baseline is the normal alphabetic baseline.                           |
 | bottom      | The text baseline is at the bottom of the text bounding box. Its difference from the ideographic baseline is that the ideographic baseline does not consider letters in the next line.|
 | hanging     | The text baseline is a hanging baseline over the text.                              |
-| ideographic | The text baseline is an ideographic baseline. If the character itself exceeds the alphabetic baseline, the ideographic baseline is at the bottom of the character.|
+| ideographic | The text baseline is the ideographic baseline. If a character exceeds the alphabetic baseline, the ideographic baseline is located at the bottom of the excessive character.|
 | middle      | The text baseline is in the middle of the text bounding box.                            |
 | top         | The text baseline is on the top of the text bounding box.                            |
 
@@ -4783,22 +4782,22 @@ Defines the image smoothing quality. The value type is a union of the types list
 | emHeightDescent          | number | Yes| No| Distance from the horizontal line specified by the [CanvasRenderingContext2D.textBaseline](#canvastextbaseline) attribute to the bottom of the em square in the line box. Read-only.|
 | fontBoundingBoxAscent    | number | Yes| No| Distance from the horizontal line specified by the [CanvasRenderingContext2D.textBaseline](#canvastextbaseline) attribute to the top of the bounding rectangle of all the fonts used to render the text. Read-only.|
 | fontBoundingBoxDescent   | number | Yes| No| Distance from the horizontal line specified by the [CanvasRenderingContext2D.textBaseline](#canvastextbaseline) attribute to the bottom of the bounding rectangle of all the fonts used to render the text. Read-only.|
-| hangingBaseline          | number | Yes| No| Distance from the horizontal line specified by the [CanvasRenderingContext2D.textBaseline](#canvastextbaseline) attribute to the alphabetic baseline of the line box. Read-only.|
+| hangingBaseline          | number | Yes| No| Distance from the horizontal line specified by the [CanvasRenderingContext2D.textBaseline](#canvastextbaseline) attribute to the hanging baseline of the line box. Read-only.|
 | ideographicBaseline      | number | Yes| No| Distance from the horizontal line specified by the [CanvasRenderingContext2D.textBaseline](#canvastextbaseline) attribute to the ideographic baseline of the line box. Read-only.|
 
 ## RenderingContextSettings
 
-Configures the settings of a **CanvasRenderingContext2D** object, including whether to enable antialiasing.
+Configures the settings of a **CanvasRenderingContext2D** object, including whether to enable anti-aliasing.
 
 > **NOTE**
 >
-> The anti-aliasing effect of RenderingContextSettings does not affect text drawing.
+> The anti-aliasing effect configured in **RenderingContextSettings** does not apply to text drawing.
 
 ### constructor
 
 constructor(antialias?: boolean)
 
-Constructs a CanvasRenderingContext2D object. Anti-aliasing can be enabled.
+Constructs a **CanvasRenderingContext2D** object. Anti-aliasing can be enabled.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -4810,7 +4809,7 @@ Constructs a CanvasRenderingContext2D object. Anti-aliasing can be enabled.
 
 | Name      | Type   | Mandatory  | Description                         |
 | --------- | ------- | ---- | ----------------------------- |
-| antialias | boolean | No   | Whether to enable antialiasing.<br>The abnormal value undefined is processed as the default value.<br>false: anti-aliasing is disabled. true: anti-aliasing is enabled.<br>Default value: **false**.|
+| antialias | boolean | No   | Whether to enable anti-aliasing.<br>A value of **undefined** is treated as the default value.<br>**false**: Disable anti-aliasing. **true**: Enable anti-aliasing.<br>Default value: **false**|
 
 ### Attributes
 
@@ -4822,4 +4821,4 @@ Constructs a CanvasRenderingContext2D object. Anti-aliasing can be enabled.
 
 | Name    | Type  | Read Only| Optional| Description|
 | ------ | -------- | --------- | ---------- | ------------------------------ |
-| antialias | boolean | No| Yes| Whether to enable antialiasing.<br>The abnormal value undefined is processed as the default value.<br>false: anti-aliasing is disabled. true: anti-aliasing is enabled.<br>Default value: **false**.|
+| antialias | boolean | No| Yes| Whether to enable anti-aliasing.<br>A value of **undefined** is treated as the default value.<br>**false**: Disable anti-aliasing. **true**: Enable anti-aliasing.<br>Default value: **false**|

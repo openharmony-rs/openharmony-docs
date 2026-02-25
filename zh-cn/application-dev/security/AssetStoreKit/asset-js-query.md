@@ -42,7 +42,7 @@
 | RETURN_OFFSET         | 类型为number，取值范围：1-65536。                              | 可选     | 关键资产查询返回的结果偏移量。<br>**说明：** 用于分批查询场景时，指定从第几个结果开始返回。                                 |
 | RETURN_ORDERED_BY     | 类型为number，取值范围：asset.Tag.DATA_LABEL_xxx。             | 可选     | 关键资产查询返回的结果排序依据，仅支持按照附属信息排序。<br>**说明：** 默认按照关键资产新增的顺序返回。 |
 | REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | 类型为boolean。 | 可选 | 是否查询业务自定义附属信息被加密的数据。为true时表示查询业务自定义附属信息加密存储的数据，为false时表示查询业务自定义附属信息不加密存储的数据。默认值为false。|
-| GROUP_ID<sup>18+</sup> | 类型为Uint8Array，长度为7-127字节。 | 可选 | 待查询的关键资产所属群组，默认查询不属于任何群组的关键资产。|
+| GROUP_ID<sup>18+</sup> | 类型为Uint8Array，长度为8-127字节。 | 可选 | 待查询的关键资产所属群组，默认查询不属于任何群组的关键资产。|
 
 ## 约束和限制
 
@@ -153,7 +153,7 @@ export async function queryAssetAttribute(): Promise<string> {
 
 ### 批量查询关键资产属性
 
-批量查询标签1为demo_label的关键资产属性，从第5条符合条件的结果开始返回，共返回10条，结果按DATA_LABEL_NORMAL_1属性内容排序。
+批量查询标签为demo_label的关键资产属性，共返回10条符合条件的查询结果，结果按DATA_LABEL_NORMAL_1属性内容排序。
 
 <!-- @[query_batch_attributes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_batch_attrs.ets) -->
 

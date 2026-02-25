@@ -16,8 +16,6 @@ For audio playback applications, you need to create an audio workgroup first and
 
 Before calling any API of OH_AudioWorkgroup, you must use [OH_AudioManager_GetAudioResourceManager](../../reference/apis-audio-kit/capi-native-audio-resource-manager-h.md#oh_audiomanager_getaudioresourcemanager) to obtain an OH_AudioResourceManager instance.
 
-<!-- @[GetAudioResourceManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
-
 ```cpp
 #include <ohaudio/native_audio_resource_manager.h>
 
@@ -28,8 +26,6 @@ OH_AudioManager_GetAudioResourceManager(&resMgr);
 ### Creating an Audio Workgroup and Adding Key Threads
 
 Call [OH_AudioResourceManager_CreateWorkgroup](../../reference/apis-audio-kit/capi-native-audio-resource-manager-h.md#oh_audioresourcemanager_createworkgroup) to create an audio workgroup, and then call [OH_AudioWorkgroup_AddCurrentThread](../../reference/apis-audio-kit/capi-native-audio-resource-manager-h.md#oh_audioworkgroup_addcurrentthread) to add key threads to the workgroup.
-
-<!-- @[CreateWorkgroup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
 ```cpp
 #include <chrono>
@@ -44,8 +40,6 @@ OH_AudioWorkgroup_AddCurrentThread(grp, &tokenId);
 ### Notifying the System of Workgroup Start and End
 
 When an audio workgroup begins a cycle of work, you can notify the system of the task's start time and expected end time. When the workgroup finishes its work for the current cycle, notify the system that the task has ended.
-
-<!-- @[OH_AudioWorkgroup_Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
 ```cpp
 constexpr static uint64_t intervalMs = 20;
@@ -64,8 +58,6 @@ while (threadShouldRun) {
 ```
 
 ### Cleanup After Workgroup Task Completion
-
-<!-- @[OH_AudioWorkgroup_RemoveThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
 ```cpp
 // Remove the thread from the workgroup when it is no longer required.

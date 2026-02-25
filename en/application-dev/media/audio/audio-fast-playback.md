@@ -28,9 +28,6 @@ Currently, OHAudio supports two modes: normal mode (**AUDIOSTREAM_LATENCY_MODE_N
 You can specify which mode the audio stream should use by calling [OH_AudioStreamBuilder_SetLatencyMode()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setlatencymode) to set [OH_AudioStream_LatencyMode](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode).
 
 The following is an example of setting the low-latency mode:
-
-<!-- @[OH_AudioStreamBuilder_SetLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
-
 ```cpp
 OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST;
 OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
@@ -71,9 +68,6 @@ Audio data to be played is written through the callback API. Implement the callb
 For details about the sample code for developing audio playback, please refer to [(Recommended) Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md).
 
 The following is an example of setting the data callback function:
-
-<!-- @[Render_SetRendererWriteDataCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
-
 ```cpp
 // Customize a function to write data.
 static OH_AudioData_Callback_Result MyOnWriteData(
@@ -90,18 +84,17 @@ static OH_AudioData_Callback_Result MyOnWriteData(
 OH_AudioRenderer_OnWriteDataCallback writeDataCb = MyOnWriteData;
 OH_AudioStreamBuilder_SetRendererWriteDataCallback(builder, writeDataCb, nullptr);
 ```
-
 - To prevent audio stuttering, do not perform time-consuming operations in the callback function **OH_AudioRenderer_OnWriteData**.
 - To maintain independence between data writing logic and stream state control, do not call the audio stream control APIs in the callback function **OH_AudioRenderer_OnWriteData**.
 
-    | Audio Stream Control API                                                   | Description        |
-    | ------------------------------------------------------------ | ------------ |
-    | OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer) | Starts the audio renderer.    |
-    | OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer) | Pauses the audio renderer.    |
-    | OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer) | Stops the audio renderer.    |
-    | OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer) | Flushes obtained audio data.|
-    | OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer) | Releases the audio renderer.|
+  | Audio Stream Control API                                                   | Description        |
+  | ------------------------------------------------------------ | ------------ |
+  | OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer) | Starts the audio renderer.    |
+  | OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer) | Pauses the audio renderer.    |
+  | OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer) | Stops the audio renderer.    |
+  | OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer) | Flushes obtained audio data.|
+  | OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer) | Releases the audio renderer.|
 
-    > **NOTE**
-    >
-    > The execution of audio stream control APIs is time-consuming (for example, a single execution of **OH_AudioRenderer_Stop** generally takes more than 50 ms as it needs to play through the cache). Direct calls to these APIs on the main thread should be avoided to prevent interface display freezes.
+  > **NOTE**
+  >
+  > The execution of audio stream control APIs is time-consuming (for example, a single execution of **OH_AudioRenderer_Stop** generally takes more than 50 ms as it needs to play through the cache). Direct calls to these APIs on the main thread should be avoided to prevent display freezes.

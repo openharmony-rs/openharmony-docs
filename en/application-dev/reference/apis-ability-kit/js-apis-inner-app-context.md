@@ -596,6 +596,8 @@ Sets whether to show this feature at the top of the lock screen so that the feat
 
 > **NOTE**
 >
+> This API is valid only for system applications.
+> 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use **window.setShowOnLockScreen**, which is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
@@ -628,6 +630,8 @@ Sets whether to show this feature at the top of the lock screen so that the feat
 
 > **NOTE**
 >
+> This API is valid only for system applications.
+> 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use **window.setShowOnLockScreen**, which is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
@@ -665,7 +669,9 @@ Sets whether to wake up the screen when this feature is restored. This API uses 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 12. Its substitute, **window.setWakeUpScreen**, is available only to system applications.
+> This API is valid only for system applications.
+>
+> This API is supported since API version 7 and deprecated since API version 12. You can use **window.setWakeUpScreen** instead, which is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -697,7 +703,9 @@ Sets whether to wake up the screen when this feature is restored. This API uses 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 12. Its substitute, **window.setWakeUpScreen**, is available only to system applications.
+> This API is valid only for system applications.
+>
+> This API is supported since API version 7 and deprecated since API version 12. You can use **window.setWakeUpScreen** instead, which is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

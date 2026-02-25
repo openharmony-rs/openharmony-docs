@@ -119,13 +119,13 @@ httpRequest.request(// Customize EXAMPLE_URL in extraData on your own. It is up 
       console.info('cookies:' + JSON.stringify(data.cookies)); // Cookies are supported since API version 8.
       // Unsubscribe from HTTP Response Header events.
       httpRequest.off('headersReceive');
-      // Call destroy() to destroy the JavaScript object after the HTTP request is complete.
+      // Call destroy() to release resources when the request is no longer needed, preventing memory leaks.
       httpRequest.destroy();
     } else {
       console.error('error:' + JSON.stringify(err));
       // Unsubscribe from HTTP Response Header events.
       httpRequest.off('headersReceive');
-      // Call destroy() to destroy the JavaScript object after the HTTP request is complete.
+      // Call destroy() to release resources when the request is no longer needed, preventing memory leaks.
       httpRequest.destroy();
     }
   });
@@ -143,7 +143,7 @@ createHttp(): HttpRequest
 Creates an HTTP request. You can use this API to initiate or destroy an HTTP request, or enable or disable listening for HTTP Response Header events. To initiate multiple HTTP requests, you must create an **HttpRequest** object for each HTTP request. An **HttpRequest** object corresponds to an HTTP request.
 
 > **NOTE**
-> Call **destroy()** to destroy the **HttpRequest** object when it is no longer needed. Otherwise, resource leakage may occur.
+> When the request is no longer needed, call destroy() to release resources. Otherwise, memory leakage may occur.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -471,7 +471,7 @@ promise.then((data:http.HttpResponse) => {
 
 destroy(): void
 
-Destroys an HTTP request.
+Stops an HTTP request task and releases system resources.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1147,7 +1147,7 @@ Defines the options for initiating an HTTP request.
 | readTimeout                  | number                          | No | Yes | Read timeout duration. The default value is **60000**, in ms. The input value must be an uint32_t integer.<br>The value **0** indicates no timeout.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | connectTimeout               | number                          | No | Yes | Connection timeout interval. The default value is **60000**, in ms. The input value must be an uint32_t integer.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | usingProtocol<sup>9+</sup>   | [HttpProtocol](#httpprotocol9)  | No | Yes | Protocol. The default value is automatically specified by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| usingProxy<sup>10+</sup>     | boolean \| [HttpProxy](js-apis-net-connection.md#httpproxy10)               | No | Yes | HTTP proxy configuration. If this parameter is not set, no proxy is used.<br>- If **usingProxy** is set to **true**, the default network proxy is used. If **usingProxy** is set to **false**, no proxy is used.<br>- If **usingProxy** is of the **HttpProxy** type, the specified network proxy is used. The HttpProxy supports the **username** and **password** fields from API version 22.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| usingProxy<sup>10+</sup>     | boolean \| [HttpProxy](js-apis-net-connection.md#httpproxy10)               | No | Yes | HTTP proxy configuration. If this item is not configured, the system proxy is used by default.<br>- If **usingProxy** is set to **true**, the default network proxy is used. If **usingProxy** is set to **false**, no proxy is used.<br>- If **usingProxy** is of the **HttpProxy** type, the specified network proxy is used. The HttpProxy supports the **username** and **password** fields from API version 22.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | caPath<sup>10+</sup>     | string               | No | Yes | CA certificate data. If this parameter is set and the certificate is valid, the system uses the specified CA certificate and the preset CA certificate. Otherwise, the system uses only the preset CA certificate. The CA certificate path is the sandbox mapping path, which can be obtained by using **UIAbilityContext** APIs. Currently, only **.pem** certificates are supported.<br> The preset CA certificate is available at **/etc/ssl/certs/cacert.pem**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | caData<sup>20+</sup>     | string               | No | Yes | CA certificate data. If this parameter is set and the certificate is valid, the system uses the specified CA certificate and the preset CA certificate. Otherwise, the system uses only the preset CA certificate. If both **caPath** and **caData** are set, **caData** is ignored by the system. Currently, only certificates in **.pem** format are supported. The maximum length is 8000 bytes. Only one certificate can be specified. A certificate chain is not allowed.<br>The preset CA certificate is available at **/etc/ssl/certs/cacert.pem**. This path is the sandbox mapping path, which can be obtained by using **UIAbilityContext** APIs.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | resumeFrom<sup>11+</sup> | number | No| Yes| Download start position. This field can be used only for the GET method. As stipulated in section 3.1 of RFC 7233, servers are allowed to ignore range requests.<br>- If the HTTP PUT method is used, do not use this option because it may conflict with other options.<br>- The value ranges from **1** to **4294967296** (4 GB). If the value is out of this range, this field does not take effect.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
@@ -1423,7 +1423,7 @@ httpRequest.request("EXAMPLE_URL", (err: BusinessError, data: http.HttpResponse)
     httpRequest.destroy();
   } else {
     console.error('error:' + JSON.stringify(err));
-    // Call destroy() to destroy the JavaScript object after the HTTP request is complete.
+    // Call destroy() to release resources when the request is no longer needed, preventing memory leaks.
     httpRequest.destroy();
   }
 });
@@ -1658,7 +1658,7 @@ Defines the the TLS configuration, including the version and cipher suite.
 | ------------------  |---------------------------------|-------- |-------- |---------------|
 | tlsVersionMin       | [TlsVersion](#tlsversion18)     | No     |No      | Earliest TLS version.    |
 | tlsVersionMax        | [TlsVersion](#tlsversion18)    | No     |No      | Latest TLS version.    |
-| cipherSuites        | [CipherSuite](#ciphersuite18)[] | No     |Yes      | Array of cipher suite types.|
+| cipherSuites        | [CipherSuite](#ciphersuite18)[] | No     |Yes      | Array of cipher suite types. If no cipher suite type is set, all supported cipher suite types are carried by default. For details about the cipher suite types, see [TlsV13SpecificCipherSuite](#tlsv13specificciphersuite18), [TlsV12SpecificCipherSuite](#tlsv12specificciphersuite18) and [TlsV10SpecificCipherSuite](#tlsv10specificciphersuite18).|
 
 ## TlsVersion<sup>18+</sup>
 

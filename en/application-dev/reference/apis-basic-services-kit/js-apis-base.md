@@ -93,12 +93,7 @@ The type of the asynchronous return value is defined by the developer.
 
 ## BusinessError
 
-BusinessError\<T = void> extends Error {
-
-code: number;
-
-data?: T;
-}
+ BusinessError\<T = void> extends Error { code: number; data?: T; }
 
 Defines the error parameter.
 

@@ -15,11 +15,11 @@
 >
 >  - This component provides linkage with a vertical scrolling **Swiper** and **Web** component since API version 12. The linkage does not work if the **loop** attribute of **Swiper** is set to **true**.
 >
->  - If the Refresh component and the List component whose content size is smaller than the component itself are nested with other components in between, gestures may be responded by the intermediate components. As a result, the Refresh component does not work. You can set [alwaysEnabled](./ts-container-scrollable-common.md#edgeeffectoptions11) to true. In this case, the List component responds to gestures and drives the Refresh component to perform pull-down refresh through nested scrolling. For details, see [Example 9: Implementing Pull-to-refresh in the Non-Full-Screen Scenario](#example-9-implementing-pull-to-refresh-in-the-non-full-screen-scenario).
+>  - When the **Refresh** component is nested with a **List** component whose content size is smaller than the component itself, and there are other components in between, gestures may be intercepted by the intermediate components, preventing the pull-to-refresh effect. In such cases, set the [alwaysEnabled](./ts-container-scrollable-common.md#edgeeffectoptions11) parameter to **true** to allow **List** to respond to gestures and drive the **Refresh** component through nested scrolling for the pull-to-refresh effect. For details, see [Example 9: Implementing Pull-to-Refresh in the Non-Full-Screen Scenario](#example-9-implementing-pull-to-refresh-in-the-non-full-screen-scenario).
 >
->  - The component has been bound with gestures to implement functions such as following scrolling. If you need to add custom gestures, see [Gesture Blocking Enhancement](ts-gesture-blocking-enhancement.md).
+>  - The component has been bound with gestures to implement functions such as follow-up scrolling. If you need to add custom gestures, refer to [Gesture Blocking Enhancement](ts-gesture-blocking-enhancement.md).
 >
->  - This component cannot be pulled down by dragging the mouse.
+>  - Pull-to-refresh cannot be triggered by mouse click-and-drag operations.
 
 ## Child Components
 
@@ -53,7 +53,7 @@ Defines the options of the **Refresh** component.
 | ---------- | ---------------------------------------- | ---- | -- | ---------------------------------------- |
 | refreshing | boolean                                  | No   | No| Whether the component is being refreshed. The value **true** means that the component is being refreshed, and **false** means the opposite.<br>Default value: **false**<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | offset<sup>(deprecated)</sup>    | number&nbsp;\|&nbsp;string   | No   | Yes| Distance from the pull-down starting point to the top of the component.<br>Default value: **16**.<br>Unit: vp.<br> If the type is string, the pixel unit must be explicitly specified, for example, **'10px'**; if the unit is not specified, for example, **'10'**, the default unit vp is used.<br>Note: This API is supported since API version 8 and deprecated since API version 11. No substitute is provided.<br>**NOTE**<br>The value range of **offset** is [0vp, 64vp]. If the value is greater than 64 vp, the value 64 vp will be used. The value cannot be a percentage or a negative number.|
-| friction<sup>(deprecated)</sup>   | number&nbsp;\|&nbsp;string               | No   | Yes| Coefficient of friction, which indicates the **<Refresh\>** component's sensitivity to the pull-down gesture. The value ranges from 0 to 100.<br>Default value: **62**<br>- **0** indicates that the **Refresh** component is not responsive to the pull-down gesture.<br>- **100** indicates that the **Refresh** component is highly responsive to the pull-down gesture.<br>- A larger value indicates higher responsiveness of the **Refresh** component to the pull-down gesture.<br>Note: This API is supported since API version 8 and deprecated since API version 11. You are advised to use [pullDownRatio](#pulldownratio12) instead.|
+| friction<sup>(deprecated)</sup>   | number&nbsp;\|&nbsp;string               | No   | Yes| Coefficient of friction, which indicates the **<Refresh\>** component's sensitivity to the pull-down gesture. The value ranges from 0 to 100.<br>Default value: **62**<br>- **0** indicates that the **Refresh** component is not responsive to the pull-down gesture.<br>- **100** indicates that the **Refresh** component is highly responsive to the pull-down gesture.<br>- A larger value indicates higher responsiveness of the **Refresh** component to the pull-down gesture.<br>**NOTE**<br>This API is supported since API version 8 and deprecated since API version 11. You are advised to use [pullDownRatio](#pulldownratio12) instead.|
 | builder<sup>10+</sup>    | [CustomBuilder](ts-types.md#custombuilder8) | No   | Yes| Custom content in the refreshing area.<br>**NOTE**<br>In API version 10 and earlier versions, there is a height limit of 64 vp on custom components. This restriction is removed since API version 11.<br>When a custom component is set with a fixed height, it will be displayed below the refreshing area at that fixed height; when the custom component does not have a height set, its height will adapt to the height of the refreshing area, which may result in the height of the custom component changing to 0 along with the refreshing area. To maintain the intended layout, configure a minimum height constraint for a custom component, which ensures that the component's height does not fall below a certain threshold. For details about how to apply this constraint, see [Example 3](#example-3-customizing-the-refreshing-area-content-with-builder).<br>Since API version 12, use **refreshingContent** instead of **builder** for customizing the content of the refreshing area, to avoid animation interruptions caused by the destruction and re-creation of the custom component during the refreshing process.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | promptText<sup>12+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Custom text displayed at the bottom of the refreshing area.<br>**NOTE**<br>When setting the text, follow the constraints on the **Text** components. If you are using **builder** or **refreshingContent** to customize the content displayed in the refreshing area, the text set with **promptText** will not be displayed.<br>When **promptText** is set and effective, the [refreshOffset](#refreshoffset12) attribute defaults to 96 vp.<br>The maximum font scale factor for the custom text, as specified by [maxFontScale](ts-basic-components-text.md#maxfontscale12), is 2.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | refreshingContent<sup>12+</sup>    | [ComponentContent](../js-apis-arkui-ComponentContent.md) | No   | Yes| Custom content in the refreshing area.<br>**NOTE**<br>If this parameter and the **builder** parameter are set at the same time, the **builder** parameter does not take effect.<br>When a custom component is set with a fixed height, it will be displayed below the refreshing area at that fixed height; when the custom component does not have a height set, its height will adapt to the height of the refreshing area, which may result in the height of the custom component changing to 0 along with the refreshing area. To maintain the intended layout, configure a minimum height constraint for a custom component, which ensures that the component's height does not fall below a certain threshold. For details about how to apply this constraint, see [Example 4](#example-4-customizing-the-refreshing-area-content-with-refreshingcontent).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -61,7 +61,7 @@ Defines the options of the **Refresh** component.
 >  **Supplementary Notes**
 >  - If neither **builder** nor **refreshingContent** is set, the pull-down displacement effect is implemented by adjusting the [translate](ts-universal-attributes-transformation.md#translate) attribute of the child component. During the pull-down process, the [onAreaChange](ts-universal-component-area-change-event.md#onareachange) event of the child component is not triggered, and any changes made to the [translate](ts-universal-attributes-transformation.md#translate) attribute of the child component do not take effect.
 >  - When **builder** or **refreshingContent** is set, the pull-down displacement effect is implemented by adjusting the position of the child component relative to the **Refresh** component. During the pull-down process, the [onAreaChange](ts-universal-component-area-change-event.md#onareachange) event of the child component can be triggered. However, if the [position](ts-universal-attributes-location.md#position) attribute is set for the child component, the position of the child component relative to the **Refresh** component is fixed, preventing the child component from moving down with the pull gesture.
->  - If the width and height of the custom component set by builder are not specified, the component size is automatically adjusted according to the child components. If the width is specified but the height is not, the height of the component is automatically adjusted according to the pull-down distance. If the height of the custom component set by refreshingContent is not specified, the height of the custom component adapts to the pull-down distance. When the height of the custom component is automatically adjusted according to the pull-down distance, the height of the component increases as the pull-down distance increases. When the height of the custom component is set to a fixed value or reaches the maximum height limit, the spacing between the custom component and the upper boundary of the Refresh component increases as the pull-down distance increases.
+>  - If the width and height of a custom component set by **builder** are not specified, its dimensions will adapt to the child components. If the width is specified but the height is not, the height of the component is automatically adjusted according to the pull-down distance. If a custom component set by **refreshingContent** does not have a specified height, its height will also adapt to the pull-down distance. In such cases, as the pull-down distance increases, the height of the custom component will increase accordingly. When the custom component's height is set to a fixed value or reaches its maximum height limit, further increases in the pull-down distance will cause the spacing between the custom component and the top boundary of the **Refresh** component to widen.
 
 ## Attributes
 
@@ -165,7 +165,7 @@ Called when the component starts refreshing.
 
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ------ | ------|
-| callback | () => void | Yes| Triggered when the component enters the refresh state.|
+| callback | () => void | Yes| Callback triggered when the component enters the refresh state.|
 
 ### onOffsetChange<sup>12+</sup>
 
@@ -199,8 +199,8 @@ Enumerates the states of a refresh operation.
 | Name      | Value      | Description                |
 | -------- | -------- | -------------------- |
 | Inactive | 0 | The component is not pulled down. This is the default value.            |
-| Drag     | 1 | The component is being pulled down, but the pull-down distance is shorter than the minimum length required to trigger the refresh.<br>If you release the component, it enters the Inactive state. If you continue to pull down the component and the pull-down distance exceeds the minimum length required to trigger the refresh, the component enters the OverDrag state.  |
-| OverDrag | 2 | The component is being pulled down, and the pull-down distance exceeds the minimum length required to trigger the refresh.<br>If you release the component, the component enters the Refresh state. If you swipe up and the pull-down distance is less than the minimum length required to trigger the refresh, the component enters the Drag state.     |
+| Drag     | 1 | The component is being pulled down, but the pull-down distance is shorter than the refresh threshold.<br>If you release the component, it enters the **Inactive** state. If you continue to pull down the component and the pull-down distance exceeds the refresh threshold, the component enters the **OverDrag** state.  |
+| OverDrag | 2 | The component is being pulled down, and the pull-down distance exceeds the refresh threshold.<br>If you release the component, the component enters the **Refresh** state. If you swipe upward and the pull-down distance is less than the refresh threshold, the component enters the **Drag** state.     |
 | Refresh  | 3 | The pull-down ends, and the component rebounds to the minimum length required to trigger the refresh and enters the refreshing state.|
 | Done     | 4 | The refresh is complete, and the component returns to the initial state (at the top).    |
 
@@ -225,7 +225,7 @@ struct RefreshExample {
         Button('Refresh').onClick(() => {
           this.isRefreshing = true;
         })
-        Button('Stop Refreshing').onClick(() => {
+        Button('Stop').onClick(() => {
           this.isRefreshing = false;
         })
       }
@@ -763,10 +763,10 @@ struct RefreshExample {
   build() {
     Column() {
       Row() {
-        Button('Disable pull-to-refresh').onClick(() => {
+        Button('Disable Pull-to-Refresh').onClick(() => {
           this.ratio = 0
         })
-        Button('Enable pull-to-refresh').onClick(() => {
+        Button('Enable Pull-to-Refresh').onClick(() => {
           this.ratio = undefined
         })
       }
@@ -816,9 +816,9 @@ struct RefreshExample {
 
 ![refresh_pulldownratio](figures/refresh_pulldownratio.gif)
 
-### Example 9: Implementing Pull-to-refresh in the Non-Full-Screen Scenario
+### Example 9: Implementing Pull-to-Refresh in the Non-Full-Screen Scenario
 
-You can set the alwaysEnabled parameter in the [edgeEffect](ts-container-scrollable-common.md#edgeeffect11) attribute to implement the pull-down refresh effect of the Refresh component when the screen is not full.
+You can set the **alwaysEnabled** parameter in the [edgeEffect](ts-container-scrollable-common.md#edgeeffect11) attribute to implement the pull-to-refresh effect of the **Refresh** component when the screen is not full.
 
 ```ts
 // xxx.ets
@@ -851,7 +851,7 @@ struct RefreshExample {
           .height('100%')
           .alignListItem(ListItemAlign.Center)
           .scrollBar(BarState.Auto)
-          // If the content size of the List component is smaller than the component size and alwaysEnabled is set to false, the List component does not respond to gestures. In this case, the gestures are responded by the Column component, and the pull-down refresh effect is not generated.
+          // If the content size of the List component is smaller than the component size and alwaysEnabled is set to false, the List component does not respond to gestures. In this case, the gestures are responded by the Column component, and the pull-to-refresh effect is not generated.
           // If alwaysEnabled is set to true, the List component responds to gestures and drives the Refresh component to trigger pull-down refresh through nested scrolling.
           .edgeEffect(EdgeEffect.Spring, { alwaysEnabled: this.alwaysEnabled })
         }

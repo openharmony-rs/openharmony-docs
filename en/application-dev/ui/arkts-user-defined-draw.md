@@ -83,7 +83,6 @@ The following scenarios are based on the project configuration described in [Int
     OH_Drawing_CanvasDrawPath(canvas, path);
     ```
     
-
 **Complete content drawing example**:
 <!-- @[drawing_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/Drawing.h) -->
 
@@ -356,23 +355,23 @@ The following example creates a custom drawing component capable of rendering cu
     
         napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     
-        // Obtain NodeContent.
+        // Obtain the NodeContent object.
         ArkUI_NodeContentHandle contentHandle;
         OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+        NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+    
         // Create a custom container and a custom drawing component.
         auto node = std::make_shared<ArkUICustomContainerNode>();
-        // Light gray
-        node->SetBackgroundColor(0xFFD5D5D5);
+        node->SetBackgroundColor(0xFFD5D5D5); // Light gray.
         auto customNode = std::make_shared<ArkUICustomNode>();
-        // Dark gray
-        customNode->SetBackgroundColor(0xFF707070);
+        customNode->SetBackgroundColor(0xFF707070); // Dark gray.
         customNode->SetWidth(SIZE_150);
         customNode->SetHeight(SIZE_150);
         node->AddChild(customNode);
+    
         // Keep the native-side object in the management class to maintain its lifecycle.
-        NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+        NativeEntry::GetInstance()->SetRootNode(node);
         g_env = env;
-            // ...
         return nullptr;
     }
     
@@ -385,5 +384,4 @@ The following example creates a custom drawing component capable of rendering cu
     } // namespace NativeModule
     ```
     
-
 ![customDrawLayer](figures/capiDrawLayer.jpg)

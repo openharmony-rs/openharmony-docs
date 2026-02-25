@@ -1260,7 +1260,7 @@ Obtains the text information of this component. This API uses a promise to retur
 
 > **NOTE**
 >
-> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API cannot be used to obtain the text information of the component. In this case, you can use [Component.getOriginalText ()](#getoriginaltext20) to obtain the text information of the component.
+> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) attribute of the component is set to **no** or **no-hide-descendants**, this API cannot be used to obtain the text information of the component. In this case, you can use [Component.getOriginalText ()](#getoriginaltext20) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -7071,7 +7071,7 @@ All APIs provided by this class, except **UiDriver.create()**, use a promise to 
 
 > **NOTE**
 > 
-> This method is supported since API version 8 and deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
 
 ### create<sup>(deprecated)</sup>
 

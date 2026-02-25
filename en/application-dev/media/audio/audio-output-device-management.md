@@ -16,9 +16,7 @@ You can use APIs to manage audio output devices, including querying audio device
 
 Before using AudioRoutingManager to manage audio devices, import the audio module and create an AudioManager instance.
 
-<!-- @[getRoutingManager_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';  // Import the audio module.
 
 let audioManager = audio.getAudioManager();  // Create an AudioManager instance.
@@ -44,9 +42,7 @@ The table below lists the supported output devices.
 
 Use **getDevices()** to obtain information about all the output devices.
 
-<!-- @[get_OutputDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 
 audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data: audio.AudioDeviceDescriptors) => {
@@ -62,9 +58,7 @@ Set a listener to listen for changes of the device connection state. When a devi
 >
 > The listener captures all changes in device connections. It is not recommended that the changes be used as a basis for handling automatic pausing in applications. If an application needs to manage services related to automatic pause, it should consider the [reasons behind changes in the audio stream output device](audio-output-device-change.md#device-change-reason).
 
-<!-- @[deviceChange_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 
 // Listen for connection state changes of audio devices.
@@ -88,7 +82,7 @@ Currently, only one output device can be selected, and the device ID is used as 
 >
 > The user can connect to a group of audio devices (for example, a pair of Bluetooth headsets), but the system treats them as one device (a group of devices that share the same device ID).
 
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -125,9 +119,7 @@ Call **getPreferOutputDeviceForRendererInfo()** to obtain the output device with
 >
 > The output device with the highest priority is the device that will output audio.
 
-<!-- @[get_PreferOutputDeviceForRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -147,9 +139,7 @@ async function getPreferOutputDeviceForRendererInfo() {
 
 ### Listening for Changes of the Output Device with the Highest Priority
 
-<!-- @[listen_OutputDeviceChangeForRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 
 let rendererInfo: audio.AudioRendererInfo = {
@@ -174,10 +164,7 @@ Applications using the player SDK to play audio streams do not hold an AudioRend
 
 ### Creating an AudioSession Instance
 Before using AudioSessionManager to manage audio devices, import the module and create an AudioSessionManager instance.
-
-<!-- @[get_SessionManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/ListenDeviceByAudioSession.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';  // Import the audio module.
 
 let audioManager = audio.getAudioManager();  // Create an AudioManager instance.
@@ -189,13 +176,10 @@ let audioSessionManager = audioManager.getSessionManager();  // Call an API of A
 
 Call [setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20) to set the default output device.
 > **NOTE**
-> 
 > - As AudioSession is an application-level setting, calling this API to set the default audio output device will override the audio output device information set by the **setDefaultOutputDevice** API of AudioRenderer.
 > - To cancel the default output device set by calling **setDefaultOutputDevice**, you can set the parameter to **audio.DeviceType.DEFAULT**, which returns the device selection to the system. Otherwise, each time **activateAudioSession** is called, the default output device selected by the application takes effect.
 
-<!-- @[set_DefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/ListenDeviceByAudioSession.ets) -->
-
-``` TypeScript
+```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Set the default output device to the device speaker.
@@ -220,9 +204,7 @@ Call [getDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-Au
 >
 > This API is used to query the output device set via [setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20).
 
-<!-- @[get_DefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/ListenDeviceByAudioSession.ets) -->
-
-``` TypeScript
+```ts
 let deviceType = audioSessionManager.getDefaultOutputDevice();
 console.info('getDefaultOutputDevice Success, deviceType: ${deviceType}');
 ```
@@ -232,12 +214,10 @@ console.info('getDefaultOutputDevice Success, deviceType: ${deviceType}');
 Subscribe to [CurrentOutputDeviceChangedEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#currentoutputdevicechangedevent20) to listen for changes in the connection status of output devices.
 
 > **NOTE**
-> 
-> **currentOutputDeviceChangedCallback** includes the reason for the device change and the recommended subsequent actions. Applications should handle different change reasons accordingly and continue or stop playback as recommended by the system.
+>
+>**currentOutputDeviceChangedCallback** includes the reason for the device change and the recommended subsequent actions. Applications should handle different change reasons accordingly and continue or stop playback as recommended by the system.
 
-<!-- @[listen_CurrentOutputDeviceChangedEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/ListenDeviceByAudioSession.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.

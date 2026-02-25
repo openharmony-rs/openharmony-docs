@@ -27,24 +27,24 @@
 
 1. 在工程Module对应的ets目录下，右键选择“New > Directory”，新建一个目录，并命名为InputMethodExtensionAbility。
 
-2. 在InputMethodExtensionAbility目录下，右键选择“New > File”，新建四个文件，分别为KeyboardController.ts、InputMethodService.ts、Index.ets以及KeyboardKeyData.ts。目录如下：
+2. 在InputMethodExtensionAbility目录下，右键选择“New > File”，新建四个文件，分别为KeyboardController.ets、InputMethodService.ets、Index.ets以及KeyboardKeyData.ets。目录如下：
 
    ``` TypeScript
    /src/main/
    ├── ets/InputMethodExtensionAbility
-   │       └──model/KeyboardController.ts      # 显示键盘
-   │       └──InputMethodService.ts        # 自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调
+   │       └──model/KeyboardController.ets      # 显示键盘
+   │       └──InputMethodService.ets        # 自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调
    │       └──pages
    │         └── Index.ets            # 绘制键盘，添加输入删除功能
-   │         └── KeyboardKeyData.ts          # 键盘属性定义
+   │         └── KeyboardKeyData.ets          # 键盘属性定义
    ├── resources/base/profile/main_pages.json  
    ```
 
 ## 文件介绍
 
-1. InputMethodService.ts文件。
+1. InputMethodService.ets文件。
 
-   在InputMethodService.ts文件中，增加导入InputMethodExtensionAbility的依赖包，自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调。
+   在InputMethodService.ets文件中，增加导入InputMethodExtensionAbility的依赖包，自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调。
 
    <!-- @[input_case_module_import_InputMethodExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/InputMethodService.ets) -->
    
@@ -75,7 +75,7 @@
    ```
 
 
-2. KeyboardController.ts文件。KeyboardController中除创建输入法窗口，设置输入法事件监听，实现文本插入、删除之外，还可以获取[输入法键盘与系统面板的偏移区域](../reference/apis-ime-kit/js-apis-inputmethodengine.md#getsystempanelcurrentinsets21)，输入法系统面板在不同设备上存在差异，当设备有系统面板时，输入法软键盘相对系统面板的偏移区域如图所示：
+2. KeyboardController.ets文件。KeyboardController中除创建输入法窗口，设置输入法事件监听，实现文本插入、删除之外，还可以获取[输入法键盘与系统面板的偏移区域](../reference/apis-ime-kit/js-apis-inputmethodengine.md#getsystempanelcurrentinsets21)，输入法系统面板在不同设备上存在差异，当设备有系统面板时，输入法软键盘相对系统面板的偏移区域如图所示：
 
    ![偏移区域示意图](./figures/系统面板与软键盘偏移区域示意图.png)
 
@@ -457,7 +457,7 @@
 
 
  
-3. KeyboardKeyData.ts文件。
+3. KeyboardKeyData.ets文件。
 
    定义软键盘的按键显示内容。
 

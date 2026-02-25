@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **Image** component is usually used to display images in applications. Image supports data sources of the [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md), [ResourceStr](ts-types.md#resourcestr), and [DrawableDescriptor](#drawabledescriptor10) types, and supports image formats of the png, jpg, jpeg, bmp, svg, webp, gif, tiff, and heif types, the apng and svga formats are not supported.
+The **Image** component is usually used to display images in applications. It supports data sources of the following types: [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md), [ResourceStr](ts-types.md#resourcestr), and [DrawableDescriptor](#drawabledescriptor10). Supported image formats include PNG, JPG, JPEG, BMP, SVG, WEBP, GIF, and HEIF. Note that the APNG and SVGA formats are not supported.
 
 > **NOTE**
 >
@@ -493,11 +493,11 @@ enableAnalyzer(enable:&nbsp;boolean)
 
 Sets whether to enable the AI image analyzer, which supports subject recognition, text recognition, and object lookup.<!--RP3--><!--RP3End-->
 
-This attribute cannot be used together with the [overlay](ts-universal-attributes-overlay.md) attribute. If both attributes are set, the [CustomBuilder](ts-types.md#custombuilder8) attribute in the overlay becomes invalid. This feature also depends on device capabilities.
+This attribute cannot be used together with the [overlay](ts-universal-attributes-overlay.md#overlay) attribute. If they are set at the same time, the [CustomBuilder](ts-types.md#custombuilder8) attribute in **overlay** has no effect. This feature also depends on device capabilities.
 
 Images to be analyzed must be static, non-vector images. That is, SVG and GIF images cannot be analyzed. [Pixel maps](../../apis-image-kit/arkts-apis-image-PixelMap.md) in [RGBA_8888](../../apis-image-kit/arkts-apis-image-e.md#pixelmapformat7) format can be passed in for analysis. For details, see [Example 5: Enabling the AI Image Analyzer](#example-5-enabling-the-ai-image-analyzer).
 
-The [alt](#alt) placeholder image does not support analysis. The [objectRepeat](#objectrepeat) attribute supports analysis only when the value is ImageRepeat.NoRepeat. When the privacy mask attribute [obscured](ts-universal-attributes-obscured.md) is enabled, analysis is not supported.
+The [alt](#alt) placeholder does not support analysis. The [objectRepeat](#objectrepeat) attribute supports analysis only when the value is **ImageRepeat.NoRepeat**. The privacy mask attribute [obscured](ts-universal-attributes-obscured.md#obscured) does not support analysis.
 
 Analysis is performed based on the complete original image. If the [clip](ts-universal-attributes-sharp-clipping.md#clip12), [margin](ts-universal-attributes-size.md#margin), [borderRadius](ts-universal-attributes-border.md#borderradius), [position](ts-universal-attributes-location.md#position), and [objectFit](#objectfit) attributes are set, the image is not completely displayed. Alternatively, if the [renderMode](#rendermode) attribute is used to set the mask, the analysis is still performed based on the complete original image. The [copyOption](#copyoption9) attribute does not affect the AI image analyzer functionality.
 
@@ -525,7 +525,7 @@ resizable(value: ResizableOptions)
 
 Sets the resizable image options. Resizing is effective for drag previews and placeholder images.
 
-When a valid [ResizableOptions](#resizableoptions11) is set, the objectRepeat, antialiased, and orientation attributes do not take effect.
+When [ResizableOptions](#resizableoptions11) is set to a valid value, neither **objectRepeat** nor **orientation** has effect.
 
 When the sum of the values of **top** and **bottom** is greater than the source image height, or the sum of the values of **left** and **right** is greater than the source image width, the [ResizableOptions](#resizableoptions11) attribute does not take effect.
 
@@ -750,7 +750,6 @@ Describes the dynamic range of the image to be displayed.
 
 Describes the desired display orientation for image content.
 
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name    | Value   | Description                   |
@@ -949,6 +948,8 @@ This event is not triggered if the parameter type of the component is [AnimatedD
 Describes the return object that triggers the callback for when an error occurs during image loading.
 
 This event is not triggered if the parameter type of the component is [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12).
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1616,7 +1617,7 @@ struct ImageExample {
 
 ### Example 13: Setting the Scan Effect for an Image
 
-This example shows how to enable the scan effect for an image using [linearGradient](./ts-basic-components-datapanel.md#lineargradient10) and [animateTo()](./ts-explicit-animation.md).
+This example shows how to enable the scan effect for an image using [linearGradient](./ts-basic-components-datapanel.md#lineargradient10) and [animateTo()](../arkts-apis-uicontext-uicontext.md#animateto).
 
 ```ts
 import { curves } from '@kit.ArkUI';

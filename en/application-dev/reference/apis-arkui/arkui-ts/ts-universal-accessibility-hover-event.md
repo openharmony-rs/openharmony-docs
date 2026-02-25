@@ -149,7 +149,9 @@ struct OnAccessibilityHoverEventExample {
 
 ### Example 2: Capturing a Touch Event on a Non-Focusable Component
 
-This example shows how to capture touch events from a component that cannot receive focus in accessibility mode and display event details in the text area below.
+This example shows how to capture touch events from a component that cannot receive focus in accessibility mode using the **onAccessibilityHoverTransparent** API and display event details in the text area below.
+ 	 
+Starting from API version 20, the [onAccessibilityHoverTransparent](#onaccessibilityhovertransparent20) API with the input parameter **AccessibilityTransparentCallback** has been added.
 
 ```ts
 @Entry

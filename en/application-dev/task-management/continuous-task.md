@@ -50,6 +50,8 @@ Description of **AUDIO_PLAYBACK**:
 
 - Starting from API version 20, if a continuous task of the **AUDIO_PLAYBACK** type is requested without being connected to AVSession, a notification will appear in the notification panel once the task is successfully requested. Once AVSession is connected, the background task module will no longer send notifications; instead, notifications will be sent by AVSession. For API version 19 and earlier versions, the background task module does not display notifications in the notification panel.
 
+- The system may freeze an application that requests a continuous task of the **AUDIO_PLAYBACK** type if no audio is playing while the application is in the background.
+
 ### Constraints
 
 **Ability restrictions**: In the stage model, only the UIAbility can request continuous tasks. In the FA model, only the ServiceAbility can request continuous tasks. Continuous tasks can be requested by the current application on the current device or across devices or by other applications. However, the capability to make cross-device or cross-application requests is restricted to system applications.
@@ -102,9 +104,10 @@ The following walks you through how to request a continuous task for recording t
 1. Declare the **ohos.permission.KEEP_BACKGROUND_RUNNING** permission. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
 2. Declare the continuous task type.
+
    Declare the type of the continuous task for the target UIAbility under **abilities** in the [module.json5 file](../quick-start/module-configuration-file.md). Set the corresponding [configuration item](continuous-task.md#use-cases) in the configuration file.
    
-   ```json
+   ``` json5
     "module": {
         "abilities": [
             {
@@ -237,7 +240,7 @@ The following walks you through how to request a continuous task for recording t
               .fontWeight(FontWeight.Bold)
    
            Button() {
-              Text('Request continuous task').fontSize(25).fontWeight(FontWeight.Bold)
+              Text('Request a continuous task').fontSize(25).fontWeight(FontWeight.Bold)
             }
             .type(ButtonType.Capsule)
             .margin({ top: 10 })
@@ -245,12 +248,12 @@ The following walks you through how to request a continuous task for recording t
             .width(250)
             .height(40)
             .onClick(() => {
-              // Request a continuous task by clicking a button.
+              // Request a continuous task through a button.
               this.startContinuousTask();
             })
    
             Button() {
-              Text('Cancel continuous task').fontSize (25).fontWeight (FontWeight.Bold)
+              Text('Cancel the continuous task').fontSize (25).fontWeight (FontWeight.Bold)
             }
             .type(ButtonType.Capsule)
             .margin({ top: 10 })
@@ -260,7 +263,7 @@ The following walks you through how to request a continuous task for recording t
             .onClick(() => {
               // Stop the continuous task.
    
-              // Cancel the continuous task by clicking a button.
+              // Cancel the continuous task through a button.
               this.stopContinuousTask();
             })
 
@@ -278,7 +281,7 @@ The following walks you through how to request a continuous task for recording t
             })
 
             Button() {
-              Text('Unregister a callback for canceling a continuous task').fontSize (25).fontWeight(FontWeight.Bold)
+              Text('Unregister a callback for canceling the continuous task').fontSize (25).fontWeight(FontWeight.Bold)
             }
             .type(ButtonType.Capsule)
             .margin({ top: 10 })
@@ -368,7 +371,7 @@ The following walks you through how to request a continuous task for recording t
               .fontWeight(FontWeight.Bold)
    
            Button() {
-              Text('Request continuous task').fontSize(25).fontWeight(FontWeight.Bold)
+              Text('Request a continuous task').fontSize(25).fontWeight(FontWeight.Bold)
             }
             .type(ButtonType.Capsule)
             .margin({ top: 10 })
@@ -376,12 +379,12 @@ The following walks you through how to request a continuous task for recording t
             .width(250)
             .height(40)
             .onClick(() => {
-              // Request a continuous task by clicking a button.
+              // Request a continuous task through a button.
               this.startContinuousTask();
             })
    
             Button() {
-              Text('Cancel continuous task').fontSize (25).fontWeight (FontWeight.Bold)
+              Text('Cancel the continuous task').fontSize (25).fontWeight (FontWeight.Bold)
             }
             .type(ButtonType.Capsule)
             .margin({ top: 10 })
@@ -391,7 +394,7 @@ The following walks you through how to request a continuous task for recording t
             .onClick(() => {
               // Stop the continuous task.
 
-              // Cancel the continuous task by clicking a button.
+              // Cancel the continuous task through a button.
               this.stopContinuousTask();
             })
           }
@@ -403,7 +406,7 @@ The following walks you through how to request a continuous task for recording t
    ```
    <!--Del-->
 
-   The code snippet below shows how an application requests a continuous task across devices or applications. When a continuous task is executed across devices or applications in the background, the UIAbility can be created and run in the background in call mode. For details, see [Using Call to Implement UIAbility Interaction (for System Applications Only)](../application-models/uiability-intra-device-interaction.md#using-call-to-implement-uiability-interaction-for-system-applications-only) and [Using Cross-Device Call](../application-models/hop-multi-device-collaboration.md#using-cross-device-call).
+   The code snippet below shows how an application requests a continuous task across devices or applications. When executing a continuous task in the background across devices or applications, you can create and run a **UIAbility** in the background via the **Call** method. For details, see [Using Cross-Device Call](../application-models/hop-multi-device-collaboration.md#using-cross-device-call).
    
    ```ts
     const MSG_SEND_METHOD: string = 'CallSendMsg'
@@ -543,7 +546,7 @@ The following walks you through how to request a continuous task for recording t
 
    Declare the **ohos.permission.KEEP_BACKGROUND_RUNNING** permission in the **config.json** file. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md). In addition, declare the continuous task type for the ServiceAbility.
    
-   ```json
+   ``` json5
    "module": {
        "package": "com.example.myapplication",
        "abilities": [

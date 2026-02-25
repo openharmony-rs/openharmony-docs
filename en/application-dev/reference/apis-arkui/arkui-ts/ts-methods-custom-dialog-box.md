@@ -166,7 +166,7 @@ Defines the style of the custom dialog box.
 > - Use the custom dialog box to contain simple alert messages only. Do not use it as a page. When the dialog box avoids the soft keyboard, there is a 16 vp safe spacing between the two.
 > - For optimal visual experience, dialog box display and closing include default animations, though the animation duration may vary by device.
 >   Note: During animation playback, the page does not respond to touch, swipe, or click interactions. To disable default dialog box animations, set **duration** of both **openAnimation** and **closeAnimation** to **0**.
-> - In ArkUI, dialog boxes do not close automatically when you switch pages unless you manually call **close**. To overwrite a pop-up window during page redirection, use [Pop-up window type of the component navigation subpage display type](../../../ui/arkts-navigation-navigation.md#page-display-mode) or [Page-level dialog box](../../../ui/arkts-embedded-dialog.md)
+> - In ArkUI, dialog boxes do not close automatically when you switch pages unless you manually call **close**. To enable a dialog box to be dismissed during page navigation, consider using the [navigation page displayed in dialog mode](../../../ui/arkts-navigation-navigation.md#page-display-mode) or [page-level dialog box](../../../ui/arkts-embedded-dialog.md).
 
 ## DismissDialogAction<sup>12+</sup>
 
@@ -670,7 +670,7 @@ struct CustomDialogUser {
 
 ### Example 6: Using @Link and @Consume to Listen for Data Changes
 
-This example uses @[Link ](../../../ui/state-management/arkts-link.md) and @[Consume ](../../../ui/state-management/arkts-provide-and-consume.md) to implement bidirectional data binding between the page and the dialog box.
+This example uses @[Link](../../../ui/state-management/arkts-link.md) and @[Consume](../../../ui/state-management/arkts-provide-and-consume.md) to implement bidirectional data binding between the page and the dialog box.
 
 ```ts
 @CustomDialog
@@ -877,7 +877,7 @@ struct CustomDialogUser {
 
 ### Example 8: Adjusting Dialog Box Spacing from the Soft Keyboard Without keyboardAvoidDistance
 
-In this example, the [bottom](ts-universal-attributes-size.md#padding) of the layout [margin](ts-universal-attributes-size.md#margin) is adjusted by listening to keyboard changes, achieving the same effect as that of using [keyboardAvoidDistance](#customdialogcontrolleroptions) to adjust the spacing between the dialog and the soft keyboard.
+This example demonstrates how to listen for keyboard changes and adjust the [bottom](ts-types.md#margin) of [margin](ts-universal-attributes-size.md#margin) to achieve the same effect as using [keyboardAvoidDistance](#customdialogcontrolleroptions) to adjust the spacing between the dialog box and the soft keyboard.
 
 Starting from API version 15, the keyboardAvoidDistance attribute is added to CustomDialogControllerOptions.
 

@@ -5,7 +5,7 @@
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
 <!--Adviser: @HelloShuo-->
-Scene-based widgets support special effects. For example, you can choose to extend the animation beyond the widget rendering area to create an "overflow" effect.
+Since API version 20, scene-based widgets support special effects. For example, you can choose to extend the animation beyond the widget rendering area to create an "overflow" effect.
 
 ## Basic Concepts
 
@@ -38,6 +38,10 @@ The following figure shows the timing diagram in interval-based and time-specifi
 ![live-form-update-timeline.png](figures/live-form-update-timeline.png)
 
 ## Constraints
+
+### Supported Scenarios
+1. Currently, the interactive widget animation takes effect only on a single widget with [FormLocation](../reference/apis-form-kit/js-apis-app-form-formInfo.md#formlocation20) set to **DESKTOP**.
+2. Due to the impact on performance and power consumption, only some models are supported. If a model is not supported, the error code [801](../reference/errorcode-universal.md#801-api-not-supported) is reported.
 
 ### Parameter Request
 1. The maximum valid duration of the animation is 3500 ms. When the countdown ends, the widget switches back to the inactive state. <!--Del-->System applications support long-time activated widgets, and the animation duration is not limited. For details, see [Developing a Scene-based Widget (for System Applications)](arkts-ui-liveform-sceneanimation-development-sys.md).<!--DelEnd-->

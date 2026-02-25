@@ -269,7 +269,7 @@ When developing complex UIs, rendering efficiency is a key consideration. For ex
 
 - Custom components decorated with @Reusable should maintain the same component structure before and after reuse. Otherwise, child components may be created or destroyed during the reuse process, reducing reuse efficiency and performance, and potentially causing abnormal application behavior.<br>
   For child components created during reuse, the framework will call the **aboutToReuse** method followed by the **aboutToAppear** method after their creation. When **aboutToReuse** is called, since **aboutToAppear** has not yet been executed and internal child components have not been created, unexpected behavior may occur. After calling **aboutToReuse**, the framework will then call **aboutToAppear** to initialize the component.<br>
-  For scenarios where component structures differ, you must differentiate them by setting different **reuseId** values. For details, see [Scenarios Involving Multiple Item Types](#scenarios-involving-multiple-item-types).
+  For scenarios where component structures differ, you must differentiate them by setting different **reuseId** values. For details, see [Multiple Item Types](#multiple-item-types).
 
   **Incorrect Usage**
 
@@ -540,6 +540,7 @@ When developing complex UIs, rendering efficiency is a key consideration. For ex
 ### Dynamic Layout Update
 
 Repeatedly creating and removing views can trigger frequent layout calculations, which may affect frame rates. Component reuse avoids unnecessary view creation and layout recalculations, improving performance.
+
 In the following example, the **Child** custom component is marked as reusable. Clicking the button updates **Child**, triggering reuse.
 
 <!-- @[dynamic_layout_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/DynamicLayoutUpdate.ets) -->
@@ -1548,7 +1549,7 @@ struct ReusableChildComponent {
   }
   ```
 
-### Scenarios Involving Multiple Item Types
+### Multiple Item Types
 
 **Standard**
 

@@ -241,7 +241,7 @@ let spanTraceId = hiTraceChain.createSpan();
 if (spanTraceId.chainId != traceId.chainId) {
 // 基于异常场景的处理逻辑。
 }
-//业务结束，结束跟踪。
+// 业务结束，结束跟踪。
 hiTraceChain.end(traceId);
 ```
 
@@ -264,7 +264,7 @@ type为客户端发送CS和客户端接收CR的信息埋点需配套使用；typ
 | mode | [HiTraceCommunicationMode](#hitracecommunicationmode) | 是 | 信息埋点需要指定的跟踪通信模式。 |
 | type | [HiTraceTracepointType](#hitracetracepointtype)| 是 | 信息埋点需要指定的跟踪埋点类型。 |
 | id   | [HiTraceId](#hitraceid) | 是 | 实施信息埋点操作的HiTraceId实例。 |
-| msg  | string | 否 | HiTraceMeter打点操作传入的trace说明信息。 |
+| msg  | string | 否 | HiTraceMeter打点操作传入的trace说明信息，默认值为""。 |
 
 **示例：**
 
@@ -273,7 +273,7 @@ type为客户端发送CS和客户端接收CR的信息埋点需配套使用；typ
 let traceId = hiTraceChain.begin("business", hiTraceChain.HiTraceFlag.INCLUDE_ASYNC | hiTraceChain.HiTraceFlag.DONOT_CREATE_SPAN);
 // 若干业务逻辑完成后，触发信息埋点操作。
 hiTraceChain.tracepoint(hiTraceChain.HiTraceCommunicationMode.THREAD, hiTraceChain.HiTraceTracepointType.SS, traceId, "Just a example");
-//业务结束，结束跟踪。
+// 业务结束，结束跟踪。
 hiTraceChain.end(traceId);
 ```
 
@@ -307,7 +307,7 @@ let traceIdIsvalid = hiTraceChain.isValid(traceId);
 if (traceIdIsvalid) {
 // 基于跟踪标识合法性校验成功的场景的处理逻辑。
 }
-//业务结束，结束跟踪。
+// 业务结束，结束跟踪。
 hiTraceChain.end(traceId);
 ```
 
@@ -342,7 +342,7 @@ let enabledIncludeAsyncFlag = hiTraceChain.isFlagEnabled(traceId, hiTraceChain.H
 if (enabledIncludeAsyncFlag) {
 // 基于INCLUDE_ASYNC跟踪标志已设置场景的处理逻辑。
 }
-//业务结束，结束跟踪。
+// 业务结束，结束跟踪。
 hiTraceChain.end(traceId);
 ```
 
@@ -375,6 +375,6 @@ enabledDoNotCreateSpanFlag = hiTraceChain.isFlagEnabled(traceId, hiTraceChain.Hi
 if (enabledDoNotCreateSpanFlag) {
 // 基于DONOT_CREATE_SPAN跟踪标志已设置场景的处理逻辑。
 }
-//业务结束，结束跟踪。
+// 业务结束，结束跟踪。
 hiTraceChain.end(traceId);
 ```

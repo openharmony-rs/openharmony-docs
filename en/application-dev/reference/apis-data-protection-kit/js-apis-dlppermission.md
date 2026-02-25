@@ -947,6 +947,10 @@ startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&
 
 Starts the DLP manager application on the current UIAbility page in borderless mode. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> This API can be called only by domain accounts.
+
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
@@ -1328,9 +1332,10 @@ Represents an enterprise custom policy.
 generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPProperty, customProperty: CustomProperty): Promise&lt;void&gt;
 
 Obtains a **DLPFile** object. This API uses a promise to return the result.
->**NOTE**
+
+> **NOTE**
 >
-> This API generates a DLP file, which is an encrypted file that can be accessed only by users with full control permissions.
+> This API can be called only by enterprise accounts. Enterprises need to set up their own enterprise account servers. This API generates a DLP file, which is an encrypted file that can be accessed only by users with full control permissions.
 
 **Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 

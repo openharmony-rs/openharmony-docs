@@ -14,7 +14,7 @@ You can configure the component transition animations through the **transition**
 >
 >  There are two ways to trigger a component's transition:
 >  1. When a component is inserted or removed (for example, when there are changes in **if** conditions, or when components are added or removed in a **ForEach** loop), the transition effects of all newly inserted/removed components are triggered recursively.
->  2. When the **Visibility** attribute of a component changes between visible and invisible, only the transition effect of that component is triggered.
+>  2. When the [visibility](ts-universal-attributes-visibility.md#visibility) attribute of a component changes between visible and invisible, only the transition effect of that component is triggered.
 
 
 ## transition
@@ -45,7 +45,7 @@ Sets the transition effects for when the component is inserted to show and remov
 
 transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallback&gt;): T
 
-Transition effects for when the component is inserted to show and removed to hide. Compared with [transition](#transition), this API provides the callback after the transition animation ends.
+Transition effects for when the component is inserted to show and removed to hide. Compared with [transition](#transition), this API provides the callback when the transition animation ends.
 
 >**NOTE**
 >
@@ -113,14 +113,14 @@ Defines the transition effect by using the provided APIs, as listed below.
 >  3. If **animateTo** is not used and **TransitionEffect** does not have the **animation** parameter specified, the component will appear or disappear without any transition animation.
 >  4. If the value of an attribute specified in **TransitionEffect** is the same as the default value, no transition animation will be applied to the attribute. For example, with **TransitionEffect.opacity(1).animation({duration:1000})**, because the default value of **opacity** is also **1**, no opacity animation will be applied, and the component appears or disappears without any transition animation.
 >  5. For details about the scale and rotate effects, see [Transformation](ts-universal-attributes-transformation.md).
->  6. If a component's attach or detach in the component tree or visibility ([Visibility](ts-universal-attributes-visibility.md)) change is triggered within the animation scope ([animateTo](../arkts-apis-uicontext-uicontext.md#animateto) or [animation](ts-animatorproperty.md)), and the root component does not have a transition configured, a default opacity transition, namely **TransitionEffect.OPACITY**, will be applied to the component. The animation parameters will follow the parameters of the surrounding animation environment. If this default behavior is not desired, it can be disabled by configuring **TransitionEffect.IDENTITY**, which causes the component to appear or disappear instantly without any transition effect.
+>  6. If a component's attach or detach in the component tree or [visibility](ts-universal-attributes-visibility.md#visibility) change is triggered within the animation scope ([animateTo](../arkts-apis-uicontext-uicontext.md#animateto) or [animation](ts-animatorproperty.md)), and the root component does not have a transition configured, a default opacity transition, namely **TransitionEffect.OPACITY**, will be applied to the component. The animation parameters will follow the parameters of the surrounding animation environment. If this default behavior is not desired, it can be disabled by configuring **TransitionEffect.IDENTITY**, which causes the component to appear or disappear instantly without any transition effect.
 >  7. To ensure that the complete disappearance transition process is visible when triggering it by deleting an entire subtree, it is necessary to guarantee that the root component of the subtree being deleted has ample time to complete its disappearance transition, as demonstrated in Example 3.
 
 ### translate<sup>10+</sup>
 
 translate(options: TranslateOptions): TransitionEffect\<"translate">
 
-Sets the translation effect during component transition.
+Sets the translation effect for component transitions.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -132,19 +132,19 @@ Sets the translation effect during component transition.
 
 | Name| Type                                  | Mandatory| Description          |
 | ------ | ------------------------------------------ | ---- | ------------------ |
-| options  | [TranslateOptions](ts-universal-attributes-transformation.md#translateoptions)      | Yes  | Translation of the component during transition, which is the value of the start point of insertion and the end point of deletion.<br>-**x**: distance to translate along the x-axis.<br>-**y**: distance to translate along the y-axis.<br>-**z**: distance to translate along the z-axis.|
+| options  | [TranslateOptions](ts-universal-attributes-transformation.md#translateoptions)      | Yes  | Translation effect for component transitions, specifying the start point of insertion and the end point of deletion.<br>-**x**: distance to translate along the x-axis.<br>-**y**: distance to translate along the y-axis.<br>-**z**: distance to translate along the z-axis.|
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [TransitionEffect](#transitioneffect10)\<"translate"> | Panning effect of the current animation.|
+| [TransitionEffect](#transitioneffect10)\<"translate"> | Translation effect for the current animation.|
 
 ### rotate<sup>10+</sup>
 
 rotate(options: RotateOptions): TransitionEffect\<"rotate">
 
-Sets the rotation effect during component transition.
+Sets the rotation effect for component transitions.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -156,19 +156,19 @@ Sets the rotation effect during component transition.
 
 | Name| Type                                  | Mandatory| Description          |
 | ------ | ------------------------------------------ | ---- | ------------------ |
-| options  | [RotateOptions](ts-universal-attributes-transformation.md#rotateoptions)      | Yes  | Rotation of the component during transition, which is the value of the start point of insertion and the end point of deletion.<br>- **x**: X-component of the rotation vector.<br>- **y**: Y-component of the rotation vector.<br>- **z**: Z-component of the rotation vector.<br>- **centerX** and **centerY**: rotation center point. The default values are both **"50%"**, indicating the center point of the page.<br>- If the center point is (0, 0), it refers to the upper left corner of the component.<br>- **centerZ**: z-axis anchor point, that is, the z-component of the 3D rotation center point. The default value is **0**.<br>- **perspective**: viewing distance. It is not supported for use in transition animations.|
+| options  | [RotateOptions](ts-universal-attributes-transformation.md#rotateoptions)      | Yes  | Rotation effect for component transitions, specifying the start point of insertion and the end point of deletion.<br>- **x**: X-component of the rotation vector.<br>- **y**: Y-component of the rotation vector.<br>- **z**: Z-component of the rotation vector.<br>- **centerX** and **centerY**: rotation center point. The default values are both **"50%"**, indicating the center point of the page.<br>- If the center point is (0, 0), it refers to the upper left corner of the component.<br>- **centerZ**: z-axis anchor point, that is, the z-component of the 3D rotation center point. The default value is **0**.<br>- **perspective**: viewing distance. It is not supported for use in transition animations.|
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [TransitionEffect](#transitioneffect10)\<"rotate"> | Rotation effect of the current animation.|
+| [TransitionEffect](#transitioneffect10)\<"rotate"> | Rotation effect for the current animation.|
 
 ### scale<sup>10+</sup>
 
 scale(options: ScaleOptions): TransitionEffect\<"scale">
 
-Sets the scaling effect during component transition.
+Sets the scaling effect for component transitions.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -180,13 +180,13 @@ Sets the scaling effect during component transition.
 
 | Name| Type                                  | Mandatory| Description          |
 | ------ | ------------------------------------------ | ---- | ------------------ |
-| options  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions)     | Yes  | Scaling of the component during transition, which is the value of the start point of insertion and the end point of deletion. The scale value set here is multiplied by the component's existing scale attribute. For example, if the component's scale is 0.8 and the transition scale is set to 0.5, the component entry animation starts from a scale of 0.4.<br>- **x**: scale factor along the x-axis.<br>- **y**: scale factor along the y-axis.<br>-z: two-dimensional display. This parameter is invalid.<br>- **centerX** and **centerY**: scale center point. The default values are both **"50%"**, indicating the center point of the page.<br>- If the center point is (0, 0), it refers to the upper left corner of the component.<br>**NOTE**<br>If **centerX** or **centerY** is set to an invalid string (for example, **"illegalString"**), the default value **"0"** is used.|
+| options  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions)     | Yes  | Scaling effect for component transitions, specifying the start point of insertion and the end point of deletion. The scale value set here is multiplied by the component's **scale** attribute. For example, if the component's scale is 0.8 and the transition scale is set to 0.5, the component entry animation starts from a scale of 0.4.<br>- **x**: scale factor along the x-axis.<br>- **y**: scale factor along the y-axis.<br>-z: currently invalid in two-dimensional display.<br>- **centerX** and **centerY**: scale center point. The default values are both **"50%"**, indicating the center point of the page.<br>- If the center point is (0, 0), it refers to the upper left corner of the component.<br>**NOTE**<br>If **centerX** or **centerY** is set to an invalid string (for example, **"illegalString"**), the default value **"0"** is used.|
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [TransitionEffect](#transitioneffect10)\<"scale"> | Scaling effect of the current animation.|
+| [TransitionEffect](#transitioneffect10)\<"scale"> | Scaling effect for component transitions.|
 
 ### opacity<sup>10+</sup>
 
@@ -216,7 +216,7 @@ Sets the opacity for component transition.
 
 move(edge: TransitionEdge): TransitionEffect\<"move">
 
-Sets the effect of sliding in and out from the edge of the screen during component transition.
+Sets the slide-in and slide-out effects for component transitions from the screen edges.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -228,13 +228,13 @@ Sets the effect of sliding in and out from the edge of the screen during compone
 
 | Name| Type                                  | Mandatory| Description          |
 | ------ | ------------------------------------------ | ---- | ------------------ |
-| edge  | [TransitionEdge](#transitionedge10)     | Yes  | The effect of sliding in and out from the edge of the screen during component transition is essentially the translation effect, which is the value of the start point when the component is inserted and the end point when the component is deleted.|
+| edge  | [TransitionEdge](#transitionedge10)     | Yes  | The slide-in and slide-out effects for component transitions from the screen edges. This is essentially a translation effect, specifying the start point of insertion and the end point of deletion.|
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [TransitionEffect](#transitioneffect10)\<"move"> | Swipe-in and swipe-out effects of the current animation from the edge of the screen.|
+| [TransitionEffect](#transitioneffect10)\<"move"> | Current animation's slide-in and slide-out effects from the screen edges.|
 
 ### asymmetric<sup>10+</sup>
 
@@ -259,13 +259,13 @@ Sets the asymmetric transition effect.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [TransitionEffect](#transitioneffect10)\<"asymmetric"> | Asymmetric transition effect of the current animation.|
+| [TransitionEffect](#transitioneffect10)\<"asymmetric"> | Asymmetric transition effect for the current animation.|
 
 ### constructor<sup>10+</sup>
 
 constructor(type: Type, effect: Effect)
 
-Construct a **TransitionEffect** object.
+Constructs a **TransitionEffect** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -378,7 +378,7 @@ Defines the transition effect by setting parameters in the struct.
 
 ### Example 1: Using the Same TransitionEffect Configuration for Image Appearance and Disappearance
 
-This example demonstrates how to use the same [TransitionEffect](#transitioneffect10) object to implement image appearance and disappearance. The appearance and disappearance are the reverse processes of each other.
+This example primarily demonstrates how to use the same [TransitionEffect](#transitioneffect10) to achieve both the appearance and disappearance of an image, where the appearance and disappearance are inverse processes of each other.
 ```ts
 // xxx.ets
 @Entry

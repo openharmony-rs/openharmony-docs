@@ -6270,7 +6270,7 @@ try {
 
 recoverBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
 
-恢复指定用户下指定应用的备份数据。使用Promise异步回调。
+恢复指定用户下指定应用或分身应用的备份数据。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6332,7 +6332,7 @@ try {
 
 removeBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
 
-删除指定用户下指定应用的备份数据。使用Promise异步回调。
+删除指定用户下指定应用或分身应用的备份数据。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 

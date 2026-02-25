@@ -57,7 +57,6 @@ connect(url: string, callback: AsyncCallback\<boolean\>): void
 
 > **说明：**
 >
-> 可通过监听error事件获得该接口的执行结果。
 >
 >callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen)订阅open事件。
 
@@ -69,7 +68,7 @@ connect(url: string, callback: AsyncCallback\<boolean\>): void
 
 >**注意：**
 >
->URL地址长度不能超过1024个字符，否则会连接失败。从API15开始，URL地址长度限制由1024修改为2048。
+>URL地址长度不能超过1024个字符，否则会连接失败。从API version 15开始，URL地址长度限制由1024修改为2048。
 
 **参数：**
 
@@ -118,8 +117,6 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<
 
 > **说明：**
 >
-> 可通过监听error事件获得该接口的执行结果，错误发生时会得到错误码：200。
->
 >callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen)订阅open事件。
 
 **需要权限**：ohos.permission.INTERNET
@@ -130,7 +127,7 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<
 
 >**注意：**
 >
->URL地址长度不能超过1024个字符，否则会连接失败。
+>URL地址长度不能超过1024个字符，否则会连接失败。从API version 15开始，URL地址长度限制由1024修改为2048。
 
 **参数：**
 
@@ -188,8 +185,6 @@ connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
 
 > **说明：**
 >
-> 可通过监听error事件获得该接口的执行结果，错误发生时会得到错误码：200。
->
 >callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen)订阅open事件。
 
 **需要权限**：ohos.permission.INTERNET
@@ -200,7 +195,7 @@ connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
 
 >**注意：** 
 >
->URL地址长度不能超过1024个字符，否则会连接失败。
+>URL地址长度不能超过1024个字符，否则会连接失败。从API version 15开始，URL地址长度限制由1024修改为2048。
 
 **参数：**
 
@@ -917,7 +912,7 @@ start(config: WebSocketServerConfig): Promise\<boolean\>
 
 > **说明：**
 >
-> 可通过监听error事件获得该接口的执行结果，错误码说明参见[webSocket错误码](errorcode-net-webSocket.md)。
+> 在多次调用该接口时，应避免监听同一端口。
 
 **需要权限**: ohos.permission.INTERNET
 
@@ -1531,9 +1526,8 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 | reason | string | 否   |否 |原因值，订阅close事件得到的关闭连接的错误原因。 |
 
 ## ResponseHeaders<sup>12+</sup>
-type ResponseHeaders = {
-  [k: string]: string | string[] | undefined;
-}
+
+type ResponseHeaders = { [k: string]: string | string[] | undefined; }
 
 服务器发送的响应头。
 

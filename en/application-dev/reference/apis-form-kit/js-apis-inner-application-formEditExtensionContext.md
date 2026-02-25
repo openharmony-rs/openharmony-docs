@@ -38,6 +38,7 @@ Starts the widget provider page to be edited. This API uses a promise to return 
   | want  |  [Want](../apis-ability-kit/js-apis-app-ability-want.md)  | Yes  | Information about the editing page that needs to be started by the home screen of a third-party application.|
 
 **Return value**
+
   | Type| Description   |
   | ------ | ------ |
   | Promise<[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)>  |  Promise used to return the ability result. |
@@ -56,8 +57,8 @@ For details about the error codes, see [Form Error Codes](errorcode-form.md) and
 **Example**
 
 ```ts
-import { FormEditExtensionAbility } from '@kit.FormKit'
-import { Want, UIExtensionContentSession } from '@kit.AbilityKit';
+import { FormEditExtensionAbility } from '@kit.FormKit';
+import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
 const TAG: string = '[testTag] ExampleFormEditExtensionAbility'
 
@@ -73,13 +74,12 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
         }
 
       }).then(data => {
-        console.info(TAG, `startSecondPage result want: ${JSON.stringify(data)}`)
+        console.info(TAG, `startSecondPage result want: ${data.resultCode}`)
       });
     } catch (e) {
-      console.error(TAG, `startSecondPage failed:${e}`)
+      console.error(TAG, `startSecondPage failed, code: ${e.code}, message: ${e.message}`)
       return
     }
   }
 }
-
 ```

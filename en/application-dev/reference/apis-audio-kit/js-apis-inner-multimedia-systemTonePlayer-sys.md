@@ -464,7 +464,7 @@ The object to listen for is an audio stream specified by **streamId**. If **stre
 | Name  | Type                    | Mandatory| Description                                                        |
 | -------- | ----------------------- | ---- | --------------------------------------------------------------- |
 | type     | string                  | Yes  | Event type. The event **'playFinished'** is triggered when the playback is finished.|
-| streamId | number                  | Yes  | ID of the audio stream. **streamId** is obtained through [start](#start). If **streamId** is set to **0**, the playback complete event of all audio streams of the player is subscribed to.|
+| streamId | number                  | Yes  | ID of the audio stream. **streamId** is obtained through [start](#start). If **streamId** is set to **0**, the playback completion event of the player's all audio streams is subscribed to.|
 | callback | Callback\<number>  | Yes  | Callback used to return the stream ID of the audio stream that finishes playing.|
 
 **Error codes**
@@ -570,7 +570,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 systemTonePlayer.on('error', (err: BusinessError) => {
-  console.log("on error, err:" + JSON.stringify(err));
+  console.info(`Succeeded in using on function. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -610,7 +610,7 @@ systemTonePlayer.off('error');
 
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 let callback = (err: BusinessError) => {
-  console.log("on error, err:" + JSON.stringify(err));
+  console.info(`Succeeded in using on or off function. code: ${err.code}, message: ${err.message}`);
 };
 
 systemTonePlayer.on('error', callback);

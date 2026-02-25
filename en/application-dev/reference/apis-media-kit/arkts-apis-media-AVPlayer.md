@@ -61,7 +61,7 @@ Subscribes to AVPlayer state changes.
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type, which is **'stateChange'** in this case. This event can be triggered by both user operations and the system.|
-| callback | [OnAVPlayerStateChangeHandle](arkts-apis-media-t.md#onavplayerstatechangehandle12) | Yes  | Callback invoked when the event is triggered.|
+| callback<sup>12+</sup> | [OnAVPlayerStateChangeHandle](arkts-apis-media-t.md#onavplayerstatechangehandle12) | Yes  | Callback invoked when the event is triggered.|
 
 **Example**
 
@@ -205,7 +205,7 @@ Unsubscribes from AVPlayer errors.
 | Name| Type  | Mandatory| Description                                     |
 | ------ | ------ | ---- | ----------------------------------------- |
 | type   | string | Yes  | Event type, which is **'error'** in this case.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No  | Callback used to return the error code ID and error message.<br>This parameter is supported since API version 12.|
+| callback<sup>12+</sup> | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No  | Callback used to return the error code ID and error message.|
 
 **Example**
 
@@ -1127,7 +1127,7 @@ async function  test(){
 
 selectTrack(index: number, mode?: SwitchMode): Promise\<void>
 
-Selects a track when the AVPlayer is used to play a resource with multiple audio and video tracks. This API uses a promise to return the result.
+Specifies a track when the AVPlayer plays multimedia resources with multiple audio or video tracks. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1186,7 +1186,7 @@ async function  test(){
 
 deselectTrack(index: number): Promise\<void>
 
-Deselects a track when the AVPlayer is used to play a resource with multiple audio and video tracks. This API uses a promise to return the result.
+Deselects the specified track when the AVPlayer plays multimedia resources with multiple audio or video tracks. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1325,7 +1325,10 @@ async function  test(){
 seek(timeMs: number, mode?:SeekMode): void
 
 Seeks to the specified playback position. This API can be called only when the AVPlayer is in the prepared, playing, paused, or completed state. You can check whether the seek operation takes effect by subscribing to the [seekDone](#onseekdone9) event.
-This API is not supported in live mode.
+
+> **NOTE**
+>
+> This method is not supported in live streaming scenarios.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1335,7 +1338,7 @@ This API is not supported in live mode.
 
 | Name| Type                  | Mandatory| Description                                                        |
 | ------ | ---------------------- | ---- | ------------------------------------------------------------ |
-| timeMs | number                 | Yes  | Position to seek to, in ms. The value range is [0, [duration](#properties)]. In SEEK_CONTINUOU mode, the value **-1** can be used to indicate the end of SEEK_CONTINUOUS mode.|
+| timeMs | number                 | Yes  | Position to seek to, in ms. The value range is [0, [duration](#properties)].<br>When the seek mode is [SEEK_CONTINUOUS](arkts-apis-media-e.md#seekmode8), you can set this parameter to **-1** to end the SEEK_CONTINUOUS mode.|
 | mode   | [SeekMode](arkts-apis-media-e.md#seekmode8) | No  | Seek mode based on the video I frame. The default value is **SEEK_PREV_SYNC**. **Set this parameter only for video playback.**|
 
 **Example**
@@ -1447,7 +1450,10 @@ async function  test(){
 setSpeed(speed: PlaybackSpeed): void
 
 Sets the playback speed. This API can be called only when the AVPlayer is in the prepared, playing, paused, or completed state. You can check whether the setting takes effect by subscribing to the [speedDone](#onspeeddone9) event.
-This API is not supported in live mode.
+
+> **NOTE**
+>
+> This method is not supported in live streaming scenarios.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2100,7 +2106,10 @@ async function test(){
 on(type: 'durationUpdate', callback: Callback\<number>): void
 
 Subscribes to media asset duration changes. It is used to refresh the length of the progress bar. By default, this event is reported once in the prepared state. However, it can be repeatedly reported for special streams that trigger duration changes.
-The **'durationUpdate'** event is not supported in live mode.
+
+> **NOTE**
+>
+> The **durationUpdate** event is not supported in live streaming scenarios.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

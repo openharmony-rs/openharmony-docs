@@ -28,12 +28,12 @@ The following table lists the common APIs. For details, see [Native_Bundle](../r
 
 ## How to Develop
 
-1. Create a project.
+**1. Create a project.
 
 ![native](figures/rawfile1.png)
 
 
-2. Add dependencies.
+**2. Add dependencies.
 
 After the project is created, the **cpp** directory is created in the project directory. In the **cpp** directory, there are files such as **types/libentry/index.d.ts**, **napi_init.cpp**, and **CMakeLists.txt**.
 
@@ -57,7 +57,7 @@ After the project is created, the **cpp** directory is created in the project di
     #include <cstdlib>
     ```
 
-3. Modify the source file.
+**3. Modify the source file.
 
 1. When the **src/main/cpp/napi_init.cpp** file is opened, **Init** is called to initialize the API.
 
@@ -432,7 +432,7 @@ After the project is created, the **cpp** directory is created in the project di
     }
     ```
 
-4. Expose APIs.
+**4. Expose APIs.
 
 1. Declare the exposed APIs in the **src/main/cpp/types/libentry/Index.d.ts** file.
 
@@ -450,7 +450,7 @@ After the project is created, the **cpp** directory is created in the project di
     export const getAbilityResourceInfo: (fileType: string) => object;      // Add the exposed API getAbilityResourceInfo.
     ```
 
-5. Call APIs on the JavaScript side.
+**5. Call APIs on the JavaScript side.
 
 1. Open the **src/main/ets/pages/index.ets** file, and import **libentry.so**.
 

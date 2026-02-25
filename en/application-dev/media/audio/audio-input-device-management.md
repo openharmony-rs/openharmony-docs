@@ -12,9 +12,7 @@ You can use APIs to manage audio input devices, including querying audio input d
 
 Before using AudioRoutingManager to manage audio devices, import the audio module and create an AudioManager instance.
 
-<!-- @[getRoutingManager_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';  // Import the audio module.
 
 let audioManager = audio.getAudioManager();  // Create an AudioManager instance.
@@ -36,9 +34,7 @@ The table below lists the supported audio input devices.
 
 Use **getDevices()** to obtain information about all the input devices.
 
-<!-- @[getDevices_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 
 audioRoutingManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG).then((data: audio.AudioDeviceDescriptors) => {
@@ -50,9 +46,7 @@ audioRoutingManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG).then((data: 
 
 Set a listener to listen for changes of the device connection state. When a device is connected or disconnected, a callback is triggered.
 
-<!-- @[listen_InputStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 
 // Listen for connection state changes of audio devices.
@@ -68,7 +62,6 @@ audioRoutingManager.off('deviceChange', (deviceChanged: audio.DeviceChangeAction
   console.info('Should be no callback.');
 });
 ```
-
 <!--Del-->
 ## Selecting an Audio Input Device (for System Applications only)
 
@@ -78,7 +71,7 @@ Currently, only one input device can be selected, and the device ID is used as t
 > 
 > The user can connect to a group of audio devices (for example, a pair of Bluetooth headsets), but the system treats them as one device (a group of devices that share the same device ID).
 
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -104,5 +97,6 @@ async function getRoutingManager() {
       console.error(`Invoke selectInputDevice failed, code is ${err.code}, message is ${err.message}`);
     });
 }
+
 ```
 <!--DelEnd-->

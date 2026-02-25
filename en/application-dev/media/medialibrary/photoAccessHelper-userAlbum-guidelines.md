@@ -13,7 +13,7 @@
 > Before you get started, obtain a PhotoAccessHelper instance and apply for required permissions. For details, see [Before You Start](photoAccessHelper-preparation.md).
 > Unless otherwise specified, the PhotoAccessHelper instance obtained in [Before You Start](photoAccessHelper-preparation.md) is used to call photoAccessHelper APIs. If the code for obtaining the PhotoAccessHelper instance is missing, an error will be reported to indicate that photoAccessHelper is not defined.
 
-To ensure application running efficiency, most PhotoAccessHelper APIs are asynchronously implemented in callback or promise mode. The following examples use promise-based APIs. For details about the APIs, see [Module Description](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md).
+To ensure application running efficiency, most PhotoAccessHelper APIs are asynchronously implemented in callback or promise mode. The following examples of asynchronous API calls use the promise function. For more methods, see [Module Description](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md).
 
 Unless otherwise specified, all the media assets to be obtained in this document exist in the database. If no media asset is obtained when the sample code is executed, check whether the media assets exist in the database.
 
@@ -32,7 +32,7 @@ The album name must meet the following requirements:
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.WRITE_IMAGEVIDEO permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.WRITE_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 Example: Create a user album.
 
@@ -66,9 +66,9 @@ Use [PhotoAccessHelper.getAlbums](../../reference/apis-media-library-kit/arkts-a
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
-Example: Obtain the user album **albumName**.
+The following example describes how to obtain the user album **albumName**.
 
 **How to Develop**
 
@@ -118,9 +118,9 @@ The new user album names must meet the following requirements:
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
-Example: Rename the user album **albumName**.
+The following example describes how to rename the user album **albumName**.
 
 **How to Develop**
 
@@ -166,9 +166,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
-Example: Add an image to the user album **albumName**.
+The following example describes how to add an image to the user album **albumName**.
 
 **How to Develop**
 
@@ -226,9 +226,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
-Example: Obtain an image in the user album **albumName**.
+The following example describes how to obtain an image in the user album **albumName**.
 
 **How to Develop**
 
@@ -282,9 +282,9 @@ Select the assets to remove, and use [MediaAlbumChangeRequest.removeAssets](../.
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
-Example: Remove an image from the user album **albumName**.
+The following example describes how to remove an image from the user album **albumName**.
 
 **How to Develop**
 
@@ -353,9 +353,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
-Example: Delete the user album **albumName**.
+The following example describes how to delete the user album **albumName**.
 
 **How to Develop**
 

@@ -67,7 +67,7 @@ type(value: InputType)
 
 Sets the text box type.
 
-Different input types will bring up the corresponding keyboard and restrict the input.
+Different input types will bring up the corresponding keyboard and restrict the input.<!--RP4--><!--RP4End-->
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -118,7 +118,7 @@ Placeholder text style, including the font size, font weight, font family, and f
 
 > **NOTE**
 >
-> You can use [loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) to register custom fonts.
+> You are advised to use [loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) to register custom fonts.
 
 ### enterKeyType
 
@@ -261,7 +261,7 @@ inputFilter(value: ResourceStr, error?: Callback\<string>)
 
 Sets the regular expression for input filtering. Only inputs that comply with the regular expression can be displayed. Other inputs are filtered out.
 
-For single-character input scenarios, only single-character matching is supported; for multi-character input scenarios (such as pasting), string matching is supported.
+For single-character input scenarios, only single-character matching is supported; for multi-character input scenarios (such as pasting), string matching is supported.<!--RP5--><!--RP5End-->
 
 From API version 11, if inputFilter is set and the entered character is not empty, the text filtering effect of the [type](#type) API becomes invalid.
 
@@ -736,6 +736,12 @@ Sets the text line height.
 
 If the value is less than or equal to **0**, the line height is unrestricted and adapts to the font size. When the value is a number, the unit is fp. For the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported.
 
+> **NOTE**
+>  
+> - If certain characters have significantly taller glyphs than others on the same line, layout anomalies such as clipping, overlap, or misalignment may occur. In this case, adjust component attributes such as height and line height to ensure proper layout rendering.
+> 
+> - When the [password mode](../../../ui/arkts-common-components-text-input.md#password-mode) is set, [lineHeight](#lineheight12) set by this API does not take effect.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -746,9 +752,6 @@ If the value is less than or equal to **0**, the line height is unrestricted and
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
 | value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Text line height.|
 
->  **NOTE**
->  
->  If certain characters have significantly taller glyphs than others on the same line, layout anomalies such as clipping, overlap, or misalignment may occur. In this case, adjust component attributes such as height and line height to ensure proper layout rendering.
 ### decoration<sup>12+</sup>
 
 decoration(value: TextDecorationOptions)
@@ -1042,7 +1045,7 @@ enableHapticFeedback(isEnabled: boolean)
 
 Specifies whether to enable haptic feedback.
 
-To enable haptic feedback, you must declare the ohos.permission.VIBRATE permission under **requestPermissions** in the **module.json5** file of the project.
+To enable haptic feedback, you must declare the **ohos.permission.VIBRATE** permission under **requestPermissions** in the [module.json5](../../../quick-start/module-configuration-file.md) file of the project.
 
 ```json
 "requestPermissions": [
@@ -1082,7 +1085,7 @@ Sets the auto-capitalization text mode. This API provides the capability, but ac
 
 keyboardAppearance(appearance: Optional\<KeyboardAppearance>)
 
-Sets the keyboard appearance for the text box.
+Sets the appearance of the keyboard when the text box is focused.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -1172,7 +1175,7 @@ Sets the minimum font scale factor for text.
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)> | Yes  | Minimum font scale factor for text. The **undefined** type is supported.<br>Value range: [0, 1]<br>**NOTE**<br>A value less than 0 is handled as 0. A value greater than 1 is handled as 1. Abnormal values are ineffective by default.<br>Before use, the **configuration.json** file and **app.json5** file must be configured in the project. For details, see [Example 18: Setting the Minimum and Maximum Font Scale Factors](#example-18-setting-the-minimum-and-maximum-font-scale-factors).|
+| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)> | Yes  | Minimum font scale factor for text. The **undefined** type is supported.<br>Value range: [0, 1]<br>**NOTE**<br>A value less than 0 is handled as 0. A value greater than 1 is handled as 1. Abnormal values are ineffective by default.<br>Before use, you need to configure the [configuration.json](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file) and [app.json5](../../../quick-start/app-configuration-file.md) files in the project. For details, see [Example 18: Setting the Minimum and Maximum Font Scale Factors](#example-18-setting-the-minimum-and-maximum-font-scale-factors).|
 
 ### maxFontScale<sup>18+</sup>
 
@@ -1188,7 +1191,7 @@ Sets the maximum font scale factor for text.
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)> | Yes  | Maximum font scale factor for text. The **undefined** type is supported.<br>Value range: [1, +∞)<br>**NOTE**<br>A value less than 1 is handled as 1. Abnormal values are ineffective by default.<br>After the maxFontScale attribute is set, the showError attribute can be enlarged to twice at most.<br>Before use, the **configuration.json** file and **app.json5** file must be configured in the project. For details, see [Example 18: Setting the Minimum and Maximum Font Scale Factors](#example-18-setting-the-minimum-and-maximum-font-scale-factors).|
+| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)> | Yes  | Maximum font scale factor for text. The **undefined** type is supported.<br>Value range: [1, +∞)<br>**NOTE**<br>A value less than 1 is handled as 1. Abnormal values are ineffective by default.<br>After the maxFontScale attribute is set, the showError attribute can be enlarged to twice at most.<br>Before use, you need to configure the [configuration.json](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file) and [app.json5](../../../quick-start/app-configuration-file.md) files in the project. For details, see [Example 18: Setting the Minimum and Maximum Font Scale Factors](#example-18-setting-the-minimum-and-maximum-font-scale-factors).|
 
 ### cancelButton<sup>18+</sup>
 
@@ -1268,10 +1271,10 @@ Sets the single-line text input box type.
 | Number                        | 2 | Digit input mode.<br>Negative numbers and decimals are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | PhoneNumber<sup>9+</sup>      | 3 | Phone number input mode.<br>In this mode, the following are allowed: digits, spaces, plus signs (+), hyphens (-), asterisks (*), and number signs (#); the length is not limited.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | Email                         | 5 | Email address input mode.<br>This mode accepts only digits, letters, underscores (_), dots (.), and the following special characters: ! # $ % & ' " * + - / = ? ^ ` \{ \| \} ~ @ (which can only appear once)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| Password                      | 7 | Password input mode.<br>By default, the entered text is displayed as dots after a short period of time. Since API version 12, the entered text is displayed as dots on PCs and 2-in-1 devices.<br>By default, the eye icon is not displayed at the end of the text box on TVs, and is displayed at the end of the text box on other devices.<br>In the password input mode, [decoration](#decoration12) and [showUnderline](#showunderline10) do not take effect.<br>If Password Vault is enabled, autofill is available for the username and password.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| NUMBER_PASSWORD<sup>11+</sup> | 8 | Numeric password input mode.<br>By default, the entered text is displayed as dots after a short period of time. Starting from API version 12, the entered text is displayed as dots on PCs and 2-in-1 devices.<br>By default, the eye icon is not displayed at the end of the text box on TVs, and is displayed at the end of the text box on other devices.<br>The password input mode does not support underlines. If Password Vault is enabled, autofill is available for the username and password.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| Password                      | 7 | Password input mode.<br>By default, the entered text is displayed as dots after a short period of time. Since API version 12, the entered text is displayed as dots on PCs and 2-in-1 devices.<br>By default, the eye icon is not displayed at the end of the text box on TVs, and is displayed at the end of the text box on other devices.<br>[decoration](#decoration12), [showUnderline](#showunderline10), and [lineHeight](#lineheight12) do not take effect in password input mode.<br>If Password Vault is enabled, autofill is available for the username and password.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| NUMBER_PASSWORD<sup>11+</sup> | 8 | Numeric password input mode.<br>By default, the entered text is displayed as dots after a short period of time. Since API version 12, the entered text is displayed as dots on PCs and 2-in-1 devices.<br>By default, the eye icon is not displayed at the end of the text box on TVs, and is displayed at the end of the text box on other devices.<br>The password input mode does not support underlines. If Password Vault is enabled, autofill is available for the username and password.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | USER_NAME<sup>11+</sup>       | 10 | User name input mode. There is no special restriction.<br>If Password Vault is enabled, autofill is available for the username and password.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| NEW_PASSWORD<sup>11+</sup>    | 11 | New password input mode. There is no special restriction.<br>By default, the entered text is displayed as dots after a short period of time. Starting from API version 12, the entered text is displayed as dots on PCs and 2-in-1 devices.<br>By default, the eye icon is not displayed at the end of the text box on TVs, and is displayed at the end of the text box on other devices.<br>If Password Vault is enabled, a new password can be automatically generated.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| NEW_PASSWORD<sup>11+</sup>    | 11 | New password input mode. There is no special restriction.<br>By default, the entered text is displayed as dots after a short period of time. Since API version 12, the entered text is displayed as dots on PCs and 2-in-1 devices.<br>By default, the eye icon is not displayed at the end of the text box on TVs, and is displayed at the end of the text box on other devices.<br>If Password Vault is enabled, a new password can be automatically generated.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | NUMBER_DECIMAL<sup>11+</sup>  | 12 | Number input mode with a decimal point.<br>The value can contain digits and one decimal point. Negative numbers with decimal points are not supported. For the input mode of negative numbers with decimal points, use inputFilter.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | URL<sup>12+</sup>  | 13 | URL input mode with no special restrictions.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | ONE_TIME_CODE<sup>20+</sup>  | 14 | One-time code (verification code) input mode with no special restrictions.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
@@ -1412,7 +1415,7 @@ Triggered when the input status changes.
 
 | Name   | Type   | Mandatory| Description                |
 | --------- | ------- | ---- | -------------------- |
-| isEditing | boolean | Yes  | Whether the text box is in the editing state. The value **true** indicates that the text box is in the editing state.|
+| isEditing | boolean | Yes  | Whether the text box is being edited.<br>true if the text box is in the editing state; false otherwise.|
 
 ### onEditChange<sup>8+</sup>
 
@@ -1527,7 +1530,7 @@ Triggered when the password visibility changes.
 
 | Name      | Type  | Mandatory| Description                              |
 | ------------ | ------ | ---- | ---------------------------------- |
-| callback | Callback\<boolean> | Yes  | Callback used to return the result.|
+| callback | Callback\<boolean> | Yes  | Callback used to return the result.<br>true if the state is switched; false otherwise.|
 
 ### onWillInsert<sup>12+</sup>
 
@@ -1644,7 +1647,7 @@ The IMEClient is valid only during the execution of onWillAttachIME and cannot b
 
 ## TextInputController<sup>8+</sup>
 
-The controller of the TextInput component is inherited from [TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase). The involved APIs include [getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect), [getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount), [getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11), [addText](ts-universal-attributes-text-style.md#addtext15), [deleteText](ts-universal-attributes-text-style.md#deletetext15), [getSelection](ts-universal-attributes-text-style.md#getselection15), [clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17), [setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)<!--Del-->, and the system API [getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->.
+The controller for the **TextInput** component inherits from [TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase). The APIs involved are as follows: [getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect), [getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount), [getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11), [addText](ts-universal-attributes-text-style.md#addtext15), [deleteText](ts-universal-attributes-text-style.md#deletetext15), [getSelection](ts-universal-attributes-text-style.md#getselection15), [clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17), [setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)<!--Del-->, system API [getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2329,7 +2332,7 @@ struct TextInputExample {
           .style(TextInputStyle.Inline)
           .wordBreak(WordBreak.BREAK_ALL)
 
-        Text("TextInput is inline style, WordBreakType is BREAK_ALL").fontSize(16).fontColor(0xCCCCCC)
+        Text("WordBreakType as BREAK_ALL in the inline input style:").fontSize(16).fontColor(0xCCCCCC)
         TextInput({
           text: this.textStrZn
         })
@@ -2566,7 +2569,7 @@ From API version 12, this example uses the [lineBreakStrategy](#linebreakstrateg
 struct TextInputExample {
   @State message1: string =
     "They can be classified as built-in components–those directly provided by the ArkUI framework and custom components – those defined by developers" +
-      "The built-in components include buttons radio buttonsprogress indicators and text You can set the rendering effectof thesecomponents in method chaining mode," +
+      "The built-in components include buttons radio progress indicators and text You can set the rendering effect of these components in method chaining mode," +
       "page components are divided into independent UI units to implementindependent creation development and reuse of different units on pages making pages more engineering-oriented.";
   @State lineBreakStrategyIndex: number = 0;
   @State lineBreakStrategy: LineBreakStrategy[] =
@@ -2641,7 +2644,6 @@ struct TextInputExample {
 
         Text("deleteValue:" + this.deleteValue + "  deleteOffset:" + this.deleteOffset).height(30)
         Text("deleteDirection:" + (this.deleteDirection == 0 ? "BACKWARD" : "FORWARD")).height(30)
-        Text("currentValue_2:" + this.currentValue_2).height(30)
 
       }.width('100%')
     }
@@ -2732,6 +2734,7 @@ struct TextInputExample {
 ```
 
 <!--RP4-->
+
 <!--RP4End-->
 
 ### Example 15: Setting a Symbol-Type Cancel Button
@@ -3073,7 +3076,7 @@ struct TextInputExample {
 }
 ```
 
-![textInputSetTextSelection](figures/textInputSetTextSelection.gif)
+
 
 ### Example 20: Setting Text Stroke
 

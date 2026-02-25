@@ -24,26 +24,24 @@ The following sections describe how to transfer images across ArkTS threads usin
 
 In ArkTS, TaskPool passes ArrayBuffer data by transfer by default. You can call **setTransferList()** to specify which parts of data should be passed by transfer, while the rest can be switched to pass-by-copy.
 
-First, implement an API for processing ArrayBuffer. The API is executed in a task.
-
-Then, pass the ArrayBuffer data to the task by copy and process it.
-
-Finally, the UI main thread receives the ArrayBuffer data returned after the task is executed, combines the data, and displays it.
-
 ```ts
 // Index.ets
 import { taskpool } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Processing function executed by the task, which is used to process ArrayBuffer data.
 @Concurrent
 function adjustImageValue(arrayBuffer: ArrayBuffer): ArrayBuffer {
   // Perform operations on the ArrayBuffer. The return value is transferred by default.
   return arrayBuffer;
 }
 
+/*
+ * Create a task to pass the ArrayBuffer to the task for execution.
+ * isParamsByTransfer is used to control whether the ArrayBuffer is passed by copy or transfer.
+ */
 function createImageTask(arrayBuffer: ArrayBuffer, isParamsByTransfer: boolean): taskpool.Task {
   let task: taskpool.Task = new taskpool.Task(adjustImageValue, arrayBuffer);
-  // Whether to use pass-by-transfer.
   if (!isParamsByTransfer) {
     // Pass an empty array [] to indicate that all ArrayBuffer parameters should be passed by copy.
     task.setTransferList([]);
@@ -67,6 +65,7 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
+          // Create the ArrayBuffer object to be processed and split it according to the value of taskNum.
           let taskNum = 4;
           let arrayBuffer = new ArrayBuffer(1024 * 1024);
           let taskPoolGroup = new taskpool.TaskGroup();
@@ -76,9 +75,9 @@ struct Index {
             // To pass the ArrayBuffer object by copy, set isParamsByTransfer to false.
             taskPoolGroup.addTask(createImageTask(arrayBufferSlice, false));
           }
-          // Execute the tasks.
+          // Execute the tasks. The UI main thread receives the results after processing.
           taskpool.execute(taskPoolGroup).then((data) => {
-            // Concatenate the results to obtain the final result.
+            // Concatenate the ArrayBuffer data returned by each task.
           }).catch((e: BusinessError) => {
             console.error(e.message);
           })

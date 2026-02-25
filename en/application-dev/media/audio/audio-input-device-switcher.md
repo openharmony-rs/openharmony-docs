@@ -18,9 +18,7 @@ Applications can use [setBluetoothAndNearlinkPreferredRecordCategory](../../refe
 >
 > In call scenarios, if a Bluetooth or NearLink device is online, the system uses the Bluetooth or NearLink device as the input device by default.
 
-<!-- @[set_BluetoothAndNearlinkPreferredRecordCategory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/InputDeviceRoutingSwitching.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';  // Import the audio module.
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -43,9 +41,7 @@ Applications can use [selectMediaInputDevice](../../reference/apis-audio-kit/ark
 >
 > In call scenarios, the input device follows the current output device, and other concurrent recording streams also follows the call input device.
 
-<!-- @[select_MediaInputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/InputDeviceRoutingSwitching.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';  // Import the audio module.
 import { BusinessError } from '@kit.BasicServicesKit';
 

@@ -13,7 +13,7 @@ Currently, the following components support **ContentModifier**: [Button](../ref
 The following example shows how to use **ContentModifier** to replace the default check box with a pentagon shape. When the check box is selected, a red triangle appears inside the pentagon and the title updates to **selected**. When the check box is deselected, the triangle disappears and the title changes to **not selected**.
 
  <!-- @[checkbox_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Modifier/entry/src/main/ets/pages/MyCheckboxStyle.ets) -->
-
+ 
  ``` TypeScript
  import { hilog } from '@kit.PerformanceAnalysisKit';
  const DOMAIN = 0x0000;

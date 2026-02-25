@@ -33,11 +33,11 @@
 
 在电子书或新闻阅读应用中，用户希望通过音量键控制翻页（例如：音量加键向下翻页，音量减键向上翻页）；在相机或扫码类应用中，用户按音量键可直接拍照，而不跳转系统相机应用。
 
-<!-- @[input_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/ArkTSInputConsumer/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[input_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/ArkTSInputConsumer/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { inputConsumer, KeyEvent } from '@kit.InputKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { KeyCode } from '@kit.InputKit';
 
 const DOMAIN = 0x0000;
@@ -186,6 +186,5 @@ struct TestDemo14 {
     }.width('100%').height('100%')
   }
 }
-
 ```
 

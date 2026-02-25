@@ -309,6 +309,10 @@ setNetFirewallPolicy(userId: number, policy: NetFirewallPolicy): Promise\<void>
 
 Sets a firewall policy. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> If this API is called by multiple applications under the same system user, the latest delivered policy prevails.
+
 **Required permission**: ohos.permission.MANAGE_NET_FIREWALL
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
@@ -543,7 +547,7 @@ Defines a firewall rule.
 | localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No| Yes|List of local ports. This parameter is valid when **ruleType** is set to **RULE_IP**. A maximum of 10 local ports are supported.  |
 | remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | No|Yes|List of remote ports. This parameter is valid when **ruleType** is set to **RULE_IP**. A maximum of 10 remote ports are supported.  |
 | domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | No|Yes|List of domain names. This parameter is valid only when **ruleType** is set to **RULE_DOMAIN**. Currently, domain names cannot contain Chinese characters.        |
-| dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | No|Yes|List of DNS server names. This parameter is valid only when **ruleType** is set to **RULE_DNS**.                 |
+| dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | No|Yes|List of DNS server names. This parameter is valid only when **ruleType** is set to **RULE_DNS**. This parameter cannot be empty when ruleType is set to RULE_DNS.                |
 
 ## RequestParam
 
@@ -684,6 +688,10 @@ Defines the domain information of a firewall rule.
 ## NetFirewallDnsParams
 
 Defines the DNS information of a firewall rule.
+
+ > **Description**
+ >
+ >  This parameter cannot be empty when **rule.type** of [addNetFirewallRule](#netfirewalladdnetfirewallrule) is set to RULE_DNS.
 
 **System capability**: SystemCapability.Communication.NetManager.NetFirewall
 

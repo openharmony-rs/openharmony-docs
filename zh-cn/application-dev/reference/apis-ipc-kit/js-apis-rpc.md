@@ -24,7 +24,7 @@ import { rpc } from '@kit.IPCKit';
 
 从API version 9起，IPC支持异常返回功能。错误码对应数值及含义如下。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
   | 名称                                  | 值      | 说明                                          |
   | ------------------------------------- | ------- | --------------------------------------------- |
@@ -47,7 +47,7 @@ import { rpc } from '@kit.IPCKit';
 
 从API version 12起，IPC新增[writeArrayBuffer](#writearraybuffer12)和[readArrayBuffer](#readarraybuffer12)方法传递ArrayBuffer数据，传递数据时通过具体类型值来分辨业务是以哪一种TypedArray去进行数据的读写。类型码对应数值及含义如下。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
   | 名称                         | 值     | 说明                                          |
   | ---------------------------- | ------ | --------------------------------------------  |
@@ -72,7 +72,7 @@ static create(): MessageSequence
 
 静态方法，创建MessageSequence对象。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -106,7 +106,7 @@ reclaim(): void
 
 释放不再使用的MessageSequence对象。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **示例：**
 
@@ -131,7 +131,7 @@ writeRemoteObject(obj: IRemoteObject): void
 
 序列化远程对象并将其写入[MessageSequence](#messagesequence9)对象。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -184,7 +184,7 @@ readRemoteObject(): IRemoteObject
 
 从MessageSequence读取远程对象。此方法用于反序列化MessageSequence对象以生成IRemoteObject。远程对象按写入MessageSequence的顺序读取。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -238,7 +238,7 @@ writeInterfaceToken(token: string): void
 
 将接口描述符写入MessageSequence对象，远端对象可使用该信息校验本次通信。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -278,7 +278,7 @@ readInterfaceToken(): string
 
 从MessageSequence对象中读取接口描述符，接口描述符按写入MessageSequence的顺序读取，本地对象可使用该信息检验本次通信。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -319,7 +319,7 @@ getSize(): number
 
 获取当前创建的MessageSequence对象的数据大小。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -351,7 +351,7 @@ getCapacity(): number
 
 获取当前MessageSequence对象的容量大小。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -383,7 +383,7 @@ setSize(size: number): void
 
 设置MessageSequence对象中包含的数据大小。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -424,7 +424,7 @@ setCapacity(size: number): void
 
 设置MessageSequence对象的存储容量。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -465,7 +465,7 @@ getWritableBytes(): number
 
 获取MessageSequence的可写字节空间大小。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -498,7 +498,7 @@ getReadableBytes(): number
 
 获取MessageSequence的可读字节空间。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -531,7 +531,7 @@ getReadPosition(): number
 
 获取MessageSequence的读位置。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -564,7 +564,7 @@ getWritePosition(): number
 
 获取MessageSequence的写位置。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -597,7 +597,7 @@ rewindRead(pos: number): void
 
 重新偏移读取位置到指定的位置。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -643,7 +643,7 @@ rewindWrite(pos: number): void
 
 重新偏移写位置到指定的位置。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -687,7 +687,7 @@ writeByte(val: number): void
 
 将字节值写入MessageSequence实例。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -727,7 +727,7 @@ readByte(): number
 
 从MessageSequence实例中读取字节值。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -768,7 +768,7 @@ writeShort(val: number): void
 
 将短整数值写入MessageSequence实例。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -808,7 +808,7 @@ readShort(): number
 
 从MessageSequence实例中读取短整数值。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -849,7 +849,7 @@ writeInt(val: number): void
 
 将整数值写入MessageSequence实例。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -889,7 +889,7 @@ readInt(): number
 
 从MessageSequence实例中读取整数值。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -930,7 +930,7 @@ writeLong(val: number): void
 
 将长整数值写入MessageSequence实例。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -970,7 +970,7 @@ readLong(): number
 
 从MessageSequence实例中读取长整数值。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -1011,7 +1011,7 @@ writeFloat(val: number): void
 
 将双精度浮点值写入MessageSequence实例。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -1051,7 +1051,7 @@ readFloat(): number
 
 从MessageSequence实例中读取双精度浮点值。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -1092,7 +1092,7 @@ writeDouble(val: number): void
 
 将双精度浮点值写入MessageSequence实例。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -1132,7 +1132,7 @@ readDouble(): number
 
 从MessageSequence实例中读取双精度浮点值。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -1173,7 +1173,7 @@ writeBoolean(val: boolean): void
 
 将布尔值写入MessageSequence实例。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -1213,7 +1213,7 @@ readBoolean(): boolean
 
 从MessageSequence实例中读取布尔值。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -1254,7 +1254,7 @@ writeChar(val: number): void
 
 将单个字符值写入MessageSequence实例。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -1294,7 +1294,7 @@ readChar(): number
 
 从MessageSequence实例中读取单个字符值。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -1335,7 +1335,7 @@ writeString(val: string): void
 
 将字符串值写入MessageSequence实例。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -1375,7 +1375,7 @@ readString(): string
 
 从MessageSequence实例中读取字符串值。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -1416,7 +1416,7 @@ writeParcelable(val: Parcelable): void
 
 将自定义序列化对象写入MessageSequence实例。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -1476,7 +1476,7 @@ readParcelable(dataIn: Parcelable): void
 
 从MessageSequence实例中读取成员变量到指定的对象（dataIn）。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -1539,7 +1539,7 @@ writeByteArray(byteArray: number[]): void
 
 将字节数组写入MessageSequence实例。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -1580,7 +1580,7 @@ readByteArray(dataIn: number[]): void
 
 从MessageSequence实例中读取字节数组，并将其写入到创建的空数组中。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -1624,7 +1624,7 @@ readByteArray(): number[]
 
 从MessageSequence实例中读取字节数组。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -1666,7 +1666,7 @@ writeShortArray(shortArray: number[]): void
 
 将短整数数组写入MessageSequence实例。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -1706,7 +1706,7 @@ readShortArray(dataIn: number[]): void
 
 从MessageSequence实例中读取短整数数组，并将其写入到创建的空数组中。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -1749,7 +1749,7 @@ readShortArray(): number[]
 
 从MessageSequence实例中读取短整数数组。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -1790,7 +1790,7 @@ writeIntArray(intArray: number[]): void
 
 将整数数组写入MessageSequence实例。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -1830,7 +1830,7 @@ readIntArray(dataIn: number[]): void
 
 从MessageSequence实例中读取整数数组，并将其写入到创建的空数组中。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -1873,7 +1873,7 @@ readIntArray(): number[]
 
 从MessageSequence实例中读取整数数组。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -1914,7 +1914,7 @@ writeLongArray(longArray: number[]): void
 
 将长整数数组写入MessageSequence实例。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -1954,7 +1954,7 @@ readLongArray(dataIn: number[]): void
 
 从MessageSequence实例中读取的长整数数组，并将其写入到创建的空数组中。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -1997,7 +1997,7 @@ readLongArray(): number[]
 
 从MessageSequence实例中读取所有的长整数数组。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -2038,7 +2038,7 @@ writeFloatArray(floatArray: number[]): void
 
 将双精度浮点数组写入MessageSequence实例。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -2078,7 +2078,7 @@ readFloatArray(dataIn: number[]): void
 
 从MessageSequence实例中读取双精度浮点数组，并将其写入到创建的空数组中。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -2121,7 +2121,7 @@ readFloatArray(): number[]
 
 从MessageSequence实例中读取双精度浮点数组。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -2162,7 +2162,7 @@ writeDoubleArray(doubleArray: number[]): void
 
 将双精度浮点数组写入MessageSequence实例。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -2202,7 +2202,7 @@ readDoubleArray(dataIn: number[]): void
 
 从MessageSequence实例中读取双精度浮点数组，并将其写入到创建的空数组中。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -2245,7 +2245,7 @@ readDoubleArray(): number[]
 
 从MessageSequence实例中读取所有双精度浮点数组。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -2286,7 +2286,7 @@ writeBooleanArray(booleanArray: boolean[]): void
 
 将布尔数组写入MessageSequence实例。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -2326,7 +2326,7 @@ readBooleanArray(dataIn: boolean[]): void
 
 从MessageSequence实例中读取布尔数组，并将其写入到创建的空数组中。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -2369,7 +2369,7 @@ readBooleanArray(): boolean[]
 
 从MessageSequence实例中读取所有布尔数组。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -2410,7 +2410,7 @@ writeCharArray(charArray: number[]): void
 
 将单个字符数组写入MessageSequence实例。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -2450,7 +2450,7 @@ readCharArray(dataIn: number[]): void
 
 从MessageSequence实例中读取单个字符数组，并将其写入到创建的空数组中。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -2493,7 +2493,7 @@ readCharArray(): number[]
 
 从MessageSequence实例中读取单个字符数组。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -2534,7 +2534,7 @@ writeStringArray(stringArray: string[]): void
 
 将字符串数组写入MessageSequence实例。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -2574,7 +2574,7 @@ readStringArray(dataIn: string[]): void
 
 从MessageSequence实例中读取字符串数组，并将其写入到创建的空数组中。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -2617,7 +2617,7 @@ readStringArray(): string[]
 
 从MessageSequence实例中读取字符串数组。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -2658,7 +2658,7 @@ writeNoException(): void
 
 向MessageSequence写入“指示未发生异常”的信息。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **错误码：**
 
@@ -2705,7 +2705,7 @@ readException(): void
 
 从MessageSequence中读取异常。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **错误码：**
 
@@ -2801,7 +2801,7 @@ writeParcelableArray(parcelableArray: Parcelable[]): void
 
 将可序列化对象数组写入MessageSequence实例。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -2864,7 +2864,7 @@ readParcelableArray(parcelableArray: Parcelable[]): void
 
 从MessageSequence实例中读取可序列化对象数组。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -2930,7 +2930,7 @@ writeRemoteObjectArray(objectArray: IRemoteObject[]): void
 
 将IRemoteObject对象数组写入MessageSequence。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -2982,7 +2982,7 @@ readRemoteObjectArray(objects: IRemoteObject[]): void
 
 从MessageSequence读取IRemoteObject对象数组，并将其写入到创建的空数组中。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -3037,7 +3037,7 @@ readRemoteObjectArray(): IRemoteObject[]
 
 从MessageSequence读取IRemoteObject对象数组。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -3089,7 +3089,7 @@ static closeFileDescriptor(fd: number): void
 
 静态方法，关闭给定的文件描述符。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -3130,7 +3130,7 @@ static dupFileDescriptor(fd: number): number
 
 静态方法，复制给定的文件描述符。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -3178,7 +3178,7 @@ containFileDescriptors(): boolean
 
 检查此MessageSequence对象是否包含文件描述符。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -3213,7 +3213,7 @@ writeFileDescriptor(fd: number): void
 
 写入文件描述符到MessageSequence。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -3256,7 +3256,7 @@ readFileDescriptor(): number
 
 从MessageSequence中读取文件描述符。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -3300,7 +3300,7 @@ writeAshmem(ashmem: Ashmem): void
 
 将指定的匿名共享对象写入此MessageSequence。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -3353,7 +3353,7 @@ readAshmem(): Ashmem
 
 从MessageSequence读取匿名共享对象。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -3415,7 +3415,7 @@ getRawDataCapacity(): number
 
 获取MessageSequence可以容纳的最大原始数据量。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -3452,9 +3452,10 @@ writeRawData(rawData: number[], size: number): void
 > 从API version 9 开始支持，API version 11 开始废弃，建议使用[writeRawDataBuffer](#writerawdatabuffer11)替代。
 >
 > 该接口是一次性接口，不允许在一次parcel通信中多次调用该接口。
+>
 > 该接口在传输数据时，当数据量较大时（超过32KB），会使用共享内存传输数据，此时需注意selinux配置。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -3502,7 +3503,7 @@ writeRawDataBuffer(rawData: ArrayBuffer, size: number): void
 > 该接口是一次性接口，不允许在一次parcel通信中多次调用该接口。
 > 该接口在传输数据时，当数据量较大时（超过32KB），会使用共享内存传输数据，此时需注意selinux配置。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -3553,7 +3554,7 @@ readRawData(size: number): number[]
 >
 > 从API version 9 开始支持，API version 11 开始废弃，建议使用[readRawDataBuffer](#readrawdatabuffer11)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -3604,7 +3605,7 @@ readRawDataBuffer(size: number): ArrayBuffer
 
 从MessageSequence读取原始数据。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -3659,7 +3660,7 @@ writeArrayBuffer(buf: ArrayBuffer, typeCode: TypeCode): void
 
 将ArrayBuffer类型数据写入MessageSequence对象。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -3706,7 +3707,7 @@ readArrayBuffer(typeCode: TypeCode): ArrayBuffer
 
 从MessageSequence读取ArrayBuffer类型数据。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -3763,6 +3764,8 @@ try {
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[MessageSequence](#messagesequence9)替代。
 
+**系统能力：** SystemCapability.Communication.IPC.Core
+
 ### create<sup>(deprecated)</sup>
 
 static create(): MessageParcel
@@ -3773,7 +3776,7 @@ static create(): MessageParcel
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[create](#create9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -3809,7 +3812,7 @@ reclaim(): void
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[reclaim](#reclaim9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **示例：**
 
@@ -3836,7 +3839,7 @@ writeRemoteObject(object: IRemoteObject): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeRemoteObject](#writeremoteobject9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -3886,7 +3889,7 @@ readRemoteObject(): IRemoteObject
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readRemoteObject](#readremoteobject9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -3933,7 +3936,7 @@ writeInterfaceToken(token: string): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeInterfaceToken](#writeinterfacetoken9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -3973,7 +3976,7 @@ readInterfaceToken(): string
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readInterfaceToken](#readinterfacetoken9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -4008,7 +4011,7 @@ getSize(): number
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[getSize](#getsize9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -4043,7 +4046,7 @@ getCapacity(): number
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[getCapacity](#getcapacity9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -4077,7 +4080,7 @@ setSize(size: number): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[setSize](#setsize9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -4117,7 +4120,7 @@ setCapacity(size: number): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[setCapacity](#setcapacity9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -4157,7 +4160,7 @@ getWritableBytes(): number
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[getWritableBytes](#getwritablebytes9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -4192,7 +4195,7 @@ getReadableBytes(): number
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[getReadableBytes](#getreadablebytes9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -4227,7 +4230,7 @@ getReadPosition(): number
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[getReadPosition](#getreadposition9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -4261,7 +4264,7 @@ getWritePosition(): number
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[getWritePosition](#getwriteposition9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -4296,7 +4299,7 @@ rewindRead(pos: number): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[rewindRead](#rewindread9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -4341,7 +4344,7 @@ rewindWrite(pos: number): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[reWindWrite](#rewindwrite9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -4384,7 +4387,7 @@ writeByte(val: number): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeByte](#writebyte9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -4424,7 +4427,7 @@ readByte(): number
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readByte](#readbyte9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -4460,7 +4463,7 @@ writeShort(val: number): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeShort](#writeshort9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -4500,7 +4503,7 @@ readShort(): number
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readShort](#readshort9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -4536,7 +4539,7 @@ writeInt(val: number): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeInt](#writeint9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -4576,7 +4579,7 @@ readInt(): number
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readInt](#readint9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -4612,7 +4615,7 @@ writeLong(val: number): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeLong](#writelong9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -4652,7 +4655,7 @@ readLong(): number
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readLong](#readlong9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -4688,7 +4691,7 @@ writeFloat(val: number): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeFloat](#writefloat9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -4728,7 +4731,7 @@ readFloat(): number
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readFloat](#readfloat9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -4764,7 +4767,7 @@ writeDouble(val: number): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeDouble](#writedouble9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -4804,7 +4807,7 @@ readDouble(): number
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readDouble](#readdouble9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -4840,7 +4843,7 @@ writeBoolean(val: boolean): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeBoolean](#writeboolean9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -4880,7 +4883,7 @@ readBoolean(): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readBoolean](#readboolean9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -4916,7 +4919,7 @@ writeChar(val: number): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeChar](#writechar9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -4956,7 +4959,7 @@ readChar(): number
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readChar](#readchar9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -4992,7 +4995,7 @@ writeString(val: string): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeString](#writestring9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -5032,7 +5035,7 @@ readString(): string
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readString](#readstring9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -5068,7 +5071,7 @@ writeSequenceable(val: Sequenceable): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeParcelable](#writeparcelable9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -5128,7 +5131,7 @@ readSequenceable(dataIn: Sequenceable): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readParcelable](#readparcelable9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -5191,7 +5194,7 @@ writeByteArray(byteArray: number[]): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeByteArray](#writebytearray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -5232,7 +5235,7 @@ readByteArray(dataIn: number[]): void
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readByteArray](#readbytearray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -5269,7 +5272,7 @@ readByteArray(): number[]
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readByteArray](#readbytearray9-1)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -5306,7 +5309,7 @@ writeShortArray(shortArray: number[]): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeShortArray](#writeshortarray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -5346,7 +5349,7 @@ readShortArray(dataIn: number[]): void
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readShortArray](#readshortarray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -5383,7 +5386,7 @@ readShortArray(): number[]
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readShortArray](#readshortarray9-1)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -5419,7 +5422,7 @@ writeIntArray(intArray: number[]): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeIntArray](#writeintarray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -5459,7 +5462,7 @@ readIntArray(dataIn: number[]): void
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readIntArray](#readintarray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -5496,7 +5499,7 @@ readIntArray(): number[]
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readIntArray](#readintarray9-1)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -5532,7 +5535,7 @@ writeLongArray(longArray: number[]): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeLongArray](#writelongarray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -5572,7 +5575,7 @@ readLongArray(dataIn: number[]): void
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readLongArray](#readlongarray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -5609,7 +5612,7 @@ readLongArray(): number[]
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readLongArray](#readlongarray9-1)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -5645,7 +5648,7 @@ writeFloatArray(floatArray: number[]): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeFloatArray](#writefloatarray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -5685,7 +5688,7 @@ readFloatArray(dataIn: number[]): void
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readFloatArray](#readfloatarray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -5722,7 +5725,7 @@ readFloatArray(): number[]
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readFloatArray](#readfloatarray9-1)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -5758,7 +5761,7 @@ writeDoubleArray(doubleArray: number[]): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeDoubleArray](#writedoublearray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -5798,7 +5801,7 @@ readDoubleArray(dataIn: number[]): void
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readDoubleArray](#readdoublearray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -5835,7 +5838,7 @@ readDoubleArray(): number[]
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readDoubleArray](#readdoublearray9-1)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -5871,7 +5874,7 @@ writeBooleanArray(booleanArray: boolean[]): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeBooleanArray](#writebooleanarray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -5911,7 +5914,7 @@ readBooleanArray(dataIn: boolean[]): void
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readBooleanArray](#readbooleanarray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -5948,7 +5951,7 @@ readBooleanArray(): boolean[]
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readBooleanArray](#readbooleanarray9-1)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -5984,7 +5987,7 @@ writeCharArray(charArray: number[]): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeCharArray](#writechararray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -6024,7 +6027,7 @@ readCharArray(dataIn: number[]): void
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readCharArray](#readchararray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -6061,7 +6064,7 @@ readCharArray(): number[]
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readCharArray](#readchararray9-1)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -6097,7 +6100,7 @@ writeStringArray(stringArray: string[]): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeStringArray](#writestringarray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -6137,7 +6140,7 @@ readStringArray(dataIn: string[]): void
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readStringArray](#readstringarray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -6174,7 +6177,7 @@ readStringArray(): string[]
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[readStringArray](#readstringarray9-1)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -6210,7 +6213,7 @@ writeNoException(): void
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[writeNoException](#writenoexception9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **示例：**
 
@@ -6252,7 +6255,7 @@ readException(): void
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[readException](#readexception9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **示例：**
 
@@ -6342,7 +6345,7 @@ writeSequenceableArray(sequenceableArray: Sequenceable[]): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[writeParcelableArray](#writeparcelablearray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -6405,7 +6408,7 @@ readSequenceableArray(sequenceableArray: Sequenceable[]): void
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[readParcelableArray](#readparcelablearray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -6464,7 +6467,7 @@ writeRemoteObjectArray(objectArray: IRemoteObject[]): boolean
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[writeRemoteObjectArray](#writeremoteobjectarray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -6516,7 +6519,7 @@ readRemoteObjectArray(objects: IRemoteObject[]): void
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[readRemoteObjectArray](#readremoteobjectarray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -6565,7 +6568,7 @@ readRemoteObjectArray(): IRemoteObject[]
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[readRemoteObjectArray](#readremoteobjectarray9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -6614,7 +6617,7 @@ static closeFileDescriptor(fd: number): void
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[closeFileDescriptor](#closefiledescriptor9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -6649,7 +6652,7 @@ static dupFileDescriptor(fd: number) :number
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[dupFileDescriptor](#dupfiledescriptor9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -6690,7 +6693,7 @@ containFileDescriptors(): boolean
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[containFileDescriptors](#containfiledescriptors9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -6729,7 +6732,7 @@ writeFileDescriptor(fd: number): boolean
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[writeFileDescriptor](#writefiledescriptor9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -6772,7 +6775,7 @@ readFileDescriptor(): number
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[readFileDescriptor](#readfiledescriptor9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -6810,7 +6813,7 @@ writeAshmem(ashmem: Ashmem): boolean
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[writeAshmem](#writeashmem9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -6851,7 +6854,7 @@ readAshmem(): Ashmem
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[readAshmem](#readashmem9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -6888,7 +6891,7 @@ getRawDataCapacity(): number
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[getRawDataCapacity](#getrawdatacapacity9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -6922,7 +6925,7 @@ writeRawData(rawData: number[], size: number): boolean
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[writeRawDataBuffer](#writerawdatabuffer11)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -6964,7 +6967,7 @@ readRawData(size: number): number[]
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[readRawDataBuffer](#readrawdatabuffer11)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -7001,13 +7004,15 @@ try {
 
 在进程间通信（IPC）期间，将类的对象写入MessageSequence并从MessageSequence中恢复它们。
 
+**系统能力：** SystemCapability.Communication.IPC.Core
+
 ### marshalling<sup>9+</sup>
 
 marshalling(dataOut: MessageSequence): boolean
 
 将此可序列对象封送到MessageSequence中。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -7064,7 +7069,7 @@ unmarshalling(dataIn: MessageSequence): boolean
 
 从MessageSequence中解封此可序列对象。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -7123,6 +7128,8 @@ try {
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[Parcelable](#parcelable9)替代。
 
+**系统能力：** SystemCapability.Communication.IPC.Core
+
 ### marshalling<sup>(deprecated)</sup>
 
 marshalling(dataOut: MessageParcel): boolean
@@ -7133,7 +7140,7 @@ marshalling(dataOut: MessageParcel): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[marshalling](#marshalling9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -7196,7 +7203,7 @@ unmarshalling(dataIn: MessageParcel): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[unmarshalling](#unmarshalling9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -7253,13 +7260,15 @@ try {
 
 远端对象的代理持有者。用于获取代理对象。
 
+**系统能力：** SystemCapability.Communication.IPC.Core
+
 ### asObject
 
 asObject(): IRemoteObject
 
 需派生类实现，获取代理或远端对象。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -7344,13 +7353,15 @@ if (proxy != undefined) {
 
 用于订阅远端对象的死亡通知。当被订阅该通知的远端对象死亡时，本端可收到消息，调用[onRemoteDied](#onremotedied)接口。远端对象死亡可以为远端对象所在进程死亡，远端对象所在设备关机或重启，当远端对象与本端对象属于不同设备时，也可为远端对象离开组网时。
 
+**系统能力：** SystemCapability.Communication.IPC.Core
+
 ### onRemoteDied
 
 onRemoteDied(): void
 
 在成功添加死亡通知订阅后，当远端对象死亡时，将自动调用本方法。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **示例：**
 
@@ -7369,7 +7380,7 @@ class MyDeathRecipient implements rpc.DeathRecipient {
 
 发送请求的响应结果。
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.Communication.IPC.Core。
+**系统能力：** 以下各项对应的系统能力均为SystemCapability.Communication.IPC.Core。
 
 | 名称    | 类型            | 只读 | 可选 | 说明                                  |
 | ------- | --------------- | ---- | ---- |-------------------------------------- |
@@ -7386,7 +7397,7 @@ class MyDeathRecipient implements rpc.DeathRecipient {
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[RequestResult](#requestresult9)替代。
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.Communication.IPC.Core。
+**系统能力：** 以下各项对应的系统能力均为SystemCapability.Communication.IPC.Core。
 
   | 名称    | 类型          | 只读 | 可选 | 说明                                |
   | ------- | ------------- | ---- | ---- | ----------------------------------- |
@@ -7399,13 +7410,15 @@ class MyDeathRecipient implements rpc.DeathRecipient {
 
 该接口可用于查询或获取接口描述符、添加或删除死亡通知、转储对象状态到特定文件、发送消息。
 
+**系统能力：** SystemCapability.Communication.IPC.Core
+
 ### getLocalInterface<sup>9+</sup>
 
 getLocalInterface(descriptor: string): IRemoteBroker
 
 查询接口描述符的字符串。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -7437,7 +7450,7 @@ queryLocalInterface(descriptor: string): IRemoteBroker
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[getLocalInterface](#getlocalinterface9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -7461,7 +7474,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -7484,7 +7497,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
 
 以同步或异步方式向对端进程发送MessageSequence消息。如果为选项设置了异步模式，则期约立即兑现，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则期约将在sendMessageRequest返回时兑现，回复内容在reply报文里。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -7519,7 +7532,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -7542,7 +7555,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
 
 以同步或异步方式向对端进程发送MessageSequence消息。如果为选项设置了异步模式，则立即收到回调，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则将在sendRequest返回时收到回调，回复内容在reply报文里。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -7572,7 +7585,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-1)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -7590,7 +7603,7 @@ registerDeathRecipient(recipient: DeathRecipient, flags: number): void
 
 注册用于接收远程对象死亡通知的回调。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -7619,7 +7632,7 @@ addDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[registerDeathRecipient](#registerdeathrecipient9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -7640,7 +7653,7 @@ unregisterDeathRecipient(recipient: DeathRecipient, flags: number): void
 
 注销用于接收远程对象死亡通知的回调。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -7669,7 +7682,7 @@ removeDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[unregisterDeathRecipient](#unregisterdeathrecipient9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -7690,7 +7703,7 @@ getDescriptor(): string
 
 获取对象的接口描述符，接口描述符为字符串。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -7716,7 +7729,7 @@ getInterfaceDescriptor(): string
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[getDescriptor](#getdescriptor9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -7730,7 +7743,7 @@ isObjectDead(): boolean
 
 检查当前对象是否死亡。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -7742,9 +7755,11 @@ isObjectDead(): boolean
 
 实现IRemoteObject代理对象。
 
+**系统能力：** SystemCapability.Communication.IPC.Core
+
 ### 属性
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.Communication.IPC.Core。
+**系统能力：** 以下各项对应的系统能力均为SystemCapability.Communication.IPC.Core。
 
   | 名称                  | 类型   | 只读  | 可选 | 说明                                     |
   | --------------------- | -------| ------|------|------------------------------------------ |
@@ -7764,7 +7779,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 >
 > 从API version 7 开始支持，API version 8 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-2)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -7859,7 +7874,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
 
 以同步或异步方式向对端进程发送MessageSequence消息。如果为选项设置了异步模式，则期约立即兑现，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则期约将在sendMessageRequest返回时兑现，回复内容在reply报文里。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -7972,7 +7987,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-2)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -8075,7 +8090,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
 
 以同步或异步方式向对端进程发送MessageSequence消息。如果为选项设置了异步模式，则立即收到回调，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则将在sendMessageRequest返回后的某个时机执行回调，回复内容在RequestResult的reply报文里。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -8105,7 +8120,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-3)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -8123,7 +8138,7 @@ getLocalInterface(interface: string): IRemoteBroker
 
 查询并获取当前接口描述符对应的本地接口对象。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -8217,7 +8232,7 @@ queryLocalInterface(interface: string): IRemoteBroker
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[getLocalInterface](#getlocalinterface9-1)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -8291,7 +8306,7 @@ registerDeathRecipient(recipient: DeathRecipient, flags: number): void
 
 注册用于接收远程对象死亡通知的回调。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -8384,7 +8399,7 @@ addDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[registerDeathRecipient](#registerdeathrecipient9-1)类替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -8464,7 +8479,7 @@ unregisterDeathRecipient(recipient: DeathRecipient, flags: number): void
 
 注销用于接收远程对象死亡通知的回调。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -8558,7 +8573,7 @@ removeDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[unregisterDeathRecipient](#unregisterdeathrecipient9-1)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -8639,7 +8654,7 @@ getDescriptor(): string
 
 获取对象的接口描述符，接口描述符为字符串。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -8726,7 +8741,7 @@ getInterfaceDescriptor(): string
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[getDescriptor](#getdescriptor9-1)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -8794,7 +8809,7 @@ isObjectDead(): boolean
 
 指示对应的RemoteObject是否死亡。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -8859,9 +8874,11 @@ if (proxy != undefined) {
 
 公共消息选项，使用指定的标志类型，构造指定的MessageOption对象。
 
+**系统能力：** SystemCapability.Communication.IPC.Core
+
 ### 属性
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.Communication.IPC.Core。
+**系统能力：** 以下各项对应的系统能力均为SystemCapability.Communication.IPC.Core。
 
   | 名称          | 类型   | 只读  | 可选  | 说明                                                                      |
   | ------------- | ------ | ----- | ----- | ------------------------------------------------------------------------ |
@@ -8876,7 +8893,7 @@ constructor(async?: boolean)
 
 MessageOption构造函数。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -8902,7 +8919,7 @@ constructor(syncFlags?: number, waitTime?: number)
 
 MessageOption构造函数。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -8929,7 +8946,7 @@ isAsync(): boolean
 
 获取SendMessageRequest调用中确定同步或是异步的标志。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -8957,7 +8974,7 @@ setAsync(isAsync: boolean): void
 
 设置SendMessageRequest调用中确定同步或是异步的标志。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -8985,7 +9002,7 @@ getFlags(): number
 
 获取同步调用或异步调用标志。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -9019,7 +9036,7 @@ setFlags(flags: number): void
 
 设置同步调用或异步调用标志。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -9050,7 +9067,7 @@ getWaitTime(): number
 
 获取rpc调用的最长等待时间。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -9082,7 +9099,7 @@ setWaitTime(waitTime: number): void
 
 设置rpc调用最长等待时间。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -9110,13 +9127,15 @@ try {
 
 用于获取IPC上下文信息，包括获取UID和PID、获取本端和对端设备ID、检查接口调用是否在同一设备上。
 
+**系统能力：** SystemCapability.Communication.IPC.Core
+
 ### getContextObject
 
 static getContextObject(): IRemoteObject
 
 静态方法，获取系统能力的管理者。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -9144,7 +9163,7 @@ static getCallingPid(): number
 
 静态方法，获取调用者的PID。此方法由RemoteObject对象在onRemoteRequest方法中调用，不在IPC上下文环境（onRemoteRequest）中调用则返回本进程的PID。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -9178,7 +9197,7 @@ static getCallingUid(): number
 
 静态方法，获取调用者的UID。此方法由RemoteObject对象在onRemoteRequest方法中调用，不在IPC上下文环境（onRemoteRequest）中调用则返回本进程的UID。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -9212,7 +9231,7 @@ static getCallingTokenId(): number
 
 静态方法，获取调用者的TokenId，用于被调用方对调用方的身份校验。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -9246,7 +9265,7 @@ static getCallingDeviceID(): string
 
 静态方法，获取调用者进程所在的设备ID。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -9280,7 +9299,7 @@ static getLocalDeviceID(): string
 
 静态方法，获取本端设备ID。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -9314,7 +9333,7 @@ static isLocalCalling(): boolean
 
 静态方法，检查当前通信对端是否是本设备的进程。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -9348,7 +9367,7 @@ static flushCmdBuffer(object: IRemoteObject): void
 
 静态方法，将所有挂起的命令从指定的RemoteProxy刷新到相应的RemoteObject。建议在任何时间执行敏感操作之前调用此方法。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -9401,7 +9420,7 @@ static flushCommands(object: IRemoteObject): number
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[flushCmdBuffer](#flushcmdbuffer9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -9449,7 +9468,7 @@ static resetCallingIdentity(): string
 
 静态方法，将远程用户的UID和PID替换为本地用户的UID和PID。它可以用于身份验证等场景。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -9483,7 +9502,7 @@ static restoreCallingIdentity(identity: string): void
 
 静态方法，将UID和PID恢复为远程用户的UID和PID。它通常在使用resetCallingIdentity后调用，需要resetCallingIdentity返回的远程用户的UID和PID。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -9530,7 +9549,7 @@ static setCallingIdentity(identity: string): boolean
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[restoreCallingIdentity](#restorecallingidentity9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -9571,13 +9590,15 @@ class Stub extends rpc.RemoteObject {
 
 实现远程对象。服务提供者必须继承此类。
 
+**系统能力：** SystemCapability.Communication.IPC.Core
+
 ### constructor
 
 constructor(descriptor: string)
 
 RemoteObject构造函数。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -9607,7 +9628,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 >
 > 从API version 7 开始支持，API version 8 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-4)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -9667,7 +9688,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
 
 以同步或异步方式向对端进程发送MessageSequence消息。如果为选项设置了异步模式，则期约立即兑现，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则期约将在sendMessageRequest返回时兑现，回复内容在reply报文里。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -9748,7 +9769,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-4)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -9818,7 +9839,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
 
 以同步或异步方式向对端进程发送MessageSequence消息。如果为选项设置了异步模式，则立即收到回调，reply报文里没有内容，具体回复需要在业务侧的回调中获取。如果为选项设置了同步模式，则将在sendMessageRequest返回时收到回调，回复内容在reply报文里。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -9848,7 +9869,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[sendMessageRequest](#sendmessagerequest9-5)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -9864,14 +9885,14 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 onRemoteMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption): boolean | Promise\<boolean>
 
+sendMessageRequest请求的响应处理函数，服务端在该函数里同步或异步地处理请求，回复结果。
+
 > **说明：**
 >
 > 开发者应优先选择重载onRemoteMessageRequest方法，其中可以自由实现同步和异步的消息处理。
 > 开发者同时重载onRemoteRequest和onRemoteMessageRequest方法时，仅onRemoteMessageRequest方法生效。
 
-sendMessageRequest请求的响应处理函数，服务端在该函数里同步或异步地处理请求，回复结果。
-
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -9983,7 +10004,7 @@ sendRequest请求的响应处理函数，服务端在该函数里处理请求，
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[onRemoteMessageRequest](#onremotemessagerequest9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -10029,7 +10050,7 @@ getCallingUid(): number
 
 获取通信对端的进程Uid。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
   | 类型   | 说明                    |
@@ -10066,7 +10087,7 @@ getCallingPid(): number
 
 获取通信对端的进程Pid。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -10104,7 +10125,7 @@ getLocalInterface(descriptor: string): IRemoteBroker
 
 查询接口描述符的字符串。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -10163,7 +10184,7 @@ queryLocalInterface(descriptor: string): IRemoteBroker
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[getLocalInterface](#getlocalinterface9-2)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -10208,7 +10229,7 @@ getDescriptor(): string
 
 获取对象的接口描述符。接口描述符为字符串。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -10262,7 +10283,7 @@ getInterfaceDescriptor(): string
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[getDescriptor](#getdescriptor9-2)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -10303,7 +10324,7 @@ modifyLocalInterface(localInterface: IRemoteBroker, descriptor: string): void
 
 此接口用于把接口描述符和IRemoteBroker对象绑定。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -10363,7 +10384,7 @@ attachLocalInterface(localInterface: IRemoteBroker, descriptor: string): void
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[modifyLocalInterface](#modifylocalinterface9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -10407,9 +10428,11 @@ let testRemoteObject = new TestRemoteObject("testObject");
 
 共享内存只适用与本设备内跨进程通信。
 
+**系统能力：** SystemCapability.Communication.IPC.Core
+
 ### 属性
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.Communication.IPC.Core。
+**系统能力：** 以下各项对应的系统能力均为SystemCapability.Communication.IPC.Core。
 
   | 名称       | 类型   | 只读  | 可选  | 说明                                     |
   | ---------- | ------ | ----- | ----- |----------------------------------------- |
@@ -10424,7 +10447,7 @@ static create(name: string, size: number): Ashmem
 
 静态方法，根据指定的名称和大小创建Ashmem对象。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -10476,7 +10499,7 @@ static createAshmem(name: string, size: number): Ashmem
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[create](#create9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -10514,7 +10537,7 @@ static create(ashmem: Ashmem): Ashmem
 
 静态方法，通过复制现有Ashmem对象的文件描述符(fd)来创建Ashmem对象。两个Ashmem对象指向同一个共享内存区域。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -10534,7 +10557,7 @@ static create(ashmem: Ashmem): Ashmem
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The passed parameter is not an Ahmem object; <br/> 3.The ashmem instance for obtaining packaging is empty. |
+  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The passed parameter is not an Ashmem object; <br/> 3.The ashmem instance for obtaining packaging is empty. |
 
 **示例：**
 
@@ -10565,7 +10588,7 @@ static createAshmemFromExisting(ashmem: Ashmem): Ashmem
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[create](#create9-1)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -10606,7 +10629,7 @@ closeAshmem(): void
 >
 > 关闭Ashmem对象前需要先解除地址映射。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **示例：**
 
@@ -10628,7 +10651,7 @@ unmapAshmem(): void
 
 删除该Ashmem对象的地址映射。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **示例：**
 
@@ -10650,7 +10673,7 @@ getAshmemSize(): number
 
 获取Ashmem对象的内存大小。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -10679,7 +10702,7 @@ mapTypedAshmem(mapType: number): void
 
 在此进程的虚拟地址空间上创建共享文件映射，映射区域大小由此Ashmem对象指定。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -10723,7 +10746,7 @@ mapAshmem(mapType: number): boolean
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[mapTypedAshmem](#maptypedashmem9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -10759,7 +10782,7 @@ mapReadWriteAshmem(): void
 
 在此进程虚拟地址空间上创建可读写的共享文件映射。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **错误码：**
 
@@ -10796,7 +10819,7 @@ mapReadAndWriteAshmem(): boolean
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[mapReadWriteAshmem](#mapreadwriteashmem9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -10826,7 +10849,7 @@ mapReadonlyAshmem(): void
 
 在此进程虚拟地址空间上创建只读的共享文件映射。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **错误码：**
 
@@ -10863,7 +10886,7 @@ mapReadOnlyAshmem(): boolean
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[mapReadonlyAshmem](#mapreadonlyashmem9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **返回值：**
 
@@ -10893,7 +10916,7 @@ setProtectionType(protectionType: number): void
 
 设置映射内存区域的保护等级。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -10937,7 +10960,7 @@ setProtection(protectionType: number): boolean
 >
 > 从API version 8 开始支持，API version 9 开始废弃，建议使用[setProtectionType](#setprotectiontype9)替代。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -10978,7 +11001,7 @@ writeDataToAshmem(buf: ArrayBuffer, size: number, offset: number): void
 >
 > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem9)进行映射。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -11033,7 +11056,7 @@ writeAshmem(buf: number[], size: number, offset: number): void
 >
 > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem9)进行映射。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -11084,7 +11107,7 @@ writeToAshmem(buf: number[], size: number, offset: number): boolean
 >
 > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem9)进行映射。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -11129,7 +11152,7 @@ readDataFromAshmem(size: number, offset: number): ArrayBuffer
 >
 > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem9)进行映射。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -11192,7 +11215,7 @@ readAshmem(size: number, offset: number): number[]
 >
 > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem9)进行映射。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
@@ -11250,7 +11273,7 @@ readFromAshmem(size: number, offset: number): number[]
 >
 > 对Ashmem对象进行写操作时，需要先调用[mapReadWriteAshmem](#mapreadwriteashmem9)进行映射。
 
-**系统能力**：SystemCapability.Communication.IPC.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
 
