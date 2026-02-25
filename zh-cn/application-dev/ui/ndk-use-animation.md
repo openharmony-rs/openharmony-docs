@@ -281,16 +281,16 @@
 ``` C
 // ArkUIColumnNode为工程内封装的node类型
 auto column = std::make_shared<ArkUIColumnNode>();
-//设置宽度为300，NUM_300 = 300
+// 设置宽度为300，NUM_300 = 300
 column->SetWidth(NUM_300);
-//设置高度为250，NUM_250 = 250
+// 设置高度为250，NUM_250 = 250
 column->SetHeight(NUM_250);
 // 创建文本节点，内容区介绍“这是关键帧动画”
 auto textNode = std::make_shared<ArkUITextNode>();
 textNode->SetTextContent("这是关键帧动画");
-//设置宽度为120，NUM_120 = 120
+// 设置宽度为120，NUM_120 = 120
 textNode->SetWidth(NUM_120);
-//设置高度为120，NUM_120 = 120
+// 设置高度为120，NUM_120 = 120
 textNode->SetHeight(NUM_50);
 // 创建button，后续创建的关键帧动画作用在button组件上
 auto button = std::make_shared<ArkUIButtonNode>();
@@ -391,7 +391,7 @@ column->AddChild(button);
 
 ## 使用帧动画
 
-帧动画具有逐帧回调的特性，便于开发者在每一帧中调整所需属性。通过提供[onFrame](../reference/apis-arkui/capi-native-animate-h.md#OH_ArkUI_AnimatorOption_RegisterOnFrameCallback)逐帧回调，帧动画允许开发者在应用的每一帧设置属性值，从而实现组件属性值变化的自然过渡，营造出流畅的动画效果。帧动画接口可参考[createAnimator](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#createanimator)。
+帧动画具有逐帧回调的特性，便于开发者在每一帧中调整所需属性。通过提供[onFrame](../reference/apis-arkui/capi-native-animate-h.md#oh_arkui_animatoroption_registeronframecallback)逐帧回调，帧动画允许开发者在应用的每一帧设置属性值，从而实现组件属性值变化的自然过渡，营造出流畅的动画效果。帧动画接口可参考[createAnimator](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#createanimator)。
 
 与属性动画相比，帧动画能让开发者实时感知动画进程，即时调整UI值，并具备事件即时响应和可暂停的优势，但在性能方面略逊于属性动画。当属性动画能满足需求时，建议优先采用属性动画接口实现。[animateTo](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#animateto)接口的使用可参考[使用属性动画](#使用属性动画)。
 
