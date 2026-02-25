@@ -3874,6 +3874,10 @@ onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionC
 
 智能防跟踪功能使能时，当追踪者cookie被拦截时触发该回调。
 
+> **说明**
+>
+> - 需要使用release包，debug包不生效。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
