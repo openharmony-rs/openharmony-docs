@@ -91,7 +91,7 @@ build的可选参数。
 | ------------- | ----------------- | ---- | ---- | ------------------------------------------------------------ |
 | nestingBuilderSupported | boolean | 否   | 是   | 是否支持Builder嵌套Builder进行使用。其中，true表示支持，false表示不支持。<br/>默认值：false <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | localStorage<sup>20+</sup> | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否   | 是   | 给当前BuilderNode设置LocalStorage，挂载在此BuilderNode下的自定义组件共享该LocalStorage。如果自定义组件构造函数同时也传入LocalStorage，优先使用构造函数中传入的LocalStorage。<br/>默认值：null <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| enableProvideConsumeCrossing<sup>20+</sup> | boolean | 否   | 是   | 定义BuilderNode内[状态管理V1](../../ui/state-management/arkts-state-management-overview.md#状态管理v1)自定义组件的@Consume是否与BuilderNode外部的@Provide状态互通，BuilderNode内[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)自定义组件的@Consumer是否与BuilderNode外部的@Provider状态互通。<br/>从API version 20开始支持状态管理V1自定义组件的状态互通，从API version 22开始支持状态管理V2自定义组件的状态互通。<br/>true表示支持，false表示不支持。<br/>默认值：false <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| enableProvideConsumeCrossing<sup>20+</sup> | boolean | 否   | 是   | 定义BuilderNode内[状态管理V1](../../ui/state-management/arkts-state-management-overview.md#状态管理v1)自定义组件的[\@Consume](../../ui/state-management/arkts-provide-and-consume.md)变量是否与BuilderNode外部的[\@Provide](../../ui/state-management/arkts-provide-and-consume.md)变量双向同步，BuilderNode内[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)自定义组件的[\@Consumer](../../ui/state-management/arkts-new-provider-and-consumer.md)变量是否与BuilderNode外部的[\@Provider](../../ui/state-management/arkts-new-provider-and-consumer.md)变量双向同步。<br/>从API version 20开始支持状态管理V1自定义组件的双向同步，从API version 22开始支持状态管理V2自定义组件的双向同步。<br/>true表示支持，false表示不支持。<br/>默认值：false <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## InputEventType<sup>20+</sup>
 
@@ -1630,7 +1630,7 @@ constructor(uiContext: UIContext, options?: RenderOptions)
 
 build(builder: WrappedBuilder\<Args>, config: BuildOptions, ...args: Args): void
 
-依照传入的对象创建组件树ReactiveBuilderNode，并持有组件树的根节点。无状态的UI方法[@Builder](../../ui/state-management/arkts-builder.md)最多拥有一个根节点。
+依照传入的对象创建组件树，并持有组件树的根节点。无状态的UI方法[@Builder](../../ui/state-management/arkts-builder.md)最多拥有一个根节点。
 
 支持自定义组件。
 
@@ -3073,12 +3073,8 @@ class MyNodeController extends NodeController {
 
     let mouseEvent = event as MouseEvent;
     if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x)
-      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y)
-      mouseEvent.displayX = uiContext.vp2px(offsetX + mouseEvent.x)
-      mouseEvent.displayY = uiContext.vp2px(offsetY + mouseEvent.y)
-      mouseEvent.x = uiContext.vp2px(mouseEvent.x)
-      mouseEvent.y = uiContext.vp2px(mouseEvent.y)
+      mouseEvent.x = uiContext.vp2px(offsetX + mouseEvent.x);
+      mouseEvent.y = uiContext.vp2px(offsetY + mouseEvent.y);
     }
     // 将鼠标事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEvent(event);
@@ -3098,19 +3094,15 @@ class MyNodeController extends NodeController {
     let changedTouchLen = touchEvent.changedTouches.length;
     for (let i = 0; i < changedTouchLen; i++) {
       if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-        touchEvent.changedTouches[i].windowX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-        touchEvent.changedTouches[i].windowY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
-        touchEvent.changedTouches[i].displayX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-        touchEvent.changedTouches[i].displayY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
+        touchEvent.changedTouches[i].x = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
+        touchEvent.changedTouches[i].y = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
       }
     }
     let touchesLen = touchEvent.touches.length;
     for (let i = 0; i < touchesLen; i++) {
       if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-        touchEvent.touches[i].windowX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-        touchEvent.touches[i].windowY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
-        touchEvent.touches[i].displayX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-        touchEvent.touches[i].displayY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
+        touchEvent.touches[i].x = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
+        touchEvent.touches[i].y = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
       }
     }
     // 将触摸事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
@@ -3212,19 +3204,15 @@ class MyNodeController extends NodeController {
       let changedTouchLen = touchEvent.changedTouches.length;
       for (let i = 0; i < changedTouchLen; i++) {
         if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-          touchEvent.changedTouches[i].windowX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-          touchEvent.changedTouches[i].windowY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
-          touchEvent.changedTouches[i].displayX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-          touchEvent.changedTouches[i].displayY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
+          touchEvent.changedTouches[i].x = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
+          touchEvent.changedTouches[i].y = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
         }
       }
       let touchesLen = touchEvent.touches.length;
       for (let i = 0; i < touchesLen; i++) {
         if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-          touchEvent.touches[i].windowX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-          touchEvent.touches[i].windowY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
-          touchEvent.touches[i].displayX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-          touchEvent.touches[i].displayY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
+          touchEvent.touches[i].x = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
+          touchEvent.touches[i].y = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
         }
       }
     }
@@ -3317,12 +3305,8 @@ class MyNodeController extends NodeController {
 
     let axisEvent = event as AxisEvent;
     if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      axisEvent.windowX = uiContext.vp2px(offsetX + axisEvent.x)
-      axisEvent.windowY = uiContext.vp2px(offsetY + axisEvent.y)
-      axisEvent.displayX = uiContext.vp2px(offsetX + axisEvent.x)
-      axisEvent.displayY = uiContext.vp2px(offsetY + axisEvent.y)
-      axisEvent.x = uiContext.vp2px(axisEvent.x)
-      axisEvent.y = uiContext.vp2px(axisEvent.y)
+      axisEvent.x = uiContext.vp2px(offsetX + axisEvent.x);
+      axisEvent.y = uiContext.vp2px(offsetY + axisEvent.y);
     }
     // 将轴事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEvent(event);
@@ -3429,7 +3413,7 @@ struct CustomComp {
 
 ### 示例5（BuilderNode支持内部@Consume接收外部的@Provide数据）
 
-设置BuilderNode的[BuildOptions](#buildoptions12)中enableProvideConsumeCrossing为true，以实现BuilderNode内部自定义组件的@Consume与所在自定义组件的@Provide数据互通。
+设置BuilderNode的[BuildOptions](#buildoptions12)中enableProvideConsumeCrossing为true，以实现BuilderNode内部自定义组件的@Consume与所在自定义组件的@Provide双向同步。
 
 ```ts
 import { BuilderNode, NodeContent } from '@kit.ArkUI';
@@ -3437,7 +3421,7 @@ import { BuilderNode, NodeContent } from '@kit.ArkUI';
 // 自定义组件
 @Component
 struct ConsumeChild {
-  // 与外部的@Provider数据互通
+  // 与外部的@Provider装饰的状态变量双向同步
   @Consume @Watch("ChangeData") message: string = ""
 
   ChangeData() {
@@ -3472,13 +3456,13 @@ function CreateText(textMessage: string) {
 @Entry
 @Component
 struct Index {
-  // 与内部的@Consumer数据互通
+  // 与内部的@Consumer装饰的状态变量双向同步
   @Provide message: string = 'Hello World';
   private content: NodeContent = new NodeContent();
   private builderNode: BuilderNode<[string]> = new BuilderNode<[string]>(this.getUIContext());
 
   aboutToAppear(): void {
-    // 设置enableProvideConsumeCrossing为true，支持BuilderNode内部自定义组件ConsumeChild的@Consume与其所在页面中的@Provide数据互通
+    // 设置enableProvideConsumeCrossing为true，支持BuilderNode内部自定义组件ConsumeChild的@Consume变量与其所在页面中的@Provide变量双向同步
     this.builderNode.build(wrapBuilder(CreateText), "Test Consume", { enableProvideConsumeCrossing: true })
     this.content.addFrameNode(this.builderNode.getFrameNode())
   }
@@ -3511,7 +3495,7 @@ struct Index {
 >
 > 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
 
-设置BuilderNode的[BuildOptions](#buildoptions12)中enableProvideConsumeCrossing为true，以实现BuilderNode内部自定义组件的@Consumer与所在自定义组件的@Provider数据互通。
+设置BuilderNode的[BuildOptions](#buildoptions12)中enableProvideConsumeCrossing为true，以实现BuilderNode内部自定义组件的@Consumer变量与所在自定义组件的@Provider装饰的状态变量双向同步。
 
 ```ts
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -3561,7 +3545,7 @@ struct addChildChild {
 @Entry
 @ComponentV2
 struct AddChild {
-  // 与@Consumer的数据互通
+  // 与@Consumer装饰的状态变量双向同步
   @Provider() content: string = 'Index: hello world';
   @Monitor('content') providerWatch() {
     console.info(`Provider change ${this.content}`);
@@ -4161,7 +4145,7 @@ class TextNodeController extends NodeController {
 
 @Entry
 @ComponentV2
-// 与@Consumer的数据互通
+// 与@Consumer装饰的状态变量双向同步
 struct ProvideConsumeBuilderNodeConsume {
   @Provider() content : Ob = new Ob();
   @Monitor('content') providerWatch() {
@@ -4316,7 +4300,7 @@ class TextNodeController extends NodeController {
 @Entry
 @ComponentV2
 struct Provider1 {
-  // 与@Consumer的数据互通
+  // 与@Consumer装饰的状态变量双向同步
   @Provider() content : Ob = new Ob();
   @Monitor('content') providerWatch() {
     console.info(`Provider change ${this.content.a}`);
@@ -4474,12 +4458,8 @@ class MyNodeController extends NodeController {
     let mouseEvent = event as MouseEvent;
     // 坐标转换：将事件坐标转换为节点坐标系
     if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x)
-      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y)
-      mouseEvent.displayX = uiContext.vp2px(offsetX + mouseEvent.x)
-      mouseEvent.displayY = uiContext.vp2px(offsetY + mouseEvent.y)
-      mouseEvent.x = uiContext.vp2px(mouseEvent.x)
-      mouseEvent.y = uiContext.vp2px(mouseEvent.y)
+      mouseEvent.x = uiContext.vp2px(offsetX + mouseEvent.x);
+      mouseEvent.y = uiContext.vp2px(offsetY + mouseEvent.y);
     }
     // 调用postInputEvent将转换后的事件传递给ReactiveBuilderNode
     let result = this.rootNode.postInputEvent(event);
@@ -4501,20 +4481,16 @@ class MyNodeController extends NodeController {
     let changedTouchLen = touchEvent.changedTouches.length;
     for (let i = 0; i < changedTouchLen; i++) {
       if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-        touchEvent.changedTouches[i].windowX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-        touchEvent.changedTouches[i].windowY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
-        touchEvent.changedTouches[i].displayX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-        touchEvent.changedTouches[i].displayY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
+        touchEvent.changedTouches[i].x = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
+        touchEvent.changedTouches[i].y = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
       }
     }
     // 转换touches数组中的所有触摸点坐标
     let touchesLen = touchEvent.touches.length;
     for (let i = 0; i < touchesLen; i++) {
       if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-        touchEvent.touches[i].windowX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-        touchEvent.touches[i].windowY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
-        touchEvent.touches[i].displayX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-        touchEvent.touches[i].displayY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
+        touchEvent.touches[i].x = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
+        touchEvent.touches[i].y = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
       }
     }
     // 调用postInputEvent将转换后的事件传递给ReactiveBuilderNode
@@ -4619,20 +4595,16 @@ class MyNodeController extends NodeController {
       let changedTouchLen = touchEvent.changedTouches.length;
       for (let i = 0; i < changedTouchLen; i++) {
         if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-          touchEvent.changedTouches[i].windowX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-          touchEvent.changedTouches[i].windowY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
-          touchEvent.changedTouches[i].displayX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-          touchEvent.changedTouches[i].displayY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
+          touchEvent.changedTouches[i].x = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
+          touchEvent.changedTouches[i].y = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
         }
       }
       // 转换touches数组中的所有触摸点坐标
       let touchesLen = touchEvent.touches.length;
       for (let i = 0; i < touchesLen; i++) {
         if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-          touchEvent.touches[i].windowX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-          touchEvent.touches[i].windowY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
-          touchEvent.touches[i].displayX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-          touchEvent.touches[i].displayY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
+          touchEvent.touches[i].x = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
+          touchEvent.touches[i].y = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
         }
       }
     }
@@ -4728,12 +4700,8 @@ class MyNodeController extends NodeController {
 
     let axisEvent = event as AxisEvent;
     if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      axisEvent.windowX = uiContext.vp2px(offsetX + axisEvent.x)
-      axisEvent.windowY = uiContext.vp2px(offsetY + axisEvent.y)
-      axisEvent.displayX = uiContext.vp2px(offsetX + axisEvent.x)
-      axisEvent.displayY = uiContext.vp2px(offsetY + axisEvent.y)
-      axisEvent.x = uiContext.vp2px(axisEvent.x)
-      axisEvent.y = uiContext.vp2px(axisEvent.y)
+      axisEvent.x = uiContext.vp2px(offsetX + axisEvent.x);
+      axisEvent.y = uiContext.vp2px(offsetY + axisEvent.y);
     }
     // 调用postInputEvent将转换后的事件传递给ReactiveBuilderNode
     let result = this.rootNode.postInputEvent(event);

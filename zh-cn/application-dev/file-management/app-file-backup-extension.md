@@ -37,7 +37,7 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
 
    BackupExtensionAbility配置文件示例：
 
-   ```json
+   ```json5
    {
        "extensionAbilities": [
            {
@@ -88,17 +88,17 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
    下面的示例展示了一个空实现的`BackupExtension.ets`文件：
 
     ```ts
-    //onBackup && onRestore
+    // onBackup && onRestore
     import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
     import {hilog} from '@kit.PerformanceAnalysisKit';
     
     const TAG = `FileBackupExtensionAbility`;
     export default class BackupExtension extends  BackupExtensionAbility {
-      //onBackup
+      // onBackup
       async onBackup ()   {
         hilog.info(0x0000, TAG, `onBackup ok`);
       }
-      //onRestore
+      // onRestore
       async onRestore (bundleVersion : BundleVersion) {
         hilog.info(0x0000, TAG, `onRestore end`);
       }
@@ -205,65 +205,70 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
 | compatibleDirMapping            | 对象数组     | 否   | 该字段可以实现备份时按A路径进行备份，恢复时按B路径进行恢复。数组子项为对象，包含2个key，backupDir（待备份路径）和restoreDir（待恢复路径）。<br> **说明**：从API version 23开始，支持该字段。             |  
 
 **字段说明：**
+
 1. **有关fullBackupOnly字段的说明**
 
-    - 当fullBackupOnly为false时，恢复数据会以 **/** 为根目录解压数据，同路径下的同名文件会被覆盖。
-    - 当fullBackupOnly为true时，恢复数据会以临时目录为根目录解压数据，开发者需要在OnRestore/OnRestoreEx内自行实现恢复数据的逻辑，进行最终的恢复。
+   - 当fullBackupOnly为false时，恢复数据会以 **/** 为根目录解压数据，同路径下的同名文件会被覆盖。
+   - 当fullBackupOnly为true时，恢复数据会以临时目录为根目录解压数据，开发者需要在OnRestore/OnRestoreEx内自行实现恢复数据的逻辑，进行最终的恢复。
 
-    开发者可根据自身的业务场景，选择对应的恢复数据方式。
+   开发者可根据自身的业务场景，选择对应的恢复数据方式。
 
    **示例：**
-假设应用的数据备份路径为：**data/storage/el2/base/files/A/** 。那么在恢复时：
-    - 如果配置了fullBackupOnly为false，数据会被直接解压到：**/data/storage/el2/base/files/A/** 目录下；
-    - 如果配置了fullBackupOnly为true，数据则会被解压到：**临时路径backupDir + /restore/data/storage/el2/base/files/A/** 目录下。
+
+   假设应用的数据备份路径为：**data/storage/el2/base/files/A/** 。那么在恢复时：
+   - 如果配置了fullBackupOnly为false，数据会被直接解压到：**/data/storage/el2/base/files/A/** 目录下；
+   - 如果配置了fullBackupOnly为true，数据则会被解压到：**临时路径backupDir + /restore/data/storage/el2/base/files/A/** 目录下。
 
 2. **有关compatibleDirMapping字段的说明**  
 
-    其内容的数组长度不能超过1000。  
+   其内容的数组长度不能超过1000。  
 
-    子项的restoreDir配置内容必须包含在includes的配置中，否则不生效，且该字段不支持通配符。  
-    
-    子项的backupDir和restoreDir不能包含\|\|\|\|字符串。
+   子项的restoreDir配置内容必须包含在includes的配置中，否则不生效，且该字段不支持通配符。  
 
-    **字段配置示例**：  
+   子项的backupDir和restoreDir不能包含\|\|\|\|字符串。
 
-    "compatibleDirMapping": [
-    {"backupDir": "/data/storage/el2/base/files/nulldir", "restoreDir": "/data/storage/el2/base/files/restore/nulldir"},
-    {"backupDir": "/data/storage/el2/base/files/zerofile", "restoreDir": "/data/storage/el2/base/files/restore/zerofile"}
-]    
+   **字段配置示例**：  
 
-    另外增加这个配置项还无法生效，需要在onBackupEx的实现中以json字符串格式返回需要开启的路径列表。  
+   "compatibleDirMapping": [
 
-    路径列表内容需要与backup_config中compatibleDirMapping字段配置的restoreDir内容一致，不用全部包含，可以为其子集，也可以返回空表示不开启路径映射。
+   {"backupDir": "/data/storage/el2/base/files/nulldir", "restoreDir": "/data/storage/el2/base/files/restore/nulldir"},
 
-    **onBackupEx返回值示例**：  
-    {"compatibleDirMapping" ： ["/data/storage/el2/base/files/restore/nulldir", "/data/storage/el2/base/files/restore/zerofile"] }  
+   {"backupDir": "/data/storage/el2/base/files/zerofile", "restoreDir": "/data/storage/el2/base/files/restore/zerofile"}
 
+   ]
+
+   另外增加这个配置项还无法生效，需要在onBackupEx的实现中以json字符串格式返回需要开启的路径列表。  
+
+   路径列表内容需要与backup_config中compatibleDirMapping字段配置的restoreDir内容一致，不用全部包含，可以为其子集，也可以返回空表示不开启路径映射。
+
+   **onBackupEx返回值示例**：
+     
+   {"compatibleDirMapping" ： ["/data/storage/el2/base/files/restore/nulldir", "/data/storage/el2/base/files/restore/zerofile"] }  
 
 3. **includes支持的路径清单列表如下：**
 
-    ```json
-    {
-        "includes": [
-            "data/storage/el1/database/",
-            "data/storage/el1/base/files/",
-            "data/storage/el1/base/preferences/",
-            "data/storage/el1/base/haps/*/files/",
-            "data/storage/el1/base/haps/*/preferences/",
-            "data/storage/el2/database/",
-            "data/storage/el2/base/files/",
-            "data/storage/el2/base/preferences/",
-            "data/storage/el2/base/haps/*/files/",
-            "data/storage/el2/base/haps/*/preferences/",
-            "data/storage/el2/distributedfiles/",
-            "data/storage/el5/database/",
-            "data/storage/el5/base/files/",
-            "data/storage/el5/base/preferences/",
-            "data/storage/el5/base/haps/*/files/",
-            "data/storage/el5/base/haps/*/preferences/"
-        ]
-    }
-    ```
+   ```json
+   {
+       "includes": [
+           "data/storage/el1/database/",
+           "data/storage/el1/base/files/",
+           "data/storage/el1/base/preferences/",
+           "data/storage/el1/base/haps/*/files/",
+           "data/storage/el1/base/haps/*/preferences/",
+           "data/storage/el2/database/",
+           "data/storage/el2/base/files/",
+           "data/storage/el2/base/preferences/",
+           "data/storage/el2/base/haps/*/files/",
+           "data/storage/el2/base/haps/*/preferences/",
+           "data/storage/el2/distributedfiles/",
+           "data/storage/el5/database/",
+           "data/storage/el5/base/files/",
+           "data/storage/el5/base/preferences/",
+           "data/storage/el5/base/haps/*/files/",
+           "data/storage/el5/base/haps/*/preferences/"
+       ]
+   }
+   ```
 
 ## 相关实例
 

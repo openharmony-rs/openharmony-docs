@@ -789,7 +789,7 @@ export default class MainAbility extends UIAbility {
 
 ## tag.on<sup>23+</sup>
 
-on(type: 'readerModeWithInterval', elementName: ElementName, discTech: number[], callback: AsyncCallback&lt;TagInfo&gt;, interval: number): void
+on(type: 'readerModeWithInterval', elementName: ElementName, discTech: number[], callback: Callback&lt;TagInfo&gt;, interval: number): void
 
 订阅NFC Tag读卡事件，实现前台应用优先分发，并支持卡在位检测间隔设置。使用callback异步回调。
 - 设备会进入读卡器模式，同时关闭卡模拟。
@@ -809,7 +809,7 @@ on(type: 'readerModeWithInterval', elementName: ElementName, discTech: number[],
 | type    | string  | 是   | 要注册的回调类型，固定填"readerModeWithInterval"字符串。 |
 | elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | 是   | 所属应用读卡的页面信息（至少包含bundleName、abilityName这两项的赋值）。          |
 | discTech         |  number[]   | 是   | 前台应用指定的NFC读卡技术类型，至少指定一种读卡技术类型。每个number值表示所支持技术类型的常量值型，根据number值设置NFC读卡轮询的Tag技术类型（仅包含[NFC_A](#常量), [NFC_B](#常量), [NFC_F](#常量), [NFC_V](#常量)中的一种或多种）。 |
-| callback | AsyncCallback&lt;[TagInfo](#taginfo)&gt; | 是   | 读卡器模式监听回调函数，返回读到的Tag信息。 |
+| callback | Callback&lt;[TagInfo](#taginfo)&gt; | 是   | 读卡器模式监听回调函数，返回读到的Tag信息。 |
 | interval | number | 是 | 设置卡在位检测间隔，单位为ms。 |
 
 **错误码：**
@@ -829,7 +829,7 @@ on(type: 'readerModeWithInterval', elementName: ElementName, discTech: number[],
 
 ## tag.off<sup>23+</sup>
 
-off(type: 'readerModeWithInterval', elementName: ElementName, callback: AsyncCallback&lt;TagInfo&gt;): void
+off(type: 'readerModeWithInterval', elementName: ElementName, callback: Callback&lt;TagInfo&gt;): void
 
 取消订阅NFC Tag读卡事件。设备退出读卡模式，并恢复卡模拟。如果已通过[tag.on](#tagon23)设置NFC的读卡器模式，需要在页面退出前台或页面销毁时调用off进行取消。使用callback异步回调。
 
@@ -845,7 +845,7 @@ off(type: 'readerModeWithInterval', elementName: ElementName, callback: AsyncCal
 | ------------ | -------- | ---- | ------------------------------------------------------- |
 | type    | string  | 是   | 要注销的回调类型，固定填"readerModeWithInterval"字符串。|
 | elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | 是   | 所属应用读卡的页面信息（至少包含bundleName、abilityName这两项的赋值）。          |
-| callback | AsyncCallback&lt;[TagInfo](#taginfo)&gt; | 否   | 前台读卡监听回调函数，返回读到的Tag信息。 |
+| callback | Callback&lt;[TagInfo](#taginfo)&gt; | 否   | 前台读卡监听回调函数，返回读到的Tag信息。 |
 
 **错误码：**
 
