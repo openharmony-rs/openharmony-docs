@@ -606,7 +606,7 @@ function readSync() {
 
 write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-向串口设备异步写入数据，受USB串口芯片FIFO吞吐率限制，每次写入数据长度不超过256bytes，长数据分包写入。使用Promise异步回调。
+向串口设备同步写数据，每次写入数据长度不超过4kb，数据过大会导致数据丢失，长数据建议分包写入。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -694,7 +694,7 @@ function write() {
 
 writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
-向串口设备同步写数据，受USB串口芯片FIFO吞吐率限制，每次写入数据长度不超过256bytes，长数据分包写入。
+向串口设备同步写数据，每次写入数据长度不超过4kb，数据过大会导致数据丢失，长数据建议分包写入。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
