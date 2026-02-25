@@ -35,7 +35,7 @@
 
   ```ts
   import { UIUtils } from '@kit.ArkUI';
-  let resNumber = UIUtils.getTarget(2); //非对象类型入参，编译时报错
+  let resNumber = UIUtils.getTarget(2); // 非对象类型入参，编译时报错
   let resObject = UIUtils.getTarget(2 as Object); // 非对象类型入参，绕过编译拦截，直接返回传入值，错误用法
   ```
   
