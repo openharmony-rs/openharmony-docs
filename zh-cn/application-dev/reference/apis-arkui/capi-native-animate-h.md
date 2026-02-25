@@ -1021,7 +1021,7 @@ int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t v
 **描述：**
 
 
-设置animator动画延时播放的时间。
+设置animator动画延时播放的时间。单位为ms（毫秒）。
 
 **起始版本：** 12
 
@@ -1349,9 +1349,9 @@ int32_t OH_ArkUI_AnimatorOption_GetDelay(ArkUI_AnimatorOption* option)
 
 **参数：**
 
-| 参数项 | 描述 | 异常值行为 |
-| -- | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画参数。 | option为NULL时，返回0。 |
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画参数。option为NULL时，返回0。 |
 
 **返回：**
 
@@ -1375,9 +1375,9 @@ int32_t OH_ArkUI_AnimatorOption_GetIterations(ArkUI_AnimatorOption* option)
 
 **参数：**
 
-| 参数项 | 描述 | 异常值行为 |
-| -- | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画动画参数。 | option为NULL时，返回0。 |
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画动画参数。option为NULL时，返回0。 |
 
 **返回：**
 
