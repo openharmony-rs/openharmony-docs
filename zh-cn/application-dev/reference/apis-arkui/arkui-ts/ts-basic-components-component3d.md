@@ -29,7 +29,7 @@ Component3D(sceneOptions?: SceneOptions)
 
 | 参数名       | 类型                                  | 必填 | 说明                                                         |
 | ------------ | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| sceneOptions | [SceneOptions](#sceneoptions对象说明) | 否   | 3D场景配置选项。<br/>**说明：** <br/> 3D场景配置选项在控件创建后不支持动态修改。 |
+| sceneOptions | [SceneOptions](#sceneoptions对象说明) | 否   | 3D场景配置选项，默认值为undefined。<br/>**说明：** <br/> 3D场景配置选项在控件创建后不支持动态修改。 |
 
 
 ## SceneOptions对象说明
