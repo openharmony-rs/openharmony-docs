@@ -1447,7 +1447,7 @@ hidebug.setProcDumpInSharedOOM(true);
 
 getRssInfo(): RssInfo
 
-获取应用进程内存信息。读取/proc/{pid}/status节点的数据。
+获取应用程序进程的物理内存使用信息。读取/proc/{pid}/status节点的数据。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
