@@ -1104,7 +1104,7 @@ findElement(type: 'elementId', condition: number): Promise\<AccessibilityElement
 
 | 类型                                  | 说明                               |
 | ----------------------------------- | -------------------------------- |
-| Promise&lt;[AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement9)&gt; | Promise对象，返回满足指定查询条件的节点元素。 |
+| Promise&lt;[AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement)&gt; | Promise对象，返回满足指定查询条件的节点元素。 |
 
 **错误码：**
 
@@ -1120,7 +1120,7 @@ findElement(type: 'elementId', condition: number): Promise\<AccessibilityElement
 import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//elementId为10
+// elementId为10
 let condition = 10;
 
 // rootElement是AccessibilityElement的实例
@@ -1152,7 +1152,7 @@ findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityE
 
 | 类型                                       | 说明                            |
 | ---------------------------------------- | ----------------------------- |
-| Promise&lt;Array&lt;[AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement9)&gt;&gt; | Promise对象，返回满足指定查询关键字的所有节点元素。 |
+| Promise&lt;Array&lt;[AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityelement)&gt;&gt; | Promise对象，返回满足指定查询关键字的所有节点元素。 |
 
 **错误码：**
 
@@ -1277,13 +1277,13 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<voi
 
 **示例：**
 ```ts
-//无参数Action示例：
+// 无参数Action示例：
 import { AccessibilityAction } from '@kit.AccessibilityKit';
 
 // rootElement是AccessibilityElement的实例
 // Action描述中无明确要求的，均为无参数Action
 try {
-  rootElement.executeAction(AccessibilityAction.CLICK);
+  await rootElement.executeAction(AccessibilityAction.CLICK);
   console.info(`Succeeded in perform action CLICK`);
 }catch (error){
   console.error(`failed to perform action CLICK, Code is ${error?.code}, message is ${error?.message}`);
@@ -1293,7 +1293,7 @@ try {
 
 
 ```ts
-//有参数Action示例：
+// 有参数Action示例：
 import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
 
 try {
@@ -1311,7 +1311,7 @@ try {
 ```
 
 ```ts
-//有参数Action示例：
+// 有参数Action示例：
 import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
 
 try {
