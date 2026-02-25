@@ -61,11 +61,13 @@ Video组件支持加载本地视频和网络视频。具体的数据源配置请
   
   ``` TypeScript
   // xxx.ets
-  // ···
+  // ...
   @Component
   export struct LocalVideoTwo {
     private controller: VideoController = new VideoController();
+    // $r('app.media.preview')需要替换为开发者所需的图像资源文件
     private previewUris: Resource = $r('app.media.preview');
+    // 'dataability://device_id/com.domainname.dataability.videodata/video/10'需要替换为开发者所需的影像资源文件
     private videoSrc: string = 'dataability://device_id/com.domainname.dataability.videodata/video/10';
   
     build() {
@@ -88,10 +90,11 @@ Video组件支持加载本地视频和网络视频。具体的数据源配置请
 
 ``` TypeScript
 // xxx.ets
-// ···
+// ...
 @Component
 export struct Sandbox {
   private controller: VideoController = new VideoController();
+  // 'file:///data/storage/el2/base/haps/entry/files/show.mp4'需要替换为开发者所需的实际视频沙箱路径
   private videoSrc: string = 'file:///data/storage/el2/base/haps/entry/files/show.mp4';
 
   build() {
@@ -115,12 +118,14 @@ export struct Sandbox {
 
 ``` TypeScript
 // xxx.ets
-// ···
+// ...
 @Component
 export struct OnlineVideo {
   private controller: VideoController = new VideoController();
+  // $r('app.media.preview')需要替换为开发者所需的图像资源文件
   private previewUris: Resource = $r('app.media.preview');
-  private videoSrc: string = 'www.example.com/example.mp4'; // 使用时请替换为实际视频加载网址
+  // 'www.example.com/example.mp4'需要替换为开发者所需的实际视频加载网址
+  private videoSrc: string = 'www.example.com/example.mp4';
 
   build() {
     Column() {
@@ -144,20 +149,23 @@ Video组件[属性](../reference/apis-arkui/arkui-ts/ts-media-components-video.m
 
 ``` TypeScript
 // xxx.ets
-// ···
+// ...
 @Component
 export struct AttributeVideo {
+  // $rawfile('videoTest.mp4')需要替换为开发者所需的影像资源文件
+  private videoSrc: Resource = $rawfile('videoTest.mp4');
   private controller: VideoController = new VideoController();
 
   build() {
     Column() {
       Video({
+        src: this.videoSrc,
         controller: this.controller
       })
         .muted(false) // 设置是否静音
         .controls(false) // 设置是否显示默认控制条
-        .autoPlay(false) // 设置是否自动播放
-        .loop(false) // 设置是否循环播放
+        .autoPlay(true) // 设置是否自动播放
+        .loop(true) // 设置是否循环播放
         .objectFit(ImageFit.Contain) // 设置视频填充模式
     }
   }
