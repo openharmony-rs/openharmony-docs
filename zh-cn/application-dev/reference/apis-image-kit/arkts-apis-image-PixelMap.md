@@ -1330,7 +1330,7 @@ createScaledPixelMap(x: number, y: number, level?: AntiAliasingLevel): Promise\<
 | ------ | ------ | ---- | ------------------------------- |
 | x      | number | 是   | 宽度的缩放倍数。|
 | y      | number | 是   | 高度的缩放倍数。|
-| level  | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。|
+| level  | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。默认值是AntiAliasingLevel.NONE。|
 
 **返回值：**
 
@@ -1379,7 +1379,7 @@ createScaledPixelMapSync(x: number, y: number, level?: AntiAliasingLevel): Pixel
 | ------ | ------ | ---- | ------------------------------- |
 | x      | number | 是   | 宽度的缩放倍数。|
 | y      | number | 是   | 高度的缩放倍数。|
-| level  | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。|
+| level  | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 采用的缩放算法。默认值是AntiAliasingLevel.NONE。|
 
 **返回值：**
 

@@ -2240,7 +2240,7 @@ async function Demo() {
     width: 8
   }
   let receiver: sendableImage.ImageReceiver = sendableImage.createImageReceiver(size, image.ImageFormat.JPEG, 8);
-  receiver.readLatestImage().then((img: image.Image) => {
+  receiver.readLatestImage().then((img: sendableImage.Image) => {
     console.info('readLatestImage succeeded.');
   }).catch((error: BusinessError) => {
     console.error(`readLatestImage failed. code ${error.code}, message is ${error.message}`);
@@ -2278,7 +2278,7 @@ async function Demo() {
     width: 8
   }
   let receiver: sendableImage.ImageReceiver = sendableImage.createImageReceiver(size, image.ImageFormat.JPEG, 8);
-  receiver.readNextImage().then((img: image.Image) => {
+  receiver.readNextImage().then((sendableImage.Image) => {
     console.info('readNextImage succeeded.');
   }).catch((error: BusinessError) => {
     console.error(`readNextImage failed. code ${error.code}, message is ${error.message}`);
