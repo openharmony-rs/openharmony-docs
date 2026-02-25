@@ -267,7 +267,7 @@ OH_Pasteboard* OH_Pasteboard_Create()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* | 执行成功则返回一个指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例对象的指针，否则返回nulllptr。 |
+| [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* | 执行成功则返回一个指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例对象的指针，否则返回nullptr。 |
 
 ### OH_Pasteboard_Destroy()
 
