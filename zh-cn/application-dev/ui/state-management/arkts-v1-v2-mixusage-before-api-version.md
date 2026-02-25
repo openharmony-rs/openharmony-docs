@@ -132,6 +132,7 @@ struct IndexSix {
 
 
 
+
 ### 传递简单类型状态变量
 
 在V1中使用V2组件时，V1组件中的装饰器仅支持修饰简单类型数据，包括：boolean、number、string、null、undefined。V2组件使用\@Param接收参数。
@@ -139,6 +140,7 @@ struct IndexSix {
 若在V1中使用V2组件时，传递了使用\@State装饰的Class类型或内置类型（Array、Map、Set、Date），会造成编译报错。以下示例代码中，info和set变量需删除\@State装饰器。\@Prop、\@Link、\@ObjectLink、\@Provide、\@Consume、\@StorageProp、\@StorageLink、\@LocalStorageProp、\@LocalStorageLink的行为和\@State保持一致。
 
 <!-- @[v1_to_v2_state_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1StateVariablesToV2CustomComponent.ets) -->
+
 
 
 
@@ -257,6 +259,7 @@ struct V2Comp {
 \@ObservedV2+\@Trace的观测能力在V1和V2版本中均受支持，但在V1中不支持将V1装饰器与\@ObservedV2装饰的实例对象共同使用。以下示例代码中，若info对象被\@State修饰，则会导致编译错误，需移除V1的装饰器。
 
 <!-- @[v1_to_v2_observedV2_trace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1ToV2_ObservedV2AndTrace.ets) -->
+
 
 
 
