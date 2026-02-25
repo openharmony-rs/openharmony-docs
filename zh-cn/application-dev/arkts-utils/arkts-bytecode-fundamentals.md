@@ -258,7 +258,7 @@ class A { }
 
 @Sendable
 class B {
-  u: A = new A()
+  u: A = new A();
 }
 ```
 字节码中的相关指令：
