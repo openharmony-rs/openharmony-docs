@@ -100,8 +100,8 @@ Requests the image data and video data of this moving photo and writes them to t
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-- When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Accessing and Managing Moving Photos](../../media/medialibrary/photoAccessHelper-movingphoto.md).
-- For moving photos saved to the media library by this application, the application can access them without the ohos.permission.READ_IMAGEVIDEO permission.
+- When you call this API in Picker mode, you do not need to request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Accessing and Managing Moving Photos](../../media/medialibrary/photoAccessHelper-movingphoto.md).
+- For moving photos saved to the media library by this application, the application can access them without the **ohos.permission.READ_IMAGEVIDEO** permission.
 
 **Parameters**
 
@@ -194,8 +194,8 @@ Requests the moving photo content of the specified resource type and writes it t
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-- When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Accessing and Managing Moving Photos](../../media/medialibrary/photoAccessHelper-movingphoto.md).
-- For moving photos saved to the media library by this application, the application can access them without the ohos.permission.READ_IMAGEVIDEO permission.
+- When you call this API in Picker mode, you do not need to request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Accessing and Managing Moving Photos](../../media/medialibrary/photoAccessHelper-movingphoto.md).
+- For moving photos saved to the media library by this application, the application can access them without the **ohos.permission.READ_IMAGEVIDEO** permission.
 
 **Parameters**
 
@@ -283,8 +283,8 @@ Requests the moving photo content of the specified resource type and returns it 
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-- When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Accessing and Managing Moving Photos](../../media/medialibrary/photoAccessHelper-movingphoto.md).
-- For moving photos saved to the media library by this application, the application can access them without the ohos.permission.READ_IMAGEVIDEO permission.
+- When you call this API in Picker mode, you do not need to request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Accessing and Managing Moving Photos](../../media/medialibrary/photoAccessHelper-movingphoto.md).
+- For moving photos saved to the media library by this application, the application can access them without the **ohos.permission.READ_IMAGEVIDEO** permission.
 
 **Parameters**
 

@@ -151,7 +151,7 @@ Commits the modification on the file metadata to the database. This API uses an 
 
 | Name     | Type                       | Mandatory  | Description   |
 | -------- | ------------------------- | ---- | ----- |
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the file metadata is modified successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes   | Callback function. If the file metadata is modified successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -159,7 +159,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 If error code 14000001 is returned, refer to [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys) to learn about the format and length requirements of the file name.
 
-If error code 13900012 is returned, follow the instructions provided in [Before You Start](../../media/medialibrary/photoAccessHelper-preparation.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -272,7 +271,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 close(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
-Closes the current document This API uses an asynchronous callback to return the result.
+Closes the current file. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -285,7 +284,7 @@ Closes the current document This API uses an asynchronous callback to return the
 | Name     | Type                       | Mandatory  | Description   |
 | -------- | ------------------------- | ---- | ----- |
 | fd       | number                    | Yes   | FD of the file to close.|
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the current file is closed successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes   | Callback function. If the current file is closed successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -333,7 +332,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 close(fd: number): Promise&lt;void&gt;
 
-Closes the current document This API uses a promise to return the result.
+Closes the current file. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -406,7 +405,7 @@ Obtains the thumbnail of a file. This API uses an asynchronous callback to retur
 
 | Name     | Type                                 | Mandatory  | Description              |
 | -------- | ----------------------------------- | ---- | ---------------- |
-| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback used to return the result. If the thumbnail of a file is successfully obtained, **err** is **undefined**, and **data** is the PixelMap of the thumbnail. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback function. If the thumbnail of a file is successfully obtained, **err** is **undefined**, and **data** is the PixelMap of the thumbnail. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -465,7 +464,7 @@ Obtains the file thumbnail of the given size. This API uses an asynchronous call
 | Name     | Type                                 | Mandatory  | Description              |
 | -------- | ----------------------------------- | ---- | ---------------- |
 | size     | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | Yes   | Size of the thumbnail.           |
-| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback used to return the result. If the thumbnail of a file is successfully obtained, **err** is **undefined**, and **data** is the PixelMap of the thumbnail. Otherwise, **err** is an error object. |
+| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback function. If the thumbnail of a file is successfully obtained, **err** is **undefined**, and **data** is the PixelMap of the thumbnail. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -656,7 +655,7 @@ The returned FD must be closed when it is not required.
 
 | Name     | Type                         | Mandatory  | Description                                 |
 | -------- | --------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. If the current file is opened successfully, **err** is **undefined**, and **data** is the file descriptor. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;number&gt; | Yes   | Callback function. If the current file is opened successfully, **err** is **undefined**, and **data** is the file descriptor. Otherwise, **err** is an error object.|
 
 **Error codes**
 
