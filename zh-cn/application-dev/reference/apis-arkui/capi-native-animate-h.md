@@ -68,7 +68,7 @@
 | [void OH_ArkUI_KeyframeAnimateOption_Dispose(ArkUI_KeyframeAnimateOption* option)](#oh_arkui_keyframeanimateoption_dispose) | 销毁关键帧动画参数。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setdelay) | 设置关键帧动画的整体延时时间，单位为ms（毫秒），默认不延时播放。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetIterations(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setiterations) | 设置关键帧动画的动画播放次数。默认播放一次，设置为-1时表示无限次播放。设置为0时表示无动画效果。 |
-| [int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAnimateOption* option, void* userData, void (\*onFinish)(void* userData))](#oh_arkui_keyframeanimateoption_registeronfinishcallback) | 设置关键帧动画播放完成回调。当keyframe动画所有次数播放完成后调用。 |
+| [int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAnimateOption* option, void* userData, void (\*onFinish)()(void* userData))](#oh_arkui_keyframeanimateoption_registeronfinishcallback) | 设置关键帧动画播放完成回调。当[关键帧动画](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md)所有次数播放完成后调用。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetExpectedFrameRate(ArkUI_KeyframeAnimateOption* option, ArkUI_ExpectedFrameRateRange* frameRate)](#oh_arkui_keyframeanimateoption_setexpectedframerate) | 设置关键帧动画期望帧率。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetDuration(ArkUI_KeyframeAnimateOption* option, int32_t value, int32_t index)](#oh_arkui_keyframeanimateoption_setduration) | 设置关键帧动画某段关键帧动画的持续时间，单位为ms（毫秒）。 |
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetCurve(ArkUI_KeyframeAnimateOption* option, ArkUI_CurveHandle value, int32_t index)](#oh_arkui_keyframeanimateoption_setcurve) | 设置关键帧动画某段关键帧使用的动画曲线。 |
@@ -119,7 +119,7 @@
 | [ArkUI_CurveHandle OH_ArkUI_Curve_CreateCurveByType(ArkUI_AnimationCurve curve)](#oh_arkui_curve_createcurvebytype) | 插值曲线的初始化函数，可以根据入参创建一个插值曲线对象。 |
 | [ArkUI_CurveHandle OH_ArkUI_Curve_CreateStepsCurve(int32_t count, bool end)](#oh_arkui_curve_createstepscurve) | 构造阶梯曲线对象。 |
 | [ArkUI_CurveHandle OH_ArkUI_Curve_CreateCubicBezierCurve(float x1, float y1, float x2, float y2)](#oh_arkui_curve_createcubicbeziercurve) | 构造三阶贝塞尔曲线对象。 |
-| [ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringCurve(float velocity, float mass, float stiffness, float damping)](#oh_arkui_curve_createspringcurve) | 构造弹簧曲线对象，曲线形状由弹簧参数决定，动画时长受animation、animateTo中的duration参数控制。 |
+| [ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringCurve(float velocity, float mass, float stiffness, float damping)](#oh_arkui_curve_createspringcurve) | 构造弹簧曲线对象，曲线形状由弹簧参数决定，动画时长受[animation](#OH_ArkUI_TransitionEffect_SetAnimation)、[animateTo](./capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#animateTo)中的duration参数控制。 |
 | [ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringMotion(float response, float dampingFraction, float overlapDuration)](#oh_arkui_curve_createspringmotion) | 构造弹性动画曲线对象。如果对同一对象的同一属性进行多个弹性动画，每个动画会替换掉前一个动画，并继承之前的速度。 |
 | [ArkUI_CurveHandle OH_ArkUI_Curve_CreateResponsiveSpringMotion(float response, float dampingFraction, float overlapDuration)](#oh_arkui_curve_createresponsivespringmotion) | 构造弹性跟手动画曲线对象，是springMotion的一种特例，仅默认参数不同，可与springMotion混合使用。 |
 | [ArkUI_CurveHandle OH_ArkUI_Curve_CreateInterpolatingSpring(float velocity, float mass, float stiffness, float damping)](#oh_arkui_curve_createinterpolatingspring) | 构造插值器弹簧曲线对象，生成一条从0到1的动画曲线，实际动画值根据曲线进行插值计算。 |
@@ -173,7 +173,7 @@ void OH_ArkUI_AnimateOption_Dispose(ArkUI_AnimateOption* option)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。 |
 
 ### OH_ArkUI_AnimateOption_GetDuration()
 
@@ -181,10 +181,12 @@ void OH_ArkUI_AnimateOption_Dispose(ArkUI_AnimateOption* option)
 uint32_t OH_ArkUI_AnimateOption_GetDuration(ArkUI_AnimateOption* option)
 ```
 
+
 **描述：**
 
 
-获取动画持续时间，单位为ms（毫秒）。
+获取动画持续时间，单位ms（毫秒）。
+
 
 **起始版本：** 12
 
@@ -193,13 +195,13 @@ uint32_t OH_ArkUI_AnimateOption_GetDuration(ArkUI_AnimateOption* option)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，返回0。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| uint32_t | 持续时间。 |
+| uint32_t | 动画持续时间，单位为ms（毫秒）。option异常时返回0。 |
 
 ### OH_ArkUI_AnimateOption_GetTempo()
 
@@ -219,13 +221,13 @@ float OH_ArkUI_AnimateOption_GetTempo(ArkUI_AnimateOption* option)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，返回0.0。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 动画播放速度。取值范围：[0, +∞)。 |
+| float | 动画播放速度。取值范围：[0, +∞)。option异常时返回0.0。 |
 
 ### OH_ArkUI_AnimateOption_GetCurve()
 
@@ -245,13 +247,13 @@ ArkUI_AnimationCurve OH_ArkUI_AnimateOption_GetCurve(ArkUI_AnimateOption* option
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，返回-1。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve) | 动画曲线。 |
+| [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve) | 动画曲线。option异常时返回-1。 |
 
 ### OH_ArkUI_AnimateOption_GetDelay()
 
@@ -271,13 +273,13 @@ int32_t OH_ArkUI_AnimateOption_GetDelay(ArkUI_AnimateOption* option)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，返回0。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 动画延迟播放时间。 |
+| int32_t | 动画延迟播放时间。option异常时返回0。 |
 
 ### OH_ArkUI_AnimateOption_GetIterations()
 
@@ -297,13 +299,13 @@ int32_t OH_ArkUI_AnimateOption_GetIterations(ArkUI_AnimateOption* option)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，返回0。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 动画播放次数。 |
+| int32_t | 动画播放次数。option异常时返回0。 |
 
 ### OH_ArkUI_AnimateOption_GetPlayMode()
 
@@ -323,13 +325,13 @@ ArkUI_AnimationPlayMode OH_ArkUI_AnimateOption_GetPlayMode(ArkUI_AnimateOption* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，返回-1。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode) | 动画播放模式。 |
+| [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode) | 动画播放模式。option异常时返回-1。 |
 
 ### OH_ArkUI_AnimateOption_GetExpectedFrameRateRange()
 
@@ -349,13 +351,13 @@ ArkUI_ExpectedFrameRateRange* OH_ArkUI_AnimateOption_GetExpectedFrameRateRange(A
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，返回NULL。 |
 
 **返回：**
 
 | 类型                                | 说明 |
 |-----------------------------------| -- |
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* | 动画的期望帧率，单位为帧/秒（fps）。 |
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* | 动画的期望帧率，单位为帧/秒（fps）。option异常时返回NULL。 |
 
 ### OH_ArkUI_AnimateOption_SetDuration()
 
@@ -375,8 +377,8 @@ void OH_ArkUI_AnimateOption_SetDuration(ArkUI_AnimateOption* option, int32_t val
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 |
-| int32_t value | 持续时间，单位为ms（毫秒）。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。 |
+| int32_t value | 动画持续时间，单位为ms（毫秒）。取值范围：[0, +∞)。<br>value小于0时，按0处理。 |
 
 ### OH_ArkUI_AnimateOption_SetTempo()
 
@@ -396,8 +398,9 @@ void OH_ArkUI_AnimateOption_SetTempo(ArkUI_AnimateOption* option, float value)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 |
-| float value | 动画播放速度。<br/>**说明：**<br/>传入小于0的数值，会默认设置为1。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。 |
+| float value | 动画播放速度。取值范围：[0, +∞)。<br/>**说明：**<br/>传入小于0的数值，会默认设置为1。 |
+
 
 ### OH_ArkUI_AnimateOption_SetCurve()
 
@@ -417,8 +420,8 @@ void OH_ArkUI_AnimateOption_SetCurve(ArkUI_AnimateOption* option, ArkUI_Animatio
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 |
-| [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve) value | 动画曲线。默认值：ARKUI_CURVE_LINEAR。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。 |
+| [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve) value | 动画曲线。默认值：[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)，建议使用[ARKUI_CURVE_EASE_IN_OUT](capi-native-type-h.md#arkui_animationcurve)获得更平滑的动画效果。<br>value值异常时，设置无效。 |
 
 ### OH_ArkUI_AnimateOption_SetDelay()
 
@@ -438,8 +441,8 @@ void OH_ArkUI_AnimateOption_SetDelay(ArkUI_AnimateOption* option, int32_t value)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 |
-| int32_t value | 动画延迟播放时间，单位为ms（毫秒）。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。 |
+| int32_t value | 动画延迟播放时间，单位为ms（毫秒）。取值范围：(-∞, +∞)。默认值：0，表示不延迟。value大于0时表示延迟播放，小于0表示提前播放。value小于0时，如果value的绝对值小于实际动画时长，动画将在开始后第一帧直接运动到value绝对值的时刻的状态；如果value的绝对值大于等于实际动画时长，动画将在开始后第一帧直接运动到终点状态。其中实际动画时长等于单次动画时长乘以动画播放次数。 |
 
 ### OH_ArkUI_AnimateOption_SetIterations()
 
@@ -459,8 +462,8 @@ void OH_ArkUI_AnimateOption_SetIterations(ArkUI_AnimateOption* option, int32_t v
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 |
-| int32_t value | 动画播放次数。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。 |
+| int32_t value | 动画播放次数。取值范围：[-1, +∞)，其中设置为0时不播放，-1表示无限次播放。默认值：1（播放一次）。<br>value小于-1时，操作无效。 |
 
 ### OH_ArkUI_AnimateOption_SetPlayMode()
 
@@ -480,8 +483,8 @@ void OH_ArkUI_AnimateOption_SetPlayMode(ArkUI_AnimateOption* option, ArkUI_Anima
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 |
-| [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode) value | 动画播放模式。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。 |
+| [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode) value | 动画播放模式。默认值：[ARKUI_ANIMATION_PLAY_MODE_NORMAL](capi-native-type-h.md#arkui_animationplaymode)。<br>value值异常时，操作无效。 |
 
 ### OH_ArkUI_AnimateOption_SetExpectedFrameRateRange()
 
@@ -501,8 +504,8 @@ void OH_ArkUI_AnimateOption_SetExpectedFrameRateRange(ArkUI_AnimateOption* optio
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。 |
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* value | 动画的期望帧率，单位为帧/秒（fps）。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | 动画效果参数。<br>option为NULL时，操作无效。 |
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* value | 动画的期望帧率，单位为帧/秒（fps）。<br>value为NULL时，操作无效。 |
 
 ### OH_ArkUI_AnimateOption_SetICurve()
 
@@ -526,8 +529,8 @@ void OH_ArkUI_AnimateOption_SetICurve(ArkUI_AnimateOption* option, ArkUI_CurveHa
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | animator动画参数。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | 动画曲线参数。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | animator动画参数。<br>option为NULL时，操作无效。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | 动画曲线参数。<br>value为NULL时，操作无效。 |
 
 ### OH_ArkUI_AnimateOption_GetICurve()
 
@@ -547,7 +550,7 @@ ArkUI_CurveHandle OH_ArkUI_AnimateOption_GetICurve(ArkUI_AnimateOption* option)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | animator动画参数。 |
+| [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option | animator动画参数。<br>option为NULL时，返回NULL。 |
 
 **返回：**
 
@@ -573,13 +576,13 @@ ArkUI_KeyframeAnimateOption* OH_ArkUI_KeyframeAnimateOption_Create(int32_t size)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t size | 关键帧动画状态数。 |
+| int32_t size | 关键帧动画状态数。<br>size小于0时返回NULL。 |
 
 **返回：**
 
 | 类型                               | 说明 |
 |----------------------------------| -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* | 关键帧动画参数对象。size小于0时返回NULL。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* | 关键帧动画参数对象。size小于0时返回NULL，option异常时返回NULL。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_Dispose()
 
@@ -599,7 +602,7 @@ void OH_ArkUI_KeyframeAnimateOption_Dispose(ArkUI_KeyframeAnimateOption* option)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数对象。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数对象。<br>option为NULL时，操作无效。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_SetDelay()
 
@@ -619,8 +622,8 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* opt
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 |
-| int32_t value | 延时时间, 单位为ms（毫秒）。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| int32_t value | 动画延迟播放时间，单位为ms（毫秒）。取值范围：(-∞, +∞)。默认值：0，表示不延迟。value大于0为延迟播放，value小于0表示提前播放。对于value小于0的情况：当value的绝对值小于实际动画时长，动画将在开始后第一帧直接运动到value绝对值的时刻的状态；当value的绝对值大于等于实际动画时长，动画将在开始后第一帧直接运动到终点状态。其中实际动画时长等于单次动画时长乘以动画播放次数。 |
 
 **返回：**
 
@@ -637,7 +640,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetIterations(ArkUI_KeyframeAnimateOption
 **描述：**
 
 
-设置关键帧动画的动画播放次数。默认播放一次，设置为-1时表示无限次播放。设置为0时表示无动画效果。
+设置关键帧动画的动画播放次数。默认播放一次，设置为-1表示无限次播放，设置为0时表示无动画效果。
 
 **起始版本：** 12
 
@@ -646,8 +649,9 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetIterations(ArkUI_KeyframeAnimateOption
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 |
-| int32_t value | 动画播放次数。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| int32_t value | 动画播放次数。取值范围：[-1, +∞)，其中设置为0时不播放，-1表示无限次播放。默认值：1，表示播放一次。<br>value小于-1时，操作无效，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
 
 **返回：**
 
@@ -664,7 +668,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAn
 **描述：**
 
 
-设置关键帧动画播放完成回调。当keyframe动画所有次数播放完成后调用。
+设置关键帧动画播放完成回调。当[关键帧动画](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md)所有次数播放完成后调用。
 
 **起始版本：** 12
 
@@ -673,9 +677,9 @@ int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAn
 
 | 参数项                                     | 描述 |
 |-----------------------------------------| -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 |
-| void* userData                          | 用户自定义对象指针。 |
-| void (\*onFinish)(void\* userData)                                | 回调方法。<br/>- userData：回调函数的入参，用户自定义对象指针。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| void* userData                          | 用户自定义对象指针。<br>不涉及异常值处理。 |
+| void (\*onFinish)(void\* userData)                                | 回调方法。<br/>userData：回调函数的入参，用户自定义对象指针。<br>onFinish为NULL时，操作无效。 |
 
 **返回：**
 
@@ -701,8 +705,8 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetExpectedFrameRate(ArkUI_KeyframeAnimat
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 |
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* frameRate | 关键帧动画的期望帧率。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* frameRate | 关键帧动画的期望帧率。<br>frameRate为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -728,9 +732,9 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDuration(ArkUI_KeyframeAnimateOption* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 |
-| int32_t value | 关键帧动画的持续时间，单位为ms（毫秒）。 |
-| int32_t index | 状态索引值。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| int32_t value | 关键帧动画的持续时间，单位为ms（毫秒），默认值1000ms。取值范围：[0, +∞)。<br>value小于0时，按0处理。 |
+| int32_t index | 状态索引值。<br>index小于0时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -751,7 +755,8 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetCurve(ArkUI_KeyframeAnimateOption* opt
 
 > **说明：**
 >
-> 由于springMotion、responsiveSpringMotion、interpolatingSpring曲线时长不生效，故不支持这三种曲线。
+> 由于[springMotion](#oh_arkui_curve_createspringmotion)、[responsiveSpringMotion](#oh_arkui_curve_createresponsivespringmotion)、[interpolatingSpring](#oh_arkui_curve_createinterpolatingspring)曲线时长不生效，故不支持这三种曲线。
+
 
 **起始版本：** 12
 
@@ -760,9 +765,9 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetCurve(ArkUI_KeyframeAnimateOption* opt
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | 该关键帧使用的动画曲线。默认值：EASE_IN_OUT。 |
-| int32_t index | 状态索引值。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | 该关键帧使用的动画曲线。默认值：[ARKUI_CURVE_EASE_IN_OUT](capi-native-type-h.md#arkui_animationcurve)。 |
+| int32_t index | 状态索引值。取值范围：[0, size-1]，其中size为关键帧动画状态数。<br>index小于0或index超出范围时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -788,10 +793,10 @@ int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnEventCallback(ArkUI_KeyframeAni
 
 | 参数项                                     | 描述 |
 |-----------------------------------------| -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 |
-| void* userData                          | 用户定义对象指针。 |
-| void (\*event)(void\* userData)                                   | 闭包函数。 |
-| int32_t index                           | 状态索引值。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| void* userData                          | 用户定义对象指针。<br>不涉及异常值处理。 |
+| void (\*event)(void\* userData)                                   | 闭包函数。<br>event为NULL时，操作无效。 |
+| int32_t index                           | 状态索引值。取值范围：[0, size-1]，其中size为关键帧动画状态数。<br>index小于0或index超出范围时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -817,13 +822,13 @@ int32_t OH_ArkUI_KeyframeAnimateOption_GetDelay(ArkUI_KeyframeAnimateOption* opt
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回0。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 整体延时时间，单位为ms（毫秒）。 |
+| int32_t | 整体延时时间，单位为ms（毫秒）。option异常时返回0。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_GetIterations()
 
@@ -843,13 +848,13 @@ int32_t OH_ArkUI_KeyframeAnimateOption_GetIterations(ArkUI_KeyframeAnimateOption
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回0。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 动画播放次数。 |
+| int32_t | 动画播放次数。option异常时返回0。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_GetExpectedFrameRate()
 
@@ -869,13 +874,13 @@ ArkUI_ExpectedFrameRateRange* OH_ArkUI_KeyframeAnimateOption_GetExpectedFrameRat
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回NULL。 |
 
 **返回：**
 
 | 类型                                | 说明 |
 |-----------------------------------| -- |
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* | 关键帧动画参数的期望帧率。 |
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* | 关键帧动画参数的期望帧率。option异常时返回NULL。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_GetDuration()
 
@@ -895,14 +900,14 @@ int32_t OH_ArkUI_KeyframeAnimateOption_GetDuration(ArkUI_KeyframeAnimateOption* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 |
-| int32_t index | 状态索引值。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回0。 |
+| int32_t index | 状态索引值。<br>index小于0时，返回0。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 持续时间，单位为ms（毫秒）。 |
+| int32_t | 持续时间，单位为ms（毫秒）。option异常时返回0。 |
 
 ### OH_ArkUI_KeyframeAnimateOption_GetCurve()
 
@@ -922,14 +927,14 @@ ArkUI_CurveHandle OH_ArkUI_KeyframeAnimateOption_GetCurve(ArkUI_KeyframeAnimateO
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。 |
-| int32_t index | 状态索引值。 |
+| [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | 关键帧动画参数。<br>option为NULL时，返回NULL。 |
+| int32_t index | 状态索引值。<br>index小于0时，返回NULL。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 动画曲线。函数参数异常时返回NULL。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 动画曲线。参数异常时返回NULL。 |
 
 ### OH_ArkUI_AnimatorOption_Create()
 
@@ -953,13 +958,13 @@ ArkUI_AnimatorOption* OH_ArkUI_AnimatorOption_Create(int32_t keyframeSize)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t keyframeSize | 关键帧个数。 |
+| int32_t keyframeSize | 关键帧个数。<br>keyframeSize小于0时返回NULL。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| ArkUI_AnimatorOption* | animator动画对象参数指针。size小于0时返回NULL。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* | animator动画对象参数指针。size小于0时返回NULL，option异常时返回NULL。 |
 
 ### OH_ArkUI_AnimatorOption_Dispose()
 
@@ -978,7 +983,7 @@ void OH_ArkUI_AnimatorOption_Dispose(ArkUI_AnimatorOption* option)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，操作无效。 |
 
 ### OH_ArkUI_AnimatorOption_SetDuration()
 
@@ -998,8 +1003,8 @@ int32_t OH_ArkUI_AnimatorOption_SetDuration(ArkUI_AnimatorOption* option, int32_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 |
-| int32_t value | 播放的时长，单位毫秒。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| int32_t value | 播放的时长，单位为ms（毫秒），默认值0ms。取值范围：[0, +∞)。<br>value小于0时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -1016,7 +1021,7 @@ int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t v
 **描述：**
 
 
-设置animator动画延时播放时长，单位为ms（毫秒）。
+设置animator动画延时播放的时间。单位为ms（毫秒）。
 
 **起始版本：** 12
 
@@ -1025,8 +1030,8 @@ int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t v
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 |
-| int32_t value | 延时播放时长，单位为ms（毫秒）。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| int32_t value | 动画延迟播放时间，单位为ms（毫秒）。取值范围：(-∞, +∞)。默认值：0，表示不延迟。value大于0为延迟播放，value小于0表示提前播放。对于value小于0的情况：当value的绝对值小于实际动画时长，动画将在开始后第一帧直接运动到value绝对值的时刻的状态；当value的绝对值大于等于实际动画时长，动画将在开始后第一帧直接运动到终点状态。其中实际动画时长等于单次动画时长乘以动画播放次数。 |
 
 **返回：**
 
@@ -1043,7 +1048,7 @@ int32_t OH_ArkUI_AnimatorOption_SetIterations(ArkUI_AnimatorOption* option, int3
 **描述：**
 
 
-设置animator动画播放次数。设置为0时不播放，设置为-1时无限次播放。
+设置animator动画播放次数。默认播放一次，设置为-1时表示无限次播放，设置为0时表示无动画效果。
 
 > **说明：**
 >
@@ -1056,8 +1061,9 @@ int32_t OH_ArkUI_AnimatorOption_SetIterations(ArkUI_AnimatorOption* option, int3
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 |
-| int32_t value | 动画播放次数。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| int32_t value | 取值范围：[-1, +∞)，其中设置为0时不播放，-1表示无限次播放。默认值：1（播放一次）。<br>value小于-1时，操作无效。 |
+
 
 **返回：**
 
@@ -1074,7 +1080,7 @@ int32_t OH_ArkUI_AnimatorOption_SetFill(ArkUI_AnimatorOption* option, ArkUI_Anim
 **描述：**
 
 
-设置animator动画执行后是否恢复到初始状态。
+设置animator动画执行时组件在动画开始前和结束后的状态。
 
 **起始版本：** 12
 
@@ -1083,8 +1089,8 @@ int32_t OH_ArkUI_AnimatorOption_SetFill(ArkUI_AnimatorOption* option, ArkUI_Anim
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 |
-| [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode) value | 动画执行后是否恢复到初始状态。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode) value | 动画执行时组件在动画开始前和结束后的状态。默认值：[ARKUI_ANIMATION_FILL_MODE_FORWARDS](capi-native-type-h.md#arkui_animationfillmode)。<br>value小于0时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -1110,8 +1116,8 @@ int32_t OH_ArkUI_AnimatorOption_SetDirection(ArkUI_AnimatorOption* option, ArkUI
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 |
-| [ArkUI_AnimationDirection](capi-native-type-h.md#arkui_animationdirection) value | 动画播放方向。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| [ArkUI_AnimationDirection](capi-native-type-h.md#arkui_animationdirection) value | 动画播放方向。<br>value小于0时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -1132,7 +1138,8 @@ int32_t OH_ArkUI_AnimatorOption_SetCurve(ArkUI_AnimatorOption* option, ArkUI_Cur
 
 > **说明：**
 >
-> 不支持springCurve，springMotion，responsiveSpringMotion，interpolatingSpring，customCurve动画曲线。
+> 不支持[springCurve](#oh_arkui_curve_createspringcurve)、[springMotion](#oh_arkui_curve_createspringmotion)、[responsiveSpringMotion](#oh_arkui_curve_createresponsivespringmotion)、[interpolatingSpring](#oh_arkui_curve_createinterpolatingspring)，[customCurve](#oh_arkui_curve_createcustomcurve)动画曲线。
+
 
 **起始版本：** 12
 
@@ -1141,8 +1148,8 @@ int32_t OH_ArkUI_AnimatorOption_SetCurve(ArkUI_AnimatorOption* option, ArkUI_Cur
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | 动画插值曲线。默认值：ARKUI_CURVE_LINEAR。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | 动画插值曲线。默认值：[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)，建议使用[ARKUI_CURVE_EASE_IN_OUT](capi-native-type-h.md#arkui_animationcurve)获得更平滑的动画效果。<br>value为NULL时，使用默认曲线[ARKUI_CURVE_LINEAR](capi-native-type-h.md#arkui_animationcurve)。 |
 
 **返回：**
 
@@ -1163,7 +1170,7 @@ int32_t OH_ArkUI_AnimatorOption_SetBegin(ArkUI_AnimatorOption* option, float val
 
 > **说明：**
 >
-> 当Animator动画为keyframe动画时，此方法不生效。
+> 当Animator动画为[关键帧动画](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md)时，此方法不生效。
 
 **起始版本：** 12
 
@@ -1172,8 +1179,8 @@ int32_t OH_ArkUI_AnimatorOption_SetBegin(ArkUI_AnimatorOption* option, float val
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 |
-| float value | 动画插值起点。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| float value | 动画插值起点。取值范围：(-∞, +∞)。 |
 
 **返回：**
 
@@ -1194,7 +1201,7 @@ int32_t OH_ArkUI_AnimatorOption_SetEnd(ArkUI_AnimatorOption* option, float value
 
 > **说明：**
 >
-> 当Animator动画为keyframe动画时，此方法不生效。
+> 当Animator动画为[关键帧动画](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md)时，此方法不生效。
 
 **起始版本：** 12
 
@@ -1203,8 +1210,8 @@ int32_t OH_ArkUI_AnimatorOption_SetEnd(ArkUI_AnimatorOption* option, float value
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 |
-| float value | 动画插值终点。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| float value | 动画插值终点。取值范围：(-∞, +∞)。 |
 
 **返回：**
 
@@ -1230,8 +1237,8 @@ int32_t OH_ArkUI_AnimatorOption_SetExpectedFrameRateRange(ArkUI_AnimatorOption* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 |
-| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* value | 期望的帧率范围对象。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)* value | 期望的帧率范围对象。<br>value为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -1257,10 +1264,10 @@ int32_t OH_ArkUI_AnimatorOption_SetKeyframe(ArkUI_AnimatorOption* option, float 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 |
-| float time | 关键帧时间。取值范围：[0, 1], 必须是递增。 |
-| float value | 关键帧数值。 |
-| int32_t index | 关键帧的索引值。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| float time | 关键帧时间。取值范围：[0, 1], 必须是递增。默认值：按索引均匀分布（如第1帧为0.0，第2帧为0.5，第3帧为1.0）。<br>time小于0或time大于1时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| float value | 关键帧数值。取值范围：(-∞, +∞)。 |
+| int32_t index | 关键帧的索引值。<br>index小于0时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -1281,7 +1288,7 @@ int32_t OH_ArkUI_AnimatorOption_SetKeyframeCurve(ArkUI_AnimatorOption* option, A
 
 > **说明：**
 >
-> 不支持springCurve，springMotion，responsiveSpringMotion，interpolatingSpring，customCurve动画曲线。
+> 不支持[springCurve](#oh_arkui_curve_createspringcurve)、[springMotion](#oh_arkui_curve_createspringmotion)、[responsiveSpringMotion](#oh_arkui_curve_createresponsivespringmotion)、[interpolatingSpring](#oh_arkui_curve_createinterpolatingspring)，[customCurve](#oh_arkui_curve_createcustomcurve)动画曲线。
 
 **起始版本：** 12
 
@@ -1290,9 +1297,9 @@ int32_t OH_ArkUI_AnimatorOption_SetKeyframeCurve(ArkUI_AnimatorOption* option, A
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | 动画插值曲线。 |
-| int32_t index | 关键帧的索引值。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画对象参数。<br>option为NULL时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) value | 动画插值曲线。默认值：NULL，表示线性插值。 |
+| int32_t index | 关键帧的索引值。<br>index小于0时，返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
 **返回：**
 
@@ -1318,13 +1325,13 @@ int32_t OH_ArkUI_AnimatorOption_GetDuration(ArkUI_AnimatorOption* option)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画参数。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画参数。<br>option为NULL时，返回0。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 动画播放的时长，单位毫秒。 |
+| int32_t | 动画播放的时长，单位毫秒。option异常时返回0。 |
 
 ### OH_ArkUI_AnimatorOption_GetDelay()
 
@@ -1344,13 +1351,13 @@ int32_t OH_ArkUI_AnimatorOption_GetDelay(ArkUI_AnimatorOption* option)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画参数。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画参数。option为NULL时，返回0。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 动画延时播放时长，单位毫秒。 |
+| int32_t | 动画延时播放时长，单位毫秒。option异常时返回0。 |
 
 ### OH_ArkUI_AnimatorOption_GetIterations()
 
@@ -1370,13 +1377,13 @@ int32_t OH_ArkUI_AnimatorOption_GetIterations(ArkUI_AnimatorOption* option)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画动画参数。 |
+| [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md)* option | animator动画动画参数。option为NULL时，返回0。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 动画播放次数。 |
+| int32_t | 动画播放次数。option异常时返回0。 |
 
 ### OH_ArkUI_AnimatorOption_GetFill()
 
@@ -1387,7 +1394,7 @@ ArkUI_AnimationFillMode OH_ArkUI_AnimatorOption_GetFill(ArkUI_AnimatorOption* op
 **描述：**
 
 
-获取animator动画执行后是否恢复到初始状态。
+获取animator动画执行时组件在动画开始前和结束后的状态。
 
 **起始版本：** 12
 
@@ -1402,7 +1409,7 @@ ArkUI_AnimationFillMode OH_ArkUI_AnimatorOption_GetFill(ArkUI_AnimatorOption* op
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode) | 执行后是否恢复到初始状态。 |
+| [ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode) | 动画执行时组件在动画开始前和结束后的状态。option异常时返回-1。 |
 
 ### OH_ArkUI_AnimatorOption_GetDirection()
 
@@ -1428,7 +1435,7 @@ ArkUI_AnimationDirection OH_ArkUI_AnimatorOption_GetDirection(ArkUI_AnimatorOpti
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_AnimationDirection](capi-native-type-h.md#arkui_animationdirection) | 动画播放方向。 |
+| [ArkUI_AnimationDirection](capi-native-type-h.md#arkui_animationdirection) | 动画播放方向。option异常时返回-1。 |
 
 ### OH_ArkUI_AnimatorOption_GetCurve()
 
@@ -1454,7 +1461,7 @@ ArkUI_CurveHandle OH_ArkUI_AnimatorOption_GetCurve(ArkUI_AnimatorOption* option)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 动画插值曲线。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | 动画插值曲线。option异常时返回NULL。 |
 
 ### OH_ArkUI_AnimatorOption_GetBegin()
 
@@ -1480,7 +1487,7 @@ float OH_ArkUI_AnimatorOption_GetBegin(ArkUI_AnimatorOption* option)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 动画插值起点。 |
+| float | 动画插值起点。option异常时返回0.0。 |
 
 ### OH_ArkUI_AnimatorOption_GetEnd()
 
@@ -1506,7 +1513,7 @@ float OH_ArkUI_AnimatorOption_GetEnd(ArkUI_AnimatorOption* option)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 动画插值终点。 |
+| float | 动画插值终点。option异常时返回0.0。 |
 
 ### OH_ArkUI_AnimatorOption_GetExpectedFrameRateRange()
 
@@ -1649,8 +1656,7 @@ void* OH_ArkUI_AnimatorOnFrameEvent_GetUserData(ArkUI_AnimatorOnFrameEvent* even
 
 **描述：**
 
-
-获取动画事件对象中的用户自定义对象。
+获取动画的帧事件中的用户自定义对象。
 
 **起始版本：** 12
 
@@ -1680,7 +1686,6 @@ float OH_ArkUI_AnimatorOnFrameEvent_GetValue(ArkUI_AnimatorOnFrameEvent* event)
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -1691,7 +1696,7 @@ float OH_ArkUI_AnimatorOnFrameEvent_GetValue(ArkUI_AnimatorOnFrameEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 动画插值结果。<br/>**说明：** <br/>在动画过程中，插值结果根据动画参数在插值起点[float OH_ArkUI_AnimatorOption_GetBegin(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getbegin)和插值终点[float OH_ArkUI_AnimatorOption_GetEnd(ArkUI_AnimatorOption* option)](#oh_arkui_animatoroption_getend)间变化。 |
+| float | 动画插值结果。<br/>**说明：** <br/>在动画过程中，插值结果根据动画参数在插值起点[OH_ArkUI_AnimatorOption_SetBegin](#oh_arkui_animatoroption_setbegin)和插值终点[OH_ArkUI_AnimatorOption_SetEnd](#oh_arkui_animatoroption_setend)间变化。 |
 
 ### OH_ArkUI_AnimatorOption_RegisterOnFrameCallback()
 
@@ -2006,7 +2011,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateStepsCurve(int32_t count, bool end)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t count | 阶梯的数量，需要为正整数，取值范围：[1, +∞)。 |
+| int32_t count | 阶梯的数量，需要为正整数，取值范围：[1, +∞)。<br>count值异常时，操作无效。 |
 | bool end | 在每个间隔的起点或是终点发生阶跃变化。true：在终点发生阶跃变化。false：在起点发生阶跃变化。 |
 
 **返回：**
@@ -2053,7 +2058,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringCurve(float velocity, float mass, f
 **描述：**
 
 
-构造弹簧曲线对象，曲线形状由弹簧参数决定，动画时长受animation、animateTo中的duration参数控制。
+构造弹簧曲线对象，曲线形状由弹簧参数决定，动画时长受[animation](#OH_ArkUI_TransitionEffect_SetAnimation)、[animateTo](./capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#animateTo)中的duration参数控制。
 
 **起始版本：** 12
 
@@ -2063,9 +2068,9 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringCurve(float velocity, float mass, f
 | 参数项 | 描述 |
 | -- | -- |
 | float velocity | 初始速度。是由外部因素对弹性动效产生的影响参数，其目的是保证对象从之前的运动状态平滑的过渡到弹性动效。该速度是归一化速度，其值等于动画开始时的实际速度除以动画属性改变值。 |
-| float mass | 质量。弹性系统的受力对象，会对弹性系统产生惯性影响。质量越大，震荡的幅度越大，恢复到平衡位置的速度越慢。 |
-| float stiffness | 刚度。是物体抵抗施加的力而形变的程度。在弹性系统中，刚度越大，抵抗变形的能力越强，恢复到平衡位置的速度就越快。 |
-| float damping | 阻尼。用于描述系统在受到扰动后震荡及衰减的情形。阻尼越大，弹性运动的震荡次数越少、震荡幅度越小。 |
+| float mass | 质量。弹性系统的受力对象，会对弹性系统产生惯性影响。质量越大，震荡的幅度越大，恢复到平衡位置的速度越慢。取值范围：[0, +∞)。<br>value小于等于0时，按1处理。 |
+| float stiffness | 刚度。是物体抵抗施加的力而形变的程度。在弹性系统中，刚度越大，抵抗变形的能力越强，恢复到平衡位置的速度就越快。取值范围：[0, +∞)。<br>value小于等于0时，按1处理。 |
+| float damping | 阻尼。用于描述系统在受到扰动后震荡及衰减的情形。阻尼越大，弹性运动的震荡次数越少、震荡幅度越小。取值范围：[0, +∞)。<br>value小于等于0时，按1处理。 |
 
 **返回：**
 
@@ -2086,7 +2091,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringMotion(float response, float dampin
 
 > **说明：**
 >
-> 动画时间由曲线参数决定，不受animation、animateTo中的duration参数控制。
+> 动画时间由曲线参数决定，不受[animation](#OH_ArkUI_TransitionEffect_SetAnimation)、[animateTo](./capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#animateTo)中的duration参数控制。
 
 **起始版本：** 12
 
@@ -2095,9 +2100,9 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringMotion(float response, float dampin
 
 | 参数项 | 描述 |
 | -- | -- |
-| float response | 弹簧自然振动周期，决定弹簧复位的速度。 |
-| float dampingFraction | 阻尼系数。大于0小于1的值为欠阻尼，运动过程中会超出目标值；等于1为临界阻尼；大于1为过阻尼，运动过程中逐渐趋于目标值。 |
-| float overlapDuration | 弹性动画衔接时长。发生动画继承时，如果前后两个弹性动画response不一致，response参数会在overlapDuration时间内平滑过渡。 |
+| float response | 弹簧自然振动周期，决定弹簧复位的速度。取值范围：(0, +∞)。<br>参数小于等于0时，按0.55处理。 |
+| float dampingFraction | 阻尼系数。大于0小于1的值为欠阻尼，运动过程中会超出目标值；等于1为临界阻尼；大于1为过阻尼，运动过程中逐渐趋于目标值。取值范围：(0, +∞)。<br>参数小于等于0时，按0.825处理。 |
+| float overlapDuration | 弹性动画衔接时长。发生动画继承时，如果前后两个弹性动画response不一致，response参数会在overlapDuration时间内平滑过渡。取值范围：[0, +∞)。<br>参数小于0时，按0处理。 |
 
 **返回：**
 
@@ -2118,7 +2123,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateResponsiveSpringMotion(float response, fl
 
 > **说明：**
 >
-> 动画时间由曲线参数决定，不受animation、animateTo中的duration参数控制。
+> 动画时间由曲线参数决定，不受[animation](#OH_ArkUI_TransitionEffect_SetAnimation)、[animateTo](./capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#animateTo)中的duration参数控制。
 
 **起始版本：** 12
 
@@ -2127,9 +2132,9 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateResponsiveSpringMotion(float response, fl
 
 | 参数项 | 描述 |
 | -- | -- |
-| float response | 弹簧自然振动周期，决定弹簧复位的速度。 |
-| float dampingFraction | 阻尼系数。大于0小于1的值为欠阻尼，运动过程中会超出目标值；等于1为临界阻尼；大于1为过阻尼，运动过程中逐渐趋于目标值。 |
-| float overlapDuration | 弹性动画衔接时长。发生动画继承时，如果前后两个弹性动画response不一致，response参数会在overlapDuration时间内平滑过渡。 |
+| float response | 弹簧自然振动周期，决定弹簧复位的速度。取值范围：(0, +∞)。<br>参数小于等于0时，按0.15处理。 |
+| float dampingFraction | 阻尼系数。大于0小于1的值为欠阻尼，运动过程中会超出目标值；等于1为临界阻尼；大于1为过阻尼，运动过程中逐渐趋于目标值。取值范围：[0, +∞)。<br>参数小于0时，按0.86处理。 |
+| float overlapDuration | 弹性动画衔接时长。发生动画继承时，如果前后两个弹性动画response不一致，response参数会在overlapDuration时间内平滑过渡。取值范围：[0, +∞)。<br>参数小于0时，按0.25处理。 |
 
 **返回：**
 
@@ -2150,7 +2155,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateInterpolatingSpring(float velocity, float
 
 > **说明：**
 >
-> 动画时间由曲线参数决定，不受animation、animateTo中的duration参数控制。
+> 动画时间由曲线参数决定，不受[animation](#OH_ArkUI_TransitionEffect_SetAnimation)、[animateTo](./capi-arkui-nativemodule-arkui-nativeanimateapi-1.md#animateTo)中的duration参数控制。
 
 **起始版本：** 12
 
@@ -2160,9 +2165,9 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateInterpolatingSpring(float velocity, float
 | 参数项 | 描述 |
 | -- | -- |
 | float velocity | 初始速度。外部因素对弹性动效产生的影响参数，目的是保证对象从之前的运动状态平滑地过渡到弹性动效。该速度是归一化速度，其值等于动画开始时的实际速度除以动画属性改变值。 |
-| float mass | 质量。弹性系统的受力对象，会对弹性系统产生惯性影响。质量越大，震荡的幅度越大，恢复到平衡位置的速度越慢。 |
-| float stiffness | 刚度。表示物体抵抗施加的力而形变的程度。刚度越大，抵抗变形的能力越强，恢复到平衡位置的速度越快。 |
-| float damping | 阻尼。用于描述系统在受到扰动后震荡及衰减的情形。阻尼越大，弹性运动的震荡次数越少、震荡幅度越小。 |
+| float mass | 质量。弹性系统的受力对象，会对弹性系统产生惯性影响。质量越大，震荡的幅度越大，恢复到平衡位置的速度越慢。取值范围：[0, +∞)。<br>value小于等于0时，按1处理。 |
+| float stiffness | 刚度。表示物体抵抗施加的力而形变的程度。刚度越大，抵抗变形的能力越强，恢复到平衡位置的速度越快。取值范围：[0, +∞)。<br>value小于等于0时，按1处理。 |
+| float damping | 阻尼。用于描述系统在受到扰动后震荡及衰减的情形。阻尼越大，弹性运动的震荡次数越少、震荡幅度越小。取值范围：[0, +∞)。<br>value小于等于0时，按1处理。 |
 
 **返回：**
 
@@ -2189,7 +2194,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateCustomCurve(void* userData, float (*inter
 | 参数项 | 描述 |
 | -- | -- |
 | void* userData | 用户自定义数据。 |
-| float (\*interpolate)(float fraction, void\* userdata) | 用户自定义的插值回调函数。fraction为动画开始时的插值输入x值。取值范围：[0,1]返回值为曲线的y值。取值范围：[0,1]。fraction等于0时，返回值为0对应动画起点，返回不为0，动画在起点处有跳变效果。fraction等于1时，返回值为1对应动画终点，返回值不为1将导致动画的终值不是状态变量的值，出现大于或者小于状态变量值，再跳变到状态变量值的效果。 |
+| float (\*interpolate)(float fraction, void\* userdata) | 用户自定义的插值回调函数。fraction为动画开始时的插值输入x值。取值范围：[0,1]。返回值为曲线的y值。取值范围：[0,1]。fraction等于0时，返回值为0对应动画起点，返回不为0，动画在起点处有跳变效果。fraction等于1时，返回值为1对应动画终点，返回值不为1将导致动画的终值不是状态变量的值，出现大于或者小于状态变量值，再跳变到状态变量值的效果。 |
 
 **返回：**
 
@@ -2360,7 +2365,7 @@ ArkUI_TransitionEffect* OH_ArkUI_CreateAsymmetricTransitionEffect(ArkUI_Transiti
 
 > **说明：**
 >
-> 如不通过asymmetric函数构造TransitionEffect，则表明该效果在组件出现和消失时均生效。
+> 如果不通过该函数构造[ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)，则表明该效果在组件出现和消失时均生效。
 
 **起始版本：** 12
 
@@ -2438,7 +2443,7 @@ int32_t OH_ArkUI_TransitionEffect_SetAnimation(ArkUI_TransitionEffect* effect, A
 
 > **说明：**
 >
-> 如果通过combine进行转场效果的组合，前一转场效果的动画参数也可用于后一转场效果。
+> 如果通过[OH_ArkUI_TransitionEffect_Combine](#oh_arkui_transitioneffect_combine)进行转场效果的组合，前一转场效果的动画参数也可用于后一转场效果。
 
 **起始版本：** 12
 
