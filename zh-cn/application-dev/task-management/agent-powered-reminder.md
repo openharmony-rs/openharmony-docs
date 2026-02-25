@@ -66,7 +66,7 @@
 1. 导入模块。
 
   <!-- @[reminder_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) -->
-
+  
   ``` TypeScript
   import { notificationManager } from '@kit.NotificationKit';
   import { reminderAgentManager } from '@kit.BackgroundTasksKit';
