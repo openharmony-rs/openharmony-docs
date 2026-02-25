@@ -45742,5 +45742,45 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/napi/use-napi-about-class.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":35,
+						"name":"napi_new_instance",
+						"start_line":22
+					},
+					{
+						"end_line":115,
+						"name":"napi_wrap_unwrap_remove_wrap",
+						"start_line":37
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":27,
+						"name":"ark_napi_new_instance_class",
+						"start_line":19
+					},
+					{
+						"end_line":66,
+						"name":"ark_napi_new_instance",
+						"start_line":60
+					},
+					{
+						"end_line":87,
+						"name":"ark_napi_wrap_unwrap_remove_wrap",
+						"start_line":69
+					}
+				]
+			}
+		]
 	}
 ]
