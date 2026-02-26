@@ -83,13 +83,13 @@ try {
   }
 
 } catch (error) {
-  console.error(`WiFi state monitor failed: ${String(error)}`);
+  console.error(`WiFi state monitor failed: ${error.message}`);
 } finally {
   try {
     wifiManager.off("wifiStateChange", recvPowerNotifyFunc);
     console.info("Wi-Fi monitor off: listener removed.");
   } catch (e) {
-    console.warn("Failed to remove Wi-Fi listener:", String(e));
+     console.error(`WiFi state monitor failed. ${e.message}`);
   }
 }
 ```
