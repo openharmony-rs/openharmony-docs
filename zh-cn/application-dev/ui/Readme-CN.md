@@ -109,7 +109,6 @@
     - [ForEach：循环渲染](rendering-control/arkts-rendering-control-foreach.md)
     - [LazyForEach：数据懒加载](rendering-control/arkts-rendering-control-lazyforeach.md)
     - [Repeat：可复用的循环渲染](rendering-control/arkts-new-rendering-control-repeat.md)
-    - [LazyForEach迁移Repeat指南](rendering-control/arkts-lazyforeach-repeat-migration-guide.md)
     - [ContentSlot：混合开发](rendering-control/arkts-rendering-control-contentslot.md)
   - 学习响应式环境变量<!--arkts-env-property-->
     - [\@Env：环境变量](arkts-env-system-property.md)
