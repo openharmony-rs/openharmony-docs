@@ -141,6 +141,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
+  	let windowClass: window.Window | undefined = undefined;
     let config: window.Configuration = {
       name: "test",
       windowType: window.WindowType.TYPE_DIALOG,
@@ -149,7 +150,8 @@ export default class EntryAbility extends UIAbility {
     try {
       window.createWindow(config).then((value:window.Window) => {
         console.info('Succeeded in creating the window. Data: ' + JSON.stringify(value));
-        value.resize(500, 1000);
+        windowClass = value;
+        windowClass.resize(500, 1000);
       }).catch((err:BusinessError)=> {
         console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
       });
