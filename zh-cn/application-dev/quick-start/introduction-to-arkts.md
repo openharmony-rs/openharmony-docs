@@ -2544,6 +2544,23 @@ export declare @interface ClassAuthor3 {}
 
   <!-- @[annotation_export_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->  
   
+  ``` TypeScript
+  // NameAnno.d.ets 编译器生成的声明文件
+  import { ClassAuthor4 } from './Author';
+  
+  export declare @interface MethodAnno4 {
+    data: number = 0;
+  }
+  
+  @ClassAuthor4
+  export declare class MyClass {
+    @MethodAnno4({data: 123})
+    foo(): void;
+  
+    bar; // 私有方法不保留注解
+  }
+  ```
+  
 
 **开发者生成的.d.ets文件**<br>
 开发者生成的.d.ets文件中的注解信息不会自动应用到实现的源代码中。<br>
