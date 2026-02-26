@@ -10,9 +10,9 @@ The **adminManager** module provides administrator permission management capabil
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be called only by a device administrator application. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module can be called only by a device administrator application. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
 
 ## Modules to Import
 
@@ -27,8 +27,7 @@ disableAdmin(admin: Want, userId?: number): Promise\<void>
 Disables a device administrator application for the specified user. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN (available only for system applications) or ohos.permission.START_PROVISIONING_MESSAGE
-<br>- **ohos.permission.START_PROVISIONING_MESSAGE** is supported since API version 20. This permission can be requested only when the BYOD device administrator application is disabled.
-<br>- **ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN** is required for API version 19 and earlier. (This permission can be requested only by system applications.)
+<br>- **ohos.permission.START_PROVISIONING_MESSAGE** is supported since API version 20. This permission can be requested only when the BYOD device administrator application is disabled.<br>- **ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN** is required for API version 19 and earlier. (This permission can be requested only by system applications.)
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -412,6 +411,8 @@ Enables the device administrator application to open a page for the BYOD adminis
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Device behavior differences**: This API can be called on phones and tablets but does not take effect on other devices.
+
 **Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
@@ -530,7 +531,7 @@ Defines the policy type for the trustlist or blocklist.
 |disallowed_tethering|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **tethering** as the parameter to disable or enable network sharing.<br>Accepts **tethering** as the parameter to query whether the network sharing capability is disabled.|
 |inactive_user_freeze|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **inactiveUserFreeze** as the parameter to freeze or unfreeze inactive users.<br>Accepts **inactiveUserFreeze** as the parameter to query whether inactive users are frozen.|
 |snapshot_skip|[restrictions.addDisallowedListForAccount](js-apis-enterprise-restrictions.md#restrictionsadddisallowedlistforaccount14)<br>[restrictions.removeDisallowedListForAccount](js-apis-enterprise-restrictions.md#restrictionsremovedisallowedlistforaccount14)<br>[restrictions.getDisallowedListForAccount](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedlistforaccount14)|Accepts **snapshotSkip** as the parameter to add applications with screen snapshot disabled.<br>Accepts **snapshotSkip** as the parameter to remove the applications with screen snapshot disabled.<br>Accepts **snapshotSkip** as the parameter to obtain the applications with screen snapshot disabled.|
-|password_policy|[securityManager.setPasswordPolicy](js-apis-enterprise-securityManager.md#securitymanagersetpasswordpolicy)<br>[securityManager.getPasswordPolicy](js-apis-enterprise-securityManager.md#securitymanagergetpasswordpolicy)|Sets the device password policy.<br>Obtains the device password policy.|
+|password_policy|[securityManager.setPasswordPolicy](js-apis-enterprise-securityManager.md#securitymanagersetpasswordpolicy)<br>[securityManager.getPasswordPolicy](js-apis-enterprise-securityManager.md#securitymanagergetpasswordpolicy)|Sets the device screen lock password policy.<br>Obtains the device screen lock password policy.|
 |clipboard_policy|[securityManager.setAppClipboardPolicy](js-apis-enterprise-securityManager.md#securitymanagersetappclipboardpolicy)<br>[securityManager.getAppClipboardPolicy](js-apis-enterprise-securityManager.md#securitymanagergetappclipboardpolicy)|Sets the device clipboard policy.<br>Obtains the device clipboard policy.|
 |watermark_image_policy|[securityManager.setWatermarkImage](js-apis-enterprise-securityManager.md#securitymanagersetwatermarkimage14)<br>[securityManager.cancelWatermarkImage](js-apis-enterprise-securityManager.md#securitymanagercancelwatermarkimage14)|Sets the watermark policy. Currently, this feature is available only for PCs/2-in-1 devices.<br>Cancels the watermark policy. Currently, this feature is available only for PCs/2-in-1 devices.|
 |ntp_server|[systemManager.setNTPServer](js-apis-enterprise-systemManager.md#systemmanagersetntpserver)<br>[systemManager.getNTPServer](js-apis-enterprise-systemManager.md#systemmanagergetntpserver)|Sets the NTP server policy.<br>Obtains the NTP server information.|

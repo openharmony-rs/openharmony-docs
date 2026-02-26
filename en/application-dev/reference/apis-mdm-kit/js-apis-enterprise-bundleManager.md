@@ -10,11 +10,11 @@ The **bundleManager** module provides APIs for bundle management, including addi
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
 
 ## Modules to Import
 
@@ -518,6 +518,10 @@ uninstall(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean
 
 Uninstalls an application of the current or specified user. The **isKeepData** parameter specifies whether to retain the bundle data. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> Error code **401** will be returned if this API is called to uninstall an application that is either a non-removable pre-installed application or one configured as non-uninstallable via the [addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync) API.
+
 **Required permissions**: ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -730,7 +734,7 @@ Defines the parameters for application installation.
 | ------------------------ | ---------------------- | ---- | ---- | ------------------------------------------------------------ |
 | userId                   | number                 | No  | Yes| User ID, which must be greater than or equal to 0. The default value is the user ID of the caller.   |
 | installFlag              | number                 | No  | Yes|Installation flag.<br> - **0**: initial installation.<br>- **1**: overwrite installation.<br>- **2**: installation-free.<br>Default value: **0**|
-| parameters<sup>19+</sup> | Record&lt;string, string&gt; | No  | Yes| Extended parameters. The default value is null. The key value can be **ohos.bms.param.enterpriseForAllUser**. If the value is **true**, the application is installed for all users.|
+| parameters<sup>19+</sup> | Record&lt;string, string&gt; | No  | Yes| Extended parameters. The default value is null. The key can be **ohos.bms.param.enterpriseForAllUser**. If the corresponding value is set **true**, the application is installed for all users.|
 
 ## bundleManager.addInstallationAllowedAppDistributionTypes<sup>20+</sup>
 
@@ -770,7 +774,7 @@ import { Want } from '@kit.AbilityKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -821,7 +825,7 @@ import { Want } from '@kit.AbilityKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -875,7 +879,7 @@ import { Want } from '@kit.AbilityKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace with actual values.
   bundleName: 'com.example.edmtest',
   abilityName: 'EnterpriseAdminAbility'
 };
