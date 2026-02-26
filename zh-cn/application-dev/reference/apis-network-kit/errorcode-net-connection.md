@@ -174,11 +174,11 @@ The input ip address not found.
 
 **错误描述**
 
-未在vlan上找到配置的传入ip地址。
+未在vlan上找到传入的ip地址。
 
 **可能原因**
 
-未在vlan上找到配置的传入ip地址。
+未在vlan上找到传入的ip地址。
 
 **处理步骤**
 
