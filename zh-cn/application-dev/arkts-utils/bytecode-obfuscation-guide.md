@@ -117,7 +117,7 @@
     不论是HAP、HAR还是HSP，在本模块的`build-profile.json5`配置文件中都有`arkOptions.obfuscation.ruleOptions.files`字段，用于指定在编译本模块时需要生效的混淆规则，新建工程时会创建默认文件`obfuscation-rules.txt`。
     > **注意：**
     > 
-    > 静态字节码混淆目前只支持 `obfuscation-rules.txt`配置文件和HAP
+    > 静态字节码混淆目前只支持 `obfuscation-rules.txt`配置文件和HAP。
 
 * `consumer-rules.txt`
 
