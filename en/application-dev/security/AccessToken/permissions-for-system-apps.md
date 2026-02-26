@@ -5509,3 +5509,31 @@ Allows an application to add the WiseCard of other applications.
 **Supported devices**: general devices
 
 **Since**: 23
+
+## ohos.permission.MANAGE_STANDBY
+
+Allows an application to manage the standby state of the page, such as controlling when the page enters or exits the standby state.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | TV | PC/2in1 | Tablet | Car
+
+**Since**: 23
+
+## ohos.permission.ACCESS_STANDBY
+
+Allows an application to query whether the page is in the standby state and access the page in this state.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | TV | PC/2in1 | Tablet | Car
+
+**Since**: 23
