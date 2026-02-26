@@ -2278,7 +2278,7 @@ async function Demo() {
     width: 8
   }
   let receiver: sendableImage.ImageReceiver = sendableImage.createImageReceiver(size, image.ImageFormat.JPEG, 8);
-  receiver.readNextImage().then((sendableImage.Image) => {
+  receiver.readNextImage().then((img: sendableImage.Image) => {
     console.info('readNextImage succeeded.');
   }).catch((error: BusinessError) => {
     console.error(`readNextImage failed. code ${error.code}, message is ${error.message}`);
