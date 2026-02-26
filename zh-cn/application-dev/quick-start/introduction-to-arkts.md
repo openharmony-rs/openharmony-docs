@@ -938,7 +938,7 @@ function f(): () => number {
   let g = (): number => { count++; return count; };
   return g;
 }
-// ...
+  // ...
   let z = f();
   z(); // 返回：1
   z(); // 返回：2
