@@ -811,3 +811,11 @@ class ExampleClass extends AbstractClass {
 添加 `-keep class entry.src.main.ets.entryability.StaticDemo.AbstractClass {PROTECTED_ABSTRACT_METHOD():void;}` 或
 `-keep class entry.src.main.ets.entryability.StaticDemo.ExampleClass{PROTECTED_ABSTRACT_METHOD():void;}` 时，
 `AbstractClass`和`ExampleClass`中的`PROTECTED_ABSTRACT_METHOD()`会被同时保留。
+
+### 混合工程/interop相关的问题和解决方案
+
+对于包含Arkts-Dyn与Arkts-Sta组件的混合工程，请注意字节码混淆和静态字节码混淆会独立执行各自的混淆流程。
+
+若工程中存在通过 interop 机制进行Arkts-Dyn和Arkts-Sta交互，开发者需手动将交互所涉及的关键类、方法或字段等添加到混淆白名单中，同时将涉及的文件路径添加到百名单中，以确保混淆后名称一致，避免因混淆导致交互失败。
+
+若工程中存在Arkts-Dyn组件引用Arkts-Sta组件，开发者需要手动将Arkts-Sta组件相关的文件路径和文件的所有内容进行keep处理。
