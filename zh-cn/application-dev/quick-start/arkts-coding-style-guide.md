@@ -431,7 +431,7 @@ function fight(): void {
 ``` TypeScript
 if (flag) {
   // ...
-}else { // else 与其前面的大括号 } 之间没有加空格。
+}else { // else 与其前面的大括号 } 之间没有加空格
   // ...
 }
 ```
