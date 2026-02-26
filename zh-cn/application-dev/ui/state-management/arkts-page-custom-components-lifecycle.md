@@ -94,7 +94,7 @@ struct Parent {
       if (this.showChild) {
         Child()
       }
-      Button('delete Child')
+      Button(this.showChild ? 'delete Child' : 'add Child')
         .margin(20)
         .backgroundColor(this.btnColor)
         .onClick(() => {
