@@ -2462,6 +2462,10 @@ createVlanInterface(ifName: string, vlanId: int): Promise\<void\>
 
 在网卡上创建vlan。使用Promise异步回调。
 
+> **说明：**
+>
+>- 本接口当前仅支持PC设备。
+
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
@@ -2511,6 +2515,10 @@ destroyVlanInterface(ifName: string, vlanId: int): Promise\<void\>
 
 在网卡上删除vlan。使用Promise异步回调。
 
+> **说明：**
+>
+>- 本接口当前仅支持PC设备。
+
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
@@ -2559,6 +2567,10 @@ connection.destroyVlanInterface(ifName, vlanId).then(() => {
 addVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
 
 在vlan上配置IP地址和掩码。使用Promise异步回调。
+
+> **说明：**
+>
+>- 本接口当前仅支持PC设备。
 
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
@@ -2618,6 +2630,10 @@ connection.addVlanIp(ifName, vlanId, address).then(() => {
 deleteVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
 
 在vlan上删除已配置的IP地址和掩码。使用Promise异步回调。
+
+> **说明：**
+>
+>- 本接口当前仅支持PC设备。
 
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
