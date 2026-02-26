@@ -137,12 +137,12 @@
         
         ``` TypeScript
         // file.ts
-        // 静态定义，动态访问：属性名在对象定义时是静态的，但访问时通过动态构建属性名（通常使用字符串拼接）来访问。
+        // 静态定义，动态访问：属性名在对象定义时是静态的，但访问时通过动态构建属性名（通常使用字符串拼接）来访问
         const obj001 = {
-          staticName: 5  // 静态定义属性。
+          staticName: 5  // 静态定义属性
         };
-        const fieldName = 'static' + 'Name';  // 动态构建属性名。
-        console.info(obj001[fieldName]);  // 使用方括号语法动态访问属性。
+        const fieldName = 'static' + 'Name';  // 动态构建属性名
+        console.info(obj001[fieldName]);  // 使用方括号语法动态访问属性
         ```
 
         <!-- @[example_openObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->  
