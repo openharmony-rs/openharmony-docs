@@ -694,7 +694,7 @@ class MyNodeController extends NodeController {
     }
     // 将事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postTouchEvent(event);
-    console.info("result " + result);
+    console.info(`result ${result}`);
     return result;
   }
 }
@@ -1151,7 +1151,7 @@ struct Index {
         console.info('onMemoryLevel');
       },
       onConfigurationUpdated: (config: Configuration): void => {
-        console.info('onConfigurationUpdated ' + JSON.stringify(config));
+        console.info(`onConfigurationUpdated ${JSON.stringify(config)}`);
         this.getUIContext()?.postFrameCallback(new MyFrameCallback());
       }
     };
@@ -1280,12 +1280,11 @@ class MyNodeController extends NodeController {
   }
 
   // 检验当前builderNode是否已被释放
-  isDisposed() : string{
+  isDisposed(): string {
     if (this.builderNode !== null) {
       if (this.builderNode.isDisposed()) {
         return 'builderNode isDisposed is true';
-      }
-      else {
+      } else {
         return 'builderNode isDisposed is false';
       }
     }
@@ -1419,7 +1418,8 @@ class Params {
   }
 }
 
-@Builder // builder组件
+@Builder
+// builder组件
 function buildText(params: Params) {
 
   Column() {
@@ -1558,7 +1558,8 @@ struct pageTwoStack { // 页面二
   }
 }
 
-@Component({ freezeWhenInactive: true }) // 设置冻结策略为不活跃冻结
+@Component({ freezeWhenInactive: true })
+  // 设置冻结策略为不活跃冻结
 struct NavigationContentMsgStack {
   @Link message: number;
   @Link index: number;
@@ -1573,10 +1574,11 @@ struct NavigationContentMsgStack {
   }
 }
 
-@Component({ freezeWhenInactive: true }) // 设置冻结策略为不活跃冻结
+@Component({ freezeWhenInactive: true })
+  // 设置冻结策略为不活跃冻结
 struct TextBuilder {
   @Prop @Watch("info") message: number = 0;
-  @State count : number = 0;
+  @State count: number = 0;
 
   info() {
     this.count++;
@@ -1922,7 +1924,7 @@ class MyNodeController extends NodeController {
       }
     }
     let result = this.rootNode.postTouchEvent(event);
-    console.info('result ' + result);
+    console.info(`result ${result}`);
     return result;
   }
 }
@@ -2409,7 +2411,7 @@ struct Index {
         console.info('onMemoryLevel');
       },
       onConfigurationUpdated: (config: Configuration): void => {
-        console.info('onConfigurationUpdated ' + JSON.stringify(config));
+        console.info(`onConfigurationUpdated ${JSON.stringify(config)}`);
         this.getUIContext()?.postFrameCallback(new MyFrameCallback());
       }
     };
@@ -2491,14 +2493,16 @@ class GeneratedObjectLiteralInterface_1 {
   constructor(age: number) {
     this.age = age;
   }
+
   @Trace age: number = 0;
 }
 
 // 使用普通类（V1装饰器风格），需要手动触发更新
 class GeneratedObjectLiteralInterface_2 {
-  constructor(age: number ) {
+  constructor(age: number) {
     this.age = age;
   }
+
   age: number = 0;
 }
 
@@ -2508,7 +2512,6 @@ struct Index {
   private content: NodeContent = new NodeContent();
   params: GeneratedObjectLiteralInterface_1 = new GeneratedObjectLiteralInterface_1(25);
   params2: GeneratedObjectLiteralInterface_2 = new GeneratedObjectLiteralInterface_2(25);
-
   private node1: ReactiveBuilderNode<[Binding<number>]> | null = null
 
   build() {
@@ -2817,7 +2820,8 @@ struct pageTwoStack { // 页面二
   }
 }
 
-@Component({ freezeWhenInactive: true }) // 启用非活动时冻结
+@Component({ freezeWhenInactive: true })
+  // 启用非活动时冻结
 struct NavigationContentMsgStack {
   @Link message: number;
   @Link index: number;
@@ -2925,7 +2929,7 @@ class MyNodeController extends NodeController {
     this.rootNode = new FrameNode(uiContext);
     this.builderNode = new ReactiveBuilderNode(uiContext, { selfIdealSize: { width: 200, height: 100 } });
     // 构建ReactiveBuilderNode内容，使用WrappedBuilder包装Builder函数
-    this.builderNode.build(new WrappedBuilder(buildComponent),{});
+    this.builderNode.build(new WrappedBuilder(buildComponent), {});
 
     const rootRenderNode = this.rootNode!.getRenderNode();
     if (rootRenderNode !== null) {
@@ -2946,12 +2950,11 @@ class MyNodeController extends NodeController {
   }
 
   // 检查节点是否已释放的方法
-  isDisposed() : string{
+  isDisposed(): string {
     if (this.builderNode !== null) {
       if (this.builderNode.isDisposed()) {
         return 'builderNode isDisposed is true';
-      }
-      else {
+      } else {
         return 'builderNode isDisposed is false';
       }
     }
@@ -3138,6 +3141,7 @@ struct MyComponent {
     }.offset({ top: 100 })
   }
 }
+
 ```
 
 ![OnMouse](figures/OnMouse.gif)
@@ -3147,13 +3151,14 @@ struct MyComponent {
 该示例演示了在自定义组件中截获触摸事件并对触点坐标进行转换的完整流程。在[onTouch](arkui-ts/ts-universal-events-touch.md#ontouch)回调中，遍历[TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明)的changedTouches和touches数组，对每个触点的x/y加上组件偏移量并调用vp2px转换为像素，更新各自的windowX/windowY、displayX/displayY。最后同样通过rootNode.postInputEvent(event)将转换后的触摸事件分发给子节点处理。
 
 ```ts
-import { NodeController, BuilderNode, FrameNode, UIContext, PromptAction, InputEventType  } from '@kit.ArkUI';
+import { NodeController, BuilderNode, FrameNode, UIContext, PromptAction, InputEventType } from '@kit.ArkUI';
 
 // 自定义传递参数的类
 class Params {
   text: string = "this is a text"
   uiContext: UIContext | null = null
 }
+
 @Builder
 function ButtonBuilder(params: Params) {
   Column() {
@@ -3179,10 +3184,12 @@ function ButtonBuilder(params: Params) {
   .height(300)
   .backgroundColor(Color.Gray)
 }
+
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {
   private rootNode: BuilderNode<[Params]> | null = null;
   private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder);
+
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new BuilderNode(uiContext);
     this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
@@ -3222,10 +3229,12 @@ class MyNodeController extends NodeController {
     return result;
   }
 }
+
 @Entry
 @Component
 struct MyComponent {
   private nodeController: MyNodeController = new MyNodeController();
+
   build() {
     Stack() {
       NodeContainer(this.nodeController)
@@ -3240,7 +3249,7 @@ struct MyComponent {
             this.nodeController.postInputEvent(event, this.getUIContext());
           }
         })
-    }.offset({top: 100})
+    }.offset({ top: 100 })
   }
 }
 ```
@@ -3259,6 +3268,7 @@ class Params {
   text: string = "this is a text"
   uiContext: UIContext | null = null
 }
+
 @Builder
 function ButtonBuilder(params: Params) {
   Column() {
@@ -3284,10 +3294,12 @@ function ButtonBuilder(params: Params) {
   .height(300)
   .backgroundColor(Color.Gray)
 }
+
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {
   private rootNode: BuilderNode<[Params]> | null = null;
   private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder);
+
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new BuilderNode(uiContext);
     this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
@@ -3313,10 +3325,12 @@ class MyNodeController extends NodeController {
     return result;
   }
 }
+
 @Entry
 @Component
 struct MyComponent {
   private nodeController: MyNodeController = new MyNodeController();
+
   build() {
     Stack() {
       NodeContainer(this.nodeController)
@@ -3331,7 +3345,7 @@ struct MyComponent {
             this.nodeController.postInputEvent(event, this.getUIContext());
           }
         })
-    }.offset({top: 100})
+    }.offset({ top: 100 })
   }
 }
 ```
@@ -3346,6 +3360,7 @@ import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
 // 自定义传递参数的类
 class Params {
   text: string = ""
+
   constructor(text: string) {
     this.text = text;
   }
@@ -3365,12 +3380,14 @@ function buildText(params: Params) {
 // 继承NodeController实现自定义textNode控制器
 class TextNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
+
   makeNode(context: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(context);
     if (globalBuilderNode === null) {
       globalBuilderNode = new BuilderNode(context);
       // 传入外部localStorage，共享给挂载在当前BuilderNode的所有自定义组件
-      globalBuilderNode.build(wrapBuilder<[Params]>(buildText), new Params('builder node text'), { localStorage: localStorage1 })
+      globalBuilderNode.build(wrapBuilder<[Params]>(buildText), new Params('builder node text'),
+        { localStorage: localStorage1 })
     }
     this.rootNode.appendChild(globalBuilderNode.getFrameNode());
     return this.rootNode;
@@ -3386,21 +3403,24 @@ localStorage1.setOrCreate('PropA', 'PropA');
 struct Index {
   private controller: TextNodeController = new TextNodeController();
   @LocalStorageLink('PropA') PropA: string = 'Hello World';
+
   build() {
     Row() {
       Column() {
         Text(this.PropA)
         NodeContainer(this.controller)
-        Button('changeLocalstorage').onClick(()=>{
-          localStorage1.set('PropA','AfterChange')
+        Button('changeLocalstorage').onClick(() => {
+          localStorage1.set('PropA', 'AfterChange')
         })
       }
     }
   }
 }
+
 @Component
 struct CustomComp {
   @LocalStorageLink('PropA') PropA: string = 'Hello World';
+
   build() {
     Row() {
       Column() {
@@ -3518,7 +3538,7 @@ class TextNodeControllerAdd extends NodeController {
     console.info('TextNodeControllerAdd makeNode');
     this.builderNode = new BuilderNode(context);
     // 构建builderNode，enableProvideConsumeCrossing设置为true
-    this.builderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+    this.builderNode.build(wrapBuilder<[]>(buildText), undefined, { enableProvideConsumeCrossing: true });
     return this.builderNode.getFrameNode();
   }
 }
@@ -3526,7 +3546,9 @@ class TextNodeControllerAdd extends NodeController {
 @ComponentV2
 struct addChildChild {
   @Consumer() content: string = 'default value';
-  @Monitor('content') consumeWatch() {
+
+  @Monitor('content')
+  consumeWatch() {
     console.info(`Consumer change ${this.content}`);
   }
 
@@ -3547,7 +3569,9 @@ struct addChildChild {
 struct AddChild {
   // 与@Consumer装饰的状态变量双向同步
   @Provider() content: string = 'Index: hello world';
-  @Monitor('content') providerWatch() {
+
+  @Monitor('content')
+  providerWatch() {
     console.info(`Provider change ${this.content}`);
   }
 
@@ -3607,7 +3631,7 @@ class TextNodeController extends NodeController {
   addBuilderNode(): void {
     if (globalBuilderNode === null && this.uiContext) {
       globalBuilderNode = new BuilderNode(this.uiContext);
-      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, { enableProvideConsumeCrossing: true });
     }
     if (this.rootNode && globalBuilderNode) {
       this.rootNode.appendChild(globalBuilderNode.getFrameNode());
@@ -3631,13 +3655,16 @@ class TextNodeController extends NodeController {
 @ComponentV2
 struct RemoChildDisconnectProvider {
   @Provider() content: string = 'Index: hello world';
-  @Monitor('content') providerWatch() {
+
+  @Monitor('content')
+  providerWatch() {
     console.info(`Provider change ${this.content}`);
   }
+
   controllerIndex: TextNodeController = new TextNodeController();
 
   build() {
-    Column({space: 8}) {
+    Column({ space: 8 }) {
       Text(`Provider: ${this.content}`)
       Button('add child')
         .onClick(() => {
@@ -3652,7 +3679,7 @@ struct RemoChildDisconnectProvider {
       Button('dispose child')
         .onClick(() => {
           this.controllerIndex.disposeNode();
-      })
+        })
 
       Button('change Provider')
         .onClick(() => {
@@ -3669,7 +3696,9 @@ struct RemoChildDisconnectProvider {
 @ComponentV2
 struct TestRemove {
   @Consumer() content: string = 'default value';
-  @Monitor('content') consumerWatch() {
+
+  @Monitor('content')
+  consumerWatch() {
     console.info(`Consumer change ${this.content}`);
   }
 
@@ -3726,7 +3755,7 @@ class TextNodeController extends NodeController {
   addBuilderNode(): void {
     if (globalBuilderNode === null && this.uiContext) {
       globalBuilderNode = new BuilderNode(this.uiContext);
-      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, { enableProvideConsumeCrossing: true });
     }
     if (this.rootNode && globalBuilderNode) {
       this.rootNode.appendChild(globalBuilderNode.getFrameNode());
@@ -3744,19 +3773,22 @@ class TextNodeController extends NodeController {
 @ComponentV2
 struct AddRemoveAddToAnother {
   @Provider() content: string = 'Index: hello world';
-  @Monitor('content') providerWatch() {
+
+  @Monitor('content')
+  providerWatch() {
     console.info(`Provider change ${this.content}`);
   }
+
   controllerIndex: TextNodeController = new TextNodeController();
 
   build() {
-    Column({space: 8}) {
+    Column({ space: 8 }) {
       Text(`Index Provider: ${this.content}`)
 
       Button('add child')
         .onClick(() => {
           this.controllerIndex.addBuilderNode();
-      })
+        })
 
       Button('change Index Provide')
         .onClick(() => {
@@ -3765,7 +3797,7 @@ struct AddRemoveAddToAnother {
         })
 
       NodeContainer(this.controllerIndex);
-      ChildHasProvide({controllerIndex: this.controllerIndex});
+      ChildHasProvide({ controllerIndex: this.controllerIndex });
     }
     .width('100%')
     .height('100%')
@@ -3775,14 +3807,17 @@ struct AddRemoveAddToAnother {
 @ComponentV2
 struct ChildHasProvide {
   @Provider('content') content: string = 'Child: hello world';
-  @Monitor('content') providerWatch() {
+
+  @Monitor('content')
+  providerWatch() {
     console.info(`Provider change ${this.content}`);
   }
+
   @Param private controllerIndex: TextNodeController | undefined = undefined;
   controllerIndexChild: TextNodeController = new TextNodeController();
 
   build() {
-    Column() {
+    Column({ space: 8 }) {
       Text(`Child Provider: ${this.content}`)
 
       Button('change Child Provide')
@@ -3795,7 +3830,7 @@ struct ChildHasProvide {
         .onClick(() => {
           this.controllerIndex?.removeBuilderNode();
           this.controllerIndexChild.addBuilderNode();
-      })
+        })
       NodeContainer(this.controllerIndexChild);
     }
   }
@@ -3804,7 +3839,9 @@ struct ChildHasProvide {
 @ComponentV2
 struct ConsumerChild {
   @Consumer() content: string = 'default value';
-  @Monitor('content') consumerWatch() {
+
+  @Monitor('content')
+  consumerWatch() {
     console.info(`Consumer change ${this.content}`);
   }
 
@@ -3834,10 +3871,11 @@ struct ConsumerChild {
 import { BuilderNode, FrameNode, NodeContent, NodeController } from '@kit.ArkUI';
 
 let content: NodeContent = new NodeContent();
+
 @Builder
 function buildText() {
   Column() {
-    BuildNodeToBuildNodeChild().border({width: 2, color: Color.Pink, radius: 5});
+    BuildNodeToBuildNodeChild().border({ width: 2, color: Color.Pink, radius: 5 });
     ContentSlot(content);
   }
 }
@@ -3845,7 +3883,7 @@ function buildText() {
 @Builder
 function buildText2() {
   Column() {
-    BuildNodeToBuildNodeChild().border({width: 2, color: Color.Pink, radius: 5});
+    BuildNodeToBuildNodeChild().border({ width: 2, color: Color.Pink, radius: 5 });
   }
 }
 
@@ -3870,7 +3908,7 @@ class TextNodeControllerAdd extends NodeController {
   addBuilderNode(): void {
     if (globalBuilderNode === null && this.uiContext) {
       globalBuilderNode = new BuilderNode(this.uiContext);
-      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, { enableProvideConsumeCrossing: true });
     }
     if (this.rootNode && globalBuilderNode) {
       this.rootNode.appendChild(globalBuilderNode.getFrameNode());
@@ -3888,25 +3926,28 @@ class TextNodeControllerAdd extends NodeController {
 @ComponentV2
 struct BuildNodeToBuildNode {
   @Provider() content: string = 'Index: hello world';
-  @Monitor('content') providerWatch() {
+
+  @Monitor('content')
+  providerWatch() {
     console.info(`Provider change ${this.content}`);
   }
+
   controllerIndex: TextNodeControllerAdd = new TextNodeControllerAdd();
 
   build() {
-    Column({space: 8}) {
+    Column({ space: 8 }) {
       Text(`Provider: ${this.content}`)
       Button('add child')
         .onClick(() => {
           this.controllerIndex.addBuilderNode();
-      })
+        })
       // builderNode嵌套builderNode
       Button('add to NodeContent')
         .onClick(() => {
           globalBuilderNode2 = new BuilderNode(this.getUIContext());
-          globalBuilderNode2.build(wrapBuilder<[]>(buildText2), undefined, {enableProvideConsumeCrossing: true});
+          globalBuilderNode2.build(wrapBuilder<[]>(buildText2), undefined, { enableProvideConsumeCrossing: true });
           content.addFrameNode(globalBuilderNode2.getFrameNode());
-      })
+        })
       Button('change Provider')
         .onClick(() => {
           // 修改@Provider的变量
@@ -3923,7 +3964,9 @@ struct BuildNodeToBuildNode {
 struct BuildNodeToBuildNodeChild {
   // 在未上树的时候，Test组件无View的父亲，该节点为离屏节点。@Consumer找不到对应@Provider，使用默认值
   @Consumer() content: string = 'default value';
-  @Monitor('content') consumerWatch() {
+
+  @Monitor('content')
+  consumerWatch() {
     console.info(`Consumer change ${this.content}`);
   }
 
@@ -3976,7 +4019,7 @@ class TextNodeController extends NodeController {
   addBuilderNode(): void {
     if (globalBuilderNode === null && this.uiContext) {
       globalBuilderNode = new BuilderNode(this.uiContext);
-      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, { enableProvideConsumeCrossing: true });
     }
     if (this.rootNode && globalBuilderNode) {
       this.rootNode.appendChild(globalBuilderNode.getFrameNode());
@@ -4000,29 +4043,32 @@ class TextNodeController extends NodeController {
 @ComponentV2
 struct NestedComponent {
   @Provider() content: string = 'Index: hello world';
-  @Monitor('content') providerWatch() {
+
+  @Monitor('content')
+  providerWatch() {
     console.info(`Provider change ${this.content}`);
   }
+
   controllerIndex: TextNodeController = new TextNodeController();
 
   build() {
-    Column({space: 8}) {
+    Column({ space: 8 }) {
       Text(`Provider: ${this.content}`)
 
       Button('add child')
         .onClick(() => {
           this.controllerIndex.addBuilderNode();
-      })
+        })
 
       Button('remove child')
         .onClick(() => {
           this.controllerIndex.removeBuilderNode();
-      })
+        })
 
       Button('dispose child')
         .onClick(() => {
           this.controllerIndex.disposeNode();
-      })
+        })
 
       Button('change Provider')
         .onClick(() => {
@@ -4039,7 +4085,9 @@ struct NestedComponent {
 @ComponentV2
 struct NestedComponentChild {
   @Consumer() content: string = 'default value';
-  @Monitor('content') consumerWatch() {
+
+  @Monitor('content')
+  consumerWatch() {
     console.info(`Consumer change ${this.content}`);
   }
 
@@ -4056,7 +4104,7 @@ struct NestedComponentChild {
           // 修改@Consumer的变量
           this.content += 'content';
         })
-      NestedComponentChildChld({content: this.content, addContent: () => this.content += 'content'});
+      NestedComponentChildChld({ content: this.content, addContent: () => this.content += 'content' });
     }
   }
 }
@@ -4064,9 +4112,11 @@ struct NestedComponentChild {
 @ComponentV2
 struct NestedComponentChildChld {
   // 在未上树的时候，Test组件无View的父亲，该节点为离屏节点。@Consumer找不到对应@Provider，使用默认值
-  @Param@Require content: string;
+  @Param @Require content: string;
   @Event addContent: () => void;
-  @Monitor('content') paramEventWatch() {
+
+  @Monitor('content')
+  paramEventWatch() {
     console.info(`ParamEvent change ${this.content}`);
   }
 
@@ -4123,7 +4173,7 @@ class TextNodeController extends NodeController {
   addBuilderNode(): void {
     if (globalBuilderNode === null && this.uiContext) {
       globalBuilderNode = new BuilderNode(this.uiContext);
-      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, { enableProvideConsumeCrossing: true });
     }
     if (this.rootNode && globalBuilderNode) {
       this.rootNode.appendChild(globalBuilderNode.getFrameNode());
@@ -4145,15 +4195,17 @@ class TextNodeController extends NodeController {
 
 @Entry
 @ComponentV2
-// 与@Consumer装饰的状态变量双向同步
+  // 与@Consumer装饰的状态变量双向同步
 struct ProvideConsumeBuilderNodeConsume {
-  @Provider() content : Ob = new Ob();
-  @Monitor('content') providerWatch() {
+  @Provider() content: Ob = new Ob();
+
+  @Monitor('content')
+  providerWatch() {
     console.info(`Provider change ${this.content.a}`);
   }
 
   build() {
-    Column({space: 8}) {
+    Column({ space: 8 }) {
       Text(`Provide: ${this.content.a}`)
 
       Button('Change Provider a')
@@ -4173,30 +4225,33 @@ struct ProvideConsumeBuilderNodeConsume {
 
 // 组件树为@Provider-@Consumer-BuilderNode-@Consumer结构
 @ComponentV2
-struct ProvideConsumeBuilderNodeConsumeChild{
+struct ProvideConsumeBuilderNodeConsumeChild {
   @Consumer() content: Ob = new Ob();
-  @Monitor('content') consumerWatch() {
+
+  @Monitor('content')
+  consumerWatch() {
     console.info(`ProvideConsumeBuilderNodeConsumeChild change ${this.content.a}`);
   }
-  controllerIndex : TextNodeController = new TextNodeController();
+
+  controllerIndex: TextNodeController = new TextNodeController();
 
   build() {
-    Column({space: 8}) {
+    Column({ space: 8 }) {
       Text(`Consumer: ${this.content.a}`)
       Button('add child')
         .onClick(() => {
           this.controllerIndex.addBuilderNode();
-      })
+        })
 
       Button('remove child')
         .onClick(() => {
           this.controllerIndex.removeBuilderNode();
-      })
+        })
 
       Button('dispose child')
         .onClick(() => {
           this.controllerIndex.disposeNode();
-      })
+        })
 
       Button('change consumer a')
         .onClick(() => {
@@ -4212,10 +4267,13 @@ struct ProvideConsumeBuilderNodeConsumeChild{
     .height('100%')
   }
 }
+
 @ComponentV2
 struct NestedComponentChild {
   @Consumer() content: Ob = new Ob();
-  @Monitor('content') consumer1Watch() {
+
+  @Monitor('content')
+  consumer1Watch() {
     console.info(`Consumer change ${this.content.a}`);
   }
 
@@ -4224,7 +4282,7 @@ struct NestedComponentChild {
   }
 
   build() {
-    Column({space: 8}) {
+    Column({ space: 8 }) {
       Text(`Consumer under builder node: ${this.content.a}`)
 
       Button('Consumer change content')
@@ -4276,7 +4334,7 @@ class TextNodeController extends NodeController {
   addBuilderNode(): void {
     if (globalBuilderNode === null && this.uiContext) {
       globalBuilderNode = new BuilderNode(this.uiContext);
-      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, { enableProvideConsumeCrossing: true });
     }
     if (this.rootNode && globalBuilderNode) {
       this.rootNode.appendChild(globalBuilderNode.getFrameNode());
@@ -4301,14 +4359,17 @@ class TextNodeController extends NodeController {
 @ComponentV2
 struct Provider1 {
   // 与@Consumer装饰的状态变量双向同步
-  @Provider() content : Ob = new Ob();
-  @Monitor('content') providerWatch() {
+  @Provider() content: Ob = new Ob();
+
+  @Monitor('content')
+  providerWatch() {
     console.info(`Provider change ${this.content.a}`);
   }
-  controllerIndex : TextNodeController = new TextNodeController();
+
+  controllerIndex: TextNodeController = new TextNodeController();
 
   build() {
-    Column({space: 8}) {
+    Column({ space: 8 }) {
       Text(`Provider1: ${this.content.a}`)
 
       Button('Change Provider1 a')
@@ -4322,17 +4383,17 @@ struct Provider1 {
       Button('add child')
         .onClick(() => {
           this.controllerIndex.addBuilderNode();
-      })
+        })
 
       Button('remove child')
         .onClick(() => {
           this.controllerIndex.removeBuilderNode();
-      })
+        })
 
       Button('dispose child')
         .onClick(() => {
           this.controllerIndex.disposeNode();
-      })
+        })
       NodeContainer(this.controllerIndex);
     }
     .width('100%')
@@ -4341,12 +4402,15 @@ struct Provider1 {
 }
 
 @ComponentV2
-struct Provider2{
+struct Provider2 {
   @Provider() content: Ob = new Ob();
-  @Monitor('content') consumerWatch() {
+
+  @Monitor('content')
+  consumerWatch() {
     console.info(`Provider2 change ${this.content.a}`);
   }
-  controllerIndex : TextNodeController = new TextNodeController();
+
+  controllerIndex: TextNodeController = new TextNodeController();
 
   build() {
     Column() {
@@ -4370,7 +4434,9 @@ struct Provider2{
 @ComponentV2
 struct defaultConsumer {
   @Consumer() content: Ob = new Ob();
-  @Monitor('content') consumer1Watch() {
+
+  @Monitor('content')
+  consumer1Watch() {
     console.info(`Consumer change ${this.content.a}`);
   }
 
@@ -4676,15 +4742,17 @@ function ButtonBuilder(text: string, uiContext: UIContext) {
   .height(200)
   .backgroundColor(Color.Gray)
 }
+
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {
   private rootNode: ReactiveBuilderNode<[text: string, uiContext: UIContext]> | null = null;
+  private wrapBuilder: WrappedBuilder<[text: string, uiContext: UIContext]> =
+    wrapBuilder<[text: string, uiContext: UIContext]>(ButtonBuilder);
 
-  private wrapBuilder: WrappedBuilder<[text: string, uiContext: UIContext]> = wrapBuilder<[text: string, uiContext: UIContext]>(ButtonBuilder);
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new ReactiveBuilderNode(uiContext);
     // 构建ReactiveBuilderNode，传递按钮文本和UI上下文
-    this.rootNode.build(this.wrapBuilder, {}, 'onAxisEvent', uiContext )
+    this.rootNode.build(this.wrapBuilder, {}, 'onAxisEvent', uiContext)
     return this.rootNode.getFrameNode();
   }
 
@@ -4708,10 +4776,12 @@ class MyNodeController extends NodeController {
     return result;
   }
 }
+
 @Entry
 @Component
 struct MyComponent {
   private nodeController: MyNodeController = new MyNodeController();
+
   build() {
     Stack() {
       NodeContainer(this.nodeController)
@@ -4729,7 +4799,7 @@ struct MyComponent {
             this.nodeController.postInputEvent(event, this.getUIContext());
           }
         })
-    }.offset({top: 180})
+    }.offset({ top: 180 })
   }
 }
 ```
