@@ -166,7 +166,7 @@ let s3 = `The result is ${a}`;
 
 ``` TypeScript
 class Class<T> {
-  //...
+  // ...
 }
 let instance: Class<void>;
 ```
