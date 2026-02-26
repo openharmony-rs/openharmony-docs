@@ -2442,9 +2442,9 @@ export @interface ClassAuthor2 {}
 <!-- @[annotation_export_example_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->      
 
 ``` TypeScript
-// b.ets
-import { MyAnno2 } from './a';
-import * as ns from './a';
+// Annotation.ets
+import { MyAnno2 } from './MyAnno';
+import * as ns from './MyAnno';
 // ...
 @MyAnno2
 @ns.ClassAuthor2
