@@ -443,7 +443,7 @@ if (flag) {
 ``` TypeScript
 if (flag) {
   // ...
-} else { // else 与其前面的大括号 } 之间增加空格。
+} else { // else 与其前面的大括号 } 之间增加空格
   // ...
 }
 ```
