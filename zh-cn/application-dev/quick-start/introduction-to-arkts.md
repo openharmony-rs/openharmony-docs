@@ -2551,6 +2551,16 @@ export declare @interface ClassAuthor3 {}
 
 <!-- @[annotation_developerGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) --> 
 
+``` TypeScript
+// NameAnno.d.ets 开发者生成的声明文件
+@interface ClassAuthor6 {}
+
+@ClassAuthor6 // 声明文件中有注解
+class C {
+  // ...
+}
+```
+
 
 <!-- @[annotation_developerGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) --> 
 
