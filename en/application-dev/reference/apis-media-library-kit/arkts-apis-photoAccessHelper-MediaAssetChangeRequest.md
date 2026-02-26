@@ -21,6 +21,18 @@ MediaAssetChangeRequest represents a media asset change request.
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ```
 
+## Attributes
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name          | Type   | Read-Only  | Optional | Description  |
+| ------------ | ------ | ---- | ---- | ------- |
+| comment<sup>23+</sup>    | string | Yes   | No  | Used to verify the [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11) type.<br>If a class (such as **MediaAssetChangeRequest**) object can be accessed, it is an implementation class of **MediaChangeRequest**.|
+
 ## constructor<sup>11+</sup>
 
 constructor(asset: PhotoAsset)
@@ -72,7 +84,7 @@ static createImageAssetRequest(context: Context, fileUri: string): MediaAssetCha
 
 Creates an image asset change request.
 
-Use **fileUri** to specify the data source of the asset to be created. For details, see [FileUri](../apis-core-file-kit/js-apis-file-fileuri.md).
+For details about data source of the asset to be created, see [@ohos.file.fileuri (File URI)](../apis-core-file-kit/js-apis-file-fileuri.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -126,7 +138,7 @@ static createVideoAssetRequest(context: Context, fileUri: string): MediaAssetCha
 
 Creates a video asset change request.
 
-Use **fileUri** to specify the data source of the asset to be created. For details, see [FileUri](../apis-core-file-kit/js-apis-file-fileuri.md).
+For details about data source of the asset to be created, see [@ohos.file.fileuri (File URI)](../apis-core-file-kit/js-apis-file-fileuri.md).
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -514,7 +526,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 addResource(type: ResourceType, fileUri: string): void
 
-Adds a resource using [fileUri](../apis-core-file-kit/js-apis-file-fileuri.md).
+Adds resources from the application sandbox based on the file URI. For details about the data source, see [@ohos.file.fileuri (File URI)](../apis-core-file-kit/js-apis-file-fileuri.md).
 
 > **NOTE**
 >
