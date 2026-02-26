@@ -304,7 +304,7 @@ getLastWindow(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -425,7 +425,7 @@ getLastWindow(ctx: BaseContext): Promise&lt;Window&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -897,7 +897,7 @@ ArkTS-Sta: getWindowsByCoordinate(displayId: long, windowNumber?: int, x?: int, 
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -920,9 +920,9 @@ ArkTS-Sta: getWindowsByCoordinate(displayId: long, windowNumber?: int, x?: int, 
 
 | 错误码ID    | 错误信息 |
 |----------| ------------------------------ |
-| 401      | Parameter error. Possible cause: Incorrect parameter types. |
+| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300003 | This window manager service works abnormally. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 **示例：**
 
@@ -993,7 +993,7 @@ ArkTS-Sta: getAllWindowLayoutInfo(displayId: long): Promise&lt;Array&lt;WindowLa
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1015,7 +1015,7 @@ ArkTS-Sta: getAllWindowLayoutInfo(displayId: long): Promise&lt;Array&lt;WindowLa
 |----------| ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not supported. function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
-| 1300003 | This window manager service works abnormally. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error.|
 
 **示例：**
 
@@ -1068,7 +1068,7 @@ getVisibleWindowInfo(): Promise&lt;Array&lt;WindowInfo&gt;&gt;
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.VISIBLE_WINDOW_INFO
 
@@ -1084,9 +1084,9 @@ getVisibleWindowInfo(): Promise&lt;Array&lt;WindowInfo&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. Possible cause: Need ohos.permission.VISIBLE_WINDOW_INFO permission.|
 | 801     | Capability not supported. Function getVisibleWindowInfo can not work correctly due to limited device capabilities. |
-| 1300003 | This window manager service works abnormally. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 **示例：**
 
@@ -1159,7 +1159,7 @@ ArkTS-Sta: getGlobalWindowMode(displayId?: long): Promise&lt;int&gt;
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1180,8 +1180,8 @@ ArkTS-Sta: getGlobalWindowMode(displayId?: long): Promise&lt;int&gt;
 | 错误码ID    | 错误信息 |
 |----------| ------------------------------ |
 | 801      | Capability not supported. function getGlobalWindowMode can not work correctly due to limited device capabilities. |
-| 1300003 | This window manager service works abnormally. |
-| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error.|
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. The parameter format is incorrect.|
 
 **示例：**
 
@@ -1229,6 +1229,10 @@ setWatermarkImageForAppWindows(pixelMap: image.PixelMap | undefined): Promise&lt
 设置或取消本应用进程下窗口的水印图片，使用Promise异步回调。该接口需要在[loadContent()](arkts-apis-window-Window.md#loadcontent9)或[setUIContent()](arkts-apis-window-Window.md#setuicontent9)调用生效后使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1296,6 +1300,10 @@ setStartWindowBackgroundColor(moduleName: string, abilityName: string, color: Co
  
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                          | 必填 | 说明                                                     |
@@ -1317,8 +1325,8 @@ setStartWindowBackgroundColor(moduleName: string, abilityName: string, color: Co
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported.function setStartWindowBackgroundColor can not to work correctly due to limited device capabilities. |
-| 1300003 | This window manager service works abnormally. |
-| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error.|
+| 1300016 |  Parameter error. Possible cause: Parameter exceeds the allowed length. |
 
 **示例：**
 
@@ -1427,6 +1435,10 @@ getMainWindowSnapshot(windowId: Array&lt;number&gt;, config: WindowSnapshotConfi
 **系统能力：** SystemCapability.Window.SessionManager
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

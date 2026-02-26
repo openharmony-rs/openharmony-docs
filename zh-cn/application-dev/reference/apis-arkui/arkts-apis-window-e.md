@@ -37,11 +37,11 @@
 
 | 名称                             | 值   | 说明                                                         |
 | -------------------------------- | ---- | ------------------------------------------------------------ |
-| TYPE_SYSTEM                      | 0    | 表示系统默认区域。<!--RP11-->包含状态栏和三键导航栏区域。<!--RP11End--><br>**ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 22       |
-| TYPE_CUTOUT                      | 1    | 表示挖孔区域。<br>**ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 22                                                              |
-| TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | 表示侧边返回手势区域。当前所有设备均无此类型避让区域。<br>**ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 22                                    |
-| TYPE_KEYBOARD<sup>9+</sup>       | 3    | 表示固定态软键盘区域。<br>**ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 22                                                              |
-| TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | 表示底部导航区域。<!--RP12-->OpenHarmony各设备不支持此能力。<!--RP12End--><br>**ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 22                             |
+| TYPE_SYSTEM                      | 0    | 表示系统默认区域。<!--RP11-->包含状态栏和三键导航栏区域。<!--RP11End--><br>**ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 23       |
+| TYPE_CUTOUT                      | 1    | 表示挖孔区域。<br>**ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 23                                                              |
+| TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | 表示侧边返回手势区域。当前所有设备均无此类型避让区域。<br>**ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23                                    |
+| TYPE_KEYBOARD<sup>9+</sup>       | 3    | 表示固定态软键盘区域。<br>**ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23                                                              |
+| TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | 表示底部导航区域。<!--RP12-->OpenHarmony各设备不支持此能力。<!--RP12End--><br>**ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23                             |
 
 ## Orientation<sup>9+</sup>
 
@@ -100,7 +100,7 @@
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值 | 说明           |
 | ---------- | ------ | -------------- |
@@ -150,10 +150,10 @@
 
 | 名称       | 值   | 说明                          |
 | ---------- | ---- | ----------------------------- |
-| FOLLOW_APP_IMMERSIVE_SETTING  | 0    | 最大化时，跟随应用app当前设置的全屏模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22       |
-| EXIT_IMMERSIVE | 1    | 最大化时，如果当前窗口设置了全屏模式会退出全屏模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22             |
-| ENTER_IMMERSIVE    | 2    | 最大化时，进入全屏模式，鼠标Hover在热区上显示窗口标题栏和dock栏。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22   |
-| ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER<sup>14+</sup>    | 3    | 最大化时，进入全屏模式，鼠标Hover在热区上不显示窗口标题栏和dock栏。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22   |
+| FOLLOW_APP_IMMERSIVE_SETTING  | 0    | 最大化时，跟随应用app当前设置的全屏模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23       |
+| EXIT_IMMERSIVE | 1    | 最大化时，如果当前窗口设置了全屏模式会退出全屏模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23             |
+| ENTER_IMMERSIVE    | 2    | 最大化时，进入全屏模式，鼠标Hover在热区上显示窗口标题栏和dock栏。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23   |
+| ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER<sup>14+</sup>    | 3    | 最大化时，进入全屏模式，鼠标Hover在热区上不显示窗口标题栏和dock栏。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23   |
 
 ## WindowAnimationCurve<sup>20+</sup>
 
@@ -265,10 +265,10 @@
 
 | 名称   | 值 | 说明                    |
 | ------ | --- | ------------------------ |
-| FULLSCREEN | 1 | 全屏窗口，二进制从右往左，第一个二进制位为1。  |
-| SPLIT  | 1 << 1 | 分屏窗口，二进制从右往左，第二个二进制位为1。 |
-| FLOAT   | 1 << 2  | 悬浮窗，二进制从右往左，第三个二进制位为1。 |
-| PIP   | 1 << 3  | 画中画，二进制从右往左，第四个二进制位为1。 |
+| FULLSCREEN | 1 | 全屏窗口，二进制从右往左，第一个二进制位为1。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23  |
+| SPLIT  | 1 << 1 | 分屏窗口，二进制从右往左，第二个二进制位为1。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| FLOAT   | 1 << 2  | 悬浮窗，二进制从右往左，第三个二进制位为1。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS-Sta起始版本：** 23|
+| PIP   | 1 << 3  | 画中画，二进制从右往左，第四个二进制位为1。 <br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 
 ## OcclusionState<sup>22+</sup>
 
@@ -278,9 +278,9 @@
 
 | 名称   | 值 | 说明                   |
 | ------ | ---- | --------------------- |
-| NO_OCCLUSION | 0 | 窗口完全可见（没有任何部分被其他非透明窗口遮挡）。|
-| PARTIAL_OCCLUSION | 1 | 窗口部分可见（部分被其他非透明窗口遮挡）。|
-| FULL_OCCLUSION | 2 | 窗口完全不可见（完全被其他非透明窗口遮挡，或窗口最小化，或窗口隐藏）。|
+| NO_OCCLUSION | 0 | 窗口完全可见（没有任何部分被其他非透明窗口遮挡）。<br>**ArkTS-Dyn起始版本：** 23|
+| PARTIAL_OCCLUSION | 1 | 窗口部分可见（部分被其他非透明窗口遮挡）。<br>**ArkTS-Dyn起始版本：** 23|
+| FULL_OCCLUSION | 2 | 窗口完全不可见（完全被其他非透明窗口遮挡，或窗口最小化，或窗口隐藏）。<br>**ArkTS-Dyn起始版本：** 23|
 
 ## WindowStageEventType<sup>9+</sup>
 
@@ -341,8 +341,8 @@ WindowStage生命周期的状态类型枚举。
 
 | 名称   | 值 | 说明                   |
 | ------ | ---- | --------------------- |
-| SYSTEM_SCREENSHOT | 0 | 系统截屏成功。 |
-| SYSTEM_SCREENSHOT_ABORT | 1 | 系统截屏中止。 |
-| SCROLL_SHOT_START | 2 | 滚动截屏开始。 |
-| SCROLL_SHOT_END | 3 | 滚动截屏结束。 |
-| SCROLL_SHOT_ABORT | 4 | 滚动截屏中止。 |
+| SYSTEM_SCREENSHOT | 0 | 系统截屏成功。 <br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23|
+| SYSTEM_SCREENSHOT_ABORT | 1 | 系统截屏中止。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
+| SCROLL_SHOT_START | 2 | 滚动截屏开始。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
+| SCROLL_SHOT_END | 3 | 滚动截屏结束。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
+| SCROLL_SHOT_ABORT | 4 | 滚动截屏中止。<br>**ArkTS-Dyn起始版本：** 21 <br>**ArkTS-Sta起始版本：** 23|
