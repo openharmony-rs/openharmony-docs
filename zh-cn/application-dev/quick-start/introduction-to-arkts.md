@@ -2517,6 +2517,11 @@ export declare @interface ClassAuthor3 {}
 
 <!-- @[annotation_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->   
 
+``` TypeScript
+// MyAnno.ets
+export @interface NameAnno{name: string = ""} // ok
+```
+
 
 环境声明的注解和class类似，也可以被import使用。
 
