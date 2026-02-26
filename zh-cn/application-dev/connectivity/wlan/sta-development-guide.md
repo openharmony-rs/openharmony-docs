@@ -52,16 +52,16 @@ try {
     let wifiState = "";
     switch (result) {
       case 0:
-        wifiState += 'DISABLING';
+        wifiState += 'DISABLED';
         break;
       case 1:
-        wifiState += 'DISABLED';
+        wifiState += 'ENABLED';
         break;
       case 2:
         wifiState += 'ENABLING';
         break;
       case 3:
-        wifiState += 'ENABLED';
+        wifiState += 'DISABLING';
         break;
       default:
         wifiState += 'UNKNOWN STATUS';
