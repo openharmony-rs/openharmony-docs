@@ -1032,7 +1032,7 @@ class Person1 {
     return this.name;
   }
 }
-// ...
+  // ...
   let p1 = new Person1('Alice', 25);
   p1.name; // Alice
   let p2 = new Person1('Bob', 28);
