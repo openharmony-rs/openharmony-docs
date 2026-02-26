@@ -1218,7 +1218,7 @@ class C2 {
     return 'this is a static method.';
   }
 }
-// ...
+  // ...
   console.info(C2.staticMethod());
 ```
 
