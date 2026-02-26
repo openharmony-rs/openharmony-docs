@@ -14,7 +14,7 @@
 
 详细的API说明请参考[AVMetadataExtractor API参考](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md)。
 
-1. 使用createAVMetadataExtractor()创建实例。
+1. 使用[createAVMetadataExtractor()](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavmetadataextractor11-1)创建实例。
    ```ts
    import { media } from '@kit.MediaKit';
    // 创建AVMetadataExtractor对象。
