@@ -70,7 +70,7 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| chunk  | string \| Uint8Array | 否 | 需要写入的数据。当前版本不支持null、undefined和空字符串。 |
+| chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认值为null。当前版本不支持null、undefined和空字符串。 |
 | encoding  | string | 否   | 字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 | callback  | Function | 否   | 回调函数。默认不调用。 |
 
@@ -1196,7 +1196,7 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| chunk  | string \| Uint8Array | 否 | 需要写入的数据。当前版本不支持null、undefined和空字符串。 |
+| chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认值为null。当前版本不支持null、undefined和空字符串。 |
 | encoding  | string | 否   | 字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 | callback  | Function | 否   | 回调函数。默认不调用。 |
 
