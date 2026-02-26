@@ -904,7 +904,8 @@ export function getObject2(value: number): I {
 <!-- @[noESObject_app_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-import { getObject2, I } from './lib'
+// Index.ets
+import { getObject2, I } from './lib';
 // ...
 let obj2: I = getObject2(123);
 ```
