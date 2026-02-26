@@ -16494,7 +16494,13 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneObservedClassV1V2.ets",
-				"functions":[]
+				"functions":[
+					{
+						"end_line":60,
+						"name":"state_mixed_scene_observed_class_v1_v2",
+						"start_line":15
+					}
+				]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneObservedClassV2V1.ets",
@@ -22285,6 +22291,16 @@
 					{
 						"end_line":52,
 						"name":"sync_state_manager_$$",
+						"start_line":30
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExampleV2.ets",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"sync_state_manager_!!",
 						"start_line":30
 					}
 				]
@@ -44905,6 +44921,26 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionV1animateTo.ets",
+				"functions":[
+					{
+						"end_line":63,
+						"name":"Local_Question_V1_animateTo",
+						"start_line":29
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionAnimateToImmediately.ets",
+				"functions":[
+					{
+						"end_line":67,
+						"name":"Local_Question_animateToImmediately",
+						"start_line":29
+					}
+				]
 			}
 		]
 	},
@@ -45788,6 +45824,166 @@
 						"end_line":87,
 						"name":"ark_napi_wrap_unwrap_remove_wrap",
 						"start_line":69
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-v1-v2-migration-application.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/Index.ets",
+				"functions":[
+					{
+						"end_line":63,
+						"name":"Internal_localStorage_multi_instance_1",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/model/PDFData.ets",
+				"functions":[
+					{
+						"end_line":51,
+						"name":"Internal_localStorage_multi_instance_2",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/PdfEntryAbility.ets",
+				"functions":[
+					{
+						"end_line":30,
+						"name":"Internal_localStorage_multi_instance_3",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/PDF.ets",
+				"functions":[
+					{
+						"end_line":43,
+						"name":"Internal_localStorage_multi_instance_4",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-v1-v2-mixusage-before-api-version.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2InV1.ets",
+				"functions":[
+					{
+						"end_line":55,
+						"name":"v1_use_v2",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1CommonVariablesToV2CustomComponent.ets",
+				"functions":[
+					{
+						"end_line":100,
+						"name":"v1_to_v2_common_variables",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1StateVariablesToV2CustomComponent.ets",
+				"functions":[
+					{
+						"end_line":99,
+						"name":"v1_to_v2_state_variables",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1ToV2_ObservedClass.ets",
+				"functions":[
+					{
+						"end_line":107,
+						"name":"v1_to_v2_observed_class",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1ToV2_ObservedV2AndTrace.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"v1_to_v2_observedV2_trace",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/ObserveNestedClasses_ObservedAndObjectLink.ets",
+				"functions":[
+					{
+						"end_line":111,
+						"name":"observed_object_link",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/ObserveNestedClasses_ObsevedV2AndTrace.ets",
+				"functions":[
+					{
+						"end_line":98,
+						"name":"observed_trace",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2ToV1_SimpleData.ets",
+				"functions":[
+					{
+						"end_line":44,
+						"name":"v2_to_v1_simpleData",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2CommonVariablesToV1CustomComponent.ets",
+				"functions":[
+					{
+						"end_line":59,
+						"name":"v2_to_v1_common_variables",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2ToV1_ObservedV2AndTrace.ets",
+				"functions":[
+					{
+						"end_line":59,
+						"name":"v2_to_v1_observedV2_trace",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2ToV1_CommonBuildInClass.ets",
+				"functions":[
+					{
+						"end_line":48,
+						"name":"v2_to_v1_common_buildIn_class",
+						"start_line":16
 					}
 				]
 			}
