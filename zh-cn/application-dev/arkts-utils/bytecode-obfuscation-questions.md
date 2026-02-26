@@ -746,17 +746,18 @@ AppAbility
 
 ## 静态字节码混淆常规问题处理
 
-### 开启-enable-bytecode-obfuscation，没有生成相应的混淆文件如何处理？
+### 开启-enable-bytecode-obfuscation，没有生成相应的混淆文件如何处理
 
 首先确保Build Mode设置为release，查看moudle目录下的build-profile.json5中，ruleOptions的enable是否设置为true。
 
-### 开启-enable-bytecode-obfuscation后，编译失败如何处理？
+### 开启-enable-bytecode-obfuscation后，编译失败如何处理
 
 首先在obfuscation-rules.txt文件中，开启-enable-bytecode-obfuscation-debugging， 重新rebuild编译后，查看build下的debug.txt文件，查找是否有混淆错误信息；如果新增内容混淆失败，可以先尝试keep保留。
 
 ### 为什么interface中get set方法可以精准keep，而class中get set方法不可以
 
-interface中定义的field，get set和其field字段同名，但class中定义一个field，语法限制必须将get set重命名，这样会导致混淆时无法将两者进行关联，会混淆成不同名字； 需要使用通配符*去全量keep。
+interface中定义的field，get/set方法和其field字段同名，但class中定义一个field，语法限制必须将get set重命名，这样会导致混淆时无法将两者进行关联，会混淆成不同名字； 需要使用通配符*去全量keep。
+
 示例：
 
 ```typescript
