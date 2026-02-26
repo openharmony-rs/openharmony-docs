@@ -742,7 +742,7 @@ getRootInActiveWindow(windowId ?: number): Promise\<[AccessibilityElement](#acce
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| windowId | number | 否 | 表示查询的窗口ID。 |
+| windowId | number | 否 | 表示查询的窗口ID。如果未提供此参数，则默认查询当前活动窗口的根元素。 |
 
 **返回值:**
 | 类型                                 | 描述                    |
