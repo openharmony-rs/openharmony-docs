@@ -2554,6 +2554,16 @@ export declare @interface ClassAuthor3 {}
 
 <!-- @[annotation_developerGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) --> 
 
+``` TypeScript
+// MyAnno.ets 开发者对声明文件实现的源代码
+@interface ClassAuthor6 {}
+
+// 实现文件中没有注解
+class C {
+  // ...
+}
+```
+
 在最终编译产物中，class C没有注解。
 
 **重复注解和继承**
