@@ -2458,7 +2458,7 @@ console.info(result);  // 预期结果：www.example.com
 
 ## connection.createVlanInterface<sup>23+</sup>
 
-createVlanInterface(ifName: string, vlanId: int): Promise<void>
+createVlanInterface(ifName: string, vlanId: int): Promise\<void\>
 
 在网卡上创建vlan。使用Promise异步回调。
 
@@ -2507,7 +2507,7 @@ connection.createVlanInterface(ifName, vlanId).then(() => {
  
 ## connection.destroyVlanInterface<sup>23+</sup>
 
-destroyVlanInterface(ifName: string, vlanId: int): Promise<void>
+destroyVlanInterface(ifName: string, vlanId: int): Promise\<void\>
 
 在网卡上删除vlan。使用Promise异步回调。
 
@@ -2556,7 +2556,7 @@ connection.destroyVlanInterface(ifName, vlanId).then(() => {
  
 ## connection.addVlanIp<sup>23+</sup>
 
-addVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise<void>
+addVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
 
 在vlan上配置IP地址和掩码。使用Promise异步回调。
 
@@ -2615,7 +2615,7 @@ connection.addVlanIp(ifName, vlanId, address).then(() => {
  
 ## connection.deleteVlanIp<sup>23+</sup>
 
-deleteVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise<void>
+deleteVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
 
 在vlan上删除已配置的IP地址和掩码。使用Promise异步回调。
 
