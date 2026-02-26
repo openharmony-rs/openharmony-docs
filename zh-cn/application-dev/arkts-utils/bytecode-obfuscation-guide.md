@@ -7,9 +7,9 @@
 <!--Adviser: @jinqiuheng-->
 
 > **注意**：
->
+> 
 > 为了避免后续修改代码影响现网问题分析定位，建议开发者在版本发布时，本地备份build/default/cache/default/default@XXXCompileArkTS/esmodule/release/obfuscation路径下的全部内容；有条件的可以直接备份release目录。
->
+> 
 > 静态字节码混淆，备份build/default/cache/default/default@CompileStaticArkTS/obfuscation路径下的全部内容；有条件的可以直接备份default@CompileStaticArkTS目录。
 
 ## 字节码混淆开启步骤
@@ -20,7 +20,9 @@
 
 ### 开启混淆步骤
 
-从API version 20开始，字节码混淆能力已在系统中集成，从API version 23开始，静态字节码混淆能力已在系统中集成，可通过以下方式在DevEco Studio开启使用。
+从API version 20开始，字节码混淆能力已在系统中集成，从API version 23开始，静态字节码混淆能力已在系统中集成。
+
+可通过以下方式在DevEco Studio开启混淆功能。
 
 * 开启混淆开关
 
@@ -48,8 +50,8 @@
     ```
 
     > **注意：**
-    >
-    > 字节码har被集成的时候，不会二次混淆。
+    > 
+    > 字节码HAR被集成的时候，不会二次混淆。
 
 * 配置混淆规则
 
@@ -79,16 +81,16 @@
 
     混淆选项的配置推荐参考[字节码混淆选项配置指导](#字节码混淆选项配置指导)，混淆过程中涉及的所有配置文件的详情介绍请参考[三种混淆配置文件](#三种混淆配置文件)。
     > **说明：**
-    >
+    > 
     > 新建工程默认关闭混淆功能。如果开发者希望开启混淆，需要将模块的`build-profile.json5`文件中的`ruleOptions.enable`字段的值设置为`true`。同时需要将混淆规则配置文件`obfuscation-rules.txt`的`-enable-bytecode-obfuscation`、`-enable-bytecode-obfuscation-debugging`选项按需启用；
-    >
-    >此外，混淆规则配置文件中默认开启了四项推荐的混淆选项：`-enable-property-obfuscation`、`-enable-toplevel-obfuscation`、`-enable-filename-obfuscation`和`-enable-export-obfuscation`，开发者可以根据需要进一步修改混淆配置。
+    > 
+    > 此外，混淆规则配置文件中默认开启了四项推荐的混淆选项：`-enable-property-obfuscation`、`-enable-toplevel-obfuscation`、`-enable-filename-obfuscation`和`-enable-export-obfuscation`，开发者可以根据需要进一步修改混淆配置。
 
    **静态字节码混淆中**，打开混淆开关，默认所有名称都将被混淆，main函数，构造函数和系统函数除外。如需保留名称，请在files字段指定的混淆配置文件`obfuscation-rules.txt`中进行选项配置。
    
     以DevEco Studio6.0.0.600及更高版本为例，混淆配置文件如下所示，该配置内容表示保留ClassName和该类的所有成员、方法：
     
-    ```
+    ```txt
     -keep class entry.src.GrammarTest.Toplevel.class.ClassName {*;}
     ```
 
@@ -103,8 +105,8 @@
 
     字节码混淆当前仅支持release编译，不支持debug编译。即开启混淆开关后，若为release编译则会进行混淆，若为debug编译则不会进行混淆。开发者可参考[指定构建模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)查看和修改构建模式。
 
-    > **注意**
-    >
+    > **注意：**
+    > 
     > release编译与debug编译的区别并不只包含混淆，若需要明确应用行为差异是否由于混淆，应该通过开启或关闭混淆开关排查，而不是仅通过切换release或debug编译来区分。
 
 
@@ -113,9 +115,9 @@
 * `obfuscation-rules.txt`
 
     不论是HAP、HAR还是HSP，在本模块的`build-profile.json5`配置文件中都有`arkOptions.obfuscation.ruleOptions.files`字段，用于指定在编译本模块时需要生效的混淆规则，新建工程时会创建默认文件`obfuscation-rules.txt`。
-    >注意：
-    >
-    >静态字节码混淆目前仅支持 `obfuscation-rules.txt`配置文件，且仅支持HAP
+    > **注意：**
+    > 
+    > 静态字节码混淆目前只支持 `obfuscation-rules.txt`配置文件和HAP
 
 * `consumer-rules.txt`
 
@@ -139,8 +141,8 @@
 
     不同于以上两种开发者可自行修改的配置文件，`obfuscation.txt`是在编译构建HAR或HSP时根据`consumer-rules.txt`和依赖模块的混淆规则文件自动生成的文件，它作为一种编译产物存在于发布的HAR或HSP包中，用于在其他应用使用该发布包时应用相应的混淆规则。`obfuscation.txt`内容的生成逻辑请参考[混淆规则合并策略](bytecode-obfuscation.md#混淆规则合并策略)。
 
-    > **说明**
-    >
+    > **说明：**
+    > 
     > 针对三方库中obfuscation.txt文件，只有在模块的oh-package.json5文件中依赖三方库时，三方库中的obfuscation.txt文件才会生效；如果在工程的oh-package.json5文件中进行依赖，则三方库的obfuscation.txt文件不会生效。
 
 下表简要总结了三种配置文件的差异：
@@ -199,9 +201,9 @@
     3. 若代码中有传入ohmUrl进行页面跳转，如`router.pushUrl({url: '@bundle:com.example.routerPage/Library/Index'})`，使用`-keep-file-name`来保留这个路径。
     4. 验证应用功能，排查遗漏的场景。若应用出现功能异常，且报错栈中的路径为混淆后的路径，可以在模块中的`build/default/[...]/release/obfuscation/nameCache.json`文件中查询到原始路径，进而找到源码文件。另外，[插件hstack](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-command-line-hstack)支持自动还原混淆后的报错堆栈。在定位到需要保留的路径后，使用`-keep-file-name`来保留此路径。
 
-    > **说明**
+    > **说明：**
     > 
-    >目前不支持在hvigor构建流程中插入自定义混淆插件。
+    > 目前不支持在hvigor构建流程中插入自定义混淆插件。
 
 ## 查看字节码混淆效果
 
@@ -231,11 +233,14 @@
 
 ## 报错栈还原
 
-> **说明** 
->
-> 静态字节码混淆暂不支持报错栈还原
+> **说明：** 
+> 
+> 静态字节码混淆暂不支持报错栈还原。
 
-经过混淆的应用程序中代码名称会发生更改，crash时打印的报错栈更难以理解，因为报错栈与源码不完全一致。开发人员可使用DevEco Studio命令工具Command Line Tools中的[hstack插件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-command-line-hstack)来还原源码堆栈，进而分析问题。
+经过混淆的应用程序中代码名称会发生更改，crash时打印的报错栈更难以理解，因为报错栈与源码不完全一致。
+
+开发人员可使用DevEco Studio命令工具Command Line Tools中的[hstack插件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-command-line-hstack)来还原源码堆栈，进而分析问题。
+
 反混淆工具需要使用应用编译过程中生成的sourceMaps.json文件以及混淆名称映射文件nameCache.json文件，因此请本地备份它们；为方便问题定位，建议备份release目录。
 
 ![bytecode-obfuscation-product](figures/bytecode-obfuscation-product.png)
