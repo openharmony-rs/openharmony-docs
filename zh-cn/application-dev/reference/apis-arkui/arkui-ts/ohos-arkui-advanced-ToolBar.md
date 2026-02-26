@@ -207,8 +207,6 @@ stateEffect(stateEffect: boolean): ToolBarModifier
 
 ## ToolBarSymbolGlyphOptions<sup>13+</sup>
 
-ToolBarSymbolGlyphOptions({normal?: SymbolGlyphModifier, activated?: SymbolGlyphModifier})
-
 ToolBarSymbolGlyphOptions定义图标的属性。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
