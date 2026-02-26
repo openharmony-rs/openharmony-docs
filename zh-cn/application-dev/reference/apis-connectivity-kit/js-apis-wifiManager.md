@@ -2704,10 +2704,10 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
 | 枚举值 | 说明 |
 | -------- | -------- |
-| 0 | 关闭中。 |
-| 1 | 已关闭。 |
-| 2 | 开启中。 |
-| 3 | 已开启。 |
+| 0 | 未激活。 |
+| 1 | 已激活。 |
+| 2 | 激活中。 |
+| 3 | 去激活中。 |
 
 
 ## wifiManager.off('wifiStateChange')
