@@ -73,8 +73,9 @@ try {
   // 判断Wi-Fi是否打开
   let isWifiActive = wifiManager.isWifiActive();
   if (!isWifiActive) {
-    console.info("Wi-Fi not enabled"); // 请先手动打开Wi-Fi
-    return;
+    console.info("Wi-Fi not enabled. Skipping monitor.");
+  } else {
+    console.info("Wi-Fi is enabled. Starting monitor...");
   }
 
   wifiManager.off("wifiStateChange", recvPowerNotifyFunc);
