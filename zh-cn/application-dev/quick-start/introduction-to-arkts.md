@@ -1518,7 +1518,7 @@ let map: Record<string, number> = {
   'John': 25,
   'Mary': 21
 };
-// ...
+  // ...
   map['John']; // 25
 ```
 
