@@ -857,7 +857,7 @@ function func() {
   let outerVar = 'I am inside';
   console.info(outerVar); // 输出: I am inside
 }
-// ...
+  // ...
   func();
 ```
 
