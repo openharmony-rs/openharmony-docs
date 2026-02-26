@@ -2719,6 +2719,272 @@ bindDomainAccount(localId: number, domainAccountInfo: DomainAccountInfo): Promis
   }
   ```
 
+## osAccount.getAuthorizationManager<sup>24+</sup>
+
+getAuthorizationManager(): AuthorizationManager
+
+获取系统账号授权管理器。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----- | ----------- |
+| [AuthorizationManager](#authorizationmanager24) | 返回系统账号授权管理的实例对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息       |
+| -------- | ------------- |
+| 202 | Not system application.|
+
+**示例：**
+
+```ts
+let authorizationManager: osAccount.AuthorizationManager = osAccount.getAuthorizationManager();
+```
+
+## AuthorizationManager<sup>24+</sup>
+
+系统账号授权管理类，用于管理系统账号授权。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### acquireAuthorization<sup>24+</sup>
+
+acquireAuthorization(privilege: string, options?: AcquireAuthorizationOptions): Promise&lt;AcquireAuthorizationResult&gt;
+
+为当前进程获取授权。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| privilege | string | 是 | 目标权限，详见[配置文件](https://gitcode.com/openharmony/account_os_account/blob/master/services/accountmgr/authorization_manager/config/privileges.json)。 |
+| options | [AcquireAuthorizationOptions](#acquireauthorizationoptions24) | 否 | 获取授权的选项，默认为空。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[AcquireAuthorizationResult](#acquireauthorizationresult24)&gt; | Promise对象，返回获取授权的结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | --- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid privilege or options. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let authorizationManager: osAccount.AuthorizationManager = osAccount.getAuthorizationManager();
+let privilege: string = 'testPrivilege';
+let options: osAccount.AcquireAuthorizationOptions = {
+  challenge: new Uint8Array([1, 2, 3]),
+  isReuseNeeded: true,
+  isInteractionAllowed: true,
+};
+try {
+  authorizationManager.acquireAuthorization(privilege, options).then((result: osAccount.AcquireAuthorizationResult) => {
+    console.info(`acquireAuthorization successfully, resultCode: ${result.resultCode}`);
+  }).catch((err: BusinessError) => {
+    console.error(`acquireAuthorization failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`acquireAuthorization exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### hasAuthorization<sup>24+</sup>
+
+hasAuthorization(privilege: string): Promise&lt;boolean&gt;
+
+检查当前进程是否已获得指定特权的授权。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| privilege | string | 是 | 目标权限，详见[配置文件](https://gitcode.com/openharmony/account_os_account/blob/master/services/accountmgr/authorization_manager/config/privileges.json)。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise对象，返回true表示已获得指定特权的授权；返回false表示未获得指定特权的授权。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | --- |
+| 202 | Not system application. |
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid privilege. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let authorizationManager: osAccount.AuthorizationManager = osAccount.getAuthorizationManager();
+let privilege: string = 'testPrivilege';
+
+try {
+  authorizationManager.hasAuthorization(privilege).then((isAuthorized: boolean) => {
+    console.info(`Privilege: ${privilege} has been authorized: ${isAuthorized}`);
+  }).catch((e:Error) => {
+    const err = e as BusinessError;
+    console.error(`hasAuthorization failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`hasAuthorization exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### releaseAuthorization<sup>24+</sup>
+
+releaseAuthorization(privilege: string): Promise&lt;void&gt;
+
+为当前进程撤销指定特权的授权。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| privilege | string | 是 | 目标权限，详见[配置文件](https://gitcode.com/openharmony/account_os_account/blob/master/services/accountmgr/authorization_manager/config/privileges.json)。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | --- |
+| 202 | Not system application. |
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid privilege. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let authorizationManager: osAccount.AuthorizationManager = osAccount.getAuthorizationManager();
+let privilege: string = 'testPrivilege';
+
+try {
+  authorizationManager.releaseAuthorization(privilege).then(() => {
+    console.info('releaseAuthorization success');
+  }).catch((e:Error) => {
+    const err = e as BusinessError;
+    console.error(`releaseAuthorization failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`releaseAuthorization exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## AcquireAuthorizationOptions<sup>24+</sup>
+
+表示获取授权的选项。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| challenge | Uint8Array | 否 | 是 | 随机挑战值，可用于防止重放攻击，长度不得超过32字节，默认为undefined。|
+| isReuseNeeded | boolean | 否 | 是 | 是否需要重复用先前的授权，默认为true。<br/>如果为true且存在有效的授权结果，则将复用该结果；否则，将执行新的授权。 |
+| isInteractionAllowed | boolean | 否 | 是 | 是否允许用户交互，默认为true 。<br/>如果为true，则允许在交互上下文中显示授权对话框；如果为false，则不允许显示授权对话框。<br>**注意**：此选项仅在调用者位于前台时生效。如果调用者在后台，则不允许用户交互。 |
+| interactionContext | Context | 否 | 是 | 用户交互上下文配置，默认为undefined。<br/>- 未指定上下文时，授权对话框以模态系统模式显示。<br/>- 指定[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)或[UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)时，以模态应用模式显示。<br/> - 未提供有效上下文时，授权对话框无法显示。<br>**注意**：仅当isInteractionAllowed为true时生效。 |
+## AuthorizationResultCode<sup>24+</sup>
+
+表示授权结果码的枚举。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| --- | --- | --- |
+| AUTHORIZATION_SUCCESS | 0 | 表示授权成功。 |
+| AUTHORIZATION_CANCELED | 12300301 | 表示授权已取消。 |
+| AUTHORIZATION_INTERACTION_NOT_ALLOWED | 12300302 | 表示服务因不允许用户交互而拒绝授权。<br/>可能原因：<br/>1. 调用者位于后台；<br/>2. isInteractionAllowed选项的值为false；<br/>3. 指定的交互上下文无效。 |
+| AUTHORIZATION_DENIED | 12300303 | 表示因不符合授权规则，如账号类型不是管理员、设备类型不支持等原因而拒绝授权。 |
+| AUTHORIZATION_SERVICE_BUSY | 12300304 | 表示服务忙碌。<br/>可能原因：正在处理其他授权。 |
+
+## AcquireAuthorizationResult<sup>24+</sup>
+
+表示获取授权的结果。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| resultCode | [AuthorizationResultCode](#authorizationresultcode24) | 否 | 否 | 授权结果码。|
+| privilege | string | 否 | 否 | 与授权关联的权限。 |
+| isReused | boolean | 否 | 是 | 是否为复用的授权结果，默认为undefined。<br/>true：表示是复用的授权结果。false：表示不是复用的授权结果。 |
+| validityPeriod | number | 否 | 是 | 授权的有效期，默认300s。 |
+| token | Uint8Array | 否 | 是 | 授权令牌，默认为undefined。 |
+
 ## UserAuth<sup>8+</sup>
 
 用户认证类。
