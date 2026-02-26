@@ -25457,7 +25457,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneParentToChild.ets",
 				"functions":[
 					{
-						"end_line":98,
+						"end_line":103,
 						"name":"Param_Use_Scene_Parent_To_Child",
 						"start_line":30
 					}
@@ -25467,7 +25467,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneArray.ets",
 				"functions":[
 					{
-						"end_line":73,
+						"end_line":79,
 						"name":"Param_Use_Scene_Array",
 						"start_line":30
 					}
@@ -25477,7 +25477,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneDate.ets",
 				"functions":[
 					{
-						"end_line":77,
+						"end_line":83,
 						"name":"Param_Use_Scene_Date",
 						"start_line":30
 					}
@@ -25487,7 +25487,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneMap.ets",
 				"functions":[
 					{
-						"end_line":76,
+						"end_line":83,
 						"name":"Param_Use_Scene_Map",
 						"start_line":30
 					}
@@ -25497,7 +25497,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneSet.ets",
 				"functions":[
 					{
-						"end_line":73,
+						"end_line":79,
 						"name":"Param_Use_Scene_Set",
 						"start_line":30
 					}
@@ -25507,7 +25507,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneUnite.ets",
 				"functions":[
 					{
-						"end_line":59,
+						"end_line":60,
 						"name":"Param_Use_Scene_Unite",
 						"start_line":30
 					}
