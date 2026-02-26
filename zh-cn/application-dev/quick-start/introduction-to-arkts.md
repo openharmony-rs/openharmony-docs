@@ -2522,6 +2522,11 @@ export declare @interface ClassAuthor3 {}
 
 <!-- @[annotation_anno](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->     
 
+``` TypeScript
+// NameAnno.d.ets
+export declare @interface MyAnno {}
+```
+
 
 <!-- @[annotation_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ImportMyAnno.ets) -->    
 
