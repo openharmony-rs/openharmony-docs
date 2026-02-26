@@ -2540,6 +2540,24 @@ export declare @interface ClassAuthor3 {}
   2.2 如果实体是类，则类被导出。<br>
   2.3 如果实体是方法，则类被导出，并且方法不是私有方法。
    <!-- @[annotation_export_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) --> 
+   
+   ``` TypeScript
+   // MyAnno.ets
+   import { ClassAuthor4 } from './Author';
+   
+   export @interface MethodAnno4 {
+     data: number = 0;
+   }
+   
+   @ClassAuthor4
+   class MyClass {
+     @MethodAnno4({data: 123})
+     foo() {}
+   
+     @MethodAnno4({data: 456})
+     private bar() {}
+   }
+   ```
 
 
   <!-- @[annotation_export_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->  
