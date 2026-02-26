@@ -2460,7 +2460,9 @@ console.info(result);  // 预期结果：www.example.com
 
 createVlanInterface(ifName: string, vlanId: int): Promise<void>
 
-在对应网卡上创建vlan。
+在网卡上创建vlan。使用Promise异步回调。
+
+**需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -2494,61 +2496,22 @@ createVlanInterface(ifName: string, vlanId: int): Promise<void>
 ```typescript
 import { connection } from '@kit.NetworkKit';
 
-let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.示例.com
-let result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.example.com
-```
-
-## connection.createVlanInterface<sup>23+</sup>
-
-createVlanInterface(ifName: string, vlanId: int): Promise<void>
-
-在对应网卡上创建vlan。
-
-**系统能力**：SystemCapability.Communication.NetManager.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ------ | ------ | ---- | ----------------- |
-| ifName | string | 是 | 要创建vlan的网卡名。 |
-| vlanId | int | 是 | vlanId。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | ------------------------ |
-| Promise<void> | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------- |
-| 201 | Permission denied. |
-| 202 | Nonsystem applications use system APIs. |
-| 2100002 | Failed to connect to the service. |
-| 2100003 | System internal error. |
-| 2100400 | The input network interface is incorrect. |
-
-**示例：**
-
-```typescript
-import { connection } from '@kit.NetworkKit';
-
-let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.示例.com
-let result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.example.com
+let ifName = "eth0";
+let vlanId = 1;
+connection.createVlanInterface(ifName, vlanId).then(() => {
+  console.info("create vlan success");
+}).catch((error: BusinessError) => {
+  console.error(`Failed to create vlan . Code:${error.code}, message:${error.message}`);
+});
 ```
  
 ## connection.destroyVlanInterface<sup>23+</sup>
 
 destroyVlanInterface(ifName: string, vlanId: int): Promise<void>
 
-在对应网卡上创建vlan。
+在网卡上删除vlan。使用Promise异步回调。
+
+**需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -2582,17 +2545,22 @@ destroyVlanInterface(ifName: string, vlanId: int): Promise<void>
 ```typescript
 import { connection } from '@kit.NetworkKit';
 
-let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.示例.com
-let result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.example.com
+let ifName = "eth0";
+let vlanId = 1;
+connection.destroyVlanInterface(ifName, vlanId).then(() => {
+  console.info("destroy vlan success");
+}).catch((error: BusinessError) => {
+  console.error(`Failed to destroy vlan . Code:${error.code}, message:${error.message}`);
+});
 ```
  
 ## connection.addVlanIp<sup>23+</sup>
 
 addVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise<void>
 
-在对应网卡上创建vlan。
+在vlan上配置IP地址和掩码。使用Promise异步回调。
+
+**需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -2602,6 +2570,7 @@ addVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise<void>
 | ------ | ------ | ---- | ----------------- |
 | ifName | string | 是 | 要创建vlan的网卡名。 |
 | vlanId | int | 是 | vlanId。 |
+| address | [LinkAddress](#linkaddress) | 是 | 链路信息。 |
 
 **返回值：**
 
@@ -2626,17 +2595,31 @@ addVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise<void>
 ```typescript
 import { connection } from '@kit.NetworkKit';
 
-let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.示例.com
-let result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.example.com
+let ifName = "eth0";
+let vlanId = 1;
+let netAddress: connection.NetAddress = {
+  address: '192.168.1.1',
+  family: 1,
+  port: 8080
+}
+let address: connection.LinkAddress = {
+  address: netAddress,
+  prefixLength: 24
+}
+connection.addVlanIp(ifName, vlanId, address).then(() => {
+  console.info("add vlan ip success");
+}).catch((error: BusinessError) => {
+  console.error(`Failed to add vlan ip . Code:${error.code}, message:${error.message}`);
+});
 ```
  
 ## connection.deleteVlanIp<sup>23+</sup>
 
 deleteVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise<void>
 
-在对应网卡上创建vlan。
+在vlan上删除已配置的IP地址和掩码。使用Promise异步回调。
+
+**需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -2646,6 +2629,7 @@ deleteVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise<void>
 | ------ | ------ | ---- | ----------------- |
 | ifName | string | 是 | 要创建vlan的网卡名。 |
 | vlanId | int | 是 | vlanId。 |
+| address | [LinkAddress](#linkaddress) | 是 | 链路信息。 |
 
 **返回值：**
 
@@ -2664,16 +2648,29 @@ deleteVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise<void>
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
 | 2100400 | The input network interface is incorrect. |
+| 2100401 | The input ip address not found. |
 
 **示例：**
 
 ```typescript
 import { connection } from '@kit.NetworkKit';
 
-let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.示例.com
-let result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.example.com
+let ifName = "eth0";
+let vlanId = 1;
+let netAddress: connection.NetAddress = {
+  address: '192.168.1.1',
+  family: 1,
+  port: 8080
+}
+let address: connection.LinkAddress = {
+  address: netAddress,
+  prefixLength: 24
+}
+connection.deleteVlanIp(ifName, vlanId, address).then(() => {
+  console.info("delete vlan ip success");
+}).catch((error: BusinessError) => {
+  console.error(`Failed to delete vlan ip . Code:${error.code}, message:${error.message}`);
+});
 ```
  
 ## NetConnection
