@@ -108,6 +108,7 @@ test(a2);
 ![bytecode-compilation-process](figures/bytecode-compilation-process.png)
 
 下图为静态字节码混淆应用编译的简要流程图
+
 ![bytecode-static-compilation-process](figures/bytecode-static-compilation-process.png)
 
 开发者可以在模块的build-profile.json5配置文件中开启混淆功能，详细参考[字节码混淆开启指南](bytecode-obfuscation-guide.md)，从而在编译打包的过程中自动对abc进行混淆处理。
