@@ -53,7 +53,7 @@
 
 * 配置混淆规则
 
-    **字节码混淆中**，打开字节码混淆开关，仅开启默认混淆功能，默认混淆范围为非顶层作用域的函数、类。如需开启更多混淆功能，请在`files`字段指定的混淆配置文件`obfuscation-rules.txt`中进行选项配置。
+    **字节码混淆中**，打开混淆开关，仅开启默认混淆功能，默认混淆范围为非顶层作用域的函数、类。如需开启更多混淆功能，请在`files`字段指定的混淆配置文件`obfuscation-rules.txt`中进行选项配置。
     
     需要注意的是，不同版本的DevEco Studio，`obfuscation-rules.txt`文件中的默认值可能会有所不同。
     
@@ -84,7 +84,7 @@
     >
     >此外，混淆规则配置文件中默认开启了四项推荐的混淆选项：`-enable-property-obfuscation`、`-enable-toplevel-obfuscation`、`-enable-filename-obfuscation`和`-enable-export-obfuscation`，开发者可以根据需要进一步修改混淆配置。
 
-   **静态字节码混淆中**，打开静态字节码混淆开关，默认所有名称都将被混淆，main函数，构造函数和系统函数除外。如需保留名称，请在files字段指定的混淆配置文件`obfuscation-rules.txt`中进行选项配置。
+   **静态字节码混淆中**，打开混淆开关，默认所有名称都将被混淆，main函数，构造函数和系统函数除外。如需保留名称，请在files字段指定的混淆配置文件`obfuscation-rules.txt`中进行选项配置。
    
     以DevEco Studio6.0.0.600及更高版本为例，混淆配置文件如下所示，该配置内容表示保留ClassName和该类的所有成员、方法：
     
@@ -96,7 +96,7 @@
 
     > **说明：**
     > 
-    > 新建工程默认关闭混淆功能。如果开发者希望开启混淆，需要将模块的build-profile.json5文件中的ruleOptions.enable字段的值设置为true。同时静态字节码混淆将自动启用；开发者可以根据需要进一步修改混淆配置。
+    > 新建工程默认关闭混淆功能。如果开发者希望开启混淆，需要将模块的`build-profile.json5`文件中的`ruleOptions.enable`字段的值设置为`true`。同时静态字节码混淆将自动启用；开发者可以根据需要进一步修改混淆配置。
    
 
 * 指定release编译
