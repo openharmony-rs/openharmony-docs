@@ -2503,7 +2503,7 @@ ambientAnnotationDeclaration:
 <!-- @[annotation_export_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->     
 
 ``` TypeScript
-// a.d.ets
+// NameAnno.d.ets
 export declare @interface ClassAuthor3 {}
 ```
 
