@@ -793,7 +793,7 @@ function hello(name?: string) {
 function multiply(n: number, coeff: number = 2): number {
   return n * coeff;
 }
-// ...
+  // ...
   multiply(2);  // 返回2*2
   multiply(2, 3); // 返回2*3
 ```
