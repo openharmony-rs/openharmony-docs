@@ -232,7 +232,7 @@ rebuild(): void
 通过NodeController挂载BuilderNode节点。
 
 ```ts
-import {  NodeController, BuilderNode, Size, FrameNode ,UIContext } from '@kit.ArkUI';
+import { NodeController, BuilderNode, Size, FrameNode, UIContext } from '@kit.ArkUI';
 
 class Params {
   text: string = "this is a text"
@@ -262,7 +262,7 @@ class MyNodeController extends NodeController {
   }
 
   aboutToResize(size: Size) {
-    console.info("aboutToResize width : " + size.width + " height : " + size.height)
+    console.info(`aboutToResize width : ${size.width} height : ${size.height}`)
   }
 
   aboutToAppear() {
@@ -273,7 +273,7 @@ class MyNodeController extends NodeController {
     console.info("aboutToDisappear");
   }
 
-  onTouchEvent(event:TouchEvent) {
+  onTouchEvent(event: TouchEvent) {
     console.info("onTouchEvent");
   }
 }
@@ -303,6 +303,7 @@ struct Index {
 
 ```ts
 import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
+
 class Params {
   text: string = "this is a text"
 }
@@ -338,20 +339,20 @@ class MyNodeController extends NodeController {
     console.info("myButton on detach");
   }
 
-  onWillBind(containerId: number): void{
-    console.info("myButton on WillBind" + containerId);
+  onWillBind(containerId: number): void {
+    console.info(`myButton on WillBind${containerId}`);
   }
 
-  onWillUnbind(containerId: number): void{
-    console.info("myButton on WillUnbind" + containerId);
+  onWillUnbind(containerId: number): void {
+    console.info(`myButton on WillUnbind${containerId}`);
   }
 
   onBind(containerId: number): void {
-    console.info("myButton on bind: " + containerId);
+    console.info(`myButton on bind: ${containerId}`);
   }
 
   onUnbind(containerId: number): void {
-    console.info("myButton on unbind: " + containerId);
+    console.info(`myButton on unbind: ${containerId}`);
   }
 }
 
@@ -362,11 +363,11 @@ struct Index {
   @State buttonIndex: number = 0
   private buttonController: MyNodeController = new MyNodeController();
   private buttonNull: null = null;
-  private buttonControllerArray: Array < MyNodeController | null > = [this.buttonController,this.buttonNull]
+  private buttonControllerArray: Array<MyNodeController | null> = [this.buttonController, this.buttonNull]
 
   build() {
     Column() {
-      Row(){
+      Row() {
         Button("Bind/Unbind")
           .onClick(() => {
             this.buttonIndex++;
@@ -376,11 +377,12 @@ struct Index {
             this.buttonShow = !this.buttonShow
           }).margin(5)
       }
-      if(this.buttonShow){
+
+      if (this.buttonShow) {
         NodeContainer(this.buttonControllerArray[this.buttonIndex % this.buttonControllerArray.length])
       }
     }
-    .padding({ left: 35, right: 35})
+    .padding({ left: 35, right: 35 })
     .width("100%")
     .height("100%")
   }
