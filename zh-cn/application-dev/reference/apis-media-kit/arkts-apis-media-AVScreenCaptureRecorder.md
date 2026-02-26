@@ -132,7 +132,9 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
 });
 
-// 调用startRecording方法，其余流程省略
+// 其余流程
+
+// 调用startRecording方法
 if (avScreenCaptureRecorder != undefined) {
   avScreenCaptureRecorder.startRecording().then(() => {
     console.info('Succeeded in starting avScreenCaptureRecorder');
@@ -183,7 +185,9 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
 });
 
-// 调用stopRecording方法，其余流程省略
+// 其余流程
+
+// 调用stopRecording方法
 if (avScreenCaptureRecorder != undefined) {
   avScreenCaptureRecorder.stopRecording().then(() => {
     console.info('Succeeded in stopping avScreenCaptureRecorder');
@@ -242,7 +246,9 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
 });
 
-// 调用skipPrivacyMode方法，其余流程省略
+// 其余流程
+
+// 调用skipPrivacyMode方法
 if (avScreenCaptureRecorder != undefined) {
   let windowIDs = [];
   avScreenCaptureRecorder.skipPrivacyMode(windowIDs).then(() => {
@@ -300,7 +306,9 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
 });
 
-// 调用setMicEnabled方法，其余流程省略
+// 其余流程
+
+// 调用setMicEnabled方法
 if (avScreenCaptureRecorder != undefined) {
   avScreenCaptureRecorder.setMicEnabled(true).then(() => {
     console.info('Succeeded in setting microphone enabled.');
@@ -358,7 +366,9 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
 });
 
-// 调用setPickerMode方法，其余流程省略
+// 其余流程
+
+// 调用setPickerMode方法
 if (avScreenCaptureRecorder != undefined) {
   avScreenCaptureRecorder.setPickerMode(media.PickerMode.WINDOW_ONLY).then(() => {
     console.info('Succeeded in setting picker mode.');
@@ -418,7 +428,9 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
 });
 
-// 调用excludePickerWindows方法，其余流程省略
+// 其余流程
+
+// 调用excludePickerWindows方法
 if (avScreenCaptureRecorder != undefined) {
   avScreenCaptureRecorder.excludePickerWindows(excludedWindows).then(() => {
     console.info('Succeeded in excluding picker windows.');
@@ -474,7 +486,9 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
 });
 
-// 调用presentPicker方法，其余流程省略
+// 其余流程
+
+// 调用presentPicker方法
 if (avScreenCaptureRecorder != undefined) {
   avScreenCaptureRecorder.presentPicker().then(() => {
     console.info('Succeeded in presenting picker avScreenCaptureRecorder.');
@@ -525,7 +539,9 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
 });
 
-// 调用release方法，其余流程省略
+// 其余流程
+
+// 调用release方法
 if (avScreenCaptureRecorder != undefined) {
   avScreenCaptureRecorder.release().then(() => {
     console.info('Succeeded in releasing avScreenCaptureRecorder');
@@ -568,7 +584,9 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
 });
 
-// 调用on，其余流程省略
+// 其余流程
+
+// 调用on
 if (avScreenCaptureRecorder != undefined) {
   avScreenCaptureRecorder.on('stateChange', (state: media.AVScreenCaptureStateCode) => {
       console.info('avScreenCaptureRecorder stateChange to ' + state);
@@ -619,7 +637,9 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
 });
 
-// 调用on，其余流程省略
+// 其余流程
+
+// 调用on
 if (avScreenCaptureRecorder != undefined) {
   avScreenCaptureRecorder.on('error', (err: BusinessError) => {
     console.error(`avScreenCaptureRecorder error: Code: ${err.code}, message: ${err.message}`);
@@ -660,7 +680,9 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
 });
 
-// 调用off，其余流程省略
+// 其余流程
+
+// 调用off
 if (avScreenCaptureRecorder != undefined) {
   avScreenCaptureRecorder.off('stateChange');
 }
@@ -699,7 +721,9 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
 });
 
-// 调用off，其余流程省略
+// 其余流程
+
+// 调用off
 if (avScreenCaptureRecorder != undefined) {
   avScreenCaptureRecorder.off('error');
 }
