@@ -768,11 +768,14 @@ struct NavigationContentMsgStack {
 
 为了解决不同Ability之间数据的共享，LocalStorage支持跨Ability存取数据。
 
-对于该场景，V2可结合\@ObservedV2+\@Trace创建可观测的全局单例对象，定义Map类型存储不同Ability页面的数据，从而实现不同Ability之间数据共享。
+对于该场景，V2可结合\@ObservedV2+\@Trace创建可观测的全局单例对象，定义Map类型存储不同Ability页面的数据，从而实现不同Ability之间数据共享。启动Ability可以参考[specified启动模式](../../application-models/uiability-launch-type.md#specified启动模式)。
 
 **主页面**
 
+<!-- @[Internal_localStorage_multi_instance_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/Index.ets) -->
+
 ``` TypeScript
+// Index.ets
 import { common, Want } from '@kit.AbilityKit';
 
 @Entry
@@ -782,33 +785,33 @@ struct Index {
 
   build() {
     Column() {
-      Text("使用文件管理器，使用本应用打开多个PDF")
+      Text('使用文件管理器，使用本应用打开多个PDF')
         .fontSize($r('app.float.page_text_font_size'))
         .fontWeight(FontWeight.Bold)
         .alignRules({
           center: { anchor: '__container__', align: VerticalAlign.Center },
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
-      Button('Jump to PDFA').onClick(() => {
+      Button('Jump to PDF_A').onClick(() => {
         let wantInfo: Want = {
-          bundleName: 'com.ex.pdf',
-          abilityName: 'PDFAbility',
-          uri: 'PDFA',
+          bundleName: 'com.samples.paradigmstatemanagement',
+          abilityName: 'PdfEntryAbility',
+          uri: 'PDF_A',
           parameters: {
-            key: 'PDFA',
-            value: "PDFA-1111111111",
+            key: 'PDF_A',
+            value: 'PDF_A-1111111111',
           }
         };
         this.context.startAbility(wantInfo);
       })
-      Button('Jump to PDFB').onClick(() => {
+      Button('Jump to PDF_B').onClick(() => {
         let wantInfo: Want = {
-          bundleName: 'com.ex.pdf',
-          abilityName: 'PDFAbility',
-          uri: 'PDFB',
+          bundleName: 'com.samples.paradigmstatemanagement',
+          abilityName: 'PdfEntryAbility',
+          uri: 'PDF_B',
           parameters: {
-            key: 'PDFB',
-            value: "PDFB-22222222222",
+            key: 'PDF_B',
+            value: 'PDF_B-22222222222',
           }
         };
         this.context.startAbility(wantInfo);
@@ -824,13 +827,16 @@ V2:
 
 使用\@ObservedV2+\@Trace定义全局可观测单例，通过全局的map对象进行数据关联，这种方式需要开发者自行建立唯一的key和value关系。注意单例单独封装存放。
 
+<!-- @[Internal_localStorage_multi_instance_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/model/PDFData.ets) -->
+
 ``` TypeScript
+// model/PDFData.ets
 @ObservedV2
 export default class PDFData {
   // 单例实例
   private static instance_: PDFData | null = null;
-  @Trace data: Map<string, string> = new Map();
-  @Trace flag: string = '';
+  @Trace private data: Map<string, string> = new Map();
+  @Trace private flag: string = '';
 
   private constructor() {
   }
@@ -847,23 +853,26 @@ export default class PDFData {
   }
 
   getData() {
-    return this.data
+    return this.data;
   }
 
   setFlage(value: string) {
-    this.flag = value
+    this.flag = value;
   }
 
   getFlag() {
-    return this.flag
+    return this.flag;
   }
 }
 ```
 
+
+<!-- @[Internal_localStorage_multi_instance_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/PdfEntryAbility.ets) -->
+
 ``` TypeScript
-import { UIAbility, Want } from "@kit.AbilityKit";
-import { window } from "@kit.ArkUI";
-import PDFData from '../model/PDFData';
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import PDFData from './model/PDFData';
 
 export default class PDFAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -871,13 +880,17 @@ export default class PDFAbility extends UIAbility {
     const data = this.launchWant.parameters as Record<string, string>;
     PDFData.getInstance().setData(data.key, data.value);
     PDFData.getInstance().setFlage(this.launchWant.uri || '');
-    windowStage.loadContent('pages/PDF').catch();
+    windowStage.loadContent('pages/internalmigrate/LocalStorageMultiInstance/PDF').catch();
   }
 }
 ```
 
+
+<!-- @[Internal_localStorage_multi_instance_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/PDF.ets) -->
+
 ``` TypeScript
-import PDFData from '../model/PDFData';
+// PDF.ets
+import PDFData from './model/PDFData';
 
 @Entry
 @ComponentV2
