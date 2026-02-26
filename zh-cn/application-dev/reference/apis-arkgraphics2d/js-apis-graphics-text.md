@@ -2288,7 +2288,7 @@ getCharacterRangeForGlyphRange(glyphRange: Range, encoding: drawing.TextEncoding
 | 参数名 | 类型 | 必填 | 说明 |
 | - | - | - | - |
 | glyphRange | [Range](#range) | 是 | 字形范围。 |
-| encoding | [drawing.TextEncoding](arkts-apis-graphics-drawing-TextEncoding.md) | 是 | 文本编码类型。目前仅支持UTF-8和UTF-16编码类型。对于UTF-8编码，返回的字符范围表示字节范围。对于UTF-16编码，返回的字符范围表示UTF-16代码单元范围。 |
+| encoding | [drawing.TextEncoding](arkts-apis-graphics-drawing-e.md#textencoding)  | 是 | 文本编码类型。目前仅支持UTF-8和UTF-16编码类型。对于UTF-8编码，返回的字符范围表示字节范围。对于UTF-16编码，返回的字符范围表示UTF-16代码单元范围。 |
 
 **返回值：**
 
@@ -2302,12 +2302,12 @@ getCharacterRangeForGlyphRange(glyphRange: Range, encoding: drawing.TextEncoding
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+| 25900001 | Parameter error. |
 
 **示例：**
 
 ```ts
-import { text } from '@kit.ArkGraphics2D'
+import { drawing, text } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
@@ -2317,7 +2317,21 @@ struct Index {
       Button("get character range")
         .onClick(() => {
           let glyphRange: text.Range = { start: 0, end: 5 };
-          let encoding: drawing.TextEncoding = drawing.TextEncoding.UTF8;
+          let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
+          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle,
+            align: text.TextAlign.END,
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          paragraph.layoutSync(200);
           let characterRanges = paragraph.getCharacterRangeForGlyphRange(glyphRange, encoding);
         })
     }
@@ -2340,7 +2354,7 @@ getGlyphRangeForCharacterRange(characterRange: Range, encoding: drawing.TextEnco
 | 参数名 | 类型 | 必填 | 说明 |
 | - | - | - | - |
 | characterRange | [Range](#range) | 是 | 字符范围。 |
-| encoding | [drawing.TextEncoding](arkts-apis-graphics-drawing-TextEncoding.md) | 是 | 文本编码类型。目前仅支持UTF-8和UTF-16编码类型。对于UTF-8编码，输入的字符范围应解释为字节范围。对于UTF-16编码，输入的字符范围应解释为UTF-16代码单元范围。 |
+| encoding | [drawing.TextEncoding](arkts-apis-graphics-drawing-e.md#textencoding)  | 是 | 文本编码类型。目前仅支持UTF-8和UTF-16编码类型。对于UTF-8编码，返回的字符范围表示字节范围。对于UTF-16编码，返回的字符范围表示UTF-16代码单元范围。 |
 
 **返回值：**
 
@@ -2354,12 +2368,12 @@ getGlyphRangeForCharacterRange(characterRange: Range, encoding: drawing.TextEnco
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+| 25900001 | Parameter error. |
 
 **示例：**
 
 ```ts
-import { text } from '@kit.ArkGraphics2D'
+import { drawing, text } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
@@ -2369,7 +2383,21 @@ struct Index {
       Button("get glyph range")
         .onClick(() => {
           let characterRange: text.Range = { start: 0, end: 5 };
-          let encoding: drawing.TextEncoding = drawing.TextEncoding.UTF8;
+          let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
+          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle,
+            align: text.TextAlign.END,
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          paragraph.layoutSync(200);
           let glyphRanges = paragraph.getGlyphRangeForCharacterRange(characterRange, encoding);
         })
     }
@@ -2393,7 +2421,7 @@ getCharacterPositionAtCoordinate(x: number, y: number, encoding: drawing.TextEnc
 | - | - | - | - |
 | x | double | 是 | x坐标。 |
 | y | double | 是 | y坐标。 |
-| encoding | [drawing.TextEncoding](arkts-apis-graphics-drawing-TextEncoding.md) | 是 | 文本编码类型。目前仅支持UTF-8和UTF-16编码类型。对于UTF-8编码，返回的位置表示字节偏移。对于UTF-16编码，返回的位置表示UTF-16代码单元偏移。 |
+| encoding | [drawing.TextEncoding](arkts-apis-graphics-drawing-e.md#textencoding)  | 是 | 文本编码类型。目前仅支持UTF-8和UTF-16编码类型。对于UTF-8编码，返回的字符范围表示字节范围。对于UTF-16编码，返回的字符范围表示UTF-16代码单元范围。 |
 
 **返回值：**
 
@@ -2407,12 +2435,12 @@ getCharacterPositionAtCoordinate(x: number, y: number, encoding: drawing.TextEnc
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+| 25900001 | Parameter error. |
 
 **示例：**
 
 ```ts
-import { text } from '@kit.ArkGraphics2D'
+import { drawing, text } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
@@ -2421,9 +2449,23 @@ struct Index {
     Column() {
       Button("get character position")
         .onClick(() => {
+          let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
+          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle,
+            align: text.TextAlign.END,
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          paragraph.layoutSync(200);
           let x = 10;
           let y = 5;
-          let encoding: drawing.TextEncoding = drawing.TextEncoding.UTF8;
           let position = paragraph.getCharacterPositionAtCoordinate(x, y, encoding);
         })
     }
