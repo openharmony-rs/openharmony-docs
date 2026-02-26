@@ -283,6 +283,29 @@ struct textInputControllerCloseKeyboard {
       // 请将$r('app.string.close_keyboard')替换为实际资源文件，在本示例中该资源文件的value值为"close keyboard"
       Button($r('app.string.close_keyboard')).onClick(() => {
         this.controller.stopEditing()
+      })
+      TextInput({ controller: this.controller, text: this.inputValue })
+    }
+    .width('80%')
+    .height('100%')
+    .margin('10%')
+    .justifyContent(FlexAlign.Center)
+    }
+  }
+}
+```
+![stopEditing](figures/stopEditing.gif)
+
+### 焦点转移到不需要软键盘的组件
+
+焦点转移到不需要软键盘的组件时，软键盘会自动收起。
+
+代码控制焦点转移的方法，包括[requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9)、[clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12)。更多细节请参见[支持焦点处理](./arkts-common-events-focus-event.md)。
+
+与通过输入框的controller退出编辑态方法相比，焦点转移到不需要软键盘的组件方法的优势在于，页面包含多个输入框时，开发者无需为每个输入框设置controller、再通过controller收起软键盘。
+
+以下示例展示了点击按钮时，调用[requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9)方法，焦点从输入框转移到按钮上，软键盘收起的场景。
+
 <!-- @[requestFocus_CloseKeyBoard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/RequestFocusCloseKeyBoard.ets) -->
 
 ``` TypeScript
@@ -307,29 +330,6 @@ struct requestFocusCloseKeyBoard {
   }
 }
 ```
-      TextInput({ controller: this.controller, text: this.inputValue })
-    }
-    .width('80%')
-    .height('100%')
-    .margin('10%')
-    .justifyContent(FlexAlign.Center)
-    }
-  }
-}
-```
-![stopEditing](figures/stopEditing.gif)
-
-### 焦点转移到不需要软键盘的组件
-
-焦点转移到不需要软键盘的组件时，软键盘会自动收起。
-
-代码控制焦点转移的方法，包括[requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9)、[clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12)。更多细节请参见[支持焦点处理](./arkts-common-events-focus-event.md)。
-
-与通过输入框的controller退出编辑态方法相比，焦点转移到不需要软键盘的组件方法的优势在于，页面包含多个输入框时，开发者无需为每个输入框设置controller、再通过controller收起软键盘。
-
-以下示例展示了点击按钮时，调用[requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9)方法，焦点从输入框转移到按钮上，软键盘收起的场景。
-
-<!-- @[requestFocus_CloseKeyBoard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/RequestFocusCloseKeyBoard.ets) -->
 
 ![changeFocus](figures/changeFocus.gif)
 
