@@ -2534,6 +2534,11 @@ export declare @interface ClassAuthor3 {}
    <!-- @[annotation_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->   
    
    <!-- @[annotation_export_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) --> 
+   
+   ``` TypeScript
+   // NameAnno.d.ets
+   export declare @interface ClassAuthor3 {}
+   ```
 
 2. 当下面所有条件成立时，源代码中实体的注解实例会在.d.ets文件中保留。<br>
   2.1 注解的定义被导出（import的注解也算作被导出）。<br>
