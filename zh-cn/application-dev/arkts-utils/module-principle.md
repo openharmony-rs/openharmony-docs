@@ -74,7 +74,7 @@ JSON文件只能使用default方式导入，如下所示：
 <!-- @[import_json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-import data from './example.json'
+import data from './ImportJson.json';
 ```
 
 ### Native模块
