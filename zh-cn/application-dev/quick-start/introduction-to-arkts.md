@@ -2466,6 +2466,15 @@ import type { MyAnno } from './a'; // 编译错误：注解不允许使用'type'
 - 如果仅从模块导入注解，则不会触发模块的副作用。
 <!-- @[annotation_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) --> 
 
+``` TypeScript
+// MyAnno.ets
+export @interface Anno {}
+
+export @interface ClassAuthor1 {}
+
+console.info('hello');
+```
+
 
 
 <!-- @[annotation_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->    
