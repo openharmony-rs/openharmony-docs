@@ -107,11 +107,11 @@ function factorial(n: number): number {
   }
   return n * factorial(n - 1);
 }
-// ...
-  factorial(n1) //  7.660344000000002。
-  factorial(n2) //  7.680640444893748。
-  factorial(n3) //  1。
-  factorial(n4) //  9.33262154439441e+157。
+  // ...
+  factorial(n1) // 7.660344000000002
+  factorial(n2) // 7.680640444893748
+  factorial(n3) // 1
+  factorial(n4) // 9.33262154439441e+157
 ```
 
 `number`类型在表示大整数（即超过-9007199254740991~9007199254740991）时会造成精度丢失。在开发时可以按需使用`BigInt`类型来确保精度：
