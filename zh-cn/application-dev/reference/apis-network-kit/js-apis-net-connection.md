@@ -2470,8 +2470,8 @@ createVlanInterface(ifName: string, vlanId: int): Promise\<void\>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ----------------- |
-| ifName | string | 是 | 要创建vlan的网卡名。 |
-| vlanId | int | 是 | vlanId。 |
+| ifName | string | 是 | 网卡名。 |
+| vlanId | int | 是 | vlan标识符。 |
 
 **返回值：**
 
@@ -2519,8 +2519,8 @@ destroyVlanInterface(ifName: string, vlanId: int): Promise\<void\>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ----------------- |
-| ifName | string | 是 | 要创建vlan的网卡名。 |
-| vlanId | int | 是 | vlanId。 |
+| ifName | string | 是 | 网卡名。 |
+| vlanId | int | 是 | vlan标识符。 |
 
 **返回值：**
 
@@ -2568,8 +2568,8 @@ addVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ----------------- |
-| ifName | string | 是 | 要创建vlan的网卡名。 |
-| vlanId | int | 是 | vlanId。 |
+| ifName | string | 是 | 网卡名。 |
+| vlanId | int | 是 | vlan标识符。 |
 | address | [LinkAddress](#linkaddress) | 是 | 链路信息。 |
 
 **返回值：**
@@ -2627,8 +2627,8 @@ deleteVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ----------------- |
-| ifName | string | 是 | 要创建vlan的网卡名。 |
-| vlanId | int | 是 | vlanId。 |
+| ifName | string | 是 | 网卡名。 |
+| vlanId | int | 是 | vlan标识符。 |
 | address | [LinkAddress](#linkaddress) | 是 | 链路信息。 |
 
 **返回值：**
