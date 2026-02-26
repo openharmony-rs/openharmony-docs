@@ -697,6 +697,8 @@ Allows an application to use the global floating ball.
 
 Allow the application to automatically restore its main window through the global floating ball.
 
+**Prerequisites**: This permission can only be requested together with the [ohos.permission.USE_FLOAT_BALL](#ohospermissionuse_float_ball) permission.
+
 <!--RP66--><!--RP66End-->
 
 **Permission level**: system_basic
