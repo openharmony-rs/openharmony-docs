@@ -135,7 +135,7 @@
    import { image } from '@kit.ImageKit';
    // pixelMap对象声明，用于图片显示。
    @State pixelMap: image.PixelMap | undefined = undefined;
-   //获取专辑封面（callback模式）。
+   // 获取专辑封面（callback模式）。
    avMetadataExtractor.fetchAlbumCover((err, pixelMap) => {
      if (err) {
        console.error(TAG, `fetchAlbumCover callback failed, err = ${JSON.stringify(err)}`);
