@@ -44,55 +44,55 @@ Wi-Fi STA模式（Station Mode，站点模式）是无线设备作为客户端�
 4. 开启设备Wi-Fi。
 5. 示例代码：
 
-```ts
-import { wifiManager } from '@kit.ConnectivityKit';
+   ```ts
+   import { wifiManager } from '@kit.ConnectivityKit';
 
-let recvPowerNotifyFunc: (result: number) => void = (result: number) => {
-  let wifiState = "";
+   let recvPowerNotifyFunc: (result: number) => void = (result: number) => {
+     let wifiState = "";
 
-  switch (result) {
-    case 0:
-      wifiState += 'DISABLED';
-      break;
-    case 1:
-      wifiState += 'ENABLED';
-      break;
-    case 2:
-      wifiState += 'ENABLING';
-      break;
-    case 3:
-      wifiState += 'DISABLING';
-      break;
-    default:
-      wifiState += 'UNKNOWN STATUS';
-      break;
-  }
+     switch (result) {
+       case 0:
+         wifiState += 'DISABLED';
+         break;
+       case 1:
+         wifiState += 'ENABLED';
+         break;
+       case 2:
+         wifiState += 'ENABLING';
+         break;
+       case 3:
+         wifiState += 'DISABLING';
+         break;
+       default:
+         wifiState += 'UNKNOWN STATUS';
+         break;
+     }
 
-  console.info(`Wi-Fi state changed: ${wifiState}`);
-};
+     console.info(`Wi-Fi state changed: ${wifiState}`);
+   };
 
-try {
-  wifiManager.on("wifiStateChange", recvPowerNotifyFunc);
+   try {
+     wifiManager.on("wifiStateChange", recvPowerNotifyFunc);
 
-  let isWifiActive = wifiManager.isWifiActive();
+     let isWifiActive = wifiManager.isWifiActive();
 
-  if (!isWifiActive) {
-    console.info("Wi-Fi not enabled. Skipping monitor.");
-  } else {
-    console.info("Wi-Fi is enabled. Starting monitor...");
-  }
+     if (!isWifiActive) {
+       console.info("Wi-Fi not enabled. Skipping monitor.");
+     } else {
+       console.info("Wi-Fi is enabled. Starting monitor...");
+     }
 
-} catch (error) {
-  console.error(`WiFi state monitor failed: ${error.message}`);
-} finally {
-  try {
-    wifiManager.off("wifiStateChange", recvPowerNotifyFunc);
-    console.info("Wi-Fi monitor off: listener removed.");
-  } catch (e) {
-     console.error(`WiFi state monitor failed. ${e.message}`);
-  }
-}
-```
+   } catch (error) {
+     console.error(`WiFi state monitor failed: ${error.message}`);
+   } finally {
+     try {
+       wifiManager.off("wifiStateChange", recvPowerNotifyFunc);
+       console.info("Wi-Fi monitor off: listener removed.");
+     } catch (e) {
+        console.error(`WiFi state monitor failed. ${e.message}`);
+     }
+   }
+   ```
 
 ### 建立Wi-Fi连接
 1. 导入需要的Wi-Fi模块。
