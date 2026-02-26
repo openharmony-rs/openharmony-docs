@@ -812,7 +812,7 @@ function sum(...numbers: number[]): number {
   }
   return res;
 }
-// ...
+  // ...
   sum(); // 返回0
   sum(1, 2, 3); // 返回6
 ```
