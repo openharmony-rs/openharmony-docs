@@ -35,7 +35,7 @@ createWindow(config: Configuration, callback: AsyncCallback&lt;Window&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -53,9 +53,9 @@ createWindow(config: Configuration, callback: AsyncCallback&lt;Window&gt;): void
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. createWindow can not work correctly due to limited device capabilities. |
-| 1300001 | Repeated operation. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation. |
+| 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
+| 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow. |
+| 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid. |
 | 1300006 | This window context is abnormal. |
 | 1300009 | The parent window is invalid. |
 
@@ -144,7 +144,7 @@ createWindow(config: Configuration): Promise&lt;Window&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -167,9 +167,9 @@ createWindow(config: Configuration): Promise&lt;Window&gt;
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. createWindow can not work correctly due to limited device capabilities. |
-| 1300001 | Repeated operation. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation. |
+| 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
+| 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow. |
+| 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid. |
 | 1300006 | This window context is abnormal. |
 | 1300009 | The parent window is invalid. |
 
@@ -243,7 +243,7 @@ findWindow(name: string): Window
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -264,7 +264,7 @@ findWindow(name: string): Window
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.  |
 
 **示例：**
 
@@ -1347,6 +1347,10 @@ getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
 **需要权限：** ohos.permission.CUSTOM_SCREEN_CAPTURE
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
