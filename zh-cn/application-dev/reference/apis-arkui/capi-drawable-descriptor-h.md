@@ -110,7 +110,7 @@ ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromPixelMap(OH_Pixe
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md) pixelMap | PixelMap对象指针。 |
+| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md) pixelMap | [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)对象指针。 |
 
 **返回：**
 
@@ -189,7 +189,7 @@ OH_PixelmapNativeHandle OH_ArkUI_DrawableDescriptor_GetStaticPixelMap(ArkUI_Draw
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | PixelMap对象指针。 |
+| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)对象指针。 |
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArray()
 
@@ -262,7 +262,7 @@ void OH_ArkUI_DrawableDescriptor_SetAnimationDuration(ArkUI_DrawableDescriptor* 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | DrawableDescriptor对象指针。 |
-| int32_t duration | 播放总时长，单位毫秒。 |
+| int32_t duration | 播放总时长，单位ms。取值范围：[0, +∞)。传入负数时按0处理。 |
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationDuration()
 
@@ -288,7 +288,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationDuration(ArkUI_DrawableDescripto
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 播放总时长，单位毫秒。 |
+| int32_t | 播放总时长，单位ms。 |
 
 ### OH_ArkUI_DrawableDescriptor_SetAnimationIteration()
 
@@ -309,7 +309,7 @@ void OH_ArkUI_DrawableDescriptor_SetAnimationIteration(ArkUI_DrawableDescriptor*
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | DrawableDescriptor对象指针。 |
-| int32_t iteration | 播放次数。 |
+| int32_t iteration | 播放次数。取值范围：[0, +∞)，0表示无限循环播放。传入负数时按0处理。 |
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationIteration()
 
@@ -354,7 +354,7 @@ int32_t OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations(ArkUI_DrawableDes
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | DrawableDescriptor对象指针。 |
-| uint32_t* durations | 动图中的单帧播放时间数组，单位毫秒。<br/>不设置则按照总时间播放。设置的优先级高于duration，即同时设置了[duration](js-apis-animator.md#duration18)和frameDurations时，duration不生效。<br/>数组大小必须与PixelMap图片数组大小相同。<br/>每帧播放时间取值范围：[0, +∞)。 |
+| uint32_t* durations | 动图中的单帧播放时间数组，单位ms。<br/>不设置则按照总时间播放。设置的优先级高于[duration](js-apis-arkui-drawableDescriptor.md#animationoptions12)，即同时设置了duration和[frameDurations](js-apis-arkui-drawableDescriptor.md#animationoptions12)时，duration不生效。<br/>数组大小必须与PixelMap图片数组大小相同。<br/>每帧播放时间取值范围：[0, +∞)。默认值：均匀分配总时长。 |
 | size_t size | 数组大小。 |
 
 **返回：**
