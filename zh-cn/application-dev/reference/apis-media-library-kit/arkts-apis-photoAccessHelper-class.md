@@ -175,7 +175,6 @@ PhotoSelectOptions extends BaseSelectOptions
 
 PhotoPicker退出界面的上下文信息，可以用于下次使用PhotoPicker时恢复上次退出时的现场。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称                    | 类型                | 只读 | 可选 | 说明                          |
