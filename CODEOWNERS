@@ -1064,7 +1064,9 @@ zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-e.md	@xiang-shou
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-font.md	@xiangyuan6	@jiaoaozihao	  @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-framecallback.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-i-sys.md    @xiang-shouxing	@fredyuan0912	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-i.md	@xiang-shouxing	@fredyuan0912	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-luminancesampler-sys.md @CCFFWW @lxl007 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-marqueedynamicsyncscene.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-measureutils.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-mediaquery.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
@@ -1077,6 +1079,7 @@ zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-textmenucontroll
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-uicontext.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-uiinspector.md	@dutie123	@fredyuan0912	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-uiobserver.md	@xiang-shouxing	@fredyuan0912	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-sys.md  @xiang-shouxing	@fredyuan0912	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uimaterial-sys.md @CCFFWW	@lxl007 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityactionarguments.md	@dutie123	@fredyuan0912	 @Brilliantry_Rui

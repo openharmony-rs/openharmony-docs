@@ -1,8 +1,8 @@
-# Class (LuminanceSampler)
+# Class (LuminanceSampler)(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xuhang363-->
-<!--Designer: @xuhang363-->
+<!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -14,7 +14,7 @@
 >
 > - 本Class首批接口从API version 23开始支持。
 >
-> - 以下API需先使用UIContext中的getLuminanceSampler方法获取到PromptAction对象，再通过该对象调用对应方法。
+> - 以下API需先使用UIContext中的[getLuminanceSampler](js-apis-arkui-UIContext-sys.md#getluminancesampler23)方法获取到LuminanceSampler对象，再通过该对象调用对应方法。
 
 ## setBackgroundLuminanceSamplingConfigs<sup>23+</sup>
 
@@ -24,13 +24,15 @@ setBackgroundLuminanceSamplingConfigs(configs: BackgroundLuminanceSamplingConfig
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名     | 类型    | 必填   | 说明      |
 | --- | --- | --- | --- |
-| configs | [BackgroundLuminanceSamplingConfigs](arkts-apis-uicontext-i.md#backgroundluminancesamplingconfigs23) | 是 | 取色参数。 |
+| configs | [BackgroundLuminanceSamplingConfigs](arkts-apis-uicontext-i-sys.md#backgroundluminancesamplingconfigs23) | 是 | 取色参数。 |
 
 **错误码：** 
 
@@ -50,9 +52,11 @@ onBackgroundLuminanceChange(samplingCallback: Callback&lt;number&gt;): void
 
 设置取色监听回调。
 
-回调的触发条件：背景亮度根据[setBackgroundLuminanceSamplingConfigs](./arkts-apis-uicontext-luminancesampler.md#setbackgroundluminancesamplingconfigs23)接口设置的亮阈值和暗阈值分为三个区间，[0，暗阈值]，(暗阈值，亮阈值]，(亮阈值，255]。背景亮度所在区间发生变化时触发取色回调，并返回当前背景亮度。
+回调的触发条件：背景亮度根据[setBackgroundLuminanceSamplingConfigs](./arkts-apis-uicontext-luminancesampler-sys.md#setbackgroundluminancesamplingconfigs23)接口设置的亮阈值和暗阈值分为三个区间，[0，暗阈值)，[暗阈值，亮阈值]，(亮阈值，255]。背景亮度所在区间发生变化（或者首次注册监听回调），并且距离上次取色的时间间隔达到设置的取色时间间隔时触发取色回调，并返回当前背景亮度。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,6 +77,8 @@ offBackgroundLuminanceChange(samplingCallback?: Callback&lt;number&gt;): void
 取消注册取色监听回调。未指定回调时，取消所有监听。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
