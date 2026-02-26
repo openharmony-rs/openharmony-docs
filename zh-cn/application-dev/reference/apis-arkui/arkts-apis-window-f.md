@@ -274,7 +274,7 @@ export default class EntryAbility extends UIAbility {
       });
     });
   }
-  //...
+  // ...
 }
 ```
 
@@ -351,7 +351,7 @@ export default class EntryAbility extends UIAbility {
       });
     });
   }
-  //...
+  // ...
 }
 ```
 
