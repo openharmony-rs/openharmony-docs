@@ -1159,11 +1159,10 @@ class Person4 {
     this._age = x;
   }
 }
-// ...
+  // ...
   let p = new Person4();
   p.age; // 输出0
-  // ...
-    p.age = -42; // 设置无效age值会抛出错误
+  p.age = -42; // 设置无效age值会抛出错误
 ```
 
 在类中可以定义getter或者setter。
