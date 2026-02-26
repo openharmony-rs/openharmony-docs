@@ -368,6 +368,7 @@
 - [UI高性能开发](ui-performance-overview.md)
   - [BuilderNode并行化构建和更新节点树（ArkTS-Sta）](ui-parallel-buildernode.md)
   - [UI并行化创建组件树（ArkTS-Sta）](ui-parallel-components.md)
+  - [FrameNode支持多线程创建组件 (ArkTS-Sta)](framenode-build-on-multi-thread.md)
 - UI开发 (兼容JS的类Web开发范式)<!--ui-js-dev-->
   - [UI开发 (兼容JS的类Web开发范式)概述](ui-js-overview.md)
   - 框架说明<!--js-framework-overview-->
