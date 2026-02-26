@@ -514,7 +514,7 @@ class TestA { static prop1: number = 0; } TestA.prop1;
 -print-seeds ./seedFile.log
 ```
 
-如果不指定目录，开启后，默认在`obfuscation`目录下生成一个`seedsFile.log`文件，用来显示匹配到的类及其成员； 也可以配置目录，将结果输出到指定目录。如图：
+如果不指定目录，开启后，默认在`obfuscation`目录下生成一个`seedFile.log`文件，用来显示匹配到的类及其成员； 也可以配置目录，将结果输出到指定目录。如图：
 
 ![bytecode-static-printseed](figures/bytecode-static-printseed.png)
 
