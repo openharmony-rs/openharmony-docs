@@ -1818,7 +1818,7 @@ class MyHashMap<Key extends Hashable, Value> {
 function last(x: number[]): number {
   return x[x.length - 1];
 }
-// ...
+  // ...
   last([1, 2, 3]); // 3
 ```
 
