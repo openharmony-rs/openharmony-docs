@@ -624,46 +624,49 @@ async function buildWrappedDataAndImportWrappedKey(plainKey: string) {
 <!-- @[encry_the_import_key_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/ets/pages/ImportEncryptedKey.ets) -->
 
 ``` TypeScript
-/* 模拟加密导入密钥场景，设备A为远端设备（导入设备），设备B为本端设备（被导入设备） */
+/* 模拟安全导入密钥场景，设备A为远端设备（导入设备），设备B为本端设备（被导入设备） */
 async function ImportWrappedKey() {
   /**
-   * 1.设备A将待导入密钥转换成HUKS密钥材料格式To_Import_Key（仅针对非对称密钥，若待导入密钥是对称密钥则可省略此步骤），
+   * 1. 设备A将待导入密钥转换成HUKS密钥材料格式To_Import_Key（仅针对非对称密钥，若待导入密钥是对称密钥则可省略此步骤），
    *   本示例使用importedAes256PlainKey（对称密钥）作为模拟
    */
-
-  /* 2.设备B生成一个加密导入用途的、用于协商的非对称密钥对Wrapping_Key（公钥Wrapping_Pk，私钥Wrapping_Sk），
-   *   其密钥用途设置为unwrap，导出Wrapping_Key公钥Wrapping_Pk存放在变量huksPubKey中
+  /**
+   * 2. 设备B生成一个加密导入用途的、用于协商的非对称密钥对Wrapping_Key（公钥Wrapping_Pk，私钥Wrapping_Sk），
+   * 导出Wrapping_Key公钥Wrapping_Pk存放在变量huksPubKey中
    */
   const srcKeyAliasWrap = 'HUKS_Basic_Capability_Import_0200';
   await generateAndExportPublicKey(srcKeyAliasWrap, genWrappingKeyParams, false);
 
-  /* 3.设备A使用和设备B同样的算法，生成一个加密导入用途的、用于协商的非对称密钥对Caller_Key（公钥Caller_Pk，私钥Caller_Sk），
-   *   导出Caller_Key公钥Caller_Pk存放在变量callerSelfPublicKey中
+  /**
+   * 3. 设备A使用和设备B同样的算法，生成一个用于协商的非对称密钥对Caller_Key（公钥Caller_Pk，私钥Caller_Sk），
+   * 导出Caller_Key公钥Caller_Pk存放在变量callerSelfPublicKey中
    */
   await generateAndExportPublicKey(callerKeyAlias, genCallerEcdhParams, true);
 
   /**
-   * 4.设备A生成一个对称密钥Caller_Kek，该密钥后续将用于加密To_Import_Key
-   * 5.设备A基于Caller_Key的私钥Caller_Sk和Wrapping_Key的公钥Wrapping_Pk，协商出Shared_Key
+   * 4. 设备A生成一个对称密钥Caller_Kek，该密钥后续将用于加密To_Import_Key
+   * 设备A基于Caller_Key的私钥Caller_Sk和设备B Wrapping_Key的公钥Wrapping_Pk，协商出Shared_Key
    */
   await importKekAndAgreeSharedSecret(callerKekAliasAes256, importParamsCallerKek, callerKeyAlias, huksPubKey,
     callerAgreeParams);
 
   /**
-   * 6.设备A使用Caller_Kek加密To_Import_Key，生成To_Import_Key_Enc
-   * 7.设备A使用Shared_Key加密Caller_Kek，生成Caller_Kek_Enc
+   * 5. 设备A使用Caller_Kek加密To_Import_Key，生成To_Import_Key_Enc
+   * 设备A使用Shared_Key加密Caller_Kek，生成Caller_Kek_Enc
    */
   await encryptImportedPlainKeyAndKek(importedAes192PlainKey);
 
-  /* 8.设备A封装Caller_Pk、To_Import_Key_Enc、Caller_Kek_Enc等加密导入的材料并发送给设备B。
-   本示例作为变量存放在callerSelfPublicKey，PlainKeyEncData，KekEncData */
+  /**
+   * 6. 设备A封装Caller_Pk、To_Import_Key_Enc、Caller_Kek_Enc等安全导入的材料并发送给设备B。
+   * 本示例作为变量存放在callerSelfPublicKey，PlainKeyEncData，KekEncData
+   */
   let wrappedData = await buildWrappedDataAndImportWrappedKey(importedAes192PlainKey);
   importWrappedAes192Params.inData = wrappedData;
 
-  /* 9.设备B导入封装的加密密钥材料 */
+  /* 7. 设备B导入封装的加密密钥材料 */
   await publicImportWrappedKeyFunc(importedKeyAliasAes192, srcKeyAliasWrap, importWrappedAes192Params);
 
-  /* 10.设备A、B删除用于加密导入的密钥 */
+  /* 8. 设备A、B删除用于安全导入的密钥 */
   await publicDeleteKeyItemFunc(srcKeyAliasWrap, genWrappingKeyParams);
   await publicDeleteKeyItemFunc(callerKeyAlias, genCallerEcdhParams);
   await publicDeleteKeyItemFunc(importedKeyAliasAes192, importWrappedAes192Params);
