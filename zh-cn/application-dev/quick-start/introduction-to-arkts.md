@@ -2434,7 +2434,7 @@ export @interface MyAnno1 {}
 <!-- @[annotation_export_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->   
 
 ``` TypeScript
-// a.ets
+// MyAnno.ets
 export @interface MyAnno2 {}
 export @interface ClassAuthor2 {}
 ```
