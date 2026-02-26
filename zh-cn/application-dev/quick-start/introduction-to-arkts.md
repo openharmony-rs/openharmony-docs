@@ -2479,10 +2479,10 @@ console.info('hello');
 <!-- @[annotation_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->    
 
 ``` TypeScript
-// b.ets
-import { MyAnno2 } from './a';
-import * as ns from './a';
-// 仅引用了Anno注解，不会导致a.ets的console.info执行
+// Annotation.ets
+import { MyAnno2 } from './MyAnno';
+import * as ns from './MyAnno';
+// 仅引用了Anno注解，不会导致MyAnno.ets的console.info执行
 class X {
   // ...
 }
