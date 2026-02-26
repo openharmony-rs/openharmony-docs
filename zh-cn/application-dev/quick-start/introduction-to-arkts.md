@@ -956,7 +956,7 @@ function foo1(x: string): void;            /* 第二个函数定义 */
 function foo1(x: number | string): void {  /* 函数实现 */
 }
 
-foo1(123);     //  OK，使用第一个定义
+foo1(123);     // OK，使用第一个定义
 foo1('aa'); // OK，使用第二个定义
 ```
 
