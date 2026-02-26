@@ -612,7 +612,7 @@ struct Child {
 以下示例代码将CardView自定义组件标记为复用组件，List上下滑动，触发CardView复用。
 
 <!-- @[list_scrolling_with_lazy_for_each](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ListScrollingWithLazyForEach.ets) -->
-  
+
 ``` TypeScript
 class MyDataSource implements IDataSource {
   private dataArray: string[] = [];
