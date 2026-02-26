@@ -147,3 +147,39 @@ Incorrect usage in non-VPN application.
 **处理步骤**
 
 确保在VPN应用中调用接口。
+
+## 2100400 传入网卡名不正确（非以太网）
+
+**错误信息**
+
+The input network interface is incorrect.
+
+**错误描述**
+
+接口调用传入的网卡名不是以太网。
+
+**可能原因**
+
+接口调用传入的网卡名不是以太网。
+
+**处理步骤**
+
+确保传入的网卡名为以太网。
+
+## 2100401 未找到vlan上配置的ip地址
+
+**错误信息**
+
+The input ip address not found.
+
+**错误描述**
+
+未在vlan上找到配置的传入ip地址。
+
+**可能原因**
+
+未在vlan上找到配置的传入ip地址。
+
+**处理步骤**
+
+确保传入的ip地址已配置在vlan上。
