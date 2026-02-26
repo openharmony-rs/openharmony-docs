@@ -119,7 +119,7 @@ function factorial(n: number): number {
 <!-- @[big_int_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->  
 
 ``` TypeScript
-let bigInt: BigInt = BigInt('999999999999999999999999999999999999999999999999999999999999');
+let bigInt: bigint = 999999999999999999999999999999999999999999999999999999999999n;
 console.info('bigInt:' + bigInt.toString());
 ```
 
