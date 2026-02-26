@@ -13,12 +13,12 @@
 
 | 名称                         | 值      | 说明       |
 | ---------------------------- | ------ | ---------- |
-| VOICE_CALL<sup>8+</sup>      | 0      | 语音电话。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 |
-| RINGTONE                     | 2      | 铃声。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 20     |
-| MEDIA                        | 3      | 媒体。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 20     |
-| ALARM<sup>10+</sup>          | 4      | 闹钟。<br> **ArkTS-Dyn起始版本：** 10<br> **ArkTS-Sta起始版本：** 20     |
-| ACCESSIBILITY<sup>10+</sup>  | 5      | 无障碍。<br> **ArkTS-Dyn起始版本：** 10<br> **ArkTS-Sta起始版本：** 20   |
-| VOICE_ASSISTANT<sup>8+</sup> | 9      | 语音助手。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 |
+| VOICE_CALL<sup>8+</sup>      | 0      | 语音电话。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
+| RINGTONE                     | 2      | 铃声。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 23     |
+| MEDIA                        | 3      | 媒体。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 23     |
+| ALARM<sup>10+</sup>          | 4      | 闹钟。<br> **ArkTS-Dyn起始版本：** 10<br> **ArkTS-Sta起始版本：** 23     |
+| ACCESSIBILITY<sup>10+</sup>  | 5      | 无障碍。<br> **ArkTS-Dyn起始版本：** 10<br> **ArkTS-Sta起始版本：** 23   |
+| VOICE_ASSISTANT<sup>8+</sup> | 9      | 语音助手。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
 
 ## InterruptMode<sup>9+</sup>
 
@@ -30,7 +30,7 @@
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                         | 值      | 说明       |
 | ---------------------------- | ------ | ---------- |
@@ -45,7 +45,7 @@
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                            |  值     | 说明                        |
 | ------------------------------- | ------ |---------------------------|
@@ -61,7 +61,7 @@
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                            |  值     | 说明                        |
 | ------------------------------- | ------ |---------------------------|
@@ -82,7 +82,7 @@
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称          |  值    | 说明           |
 | ------------- | ------ | -------------- |
@@ -97,21 +97,21 @@
 
 | 名称                 | 值     | 说明                                                      |
 | ---------------------| ------ | --------------------------------------------------------- |
-| INVALID              | 0      | 无效设备。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 20 |
-| EARPIECE             | 1      | 听筒。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 20 |
-| SPEAKER              | 2      | 扬声器。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 20 |
-| WIRED_HEADSET        | 3      | 有线耳机，带麦克风。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 20 |
-| WIRED_HEADPHONES     | 4      | 有线耳机，不带麦克风。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 20 |
-| BLUETOOTH_SCO        | 7      | 蓝牙设备SCO（Synchronous Connection Oriented）连接。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 20 |
-| BLUETOOTH_A2DP       | 8      | 蓝牙设备A2DP（Advanced Audio Distribution Profile）连接。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 20 |
-| MIC                  | 15     | 麦克风。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 20 |
-| USB_HEADSET          | 22     | USB耳机，带麦克风。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 20 |
-| DISPLAY_PORT<sup>12+</sup>        | 23     | DisplayPort（显示接口，简称DP），用于外接扩展设备。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 20 |
-| REMOTE_CAST<sup>12+</sup>        | 24     | 音频被系统应用投送到其他的远程设备。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 20 |
-| USB_DEVICE<sup>18+</sup>        | 25 | USB设备（不包含USB耳机）。<br> **ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 20           |
-| HDMI<sup>19+</sup>        | 27 | HDMI设备（例如HDMI、ARC、eARC等）。<br> **ArkTS-Dyn起始版本：** 19<br> **ArkTS-Sta起始版本：** 20           |
-| LINE_DIGITAL<sup>19+</sup>        | 28 | 有线数字设备（例如S/PDIF等）。<br> **ArkTS-Dyn起始版本：** 19<br> **ArkTS-Sta起始版本：** 20           |
-| REMOTE_DAUDIO<sup>18+</sup>        | 29 | 分布式设备。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 20 |
+| INVALID              | 0      | 无效设备。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 23 |
+| EARPIECE             | 1      | 听筒。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 23 |
+| SPEAKER              | 2      | 扬声器。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 23 |
+| WIRED_HEADSET        | 3      | 有线耳机，带麦克风。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 23 |
+| WIRED_HEADPHONES     | 4      | 有线耳机，不带麦克风。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 23 |
+| BLUETOOTH_SCO        | 7      | 蓝牙设备SCO（Synchronous Connection Oriented）连接。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 23 |
+| BLUETOOTH_A2DP       | 8      | 蓝牙设备A2DP（Advanced Audio Distribution Profile）连接。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 23 |
+| MIC                  | 15     | 麦克风。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 23 |
+| USB_HEADSET          | 22     | USB耳机，带麦克风。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 23 |
+| DISPLAY_PORT<sup>12+</sup>        | 23     | DisplayPort（显示接口，简称DP），用于外接扩展设备。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23 |
+| REMOTE_CAST<sup>12+</sup>        | 24     | 音频被系统应用投送到其他的远程设备。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23 |
+| USB_DEVICE<sup>18+</sup>        | 25 | USB设备（不包含USB耳机）。<br> **ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23           |
+| HDMI<sup>19+</sup>        | 27 | HDMI设备（例如HDMI、ARC、eARC等）。<br> **ArkTS-Dyn起始版本：** 19<br> **ArkTS-Sta起始版本：** 23          |
+| LINE_DIGITAL<sup>19+</sup>        | 28 | 有线数字设备（例如S/PDIF等）。<br> **ArkTS-Dyn起始版本：** 19<br> **ArkTS-Sta起始版本：** 23           |
+| REMOTE_DAUDIO<sup>18+</sup>        | 29 | 分布式设备。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23 |
 | NEARLINK<sup>20+</sup>        | 31 | 星闪设备。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br> **ArkTS-Dyn起始版本：** 20 |
 | DEFAULT<sup>9+</sup> | 1000   | 默认设备类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20 |
 
@@ -123,7 +123,7 @@
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 值     | 说明          |
 | ------------- | ------ | -------------|
@@ -137,7 +137,7 @@
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                |  值    | 说明       |
 | ------------------- | ------ | ---------- |
@@ -153,12 +153,12 @@
 
 | 名称                                |  值    | 说明                       |
 | ---------------------------------- | ------ | -------------------------- |
-| SAMPLE_FORMAT_INVALID              | -1     | 无效格式。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20|
-| SAMPLE_FORMAT_U8                   | 0      | 无符号8位整数。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20|
-| SAMPLE_FORMAT_S16LE                | 1      | 带符号的16位整数，小尾数。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20|
-| SAMPLE_FORMAT_S24LE                | 2      | 带符号的24位整数，小尾数。 <br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 <br>由于系统限制，该采样格式仅部分设备支持，请根据实际情况使用。|
-| SAMPLE_FORMAT_S32LE                | 3      | 带符号的32位整数，小尾数。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 <br>由于系统限制，该采样格式仅部分设备支持，请根据实际情况使用。|
-| SAMPLE_FORMAT_F32LE<sup>9+</sup>   | 4      | 带符号的32位浮点数，小尾数。 <br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20<br>由于系统限制，该采样格式仅部分设备支持，请根据实际情况使用。|
+| SAMPLE_FORMAT_INVALID              | -1     | 无效格式。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
+| SAMPLE_FORMAT_U8                   | 0      | 无符号8位整数。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
+| SAMPLE_FORMAT_S16LE                | 1      | 带符号的16位整数，小尾数。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
+| SAMPLE_FORMAT_S24LE                | 2      | 带符号的24位整数，小尾数。 <br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 <br>由于系统限制，该采样格式仅部分设备支持，请根据实际情况使用。|
+| SAMPLE_FORMAT_S32LE                | 3      | 带符号的32位整数，小尾数。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 <br>由于系统限制，该采样格式仅部分设备支持，请根据实际情况使用。|
+| SAMPLE_FORMAT_F32LE<sup>9+</sup>   | 4      | 带符号的32位浮点数，小尾数。 <br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23<br>由于系统限制，该采样格式仅部分设备支持，请根据实际情况使用。|
 
 ## AudioErrors<sup>9+</sup>
 
@@ -168,7 +168,7 @@
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 值      | 说明         |
 | ---------------------| --------| ----------------- |
@@ -188,19 +188,19 @@
 
 | 名称      |  值       | 说明   |
 | --------- | -------- |------|
-| CHANNEL_1 | 1 | 单声道。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 |
-| CHANNEL_2 | 2 | 双声道。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 |
-| CHANNEL_3<sup>11+</sup> | 3 | 三声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 20 |
-| CHANNEL_4<sup>11+</sup> | 4 | 四声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 20 |
-| CHANNEL_5<sup>11+</sup> | 5 | 五声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 20 |
-| CHANNEL_6<sup>11+</sup> | 6 | 六声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 20 |
-| CHANNEL_7<sup>11+</sup> | 7 | 七声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 20 |
-| CHANNEL_8<sup>11+</sup> | 8 | 八声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 20 |
-| CHANNEL_9<sup>11+</sup> | 9 | 九声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 20 |
-| CHANNEL_10<sup>11+</sup> | 10 | 十声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 20 |
-| CHANNEL_12<sup>11+</sup> | 12 | 十二声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 20 |
-| CHANNEL_14<sup>11+</sup> | 14 | 十四声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 20 |
-| CHANNEL_16<sup>11+</sup> | 16 | 十六声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 20 |
+| CHANNEL_1 | 1 | 单声道。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
+| CHANNEL_2 | 2 | 双声道。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
+| CHANNEL_3<sup>11+</sup> | 3 | 三声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23 |
+| CHANNEL_4<sup>11+</sup> | 4 | 四声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23 |
+| CHANNEL_5<sup>11+</sup> | 5 | 五声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23 |
+| CHANNEL_6<sup>11+</sup> | 6 | 六声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23 |
+| CHANNEL_7<sup>11+</sup> | 7 | 七声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23 |
+| CHANNEL_8<sup>11+</sup> | 8 | 八声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23 |
+| CHANNEL_9<sup>11+</sup> | 9 | 九声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23 |
+| CHANNEL_10<sup>11+</sup> | 10 | 十声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23 |
+| CHANNEL_12<sup>11+</sup> | 12 | 十二声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23 |
+| CHANNEL_14<sup>11+</sup> | 14 | 十四声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23 |
+| CHANNEL_16<sup>11+</sup> | 16 | 十六声道。<br> **ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23 |
 
 ## AudioSamplingRate<sup>8+</sup>
 
@@ -210,20 +210,20 @@
 
 | 名称              |  值    | 说明            |
 | ----------------- | ------ | --------------- |
-| SAMPLE_RATE_8000  | 8000   | 采样率为8000。 <br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 |
-| SAMPLE_RATE_11025 | 11025  | 采样率为11025。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 |
-| SAMPLE_RATE_12000 | 12000  | 采样率为12000。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 |
-| SAMPLE_RATE_16000 | 16000  | 采样率为16000。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 |
-| SAMPLE_RATE_22050 | 22050  | 采样率为22050。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 |
-| SAMPLE_RATE_24000 | 24000  | 采样率为24000。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 |
-| SAMPLE_RATE_32000 | 32000  | 采样率为32000。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 |
-| SAMPLE_RATE_44100 | 44100  | 采样率为44100。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 |
-| SAMPLE_RATE_48000 | 48000  | 采样率为48000。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 |
-| SAMPLE_RATE_64000 | 64000  | 采样率为64000。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 |
-| SAMPLE_RATE_88200<sup>12+</sup> | 88200  | 采样率为88200。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 20 |
-| SAMPLE_RATE_96000 | 96000  | 采样率为96000。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 |
-| SAMPLE_RATE_176400<sup>12+</sup> | 176400  | 采样率为176400。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 20 |
-| SAMPLE_RATE_192000<sup>12+</sup> | 192000  | 采样率为192000。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 20 |
+| SAMPLE_RATE_8000  | 8000   | 采样率为8000。 <br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
+| SAMPLE_RATE_11025 | 11025  | 采样率为11025。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
+| SAMPLE_RATE_12000 | 12000  | 采样率为12000。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
+| SAMPLE_RATE_16000 | 16000  | 采样率为16000。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
+| SAMPLE_RATE_22050 | 22050  | 采样率为22050。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
+| SAMPLE_RATE_24000 | 24000  | 采样率为24000。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
+| SAMPLE_RATE_32000 | 32000  | 采样率为32000。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
+| SAMPLE_RATE_44100 | 44100  | 采样率为44100。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
+| SAMPLE_RATE_48000 | 48000  | 采样率为48000。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
+| SAMPLE_RATE_64000 | 64000  | 采样率为64000。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
+| SAMPLE_RATE_88200<sup>12+</sup> | 88200  | 采样率为88200。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23 |
+| SAMPLE_RATE_96000 | 96000  | 采样率为96000。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
+| SAMPLE_RATE_176400<sup>12+</sup> | 176400  | 采样率为176400。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23 |
+| SAMPLE_RATE_192000<sup>12+</sup> | 192000  | 采样率为192000。<br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23 |
 
 ## AudioEncodingType<sup>8+</sup>
 
@@ -235,7 +235,7 @@
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                  |  值    | 说明      |
 | --------------------- | ------ | --------- |
@@ -250,7 +250,7 @@
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                            |  值              | 说明                                          |
 | ------------------------------ | ---------------- | --------------------------------------------- |
@@ -312,7 +312,7 @@
 
 | 名称                                      |  值    | 说明                                                                             |
 | ------------------------------------------| ------ |--------------------------------------------------------------------------------|
-| STREAM_USAGE_UNKNOWN                      | 0      | 未知类型。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 20 |
+| STREAM_USAGE_UNKNOWN                      | 0      | 未知类型。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 23 |
 | STREAM_USAGE_MEDIA<sup>(deprecated)</sup> | 1      | 媒体。<br/> 从API version 7开始支持，从API version 10开始废弃，建议使用该枚举中的STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE、STREAM_USAGE_GAME或STREAM_USAGE_AUDIOBOOK替代。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br> **ArkTS-Dyn起始版本：** 7 |
 | STREAM_USAGE_MUSIC<sup>10+</sup>          | 1      | 音乐。   <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 10<br> **ArkTS-Sta起始版本：** 20 |
 | STREAM_USAGE_VOICE_COMMUNICATION          | 2      | VoIP语音通话。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 20 |
@@ -337,7 +337,7 @@
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值     | 说明             |
 | -------------- | ------ | ---------------- |
@@ -359,7 +359,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 值     | 说明       |
 | ------------------ | ------ | ---------- |
@@ -374,7 +374,7 @@
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 值     | 说明       |
 | ------------------ | ------ | ---------- |
@@ -392,7 +392,7 @@
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 |  值     | 说明                   |
 | -------------------- | ------ | ---------------------- |
@@ -413,7 +413,7 @@
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称            |  值    | 说明                                 |
 | --------------- | ------ | ------------------------------------ |
@@ -434,12 +434,12 @@
 
 | 名称                               |  值     | 说明                                         |
 | ---------------------------------- | ------ | -------------------------------------------- |
-| INTERRUPT_HINT_NONE<sup>8+</sup>   | 0      | 无提示。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 |
-| INTERRUPT_HINT_RESUME              | 1      | 提示音频恢复，应用可主动触发开始渲染或开始采集的相关操作。<br>此操作无法由系统强制执行，其对应的[InterruptForceType](#interruptforcetype9)一定为INTERRUPT_SHARE类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 20 |
-| INTERRUPT_HINT_PAUSE               | 2      | 提示音频暂停，暂时失去音频焦点。<br>待焦点可用时，会收到INTERRUPT_HINT_RESUME事件。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 20 |
-| INTERRUPT_HINT_STOP                | 3      | 提示音频停止，彻底失去音频焦点。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 20 |
-| INTERRUPT_HINT_DUCK                | 4      | 提示音频躲避开始，降低音量播放。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 20 |
-| INTERRUPT_HINT_UNDUCK<sup>8+</sup> | 5      | 提示音频躲避结束，恢复音量播放。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20 |
+| INTERRUPT_HINT_NONE<sup>8+</sup>   | 0      | 无提示。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
+| INTERRUPT_HINT_RESUME              | 1      | 提示音频恢复，应用可主动触发开始渲染或开始采集的相关操作。<br>此操作无法由系统强制执行，其对应的[InterruptForceType](#interruptforcetype9)一定为INTERRUPT_SHARE类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 23 |
+| INTERRUPT_HINT_PAUSE               | 2      | 提示音频暂停，暂时失去音频焦点。<br>待焦点可用时，会收到INTERRUPT_HINT_RESUME事件。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 23 |
+| INTERRUPT_HINT_STOP                | 3      | 提示音频停止，彻底失去音频焦点。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 23 |
+| INTERRUPT_HINT_DUCK                | 4      | 提示音频躲避开始，降低音量播放。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7<br> **ArkTS-Sta起始版本：** 23 |
+| INTERRUPT_HINT_UNDUCK<sup>8+</sup> | 5      | 提示音频躲避结束，恢复音量播放。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
 | INTERRUPT_HINT_MUTE<sup>20+</sup> | 6      | 提示音频静音。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 20 |
 | INTERRUPT_HINT_UNMUTE<sup>20+</sup> | 7      | 提示音频解除静音。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20            |
 
@@ -451,7 +451,7 @@
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值     | 说明           |
 | -------------- | ------ |--------------|
@@ -466,7 +466,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 值   | 说明                             |
 | -------------------- | ---- | -------------------------------- |
@@ -481,7 +481,7 @@
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                                         |  值     | 说明                   |
 | :------------------------------------------- | :----- | :--------------------- |
@@ -500,7 +500,7 @@
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                                        |  值     | 说明              |
 |:------------------------------------------| :----- |:----------------|
@@ -517,7 +517,7 @@
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值   | 说明           |
 | :--------- | :--- | :------------- |
@@ -532,7 +532,7 @@
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值   | 说明           |
 | :--------- | :--- | :------------- |
@@ -563,10 +563,10 @@
 
 | 名称                   |  值     | 说明                                          |
 | :--------------------- | :----- | :-------------------------------------------- |
-| AUDIO_SCENE_DEFAULT                  | 0      | 默认音频场景。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20|
-| AUDIO_SCENE_RINGING<sup>12+</sup>    | 1      | 响铃模式。 <br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 20|
-| AUDIO_SCENE_PHONE_CALL<sup>12+</sup> | 2      | 电话模式。 <br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 20|
-| AUDIO_SCENE_VOICE_CHAT               | 3      | 语音聊天模式。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 20|
+| AUDIO_SCENE_DEFAULT                  | 0      | 默认音频场景。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
+| AUDIO_SCENE_RINGING<sup>12+</sup>    | 1      | 响铃模式。 <br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23|
+| AUDIO_SCENE_PHONE_CALL<sup>12+</sup> | 2      | 电话模式。 <br> **ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23|
+| AUDIO_SCENE_VOICE_CHAT               | 3      | 语音聊天模式。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
 
 ## AudioConcurrencyMode<sup>12+</sup>
 
@@ -576,7 +576,7 @@
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                   | 值 | 说明      |
 | :--------------------- |:--|:--------|
@@ -593,7 +593,7 @@
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                   | 值 | 说明     |
 | :--------------------- |:--|:-------|
@@ -608,7 +608,7 @@
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 值      | 说明         |
 | ---------------------| --------| ----------------- |

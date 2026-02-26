@@ -7,8 +7,8 @@
 
 | 名称                                    | 类型      | 只读 | 说明               |
 | --------------------------------------- | ----------|---| ------------------ |
-| DEFAULT_VOLUME_GROUP_ID<sup>9+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int    | 是 | 默认音量组id。<br> **系统能力：** SystemCapability.Multimedia.Audio.Volume<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20       |
-| DEFAULT_INTERRUPT_GROUP_ID<sup>9+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int    | 是 | 默认音频中断组id。<br> **系统能力：** SystemCapability.Multimedia.Audio.Interrupt<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 20       |
+| DEFAULT_VOLUME_GROUP_ID<sup>9+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int    | 是 | 默认音量组id。<br> **系统能力：** SystemCapability.Multimedia.Audio.Volume<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23       |
+| DEFAULT_INTERRUPT_GROUP_ID<sup>9+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int    | 是 | 默认音频中断组id。<br> **系统能力：** SystemCapability.Multimedia.Audio.Interrupt<br> **ArkTS-Dyn起始版本：** 9<br> **ArkTS-Sta起始版本：** 23       |
 
 **示例：**
 

@@ -25,7 +25,7 @@ activateAudioSession(strategy: AudioSessionStrategy): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -91,7 +91,7 @@ deactivateAudioSession(): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -143,7 +143,7 @@ isAudioSessionActivated(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -195,7 +195,7 @@ audioSessionManager.on('audioSessionDeactivated', (audioSessionDeactivatedEvent:
 });
 ```
 
-## onAudioSessionDeactivated<sup>22+</sup>
+## onAudioSessionDeactivated<sup>23+</sup>
 
 onAudioSessionDeactivated(callback: Callback\<AudioSessionDeactivatedEvent>): void
 
@@ -207,7 +207,7 @@ onAudioSessionDeactivated(callback: Callback\<AudioSessionDeactivatedEvent>): vo
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -277,7 +277,7 @@ audioSessionManager.on('audioSessionDeactivated', audioSessionDeactivatedCallbac
 audioSessionManager.off('audioSessionDeactivated', audioSessionDeactivatedCallback);
 ```
 
-## offAudioSessionDeactivated<sup>22+</sup>
+## offAudioSessionDeactivated<sup>23+</sup>
 
 offAudioSessionDeactivated(callback?: Callback\<AudioSessionDeactivatedEvent>): void
 
@@ -289,7 +289,7 @@ offAudioSessionDeactivated(callback?: Callback\<AudioSessionDeactivatedEvent>): 
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

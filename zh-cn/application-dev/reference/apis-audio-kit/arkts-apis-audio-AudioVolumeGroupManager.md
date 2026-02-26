@@ -681,7 +681,7 @@ getRingerMode(callback: AsyncCallback&lt;AudioRingMode&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -729,7 +729,7 @@ getRingerMode(): Promise&lt;AudioRingMode&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -755,7 +755,7 @@ getRingerModeSync(): AudioRingMode
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -815,7 +815,7 @@ audioVolumeGroupManager.on('ringerModeChange', (ringerMode: audio.AudioRingMode)
 });
 ```
 
-## onRingerModeChange<sup>22+</sup>
+## onRingerModeChange<sup>23+</sup>
 
 onRingerModeChange(callback: Callback\<AudioRingMode>): void
 
@@ -827,7 +827,7 @@ onRingerModeChange(callback: Callback\<AudioRingMode>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
 **参数：**
 
@@ -896,7 +896,7 @@ audioVolumeGroupManager.on('ringerModeChange', ringerModeChangeCallback);
 audioVolumeGroupManager.off('ringerModeChange', ringerModeChangeCallback);
 ```
 
-## offRingerModeChange<sup>22+</sup>
+## offRingerModeChange<sup>23+</sup>
 
 offRingerModeChange(callback?: Callback&lt;AudioRingMode&gt;): void
 
@@ -908,7 +908,7 @@ offRingerModeChange(callback?: Callback&lt;AudioRingMode&gt;): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -950,7 +950,7 @@ isMicrophoneMute(callback: AsyncCallback&lt;boolean&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -998,7 +998,7 @@ isMicrophoneMute(): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1024,7 +1024,7 @@ isMicrophoneMuteSync(): boolean
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1086,7 +1086,7 @@ audioVolumeGroupManager.on('micStateChange', (micStateChange: audio.MicStateChan
 });
 ```
 
-## onMicStateChange<sup>22+</sup>
+## onMicStateChange<sup>23+</sup>
 
 onMicStateChange(callback: Callback&lt;MicStateChangeEvent&gt;): void
 
@@ -1100,7 +1100,7 @@ onMicStateChange(callback: Callback&lt;MicStateChangeEvent&gt;): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1170,7 +1170,7 @@ audioVolumeGroupManager.on('micStateChange', micStateChangeCallback);
 audioVolumeGroupManager.off('micStateChange', micStateChangeCallback);
 ```
 
-## offMicStateChange<sup>22+</sup>
+## offMicStateChange<sup>23+</sup>
 
 offMicStateChange(callback?: Callback&lt;MicStateChangeEvent&gt;): void
 
@@ -1182,7 +1182,7 @@ offMicStateChange(callback?: Callback&lt;MicStateChangeEvent&gt;): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1224,7 +1224,7 @@ isVolumeUnadjustable(): boolean
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1457,7 +1457,7 @@ ArkTS-Sta: getMaxAmplitudeForInputDevice(inputDevice: AudioDeviceDescriptor): Pr
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1537,7 +1537,7 @@ ArkTS-Sta: getMaxAmplitudeForOutputDevice(outputDevice: AudioDeviceDescriptor): 
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

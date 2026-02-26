@@ -25,7 +25,7 @@ getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback&lt;AudioDeviceDescrip
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -74,7 +74,7 @@ getDevices(deviceFlag: DeviceFlag): Promise&lt;AudioDeviceDescriptors&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -106,7 +106,7 @@ getDevicesSync(deviceFlag: DeviceFlag): AudioDeviceDescriptors
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -153,7 +153,7 @@ isMicBlockDetectionSupported():Promise\<boolean\>
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -215,7 +215,7 @@ audioRoutingManager.isMicBlockDetectionSupported().then((value: boolean) => {
 });
 ```
 
-## onMicBlockStatusChanged<sup>22+</sup>
+## onMicBlockStatusChanged<sup>23+</sup>
 
 onMicBlockStatusChanged(callback: Callback<DeviceBlockStatusInfo\>): void
 
@@ -229,7 +229,7 @@ onMicBlockStatusChanged(callback: Callback<DeviceBlockStatusInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -305,7 +305,7 @@ audioRoutingManager.on('micBlockStatusChanged', micBlockStatusCallback);
 audioRoutingManager.off('micBlockStatusChanged', micBlockStatusCallback);
 ```
 
-## offMicBlockStatusChanged<sup>22+</sup>
+## offMicBlockStatusChanged<sup>23+</sup>
 
 offMicBlockStatusChanged(callback?: Callback<DeviceBlockStatusInfo\>): void
 
@@ -317,7 +317,7 @@ offMicBlockStatusChanged(callback?: Callback<DeviceBlockStatusInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -391,7 +391,7 @@ audioRoutingManager.on('deviceChange', audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (de
 });
 ```
 
-## onDeviceChange<sup>22+</sup>
+## onDeviceChange<sup>23+</sup>
 
 onDeviceChange(deviceFlag: DeviceFlag, callback: Callback<DeviceChangeAction\>): void
 
@@ -403,7 +403,7 @@ onDeviceChange(deviceFlag: DeviceFlag, callback: Callback<DeviceChangeAction\>):
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -480,7 +480,7 @@ audioRoutingManager.on('deviceChange', audio.DeviceFlag.OUTPUT_DEVICES_FLAG, dev
 audioRoutingManager.off('deviceChange', deviceChangeCallback);
 ```
 
-## offDeviceChange<sup>22+</sup>
+## offDeviceChange<sup>23+</sup>
 
 offDeviceChange(callback?: Callback<DeviceChangeAction\>): void
 
@@ -492,7 +492,7 @@ offDeviceChange(callback?: Callback<DeviceChangeAction\>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -541,7 +541,7 @@ setCommunicationDevice(deviceType: CommunicationDeviceType, active: boolean, cal
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -591,7 +591,7 @@ getAvailableDevices(deviceUsage: DeviceUsage): AudioDeviceDescriptors
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -670,7 +670,7 @@ audioRoutingManager.on('availableDeviceChange', audio.DeviceUsage.MEDIA_OUTPUT_D
 });
 ```
 
-## onAvailableDeviceChange<sup>22+</sup>
+## onAvailableDeviceChange<sup>23+</sup>
 
 onAvailableDeviceChange(deviceUsage: DeviceUsage, callback: Callback<DeviceChangeAction\>): void
 
@@ -682,7 +682,7 @@ onAvailableDeviceChange(deviceUsage: DeviceUsage, callback: Callback<DeviceChang
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -759,7 +759,7 @@ audioRoutingManager.on('availableDeviceChange', audio.DeviceUsage.MEDIA_OUTPUT_D
 audioRoutingManager.off('availableDeviceChange', availableDeviceChangeCallback);
 ```
 
-## offAvailableDeviceChange<sup>22+</sup>
+## offAvailableDeviceChange<sup>23+</sup>
 
 offAvailableDeviceChange(callback?: Callback<DeviceChangeAction\>): void
 
@@ -771,7 +771,7 @@ offAvailableDeviceChange(callback?: Callback<DeviceChangeAction\>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -820,7 +820,7 @@ setCommunicationDevice(deviceType: CommunicationDeviceType, active: boolean): Pr
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -853,7 +853,7 @@ isCommunicationDeviceActive(deviceType: CommunicationDeviceType, callback: Async
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -902,7 +902,7 @@ isCommunicationDeviceActive(deviceType: CommunicationDeviceType): Promise&lt;boo
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -981,7 +981,7 @@ getPreferOutputDeviceForRendererInfo(rendererInfo: AudioRendererInfo, callback: 
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1055,7 +1055,7 @@ getPreferOutputDeviceForRendererInfo(rendererInfo: AudioRendererInfo): Promise&l
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1130,7 +1130,7 @@ getPreferredOutputDeviceForRendererInfoSync(rendererInfo: AudioRendererInfo): Au
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1219,7 +1219,7 @@ audioRoutingManager.on('preferOutputDeviceChangeForRendererInfo', rendererInfo, 
 });
 ```
 
-## onPreferOutputDeviceChangeForRendererInfo<sup>22+</sup>
+## onPreferOutputDeviceChangeForRendererInfo<sup>23+</sup>
 
 onPreferOutputDeviceChangeForRendererInfo(rendererInfo: AudioRendererInfo, callback: Callback<AudioDeviceDescriptors\>): void
 
@@ -1231,7 +1231,7 @@ onPreferOutputDeviceChangeForRendererInfo(rendererInfo: AudioRendererInfo, callb
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1313,7 +1313,7 @@ audioRoutingManager.on('preferOutputDeviceChangeForRendererInfo', rendererInfo, 
 audioRoutingManager.off('preferOutputDeviceChangeForRendererInfo', preferOutputDeviceChangeForRendererInfoCallback);
 ```
 
-## offPreferOutputDeviceChangeForRendererInfo<sup>22+</sup>
+## offPreferOutputDeviceChangeForRendererInfo<sup>23+</sup>
 
 offPreferOutputDeviceChangeForRendererInfo(callback?: Callback<AudioDeviceDescriptors\>): void
 
@@ -1325,7 +1325,7 @@ offPreferOutputDeviceChangeForRendererInfo(callback?: Callback<AudioDeviceDescri
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1371,7 +1371,7 @@ getPreferredInputDeviceForCapturerInfo(capturerInfo: AudioCapturerInfo, callback
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1442,7 +1442,7 @@ getPreferredInputDeviceForCapturerInfo(capturerInfo: AudioCapturerInfo): Promise
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1514,7 +1514,7 @@ getPreferredInputDeviceForCapturerInfoSync(capturerInfo: AudioCapturerInfo): Aud
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1603,7 +1603,7 @@ audioRoutingManager.on('preferredInputDeviceChangeForCapturerInfo', capturerInfo
 });
 ```
 
-## onPreferredInputDeviceChangeForCapturerInfo<sup>22+</sup>
+## onPreferredInputDeviceChangeForCapturerInfo<sup>23+</sup>
 
 onPreferredInputDeviceChangeForCapturerInfo(capturerInfo: AudioCapturerInfo, callback: Callback<AudioDeviceDescriptors\>): void
 
@@ -1615,7 +1615,7 @@ onPreferredInputDeviceChangeForCapturerInfo(capturerInfo: AudioCapturerInfo, cal
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1697,7 +1697,7 @@ audioRoutingManager.on('preferredInputDeviceChangeForCapturerInfo', capturerInfo
 audioRoutingManager.off('preferredInputDeviceChangeForCapturerInfo', preferredInputDeviceChangeForCapturerInfoCallback);
 ```
 
-## offPreferredInputDeviceChangeForCapturerInfo<sup>22+</sup>
+## offPreferredInputDeviceChangeForCapturerInfo<sup>23+</sup>
 
 offPreferredInputDeviceChangeForCapturerInfo(callback?: Callback<AudioDeviceDescriptors\>): void
 
@@ -1709,7 +1709,7 @@ offPreferredInputDeviceChangeForCapturerInfo(callback?: Callback<AudioDeviceDesc
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
