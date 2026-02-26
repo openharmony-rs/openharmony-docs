@@ -979,7 +979,7 @@ Sets the playback speed.
 
 | Name| Type                                    | Mandatory| Description                  |
 | ------ | ---------------------------------------- | ---- |----------------------|
-| speed | number | Yes  | Playback speed, which ranges from 0.25 to 4.0.|
+| speed | number | Yes  | Playback rate, which ranges from 0.25 to 4.0.|
 
 **Error codes**
 
