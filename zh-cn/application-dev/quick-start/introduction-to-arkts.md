@@ -2525,6 +2525,16 @@ export declare @interface ClassAuthor3 {}
 
 <!-- @[annotation_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ImportMyAnno.ets) -->    
 
+``` TypeScript
+// ImportMyAnno.ets
+import { MyAnno } from './NameAnno';
+
+@MyAnno
+class C {
+  // ...
+}
+```
+
 
 **编译器自动生成的.d.ets文件**<br>
 当编译器根据ets代码自动生成.d.ets文件时，存在以下2种情况。
