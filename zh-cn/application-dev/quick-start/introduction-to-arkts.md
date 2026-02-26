@@ -2099,7 +2099,7 @@ import('./Calc').then((obj: ESObject) => {
 <!-- @[module_import_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Say.ets) -->    
 
 ``` TypeScript
-// say.ets
+// Say.ets
 export function hi() {
   console.info('Hello');
 }
