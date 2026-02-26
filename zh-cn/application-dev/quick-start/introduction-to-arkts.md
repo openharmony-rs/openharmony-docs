@@ -2533,6 +2533,15 @@ export declare @interface ClassAuthor3 {}
 
    <!-- @[annotation_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->   
    
+   ``` TypeScript
+   // MyAnno.ets
+   export @interface ClassAuthor5 {}
+   
+   @interface MethodAnno { // 没导出
+     data: number;
+   }
+   ```
+   
    <!-- @[annotation_export_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) --> 
    
    ``` TypeScript
