@@ -290,12 +290,13 @@ let res = str.replace(/^/, 'abc');
 
    <!-- @[test_safeAsyncCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
    
-   ```ts
+   ``` TypeScript
    import { errorManager } from '@kit.AbilityKit';
-
-   errorManager.on("unhandledRejection", (a:ESObject, b:Promise<ESObject>) => {
-      console.info("Async test", a);
-   })
+     // ...
+     errorManager.on('unhandledRejection', (a:ESObject, b:Promise<ESObject>) => {
+       console.info('Async test', a);
+       // ...
+     })
    ```
 
 2. 在Async函数内部，针对可能发生异常的代码块添加try-catch逻辑，直接捕获可能出现的异常。
