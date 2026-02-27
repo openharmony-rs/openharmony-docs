@@ -188,8 +188,8 @@ foo
 <!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/ExportUtils.ts) -->
 
 ``` TypeScript
-// 混淆前。
-// utils.ts
+// 混淆前
+// ExportUtils.ts
 export function add(a: number, b: number): number {
   return a + b;
 }
