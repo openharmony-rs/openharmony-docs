@@ -3467,10 +3467,10 @@ c.initAge(10);
 // 关闭了类型检查后的代码
 // ...
 
-let s1: string = null; // 没有报错。
+let s1: string = null; // 没有报错
 
 // @ts-ignore
-let s2: string = null; // 没有报错。
+let s2: string = null; // 没有报错
 ```
 
 **ArkTS**
