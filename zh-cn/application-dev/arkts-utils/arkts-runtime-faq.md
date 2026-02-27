@@ -243,14 +243,14 @@ try {
 <!-- @[test_nothrow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/TestArray.js) -->   
 
 ``` JavaScript
-// test1.js
+// TestArray.js
 const typedArr = new Uint8Array([10, 20, 30]);
 try {
-    const normalArr1 = Array.from(typedArr);
-    const result = Object.entries(normalArr1);
-    console.info('no error throw');
-} catch (e) {
-    console.info(e);
+  const normalArr1 = Array.from(typedArr);
+  const result = Object.entries(normalArr1);
+  console.info('no error throw');
+} catch(e) {
+  console.info(e);
 }
 // 输出：no error throw
 ```
