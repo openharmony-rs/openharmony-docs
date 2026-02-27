@@ -34,8 +34,8 @@ console.info('res = ' + res);
 
 ``` TypeScript
 console.info(`res:${'abcdef'.match(/(?<=ab(?=c)cd)ef/)}`);
-// 期望输出: res:ef。
-// 实际输出: res:null。
+// 期望输出: res:ef
+// 实际输出: res:null
 ```
 
 规避方案：使用/(?<=abcd)ef/代替/(?<=ab(?=c)cd)ef/。
