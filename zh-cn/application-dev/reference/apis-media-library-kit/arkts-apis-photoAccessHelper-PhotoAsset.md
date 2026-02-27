@@ -275,7 +275,7 @@ close(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 11开始废弃，建议使用[fs.close](../apis-core-file-kit/js-apis-file-fs.md#fsclose-1)替代。
+> 从API version 10开始支持，从API version 11开始废弃，建议使用[fileIo.close](../apis-core-file-kit/js-apis-file-fs.md#fileioclose-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -336,7 +336,7 @@ close(fd: number): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 11开始废弃，建议使用[fs.close](../apis-core-file-kit/js-apis-file-fs.md#fsclose)替代。
+> 从API version 10开始支持，从API version 11开始废弃，建议使用[fileIo.close](../apis-core-file-kit/js-apis-file-fs.md#fileioclose)替代。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -645,7 +645,7 @@ getReadOnlyFd(callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 11开始废弃，建议使用[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen-1)替代。
+> 从API version 10开始支持，从API version 11开始废弃，建议使用[fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen-1)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -708,7 +708,7 @@ getReadOnlyFd(): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 11开始废弃，建议使用[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)替代。
+> 从API version 10开始支持，从API version 11开始废弃，建议使用[fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 

@@ -62,7 +62,7 @@ ArkTS数据类型对应剪贴板类型，详见[ohos.pasteboard](../../reference
 
 ### 接口说明
 
-使用剪贴板getData接口获取到uri类型数据之后，请使用文件管理的[fs.copy](../../reference/apis-core-file-kit/js-apis-file-fs.md#fscopy11)接口获取文件。
+使用剪贴板getData接口获取到uri类型数据之后，请使用文件管理的[fileIo.copy](../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocopy11)接口获取文件。
 
 | 名称 | 说明                                                                                                                                        |
 | -------- |----------------------------------------------------------------------------------------------------------------------------------------|

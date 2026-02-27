@@ -44,7 +44,7 @@
    const documentSaveOptions = new picker.DocumentSaveOptions();
    // 保存文件名（可选）。 默认为空。
    documentSaveOptions.newFileNames = ["DocumentViewPicker01.txt"];
-   //指定保存的文件或者目录的URI（可选）。
+   // 指定保存的文件或者目录的URI（可选）。
    documentSaveOptions.defaultFilePathUri = "file://docs/storage/Users/currentUser/test";
    // 保存文件类型['后缀类型描述|后缀类型'],选择所有文件：'所有文件(*.*)|.*'（可选） ，如果选择项存在多个后缀（最多限制100个过滤后缀），默认选择第一个。如果不传该参数，默认无过滤后缀。
    documentSaveOptions.fileSuffixChoices = ['文档|.txt', '.pdf'];
@@ -79,7 +79,7 @@
    > 2. 快捷保存：
    > 	- 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
 
-4. 待界面从FilePicker返回后，使用[基础文件API的fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
+4. 待界面从FilePicker返回后，使用[基础文件API的fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
 
    ```ts
    if (uris.length > 0) {
@@ -90,7 +90,7 @@
    }
    ```
 
-5. 通过（fd）使用[基础文件API的fs.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#writesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
+5. 通过（fd）使用[基础文件API的fileIo.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileiowritesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
 
    ```ts
    let writeLen: number = fs.writeSync(file.fd, 'hello, world');
@@ -144,7 +144,7 @@
    > 2. 快捷保存：
    > 	- 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
 
-4. 待界面从FilePicker返回后，可以使用[基础文件API的fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
+4. 待界面从FilePicker返回后，可以使用[基础文件API的fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
 
    ```ts
    if (uris.length > 0) {
@@ -155,7 +155,7 @@
    }
    ```
 
-5. 通过（fd）使用[基础文件API的fs.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#writesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
+5. 通过（fd）使用[基础文件API的fileIo.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileiowritesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
 
    ```ts
    let writeLen = fs.writeSync(file.fd, 'hello, world');
