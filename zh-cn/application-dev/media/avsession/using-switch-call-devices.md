@@ -202,8 +202,8 @@
 5. 通话结束后，销毁会话。
 
    <!-- @[destroy_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/Index.ets) -->     
-  
-   ```ts
+   
+   ``` TypeScript
    // 通话结束销毁第一步创建的session。
    this.session?.destroy((err) => {
      if (err) {
