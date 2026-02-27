@@ -2257,7 +2257,7 @@ ArkTS中`this`只能在类的实例方法中使用，不支持在函数和类的
 
 ``` TypeScript
 function foo(i: string) {
-  this.count = i; // 只有在开启noImplicitThis选项时会产生编译时错误。
+  this.count = i; // 只有在开启noImplicitThis选项时会产生编译时错误
 }
 
 class A {
@@ -2266,9 +2266,9 @@ class A {
 }
 
 let a = new A();
-console.info(a.count); // 打印a。
+console.info(a.count); // 打印a
 a.m('b');
-console.info(a.count); // 打印b。
+console.info(a.count); // 打印b
 ```
 
 **ArkTS**
