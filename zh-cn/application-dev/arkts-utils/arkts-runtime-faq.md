@@ -64,8 +64,8 @@ let u = /()/ug;
 u.lastIndex = 1;
 u.exec(L + T + L + T);
 console.info('u.lastIndex = ' + u.lastIndex);
-// 期望输出: u.lastIndex = 0。
-// 实际输出: u.lastIndex = 1。
+// 期望输出: u.lastIndex = 0
+// 实际输出: u.lastIndex = 1
 ```
 
 规避方案：暂无。
