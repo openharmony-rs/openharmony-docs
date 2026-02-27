@@ -96,7 +96,7 @@ type CallState = call.CallState
 | [call.CallState](js-apis-call.md#callstate) | 通话状态码（去电过程仅通知CALL_STATE_OFFHOOK状态）。 |
 
 
-## CCallState
+## CCallState<sup>23+</sup>
 
 type CCallState = call.CCallState
 
@@ -1171,7 +1171,7 @@ onCCallStateChange\(callback?: Callback\<CCallStateInfo\>, options?: ObserverOpt
 ```ts
 import { call } from '@kit.TelephonyKit';
 
-let callback: (data: call.CCallStateInfo) => void = (data: call.CCallStateInfo) => {
+let callback: (data: CCallStateInfo) => void = (data: CCallStateInfo) => {
     console.info("onCCallStateChange, data:" + JSON.stringify(data));
 }
 let options: observer.ObserverOptions = {
@@ -1215,7 +1215,7 @@ offCCallStateChange\(callback?: Callback\<CCallStateInfo\>\): void
 ```ts
 import { call } from '@kit.TelephonyKit';
 
-let callback: (data: call.CCallStateInfo) => void = (data: call.CCallStateInfo) => {
+let callback: (data: CCallStateInfo) => void = (data: CCallStateInfo) => {
     console.info("onCCallStateChange, data:" + JSON.stringify(data));
 }
 
