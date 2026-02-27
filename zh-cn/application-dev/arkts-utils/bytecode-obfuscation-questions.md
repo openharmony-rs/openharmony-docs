@@ -240,7 +240,7 @@ Error message: [Class]get different name for method:&entry/src/main/ets/pages/XX
 <!-- @[export_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/SampleTmsDialog.ets) -->  
 
 ``` TypeScript
-// 代码1。
+// 代码1
 @CustomDialog
 export default struct TmsDialog {
   controller?: CustomDialogController
@@ -250,7 +250,7 @@ export default struct TmsDialog {
   }
 }
 
-// 代码2。
+// 代码2
 @CustomDialog
 struct Index{
   controller?: CustomDialogController
