@@ -622,8 +622,8 @@ export namespace NS {
 
 ``` TypeScript
 // import.ts
-import { NS } from './export';
-// ...
+import { NS } from './ExportNs';
+  // ...
   NS.foo();
 ```
 
