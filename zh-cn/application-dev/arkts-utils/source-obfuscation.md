@@ -50,7 +50,7 @@ ArkGuard支持名称混淆、代码压缩和注释删除的基础混淆功能，
 
 ``` TypeScript
 // 混淆前：
-// example.ts
+// ArkGuardAbility.ts
 class A1 {
   prop1: string = '';
 }
