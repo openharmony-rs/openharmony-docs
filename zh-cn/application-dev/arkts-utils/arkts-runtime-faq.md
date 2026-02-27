@@ -350,24 +350,24 @@ ArkUI状态管理框架会为使用状态变量装饰器（如@State、@Trace、
 
 <!-- @[test_componentV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Local.ets) -->   
 
-```ts
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
-   @Local p: number[] = [0, 1];
-   @Local q: number[] = [2, 3];
-   c: number[][] = [this.p, this.q];
-   d: number[] = [];
+  @Local p: number[] = [0, 1];
+  @Local q: number[] = [2, 3];
+  c: number[][] = [this.p, this.q];
+  d: number[] = [];
 
-   aboutToAppear(): void {
-      this.d = this.c.flatMap(it => it);
-   }
+  aboutToAppear(): void {
+    this.d = this.c.flatMap(it => it);
+  }
 
-   build() {
-      Column() {
-         Text(`${this.d[0]}`); // 预期显示：0; 实际显示：0,1
-      }
-   }
+  build() {
+    Column() {
+      Text(`${this.d[0]}`); // 预期显示：0; 实际显示：0,1
+    }
+  }
 }
 ```
 
