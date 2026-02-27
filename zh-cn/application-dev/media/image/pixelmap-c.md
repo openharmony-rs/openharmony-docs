@@ -250,7 +250,7 @@ Image_ErrorCode ExtractAverageColor(OH_PixelmapNative* pixelmap, AverageColor& a
         double scaleX = (double)SAMPLE_SIZE / width;
         double scaleY = (double)SAMPLE_SIZE / height;
 
-        // 对图片进行缩放
+        // 对图片进行缩放。
         errCode = OH_PixelmapNative_Scale(pixelmap, scaleX, scaleY);
         if (errCode != IMAGE_SUCCESS) {
             OH_LOG_ERROR(LOG_APP, "ExtractAverageColor: Scale failed, errCode: %{public}d", errCode);
