@@ -240,8 +240,8 @@ greeter(t); // 是否允许？
 ``` TypeScript
 var x = { 'name': 'x', 2: '3' };
 
-console.info(x['name']); // x。
-console.info(x[2]); // 3。
+console.info(x['name']); // x
+console.info(x[2]); // 3
 ```
 
 **ArkTS**
