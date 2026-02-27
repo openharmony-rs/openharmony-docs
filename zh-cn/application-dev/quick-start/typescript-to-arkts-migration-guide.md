@@ -3566,13 +3566,13 @@ import { C } from 'lib1'
 
 <!-- @[no_misplaced_imports_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoMisplacedImports.ts) -->   
 
-```typescript
+``` TypeScript
 class C {
   s: string = ''
   n: number = 0
 }
 
-import foo from 'module1'
+import foo from './ExportMod'
 ```
 
 **ArkTS**
