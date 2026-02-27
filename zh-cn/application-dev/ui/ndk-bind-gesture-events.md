@@ -125,8 +125,8 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
     auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
         OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
     // 创建捏合手势
-    // NUMBER_10 = 10
-    auto pinchGesture = gestureApi->createPinchGesture(1, NUMBER_10);
+    // NUMBER_2 = 2，NUMBER_10 = 10
+    auto pinchGesture = gestureApi->createPinchGesture(NUMBER_2, NUMBER_10);
     ```
 
 
@@ -141,8 +141,8 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
     auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
         OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
     // 创建旋转手势
-    // NUMBER_10 = 10
-    auto rotationGesture = gestureApi->createRotationGesture(1, NUMBER_10);
+    // NUMBER_2 = 2，NUMBER_10 = 10
+    auto rotationGesture = gestureApi->createRotationGesture(NUMBER_2, NUMBER_10);
     ```
 
 
@@ -179,6 +179,7 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
 <!-- @[long_press_and_swipe_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/LongPressAndSwipeGesture.h) -->
 
 ``` C
+// LongPressAndSwipeGesture.h
 #include <arkui/native_animate.h>
 #include <arkui/native_gesture.h>
 #include <arkui/native_interface.h>
@@ -188,7 +189,7 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
 #include <hilog/log.h>
 #include "Common.h"
 #include "Function.h"
-// ···
+// ...
 ArkUI_NodeHandle LongPressAndSwipeGesture()
 {
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
@@ -333,6 +334,7 @@ ArkUI_NodeHandle LongPressAndSwipeGesture()
 <!-- @[long_press_and_flick_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/LongPressAndFlickGesture.h) -->
 
 ``` C
+// LongPressAndFlickGesture.h
 #include <arkui/native_animate.h>
 #include <arkui/native_gesture.h>
 #include <arkui/native_interface.h>
@@ -342,7 +344,7 @@ ArkUI_NodeHandle LongPressAndSwipeGesture()
 #include <hilog/log.h>
 #include "Common.h"
 #include "Function.h"
-// ···
+// ...
 
 ArkUI_NodeHandle LongPressAndFlickGesture()
 {
@@ -490,6 +492,7 @@ ArkUI_NodeHandle LongPressAndFlickGesture()
 <!-- @[swipe_and_pinch_exclusive_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/SwipeAndPinchExclusiveGesture.h) -->
 
 ``` C
+// SwipeAndPinchExclusiveGesture.h
 #include <arkui/native_animate.h>
 #include <arkui/native_gesture.h>
 #include <arkui/native_interface.h>
@@ -499,7 +502,7 @@ ArkUI_NodeHandle LongPressAndFlickGesture()
 #include <hilog/log.h>
 #include "Common.h"
 #include "Function.h"
-// ···
+// ...
 
 ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
 {
