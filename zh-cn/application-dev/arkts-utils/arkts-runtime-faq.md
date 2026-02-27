@@ -47,8 +47,8 @@ console.info(`res:${'abcdef'.match(/(?<=ab(?=c)cd)ef/)}`);
 ``` TypeScript
 let res = /\u{10400}/ui.test('\u{10428}');
 console.info('res = ' + res);
-// 期望输出: res = true。
-// 实际输出: res = false。
+// 期望输出: res = true
+// 实际输出: res = false
 ```
 
 规避方案：暂无。
