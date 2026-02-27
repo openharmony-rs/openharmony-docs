@@ -544,23 +544,17 @@ export function add(a: number, b: number): number {
 <!-- @[import_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) --> 
 
 ``` TypeScript
-// 混淆后
-// utils.ts
-export function c1(d1: number, e1: number): number {
-    return d1 + e1;
+// main.ts
+async function loadAndUseAdd() {
+    try {
+        const mathUtils = await import('./ExportUtils');
+        const result = mathUtils.add(2, 3);
+    } catch (error) {
+        console.error('Failure reason:', error);
+    }
 }
 
-// main.ts
-async function i() {
-    try {
-        const a1 = await import("@normalized:N&&&entry/src/main/ets/pages/utils&");
-        const b1 = a1.add(2, 3);
-    }
-    catch (z) {
-        console.error('Failure reason:', z);
-    }
-}
-i();
+loadAndUseAdd();
 ```
 
 ``` TypeScript
