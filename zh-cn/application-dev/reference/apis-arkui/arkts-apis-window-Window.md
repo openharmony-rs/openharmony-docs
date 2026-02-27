@@ -1803,7 +1803,7 @@ try {
 }
 ```
 
-## getWindowAvoidAreaIgnoringVisibility<sup>22+</sup>
+## getWindowAvoidAreaIgnoringVisibility<sup>23+</sup>
 
 getWindowAvoidAreaIgnoringVisibility(type: AvoidAreaType): AvoidArea
 
@@ -4441,7 +4441,7 @@ on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaOptions&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onAvoidAreaChange](#onavoidareachange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAvoidAreaChange](#onavoidareachange23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -4477,7 +4477,7 @@ try {
 }
 ```
 
-## onAvoidAreaChange<sup>22+</sup>
+## onAvoidAreaChange<sup>23+</sup>
 
 onAvoidAreaChange(callback: Callback&lt;AvoidAreaOptions&gt;): void
 
@@ -4520,7 +4520,7 @@ off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaOptions&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offAvoidAreaChange](#offavoidareachange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAvoidAreaChange](#offavoidareachange23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -4564,7 +4564,7 @@ try {
 }
 ```
 
-## offAvoidAreaChange<sup>22+</sup>
+## offAvoidAreaChange<sup>23+</sup>
 
 offAvoidAreaChange(callback?: Callback&lt;AvoidAreaOptions&gt;): void
 
@@ -5721,7 +5721,7 @@ on(type: 'screenshot', callback: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onScreenshot](#onscreenshot22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onScreenshot](#onscreenshot23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -5754,7 +5754,7 @@ try {
 }
 ```
 
-## onScreenshot<sup>22+</sup>
+## onScreenshot<sup>23+</sup>
 
 onScreenshot(callback: Callback&lt;void&gt;): void
 
@@ -5797,7 +5797,7 @@ off(type: 'screenshot', callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offScreenshot](#offscreenshot22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offScreenshot](#offscreenshot23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -5834,7 +5834,7 @@ try {
 }
 ```
 
-## offScreenshot<sup>22+</sup>
+## offScreenshot<sup>23+</sup>
 
 offScreenshot(callback?: Callback&lt;void&gt;): void
 
@@ -6290,7 +6290,7 @@ on(type: 'displayIdChange', callback: Callback&lt;number&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onDisplayIdChange](#ondisplayidchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDisplayIdChange](#ondisplayidchange23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -6325,7 +6325,7 @@ try {
 }
 ```
 
-## onDisplayIdChange<sup>22+</sup>
+## onDisplayIdChange<sup>23+</sup>
 
 onDisplayIdChange(callback: Callback&lt;long&gt;): void
 
@@ -6377,7 +6377,7 @@ off(type: 'displayIdChange', callback?: Callback&lt;number&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offDisplayIdChange](#offdisplayidchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDisplayIdChange](#offdisplayidchange23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -6418,7 +6418,7 @@ try {
 }
 ```
 
-## offDisplayIdChange<sup>22+</sup>
+## offDisplayIdChange<sup>23+</sup>
 
 offDisplayIdChange(callback?: Callback&lt;long&gt;): void
 
@@ -6762,7 +6762,7 @@ on(type: 'systemDensityChange', callback: Callback&lt;number&gt;): void
 
 **ArtTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSystemDensityChange](#onsystemdensitychange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSystemDensityChange](#onsystemdensitychange23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -6802,7 +6802,7 @@ try {
 }
 ```
 
-## onSystemDensityChange<sup>22+</sup>
+## onSystemDensityChange<sup>23+</sup>
 
 onSystemDensityChange(callback: Callback&lt;double&gt;): void
 
@@ -6858,7 +6858,7 @@ off(type: 'systemDensityChange', callback?: Callback&lt;number&gt;): void
 
 **ArtTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offSystemDensityChange](#offsystemdensitychange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSystemDensityChange](#offsystemdensitychange23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -6899,7 +6899,7 @@ try {
 }
 ```
 
-## offSystemDensityChange<sup>22+</sup>
+## offSystemDensityChange<sup>23+</sup>
 
 offSystemDensityChange(callback?: Callback&lt;double&gt;): void
 
