@@ -215,7 +215,7 @@ c;
 <!-- @[lexical_environments_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ts) --> 
 
 ``` TypeScript
-// index.ts
+// Index.ts
 function foo(): void {
   let a: number = 1;
   function bar(): number {
