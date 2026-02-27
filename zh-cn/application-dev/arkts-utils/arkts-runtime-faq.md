@@ -377,9 +377,10 @@ struct Index {
 
 <!-- @[test_afterArrayFlatMapCompliance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
 
-```ts
+``` TypeScript
 // 使用规避方案前
 let res = arr3.flatMap(x => x);
+// ...
 // 使用规避方案后
 let res = arr3.map(x => x).flat();
 ```
