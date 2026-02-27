@@ -65,13 +65,13 @@
 
 1. 导入模块。
 
-  <!-- @[reminder_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) -->
-
-  ``` TypeScript
-  import { notificationManager } from '@kit.NotificationKit';
-  import { reminderAgentManager } from '@kit.BackgroundTasksKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  ```
+    <!-- @[reminder_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) -->
+    
+    ``` TypeScript
+    import { notificationManager } from '@kit.NotificationKit';
+    import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    ```
 
 2. 定义目标提醒代理。开发者根据实际需要，选择定义如下类型的提醒。
 
