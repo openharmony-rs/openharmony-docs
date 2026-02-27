@@ -95,31 +95,31 @@
    或者创建AVCastPickerHelper组件。
 
    <!-- @[create_castPickerHelper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AVCastPickerHelper.ets) -->   
-
-   ```ts
+   
+   ``` TypeScript
    import { common } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { avSession } from '@kit.AVSessionKit';
-
+   
    class MyPage {
-      private avCastPicker: avSession.AVCastPickerHelper;
-
-      constructor(context: common.Context) {
-        this.avCastPicker = new avSession.AVCastPickerHelper(context);
-      }
-
-      async selectCastDevice() {
-        const avCastPickerOptions: avSession.AVCastPickerOptions = {
-          sessionType: 'video',
-        };
-
-        this.avCastPicker.select(avCastPickerOptions).then(() => {
-          console.info('select successfully');
-        }).catch((err: BusinessError) => {
-          console.error('AVCastPicker.select failed with err: ${err.code}, ${err.message}');
-        });
-      }
-    }
+     private avCastPicker: avSession.AVCastPickerHelper;
+   
+     constructor(context: common.UIAbilityContext) {
+       this.avCastPicker = new avSession.AVCastPickerHelper(context);
+     }
+   
+     async selectCastDevice() {
+       const avCastPickerOptions: avSession.AVCastPickerOptions = {
+         sessionType: 'video',
+       };
+   
+       this.avCastPicker.select(avCastPickerOptions).then(() => {
+         console.info('select successfully');
+       }).catch((err: BusinessError) => {
+         console.error('AVCastPicker.select failed with err: ${err.code}, ${err.message}');
+       });
+     }
+   }
    ```
 
 3. 创建VOICE_COMMUNICATION类型的AudioRenderer，并开始播放。具体通话音频播放等实现，请参考[开发音频通话功能](../audio/audio-call-development.md)。
