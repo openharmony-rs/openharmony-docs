@@ -479,7 +479,7 @@ getVolumeById(volumeId: string, callback: AsyncCallback&lt;Volume&gt;): void
 
 setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
 
-异步修改指定卷设备描述，使用Promise异步回调。
+异步修改指定卷设备描述，使用Promise异步回调。不支持指定ISO9660和UDF两种文件系统类型的卷设备描述。
 
 **系统接口**：此接口为系统接口。
 
@@ -532,7 +532,7 @@ setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
 
 setVolumeDescription(uuid: string, description: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步修改指定卷设备描述，使用callback异步回调。
+异步修改指定卷设备描述，使用callback异步回调。不支持指定ISO9660和UDF两种文件系统类型的卷设备描述。
 
 **系统接口**：此接口为系统接口。
 
@@ -677,7 +677,7 @@ format(volumeId: string, fsType: string, callback: AsyncCallback&lt;void&gt;): v
 
 partition(diskId: string, type: number): Promise&lt;void&gt;
 
-异步对磁盘设备进行分区，使用Promise异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。不支持光盘设备的格式化。
+异步对磁盘设备进行分区，使用Promise异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。不支持对光盘进行分区。
 
 **系统接口**：此接口为系统接口。
 
@@ -728,7 +728,7 @@ partition(diskId: string, type: number): Promise&lt;void&gt;
 
 partition(diskId: string, type: number, callback: AsyncCallback&lt;void&gt;): void
 
-异步对磁盘进行分区，使用callback异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。不支持光盘设备的格式化。
+异步对磁盘进行分区，使用callback异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。不支持对光盘进行分区。
 
 **系统接口**：此接口为系统接口。
 
