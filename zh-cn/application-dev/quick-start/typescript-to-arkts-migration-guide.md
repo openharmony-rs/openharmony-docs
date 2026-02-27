@@ -1197,7 +1197,7 @@ let o6: A = {};
 ``` TypeScript
 abstract class A {}
 class C extends A {}
-let o6: C = {}; // 或 let o6: C = new C()。
+let o6: C = {}; // 或 let o6: C = new C()
 ```
 
 **例子5**
