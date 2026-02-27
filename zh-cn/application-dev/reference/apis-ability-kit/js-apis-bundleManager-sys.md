@@ -4759,7 +4759,7 @@ let moduleName = 'entry';
 let profileType = bundleManager.ProfileType.INTENT_PROFILE;
 
 try {
-  let data = bundleManager.getJsonProfile(profileType, bundleName, moduleName)
+  let data = bundleManager.getJsonProfile(profileType, bundleName, moduleName);
   hilog.info(0x0000, 'testTag', 'getJsonProfile successfully. Data: %{public}s', data);
 } catch (err) {
   let message = (err as BusinessError).message;
