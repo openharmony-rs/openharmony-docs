@@ -3530,14 +3530,11 @@ import { C } from './ExportMod'
 
 <!-- @[export_classC](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExportMod.ets) -->   
 
-```typescript
-// lib1.ets
+``` TypeScript
+// ExportMod.ets
 export class C {
   // ...
 }
-
-// lib2.ets
-import { C } from 'lib1'
 ```
 
 <!-- @[no_tsDeps](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoTsDeps.ets) -->
