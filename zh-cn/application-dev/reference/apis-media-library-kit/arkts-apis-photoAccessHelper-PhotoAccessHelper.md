@@ -1082,7 +1082,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
   try {	 
     // 获取需要保存到媒体库的位于应用沙箱的图片/视频uri。	 
-    let srcFileUri: Array<string> = [	 
+    let srcFileUris: Array<string> = [	 
       'file://fileUriDemo1' // 实际场景请使用真实的uri。	 
     ];	 
     let photoCreationConfigs: photoAccessHelper.CreationSetting = {	 
@@ -1092,7 +1092,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     }	 
     let isImageFullyDisplayed: boolean = true	 
     let desFileUri: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUris, photoCreationConfigs, isImageFullyDisplayed); 
-    console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUris); 
+    console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUri); 
   } catch (err) { 
     console.error('showSingleAssetCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message); 
   } 
