@@ -331,10 +331,10 @@ export { addNum } from '../utils/Calc';
 <!-- @[call_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
-// entry模块。
+// entry模块
 import { addNum } from 'sharedlibrary';
-// ...
-  let sun = addNum(1, 2);
+
+addNum(1, 2);
 ```
 
 ```ts
