@@ -1460,34 +1460,49 @@ isSystemAvoidAreaEnabled(): boolean
 **示例：**
 
 ```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
-let windowClass: window.Window | undefined = undefined;
-let config: window.Configuration = {
-  name: "test",
-  windowType: window.WindowType.TYPE_DIALOG,
-  decorEnabled: true,
-  ctx: this.context
-};
-try {
-  window.createWindow(config, (err: BusinessError, data) => {
-    const errCode: number = err.code;
-    if (errCode) {
-      console.error(`Failed to create the system window. Cause code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    windowClass = data;
-    windowClass.setUIContent("pages/Test");
-    let enabled = true;
-    let promise = windowClass.setSystemAvoidAreaEnabled(enabled);
-    promise.then(() => {
-      let enable = windowClass?.isSystemAvoidAreaEnabled();
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to obtain whether the system window can get avoid area. Cause code: ${err.code}, message: ${err.message}`);
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      let windowClass: window.Window | undefined = undefined;
+      let config: window.Configuration = {
+        name: "test",
+        windowType: window.WindowType.TYPE_DIALOG,
+        decorEnabled: true,
+        ctx: this.context
+      };
+      try {
+        window.createWindow(config, (err: BusinessError, data) => {
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(`Failed to create the system window. Cause code: ${err.code}, message: ${err.message}`);
+            return;
+          }
+          windowClass = data;
+          windowClass.setUIContent("pages/Test");
+          let promise = windowClass.setSystemAvoidAreaEnabled(true);
+          promise.then(() => {
+            let enabled = windowClass?.isSystemAvoidAreaEnabled();
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to obtain the system window avoid area enable. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        });
+      } catch (exception) {
+        console.error(`Failed to create the system window. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
     });
-  });
-} catch (exception) {
-  console.error(`Failed to create the system window. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
 }
 ```
 
