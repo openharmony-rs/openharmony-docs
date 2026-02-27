@@ -272,9 +272,9 @@ export const addNum: (a: number, b: number) => number;
 
 ``` TypeScript
 // example.ets
-// 混淆前。
+// 混淆前
 import testNapi from 'libentry.so';
-// ...
+  // ...
   let sun = testNapi.addNum(1, 2);
 ```
 
