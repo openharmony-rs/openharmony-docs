@@ -1491,13 +1491,11 @@ export default class EntryAbility extends UIAbility {
           }
           windowClass = data;
           windowClass.setUIContent("pages/Test");
-          let enabled = true;
-          let promise = windowClass.setSystemAvoidAreaEnabled(enabled);
+          let promise = windowClass.setSystemAvoidAreaEnabled(true);
           promise.then(() => {
-            let type = window.AvoidAreaType.TYPE_SYSTEM;
-            let avoidArea = windowClass?.getWindowAvoidArea(type);
+            let enabled = windowClass?.isSystemAvoidAreaEnabled();
           }).catch((err: BusinessError) => {
-            console.error(`Failed to obtain the system window avoid area. Cause code: ${err.code}, message: ${err.message}`);
+            console.error(`Failed to obtain the system window avoid area enable. Cause code: ${err.code}, message: ${err.message}`);
           });
         });
       } catch (exception) {
