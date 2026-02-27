@@ -1435,7 +1435,7 @@ file
   
   ``` TypeScript
   // main.ts
-  const moduleName = './file2'; // moduleName对应的路径名file2应该被保留。
+  const moduleName = './DynamicImportFile'; // moduleName对应的路径名DynamicImportFile应该被保留
   async function func2() {
     const modules = await import(moduleName);
     const result = modules.foo();
