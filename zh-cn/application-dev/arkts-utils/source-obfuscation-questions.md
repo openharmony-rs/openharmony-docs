@@ -202,15 +202,15 @@ export function add(a: number, b: number): number {
 async function loadAndUseAdd() {
   let result: number = 0;
   try {
-    const mathUtils = await import('./utils');
+    const mathUtils = await import('./ExportUtils');
     result = mathUtils.add(2, 3);
     console.info(`result = ${result}`);
   } catch (error) {
     console.error('Failure reason:', error);
   }
 }
-// ...
-          loadAndUseAdd();
+
+loadAndUseAdd();
 ```
 
 ```ts
