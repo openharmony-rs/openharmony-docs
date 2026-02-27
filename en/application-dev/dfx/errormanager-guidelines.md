@@ -33,7 +33,9 @@ The errorManager APIs are provided by [@ohos.app.ability.errorManager(Error Mana
 | on(type: 'freeze', observer: FreezeObserver): void | Registers an observer for the main thread freeze event of the application. This API can be called only in the main thread. A new observer will overwrite the previous one.|
 | off(type: 'freeze', observer?: FreezeObserver): void | Unregisters an observer for the message processing timeouts of the main thread in FreezeObserver mode.<br>Note: This API is supported since API version 18.|
 | setDefaultErrorHandler(defaultHandler?: ErrorHandler): ErrorHandler | Sets a default error handler. This API can be called only in the main thread. When the **JS_CRASH** exception occurs, chain callback is supported and the return value is the last registered handler.<br>Note: This API is supported since API version 21.|
+
 When an asynchronous callback is used, the return value can be processed directly in the callback.
+
 When a promise is used, the return value can also be processed in the promise. For details about the result codes, see [Result Codes for Unregistering an Observer](#result-codes-for-unregistering-an-observer).
 
 **ErrorObserver APIs**
@@ -63,7 +65,7 @@ When a promise is used, the return value can also be processed in the promise. F
 >
 > You are advised to add a synchronous exit operation at the end of the exception callback to prevent multiple exception callbacks.
 
-### Listening for a Single Thread
+### Single Thread Listening
 
  Import the header files.
 <!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
@@ -95,7 +97,7 @@ let observer: errorManager.ErrorObserver = {
 <!-- @[onclick_error_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
-Button('Listening for a single thread').onClick(()=>{
+Button('Single thread listening').onClick(()=>{
   let observerId = -1;
   try {
     observerId = errorManager.on('error', observer);
@@ -110,7 +112,7 @@ Button('Listening for a single thread').onClick(()=>{
 ```
 
 
-### Listening for Process Exceptions
+### Process Listening Exception
 
  Import the header files.
 <!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
@@ -137,7 +139,7 @@ function errorFunc(observer: errorManager.GlobalError) {
 <!-- @[onclick_error_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
-Button('Listening for process exceptions').onClick(()=>{
+Button('Process listening exception').onClick(()=>{
   try {
     errorManager.on('globalErrorOccurred', errorFunc);
   } catch (paramError) {
@@ -150,7 +152,7 @@ Button('Listening for process exceptions').onClick(()=>{
 }).position({x:50, y:100});
 ```
 
-### Listening for Process Promise Exceptions
+### Process Promise Exception
 
  Import the header files.
 <!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
@@ -181,7 +183,7 @@ async function promiseFuncOne() {
 <!-- @[onclick_promise_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
-Button('Listening for process promise exceptions').onClick(()=>{
+Button('Process promise exception').onClick(()=>{
   try {
     errorManager.on('globalUnhandledRejectionDetected', promiseFunc);
   } catch (paramError) {
@@ -198,7 +200,7 @@ Button('Listening for process promise exceptions').onClick(()=>{
 }).position({x:50, y:200});
 ```
 
-### Listening for Main Thread Freeze Exceptions
+### Main Thread Freeze Exception
 
  Import the header files.
 <!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
@@ -221,7 +223,7 @@ function freezeCallback() {
 <!-- @[onclick_freeze_call_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
-Button('Listening for main thread freeze exceptions').onClick(()=>{
+Button('Main thread freeze exception').onClick(()=>{
   try {
     errorManager.on('freeze', freezeCallback);
   } catch (paramError) {
@@ -236,7 +238,7 @@ Button('Listening for main thread freeze exceptions').onClick(()=>{
 }).position({x:50, y:300});
 ```
 
-### Listening for Main Thread Timeouts
+### Main Thread Message Processing Timeout
 
  Import the header files.
 <!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
@@ -261,7 +263,7 @@ let loopObserver: errorManager.LoopObserver = {
 <!-- @[onclick_loop_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
-Button('Listening for main thread timeouts').onClick(()=>{
+Button('Main thread message processing timeout').onClick(()=>{
   try {
     errorManager.on('loopObserver', 1, loopObserver);
   } catch (paramError) {
@@ -276,7 +278,7 @@ Button('Listening for main thread timeouts').onClick(()=>{
 }).position({x:50, y:150});
 ```
 
-### Listening for Process Promise Exceptions
+### Process Promise Observer Registration Rejected
 
  Import the header files.
 <!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
@@ -314,7 +316,7 @@ async function promiseFuncTwo() {
 <!-- @[onclick_unhandled_rejection_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
-Button('Listening for process promise exceptions').onClick(()=>{
+Button('Process promise observer registration rejected').onClick(()=>{
   try {
     errorManager.on('unhandledRejection', unhandledrejectionObserver);
   } catch (paramError) {

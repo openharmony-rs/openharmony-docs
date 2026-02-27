@@ -231,9 +231,9 @@ class CallManager {
       console.info('setCallMetadata successfully');
     } catch (err) {
       if (err) {
-        console.error('setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}');
+        console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
       } else {
-        console.error('setCallMetadata Error: ${err}')
+        console.error(`setCallMetadata Error: ${err}`)
       }
     }
   }
@@ -302,7 +302,7 @@ class CallManager {
       };
       this.currentAVSession?.setCallMetadata(calldata, (err: BusinessError) => {
         if (err) {
-          console.error('setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}');
+          console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
         } else {
           console.info("setCallMetadata successfully");
         }

@@ -1,4 +1,10 @@
 # Class (PhotoViewPicker)
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @xuchangda-->
+<!--Designer: @guxinggang-->
+<!--Tester: @wangbeibei-->
+<!--Adviser: @w_Machine_cc-->
 
 PhotoViewPicker provides APIs for the user to select images and videos. Before using the APIs of PhotoViewPicker, you need to create a PhotoViewPicker instance.
 
@@ -149,7 +155,7 @@ Starts a **photoPicker** page for the user to select one or more images or video
 
 **Error codes**
 
- For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md), and [Media Library Error Codes](errorcode-medialibrary.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md), and [Media Library Error Codes](errorcode-medialibrary.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |

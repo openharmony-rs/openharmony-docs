@@ -139,7 +139,7 @@ virtualScroll(virtualScrollOptions?: VirtualScrollOptions)
 
 | 参数名 | 类型   | 必填 | 说明  |
 | ------ | ---------- | -------- | -------- |
-| virtualScrollOptions  | [VirtualScrollOptions](#virtualscrolloptions)  | 否 | 虚拟滚动配置项。 |
+| virtualScrollOptions  | [VirtualScrollOptions](#virtualscrolloptions)  | 否 | 虚拟滚动配置项。<br/>默认值为undefined。 |
 
 **示例：**
 ```ts
