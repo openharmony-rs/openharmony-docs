@@ -3463,7 +3463,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | 参数名 | 类型   | 必填 | 说明                                             |
 | ------ | ------ | ---- | ------------------------------------------------ |
 | pLen   | number | 是   | 用于指定DH公共密钥参数中素数P的长度，单位为bit。 |
-| skLen  | number | 否   | 用于指定DH公共密钥参数中私钥的长度，单位为bit。  |
+| skLen  | number | 否   | 用于指定DH公共密钥参数中私钥的长度，单位为bit。默认值为0。  |
 
 **返回值：**
 
