@@ -500,7 +500,7 @@ const person: MyInfo = {
 <!-- @[export_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/ExportCompositeInterface.ts) -->
 
 ``` TypeScript
-// file1.ts
+// ExportCompositeInterface.ts
 export interface AddressType {
   city1: string
 }
