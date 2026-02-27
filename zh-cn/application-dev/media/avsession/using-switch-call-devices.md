@@ -222,17 +222,42 @@
 4. （可选）如果应用想知道设备切换情况，可以监听当前发声设备切换回调。
 
    <!-- @[device_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AudioRenderer.ets) -->   
-
-   ```ts
+   
+   ``` TypeScript
    import { audio } from '@kit.AudioKit';
-
-   let audioManager = audio.getAudioManager(); // 先创建audiomanager。
-   let audioRoutingManager = audioManager.getRoutingManager(); // 再调用AudioManager的方法创建AudioRoutingManager实例。
-
-   // 可选监听当前发声设备切换回调。
-   audioRoutingManager.on('preferOutputDeviceChangeForRendererInfo', this.audioRendererInfo, (desc: audio.AudioDeviceDescriptors) => {
-     console.info(`device change To : ${desc[0].deviceType}`); // 设备类型。
-   });
+   // ...
+   export default class AudioRenderer {
+     // ...
+     private audioManager: audio.AudioManager | undefined = undefined;
+     private audioRoutingManager: audio.AudioRoutingManager | undefined = undefined;
+     private audioRendererInfo: audio.AudioRendererInfo = {
+       // 需使用通话场景相应的参数。
+       usage: audio.StreamUsage.STREAM_USAGE_VIDEO_COMMUNICATION, // 音频流使用类型：VOIP视频通话，默认为扬声器。
+       rendererFlags: 0 // 音频渲染器标志：默认为0即可。
+     }
+     private  audioRendererOption: audio.AudioRendererOptions = {
+       streamInfo: this.audioStreamInfo,
+       rendererInfo: this.audioRendererInfo
+     };
+   
+     async observerDevices() {
+       this.audioManager = audio.getAudioManager(); // 先创建audiomanager。
+       if (!this.audioManager) {
+         console.error('get audioManager failed');
+         return;
+       }
+       // 再调用AudioManager的方法创建AudioRoutingManager实例。
+       this.audioRoutingManager = this.audioManager.getRoutingManager();
+       if(!this.audioRoutingManager) {
+         return;
+       }
+       // 可选监听当前发声设备切换回调。
+       this.audioRoutingManager.on('preferOutputDeviceChangeForRendererInfo', this.audioRendererInfo, (desc: audio.AudioDeviceDescriptors) => {
+         console.log(`device change to: ${desc[0].deviceType}`); // 设备类型。
+       });
+     }
+     // ...
+   }
    ```
 
 5. 通话结束后，销毁会话。
