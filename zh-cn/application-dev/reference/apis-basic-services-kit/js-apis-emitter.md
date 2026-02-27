@@ -409,7 +409,7 @@ emit(event: InnerEvent, data?: EventData): void
 | 参数名 | 类型                      | 必填 | 说明           |
 | ------ | ------------------------- | ---- | ------------- |
 | event  | [InnerEvent](#innerevent) | 是   | 发送的事件，其中[EventPriority](#eventpriority)用于指定事件被发送的优先级。 |
-| data   | [EventData](#eventdata)   | 否   | 事件携带的数据。 |
+| data   | [EventData](#eventdata)   | 否   | 事件携带的数据，默认为空。 |
 
 **示例：**
 
@@ -448,7 +448,7 @@ emit(eventId: string, data?: EventData): void
 | 参数名  | 类型                    | 必填 | 说明             |
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | 是   | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。   |
-| data    | [EventData](#eventdata) | 否   | 事件携带的数据。 |
+| data    | [EventData](#eventdata) | 否   | 事件携带的数据，默认为空。 |
 
 **示例：**
 
@@ -482,7 +482,7 @@ emit<T\>(eventId: string, data?: GenericEventData<T\>): void
 | 参数名  | 类型                    | 必填 | 说明             |
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | 是   | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。   |
-| data    | [GenericEventData<T\>](#genericeventdatat12) | 否   | 事件携带的数据。 |
+| data    | [GenericEventData<T\>](#genericeventdatat12) | 否   | 事件携带的数据，默认为空。 |
 
 **示例：**
 
@@ -524,7 +524,7 @@ emit(eventId: string, options: Options, data?: EventData): void
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | 是   | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。   |
 | options | [Options](#options11)   | 是   | 事件优先级。     |
-| data    | [EventData](#eventdata) | 否   | 事件携带的数据。 |
+| data    | [EventData](#eventdata) | 否   | 事件携带的数据，默认为空。 |
 
 **示例：**
 
@@ -563,7 +563,7 @@ emit<T\>(eventId: string, options: Options, data?: GenericEventData<T\>): void
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | 是   | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。   |
 | options | [Options](#options11)   | 是   | 事件优先级。     |
-| data    | [GenericEventData<T\>](#genericeventdatat12) | 否   | 事件携带的数据。 |
+| data    | [GenericEventData<T\>](#genericeventdatat12) | 否   | 事件携带的数据，默认为空。 |
 
 **示例：**
 
@@ -615,7 +615,7 @@ getListenerCount(eventId: number | string): number
 **示例：**
 
 ```ts
-let count = emitter.getListenerCount("eventId");
+let count: number = emitter.getListenerCount("eventId");
 ```
 
 ## EventPriority
@@ -985,7 +985,7 @@ emit(eventId: string, data?: EventData): void
 | 参数名  | 类型                    | 必填 | 说明             |
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | 是   | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。   |
-| data    | [EventData](#eventdata) | 否   | 事件携带的数据。 |
+| data    | [EventData](#eventdata) | 否   | 事件携带的数据，默认为空。|
 
 **示例：**
 
@@ -1020,7 +1020,7 @@ emit<T\>(eventId: string, data?: GenericEventData<T\>): void
 | 参数名  | 类型                    | 必填 | 说明             |
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | 是   | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。 |
-| data    | [GenericEventData<T\>](#genericeventdatat12) | 否   | 事件携带的数据。 |
+| data    | [GenericEventData<T\>](#genericeventdatat12) | 否   | 事件携带的数据，默认为空。 |
 
 **示例：**
 
@@ -1065,7 +1065,7 @@ emit(eventId: string, options: Options, data?: EventData): void
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | 是   | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。   |
 | options | [Options](#options11)   | 是   | 事件优先级。     |
-| data    | [EventData](#eventdata) | 否   | 事件携带的数据。 |
+| data    | [EventData](#eventdata) | 否   | 事件携带的数据，默认为空。 |
 
 **示例：**
 
@@ -1105,7 +1105,7 @@ emit<T\>(eventId: string, options: Options, data?: GenericEventData<T\>): void
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | 是   | 发送的事件ID。取值为长度不超过10240字节的自定义字符串，且不可为空字符。   |
 | options | [Options](#options11)   | 是   | 事件优先级。     |
-| data    | [GenericEventData<T\>](#genericeventdatat12) | 否   | 事件携带的数据。 |
+| data    | [GenericEventData<T\>](#genericeventdatat12) | 否   | 事件携带的数据，默认为空。 |
 
 **示例：**
 

@@ -39,7 +39,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
 
    BackupExtensionAbility配置文件示例：
 
-   ```json
+   ```json5
    {
        "extensionAbilities": [
            {
@@ -204,42 +204,44 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
 
 
 **字段说明：**
+
 1. **有关fullBackupOnly字段的说明**
 
-    - 当fullBackupOnly为false时，恢复数据会以 **/** 为根目录解压数据，同路径下的同名文件会被覆盖。
-    - 当fullBackupOnly为true时，恢复数据会以临时目录为根目录解压数据，开发者需要在OnRestore/OnRestoreEx内自行实现恢复数据的逻辑，进行最终的恢复。
+   - 当fullBackupOnly为false时，恢复数据会以 **/** 为根目录解压数据，同路径下的同名文件会被覆盖。
+   - 当fullBackupOnly为true时，恢复数据会以临时目录为根目录解压数据，开发者需要在OnRestore/OnRestoreEx内自行实现恢复数据的逻辑，进行最终的恢复。
 
-    开发者可根据自身的业务场景，选择对应的恢复数据方式。
+   开发者可根据自身的业务场景，选择对应的恢复数据方式。
 
    **示例：**
-假设应用的数据备份路径为：**data/storage/el2/base/files/A/** 。那么在恢复时：
-    - 如果配置了fullBackupOnly为false，数据会被直接解压到：**/data/storage/el2/base/files/A/** 目录下；
-    - 如果配置了fullBackupOnly为true，数据则会被解压到：**临时路径backupDir + /restore/data/storage/el2/base/files/A/** 目录下。
+
+   假设应用的数据备份路径为：**data/storage/el2/base/files/A/** 。那么在恢复时：
+   - 如果配置了fullBackupOnly为false，数据会被直接解压到：**/data/storage/el2/base/files/A/** 目录下；
+   - 如果配置了fullBackupOnly为true，数据则会被解压到：**临时路径backupDir + /restore/data/storage/el2/base/files/A/** 目录下。
 
 2. **includes支持的路径清单列表如下：**
 
-    ```json
-    {
-        "includes": [
-            "data/storage/el1/database/",
-            "data/storage/el1/base/files/",
-            "data/storage/el1/base/preferences/",
-            "data/storage/el1/base/haps/*/files/",
-            "data/storage/el1/base/haps/*/preferences/",
-            "data/storage/el2/database/",
-            "data/storage/el2/base/files/",
-            "data/storage/el2/base/preferences/",
-            "data/storage/el2/base/haps/*/files/",
-            "data/storage/el2/base/haps/*/preferences/",
-            "data/storage/el2/distributedfiles/",
-            "data/storage/el5/database/",
-            "data/storage/el5/base/files/",
-            "data/storage/el5/base/preferences/",
-            "data/storage/el5/base/haps/*/files/",
-            "data/storage/el5/base/haps/*/preferences/"
-        ]
-    }
-    ```
+   ```json
+   {
+       "includes": [
+           "data/storage/el1/database/",
+           "data/storage/el1/base/files/",
+           "data/storage/el1/base/preferences/",
+           "data/storage/el1/base/haps/*/files/",
+           "data/storage/el1/base/haps/*/preferences/",
+           "data/storage/el2/database/",
+           "data/storage/el2/base/files/",
+           "data/storage/el2/base/preferences/",
+           "data/storage/el2/base/haps/*/files/",
+           "data/storage/el2/base/haps/*/preferences/",
+           "data/storage/el2/distributedfiles/",
+           "data/storage/el5/database/",
+           "data/storage/el5/base/files/",
+           "data/storage/el5/base/preferences/",
+           "data/storage/el5/base/haps/*/files/",
+           "data/storage/el5/base/haps/*/preferences/"
+       ]
+   }
+   ```
 
 ## 相关实例
 

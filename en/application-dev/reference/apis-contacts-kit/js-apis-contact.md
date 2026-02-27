@@ -4416,7 +4416,7 @@ Adds contacts in batches. This API uses a promise to return the result.
 | Name | Type               | Mandatory| Description                                                        |
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
 | context | Context             | Yes  | Application context. For the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
-| contacts | Array&lt;[Contact]&gt;(#contact) | Yes  | Contact information array.                                                |
+| contacts | Array&lt;[Contact](#contact)&gt; | Yes  | Contact information array.                                                |
 
 **Return Value**
 
@@ -4432,7 +4432,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 16700001      | General error. |
-| 16700002      | Invalid Parameter value. |
+| 16700002      | Invalid parameter value. |
 
 **Example**
 

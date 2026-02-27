@@ -198,7 +198,7 @@ Enables listening for the input method binding event. This API uses an asynchron
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 23. You are advised to use [on('inputStart')](#oninputstart9) instead.
+> This API is supported since API version 8 and deprecated since API version 23. You are advised to use [InputMethodAbility#on](#oninputstart9) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -228,7 +228,7 @@ Disables listening for the input method binding event.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 23. You are advised to use [off('inputStart')](#offinputstart9) instead.
+> This API is supported since API version 8 and deprecated since API version 23. You are advised to use [InputMethodAbility#off](#offinputstart9) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -257,7 +257,7 @@ Enables listening for a keyboard visibility event. This API uses an asynchronous
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 23. You are advised to use [on('keyboardShow'|'keyboardHide')](#onkeyboardshowkeyboardhide9) instead.
+> This API is supported since API version 8 and deprecated since API version 23. You are advised to use [InputMethodAbility#on](#onkeyboardshowkeyboardhide9) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -287,7 +287,7 @@ Disables listening for a keyboard visibility event. This API uses an asynchronou
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 23. You are advised to use [off('keyboardShow'|'keyboardHide')](#offkeyboardshowkeyboardhide9) instead.
+> This API is supported since API version 8 and deprecated since API version 23. You are advised to use [InputMethodAbility#off](#offkeyboardshowkeyboardhide9) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -4592,7 +4592,7 @@ Represents the attributes of the edit box.
 | enterKeyType | number   | Yes  | No  | Function attributes of the edit box. For details, see [function key definitions in constants](#constants).|
 | inputPattern | number   | Yes  | No  | Text attribute of the edit box. For details, see [edit box definitions in constants](#constants).|
 | isTextPreviewSupported<sup>12+</sup> | boolean | No| No| Whether text preview is supported.<br>- **true**: Supported.<br>- **false**: Unsupported.|
-| bundleName<sup>14+</sup> | string | Yes| Yes| Name of the application package to which the edit box belongs. The value may be **""** When this attribute is used, the scenario where the value is **""** must be considered.|
+| bundleName<sup>14+</sup> | string | Yes| Yes| Name of the application bundle to which the edit box belongs. The value may be **""** When this attribute is used, the scenario where the value is **""** must be considered.|
 | immersiveMode<sup>15+</sup> | [ImmersiveMode](#immersivemode15) | Yes  | Yes  | Immersive mode of the input method.|
 | windowId<sup>18+</sup> | number | Yes| Yes| ID of the window where the edit box is located.|
 | displayId<sup>18+</sup> | number | Yes  | Yes  | Screen ID of the window corresponding to the edit box. If window ID is not set, the screen ID of the focused window is used.|

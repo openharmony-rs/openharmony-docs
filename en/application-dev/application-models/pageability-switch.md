@@ -69,7 +69,7 @@ The PageAbility component in the [FA model](ability-terminology.md#fa-model) cor
         }
         ```
     
-    2.Configure the page to load in the **resources/base/profile/main_pages.json** file.
+    2. Configure the page to load in the **resources/base/profile/main_pages.json** file.
         ```json
         {
           "src": [

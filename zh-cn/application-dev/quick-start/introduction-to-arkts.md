@@ -114,12 +114,12 @@ function factorial(n: number): number {
   factorial(n4) //  9.33262154439441e+157。
 ```
 
-`number`类型在表示大整数（即超过-9007199254740991~9007199254740991）时会造成精度丢失。在开发时可以按需使用`BigInt`类型来确保精度：
+`number`类型在表示大整数（即超过-9007199254740991~9007199254740991）时会造成精度丢失。在开发时可以按需使用`bigint`类型来确保精度：
 
 <!-- @[big_int_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->  
 
 ``` TypeScript
-let bigInt: BigInt = BigInt('999999999999999999999999999999999999999999999999999999999999');
+let bigInt: bigint = 999999999999999999999999999999999999999999999999999999999999n;
 console.info('bigInt:' + bigInt.toString());
 ```
 
@@ -1523,7 +1523,7 @@ let map: Record<string, number> = {
   map['John']; // 25
 ```
 
-类型`K`可以是字符串类型或数值类型(不包括BigInt)，而`V`可以是任何类型。
+类型`K`可以是字符串类型或数值类型(不包括bigint)，而`V`可以是任何类型。
 
 <!-- @[record_type_complex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
 
@@ -2249,7 +2249,7 @@ class MyClass1 {
 >**说明：**
 >
 > - 如果使用其他类型用作注解字段的类型，则会发生编译错误。
-> - 注解字段类型不支持BigInt。
+> - 注解字段类型不支持bigint。
 
 注解字段的默认值必须使用常量表达式来指定。<br>常量表达式的场景如下所示：
 * 数字字面量

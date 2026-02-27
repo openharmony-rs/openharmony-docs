@@ -162,9 +162,9 @@ After the application code calls the **setWebDebuggingAccess** API to enable web
 
 However, Chrome cannot directly access the domain socket on the device. Therefore, the domain socket on the device needs to be forwarded to the PC.
 
-You are advised to [automatically map WebView debugging links](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-run-debug-configurations#section48387420516).
+<!--RP1-->
+<!--RP1End-->
 
-If the DevEco Studio version is earlier than the required version, perform the following steps:
 1. Run the following command in hdc shell to obtain the domain socket created by ArkWeb on the device. 
    ```shell
    cat /proc/net/unix | grep devtools

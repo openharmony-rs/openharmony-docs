@@ -54,7 +54,7 @@ AppStorageV2支持应用的[主线程](../../application-models/thread-model-sta
 
 ## 使用限制
 
-1、只支持class类型。
+1、只支持class类型，否则会抛出运行时报错，从API version 23开始，将返回错误码[140103](../../reference/apis-arkui/errorcode-stateManagement.md#140103-appstoragev2和persistencev2使用不支持的数据类型)。
 
 2、需要配合UI使用（UI线程），不能在其他线程使用，如不支持[@Sendable](../../arkts-utils/arkts-sendable.md)。
 
@@ -242,7 +242,7 @@ import { Sample } from './Sample';
 export function PageTwoBuilder() {
   PageTwo()
 }
-@Entry
+
 @ComponentV2
 struct PageTwo {
   // 在AppStorageV2中创建一个key为Sample的键值对（如果存在，则返回AppStorageV2中的数据），并且和prop关联

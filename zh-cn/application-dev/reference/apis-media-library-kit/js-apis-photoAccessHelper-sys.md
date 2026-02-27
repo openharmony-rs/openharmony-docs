@@ -2109,71 +2109,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-### getKeyFrameThumbnail<sup>18+</sup>
-
-getKeyFrameThumbnail(beginFrameTimeMs: number, type: ThumbnailType): Promise<image.PixelMap>
-
-获取视频中关键视频帧位置的指定类型缩略图。使用Promise异步回调。
-
-**系统接口**：此接口为系统接口。
-
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**需要权限**：ohos.permission.READ_IMAGEVIDEO
-
-**参数：**
-
-| 参数名  | 类型             | 必填   | 说明    |
-| ---- | -------------- | ---- | ----- |
-| beginFrameTimeMs | number | 是    | 获取视频帧的时间位置，单位ms，0：封面帧。 |
-| type | [ThumbnailType](#thumbnailtype13)| 是    | 缩略图类型。 |
-
-**返回值：**
-
-| 类型                            | 说明                    |
-| ----------------------------- | --------------------- |
-| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise对象，返回缩略图的PixelMap。若获取不到，默认返回封面帧 |
-
-**错误码：**
-
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------------------------------------- |
-| 201   | Permission denied.       |
-| 202   | Called by non-system application.       |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011   | Internal system error. |
-
-**示例：**
-
-phAccessHelper的创建请参考[@ohos.file.photoAccessHelper (相册管理模块)](arkts-apis-photoAccessHelper-f.md)的示例使用。
-
-```ts
-import { common }  from '@kit.AbilityKit';
-import { dataSharePredicates } from '@kit.ArkData';
-import { image } from '@kit.ImageKit';
-
-async function example(context: Context) {
-  try{
-    console.info('getKeyFrameThumbnail demo');
-    let phAccessHelper:photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
-    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-    predicates.equalTo(photoAccessHelper.PhotoKeys.PHOTO_TYPE, photoAccessHelper.PhotoType.VIDEO);
-    let fetchOption: photoAccessHelper.FetchOptions = {
-      fetchColumns: [],
-      predicates: predicates
-    };
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
-    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getLastObject();
-    let pixelMap: image.PixelMap = await asset.getKeyFrameThumbnail(0, photoAccessHelper.ThumbnailType.LCD);
-    console.info('getKeyFrameThumbnail success');
-  } catch (error) {
-    console.error('getKeyFrameThumbnail failed, error: ' + JSON.stringify(error));
-  }
-}
-```
-
 ### saveGalleryFormInfo<sup>18+</sup>
 
 saveGalleryFormInfo(info:GalleryFormInfo):Promise&lt;void&gt;
@@ -3807,6 +3742,127 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     console.info('addResourceForPickerByFileUri successfully');
   } catch (err) {
     console.error(`addResourceForPickerByFileUriDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### isMediaDataReady<sup>24+</sup>
+isMediaDataReady(mediaDataKey: string): Promise&lt;boolean&gt;
+
+判断指定的媒体数据是否已经准备完成。
+
+​**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| mediaDataKey | string | 是   | 查询的媒体数据类型。<br>当前支持配置的取值为"date_added_year"，表示查询资产的添加时间（年月日）数据是否准备完成。|
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示媒体数据准备完成；返回false表示媒体数据未准备完成。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails, unsupported media data type. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('isMediaDataReady demo');
+
+  try {
+    let ready: boolean = await phAccessHelper.isMediaDataReady('date_added_year');
+    if (ready) {
+      console.info('date_added_year media data is ready.');
+    } else {
+      console.info('date_added_year media data is not ready.');
+    }
+  } catch (err) {
+    console.error(`isMediaDataReady failed: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### getPhotoAssets<sup>24+</sup>
+
+getPhotoAssets(assetsData: ValuesBucket[]): Promise&lt;PhotoAsset[]&gt;
+
+将ValuesBucket记录转换为PhotoAsset对象。
+
+​**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| assetsData | [ValuesBucket](#valuesbucket22)[] | 是   | 资产记录的数组。<br>数组中的每个元素包含资产的列名称及其对应的值。<br>数组的大小不能超过500个。<br>数组中的每个元素必须包含以下资产列信息：file_id、data、display_name、media_type、subtype。|
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)[]&gt; | Promise对象，返回PhotoAsset对象的数组（数组可能为空）。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. Invalid value type in ValuesBucket; 2. Missing required column in ValuesBucket; 3. Array size exceeds 500.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('getPhotoAssets demo');
+  let valuesArr: photoAccessHelper.ValuesBucket[] = [];
+  let resultSet: photoAccessHelper.ResultSet | undefined = undefined;
+  let photoAssetArr: photoAccessHelper.PhotoAsset[] = [];
+  let QUERY_SQL = 'SELECT file_id,data,display_name,media_type,subtype from Photos limit 100';
+  try {
+    resultSet = await phAccessHelper.query(QUERY_SQL);
+    let index: number = 0;
+    while(resultSet && index < resultSet.rowCount){
+      resultSet.goToRow(index);
+      valuesArr.push(resultSet.getRow());
+      index++;
+      if(index >= resultSet.rowCount){
+        break;
+      }
+    }
+    photoAssetArr = await phAccessHelper.getPhotoAssets(valuesArr);
+    console.info('getPhotoAssets successfully');
+  } catch (err) {
+    console.error(`valuesArr failed: ${err.code}, ${err.message}`);
   }
 }
 ```
@@ -5723,6 +5779,71 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### getKeyFrameThumbnail<sup>18+</sup>
+
+getKeyFrameThumbnail(beginFrameTimeMs: number, type: ThumbnailType): Promise<image.PixelMap>
+
+获取视频中关键视频帧位置的指定类型缩略图。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名  | 类型             | 必填   | 说明    |
+| ---- | -------------- | ---- | ----- |
+| beginFrameTimeMs | number | 是    | 获取视频帧的时间位置，单位ms，0：封面帧。 |
+| type | [ThumbnailType](#thumbnailtype13)| 是    | 缩略图类型。 |
+
+**返回值：**
+
+| 类型                            | 说明                    |
+| ----------------------------- | --------------------- |
+| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise对象，返回缩略图的PixelMap。若获取不到，默认返回封面帧 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201   | Permission denied.       |
+| 202   | Called by non-system application.       |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 14000011   | Internal system error. |
+
+**示例：**
+
+phAccessHelper的创建请参考[@ohos.file.photoAccessHelper (相册管理模块)](arkts-apis-photoAccessHelper-f.md)的示例使用。
+
+```ts
+import { common }  from '@kit.AbilityKit';
+import { dataSharePredicates } from '@kit.ArkData';
+import { image } from '@kit.ImageKit';
+
+async function example(context: Context) {
+  try{
+    console.info('getKeyFrameThumbnail demo');
+    let phAccessHelper:photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+    predicates.equalTo(photoAccessHelper.PhotoKeys.PHOTO_TYPE, photoAccessHelper.PhotoType.VIDEO);
+    let fetchOption: photoAccessHelper.FetchOptions = {
+      fetchColumns: [],
+      predicates: predicates
+    };
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getLastObject();
+    let pixelMap: image.PixelMap = await asset.getKeyFrameThumbnail(0, photoAccessHelper.ThumbnailType.LCD);
+    console.info('getKeyFrameThumbnail success');
+  } catch (error) {
+    console.error('getKeyFrameThumbnail failed, error: ' + JSON.stringify(error));
+  }
+}
+```
+
 ### convertImageFormat<sup>20+</sup>
 
 convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise&lt;PhotoAsset&gt;
@@ -7429,6 +7550,63 @@ async function example(context: Context, assetUri: string) {
       await photoAccessHelper.MediaAssetChangeRequest.deleteCloudAssetsWithUri(context, [assetUri]);
     } catch (err) {
       console.error(`deleteCloudAssetsWithUri failed with error: ${err.code}, ${err.message}`);
+    }
+}
+```
+
+### deleteAssetsPermanentlyWithUri<sup>24+</sup>
+
+static deleteAssetsPermanentlyWithUri(context: Context, assetUris: string[]): Promise\<void\>
+
+通过资产URI批量彻底删除照片或视频，不经过回收站。使用promise异步回调。
+
+> **说明：**
+>
+> - 对仅存在于本端设备的资产、仅存在于云端的资产、存在于本端设备和云端的资产，均可以彻底删除，不经过回收站。
+> - 此操作不可逆。执行此操作后文件资源将被彻底删除，请谨慎操作。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型             | 必填   | 说明    |
+| ---- | -------------- | ---- | ----- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 传入Ability实例的Context。 |
+| assetUris | string[] | 是    | 待删除的图片或视频URI数组，数组中元素个数不超过500个。 |
+
+**返回值：**
+
+| 类型                  | 说明         |
+| ------------------- | ---------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201   | Permission denied.       |
+| 202   | Called by nonsystem application.       |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Asset uri array size is empty or bigger than 500 . |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes:1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. | 
+
+**示例：**
+
+```ts
+async function example(context: Context, assetUri: string) {
+    console.info('deleteAssetsPermanentlyWithUri');
+    try {
+      await photoAccessHelper.MediaAssetChangeRequest.deleteAssetsPermanentlyWithUri(context, [assetUri]);
+      console.info('deleteAssetsPermanentlyWithUri success.');
+    } catch (err) {
+      console.error(`deleteAssetsPermanentlyWithUri failed with error: ${err.code}, ${err.message}`);
     }
 }
 ```
@@ -11195,7 +11373,7 @@ async function example(context: Context) {
   crManager.createCustomRecords(crArray).then(() => {
     console.info('createCustomRecords successful');
   }).catch((err: BusinessError) => {
-    console.error('createCustomRecords fail with error: ${err.code}, ${err.message}');
+    console.error(`createCustomRecords fail with error: ${err.code}, ${err.message}`);
   });
 }
 ```
@@ -11582,6 +11760,9 @@ async function example(context: Context) {
 | COMPOSITE_DISPLAY_STATUS<sup>22+</sup> | 'composite_display_status' | 复合图资产显示状态。**系统接口**：此接口为系统接口。 |
 | VIDEO_MODE<sup>22+</sup>  | 'video_mode' | 视频文件的log模式。**系统接口**：此接口为系统接口。 |
 | EDIT_DATA_EXIST<sup>22+</sup>  | 'edit_data_exist' | 资产的编辑数据已存在。**系统接口**：此接口为系统接口。 |
+| DATE_ADDED_YEAR<sup>24+</sup>  | 'date_added_year' | 资产添加时间的年份。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| DATE_ADDED_MONTH<sup>24+</sup> | 'date_added_month'| 资产添加时间的月份。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| DATE_ADDED_DAY<sup>24+</sup>   | 'date_added_day'  | 资产添加时间的日期。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 
 ## AlbumKeys
 

@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @yu_haoqiaida-->
+<!--Owner: @hello_harmony; @leiguangyu-->
 <!--Designer: @kutcherzhou1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -88,7 +88,7 @@ Obtains the CPU usage of an application. Note that this API involves cross-proce
 
 | Type| Description|
 | -- | -- |
-| double | Returns the application CPU usage obtained if the operation is successful. If **0** is returned, the CPU usage of the current application is too low.|
+| double | Application CPU usage obtained if the operation is successful. If **0** is returned, the CPU usage of the current application is too low.|
 
 ### OH_HiDebug_GetAppThreadCpuUsage()
 
@@ -304,7 +304,7 @@ typedef void (*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const Hi
 
 **Description**
 
-If the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API is successfully called, the parsed stack information is returned to the caller through this function. Note that this API involves multiple I/O operations and takes a long time. Therefore, you are advised not to call this API in the main thread.
+If the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress) API is successfully called, the parsed stack information is returned to the caller through this function. Note: This API involves multiple I/O operations and takes a long time. Therefore, you are advised not to call this API in the main thread.
 
 **Since**: 20
 

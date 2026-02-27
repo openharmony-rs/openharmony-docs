@@ -38,7 +38,7 @@ getAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;Photo
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 在API version 13及之前的版本，无相关权限返回错误码13900012；从API version 14开始，无相关权限返回错误码201。
 
@@ -106,7 +106,7 @@ getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 在API version 13及之前的版本，无相关权限返回错误码13900012；从API version 14开始，无相关权限返回错误码201。
 
@@ -172,7 +172,7 @@ getBurstAssets(burstKey: string, options: FetchOptions): Promise&lt;FetchResult&
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -236,7 +236,7 @@ createAsset(photoType: PhotoType, extension: string, options: CreateOptions, cal
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 在API version 13及之前的版本，无相关权限返回错误码13900012；从API version 14开始，无相关权限返回错误码201。
 
@@ -294,7 +294,7 @@ createAsset(photoType: PhotoType, extension: string, callback: AsyncCallback&lt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 在API version 13及之前的版本，无相关权限返回错误码13900012；从API version 14开始，无相关权限返回错误码201。
 
@@ -355,7 +355,7 @@ createAsset(photoType: PhotoType, extension: string, options?: CreateOptions): P
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 在API version 13及之前的版本，无相关权限返回错误码13900012；从API version 14开始，无相关权限返回错误码201。
 
@@ -426,7 +426,7 @@ createPhotoAsset(photoType: PhotoType, extension: string, title?: string): Promi
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
 | 23800151 | The scenario parameter verification fails.Possible causes: 1. The extension format is unsupported. 2. Title contains unsupported character, such as . .. \ / : * ? " ' ` < > \| { } [ ]. 3. The title is an empty string 4. The total length of title and extension is more than 255. |
-| 23800301 | Internal systtem error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2.The fille system is abnormal; 3. The IPC request time out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2.The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
 
@@ -471,7 +471,7 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, options: FetchOptions, callbac
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 在API version 13及之前的版本，无相关权限返回错误码13900012；从API version 14开始，无相关权限返回错误码201。
 
@@ -536,7 +536,7 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, callback: AsyncCallback&lt;Fet
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 在API version 13及之前的版本，无相关权限返回错误码13900012；从API version 14开始，无相关权限返回错误码201。
 
@@ -599,7 +599,7 @@ getAlbums(type: AlbumType, subtype: AlbumSubtype, options?: FetchOptions): Promi
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 错误码13900012，请参考[开发准备](../../media/medialibrary/photoAccessHelper-preparation.md)。
 
@@ -659,7 +659,7 @@ registerChange(uri: string, forChildUris: boolean, callback: Callback&lt;ChangeD
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 错误码13900012，请参考[开发准备](../../media/medialibrary/photoAccessHelper-preparation.md)。
 
@@ -722,7 +722,7 @@ unRegisterChange(uri: string, callback?: Callback&lt;ChangeData&gt;): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 错误码13900012，请参考[开发准备](../../media/medialibrary/photoAccessHelper-preparation.md)。
 
@@ -795,7 +795,7 @@ applyChanges(mediaChangeRequest: MediaChangeRequest): Promise&lt;void&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -825,7 +825,7 @@ release(callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -868,7 +868,7 @@ release(): Promise&lt;void&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -923,7 +923,7 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1004,31 +1004,32 @@ showAssetsCreationDialogEx(srcFileUris: Array&lt;string&gt;, creationSettings: A
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
+```ts 
+import { dataSharePredicates } from '@kit.ArkData';	 
 
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
-  console.info('ShowAssetsCreationDialogExDemo.');
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) { 
+  console.info('ShowAssetsCreationDialogExDemo.'); 
 
-  try {
-    // 获取需要保存到媒体库的位于应用沙箱的图片/视频uri。
-    let srcFileUris: Array<string> = [
-      'file://fileUriDemo1' // 实际场景请使用真实的uri。
-    ];
-    let creationSettings: Array<photoAccessHelper.CreationSetting> = [
-      {
-        title: 'test2', // 可选。
-        fileNameExtension: 'jpg',
-        photoType: photoAccessHelper.PhotoType.IMAGE
-      }
-    ];
-    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, photoCreationConfigs);
-    console.info('showAssetsCreationDialogEx success, data is ' + desFileUris);
-  } catch (err) {
-    console.error('showAssetsCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
-  }
-}
+  try {	 
+    // 获取需要保存到媒体库的位于应用沙箱的图片/视频uri。	 
+    let srcFileUris: Array<string> = [	 
+      'file://fileUriDemo1' // 实际场景请使用真实的uri。	 
+    ];	 
+    let photoCreationConfigs: Array<photoAccessHelper.CreationSetting> = [	 
+      {	 
+        title: 'test2', // 可选。	 
+        fileNameExtension: 'jpg',	 
+        photoType: photoAccessHelper.PhotoType.IMAGE	 
+      }	 
+    ];	 
+    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, photoCreationConfigs);	 
+    console.info('showAssetsCreationDialogEx success, data is ' + desFileUris);	 
+  } catch (err) {	 
+    console.error('showAssetsCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);	 
+  }	 
+} 
 ```
+
 ## showSingleAssetCreationDialogEx<sup>23+</sup>
 
 showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSetting, isImageFullyDisplayed: boolean): Promise&lt;string&gt;
@@ -1070,31 +1071,31 @@ showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSet
 | 23800301 |Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
+ 
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。	 
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+```ts	 
+import { dataSharePredicates } from '@kit.ArkData';	 
 
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {	 
+  console.info('ShowSingleAssetCreationDialogExDemo.');	 
 
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
-  console.info('ShowSingleAssetCreationDialogExDemo.');
-
-  try {
-    // 获取需要保存到媒体库的位于应用沙箱的图片/视频uri。
-    let srcFileUri: string = [
-      'file://fileUriDemo1' // 实际场景请使用真实的uri。
-    ];
-    let creationSetting: photoAccessHelper.CreationSetting = {
-      title: 'test2', // 可选。
-      fileNameExtension: 'jpg',
-      photoType: photoAccessHelper.PhotoType.IMAGE
-    }
-    let isImageFullyDisplayed: boolean = true
-    let desFileUri: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUris, photoCreationConfigs, isImageFullyDisplayed);
-    console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUris);
-  } catch (err) {
-    console.error('showSingleAssetCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
-  }
+  try {	 
+    // 获取需要保存到媒体库的位于应用沙箱的图片/视频uri。	 
+    let srcFileUri: Array<string> = [	 
+      'file://fileUriDemo1' // 实际场景请使用真实的uri。	 
+    ];	 
+    let photoCreationConfigs: photoAccessHelper.CreationSetting = {	 
+      title: 'test2', // 可选。	 
+      fileNameExtension: 'jpg',	 
+      photoType: photoAccessHelper.PhotoType.IMAGE	 
+    }	 
+    let isImageFullyDisplayed: boolean = true	 
+    let desFileUri: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUris, photoCreationConfigs, isImageFullyDisplayed); 
+    console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUris); 
+  } catch (err) { 
+    console.error('showSingleAssetCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message); 
+  } 
 }
 ```
 
@@ -1124,7 +1125,7 @@ createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Pr
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1236,7 +1237,7 @@ requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Arr
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1294,11 +1295,11 @@ requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;R
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[媒体库错误码](errorcode-medialibrary.md)。
+以下错误码的详细介绍请参见[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800301 |  Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301 |  Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**
 
@@ -1346,7 +1347,7 @@ getSupportedPhotoFormats(photoType: PhotoType): Promise&lt;Array&lt;string&gt;&g
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1683,7 +1684,7 @@ createDeleteRequest(uriList: Array&lt;string&gt;, callback: AsyncCallback&lt;voi
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 错误码13900012，请参考[开发准备](../../media/medialibrary/photoAccessHelper-preparation.md)。
 
@@ -1756,7 +1757,7 @@ createDeleteRequest(uriList: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 错误码13900012，请参考[开发准备](../../media/medialibrary/photoAccessHelper-preparation.md)。
 
@@ -1867,7 +1868,7 @@ getAlbumIdByLpath(lpath: string): Promise&lt;number&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[媒体库错误码](errorcode-medialibrary.md)。
+以下错误码的详细介绍请参见[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2072,7 +2073,7 @@ onSinglePhotoAlbumChange(album: Album, callback: Callback&lt;AlbumChangeInfos&gt
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The same callback is registered repeatedly. 2. Album has been removed. 3. The uri of the a invalid.|
-| 23800301 | - Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**
 

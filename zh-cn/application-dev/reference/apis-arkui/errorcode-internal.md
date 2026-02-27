@@ -24,6 +24,8 @@
 
 作为[@ohos.arkui.componentSnapshot](js-apis-arkui-componentSnapshot.md)的错误码时，错误信息为：The builder is not a valid build function.
 
+作为[@ohos.arkui.componentUtils](js-apis-arkui-componentUtils.md)的错误码时，错误信息为：UI execution context not found.
+
 **错误描述**
 
 作为[@ohos.animator](js-apis-animator.md)和[@ohos.promptAction](js-apis-promptAction.md)的错误码时，出现了开发者解决不了的内部异常错误，会报此错误码，并描述具体是哪种内部错误。
@@ -44,7 +46,7 @@
 
 作为[@ohos.arkui.componentSnapshot](js-apis-arkui-componentSnapshot.md)的错误码时，可能原因为：无法获取正确的UI实例、空指针异常、UI实例内部状态校验异常、组件未上树无法查询到节点、截图尺寸超过硬件限制（硬件限制可能根据不同硬件平台有所不同）等。
 
-作为[UIContext](./arkts-apis-uicontext-uicontext.md)的错误时，可能原因为：内存不足或JS虚拟机异常等因素可能导致UI实例创建失败。
+作为[UIContext](./arkts-apis-uicontext-uicontext.md)的错误时，可能原因为：<!--Del-->取色参数未按接口要求设置或类型错误、<!--DelEnd-->内存不足或JS虚拟机异常等因素可能导致UI实例创建失败。
 
 **处理步骤**
 

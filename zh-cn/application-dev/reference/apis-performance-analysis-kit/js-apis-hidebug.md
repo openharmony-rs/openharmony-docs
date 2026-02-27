@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @yu_haoqiaida-->
+<!--Owner: @hello_harmony; @leiguangyu-->
 <!--Designer: @kutcherzhou1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -1396,4 +1396,38 @@ hidebug.setJsRawHeapTrimLevel(hidebug.JsRawHeapTrimLevel.TRIM_LEVEL_2);
 | 名称      | 类型     | 只读  | 可选 | 说明                                                                              |
 | --------- |--------| ---- |---- |---------------------------------------------------------------------------------|
 | gl  | number |  否  |   否  | gl显存大小，RenderService渲染进程加载所需资源占用的内存，例如图片、纹理等，以KB为单位。 |
-| graph  | number |  否  |   否  | graph显存大小，进程统计的DMA内存占用，包括直接通过接口申请的DMA buffer和通过allocator_host申请的DMA buffer，以KB为单位。|
+| graph  | number |  否  |   否  | graph显存大小，进程统计的DMA内存占用，包括直接通过接口申请的DMA buffer和通过allocator_host申请的DMA buffer，以KB为单位。 |
+
+## hidebug.setProcDumpInSharedOOM<sup>24+</sup>
+
+setProcDumpInSharedOOM(enable: boolean): void
+
+将转储的堆快照由线程级改为进程级。
+
+> **注意**：
+>
+> 要想转储进程级的堆快照，调用该接口并传参true、进程OOM时发生的是SharedHeap OOM，两个条件缺一不可。
+>
+> 该接口不影响其他场景下转储的堆快照内容。如：不会影响[dumpJsRawHeapData](#hidebugdumpjsrawheapdata18)的结果。
+>
+> 该接口在应用的生命周期内可被多次调用，但仅最后一次调用的执行结果会生效。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**参数**：
+
+| 名称         | 类型  | 必填 | 说明 |
+|--------------|------|------|------|
+| enable | boolean | 是 | 当进程发生SharedHeap OOM时，系统将依据该进程在其生命周期中最后一次调用该接口所记录的信息，转储相应级别的堆快照。<br/>true：进程级。<br/>false：线程级。<br/> 默认值：false。 |
+
+**示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+
+hidebug.setProcDumpInSharedOOM(true);
+```

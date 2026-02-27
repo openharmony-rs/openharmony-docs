@@ -588,7 +588,7 @@ struct Index {
 
 getId(): number
 
-获取后端实例唯一标识的ID。
+获取UI实例对象唯一标识，多实例场景下，开发者可使用此唯一标识区分多个UI实例对象，便于管理。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -826,7 +826,7 @@ struct AnimateToImmediatelyExample {
 
 animateTo(value: AnimateParam, event: () => void): void
 
-提供animateTo接口来指定由于闭包代码导致的状态变化插入过渡动效。
+提供animateTo接口，用于为闭包代码中的状态变化添加过渡动画效果。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2306,7 +2306,7 @@ vp2px(value : number) : number
 
 转换公式为：px值 = vp值 × 像素密度
 
-像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
+像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
 
 > **说明：**
 >
@@ -2364,7 +2364,7 @@ px2vp(value : number) : number
 
 转换公式为：vp值 = px值 ÷ 像素密度
 
-像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
+像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
 
 > **说明：**
 >
@@ -2422,7 +2422,7 @@ fp2px(value : number) : number
 
 转换公式为：px值 = fp值 × 像素密度 × 字体缩放比例
 
-像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
+像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
 
 字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](arkui-ts/ts-types.md#configuration)。
 
@@ -2480,7 +2480,7 @@ px2fp(value : number) : number
 
 转换公式为：fp值 = px值 ÷ 像素密度 ÷ 字体缩放比例
 
-像素密度：当前窗口生效的像素密度值，通常就是屏幕物理像素密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
+像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
 
 字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](arkui-ts/ts-types.md#configuration)。
 
@@ -4206,3 +4206,156 @@ struct Index {
 ```
 
 ![customKeyboardContinueFeature](arkui-ts/figures/customKeyboardContinueFeature.gif)
+
+## getPageRootNode<sup>24+</sup>
+
+getPageRootNode(): FrameNode | null
+
+获取UIContext对应页面的根节点。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                                       | 说明            |
+| ---------------------------------------- | ------------- |
+| [FrameNode](js-apis-arkui-frameNode.md#framenode-1)  \| null | 返回页面的根节点的实体节点或者空节点。<br>若无有效的FrameNode则返回null。<br>若窗口内无加载完成的页面则返回null。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[UI上下文错误码](./errorcode-uicontext.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 120007       | The UIContext is not available.   |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct NavigationExample {
+  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack()
+  private arr: number[] = [1, 2, 3];
+  @State pageRootNode: FrameNode | null = null;
+
+  @Builder
+  pageMap(name: string) {
+    if (name === 'NavDestinationTitle1') {
+      pageOneTmp();
+    } else if (name === 'NavDestinationTitle2') {
+      pageTwoTmp();
+    } else if (name === 'NavDestinationTitle3') {
+      pageThreeTmp();
+    }
+  }
+
+  onPageShow(): void {
+    setTimeout(() => {
+      this.pageRootNode = this.getUIContext()?.getPageRootNode();
+      console.info('NavigationExample' + JSON.stringify(this.getUIContext().getPageRootNode()));
+    })
+  }
+
+  build() {
+    Column() {
+      Navigation(this.pageInfos) {
+        Text(`CurrentPageRootNode info: Tag ${this.pageRootNode?.getNodeType()}, NodeId： ${this.pageRootNode?.getUniqueId()}`)
+          .width('90%')
+          .height(40)
+          .backgroundColor('#FFFFFF')
+        List({ space: 12 }) {
+          ForEach(this.arr, (item: number) => {
+            ListItem() {
+              Text('Page' + item)
+                .width('100%')
+                .height(72)
+                .backgroundColor('#FFFFFF')
+                .borderRadius(24)
+                .fontSize(16)
+                .fontWeight(500)
+                .textAlign(TextAlign.Center)
+                .onClick(() => {
+                  this.pageInfos.pushPath({ name: 'NavDestinationTitle' + item });
+                })
+            }
+          }, (item: number) => item.toString())
+        }
+        .width('100%')
+        .margin({ top: 12 })
+      }
+      .title('主标题')
+      .mode(NavigationMode.Stack)
+      .navDestination(this.pageMap)
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor('#F1F3F5')
+  }
+}
+
+@Component
+export struct pageOneTmp {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  aboutToDisappear(): void {
+    console.info('pageOneTmp', 'aboutToDisappear')
+  }
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('pageOneTmp')
+        Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId： ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
+      }.width('100%').height('100%')
+    }.title('NavDestinationTitle1')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素。
+      console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+
+@Component
+export struct pageTwoTmp {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('pageTwoTmp')
+        Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId： ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
+      }.width('100%').height('100%')
+    }.title('NavDestinationTitle2')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素。
+      console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+
+@Component
+export struct pageThreeTmp {
+  @Consume('pageInfos') pageInfos: NavPathStack;
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('pageThreeTmp')
+        Text(`CurrentPageRootNode info: Tag ${this.getUIContext()?.getPageRootNode()?.getNodeType()}, NodeId： ${this.getUIContext()?.getPageRootNode()?.getUniqueId()}`)
+      }.width('100%').height('100%')
+    }.title('NavDestinationTitle3')
+    .onBackPressed(() => {
+      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素。
+      console.info('pop' + '返回值' + JSON.stringify(popDestinationInfo));
+      return true;
+    })
+  }
+}
+```
+
+![getCurrentPageRootNode](arkui-ts/figures/getCurrentPageRootNode.jpg)

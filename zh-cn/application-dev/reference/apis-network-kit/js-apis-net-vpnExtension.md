@@ -328,6 +328,13 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
     let vpnConnection : vpnExtension.VpnConnection = vpnExtension.createVpnConnection(context);
     console.info("vpn createVpnConnection: " + JSON.stringify(vpnConnection));
     this.SetupVpn();
+    
+    // 不需要VPN网络时，调用destroy()接口销毁启动的VPN网络，并执行资源清理等操作。
+    vpnConnection.destroy().then(() => {
+      console.info("destroy success.");
+    }).catch((error : BusinessError) => {
+      console.error(`destroy fail. Code:${error.code}, message:${error.message}`);
+    });
   }
   SetupVpn() {
         class Address {

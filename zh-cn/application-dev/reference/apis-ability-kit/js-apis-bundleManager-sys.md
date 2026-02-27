@@ -3320,83 +3320,6 @@ try {
 }
 ```
 
-
-## bundleManager.getLaunchWantForBundleSync<sup>10+</sup>
-
-getLaunchWantForBundleSync(bundleName: string, userId?: number): Want
-
-以同步方法根据给定的bundleName和userId获取用于启动应用程序的Want参数。
-
-**系统接口：** 此接口为系统接口。
-
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**参数：**
-
-| 参数名     | 类型   | 必填 | 说明                       |
-| ---------- | ------ | ---- | ------------------------- |
-| bundleName | string | 是   | 表示应用程序的bundleName。 |
-| userId     | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。  |
-
-**返回值：**
-
-| 类型           | 说明                      |
-| -------------- | ------------------------- |
-| [Want](js-apis-app-ability-want.md)| Want对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
-
-| 错误码ID | 错误信息                             |
-| -------- | --------------------------------------|
-| 201 | Calling interface without permission 'ohos.permission.GET_BUNDLE_INFO_PRIVILEGED'. |
-| 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-| 17700001 | The specified bundleName is not found. |
-| 17700004 | The specified user ID is not found.     |
-| 17700026 | The specified bundle is disabled.      |
-
-**示例：**
-
-```ts
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { Want } from '@kit.AbilityKit';
-
-let bundleName = 'com.example.myapplication';
-let userId = 100;
-
-try {
-  let want: Want = bundleManager.getLaunchWantForBundleSync(bundleName, userId);
-  hilog.info(0x0000, 'testTag', 'getLaunchWantForBundleSync successfully. Data: %{public}s', JSON.stringify(want));
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getLaunchWantForBundleSync failed. Cause: %{public}s', message);
-}
-```
-
-```ts
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { Want } from '@kit.AbilityKit';
-
-let bundleName = 'com.example.myapplication';
-let userId = 100;
-
-try {
-  let want: Want = bundleManager.getLaunchWantForBundleSync(bundleName);
-  hilog.info(0x0000, 'testTag', 'getLaunchWantForBundleSync successfully. Data: %{public}s', JSON.stringify(want));
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getLaunchWantForBundleSync failed. Cause: %{public}s', message);
-}
-```
-
 ## bundleManager.getPermissionDef
 
 getPermissionDef(permissionName: string, callback: AsyncCallback\<PermissionDef>): void
@@ -4517,6 +4440,69 @@ try {
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfo failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.getAllBundleInstallInfo<sup>23+</sup>
+
+getAllBundleInstallInfo(): Promise\<Array\<Record\<string, Object\>\>\>
+
+获取系统内所有应用的扩展安装信息。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_INSTALLED_BUNDLE_LIST
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**返回值：**
+
+| 类型                                                         | 说明                                |
+| ------------------------------------------------------------ | ----------------------------------- |
+| Promise\<Array\<Record\<string, Object\>\>\> | Promise对象，返回所有应用的扩展安装信息集合列表。 |
+
+**返回扩展安装信息集合字段说明：**
+
+| 名称                      | 类型    | 说明                 |
+| ------------------------- | ------ | -------------------- |
+| compatibleVersion              | number | 应用所需要最低的SDK版本。 |
+| crowdtestDeadline              | number | 众测活动的截止日期（毫秒级时间戳），-1表示无截止日期约束。 |
+| bundleName                     | string | 应用的包名。 |
+| specifiedDistributionType      | string | 应用安装时指定的[分发类型](../../security/app-provision-structure.md)，默认值为空，最大长度128字节。|
+| installSource      | string | 应用的安装来源。 |
+| additionalInfo      | string | 应用安装时的额外信息。 |
+| hashParam      | Array\<Record\<string, string\>\> | 应用模块对应的安装卸载哈希参数信息列表，其中hashParam[i].key表示应用模块的名称；hashParam[i].value表示应用模块对应的哈希值。i为模块索引编号。 |
+| hapPath      | Array\<string\> | 应用安装文件路径列表。 |
+| requiredDeviceFeatures      | Array\<Object\> | 应用模块对应所需设备能力特征列表，其中requiredDeviceFeatures[i].moduleName表示应用模块名称，requiredDeviceFeatures[i].requiredDeviceFeature表示模块对应的所需设备能力特征。 i为模块能力特征列表的索引编号。|
+| sharedBundleInfo      | Array\<Object\> | 应用依赖的共享包信息对象列表，其中sharedBundleInfo[i].name表示共享包的应用包名，sharedBundleInfo[i].sharedModuleInfo[j].name表示共享包包含的模块名称，sharedBundleInfo[i].sharedModuleInfo[j].versionCode表示共享包包含的模块版本号，sharedBundleInfo[i].sharedModuleInfo[j].hapPath表示共享包包含的模块安装路径。i为共享包的索引编号，j为共享包包含的模块索引编号。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | -------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+  bundleManager.getAllBundleInstallInfo().then((data) => {
+    hilog.info(0x0000, 'testTag', 'getAllBundleInstallInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getAllBundleInstallInfo failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllBundleInstallInfo failed. Cause: %{public}s', message);
 }
 ```
 
@@ -6355,7 +6341,7 @@ try {
 
 recoverBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
 
-恢复指定用户下指定应用的备份数据。使用Promise异步回调。
+恢复指定用户下指定应用或分身应用的备份数据。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6417,7 +6403,7 @@ try {
 
 removeBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
 
-删除指定用户下指定应用的备份数据。使用Promise异步回调。
+删除指定用户下指定应用或分身应用的备份数据。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6526,6 +6512,73 @@ try {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getBundleInstallStatus failed. Cause: %{public}s', message);
 }
+```
+
+## bundleManager.isApplicationDisableForbidden<sup>24+</sup>
+
+isApplicationDisableForbidden(bundleName: string, userId: number, appIndex: number): boolean
+
+以同步方法查询指定用户下指定应用或分身应用是否被设置禁止停用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 或 (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
+
+ - 查询当前用户下指定应用是否被设置禁止停用时，需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED。
+
+ - 查询其他用户下指定应用是否被设置禁止停用时，需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED和ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                       |
+| ----------- | ------ | ---- | ---------------------------- |
+| bundleName  | string | 是   | 表示应用的包名。 |
+| userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，取值范围：大于等于0。  |
+| appIndex    | number |  是  | 表示应用索引。取值范围0~5，取值为0表示主应用，取值1~5表示分身应用的索引。   |
+
+
+**返回值：**
+
+| 类型                                                        | 说明                        |
+| ----------------------------------------------------------- | --------------------------- |
+| boolean | 指定应用是否被设置禁止停用。<br/>返回true表示指定应用已被设置禁止停用，返回false表示指定应用没有被设置禁止停用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied. Non-system APP calling system API. |
+| 17700001 | The specified bundle is not found. |
+| 17700004 | The specified user ID is not found.     |
+| 17700061 | The specified app index is invalid. |
+
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName: string = 'com.example.myapplication';
+let userId: number = 100;
+let appIndex: number = 0;
+
+try {
+  let data = bundleManager.isApplicationDisableForbidden(bundleName, userId, appIndex);
+  hilog.info(0x0000, 'testTag', 'isApplicationDisableForbidden successfully: %{public}s', JSON.stringify(data));
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'isApplicationDisableForbidden failed: %{public}s', message);
+}
+
 ```
 
 ## PermissionDef

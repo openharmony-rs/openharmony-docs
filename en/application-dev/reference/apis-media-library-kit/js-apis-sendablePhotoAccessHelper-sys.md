@@ -46,11 +46,13 @@ Obtains a PhotoAccessHelper instance for the specified user, letting you access 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 |  Permission denied.         |
+| 202 |  Called by non-system application.         |
+| 13900020 | Invalid argument.         |
 
 **Example**
 

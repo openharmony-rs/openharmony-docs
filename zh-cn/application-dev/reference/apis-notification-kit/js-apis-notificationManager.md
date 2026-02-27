@@ -652,7 +652,7 @@ let removeSlotCallback = (err: BusinessError): void => {
     console.info(`Succeeded in removing slot.`);
   }
 }
-let slotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
+let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
 notificationManager.removeSlot(slotType, removeSlotCallback);
 ```
 
@@ -884,7 +884,7 @@ isNotificationEnabledSync(): boolean
 **示例：**
 
 ```ts
-let enabled = notificationManager.isNotificationEnabledSync();
+let enabled: boolean = notificationManager.isNotificationEnabledSync();
 console.info(`isNotificationEnabledSync success, data is : ${JSON.stringify(enabled)}`);
 ```
 
@@ -1011,7 +1011,7 @@ getBadgeNumber(): Promise\<number\>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.getBadgeNumber().then((badgeNumber) => {
+notificationManager.getBadgeNumber().then((badgeNumber: number) => {
   console.info(`Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to get badge number. Code is ${err.code}, message is ${err.message}`);

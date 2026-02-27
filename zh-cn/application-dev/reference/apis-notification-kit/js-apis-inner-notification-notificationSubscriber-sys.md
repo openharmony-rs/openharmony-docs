@@ -404,6 +404,50 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
+## onEnabledSilentReminderChanged<sup>24+</sup>
+
+onEnabledSilentReminderChanged?: EnabledSilentReminderChangedCallback
+
+监听应用通知静默提醒的使能状态变化。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型                                                                                                           | 必填 | 说明 |
+| ------------ |--------------------------------------------------------------------------------------------------------------| ---- | -------------------------- |
+| onEnabledSilentReminderChanged | [EnabledSilentReminderChangedCallback](#enabledsilentreminderchangedcallback24) | 否 | 回调返回监听到的应用信息。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subscribeCallback = (err: BusinessError) => {
+  if (err) {
+    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("subscribeCallback");
+  }
+};
+
+let onEnabledSilentReminderChangedCallback: notificationSubscribe.EnabledSilentReminderChangedCallback = (callbackData: notificationSubscribe.EnabledSilentReminderCallbackData) => {
+  console.info("bundle: ", callbackData.bundle);
+  console.info("uid: ", callbackData.uid);
+  console.info("enable: ", callbackData.enableStatus);
+};
+
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onEnabledSilentReminderChanged: onEnabledSilentReminderChangedCallback
+};
+
+notificationSubscribe.subscribe(subscriber, subscribeCallback);
+```
+
 ## onBadgeChanged<sup>10+</sup>
 
 onBadgeChanged?: (data: BadgeNumberCallbackData) => void
@@ -588,9 +632,7 @@ try {
 }
 ```
 
-## onSystemUpdate<sup>23+</sup>
-
-onSystemUpdate?: SystemUpdateCallback
+## 属性
 
 通知系统属性值变化的回调函数。
 
@@ -602,9 +644,9 @@ onSystemUpdate?: SystemUpdateCallback
 
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| ------------ | ------------------------ | ---- | -------------------------- |
-| onSystemUpdate | [SystemUpdateCallback](#systemupdatecallback23) | 否 | 返回携带系统属性值的通知信息。 |
+| 名称   | 类型    | 只读 | 可选 | 说明             |
+| ------ | ------- | ---- | --- | ---------------- |
+| onSystemUpdate | [SystemUpdateCallback](#systemupdatecallback23) | 否 | 是 | 返回携带系统属性值的通知信息。 |
 
 **示例：**
 
@@ -612,7 +654,7 @@ onSystemUpdate?: SystemUpdateCallback
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onSystemUpdate: (data: notificationSubscribe.SubscribeCallbackData) => {
     let req = data.request;
-    console.info(`onSystemUpdate callback req.priorityType:: ${req.priorityNotificationType}`);
+    console.info(`onSystemUpdate callback req.priorityType: ${req.priorityNotificationType}`);
   }
 };
 try {
@@ -649,6 +691,37 @@ try {
 | uid    | number  | 是  | 否  | 应用的uid。        |
 | enable | boolean | 是  | 否  | 应用通知使能状态。<br> - true：允许。<br> - false：禁止。 |
 
+## EnabledSilentReminderCallbackData<sup>24+</sup>
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+| 名称   | 类型    | 只读 | 可选 | 说明             |
+| ------ | ------- | ---- | --- | ---------------- |
+| bundle | string  | 是  | 否  | 应用的包名。       |
+| uid    | number  | 是  | 否  | 应用的uid。        |
+| enableStatus | [SwitchState](js-apis-notificationManager-sys.md#switchstate20) | 是  | 否  | 应用通知的静默提醒开关状态。<br> - USER_MODIFIED_OFF：用户设置的关闭状态。<br> - USER_MODIFIED_ON：用户设置的开启状态。<br> - SYSTEM_DEFAULT_OFF：用户设置前的初始关闭状态。<br> - SYSTEM_DEFAULT_ON：用户设置前的初始开启状态。|
+
+## EnabledSilentReminderChangedCallback<sup>24+</sup>
+
+type EnabledSilentReminderChangedCallback = (callbackData: EnabledSilentReminderCallbackData) => void
+
+注册应用通知静默提醒使能状态变化的回调函数类型。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**参数**：
+
+| 参数名        | 类型   | 必填 | 说明     |
+| --------- | ------ | ---- | ------------ |
+| callbackData        | [EnabledSilentReminderCallbackData](#enabledsilentremindercallbackdata24) | 是    |   回调返回监听到的静默提醒使能状态信息。 |
 
 ## BadgeNumberCallbackData<sup>10+</sup>
 
@@ -667,9 +740,7 @@ try {
 
 ## BadgeEnabledChangedCallback<sup>12+</sup>
 
-### (data: EnabledNotificationCallbackData)<sup>12+</sup>
-
-(data: EnabledNotificationCallbackData): void
+type BadgeEnabledChangedCallback = (data: EnabledNotificationCallbackData) => void
 
 注册应用角标使能状态变化的回调函数类型。
 
@@ -707,7 +778,7 @@ try {
 
 ## SystemUpdateCallback<sup>23+</sup>
 
-SystemUpdateCallback = (data: SubscribeCallbackData) => void
+type SystemUpdateCallback = (data: SubscribeCallbackData) => void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -717,6 +788,6 @@ SystemUpdateCallback = (data: SubscribeCallbackData) => void
 
 **参数**：
 
-| 名称        | 类型   | 只读 | 可选 | 说明         |
-| ----------- | ------ | ---- | ---- | ------------ |
-| data | [SubscribeCallbackData](#subscribecallbackdata) | 是 | 是 | 返回携带系统属性值的通知信息。 |
+| 参数名       | 类型   | 必填 | 说明         |
+| ----------- | ------ | ---- | ------------ |
+| data | [SubscribeCallbackData](#subscribecallbackdata) | 是 | 返回携带系统属性值的通知信息。 |

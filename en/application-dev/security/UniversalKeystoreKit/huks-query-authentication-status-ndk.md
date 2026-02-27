@@ -16,12 +16,13 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so
 
 ## How to Develop
 
-1. Obtain [keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22) as **resourceId** by referring to [certificate management for applications](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22).
+1. Obtain [keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22) as **resourceId** by calling the [certificate selection API](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22) provided by the certificate management system.
 
 2. Call [OH_Huks_InitExternalCryptoParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_initexternalcryptoparamset) to set specified parameters.
 
 3. Call [OH_Huks_GetUkeyPinAuthState](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_getukeypinauthstate) to obtain the PIN authentication status.
 
+## Development Cases
 
 ```c++
 #include "huks/native_huks_external_crypto_api.h"

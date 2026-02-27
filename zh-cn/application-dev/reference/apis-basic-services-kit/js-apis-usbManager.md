@@ -641,7 +641,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用connectDevice获取。|
 | controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | 是 | 控制传输参数，按需设置参数，参数传参类型请参考USB协议。|
-| timeout | number | 否 | 超时时间（单位：ms），可选参数，默认为0不超时，用户按需选择。 |
+| timeout | number | 否 | 超时时间（单位：ms），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
 
 **返回值：**
 
@@ -707,7 +707,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备。 |
 | requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | 是 | 控制传输参数，按需设置参数，参数传参类型请参考USB协议。 |
-| timeout | number | 否 | 超时时间（单位：ms），可选参数，默认为0不超时。 |
+| timeout | number | 否 | 超时时间（单位：ms），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
 
 **返回值：**
 
@@ -769,7 +769,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 
 > **说明：** 
 >
-> 单次批量传输的传输数据总量（包括pipe、endpoint、buffer、timeout）请控制在200KB以下。
+> 单次批量传输的传输数据总量（包括pipe、endpoint、buffer、timeout）请控制在200KB以下，数据总量过大会导致传输失败返回-1。
 >
 > 在调用接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)claim通信接口。
 
@@ -782,7 +782,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用connectDevice获取。|
 | endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端口，需要调用getDevices获取设备信息列表以及endpoint，address用于确定端点地址，direction用于确定端点的方向，interfaceId用于确定所属接口，当前其他属性不做处理。|
 | buffer | Uint8Array | 是 | 用于写入或读取数据的缓冲区。 |
-| timeout | number | 否 | 超时时间（单位：ms），可选参数，默认为0不超时，用户按需选择。 |
+| timeout | number | 否 | 超时时间（单位：ms），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
 
 **返回值：**
 

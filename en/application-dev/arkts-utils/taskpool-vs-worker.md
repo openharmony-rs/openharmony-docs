@@ -40,18 +40,46 @@ This topic compares TaskPool and Worker based on their [implementation character
 
 ## Use Case Comparison
 
-Both TaskPool and Worker support multithreaded concurrency. However, worker threads of the TaskPool are bound to the system scheduling priority and support load balancing (automatic scaling), making it more efficient than Worker, which requires manual creation and may incur delays. Therefore, TaskPool is recommended for most scenarios.
+Both TaskPool and Worker support multi-threaded concurrency. TaskPool worker threads are bound to the system scheduling priority and support load balancing (automatic scaling). In contrast, Worker threads need to be created and destroyed manually by developers, incurring certain costs for creation and management. Therefore, TaskPool is recommended in most scenarios.
 
-TaskPool is oriented to independent tasks, which are executed within threads. You do not need to care about the thread lifecycle, because long-running tasks (over 3 minutes and not classified as continuous tasks) are automatically reclaimed by the system. Worker applies to tasks that occupy threads for a long time. The thread lifecycle needs to be managed proactively.
+Worker applies to scenarios where threads need to be occupied for an extended period and the thread lifecycle needs to be managed manually by developers. TaskPool applies to scenarios where relatively independent tasks are executed, and there is no need to focus on thread lifecycle when tasks run in threads.
 
-Common use cases are as follows:
+### Recommended Scenarios for Worker
 
-- Tasks exceeding 3 minutes: For tasks that run longer than 3 minutes (excluding time spent on Promise and async/await calls, such as network downloads and file I/O operations), use Worker. For example, use Worker for a background CPU-intensive prediction algorithm that runs for an hour. For details about the scenario example, see [Resident Task Development](resident-task-guide.md).
+In the following scenarios, tasks usually need to run for a long time or depend on the thread context, making Worker the suitable choice:
 
-- Associated synchronous tasks: In scenarios where a series of synchronous tasks is required, such as when creating and using handles that must be permanently stored, Worker is recommended to ensure proper management of these handles. For details, see [Using Worker for Interdependent Synchronous Tasks](sync-task-development.md#using-worker-for-interdependent-synchronous-tasks).
+- **Tasks with a runtime exceeding 3 minutes**
 
-- Tasks requiring priority setting: In versions earlier than API version 18, Worker does not support setting scheduling priorities, so TaskPool is necessary. Since API version 18, Worker supports priority settings, allowing you to choose between TaskPool and Worker based on your use case and task characteristics. For example, in a [histogram rendering scenario](cpu-intensive-task-development.md#using-taskpool-for-image-histogram-processing), background calculations for histogram data that affect user experience should be prioritized. This requires the use of TaskPool.
+  (The 3-minute duration mentioned here does not include the time consumed by Promise and async/await asynchronous calls, such as I/O tasks like network downloads and file read/write operations):
 
-- Frequently canceled tasks: For tasks that need to be canceled often, such as in a Gallery viewing scenario where images on either side of the current image are cached, TaskPool is recommended to efficiently manage the cancellation of a cache task when swiping to the next image.
+  For example, use Worker for a background CPU-intensive prediction algorithm that runs for an hour.
 
-- Numerous or dispersed tasks: For applications with multiple modules containing numerous time-consuming tasks, using Worker for load management may be inconvenient. TaskPool is recommended in such cases. For details about the scenario example, see [Batch Database Operations](batch-database-operations-guide.md).
+  For details about the scenario example, see [Resident Task Development](resident-task-guide.md).
+
+- **A set of related synchronous tasks**
+
+  For example, in scenarios where handles need to be created and used, each newly created handle is unique and must be persistently retained to ensure the correct execution of subsequent operations. Such scenarios are suitable for Worker.
+
+  For details, see [Using Worker for Interdependent Synchronous Tasks](sync-task-development.md#using-worker-for-interdependent-synchronous-tasks).
+
+### Recommended Scenarios for Worker
+
+In the following scenarios, tasks are typically relatively independent and have higher requirements for scheduling, cancellation, or management capabilities, making TaskPool the suitable choice:
+
+- **Tasks requiring priority setting**
+
+  In versions earlier than API version 18, Worker does not support setting scheduling priorities, so TaskPool is necessary.
+
+  Since API version 18, Worker supports priority settings, allowing you to choose between TaskPool and Worker based on your use case and task characteristics. 
+
+  For example, in a [histogram rendering scenario](cpu-intensive-task-development.md#using-taskpool-for-image-histogram-processing), the histogram data calculated in the background is used for foreground UI display (which impacts user experience), and the task is relatively independent. Therefore, TaskPool is recommended.
+
+- **Tasks requiring frequent cancellation**
+
+  For tasks that need to be canceled often, such as in a Gallery viewing scenario where images on either side of the current image are cached, TaskPool is recommended to efficiently manage the cancellation of a cache task when swiping to the next image.
+
+- **Numerous or dispersed tasks**
+
+  For applications with multiple modules containing numerous time-consuming tasks, you are advised to use TaskPool instead of Worker for load management.
+
+  For details about the scenario example, see [Batch Database Operations](batch-database-operations-guide.md).

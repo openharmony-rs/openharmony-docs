@@ -7174,7 +7174,7 @@ let twoWayNetAddr: socket.NetAddress = {
 }
 let twoWaySecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -7245,7 +7245,7 @@ let socks5Server: socket.NetAddress = {
 }
 let twoWaySecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -7374,7 +7374,7 @@ let twoWayNetAddr: socket.NetAddress = {
 }
 let twoWaySecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -7449,7 +7449,7 @@ let socks5Server: socket.NetAddress = {
 }
 let twoWaySecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8229,7 +8229,7 @@ TLS安全相关操作。当本地证书cert和私钥key不为空时，开启双�
 | 名称   | 类型                                           | 只读 | 可选 |说明                    |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | ca                    | string \| Array\<string\> | 否   | 是 | 服务端的ca证书，用于认证校验服务端的数字证书。默认为系统预置CA证书<sup>12+</sup>。最多支持设置1000本证书。 |
-| cert                  | string                                                              | 否   | 是 | 本地客户端的数字证书。                 |
+| cert                  | string \| Array\<string\>         | 否   | 是 | 本地客户端的数字证书。从API Version 24开始支持传入数组，最多支持设置1000本证书。                 |
 | key                   | string                                                  | 否   | 是 | 本地数字证书的私钥。                   |
 | password                | string                                                  | 否   | 是 | 读取私钥的密码。                      |
 | protocols             | [Protocol](#protocol9) \|Array\<[Protocol](#protocol9)\> | 否   | 是| TLS的协议版本，默认为"TLSv1.2"。                  |
@@ -8339,7 +8339,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8410,7 +8410,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8469,7 +8469,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8533,7 +8533,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8603,7 +8603,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8667,7 +8667,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8754,7 +8754,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8835,7 +8835,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8903,7 +8903,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8969,7 +8969,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9034,7 +9034,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9135,7 +9135,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9196,7 +9196,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9261,7 +9261,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9322,7 +9322,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9391,7 +9391,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9471,7 +9471,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9545,7 +9545,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9610,7 +9610,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9676,7 +9676,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9738,7 +9738,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9801,7 +9801,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9864,7 +9864,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9930,7 +9930,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9996,7 +9996,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10061,7 +10061,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10123,7 +10123,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10186,7 +10186,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10251,7 +10251,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10324,7 +10324,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10385,7 +10385,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10453,7 +10453,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10525,7 +10525,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10584,7 +10584,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10648,7 +10648,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10708,7 +10708,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,

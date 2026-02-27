@@ -21,7 +21,7 @@
 在开发复杂界面时，UI渲染效率是一个需要考虑的问题。例如在长列表快速滑动时，大量列表项的创建和销毁可能导致界面卡顿。组件复用是一种优化UI性能的重要方法。通过复用先前创建并且已经下树的组件对象，降低组件创建和销毁的频率，从而减小计算开销，提升UI渲染效率。
 
 > **注意：**
-> - \@Reusable装饰的自定义组件在从组件树中移除时，自定义组件（包含视图节点、组件实例和状态上下文）将被放入其父自定义组件的缓存池中。后续创建新自定义组件节点时，将优先复用>缓存池中的节点，从而节约组件重新创建的时间。
+> - \@Reusable装饰的自定义组件在从组件树中移除时，自定义组件（包含视图节点、组件实例和状态上下文）将被放入其父自定义组件的缓存池中。后续创建新自定义组件节点时，将优先复用缓存池中的节点，从而节约组件重新创建的时间。
 > - \@Reusable提供了[aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)和[aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)两个生命周期，在组件被回收时调用aboutToRecycle，在组件被复用时调用aboutToReuse。开发者可以在这两个生命周期中实现组件回收、复用相关的业务逻辑。
 > - \@Reusable装饰的自定义组件下有子组件时，会在回收和复用时递归调用子组件的aboutToRecycle和aboutToReuse（与子组件是否被@Reusable标记无关），直到遍历完所有子组件。
 > - 组件复用前后应保持组件结构不变。针对组件结构存在差异的场景，可以使用[reuseId](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md)来区分不同结构的复用组件。
@@ -647,8 +647,7 @@ struct Child {
         this.data.pushData(i + '');
       }
     }
-  
-    // ...
+
     build() {
       Column() {
         List() {
@@ -705,6 +704,7 @@ struct Index {
   aboutToAppear(): void {
     for (let i = 0; i < 20; i++) { // 循环20次
       let title = i + 1 + 'test_if';
+      // 请开发者自行在src/main/resources/base/media路径下添加app.media.app_icon图片，否则运行时会因资源缺失而Image空白。
       this.dataSource.pushData(new FriendMoment(i.toString(), title, 'app.media.app_icon'));
     }
 
@@ -969,7 +969,7 @@ class ListItemObject {
 
 示例中使用\@Reusable装饰器修饰GridItem中的自定义组件ReusableChildComponent，即表示其具备组件复用的能力。
 
-使用aboutToReuse可以在 Grid 滑动时，从复用缓存中加入到组件树之前触发，从而更新组件状态变量，展示正确内容。
+使用aboutToReuse可以在Grid滑动时，从复用缓存中加入到组件树之前触发，从而更新组件状态变量，展示正确内容。
 
 需要注意的是无需在aboutToReuse中对[\@Link](arkts-link.md)、[\@StorageLink](arkts-appstorage.md#storagelink)、[\@ObjectLink](arkts-observed-and-objectlink.md)、[\@Consume](arkts-provide-and-consume.md)等自动更新值的状态变量进行更新，可能触发不必要的组件刷新。
 

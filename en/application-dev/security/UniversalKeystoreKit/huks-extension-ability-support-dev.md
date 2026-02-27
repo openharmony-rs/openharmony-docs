@@ -9,7 +9,7 @@
 
 ## Adaptation Guide
 
-This guide provides the reference for driver vendors to inherit the API capabilities required for implementing [CryptoExtensionAbility](../../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md). Other implementations need to call the underlying driver functions encapsulated by the drivers in sequence based on service requirements.
+This document provides the reference for driver vendors to inherit the API capabilities required for implementing [CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md). Other implementations need to call the underlying driver functions encapsulated by the drivers in sequence based on service requirements.
 
 To manually create a **CryptoExtensionAbility** component in the DevEco Studio project, perform the following steps:
 
@@ -62,7 +62,7 @@ To manually create a **CryptoExtensionAbility** component in the DevEco Studio p
    > **NOTE**
    >
    > 1. The function of exporting a public key must be implemented in **onGetProperty** so that the upstream services can use the PIN for encrypted transmission and complete PIN authentication. The encryption algorithms support RSA, SM2, and others. When the input parameter **propertyId** is set to **SKF_ExportPublicKey**, the returned public key information is in JSON format and contains the following four mandatory fields: **publicKey** (public key data), **algo** (algorithm type and key length), **transformation** (cryptographic operation parameter, such as the padding mode), and **size** (public key data length). For details about the implementation, see the **onGetProperty** API in the following sample code.
-   > 2. PIN authentication status needs to be isolated based on the UID. The input parameter **params** of the **onAuthUkeyPin** API contains the UID information of the service (the service identity can be obtained through [HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)).
+   > 2. Handle resources and PIN authentication status must be isolated based on the UID. The input parameter **params** of the **onOpenResource**, **onCloseResource**, **onAuthUkeyPin**, **onGetUkeyPinAuthState**, and **onClearUkeyPinAuthState** APIs contain the UID information of the service (the service identity can be obtained through [HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)).
    > 3. The errors of the API functions cannot be returned in a customized manner. If the errors are not returned in the mode defined by the API, an exception occurs.
    > 4. The input parameter **params** of **onExportCertificate** contains the [HUKS_TAG_PURPOSE](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) parameter.<br>The values are as follows:<br>**0**: default usage.<br>**1**: used to query of all credentials.<br>**2**: used for credential signing.<br>**3**: used for credential encryption.
 
@@ -74,9 +74,9 @@ To manually create a **CryptoExtensionAbility** component in the DevEco Studio p
    class CryptoExtension extends CryptoExtensionAbility {
      // ...
      onOpenResource(resourceId: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam>): Promise<HuksCryptoExtensionResult> {
-       // Construct a result object. By default, the operation fails, and the return value is -1.
+       // Construct a result object. By default, the operation fails, and the return value is **HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL**.
        let result: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
        };
 
        // Obtain appId.
@@ -91,7 +91,7 @@ To manually create a **CryptoExtensionAbility** component in the DevEco Studio p
 
        // ...
        let res: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
        }
        try {
          let driver: YourUKeyDriver = YourDriverInstance;
@@ -110,11 +110,11 @@ To manually create a **CryptoExtensionAbility** component in the DevEco Studio p
      onCloseResource(handle: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam>): Promise<HuksCryptoExtensionResult> {
        // ...
        let result: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
        };
-   
+       
        let res: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
        }
        try {
          let driver: YourUKeyDriver = YourDriverInstance;
@@ -133,7 +133,7 @@ To manually create a **CryptoExtensionAbility** component in the DevEco Studio p
        // ...
        let emptyArray: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
        let result: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
          property: emptyArray
        };
 
@@ -166,7 +166,7 @@ To manually create a **CryptoExtensionAbility** component in the DevEco Studio p
        }
    
        let res: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
        }
        try {
          // Scenario: The properties are obtained successfully.
@@ -193,13 +193,13 @@ To manually create a **CryptoExtensionAbility** component in the DevEco Studio p
        }
        // ...
        let result: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
          authState: huksExternalCrypto.HuksExternalPinAuthState.HUKS_EXT_CRYPTO_PIN_NO_AUTH,
          retryCount: 0
        };
    
        let res: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
        }
        try {
          // Scenario: The PIN authentication is successful.
@@ -219,12 +219,12 @@ To manually create a **CryptoExtensionAbility** component in the DevEco Studio p
      onGetUkeyPinAuthState(handle: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam>): Promise<HuksCryptoExtensionResult> {
        // ...
        let result: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
          authState: 0
        };
 
        let res: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
        }
        try {
          // Scenario: The PIN authentication status is successfully obtained.
@@ -250,11 +250,11 @@ To manually create a **CryptoExtensionAbility** component in the DevEco Studio p
      onClearUkeyPinAuthState(handle: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam>): Promise<HuksCryptoExtensionResult> {
        // ...
        let result: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
        };
 
        let res: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
        }
        try {
          // Scenario: The PIN authentication status is successfully cleared.
@@ -272,12 +272,12 @@ To manually create a **CryptoExtensionAbility** component in the DevEco Studio p
      onInitSession(handle: string, params: huks.HuksOptions): Promise<HuksCryptoExtensionResult> {
        // ...
        let result: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
          handle: ""
        };
 
        let res: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
        }
        try {
          // Scenario: The initialization phase in the three-segment operations is successful.
@@ -297,12 +297,12 @@ To manually create a **CryptoExtensionAbility** component in the DevEco Studio p
        // ...
        let certs: Uint8Array = new Uint8Array();
        let result: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
          outData: certs
        };
 
        let res: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
        }
        try {
          // Scenario: The update phase in the three-segment operations is successful.
@@ -322,12 +322,12 @@ To manually create a **CryptoExtensionAbility** component in the DevEco Studio p
        // ...
        let certs: Uint8Array = new Uint8Array();
        let result: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
          outData: certs
        };
 
        let res: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
        };
        try {
          // Scenario: The finish phase in the three-segment operations is successful.
@@ -347,12 +347,12 @@ To manually create a **CryptoExtensionAbility** component in the DevEco Studio p
        // ...
        let certInfoSetArray: Array<HuksCryptoExtensionCertInfo> = []
        let result: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
          certs: certInfoSetArray
        };
 
        let res: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
        }
        try {
          // Scenario: The certificate is exported successfully.
@@ -372,12 +372,12 @@ To manually create a **CryptoExtensionAbility** component in the DevEco Studio p
        // ...
        let certInfoSetArray: Array<HuksCryptoExtensionCertInfo> = []
        let result: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
          certs: certInfoSetArray
        };
 
        let res: HuksCryptoExtensionResult = {
-         resultCode: -1,
+         resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
        }
        try {
          // Scenario: All the certificates are exported successfully.
@@ -395,11 +395,11 @@ To manually create a **CryptoExtensionAbility** component in the DevEco Studio p
    }
    ```
 
-6. Construct **HuksCryptoExtensionResult** and convert error codes. For details about the error codes, see [HUKS Error Codes](../../reference/apis-universal-keystore-kit/errorcode-huks.md). If no requirement is specified, return SKF error codes.
+6. Construct **HuksCryptoExtensionResult** and convert error codes. For details about the error codes, see [HuksCryptoExtensionResultCode](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#hukscryptoextensionresultcode). If no requirement is raised, SKF error codes are returned directly.
 
    ```ts
    let huksResult: HuksCryptoExtensionResult = {
-     resultCode: -1,
+     resultCode: HuksCryptoExtensionResultCode.HUKS_CRYPTO_EXTENSION_ERR_EXTENSION_FAIL,
    }
    ```
 

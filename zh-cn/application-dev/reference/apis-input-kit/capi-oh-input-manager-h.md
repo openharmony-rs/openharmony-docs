@@ -40,7 +40,7 @@
 | [Input_InterceptorOptions](capi-input-input-interceptoroptions.md) | Input_InterceptorOptions | 事件拦截选项。 |
 | [Input_CustomCursor](capi-input-input-customcursor.md) | Input_CustomCursor | 自定义鼠标光标像素图资源。 |
 | [Input_CursorConfig](capi-input-input-cursorconfig.md) | Input_CursorConfig | 自定义鼠标光标配置。 |
-| [Input_CursorInfo](capi-input-input-cursorinfo.md) | Input_CursorInfo | 定义鼠标光标信息。|
+| [Input_CursorInfo](capi-input-input-cursorinfo.md) | Input_CursorInfo | 定义鼠标光标信息，包括光标显示状态、光标样式、光标大小档位、光标颜色。|
 
 ### 枚举
 
@@ -55,7 +55,8 @@
 | [Input_InjectionStatus](#input_injectionstatus) | Input_InjectionStatus | 注入权限状态枚举值。 |
 | [InputEvent_SourceType](#inputevent_sourcetype) | InputEvent_SourceType | 输入事件源类型。 |
 | [Input_KeyboardType](#input_keyboardtype) | Input_KeyboardType | 输入设备的键盘类型。 |
-| [Input_Result](#input_result) | Input_Result | 错误码枚举值。 |
+| [Input_Result](#input_result) | Input_Result | 返回值枚举值。 |
+| [Input_TouchEventToolType](#input_toucheventtooltype) | Input_TouchEventToolType | 输入设备的触屏事件工具类型。 |
 
 ### 函数
 
@@ -149,8 +150,8 @@
 | [Input_Result OH_Input_GetAxisEventWindowId(const Input_AxisEvent* axisEvent, int32_t* windowId)](#oh_input_getaxiseventwindowid) | - | 获取轴事件的窗口ID。 |
 | [Input_Result OH_Input_SetAxisEventDisplayId(Input_AxisEvent* axisEvent, int32_t displayId)](#oh_input_setaxiseventdisplayid) | - | 设置轴事件的屏幕ID。 |
 | [Input_Result OH_Input_GetAxisEventDisplayId(const Input_AxisEvent* axisEvent, int32_t* displayId)](#oh_input_getaxiseventdisplayid) | - | 获取轴事件的屏幕ID。 |
-| [Input_Result OH_Input_AddKeyEventMonitor(Input_KeyEventCallback callback)](#oh_input_addkeyeventmonitor) | - | 添加按键事件监听。 |
-| [Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback)](#oh_input_addmouseeventmonitor) | - | 添加鼠标事件监听,包含鼠标点击，移动，不包含滚轮事件，滚轮事件归属于轴事件。 |
+| [Input_Result OH_Input_AddKeyEventMonitor(Input_KeyEventCallback callback)](#oh_input_addkeyeventmonitor) | - | 添加按键事件监听。重复添加只有第一次生效，后续添加请求将被忽略。 |
+| [Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback)](#oh_input_addmouseeventmonitor) | - | 添加鼠标事件监听，包含鼠标点击，移动，不包含滚轮事件，滚轮事件归属于轴事件。 |
 | [Input_Result OH_Input_AddTouchEventMonitor(Input_TouchEventCallback callback)](#oh_input_addtoucheventmonitor) | - | 添加触屏输入事件监听。 |
 | [Input_Result OH_Input_AddAxisEventMonitorForAll(Input_AxisEventCallback callback)](#oh_input_addaxiseventmonitorforall) | - | 添加所有类型轴事件监听，轴事件类型定义在[InputEvent_AxisEventType](capi-oh-axis-type-h.md#inputevent_axiseventtype)中。 |
 | [Input_Result OH_Input_AddAxisEventMonitor(InputEvent_AxisEventType axisEventType, Input_AxisEventCallback callback)](#oh_input_addaxiseventmonitor) | - | 添加指定类型的轴事件监听，轴事件类型定义在[InputEvent_AxisEventType](capi-oh-axis-type-h.md#inputevent_axiseventtype)中。 |
@@ -159,8 +160,8 @@
 | [Input_Result OH_Input_RemoveTouchEventMonitor(Input_TouchEventCallback callback)](#oh_input_removetoucheventmonitor) | - | 移除触屏输入事件监听。 |
 | [Input_Result OH_Input_RemoveAxisEventMonitorForAll(Input_AxisEventCallback callback)](#oh_input_removeaxiseventmonitorforall) | - | 移除所有类型轴事件监听。 |
 | [Input_Result OH_Input_RemoveAxisEventMonitor(InputEvent_AxisEventType axisEventType, Input_AxisEventCallback callback)](#oh_input_removeaxiseventmonitor) | - | 移除指定类型轴事件监听，轴事件类型定义在[InputEvent_AxisEventType](capi-oh-axis-type-h.md#inputevent_axiseventtype)中。 |
-| [Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, Input_InterceptorOptions *option)](#oh_input_addkeyeventinterceptor) | - | 添加按键事件的拦截，重复添加只有第一次生效。仅在应用获焦时拦截按键事件。 |
-| [Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *callback,Input_InterceptorOptions *option)](#oh_input_addinputeventinterceptor) | - | 添加输入事件拦截，包括鼠标、触屏和轴事件，重复添加只有第一次生效。仅命中应用窗口时拦截输入事件。 |
+| [Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, Input_InterceptorOptions *option)](#oh_input_addkeyeventinterceptor) | - | 添加按键事件的拦截，重复添加只有第一次生效，后续添加请求返回错误码[INPUT_REPEAT_INTERCEPTOR](#input_result)。仅在应用获焦时拦截按键事件。 |
+| [Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *callback,Input_InterceptorOptions *option)](#oh_input_addinputeventinterceptor) | - | 添加输入事件拦截，包括鼠标、触屏和轴事件。重复添加只有第一次生效，后续添加请求返回错误码[INPUT_REPEAT_INTERCEPTOR](#input_result)。仅命中应用窗口时拦截输入事件。 |
 | [Input_Result OH_Input_RemoveKeyEventInterceptor(void)](#oh_input_removekeyeventinterceptor) | - | 移除按键事件拦截。 |
 | [Input_Result OH_Input_RemoveInputEventInterceptor(void)](#oh_input_removeinputeventinterceptor) | - | 移除输入事件拦截，包括鼠标、触屏和轴事件。 |
 | [Input_Result OH_Input_GetIntervalSinceLastInput(int64_t *timeInterval)](#oh_input_getintervalsincelastinput) | - | 获取距离上次系统输入事件的时间间隔。 |
@@ -175,7 +176,7 @@
 | [Input_Result OH_Input_GetAllSystemHotkeys(Input_Hotkey **hotkey, int32_t *count)](#oh_input_getallsystemhotkeys) | - | 获取设置的所有快捷键。 |
 | [void OH_Input_SetRepeat(Input_Hotkey* hotkey, bool isRepeat)](#oh_input_setrepeat) | - | 设置是否上报重复key事件。 |
 | [Input_Result OH_Input_GetRepeat(const Input_Hotkey* hotkey, bool *isRepeat)](#oh_input_getrepeat) | - | 获取是否上报重复key事件。 |
-| [Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyCallback callback)](#oh_input_addhotkeymonitor) | - | 订阅快捷键事件。此接口在智能穿戴、轻量级智能穿戴设备不生效。 |
+| [Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyCallback callback)](#oh_input_addhotkeymonitor) | - | 订阅快捷键事件。 |
 | [Input_Result OH_Input_RemoveHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyCallback callback)](#oh_input_removehotkeymonitor) | - | 取消订阅快捷键。 |
 | [Input_Result OH_Input_RegisterDeviceListener(Input_DeviceListener* listener)](#oh_input_registerdevicelistener) | - | 注册设备热插拔的监听器。 |
 | [Input_Result OH_Input_UnregisterDeviceListener(Input_DeviceListener* listener)](#oh_input_unregisterdevicelistener) | - | 取消注册设备热插拔的监听。 |
@@ -235,6 +236,16 @@
 | [Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t* color)](#oh_input_cursorinfo_getcolor) | - | 获取指定鼠标光标信息对象对应的光标颜色, 使用32位ARGB整数表示。|
 | [Input_Result OH_Input_GetMouseEventCursorInfo(const struct Input_MouseEvent* mouseEvent, Input_CursorInfo* cursorInfo)](#oh_input_getmouseeventcursorinfo) | - | 获取鼠标事件的鼠标光标信息，包括光标显示状态、光标样式、光标大小档位、光标颜色。|
 | [Input_Result OH_Input_GetCursorInfo(Input_CursorInfo* cursorInfo, OH_PixelmapNative** pixelmap)](#oh_input_getcursorinfo) | - | 查询当前鼠标光标信息，包括光标显示状态、光标样式、光标大小档位、光标颜色。如果pixelmap参数非空，且光标样式为[DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle)，则会同时返回光标的PixelMap位图对象。 |
+| [Input_Result OH_Input_SetTouchEventPressure(struct Input_TouchEvent* touchEvent, double pressure)](#oh_input_settoucheventpressure) | - | 设置触屏输入事件的压力。 |
+| [double OH_Input_GetTouchEventPressure(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventpressure) | - | 获取触屏输入事件的压力。 |
+| [void OH_Input_SetTouchEventWindowX(struct Input_TouchEvent* touchEvent, int32_t windowX)](#oh_input_settoucheventwindowx) | - | 设置触屏输入事件以指定窗口左上角为原点的相对坐标系的X坐标。 |
+| [int32_t OH_Input_GetTouchEventWindowX(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventwindowx) | - | 获取触屏输入事件以指定窗口左上角为原点的相对坐标系的X坐标。|
+| [void OH_Input_SetTouchEventWindowY(struct Input_TouchEvent* touchEvent, int32_t windowY)](#oh_input_settoucheventwindowy) | - | 设置触屏输入事件以指定窗口左上角为原点的相对坐标系的Y坐标。|
+| [int32_t OH_Input_GetTouchEventWindowY(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventwindowy) | - | 获取触屏输入事件以指定窗口左上角为原点的相对坐标系的Y坐标。|
+| [void OH_Input_SetTouchEventDownTime(struct Input_TouchEvent* touchEvent, int64_t downTime)](#oh_input_settoucheventdowntime) | - | 设置当前触屏事件对应手指/其他触屏外设最近一次按下事件发生的时间。|
+| [int64_t OH_Input_GetTouchEventDownTime(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventdowntime) | - | 获取当前触屏事件对应手指/其他触屏外设最近一次按下事件发生的时间。|
+| [Input_Result OH_Input_SetTouchEventToolType(struct Input_TouchEvent* touchEvent, Input_TouchEventToolType toolType)](#oh_input_settoucheventtooltype) | - | 设置触屏输入事件的工具类型。|
+| [Input_TouchEventToolType OH_Input_GetTouchEventToolType(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventtooltype) | - | 获取触屏输入事件的工具类型。 |
 
 ## 枚举类型说明
 
@@ -420,7 +431,7 @@ enum Input_Result
 
 **描述**
 
-错误码枚举值。
+返回值枚举值。
 
 **起始版本：** 12
 
@@ -443,6 +454,29 @@ enum Input_Result
 | INPUT_APP_NOT_FOCUSED = 3900009 |  当前应用不是焦点应用。<br>**起始版本：** 20。 |
 | INPUT_DEVICE_NO_POINTER = 3900010 |  无鼠标类输入外设。<br>**起始版本：** 20。 |
 | INPUT_INVALID_WINDOWID = 26500001 |  无效的窗口ID。<br>**起始版本：** 22。 |
+
+### Input_TouchEventToolType
+
+```c
+enum Input_TouchEventToolType
+```
+
+**描述**
+
+输入设备的触屏事件工具类型。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| TOOL_TYPE_FINGER = 0 | 表示手指。 |
+| TOOL_TYPE_PEN = 1 | 表示手写笔设备。 |
+| TOOL_TYPE_RUBBER = 2 | 表示橡皮檫类设备。 |
+| TOOL_TYPE_BRUSH = 3 | 表示画笔类设备。 |
+| TOOL_TYPE_PENCIL = 4 | 表示铅笔类设备。 |
+| TOOL_TYPE_AIRBRUSH = 5 | 表示喷枪类设备。 |
+| TOOL_TYPE_MOUSE = 6 | 表示鼠标设备。 |
+| TOOL_TYPE_LENS = 7 | 表示透镜类设备。 |
 
 ## 函数说明
 
@@ -842,7 +876,7 @@ int32_t OH_Input_InjectKeyEvent(const struct Input_KeyEvent* keyEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | OH_Input_InjectKeyEvent 函数错误码。<br>         若注入成功，返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；<br>         若缺少权限，返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；<br>         若参数错误，返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)。 |
+| int32_t | OH_Input_InjectKeyEvent 函数返回值。<br>         若注入成功，返回[INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result)；<br>         若缺少权限，返回[INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result)；<br>         若参数错误，返回[INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result)。 |
 
 ### OH_Input_CreateKeyEvent()
 
@@ -1003,7 +1037,7 @@ void OH_Input_SetKeyEventActionTime(struct Input_KeyEvent* keyEvent, int64_t act
 | 参数项 | 描述 |
 | -- | -- |
 | struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | 按键事件对象，通过[OH_Input_CreateKeyEvent](#oh_input_createkeyevent)接口可以创建按键事件对象。<br>使用完需使用[OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent)接口销毁按键事件对象。 |
-| int64_t actionTime | 按键事件发生的时间，表示从1970.1.1 00:00:00 GMT逝去的微秒数。 |
+| int64_t actionTime | 按键事件发生的时间，表示系统启动运行至今逝去的微秒数。 |
 
 ### OH_Input_GetKeyEventActionTime()
 
@@ -1485,7 +1519,7 @@ void OH_Input_SetMouseEventActionTime(struct Input_MouseEvent* mouseEvent, int64
 | 参数项 | 描述 |
 | -- | -- |
 | struct [Input_MouseEvent](capi-input-input-mouseevent.md)* mouseEvent | 鼠标事件对象，通过[OH_Input_CreateMouseEvent](#oh_input_createmouseevent)接口可以创建鼠标事件对象。<br>使用完需使用[OH_Input_DestroyMouseEvent](#oh_input_destroymouseevent)接口销毁鼠标事件对象。 |
-| int64_t actionTime | 鼠标事件发生的时间，表示从1970.1.1 00:00:00 GMT逝去的微秒数。 |
+| int64_t actionTime | 鼠标事件发生的时间，表示系统启动运行至今逝去的微秒数。 |
 
 ### OH_Input_GetMouseEventActionTime()
 
@@ -1842,7 +1876,7 @@ void OH_Input_SetTouchEventActionTime(struct Input_TouchEvent* touchEvent, int64
 | 参数项 | 描述 |
 | -- | -- |
 | touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
-| int64_t actionTime | 触屏输入事件发生的时间，表示从1970.1.1 00:00:00 GMT逝去的微秒数。 |
+| int64_t actionTime | 触屏输入事件发生的时间，表示系统启动运行至今逝去的微秒数。 |
 
 ### OH_Input_GetTouchEventActionTime()
 
@@ -2010,7 +2044,7 @@ Input_Result OH_Input_RequestInjection(Input_InjectAuthorizeCallback callback)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | 返回结果码，参见[Input_Result](capi-oh-input-manager-h.md#input_result)。<br>      INPUT_SUCCESS = 0 申请授权成功，等待用户授权结果并回调授权状态。<br>      INPUT_PARAMETER_ERROR = 401  参数错误，参数callback为空。<br>      INPUT_DEVICE_NOT_SUPPORTED = 801  表示不支持该功能。<br>      INPUT_SERVICE_EXCEPTION = 3800001  服务异常。<br>      INPUT_INJECTION_AUTHORIZING =  3900005 正在授权中。<br>      INPUT_INJECTION_OPERATION_FREQUENT = 3900006 重复请求（当前应用连续申请授权弹窗成功，间隔时间不超过3秒）。<br>      INPUT_INJECTION_AUTHORIZED = 3900007 当前应用已经授权。<br>      INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008   其它应用已经授权。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | 函数返回值，参见[Input_Result](capi-oh-input-manager-h.md#input_result)。<br>      INPUT_SUCCESS = 0 申请授权成功，等待用户授权结果并回调授权状态。<br>      INPUT_PARAMETER_ERROR = 401  参数错误，参数callback为空。<br>      INPUT_DEVICE_NOT_SUPPORTED = 801  表示不支持该功能。<br>      INPUT_SERVICE_EXCEPTION = 3800001  服务异常。<br>      INPUT_INJECTION_AUTHORIZING =  3900005 正在授权中。<br>      INPUT_INJECTION_OPERATION_FREQUENT = 3900006 重复请求（当前应用连续申请授权弹窗成功，间隔时间不超过3秒）。<br>      INPUT_INJECTION_AUTHORIZED = 3900007 当前应用已经授权。<br>      INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008   其它应用已经授权。 |
 
 ### OH_Input_QueryAuthorizedStatus()
 
@@ -2035,7 +2069,7 @@ Input_Result OH_Input_QueryAuthorizedStatus(Input_InjectionStatus* status)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | 返回结果码，参见[Input_Result](capi-oh-input-manager-h.md#input_result)。<br>      INPUT_SUCCESS = 0 查询成功。<br>      INPUT_PARAMETER_ERROR = 401  参数错误，参数status为空。<br>      INPUT_SERVICE_EXCEPTION = 3800001  服务异常。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | 函数返回值，参见[Input_Result](capi-oh-input-manager-h.md#input_result)。<br>      INPUT_SUCCESS = 0 查询成功。<br>      INPUT_PARAMETER_ERROR = 401  参数错误，参数status为空。<br>      INPUT_SERVICE_EXCEPTION = 3800001  服务异常。 |
 
 ### OH_Input_CreateAxisEvent()
 
@@ -2330,7 +2364,7 @@ Input_Result OH_Input_SetAxisEventActionTime(Input_AxisEvent* axisEvent, int64_t
 | 参数项 | 描述 |
 | -- | -- |
 | [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | 轴事件对象，通过[OH_Input_CreateAxisEvent](#oh_input_createaxisevent)接口可以创建轴事件对象。<br>使用完需使用[OH_Input_DestroyAxisEvent](#oh_input_destroyaxisevent)接口销毁轴事件对象。 |
-| int64_t actionTime | 轴事件发生的时间，表示从1970.1.1 00:00:00 GMT逝去的微秒数。 |
+| int64_t actionTime | 轴事件发生的时间，表示系统启动运行至今逝去的微秒数。 |
 
 **返回：**
 
@@ -2358,7 +2392,7 @@ Input_Result OH_Input_GetAxisEventActionTime(const Input_AxisEvent* axisEvent, i
 | 参数项 | 描述 |
 | -- | -- |
 | const [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | 轴事件对象，通过[OH_Input_CreateAxisEvent](#oh_input_createaxisevent)接口可以创建轴事件对象。<br>使用完需使用[OH_Input_DestroyAxisEvent](#oh_input_destroyaxisevent)接口销毁轴事件对象。 |
-| int64_t* actionTime | 出参，返回轴事件发生的时间，表示从1970.1.1 00:00:00 GMT逝去的微秒数。 |
+| int64_t* actionTime | 出参，返回轴事件发生的时间，表示系统启动运行至今逝去的微秒数。 |
 
 **返回：**
 
@@ -2598,7 +2632,7 @@ Input_Result OH_Input_AddKeyEventMonitor(Input_KeyEventCallback callback)
 
 **描述**
 
-添加按键事件监听。
+添加按键事件监听。重复添加只有第一次生效，后续添加请求将被忽略。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -2629,7 +2663,7 @@ Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback)
 
 **描述**
 
-添加鼠标事件监听,包含鼠标点击，移动，不包含滚轮事件，滚轮事件归属于轴事件。
+添加鼠标事件监听，包含鼠标点击，移动，不包含滚轮事件，滚轮事件归属于轴事件。
 
 该接口处于录屏场景时才允许调用，否则调用该接口不生效。
 
@@ -2912,7 +2946,7 @@ Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, In
 
 **描述**
 
-添加按键事件的拦截，重复添加只有第一次生效。仅在应用获焦时拦截按键事件。
+添加按键事件的拦截，重复添加只有第一次生效，后续添加请求返回错误码[INPUT_REPEAT_INTERCEPTOR](#input_result)。仅在应用获焦时拦截按键事件。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -2944,7 +2978,7 @@ Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *c
 
 **描述**
 
-添加输入事件拦截，包括鼠标、触屏和轴事件，重复添加只有第一次生效。仅命中应用窗口时拦截输入事件。
+添加输入事件拦截，包括鼠标、触屏和轴事件。重复添加只有第一次生效，后续添加请求返回错误码[INPUT_REPEAT_INTERCEPTOR](#input_result)。仅命中应用窗口时拦截输入事件。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -3041,7 +3075,7 @@ Input_Result OH_Input_GetIntervalSinceLastInput(int64_t *timeInterval)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_GetIntervalSinceLastInput 函数错误码。<br>若获取时间间隔成功，则返回[INPUT_SUCCESS](#input_result)；若服务异常，返回[INPUT_SERVICE_EXCEPTION](#input_result)；若参数错误，返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | OH_Input_GetIntervalSinceLastInput 函数返回值。<br>若获取时间间隔成功，则返回[INPUT_SUCCESS](#input_result)；若服务异常，返回[INPUT_SERVICE_EXCEPTION](#input_result)；若参数错误，返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_CreateHotkey()
 
@@ -3134,7 +3168,7 @@ Input_Result OH_Input_GetPreKeys(const Input_Hotkey *hotkey, int32_t **preKeys, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_GetPreKeys 函数错误码。<br>         若获取成功，返回[INPUT_SUCCESS](#input_result)；若获取失败，返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | OH_Input_GetPreKeys 函数返回值。<br>         若获取成功，返回[INPUT_SUCCESS](#input_result)；若获取失败，返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_SetFinalKey()
 
@@ -3184,7 +3218,7 @@ Input_Result OH_Input_GetFinalKey(const Input_Hotkey* hotkey, int32_t *finalKeyC
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_GetFinalKey 函数错误码。<br>         若获取成功，返回[INPUT_SUCCESS](#input_result)；<br>         若获取失败，返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | OH_Input_GetFinalKey 函数返回值。<br>         若获取成功，返回[INPUT_SUCCESS](#input_result)；<br>         若获取失败，返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_CreateAllSystemHotkeys()
 
@@ -3197,6 +3231,8 @@ Input_Hotkey **OH_Input_CreateAllSystemHotkeys(int32_t count)
 创建[Input_Hotkey](capi-input-input-hotkey.md)类型实例的数组。通过调用[OH_Input_DestroyAllSystemHotkeys](#oh_input_destroyallsystemhotkeys)销毁[Input_Hotkey](capi-input-input-hotkey.md)实例数组并回收内存。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
 **起始版本：** 14
 
@@ -3211,7 +3247,7 @@ Input_Hotkey **OH_Input_CreateAllSystemHotkeys(int32_t count)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Hotkey](capi-input-input-hotkey.md) | OH_Input_CreateAllSystemHotkeys 函数错误码。<br>         [INPUT_SUCCESS](#input_result) 创建实例数组的双指针成功。 |
+| [Input_Hotkey](capi-input-input-hotkey.md) | OH_Input_CreateAllSystemHotkeys 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 创建实例数组的双指针成功。 |
 
 ### OH_Input_DestroyAllSystemHotkeys()
 
@@ -3247,6 +3283,8 @@ Input_Result OH_Input_GetAllSystemHotkeys(Input_Hotkey **hotkey, int32_t *count)
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
+**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+
 **起始版本：** 14
 
 
@@ -3261,7 +3299,7 @@ Input_Result OH_Input_GetAllSystemHotkeys(Input_Hotkey **hotkey, int32_t *count)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_GetAllSystemHotkeys 函数错误码。<br>         若获取成功，返回[INPUT_SUCCESS](#input_result)；<br>         若获取失败，返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | OH_Input_GetAllSystemHotkeys 函数返回值。<br>         若获取成功，返回[INPUT_SUCCESS](#input_result)；<br>         若获取失败，返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_SetRepeat()
 
@@ -3311,7 +3349,7 @@ Input_Result OH_Input_GetRepeat(const Input_Hotkey* hotkey, bool *isRepeat)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_GetRepeat 函数错误码。<br>         若获取成功，返回[INPUT_SUCCESS](#input_result)；<br>         若获取失败，返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | OH_Input_GetRepeat 函数返回值。<br>         若获取成功，返回[INPUT_SUCCESS](#input_result)；<br>         若获取失败，返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_AddHotkeyMonitor()
 
@@ -3321,9 +3359,17 @@ Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyC
 
 **描述**
 
-订阅快捷键事件。此接口在智能穿戴、轻量级智能穿戴设备不生效。
+订阅快捷键事件。
+
+> **说明：**
+>
+> 订阅快捷键事件时，对于preKeys和finalKey有以下约束：
+> 1. preKeys：修饰键（包括 Ctrl、Shift 和 Alt）集合，数量范围[1, 4]，无顺序要求。例如，Ctrl+Shift+Esc中，Ctrl+Shift称为修饰键。
+> 2. finalKey：被修饰键，除修饰键和Meta键以外的按键，详细按键介绍请参见[按键设备的键值](capi-oh-key-code-h.md)。例如，Ctrl+Shift+Esc中，Esc称为被修饰键。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
 
 **起始版本：** 14
 
@@ -3339,7 +3385,7 @@ Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyC
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_AddHotkeyMonitor 函数错误码。<br>         [INPUT_SUCCESS](#input_result) 表示订阅组合按键成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 参数检查失败。<br>         [INPUT_OCCUPIED_BY_SYSTEM](#input_result) 该快捷键已被系统占用，可以通过接口[OH_Input_GetAllSystemHotkeys](#oh_input_getallsystemhotkeys)查询所有的系统快捷键。<br>         [INPUT_OCCUPIED_BY_OTHER](#input_result) 已被抢占订阅。<br>         [INPUT_DEVICE_NOT_SUPPORTED](#input_result) 表示不支持该功能。 |
+| [Input_Result](#input_result) | OH_Input_AddHotkeyMonitor 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 表示订阅组合按键成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 参数检查失败。<br>         [INPUT_OCCUPIED_BY_SYSTEM](#input_result) 该快捷键已被系统占用，可以通过接口[OH_Input_GetAllSystemHotkeys](#oh_input_getallsystemhotkeys)查询所有的系统快捷键。<br>         [INPUT_OCCUPIED_BY_OTHER](#input_result) 已被抢占订阅。<br>         [INPUT_DEVICE_NOT_SUPPORTED](#input_result) 表示不支持该功能。 |
 
 ### OH_Input_RemoveHotkeyMonitor()
 
@@ -3367,7 +3413,7 @@ Input_Result OH_Input_RemoveHotkeyMonitor(const Input_Hotkey* hotkey, Input_Hotk
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_RemoveHotkeyMonitor 函数错误码。<br>         [INPUT_SUCCESS](#input_result) 取消订阅组合按键成功， [INPUT_PARAMETER_ERROR](#input_result) 参数检查失败。 |
+| [Input_Result](#input_result) | OH_Input_RemoveHotkeyMonitor 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 取消订阅组合按键成功， [INPUT_PARAMETER_ERROR](#input_result) 参数检查失败。 |
 
 ### OH_Input_RegisterDeviceListener()
 
@@ -3394,7 +3440,7 @@ Input_Result OH_Input_RegisterDeviceListener(Input_DeviceListener* listener)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_RegisterDeviceListener 的返回值。<br>         [INPUT_SUCCESS](#input_result) 表示注册成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示listener 为NULL。 |
+| [Input_Result](#input_result) | OH_Input_RegisterDeviceListener 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 表示注册成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示listener 为NULL。 |
 
 ### OH_Input_UnregisterDeviceListener()
 
@@ -3421,7 +3467,7 @@ Input_Result OH_Input_UnregisterDeviceListener(Input_DeviceListener* listener)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_UnregisterDeviceListener 的返回值。<br>         [INPUT_SUCCESS](#input_result) 表示取消注册成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示listener 为 NULL 或者 listener 未被注册。<br>         [INPUT_SERVICE_EXCEPTION](#input_result) 表示由于服务异常调用失败。 |
+| [Input_Result](#input_result) | OH_Input_UnregisterDeviceListener 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 表示取消注册成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示listener 为 NULL 或者 listener 未被注册。<br>         [INPUT_SERVICE_EXCEPTION](#input_result) 表示由于服务异常调用失败。 |
 
 ### OH_Input_UnregisterDeviceListeners()
 
@@ -3441,7 +3487,7 @@ Input_Result OH_Input_UnregisterDeviceListeners()
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_UnregisterDeviceListener 的返回值。<br>         [INPUT_SUCCESS](#input_result) 表示调用成功。<br>         [INPUT_SERVICE_EXCEPTION](#input_result) 表示由于服务异常调用失败。 |
+| [Input_Result](#input_result) | OH_Input_UnregisterDeviceListener 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 表示调用成功。<br>         [INPUT_SERVICE_EXCEPTION](#input_result) 表示由于服务异常调用失败。 |
 
 ### OH_Input_GetDeviceIds()
 
@@ -3789,7 +3835,7 @@ Input_Result OH_Input_GetFunctionKeyState(int32_t keyCode, int32_t *state)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_GetFunctionKeyState的执行结果。<br>  [INPUT_SUCCESS](#input_result) 表示获取状态成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>  [INPUT_KEYBOARD_DEVICE_NOT_EXIST](#input_result) 表示键盘设备不存在。 |
+| [Input_Result](#input_result) | OH_Input_GetFunctionKeyState 函数返回值。<br>  [INPUT_SUCCESS](#input_result) 表示获取状态成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>  [INPUT_KEYBOARD_DEVICE_NOT_EXIST](#input_result) 表示键盘设备不存在。 |
 
 ### OH_Input_InjectTouchEvent()
 
@@ -3805,6 +3851,8 @@ int32_t OH_Input_InjectTouchEvent(const struct Input_TouchEvent* touchEvent)
 
 从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。
 
+**设备行为差异**：该接口在PC/2in1设备中可正常调用，在其他设备上调用无效果。
+
 **起始版本：** 12
 
 
@@ -3818,7 +3866,7 @@ int32_t OH_Input_InjectTouchEvent(const struct Input_TouchEvent* touchEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | OH_Input_InjectTouchEvent的执行结果。<br>         [INPUT_SUCCESS](#input_result) 表示注入成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>         [INPUT_PERMISSION_DENIED](#input_result) 表示缺少权限。 |
+| int32_t | OH_Input_InjectTouchEvent 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 表示注入成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>         [INPUT_PERMISSION_DENIED](#input_result) 表示缺少权限。 |
 
 ### OH_Input_InjectMouseEvent()
 
@@ -3849,7 +3897,7 @@ int32_t OH_Input_InjectMouseEvent(const struct Input_MouseEvent* mouseEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | OH_Input_InjectTouchEvent的执行结果。<br>         [INPUT_SUCCESS](#input_result) 表示注入成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>         [INPUT_PERMISSION_DENIED](#input_result) 表示缺少权限。 |
+| int32_t | OH_Input_InjectTouchEvent 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 表示注入成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>         [INPUT_PERMISSION_DENIED](#input_result) 表示缺少权限。 |
 
 ### OH_Input_GetMouseEventDisplayId()
 
@@ -3900,7 +3948,7 @@ Input_Result OH_Input_QueryMaxTouchPoints(int32_t *count)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_QueryMaxTouchPoints的执行结果：<br>[INPUT_SUCCESS](#input_result) 表示查询成功。<br> [INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数错误。 |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | OH_Input_QueryMaxTouchPoints 函数返回值：<br>[INPUT_SUCCESS](#input_result) 表示查询成功。<br> [INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) 表示参数错误。 |
 
 ### OH_Input_InjectMouseEventGlobal()
 ```c
@@ -3927,7 +3975,7 @@ int32_t OH_Input_InjectMouseEventGlobal(const struct Input_MouseEvent* mouseEven
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | OH_Input_InjectMouseEventGlobal的执行结果。<br>         [INPUT_SUCCESS](#input_result) 表示注入成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>         [INPUT_PERMISSION_DENIED](#input_result) 表示缺少权限。 |
+| int32_t | OH_Input_InjectMouseEventGlobal 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 表示注入成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>         [INPUT_PERMISSION_DENIED](#input_result) 表示缺少权限。 |
 
 ### OH_Input_SetMouseEventGlobalX()
 ```c
@@ -4040,7 +4088,7 @@ int32_t OH_Input_InjectTouchEventGlobal(const struct Input_TouchEvent* touchEven
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | OH_Input_InjectTouchEventGlobal的执行结果。<br>         [INPUT_SUCCESS](#input_result) 表示注入成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>         [INPUT_PERMISSION_DENIED](#input_result) 表示缺少权限。 |
+| int32_t | OH_Input_InjectTouchEventGlobal 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 表示注入成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>         [INPUT_PERMISSION_DENIED](#input_result) 表示缺少权限。 |
 
 ### OH_Input_SetTouchEventGlobalX()
 
@@ -4238,6 +4286,8 @@ Input_Result OH_Input_GetPointerLocation(int32_t *displayId, double *displayX, d
 
 获取当前屏幕上鼠标的坐标点。
 
+**设备行为差异**：该接口在Wearable设备上返回3900010错误码，在其他设备上可正常调用。
+
 **起始版本：** 20
 
 **参数：**
@@ -4252,7 +4302,7 @@ Input_Result OH_Input_GetPointerLocation(int32_t *displayId, double *displayX, d
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_GetPointerLocation的执行结果：<br>      [INPUT_SUCCESS](#input_result) 表示查询成功。<br>      [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>      [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常。<br>      [INPUT_APP_NOT_FOCUSED](#input_result) 表示当前应用不是焦点应用。<br>      [INPUT_DEVICE_NO_POINTER](#input_result) 表示无鼠标类输入外设。 |
+| [Input_Result](#input_result) | OH_Input_GetPointerLocation 函数返回值：<br>      [INPUT_SUCCESS](#input_result) 表示查询成功。<br>      [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>      [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常。<br>      [INPUT_APP_NOT_FOCUSED](#input_result) 表示当前应用不是焦点应用。<br>      [INPUT_DEVICE_NO_POINTER](#input_result) 表示无鼠标类输入外设。 |
 
 
 ### OH_Input_GetKeyEventId()
@@ -4278,7 +4328,7 @@ Input_Result OH_Input_GetKeyEventId(const struct Input_KeyEvent* keyEvent, int32
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_GetKeyEventId的执行结果：<br> [INPUT_SUCCESS](#input_result) 表示操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。 |
+| [Input_Result](#input_result) | OH_Input_GetKeyEventId 函数返回值：<br> [INPUT_SUCCESS](#input_result) 表示操作成功。<br> [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。 |
 
 
 ### OH_Input_AddKeyEventHook()
@@ -4297,6 +4347,8 @@ Input_Result OH_Input_AddKeyEventHook(Input_KeyEventCallback callback)
 
 **需要权限：** ohos.permission.HOOK_KEY_EVENT
 
+**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
+
 **起始版本：** 21
 
 **参数：**
@@ -4309,7 +4361,7 @@ Input_Result OH_Input_AddKeyEventHook(Input_KeyEventCallback callback)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_AddKeyEventHook的执行结果：<br> [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br>  [INPUT_DEVICE_NOT_SUPPORTED](#input_result) 表示不支持该功能。 <br>  [INPUT_PERMISSION_DENIED](#input_result) 表示权限验证失败。<br>  [INPUT_REPEAT_INTERCEPTOR](#input_result) 表示重复设置钩子。一个进程仅支持设置一个钩子。<br>  [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
+| [Input_Result](#input_result) | OH_Input_AddKeyEventHook 函数返回值：<br> [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br>  [INPUT_DEVICE_NOT_SUPPORTED](#input_result) 表示不支持该功能。 <br>  [INPUT_PERMISSION_DENIED](#input_result) 表示权限验证失败。<br>  [INPUT_REPEAT_INTERCEPTOR](#input_result) 表示重复设置钩子。一个进程仅支持设置一个钩子。<br>  [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
 
 
 ### OH_Input_RemoveKeyEventHook()
@@ -4326,6 +4378,8 @@ Input_Result OH_Input_RemoveKeyEventHook(Input_KeyEventCallback callback)
 
 **起始版本：** 21
 
+**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
+
 **参数：**
 
 | 参数项 | 描述 |
@@ -4336,7 +4390,7 @@ Input_Result OH_Input_RemoveKeyEventHook(Input_KeyEventCallback callback)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_RemoveKeyEventHook的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。如果之前没有添加对应钩子，移除时也会返回成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br>  [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
+| [Input_Result](#input_result) | OH_Input_RemoveKeyEventHook 函数返回值：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。如果之前没有添加对应钩子，移除时也会返回成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br>  [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
 
 
 ### OH_Input_DispatchToNextHandler()
@@ -4355,6 +4409,8 @@ Input_Result OH_Input_DispatchToNextHandler(int32_t eventId)
 如果仅分发[KEY_ACTION_UP](#input_keyeventaction)或[KEY_ACTION_CANCEL](#input_keyeventaction)按键事件，接口可以调用成功，但不会执行实际的分发动作。<br>
 如果分发的事件未被钩子拦截，函数调用会成功，但不会执行实际的分发动作。
 
+**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
+
 **起始版本：** 21
 
 **参数：**
@@ -4367,7 +4423,7 @@ Input_Result OH_Input_DispatchToNextHandler(int32_t eventId)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_DispatchToNextHandler的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。可通过[OH_Input_GetKeyEventId](#oh_input_getkeyeventid)查看传入的eventId是否准确。<br>  [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
+| [Input_Result](#input_result) | OH_Input_DispatchToNextHandler 函数返回值：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。可通过[OH_Input_GetKeyEventId](#oh_input_getkeyeventid)查看传入的eventId是否准确。<br>  [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
 
 
 ### OH_Input_SetPointerVisible()
@@ -4379,6 +4435,8 @@ Input_Result OH_Input_SetPointerVisible(bool visible)
 **描述**
 
 设置当前窗口的鼠标光标的显示或隐藏状态。
+
+**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
 
 **起始版本：** 22
 
@@ -4392,7 +4450,7 @@ Input_Result OH_Input_SetPointerVisible(bool visible)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_SetPointerVisible的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_DEVICE_NOT_SUPPORTED](#input_result) 表示设备不支持。<br>  [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
+| [Input_Result](#input_result) | OH_Input_SetPointerVisible 函数返回值：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_DEVICE_NOT_SUPPORTED](#input_result) 表示设备不支持。<br>  [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
 
 
 ### OH_Input_GetPointerStyle()
@@ -4404,6 +4462,8 @@ Input_Result OH_Input_GetPointerStyle(int32_t windowId, int32_t *pointerStyle)
 **描述**
 
 获取指定窗口的鼠标光标样式。
+
+**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
 **起始版本：** 22
 
@@ -4418,7 +4478,7 @@ Input_Result OH_Input_GetPointerStyle(int32_t windowId, int32_t *pointerStyle)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_GetPointerStyle的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br>  [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
+| [Input_Result](#input_result) | OH_Input_GetPointerStyle 函数返回值：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br>  [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
 
 
 ### OH_Input_SetPointerStyle()
@@ -4430,6 +4490,8 @@ Input_Result OH_Input_SetPointerStyle(int32_t windowId, int32_t pointerStyle)
 **描述**
 
 设置指定窗口的鼠标光标样式。
+
+**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
 **起始版本：** 22
 
@@ -4444,7 +4506,7 @@ Input_Result OH_Input_SetPointerStyle(int32_t windowId, int32_t pointerStyle)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_SetPointerStyle的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br>  [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
+| [Input_Result](#input_result) | OH_Input_SetPointerStyle 函数返回值：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br>  [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
 
 
 ### OH_Input_CustomCursor_Create()
@@ -4515,7 +4577,7 @@ Input_Result OH_Input_CustomCursor_GetPixelMap(Input_CustomCursor* customCursor,
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_CustomCursor_GetPixelMap的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。 |
+| [Input_Result](#input_result) | OH_Input_CustomCursor_GetPixelMap 函数返回值：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。 |
 
 
 ### OH_Input_CustomCursor_GetAnchor()
@@ -4542,7 +4604,7 @@ Input_Result OH_Input_CustomCursor_GetAnchor(Input_CustomCursor* customCursor, i
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_CustomCursor_GetAnchor的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。 |
+| [Input_Result](#input_result) | OH_Input_CustomCursor_GetAnchor 函数返回值：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。 |
 
 
 ### OH_Input_CursorConfig_Create()
@@ -4612,7 +4674,7 @@ Input_Result OH_Input_CursorConfig_IsFollowSystem(Input_CursorConfig *cursorConf
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_CursorConfig_IsFollowSystem的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。 |
+| [Input_Result](#input_result) | OH_Input_CursorConfig_IsFollowSystem 函数返回值：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。 |
 
 
 ### OH_Input_SetCustomCursor()
@@ -4626,6 +4688,8 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 设置自定义鼠标光标样式。
 
 应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。
+
+**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
 
 **起始版本：** 22
 
@@ -4641,7 +4705,7 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_SetCustomCursor的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br> [INPUT_INVALID_WINDOWID](#input_result) 表示窗口ID无效。<br>   [INPUT_DEVICE_NOT_SUPPORTED](#input_result) 表示设备不支持。<br> [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
+| [Input_Result](#input_result) | OH_Input_SetCustomCursor 函数返回值：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br> [INPUT_INVALID_WINDOWID](#input_result) 表示窗口ID无效。<br>   [INPUT_DEVICE_NOT_SUPPORTED](#input_result) 表示设备不支持。<br> [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
 
 ### OH_Input_CursorInfo_Create()
 
@@ -4652,8 +4716,6 @@ struct Input_CursorInfo* OH_Input_CursorInfo_Create()
 **描述**
 
 创建鼠标光标信息对象。通过调用[OH_Input_CursorInfo_Destroy](#oh_input_cursorinfo_destroy)销毁鼠标光标信息对象。
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
 
 **起始版本：** 22
 
@@ -4673,8 +4735,6 @@ void OH_Input_CursorInfo_Destroy(Input_CursorInfo** cursorInfo)
 
 销毁鼠标光标信息对象。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
-
 **起始版本：** 22
 
 **参数：**
@@ -4693,8 +4753,6 @@ Input_Result OH_Input_CursorInfo_IsVisible(Input_CursorInfo* cursorInfo, bool* v
 
 获取指定鼠标光标信息对象对应的光标显示状态。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
-
 **起始版本：** 22
 
 **参数：**
@@ -4708,7 +4766,7 @@ Input_Result OH_Input_CursorInfo_IsVisible(Input_CursorInfo* cursorInfo, bool* v
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_CursorInfo_IsVisible的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。 |
+| [Input_Result](#input_result) | OH_Input_CursorInfo_IsVisible 函数返回值：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。 |
 
 ### OH_Input_CursorInfo_GetStyle()
 
@@ -4719,8 +4777,6 @@ Input_Result OH_Input_CursorInfo_GetStyle(Input_CursorInfo* cursorInfo, Input_Po
 **描述**
 
 获取指定鼠标光标信息对象对应的光标样式。
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
 
 **起始版本：** 22
 
@@ -4735,7 +4791,7 @@ Input_Result OH_Input_CursorInfo_GetStyle(Input_CursorInfo* cursorInfo, Input_Po
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_CursorInfo_GetStyle的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败或者光标不可见。|
+| [Input_Result](#input_result) | OH_Input_CursorInfo_GetStyle 函数返回值：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败或者光标不可见。|
 
 ### OH_Input_CursorInfo_GetSizeLevel()
 
@@ -4746,8 +4802,6 @@ Input_Result OH_Input_CursorInfo_GetSizeLevel(Input_CursorInfo* cursorInfo, int3
 **描述**
 
 获取指定鼠标光标信息对象对应的光标大小档位。
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
 
 **起始版本：** 22
 
@@ -4762,7 +4816,7 @@ Input_Result OH_Input_CursorInfo_GetSizeLevel(Input_CursorInfo* cursorInfo, int3
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_CursorInfo_GetSizeLevel的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败或者光标不可见。|
+| [Input_Result](#input_result) | OH_Input_CursorInfo_GetSizeLevel 函数返回值：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败或者光标不可见。|
 
 ### OH_Input_CursorInfo_GetColor()
 
@@ -4773,8 +4827,6 @@ Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t
 **描述**
 
 获取指定鼠标光标信息对象对应的光标颜色, 使用32位ARGB整数表示。
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
 
 **起始版本：** 22
 
@@ -4789,7 +4841,7 @@ Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_CursorInfo_GetColor的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败或者光标不可见。 |
+| [Input_Result](#input_result) | OH_Input_CursorInfo_GetColor 函数返回值：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败或者光标不可见。 |
 
 ### OH_Input_GetMouseEventCursorInfo()
 
@@ -4800,8 +4852,6 @@ Input_Result OH_Input_GetMouseEventCursorInfo(const struct Input_MouseEvent* mou
 **描述**
 
 获取鼠标事件的鼠标光标信息，包括光标显示状态、光标样式、光标大小档位、光标颜色。
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
 
 **起始版本：** 22
 
@@ -4816,7 +4866,7 @@ Input_Result OH_Input_GetMouseEventCursorInfo(const struct Input_MouseEvent* mou
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_GetMouseEventCursorInfo的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。 |
+| [Input_Result](#input_result) | OH_Input_GetMouseEventCursorInfo 函数返回值：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。 |
 
 ### OH_Input_GetCursorInfo()
 
@@ -4828,7 +4878,7 @@ Input_Result OH_Input_GetCursorInfo(Input_CursorInfo* cursorInfo, OH_PixelmapNat
 
 查询当前鼠标光标信息，包括光标显示状态、光标样式、光标大小档位、光标颜色。如果pixelmap参数非空，且光标样式为[DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle)，则会同时返回光标的PixelMap位图对象。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
+**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
 **起始版本：** 22
 
@@ -4843,4 +4893,251 @@ Input_Result OH_Input_GetCursorInfo(Input_CursorInfo* cursorInfo, OH_PixelmapNat
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_GetCursorInfo的执行结果：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br>  [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
+| [Input_Result](#input_result) | OH_Input_GetCursorInfo 函数返回值：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。<br>  [INPUT_SERVICE_EXCEPTION](#input_result) 表示服务异常，请重试。 |
+
+### OH_Input_SetTouchEventPressure()
+
+```c
+Input_Result OH_Input_SetTouchEventPressure(struct Input_TouchEvent* touchEvent, double pressure)
+```
+
+**描述**
+
+设置触屏输入事件的压力。
+
+**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
+| double pressure | 压力值，范围[0.0, 1.0]，当前触屏可感知的最小压力程度为0.0，最大压力程度为1.0，无单位。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_SetTouchEventPressure 函数返回值：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。 |
+
+### OH_Input_GetTouchEventPressure()
+
+```c
+double OH_Input_GetTouchEventPressure(const struct Input_TouchEvent* touchEvent)
+```
+
+**描述**
+
+获取触屏输入事件的压力。
+
+**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| double | 压力值，无单位。 |
+
+### OH_Input_SetTouchEventWindowX()
+
+```c
+void OH_Input_SetTouchEventWindowX(struct Input_TouchEvent* touchEvent, int32_t windowX)
+```
+
+**描述**
+
+设置触屏输入事件以指定窗口左上角为原点的相对坐标系的X坐标。
+
+**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
+| int32_t windowX | 指定窗口左上角为原点的相对坐标系的X坐标，单位：px。 |
+
+### OH_Input_GetTouchEventWindowX()
+
+```c
+int32_t OH_Input_GetTouchEventWindowX(const struct Input_TouchEvent* touchEvent)
+```
+
+**描述**
+
+获取触屏输入事件以指定窗口左上角为原点的相对坐标系的X坐标。
+
+**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 指定窗口左上角为原点的相对坐标系的X坐标，单位：px。 |
+
+### OH_Input_SetTouchEventWindowY()
+
+```c
+void OH_Input_SetTouchEventWindowY(struct Input_TouchEvent* touchEvent, int32_t windowY)
+```
+
+**描述**
+
+设置触屏输入事件以指定窗口左上角为原点的相对坐标系的Y坐标。
+
+**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
+| int32_t windowY | 指定窗口左上角为原点的相对坐标系的Y坐标，单位：px。 |
+
+### OH_Input_GetTouchEventWindowY()
+
+```c
+int32_t OH_Input_GetTouchEventWindowY(const struct Input_TouchEvent* touchEvent)
+```
+
+**描述**
+
+获取触屏输入事件以指定窗口左上角为原点的相对坐标系的Y坐标。
+
+**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 指定窗口左上角为原点的相对坐标系的Y坐标，单位：px。 |
+
+### OH_Input_SetTouchEventDownTime()
+
+```c
+void OH_Input_SetTouchEventDownTime(struct Input_TouchEvent* touchEvent, int64_t downTime)
+```
+
+**描述**
+
+设置当前触屏事件对应手指/其他触屏外设最近一次按下事件发生的时间。
+
+**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
+| int64_t downTime | 当前触屏事件对应手指/其他触屏外设最近一次按下事件发生的时间，表示系统启动运行至今逝去的微秒数。 |
+
+### OH_Input_GetTouchEventDownTime()
+
+```c
+int64_t OH_Input_GetTouchEventDownTime(const struct Input_TouchEvent* touchEvent)
+```
+
+**描述**
+
+获取当前触屏事件对应手指/其他触屏外设最近一次按下事件发生的时间。
+
+**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int64_t | 当前触屏事件对应手指/其他触屏外设最近一次按下事件发生的时间，表示系统启动运行至今逝去的微秒数。 |
+
+### OH_Input_SetTouchEventToolType()
+
+```c
+Input_Result OH_Input_SetTouchEventToolType(struct Input_TouchEvent* touchEvent, Input_TouchEventToolType toolType)
+```
+
+**描述**
+
+设置触屏输入事件的工具类型。
+
+**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
+| [Input_TouchEventToolType](#input_toucheventtooltype) toolType | 工具类型。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_SetTouchEventToolType 函数返回值：<br>  [INPUT_SUCCESS](#input_result) 表示操作成功。<br>  [INPUT_PARAMETER_ERROR](#input_result) 表示参数检查失败。 |
+
+### OH_Input_GetTouchEventToolType()
+
+```c
+Input_TouchEventToolType OH_Input_GetTouchEventToolType(const struct Input_TouchEvent* touchEvent)
+```
+
+**描述**
+
+获取触屏输入事件的工具类型。
+
+**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | 触屏输入事件对象，通过[OH_Input_CreateTouchEvent](#oh_input_createtouchevent)接口可以创建触屏输入事件对象。<br>使用完需使用[OH_Input_DestroyTouchEvent](#oh_input_destroytouchevent)接口销毁触屏输入事件对象。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_TouchEventToolType](#input_toucheventtooltype) | 工具类型。 |

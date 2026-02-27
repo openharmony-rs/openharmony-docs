@@ -132,9 +132,7 @@
       - [弹性布局 (Flex)](arkts-layout-development-flex-layout.md)
       - [相对布局 (RelativeContainer)](arkts-layout-development-relative-layout.md)
       - [栅格布局 (GridRow/GridCol)](arkts-layout-development-grid-layout.md)
-      - [选项卡 (Tabs)](arkts-navigation-tabs.md)
-    <!--RP1-->
-    <!--RP1End-->
+      - [选项卡 (Tabs)](arkts-navigation-tabs.md)<!--RP1--><!--RP1End-->
   - 列表与网格<!--arkts-list-and-grid-->
     - [列表与网格概述](arkts-list-grid-development-overview.md)
     - [创建列表 (List)](arkts-layout-development-create-list.md)
@@ -256,8 +254,8 @@
       - [属性修改器 (AttributeModifier)](arkts-user-defined-extension-attributeModifier.md)
       - [属性更新器 (AttributeUpdater)](arkts-user-defined-extension-attributeUpdater.md)
   - [UI国际化](arkts-internationalization.md)
-  - 无障碍与适老化<!--arkts-support-accessibility-friendliness-->
-    - [支持无障碍](arkts-universal-attributes-accessibility.md)
+  - 无障碍与适老化<!--arkts-support-accessibility-friendliness--><!--RP2-->
+    - [支持无障碍](arkts-universal-attributes-accessibility.md)<!--RP2End-->
     - [支持适老化](arkui-support-for-aging-adaptation.md)
   - 主题设置<!--arkts-theme-->
     - [应用深浅色适配](ui-dark-light-color-adaptation.md)
@@ -287,6 +285,7 @@
   - 构建布局<!--arkts-build-layout-ndk-->
     - [使用列表](ndk-loading-long-list.md)
     - [使用瀑布流](ndk-waterflow.md)
+    - [使用网格](ndk-grid.md)
   - 使用文本<!--arkts-build-text-ndk-->
       - [Text组件的文本绘制与显示](ndk-styled-string.md)
       - [输入框文本事件监听](ndk-textarea-event.md)
@@ -355,7 +354,7 @@
       - [Path2D对象](ui-js-components-path2d.md)
       - [OffscreenCanvasRenderingContext2D对象](ui-js-components-offscreencanvas.md)
     - [栅格布局](ui-js-components-grid.md)
-    - Svg开发指导<!--ui-js-svg-->
+    - svg开发指导<!--ui-js-svg-->
       - [基础知识](ui-js-components-svg-overview.md)
       - [绘制图形](ui-js-components-svg-graphics.md)
       - [绘制路径](ui-js-components-svg-path.md)
@@ -388,6 +387,8 @@
     - [自定义节点常见问题](arkts-user-defined-node-faq.md)
     - [按钮与选择组件常见问题](arkts-select-component-faq.md)
     - [使用文本常见问题](arkts-text-faq.md)
+    - [动态属性设置常见问题](arkts-attribute-modifier-faq.md)
+    - [命令式节点常见问题](arkts-arkui-frameNode-faq.md)
 - [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-->
 - [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-->
 - [ArkUI术语](arkui-glossary.md)

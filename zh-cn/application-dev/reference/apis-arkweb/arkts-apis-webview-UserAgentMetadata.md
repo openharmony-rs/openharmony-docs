@@ -110,7 +110,7 @@ setBitness(bitness: string): void
 
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
-| arch | string | 是   | 对应请求标头的Sec-CH-UA-Bitness。空代表使用ArkWeb默认值。 |
+| bitness | string | 是   | 对应请求标头的Sec-CH-UA-Bitness。空代表使用ArkWeb默认值。 |
 
 **示例：**
 
