@@ -1176,7 +1176,7 @@ renderNode.backgroundColor = 0xffff0000;
 renderNode.frame = { x: 10, y: 10, width: 100, height: 100 };
 // 设置renderNode的比例
 renderNode.scale = { x: 0.5, y: 1 };
-// 获取renderNode的轴心
+// 获取renderNode的比例
 const scale = renderNode.scale;
 
 // 继承NodeController实现自定义UI控制器
