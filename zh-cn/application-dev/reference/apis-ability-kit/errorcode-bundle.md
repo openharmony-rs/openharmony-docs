@@ -186,11 +186,13 @@ Failed to install the HAP because the HAP path is invalid or the HAP is too larg
 1. 输入错误，HAP的文件路径不存在。
 2. HAP的路径无法访问。
 3. HAP的大小超过最大限制4G。
+4. HAP中配置了可执行的bin文件，但是没有配置解压模式；或者该设备不支持安装此类型的HAP。
 
 **处理步骤**<br/>
 1. 确认hap是否存在。
 2. 查看hap的可执行权限，是否可读。
 3. 查看HAP的大小是否超过4G。
+4. 配置应用为解压模式，即在应用的[module.json5配置文件](../../quick-start/module-configuration-file.md#配置文件标签)中设置compressNativeLibs标签为true；或者使用[param工具](../../tools/param-tool.md)设置const.bms.bin_install的值为true，即执行hdc shell param set const.bms.bin_install true。
 
 ## 17700015 多个HAP配置信息不同导致应用安装失败
 
