@@ -1427,7 +1427,7 @@ file
   <!-- @[testOptionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/DynamicImportFile.ts) -->        
   
   ``` TypeScript
-  // file2.ts
+  // DynamicImportFile.ts
   export function foo () {}
   ```
 
