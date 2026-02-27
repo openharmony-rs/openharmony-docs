@@ -81,11 +81,11 @@
     "jsonProperty": "value"
   }
 }
-*/
+ */
 
 // 混淆前
-import jsonData from "./test.json";
-
+import jsonData from './ImportJson.json';
+// ...
 let jsonProp = jsonData.jsonObj.jsonProperty;
 ```
 
