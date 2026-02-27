@@ -1,4 +1,4 @@
-# # @ohos.net.webSocket (WebSocket Connection)
+# @ohos.net.webSocket (WebSocket Connection)
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -59,7 +59,6 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 > **NOTE**
 >
-> You can listen to **error** events to obtain the operation result. 
 >
 >The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen) before calling this API.
 
@@ -120,8 +119,6 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 > **NOTE**
 >
-> You can listen to **error** events to obtain the operation result. If an error occurs, the error code 200 will be returned.
->
 >The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen) before calling this API.
 
 **Required permissions**: ohos.permission.INTERNET
@@ -132,7 +129,7 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 >**NOTE**
 >
->The URL cannot contain more than 1024 characters. Otherwise, the connection fails.
+>The URL cannot contain more than 1024 characters. Otherwise, the connection fails. Since API version 15, the maximum length of URLs is changed from 1024 characters to 2048 characters.
 
 **Parameters**
 
@@ -190,8 +187,6 @@ Establishes a WebSocket connection to a given URL. This API uses a promise to re
 
 > **NOTE**
 >
-> You can listen to **error** events to obtain the operation result. If an error occurs, the error code 200 will be returned.
->
 >The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen) before calling this API.
 
 **Required permissions**: ohos.permission.INTERNET
@@ -202,7 +197,7 @@ Establishes a WebSocket connection to a given URL. This API uses a promise to re
 
 >**NOTE**
 >
->The URL cannot contain more than 1024 characters. Otherwise, the connection fails.
+>The URL cannot contain more than 1024 characters. Otherwise, the connection fails. Since API version 15, the maximum length of URLs is changed from 1024 characters to 2048 characters.
 
 **Parameters**
 
@@ -921,7 +916,7 @@ Starts the WebSocketServer service based on the specified **config**. This API u
 
 > **NOTE**
 >
-> You can listen for the **error** events to obtain the execution result of this API. For details about the result codes, see [WebSocket Error Codes](errorcode-net-webSocket.md).
+> You are advised not to listen for the same port when calling this API multiple times.
 
 **Required permission**: ohos.permission.INTERNET
 
@@ -1255,7 +1250,7 @@ Subscribes to the WebSocketServer connection event (the connection between the c
 | Name | Type                   | Mandatory| Description                                                    |
 | -------- | ----------------------- | ---- | ------------------------------------------------------- |
 | type     | string                  | Yes | Event type, which has a fixed value of **connect**. Successful calling of **onconnect()** indicates that a connection is established between the client and server.|
-| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | Yes| Callback used to return the result. which is the information about connected clients.|
+| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | Yes| Callback used to return the information about connected clients.|
 
 **Example**
 
@@ -1286,7 +1281,7 @@ Unsubscribes from WebSocketServer connection events (the connection between the 
 | Name | Type                   | Mandatory| Description                                                    |
 | -------- | ----------------------- | ---- | ------------------------------------------- |
 | type     | string                  | Yes | Event type, which has a fixed value of **connect**. Successful calling of **offconnect()** indicates that listening for connection events is canceled successful.|
-| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | No | Callback used to return the result. which is the information about connected clients.|
+| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | No | Callback used to return the information about connected clients.|
 
 **Example**
 
@@ -1454,7 +1449,7 @@ Unsubscribes from WebSocketServer error events. This API uses an asynchronous ca
 | Name | Type                   | Mandatory| Description                          |
 | -------- | ------------- | ---- | --------------------------------- |
 | type     | string        | Yes|  Event type, which has a fixed value of **error**. Successful calling of **offerror()** indicates that listening for the **error** events is canceled successfully.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| Callback used to return the result. which is the error code (default value: **200**).                        |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| Callback used to return the error code (default value: **200**).                        |
 
 **Example**
 
@@ -1535,9 +1530,8 @@ Represents the result obtained from the **close** event reported when the WebSoc
 | reason | string | No  |No|Error cause for closing the connection.|
 
 ## ResponseHeaders<sup>12+</sup>
-type ResponseHeaders = {
-  [k: string]: string | string[] | undefined;
-}
+
+type ResponseHeaders = { [k: string]: string | string[] | undefined; }
 
 Enumerates the response headers sent by the server.
 
