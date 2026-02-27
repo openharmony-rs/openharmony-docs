@@ -100,13 +100,13 @@ type CallState = call.CallState
 
 type CCallState = call.CCallState
 
-通话状态码。
+运营商通话状态码。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
 |       类型       |            说明             |
 | ---------------- | --------------------------- |
-| [call.CCallState](js-apis-call.md#ccallstate) | 通话状态码（运营商通话状态码）。 |
+| [call.CCallState](js-apis-call.md#ccallstate23) | 通话状态码（运营商通话状态码）。 |
 
 
 ## CardType
@@ -1278,7 +1278,7 @@ SIM卡类型和状态。
 
 |     名称            |                 类型                    | 只读 | 可选 | 说明     |
 | ------------------- | -------------------------------------- | ---- | ---- | -------- |
-| state               | [CCallState](js-apis-call.md#ccallstate) | 否   | 否   | 通话类型。 |
+| state               | [CCallState](js-apis-call.md#ccallstate23) | 否   | 否   | 通话类型。 |
 | telenumber              | string                                 | 否   | 否   | 电话号码。 |
 
 
