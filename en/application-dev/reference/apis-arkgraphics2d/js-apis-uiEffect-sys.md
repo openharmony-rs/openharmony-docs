@@ -775,6 +775,82 @@ struct Index {
 }
 ```
 
+### motionBlur<sup>25+</sup>
+motionBlur(motionBlurOptions: MotionBlurOptions): Filter
+
+Applies a motion blur effect to the component being scaled or moved.
+
+> **NOTE**
+> 
+> - Do not use this API in intra-component transitions, shared element transitions, implicit element transitions, or particle animations. Doing so may cause unexpected results.
+> - The **radius** parameter of **motionBlur** must be set to **0** for the initial state. Otherwise, there may be unexpected results during a cold start.
+> - This API must be used together with the **onFinish** parameter of **AnimateParam**. Its **radius** parameter must be set to **0** when the animation ends; otherwise, there may be unexpected results.
+> - When using this API, do not frequently change the blur radius of the same component; otherwise, there may be unexpected results. For example, if you frequently click the image in the example, the blur effect may not work sometimes.
+> - To avoid unexpected results, make sure the coordinates of the motion blur anchor point are the same as those of the animation scaling anchor point.
+> - To avoid unexpected results, set the blur radius to a value less than 1.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**System API**: This is a system API.
+
+**Parameters**
+| Name        | Type                 | Mandatory| Description                      |
+| ------------- | --------------------- | ---- | ------------------------- |
+| motionBlurOptions  | [MotionBlurOptions](#motionbluroptions25)         | Yes  | Motion blur options.|
+
+**Return value**
+
+| Type             | Description                              |
+| ----------------- | --------------------------------- |
+| [Filter](#filter) | Returns the Filter that the current effect have been added. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. 
+
+**Example**
+
+```ts
+import { uiEffect } from "@kit.ArkGraphics2D";
+
+@Entry
+@Component
+struct MotionBlurExample {
+  @State radius: number = 0
+  @State scale: number = 1
+  @State anchor: MotionBlurAnchor = { x: 0.5, y: 0.5 }
+
+  build() {
+    Column() {
+      Image($r('app.media.test'))
+        .width(200)
+        .height(200)
+        .scale({ x: this.scale, y: this.scale })
+        .foregroundFilter(uiEffect.createFilter().motionBlur({
+          radius: this.radius,
+          anchor: this.anchor
+        }))
+        .onClick(() => {
+          this.scale = 1.5
+          this.radius = 0.5
+          this.getUIContext().animateTo({
+            duration: 500,
+            onFinish: () => {
+              this.radius = 0
+            }
+          }, () => {
+            this.scale = 1
+          })
+        })
+    }
+  }
+}
+```
+
 ### directionLight<sup>20+</sup>
 directionLight(direction: common2D.Point3d, color: Color, intensity: number, mask?: Mask, factor?: number): Filter
 
@@ -1719,3 +1795,27 @@ Describes the parameters used for the brightness blender.
 | positiveCoefficient | [number, number, number]   | No  | No  | RGB positive adjustment parameter based on the reference saturation.<br>The value range of each number is [-20, 20].|
 | negativeCoefficient | [number, number, number]   | No  | No  | RGB negative adjustment parameter based on the reference saturation.<br>The value range of each number is [-20, 20].|
 | fraction            | number                     | No  | No  | Blending ratio of the brightness effect.<br>The value range is [0, 1]. A value beyond the boundary will be automatically truncated during implementation. |
+
+## MotionBlurOptions<sup>25+</sup>
+Defines motion blur options.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**System API**: This is a system API.
+
+| Name    | Type    | Mandatory| Description                                                         |
+| --------- | ------- | ---- | ------------------------------------------------------------ |
+| radius | number | Yes   | Size of motion blur radius. The value range is [0.0, ∞). |
+| anchor | [MotionBlurAnchor](#motionblureanchor25) | Yes   | Motion blur anchor coordinates. |
+
+## MotionBlurAnchor<sup>25+</sup>
+Defines motion blur anchor coordinates.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**System API**: This is a system API.
+
+| Name    | Type    | Mandatory| Description                                                         |
+| --------- | ------- | ---- | ------------------------------------------------------------ |
+| x | number | Yes   | Anchor coordinate x-value. The value range is [0.0, 1.0]. |
+| y | number | Yes   | Anchor coordinate y-value. The value range is [0.0, 1.0]. |

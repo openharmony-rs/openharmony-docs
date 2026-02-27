@@ -775,6 +775,82 @@ struct Index {
 }
 ```
 
+### motionBlur<sup>25+</sup>
+motionBlur(motionBlurOptions: MotionBlurOptions): Filter
+
+为正在缩放或移动的组件添加运动模糊效果。
+
+> **说明：**
+> 
+> - 不要在组件内转场、共享元素转场、隐式元素转场或粒子动画中使用此API，否则可能导致意外结果。
+> - **motionBlur**的**radius**参数在初始状态必须设置为**0**，否则在冷启动时可能出现意外结果。
+> - 此API必须与**AnimateParam**的**onFinish**参数配合使用。动画结束时其**radius**参数必须设置为**0**，否则可能出现意外结果。
+> - 使用此API时，不要频繁更改同一组件的模糊半径，否则可能出现意外结果。例如，如果频繁点击示例中的图片，模糊效果有时可能不生效。
+> - 为避免意外结果，确保运动模糊锚点的坐标与动画缩放锚点的坐标相同。
+> - 为避免意外结果，将模糊半径设置为小于1的值。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+| 参数名         | 类型                  | 必填 | 说明                       |
+| ------------- | --------------------- | ---- | ------------------------- |
+| motionBlurOptions  | [MotionBlurOptions](#motionbluroptions25)         | 是   | 运动模糊选项。|
+
+**返回值：**
+
+| 类型              | 说明                               |
+| ----------------- | --------------------------------- |
+| [Filter](#filter) | 返回挂载了运动模糊效果的Filter。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+import { uiEffect } from "@kit.ArkGraphics2D";
+
+@Entry
+@Component
+struct MotionBlurExample {
+  @State radius: number = 0
+  @State scale: number = 1
+  @State anchor: MotionBlurAnchor = { x: 0.5, y: 0.5 }
+
+  build() {
+    Column() {
+      Image($r('app.media.test'))
+        .width(200)
+        .height(200)
+        .scale({ x: this.scale, y: this.scale })
+        .foregroundFilter(uiEffect.createFilter().motionBlur({
+          radius: this.radius,
+          anchor: this.anchor
+        }))
+        .onClick(() => {
+          this.scale = 1.5
+          this.radius = 0.5
+          this.getUIContext().animateTo({
+            duration: 500,
+            onFinish: () => {
+              this.radius = 0
+            }
+          }, () => {
+            this.scale = 1
+          })
+        })
+    }
+  }
+}
+```
+
 ### directionLight<sup>20+</sup>
 directionLight(direction: common2D.Point3d, color: Color, intensity: number, mask?: Mask, factor?: number): Filter
 
@@ -1229,6 +1305,30 @@ type Blender = BrightnessBlender | HdrBrightnessBlender
 | positiveCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br/>每个number的取值范围[-20, 20]。 |
 | negativeCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br/>每个number的取值范围[-20, 20]。 |
 | fraction            | number                     | 否   | 否   | 提亮效果的混合比例。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。  |
+
+## MotionBlurOptions<sup>25+</sup>
+运动模糊选项。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+| 名称    | 类型    | 必填 | 说明                                                         |
+| --------- | ------- | ---- | ------------------------------------------------------------ |
+| radius | number | 是   | 运动模糊半径的大小，取值范围为[0.0, ∞)。 |
+| anchor | [MotionBlurAnchor](#motionblureanchor25) | 是   | 运动模糊锚点坐标。 |
+
+## MotionBlurAnchor<sup>25+</sup>
+运动模糊锚点坐标。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+| 名称    | 类型    | 必填 | 说明                                                         |
+| --------- | ------- | ---- | ------------------------------------------------------------ |
+| x | number | 是   | 锚点坐标x值，取值范围为[0.0, 1.0]。)。 |
+| y | number | 是   | 锚点坐标y值，取值范围为[0.0, 1.0]。）。 |
 
 ## HdrBrightnessBlender<sup>20+</sup>
 支持HDR的提亮混合器（继承自[BrightnessBlender](#brightnessblender)），用于将提亮效果添加到指定的组件上。在调用HdrBrightnessBlender前，需要先通过[createHdrBrightnessBlender](#uieffectcreatehdrbrightnessblender20)创建一个HdrBrightnessBlender实例。
