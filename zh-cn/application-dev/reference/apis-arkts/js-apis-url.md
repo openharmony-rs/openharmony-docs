@@ -31,7 +31,7 @@ URLParams的构造函数。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -97,7 +97,7 @@ append(name: string, value: string): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -137,7 +137,7 @@ delete(name: string): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -176,7 +176,7 @@ getAll(name: string): string[]
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -219,7 +219,7 @@ entries(): IterableIterator<[string, string]>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -303,25 +303,25 @@ myURLObject.params.forEach((value, name, searchParams) => {
 });
 ```
 
-### forEach<sup>20+</sup>
+### forEach<sup>23+</sup>
 
 forEach(callbackFn: UrlCbFn): void
 
 通过回调函数来遍历URLSearchParams实例对象上的键值对。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callbackFn | [UrlCbFn](#urlcbfn20) | 是 | 回调函数。 |
+| callbackFn | [UrlCbFn](#urlcbfn23) | 是 | 回调函数。 |
 
 **示例：**
 
@@ -357,7 +357,7 @@ ArkTS-Sta: get(name: string): string | undefined
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -400,7 +400,7 @@ has(name: string): boolean
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -443,7 +443,7 @@ set(name: string, value: string): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -481,7 +481,7 @@ sort(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -504,7 +504,7 @@ keys(): IterableIterator&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -535,7 +535,7 @@ values(): IterableIterator&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -586,19 +586,19 @@ for (let pair of pairs) {
 ```
 
 
-### $_iterator()<sup>20+</sup>
+### $_iterator()<sup>23+</sup>
 
 $_iterator(): IterableIterator&lt;[string, string]&gt;
 
 返回一个ES6的迭代器，迭代器的每一项都是一个JavaScript Array。Array的第一项是name，Array的第二项是value。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS版本：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -628,7 +628,7 @@ toString(): string
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -645,19 +645,19 @@ params.append('fod', '3');
 console.info(params.toString()); // Output 'fod=1&bard=2&fod=3'
 ```
 
-## UrlCbFn<sup>20+</sup>
+## UrlCbFn<sup>23+</sup>
 
 type UrlCbFn = (value: string, key: string, searchParams: URLParams) => void
 
-[forEach](#foreach20)函数所需的回调函数。
+[forEach](#foreach23)函数所需的回调函数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -665,7 +665,7 @@ type UrlCbFn = (value: string, key: string, searchParams: URLParams) => void
 | -------- | -------- | -------- | -------- |
 | value | string | 是 | 当前遍历到的键值。 |
 | key | string | 是 | 当前遍历到的键名。 |
-| searchParams | [URLParams](#urlparams9) | 是 | 当前调用[forEach](#foreach20)方法的实例对象。 |
+| searchParams | [URLParams](#urlparams9) | 是 | 当前调用[forEach](#foreach23)方法的实例对象。 |
 
 ## URL
 
@@ -677,19 +677,19 @@ type UrlCbFn = (value: string, key: string, searchParams: URLParams) => void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| hash | string | 否 | 否 | 获取和设置URL的片段部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 20 |
-| host | string | 否 | 否 | 获取和设置URL的主机部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 20 |
-| hostname | string | 否 | 否 | 获取和设置URL的主机名部分，不带端口。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 20 |
-| href | string | 否 | 否 | 获取和设置序列化的URL。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 20 |
-| origin | string | 是 | 否 | 获取URL源的只读序列化。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 20 |
-| password | string | 否 | 否 | 获取和设置URL的密码部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 20 |
-| pathname | string | 否 | 否 | 获取和设置URL的路径部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 20 |
-| port | string | 否 | 否 | 获取和设置URL的端口部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 20 |
-| protocol | string | 否 | 否 | 获取和设置URL的协议部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 20 |
-| search | string | 否 | 否 | 获取和设置URL的序列化查询部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 20 |
+| hash | string | 否 | 否 | 获取和设置URL的片段部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
+| host | string | 否 | 否 | 获取和设置URL的主机部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
+| hostname | string | 否 | 否 | 获取和设置URL的主机名部分，不带端口。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
+| href | string | 否 | 否 | 获取和设置序列化的URL。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
+| origin | string | 是 | 否 | 获取URL源的只读序列化。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
+| password | string | 否 | 否 | 获取和设置URL的密码部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
+| pathname | string | 否 | 否 | 获取和设置URL的路径部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
+| port | string | 否 | 否 | 获取和设置URL的端口部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
+| protocol | string | 否 | 否 | 获取和设置URL的协议部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
+| search | string | 否 | 否 | 获取和设置URL的序列化查询部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
 | searchParams<sup>(deprecated)</sup> | [URLSearchParams](#urlsearchparamsdeprecated) | 是 | 否 | 获取URLSearchParams表示URL查询参数的对象。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>- **说明：** 此属性从API version 7开始支持，从API version 9开始被废弃。建议使用params<sup>9+</sup>替代。 <br> **ArkTS-Dyn起始版本：** 7 |
-| params<sup>9+</sup> | [URLParams](#urlparams9) | 是 | 否 | 获取URLParams表示URL查询参数的对象。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 20 |
-| username | string | 否 | 否 | 获取和设置URL的用户名部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 20 |
+| params<sup>9+</sup> | [URLParams](#urlparams9) | 是 | 否 | 获取URLParams表示URL查询参数的对象。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| username | string | 否 | 否 | 获取和设置URL的用户名部分。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
 
 **示例：**
 
@@ -762,7 +762,7 @@ URL的无参构造函数。parseURL调用后返回一个URL对象，不单独使
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -782,7 +782,7 @@ URL静态成员函数。
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -839,7 +839,7 @@ toString(): string
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -866,7 +866,7 @@ toJSON(): string
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

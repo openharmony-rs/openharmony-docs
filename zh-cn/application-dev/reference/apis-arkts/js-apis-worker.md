@@ -77,7 +77,7 @@ ThreadWorker构造函数。
 | 参数名    | 类型                            | 必填 | 说明                                                         |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | scriptURL | string                          | 是   | Worker线程文件的路径。<br/>路径规则详细参考[文件路径注意事项](../../arkts-utils/worker-introduction.md#文件路径注意事项)。 |
-| options   | [WorkerOptions](#workeroptions) | 否   | Worker构造的选项。                                           |
+| options   | [WorkerOptions](#workeroptions) | 否   | Worker构造的选项。此参数不填时，对应各属性取其默认值。 |
 
 **错误码：**
 

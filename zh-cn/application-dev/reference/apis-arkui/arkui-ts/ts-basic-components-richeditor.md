@@ -1646,6 +1646,26 @@ deleteBackward(): void
 
 **ArkTS-Sta起始版本：** 23
 
+### setStyledPlaceholder<sup>24+</sup>
+
+setStyledPlaceholder(styledString: StyledString): void
+
+设置无输入时的属性字符串样式的提示文本。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明  |
+| ------- | ------ | ---- | ----- |
+| styledString | [StyledString](ts-universal-styled-string.md#styledstring) | 是 | 设置属性字符串样式的提示文本，其优先级高于[placeholder](#placeholder12)属性设置的提示文本。<br>提示文本不支持触发属性字符串[GestureStyle](./ts-universal-styled-string.md#gesturestyle)样式绑定的手势事件，以及[UrlStyle](./ts-universal-styled-string.md#urlstyle14)样式的超链接跳转能力。|
+
 ## RichEditorController
 
 RichEditor组件的控制器，继承自[RichEditorBaseController](#richeditorbasecontroller12)。
@@ -7547,3 +7567,185 @@ struct RichEditor_example {
 }
 ```
 ![StyledString](figures/example38.gif)
+
+### 示例39（设置属性字符串样式的提示文本）
+
+该示例通过[setStyledPlaceholder](#setstyledplaceholder24)接口设置属性字符串样式的提示文本。
+
+从API version 24开始，新增setStyledPlaceholder接口。
+
+ArkTS-Dyn示例：
+
+``` ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct RichEditorExample {
+  styledString: MutableStyledString = new MutableStyledString("Placeholder：文本",
+    [
+      {
+        start: 0,
+        length: 12,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({
+          fontColor: Color.Orange,
+          fontSize: LengthMetrics.fp(24)
+        })
+      },
+      {
+        start: 12,
+        length: 4,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({
+          fontColor: Color.Gray,
+          fontSize: LengthMetrics.fp(20),
+          fontWeight: FontWeight.Bold
+        })
+      },
+      {
+        start: 0,
+        length: 1,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: new ParagraphStyle({
+          textVerticalAlign: TextVerticalAlign.CENTER
+        })
+      }
+    ]);
+  imageStyledString = new MutableStyledString(new ImageAttachment(
+    {
+      // $r(′app.media.startIcon′)需要替换为开发者所需的图像资源文件。
+      resourceValue: $r('app.media.startIcon'),
+      size: { width: 50, height: 50 },
+      verticalAlign: ImageSpanAlignment.BASELINE,
+      objectFit: ImageFit.Fill
+    } as ResourceImageAttachmentOptions
+  ));
+
+  controller: RichEditorController = new RichEditorController();
+
+  aboutToAppear() {
+    this.styledString.appendStyledString(this.imageStyledString);
+    this.controller.setStyledPlaceholder(this.styledString)
+  }
+
+  build() {
+    Column() {
+      Text("RichEditor placeholder支持富文本样式")
+        .fontSize(16)
+        .fontWeight(FontWeight.Bold)
+      RichEditor({ controller: this.controller })
+        .width('80%')
+        .height('20%')
+        .margin(10)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('70%')
+  }
+}
+```
+ArkTS-Sta示例：
+
+``` ts
+'use static'
+import {
+  Entry,
+  Component,
+  MutableStyledString,
+  StyledStringKey,
+  StyleOptions,
+  TextStyle,
+  TextStyleInterface,
+  Color,
+  ParagraphStyle,
+  ParagraphStyleInterface,
+  ImageAttachment,
+  $r,
+  ImageSpanAlignment,
+  ImageFit,
+  ResourceImageAttachmentOptions,
+  RichEditorController,
+  Column,
+  Text,
+  FontWeight,
+  RichEditor,
+  FlexAlign,
+  TextVerticalAlign
+} from '@ohos.arkui.component';
+import { LengthMetrics } from '@ohos.arkui.node'
+@Entry
+@Component
+struct RichEditorExample {
+  fontStyleAttr1: TextStyle = new TextStyle({
+    fontColor: Color.Orange,
+    fontSize: LengthMetrics.fp(24)
+  } as TextStyleInterface);
+  fontStyleAttr2: TextStyle = new TextStyle({
+    fontColor: Color.Gray,
+    fontSize: LengthMetrics.fp(20),
+    fontWeight: FontWeight.Bold
+  } as TextStyleInterface);
+  paragraphStyle: ParagraphStyle = new ParagraphStyle({
+    textVerticalAlign: TextVerticalAlign.CENTER
+  } as ParagraphStyleInterface);
+
+  styledString: MutableStyledString = new MutableStyledString("Placeholder：文本",
+    [
+      {
+        start: 0,
+        length: 12,
+        styledKey: StyledStringKey.FONT,
+        styledValue: this.fontStyleAttr1,
+      },
+      {
+        start: 12,
+        length: 4,
+        styledKey: StyledStringKey.FONT,
+        styledValue: this.fontStyleAttr2,
+      },
+      {
+        start: 0,
+        length: 1,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: this.paragraphStyle
+      }
+    ] as Array<StyleOptions>);
+  imageStyledString:MutableStyledString = new MutableStyledString(new ImageAttachment(
+    {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      resourceValue: $r('app.media.startIcon'),
+      size: { width: 50, height: 50 },
+      verticalAlign: ImageSpanAlignment.BASELINE,
+      objectFit: ImageFit.Fill
+    } as ResourceImageAttachmentOptions
+  ));
+
+  controller: RichEditorController = new RichEditorController();
+
+  aboutToAppear() {
+    this.styledString.appendStyledString(this.imageStyledString);
+    this.controller.setStyledPlaceholder(this.styledString)
+  }
+
+  build() {
+    Column() {
+      Text("RichEditor placeholder支持富文本样式")
+        .fontSize(16)
+        .fontWeight(FontWeight.Bold)
+      RichEditor({ controller: this.controller })
+        .width('80%')
+        .height('20%')
+        .margin(10)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('70%')
+  }
+}
+```
+![setStyledPlaceholder](figures/richEditorSetStyledPlaceholder.png)
