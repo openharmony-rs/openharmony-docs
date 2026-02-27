@@ -2579,7 +2579,7 @@ setWillMuteWhenInterrupted(muteWhenInterrupted: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 6800103 | Operation not permit at current state. |
+| 6800103 | Operation not permitted at current state. |
 
 **示例：**
 
