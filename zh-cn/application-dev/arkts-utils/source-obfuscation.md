@@ -353,15 +353,15 @@ test(a2);
   <!-- @[optionExample_enableFilenameObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
   
   ``` TypeScript
-  // example.ts
+  // ArkGuardAbility.ts
   // 混淆前：
-  import * as m from '../test1/test2';
-  import { foo } from '../test1/test2';
+  import * as m from '../FilenameObfuscationTest/FilenameObfuscationTest';
+  import { foo } from '../FilenameObfuscationTest/FilenameObfuscationTest';
   // ...
   m.foo();
   foo();
   async function func1() {
-    const modules = await import('../test1/test2');
+    const modules = await import('../FilenameObfuscationTest/FilenameObfuscationTest');
     const result = modules.foo();
   }
   ```
