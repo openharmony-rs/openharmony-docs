@@ -3271,17 +3271,17 @@ let z = { text: 'hello' } as const;
 <!-- @[no_asConst](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoAsConst.ets) -->  
 
 ``` TypeScript
-// 'string'类型。
+// 'string'类型
 let x: string = 'hello';
 
-// 'number[]'类型。
+// 'number[]'类型
 let y: number[] = [10, 20];
 
 class Label {
   public text: string = '';
 }
 
-// 'Label'类型。
+// 'Label'类型
 let z: Label = {
   public text: 'hello',
 }
