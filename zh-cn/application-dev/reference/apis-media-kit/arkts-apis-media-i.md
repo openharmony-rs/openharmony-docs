@@ -221,7 +221,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | videoBitrate         | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |  是  | 输出视频的码率，单位为比特率（bps）。默认码率按输出视频的分辨率设置，[240p，480P]默认码率值为1Mbps，(480P,720P]默认码率值为2Mbps，(720P,1080P]默认码率值为4Mbps，1080P及以上默认值为8Mbps。|
 | videoCodec        | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8) | 否 | 是   | 输出视频的编码格式，当前仅支持AVC和HEVC。若源视频编码格式为HEVC，则默认设置为HEVC，否则默认设置为AVC。|
 | videoFrameWidth        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |  是   | 输出视频帧的宽，单位为像素（px），支持范围[240-3840]。默认设置为源视频帧的宽。|
-| videoFrameHeight        | number | 否 |  是   | 输出视频帧的高，单位为像素（px），支持范围[240-2160]。默认设置为源视频帧的高。|
+| videoFrameHeight        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |  是   | 输出视频帧的高，单位为像素（px），支持范围[240-2160]。默认设置为源视频帧的高。|
 
 ## AVMetadata<sup>11+</sup>
 
