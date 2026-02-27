@@ -145,6 +145,8 @@
             - [使用装饰器开发意图](application-models/insight-intent-decorator-development.md)
             - [附录：标准意图接入规范](application-models/insight-intent-access-specifications.md)
           - [调试意图](application-models/insight-intent-debug.md)
+        - 智能体开发指导<!--agent-->
+          - [Agent配置文件说明](application-models/agent-extension-configuration.md)
       - FA模型开发指导<!--fa-model-development-->
         - [FA模型开发概述](application-models/fa-model-development-overview.md)
         - FA模型应用组件<!--fa-model-application-components-->
