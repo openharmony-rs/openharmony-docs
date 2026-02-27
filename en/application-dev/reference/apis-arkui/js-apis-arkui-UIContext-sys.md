@@ -409,6 +409,34 @@ struct MyStateSample {
 }
 ```
 
+### getLuminanceSampler<sup>23+</sup>
+
+getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined
+
+Obtains the [LuminanceSampler](arkts-apis-uicontext-luminancesampler-sys.md) color picker object. You can use this object to set the background luminance color picking parameters, register the luminance change listening callback, and unregister the listening callback.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name    | Type   | Mandatory  | Description     |
+| --- | --- | --- | --- |
+| target | [TargetInfo](arkts-apis-uicontext-i.md#targetinfo18) | Yes| ID of the target component.|
+
+**Return value**
+
+| Type                                             | Description                                                        |
+| ------------------------------------------------- | ------------------------------------------------------------ |
+| [LuminanceSampler](arkts-apis-uicontext-luminancesampler-sys.md) | Background luminance color picker.|
+
+**Example**
+
+For details, see the example of [offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange23).
+
 ## ComponentSnapshot<sup>12+</sup>
 
 In the following API examples, you must first use [getComponentSnapshot()](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) in **UIContext** to obtain a **ComponentSnapshot** instance, and then call the APIs using the obtained instance.
