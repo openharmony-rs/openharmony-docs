@@ -721,8 +721,8 @@ export function FieldType(...types: Function[]): PropertyDecorator {
 <!-- @[fix_age](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/ExportInterface.ts) -->
 
 ``` TypeScript
-// file.ts
-// 混淆前。
+// ExportInterface.ts
+// 混淆前
 const person = {
   myAge: 18
 }
