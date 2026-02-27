@@ -883,7 +883,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ArkTS-Dyn: setLoop(streamID: number, loop: number): Promise\<void>
 
-ArkTS-Sta:  setLoop(streamID: int, loop: int): Promise\<void>
+ArkTS-Sta: setLoop(streamID: int, loop: int): Promise\<void>
 
 设置循环模式。使用Promise方式异步获取返回值。
 
@@ -949,7 +949,9 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ### setPriority
 
-setPriority(streamID: number, priority: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: setPriority(streamID: number, priority: number, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: setPriority(streamID: int, priority: int, callback: AsyncCallback\<void>): void
 
 设置音频流播放的优先级。使用callback方式异步获取返回值。
 
@@ -963,13 +965,13 @@ setPriority(streamID: number, priority: number, callback: AsyncCallback\<void>):
 
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
-| streamID | number | 是   | 音频流ID，通过play方法获取。 |
-| priority | number | 是   | 优先级，0表示最低优先级。设置范围为大于等于0的整数。 |
+| streamID | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 音频流ID，通过play方法获取。 |
+| priority | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 优先级，0表示最低优先级。设置范围为大于等于0的整数。 |
 | callback | AsyncCallback\<void> | 是   | 异步音频池setPriority方法的回调方法。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -982,7 +984,7 @@ setPriority(streamID: number, priority: number, callback: AsyncCallback\<void>):
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1012,7 +1014,9 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ### setPriority
 
-setPriority(streamID: number, priority: number): Promise\<void>
+ArkTS-Dyn: setPriority(streamID: number, priority: number): Promise\<void>
+
+ArkTS-Sta:  setPriority(streamID: int, priority: int): Promise\<void>
 
 设置音频流优先级。使用Promise方式异步获取返回值。
 
@@ -1026,8 +1030,8 @@ setPriority(streamID: number, priority: number): Promise\<void>
 
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
-| streamID | number | 是   | 音频流ID，通过play方法获取。 |
-| priority | number | 是   | 优先级，0表示最低优先级。设置范围为大于等于0的整数。 |
+| streamID | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 音频流ID，通过play方法获取。 |
+| priority | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 优先级，0表示最低优先级。设置范围为大于等于0的整数。 |
 
 **返回值：**
 
@@ -1037,7 +1041,7 @@ setPriority(streamID: number, priority: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -1050,7 +1054,7 @@ setPriority(streamID: number, priority: number): Promise\<void>
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1079,8 +1083,9 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ### setRate
 
-setRate(streamID: number, rate: audio.AudioRendererRate, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: setRate(streamID: number, rate: audio.AudioRendererRate, callback: AsyncCallback\<void>): void
 
+ArkTS-Sta:  setRate(streamID: int, rate: audio.AudioRendererRate, callback: AsyncCallback\<void>): void
 设置音频流播放速率。使用callback方式异步获取返回值。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
@@ -1093,13 +1098,13 @@ setRate(streamID: number, rate: audio.AudioRendererRate, callback: AsyncCallback
 
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
-| streamID | number | 是   | 音频流ID，通过play方法获取。 |
+| streamID | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 音频流ID，通过play方法获取。 |
 | rate | [audio.AudioRendererRate](../apis-audio-kit/arkts-apis-audio-e.md#audiorendererrate8) | 是   | 音频rate相关参数。 |
 | callback | AsyncCallback\<void> | 是   | 异步音频池setRate方法的回调方法。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -1112,7 +1117,7 @@ setRate(streamID: number, rate: audio.AudioRendererRate, callback: AsyncCallback
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1142,7 +1147,9 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ### setRate
 
-setRate(streamID: number, rate: audio.AudioRendererRate): Promise\<void>
+ArkTS-Dyn: setRate(streamID: number, rate: audio.AudioRendererRate): Promise\<void>
+
+ArkTS-Sta: setRate(streamID: int, rate: audio.AudioRendererRate): Promise\<void>
 
 设置音频流的播放速率。使用Promise方式异步获取返回值。
 
@@ -1156,7 +1163,7 @@ setRate(streamID: number, rate: audio.AudioRendererRate): Promise\<void>
 
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
-| streamID | number | 是   | 音频流ID，通过play方法获取。 |
+| streamID | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 音频流ID，通过play方法获取。 |
 | rate | [audio.AudioRendererRate](../apis-audio-kit/arkts-apis-audio-e.md#audiorendererrate8) | 是   | 音频rate相关参数。 |
 
 **返回值：**
@@ -1167,7 +1174,7 @@ setRate(streamID: number, rate: audio.AudioRendererRate): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -1180,7 +1187,7 @@ setRate(streamID: number, rate: audio.AudioRendererRate): Promise\<void>
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1208,8 +1215,10 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ### setVolume
 
-setVolume(streamID: number, leftVolume: number, rightVolume: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: setVolume(streamID: number, leftVolume: number, rightVolume: number, callback: AsyncCallback\<void>): void
 
+ArkTS-Sta: setVolume(streamID: int, leftVolume: double, rightVolume: double, callback: AsyncCallback\<void>): void
+  
 设置音频流播放音量。使用callback方式异步获取返回值。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
@@ -1222,14 +1231,14 @@ setVolume(streamID: number, leftVolume: number, rightVolume: number, callback: A
 
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
-| streamID | number | 是   | 音频流ID，通过play方法获取。 |
-| leftVolume | number | 是   | 左声道音量，设置范围为0.0-1.0之间。 |
-| rightVolume | number | 是   | 右声道音量，设置范围为0.0-1.0之间，当前右声道设置无效，以左声道为准。 |
+| streamID | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 音频流ID，通过play方法获取。 |
+| leftVolume | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 左声道音量，设置范围为0.0-1.0之间。 |
+| rightVolume | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 右声道音量，设置范围为0.0-1.0之间，当前右声道设置无效，以左声道为准。 |
 | callback | AsyncCallback\<void> | 是   | 异步音频池setVolume方法的回调方法。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -1242,7 +1251,7 @@ setVolume(streamID: number, leftVolume: number, rightVolume: number, callback: A
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1257,7 +1266,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     console.info(`Succeeded in createSoundPool`);
     let streamID: number = 0;
     // 先调用play方法获取到对应资源的streamID。
-    //设置音量为0.5。
+    // 设置音量为0.5。
     soundPool.setVolume(streamID, 0.5, 0.5, (error: BusinessError) => {
       if (error) {
         console.error(`Failed to setVolume soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
@@ -1272,7 +1281,9 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ### setVolume
 
-setVolume(streamID: number, leftVolume: number, rightVolume: number): Promise\<void>
+ArkTS-Dyn: setVolume(streamID: number, leftVolume: number, rightVolume: number): Promise\<void>
+
+ArkTS-Sta: setVolume(streamID: int, leftVolume: double, rightVolume: double): Promise\<void>
 
 设置音频流的播放音量。使用Promise方式异步获取返回值。
 
@@ -1286,9 +1297,9 @@ setVolume(streamID: number, leftVolume: number, rightVolume: number): Promise\<v
 
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
-| streamID | number | 是   | 音频流ID，通过play方法获取。 |
-| leftVolume | number | 是   | 左声道音量，设置范围为0.0-1.0之间。 |
-| rightVolume | number | 是   | 右声道音量，设置范围为0.0-1.0之间，当前右声道设置无效，以左声道为准。 |
+| streamID | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 音频流ID，通过play方法获取。 |
+| leftVolume | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 左声道音量，设置范围为0.0-1.0之间。 |
+| rightVolume | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 右声道音量，设置范围为0.0-1.0之间，当前右声道设置无效，以左声道为准。 |
 
 **返回值：**
 
@@ -1298,7 +1309,7 @@ setVolume(streamID: number, leftVolume: number, rightVolume: number): Promise\<v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -1311,7 +1322,7 @@ setVolume(streamID: number, leftVolume: number, rightVolume: number): Promise\<v
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1339,7 +1350,9 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ### unload
 
-unload(soundID: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: unload(soundID: number, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: unload(soundID: int, callback: AsyncCallback\<void>): void
 
 卸载音频资源。使用callback方式异步获取返回值。
 
@@ -1353,7 +1366,7 @@ unload(soundID: number, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
-| soundID | number | 是   | 资源ID，通过load方法获取。 |
+| soundID | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 资源ID，通过load方法获取。 |
 | callback | AsyncCallback\<void> | 是   | 异步音频池unload方法的回调方法。 |
 
 **错误码：**
@@ -1371,7 +1384,7 @@ unload(soundID: number, callback: AsyncCallback\<void>): void
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1400,8 +1413,10 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ### unload
 
-unload(soundID: number): Promise\<void>
+ArkTS-Dyn: unload(soundID: number): Promise\<void>
 
+ArkTS-Sta: unload(soundID: int): Promise\<void>
+  
 卸载音频资源。使用Promise方式异步获取返回值。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
@@ -1414,7 +1429,7 @@ unload(soundID: number): Promise\<void>
 
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
-| soundID | number | 是   | 资源ID，通过load方法获取。 |
+| soundID | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 资源ID，通过load方法获取。 |
 
 **返回值：**
 
@@ -1437,7 +1452,7 @@ unload(soundID: number): Promise\<void>
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1494,7 +1509,7 @@ release(callback: AsyncCallback\<void>): void
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1551,7 +1566,7 @@ release(): Promise\<void>
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1576,25 +1591,31 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ### on('loadComplete')
 
-on(type: 'loadComplete', callback: Callback\<number>): void
+ArkTS-Dyn: on(type: 'loadComplete', callback: Callback\<number>): void
+
+ArkTS-Sta: on(type: 'loadComplete', callback: Callback\<int>): void
 
 音频池资源加载完成监听。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 支持的事件：'loadComplete'，对应的ID加载完成会触发此回调。 |
-| callback | Callback\<number> | 是   | 对应资源加载完成的资源ID。                               |
+| callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<int> | 是   | 对应资源加载完成的资源ID。                               |
 
 **示例：**
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1622,6 +1643,10 @@ off(type: 'loadComplete'): void
 取消监听资源的加载完成。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1655,7 +1680,9 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ### on('playFinishedWithStreamId')<sup>18+</sup>
 
-on(type: 'playFinishedWithStreamId', callback: Callback\<number>): void
+ArkTS-Dyn: on(type: 'playFinishedWithStreamId', callback: Callback\<number>): void
+
+ArkTS-Sta:on(type: 'playFinishedWithStreamId', callback: Callback\<int>): void
 
 音频池资源播放完成监听，同时返回播放结束的音频的streamId。
 
@@ -1665,19 +1692,23 @@ on(type: 'playFinishedWithStreamId', callback: Callback\<number>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 支持的事件：'playFinishedWithStreamId'，音频流播放完成会触发此回调，并返回播放完成的音频的streamId。 |
-| callback | Callback\<number> | 是   |  异步'playFinishedWithStreamId'的回调方法。返回播放完成的音频的streamId。   |
+| callback | ArkTS-Dyn: Callback\<number><br>ArkTS-Sta: Callback\<int> | 是   |  异步'playFinishedWithStreamId'的回调方法。返回播放完成的音频的streamId。   |
 
 **示例：**
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool_: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1705,6 +1736,10 @@ off(type: 'playFinishedWithStreamId'): void
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
@@ -1716,7 +1751,7 @@ off(type: 'playFinishedWithStreamId'): void
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool_: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1742,6 +1777,10 @@ on(type: 'playFinished', callback: Callback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
@@ -1754,7 +1793,7 @@ on(type: 'playFinished', callback: Callback\<void>): void
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1783,6 +1822,10 @@ off(type: 'playFinished'): void
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
@@ -1794,7 +1837,7 @@ off(type: 'playFinished'): void
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1821,6 +1864,10 @@ on(type: 'error', callback: ErrorCallback): void
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
@@ -1833,7 +1880,7 @@ on(type: 'error', callback: ErrorCallback): void
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1863,6 +1910,10 @@ off(type: 'error'): void
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                      |
@@ -1874,7 +1925,7 @@ off(type: 'error'): void
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//创建soundPool实例。
+// 创建soundPool实例。
 let soundPool: media.SoundPool;
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
@@ -1899,6 +1950,10 @@ on(type: 'errorOccurred', callback: Callback\<ErrorInfo>): void
 监听[SoundPool](#soundpool)的错误事件，并返回包含错误码、错误发生阶段、资源ID和音频流ID的[ErrorInfo](#errorinfo20)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1944,6 +1999,10 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 取消监听音频池的错误事件。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
