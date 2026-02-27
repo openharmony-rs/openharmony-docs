@@ -3184,14 +3184,9 @@ let x = globalThis.abc;
 
 <!-- @[no_globalThisExport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExportMod.ets) -->     
 
-```typescript
-// file1
+``` TypeScript
+// ExportMod.ets
 export let abc: number = 100;
-
-// file2
-import * as M from 'file1'
-
-let x = M.abc;
 ```
 
 <!-- @[no_globalThisImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoGlobalThis.ets) -->
