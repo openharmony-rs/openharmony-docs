@@ -322,35 +322,41 @@
 2. 如果应用要根据出声设备变化而改变自定义样式，必须监听设备切换，然后实时刷新自定义样式。（对应默认样式实现步骤4）
 
    <!-- @[device_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SelfAVCastPicker.ets) -->    
-
-   ```ts
+   
+   ``` TypeScript
    import { audio } from '@kit.AudioKit';
-
-   async observerDevices() {
-     let audioManager = audio.getAudioManager();
-     let audioRoutingManager = audioManager.getRoutingManager();
-
-     // 初次拉起AVCastPicker时需获取当前设备,刷新显示。
-     this.changePickerShow(audioRoutingManager.getPreferredOutputDeviceForRendererInfoSync(this.audioRendererInfo));
-
-     // 监听当前发声设备切换，及时根据不同设备类型显示不同的样式。
-     audioRoutingManager.on('preferOutputDeviceChangeForRendererInfo', this.audioRendererInfo, (desc: audio.AudioDeviceDescriptors) => {
+   
+   @Entry
+   @Component
+   struct SelfCastPicker {
+     // ...
+     async selfObserverDevices() {
+       let audioManager = audio.getAudioManager();
+       let audioRoutingManager = audioManager.getRoutingManager();
+   
+       // 初次拉起AVCastPicker时需获取当前设备,刷新显示。
        this.changePickerShow(audioRoutingManager.getPreferredOutputDeviceForRendererInfoSync(this.audioRendererInfo));
-     });
-   }
-
-   // 设备更新后刷新自定义资源pickerImage。
-   private changePickerShow(desc: audio.AudioDeviceDescriptors) {
-     if(!desc || !desc.length || !desc[0]) {
-      return;
+   
+       // 监听当前发声设备切换，及时根据不同设备类型显示不同的样式。
+       audioRoutingManager.on('preferOutputDeviceChangeForRendererInfo', this.audioRendererInfo, (desc: audio.AudioDeviceDescriptors) => {
+         this.changePickerShow(audioRoutingManager.getPreferredOutputDeviceForRendererInfoSync(this.audioRendererInfo));
+       });
      }
-     if (desc[0].deviceType === 2) {
-       this.pickerImage = $r('app.media.sound');
-     } else if (desc[0].deviceType === 7) {
-       this.pickerImage = $r('app.media.bluetooth');
-     } else {
-       this.pickerImage = $r('app.media.earpiece');
+   
+     // 设备更新后刷新自定义资源pickerImage。
+     private changePickerShow(desc: audio.AudioDeviceDescriptors) {
+       if(!desc || !desc.length || !desc[0]) {
+         return;
+       }
+       if (desc[0].deviceType === 2) {
+         this.pickerImage = $r('app.media.sound');
+       } else if (desc[0].deviceType === 7) {
+         this.pickerImage = $r('app.media.bluetooth');
+       } else {
+         this.pickerImage = $r('app.media.earpiece');
+       }
      }
+     // ...
    }
    ```
 
