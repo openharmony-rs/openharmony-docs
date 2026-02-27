@@ -28,511 +28,517 @@
 
 ## 限制条件
 
-- \@Reusable装饰器仅用于自定义组件。
+### 仅用于自定义组件
 
-- \@Reusable不支持跟[\@ComponentV2](./arkts-create-custom-components.md#componentv2)搭配使用，\@ComponentV2组件复用推荐[\@ReusableV2装饰器](./arkts-new-reusableV2.md)。
+\@Reusable装饰器仅用于自定义组件[\@Component](./arkts-create-custom-components.md#component)，不可与[\@Builder](./arkts-builder.md)搭配使用。
 
-    <!-- @[reusable_for_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForCustomComponents.ets) -->
-    
-    ``` TypeScript
-    import { ComponentContent } from '@kit.ArkUI';
-    
-    // @Builder不能与@Reusable搭配使用。
-    // @Reusable
-    @Builder
-    function buildCreativeLoadingDialog(closedClick: () => void) {
-      Crash();
+\@Reusable不支持跟[\@ComponentV2](./arkts-create-custom-components.md#componentv2)搭配使用，\@ComponentV2组件复用推荐[\@ReusableV2装饰器](./arkts-new-reusableV2.md)。
+
+<!-- @[reusable_for_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForCustomComponents.ets) -->
+
+``` TypeScript
+import { ComponentContent } from '@kit.ArkUI';
+
+// @Builder不能与@Reusable搭配使用。
+// @Reusable
+@Builder
+function buildCreativeLoadingDialog(closedClick: () => void) {
+  Crash();
+}
+
+@Component
+export struct Crash {
+  build() {
+    Column() {
+      Text('Crash')
+        .fontSize(12)
+        .lineHeight(18)
+        .fontColor(Color.Blue)
+        .margin({
+          left: 6
+        })
+    }.width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  private uiContext = this.getUIContext();
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('Index')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          let contentNode = new ComponentContent(this.uiContext, wrapBuilder(buildCreativeLoadingDialog), () => {
+          });
+          this.uiContext.getPromptAction().openCustomDialog(contentNode);
+        })
     }
-    
-    @Component
-    export struct Crash {
-      build() {
-        Column() {
-          Text('Crash')
-            .fontSize(12)
-            .lineHeight(18)
-            .fontColor(Color.Blue)
-            .margin({
-              left: 6
-            })
-        }.width('100%')
-        .height('100%')
-        .justifyContent(FlexAlign.Center)
-      }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### 状态变量更新限制
+
+被@Reusable装饰的自定义组件在复用时，会递归调用该自定义组件及其所有子组件的aboutToReuse回调函数。若在子组件的aboutToReuse函数中修改了父组件的状态变量，此次修改将不会生效，请避免此类用法。若需设置父组件的状态变量，可使用setTimeout设置延迟执行，将任务移出组件复用的作用范围，使修改生效。
+
+【反例】
+
+在子组件的aboutToReuse中，直接修改父组件的状态变量。
+
+<!-- @[reusable_for_incorrect_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableIncorrectSample.ets) -->
+
+``` TypeScript
+class IncorrectBasicDataSource implements IDataSource {
+  private listener: DataChangeListener | undefined = undefined;
+  public dataArray: number[] = [];
+
+  totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  getData(index: number): number {
+    return this.dataArray[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    this.listener = listener;
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    this.listener = undefined;
+  }
+}
+
+@Entry
+@Component
+struct IncorrectIndex {
+  private data: IncorrectBasicDataSource = new IncorrectBasicDataSource();
+
+  aboutToAppear(): void {
+    for (let index = 1; index < 20; index++) {
+      this.data.dataArray.push(index);
     }
-    
-    @Entry
-    @Component
-    struct Index {
-      @State message: string = 'Hello World';
-      private uiContext = this.getUIContext();
-    
-      build() {
-        RelativeContainer() {
-          Text(this.message)
-            .id('Index')
-            .fontSize(50)
-            .fontWeight(FontWeight.Bold)
-            .alignRules({
-              center: { anchor: '__container__', align: VerticalAlign.Center },
-              middle: { anchor: '__container__', align: HorizontalAlign.Center }
-            })
-            .onClick(() => {
-              let contentNode = new ComponentContent(this.uiContext, wrapBuilder(buildCreativeLoadingDialog), () => {
-              });
-              this.uiContext.getPromptAction().openCustomDialog(contentNode);
-            })
+  }
+
+  build() {
+    List() {
+      LazyForEach(this.data, (item: number, index: number) => {
+        ListItem() {
+          IncorrectReuseComponent({ num: item });
         }
-        .height('100%')
-        .width('100%')
-      }
+      }, (item: number, index: number) => index.toString())
+    }.cachedCount(0)
+  }
+}
+
+@Reusable
+@Component
+struct IncorrectReuseComponent {
+  @State num: number = 0;
+
+  aboutToReuse(params: ESObject): void {
+    this.num = params.num;
+  }
+
+  build() {
+    Column() {
+      Text('ReuseComponent num:' + this.num.toString())
+      IncorrectReuseComponentChild({ num: this.num })
+      Button('plus')
+        .onClick(() => {
+          this.num += 10;
+        })
     }
-    ```
+    .height(200)
+  }
+}
 
-- 被@Reusable装饰的自定义组件在复用时，会递归调用该自定义组件及其所有子组件的aboutToReuse回调函数。若在子组件的aboutToReuse函数中修改了父组件的状态变量，此次修改将不会生效，请避免此类用法。若需设置父组件的状态变量，可使用setTimeout设置延迟执行，将任务抛出组件复用的作用范围，使修改生效。
+@Component
+struct IncorrectReuseComponentChild {
+  @Link num: number;
 
+  aboutToReuse(params: ESObject): void {
+    this.num = -1 * params.num;
+  }
 
-  【反例】
+  build() {
+    Text('ReuseComponentChild num:' + this.num.toString())
+  }
+}
+```
 
-  在子组件的aboutToReuse中，直接修改父组件的状态变量。
+【正例】
 
-  <!-- @[reusable_for_incorrect_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableIncorrectSample.ets) -->
-  
-  ``` TypeScript
-  class IncorrectBasicDataSource implements IDataSource {
-    private listener: DataChangeListener | undefined = undefined;
-    public dataArray: number[] = [];
-  
-    totalCount(): number {
-      return this.dataArray.length;
-    }
-  
-    getData(index: number): number {
-      return this.dataArray[index];
-    }
-  
-    registerDataChangeListener(listener: DataChangeListener): void {
-      this.listener = listener;
-    }
-  
-    unregisterDataChangeListener(listener: DataChangeListener): void {
-      this.listener = undefined;
+在子组件的aboutToReuse中，使用setTimeout，将修改移出组件复用的作用范围。
+
+<!-- @[reusable_for_correct_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableCorrectSample.ets) -->
+
+``` TypeScript
+class BasicDataSource implements IDataSource {
+  private listener: DataChangeListener | undefined = undefined;
+  public dataArray: number[] = [];
+
+  totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  getData(index: number): number {
+    return this.dataArray[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    this.listener = listener;
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    this.listener = undefined;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private data: BasicDataSource = new BasicDataSource();
+
+  aboutToAppear(): void {
+    for (let index = 1; index <= 20; index++) { // 循环20次
+      this.data.dataArray.push(index);
     }
   }
-  
-  @Entry
-  @Component
-  struct IncorrectIndex {
-    private data: IncorrectBasicDataSource = new IncorrectBasicDataSource();
-  
-    aboutToAppear(): void {
-      for (let index = 1; index < 20; index++) {
-        this.data.dataArray.push(index);
-      }
-    }
-  
-    build() {
-      List() {
-        LazyForEach(this.data, (item: number, index: number) => {
-          ListItem() {
-            IncorrectReuseComponent({ num: item });
-          }
-        }, (item: number, index: number) => index.toString())
-      }.cachedCount(0)
-    }
+
+  build() {
+    List() {
+      LazyForEach(this.data, (item: number, index: number) => {
+        ListItem() {
+          ReuseComponent({ num: item })
+        }
+      }, (item: number, index: number) => index.toString())
+    }.cachedCount(0)
   }
-  
-  @Reusable
-  @Component
-  struct IncorrectReuseComponent {
-    @State num: number = 0;
-  
-    aboutToReuse(params: ESObject): void {
-      this.num = params.num;
-    }
-  
-    build() {
-      Column() {
-        Text('ReuseComponent num:' + this.num.toString())
-        IncorrectReuseComponentChild({ num: this.num })
-        Button('plus')
-          .onClick(() => {
-            this.num += 10;
-          })
-      }
-      .height(200)
-    }
+}
+
+@Reusable
+@Component
+struct ReuseComponent {
+  @State num: number = 0;
+
+  aboutToReuse(params: ESObject): void {
+    this.num = params.num;
   }
-  
-  @Component
-  struct IncorrectReuseComponentChild {
-    @Link num: number;
-  
-    aboutToReuse(params: ESObject): void {
+
+  build() {
+    Column() {
+      Text('ReuseComponent num:' + this.num.toString())
+      ReuseComponentChild({ num: this.num })
+      Button('plus')
+        .onClick(() => {
+          this.num += 10; // 每次点击增加10
+        })
+    }
+    .height(200)
+  }
+}
+
+@Component
+struct ReuseComponentChild {
+  @Link num: number;
+
+  aboutToReuse(params: ESObject): void {
+    setTimeout(() => {
       this.num = -1 * params.num;
-    }
-  
-    build() {
-      Text('ReuseComponentChild num:' + this.num.toString())
-    }
+    }, 1)
   }
-  ```
 
-
-  【正例】
-
-  在子组件的aboutToReuse中，使用setTimeout，将修改抛出组件复用的作用范围。
-
-  <!-- @[reusable_for_correct_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableCorrectSample.ets) -->
-  
-  ``` TypeScript
-  class BasicDataSource implements IDataSource {
-    private listener: DataChangeListener | undefined = undefined;
-    public dataArray: number[] = [];
-  
-    totalCount(): number {
-      return this.dataArray.length;
-    }
-  
-    getData(index: number): number {
-      return this.dataArray[index];
-    }
-  
-    registerDataChangeListener(listener: DataChangeListener): void {
-      this.listener = listener;
-    }
-  
-    unregisterDataChangeListener(listener: DataChangeListener): void {
-      this.listener = undefined;
-    }
+  build() {
+    Text('ReuseComponentChild num:' + this.num.toString());
   }
-  
-  @Entry
-  @Component
-  struct Index {
-    private data: BasicDataSource = new BasicDataSource();
-  
-    aboutToAppear(): void {
-      for (let index = 1; index <= 20; index++) { // 循环20次
-        this.data.dataArray.push(index);
+}
+```
+
+### 组件结构需一致
+
+被@Reusable装饰的自定义组件在复用前后，应保持组件的结构不变。否则，会在复用过程中创建或销毁子组件，降低复用效率和性能，甚至造成应用行为异常。</br>
+对于复用过程中创建的子组件，框架会在其创建后依次调用aboutToReuse方法和aboutToAppear方法。在调用aboutToReuse方法时，由于其aboutToAppear方法还未执行，且内部子组件还未创建，因此aboutToReuse方法中依赖aboutToAppear方法执行结果，或依赖内部子组件状态的相关操作会引起预期外的行为。在调用aboutToReuse方法后，框架会再调用aboutToAppear方法并初始化组件。</br>
+针对组件结构存在差异的场景，开发者需要通过设定不同的reuseId来进行区分，具体方式请参考[多种条目类型使用场景](#多种条目类型使用场景)。
+
+【反例】
+
+组件结构存在差异，但未通过reuseId进行区分。</br>
+以下示例中，先点击“show/hide branch A”按钮，组件被回收，再点击“show/hide branch B”按钮，组件被复用。子组件ReusableChildB在复用过程中被创建，aboutToReuse方法和aboutToAppear方法被依次调用。
+
+<!-- @[reusable_for_incorrect_reuseid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForIncorrectReuseId.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_ReusableComponent]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'ReusableComponent_';
+
+@Entry
+@Component
+struct Index {
+  @State showBranchA: boolean = true;
+  @State showBranchB: boolean = false;
+
+  build() {
+    Column({ space: 5 }) {
+      Button('show/hide branch A')
+        .onClick(() => {
+          this.showBranchA = !this.showBranchA;
+        })
+      if (this.showBranchA) {
+        ReusableComponent({ flag: true })
       }
-    }
-  
-    build() {
-      List() {
-        LazyForEach(this.data, (item: number, index: number) => {
-          ListItem() {
-            ReuseComponent({ num: item })
-          }
-        }, (item: number, index: number) => index.toString())
-      }.cachedCount(0)
-    }
-  }
-  
-  @Reusable
-  @Component
-  struct ReuseComponent {
-    @State num: number = 0;
-  
-    aboutToReuse(params: ESObject): void {
-      this.num = params.num;
-    }
-  
-    build() {
-      Column() {
-        Text('ReuseComponent num:' + this.num.toString())
-        ReuseComponentChild({ num: this.num })
-        Button('plus')
-          .onClick(() => {
-            this.num += 10; // 每次点击增加10
-          })
-      }
-      .height(200)
-    }
-  }
-  
-  @Component
-  struct ReuseComponentChild {
-    @Link num: number;
-  
-    aboutToReuse(params: ESObject): void {
-      setTimeout(() => {
-        this.num = -1 * params.num;
-      }, 1)
-    }
-  
-    build() {
-      Text('ReuseComponentChild num:' + this.num.toString());
-    }
-  }
-  ```
-
-- 被@Reusable装饰的自定义组件在复用前后，应保持组件的结构不变。否则，会在复用过程中创建或销毁子组件，降低复用效率和性能，甚至造成应用行为异常。</br>
-  对于复用过程中创建的子组件，框架会在其创建后依次调用aboutToReuse方法和aboutToAppear方法。在调用aboutToReuse方法时，由于其aboutToAppear方法还未执行，且内部子组件还未创建，因此可能引起预期外的行为。在调用aboutToReuse方法后，框架会再调用aboutToAppear方法并初始化组件。</br>
-  针对组件结构存在差异的场景，开发者需要通过设定不同的reuseId来进行区分，具体方式请参考[多种条目类型使用场景](#多种条目类型使用场景)。
-
-  【反例】
-
-  组件结构存在差异，但未通过reuseId进行区分。</br>
-  以下示例中，先点击“show/hide branch A”按钮，组件被回收，再点击“show/hide branch B”按钮，组件被复用。子组件ReusableChildB在复用过程中被创建，aboutToReuse方法和aboutToAppear方法被同时依次调用。
-
-  <!-- @[reusable_for_incorrect_reuseid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForIncorrectReuseId.ets) -->
-  
-  ``` TypeScript
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  
-  const TAG = '[Sample_ReusableComponent]';
-  const DOMAIN = 0xF811;
-  const BUNDLE = 'ReusableComponent_';
-  
-  @Entry
-  @Component
-  struct Index {
-    @State showBranchA: boolean = true;
-    @State showBranchB: boolean = false;
-  
-    build() {
-      Column({ space: 5 }) {
-        Button('show/hide branch A')
-          .onClick(() => {
-            this.showBranchA = !this.showBranchA;
-          })
-        if (this.showBranchA) {
-          ReusableComponent({ flag: true })
-        }
-        Button('show/hide branch B')
-          .onClick(() => {
-            this.showBranchB = !this.showBranchB;
-          })
-        if (this.showBranchB) {
-          ReusableComponent({ flag: false })
-        }
+      Button('show/hide branch B')
+        .onClick(() => {
+          this.showBranchB = !this.showBranchB;
+        })
+      if (this.showBranchB) {
+        ReusableComponent({ flag: false })
       }
     }
   }
-  
-  @Reusable
-  @Component
-  struct ReusableComponent {
-    @Require @Prop flag: boolean = true;
-  
-    aboutToAppear() {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToAppear');
-    }
-  
-    aboutToReuse(params: ESObject) {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToReuse');
-      this.flag = params.flag;
-    }
-  
-    build() {
-      Column({ space: 5 }) {
-        Text('ReusableComponent')
-        if (this.flag) {
-          ReusableChildA()
-        } else {
-          ReusableChildB()
-        }
-      }.border({ width: 1 })
-    }
+}
+
+@Reusable
+@Component
+struct ReusableComponent {
+  @Require @Prop flag: boolean = true;
+
+  aboutToAppear() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToAppear');
   }
-  
-  @Component
-  struct ReusableChildA {
-    aboutToAppear() {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToAppear');
-    }
-  
-    aboutToReuse() {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToReuse');
-    }
-  
-    build() {
-      Text('ReusableChildA')
-        .border({ width: 1 })
-    }
+
+  aboutToReuse(params: ESObject) {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToReuse');
+    this.flag = params.flag;
   }
-  
-  @Component
-  struct ReusableChildB {
-    aboutToAppear() {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToAppear');
-    }
-  
-    aboutToReuse() {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToReuse');
-    }
-  
-    build() {
-      Text('ReusableChildB')
-        .border({ width: 1 })
-    }
+
+  build() {
+    Column({ space: 5 }) {
+      Text('ReusableComponent')
+      if (this.flag) {
+        ReusableChildA()
+      } else {
+        ReusableChildB()
+      }
+    }.border({ width: 1 })
   }
-  ```
+}
 
+@Component
+struct ReusableChildA {
+  aboutToAppear() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToAppear');
+  }
 
-  【正例】
+  aboutToReuse() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToReuse');
+  }
 
-  组件结构存在差异，通过reuseId进行区分。
+  build() {
+    Text('ReusableChildA')
+      .border({ width: 1 })
+  }
+}
 
-  <!-- @[reusable_for_reuseid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForReuseId.ets) -->
-  
-  ``` TypeScript
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  
-  const TAG = '[Sample_ReusableComponent]';
-  const DOMAIN = 0xF811;
-  const BUNDLE = 'ReusableComponent_';
-  
-  @Entry
-  @Component
-  struct Index {
-    @State showBranchA: boolean = true;
-    @State showBranchB: boolean = false;
-  
-    build() {
-      Column({ space: 5 }) {
-        Button('show/hide branch A')
-          .onClick(() => {
-            this.showBranchA = !this.showBranchA;
-          })
-        if (this.showBranchA) {
-          ReusableComponent({ flag: true })
-            .reuseId('ReuseA') // 通过reuseId区分不同结构的复用组件
-        }
-        Button('show/hide branch B')
-          .onClick(() => {
-            this.showBranchB = !this.showBranchB;
-          })
-        if (this.showBranchB) {
-          ReusableComponent({ flag: false })
-            .reuseId('ReuseB') // 通过reuseId区分不同结构的复用组件
-        }
+@Component
+struct ReusableChildB {
+  aboutToAppear() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToAppear');
+  }
+
+  aboutToReuse() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToReuse');
+  }
+
+  build() {
+    Text('ReusableChildB')
+      .border({ width: 1 })
+  }
+}
+```
+
+【正例】
+
+组件结构存在差异，通过reuseId进行区分。
+
+<!-- @[reusable_for_reuseid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForReuseId.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_ReusableComponent]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'ReusableComponent_';
+
+@Entry
+@Component
+struct Index {
+  @State showBranchA: boolean = true;
+  @State showBranchB: boolean = false;
+
+  build() {
+    Column({ space: 5 }) {
+      Button('show/hide branch A')
+        .onClick(() => {
+          this.showBranchA = !this.showBranchA;
+        })
+      if (this.showBranchA) {
+        ReusableComponent({ flag: true })
+          .reuseId('ReuseA') // 通过reuseId区分不同结构的复用组件
+      }
+      Button('show/hide branch B')
+        .onClick(() => {
+          this.showBranchB = !this.showBranchB;
+        })
+      if (this.showBranchB) {
+        ReusableComponent({ flag: false })
+          .reuseId('ReuseB') // 通过reuseId区分不同结构的复用组件
       }
     }
   }
-  
-  @Reusable
-  @Component
-  struct ReusableComponent {
-    @Require @Prop flag: boolean = true;
-  
-    aboutToAppear() {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToAppear');
-    }
-  
-    aboutToReuse(params: ESObject) {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToReuse');
-      this.flag = params.flag;
-    }
-  
-    build() {
-      Column({ space: 5 }) {
-        Text('ReusableComponent')
-        if (this.flag) {
-          ReusableChildA()
-        } else {
-          ReusableChildB()
-        }
-      }.border({ width: 1 })
-    }
-  }
-  
-  @Component
-  struct ReusableChildA {
-    aboutToAppear() {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToAppear');
-    }
-  
-    aboutToReuse() {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToReuse');
-    }
-  
-    build() {
-      Text('ReusableChildA')
-        .border({ width: 1 })
-    }
-  }
-  
-  @Component
-  struct ReusableChildB {
-    aboutToAppear() {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToAppear');
-    }
-  
-    aboutToReuse() {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToReuse');
-    }
-  
-    build() {
-      Text('ReusableChildB')
-        .border({ width: 1 })
-    }
-  }
-  ```
-  
+}
 
-- ComponentContent不支持传入\@Reusable装饰器装饰的自定义组件。
+@Reusable
+@Component
+struct ReusableComponent {
+  @Require @Prop flag: boolean = true;
 
-  <!-- @[component_content_not_support_reusable_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ComponentContentNotSupportReusable.ets) -->
-  
-  ``` TypeScript
-  import { ComponentContent } from '@kit.ArkUI';
-  
-  @Builder
-  function buildCreativeLoadingDialog(closedClick: () => void) {
-    Crash();
+  aboutToAppear() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToAppear');
   }
-  
-  // 如果注释掉就可以正常弹出弹窗，如果加上@Reusable就直接crash。
-  @Reusable
-  @Component
-  export struct Crash {
-    build() {
-      Column() {
-        Text('Crash')
-          .fontSize(12)
-          .lineHeight(18)
-          .fontColor(Color.Blue)
-          .margin({
-            left: 6
-          })
-      }.width('100%')
-      .height('100%')
-      .justifyContent(FlexAlign.Center)
-    }
+
+  aboutToReuse(params: ESObject) {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToReuse');
+    this.flag = params.flag;
   }
-  
-  @Entry
-  @Component
-  struct Index {
-    @State message: string = 'Hello World';
-    private uiContext = this.getUIContext();
-  
-    build() {
-      RelativeContainer() {
-        Text(this.message)
-          .id('Index')
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-          .alignRules({
-            center: { anchor: '__container__', align: VerticalAlign.Center },
-            middle: { anchor: '__container__', align: HorizontalAlign.Center }
-          })
-          .onClick(() => {
-            // ComponentContent底层是BuilderNode，BuilderNode不支持传入@Reusable注解的自定义组件。
-            let contentNode = new ComponentContent(this.uiContext, wrapBuilder(buildCreativeLoadingDialog), () => {
-            });
-            this.uiContext.getPromptAction().openCustomDialog(contentNode);
-          })
+
+  build() {
+    Column({ space: 5 }) {
+      Text('ReusableComponent')
+      if (this.flag) {
+        ReusableChildA()
+      } else {
+        ReusableChildB()
       }
-      .height('100%')
-      .width('100%')
-    }
+    }.border({ width: 1 })
   }
-  ```
+}
 
-- \@Reusable装饰器不建议嵌套使用，会增加内存，降低复用效率，加大维护难度。嵌套使用会导致额外缓存池的生成，各缓存池拥有相同树状结构，复用效率低下。此外，嵌套使用会使生命周期管理复杂，资源和变量共享困难。
+@Component
+struct ReusableChildA {
+  aboutToAppear() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToAppear');
+  }
+
+  aboutToReuse() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToReuse');
+  }
+
+  build() {
+    Text('ReusableChildA')
+      .border({ width: 1 })
+  }
+}
+
+@Component
+struct ReusableChildB {
+  aboutToAppear() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToAppear');
+  }
+
+  aboutToReuse() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToReuse');
+  }
+
+  build() {
+    Text('ReusableChildB')
+      .border({ width: 1 })
+  }
+}
+```
+  
+### 不支持ComponentContent
+
+ComponentContent不支持传入\@Reusable装饰器装饰的自定义组件。
+
+<!-- @[component_content_not_support_reusable_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ComponentContentNotSupportReusable.ets) -->
+
+``` TypeScript
+import { ComponentContent } from '@kit.ArkUI';
+
+@Builder
+function buildCreativeLoadingDialog(closedClick: () => void) {
+  Crash();
+}
+
+// 如果注释掉就可以正常弹出弹窗，如果加上@Reusable就直接crash。
+@Reusable
+@Component
+export struct Crash {
+  build() {
+    Column() {
+      Text('Crash')
+        .fontSize(12)
+        .lineHeight(18)
+        .fontColor(Color.Blue)
+        .margin({
+          left: 6
+        })
+    }.width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  private uiContext = this.getUIContext();
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('Index')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          // ComponentContent底层是BuilderNode，BuilderNode不支持传入@Reusable注解的自定义组件。
+          let contentNode = new ComponentContent(this.uiContext, wrapBuilder(buildCreativeLoadingDialog), () => {
+          });
+          this.uiContext.getPromptAction().openCustomDialog(contentNode);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### 不建议嵌套使用
+
+\@Reusable装饰器不建议嵌套使用，会增加内存，降低复用效率，加大维护难度。嵌套使用会导致额外缓存池的生成，各缓存池拥有相同树状结构，复用效率低下。此外，嵌套使用会使生命周期管理复杂，资源和变量共享困难。
 
 
 ## 使用场景
@@ -601,87 +607,88 @@ struct Child {
 
 ### 列表滚动配合LazyForEach使用
 
-- 当应用展示大量数据的列表并进行滚动操作时，频繁创建和销毁列表项视图可能导致卡顿和性能问题。使用列表组件的组件复用机制可以重用已创建的列表项视图，提高滚动流畅度。
+当应用展示大量数据的列表并进行滚动操作时，频繁创建和销毁列表项视图可能导致卡顿和性能问题。使用列表组件的组件复用机制可以重用已创建的列表项视图，提高滚动流畅度。
 
-- 以下示例代码将CardView自定义组件标记为复用组件，List上下滑动，触发CardView复用。
+以下示例代码将CardView自定义组件标记为复用组件，List上下滑动，触发CardView复用。
 
-  <!-- @[list_scrolling_with_lazy_for_each](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ListScrollingWithLazyForEach.ets) -->
+<!-- @[list_scrolling_with_lazy_for_each](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ListScrollingWithLazyForEach.ets) -->
   
-  ``` TypeScript
-  class MyDataSource implements IDataSource {
-    private dataArray: string[] = [];
-    private listener: DataChangeListener | undefined;
-  
-    public totalCount(): number {
-      return this.dataArray.length;
-    }
-  
-    public getData(index: number): string {
-      return this.dataArray[index];
-    }
-  
-    public pushData(data: string): void {
-      this.dataArray.push(data);
-    }
-  
-    public reloadListener(): void {
-      this.listener?.onDataReloaded();
-    }
-  
-    public registerDataChangeListener(listener: DataChangeListener): void {
-      this.listener = listener;
-    }
-  
-    public unregisterDataChangeListener(listener: DataChangeListener): void {
-      this.listener = undefined;
+``` TypeScript
+class MyDataSource implements IDataSource {
+  private dataArray: string[] = [];
+  private listener: DataChangeListener | undefined;
+
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  public getData(index: number): string {
+    return this.dataArray[index];
+  }
+
+  public pushData(data: string): void {
+    this.dataArray.push(data);
+  }
+
+  public reloadListener(): void {
+    this.listener?.onDataReloaded();
+  }
+
+  public registerDataChangeListener(listener: DataChangeListener): void {
+    this.listener = listener;
+  }
+
+  public unregisterDataChangeListener(listener: DataChangeListener): void {
+    this.listener = undefined;
+  }
+}
+
+@Entry
+@Component
+struct ReuseDemo {
+  private data: MyDataSource = new MyDataSource();
+
+  aboutToAppear() {
+    for (let i = 1; i <= 1000; i++) { // 循环1000次
+      this.data.pushData(i + '');
     }
   }
-  
-  @Entry
-  @Component
-  struct ReuseDemo {
-    private data: MyDataSource = new MyDataSource();
-  
-    aboutToAppear() {
-      for (let i = 1; i <= 1000; i++) { // 循环1000次
-        this.data.pushData(i + '');
-      }
-    }
 
-    build() {
-      Column() {
-        List() {
-          LazyForEach(this.data, (item: string) => {
-            ListItem() {
-              CardView({ item: item });
-            }
-          }, (item: string) => item)
-        }
+  // ...
+  build() {
+    Column() {
+      List() {
+        LazyForEach(this.data, (item: string) => {
+          ListItem() {
+            CardView({ item: item });
+          }
+        }, (item: string) => item)
       }
     }
   }
-  
-  // 复用组件
-  @Reusable
-  @Component
-  export struct CardView {
-    // 被@State修饰的变量item才能更新，未被@State修饰的变量不会更新。
-    @State item: string = '';
-  
-    aboutToReuse(params: Record<string, Object>): void {
-      this.item = params.item as string;
-    }
-  
-    build() {
-      Column() {
-        Text(this.item)
-          .fontSize(30)
-      }
-      .borderWidth(1)
-      .height(100)
-    }
+}
+
+// 复用组件
+@Reusable
+@Component
+export struct CardView {
+  // 被@State修饰的变量item才能更新，未被@State修饰的变量不会更新。
+  @State item: string = '';
+
+  aboutToReuse(params: Record<string, Object>): void {
+    this.item = params.item as string;
   }
-  ```
+
+  build() {
+    Column() {
+      Text(this.item)
+        .fontSize(30)
+    }
+    .borderWidth(1)
+    .height(100)
+  }
+}
+```
 
 ### 列表滚动-if使用场景
 
