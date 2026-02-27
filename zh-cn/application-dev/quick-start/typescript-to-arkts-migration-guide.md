@@ -3016,15 +3016,11 @@ import fileContent from 'some.txt!text'
 
 <!-- @[declare_namespace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExportMod.ets) -->   
 
-```typescript
+``` TypeScript
 // 声明
-declare namespace N {
+export declare namespace N {
   function foo(x: number): number
 }
-
-// 使用代码
-import * as m from 'module'
-console.info('N.foo called: ' + N.foo(42));
 ```
 
 <!-- @[no_moduleWildCards](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoModuleWildcards.ets) -->
