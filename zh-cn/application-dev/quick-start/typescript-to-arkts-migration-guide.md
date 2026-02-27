@@ -730,13 +730,13 @@ type Y<T> = T extends Array<infer Item> ? Item : never;
 <!-- @[no_conditionalTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoConditionalTypes.ets) -->
 
 ``` TypeScript
-// 在类型别名中提供显式约束。
+// 在类型别名中提供显式约束
 type X1<T extends number> = T;
 
-// 用Object重写，类型控制较少，需要更多的类型检查以确保安全。
+// 用Object重写，类型控制较少，需要更多的类型检查以确保安全
 type X2<T> = Object;
 
-// Item必须作为泛型参数使用，并能正确实例化。
+// Item必须作为泛型参数使用，并能正确实例化
 type YI<Item, T extends Array<Item>> = Item;
 ```
 
