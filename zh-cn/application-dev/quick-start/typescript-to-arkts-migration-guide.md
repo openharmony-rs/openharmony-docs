@@ -3196,6 +3196,13 @@ let x = M.abc;
 
 <!-- @[no_globalThisImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoGlobalThis.ets) -->
 
+``` TypeScript
+// NoGlobalThis.ets
+import * as M from './ExportMod'
+
+let x = M.abc;
+```
+
 ### 不支持一些utility类型
 
 **规则：**`arkts-no-utility-types`
