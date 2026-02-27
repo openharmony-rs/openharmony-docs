@@ -1526,11 +1526,11 @@ function bar() {
 
 let c1 = new C();
 let c2 = new C();
-c1.foo(); // foo。
-c2.foo(); // foo。
+c1.foo(); // foo
+c2.foo(); // foo
 
 let c3 = new Derived();
-c3.foo(); // Extra foo。
+c3.foo(); // Extra foo
 ```
 
 ### 类型转换仅支持`as T`语法
