@@ -393,7 +393,7 @@ class SampleChild {
 
 @ObservedV2
 export class Sample {
-  // 对于复杂对象需要@Type修饰，确保序列化成功。
+  // 对于复杂对象需要@Type修饰，确保序列化成功
   @Type(SampleChild)
   @Trace public f123: SampleChild = new SampleChild();
 }
