@@ -34,8 +34,10 @@ Declares the APIs of **NativeGesture**.
 | [ArkUI_GestureEventTargetInfo](capi-arkui-nativemodule-arkui-gestureeventtargetinfo.md)       | ArkUI_GestureEventTargetInfo     | Defines a **GestureEventTargetInfo** object that provides information about a gesture event target.|
 | [ArkUI_ParallelInnerGestureEvent](capi-arkui-nativemodule-arkui-parallelinnergestureevent.md) | ArkUI_ParallelInnerGestureEvent  | Defines a parallel internal gesture event.|
 | [ArkUI_TouchRecognizer](capi-arkui-nativemodule-arkui-touchrecognizer.md)                     | ArkUI_TouchRecognizer            | Defines a touch recognizer.         |
+| [ArkUI_TouchRecognizer*](capi-arkui-nativemodule-arkui-touchrecognizerhandle.md)   | ArkUI_TouchRecognizerHandle | Defines a touch recognizer handle.     |
 | [ArkUI_TouchRecognizerHandle*](capi-arkui-nativemodule-arkui-touchrecognizerhandlearray.md)   | ArkUI_TouchRecognizerHandleArray | Defines an array of touch recognizer handles.     |
-| [ArkUI_GestureRecognizerHandle*](capi-arkui-nativemodule-arkui-gesturerecognizerhandle.md)    | ArkUI_GestureRecognizerHandleArray  | Defines the gesture recognizer handle array.  | 
+| [ArkUI_GestureRecognizer*](capi-arkui-nativemodule-arkui-gesturerecognizerhandle.md)    | ArkUI_GestureRecognizerHandle  | Defines the gesture recognizer handle.  |
+| [ArkUI_GestureRecognizerHandle*](capi-arkui-nativemodule-arkui-gesturerecognizerhandlearray.md)    | ArkUI_GestureRecognizerHandleArray  | Defines the gesture recognizer handle array.  |
 
 ### Enums
 
@@ -108,15 +110,15 @@ Declares the APIs of **NativeGesture**.
 | [ArkUI_ErrorCode OH_ArkUI_SetTouchTestDoneCallback(ArkUI_NodeHandle node,void* userData,void (\*touchTestDone)(ArkUI_GestureEvent* event,ArkUI_GestureRecognizerHandleArray recognizers,int32_t count,void* userData))](#oh_arkui_settouchtestdonecallback) | - | Registers a callback that is executed after all gesture recognizers are collected. When the user begins touching the screen, the system performs hit testing and collects gesture recognizers based on the touch location. Subsequently, before processing any move events, the component can use this API to determine the gesture recognizers that will participate in and compete for recognition.|
 | [void* OH_ArkUI_GestureInterrupter_GetUserData(ArkUI_GestureInterruptInfo* event)](#oh_arkui_gestureinterrupter_getuserdata) | - | Obtains the custom data from a gesture interruption event.|
 | [ArkUI_ErrorCode OH_ArkUI_PreventGestureRecognizerBegin(ArkUI_GestureRecognizer* recognizer)](#oh_arkui_preventgesturerecognizerbegin) | - | Prevents a gesture recognizer from participating in the current gesture recognition before all fingers are lifted. If the system has already determined the result of the gesture recognizer (regardless of success or failure), calling this API will be ineffective.|
-| [ArkUI_ErrorCode OH_ArkUI_LongPressGesture_SetAllowableMovement(ArkUI_GestureRecognizer* recognizer, int32_t allowableMovement)](#oh_arkui_longpressgesture_setallowablemovement) | - | Sets the maximum movement distance allowed for gesture recognition by the long press gesture recognizer.|
-| [int32_t OH_ArkUI_LongPressGesture_GetAllowableMovement(ArkUI_GestureRecognizer* recognizer, int32_t* allowableMovement)](#oh_arkui_longpressgesture_getallowablemovement) | - | Obtains the maximum movement distance allowed for gesture recognition by the long press gesture recognizer.|
+| [ArkUI_ErrorCode OH_ArkUI_LongPressGesture_SetAllowableMovement(ArkUI_GestureRecognizer* recognizer, double allowableMovement)](#oh_arkui_longpressgesture_setallowablemovement) | - | Sets the maximum movement distance allowed for gesture recognition by the long press gesture recognizer.|
+| [ArkUI_ErrorCode OH_ArkUI_LongPressGesture_GetAllowableMovement(ArkUI_GestureRecognizer* recognizer, double* allowableMovement)](#oh_arkui_longpressgesture_getallowablemovement) | - | Obtains the maximum movement distance allowed for gesture recognition by the long press gesture recognizer.|
 
 ### Variables
 
 | Name      | typedef Keyword                | Description                                                                                                                                   |
 |----------|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
 | uint32_t | ArkUI_GestureDirectionMask | Defines a set of gesture directions.<br>Example: **ArkUI_GestureDirectionMask directions = GESTURE_DIRECTION_LEFT \| GESTURE_DIRECTION_RIGHT**.<br>This example indicates that the leftward and rightward directions are supported.|
-| uint32_t | ArkUI_GestureEventActionTypeMask   | Defines a set of gesture event types. Example: **ArkUI_GestureEventActionTypeMask actions = GESTURE_EVENT_ACTION_ACCEPT \| GESTURE_EVENT_ACTION_UPDATE**.                  |
+| uint32_t | ArkUI_GestureEventActionTypeMask   | Defines a set of gesture event types. Example: **ArkUI_GestureEventActionTypeMask actions = GESTURE_EVENT_ACTION_ACCEPT \| GESTURE_EVENT_ACTION_UPDATE                  |
 
 ### Example
 
@@ -1073,7 +1075,7 @@ Obtains whether this scrollable container component is scrolled to the top.
 | Name| Description|
 | -- | -- |
 | [ArkUI_GestureEventTargetInfo](capi-arkui-nativemodule-arkui-gestureeventtargetinfo.md)* info | Information about a gesture event target.|
-| bool* ret | Whether the current scrollable container component is scrolled to the top. The value **true** means that the component is scrolled to the top, and **false** means the opposite.|
+| bool* ret | Whether this scrollable container component is scrolled to the top. The value **true** means that the component is scrolled to the top, and **false** means the opposite.|
 
 **Returns**
 
@@ -1100,7 +1102,7 @@ Obtains whether this scrollable container component is scrolled to the bottom.
 | Name| Description|
 | -- | -- |
 | [ArkUI_GestureEventTargetInfo](capi-arkui-nativemodule-arkui-gestureeventtargetinfo.md)* info | Information about a gesture event target.|
-| bool* ret | Whether the scrollable container component is scrolled to the bottom. The value **true** means that the component is scrolled to the bottom, and **false** means the opposite.|
+| bool* ret | Whether this scrollable container component is scrolled to the bottom. The value **true** means that the component is scrolled to the bottom, and **false** means the opposite.|
 
 **Returns**
 
@@ -1316,7 +1318,7 @@ Obtains the conflicting gesture recognizers in a parallel internal gesture event
 | Name                                                                                                 | Description|
 |------------------------------------------------------------------------------------------------------| -- |
 | [ArkUI_ParallelInnerGestureEvent](capi-arkui-nativemodule-arkui-parallelinnergestureevent.md)* event | Parallel inner gesture event.|
-| [ArkUI_GestureRecognizerHandleArray](capi-arkui-nativemodule-arkui-gesturerecognizerhandle.md)* array  | Pointer to the array of conflicting gesture recognizers.|
+| [ArkUI_GestureRecognizerHandleArray](capi-arkui-nativemodule-arkui-gesturerecognizerhandlearray.md)* array  | Pointer to the array of conflicting gesture recognizers.|
 | int32_t* size                                                                                        | Size of the array of conflicting gesture recognizers.|
 
 **Returns**
@@ -1736,7 +1738,7 @@ Prevents a gesture recognizer from participating in the current gesture recognit
 ### OH_ArkUI_LongPressGesture_SetAllowableMovement()
 
 ```c
-ArkUI_ErrorCode OH_ArkUI_LongPressGesture_SetAllowableMovement(ArkUI_GestureRecognizer* recognizer, int32_t allowableMovement)
+ArkUI_ErrorCode OH_ArkUI_LongPressGesture_SetAllowableMovement(ArkUI_GestureRecognizer* recognizer, double allowableMovement)
 ```
 
 **Description**
@@ -1751,7 +1753,7 @@ Sets the maximum movement distance allowed for gesture recognition by the long p
 | Name| Description|
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | Pointer to the gesture recognizer instance.|
-| int32_t allowableMovement | Maximum movement distance allowed for gesture recognition by the long press gesture recognizer.<br>The unit is px.<br>Value range: (0, +∞). If the value is less than or equal to 0, the default value **15** is used.|
+| double allowableMovement | Maximum movement distance allowed for gesture recognition by the long press gesture recognizer.<br>The unit is px.<br>Value range: (0, +∞). If the value is less than or equal to 0, the default value **15** is used.|
 
 **Returns**
 
@@ -1762,7 +1764,7 @@ Sets the maximum movement distance allowed for gesture recognition by the long p
 ### OH_ArkUI_LongPressGesture_GetAllowableMovement()
 
 ```c
-int32_t OH_ArkUI_LongPressGesture_GetAllowableMovement(ArkUI_GestureRecognizer* recognizer, int32_t* allowableMovement)
+ArkUI_ErrorCode OH_ArkUI_LongPressGesture_GetAllowableMovement(ArkUI_GestureRecognizer* recognizer, double* allowableMovement)
 ```
 
 **Description**
@@ -1778,10 +1780,10 @@ Obtains the maximum movement distance allowed for gesture recognition by the lon
 | Name| Description|
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | Pointer to the gesture recognizer instance.|
-| int32_t* allowableMovement | Pointer to the maximum movement distance allowed for gesture recognition by the long press gesture recognizer.|
+| double* allowableMovement | Pointer to the maximum movement distance allowed for gesture recognition by the long press gesture recognizer.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>  Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>   Returns [ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the gesture recognizer type is not supported.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>  Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>Returns [ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) if the gesture recognizer type is not supported.|

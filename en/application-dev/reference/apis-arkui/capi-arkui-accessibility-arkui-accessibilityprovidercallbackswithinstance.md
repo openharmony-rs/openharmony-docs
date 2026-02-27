@@ -54,7 +54,7 @@ Callback function implemented by the third-party platform and registered with th
 |--------------------------------------------------------------------------------| -- |
 | const char* instanceId                                                         | Instance ID of the third-party framework.|
 | int64_t elementId                                                              | Unique ID of the accessibility element.|
-| [ArkUI_AccessibilitySearchMode](capi-native-interface-accessibility-h.md) mode | Search mode for accessibility services.|
+| [ArkUI_AccessibilitySearchMode](capi-native-interface-accessibility-h.md#arkui_accessibilitysearchmode) mode | Search mode for accessibility services.|
 | int32_t requestId                                                              | Request ID, which is used to associate the request process. It is recommended that this ID be logged to facilitate fault locating.|
 | [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md)* elementList                            | List of all accessibility elements found.|
 

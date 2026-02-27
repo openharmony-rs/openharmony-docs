@@ -30,21 +30,21 @@ Provides ArkUI event definitions on the native side.
 | -- | -- | -- |
 | [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md) | ArkUI_UIInputEvent | Defines the UI input event.|
 | [ArkUI_CoastingAxisEvent](capi-arkui-nativemodule-arkui-coastingaxisevent.md) | ArkUI_CoastingAxisEvent | Defines the coasting axis event. |
-| [ArkUI_TouchTestInfo](capi-arkui-nativemodule-arkui-touchtestinfo.md) | ArkUI_TouchTestInfoItem | Defines touch test information. |
+| [ArkUI_TouchTestInfo](capi-arkui-nativemodule-arkui-touchtestinfo.md) | ArkUI_TouchTestInfo | Defines touch test information. |
 | [ArkUI_TouchTestInfoItem](capi-arkui-nativemodule-arkui-touchtestinfoitem.md) | ArkUI_TouchTestInfoItem | Defines touch test information items. |
 | [ArkUI_TouchTestInfoItem*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandle.md) | ArkUI_TouchTestInfoItemHandle | Defines the handle of touch test information items. |
-| [ArkUI_TouchTestInfoItemHandle*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md) | ArkUI_TouchTestInfoItemHandleArray | Defines the handle array of touch test information items. |
+| [ArkUI_TouchTestInfoItemHandle*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md) | ArkUI_TouchTestInfoItemArray | Defines the handle array of touch test information items. |
 
 ### Enums
 
 | Name                                                 | typedef Keyword| Description|
 |-----------------------------------------------------| -- | -- |
 | [ArkUI_UIInputEvent_Type](#arkui_uiinputevent_type) | ArkUI_UIInputEvent_Type | Enumerates the UI input event types.|
-| [anonymous1](#anonymous1)                       | - | Enumerates the action codes of the input event.|
+| [anonymous1](#anonymous1)                       | - | Enumerates the action types of the input event.|
 | [anonymous2](#anonymous2)                       | - | Enumerates the tool types of the input event.|
 | [anonymous3](#anonymous3)                       | - | Enumerates the source types of the input event.|
 | [HitTestMode](#hittestmode)                         | HitTestMode | Enumerates the hit test modes.|
-| [anonymous4](#anonymous4)                       | - | Enumerates the action codes of the mouse event.|
+| [anonymous4](#anonymous4)                       | - | Enumerates the action types of the mouse event.|
 | [anonymous5](#anonymous5)                       | - | Enumerates the button types of the mouse event.|
 | [ArkUI_ModifierKeyName](#arkui_modifierkeyname)     | ArkUI_ModifierKeyName | Enumerates the modifier keys.|
 | [anonymous6](#anonymous6)                       | - | Enumerates the axis types for focus axis events.|
@@ -52,6 +52,7 @@ Provides ArkUI event definitions on the native side.
 | [anonymous7](#anonymous7)                       | - | Enumerates the action types for axis events.|
 | [anonymous8](#anonymous8)                       | - | Enumerates the axis types for axis events.|
 | [ArkUI_CoastingAxisEventPhase](#arkui_coastingaxiseventphase) | ArkUI_CoastingAxisEventPhase | Enumerates the phases of coasting axis events.|
+| [ArkUI_TouchTestStrategy](#arkui_touchteststrategy) | ArkUI_TouchTestStrategy | Defines the touch test policy.|
 
 ### Functions
 
@@ -82,14 +83,14 @@ Provides ArkUI event definitions on the native side.
 | [float OH_ArkUI_PointerEvent_GetGlobalDisplayY(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getglobaldisplayy) | Obtains the y-coordinate relative to the global display from a pointer event (such as a touch, mouse, or axis event). Position information can only be obtained from UI input events.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | [float OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getglobaldisplayybyindex) | Obtains the y-coordinate relative to the global display from a pointer event (such as a touch, mouse, or axis event). Position information can only be obtained from UI input events. For mouse and axis events, if the provided **pointerIndex** is greater than 0, this API always returns the default value **0.0f**.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | [float OH_ArkUI_PointerEvent_GetPressure(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getpressure) | Obtains the pressure applied to the touchscreen from a pointer event (for example, a touch event).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| [float OH_ArkUI_PointerEvent_GetTiltX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_gettiltx) | Obtains the tilt angle relative to the YZ plane from a pointer event. The value range is [-90, 90], where positive values indicate a rightward tilt. This API is applicable only to stylus-based touch events from devices that support tilt angle reporting.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| [float OH_ArkUI_PointerEvent_GetTiltY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_gettilty) | Obtains the tilt angle relative to the XZ plane from a pointer event. The value range is [-90, 90], where positive values indicate a downward tilt. This API is applicable only to stylus-based touch events from devices that support tilt angle reporting.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| [float OH_ArkUI_PointerEvent_GetTiltX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_gettiltx) | Obtains the angle relative to the YZ plane from a pointer event (for example, a touch event). The value range is [–90, 90], in deg. A positive value indicates a rightward tilt. This API is applicable only to stylus-based touch events from devices that support tilt angle reporting.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| [float OH_ArkUI_PointerEvent_GetTiltY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_gettilty) | Obtains the angle relative to the XZ plane from a pointer event (for example, a touch event). The value range is [–90, 90], in deg. A positive value indicates a downward tilt. This API is applicable only to stylus-based touch events from devices that support tilt angle reporting.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | [int32_t OH_ArkUI_PointerEvent_GetRollAngle(const ArkUI_UIInputEvent* event, double* rollAngle)](#oh_arkui_pointerevent_getrollangle) | Obtains the rotation angle of the stylus around the z-axis from a UI input event.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | [float OH_ArkUI_PointerEvent_GetTouchAreaWidth(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_gettouchareawidth) | Obtains the width of the contact area for a pointer event. This API is applicable only to finger-based touch events, and the return value typically represents the radius of a circular touch area.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | [float OH_ArkUI_PointerEvent_GetTouchAreaHeight(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_gettouchareaheight) | Obtains the height of the contact area for a pointer event. This API is applicable only to finger-based touch events, and the return value typically represents the radius of a circular touch area.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | [int32_t OH_ArkUI_PointerEvent_GetInteractionHand(const ArkUI_UIInputEvent *event, ArkUI_InteractionHand *hand)](#oh_arkui_pointerevent_getinteractionhand) | Checks whether an event is triggered by a left-hand or right-hand tap. This API is only effective on some touch devices.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | [int32_t OH_ArkUI_PointerEvent_GetInteractionHandByIndex(const ArkUI_UIInputEvent *event, int32_t pointerIndex, ArkUI_InteractionHand *hand)](#oh_arkui_pointerevent_getinteractionhandbyindex) | Checks whether an event is triggered by a left-hand or right-hand tap. This API is only effective on some touch devices.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| [uint32_t OH_ArkUI_PointerEvent_GetHistorySize(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_gethistorysize) | Obtains the number of historical events from a pointer event (such as a touch event). Historical events are the raw events that occur between the current event and the previous event. This API is applicable only to move events.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| [uint32_t OH_ArkUI_PointerEvent_GetHistorySize(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_gethistorysize) | Obtains the number of historical events from a pointer event (such as a touch event). A historical event is the raw event that occurs between the current event and the previous event. This API is applicable only to the move phase (touch or mouse movement) of a pointer event. If this API is called in other states, the default value **0** is returned.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | [int64_t OH_ArkUI_PointerEvent_GetHistoryEventTime(const ArkUI_UIInputEvent* event, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryeventtime) | Obtains the occurrence time of a historical event from a pointer event (such as a touch, mouse, or axis event).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | [uint32_t OH_ArkUI_PointerEvent_GetHistoryPointerCount(const ArkUI_UIInputEvent* event, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorypointercount) | Obtains the number of touch points in a specific historical event from a pointer event (such as a touch, mouse, or axis event).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | [int32_t OH_ArkUI_PointerEvent_GetHistoryPointerId(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorypointerid) | Obtains the unique ID of a contact point from a historical event of a pointer event (such as a touch event). The ID distinguishes between multiple contact points from the same input device. The return value itself does not have any other meaning beyond identifying the contact point.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -102,8 +103,8 @@ Provides ArkUI event definitions on the native side.
 | [float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryglobaldisplayx) | Obtains the x-coordinate relative to the global display for a specific touch point from historical events, based on the given pointer index and history index of an input event (such as a touch, mouse, or axis event). Position information can only be obtained from UI input events. For mouse and axis events, if the provided **pointerIndex** is greater than 0, this API always returns the default value **0.0f**.                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | [float OH_ArkUI_PointerEvent_GetHistoryGlobalDisplayY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistoryglobaldisplayy) | Obtains the y-coordinate relative to the global display for a specific touch point from historical events, based on the given pointer index and history index of an input event (such as a touch, mouse, or axis event). Position information can only be obtained from UI input events. For mouse and axis events, if the provided **pointerIndex** is greater than 0, this API always returns the default value **0.0f**.                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | [float OH_ArkUI_PointerEvent_GetHistoryPressure(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorypressure) | Obtains the pressure applied to the touchscreen in a specific historical event from a pointer event (for example, a touch event).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| [float OH_ArkUI_PointerEvent_GetHistoryTiltX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytiltx) | Obtains the angle relative to the YZ plane in a specific historical event from a pointer event (for example, a touch event). The value range is [–90, 90]. A positive value indicates a rightward tilt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| [float OH_ArkUI_PointerEvent_GetHistoryTiltY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytilty) | Obtains the angle relative to the XZ plane in a specific historical event from a pointer event (for example, a touch event). The value range is [-90, 90]. A positive value indicates a downward tilt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| [float OH_ArkUI_PointerEvent_GetHistoryTiltX(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytiltx) | Obtains the angle relative to the YZ plane in a specific historical event from a pointer event (for example, a touch event). The value range is [–90, 90], in deg. A positive value indicates a rightward tilt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| [float OH_ArkUI_PointerEvent_GetHistoryTiltY(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytilty) | Obtains the angle relative to the XZ plane in a historical event from a pointer event (for example, a touch event). The value range is [-90, 90], in deg. A positive value indicates a downward tilt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | [float OH_ArkUI_PointerEvent_GetHistoryTouchAreaWidth(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytouchareawidth) | Obtains the width of the touch area in a specific historical event from a pointer event (for example, a touch event).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | [float OH_ArkUI_PointerEvent_GetHistoryTouchAreaHeight(const ArkUI_UIInputEvent* event, uint32_t pointerIndex, uint32_t historyIndex)](#oh_arkui_pointerevent_gethistorytouchareaheight) | Obtains the height of the touch area in a specific historical event from a pointer event (for example, a touch event).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | [double OH_ArkUI_AxisEvent_GetVerticalAxisValue(const ArkUI_UIInputEvent* event)](#oh_arkui_axisevent_getverticalaxisvalue) | Obtains the value of the vertical scroll axis for this axis event. This value is typically generated by mouse wheel scrolling or two-finger vertical swiping on a touchpad. If the value is generated by mouse wheel scrolling: 1. The reported value is in degrees and represents the angular increment of a single scroll, not the total accumulation. 2. The reported value includes the user's scroll step configuration (see [OH_ArkUI_AxisEvent_GetScrollStep](capi-ui-input-event-h.md#oh_arkui_axisevent_getscrollstep)). 3. The sign of the value indicates the direction: positive for forward scrolling and negative for backward scrolling. If the value is generated by two-finger vertical swiping on a touchpad: 1. The reported value is in px and represents the scroll increment, not the total accumulation. 2. The reported value does not include the user's scroll step configuration [OH_ArkUI_AxisEvent_GetScrollStep](capi-ui-input-event-h.md#oh_arkui_axisevent_getscrollstep). 3. The sign of the value indicates the direction: positive for swiping up and negative for swiping down. 4. The direction is affected by the system settings for natural scrolling. Under normal circumstances, vertical scroll axis events only drive vertical swipe gestures. However, if the mouse pointer is over a scrollable area where the scrollable directions are consistent, the vertical scroll axis event can drive the swipe gestures in this scrollable area, even if they are defined as horizontal.|
@@ -111,7 +112,7 @@ Provides ArkUI event definitions on the native side.
 | [double OH_ArkUI_AxisEvent_GetPinchAxisScaleValue(const ArkUI_UIInputEvent* event)](#oh_arkui_axisevent_getpinchaxisscalevalue) | Obtains the scale value of the pinch axis for this axis event. This value is generated by a two-finger pinch gesture on a touchpad. The reported scale value is relative to the initial state when the system first detects the pinch gesture, with an initial scale value of 1.0. During the pinch operation, the scale value decreases from 1.0 towards 0.0 when the user pinches inward and increases from 1.0 when the user spreads fingers outward.                                                                                                                                                                                                                                                                                                                                                                  |
 | [int32_t OH_ArkUI_AxisEvent_GetAxisAction(const ArkUI_UIInputEvent* event)](#oh_arkui_axisevent_getaxisaction) | Obtains the action type of this axis event.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | [int32_t OH_ArkUI_AxisEvent_HasAxis(const ArkUI_UIInputEvent* event, int32_t axis)](#oh_arkui_axisevent_hasaxis) | Checks whether this axis event contains the specified axis type.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| [int32_t OH_ArkUI_PointerEvent_SetInterceptHitTestMode(const ArkUI_UIInputEvent* event, HitTestMode mode)](#oh_arkui_pointerevent_setintercepthittestmode) | Sets how the component behaves during hit testing. This API only applies to scenarios raw input events are received, such as when **NODE_ON_TOUCH** is used for touch event handling. It cannot be used with **ArkUI_UIInputEvent** objects obtained from gesture events through [OH_ArkUI_GestureEvent_GetRawInputEvent](capi-native-gesture-h.md#oh_arkui_gestureevent_getrawinputevent).                                                                                                                                                                                                                                                                                                                                                                        |
+| [int32_t OH_ArkUI_PointerEvent_SetInterceptHitTestMode(const ArkUI_UIInputEvent* event, HitTestMode mode)](#oh_arkui_pointerevent_setintercepthittestmode) | Sets the touch test mode. This API only applies to scenarios raw input events are received, such as when **NODE_ON_TOUCH** is used for touch event handling. It cannot be used with **ArkUI_UIInputEvent** objects obtained from gesture events through [OH_ArkUI_GestureEvent_GetRawInputEvent](capi-native-gesture-h.md#oh_arkui_gestureevent_getrawinputevent).                                                                                                                                                                                                                                                                                                                                                                        |
 | [int32_t OH_ArkUI_MouseEvent_GetMouseButton(const ArkUI_UIInputEvent* event)](#oh_arkui_mouseevent_getmousebutton) | Obtains the button type of a mouse event.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | [int32_t OH_ArkUI_MouseEvent_GetMouseAction(const ArkUI_UIInputEvent* event)](#oh_arkui_mouseevent_getmouseaction) | Obtains the action type of a mouse event.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | [int32_t OH_ArkUI_PointerEvent_SetStopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)](#oh_arkui_pointerevent_setstoppropagation) | Sets whether to stop event propagation. This API only applies to scenarios raw input events are received, such as when **NODE_ON_TOUCH** is used for touch event handling. It cannot be used with **ArkUI_UIInputEvent** objects obtained from gesture events through [OH_ArkUI_GestureEvent_GetRawInputEvent](capi-native-gesture-h.md#oh_arkui_gestureevent_getrawinputevent).                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -129,7 +130,7 @@ Provides ArkUI event definitions on the native side.
 | [float OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionX(const ArkUI_UIInputEvent* event)](#oh_arkui_uiinputevent_geteventtargetglobalpositionx) | Obtains the global x-coordinate of the component hit by an event.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | [float OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionY(const ArkUI_UIInputEvent* event)](#oh_arkui_uiinputevent_geteventtargetglobalpositiony) | Obtains the global y-coordinate of the component hit by an event.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | [int64_t OH_ArkUI_PointerEvent_GetPressedTimeByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getpressedtimebyindex) | Obtains the press time of a specified touch point. This API is effective only for touch events.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| [float OH_ArkUI_MouseEvent_GetRawDeltaX(const ArkUI_UIInputEvent* event)](#oh_arkui_mouseevent_getrawdeltax) | Obtains the movement increment of the mouse along the X axis in a two-dimensional plane. The value is the original movement data of the mouse hardware, which is expressed in the unit of the mouse movement distance in the real world. The reported value is determined by the hardware, not the physical or logical pixels of the screen.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [float OH_ArkUI_MouseEvent_GetRawDeltaX(const ArkUI_UIInputEvent* event)](#oh_arkui_mouseevent_getrawdeltax) | Obtains the movement increment of the mouse along the X axis in a two-dimensional plane. The value is the original movement data of the mouse hardware, which is expressed in the unit of the mouse movement distance in the physical world. The reported value is determined by the hardware, not the physical or logical pixels of the screen.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | [float OH_ArkUI_MouseEvent_GetRawDeltaY(const ArkUI_UIInputEvent* event)](#oh_arkui_mouseevent_getrawdeltay) | Obtains the movement increment of the mouse along the Y axis in a two-dimensional plane. The value is the original movement data of the mouse hardware, which is expressed in the unit of the mouse movement distance in the real world. The reported value is determined by the hardware, not the physical or logical pixels of the screen.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | [int32_t OH_ArkUI_MouseEvent_GetPressedButtons(const ArkUI_UIInputEvent* event, int32_t* pressedButtons, int32_t* length)](#oh_arkui_mouseevent_getpressedbuttons) | Obtains the pressed buttons from a mouse event.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | [int32_t OH_ArkUI_UIInputEvent_GetTargetDisplayId(const ArkUI_UIInputEvent* event)](#oh_arkui_uiinputevent_gettargetdisplayid) | Obtains the ID of the screen where the UI input event occurs.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
@@ -193,7 +194,7 @@ enum anonymous1
 **Description**
 
 
-Enumerates the action codes of the input event.
+Enumerates the action types of the input event.
 
 **Since**: 12
 
@@ -278,7 +279,7 @@ enum anonymous4
 **Description**
 
 
-Enumerates the action codes of the mouse event.
+Enumerates the action types of the mouse event.
 
 **Since**: 12
 
@@ -341,7 +342,7 @@ enum anonymous6
 **Description**
 
 
-Enumerates the axis types for focus axis events.
+Defines the axis types of the [focus axis event](./arkui-ts/ts-universal-events-focus_axis.md).
 
 **Since**: 15
 
@@ -395,7 +396,7 @@ enum anonymous7
 **Description**
 
 
-Enumerates the action types for axis events.
+Defines the operation types of the [axis event](./arkui-ts/ts-universal-events-axis.md).
 
 **Since**: 15
 
@@ -502,7 +503,7 @@ int32_t OH_ArkUI_UIInputEvent_GetAction(const ArkUI_UIInputEvent* event)
 **Description**
 
 
-Obtains the action type of an input event. The action type defines the phase of a basic event (for example, start or end) and characterizes its behavior, such as touch down or touch up. Action types are specific to the event category: [UI_TOUCH_EVENT_ACTION_XXX](#anonymous1) for touch events and [UI_MOUSE_EVENT_ACTION_XXX](#anonymous4) for mouse events. For axis events, use [OH_ArkUI_AxisEvent_GetAxisAction](#oh_arkui_axisevent_getaxisaction) to obtain the action type, which returns [UI_AXIS_EVENT_ACTION_XXX](#anonymous7). For key events, use [OH_ArkUI_KeyEvent_GetType](./capi-native-key-event-h.md#oh_arkui_keyevent_gettype) instead.
+Obtains the action type of an input event. The action type defines the phase of a basic event (for example, start or end) and characterizes its behavior, such as touch down or touch up. Action types are specific to the event category: [UI_TOUCH_EVENT_ACTION_XXX](#anonymous1) for touch events and [UI_MOUSE_EVENT_ACTION_XXX](#anonymous4) for mouse events. For an axis event, use [OH_ArkUI_AxisEvent_GetAxisAction](#oh_arkui_axisevent_getaxisaction) to obtain the action types, which returns [UI_AXIS_EVENT_ACTION_XXX](#anonymous7). For a key event, use [OH_ArkUI_KeyEvent_GetType](./capi-native-key-event-h.md#oh_arkui_keyevent_gettype) to obtain the action types, which returns [ArkUI_KeyEventType](./capi-native-key-event-h.md#arkui_keyeventtype).
 
 **Since**: 12
 
@@ -528,7 +529,7 @@ int32_t OH_ArkUI_UIInputEvent_GetSourceType(const ArkUI_UIInputEvent* event)
 **Description**
 
 
-Obtains the source type of a UI input event. The source represents the physical device, such as a touchscreen or mouse device, that generates the event. It is defined by the UI_INPUT_EVENT_SOURCE_TYPE_XXX enum. This is different from the input tool, which is the device used to interact with the source, for example, a finger or stylus. However, in certain cases, the input source and the input tool can be the same. For example, a mouse device acts as both the source and tool for click events. For key events, obtaining the source type is not supported, and in such cases, the API will return an **unknown** value.
+Obtains the source type of a UI input event. The source represents the physical device, such as a touchscreen or mouse device, that generates the input event. It is defined by [UI_INPUT_EVENT_SOURCE_TYPE_XXX](#anonymous3). This is different from the input tool, which is the device used to interact with the source, for example, a finger or stylus. However, in certain cases, the input source and the input tool can be the same. For example, a mouse device acts as both the source and tool for click events. For key events, obtaining the source type is not supported, and in such cases, the API will return an **unknown** value.
 
 **Since**: 12
 
@@ -554,7 +555,7 @@ int32_t OH_ArkUI_UIInputEvent_GetToolType(const ArkUI_UIInputEvent* event)
 **Description**
 
 
-Obtains the tool type of a UI input event. The input tool is the device used to interact with the input source, such as a finger or stylus. These tools themselves do not generate events but can drive the input source device to continuously generate events. The returned type is defined by the enumerated value of UI_INPUT_EVENT_TOOL_TYPE_XXX. For key events, obtaining the tool type is not supported, and in such cases, the API will return an **unknown** value.
+Obtains the tool type of a UI input event. The input tool is the device used to interact with the input source, such as a finger or stylus. These tools themselves do not generate events but can drive the input source device to continuously generate events. The returned type is defined by the enumerated value of [UI_INPUT_EVENT_TOOL_TYPE_XXX](#anonymous2). For key events, obtaining the tool type is not supported, and in such cases, the API will return an **unknown** value.
 
 **Since**: 12
 
@@ -606,7 +607,7 @@ uint32_t OH_ArkUI_PointerEvent_GetPointerCount(const ArkUI_UIInputEvent* event)
 **Description**
 
 
-Obtains the number of contact points from a pointer event (such as a touch, mouse, or axis event). Pointer events are typically events that carry position information, such as touch events, where the location of the event can be determined. Non-pointer events, such as key events, do not have position information and do not involve contact points, so this API is not applicable to key events. For touch events, this API returns the number of active touch points, for example, fingers on the screen. For mouse and axis events, this API always returns **1**, as they are single-pointer interactions.
+Obtains the number of contact points from a pointer event (such as a touch, mouse, or axis event). Pointer events are typically events that carry position information, such as touch events, where the location of the event can be determined. Non-pointer events, such as key events, do not have position information and do not involve points, so this API always returns **0**. For touch events, this API returns the number of active touch points, for example, fingers on the screen. For mouse and axis events, this API always returns **1**, as they are single-pointer interactions.
 
 **Since**: 12
 
@@ -1019,7 +1020,7 @@ Obtains the x-coordinate relative to the global display from a pointer event (su
 
 | Type| Description|
 | -- | -- |
-| float | X-coordinate relative to the global display, in px. Returns **0** if any parameter error occurs (for example, if the event does not contain position information).|
+| float | X-coordinate relative to the global display, in px. **0.0f** is returned if any parameter error occurs (for example, if the event does not contain position information).|
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayXByIndex()
 
@@ -1072,7 +1073,7 @@ Obtains the y-coordinate relative to the global display from a pointer event (su
 
 | Type| Description|
 | -- | -- |
-| float | Y-coordinate relative to the global display, in px. Returns **0** if any parameter error occurs (for example, if the event does not contain position information).|
+| float | Y-coordinate relative to the global display, in px. **0.0f** is returned if any parameter error occurs (for example, if the event does not contain position information).|
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex()
 
@@ -1126,7 +1127,7 @@ Obtains the pressure applied to the touchscreen from a pointer event (for exampl
 
 | Type| Description|
 | -- | -- |
-| float | Pressure applied to the touchscreen. Returns **0.0f** if any parameter error occurs.|
+| float | Touch pressure generated by the current pointer event. The value range is [0, 1]. The pressure is positively correlated with the value. If the parameter is abnormal, the default value **0.0f** is returned. On some devices, the return value may be greater than 1 due to different hardware parameter configurations.|
 
 ### OH_ArkUI_PointerEvent_GetTiltX()
 
@@ -1137,7 +1138,7 @@ float OH_ArkUI_PointerEvent_GetTiltX(const ArkUI_UIInputEvent* event, uint32_t p
 **Description**
 
 
-Obtains the tilt angle relative to the YZ plane from a pointer event. The value range is [-90, 90], where positive values indicate a rightward tilt. This API is applicable only to stylus-based touch events from devices that support tilt angle reporting.
+Obtains the angle relative to the YZ plane from a pointer event (for example, a touch event). The value range is [–90, 90], in deg. A positive value indicates a rightward tilt. This API is applicable only to stylus-based touch events from devices that support tilt angle reporting.
 
 **Since**: 12
 
@@ -1164,7 +1165,7 @@ float OH_ArkUI_PointerEvent_GetTiltY(const ArkUI_UIInputEvent* event, uint32_t p
 **Description**
 
 
-Obtains the tilt angle relative to the XZ plane from a pointer event. The value range is [-90, 90], where positive values indicate a rightward tilt. This API is applicable only to stylus-based touch events from devices that support tilt angle reporting.
+Obtains the angle relative to the XZ plane from a pointer event (for example, a touch event). The value range is [–90, 90], in deg. A positive value indicates a rightward tilt. This API is applicable only to stylus-based touch events from devices that support tilt angle reporting.
 
 **Since**: 12
 
@@ -1327,7 +1328,7 @@ uint32_t OH_ArkUI_PointerEvent_GetHistorySize(const ArkUI_UIInputEvent* event)
 **Description**
 
 
-Obtains the number of historical events from a pointer event (such as a touch event). Historical events are the raw events that occur between the current event and the previous event. This API is applicable only to move events.
+Obtains the number of historical events from a pointer event (such as a touch event). A historical event is the raw event that occurs between the current event and the previous event. This API is applicable only to the move phase (touch or mouse movement) of a pointer event. If this API is called in other states, the default value **0** is returned.
 
 **Since**: 12
 
@@ -1676,7 +1677,7 @@ Obtains the pressure applied to the touchscreen in a specific historical event f
 
 | Type| Description|
 | -- | -- |
-| float | Pressure applied to the touchscreen. Returns **0.0f** if any parameter error occurs.|
+| float | Touch pressure generated by the current pointer event. The value range is [0, 1]. The pressure is positively correlated with the value. If the parameter is abnormal, the default value **0.0f** is returned. On some devices, the return value may be greater than 1 due to different hardware parameter configurations.|
 
 ### OH_ArkUI_PointerEvent_GetHistoryTiltX()
 
@@ -1930,7 +1931,7 @@ int32_t OH_ArkUI_PointerEvent_SetInterceptHitTestMode(const ArkUI_UIInputEvent* 
 **Description**
 
 
-Sets how the component behaves during hit testing. This API only applies to scenarios raw input events are received, such as when **NODE_ON_TOUCH** is used for touch event handling. It cannot be used with **ArkUI_UIInputEvent** objects obtained from gesture events through [OH_ArkUI_GestureEvent_GetRawInputEvent](capi-native-gesture-h.md#oh_arkui_gestureevent_getrawinputevent).
+Sets the touch test mode. This API only applies to scenarios raw input events are received, such as when **NODE_ON_TOUCH** is used for touch event handling. It cannot be used with **ArkUI_UIInputEvent** objects obtained from gesture events through [OH_ArkUI_GestureEvent_GetRawInputEvent](capi-native-gesture-h.md#oh_arkui_gestureevent_getrawinputevent).
 
 **Since**: 12
 
@@ -1940,7 +1941,7 @@ Sets how the component behaves during hit testing. This API only applies to scen
 | Name| Description|
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the UI input event.|
-| [HitTestMode](capi-ui-input-event-h.md#hittestmode) mode | Hit test mode. The parameter type is [HitTestMode](capi-ui-input-event-h.md#hittestmode).|
+| [HitTestMode](capi-ui-input-event-h.md#hittestmode) mode | Touch test mode. The parameter type is [HitTestMode](capi-ui-input-event-h.md#hittestmode).|
 
 **Return value**
 
@@ -1972,7 +1973,7 @@ Obtains the button type of a mouse event.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Mouse button type. The value **1** indicates the left button, **2** indicates the right button, **3** indicates the middle button, **4** indicates the back button, and **5** indicates the forward button.|
+| int32_t | Mouse button type. The value is defined by the [anonymous5](#anonymous5) enumeration. If the API is called in a non-mouse event, the return value is **-1**.|
 
 ### OH_ArkUI_MouseEvent_GetMouseAction()
 
@@ -1998,7 +1999,7 @@ Obtains the action type of a mouse event.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Mouse action type. The value **1** indicates that the mouse button is pressed, **2** indicates that the mouse button is released, and **3** indicates that the mouse cursor moves.|
+| int32_t | Mouse action type. The value is defined by the [anonymous4](#anonymous4) enumeration. If the API is called in a non-mouse event, the return value is **-1**.|
 
 ### OH_ArkUI_PointerEvent_SetStopPropagation()
 
@@ -2154,7 +2155,7 @@ Obtains the modifier key states for a UI input event. This API outputs the state
 | Name| Description|
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the target **ArkUI_UIInputEvent** object.|
-| uint64_t* keys | Pointer to a variable where the current combination of pressed modifier keys will be returned. The application can use bitwise operations to determine the state of each modifier key.|
+| uint64_t* keys | Pointer to the combination of pressed modifier keys. The application can use bitwise operations to determine which keys are pressed.|
 
 **Return value**
 
@@ -2213,7 +2214,7 @@ Obtains the scroll step coefficient for a wheel-based axis event. This API retur
 
 | Type| Description|
 | -- | -- |
-| int32_t | Scroll step configuration of the mouse wheel axis event.|
+| int32_t | Scroll step configuration of the mouse wheel axis event. For non-mouse events, the default value **0** is returned.|
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetWidth()
 
@@ -2239,7 +2240,7 @@ Obtains the width of the component hit by an event.
 
 | Type| Description|
 | -- | -- |
-| float | Width of the component hit by the event. Returns **0.0f** if any parameter error occurs.|
+| float | Width of the component hit by an event, in pixels. If any parameter error occurs, **0.0f** is returned.|
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetHeight()
 
@@ -2265,7 +2266,7 @@ Obtains the height of the component hit by an event.
 
 | Type| Description|
 | -- | -- |
-| float | Height of the component hit by the event. Returns **0.0f** if any parameter error occurs.|
+| float | Height of the component hit by an event, in pixels. If any parameter error occurs, **0.0f** is returned.|
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetPositionX()
 
@@ -2291,7 +2292,7 @@ Obtains the x-coordinate of the component hit by an event.
 
 | Type| Description|
 | -- | -- |
-| float | X-coordinate of the component hit by the event. Returns **0.0f** if any parameter error occurs.|
+| float | X-coordinate of the component hit by an event, in pixels. If any parameter error occurs, **0.0f** is returned.|
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetPositionY()
 
@@ -2317,7 +2318,7 @@ Obtains the y-coordinate of the component hit by an event.
 
 | Type| Description|
 | -- | -- |
-| float | Y-coordinate of the component hit by the event. Returns **0.0f** if any parameter error occurs.|
+| float | Y-coordinate of the component hit by an event, in pixels. If any parameter error occurs, **0.0f** is returned.|
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionX()
 
@@ -2343,7 +2344,7 @@ Obtains the global x-coordinate of the component hit by an event.
 
 | Type| Description|
 | -- | -- |
-| float | Global x-coordinate of the component hit by the event. Returns **0.0f** if any parameter error occurs.|
+| float | Global x-coordinate of the component hit by an event, in pixels. If any parameter error occurs, **0.0f** is returned.|
 
 ### OH_ArkUI_UIInputEvent_GetEventTargetGlobalPositionY()
 
@@ -2369,7 +2370,7 @@ Obtains the global y-coordinate of the component hit by an event.
 
 | Type| Description|
 | -- | -- |
-| float | Global y-coordinate of the component hit by the event. Returns **0.0f** if any parameter error occurs.|
+| float | Global y-coordinate of the component hit by an event, in pixels. If any parameter error occurs, **0.0f** is returned.|
 
 ### OH_ArkUI_PointerEvent_GetPressedTimeByIndex()
 
@@ -2433,7 +2434,7 @@ float OH_ArkUI_MouseEvent_GetRawDeltaY(const ArkUI_UIInputEvent* event)
 **Description**
 
 
-Obtains the movement increment of the mouse along the Y axis in a two-dimensional plane. The value is the original movement data of the mouse hardware, which is expressed in the unit of the mouse movement distance in the physical world. The reported value is determined by the hardware, not the physical or logical pixels of the screen.
+Obtains the movement increment of the mouse along the Y axis in a two-dimensional plane. The value is the original movement data of the mouse hardware, which is expressed in the unit of the mouse movement distance in the real world. The reported value is determined by the hardware, not the physical or logical pixels of the screen.
 
 **Since**: 15
 
@@ -2476,7 +2477,7 @@ Obtains the pressed buttons from a mouse event.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the given buffer size is insufficient.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the input buffer size is invalid.|
 
 ### OH_ArkUI_UIInputEvent_GetTargetDisplayId()
 
@@ -2790,7 +2791,7 @@ The coasting axis event is triggered only when the user performs a two-finger sw
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the target **ArkUI_UIInputEvent** object.|
+| [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the target **ArkUI_UIInputEvent** object.|
 
 **Return value**
 
@@ -2819,7 +2820,7 @@ Obtains the time when a coasting axis event occurs.
 
 | Type| Description|
 | -- | -- |
-| int64_t | Time when the UI input event occurs. Returns **0** if any parameter error occurs.|
+| int64_t | Time when the UI input event occurs, in ns. If any parameter error occurs, **0** is returned.|
 
 ### OH_ArkUI_CoastingAxisEvent_GetPhase()
 
