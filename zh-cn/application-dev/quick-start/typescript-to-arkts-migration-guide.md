@@ -2766,7 +2766,7 @@ enum E1 {
   B = 0xb,
   C = 0xc,
   D = 0xd,
-  E // 推断出0xe。
+  E // 推断出0xe
 }
 
 enum E2 {
