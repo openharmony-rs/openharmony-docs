@@ -1610,6 +1610,24 @@ HSP/HAP模块module.json文件中minAPIVersion小于21，且deduplicateHar的值
 
 打包HSP/HAP时，如果deduplicateHar的属性值为true时，则要求minAPIVersion大于等于21。
 
+### 10012055 校验内核权限压缩配置失败
+**错误信息**
+
+Check kernel permission compression failed.
+
+**错误描述**
+
+打包HSP/HAP时，校验内核权限模块的压缩配置失败。
+
+**可能原因**
+
+1. 模块的module.json中配置了executableBinaryPaths字段（表示模块具有内核权限）。
+2. 同时compressNativeLibs和extractNativeLibs两个配置项的值都为false。
+
+**处理步骤**
+
+对于具有内核权限的模块（配置了executableBinaryPaths），需要在module.json5中配置extractNativeLibs或compressNativeLibs中至少一项为true。
+
 ### 10013001 解析module.json或config.json文件异常
 **错误信息**
 
