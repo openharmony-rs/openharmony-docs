@@ -3516,6 +3516,11 @@ import { C } from './ExportMod'
 import { C } from './ExportMod'
 ```
 
+``` TypeScript
+// NoTsDeps.ts
+import { C } from './ExportMod'
+```
+
 **ArkTS**
 
 <!-- @[export_classC](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExportMod.ets) -->   
