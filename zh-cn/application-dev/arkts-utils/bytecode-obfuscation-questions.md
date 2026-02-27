@@ -452,8 +452,8 @@ p123
 <!-- @[export_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/ExportInterface.ts) -->
 
 ``` TypeScript
-// 混淆前。
-// file1.ts
+// 混淆前
+// ExportInterface.ts
 export interface MyInfo {
   age: number;
   address: {
