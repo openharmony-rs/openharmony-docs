@@ -150,7 +150,7 @@ export let b: number = 2;
 <!-- @[namespaces_Variables_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/ModuleBar.ts) -->
 
 ``` TypeScript
-//module_bar.ts
+// ModuleBar.ts
 export let c: number = 4;
 ```
 
