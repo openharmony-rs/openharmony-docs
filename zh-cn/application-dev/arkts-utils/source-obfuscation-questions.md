@@ -129,7 +129,7 @@ jsonProperty
 
 ``` TypeScript
 // 混淆前
-// export.ts
+// ExportNs.ts
 export namespace NS {
   export function foo() { }
 }
