@@ -2745,7 +2745,7 @@ enum E1 {
   B = 0xb,
   C = Math.random(),
   D = 0xd,
-  E // 推断出0xe。
+  E // 推断出0xe
 }
 
 enum E2 {
