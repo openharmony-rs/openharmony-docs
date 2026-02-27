@@ -539,7 +539,7 @@ media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptu
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
 });
 
-// 其余流程
+// 其余流程。
 
 // 调用release方法。
 if (avScreenCaptureRecorder != undefined) {
