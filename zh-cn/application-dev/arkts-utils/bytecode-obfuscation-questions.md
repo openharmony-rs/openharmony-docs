@@ -465,9 +465,9 @@ export interface MyInfo {
 <!-- @[import_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->   
 
 ``` TypeScript
-// file2.ts
-import { MyInfo } from './file1';
-// ...
+// ExportCompositeInterface.ts
+import { MyInfo } from './ExportCompositeInterface';
+  // ...
   const person: MyInfo = {
     age: 20,
     address: {
