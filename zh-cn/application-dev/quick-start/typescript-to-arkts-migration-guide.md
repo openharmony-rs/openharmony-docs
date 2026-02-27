@@ -253,17 +253,17 @@ class X {
   public name: string = '';
 }
 let x: X = { name: 'x' };
-console.info(x.name); // x。
+console.info(x.name); // x
 
 let y = ['a', 'b', 'c'];
-console.info(y[2]); // c。
+console.info(y[2]); // c
 
-// 在需要通过非标识符（即不同类型的key）获取数据的场景中，使用Map<Object, some_type>。
+// 在需要通过非标识符（即不同类型的key）获取数据的场景中，使用Map<Object, some_type>
 let z = new Map<Object, string>();
 z.set('name', '1');
 z.set(2, '2');
-console.info(z.get('name'));  // 1。
-console.info(z.get(2)); // 2。
+console.info(z.get('name'));  // 1
+console.info(z.get(2)); // 2
 
 enum Test {
   A = 'aaa',
@@ -271,9 +271,9 @@ enum Test {
 };
 
 let obj: Record<string, number> = {
-  [Test.A]: 1,   // 枚举中的字符串值。
-  [Test.B]: 2,   // 枚举中的字符串值。
-  ['value']: 3   // 字符串字面量。
+  [Test.A]: 1,   // 枚举中的字符串值
+  [Test.B]: 2,   // 枚举中的字符串值
+  ['value']: 3   // 字符串字面量
 };
 ```
 
