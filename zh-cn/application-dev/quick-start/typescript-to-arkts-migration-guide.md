@@ -335,7 +335,7 @@ class C {
 
 ``` TypeScript
 let X: string
-type X = number[] // 类型的别名与变量同名。
+type X = number[] // 类型的别名与变量同名
 ```
 
 **ArkTS**
