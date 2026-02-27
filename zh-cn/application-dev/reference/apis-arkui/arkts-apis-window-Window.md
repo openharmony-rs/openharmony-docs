@@ -1460,6 +1460,7 @@ isSystemAvoidAreaEnabled(): boolean
 **示例：**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
