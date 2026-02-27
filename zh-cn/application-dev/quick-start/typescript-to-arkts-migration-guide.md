@@ -3309,9 +3309,9 @@ import { obj } from 'something.json' assert { type: 'json' }
 
 <!-- @[no_importAssertions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoImportAssertions.ets) -->   
 
-```typescript
+``` TypeScript
 // 编译时将检查导入T的正确性
-import { something } from 'module'
+import { Something } from './ExportMod'
 ```
 
 ### 限制使用标准库
