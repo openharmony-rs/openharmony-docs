@@ -656,7 +656,7 @@ export default function HuksAsUserTest() {
 
 importWrappedKeyItemAsUser(userId: number, keyAlias: string, wrappingKeyAlias: string, huksOptions: HuksOptions) : Promise\<void>
 
-指定用户身份导入加密密钥，使用Promise方式异步返回结果。
+指定用户身份安全导入密钥，使用Promise方式异步返回结果。
 
 **系统接口**：此接口为系统接口。
 
