@@ -500,7 +500,7 @@ const person: MyInfo = {
 <!-- @[export_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/FileOutside.ts) -->
 
 ``` TypeScript
-// file1.ts
+// FileOutside.ts
 export interface AddressType {
   city1: string
 }
