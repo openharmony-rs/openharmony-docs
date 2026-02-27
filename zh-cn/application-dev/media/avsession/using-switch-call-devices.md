@@ -48,17 +48,46 @@
 2. 在需要切换设备的通话界面创建AVCastPicker组件。
 
    <!-- @[create_castPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SwitchOutputDevice.ets) -->     
-
-   ```ts
+   
+   ``` TypeScript
    import { AVCastPicker } from '@kit.AVSessionKit';
-
-   // 创建组件，并设置大小。
-   build() {
-     Row() {
-       Column() {
-         AVCastPicker()
-           .size({ height:45, width:45 })
+   
+   @Entry
+   @Component
+   struct OutputCastPicker {
+     @State normalColor:Color = Color.White;
+     @State activeColor:Color = Color.Blue;
+     @State pickerImage: ResourceStr = $r('app.media.sound'); // 自定义资源。
+     // ...
+     // 创建组件，并设置大小。
+     build() {
+       Row() {
+         Column() {
+           AVCastPicker({
+             normalColor: this.normalColor,
+             activeColor: this.activeColor,
+             customPicker: this.ImageBuilder.bind(this), // 新增自定义参数。
+           })
+             .size({ width: '50%', height: '20%' })
+             .id('AVCastPicker')
+           // ...
+         }
+         .width('100%')
+         .alignItems(HorizontalAlign.Center)
        }
+       .alignItems(VerticalAlign.Center)
+       .width('100%')
+       .height('100%')
+     }
+   
+     // 自定义内容。
+     @Builder
+     ImageBuilder() {
+       Text($r('app.string.switch_OutputDevice'))
+       Image(this.pickerImage)
+         .size({ width: '100%', height: '100%' })
+         .backgroundColor('#00000000')
+         .fillColor(Color.Black)
      }
    }
    ```
