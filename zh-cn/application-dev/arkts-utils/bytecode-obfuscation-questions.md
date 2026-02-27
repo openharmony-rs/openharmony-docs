@@ -402,10 +402,10 @@ export class Sample {
 <!-- @[call_decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/CallDecorator.ets) -->
 
 ``` TypeScript
-// Call the API。
-// a.ets
+// Call the API
+// CallDecorator.ets
 import { PersistenceV2 } from '@kit.ArkUI';
-import { Sample } from './Sample2';
+import { Sample } from './SampleChild';
 
 @Entry
 @ComponentV2
