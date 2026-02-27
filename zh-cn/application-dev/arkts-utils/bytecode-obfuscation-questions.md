@@ -609,8 +609,8 @@ i();
 <!-- @[export_ns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/ExportNs.ts) -->
 
 ``` TypeScript
-// 混淆前。
-// export.ts
+// 混淆前
+// ExportNs.ts
 export namespace NS {
   export function foo() {
     console.info(`export NS function foo is called`);
