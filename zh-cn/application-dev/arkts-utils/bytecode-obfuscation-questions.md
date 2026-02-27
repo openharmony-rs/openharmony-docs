@@ -294,25 +294,20 @@ export default struct TmsDialog {
 
 <!-- @[import_json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/ImportJson.ets) -->  
 
-```ts
-// 示例JSON文件结构（test.json）：
+``` TypeScript
+// 示例JSON文件结构（ImportJson.json）：
 /*
 {
   "jsonObj": {
     "jsonProperty": "value"
   }
 }
-*/
+ */
 
 // 混淆前
-import jsonData from "./test.json";
+import jsonData from './ImportJson.json';
 
 let jsonProp = jsonData.jsonObj.jsonProperty;
-
-// 混淆后
-import jsonData from "./test.json";
-
-let jsonProp = jsonData.i.j;
 ```
 
 ``` TypeScript
