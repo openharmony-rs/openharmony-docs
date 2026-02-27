@@ -325,19 +325,19 @@ Array.flatMap()接口在处理包含Proxy的Array时，未正确展平嵌套的P
 
 <!-- @[test_arrayFlatMapCompliance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
 
-```ts
+``` TypeScript
 let arr1 = [0, 1];
 let arr2 = [2, 3];
-const emptyHandler = new Object() as ProxyHandler<number[]>;
+const emptyHandler = {} as ProxyHandler<number[]>;
 let proxy1 = new Proxy(arr1, emptyHandler);
 let proxy2 = new Proxy(arr2, emptyHandler);
 let arr3 = [proxy1, proxy2];
 let res = arr3.flatMap(x => x);
 
-console.info("res length:", res.length.toString());
+console.info('res length:', res.length.toString());
 // 期望输出: res length: 4
 // 实际输出: res length: 2
-console.info("res[0] is: ", res[0].toString());
+console.info('res[0] is: ', res[0].toString());
 // 期望输出: res[0] is: 0
 // 实际输出: res[0] is: 0,1
 ```
