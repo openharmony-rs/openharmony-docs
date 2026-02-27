@@ -1301,16 +1301,16 @@ console.info(obj2['m']); // 此时，'m'会被正确混淆，m可以选择性保
   function CustomDecorator(target: Object, propertyKey: string) {}
   function MethodDecorator(target: Object, propertyKey: string, descriptor: PropertyDescriptor) {}
   function ParamDecorator(target: Object, propertyKey: string, parameterIndex: number) {}
-
+  
   class A {
-    // 1.成员变量装饰器。
+    // 1.成员变量装饰器
     @CustomDecorator
-    propertyName1: string = ""   // propertyName1 需要被保留。
-    // 2.成员方法装饰器。
+    propertyName1: string = ""   // propertyName1 需要被保留
+    // 2.成员方法装饰器
     @MethodDecorator
-    methodName1() {} // methodName1 需要被保留。
-    // 3.方法参数装饰器。
-    methodName2(@ParamDecorator param: string): void {} // methodName2 需要被保留。
+    methodName1() {} // methodName1 需要被保留
+    // 3.方法参数装饰器
+    methodName2(@ParamDecorator param: string): void {} // methodName2 需要被保留
   }
   ```
 
