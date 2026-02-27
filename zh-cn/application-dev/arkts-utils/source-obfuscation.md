@@ -209,7 +209,7 @@ test(a2);
   
   ``` TypeScript
   // 混淆前：
-  // example.ts
+  // ArkGuardAbility.ts
   let person = {"exampleName": "abc"};
   person["exampleAge"] = 22;
   ```
