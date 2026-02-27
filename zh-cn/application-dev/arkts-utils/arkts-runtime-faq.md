@@ -100,8 +100,8 @@ console.info('reg.exec(str) = ' + reg.exec(str));
 let reg = new RegExp('(a)(?<b>b)');
 let res = reg.exec('ab');
 console.info('JSON.stringify(res?.groups) = ' + JSON.stringify(res?.groups));
-// 期望输出: JSON.stringify(res?.groups) = {'b':'b'}。
-// 实际输出: JSON.stringify(res?.groups) = {'b':'a'}。
+// 期望输出: JSON.stringify(res?.groups) = {'b':'b'}
+// 实际输出: JSON.stringify(res?.groups) = {'b':'a'}
 ```
 
 
