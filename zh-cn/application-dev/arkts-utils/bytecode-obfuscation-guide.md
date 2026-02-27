@@ -80,9 +80,10 @@
     ```
 
     混淆选项的配置推荐参考[字节码混淆选项配置指导](#字节码混淆选项配置指导)，混淆过程中涉及的所有配置文件的详情介绍请参考[三种混淆配置文件](#三种混淆配置文件)。
+    
     > **说明：**
     > 
-    > 新建工程默认关闭混淆功能。如果开发者希望开启混淆，需要将模块的`build-profile.json5`文件中的`ruleOptions.enable`字段的值设置为`true`。同时需要将混淆规则配置文件`obfuscation-rules.txt`的`-enable-bytecode-obfuscation`、`-enable-bytecode-obfuscation-debugging`选项按需启用；
+    >新建工程中，混淆功能默认关闭。如需开启，请将模块`build-profile.json5`文件中的`ruleOptions.enable`字段的值设置为`true`。还需要将混淆规则配置文件`obfuscation-rules.txt`中的`-enable-bytecode-obfuscation`、`-enable-bytecode-obfuscation-debugging`选项按需启用。
     > 
     > 此外，混淆规则配置文件中默认开启了四项推荐的混淆选项：`-enable-property-obfuscation`、`-enable-toplevel-obfuscation`、`-enable-filename-obfuscation`和`-enable-export-obfuscation`，开发者可以根据需要进一步修改混淆配置。
 
@@ -98,7 +99,7 @@
 
     > **说明：**
     > 
-    > 新建工程默认关闭混淆功能。如果开发者希望开启混淆，需要将模块的`build-profile.json5`文件中的`ruleOptions.enable`字段的值设置为`true`。同时静态字节码混淆将自动启用；开发者可以根据需要进一步修改混淆配置。
+    > 新建工程中，混淆功能默认关闭。如需开启，请将模块的`build-profile.json5`文件中的`ruleOptions.enable`字段设置为`true`。开启后，静态字节码混淆将自动启用，开发者可根据需要进一步修改混淆配置。
    
 
 * 指定release编译
