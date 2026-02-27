@@ -3128,7 +3128,7 @@ ArkTS没有原型的概念，因此不支持在原型上赋值。此特性不符
 
 ``` TypeScript
 let C = function (p) {
-  this.p = p; // 只有在开启noImplicitThis选项时会产生编译时错误。
+  this.p = p; // 只有在开启noImplicitThis选项时会产生编译时错误
 }
 
 C.prototype = {
