@@ -142,7 +142,7 @@ function foo1(): void {
 <!-- @[namespaces_Variables_foo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/ModuleFoo.ts) -->
 
 ``` TypeScript
-//module_foo.ts
+// ModuleFoo.ts
 export let a: number = 1;
 export let b: number = 2;
 ```
