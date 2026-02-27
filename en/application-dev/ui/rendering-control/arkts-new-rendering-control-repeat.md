@@ -55,7 +55,8 @@ Child components of **Repeat** are defined using **.each()** and **.template()**
 ``` TypeScript
 // Use Repeat in a List container component.
 @Entry
-@ComponentV2 // The V2 decorator is recommended.
+@ComponentV2
+  // The V2 decorator is recommended.
 struct RepeatExample {
   @Local dataArr: Array<string> = []; // Data source.
 
@@ -195,7 +196,9 @@ Perform the following array update operations based on the previous section: Del
 ### Node Reuse Inspection
 
 You can verify node reuse using the DevEco Testing tool. After launching the tool, select the utility menu.
+
  
+
 Choose **UIViewer** from the utility options. This tool captures device snapshots, component tree structures, and node attributes. In the component tree on the right, select the **Repeat** subnode. The node attributes displayed in the lower right corner include the node ID. You can determine whether a component has been reused or newly created by checking whether the node ID remains the same.
 
 ## Key Generation
@@ -212,6 +215,7 @@ When using **.key()**, pay attention to the following:
 
 - Even if the array changes, you must ensure that keys remain unique across all items in the array.
 - The **.key()** function must return a consistent key for the same data item across all executions.
+
 To achieve optimal performance, you are advised to define custom key values that are independent of the index. When the key value of the current item changes, the existing item is destroyed and a new item is created to display the updated content. If the key value is index-dependent, operations such as adding or deleting data items (even those unrelated to the current item) may trigger unnecessary destruction and recreation of nodes, leading to avoidable UI re-rendering.
 - While technically allowed, using **index** in **.key()** is discouraged. Indexes change when items are added, removed, or rearranged, causing keys to shift and forcing **Repeat** to re-create components, which degrades performance.
 - (Recommended) Convert simple-type arrays into class object arrays with a **readonly id** property initialized using a unique value.
@@ -278,6 +282,7 @@ struct RepeatLazyLoadingLongData {
   // Assume that the total length of the data source is 1000. The initial array does not provide data.
   @Local arr: Array<string> = [];
   scroller: Scroller = new Scroller();
+
   build() {
     Column({ space: 5 }) {
       // The initial item displayed on the screen is at index 100. Data can be automatically obtained through lazy loading.
@@ -285,9 +290,13 @@ struct RepeatLazyLoadingLongData {
         Repeat(this.arr)
           .virtualScroll({
             // The expected total length of the data source is 1000.
-            onTotalCount: () => { return 1000; },
+            onTotalCount: () => {
+              return 1000;
+            },
             // Implement lazy loading.
-            onLazyLoading: (index: number) => { this.arr[index] = index.toString(); }
+            onLazyLoading: (index: number) => {
+              this.arr[index] = index.toString();
+            }
           })
           .each((obj: RepeatItem<string>) => {
             ListItem() {
@@ -299,10 +308,13 @@ struct RepeatLazyLoadingLongData {
           })
       }
       .height('80%')
-      .border({ width: 1})
+      .border({ width: 1 })
+
       // Navigate to the position at index 500. Data can be automatically obtained through lazy loading.
       Button('ScrollToIndex 500')
-        .onClick(() => { this.scroller.scrollToIndex(500); })
+        .onClick(() => {
+          this.scroller.scrollToIndex(500);
+        })
     }
   }
 }
@@ -323,18 +335,23 @@ This example deals with time-consuming data loading. In the **onLazyLoading** me
 @ComponentV2
 struct RepeatLazyLoadingSync {
   @Local arr: Array<string> = [];
+
   build() {
     Column({ space: 5 }) {
       List({ space: 5 }) {
         Repeat(this.arr)
           .virtualScroll({
-            onTotalCount: () => { return 100; },
+            onTotalCount: () => {
+              return 100;
+            },
             // Implement lazy loading.
             onLazyLoading: (index: number) => {
               // Create a placeholder.
               this.arr[index] = '';
               // Simulate a time-consuming loading process and load data through an asynchronous task.
-              setTimeout(() => { this.arr[index] = index.toString(); }, 1000);
+              setTimeout(() => {
+                this.arr[index] = index.toString();
+              }, 1000);
             }
           })
           .each((obj: RepeatItem<string>) => {
@@ -347,7 +364,7 @@ struct RepeatLazyLoadingSync {
           })
       }
       .height('100%')
-      .border({ width: 1})
+      .border({ width: 1 })
     }
   }
 }
@@ -374,20 +391,26 @@ This example shows how to implement infinite lazy loading of data by using lazy 
 @ComponentV2
 struct RepeatLazyLoadingInfinite {
   @Local arr: Array<string> = [];
+
   // Provide the initial data required for the first screen display.
   aboutToAppear(): void {
     for (let i = 0; i < 15; i++) {
       this.arr.push(i.toString());
     }
   }
+
   build() {
     Column({ space: 5 }) {
       List({ space: 5 }) {
         Repeat(this.arr)
           .virtualScroll({
             // Enable infinite lazy loading of data.
-            onTotalCount: () => { return this.arr.length + 1; },
-            onLazyLoading: (index: number) => { this.arr[index] = index.toString(); }
+            onTotalCount: () => {
+              return this.arr.length + 1;
+            },
+            onLazyLoading: (index: number) => {
+              this.arr[index] = index.toString();
+            }
           })
           .each((obj: RepeatItem<string>) => {
             ListItem() {
@@ -399,7 +422,7 @@ struct RepeatLazyLoadingInfinite {
           })
       }
       .height('100%')
-      .border({ width: 1})
+      .border({ width: 1 })
       // You are advised to set cachedCount to a value greater than 0.
       .cachedCount(1)
     }
@@ -451,7 +474,7 @@ struct RepeatVirtualScrollOnMove {
               Text(obj.item)
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
-                .size({height: 100, width: '100%'})
+                .size({ height: 100, width: '100%' })
             }.margin(10)
             .borderRadius(10)
             .backgroundColor('#FFFFFFFF')
@@ -1479,8 +1502,11 @@ struct RepeatBuilderPage {
             }.border({ width: 1 })
           }).virtualScroll()
       }
-      .cachedCount(1).border({ width: 1 })
-      .width('70%').height('60%').alignListItem(ListItemAlign.Center)
+      .cachedCount(1)
+      .border({ width: 1 })
+      .width('70%')
+      .height('60%')
+      .alignListItem(ListItemAlign.Center)
 
       Button('click to change data.').onClick(() => {
         this.simpleList[0] = 10000; // Update the first item to 10000.
