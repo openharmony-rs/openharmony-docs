@@ -3418,14 +3418,14 @@ error: check bin file failed.
 
 **可能原因**
 
-用户在应用的module.json5配置文件中配置了[executablBinaryPaths标签](../quick-start/module-configuration-file.md#executablebinarypaths标签)，但是应用未配置解压模式；或者该设备不支持安装此类型的应用。
+1. 在应用的module.json5配置文件中配置了[executableBinaryPaths标签](../quick-start/module-configuration-file.md#executablebinarypaths标签)，但是应用未配置解压模式。
+2. 该设备不支持安装配置了[executableBinaryPaths标签](../quick-start/module-configuration-file.md#executablebinarypaths标签)的应用。
 
 **处理步骤**
 
-场景一. 配置应用为解压模式，即在应用的[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中设置compressNativeLibs标签为true；
-<!--Del-->
-场景二. 使用[param工具](./param-tool.md)设置const.bms.bin_install的值为true，即执行hdc shell param set const.bms.bin_install true。
-<!--DelEnd-->
+1. 配置应用为解压模式，即在应用的[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中设置compressNativeLibs标签为true。
+2. 更换为PC/2in1设备。
+
 
 <!--Del-->
 ## 常见问题
