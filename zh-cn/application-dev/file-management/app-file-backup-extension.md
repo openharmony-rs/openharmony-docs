@@ -10,15 +10,6 @@
 
 BackupExtensionAbility是[Stage模型](../application-models/stage-model-development-overview.md)中扩展组件[ExtensionAbility](../application-models/extensionability-overview.md)的派生类。开发者可以通过修改配置文件定制备份恢复框架的行为，包括是否允许备份恢复，备份哪些文件等。
 
-<!--RP1-->
-应用接入后用户可在云空间、数据克隆、华为手机助手等系统应用工具中实现应用数据的备份和恢复。
-
-**云空间**：系统应用，提供云备份能力，用户登录华为账号并开启云空间后，可将设备中的照片、联系人、日历、备忘录、接入备份恢复的三方应用数据、系统设置、桌面布局等内容备份到云侧，并在另外一个登录相同华为账号的设备上使用云空间进行恢复。
-
-**数据克隆**：系统应用，可以实现快速换机能力，用户双端都登录华为账号后，可以通过该工具将旧手机的系统应用数据、接入备份恢复的三方应用数据、系统设置、桌面布局等内容克隆到新手机。
-
-**华为手机助手**：同时有PC端工具和移动端工具，用户双端都登录华为账号后，可以实现将移动端设备的系统应用数据、接入备份恢复的三方应用数据、系统设置、桌面布局等内容备份到PC，然后随时可以从PC恢复到另外一个移动端设备。
-<!--RP1End-->
 
 
 ## 接口说明
@@ -210,7 +201,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
 | fullBackupOnly       | 布尔值     | 否   | 是否使用应用默认恢复目录，默认值为false。当值为true时，恢复数据时会通过临时路径进行缓存，临时路径可通过[backupDir](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md#属性)获取。当值为false或者不配置该字段时，恢复数据会以'/'为根目录解压数据。 |
 | restoreDeps          | 字符串     | 否   | **不推荐使用**，应用恢复时依赖其他应用数据，默认值为""，需要配置依赖应用名称。当前仅支持最多一个依赖项。配置的依赖仅在一次恢复任务上下文生效，如果一次恢复任务中没有检测到依赖应用，则忽略该依赖描述继续执行恢复任务。**依赖应用未恢复或者恢复失败都会导致本应用恢复失败**。 |
 | extraInfo            | json串     | 否   | 额外信息可通过该字段传递。             |
-| compatibleDirMapping            | 对象数组     | 否   | 该字段可以实现备份时按A路径进行备份，恢复时按B路径进行恢复。数组子项为对象，包含2个key，backupDir（待备份路径）和restoreDir（待恢复路径）。<br> **说明**：从API version 23开始，支持该字段。|
+
 
 **字段说明：**
 1. **有关fullBackupOnly字段的说明**
@@ -225,37 +216,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
     - 如果配置了fullBackupOnly为false，数据会被直接解压到：**/data/storage/el2/base/files/A/** 目录下；
     - 如果配置了fullBackupOnly为true，数据则会被解压到：**临时路径backupDir + /restore/data/storage/el2/base/files/A/** 目录下。
 
-2. **有关compatibleDirMapping字段的说明**
-     <!--RP2-->该字段是备份端和恢复端的应用数据存在兼容性问题时使用，目前只有数据克隆工具备份和恢复是一起进行的，能识别到兼容性问题，所以目前只有使用数据克隆工具时该字段才生效。系统开发者开发类似数据克隆的系统工具时需要能够识别到这种兼容性场景。<!--RP2END-->
-    其内容的数组长度不能超过1000。
-
-    子项的restoreDir配置内容必须包含在includes的配置中，否则不生效，且该字段不支持通配符。
-
-    子项的backupDir和restoreDir配置内容不能包含\|\|\|\|字符串。
-
-    **字段配置示例**：
-
-    ```json
-    "compatibleDirMapping": [
-        {
-            "backupDir": "/data/storage/el2/base/files/nulldir",
-            "restoreDir": "/data/storage/el2/base/files/restore/nulldir"
-        }, 
-        {
-            "backupDir": "/data/storage/el2/base/files/zerofile", 
-            "restoreDir": "/data/storage/el2/base/files/restore/zerofile
-        }
-    ]
-    ```
-
-    另外增加这个配置项还无法生效，需要在onBackupEx的实现中以json字符串格式返回需要开启的路径列表。
-
-    路径列表内容需要与backup_config中compatibleDirMapping字段配置的restoreDir内容一致，不用全部包含，可以为其子集，也可以返回空表示不开启路径映射。接入的三方应用要根据onBackupEx的入参来识别是否存在兼容性问题，如果有兼容性问题返回对应列表，如果没有则返回空列表。
-
-    **onBackupEx返回值示例**：  
-    {"compatibleDirMapping" ： ["/data/storage/el2/base/files/restore/nulldir", "/data/storage/el2/base/files/restore/zerofile"] }  
-
-3. **includes支持的路径清单列表如下：**
+2. **includes支持的路径清单列表如下：**
 
     ```json
     {
