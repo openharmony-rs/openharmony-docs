@@ -23,6 +23,10 @@ import { audio } from '@kit.AudioKit';
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型                                     | 必填 | 说明                                                         |
 | --------------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | loop | number   | 否  | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。<br>默认值：0，表示仅播放一次。                   |
@@ -37,6 +41,10 @@ import { audio } from '@kit.AudioKit';
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                                  | 值      | 说明                             |
 | ----------------------------------- | ------- | --------------------------------- |
 | LOAD_ERROR                           | 1       | 表示加载资源时发生错误。            |
@@ -48,12 +56,16 @@ import { audio } from '@kit.AudioKit';
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型                                     | 只读 | 可选 | 说明                                                         |
 | --------------- | ---------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | errorCode | T  | 否  | 否  |    错误码。errorCode的类型T为[BusinessError](../apis-basic-services-kit/js-apis-base.md#businesserror)类型。    |
 | errorType | [ErrorType](#errortype20)    | 否  | 是  | 表示错误发生阶段。 |
-| soundId  | number | 否  | 是  |  发生错误的资源ID，load方法能够获取soundId。    |
-| streamId | number  | 否  | 是  | 发生错误的音频流ID，play方法能够获取streamId。 |
+| soundId  | ArkTs-Dyn: number<br>ArkTs-Sta: int | 否  | 是  |  发生错误的资源ID，load方法能够获取soundId。    |
+| streamId |  ArkTs-Dyn: number<br>ArkTs-Sta: int  | 否  | 是  | 发生错误的音频流ID，play方法能够获取streamId。 |
 
 ## SoundPool
 
@@ -81,6 +93,10 @@ load(uri: string, callback: AsyncCallback\<number>): void
 >同一时间通过同一个资源句柄或加载路径描述读写文件时存在竞争关系，将导致播放异常。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -150,6 +166,10 @@ load(uri: string): Promise\<number>
 >同一时间通过同一个资源句柄或加载路径描述读写文件时存在竞争关系，将导致播放异常。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -224,6 +244,10 @@ load(fd: number, offset: number, length: number, callback: AsyncCallback\<number
 >同一时间通过同一个资源句柄或加载路径描述读写文件时存在竞争关系，将导致播放异常。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -337,6 +361,10 @@ load(fd: number, offset: number, length: number): Promise\<number>
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                        |
@@ -445,6 +473,10 @@ play(soundID: number, params: PlayParameters, callback: AsyncCallback\<number>):
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                        |
@@ -511,6 +543,10 @@ play(soundID: number, callback: AsyncCallback\<number>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                        |
@@ -568,6 +604,10 @@ play(soundID: number, params?: PlayParameters): Promise\<number>
 播放音频资源。使用Promise方式异步获取音频流streamID。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -639,6 +679,10 @@ stop(streamID: number, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                        |
@@ -695,6 +739,10 @@ stop(streamID: number): Promise\<void>
 停止streamID对应的音频播放。使用Promise方式异步获取返回值。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -755,6 +803,10 @@ setLoop(streamID: number, loop: number, callback: AsyncCallback\<void>): void;
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                        |
@@ -813,6 +865,10 @@ setLoop(streamID: number, loop: number): Promise\<void>
 设置循环模式。使用Promise方式异步获取返回值。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -876,6 +932,10 @@ setPriority(streamID: number, priority: number, callback: AsyncCallback\<void>):
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                        |
@@ -934,6 +994,10 @@ setPriority(streamID: number, priority: number): Promise\<void>
 设置音频流优先级。使用Promise方式异步获取返回值。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -998,6 +1062,10 @@ setRate(streamID: number, rate: audio.AudioRendererRate, callback: AsyncCallback
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                        |
@@ -1056,6 +1124,10 @@ setRate(streamID: number, rate: audio.AudioRendererRate): Promise\<void>
 设置音频流的播放速率。使用Promise方式异步获取返回值。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1119,6 +1191,10 @@ setVolume(streamID: number, leftVolume: number, rightVolume: number, callback: A
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                        |
@@ -1178,6 +1254,10 @@ setVolume(streamID: number, leftVolume: number, rightVolume: number): Promise\<v
 设置音频流的播放音量。使用Promise方式异步获取返回值。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1242,6 +1322,10 @@ unload(soundID: number, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                        |
@@ -1298,6 +1382,10 @@ unload(soundID: number): Promise\<void>
 卸载音频资源。使用Promise方式异步获取返回值。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1360,6 +1448,10 @@ release(callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                        |
@@ -1412,6 +1504,10 @@ release(): Promise\<void>
 释放音频池实例。使用Promise方式异步获取返回值。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
