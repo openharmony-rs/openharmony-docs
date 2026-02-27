@@ -1319,7 +1319,7 @@ console.info(obj2['m']); // 此时，'m'会被正确混淆，m可以选择性保
   <!-- @[etsOptionExample_keepPropertyName2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ets) -->      
   
   ``` TypeScript
-  // example.ets。
+  // ArkGuardAbility.ets
   import { UIAbility } from '@kit.AbilityKit';
   import { http } from '@kit.NetworkKit';
   // ...
@@ -1330,7 +1330,7 @@ console.info(obj2['m']); // 此时，'m'会被正确混淆，m可以选择性保
         {
           method: http.RequestMethod.POST,
           header: { 'Content-Type': 'application/json' },
-          extraData: { usernameTest: 'test1', passwordTest: 'test2'}, // usernameTest 和 passwordTest 需要被保留。
+          extraData: { usernameTest: 'test1', passwordTest: 'test2'}, // usernameTest 和 passwordTest 需要被保留
         })
     }
   }
