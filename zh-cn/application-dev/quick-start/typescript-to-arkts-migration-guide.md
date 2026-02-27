@@ -456,7 +456,7 @@ ArkTS不支持对象类型中包含call signature。
 ``` TypeScript
 type DescribableFunction = {
   description: string
-  (someArg: string): string // call signature。
+  (someArg: string): string // call signature
 }
 
 function doSomething(fn: DescribableFunction): void {
