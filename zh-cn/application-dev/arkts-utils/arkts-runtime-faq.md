@@ -226,7 +226,7 @@ try {
 <!-- @[testTwo_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/TestArrayExt.js) -->  
 
 ``` JavaScript
-// test2.js
+// TestArrayExt.js
 const typedArr = new Uint16Array([10, 20, 30]);
 try {
    const result = Object.entries(typedArr);
