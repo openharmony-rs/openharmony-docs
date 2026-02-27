@@ -125,8 +125,8 @@ console.info('JSON.stringify(res?.groups) = {\'b\':' + JSON.stringify(res[2]) + 
 let reg = /a(?:|x)$/;
 let res = reg.exec('ax');
 console.info('JSON.stringify(res) = ' + JSON.stringify(res));
-// 期望输出: JSON.stringify(res) = ['ax']。
-// 实际输出: JSON.stringify(res) = null。
+// 期望输出: JSON.stringify(res) = ['ax']
+// 实际输出: JSON.stringify(res) = null
 ```
 
 
