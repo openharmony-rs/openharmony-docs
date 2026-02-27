@@ -96,17 +96,17 @@ ArkTS-Sta: type Modulo = int
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称      | 类型                   | 只读 | 必填 | 说明                                                         |
+| 名称      | 类型                   | 只读 | 可选 | 说明                                                         |
 | --------- | ---------------------- | ---- | ---- | ------------------------------------------------------------ |
-| precision | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 运算结果的最大有效位数，取值范围为[1, 1e9]，默认值为20。 |
+| precision | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 运算结果的最大有效位数，取值范围为[1, 1e9]，默认值为20。 |
 | rounding  | [Rounding](#rounding) | 否   | 否   | 舍入模式，取值范围为0到8的整数，默认值为4。 |
-| toExpNeg  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 指数表示法的负指数值的极限值，若Decimal的负指数小于等于该值时，使用科学计数法表示，[toString](#tostring)方法中使用，取值范围为[-9e15, 0]，默认值为-7。 |
-| toExpPos  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 指数表示法的正指数值的极限值，若Decimal的正指数大于等于该值时，使用科学计数法表示，[toString](#tostring)方法中使用，取值范围为[0, 9e15]，默认值为21。 |
-| minE      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 负指数极限，若Decimal的指数值小于该值，会下溢到零，取值范围为[-9e15, 0]，默认值为-9e15。 |
-| maxE      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 正指数极限，若Decimal的指数值大于该值，会溢出至无穷大，取值范围为[0, 9e15]，默认值为9e15。 |
-| crypto    | boolean                | 否   | 否   | 确定是否使用加密安全伪随机数生成的值，true表示使用加密安全伪随机数，false表示不使用，默认值为false。该能力不支持使用，报错的错误码为：10200061。  |
-| modulo    | [Modulo](#modulo)      | 否   | 否   | 模计算时使用的舍入模式，取值范围为0到9的整数，默认值为1。    |
-| defaults  | boolean                | 否   | 否   | 表示未指定的属性是否被设置为默认值，true表示使用默认值，false表示不使用默认值，默认值为true。 |
+| toExpNeg  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 指数表示法的负指数值的极限值，若Decimal的负指数小于等于该值时，使用科学计数法表示，[toString](#tostring)方法中使用，取值范围为[-9e15, 0]，默认值为-7。 |
+| toExpPos  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 指数表示法的正指数值的极限值，若Decimal的正指数大于等于该值时，使用科学计数法表示，[toString](#tostring)方法中使用，取值范围为[0, 9e15]，默认值为21。 |
+| minE      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 负指数极限，若Decimal的指数值小于该值，会下溢到零，取值范围为[-9e15, 0]，默认值为-9e15。 |
+| maxE      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 正指数极限，若Decimal的指数值大于该值，会溢出至无穷大，取值范围为[0, 9e15]，默认值为9e15。 |
+| crypto    | boolean                | 否   | 是   | 确定是否使用加密安全伪随机数生成的值，true表示使用加密安全伪随机数，false表示不使用，默认值为false。该能力不支持使用，报错的错误码为：10200061。  |
+| modulo    | [Modulo](#modulo)      | 否   | 是   | 模计算时使用的舍入模式，取值范围为0到9的整数，默认值为1。    |
+| defaults  | boolean                | 否   | 是   | 表示未指定的属性是否被设置为默认值，true表示使用默认值，false表示不使用默认值，默认值为true。 |
 
 ## Decimal
 
@@ -122,7 +122,7 @@ ArkTS-Sta: type Modulo = int
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型     | 只读 | 必填 | 说明                                      |
+| 名称 | 类型     | 只读 | 可选 | 说明                                      |
 | ---- | -------- | ---- | ---- | ----------------------------------------- |
 | d    | ArkTS-Dyn: number[] <br> ArkTS-Sta: Array\<double\> \| null | 是   | 否   | digits：表示Decimal数整数部分和小数部分。 |
 | e    | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 是   | 否   | exponent：表示Decimal数的十进制指数。 |
@@ -329,7 +329,7 @@ clamp(min: Value, max: Value): Decimal
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes:1. Incorrect parameter types;2. Parameter verification failed. |
-| 10200001 | The value of 'min' is out of range.                          |
+| 10200001 | The value of `min` is out of range.                          |
 
 **示例：**
 
@@ -1730,7 +1730,7 @@ ArkTS-Sta: toBinary(significantDigits: double): string
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 10200001 | The value of 'significantDigits' is out of range. |
+| 10200001 | The value of `significantDigits` is out of range. |
 
 **示例：**
 
@@ -1775,7 +1775,7 @@ ArkTS-Sta: toBinary(significantDigits: double, rounding: Rounding): string
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 10200001 | The value of 'significantDigits \| rounding' is out of range. |
+| 10200001 | The value of `significantDigits \| rounding` is out of range. |
 
 **示例：**
 
@@ -1851,7 +1851,7 @@ ArkTS-Sta: toOctal(significantDigits: double): string
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 10200001 | The value of 'significantDigits' is out of range. |
+| 10200001 | The value of `significantDigits` is out of range. |
 
 **示例：**
 
@@ -1896,7 +1896,7 @@ ArkTS-Sta: toOctal(significantDigits: double, rounding: Rounding): string
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 10200001 | The value of 'significantDigits \| rounding' is out of range. |
+| 10200001 | The value of `significantDigits \| rounding` is out of range. |
 
 **示例：**
 
@@ -1972,7 +1972,7 @@ ArkTS-Sta: toHexadecimal(significantDigits: double): string
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 10200001 | The value of 'significantDigits' is out of range. |
+| 10200001 | The value of `significantDigits` is out of range. |
 
 **示例：**
 
@@ -2017,7 +2017,7 @@ ArkTS-Sta: toHexadecimal(significantDigits: double, rounding: Rounding): string
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 10200001 | The value of 'significantDigits \| rounding' is out of range. |
+| 10200001 | The value of `significantDigits \| rounding` is out of range. |
 
 **示例：**
 
@@ -2091,7 +2091,7 @@ ArkTS-Sta: toDecimalPlaces(decimalPlaces: double): Decimal
 
 | 错误码ID | 错误信息                                      |
 | -------- | --------------------------------------------- |
-| 10200001 | The value of 'decimalPlaces' is out of range. |
+| 10200001 | The value of `decimalPlaces` is out of range. |
 
 **示例：**
 
@@ -2136,7 +2136,7 @@ ArkTS-Sta: toDecimalPlaces(decimalPlaces: double, rounding: Rounding): Decimal
 
 | 错误码ID | 错误信息                                                  |
 | -------- | --------------------------------------------------------- |
-| 10200001 | The value of 'decimalPlaces \| rounding' is out of range. |
+| 10200001 | The value of `decimalPlaces \| rounding` is out of range. |
 
 **示例：**
 
@@ -2211,7 +2211,7 @@ ArkTS-Sta: toExponential(decimalPlaces: double): string
 
 | 错误码ID | 错误信息                                      |
 | -------- | --------------------------------------------- |
-| 10200001 | The value of 'decimalPlaces' is out of range. |
+| 10200001 | The value of `decimalPlaces` is out of range. |
 
 **示例：**
 
@@ -2258,7 +2258,7 @@ ArkTS-Sta: toExponential(decimalPlaces: double, rounding: Rounding): string
 
 | 错误码ID | 错误信息                                                  |
 | -------- | --------------------------------------------------------- |
-| 10200001 | The value of 'decimalPlaces \| rounding' is out of range. |
+| 10200001 | The value of `decimalPlaces \| rounding` is out of range. |
 
 **示例：**
 
@@ -2332,7 +2332,7 @@ ArkTS-Sta: toFixed(decimalPlaces: double): string
 
 | 错误码ID | 错误信息                                      |
 | -------- | --------------------------------------------- |
-| 10200001 | The value of 'decimalPlaces' is out of range. |
+| 10200001 | The value of `decimalPlaces` is out of range. |
 
 **示例：**
 
@@ -2379,7 +2379,7 @@ ArkTS-Sta: toFixed(decimalPlaces: double, rounding: Rounding): string
 
 | 错误码ID | 错误信息                                                  |
 | -------- | --------------------------------------------------------- |
-| 10200001 | The value of 'decimalPlaces \| rounding' is out of range. |
+| 10200001 | The value of `decimalPlaces \| rounding` is out of range. |
 
 **示例：**
 
@@ -2539,7 +2539,7 @@ toNearest(n: Value, rounding: Rounding): Decimal
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 401      | Parameter error. Possible causes:1. Incorrect parameter types;2. Parameter verification failed. |
-| 10200001 | The value of 'rounding' is out of range. |
+| 10200001 | The value of `rounding` is out of range. |
 
 **示例：**
 
@@ -2615,7 +2615,7 @@ ArkTS-Sta: toPrecision(significantDigits: double): string
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 10200001 | The value of 'significantDigits' is out of range. |
+| 10200001 | The value of `significantDigits` is out of range. |
 
 **示例：**
 
@@ -2661,7 +2661,7 @@ ArkTS-Sta: toPrecision(significantDigits: double, rounding: Rounding): string
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 10200001 | The value of 'significantDigits \|  rounding' is out of range. |
+| 10200001 | The value of `significantDigits \|  rounding` is out of range. |
 
 **示例：**
 
@@ -2737,7 +2737,7 @@ ArkTS-Sta: toSignificantDigits(significantDigits: double): Decimal
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 10200001 | The value of 'significantDigits' is out of range. |
+| 10200001 | The value of `significantDigits` is out of range. |
 
 **示例：**
 
@@ -2782,7 +2782,7 @@ ArkTS-Sta: toSignificantDigits(significantDigits: double, rounding: Rounding): D
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 10200001 | The value of 'significantDigits \|  rounding' is out of range. |
+| 10200001 | The value of `significantDigits \|  rounding` is out of range. |
 
 **示例：**
 
@@ -3007,7 +3007,7 @@ ArkTS-Sta: precision(includeZeros: boolean | int): double
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 10200001 | The value of includeZeros is out of range. |
+| 10200001 | The value of `includeZeros` is out of range. |
 
 **示例：**
 
@@ -3226,7 +3226,7 @@ static clamp(n: Value, min: Value, max: Value): Decimal
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes:1. Incorrect parameter types;2. Parameter verification failed. |
-| 10200001 | The value of 'min' is out of range.                          |
+| 10200001 | The value of `min` is out of range.                          |
 
 **示例：**
 
@@ -4737,7 +4737,7 @@ static set(config: DecimalConfig):void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes:1. Incorrect parameter types;2. Parameter verification failed. |
-| 10200001 | The value of 'DecimalConfig.properties' is out of range.     |
+| 10200001 | The value of `DecimalConfig.properties` is out of range.     |
 | 10200061 | Crypto unavailable.                                          |
 
 **示例1：**

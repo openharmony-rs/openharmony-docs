@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> - 本模块仅适用于ArkT-Dyn。
+>
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
@@ -22,9 +24,9 @@ import { process } from '@kit.ArkTS';
 
 | 名称             | 类型   | 只读 | 可选 | 说明             |
 | ---------------- | ------ | ---- | ---- | ---------------- |
-| uid              | number | 是   | 否   | 进程的用户标识。 |
-| pid              | number | 是   | 否   | 当前进程的pid。  |
-| tid<sup>8+</sup> | number | 是   | 否   | 当前线程的tid。  |
+| uid              | number | 是   | 否   | 进程的用户标识。<br> **ArkTS-Dyn起始版本：** 7 |
+| pid              | number | 是   | 否   | 当前进程的pid。<br> **ArkTS-Dyn起始版本：** 7 |
+| tid<sup>8+</sup> | number | 是   | 否   | 当前线程的tid。<br> **ArkTS-Dyn起始版本：** 8 |
 
 
 ## EventListener
@@ -36,6 +38,8 @@ type EventListener = (evt: Object) => void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -52,6 +56,8 @@ isIsolatedProcess(): boolean
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -76,6 +82,8 @@ is64Bit(): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
 **返回值：**
 
 | 类型    | 说明                                                        |
@@ -99,6 +107,8 @@ getStartRealtime(): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
 **返回值：**
 
 | 类型   | 说明                             |
@@ -120,6 +130,8 @@ getPastCpuTime(): number
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -144,6 +156,8 @@ abort(): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 7
+
 **示例：**
 
 ```js
@@ -160,6 +174,8 @@ uptime(): number
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -185,6 +201,8 @@ kill(signal: number, pid: number): boolean
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[kill<sup>9+</sup>](#kill9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -221,6 +239,8 @@ exit(code: number): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明           |
@@ -245,6 +265,8 @@ getUidForName(v: string): number
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[getUidForName<sup>9+</sup>](#getuidforname9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -276,6 +298,8 @@ getThreadPriority(v: number): number
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[getThreadPriority<sup>9+</sup>](#getthreadpriority9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -309,6 +333,8 @@ isAppUid(v: number): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明            |
@@ -339,6 +365,8 @@ getSystemConfig(name: number): number
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[getSystemConfig<sup>9+</sup>](#getsystemconfig9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -371,6 +399,8 @@ getEnvironmentVar(name: string): string
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[getEnvironmentVar<sup>9+</sup>](#getenvironmentvar9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -406,6 +436,8 @@ isAppUid(v: number): boolean
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -448,6 +480,8 @@ getUidForName(v: string): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明     |
@@ -485,6 +519,8 @@ getThreadPriority(v: number): number
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -524,6 +560,8 @@ getSystemConfig(name: number): number
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -568,6 +606,8 @@ getEnvironmentVar(name: string): string
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明         |
@@ -608,6 +648,8 @@ exit(code: number): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明           |
@@ -639,6 +681,8 @@ kill(signal: number, pid: number): boolean
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
