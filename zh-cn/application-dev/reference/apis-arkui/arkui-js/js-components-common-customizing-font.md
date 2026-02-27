@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -15,7 +15,8 @@
 
 ## 定义font-face
 
-```
+```js
+// xxx.js
 @font-face {   
   font-family: font; 
   src: url('/common/font.ttf'); 
@@ -30,7 +31,7 @@
 
 自定义字体的来源，支持如下类别：
 
-- 项目中的字体文件：通过url指定项目中的字体文件路径(只支持绝对路径，详见[资源和文件访问规则](../../../ui/js-framework-file.md)章节)。
+- 项目中的字体文件：通过url指定项目中的字体文件路径(只支持绝对路径，详情请参见[资源和文件访问规则](../../../ui/js-framework-file.md#文件访问规则)章节)。
 
 - 不支持设置多个src。
 

@@ -12,9 +12,9 @@
 
 > **NOTE**
 >
-> This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> This component is not supported on wearables.
+> - By default, a two-panel layout is used when the window width is less than or equal to 600 vp. When the window width exceeds 600 vp, an extended area is supported alongside the top-bottom split layout. A semi-folded state layout can be triggered when the window width is greater than 600 vp and the device is in a horizontal, half-folded posture. In the semi-folded layout, visual avoidance for the screen crease area is applied, and the extended area cannot span across the crease. The extended area can also be configured not to display in the semi-folded state. For details, see [Example](#example)
 
 ## Modules to Import
 
@@ -28,16 +28,7 @@ Not supported
 
 ## FoldSplitContainer
 
-FoldSplitContainer({
-  primary: Callback&lt;void&gt;,
-  secondary: Callback&lt;void&gt;,
-  extra?: Callback&lt;void&gt;,
-  expandedLayoutOptions: ExpandedRegionLayoutOptions,
-  hoverModeLayoutOptions: HoverModeRegionLayoutOptions,
-  foldedLayoutOptions: FoldedRegionLayoutOptions,
-  animationOptions?: AnimateParam | null,
-  onHoverStatusChange?: OnHoverStatusChangeHandler
-})
+FoldSplitContainer({primary: Callback&lt;void&gt;, secondary: Callback&lt;void&gt;, extra?: Callback&lt;void&gt;, expandedLayoutOptions: ExpandedRegionLayoutOptions, hoverModeLayoutOptions: HoverModeRegionLayoutOptions, foldedLayoutOptions: FoldedRegionLayoutOptions, animationOptions?: AnimateParam | null, onHoverStatusChange?: OnHoverStatusChangeHandler})
 
 Creates a **FoldSplitContainer** component to manage regions for two-panel and three-panel arrangements on a foldable device across various states, including the expanded state, the semi-folded state, and the folded state.
 
@@ -412,7 +403,7 @@ struct Index {
     }) {
       Column({ space: 4 }) {
         RadioOption({
-          label: "Height ratio",
+          label: "Vertical split ratio in folded state",
           value: this.foldedRegionLayoutOptions.verticalSplitRatio,
           options: [
             {
@@ -453,12 +444,12 @@ struct Index {
   @Builder
   MinorRegion() {
     Region({
-      title: "Hover state settings",
+      title: "Semi-folded state settings",
       compBackgroundColor: "rgba(0, 255, 0, 0.1)"
     }) {
       Column({ space: 4 }) {
         RadioOption({
-          label: "Width ratio",
+          label: "Horizontal split ratio in semi-folded state",
           value: this.foldingRegionLayoutOptions.horizontalSplitRatio,
           options: [
             {
@@ -493,7 +484,7 @@ struct Index {
         })
 
         SwitchOption({
-          label: "Show extra region",
+          label: "Show extra region in semi-folded state",
           value: this.foldingRegionLayoutOptions.showExtraRegion,
           onChange: (checked) => {
             this.foldingRegionLayoutOptions.showExtraRegion = checked;
@@ -502,7 +493,7 @@ struct Index {
 
         if (this.foldingRegionLayoutOptions.showExtraRegion) {
           RadioOption({
-            label: "Extra region location",
+            label: "Extra region location in semi-folded state",
             value: this.foldingRegionLayoutOptions.extraRegionPosition,
             options: [
               {
@@ -542,7 +533,7 @@ struct Index {
     }) {
       Column({ space: 4 }) {
         RadioOption({
-          label: "Width ratio",
+          label: "Horizontal split ratio in expanded state",
           value: this.expandedRegionLayoutOptions.horizontalSplitRatio,
           options: [
             {
@@ -577,7 +568,7 @@ struct Index {
         })
 
         RadioOption({
-          label: "Height ratio",
+          label: "Vertical split ratio in expanded state",
           value: this.expandedRegionLayoutOptions.verticalSplitRatio,
           options: [
             {
@@ -621,7 +612,7 @@ struct Index {
 
         if (!this.expandedRegionLayoutOptions.isExtraRegionPerpendicular) {
           RadioOption({
-            label: "Extra region location",
+            label: "Extra region location in expanded state",
             value: this.expandedRegionLayoutOptions.extraRegionPosition,
             options: [
               {
@@ -679,5 +670,5 @@ struct Index {
 | Folded| Expanded| Semi-folded|
 | ----- | ------ | ------ |
 | ![](figures/foldsplitcontainer-7.png) | ![](figures/foldsplitcontainer-8.png) | ![](figures/foldsplitcontainer-11.png) |
-|                                       | ![](figures/foldsplitcontainer-9.png) | ![](figures/foldsplitcontainer-12.png) |
-|                                       | ![](figures/foldsplitcontainer-10.png) | ![](figures/foldsplitcontainer-13.png) |
+|               -                        | ![](figures/foldsplitcontainer-9.png) | ![](figures/foldsplitcontainer-12.png) |
+|               -                        | ![](figures/foldsplitcontainer-10.png) | ![](figures/foldsplitcontainer-13.png) |

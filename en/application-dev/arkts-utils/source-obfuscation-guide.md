@@ -4,7 +4,7 @@
 <!--Owner: @zju-wyx-->
 <!--Designer: @xiao-peiyang; @dengxinyu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Enabling Source Code Obfuscation
 
@@ -13,22 +13,25 @@ The source code obfuscation feature is integrated into the system and can be ena
 
 * Enabling the obfuscation switch 
     To enable obfuscation, set the **enable** field to **true** under **arkOptions.obfuscation.ruleOptions** in the **build-profile.json5** file of your module.
-    ```
+    <!-- @[set_openObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/build-profile.json5) -->   
+    
+    ``` JSON5
     "arkOptions": {
       "obfuscation": {
         "ruleOptions": {
-          "enable": true,
-          "files": ["./obfuscation-rules.txt"],
-        }
+          "enable": true, // Enable the obfuscation switch.
+          "files": ["./obfuscation-rules.txt"] // Specify the obfuscation rule file, which takes effect when the current module is compiled.
+        },
+        // ...
       }
-    }
+    },
     ```
 
 * Configuring obfuscation rules 
     Enabling the obfuscation switch activates the default settings, which include obfuscation of local variables and parameters. To enable additional obfuscation features, customize the **obfuscation-rules.txt** file specified in the **files** field. Note that the default values in this file may vary across different versions of DevEco Studio.
 
     For example, in DevEco Studio of version 5.0.3.600 and later, the obfuscation configuration file is as follows, which indicates that property name obfuscation, top-level scope name obfuscation, file name obfuscation, and imported/exported name obfuscation are enabled.
-    ```
+    ```text
     -enable-property-obfuscation
     -enable-toplevel-obfuscation
     -enable-filename-obfuscation
@@ -36,7 +39,7 @@ The source code obfuscation feature is integrated into the system and can be ena
     ```
 
     You can also add comments to the obfuscation rule file by prefixing lines with the `#` symbol. The sample code is as follows:
-    ```
+    ```text
     # options:
     -enable-property-obfuscation
     -enable-toplevel-obfuscation
@@ -63,7 +66,7 @@ The source code obfuscation feature is integrated into the system and can be ena
 
     > **NOTE**
     >
-    > The differences between release and debug builds extend beyond obfuscation. To determine whether application behavior differences are due to obfuscation, you should enable or disable the obfuscation switch rather than simply switching between release and debug builds.
+    > The differences between release and debug builds include but are not limited to whether obfuscation is enabled. To determine whether application behavior differences are due to obfuscation, you should enable or disable the obfuscation switch rather than simply switching between release and debug builds.
 
 ### Obfuscation Configuration Files
 * `obfuscation-rules.txt`  
@@ -73,7 +76,9 @@ The source code obfuscation feature is integrated into the system and can be ena
     For HAR and HSP modules, an additional **arkOptions.obfuscation.consumerFiles** field is available in the **build-profile.json5** file. This field specifies obfuscation rules that should be applied when this package is depended upon in the current compilation process. A default **consumer-rules.txt** file is created when a new HAR or HSP module is set up. The key difference between **consumer-rules.txt** and **obfuscation-rules.txt** is as follows: **obfuscation-rules.txt** applies to the compilation of the current module, whereas **consumer-rules.txt** applies to the compilation of other modules that depend on the current module.
 
 	Configuration example of the **build-profile.json5** file:
-    ```json
+    <!-- @[set_openObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/build-profile.json5) -->    
+    
+    ``` JSON5
     "arkOptions": {
       "obfuscation": {
         "ruleOptions": {
@@ -82,7 +87,7 @@ The source code obfuscation feature is integrated into the system and can be ena
         },
         "consumerFiles": ["./consumer-rules.txt"] // Specify the obfuscation rule file, which takes effect when other modules that depend on the current module are compiled.
       }
-    }
+    },
     ```
 
   > **NOTE**
@@ -108,24 +113,29 @@ The following table summarizes the differences between these obfuscation configu
 1. When `-enable-toplevel-obfuscation` is configured, access to global variables using `globalThis` fails. To rectify the fault, use `-keep-global-name` to retain the global variable name.
 2. After the preceding adaptation is successful, configure **-enable-property-obfuscation**, and perform adaptation in the following scenarios:
     1. If the code statically defines properties but dynamically accesses them (or vice versa), use **-keep-property-name** to retain the property names. Example:
-        ```ts
-        // Static definition, dynamic access: The property name is static during object definition, but is accessed by dynamically constructing the property name (usually using string concatenation).
-        // example.ts
-        const obj = {
-          staticName: 'value'  // Static definition
-        };
-        const fieldName = 'static' + 'Name';  // Dynamically build the property name. You need to use -keep-property-name staticName to retain the property name.
-        console.info(obj[fieldName]);  // Use square bracket notation to dynamically access the property.
-        ```
-        ```ts
-        // Dynamic definition, static access: The property name is determined during object definition through a dynamic expression, but is statically accessed using dot notation (assuming that you know the result of the property name).
-        // example.ts
-        const dynamicExpression = 'dynamicPropertyName';
-        const obj = {
-          [dynamicExpression]: 'value'  // Dynamic definition
-        };
-        console.info(obj.dynamicPropertyName);  // Use dot notation to statically access the property. You need to use -keep-property-name dynamicPropertyName to retain the property name.
-        ```
+       <!-- @[example_openObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
+       
+       ``` TypeScript
+       // Static definition, dynamic access: The property name is static during object definition, but is accessed by dynamically constructing the property name (usually using string concatenation).
+       // example.ts
+       const obj001 = {
+         staticName: 'value'  // Static definition
+       };
+       const fieldName = 'static' + 'Name';  // Dynamically build the property name. You need to use -keep-property-name staticName to retain the property name.
+       console.info(obj001[fieldName]);  // Use square bracket notation to dynamically access the property.
+       ```
+
+       <!-- @[example_openObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->      
+       
+       ``` TypeScript
+       // Dynamic definition, static access: The property name is determined during object definition through a dynamic expression, but is statically accessed using dot notation (assuming that you know the result of the property name).
+       // example.ts
+       const dynamicExpression = 'dynamicPropertyName';
+       const obj002 = {
+         [dynamicExpression]: 'value'  // Dynamic definition
+       };
+       console.info(obj002.dynamicPropertyName);// Use dot notation to statically access the property. You need to use -keep-property-name dynamicPropertyName to retain the property name.
+       ```
     2. If the code uses dot notation to access fields not defined in ArkTS/TS/JS code (for example, native so libraries, fixed JSON files, or database fields):
         1. For API calls to so libraries (for example, **import testNapi from 'library.so'; testNapi.foo();**), use **-keep-property-name** to retain the property name **foo**.
         2. For fields in JSON files, use **-keep-property-name** to retain the JSON field names.
@@ -162,6 +172,8 @@ After obfuscation is complete, the obfuscated intermediate products are generate
 
 In applications that have undergone obfuscation, code names are changed, making the error stacks printed during crashes harder to understand. You can use the [hstack plugin](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-command-line-hstack) in Command Line Tools of DevEco Studio to deobfuscate the source code stack and analyze issues.
 The deobfuscation tool requires the `sourceMaps.map` file and the obfuscation name mapping file **nameCache.json** generated during compilation. Be sure to back them up locally.
+
+If you use a self-built online platform or pipeline to build an application, the **sourceMaps.map** file and the obfuscation name mapping file **namecache.json** generated during compilation cannot be obtained. You can use the corresponding files generated during local compilation.
 * The source code mapping file, named **sourceMaps.map**, records the mappings between the compressed/converted code and the original source code.
 
 ![obfuscation-product](figures/obfuscation-product.png)

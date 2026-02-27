@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+struct WebSocket_CloseResult {...}
+```
+
 ## Overview
 
 Defines the parameters for the connection closure received by the WebSocket client.

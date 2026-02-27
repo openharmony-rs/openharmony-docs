@@ -9,34 +9,34 @@
 
 ## BlendMode
 
-BlendMode: defines how the current content interacts with the existing content to produce new effects. The calculation method and effect of different blending modes vary.
+Defines how the current content interacts with the existing content to generate a new effect. The calculation method and effect vary according to the blend mode.
 
 
 ## TextBlob
 
-TextBlob is a set of glyph elements and their positions that use the same font.
+A set of glyph elements and their positions that use the same typeface.
 
 
 ## Font
 
-Font is used to manage font drawing attributes, including the font, size, and scale.
+Manages font drawing attributes, including the font, size, and scale.
 
 
-## Font
+## Typeface
 
-Typeface is a collection of designs used to present characters in a specific visual graphic style. It includes attributes such as the font name, bold, and italic.
+A collection of designs used to present characters in a specific visual graphic style. It includes attributes such as the typeface name, bold, and italic.
 
 
-## Font style
+## Glyph
 
-Glyph is the specific graphic representation of a character in a specific font. The same character usually corresponds to different glyphs in different fonts.
+The specific graphic representation of a character in a typeface. The same character usually corresponds to different glyphs in different typefaces.
 
 
 ## Shader
 
-Shader is a running program, mainly used for image rendering and processing. It can control or process pixels, including color calculation and shadow effects. You can add different shader effects to the drawing content to achieve rich visual effects.
+A running program, mainly used for image rendering and processing. It can control the processing of vertices or pixels, including color calculation and shadow effects. Different shader effects can be added for the drawn content to enrich visual effects.
 
 
 ## Image Filtering
 
-Image filtering is an important image processing technology. With filtering operations, some elements in an image can be highlighted or removed. You can add different filters to the drawing effect to achieve different filtering effects.
+A crucial image processing technology which can highlight or remove elements from images. Different filters can be added for the drawn content to enrich visual effects.

@@ -366,7 +366,7 @@ predicates.like("NAME", "%os%");
 
 between(field: string, low: ValueType, high: ValueType): DataSharePredicates
 
-该接口用于配置谓词以匹配值在指定范围内的字段。包含两端边界值，为左闭右闭区间，该字段的数据类型必须为int类型。
+该接口用于配置谓词以匹配值在指定范围内的字段。包含两端边界值，为左闭右闭区间。
 
 目前仅关系型数据库支持该谓词。
 
@@ -376,9 +376,9 @@ between(field: string, low: ValueType, high: ValueType): DataSharePredicates
 
 | 参数名 | 类型                                                | 必填 | 说明                     |
 | ------ | --------------------------------------------------- | ---- | ------------------------ |
-| field  | string                                              | 是   | 数据库表中的列名。</br>field为undefined或null时，此次调用接口配置的谓词无效。</br>当field为字符串'null'或'undefined'时，键值型数据库和关系型数据库接口使用该谓词时，可能匹配结果非预期或抛出异常。       |
-| low    | [ValueType](js-apis-data-valuesBucket.md#valuetype) | 是   | 指示与谓词匹配的最小值。</br>low不为int类型时，结果非预期。 |
-| high   | [ValueType](js-apis-data-valuesBucket.md#valuetype) | 是   | 指示与谓词匹配的最大值。</br>high不为int类型时，结果非预期。 |
+| field  | string                                              | 是   | 数据库表中的列名。</br>field为undefined或null时，此次调用接口配置的谓词无效。</br>当field为字符串'null'或'undefined'时，键值型数据库和关系型数据库接口使用该谓词时，可能匹配结果非预期或抛出异常。 |
+| low    | [ValueType](js-apis-data-valuesBucket.md#valuetype) | 是   | 指示与谓词匹配的最小值。</br>low为number时，按数值排序指定匹配范围。</br>low为string时，按字典序排序指定匹配范围。<br/>low为boolean时，按数值排序指定匹配范围。 |
+| high   | [ValueType](js-apis-data-valuesBucket.md#valuetype) | 是   | 指示与谓词匹配的最大值。</br>high为number时，按数值排序指定匹配范围。</br>high为string时，按字典序排序指定匹配范围。<br/>high为boolean时，按数值排序指定匹配范围。 |
 
 **返回值：**
 
@@ -397,7 +397,7 @@ predicates.between("AGE", 10, 50);
 
 notBetween(field: string, low: ValueType, high: ValueType): DataSharePredicates
 
-该接口用于配置谓词以匹配值超出指定范围的字段。不包含两端边界值，为左开右开区间，该字段的数据类型必须为int类型。
+该接口用于配置谓词以匹配值超出指定范围的字段。不包含两端边界值，为左开右开区间。
 
 目前仅关系型数据库支持该谓词。
 
@@ -408,8 +408,8 @@ notBetween(field: string, low: ValueType, high: ValueType): DataSharePredicates
 | 参数名 | 类型                                                | 必填 | 说明                     |
 | ------ | --------------------------------------------------- | ---- | ------------------------ |
 | field  | string                                              | 是   | 数据库表中的列名。</br>field为undefined或null时，此次调用接口配置的谓词无效。</br>当field为字符串'null'或'undefined'时，键值型数据库和关系型数据库接口使用该谓词时，可能匹配结果非预期或抛出异常。       |
-| low    | [ValueType](js-apis-data-valuesBucket.md#valuetype) | 是   | 指示与谓词匹配的最小值。</br>low不为int类型时，结果非预期。 |
-| high   | [ValueType](js-apis-data-valuesBucket.md#valuetype) | 是   | 指示与谓词匹配的最大值。</br>high不为int类型时，结果非预期。 |
+| low    | [ValueType](js-apis-data-valuesBucket.md#valuetype) | 是   | 指示与谓词匹配的最小值。</br>low为number时，按数值排序指定匹配范围。</br>low为string时，按字典序排序指定匹配范围。<br/>low为boolean时，按数值排序指定匹配范围。 |
+| high   | [ValueType](js-apis-data-valuesBucket.md#valuetype) | 是   | 指示与谓词匹配的最大值。</br>high为number时，按数值排序指定匹配范围。</br>high为string时，按字典序排序指定匹配范围。<br/>high为boolean时，按数值排序指定匹配范围。 |
 
 **返回值：**
 
@@ -498,7 +498,7 @@ greaterThanOrEqualTo(field: string, value: ValueType): DataSharePredicates
 
 | 参数名  | 类型      | 必填 | 说明                   |
 | ------- | --------- | ---- | ---------------------- |
-| field   | string    | 是   | 数据库表中的列名。</br>field为undefined或null时，此次调用接口配置的谓词无效。</br>当field为字符串'null'或'undefined'时，此次调用接口配置的谓词匹配结果非预期或。     |
+| field   | string    | 是   | 数据库表中的列名。</br>field为undefined或null时，此次调用接口配置的谓词无效。</br>当field为字符串'null'或'undefined'时，此次调用接口配置的谓词匹配结果非预期或抛出异常。     |
 | value | [ValueType](js-apis-data-valuesBucket.md#valuetype) | 是   | 指示要与谓词匹配的值。</br>value为undefined或null时，此次调用接口配置的谓词无效。 |
 
 **返回值：**

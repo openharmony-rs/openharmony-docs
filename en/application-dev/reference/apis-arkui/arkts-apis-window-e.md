@@ -8,7 +8,9 @@
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 
 ## WindowType<sup>7+</sup>
 
@@ -22,7 +24,7 @@ Enumerates the window types.
 | TYPE_SYSTEM_ALERT<sup>(deprecated)</sup>               | 1     | System alert window.<br>Note: This property is supported since API version 7 and deprecated since API version 11.<br>                           |
 | TYPE_FLOAT<sup>9+</sup>             | 8      | Global floating window.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | TYPE_DIALOG<sup>10+</sup>           | 16      | Modal window.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| TYPE_MAIN<sup>18+</sup>             | 32      | Main window of an application.<br>This window type cannot be used when creating a window. It is only for reading purposes in the return value of the **getWindowProperties** API.                              |
+| TYPE_MAIN<sup>18+</sup>             | 32      | Main window of an application.<br>This window type cannot be used during window creation.                              |
 
 ## AvoidAreaType<sup>7+</sup>
 
@@ -322,3 +324,15 @@ Enumerates the screenshot event types.
 | SCROLL_SHOT_START | 2 | Scroll screenshot starts.|
 | SCROLL_SHOT_END | 3 | Scroll screenshot ends.|
 | SCROLL_SHOT_ABORT | 4 | Scroll screenshot aborted.|
+
+## RotationInfoType<sup>23+</sup>
+
+Enumerates the types of rotation information.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name      | Value    | Description      |
+| ---------- | ------ | ---------- |
+| WINDOW_ORIENTATION  | 0      | Window's screen orientation, based on how the Window module defines landscape/portrait modes.<br>Note that it maps to the **orientation** parameter in [RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19).|
+| DISPLAY_ORIENTATION | 1      | Physical screen orientation, based on how the Display module defines landscape/portrait modes.<br>It maps to the **orientation** property of the [display](js-apis-display.md#display) object.|
+| DISPLAY_ROTATION    | 2      | Physical rotation angle of the device's screen (in degrees, clockwise).<br>It maps to the **rotation** property of the [display](js-apis-display.md#display) object.|

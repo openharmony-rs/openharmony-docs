@@ -103,7 +103,7 @@
 
 ### ImageEffect_DataType
 
-```
+```c
 enum ImageEffect_DataType
 ```
 
@@ -128,7 +128,7 @@ enum ImageEffect_DataType
 
 ### ImageEffect_Format
 
-```
+```c
 enum ImageEffect_Format
 ```
 
@@ -152,7 +152,7 @@ enum ImageEffect_Format
 
 ### ImageEffect_BufferType
 
-```
+```c
 enum ImageEffect_BufferType
 ```
 
@@ -175,7 +175,7 @@ enum ImageEffect_BufferType
 
 ### OH_EffectFilterInfo_Create()
 
-```
+```c
 OH_EffectFilterInfo *OH_EffectFilterInfo_Create()
 ```
 
@@ -195,7 +195,7 @@ OH_EffectFilterInfo *OH_EffectFilterInfo_Create()
 
 ### OH_EffectFilterInfo_SetFilterName()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_SetFilterName(OH_EffectFilterInfo *info, const char *name)
 ```
 
@@ -223,7 +223,7 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_SetFilterName(OH_EffectFilterInfo *inf
 
 ### OH_EffectFilterInfo_GetFilterName()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_GetFilterName(OH_EffectFilterInfo *info, char **name)
 ```
 
@@ -251,7 +251,7 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_GetFilterName(OH_EffectFilterInfo *inf
 
 ### OH_EffectFilterInfo_SetSupportedBufferTypes()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_SetSupportedBufferTypes(OH_EffectFilterInfo *info, uint32_t size, ImageEffect_BufferType *bufferTypeArray)
 ```
 
@@ -280,7 +280,7 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_SetSupportedBufferTypes(OH_EffectFilte
 
 ### OH_EffectFilterInfo_GetSupportedBufferTypes()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_GetSupportedBufferTypes(OH_EffectFilterInfo *info, uint32_t *size, ImageEffect_BufferType **bufferTypeArray)
 ```
 
@@ -309,7 +309,7 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_GetSupportedBufferTypes(OH_EffectFilte
 
 ### OH_EffectFilterInfo_SetSupportedFormats()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_SetSupportedFormats(OH_EffectFilterInfo *info, uint32_t size, ImageEffect_Format *formatArray)
 ```
 
@@ -338,7 +338,7 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_SetSupportedFormats(OH_EffectFilterInf
 
 ### OH_EffectFilterInfo_GetSupportedFormats()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_GetSupportedFormats(OH_EffectFilterInfo *info, uint32_t *size, ImageEffect_Format **formatArray)
 ```
 
@@ -367,7 +367,7 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_GetSupportedFormats(OH_EffectFilterInf
 
 ### OH_EffectFilterInfo_Release()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilterInfo_Release(OH_EffectFilterInfo *info)
 ```
 
@@ -394,7 +394,7 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_Release(OH_EffectFilterInfo *info)
 
 ### OH_EffectBufferInfo_Create()
 
-```
+```c
 OH_EffectBufferInfo *OH_EffectBufferInfo_Create()
 ```
 
@@ -414,7 +414,7 @@ OH_EffectBufferInfo *OH_EffectBufferInfo_Create()
 
 ### OH_EffectBufferInfo_SetAddr()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_SetAddr(OH_EffectBufferInfo *info, void *addr)
 ```
 
@@ -442,7 +442,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetAddr(OH_EffectBufferInfo *info, voi
 
 ### OH_EffectBufferInfo_GetAddr()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_GetAddr(OH_EffectBufferInfo *info, void **addr)
 ```
 
@@ -470,7 +470,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetAddr(OH_EffectBufferInfo *info, voi
 
 ### OH_EffectBufferInfo_SetWidth()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_SetWidth(OH_EffectBufferInfo *info, int32_t width)
 ```
 
@@ -498,7 +498,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetWidth(OH_EffectBufferInfo *info, in
 
 ### OH_EffectBufferInfo_GetWidth()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_GetWidth(OH_EffectBufferInfo *info, int32_t *width)
 ```
 
@@ -526,7 +526,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetWidth(OH_EffectBufferInfo *info, in
 
 ### OH_EffectBufferInfo_SetHeight()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_SetHeight(OH_EffectBufferInfo *info, int32_t height)
 ```
 
@@ -554,7 +554,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetHeight(OH_EffectBufferInfo *info, i
 
 ### OH_EffectBufferInfo_GetHeight()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_GetHeight(OH_EffectBufferInfo *info, int32_t *height)
 ```
 
@@ -582,7 +582,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetHeight(OH_EffectBufferInfo *info, i
 
 ### OH_EffectBufferInfo_SetRowSize()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_SetRowSize(OH_EffectBufferInfo *info, int32_t rowSize)
 ```
 
@@ -610,7 +610,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetRowSize(OH_EffectBufferInfo *info, 
 
 ### OH_EffectBufferInfo_GetRowSize()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_GetRowSize(OH_EffectBufferInfo *info, int32_t *rowSize)
 ```
 
@@ -638,7 +638,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetRowSize(OH_EffectBufferInfo *info, 
 
 ### OH_EffectBufferInfo_SetEffectFormat()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_SetEffectFormat(OH_EffectBufferInfo *info, ImageEffect_Format format)
 ```
 
@@ -666,7 +666,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetEffectFormat(OH_EffectBufferInfo *i
 
 ### OH_EffectBufferInfo_GetEffectFormat()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_GetEffectFormat(OH_EffectBufferInfo *info, ImageEffect_Format *format)
 ```
 
@@ -694,7 +694,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetEffectFormat(OH_EffectBufferInfo *i
 
 ### OH_EffectBufferInfo_SetTextureId()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_SetTextureId(OH_EffectBufferInfo *info, int32_t textureId)
 ```
 
@@ -722,7 +722,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetTextureId(OH_EffectBufferInfo *info
 
 ### OH_EffectBufferInfo_GetTextureId()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_GetTextureId(OH_EffectBufferInfo *info, int32_t *textureId)
 ```
 
@@ -750,7 +750,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetTextureId(OH_EffectBufferInfo *info
 
 ### OH_EffectBufferInfo_Release()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_Release(OH_EffectBufferInfo *info)
 ```
 
@@ -777,7 +777,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_Release(OH_EffectBufferInfo *info)
 
 ### OH_EffectFilterDelegate_SetValue()
 
-```
+```c
 typedef bool (*OH_EffectFilterDelegate_SetValue)(OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value)
 ```
 
@@ -806,7 +806,7 @@ typedef bool (*OH_EffectFilterDelegate_SetValue)(OH_EffectFilter *filter, const 
 
 ### OH_EffectFilterDelegate_PushData()
 
-```
+```c
 typedef void (*OH_EffectFilterDelegate_PushData)(OH_EffectFilter *filter, OH_EffectBufferInfo *info)
 ```
 
@@ -828,7 +828,7 @@ typedef void (*OH_EffectFilterDelegate_PushData)(OH_EffectFilter *filter, OH_Eff
 
 ### OH_EffectFilterDelegate_Render()
 
-```
+```c
 typedef bool (*OH_EffectFilterDelegate_Render)(OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData)
 ```
 
@@ -857,7 +857,7 @@ typedef bool (*OH_EffectFilterDelegate_Render)(OH_EffectFilter *filter, OH_Effec
 
 ### OH_EffectFilterDelegate_Save()
 
-```
+```c
 typedef bool (*OH_EffectFilterDelegate_Save)(OH_EffectFilter *filter, char **info)
 ```
 
@@ -885,7 +885,7 @@ typedef bool (*OH_EffectFilterDelegate_Save)(OH_EffectFilter *filter, char **inf
 
 ### OH_EffectFilterDelegate_Restore()
 
-```
+```c
 typedef OH_EffectFilter *(*OH_EffectFilterDelegate_Restore)(const char *info)
 ```
 
@@ -912,7 +912,7 @@ typedef OH_EffectFilter *(*OH_EffectFilterDelegate_Restore)(const char *info)
 
 ### OH_EffectFilter_Create()
 
-```
+```c
 OH_EffectFilter *OH_EffectFilter_Create(const char *name)
 ```
 
@@ -939,7 +939,7 @@ OH_EffectFilter *OH_EffectFilter_Create(const char *name)
 
 ### OH_EffectFilter_SetValue()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilter_SetValue(OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value)
 ```
 
@@ -968,7 +968,7 @@ ImageEffect_ErrorCode OH_EffectFilter_SetValue(OH_EffectFilter *filter, const ch
 
 ### OH_EffectFilter_GetValue()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilter_GetValue(OH_EffectFilter *filter, const char *key, ImageEffect_Any *value)
 ```
 
@@ -997,7 +997,7 @@ ImageEffect_ErrorCode OH_EffectFilter_GetValue(OH_EffectFilter *filter, const ch
 
 ### OH_EffectFilter_Register()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilter_Register(const OH_EffectFilterInfo *info, const ImageEffect_FilterDelegate *delegate)
 ```
 
@@ -1025,7 +1025,7 @@ ImageEffect_ErrorCode OH_EffectFilter_Register(const OH_EffectFilterInfo *info, 
 
 ### OH_EffectFilter_LookupFilters()
 
-```
+```c
 ImageEffect_FilterNames *OH_EffectFilter_LookupFilters(const char *key)
 ```
 
@@ -1052,7 +1052,7 @@ ImageEffect_FilterNames *OH_EffectFilter_LookupFilters(const char *key)
 
 ### OH_EffectFilter_ReleaseFilterNames()
 
-```
+```c
 void OH_EffectFilter_ReleaseFilterNames()
 ```
 
@@ -1066,7 +1066,7 @@ void OH_EffectFilter_ReleaseFilterNames()
 
 ### OH_EffectFilter_LookupFilterInfo()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilter_LookupFilterInfo(const char *name, OH_EffectFilterInfo *info)
 ```
 
@@ -1094,7 +1094,7 @@ ImageEffect_ErrorCode OH_EffectFilter_LookupFilterInfo(const char *name, OH_Effe
 
 ### OH_EffectFilter_Render()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilter_Render(OH_EffectFilter *filter, OH_PixelmapNative *inputPixelmap, OH_PixelmapNative *outputPixelmap)
 ```
 
@@ -1123,7 +1123,7 @@ ImageEffect_ErrorCode OH_EffectFilter_Render(OH_EffectFilter *filter, OH_Pixelma
 
 ### OH_EffectFilter_RenderWithTextureId()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilter_RenderWithTextureId(OH_EffectFilter *filter, int32_t inputTextureId, int32_t outputTextureId, int32_t colorSpace)
 ```
 
@@ -1153,7 +1153,7 @@ ImageEffect_ErrorCode OH_EffectFilter_RenderWithTextureId(OH_EffectFilter *filte
 
 ### OH_EffectFilter_Release()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectFilter_Release(OH_EffectFilter *filter)
 ```
 
@@ -1180,7 +1180,7 @@ ImageEffect_ErrorCode OH_EffectFilter_Release(OH_EffectFilter *filter)
 
 ### OH_EffectBufferInfo_SetTimestamp()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_SetTimestamp(OH_EffectBufferInfo *info, int64_t timestamp)
 ```
 
@@ -1208,7 +1208,7 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetTimestamp(OH_EffectBufferInfo *info
 
 ### OH_EffectBufferInfo_GetTimestamp()
 
-```
+```c
 ImageEffect_ErrorCode OH_EffectBufferInfo_GetTimestamp(OH_EffectBufferInfo *info, int64_t *timestamp)
 ```
 

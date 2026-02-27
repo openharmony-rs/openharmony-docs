@@ -32,7 +32,7 @@ Defines shortcut key options.
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ------- | ------- | ------- |
 | preKeys   | Array&lt;number&gt; | No     | No     | Modifier key set (including Ctrl, Shift, and Alt). A maximum of two modifier keys are supported. There is no requirement on the sequence of modifier keys.<br>For example, in **Ctrl+Shift+Esc**, **Ctrl** and **Shift** are modifier keys.|
-| finalKey  | number  | No     | No     | Modified key, which can be any key except the modifier keys and Meta key. For details about the keys, see [Keycode](js-apis-keycode.md).<br>For example, in **Ctrl+Shift+Esc**, **Esc** is the modified key.|
+| finalKey  | number  | No     | No     | Modified key, which can be any key except the modifier keys and Meta key. For details about the keys, see [Keycode](js-apis-keycode.md).<br>For example, in **Ctrl+Shift+Esc**, **Esc** is the modifier key.|
 | isRepeat  | boolean  | No     | Yes     | Whether to report repeated key events. The value **true** means to report repeated key events, and the value **false** means the opposite. The default value is **true**.|
 
 ## KeyPressedConfig<sup>16+</sup>
@@ -41,7 +41,7 @@ Sets the key event consumption configuration.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
-**Device behavior differences**: This API takes effect only on phones and tablets. If this API is called on other devices, error code 801 is returned.
+**Device behavior differences**: In versions earlier than API version 23, this API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned. Starting from API version 23, this API can be properly called on phones, PCs/2-in-1 devices, tablets, TVs, and cars. If it is called on other device types, error code 801 is returned.
 
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ------- | ------- | ------- |
@@ -56,6 +56,8 @@ getAllSystemHotkeys(): Promise&lt;Array&lt;HotkeyOptions&gt;&gt;
 Obtains all system shortcut keys. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Return value**
 
@@ -75,6 +77,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -85,7 +88,9 @@ struct Index {
         .onClick(() => {
           inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
             console.info(`List of system hotkeys : ${JSON.stringify(data)}`);
-          });
+          }).catch((error: BusinessError) => {
+            console.error(`Get all system hotkeys failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          })
         })
     }
   }
@@ -99,6 +104,8 @@ on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;Hot
 Subscribes to application shortcut key change events based on the specified options. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Parameters**
 
@@ -156,9 +163,11 @@ struct Index {
 
 off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;HotkeyOptions&gt;): void
 
-Unsubscribes from application shortcut key change events.
+Unsubscribes from application shortcut key change events. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Parameters**
 
@@ -249,7 +258,7 @@ If the API call is successful, the system's default response to the key event wi
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
-**Device behavior differences**: This API takes effect only on phones and tablets. If this API is called on other devices, error code 801 is returned.
+**Device behavior differences**: In versions earlier than API version 23, this API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned. Starting from API version 23, this API can be properly called on phones, PCs/2-in-1 devices, tablets, TVs, and cars. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -302,11 +311,11 @@ struct Index {
 
 off(type: 'keyPressed', callback?: Callback&lt;KeyEvent&gt;): void
 
-Disables listening for the **keyPressed** event. This API uses an asynchronous callback to return the result. If the API call is successful, the system's default response to the key event will be resumed; that is, system-level actions, such as volume adjustment, will be triggered normally.
+Unsubscribes from key press events. This API uses an asynchronous callback to return the result. If the API call is successful, the system's default response to the key event will be resumed; that is, system-level actions, such as volume adjustment, will be triggered normally.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
-**Device behavior differences**: This API takes effect only on phones and tablets. If this API is called on other devices, error code 801 is returned.
+**Device behavior differences**: In versions earlier than API version 23, this API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned. Starting from API version 23, this API can be properly called on phones, PCs/2-in-1 devices, tablets, TVs, and cars. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -338,9 +347,16 @@ struct Index {
         .onClick(() => {
           try {
             // Disable listening for a single callback.
-            inputConsumer.off('keyPressed', (event: KeyEvent) => {
+            let options: inputConsumer.KeyPressedConfig = {
+              key: 16,
+              action: 1,
+              isRepeat: false,
+            }
+            let callback = (event: KeyEvent) => {
               console.info(`Unsubscribe success ${JSON.stringify(event)}`);
-            });
+            }
+            inputConsumer.on('keyPressed', options, callback);
+            inputConsumer.off('keyPressed', callback);
             // Disable listening for all callbacks.
             inputConsumer.off("keyPressed");
           } catch (error) {

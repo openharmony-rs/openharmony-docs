@@ -10,6 +10,8 @@
 
 定义GameController模块的通用枚举类型。
 
+**引用文件：** <GameControllerKit/game_controller_type.h>
+
 **库：** libohgame_controller.z.so
 
 **系统能力：** SystemCapability.Game.GameController
@@ -26,7 +28,7 @@
 
 | 名称 | 描述 | 
 | -------- | -------- |
-| typedef enum [GameController_ErrorCode](capi-game-controller.md#gamecontroller_errorcode)[GameController_ErrorCode](capi-game-controller.md#gamecontroller_errorcode) | 此枚举定义游戏控制器的错误码。 | 
+| typedef enum [GameController_ErrorCode](capi-game-controller.md#gamecontroller_errorcode) [GameController_ErrorCode](capi-game-controller.md#gamecontroller_errorcode) | 此枚举定义游戏控制器的错误码。 | 
 
 
 ### 枚举

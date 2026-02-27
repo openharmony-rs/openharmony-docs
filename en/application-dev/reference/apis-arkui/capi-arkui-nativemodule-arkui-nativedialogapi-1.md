@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} ArkUI_NativeDialogAPI_1
+```
+
 ## Overview
 
 Provides a collection of native-side custom dialog box APIs provided by ArkUI.
@@ -45,7 +49,7 @@ Provides a collection of native-side custom dialog box APIs provided by ArkUI.
 
 ### create()
 
-```
+```c
 ArkUI_NativeDialogHandle (*create)()
 ```
 
@@ -65,7 +69,7 @@ Creates a custom dialog box and returns the pointer to the created dialog box.
 
 ### dispose()
 
-```
+```c
 void (*dispose)(ArkUI_NativeDialogHandle handle)
 ```
 
@@ -74,9 +78,13 @@ void (*dispose)(ArkUI_NativeDialogHandle handle)
 
 Destroys a custom dialog box.
 
+| Name                                                                               | Description|
+|------------------------------------------------------------------------------------| -- |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
+
 ### setContent()
 
-```
+```c
 int32_t (*setContent)(ArkUI_NativeDialogHandle handle, ArkUI_NodeHandle content)
 ```
 
@@ -103,7 +111,7 @@ Sets the content for a custom dialog box.
 
 ### removeContent()
 
-```
+```c
 int32_t (*removeContent)(ArkUI_NativeDialogHandle handle)
 ```
 
@@ -129,7 +137,7 @@ Removes the content of a custom dialog box.
 
 ### setContentAlignment()
 
-```
+```c
 int32_t (*setContentAlignment)(ArkUI_NativeDialogHandle handle, int32_t alignment, float offsetX, float offsetY)
 ```
 
@@ -158,7 +166,7 @@ Sets the alignment mode of a custom dialog box.
 
 ### resetContentAlignment()
 
-```
+```c
 int32_t (*resetContentAlignment)(ArkUI_NativeDialogHandle handle)
 ```
 
@@ -184,7 +192,7 @@ Resets the alignment mode of a custom dialog box to its default settings.
 
 ### setModalMode()
 
-```
+```c
 int32_t (*setModalMode)(ArkUI_NativeDialogHandle handle, bool isModal)
 ```
 
@@ -211,7 +219,7 @@ Sets the modal mode for a custom dialog box.
 
 ### setAutoCancel()
 
-```
+```c
 int32_t (*setAutoCancel)(ArkUI_NativeDialogHandle handle, bool autoCancel)
 ```
 
@@ -238,7 +246,7 @@ Specifies whether to allow users to touch the mask to dismiss a custom dialog bo
 
 ### setMask()
 
-```
+```c
 int32_t (*setMask)(ArkUI_NativeDialogHandle handle, uint32_t maskColor, const ArkUI_Rect* maskRect)
 ```
 
@@ -266,7 +274,7 @@ Sets the mask for a custom dialog box.
 
 ### setBackgroundColor()
 
-```
+```c
 int32_t (*setBackgroundColor)(ArkUI_NativeDialogHandle handle, uint32_t backgroundColor)
 ```
 
@@ -293,7 +301,7 @@ Sets the background color for a custom dialog box.
 
 ### setCornerRadius()
 
-```
+```c
 int32_t (*setCornerRadius)(ArkUI_NativeDialogHandle handle, float topLeft, float topRight,float bottomLeft, float bottomRight)
 ```
 
@@ -323,7 +331,7 @@ Sets the background corner radius for a custom dialog box.
 
 ### setGridColumnCount()
 
-```
+```c
 int32_t (*setGridColumnCount)(ArkUI_NativeDialogHandle handle, int32_t gridCount)
 ```
 
@@ -350,7 +358,7 @@ Sets the number of grid columns occupied by a custom dialog box.
 
 ### enableCustomStyle()
 
-```
+```c
 int32_t (*enableCustomStyle)(ArkUI_NativeDialogHandle handle, bool enableCustomStyle)
 ```
 
@@ -367,7 +375,7 @@ Specifies whether to use a custom style for the custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  bool enableCustomStyle | Whether to use a custom style for the dialog box.<br>**true**: The dialog box automatically adapts its width to the child components; the rounded corner is 0; the background color is transparent.<br>**false**: The dialog box automatically adapts its width to the grid system and its height to the child components; the rounded corner is 24 vp.|
+|  bool enableCustomStyle | Whether to use a custom style for the dialog box.<br>Default value: **false**.<br>**true**: The dialog box cannot use a custom style. Its width adapts to its child components, with zero corner radius and a transparent background.<br>**false**: The dialog box can use a custom style. Its height adapts to its child components and its width is defined by the grid system. The rounded corner radius is 24 vp. On PC and 2-in-1 devices, it automatically avoids screen edges and window title bars.|
 
 **Returns**
 
@@ -377,7 +385,7 @@ Specifies whether to use a custom style for the custom dialog box.
 
 ### enableCustomAnimation()
 
-```
+```c
 int32_t (*enableCustomAnimation)(ArkUI_NativeDialogHandle handle, bool enableCustomAnimation)
 ```
 
@@ -404,7 +412,7 @@ Specifies whether to use a custom animation for a custom dialog box.
 
 ### registerOnWillDismiss()
 
-```
+```c
 int32_t (*registerOnWillDismiss)(ArkUI_NativeDialogHandle handle, ArkUI_OnWillDismissEvent eventHandler)
 ```
 
@@ -431,7 +439,7 @@ Registers a callback for a custom dialog box so that the user can decide whether
 
 ### show()
 
-```
+```c
 int32_t (*show)(ArkUI_NativeDialogHandle handle, bool showInSubWindow)
 ```
 
@@ -454,7 +462,7 @@ Shows a custom dialog box.
 
 ### close()
 
-```
+```c
 int32_t (*close)(ArkUI_NativeDialogHandle handle)
 ```
 
@@ -477,7 +485,7 @@ Closes a custom dialog box. If the dialog box has been closed, this API does not
 
 ### registerOnWillDismissWithUserData()
 
-```
+```c
 int32_t (*registerOnWillDismissWithUserData)(ArkUI_NativeDialogHandle handle, void* userData, void (*callback)(ArkUI_DialogDismissEvent* event))
 ```
 

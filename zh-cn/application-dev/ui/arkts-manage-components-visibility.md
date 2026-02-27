@@ -571,6 +571,7 @@ export function PageTwoBuilder(name: string) {
 - 检查父组件是否设置clip属性，裁剪可能导致可见面积计算偏差。
 - 考虑组件透明度影响，即使 opacity为0也会被计入可见面积。
 - 结合nodeRenderState监听交叉验证。
+- 尝试将[measureFromViewport](./../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange22)设置为true进行验证。
 
 ### 高频回调导致性能下降
 

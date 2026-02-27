@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
@@ -38,15 +38,15 @@ The **loop.h** file declares the loop APIs in C.
 | [FFRT_C_API int ffrt_loop_destroy(ffrt_loop_t loop)](#ffrt_loop_destroy) | Destroys a loop.|
 | [FFRT_C_API int ffrt_loop_run(ffrt_loop_t loop)](#ffrt_loop_run) | Runs a loop.|
 | [FFRT_C_API void ffrt_loop_stop(ffrt_loop_t loop)](#ffrt_loop_stop) | Stops a loop.|
-| [FFRT_C_API int ffrt_loop_epoll_ctl(ffrt_loop_t loop, int op, int fd, uint32_t events, void *data, ffrt_poller_cb cb)](#ffrt_loop_epoll_ctl) | Manages listening events on a loop.|
-| [FFRT_C_API ffrt_timer_t ffrt_loop_timer_start(ffrt_loop_t loop, uint64_t timeout, void* data, ffrt_timer_cb cb, bool repeat)](#ffrt_loop_timer_start) | Starts the timer on a loop.|
+| [FFRT_C_API int ffrt_loop_epoll_ctl(ffrt_loop_t loop, int op, int fd, uint32_t events, void *data, ffrt_poller_cb cb)](#ffrt_loop_epoll_ctl) | Manages listening events on a loop.<br> You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.|
+| [FFRT_C_API ffrt_timer_t ffrt_loop_timer_start(ffrt_loop_t loop, uint64_t timeout, void* data, ffrt_timer_cb cb, bool repeat)](#ffrt_loop_timer_start) | Starts the timer on a loop.<br> You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.|
 | [FFRT_C_API int ffrt_loop_timer_stop(ffrt_loop_t loop, ffrt_timer_t handle)](#ffrt_loop_timer_stop) | Stops the timer on a loop.|
 
 ## Function Description
 
 ### ffrt_loop_create()
 
-```
+```c
 FFRT_C_API ffrt_loop_t ffrt_loop_create(ffrt_queue_t queue)
 ```
 
@@ -55,7 +55,6 @@ FFRT_C_API ffrt_loop_t ffrt_loop_create(ffrt_queue_t queue)
 Creates a loop.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -71,7 +70,7 @@ Creates a loop.
 
 ### ffrt_loop_destroy()
 
-```
+```c
 FFRT_C_API int ffrt_loop_destroy(ffrt_loop_t loop)
 ```
 
@@ -80,7 +79,6 @@ FFRT_C_API int ffrt_loop_destroy(ffrt_loop_t loop)
 Destroys a loop.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -96,7 +94,7 @@ Destroys a loop.
 
 ### ffrt_loop_run()
 
-```
+```c
 FFRT_C_API int ffrt_loop_run(ffrt_loop_t loop)
 ```
 
@@ -105,7 +103,6 @@ FFRT_C_API int ffrt_loop_run(ffrt_loop_t loop)
 Runs a loop.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -121,7 +118,7 @@ Runs a loop.
 
 ### ffrt_loop_stop()
 
-```
+```c
 FFRT_C_API void ffrt_loop_stop(ffrt_loop_t loop)
 ```
 
@@ -131,7 +128,6 @@ Stops a loop.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -140,17 +136,17 @@ Stops a loop.
 
 ### ffrt_loop_epoll_ctl()
 
-```
+```c
 FFRT_C_API int ffrt_loop_epoll_ctl(ffrt_loop_t loop, int op, int fd, uint32_t events, void *data, ffrt_poller_cb cb)
 ```
 
 **Description**
 
 Manages listening events on a loop.
+
 You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -171,17 +167,17 @@ You are not advised to call the `exit` function in `cb`. Otherwise, undefined be
 
 ### ffrt_loop_timer_start()
 
-```
+```c
 FFRT_C_API ffrt_timer_t ffrt_loop_timer_start(ffrt_loop_t loop, uint64_t timeout, void* data, ffrt_timer_cb cb, bool repeat)
 ```
 
 **Description**
 
 Starts the timer on a loop.
+
 You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -195,13 +191,13 @@ You are not advised to call the `exit` function in `cb`. Otherwise, undefined be
 
 **Returns**
 
-| Type                                              | Description|
-|--------------------------------------------------| -- |
+| Type| Description|
+| -- | -- |
 | FFRT_C_API [ffrt_timer_t](capi-type-def-h.md#variables)| Returns the timer handle.|
 
 ### ffrt_loop_timer_stop()
 
-```
+```c
 FFRT_C_API int ffrt_loop_timer_stop(ffrt_loop_t loop, ffrt_timer_t handle)
 ```
 
@@ -210,7 +206,6 @@ FFRT_C_API int ffrt_loop_timer_stop(ffrt_loop_t loop, ffrt_timer_t handle)
 Stops the timer on a loop.
 
 **Since**: 12
-
 
 **Parameters**
 

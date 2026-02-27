@@ -6,8 +6,8 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
- 
- 
+  
+
 Implements a **CreateNativeMediaPlayerCallback** object to control the player created by the application for taking over the web page media playback. This object is a return value type of the [CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) callback.
 
 > **NOTE**
@@ -16,7 +16,7 @@ Implements a **CreateNativeMediaPlayerCallback** object to control the player cr
 >
 > - The initial APIs of this interface are supported since API version 12.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## updateRect<sup>12+</sup>
 

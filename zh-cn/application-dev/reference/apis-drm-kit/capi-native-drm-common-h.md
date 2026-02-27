@@ -88,7 +88,7 @@
 
 ### DRM_EventType
 
-```
+```c
 enum DRM_EventType
 ```
 
@@ -111,7 +111,7 @@ enum DRM_EventType
 
 ### DRM_ContentProtectionLevel
 
-```
+```c
 enum DRM_ContentProtectionLevel
 ```
 
@@ -133,7 +133,7 @@ enum DRM_ContentProtectionLevel
 
 ### DRM_MediaKeyType
 
-```
+```c
 enum DRM_MediaKeyType
 ```
 
@@ -152,7 +152,7 @@ enum DRM_MediaKeyType
 
 ### DRM_MediaKeyRequestType
 
-```
+```c
 enum DRM_MediaKeyRequestType
 ```
 
@@ -175,7 +175,7 @@ enum DRM_MediaKeyRequestType
 
 ### DRM_OfflineMediaKeyStatus
 
-```
+```c
 enum DRM_OfflineMediaKeyStatus
 ```
 
@@ -195,7 +195,7 @@ enum DRM_OfflineMediaKeyStatus
 
 ### DRM_CertificateStatus
 
-```
+```c
 enum DRM_CertificateStatus
 ```
 
@@ -220,7 +220,7 @@ enum DRM_CertificateStatus
 
 ### DRM_MediaKeySystemInfoCallback()
 
-```
+```c
 typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)
 ```
 

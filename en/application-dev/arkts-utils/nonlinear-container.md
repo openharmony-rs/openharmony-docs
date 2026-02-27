@@ -219,44 +219,43 @@ Common APIs for adding, deleting, modifying, and accessing elements in PlainArra
 
 Here are usage examples for common nonlinear containers, including HashMap, TreeMap, LightWeightMap, and PlainArray, covering importing modules, adding elements, accessing elements, and modifying elements. The example code is as follows:
 
+<!-- @[nonlinear_container](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/ArkTsContainerLibrary/NonlinearContainers/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-// HashMap
-import { HashMap } from '@kit.ArkTS'; // Import the HashMap module.
+``` TypeScript
+// Import the HashMap, TreeMap, LightWeightMap, and PlainArray modules.
+import { HashMap, TreeMap, LightWeightMap, PlainArray } from '@kit.ArkTS';
 
-let hashMap1: HashMap<string, number> = new HashMap();
-hashMap1.set('a', 123); // Add an element with key 'a' and value 123.
-let hashMap2: HashMap<number, number> = new HashMap();
-hashMap2.set(4, 123); // Add an element with key 4 and value 123.
-console.info(`result: ${hashMap2.hasKey(4)}`); // Check whether an element with key 4 exists. Output: result: true
-console.info(`result: ${hashMap1.get('a')}`); // Access an element with key 'a'. Output: result: 123
-
-// TreeMap
-import { TreeMap } from '@kit.ArkTS'; // Import the TreeMap module.
-
-let treeMap: TreeMap<string, number> = new TreeMap();
-treeMap.set('a', 123); // Add an element with key 'a' and value 123.
-treeMap.set('6', 356); // Add an element with key '6' and value 356.
-console.info(`result: ${treeMap.get('a')}`); // Access an element with key 'a'. Output: result: 123
-console.info(`result: ${treeMap.getFirstKey()}`); // Access the first element. Output: result: 6
-console.info(`result: ${treeMap.getLastKey()}`); // Access the last element. Output: result: a
-
-// LightWeightMap
-import { LightWeightMap } from '@kit.ArkTS'; // Import the LightWeightMap module.
-
-let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
-lightWeightMap.set('x', 123); // Add an element with key 'x' and value 123.
-lightWeightMap.set('8', 356); // Add an element with key '8' and value 356.
-console.info(`result: ${lightWeightMap.get('a')}`); // Access an element with key 'a'. Output: result: undefined
-console.info(`result: ${lightWeightMap.get('x')}`); // Obtain the value of the element with key 'x'. Output: result: 123
-console.info(`result: ${lightWeightMap.getIndexOfKey('8')}`); // Obtain the index of the element with key '8'. Output: result: 0
-
-// PlainArray
-import { PlainArray } from '@kit.ArkTS'; // Import the PlainArray module.
-
-let plainArray: PlainArray<string> = new PlainArray();
-plainArray.add(1, 'sdd'); // Add an element with key 1 and value 'sdd'.
-plainArray.add(2, 'sff'); // Add an element with key 2 and value 'sff'.
-console.info(`result: ${plainArray.get(1)}`); // Obtain the value of the element with key 1. Output: result: sdd
-console.info(`result: ${plainArray.getKeyAt(1)}`); // Obtain the key of the element at index 1. Output: result: 2
+// ...
+  let hashMap1: HashMap<string, number> = new HashMap();
+  hashMap1.set('a', 123); // Add an element with key 'a' and value 123.
+  let hashMap2: HashMap<number, number> = new HashMap();
+  hashMap2.set(4, 123); // Add an element with key 4 and value 123.
+  console.info(`result: ${hashMap2.hasKey(4)}`); // Check whether an element with key 4 exists. Output: result: true
+  // ...
+  console.info(`result: ${hashMap1.get('a')}`); // Access an element with key 'a'. Output: result: 123
+  // ...
+  let treeMap: TreeMap<string, number> = new TreeMap();
+  treeMap.set('a', 123); // Add an element with key 'a' and value 123.
+  treeMap.set('6', 356); // Add an element with key '6' and value 356.
+  console.info(`result: ${treeMap.get('a')}`); // Access an element with key 'a'. Output: result: 123
+  // ...
+  console.info(`result: ${treeMap.getFirstKey()}`); // Access the first element. Output: result: 6
+  // ...
+  console.info(`result: ${treeMap.getLastKey()}`); // Access the last element. Output: result: a
+  // ...
+  let lightWeightMap: LightWeightMap<string, number> = new LightWeightMap();
+  lightWeightMap.set('x', 123); // Add an element with key 'x' and value 123.
+  lightWeightMap.set('8', 356); // Add an element with key '8' and value 356.
+  console.info(`result: ${lightWeightMap.get('a')}`); // Access an element with key 'a'. Output: result: undefined
+  // ...
+  console.info(`result: ${lightWeightMap.get('x')}`); // Obtain the value of the element with key 'x'. Output: result: 123
+  // ...
+  console.info(`result: ${lightWeightMap.getIndexOfKey('8')}`); // Obtain the index of the element with key '8'. Output: result: 0
+  // ...
+  let plainArray: PlainArray<string> = new PlainArray();
+  plainArray.add(1, 'sdd'); // Add an element with key 1 and value 'sdd'.
+  plainArray.add(2, 'sff'); // Add an element with key 2 and value 'sff'.
+  console.info(`result: ${plainArray.get(1)}`); // Obtain the value of the element with key 1. Output: result: sdd
+  // ...
+  console.info(`result: ${plainArray.getKeyAt(1)}`); // Obtain the key of the element at index 1. Output: result: 2
 ```

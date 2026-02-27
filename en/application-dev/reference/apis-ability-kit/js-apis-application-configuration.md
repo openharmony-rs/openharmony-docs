@@ -32,7 +32,7 @@ import Configuration from '@ohos.application.Configuration';
 For details about the fields, see the **ohos.application.Configuration.d.ts** file.
 
 **Example**
-  ```ts
+```ts
 import UIAbility from '@ohos.app.ability.UIAbility';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import EnvironmentCallback from '@ohos.app.ability.EnvironmentCallback';
@@ -75,4 +75,4 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
-  ```
+```

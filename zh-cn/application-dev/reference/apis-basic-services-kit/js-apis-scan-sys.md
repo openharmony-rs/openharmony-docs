@@ -194,8 +194,8 @@ off(type: 'scanDeviceAdd', callback?: Callback&lt;ScannerDevice&gt;): void
 
 **参数：**
 | **参数名** | **类型** | **必填** | **说明** |
-| -------- | -------- | -------- | -------- |	
-| type | 'scanDeviceAdd' | 是 | 事件类型。 |	
+| -------- | -------- | -------- | -------- |
+| type | 'scanDeviceAdd' | 是 | 事件类型。 |
 | callback | Callback&lt;[ScannerDevice](./js-apis-scan.md#scannerdevice)&gt; | 是 | 回调函数，返回扫描仪设备添加信息。 |
 
 **错误码：**

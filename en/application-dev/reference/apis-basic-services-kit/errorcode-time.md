@@ -3,8 +3,8 @@
 <!--Subsystem: Time-->
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
-<!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 > **NOTE**
 >
@@ -51,11 +51,11 @@ Make sure the network is connected and the system resources are sufficient.
 
 **Error Message**
 
-The local NTP time of the system is invalid.
+**updateNtpTime()** fails to be called.
 
 **Description**
 
-This error code is reported when the NTP time is invalid.
+This error code is reported when **updateNtpTime()** fails to be called and the local NTP time of is invalid.
 
 **Possible Cause**
 

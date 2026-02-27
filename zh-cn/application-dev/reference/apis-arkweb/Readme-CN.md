@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @yp99ustc-->
-<!--Designer: @ctqctq99-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -35,6 +35,8 @@
     - [Class (WebSchemeHandlerRequest)](arkts-apis-webview-WebSchemeHandlerRequest.md)
     - [Class (WebSchemeHandlerResponse)](arkts-apis-webview-WebSchemeHandlerResponse.md)
     - [Class (WebStorage)](arkts-apis-webview-WebStorage.md)  
+    - [Class (UserAgentBrandVersion)](arkts-apis-webview-UserAgentBrandVersion.md)
+    - [Class (UserAgentMetadata)](arkts-apis-webview-UserAgentMetadata.md)
     - [Class (VerifyPinHandler)](arkts-basic-components-web-VerifyPinHandler.md)
     - [Interface (BackForwardList)](arkts-apis-webview-BackForwardList.md)
     - [Interface (NativeMediaPlayerBridge)](arkts-apis-webview-NativeMediaPlayerBridge.md)
@@ -43,7 +45,7 @@
     - [Interfaces (其他)](arkts-apis-webview-i.md)
     - [Enums](arkts-apis-webview-e.md)
     - [Types](arkts-apis-webview-t.md)
-  - [@ohos.web.netErrorList](arkts-apis-netErrorList.md)
+  - [@ohos.web.netErrorList (ArkWeb网络协议栈错误列表)](arkts-apis-netErrorList.md)
   - [@ohos.web.webNativeMessagingExtensionAbility](arkts-apis-web-webNativeMessagingExtensionAbility.md)
   - [@ohos.web.webNativeMessagingExtensionContext](arkts-apis-web-webNativeMessagingExtensionContext.md)
   - [@ohos.web.webNativeMessagingExtensionManager](arkts-apis-web-webNativeMessagingExtensionManager.md)

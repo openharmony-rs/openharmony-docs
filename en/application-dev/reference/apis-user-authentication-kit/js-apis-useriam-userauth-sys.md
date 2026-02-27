@@ -12,6 +12,7 @@ The **userIAM.userAuth** module provides user authentication capabilities in ide
 > **NOTE**<br>
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
 > - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.userIAM.userAuth (User Authentication)](js-apis-useriam-userauth.md).
 
 ## Modules to Import
@@ -29,6 +30,7 @@ Represents the user authentication parameters.
 | Name          | Type                              | Read-Only| Optional| Description                                                        |
 | -------------- | ---------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | userId<sup>18+</sup> | number | No  | Yes  |ID of the user to be authenticated. The value is a positive integer greater than or equal to 0. The default value is the ID of the current user.<br>**System API**: This is a system API.|
+| credentialIdList<sup>23+</sup> | Uint8Array[] | No| Yes|List of credential IDs. If the credential ID list is not empty, the specified credential ID is authenticated.<br>**System API**: This is a system API.|
 
 ## WindowModeType<sup>10+</sup>
 
@@ -236,6 +238,7 @@ getUserAuthWidgetMgr(version: number): UserAuthWidgetMgr
 Obtains a **UserAuthWidgetMgr** instance for user authentication.
 
 > **NOTE**<br>
+>
 > A **UserAuthInstance** instance can be used for an authentication only once.
 
 **Required permissions**: ohos.permission.SUPPORT_USER_AUTH

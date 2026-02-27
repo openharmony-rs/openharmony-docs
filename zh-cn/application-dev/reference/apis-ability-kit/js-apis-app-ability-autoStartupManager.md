@@ -29,6 +29,8 @@ getAutoStartupStatusForSelf(): Promise\<boolean\>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**设备行为差异**：该接口仅在Phone、PC/2in1、Tablet和Wearable设备中可正常调用，在其他设备中返回801错误码。
+
 **返回值：**
 
 | 类型                                          | 说明                                  |

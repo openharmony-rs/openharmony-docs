@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+struct WebSocket_Header {...}
+```
+
 ## Overview
 
 Defines the header linked list added to the WebSocket client.

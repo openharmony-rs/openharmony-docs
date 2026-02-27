@@ -22,7 +22,7 @@ This topic describes how to subscribe to application freeze events by using the 
 
 ### Adding an Event Watcher
 
-The following describes how to subscribe to the application freeze event triggered by button clicking.
+The following walks you through on how to subscribe to the application freeze events.
 
 1. Obtain the **jsoncpp** file on which the sample project depends. Specifically, download the source code package from [JsonCpp](https://github.com/open-source-parsers/jsoncpp) and obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by following the procedure described in **Amalgamated source**.
 

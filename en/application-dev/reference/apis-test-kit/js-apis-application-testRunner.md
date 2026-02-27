@@ -48,8 +48,6 @@ export default class UserTestRunner implements TestRunner {
 }
 ```
 
-
-
 ## TestRunner.onRun
 
 onRun(): void

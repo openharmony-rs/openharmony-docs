@@ -52,7 +52,7 @@ struct WebComponent {
 
 The PDF preview page uses **window.localStorage** to record the expansion status of the navigation bar based on user operations. Therefore, you need to declare the [domStorageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#domstorageaccess) permission.
 
-  ```
+  ```ts
   Web().domStorageAccess(true)
   ```
 
@@ -93,18 +93,18 @@ There are three scenarios for loading and previewing PDF files:
 
 Currently, the following parameters are supported:
 
-| Syntax	| Description|
+| Syntax| Description|
 | --------- | ---------- |
-| nameddest=destination 	|  Specifies a naming destination in a PDF file.|
-| page=pagenum 	| Specifies the page number with an integer. The **pagenum** value of the first page of the file is **1**.| 
-| zoom=scale    zoom=scale,left,top	| Sets the scaling and scrolling coefficients using a floating or integer value. For example, the scaling value **100** indicates 100%. The left and up scrolling values are located in the coordinate system. **0,0** indicates the upper left corner of the visible page, regardless of how the document is rotated.|
-| toolbar=1 \| 0 	| Opens or closes the top toolbar.| 
-| navpanes=1 \| 0 	| Opens or closes the side navigation pane.| 
-| pdfbackgroundcolor=color 	| Specifies the background color of a PDF file. The value of color is a six-digit hexadecimal number in RGB format. The value ranges from 000000 to ffffff. For example, **ffffff** indicates white. This parameter is supported since OpenHarmony 6.0.|
+| nameddest=destination |  Specifies a naming destination in a PDF file.|
+| page=pagenum | Specifies the page number with an integer. The **pagenum** value of the first page of the file is **1**.| 
+| zoom=scale    zoom=scale,left,top | Sets the scaling and scrolling coefficients using a floating or integer value. For example, the scaling value **100** indicates 100%. The left and up scrolling values are located in the coordinate system. **0,0** indicates the upper left corner of the visible page, regardless of how the document is rotated.|
+| toolbar=1 \| 0 | Opens or closes the top toolbar.| 
+| navpanes=1 \| 0 | Opens or closes the side navigation pane.| 
+| pdfbackgroundcolor=color | Specifies the background color of a PDF file. The value of color is a six-digit hexadecimal number in RGB format. The value ranges from 000000 to ffffff. For example, **ffffff** indicates white. This parameter is supported since OpenHarmony 6.0.|
 
 
 URL Examples:
-```
+```txt
 https://example.com/test.pdf#nameddest=Chapter6  
 https://example.com/test.pdf#page=3  
 https://example.com/test.pdf#zoom=50  

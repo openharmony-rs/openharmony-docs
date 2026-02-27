@@ -3,14 +3,14 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 路由容器组件，提供路由跳转能力。
 
 > **说明：**
 >
-> 从API version 13开始，该组件不再维护，推荐使用组件[Navigation](ts-basic-components-navigation.md)进行页面路由。
+> 从API version 13开始，该组件不再维护，建议使用[Navigation](ts-basic-components-navigation.md)组件进行页面路由。
 >
 > 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -22,9 +22,13 @@
 
 ## 接口
 
-### Navigator
+### Navigator<sup>(deprecated)</sup>
 
 Navigator(value?: {target: string, type?: NavigationType})
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 13开始废弃，建议使用[NavPathInfo](ts-basic-components-navigation.md#navpathinfo10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -35,17 +39,23 @@ Navigator(value?: {target: string, type?: NavigationType})
 | 参数名 | 类型       | 必填 | 说明                                       |
 | ------ | -------------- | ---- | ---------------------------------------------- |
 | target | string         | 是   | 指定跳转目标页面的路径。     |
-| type   | [NavigationType](#navigationtype枚举说明) | 否   | 指定路由方式。<br/>默认值：NavigationType.Push |
+| type   | [NavigationType](#navigationtypedeprecated枚举说明) | 否   | 指定路由方式。<br/>默认值：NavigationType.Push |
 
-### Navigator
+### Navigator<sup>(deprecated)</sup>
 
 Navigator()
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 13开始废弃，建议使用[NavigationAttribute](ts-basic-components-navigation.md#属性)替代。NavigationAttribute为Navigation组件的属性。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## NavigationType枚举说明
+## NavigationType<sup>(deprecated)</sup>枚举说明
+
+路由的跳转方式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -53,17 +63,21 @@ Navigator()
 
 | 名称      | 值  | 说明                       |
 | ------- | ------- | -------------------------- |
-| Push    | 1 | 跳转到应用内的指定页面。               |
-| Replace | 2 | 用应用内的某个页面替换当前页面，并销毁被替换的页面。 |
-| Back    | 3 | 返回到指定的页面。指定的页面不存在栈中时不响应。未传入指定的页面时返回上一页。 |
+| Push    | 1 | 跳转到应用内的指定页面。<br/>**说明：**<br/>从API version 7开始支持，从API version 13开始废弃，建议使用[pushPath](ts-basic-components-navigation.md#pushpath10)替代。  |
+| Replace | 2 | 用应用内的某个页面替换当前页面，并销毁被替换的页面。<br/>**说明：**<br/>从API version 7开始支持，从API version 13开始废弃，建议使用[replacePath](ts-basic-components-navigation.md#replacepath11)替代。 |
+| Back    | 3 | 返回到指定的页面。指定的页面不存在栈中时不响应。未传入指定的页面时返回上一页。<br/>**说明：**<br/>从API version 7开始支持，从API version 13开始废弃，建议使用[pop](ts-basic-components-navigation.md#pop10)替代。 |
 
 ## 属性
 
-### active
+### active<sup>(deprecated)</sup>
 
 active(value: boolean)
 
 设置当前路由组件是否处于激活状态，处于激活状态时，会生效相应的路由操作。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 13开始废弃，建议使用[Navigation](ts-basic-components-navigation.md)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -75,11 +89,15 @@ active(value: boolean)
 | ------ | ------- | ---- | -------------------------- |
 | value  | boolean | 是   | 路由组件是否处于激活状态。设置为true时，组件处于激活态。设置为false时，组件不处于激活态。 |
 
-### params
+### params<sup>(deprecated)</sup>
 
 params(value: object)
 
 设置跳转时传递到目标页面的数据。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 13开始废弃，建议使用[param](ts-basic-components-navigation.md#属性-1)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -91,11 +109,15 @@ params(value: object)
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | object | 是   | 跳转时要同时传递到目标页面的数据，可在目标页面使用[router.getParams()](../js-apis-router.md#routergetparamsdeprecated)获得。 |
 
-### target
+### target<sup>(deprecated)</sup>
 
 target(value: string)
 
 设置跳转目标页面的路径。目标页面需加入main_pages.json文件中。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 13开始废弃，建议使用[Navigation](ts-basic-components-navigation.md)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -107,10 +129,14 @@ target(value: string)
 | ------ | ------ | ---- | ------------------ |
 | value  | string | 是   | 跳转目标页面的路径。 |
 
-### type
+### type<sup>(deprecated)</sup>
 type(value: NavigationType)
 
 设置路由跳转方式。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 13开始废弃，建议使用[Navigation](ts-basic-components-navigation.md)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -120,12 +146,28 @@ type(value: NavigationType)
 
 | 参数名 | 类型   | 必填 | 说明                                           |
 | ------ | ------ | ---- | ---------------------------------------------- |
-| value  | [NavigationType](#navigationtype枚举说明) | 是   | 路由跳转方式。<br/>默认值：NavigationType.Push |
+| value  | [NavigationType](#navigationtypedeprecated枚举说明) | 是   | 路由跳转方式。<br/>默认值：NavigationType.Push |
 
 ## 示例
 
 ```ts
-// Navigator.ets
+// code.ets
+export interface NameObject {
+  name: string;
+}
+
+export class TextObject {
+  text: NameObject;
+
+  constructor(text: NameObject) {
+    this.text = text;
+  }
+}
+```
+
+```ts
+import { NameObject, TextObject } from '../../code';
+
 @Entry
 @Component
 struct NavigatorExample {
@@ -148,22 +190,11 @@ struct NavigatorExample {
     }.height(150).width(350).padding(35)
   }
 }
-
-interface NameObject {
-  name: string;
-}
-
-class TextObject {
-  text: NameObject;
-
-  constructor(text: NameObject) {
-    this.text = text;
-  }
-}
 ```
 
 ```ts
-// Detail.ets
+import { NameObject } from '../../code';
+
 @Entry
 @Component
 struct DetailExample {
@@ -182,10 +213,6 @@ struct DetailExample {
     }
     .width('100%').height(200).padding({ left: 35, right: 35, top: 35 })
   }
-}
-
-interface NameObject {
-  name: string;
 }
 ```
 

@@ -13,7 +13,7 @@
 
 - [onDidBuild](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#ondidbuild12)：在组件首次渲染触发的build函数执行完成之后回调该接口，后续组件重新渲染将不回调该接口。开发者可以在这个阶段实现埋点数据上报等不影响实际UI的功能。
 
-- [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)：aboutToDisappear函数在自定义组件析构销毁之前执行。不允许在aboutToDisappear函数中改变状态变量，特别是@Link变量的修改可能会导致应用程序行为不稳定。
+- [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)：aboutToDisappear函数在自定义组件析构销毁之前执行。不允许在aboutToDisappear函数中改变状态变量，特别是[@Link变量](./arkts-link.md)的修改可能会导致应用程序行为不稳定。
 
 > **说明：**
 >
@@ -90,16 +90,16 @@ struct Parent {
 
   build() {
     Column() {
-      // this.showChild为true，创建Child子组件，执行Child aboutToAppear
+      // this.showChild为true，创建Child子组件，执行Child aboutToAppear和Child onDidBuild。
       if (this.showChild) {
         Child()
       }
-      Button('delete Child')
+      Button(this.showChild ? 'delete Child' : 'add Child')
         .margin(20)
         .backgroundColor(this.btnColor)
         .onClick(() => {
-          // 更改this.showChild为false，删除Child子组件，执行Child aboutToDisappear
-          // 更改this.showChild为true，添加Child子组件，执行Child aboutToAppear
+          // 更改this.showChild为false，删除Child子组件，执行Child aboutToDisappear。
+          // 更改this.showChild为true，添加Child子组件，执行Child aboutToAppear和Child onDidBuild。
           this.showChild = !this.showChild;
         })
     }
@@ -172,6 +172,6 @@ Parent onDidBuild
 Child aboutToAppear
 Child onDidBuild
 ```
-当showchild为默认值true时，该示例的生命周期流程图如下所示：
+当showChild为默认值true时，该示例的生命周期流程图如下所示：
 
 ![custom-component-lifecycle-demo2](figures/custom-component-lifecycle-demo2.png)

@@ -8,7 +8,7 @@
 
 为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用\@ReusableV2装饰[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件，达成组件复用的效果。
 
-在阅读本文前，建议提前阅读：[\@Reusable装饰器：组件复用](./arkts-reusable.md)。
+在阅读本文前，建议提前阅读：[\@Reusable装饰器：V1组件复用](./arkts-reusable.md)。
 
 >**说明：**
 >
@@ -71,6 +71,7 @@ struct Index {
     }
   }
 }
+
 @ReusableV2
 @ComponentV2
 struct ReusableV2Component {
@@ -92,29 +93,21 @@ struct ReusableV2Component {
     build() {
       Column() {
         ReusableV2Component() // 正确用法
-        V1Component()
       }
     }
   }
+  
   @ReusableV2
   @ComponentV2
   struct ReusableV2Component {
     build() {
     }
   }
+  
   @Builder
   function V2ReusableBuilder() {
     ReusableV2Component()
   }
-  @Component
-  struct V1Component {
-    build() {
-      Column() {
-        ReusableV2Component() // 错误用法，编译报错
-        V2ReusableBuilder() // 错误用法，较复杂场景，运行时报错
-      }
-    }
-  } 
   ```
 
 - V1和V2支持部分混用场景。
@@ -132,12 +125,12 @@ struct ReusableV2Component {
 
   以第一行V1普通组件为例，可以将V1普通组件、V2普通组件以及V1复用组件作为子组件，但无法将V2复用组件作为子组件。
 
-  |            | V1普通组件 | V2普通组件 |               V1复用组件               |    V2复用组件    |
-  | ---------- | :--------: | :--------: | :------------------------------------: | :--------------: |
-  | V1普通组件 |    支持    |    支持    |                  支持                  | 不支持，编译报错 |
-  | V2普通组件 |    支持    |    支持    | 不支持，编译告警，实际使用子组件不创建 |       支持       |
-  | V1复用组件 |    支持    |    支持    |                  支持                  | 不支持，编译报错 |
-  | V2复用组件 |    支持    |    支持    |            不支持，编译报错            |       支持       |
+  | 混用支持关系 | V1普通组件 | V2普通组件 |               V1复用组件               |    V2复用组件    |
+  | ------------ | :--------: | :--------: | :------------------------------------: | :--------------: |
+  | V1普通组件   |    支持    |    支持    |                  支持                  | 不支持，编译报错 |
+  | V2普通组件   |    支持    |    支持    | 不支持，编译告警，实际使用子组件不创建 |       支持       |
+  | V1复用组件   |    支持    |    支持，需要使用API version 18及以上的SDK，否则会有运行时报错，从API version 23开始，将返回错误码[140113](../../reference/apis-arkui/errorcode-stateManagement.md#140113-复用componentv2自定义组件但工具链版本过低)     |                  支持                  | 不支持，编译报错 |
+  | V2复用组件   |    支持    |    支持    |            不支持，编译报错            |       支持       |
 
   根据上表，仅支持12种可能的父子关系，不推荐开发者高度嵌套可复用组件，这会造成复用效率降低。
 
@@ -150,19 +143,19 @@ struct ReusableV2Component {
   @ComponentV2
   struct Index {
     @Local arr: number[] = [1, 2, 3, 4, 5];
+  
     build() {
       Column() {
         List() {
           Repeat(this.arr)
-            .each(() => {})
+            .each(() => {
+            })
             .virtualScroll()
             .templateId(() => 'a')
             .template('a', (ri) => {
               ListItem() {
                 Column() {
-                  ReusableV2Component({ val: ri.item}) // 暂不支持，编译期报错
-                  ReusableV2Builder(ri.item) // 暂不支持，运行时报错
-                  NormalV2Component({ val: ri.item}) // 支持普通V2自定义组件下面包含V2复用组件
+                  NormalV2Component({ val: ri.item }) // 支持普通V2自定义组件下面包含V2复用组件
                 }
               }
             })
@@ -170,21 +163,26 @@ struct ReusableV2Component {
       }
     }
   }
+  
   @ComponentV2
   struct NormalV2Component {
     @Require @Param val: number;
+  
     build() {
       ReusableV2Component({ val: this.val })
     }
   }
+  
   @Builder
   function ReusableV2Builder(param: number) {
     ReusableV2Component({ val: param })
   }
+  
   @ReusableV2
   @ComponentV2
   struct ReusableV2Component {
     @Require @Param val: number;
+  
     build() {
       Column() {
         Text(`val: ${this.val}`)
@@ -212,8 +210,9 @@ const DOMAIN = 0xF811;
 struct Index {
   @Local condition1: boolean = false;
   @Local condition2: boolean = true;
+
   build() {
-    Column(){
+    Column() {
       Button('step1. appear')
         .onClick(() => {
           this.condition1 = true;
@@ -236,30 +235,37 @@ struct Index {
     }
   }
 }
+
 @ComponentV2
 struct NormalV2Component {
   @Require @Param condition: boolean;
+
   build() {
     if (this.condition) {
       ReusableV2Component()
     }
   }
 }
+
 @ReusableV2
 @ComponentV2
 struct ReusableV2Component {
   aboutToAppear() {
     hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToAppear called'); // 组件创建时调用
   }
+
   aboutToDisappear() {
     hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToDisappear called'); // 组件销毁时调用
   }
+
   aboutToRecycle() {
     hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToRecycle called'); // 组件回收时调用
   }
+
   aboutToReuse() {
     hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToReuse called'); // 组件复用时调用
   }
+
   build() {
     Column() {
       Text('ReusableV2Component')
@@ -295,11 +301,14 @@ const DOMAIN = 0xF811;
 class Info {
   @Trace public age: number = 25;
 }
+
 const info: Info = new Info();
+
 @Entry
 @ComponentV2
 struct Index {
   @Local condition: boolean = true;
+
   build() {
     Column() {
       Button('Reuse/Recycle')
@@ -316,26 +325,32 @@ struct Index {
     }
   }
 }
+
 @ReusableV2
 @ComponentV2
 struct ReusableV2Component {
   @Local info: Info = info; // 仅做演示使用，并不建议@Local赋值全局变量
+
   @Monitor('info.age')
   onValChange() {
     hilog.info(DOMAIN, TAG, 'info.age change');
   }
+
   aboutToRecycle() {
     hilog.info(DOMAIN, TAG, 'aboutToRecycle');
     this.info.age++;
   }
+
   aboutToReuse() {
     hilog.info(DOMAIN, TAG, 'aboutToReuse');
     this.info.age++;
   }
+
   onRender(): string {
     hilog.info(DOMAIN, TAG, 'info.age onRender');
     return this.info.age.toString();
   }
+
   build() {
     Column() {
       Text(this.onRender())
@@ -388,16 +403,19 @@ const DOMAIN = 0xF811;
 @ObservedV2
 class Info {
   @Trace public age: number;
+
   constructor(age: number) {
     this.age = age;
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   @Local local: number = 0;
   @Provider('inherit') inheritProvider: number = 100;
   @Local condition: boolean = true;
+
   build() {
     Column() {
       Button('Recycle/Reuse')
@@ -428,6 +446,7 @@ struct Index {
     }
   }
 }
+
 @ReusableV2
 @ComponentV2
 struct ReusableV2Component {
@@ -443,18 +462,22 @@ struct ReusableV2Component {
   noDecoVariable: number = 0; // 未加装饰器，被视作常量
   noDecoInfo: Info = new Info(30); // 未加装饰器，被视作常量
   readonly readOnlyVariable: number = 0; // readonly常量
+
   @Computed
   get plusParam() {
     return this.paramLocal + this.paramOut + this.paramOnce;
   }
+
   @Monitor('val')
   onValChange(monitor: IMonitor) {
     hilog.info(DOMAIN, TAG, `val change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
+
   @Monitor('plusParam')
   onPlusParamChange(monitor: IMonitor) {
     hilog.info(DOMAIN, TAG, `plusParam change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
+
   build() {
     Column() {
       Column() {
@@ -480,6 +503,7 @@ struct ReusableV2Component {
             this.selfConsumer++;
           })
       }.borderWidth(2)
+
       Column() {
         Text('Reset to an external variable')
         Text(`paramOut: ${this.paramOut}`)
@@ -491,6 +515,7 @@ struct ReusableV2Component {
             this.paramOnce++;
           })
       }.borderWidth(2)
+
       Column() {
         Text('Depending on the parent component')
         Text(`inheritConsumer: ${this.inheritConsumer}`)
@@ -499,6 +524,7 @@ struct ReusableV2Component {
           })
         Text(`plusParam: ${this.plusParam}`)
       }.borderWidth(2)
+
       Column() {
         Text('Not reset')
         Text(`noDecoVariable: ${this.noDecoVariable}`)
@@ -530,14 +556,17 @@ const DOMAIN = 0xF811;
 @ObservedV2
 class Info {
   @Trace public age: number;
+
   constructor(age: number) {
     this.age = age;
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   @Local condition: boolean = true;
+
   build() {
     Column() {
       Button('Recycle/Reuse')
@@ -550,20 +579,25 @@ struct Index {
     }
   }
 }
+
 @ReusableV2
 @ComponentV2
 struct ReusableV2Component {
   noDecoInfo: Info = new Info(30); // 未加装饰器，被视作常量
+
   @Monitor('noDecoInfo.age')
   onAgeChange(monitor: IMonitor) {
     hilog.info(DOMAIN, TAG, `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
+
   aboutToRecycle() {
     this.noDecoInfo.age = 25;
   }
+
   aboutToReuse() {
     this.noDecoInfo.age = 35;
   }
+
   build() {
     Column() {
       Column() {
@@ -605,6 +639,7 @@ const DOMAIN = 0xF811;
 @ComponentV2
 struct Index {
   @Local condition: boolean = true;
+
   build() {
     Column() {
       Button('Recycle/Reuse')
@@ -617,16 +652,20 @@ struct Index {
     }
   }
 }
+
 @ReusableV2
 @ComponentV2
 struct ReusableV2Component {
   @Local message: string = 'Hello World';
+
   aboutToRecycle() {
     hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToRecycle'); // 回收时被调用
   }
+
   aboutToReuse() {
     hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToReuse'); // 复用时被调用
   }
+
   build() {
     Column() {
       Text(this.message)
@@ -654,11 +693,13 @@ const DOMAIN = 0xF811;
 struct Index {
   @Local condition: boolean = true;
   @Local simpleList: number[] = [];
+
   aboutToAppear(): void {
     for (let i = 0; i < 100; i++) {
-      this.simpleList.push(i)
+      this.simpleList.push(i);
     }
   }
+
   build() {
     Column() {
       Button('Change condition')
@@ -686,19 +727,24 @@ struct Index {
     }
   }
 }
+
 @ReusableV2
 @ComponentV2
 struct ReusableV2Component {
   @Require @Param num: number;
+
   aboutToAppear() {
     hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToAppear');
   }
+
   aboutToRecycle() {
     hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToRecycle');
   }
+
   aboutToReuse() {
     hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToReuse');
   }
+
   build() {
     Column() {
       Text(`${this.num}`).fontSize(50)
@@ -724,6 +770,7 @@ const DOMAIN = 0xF811;
 struct Index {
   @Local simpleList: number[] = [1, 2, 3, 4, 5];
   @Local condition: boolean = true;
+
   build() {
     Column() {
       Button('Delete/Create Repeat')
@@ -757,19 +804,24 @@ struct Index {
     }
   }
 }
+
 @ReusableV2
 @ComponentV2
 struct ReusableV2Component {
   @Require @Param num: number;
+
   aboutToAppear() {
     hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToAppear');
   }
+
   aboutToRecycle() {
     hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToRecycle');
   }
+
   aboutToReuse() {
     hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToReuse');
   }
+
   build() {
     Column() {
       Text(`${this.num}`)
@@ -797,6 +849,7 @@ const DOMAIN = 0xF811;
 @ComponentV2
 struct Index {
   @Local simpleList: number[] = [0, 1, 2, 3, 4, 5];
+
   build() {
     Column() {
       ForEach(this.simpleList, (num: number, index) => {
@@ -811,19 +864,24 @@ struct Index {
     }
   }
 }
+
 @ReusableV2
 @ComponentV2
 struct ReusableV2Component {
   @Require @Param num: number;
+
   aboutToAppear() {
     hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToAppear', this.num); // 创建时触发
   }
+
   aboutToRecycle() {
     hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToRecycle', this.num); // 回收时触发
   }
+
   aboutToReuse() {
     hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToReuse', this.num); // 复用时触发
   }
+
   build() {
     Column() {
       Text(`child: ${this.num}`)
@@ -877,37 +935,37 @@ class BasicDataSource implements IDataSource {
   notifyDataReload(): void {
     this.listeners.forEach(listener => {
       listener.onDataReloaded();
-    })
+    });
   }
 
   notifyDataAdd(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataAdd(index);
-    })
+    });
   }
 
   notifyDataChange(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataChange(index);
-    })
+    });
   }
 
   notifyDataDelete(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataDelete(index);
-    })
+    });
   }
 
   notifyDataMove(from: number, to: number): void {
     this.listeners.forEach(listener => {
       listener.onDataMove(from, to);
-    })
+    });
   }
 
   notifyDatasetChange(operations: DataOperation[]): void {
     this.listeners.forEach(listener => {
       listener.onDatasetChange(operations);
-    })
+    });
   }
 }
 
@@ -936,6 +994,7 @@ class MyDataSource extends BasicDataSource {
 @ObservedV2
 class StringData {
   @Trace message: string;
+
   constructor(message: string) {
     this.message = message;
   }
@@ -951,6 +1010,7 @@ struct Index {
       this.data.pushData(new StringData('Hello' + i));
     }
   }
+
   build() {
     List({ space: 3 }) {
       LazyForEach(this.data, (item: StringData, index: number) => {
@@ -972,18 +1032,23 @@ struct Index {
 @ComponentV2
 struct ChildComponent {
   @Param @Require data: string;
+
   aboutToAppear(): void {
     hilog.info(DOMAIN, TAG, 'ChildComponent aboutToAppear', this.data);
   }
+
   aboutToDisappear(): void {
     hilog.info(DOMAIN, TAG, 'ChildComponent aboutToDisappear', this.data);
   }
+
   aboutToReuse(): void {
     hilog.info(DOMAIN, TAG, 'ChildComponent aboutToReuse', this.data); // 复用时触发
   }
+
   aboutToRecycle(): void {
     hilog.info(DOMAIN, TAG, 'ChildComponent aboutToRecycle', this.data); // 回收时触发
   }
+
   build() {
     Row() {
       Text(this.data).fontSize(50)

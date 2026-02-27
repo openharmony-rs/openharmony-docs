@@ -7,6 +7,8 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+字体，如宋体、楷体等。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -14,8 +16,6 @@
 > - 本模块使用屏幕物理像素单位px。
 >
 > - 本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
-
-字体，如宋体、楷体等。
 
 ## 导入模块
 
@@ -259,4 +259,52 @@ class TextRenderNode extends RenderNode {
     canvas.drawTextBlob(textBlob, 60, 100);
   }
 }
+```
+
+## isBold<sup>23+</sup>
+
+isBold(): boolean
+
+检查字体是否加粗。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**返回值：**
+
+| 类型   | 说明                 |
+| ------ | -------------------- |
+| boolean | 返回当前字体是否加粗。true表示字体加粗，false表示字体未加粗。 |
+
+**示例：**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+const font = new drawing.Font();
+let typeface = font.getTypeface();
+let result = typeface.isBold();
+```
+
+## isItalic<sup>23+</sup>
+
+isItalic(): boolean
+
+检查字体是否是斜体。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**返回值：**
+
+| 类型   | 说明                 |
+| ------ | -------------------- |
+| boolean | 返回当前字体是否是斜体。true表示字体是斜体，false表示字体不是斜体。 |
+
+**示例：**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+const font = new drawing.Font();
+let typeface = font.getTypeface();
+let result = typeface.isItalic();
 ```

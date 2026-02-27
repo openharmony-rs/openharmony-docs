@@ -6,8 +6,8 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-```
-typedef struct {...} Rdb_DataObserver
+```c
+typedef struct Rdb_DataObserver {...} Rdb_DataObserver
 ```
 
 ## Overview

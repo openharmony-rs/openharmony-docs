@@ -1,4 +1,17 @@
 # Building the First ArkTS Application in Stage Model
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @ge-yafang-->
+<!--Designer: @ge-yafang-->
+<!--Tester: @ge-yafang-->
+<!--Adviser: @ge-yafang-->
+
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @ge-yafang-->
+<!--Designer: @ge-yafang-->
+<!--Tester: @ge-yafang-->
+<!--Adviser: @ge-yafang-->
 
 ## Creating an ArkTS Project
 
@@ -210,7 +223,7 @@
 
 You can implement page redirection through the [page router](../reference/apis-arkui/js-apis-router.md), which finds the target page based on the page URL. Import the **router** module and then perform the steps below.
 
-To deliver better transition effects, use [Navigation](../ui/arkts-navigation-navigation.md).
+To deliver better transition effects, use **Navigation**.
 
 1. Implement redirection from the first page to the second page.
 

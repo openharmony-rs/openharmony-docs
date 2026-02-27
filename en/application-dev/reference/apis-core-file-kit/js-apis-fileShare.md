@@ -4,7 +4,7 @@
 <!--Owner: @lvzhenjie; @hongjin-li_admin-->
 <!--Designer: @chenxi0605; @JerryH1011-->
 <!--Tester: @leiyuqian-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The **FileShare** module provides APIs for granting permissions on a user file to another application based on the file Uniform Resource Identifier (URI). Then, the authorized application can call [@ohos.file.fs](js-apis-file-fs.md) APIs to access the file.
 
@@ -47,17 +47,19 @@ Enumerates the error codes for a permission policy.
 
 ## PolicyErrorResult<sup>11+</sup>
 
-type PolicyErrorResult = { uri: string; code: PolicyErrorCode; message: string; }
-
 Represents the detailed permission policy error result, which can be used when **persistPermission**, **revokePermission**, **activatePermission**, or **deactivatePermission** throws an error.
+
+> **NOTE**
+>
+> Since API version 23, the type of **PolicyErrorResult** is changed from **type** to **interface**.
 
 **System capability**: SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
-| Name| Type| Mandatory| Description|
-|--------|--------|--------|---------|
-| uri     | string| Yes | URI of the file, on which the permission fails to be granted or activated.|
-| code    | [PolicyErrorCode](#policyerrorcode11) | Yes | Error code.|
-| message | string| Yes  | Error message. |
+| Name| Type| Read-Only| Optional| Description|
+|--------|--------|--------|--------|---------|
+| uri     | string| No | No| URI of the file, on which the permission fails to be granted or activated.|
+| code    | [PolicyErrorCode](#policyerrorcode11) | No | No| Error code.|
+| message | string| No  | No| Error message. |
 
 ## PolicyInfo<sup>11+</sup>
 
@@ -96,7 +98,10 @@ Enumerates the authorization modes corresponding to the queried policy informati
 
 persistPermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-Checks persistent permissions. This API uses a promise to return the result. This API is available only to the devices with the required system capability. (This API does not support persistent permissions for media URIs and remote URIs.)
+Checks persistent permissions. This API uses a promise to return the result. This API is available only to the devices with the required system capability. (This API does not support persistent permissions for remote URIs.)
+> **NOTE**
+>
+> Starting from API version 22, this API supports persistent permissions for media URIs.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_PERSIST
 
@@ -116,7 +121,8 @@ Checks persistent permissions. This API uses a promise to return the result. Thi
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md). 
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+ 
 If the permission persistence of some URIs fails, error code 13900001 will be returned and the **data** field provides error information of these URIs in the Array<[PolicyErrorResult](#policyerrorresult11)> format.
 
 | ID   | Error Message      |
@@ -167,7 +173,10 @@ If the permission persistence of some URIs fails, error code 13900001 will be re
 
 revokePermission(policies: Array&lt;PolicyInfo&gt;): Promise&lt;void&gt;
 
-Revokes permissions from multiple files or directories. This API uses a promise to return the result. This API is available only to the devices with the required system capability. (This API does not support persistent permissions for media URIs and remote URIs.)
+Revokes permissions from multiple files or directories. This API uses a promise to return the result. This API is available only to the devices with the required system capability. (This API does not support persistent permissions for remote URIs.)
+> **NOTE**
+>
+> Starting from API version 22, this API supports persistent permissions for media URIs.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_PERSIST
 
@@ -188,6 +197,7 @@ Revokes permissions from multiple files or directories. This API uses a promise 
 **Error codes**
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md). 
+
 If the permission revocation of some URIs fails, error code 13900001 will be returned and the **data** field provides error information of these URIs in the Array<[PolicyErrorResult](#policyerrorresult11)> format.
 
 | ID| Error Message|
@@ -237,7 +247,10 @@ If the permission revocation of some URIs fails, error code 13900001 will be ret
 
 activatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-Activates the permissions that have been persisted on multiple files or directories. This API uses a promise to return the result. This API is available only to the devices with the required system capability. (This API does not support persistent permissions for media URIs and remote URIs.)
+Activates the permissions that have been persisted on multiple files or directories. This API uses a promise to return the result. This API is available only to the devices with the required system capability. (This API does not support persistent permissions for remote URIs.)
+> **NOTE**
+>
+> Starting from API version 22, this API supports persistent permissions for media URIs.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_PERSIST
 
@@ -257,7 +270,8 @@ Activates the permissions that have been persisted on multiple files or director
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md). 
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+
 If the permission activation of some URIs fails, error code 13900001 will be returned and the **data** field provides error information of these URIs in the Array<[PolicyErrorResult](#policyerrorresult11)> format.
 
 | ID   | Error Message      |
@@ -272,7 +286,6 @@ If the permission activation of some URIs fails, error code 13900001 will be ret
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { picker } from '@kit.CoreFileKit';
   
   async function activatePermissionExample() {
     try {
@@ -308,7 +321,10 @@ If the permission activation of some URIs fails, error code 13900001 will be ret
 
 deactivatePermission(policies: Array&lt;PolicyInfo>): Promise&lt;void&gt;
 
-Deactivates the permissions on multiple files or directories. This API uses a promise to return the result. This API is available only to the devices with the required system capability. (This API does not support persistent permissions for media URIs and remote URIs.)
+Deactivates the permissions on multiple files or directories. This API uses a promise to return the result. This API is available only to the devices with the required system capability. (This API does not support persistent permissions for remote URIs.)
+> **NOTE**
+>
+> Starting from API version 22, this API supports persistent permissions for media URIs.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_PERSIST
 
@@ -328,7 +344,8 @@ Deactivates the permissions on multiple files or directories. This API uses a pr
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md). 
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+
 If the permission deactivation of some URIs fails, error code 13900001 will be returned and the **data** field provides error information of these URIs in the Array<[PolicyErrorResult](#policyerrorresult11)> format.
 
 | ID   | Error Message      |
@@ -343,7 +360,6 @@ If the permission deactivation of some URIs fails, error code 13900001 will be r
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { picker } from '@kit.CoreFileKit';
   
   async function deactivatePermissionExample() {
     try {

@@ -548,7 +548,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 22700101 | No memory.                        |
 | 22700102 | Invalid parameter.                            |
 | 22700107 | System error.                            |
@@ -834,6 +834,7 @@ Defines the enrollment engine configuration.
 ## SensibilityType
 
 Enumerates wakeup sensibility types.
+
 A sensibility type maps to a wakeup threshold. A higher sensibility indicates a lower threshold and a higher wakeup probability.
 
 **System capability**: SystemCapability.AI.IntelligentVoice.Core

@@ -11,8 +11,14 @@ The **brightness** module provides APIs for querying and adjusting the screen br
 
 > **NOTE**
 >
-> - The APIs of this module are no longer maintained since API version 7.<!--Del--> You are advised to use APIs of [@ohos.brightness](js-apis-brightness-sys.md). <!--DelEnd-->The substitute APIs are available only for system applications.
-> - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>- Module maintenance policy:
+>
+>    \- For lite wearables, this module is constantly maintained and available.
+>
+>    \- For other device types, this module is no longer maintained since API version 7.<!--Del--> You are advised to use APIs of [@ohos.brightness](js-apis-brightness-sys.md). <!--DelEnd-->The substitute APIs are available only for system applications.
+>
+>- The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
 
 
 ## Modules to Import
@@ -140,7 +146,7 @@ Sets the screen brightness mode.
 
 setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 
->This API is no longer maintained since API version 7. You are advised to use [window.setWindowKeepScreenOn()](../apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9).
+>This API is no longer maintained since API version 7 except for lite wearables. You are advised to use [window.setWindowKeepScreenOn()](../apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9) instead.
 
 Sets whether to always keep the screen on. Call this API in **onShow()**.
 
@@ -186,7 +192,7 @@ Options for setting the screen brightness.
 | Name    | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | value    | number                               | Yes  | Screen brightness. The value is an integer ranging from **1** to **255**.<br>- If the value is less than or equal to **0**, value **1** will be used.<br>- If the value is greater than **255**, value **255** will be used.<br>- If the value contains decimals, the integral part of the value will be used. For example, if value **8.1** is set, value **8** will be used.|
-| success  | () => void                           | No  | Called when API call is successful.                                    |
+| success  | () => void                           | No  | Called when an API call is successful.                                    |
 | fail     | (data: string, code: number) => void | No  | Called when an API call has failed. **data** indicates the error information, and **code** indicates the error code.      |
 | complete | () => void                           | No  | Called when an API call is complete.                                    |
 
@@ -221,7 +227,7 @@ Options for setting the screen brightness mode.
 | Name    | Type                                | Mandatory| Description                                                  |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------ |
 | mode     | number                               | Yes  | The value **0** indicates the manual adjustment mode, and the value **1** indicates the automatic adjustment mode.|
-| success  | () => void                           | No  | Called when API call is successful.                              |
+| success  | () => void                           | No  | Called when an API call is successful.                              |
 | fail     | (data: string, code: number) => void | No  | Called when an API call has failed. **data** indicates the error information, and **code** indicates the error code.|
 | complete | () => void                           | No  | Called when an API call is complete.                              |
 
@@ -244,6 +250,6 @@ Options for setting the screen to be steady on.
 | Name        | Type                                | Mandatory| Description                                                  |
 | ------------ | ------------------------------------ | ---- | ------------------------------------------------------ |
 | keepScreenOn | boolean                              | Yes  | The value **true** means to keep the screen steady on, and the value **false** indicates the opposite.         |
-| success      | () => void                           | No  | Called when API call is successful.                              |
+| success      | () => void                           | No  | Called when an API call is successful.                              |
 | fail         | (data: string, code: number) => void | No  | Called when an API call has failed. **data** indicates the error information, and **code** indicates the error code.|
 | complete     | () => void                           | No  | Called when an API call is complete.                              |

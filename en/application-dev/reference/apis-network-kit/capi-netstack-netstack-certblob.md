@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+struct NetStack_CertBlob {...}
+```
+
 ## Overview
 
 Defines the certificate data structure.

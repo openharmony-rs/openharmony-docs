@@ -28,7 +28,8 @@ The available values are as follows:
 
 - **angle**: gradient by angle.
 
-```
+```js
+// xxx.js
 background: linear-gradient(direction/angle, color, color, ...);
 background: repeating-linear-gradient(direction/angle, color, color, ...);
 ```
@@ -60,18 +61,18 @@ The color can be specified in any of the following formats: \#ff0000, \#ffff0000
 
    
 
-![111](figures/111.png)
+   ![111](figures/111.png)
 
 2. Gradient at an angle of 45°
 
    ```css
    /* Gradient at an angle of 45°, changing from red to green */
-     background: linear-gradient(45deg, rgb(255,0,0),rgb(0, 255, 0));
+   background: linear-gradient(45deg, rgb(255,0,0),rgb(0, 255, 0));
    ```
 
    
 
-![222](figures/222.png)
+   ![222](figures/222.png)
 
 3. Gradient from left to right
 
@@ -80,7 +81,7 @@ The color can be specified in any of the following formats: \#ff0000, \#ffff0000
    background: linear-gradient(to right, rgb(255,0,0) 90px, rgb(0, 255, 0) 60%);
    ```
 
-![333](figures/333.png)
+   ![333](figures/333.png)
 
 4. Repeating gradient
 
@@ -89,4 +90,4 @@ The color can be specified in any of the following formats: \#ff0000, \#ffff0000
    background: repeating-linear-gradient(to right, rgba(255, 255, 0, 1) 30px,rgba(0, 0, 255, .5) 60px);
    ```
 
-![444](figures/444.png)
+   ![444](figures/444.png)

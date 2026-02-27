@@ -7,30 +7,38 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-HUKS提供认证状态查询接口，应用可以通过该接口查询PIN码是否认证通过。具体的场景介绍及规格，请参考[Ukey PIN码认证介绍及规格](huks-ukey-pin-authentication-management-overview.md)。
+从API 22开始，huksExternalCrypto提供PIN码认证状态查询功能接口。应用可以通过该接口查询PIN码是否认证通过。具体的场景介绍及规格，请参考[Ukey PIN码认证介绍及规格](huks-ukey-pin-authentication-management-overview.md)。
 
 ## 开发步骤
 
-1. 通过[证书管理应用](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取resourceId。
+1. 通过证书管理系统能力提供的[证书选择接口](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取[keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22)，并将其作为resourceId。
 
 2. 调用查询认证状态接口[getUkeyPinAuthState](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetukeypinauthstate)验证PIN码。
 
+## 开发案例
+
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit";
+import { BusinessError } from '@kit.BasicServicesKit';
 
-async function getUkeyPinAuthState(): Promise<boolean> {
-  let ret: boolean = false;
+async function getUkeyPinAuthState(): Promise<huksExternalCrypto.HuksExternalPinAuthState> {
+  let ret: huksExternalCrypto.HuksExternalPinAuthState = huksExternalCrypto.HuksExternalPinAuthState.HUKS_EXT_CRYPTO_PIN_NO_AUTH;
   try {
     /* 1.构造查询PIN码状态参数 */
-    const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\",\"index\":{\"key\":\"testKey\"}}";
+    const testResourceId = JSON.stringify({
+      providerName: "testProviderName",
+      bundleName: "com.example.cryptoapplication",
+      abilityName: "CryptoExtension",
+      index: {
+        key: "testKey"
+      } as ESObject
+    });
     const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
 
     /* 2.调用getUkeyPinAuthState */
     await huksExternalCrypto.getUkeyPinAuthState(testResourceId, extProperties)
-      .then(() => {
-        console.info(`promise: getUkeyPinAuthState success`);
-        ret = true;
+      .then((data) => {
+        console.info(`promise: getUkeyPinAuthState success , data : ${data}`);
       }).catch((error: BusinessError) => {
         console.error(`promise: getUkeyPinAuthState failed, errCode : ${error.code}, errMsg : ${error.message}`);
       });
@@ -41,8 +49,8 @@ async function getUkeyPinAuthState(): Promise<boolean> {
 }
 
 async function testGetUkeyPinAuthState() {
-  let ret: boolean = await getUkeyPinAuthState();
-  if (ret == false) {
+  let ret: huksExternalCrypto.HuksExternalPinAuthState = await getUkeyPinAuthState();
+  if (ret != huksExternalCrypto.HuksExternalPinAuthState.HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED) {
     console.error(`getUkeyPinAuthState failed`);
     return;
   }

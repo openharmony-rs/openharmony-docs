@@ -7,9 +7,12 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-用户收到通知提醒后，点击通知并拉起应用到前台时，应用可以选择取消某条通知或所有通知。
+用户点击通知并拉起应用到前台时，应用可以取消某条通知、部分通知或所有通知。
+用户点击桌面图标拉起应用到前台时，用户查看后的应用内消息，应用可以选择取消这些已查看消息的通知。
 
-例如，用户收到某个好友的IM消息，点击通知进入应用查看消息后，应用可以取消相关通知提醒。
+例如：
+场景1：用户收到某个好友的IM消息，点击通知进入应用查看消息后，应用可以取消相关通知提醒。
+场景2：用户收到某个好友的IM消息，从桌面图标进入应用查看消息后，应用可以取消相关通知提醒。
 
 ## 接口说明
 
@@ -27,7 +30,7 @@
 
 1. 导入模块。
 
-   <!-- @[cancel_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/CancelNotification.ets) -->
+   <!-- @[cancel_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/CancelNotification.ets) -->
    
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
@@ -44,7 +47,7 @@
 
 3. 取消通知。
 
-   <!-- @[cancel_notification_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/CancelNotification.ets) -->
+   <!-- @[cancel_notification_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/CancelNotification.ets) -->
    
    ``` TypeScript
    // 当拉起应用到前台，查看消息后，调用该接口取消通知。

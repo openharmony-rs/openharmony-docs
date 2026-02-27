@@ -55,7 +55,7 @@
 
 ### OH_DISPLAY_NAME_LENGTH
 
-```
+```c
 #define OH_DISPLAY_NAME_LENGTH 32
 ```
 
@@ -69,7 +69,7 @@
 
 ### NativeDisplayManager_Rotation
 
-```
+```c
 enum NativeDisplayManager_Rotation
 ```
 
@@ -88,7 +88,7 @@ enum NativeDisplayManager_Rotation
 
 ### NativeDisplayManager_Orientation
 
-```
+```c
 enum NativeDisplayManager_Orientation
 ```
 
@@ -108,7 +108,7 @@ enum NativeDisplayManager_Orientation
 
 ### NativeDisplayManager_ErrorCode
 
-```
+```c
 enum NativeDisplayManager_ErrorCode
 ```
 
@@ -132,7 +132,7 @@ enum NativeDisplayManager_ErrorCode
 
 ### NativeDisplayManager_FoldDisplayMode
 
-```
+```c
 enum NativeDisplayManager_FoldDisplayMode
 ```
 
@@ -152,7 +152,7 @@ enum NativeDisplayManager_FoldDisplayMode
 
 ### NativeDisplayManager_DisplayState
 
-```
+```c
 enum NativeDisplayManager_DisplayState
 ```
 
@@ -174,7 +174,7 @@ enum NativeDisplayManager_DisplayState
 
 ### NativeDisplayManager_SourceMode
 
-```
+```c
 enum NativeDisplayManager_SourceMode
 ```
 

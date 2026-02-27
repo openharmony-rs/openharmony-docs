@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The foreground color attributes set the foreground color of components. The foreground color affects the coloration of component content, contrasting with the background color. It influences text color and shape fill colors in drawing components.
+Sets the foreground color of the component. The foreground color affects the coloration of component content, contrasting with the background color. It influences text color and shape fill colors in drawing components.
 
 >  **NOTE**
 >
@@ -26,7 +26,7 @@ Sets the foreground color of the component. Components without explicit foregrou
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) \| [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10) | Yes  | Foreground color. The value can be a specific color or a coloring strategy. Property animations are not supported.|
+| value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[ColoringStrategy](ts-appendix-enums.md#coloringstrategy10) | Yes  | Foreground color. The value can be a specific color or a coloring strategy. The [attribute animation](ts-animatorproperty.md) is not supported.|
 
 **Return value**
 
@@ -48,7 +48,7 @@ Sets the foreground color of the component. Components without explicit foregrou
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| color  | Optional\<[ResourceColor](ts-types.md#resourcecolor) \| [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10)> | Yes  | Foreground color. The value can be a specific color or a coloring strategy. Property animations are not supported.<br>If the color value is **undefined**, the previous setting or the component's default value is retained. The specific behavior may vary across components. It is recommended that you use explicit color values or [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10).|
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[ColoringStrategy](ts-appendix-enums.md#coloringstrategy10)> | Yes  | Foreground color. The value can be a specific color or a coloring strategy. Property animations are not supported.<br>If the color value is **undefined**, the previous setting or the component's default value is retained. The specific behavior may vary across components. It is recommended that you use explicit color values or [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10).|
 
 **Return value**
 
@@ -82,7 +82,7 @@ struct ForegroundColorExample {
 
 ### Example 2: Setting the Foreground Color to Background Inverse
 
-This example shows how to use **ColoringStrategy.INVERT** to set the foreground color to the inverse of the background color.
+This example demonstrates how to set the foreground color to the inverse of the background color using [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10).INVERT.
 
 ```ts
 // xxx.ets
@@ -103,9 +103,9 @@ struct ColoringStrategyExample {
 ```
 ![foregroundColor_circle](figures/ColoringStrategy_circle.png)
 
-### Example 3: Implementing a Foreground Color Not Inherited from Parent Component
+### Example 3: Implementing a Foreground Color Not Inherited from the Parent Component
 
-This example compares the effects of setting both foreground and background colors on a component versus setting only the background color. When a foreground color is explicitly set on a component, the component does not inherit the color from its parent component.
+This example compares the effects of setting both foreground and background colors on a component versus setting only the background color.
 
 ```ts
 // xxx.ets

@@ -15,6 +15,8 @@ This file declares the functions related to the color space in the drawing modul
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -33,7 +35,7 @@ This file declares the functions related to the color space in the drawing modul
 
 ### OH_Drawing_ColorSpaceCreateSrgb()
 
-```
+```c
 OH_Drawing_ColorSpace* OH_Drawing_ColorSpaceCreateSrgb(void)
 ```
 
@@ -53,7 +55,7 @@ Creates an sRGB color space.
 
 ### OH_Drawing_ColorSpaceCreateSrgbLinear()
 
-```
+```c
 OH_Drawing_ColorSpace* OH_Drawing_ColorSpaceCreateSrgbLinear(void)
 ```
 
@@ -73,7 +75,7 @@ Creates an sRGB linear (Gamma 1.0) color space.
 
 ### OH_Drawing_ColorSpaceDestroy()
 
-```
+```c
 void OH_Drawing_ColorSpaceDestroy(OH_Drawing_ColorSpace* colorSpace)
 ```
 

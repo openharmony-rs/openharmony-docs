@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-PreviewOutput implements preview output. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
+**PreviewOutput** implements preview output. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
 > **NOTE**
 >
@@ -340,13 +340,15 @@ function testGetActiveProfile(previewOutput: camera.PreviewOutput): camera.Profi
 
 ## getPreviewRotation<sup>12+</sup>
 
-getPreviewRotation(displayRotation: number): ImageRotation
+getPreviewRotation(displayRotation?: number): ImageRotation
 
-Obtains the preview rotation degree.
+Obtains the preview rotation angle.
 
-- Device' natural orientation: The default orientation of the device (phone) is in portrait mode, with the charging port facing downward.
-- Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural direction. The rear camera sensor of a phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural direction.
-- Screen orientation: The top-left corner of the image displayed on the screen is the first pixel, which is the coordinate origin. In the case of lock screen, the direction is the same as the device's natural orientation.
+- Device's natural orientation: the default orientation for using a device. For example, the default orientation of the bar-type phone is in portrait mode, with the charging port facing downward.
+- Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural orientation. For example, the rear camera sensor of a bar-type phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural orientation.
+- [Screen rotation](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-multi-device-window-direction#section15598121101615): indicates the clockwise rotation angle of the device screen.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -356,13 +358,13 @@ Obtains the preview rotation degree.
 
 | Name    | Type        | Mandatory| Description                      |
 | -------- | --------------| ---- | ------------------------ |
-| displayRotation | number  | Yes  | Screen rotation angle of the display. It is obtained by calling [display.getDefaultDisplaySync](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).|
+| displayRotation | number  | No  | Screen rotation angle of the display. It is obtained by calling [display.getDefaultDisplaySync](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).<br> Since API version 23, the input parameter **displayRotation** is optional. If no parameter is passed, the system obtains the **displayRotation** value to calculate rotation angle of a video.|
 
 **Return value**
 
 |      Type     | Description       |
 | -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Preview rotation degree. If the API call fails, undefined is returned.|
+| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | The preview rotation angle obtained. If the API call fails, undefined is returned.|
 
 **Error codes**
 
@@ -370,7 +372,6 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID  | Error Message                        |
 |---------|------------------------------|
-| 7400101 | Parameter missing or parameter type incorrect.  |
 | 7400201 | Camera service fatal error.  |
 
 **Example**
@@ -390,13 +391,26 @@ function testGetPreviewRotation(previewOutput: camera.PreviewOutput, imageRotati
   }
   return previewRotation;
 }
+
+function testGetPreviewRotationWithOutParam(previewOutput: camera.PreviewOutput): camera.ImageRotation {
+  let previewRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
+  try {
+    previewRotation = previewOutput.getPreviewRotation();
+    console.info(`Preview rotation is: ${previewRotation}`);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The previewOutput.testGetPreviewRotationWithOutParam call failed. error code: ${err.code}`);
+  }
+  return previewRotation;
+}
 ```
 
 ## setPreviewRotation<sup>12+</sup>
 
 setPreviewRotation(previewRotation: ImageRotation, isDisplayLocked?: boolean): void
 
-Sets the preview rotation degree.
+Sets the preview rotation angle.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -443,8 +457,7 @@ start(callback: AsyncCallback\<void\>): void
 Starts to output preview streams. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.start](arkts-apis-camera-Session.md#start11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.start](arkts-apis-camera-Session.md#start11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -485,8 +498,7 @@ start(): Promise\<void\>
 Starts to output preview streams. This API uses a promise to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.start](arkts-apis-camera-Session.md#start11-1) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.start](arkts-apis-camera-Session.md#start11-1) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -525,8 +537,7 @@ stop(callback: AsyncCallback\<void\>): void
 Stops outputting preview streams. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.stop](arkts-apis-camera-Session.md#stop11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.stop](arkts-apis-camera-Session.md#stop11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -559,8 +570,7 @@ stop(): Promise\<void\>
 Stops outputting preview streams. This API uses a promise to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.stop](arkts-apis-camera-Session.md#stop11-1) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.stop](arkts-apis-camera-Session.md#stop11-1) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -626,6 +636,10 @@ Enables preview bandwidth compression.
 
 Before enabling this feature, you can call [isBandwidthCompressionSupported](#isbandwidthcompressionsupported23) to check whether the device supports preview bandwidth compression.
 
+> **NOTE**
+>
+> This function must be called prior to [Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11). Otherwise, the preview output stream format will be affected.
+
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
@@ -642,6 +656,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID   | Error Message                                          |
 | -------- |----------------------------------------------- |
+| 7400102  | Operation not allowed. |
 | 7400103  | Session not config. |
 | 7400201  | Camera service fatal error. |
 

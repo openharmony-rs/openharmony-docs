@@ -9,7 +9,9 @@
 
 The Node-API extension APIs **napi_open_critical_scope** and **napi_close_critical_scope** are used to open and close a critical scope, respectively.
 
-Note: Non-critical APIs cannot be used in a critical scope, and only one critical scope can be opened in an execution environment. You are advised to open a critical scope only when critical APIs are required, and close the scope in a timely manner after the APIs are used.
+> **NOTE**
+>
+> Non-critical APIs cannot be used in a critical scope, and only one critical scope can be opened in an execution environment. You are advised to open a critical scope only when critical APIs are required, and close the scope in a timely manner after the APIs are used.
 
 ## When to Use
 
@@ -25,11 +27,11 @@ After the critical scope is closed, do not use the critical API or its return re
 | napi_close_critical_scope                      | Closes a critical scope.                         | napi_generic_failure       |
 | napi_get_buffer_string_utf16_in_critical_scope | Obtains the UTF-16 encoding memory buffer data of an ArkTS string.| napi_generic_failure       |
 
-**NOTE**
-
-To obtain the memory buffer of an ArkTS string stored in UTF-16-encoding format, use **napi_get_buffer_string_utf16_in_critical_scope**. Otherwise, an error will be returned.
-
-**napi_create_string_utf16** and **napi_create_string_utf8** are used to pass the input data to the VM in the specified encoding format. These functions do not control the internal storage encoding format of strings in the VM.
+>**NOTE** 
+>
+>1. To obtain the memory buffer of an ArkTS string stored in UTF-16-encoding format, use **napi_get_buffer_string_utf16_in_critical_scope**. Otherwise, an error will be returned.
+>  
+>2. **napi_create_string_utf16** and **napi_create_string_utf8** are used to pass the input data to the VM in the specified encoding format. These functions do not control the internal storage encoding format of strings in the VM.
 
 ## Sample Code
 
@@ -188,7 +190,7 @@ To obtain the memory buffer of an ArkTS string stored in UTF-16-encoding format,
    }
    
    makeTest("hello world"); // Expected result: 2 or 0
-   makeTest("你好");        //  Expected result: 0 or 2
+   makeTest("你好");        // Expected result: 0 or 2
    makeTest("测试字符串");   // Expected result: 1 or 3
    ```
 <!--no_check-->

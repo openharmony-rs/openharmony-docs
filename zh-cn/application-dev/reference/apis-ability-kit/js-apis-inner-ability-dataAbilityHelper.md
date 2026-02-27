@@ -59,7 +59,7 @@ DAHelper.openFile('dataability:///com.example.DataAbility', mode, (error, data) 
     if (error && error.code !== 0) {
         console.error(`openFile fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`openFile success, data: ${JSON.stringify(data)}`);
+        console.info(`openFile success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -214,7 +214,7 @@ DAHelper.getType('dataability:///com.example.DataAbility', (error, data) => {
     if (error && error.code !== 0) {
         console.error(`getType fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getType success, data: ${JSON.stringify(data)}`);
+        console.info(`getType success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -288,7 +288,7 @@ DAHelper.getFileTypes( 'dataability:///com.example.DataAbility', 'image/*', (err
     if (error && error.code !== 0) {
         console.error(`getFileTypes fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getFileTypes success, data: ${JSON.stringify(data)}`);
+        console.info(`getFileTypes success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -362,7 +362,7 @@ DAHelper.normalizeUri('dataability:///com.example.DataAbility', (error, data) =>
     if (error && error.code !== 0) {
         console.error(`normalizeUri fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`normalizeUri success, data: ${JSON.stringify(data)}`);
+        console.info(`normalizeUri success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -435,7 +435,7 @@ DAHelper.denormalizeUri('dataability:///com.example.DataAbility', (error, data) 
     if (error && error.code !== 0) {
         console.error(`denormalizeUri fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`denormalizeUri success, data: ${JSON.stringify(data)}`);
+        console.info(`denormalizeUri success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -508,7 +508,7 @@ DAHelper.notifyChange('dataability:///com.example.DataAbility', (error) => {
     if (error && error.code !== 0) {
         console.error(`notifyChange fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log('notifyChange success');
+        console.info('notifyChange success');
     }
 });
 ```
@@ -589,7 +589,7 @@ DAHelper.insert('dataability:///com.example.DataAbility', valueBucket, (error, d
     if (error && error.code !== 0) {
         console.error(`insert fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`insert success, data: ${JSON.stringify(data)}`);
+        console.info(`insert success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -674,7 +674,7 @@ DAHelper.batchInsert('dataability:///com.example.DataAbility', cars, (error, dat
     if (error && error.code !== 0) {
         console.error(`batchInsert fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`batchInsert success, data: ${JSON.stringify(data)}`);
+        console.info(`batchInsert success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -755,7 +755,7 @@ DAHelper.delete('dataability:///com.example.DataAbility', da, (error, data) => {
     if (error && error.code !== 0) {
         console.error(`delete fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`delete success, data: ${JSON.stringify(data)}`);
+        console.info(`delete success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -831,7 +831,7 @@ DAHelper.delete('dataability:///com.example.DataAbility', (error, data) => {
     if (error && error.code !== 0) {
         console.error(`delete fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`delete success, data: ${JSON.stringify(data)}`);
+        console.info(`delete success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -878,7 +878,7 @@ DAHelper.update('dataability:///com.example.DataAbility', va, da, (error, data) 
     if (error && error.code !== 0) {
         console.error(`update fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`update success, data: ${JSON.stringify(data)}`);
+        console.info(`update success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -970,7 +970,7 @@ DAHelper.update('dataability:///com.example.DataAbility', va, (error, data) => {
     if (error && error.code !== 0) {
         console.error(`update fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`update success, data: ${JSON.stringify(data)}`);
+        console.info(`update success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1011,7 +1011,7 @@ DAHelper.query('dataability:///com.example.DataAbility', cars, da, (error, data)
     if (error && error.code !== 0) {
         console.error(`query fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`query success, data: ${JSON.stringify(data)}`);
+        console.info(`query success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1047,7 +1047,7 @@ DAHelper.query('dataability:///com.example.DataAbility', (error, data) => {
     if (error && error.code !== 0) {
         console.error(`query fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`query success, data: ${JSON.stringify(data)}`);
+        console.info(`query success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1085,7 +1085,7 @@ DAHelper.query('dataability:///com.example.DataAbility', cars, (error, data) => 
     if (error && error.code !== 0) {
         console.error(`query fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`query success, data: ${JSON.stringify(data)}`);
+        console.info(`query success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1124,7 +1124,7 @@ DAHelper.query('dataability:///com.example.DataAbility', da, (error, data) => {
     if (error && error.code !== 0) {
         console.error(`query fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`query success, data: ${JSON.stringify(data)}`);
+        console.info(`query success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1206,7 +1206,7 @@ dataAbilityHelper.call('dataability:///com.example.jsapidemo.UserDataAbility',
     if (error && error.code !== 0) {
         console.error(`call fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`call success, data: ${JSON.stringify(data)}`);
+        console.info(`call success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1289,7 +1289,7 @@ dataAbilityHelper.executeBatch('dataability:///com.example.jsapidemo.UserDataAbi
     if (error && error.code !== 0) {
         console.error(`executeBatch fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`executeBatch success, data: ${JSON.stringify(data)}`);
+        console.info(`executeBatch success, data: ${JSON.stringify(data)}`);
     }
 });
 ```

@@ -45,7 +45,9 @@ ListItem(value?: string)
 
 创建ListItem组件。
 
-从API version 10开始，该接口不再维护，推荐使用[ListItem<sup>10+</sup>](#listitem10)。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[ListItem<sup>10+</sup>](#listitem10)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -67,7 +69,9 @@ sticky(value: Sticky)
 
 设置ListItem吸顶效果。
 
-从API version 9开始废弃不再使用，推荐使用[List组件sticky属性](ts-container-list.md#sticky9)。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[sticky](ts-container-list.md#sticky9)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,7 +87,9 @@ editable(value: boolean | EditMode)
 
 设置当前ListItem元素是否可编辑，进入编辑模式后可删除或移动列表项。
 
-从API version 9开始废弃不再使用，无替代接口。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -115,7 +121,7 @@ selectable(value: boolean)
 
 selected(value: boolean)
 
-设置当前ListItem选中状态。该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。该属性需要在设置[选中态样式](./ts-universal-attributes-polymorphic-style.md)前使用才能生效选中态样式。
+设置当前ListItem选中状态。该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。该属性需要在设置[多态样式](./ts-universal-attributes-polymorphic-style.md)前使用才能生效选中态样式。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -149,7 +155,9 @@ swipeAction(value: SwipeActionOptions)
 
 ListItem吸顶效果枚举。
 
-从API version 9开始废弃不再使用，推荐使用[List组件stickyStyle枚举](ts-container-list.md#stickystyle9枚举说明)。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[List组件stickyStyle枚举](ts-container-list.md#stickystyle9枚举说明)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -163,7 +171,9 @@ ListItem吸顶效果枚举。
 
 ListItem元素编辑模式枚举。
 
-从API version 9开始废弃不再使用，无替代接口。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,7 +198,7 @@ ListItem元素编辑模式枚举。
 
 ## SwipeActionOptions<sup>9+</sup>对象说明
 
-start和end对应的@builder函数中顶层必须是单个组件，不能是if/else、ForEach、LazyForEach语句。
+start和end对应的@builder函数中顶层必须是单个组件，否则会引发未定义行为。如果@builder函数中顶层是if/else、ForEach等语句，那么需要保证if/else、ForEach等语句必须能生成单个组件。
 
 滑动手势只在listItem区域上，如果子组件划出ListItem区域外，在ListItem以外部分不会响应划动手势。所以在多列模式下，建议不要将划出组件设置太宽。
 
@@ -416,7 +426,8 @@ struct ListItemExample2 {
   @State exitEndDeleteAreaString: string = 'not exitEndDeleteArea';
   private scroller: ListScroller = new ListScroller();
 
-  @Builder itemEnd() {
+  @Builder
+  itemEnd() {
     Row() {
       Button('Delete').margin('4vp')
       Button('Set').margin('4vp').onClick(() => {
@@ -438,10 +449,12 @@ struct ListItemExample2 {
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
           }
-          .transition({ type: TransitionType.Delete, opacity: 0 })
+          .transition(TransitionEffect.OPACITY)
           .swipeAction({
             end: {
-              builder: () => { this.itemEnd() },
+              builder: () => {
+                this.itemEnd()
+              },
               onAction: () => {
                 this.getUIContext()?.animateTo({ duration: 1000 }, () => {
                   let index = this.arr.indexOf(item);
@@ -461,6 +474,7 @@ struct ListItemExample2 {
           })
         }, (item: number) => item.toString())
       }
+
       Text(this.enterEndDeleteAreaString).fontSize(20)
       Text(this.exitEndDeleteAreaString).fontSize(20)
     }
@@ -524,6 +538,7 @@ import { ComponentContent } from '@kit.ArkUI';
 class BuilderParams {
   text: string | Resource;
   scroller: ListScroller;
+
   constructor(text: string | Resource, scroller: ListScroller) {
     this.text = text;
     this.scroller = scroller;
@@ -539,6 +554,7 @@ function itemBuilder(params: BuilderParams) {
     })
   }.padding('4vp').justifyContent(FlexAlign.SpaceEvenly)
 }
+
 @Component
 struct MyListItem {
   scroller: ListScroller = new ListScroller();
@@ -546,21 +562,23 @@ struct MyListItem {
   @State project ?: number = 0;
   startBuilder ?: ComponentContent<BuilderParams> = undefined;
   endBuilder ?: ComponentContent<BuilderParams> = undefined;
-
   builderParam = new BuilderParams('delete', this.scroller);
 
   aboutToAppear(): void {
     this.startBuilder = new ComponentContent(this.getUIContext(), wrapBuilder(itemBuilder), this.builderParam);
     this.endBuilder = new ComponentContent(this.getUIContext(), wrapBuilder(itemBuilder), this.builderParam);
   }
+
   GetStartBuilder() {
     this.startBuilder?.update(new BuilderParams('StartDelete', this.scroller));
     return this.startBuilder;
   }
+
   GetEndBuilder() {
     this.endBuilder?.update(new BuilderParams('EndDelete', this.scroller));
     return this.endBuilder;
   }
+
   build() {
     ListItem() {
       Text('item' + this.project)
@@ -571,7 +589,7 @@ struct MyListItem {
         .borderRadius(10)
         .backgroundColor(0xFFFFFF)
     }
-    .transition({ type: TransitionType.Delete, opacity: 0 })
+    .transition(TransitionEffect.OPACITY)
     .swipeAction({
       end: {
         builderComponent: this.GetEndBuilder(),
@@ -609,7 +627,7 @@ struct ListItemExample {
       List({ space: 10, scroller: this.scroller }) {
         ListItemGroup() {
           ForEach(this.arr, (project: number) => {
-            MyListItem({ scroller: this.scroller, project: project, arr:this.arr })
+            MyListItem({ scroller: this.scroller, project: project, arr: this.arr })
           }, (item: string) => item)
         }
       }
@@ -684,7 +702,7 @@ struct ListItemExample5 {
             .backgroundColor(0xFFFFFF)
         }
         .id('listItem')
-        .transition({ type: TransitionType.Delete, opacity: 0 })
+        .transition(TransitionEffect.OPACITY)
         .swipeAction({
           start: {
             builder: () => {

@@ -27,7 +27,7 @@
 import { vpnExtension } from '@kit.NetworkKit';
 ```
 
-## LinkAddress<sup>11+</sup>
+## LinkAddress
 type LinkAddress = connection.LinkAddress
 
 获取网络链接信息。
@@ -38,7 +38,7 @@ type LinkAddress = connection.LinkAddress
 | ------ | ------------------------------------------------------------ |
 | [connection.LinkAddress](./js-apis-net-connection.md#linkaddress) | 网络链路信息。 |
 
-## RouteInfo<sup>11+</sup>
+## RouteInfo
 type RouteInfo = connection.RouteInfo
 
 获取网络路由信息。
@@ -49,7 +49,7 @@ type RouteInfo = connection.RouteInfo
 | ------ | ------------------------------------------------------------ |
 | [connection.RouteInfo](./js-apis-net-connection.md#routeinfo) | 网络路由信息。 |
 
-## VpnExtensionContext<sup>11+</sup>
+## VpnExtensionContext
 type VpnExtensionContext = _VpnExtensionContext
 
 VPN扩展的上下文。它允许访问serviceExtension特定资源。
@@ -101,8 +101,9 @@ startVpnExtensionAbility(want: Want): Promise\<void>
 Stage 模型示例：
 
 ```ts
-import { common, Want } from '@kit.AbilityKit';
+import { Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let want: Want = {
   deviceId: "",
@@ -119,13 +120,18 @@ struct Index {
     Row() {
       Column() {
         Text(this.message)
-          .fontSize(50)
+          .fontSize(40)
           .fontWeight(FontWeight.Bold).onClick(() => {
-          console.info("btn click") })
+          console.info("btn click")
+        })
         Button('Start Extension').onClick(() => {
-          vpnExtension.startVpnExtensionAbility(want);
-        }).width('70%').fontSize(45).margin(16)
-        }.width('100%')
+          vpnExtension.startVpnExtensionAbility(want).then(() => {
+            console.info('startVpnExtensionAbility success');
+          }).catch((err: BusinessError) => {
+            console.error('startVpnExtensionAbility error: ' + JSON.stringify(err));
+          })
+        }).width('70%').fontSize(30).margin(16)
+      }.width('100%')
     }.height('100%')
   }
 }
@@ -171,8 +177,9 @@ stopVpnExtensionAbility(want: Want): Promise\<void>
 Stage 模型示例：
 
 ```ts
-import { common, Want } from '@kit.AbilityKit';
+import { Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let want: Want = {
   deviceId: "",
@@ -191,16 +198,25 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold).onClick(() => {
-          console.info("btn click") })
+          console.info("btn click")
+        })
         Button('Start Extension').onClick(() => {
-          vpnExtension.startVpnExtensionAbility(want);
-        }).width('70%').fontSize(45).margin(16)
+          vpnExtension.startVpnExtensionAbility(want).then(() => {
+            console.info('startVpnExtensionAbility success');
+          }).catch((err: BusinessError) => {
+            console.error('startVpnExtensionAbility error: ' + JSON.stringify(err));
+          })
+        }).width('70%').fontSize(30).margin(16)
         Button('Stop Extension').onClick(() => {
           console.info("btn end")
-          vpnExtension.stopVpnExtensionAbility(want);
-        }).width('70%').fontSize(45).margin(16)
+          vpnExtension.stopVpnExtensionAbility(want).then(() => {
+            console.info('stopVpnExtensionAbility success');
+          }).catch((err: BusinessError) => {
+            console.error('stopVpnExtensionAbility error: ' + JSON.stringify(err));
+          })
+        }).width('70%').fontSize(30).margin(16)
 
-        }.width('100%')
+      }.width('100%')
     }.height('100%')
   }
 }
@@ -266,6 +282,10 @@ create(config: VpnConfig): Promise\<number\>
 
 使用config创建一个VPN网络。使用Promise异步回调。
 
+> **说明：**
+>
+> 建议在不需要VPN网络的时候配对调用[destroy()](#destroy)或[destroy(vpnId: string)](#destroy20)接口销毁启动的VPN网络，并执行资源清理等操作。
+
 **系统能力**：SystemCapability.Communication.NetManager.Vpn
 
 **参数：**
@@ -308,6 +328,13 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
     let vpnConnection : vpnExtension.VpnConnection = vpnExtension.createVpnConnection(context);
     console.info("vpn createVpnConnection: " + JSON.stringify(vpnConnection));
     this.SetupVpn();
+    
+    // 不需要VPN网络时，调用destroy()接口销毁启动的VPN网络，并执行资源清理等操作。
+    vpnConnection.destroy().then(() => {
+      console.info("destroy success.");
+    }).catch((error : BusinessError) => {
+      console.error(`destroy fail. Code:${error.code}, message:${error.message}`);
+    });
   }
   SetupVpn() {
         class Address {
@@ -619,14 +646,14 @@ export default class MyVpnExtAbility  extends VpnExtensionAbility {
 
 | 名称             | 类型                                      | 只读 | 可选 | 说明                                       |
 | ---------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------ |
-| addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\>  | 否  | 否 | VPN虚拟网卡的IP地址。最多支持64个IP地址。                                  |
+| addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\>  | 否  | 否 | VPN虚拟网卡的IP地址。API version 23之前，最多支持64个IP地址；从API version 23开始，最多支持2000个IP地址。                                  |
 | vpnId<sup>20+</sup>           | string | 否 | 是 | VPN唯一标识。 | 
-| routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>      | 否  | 是 | VPN虚拟网卡的路由信息（目前最多可配置1024条路由）。                  |
+| routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>      | 否  | 是 | VPN虚拟网卡的路由信息（API version 23前最多可配置1024条路由；从API version 23开始最多可配置10000条路由）。                  |
 | dnsAddresses        | Array\<string\>                                                 | 否  | 是 | DNS服务器地址信息。当配置DNS服务器地址后，VPN启动状态下被代理的应用上网时，使用配置的DNS服务器做DNS查询。                                    |
 | searchDomains       | Array\<string\>                                                | 否  | 是 | DNS的搜索域列表。                                     |
 | mtu                 | number                                                         | 否  | 是 | 最大传输单元MTU值（单位：字节）。取值范围：[576，1500]。               |
-| isIPv4Accepted      | boolean                                                         | 否  | 是 | 是否支持IPV4。true表示支持，false表示不支持, 默认值为true。  |
-| isIPv6Accepted      | boolean                                                         | 否  | 是 | 是否支持IPV6。true表示支持，false表示不支持, 默认值为false。 |
+| isIPv4Accepted      | boolean                                                         | 否  | 是 | 是否支持IPv4。true表示支持，false表示不支持, 默认值为true。<br>**注意**：若支持IPv4功能，需要在addresses中配置IPv4类型的IP地址。  |
+| isIPv6Accepted      | boolean                                                         | 否  | 是 | 是否支持IPv6。true表示支持，false表示不支持, 默认值为false。<br>**注意**：若支持IPv6功能，需要在addresses中配置IPv6类型的IP地址。  |
 | isInternal          | boolean                                                         | 否  | 是 | 是否支持内置VPN。true表示支持，false表示不支持, 默认值为false。 |
 | isBlocking          | boolean                                                        | 否  | 是 | 是否阻塞模式。true表示阻塞模式，false表示非阻塞模式, 默认值为false。       |
 | trustedApplications | Array\<string\>                                                | 否  | 是 | 受信任的应用信息列表，string类型表示的包名。当配置该列表后，仅该列表中的应用数据才能根据routes被VPN代理。<br>**注意**：trustedApplications和blockedApplications列表不能同时配置。                         |

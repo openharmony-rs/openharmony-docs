@@ -5,7 +5,7 @@
 <!--Owner: @xuxinao-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 
@@ -17,9 +17,13 @@
 
 - [订阅资源泄漏事件（C/C++）](hiappevent-watcher-resourceleak-events-ndk.md)
 
+> **说明：**
+>
+> 资源泄漏事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，支持在原子化服务场景下使用 HiAppEvent 进行订阅，从 API version 22 开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。
+
 ## 检测原理
 
-检测原理详见[资源泄漏检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)。
+检测原理详见[Resource Leak（资源泄漏检测）](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)。
 
 ## 自定义规格设置
 
@@ -35,7 +39,7 @@
 
 | 参数名          | 类型   | 必填 | 说明                                                         |
 | --------------- | ------ | ---- | ------------------------------------------------------------ |
-| js_heap_logtype | string | 否   | event：应用发生oom时，不传递堆快照。<br />event_rawheap：应用发生oom时，系统生成并传递堆快照<br />**注意：**当前仅接收以上二值，如果传入其他内容，方法将调用失败，不会产生任何效果。 |
+| js_heap_logtype | string | 否   | event：应用发生oom时，不传递堆快照。<br />event_rawheap：应用发生oom时，系统生成并传递堆快照<br />**注意**：当前仅接收以上二值，如果传入其他内容，方法将调用失败，不会产生任何效果。 |
 
 > **注意：**
 >
@@ -58,7 +62,7 @@ hiAppEvent.setEventConfig(hiappEvent.event.RESOURCE_OVERLIMIT, configParams);
 >
 > 在同一个应用生命周期内，可以多次调用setEventConfig，以最后一次成功调用的值为准。
 >
-> 开发者在调试以及自测试过程中，单日内触发oom次数过多，可能会遇到无法收到hiappevent回传js内存泄漏事件的情况，可以通过将系统时间往后调一天进行规避。
+> 开发者在调试以及自测试过程中，单日内触发OOM次数过多，可能会遇到无法收到hiappevent回传js内存泄漏事件的情况，可以通过将系统时间往后调一天进行规避。
 
 ## params字段说明
 

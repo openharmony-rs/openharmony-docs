@@ -11,7 +11,7 @@
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - @ohos.dlpPermission归属的Kit已由'DataLossPreventionKit'变更为'DataProtectionKit'，建议开发者使用新模块名'@kit.DataProtectionKit'完成模块导入。如果使用'@kit.DataLossPreventionKit'导入，仅能调用改名前的接口，无法使用新增接口。
+> - @ohos.dlpPermission归属的Kit已由`DataLossPreventionKit`变更为`DataProtectionKit`，建议开发者使用新模块名`@kit.DataProtectionKit`完成模块导入。如果使用`@kit.DataLossPreventionKit`导入，仅能调用改名前的接口，无法使用新增接口。
 
 ## 导入模块
 
@@ -40,7 +40,7 @@ isDLPFile(fd: number): Promise&lt;boolean&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DLP服务错误码](errorcode-dlp.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -59,7 +59,7 @@ let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 let file: number | undefined = undefined;
 try {
   file = fileIo.openSync(uri).fd;
-  let res = dlpPermission.isDLPFile(file); // 是否加密DLP文件。
+  let res = dlpPermission.isDLPFile(file);
   console.info('res', res);
 } catch (err) {
   console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错。
@@ -87,7 +87,7 @@ isDLPFile(fd: number, callback: AsyncCallback&lt;boolean&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DLP服务错误码](errorcode-dlp.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -182,7 +182,7 @@ getDLPPermissionInfo(callback: AsyncCallback&lt;DLPPermissionInfo&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DLP服务错误码](errorcode-dlp.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -203,7 +203,7 @@ try {
     if (inSandbox) {
       dlpPermission.getDLPPermissionInfo((err, res) => {
         if (err != undefined) {
-          console.error('getDLPPermissionInfo error,', err.code, err.message);
+          console.error('getDLPPermissionInfo error', err.code, err.message);
         } else {
           console.info('res', JSON.stringify(res));
         }
@@ -211,7 +211,7 @@ try {
     }
   });
 } catch (err) {
-  console.error('getDLPPermissionInfo error,', (err as BusinessError).code, (err as BusinessError).message);
+  console.error('getDLPPermissionInfo error', (err as BusinessError).code, (err as BusinessError).message);
 }
 ```
 
@@ -311,7 +311,7 @@ on(type: 'openDLPFile', listener: Callback&lt;AccessedDLPFileInfo&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DLP服务错误码](errorcode-dlp.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -351,7 +351,7 @@ off(type: 'openDLPFile', listener?: Callback&lt;AccessedDLPFileInfo&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DLP服务错误码](errorcode-dlp.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -428,7 +428,7 @@ isInSandbox(callback: AsyncCallback&lt;boolean&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DLP服务错误码](errorcode-dlp.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -445,13 +445,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   dlpPermission.isInSandbox((err, data) => {
     if (err) {
-      console.error('isInSandbox error,', err.code, err.message);
+      console.error('isInSandbox error', err.code, err.message);
     } else {
       console.info('isInSandbox, data', JSON.stringify(data));
     }
   }); // 是否在沙箱内。
 } catch (err) {
-  console.error('isInSandbox error,', (err as BusinessError).code, (err as BusinessError).message);
+  console.error('isInSandbox error', (err as BusinessError).code, (err as BusinessError).message);
 }
 ```
 
@@ -508,7 +508,7 @@ getDLPSupportedFileTypes(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DLP服务错误码](errorcode-dlp.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -525,13 +525,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   dlpPermission.getDLPSupportedFileTypes((err, res) => {
     if (err != undefined) {
-      console.error('getDLPSupportedFileTypes error,', err.code, err.message);
+      console.error('getDLPSupportedFileTypes error', err.code, err.message);
     } else {
       console.info('res', JSON.stringify(res));
     }
   }); // 获取支持DLP的文件类型。
 } catch (err) {
-  console.error('getDLPSupportedFileTypes error,', (err as BusinessError).code, (err as BusinessError).message);
+  console.error('getDLPSupportedFileTypes error', (err as BusinessError).code, (err as BusinessError).message);
 }
 ```
 
@@ -557,7 +557,7 @@ setRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DLP服务错误码](errorcode-dlp.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -602,7 +602,7 @@ setRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DLP服务错误码](errorcode-dlp.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -654,7 +654,7 @@ cancelRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DLP服务错误码](errorcode-dlp.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -693,7 +693,7 @@ cancelRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DLP服务错误码](errorcode-dlp.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -743,7 +743,7 @@ getRetentionSandboxList(bundleName?: string): Promise&lt;Array&lt;RetentionSandb
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DLP服务错误码](errorcode-dlp.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -785,7 +785,7 @@ getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DLP服务错误码](errorcode-dlp.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -829,7 +829,7 @@ getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DLP服务错误码](errorcode-dlp.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -913,7 +913,7 @@ getDLPFileAccessRecords(callback: AsyncCallback&lt;Array&lt;AccessedDLPFileInfo&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DLP服务错误码](errorcode-dlp.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -947,6 +947,10 @@ startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&
 
 在当前UIAbility界面以无边框形式打开DLP权限管理应用。使用Promise方式异步返回结果。
 
+> **说明：**
+>
+> 该接口仅支持域账号调用。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
@@ -966,7 +970,7 @@ startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DLP服务错误码](errorcode-dlp.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1021,7 +1025,7 @@ setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DLP服务错误码](errorcode-dlp.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1122,14 +1126,18 @@ async function ExampleFunction() {
 ## dlpPermission.isDLPFeatureProvided<sup>12+<sup>
 isDLPFeatureProvided(): Promise&lt;boolean&gt;
 
-查询当前系统是否提供DLP特性，使用Promise方式异步返回结果。
+查询当前系统是否提供加密保护特性，使用Promise方式异步返回结果。
+
+>**说明：**
+>
+> 该接口由[MDM](../../mdm/mdm-kit-intro.md)配置使能，且使能场景为企业设备。其他设备（如消费者终端设备）无需关注该接口，如若调用该接口，则返回值为false。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示当前系统提供DLP特性，返回false表示不提供DLP特性。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前系统提供加密保护特性，返回false表示不提供加密保护特性。 |
 
 **错误码：**
 
@@ -1170,7 +1178,7 @@ setEnterprisePolicy(policy: EnterprisePolicy): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
+以下错误码的详细介绍请参见[DLP服务错误码](errorcode-dlp.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1324,9 +1332,10 @@ DLP文件授权类型的枚举。
 generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPProperty, customProperty: CustomProperty): Promise&lt;void&gt;
 
 获取DLPFile管理对象。使用Promise异步回调。
->**说明：**
+
+> **说明：**
 >
-> 使用该接口可以将明文文件加密生成权限受控文件，仅拥有完全控制权限的用户可以打开。
+> 该接口仅支持企业账号调用，需要企业自行搭建企业账号服务器配套使用。使用该接口可以将明文文件加密生成权限受控文件，由企业服务器管控账号是否有权限解密该文件。
 
 **需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
@@ -1391,7 +1400,7 @@ async function ExampleFunction(plainFilePath: string, dlpFilePath: string) {
     await dlpPermission.generateDlpFileForEnterprise(plaintextFd, dlpFd, dlpProperty, customProperty);
     console.info('Successfully generate DLP file for enterprise.');
   } catch(err) {
-    console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message);
   } finally {
     if (dlpFd) {
       fileIo.closeSync(dlpFd);
@@ -1410,7 +1419,7 @@ decryptDlpFile(dlpFd: number, plaintextFd: number): Promise&lt;void&gt;
 将DLP文件解密生成明文文件。使用Promise异步回调。
 >**说明：**
 >
-> 仅拥有完全控制权限的用户可以解密DLP文件。
+> 该接口仅支持企业账号调用，需要企业自行搭建企业账号服务器配套使用。由企业服务器管控账号是否有权限解密DLP文件。
 
 **需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
@@ -1462,7 +1471,7 @@ async function ExampleFunction(plainFilePath: string, dlpFilePath: string) {
     await dlpPermission.decryptDlpFile(dlpFd, plaintextFd);
     console.info('Successfully decrypt DLP file.');
   } catch(err) {
-    console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message);
   } finally {
     if (dlpFd) {
       fileIo.closeSync(dlpFd);
@@ -1527,7 +1536,7 @@ async function ExampleFunction(dlpFilePath: string) {
     let policy: string = await dlpPermission.queryDlpPolicy(dlpFd);
     console.info('DLP policy:' + policy);
   } catch(err) {
-    console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message);
   } finally {
     if (dlpFd) {
       fileIo.closeSync(dlpFd);
@@ -1590,7 +1599,9 @@ async function ExampleFunction(dlpFilePath: string) {
 | actionUponExpiry | [ActionType](#actiontype21) | 否 | 是 | 表示到期后文件是否允许打开（打开后拥有编辑权限），仅在expireTime不为空时生效。 |
 | fileId | string | 否 | 是 | 表示文件的标识。不超过255字节。 |
 | allowedOpenCount | number | 否 | 是 | 表示允许打开的次数。 |
- 
+| waterMarkConfig<sup>23+</sup> | boolean | 否 | 是 | 表示是否要求添加水印。true表示要求添加水印，false表示不要求添加水印。 |
+| countdown<sup>23+</sup> | number | 否 | 是 | 表示文件可被查看的有效时间，超时后打开的文件将自动关闭，单位：s。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+
 ## AuthUser<sup>21+</sup>
 
 表示授权用户数据。

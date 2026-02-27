@@ -466,16 +466,15 @@ defaultTextStyle(style: TextPickerTextStyle)
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | style  | [TextPickerTextStyle](#textpickertextstyle15类型说明) | 是   | 设置关闭滑动过程中文本样式变化的动效时，各个选项的文本样式。<br/>默认值：与[Text](ts-basic-components-text.md)组件默认值相同。 |
 
->  **说明：**
->
->  开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
->  ```json
->  "requestPermissions": [
->  {
->   "name": "ohos.permission.VIBRATE",
->  }
->  ]
->  ```
+开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
+
+```json
+"requestPermissions": [
+   {
+      "name": "ohos.permission.VIBRATE",
+   }
+]
+```
 
 ### enableHapticFeedback<sup>18+</sup>
 
@@ -493,16 +492,15 @@ enableHapticFeedback(enable: Optional\<boolean>)
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
 | enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>设置为true后，其生效情况取决于系统的硬件是否支持。 |
 
->  **说明：**
->
->  开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
->  ```json
->  "requestPermissions": [
->  {
->   "name": "ohos.permission.VIBRATE",
->  }
->  ]
->  ```
+开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
+
+```json
+"requestPermissions": [
+   {
+      "name": "ohos.permission.VIBRATE",
+   }
+]
+```
 
 ### digitalCrownSensitivity<sup>18+</sup>
 digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
@@ -653,7 +651,7 @@ onAccept(callback: (value: string, index: number) => void)
 
 点击弹窗中的“确定”按钮时触发该回调。该事件仅在[文本滑动选择器弹窗](ts-methods-textpicker-dialog.md)中生效。
 
-从API version 10开始废弃。
+从API version 8开始支持，从API version 10开始废弃，无替代接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -670,7 +668,7 @@ onCancel(callback: () => void)
 
 点击弹窗中的“取消”按钮时触发该回调。该事件仅在[文本滑动选择器弹窗](ts-methods-textpicker-dialog.md)中生效。
 
-从API version 10开始废弃。
+从API version 8开始支持，从API version 10开始废弃，无替代接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -754,13 +752,15 @@ type TextPickerEnterSelectedAreaCallback = (value: string | string[], index: num
 
 | 名称 | 类型                                       | 只读 | 可选 | 说明                                              |
 | ------ | ------------------------------------- | ---- | ------------------------------------------------- | ------------------------------------------------- |
-| color  | [ResourceColor](ts-types.md#resourcecolor) | 否  | 是  | 选中项的背景颜色。<br/>默认值：'sys.color.comp_background_tertiary'。   |
+| color  | [ResourceColor](ts-types.md#resourcecolor) | 否  | 是  | 选中项的背景颜色。<br/>默认值：<br/>'sys.color.comp_background_tertiary'   |
 | borderRadius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) &nbsp;\|&nbsp; [BorderRadiuses](ts-types.md#borderradiuses9) &nbsp;\|&nbsp; [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12) | 否  | 是  | 选中项的边框圆角半径。<br/>默认值：{ value:24, unit:LengthUnit.VP }，即四个圆角半径均为24VP。<br/>**说明：**<br/>1. [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)类型的value参数同时作用于四个圆角半径大小，unit参数用于设置单位。<br/>2. [BorderRadiuses](ts-types.md#borderradiuses9)类型可以设置四个不同值的圆角半径，所有单位固定为VP。<br/>3. [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12)类型可以设置四个不同值的圆角半径，并且可以单独设置每个圆角的单位。 |
 ## 示例
 
 ### 示例1（设置选择器列数）
 
 该示例通过配置range实现单列数据选择器和多列数据选择器，并使用columnWidths调整每一列的宽度。
+
+从API version 18开始，新增了[TextPickerOptions](#textpickeroptions对象说明)的columnWidths属性。
 
 ```ts
 // xxx.ets
@@ -893,7 +893,7 @@ struct TextPickerExample {
 
 ### 示例3（设置无分割线样式）
 
-该示例通过配置divider为null实现无分割线样式的文本选择器。
+该示例通过配置[divider](#divider12)为null实现无分割线样式的文本选择器。
 
 ```ts
 // xxx.ets
@@ -960,7 +960,7 @@ struct TextPickerExample {
 
 ### 示例5（设置渐隐效果）
 
-该示例通过配置gradientHeight设置文本选择器的渐隐效果高度。
+该示例通过配置[gradientHeight](#gradientheight12)设置文本选择器的渐隐效果高度。
 
 ```ts
 // xxx.ets
@@ -992,7 +992,7 @@ struct TextPickerExample {
 
 ### 示例6（设置选择项高度）
 
-该示例通过配置defaultPickerItemHeight设置选择项的高度。
+该示例通过配置[defaultPickerItemHeight](#defaultpickeritemheight)设置选择项的高度。
 
 ```ts
 // xxx.ets
@@ -1062,7 +1062,7 @@ struct TextPickerExample {
 
 ### 示例8（设置选中项索引值）
 
-该示例通过配置selectedIndex设置默认选中项的索引值。
+该示例通过配置[selectedIndex](#selectedindex10)设置默认选中项的索引值。
 
 ```ts
 // xxx.ets
@@ -1091,6 +1091,8 @@ struct TextPickerExample {
 ### 示例9（设置关闭文本样式变化动效与对应文本样式）
 
 该示例通过配置[disableTextStyleAnimation](#disabletextstyleanimation15)、[defaultTextStyle](#defaulttextstyle15)实现关闭文本选择器文本样式变化的动效，并设置文本样式。
+
+从API version 15开始，新增disableTextStyleAnimation、defaultTextStyle接口。
 
 ```ts
 // xxx.ets
@@ -1135,26 +1137,26 @@ import { LengthUnit } from '@kit.ArkUI';
 @Component
 struct TextPickerExample {
   private showText1: string [] =
-    ["Text1", "Text1", "Text1", "Text1"]
+    ['Text1', 'Text1', 'Text1', 'Text1']
   private showText2: string[] [] =
     [
-      ["Text2", "Text2", "Text2", "Text2"],
-      ["Text3", "Text3", "Text3", "Text3"]
-    ]
+      ['Text2', 'Text2', 'Text2', 'Text2'],
+      ['Text3', 'Text3', 'Text3', 'Text3']
+  ]
 
   build() {
     Column() {
       Row() {
         TextPicker({ range: this.showText1 })
           .selectedBackgroundStyle({
-            color: "#FFD5D5D5",
+            color: '#FFD5D5D5',
             borderRadius: { value: 0, unit: LengthUnit.VP }
           })
         Column()
-          .width("10%")
+          .width('10%')
         TextPicker({ range: this.showText1 })
           .selectedBackgroundStyle({
-            color: "#FFE3F8F9",
+            color: '#FFE3F8F9',
             borderRadius: {
               topStart: { value: 5, unit: LengthUnit.VP },
               topEnd: { value: 10, unit: LengthUnit.VP },
@@ -1165,7 +1167,7 @@ struct TextPickerExample {
       }
 
       Row()
-        .height("10%")
+        .height('10%')
       Row() {
         TextPicker({ range: this.showText2 })
           .selectedBackgroundStyle({
@@ -1175,10 +1177,10 @@ struct TextPickerExample {
               bottomLeft: 8,
               bottomRight: 8
             },
-            color: "#FFFFEEF6"
+            color: '#FFFFEEF6'
           })
       }
-    }.height("100%")
+    }.height('100%')
   }
 }
 ```
@@ -1188,6 +1190,8 @@ struct TextPickerExample {
 ### 示例11（设置文本的最大字号、最小字号、超长文本截断方式）
 
 该示例通过配置[disappearTextStyle](#disappeartextstyle20)、[textStyle](#textstyle20)和[selectedTextStyle](#selectedtextstyle20)，设置文本的颜色、最大字号、最小字号、超长文本截断方式。
+
+从API version 20开始，新增disappearTextStyle、textStyle和selectedTextStyle接口。
 
 ```ts
 // xxx.ets

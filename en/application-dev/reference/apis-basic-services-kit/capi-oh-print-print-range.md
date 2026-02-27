@@ -1,18 +1,18 @@
 # Print_Range
-<!--Kit: Basic Services Kit-->	
-<!--Subsystem: Print-->	
-<!--Owner: @guoshengbang-->	
-<!--Designer: @Q-haosu-->	
-<!--Tester: @Q-haosu-->	
-<!--Adviser: @fang-jinxu-->
+ <!--Kit: Basic Services Kit-->   
+ <!--Subsystem: Print-->  
+ <!--Owner: @guoshengbang-->  
+ <!--Designer: @Q-haosu-->    
+ <!--Tester: @Q-haosu-->  
+ <!--Adviser: @fang-jinxu-->
 
-```
+```c
 typedef struct {...} Print_Range
 ```
 
 ## Overview
 
-Defines the range to print.
+Defines a struct for the page range to print.
 
 **Since**: 13
 
@@ -24,9 +24,9 @@ Defines the range to print.
 
 ### Member Variables
 
-| Name| Description|
-| -- | -- |
-| uint32_t startPage | Start page.|
-| uint32_t endPage | End page.|
+| Name                  | Description            |
+| ---------------------- | ---------------- |
+| uint32_t startPage     | Start page.    |
+| uint32_t endPage       | End page.    |
 | uint32_t pagesArrayLen | Length of the page array.|
-| uint32_t* pagesArray | Pointer to the page array.|
+| uint32_t* pagesArray   | Page array.    |

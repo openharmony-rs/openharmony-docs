@@ -36,6 +36,13 @@
 | -- | -- | -- |
 | [OH_Huks_ExternalCryptoTag](#oh_huks_externalcryptotag) | OH_Huks_ExternalCryptoTag | 列举参数集合中使用的标签值。 |
 
+### 宏定义
+
+| 名称 | 描述 |
+| -- | -- |
+| OH_HUKS_EXTERNAL_CRYPTO_MAX_PROVIDER_NAME_LEN 100 | 定义provider名称的最大字节长度。<br>**起始版本：** 22 |
+| OH_HUKS_EXTERNAL_CRYPTO_MAX_RESOURCE_ID_LEN   512 | 定义资源ID的最大字节长度。<br>**起始版本：** 22 |
+
 ## 枚举类型说明
 
 ### OH_Huks_ExternalCryptoTag
@@ -59,4 +66,20 @@ enum OH_Huks_ExternalCryptoTag
 | OH_HUKS_EXT_CRYPTO_TAG_PURPOSE = OH_HUKS_TAG_TYPE_INT \| 200005 | 证书链用途。 |
 | OH_HUKS_EXT_CRYPTO_TAG_TIMEOUT = OH_HUKS_TAG_TYPE_UINT \| 200006 | 获取属性操作的超时时间，单位：s。 |
 
+### OH_Huks_ExternalPinAuthState
 
+```c
+enum OH_Huks_ExternalPinAuthState
+```
+
+**描述**
+
+列举Ukey PIN码认证状态。
+
+**起始版本：** 22
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0 | PIN码未认证。 |
+| OH_HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED = 1 | PIN码认证成功。 |
+| OH_HUKS_EXT_CRYPTO_PIN_LOCKED = 2 | PIN码被锁。 |

@@ -36,6 +36,19 @@
 | STATE_OFF      | 1    | 设备断开，扩展屏不再显示内容。    |
 | STATE_ON      | 2    | 设备连接成功，扩展屏可用。 |
 
+## CallerType<sup>22+</sup>
+
+表示调用方来源类型的枚举。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+| 名称             | 值           | 说明                                   |
+|----------------|-------------|--------------------------------------|
+| TYPE_CAST      | "cast"      | 调用方来自投播。                             |
+| TYPE_BLUETOOTH | "bluetooth" | 调用方来自蓝牙。                                |
+| TYPE_APP       | "app"       | 调用方来自应用。                                |
+| TYPE_NEARLINK  | "nearlink"  | 调用方来自星闪。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
 ## ConnectionState<sup>10+</sup>
 
 连接状态枚举。
@@ -188,6 +201,8 @@
 | ERR_CODE_MESSAGE_OVERLOAD              | 6600107 | 命令&消息过载。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
 | ERR_CODE_DEVICE_CONNECTION_FAILED      | 6600108 | 设备连接失败。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
 | ERR_CODE_REMOTE_CONNECTION_NOT_EXIST   | 6600109 | 远端会话不存在。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
+| ERR_CODE_DESKTOP_LYRIC_NOT_ENABLED<sup>23+</sup>    | 6600110 | 应用程序的桌面歌词功能未开启。<br>**模型约束：** 此接口仅可在Stage模型下使用。 <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
+| ERR_CODE_DESKTOP_LYRIC_NOT_SUPPORTED<sup>23+</sup>    | 6600111 | 当前设备不支持桌面歌词功能。 <br>**模型约束：** 此接口仅可在Stage模型下使用。 <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
 | ERR_CODE_CAST_CONTROL_UNSPECIFIED<sup>13+</sup>    | 6611000 | 未被定义的投播错误码。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_REMOTE_ERROR<sup>13+</sup>    | 6611001 | 远端播放器中发生不明错误。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_BEHIND_LIVE_WINDOW<sup>13+</sup>     | 6611002 | 播放出现延迟。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|

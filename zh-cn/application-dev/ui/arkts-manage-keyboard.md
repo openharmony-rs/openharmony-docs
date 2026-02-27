@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @tzcurtain-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -262,7 +262,7 @@ struct demo_text_1 {
 }
 ```
 
-![keyboard_textInput_navagation_page_change](figures/keyboard_textInput_navagation_page_change.gif)
+![keyboard_textInput_navigation_page_change](figures/keyboard_textInput_navigation_page_change.gif)
 
 ### 通过输入框的controller退出编辑态
 

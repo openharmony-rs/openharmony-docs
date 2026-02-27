@@ -60,7 +60,7 @@
 
 ### OH_LowPowerVideoSink_CreateByMime()
 
-```
+```c
 OH_LowPowerVideoSink* OH_LowPowerVideoSink_CreateByMime(const char* mime)
 ```
 
@@ -84,7 +84,7 @@ OH_LowPowerVideoSink* OH_LowPowerVideoSink_CreateByMime(const char* mime)
 
 ### OH_LowPowerVideoSink_Configure()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_Configure(OH_LowPowerVideoSink* sink, const OH_AVFormat* format)
 ```
 
@@ -109,7 +109,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Configure(OH_LowPowerVideoSink* sink, const OH
 
 ### OH_LowPowerVideoSink_SetParameter()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_SetParameter(OH_LowPowerVideoSink* sink, const OH_AVFormat* format)
 ```
 
@@ -134,7 +134,7 @@ OH_AVErrCode OH_LowPowerVideoSink_SetParameter(OH_LowPowerVideoSink* sink, const
 
 ### OH_LowPowerVideoSink_GetParameter()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_GetParameter(OH_LowPowerVideoSink* sink, OH_AVFormat* format)
 ```
 
@@ -159,7 +159,7 @@ OH_AVErrCode OH_LowPowerVideoSink_GetParameter(OH_LowPowerVideoSink* sink, OH_AV
 
 ### OH_LowPowerVideoSink_SetVideoSurface()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_SetVideoSurface(OH_LowPowerVideoSink* sink, const OHNativeWindow* surface)
 ```
 
@@ -184,7 +184,7 @@ OH_AVErrCode OH_LowPowerVideoSink_SetVideoSurface(OH_LowPowerVideoSink* sink, co
 
 ### OH_LowPowerVideoSink_Prepare()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_Prepare(OH_LowPowerVideoSink* sink)
 ```
 
@@ -208,7 +208,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Prepare(OH_LowPowerVideoSink* sink)
 
 ### OH_LowPowerVideoSink_StartDecoder()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_StartDecoder(OH_LowPowerVideoSink* sink)
 ```
 
@@ -232,7 +232,7 @@ OH_AVErrCode OH_LowPowerVideoSink_StartDecoder(OH_LowPowerVideoSink* sink)
 
 ### OH_LowPowerVideoSink_RenderFirstFrame()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_RenderFirstFrame(OH_LowPowerVideoSink* sink)
 ```
 
@@ -256,7 +256,7 @@ OH_AVErrCode OH_LowPowerVideoSink_RenderFirstFrame(OH_LowPowerVideoSink* sink)
 
 ### OH_LowPowerVideoSink_StartRenderer()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_StartRenderer(OH_LowPowerVideoSink* sink)
 ```
 
@@ -280,7 +280,7 @@ OH_AVErrCode OH_LowPowerVideoSink_StartRenderer(OH_LowPowerVideoSink* sink)
 
 ### OH_LowPowerVideoSink_Pause()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_Pause(OH_LowPowerVideoSink* sink)
 ```
 
@@ -304,7 +304,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Pause(OH_LowPowerVideoSink* sink)
 
 ### OH_LowPowerVideoSink_Resume()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_Resume(OH_LowPowerVideoSink* sink)
 ```
 
@@ -328,7 +328,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Resume(OH_LowPowerVideoSink* sink)
 
 ### OH_LowPowerVideoSink_Flush()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_Flush(OH_LowPowerVideoSink* sink)
 ```
 
@@ -352,7 +352,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Flush(OH_LowPowerVideoSink* sink)
 
 ### OH_LowPowerVideoSink_Stop()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_Stop(OH_LowPowerVideoSink* sink)
 ```
 
@@ -376,7 +376,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Stop(OH_LowPowerVideoSink* sink)
 
 ### OH_LowPowerVideoSink_Reset()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_Reset(OH_LowPowerVideoSink* sink)
 ```
 
@@ -400,7 +400,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Reset(OH_LowPowerVideoSink* sink)
 
 ### OH_LowPowerVideoSink_Destroy()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_Destroy(OH_LowPowerVideoSink* sink)
 ```
 
@@ -424,7 +424,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Destroy(OH_LowPowerVideoSink* sink)
 
 ### OH_LowPowerVideoSink_SetSyncAudioSink()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_SetSyncAudioSink(OH_LowPowerVideoSink* videoSink, OH_LowPowerAudioSink* audioSink)
 ```
 
@@ -449,7 +449,7 @@ LowPowerVideoSink设置用于音画同步的OH_LowPowerAudioSink。
 
 ### OH_LowPowerVideoSink_SetTargetStartFrame()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_SetTargetStartFrame(OH_LowPowerVideoSink* sink, const int64_t framePts, OH_LowPowerVideoSink_OnTargetArrived onTargetArrived, const int64_t timeoutMs, void* userData)
 ```
 
@@ -477,7 +477,7 @@ OH_AVErrCode OH_LowPowerVideoSink_SetTargetStartFrame(OH_LowPowerVideoSink* sink
 
 ### OH_LowPowerVideoSink_SetPlaybackSpeed()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_SetPlaybackSpeed(OH_LowPowerVideoSink* sink, const float speed)
 ```
 
@@ -502,7 +502,7 @@ OH_AVErrCode OH_LowPowerVideoSink_SetPlaybackSpeed(OH_LowPowerVideoSink* sink, c
 
 ### OH_LowPowerVideoSink_ReturnSamples()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_ReturnSamples(OH_LowPowerVideoSink* sink, OH_AVSamplesBuffer* samples)
 ```
 
@@ -527,7 +527,7 @@ OH_AVErrCode OH_LowPowerVideoSink_ReturnSamples(OH_LowPowerVideoSink* sink, OH_A
 
 ### OH_LowPowerVideoSink_GetLatestPts()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_GetLatestPts(OH_LowPowerVideoSink *sink, int64_t *pts)
 ```
 
@@ -552,7 +552,7 @@ OH_AVErrCode OH_LowPowerVideoSink_GetLatestPts(OH_LowPowerVideoSink *sink, int64
 
 ### OH_LowPowerVideoSink_RegisterCallback()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_RegisterCallback(OH_LowPowerVideoSink* sink, OH_LowPowerVideoSinkCallback* callback)
 ```
 
@@ -577,7 +577,7 @@ OH_AVErrCode OH_LowPowerVideoSink_RegisterCallback(OH_LowPowerVideoSink* sink, O
 
 ### OH_LowPowerVideoSinkCallback_Create()
 
-```
+```c
 OH_LowPowerVideoSinkCallback* OH_LowPowerVideoSinkCallback_Create(void)
 ```
 
@@ -595,7 +595,7 @@ OH_LowPowerVideoSinkCallback* OH_LowPowerVideoSinkCallback_Create(void)
 
 ### OH_LowPowerVideoSinkCallback_Destroy()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSinkCallback_Destroy(OH_LowPowerVideoSinkCallback* callback)
 ```
 
@@ -619,7 +619,7 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_Destroy(OH_LowPowerVideoSinkCallback* 
 
 ### OH_LowPowerVideoSinkCallback_SetDataNeededListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSinkCallback_SetDataNeededListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnDataNeeded onDataNeeded, void* userData)
 ```
 
@@ -645,7 +645,7 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetDataNeededListener(OH_LowPowerVideo
 
 ### OH_LowPowerVideoSinkCallback_SetErrorListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSinkCallback_SetErrorListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnError onError, void* userData)
 ```
 
@@ -671,7 +671,7 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetErrorListener(OH_LowPowerVideoSinkC
 
 ### OH_LowPowerVideoSinkCallback_SetRenderStartListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSinkCallback_SetRenderStartListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnRenderStarted onRenderStarted, void* userData)
 ```
 
@@ -697,7 +697,7 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetRenderStartListener(OH_LowPowerVide
 
 ### OH_LowPowerVideoSinkCallback_SetStreamChangedListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSinkCallback_SetStreamChangedListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnStreamChanged onStreamChanged, void* userData)
 ```
 
@@ -723,7 +723,7 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetStreamChangedListener(OH_LowPowerVi
 
 ### OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnFirstFrameDecoded onFirstFrameDecoded, void* userData)
 ```
 
@@ -749,7 +749,7 @@ OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPow
 
 ### OH_LowPowerVideoSinkCallback_SetEosListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSinkCallback_SetEosListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnEos onEos, void* userData)
 ```
 

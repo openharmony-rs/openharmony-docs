@@ -174,7 +174,7 @@ After obtaining the output stream capabilities supported by the camera, create a
         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable OH_NativeBuffer_Map err:%{public}d", ret);
         // Pass the processed buffer to the ArkTS side through the callback for image display or storage (using a security component). For details, see Photo Capture (C/C++).
         if (bufferCb == nullptr) {
-            OH_LOG_INFO(LOG_APP, "Current buffercb invalid error");
+            OH_LOG_INFO(LOG_APP, "Current bufferCb invalid error");
             return;
         }
         auto cb = (void (*)(void *, size_t))(bufferCb);

@@ -10,9 +10,9 @@
 
 >  **说明：**
 >
->  从API Version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  只有Image、Column、Flex、Row、Stack支持设置点光源。
+> - 只有Image、Column、Flex、Row、Stack支持设置点光源。
 
 ## PointLightStyle
 

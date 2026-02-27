@@ -7,6 +7,10 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct {...} Asset_Result
+```
+
 ## Overview
 
 Represents the query result of an asset.

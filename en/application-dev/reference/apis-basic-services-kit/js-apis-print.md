@@ -476,10 +476,7 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 }
 ```
 
-## print.print<sup>(deprecated)</sup>
-
-> This API is supported since API version 10 and deprecated since API version 23.
-> You are advised to use [print](#printprint11-1) instead.
+## print.print<sup>10+</sup>
 
 print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): void
 
@@ -525,10 +522,7 @@ print.print([fileUri.getUriFromPath(filePath)], (err: BusinessError, printTask: 
 })
 ```
 
-## print.print<sup>(deprecated)</sup>
-
-> This API is supported since API version 10 and deprecated since API version 23.
-> You are advised to use [print](#printprint11-1) instead.
+## print.print<sup>10+</sup>
 
 print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 
@@ -589,7 +583,7 @@ Prints files. This API uses an asynchronous callback to return the result.
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| files | Array&lt;string&gt; | Yes| List of files to print. Images (in .jpg, .png, .gif, .bmp, or .webp format) and PDF files are supported. You should save the files to the application sandbox, obtain the sandbox URI through **fileUri.getUriFromPath**, and then pass this URI as a parameter to this API.|
+| files | Array&lt;string&gt; | Yes| List of files to be printed. Currently, the following file types are supported: ".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg", "pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt", ".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", and ".xml". You should save the files to the application sandbox, obtain the sandbox URI through **fileUri.getUriFromPath**, and then pass this URI as a parameter to this API.|
 | context | Context | Yes| UIAbilityContext used to start the system print UI.|
 | callback | AsyncCallback&lt;[PrintTask](#printtask)&gt; | Yes| Callback used to return the result.|
 
@@ -652,7 +646,7 @@ Prints files. This API uses a promise to return the result.
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| files | Array&lt;string&gt; | Yes| List of files to print. Images (in .jpg, .png, .gif, .bmp, or .webp format) and PDF files are supported. You should save the files to the application sandbox, obtain the sandbox URI through **fileUri.getUriFromPath**, and then pass this URI as a parameter to this API.|
+| files | Array&lt;string&gt; | Yes| List of files to be printed. Currently, the following file types are supported: ".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg", "pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt", ".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", and ".xml". You should save the files to the application sandbox, obtain the sandbox URI through **fileUri.getUriFromPath**, and then pass this URI as a parameter to this API.|
 | context | Context | Yes| UIAbilityContext used to start the system print UI.|
 
 **Return value**
@@ -1710,3 +1704,125 @@ print.connectPrinter(printerId).then(() => {
     console.error('failed to connect Printer because : ' + JSON.stringify(error));
 })
 ```
+
+## startPrint<sup>23+</sup>
+
+startPrint(job: PrintJobData): Promise&lt;void&gt;
+
+Prints a file or binary data. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.PRINT
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| job | [PrintJobData](#printjobdata23) | Yes| Print job data.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                   |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**Example**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import fs from "@ohos.file.fs";
+
+let tempPath = '/data/stroage/el2/base/haps/entry/files/note.jpg';
+let file: fs.File;
+file = fs.openSync(tempPath, 4);
+
+let printJobData: print.printJobData = {
+    printerId: "printerId",
+    jobName: "jobName",
+    documentFormat: print.PrintDocumentFormat.DOCUMENT_FORMAT_AUTO,
+    docFlavor: print.DocFlavor.FILE_DESCRIPTOR,
+    copyNumber: 1,
+    isLandscape: 0,
+    colorMode: print.PrintColorMode.COLOR_MODE_MONOCHROME,
+    dulpexMode: print.PrintDuplexMode.DUPLEX_MODE_NONE,
+    pageSize: {id: "ISO_A4", name: "ISO_A4", width:8268, height: 11692},
+    fdList: [file.fd],
+}
+print.startPrint(printJobData).then(() => {
+    console.info('start print success');
+}).catch((error: BusinessError) => {
+    console.error('failed to print because : ' + JSON.stringify(error));
+})
+```
+## PrintDocumentFormat<sup>23+</sup>
+
+Enumerates the data formats.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name| Value| Description|
+| -------- | -------- | -------- |
+| DOCUMENT_FORMAT_AUTO | 0 | Auto-detected format.|
+| DOCUMENT_FORMAT_JPEG | 1 | JPEG.|
+| DOCUMENT_FORMAT_PDF | 2 | PDF.|
+| DOCUMENT_FORMAT_POSTSCRIPT | 3 | PostScript.|
+| DOCUMENT_FORMAT_TEXT | 4 | Text.|
+| DOCUMENT_FORMAT_RAW | 5 | RAW.|
+
+## DocFlavor<sup>23+</sup>
+
+Enumerates the data source types for printing.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name| Value| Description|
+| -------- | -------- | -------- |
+| FILE_DESCRIPTOR | 0 | File data.|
+| BYTES | 1 | Binary data.|
+
+## printJobData<sup>23+</sup>
+
+Defines a print job.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| printerId | string | No| No| Printer ID.|
+| jobName | string | No| No| Name of the print job.|
+| documentFormat | [PrintDocumentFormat](#printdocumentformat23) | No| No| Format of the print data.|
+| docFlavor | [DocFlavor](#docflavor23) | No| No| Data source type.|
+| copyNumber | number | No| No| Number of file list copies.|
+| isLandscape | boolean | No| No| Whether pages are printed in landscape mode. The value **true** indicates that pages are printed in landscape mode, and **false** indicates that pages are printed in portrait mode. The default value is **false**.|
+| colorMode | [PrintColorMode](#printcolormode11) | No| No| Color mode.|
+| duplexMode | [PrintDuplexMode](#printduplexmode11) | No| No| Simplex or duplex mode.|
+| pageSize | [PrintPageSize](./js-apis-print.md#printpagesize11) | No| No| Selected page size.|
+| jobId | string | No| Yes| Unique identifier of the print job.|
+| fdList | Array&lt;number&gt; | No| Yes| FD list of files to print.|
+| binaryData | Uint8Array | No| Yes| Binary data to print.|
+| printQuality | [PrintQuality](#printquality14) | No| Yes| Print quality.|
+| mediaType | string | No| Yes| Type of the paper to print.|
+| isBorderless | boolean | No| Yes| Whether to print without margins. The value **true** means to print without margins, and **false** means the opposite. Default value: **true**.|
+| isAutoRotate | boolean | No| Yes| Whether to automatically rotate the page. The value **true** means to automatically rotate the page, and **false** means the opposite. Default value: **true**.|
+| isReverse | boolean | No| Yes| Whether pages are printed in reverse order. The value **true** means that pages are printed in reverse order, and **false** means the opposite. The default value is **false**.|
+| isCollate | boolean | No| Yes| Whether pages are printed uncollated. The value **true** means that pages are printed uncollated, and **false** means the opposite. Default value: **true**.|
+| isSequential | boolean | No| Yes| Whether pages are printed in sequential order.|
+| options | string | No| Yes| Object stringified in JSON format.|

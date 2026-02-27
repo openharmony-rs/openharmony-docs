@@ -56,7 +56,7 @@ The file declares the native APIs provided by the OH_LowPowerAudioSink instance.
 
 ### OH_LowPowerAudioSink_CreateByMime()
 
-```
+```c
 OH_LowPowerAudioSink* OH_LowPowerAudioSink_CreateByMime(const char* mime)
 ```
 
@@ -80,7 +80,7 @@ Creates an OH_LowPowerAudioSink instance.
 
 ### OH_LowPowerAudioSink_Configure()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_Configure(OH_LowPowerAudioSink* sink, const OH_AVFormat* format)
 ```
 
@@ -105,7 +105,7 @@ Configures an OH_LowPowerAudioSink instance. This function must be called before
 
 ### OH_LowPowerAudioSink_SetParameter()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_SetParameter(OH_LowPowerAudioSink* sink, const OH_AVFormat* format)
 ```
 
@@ -130,7 +130,7 @@ Sets parameters for an OH_LowPowerAudioSink instance. The parameters can be dyna
 
 ### OH_LowPowerAudioSink_GetParameter()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_GetParameter(OH_LowPowerAudioSink* sink, OH_AVFormat* format)
 ```
 
@@ -155,7 +155,7 @@ Obtains the parameters of an OH_LowPowerAudioSink instance.
 
 ### OH_LowPowerAudioSink_Prepare()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_Prepare(OH_LowPowerAudioSink* sink)
 ```
 
@@ -181,7 +181,7 @@ Before calling this function, you must call [OH_LowPowerVideoSink_SetSyncAudioSi
 
 ### OH_LowPowerAudioSink_Start()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_Start(OH_LowPowerAudioSink* sink)
 ```
 
@@ -207,7 +207,7 @@ After successful startup, the OH_LowPowerAudioSink instance starts reporting the
 
 ### OH_LowPowerAudioSink_Pause()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_Pause(OH_LowPowerAudioSink* sink)
 ```
 
@@ -233,7 +233,7 @@ After successful pause, the OH_LowPowerAudioSink instance stops reporting the [O
 
 ### OH_LowPowerAudioSink_Resume()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_Resume(OH_LowPowerAudioSink* sink)
 ```
 
@@ -259,7 +259,7 @@ After successful resumption, the OH_LowPowerAudioSink instance resumes reporting
 
 ### OH_LowPowerAudioSink_Flush()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_Flush(OH_LowPowerAudioSink* sink)
 ```
 
@@ -287,7 +287,7 @@ Note that if the decoder has previously received data, you must input the codec 
 
 ### OH_LowPowerAudioSink_Stop()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_Stop(OH_LowPowerAudioSink* sink)
 ```
 
@@ -311,7 +311,7 @@ Stops an OH_LowPowerAudioSink instance.
 
 ### OH_LowPowerAudioSink_Reset()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_Reset(OH_LowPowerAudioSink* sink)
 ```
 
@@ -337,7 +337,7 @@ To reuse the instance, you must call [OH_LowPowerAudioSink_Configure](capi-lowpo
 
 ### OH_LowPowerAudioSink_Destroy()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_Destroy(OH_LowPowerAudioSink* sink)
 ```
 
@@ -361,7 +361,7 @@ Clears internal resources of an OH_LowPowerAudioSink instance and destroys the i
 
 ### OH_LowPowerAudioSink_SetVolume()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_SetVolume(OH_LowPowerAudioSink* sink, const float volume)
 ```
 
@@ -386,7 +386,7 @@ Sets the rendering volume for an OH_LowPowerAudioSink instance.
 
 ### OH_LowPowerAudioSink_SetLoudnessGain()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_SetLoudnessGain(OH_LowPowerAudioSink* sink, float loudnessGain)
 ```
 
@@ -411,7 +411,7 @@ Sets the loudness gain for an OH_LowPowerAudioSink instance.
 
 ### OH_LowPowerAudioSink_SetPlaybackSpeed()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_SetPlaybackSpeed(OH_LowPowerAudioSink* sink, const float speed)
 ```
 
@@ -436,7 +436,7 @@ Sets the audio rendering speed for an OH_LowPowerAudioSink instance.
 
 ### OH_LowPowerAudioSink_ReturnSamples()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_ReturnSamples(OH_LowPowerAudioSink* sink, OH_AVSamplesBuffer* samples)
 ```
 
@@ -461,7 +461,7 @@ Provides a buffer to an OH_LowPowerAudioSink instance for procesing.
 
 ### OH_LowPowerAudioSink_RegisterCallback()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSink_RegisterCallback(OH_LowPowerAudioSink* sink, OH_LowPowerAudioSinkCallback* callback)
 ```
 
@@ -486,7 +486,7 @@ Registers a callback for an OH_LowPowerAudioSink instance.
 
 ### OH_LowPowerAudioSinkCallback_Create()
 
-```
+```c
 OH_LowPowerAudioSinkCallback* OH_LowPowerAudioSinkCallback_Create(void)
 ```
 
@@ -504,7 +504,7 @@ Creates an OH_LowPowerAudioSinkCallback instance.
 
 ### OH_LowPowerAudioSinkCallback_Destroy()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSinkCallback_Destroy(OH_LowPowerAudioSinkCallback* callback)
 ```
 
@@ -528,7 +528,7 @@ Destroys an OH_LowPowerAudioSinkCallback instance.
 
 ### OH_LowPowerAudioSinkCallback_SetPositionUpdateListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSinkCallback_SetPositionUpdateListener(OH_LowPowerAudioSinkCallback* callback, OH_LowPowerAudioSink_OnPositionUpdated onPositionUpdated, void* userData)
 ```
 
@@ -554,7 +554,7 @@ Sets a progress update listener for an OH_LowPowerAudioSinkCallback instance.
 
 ### OH_LowPowerAudioSinkCallback_SetDataNeededListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSinkCallback_SetDataNeededListener(OH_LowPowerAudioSinkCallback* callback, OH_LowPowerAudioSink_OnDataNeeded onDataNeeded, void* userData)
 ```
 
@@ -580,7 +580,7 @@ Sets a data needed listener for an OH_LowPowerAudioSinkCallback instance.
 
 ### OH_LowPowerAudioSinkCallback_SetErrorListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSinkCallback_SetErrorListener(OH_LowPowerAudioSinkCallback* callback, OH_LowPowerAudioSink_OnError onError, void* userData)
 ```
 
@@ -606,7 +606,7 @@ Sets an error listener for an OH_LowPowerAudioSinkCallback instance.
 
 ### OH_LowPowerAudioSinkCallback_SetInterruptListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSinkCallback_SetInterruptListener(OH_LowPowerAudioSinkCallback* callback, OH_LowPowerAudioSink_OnInterrupted onInterrupted, void* userData)
 ```
 
@@ -632,7 +632,7 @@ Sets an audio focus interruption listener for an OH_LowPowerAudioSinkCallback in
 
 ### OH_LowPowerAudioSinkCallback_SetDeviceChangeListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSinkCallback_SetDeviceChangeListener(OH_LowPowerAudioSinkCallback* callback, OH_LowPowerAudioSink_OnDeviceChanged onDeviceChanged, void* userData)
 ```
 
@@ -658,7 +658,7 @@ Sets an audio device change listener for an OH_LowPowerAudioSinkCallback instanc
 
 ### OH_LowPowerAudioSinkCallback_SetEosListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerAudioSinkCallback_SetEosListener(OH_LowPowerAudioSinkCallback *callback, OH_LowPowerAudioSink_OnEos onEos, void* userData)
 ```
 

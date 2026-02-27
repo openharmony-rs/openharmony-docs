@@ -26,4 +26,4 @@ The count of nodes monitoring render state is over the limitation.
 
 **处理步骤**
 
-NA
+请确保注册的监视渲染状态的节点数小于64。

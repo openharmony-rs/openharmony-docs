@@ -6,13 +6,13 @@
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct AbilityBase_Want AbilityBase_Want
 ```
 
 ## 概述
 
-声明want。
+声明元能力want结构。
 
 **起始版本：** 20
 

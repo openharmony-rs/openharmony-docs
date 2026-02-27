@@ -17,6 +17,54 @@
 
 申请流程可参考[选择申请权限的方式](determine-application-mode.md)。
 
+## ohos.permission.RUNNING_LOCK
+
+允许应用获取运行锁，保证应用在后台的持续运行。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：7
+
+## ohos.permission.SET_WALLPAPER
+
+允许应用设置壁纸。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：7
+
+## ohos.permission.MODIFY_AUDIO_SETTINGS
+
+允许应用修改音频设置。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：8
+
+## ohos.permission.RECEIVER_STARTUP_COMPLETED
+
+允许应用订阅开机广播。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：9
+
 ## ohos.permission.PRE_START_ATOMIC_SERVICE
 
 允许应用市场跳过loading弹框并为原子化服务提前打开窗口，并在窗口内部显示加载动效。
@@ -292,6 +340,30 @@
 **ACL使能**：true
 
 **起始版本**：11
+
+## ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+允许应用读取无障碍配置信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：9
+
+## ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+允许应用设置无障碍配置信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：9
 
 ## ohos.permission.QUERY_ACCESSIBILITY_ELEMENT
 
@@ -920,6 +992,31 @@
 **权限级别**：system_core
 
 **授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：10
+
+## ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE
+
+允许在企业设备上安装企业MDM应用包。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：10
+
+## ohos.permission.INSTALL_SELF_BUNDLE
+
+允许企业MDM应用在企业设备上自升级。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
 
 **ACL使能**：true
 
@@ -3881,6 +3978,18 @@
 
 **起始版本**：12
 
+## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
+
+允许UIExtensionAbility显示在锁屏之上。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：14
+
 ## ohos.permission.ACCESS_DISTRIBUTED_MODEM
 
 允许系统服务访问虚拟Modem。
@@ -3903,7 +4012,7 @@
 
 **ACL使能**：true
 
-**起始版本**：14
+**起始版本**：13
 
 ## ohos.permission.SET_TELEPHONY_ESIM_STATE
 
@@ -3915,7 +4024,7 @@
 
 **ACL使能**：true
 
-**起始版本**：14
+**起始版本**：13
 
 ## ohos.permission.CAMERA_BACKGROUND
 
@@ -3963,7 +4072,7 @@
 
 **ACL使能**：true
 
-**起始版本**：12
+**起始版本**：13
 
 ## ohos.permission.START_RESTORE_NOTIFICATION
 
@@ -3988,18 +4097,6 @@
 **ACL使能**：true
 
 **起始版本**：14
-
-## ohos.permission.ACCESS_MCU_LOG_DIR
-
-允许系统应用访问MCU（microcontroller unit）日志目录。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**起始版本**：12
 
 ## ohos.permission.GRANT_SHORT_TERM_WRITE_MEDIAVIDEO
 
@@ -4350,6 +4447,7 @@
 允许扩展外设驱动访问USBSerial DDK接口开发USB Serial扩展外设驱动。
 
 支持以下类型的外设扩展驱动开发：
+
 外设以USB总线接入主机，且满足：
 
 1. 外设InterfaceClass为通信设备控制类 (0x02)、InterfaceSubClass遵循ACMSubClass模型(0x02)。
@@ -4657,7 +4755,11 @@
 
 **ACL使能**：true
 
+**支持设备**：Phone | PC/2in1 | Tablet
+
 **起始版本**：19
+
+**变更信息**：从API23开始，增加支持在手机上申请。
 
 ## ohos.permission.READ_PARENT_CONTROL_DATA
 
@@ -4669,7 +4771,7 @@
 
 **ACL使能**：true
 
-**支持设备**：Phone | Tablet | 2in1
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：19
 
@@ -4683,7 +4785,7 @@
 
 **ACL使能**：true
 
-**支持设备**：Phone | Tablet | 2in1
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：19
 
@@ -5079,22 +5181,6 @@
 
 **起始版本**：19
 
-## ohos.permission.kernel.LOAD_INDEPENDENT_LIBRARY
-
-允许HAP加载具有不同ownerid的独立二进制SO。
-
-该SO指具有开发者证书或AdHoc签名的独立二进制SO。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**支持设备**：PC/2in1
-
-**起始版本**：20
-
 ## ohos.permission.GET_DEVICE_INDEPENDENT_BINARY_CERT
 
 允许系统应用查询独立二进制程序的证书信息。
@@ -5150,6 +5236,20 @@
 **支持设备**：General
 
 **起始版本**：20
+
+## ohos.permission.ACCESS_ANCO_APP_DATA
+
+允许应用访问兼容应用目录。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**： Phone | PC/2in1 | Tablet
+
+**起始版本**：22
 
 ## ohos.permission.MANAGE_SELF_SKILLS
 
@@ -5234,3 +5334,239 @@
 **ACL使能**：true
 
 **起始版本**：18
+
+## ohos.permission.ACCESS_SUPER_HUB
+
+允许应用拉起"中转站"。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：12
+
+## ohos.permission.ACCESS_USER_ACCOUNT_INFO
+
+允许系统应用获取账号提供的数据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：18
+
+## ohos.permission.USE_USER_ACCESS_MANAGER
+
+允许应用查询和配置用户身份认证策略、校验用户身份认证结果。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：18
+
+## ohos.permission.MANAGE_DYNAMIC_UTD_TYPE
+
+允许应用动态注册或删除应用自定义UTD数据类型。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：22
+
+## ohos.permission.MANAGE_MEDIA_SHARED_RESOURCE
+
+允许系统应用使用相机框架目录的媒体共享资源。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
+
+## ohos.permission.MANAGE_CLOUD_DATA_SERVICE
+
+允许已接入云空间的应用管理云空间云侧数据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
+
+## ohos.permission.MANAGE_RISK_PHOTOS
+
+允许系统应用访问可能存在风险的图片或视频。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
+
+## ohos.permission.READ_CLOUD_IMAGEVIDEO
+
+允许应用读取用户云存储空间的图片或视频文件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
+
+## ohos.permission.ACCESS_SECURE_FENCE
+
+允许系统应用访问安全围栏的能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Car
+
+**起始版本**：23
+
+## ohos.permission.ACCESS_MINI_SYSTEM
+ 	 
+允许系统应用接入运行态能力框架。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**： General
+
+**起始版本**：23
+
+## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
+ 	
+允许系统应用拉起其他应用卡片添加到桌面的预览面板。
+
+获取该权限后，应用可以拉起其他应用卡片加桌预览面板，以引导用户将希望分发的卡片添加到桌面。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
+**起始版本**：20
+
+## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE_CONTROL
+
+允许添加其他应用的WiseCard卡片。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
+
+## ohos.permission.MANAGE_LOCAL_EDUCATION_SPACES
+
+允许应用管理系统本地教育空间账号。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Tablet
+
+**起始版本**：23
+
+## ohos.permission.QUERY_LOCAL_EDUCATION_SPACES
+
+允许应用查询系统本地教育空间账号属性。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Tablet
+
+**起始版本**：23
+
+## ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
+
+允许应用获取本地账号授权。
+
+获取该权限后，应用可调用接口获取本地账号授权，成功获取目标特权的授权后，应用可执行对应的敏感操作（如创建和删除本地账号、修改本地账号类型、修改时间时区等）。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：PC/2in1
+
+**起始版本**：24
+
+## ohos.permission.GET_AGENT_CARD
+
+允许系统应用获取AgentCard信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：24
+
+## ohos.permission.CONNECT_AGENT
+
+允许系统应用连接智能体。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：24

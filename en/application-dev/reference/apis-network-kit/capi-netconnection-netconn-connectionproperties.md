@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct NetConn_ConnectionProperties {...} NetConn_ConnectionProperties
+```
+
 ## Overview
 
 Defines the network connection properties.

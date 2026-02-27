@@ -39,7 +39,7 @@
 
 ### OH_MediaAssetChangeRequest_Create()
 
-```
+```c
 OH_MediaAssetChangeRequest* OH_MediaAssetChangeRequest_Create(OH_MediaAsset* mediaAsset)
 ```
 
@@ -64,7 +64,7 @@ OH_MediaAssetChangeRequest* OH_MediaAssetChangeRequest_Create(OH_MediaAsset* med
 
 ### OH_MediaAssetChangeRequest_AddResourceWithUri()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_AddResourceWithUri(OH_MediaAssetChangeRequest* changeRequest,MediaLibrary_ResourceType resourceType, char* fileUri)
 ```
 
@@ -91,7 +91,7 @@ MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_AddResourceWithUri(OH_MediaAss
 
 ### OH_MediaAssetChangeRequest_AddResourceWithBuffer()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_AddResourceWithBuffer(OH_MediaAssetChangeRequest* changeRequest,MediaLibrary_ResourceType resourceType, uint8_t* buffer, uint32_t length)
 ```
 
@@ -119,7 +119,7 @@ MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_AddResourceWithBuffer(OH_Media
 
 ### OH_MediaAssetChangeRequest_GetWriteCacheHandler()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_GetWriteCacheHandler(OH_MediaAssetChangeRequest* changeRequest,int32_t* fd)
 ```
 
@@ -147,7 +147,7 @@ MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_GetWriteCacheHandler(OH_MediaA
 
 ### OH_MediaAssetChangeRequest_SaveCameraPhoto()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_SaveCameraPhoto(OH_MediaAssetChangeRequest* changeRequest,MediaLibrary_ImageFileType imageFileType)
 ```
 
@@ -173,7 +173,7 @@ MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_SaveCameraPhoto(OH_MediaAssetC
 
 ### OH_MediaAssetChangeRequest_DiscardCameraPhoto()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_DiscardCameraPhoto(OH_MediaAssetChangeRequest* changeRequest)
 ```
 
@@ -198,7 +198,7 @@ MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_DiscardCameraPhoto(OH_MediaAss
 
 ### OH_MediaAssetChangeRequest_Release()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_Release(OH_MediaAssetChangeRequest* changeRequest)
 ```
 

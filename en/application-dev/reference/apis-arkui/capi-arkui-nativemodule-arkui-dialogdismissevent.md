@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_DialogDismissEvent ArkUI_DialogDismissEvent
+```
+
 ## Overview
 
 Defines a struct for a dialog box dismiss event.

@@ -29,7 +29,7 @@ Querying data from a large amount of data may take time or even cause applicatio
 **RelationalStore** provides APIs for applications to perform data operations. With SQLite as the underlying persistent storage engine, **RelationalStore** provides SQLite database features, including transactions, indexes, views, triggers, foreign keys, parameterized queries, prepared SQL statements, and more.
 
 **Figure 1** Working mechanism
-
+ 
 ![relationStore_local](figures/relationStore_local.jpg)
 
 
@@ -51,17 +51,17 @@ Querying data from a large amount of data may take time or even cause applicatio
 
 The following table lists the APIs used for RDB data persistence. Most of the APIs are executed asynchronously, using a callback or promise to return the result. The following table uses the callback-based APIs as an example. For more information about the APIs, see [RDB Store](../reference/apis-arkdata/arkts-apis-data-relationalStore.md).
 
-| API| Description|
+| API| Description| 
 | -------- | -------- |
 | getRdbStore(context: Context, config: StoreConfig, callback: AsyncCallback&lt;RdbStore&gt;): void | Obtains an **RdbStore** instance to implement RDB store operations. You can set **RdbStore** parameters based on actual requirements and use **RdbStore** APIs to perform data operations.|
 | createTransaction(options?: TransactionOptions): Promise&lt;Transaction&gt; | Creates a transaction object and starts the transaction.|
 | execute(sql: string, args?: Array&lt;ValueType&gt;):Promise&lt;ValueType&gt; | Executes an SQL statement that contains specified parameters.|
 | querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;ResultSet&gt; | Queries data in a store using the specified SQL statements.|
 | insert(table: string, values: ValuesBucket, conflict?: ConflictResolution): Promise&lt;number&gt; | Inserts a row of data into a table.|
-| update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;):void | Updates data in the RDB store based on the specified **predicates** instance.|
-| delete(predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;):void | Deletes data from the RDB store based on the specified **predicates** instance.|
-| query(predicates: RdbPredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;ResultSet&gt;):void | Queries data in the RDB store based on specified conditions.|
-| deleteRdbStore(context: Context, name: string, callback: AsyncCallback&lt;void&gt;): void | Deletes an RDB store.|
+| update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;):void | Updates data in the RDB store based on the specified **predicates** instance.| 
+| delete(predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;):void | Deletes data from the RDB store based on the specified **predicates** instance.| 
+| query(predicates: RdbPredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;ResultSet&gt;):void | Queries data in the RDB store based on specified conditions.| 
+| deleteRdbStore(context: Context, name: string, callback: AsyncCallback&lt;void&gt;): void | Deletes an RDB store.| 
 | isTokenizerSupported(tokenizer: Tokenizer): boolean | Checks whether the specified tokenizer is supported. (Tokenizer is a tool for breaking down text into smaller units, which can be words, subwords, characters, or other language fragments.)|
 
 ## How to Develop
@@ -70,19 +70,20 @@ Unless otherwise specified, the sample code without "stage model" or "FA model" 
 If error 14800011 is thrown, you need to rebuild the database and restore data to ensure normal application development. For details, see [Rebuilding an RDB Store](data-backup-and-restore.md#rebuilding-an-rdb-store).
 
 1. Obtain an **RdbStore** instance, which includes operations of creating an RDB store and tables, and upgrading or downgrading the RDB store. You are advised to use transaction APIs to ensure the atomicity of the database upgrade process.
-   <br>Example:
-   Stage model:
+
+   Example:
    
-   <!--@[persistence_get_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   Stage model:
+     
+   <!--@[persistence_get_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 
    
    ``` TypeScript
-   import { relationalStore} from '@kit.ArkData'; // Import the relationalStore module.
+   import { relationalStore } from '@kit.ArkData'; // Import a module.
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    const DOMAIN = 0x0000;
    
    let store: relationalStore.RdbStore | undefined = undefined;
-   let context = getContext();
    let tokenType = relationalStore.Tokenizer.ICU_TOKENIZER;
    let tokenTypeSupported = relationalStore.isTokenizerSupported(tokenType);
    if (!tokenTypeSupported) {
@@ -103,7 +104,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
      // (Optional) Type of the tokenizer used in full-text search (FTS) mode. Only English word segmentation is supported in FTS by default.
      tokenizer: tokenType,
    };
-   // ···
+   // ...
      // Check the RDB store version. If the version is incorrect, upgrade or downgrade the RDB store.
      // For example, the RDB store version is 3 and the table structure is EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY).
      // Execute the SQL statement for table creation. IDENTITY is of the BIGINT type and is set to UNLIMITED INT.
@@ -141,7 +142,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
        // Upgrade the RDB store from version 1 to version 2.
        if (storeVersion === 1) {
          // version = 1: Table structure is EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS).
-         //=> version = 2: Table structure is EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY).
+         // => version = 2: Table structure is EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY).
          try {
            await transaction.execute('ALTER TABLE EMPLOYEE ADD COLUMN IDENTITY UNLIMITED INT');
            storeVersion = 2;
@@ -156,7 +157,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
        // Upgrade the RDB store from version 2 to version 3.
        if (storeVersion === 2) {
          // version = 2: Table structure is EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY).
-         //=> version = 3: Table structure is EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY).
+         // => version = 3: Table structure is EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY).
          try {
            await transaction.execute('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS');
            storeVersion = 3;
@@ -177,7 +178,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
    FA model:
 
    ```ts
-   import { relationalStore} from '@kit.ArkData'; // Import the relationalStore module.
+   import { relationalStore } from '@kit.ArkData'; // Import a module.
    import { featureAbility } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    
@@ -253,7 +254,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
    > - For details about the error codes, see [Universal Error Codes](../reference/errorcode-universal.md) and [RDB Store Error Codes](../reference/apis-arkdata/errorcode-data-rdb.md).
 
 2. Call **insert()** to insert data. <br>Example:
-   <!--@[persistence_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   <!--@[persistence_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    
    ``` TypeScript
    // Insert data.
@@ -287,7 +288,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
 3. Modify or delete data based on the specified **Predicates** instance.
 
    Call **update()** to modify data and **delete()** to delete data. <br>Example:
-   <!--@[persistence_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   <!--@[persistence_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    
    ``` TypeScript
    // Modify and delete data.
@@ -334,7 +335,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
 4. Query data based on the conditions specified by **Predicates**.
 
    Call **query()** to query data. The data obtained is returned in a **ResultSet** object. <br>Example:
-   <!--@[persistence_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   <!--@[persistence_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    
    ``` TypeScript
    // Query data.
@@ -369,7 +370,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
    The RDB store also supports full-text search (FTS) in Chinese or English. The ICU tokenizer is supported.
 
    The following example demonstrates how to perform FTS with Chinese keywords:
-   <!--@[persistence_chinese_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   <!--@[persistence_chinese_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    
    ``` TypeScript
    // Query data using Chinese keywords.
@@ -386,7 +387,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
    }
    if (store !== undefined) {
      try {
-       const resultSet = await store.querySql('SELECT name FROM example WHERE example MATCH ?', ['Test']);
+       const resultSet = await store.querySql('SELECT name FROM example WHERE example MATCH ?', ['测试']);
        while (resultSet.goToNextRow()) {
          const name = resultSet.getValue(resultSet.getColumnIndex('name'));
          hilog.info(DOMAIN, 'rdbDataPersistence', `name=${name}`);
@@ -402,10 +403,11 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
 5. Use the transaction object to insert, delete, and update data.
    
    Call the **createTransaction** method to create a transaction object and execute the corresponding operation.
+   
    The supported transaction types are **DEFERRED** (default), **IMMEDIATE**, and **EXCLUSIVE**.
 
    For details, see [Interface (RdbStore)](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#createtransaction14).
-   <!--@[persistence_transaction_insert_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   <!--@[persistence_transaction_insert_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    
    ``` TypeScript
    // Use the transaction object to insert, delete, and update data.
@@ -467,7 +469,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
 6. Back up the database in the same directory. <br>Two backup modes are available: manual backup and automatic backup (available only for system applications). For details, see [Backing Up an RDB Store](data-backup-and-restore.md#backing-up-an-rdb-store).
 
    Example: Perform manual backup of an RDB store.
-   <!--@[persistence_backup_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   <!--@[persistence_backup_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    
    ``` TypeScript
    // Back up the database in the same path.
@@ -486,7 +488,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
 7. Restore data from the database backup. <br>You can restore an RDB store from the manual backup data or automatic backup data (available only for system applications). For details, see [Restoring RDB Store Data](data-backup-and-restore.md#restoring-rdb-store-data).
 
    Example: Call [restore](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#restore) to restore an RDB store from the data that is manually backed up.
-   <!--@[persistence_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   <!--@[persistence_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    
    ``` TypeScript
    // Restore data from the backup database.
@@ -506,7 +508,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
    Call **deleteRdbStore()** to delete the RDB store and related database files. <br>Example:
 
    Stage model:
-   <!--@[persistence_delete_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   <!--@[persistence_delete_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
    
    ``` TypeScript
    // Delete the database.
@@ -518,3 +520,5 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
      hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in deleting RdbStore.');
    });
    ```
+
+<!--no_check-->

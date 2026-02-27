@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct OH_AudioRenderer_Callbacks_Struct {...} OH_AudioRenderer_Callbacks
 ```
 
@@ -16,7 +16,7 @@ The struct defines a pointer to the callback functions related to an audio rende
 
 To avoid unexpected behavior, ensure that every member variable of the struct is initialized by a custom callback method or a null pointer when setting the audio callback functions.
 
-For details, see [Using OHAudio for Audio Playback](../../media/audio/using-ohaudio-for-playback.md).
+For details, see [(Recommended) Using OHAudio for Audio Playback (C/C++)](../../media/audio/using-ohaudio-for-playback.md).
 
 **Since**: 10
 
@@ -51,17 +51,13 @@ Use the following callback types for substitute:
 
 ### OH_AudioRenderer_OnWriteData()
 
-```
+```c
 int32_t (*OH_AudioRenderer_OnWriteData)(OH_AudioRenderer* renderer, void* userData, void* buffer, int32_t length)
 ```
 
 **Description**
 
-Defines a function pointer to the callback function used to write audio data.
-
-The callback function is used only to write audio data. Do not call AudioRenderer APIs in it.
-
-Once the callback function finishes its execution, the audio service queues the data pointed to by **buffer** for playback. Therefore, do not change the data outside the callback. It is crucial to fill **buffer** with the exact length (specified by **length**) of data designated for playback; otherwise, noises may occur during playback.
+Defines a function pointer to the callback function used to write audio data.<br> The callback function is used only to write audio data. Do not call AudioRenderer APIs in it.<br> Once the callback function finishes its execution, the audio service queues the data pointed to by **buffer** for playback. Therefore, do not change the data outside the callback. It is crucial to fill **buffer** with the exact length (specified by **length**) of data designated for playback; otherwise, noises may occur during playback.
 
 **Since**: 10
 
@@ -80,7 +76,7 @@ Once the callback function finishes its execution, the audio service queues the 
 
 ### OH_AudioRenderer_OnStreamEvent()
 
-```
+```c
 int32_t (*OH_AudioRenderer_OnStreamEvent)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_Event event)
 ```
 
@@ -106,7 +102,7 @@ Defines a function pointer to the callback function used to process audio playba
 
 ### OH_AudioRenderer_OnInterruptEvent()
 
-```
+```c
 int32_t (*OH_AudioRenderer_OnInterruptEvent)(OH_AudioRenderer* renderer, void* userData, OH_AudioInterrupt_ForceType type, OH_AudioInterrupt_Hint hint)
 ```
 
@@ -131,7 +127,7 @@ Defines a function pointer to the callback function used to process audio playba
 
 ### OH_AudioRenderer_OnError()
 
-```
+```c
 int32_t (*OH_AudioRenderer_OnError)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_Result error)
 ```
 

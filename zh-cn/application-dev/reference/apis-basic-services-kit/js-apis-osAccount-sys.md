@@ -135,11 +135,12 @@ activateOsAccount(localId: number): Promise&lt;void&gt;
   }
   ```
 
-### activateOsAccount<sup>21+</sup>
+### activateOsAccount<sup>23+</sup>
 
 activateOsAccount(localId: number, displayId: number): Promise&lt;void&gt;
 
 在指定逻辑屏激活（前台启动或切换）目标系统账号。使用Promise异步回调。
+
 当前不支持跨逻辑屏激活，即在指定逻辑屏上激活另一个已在逻辑屏前台运行的系统账号。
 
 **系统接口：** 此接口为系统接口。
@@ -440,12 +441,12 @@ removeOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
-| 12300010 | Service busy. Possible causes: The target account is being operated. |
+| 12300010 | Service busy. Possible causes: The target account is being operated on. |
 
 **示例：**
 
@@ -501,7 +502,7 @@ removeOsAccount(localId: number): Promise&lt;void&gt;
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -529,6 +530,72 @@ removeOsAccount(localId: number): Promise&lt;void&gt;
     console.error(`removeOsAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
+
+### removeOsAccount<sup>24+</sup>
+
+removeOsAccount(localId: number, options: RemoveOsAccountOptions): Promise&lt;void&gt;
+
+根据删除选项，删除指定系统账号。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**参数：**
+
+| 参数名  | 类型   | 必填 | 说明                               |
+| ------- | ------ | ---- | --------------------------------- |
+| localId | number | 是   | 系统账号ID。 |
+| options | [RemoveOsAccountOptions](#removeosaccountoptions24) | 是   | 删除系统账号的选项。|
+
+**返回值：**
+
+| 类型                | 说明                                  |
+| ------------------- | ------------------------------------ |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息             |
+| -------- | ------------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid localId or options.    |
+| 12300003 | Account not found. |
+| 12300008 | Restricted Account. |
+| 12300010 | Service busy. Possible causes: The target account is being operated on. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+let accountName: string = 'testAccountName';
+let token: Uint8Array = new Uint8Array([0]);
+let options: osAccount.RemoveOsAccountOptions = {
+  token: token,
+}
+try {
+  accountManager.createOsAccount(accountName, osAccount.OsAccountType.NORMAL,
+    (err: BusinessError, osAccountInfo: osAccount.OsAccountInfo)=>{
+      accountManager.removeOsAccount(osAccountInfo.localId, options).then(() => {
+        console.info('removeOsAccount successfully');
+      }).catch((err: BusinessError) => {
+        console.error(`removeOsAccount failed, code is ${err.code}, message is ${err.message}`);
+      });
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`removeOsAccount exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ### setOsAccountConstraints
 
@@ -700,7 +767,7 @@ setOsAccountName(localId: number, localName: string, callback: AsyncCallback&lt;
 
 setOsAccountName(localId: number, localName: string): Promise&lt;void&gt;
 
-设置指定系统账号的账号名。使用Promise异步调用。
+设置指定系统账号的账号名。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -752,6 +819,71 @@ setOsAccountName(localId: number, localName: string): Promise&lt;void&gt;
     console.error(`setOsAccountName exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
+
+### setOsAccountType<sup>24+</sup>
+
+setOsAccountType(localId: number, type: OsAccountType, options?: SetOsAccountTypeOptions): Promise&lt;void&gt;
+
+设置指定系统账号的账号类型。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**参数：**
+
+| 参数名  | 类型                                                 | 必填 | 说明                     |
+| ------- | ---------------------------------------------------- | ---- | ------------------------ |
+| localId | number                                               | 是   | 系统账号ID。             |
+| type    | [OsAccountType](js-apis-osAccount.md#osaccounttype)  | 是   | 系统账号类型。           |
+| options | [SetOsAccountTypeOptions](#setosaccounttypeoptions24) | 否   | 设置系统账号类型的选项。默认为空。 |
+
+**返回值：**
+
+| 类型                | 说明                                   |
+| ------------------- | -------------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Not system application.                                      |
+| 204      | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint. 2. The required privilege for the operation has not been granted. |
+| 12300001 | The system service works abnormally.                         |
+| 12300002 | Invalid type or options.                                     |
+| 12300003 | Account not found.                                           |
+| 12300008 | Restricted OS account.                                       |
+| 12300010 | Service busy. Possible causes: The target account is being operated. |
+| 12300023 | The number of accounts of the specified type has reached the upper limit. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+let localId: number = 100;
+let type: osAccount.OsAccountType = osAccount.OsAccountType.ADMIN;
+let options: osAccount.SetOsAccountTypeOptions = {
+  token: new Uint8Array([0, 1, 2, 3])
+};
+try {
+  accountManager.setOsAccountType(localId, type, options).then(() => {
+    console.info('setOsAccountType successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`setOsAccountType failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`setOsAccountType exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ### queryMaxOsAccountNumber
 
@@ -1049,13 +1181,14 @@ createOsAccount(localName: string, type: OsAccountType, callback: AsyncCallback&
 | -------- | ------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localName or type. |
 | 12300004 | Local name already exists. |
 | 12300005 | Multi-user not supported. |
 | 12300006 | Unsupported account type. |
 | 12300007 | The number of accounts has reached the upper limit. |
+| 12300023 | The number of accounts of the specified type has reached the upper limit. |
 
 **示例：**
 
@@ -1110,7 +1243,7 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 | -------- | ------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localName, type or options. |
 | 12300004 | Local name already exists. |
@@ -1118,6 +1251,7 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 | 12300006 | Unsupported account type. |
 | 12300007 | The number of accounts has reached the upper limit. |
 | 12300015 | The short name already exists. |
+| 12300023 | The number of accounts of the specified type has reached the upper limit. |
 
 **示例：**
 
@@ -1169,7 +1303,7 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, cal
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 801 | Capability not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type or domainInfo. |
@@ -1177,6 +1311,7 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, cal
 | 12300005 | Multi-user not supported. |
 | 12300006 | Unsupported account type. |
 | 12300007 | The number of accounts has reached the upper limit. |
+| 12300023 | The number of accounts of the specified type has reached the upper limit. |
 
 **示例：**
 
@@ -1233,7 +1368,7 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, opt
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 801 | Capability not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type, domainInfo or options. |
@@ -1242,6 +1377,7 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, opt
 | 12300006 | Unsupported account type. |
 | 12300007 | The number of accounts has reached the upper limit. |
 | 12300015 | The short name already exists. |
+| 12300023 | The number of accounts of the specified type has reached the upper limit. |
 
 **示例：**
 
@@ -1744,9 +1880,9 @@ on(type: 'switching', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **系统接口：** 此接口为系统接口。
 
-**说明：** 从API version 21 开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
-
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS 或 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+从API version 23开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1755,7 +1891,7 @@ on(type: 'switching', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 | 参数名   | 类型                       | 必填 | 说明                                                         |
 | -------- | -------------------------- | ---- | ------------------------------------------------------------ |
 | type     | 'switching'                 | 是   | 订阅类型，switching表示订阅的是系统账号的前后台正在切换事件。 |
-| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | 是   | 订阅系统账号的前后台正在切换事件回调，包含切换来源和切换目标的系统账号ID。<br/>**说明：** 从API version 21开始，事件数据中新增可选字段displayId，表示发生切换事件的逻辑屏ID。    |
+| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | 是   | 订阅系统账号的前后台正在切换事件回调，包含切换来源和切换目标的系统账号ID。<br/>**说明：** 从API version 23开始，事件数据中新增可选字段displayId，表示发生切换事件的逻辑屏ID。    |
 
 **错误码：**
 
@@ -1763,7 +1899,6 @@ on(type: 'switching', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -1794,9 +1929,9 @@ off(type: 'switching', callback?: Callback&lt;OsAccountSwitchEventData&gt;): voi
 
 **系统接口：** 此接口为系统接口。
 
-**说明：** 从API version 21 开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
-
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS 或 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+从API version 23开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1813,7 +1948,6 @@ off(type: 'switching', callback?: Callback&lt;OsAccountSwitchEventData&gt;): voi
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -1839,9 +1973,9 @@ on(type: 'switched', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **系统接口：** 此接口为系统接口。
 
-**说明：** 从API version 21 开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
-
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS 或 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+从API version 23开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1850,7 +1984,7 @@ on(type: 'switched', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 | 参数名   | 类型                       | 必填 | 说明                                                         |
 | -------- | -------------------------- | ---- | ------------------------------------------------------------ |
 | type     | 'switched'                 | 是   | 订阅类型，switched表示订阅的是系统账号的前后台切换结束事件。 |
-| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | 是   | 订阅系统账号的前后台切换结束事件回调，包含切换来源和切换目标的系统账号ID。<br/>**说明：** 从API version 21开始，事件数据中新增可选字段displayId，表示发生切换事件的逻辑屏ID。    |
+| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | 是   | 订阅系统账号的前后台切换结束事件回调，包含切换来源和切换目标的系统账号ID。<br/>**说明：** 从API version 23开始，事件数据中新增可选字段displayId，表示发生切换事件的逻辑屏ID。    |
 
 **错误码：**
 
@@ -1858,7 +1992,6 @@ on(type: 'switched', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -1889,9 +2022,9 @@ off(type: 'switched', callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **系统接口：** 此接口为系统接口。
 
-**说明：** 从API version 21 开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
-
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS 或 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+从API version 23开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1908,7 +2041,6 @@ off(type: 'switched', callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -1925,6 +2057,102 @@ off(type: 'switched', callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
     console.error(`off exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
+
+### onConstraintChanged<sup>23+</sup>
+onConstraintChanged(constraints: string[], callback: Callback&lt;ConstraintChangeInfo&gt;): void
+
+订阅调用方所属系统账号的一种或多种约束变更事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**参数：**
+
+| 参数名     | 类型                   | 必填 | 说明      |
+| --------  | ---------------------- | ---- | -------- |
+| constraints  | string[] | 是   | 表示待订阅的[约束](js-apis-osAccount.md#系统账号约束列表)列表。 |
+| callback | Callback&lt;[ConstraintChangeInfo](#constraintchangeinfo23)&gt;  | 是   | 表示用于接收约束变更事件的回调函数。 |
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ------------------- |
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | One or more constraints are invalid. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+let constraint: string = 'constraint.wifi';
+const callback:Callback<osAccount.ConstraintChangeInfo> = (data: osAccount.ConstraintChangeInfo): void => {
+  console.info(`ConstraintChangeInfo received, constraint: ${data.constraint} isEnabled: ${data.isEnabled}`);
+};
+
+try {
+  accountManager.onConstraintChanged([constraint], callback);
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`onConstraintChanged exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### offConstraintChanged<sup>23+</sup>
+offConstraintChanged(callback?: Callback&lt;ConstraintChangeInfo&gt;): void
+
+取消与指定回调关联的约束变更订阅记录。若未指定回调，则取消所有订阅记录。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**参数：**
+
+| 参数名     | 类型                   | 必填 | 说明      |
+| --------  | ---------------------- | ---- | -------- |
+| callback | Callback&lt;[ConstraintChangeInfo](#constraintchangeinfo23)&gt;  | 否   | 表示用于接收约束变更事件的回调函数。<br>默认为undefined，表示清除所有订阅记录。<br>非undefined时，表示清除与该回调函数关联的订阅记录。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ------------------- |
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+let constraint: string = 'constraint.wifi';
+const callback:Callback<osAccount.ConstraintChangeInfo> = (data: osAccount.ConstraintChangeInfo): void => {
+  console.info(`ConstraintChangeInfo received, constraint: ${data.constraint} isEnabled: ${data.isEnabled}`);
+};
+
+try {
+  accountManager.onConstraintChanged([constraint], callback);
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`onConstraintChanged exception: code is ${err.code}, message is ${err.message}`);
+}
+
+try {
+  accountManager.offConstraintChanged(callback);
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`offConstraintChanged exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ### getBundleIdForUid<sup>9+</sup>
 
@@ -2118,7 +2346,7 @@ isMainOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
 ### isMainOsAccount<sup>9+</sup>
 
-isMainOsAccount(): Promise&lt;boolean&gt;;
+isMainOsAccount(): Promise&lt;boolean&gt;
 
 查询当前进程是否处于主用户。使用Promise异步回调。
 
@@ -2160,7 +2388,7 @@ isMainOsAccount(): Promise&lt;boolean&gt;;
   }
   ```
 
-### getForegroundOsAccountLocalId<sup>21+</sup>
+### getForegroundOsAccountLocalId<sup>23+</sup>
 
 getForegroundOsAccountLocalId(displayId: number): Promise&lt;number&gt;
 
@@ -2214,7 +2442,7 @@ getForegroundOsAccountLocalId(displayId: number): Promise&lt;number&gt;
   }
   ```
 
-### getForegroundOsAccountDisplayId<sup>21+</sup>
+### getForegroundOsAccountDisplayId<sup>23+</sup>
 
 getForegroundOsAccountDisplayId(localId: number): Promise&lt;number&gt;
 
@@ -2322,7 +2550,7 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string, callback:
 
 ### getOsAccountConstraintSourceTypes<sup>9+</sup>
 
-getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt;;
+getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt;
 
 查询指定系统账号的指定约束来源信息。使用Promise异步回调。
 
@@ -2377,7 +2605,7 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise&
 
 ### getOsAccountType<sup>12+</sup>
 
-getOsAccountType(localId: number): Promise&lt;OsAccountType&gt;;
+getOsAccountType(localId: number): Promise&lt;OsAccountType&gt;
 
 查询指定系统账号的类型。使用Promise异步回调。
 
@@ -2491,6 +2719,272 @@ bindDomainAccount(localId: number, domainAccountInfo: DomainAccountInfo): Promis
   }
   ```
 
+## osAccount.getAuthorizationManager<sup>24+</sup>
+
+getAuthorizationManager(): AuthorizationManager
+
+获取系统账号授权管理器。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----- | ----------- |
+| [AuthorizationManager](#authorizationmanager24) | 返回系统账号授权管理的实例对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息       |
+| -------- | ------------- |
+| 202 | Not system application.|
+
+**示例：**
+
+```ts
+let authorizationManager: osAccount.AuthorizationManager = osAccount.getAuthorizationManager();
+```
+
+## AuthorizationManager<sup>24+</sup>
+
+系统账号授权管理类，用于管理系统账号授权。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### acquireAuthorization<sup>24+</sup>
+
+acquireAuthorization(privilege: string, options?: AcquireAuthorizationOptions): Promise&lt;AcquireAuthorizationResult&gt;
+
+为当前进程获取授权。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| privilege | string | 是 | 目标权限，详见[配置文件](https://gitcode.com/openharmony/account_os_account/blob/master/services/accountmgr/authorization_manager/config/privileges.json)。 |
+| options | [AcquireAuthorizationOptions](#acquireauthorizationoptions24) | 否 | 获取授权的选项，默认为空。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[AcquireAuthorizationResult](#acquireauthorizationresult24)&gt; | Promise对象，返回获取授权的结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | --- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid privilege or options. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let authorizationManager: osAccount.AuthorizationManager = osAccount.getAuthorizationManager();
+let privilege: string = 'testPrivilege';
+let options: osAccount.AcquireAuthorizationOptions = {
+  challenge: new Uint8Array([1, 2, 3]),
+  isReuseNeeded: true,
+  isInteractionAllowed: true,
+};
+try {
+  authorizationManager.acquireAuthorization(privilege, options).then((result: osAccount.AcquireAuthorizationResult) => {
+    console.info(`acquireAuthorization successfully, resultCode: ${result.resultCode}`);
+  }).catch((err: BusinessError) => {
+    console.error(`acquireAuthorization failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`acquireAuthorization exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### hasAuthorization<sup>24+</sup>
+
+hasAuthorization(privilege: string): Promise&lt;boolean&gt;
+
+检查当前进程是否已获得指定特权的授权。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| privilege | string | 是 | 目标权限，详见[配置文件](https://gitcode.com/openharmony/account_os_account/blob/master/services/accountmgr/authorization_manager/config/privileges.json)。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise对象，返回true表示已获得指定特权的授权；返回false表示未获得指定特权的授权。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | --- |
+| 202 | Not system application. |
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid privilege. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let authorizationManager: osAccount.AuthorizationManager = osAccount.getAuthorizationManager();
+let privilege: string = 'testPrivilege';
+
+try {
+  authorizationManager.hasAuthorization(privilege).then((isAuthorized: boolean) => {
+    console.info(`Privilege: ${privilege} has been authorized: ${isAuthorized}`);
+  }).catch((e:Error) => {
+    const err = e as BusinessError;
+    console.error(`hasAuthorization failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`hasAuthorization exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### releaseAuthorization<sup>24+</sup>
+
+releaseAuthorization(privilege: string): Promise&lt;void&gt;
+
+为当前进程撤销指定特权的授权。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| privilege | string | 是 | 目标权限，详见[配置文件](https://gitcode.com/openharmony/account_os_account/blob/master/services/accountmgr/authorization_manager/config/privileges.json)。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | --- |
+| 202 | Not system application. |
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid privilege. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let authorizationManager: osAccount.AuthorizationManager = osAccount.getAuthorizationManager();
+let privilege: string = 'testPrivilege';
+
+try {
+  authorizationManager.releaseAuthorization(privilege).then(() => {
+    console.info('releaseAuthorization success');
+  }).catch((e:Error) => {
+    const err = e as BusinessError;
+    console.error(`releaseAuthorization failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`releaseAuthorization exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## AcquireAuthorizationOptions<sup>24+</sup>
+
+表示获取授权的选项。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| challenge | Uint8Array | 否 | 是 | 随机挑战值，可用于防止重放攻击，长度不得超过32字节，默认为undefined。|
+| isReuseNeeded | boolean | 否 | 是 | 是否需要重复用先前的授权，默认为true。<br/>如果为true且存在有效的授权结果，则将复用该结果；否则，将执行新的授权。 |
+| isInteractionAllowed | boolean | 否 | 是 | 是否允许用户交互，默认为true 。<br/>如果为true，则允许在交互上下文中显示授权对话框；如果为false，则不允许显示授权对话框。<br>**注意**：此选项仅在调用者位于前台时生效。如果调用者在后台，则不允许用户交互。 |
+| interactionContext | Context | 否 | 是 | 用户交互上下文配置，默认为undefined。<br/>- 未指定上下文时，授权对话框以模态系统模式显示。<br/>- 指定[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)或[UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)时，以模态应用模式显示。<br/> - 未提供有效上下文时，授权对话框无法显示。<br>**注意**：仅当isInteractionAllowed为true时生效。 |
+## AuthorizationResultCode<sup>24+</sup>
+
+表示授权结果码的枚举。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| --- | --- | --- |
+| AUTHORIZATION_SUCCESS | 0 | 表示授权成功。 |
+| AUTHORIZATION_CANCELED | 12300301 | 表示授权已取消。 |
+| AUTHORIZATION_INTERACTION_NOT_ALLOWED | 12300302 | 表示服务因不允许用户交互而拒绝授权。<br/>可能原因：<br/>1. 调用者位于后台；<br/>2. isInteractionAllowed选项的值为false；<br/>3. 指定的交互上下文无效。 |
+| AUTHORIZATION_DENIED | 12300303 | 表示因不符合授权规则，如账号类型不是管理员、设备类型不支持等原因而拒绝授权。 |
+| AUTHORIZATION_SERVICE_BUSY | 12300304 | 表示服务忙碌。<br/>可能原因：正在处理其他授权。 |
+
+## AcquireAuthorizationResult<sup>24+</sup>
+
+表示获取授权的结果。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| resultCode | [AuthorizationResultCode](#authorizationresultcode24) | 否 | 否 | 授权结果码。|
+| privilege | string | 否 | 否 | 与授权关联的权限。 |
+| isReused | boolean | 否 | 是 | 是否为复用的授权结果，默认为undefined。<br/>true：表示是复用的授权结果。false：表示不是复用的授权结果。 |
+| validityPeriod | number | 否 | 是 | 授权的有效期，默认300s。 |
+| token | Uint8Array | 否 | 是 | 授权令牌，默认为undefined。 |
+
 ## UserAuth<sup>8+</sup>
 
 用户认证类。
@@ -2521,7 +3015,7 @@ constructor()
 
 ### getVersion<sup>8+</sup>
 
-getVersion(): number;
+getVersion(): number
 
 返回版本信息。
 
@@ -2551,7 +3045,7 @@ getVersion(): number;
 
 ### getAvailableStatus<sup>8+</sup>
 
-getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): number;
+getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): number
 
 获取指定认证类型和认证可信等级的认证能力的可用状态。
 
@@ -2583,6 +3077,7 @@ getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): number;
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType or authTrustLevel. |
+| 12300117 | PIN is expired. |
 
 **示例：**
 
@@ -2626,10 +3121,10 @@ getProperty(request: GetPropertyRequest, callback: AsyncCallback&lt;ExecutorProp
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 | 12300003 | Account not found. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -2662,7 +3157,7 @@ getProperty(request: GetPropertyRequest, callback: AsyncCallback&lt;ExecutorProp
 
 ### getProperty<sup>8+</sup>
 
-getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;;
+getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;
 
 基于指定的请求信息获取属性。使用Promise异步回调。
 
@@ -2690,10 +3185,10 @@ getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;;
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 | 12300003 | Account not found. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -2724,7 +3219,7 @@ getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;;
 
 ### getPropertyByCredentialId<sup>14+</sup>
 
-getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyType&gt;): Promise&lt;ExecutorProperty&gt;;
+getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyType&gt;): Promise&lt;ExecutorProperty&gt;
 
 基于凭据id获取关联执行器的指定属性信息。使用Promise异步回调。
 
@@ -2753,9 +3248,9 @@ getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyTy
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid keys. |
+| 12300020 | Device hardware abnormal. |
 | 12300102 | The credential does not exist. |
 
 **示例：**
@@ -2853,7 +3348,7 @@ setProperty(request: SetPropertyRequest, callback: AsyncCallback&lt;void&gt;): v
 
 ### setProperty<sup>8+</sup>
 
-setProperty(request: SetPropertyRequest): Promise&lt;void&gt;;
+setProperty(request: SetPropertyRequest): Promise&lt;void&gt;
 
 设置可用于初始化算法的属性。使用Promise异步回调。
 
@@ -2910,7 +3405,7 @@ setProperty(request: SetPropertyRequest): Promise&lt;void&gt;;
 
 ### prepareRemoteAuth<sup>12+</sup>
 
-prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;;
+prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;
 
 准备远端认证。使用Promise异步回调。
 
@@ -2938,7 +3433,6 @@ prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;;
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid remoteNetworkId. |
 | 12300090 | Cross-device capability not supported. |
@@ -2972,9 +3466,9 @@ prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;;
 
 ### auth<sup>8+</sup>
 
-auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array;
+auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array
 
-认证当前用户。使用callback异步回调。
+认证当前用户。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3003,7 +3497,6 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType or authTrustLevel. |
 | 12300013 | Network exception. |
@@ -3022,6 +3515,7 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 | 12300114 | The authentication service works abnormally. |
 | 12300117 | PIN is expired. |
 | 12300119 | Multi-factor authentication failed. |
+| 12300120 | The credentials are no longer valid. |
 | 12300211 | Server unreachable. |
 
 **示例：**
@@ -3050,7 +3544,7 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 
 auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, options: AuthOptions, callback: IUserAuthCallback): Uint8Array
 
-基于指定的挑战值、认证类型（如口令、人脸、指纹等）、认证可信等级以及可选参数（如账号标识、认证意图等）进行身份认证。使用callback异步回调。
+基于指定的挑战值、认证类型（如口令、人脸、指纹等）、认证可信等级以及可选参数（如账号标识、认证意图等）进行身份认证。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3080,7 +3574,6 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType, authTrustLevel or options. |
 | 12300003 | Account not found. |
@@ -3100,6 +3593,7 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 | 12300114 | The authentication service works abnormally. |
 | 12300117 | PIN is expired. |
 | 12300119 | Multi-factor authentication failed. |
+| 12300120 | The credentials are no longer valid. |
 | 12300211 | Server unreachable. |
 
 **示例：**
@@ -3129,7 +3623,7 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 
 ### authUser<sup>8+</sup>
 
-authUser(userId: number, challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array;
+authUser(userId: number, challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array
 
 认证指定用户。使用callback异步回调。
 
@@ -3161,7 +3655,6 @@ authUser(userId: number, challenge: Uint8Array, authType: AuthType, authTrustLev
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType or authTrustLevel. |
 | 12300003 | Account not found. |
@@ -3181,6 +3674,7 @@ authUser(userId: number, challenge: Uint8Array, authType: AuthType, authTrustLev
 | 12300114 | The authentication service works abnormally. |
 | 12300117 | PIN is expired. |
 | 12300119 | Multi-factor authentication failed. |
+| 12300120 | The credentials are no longer valid. |
 | 12300211 | Server unreachable. |
 
 **示例：**
@@ -3639,7 +4133,7 @@ authWithToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback:
 
 getAccountInfo(options: GetDomainAccountInfoPluginOptions, callback: AsyncCallback&lt;DomainAccountInfo&gt;): void
 
-查询指定域账号的信息。
+查询指定域账号的信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3908,7 +4402,7 @@ isAccountTokenValid(domainAccountInfo: DomainAccountInfo, token: Uint8Array, cal
 
 getAccessToken(options: GetDomainAccessTokenOptions, callback: AsyncCallback&lt;Uint8Array&gt;): void
 
-根据指定的选项获取域访问令牌。
+根据指定的选项获取域访问令牌。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4143,7 +4637,6 @@ authWithPopup(callback: IUserAuthCallback): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
@@ -4202,7 +4695,6 @@ authWithPopup(localId: number, callback: IUserAuthCallback): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
@@ -4711,7 +5203,7 @@ getAccessToken(businessParams: Record<string, Object>): Promise&lt;Uint8Array&gt
 
 ### isAuthenticationExpired<sup>12+</sup>
 
-isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;;
+isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;
 
 判断指定域账号是否登录超期。使用Promise异步回调。
 
@@ -4917,11 +5409,13 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid credentialInfo, i.e. authType or authSubType. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted account. |
+| 12300020 | Device hardware abnormal. |
+| 12300090 | Cross-device capability not supported. |
+| 12300091 | Cross-device communication failed. |
 | 12300101 | The token is invalid. |
 | 12300106 | The authentication type is not supported. |
 | 12300109 | The authentication, enrollment, or update operation is canceled. |
@@ -5249,8 +5743,8 @@ getAuthInfo(callback: AsyncCallback&lt;Array&lt;EnrolledCredInfo&gt;&gt;): void
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -5297,9 +5791,9 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback&lt;Array&lt;EnrolledCred
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -5324,7 +5818,7 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback&lt;Array&lt;EnrolledCred
 
 ### getAuthInfo<sup>8+</sup>
 
-getAuthInfo(authType?: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;;
+getAuthInfo(authType: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;
 
 获取认证信息。使用Promise异步回调。
 
@@ -5338,7 +5832,7 @@ getAuthInfo(authType?: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;;
 
 | 参数名    | 类型                                | 必填 | 说明      |
 | -------- | ----------------------------------- | ---- | -------- |
-| authType | [AuthType](#authtype8)              | 否   | 认证类型，默认为空，表示查询所有认证类型的信息。|
+| authType | [AuthType](#authtype8)              | 是   | 认证类型，表示查询所有认证类型的信息。|
 
 **返回值：**
 
@@ -5352,9 +5846,9 @@ getAuthInfo(authType?: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;;
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -5404,10 +5898,10 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise&lt;Array&lt;EnrolledCredInfo&
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid options. |
 | 12300003 | Account not found. |
+| 12300020 | Device hardware abnormal. |
 
 **示例：**
 
@@ -5462,10 +5956,10 @@ getEnrolledId(authType: AuthType, accountId?: number): Promise&lt;Uint8Array&gt;
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
 | 12300003 | Account not found. |
+| 12300020 | Device hardware abnormal. |
 | 12300102 | The credential does not exist. |
 | 12300106 | The authentication type is not supported. |
 
@@ -5505,7 +5999,7 @@ onCredentialChanged(credentialTypes: AuthType[], callback: Callback&lt;Credentia
 | 参数名     | 类型                   | 必填 | 说明      |
 | --------  | ---------------------- | ---- | -------- |
 | credentialTypes  | [AuthType](#authtype8)\[\] | 是   | 表示订阅的凭据类型集合。 |
-| callback | Callback&lt;[CredentialChangeInfo](#credentialchangeinfo23)&gt;  | 是   | 回调函数。当凭据发生变更时，会返回变更信息。 |
+| callback | Callback&lt;[CredentialChangeInfo](#credentialchangeinfo23)&gt;  | 是   | 表示用于接收凭据变更事件的回调函数。 |
 
 
 **错误码：**
@@ -5542,7 +6036,7 @@ try {
   console.info('Subscribe to the credential changes successfully');
 } catch (e) {
   const err = e as BusinessError;
-  console.error(`Failed to subscribe to the credetial changes, code is ${err.code}, message is ${err.message}`)
+  console.error(`Failed to subscribe to the credential changes, code is ${err.code}, message is ${err.message}`)
 }
 ```
 
@@ -5561,7 +6055,7 @@ offCredentialChanged(callback?: Callback&lt;CredentialChangeInfo&gt;): void
 
 | 参数名     | 类型                   | 必填 | 说明      |
 | --------  | ---------------------- | ---- | -------- |
-| callback | Callback&lt;[CredentialChangeInfo](#credentialchangeinfo23)&gt;  | 否   | 表示订阅回调。不指定时，表示取消所有订阅记录。 |
+| callback | Callback&lt;[CredentialChangeInfo](#credentialchangeinfo23)&gt;  | 否   | 表示用于接收凭据变更事件的回调函数。默认为undefined，表示清除所有订阅记录；非undefined时，表示清除与该回调函数关联的订阅记录。 |
 
 **错误码：**
 
@@ -5595,7 +6089,7 @@ try {
   console.info('Subscribe to the credential changes successfully');
 } catch (e) {
   const err = e as BusinessError;
-  console.error(`Failed to subscribe to the credetial changes, code is ${err.code}, message is ${err.message}`)
+  console.error(`Failed to subscribe to the credential changes, code is ${err.code}, message is ${err.message}`)
 }
 
 try {
@@ -5603,7 +6097,7 @@ try {
   console.info('Unsubscribe from the credential changes successfully');
 } catch (e) {
   const err = e as BusinessError;
-  console.error(`Failed to unsubscribe from the credetial changes, code is ${err.code}, message is ${err.message}`)
+  console.error(`Failed to unsubscribe from the credential changes, code is ${err.code}, message is ${err.message}`)
 }
 ```
 
@@ -5615,7 +6109,7 @@ try {
 
 ### onSetData<sup>8+</sup>
 
-onSetData: (authSubType: AuthSubType, data: Uint8Array) => void;
+onSetData(authSubType: AuthSubType, data: Uint8Array): void
 
 **系统接口：** 此接口为系统接口。
 
@@ -5662,7 +6156,7 @@ onSetData: (authSubType: AuthSubType, data: Uint8Array) => void;
 
 ### onGetData<sup>8+</sup>
 
-onGetData: (authSubType: AuthSubType, callback: IInputData, options: GetInputDataOptions) => void;
+onGetData: (authSubType: AuthSubType, callback: IInputData, options: GetInputDataOptions) => void
 
 通知调用者获取数据的回调函数。
 
@@ -5706,7 +6200,7 @@ onGetData: (authSubType: AuthSubType, callback: IInputData, options: GetInputDat
 
 ### onResult<sup>8+</sup>
 
-onResult: (result: number, extraInfo: AuthResult) => void;
+onResult: (result: number, extraInfo: AuthResult) => void
 
 身份认证结果回调函数，返回结果码和认证结果信息。
 
@@ -5734,7 +6228,7 @@ onResult: (result: number, extraInfo: AuthResult) => void;
 
 ### onAcquireInfo?<sup>8+</sup>
 
-onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void;
+onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 身份认证信息获取回调函数。
 
@@ -5774,7 +6268,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 ### onResult<sup>8+</sup>
 
-onResult: (result: number, extraInfo: RequestResult) => void;
+onResult: (result: number, extraInfo: RequestResult) => void
 
 身份管理操作结果回调函数，返回结果码和请求结果信息。
 
@@ -5802,7 +6296,7 @@ onResult: (result: number, extraInfo: RequestResult) => void;
 
 ### onAcquireInfo?<sup>8+</sup>
 
-onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void;
+onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 身份管理信息获取回调函数。
 
@@ -5989,6 +6483,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | FINGERPRINT<sup>10+</sup>   | 4     | 表示指纹认证类型。 |
 | RECOVERY_KEY<sup>12+</sup> | 8 | 表示键恢复类型。 |
 | PRIVATE_PIN<sup>14+</sup> | 16 | 表示隐私PIN类型。 |
+| COMPANION_DEVICE<sup>23+</sup> | 64 | 表示伴随设备认证类型。 |
 | DOMAIN<sup>9+</sup>  | 1024     | 表示域认证类型。|
 
 ## AuthSubType<sup>8+</sup>
@@ -6230,7 +6725,20 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | ----------- | ------ | ---- | ---- | ---------- |
 | fromAccountId | number | 否 | 否 | 切换来源系统账号ID。 |
 | toAccountId | number | 否 | 否 | 切换目标系统账号ID。 |
-| displayId<sup>21+</sup> | number | 否 | 是 | 切换事件发生的逻辑屏ID，默认值为0。 |
+| displayId<sup>23+</sup> | number | 否 | 是 | 切换事件发生的逻辑屏ID，默认值为0。 |
+
+## ConstraintChangeInfo<sup>23+</sup>
+
+表示约束变更信息。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+| 名称      | 类型   | 只读 | 可选 | 说明       |
+| ----------- | ------ | ---- | ---- | ---------- |
+| constraint | string | 否 | 否 | 发生变更的[约束](js-apis-osAccount.md#系统账号约束列表)。 |
+| isEnabled | boolean | 否 | 否 | 发生变更的约束的使能状态。默认：false。<br>true表示目标约束已使能；false表示目标约束未使能。 |
 
 ## CreateOsAccountOptions<sup>12+</sup>
 
@@ -6245,6 +6753,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | shortName | string | 否 | 否   | 表示账号短名称（用作个人文件夹目录）。 <br/>**约束：** <br>1. 不允许出现的字符：\< \> \| : " * ? / \\<br>2. 不允许独立出现的字符串：.或..<br>3. 长度不超过255个字符。|
 | disallowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用禁止名单，名单中的应用不可被安装在设备上，默认为空列表。|
 | allowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用允许名单，仅名单中的应用可以被安装在设备上，默认为std::nullopt。|
+| token<sup>24+</sup> | Uint8Array | 否   | 是   | 表示从认证管理接口获取的token，默认为空。 |
 
 ## CreateOsAccountForDomainOptions<sup>12+</sup>
 
@@ -6254,9 +6763,17 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-| 名称      | 类型   | 只读  | 可选   | 说明       |
-| ----------- | ------ | ---- | ---- | ---------- |
-| shortName | string | 否 | 否   | 表示账号短名称（用作个人文件夹目录）。 <br/>**约束：** <br>1. 不允许出现的字符：\< \> \| : " * ? / \\<br>2. 不允许独立出现的字符串：.或..<br>3. 长度不超过255个字符。|
+## RemoveOsAccountOptions<sup>24+</sup>
+
+表示用于删除系统账号的可选参数。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+| 名称  | 类型       | 只读 | 可选 | 说明                         |
+| ----- | ---------- | ---- | ---- | ---------------------------- |
+| token | Uint8Array | 否   | 是   | 表示从认证管理接口获取的token，默认为空。   |
 
 ## GetAuthInfoOptions<sup>12+</sup>
 
@@ -6339,9 +6856,9 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | changeType      | [CredentialChangeType](#credentialchangetype23) | 否 | 否  | 表示凭据变更的类型。     |
 | isSilent | boolean | 否 | 否  | 表示是否为静默变更，静默变更表示变更由系统在后台自动地发起。 |
 | credentialType      | [AuthType](#authtype8) | 否 | 否  | 表示凭据类型。     |
-| accountId | int | 否 | 否  | 表示系统账号标识。 |
-| addedCredentialId   | Uint8Array | 否 | 是  | 表示添加的凭据ID，添加凭据和更新凭据操作都会返回该ID。     |
-| deletedCredentialId | Uint8Array | 否 | 是  | 表示删除的凭据ID，删除凭据和更新凭据操作都会返回该ID。     |
+| accountId | number | 否 | 否  | 表示系统账号标识。 |
+| addedCredentialId   | Uint8Array | 否 | 是  | 表示添加的凭据ID，添加凭据和更新凭据操作都会返回该ID。默认为undefined。   |
+| deletedCredentialId | Uint8Array | 否 | 是  | 表示删除的凭据ID，删除凭据和更新凭据操作都会返回该ID。默认为undefined。   |
 
 ## CredentialChangeType<sup>23+</sup>
 
@@ -6355,4 +6872,16 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | -------- | --- | ---------- |
 | ADD_CREDENTIAL      | 1   | 表示添加凭据的变更类型。 |
 | UPDATE_CREDENTIAL   | 2   | 表示更新凭据的变更类型。 |
-| DEL_CREDENTIAL      | 3   | 表示删除凭据的变更类型。 |
+| DELETE_CREDENTIAL   | 3   | 表示删除凭据的变更类型。 |
+
+## SetOsAccountTypeOptions<sup>24+</sup>
+
+设置系统账号类型的选项。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+| 名称  | 类型       | 只读 | 可选 | 说明                         |
+| ----- | ---------- | ---- | ---- | ---------------------------- |
+| token | Uint8Array | 否   | 是   | 表示从认证管理接口获取的token。默认为空。 |

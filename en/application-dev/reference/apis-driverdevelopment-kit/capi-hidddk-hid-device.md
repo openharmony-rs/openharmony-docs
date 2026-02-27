@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Hid_Device {...} Hid_Device
+```
+
 ## Overview
 
 Defines a struct for basic device information.

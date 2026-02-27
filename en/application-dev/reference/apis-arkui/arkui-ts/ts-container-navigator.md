@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **Navigator** component provides redirection.
@@ -22,9 +22,13 @@ Supported
 
 ## APIs
 
-### Navigator
+### Navigator<sup>(deprecated)</sup>
 
 Navigator(value?: {target: string, type?: NavigationType})
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 13. You are advised to use [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -35,17 +39,23 @@ Navigator(value?: {target: string, type?: NavigationType})
 | Name| Type      | Mandatory| Description                                      |
 | ------ | -------------- | ---- | ---------------------------------------------- |
 | target | string         | Yes  | Path of the target page to be redirected to.    |
-| type   | [NavigationType](#navigationtype) | No  | Navigation type.<br>Default value: **NavigationType.Push**|
+| type   | [NavigationType](#navigationtypedeprecated)| No  | Navigation type.<br>Default value: **NavigationType.Push**|
 
-### Navigator
+### Navigator<sup>(deprecated)</sup>
 
 Navigator()
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 13. You are advised to use [NavigationAttribute](ts-basic-components-navigation.md#attributes) instead. **NavigationAttribute** is an attribute of the **Navigation** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-## NavigationType
+## NavigationType<sup>(deprecated)</sup>
+
+Navigation type.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -53,17 +63,21 @@ Navigator()
 
 | Name     | Value | Description                      |
 | ------- | ------- | -------------------------- |
-| Push    | 1 | Navigates to the specified page in the application.              |
-| Replace | 2 | Replaces the current page with another one in the application and destroys the current page.|
-| Back    | 3 | Returns to the specified page. If the specified page does not exist in the stack, no response is returned. If no page is specified, the previous page is returned to.|
+| Push    | 1 | Navigates to the specified page in the application.<br>**NOTE**<br>This API is supported since API version 7 and deprecated since API version 13. You are advised to use [pushPath](ts-basic-components-navigation.md#pushpath10) instead. |
+| Replace | 2 | Replaces the current page with another one in the application and destroys the current page.<br>**NOTE**<br>This API is supported since API version 7 and deprecated since API version 13. You are advised to use [replacePath](ts-basic-components-navigation.md#replacepath11) instead.|
+| Back    | 3 | Returns to the specified page. If the specified page does not exist in the stack, no response is returned. If no page is specified, the previous page is returned to.<br>**NOTE**<br>This API is supported since API version 7 and deprecated since API version 13. You are advised to use [pop](ts-basic-components-navigation.md#pop10) instead.|
 
 ## Attributes
 
-### active
+### active<sup>(deprecated)</sup>
 
 active(value: boolean)
 
 Sets whether the **Navigator** component is activated. If the component is activated, the corresponding navigation takes effect.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 13. You are advised to use [Navigation](ts-basic-components-navigation.md) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -75,11 +89,15 @@ Sets whether the **Navigator** component is activated. If the component is activ
 | ------ | ------- | ---- | -------------------------- |
 | value  | boolean | Yes  | Whether the **Navigator** component is activated. The value **true** means that the component is activated, and **false** means the opposite.|
 
-### params
+### params<sup>(deprecated)</sup>
 
 params(value: object)
 
 Sets the data that needs to be passed to the target page during redirection.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 13. You are advised to use [param](ts-basic-components-navigation.md#properties-1) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -91,11 +109,15 @@ Sets the data that needs to be passed to the target page during redirection.
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | object | Yes  | Data that needs to be passed to the target page during redirection. You can use [router.getParams()](../js-apis-router.md#routergetparamsdeprecated) to obtain the data on the target page.|
 
-### target
+### target<sup>(deprecated)</sup>
 
 target(value: string)
 
 Sets the path of the target page to be redirected to. The target page must be added to the **main_pages.json** file.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 13. You are advised to use [Navigation](ts-basic-components-navigation.md) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -107,10 +129,14 @@ Sets the path of the target page to be redirected to. The target page must be ad
 | ------ | ------ | ---- | ------------------ |
 | value  | string | Yes  | Path of the target page to be redirected to.|
 
-### type
+### type<sup>(deprecated)</sup>
 type(value: NavigationType)
 
 Sets the navigation type.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 13. You are advised to use [Navigation](ts-basic-components-navigation.md) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -120,7 +146,7 @@ Sets the navigation type.
 
 | Name| Type  | Mandatory| Description                                          |
 | ------ | ------ | ---- | ---------------------------------------------- |
-| value  | [NavigationType](#navigationtype) | Yes  | Navigation type.<br>Default value: **NavigationType.Push**|
+| value  | [NavigationType](#navigationtypedeprecated)| Yes  | Navigation type.<br>Default value: **NavigationType.Push**|
 
 ## Example
 

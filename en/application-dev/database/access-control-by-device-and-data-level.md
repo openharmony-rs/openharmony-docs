@@ -12,18 +12,16 @@ Distributed data management implements access control based on data security lab
 
 A higher data security label and device security level indicate stricter encryption and access control measures and higher data security.
 
-
 ### Data Security Labels
 
 The data can be rated into four security levels as below.
 
-  | Risk Level| Security Level| Definition| Example| 
+| Risk Level| Security Level| Definition| Example| 
 | -------- | -------- | -------- | -------- |
 | Critical| S4 | Special data types defined by industry laws and regulations, involving the most private individual information or data that may cause severe adverse impact on an individual or group once disclosed, tampered with, corrupted, or destroyed.| Political opinions, religious and philosophical belief, trade union membership, genetic data, biological information, health and sexual life status, sexual orientation, device authentication, and personal credit card information| 
 | High| S3 | Data that may cause critical adverse impact on an individual or group once disclosed, tampered with, corrupted, or destroyed.| Individual real-time precise positioning information and movement trajectory| 
 | Moderate| S2 | Data that may cause major adverse impact on an individual or group once disclosed, tampered with, corrupted, or destroyed.| Detailed addresses and nicknames of individuals| 
 | Low| S1 | Data that may cause minor adverse impact on an individual or group once disclosed, tampered with, corrupted, or destroyed.| Gender, nationality, and user application records| 
-
 
 ### Device Security Levels
 <!--RP1-->
@@ -173,28 +171,28 @@ When an RDB store is created, the **securityLevel** parameter specifies the secu
 For details about the APIs, see [RDB Store](../reference/apis-arkdata/arkts-apis-data-relationalStore.md).
 
 
-  
-```ts
-import { UIAbility } from '@kit.AbilityKit';
+<!-- @[rdb_accessControlByDeviceAndDataLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/pages/accessControlByDeviceAndDataLevel.ets) -->  
+
+``` TypeScript
 import { relationalStore } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { UIContext } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 
-export default class EntryAbility extends UIAbility {
-  async onCreate(): Promise<void> {
-    let store: relationalStore.RdbStore | undefined = undefined;
-    let context = this.context;
+let store: relationalStore.RdbStore | undefined = undefined;
 
-    try {
-      const STORE_CONFIG: relationalStore.StoreConfig = {
-        name: 'RdbTest.db',
-        securityLevel: relationalStore.SecurityLevel.S3
-      };
-      store = await relationalStore.getRdbStore(context, STORE_CONFIG);
-      console.info('Succeeded in getting RdbStore.')
-    } catch (e) {
-      const err = e as BusinessError;
-      console.error(`Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
-    }
+export async function accessControlByDeviceAndDataLevel() {
+  /* context indicates the application's context information, which is obtained by the caller. The following is for demonstration purposes only. */
+  const context = new UIContext().getHostContext() as common.UIAbilityContext;
+  try {
+    const STORE_CONFIG: relationalStore.StoreConfig = {
+      name: 'RdbTest.db',
+      // Set the security level of the RDB store to S3.
+      securityLevel: relationalStore.SecurityLevel.S3
+    };
+    store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+    console.info('Succeeded in getting RdbStore.')
+  } catch (err) {
+    console.error(`Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
   }
 }
 ```

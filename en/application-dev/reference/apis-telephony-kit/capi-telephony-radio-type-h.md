@@ -37,11 +37,18 @@ Declares the structs for the C APIs of the radio module.
 | [Telephony_RadioTechnology](#telephony_radiotechnology) | Telephony_RadioTechnology | Radio access technology (RAT) type of the device.|
 | [Telephony_NsaState](#telephony_nsastate) | Telephony_NsaState | NSA network registration status of the device.|
 
+### Macros
+
+| Name | Description|
+| --  | -- |
+| [TELEPHONY_MAX_OPERATOR_LEN 64](capi-telephony-radio-type-h.md)  | Maximum length of the carrier name.<br>**Since**: 13|
+| [TELEPHONY_MAX_PLMN_NUMERIC_LEN 6](capi-telephony-radio-type-h.md)  | Maximum length of the PLMN.<br>**Since**: 13 |
+
 ## Enum Description
 
 ### Telephony_RadioResult
 
-```
+```c
 enum Telephony_RadioResult
 ```
 
@@ -62,7 +69,7 @@ Result codes.
 
 ### Telephony_RegState
 
-```
+```c
 enum Telephony_RegState
 ```
 
@@ -81,7 +88,7 @@ Network registration status of the device.
 
 ### Telephony_RadioTechnology
 
-```
+```c
 enum Telephony_RadioTechnology
 ```
 
@@ -109,7 +116,7 @@ RAT type of the device.
 
 ### Telephony_NsaState
 
-```
+```c
 enum Telephony_NsaState
 ```
 

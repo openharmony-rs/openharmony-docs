@@ -6,8 +6,8 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-```
-struct OH_PixelmapNative
+```c
+typedef struct OH_PixelmapNative
 ```
 
 ## 概述

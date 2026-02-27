@@ -46,6 +46,7 @@ Enumerates the [media error codes](errorcode-media.md).
 | AVERR_SUPER_RESOLUTION_UNSUPPORTED<sup>18+</sup> | 5410003 | Super resolution is not supported.<br> **Atomic service API**: This API can be used in atomic services since API version 18.       |
 | AVERR_SUPER_RESOLUTION_NOT_ENABLED<sup>18+</sup> | 5410004 | Super resolution is not enabled.<br> **Atomic service API**: This API can be used in atomic services since API version 18.       |
 | AVERR_PARAMETER_OUT_OF_RANGE<sup>20+</sup> | 5400108 | The parameter value is out of range.<br> **Atomic service API**: This API can be used in atomic services since API version 20.       |
+| AVERR_IO_CLEARTEXT_NOT_PERMITTED<sup>23+</sup> | 5411012 | HTTP plaintext access is not allowed.<br> **Atomic service API**: This API can be used in atomic services since API version 23.       |
 
 ## MediaType<sup>8+</sup>
 
@@ -55,7 +56,7 @@ Enumerates the media types.
 
 | Name          | Value                   | Description                |
 | -------------- | --------------------- | ------------------- |
-| MEDIA_TYPE_UNSUPPORTED<sup>20+</sup> | -1                     | The media type is not supported.<br> **Atomic service API**: This API can be used in atomic services since API version 20.
+| MEDIA_TYPE_UNSUPPORTED<sup>20+</sup> | -1                     | The media type is not supported.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
 | MEDIA_TYPE_AUD | 0                     | Media.<br> **Atomic service API**: This API can be used in atomic services since API version 11.          |
 | MEDIA_TYPE_VID | 1                     | Video.<br> **Atomic service API**: This API can be used in atomic services since API version 11.         |
 | MEDIA_TYPE_SUBTITLE<sup>12+</sup> | 2    | Subtitle.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -108,22 +109,38 @@ Enumerates the media description keys.
 
 | Name                    | Value             | Description                                                        |
 | ------------------------ | --------------- | ------------------------------------------------------------ |
-| MD_KEY_TRACK_INDEX       | 'track_index'   | Track index, which is a number.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_TRACK_TYPE        | 'track_type'    | Track type, which is a number. For details, see [MediaType](#mediatype8).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_CODEC_MIME        | 'codec_mime'    | Codec MIME type, which is a string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_DURATION          | 'duration'      | Media duration, which is a number, in units of ms.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_BITRATE           | 'bitrate'       | Bit rate, which is a number, in units of bit/s. If the value is **undefined** or **0**, the bit rate is abnormal.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_WIDTH             | 'width'         | Video width, which is a number, in units of px.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_HEIGHT            | 'height'        | Video height, which is a number, in units of px.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_FRAME_RATE        | 'frame_rate'    | Video frame rate, which is a number, measured in frames per 100 seconds.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_AUD_CHANNEL_COUNT | 'channel_count' | Audio channel count, which is a number.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_AUD_SAMPLE_RATE   | 'sample_rate'   | Sample rate, which is a number, in units of Hz.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_AUD_SAMPLE_DEPTH<sup>12+</sup>  | 'sample_depth'  | Bit depth, which is a number, in units of bits.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| MD_KEY_LANGUAGE<sup>12+</sup>  | 'language'  | Subtitle language, which is a string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| MD_KEY_TRACK_NAME<sup>12+</sup>  | 'track_name'  | Track name, which is a string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| MD_KEY_HDR_TYPE<sup>12+</sup>  | 'hdr_type'  | Codec track type, which is a string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| MD_KEY_ORIGINAL_WIDTH<sup>21+</sup>  | 'original_width'  | Original video width, which is a number, in units of px.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
-| MD_KEY_ORIGINAL_HEIGHT<sup>21+</sup>  | 'original_height'  | Original video height, which is a number, in units of px.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
+| MD_KEY_TRACK_INDEX       | 'track_index'   | Track index. The corresponding key value type is number.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_TRACK_TYPE        | 'track_type'    | Track type. The corresponding key value type is number. For details, see [MediaType](#mediatype8).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_CODEC_MIME        | 'codec_mime'    | Codec MIME type. The corresponding key value type is string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_DURATION          | 'duration'      | Media duration. The corresponding key value type is number, measured in ms.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_BITRATE           | 'bitrate'       | Bit rate. The corresponding key value type is number, measured in bit/s. If the value is **undefined** or **0**, the bit rate is abnormal.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_WIDTH             | 'width'         | Video width. The corresponding key value type is number, measured in px.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_HEIGHT            | 'height'        | Video height. The corresponding key value type is number, measured in px.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_FRAME_RATE        | 'frame_rate'    | Video frame rate. The corresponding key value type is number, measured in frames per 100 seconds.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_AUD_CHANNEL_COUNT | 'channel_count' | Audio channel count. The corresponding key value type is number.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_AUD_SAMPLE_RATE   | 'sample_rate'   | Sample rate. The corresponding key value type is number, measured in Hz.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_AUD_SAMPLE_DEPTH<sup>12+</sup>  | 'sample_depth'  | Bit depth. The corresponding key value type is number, measured in bits.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| MD_KEY_LANGUAGE<sup>12+</sup>  | 'language'  | Subtitle language. The corresponding key value type is string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| MD_KEY_TRACK_NAME<sup>12+</sup>  | 'track_name'  | Track name. The corresponding key value type is string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| MD_KEY_HDR_TYPE<sup>12+</sup>  | 'hdr_type'  | Codec track type. The corresponding key value type is string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| MD_KEY_ORIGINAL_WIDTH<sup>21+</sup>  | 'original_width'  | Original video width. The corresponding key value type is number, measured in px.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
+| MD_KEY_ORIGINAL_HEIGHT<sup>21+</sup>  | 'original_height'  | Original video height. The corresponding key value type is number, measured in px.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
+| MD_KEY_MIME_TYPE<sup>23+</sup>  | 'mime_type'  | MIME type of the track. The corresponding key value type is string. For audio and video tracks, the value is the same as that of **MD_KEY_CODEC_MIME**.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| MD_KEY_REFERENCE_TRACK_IDS<sup>23+</sup>  | 'ref_track_ids'  | Reference relationships between this track and other tracks. The corresponding key value type is string, with values separated by commas (,).<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| MD_KEY_TRACK_REFERENCE_TYPE<sup>23+</sup>  | 'track_ref_type'  | Auxiliary type of this track when it acts as a reference track. The corresponding key value type is string.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+## FetchResult<sup>23+</sup>
+
+Enumerates the results of obtaining thumbnails in batches.
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+| Name                    | Value             | Description                                                        |
+| ------------------------ | --------------- | ------------------------------------------------------------ |
+| FETCH_FAILED             | 0               | Failed to obtain the thumbnail from the video. |
+| FETCH_SUCCEEDED          | 1               | Succeeded in obtaining the thumbnail from the video. |
+| FETCH_CANCELED           | 2               | The operation of obtaining the thumbnail from the video is canceled.|
 
 ## PlaybackInfoKey<sup>12+</sup>
 
@@ -133,11 +150,29 @@ Enumerates the playback description keys.
 
 | Name                    | Value             | Description                                                        |
 | ------------------------ | --------------- | ------------------------------------------------------------ |
-| SERVER_IP_ADDRESS        | 'server_ip_address'    | IP address of the server, which is a string. |
-| AVG_DOWNLOAD_RATE        | 'average_download_rate'| Average download rate, which is a number, in units of bit/s.|
-| DOWNLOAD_RATE            | 'download_rate'        | Download rate in one second, which is a number, in units of bit/s.|
-| IS_DOWNLOADING           | 'is_downloading'       | Download status, which is a number. The value **1** means that the downloaded is in progress, and **0** means that the download is complete.|
-| BUFFER_DURATION          | 'buffer_duration'      | Duration that the cached data can be played, which is a number, in units of seconds.|
+| SERVER_IP_ADDRESS        | 'server_ip_address'    | IP address of the server. The corresponding key value type is string. |
+| AVG_DOWNLOAD_RATE        | 'average_download_rate'| Average download rate. The corresponding key value type is number, measured in bit/s.|
+| DOWNLOAD_RATE            | 'download_rate'        | Download rate in one second. The corresponding key value type is number, measured in bit/s.|
+| IS_DOWNLOADING           | 'is_downloading'       | Download status. The corresponding key value type is number. The value **1** means that the downloaded is in progress, and **0** means that the download is complete.|
+| BUFFER_DURATION          | 'buffer_duration'      | Duration that the cached data can be played. The corresponding key value type is number, measured in seconds.|
+
+## PlaybackMetricsKey<sup>23+</sup>
+
+Enumerates the playback metric keys.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+| Name                              | Value                                  | Description                                      |
+| ---------------------------------- | ------------------------------------ | ------------------------------------------ |
+| PREPARE_DURATION                   | 'prepare_duration'                   | Preparation duration, in milliseconds.          |
+| RESOURCE_CONNECTION_DURATION       | 'resource_connection_duration'       | Duration for establishing a resource connection, in milliseconds.      |
+| FIRST_FRAME_DECAPSULATION_DURATION | 'first_frame_decapsulation_duration' | Duration for decapsulating the first frame, in milliseconds.|
+| TOTAL_PLAYING_TIME                 | 'total_playback_time'                | Total playback duration, in milliseconds.      |
+| DOWNLOAD_REQUESTS_COUNT            | 'loading_requests_count'             | Total number of requests.<br> **Model restriction**: This API can be used only in the stage model.                        |
+| TOTAL_DOWNLOAD_TIME                | 'total_loading_time'                 | Total loading duration, in milliseconds.      |
+| TOTAL_DOWNLOAD_SIZE                | 'total_loading_bytes'                | Total loading size, in bytes.<br> **Model restriction**: This API can be used only in the stage model.            |
+| STALLING_COUNT                     | 'stalling_count'                     | Total number of stalling times.                        |
+| TOTAL_STALLING_TIME                | 'total_stalling_time'                | Total stalling duration, in milliseconds.      |
 
 ## BufferingInfoType<sup>8+</sup>
 
@@ -153,6 +188,19 @@ Enumerates the buffering event types.
 | BUFFERING_END     | 2    | Buffering ends. When this event is triggered, the player resumes the playback.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                  |
 | BUFFERING_PERCENT | 3    | Buffering percentage. You can use this event to monitor the buffering status.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                |
 | CACHED_DURATION   | 4    |  Estimated duration, in ms, that the buffered data can be played. This event is triggered once the data change amount in the buffer exceeds 500 ms. You can use this event to develop a progress bar.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+
+## SoundInterruptMode<sup>23+</sup>
+
+Enumerates the interruption modes of the audio files with the same ID in SoundPool.
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.SoundPool
+
+| Name                                 | Value     | Description                            |
+| ----------------------------------- | ------- | --------------------------------- |
+| NO_INTERRUPT                            | 0       | If the former audio file is not completely played, the latter audio file with the same ID does not interrupt the former audio file. Two audio files are played concurrently.           |
+| SAME_SOUND_INTERRUPT                            | 1       | If the former audio file is not completely played, the latter audio file with the same ID interrupts the former audio file.           |
 
 ## StateChangeReason<sup>9+</sup>
 
@@ -389,10 +437,19 @@ Enumerates the display mode for the screen capture picker.
 | SCREEN_ONLY | 1    | Displays only a list of screens.|
 | SCREEN_AND_WINDOW | 2    | Displays both screens and windows.|
 
+## AVMetricsEventType<sup>23+</sup>
+
+Enumerates the metric events supported by the media service.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+| Name                      | Value  | Description                                  |
+| -------------------------- | ---- | -------------------------------------- |
+| AV_METRICS_EVENT_STALLING | 1    | Metric event indicating playback stalling.|
+
 ## AudioEncoder<sup>(deprecated)</sup>
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 8. You are advised to use [CodecMimeType](#codecmimetype8) instead.
 
 Enumerates the audio encoding formats.
@@ -410,7 +467,6 @@ Enumerates the audio encoding formats.
 ## AudioOutputFormat<sup>(deprecated)</sup>
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 8. You are advised to use [ContainerFormatType](#containerformattype8) instead.
 
 Enumerates the audio output formats.
@@ -430,7 +486,6 @@ Enumerates the audio output formats.
 Enumerates the media error codes.
 
 > **NOTE**
->
 > This enum is supported since API version 8 and deprecated since API version 11. You are advised to use [Media Error Codes](#averrorcode9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.Core

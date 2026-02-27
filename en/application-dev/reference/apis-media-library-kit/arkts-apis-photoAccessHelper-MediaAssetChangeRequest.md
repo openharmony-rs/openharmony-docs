@@ -6,22 +6,32 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+MediaAssetChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11).
+
+MediaAssetChangeRequest represents a media asset change request.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this class are supported since API version 11.
-
-MediaAssetChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11)
-
-MediaAssetChangeRequest represents a media asset change request.
-
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
 
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ```
+
+## Attributes
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name          | Type   | Read-Only  | Optional | Description  |
+| ------------ | ------ | ---- | ---- | ------- |
+| comment<sup>23+</sup>    | string | Yes   | No  | Used to verify the [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11) type.<br>If a class (such as **MediaAssetChangeRequest**) object can be accessed, it is an implementation class of **MediaChangeRequest**.|
 
 ## constructor<sup>11+</sup>
 
@@ -74,7 +84,7 @@ static createImageAssetRequest(context: Context, fileUri: string): MediaAssetCha
 
 Creates an image asset change request.
 
-Use **fileUri** to specify the data source of the asset to be created. For details, see [FileUri](../apis-core-file-kit/js-apis-file-fileuri.md).
+For details about data source of the asset to be created, see [@ohos.file.fileuri (File URI)](../apis-core-file-kit/js-apis-file-fileuri.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -128,7 +138,7 @@ static createVideoAssetRequest(context: Context, fileUri: string): MediaAssetCha
 
 Creates a video asset change request.
 
-Use **fileUri** to specify the data source of the asset to be created. For details, see [FileUri](../apis-core-file-kit/js-apis-file-fileuri.md).
+For details about data source of the asset to be created, see [@ohos.file.fileuri (File URI)](../apis-core-file-kit/js-apis-file-fileuri.md).
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -237,7 +247,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteAssets(context: Context, assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
-Deletes media assets. This API uses a promise to return the result. The deleted assets are moved to the trash.
+Deletes media assets. The deleted assets are moved to the trash. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 
@@ -295,7 +305,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteAssets(context: Context, uriList: Array&lt;string&gt;): Promise&lt;void&gt;
 
-Deletes media assets. This API uses a promise to return the result. The deleted assets are moved to the trash.
+Deletes media assets. The deleted assets are moved to the trash. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 
@@ -356,7 +366,9 @@ getAsset(): PhotoAsset
 
 Obtains the asset in this asset change request.
 
-**NOTE**: For the change request used to create an asset, this API returns **null** before [applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) is called to apply the changes.
+> **NOTE**
+>
+> For the change request used to create an asset, this API returns **null** before [applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) is called to apply the changes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -459,9 +471,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getWriteCacheHandler(): Promise&lt;number&gt;
 
-Obtains the handler used for writing a file to cache.
+Obtains the handler used for writing a file to cache. This API uses a promise to return the result.
 
-**NOTE**: For the same asset change request, this API cannot be repeatedly called after a temporary file write handle is successfully obtained.
+> **NOTE**
+>
+> For the same asset change request, this API cannot be repeatedly called after a temporary file write handle is successfully obtained.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 
@@ -512,9 +526,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 addResource(type: ResourceType, fileUri: string): void
 
-Adds a resource using [fileUri](../apis-core-file-kit/js-apis-file-fileuri.md).
+Adds resources from the application sandbox based on the file URI. For details about the data source, see [@ohos.file.fileuri (File URI)](../apis-core-file-kit/js-apis-file-fileuri.md).
 
-**NOTE**: For the same asset change request, this API cannot be repeatedly called after the resource is successfully added. For a moving photo, you can call this API twice to add the image and video resources.
+> **NOTE**
+>
+> For the same asset change request, this API cannot be repeatedly called after the resource is successfully added. For a moving photo, you can call this API twice to add the image and video resources.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -566,7 +582,9 @@ addResource(type: ResourceType, data: ArrayBuffer): void
 
 Adds a resource using **ArrayBuffer** data.
 
-**NOTE**: For the same asset change request, this API cannot be repeatedly called after the resource is successfully added. For a moving photo, you can call this API twice to add the image and video resources.
+> **NOTE**
+>
+> For the same asset change request, this API cannot be repeatedly called after the resource is successfully added. For a moving photo, you can call this API twice to add the image and video resources.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

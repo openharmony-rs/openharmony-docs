@@ -7,6 +7,10 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef union {...} Asset_Value
+```
+
 ## Overview
 
 Defines the value of the asset attribute.

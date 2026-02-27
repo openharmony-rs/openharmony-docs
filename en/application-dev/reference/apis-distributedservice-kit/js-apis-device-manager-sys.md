@@ -1283,7 +1283,7 @@ For details about how to initialize `dmInstance` in the example, see [deviceMana
   ```ts
   import { BusinessError } from '@ohos.base';
 
- try {
+  try {
     /*
       operateAction = 0 - Grant the permission.
       operateAction = 1 - Revoke the permission.

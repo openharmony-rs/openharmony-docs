@@ -22,7 +22,7 @@
 
 | 名称                  | 类型                       | 默认值   | 必填 | 描述                                                         |
 | --------------------- | -------------------------- | -------- | ---- | ------------------------------------------------------------ |
-| images                | Array&lt;ImageFrame&gt;    | -        | 是   | 设置图片帧信息集合。每一帧的帧信息包含图片路径、图片大小和图片位置信息。目前支持以下图片格式：png、jpg和bmp。ImageFrame的详细说明请见表1。<br/>**说明：**<br/>1.使用时需要使用数据绑定的方式，如images&nbsp;=&nbsp;{{images}}。js中声明相应变量：images:&nbsp;[{src:&nbsp;"/common/heart-rate01.png"},&nbsp;{src:&nbsp;"/common/heart-rate02.png"}]。<br/>2.部分轻量级设备不支持原图片格式的解析。所以，在应用编译阶段，图片会被直接编译为可解析的位图（总字节数约：图片长x宽x4），并打包在应用安装包里，这会增加安装包的大小。因此，在使用图片资源时，应尽量控制图片的分辨率，尺寸越大的图片对于空间的占用越明显。 |
+| images                | Array&lt;ImageFrame&gt;    | -        | 是   | 设置图片帧信息集合。每一帧的帧信息包含图片路径、图片大小和图片位置信息。目前支持以下图片格式：png、jpg和bmp。ImageFrame的详细说明请参见表1。<br/>**说明：**<br/>1.使用时需要使用数据绑定的方式，如images&nbsp;=&nbsp;{{images}}。js中声明相应变量：images:&nbsp;[{src:&nbsp;"/common/heart-rate01.png"},&nbsp;{src:&nbsp;"/common/heart-rate02.png"}]。<br/>2.部分轻量级设备不支持原图片格式的解析。所以，在应用编译阶段，图片会被直接编译为可解析的位图（总字节数约：图片长x宽x4），并打包在应用安装包里，这会增加安装包的大小。因此，在使用图片资源时，应尽量控制图片的分辨率，尺寸越大的图片对于空间的占用越明显。 |
 | iteration             | number&nbsp;\|&nbsp;string | infinite | 否   | 设置帧动画播放次数。number表示固定次数，infinite枚举表示无限次数播放。 |
 | reverse               | boolean                    | false    | 否   | 设置播放顺序。false表示从第1张图片播放到最后1张图片；&nbsp;true表示从最后1张图片播放到第1张图片。 |
 | fixedsize             | boolean                    | true     | 否   | 设置图片大小是否固定为组件大小。&nbsp;true表示图片大小与组件大小一致，此时设置图片的width&nbsp;、height&nbsp;、top&nbsp;和left属性是无效的。false表示每一张图片的&nbsp;width&nbsp;、height&nbsp;、top和left属性都要单独设置。 |
@@ -137,61 +137,61 @@ export default {
   data: {
     frames: [
       {
-        src: "/common/asserts/heart78.png",
+        src: "/common/assets/heart78.png",
       },
       {
-        src: "/common/asserts/heart79.png",
+        src: "/common/assets/heart79.png",
       },
       {
-        src: "/common/asserts/heart80.png",
+        src: "/common/assets/heart80.png",
       },
       {
-        src: "/common/asserts/heart81.png",
+        src: "/common/assets/heart81.png",
       },
       {
-        src: "/common/asserts/heart82.png",
+        src: "/common/assets/heart82.png",
       },
       {
-        src: "/common/asserts/heart83.png",
+        src: "/common/assets/heart83.png",
       },
       {
-        src: "/common/asserts/heart84.png",
+        src: "/common/assets/heart84.png",
       },
       {
-        src: "/common/asserts/heart85.png",
+        src: "/common/assets/heart85.png",
       },
       {
-        src: "/common/asserts/heart86.png",
+        src: "/common/assets/heart86.png",
       },
       {
-        src: "/common/asserts/heart87.png",
+        src: "/common/assets/heart87.png",
       },
       {
-        src: "/common/asserts/heart88.png",
+        src: "/common/assets/heart88.png",
       },
       {
-        src: "/common/asserts/heart89.png",
+        src: "/common/assets/heart89.png",
       },
       {
-        src: "/common/asserts/heart90.png",
+        src: "/common/assets/heart90.png",
       },
       {
-        src: "/common/asserts/heart91.png",
+        src: "/common/assets/heart91.png",
       },
       {
-        src: "/common/asserts/heart92.png",
+        src: "/common/assets/heart92.png",
       },
       {
-        src: "/common/asserts/heart93.png",
+        src: "/common/assets/heart93.png",
       },
       {
-        src: "/common/asserts/heart94.png",
+        src: "/common/assets/heart94.png",
       },
       {
-        src: "/common/asserts/heart95.png",
+        src: "/common/assets/heart95.png",
       },
       {
-        src: "/common/asserts/heart96.png",
+        src: "/common/assets/heart96.png",
       },
     ],
   },

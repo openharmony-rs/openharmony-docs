@@ -134,7 +134,7 @@ which are returned when an API call is incorrect or the **on()** API is used to 
 | DEVICE_DISABLED            | 7400108    | The camera is disabled for security reasons.    |
 | DEVICE_PREEMPTED           | 7400109    | The camera is preempted.    |
 | UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | The configuration conflicts with the current configuration.    |
-| SERVICE_FATAL_ERROR        | 7400201    | An error occurs in the camera service.    |
+| SERVICE_FATAL_ERROR        | 7400201    | The camera service is abnormal.    |
 
 ## TorchMode<sup>11+</sup>
 
@@ -226,13 +226,12 @@ Enumerates the image quality levels.
 
 Enumerates the metadata object types.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
-
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 | Name                      | Value  | Description             |
 | ------------------------- | ---- | ----------------- |
-| FACE_DETECTION            | 0    | Metadata object used for face detection.|
+| FACE_DETECTION            | 0    | Metadata object used for face detection.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| HUMAN_BODY<sup>23+</sup>     | 1    | Metadata object used for body detection.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## FlashMode
 
@@ -259,9 +258,9 @@ Enumerates the exposure modes.
 
 | Name                          | Value  | Description        |
 | ----------------------------- | ---- | ----------- |
-| EXPOSURE_MODE_LOCKED          | 0    | Exposure locked. The metering point cannot be set.|
-| EXPOSURE_MODE_AUTO            | 1    | Auto exposure. The metering point can be set by calling [AutoExposure.setMeteringPoint](arkts-apis-camera-AutoExposure.md#setmeteringpoint11).|
-| EXPOSURE_MODE_CONTINUOUS_AUTO | 2    | Continuous auto exposure. The metering point cannot be set.|
+| EXPOSURE_MODE_LOCKED          | 0    | Exposure locked. The metering point cannot be set.<br>After this mode is used, the exposure will be locked by default for each photo capture.|
+| EXPOSURE_MODE_AUTO            | 1    | Auto exposure. The metering point can be set by calling [AutoExposure.setMeteringPoint](arkts-apis-camera-AutoExposure.md#setmeteringpoint11).<br>After this mode is used, it takes effect only for the first photo capture.|
+| EXPOSURE_MODE_CONTINUOUS_AUTO | 2    | Continuous auto exposure. The metering point cannot be set.<br>After this mode is used, the camera system automatically adjusts the exposure based on the environment changes each time.|
 
 ## FocusMode
 
@@ -324,16 +323,15 @@ Enumerates the smooth zoom modes.
 
 Enumerates the preconfigured resolution types.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
-
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 | Name                     | Value| Description        |
 |-------------------------|---|------------|
-| PRECONFIG_720P          | 0 | 720p resolution.  |
-| PRECONFIG_1080P         | 1 | 1080p resolution. |
-| PRECONFIG_4K            | 2 | 4K resolution.    |
-| PRECONFIG_HIGH_QUALITY  | 3 | High-quality resolution.   |
+| PRECONFIG_720P          | 0 | 720p resolution.<br>**Atomic service API**: This API can be used in atomic services since API version 19. |
+| PRECONFIG_1080P         | 1 | 1080p resolution.<br>**Atomic service API**: This API can be used in atomic services since API version 19. |
+| PRECONFIG_4K            | 2 | 4K resolution.<br>**Atomic service API**: This API can be used in atomic services since API version 19.    |
+| PRECONFIG_HIGH_QUALITY  | 3 | High-quality resolution.<br>**Atomic service API**: This API can be used in atomic services since API version 19.   |
+| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020<sup>23+</sup>  | 4 | Resolution that supports HDR preview and GIF photography.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## PreconfigRatio<sup>12+</sup>
 

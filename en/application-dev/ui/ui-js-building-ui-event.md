@@ -4,27 +4,26 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-A gesture represents a semantic action (for example, touch, click, or longpress) that can trigger one or more events. A gesture lifecycle may consist of multiple events from the start to the end of the gesture. Supported events are as follows:
+A gesture represents a semantic action (for example, touch, click, or long press) recognized from one or more input events. A gesture lifecycle may consist of multiple sequential events from its initiation to completion. Supported events are as follows:
 
 **Touch**
+- **touchstart**: triggered when a touch point is placed on the screen.
 
-- **touchstart**: Triggered when the touch starts.
+- **touchmove**: triggered when a touch point is moved along the screen.
 
-- **touchmove**: Triggered when the touch moves.
+- **touchcancel**: triggered when a touch is interrupted, for example, by an incoming call or a system alert.
 
-- **touchcancel**: Triggered when the touch is interrupted, for example, by an incoming call notification or pop-up message.
-
-- **touchend**: Triggered when the touch ends.
+- **touchend**: triggered when a touch point is removed from the screen.
 
 **Click**
 
-**click**: Triggered when a user taps the screen quickly.
+**click**: triggered when the user quickly taps and releases the screen.
 
-**Longpress**
+**Long press**
 
-**longpress**: Triggered when a user keeps tapping the screen at the same position for a while.
+**longpress**: triggered when the user touches and holds the same position on the screen for a sustained period.
 
 The following is an example:
 

@@ -7,6 +7,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct VkMemoryGetNativeBufferInfoOHOS {...} VkMemoryGetNativeBufferInfoOHOS
+```
+
 ## Overview
 
 The struct is used to obtain an OH_NativeBuffer from the Vulkan memory.
@@ -23,6 +27,6 @@ The struct is used to obtain an OH_NativeBuffer from the Vulkan memory.
 
 | Name| Description|
 | -- | -- |
-| VkStructureType sType | Struct type.|
-| const void* pNext | Pointer to the next-level struct.|
-| VkDeviceMemory memory | VkDeviceMemory object.|
+| VkStructureType sType | Struct type. The value must be **VK_STRUCTURE_TYPE_MEMORY_GET_NATIVE_BUFFER_INFO_OHOS**.|
+| const void* pNext | Pointer to the next struct in the chain. The value must be nullptr.|
+| VkDeviceMemory memory | VkDeviceMemory object. The value must be a valid VkDeviceMemory object.|

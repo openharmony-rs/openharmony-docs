@@ -6,11 +6,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+PhotoAsset provides APIs for encapsulating file asset attributes.
+
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-PhotoAsset provides APIs for encapsulating file asset attributes.
 
 ## Modules to Import
 
@@ -151,7 +151,7 @@ Commits the modification on the file metadata to the database. This API uses an 
 
 | Name     | Type                       | Mandatory  | Description   |
 | -------- | ------------------------- | ---- | ----- |
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback that returns no value.|
+| callback | AsyncCallback&lt;void&gt; | Yes   | Callback function. If the file metadata is modified successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -159,7 +159,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 If error code 14000001 is returned, refer to [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys) to learn about the format and length requirements of the file name.
 
-If error code 13900012 is returned, follow the instructions provided in [Before You Start](../../media/medialibrary/photoAccessHelper-preparation.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -216,7 +215,7 @@ Commits the modification on the file metadata to the database. This API uses a p
 
 | Type                 | Description        |
 | ------------------- | ---------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; |Promise that returns no value.|
 
 **Error codes**
 
@@ -272,11 +271,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 close(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
-Closes a file. This API uses an asynchronous callback to return the result.
+Closes the current file. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 10 and deprecated since API version 11. For security purposes, the API for obtaining the media file handle is no longer provided, and the corresponding **close** API is also deprecated.
+> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [fs.close](../apis-core-file-kit/js-apis-file-fs.md#fsclose-1) instead.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -285,7 +284,7 @@ Closes a file. This API uses an asynchronous callback to return the result.
 | Name     | Type                       | Mandatory  | Description   |
 | -------- | ------------------------- | ---- | ----- |
 | fd       | number                    | Yes   | FD of the file to close.|
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback that returns no value.|
+| callback | AsyncCallback&lt;void&gt; | Yes   | Callback function. If the current file is closed successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -333,11 +332,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 close(fd: number): Promise&lt;void&gt;
 
-Closes a file. This API uses a promise to return the result.
+Closes the current file. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 10 and deprecated since API version 11. For security purposes, the API for obtaining the media file handle is no longer provided, and the corresponding **close** API is also deprecated.
+> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [fs.close](../apis-core-file-kit/js-apis-file-fs.md#fsclose) instead.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -394,7 +393,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getThumbnail(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
-Obtains the thumbnail of this file. This API uses an asynchronous callback to return the result.
+Obtains the thumbnail of a file. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
@@ -406,7 +405,7 @@ Obtains the thumbnail of this file. This API uses an asynchronous callback to re
 
 | Name     | Type                                 | Mandatory  | Description              |
 | -------- | ----------------------------------- | ---- | ---------------- |
-| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback used to return the PixelMap of the thumbnail.|
+| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback function. If the thumbnail of a file is successfully obtained, **err** is **undefined**, and **data** is the PixelMap of the thumbnail. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -465,7 +464,7 @@ Obtains the file thumbnail of the given size. This API uses an asynchronous call
 | Name     | Type                                 | Mandatory  | Description              |
 | -------- | ----------------------------------- | ---- | ---------------- |
 | size     | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | Yes   | Size of the thumbnail.           |
-| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback used to return the PixelMap of the thumbnail.|
+| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback function. If the thumbnail of a file is successfully obtained, **err** is **undefined**, and **data** is the PixelMap of the thumbnail. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -642,11 +641,11 @@ getReadOnlyFd(callback: AsyncCallback&lt;number&gt;): void
 
 Opens this file in read-only mode. This API uses an asynchronous callback to return the result.
 
+The returned FD must be closed when it is not required.
+
 > **NOTE**
 >
-> - This API is supported since API version 10 and deprecated since API version 11. For security purposes, the API for obtaining the media file handle is no longer provided.
->
-> - The returned FD must be closed when it is not required.
+> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen-1) instead.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
@@ -656,7 +655,7 @@ Opens this file in read-only mode. This API uses an asynchronous callback to ret
 
 | Name     | Type                         | Mandatory  | Description                                 |
 | -------- | --------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the file descriptor (FD) of the file opened.                           |
+| callback | AsyncCallback&lt;number&gt; | Yes   | Callback function. If the current file is opened successfully, **err** is **undefined**, and **data** is the file descriptor. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -705,11 +704,11 @@ getReadOnlyFd(): Promise&lt;number&gt;
 
 Opens this file in read-only mode. This API uses a promise to return the result.
 
+The returned FD must be closed when it is not required.
+
 > **NOTE**
 >
-> - This API is supported since API version 10 and deprecated since API version 11. For security purposes, the API for obtaining the media file handle is no longer provided.
->
-> - The returned FD must be closed when it is not required.
+> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen) instead.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 

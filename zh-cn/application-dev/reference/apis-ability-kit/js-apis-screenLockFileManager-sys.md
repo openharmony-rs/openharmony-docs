@@ -1,5 +1,12 @@
 # @ohos.ability.screenLockFileManager (锁屏敏感数据管理)(系统接口)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
+
 敏感数据密钥在锁屏后会触发销毁，销毁后敏感数据无法读写，需解锁屏幕触发恢复敏感数据密钥后方可访问。本模块提供应用锁屏下敏感数据保护的能力，支持申请和释放锁屏下敏感数据访问权限等。
 
 > **说明：**
@@ -12,20 +19,6 @@
 ```ts
 import { screenLockFileManager } from '@kit.AbilityKit';
 ```
-
-## DataType
-
-枚举，指定锁屏下访问的敏感数据类型。
-
- **系统能力：** SystemCapability.Security.ScreenLockFileManager
-
- **系统接口：** 此接口为系统接口。
-
-| 名称       | 值         | 说明           |
-| ---------- | ---------- | -------------- |
-| MEDIA_DATA | 0x00000001 | 媒体类型数据。 |
-| ALL_DATA   | 0xffffffff | 所有敏感加密数据。     |
-
 ## screenLockFileManager.acquireAccess
 
 acquireAccess(dataType: DataType): AccessStatus
@@ -42,7 +35,7 @@ acquireAccess(dataType: DataType): AccessStatus
 
 | 参数名  | 类型   | 必填 | 说明                       |
 | ----------- | ------ | ---- | ---------------------------- |
-| dataType | [DataType](#datatype) | 是   | 锁屏下访问的敏感数据类型。 |
+| dataType | [DataType](js-apis-screenLockFileManager.md#datatype) | 是   | 锁屏下访问的敏感数据类型。 |
 
 **返回值：**
 
@@ -100,7 +93,7 @@ releaseAccess(dataType: DataType): ReleaseStatus
 
 | 参数名  | 类型   | 必填 | 说明                       |
 | ----------- | ------ | ---- | ---------------------------- |
-| dataType | [DataType](#datatype) | 是   | 锁屏下访问的敏感数据类型。 |
+| dataType | [DataType](js-apis-screenLockFileManager.md#datatype) | 是   | 锁屏下访问的敏感数据类型。 |
 
 **返回值：**
 
@@ -158,7 +151,7 @@ queryAppKeyState(dataType: DataType): KeyStatus
 
 | 参数名  | 类型   | 必填 | 说明                       |
 | ----------- | ------ | ---- | ---------------------------- |
-| dataType | [DataType](#datatype) | 是   | 锁屏下访问的敏感数据类型。 |
+| dataType | [DataType](js-apis-screenLockFileManager.md#datatype) | 是   | 锁屏下访问的敏感数据类型。 |
 
 **返回值：**
 

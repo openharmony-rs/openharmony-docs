@@ -4,7 +4,7 @@
 <!--Owner: @zju-wyx-->
 <!--Designer: @xiao-peiyang; @liyancheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -25,18 +25,21 @@ arkOptions主要提供ArkTS编译相关配置，当前文档介绍arkOptions中t
 arkOptions中types字段示例：
 
 在模块build-profile.json5配置文件buildOption标签的arkOptions属性中添加types字段。
-```json
-// 在/entry/build-profile.json5
-{
-  "arkOptions": {
-    "types": ["chai", "./oh_modules/@types/mocha", "./src/main/ets/pages/global"]
-  }
-}
+
+<!-- @[add_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/build-profile.json5) --> 
+
+``` JSON5
+// 在/entry/build-profile.json5。
+"arkOptions": {
+  "types": [
+    "../node_modules/@types/chai/index", "../node_modules/@types/mocha/index", "./src/main/ets/pages/global"
+  ]
+},
 ```
 
 types字段支持填写包名、包所在位置的相对路径以及声明文件所在相对路径，仅支持当前模块内的查找，若目录下存在同名文件（后缀不同），默认加载顺序.d.ets > .d.ts。<br />
-（1）填写包名方式：通过包名到oh_modules/@types/目录查找包名中定义的声明文件，如"chai"。<br />
-（2）填写包所在相对路径方式：支持在基于build-profile.json5的相对路径中查找定义的声明文件，如"./oh_modules/@types/mocha"。<br />
+（1）填写包名方式：通过包名到oh_modules/@types/目录查找包名中定义的声明文件，如"node"。<br />
+（2）填写包所在相对路径方式：支持在基于build-profile.json5的相对路径中查找定义的声明文件，如"./oh_modules/@types/node"。<br />
 （3）填写声明文件所在相对路径方式：支持查找相对路径下的声明文件，如"./src/main/ets/pages/global"。
 
 ### 注意事项
@@ -50,14 +53,18 @@ types字段支持填写包名、包所在位置的相对路径以及声明文件
 ```
 
 如果在types字段中填写声明文件所在相对路径，前提是在模块下存在相应的声明文件，比如模块下存在src/main/ets/pages/global.d.ts声明文件，声明文件内容如下所示：
-```typescript
+<!-- @[declare_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/src/main/ets/pages/global.d.ts) --> 
+
+``` TypeScript
 declare namespace Global {
   type ObjectType = string | number;
 }
 ```
 
 通过types全局引入后，对全局类型的使用示例如下：
-```typescript
+<!-- @[call_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
 // 在entry/src/main/ets/pages/Index.ets
 let a: Chai.Message;
 let b: Mocha.HookFunction;
@@ -68,7 +75,7 @@ let c: Global.ObjectType;
 
 ### maxFlowDepth配置文件标签说明
 
-  arkOptions下tscConfig中maxFlowDepth字段配置文件标签说明：
+arkOptions下tscConfig中maxFlowDepth字段配置文件标签说明：
 
 | 属性名称 | 含义 | 配置范围 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -77,15 +84,16 @@ let c: Global.ObjectType;
 ### arkOptions下的tscConfig中maxFlowDepth字段配置说明
 
 arkOptions/tscConfig中maxFlowDepth字段展示。
+
 在工程级目录下的build-profile.json5配置文件buildOption标签的arkOptions/tscConfig属性中添加maxFlowDepth字段。
 
-```typescript
-// 在工程名/build-profile.json5文件中
-{
-  "arkOptions": {
-    "tscConfig": {
-      "maxFlowDepth": 2222
-    }
+<!-- @[add_tscConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/build-profile.json5) --> 
+
+``` JSON5
+// 在工程名/build-profile.json5文件中。
+"arkOptions": {
+  "tscConfig": {
+    "maxFlowDepth": 2222
   }
 }
 ```
@@ -101,7 +109,7 @@ arkOptions/tscConfig中maxFlowDepth字段展示。
       {
          instancePath: 'app.products[0].buildOption.arkOptions.tscConfig.maxFlowDepth',
          keyword: 'maximum',
-         params: { comparision: '<=', limit: 65535 },
+         params: { comparison: '<=', limit: 65535 },
          message: 'must be <= 65535',
          location: 'D:/工程名/build-profile.json5:行号:列号'
       }

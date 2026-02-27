@@ -46,11 +46,13 @@ Obtains a PhotoAccessHelper instance for the specified user, letting you access 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 |  Permission denied.         |
+| 202 |  Called by non-system application.         |
+| 13900020 | Invalid argument.         |
 
 **Example**
 
@@ -339,7 +341,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
     };
     let fetchResult: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
     if (fetchResult === undefined) {
-      console.error('requsetSourcePromise fetchResult is undefined');
+      console.error('requestSourcePromise fetchResult is undefined');
       return;
     }
     let photoAsset: sendablePhotoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
@@ -360,6 +362,8 @@ Obtains analysis data. This API uses a promise to return the result.
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.READ\_IMAGEVIDEO
+
+Starting from API version 22, if **analysisType** is set to [ANALYSIS\_DETAIL\_ADDRESS](js-apis-photoAccessHelper-sys.md#analysistype11), the ohos.permission.MEDIA\_LOCATION permission is required. Otherwise, error code [201 Permission Denied](../errorcode-universal.md#201-permission-denied) is reported.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 

@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_NodeAdapterEvent ArkUI_NodeAdapterEvent
+```
+
 ## Overview
 
 Defines an adapter event object.

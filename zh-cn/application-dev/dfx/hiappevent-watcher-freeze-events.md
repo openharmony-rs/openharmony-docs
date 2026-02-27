@@ -4,23 +4,25 @@
 <!--Owner: @rr_cn-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 
 用户在使用应用时，如果出现点击无反应或应用无响应等情况，并且持续时间超过一定限制，就会被定义为应用冻屏，也被称为应用无响应。为了应对应用冻屏问题，系统会提供应用冻屏检测、维测日志抓取、日志上报的能力，为开发者提供详细的维测日志以辅助故障定位。
 
+本文面向开发者介绍AppFreeze（应用冻屏）检测原理，以及各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅应用冻屏事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。
+
+- [订阅应用冻屏事件（ArkTS）](hiappevent-watcher-freeze-events-arkts.md)。
+
+- [订阅应用冻屏事件（C/C++）](hiappevent-watcher-freeze-events-ndk.md)。
+
+> **说明：**
+>
+> 应用冻屏事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，支持在原子化服务场景下使用HiAppEvent 进行订阅，从 API version 22 开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。
+
 ## 检测原理
 
 详见[AppFreeze（应用冻屏）检测原理](appfreeze-guidelines.md#检测原理)。
-
-## 接口说明
-
-开发者可以通过HiAppEvent提供接口订阅应用冻屏事件“hiAppEvent.event.APP_FREEZE”，系统检测到应用冻屏后，会抓取维测信息通过HiAppEvent将冻屏事件回调给应用进程。
-
-- [订阅应用冻屏事件（ArkTS）](hiappevent-watcher-freeze-events-arkts.md)
-
-- [订阅应用冻屏事件（C/C++）](hiappevent-watcher-freeze-events-ndk.md)
 
 ## 事件字段说明
 
@@ -32,7 +34,7 @@
 | -------- | -------- | -------- |
 | time | number | 事件触发时间，单位为ms。 |
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台；false表示应用处于后台。 |
-| release_type | string | 标识应用打包时使用的SDK的发布类型。具体说明详见[ApplicationInfo](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中的releaseType。<br>**说明**：从API version 23开始支持 |
+| release_type | string | 应用的版本类型。release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。<br>**说明**：从API version 23开始支持 |
 | cpu_abi | string | 二进制接口类型。<br>**说明**：从API version 23开始支持。 |
 | bundle_version | string | 应用版本。 |
 | bundle_name | string | 应用名称。 |
@@ -66,6 +68,12 @@
 | thread_name | string | 线程名。 |
 | tid | number | 线程id。 |
 | frames | object[] | 线程调用栈，详见frame属性。 |
+| state | string | 线程运行状态。读取自/proc/pid/stat的state的值。<br>**说明**：从API version 23开始支持。 |
+| utime | number | 线程在用户态下消耗的CPU的嘀嗒数。读取自/proc/pid/stat的utime的值。<br>**说明**：从API version 23开始支持。|
+| stime | number | 线程在内核态下消耗的CPU的嘀嗒数。读取自/proc/pid/stat的stime的值。<br>**说明**：从API version 23开始支持。|
+| priority | number | 实时优先级。读取自/proc/pid/stat的priority的值。<br>**说明**：从API version 23开始支持。|
+| nice | number | 静态优先级。读取自/proc/pid/stat的nice的值。<br>**说明**：从API version 23开始支持。|
+| clk | number | 每秒的时钟嘀嗒次数。使用sysconf(_SC_CLK_TCK)获取，获取失败时使用默认值100。通过嘀嗒数除以该值可以计算得到运行时间（单位：秒）。<br>**说明**：从API version 23开始支持。|
 
 ### frame字段说明
 
@@ -97,12 +105,12 @@
 
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |
-| rss | number | 进程实际占用内存大小，单位KB。 |
+| rss | number | 进程实际占用内存大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志头部信息)中Process Memory(kB)字段。|
 | vss | number | 进程向系统申请的虚拟内存大小，单位KB。 |
 | pss | number | 进程实际使用的物理内存大小，单位KB。 |
-| sys_free_mem | number | 空闲内存大小，单位KB。 |
-| sys_avail_mem | number | 可用内存大小，单位KB。 |
-| sys_total_mem | number | 总内存大小，单位KB。 |
+| sys_free_mem | number | 空闲内存大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志头部信息)中Device Memory(kB)字段的Free。|
+| sys_avail_mem | number | 可用内存大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志头部信息)中Device Memory(kB)字段的Available。|
+| sys_total_mem | number | 总内存大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志头部信息)中Device Memory(kB)字段的Total。|
 | vm_heap_total_size | number | 主虚拟机总堆内存大小，单位KB。<br>**说明**：从API 22开始支持。 |
 | vm_heap_used_size | number | 主虚拟机的生命周期过程中，持续统计存活对象的大小，单位KB。<br>**说明**：从API 22开始支持。 |
 

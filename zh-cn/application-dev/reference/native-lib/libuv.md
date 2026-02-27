@@ -25,7 +25,7 @@
 
 其次在CMakeLists.txt中添加以下动态链接库：
 
-```
+```txt
 libuv.so
 ```
 
@@ -141,7 +141,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 ```
 
 在index.d.ts文件中添加如下代码：
-```
+```ts
 export const test:() => number;
 ```
 
@@ -341,7 +341,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 
 在index.d.ts添加如下代码：
 
-```
+```ts
 export const testClose:() => number;
 ```
 
@@ -463,7 +463,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 ```
 在index.d.ts添加如下代码：
 
-```
+```ts
 export const testClose:() => number;
 ```
 
@@ -796,7 +796,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 
 在index.d.ts添加如下代码：
 
-```
+```ts
 export const testTimerAsync:() => number;
 export const testTimerAsyncSend:() => number;
 ```
@@ -923,6 +923,7 @@ void uv_close(uv_handle_t* handle, uv_close_cb close_cb)
 ```
 
   handle：要关闭的句柄。
+  
   close_cb：处理该句柄的函数，用来进行内存管理等操作。
 
 调用`uv_close`后，首先将要关闭的handle挂载到loop的closing_handles队列上，然后等待loop所在线程运行`uv__run_closing_handles`函数。最后回调函数close_cb将会在loop的下一次迭代中执行。因此，释放内存等操作应该在close_cb中进行。并且这种异步的关闭操作会带来多线程问题，开发者需要谨慎处理`uv_close`的时序问题，并且保证在close_cb执行之前handles的生命周期。
@@ -1133,7 +1134,7 @@ void async_cb(uv_async_t* handle)
 static napi_value TestTimerAsync(napi_env env, napi_callback_info info)
 {
     uv_loop_t* loop = nullptr;
-	napi_get_uv_event_loop(env, &loop);
+    napi_get_uv_event_loop(env, &loop);
     uv_async_init(loop, async, async_cb);
     return 0;
 }
@@ -1177,7 +1178,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 
 在index.d.ts添加如下代码：
 
-```
+```ts
 export const testTimerAsync:() => number;
 export const testTimerAsyncSend:() => number;
 ```
@@ -1263,7 +1264,7 @@ int main()
 
 可以看到，每触发一次，主线程都会执行一次回调函数。
 
-```
+```txt
 0th:subThread triggered
 ohos async print
 1th:subThread triggered
@@ -1302,7 +1303,9 @@ work_cb：提交给工作线程的任务。
 
 after_work_cb：loop所在线程要执行的回调函数。
 
-**注意：** work_cb与after_work_cb的执行有一个时序问题，只有work_cb执行完，通过`uv_async_send(loop->wq_async)`触发fd事件，loop所在线程在下一次迭代中才会执行after_work_cb。只有执行到after_work_cb时，与之相关的uv_work_t生命周期才算结束。
+> **注意：**
+>
+> work_cb与after_work_cb的执行有一个时序问题，只有work_cb执行完，通过`uv_async_send(loop->wq_async)`触发fd事件，loop所在线程在下一次迭代中才会执行after_work_cb。只有执行到after_work_cb时，与之相关的uv_work_t生命周期才算结束。
 
 **1. 异步任务提交**
 

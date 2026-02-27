@@ -11,7 +11,7 @@
 
 Defines C APIs for cellular data module.
 
-**File to include**: <telephony/core_service/telephony_radio.h>
+**File to include**: <telephony/cellular_data/telephony_data.h>
 
 **Library**: libtelephony_data.so
 
@@ -34,7 +34,7 @@ Defines C APIs for cellular data module.
 
 ### OH_Telephony_GetDefaultCellularDataSlotId()
 
-```
+```c
 int32_t OH_Telephony_GetDefaultCellularDataSlotId(void)
 ```
 

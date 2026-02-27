@@ -47,13 +47,15 @@ Sets the border image of the component.
 | Name  | Type                                                        | Read-Only| Optional| Description                                                 |
 | ------ | ------------------------------------------------------------ | ---- |  ------------------------------------------------------------ |  ------------------------------------------------------------ |
 | source | string \| [Resource](ts-types.md#resource) \| [LinearGradient](#lineargradient) | No| Yes| Source or gradient color of the border image. When the type is string, this parameter sets the border image source. For details about how to reference image resources, see [Loading Image Resources ](../../../ui/arkts-graphics-display.md#loading-image-resources).<br>**NOTE**<br>The border image source applies only to container components, such as [Row](ts-container-row.md), [Column](ts-container-column.md), and [Flex](ts-container-flex.md).|
-| slice  | [Length](ts-types.md#length) \| [EdgeWidths](ts-types.md#edgewidths9)  \| [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>| No| Yes| Slice width of the upper left corner, upper right corner, lower left corner, and lower right corner of the border image.<br>Default value: **0**<br>**NOTE**<br>If this parameter is set to a negative value, the default value is used.<br>When this parameter is set to a value of the [Length](ts-types.md#length) type, the value applies to the four corners in a unified manner.<br>When this parameter is set to a value of the [EdgeWidths](ts-types.md#edgewidths9) type:<br>- **Top**: slice height of the upper left or upper right corner of the image.<br>- **Bottom**: slice height of the lower left or lower right corner of the image.<br>- **Left**: slice width of the upper left or lower left corner of the image.<br>- **Right**: slice width of the upper right or lower right corner of the image.<br>When the parameter type is [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>:<br>- **Top**: slice height of the upper left or upper right corner of the image.<br>- **Bottom**: slice height of the lower left or lower right corner of the image.<br>- **Start**: slice width of the upper left or lower left corner of the image for left-to-right scripts;<br>slice width of the upper right or lower right corner of the image for right-to-left scripts.<br>- **End**: slice width of the upper right or lower right corner of the image for left-to-right scripts;<br>slice width of the upper left or lower left corner of the image for right-to-left scripts.|
-| width  | [Length](ts-types.md#length) \| [EdgeWidths](ts-types.md#edgewidths9) \| [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup> | No| Yes| Width of the border image.<br>Default value: **0**<br>**NOTE**<br>If this parameter is set to a negative value, the value **1** is used.<br>If this parameter is set to a negative value, the default value is used.<br>When this parameter is set to a value of the [Length](ts-types.md#length) type, the value applies to the four corners in a unified manner.<br>When this parameter is set to a value of the [EdgeWidths](ts-types.md#edgewidths9) type:<br>- **Top**: width of the top edge of the border image.<br>- **Bottom**: width of the bottom edge of the border image.<br>- **Left**: width of the left edge of the border image.<br>- **Right**: width of the right edge of the border image.<br>When the parameter type is [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>:<br>- **Top**: width of the top edge of the border image.<br>- **Bottom**: width of the bottom edge of the border image.<br>- **Start**: width of the left edge of the border image for left-to-right scripts;<br>width of the right edge of the border image for right-to-left scripts.<br>- **End**: width of the right edge of the border image for left-to-right scripts;<br>width of the left edge of the border image for right-to-left scripts.|
+| slice  | [Length](ts-types.md#length) \| [EdgeWidths](ts-types.md#edgewidths9)  \| [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>| No| Yes| Slice width and height of the upper left corner, upper right corner, lower left corner, and lower right corner of the border image.<br>Default value: **0**<br>**NOTE**<br>If this parameter is set to a negative value, the default value is used.<br>When this parameter is set to a value of the [Length](ts-types.md#length) type, the value applies to the four corners in a unified manner.<br>When this parameter is set to a value of the [EdgeWidths](ts-types.md#edgewidths9) type:<br>- **Top**: slice height of the upper left or upper right corner of the image.<br>- **Bottom**: slice height of the lower left or lower right corner of the image.<br>- **Left**: slice width of the upper left or lower left corner of the image.<br>- **Right**: slice width of the upper right or lower right corner of the image.<br>When the parameter type is [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>:<br>- **Top**: slice height of the upper left or upper right corner of the image.<br>- **Bottom**: slice height of the lower left or lower right corner of the image.<br>- **Start**: slice width of the upper left or lower left corner of the image for left-to-right scripts;<br>slice width of the upper right or lower right corner of the image for right-to-left scripts.<br>- **End**: slice width of the upper right or lower right corner of the image for left-to-right scripts;<br>slice width of the upper left or lower left corner of the image for right-to-left scripts.|
+| width  | [Length](ts-types.md#length) \| [EdgeWidths](ts-types.md#edgewidths9) \| [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup> | No| Yes| Width of the border image.<br>Default value: **0**<br>**NOTE**<br>If this parameter is set to a negative value, the value **1** is used.<br>When this parameter is set to a value of the [Length](ts-types.md#length) type, the value applies to the four corners in a unified manner. If this parameter is set to a negative value, the default value is used.<br>When this parameter is set to a value of the [EdgeWidths](ts-types.md#edgewidths9) type:<br>- **Top**: width of the top edge of the border image.<br>- **Bottom**: width of the bottom edge of the border image.<br>- **Left**: width of the left edge of the border image.<br>- **Right**: width of the right edge of the border image.<br>When the parameter type is [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>:<br>- **Top**: width of the top edge of the border image.<br>- **Bottom**: width of the bottom edge of the border image.<br>- **Start**: width of the left edge of the border image for left-to-right scripts;<br>width of the right edge of the border image for right-to-left scripts.<br>- **End**: width of the right edge of the border image for left-to-right scripts;<br>width of the left edge of the border image for right-to-left scripts.|
 | outset | [Length](ts-types.md#length) \| [EdgeWidths](ts-types.md#edgewidths9) \| [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup> | No| Yes| Amount by which the border image is extended beyond the border box.<br>Default value: **0**<br>**NOTE**<br>If this parameter is set to a negative value, the default value is used.<br>When this parameter is set to a value of the [Length](ts-types.md#length) type, the value applies to the four corners in a unified manner.<br>When this parameter is set to a value of the [EdgeWidths](ts-types.md#edgewidths9) type:<br>- **Top**: amount by which the top edge of the border image is extended beyond the border box.<br>- **Bottom**: amount by which the bottom edge of the border image is extended beyond the border box.<br>- **Left**: amount by which the left edge of the border image is extended beyond the border box.<br>- **Right**: amount by which the right edge of the border image is extended beyond the border box.<br>When the parameter type is [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>:<br>- **Top**: amount by which the top edge of the border image is extended beyond the border box.<br>- **Bottom**: amount by which the bottom edge of the border image is extended beyond the border box.<br>- **Start**: amount by which the left edge of the border image is extended beyond the border box for left-to-right scripts;<br>amount by which the right edge of the border image is extended beyond the border box for right-to-left scripts.<br>- **End**: amount by which the right edge of the border image is extended beyond the border box for left-to-right scripts;<br>amount by which the left edge of the border image is extended beyond the border box for right-to-left scripts.|
 | repeat | [RepeatMode](#repeatmode)                            | No| Yes| Repeat mode of the source image's slices on the border.<br>Default value: **RepeatMode.Stretch**|
 | fill   | boolean                                                      | No| Yes| Whether to fill the center of the border image. **true**: Fill the center of the border image.<br>**false**: Do not fill the center of the border image.<br>Default value: **false**                    |
 
 ## RepeatMode
+
+Sets the repetition mode of the cut image on the border.
 
 **Widget capability**: Since API version 9, this feature is supported in ArkTS widgets.
 
@@ -63,10 +65,10 @@ Sets the border image of the component.
 
 | Name     | Value                             | Description                              |
 | ------- | ----------------------------------- | ----------------------------------- |
-| Repeat  | -        | Tiles the sliced image repeatedly along the border, clipping any overflow.         |
-| Stretch | -              | Stretches the sliced image to fill the entire border.               |
-| Round   | - | Repeats the sliced image in integer multiples. If exact tiling does not fit the border, the image is compressed to achieve full coverage.|
-| Space   | - | Repeats the sliced image in integer multiples. If exact tiling does not fit the border, the remaining gaps are filled with space.  |
+| Repeat  | 0        | Tiles the sliced image repeatedly along the border, clipping any overflow.         |
+| Stretch | 1              | Stretches the sliced image to fill the entire border.               |
+| Round   | 2 | Repeats the sliced image in integer multiples. If exact tiling does not fit the border, the image is compressed to achieve full coverage.|
+| Space   | 3 | Repeats the sliced image in integer multiples. If exact tiling does not fit the border, the remaining gaps are filled with space.  |
 
 ## LinearGradient
 
@@ -79,7 +81,7 @@ Sets the border image of the component.
 | angle  | number \| string | No  | Yes  |  Start angle of the linear gradient. A positive value indicates a clockwise rotation from the origin, (0, 0).<br>Default value: **180**.<br>If the angle is specified with a string, only the 'deg', 'grad', 'rad', and 'turn' types are supported.|
 | direction  | [GradientDirection](ts-appendix-enums.md#gradientdirection) | No  | Yes  | Direction of the linear gradient. It does not take effect when **angle** is set.<br>Default value: **GradientDirection.Bottom**.|
 | colors  | Array<[[ResourceColor](ts-types.md#resourcecolor), number]> | No  | No  | Array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped.|
-| repeating  | boolean | No  | Yes  | Whether the colors are repeated.<br>Default value: **false**<br>**true**: The colors are repeated.<br>**false**: The colors are not repeated.|
+| repeating  | boolean | No  | Yes  | Whether the gradient colors can be repeatedly rendered.<br>Default value: **false**<br>**true**: yes<br>**false**: no|
 
 ## Example
 
@@ -247,7 +249,7 @@ struct BorderImage {
           Text('This is borderImage.').textAlign(TextAlign.Center).fontSize(50)
         }
         .borderImage({
-          source: $r('app.media.icon'),
+          source: $r('app.media.startIcon'),
           slice: {
             top: LengthMetrics.px(10),
             bottom: LengthMetrics.px(10),
@@ -374,10 +376,6 @@ struct BorderImage {
 }
 ```
 
-The following shows how the example is represented with left-to-right scripts.
+The following shows how the example is represented with scripts.
 
-![borderImage](figures/borderImage_ltr.png)
-
-The following shows how the example is represented with right-to-left scripts.
-
-![borderImage](figures/borderImage_rtl.png)
+![borderImage](figures/borderImage_startIcon.png)

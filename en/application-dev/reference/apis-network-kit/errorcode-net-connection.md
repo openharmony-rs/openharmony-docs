@@ -129,3 +129,21 @@ This error code is reported if the number of network requests exceeds the maximu
 1. Locate the fault based on the "Over the max request number" log record.
 
 2. After using **NetConnection.register**, call **NetConnection.unregister** to cancel the registered listener in a timely manner.
+
+## 2100301 The caller fails to be authenticated (non-VPN application).
+
+**Error Message**
+
+Incorrect usage in non-VPN application.
+
+**Description**
+
+The API caller is not a VPN application.
+
+**Cause**
+
+The API caller is not a VPN application.
+
+**Procedure**
+
+Ensure that the API is called in a VPN application.

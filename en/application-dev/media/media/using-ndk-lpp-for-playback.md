@@ -162,7 +162,7 @@ Include the [lowpower_audio_sink_base.h](../../reference/apis-media-kit/capi-low
 
 ## Running the Sample Project
 
-1. Create a project. Download the [sample project](https://gitee.com/harmonyos_samples/guide-snippets/tree/master/MediaKit/LowPowerAVSInk/lowPowerAVSinkSample), and copy its resources to the corresponding directories.
+1. Create a project. Download the [sample project](https://gitcode.com/HarmonyOS_Samples/guide-snippets/tree/master/MediaKit/LowPowerAVSInk/lowPowerAVSinkSample), and copy its resources to the corresponding directories.
 
    ```
    lpp_demo-sample/entry/src/main/          

@@ -45,15 +45,15 @@
     - [@ohos.request (上传下载)](js-apis-request.md)
     - [@ohos.request.cacheDownload (缓存下载)](js-apis-request-cacheDownload.md)
     - [@ohos.zlib (Zip模块)](js-apis-zlib.md)
+    - [@ohos.selectionInput.SelectionExtensionAbility (划词扩展能力)](js-apis-selectionInput-selectionExtensionAbility.md)
+    - [@ohos.selectionInput.SelectionExtensionContext (划词扩展上下文)](js-apis-selectionInput-selectionExtensionContext.md)
+    - [@ohos.selectionInput.selectionManager (划词管理)](js-apis-selectionInput-selectionManager.md)
+    - [@ohos.selectionInput.SelectionPanel (划词面板)](js-apis-selectionInput-selectionPanel.md)
     <!--Del-->
     - [@ohos.app.ability.PrintExtensionAbility (打印扩展能力)(系统接口)](js-apis-app-ability-PrintExtensionAbility-sys.md)
     - [@ohos.print (打印)(系统接口)](js-apis-print-sys.md)
     - [@ohos.scan (扫描)(系统接口)](js-apis-scan-sys.md)
     - [@ohos.request (上传下载)(系统接口)](js-apis-request-sys.md)
-    - [@ohos.selectionInput.SelectionExtensionAbility (划词扩展能力)(系统接口)](js-apis-selectionInput-selectionExtensionAbility-sys.md)
-    - [@ohos.selectionInput.SelectionExtensionContext (划词扩展上下文)(系统接口)](js-apis-selectionInput-selectionExtensionContext-sys.md)
-    - [@ohos.selectionInput.selectionManager (划词管理)(系统接口)](js-apis-selectionInput-selectionManager-sys.md)
-    - [@ohos.selectionInput.SelectionPanel (划词面板)(系统接口)](js-apis-selectionInput-selectionPanel-sys.md)
     <!--DelEnd-->
   - 进程线程通信<!--process-thread-communi-arkts-->
     - [系统定义的公共事件](common_event/commonEventManager-definitions.md)
@@ -91,6 +91,7 @@
     - [@ohos.wallpaper (壁纸)(系统接口)](js-apis-wallpaper-sys.md)
     - [@ohos.WallpaperExtensionAbility (WallpaperExtensionAbility)(系统接口)](js-apis-WallpaperExtensionAbility-sys.md)
     - [@ohos.systemTimer (系统定时器)(系统接口)](js-apis-system-timer-sys.md)
+    - [@ohos.intelligentScene (情景模式)](js-apis-intelligentScene.md)
     <!--DelEnd-->
   - 已停止维护的接口<!--basic-services-arkts-dep-->
     - [系统公共事件定义](common_event/commonEvent-definitions.md)
@@ -140,6 +141,14 @@
     - [Print_Margin](capi-oh-print-print-margin.md)
     - [Print_PageSize](capi-oh-print-print-pagesize.md)
     - [Print_Range](capi-oh-print-print-range.md)
+    - [Print_DefaultValue](capi-oh-print-print-defaultvalue.md)
+    - [Print_PrinterCapability](capi-oh-print-print-printercapability.md)
+    - [Print_PrinterInfo](capi-oh-print-print-printerinfo.md)
+    - [Print_PrintJob](capi-oh-print-print-printjob.md)
+    - [Print_Property](capi-oh-print-print-property.md)
+    - [Print_PropertyList](capi-oh-print-print-propertylist.md)
+    - [Print_Resolution](capi-oh-print-print-resolution.md)
+    - [Print_StringList](capi-oh-print-print-stringlist.md)
     - [Print_PrintAttributes](capi-oh-print-print-printattributes.md)
     - [Print_PrintDocCallback](capi-oh-print-print-printdoccallback.md)
     - [Scan_ScannerDevice](capi-oh-scan-scan-scannerdevice.md)
@@ -171,9 +180,10 @@
   <!--DelEnd-->
   - [打印服务错误码](errorcode-print.md)
   - [设置数据项错误码](errorcode-settings.md)
+  - [划词服务错误码](errorcode-selection.md)
   <!--Del-->
   - [锁屏服务错误码](errorcode-screenlock.md)
   - [设备证明错误码](errorcode-deviceAttest.md)
   - [智能语音错误码](errorcode-intelligentVoice.md)
-  - [划词服务错误码](errorcode-selection.md)
+  - [情景模式错误码](errorcode-intelligentScene.md)
   <!--DelEnd-->

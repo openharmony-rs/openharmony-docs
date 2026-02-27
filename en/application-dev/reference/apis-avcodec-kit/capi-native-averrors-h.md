@@ -1,5 +1,4 @@
 # native_averrors.h
-
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @xushubo; @chennotfound-->
@@ -33,7 +32,7 @@ The file declares the error codes used by the media framework.
 
 ### OH_AVErrCode
 
-```
+```c
 enum OH_AVErrCode
 ```
 
@@ -75,5 +74,8 @@ Enumerates the error codes used by the media framework.
 | AV_ERR_IO_SSL_CONNECT_FAIL = 5411009 |  Client authentication fails because the server certificate is not carried, is invalid, or has expired.<br>**Since**: 14|
 | AV_ERR_IO_SSL_SERVER_CERT_UNTRUSTED = 5411010 |  The SSL server certificate is untrusted.<br>**Since**: 14|
 | AV_ERR_IO_UNSUPPORTED_REQUEST = 5411011 |  The network protocol does not support the request.<br>**Since**: 14|
+| AV_ERR_IO_CLEARTEXT_NOT_PERMITTED = 5411012 |  HTTP plaintext access is not allowed.<br>**Since**: 23|
 | AV_ERR_STREAM_CHANGED = 5410005 | The stream format changes in synchronous mode. You can call [OH_VideoEncoder_GetOutputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getoutputdescription) (video encoding), [OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription) (video decoding), or [OH_AudioCodec_GetOutputDescription](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_getoutputdescription) (audio encoding and decoding) to obtain the new stream configuration.<br>**Since**: 20|
 | AV_ERR_TRY_AGAIN_LATER = 5410006 |  The temporary buffer query fails in synchronous mode. You are advised to wait for a short period of time and try again.<br>**Since**: 20|
+| AV_ERR_SUPER_RESOLUTION_UNSUPPORTED = 5410003 |  The media source or current device does not support super resolution.<br>**Since**: 23|
+| AV_ERR_SUPER_RESOLUTION_NOT_ENABLED = 5410004 |  Super resolution is not enabled.<br>**Since**: 23|

@@ -7,13 +7,22 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+从API 22开始，huksExternalCrypto提供Provider注册和注销功能接口。
+
 ## 注册Provider
+
+### 在CMake脚本中链接相关动态库
+```txt
+target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so)
+```
 
 ### 开发步骤
 
 1. 构造注册参数，需要传入[OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-type-h.md#oh_huks_externalcryptotag)。
 
 2. 调用注册接口[OH_Huks_RegisterProvider](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_registerprovider)。
+
+## 开发案例
 
 ```c++
 #include "napi/native_api.h"
@@ -86,6 +95,11 @@ static napi_value registerProvider(napi_env env, napi_callback_info info)
 ```
 
 ## 注销Provider
+
+### 在CMake脚本中链接相关动态库
+```txt
+target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so)
+```
 
 ### 开发步骤
 
@@ -194,11 +208,6 @@ OH_Huks_Result InitParamSet(
     }
     return ret;
 }
-
-static struct OH_Huks_Blob g_abilityName = {
-    (uint32_t)strlen("testAbility"),
-    (uint8_t *)"testAbility"
-};
 
 struct OH_Huks_Blob g_providerName = {
     (uint32_t)strlen("testProviderName"),

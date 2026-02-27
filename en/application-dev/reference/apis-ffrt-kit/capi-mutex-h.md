@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
@@ -41,7 +41,7 @@ The **mutex.h** file declares the mutex APIs in C.
 
 ### ffrt_mutexattr_init()
 
-```
+```c
 FFRT_C_API int ffrt_mutexattr_init(ffrt_mutexattr_t* attr)
 ```
 
@@ -50,7 +50,6 @@ FFRT_C_API int ffrt_mutexattr_init(ffrt_mutexattr_t* attr)
 Initializes the mutex attribute.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -66,7 +65,7 @@ Initializes the mutex attribute.
 
 ### ffrt_mutexattr_settype()
 
-```
+```c
 FFRT_C_API int ffrt_mutexattr_settype(ffrt_mutexattr_t* attr, int type)
 ```
 
@@ -75,7 +74,6 @@ FFRT_C_API int ffrt_mutexattr_settype(ffrt_mutexattr_t* attr, int type)
 Sets the mutex attribute type.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -92,7 +90,7 @@ Sets the mutex attribute type.
 
 ### ffrt_mutexattr_gettype()
 
-```
+```c
 FFRT_C_API int ffrt_mutexattr_gettype(ffrt_mutexattr_t* attr, int* type)
 ```
 
@@ -101,7 +99,6 @@ FFRT_C_API int ffrt_mutexattr_gettype(ffrt_mutexattr_t* attr, int* type)
 Obtains the mutex type.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -118,7 +115,7 @@ Obtains the mutex type.
 
 ### ffrt_mutexattr_destroy()
 
-```
+```c
 FFRT_C_API int ffrt_mutexattr_destroy(ffrt_mutexattr_t* attr)
 ```
 
@@ -127,7 +124,6 @@ FFRT_C_API int ffrt_mutexattr_destroy(ffrt_mutexattr_t* attr)
 Destroys the mutex attribute. This API needs to be called by users.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -143,7 +139,7 @@ Destroys the mutex attribute. This API needs to be called by users.
 
 ### ffrt_mutex_init()
 
-```
+```c
 FFRT_C_API int ffrt_mutex_init(ffrt_mutex_t* mutex, const ffrt_mutexattr_t* attr)
 ```
 
@@ -152,7 +148,6 @@ FFRT_C_API int ffrt_mutex_init(ffrt_mutex_t* mutex, const ffrt_mutexattr_t* attr
 Initializes a mutex.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -169,7 +164,7 @@ Initializes a mutex.
 
 ### ffrt_mutex_lock()
 
-```
+```c
 FFRT_C_API int ffrt_mutex_lock(ffrt_mutex_t* mutex)
 ```
 
@@ -178,7 +173,6 @@ FFRT_C_API int ffrt_mutex_lock(ffrt_mutex_t* mutex)
 Locks a mutex.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -194,7 +188,7 @@ Locks a mutex.
 
 ### ffrt_mutex_unlock()
 
-```
+```c
 FFRT_C_API int ffrt_mutex_unlock(ffrt_mutex_t* mutex)
 ```
 
@@ -203,7 +197,6 @@ FFRT_C_API int ffrt_mutex_unlock(ffrt_mutex_t* mutex)
 Unlocks a mutex.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -219,7 +212,7 @@ Unlocks a mutex.
 
 ### ffrt_mutex_trylock()
 
-```
+```c
 FFRT_C_API int ffrt_mutex_trylock(ffrt_mutex_t* mutex)
 ```
 
@@ -228,7 +221,6 @@ FFRT_C_API int ffrt_mutex_trylock(ffrt_mutex_t* mutex)
 Attempts to lock a mutex.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -244,7 +236,7 @@ Attempts to lock a mutex.
 
 ### ffrt_mutex_destroy()
 
-```
+```c
 FFRT_C_API int ffrt_mutex_destroy(ffrt_mutex_t* mutex)
 ```
 
@@ -253,7 +245,6 @@ FFRT_C_API int ffrt_mutex_destroy(ffrt_mutex_t* mutex)
 Destroys a mutex.
 
 **Since**: 10
-
 
 **Parameters**
 

@@ -60,7 +60,7 @@ The file declares the native APIs provided by the LowPowerVideoSink. You can use
 
 ### OH_LowPowerVideoSink_CreateByMime()
 
-```
+```c
 OH_LowPowerVideoSink* OH_LowPowerVideoSink_CreateByMime(const char* mime)
 ```
 
@@ -84,7 +84,7 @@ Creates an OH_LowPowerVideoSink instance.
 
 ### OH_LowPowerVideoSink_Configure()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_Configure(OH_LowPowerVideoSink* sink, const OH_AVFormat* format)
 ```
 
@@ -109,7 +109,7 @@ Configures an OH_LowPowerVideoSink instance. This function must be called before
 
 ### OH_LowPowerVideoSink_SetParameter()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_SetParameter(OH_LowPowerVideoSink* sink, const OH_AVFormat* format)
 ```
 
@@ -134,7 +134,7 @@ Sets parameters for an OH_LowPowerVideoSink instance. The parameters can be dyna
 
 ### OH_LowPowerVideoSink_GetParameter()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_GetParameter(OH_LowPowerVideoSink* sink, OH_AVFormat* format)
 ```
 
@@ -159,7 +159,7 @@ Obtains the parameters of an OH_LowPowerVideoSink instance.
 
 ### OH_LowPowerVideoSink_SetVideoSurface()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_SetVideoSurface(OH_LowPowerVideoSink* sink, const OHNativeWindow* surface)
 ```
 
@@ -184,7 +184,7 @@ Sets the rendering window for an OH_LowPowerVideoSink instance. This function mu
 
 ### OH_LowPowerVideoSink_Prepare()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_Prepare(OH_LowPowerVideoSink* sink)
 ```
 
@@ -208,7 +208,7 @@ Prepares an OH_LowPowerVideoSink instance for decoding and rendering. This funct
 
 ### OH_LowPowerVideoSink_StartDecoder()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_StartDecoder(OH_LowPowerVideoSink* sink)
 ```
 
@@ -234,7 +234,7 @@ After successful startup, the OH_LowPowerVideoSink instance starts reporting the
 
 ### OH_LowPowerVideoSink_RenderFirstFrame()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_RenderFirstFrame(OH_LowPowerVideoSink* sink)
 ```
 
@@ -258,7 +258,7 @@ Renders the first frame decoded by an OH_LowPowerVideoSink instance. This functi
 
 ### OH_LowPowerVideoSink_StartRenderer()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_StartRenderer(OH_LowPowerVideoSink* sink)
 ```
 
@@ -282,7 +282,7 @@ Starts an OH_LowPowerVideoSink instance for rendering. This function must be cal
 
 ### OH_LowPowerVideoSink_Pause()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_Pause(OH_LowPowerVideoSink* sink)
 ```
 
@@ -308,7 +308,7 @@ After successful pause, the OH_LowPowerVideoSink instance stops reporting the [O
 
 ### OH_LowPowerVideoSink_Resume()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_Resume(OH_LowPowerVideoSink* sink)
 ```
 
@@ -334,7 +334,7 @@ After successful resumption, the OH_LowPowerVideoSink instance resumes reporting
 
 ### OH_LowPowerVideoSink_Flush()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_Flush(OH_LowPowerVideoSink* sink)
 ```
 
@@ -362,7 +362,7 @@ Note that if the decoder has previously received data, you must input the codec 
 
 ### OH_LowPowerVideoSink_Stop()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_Stop(OH_LowPowerVideoSink* sink)
 ```
 
@@ -386,7 +386,7 @@ Stops an OH_LowPowerVideoSink instance.
 
 ### OH_LowPowerVideoSink_Reset()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_Reset(OH_LowPowerVideoSink* sink)
 ```
 
@@ -412,7 +412,7 @@ To reuse the instance, you must call [OH_LowPowerVideoSink_Configure](#oh_lowpow
 
 ### OH_LowPowerVideoSink_Destroy()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_Destroy(OH_LowPowerVideoSink* sink)
 ```
 
@@ -436,7 +436,7 @@ Clears internal resources of an OH_LowPowerVideoSink instance and destroys the i
 
 ### OH_LowPowerVideoSink_SetSyncAudioSink()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_SetSyncAudioSink(OH_LowPowerVideoSink* videoSink, OH_LowPowerAudioSink* audioSink)
 ```
 
@@ -461,7 +461,7 @@ Sets an OH_LowPowerAudioSink instance for audio-video synchronization in an OH_L
 
 ### OH_LowPowerVideoSink_SetTargetStartFrame()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_SetTargetStartFrame(OH_LowPowerVideoSink* sink, const int64_t framePts, OH_LowPowerVideoSink_OnTargetArrived onTargetArrived, const int64_t timeoutMs, void* userData)
 ```
 
@@ -489,7 +489,7 @@ Sets the target rendering frame for an OH_LowPowerVideoSink instance.
 
 ### OH_LowPowerVideoSink_SetPlaybackSpeed()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_SetPlaybackSpeed(OH_LowPowerVideoSink* sink, const float speed)
 ```
 
@@ -514,7 +514,7 @@ Sets the playback speed for an OH_LowPowerVideoSink instance.
 
 ### OH_LowPowerVideoSink_ReturnSamples()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_ReturnSamples(OH_LowPowerVideoSink* sink, OH_AVSamplesBuffer* samples)
 ```
 
@@ -539,7 +539,7 @@ Provides a buffer to an OH_LowPowerVideoSink instance for procesing.
 
 ### OH_LowPowerVideoSink_GetLatestPts()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_GetLatestPts(OH_LowPowerVideoSink *sink, int64_t *pts)
 ```
 
@@ -564,7 +564,7 @@ Obtains the Presentation Timestamp (PTS) of the video that is playing.
 
 ### OH_LowPowerVideoSink_RegisterCallback()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSink_RegisterCallback(OH_LowPowerVideoSink* sink, OH_LowPowerVideoSinkCallback* callback)
 ```
 
@@ -589,7 +589,7 @@ Registers a callback for an OH_LowPowerVideoSink instance.
 
 ### OH_LowPowerVideoSinkCallback_Create()
 
-```
+```c
 OH_LowPowerVideoSinkCallback* OH_LowPowerVideoSinkCallback_Create(void)
 ```
 
@@ -607,7 +607,7 @@ Creates an OH_LowPowerVideoSinkCallback instance.
 
 ### OH_LowPowerVideoSinkCallback_Destroy()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSinkCallback_Destroy(OH_LowPowerVideoSinkCallback* callback)
 ```
 
@@ -631,7 +631,7 @@ Destroys an OH_LowPowerVideoSinkCallback instance.
 
 ### OH_LowPowerVideoSinkCallback_SetDataNeededListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSinkCallback_SetDataNeededListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnDataNeeded onDataNeeded, void* userData)
 ```
 
@@ -657,7 +657,7 @@ Sets a data needed listener for an OH_LowPowerVideoSinkCallback instance.
 
 ### OH_LowPowerVideoSinkCallback_SetErrorListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSinkCallback_SetErrorListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnError onError, void* userData)
 ```
 
@@ -683,7 +683,7 @@ Sets an error listener for an OH_LowPowerVideoSinkCallback instance.
 
 ### OH_LowPowerVideoSinkCallback_SetRenderStartListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSinkCallback_SetRenderStartListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnRenderStarted onRenderStarted, void* userData)
 ```
 
@@ -709,7 +709,7 @@ Sets a render start listener for an OH_LowPowerVideoSinkCallback instance.
 
 ### OH_LowPowerVideoSinkCallback_SetStreamChangedListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSinkCallback_SetStreamChangedListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnStreamChanged onStreamChanged, void* userData)
 ```
 
@@ -735,7 +735,7 @@ Sets a stream change listener for an OH_LowPowerVideoSinkCallback instance.
 
 ### OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSinkCallback_SetFirstFrameDecodedListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnFirstFrameDecoded onFirstFrameDecoded, void* userData)
 ```
 
@@ -761,7 +761,7 @@ Sets a first-frame ready listener for an OH_LowPowerVideoSinkCallback instance.
 
 ### OH_LowPowerVideoSinkCallback_SetEosListener()
 
-```
+```c
 OH_AVErrCode OH_LowPowerVideoSinkCallback_SetEosListener(OH_LowPowerVideoSinkCallback* callback, OH_LowPowerVideoSink_OnEos onEos, void* userData)
 ```
 

@@ -6,12 +6,13 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+屏幕录制管理类，用于进行屏幕录制。在调用AVScreenCaptureRecorder的方法前，需要先通过[createAVScreenCaptureRecorder()](arkts-apis-media-f.md#mediacreateavscreencapturerecorder12)创建一个AVScreenCaptureRecorder实例。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 12开始支持。
 
-屏幕录制管理类，用于进行屏幕录制。在调用AVScreenCaptureRecorder的方法前，需要先通过[createAVScreenCaptureRecorder()](arkts-apis-media-f.md#mediacreateavscreencapturerecorder12)创建一个AVScreenCaptureRecorder实例。
 
 ## 导入模块
 
@@ -57,7 +58,7 @@ import { fileIo as fs } from '@kit.CoreFileKit';
 import { media } from '@kit.MediaKit';
 
 // 初始化avScreenCaptureRecorder。
-let avScreenCaptureRecorder!: media.AVScreenCaptureRecorder;
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
 media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
   if (captureRecorder != null) {
     avScreenCaptureRecorder = captureRecorder;
@@ -80,18 +81,21 @@ let avCaptureConfig: media.AVScreenCaptureRecordConfig = {
     // 补充其他参数。
 };
 
-avScreenCaptureRecorder.init(avCaptureConfig).then(() => {
-    console.info('Succeeded in initing avScreenCaptureRecorder');
-}).catch((err: BusinessError) => {
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.init(avCaptureConfig).then(() => {
+    console.info('Succeeded in initializing avScreenCaptureRecorder');
+  }).catch((err: BusinessError) => {
     console.error(`Failed to init avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
-});
+  });
+}
+
 ```
 
 ## startRecording<sup>12+</sup>
 
 startRecording(): Promise\<void>
 
-开始录屏。使用Promise异步回调。
+开始录屏，在使用前需要先调用[init](arkts-apis-media-AVScreenCaptureRecorder.md#init12)接口。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -116,9 +120,9 @@ startRecording(): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avScreenCaptureRecorder.startRecording().then(() => {
-    console.info('Succeeded in starting avScreenCaptureRecorder');
+  console.info('Succeeded in starting avScreenCaptureRecorder');
 }).catch((err: BusinessError) => {
-    console.error(`Failed to start avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to start avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -151,9 +155,9 @@ stopRecording(): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avScreenCaptureRecorder.stopRecording().then(() => {
-    console.info('Succeeded in stopping avScreenCaptureRecorder');
+  console.info('Succeeded in stopping avScreenCaptureRecorder');
 }).catch((err: BusinessError) => {
-    console.error(`Failed to stop avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to stop avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -162,6 +166,7 @@ avScreenCaptureRecorder.stopRecording().then(() => {
 skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
 
 录屏时，应用可对本应用的隐私窗口做安全豁免。使用Promise异步回调。
+
 如录屏时，用户在本应用进行输入密码等操作，应用不会进行黑屏处理。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
@@ -194,9 +199,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let windowIDs = [];
 avScreenCaptureRecorder.skipPrivacyMode(windowIDs).then(() => {
-    console.info('Succeeded in skipping privacy mode');
+  console.info('Succeeded in skipping privacy mode');
 }).catch((err: BusinessError) => {
-    console.error(`Failed to skip privacy mode. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to skip privacy mode. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -235,9 +240,9 @@ setMicEnabled(enable: boolean): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avScreenCaptureRecorder.setMicEnabled(true).then(() => {
-    console.info('Succeeded in setMicEnabled avScreenCaptureRecorder');
+  console.info('Succeeded in setting microphone enabled.');
 }).catch((err: BusinessError) => {
-    console.error(`Failed to setMicEnabled avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set microphone enabled. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -277,9 +282,9 @@ setPickerMode(pickerMode: PickerMode): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avScreenCaptureRecorder.setPickerMode(media.PickerMode.WINDOW_ONLY).then(() => {
-    console.info('Succeeded in setPickerMode');
+  console.info('Succeeded in setting picker mode.');
 }).catch((err: BusinessError) => {
-    console.error(`Failed to setPickerMode, code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set picker mode. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -321,9 +326,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let excludedWindows: Array<number> = [101, 102, 103];
 
 avScreenCaptureRecorder.excludePickerWindows(excludedWindows).then(() => {
-    console.info('Succeeded in excludePickerWindows');
+  console.info('Succeeded in excluding picker windows.');
 }).catch((err: BusinessError) => {
-    console.error(`Failed to excludePickerWindows, code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to exclude picker windows. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -361,9 +366,9 @@ presentPicker(): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avScreenCaptureRecorder.presentPicker().then(() => {
-    console.info('Succeeded in presentPicker avScreenCaptureRecorder');
+  console.info('Succeeded in presenting picker avScreenCaptureRecorder.');
 }).catch((err: BusinessError) => {
-    console.error('Failed to presentPicker avScreenCaptureRecorder, error: ' + err.message);
+  console.error(`Failed to present picker avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -396,9 +401,9 @@ release(): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avScreenCaptureRecorder.release().then(() => {
-    console.info('Succeeded in releasing avScreenCaptureRecorder');
+  console.info('Succeeded in releasing avScreenCaptureRecorder');
 }).catch((err: BusinessError) => {
-    console.error(`Failed to release avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to release avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -454,7 +459,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 ```ts
 avScreenCaptureRecorder.on('error', (err: BusinessError) => {
-    console.error(`avScreenCaptureRecorder error: Code: ${err.code}, message: ${err.message}`);
+  console.error(`avScreenCaptureRecorder error: Code: ${err.code}, message: ${err.message}`);
 });
 ```
 

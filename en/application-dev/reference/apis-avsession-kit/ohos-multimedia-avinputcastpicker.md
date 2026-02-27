@@ -17,7 +17,7 @@ The module provides the functionality to create an **AVInputCastPicker** compone
 
 ## Modules to Import
 
-```js
+```ts
 import { AVInputCastPicker } from '@kit.AVSessionKit';
 ```
 
@@ -27,7 +27,7 @@ The [universal properties](../apis-arkui/arkui-ts/ts-component-general-attribute
 
 ## AVInputCastPicker
 
-```
+```ts
 AVInputCastPicker({
   customPicker?: CustomBuilder;
   onStateChange?: OnPickerStateCallback;
@@ -62,7 +62,7 @@ type OnPickerStateCallback = (state: AVCastPickerState) => void
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| state | [AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate11) | Yes| Device list state.|
+| state | [AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate) | Yes| Device list state.|
 
 ## Events
 

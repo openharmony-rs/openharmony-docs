@@ -3,11 +3,11 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-You can use **SymbolGlyphModifier** to construct components and configure their attributes. Through **SymbolGlyphModifier**, you can access the attributes and style APIs of the encapsulated component.
+**SymbolGlyphModifier** is used to dynamically set the attributes and styles of the **SymbolGlyph** component. The **if/else** statements can be used. [SymbolGlyph](./ts-basic-components-symbolGlyph.md) is a component used to display symbol glyphs.
 
 >  **NOTE**
 >

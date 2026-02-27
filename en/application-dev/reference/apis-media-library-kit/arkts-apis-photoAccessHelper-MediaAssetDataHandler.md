@@ -1,13 +1,17 @@
 # Interface (MediaAssetDataHandler)
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+MediaAssetDataHandler is a media asset handler used to customize the media asset processing logic in **onDataPrepared**.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 11.
-
-MediaAssetDataHandler is a media asset handler used to customize the media asset processing logic in **onDataPrepared**.
-
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
 

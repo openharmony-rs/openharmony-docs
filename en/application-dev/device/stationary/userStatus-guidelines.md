@@ -38,7 +38,7 @@ The APIs of this module are supported since API version 20.
    ```
    <!-- @[import_the_user_status_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
 
-2. Define the callback used to receive the age group detection result.
+2. Define the callback function used to listen for the age group detection result changes.
 
    ```
    let callback : Callback<userStatus.UserClassification> = (data : userStatus.UserClassification) => {

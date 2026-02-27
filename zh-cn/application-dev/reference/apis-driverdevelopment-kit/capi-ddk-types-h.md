@@ -18,7 +18,7 @@
 
 **起始版本：** 12
 
-**相关模块：** [BaseDdk](capi-baseddk.md)
+**相关模块：** [Ddk](capi-baseddk.md)
 
 ## 汇总
 
@@ -38,7 +38,7 @@
 
 ### DDK_RetCode
 
-```
+```c
 enum DDK_RetCode
 ```
 

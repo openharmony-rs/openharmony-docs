@@ -495,11 +495,15 @@ try {
 }
 ```
 
-## notifySaveAsResult<sup>10+</sup>
+## notifySaveAsResult<sup>(deprecated)</sup>
 
 notifySaveAsResult(parameter: AbilityResult, requestCode: number, callback: AsyncCallback\<void>): void
 
 该接口仅供[DLP](../apis-data-protection-kit/js-apis-dlppermission.md)（Data Loss Prevention, 数据丢失防护）管理应用使用，其他应用禁止使用，DLP管理应用通过该接口通知沙箱应用另存为结果。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API version 24开始废弃。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -558,11 +562,15 @@ try {
 }
 ```
 
-## notifySaveAsResult<sup>10+</sup>
+## notifySaveAsResult<sup>(deprecated)</sup>
 
 notifySaveAsResult(parameter: AbilityResult, requestCode: number): Promise\<void>
 
 该接口仅供[DLP](../apis-data-protection-kit/js-apis-dlppermission.md)（Data Loss Prevention, 数据丢失防护）管理应用使用，其他应用禁止使用，DLP管理应用通过该接口通知沙箱应用另存为结果。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 10开始支持，从API version 24开始废弃。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -852,8 +860,8 @@ notifyDebugAssertResult(sessionId: string, status: UserStatus): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 201 | The application does not have permission to call the interface. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1102,7 +1110,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   // 通过preloadUIExtensionAbility接口预加载后返回的ID
   let preloadId: number = 1001;
-  abilityManager.clearPreloadUIExtensionAbility(preloadId)
+  abilityManager.clearPreloadedUIExtensionAbility(preloadId)
     .then(() => {
       console.info('clearPreloadedUIExtensionAbility success.');
     })
@@ -1380,7 +1388,7 @@ queryAtomicServiceStartupRule(context: Context, appId: string): Promise\<AtomicS
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在Phone、Tablet和TV设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **参数**：
 

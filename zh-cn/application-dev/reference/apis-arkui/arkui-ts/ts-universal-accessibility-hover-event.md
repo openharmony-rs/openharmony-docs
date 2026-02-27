@@ -82,6 +82,8 @@ onAccessibilityHoverTransparent(callback: AccessibilityTransparentCallback): T
 
 在开启朗读类辅助应用以及手指触摸在组件区域的前提下，当该组件及子组件全部没有被无障碍悬浮识别为可聚焦时，会触发该回调，并且返回无障碍悬浮事件。仅支持手指触摸。不支持如下组件在触摸位置中的场景，包括[UIExtension](../../apis-arkui/js-apis-arkui-uiExtension.md)、[Web](../../apis-arkweb/arkts-basic-components-web.md)、<!--Del-->[FormComponent](ts-basic-components-formcomponent-sys.md)、<!--DelEnd-->[XComponent](ts-basic-components-xcomponent.md)与第三方UI框架对接。在上述场景下，该回调接口无法生效。
 
+组件无法被无障碍悬浮识别为可聚焦的主要原因包括，组件的无障碍重要性[accessibilityLevel](ts-universal-attributes-accessibility.md#accessibilitylevel)为"no"或者"no-hide-descendants"；组件无文本且未配置无障碍文本[accessibilityText](ts-universal-attributes-accessibility.md#accessibilitytext)，同时不支持点击或长按操作。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -149,7 +151,9 @@ struct OnAccessibilityHoverEventExample {
 
 ### 示例2 (捕获无法无障碍聚焦的组件的触摸事件)
 
-该示例代码会在无障碍模式下捕获无法无障碍聚焦的组件的触摸事件，并将事件信息显示在组件下方的文本中。
+该示例代码在无障碍模式下通过onAccessibilityHoverTransparent接口捕获无法无障碍聚焦的组件的触摸事件，最后再将事件信息显示在组件下方的文本中。
+
+从API version 20开始，新增了[onAccessibilityHoverTransparent](#onaccessibilityhovertransparent20)入参类型为AccessibilityTransparentCallback的接口。
 
 ```ts
 @Entry
@@ -171,15 +175,19 @@ struct TestExample {
     .height('100%')
     .onAccessibilityHoverTransparent((event?: TouchEvent) => {
       if (event) {
+        // 手指按下触发
         if (event.type === TouchType.HOVER_ENTER) {
           this.eventType = 'HOVER_ENTER';
         }
+        // 触摸移动时触发
         if (event.type === TouchType.HOVER_MOVE) {
           this.eventType = 'HOVER_MOVE';
         }
+        // 抬手时触发
         if (event.type === TouchType.HOVER_EXIT) {
           this.eventType = 'HOVER_EXIT';
         }
+        // 取消当前触发事件
         if (event.type === TouchType.HOVER_CANCEL) {
           this.eventType = 'HOVER_CANCEL';
         }

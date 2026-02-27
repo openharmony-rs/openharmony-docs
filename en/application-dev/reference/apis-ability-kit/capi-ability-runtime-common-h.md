@@ -33,7 +33,7 @@ The file declares the error codes of the AbilityRuntime module.
 
 ### AbilityRuntime_ErrorCode
 
-```
+```c
 enum AbilityRuntime_ErrorCode
 ```
 

@@ -105,16 +105,16 @@ export default {
 > **说明：**
 >   默认支持https，如果要支持http，需要在config.json里增加network标签，属性标识 "cleartextTraffic":  true。即：
 >   
-> ```
-> {
->   "deviceConfig": {
->     "default": {
->       "network": {
->         "cleartextTraffic": true
->       }
->       ... // 用户的其它配置信息
->     }
->   }
->   ... // 用户的其它配置信息
-> }
-> ```
+ ```
+ {
+   "deviceConfig": {
+     "default": {
+      "network": {
+         "cleartextTraffic": true
+       }
+       ... // 用户的其它配置信息
+     }
+   }
+   ... // 用户的其它配置信息
+ }
+```

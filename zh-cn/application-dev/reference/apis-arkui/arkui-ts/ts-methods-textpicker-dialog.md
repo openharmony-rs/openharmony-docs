@@ -28,7 +28,7 @@ static show(options?: TextPickerDialogOptions)
 
 > **说明：**
 > 
-> 从API version 18开始废弃，建议使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[showTextPickerDialog](../arkts-apis-uicontext-uicontext.md#showtextpickerdialog)替代。
+> 从API version 8开始支持，从API version 18开始废弃，建议使用[showTextPickerDialog](../arkts-apis-uicontext-uicontext.md#showtextpickerdialog)替代。showTextPickerDialog需先获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例后再进行调用。
 >
 > 从API version 10开始，可以通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[showTextPickerDialog](../arkts-apis-uicontext-uicontext.md#showtextpickerdialog)来明确UI的执行上下文。
 
@@ -162,47 +162,47 @@ static show(options?: TextPickerDialogOptions)
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
               range: this.fruits,
               selected: this.select,
-              value: this.v,
+              value: this.selectedValue,
               defaultPickerItemHeight: 40,
               onAccept: (value: TextPickerResult) => {
                 // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
                 this.select = value.index;
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
-                this.v = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                this.selectedValue = value.value as string;
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               },
               onCancel: () => {
-                console.info("TextPickerDialog:onCancel()");
+                console.info('TextPickerDialog:onCancel()');
               },
               onChange: (value: TextPickerResult) => {
-                console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onChange()' + JSON.stringify(value));
               },
               onScrollStop: (value: TextPickerResult) => {
-                console.info("TextPickerDialog:onScrollStop()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onScrollStop()' + JSON.stringify(value));
               },
               onDidAppear: () => {
-                console.info("TextPickerDialog:onDidAppear()");
+                console.info('TextPickerDialog:onDidAppear()');
               },
               onDidDisappear: () => {
-                console.info("TextPickerDialog:onDidDisappear()");
+                console.info('TextPickerDialog:onDidDisappear()');
               },
               onWillAppear: () => {
-                console.info("TextPickerDialog:onWillAppear()");
+                console.info('TextPickerDialog:onWillAppear()');
               },
               onWillDisappear: () => {
-                console.info("TextPickerDialog:onWillDisappear()");
+                console.info('TextPickerDialog:onWillDisappear()');
               }
             });
           })
@@ -226,12 +226,12 @@ struct TextPickerDialogExample {
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -269,29 +269,29 @@ struct TextPickerDialogExample {
                 this.select = value.index;
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
-                this.v = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                this.selectedValue = value.value as string;
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               },
               onCancel: () => {
-                console.info("TextPickerDialog:onCancel()");
+                console.info('TextPickerDialog:onCancel()');
               },
               onChange: (value: TextPickerResult) => {
-                console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onChange()' + JSON.stringify(value));
               },
               onScrollStop: (value: TextPickerResult) => {
-                console.info("TextPickerDialog:onScrollStop()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onScrollStop()' + JSON.stringify(value));
               },
               onDidAppear: () => {
-                console.info("TextPickerDialog:onDidAppear()");
+                console.info('TextPickerDialog:onDidAppear()');
               },
               onDidDisappear: () => {
-                console.info("TextPickerDialog:onDidDisappear()");
+                console.info('TextPickerDialog:onDidDisappear()');
               },
               onWillAppear: () => {
-                console.info("TextPickerDialog:onWillAppear()");
+                console.info('TextPickerDialog:onWillAppear()');
               },
               onWillDisappear: () => {
-                console.info("TextPickerDialog:onWillDisappear()");
+                console.info('TextPickerDialog:onWillDisappear()');
               }
             });
           })
@@ -313,12 +313,12 @@ struct TextPickerDialogExample {
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -332,29 +332,29 @@ struct TextPickerDialogExample {
                 this.select = value.index;
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
-                this.v = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                this.selectedValue = value.value as string;
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               },
               onCancel: () => {
-                console.info("TextPickerDialog:onCancel()");
+                console.info('TextPickerDialog:onCancel()');
               },
               onChange: (value: TextPickerResult) => {
-                console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onChange()' + JSON.stringify(value));
               },
               onScrollStop: (value: TextPickerResult) => {
-                console.info("TextPickerDialog:onScrollStop()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onScrollStop()' + JSON.stringify(value));
               },
               onDidAppear: () => {
-                console.info("TextPickerDialog:onDidAppear()");
+                console.info('TextPickerDialog:onDidAppear()');
               },
               onDidDisappear: () => {
-                console.info("TextPickerDialog:onDidDisappear()");
+                console.info('TextPickerDialog:onDidDisappear()');
               },
               onWillAppear: () => {
-                console.info("TextPickerDialog:onWillAppear()");
+                console.info('TextPickerDialog:onWillAppear()');
               },
               onWillDisappear: () => {
-                console.info("TextPickerDialog:onWillDisappear()");
+                console.info('TextPickerDialog:onWillDisappear()');
               },
               enableHoverMode: true,
               hoverModeArea: HoverModeAreaType.TOP_SCREEN
@@ -379,12 +379,12 @@ struct TextPickerDialogExample {
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -397,8 +397,8 @@ struct TextPickerDialogExample {
                 this.select = value.index;
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
-                this.v = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                this.selectedValue = value.value as string;
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               }
             });
           })
@@ -421,12 +421,12 @@ struct TextPickerDialogExample {
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -443,8 +443,8 @@ struct TextPickerDialogExample {
                 this.select = value.index;
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
-                this.v = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                this.selectedValue = value.value as string;
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               }
             });
           })
@@ -467,12 +467,12 @@ struct TextPickerDialogExample {
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -486,8 +486,8 @@ struct TextPickerDialogExample {
                 this.select = value.index;
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
-                this.v = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                this.selectedValue = value.value as string;
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               }
             });
           })
@@ -511,26 +511,26 @@ struct TextPickerDialogExample {
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
               range: this.fruits,
               selected: this.select,
-              value: this.v,
+              value: this.selectedValue,
               canLoop: false,
               onAccept: (value: TextPickerResult) => {
                 // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
                 this.select = value.index;
                 console.info(this.select + '');
                 // 点击确定后，被选到的文本数据展示到页面
-                this.v = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                this.selectedValue = value.value as string;
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               }
             });
           })
@@ -546,6 +546,8 @@ struct TextPickerDialogExample {
 
 该示例通过selectedBackgroundStyle属性设置文本选择器选中项的背景样式。
 
+从API version 20开始，新增了[TextPickerDialogOptions](#textpickerdialogoptions对象说明)的selectedBackgroundStyle属性。
+
 ```ts
 // xxx.ets
 @Entry
@@ -555,7 +557,7 @@ struct TextPickerExample {
   build() {
     Column() {
       Row() {
-        Button("TextPickerDialog")
+        Button('TextPickerDialog')
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -567,7 +569,7 @@ struct TextPickerExample {
                   bottomLeft:15,
                   bottomRight:15
                 },
-                color: "FFC3C3C3"
+                color: 'FFC3C3C3'
               }
             })
           })
@@ -591,9 +593,10 @@ struct TextPickerExample {
 
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
-        Button("TextPickerDialog")
+        Button('TextPickerDialog')
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -628,9 +631,10 @@ struct TextPickerExample {
 
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
-        Button("TextPickerDialog")
+        Button('TextPickerDialog')
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({

@@ -216,7 +216,7 @@ The file declares the common enums and structs used by the image interface.
 
 ### Image_ErrorCode
 
-```
+```c
 enum Image_ErrorCode
 ```
 
@@ -262,7 +262,7 @@ Enumerates the error codes.
 
 ### Image_MetadataType
 
-```
+```c
 enum Image_MetadataType
 ```
 
@@ -280,7 +280,7 @@ Enumerates the metadata types.
 
 ### IMAGE_ALLOCATOR_MODE
 
-```
+```c
 enum IMAGE_ALLOCATOR_MODE
 ```
 
@@ -301,7 +301,7 @@ Enumerates the types of memory allocation for a PixelMap.
 
 ### OH_PictureMetadata_Create()
 
-```
+```c
 Image_ErrorCode OH_PictureMetadata_Create(Image_MetadataType metadataType, OH_PictureMetadata **metadata)
 ```
 
@@ -326,7 +326,7 @@ Creates the pointer to an OH_PictureMetadata struct.
 
 ### OH_PictureMetadata_GetProperty()
 
-```
+```c
 Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)
 ```
 
@@ -352,7 +352,7 @@ Obtains a property of metadata based on the key.
 
 ### OH_PictureMetadata_SetProperty()
 
-```
+```c
 Image_ErrorCode OH_PictureMetadata_SetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)
 ```
 
@@ -378,7 +378,7 @@ Sets a property of metadata based on the key.
 
 ### OH_PictureMetadata_GetPropertyWithNull()
 
-```
+```c
 Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)
 ```
 
@@ -404,7 +404,7 @@ Obtains the metadata value of an OH_PictureMetadata instance. The output **value
 
 ### OH_PictureMetadata_Release()
 
-```
+```c
 Image_ErrorCode OH_PictureMetadata_Release(OH_PictureMetadata *metadata)
 ```
 
@@ -428,7 +428,7 @@ Releases the pointer to an OH_PictureMetadata struct.
 
 ### OH_PictureMetadata_Clone()
 
-```
+```c
 Image_ErrorCode OH_PictureMetadata_Clone(OH_PictureMetadata *oldMetadata, OH_PictureMetadata **newMetadata)
 ```
 

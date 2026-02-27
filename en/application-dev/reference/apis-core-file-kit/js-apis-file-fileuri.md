@@ -4,7 +4,7 @@
 <!--Owner: @lvzhenjie-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The **fileUri** module allows the uniform resource identifier (URI) of a file to be obtained based on the file path. With the file URI, you can use the APIs provided by [@ohos.file.fs](js-apis-file-fs.md) to operate the file.
 
@@ -57,7 +57,7 @@ A constructor used to create a **FileUri** instance.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- |--------|
-| uriOrPath | string | Yes| URI or path. URI types:<br>- Application sandbox URI: file://\<bundleName>/\<sandboxPath><br>- User directory file URI: file://docs/storage/Users/currentUser/\<publicPath><br>- User directory media URI: file://media/\<mediaType>/IMG_DATATIME_ID/\<displayName>|
+| uriOrPath | string | Yes| URI or path. URI types:<br>- Application sandbox URI: file://\<bundleName>/\<sandboxPath><br>- User directory file URI: file://docs/storage/Users/currentUser/\<publicPath><br>- User directory media URI: file://media/\<mediaType>/IMG_DATETIME_ID/\<displayName>|
 
 **Error codes**
 

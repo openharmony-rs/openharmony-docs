@@ -8,7 +8,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct {...} OH_AVRange
+typedef struct OH_AVRange {...} OH_AVRange
 ```
 
 ## 概述

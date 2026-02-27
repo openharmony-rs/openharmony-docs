@@ -78,7 +78,7 @@ import { Callback } from '@kit.BasicServicesKit';
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
 }
-// Execute the callback after receiving the event whose eventId is eventId.
+// Execute the callback after receiving the event whose event ID is eventId.
 emitter.on(`eventId`, callback);
 ```
 
@@ -121,7 +121,7 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
     eventData?.data?.printCount();
   }
 }
-// Execute the callback after receiving the event whose eventId is eventId.
+// Execute the callback after receiving the event whose event ID is eventId.
 emitter.on("eventId", callback);
 ```
 
@@ -183,7 +183,7 @@ import { Callback } from '@kit.BasicServicesKit';
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
 }
-// Execute the callback after receiving the event whose eventId is eventId.
+// Execute the callback after receiving the event whose event ID is eventId.
 emitter.once("eventId", callback);
 ```
 
@@ -226,7 +226,7 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
     eventData?.data?.printCount();
   }
 }
-// Execute the callback after receiving the event whose eventId is eventId.
+// Execute the callback after receiving the event whose event ID is eventId.
 emitter.once("eventId", callback);
 ```
 
@@ -276,7 +276,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 **Example**
 
 ```ts
-// Unregister the callbacks of all events whose eventID is eventId.
+// Unregister the callbacks of all events whose event ID is eventId.
 emitter.off("eventId");
 ```
 
@@ -339,7 +339,7 @@ import { Callback } from '@kit.BasicServicesKit';
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
 }
-// Unregister the callback of the event whose eventID is eventId. The callback object must be the registered object.
+// Unregister the callback of the event whose event ID is eventId. The callback object must be the registered object.
 // If the callback has not been registered, no processing is performed.
 emitter.off("eventId", callback);
 ```
@@ -385,7 +385,7 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
     eventData?.data?.printCount();
   }
 }
-// Unregister the callback of the event whose eventID is eventId. The callback object must be the registered object.
+// Unregister the callback of the event whose event ID is eventId. The callback object must be the registered object.
 // If the callback has not been registered, no processing is performed.
 emitter.off("eventId", callback);
 ```
@@ -397,6 +397,8 @@ emit(event: InnerEvent, data?: EventData): void
 Emits a specified event.
 
 This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
+
+After an event is published using this API, the event may not be executed immediately. When the execution starts depends on the number of events in the event queue and the execution efficiency of each event.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -435,6 +437,8 @@ Emits a specified event.
 
 This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
 
+After an event is published using this API, the event may not be executed immediately. When the execution starts depends on the number of events in the event queue and the execution efficiency of each event.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Notification.Emitter
@@ -466,6 +470,8 @@ emit<T\>(eventId: string, data?: GenericEventData<T\>): void
 Emits a specified event.
 
 This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
+
+After an event is published using this API, the event may not be executed immediately. When the execution starts depends on the number of events in the event queue and the execution efficiency of each event.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -506,6 +512,8 @@ Emits an event of a specified priority.
 
 This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
 
+After an event is published using this API, the event may not be executed immediately. When the execution starts depends on the number of events in the event queue and the execution efficiency of each event.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Notification.Emitter
@@ -542,6 +550,8 @@ emit<T\>(eventId: string, options: Options, data?: GenericEventData<T\>): void
 Emits an event of a specified priority.
 
 This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
+
+After an event is published using this API, the event may not be executed immediately. When the execution starts depends on the number of events in the event queue and the execution efficiency of each event.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -605,7 +615,7 @@ Obtains the number of subscriptions to a specified event.
 **Example**
 
 ```ts
-let count = emitter.getListenerCount("eventId");
+let count: number = emitter.getListenerCount("eventId");
 ```
 
 ## EventPriority
@@ -618,7 +628,7 @@ Enumerates the event priorities.
 
 | Name     | Value   | Description                                               |
 | --------- | ---- | --------------------------------------------------- |
-| IMMEDIATE | 0    | The event will be emitted immediately.                                 |
+| IMMEDIATE | 0    | The event will be emitted before high-priority events.                                 |
 | HIGH      | 1    | The event will be emitted before low-priority events.                          |
 | LOW       | 2    | The event will be emitted before idle-priority events. By default, an event is in LOW priority.    |
 | IDLE      | 3    | The event will be emitted after all the other events.            |
@@ -638,7 +648,7 @@ Describes an event to subscribe to or emit. The **EventPriority** settings do no
 
 ## EventData
 
-Describes the data passed in the event.
+Describes the data carried by the emitted event.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -646,7 +656,7 @@ Describes the data passed in the event.
 
 | Name| Type          | Read Only| Optional| Description          |
 | ---- | ------------------ | ---- | ---- | -------------- |
-| data | { [key: string]: any } | No  | Yes  | Data passed in the event. The value can be in any of the following types: Array, ArrayBuffer, Boolean, DataView, Date, Error, Map, Number, Object, Primitive (except symbol), RegExp, Set, String, and TypedArray. The maximum data size is 16 MB.|
+| data | { [key: string]: any } | No  | Yes  | Data carried by the emitted event. The value can be in any of the following types: Array, ArrayBuffer, Boolean, DataView, Date, Error, Map, Number, Object, Primitive (except symbol), RegExp, Set, String, and TypedArray. The maximum data size is 16 MB.|
 
 ## Options<sup>11+</sup>
 
@@ -662,7 +672,7 @@ Describes the event emit priority.
 
 ## GenericEventData<T\><sup>12+</sup>
 
-Describes the generic data passed in the event.
+Describes the generic data carried by the emitted event.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -670,7 +680,7 @@ Describes the generic data passed in the event.
 
 | Name    | Type                           | Read Only| Optional| Description          |
 | -------- | ------------------------------- | ---- | ---- | -------------- |
-| data | T | No  | Yes  | Data passed in the event. **T**: generic type.|
+| data | T | No  | Yes  | Data carried by the emitted event. **T**: generic type.|
 
 
 ## Emitter<sup>22+</sup>
@@ -695,7 +705,7 @@ Defines a constructor.
 
 
 ```ts
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 ```
 
 ### on<sup>22+</sup>
@@ -720,7 +730,7 @@ Subscribes to an event specified by the Emitter instance in persistent manner an
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
@@ -751,7 +761,7 @@ Subscribes to an event specified by the Emitter instance in persistent manner an
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 @Sendable
 class Sample {
@@ -796,7 +806,7 @@ Subscribes to an event specified by the Emitter instance in one-shot manner and 
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
@@ -827,7 +837,7 @@ Subscribes to an event specified by the Emitter instance in one-shot manner and 
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 @Sendable
 class Sample {
@@ -871,7 +881,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 **Example**
 
 ```ts
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 emitter1.off("eventId");
 ```
@@ -900,7 +910,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
@@ -944,7 +954,7 @@ class Sample {
   count: number;
 }
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.GenericEventData<Sample>): void => {
   console.info(`eventData: ${JSON.stringify(eventData?.data)}`);
@@ -964,6 +974,8 @@ Emits a specified event to the Emitter class instance.
 
 This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
 
+After an event is published using this API, the event may not be executed immediately. When the execution starts depends on the number of events in the event queue and the execution efficiency of each event.
+
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.Notification.Emitter
@@ -978,7 +990,7 @@ This API can be used to emit data objects across threads. The data objects must 
 **Example**
 
 ```ts
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 let eventData: emitter.EventData = {
   data: {
   "content": "content",
@@ -996,6 +1008,8 @@ emit<T\>(eventId: string, data?: GenericEventData<T\>): void
 Emits a specified event to the Emitter class instance.
 
 This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
+
+After an event is published using this API, the event may not be executed immediately. When the execution starts depends on the number of events in the event queue and the execution efficiency of each event.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1022,7 +1036,7 @@ class Sample {
   count: number;
 }
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let eventData: emitter.GenericEventData<Sample> = {
   data: new Sample()
@@ -1033,11 +1047,53 @@ emitter1.emit("eventId", eventData);
 
 ### emit<sup>22+</sup>
 
+emit(eventId: string, options: Options, data?: EventData): void
+
+Emits a specified event to the Emitter class instance.
+
+This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
+
+After an event is published using this API, the event may not be executed immediately. When the execution starts depends on the number of events in the event queue and the execution efficiency of each event.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Notification.Emitter
+
+**Parameters**
+
+| Name | Type                   | Mandatory| Description            |
+| ------- | ----------------------- | ---- | ---------------- |
+| eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
+| options | [Options](#options11)   | Yes  | Event emit priority.    |
+| data    | [EventData](#eventdata) | No  | Data passed in the event.|
+
+**Example**
+
+```ts
+let emitter1: emitter.Emitter = new emitter.Emitter();
+
+let options: emitter.Options = {
+  priority: emitter.EventPriority.HIGH
+};
+let eventData: emitter.EventData = {
+  data: {
+  "content": "content",
+  "id": 1,
+  }
+};
+
+emitter1.emit("eventId", options, eventData);
+```
+
+### emit<sup>22+</sup>
+
 emit<T\>(eventId: string, options: Options, data?: GenericEventData<T\>): void
 
 Emits an event of a specified priority to the Emitter instance.
 
 This API can be used to emit data objects across threads. The data objects must meet the specifications specified in [Overview of Inter-Thread Communication Objects](../../arkts-utils/serializable-overview.md). Currently, complex data decorated by decorators such as [@State](../../ui/state-management/arkts-state.md) and [@Observed](../../ui/state-management/arkts-observed-and-objectlink.md) is not supported.
+
+After an event is published using this API, the event may not be executed immediately. When the execution starts depends on the number of events in the event queue and the execution efficiency of each event.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1065,7 +1121,7 @@ class Sample {
   count: number;
 }
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let options: emitter.Options = {
   priority: emitter.EventPriority.HIGH
@@ -1079,7 +1135,7 @@ emitter1.emit("eventId", options, eventData);
 
 ### getListenerCount<sup>22+</sup>
 
-getListenerCount(eventId: string): long
+getListenerCount(eventId: string): number
 
 Obtains the number of subscriptions to a specified event of the Emitter instance.
 
@@ -1097,12 +1153,12 @@ Obtains the number of subscriptions to a specified event of the Emitter instance
 
 | Type    | Description        |
 | ----- | ----- |
-| long | Number of subscriptions to a specified event.|
+| number | Number of subscriptions to a specified event.|
 
 
 **Example**
 
 ```ts
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 let count = emitter1.getListenerCount("eventId");
 ```

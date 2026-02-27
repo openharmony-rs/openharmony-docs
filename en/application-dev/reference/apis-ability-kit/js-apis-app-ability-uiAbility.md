@@ -61,6 +61,7 @@ Application component that has the UI. It provides lifecycle callbacks such as c
 | launchWant | [Want](js-apis-app-ability-want.md) | No| No| Want in the request used to [cold start](../../application-models/uiability-intra-device-interaction.md#cold-starting-uiability) the UIAbility. The value is the Want received in [onCreate](#oncreate).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | lastRequestWant | [Want](js-apis-app-ability-want.md) | No| No| Want in the most recent request to launch the UIAbility.<br>- On the first launch of a UIAbility, it is the Want parameter received in [onCreate](#oncreate).<br>- On subsequent launches, it is the most recent Want received in [onNewWant](#onnewwant).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | callee | [Callee](#callee) | No| No| Background communication object created by the system for the UIAbility, known as the Callee UIAbility (Callee), which is capable of receiving data sent from the Caller object.|
+| specifiedId<sup>23+</sup> | string | No| Yes| Custom UIAbility ID. This parameter is available only when the UIAbility launch mode is set to [specified](../../application-models/uiability-launch-type.md#specified).|
 
 
 ### onCreate
@@ -783,7 +784,7 @@ Triggered by the system just before the UIAbility is about to close (for example
 > **NOTE**
 >
 > - Starting from API version 15, this callback is not executed when[UIAbility.onPrepareToTerminateAsync](#onpreparetoterminateasync15) is implemented. When [AbilityStage.onPrepareTerminationAsync](js-apis-app-ability-abilityStage.md#onprepareterminationasync15) or [AbilityStage.onPrepareTermination](js-apis-app-ability-abilityStage.md#onpreparetermination15) is implemented, this callback is not executed if the user right-clicks the dock bar or system tray to close the UIAbility.
-> - Additionally, if the application or a third-party framework registers a listener for [window.WindowStage.on('windowStageClose')](../apis-arkui/arkts-apis-window-WindowStage.md#onwindowstageclose14), this callback is not executed.
+> - Additionally, if the application or a third-party framework registers a listener for [window.WindowStage.on('windowStageClose')](../apis-arkui/arkts-apis-window-WindowStage.md#onwindowstageclose14), this callback function is not executed.
 
 **Required permissions**: ohos.permission.PREPARE_APP_TERMINATE
 
@@ -844,7 +845,7 @@ You can return **true** to block the current closure attempt and then manually c
 > **NOTE**
 >
 > - When [AbilityStage.onPrepareTerminationAsync](js-apis-app-ability-abilityStage.md#onprepareterminationasync15) or [AbilityStage.onPrepareTermination](js-apis-app-ability-abilityStage.md#onpreparetermination15) is implemented, this callback is not executed if the user right-clicks the dock bar or system tray to close the UIAbility.
-> - Additionally, if the application or a third-party framework registers a listener for [window.WindowStage.on('windowStageClose')](../apis-arkui/arkts-apis-window-WindowStage.md#onwindowstageclose14), this callback is not executed.
+> - Additionally, if the application or a third-party framework registers a listener for [window.WindowStage.on('windowStageClose')](../apis-arkui/arkts-apis-window-WindowStage.md#onwindowstageclose14), this callback function is not executed.
 >
 > - If an asynchronous callback crashes, it will be handled as a timeout. If the UIAbility does not respond within 10 seconds, it will be terminated forcibly.
 
@@ -916,10 +917,11 @@ onCollaborate(wantParam: Record&lt;string, Object&gt;): AbilityConstant.Collabor
 
 Callback invoked to return the collaboration result in multi-device collaboration scenarios.
 
- **NOTE**
-- This callback does not support ability launch in [specified mode](../../application-models/uiability-launch-type.md#specified).
-- When you use methods such as [startAbility](./js-apis-inner-application-uiAbilityContext.md#startability) to start an application, you must include **FLAG_ABILITY_ON_COLLABORATE** in [Flags](js-apis-app-ability-wantConstant.md#flags) in the Want object.
-- During a [cold start](../../application-models/uiability-intra-device-interaction.md#cold-starting-uiability), this callback must be invoked before [onForeground](#onforeground) or after [onBackground](#onbackground). During a [hot start](../../application-models/uiability-intra-device-interaction.md#hot-starting-uiability), this callback must be invoked before [onNewWant](#onnewwant).
+> **NOTE**
+>
+> - This callback does not support ability launch in [specified mode](../../application-models/uiability-launch-type.md#specified).
+> - When you use methods such as [startAbility](./js-apis-inner-application-uiAbilityContext.md#startability) to start an application, you must include **FLAG_ABILITY_ON_COLLABORATE** in [Flags](js-apis-app-ability-wantConstant.md#flags) in the Want object.
+> - During a [cold start](../../application-models/uiability-intra-device-interaction.md#cold-starting-uiability), this callback must be invoked before [onForeground](#onforeground) or after [onBackground](#onbackground). During a [hot start](../../application-models/uiability-intra-device-interaction.md#hot-starting-uiability), this callback must be invoked before [onNewWant](#onnewwant).
 
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -950,7 +952,7 @@ export default class MyAbility extends UIAbility {
 
 ## Caller
 
-A Caller UIAbility (which must be a system application) can use [startAbilityByCall](js-apis-inner-application-uiAbilityContext.md#startabilitybycall) to start a Callee UIAbility (which can be a third-party application). After the target UIAbility is started successfully, a Caller object is returned to the caller for communication.
+A Caller UIAbility can use the [startAbilityByCall](js-apis-inner-application-uiAbilityContext.md#startabilitybycall) API to start the target Callee UIAbility. After the target UIAbility is started successfully, a Caller object is returned to the caller for communication.
 
 ### call
 
@@ -1017,7 +1019,7 @@ class MyMessageAble implements rpc.Parcelable { // Custom parcelable data struct
   }
 }
 
-let method = 'call_Function'; // Notification message string negotiated by the two UIAbility components.
+let method = 'call_Function'; // Agreed notification message string
 
 export default class MainUIAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -1247,7 +1249,7 @@ Called when the remote UIAbility state changes in the collaboration scenario. Th
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | [OnRemoteStateChangeCallback](#onremotestatechangecallback) | Yes| Callback used to return the result.|
+| callback | [OnRemoteStateChangeCallback](#onremotestatechangecallback10) | Yes| Callback used to return the result.|
 
 **Error codes**
 
@@ -1590,7 +1592,7 @@ Defines the callback that is invoked when the stub on the target UIAbility is di
 | --- | ----- | --- | -------- |
 | msg | string | Yes| Message used for disconnection.|
 
-## OnRemoteStateChangeCallback
+## OnRemoteStateChangeCallback<sup>10+</sup>
 
 ### (msg: string)<sup>10+</sup>
 

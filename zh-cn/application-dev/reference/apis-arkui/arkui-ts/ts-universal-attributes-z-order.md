@@ -74,7 +74,7 @@ Stack容器内子组件不设置zIndex的效果。
 
 Stack容器子组件设置zIndex后的效果。
 
-![zindex.png](figures/zindex.png)
+![zindex.PNG](figures/zindex.png)
 
 ### 示例2（动态修改zIndex属性）
 
@@ -85,12 +85,13 @@ Stack容器子组件设置zIndex后的效果。
 @Entry
 @Component
 struct ZIndexExample {
-  @State zIndex_ : number = 0
+  @State zIndex_: number = 0
+
   build() {
     Column() {
       // 点击Button改变zIndex后，在点击Button前的层级顺序上根据zIndex进行稳定排序。
       Button("change Text2 zIndex")
-        .onClick(()=>{
+        .onClick(() => {
           this.zIndex_ = (this.zIndex_ + 1) % 3;
         })
       Stack() {

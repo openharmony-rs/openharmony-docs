@@ -11,6 +11,8 @@ The **abilityConnectionManager** module provides APIs for cross-device connectio
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 18. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -25,6 +27,8 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 Creates a collaboration session between applications.
 
 **Required permissions**: ohos.permission.INTERNET, ohos.permission.GET_NETWORK_INFO, ohos.permission.SET_NETWORK_INFO, and ohos.permission.DISTRIBUTED_DATASYNC
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -51,6 +55,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.|
 
 **Example**
 
@@ -58,7 +63,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
    ```ts
    import { abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
-   import { common } from '@kit.AbilityKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
  
    let dmClass: distributedDeviceManager.DeviceManager;
@@ -97,7 +101,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
      createSession(): void {
        // Define peer device information.
        const peerInfo: abilityConnectionManager.PeerInfo = {
-         deviceId: "sinkDeviceId",
+         deviceId: getRemoteDeviceId()!,
          bundleName: 'com.example.remotephotodemo',
          moduleName: 'entry',
          abilityName: 'EntryAbility',
@@ -157,7 +161,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
          return sessionId;
        }
     
-       const options = collabParam["ConnectOptions"] as abilityConnectionManager.ConnectOptions;
+       const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
        try {
          sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
          AppStorage.setOrCreate('sessionId', sessionId);
@@ -175,6 +179,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 destroyAbilityConnectionSession(sessionId:&nbsp;number):&nbsp;void
 
 Destroys a collaboration session between applications.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -200,6 +206,8 @@ Destroys a collaboration session between applications.
 getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 
 Obtains information about the peer application in the specified session.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -239,6 +247,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 
 Sets up a UIAbility connection after a collaboration session is created and the session ID is obtained. This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -286,6 +296,8 @@ After an application sets up a collaboration session and obtains the session ID 
 acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;void&gt;
 
 Accepts the UIAbility connection after a collaboration session is set up and the session ID is obtained.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -352,7 +364,7 @@ After **createAbilityConnectionSession** is called on device A to create a colla
         return sessionId;
       }
 
-      const options = collabParam["ConnectOptions"] as abilityConnectionManager.ConnectOptions;
+      const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
       try {
         sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
         AppStorage.setOrCreate('sessionId', sessionId);
@@ -370,6 +382,8 @@ After **createAbilityConnectionSession** is called on device A to create a colla
 disconnect(sessionId:&nbsp;number):&nbsp;void
 
 Disconnects the UIAbility connection to end the collaboration session.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -395,6 +409,8 @@ Disconnects the UIAbility connection to end the collaboration session.
 reject(token:&nbsp;string,&nbsp;reason:&nbsp;string):&nbsp;void;
 
 Rejects a connection request in a cross-device collaboration session. After a connection request sent from the peer application is rejected, a rejection reason is returned.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -440,6 +456,8 @@ on(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callba
 
 Enables listening for **connect** events. This API uses an asynchronous callback to return the result.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters**
@@ -477,6 +495,8 @@ off(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Call
 
 Disables listening for **connect** events.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters**
@@ -510,6 +530,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 on(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void
 
 Enables listening for **disconnect** events.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -548,6 +570,8 @@ off(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;C
 
 Disables listening for **disconnect** events.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters**
@@ -582,6 +606,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 on(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void
 
 Enables listening for **receiveMessage** events.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -620,6 +646,8 @@ off(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nb
 
 Disables listening for **receiveMessage** events.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters**
@@ -654,6 +682,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 on(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void
 
 Enables listening for **receiveData** events.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -692,6 +722,8 @@ off(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;
 
 Disables listening for **receiveData** events.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters**
@@ -726,6 +758,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void&gt;
 
 Sends text messages after a collaboration session is set up.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -769,6 +803,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&gt;
 
 Sends [ArrayBuffer](../../arkts-utils/arraybuffer-object.md) byte streams from one device to another after a connection is successfully established.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -815,6 +851,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 Defines the application collaboration information.
 
+ **Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 | Name                   | Type      |Read Only  | Optional  | Description                |
@@ -829,6 +867,8 @@ Defines the application collaboration information.
 
 Connection options for the application.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 | Name         | Type   | Read Only  | Optional  | Description         |
@@ -841,6 +881,8 @@ Connection options for the application.
 
 Defines the connection result.
 
+ **Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 | Name      | Type  | Read Only  | Optional  | Description     |
@@ -852,6 +894,8 @@ Defines the connection result.
 ## EventCallbackInfo
 
 Defines the event callback information.
+
+ **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -866,6 +910,8 @@ Defines the event callback information.
 
 Collaboration event information.
 
+ **Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 | Name      | Type  | Read Only  | Optional  | Description     |
@@ -876,6 +922,8 @@ Collaboration event information.
 ## ConnectErrorCode
 
 Enumerates connection error codes.
+
+ **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -892,6 +940,8 @@ Enumerates connection error codes.
 
 Enumerates application start options.
 
+ **Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 | Name|  Value| Description|
@@ -901,6 +951,8 @@ Enumerates application start options.
 ## CollaborateEventType
 
 Enumerates collaboration event types.
+
+ **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -912,6 +964,8 @@ Enumerates collaboration event types.
 ## DisconnectReason
 
 Enumerates the disconnection reasons.
+
+ **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
@@ -925,6 +979,8 @@ Enumerates the disconnection reasons.
 
 Enumerates application collaboration key values.
 
+ **Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
 | Name               |                  Value            | Description                  |
@@ -934,6 +990,8 @@ Enumerates application collaboration key values.
 | COLLABORATE_TYPE    | ohos.collaboration.key.abilityCollaborateType | Key value of the collaboration type.  |
 
 ## CollaborationValues
+
+ **Model restriction**: This API can be used only in the stage model.
 
 Enumerates application collaboration values.
 

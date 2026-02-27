@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhangjun; @gzhuangzhuang-->
 <!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 OpenHarmony distributed file system (hmdfs) provides cross-device file access capabilities in the following scenarios:
 
@@ -23,6 +23,10 @@ The hmdfs provides a globally consistent access view across devices dynamically 
 - distributedfile_daemon: listens for device online status, establishes links over DSoftBus, and applies data transfer policies based on the security level of the device.
 
 - hmdfs: implements a network file system in the kernel and provides cache management, file access, metadata management, and conflict resolution.
+  > **NOTE**
+  >
+  > Files in the directory [/data/storage/el2/distributedfiles/](app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths) must not be deleted arbitrarily. For details, see [Accessing Files Across Devices](file-access-across-devices.md).
+
   - Cache management
     - After devices are connected to form a Virtual Device, the hmdfs provides file access capabilities, but does not proactively transmit or copy files. Active copy is required when an application needs to save data to a local directory.
     - The hmdfs ensures close-to-open cache consistency, which allows data to be flushed when a client closes a file. Then, the latest data can be read when the file is opened on any other client. The hmdfs does not ensure real-time consistency of the file content.

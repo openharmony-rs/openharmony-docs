@@ -40,6 +40,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | issuer                      | string | Yes  | No  | Issuer name in the configuration file.|
 |appIdentifier<sup>11+</sup>| string         | Yes  | No  | Unique ID of the application. For details, see [What Is appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier).  |
 | organization<sup>12+</sup> | string | Yes  | No  | Organization of the application.|
+| bundleName<sup>23+</sup> | string | Yes  | Yes  | Bundle name of the application.|
 
 ## Validity
 

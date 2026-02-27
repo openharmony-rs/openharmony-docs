@@ -74,3 +74,21 @@ The device activity is being refreshed too frequently; the minimum timeinterval 
 **处理步骤**
 
 此错误说明100ms内已经刷新设备活跃状态，无需再次刷新设备活跃状态。如需再次刷新，请在100ms后进行重试。
+
+## 4900301 电源模式设置失败
+
+**错误信息**
+
+Setting the power mode failed.
+
+**错误描述**
+
+设置电源模式失败。
+
+**可能原因**
+
+电源模式管控规则导致设置电源模式失败。
+
+**处理步骤**
+
+当前电源模式不可切换至目标电源模式，可使用[getPowerMode](js-apis-power.md#powergetpowermode9)接口查询当前电源模式。

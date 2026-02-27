@@ -14,7 +14,7 @@
 >
 > - 本Class首批接口从API version 12开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 >
 > - 静态方法必须在用户界面（UI）线程上使用。
 
@@ -453,7 +453,7 @@ static removeAdsBlockAllowedList(domainSuffixes: Array\<string\>): void
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
-// 演示通过一个按钮的点击从AdsBlockManager的DisallowedList中删除域名元素
+// 演示通过一个按钮的点击从AdsBlockManager的AllowedList中删除域名元素
 @Entry
 @Component
 struct WebComponent {

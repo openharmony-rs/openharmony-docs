@@ -3,9 +3,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
-Scene-based widgets support special effects. For example, you can choose to extend the animation beyond the widget rendering area to create an "overflow" effect.
+Since API version 20, scene-based widgets support special effects. For example, you can choose to extend the animation beyond the widget rendering area to create an "overflow" effect.
 
 ## Basic Concepts
 
@@ -39,6 +39,10 @@ The following figure shows the timing diagram in interval-based and time-specifi
 
 ## Constraints
 
+### Supported Scenarios
+1. Currently, the interactive widget animation takes effect only on a single widget with [FormLocation](../reference/apis-form-kit/js-apis-app-form-formInfo.md#formlocation20) set to **DESKTOP**.
+2. Due to the impact on performance and power consumption, only some models are supported. If a model is not supported, the error code [801](../reference/errorcode-universal.md#801-api-not-supported) is reported.
+
 ### Parameter Request
 1. The maximum valid duration of the animation is 3500 ms. When the countdown ends, the widget switches back to the inactive state. <!--Del-->System applications support long-time activated widgets, and the animation duration is not limited. For details, see [Developing a Scene-based Widget (for System Applications)](arkts-ui-liveform-sceneanimation-development-sys.md).<!--DelEnd-->
 2. A single widget's animation triggered by interval-based and time-specific updates can occur up to 50 times a day.
@@ -57,7 +61,9 @@ The following figure shows the timing diagram in interval-based and time-specifi
 ![live-form-overflow-rule.png](figures/live-form-overflow-rule.png)
 
 Example: On a device, a 2×2 widget measures 158vp × 158vp. Referring to the figure above:
+
 1. AD = 158vp, AB = 158vp, IJ = 158 × 1.5 = 237vp, IL = 158 × 1.5 = 237vp
+
 2. Points I and A are horizontally 39.5vp apart and vertically 39.5vp apart.
 
 Thus, with A as the origin (X-axis positive to the right, Y-axis positive downward), the valid coordinates for point E in Figure 5 can be (-20, -20). The valid lengths for sides EF and EH can both be 200vp.

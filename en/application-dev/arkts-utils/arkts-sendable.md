@@ -11,7 +11,7 @@ In traditional JS engines, there is only one way to optimize the overhead of con
 
 ArkTS introduces the concept of Sendable objects, which support pass-by-reference during concurrent communication.
 
-Sendable objects are designed to be shareable across threads, maintaining a consistent reference to the same JS object before and after crossing thread boundaries. If a Sendable object contains JS or native content, it can be directly shared. However, if the underlying implementation is native, thread safety must be ensured. The following figure shows the communication process.
+Sendable objects are designed to be shareable across threads, maintaining a consistent reference to the same JS object before and after crossing thread boundaries. If a Sendable object is bound to a native object by calling the N-API, the native object is also shared when the Sendable object is shared. The following figure shows the communication process.
 
 ![sendable](figures/sendable.png)
 
@@ -192,7 +192,7 @@ The \@Sendable decorator declares and verifies Sendable classes and functions.
 | Usage restrictions| This decorator can be used only in .ets files of the stage model.|
 | Supported function types| Only regular functions and async functions can be decorated by @Sendable.|
 | Class inheritance restrictions| Sendable classes can only inherit from other Sendable classes. Regular classes cannot inherit from Sendable classes.|
-| Property type restrictions| 1. The following types are supported: string, number, boolean, bigint, null, undefined, Sendable class, collections, ArkTSUtils.locks.AsyncLock, ArkTSUtils.SendableLruCache, ArkTSUtils.locks.ConditionVariable, and custom Sendable functions.<br>2. Closure variables are not allowed, except for top-level Sendable classes and functions.<br>3. Private properties defined with \# are not supported; use **private** instead.<br>4. Computed properties are not supported.|
+| Property type restrictions| 1. The following types are supported: string, number, boolean, bigint, null, undefined, const enum, Sendable class, collections, ArkTSUtils.locks.AsyncLock, ArkTSUtils.SendableLruCache, ArkTSUtils.locks.ConditionVariable, and custom Sendable functions.<br>2. Closure variables are not allowed, except for top-level Sendable classes and functions.<br>3. Private properties defined with \# are not supported; use **private** instead.<br>4. Computed properties are not supported.<br>5. Type aliases are not supported.|
 | Other property restrictions| 1. Member properties must be initialized explicitly. The exclamation mark (!) cannot be used.<br>2. Adding or deleting properties is not allowed. Modifying properties is allowed, but the type must remain consistent before and after modification. Modifying methods is not supported.|
 | Parameter restrictions for decorated functions or class methods| Local variables, parameters, and variables imported through **import** are allowed. Closure variables are not allowed, except for top-level Sendable classes and functions. In API version 18 and later versions, variables exported from the current file can be accessed.|
 | Use scenario| 1. Scenarios where class methods or Sendable functions are used in TaskPool or Worker.<br>2. Scenarios involving large amounts of object data transmission. The time required for serialization increases with the data volume. After transforming data with Sendable, the efficiency of transmitting 100 KB of data is approximately 20 times higher, and for 1 MB of data, it is about 100 times higher.|

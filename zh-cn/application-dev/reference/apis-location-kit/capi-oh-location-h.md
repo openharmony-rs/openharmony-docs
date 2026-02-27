@@ -34,7 +34,7 @@
 
 ### OH_Location_IsLocatingEnabled()
 
-```
+```c
 Location_ResultCode OH_Location_IsLocatingEnabled(bool* enabled)
 ```
 
@@ -58,7 +58,7 @@ Location_ResultCode OH_Location_IsLocatingEnabled(bool* enabled)
 
 ### OH_Location_StartLocating()
 
-```
+```c
 Location_ResultCode OH_Location_StartLocating(const Location_RequestConfig* requestConfig)
 ```
 
@@ -84,7 +84,7 @@ Location_ResultCode OH_Location_StartLocating(const Location_RequestConfig* requ
 
 ### OH_Location_StopLocating()
 
-```
+```c
 Location_ResultCode OH_Location_StopLocating(const Location_RequestConfig* requestConfig)
 ```
 

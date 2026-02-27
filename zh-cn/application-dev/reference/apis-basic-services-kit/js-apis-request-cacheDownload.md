@@ -3,16 +3,16 @@
 <!--Subsystem: Request-->
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
-<!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 request部件主要给应用提供上传下载文件、后台传输代理的基础能力。
 
 - request的cacheDownload子组件主要给应用提供应用资源提前缓存的基础能力。
 
-- cacheDownload组件使用HTTP协议进行数据下载，并将数据资源缓存至应用内存或应用沙箱目录的文件中。
+- cacheDownload组件使用HTTP协议进行数据下载，并将数据资源缓存至应用内存或应用沙箱目录的指定文件中。
 
-- 这些缓存数据可以被部分ArkUI相关组件使用（例如：Image组件），从而提升资源加载效率。请查看ArkUI组件文档确定组件是否支持该功能。
+- 这些缓存数据可以被特定的ArkUI组件（例如：Image组件）使用，从而提升资源加载效率。请查看ArkUI组件文档确定组件是否支持该功能。
 
 > **说明：**
 >
@@ -34,6 +34,20 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 | -------- | -------- |-------- |
 | TLS | 'TLS' | 使用TLS安全通信协议。|
 | TLCP | 'TLCP' | 使用TLCP安全通信协议。 |
+
+## ErrorCode<sup>23+</sup>
+
+表示错误返回信息的特定类型枚举。
+
+**系统能力**：SystemCapability.Request.FileTransferAgent
+
+| 名称 | 值 |说明 |
+| -------- | -------- |-------- |
+| OTHERS | 0xFF | 表示未分类的其他类型错误。|
+| DNS | 0x00 | 表示DNS相关错误。|
+| TCP | 0x10 | 表示TCP相关错误。|
+| SSL | 0x20 | 表示SSL相关错误。|
+| HTTP | 0x30 | 表示HTTP相关错误。|
 
 ## CacheStrategy<sup>23+</sup>
 
@@ -67,7 +81,7 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
-| size | number | 是  | 否  | 预下载资源解压后的大小。整数值不为-1时表示资源下载成功。 |
+| size | number | 是  | 否  | 预下载资源解压后的大小。当值为正整数时表示资源下载成功，-1表示下载失败。 |
 
 ## NetworkInfo<sup>20+</sup>
 
@@ -107,6 +121,17 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 | resource    | [ResourceInfo](#resourceinfo20)       | 是  | 否  | 预下载的资源信息。 |
 | network     | [NetworkInfo](#networkinfo20)         | 是  | 否  | 预下载的网络信息。 |
 | performance | [PerformanceInfo](#performanceinfo20) | 是  | 否  | 预下载的性能信息。 |
+
+## DownloadError<sup>23+</sup>
+
+预下载错误回调的返回信息。
+
+**系统能力**：SystemCapability.Request.FileTransferAgent
+
+| 名称          | 类型                                    | 只读 | 可选 | 说明        |
+|-------------|---------------------------------------|----|----|-----------|
+| errorCode    | [ErrorCode](#errorcode23)       | 是  | 否  | 预下载错误回调返回的特定错误类型。 |
+| message     | string         | 是  | 否  | 返回[通用错误码](../../reference/errorcode-universal.md)或[HTTP错误码](../../reference/apis-network-kit/errorcode-net-http.md)。 |
 
 ## cacheDownload.download
 
@@ -169,9 +194,9 @@ cancel(url: string): void
 
 根据url移除一个正在执行的缓存下载任务，已保存的内存缓存和文件缓存不会受到影响。
 
-- 如果不存在对应url的任务则无其他效果。
+- 当不存在对应url的任务时无其他效果。
 
-- 该方法为同步方法，不阻塞调用线程。
+- 使用该方法同步执行时，不阻塞调用线程。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -294,8 +319,8 @@ setFileCacheSize(bytes: number): void
   }
   ```
 
-> ​**说明：​**​
->
+> **说明：**
+​>
 > * 预下载模块下载的网络缓存文件会保存在应用沙箱的缓存目录中。
 > * 应用可以借助该接口的能力达成清理缓存文件的目的。
 > * 不建议应用直接对缓存目录和文件进行修改，以避免功能异常。
@@ -339,13 +364,13 @@ getDownloadInfo(url: string): DownloadInfo | undefined
 
 基于url获取预下载的下载信息。信息存储在内存中的下载信息列表，当应用程序退出时清除。
 
-- 如果下载信息列表中能够找到指定url，返回url最近一次下载的[DownloadInfo](#downloadinfo20)。
+- 如果下载信息列表中能够找到指定url，返回该url对应的最新[DownloadInfo](#downloadinfo20)。
 
 - 如果下载信息列表中找不到指定url，返回undefined。
 
 - 在缓存下载信息时，如果在该url下已存在缓存信息，新的缓存内容会覆盖旧缓存。
 
-- 目标信息在存储到内存时，使用“LRU”（最近最少使用）方式替换已有缓存内容。
+- 目标信息在存储到内存时，使用“LRU”（最近最少使用）方式替换已存在的缓存数据。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -397,7 +422,7 @@ getDownloadInfo(url: string): DownloadInfo | undefined
     // 在缓存下载完成后，获取缓存下载的信息。
     let downloadInfo = cacheDownload.getDownloadInfo("https://www.example.com");
     if (downloadInfo == undefined) {
-      console.info(`CacheDownload get download info undefined.`);
+      console.error(`CacheDownload get download info undefined.`);
     } else {
       console.info(`CacheDownload get download info : ${JSON.stringify(downloadInfo)}`);
     }
@@ -437,3 +462,139 @@ import { cacheDownload } from '@kit.BasicServicesKit';
   
 cacheDownload.clearFileCache();
 ```
+
+## cacheDownload.onDownloadSuccess<sup>23+</sup>
+
+onDownloadSuccess(url: string, callback: Callback&lt;void&gt;): void
+
+订阅预下载的完成事件。使用callback异步回调。
+
+**系统能力**：SystemCapability.Request.FileTransferAgent
+
+**参数：**
+
+| 参数名 | 类型     | 必填 | 说明                   |
+|-----|--------|----|----------------------|
+| url | string | 是  | 待注册回调的url，url字符串的最大长度为8192字节。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数。 |
+
+**示例：**
+
+  ```ts
+  import { cacheDownload } from '@kit.BasicServicesKit';
+  
+  try {
+    const successCallback = () => {
+      console.info("Succeeded in getting callback from cacheDownload");
+    };
+    // 订阅预下载的完成事件，当下载完成时执行回调
+    cacheDownload.onDownloadSuccess("https://www.example.com", successCallback)
+    // 进行缓存下载，资源若下载成功会被缓存到应用内存或应用沙箱目录的特定文件中。  
+    cacheDownload.download("https://www.example.com", {});
+  } catch (err) {
+    console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
+  }
+  ```
+
+## cacheDownload.onDownloadError<sup>23+</sup>
+
+onDownloadError(url: string, callback: Callback&lt;DownloadError&gt;): void
+
+订阅预下载的错误事件。使用callback异步回调。
+
+**系统能力**：SystemCapability.Request.FileTransferAgent
+
+**参数：**
+
+| 参数名 | 类型     | 必填 | 说明                   |
+|-----|--------|----|----------------------|
+| url | string | 是  | 待注册回调的url，URL字符串的最大长度为8192字节。 |
+| callback | Callback&lt;[DownloadError](#downloaderror23)&gt; | 是 | 回调函数，返回预下载的错误信息。 |
+
+**示例：**
+
+  ```ts
+  import { cacheDownload } from '@kit.BasicServicesKit';
+  
+  try {
+    const errorCallback = (error: cacheDownload.DownloadError) => {
+      console.info(`Error callback from cacheDownload.error code: ${error.errorCode}, error message: ${error.message}`);
+    };
+    // 订阅预下载的错误事件，当下载错误时执行回调，返回错误信息
+    cacheDownload.onDownloadError("https://www.example.com", errorCallback)
+    // 进行缓存下载，资源若下载成功会被缓存到应用内存或应用沙箱目录的特定文件中。  
+    cacheDownload.download("https://www.example.com", {});
+  } catch (err) {
+    console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
+  }
+  ```
+
+## cacheDownload.offDownloadSuccess<sup>23+</sup>
+
+offDownloadSuccess(url: string, callback?: Callback&lt;void&gt;): void
+
+取消订阅预下载的完成事件。使用callback异步回调。
+
+**系统能力**：SystemCapability.Request.FileTransferAgent
+
+**参数：**
+
+| 参数名 | 类型     | 必填 | 说明                   |
+|-----|--------|----|----------------------|
+| url | string | 是  | 待注册回调的url，url字符串的最大长度为8192字节。 |
+| callback | Callback&lt;void&gt; | 否 | 回调函数。若不填该参数，表示url下的所有完成回调函数。 |
+
+**示例：**
+
+  ```ts
+  import { cacheDownload } from '@kit.BasicServicesKit';
+  
+  try {
+    const successCallback = () => {
+      console.info("Succeeded in getting callback from cacheDownload");
+    };
+    // 订阅预下载的完成事件，当下载完成时执行回调
+    cacheDownload.onDownloadSuccess("https://www.example.com", successCallback);
+    // 取消订阅预下载的完成事件
+    cacheDownload.offDownloadSuccess("https://www.example.com", successCallback);
+    // 进行缓存下载，资源若下载成功会被缓存到应用内存或应用沙箱目录的特定文件中。  
+    cacheDownload.download("https://www.example.com", {});
+  } catch (err) {
+    console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
+  }
+  ```
+
+## cacheDownload.offDownloadError<sup>23+</sup>
+
+offDownloadError(url: string, callback?: Callback&lt;DownloadError&gt;): void
+
+取消订阅预下载的错误事件。使用callback异步回调。
+
+**系统能力**：SystemCapability.Request.FileTransferAgent
+
+**参数：**
+
+| 参数名 | 类型     | 必填 | 说明                   |
+|-----|--------|----|----------------------|
+| url | string | 是  | 待注册回调的url，url字符串最大长度为8192字节。 |
+| callback | Callback&lt;[DownloadError](#downloaderror23)&gt; | 否 | 回调函数，返回预下载的错误信息。若不填该参数，表示url下的所有错误回调函数。 |
+
+**示例：**
+
+  ```ts
+  import { cacheDownload } from '@kit.BasicServicesKit';
+  
+  try {
+    const errorCallback = (error: cacheDownload.DownloadError) => {
+      console.info(`Error callback from cacheDownload.error code: ${error.errorCode}, error message: ${error.message}`);
+    };
+    // 订阅预下载的错误事件，当下载错误时执行回调，返回错误信息
+    cacheDownload.onDownloadError("https://www.example.com", errorCallback);
+    // 取消订阅预下载的错误事件
+    cacheDownload.offDownloadError("https://www.example.com", errorCallback);
+    // 进行缓存下载，资源若下载成功会被缓存到应用内存或应用沙箱目录的特定文件中。  
+    cacheDownload.download("https://www.example.com", {});
+  } catch (err) {
+    console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
+  }
+  ```

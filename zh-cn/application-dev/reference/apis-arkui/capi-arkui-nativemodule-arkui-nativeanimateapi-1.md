@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct {...} ArkUI_NativeAnimateAPI_1
 ```
 
@@ -35,18 +35,13 @@ ArkUI提供的Native侧动画接口集合。
 
 ### animateTo()
 
-```
+```c
 int32_t (*animateTo)(ArkUI_ContextHandle context, ArkUI_AnimateOption* option, ArkUI_ContextCallback* update,ArkUI_AnimateCompleteCallback* complete)
 ```
 
 **描述：**
 
-
 显式动画接口。
-
-> **说明：**
->
-> event闭包中要设置的组件属性，必须在其之前设置过。
 
 **参数：**
 
@@ -54,7 +49,7 @@ int32_t (*animateTo)(ArkUI_ContextHandle context, ArkUI_AnimateOption* option, A
 |-----------------------------------------------------------------------------------------------------| -- |
 | [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context                           | UIContext实例。 |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md)* option                       | 设置动画效果相关参数。 |
-| [ArkUI_ContextCallback](capi-arkui-nativemodule-arkui-contextcallback.md)* update                                                                   | 指定动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
+| [ArkUI_ContextCallback](capi-arkui-nativemodule-arkui-contextcallback.md)* update                   | 指定动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。<br>**说明**：在闭包函数中要设置的组件属性，必须在其之前设置过。 |
 | [ArkUI_AnimateCompleteCallback](capi-arkui-nativemodule-arkui-animatecompletecallback.md)* complete | 设置动画播放完成回调参数。 |
 
 **返回：**
@@ -65,7 +60,7 @@ int32_t (*animateTo)(ArkUI_ContextHandle context, ArkUI_AnimateOption* option, A
 
 ### keyframeAnimateTo()
 
-```
+```c
 int32_t (*keyframeAnimateTo)(ArkUI_ContextHandle context, ArkUI_KeyframeAnimateOption* option)
 ```
 
@@ -89,7 +84,7 @@ int32_t (*keyframeAnimateTo)(ArkUI_ContextHandle context, ArkUI_KeyframeAnimateO
 
 ### createAnimator()
 
-```
+```c
 ArkUI_AnimatorHandle (*createAnimator)(ArkUI_ContextHandle context, ArkUI_AnimatorOption* option)
 ```
 
@@ -113,7 +108,7 @@ ArkUI_AnimatorHandle (*createAnimator)(ArkUI_ContextHandle context, ArkUI_Animat
 
 ### disposeAnimator()
 
-```
+```c
 void (*disposeAnimator)(ArkUI_AnimatorHandle animatorHandle)
 ```
 

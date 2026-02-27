@@ -40,7 +40,7 @@ PanGesture(value?: { fingers?: number; direction?: PanDirection; distance?: numb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | { fingers?: number; direction?: PanDirection; distance?: number } \| [PanGestureOptions](#pangestureoptions) | 否 | 滑动手势参数。<br> - fingers：用于指定触发滑动的最少手指数，最小为1指，最大取值为10指。<br/>默认值：1<br/>取值范围：[1, 10]<br/>**说明：** <br/>当设置的值小于1或不设置时，会被转化为默认值。<br> - direction：用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br> - distance：用于指定触发滑动手势事件的最小滑动距离，单位为vp。<br/>取值范围：[0, +∞)<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs组件](ts-container-tabs.md)滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。 |
+| value | { fingers?: number; direction?: [PanDirection](ts-basic-gestures-pangesture.md#pandirection枚举说明); distance?: number } \| [PanGestureOptions](#pangestureoptions) | 否 | 滑动手势参数。<br> - fingers：用于指定触发滑动的最少手指数，最小为1指，最大取值为10指。<br/>默认值：1<br/>取值范围：[1, 10]<br/>**说明：** <br/>当设置的值小于1或不设置时，会被转化为默认值。<br> - direction：用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br> - distance：用于指定触发滑动手势事件的最小滑动距离，单位为vp。<br/>取值范围：[0, +∞)<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs](ts-container-tabs.md)组件滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。 |
 
 ### PanGesture<sup>15+</sup>
 
@@ -179,8 +179,6 @@ getDistance(): number
 
 ## 事件
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 >  **说明：**
 >
 >  在[GestureEvent](ts-gesture-common.md#gestureevent对象说明)的fingerList元素中，手指索引编号与位置相对应，即fingerList[index]的id为index。对于先按下但未参与当前手势触发的手指，fingerList中对应的位置为空。建议优先使用fingerInfos。
@@ -296,7 +294,7 @@ struct PanGestureExample {
       PanGesture(this.panOption)
         .onActionStart((event: GestureEvent) => {
           console.info('Pan start');
-          console.info('Pan start timeStamp is: ' + event.timestamp);
+          console.info(`Pan start timeStamp is: ${event.timestamp}`);
         })
         .onActionUpdate((event: GestureEvent) => {
           if (event) {
@@ -308,7 +306,7 @@ struct PanGestureExample {
           this.positionX = this.offsetX;
           this.positionY = this.offsetY;
           console.info('Pan end');
-          console.info('Pan end timeStamp is: ' + event.timestamp);
+          console.info(`Pan end timeStamp is: ${event.timestamp}`);
         })
       )
 

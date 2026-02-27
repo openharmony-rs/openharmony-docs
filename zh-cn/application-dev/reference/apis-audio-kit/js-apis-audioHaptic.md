@@ -11,7 +11,8 @@
 > **说明：**
 >
 > 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
+
+**设备行为差异：** 若设备无振动器件，将不会产生振动效果。
 
 ## 导入模块
 
@@ -84,7 +85,12 @@ let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.get
 
 registerSource(audioUri: string, hapticUri: string): Promise&lt;number&gt;
 
-注册音频和振动资源的Uri。使用Promise异步回调。
+通过Uri注册音频和振动资源。使用Promise异步回调。
+
+> **注意：**
+>
+> 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
+
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -92,14 +98,14 @@ registerSource(audioUri: string, hapticUri: string): Promise&lt;number&gt;
 
 | 参数名   | 类型                                      | 必填 | 说明                     |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
-| audioUri  | string                                  | 是   | 音频资源的Uri。对普通时延模式，音频资源格式和路径格式的支持可参考[media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md)；对低时延模式，音频资源格式支持可参考[SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool)，路径格式需满足[文件管理模块open函数](../apis-core-file-kit/js-apis-file-fs.md#fsopen)的要求。对两种时延模式，均建议传入文件的绝对路径。           |
-| hapticUri | string                                  | 是   | 振动资源的Uri。振动资源格式支持可参考[vibrator](../apis-sensor-service-kit/js-apis-vibrator.md#hapticfiledescriptor10)，路径格式需满足[文件管理模块open函数](../apis-core-file-kit/js-apis-file-fs.md#fsopen)的要求。建议传入文件的绝对路径。         |
+| audioUri  | string                                  | 是   | 音频资源的Uri。<br>- 对普通时延模式，音频资源格式和路径格式的支持可参考[AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md)。<br>- 对低时延模式，音频资源格式支持可参考[SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool)，路径格式需满足[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)的要求。<br>- 对两种时延模式，均建议传入文件的绝对路径。           |
+| hapticUri | string                                  | 是   | 振动资源的Uri。<br>振动资源格式支持可参考[HapticFileDescripto](../apis-sensor-service-kit/js-apis-vibrator.md#hapticfiledescriptor10)，路径格式需满足[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)的要求。<br>建议传入文件的绝对路径。         |
 
 **返回值：**
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回注册资源的source id。 |
+| Promise&lt;number&gt; | Promise对象，返回注册的资源ID。<br>正常情况下返回注册的资源ID为非负数。若返回注册的资源ID为负数，则表示注册失败，需检查注册资源数量是否超过上限。 |
 
 **错误码：**
 
@@ -117,9 +123,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let audioUri = 'data/audioTest.wav'; // 需更改为目标音频资源的Uri。
 let hapticUri = 'data/hapticTest.json'; // 需更改为目标振动资源的Uri。
 let id = 0;
-
+// 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
 audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
-  console.info(`Promise returned to indicate that the source id of the registerd source ${value}.`);
+  console.info(`Promise returned to indicate that the source id of the registered source ${value}.`);
   id = value;
 }).catch((err: BusinessError) => {
   console.error(`Failed to register source ${err}`);
@@ -130,8 +136,12 @@ audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: numb
 
 registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFileDescriptor): Promise&lt;number&gt;
 
-通过文件描述符注册音频和振动资源，确保它们在播放时同步。
-注册资源后，此方法将通过Promise异步返回资源ID。
+通过文件描述符注册音频和振动资源。使用Promise异步回调。
+
+> **注意：**
+>
+> 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
+
 
 **系统能力：**: SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -146,7 +156,7 @@ registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFi
 
 | 类型               | 说明                           |
 | ------------------- | ------------------------------- |
-| Promise&lt;number&gt; | 返回注册资源的资源ID。|
+| Promise&lt;number&gt; | Promise对象，返回注册的资源ID。<br>正常情况下返回注册的资源ID为非负数。若返回注册的资源ID为负数，则表示注册失败，需检查注册资源数量是否超过上限。|
 
 **示例：**
 
@@ -171,7 +181,7 @@ let hapticFd: audioHaptic.AudioHapticFileDescriptor = {
   length: hapticFile.length,
 };
 let id = 0;
-
+// 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
 audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: number) => {
   console.info('Succeeded in doing registerSourceFromFd.');
   id = value;
@@ -185,6 +195,10 @@ audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: 
 unregisterSource(id: number): Promise&lt;void&gt;
 
 取消注册音频和振动资源。使用Promise异步回调。
+
+> **注意：**
+>
+> 对于不再需要使用的资源，建议应用及时取消注册，避免出现资源泄漏或资源数量超上限等问题。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -239,7 +253,7 @@ setAudioLatencyMode(id:number, latencyMode: AudioLatencyMode): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息                              |
 | ------- |-----------------------------------|
@@ -275,7 +289,7 @@ setStreamUsage(id: number, usage: audio.StreamUsage): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息                              |
 | ------- |-----------------------------------|
@@ -322,7 +336,7 @@ createPlayer(id: number, options?: AudioHapticPlayerOptions): Promise&lt;AudioHa
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息                              |
 | ------- |-----------------------------------|
@@ -417,7 +431,7 @@ start(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID   | 错误信息                              |
 |---------|-----------------------------------|
@@ -453,7 +467,7 @@ stop(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID   | 错误信息                              |
 |---------|-----------------------------------|
@@ -488,7 +502,7 @@ release(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID   | 错误信息                              |
 |---------|-----------------------------------|
@@ -532,7 +546,7 @@ setVolume(volume: number): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID   | 错误信息                              |
 |---------|-----------------------------------|
@@ -578,7 +592,7 @@ setLoop(loop: boolean): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID   | 错误信息                              |
 |---------|-----------------------------------|

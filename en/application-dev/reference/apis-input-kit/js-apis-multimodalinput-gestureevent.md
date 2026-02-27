@@ -11,7 +11,7 @@ The **gestureEvent** module provides APIs for gesture events reported by devices
 
 >  **NOTE**
 >
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -61,7 +61,7 @@ Defines a four-finger swipe gesture event.
 
 | Name            | Type       | Read-Only  | Optional  | Description                                      |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
-| type         | [ActionType](#actiontype)   | No   | No   | Enumerates gesture event types. for example, gesture start, gesture update, and gesture end.                                  |
+| type         | [ActionType](#actiontype)   | No   | No   | Event type, for example, gesture start, gesture update, or gesture end.                                  |
 | x        | number      | No   | No   | X coordinate.                            |
 | y        | number      | No   | No   | Y coordinate.                            |
 
@@ -73,7 +73,7 @@ Defines a three-finger tap gesture event.
 
 | Name              | Type                     | Read-Only| Optional| Description            |
 | ------------------ | ------------------------- | ---- | ---- | ---------------- |
-| type | [ActionType](#actiontype) | No  | No  | Enumerates gesture event types. for example, gesture start, gesture update, and gesture end.|
+| type | [ActionType](#actiontype) | No  | No  | Event type, for example, gesture start, gesture update, or gesture end.|
 
 ## ActionType
 

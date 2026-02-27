@@ -49,7 +49,7 @@
 
 ### OH_Hid_CreateDevice()
 
-```
+```c
 int32_t OH_Hid_CreateDevice(Hid_Device *hidDevice, Hid_EventProperties *hidEventProperties)
 ```
 
@@ -77,7 +77,7 @@ int32_t OH_Hid_CreateDevice(Hid_Device *hidDevice, Hid_EventProperties *hidEvent
 
 ### OH_Hid_EmitEvent()
 
-```
+```c
 int32_t OH_Hid_EmitEvent(int32_t deviceId, const Hid_EmitItem items[], uint16_t length)
 ```
 
@@ -102,11 +102,11 @@ int32_t OH_Hid_EmitEvent(int32_t deviceId, const Hid_EmitItem items[], uint16_t 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 调用接口成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 连接hid_ddk服务失败或者调用方不是设备的创建者。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能的原因: 1.设备ID小于0;<br>         2.入参length长度超过7; 3.入参items为空指针。<br>         [HID_DDK_NULL_PTR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 对应设备的注入为空。<br>         [HID_DDK_FAILURE](capi-hid-ddk-types-h.md#hid_ddkerrcode) 对应设备不存在。 |
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 调用接口成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 连接hid_ddk服务失败或者调用方不是设备的创建者。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能的原因: 1.设备ID小于0;<br>         2.入参length长度超过7; 3.入参items为空指针。<br>         [HID_DDK_NULL_PTR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 对应设备的注入为空。|
 
 ### OH_Hid_DestroyDevice()
 
-```
+```c
 int32_t OH_Hid_DestroyDevice(int32_t deviceId)
 ```
 
@@ -133,7 +133,7 @@ int32_t OH_Hid_DestroyDevice(int32_t deviceId)
 
 ### OH_Hid_Init()
 
-```
+```c
 int32_t OH_Hid_Init(void)
 ```
 
@@ -153,7 +153,7 @@ int32_t OH_Hid_Init(void)
 
 ### OH_Hid_Release()
 
-```
+```c
 int32_t OH_Hid_Release(void)
 ```
 
@@ -173,7 +173,7 @@ int32_t OH_Hid_Release(void)
 
 ### OH_Hid_Open()
 
-```
+```c
 int32_t OH_Hid_Open(uint64_t deviceId, uint8_t interfaceIndex, Hid_DeviceHandle **dev)
 ```
 
@@ -202,7 +202,7 @@ int32_t OH_Hid_Open(uint64_t deviceId, uint8_t interfaceIndex, Hid_DeviceHandle 
 
 ### OH_Hid_Close()
 
-```
+```c
 int32_t OH_Hid_Close(Hid_DeviceHandle **dev)
 ```
 
@@ -229,7 +229,7 @@ int32_t OH_Hid_Close(Hid_DeviceHandle **dev)
 
 ### OH_Hid_Write()
 
-```
+```c
 int32_t OH_Hid_Write(Hid_DeviceHandle *dev, uint8_t *data, uint32_t length, uint32_t *bytesWritten)
 ```
 
@@ -259,7 +259,7 @@ int32_t OH_Hid_Write(Hid_DeviceHandle *dev, uint8_t *data, uint32_t length, uint
 
 ### OH_Hid_ReadTimeout()
 
-```
+```c
 int32_t OH_Hid_ReadTimeout(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize, int timeout, uint32_t *bytesRead)
 ```
 
@@ -290,7 +290,7 @@ int32_t OH_Hid_ReadTimeout(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSiz
 
 ### OH_Hid_Read()
 
-```
+```c
 int32_t OH_Hid_Read(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize, uint32_t *bytesRead)
 ```
 
@@ -320,7 +320,7 @@ int32_t OH_Hid_Read(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize, uint
 
 ### OH_Hid_SetNonBlocking()
 
-```
+```c
 int32_t OH_Hid_SetNonBlocking(Hid_DeviceHandle *dev, int nonBlock)
 ```
 
@@ -348,7 +348,7 @@ int32_t OH_Hid_SetNonBlocking(Hid_DeviceHandle *dev, int nonBlock)
 
 ### OH_Hid_GetRawInfo()
 
-```
+```c
 int32_t OH_Hid_GetRawInfo(Hid_DeviceHandle *dev, Hid_RawDevInfo *rawDevInfo)
 ```
 
@@ -366,7 +366,7 @@ int32_t OH_Hid_GetRawInfo(Hid_DeviceHandle *dev, Hid_RawDevInfo *rawDevInfo)
 | 参数项                                                         | 描述 |
 |-------------------------------------------------------------| -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev                                       | 设备操作句柄。 |
-| [Hid_RawDevInfo](capi-hidddk-hid-rawdevinfo.md) *rawDevInfo | 设备原始信息，包含供应商ID、产品ID和总线类型。 |
+| [Hid_RawDevInfo](capi-hidddk-hid-rawdevinfo.md) *rawDevInfo | 设备原始信息，包含厂商ID、产品ID和总线类型。 |
 
 **返回：**
 
@@ -376,7 +376,7 @@ int32_t OH_Hid_GetRawInfo(Hid_DeviceHandle *dev, Hid_RawDevInfo *rawDevInfo)
 
 ### OH_Hid_GetRawName()
 
-```
+```c
 int32_t OH_Hid_GetRawName(Hid_DeviceHandle *dev, char *data, uint32_t bufSize)
 ```
 
@@ -405,7 +405,7 @@ int32_t OH_Hid_GetRawName(Hid_DeviceHandle *dev, char *data, uint32_t bufSize)
 
 ### OH_Hid_GetPhysicalAddress()
 
-```
+```c
 int32_t OH_Hid_GetPhysicalAddress(Hid_DeviceHandle *dev, char *data, uint32_t bufSize)
 ```
 
@@ -434,7 +434,7 @@ int32_t OH_Hid_GetPhysicalAddress(Hid_DeviceHandle *dev, char *data, uint32_t bu
 
 ### OH_Hid_GetRawUniqueId()
 
-```
+```c
 int32_t OH_Hid_GetRawUniqueId(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize)
 ```
 
@@ -463,7 +463,7 @@ int32_t OH_Hid_GetRawUniqueId(Hid_DeviceHandle *dev, uint8_t *data, uint32_t buf
 
 ### OH_Hid_SendReport()
 
-```
+```c
 int32_t OH_Hid_SendReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, const uint8_t *data, uint32_t length)
 ```
 
@@ -493,7 +493,7 @@ int32_t OH_Hid_SendReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, cons
 
 ### OH_Hid_GetReport()
 
-```
+```c
 int32_t OH_Hid_GetReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, uint8_t *data, uint32_t bufSize)
 ```
 
@@ -523,7 +523,7 @@ int32_t OH_Hid_GetReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, uint8
 
 ### OH_Hid_GetReportDescriptor()
 
-```
+```c
 int32_t OH_Hid_GetReportDescriptor(Hid_DeviceHandle *dev, uint8_t *buf, uint32_t bufSize, uint32_t *bytesRead)
 ```
 

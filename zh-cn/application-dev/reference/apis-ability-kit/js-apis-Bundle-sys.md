@@ -12,7 +12,7 @@
 >
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 从API Version 9开始，该模块不再维护，系统接口建议使用[`@ohos.bundle.bundleManager`](js-apis-bundleManager-sys.md)替代。
+> 从API version 9开始，该模块不再维护，系统接口建议使用[`@ohos.bundle.bundleManager`](js-apis-bundleManager-sys.md)替代。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[`@ohos.bundle`](js-apis-Bundle.md)。
 
@@ -34,9 +34,11 @@ import bundle from '@ohos.bundle';
 
 权限等级参考[权限APL等级说明](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)。
 
-## bundle.getBundleInstaller<sup>deprecated<sup>
+## bundle.getBundleInstaller<sup>(deprecated)</sup>
 
-> 从API version 9开始不再维护，建议使用[installer.getBundleInstaller](js-apis-installer-sys.md#bundleinstallergetbundleinstaller)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[installer.getBundleInstaller](js-apis-installer-sys.md#bundleinstallergetbundleinstaller)替代。
 
 getBundleInstaller(): Promise&lt;BundleInstaller&gt;
 
@@ -73,9 +75,11 @@ bundle.getBundleInstaller().then((data) => {
 });
 ```
 
-## bundle.getBundleInstaller<sup>deprecated<sup>
+## bundle.getBundleInstaller<sup>(deprecated)</sup>
 
-> 从API version 9开始不再维护，建议使用[installer.getBundleInstaller](js-apis-installer-sys.md#bundleinstallergetbundleinstaller)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[installer.getBundleInstaller](js-apis-installer-sys.md#bundleinstallergetbundleinstaller)替代。
 
 getBundleInstaller(callback: AsyncCallback&lt;BundleInstaller&gt;): void
 
@@ -112,9 +116,11 @@ bundle.getBundleInstaller((err, data) => {
   }
 });
 ```
-## bundle.cleanBundleCacheFiles<sup>8+</sup> <sup>deprecated<sup>
+## bundle.cleanBundleCacheFiles<sup>(deprecated)</sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager.cleanBundleCacheFiles](js-apis-bundleManager-sys.md#bundlemanagercleanbundlecachefiles)替代。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[cleanBundleCacheFiles](js-apis-bundleManager-sys.md#bundlemanagercleanbundlecachefiles)替代。
 
 cleanBundleCacheFiles(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -155,9 +161,11 @@ bundle.cleanBundleCacheFiles(bundleName, err => {
 });
 ```
 
-## bundle.cleanBundleCacheFiles<sup>8+</sup> <sup>deprecated<sup>
+## bundle.cleanBundleCacheFiles<sup>(deprecated)</sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager.cleanBundleCacheFiles](js-apis-bundleManager-sys.md#bundlemanagercleanbundlecachefiles)替代。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[cleanBundleCacheFiles](js-apis-bundleManager-sys.md#bundlemanagercleanbundlecachefiles)替代。
 
 cleanBundleCacheFiles(bundleName: string): Promise&lt;void&gt;
 
@@ -202,9 +210,11 @@ bundle.cleanBundleCacheFiles(bundleName).then(() => {
 });
 ```
 
-## bundle.setApplicationEnabled<sup>8+</sup> <sup>deprecated<sup>
+## bundle.setApplicationEnabled<sup>(deprecated)</sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager.setApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagersetapplicationenabled)替代。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[setApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagersetapplicationenabled)替代。
 
 setApplicationEnabled(bundleName: string, isEnable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -246,9 +256,11 @@ bundle.setApplicationEnabled(bundleName, false, err => {
 });
 ```
 
-## bundle.setApplicationEnabled<sup>8+</sup> <sup>deprecated<sup>
+## bundle.setApplicationEnabled<sup>(deprecated)</sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager.setApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagersetapplicationenabled)替代。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[setApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagersetapplicationenabled)替代。
 
 setApplicationEnabled(bundleName: string, isEnable: boolean): Promise&lt;void&gt;
 
@@ -294,9 +306,11 @@ bundle.setApplicationEnabled(bundleName, false).then(() => {
 });
 ```
 
-## bundle.setAbilityEnabled<sup>8+</sup> <sup>deprecated<sup>
+## bundle.setAbilityEnabled<sup>(deprecated)</sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager.setAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagersetabilityenabled)替代。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[setAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagersetabilityenabled)替代。
 
 setAbilityEnabled(info: AbilityInfo, isEnable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -322,9 +336,11 @@ SystemCapability.BundleManager.BundleFramework
 | isEnable | boolean                                      | 是   | 指定是否启用应用程序。true表示启用，false禁用。 |
 | callback | AsyncCallback\<void>                         | 是   | 为返回操作结果而调用的回调。                    |
 
-## bundle.setAbilityEnabled<sup>8+</sup> <sup>deprecated<sup>
+## bundle.setAbilityEnabled<sup>(deprecated)</sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager.setAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagersetabilityenabled)替代。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[setAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagersetabilityenabled)替代。
 
 setAbilityEnabled(info: AbilityInfo, isEnable: boolean): Promise&lt;void&gt;
 
@@ -376,9 +392,11 @@ bundle.getAbilityInfo(bundleName, abilityName).then((abilityInfo) => {
   console.error('getAbilityInfo failed. Cause: ' + JSON.stringify(error));
 });
 ```
-## bundle.getPermissionDef<sup>8+</sup> <sup>deprecated<sup>
+## bundle.getPermissionDef<sup>(deprecated)</sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager.getPermissionDef](js-apis-bundleManager-sys.md#bundlemanagergetpermissiondef)替代。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getPermissionDef](js-apis-bundleManager-sys.md#bundlemanagergetpermissiondef)替代。
 
 getPermissionDef(permissionName: string, callback: AsyncCallback&lt;PermissionDef&gt;): void
 
@@ -418,9 +436,11 @@ bundle.getPermissionDef(permission, (err, data) => {
 });
 ```
 
-## bundle.getPermissionDef<sup>8+</sup> <sup>deprecated<sup>
+## bundle.getPermissionDef<sup>(deprecated)</sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager.getPermissionDef](js-apis-bundleManager-sys.md#bundlemanagergetpermissiondef)替代。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getPermissionDef](js-apis-bundleManager-sys.md#bundlemanagergetpermissiondef)替代。
 
 getPermissionDef(permissionName: string): Promise&lt;PermissionDef&gt;
 

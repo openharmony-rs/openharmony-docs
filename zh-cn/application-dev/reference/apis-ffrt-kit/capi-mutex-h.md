@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -41,7 +41,7 @@
 
 ### ffrt_mutexattr_init()
 
-```
+```c
 FFRT_C_API int ffrt_mutexattr_init(ffrt_mutexattr_t* attr)
 ```
 
@@ -50,7 +50,6 @@ FFRT_C_API int ffrt_mutexattr_init(ffrt_mutexattr_t* attr)
 初始化mutex属性。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -66,7 +65,7 @@ FFRT_C_API int ffrt_mutexattr_init(ffrt_mutexattr_t* attr)
 
 ### ffrt_mutexattr_settype()
 
-```
+```c
 FFRT_C_API int ffrt_mutexattr_settype(ffrt_mutexattr_t* attr, int type)
 ```
 
@@ -75,7 +74,6 @@ FFRT_C_API int ffrt_mutexattr_settype(ffrt_mutexattr_t* attr, int type)
 设置mutex属性类型。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -92,7 +90,7 @@ FFRT_C_API int ffrt_mutexattr_settype(ffrt_mutexattr_t* attr, int type)
 
 ### ffrt_mutexattr_gettype()
 
-```
+```c
 FFRT_C_API int ffrt_mutexattr_gettype(ffrt_mutexattr_t* attr, int* type)
 ```
 
@@ -101,7 +99,6 @@ FFRT_C_API int ffrt_mutexattr_gettype(ffrt_mutexattr_t* attr, int* type)
 获取mutex类型。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -118,7 +115,7 @@ FFRT_C_API int ffrt_mutexattr_gettype(ffrt_mutexattr_t* attr, int* type)
 
 ### ffrt_mutexattr_destroy()
 
-```
+```c
 FFRT_C_API int ffrt_mutexattr_destroy(ffrt_mutexattr_t* attr)
 ```
 
@@ -127,7 +124,6 @@ FFRT_C_API int ffrt_mutexattr_destroy(ffrt_mutexattr_t* attr)
 销毁mutex属性，用户需要调用此接口。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -143,7 +139,7 @@ FFRT_C_API int ffrt_mutexattr_destroy(ffrt_mutexattr_t* attr)
 
 ### ffrt_mutex_init()
 
-```
+```c
 FFRT_C_API int ffrt_mutex_init(ffrt_mutex_t* mutex, const ffrt_mutexattr_t* attr)
 ```
 
@@ -152,7 +148,6 @@ FFRT_C_API int ffrt_mutex_init(ffrt_mutex_t* mutex, const ffrt_mutexattr_t* attr
 初始化mutex。
 
 **起始版本：** 10
-
 
 **参数：**
 
@@ -169,7 +164,7 @@ FFRT_C_API int ffrt_mutex_init(ffrt_mutex_t* mutex, const ffrt_mutexattr_t* attr
 
 ### ffrt_mutex_lock()
 
-```
+```c
 FFRT_C_API int ffrt_mutex_lock(ffrt_mutex_t* mutex)
 ```
 
@@ -178,7 +173,6 @@ FFRT_C_API int ffrt_mutex_lock(ffrt_mutex_t* mutex)
 获取mutex。
 
 **起始版本：** 10
-
 
 **参数：**
 
@@ -194,7 +188,7 @@ FFRT_C_API int ffrt_mutex_lock(ffrt_mutex_t* mutex)
 
 ### ffrt_mutex_unlock()
 
-```
+```c
 FFRT_C_API int ffrt_mutex_unlock(ffrt_mutex_t* mutex)
 ```
 
@@ -203,7 +197,6 @@ FFRT_C_API int ffrt_mutex_unlock(ffrt_mutex_t* mutex)
 释放mutex。
 
 **起始版本：** 10
-
 
 **参数：**
 
@@ -219,7 +212,7 @@ FFRT_C_API int ffrt_mutex_unlock(ffrt_mutex_t* mutex)
 
 ### ffrt_mutex_trylock()
 
-```
+```c
 FFRT_C_API int ffrt_mutex_trylock(ffrt_mutex_t* mutex)
 ```
 
@@ -228,7 +221,6 @@ FFRT_C_API int ffrt_mutex_trylock(ffrt_mutex_t* mutex)
 尝试获取mutex。
 
 **起始版本：** 10
-
 
 **参数：**
 
@@ -244,7 +236,7 @@ FFRT_C_API int ffrt_mutex_trylock(ffrt_mutex_t* mutex)
 
 ### ffrt_mutex_destroy()
 
-```
+```c
 FFRT_C_API int ffrt_mutex_destroy(ffrt_mutex_t* mutex)
 ```
 
@@ -253,7 +245,6 @@ FFRT_C_API int ffrt_mutex_destroy(ffrt_mutex_t* mutex)
 销毁mutex。
 
 **起始版本：** 10
-
 
 **参数：**
 

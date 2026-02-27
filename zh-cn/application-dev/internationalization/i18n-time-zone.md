@@ -38,68 +38,73 @@
 ### 时区接口基本功能
 
 1. 导入模块。
-   ```ts
+
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/TimezoneDstSetting.ets) -->
+   
+   ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
    ```
-   <!-- [import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/TimezoneDstSetting.ets) -->
+   
 
 2. 使用场景。
 - 时区接口基本功能：包括获取特定时区、计算固定和实际时区偏移量、遍历时区列表。
 
-   ```ts
+   <!-- @[get_current_timezone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/TimezoneDstSetting.ets) -->
+   
+   ``` TypeScript
    // 获取巴西时区
    let timezone: i18n.TimeZone = i18n.getTimeZone('America/Sao_Paulo'); // 传入特定时区，创建时区对象
    let timezoneId = timezone.getID(); // timezoneId = 'America/Sao_Paulo'
-
+   
    // 获取城市ID对应的时区对象
    let aucklandTimezone: i18n.TimeZone = i18n.TimeZone.getTimezoneFromCity('Auckland');
    timezoneId = aucklandTimezone.getID(); // timezoneId = 'Pacific/Auckland'
-
+   
    // 获取时区的本地化名称
    let timeZoneName = timezone.getDisplayName('zh-Hans', true); // timeZoneName = '巴西利亚标准时间'
-
+   
    // 本地化城市名称
    let cityDisplayName = i18n.TimeZone.getCityDisplayName('Auckland', 'zh-Hans'); // cityDisplayName = '奥克兰 (新西兰)'
-
+   
    // 时区的固定偏移量
    let rawOffset = timezone.getRawOffset(); // rawOffset = -10800000
-
+   
    // 时区的实际偏移量（固定偏移量+夏令时）
    let offset = timezone.getOffset(1234567890); // offset = -10800000
-
+   
    // 系统支持的时区ID列表
    let availableIDs = i18n.TimeZone.getAvailableIDs(); // availableIDs = ['America/Adak', 'Asia/Hovd', ...]
-
+   
    // 系统支持的时区城市ID列表
    let cityIDs = i18n.TimeZone.getAvailableZoneCityIDs(); // cityIDs = ['Auckland', 'Magadan', ...]
-
+   
    // 遍历时区城市ID列表
    let timezoneList: object[] = []; // 呈现给用户的时区列表
-
+   
    class Item {
      public cityDisplayName = '';
      public timezoneId = '';
      public offset = '';
      public cityId = '';
    };
-
+   
    for (let i = 0; i < cityIDs.length; i++) {
      let cityId = cityIDs[i];
      let timezone: i18n.TimeZone = i18n.TimeZone.getTimezoneFromCity(cityId); // 城市ID对应的时区对象
      let cityDisplayName = i18n.TimeZone.getCityDisplayName(cityId, 'zh-CN'); // 本地化城市名称
      let timestamp = (new Date()).getTime();
      let item: Item = {
-        cityDisplayName: cityDisplayName,
-        timezoneId: timezone.getID(),
-        offset: 'GMT' + (timezone.getOffset(timestamp) / 3600 * 1000),
-        cityId: cityId
+       cityDisplayName: cityDisplayName,
+       timezoneId: timezone.getID(),
+       offset: 'GMT' + (timezone.getOffset(timestamp) / 3600 * 1000),
+       cityId: cityId
      };
      timezoneList.push(item);
    }
-
+   
    // 指定地理坐标所在的时区对象数组
    let timezoneArray: i18n.TimeZone[] = i18n.TimeZone.getTimezonesByLocation(-43.1, -22.5);
-
+   
    // 获取指定时间的下一个时区跳变点
    let tijuanaTzId = 'America/Tijuana';
    let tijuanaTimeZone: i18n.TimeZone = i18n.getTimeZone(tijuanaTzId); // 获取蒂华纳时区对象
@@ -119,17 +124,18 @@
    let dateFormat =
      dateTimeFormat.format(new Date(zoneOffsetTrans.getMilliseconds())); // November 2, 2025, 1:00:00 PST
    ```
-   <!-- [get_current_timezone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/TimezoneDstSetting.ets) -->
 
 - 双时钟应用：首先选择时区列表中的时区，添加到应用偏好时区列表。然后遍历应用偏好时区列表，获取各时区的时间。
 
-   ```ts
+   <!-- @[display_dual_timezones](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/TimezoneDstSetting.ets) -->
+   
+   ``` TypeScript
    let pauloTimezone: i18n.TimeZone = i18n.getTimeZone('America/Sao_Paulo');
    let defaultTimezone: i18n.TimeZone = i18n.getTimeZone();
-   let appPreferredTimeZoneList: Array<i18n.TimeZone> = []; // 应用偏好时区列表
+   let appPreferredTimeZoneList: i18n.TimeZone[] = []; // 应用偏好时区列表
    appPreferredTimeZoneList.push(pauloTimezone);
    appPreferredTimeZoneList.push(defaultTimezone);
-
+   
    let locale: Intl.Locale = i18n.System.getSystemLocaleInstance();
    for (let i = 0; i < appPreferredTimeZoneList.length; i++) {
      let timezone = appPreferredTimeZoneList[i].getID();
@@ -144,4 +150,3 @@
      let second = calendar.get('second');
    }
    ```
-   <!-- [display_dual_timezones](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/TimezoneDstSetting.ets) -->

@@ -13,7 +13,7 @@ Task execution timeout indicates that the execution duration of the monitored se
 
 ## Detection Principles
 
-For details, see [Detection Principles](apptask-timeout-guidelines.md#detection-principles).
+For details, see [Task Execution Timeout Detection Principles](apptask-timeout-guidelines.md#task-execution-timeout-detection).
 
 ## Available APIs
 
@@ -21,6 +21,10 @@ You can subscribe to task execution timeout events **EVENT_APP_HICOLLIE** using 
 
 - [Subscribing to Task Execution Timeout Events (ArkTS)](hiappevent-watcher-apphicollie-events-arkts.md)
 - [Subscribing to Task Execution Timeout Events (C/C++)](hiappevent-watcher-apphicollie-events-ndk.md)
+
+> **NOTE**
+>
+> Task execution timeout events can be subscribed to via HiAppEvent in [application clones](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/app-clone), but not in atomic services. Since API version 22, task execution timeout events can be subscribed to using HiAppEvent in [input method applications](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/inputmethod-application-guide).
 
 ## Event Fields
 

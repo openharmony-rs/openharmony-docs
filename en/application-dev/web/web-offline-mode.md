@@ -43,93 +43,98 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 }
 ```
 <!--  -->
+<!-- @[manage_dynamic_webview_components_in_harmonyos_app](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Common.ets) -->
 
-```ts
+``` TypeScript
 // Create a NodeController instance.
-// common.ets
+// Common.ets
 import { UIContext, NodeController, BuilderNode, Size, FrameNode } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
 // @Builder contains the specific information of the dynamic component.
 // Data is an input parameter of encapsulation class.
-class Data{
-  url: ResourceStr = "https://www.example.com";
-  controller: webview.WebviewController = new webview.WebviewController();
+class Data {
+  public url: ResourceStr = 'www.example.com';
+  public controller: WebviewController = new webview.WebviewController();
 }
 
 @Builder
-function WebBuilder(data:Data) {
+function webBuilder(data: Data) {
   Column() {
     Web({ src: data.url, controller: data.controller })
-      .width("100%")
-      .height("100%")
+      .width('100%')
+      .height('100%')
   }
 }
 
-let wrap = wrapBuilder<Data[]>(WebBuilder);
+let wrap = wrapBuilder<Data[]>(webBuilder);
 
-// myNodeController must be used with the NodeContainer for controlling and feeding back the behavior of the nodes in the container.
-export class myNodeController extends NodeController {
+// Used to control and report the behavior of the node in NodeContainer. This function must be used together with NodeContainer.
+export class MyNodeController extends NodeController {
   private rootNode: BuilderNode<Data[]> | null = null;
-  // This method must be overridden, which is used to build a node tree, return the nodes and attach them to NodeContainer.
+
+  // This function must be overridden, which is used to construct the number of nodes, return the nodes and attach them to NodeContainer.
   // Call it when the NodeContainer is created or call rebuild() to refresh.
   makeNode(uiContext: UIContext): FrameNode | null {
-    console.info(" uiContext is undefined : "+ (uiContext === undefined));
-    if (this.rootNode != null) {
+    console.info('uicontext is undefined : ' + (uiContext === undefined));
+    if (this.rootNode !== null) {
       // Return the FrameNode.
       return this.rootNode.getFrameNode();
     }
     // Return null to detach the dynamic component from the bound node.
     return null;
   }
+
   // Called when the layout size changes.
   aboutToResize(size: Size) {
-    console.info("aboutToResize width : " + size.width  +  " height : " + size.height );
+    console.info('aboutToResize width : ' + size.width + ' height : ' + size.height);
   }
 
   // Called when the NodeContainer bound to the controller is about to appear.
   aboutToAppear() {
-    console.info("aboutToAppear");
+    console.info('aboutToAppear');
   }
 
   // Called when the NodeContainer bound to the controller is about to disappear.
   aboutToDisappear() {
-    console.info("aboutToDisappear");
+    console.info('aboutToDisappear');
   }
 
   // This function is a custom function and can be used as an initialization function.
   // Initialize BuilderNode through UIContext, and then initialize the content in @Builder through the build API in BuilderNode.
-  initWeb(url:ResourceStr, uiContext:UIContext, control:webview.WebviewController) {
-    if(this.rootNode != null)
-    {
+  initWeb(url: ResourceStr, uiContext: UIContext, control: WebviewController) {
+    if (this.rootNode !== null) {
       return;
     }
     // Create a node, during which the UIContext should be passed.
     this.rootNode = new BuilderNode(uiContext);
     // Create a dynamic Web component.
-    this.rootNode.build(wrap, { url:url, controller:control });
+    this.rootNode.build(wrap, { url: url, controller: control });
   }
 }
+
 // Create a Map to save the required NodeController.
-let NodeMap:Map<ResourceStr, myNodeController | undefined> = new Map();
+let nodeMap: Map<ResourceStr, MyNodeController | undefined> = new Map();
 // Create a Map to save the required WebViewController.
-let controllerMap:Map<ResourceStr, webview.WebviewController | undefined> = new Map();
+let controllerMap: Map<ResourceStr, WebviewController | undefined> = new Map();
 
 // UIContext is required for initialization and needs to be obtained from the ability.
 export const createNWeb = (url: ResourceStr, uiContext: UIContext) => {
   // Create a NodeController instance.
-  let baseNode = new myNodeController();
-  let controller = new webview.WebviewController() ;
+  let baseNode = new MyNodeController();
+  let controller = new webview.WebviewController();
   // Initialize the custom Web component.
   baseNode.initWeb(url, uiContext, controller);
-  controllerMap.set(url, controller)
-  NodeMap.set(url, baseNode);
+  controllerMap.set(url, controller);
+  nodeMap.set(url, baseNode);
 }
+
 // Customize the API for obtaining the NodeController.
-export const getNWeb = (url: ResourceStr) : myNodeController | undefined => {
-  return NodeMap.get(url);
+export const getNWeb = (url: ResourceStr): MyNodeController | undefined => {
+  return nodeMap.get(url);
 }
 ```
+
 <!--  -->
 <!-- @[nodeContainer_bind_controller_to_show_dynamic_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Index.ets) -->
 
@@ -180,110 +185,115 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 }
 ```
 <!--  -->
+<!-- @[manage_dynamic_webview_components_in_harmonyos_app](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Common.ets) -->
 
-```ts
+``` TypeScript
 // Create a NodeController instance.
-// common.ets
+// Common.ets
 import { UIContext, NodeController, BuilderNode, Size, FrameNode } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
 // @Builder contains the specific information of the dynamic component.
 // Data is an input parameter of encapsulation class.
-class Data{
-  url: ResourceStr = "https://www.example.com";
-  controller: webview.WebviewController = new webview.WebviewController();
+class Data {
+  public url: ResourceStr = 'www.example.com';
+  public controller: WebviewController = new webview.WebviewController();
 }
 
 @Builder
-function WebBuilder(data:Data) {
+function webBuilder(data: Data) {
   Column() {
     Web({ src: data.url, controller: data.controller })
-      .width("100%")
-      .height("100%")
+      .width('100%')
+      .height('100%')
   }
 }
 
-let wrap = wrapBuilder<Data[]>(WebBuilder);
+let wrap = wrapBuilder<Data[]>(webBuilder);
 
-// myNodeController must be used with the NodeContainer for controlling and feeding back the behavior of the nodes in the container.
-export class myNodeController extends NodeController {
+// Used to control and report the behavior of the node in NodeContainer. This function must be used together with NodeContainer.
+export class MyNodeController extends NodeController {
   private rootNode: BuilderNode<Data[]> | null = null;
-  // This method must be overridden, which is used to build a node tree, return the nodes and attach them to NodeContainer.
+
+  // This function must be overridden, which is used to construct the number of nodes, return the nodes and attach them to NodeContainer.
   // Call it when the NodeContainer is created or call rebuild() to refresh.
   makeNode(uiContext: UIContext): FrameNode | null {
-    console.info(" uiContext is undefined : "+ (uiContext === undefined));
-    if (this.rootNode != null) {
+    console.info('uicontext is undefined : ' + (uiContext === undefined));
+    if (this.rootNode !== null) {
       // Return the FrameNode.
       return this.rootNode.getFrameNode();
     }
     // Return null to detach the dynamic component from the bound node.
     return null;
   }
+
   // Called when the layout size changes.
   aboutToResize(size: Size) {
-    console.info("aboutToResize width : " + size.width  +  " height : " + size.height );
+    console.info('aboutToResize width : ' + size.width + ' height : ' + size.height);
   }
 
   // Called when the NodeContainer bound to the controller is about to appear.
   aboutToAppear() {
-    console.info("aboutToAppear");
+    console.info('aboutToAppear');
   }
 
   // Called when the NodeContainer bound to the controller is about to disappear.
   aboutToDisappear() {
-    console.info("aboutToDisappear");
+    console.info('aboutToDisappear');
   }
 
   // This function is a custom function and can be used as an initialization function.
   // Initialize BuilderNode through UIContext, and then initialize the content in @Builder through the build API in BuilderNode.
-  initWeb(url:ResourceStr, uiContext:UIContext, control:webview.WebviewController) {
-    if(this.rootNode != null)
-    {
+  initWeb(url: ResourceStr, uiContext: UIContext, control: WebviewController) {
+    if (this.rootNode !== null) {
       return;
     }
     // Create a node, during which the UIContext should be passed.
     this.rootNode = new BuilderNode(uiContext);
     // Create a dynamic Web component.
-    this.rootNode.build(wrap, { url:url, controller:control });
+    this.rootNode.build(wrap, { url: url, controller: control });
   }
 }
+
 // Create a Map to save the required NodeController.
-let NodeMap:Map<ResourceStr, myNodeController | undefined> = new Map();
+let nodeMap: Map<ResourceStr, MyNodeController | undefined> = new Map();
 // Create a Map to save the required WebViewController.
-let controllerMap:Map<ResourceStr, webview.WebviewController | undefined> = new Map();
+let controllerMap: Map<ResourceStr, WebviewController | undefined> = new Map();
 
 // UIContext is required for initialization and needs to be obtained from the ability.
 export const createNWeb = (url: ResourceStr, uiContext: UIContext) => {
   // Create a NodeController instance.
-  let baseNode = new myNodeController();
+  let baseNode = new MyNodeController();
   let controller = new webview.WebviewController();
   // Initialize the custom Web component.
   baseNode.initWeb(url, uiContext, controller);
-  controllerMap.set(url, controller)
-  NodeMap.set(url, baseNode);
+  controllerMap.set(url, controller);
+  nodeMap.set(url, baseNode);
 }
+
 // Customize the API for obtaining the NodeController.
-export const getNWeb = (url: ResourceStr) : myNodeController | undefined => {
-  return NodeMap.get(url);
+export const getNWeb = (url: ResourceStr): MyNodeController | undefined => {
+  return nodeMap.get(url);
 }
 ```
+
 <!--  -->
-<!-- @[navigate_to_web_page_pre_start_webview_load](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/pages/Index.ets) -->
+<!-- @[navigate_to_web_page_pre_start_webview_load](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
-import router from '@ohos.router';
+// index.ets
 import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
 struct Index1 {
-  WebviewController: webview.WebviewController = new webview.WebviewController();
-
+  webviewController: webview.WebviewController = new webview.WebviewController();
+      
   build() {
     Column() {
       // The rendering process has been pre-started.
-      Button($r('app.string.Jump_to_Web_Page')).onClick(()=>{
-        router.pushUrl({url: 'pages/index2'});
+      Button('Jump to web page').onClick(()=>{
+        this.getUIContext().getRouter().pushUrl({url: 'pages/index2'});
       })
         .width('100%')
         .height('100%')
@@ -291,8 +301,8 @@ struct Index1 {
   }
 }
 ```
-<!--  -->
 
+<!--  -->
 <!-- @[nodeContainer_bind_controller_show_dynamic_pages](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/pages/index2.ets) -->
 
 ``` TypeScript
@@ -344,30 +354,34 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 }
 ```
 <!--  -->
+<!-- @[offline_web_component_builder_with_render_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/ets/pages/Common.ets) -->  
 
-```ts
+``` TypeScript
 // Create a NodeController instance.
-// common.ets
+// Common.ets
 import { UIContext } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
-import { NodeController, BuilderNode, Size, FrameNode }  from '@kit.ArkUI';
+import { NodeController, BuilderNode, Size, FrameNode } from '@kit.ArkUI';
+
 // @Builder contains the specific information of the dynamic component.
 // Data is an input parameter of encapsulation class.
-class Data{
-  url: string = 'https://www.example.com';
-  controller: webview.WebviewController = new webview.WebviewController();
+class Data {
+  public url: string = 'www.example.com';
+  public controller: WebviewController = new webview.WebviewController();
 }
+
 // Use the Boolean variable shouldInactive to stop rendering after the web page is pre-rendered in the background.
 let shouldInactive: boolean = true;
+
 @Builder
-function WebBuilder(data:Data) {
+function webBuilder(data: Data) {
   Column() {
     Web({ src: data.url, controller: data.controller })
       .onPageBegin(() => {
         // Call onActive to enable rendering.
         data.controller.onActive();
       })
-      .onFirstMeaningfulPaint(() =>{
+      .onFirstMeaningfulPaint(() => {
         if (!shouldInactive) {
           return;
         }
@@ -375,69 +389,78 @@ function WebBuilder(data:Data) {
         data.controller.onInactive();
         shouldInactive = false;
       })
-      .width("100%")
-      .height("100%")
+      .width('100%')
+      .height('100%')
   }
 }
-let wrap = wrapBuilder<Data[]>(WebBuilder);
-// myNodeController must be used with the NodeContainer for controlling and feeding back the behavior of the nodes in the container.
-export class myNodeController extends NodeController {
+
+let wrap = wrapBuilder<Data[]>(webBuilder);
+
+// Used to control and report the behavior of the node in NodeContainer. This function must be used together with NodeContainer.
+export class MyNodeController extends NodeController {
   private rootNode: BuilderNode<Data[]> | null = null;
-  // This method must be overridden, which is used to build a node tree, return the nodes and attach them to NodeContainer.
+
+  // This function must be overridden, which is used to construct the number of nodes, return the nodes and attach them to NodeContainer.
   // Call it when the NodeContainer is created or call rebuild() to refresh.
   makeNode(uiContext: UIContext): FrameNode | null {
-    console.info(" uiContext is undefined : "+ (uiContext === undefined));
-    if (this.rootNode != null) {
+    console.info('uicontext is undifined : ' + (uiContext === undefined));
+    if (this.rootNode !== null) {
       // Return the FrameNode.
       return this.rootNode.getFrameNode();
     }
     // Return null to detach the dynamic component from the bound node.
     return null;
   }
+
   // Called when the layout size changes.
   aboutToResize(size: Size) {
-    console.info("aboutToResize width : " + size.width  +  " height : " + size.height )
+    console.info('aboutToResize width : ' + size.width + ' height : ' + size.height);
   }
+
   // Called when the NodeContainer bound to the controller is about to appear.
   aboutToAppear() {
-    console.info("aboutToAppear")
+    console.info('aboutToAppear');
     // When the page is switched to the foreground, the rendering does not need to be stopped.
     shouldInactive = false;
   }
+
   // Called when the NodeContainer bound to the controller is about to disappear.
   aboutToDisappear() {
-    console.info("aboutToDisappear")
+    console.info('aboutToDisappear');
   }
+
   // This function is a custom function and can be used as an initialization function.
   // Initialize BuilderNode through UIContext, and then initialize the content in @Builder through the build API in BuilderNode.
-  initWeb(url:string, uiContext:UIContext, control:webview.WebviewController) {
-    if(this.rootNode != null)
-    {
+  initWeb(url: string, uiContext: UIContext, control: WebviewController) {
+    if (this.rootNode !== null) {
       return;
     }
     // Create a node, during which the UIContext should be passed.
-    this.rootNode = new BuilderNode(uiContext)
+    this.rootNode = new BuilderNode(uiContext);
     // Create a dynamic Web component.
-    this.rootNode.build(wrap, { url:url, controller:control })
+    this.rootNode.build(wrap, { url: url, controller: control });
   }
 }
+
 // Create a Map to save the required NodeController.
-let NodeMap:Map<string, myNodeController | undefined> = new Map();
+let nodeMap: Map<string, MyNodeController | undefined> = new Map();
 // Create a Map to save the required WebViewController.
-let controllerMap:Map<string, webview.WebviewController | undefined> = new Map();
+let controllerMap: Map<string, WebviewController | undefined> = new Map();
+
 // UIContext is required for initialization and needs to be obtained from the ability.
 export const createNWeb = (url: string, uiContext: UIContext) => {
   // Create a NodeController instance.
-  let baseNode = new myNodeController();
-  let controller = new webview.WebviewController() ;
+  let baseNode = new MyNodeController();
+  let controller = new webview.WebviewController();
   // Initialize the custom Web component.
   baseNode.initWeb(url, uiContext, controller);
   controllerMap.set(url, controller)
-  NodeMap.set(url, baseNode);
+  nodeMap.set(url, baseNode);
 }
+
 // Customize the API for obtaining the NodeController.
-export const getNWeb = (url : string) : myNodeController | undefined => {
-  return NodeMap.get(url);
+export const getNWeb = (url: string): MyNodeController | undefined => {
+  return nodeMap.get(url);
 }
 ```
 
@@ -465,6 +488,168 @@ struct Index {
 }
 ```
 <!--  -->
+
+## Reusing and Releasing Offline Web Components
+
+Reusing and releasing offline **Web** components can optimize memory usage and reduce the probability that the system kills an application due to high memory usage.
+
+> **NOTE**
+> - You are advised to use only one **Web** component in each window.
+> - You are advised to reuse offline **Web** components.
+> - You are advised to release offline **Web** components that are not required.
+
+### Reusing Offline Web Components
+
+If multiple UI pages of an application all need to display web content, you are advised to reuse offline **Web** components. This reduces the performance consumption of component creation and destruction and the memory usage of creating multiple **Web** components.
+
+**Reusing methods**:
+1. When an offline **Web** component is no longer used, call the **loadUrl** method of **WebController** to load the **about:blank blank** page, so that other UI pages can reuse the offline **Web** component.
+2. When a new UI page reuses the offline **Web** component, call the **loadUrl** method of WebController to load the required web page.
+
+### Releasing Offline Web Components
+
+When an application is switched to the background or no longer needs the offline **Web** component in a specified period, you are advised to release the component to reduce the memory usage of the application.
+
+> **NOTE**
+> - The offline **Web** component can be released only when it is not bound to the UI page. Otherwise, the **NodeContainer** component may be blank.
+> - You can use the **onBind** and **onUnbind** callbacks of the **NodeController** to trace the binding status of the offline **Web** component.
+
+**Code implementation**:
+
+<!-- @[manage_dynamic_webview_components_core_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry3/src/main/ets/pages/Common.ets) -->
+
+``` TypeScript
+// Create a Map to save the required NodeController.
+let nodeMap: Map<ResourceStr, MyNodeController | undefined> = new Map();
+
+// Create a global variable for saving uiContext.
+let globalUiContext: UIContext | undefined = undefined;
+
+// Create a Set to save the URL information of the released offline component.
+let recycledNWebs: Set<ResourceStr> = new Set()
+
+// UIContext is required for initialization and needs to be obtained from the ability.
+export const createNWeb = (url: ResourceStr, uiContext: UIContext) => {
+  // Create a NodeController instance.
+  console.info('createNWeb, url = ' + url);
+  if (!globalUiContext) {
+    globalUiContext = uiContext;
+  }
+  if (getNWeb(url)) {
+    console.info('createNWeb, already exit this node, url:' + url);
+    return;
+  }
+
+  let baseNode = new MyNodeController();
+  // Initialize the custom Web component.
+  baseNode.initWeb(url, uiContext);
+  nodeMap.set(url, baseNode);
+  recycledNWebs.delete(url);
+}
+
+// Customize the API for releasing/reclaiming offline Web components. The API can be used as the function for releasing offline Web components. If the release is successful, true is returned.
+// If the offline component is not bound to the NodeContainer, the offline component can be safely released. Otherwise, the node displays a blank screen when not being redrawn.
+export const recycleNWeb = (url: ResourceStr, force: boolean = false): boolean => {
+  console.info('recycleNWeb, url = ' + url);
+  let baseNode = nodeMap.get(url);
+  if (!baseNode) {
+    console.info('no such node, url = ' + url);
+    return false;
+  }
+  if (!force && baseNode.isBound()) {
+    console.info('the node is in bound and not force, can not delete');
+    return false;
+  }
+  baseNode.rootNode?.dispose();
+  baseNode.rebuild();
+  nodeMap.delete(url);
+  recycledNWebs.add(url);
+  return true;
+}
+
+// Customize the API for releasing all offline Web components.
+export const recycleNWebs = (force: boolean = false) => {
+  nodeMap.forEach((_node: MyNodeController | undefined, url: ResourceStr) => {
+    recycleNWeb(url, force);
+  });
+}
+
+// Customize the API for resuming the released offline Web components.
+export const restoreNWebs = (uiContext: UIContext | undefined = undefined) => {
+  if (!uiContext) {
+    uiContext = globalUiContext;
+  }
+  for (let url of recycledNWebs) {
+    if (uiContext) {
+      createNWeb(url, uiContext);
+    }
+  }
+  recycledNWebs.clear()
+}
+```
+<!--  -->
+
+### Example of Reusing and Releasing Offline Web Components
+
+**Functionality Description**
+
+This example demonstrates how to reuse and release offline **Web** components and how to perform pre-rendering. Note that multiple offline **Web** components are used in this example for demonstrating related functionalities and the usage of offline **Web** components. In principle, you are advised to use only one **Web** component for each window. The functionalities are as follows:
+
+1. Effect comparison between pre-rendering and non-pre-rendering offline **Web** components.
+2. Steps for releasing offline **Web** components when the application is in the background.
+3. Steps for reusing offline **Web** components.
+
+This example demonstrates how to use the **onBackground** and **onForeground** callback functions of UIAbility to release offline **Web** components when the application is in the background and resume them when the application is in the foreground.
+
+<!-- @[entry_ability_on_background_and_foreground_to_recycle_and_restore_NWebs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry3/src/main/ets/entry3ability/Entry3Ability.ets) -->
+
+``` TypeScript
+onForeground(): void {
+  // Ability has brought to foreground
+  hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+  restoreNWebs()
+}
+
+onBackground(): void {
+  // Ability has back to background
+  hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+  recycleNWebs()
+}
+```
+
+<!--  -->
+
+**UI Page Functionalities**
+
+The following four UI pages are used as examples: Index, Home, Page1, and Page2. The core functionalities of each UI page are as follows:
+
+* The index page serves as the entry point for demonstrating page redirection, as well as the reclaiming, resuming, and statistics display of offline **Web** components.
+  * Button for redirecting to the home page.
+  * Button for reclaiming offline **Web** components (only offline **Web** components that are not bound can be reclaimed).
+  * Button for forcibly reclaiming offline **Web** components (all offline **Web** components, including bound and unbound components, will be forcibly reclaimed, which will cause the NodeContainer to display a blank screen).
+  * Button for resuming offline **Web** components.
+  * Displaying the number, status, and URLs of offline **Web** components.
+* The home page acts as the UI homepage, demonstrating the creation of offline **Web** components as well as the implementation methods and timing of pre-rendering.
+  * Three offline components are created when the home page is created. One of them loads the specified web page and performs pre-rendering, and the other two are blank offline **Web** components.
+  * The home page provides navigation buttons for redirecting to Page1 or Page2.
+* Page1 displays two web pages at the same time. Each page uses one offline **Web** component to load and display the content of the same URL. This page is used to demonstrate the effect comparison between pre-rendering and non-pre-rendering, and how to reuse offline components.
+  * The first offline **Web** component performs pre-rendering and can directly display the page content, which is faster than the second offline **Web** component.
+  * The second offline **Web** component reuses the idle offline **Web** component and dynamically loads the URL in the **aboutToAppear** lifecycle of the UI page.
+
+  ![web-offline-preload-compare](figures/offline-nweb-preload-compare.gif)
+
+* Page2 displays a single web page and loads the specified URL by reusing the idle offline **Web** component.
+  * Page2 can load a specified URL by passing parameters and allows users to redirect to another URL after the loading.
+  * In the **onWillHide** callback of **NavDestination**, Page2 will make the current **Web** component load a blank page and disassociate itself from the current UI, so as to prepare for subsequent reuse.
+  * Page2 supports nesting. Even if there are multiple layers of UI pages, the number of **Web** components does not increase because offline **Web** components are reused.
+
+![web-offline-reuse-recycle-restore](figures/offline-nweb-reuse-recycle-restore.gif)
+
+**Sample Code**
+
+<!--RP1-->
+[Sample Code for Reusing and Releasing Offline Web Components](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry3)
+<!--RP1End-->
 
 ## Common Troubleshooting Procedure
 

@@ -323,7 +323,7 @@ try {
 
 addPersistentDeviceId(deviceId: string): Promise&lt;void&gt;
 
-Stores the virtual MAC address of a Bluetooth device persistently.
+Stores the virtual MAC address of a Bluetooth device persistently. This API uses a promise to return the result.
 - The device address (virtual MAC address) obtained through Bluetooth APIs, such as the scan API, is different from the actual device MAC address. The Bluetooth subsystem stores the mapping between the virtual MAC address and the actual device MAC address. If the application wants to perform operations on the Bluetooth device for a long time, you are advised to use this API to store the virtual MAC address of the device persistently. The address mapping will not change.
 - The virtual MAC address to be stored persistently must be valid. You can use [access.isValidRandomDeviceId](#accessisvalidrandomdeviceid16) to check whether its validity.
 - When using this API, ensure that the real address of the peer Bluetooth device corresponding to the virtual MAC address remains unchanged. If the real address of the peer device changes, the persistently stored address will become invalid and unusable.
@@ -377,7 +377,7 @@ try {
 
 deletePersistentDeviceId(deviceId: string): Promise&lt;void&gt;
 
-Deletes the persistently stored virtual MAC address of a Bluetooth device.
+Deletes the persistently stored virtual MAC address of a Bluetooth device. This API uses a promise to return the result.
 - The virtual MAC address is persistently stored through [access.addPersistentDeviceId](#accessaddpersistentdeviceid16).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH and ohos.permission.PERSISTENT_BLUETOOTH_PEERS_MAC
@@ -512,6 +512,47 @@ try {
     console.info("isValid: " + isValid);
 } catch (err) {
     console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
+}
+```
+
+## access.convertUuid<sup>22+</sup>
+
+convertUuid(uuid: string): string
+
+Converts the UUID of a specified format to a 128-bit UUID.
+
+The common UUID formats include 16-bit, 32-bit, and 128-bit UUIDs. The 128-bit UUID defined by the Bluetooth protocol is 00000000-0000-1000-8000-00805f9b34fb. If a 16-bit or 32-bit UUID is entered, the UUID is converted based on the Bluetooth UUID. If a 128-bit UUID is entered, the UUID is output without conversion.
+
+- If a 16-bit UUID is entered, for example, 1801, "00001801-0000-1000-8000-00805f9b34fb" is output.
+- If a 32-bit UUID is entered, for example, 12341801, "12341801-0000-1000-8000-00805f9b34fb" is output.
+- If a 128-bit UUID is entered, for example, "11112222-3333-4444-5555-666677778888", the UUID is output directly.
+- If the entered UUID does not meet the preceding format or contains characters that are not in the hexadecimal range, the [401](../errorcode-universal.md#401-parameter-check-failed) error code is returned.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Parameters**
+
+| Name     | Type                                      | Mandatory  | Description                                      |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| uuid     | string                                   | Yes   | 16-bit, 32-bit, or 128-bit UUID.          |
+
+**Return value**
+
+| Type                             | Description             |
+| --------------------------------- | ---------------- |
+| string | 128-bit UUID after conversion.|
+
+**Example**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let inputUuid: string = '1801';
+    let convertedUuid: string = access.convertUuid(inputUuid);
+    console.info("convertedUuid: " + convertedUuid);
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
 

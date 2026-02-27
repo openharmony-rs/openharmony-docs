@@ -10,7 +10,16 @@
 This module implements virtual private network (VPN) management, such as starting and stopping a third-party VPN. Third-party VPNs refer to VPN services provided by third parties. They usually support more security and privacy functions and more comprehensive customization options. Currently, the VPN capabilities provided to third-party applications are primarily used for creating virtual NICs and configuring VPN routing information. The connection tunnel process and internal connection protocols need to be implemented by the applications themselves.
 
 > **NOTE**
-> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.<br>
+> The following modules cannot be referenced in the VpnExtensionAbility, as doing so may cause the program to exit abnormally:<br>
+> - [@ohos.contact (Contacts)](../apis-contacts-kit/js-apis-contact.md)<br>
+> - [@ohos.geolocation](../apis-location-kit/js-apis-geolocation.md), [@ohos.geoLocationManager (Geolocation Manager)](../apis-location-kit/js-apis-geoLocationManager.md)<br>
+> - [@ohos.multimedia.audio (Audio Management)](../apis-audio-kit/arkts-apis-audio.md)<br>
+> - [@ohos.multimedia.camera (Camera Management)](../apis-camera-kit/arkts-apis-camera.md)<br>
+> - [@ohos.telephony.call (Call)](../apis-telephony-kit/js-apis-call.md)<br>
+> - [@ohos.telephony.sim (SIM Management)](../apis-telephony-kit/js-apis-sim.md)<br>
+> - [@ohos.telephony.sms (SMS)](../apis-telephony-kit/js-apis-sms.md)<br>
 
 ## Modules to Import
 
@@ -18,7 +27,7 @@ This module implements virtual private network (VPN) management, such as startin
 import { vpnExtension } from '@kit.NetworkKit';
 ```
 
-## LinkAddress<sup>11+</sup>
+## LinkAddress
 type LinkAddress = connection.LinkAddress
 
 Defines the network link address information.
@@ -29,7 +38,7 @@ Defines the network link address information.
 | ------ | ------------------------------------------------------------ |
 | [connection.LinkAddress](./js-apis-net-connection.md#linkaddress) | Network link address information.|
 
-## RouteInfo<sup>11+</sup>
+## RouteInfo
 type RouteInfo = connection.RouteInfo
 
 Defines the network route information.
@@ -40,7 +49,7 @@ Defines the network route information.
 | ------ | ------------------------------------------------------------ |
 | [connection.RouteInfo](./js-apis-net-connection.md#routeinfo) | Network route information.|
 
-## VpnExtensionContext<sup>11+</sup>
+## VpnExtensionContext
 type VpnExtensionContext = _VpnExtensionContext
 
 Defines the VPN extension context. It allows access to serviceExtension-specific resources.
@@ -65,7 +74,7 @@ Enables the VPN extension ability. This API uses a promise to return the result.
 
 | Name| Type                               | Mandatory| Description              |
 | ------ | ----------------------------------- | ---- | ------------------ |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Want information.|
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Want information.<br> Note: From API version 22, the **parameters** field in **want** can be passed when the VPN is started for the first time.|
 
 **Return value**
 
@@ -92,8 +101,9 @@ For details about the error codes, see [Ability Error Codes](../apis-ability-kit
 Stage model:
 
 ```ts
-import { common, Want } from '@kit.AbilityKit';
+import { Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let want: Want = {
   deviceId: "",
@@ -110,13 +120,18 @@ struct Index {
     Row() {
       Column() {
         Text(this.message)
-          .fontSize(50)
+          .fontSize(40)
           .fontWeight(FontWeight.Bold).onClick(() => {
-          console.info("btn click") })
+          console.info("btn click")
+        })
         Button('Start Extension').onClick(() => {
-          vpnExtension.startVpnExtensionAbility(want);
-        }).width('70%').fontSize(45).margin(16)
-        }.width('100%')
+          vpnExtension.startVpnExtensionAbility(want).then(() => {
+            console.info('startVpnExtensionAbility success');
+          }).catch((err: BusinessError) => {
+            console.error('startVpnExtensionAbility error: ' + JSON.stringify(err));
+          })
+        }).width('70%').fontSize(30).margin(16)
+      }.width('100%')
     }.height('100%')
   }
 }
@@ -162,8 +177,9 @@ For details about the error codes, see [Ability Error Codes](../apis-ability-kit
 Stage model:
 
 ```ts
-import { common, Want } from '@kit.AbilityKit';
+import { Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let want: Want = {
   deviceId: "",
@@ -182,16 +198,25 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold).onClick(() => {
-          console.info("btn click") })
+          console.info("btn click")
+        })
         Button('Start Extension').onClick(() => {
-          vpnExtension.startVpnExtensionAbility(want);
-        }).width('70%').fontSize(45).margin(16)
+          vpnExtension.startVpnExtensionAbility(want).then(() => {
+            console.info('startVpnExtensionAbility success');
+          }).catch((err: BusinessError) => {
+            console.error('startVpnExtensionAbility error: ' + JSON.stringify(err));
+          })
+        }).width('70%').fontSize(30).margin(16)
         Button('Stop Extension').onClick(() => {
           console.info("btn end")
-          vpnExtension.stopVpnExtensionAbility(want);
-        }).width('70%').fontSize(45).margin(16)
+          vpnExtension.stopVpnExtensionAbility(want).then(() => {
+            console.info('stopVpnExtensionAbility success');
+          }).catch((err: BusinessError) => {
+            console.error('stopVpnExtensionAbility error: ' + JSON.stringify(err));
+          })
+        }).width('70%').fontSize(30).margin(16)
 
-        }.width('100%')
+      }.width('100%')
     }.height('100%')
   }
 }
@@ -256,6 +281,10 @@ Defines a VPN connection object. Before calling **VpnConnection** APIs, you need
 create(config: VpnConfig): Promise\<number\>
 
 Creates a VPN based on the specified configuration. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> You are advised to call [destroy()](#destroy) or [destroy(vpnId: string)](#destroy20) to destroy the VPN network and clear resources when the VPN network is not needed.
 
 **System capability**: SystemCapability.Communication.NetManager.Vpn
 
@@ -483,7 +512,7 @@ Destroys a VPN network based on the specified VPN ID. This API uses a promise to
 
 | Type           | Description                                                 |
 | --------------- | ----------------------------------------------------- |
-| Promise\<void\> | Promise that returns no result.|
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -610,14 +639,14 @@ Defines the VPN configuration.
 
 | Name            | Type                                     | Read-only| Optional| Description                                      |
 | ---------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------ |
-| addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\>  | No | No| IP addresses of vNICs.                                 |
+| addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\>  | No | No| IP addresses of vNICs. Before API version 23, a maximum of 64 IP addresses are supported. Starting from API version 23, a maximum of 2000 IP addresses are supported.                                 |
 | vpnId<sup>20+</sup>           | string | No| Yes| Unique VPN ID.| 
-| routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>      | No | Yes| Routes of vNICs. Currently, a maximum of 1024 routes can be configured.                 |
+| routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>      | No | Yes| Route information of the vNIC. Before API version 23, a maximum of 1024 routes can be configured. Starting from API version 23, a maximum of 10,000 routes can be configured.                 |
 | dnsAddresses        | Array\<string\>                                                 | No | Yes| IP address of the DNS server. After the IP address is configured, when the VPN is active and proxy-enabled applications access the Internet, the configured DNS server will be used for DNS queries.                                   |
 | searchDomains       | Array\<string\>                                                | No | Yes| List of DNS search domains.                                    |
 | mtu                 | number                                                         | No | Yes| Maximum transmission unit (MTU), in bytes. The value range is [576,1500].              |
-| isIPv4Accepted      | boolean                                                         | No | Yes| Whether IPv4 is supported. The value **true** indicates that the IPv4 is supported, and the value **false** indicates the opposite. The default value is **true**. |
-| isIPv6Accepted      | boolean                                                         | No | Yes| Whether IPV6 is supported. The value **true** indicates that the IPV6 is supported, and the value **false** indicates the opposite. The default value is **false**.|
+| isIPv4Accepted      | boolean                                                         | No | Yes| Whether IPv4 is supported. The value **true** indicates that the IPv4 is supported, and the value **false** indicates the opposite. The default value is **true**.<br>Note: If the IPv4 is supported, you need to configure IPv4 addresses in **addresses**. |
+| isIPv6Accepted      | boolean                                                         | No | Yes| Whether IPv6 is supported. The value **true** indicates that the IPV6 is supported, and the value **false** indicates the opposite. The default value is **false**.<br>Note: If the IPv6 is supported, you need to configure IPv6 addresses in **addresses**. |
 | isInternal          | boolean                                                         | No | Yes| Whether the built-in VPN is supported. The value **true** indicates that the built-in VPN is supported, and the value **false** indicates the opposite. The default value is **false**.|
 | isBlocking          | boolean                                                        | No | Yes| Whether the blocking mode is used. The value **true** indicates that the blocking mode is used, and the value **false** indicates the opposite. The default value is **false**.      |
 | trustedApplications | Array\<string\>                                                | No | Yes| List of trusted applications, which are represented by package names of the string type. After such a list is configured, only the applications in the list can be proxied by the VPN according to the specified **routes**.<br>**Note**: Configure either **trustedApplications** or **blockedApplications** as they are mutually exclusive.                        |

@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Provides APIs for accessing application and system resource information. For details about resource types and usage, see [Resource Categories and Access](../../quick-start/resource-categories-and-access.md).
+Provides APIs for accessing application and system resources. For details about resource types and usage, see [Resource Categories and Access](../../quick-start/resource-categories-and-access.md).
 
 > **NOTE**
 >
@@ -29,7 +29,7 @@ Accesses application or system resources. During compilation, the toolchain conv
 
 | Name| Type  | Mandatory| Description                                                                                                                                                                                                                                                                                                                                                                                             |
 | ------ | ------ | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| value  | string | Yes  | Resource identifier in the format *belonging.type.name*.<br>**belonging**: resource type. The value can be sys, app, or [hsp_name].<br>**type**: resource type. The value can be boolean, color, float, intarray, integer, pattern, plural, strarray, string, or media.<br>**name**: resource name. Application resource names are defined in the project's **resources** directory. For details about system resource names, see [Resource Categories and Access](../../quick-start/resource-categories-and-access.md).|
+| value  | string | Yes  | Resource identifier in the format *belonging.type.name*.<br>**belonging**: resource source. Values: **sys**, **app**, or **[hsp_name]**.<br>**type**: resource type. Values: **boolean**, **color**, **float**, **intarray**, **integer**, **pattern**, **plural**, **strarray**, **string**, or **media**.<br>**name**: resource name. Application resource names are defined in the project's **resources** directory. For details about system resource names, see [Resource Categories and Access](../../quick-start/resource-categories-and-access.md).|
 | ...params | any[]  | No  | Additional parameters passed by you.                                                                                                                                                                                                                                                                                                                                                                           |
 
 **Return value**
@@ -74,7 +74,7 @@ Accesses resources in the **rawfile** directory of the project. During compilati
 
 | Name| Type  | Mandatory| Description                                                                                                                                                                                                                                                                                                                                                                                             |
 | ------ | ------ | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| value  | string | Yes  | Relative path in the rawfile directory. The file name must contain an extension, and the path cannot start with a slash (/).|
+| value  | string | Yes  | Relative path in the **rawfile** directory. The file name must contain an extension, and the path cannot start with a slash (/).|
 
 **Return value**
 

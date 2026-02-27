@@ -42,7 +42,7 @@ Component相关的Native API结构体。
 
 ### onControllerAttached()
 
-```
+```c
 void (*onControllerAttached)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)
 ```
 
@@ -60,7 +60,7 @@ void (*onControllerAttached)(const char* webTag, ArkWeb_OnComponentCallback call
 
 ### onPageBegin()
 
-```
+```c
 void (*onPageBegin)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)
 ```
 
@@ -78,7 +78,7 @@ void (*onPageBegin)(const char* webTag, ArkWeb_OnComponentCallback callback, voi
 
 ### onPageEnd()
 
-```
+```c
 void (*onPageEnd)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)
 ```
 
@@ -96,7 +96,7 @@ void (*onPageEnd)(const char* webTag, ArkWeb_OnComponentCallback callback, void*
 
 ### onDestroy()
 
-```
+```c
 void (*onDestroy)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)
 ```
 

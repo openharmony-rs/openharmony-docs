@@ -94,7 +94,8 @@ Restarts the current atomic service.
 >
 > - Currently, atomic services can be started only in an independent window.
 >
-> - The interval between two calls of this API cannot be less than 3 seconds.
+> - If you call this API, [ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12), or [UIAbilityContext.restartApp()](js-apis-inner-application-uiAbilityContext.md#restartapp22) within 3 seconds after a successful call to this API, the system returns error code 16000064.
+
 
 **Model restriction**: This API can be used only in the stage model.
 

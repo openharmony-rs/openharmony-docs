@@ -34,7 +34,7 @@
 
 ### OH_CameraDevice_GetCameraOrientation()
 
-```
+```c
 Camera_ErrorCode OH_CameraDevice_GetCameraOrientation(Camera_Device* camera, uint32_t* orientation)
 ```
 
@@ -60,7 +60,7 @@ Camera_ErrorCode OH_CameraDevice_GetCameraOrientation(Camera_Device* camera, uin
 
 ### OH_CameraDevice_GetHostDeviceName()
 
-```
+```c
 Camera_ErrorCode OH_CameraDevice_GetHostDeviceName(Camera_Device* camera, char** hostDeviceName)
 ```
 
@@ -86,7 +86,7 @@ Camera_ErrorCode OH_CameraDevice_GetHostDeviceName(Camera_Device* camera, char**
 
 ### OH_CameraDevice_GetHostDeviceType()
 
-```
+```c
 Camera_ErrorCode OH_CameraDevice_GetHostDeviceType(Camera_Device* camera, Camera_HostDeviceType* hostDeviceType)
 ```
 

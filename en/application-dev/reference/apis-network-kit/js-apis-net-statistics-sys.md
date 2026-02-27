@@ -10,6 +10,7 @@
 The **statistics** module provides APIs to query real-time or historical traffic statistics by the specified network interface card (NIC) or user ID (UID).
 
 > **NOTE**
+>
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.net.statistics (Traffic Management)](js-apis-net-statistics.md).
 
@@ -20,7 +21,7 @@ import { statistics } from '@kit.NetworkKit';
 ```
 
 
-## statistics.on('netStatsChange')<sup>10+</sup>
+## statistics.on('netStatsChange')
 
 on(type: 'netStatsChange', callback: Callback\<NetStatsChangeInfo\>): void
 
@@ -65,7 +66,7 @@ statistics.on('netStatsChange', (data: IFace) => {
 });
 ```
 
-## statistics.off('netStatsChange')<sup>10+</sup>
+## statistics.off('netStatsChange')
 
 off(type: 'netStatsChange', callback?: Callback\<NetStatsChangeInfo>): void
 
@@ -114,11 +115,11 @@ statistics.off('netStatsChange', callback);
 statistics.off('netStatsChange');
 ```
 
-## statistics.getTrafficStatsByIface<sup>10+</sup>
+## statistics.getTrafficStatsByIface
 
 getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback\<NetStatsInfo>): void
 
-Obtains the historical traffic statistics of the specified NIC. This API uses an asynchronous callback to return the result.
+Obtain the historical data traffic of the specified NIC. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -130,8 +131,8 @@ Obtains the historical traffic statistics of the specified NIC. This API uses an
 
 | Name   | Type                                           | Mandatory| Description                                                                                   |
 | --------- | ----------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-| ifaceInfo | [IfaceInfo](#ifaceinfo10)                       | Yes  | NIC information. For details, see [IfaceInfo](#ifaceinfo10).                                    |
-| callback  | AsyncCallback\<[NetStatsInfo](#netstatsinfo10)> | Yes  | Callback used to return the result. If the operation is successful, **error** is **undefined** and **statsInfo** is the historical traffic statistics of the NIC. Otherwise, **error** is an error object.|
+| ifaceInfo | [IfaceInfo](#ifaceinfo)                       | Yes  | NIC information. For details, see [IfaceInfo](#ifaceinfo).                                    |
+| callback  | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | Yes  | Callback used to return the result. If the operation is successful, **error** is **undefined** and **statsInfo** is the historical traffic statistics of the NIC. Otherwise, **error** is an error object.|
 
 **Error codes**
 
@@ -177,11 +178,11 @@ if (iFaceInfo) {
 }
 ```
 
-## statistics.getTrafficStatsByIface<sup>10+</sup>
+## statistics.getTrafficStatsByIface
 
 getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise\<NetStatsInfo>
 
-Obtains the historical traffic statistics of the specified NIC. This API uses a promise to return the result.
+Obtain the historical data traffic of the specified NIC. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -191,12 +192,12 @@ Obtains the historical traffic statistics of the specified NIC. This API uses a 
 
 | Name   | Type                     | Mandatory| Description                                               |
 | --------- | ------------------------- | ---- | --------------------------------------------------- |
-| ifaceInfo | [IfaceInfo](#ifaceinfo10) | Yes  | NIC information. For details, see [IfaceInfo](#ifaceinfo10).|
+| ifaceInfo | [IfaceInfo](#ifaceinfo) | Yes  | NIC information. For details, see [IfaceInfo](#ifaceinfo).|
 
 **Return value**
 | Type| Description|
 | -------- | -------- |
-| Promise\<[NetStatsInfo](#netstatsinfo10)> | Promise used to return the result, which is the historical traffic statistics of the specified NIC.|
+| Promise\<[NetStatsInfo](#netstatsinfo)> | Promise used to return the result, which is the historical traffic statistics of the specified NIC.|
 
 **Error codes**
 
@@ -240,11 +241,11 @@ if (iFaceInfo) {
 }
 ```
 
-## statistics.getTrafficStatsByUid<sup>10+</sup>
+## statistics.getTrafficStatsByUid
 
 getTrafficStatsByUid(uidInfo: UidInfo, callback: AsyncCallback\<NetStatsInfo>): void
 
-Obtains the historical traffic statistics of the specified application. This API uses an asynchronous callback to return the result.
+Obtain the historical data traffic of the specified application. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -256,8 +257,8 @@ Obtains the historical traffic statistics of the specified application. This API
 
 | Name  | Type                                           | Mandatory| Description                                                                                   |
 | -------- | ----------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-| uidInfo  | [UidInfo](#uidinfo10)                           | Yes  | Application information. For details, see [UidInfo](#uidinfo10).                                        |
-| callback | AsyncCallback\<[NetStatsInfo](#netstatsinfo10)> | Yes  | Callback used to return the result. If the operation is successful, **error** is **undefined** and **statsInfo** is the historical traffic statistics of the application. Otherwise, **error** is an error object.|
+| uidInfo  | [UidInfo](#uidinfo)                           | Yes  | Application information. For details, see [UidInfo](#uidinfo).                                        |
+| callback | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | Yes  | Callback used to return the result. If the operation is successful, **error** is **undefined** and **statsInfo** is the historical traffic statistics of the application. Otherwise, **error** is an error object.|
 
 **Error codes**
 
@@ -312,11 +313,11 @@ statistics.getTrafficStatsByUid(
 );
 ```
 
-## statistics.getTrafficStatsByUid<sup>10+</sup>
+## statistics.getTrafficStatsByUid
 
 getTrafficStatsByUid(uidInfo: UidInfo): Promise\<NetStatsInfo>
 
-Obtains the historical traffic statistics of the specified application. This API uses a promise to return the result.
+Obtain the historical data traffic of the specified application. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -328,13 +329,13 @@ Obtains the historical traffic statistics of the specified application. This API
 
 | Name | Type                 | Mandatory| Description                                           |
 | ------- | --------------------- | ---- | ----------------------------------------------- |
-| uidInfo | [UidInfo](#uidinfo10) | Yes  | Application information. For details, see [UidInfo](#uidinfo10).|
+| uidInfo | [UidInfo](#uidinfo) | Yes  | Application information. For details, see [UidInfo](#uidinfo).|
 
 **Return value**
 
 | Type                                     | Description                                              |
 | ----------------------------------------- | -------------------------------------------------- |
-| Promise\<[NetStatsInfo](#netstatsinfo10)> | Promise used to return the result, which is the historical traffic statistics of the specified NIC.|
+| Promise\<[NetStatsInfo](#netstatsinfo)> | Promise used to return the result, which is the historical traffic statistics of the specified NIC.|
 
 **Error codes**
 
@@ -353,7 +354,7 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 **Example**
 
 ```js
-import statistics from '@ohos.net.statistics'
+import { statistics } from '@kit.NetworkKit';
 
 let uidInfo: statistics.UidInfo = {
   uid: 20010037,
@@ -376,7 +377,7 @@ statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInf
 
 getTrafficStatsByNetwork(networkInfo: NetworkInfo): Promise\<UidNetStatsInfo>
 
-Obtains the traffic statistics of all applications on the specified network within the specified period. This API uses a promise to return the result.
+Obtain the traffic statistics of all applications on the specified network within the specified period. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -434,7 +435,7 @@ statistics.getTrafficStatsByNetwork(networkInfo).then((statsInfo: statistics.Uid
 
 getTrafficStatsByUidNetwork(uid: number, networkInfo: NetworkInfo): Promise\<NetStatsInfoSequence>
 
-Obtains the traffic statistics of the specified application on the specified network within the specified period. This API uses a promise to return the result.
+Obtain the traffic statistics of the specified application on the specified network within the specified period. This method uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -489,7 +490,7 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
 })
 ```
 
-## IfaceInfo<sup>10+</sup>
+## IfaceInfo
 
 Defines the parameters for querying historical traffic of an NIC.
 
@@ -503,7 +504,7 @@ Defines the parameters for querying historical traffic of an NIC.
 | startTime | number | No  |No|Start time of the query, which is a timestamp in seconds.|
 | endTime   | number | No | No|End time of the query, which is a timestamp in seconds.|
 
-## UidInfo<sup>10+</sup>
+## UidInfo
 
 Defines the parameters for querying historical traffic of an application.
 
@@ -513,10 +514,10 @@ Defines the parameters for querying historical traffic of an application.
 
 | Name     | Type                                 | Read-Only|Optional| Description                       |
 | --------- | ------------------------------------- | ---- |---| -------------------------- |
-| ifaceInfo | IfaceInfo\<[IfaceInfo](#ifaceinfo10)> | No  |No|NIC information, including the NIC name and query time range.|
+| ifaceInfo | IfaceInfo\<[IfaceInfo](#ifaceinfo)> | No  |No|NIC information, including the NIC name and query time range.|
 | uid       | number                                | No  |No|Application UID.         |
 
-## NetStatsInfo<sup>10+</sup>
+## NetStatsInfo
 
 Defines the historical traffic information.
 
@@ -569,7 +570,7 @@ Defines the historical traffic statistics of all applications.
 
 | Name       | Type                                           | Read-Only|Optional| Description          |
 |-----------|-----------------------------------------------|----|---|--------------|
-| undefined | [uid:number]: [NetStatsInfo](#netstatsinfo10) | No |No|Historical traffic statistics of all applications.|
+| undefined | [uid:number]: [NetStatsInfo](#netstatsinfo) | No |No|Historical traffic statistics of all applications.|
 
 ## NetStatsInfoSequence<sup>12+</sup>
 
@@ -583,4 +584,4 @@ Defines the historical traffic statistics of the specified application.
 |-----------|---------------------------------|----|---|--------------|
 | startTime | number                          | No |No|Start timestamp, in seconds.|
 | endTime   | number                          | No |No|End timestamp, in seconds.|
-| info      | [NetStatsInfo](#netstatsinfo10) | No |No|Defines the historical traffic statistics of the specified application.|
+| info      | [NetStatsInfo](#netstatsinfo) | No |No|Defines the historical traffic statistics of the specified application.|

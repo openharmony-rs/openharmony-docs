@@ -22,7 +22,7 @@ import bluetooth from '@ohos.bluetooth';
 ```
 
 
-## bluetooth.enableBluetooth<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.enableBluetooth<sup>(deprecated)</sup>
 
 enableBluetooth(): boolean
 
@@ -48,7 +48,7 @@ let enable : boolean = bluetooth.enableBluetooth();
 ```
 
 
-## bluetooth.disableBluetooth<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.disableBluetooth<sup>(deprecated)</sup>
 
 disableBluetooth(): boolean
 
@@ -74,7 +74,7 @@ let disable : boolean = bluetooth.disableBluetooth();
 ```
 
 
-## bluetooth.getLocalName<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getLocalName<sup>(deprecated)</sup>
 
 getLocalName(): string
 
@@ -152,7 +152,7 @@ let connectionState : bluetooth.ProfileConnectionState = bluetooth.getBtConnecti
 ```
 
 
-## bluetooth.setLocalName<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.setLocalName<sup>(deprecated)</sup>
 
 setLocalName(name: string): boolean
 
@@ -217,7 +217,7 @@ let result : boolean = bluetooth.pairDevice("XX:XX:XX:XX:XX:XX");
 ```
 
 
-## bluetooth.getProfileConnState<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getProfileConnState<sup>(deprecated)</sup>
 
 getProfileConnState(profileId: ProfileId): ProfileConnectionState
 
@@ -249,7 +249,7 @@ let result : bluetooth.ProfileConnectionState = bluetooth.getProfileConnState(bl
 ```
 
 
-## bluetooth.getRemoteDeviceName<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getRemoteDeviceName<sup>(deprecated)</sup>
 
 getRemoteDeviceName(deviceId: string): string
 
@@ -281,7 +281,7 @@ let remoteDeviceName : string = bluetooth.getRemoteDeviceName("XX:XX:XX:XX:XX:XX
 ```
 
 
-## bluetooth.getRemoteDeviceClass<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getRemoteDeviceClass<sup>(deprecated)</sup>
 
 getRemoteDeviceClass(deviceId: string): DeviceClass
 
@@ -313,7 +313,7 @@ let remoteDeviceClass : bluetooth.DeviceClass = bluetooth.getRemoteDeviceClass("
 ```
 
 
-## bluetooth.getPairedDevices<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getPairedDevices<sup>(deprecated)</sup>
 
 getPairedDevices(): Array&lt;string&gt;
 
@@ -374,7 +374,7 @@ let result : boolean = bluetooth.setBluetoothScanMode(bluetooth.ScanMode
 ```
 
 
-## bluetooth.getBluetoothScanMode<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getBluetoothScanMode<sup>(deprecated)</sup>
 
 getBluetoothScanMode(): ScanMode
 
@@ -400,7 +400,7 @@ let scanMode : bluetooth.ScanMode = bluetooth.getBluetoothScanMode();
 ```
 
 
-## bluetooth.startBluetoothDiscovery<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.startBluetoothDiscovery<sup>(deprecated)</sup>
 
 startBluetoothDiscovery(): boolean
 
@@ -431,7 +431,7 @@ let result : boolean = bluetooth.startBluetoothDiscovery();
 ```
 
 
-## bluetooth.stopBluetoothDiscovery<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.stopBluetoothDiscovery<sup>(deprecated)</sup>
 
 stopBluetoothDiscovery(): boolean
 
@@ -457,7 +457,7 @@ let result : boolean = bluetooth.stopBluetoothDiscovery();
 ```
 
 
-## bluetooth.setDevicePairingConfirmation<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.setDevicePairingConfirmation<sup>(deprecated)</sup>
 
 setDevicePairingConfirmation(device: string, accept: boolean): boolean
 
@@ -495,7 +495,7 @@ bluetooth.on("pinRequired", onReceivePinRequiredEvent);
 ```
 
 
-## bluetooth.on('bluetoothDeviceFind')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.on('bluetoothDeviceFind')<sup>(deprecated)</sup>
 
 on(type: 'bluetoothDeviceFind', callback: Callback&lt;Array&lt;string&gt;&gt;): void
 
@@ -529,7 +529,7 @@ bluetooth.on('bluetoothDeviceFind', onReceiveEvent);
 ```
 
 
-## bluetooth.off('bluetoothDeviceFind')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.off('bluetoothDeviceFind')<sup>(deprecated)</sup>
 
 off(type: 'bluetoothDeviceFind', callback?: Callback&lt;Array&lt;string&gt;&gt;): void
 
@@ -564,7 +564,7 @@ bluetooth.off('bluetoothDeviceFind', onReceiveEvent);
 ```
 
 
-## bluetooth.on('pinRequired')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.on('pinRequired')<sup>(deprecated)</sup>
 
 on(type: 'pinRequired', callback: Callback&lt;PinRequiredParam&gt;): void
 
@@ -598,7 +598,7 @@ bluetooth.on('pinRequired', onReceiveEvent);
 ```
 
 
-## bluetooth.off('pinRequired')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.off('pinRequired')<sup>(deprecated)</sup>
 
 off(type: 'pinRequired', callback?: Callback&lt;PinRequiredParam&gt;): void
 
@@ -667,7 +667,7 @@ bluetooth.on('bondStateChange', onReceiveEvent);
 ```
 
 
-## bluetooth.off('bondStateChange')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.off('bondStateChange')<sup>(deprecated)</sup>
 
 off(type: 'bondStateChange', callback?: Callback&lt;BondStateParam&gt;): void
 
@@ -702,7 +702,7 @@ bluetooth.off('bondStateChange', onReceiveEvent);
 ```
 
 
-## bluetooth.on('stateChange')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.on('stateChange')<sup>(deprecated)</sup>
 
 on(type: 'stateChange', callback: Callback&lt;BluetoothState&gt;): void
 
@@ -736,7 +736,7 @@ bluetooth.on('stateChange', onReceiveEvent);
 ```
 
 
-## bluetooth.off('stateChange')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.off('stateChange')<sup>(deprecated)</sup>
 
 off(type: 'stateChange', callback?: Callback&lt;BluetoothState&gt;): void
 
@@ -771,7 +771,7 @@ bluetooth.off('stateChange', onReceiveEvent);
 ```
 
 
-## bluetooth.sppListen<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.sppListen<sup>(deprecated)</sup>
 
 sppListen(name: string, option: SppOption, callback: AsyncCallback&lt;number&gt;): void
 
@@ -795,12 +795,12 @@ sppListen(name: string, option: SppOption, callback: AsyncCallback&lt;number&gt;
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let serverNumber = -1;
 function serverSocket(code : BusinessError, number : number) {
-  console.log('bluetooth error code: ' + code.code);
+  console.info(`bluetooth error code: ${code.code}`);
   if (code.code == 0) {
-    console.log('bluetooth serverSocket Number: ' + number);
+    console.info(`bluetooth serverSocket Number: ${number}`);
     serverNumber = number;
   }
 }
@@ -810,7 +810,7 @@ bluetooth.sppListen('server1', sppOption, serverSocket);
 ```
 
 
-## bluetooth.sppAccept<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.sppAccept<sup>(deprecated)</sup>
 
 sppAccept(serverSocket: number, callback: AsyncCallback&lt;number&gt;): void
 
@@ -831,20 +831,20 @@ sppAccept(serverSocket: number, callback: AsyncCallback&lt;number&gt;): void
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let serverNumber = -1;
 function serverSocket(code : BusinessError, number : number) {
-  console.log('bluetooth error code: ' + code.code);
+  console.info(`bluetooth error code: ${code.code}`);
   if (code.code == 0) {
-    console.log('bluetooth serverSocket Number: ' + number);
+    console.info(`bluetooth serverSocket Number: ${number}`);
     serverNumber = number;
   }
 }
 let clientNumber = -1;
 function acceptClientSocket(code : BusinessError, number : number) {
-  console.log('bluetooth error code: ' + code.code);
+  console.info(`bluetooth error code: ${code.code}`);
   if (code.code == 0) {
-    console.log('bluetooth clientSocket Number: ' + number);
+    console.info(`bluetooth clientSocket Number: ${number}`);
     // 获取的clientNumber用作服务端后续读/写操作socket的id。
     clientNumber = number;
   }
@@ -883,7 +883,7 @@ function clientSocket(code : BusinessError, number : number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // 获取的clientNumber用作客户端后续读/写操作socket的id。
   clientNumber = number;
 }
@@ -892,7 +892,7 @@ bluetooth.sppConnect('XX:XX:XX:XX:XX:XX', sppOption, clientSocket);
 ```
 
 
-## bluetooth.sppCloseServerSocket<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.sppCloseServerSocket<sup>(deprecated)</sup>
 
 sppCloseServerSocket(socket: number): void
 
@@ -912,12 +912,12 @@ sppCloseServerSocket(socket: number): void
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let serverNumber = -1;
 function serverSocket(code : BusinessError, number : number) {
-  console.log('bluetooth error code: ' + code.code);
+  console.info(`bluetooth error code: ${code.code}`);
   if (code.code == 0) {
-    console.log('bluetooth serverSocket Number: ' + number);
+    console.info(`bluetooth serverSocket Number: ${number}`);
     serverNumber = number;
   }
 }
@@ -925,7 +925,7 @@ bluetooth.sppCloseServerSocket(serverNumber);
 ```
 
 
-## bluetooth.sppCloseClientSocket<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.sppCloseClientSocket<sup>(deprecated)</sup>
 
 sppCloseClientSocket(socket: number): void
 
@@ -951,7 +951,7 @@ function clientSocket(code : BusinessError, number : number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // 获取的clientNumber用作客户端后续读/写操作socket的id。
   clientNumber = number;
 }
@@ -959,7 +959,7 @@ bluetooth.sppCloseClientSocket(clientNumber);
 ```
 
 
-## bluetooth.sppWrite<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.sppWrite<sup>(deprecated)</sup>
 
 sppWrite(clientSocket: number, data: ArrayBuffer): boolean
 
@@ -992,7 +992,7 @@ function clientSocket(code : BusinessError, number : number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // 获取的clientNumber用作客户端后续读/写操作socket的id。
   clientNumber = number;
 }
@@ -1001,14 +1001,14 @@ let data = new Uint8Array(arrayBuffer);
 data[0] = 123;
 let ret : boolean = bluetooth.sppWrite(clientNumber, arrayBuffer);
 if (ret) {
-  console.log('spp write successfully');
+  console.info('spp write successfully');
 } else {
-  console.log('spp write failed');
+  console.error('spp write failed');
 }
 ```
 
 
-## bluetooth.on('sppRead')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.on('sppRead')<sup>(deprecated)</sup>
 
 on(type: 'sppRead', clientSocket: number, callback: Callback&lt;ArrayBuffer&gt;): void
 
@@ -1040,19 +1040,18 @@ function clientSocket(code : BusinessError, number : number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // 获取的clientNumber用作客户端后续读/写操作socket的id。
   clientNumber = number;
 }
 function dataRead(dataBuffer : ArrayBuffer) {
   let data = new Uint8Array(dataBuffer);
-  console.log('bluetooth data is: ' + data[0]);
 }
 bluetooth.on('sppRead', clientNumber, dataRead);
 ```
 
 
-## bluetooth.off('sppRead')<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.off('sppRead')<sup>(deprecated)</sup>
 
 off(type: 'sppRead', clientSocket: number, callback?: Callback&lt;ArrayBuffer&gt;): void
 
@@ -1084,7 +1083,7 @@ function clientSocket(code : BusinessError, number : number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // 获取的clientNumber用作客户端后续读/写操作socket的id。
   clientNumber = number;
 }
@@ -1092,7 +1091,7 @@ bluetooth.off('sppRead', clientNumber);
 ```
 
 
-## bluetooth.getProfile<sup>8+</sup><sup>(deprecated)</sup>
+## bluetooth.getProfile<sup>(deprecated)</sup>
 
 getProfile(profileId: ProfileId): A2dpSourceProfile | HandsFreeAudioGatewayProfile
 
@@ -1350,7 +1349,7 @@ bluetooth.BLE.off('BLEDeviceFind', onReceiveEvent);
 profile基类。
 
 
-### getConnectionDevices<sup>8+</sup><sup>(deprecated)</sup>
+### getConnectionDevices<sup>(deprecated)</sup>
 
 getConnectionDevices(): Array&lt;string&gt;
 
@@ -1376,7 +1375,7 @@ let a2dpSrc : bluetooth.A2dpSourceProfile = bluetooth.getProfile(bluetooth.Profi
 let retArray : Array<string> = a2dpSrc.getConnectionDevices();
 ```
 
-### getDeviceState<sup>8+</sup><sup>(deprecated)</sup>
+### getDeviceState<sup>(deprecated)</sup>
 
 getDeviceState(device: string): ProfileConnectionState
 
@@ -1413,7 +1412,7 @@ let ret : bluetooth.ProfileConnectionState = a2dpSrc.getDeviceState('XX:XX:XX:XX
 使用A2dpSourceProfile方法之前需要创建该类的实例进行操作，通过getProfile()方法构造此实例。
 
 
-### connect<sup>8+</sup><sup>(deprecated)</sup>
+### connect<sup>(deprecated)</sup>
 
 connect(device: string): boolean
 
@@ -1446,7 +1445,7 @@ let ret : boolean = a2dpSrc.connect('XX:XX:XX:XX:XX:XX');
 ```
 
 
-### disconnect<sup>8+</sup><sup>(deprecated)</sup>
+### disconnect<sup>(deprecated)</sup>
 
 disconnect(device: string): boolean
 
@@ -1479,7 +1478,7 @@ let ret : boolean = a2dpSrc.disconnect('XX:XX:XX:XX:XX:XX');
 ```
 
 
-### on('connectionStateChange')<sup>8+</sup><sup>(deprecated)</sup>
+### on('connectionStateChange')<sup>(deprecated)</sup>
 
 on(type: 'connectionStateChange', callback: Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt;): void
 
@@ -1512,7 +1511,7 @@ a2dpSrc.on('connectionStateChange', onReceiveEvent);
 ```
 
 
-### off('connectionStateChange')<sup>8+</sup><sup>(deprecated)</sup>
+### off('connectionStateChange')<sup>(deprecated)</sup>
 
 off(type: 'connectionStateChange', callback?: Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt;): void
 
@@ -1546,7 +1545,7 @@ a2dpSrc.off('connectionStateChange', onReceiveEvent);
 ```
 
 
-### getPlayingState<sup>8+</sup><sup>(deprecated)</sup>
+### getPlayingState<sup>(deprecated)</sup>
 
 getPlayingState(device: string): PlayingState
 
@@ -1582,14 +1581,14 @@ let state : bluetooth.PlayingState = a2dpSrc.getPlayingState('XX:XX:XX:XX:XX:XX'
 使用HandsFreeAudioGatewayProfile方法之前需要创建该类的实例进行操作，通过getProfile()方法构造此实例。
 
 
-### connect<sup>8+</sup><sup>(deprecated)</sup>
+### connect<sup>(deprecated)</sup>
 
 connect(device: string): boolean
 
 连接设备的HFP服务。
 
 > **说明：**<br/>
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[bluetoothManager.HandsFreeAudioGatewayProfile.connect](js-apis-bluetoothManager.md#connect)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[bluetoothManager.HandsFreeAudioGatewayProfile.connect](js-apis-bluetoothManager.md#connectdeprecated-1)替代。
 
 **需要权限**：ohos.permission.DISCOVER_BLUETOOTH
 
@@ -1616,7 +1615,7 @@ let ret : boolean = hfpAg.connect('XX:XX:XX:XX:XX:XX');
 ```
 
 
-### disconnect<sup>8+</sup><sup>(deprecated)</sup>
+### disconnect<sup>(deprecated)</sup>
 
 disconnect(device: string): boolean
 
@@ -1650,7 +1649,7 @@ let ret : boolean = hfpAg.disconnect('XX:XX:XX:XX:XX:XX');
 ```
 
 
-### on('connectionStateChange')<sup>8+</sup><sup>(deprecated)</sup>
+### on('connectionStateChange')<sup>(deprecated)</sup>
 
 on(type: 'connectionStateChange', callback: Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt;): void
 
@@ -1684,7 +1683,7 @@ hfpAg.on('connectionStateChange', onReceiveEvent);
 ```
 
 
-### off('connectionStateChange')<sup>8+</sup><sup>(deprecated)</sup>
+### off('connectionStateChange')<sup>(deprecated)</sup>
 
 off(type: 'connectionStateChange', callback?: Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt;): void
 
@@ -1877,9 +1876,9 @@ let gattService : bluetooth.GattService = {serviceUuid:'00001810-0000-1000-8000-
 let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
 let ret : boolean = gattServer.addService(gattService);
 if (ret) {
-   console.log("add service successfully");
+   console.info("add service successfully");
 } else {
-   console.log("add service failed");
+   console.error("add service failed");
 }
 ```
 
@@ -2029,9 +2028,9 @@ let serverResponse : bluetooth.ServerResponse = {
 let gattServer : bluetooth.GattServer = bluetooth.BLE.createGattServer();
 let ret : boolean = gattServer.sendResponse(serverResponse);
 if (ret) {
-  console.log('bluetooth sendResponse successfully');
+  console.info('bluetooth sendResponse successfully');
 } else {
-  console.log('bluetooth sendResponse failed');
+  console.error('bluetooth sendResponse failed');
 }
 ```
 
@@ -2077,9 +2076,9 @@ function ReadCharacteristicReq(CharacteristicReadReq : bluetooth.CharacteristicR
 
   let ret : boolean = gattServer.sendResponse(serverResponse);
   if (ret) {
-    console.log('bluetooth sendResponse successfully');
+    console.info('bluetooth sendResponse successfully');
   } else {
-    console.log('bluetooth sendResponse failed');
+    console.error('bluetooth sendResponse failed');
   }
 }
 
@@ -2164,9 +2163,9 @@ function WriteCharacteristicReq(CharacteristicWriteReq : bluetooth.Characteristi
 
   let ret : boolean = gattServer.sendResponse(serverResponse);
   if (ret) {
-    console.log('bluetooth sendResponse successfully');
+    console.info('bluetooth sendResponse successfully');
   } else {
-    console.log('bluetooth sendResponse failed');
+    console.error('bluetooth sendResponse failed');
   }
 }
 
@@ -2248,9 +2247,9 @@ function ReadDescriptorReq(DescriptorReadReq : bluetooth.DescriptorReadReq) {
 
   let ret : boolean = gattServer.sendResponse(serverResponse);
   if (ret) {
-    console.log('bluetooth sendResponse successfully');
+    console.info('bluetooth sendResponse successfully');
   } else {
-    console.log('bluetooth sendResponse failed');
+    console.error('bluetooth sendResponse failed');
   }
 }
 
@@ -2334,9 +2333,9 @@ function WriteDescriptorReq(DescriptorWriteReq : bluetooth.DescriptorWriteReq) {
 
   let ret : boolean = gattServer.sendResponse(serverResponse);
   if (ret) {
-    console.log('bluetooth sendResponse successfully');
+    console.info('bluetooth sendResponse successfully');
   } else {
-    console.log('bluetooth sendResponse failed');
+    console.error('bluetooth sendResponse failed');
   }
 }
 
@@ -2560,15 +2559,15 @@ client端获取蓝牙低功耗设备的所有服务，即服务发现 。
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 // callback 模式
 function getServices(code : BusinessError, gattServices : Array<bluetooth.GattService>) {
   if (code.code == 0) {
-      console.log('bluetooth code is ' + code.code);
-      console.log("bluetooth services size is ", gattServices.length);
+      console.info(`bluetooth code is ${code.code}`);
+      console.info(`bluetooth services size is ${gattServices.length}`);
 
       for (let i = 0; i < gattServices.length; i++) {
-        console.log('bluetooth serviceUuid is ' + gattServices[i].serviceUuid);
+        console.info(`bluetooth serviceUuid is ${gattServices[i].serviceUuid}`);
       }
   }
 }
@@ -2637,14 +2636,13 @@ client端读取蓝牙低功耗设备特定服务的特征值。
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 function readCcc(code : BusinessError, BLECharacteristic : bluetooth.BLECharacteristic) {
   if (code.code != 0) {
       return;
   }
-  console.log('bluetooth characteristic uuid: ' + BLECharacteristic.characteristicUuid);
+  console.info(`bluetooth characteristic uuid: ${BLECharacteristic.characteristicUuid}`);
   let value = new Uint8Array(BLECharacteristic.characteristicValue);
-  console.log('bluetooth characteristic value: ' + value[0] +','+ value[1]+','+ value[2]+','+ value[3]);
 }
 
 let device : bluetooth.GattClientDevice = bluetooth.BLE.createGattClientDevice('XX:XX:XX:XX:XX:XX');
@@ -2744,14 +2742,13 @@ client端读取蓝牙低功耗设备特定的特征包含的描述符。
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 function readDesc(code : BusinessError, BLEDescriptor : bluetooth.BLEDescriptor) {
   if (code.code != 0) {
       return;
   }
-  console.log('bluetooth descriptor uuid: ' + BLEDescriptor.descriptorUuid);
+  console.info(`bluetooth descriptor uuid: ${BLEDescriptor.descriptorUuid}`);
   let value = new Uint8Array(BLEDescriptor.descriptorValue);
-  console.log('bluetooth descriptor value: ' + value[0] +','+ value[1]+','+ value[2]+','+ value[3]);
 }
 
 let device : bluetooth.GattClientDevice = bluetooth.BLE.createGattClientDevice('XX:XX:XX:XX:XX:XX');
@@ -2850,9 +2847,9 @@ let characteristic : bluetooth.BLECharacteristic = {serviceUuid: '00001810-0000-
   characteristicValue: bufferCCC, descriptors:descriptors};
 let retWriteCcc : boolean = device.writeCharacteristicValue(characteristic);
 if (retWriteCcc) {
-  console.log('write characteristic successfully');
+  console.info('write characteristic successfully');
 } else {
-  console.log('write characteristic failed');
+  console.error('write characteristic failed');
 }
 ```
 
@@ -2894,9 +2891,9 @@ let descriptor : bluetooth.BLEDescriptor = {serviceUuid: '00001810-0000-1000-800
   descriptorUuid: '00002903-0000-1000-8000-00805F9B34FB', descriptorValue: bufferDesc};
 let retWriteDesc : boolean = device.writeDescriptorValue(descriptor);
 if (retWriteDesc) {
-  console.log('bluetooth write descriptor successfully');
+  console.info('bluetooth write descriptor successfully');
 } else {
-  console.log('bluetooth write descriptor failed');
+  console.error('bluetooth write descriptor failed');
 }
 ```
 
@@ -3077,7 +3074,7 @@ client端订阅蓝牙低功耗设备的连接状态变化事件。
 
 ```js
 function ConnectStateChanged(state : bluetooth.BLEConnectChangedState) {
-  console.log('bluetooth connect state changed');
+  console.info('bluetooth connect state changed');
   let connectState : bluetooth.ProfileConnectionState = state.state;
 }
 let device : bluetooth.GattClientDevice = bluetooth.BLE.createGattClientDevice('XX:XX:XX:XX:XX:XX');

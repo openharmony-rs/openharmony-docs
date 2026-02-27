@@ -65,7 +65,7 @@ radio.setPrimarySlotId(slotId, (err: BusinessError) => {
         console.error(`setPrimarySlotId failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`setPrimarySlotId success.`);
+    console.info(`setPrimarySlotId success.`);
 });
 ```
 
@@ -116,7 +116,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.setPrimarySlotId(slotId).then(() => {
-    console.log(`setPrimarySlotId success.`);
+    console.info(`setPrimarySlotId success.`);
 }).catch((err: BusinessError) => {
     console.error(`setPrimarySlotId failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -164,7 +164,7 @@ radio.getIMEI((err: BusinessError, data: string) => {
         console.error(`getIMEI failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getIMEI success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getIMEI success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -213,7 +213,7 @@ radio.getIMEI(slotId, (err: BusinessError, data: string) => {
         console.error(`getIMEI failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getIMEI success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getIMEI success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -263,7 +263,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getIMEI(slotId).then((data: string) => {
-    console.log(`getIMEI success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getIMEI success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getIMEI failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -311,7 +311,7 @@ radio.getMEID((err: BusinessError, data: string) => {
         console.error(`getMEID failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getMEID success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getMEID success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -360,7 +360,7 @@ radio.getMEID(slotId, (err: BusinessError, data: string) => {
         console.error(`getMEID failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getMEID success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getMEID success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -410,7 +410,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getMEID(slotId).then((data: string) => {
-    console.log(`getMEID success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getMEID success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getMEID failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -460,7 +460,7 @@ radio.getUniqueDeviceId((err: BusinessError, data: string) => {
         console.error(`getUniqueDeviceId failed, callback: err->${JSON.stringify(err)}}`);
         return;
     }
-    console.log(`getUniqueDeviceId success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getUniqueDeviceId success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -511,7 +511,7 @@ radio.getUniqueDeviceId(slotId, (err: BusinessError, data: string) => {
         console.error(`getUniqueDeviceId failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getUniqueDeviceId success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getUniqueDeviceId success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -563,7 +563,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getUniqueDeviceId(slotId).then((data: string) => {
-    console.log(`getUniqueDeviceId success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getUniqueDeviceId success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getUniqueDeviceId failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -611,7 +611,7 @@ radio.sendUpdateCellLocationRequest((err: BusinessError) => {
         console.error(`sendUpdateCellLocationRequest failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`sendUpdateCellLocationRequest success.`);
+    console.info(`sendUpdateCellLocationRequest success.`);
 });
 ```
 
@@ -659,7 +659,7 @@ radio.sendUpdateCellLocationRequest(slotId, (err: BusinessError) => {
         console.error(`sendUpdateCellLocationRequest failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`sendUpdateCellLocationRequest success.`);
+    console.info(`sendUpdateCellLocationRequest success.`);
 });
 ```
 
@@ -708,7 +708,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.sendUpdateCellLocationRequest(slotId).then(() => {
-    console.log(`sendUpdateCellLocationRequest success.`);
+    console.info(`sendUpdateCellLocationRequest success.`);
 }).catch((err: BusinessError) => {
     console.error(`sendUpdateCellLocationRequest failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -756,7 +756,7 @@ radio.getCellInformation((err: BusinessError, data: Array<radio.CellInformation>
         console.error(`getCellInformation failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getCellInformation success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getCellInformation success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -805,7 +805,7 @@ radio.getCellInformation(slotId, (err: BusinessError, data: Array<radio.CellInfo
         console.error(`getCellInformation failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getCellInformation success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getCellInformation success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -855,7 +855,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getCellInformation(slotId).then((data: Array<radio.CellInformation>) => {
-    console.log(`getCellInformation success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCellInformation success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getCellInformation failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -916,7 +916,7 @@ radio.setNetworkSelectionMode(networkSelectionModeOptions, (err: BusinessError) 
         console.error(`setNetworkSelectionMode failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`setNetworkSelectionMode success.`);
+    console.info(`setNetworkSelectionMode success.`);
 });
 ```
 
@@ -976,7 +976,7 @@ let networkSelectionModeOptions: radio.NetworkSelectionModeOptions = {
     resumeSelection: true
 }
 radio.setNetworkSelectionMode(networkSelectionModeOptions).then(() => {
-    console.log(`setNetworkSelectionMode success.`);
+    console.info(`setNetworkSelectionMode success.`);
 }).catch((err: BusinessError) => {
     console.error(`setNetworkSelectionMode failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1025,7 +1025,7 @@ radio.getNetworkSearchInformation(0, (err: BusinessError, data: radio.NetworkSea
         console.error(`getNetworkSearchInformation failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getNetworkSearchInformation success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getNetworkSearchInformation success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1073,7 +1073,7 @@ getNetworkSearchInformation\(slotId: number\): Promise\<NetworkSearchResult\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 radio.getNetworkSearchInformation(0).then((data: radio.NetworkSearchResult) => {
-    console.log(`getNetworkSearchInformation success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getNetworkSearchInformation success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getNetworkSearchInformation failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1122,7 +1122,7 @@ radio.getNrOptionMode((err: BusinessError, data: radio.NrOptionMode) => {
         console.error(`getNrOptionMode failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getNrOptionMode success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getNrOptionMode success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1172,7 +1172,7 @@ radio.getNrOptionMode(slotId, (err: BusinessError, data: radio.NrOptionMode) => 
         console.error(`getNrOptionModecallback failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getNrOptionModecallback success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getNrOptionModecallback success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1223,7 +1223,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getNrOptionMode(slotId).then((data: radio.NrOptionMode) => {
-    console.log(`getNrOptionMode success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getNrOptionMode success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getNrOptionMode failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1271,7 +1271,7 @@ radio.turnOnRadio((err: BusinessError) => {
         console.error(`turnOnRadio failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`turnOnRadio success.`);
+    console.info(`turnOnRadio success.`);
 });
 ```
 
@@ -1320,7 +1320,7 @@ radio.turnOnRadio(slotId, (err: BusinessError) => {
         console.error(`turnOnRadio failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`turnOnRadio success.`);
+    console.info(`turnOnRadio success.`);
 });
 ```
 
@@ -1370,7 +1370,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.turnOnRadio(slotId).then(() => {
-    console.log(`turnOnRadio success.`);
+    console.info(`turnOnRadio success.`);
 }).catch((err: BusinessError) => {
     console.error(`turnOnRadio failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1418,7 +1418,7 @@ radio.turnOffRadio((err: BusinessError) => {
         console.error(`turnOffRadio failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`turnOffRadio success.`);
+    console.info(`turnOffRadio success.`);
 });
 ```
 
@@ -1467,7 +1467,7 @@ radio.turnOffRadio(slotId, (err: BusinessError) => {
         console.error(`turnOffRadio failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`turnOffRadio success.`);
+    console.info(`turnOffRadio success.`);
 });
 ```
 
@@ -1517,7 +1517,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.turnOffRadio(slotId).then(() => {
-    console.log(`turnOffRadio success.`);
+    console.info(`turnOffRadio success.`);
 }).catch((err: BusinessError) => {
     console.error(`turnOffRadio failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1569,7 +1569,7 @@ radio.setPreferredNetwork(slotId, mode, (err: BusinessError) => {
         console.error(`setPreferredNetwork failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`setPreferredNetwork success.`);
+    console.info(`setPreferredNetwork success.`);
 });
 ```
 
@@ -1620,7 +1620,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 let mode: radio.PreferredNetworkMode = radio.PreferredNetworkMode.PREFERRED_NETWORK_MODE_GSM;
 radio.setPreferredNetwork(slotId, mode).then(() => {
-    console.log(`setPreferredNetwork success.`);
+    console.info(`setPreferredNetwork success.`);
 }).catch((err: BusinessError) => {
     console.error(`setPreferredNetwork failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1670,7 +1670,7 @@ radio.getPreferredNetwork(slotId, (err: BusinessError, data: radio.PreferredNetw
         console.error(`getPreferredNetwork failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getPreferredNetwork success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getPreferredNetwork success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1719,7 +1719,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getPreferredNetwork(slotId).then((data: radio.PreferredNetworkMode) => {
-    console.log(`getPreferredNetwork success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getPreferredNetwork success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getPreferredNetwork failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1771,7 +1771,7 @@ radio.getImsRegInfo(slotId, mode, (err: BusinessError, data: radio.ImsRegInfo) =
         console.error(`getImsRegInfo failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getImsRegInfo success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getImsRegInfo success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1822,7 +1822,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 let mode: radio.ImsServiceType = radio.ImsServiceType.TYPE_VIDEO;
 radio.getImsRegInfo(slotId, mode).then((data: radio.ImsRegInfo) => {
-    console.log(`getImsRegInfo success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getImsRegInfo success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getImsRegInfo failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1869,7 +1869,7 @@ on\(type: 'imsRegStateChange', slotId: number, imsType: ImsServiceType, callback
 let slotId: number = 0;
 let mode: radio.ImsServiceType = radio.ImsServiceType.TYPE_VIDEO;
 radio.on('imsRegStateChange', slotId, mode, (data: radio.ImsRegInfo) => {
-    console.log(`on imsRegStateChange success, callback: data->${JSON.stringify(data)}`);
+    console.info(`on imsRegStateChange success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1914,7 +1914,7 @@ off\(type: 'imsRegStateChange', slotId: number, imsType: ImsServiceType, callbac
 let slotId: number = 0;
 let mode: radio.ImsServiceType = radio.ImsServiceType.TYPE_VIDEO;
 radio.off('imsRegStateChange', slotId, mode, (data: radio.ImsRegInfo) => {
-    console.log(`off imsRegStateChange success, callback: data->${JSON.stringify(data)}`);
+    console.info(`off imsRegStateChange success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1963,7 +1963,7 @@ radio.getBasebandVersion(slotId, (err: BusinessError, data: string) => {
         console.error(`getBasebandVersion failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getBasebandVersion success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getBasebandVersion success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2013,7 +2013,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getBasebandVersion(slotId).then((data: string) => {
-    console.log(`getBasebandVersion success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getBasebandVersion success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getBasebandVersion failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2066,7 +2066,7 @@ radio.setNROptionMode(slotId, mode, (err: BusinessError) => {
         console.error(`setNROptionMode failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`setNROptionMode success.`);
+    console.info(`setNROptionMode success.`);
 });
 ```
 
@@ -2118,7 +2118,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 let mode: radio.NROptionMode = radio.NROptionMode.NR_OPTION_NSA_ONLY;
 radio.setNROptionMode(slotId, mode).then(() => {
-    console.log(`setNROptionMode success`);
+    console.info(`setNROptionMode success`);
 }).catch((err: BusinessError) => {
     console.error(`setNROptionMode failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2166,7 +2166,7 @@ radio.getNROptionMode(slotId, (err: BusinessError, data: radio.NROptionMode) => 
         console.error(`getNROptionMode failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getNROptionMode success, callback: data->${JSON.stringify(data)}`);
+    console.info(`getNROptionMode success, callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2212,7 +2212,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.getNROptionMode(slotId).then((data: radio.NROptionMode) => {
-    console.log(`getNROptionMode success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getNROptionMode success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getNROptionMode failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2265,7 +2265,7 @@ radio.getNetworkCapability(slotId, type, (err: BusinessError, data: radio.Networ
         console.error(`getNetworkCapability failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`getNetworkCapability success, callback: err->${JSON.stringify(err)}`);
+    console.info(`getNetworkCapability success, callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -2317,7 +2317,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 let type: radio.NetworkCapabilityType = radio.NetworkCapabilityType.SERVICE_TYPE_NR;
 radio.getNetworkCapability(slotId, type).then((data: radio.NetworkCapabilityState) => {
-    console.log(`getNetworkCapability success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getNetworkCapability success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getNetworkCapability failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2373,7 +2373,7 @@ radio.setNetworkCapability(slotId, type, state, (err: BusinessError) => {
         console.error(`setNetworkCapability failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`setNetworkCapability success.`);
+    console.info(`setNetworkCapability success.`);
 });
 ```
 
@@ -2427,7 +2427,7 @@ let slotId: number = 0;
 let type: radio.NetworkCapabilityType = radio.NetworkCapabilityType.SERVICE_TYPE_NR;
 let state: radio.NetworkCapabilityState = radio.NetworkCapabilityState.SERVICE_CAPABILITY_ON;
 radio.setNetworkCapability(slotId, type, state).then(() => {
-    console.log(`setNetworkCapability success`);
+    console.info(`setNetworkCapability success`);
 }).catch((err: BusinessError) => {
     console.error(`setNetworkCapability failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2478,7 +2478,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 radio.factoryReset(slotId).then(() => {
-    console.log(`factoryReset success`);
+    console.info(`factoryReset success`);
 }).catch((err: BusinessError) => {
     console.error(`factoryReset failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -2522,7 +2522,7 @@ getIMEISV\(slotId: number\): string
 ```ts
 let slotId: number = 0;
 let data: string = radio.getIMEISV(slotId);
-console.log(`IMEISV is:` + data);
+console.info(`IMEISV is:` + data);
 ```
 
 ## PreferredNetworkMode<sup>8+</sup>
@@ -2576,11 +2576,11 @@ console.log(`IMEISV is:` + data);
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
-| 名称              |                  类型                   | 必填 |                           说明                               |
-| ----------------- | --------------------------------------- | ---- | ------------------------------------------------------------ |                           
-| isCamped          | boolean                                 |  是  | 获取服务单元的状态。<br>**系统接口：** 此接口为系统接口。<br/>true表示驻留小区，false表示非驻留小区。          |
-| timeStamp         | number                                  |  是  | 获取单元格信息时获取时间戳。<br>**系统接口：** 此接口为系统接口。    |                              
-| data              | [CdmaCellInformation](#cdmacellinformation8) \| [GsmCellInformation](#gsmcellinformation8) \| [LteCellInformation](#ltecellinformation8) \| [NrCellInformation](#nrcellinformation8) \| [TdscdmaCellInformation](#tdscdmacellinformation8)\|[WcdmaCellInformation](#wcdmacellinformation8) |  是  | Cdma小区信息 \|Gsm小区信息\|Lte小区信息\|Nr小区信息\|Tdscdma小区信息\|Wcdma小区信息。  <br>**系统接口：** 此接口为系统接口。|
+| 名称              |                  类型                   | 只读 |可选|                           说明                               |
+| ----------------- | --------------------------------------- | ----|---- | ------------------------------------------------------------ |                           
+| isCamped          | boolean                                 |  否  |否| 获取服务单元的状态。<br>**系统接口：** 此接口为系统接口。<br/>true表示驻留小区，false表示非驻留小区。          |
+| timeStamp         | number                                  |  否  | 否|获取单元格信息时获取时间戳。<br>**系统接口：** 此接口为系统接口。    |                              
+| data              | [CdmaCellInformation](#cdmacellinformation8) \| [GsmCellInformation](#gsmcellinformation8) \| [LteCellInformation](#ltecellinformation8) \| [NrCellInformation](#nrcellinformation8) \| [TdscdmaCellInformation](#tdscdmacellinformation8)\|[WcdmaCellInformation](#wcdmacellinformation8) |  否|否  | Cdma小区信息 \|Gsm小区信息\|Lte小区信息\|Nr小区信息\|Tdscdma小区信息\|Wcdma小区信息。  <br>**系统接口：** 此接口为系统接口。|
 
 ## CdmaCellInformation<sup>8+</sup>
 
@@ -2590,13 +2590,13 @@ CDMA小区信息。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
-| 名称      | 类型   | 必填 | 说明         |
-| --------- | ------ | ---- | ------------ |
-| baseId    | number |  是  | 基站Id。     |
-| latitude  | number |  是  | 纬度。       |
-| longitude | number |  是  | 经度。       |
-| nid       | number |  是  | 网络识别码。 |
-| sid       | number |  是  | 系统识别码。 |
+| 名称      | 类型   | 只读 |可选| 说明         |
+| --------- | ------ | ---- | ---- |------------ |
+| baseId    | number |  否| 否 | 基站Id。     |
+| latitude  | number |  否  | 否 | 纬度。       |
+| longitude | number |  否|否  | 经度。       |
+| nid       | number |  否|否 | 网络识别码。 |
+| sid       | number |  否|否 | 系统识别码。 |
 
 ## GsmCellInformation<sup>8+</sup>
 
@@ -2606,14 +2606,14 @@ GSM小区信息。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
-| 名称   | 类型   | 必填 | 说明                 |
-| ------ | ------ | ---- | -------------------- |
-| lac    | number |  是  | 位置区编号。         |
-| cellId | number |  是  | 小区号。             |
-| arfcn  | number |  是  | 绝对无线频率信道号。 |
-| bsic   | number |  是  | 基站识别号。         |
-| mcc    | string |  是  | 移动国家码。         |
-| mnc    | string |  是  | 移动网号。           |
+| 名称   | 类型   | 只读 | 可选 | 说明                 |
+| ------ | ------ | ---- | ---- | -------------------- |
+| lac    | number |  否  | 否|位置区编号。         |
+| cellId | number |  否  | 否|小区号。             |
+| arfcn  | number |  否  |否| 绝对无线频率信道号。 |
+| bsic   | number |  否  |否| 基站识别号。         |
+| mcc    | string |  否  |否| 移动国家码。         |
+| mnc    | string |  否  |否| 移动网号。           |
 
 ## LteCellInformation<sup>8+</sup>
 
@@ -2623,16 +2623,16 @@ LTE小区信息。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
-| 名称          | 类型    | 必填 | 说明                    |
-| ------------- | ------- | ---- | ----------------------- |
-| cgi           | number  |  是  | 小区全球标识。          |
-| pci           | number  |  是  | 物理小区识别。          |
-| tac           | number  |  是  | 跟踪区域代码。          |
-| earfcn        | number  |  是  | 绝对无线频率信道号。    |
-| bandwidth     | number  |  是  | 带宽。                  |
-| mcc           | string  |  是  | 移动国家码。            |
-| mnc           | string  |  是  | 移动网号。              |
-| isSupportEndc | boolean |  是  | 是否支持新无线电_双连接。<br/>true表示支持新无线电_双连接，false表示不支持新无线电_双连接。 |
+| 名称          | 类型    |  只读 | 可选  | 说明                    |
+| ------------- | ------- | ---- | ---- | ----------------------- |
+| cgi           | number  |  否  | 否|小区全球标识。          |
+| pci           | number  |  否  | 否|物理小区识别。          |
+| tac           | numbe否r  |  否  | 否|跟踪区域代码。          |
+| earfcn        | number  |  否  | 否| 绝对无线频率信道号。    |
+| bandwidth     | number   |  否  | 否| 带宽。                  |
+| mcc           | string   |  否  | 否| 移动国家码。            |
+| mnc           | string   |  否  | 否|移动网号。              |
+| isSupportEndc | boolean  |  否  |  否| 是否支持新无线电_双连接。<br/>true表示支持新无线电_双连接，false表示不支持新无线电_双连接。 |
 
 ## NrCellInformation<sup>8+</sup>
 
@@ -2642,14 +2642,14 @@ NR小区信息。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
-| 名称    | 类型   | 必填 | 说明             |
-| ------- | ------ | ---- | ---------------- |
-| nrArfcn | number |  是  | 5G频点号。       |
-| pci     | number |  是  | 物理小区识别。   |
-| tac     | number |  是  | 跟踪区域代码。   |
-| nci     | number |  是  | 5G网络小区标识。 |
-| mcc     | string |  是  | 移动国家码。     |
-| mnc     | string |  是  | 移动网号。       |
+| 名称    | 类型    |  只读 | 可选  | 说明             |
+| ------- | ------ | ---- | ---- |---------------- |
+| nrArfcn | number |  否  | 否| 5G频点号。       |
+| pci     | number  |  否  | 否|物理小区识别。   |
+| tac     | number |  否  | 否| 跟踪区域代码。   |
+| nci     | number |  否  | 否| 5G网络小区标识。 |
+| mcc     | string |  否  | 否| 移动国家码。     |
+| mnc     | string |  否  | 否| 移动网号。       |
 
 ## TdscdmaCellInformation<sup>8+</sup>
 
@@ -2659,14 +2659,14 @@ TD-SCDMA小区信息。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
-| 名称   | 类型   | 必填 | 说明         |
-| ------ | ------ | ---- | ------------ |
-| lac    | number |  是  | 位置区编号。 |
-| cellId | number |  是  | 小区号。     |
-| cpid   | number |  是  | 小区参数Id。 |
-| uarfcn | number |  是  | 绝对射频号。 |
-| mcc    | string |  是  | 移动国家码。 |
-| mnc    | string |  是  | 移动网号。   |
+| 名称   | 类型   |  只读 | 可选  | 说明         |
+| ------ | ------ | ---- | ---- |------------ |
+| lac    | number |  否  | 否|位置区编号。 |
+| cellId | number |  否  | 否|小区号。     |
+| cpid   | number  |  否  | 否| 小区参数Id。 |
+| uarfcn | number  |  否  | 否| 绝对射频号。 |
+| mcc    | string |  否  | 否|移动国家码。 |
+| mnc    | string |  否  | 否|移动网号。   |
 
 ## WcdmaCellInformation<sup>8+</sup>
 
@@ -2676,14 +2676,14 @@ WCDMA小区信息。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
-| 名称   | 类型   | 必填 | 说明         |
-| ------ | ------ | ---- | ------------ |
-| lac    | number |  是  | 位置区编号。 |
-| cellId | number |  是  | 小区号。     |
-| psc    | number |  是  | 主扰码。     |
-| uarfcn | number |  是  | 绝对射频号。 |
-| mcc    | string |  是  | 移动国家码。 |
-| mnc    | string |  是  | 移动网号。   |
+| 名称   | 类型   |  只读 | 可选  | 说明         |
+| ------ | ------  | ---- | ---- |------------ |
+| lac    | number |  否  | 否|位置区编号。 |
+| cellId | number |  否  | 否| 小区号。     |
+| psc    | number |  否  | 否|主扰码。     |
+| uarfcn | number |  否  | 否|绝对射频号。 |
+| mcc    | string |  否  | 否|移动国家码。 |
+| mnc    | string |  否  | 否| 移动网号。   |
 
 ## NrOptionMode<sup>(deprecated)</sup>
 

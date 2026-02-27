@@ -42,7 +42,7 @@ Defines structs, APIs, and enums related to stored data values.
 
 ### OH_VBuckets_Create()
 
-```
+```c
 OH_Data_VBuckets *OH_VBuckets_Create(void)
 ```
 
@@ -60,7 +60,7 @@ Creates an **OH_Data_VBuckets** instance.
 
 ### OH_VBuckets_Destroy()
 
-```
+```c
 int OH_VBuckets_Destroy(OH_Data_VBuckets *buckets)
 ```
 
@@ -85,7 +85,7 @@ Destroys an **OH_Data_VBuckets** instance.
 
 ### OH_VBuckets_PutRow()
 
-```
+```c
 int OH_VBuckets_PutRow(OH_Data_VBuckets *buckets, const OH_VBucket *row)
 ```
 
@@ -111,7 +111,7 @@ Adds data of the **OH_VBucket** type to an **OH_Data_VBuckets** instance.
 
 ### OH_VBuckets_PutRows()
 
-```
+```c
 int OH_VBuckets_PutRows(OH_Data_VBuckets *buckets, const OH_Data_VBuckets *rows)
 ```
 
@@ -137,7 +137,7 @@ Adds data of the **OH_Data_VBuckets** type to an **OH_Data_VBuckets** instance.
 
 ### OH_VBuckets_RowCount()
 
-```
+```c
 int OH_VBuckets_RowCount(OH_Data_VBuckets *buckets, size_t *count)
 ```
 

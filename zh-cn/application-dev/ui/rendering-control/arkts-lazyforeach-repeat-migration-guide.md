@@ -21,7 +21,7 @@ LazyForEach根据数据源循环渲染子组件。
 **示例1 - 迁移前**
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: string[] = [];
@@ -74,7 +74,7 @@ struct MyComponent {
 
 1. 使用状态管理V2装饰器。
 
-   Repeat推荐和状态管理V2装饰器配合使用（[懒加载](./arkts-new-rendering-control-repeat.md#循环渲染能力说明)模式下只支持和状态管理V2装饰器配合使用）。如果之前使用的是状态管理V1装饰器，需要修改为状态管理V2装饰器。
+   Repeat推荐和状态管理V2装饰器配合使用（[懒加载](./arkts-new-rendering-control-repeat.md#懒加载能力说明)模式下只支持和状态管理V2装饰器配合使用）。如果之前使用的是状态管理V1装饰器，需要修改为状态管理V2装饰器。
 
    ```ts
    // 迁移前 - LazyForEach
@@ -157,7 +157,7 @@ struct MyComponent {
 
 4. 配置懒加载功能。
 
-   Repeat具有[懒加载](./arkts-new-rendering-control-repeat.md#循环渲染能力说明)和[全量加载](./arkts-new-rendering-control-repeat.md#关闭懒加载)两种模式。
+   Repeat具有[懒加载和全量加载](./arkts-new-rendering-control-repeat.md#懒加载能力说明)两种模式。
    
    - 全量加载模式渲染所有子节点（对标[ForEach](./arkts-rendering-control-foreach.md)）。
    - 懒加载模式动态渲染屏幕区域和预加载区域内的子节点（需要与容器组件配合使用，对标LazyForEach）。
@@ -181,7 +181,8 @@ struct MyComponent {
 
 ```ts
 @Entry
-@ComponentV2 // 使用状态管理V2
+@ComponentV2
+  // 使用状态管理V2
 struct MyComponent {
   @Local data: Array<string> = []; // 数据源为状态管理V2装饰的数组
 
@@ -226,7 +227,7 @@ struct MyComponent {
 **示例2 - 迁移前**
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: string[] = [];
@@ -387,21 +388,33 @@ struct MyComponent {
     Column({ space: 3 }) {
       // 点击追加子组件
       Button('Add new item')
-        .onClick(() => { this.data.push(`New item ${this.count++}`); })
+        .onClick(() => {
+          this.data.push(`New item ${this.count++}`);
+        })
       // 点击删除子组件
       Button('Delete item 0')
-        .onClick(() => { this.data.splice(0, 1); })
+        .onClick(() => {
+          this.data.splice(0, 1);
+        })
       // 点击交换子组件
       Button('Swap item 0 and item 1')
-        .onClick(() => { let temp: string = this.data[0];
-                         this.data[0] = this.data[1];
-                         this.data[1] = temp; })
+        .onClick(() => {
+          let temp: string = this.data[0];
+          this.data[0] = this.data[1];
+          this.data[1] = temp;
+        })
       // 点击修改单个子组件
       Button('Change item 0')
-        .onClick(() => { this.data.splice(0, 1, `Changed item ${this.count++}`); })
+        .onClick(() => {
+          this.data.splice(0, 1, `Changed item ${this.count++}`);
+        })
       // 点击修改多个子组件
       Button('Change all items')
-        .onClick(() => { this.data = this.data.map((item: string) => { return 'Changed ' + item; }); })
+        .onClick(() => {
+          this.data = this.data.map((item: string) => {
+            return 'Changed ' + item;
+          });
+        })
       List({ space: 3 }) {
         Repeat(this.data)
           .each((repeatItem: RepeatItem<string>) => {
@@ -436,7 +449,7 @@ LazyForEach可以使用[@Observed与@ObjectLink](../state-management/arkts-obser
 **示例3 - 迁移前**
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 **/
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -506,7 +519,7 @@ struct ChildComponent {
 
 **迁移Repeat**
 
-Repeat需要和状态管理V2一起使用，状态管理V2提供了[@ObserveV2和@Trace](../state-management/arkts-new-observedV2-and-trace.md)装饰器对子属性进行深度观测。迁移时，需要将@Observe和@ObjectLink装饰器迁移至@ObserveV2和@Trace装饰器。
+Repeat需要和状态管理V2一起使用，状态管理V2提供了[@ObservedV2和@Trace](../state-management/arkts-new-observedV2-and-trace.md)装饰器对子属性进行深度观测。迁移时，需要将@Observed和@ObjectLink装饰器迁移至@ObservedV2和@Trace装饰器。
 
 迁移后的示例如下所示。
 
@@ -569,7 +582,7 @@ struct MyComponent {
 **示例4 - 迁移前**
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 **/
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -724,7 +737,7 @@ struct ChildComponent {
 **示例5 - 迁移前**
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 **/
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -862,7 +875,7 @@ LazyForEach的[onMove](../../reference/apis-arkui/arkui-ts/ts-universal-attribut
 **示例6 - 迁移前**
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: string[] = [];
@@ -990,7 +1003,7 @@ LazyForEach自身并不具备组件复用能力，为实现组件复用，需要
 **示例7 - 迁移前**
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 **/
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -1076,7 +1089,7 @@ Repeat本身具备组件复用能力，同时也支持与状态管理V2的[@Reus
 1. 直接使用Repeat自身的复用能力。
 2. 使用@ReusableV2装饰器提供的复用能力。
 
-需要注意的是，Repeat默认使能自身的复用能力，且优先级高于@ReusableV2装饰器。若要使用@ReusableV2装饰器，需要先手动关闭Repeat自身的复用能力（@ReusableV2装饰器从API version 18开始支持，Repeat从API version 19开始支持关闭自身复用能力）。
+需要注意的是，Repeat默认使能自身的复用能力，且优先级高于@ReusableV2装饰器。若要使用@ReusableV2装饰器，需要先手动关闭Repeat自身的复用能力（@ReusableV2装饰器从API version 18开始支持，Repeat从API version 18开始支持[关闭自身复用能力](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions)）。
 
 **示例7 - 迁移方案1：使用Repeat自身的复用能力**
 
@@ -1205,7 +1218,7 @@ LazyForEach自身并不具备模板渲染能力。为实现模板渲染能力，
 **示例8 - 迁移前**
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 **/
+/** BasicDataSource代码见文档末尾BasicDataSource示例代码: StringData类型数组的BasicDataSource代码 */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -1589,8 +1602,7 @@ class BasicDataSource implements IDataSource {
   notifyDataMove(from: number, to: number): void {
     this.listeners.forEach(listener => {
       listener.onDataMove(from, to);
-      // 写法2：listener.onDatasetChange(
-      //         [{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
+      // 写法2：listener.onDatasetChange([{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
     });
   }
 

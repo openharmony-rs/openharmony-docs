@@ -30,7 +30,7 @@
 **错误描述**<br>
 @BuilderParam装饰的变量只能被@Builder装饰的函数初始化。
 
-**可能或原因**<br> 
+**可能原因**<br> 
 用普通函数其他类型变量初始化@BuilderParam装饰的变量。
 
 **处理步骤**<br>
@@ -1000,7 +1000,7 @@ The \'xxx\' decorator can decorate only member variables of a class.
 
 ## 10905117 方法装饰器混用校验异常
 **错误信息**<br>
-A funtion can only be decorated by one of the \'@AnimatedExtend\'，\'@Builder\'，\'@Extend\'，\'@Styles\'，\'@Concurrent\' and \'@Sendable\''.
+A function can only be decorated by one of the \'@AnimatedExtend\'，\'@Builder\'，\'@Extend\'，\'@Styles\'，\'@Concurrent\' and \'@Sendable\''.
 
 **错误描述**<br>
 两个不同方法装饰器定义在同一个方法上。

@@ -22,7 +22,7 @@ Starting from API version 20, you can develop intents using decorators, allowing
 | --- | --- | --- |
 | Developing intents using [@InsightIntentEntry](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)| 1. Add a new intent execution file. If the execution file is not imported by other files, configure its path through the **insightIntentsSrcEntry** field in the **insight_intent.json** file to include it in compilation.<br> 2. Use decorators to define the application component to be bound to the intent and the intent execution mode.| The system entry point matches the intent and triggers the startup of the application component and intent execution according to the intent execution mode.|
 | Developing intents using [@InsightIntentLink](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)| Define an intent for link redirection, which can be an existing or a new URI.| The system entry point matches the intent, transfers a URI, and triggers intent execution via [openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12). For parameter processing during intent execution, see the **paramCategory** description in [LinkIntentParamMapping](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#linkintentparammapping).|
-| Developing intents using [@InsightIntentPage](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentpage)| Define a page redirection intent, and configure the corresponding UIAbility, [page route](../ui/arkts-routing.md) path, and [Navigation](../ui/arkts-navigation-navigation.md) path for the intent.| 1. The system entry point uses **startAbility** to start the UIAbility bound to the intent. If the intent is not bound to a UIAbility, it starts the UIAbility corresponding to the [mainElement](../quick-start/module-configuration-file.md#tags-in-the-configuration-file) of the module where the intent is located.<br>2. During intent execution, if the application is not started, it jumps to the page corresponding to the intent after loading the home page of the UIAbility; if the application is already started, it jumps to the page corresponding to the intent from the current page.<br>3. Parameters are passed to the target page during intent execution.<br>4. If the **navigationId** or **navDestinationName** field fails to match, the system falls back to page redirection corresponding to the **pagePath** field.|
+| Developing intents using [@InsightIntentPage](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentpage)| Define a page redirection intent, and configure the corresponding UIAbility, [page route](../ui/arkts-routing.md) path, and [Navigation](../ui/arkts-navigation-architecture.md) path for the intent.| 1. The system entry point uses **startAbility** to start the UIAbility bound to the intent. If the intent is not bound to a UIAbility, it starts the UIAbility corresponding to the [mainElement](../quick-start/module-configuration-file.md#tags-in-the-configuration-file) of the module where the intent is located.<br>2. During intent execution, if the application is not started, it jumps to the page corresponding to the intent after loading the home page of the UIAbility; if the application is already started, it jumps to the page corresponding to the intent from the current page.<br>3. Parameters are passed to the target page during intent execution.<br>4. If the **navigationId** or **navDestinationName** field fails to match, the system falls back to page redirection corresponding to the **pagePath** field.|
 | Developing intents using [@InsightIntentFunctionMethod](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentfunctionmethod)| Define an intent for a static method, which can be an existing or a new method.| The system entry point uses [Call](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#background-communication-capability) to start the UIAbility corresponding to the [mainElement](../quick-start/module-configuration-file.md#tags-in-the-configuration-file) of the module where the intent is located.|
 | Developing intents using [@InsightIntentForm](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentform)| Define an intent for a widget, which can be an existing or a new widget.| The system entry point creates an intent widget using the FormComponent.|
 
@@ -35,7 +35,6 @@ This section uses the development of standard intents and custom intents with @I
 The following uses the standard intent [ViewLogistics](./insight-intent-access-specifications.md#viewing-logistics) as an example to describe how to develop a standard intent with the @InsightIntentEntry decorator.
 
 1. Declare the intent execution file in the **insightIntentsSrcEntry** field of the **insight_intent.json** file.
-
     ```json
     {
       "insightIntentsSrcEntry": [
@@ -48,7 +47,7 @@ The following uses the standard intent [ViewLogistics](./insight-intent-access-s
 
 2. Implement the intent executor.
 
-    When developing a standard intent, you do not need to define the large language model description, intent parameters, or intent execution results. Standard intents are matched from the [Appendix: Standard Intent Access Specifications](insight-intent-access-specifications.md) based on the **schema** and **intentVersion** fields. The intent executor must inherit from the **InsightIntentEntryExector\<T>** class and implement the **onExecute()** API.
+    When developing a standard intent, you do not need to define the large language model description, intent parameters, or intent execution results. Standard intents are matched from the [Appendix: Standard Intent Access Specifications](insight-intent-access-specifications.md) based on the **schema** and **intentVersion** fields. The intent executor must inherit from the **InsightIntentEntryExecutor\<T>** class and implement the **onExecute()** API.
 
     <!-- @[insight_intent_view_logistics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/ViewLogisticsImpl.ets) -->
     
@@ -66,7 +65,7 @@ The following uses the standard intent [ViewLogistics](./insight-intent-access-s
       displayName: 'Query Logistics',
       displayDescription: 'Query logistics with tracking number',
       schema: 'ViewLogistics',
-      icon: $r('app.media.viewLogistics'), // $r indicates a local icon, which must be defined in the resource catalog.
+      icon: $r('app.media.viewLogistics'), // Replace $r('app.media.viewLogistics') with the actual resource file.
       abilityName: 'EntryAbility',
       executeMode: [insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND]
     })
@@ -110,7 +109,7 @@ The following uses the development of a custom intent "Play Music" as an example
 
 2. Implement the intent executor.
 
-    When developing custom intents, you are required to define the large language model description, intent search keywords, intent parameters, and intent execution results. The intent executor must inherit from the **InsightIntentEntryExector\<T>** class and implement the **onExecute()** API.
+    When developing custom intents, you are required to define the large language model description, intent search keywords, intent parameters, and intent execution results. The intent executor must inherit from the **InsightIntentEntryExecutor\<T>** class and implement the **onExecute()** API.
 
     <!-- @[insight_intent_play_music](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicImpl.ets) -->
     
@@ -130,7 +129,7 @@ The following uses the development of a custom intent "Play Music" as an example
       intentVersion: '1.0.1',
       displayName: 'Play Music',
       displayDescription: 'Intent to play music',
-      icon: $r('app.media.playMusic'), // $r indicates a local icon, which must be defined in the resource catalog.
+      icon: $r('app.media.playMusic'), // Replace $r('app.media.playMusic') with the actual resource file.
       llmDescription: 'Supports passing song names to play music',
       keywords: ['music playback', 'play music', 'PlayMusic'],
       abilityName: 'EntryAbility',
@@ -177,7 +176,7 @@ The intent execution process is as follows:
 
 ### (Optional) Passing Complex Parameters by Developing Intent Entities
 
-By default, data passed from the system entry point to the application is of basic types. For more complex data—such as singer information (including name, nationality, and more) when playing music—you need object types. These are defined using the [@InsightIntentEntity](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity) decorator and are known as intent entities.
+By default, data passed from the system entry point to the application is of basic types. For more complex data, such as singer information (including name, nationality, and more) when playing music, you need object types. These are defined using the [@InsightIntentEntity](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity) decorator and are known as intent entities.
 
 Consider a music playback scenario: A user tells the voice assistant Celia the name and singer information of the desired song, and Celia launches the corresponding music screen to play the song based on the information.
 
@@ -255,7 +254,7 @@ To implement this, you can define singer information as an intent entity and dev
       intentVersion: '1.0.1',
       displayName: 'Play Music',
       displayDescription: 'Intent to play music',
-      icon: $r('app.media.app_icon'), // $r indicates a local icon, which must be defined in the resource catalog.
+      icon: $r('app.media.app_icon'), // Replace $r('app.media.app_icon') with the actual resource file.
       llmDescription: 'Supports passing song names to play music',
       keywords: ['music playback', 'play music', 'PlayMusic'],
       abilityName: 'EntryAbility',

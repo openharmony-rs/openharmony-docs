@@ -33,18 +33,18 @@ GameController模块提供游戏控制器功能的API接口。
 
 | 名称 | 描述 | 
 | -------- | -------- |
-| typedef enum [GameController_ErrorCode](#gamecontroller_errorcode)[GameController_ErrorCode](#gamecontroller_errorcode) | 此枚举定义游戏控制器的错误码。 | 
-| typedef struct [GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos)[GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) | 定义[OH_GameDevice_GetAllDeviceInfos](#oh_gamedevice_getalldeviceinfos)接口的调用结果。 | 
-| typedef enum [GameDevice_StatusChangedType](#gamedevice_statuschangedtype)[GameDevice_StatusChangedType](#gamedevice_statuschangedtype) | 此枚举定义设备的状态变化类型。 | 
-| typedef enum [GameDevice_DeviceType](#gamedevice_devicetype)[GameDevice_DeviceType](#gamedevice_devicetype) | 此枚举定义设备类型。 | 
-| typedef struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo)[GameDevice_DeviceInfo](#gamedevice_deviceinfo) | 定义设备信息。 | 
-| typedef struct [GameDevice_DeviceEvent](#gamedevice_deviceevent)[GameDevice_DeviceEvent](#gamedevice_deviceevent) | 定义设备状态变化事件。 | 
+| typedef enum [GameController_ErrorCode](#gamecontroller_errorcode) [GameController_ErrorCode](#gamecontroller_errorcode) | 此枚举定义游戏控制器的错误码。 | 
+| typedef struct [GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) [GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) | 定义[OH_GameDevice_GetAllDeviceInfos](#oh_gamedevice_getalldeviceinfos)接口的调用结果。 | 
+| typedef enum [GameDevice_StatusChangedType](#gamedevice_statuschangedtype) [GameDevice_StatusChangedType](#gamedevice_statuschangedtype) | 此枚举定义设备的状态变化类型。 | 
+| typedef enum [GameDevice_DeviceType](#gamedevice_devicetype) [GameDevice_DeviceType](#gamedevice_devicetype) | 此枚举定义设备类型。 | 
+| typedef struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) [GameDevice_DeviceInfo](#gamedevice_deviceinfo) | 定义设备信息。 | 
+| typedef struct [GameDevice_DeviceEvent](#gamedevice_deviceevent) [GameDevice_DeviceEvent](#gamedevice_deviceevent) | 定义设备状态变化事件。 | 
 | typedef void(\*[GameDevice_DeviceMonitorCallback](#gamedevice_devicemonitorcallback)) (const struct [GameDevice_DeviceEvent](#gamedevice_deviceevent) \*deviceEvent) | 定义[OH_GameDevice_RegisterDeviceMonitor](#oh_gamedevice_registerdevicemonitor)中使用的回调函数。当设备上线或下线时，该回调函数将被调用。 | 
-| typedef enum [GamePad_AxisSourceType](#gamepad_axissourcetype)[GamePad_AxisSourceType](#gamepad_axissourcetype) | 此枚举定义手柄轴事件来源类型。 | 
-| typedef enum [GamePad_Button_ActionType](#gamepad_button_actiontype)[GamePad_Button_ActionType](#gamepad_button_actiontype) | 此枚举定义手柄按键动作类型。 | 
-| typedef struct [GamePad_ButtonEvent](#gamepad_buttonevent)[GamePad_ButtonEvent](#gamepad_buttonevent) | 定义手柄按键事件。 | 
-| typedef struct [GamePad_AxisEvent](#gamepad_axisevent)[GamePad_AxisEvent](#gamepad_axisevent) | 定义手柄轴事件。 | 
-| typedef struct [GamePad_PressedButton](#gamepad_pressedbutton)[GamePad_PressedButton](#gamepad_pressedbutton) | 定义手柄按下的按键。 | 
+| typedef enum [GamePad_AxisSourceType](#gamepad_axissourcetype) [GamePad_AxisSourceType](#gamepad_axissourcetype) | 此枚举定义手柄轴事件来源类型。 | 
+| typedef enum [GamePad_Button_ActionType](#gamepad_button_actiontype) [GamePad_Button_ActionType](#gamepad_button_actiontype) | 此枚举定义手柄按键动作类型。 | 
+| typedef struct [GamePad_ButtonEvent](#gamepad_buttonevent) [GamePad_ButtonEvent](#gamepad_buttonevent) | 定义手柄按键事件。 | 
+| typedef struct [GamePad_AxisEvent](#gamepad_axisevent) [GamePad_AxisEvent](#gamepad_axisevent) | 定义手柄轴事件。 | 
+| typedef struct [GamePad_PressedButton](#gamepad_pressedbutton) [GamePad_PressedButton](#gamepad_pressedbutton) | 定义手柄按下的按键。 | 
 | typedef void(\*[GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback)) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent) | 定义在按键事件注册监听接口中使用的回调函数。当玩家按下按键时，该回调函数将被调用。 | 
 | typedef void(\*[GamePad_AxisInputMonitorCallback](#gamepad_axisinputmonitorcallback)) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent) | 定义在轴事件注册监听接口中使用的回调函数。当玩家操作摇杆时，该回调函数将被调用。 | 
 
@@ -64,86 +64,86 @@ GameController模块提供游戏控制器功能的API接口。
 
 | 名称 | 描述 | 
 | -------- | -------- |
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GameDevice_GetAllDeviceInfos](#oh_gamedevice_getalldeviceinfos) ([GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) \*\*allDeviceInfos) | 获取所有在线设备的信息。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GameDevice_RegisterDeviceMonitor](#oh_gamedevice_registerdevicemonitor) ([GameDevice_DeviceMonitorCallback](#gamedevice_devicemonitorcallback) deviceMonitorCallback) | 注册设备状态变化事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GameDevice_UnregisterDeviceMonitor](#oh_gamedevice_unregisterdevicemonitor) (void) | 取消注册设备状态变化事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GameDevice_DestroyAllDeviceInfos](#oh_gamedevice_destroyalldeviceinfos) ([GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) \*\*allDeviceInfos) | 当[GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos)实例不再使用，销毁该实例。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GameDevice_AllDeviceInfos_GetCount](#oh_gamedevice_alldeviceinfos_getcount) (const struct [GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) \*allDeviceInfos, int32_t \*count) | 获取设备数量。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GameDevice_AllDeviceInfos_GetDeviceInfo](#oh_gamedevice_alldeviceinfos_getdeviceinfo) (const struct [GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) \*allDeviceInfos, const int32_t index, [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*\*deviceInfo) | 从所有设备信息中获取指定序号的设备信息。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GameDevice_DeviceEvent_GetChangedType](#oh_gamedevice_deviceevent_getchangedtype) (const struct [GameDevice_DeviceEvent](#gamedevice_deviceevent) \*deviceEvent, [GameDevice_StatusChangedType](#gamedevice_statuschangedtype) \*statusChangedType) | 从设备状态变化事件中获取状态变化类型。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GameDevice_DeviceEvent_GetDeviceInfo](#oh_gamedevice_deviceevent_getdeviceinfo) (const struct [GameDevice_DeviceEvent](#gamedevice_deviceevent) \*deviceEvent, [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*\*deviceInfo) | 从设备状态变化事件中获取设备信息。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GameDevice_DestroyDeviceInfo](#oh_gamedevice_destroydeviceinfo) ([GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*\*deviceInfo) | 当[GameDevice_DeviceInfo](#gamedevice_deviceinfo)实例不再使用，销毁该实例。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GameDevice_DeviceInfo_GetDeviceId](#oh_gamedevice_deviceinfo_getdeviceid) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, char \*\*deviceId) | 从设备信息[GameDevice_DeviceInfo](#gamedevice_deviceinfo)中获取设备ID。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GameDevice_DeviceInfo_GetName](#oh_gamedevice_deviceinfo_getname) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, char \*\*name) | 从设备信息[GameDevice_DeviceInfo](#gamedevice_deviceinfo)中获取设备名称。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GameDevice_DeviceInfo_GetProduct](#oh_gamedevice_deviceinfo_getproduct) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, int32_t \*product) | 从设备信息[GameDevice_DeviceInfo](#gamedevice_deviceinfo)中获取产品信息。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GameDevice_DeviceInfo_GetVersion](#oh_gamedevice_deviceinfo_getversion) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, int32_t \*version) | 从设备信息[GameDevice_DeviceInfo](#gamedevice_deviceinfo)中获取版本信息。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GameDevice_DeviceInfo_GetPhysicalAddress](#oh_gamedevice_deviceinfo_getphysicaladdress) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, char \*\*physicalAddress) | 从设备信息[GameDevice_DeviceInfo](#gamedevice_deviceinfo)中获取物理地址。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GameDevice_DeviceInfo_GetDeviceType](#oh_gamedevice_deviceinfo_getdevicetype) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, [GameDevice_DeviceType](#gamedevice_devicetype) \*deviceType) | 从设备信息[GameDevice_DeviceInfo](#gamedevice_deviceinfo)中获取设备类型。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_LeftShoulder_RegisterButtonInputMonitor](#oh_gamepad_leftshoulder_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册LeftShoulder按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_LeftShoulder_UnregisterButtonInputMonitor](#oh_gamepad_leftshoulder_unregisterbuttoninputmonitor) (void) | 取消注册LeftShoulder按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_RightShoulder_RegisterButtonInputMonitor](#oh_gamepad_rightshoulder_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册RightShoulder按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_RightShoulder_UnregisterButtonInputMonitor](#oh_gamepad_rightshoulder_unregisterbuttoninputmonitor) (void) | 取消注册RightShoulder按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_LeftTrigger_RegisterButtonInputMonitor](#oh_gamepad_lefttrigger_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册LeftTrigger按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_LeftTrigger_UnregisterButtonInputMonitor](#oh_gamepad_lefttrigger_unregisterbuttoninputmonitor) (void) | 取消注册LeftTrigger按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_LeftTrigger_RegisterAxisInputMonitor](#oh_gamepad_lefttrigger_registeraxisinputmonitor) ([GamePad_AxisInputMonitorCallback](#gamepad_axisinputmonitorcallback) inputMonitorCallback) | 注册LeftTrigger轴事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_LeftTrigger_UnregisterAxisInputMonitor](#oh_gamepad_lefttrigger_unregisteraxisinputmonitor) (void) | 取消注册LeftTrigger轴事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_RightTrigger_RegisterButtonInputMonitor](#oh_gamepad_righttrigger_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册RightTrigger按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_RightTrigger_UnregisterButtonInputMonitor](#oh_gamepad_righttrigger_unregisterbuttoninputmonitor) (void) | 取消注册RightTrigger按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_RightTrigger_RegisterAxisInputMonitor](#oh_gamepad_righttrigger_registeraxisinputmonitor) ([GamePad_AxisInputMonitorCallback](#gamepad_axisinputmonitorcallback) inputMonitorCallback) | 注册RightTrigger轴事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_RightTrigger_UnregisterAxisInputMonitor](#oh_gamepad_righttrigger_unregisteraxisinputmonitor) (void) | 取消注册RightTrigger轴事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_ButtonMenu_RegisterButtonInputMonitor](#oh_gamepad_buttonmenu_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册Menu按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_ButtonMenu_UnregisterButtonInputMonitor](#oh_gamepad_buttonmenu_unregisterbuttoninputmonitor) (void) | 取消注册Menu按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_ButtonHome_RegisterButtonInputMonitor](#oh_gamepad_buttonhome_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册Home按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_ButtonHome_UnregisterButtonInputMonitor](#oh_gamepad_buttonhome_unregisterbuttoninputmonitor) (void) | 取消注册Home按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_ButtonA_RegisterButtonInputMonitor](#oh_gamepad_buttona_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册A按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_ButtonA_UnregisterButtonInputMonitor](#oh_gamepad_buttona_unregisterbuttoninputmonitor) (void) | 取消注册A按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_ButtonB_RegisterButtonInputMonitor](#oh_gamepad_buttonb_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册B按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_ButtonB_UnregisterButtonInputMonitor](#oh_gamepad_buttonb_unregisterbuttoninputmonitor) (void) | 取消注册B按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_ButtonX_RegisterButtonInputMonitor](#oh_gamepad_buttonx_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册X按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_ButtonX_UnregisterButtonInputMonitor](#oh_gamepad_buttonx_unregisterbuttoninputmonitor) (void) | 取消注册X按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_ButtonY_RegisterButtonInputMonitor](#oh_gamepad_buttony_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册Y按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_ButtonY_UnregisterButtonInputMonitor](#oh_gamepad_buttony_unregisterbuttoninputmonitor) (void) | 取消注册Y按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_ButtonC_RegisterButtonInputMonitor](#oh_gamepad_buttonc_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册C按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_ButtonC_UnregisterButtonInputMonitor](#oh_gamepad_buttonc_unregisterbuttoninputmonitor) (void) | 取消注册C按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_Dpad_LeftButton_RegisterButtonInputMonitor](#oh_gamepad_dpad_leftbutton_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册方向按键的向左按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_Dpad_LeftButton_UnregisterButtonInputMonitor](#oh_gamepad_dpad_leftbutton_unregisterbuttoninputmonitor) (void) | 取消注册方向按键的向左按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_Dpad_RightButton_RegisterButtonInputMonitor](#oh_gamepad_dpad_rightbutton_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册方向按键的向右按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_Dpad_RightButton_UnregisterButtonInputMonitor](#oh_gamepad_dpad_rightbutton_unregisterbuttoninputmonitor) (void) | 取消注册方向按键的向右按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_Dpad_UpButton_RegisterButtonInputMonitor](#oh_gamepad_dpad_upbutton_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册方向按键的向上按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_Dpad_UpButton_UnregisterButtonInputMonitor](#oh_gamepad_dpad_upbutton_unregisterbuttoninputmonitor) (void) | 取消注册方向按键的向上按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_Dpad_DownButton_RegisterButtonInputMonitor](#oh_gamepad_dpad_downbutton_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册方向按键的向下按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_Dpad_DownButton_UnregisterButtonInputMonitor](#oh_gamepad_dpad_downbutton_unregisterbuttoninputmonitor) (void) | 取消注册方向按键的向下按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_Dpad_RegisterAxisInputMonitor](#oh_gamepad_dpad_registeraxisinputmonitor) ([GamePad_AxisInputMonitorCallback](#gamepad_axisinputmonitorcallback) inputMonitorCallback) | 注册方向按键轴事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_Dpad_UnregisterAxisInputMonitor](#oh_gamepad_dpad_unregisteraxisinputmonitor) (void) | 取消注册方向按键轴事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_LeftThumbstick_RegisterButtonInputMonitor](#oh_gamepad_leftthumbstick_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册LeftThumbstick按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_LeftThumbstick_UnregisterButtonInputMonitor](#oh_gamepad_leftthumbstick_unregisterbuttoninputmonitor) (void) | 取消注册LeftThumbstick按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_LeftThumbstick_RegisterAxisInputMonitor](#oh_gamepad_leftthumbstick_registeraxisinputmonitor) ([GamePad_AxisInputMonitorCallback](#gamepad_axisinputmonitorcallback) inputMonitorCallback) | 注册LeftThumbstick轴事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_LeftThumbstick_UnregisterAxisInputMonitor](#oh_gamepad_leftthumbstick_unregisteraxisinputmonitor) (void) | 取消注册LeftThumbstick轴事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_RightThumbstick_RegisterButtonInputMonitor](#oh_gamepad_rightthumbstick_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册RightThumbstick按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_RightThumbstick_UnregisterButtonInputMonitor](#oh_gamepad_rightthumbstick_unregisterbuttoninputmonitor) (void) | 取消注册RightThumbstick按键事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_RightThumbstick_RegisterAxisInputMonitor](#oh_gamepad_rightthumbstick_registeraxisinputmonitor) ([GamePad_AxisInputMonitorCallback](#gamepad_axisinputmonitorcallback) inputMonitorCallback) | 注册RightThumbstick轴事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_RightThumbstick_UnregisterAxisInputMonitor](#oh_gamepad_rightthumbstick_unregisteraxisinputmonitor) (void) | 取消注册RightThumbstick轴事件的监听回调。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_ButtonEvent_GetDeviceId](#oh_gamepad_buttonevent_getdeviceid) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent, char \*\*deviceId) | 从按键事件[GamePad_ButtonEvent](#gamepad_buttonevent)中获取设备ID。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_ButtonEvent_GetButtonAction](#oh_gamepad_buttonevent_getbuttonaction) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent, [GamePad_Button_ActionType](#gamepad_button_actiontype) \*actionType) | 从按键事件[GamePad_ButtonEvent](#gamepad_buttonevent)中获取按键动作类型。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_ButtonEvent_GetButtonCode](#oh_gamepad_buttonevent_getbuttoncode) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent, int32_t \*code) | 从按键事件[GamePad_ButtonEvent](#gamepad_buttonevent)中获取按键编码。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_ButtonEvent_GetButtonCodeName](#oh_gamepad_buttonevent_getbuttoncodename) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent, char \*\*codeName) | 从按键事件[GamePad_ButtonEvent](#gamepad_buttonevent)中获取按键的名称。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_PressedButtons_GetCount](#oh_gamepad_pressedbuttons_getcount) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent, int32_t \*count) | 从按键事件[GamePad_ButtonEvent](#gamepad_buttonevent)中获取按下的按键数量。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_PressedButtons_GetButtonInfo](#oh_gamepad_pressedbuttons_getbuttoninfo) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent, const int32_t index, [GamePad_PressedButton](#gamepad_pressedbutton) \*\*pressedButton) | 从按键事件[GamePad_ButtonEvent](#gamepad_buttonevent)中获取指定序号的按下的按键。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_DestroyPressedButton](#oh_gamepad_destroypressedbutton) ([GamePad_PressedButton](#gamepad_pressedbutton) \*\*pressedButton) | 当[GamePad_PressedButton](#gamepad_pressedbutton)实例不再使用， 销毁该实例。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_PressedButton_GetButtonCode](#oh_gamepad_pressedbutton_getbuttoncode) (const struct [GamePad_PressedButton](#gamepad_pressedbutton) \*pressedButton, int32_t \*code) | 从按下的按键[GamePad_PressedButton](#gamepad_pressedbutton)中获取按键编码。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_PressedButton_GetButtonCodeName](#oh_gamepad_pressedbutton_getbuttoncodename) (const struct [GamePad_PressedButton](#gamepad_pressedbutton) \*pressedButton, char \*\*codeName) | 从按下的按键[GamePad_PressedButton](#gamepad_pressedbutton)中获取按键的名称。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_ButtonEvent_GetActionTime](#oh_gamepad_buttonevent_getactiontime) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent, int64_t \*actionTime) | 从按键事件[GamePad_ButtonEvent](#gamepad_buttonevent)中获取按键动作的时间。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_AxisEvent_GetDeviceId](#oh_gamepad_axisevent_getdeviceid) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, char \*\*deviceId) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取设备ID。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_AxisEvent_GetAxisSourceType](#oh_gamepad_axisevent_getaxissourcetype) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, [GamePad_AxisSourceType](#gamepad_axissourcetype) \*axisSourceType) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取轴事件来源类型。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_AxisEvent_GetXAxisValue](#oh_gamepad_axisevent_getxaxisvalue) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, double \*axisValue) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取X轴的轴值。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_AxisEvent_GetYAxisValue](#oh_gamepad_axisevent_getyaxisvalue) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, double \*axisValue) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取Y轴的轴值。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_AxisEvent_GetZAxisValue](#oh_gamepad_axisevent_getzaxisvalue) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, double \*axisValue) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取Z轴的轴值。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_AxisEvent_GetRZAxisValue](#oh_gamepad_axisevent_getrzaxisvalue) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, double \*axisValue) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取RZ轴的轴值。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_AxisEvent_GetHatXAxisValue](#oh_gamepad_axisevent_gethatxaxisvalue) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, double \*axisValue) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取HatX轴的轴值。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_AxisEvent_GetHatYAxisValue](#oh_gamepad_axisevent_gethatyaxisvalue) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, double \*axisValue) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取HatY轴的轴值。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_AxisEvent_GetBrakeAxisValue](#oh_gamepad_axisevent_getbrakeaxisvalue) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, double \*axisValue) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取Brake轴的轴值。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_AxisEvent_GetGasAxisValue](#oh_gamepad_axisevent_getgasaxisvalue) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, double \*axisValue) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取Gas轴的轴值。 | 
-| [GameController_ErrorCode](#gamecontroller_errorcode)[OH_GamePad_AxisEvent_GetActionTime](#oh_gamepad_axisevent_getactiontime) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, int64_t \*actionTime) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取动作时间。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_GetAllDeviceInfos](#oh_gamedevice_getalldeviceinfos) ([GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) \*\*allDeviceInfos) | 获取所有在线设备的信息。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_RegisterDeviceMonitor](#oh_gamedevice_registerdevicemonitor) ([GameDevice_DeviceMonitorCallback](#gamedevice_devicemonitorcallback) deviceMonitorCallback) | 注册设备状态变化事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_UnregisterDeviceMonitor](#oh_gamedevice_unregisterdevicemonitor) (void) | 取消注册设备状态变化事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DestroyAllDeviceInfos](#oh_gamedevice_destroyalldeviceinfos) ([GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) \*\*allDeviceInfos) | 当[GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos)实例不再使用，销毁该实例。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_AllDeviceInfos_GetCount](#oh_gamedevice_alldeviceinfos_getcount) (const struct [GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) \*allDeviceInfos, int32_t \*count) | 获取设备数量。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_AllDeviceInfos_GetDeviceInfo](#oh_gamedevice_alldeviceinfos_getdeviceinfo) (const struct [GameDevice_AllDeviceInfos](#gamedevice_alldeviceinfos) \*allDeviceInfos, const int32_t index, [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*\*deviceInfo) | 从所有设备信息中获取指定序号的设备信息。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceEvent_GetChangedType](#oh_gamedevice_deviceevent_getchangedtype) (const struct [GameDevice_DeviceEvent](#gamedevice_deviceevent) \*deviceEvent, [GameDevice_StatusChangedType](#gamedevice_statuschangedtype) \*statusChangedType) | 从设备状态变化事件中获取状态变化类型。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceEvent_GetDeviceInfo](#oh_gamedevice_deviceevent_getdeviceinfo) (const struct [GameDevice_DeviceEvent](#gamedevice_deviceevent) \*deviceEvent, [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*\*deviceInfo) | 从设备状态变化事件中获取设备信息。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DestroyDeviceInfo](#oh_gamedevice_destroydeviceinfo) ([GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*\*deviceInfo) | 当[GameDevice_DeviceInfo](#gamedevice_deviceinfo)实例不再使用，销毁该实例。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceInfo_GetDeviceId](#oh_gamedevice_deviceinfo_getdeviceid) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, char \*\*deviceId) | 从设备信息[GameDevice_DeviceInfo](#gamedevice_deviceinfo)中获取设备ID。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceInfo_GetName](#oh_gamedevice_deviceinfo_getname) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, char \*\*name) | 从设备信息[GameDevice_DeviceInfo](#gamedevice_deviceinfo)中获取设备名称。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceInfo_GetProduct](#oh_gamedevice_deviceinfo_getproduct) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, int32_t \*product) | 从设备信息[GameDevice_DeviceInfo](#gamedevice_deviceinfo)中获取产品信息。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceInfo_GetVersion](#oh_gamedevice_deviceinfo_getversion) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, int32_t \*version) | 从设备信息[GameDevice_DeviceInfo](#gamedevice_deviceinfo)中获取版本信息。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceInfo_GetPhysicalAddress](#oh_gamedevice_deviceinfo_getphysicaladdress) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, char \*\*physicalAddress) | 从设备信息[GameDevice_DeviceInfo](#gamedevice_deviceinfo)中获取物理地址。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GameDevice_DeviceInfo_GetDeviceType](#oh_gamedevice_deviceinfo_getdevicetype) (const struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) \*deviceInfo, [GameDevice_DeviceType](#gamedevice_devicetype) \*deviceType) | 从设备信息[GameDevice_DeviceInfo](#gamedevice_deviceinfo)中获取设备类型。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_LeftShoulder_RegisterButtonInputMonitor](#oh_gamepad_leftshoulder_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册LeftShoulder按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_LeftShoulder_UnregisterButtonInputMonitor](#oh_gamepad_leftshoulder_unregisterbuttoninputmonitor) (void) | 取消注册LeftShoulder按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_RightShoulder_RegisterButtonInputMonitor](#oh_gamepad_rightshoulder_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册RightShoulder按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_RightShoulder_UnregisterButtonInputMonitor](#oh_gamepad_rightshoulder_unregisterbuttoninputmonitor) (void) | 取消注册RightShoulder按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_LeftTrigger_RegisterButtonInputMonitor](#oh_gamepad_lefttrigger_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册LeftTrigger按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_LeftTrigger_UnregisterButtonInputMonitor](#oh_gamepad_lefttrigger_unregisterbuttoninputmonitor) (void) | 取消注册LeftTrigger按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_LeftTrigger_RegisterAxisInputMonitor](#oh_gamepad_lefttrigger_registeraxisinputmonitor) ([GamePad_AxisInputMonitorCallback](#gamepad_axisinputmonitorcallback) inputMonitorCallback) | 注册LeftTrigger轴事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_LeftTrigger_UnregisterAxisInputMonitor](#oh_gamepad_lefttrigger_unregisteraxisinputmonitor) (void) | 取消注册LeftTrigger轴事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_RightTrigger_RegisterButtonInputMonitor](#oh_gamepad_righttrigger_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册RightTrigger按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_RightTrigger_UnregisterButtonInputMonitor](#oh_gamepad_righttrigger_unregisterbuttoninputmonitor) (void) | 取消注册RightTrigger按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_RightTrigger_RegisterAxisInputMonitor](#oh_gamepad_righttrigger_registeraxisinputmonitor) ([GamePad_AxisInputMonitorCallback](#gamepad_axisinputmonitorcallback) inputMonitorCallback) | 注册RightTrigger轴事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_RightTrigger_UnregisterAxisInputMonitor](#oh_gamepad_righttrigger_unregisteraxisinputmonitor) (void) | 取消注册RightTrigger轴事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonMenu_RegisterButtonInputMonitor](#oh_gamepad_buttonmenu_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册Menu按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonMenu_UnregisterButtonInputMonitor](#oh_gamepad_buttonmenu_unregisterbuttoninputmonitor) (void) | 取消注册Menu按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonHome_RegisterButtonInputMonitor](#oh_gamepad_buttonhome_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册Home按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonHome_UnregisterButtonInputMonitor](#oh_gamepad_buttonhome_unregisterbuttoninputmonitor) (void) | 取消注册Home按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonA_RegisterButtonInputMonitor](#oh_gamepad_buttona_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册A按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonA_UnregisterButtonInputMonitor](#oh_gamepad_buttona_unregisterbuttoninputmonitor) (void) | 取消注册A按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonB_RegisterButtonInputMonitor](#oh_gamepad_buttonb_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册B按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonB_UnregisterButtonInputMonitor](#oh_gamepad_buttonb_unregisterbuttoninputmonitor) (void) | 取消注册B按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonX_RegisterButtonInputMonitor](#oh_gamepad_buttonx_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册X按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonX_UnregisterButtonInputMonitor](#oh_gamepad_buttonx_unregisterbuttoninputmonitor) (void) | 取消注册X按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonY_RegisterButtonInputMonitor](#oh_gamepad_buttony_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册Y按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonY_UnregisterButtonInputMonitor](#oh_gamepad_buttony_unregisterbuttoninputmonitor) (void) | 取消注册Y按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonC_RegisterButtonInputMonitor](#oh_gamepad_buttonc_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册C按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonC_UnregisterButtonInputMonitor](#oh_gamepad_buttonc_unregisterbuttoninputmonitor) (void) | 取消注册C按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_Dpad_LeftButton_RegisterButtonInputMonitor](#oh_gamepad_dpad_leftbutton_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册方向按键的向左按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_Dpad_LeftButton_UnregisterButtonInputMonitor](#oh_gamepad_dpad_leftbutton_unregisterbuttoninputmonitor) (void) | 取消注册方向按键的向左按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_Dpad_RightButton_RegisterButtonInputMonitor](#oh_gamepad_dpad_rightbutton_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册方向按键的向右按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_Dpad_RightButton_UnregisterButtonInputMonitor](#oh_gamepad_dpad_rightbutton_unregisterbuttoninputmonitor) (void) | 取消注册方向按键的向右按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_Dpad_UpButton_RegisterButtonInputMonitor](#oh_gamepad_dpad_upbutton_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册方向按键的向上按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_Dpad_UpButton_UnregisterButtonInputMonitor](#oh_gamepad_dpad_upbutton_unregisterbuttoninputmonitor) (void) | 取消注册方向按键的向上按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_Dpad_DownButton_RegisterButtonInputMonitor](#oh_gamepad_dpad_downbutton_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册方向按键的向下按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_Dpad_DownButton_UnregisterButtonInputMonitor](#oh_gamepad_dpad_downbutton_unregisterbuttoninputmonitor) (void) | 取消注册方向按键的向下按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_Dpad_RegisterAxisInputMonitor](#oh_gamepad_dpad_registeraxisinputmonitor) ([GamePad_AxisInputMonitorCallback](#gamepad_axisinputmonitorcallback) inputMonitorCallback) | 注册方向按键轴事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_Dpad_UnregisterAxisInputMonitor](#oh_gamepad_dpad_unregisteraxisinputmonitor) (void) | 取消注册方向按键轴事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_LeftThumbstick_RegisterButtonInputMonitor](#oh_gamepad_leftthumbstick_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册LeftThumbstick按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_LeftThumbstick_UnregisterButtonInputMonitor](#oh_gamepad_leftthumbstick_unregisterbuttoninputmonitor) (void) | 取消注册LeftThumbstick按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_LeftThumbstick_RegisterAxisInputMonitor](#oh_gamepad_leftthumbstick_registeraxisinputmonitor) ([GamePad_AxisInputMonitorCallback](#gamepad_axisinputmonitorcallback) inputMonitorCallback) | 注册LeftThumbstick轴事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_LeftThumbstick_UnregisterAxisInputMonitor](#oh_gamepad_leftthumbstick_unregisteraxisinputmonitor) (void) | 取消注册LeftThumbstick轴事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_RightThumbstick_RegisterButtonInputMonitor](#oh_gamepad_rightthumbstick_registerbuttoninputmonitor) ([GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback) inputMonitorCallback) | 注册RightThumbstick按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_RightThumbstick_UnregisterButtonInputMonitor](#oh_gamepad_rightthumbstick_unregisterbuttoninputmonitor) (void) | 取消注册RightThumbstick按键事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_RightThumbstick_RegisterAxisInputMonitor](#oh_gamepad_rightthumbstick_registeraxisinputmonitor) ([GamePad_AxisInputMonitorCallback](#gamepad_axisinputmonitorcallback) inputMonitorCallback) | 注册RightThumbstick轴事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_RightThumbstick_UnregisterAxisInputMonitor](#oh_gamepad_rightthumbstick_unregisteraxisinputmonitor) (void) | 取消注册RightThumbstick轴事件的监听回调。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonEvent_GetDeviceId](#oh_gamepad_buttonevent_getdeviceid) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent, char \*\*deviceId) | 从按键事件[GamePad_ButtonEvent](#gamepad_buttonevent)中获取设备ID。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonEvent_GetButtonAction](#oh_gamepad_buttonevent_getbuttonaction) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent, [GamePad_Button_ActionType](#gamepad_button_actiontype) \*actionType) | 从按键事件[GamePad_ButtonEvent](#gamepad_buttonevent)中获取按键动作类型。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonEvent_GetButtonCode](#oh_gamepad_buttonevent_getbuttoncode) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent, int32_t \*code) | 从按键事件[GamePad_ButtonEvent](#gamepad_buttonevent)中获取按键编码。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonEvent_GetButtonCodeName](#oh_gamepad_buttonevent_getbuttoncodename) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent, char \*\*codeName) | 从按键事件[GamePad_ButtonEvent](#gamepad_buttonevent)中获取按键的名称。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_PressedButtons_GetCount](#oh_gamepad_pressedbuttons_getcount) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent, int32_t \*count) | 从按键事件[GamePad_ButtonEvent](#gamepad_buttonevent)中获取按下的按键数量。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_PressedButtons_GetButtonInfo](#oh_gamepad_pressedbuttons_getbuttoninfo) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent, const int32_t index, [GamePad_PressedButton](#gamepad_pressedbutton) \*\*pressedButton) | 从按键事件[GamePad_ButtonEvent](#gamepad_buttonevent)中获取指定序号的按下的按键。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_DestroyPressedButton](#oh_gamepad_destroypressedbutton) ([GamePad_PressedButton](#gamepad_pressedbutton) \*\*pressedButton) | 当[GamePad_PressedButton](#gamepad_pressedbutton)实例不再使用， 销毁该实例。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_PressedButton_GetButtonCode](#oh_gamepad_pressedbutton_getbuttoncode) (const struct [GamePad_PressedButton](#gamepad_pressedbutton) \*pressedButton, int32_t \*code) | 从按下的按键[GamePad_PressedButton](#gamepad_pressedbutton)中获取按键编码。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_PressedButton_GetButtonCodeName](#oh_gamepad_pressedbutton_getbuttoncodename) (const struct [GamePad_PressedButton](#gamepad_pressedbutton) \*pressedButton, char \*\*codeName) | 从按下的按键[GamePad_PressedButton](#gamepad_pressedbutton)中获取按键的名称。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_ButtonEvent_GetActionTime](#oh_gamepad_buttonevent_getactiontime) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent, int64_t \*actionTime) | 从按键事件[GamePad_ButtonEvent](#gamepad_buttonevent)中获取按键动作的时间。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_AxisEvent_GetDeviceId](#oh_gamepad_axisevent_getdeviceid) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, char \*\*deviceId) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取设备ID。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_AxisEvent_GetAxisSourceType](#oh_gamepad_axisevent_getaxissourcetype) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, [GamePad_AxisSourceType](#gamepad_axissourcetype) \*axisSourceType) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取轴事件来源类型。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_AxisEvent_GetXAxisValue](#oh_gamepad_axisevent_getxaxisvalue) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, double \*axisValue) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取X轴的轴值。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_AxisEvent_GetYAxisValue](#oh_gamepad_axisevent_getyaxisvalue) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, double \*axisValue) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取Y轴的轴值。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_AxisEvent_GetZAxisValue](#oh_gamepad_axisevent_getzaxisvalue) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, double \*axisValue) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取Z轴的轴值。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_AxisEvent_GetRZAxisValue](#oh_gamepad_axisevent_getrzaxisvalue) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, double \*axisValue) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取RZ轴的轴值。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_AxisEvent_GetHatXAxisValue](#oh_gamepad_axisevent_gethatxaxisvalue) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, double \*axisValue) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取HatX轴的轴值。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_AxisEvent_GetHatYAxisValue](#oh_gamepad_axisevent_gethatyaxisvalue) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, double \*axisValue) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取HatY轴的轴值。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_AxisEvent_GetBrakeAxisValue](#oh_gamepad_axisevent_getbrakeaxisvalue) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, double \*axisValue) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取Brake轴的轴值。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_AxisEvent_GetGasAxisValue](#oh_gamepad_axisevent_getgasaxisvalue) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, double \*axisValue) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取Gas轴的轴值。 | 
+| [GameController_ErrorCode](#gamecontroller_errorcode) [OH_GamePad_AxisEvent_GetActionTime](#oh_gamepad_axisevent_getactiontime) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent, int64_t \*actionTime) | 从轴事件[GamePad_AxisEvent](#gamepad_axisevent)中获取动作时间。 | 
 
 
 ## 类型定义说明
@@ -151,8 +151,8 @@ GameController模块提供游戏控制器功能的API接口。
 
 ### GameController_ErrorCode
 
-```
-typedef enum GameController_ErrorCodeGameController_ErrorCode
+```c
+typedef enum GameController_ErrorCode GameController_ErrorCode
 ```
 
 **描述**
@@ -164,8 +164,8 @@ typedef enum GameController_ErrorCodeGameController_ErrorCode
 
 ### GameDevice_AllDeviceInfos
 
-```
-typedef struct GameDevice_AllDeviceInfosGameDevice_AllDeviceInfos
+```c
+typedef struct GameDevice_AllDeviceInfos GameDevice_AllDeviceInfos
 ```
 
 **描述**
@@ -177,8 +177,8 @@ typedef struct GameDevice_AllDeviceInfosGameDevice_AllDeviceInfos
 
 ### GameDevice_DeviceEvent
 
-```
-typedef struct GameDevice_DeviceEventGameDevice_DeviceEvent
+```c
+typedef struct GameDevice_DeviceEvent GameDevice_DeviceEvent
 ```
 
 **描述**
@@ -190,8 +190,8 @@ typedef struct GameDevice_DeviceEventGameDevice_DeviceEvent
 
 ### GameDevice_DeviceInfo
 
-```
-typedef struct GameDevice_DeviceInfoGameDevice_DeviceInfo
+```c
+typedef struct GameDevice_DeviceInfo GameDevice_DeviceInfo
 ```
 
 **描述**
@@ -203,7 +203,7 @@ typedef struct GameDevice_DeviceInfoGameDevice_DeviceInfo
 
 ### GameDevice_DeviceMonitorCallback
 
-```
+```c
 typedef void(*GameDevice_DeviceMonitorCallback) (const struct GameDevice_DeviceEvent *deviceEvent)
 ```
 
@@ -222,8 +222,8 @@ typedef void(*GameDevice_DeviceMonitorCallback) (const struct GameDevice_DeviceE
 
 ### GameDevice_DeviceType
 
-```
-typedef enum GameDevice_DeviceTypeGameDevice_DeviceType
+```c
+typedef enum GameDevice_DeviceType GameDevice_DeviceType
 ```
 
 **描述**
@@ -235,8 +235,8 @@ typedef enum GameDevice_DeviceTypeGameDevice_DeviceType
 
 ### GameDevice_StatusChangedType
 
-```
-typedef enum GameDevice_StatusChangedTypeGameDevice_StatusChangedType
+```c
+typedef enum GameDevice_StatusChangedType GameDevice_StatusChangedType
 ```
 
 **描述**
@@ -248,8 +248,8 @@ typedef enum GameDevice_StatusChangedTypeGameDevice_StatusChangedType
 
 ### GamePad_AxisEvent
 
-```
-typedef struct GamePad_AxisEventGamePad_AxisEvent
+```c
+typedef struct GamePad_AxisEvent GamePad_AxisEvent
 ```
 
 **描述**
@@ -261,7 +261,7 @@ typedef struct GamePad_AxisEventGamePad_AxisEvent
 
 ### GamePad_AxisInputMonitorCallback
 
-```
+```c
 typedef void(*GamePad_AxisInputMonitorCallback) (const struct GamePad_AxisEvent *axisEvent)
 ```
 
@@ -280,8 +280,8 @@ typedef void(*GamePad_AxisInputMonitorCallback) (const struct GamePad_AxisEvent 
 
 ### GamePad_AxisSourceType
 
-```
-typedef enum GamePad_AxisSourceType
+```c
+typedef enum GamePad_AxisSourceType GamePad_AxisSourceType
 ```
 
 **描述**
@@ -293,8 +293,8 @@ typedef enum GamePad_AxisSourceType
 
 ### GamePad_Button_ActionType
 
-```
-typedef enum GamePad_Button_ActionTypeGamePad_Button_ActionType
+```c
+typedef enum GamePad_Button_ActionType GamePad_Button_ActionType
 ```
 
 **描述**
@@ -306,8 +306,8 @@ typedef enum GamePad_Button_ActionTypeGamePad_Button_ActionType
 
 ### GamePad_ButtonEvent
 
-```
-typedef struct GamePad_ButtonEventGamePad_ButtonEvent
+```c
+typedef struct GamePad_ButtonEvent GamePad_ButtonEvent
 ```
 
 **描述**
@@ -319,7 +319,7 @@ typedef struct GamePad_ButtonEventGamePad_ButtonEvent
 
 ### GamePad_ButtonInputMonitorCallback
 
-```
+```c
 typedef void(*GamePad_ButtonInputMonitorCallback) (const struct GamePad_ButtonEvent *buttonEvent)
 ```
 
@@ -338,8 +338,8 @@ typedef void(*GamePad_ButtonInputMonitorCallback) (const struct GamePad_ButtonEv
 
 ### GamePad_PressedButton
 
-```
-typedef struct GamePad_PressedButtonGamePad_PressedButton
+```c
+typedef struct GamePad_PressedButton GamePad_PressedButton
 ```
 
 **描述**
@@ -354,7 +354,7 @@ typedef struct GamePad_PressedButtonGamePad_PressedButton
 
 ### GameController_ErrorCode
 
-```
+```c
 enum GameController_ErrorCode
 ```
 
@@ -374,7 +374,7 @@ enum GameController_ErrorCode
 
 ### GameDevice_DeviceType
 
-```
+```c
 enum GameDevice_DeviceType
 ```
 
@@ -392,7 +392,7 @@ enum GameDevice_DeviceType
 
 ### GameDevice_StatusChangedType
 
-```
+```c
 enum GameDevice_StatusChangedType
 ```
 
@@ -410,7 +410,7 @@ enum GameDevice_StatusChangedType
 
 ### GamePad_AxisSourceType
 
-```
+```c
 enum GamePad_AxisSourceType
 ```
 
@@ -431,7 +431,7 @@ enum GamePad_AxisSourceType
 
 ### GamePad_Button_ActionType
 
-```
+```c
 enum GamePad_Button_ActionType
 ```
 
@@ -452,7 +452,7 @@ enum GamePad_Button_ActionType
 
 ### OH_GameDevice_AllDeviceInfos_GetCount()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetCount (const struct GameDevice_AllDeviceInfos *allDeviceInfos, int32_t *count)
 ```
 
@@ -480,7 +480,7 @@ GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetCount (const struct Gam
 
 ### OH_GameDevice_AllDeviceInfos_GetDeviceInfo()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetDeviceInfo (const struct GameDevice_AllDeviceInfos *allDeviceInfos, const int32_t index, GameDevice_DeviceInfo **deviceInfo)
 ```
 
@@ -509,7 +509,7 @@ GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetDeviceInfo (const struc
 
 ### OH_GameDevice_DestroyAllDeviceInfos()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_DestroyAllDeviceInfos (GameDevice_AllDeviceInfos **allDeviceInfos)
 ```
 
@@ -536,7 +536,7 @@ GameController_ErrorCode OH_GameDevice_DestroyAllDeviceInfos (GameDevice_AllDevi
 
 ### OH_GameDevice_DestroyDeviceInfo()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_DestroyDeviceInfo (GameDevice_DeviceInfo **deviceInfo)
 ```
 
@@ -563,7 +563,7 @@ GameController_ErrorCode OH_GameDevice_DestroyDeviceInfo (GameDevice_DeviceInfo 
 
 ### OH_GameDevice_DeviceEvent_GetChangedType()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_DeviceEvent_GetChangedType (const struct GameDevice_DeviceEvent *deviceEvent, GameDevice_StatusChangedType *statusChangedType)
 ```
 
@@ -591,7 +591,7 @@ GameController_ErrorCode OH_GameDevice_DeviceEvent_GetChangedType (const struct 
 
 ### OH_GameDevice_DeviceEvent_GetDeviceInfo()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_DeviceEvent_GetDeviceInfo (const struct GameDevice_DeviceEvent *deviceEvent, GameDevice_DeviceInfo **deviceInfo)
 ```
 
@@ -619,7 +619,7 @@ GameController_ErrorCode OH_GameDevice_DeviceEvent_GetDeviceInfo (const struct G
 
 ### OH_GameDevice_DeviceInfo_GetDeviceId()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceId (const struct GameDevice_DeviceInfo *deviceInfo, char **deviceId)
 ```
 
@@ -649,7 +649,7 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceId (const struct Game
 
 ### OH_GameDevice_DeviceInfo_GetDeviceType()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceType (const struct GameDevice_DeviceInfo *deviceInfo, GameDevice_DeviceType *deviceType)
 ```
 
@@ -677,7 +677,7 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceType (const struct Ga
 
 ### OH_GameDevice_DeviceInfo_GetName()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_DeviceInfo_GetName (const struct GameDevice_DeviceInfo *deviceInfo, char **name)
 ```
 
@@ -707,7 +707,7 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetName (const struct GameDevi
 
 ### OH_GameDevice_DeviceInfo_GetPhysicalAddress()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_DeviceInfo_GetPhysicalAddress (const struct GameDevice_DeviceInfo *deviceInfo, char **physicalAddress)
 ```
 
@@ -737,7 +737,7 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetPhysicalAddress (const stru
 
 ### OH_GameDevice_DeviceInfo_GetProduct()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_DeviceInfo_GetProduct (const struct GameDevice_DeviceInfo *deviceInfo, int32_t *product)
 ```
 
@@ -765,7 +765,7 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetProduct (const struct GameD
 
 ### OH_GameDevice_DeviceInfo_GetVersion()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVersion (const struct GameDevice_DeviceInfo *deviceInfo, int32_t *version)
 ```
 
@@ -793,7 +793,7 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVersion (const struct GameD
 
 ### OH_GameDevice_GetAllDeviceInfos()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_GetAllDeviceInfos (GameDevice_AllDeviceInfos **allDeviceInfos)
 ```
 
@@ -820,7 +820,7 @@ GameController_ErrorCode OH_GameDevice_GetAllDeviceInfos (GameDevice_AllDeviceIn
 
 ### OH_GameDevice_RegisterDeviceMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_RegisterDeviceMonitor (GameDevice_DeviceMonitorCallback deviceMonitorCallback)
 ```
 
@@ -847,7 +847,7 @@ GameController_ErrorCode OH_GameDevice_RegisterDeviceMonitor (GameDevice_DeviceM
 
 ### OH_GameDevice_UnregisterDeviceMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_UnregisterDeviceMonitor (void)
 ```
 
@@ -864,7 +864,7 @@ GameController_ErrorCode OH_GameDevice_UnregisterDeviceMonitor (void)
 
 ### OH_GamePad_AxisEvent_GetActionTime()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetActionTime (const struct GamePad_AxisEvent *axisEvent, int64_t *actionTime)
 ```
 
@@ -892,7 +892,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetActionTime (const struct GamePa
 
 ### OH_GamePad_AxisEvent_GetAxisSourceType()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetAxisSourceType (const struct GamePad_AxisEvent *axisEvent, GamePad_AxisSourceType *axisSourceType)
 ```
 
@@ -920,7 +920,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetAxisSourceType (const struct Ga
 
 ### OH_GamePad_AxisEvent_GetBrakeAxisValue()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetBrakeAxisValue (const struct GamePad_AxisEvent *axisEvent, double *axisValue)
 ```
 
@@ -948,7 +948,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetBrakeAxisValue (const struct Ga
 
 ### OH_GamePad_AxisEvent_GetDeviceId()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetDeviceId (const struct GamePad_AxisEvent *axisEvent, char **deviceId)
 ```
 
@@ -978,7 +978,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetDeviceId (const struct GamePad_
 
 ### OH_GamePad_AxisEvent_GetGasAxisValue()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetGasAxisValue (const struct GamePad_AxisEvent *axisEvent, double *axisValue)
 ```
 
@@ -1006,7 +1006,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetGasAxisValue (const struct Game
 
 ### OH_GamePad_AxisEvent_GetHatXAxisValue()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetHatXAxisValue (const struct GamePad_AxisEvent *axisEvent, double *axisValue)
 ```
 
@@ -1034,7 +1034,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetHatXAxisValue (const struct Gam
 
 ### OH_GamePad_AxisEvent_GetHatYAxisValue()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetHatYAxisValue (const struct GamePad_AxisEvent *axisEvent, double *axisValue)
 ```
 
@@ -1062,7 +1062,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetHatYAxisValue (const struct Gam
 
 ### OH_GamePad_AxisEvent_GetRZAxisValue()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetRZAxisValue (const struct GamePad_AxisEvent *axisEvent, double *axisValue)
 ```
 
@@ -1090,7 +1090,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetRZAxisValue (const struct GameP
 
 ### OH_GamePad_AxisEvent_GetXAxisValue()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetXAxisValue (const struct GamePad_AxisEvent *axisEvent, double *axisValue)
 ```
 
@@ -1118,7 +1118,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetXAxisValue (const struct GamePa
 
 ### OH_GamePad_AxisEvent_GetYAxisValue()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetYAxisValue (const struct GamePad_AxisEvent *axisEvent, double *axisValue)
 ```
 
@@ -1146,7 +1146,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetYAxisValue (const struct GamePa
 
 ### OH_GamePad_AxisEvent_GetZAxisValue()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetZAxisValue (const struct GamePad_AxisEvent *axisEvent, double *axisValue)
 ```
 
@@ -1174,7 +1174,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetZAxisValue (const struct GamePa
 
 ### OH_GamePad_ButtonA_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonA_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1201,7 +1201,7 @@ GameController_ErrorCode OH_GamePad_ButtonA_RegisterButtonInputMonitor (GamePad_
 
 ### OH_GamePad_ButtonA_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonA_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1218,7 +1218,7 @@ GameController_ErrorCode OH_GamePad_ButtonA_UnregisterButtonInputMonitor (void)
 
 ### OH_GamePad_ButtonB_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonB_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1245,7 +1245,7 @@ GameController_ErrorCode OH_GamePad_ButtonB_RegisterButtonInputMonitor (GamePad_
 
 ### OH_GamePad_ButtonB_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonB_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1262,7 +1262,7 @@ GameController_ErrorCode OH_GamePad_ButtonB_UnregisterButtonInputMonitor (void)
 
 ### OH_GamePad_ButtonC_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonC_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1289,7 +1289,7 @@ GameController_ErrorCode OH_GamePad_ButtonC_RegisterButtonInputMonitor (GamePad_
 
 ### OH_GamePad_ButtonC_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonC_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1306,7 +1306,7 @@ GameController_ErrorCode OH_GamePad_ButtonC_UnregisterButtonInputMonitor (void)
 
 ### OH_GamePad_ButtonEvent_GetActionTime()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonEvent_GetActionTime (const struct GamePad_ButtonEvent *buttonEvent, int64_t *actionTime)
 ```
 
@@ -1334,7 +1334,7 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetActionTime (const struct Game
 
 ### OH_GamePad_ButtonEvent_GetButtonAction()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonAction (const struct GamePad_ButtonEvent *buttonEvent, GamePad_Button_ActionType *actionType)
 ```
 
@@ -1362,7 +1362,7 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonAction (const struct Ga
 
 ### OH_GamePad_ButtonEvent_GetButtonCode()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonCode (const struct GamePad_ButtonEvent *buttonEvent, int32_t *code)
 ```
 
@@ -1390,7 +1390,7 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonCode (const struct Game
 
 ### OH_GamePad_ButtonEvent_GetButtonCodeName()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonCodeName (const struct GamePad_ButtonEvent *buttonEvent, char **codeName)
 ```
 
@@ -1420,7 +1420,7 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonCodeName (const struct 
 
 ### OH_GamePad_ButtonEvent_GetDeviceId()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonEvent_GetDeviceId (const struct GamePad_ButtonEvent *buttonEvent, char **deviceId)
 ```
 
@@ -1450,7 +1450,7 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetDeviceId (const struct GamePa
 
 ### OH_GamePad_ButtonHome_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonHome_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1477,7 +1477,7 @@ GameController_ErrorCode OH_GamePad_ButtonHome_RegisterButtonInputMonitor (GameP
 
 ### OH_GamePad_ButtonHome_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonHome_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1494,7 +1494,7 @@ GameController_ErrorCode OH_GamePad_ButtonHome_UnregisterButtonInputMonitor (voi
 
 ### OH_GamePad_ButtonMenu_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonMenu_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1521,7 +1521,7 @@ GameController_ErrorCode OH_GamePad_ButtonMenu_RegisterButtonInputMonitor (GameP
 
 ### OH_GamePad_ButtonMenu_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonMenu_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1538,7 +1538,7 @@ GameController_ErrorCode OH_GamePad_ButtonMenu_UnregisterButtonInputMonitor (voi
 
 ### OH_GamePad_ButtonX_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonX_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1565,7 +1565,7 @@ GameController_ErrorCode OH_GamePad_ButtonX_RegisterButtonInputMonitor (GamePad_
 
 ### OH_GamePad_ButtonX_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonX_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1582,7 +1582,7 @@ GameController_ErrorCode OH_GamePad_ButtonX_UnregisterButtonInputMonitor (void)
 
 ### OH_GamePad_ButtonY_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonY_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1609,7 +1609,7 @@ GameController_ErrorCode OH_GamePad_ButtonY_RegisterButtonInputMonitor (GamePad_
 
 ### OH_GamePad_ButtonY_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonY_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1626,7 +1626,7 @@ GameController_ErrorCode OH_GamePad_ButtonY_UnregisterButtonInputMonitor (void)
 
 ### OH_GamePad_DestroyPressedButton()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_DestroyPressedButton (GamePad_PressedButton **pressedButton)
 ```
 
@@ -1653,7 +1653,7 @@ GameController_ErrorCode OH_GamePad_DestroyPressedButton (GamePad_PressedButton 
 
 ### OH_GamePad_Dpad_DownButton_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_Dpad_DownButton_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1680,7 +1680,7 @@ GameController_ErrorCode OH_GamePad_Dpad_DownButton_RegisterButtonInputMonitor (
 
 ### OH_GamePad_Dpad_DownButton_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_Dpad_DownButton_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1697,7 +1697,7 @@ GameController_ErrorCode OH_GamePad_Dpad_DownButton_UnregisterButtonInputMonitor
 
 ### OH_GamePad_Dpad_LeftButton_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_Dpad_LeftButton_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1724,7 +1724,7 @@ GameController_ErrorCode OH_GamePad_Dpad_LeftButton_RegisterButtonInputMonitor (
 
 ### OH_GamePad_Dpad_LeftButton_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_Dpad_LeftButton_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1741,7 +1741,7 @@ GameController_ErrorCode OH_GamePad_Dpad_LeftButton_UnregisterButtonInputMonitor
 
 ### OH_GamePad_Dpad_RegisterAxisInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_Dpad_RegisterAxisInputMonitor (GamePad_AxisInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1768,7 +1768,7 @@ GameController_ErrorCode OH_GamePad_Dpad_RegisterAxisInputMonitor (GamePad_AxisI
 
 ### OH_GamePad_Dpad_RightButton_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_Dpad_RightButton_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1795,7 +1795,7 @@ GameController_ErrorCode OH_GamePad_Dpad_RightButton_RegisterButtonInputMonitor 
 
 ### OH_GamePad_Dpad_RightButton_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_Dpad_RightButton_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1812,7 +1812,7 @@ GameController_ErrorCode OH_GamePad_Dpad_RightButton_UnregisterButtonInputMonito
 
 ### OH_GamePad_Dpad_UnregisterAxisInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_Dpad_UnregisterAxisInputMonitor (void)
 ```
 
@@ -1829,7 +1829,7 @@ GameController_ErrorCode OH_GamePad_Dpad_UnregisterAxisInputMonitor (void)
 
 ### OH_GamePad_Dpad_UpButton_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_Dpad_UpButton_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1856,7 +1856,7 @@ GameController_ErrorCode OH_GamePad_Dpad_UpButton_RegisterButtonInputMonitor (Ga
 
 ### OH_GamePad_Dpad_UpButton_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_Dpad_UpButton_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1873,7 +1873,7 @@ GameController_ErrorCode OH_GamePad_Dpad_UpButton_UnregisterButtonInputMonitor (
 
 ### OH_GamePad_LeftShoulder_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_LeftShoulder_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1900,7 +1900,7 @@ GameController_ErrorCode OH_GamePad_LeftShoulder_RegisterButtonInputMonitor (Gam
 
 ### OH_GamePad_LeftShoulder_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_LeftShoulder_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1917,7 +1917,7 @@ GameController_ErrorCode OH_GamePad_LeftShoulder_UnregisterButtonInputMonitor (v
 
 ### OH_GamePad_LeftThumbstick_RegisterAxisInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_LeftThumbstick_RegisterAxisInputMonitor (GamePad_AxisInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1944,7 +1944,7 @@ GameController_ErrorCode OH_GamePad_LeftThumbstick_RegisterAxisInputMonitor (Gam
 
 ### OH_GamePad_LeftThumbstick_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_LeftThumbstick_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1971,7 +1971,7 @@ GameController_ErrorCode OH_GamePad_LeftThumbstick_RegisterButtonInputMonitor (G
 
 ### OH_GamePad_LeftThumbstick_UnregisterAxisInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_LeftThumbstick_UnregisterAxisInputMonitor (void)
 ```
 
@@ -1988,7 +1988,7 @@ GameController_ErrorCode OH_GamePad_LeftThumbstick_UnregisterAxisInputMonitor (v
 
 ### OH_GamePad_LeftThumbstick_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_LeftThumbstick_UnregisterButtonInputMonitor (void)
 ```
 
@@ -2005,7 +2005,7 @@ GameController_ErrorCode OH_GamePad_LeftThumbstick_UnregisterButtonInputMonitor 
 
 ### OH_GamePad_LeftTrigger_RegisterAxisInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_LeftTrigger_RegisterAxisInputMonitor (GamePad_AxisInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -2032,7 +2032,7 @@ GameController_ErrorCode OH_GamePad_LeftTrigger_RegisterAxisInputMonitor (GamePa
 
 ### OH_GamePad_LeftTrigger_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_LeftTrigger_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -2059,7 +2059,7 @@ GameController_ErrorCode OH_GamePad_LeftTrigger_RegisterButtonInputMonitor (Game
 
 ### OH_GamePad_LeftTrigger_UnregisterAxisInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_LeftTrigger_UnregisterAxisInputMonitor (void)
 ```
 
@@ -2076,7 +2076,7 @@ GameController_ErrorCode OH_GamePad_LeftTrigger_UnregisterAxisInputMonitor (void
 
 ### OH_GamePad_LeftTrigger_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_LeftTrigger_UnregisterButtonInputMonitor (void)
 ```
 
@@ -2093,7 +2093,7 @@ GameController_ErrorCode OH_GamePad_LeftTrigger_UnregisterButtonInputMonitor (vo
 
 ### OH_GamePad_PressedButton_GetButtonCode()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_PressedButton_GetButtonCode (const struct GamePad_PressedButton *pressedButton, int32_t *code)
 ```
 
@@ -2121,7 +2121,7 @@ GameController_ErrorCode OH_GamePad_PressedButton_GetButtonCode (const struct Ga
 
 ### OH_GamePad_PressedButton_GetButtonCodeName()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_PressedButton_GetButtonCodeName (const struct GamePad_PressedButton *pressedButton, char **codeName)
 ```
 
@@ -2151,7 +2151,7 @@ GameController_ErrorCode OH_GamePad_PressedButton_GetButtonCodeName (const struc
 
 ### OH_GamePad_PressedButtons_GetButtonInfo()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_PressedButtons_GetButtonInfo (const struct GamePad_ButtonEvent *buttonEvent, const int32_t index, GamePad_PressedButton **pressedButton)
 ```
 
@@ -2180,7 +2180,7 @@ GameController_ErrorCode OH_GamePad_PressedButtons_GetButtonInfo (const struct G
 
 ### OH_GamePad_PressedButtons_GetCount()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_PressedButtons_GetCount (const struct GamePad_ButtonEvent *buttonEvent, int32_t *count)
 ```
 
@@ -2208,7 +2208,7 @@ GameController_ErrorCode OH_GamePad_PressedButtons_GetCount (const struct GamePa
 
 ### OH_GamePad_RightShoulder_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_RightShoulder_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -2235,7 +2235,7 @@ GameController_ErrorCode OH_GamePad_RightShoulder_RegisterButtonInputMonitor (Ga
 
 ### OH_GamePad_RightShoulder_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_RightShoulder_UnregisterButtonInputMonitor (void)
 ```
 
@@ -2252,7 +2252,7 @@ GameController_ErrorCode OH_GamePad_RightShoulder_UnregisterButtonInputMonitor (
 
 ### OH_GamePad_RightThumbstick_RegisterAxisInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_RightThumbstick_RegisterAxisInputMonitor (GamePad_AxisInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -2279,7 +2279,7 @@ GameController_ErrorCode OH_GamePad_RightThumbstick_RegisterAxisInputMonitor (Ga
 
 ### OH_GamePad_RightThumbstick_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_RightThumbstick_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -2306,7 +2306,7 @@ GameController_ErrorCode OH_GamePad_RightThumbstick_RegisterButtonInputMonitor (
 
 ### OH_GamePad_RightThumbstick_UnregisterAxisInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_RightThumbstick_UnregisterAxisInputMonitor (void)
 ```
 
@@ -2323,7 +2323,7 @@ GameController_ErrorCode OH_GamePad_RightThumbstick_UnregisterAxisInputMonitor (
 
 ### OH_GamePad_RightThumbstick_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_RightThumbstick_UnregisterButtonInputMonitor (void)
 ```
 
@@ -2340,7 +2340,7 @@ GameController_ErrorCode OH_GamePad_RightThumbstick_UnregisterButtonInputMonitor
 
 ### OH_GamePad_RightTrigger_RegisterAxisInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_RightTrigger_RegisterAxisInputMonitor (GamePad_AxisInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -2367,7 +2367,7 @@ GameController_ErrorCode OH_GamePad_RightTrigger_RegisterAxisInputMonitor (GameP
 
 ### OH_GamePad_RightTrigger_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_RightTrigger_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -2394,7 +2394,7 @@ GameController_ErrorCode OH_GamePad_RightTrigger_RegisterButtonInputMonitor (Gam
 
 ### OH_GamePad_RightTrigger_UnregisterAxisInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_RightTrigger_UnregisterAxisInputMonitor (void)
 ```
 
@@ -2411,7 +2411,7 @@ GameController_ErrorCode OH_GamePad_RightTrigger_UnregisterAxisInputMonitor (voi
 
 ### OH_GamePad_RightTrigger_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_RightTrigger_UnregisterButtonInputMonitor (void)
 ```
 

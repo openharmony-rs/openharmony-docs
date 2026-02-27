@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+struct WebSocket_RequestOptions {...}
+```
+
 ## Overview
 
 Defines the parameters for the connection between the WebSocket client and server.
@@ -23,4 +27,4 @@ Defines the parameters for the connection between the WebSocket client and serve
 
 | Name| Description|
 | -- | -- |
-| WebSocket_Header * headers | Header information.|
+| struct WebSocket_Header *headers | Header information.|

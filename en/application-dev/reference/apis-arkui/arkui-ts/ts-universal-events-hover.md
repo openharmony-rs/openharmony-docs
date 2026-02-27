@@ -63,17 +63,17 @@ Inherits from [BaseEvent](ts-gesture-customize-judge.md#baseevent8).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read-Only| Optional| Description|
+| Name| Type| Read Only| Optional| Description|
 | --------------- | ---------- | ----- | ----- | -------------------- |
-| x<sup>15+</sup> |number|No|Yes|X-coordinate of the mouse cursor or stylus position relative to the upper left corner of the current component.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
-| y<sup>15+</sup> |number|No|Yes|Y-coordinate of the mouse cursor or stylus position relative to the upper left corner of the current component.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
-| windowX<sup>15+</sup> |number|No|Yes|X-coordinate of the mouse cursor or stylus position relative to the upper left corner of the application window.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
-| windowY<sup>15+</sup> |number|No|Yes|Y-coordinate of the mouse cursor or stylus position relative to the upper left corner of the application window.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
-| displayX<sup>15+</sup> |number|No|Yes|X-coordinate of the mouse cursor or stylus position relative to the upper left corner of the application screen.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
-| displayY<sup>15+</sup> |number|No|Yes|Y-coordinate of the mouse cursor or stylus position relative to the upper left corner of the application screen.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
-| stopPropagation | () => void |No|No| Stops the event from bubbling upwards or downwards.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
-| globalDisplayX<sup>20+</sup> | number |No|Yes| X-coordinate of the mouse cursor or stylus position relative to the upper left corner of the global display.<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| globalDisplayY<sup>20+</sup> | number |No|Yes| Y-coordinate of the mouse cursor or stylus position relative to the upper left corner of the global display.<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| x<sup>15+</sup> |number|No|Yes|X coordinate of the cursor or stylus position in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the current component.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
+| y<sup>15+</sup> |number|No|Yes|Y coordinate of the cursor or stylus position in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the current component.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
+| windowX<sup>15+</sup> |number|No|Yes|X coordinate of the cursor or stylus position in the coordinate system of the current application window.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
+| windowY<sup>15+</sup> |number|No|Yes|Y coordinate of the cursor or stylus position in the coordinate system of the current application window.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
+| displayX<sup>15+</sup> |number|No|Yes|X coordinate of the cursor or stylus position in the coordinate system of the current screen window.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
+| displayY<sup>15+</sup> |number|No|Yes|Y coordinate of the cursor or stylus position in the coordinate system of the current screen window.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
+| stopPropagation | () => void |No|No| Disables [event bubbling](../../../ui/arkts-interaction-basic-principles.md#event-bubbling) propagation.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| globalDisplayX<sup>20+</sup> | number |No|Yes| X coordinate of the cursor or stylus position in the [global coordinate system](../../../windowmanager/window-terminology.md#global-coordinate-system).<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| globalDisplayY<sup>20+</sup> | number |No|Yes| Y coordinate of the cursor or stylus position in the [global coordinate system](../../../windowmanager/window-terminology.md#global-coordinate-system).<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## Example
 
@@ -117,7 +117,7 @@ struct HoverEventExample {
 
 Diagrams:
 
-The figure below shows how the button looks when not hovered.
+The figure below shows how the button looks in the non-hovered state.
 
  ![nohover](figures/no-hover.png) 
 
@@ -154,6 +154,7 @@ struct OnHoverMoveEventExample {
 
 Diagrams:
 
-When a stylus hovers over the button, the UI continuously updates to show the position of the stylus tip.
+When a stylus hovers over a button, the UI continuously updates to show the position of the stylus tip.
 
 ![onHoverMove](figures/onHoverMove.png)
+<!--no_check-->

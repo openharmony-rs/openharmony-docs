@@ -32,7 +32,7 @@ The file declares the enums used by the AVImageGenerator.
 
 ### OH_AVImageGenerator_QueryOptions
 
-```
+```c
 enum OH_AVImageGenerator_QueryOptions
 ```
 

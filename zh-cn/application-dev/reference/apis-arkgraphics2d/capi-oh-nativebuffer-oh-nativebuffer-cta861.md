@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-typedef struct {...} OH_NativeBuffer_Cta861
+typedef struct OH_NativeBuffer_Cta861 {...} OH_NativeBuffer_Cta861
 ```
 ## 概述
 

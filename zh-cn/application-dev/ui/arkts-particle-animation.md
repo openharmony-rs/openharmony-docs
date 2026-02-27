@@ -29,12 +29,12 @@ struct ParticleExample {
             },
           },
           color:{
-            range:['rgb(39, 135, 217)','rgb(0, 74, 175)'],//初始颜色范围
+            range:['rgb(39, 135, 217)','rgb(0, 74, 175)'], // 初始颜色范围
           },
         },
       ]
       }).width(250).height(250)
-    }.width("100%").height("100%").align(Alignment.Center)
+    }.width('100%').height('100%').align(Alignment.Center)
   }
 }
 ```
@@ -44,7 +44,7 @@ struct ParticleExample {
 
 ## 实现粒子发射器
 
-粒子发射器（Particle Emitter）主要定义粒子的初始属性（如类型、位置和颜色），控制粒子的生成速率，以及管理粒子的生命周期。可通过[emitter](../reference/apis-arkui/arkui-ts/ts-particle-animation.md#emitter12)方法调整粒子发射器的位置、发射速率和发射窗口的大小，实现发射器位置的动态更新。
+粒子发射器（Particle Emitter）主要定义粒子的初始属性（如类型和位置），控制粒子的生成速率，以及管理粒子的生命周期。可通过[emitter](../reference/apis-arkui/arkui-ts/ts-particle-animation.md#emitter12)方法调整粒子发射器的位置、发射速率和发射窗口的大小，实现发射器位置的动态更新。
 
 ```ts
 // ...
@@ -82,7 +82,7 @@ color: {
 
 ## 粒子的生命周期
 
-粒子的生命周期（Lifecycle）是粒子从生成至消亡的整个过程，用于确定粒子的存活时间长度。粒子的生命周期可通过设置[lifetime](../reference/apis-arkui/arkui-ts/ts-particle-animation.md#emitteroptions)和[lifetimeRange](../reference/apis-arkui/arkui-ts/ts-particle-animation.md#emitteroptions)来指定。
+粒子的生命周期（Lifecycle）是粒子从生成至消亡的整个过程，用于确定粒子的存活时间长度。粒子的生命周期可通过设置[EmitterParticleOptions](../reference/apis-arkui/arkui-ts/ts-particle-animation.md#emitterparticleoptions18)的lifetime和lifetimeRange属性来指定。
 
 ```ts
 // ...
@@ -130,7 +130,7 @@ Particle({ particles: [
         ]
       }
     },
-    acceleration: { //加速度的配置，从大小和方向两个维度变化，speed表示加速度大小，angle表示加速度方向
+    acceleration: { // 加速度的配置，从大小和方向两个维度变化，speed表示加速度大小，angle表示加速度方向
       speed: {
         range: [3, 9],
         updater: {

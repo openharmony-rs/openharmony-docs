@@ -54,7 +54,6 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 - SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 - SystemCapability.PowerManager.BatteryManager.Core
-- SystemCapability.PowerManager.BatteryManager.Extension
 - SystemCapability.PowerManager.BatteryStatistics
 - SystemCapability.Communication.Bluetooth.Core
 - SystemCapability.BundleManager.BundleFramework
@@ -171,7 +170,6 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.Multimedia.Media.VideoRecorder
 - SystemCapability.Multimedia.SystemSound.Core
 - SystemCapability.PowerManager.PowerManager.Core
-- SystemCapability.PowerManager.PowerManager.Extension
 - SystemCapability.DistributedDataManager.Preferences.Core
 - SystemCapability.DistributedDataManager.CloudSync.Client
 - SystemCapability.DistributedDataManager.CloudSync.Config

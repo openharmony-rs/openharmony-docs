@@ -39,13 +39,17 @@ Defines the APIs of the HTTP request module.
 
 ### OH_Http_CreateHeaders()
 
-```
+```c
 Http_Headers *OH_Http_CreateHeaders(void)
 ```
 
 **Overview**
 
 Creates an HTTP request or response header.
+
+> **NOTE**
+>
+> You are advised to call [OH_Http_DestroyHeaders](#oh_http_destroyheaders) to destroy the HTTP request or response header and clear resources after the HTTP request is complete.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -59,7 +63,7 @@ Creates an HTTP request or response header.
 
 ### OH_Http_DestroyHeaders()
 
-```
+```c
 void OH_Http_DestroyHeaders(Http_Headers **headers)
 ```
 
@@ -80,7 +84,7 @@ Destroys an HTTP request or response header.
 
 ### OH_Http_SetHeaderValue()
 
-```
+```c
 uint32_t OH_Http_SetHeaderValue(struct Http_Headers *headers, const char *name, const char *value)
 ```
 
@@ -109,7 +113,7 @@ Sets the key-value pairs of an HTTP request or response header.
 
 ### OH_Http_GetHeaderValue()
 
-```
+```c
 Http_HeaderValue *OH_Http_GetHeaderValue(Http_Headers *headers, const char *name)
 ```
 
@@ -137,7 +141,7 @@ Obtains the value of an HTTP request or response header based on the specified k
 
 ### OH_Http_GetHeaderEntries()
 
-```
+```c
 Http_HeaderEntry *OH_Http_GetHeaderEntries(Http_Headers *headers)
 ```
 
@@ -164,7 +168,7 @@ Obtains all key-value pairs from an HTTP request or response header.
 
 ### OH_Http_DestroyHeaderEntries()
 
-```
+```c
 void OH_Http_DestroyHeaderEntries(Http_HeaderEntry **headerEntry)
 ```
 
@@ -185,7 +189,7 @@ Destroys all key-value pairs obtained from **OH_Http_GetHeaderEntries**.
 
 ### OH_Http_CreateRequest()
 
-```
+```c
 Http_Request *OH_Http_CreateRequest(const char *url)
 ```
 
@@ -212,13 +216,17 @@ Creates an HTTP request.
 
 ### OH_Http_Request()
 
-```
+```c
 int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_EventsHandler handler)
 ```
 
 **Overview**
 
 Initiates an HTTP request.
+
+> **NOTE**
+>
+> You are advised to call [OH_Http_Destroy](#oh_http_destroy) to interrupt the HTTP request after the HTTP request receives a response and the response is processed.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -243,13 +251,13 @@ Initiates an HTTP request.
 
 ### OH_Http_Destroy()
 
-```
+```c
 void OH_Http_Destroy(struct Http_Request **request)
 ```
 
 **Overview**
 
-Destroys an HTTP request.
+Stops the HTTP request.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -260,4 +268,4 @@ Destroys an HTTP request.
 
 | Name| Description|
 | -- | -- |
-| [struct Http_Request](capi-netstack-http-request.md) **request | Pointer to **Http_Request**. For details, see [Http_Request](capi-netstack-http-request.md).|
+| [struct Http_Request](capi-netstack-http-request.md) **request | Pointer to the request to be interrupted, which is a pointer to **Http_Request**. For details, see [Http_Request](capi-netstack-http-request.md).|

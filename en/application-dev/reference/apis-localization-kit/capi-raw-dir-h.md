@@ -9,7 +9,7 @@
 
 ## Overview
 
-Provides functions related to the **rawfile** directory. These functions include traversing and closing rawfile directories.
+Provides functions related to rawfile directories, including traversing and closing rawfile directories.
 
 **File to include**: <rawfile/raw_dir.h>
 
@@ -41,7 +41,7 @@ Provides functions related to the **rawfile** directory. These functions include
 
 ### OH_ResourceManager_GetRawFileName()
 
-```
+```c
 const char *OH_ResourceManager_GetRawFileName(RawDir *rawDir, int index)
 ```
 
@@ -71,7 +71,7 @@ Obtains the name of a file in **rawfile** based on the index. You can use this f
 
 ### OH_ResourceManager_GetRawFileCount()
 
-```
+```c
 int OH_ResourceManager_GetRawFileCount(RawDir *rawDir)
 ```
 
@@ -100,7 +100,7 @@ Obtains the number of rawfiles in [RawDir](capi-rawfile-rawdir.md). You can use 
 
 ### OH_ResourceManager_CloseRawDir()
 
-```
+```c
 void OH_ResourceManager_CloseRawDir(RawDir *rawDir)
 ```
 

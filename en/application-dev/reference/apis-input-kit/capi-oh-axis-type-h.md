@@ -35,7 +35,7 @@ Defines the axis event structures and enumerations.
 
 ### InputEvent_AxisType
 
-```
+```c
 enum InputEvent_AxisType
 ```
 
@@ -55,7 +55,7 @@ Defines the axis type of an input device.
 
 ### InputEvent_AxisEventType
 
-```
+```c
 enum InputEvent_AxisEventType
 ```
 
@@ -67,12 +67,12 @@ Event type of the input device.
 
 | Enum| Description|
 | -- | -- |
-| AXIS_EVENT_TYPE_PINCH = 1 | Two-finger pinch event. The value can be **AXIS_TYPE_PINCH** or **AXIS_TYPE_ROTATE**.		<br>**Since**: 12|
-| AXIS_EVENT_TYPE_SCROLL = 2 | Scroll axis event. The value can be **AXIS_TYPE_SCROLL_VERTICAL** and **AXIS_TYPE_SCROLL_HORIZONTAL**. For mouse wheel events, the value can only be **AXIS_TYPE_SCROLL_VERTICAL**.		<br>**Since**: 12|
+| AXIS_EVENT_TYPE_PINCH = 1 | Two-finger pinch event. The value can be **AXIS_TYPE_PINCH** or **AXIS_TYPE_ROTATE**.<br>**Since**: 12|
+| AXIS_EVENT_TYPE_SCROLL = 2 | Scroll axis event. The value can be **AXIS_TYPE_SCROLL_VERTICAL** and **AXIS_TYPE_SCROLL_HORIZONTAL**. For mouse wheel events, the value can only be **AXIS_TYPE_SCROLL_VERTICAL**.<br>**Since**: 12|
 
 ### InputEvent_AxisAction
 
-```
+```c
 enum InputEvent_AxisAction
 ```
 

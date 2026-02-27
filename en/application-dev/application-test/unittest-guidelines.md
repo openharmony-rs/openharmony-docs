@@ -35,7 +35,7 @@ JsUnit is released as an ohpm package. For details about the version information
 **Configuration Example**
 ```json
 "devDependencies": {
-    "@ohos/hypium": "1.0.24"
+    "@ohos/hypium": "1.0.25"
   }
 ```
 
@@ -228,7 +228,7 @@ Example 11: Execute test cases for a specified number of times.
 * Checking the test result
 
 1. During the test execution in the CLI, the framework prints the following log information:
-    ```
+    ```txt
     OHOS_REPORT_STATUS: class=ActsAbilityTest
     OHOS_REPORT_STATUS: current=1
     OHOS_REPORT_STATUS: id=JS
@@ -257,7 +257,7 @@ Example 11: Execute test cases for a specified number of times.
     | OHOS_REPORT_STATUS_CODE | Execution status of the current test case. **1**: The test case starts to be executed. **0**: The test case is successfully executed. **-1**: An error is reported during the test case execution. **-2**: The test case fails to be executed.|
     | OHOS_REPORT_STATUS: consuming | Time spent in executing the current test case, in milliseconds.|
 2. After the command execution is complete, the framework prints the following log information:
-    ```
+    ```txt
     OHOS_REPORT_RESULT: stream=Tests run: 447, Failure: 0, Error: 1, Pass: 201, Ignore: 245
     OHOS_REPORT_CODE: 0
     
@@ -286,13 +286,15 @@ JSUnit provides the basic process APIs required for executing test scripts. You 
 |  it          | Defines a test case.         |
 |  beforeAll         | Presets an action, which is performed only once before all test cases of the test suite start.                       |
 |  beforeEach        | Presets an action, which is performed before each test case of the test suite starts. The number of execution times is the same as the number of test cases defined by **it**.         |
+| beforeEachIt | Presets an action, which is performed before each unit test case starts.<br>The **beforeEachIt** defined in the outer test suite is executed before the test cases in the internal test suite are executed.<br>**Note**: This API is supported since @ohos/hypium 1.0.25.|
 |  afterEach         | Presets a clear action, which is performed after each unit test case ends. The number of execution times is the same as the number of test cases defined by **it**.         |
+| afterEachIt | Presets an action, which is performed after each unit test case ends.<br>The **afterEachIt** defined in the outer test suite is executed after the test cases in the internal test suite are executed.<br>**Note**: This API is supported since @ohos/hypium 1.0.25.|
 |  afterAll          | Presets a clear action, which is performed only once after all test cases of the test suite ends.                       |
 |  beforeItSpecified | Presets an action, which is performed only before the specified unit test case starts.<br>**Note**: This API is supported since @ohos/hypium 1.0.15.|
 |  afterItSpecified  | Presets a clear action, which is performed only after the specified unit test case ends.<br>**Note**: This API is supported since @ohos/hypium 1.0.15.|
 |  expect            | Defines a variety of assertion capabilities, which are used to declare expected Boolean conditions.                       |
 |  xdescribe    | Defines a skipped test suite. Multiple test case functions can be defined in a test suite, but asynchronous functions are not supported.<br>**Note**: This API is supported since @ohos/hypium 1.0.17.                            |
-|  xit                | Defines a skipped test case.<br>**Note**: This API is supported since @ohos/hypium 1.0.17.                    |
+|  xit                | Defines a skipped test case.<br>**Note**: This API is supported since @ohos/hypium 1.0.17.                   |
 
 **Example 1**: Execute **beforeAll**, **beforeEach**, **afterEach**, and **afterAll**.
 
@@ -398,7 +400,47 @@ export default function describeExampleTest() {
 }
 ```
 
+**Example 4**: Use **beforeEachIt** and **afterEachIt**. They are supported since version 1.0.25.
+
+<!-- @[order4_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder4.test.ets) -->
+
+``` TypeScript
+import { describe, beforeEach, afterEach, beforeEachIt, afterEachIt, it, expect } from '@ohos/hypium';
+let str = "";
+export default function test() {
+  describe('test0', () => {
+    beforeEach(async () => {
+      str += "A"
+    })
+    beforeEachIt(async () => {
+      str += "B"
+    })
+    afterEach(async () => {
+      str += "C"
+    })
+    afterEachIt(async () => {
+      str += "D"
+    })
+    it('test0000', 0, () => {
+      expect(str).assertEqual("BA");
+    })
+    describe('test1', () => {
+      beforeEach(async () => {
+        str += "E"
+      })
+      beforeEachIt(async () => {
+        str += "F"
+      })
+      it('test1111', 0, async () => {
+        expect(str).assertEqual("BACDBFE");
+      })
+    })
+  })
+}
+```
+
 ### Assertion
+
 JSUnit provides various assertion APIs for different test scenarios. For details, see the following table.
 | Name               | Description                                                       |
 | :------------------|-------------------------------------------------------------|
@@ -605,18 +647,20 @@ Since@ohos/hypium 1.0.1, JSUnit supports the mock capability. For details about 
 >
 >Only custom objects in application projects can be mocked. System API objects cannot be mocked. For details about how to mock system APIs, see [Mocking System Modules or External Dependency Modules](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-test-mock#section8353132513310).
 >
->Private functions of objects cannot be mocked.
 
 **Mockit**
 
-Mockit is used to specify the instances and functions to be mocked.
+MockKit is used to specify the instances and functions to be mocked.
+
 | Name| Description                |
 | --- |-------------------------------------------------------------------------------------------------------------------------------------------------|
 | mockFunc| Mocks a function in a class instance. Asynchronous functions are supported.                                                |
+| mockPrivateFunc | Mocks a private method on an instance of a class.<br>**Note**: This API is supported since @ohos/hypium 1.0.25.|
+| mockProperty | Mocks a property on an instance of a class.<br>**Note**: This API is supported since @ohos/hypium 1.0.25.|
 | verify | Verifies whether a function and its parameters are executed as expected. This API returns a **VerificationMode** class.|
 | ignoreMock | Restores the mocked function in the instance. This API is valid for mocked functions.                                                                                                  |
 | clear | Restores the mocked object instance after the test case is complete (restores the original features of the object).                                                                      |
-| clearAll | Clears all data and memory after the test cases are complete. The mocked function in the instance is not restored.                                 |  
+| clearAll | Clears all data and memory after the test cases are complete. The mocked function in the instance is not restored.                                 |
 
 **VerificationMode**
 
@@ -1095,7 +1139,7 @@ export default function staticTest() {
       let mocker: MockKit = new MockKit();
       // Mock method_1 of the ClassName object.
       let func_1: Function = mocker.mockFunc(ClassName, ClassName.method_1);
-      // It is expected that 'ock_data' is returned after the function is mocked.
+      // It is expected that 'mock_data' is returned after the function is mocked.
       when(func_1)(ArgumentMatchers.any).afterReturn('mock_data');
       let mock_result = ClassName.method_1();
       expect(mock_result).assertEqual('mock_data'); // The assertion is successful.
@@ -1103,6 +1147,94 @@ export default function staticTest() {
       mocker.clear(ClassName);
       let really_result1 = ClassName.method_1();
       expect(really_result1).assertEqual('ClassName_method_1_call'); // The assertion is successful.
+    })
+  })
+}
+```
+
+**Example 12**: Mock private functions. (This feature is supported since @ohos/hypium 1.0.25.)
+
+<!-- @[mockPrivateFunc_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockPrivateFunc.test.ets) -->
+
+``` TypeScript
+import { describe, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
+
+class ClassName {
+  constructor() {
+  }
+  method(arg: number):number {
+    return this.method_1(arg);
+  }
+  private method_1(arg: number) {
+    return arg;
+  }
+}
+
+export default function staticTest() {
+  describe('privateTest', () => {
+    it('private_001', 0, () => {
+      let claser: ClassName = new ClassName(); 
+      let really_result = claser.method(123);
+      expect(really_result).assertEqual(123);
+      // 1. Create a MockKit object.
+      let mocker: MockKit = new MockKit();
+      // 2. Mock the private method of the ClassName object, for example, method_1.
+      let func_1: Function = mocker.mockPrivateFunc(claser, "method_1");
+      // 3. The expected result returned by the mocked function is 456.
+      when(func_1)(ArgumentMatchers.any).afterReturn(456);
+      let mock_result = claser.method(123);
+      expect(mock_result).assertEqual(456);
+      // Clear the mock capability.
+      mocker.clear(claser);
+      let really_result1 = claser.method(123);
+      expect(really_result1).assertEqual(123);
+    })
+  })
+}
+```
+
+**Example 13**: Mock member variables. (This feature is supported since @ohos/hypium 1.0.25.)
+
+<!-- @[mockProperty_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockProperty.test.ets) -->
+
+``` TypeScript
+import { describe, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
+
+class ClassName {
+  constructor() {
+  }
+  data = 1;
+  private priData = 2;
+  method() {
+    return this.priData;
+  }
+}
+
+export default function staticTest() {
+  describe('propertyTest', () => {
+    it('property_001', 0, () => {
+      let claser: ClassName = new ClassName(); 
+      let data = claser.data;
+      expect(data).assertEqual(1);
+      let priData = claser.method();
+      expect(priData).assertEqual(2);
+      // 1. Create a MockKit object.
+      let mocker: MockKit = new MockKit();
+      // 2. Mock the member variable data of the ClassName object.
+      mocker.mockProperty(claser, "data", 3);
+      mocker.mockProperty(claser, "priData", 4);
+      // 3. The expected values of the mocked member and private member are 3 and 4 respectively.
+      let mock_result = claser.data;
+      let mock_private_result = claser.method();
+      expect(mock_result).assertEqual(3);
+      expect(mock_private_result).assertEqual(4);
+      // Clear the mock capability.
+      mocker.ignoreMock(claser, "data");
+      mocker.ignoreMock(claser, "priData");
+      let really_result = claser.data;
+      expect(really_result).assertEqual(1);
+      let really_private_result = claser.method();
+      expect(really_private_result).assertEqual(2);
     })
   })
 }
@@ -1195,7 +1327,7 @@ export default class TestAbility extends UIAbility {
  
  export default function abilityTest() {
    describe('AbilityTest', () => {
-     it('testDataDriverAsync', 0, async (done: Function, data: ParmObj) => {
+     it('testDataDriverAsync', 0, async (done: Function, data: ParamObj) => {
        done();
      });
  
@@ -1204,7 +1336,7 @@ export default class TestAbility extends UIAbility {
    })
  }
  
- interface ParmObj {
+ interface ParamObj {
    name: string,
    value: string
  }

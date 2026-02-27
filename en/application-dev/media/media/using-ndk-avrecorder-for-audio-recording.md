@@ -206,8 +206,8 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
         SetConfig(*config);
 
         // 1. Set the URL. (This operation is required when APP_CREATE is selected for fileGenerationMode.)
-        const std::string AVREORDER_ROOT = "/data/storage/el2/base/files/";
-        int32_t outputFd = open((AVREORDER_ROOT + "avrecorder01.mp3").c_str(), O_RDWR | O_CREAT, 0777); // Set the file name.
+        const std::string AVRECORDER_ROOT = "/data/storage/el2/base/files/";
+        int32_t outputFd = open((AVRECORDER_ROOT + "avrecorder01.mp3").c_str(), O_RDWR | O_CREAT, 0777); // Set the file name.
         std::string fileUrl = "fd://" + std::to_string(outputFd);
         config->url = const_cast<char *>(fileUrl.c_str());
         OH_LOG_INFO(LOG_APP, "config.url is: %s", const_cast<char *>(fileUrl.c_str()));
@@ -403,8 +403,8 @@ Refer to the sample code below to complete the process of creating a recorder in
       SetConfig(*config);
 
       // 1.1 Set the URL. (This operation is required when APP_CREATE is selected for fileGenerationMode.)
-      const std::string AVREORDER_ROOT = "/data/storage/el2/base/files/";
-      g_outputFd = open((AVREORDER_ROOT + "avrecorder01.mp3").c_str(), O_RDWR | O_CREAT, 0777); // Set the file name.
+      const std::string AVRECORDER_ROOT = "/data/storage/el2/base/files/";
+      g_outputFd = open((AVRECORDER_ROOT + "avrecorder01.mp3").c_str(), O_RDWR | O_CREAT, 0777); // Set the file name.
       std::string fileUrl = "fd://" + std::to_string(g_outputFd);
       config->url = const_cast<char *>(fileUrl.c_str());
       OH_LOG_INFO(LOG_APP, "config.url is: %s", const_cast<char *>(fileUrl.c_str()));

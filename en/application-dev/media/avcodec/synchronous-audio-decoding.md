@@ -27,7 +27,7 @@ Read [AudioCodec](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocode
 
 Refer to the code snippet below to complete the entire audio decoding process, including creating a decoder, setting decoding parameters (such as the sample rate, bit rate, and audio channel count), and starting, refreshing, resetting, and destroying the decoder.
 
-During application development, you must call the APIs in the defined sequence. Otherwise, an exception or undefined behavior may occur.
+During application development, you must call the APIs in the defined sequence. Otherwise, an exception or undefined behavior may occur.  
 
 The figure below shows the call relationship of audio decoding in synchronous mode.
 
@@ -86,6 +86,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     Call this API after the media key system information is obtained but before **Prepare()** is called. For details about how to obtain such information, see step 4 in [Media Data Demultiplexing](audio-video-demuxer.md).
 
     For details about DRM APIs, see [DRM](../../reference/apis-drm-kit/capi-drm.md).
+
+     
 
     Add the header files.
 
@@ -148,9 +150,9 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    | Audio Decoding Type|    Sample Rate (Hz)  |
    | ----------- | --------------- |
-   | FLAC       | 8000 – 384000   |
-   | Vorbis      | 8000 – 192000   |
-   | APE         | 1 – 2147483647  |
+   | FLAC       | 8000 – 384000  |
+   | Vorbis      | 8000 – 192000  |
+   | APE         | 1 – 2147483647 |
 
    ```c++
    // (Mandatory) Configure the audio sample rate.
@@ -395,14 +397,14 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 9. (Optional) Call **OH_AudioCodec_Flush()** to refresh the decoder.
 
-    After **OH_AudioCodec_Flush()** is called, the decoder remains in the running state, but the current queue is cleared and the buffer storing the decoded data is freed. The input and output buffers obtained before flushing cannot be reused.
+   After **OH_AudioCodec_Flush()** is called, the decoder remains in the running state, but the current queue is cleared and the buffer storing the decoded data is freed. The input and output buffers obtained before flushing cannot be reused.
 
-    To continue decoding, you must call **OH_AudioCodec_Start()** again.
+   To continue decoding, you must call **OH_AudioCodec_Start()** again.
 
-    You need to call **OH_AudioCodec_Start()** in the following cases:
-    * Previously input data is no longer needed, for example, after seeking during demultiplexing.
-    * The EOS of the file is reached.
-    * An error with **OH_AudioCodec_IsValid** set to **true** (indicating that the execution can continue) occurs.
+   You need to call **OH_AudioCodec_Start()** in the following cases:
+   * Previously input data is no longer needed, for example, after seeking during demultiplexing.
+   * To use the same decoder configuration after **AVCODEC_BUFFER_FLAGS_EOS** of the output buffer is set, call **OH_AudioCodec_Flush()** to refresh the decoder.
+   * If a recoverable error occurs during the execution (**OH_AudioCodec_IsValid()** returns **true**), you can call **OH_AudioCodec_Flush()** to refresh the decoder and then call **OH_AudioCodec_Start()** to start decoding again.
 
     ```c++
     // Refresh the decoder.
@@ -419,7 +421,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 10. (Optional) Call **OH_AudioCodec_Reset()** to reset the decoder.
 
-    After **OH_AudioCodec_Reset()** is called, the decoder returns to the initialized state. To continue decoding, you must call **OH_AudioCodec_Configure()** and then **OH_AudioCodec_Start()**.
+    After **OH_AudioCodec_Reset()** is called, the decoder returns to the initialized state. The input and output buffers obtained before the reset cannot be used. You must call **OH_AudioCodec_Configure()** to reconfigure the decoder and then call **OH_AudioCodec_Start()** to start decoding again. Obtain the input and output buffers again after the decoder is started.
 
     ```c++
     // Reset the decoder.

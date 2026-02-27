@@ -38,7 +38,7 @@
 
 ### OH_WebSocketClient_Constructor()
 
-```
+```c
 struct WebSocket *OH_WebSocketClient_Constructor(WebSocket_OnOpenCallback onOpen, WebSocket_OnMessageCallback onMessage,WebSocket_OnErrorCallback onError, WebSocket_OnCloseCallback onclose)
 ```
 
@@ -68,7 +68,7 @@ websocket客户端的构造函数。
 
 ### OH_WebSocketClient_AddHeader()
 
-```
+```c
 int OH_WebSocketClient_AddHeader(struct WebSocket *client, struct WebSocket_Header header)
 ```
 
@@ -96,7 +96,7 @@ int OH_WebSocketClient_AddHeader(struct WebSocket *client, struct WebSocket_Head
 
 ### OH_WebSocketClient_Connect()
 
-```
+```c
 int OH_WebSocketClient_Connect(struct WebSocket *client, const char *url, struct WebSocket_RequestOptions options)
 ```
 
@@ -127,7 +127,7 @@ int OH_WebSocketClient_Connect(struct WebSocket *client, const char *url, struct
 
 ### OH_WebSocketClient_Send()
 
-```
+```c
 int OH_WebSocketClient_Send(struct WebSocket *client, char *data, size_t length)
 ```
 
@@ -158,7 +158,7 @@ int OH_WebSocketClient_Send(struct WebSocket *client, char *data, size_t length)
 
 ### OH_WebSocketClient_Close()
 
-```
+```c
 int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOption options)
 ```
 
@@ -188,7 +188,7 @@ int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOpt
 
 ### OH_WebSocketClient_Destroy()
 
-```
+```c
 int OH_WebSocketClient_Destroy(struct WebSocket *client)
 ```
 

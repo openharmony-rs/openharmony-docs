@@ -51,18 +51,18 @@ import { InsightIntentContext } from '@kit.AbilityKit';
         },
       };
       try {
-        //通过意图实例唯一ID返回意图执行结果
+        // 通过意图实例唯一ID返回意图执行结果
         insightIntentProvider.sendExecuteResult(this.context.instanceId, result)
           .then(() => {
             console.info('testTag setExecuteResult success');
           })
           .catch((error: BusinessError) => {
-            console.error('testTag setExecuteResult fail1, error code: ${JSON.stringify(error)}');
+            console.error(`testTag setExecuteResult fail1, error code: ${JSON.stringify(error)}`);
           });
       } catch (e) {
         let code = (e as BusinessError).code;
         let msg = (e as BusinessError).message;
-        console.error('testTag setExecuteResult fail2, error code: ${JSON.stringify(code)}, error msg: ${JSON.stringify(msg)}');
+        console.error(`testTag setExecuteResult fail2, error code: ${JSON.stringify(code)}, error msg: ${JSON.stringify(msg)}`);
       }
       return result;
     }
@@ -261,7 +261,7 @@ setReturnModeForUIAbilityForeground(returnMode: insightIntent.ReturnMode): void
   import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
   import { window } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+
   export default class InsightIntentExecutorUI extends InsightIntentExecutor {
     onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
       pageLoader: window.WindowStage): insightIntent.ExecuteResult {
@@ -273,18 +273,20 @@ setReturnModeForUIAbilityForeground(returnMode: insightIntent.ReturnMode): void
           message: 'Unsupported insight intent.',
         },
       };
-  
+
       try {
         this.context.setReturnModeForUIAbilityForeground(insightIntent.ReturnMode.FUNCTION);
       } catch (error) {
-        console.error('testTag setReturnModeForUIAbilityForeground fail, error code: ${JSON.stringify(error)}');
+        let code = (error as BusinessError).code;
+        let msg = (error as BusinessError).message;
+        console.error(`testTag setReturnModeForUIAbilityForeground fail, error code: ${code}, err msg: ${msg}.`);
       }
-  
+
       let localStorageData: Record<string, number> = {
         'insightId': this.context.instanceId,
       };
       let storage: LocalStorage = new LocalStorage(localStorageData);
-      pageLoader.loadContent('pages/UiabilityIndex', storage, (err, data) => {
+      pageLoader.loadContent('pages/UIAbilityIndex', storage, (err, data) => {
         if (err.code) {
           hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         } else {
@@ -342,7 +344,9 @@ setReturnModeForUIExtensionAbility(returnMode: insightIntent.ReturnMode): void
       try {
         this.context.setReturnModeForUIExtensionAbility(insightIntent.ReturnMode.FUNCTION)
       } catch (error) {
-        console.error('testTag setReturnModeForUIExtensionAbility fail, error code: ${JSON.stringify(error)}');
+        let code = (error as BusinessError).code;
+        let msg = (error as BusinessError).message;
+        console.error(`testTag setReturnModeForUIExtensionAbility fail, error code: ${code}, error msg: ${msg}.`);
       }
 
       try {
@@ -351,9 +355,11 @@ setReturnModeForUIExtensionAbility(returnMode: insightIntent.ReturnMode): void
         };
         let storage: LocalStorage = new LocalStorage(localStorageData);
         storage.setOrCreate('session', pageLoader);
-        pageLoader.loadContent('pages/UiextensionPage', storage);
+        pageLoader.loadContent('pages/UIExtensionPage', storage);
       } catch (err) {
-        console.log('testTag loadContent error: ' + JSON.stringify(err));
+        let code = (err as BusinessError).code;
+        let msg = (err as BusinessError).message;
+        console.info(`testTag loadContent error code: ${code}, error msg: ${msg}.`);
       }
       return result;
     }

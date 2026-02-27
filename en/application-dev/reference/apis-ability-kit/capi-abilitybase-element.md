@@ -7,8 +7,8 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-```
-typedef struct {...} AbilityBase_Element
+```c
+typedef struct AbilityBase_Element {...} AbilityBase_Element
 ```
 
 ## Overview

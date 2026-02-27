@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ```c
 typedef struct {...} ffrt_queue_attr_t
@@ -23,7 +23,7 @@ typedef struct {...} ffrt_queue_attr_t
 
 ## 汇总
 
-### 成员变量	
+### 成员变量  
 
 | 名称 | 描述 |
 | -- | -- |

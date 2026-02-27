@@ -1,4 +1,10 @@
 # media_access_helper_capi.h
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -28,7 +34,7 @@
 
 ### OH_MediaAccessHelper_ApplyChanges()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAccessHelper_ApplyChanges(OH_MediaAssetChangeRequest* changeRequest)
 ```
 

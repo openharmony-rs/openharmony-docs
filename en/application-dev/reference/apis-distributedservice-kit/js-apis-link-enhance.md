@@ -10,6 +10,8 @@ The **linkEnhance** module delivers highly efficient Bluetooth connectivity and 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -26,6 +28,8 @@ Creates a **Server** object. After **start()** is called, the device can be conn
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -55,10 +59,11 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
-  let name:string = "demo";
+  let name: string = "demo";
   hilog.info(0x0000, TAG, 'start sever name = ' + name);
   // Construct a Server object using the specified name.
   let server: linkEnhance.Server = linkEnhance.createServer(name);
@@ -77,6 +82,8 @@ Creates a **Connection** object on the device that functions as the client. The 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -108,6 +115,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -135,6 +143,8 @@ Starts a server so that it can be connected by the client. A maximum of 10 serve
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Error codes**
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
@@ -151,6 +161,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -173,6 +184,8 @@ Stops the server. After the server is stopped, you can call `start` to start it 
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Error codes**
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
@@ -187,6 +200,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -211,6 +225,8 @@ Destroys the **Server** object to release related resources. To interact with th
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Error codes**
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
@@ -225,6 +241,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -248,6 +265,8 @@ Registers a callback listener for **connectionAccepted** events. This API uses a
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
@@ -269,6 +288,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -279,7 +299,7 @@ try {
 
   // Subscribe to connectionAccepted events.
   server.on('connectionAccepted', (connection: linkEnhance.Connection): void => {
-      hilog.info(0x0000, TAG, 'serverOnCallback = ' + JSON.stringify(connection));
+    hilog.info(0x0000, TAG, 'serverOnCallback = ' + JSON.stringify(connection));
   });
   // Start the server.
   server.start();
@@ -297,6 +317,8 @@ Unregisters the callback listener for **connectionAccepted** events. This API us
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -320,6 +342,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -328,11 +351,11 @@ try {
   // Construct a Server object using the specified name.
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.on('connectionAccepted', (connection: linkEnhance.Connection): void => {
-    hilog.info(0x0000, TAG, 'accpet new connection');
+    hilog.info(0x0000, TAG, 'accept new connection');
   });
   // Unsubscribe from connectionAccepted events.
   server.off('connectionAccepted', (connection: linkEnhance.Connection): void => {
-    hilog.info(0x0000, TAG, 'accpet new connection');
+    hilog.info(0x0000, TAG, 'accept new connection');
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -349,6 +372,8 @@ Registers a callback listener for **serverStopped** events. This API uses an asy
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -372,6 +397,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -402,6 +428,8 @@ Unregisters the callback listener for **serverStopped** events. This API uses an
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description   |
@@ -424,6 +452,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -449,6 +478,8 @@ Represents the connection result, which is returned after the client calls **con
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 | **Name**                   | Type      |Read-Only  | Optional  | Description                |
 | ----------------- | ------ | ----  | ---- | ------------------ |
 | deviceId          | string | No   |No   | ID of the peer device. If the connection is successful, the device ID of the peer device is returned. If the connection fails, an empty string is returned.    |
@@ -469,6 +500,7 @@ Connects to the server on the client. A maximum number of 10 connections are sup
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Error codes**
 
@@ -488,6 +520,7 @@ After creating a **Connection** object, the application on the client device cal
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -516,6 +549,7 @@ Disconnects from the peer device. The created **Connection** object remains vali
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Error codes**
 
@@ -531,6 +565,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -545,7 +580,7 @@ try {
   });
   connection.connect();
 } catch (err) {
-    hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -559,6 +594,8 @@ Destroys the **Connection** object to release resources. If the device needs to 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Error codes**
 
@@ -575,6 +612,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -603,6 +641,7 @@ Obtains the device ID of the peer device. This API is called when the connection
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
 
 **Returns**
 
@@ -625,6 +664,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -649,6 +689,8 @@ Sends data to the server after a connection is established successfully. When th
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type                                     | Mandatory  | Description   |
@@ -672,6 +714,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -705,6 +748,8 @@ Registers a listener for **connectResult** events. This API uses an asynchronous
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description   |
@@ -727,6 +772,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -735,7 +781,7 @@ try {
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // Subscribe to connectResult events.
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
-      hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
+    hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
   });
 
   // Initiate a connection.
@@ -755,6 +801,8 @@ Unregisters the listener for **connectResult** events.
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -778,6 +826,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -807,6 +856,8 @@ Registers a listener for **disconnected** events. This API uses an asynchronous 
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name      | Type                                   | Mandatory  | Description   |
@@ -829,6 +880,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -836,8 +888,8 @@ try {
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // Subscribe to disconnected events.
-  connection.on('disconnected', (number: number)=> {
-      hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
+  connection.on('disconnected', (number: number) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
 } catch (err) {
   hilog.info(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -854,6 +906,8 @@ Unregisters the listener for **disconnected** events. This API uses an asynchron
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -877,18 +931,19 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.on('disconnected', (number: number)=> {
-      hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
+  connection.on('disconnected', (number: number) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
   // Unsubscribe from disconnected events.
-  connection.off('disconnected', (number: number)=> {
-      hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
+  connection.off('disconnected', (number: number) => {
+    hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -905,6 +960,8 @@ Registers a listener for the **dataReceived** events. This API uses an asynchron
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -928,6 +985,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
@@ -935,8 +993,8 @@ try {
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.connect();
-  connection.on('dataReceived', (data: ArrayBuffer)=> {
-      hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  connection.on('dataReceived', (data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -952,6 +1010,8 @@ Unregisters the listener for **dataReceived** events.
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
 **System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -975,17 +1035,18 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 import { linkEnhance } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.on('dataReceived', (data: ArrayBuffer)=> {
-      hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  connection.on('dataReceived', (data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
-  connection.off('dataReceived', (data: ArrayBuffer)=> {
-      hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
+  connection.off('dataReceived', (data: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +

@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -35,7 +35,7 @@
 
 ### OH_NativeXComponent_KeyCode
 
-```
+```c
 enum OH_NativeXComponent_KeyCode
 ```
 
@@ -381,7 +381,7 @@ enum OH_NativeXComponent_KeyCode
 
 ### OH_NativeXComponent_KeyAction
 
-```
+```c
 enum OH_NativeXComponent_KeyAction
 ```
 

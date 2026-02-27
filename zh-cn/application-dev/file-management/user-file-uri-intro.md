@@ -4,7 +4,7 @@
 <!--Owner: @gzhuangzhuang-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 用户文件URI是文件的唯一标识，在对用户文件进行访问与修改等操作时往往都会使用到URI，不建议开发者解析URI中的片段用于业务代码开发，不同类型的URI使用方式将在下文详细介绍。
 
@@ -57,30 +57,18 @@ system_basic等级及以上的应用使用此类URI的方式除了上述通过fs
 1. 通过[fileAccess模块](../reference/apis-core-file-kit/js-apis-fileAccess-sys.md)获取文件URI。
 2. 使用获取到的文件URI进行重命名操作。
 
-<!-- @[function_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[function_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
-// [Start import_user_fileAccess]
-// [Start import_get_uri_assets]
 import { BusinessError } from '@kit.BasicServicesKit';
-// [StartExclude import_get_uri_assets]
 import { Want } from '@kit.AbilityKit';
-// [EndExclude import_get_uri_assets]
 import { common } from '@kit.AbilityKit';
-// [StartExclude import_get_uri_assets]
 import { fileAccess} from '@kit.CoreFileKit';
-// [EndExclude import_get_uri_assets]
-// [StartExclude copy_file_uri_example]
-// ···
-// [EndExclude copy_file_uri_example]
+// ...
 
-// context 是EntryAbility 传过来的context
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-// [End import_user_fileAccess]
-
-// [StartExclude copy_file_uri_example]
-// ···
-async function documentURIExample() {
+// ...
+// 请在组件内获取context
+async function documentURIExample(context: common.UIAbilityContext) {
   let fileAccessHelper: fileAccess.FileAccessHelper;
   // wantInfos 从getFileAccessAbilityInfo()获取
   let wantInfos: Want[] = [
@@ -193,31 +181,21 @@ system_basic等级及以上的应用使用此类URI的方式除了上述通过ph
 
 下面为通过临时授权方式使用媒体文件URI进行获取缩略图和读取文件部分信息的示例代码：
 
-<!-- @[import_get_uri_assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[import_get_uri_assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
-// ···
+// ...
 import { common } from '@kit.AbilityKit';
-// ···
-// [StartExclude copy_file_uri_example]
-// [StartExclude function_example]
+// ...
 import { dataSharePredicates } from '@kit.ArkData';
-// ···
+// ...
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 // 定义一个uri数组，用于接收PhotoViewPicker选择图片返回的uri
 let uris: string[] = [];
-// [EndExclude function_example]
-// [EndExclude copy_file_uri_example]
 
-// context 是EntryAbility 传过来的context
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-// [End import_user_fileAccess]
-
-// [StartExclude copy_file_uri_example]
-// [StartExclude function_example]
-// ···
+// ...
 
 // 调用PhotoViewPicker.select选择图片
 async function photoPickerGetUri() {
@@ -232,12 +210,13 @@ async function photoPickerGetUri() {
     console.info('PhotoViewPicker.select successfully, PhotoSelectResult uri: ' + JSON.stringify(photoSelectResult));
     uris = photoSelectResult.photoUris;
   } catch (err) {
-    let err: BusinessError = error as BusinessError;
-    console.error(`PhotoViewPicker failed with err, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`PhotoViewPicker failed with err, code is ${error.code}, message is ${error.message}`);
   }
 }
 
-async function uriGetAssets(): Promise<string> {
+// 请在组件内获取context
+async function uriGetAssets(context: common.UIAbilityContext): Promise<string> {
   // 检查uris数组是否为空
   if (uris.length === 0) {
     throw new Error('No URIs available');
@@ -270,7 +249,7 @@ async function uriGetAssets(): Promise<string> {
         console.error('getThumbnail fail', err);
       }
     });
-	// ···
+    // ...
   } catch (error) {
     console.error(`uriGetAssets failed with err, code is ${error.code}, message is ${error.message}`);
     return 'ReadMediaUriFail';
@@ -296,28 +275,18 @@ async function uriGetAssets(): Promise<string> {
 
 复制文件代码示例：
 
-<!-- @[copy_file_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[copy_file_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
-// [Start function_example]
-// [Start import_user_fileAccess]
-// [Start import_get_uri_assets]
 import { BusinessError } from '@kit.BasicServicesKit';
-// [StartExclude import_get_uri_assets]
 import { Want } from '@kit.AbilityKit';
-// [EndExclude import_get_uri_assets]
 import { common } from '@kit.AbilityKit';
-// [StartExclude import_get_uri_assets]
 import { fileAccess} from '@kit.CoreFileKit';
-// [EndExclude import_get_uri_assets]
-// ···
+// ...
 
-// context 是EntryAbility 传过来的context
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-// [End import_user_fileAccess]
-
-// ···
-async function copyingFileByUriExample() {
+// ...
+// 请在组件内获取context
+async function copyingFileByUriExample(context: common.UIAbilityContext) {
   let fileAccessHelper: fileAccess.FileAccessHelper;
   // wantInfos 从getFileAccessAbilityInfo()获取
   let wantInfos: Want[] = [

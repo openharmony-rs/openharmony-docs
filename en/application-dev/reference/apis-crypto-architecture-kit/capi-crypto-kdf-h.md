@@ -40,18 +40,18 @@ Defines key derivation function (KDF) APIs.
 
 | Name| Description|
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfParams **params)](#oh_cryptokdfparams_create) | Creates KDF parameters.|
+| [OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfParams **params)](#oh_cryptokdfparams_create) | Creates KDF parameters.<br> Note: The created resource must be destroyed by calling [OH_CryptoKdfParams_Destroy](capi-crypto-kdf-h.md#oh_cryptokdfparams_destroy).|
 | [OH_Crypto_ErrCode OH_CryptoKdfParams_SetParam(OH_CryptoKdfParams *params, CryptoKdf_ParamType type, Crypto_DataBlob *value)](#oh_cryptokdfparams_setparam) | Sets KDF parameters.|
 | [void OH_CryptoKdfParams_Destroy(OH_CryptoKdfParams *params)](#oh_cryptokdfparams_destroy) | Destroys KDF parameters.|
-| [OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)](#oh_cryptokdf_create) | Creates a KDF instance.|
-| [OH_Crypto_ErrCode OH_CryptoKdf_Derive(OH_CryptoKdf *ctx, const OH_CryptoKdfParams *params, int keyLen,Crypto_DataBlob *key)](#oh_cryptokdf_derive) | Derives a key.|
+| [OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)](#oh_cryptokdf_create) | Creates a KDF instance.<br> Note: The created resource must be destroyed by calling [OH_CryptoKdf_Destroy](capi-crypto-kdf-h.md#oh_cryptokdf_destroy).|
+| [OH_Crypto_ErrCode OH_CryptoKdf_Derive(OH_CryptoKdf *ctx, const OH_CryptoKdfParams *params, int keyLen, Crypto_DataBlob *key)](#oh_cryptokdf_derive) | Derives a key.<br> Note: After the use is complete, the memory for storing the **key** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
 | [void OH_CryptoKdf_Destroy(OH_CryptoKdf *ctx)](#oh_cryptokdf_destroy) | Destroys a KDF instance.|
 
 ## Enum Description
 
 ### CryptoKdf_ParamType
 
-```
+```c
 enum CryptoKdf_ParamType
 ```
 
@@ -77,22 +77,21 @@ Defines KDF parameter types.
 
 ### OH_CryptoKdfParams_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfParams **params)
 ```
 
 **Description**
 
-Creates KDF parameters.
+Creates KDF parameters.<br> Note: The created resource must be destroyed by calling [OH_CryptoKdfParams_Destroy](capi-crypto-kdf-h.md#oh_cryptokdfparams_destroy).
 
 **Since**: 20
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| const char *algoName | KDF algorithm name.<br> For example, HKDF\|SHA384\|EXTRACT_AND_EXPAND; PBKDF2\|SHA-384.|
+| const char *algoName | KDF algorithm name.<br> For example, **HKDF\|SHA384\|EXTRACT_AND_EXPAND** or **PBKDF2\|SHA384**.|
 | [OH_CryptoKdfParams](capi-cryptokdfapi-oh-cryptokdfparams.md) **params | KDF parameters.|
 
 **Returns**
@@ -103,8 +102,8 @@ Creates KDF parameters.
 
 ### OH_CryptoKdfParams_SetParam()
 
-```
-OH_Crypto_ErrCode OH_CryptoKdfParams_SetParam(OH_CryptoKdfParams *params, CryptoKdf_ParamType type,Crypto_DataBlob *value)
+```c
+OH_Crypto_ErrCode OH_CryptoKdfParams_SetParam(OH_CryptoKdfParams *params, CryptoKdf_ParamType type, Crypto_DataBlob *value)
 ```
 
 **Description**
@@ -113,13 +112,12 @@ Sets KDF parameters.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_CryptoKdfParams](capi-cryptokdfapi-oh-cryptokdfparams.md) *params | KDF parameters.|
-| [CryptoKdf_ParamType](#cryptokdf_paramtype) type | KDF parameter type.|
+| [CryptoKdf_ParamType](capi-crypto-kdf-h.md#cryptokdf_paramtype) type | KDF parameter type.|
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | KDF parameter values.|
 
 **Returns**
@@ -130,7 +128,7 @@ Sets KDF parameters.
 
 ### OH_CryptoKdfParams_Destroy()
 
-```
+```c
 void OH_CryptoKdfParams_Destroy(OH_CryptoKdfParams *params)
 ```
 
@@ -140,7 +138,6 @@ Destroys KDF parameters.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -149,16 +146,15 @@ Destroys KDF parameters.
 
 ### OH_CryptoKdf_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)
 ```
 
 **Description**
 
-Creates a KDF instance.
+Creates a KDF instance.<br> Note: The created resource must be destroyed by calling [OH_CryptoKdf_Destroy](capi-crypto-kdf-h.md#oh_cryptokdf_destroy).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -175,16 +171,15 @@ Creates a KDF instance.
 
 ### OH_CryptoKdf_Derive()
 
-```
-OH_Crypto_ErrCode OH_CryptoKdf_Derive(OH_CryptoKdf *ctx, const OH_CryptoKdfParams *params, int keyLen,Crypto_DataBlob *key)
+```c
+OH_Crypto_ErrCode OH_CryptoKdf_Derive(OH_CryptoKdf *ctx, const OH_CryptoKdfParams *params, int keyLen, Crypto_DataBlob *key)
 ```
 
 **Description**
 
-Derives a key.
+Derives a key.<br> Note: After the use is complete, the memory for storing the **key** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -203,7 +198,7 @@ Derives a key.
 
 ### OH_CryptoKdf_Destroy()
 
-```
+```c
 void OH_CryptoKdf_Destroy(OH_CryptoKdf *ctx)
 ```
 
@@ -212,7 +207,6 @@ void OH_CryptoKdf_Destroy(OH_CryptoKdf *ctx)
 Destroys a KDF instance.
 
 **Since**: 20
-
 
 **Parameters**
 

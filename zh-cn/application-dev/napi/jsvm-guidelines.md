@@ -424,9 +424,9 @@ std::string sourcecodestr = R"JS(
     FunctionNameInJSContext() // 调用成功
     consolelog(FunctionNameInJSContext.name) // 打印 "NativeFunction"
     try {
-    	NativeFunction() // 无法找到该函数，抛出异常
+        NativeFunction() // 无法找到该函数，抛出异常
     } catch (e) {
-    	consolelog(e.message)
+        consolelog(e.message)
     }
 )JS";
 ```

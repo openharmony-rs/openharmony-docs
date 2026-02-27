@@ -47,7 +47,7 @@ typedef struct {...} JSVM_PropertyHandlerConfigurationStruct
 
 ### genericNamedPropertyGetterCallback()
 
-```
+```c
 JSVM_Value (JSVM_CDECL* genericNamedPropertyGetterCallback)(JSVM_Env env,JSVM_Value name,JSVM_Value thisArg,JSVM_Value namedPropertyData)
 ```
 
@@ -57,7 +57,7 @@ JSVM_Value (JSVM_CDECL* genericNamedPropertyGetterCallback)(JSVM_Env env,JSVM_Va
 
 ### genericNamedPropertySetterCallback()
 
-```
+```c
 JSVM_Value (JSVM_CDECL* genericNamedPropertySetterCallback)(JSVM_Env env,JSVM_Value name,JSVM_Value property,JSVM_Value thisArg,JSVM_Value namedPropertyData)
 ```
 
@@ -67,7 +67,7 @@ JSVM_Value (JSVM_CDECL* genericNamedPropertySetterCallback)(JSVM_Env env,JSVM_Va
 
 ### genericNamedPropertyDeleterCallback()
 
-```
+```c
 JSVM_Value (JSVM_CDECL* genericNamedPropertyDeleterCallback)(JSVM_Env env,JSVM_Value name,JSVM_Value thisArg,JSVM_Value namedPropertyData)
 ```
 
@@ -77,7 +77,7 @@ JSVM_Value (JSVM_CDECL* genericNamedPropertyDeleterCallback)(JSVM_Env env,JSVM_V
 
 ### genericNamedPropertyEnumeratorCallback()
 
-```
+```c
 JSVM_Value (JSVM_CDECL* genericNamedPropertyEnumeratorCallback)(JSVM_Env env,JSVM_Value thisArg,JSVM_Value namedPropertyData)
 ```
 
@@ -87,7 +87,7 @@ JSVM_Value (JSVM_CDECL* genericNamedPropertyEnumeratorCallback)(JSVM_Env env,JSV
 
 ### genericIndexedPropertyGetterCallback()
 
-```
+```c
 JSVM_Value (JSVM_CDECL* genericIndexedPropertyGetterCallback)(JSVM_Env env,JSVM_Value index,JSVM_Value thisArg,JSVM_Value indexedPropertyData)
 ```
 
@@ -97,7 +97,7 @@ JSVM_Value (JSVM_CDECL* genericIndexedPropertyGetterCallback)(JSVM_Env env,JSVM_
 
 ### genericIndexedPropertySetterCallback()
 
-```
+```c
 JSVM_Value (JSVM_CDECL* genericIndexedPropertySetterCallback)(JSVM_Env env,JSVM_Value index,JSVM_Value property,JSVM_Value thisArg,JSVM_Value indexedPropertyData)
 ```
 
@@ -107,7 +107,7 @@ JSVM_Value (JSVM_CDECL* genericIndexedPropertySetterCallback)(JSVM_Env env,JSVM_
 
 ### genericIndexedPropertyDeleterCallback()
 
-```
+```c
 JSVM_Value (JSVM_CDECL* genericIndexedPropertyDeleterCallback)(JSVM_Env env,JSVM_Value index,JSVM_Value thisArg,JSVM_Value indexedPropertyData)
 ```
 
@@ -117,7 +117,7 @@ JSVM_Value (JSVM_CDECL* genericIndexedPropertyDeleterCallback)(JSVM_Env env,JSVM
 
 ### genericIndexedPropertyEnumeratorCallback()
 
-```
+```c
 JSVM_Value (JSVM_CDECL* genericIndexedPropertyEnumeratorCallback)(JSVM_Env env,JSVM_Value thisArg,JSVM_Value indexedPropertyData)
 ```
 

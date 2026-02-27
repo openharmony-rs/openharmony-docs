@@ -1,7 +1,7 @@
 # native_gesture.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -20,8 +20,6 @@
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**相关示例：** <!--RP1-->[NdkGestureSetting](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureSetting)<!--RP1End-->、<!--RP2-->[NdkGestureNestScroll](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureNestScroll)<!--RP2End-->、<!--RP3-->[NdkGestureBlocking](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureBlocking)<!--RP3End-->
-
 ## 汇总
 
 ### 结构体
@@ -36,8 +34,10 @@
 | [ArkUI_GestureEventTargetInfo](capi-arkui-nativemodule-arkui-gestureeventtargetinfo.md)       | ArkUI_GestureEventTargetInfo     | 提供手势事件目标信息类型对象定义。 |
 | [ArkUI_ParallelInnerGestureEvent](capi-arkui-nativemodule-arkui-parallelinnergestureevent.md) | ArkUI_ParallelInnerGestureEvent  | 提供并行内部手势事件类型对象定义。 |
 | [ArkUI_TouchRecognizer](capi-arkui-nativemodule-arkui-touchrecognizer.md)                     | ArkUI_TouchRecognizer            | 定义触摸识别器。          |
+| [ArkUI_TouchRecognizer*](capi-arkui-nativemodule-arkui-touchrecognizerhandle.md)   | ArkUI_TouchRecognizerHandle | 定义触摸识别器句柄。      |
 | [ArkUI_TouchRecognizerHandle*](capi-arkui-nativemodule-arkui-touchrecognizerhandlearray.md)   | ArkUI_TouchRecognizerHandleArray | 定义触摸识别器句柄数组。      |
-| [ArkUI_GestureRecognizerHandle*](capi-arkui-nativemodule-arkui-gesturerecognizerhandle.md)    | ArkUI_GestureRecognizerHandleArray  | 提供手势识别器句柄类型数组对象定义。   | 
+| [ArkUI_GestureRecognizer*](capi-arkui-nativemodule-arkui-gesturerecognizerhandle.md)    | ArkUI_GestureRecognizerHandle  | 提供手势识别器句柄类型对象定义。   |
+| [ArkUI_GestureRecognizerHandle*](capi-arkui-nativemodule-arkui-gesturerecognizerhandlearray.md)    | ArkUI_GestureRecognizerHandleArray  | 提供手势识别器句柄类型数组对象定义。   |
 
 ### 枚举
 
@@ -110,21 +110,29 @@
 | [ArkUI_ErrorCode OH_ArkUI_SetTouchTestDoneCallback(ArkUI_NodeHandle node,void* userData,void (\*touchTestDone)(ArkUI_GestureEvent* event,ArkUI_GestureRecognizerHandleArray recognizers,int32_t count,void* userData))](#oh_arkui_settouchtestdonecallback) | - | 注册一个在所有手势识别器收集完成后执行的回调函数。当用户开始触摸屏幕时，系统会进行命中测试并根据触摸位置收集手势识别器。随后，在处理任何移动事件之前，组件可以使用此接口确定将参与识别并相互竞争的手势识别器。 |
 | [void* OH_ArkUI_GestureInterrupter_GetUserData(ArkUI_GestureInterruptInfo* event)](#oh_arkui_gestureinterrupter_getuserdata) | - | 获取手势中断事件中的用户自定义数据。 |
 | [ArkUI_ErrorCode OH_ArkUI_PreventGestureRecognizerBegin(ArkUI_GestureRecognizer* recognizer)](#oh_arkui_preventgesturerecognizerbegin) | - | 在手指全部抬起前阻止手势识别器参与当前手势识别。如果系统已确定该手势识别器的结果（无论成功与否），调用此接口将无效。 |
-| [ArkUI_ErrorCode OH_ArkUI_LongPressGesture_SetAllowableMovement(ArkUI_GestureRecognizer* recognizer, int32_t allowableMovement)](#oh_arkui_longpressgesture_setallowablemovement) | - | 设置长按手势识别器识别的手势的最大移动距离。 |
-| [int32_t OH_ArkUI_LongPressGesture_GetAllowableMovement(ArkUI_GestureRecognizer* recognizer, int32_t* allowableMovement)](#oh_arkui_longpressgesture_getallowablemovement) | - | 获取长按手势识别器识别的手势的最大移动距离。 |
+| [ArkUI_ErrorCode OH_ArkUI_LongPressGesture_SetAllowableMovement(ArkUI_GestureRecognizer* recognizer, double allowableMovement)](#oh_arkui_longpressgesture_setallowablemovement) | - | 设置长按手势识别器识别的手势的最大移动距离。 |
+| [ArkUI_ErrorCode OH_ArkUI_LongPressGesture_GetAllowableMovement(ArkUI_GestureRecognizer* recognizer, double* allowableMovement)](#oh_arkui_longpressgesture_getallowablemovement) | - | 获取长按手势识别器识别的手势的最大移动距离。 |
 
 ### 变量
 
 | 名称       | typedef关键字                 | 描述                                                                                                                                    |
 |----------|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
 | uint32_t | ArkUI_GestureDirectionMask | 定义滑动手势方向集合。<br>例：ArkUI_GestureDirectionMask directions = GESTURE_DIRECTION_LEFT \| GESTURE_DIRECTION_RIGHT。<br>directions 表明支持左右水平方向。 |
-| uint32_t | ArkUI_GestureEventActionTypeMask   | 定义手势事件类型集合。例：ArkUI_GestureEventActionTypeMask actions = GESTURE_EVENT_ACTION_ACCEPT \| GESTURE_EVENT_ACTION_UPDATE;                   |
+| uint32_t | ArkUI_GestureEventActionTypeMask   | 定义手势事件类型集合。例：ArkUI_GestureEventActionTypeMask actions = GESTURE_EVENT_ACTION_ACCEPT \| GESTURE_EVENT_ACTION_UPDATE。                   |
+
+### 示例
+
+| 名称 |  描述 |
+| -- | -- |
+| <!--RP1-->[NdkGestureSetting](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureSetting)<!--RP1End--> | 从API version 20开始，新增手势绑定、手势移除以及自定义手势判断的示例。 |
+| <!--RP2-->[NdkGestureNestScroll](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureNestScroll)<!--RP2End--> | 从API version 20开始，新增手势接口实现嵌套滚动的示例。 |
+| <!--RP3-->[NdkGestureBlocking](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureBlocking)<!--RP3End--> | 从API version 20开始，新增手势拦截的示例。 |
 
 ## 枚举类型说明
 
 ### ArkUI_GestureEventActionType
 
-```
+```c
 enum ArkUI_GestureEventActionType
 ```
 
@@ -144,7 +152,7 @@ enum ArkUI_GestureEventActionType
 
 ### ArkUI_GesturePriority
 
-```
+```c
 enum ArkUI_GesturePriority
 ```
 
@@ -163,7 +171,7 @@ enum ArkUI_GesturePriority
 
 ### ArkUI_GroupGestureMode
 
-```
+```c
 enum ArkUI_GroupGestureMode
 ```
 
@@ -182,7 +190,7 @@ enum ArkUI_GroupGestureMode
 
 ### ArkUI_GestureDirection
 
-```
+```c
 enum ArkUI_GestureDirection
 ```
 
@@ -206,7 +214,7 @@ enum ArkUI_GestureDirection
 
 ### ArkUI_GestureMask
 
-```
+```c
 enum ArkUI_GestureMask
 ```
 
@@ -224,7 +232,7 @@ enum ArkUI_GestureMask
 
 ### ArkUI_GestureRecognizerType
 
-```
+```c
 enum ArkUI_GestureRecognizerType
 ```
 
@@ -238,18 +246,18 @@ enum ArkUI_GestureRecognizerType
 | 枚举项 | 描述                                |
 | -- |-----------------------------------|
 | TAP_GESTURE = 0 | 敲击手势。                             |
-| LONG_PRESS_GESTURE | 长按手势。                             |
-| PAN_GESTURE | 滑动手势。                             |
-| PINCH_GESTURE | 捏合手势。                             |
-| ROTATION_GESTURE | 旋转手势。                             |
-| SWIPE_GESTURE | 快滑手势。                             |
-| GROUP_GESTURE | 手势组合。                             |
-| CLICK_GESTURE | 通过onClick注册的点击手势。<br>**起始版本：** 20 |
-| DRAG_DROP | 用于拖放的拖拽手势。<br>**起始版本：** 20        |
+| LONG_PRESS_GESTURE = 1 | 长按手势。                             |
+| PAN_GESTURE = 2 | 滑动手势。                             |
+| PINCH_GESTURE = 3 | 捏合手势。                             |
+| ROTATION_GESTURE = 4 | 旋转手势。                             |
+| SWIPE_GESTURE = 5 | 快滑手势。                             |
+| GROUP_GESTURE = 6 | 手势组合。                             |
+| CLICK_GESTURE = 7 | 通过onClick注册的点击手势。<br>**起始版本：** 20 |
+| DRAG_DROP = 8 | 用于拖放的拖拽手势。<br>**起始版本：** 20        |
 
 ### ArkUI_GestureInterruptResult
 
-```
+```c
 enum ArkUI_GestureInterruptResult
 ```
 
@@ -263,11 +271,11 @@ enum ArkUI_GestureInterruptResult
 | 枚举项 | 描述 |
 | -- | -- |
 | GESTURE_INTERRUPT_RESULT_CONTINUE = 0 | 手势继续。 |
-| GESTURE_INTERRUPT_RESULT_REJECT | 手势打断。 |
+| GESTURE_INTERRUPT_RESULT_REJECT = 1 | 手势打断。 |
 
 ### ArkUI_GestureRecognizerState
 
-```
+```c
 enum ArkUI_GestureRecognizerState
 ```
 
@@ -292,7 +300,7 @@ enum ArkUI_GestureRecognizerState
 
 ### ArkUI_GestureRecognizerDisposeNotifyCallback()
 
-```
+```c
 typedef void (*ArkUI_GestureRecognizerDisposeNotifyCallback)(ArkUI_GestureRecognizer* recognizer, void* userData)
 ```
 
@@ -313,7 +321,7 @@ typedef void (*ArkUI_GestureRecognizerDisposeNotifyCallback)(ArkUI_GestureRecogn
 
 ### OH_ArkUI_GestureInterruptInfo_GetSystemFlag()
 
-```
+```c
 bool OH_ArkUI_GestureInterruptInfo_GetSystemFlag(const ArkUI_GestureInterruptInfo* event)
 ```
 
@@ -339,7 +347,7 @@ bool OH_ArkUI_GestureInterruptInfo_GetSystemFlag(const ArkUI_GestureInterruptInf
 
 ### OH_ArkUI_GestureInterruptInfo_GetRecognizer()
 
-```
+```c
 ArkUI_GestureRecognizer* OH_ArkUI_GestureInterruptInfo_GetRecognizer(const ArkUI_GestureInterruptInfo* event)
 ```
 
@@ -365,7 +373,7 @@ ArkUI_GestureRecognizer* OH_ArkUI_GestureInterruptInfo_GetRecognizer(const ArkUI
 
 ### OH_ArkUI_GestureInterruptInfo_GetGestureEvent()
 
-```
+```c
 ArkUI_GestureEvent* OH_ArkUI_GestureInterruptInfo_GetGestureEvent(const ArkUI_GestureInterruptInfo* event)
 ```
 
@@ -391,7 +399,7 @@ ArkUI_GestureEvent* OH_ArkUI_GestureInterruptInfo_GetGestureEvent(const ArkUI_Ge
 
 ### OH_ArkUI_GestureInterruptInfo_GetSystemRecognizerType()
 
-```
+```c
 int32_t OH_ArkUI_GestureInterruptInfo_GetSystemRecognizerType(const ArkUI_GestureInterruptInfo* event)
 ```
 
@@ -417,7 +425,7 @@ int32_t OH_ArkUI_GestureInterruptInfo_GetSystemRecognizerType(const ArkUI_Gestur
 
 ### OH_ArkUI_GestureInterruptInfo_GetTouchRecognizers()
 
-```
+```c
 int32_t OH_ArkUI_GestureInterruptInfo_GetTouchRecognizers(const ArkUI_GestureInterruptInfo* info,ArkUI_TouchRecognizerHandleArray* recognizers, int32_t* size)
 ```
 
@@ -445,7 +453,7 @@ int32_t OH_ArkUI_GestureInterruptInfo_GetTouchRecognizers(const ArkUI_GestureInt
 
 ### OH_ArkUI_TouchRecognizer_GetNodeHandle()
 
-```
+```c
 ArkUI_NodeHandle OH_ArkUI_TouchRecognizer_GetNodeHandle(const ArkUI_TouchRecognizerHandle recognizer)
 ```
 
@@ -471,7 +479,7 @@ ArkUI_NodeHandle OH_ArkUI_TouchRecognizer_GetNodeHandle(const ArkUI_TouchRecogni
 
 ### OH_ArkUI_TouchRecognizer_CancelTouch()
 
-```
+```c
 int32_t OH_ArkUI_TouchRecognizer_CancelTouch(ArkUI_TouchRecognizerHandle recognizer, ArkUI_GestureInterruptInfo* info)
 ```
 
@@ -498,7 +506,7 @@ int32_t OH_ArkUI_TouchRecognizer_CancelTouch(ArkUI_TouchRecognizerHandle recogni
 
 ### OH_ArkUI_GestureEvent_GetActionType()
 
-```
+```c
 ArkUI_GestureEventActionType OH_ArkUI_GestureEvent_GetActionType(const ArkUI_GestureEvent* event)
 ```
 
@@ -524,7 +532,7 @@ ArkUI_GestureEventActionType OH_ArkUI_GestureEvent_GetActionType(const ArkUI_Ges
 
 ### OH_ArkUI_GestureEvent_GetRawInputEvent()
 
-```
+```c
 const ArkUI_UIInputEvent* OH_ArkUI_GestureEvent_GetRawInputEvent(const ArkUI_GestureEvent* event)
 ```
 
@@ -550,7 +558,7 @@ const ArkUI_UIInputEvent* OH_ArkUI_GestureEvent_GetRawInputEvent(const ArkUI_Ges
 
 ### OH_ArkUI_LongPress_GetRepeatCount()
 
-```
+```c
 int32_t OH_ArkUI_LongPress_GetRepeatCount(const ArkUI_GestureEvent* event)
 ```
 
@@ -576,7 +584,7 @@ int32_t OH_ArkUI_LongPress_GetRepeatCount(const ArkUI_GestureEvent* event)
 
 ### OH_ArkUI_PanGesture_GetVelocity()
 
-```
+```c
 float OH_ArkUI_PanGesture_GetVelocity(const ArkUI_GestureEvent* event)
 ```
 
@@ -602,7 +610,7 @@ float OH_ArkUI_PanGesture_GetVelocity(const ArkUI_GestureEvent* event)
 
 ### OH_ArkUI_PanGesture_GetVelocityX()
 
-```
+```c
 float OH_ArkUI_PanGesture_GetVelocityX(const ArkUI_GestureEvent* event)
 ```
 
@@ -628,7 +636,7 @@ float OH_ArkUI_PanGesture_GetVelocityX(const ArkUI_GestureEvent* event)
 
 ### OH_ArkUI_PanGesture_GetVelocityY()
 
-```
+```c
 float OH_ArkUI_PanGesture_GetVelocityY(const ArkUI_GestureEvent* event)
 ```
 
@@ -654,7 +662,7 @@ float OH_ArkUI_PanGesture_GetVelocityY(const ArkUI_GestureEvent* event)
 
 ### OH_ArkUI_PanGesture_GetOffsetX()
 
-```
+```c
 float OH_ArkUI_PanGesture_GetOffsetX(const ArkUI_GestureEvent* event)
 ```
 
@@ -680,7 +688,7 @@ float OH_ArkUI_PanGesture_GetOffsetX(const ArkUI_GestureEvent* event)
 
 ### OH_ArkUI_PanGesture_GetOffsetY()
 
-```
+```c
 float OH_ArkUI_PanGesture_GetOffsetY(const ArkUI_GestureEvent* event)
 ```
 
@@ -706,7 +714,7 @@ float OH_ArkUI_PanGesture_GetOffsetY(const ArkUI_GestureEvent* event)
 
 ### OH_ArkUI_SwipeGesture_GetAngle()
 
-```
+```c
 float OH_ArkUI_SwipeGesture_GetAngle(const ArkUI_GestureEvent* event)
 ```
 
@@ -732,7 +740,7 @@ float OH_ArkUI_SwipeGesture_GetAngle(const ArkUI_GestureEvent* event)
 
 ### OH_ArkUI_SwipeGesture_GetVelocity()
 
-```
+```c
 float OH_ArkUI_SwipeGesture_GetVelocity(const ArkUI_GestureEvent* event)
 ```
 
@@ -758,7 +766,7 @@ float OH_ArkUI_SwipeGesture_GetVelocity(const ArkUI_GestureEvent* event)
 
 ### OH_ArkUI_RotationGesture_GetAngle()
 
-```
+```c
 float OH_ArkUI_RotationGesture_GetAngle(const ArkUI_GestureEvent* event)
 ```
 
@@ -784,7 +792,7 @@ float OH_ArkUI_RotationGesture_GetAngle(const ArkUI_GestureEvent* event)
 
 ### OH_ArkUI_PinchGesture_GetScale()
 
-```
+```c
 float OH_ArkUI_PinchGesture_GetScale(const ArkUI_GestureEvent* event)
 ```
 
@@ -810,7 +818,7 @@ float OH_ArkUI_PinchGesture_GetScale(const ArkUI_GestureEvent* event)
 
 ### OH_ArkUI_PinchGesture_GetCenterX()
 
-```
+```c
 float OH_ArkUI_PinchGesture_GetCenterX(const ArkUI_GestureEvent* event)
 ```
 
@@ -836,7 +844,7 @@ float OH_ArkUI_PinchGesture_GetCenterX(const ArkUI_GestureEvent* event)
 
 ### OH_ArkUI_PinchGesture_GetCenterY()
 
-```
+```c
 float OH_ArkUI_PinchGesture_GetCenterY(const ArkUI_GestureEvent* event)
 ```
 
@@ -862,7 +870,7 @@ float OH_ArkUI_PinchGesture_GetCenterY(const ArkUI_GestureEvent* event)
 
 ### OH_ArkUI_GestureEvent_GetNode()
 
-```
+```c
 ArkUI_NodeHandle OH_ArkUI_GestureEvent_GetNode(const ArkUI_GestureEvent* event)
 ```
 
@@ -888,7 +896,7 @@ ArkUI_NodeHandle OH_ArkUI_GestureEvent_GetNode(const ArkUI_GestureEvent* event)
 
 ### OH_ArkUI_GetResponseRecognizersFromInterruptInfo()
 
-```
+```c
 int32_t OH_ArkUI_GetResponseRecognizersFromInterruptInfo(const ArkUI_GestureInterruptInfo* event,ArkUI_GestureRecognizerHandleArray* responseChain, int32_t* count)
 ```
 
@@ -916,7 +924,7 @@ int32_t OH_ArkUI_GetResponseRecognizersFromInterruptInfo(const ArkUI_GestureInte
 
 ### OH_ArkUI_SetGestureRecognizerEnabled()
 
-```
+```c
 int32_t OH_ArkUI_SetGestureRecognizerEnabled(ArkUI_GestureRecognizer* recognizer, bool enabled)
 ```
 
@@ -943,7 +951,7 @@ int32_t OH_ArkUI_SetGestureRecognizerEnabled(ArkUI_GestureRecognizer* recognizer
 
 ### OH_ArkUI_SetGestureRecognizerLimitFingerCount()
 
-```
+```c
 int32_t OH_ArkUI_SetGestureRecognizerLimitFingerCount(ArkUI_GestureRecognizer* recognizer, bool limitFingerCount)
 ```
 
@@ -970,7 +978,7 @@ int32_t OH_ArkUI_SetGestureRecognizerLimitFingerCount(ArkUI_GestureRecognizer* r
 
 ### OH_ArkUI_GetGestureRecognizerEnabled()
 
-```
+```c
 bool OH_ArkUI_GetGestureRecognizerEnabled(ArkUI_GestureRecognizer* recognizer)
 ```
 
@@ -996,7 +1004,7 @@ bool OH_ArkUI_GetGestureRecognizerEnabled(ArkUI_GestureRecognizer* recognizer)
 
 ### OH_ArkUI_GetGestureRecognizerState()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureRecognizerState(ArkUI_GestureRecognizer* recognizer, ArkUI_GestureRecognizerState* state)
 ```
 
@@ -1023,7 +1031,7 @@ int32_t OH_ArkUI_GetGestureRecognizerState(ArkUI_GestureRecognizer* recognizer, 
 
 ### OH_ArkUI_GetGestureEventTargetInfo()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureEventTargetInfo(ArkUI_GestureRecognizer* recognizer, ArkUI_GestureEventTargetInfo** info)
 ```
 
@@ -1050,7 +1058,7 @@ int32_t OH_ArkUI_GetGestureEventTargetInfo(ArkUI_GestureRecognizer* recognizer, 
 
 ### OH_ArkUI_GestureEventTargetInfo_IsScrollBegin()
 
-```
+```c
 int32_t OH_ArkUI_GestureEventTargetInfo_IsScrollBegin(ArkUI_GestureEventTargetInfo* info, bool* ret)
 ```
 
@@ -1077,7 +1085,7 @@ int32_t OH_ArkUI_GestureEventTargetInfo_IsScrollBegin(ArkUI_GestureEventTargetIn
 
 ### OH_ArkUI_GestureEventTargetInfo_IsScrollEnd()
 
-```
+```c
 int32_t OH_ArkUI_GestureEventTargetInfo_IsScrollEnd(ArkUI_GestureEventTargetInfo* info, bool* ret)
 ```
 
@@ -1104,7 +1112,7 @@ int32_t OH_ArkUI_GestureEventTargetInfo_IsScrollEnd(ArkUI_GestureEventTargetInfo
 
 ### OH_ArkUI_GetPanGestureDirectionMask()
 
-```
+```c
 int32_t OH_ArkUI_GetPanGestureDirectionMask(ArkUI_GestureRecognizer* recognizer,ArkUI_GestureDirectionMask* directionMask)
 ```
 
@@ -1131,7 +1139,7 @@ int32_t OH_ArkUI_GetPanGestureDirectionMask(ArkUI_GestureRecognizer* recognizer,
 
 ### OH_ArkUI_IsBuiltInGesture()
 
-```
+```c
 bool OH_ArkUI_IsBuiltInGesture(ArkUI_GestureRecognizer* recognizer)
 ```
 
@@ -1157,7 +1165,7 @@ bool OH_ArkUI_IsBuiltInGesture(ArkUI_GestureRecognizer* recognizer)
 
 ### OH_ArkUI_GetGestureTag()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureTag(ArkUI_GestureRecognizer* recognizer, char* buffer, int32_t bufferSize, int32_t* result)
 ```
 
@@ -1186,7 +1194,7 @@ int32_t OH_ArkUI_GetGestureTag(ArkUI_GestureRecognizer* recognizer, char* buffer
 
 ### OH_ArkUI_GetGestureBindNodeId()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureBindNodeId(ArkUI_GestureRecognizer* recognizer, char* nodeId, int32_t size,int32_t* result)
 ```
 
@@ -1215,7 +1223,7 @@ int32_t OH_ArkUI_GetGestureBindNodeId(ArkUI_GestureRecognizer* recognizer, char*
 
 ### OH_ArkUI_IsGestureRecognizerValid()
 
-```
+```c
 bool OH_ArkUI_IsGestureRecognizerValid(ArkUI_GestureRecognizer* recognizer)
 ```
 
@@ -1241,7 +1249,7 @@ bool OH_ArkUI_IsGestureRecognizerValid(ArkUI_GestureRecognizer* recognizer)
 
 ### OH_ArkUI_ParallelInnerGestureEvent_GetUserData()
 
-```
+```c
 void* OH_ArkUI_ParallelInnerGestureEvent_GetUserData(ArkUI_ParallelInnerGestureEvent* event)
 ```
 
@@ -1267,7 +1275,7 @@ void* OH_ArkUI_ParallelInnerGestureEvent_GetUserData(ArkUI_ParallelInnerGestureE
 
 ### OH_ArkUI_ParallelInnerGestureEvent_GetCurrentRecognizer()
 
-```
+```c
 ArkUI_GestureRecognizer* OH_ArkUI_ParallelInnerGestureEvent_GetCurrentRecognizer(ArkUI_ParallelInnerGestureEvent* event)
 ```
 
@@ -1293,7 +1301,7 @@ ArkUI_GestureRecognizer* OH_ArkUI_ParallelInnerGestureEvent_GetCurrentRecognizer
 
 ### OH_ArkUI_ParallelInnerGestureEvent_GetConflictRecognizers()
 
-```
+```c
 int32_t OH_ArkUI_ParallelInnerGestureEvent_GetConflictRecognizers(ArkUI_ParallelInnerGestureEvent* event,ArkUI_GestureRecognizerHandleArray* array, int32_t* size)
 ```
 
@@ -1310,7 +1318,7 @@ int32_t OH_ArkUI_ParallelInnerGestureEvent_GetConflictRecognizers(ArkUI_Parallel
 | 参数项                                                                                                  | 描述 |
 |------------------------------------------------------------------------------------------------------| -- |
 | [ArkUI_ParallelInnerGestureEvent](capi-arkui-nativemodule-arkui-parallelinnergestureevent.md)* event | 并行内部手势事件。 |
-| [ArkUI_GestureRecognizerHandleArray](capi-arkui-nativemodule-arkui-gesturerecognizerhandle.md)* array  | 冲突的手势识别器数组。 |
+| [ArkUI_GestureRecognizerHandleArray](capi-arkui-nativemodule-arkui-gesturerecognizerhandlearray.md)* array  | 冲突的手势识别器数组。 |
 | int32_t* size                                                                                        | 冲突的手势识别器数组的大小。 |
 
 **返回：**
@@ -1321,7 +1329,7 @@ int32_t OH_ArkUI_ParallelInnerGestureEvent_GetConflictRecognizers(ArkUI_Parallel
 
 ### OH_ArkUI_SetArkUIGestureRecognizerDisposeNotify()
 
-```
+```c
 int32_t OH_ArkUI_SetArkUIGestureRecognizerDisposeNotify(ArkUI_GestureRecognizer* recognizer,ArkUI_GestureRecognizerDisposeNotifyCallback callback, void* userData)
 ```
 
@@ -1348,7 +1356,7 @@ int32_t OH_ArkUI_SetArkUIGestureRecognizerDisposeNotify(ArkUI_GestureRecognizer*
 
 ### OH_ArkUI_GetGestureParam_DirectMask()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureParam_DirectMask(ArkUI_GestureRecognizer* recognizer, ArkUI_GestureDirectionMask* directMask)
 ```
 
@@ -1375,7 +1383,7 @@ int32_t OH_ArkUI_GetGestureParam_DirectMask(ArkUI_GestureRecognizer* recognizer,
 
 ### OH_ArkUI_GetGestureParam_FingerCount()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureParam_FingerCount(ArkUI_GestureRecognizer* recognizer, int* finger)
 ```
 
@@ -1402,7 +1410,7 @@ int32_t OH_ArkUI_GetGestureParam_FingerCount(ArkUI_GestureRecognizer* recognizer
 
 ### OH_ArkUI_GetGestureParam_limitFingerCount()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureParam_limitFingerCount(ArkUI_GestureRecognizer* recognizer, bool* isLimited)
 ```
 
@@ -1429,7 +1437,7 @@ int32_t OH_ArkUI_GetGestureParam_limitFingerCount(ArkUI_GestureRecognizer* recog
 
 ### OH_ArkUI_GetGestureParam_repeat()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureParam_repeat(ArkUI_GestureRecognizer* recognizer, bool* isRepeat)
 ```
 
@@ -1456,7 +1464,7 @@ int32_t OH_ArkUI_GetGestureParam_repeat(ArkUI_GestureRecognizer* recognizer, boo
 
 ### OH_ArkUI_GetGestureParam_distance()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureParam_distance(ArkUI_GestureRecognizer* recognizer, double* distance)
 ```
 
@@ -1483,7 +1491,7 @@ int32_t OH_ArkUI_GetGestureParam_distance(ArkUI_GestureRecognizer* recognizer, d
 
 ### OH_ArkUI_GetGestureParam_speed()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureParam_speed(ArkUI_GestureRecognizer* recognizer, double* speed)
 ```
 
@@ -1510,7 +1518,7 @@ int32_t OH_ArkUI_GetGestureParam_speed(ArkUI_GestureRecognizer* recognizer, doub
 
 ### OH_ArkUI_GetGestureParam_duration()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureParam_duration(ArkUI_GestureRecognizer* recognizer, int* duration)
 ```
 
@@ -1537,7 +1545,7 @@ int32_t OH_ArkUI_GetGestureParam_duration(ArkUI_GestureRecognizer* recognizer, i
 
 ### OH_ArkUI_GetGestureParam_angle()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureParam_angle(ArkUI_GestureRecognizer* recognizer, double* angle)
 ```
 
@@ -1564,7 +1572,7 @@ int32_t OH_ArkUI_GetGestureParam_angle(ArkUI_GestureRecognizer* recognizer, doub
 
 ### OH_ArkUI_GetGestureParam_distanceThreshold()
 
-```
+```c
 int32_t OH_ArkUI_GetGestureParam_distanceThreshold(ArkUI_GestureRecognizer* recognizer, double* distanceThreshold)
 ```
 
@@ -1591,7 +1599,7 @@ int32_t OH_ArkUI_GetGestureParam_distanceThreshold(ArkUI_GestureRecognizer* reco
 
 ### OH_ArkUI_PanGesture_SetDistanceMap()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_PanGesture_SetDistanceMap(ArkUI_GestureRecognizer* recognizer, int size, int* toolTypeArray, double* distanceArray)
 ```
 
@@ -1620,7 +1628,7 @@ ArkUI_ErrorCode OH_ArkUI_PanGesture_SetDistanceMap(ArkUI_GestureRecognizer* reco
 
 ### OH_ArkUI_PanGesture_GetDistanceByToolType()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_PanGesture_GetDistanceByToolType(ArkUI_GestureRecognizer* recognizer, int toolType, double* distance)
 ```
 
@@ -1648,7 +1656,7 @@ ArkUI_ErrorCode OH_ArkUI_PanGesture_GetDistanceByToolType(ArkUI_GestureRecognize
 
 ### OH_ArkUI_SetTouchTestDoneCallback()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_SetTouchTestDoneCallback(ArkUI_NodeHandle node,void* userData,void (*touchTestDone)(ArkUI_GestureEvent* event,ArkUI_GestureRecognizerHandleArray recognizers,int32_t count,void* userData)
 )
 ```
@@ -1677,7 +1685,7 @@ ArkUI_ErrorCode OH_ArkUI_SetTouchTestDoneCallback(ArkUI_NodeHandle node,void* us
 
 ### OH_ArkUI_GestureInterrupter_GetUserData()
 
-```
+```c
 void* OH_ArkUI_GestureInterrupter_GetUserData(ArkUI_GestureInterruptInfo* event)
 ```
 
@@ -1703,7 +1711,7 @@ void* OH_ArkUI_GestureInterrupter_GetUserData(ArkUI_GestureInterruptInfo* event)
 
 ### OH_ArkUI_PreventGestureRecognizerBegin()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_PreventGestureRecognizerBegin(ArkUI_GestureRecognizer* recognizer)
 ```
 
@@ -1729,8 +1737,8 @@ ArkUI_ErrorCode OH_ArkUI_PreventGestureRecognizerBegin(ArkUI_GestureRecognizer* 
 
 ### OH_ArkUI_LongPressGesture_SetAllowableMovement()
 
-```
-ArkUI_ErrorCode OH_ArkUI_LongPressGesture_SetAllowableMovement(ArkUI_GestureRecognizer* recognizer, int32_t allowableMovement)
+```c
+ArkUI_ErrorCode OH_ArkUI_LongPressGesture_SetAllowableMovement(ArkUI_GestureRecognizer* recognizer, double allowableMovement)
 ```
 
 **描述：**
@@ -1745,7 +1753,7 @@ ArkUI_ErrorCode OH_ArkUI_LongPressGesture_SetAllowableMovement(ArkUI_GestureReco
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | 手势识别器指针。 |
-| int32_t allowableMovement | 长按手势识别器识别的手势的最大移动距离。<br/>单位为px。 <br/>取值范围：(0, +∞)，设置小于等于0时，按照默认值15处理。 |
+| double allowableMovement | 长按手势识别器识别的手势的最大移动距离。<br/>单位为px。 <br/>取值范围：(0, +∞)，设置小于等于0时，按照默认值15处理。 |
 
 **返回：**
 
@@ -1755,8 +1763,8 @@ ArkUI_ErrorCode OH_ArkUI_LongPressGesture_SetAllowableMovement(ArkUI_GestureReco
 
 ### OH_ArkUI_LongPressGesture_GetAllowableMovement()
 
-```
-int32_t OH_ArkUI_LongPressGesture_GetAllowableMovement(ArkUI_GestureRecognizer* recognizer, int32_t* allowableMovement)
+```c
+ArkUI_ErrorCode OH_ArkUI_LongPressGesture_GetAllowableMovement(ArkUI_GestureRecognizer* recognizer, double* allowableMovement)
 ```
 
 **描述：**
@@ -1772,11 +1780,11 @@ int32_t OH_ArkUI_LongPressGesture_GetAllowableMovement(ArkUI_GestureRecognizer* 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | 手势识别器指针。 |
-| int32_t* allowableMovement | 指向长按手势识别器识别的手势的最大移动距离的指针。 |
+| double* allowableMovement | 指向长按手势识别器识别的手势的最大移动距离的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>  [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>   [ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 不支持手势识别器类型。 |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 错误码。<br>  [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 参数错误。<br>[ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 不支持手势识别器类型。 |
 

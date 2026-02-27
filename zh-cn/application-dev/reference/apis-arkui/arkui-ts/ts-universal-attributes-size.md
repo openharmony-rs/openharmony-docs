@@ -10,15 +10,17 @@
 
 >  **说明：**
 >
->  从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  如果组件的尺寸通过百分比进行设置， 在计算组件尺寸的百分比大小时，参考最近设置了固定大小的祖先节点的尺寸。
+> - 如果组件的尺寸通过百分比进行设置， 在计算组件尺寸的百分比大小时，参考最近设置了固定大小的祖先节点的尺寸。
+>
+> - 从API version 10开始，尺寸设置内部分属性支持使用calc计算特性，具体支持属性请参考对应的属性说明。calc计算特性是一种动态计算长度值的函数，常用于灵活设置布局尺寸（如宽度、高度、边距等）。它允许通过数学表达式组合不同单位和数值，支持通过加减乘除括号运算符组成计算表达式，实现动态响应式设计。注意，在使用calc时，运算符与数值之间需要使用空格隔开。具体使用场景可见[示例1](#示例1设置组件的宽高和边距)。
 
 ## width
 
 width(value: Length): T
 
-设置组件自身的宽度，缺省时使用元素自身内容需要的宽度。若子组件的宽大于父组件的宽，则会画出父组件的范围。
+设置组件自身的宽度，缺省时使用元素自身内容需要的宽度。若子组件的宽大于父组件的宽，则会超出父组件的范围。
 
 从API version 10开始，该接口支持calc计算特性。
 
@@ -50,7 +52,7 @@ width(value: Length): T
 
 height(value: Length): T
 
-设置组件自身的高度，缺省时使用元素自身内容需要的高度。若子组件的高大于父组件的高，则会画出父组件的范围。
+设置组件自身的高度，缺省时使用元素自身内容需要的高度。若子组件的高大于父组件的高，则会超出父组件的范围。
 
 从API version 10开始，该接口支持calc计算特性。
 
@@ -80,7 +82,7 @@ height(value: Length): T
 
 width(widthValue: Length | LayoutPolicy): T
 
-设置组件自身的宽度或水平方向布局策略，缺省时使用元素自身内容需要的宽度。若子组件的宽大于父组件的宽，则会画出父组件的范围。
+设置组件自身的宽度或水平方向布局策略，缺省时使用元素自身内容需要的宽度。若子组件的宽大于父组件的宽，则会超出父组件的范围。
 
 **卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
@@ -104,7 +106,7 @@ width(widthValue: Length | LayoutPolicy): T
 
 height(heightValue: Length | LayoutPolicy): T
 
-设置组件自身的高度或垂直方向布局策略，缺省时使用元素自身内容需要的高度。若子组件的高大于父组件的高，则会画出父组件的范围。
+设置组件自身的高度或垂直方向布局策略，缺省时使用元素自身内容需要的高度。若子组件的高大于父组件的高，则会超出父组件的范围。
 
 **卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
@@ -232,7 +234,7 @@ safeAreaPadding(paddingValue: Padding | LengthMetrics | LocalizedPadding): T
 
 > **说明：**
 > 
-> 当父辈和祖先容器设置了组件级安全区域时，子组件可以感知并利用该区域，称该区域为累计安全区延伸（accumulatedSafeAreaExpand，下文简称SAE），表示子组件在四个方向上各可延伸的长度。当祖辈与更上一级祖辈的safeAreaPadding相邻接（即未被margin、border、padding分隔）时，SAE将递归地向外累积，直至不存在相邻的更外层safeAreaPadding或递归至页面容器外。系统级避让区域（如状态栏、导航条、挖孔区等，详情参见[expandSafeArea](./ts-universal-attributes-expand-safe-area.md)中的说明）可视为页面容器特有的safeAreaPadding，同样参与该延伸范围的计算。
+> 当父辈和祖先容器设置了组件级安全区域时，子组件可以感知并利用该区域，称该区域为累计安全区延伸（accumulatedSafeAreaExpand，下文简称SAE），表示子组件在四个方向上各可延伸的长度。当祖辈与更上一级祖辈的safeAreaPadding相邻接（即未被margin、border、padding分隔）时，SAE将递归地向外累积，直至不存在相邻的更外层safeAreaPadding或递归至页面容器外。系统级避让区域（如状态栏、导航条、挖孔区等，详情参见[安全区域](./ts-universal-attributes-expand-safe-area.md)中的说明）可视为页面容器特有的safeAreaPadding，同样参与该延伸范围的计算。
 >
 >通过与其他属性配合使用，可对上述计算得到的组件级安全区区域加以利用。例如，对子组件设置[ignoreLayoutSafeArea](./ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20)属性，即可利用SAE延伸组件的布局范围。
 
@@ -342,12 +344,17 @@ struct SizeExample {
         // 宽度80 ,高度80 ,外边距20(蓝色区域），上下左右的内边距分别为5、15、10、20（白色区域）
         Row() {
           Row()
-          .size({ width: '100%', height: '100%' })
-          .backgroundColor(Color.Yellow)
+            .size({ width: '100%', height: '100%' })
+            .backgroundColor(Color.Yellow)
         }
         .width(80)
         .height(80)
-        .padding({ top: 5, left: 10, bottom: 15, right: 20 })
+        .padding({
+          top: 5,
+          left: 10,
+          bottom: 15,
+          right: 20
+        })
         .margin(20)
         .backgroundColor(Color.White)
       }.backgroundColor(Color.Blue)
@@ -380,19 +387,37 @@ struct SizeExample {
       }
       .size({ width: '90%', height: 140 })
       .backgroundColor(0xAFEEEE)
+
       // calc计算特性
       Text('calc:')
         .fontSize(12)
         .fontColor(0xCCCCCC)
         .width('90%')
-      Text('calc test')
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
-        .backgroundColor(0xFFFAF0)
-        .textAlign(TextAlign.Center)
-        .margin('calc(25vp*2)')
-        // width和height设置百分比时，以父容器的width和height作为基础值。
-        .size({ width: 'calc(90%)', height: 'calc(50vp + 10%)' })
+      Column() {
+        Row() {
+          Text('width 50%')
+            .fontSize(14)
+            .borderWidth(1)
+            .textAlign(TextAlign.Center)
+            .size({ width: '50%', height: 50 })
+          Text('width 50vp')
+            .fontSize(14)
+            .borderWidth(1)
+            .textAlign(TextAlign.Center)
+            .size({ width: '50vp', height: 50 })
+        }
+        .width('100%')
+        .justifyContent(FlexAlign.Center)
+
+        Text('width:calc(50% + 50vp), height:calc(50%)')
+          .fontSize(14)
+          .borderWidth(1)
+          .fontWeight(FontWeight.Bold)
+          .backgroundColor(0xFFFAF0)
+          .textAlign(TextAlign.Center)
+          .size({ width: 'calc(50% + 50vp)', height: 'calc(50%)' })
+          // width和height设置百分比时，以父容器的width和height作为基础值。calc的宽度计算结果与上方的两个text宽度之和相等。
+      }.width("100%").height(100)
     }
     .width('100%')
     .margin({ top: 5 })
@@ -458,7 +483,7 @@ struct SizeExample {
 
 ![size](figures/size-rtl.png)
 
-### 示例3（设置安全区）
+### 示例3（设置组件级安全区）
 
 对容器设置组件级安全区。
 

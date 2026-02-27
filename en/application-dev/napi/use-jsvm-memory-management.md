@@ -71,6 +71,7 @@ const char *srcCallNative = R"JS(adjustExternalMemory())JS";
 ```
 <!-- @[oh_jsvm_adjust_external_memory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/adjustexternalmemory/src/main/cpp/hello.cpp) -->
 Expected result:
+
  
 ```cpp
 JSVM OH_JSVM_AdjustExternalMemory: success
@@ -118,6 +119,7 @@ const char *srcCallNative = R"JS(memoryPressureNotification())JS";
 ```
 <!-- @[oh_jsvm_memory_pressure_notification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/memorypressurenotification/src/main/cpp/hello.cpp) -->
 Expected result:
+
  
 ```cpp
 JSVM OH_JSVM_MemoryPressureNotification: success

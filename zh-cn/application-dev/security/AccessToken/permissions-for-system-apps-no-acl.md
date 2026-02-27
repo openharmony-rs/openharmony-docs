@@ -17,17 +17,17 @@
 
 申请流程可参考[选择申请权限的方式](determine-application-mode.md)。
 
-## ohos.permission.RECEIVER_STARTUP_COMPLETED
+## ohos.permission.hsdr.HSDR_ACCESS
 
-允许应用订阅开机广播。
+允许应用访问安全检测与响应框架。
 
-**权限级别**：system_basic
+**权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
 
 **ACL使能**：false
 
-**起始版本**：9
+**起始版本**：10
 
 ## ohos.permission.SYSTEM_LIGHT_CONTROL
 
@@ -70,18 +70,6 @@
 允许SA注册认证执行器。
 
 **权限级别**：system_core
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：false
-
-**起始版本**：9
-
-## ohos.permission.READ_ACCESSIBILITY_CONFIG
-
-允许应用读取无障碍配置信息。
-
-**权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
@@ -185,18 +173,6 @@
 
 **起始版本**：9
 
-## ohos.permission.WRITE_ACCESSIBILITY_CONFIG
-
-允许应用设置无障碍配置信息。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：false
-
-**起始版本**：9
-
 ## ohos.permission.ENABLE_DISTRIBUTED_HARDWARE
 
 允许系统服务使能分布式硬件资源。
@@ -208,51 +184,3 @@
 **ACL使能**：false
 
 **起始版本**：11
-
-## ohos.permission.ACCESS_SUPER_HUB
-
-允许应用拉起"中转站"。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：false
-
-**起始版本**：12
-
-## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
-
-允许UIExtensionAbility显示在锁屏之上。
-
-**权限级别**：system_core
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：false
-
-**起始版本**：14
-
-## ohos.permission.USE_USER_ACCESS_MANAGER
-
-允许应用查询和配置用户身份认证策略、校验用户身份认证结果。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：false
-
-**起始版本**：18
-
-## ohos.permission.ACCESS_USER_ACCOUNT_INFO
-
-允许系统应用获取账号提供的数据。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：false
-
-**起始版本**：18

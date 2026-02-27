@@ -6,13 +6,21 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-拍照是相机的最重要功能之一，拍照模块基于相机复杂的逻辑，为了保证用户拍出的照片质量，在中间步骤可以设置分辨率、闪光灯、焦距、照片质量及旋转角度等信息。
+## 概述
+
+拍照是相机的重要功能之一，拍照模块基于相机复杂的逻辑，为了保证用户拍出的照片质量，在中间步骤可以设置分辨率、闪光灯、焦距、照片质量及旋转角度等信息。 
+
+目前相机开发有两种相机拍照方案，分别是相机[分段式拍照](./camera-deferred-capture.md)和相机单段式拍照（**本文将以单段式拍照为基础进行说明**）。 
+
+- 分段式拍照是指相机拍照既可以输出低质量图用作缩略图，提升用户感知拍照速度，也可以使用高质量图保证最后的成图质量达到系统相机的水平。满足了图像处理算法的需求的同时，又不会阻塞前台的拍照速度，构筑相机性能竞争力，提升用户体验。 
+- 单段式拍照是指在拍照过程中通过多帧融合以及多个底层算法处理之后返回一张高质量图片，所以Shot2See（用户点击拍照控件到在缩略图显示区域显示缩略图的过程）完成时延较长。此外，单段式拍照支持通过[高性能拍照](#高性能拍照)功能调整[画质优先策略](#画质优先策略)，以加快出图速度或提升图片质量。 
+ 
 
 ## 开发步骤
 
 详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
-1. 导入image接口。创建拍照输出流的SurfaceId以及拍照输出的数据，都需要用到系统提供的image接口能力，导入image接口的方法如下。
+1. 导入[Image](../../reference/apis-image-kit/arkts-apis-image-Image.md)接口。获取拍照输出的数据需要用到系统提供的Image接口能力，导入Image接口的方法如下。
 
    ```ts
    import { image } from '@kit.ImageKit';
@@ -23,7 +31,7 @@
 
 2. 创建拍照输出流。
 
-   通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的photoProfiles属性，可获取当前设备支持的拍照输出流，通过[createPhotoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11)方法传入支持的某一个输出流及步骤一获取的SurfaceId创建拍照输出流。
+   通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的photoProfiles属性，可获取当前设备支持的拍照输出流。通过[createPhotoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11)方法传入支持的某一个输出流[Profile](../../reference/apis-camera-kit/arkts-apis-camera-i.md#profile)创建拍照输出流。
 
    ```ts
    function getPhotoOutput(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability): camera.PhotoOutput | undefined {
@@ -42,7 +50,7 @@
    }
    ```
 
-3. 设置拍照photoAvailable的回调，并将拍照的buffer保存为图片。
+3. 设置拍照[on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11)的回调，并将拍照的buffer保存为图片。
 
     Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -184,6 +192,198 @@
      }
    }
    ```
+## 高性能拍照
+
+从API version 21开始支持高性能拍照功能，即在进行单段式拍照时设置明确的[画质优先策略](#画质优先策略)。
+
+单段式拍照的体验主要由出图速度和最终图片质量衡量。因此，为满足开发者在不同场景下的差异化需求，对这两项指标的侧重也不同。例如，街头抓拍要求快速捕捉瞬间，而风景或人像拍摄则更追求极致的画质。
+
+> **注意：**
+>
+> 仅单段式拍照支持设置画质优先策略。若在分段式拍照中设置画质优先策略，该设置将无效。 
+ 	
+
+### 画质优先策略
+
+在使用单段式拍照时，支持设置速度优先和画质优先两种画质优先策略类型，并且分别对应着不同的[PhotoQualityPrioritization](../../reference/apis-camera-kit/arkts-apis-camera-e.md#photoqualityprioritization21)枚举类型。 
+
+- [SPEED](../../reference/apis-camera-kit/arkts-apis-camera-e.md#photoqualityprioritization21)对应着速度优先，表示降低画质来提升拍照的速度。如果开发者在进行单段式拍照时没有设置明确的画质优先策略，**单段式拍照就默认为速度优先状态**。 
+- [HIGH_QUALITY](../../reference/apis-camera-kit/arkts-apis-camera-e.md#photoqualityprioritization21)对应着画质优先，表示通过较长的耗时来得到画质更高的图片。 
+
+### 如何正确设置画质优先策略
+
+为了正确的在单段式拍照中设置画质优先策略，高性能拍照功能提供了如下两个接口： 
+
+- [isPhotoQualityPrioritizationSupported](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#isphotoqualityprioritizationsupported21)：查询当前设备是否支持指定的画质优先策略。返回true表示支持，返回false表示不支持。在进行设置画质优先策略之前，必须先查询将要设置的画质优先策略在当前设备上是否可用。 
+- [setPhotoQualityPrioritization](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#setphotoqualityprioritization21)：画质优先策略设置接口，通过该接口设置对应的画质优先策略，实现高性能拍照。
+
+### 开发步骤
+ 	 
+高性能拍照相关接口需要在[会话管理(ArkTS)](camera-session-management.md)流程的使能步骤中进行调用。  
+ 	 
+具体调用时机如下：  
+
+- 在[会话管理(ArkTS)](camera-session-management.md)流程的使能步骤中的[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)结束之后进行调用。 
+
+  ```ts
+  async function startSession(videoSession: camera.VideoSession, cameraInput: camera.CameraInput, previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
+    try {
+      videoSession.addInput(cameraInput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to addInput. error: ${err.code}`);
+    }
+    let canAddPreviewOutput : boolean = false;
+    try {
+      canAddPreviewOutput = videoSession.canAddOutput(previewOutput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to add previewOutput. error: ${err.code}`);
+    } 
+    if (!canAddPreviewOutput) {
+      console.error(`Failed to add preview output.`);
+      return;
+    }
+    try {
+      videoSession.addOutput(previewOutput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to add previewOutput. error: ${err.code}`);
+    }
+    let canAddPhotoOutput : boolean = false
+    try {
+      canAddPhotoOutput = videoSession.canAddOutput(photoOutput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to add photoOutput error: ${err.code}`);
+    }
+    if (!canAddPhotoOutput) {
+      console.error(`Failed to add photo output.`);
+      return;
+    }
+    try {
+      videoSession.addOutput(photoOutput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to add photoOutput. error: ${err.code}`);
+    }
+    try {
+      await videoSession.commitConfig();
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to commitConfig. error: ${err.code}`);
+      return;
+    }
+   
+    try {
+      await videoSession.start();
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to start. error: ${err.code}`);
+    }
+    modeSwitchToHigh(videoSession, photoOutput);
+  }
+
+  async function modeSwitchToHigh(videoSession: camera.VideoSession, photoOutput: camera.PhotoOutput): Promise<void> {
+    try {
+      if (videoSession) {
+        let quality: camera.PhotoQualityPrioritization = camera.PhotoQualityPrioritization.HIGH_QUALITY;
+        let isSupported = false;
+        isSupported = photoOutput.isPhotoQualityPrioritizationSupported(quality);
+        if (isSupported) {
+          photoOutput.setPhotoQualityPrioritization(quality);
+        } else {
+          console.error(`session is not supported`);
+        }
+      } else {
+        console.error(`session is null`);
+      }
+    } catch {
+      console.error(`catch error`);
+    }
+  }
+  ```
+
+- 在[会话管理(ArkTS)](camera-session-management.md)流程的使能步骤中的[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)之前调用。 
+
+  ```ts
+  async function startSession(videoSession: camera.VideoSession, cameraInput: camera.CameraInput, previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {
+    try {
+      videoSession.addInput(cameraInput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to addInput. error: ${err.code}`);
+    }
+    let canAddPreviewOutput : boolean = false;
+    try {
+      canAddPreviewOutput = videoSession.canAddOutput(previewOutput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to add previewOutput. error: ${err.code}`);
+    } 
+    if (!canAddPreviewOutput) {
+      console.error(`Failed to add preview output.`);
+      return;
+    }
+    try {
+      videoSession.addOutput(previewOutput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to add previewOutput. error: ${err.code}`);
+    }
+    let canAddPhotoOutput : boolean = false
+    try {
+      canAddPhotoOutput = videoSession.canAddOutput(photoOutput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to add photoOutput error: ${err.code}`);
+    }
+    if (!canAddPhotoOutput) {
+      console.error(`Failed to add photo output.`);
+      return;
+    }
+    try {
+      videoSession.addOutput(photoOutput);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to add photoOutput. error: ${err.code}`);
+    }
+    modeSwitchToHigh(videoSession, photoOutput);
+    try {
+      await videoSession.commitConfig();
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to commitConfig. error: ${err.code}`);
+      return;
+    }
+   
+    try {
+      await videoSession.start();
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to start. error: ${err.code}`);
+    }
+  }
+
+  async function modeSwitchToHigh(videoSession: camera.VideoSession, photoOutput: camera.PhotoOutput): Promise<void> {
+    try {
+      if (videoSession) {
+        let quality: camera.PhotoQualityPrioritization = camera.PhotoQualityPrioritization.HIGH_QUALITY;
+        let isSupported = false;
+        isSupported = photoOutput.isPhotoQualityPrioritizationSupported(quality);
+        if (isSupported) {
+          photoOutput.setPhotoQualityPrioritization(quality);
+        } else {
+          console.error(`session is not supported`);
+        }
+      } else {
+        console.error(`session is null`);
+      }
+    } catch {
+      console.error(`catch error`);
+    }
+  }
+  ```
 
 ## 状态监听
 

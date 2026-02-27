@@ -39,7 +39,7 @@ The file declares the APIs related to media asset change requests. You can use t
 
 ### OH_MediaAssetChangeRequest_Create()
 
-```
+```c
 OH_MediaAssetChangeRequest* OH_MediaAssetChangeRequest_Create(OH_MediaAsset* mediaAsset)
 ```
 
@@ -64,7 +64,7 @@ Creates an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchan
 
 ### OH_MediaAssetChangeRequest_AddResourceWithUri()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_AddResourceWithUri(OH_MediaAssetChangeRequest* changeRequest,MediaLibrary_ResourceType resourceType, char* fileUri)
 ```
 
@@ -91,7 +91,7 @@ Adds a resource of the given URI.
 
 ### OH_MediaAssetChangeRequest_AddResourceWithBuffer()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_AddResourceWithBuffer(OH_MediaAssetChangeRequest* changeRequest,MediaLibrary_ResourceType resourceType, uint8_t* buffer, uint32_t length)
 ```
 
@@ -119,7 +119,7 @@ Adds a resource using ArrayBuffer data.
 
 ### OH_MediaAssetChangeRequest_GetWriteCacheHandler()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_GetWriteCacheHandler(OH_MediaAssetChangeRequest* changeRequest,int32_t* fd)
 ```
 
@@ -147,7 +147,7 @@ Obtains the handler used for writing a file to cache.
 
 ### OH_MediaAssetChangeRequest_SaveCameraPhoto()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_SaveCameraPhoto(OH_MediaAssetChangeRequest* changeRequest,MediaLibrary_ImageFileType imageFileType)
 ```
 
@@ -173,7 +173,7 @@ Saves the photo taken by the camera.
 
 ### OH_MediaAssetChangeRequest_DiscardCameraPhoto()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_DiscardCameraPhoto(OH_MediaAssetChangeRequest* changeRequest)
 ```
 
@@ -198,7 +198,7 @@ Discards the photo taken by the camera.
 
 ### OH_MediaAssetChangeRequest_Release()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAssetChangeRequest_Release(OH_MediaAssetChangeRequest* changeRequest)
 ```
 

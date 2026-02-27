@@ -5,6 +5,10 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+```c
+typedef struct Http_Response {...} Http_Response
+```
+
 ## Overview
 
 Defines the structure of HTTP responses.
@@ -38,7 +42,7 @@ Defines the structure of HTTP responses.
 
 ### destroyResponse()
 
-```
+```c
 void (*destroyResponse)(struct Http_Response **response)
 ```
 

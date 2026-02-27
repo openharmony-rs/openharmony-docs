@@ -7,7 +7,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-```
+```c
 typedef struct Ability_ChildProcessConfigs Ability_ChildProcessConfigs
 ```
 

@@ -144,6 +144,24 @@ trackColor(value: ResourceColor | LinearGradient)
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>12+</sup>](ts-basic-components-datapanel.md#lineargradient10) | 是   | 滑轨的背景颜色。<br/>默认值：`$r('sys.color.ohos_id_color_component_normal')`<br/>**说明：** <br/>1. 设置渐变色时，如果颜色断点颜色值为非法值或渐变色断点为空，渐变色将不起效果。<br/>2. 该接口中的LinearGradient类型不支持在原子化服务中使用。 |
 
+### trackColorMetrics<sup>23+</sup>
+
+trackColorMetrics(color: ColorMetricsLinearGradient)
+
+设置滑轨轨道的线性渐变背景颜色。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| color  | [ColorMetricsLinearGradient](#colormetricslineargradient23) | 是   | 滑轨轨道的线性渐变背景颜色。<br/>设置渐变色时，如果color的值为undefined，渐变色设置无效，轨道背景颜色默认取值为：`$r('sys.color.ohos_id_color_component_normal')`。 |
+
 ### selectedColor
 
 selectedColor(value: ResourceColor)
@@ -573,7 +591,7 @@ minLabel(value: string)
 
 > **说明：** 
 >
-> 从API Version 9开始废弃，使用[SliderOptions](#slideroptions对象说明)中的min属性替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用min替代。min是[SliderOptions](#slideroptions对象说明)中的属性。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -591,7 +609,7 @@ maxLabel(value: string)
 
 > **说明：** 
 >
-> 从API Version 9开始废弃，使用[SliderOptions](#slideroptions对象说明)中的max属性替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用max替代。max是[SliderOptions](#slideroptions对象说明)中的属性。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -600,6 +618,43 @@ maxLabel(value: string)
 | 参数名 | 类型   | 必填 | 说明     |
 | ------ | ------ | ---- | -------- |
 | value  | string | 是   | 最大值。 |
+
+## ColorMetricsLinearGradient<sup>23+</sup>
+
+滑轨轨道的线性渐变背景颜色。
+
+### constructor<sup>23+</sup>
+
+constructor(colorStops: ColorMetricsStop[])
+
+ColorMetricsLinearGradient的构造函数。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：** 
+
+| 参数名         | 类型 | 必填 | 说明 |
+| ------------- | ------- | ---- | -------- |
+| colorStops | [ColorMetricsStop](#colormetricsstop23)[] | 是 | 线性渐变颜色断点数组。每个元素用于描述一个颜色及其在渐变中的断点值。 |
+
+## ColorMetricsStop<sup>23+</sup>
+
+线性渐变颜色断点类型，用于描述渐进色颜色断点。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称          | 类型 | 只读 | 可选 | 说明 |
+| ------------- | ------- | ---- | -------- | -------- |
+| color | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 否 | 线性渐变颜色断点的颜色值。 |
+| offset | [Length](ts-types.md#length) | 否 | 否 | 线性渐变颜色断点的断点值，取值为0~1之间的比例值，如果数据值小于0则置为0，如果数据值大于1则置为1。 <br>**说明：** <br/>如果传入字符串类型且内容为数字，则转换为对应的数值。例如'10vp'转换为10，'10%'转换为0.1。 |
 
 ## SliderCustomContentOptions<sup>20+</sup>
 
@@ -1463,16 +1518,16 @@ struct SliderExample {
 
 ### 示例6（滑动条设置刻度点无障碍文本）
 
-该示例实现了Slider组件通过showSteps属性设置刻度点的无障碍文本信息。设置后，屏幕阅读器将以设置的无障碍内容进行朗读。
+该示例实现了Slider组件通过[showSteps](#showsteps20)属性设置刻度点的无障碍文本信息。设置后，屏幕阅读器将以设置的无障碍内容进行朗读。从API version 20开始，新增[showSteps](#showsteps20)属性。
 
 ```ts
 
 class SliderBlockBorderColorModifier1 implements AttributeModifier<SliderAttribute>{
   optionMaps:Map<number, SliderStepItemAccessibility> = new Map()
-    .set(1, {text : "123123"})
-    .set(2, {text : "Slider无障碍文本"})
+    .set(1, {text : '123123'})
+    .set(2, {text : 'Slider无障碍文本'})
     .set(3, {text : $r('app.string.stepItemText')})
-    .set(4, {text : "!@#$%^&*()"});
+    .set(4, {text : '!@#$%^&*()'});
   applyNormalAttribute(instance: SliderAttribute): void {
     instance.showSteps(true, {stepsAccessibility: this.optionMaps})
   }
@@ -1484,15 +1539,15 @@ struct SliderExample {
   @State optionMaps:Map<number, SliderStepItemAccessibility> = new Map();
   private  sliderModifier: SliderBlockBorderColorModifier1 =new SliderBlockBorderColorModifier1()
   aboutToAppear(){
-    this.optionMaps.set(1, {text : "123123"})
-    this.optionMaps.set(2, {text : "Slider无障碍文本"})
+    this.optionMaps.set(1, {text : '123123'})
+    this.optionMaps.set(2, {text : 'Slider无障碍文本'})
     this.optionMaps.set(3, {text : $r('app.string.app_name')})
-    this.optionMaps.set(4, {text : "!@#$%^&*()"})
+    this.optionMaps.set(4, {text : '!@#$%^&*()'})
     this.show = true;
   }
   build() {
     Column({ space: 8 }) {
-      Text("show steps").fontSize(12).fontColor(0xCCCCCC).margin(15).width('90%')
+      Text('This is an example for showSteps attribute').fontSize(15).fontColor(0x000000).margin(15).width('90%')
       Row() {
         Slider({
           style: SliderStyle.InSet,
@@ -1505,9 +1560,10 @@ struct SliderExample {
           .stepSize(8)
           .stepColor(Color.Yellow)
           .showSteps(true, {stepsAccessibility: this.optionMaps})
-      } .width('80%').height(300)
+      }.width('80%').height(100)
       Divider()
-      Text("modifier").fontSize(12).fontColor(0xCCCCCC).margin(15).width('90%')
+      Text('This is an example for showSteps attribute with modifier').fontSize(15).fontColor(0x000000).margin(15)
+        .width('90%')
       Row() {
         Slider({
           style: SliderStyle.InSet,
@@ -1520,7 +1576,7 @@ struct SliderExample {
           .stepSize(8)
           .stepColor(Color.Yellow)
           .attributeModifier(this.sliderModifier)
-      } .width('80%').height(300)
+      }.width('80%').height(100)
       Divider()
     }
   }
@@ -1683,3 +1739,47 @@ struct SliderExample {
 ```
 
 ![slider_8](figures/slider_8.png)
+
+### 示例9（设置滑轨的背景颜色）
+
+该示例通过[trackColorMetrics](#trackcolormetrics23)设置指定色域的渐变断点值，包括偏移和颜色。示例中的colorSpace使用了ColorSpace.DISPLAY_P3类型，需要对应窗口调用setWindowColorSpace接口，将当前窗口设置为广色域模式，设置窗口色域模式为广色域参照方法[setWindowColorSpace](../arkts-apis-window-Window.md#setwindowcolorspace9)。
+
+从API version 23开始，新增trackColorMetrics接口。
+
+```ts
+// xxx.ets
+import { ColorMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SliderExample {
+  @State greenColor: ColorMetrics = ColorMetrics.colorWithSpace(ColorSpace.DISPLAY_P3, 0.0, 1.0, 0.0, 1);
+  @State yellowColor: ColorMetrics = ColorMetrics.colorWithSpace(ColorSpace.DISPLAY_P3, 1.0, 1.0, 0.0, 1);
+  @State inSetValueOne: number = 40;
+  @State color: ColorMetricsLinearGradient =
+    new ColorMetricsLinearGradient([{ color: this.greenColor, offset: 0 }, { color: this.yellowColor, offset: 1 }])
+
+  build() {
+    Column({ space: 8 }) {
+      Slider({
+        value: this.inSetValueOne,
+        min: 0,
+        max: 100,
+        style: SliderStyle.InSet
+      }).margin('10')
+        .width('80%')
+        .blockColor('#FF0000')
+        .trackColorMetrics(this.color)
+        .selectedColor('#4169E1')
+        .showTips(true)
+        .onChange((value: number, mode: SliderChangeMode) => {
+          this.inSetValueOne = value;
+          console.info('value:' + value + 'mode:' + mode.toString());
+        })
+    }.alignItems(HorizontalAlign.Center)
+    .width('100%')
+  }
+}
+```
+
+![slider_9](figures/slider_9.png)

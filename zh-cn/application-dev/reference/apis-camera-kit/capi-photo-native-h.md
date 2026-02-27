@@ -33,13 +33,14 @@
 | 名称 | 描述 |
 | -- | -- |
 | [Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNative** mainImage)](#oh_photonative_getmainimage) | 获取全质量图。 |
+| [Camera_ErrorCode OH_PhotoNative_GetUncompressedImage(OH_PhotoNative* photo, OH_PictureNative** picture)](#oh_photonative_getuncompressedimage) | 获取非压缩图片。 |
 | [Camera_ErrorCode OH_PhotoNative_Release(OH_PhotoNative* photo)](#oh_photonative_release) | 释放全质量图实例。 |
 
 ## 函数说明
 
 ### OH_PhotoNative_GetMainImage()
 
-```
+```c
 Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNative** mainImage)
 ```
 
@@ -49,13 +50,37 @@ Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNati
 
 **起始版本：** 12
 
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PhotoNative](capi-oh-camera-oh-photonative.md)* photo | OH_PhotoNative实例。 |
+| [OH_ImageNative](../apis-image-kit/capi-image-nativemodule-oh-imagenative.md)** mainImage | 用于获取全质量图的OH_ImageNative。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+
+### OH_PhotoNative_GetUncompressedImage()
+
+```c
+Camera_ErrorCode OH_PhotoNative_GetUncompressedImage(OH_PhotoNative* photo, OH_PictureNative** picture)
+```
+
+**描述**
+
+获取非压缩图片。
+
+**起始版本：** 23
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PhotoNative](capi-oh-camera-oh-photonative.md)* photo | OH_PhotoNative实例。 |
-| [OH_ImageNative](../apis-image-kit/capi-image-imagenative-.md)** mainImage | 用于获取全质量图的OH_ImageNative。 |
+| [OH_PictureNative](../apis-image-kit/capi-image-nativemodule-oh-picturenative.md)** picture | 用于获取非压缩图片的OH_PictureNative。 |
 
 **返回：**
 
@@ -65,7 +90,7 @@ Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNati
 
 ### OH_PhotoNative_Release()
 
-```
+```c
 Camera_ErrorCode OH_PhotoNative_Release(OH_PhotoNative* photo)
 ```
 
@@ -74,7 +99,6 @@ Camera_ErrorCode OH_PhotoNative_Release(OH_PhotoNative* photo)
 释放全质量图实例。
 
 **起始版本：** 12
-
 
 **参数：**
 

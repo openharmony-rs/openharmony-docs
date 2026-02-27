@@ -23,7 +23,9 @@ Related APIs:
 | [getDataWithProgress(params: GetDataParams): Promise\<PasteData\>](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdatawithprogress15) | Obtains the pasteboard data and paste progress. This API uses a promise to return the result. Folders cannot be copied.|
 | [OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteboard_GetDataParams* params, int* status)](../../reference/apis-basic-services-kit/capi-oh-pasteboard-h.md#oh_pasteboard_getdatawithprogress) | Obtains the pasteboard data and paste progress. Folders cannot be copied.|
 
-Note: Before requesting the pasteboard permission, an application needs to check whether the pasteboard contains the required data. For example, use **hasData** to check whether there is data in the pasteboard, **hasDataType** or **getMimeTypes** to check whether required data types are contained, and **getChangeCount** to check whether the data changes. For details, see [Optimizing Pasteboard Dialog Box Adaptation](#optimizing-pasteboard-dialog-box-adaptation).
+> **NOTE**
+>
+> Before requesting the pasteboard permission, an application needs to check whether the pasteboard contains the required data. For example, use **hasData** to check whether there is data in the pasteboard, **hasDataType** or **getMimeTypes** to check whether required data types are contained, and **getChangeCount** to check whether the data changes. For details, see [Optimizing Pasteboard Dialog Box Adaptation](#optimizing-pasteboard-dialog-box-adaptation).
 
 ## Accessing Pasteboard Content
 
@@ -31,7 +33,7 @@ Applications can access the pasteboard content in either of the following ways:
 
 - Using security components
 
-    Applications that use [security components](../../security/AccessToken/pastebutton.md) to access the pasteboard content do not need to request the permission.
+    Applications that use [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without the need to request permissions.
 
     Applications that use the security components can access the pasteboard content without any adaptation.
 
@@ -58,7 +60,7 @@ Before requesting the pasteboard permission, an application needs to check wheth
 
 - Use [getChangeCount](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getchangecount18) to obtain the number of pasteboard content changes and compare it with the number of changes queried when the pasteboard is read last time. If the numbers are the same, the pasteboard content does not change and the application does not access the pasteboard.
 
-- Use [detectPatterns](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#detectpatterns13) to detect patterns on the local pasteboard. If the application password does not match the pattern, the application does not access the pasteboard. If the application password matches the pattern, it is recommended that the application use [cleardata](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#cleardata9) to clear the password in the pasteboard.
+- Use [detectPatterns](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#detectpatterns13) to detect patterns on the local pasteboard. If the application password does not match the pattern, the application does not access the pasteboard. If the application password matches the pattern, it is recommended that the application use [clearData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#cleardata9) to clear the password in the pasteboard.
 
 ## Sample Code
 
@@ -68,7 +70,7 @@ Before requesting the pasteboard permission, an application needs to check wheth
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
 import { abilityAccessCtrl, common, Permissions } from '@kit.AbilityKit';
 import { preferences } from '@kit.ArkData';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const permissions: Permissions[] = ['ohos.permission.READ_PASTEBOARD'];
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
@@ -118,10 +120,21 @@ async function isNeedGetPermissionFromUser(): Promise<boolean> {
   return true;
 }
 
-// ...
+@Entry
+@Component
+struct Index {
+  // ...
+
+  build() {
+    Row() {
+      Column() {
+        // ...
+        Button('Paste')
+          // ...
+          .onClick(() => {
             const context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
             if (!isNeedGetPermissionFromUser()) {
-              hilog.info(0xFF00, '[Sample_pasteboard]', 'No neded to bring up the permission pop-up window');
+              hilog.info(0xFF00, '[Sample_pasteboard]', 'No need to bring up the permission pop-up window');
               return;
             }
             let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
@@ -131,7 +144,7 @@ async function isNeedGetPermissionFromUser(): Promise<boolean> {
               for (const status of grantStatus) {
                 if (status === 0) {
                   // Use the get operation to read the pasteboard content after user authorization.
-                // ...
+                  // ...
                   // Determine whether the password is of the current application and use the cleardata API to clear the password in the pasteboard after obtaining the data.
                   systemPasteboard.clearData().then((data: void) => {
                     hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in clearing the pasteboard.');
@@ -156,4 +169,12 @@ async function isNeedGetPermissionFromUser(): Promise<boolean> {
             }).catch((err: BusinessError) => {
               hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to request permissions from user. ');
             })
+          })
+        // ...
+      }
+      // ...
+    }
+    // ...
+  }
+}
 ```

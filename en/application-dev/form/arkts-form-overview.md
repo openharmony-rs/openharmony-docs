@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 This document describes how to develop an ArkTS widget based on the declarative paradigm.
@@ -20,7 +20,7 @@ This document describes how to develop an ArkTS widget based on the declarative 
 
     - Animation: ArkTS widgets support the [property animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md) and [explicit animation](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md) capabilities, which can be leveraged to deliver a more engaging experience.
     - Custom drawing: ArkTS widgets allow you to draw graphics with the [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md) component to present information more vividly.
-    - Logic code execution: Some service logic can be implemented directly within the widget via code, expanding the use scenarios of widgets.
+    - Logic code execution: When this capability is enabled, certain service logic can be implemented within widgets, effectively expanding application scenarios.
 
 ## How to Implement
 
@@ -63,8 +63,7 @@ Dynamic widget events are used in the following scenarios:
 - message event: used to launch the FormExtensionAbility, which then notifies the application via the **onFormEvent** callback, thereby fulfilling the feature of passing messages to the application after a widget is touched.
 
 ### Static Widget
-The **FormLink** component is provided for interactions between static widgets and widget providers. It supports three types of events: router, message, and call.
-See [FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md).
+The **FormLink** component is provided for interactions between static widgets and widget providers. It supports three types of events: router, message, and call. See [FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md).
 
 ### Interactive Widget
 Interactive widgets are supported since API version 20. They provide overflow animations and implement human-machine interactions to improve information notifications, shallow interactions, and playability. For details, see [Overview of Interactive Widgets](arkts-ui-liveform-overview.md).

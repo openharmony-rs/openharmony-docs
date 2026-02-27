@@ -1,4 +1,4 @@
-# 系统定义的公共事件（系统接口）
+# 系统定义的公共事件(系统接口)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
@@ -13,9 +13,9 @@
 
 > **说明：**
 >
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
 > 当前界面仅包含本模块的系统接口，其他公开接口参见[系统公共事件定义](../common_event/commonEventManager-definitions.md)。
-
-
 
 
 ## Ability Kit
@@ -126,11 +126,12 @@
 
 ## Background Tasks Kit 
 
-### COMMON_EVENT_DEVICE_IDLE_EXEMPTION_LIST_UPDATED<sup>10+<sup>
+### COMMON_EVENT_DEVICE_IDLE_EXEMPTION_LIST_UPDATED<sup>10+</sup>
 
 表示待机状态下解除资源使用限制的豁免名单出现变化，触发公共事件发布动作。
 
 待机状态下后台应用程序CPU和网络访问被限制，系统应用可以申请解除资源使用限制，将会触发公共事件服务发布该系统公共事件。
+
 资源包括应用网络访问、Timer使用、WorkScheduler任务使用等。
 
 系统应用可以调用JS API接口申请解除资源使用限制。
@@ -175,7 +176,7 @@
 
 ## Basic Services Kit-电源
 
-### COMMON_EVENT_CHARGE_TYPE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_CHARGE_TYPE_CHANGED<sup>10+</sup>
 
 表示系统充电类型改变的公共事件的动作。
 
@@ -365,7 +366,7 @@
 **取值：** "usual.event.data.VOLUME_EJECT"
 
 
-### COMMON_EVENT_RESTORE_START<sup>13+<sup>
+### COMMON_EVENT_RESTORE_START<sup>13+</sup>
 
 表示某个应用开始恢复的公共事件。
 
@@ -379,7 +380,7 @@
 
 **取值：** "usual.event.RESTORE_START"
 
-### COMMON_EVENT_CLOUD_DISK_STATE_CHANGED<sup>21+<sup>
+### COMMON_EVENT_CLOUD_DISK_STATE_CHANGED<sup>21+</sup>
 
 提示云盘同步根已更新。
 
@@ -412,7 +413,7 @@
 
 ## Telephony Kit
 
-### COMMON_EVENT_SMS_RECEIVE_COMPLETED<sup>10+<sup>
+### COMMON_EVENT_SMS_RECEIVE_COMPLETED<sup>10+</sup>
 
 提示短信接收完成。
 
@@ -427,7 +428,7 @@
 **取值：** usual.event.SMS_RECEIVED_COMPLETED
 
 
-### COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED<sup>10+<sup>
+### COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED<sup>10+</sup>
 
 提示紧急小区广播短信接收完成。
 
@@ -442,7 +443,7 @@
 **取值：** usual.event.SMS_EMERGENCY_CB_RECEIVE_COMPLETED
 
 
-### COMMON_EVENT_SMS_CB_RECEIVE_COMPLETED<sup>10+<sup>
+### COMMON_EVENT_SMS_CB_RECEIVE_COMPLETED<sup>10+</sup>
 
 提示小区广播短信接收完成。
 
@@ -460,7 +461,7 @@
 
 
 
-### COMMON_EVENT_OPERATOR_CONFIG_CHANGED<sup>10+<sup>
+### COMMON_EVENT_OPERATOR_CONFIG_CHANGED<sup>10+</sup>
 
 提示运营商配置已更新。
 
@@ -475,7 +476,7 @@
 **取值：** usual.event.OPERATOR_CONFIG_CHANGED
 
 
-### COMMON_EVENT_SIM_CARD_DEFAULT_SMS_SUBSCRIPTION_CHANGED<sup>10+<sup>
+### COMMON_EVENT_SIM_CARD_DEFAULT_SMS_SUBSCRIPTION_CHANGED<sup>10+</sup>
 
 提示SIM卡默认短信主卡已更新。
 
@@ -490,7 +491,7 @@
 **取值：** usual.event.DEFAULT_SMS_SUBSCRIPTION_CHANGED
 
 
-### COMMON_EVENT_SIM_CARD_DEFAULT_DATA_SUBSCRIPTION_CHANGED<sup>10+<sup>
+### COMMON_EVENT_SIM_CARD_DEFAULT_DATA_SUBSCRIPTION_CHANGED<sup>10+</sup>
 
 提示SIM卡默认数据主卡已更新。
 
@@ -505,7 +506,7 @@
 **取值：** usual.event.DEFAULT_DATA_SUBSCRIPTION_CHANGED
 
 
-### COMMON_EVENT_SIM_CARD_DEFAULT_MAIN_SUBSCRIPTION_CHANGED<sup>10+<sup>
+### COMMON_EVENT_SIM_CARD_DEFAULT_MAIN_SUBSCRIPTION_CHANGED<sup>10+</sup>
 
 提示SIM卡默认主卡已更新。
 
@@ -520,7 +521,7 @@
 **取值：** usual.event.SIM.DEFAULT_MAIN_SUBSCRIPTION_CHANGED
 
 
-### COMMON_EVENT_SET_PRIMARY_SLOT_STATUS<sup>11+<sup>
+### COMMON_EVENT_SET_PRIMARY_SLOT_STATUS<sup>11+</sup>
 
 提示设置SIM卡默认主卡的动作，其状态更新为执行中或已完成。
 
@@ -535,7 +536,7 @@
 **取值：** usual.event.SET_PRIMARY_SLOT_STATUS
 
 
-### COMMON_EVENT_PRIMARY_SLOT_ROAMING<sup>11+<sup>
+### COMMON_EVENT_PRIMARY_SLOT_ROAMING<sup>11+</sup>
 
 提示SIM卡默认主卡的漫游状态已更新。
 
@@ -550,7 +551,7 @@
 **取值：** usual.event.PRIMARY_SLOT_ROAMING
 
 
-### COMMON_EVENT_SIM_CARD_DEFAULT_VOICE_SUBSCRIPTION_CHANGED<sup>10+<sup>
+### COMMON_EVENT_SIM_CARD_DEFAULT_VOICE_SUBSCRIPTION_CHANGED<sup>10+</sup>
 
 提示SIM卡默认语音主卡已更新。
 
@@ -565,7 +566,7 @@
 **取值：** usual.event.DEFAULT_VOICE_SUBSCRIPTION_CHANGED
 
 
-### COMMON_EVENT_CELLULAR_DATA_STATE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_CELLULAR_DATA_STATE_CHANGED<sup>10+</sup>
 
 提示蜂窝数据状态更新。
 
@@ -580,7 +581,7 @@
 **取值：** usual.event.CELLULAR_DATA_STATE_CHANGED
 
 
-### COMMON_EVENT_INCOMING_CALL_MISSED<sup>10+<sup>
+### COMMON_EVENT_INCOMING_CALL_MISSED<sup>10+</sup>
 
 提示未接来电。
 
@@ -595,7 +596,7 @@
 **取值：** usual.event.INCOMING_CALL_MISSED
 
 
-### COMMON_EVENT_RADIO_STATE_CHANGE<sup>10+<sup>
+### COMMON_EVENT_RADIO_STATE_CHANGE<sup>10+</sup>
 
 提示设备modem上下电状态变化。
 
@@ -610,7 +611,7 @@
 **取值：** usual.event.RADIO_STATE_CHANGE
 
 
-### COMMON_EVENT_SPECIAL_CODE<sup>10+<sup>
+### COMMON_EVENT_SPECIAL_CODE<sup>10+</sup>
 
 提示暗码发送成功。
 
@@ -625,7 +626,7 @@
 **取值：** usual.event.DIALER_SPECIAL_CODE
 
 
-### COMMON_EVENT_AUDIO_QUALITY_CHANGE<sup>10+<sup>
+### COMMON_EVENT_AUDIO_QUALITY_CHANGE<sup>10+</sup>
 
 提示音频质量发生变化。
 
@@ -644,7 +645,7 @@
 
 以下事件为预留公共事件，暂未支持。
 
-### COMMON_EVENT_STK_COMMAND<sup>10+<sup>
+### COMMON_EVENT_STK_COMMAND<sup>10+</sup>
 
 （预留事件，暂未支持）提示STK命令。
 
@@ -659,7 +660,7 @@
 **取值：** usual.event.STK_COMMAND
 
 
-### COMMON_EVENT_STK_SESSION_END<sup>10+<sup>
+### COMMON_EVENT_STK_SESSION_END<sup>10+</sup>
 
 （预留事件，暂未支持）提示STK会话结束。
 
@@ -674,7 +675,7 @@
 **取值：** usual.event.STK_SESSION_END
 
 
-### COMMON_EVENT_STK_CARD_STATE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_STK_CARD_STATE_CHANGED<sup>10+</sup>
 
 （预留事件，暂未支持）提示STK卡状态已更新。
 
@@ -689,7 +690,7 @@
 
 **取值：** usual.event.STK_CARD_STATE_CHANGED
 
-### COMMON_EVENT_STK_ALPHA_IDENTIFIER<sup>10+<sup>
+### COMMON_EVENT_STK_ALPHA_IDENTIFIER<sup>10+</sup>
 
 （预留事件，暂未支持）提示STK ALPHA标识符。
 
@@ -703,7 +704,7 @@
 
 **取值：** usual.event.STK_ALPHA_IDENTIFIER
 
-### COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED<sup>10+<sup>
+### COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED<sup>10+</sup>
 
 （预留事件，暂未支持）提示服务信息短信接收完成。
 

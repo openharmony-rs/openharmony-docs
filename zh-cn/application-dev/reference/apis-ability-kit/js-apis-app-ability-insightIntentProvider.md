@@ -73,18 +73,20 @@ export default class InsightIntentExecutorUI extends InsightIntentExecutor {
       },
     };
     try {
-      //设置意图执行结果的返回形式为延迟返回
+      // 设置意图执行结果的返回形式为延迟返回
       this.context.setReturnModeForUIAbilityForeground(insightIntent.ReturnMode.FUNCTION);
     } catch (error) {
-      console.error('testTag setReturnModeForUIExtensionAbility fail, error code: ${JSON.stringify(error)}');
+      let code = (error as BusinessError).code;
+      let msg = (error as BusinessError).message;
+      console.error(`testTag setReturnModeForUIExtensionAbility fail, error code: ${code}, error msg: ${msg}.`);
     }
-    //将意图实例的id通过localStorage传入目标页面中
+    // 将意图实例的id通过localStorage传入目标页面中
     let localStorageData: Record<string, number> = {
       'insightId': this.context.instanceId,
     };
     let storage: LocalStorage = new LocalStorage(localStorageData);
-    //通过pageLoader加载页面
-    pageLoader.loadContent('pages/UiabilityIndex', storage, (err, data) => {
+    // 通过pageLoader加载页面
+    pageLoader.loadContent('pages/UIAbilityIndex', storage, (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
       } else {
@@ -105,10 +107,11 @@ import { insightIntent, insightIntentProvider } from '@kit.AbilityKit';
 @Component
 struct Index {
   storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
-  insightId: number | undefined  = this.storage?.get<number>('insightId');
+  insightId: number | undefined = this.storage?.get<number>('insightId');
+
   build() {
     Column() {
-      //通过sendExecuteResult接口主动返回意图执行结果
+      // 通过sendExecuteResult接口主动返回意图执行结果
       Button('insightIntentProvider sendExecuteResult')
         .onClick(() => {
           try {
@@ -124,12 +127,12 @@ struct Index {
                 console.info('testTag setExecuteResult success');
               })
               .catch((error: BusinessError) => {
-                console.error('testTag setExecuteResult fail1, error code: ${JSON.stringify(error)}');
+                console.error(`testTag setExecuteResult fail1, error code: ${error.code}, error msg: ${error.message}.`);
               });
           } catch (e) {
             let code = (e as BusinessError).code;
             let msg = (e as BusinessError).message;
-            console.error('testTag setExecuteResult fail2, error code: ${JSON.stringify(code)}, error msg: ${JSON.stringify(msg)}');
+            console.error(`testTag setExecuteResult fail2, error code: ${code}, error msg: ${msg}`);
           }
         })
     }
@@ -185,7 +188,7 @@ class PlayVideoResultDef {
   someInvalid2: string | null = null;
 }
 
-//播放视频
+// 播放视频
 @InsightIntentEntry({
   intentName: 'PlayVideo',
   domain: 'VideosDomain',
@@ -205,7 +208,7 @@ export default class PlayVideo extends InsightIntentEntryExecutor<PlayVideoResul
   episodeNumber: number = 12;
 
   onExecute(): Promise<insightIntent.IntentResult<PlayVideoResultDef>> {
-    console.log('testTag', 'PlayVideo onExecute success')
+    console.info('testTag', 'PlayVideo onExecute success')
     let result: insightIntent.IntentResult<PlayVideoResultDef> = {
       code: 0,
       result: {
@@ -217,24 +220,28 @@ export default class PlayVideo extends InsightIntentEntryExecutor<PlayVideoResul
     }
     let instanceId: number = this.context.instanceId;
     try {
-      //设置意图执行结果的返回形式为延迟返回
+      // 设置意图执行结果的返回形式为延迟返回
       this.context.setReturnModeForUIAbilityForeground(insightIntent.ReturnMode.FUNCTION);
       console.info('testTag: setReturnModeForUIAbilityForeground success');
     } catch (error) {
-      console.error('testTag: setReturnModeForUIAbilityForeground faild，error:', JSON.stringify(error));
+      let code = (error as BusinessError).code;
+      let msg = (error as BusinessError).message;
+      console.error(`testTag: setReturnModeForUIAbilityForeground failed，error code: ${code}, error msg: ${msg}.`);
     }
 
     try {
-      //将意图实例的id通过localStorage传入目标页面中
+      // 将意图实例的id通过localStorage传入目标页面中
       let localStorageData: Record<string, number> = {
         'insightId': instanceId,
       };
       let storage: LocalStorage = new LocalStorage(localStorageData);
-      //通过pageLoader加载页面
+      // 通过pageLoader加载页面
       this.windowStage?.loadContent('pages/Index', storage);
-      console.log('testTag', 'Succeeded in loading the content1')
+      console.info('testTag', 'Succeeded in loading the content1')
     } catch (err) {
-      console.log('testTag loadContent error: ' + JSON.stringify(err));
+      let code = (err as BusinessError).code;
+      let msg = (err as BusinessError).message;
+      console.error(`testTag loadContent error code: ${code}, error msg: ${msg}.`);
     }
     return Promise.resolve(result);
   }
@@ -244,7 +251,7 @@ export default class PlayVideo extends InsightIntentEntryExecutor<PlayVideoResul
 主动发送意图执行结果示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { insightIntent , insightIntentProvider} from '@kit.AbilityKit';
+import { insightIntent, insightIntentProvider } from '@kit.AbilityKit';
 
 class PlayVideoResultDef {
   resultCode: number = 0;
@@ -257,10 +264,11 @@ class PlayVideoResultDef {
 @Component
 struct Index {
   storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
-  insightId: number | undefined  = this.storage?.get<number>('insightId');
+  insightId: number | undefined = this.storage?.get<number>('insightId');
+
   build() {
     Column() {
-      //通过sendExecuteResult接口主动返回意图执行结果
+      // 通过sendExecuteResult接口主动返回意图执行结果
       Button('insightIntentProvider sendIntentResult')
         .onClick(() => {
           try {
@@ -278,10 +286,12 @@ struct Index {
                 console.info('testTag sendIntentResult success');
               })
               .catch((error: BusinessError) => {
-                console.error('testTag sendIntentResult error, error code: ${JSON.stringify(error)}');
+                console.error(`testTag sendIntentResult error, error code: ${error.code}, error msg: ${error.message}.`);
               });
           } catch (error) {
-            console.error('testTag sendIntentResult fail, error code: ${JSON.stringify(error)}');
+            let code = (error as BusinessError).code;
+            let msg = (error as BusinessError).message;
+            console.error(`testTag sendIntentResult fail, error code: ${code}, error msg: ${msg}.`);
           }
         })
     }

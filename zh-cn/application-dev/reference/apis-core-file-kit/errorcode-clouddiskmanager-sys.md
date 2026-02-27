@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhangjun; @zhuangzhuang-->
 <!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 > **说明：**
 >
@@ -50,7 +50,7 @@ Temporary failure, Retry is recommended (e.g., network issues).
 
 **错误信息**
 
-Cloud disk not allowed on this device.
+Cloud disk is not allowed on this device.
 
 **错误描述**
 

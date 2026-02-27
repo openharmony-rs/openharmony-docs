@@ -26,7 +26,7 @@
 
 <b>命令示例：</b>
 
-```
+```text
 java -jar app_check_tool.jar --input ./test.app --out-path ./test --stat-duplicate true
 ```
 
@@ -40,14 +40,14 @@ java -jar app_check_tool.jar --input ./test.app --out-path ./test --stat-duplica
 
 <b>JSON统计结果：</b>
 
-```
+```text
 [{
     "taskType":1,
     "taskDesc":"find the duplicated files",
     "param":"--stat-duplicate",
     "startTime":"2023-11-17 14:48:01:265",
     "stopTime":"2023-11-17 14:48:01:434",
-	"result":[{
+    "result":[{
         "md5":"975c41f5727b416b1ffefa5bb0f073b2",
         "size":1108880,
         "files":[
@@ -81,7 +81,7 @@ java -jar app_check_tool.jar --input ./test.app --out-path ./test --stat-duplica
 
 <b>命令示例：</b>
 
-```
+```text
 java -jar app_check_tool.jar --input ./test.app --out-path ./test --stat-file-size 4
 ```
 
@@ -95,7 +95,7 @@ java -jar app_check_tool.jar --input ./test.app --out-path ./test --stat-file-si
 
 <b>JSON统计结果：</b>
 
-```
+```text
 [{
     "taskType":2,
     "taskDesc":"find files whose size exceed the limit size",
@@ -132,7 +132,7 @@ java -jar app_check_tool.jar --input ./test.app --out-path ./test --stat-file-si
 
 <b>命令示例：</b>
 
-```
+```text
 java -jar app_check_tool.jar --input ./test.app --out-path ./test --stat-suffix true
 ```
 
@@ -146,7 +146,7 @@ java -jar app_check_tool.jar --input ./test.app --out-path ./test --stat-suffix 
 
 <b>JSON统计结果：</b>
 
-```
+```text
 [{
     "taskType":3,
     "taskDesc":"show files group by file type[.suffix]",

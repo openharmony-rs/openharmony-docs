@@ -37,9 +37,9 @@ Provides APIs for managing the purgeable memory.<br>For example, you can create 
 | [OH_PurgeableMemory *OH_PurgeableMemory_Create(size_t size, OH_PurgeableMemory_ModifyFunc func, void *funcPara)](#oh_purgeablememory_create) | - | Creates a [PurgMem](capi-memory-purgmem.md) object.|
 | [bool OH_PurgeableMemory_Destroy(OH_PurgeableMemory *purgObj)](#oh_purgeablememory_destroy) | - | Destroys a [PurgMem](capi-memory-purgmem.md) object.|
 | [bool OH_PurgeableMemory_BeginRead(OH_PurgeableMemory *purgObj)](#oh_purgeablememory_beginread) | - | Starts reading a [PurgMem](capi-memory-purgmem.md) object.|
-| [void OH_PurgeableMemory_EndRead(OH_PurgeableMemory *purgObj)](#oh_purgeablememory_endread) | - | Ends reading a [PurgMem](capi-memory-purgmem.md) object.|
+| [void OH_PurgeableMemory_EndRead(OH_PurgeableMemory *purgObj)](#oh_purgeablememory_endread) | - | Stops reading a [PurgMem](capi-memory-purgmem.md) object.|
 | [bool OH_PurgeableMemory_BeginWrite(OH_PurgeableMemory *purgObj)](#oh_purgeablememory_beginwrite) | - | Starts writing a [PurgMem](capi-memory-purgmem.md) object.|
-| [void OH_PurgeableMemory_EndWrite(OH_PurgeableMemory *purgObj)](#oh_purgeablememory_endwrite) | - | Ends writing a [PurgMem](capi-memory-purgmem.md) object.|
+| [void OH_PurgeableMemory_EndWrite(OH_PurgeableMemory *purgObj)](#oh_purgeablememory_endwrite) | - | Stops writing a [PurgMem](capi-memory-purgmem.md) object.|
 | [void *OH_PurgeableMemory_GetContent(OH_PurgeableMemory *purgObj)](#oh_purgeablememory_getcontent) | - | Obtains the content of a [PurgMem](capi-memory-purgmem.md) object.|
 | [size_t OH_PurgeableMemory_ContentSize(OH_PurgeableMemory *purgObj)](#oh_purgeablememory_contentsize) | - | Obtains the content size of a [PurgMem](capi-memory-purgmem.md) object.|
 | [bool OH_PurgeableMemory_AppendModify(OH_PurgeableMemory *purgObj, OH_PurgeableMemory_ModifyFunc func, void *funcPara)](#oh_purgeablememory_appendmodify) | - | Appends the modification to a [PurgMem](capi-memory-purgmem.md) object.|
@@ -48,7 +48,7 @@ Provides APIs for managing the purgeable memory.<br>For example, you can create 
 
 ### OH_PurgeableMemory_ModifyFunc()
 
-```
+```c
 typedef bool (*OH_PurgeableMemory_ModifyFunc)(void *, size_t, void *)
 ```
 
@@ -74,7 +74,7 @@ Pointer to a function used to construct the content of a purgeable memory object
 
 ### OH_PurgeableMemory_Create()
 
-```
+```c
 OH_PurgeableMemory *OH_PurgeableMemory_Create(size_t size, OH_PurgeableMemory_ModifyFunc func, void *funcPara)
 ```
 
@@ -100,7 +100,7 @@ Creates a [PurgMem](capi-memory-purgmem.md) object.
 
 ### OH_PurgeableMemory_Destroy()
 
-```
+```c
 bool OH_PurgeableMemory_Destroy(OH_PurgeableMemory *purgObj)
 ```
 
@@ -124,7 +124,7 @@ Destroys a [PurgMem](capi-memory-purgmem.md) object.
 
 ### OH_PurgeableMemory_BeginRead()
 
-```
+```c
 bool OH_PurgeableMemory_BeginRead(OH_PurgeableMemory *purgObj)
 ```
 
@@ -148,13 +148,13 @@ Starts reading a [PurgMem](capi-memory-purgmem.md) object.
 
 ### OH_PurgeableMemory_EndRead()
 
-```
+```c
 void OH_PurgeableMemory_EndRead(OH_PurgeableMemory *purgObj)
 ```
 
 **Description**
 
-Ends reading a [PurgMem](capi-memory-purgmem.md) object.
+Stops reading a [PurgMem](capi-memory-purgmem.md) object.
 
 **Since**: 10
 
@@ -166,7 +166,7 @@ Ends reading a [PurgMem](capi-memory-purgmem.md) object.
 
 ### OH_PurgeableMemory_BeginWrite()
 
-```
+```c
 bool OH_PurgeableMemory_BeginWrite(OH_PurgeableMemory *purgObj)
 ```
 
@@ -190,13 +190,13 @@ Starts writing a [PurgMem](capi-memory-purgmem.md) object.
 
 ### OH_PurgeableMemory_EndWrite()
 
-```
+```c
 void OH_PurgeableMemory_EndWrite(OH_PurgeableMemory *purgObj)
 ```
 
 **Description**
 
-Ends writing a [PurgMem](capi-memory-purgmem.md) object.
+Stops writing a [PurgMem](capi-memory-purgmem.md) object.
 
 **Since**: 10
 
@@ -208,7 +208,7 @@ Ends writing a [PurgMem](capi-memory-purgmem.md) object.
 
 ### OH_PurgeableMemory_GetContent()
 
-```
+```c
 void *OH_PurgeableMemory_GetContent(OH_PurgeableMemory *purgObj)
 ```
 
@@ -232,7 +232,7 @@ Obtains the content of a [PurgMem](capi-memory-purgmem.md) object.
 
 ### OH_PurgeableMemory_ContentSize()
 
-```
+```c
 size_t OH_PurgeableMemory_ContentSize(OH_PurgeableMemory *purgObj)
 ```
 
@@ -256,7 +256,7 @@ Obtains the content size of a [PurgMem](capi-memory-purgmem.md) object.
 
 ### OH_PurgeableMemory_AppendModify()
 
-```
+```c
 bool OH_PurgeableMemory_AppendModify(OH_PurgeableMemory *purgObj, OH_PurgeableMemory_ModifyFunc func, void *funcPara)
 ```
 

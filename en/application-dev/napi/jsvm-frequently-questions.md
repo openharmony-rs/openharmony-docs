@@ -16,7 +16,7 @@ If an unexpected behavior occurs during the running of the application, locate t
 
 1. Q: The application crashes when **OH_JSVM_RunScript** or **OH_JSVM_CallFunction** is called, and the stack top is **SetReturnValue**. What should I do?
 
-   ```
+   ```txt
    #00 pc 0000000000c68ef0 /system/lib64/ndk/libjsvm.so(v8impl::(anonymous namespace)::FunctionCallbackWrapper::SetReturnValue(JSVM_Value__*)+16)
    #01 pc 0000000000c5ad30 /system/lib64/ndk/libjsvm.so(v8impl::(anonymous namespace)::FunctionCallbackWrapper::Invoke(v8::FunctionCallbackInfo<v8::Value> const&)+332)
    #02 pc 00000000014a9e58 /system/lib64/ndk/libjsvm.so
@@ -50,9 +50,9 @@ If an unexpected behavior occurs during the running of the application, locate t
 
    A: Check whether **JSVM_CallbackStruct** is a variable in the stack. When **JSVM_CallbackStruct** is used across functions, the lifecycle of **JSVM_CallbackStruct** must be greater than that of **JSVM_Env**.
 
-   ```
+   ```c++
    func {
-   	// ...
+      // ...
        JSVM_CallbackStruct param[] = {
            {.data = nullptr, .callback = ConsoleInfo},
            {.data = nullptr, .callback = Add},
@@ -78,7 +78,7 @@ If an unexpected behavior occurs during the running of the application, locate t
 
 4. Q: What should I do if the application crashes when a JS data type instance is created (for example, **OH_JSVM_CreateDouble**) in a JSVM instance? The call stack is as follows:
 
-   ```
+   ```txt
    #00 pc 0000000001d209e4/system/lib64/ndk/libjsvm.so(v8::base::0S::Abort()+28)
    #01 pc 0000000001408480/system/lib64/ndk/libjsvm.so(v8::Utils::ReportApiFailure(char const*,char const*)+124)
    #02 pc 00000000015c99b8/system/lib64/ndk/libjsvm.so(v8::internal::HandleScope::Extend(v8::internal::Isolate*+200)

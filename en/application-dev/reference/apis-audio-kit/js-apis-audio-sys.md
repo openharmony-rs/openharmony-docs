@@ -2721,7 +2721,7 @@ Excludes output devices. Once this API is successfully called, audio will no lon
 
 **Required permissions**: ohos.permission.MANAGE_AUDIO_CONFIG
 
-Starting from API version 23, his API does not require the ohos.permission.MANAGE_AUDIO_CONFIG permission and does not return error code 201.
+Starting from API version 23, this API does not require the ohos.permission.MANAGE_AUDIO_CONFIG permission and does not return error code 201.
 
 **System API**: This is a system API.
 
@@ -2790,7 +2790,7 @@ Restores previously excluded output devices. Once this API is called successfull
 
 **Required permissions**: ohos.permission.MANAGE_AUDIO_CONFIG
 
-Starting from API version 23, his API does not require the ohos.permission.MANAGE_AUDIO_CONFIG permission and does not return error code 201.
+Starting from API version 23, this API does not require the ohos.permission.MANAGE_AUDIO_CONFIG permission and does not return error code 201.
 
 **System API**: This is a system API.
 
@@ -2859,7 +2859,7 @@ Restores all previously excluded output devices that are used for a specific pur
 
 **Required permissions**: ohos.permission.MANAGE_AUDIO_CONFIG
 
-Starting from API version 23, his API does not require the ohos.permission.MANAGE_AUDIO_CONFIG permission and does not return error code 201.
+Starting from API version 23, this API does not require the ohos.permission.MANAGE_AUDIO_CONFIG permission and does not return error code 201.
 
 **System API**: This is a system API.
 
@@ -4344,6 +4344,209 @@ Enumerates the scene types available for spatial audio rendering.
 | MUSIC                              | 1      |  Music scene for spatial audio rendering.           |
 | MOVIE                              | 2      |  Movie scene for spatial audio rendering.           |
 | AUDIOBOOK                          | 3      |  Audiobook scene for spatial audio rendering.         |
+
+## AudioCollaborativeManager<sup>20+</sup>
+
+Implements collaborative audio management.
+
+Before calling an API in AudioCollaborativeManager, you must use [getCollaborativeManager](#getcollaborativemanager20) to obtain an AudioCollaborativeManager instance.
+
+### getCollaborativeManager<sup>20+</sup>
+
+getCollaborativeManager(): AudioCollaborativeManager
+
+Obtains a collaborative audio manager.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+**Return value**
+
+| Type                                          | Description                         |
+|----------------------------------------------| ----------------------------- |
+| [AudioCollaborativeManager](#audiocollaborativemanager20) | AudioCollaborativeManager instance.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202     | Not system APP.                     |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let audioManager: audio.AudioManager = audio.getAudioManager();
+let audioCollaborativeManager: audio.AudioCollaborativeManager = audioManager.getCollaborativeManager();
+```
+
+### isCollaborativePlaybackSupported<sup>20+</sup>
+
+isCollaborativePlaybackSupported(): boolean
+
+Checks whether the system supports collaborative audio. This API returns the result synchronously.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Return value**
+
+| Type   | Mandatory| Description                                                   |
+| ------- |------|------------------------------------------------------- |
+| boolean |  Yes | Check result for the support of collaborative audio. **true** if supported, **false** otherwise.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202     | Not system application.                     |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isCollaborativeSupported: boolean = audioCollaborativeManager.isCollaborativePlaybackSupported();
+  console.info(`AudioCollaborativeManager isCollaborativeSupported: ${isCollaborativeSupported}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`ERROR: ${error}`);
+}
+```
+
+### setCollaborativePlaybackEnabledForDevice<sup>20+</sup>
+
+setCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise&lt;void&gt;
+
+Enables or disables collaborative audio for a device. This API uses a promise to return the result.
+
+Currently, only Bluetooth Advanced Audio Distribution Profile (A2DP) devices support collaborative audio. When collaborative audio is enabled, the specified Bluetooth A2DP device and the local speaker play audio simultaneously.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Parameters**
+
+| Name           | Type                                                                | Mandatory| Description            |
+| ----------       | -------------------------------------------------------------------- | ---- |------------------|
+| deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | Yes  | Descriptor of the device.  |
+| enabled          | boolean                                                              | Yes  | Whether to enable or disable collaborative audio. **true** to enable, **false** otherwise.|
+
+**Return value**
+
+| Type               | Description                           |
+| ------------------- | ------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.       |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 201     | Not system application.                     |
+| 6800101 | Parameter verification failed. Possible causes:1. The specified device is not an A2DP device.2. The specified device is not connected.|
+| 801     | Capability not supported.                   |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let deviceDescriptor: audio.AudioDeviceDescriptor = {
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.BLUETOOTH_A2DP,
+  id : 1,
+  name : "",
+  address : "123",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : ""
+};
+let enabled: boolean = true;
+
+audioCollaborativeManager.setCollaborativePlaybackEnabledForDevice(deviceDescriptor, enabled).then(() => {
+  console.info(`setSpatializationEnabled success`);
+}).catch((err: BusinessError) => {
+  console.error(`Result ERROR: ${err}`);
+});
+```
+
+### isCollaborativePlaybackEnabledForDevice<sup>20+</sup>
+
+isCollaborativePlaybackEnabledForDevice(deviceDescriptor: AudioDeviceDescriptor): boolean
+
+Checks whether collaborative audio is enabled for a device. This API returns the result synchronously.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Parameters**
+
+| Name           | Type                                                                | Mandatory| Description             |
+| ----------       | -------------------------------------------------------------------- | ---- |------------------|
+| deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | Yes  | Descriptor of the device.  |
+
+**Return value**
+
+| Type   | Mandatory| Description                                                   |
+| ------- |------|------------------------------------------------------- |
+| boolean |  Yes | Check result for whether collaborative audio is enabled. **true** if enabled, **false** otherwise.  |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 202     | Not system application.                     |
+| 6800101 | Parameter verification failed.              |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let deviceDescriptor: audio.AudioDeviceDescriptor = {
+  deviceRole : audio.DeviceRole.OUTPUT_DEVICE,
+  deviceType : audio.DeviceType.BLUETOOTH_A2DP,
+  id : 1,
+  name : "",
+  address : "123",
+  sampleRates : [44100],
+  channelCounts : [2],
+  channelMasks : [0],
+  networkId : audio.LOCAL_NETWORK_ID,
+  interruptGroupId : 1,
+  volumeGroupId : 1,
+  displayName : ""
+}
+
+try {
+  let isCollaborativeEnabled: boolean = audioCollaborativeManager.isCollaborativePlaybackEnabledForDevice(deviceDescriptor);
+  console.info(`AudioCollaborativeManager isCollaborativeEnabled: ${isCollaborativeEnabled}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`ERROR: ${error}`);
+}
+```
 
 ## ToneType<sup>9+</sup>
 

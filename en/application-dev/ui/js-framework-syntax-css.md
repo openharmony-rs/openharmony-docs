@@ -6,21 +6,21 @@
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Cascading Style Sheets (CSS) is a language used to describe the HML page structure. All HML components have default styles. You can customize styles for these components using CSS to design various pages. For details, see [Universal Styles](../reference/apis-arkui/arkui-js/js-components-common-styles.md).
+Cascading Style Sheets (CSS) is a style language that describes the structure of [HML](js-framework-syntax-hml.md) pages. While all components come with default styles, CSS allows you to customize the look and feel of the components and pages to fit your design requirements. For details about the component styles supported by the web development paradigm that is compatible with JavaScript, see [Common Styles](../reference/apis-arkui/arkui-js/js-components-common-styles.md).
 
 ## Size Unit
 
 - Logical px set by **\<length>**:
 
-   - The default logical screen width is 720 px (for details, see the **"window"** section in **[config.json](js-framework-js-tag.md)**). Your page will be scaled to fit the actual width of the screen. For example, on a screen with the actual width of 1440 physical px, 100 px is displayed on 200 physical px, with all sizes doubled from 720 px to 1440 px.
-   - If you set **autoDesignWidth** to **true** (for details, see the **"window"** section in **[config.json](js-framework-js-tag.md)**), the logical px are scaled based on the screen density. For example, if the screen density is 3x, 100 px will be rendered on 300 physical px. This approach is recommended when your application needs to adapt to multiple devices.
+   - The default logical screen width is 720 px (for details, see the **window** section in ["js" Tag](js-framework-js-tag.md)). Your page will be scaled to fit the actual width of the screen. For example, on a screen with the actual width of 1440 physical px, 100 px is displayed on 200 physical px, with all sizes doubled from 720 px to 1440 px.
+   - If **autoDesignWidth** is set to **true** (for details, see the **window** section in ["js" Tag](js-framework-js-tag.md)), the logical px is scaled based on the screen density. For example, on a screen with the screen density of 3, 100 px is displayed on 300 physical px. This approach is recommended when your application needs to adapt to multiple devices.
 
 - Percentage set by **\<percentage>**: The component size is represented by its percentage of the parent component size. For example, if the width **\<percentage>** of a component is set to **50%**, the width of the component is half of its parent component's width.
 
 
 ## Style Import
 
-CSS files can be imported using the **@import** statement. This facilitates module management and code reuse.
+To implement modular management and code reuse, CSS style files support the \@import statement to import CSS files.
 
 
 ## Style Declaration
@@ -67,9 +67,9 @@ A CSS selector is used to select elements for which styles need to be added to. 
 | ------------------------- | ------------------------------------- | ---------------------------------------- |
 | .class                    | .container                            | Selects all components whose **class** is **container**.               |
 | \#id                      | \#titleId                             | Selects all components whose **id** is **titleId**.                    |
-| tag                       | text                                  | Selects all **\<text>** components.                             |
-| ,                         | .title, .content                 | Selects all components whose **class** is **title** or **content**.   |
-| \#id .class tag | \#containerId .content text | Selects all grandchild **\<text>** components whose grandparent components are identified as **containerId** and whose parent components are of the **content** class. To select child components, use **>** to replace the space between **\#id** and **.class**, for example, **\#containerId>.content**.|
+| tag                       | text                                  | Selects the text component.                             |
+| ,                         | .title,&nbsp;.content                 | Selects all components whose **class** is **title** or **content**.   |
+| \#id&nbsp;.class&nbsp;tag | \#containerId&nbsp;.content&nbsp;text | Selects all grandchild **\<text>** components whose grandparent components are identified as **containerId** and whose parent components are of the **content** class. To use the strict parent-child relationship, replace the space with **&gt;**, for example, **\#containerId&gt;.content**.|
 
 Example:
 
@@ -119,29 +119,29 @@ div {
 
 The above style works as follows:
 
-![en-us_image_0000001267607889](figures/en-us_image_0000001267607889.png)
+![en-us_image_0000001127125270](figures/en-us_image_0000001127125270.png)
 
-In the preceding example, **.container text** sets title and content to blue, and **.container > text** sets title to red. The two styles have the same priority, but **.container > text** declares the style later and overwrites the former style. For details about the priority, see [Selector Specificity](#selector-specificity).
+In the preceding example, the **.container text** sets the title and content to blue, and the **.container > text** direct descendant selector sets the title to red. The two styles have the same priority, but **.container > text** declares the style later and overwrites the former style. For details about the priority calculation, see [Selector Priority](#selector-priority).
 
-## Selector Specificity
+## Selector Priority
 
-The specificity rule of the selectors complies with the W3C rule, which is only available for inline styles, **id**, **class**, **tag**, grandchild components, and child components. (Inline styles are those declared in the **style** attribute.)
+The priority rule of the selectors complies with the W3C rule, which is only available for inline styles, **id**, **class**, **tag**, grandchild components, and child components. (Inline styles are those declared in the **style** attribute.)
 
-When multiple selectors point to the same element, their priorities are as follows (in descending order): inline style > **id** > **class** > **tag**.
+When multiple selector declarations match the same element, the priorities of various selectors are as follows: inline style > **id** > **class** > **tag**.
 
 
 ## Pseudo-classes
 
-A CSS pseudo-class is a keyword added to a selector that specifies a special state of the selected elements. For example, **:disabled** can be used to select the element whose **disabled** attribute is **true**.
+A CSS pseudo-class is a keyword added to a selector that specifies a special state of the selected element(s). For example, **:disabled** can be used to select the element whose **disabled** attribute is **true**.
 
 In addition to a single pseudo-class, a combination of pseudo-classes is supported. For example, **:focus:checked** selects the element whose **focus** and **checked** attributes are both set to **true**. The following table lists the supported single pseudo-class in descending order of priority.
 
-| Pseudo-class       | Available Components                                    | Description                                      |
+| Name       | Supported Component                                    | Description                                      |
 | --------- | ---------------------------------------- | ---------------------------------------- |
-| :disabled | Components that support the **disabled** attribute                         | Selects the element whose **disabled** attribute is changed to **true** (unavailable for animation attributes).     |
-| :active   | Components that support the click event                       | Selects the element activated by a user. For example, a pressed button or a selected **tab-bar** (unavailable for animation attributes).|
-| :waiting  | button                                   | Selects the element whose **waiting** attribute is **true** (unavailable for animation attributes).        |
-| :checked  | input[type="checkbox", type="radio"], switch | Selects the element whose **checked** attribute is **true** (unavailable for animation attributes).        |
+| :disabled | Components that support the disabled attribute                         | Indicates the element whose disabled attribute is true. (The animation style cannot be set.)     |
+| :active   | Components that support the click event<br>                       | Indicates the element activated by the user, for example, a button pressed by the user or an activated tab-bar tab. (The animation style cannot be set.)|
+| :waiting  | button                                   | Indicates the element whose waiting attribute is true. (The animation style cannot be set.)        |
+| :checked  | input[type="checkbox", type="radio"], switch| Indicates the element whose checked attribute is true. (The animation style cannot be set.)        |
 
 The following is an example for you to use the **:active** pseudo-class to control the style when a user presses the button. 
 
@@ -162,12 +162,13 @@ The following is an example for you to use the **:active** pseudo-class to contr
 }
 
 .button:active {
-    background-color: #888888;/* After the button is activated, the background color is changed to #888888. */
+  background-color: #888888;/* After the button is activated, the background color is changed to #888888. */
 }
 ```
 
 > **NOTE**
-> Pseudo-classes are not supported for the **\<popup>** component and its child components, including, **\<popup>**, **\<dialog>**, **\<menu>**, **\<option>**, and **\<picker>**.
+>
+> Pseudo-class effects are not supported for the **\<popup>** component and its child components, including, **\<popup>**, **\<dialog>**, **\<menu>**, **\<option>**, and **\<picker>**.
 
 
 ## Precompiled Styles
@@ -180,7 +181,7 @@ Precompilation is a program that uses specific syntax to generate CSS files. It 
   /* Define a variable. */
   @colorBackground: #000000;
   .container {
-      background-color: @colorBackground; /* Use the variable defined in the .less file. */
+    background-color: @colorBackground; /* Use the variables defined in the current less file. */
   }
   ```
 
@@ -198,7 +199,7 @@ Precompilation is a program that uses specific syntax to generate CSS files. It 
   /* Import style.scss. */
   @import '../../common/style.scss';
   .container {
-      background-color: $colorBackground; /* Use the variable defined in style.scss. */
+    background-color: $colorBackground; /* Use the variable defined in style.scss. */
   }
   ```
 

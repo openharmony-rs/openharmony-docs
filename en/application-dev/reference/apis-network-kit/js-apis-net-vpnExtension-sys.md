@@ -8,9 +8,11 @@
 <!--Adviser: @zhang_yixin13-->
 
 This module implements virtual private network (VPN) management, such as starting and stopping a third-party VPN.
+
 Third-party VPNs refer to VPN services provided by third parties. They usually support more security and privacy functions and more comprehensive customization options.
 
 > **NOTE**
+>
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.net.vpnExtension (VPN Extension)](js-apis-net-vpnExtension.md).
 
@@ -101,7 +103,7 @@ Obtains the status of the **always on** mode. This API uses a promise to return 
 
 | Type             | Description                          |
 | ----------------- | ------------------------------ |
-| Promise\<boolean> | Promise used to return the result.|
+| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the **always on** mode is enabled, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -128,7 +130,7 @@ let want: Want = {
 vpnExtension.isAlwaysOnVpnEnabled(want.bundleName).then((data : boolean) => {
   console.info('isAlwaysOnVpnEnabled success.');
 }).catch((err : BusinessError) => {
-  console.error('setAlwaysOnVpnEnabled fail, err-> ${JSON.stringify(err)}');
+  console.error('isAlwaysOnVpnEnabled fail, err-> ${JSON.stringify(err)}');
 });
 ```
 

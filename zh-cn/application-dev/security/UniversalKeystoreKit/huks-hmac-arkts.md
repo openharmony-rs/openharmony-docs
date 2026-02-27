@@ -31,27 +31,28 @@ HMAC是密钥相关的哈希运算消息认证码（Hash-based Message Authentic
 
 4. 调用[finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9)结束密钥会话，获取哈希后的数据。
 
-```ts
+<!-- @[hmac_to](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/HMAC/entry/src/main/ets/pages/HMAC.ets) -->
+
+``` TypeScript
 /*
  * 以下以HMAC密钥的Promise操作使用为例
  */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit";
 
-let keyAlias = 'test_HMAC';
+let hmacKeyAlias = 'test_HMAC';
 let handle: number;
 let plainText = '123456';
 let hashData: Uint8Array;
 
-function StringToUint8Array(str: string) {
-  let arr: number[] = new Array();
+function stringToUint8Array(str: String) {
+  let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
   }
   return new Uint8Array(arr);
 }
 
-function Uint8ArrayToString(fileData: Uint8Array) {
+function uint8ArrayToString(fileData: Uint8Array) {
   let dataString = '';
   for (let i = 0; i < fileData.length; i++) {
     dataString += String.fromCharCode(fileData[i]);
@@ -59,8 +60,8 @@ function Uint8ArrayToString(fileData: Uint8Array) {
   return dataString;
 }
 
-function GetHMACProperties() {
-  const properties: Array<huks.HuksParam> = [{
+function getHMACProperties() {
+  const properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_HMAC
   }, {
@@ -76,68 +77,47 @@ function GetHMACProperties() {
   return properties;
 }
 
-async function GenerateHMACKey() {
-  /*
-   * 模拟生成密钥场景
-   * 1. 确定密钥别名
-   */
-  /*
-   * 2. 获取生成密钥算法参数配置
-   */
-  let genProperties = GetHMACProperties();
+/* 1.生成 HMAC 密钥 */
+async function generateHMACKey() {
   let options: huks.HuksOptions = {
-    properties: genProperties
-  }
-  /*
-   * 3. 调用generateKeyItem
-   */
-  await huks.generateKeyItem(keyAlias, options)
-    .then(() => {
+    properties: getHMACProperties()
+  };
+
+  await huks.generateKeyItem(hmacKeyAlias, options)
+    .then((data) => {
       console.info(`promise: generate HMAC Key success`);
-    }).catch((error: BusinessError) => {
-      console.error(`promise: generate HMAC Key failed, errCode : ${error.code}, errMsg : ${error.message}`);
+    }).catch((error: Error) => {
+      console.error(`promise: generate HMAC Key failed, ${JSON.stringify(error)}`);
+      throw (error as Error);
     })
 }
-
-async function HMACData() {
-  /*
-   * 模拟HMAC场景
-   * 1. 获取密钥别名
-   */
-  /*
-   * 2. 获取待哈希的数据
-   */
-  /*
-   * 3. 获取HMAC算法参数配置
-   */
-  let hmacProperties = GetHMACProperties();
+/* 2.执行 HMAC 计算 */
+async function hMACData() {
   let options: huks.HuksOptions = {
-    properties: hmacProperties,
-    inData: StringToUint8Array(plainText)
+    properties: getHMACProperties(),
+    inData: stringToUint8Array(plainText)
   }
-  /*
-   * 4. 调用initSession获取handle
-   */
-  await huks.initSession(keyAlias, options)
+
+  await huks.initSession(hmacKeyAlias, options)
     .then((data) => {
       handle = data.handle;
-    }).catch((error: BusinessError) => {
-      console.error(`promise: init EncryptData failed, errCode : ${error.code}, errMsg : ${error.message}`);
+    }).catch((error: Error) => {
+      console.error(`promise: init session failed, ${JSON.stringify(error)}`);
+      throw (error as Error);
     })
-  /*
-   * 5. 调用finishSession获取HMAC的结果
-   */
+
   await huks.finishSession(handle, options)
     .then((data) => {
-      console.info(`promise: HMAC data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+      console.info(`promise: HMAC data success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
       hashData = data.outData as Uint8Array;
-    }).catch((error: BusinessError) => {
-      console.error(`promise: HMAC data failed, errCode : ${error.code}, errMsg : ${error.message}`);
+    }).catch((error: Error) => {
+      console.error(`promise: HMAC data failed, ${JSON.stringify(error)}`);
+      throw (error as Error);
     })
 }
 
-async function testHMAC() {
-  await GenerateHMACKey();
-  await HMACData();
+async function executeHMAC() {
+  await generateHMACKey();
+  await hMACData();
 }
 ```

@@ -40,7 +40,7 @@ The file declares the basic dependencies for OH_LowPowerAudioSink and OH_LowPowe
 
 ### OH_AVSamplesBuffer_AppendOneBuffer()
 
-```
+```c
 OH_AVErrCode OH_AVSamplesBuffer_AppendOneBuffer(OH_AVSamplesBuffer *samplesBuffer, OH_AVBuffer *avBuffer)
 ```
 
@@ -65,7 +65,7 @@ Appends data from an OH_AVBuffer instance to an OH_AVSamplesBuffer instance.
 
 ### OH_AVSamplesBuffer_GetRemainedCapacity()
 
-```
+```c
 int32_t OH_AVSamplesBuffer_GetRemainedCapacity(OH_AVSamplesBuffer *samplesBuffer)
 ```
 
@@ -85,11 +85,11 @@ Obtains the remaining capacity available in an OH_AVSamplesBuffer instance.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Remaining capacity available in the OH_AVSamplesBuffer instance, in bytes. If **sampleBuffer** or data poniter is nullptr or invalid, **-1** is returned.|
+| int32_t | Remaining capacity available in the OH_AVSamplesBuffer instance, in bytes. If **sampleBuffer** or data pointer is nullptr or invalid, **-1** is returned.|
 
 ### OH_LowPowerAVSink_GetCapability()
 
-```
+```c
 OH_LowPowerAVSink_Capability *OH_LowPowerAVSink_GetCapability()
 ```
 

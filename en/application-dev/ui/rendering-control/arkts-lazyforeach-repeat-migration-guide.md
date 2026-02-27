@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-[Repeat](./arkts-new-rendering-control-repeat.md) is a new loop rendering component introduced in ArkUI for API version 12. Compared with [LazyForEach](./arkts-rendering-control-lazyforeach.md), **Repeat** offers a simpler API, enhanced functionality, and improved performance optimization. This topic provides guidance on migrating from **LazyForEach** to **Repeat**.
+[Repeat](./arkts-new-rendering-control-repeat.md) is a loop rendering component introduced in ArkUI since API version 12. Compared with [LazyForEach](./arkts-rendering-control-lazyforeach.md), **Repeat** offers a simpler API, enhanced functionality, and improved performance optimization. This topic provides guidance on migrating from **LazyForEach** to **Repeat**.
 
 ## Migrating Basic Usage
 
@@ -74,7 +74,7 @@ The example above illustrates a typical use case of **LazyForEach** for renderin
 
 1. Adopt state management V2 decorators.
 
-   **Repeat** is designed to work with state management V2 decorators. (In [lazy loading](./arkts-new-rendering-control-repeat.md#how-it-works) mode, **Repeat** requires state management V2.) If you are currently using state management V1, migrate to V2.
+   **Repeat** is designed to work with state management V2 decorators. (In [lazy loading](./arkts-new-rendering-control-repeat.md#lazy-loading-capability) mode, **Repeat** requires state management V2.) If you are currently using state management V1, migrate to V2.
 
    ```ts
    // Before migration – LazyForEach
@@ -157,7 +157,7 @@ The example above illustrates a typical use case of **LazyForEach** for renderin
 
 4. Configure lazy loading.
 
-   Repeat supports two rendering modes: [lazy loading](./arkts-new-rendering-control-repeat.md#how-it-works) and [full loading](./arkts-new-rendering-control-repeat.md#lazy-loading-disablement).
+   **Repeat** supports two rendering modes: [lazy loading and full loading](./arkts-new-rendering-control-repeat.md#lazy-loading-capability).
    
    - Full loading mode renders all child components (similar to [ForEach](./arkts-rendering-control-foreach.md)).
    - Lazy loading mode dynamically renders only visible and preloaded components (requires container components, similar to **LazyForEach**).
@@ -506,7 +506,7 @@ struct ChildComponent {
 
 **Migrating to Repeat**
 
-**Repeat** is designed to work with state management V2, which provides the [@ObserveV2 and @Trace](../state-management/arkts-new-observedV2-and-trace.md) decorators for deep observation of sub-properties. During migration, you need to replace the @Observed and @ObjectLink decorators with @ObserveV2 and @Trace respectively.
+**Repeat** is designed to work with state management V2, which provides the [@ObservedV2 and @Trace](../state-management/arkts-new-observedV2-and-trace.md) decorators for deep observation of sub-properties. During migration, you need to replace the @Observed and @ObjectLink decorators with @ObservedV2 and @Trace respectively.
 
 The following example demonstrates the implementation after migration:
 
@@ -1076,7 +1076,7 @@ struct ChildComponent {
 1. Use the built-in reuse capability of **Repeat**.
 2. Use the reuse capability provided by the @ReusableV2 decorator.
 
-Note: The built-in reuse capability of **Repeat** is enabled by default and takes precedence over the @ReusableV2 decorator. To use @ReusableV2, you must manually disable the built-in reuse capability of **Repeat**. (@ReusableV2 is supported since API version 18, and **Repeat** is supported since API version 19.)
+Note: The built-in reuse capability of **Repeat** is enabled by default and takes precedence over the @ReusableV2 decorator. To use @ReusableV2, you must manually disable the built-in reuse capability of **Repeat**. (Since API version 18, @ReusableV2 is supported and you can [disable the reuse capability of Repeat](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions).)
 
 **Example 7 – Migration Solution 1: Using the Built-in Reuse Capability of Repeat**
 

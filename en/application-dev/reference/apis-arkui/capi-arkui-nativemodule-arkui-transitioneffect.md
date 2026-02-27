@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_TransitionEffect ArkUI_TransitionEffect
+```
+
 ## Overview
 
 Defines the transition parameter object for transition property configuration.

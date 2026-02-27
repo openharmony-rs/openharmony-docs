@@ -1,4 +1,4 @@
-# Introduction to Device Certificate Kit
+# About This Kit
 
 <!--Kit: Device Certificate Kit-->
 <!--Subsystem: Security-->

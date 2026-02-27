@@ -1,4 +1,4 @@
-# Applying Constraints for System Accounts
+# Applying Constraints for System Accounts (for System Applications Only)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Account-->

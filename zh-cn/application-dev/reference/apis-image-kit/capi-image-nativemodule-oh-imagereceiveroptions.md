@@ -24,10 +24,10 @@ OH_ImageReceiverOptions结构体内容和操作方式如下：
 
 | 字段类型| 字段名称 | 字段描述 |操作函数 | 函数描述 |
 | -------- | -------- | -------- | -------- | -------- |
-| Image_Size | size | 图像大小 | [OH_ImageReceiverOptions_GetSize](capi-image-receiver-native-h.md#oh_imagereceiveroptions_getsize) |获取OH_ImageReceiverOptions对象的 Image_Size 信息。|
-| Image_Size | size | 图像大小 | [OH_ImageReceiverOptions_SetSize](capi-image-receiver-native-h.md#oh_imagereceiveroptions_setsize) |设置OH_ImageReceiverOptions对象的 Image_Size 信息。|
-| int32_t | capacity | 图片缓存容量 | [OH_ImageReceiverOptions_GetCapacity](capi-image-receiver-native-h.md#oh_imagereceiveroptions_getcapacity) |获取OH_ImageReceiverOptions对象的图片缓存容量的信息。|
-| int32_t | capacity | 图片缓存容量 | [OH_ImageReceiverOptions_SetCapacity](capi-image-receiver-native-h.md#oh_imagereceiveroptions_setcapacity) |设置OH_ImageReceiverOptions对象的图片缓存容量的信息。|
+| Image_Size | size | 图像大小 | [OH_ImageReceiverOptions_GetSize](capi-image-receiver-native-h.md#oh_imagereceiveroptions_getsize) |获取OH_ImageReceiverOptions对象的Image_Size。|
+| Image_Size | size | 图像大小 | [OH_ImageReceiverOptions_SetSize](capi-image-receiver-native-h.md#oh_imagereceiveroptions_setsize) |设置OH_ImageReceiverOptions对象的Image_Size。|
+| int32_t | capacity | 图片缓存容量 | [OH_ImageReceiverOptions_GetCapacity](capi-image-receiver-native-h.md#oh_imagereceiveroptions_getcapacity) |获取OH_ImageReceiverOptions对象的图片缓存容量。|
+| int32_t | capacity | 图片缓存容量 | [OH_ImageReceiverOptions_SetCapacity](capi-image-receiver-native-h.md#oh_imagereceiveroptions_setcapacity) |设置OH_ImageReceiverOptions对象的图片缓存容量。|
 
 **起始版本：** 12
 

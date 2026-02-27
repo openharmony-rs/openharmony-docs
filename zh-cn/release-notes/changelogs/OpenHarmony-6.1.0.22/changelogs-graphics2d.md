@@ -1,0 +1,35 @@
+#  图形图像子系统ChangeLog
+
+## cl.graphics2d.1 ArkTS WordBreak.BREAK_HYPHEN NDK WORD_BREAK_TYPE_BREAK_HYPHEN 移除以下六种语言连字符“-”断词换行能力的支持：捷克语、印度尼西亚语、拉脱维亚语、马其顿语、斯洛伐克语、塞尔维亚语
+
+**访问级别**
+
+公共能力
+
+**变更原因**
+
+Hyphen库将移除部分不兼容语种，这些语种的连字符“-”进行断词换行能力将会失效。
+
+**变更影响**
+
+变更前：针对捷克语、印度尼西亚语、拉脱维亚语、马其顿语、斯洛伐克语、塞尔维亚语的语言环境下，Hyphen断词模式下会有连字符“-”断词换行效果。
+
+变更后：针对捷克语、印度尼西亚语、拉脱维亚语、马其顿语、斯洛伐克语、塞尔维亚语的语言环境下，Hyphen断词模式下连字符“-”断词换行效果不再生效，换行效果自动回落到以单词为单位进行换行。
+
+**起始 API Level**
+
+18
+
+**变更发生版本**
+
+从OpenHarmony SDK 6.1.0.22开始。
+
+**变更的接口/组件**
+
+ArkTS：@ohos.graphics.text.d.ts文件interface ParagraphStyle中wordBreak属性对应属性值：WordBreak.BREAK_HYPHEN
+
+NDK：drawing_text_typography.h文件enum OH_Drawing_WordBreakType中类型：WORD_BREAK_TYPE_BREAK_HYPHEN
+
+**适配指导**
+
+默认效果变更：接口默认效果变更，但开发者需审视此变更是否对自身相关业务展示效果产生影响，若有影响需根据自身业务代码进行对应适配。

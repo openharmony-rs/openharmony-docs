@@ -53,7 +53,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14400005 | Database operation exception. |
 | 31400001 | Serial port management exception. |
-| 31400003 | Device does not exist. |
+| 31400003 | PortId does not exist. |
 
 **Example**
 ```ts
@@ -63,26 +63,28 @@ import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 // Obtain the serial port list.
-let portList: serialManager.SerialPort[] = serialManager.getPortList();
-console.info('portList: ', JSON.stringify(portList));
-if (portList === undefined || portList.length === 0) {
-  console.info('portList is empty');
-  return;
-}
-
-let portId: number = portList[0].portId;
-// Add permissions to the serial port.
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
-bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo) => {
-  console.info('getBundleInfoForSelf successfully. Data: %{public}s', JSON.stringify(bundleInfo));
-  let tokenId = bundleInfo.appInfo.accessTokenId;
-  try {
-    serialManager.addSerialRight(tokenId, portId);
-    console.info('addSerialRight success, portId: ' + portId);
-  } catch (error) {
-    console.error('addSerialRight error, ' + JSON.stringify(error));
+function addSerialRight() {
+  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  console.info('portList: ', JSON.stringify(portList));
+  if (portList === undefined || portList.length === 0) {
+    console.info('portList is empty');
+    return;
   }
-}).catch((err : BusinessError) => {
-  console.error('getBundleInfoForSelf failed');
-});
+
+  let portId: number = portList[0].portId;
+  // Add permissions to the serial port.
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
+  bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo) => {
+    console.info('getBundleInfoForSelf successfully. Data: %{public}s', JSON.stringify(bundleInfo));
+    let tokenId = bundleInfo.appInfo.accessTokenId;
+    try {
+      serialManager.addSerialRight(tokenId, portId);
+      console.info('addSerialRight success, portId: ' + portId);
+    } catch (error) {
+      console.error('addSerialRight error, ' + JSON.stringify(error));
+    }
+  }).catch((err : BusinessError) => {
+    console.error('getBundleInfoForSelf failed');
+  });
+}
 ```

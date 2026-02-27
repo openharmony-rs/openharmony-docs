@@ -2,11 +2,11 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct {...} OH_NativeXComponent_TouchEvent
 ```
 
@@ -36,7 +36,5 @@ typedef struct {...} OH_NativeXComponent_TouchEvent
 | float force | 当前触摸事件的压力。 |
 | int64_t deviceId | 产生当前触摸事件的设备的ID。 |
 | int64_t timeStamp | 当前触摸事件的时间戳。触发事件时距离系统启动的时间间隔，单位纳秒。 |
-| [OH_NativeXComponent_TouchPoint](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-touchpoint.md) touchPoints[OH_MAX_TOUCH_POINTS_NUMBER] | 当前触摸点的数组。 |
+| [OH_NativeXComponent_TouchPoint](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-touchpoint.md) touchPoints[[OH_NATIVE_XCOMPONENT_MAX_TOUCH_POINTS_NUMBER]](capi-native-interface-xcomponent-h.md#变量) | 当前触摸点的数组。 |
 | uint32_t numPoints | 当前接触点的数量，值为1时为单指触摸，大于1时为多指触摸。 |
-
-

@@ -1,18 +1,18 @@
-# ArkUI_GestureRecognizerHandle*
+# ArkUI_GestureRecognizer*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
-typedef ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray
+```c
+typedef ArkUI_GestureRecognizer* ArkUI_GestureRecognizerHandle
 ```
 
 ## 概述
 
-提供手势识别器句柄类型数组对象定义。
+提供手势识别器句柄类型对象定义。
 
 **起始版本：** 12
 

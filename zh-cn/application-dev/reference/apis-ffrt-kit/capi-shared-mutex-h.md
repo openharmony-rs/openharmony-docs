@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -39,7 +39,7 @@
 
 ### ffrt_rwlock_init()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_init(ffrt_rwlock_t* rwlock, const ffrt_rwlockattr_t* attr)
 ```
 
@@ -49,13 +49,12 @@ FFRT_C_API int ffrt_rwlock_init(ffrt_rwlock_t* rwlock, const ffrt_rwlockattr_t* 
 
 **起始版本：** 18
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md)* rwlock | rwlock指针。 |
-| [const ffrt_rwlockattr_t](capi-ffrt-ffrt-rwlockattr-t.md)* attr | rwlock属性指针。 |
+| [const ffrt_rwlockattr_t](capi-ffrt-ffrt-rwlockattr-t.md)* attr | rwlock属性指针，仅支持默认，即设定为空指针。 |
 
 **返回：**
 
@@ -65,7 +64,7 @@ FFRT_C_API int ffrt_rwlock_init(ffrt_rwlock_t* rwlock, const ffrt_rwlockattr_t* 
 
 ### ffrt_rwlock_wrlock()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_wrlock(ffrt_rwlock_t* rwlock)
 ```
 
@@ -74,7 +73,6 @@ FFRT_C_API int ffrt_rwlock_wrlock(ffrt_rwlock_t* rwlock)
 获取写锁。
 
 **起始版本：** 18
-
 
 **参数：**
 
@@ -90,7 +88,7 @@ FFRT_C_API int ffrt_rwlock_wrlock(ffrt_rwlock_t* rwlock)
 
 ### ffrt_rwlock_trywrlock()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_trywrlock(ffrt_rwlock_t* rwlock)
 ```
 
@@ -99,7 +97,6 @@ FFRT_C_API int ffrt_rwlock_trywrlock(ffrt_rwlock_t* rwlock)
 尝试获取写锁。
 
 **起始版本：** 18
-
 
 **参数：**
 
@@ -115,7 +112,7 @@ FFRT_C_API int ffrt_rwlock_trywrlock(ffrt_rwlock_t* rwlock)
 
 ### ffrt_rwlock_rdlock()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_rdlock(ffrt_rwlock_t* rwlock)
 ```
 
@@ -124,7 +121,6 @@ FFRT_C_API int ffrt_rwlock_rdlock(ffrt_rwlock_t* rwlock)
 获取读锁。
 
 **起始版本：** 18
-
 
 **参数：**
 
@@ -140,7 +136,7 @@ FFRT_C_API int ffrt_rwlock_rdlock(ffrt_rwlock_t* rwlock)
 
 ### ffrt_rwlock_tryrdlock()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_tryrdlock(ffrt_rwlock_t* rwlock)
 ```
 
@@ -149,7 +145,6 @@ FFRT_C_API int ffrt_rwlock_tryrdlock(ffrt_rwlock_t* rwlock)
 尝试获取读锁。
 
 **起始版本：** 18
-
 
 **参数：**
 
@@ -165,7 +160,7 @@ FFRT_C_API int ffrt_rwlock_tryrdlock(ffrt_rwlock_t* rwlock)
 
 ### ffrt_rwlock_unlock()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_unlock(ffrt_rwlock_t* rwlock)
 ```
 
@@ -174,7 +169,6 @@ FFRT_C_API int ffrt_rwlock_unlock(ffrt_rwlock_t* rwlock)
 释放rwlock。
 
 **起始版本：** 18
-
 
 **参数：**
 
@@ -190,7 +184,7 @@ FFRT_C_API int ffrt_rwlock_unlock(ffrt_rwlock_t* rwlock)
 
 ### ffrt_rwlock_destroy()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_destroy(ffrt_rwlock_t* rwlock)
 ```
 
@@ -199,7 +193,6 @@ FFRT_C_API int ffrt_rwlock_destroy(ffrt_rwlock_t* rwlock)
 销毁rwlock。
 
 **起始版本：** 18
-
 
 **参数：**
 

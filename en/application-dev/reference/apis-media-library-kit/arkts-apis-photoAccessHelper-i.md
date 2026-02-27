@@ -10,6 +10,12 @@
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
+## Modules to Import
+
+```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
+
 ## MediaChangeRequest<sup>11+</sup>
 
 Media change request, which is the parent class of the asset change request and album change request.
@@ -18,9 +24,17 @@ Media change request, which is the parent class of the asset change request and 
 >
 > **MediaChangeRequest** takes effect only after [applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) is called.
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+### Attributes
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name          | Type   | Read-Only  | Optional | Description  |
+| ------------ | ------ | ---- | ---- | ------- |
+| comment<sup>23+</sup>    | string | Yes   | No  | Used to verify the **MediaChangeRequest** type.<br>If a class (such as [MediaAssetChangeRequest](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md) or [MediaAlbumChangeRequest](arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md)) object can be accessed, it is an implementation class of **MediaChangeRequest**.|
 
 ## CreateOptions
 
@@ -89,6 +103,7 @@ Represents the text information about the recommended images.
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let textInfo: photoAccessHelper.TextContextInfo = {
@@ -130,6 +145,22 @@ Represents the configuration for saving a media asset (image or video) to the me
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)  | No| No| Type of the file to create, which can be **IMAGE** or **VIDEO**. See [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype). |
 | subtype  | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)  | No| Yes| Image or video file subtype. The default value is **DEFAULT**. See [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12). |
 
+## CreationSetting<sup>23+</sup>
+
+Represents the configuration for saving images or videos to the media library, including the file name, file type, and other related parameters.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name              | Type   | Read-Only| Optional| Description                                                        |
+| ------------------ | ------- | ---- | ---- | ----- |
+| title              | string  | No| Yes| Title of the image or video.<br>If this parameter is not passed, the system generates a value. The parameter specifications are as follows:<br>- It must not contain a file name extension.<br>- It must not contain any invalid characters, which are:\ / : * ? " ' ` < > \| { } [ ]<br>- The file name consists of the title and file name extension. The file name string length ranges from 1 to 255. Therefore, the title length cannot be too long. |
+| fileNameExtension  | string  | No| No| File name extension, for example, **'jpg'**. |
+| photoType          | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)  | No| No| [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) of the created media file, which can be **IMAGE** or **VIDEO**. |
+
 ## PhotoAssetChangeInfo<sup>20+</sup>
 
 Describes the information about a media asset.
@@ -165,7 +196,7 @@ Describes the notification information about the change of a media asset.
 | ---- | ------- | ---- |  ---- | ----- |
 | type       | [NotifyChangeType](arkts-apis-photoAccessHelper-e.md#notifychangetype20)  | No| No| Type of the media asset change.|
 | assetChangeDatas | [PhotoAssetChangeData](#photoassetchangedata20)[] \| null | No|  No| Array of changed media assets. If all media assets need to be queried again, **assetChangeDatas** is null. |
-| isForRecheck    | boolean  | No| No| Whether the application should query all media assets again. **true** if the application should query all assets again, **false** otherwise.<br>**NOTE**: In special cases or abnormal notification scenarios, **isForRecheck** will be **true**. In this case, the application should query all assets again. |
+| isForRecheck    | boolean  | No| No| Whether the application should query all media assets again. **true** if the application should query all assets again, **false** otherwise.<br>**NOTE**<br>In scenarios involving bulk asset operations or abnormal notifications, **isForRecheck** will be **true**. In this case, the application should query all assets again. |
 
 ## AlbumChangeInfo<sup>20+</sup>
 
@@ -205,4 +236,17 @@ Describes the notification information about the change of an album.
 | ---- | ------- | ---- |  ---- | ----- |
 | type       | [NotifyChangeType](arkts-apis-photoAccessHelper-e.md#notifychangetype20)  | No| No| Type of the album change.|
 | albumChangeDatas   | [AlbumChangeData](#albumchangedata20)[] \| null | No| No| Array of changed albums. If all albums need to be queried again, **albumChangeDatas** is null. |
-| isForRecheck          | boolean  | No| No| Whether the application should query all albums again. **true** if the application should query all albums again, **false** otherwise.<br>**NOTE**: In special cases or abnormal notification scenarios, **isForRecheck** will be **true**. In this case, the application should query all albums again. |
+| isForRecheck          | boolean  | No| No| Whether the application should query all albums again. **true** if the application should query all albums again, **false** otherwise.<br>**NOTE**<br>In scenarios involving bulk album operations or abnormal notifications, **isForRecheck** will be **true**. In this case, the application should query all albums again. |
+
+## GridPinchMode<sup>23+</sup>
+ 	  	 
+Represents the pinch mode of the grid in the picker.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+    
+| Name                  | Type               | Read-Only| Optional| Description          |
+| ---- | ---- | ---- | ---- | ---- |
+| gridPinchModeType       | [GridPinchModeType](arkts-apis-photoAccessHelper-e.md#gridpinchmodetype23)  | No| Yes| Grid pinch mode. If this parameter is set, the pinch function is supported. Otherwise, the pinch function is not supported.|
+| defaultGridLevel | [GridLevel](arkts-apis-photoAccessHelper-e.md#gridlevel23) | No| Yes| Grid level after the picker is started. The default value is **STANDARD**.|

@@ -46,7 +46,7 @@
 
 ### WindowManager_ErrorCode
 
-```
+```c
 enum WindowManager_ErrorCode
 ```
 
@@ -75,7 +75,7 @@ enum WindowManager_ErrorCode
 
 ### WindowManager_AvoidAreaType
 
-```
+```c
 enum WindowManager_AvoidAreaType
 ```
 
@@ -95,7 +95,7 @@ enum WindowManager_AvoidAreaType
 
 ### WindowManager_WindowType
 
-```
+```c
 enum WindowManager_WindowType
 ```
 

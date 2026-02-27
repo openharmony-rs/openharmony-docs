@@ -39,7 +39,7 @@ Provides APIs to access the result set obtained by querying the RDB store. A res
 
 ### OH_Cursor_GetFloatVectorCount()
 
-```
+```c
 int OH_Cursor_GetFloatVectorCount(OH_Cursor *cursor, int32_t columnIndex, size_t *length)
 ```
 
@@ -66,7 +66,7 @@ Obtains the length of a floating-point array in the specified column of the curr
 
 ### OH_Cursor_GetFloatVector()
 
-```
+```c
 int OH_Cursor_GetFloatVector(OH_Cursor *cursor, int32_t columnIndex, float *val, size_t inLen, size_t *outLen)
 ```
 

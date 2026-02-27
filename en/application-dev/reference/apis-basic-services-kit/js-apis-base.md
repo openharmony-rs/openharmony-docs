@@ -16,8 +16,14 @@ The **Base** module defines the public callback types of ArkTS APIs, including t
 
 ## Modules to Import
 
-```
+ArkTS example:
+```typescript
 import { AsyncCallback, BusinessError, Callback, ErrorCallback } from '@kit.BasicServicesKit';
+```
+JS example:
+
+```typescript
+import base from '@ohos.base';
 ```
 
 ## Callback
@@ -87,12 +93,7 @@ The type of the asynchronous return value is defined by the developer.
 
 ## BusinessError
 
-BusinessError\<T = void> extends Error {
-
-code: number;
-
-data?: T;
-}
+BusinessError\<T = void> extends Error { code: number; data?: T; }
 
 Defines the error parameter.
 

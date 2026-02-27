@@ -112,7 +112,7 @@ capture(setting: PhotoCaptureSetting, callback: AsyncCallback\<void\>): void
 
 | 参数名      | 类型                                         | 必填 | 说明                  |
 | -------- | ------------------------------------------- | ---- | -------------------- |
-| setting  | [PhotoCaptureSetting](arkts-apis-camera-i.md#photocapturesetting) | 是   | 拍照设置。             |
+| setting  | [PhotoCaptureSetting](arkts-apis-camera-i.md#photocapturesetting) | 是   | 拍照设置，传入undefined类型数据按默认设置触发一次拍照处理。            |
 | callback | AsyncCallback\<void\>                        | 是   | 回调函数，用于获取结果。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。  |
 
 **错误码：**
@@ -166,7 +166,7 @@ capture(setting: PhotoCaptureSetting): Promise\<void\>
 
 | 参数名     | 类型                                         | 必填 | 说明      |
 | ------- | ------------------------------------------- | ---- | -------- |
-| setting | [PhotoCaptureSetting](arkts-apis-camera-i.md#photocapturesetting) | 是   | 拍照设置，传入undefined类型数据按默认无参处理。 |
+| setting | [PhotoCaptureSetting](arkts-apis-camera-i.md#photocapturesetting) | 是   | 拍照设置，传入undefined类型数据按默认设置触发一次拍照处理。 |
 
 **返回值：**
 
@@ -213,7 +213,7 @@ function capture(photoOutput: camera.PhotoOutput): void {
 
 on(type: 'photoAvailable', callback: AsyncCallback\<Photo\>): void
 
-注册监听全质量图上报。使用callback异步回调。
+注册监听拍照返回照片上报事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -228,7 +228,7 @@ on(type: 'photoAvailable', callback: AsyncCallback\<Photo\>): void
 | 参数名     | 类型      | 必填 | 说明                                  |
 | -------- | ---------- | --- | ------------------------------------ |
 | type     | string     | 是   | 监听事件，固定为'photoAvailable'，photoOutput创建成功后可监听。 |
-| callback | AsyncCallback\<[Photo](arkts-apis-camera-Photo.md)\> | 是   | 回调函数，用于监听全质量图上报。 |
+| callback | AsyncCallback\<[Photo](arkts-apis-camera-Photo.md)\> | 是   | 回调函数，用于监听拍照返回照片上报事件。 |
 
 **示例：**
 
@@ -254,7 +254,7 @@ function registerPhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): voi
 
 off(type: 'photoAvailable', callback?: AsyncCallback\<Photo\>): void
 
-注销监听全质量图上报。
+注销监听拍照返回照片上报事件。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -283,6 +283,78 @@ function callback(err: BusinessError, photo: camera.Photo): void {
 
 function unRegisterPhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): void {
   photoOutput.off('photoAvailable', callback);
+}
+```
+
+## onCapturePhotoAvailable<sup>23+</sup>
+
+onCapturePhotoAvailable(callback: Callback\<CapturePhoto\>): void
+
+注册监听全质量图和未压缩图。使用callback异步回调。
+
+> **说明：**
+>
+> - 注册监听接口时，不支持在该接口监听的回调方法里调用[offCapturePhotoAvailable](#offcapturephotoavailable23)注销回调。
+>
+> - 拍摄未压缩图（YUV）格式图片时，仅支持使用此接口注册监听。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名     | 类型      | 必填 | 说明                                  |
+| -------- | ---------- | --- | ------------------------------------ |
+| callback | Callback\<[CapturePhoto](arkts-apis-camera-CapturePhoto.md)\> | 是   | 回调函数，用于监听全质量图和未压缩图上报事件。 |
+
+**示例：**
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { image } from '@kit.ImageKit';
+
+function callback(capturePhoto: camera.CapturePhoto): void {
+  let picture: image.Image | image.Picture = capturePhoto.main;
+}
+
+function registerCapturePhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.onCapturePhotoAvailable(callback);
+}
+```
+
+## offCapturePhotoAvailable<sup>23+</sup>
+
+offCapturePhotoAvailable(callback?: Callback\<CapturePhoto\>): void
+
+注销监听全质量图和未压缩图。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名      | 类型                    | 必填 | 说明                                       |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| callback | Callback\<[CapturePhoto](arkts-apis-camera-CapturePhoto.md)\> | 否  | 回调函数，如果指定参数则取消对应callback，callback对象不可是匿名函数，否则取消所有callback。 |
+
+**示例：**
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { image } from '@kit.ImageKit';
+
+function callback(capturePhoto: camera.CapturePhoto): void {
+  let picture: image.Image | image.Picture = capturePhoto.main;
+}
+
+function unRegisterCapturePhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.offCapturePhotoAvailable(callback);
 }
 ```
 
@@ -621,7 +693,7 @@ setMovingPhotoVideoCodecType(codecType: VideoCodecType): void
 
 | 参数名        | 类型                                  | 必填 |  说明                |
 | ------------- |-------------------------------------|-------| ------------        |
-| codecType     | [VideoCodecType](arkts-apis-camera-e.md#videocodectype13) |  是    |获取动态照片短视频编码类型。  |
+| codecType     | [VideoCodecType](arkts-apis-camera-e.md#videocodectype13) |  是    | 动态照片短视频编码类型。  |
 
 **错误码：**
 
@@ -1061,13 +1133,14 @@ function testGetActiveProfile(photoOutput: camera.PhotoOutput): camera.Profile |
 
 ## getPhotoRotation<sup>12+</sup>
 
-getPhotoRotation(deviceDegree: number): ImageRotation
+getPhotoRotation(deviceDegree?: number): ImageRotation
 
 获取拍照旋转角度。
 
-- 设备自然方向：设备默认使用方向，手机为竖屏（充电口向下）。
-- 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度，手机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
-- 屏幕显示方向：需要屏幕显示的图片左上角为第一个像素点为坐标原点。锁屏时与自然方向一致。
+- 设备自然方向：设备默认使用方向。例如，直板机默认使用方向为竖屏（充电口向下）。
+- 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度。例如，直板机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -1077,13 +1150,13 @@ getPhotoRotation(deviceDegree: number): ImageRotation
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | number | 是   | 设备旋转角度，单位度，取值范围：[0, 360]。<br>若入参超过该范围，则取入参除以360的余数。 |
+| deviceDegree | number | 否   | 设备旋转角度，单位度，取值范围：[0, 360]。<br>若入参超过该范围，则取入参除以360的余数。<br>从API version 23开始，入参deviceDegree为可选参数，当不传入参数时，由系统获取deviceDegree进行拍照旋转角度计算。 |
 
 **返回值：**
 
 |      类型      | 说明        |
 | -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 获取拍照旋转角度。若接口调用失败，返回undefined。 |
+| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 返回拍照旋转角度。若接口调用失败，返回undefined。 |
 
 **错误码：**
 
@@ -1091,7 +1164,6 @@ getPhotoRotation(deviceDegree: number): ImageRotation
 
 | 错误码ID   | 错误信息                         |
 |---------|------------------------------|
-| 7400101 | Parameter missing or parameter type incorrect.  |
 | 7400201 | Camera service fatal error.  |
 
 **示例：**
@@ -1111,8 +1183,20 @@ function testGetPhotoRotation(photoOutput: camera.PhotoOutput, deviceDegree : nu
   }
   return photoRotation;
 }
-```
 
+function testGetPhotoRotationWithOutParam(photoOutput: camera.PhotoOutput): camera.ImageRotation {
+  let photoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
+  try {
+    photoRotation = photoOutput.getPhotoRotation();
+    console.info(`Photo rotation is: ${photoRotation}`);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The photoOutput.testGetPhotoRotationWithOutParam call failed. error code: ${err.code}`);
+  }
+  return photoRotation;
+}
+```
 
 ## on('captureStart')<sup>(deprecated)</sup>
 
@@ -1214,7 +1298,8 @@ isPhotoQualityPrioritizationSupported(qualityPrioritization: PhotoQualityPriorit
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import camera from '@kit.CameraKit';
+import { camera } from '@kit.CameraKit';
+
 let photoOutput: camera.PhotoOutput;
 
 function isPhotoQualityPrioritizationSupported(qualityPrioritization: camera.PhotoQualityPrioritization): boolean {
@@ -1260,7 +1345,8 @@ setPhotoQualityPrioritization(qualityPrioritization: PhotoQualityPrioritization)
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import camera from '@kit.CameraKit';
+import { camera } from '@kit.CameraKit';
+
 let photoOutput: camera.PhotoOutput;
 
 function setPhotoQualityPrioritization(qualityPrioritization: camera.PhotoQualityPrioritization): void {

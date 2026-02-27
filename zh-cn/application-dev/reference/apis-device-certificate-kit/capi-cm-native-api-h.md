@@ -37,7 +37,7 @@
 
 ### OH_CertManager_GetUkeyCertificate()
 
-```
+```c
 int32_t OH_CertManager_GetUkeyCertificate(const OH_CM_Blob *keyUri, const OH_CM_UkeyInfo *ukeyInfo, OH_CM_CredentialDetailList *certificateList)
 ```
 
@@ -65,7 +65,7 @@ int32_t OH_CertManager_GetUkeyCertificate(const OH_CM_Blob *keyUri, const OH_CM_
 
 ### OH_CertManager_GetPrivateCertificate()
 
-```
+```c
 int32_t OH_CertManager_GetPrivateCertificate(const OH_CM_Blob *keyUri, OH_CM_Credential *certificate)
 ```
 
@@ -92,7 +92,7 @@ int32_t OH_CertManager_GetPrivateCertificate(const OH_CM_Blob *keyUri, OH_CM_Cre
 
 ### OH_CertManager_GetPublicCertificate()
 
-```
+```c
 int32_t OH_CertManager_GetPublicCertificate(const OH_CM_Blob *keyUri, OH_CM_Credential *certificate)
 ```
 
@@ -119,7 +119,7 @@ int32_t OH_CertManager_GetPublicCertificate(const OH_CM_Blob *keyUri, OH_CM_Cred
 
 ### OH_CertManager_FreeUkeyCertificate()
 
-```
+```c
 void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateList)
 ```
 
@@ -137,7 +137,7 @@ void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateL
 
 ### OH_CertManager_FreeCredential()
 
-```
+```c
 void OH_CertManager_FreeCredential(OH_CM_Credential *certificate)
 ```
 

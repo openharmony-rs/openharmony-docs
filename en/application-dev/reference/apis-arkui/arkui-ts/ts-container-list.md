@@ -9,40 +9,41 @@
 
 The **List** component provides a list container that presents a series of list items arranged in a column with the same width. It supports presentations of the same type of data in a multiple and coherent row style, for example, images or text.
 
-Lazy loading of List loads the child components in the visible area as required. Compared with full loading, lazy loading can improve the app startup speed and reduce the memory usage. The lazy loading capabilities vary when the list is used together with [ForEach ](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach ](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), or [Repeat ](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md).
+Lazy loading of **List** loads the child components in the visible area as required. Compared with full loading, lazy loading can improve the app startup speed and reduce the memory usage. The lazy loading capabilities vary when the **List** component is used together with [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), or [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md).
 
- - When the list is used together with ForEach, all subnodes are created at a time. The nodes within the screen range are laid out and rendered when needed. When a user swipes, the nodes that are out of the screen range are not removed from the tree, and the nodes that are within the screen range are laid out and rendered.
+ - When **List** is used together with **ForEach**, all child nodes are created at a time. The nodes within the screen range are laid out and rendered when needed. When a user swipes, the nodes that are out of the screen range are not removed from the tree, and the nodes that are within the screen range are laid out and rendered.
 
- - When the list is used together with LazyForEach, all nodes within the screen range are created, laid out, and rendered at a time. When a user swipes, the nodes that are out of the screen range are removed from the tree, and the nodes that are within the screen range are created, laid out, and rendered.
+ - When **List** is used together with **LazyForEach**, all nodes within the screen range are created, laid out, and rendered at a time. When a user swipes, the nodes that are out of the screen range are removed from the tree, and the nodes that are within the screen range are created, laid out, and rendered.
 
- - When the list is used together with Repeat with [virtualScroll](./ts-rendering-control-repeat.md#virtualscroll), the lazy loading behavior is the same as that of LazyForEach. When the list is used together with Repeat without virtualScroll, the lazy loading behavior is the same as that of ForEach.
+ - When the **List** component is used together with **Repeat** with [virtualScroll](./ts-rendering-control-repeat.md#virtualscroll), the lazy loading behavior is the same as that of **LazyForEach**. When the **List** component is used together with **Repeat** without **virtualScroll**, the lazy loading behavior is the same as that of **ForEach**.
 
-If a scrollable component is nested in a list component, the scrolling directions are the same, and the main axis size is not set for the list component, the list component loads all child components. As a result, lazy loading does not take effect. In this scenario, you are advised to use the [ListItemGroup](ts-container-listitemgroup.md) component to optimize the performance.
+If a scrollable component is nested in a **List** component, their scrolling directions are the same, and the main axis size is not set for the **List** component, the **List** component loads all child components. As a result, lazy loading does not take effect. In this scenario, you are advised to use the [ListItemGroup](ts-container-listitemgroup.md) component to optimize the performance.
 
-The preloading of the list component refers to that, in addition to loading child components in the visible area, some child components that are not displayed are also loaded in advance. Preloading can reduce frame loss during scrolling and improve smoothness. Preloading takes effect only when lazy loading is used. You can set the number of preloaded subcomponents for the list component using [cachedCount](#cachedcount). By default, one screen of subcomponents above and below the visible area are preloaded (a maximum of 16 rows of subcomponents can be preloaded). When the list component is used together with [ForEach ](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach ](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), or [Repeat ](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md), the preloading capability varies.
+Preloading in **List** refers to loading not only the child components within the visible area but also some invisible child components outside the visible area during idle time. Preloading can reduce frame loss during scrolling and improve smoothness. Preloading takes effect only when lazy loading is used. You can set the number of components to be preloaded for the **List** component using [cachedCount](#cachedcount). By default, child components equivalent to one screen above and below the visible area are preloaded (up to a maximum of 16 rows). The preloading capabilities vary when the **List** component is used together with [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), or [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md).
 
- - When the list component is used together with ForEach and cachedCount is set, in addition to child components in the visible area, child components within the range of cachedCount outside the visible area are pre-arranged in idle timeslots.
+ - When the **List** component is used together with **ForEach** and **cachedCount** is set, in addition to laying out child components within the visible area, child components within the range of **cachedCount** outside the visible area are pre-laid out during idle time.
 
- - When the list component is used together with LazyForEach and cachedCount is set, in addition to child components in the visible area, child components within the range of cachedCount outside the visible area are pre-created and pre-arranged in idle timeslots.
+ - When the **List** component is used together with **LazyForEach** and **cachedCount** is set, in addition to creating and laying out child components within the display area, child components within the range of **cachedCount** outside the display area are pre-created and pre-laid out during idle time.
 
- - When the list component is used together with Repeat with [virtualScroll](./ts-rendering-control-repeat.md#virtualscroll), the preloading behavior is the same as that of LazyForEach. When the list component is used together with Repeat without virtualScroll, the preloading behavior is the same as that of ForEach.
+ - When the **List** component is used together with **Repeat** with [virtualScroll](./ts-rendering-control-repeat.md#virtualscroll), the preloading behavior is the same as that of **LazyForEach**. When the **List** component is used together with **Repeat** without **virtualScroll**, the preloading behavior is the same as that of **ForEach**.
 
 > **NOTE**
 >
 > This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> The component has been bound with gestures to implement functions such as following the finger. For details about how to add custom gestures, see [Enhanced Gesture Interception](ts-gesture-blocking-enhancement.md).
+> The component has been bound with gestures to implement functions such as follow-up scrolling. If you need to add custom gestures, refer to [Gesture Blocking Enhancement](ts-gesture-blocking-enhancement.md).
 
 ## Child Components
 
-Only the [ListItem](ts-container-listitem.md) and [ListItemGroup](ts-container-listitemgroup.md) child components and custom components are supported. When a custom component is used in the List component, you are advised to use ListItem or ListItemGroup as the top-level component of the custom component. You are not advised to set attributes and event methods for the custom component.
-Child components can be dynamically generated using rendering control types [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md). LazyForEach or Repeat is recommended to optimize performance.
+Only the [ListItem](ts-container-listitem.md) and [ListItemGroup](ts-container-listitemgroup.md) child components and custom components are supported. When using custom components inside **List**, you are advised to wrap the custom component with a **ListItem** or **ListItemGroup** as the top-level container. Setting attributes or event methods directly on custom components is not recommended.
+
+Child components can be dynamically generated using rendering control types [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md). **LazyForEach** or **Repeat** is recommended to optimize performance.
 
 > **NOTE**
 >
-> If frame freezing occurs when you process a large number of child components, consider using lazy loading, list item caching, dynamic preloading, component reuse, and layout optimization. For best practices, see [Optimizing Frame Loss for Long List Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-best-practices-long-list).
+> If performance lag occurs when you process a large number of child components, consider using lazy loading, list item caching, dynamic preloading, component reuse, and layout optimization. For best practices, see [Optimizing Frame Loss for Long List Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-best-practices-long-list).
 >
-> From API version 21, the maximum width and height of a single child component of List are 16777216 px. From API version 20 or earlier, the maximum width and height of a single child component of List are 1000000px. If a child component exceeds the maximum width or height, scrolling or display exceptions may occur.
+> Starting from API version 21, the maximum width or height for a single child component inside a **List** container is 16,777,216 px. In API version 20 and earlier versions, the limit was 1,000,000 px. If a child component exceeds the applicable size limit, scrolling or display behavior may become abnormal.
 >
 > Below are the rules for calculating the indexes of the child components of **List**:
 >
@@ -52,7 +53,7 @@ Child components can be dynamically generated using rendering control types [if/
 >
 > - In the **ForEach**, **LazyForEach**, or **Repeat** statement, the indexes of all expanded subnodes are calculated.
 >
-> - After the [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) statements are changed, the index of child nodes is updated.
+> - After changes occur in [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md), index values are updated accordingly for child components.
 >
 > - Each **ListItemGroup** component is taken as a whole and assigned an index, and the indexes of the list items within are not included in the index calculation.
 >
@@ -92,9 +93,9 @@ Defines the options of the **List** component.
 
 | Name      | Type                                   | Read-Only| Optional| Description                                                    |
 | ------------ | ------------------------------------------- | ---- | -- | ------------------------------------------------------------ |
-| initialIndex<sup>7+</sup> | number | No| Yes| Index of the item to be displayed at the start when the list is initially loaded.<br>Default value: **0**<br>**NOTE**<br>If the set value is a negative number or is greater than the index of the last item in the list, the value is invalid. In this case, the default value will be used.<br>From API version 14, if scrollToIndex or scrollEdge without animation in the Scroller controller is called before the first layout after the List component is created (for example, in the onAttach event of the List component), the value of initialIndex will be overwritten.<br>After initialIndex is set, the list starts layout from the child component corresponding to initialIndex. The child components before initialIndex are not involved in layout and the accurate size cannot be calculated. Therefore, the total scrolling offset of the list obtained through the [currentOffset](ts-container-scroll.md#currentoffset) API is estimated and may be inaccurate. You can set [childrenMainSize](#childrenmainsize12) to ensure the accuracy of the total scrolling offset of the list.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| space<sup>7+</sup>        | number \| string                  | No  | Yes| Spacing between list items along the main axis.<br>Default value: **0**<br>If the parameter type is number, the unit is vp.<br>**NOTE**<br>If this parameter is set to a negative number or a value greater than or equal to the length of the list content area, the default value is used.<br>If this parameter is set to a value less than the width of the list divider, the width of the list divider is used as the spacing.<br> Child components of **List** whose **visibility** attribute is set to **None** are not displayed, but the spacing above and below them still takes effect.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| scroller<sup>7+</sup>      | [Scroller](ts-container-scroll.md#scroller) | No  | Yes| Scroller, After being bound to a list, it can be used to control the scrolling of the list.<br>**NOTE**<br>Do not bind the same scroll control object to other scrollable components, such as [ArcList](ts-container-arclist.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md).<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| initialIndex<sup>7+</sup> | number | No| Yes| Index of the item to be displayed at the start when the list is initially loaded.<br>Default value: **0**<br>**NOTE**<br>If the set value is a negative number or is greater than the index of the last item in the list, the value is invalid. In this case, the default value will be used.<br>Since API version 14, if the **scrollToIndex** or **scrollEdge** API without animation in **Scroller** is called after the **List** component is created but before its first layout (for example, in the [onAttach](ts-universal-events-show-hide.md#onattach12) event of the **List** component), the value will override the value of **initialIndex**.<br>After **initialIndex** is set, the list starts layout from the child component corresponding to **initialIndex**. The child components before **initialIndex** are not involved in layout and the exact size cannot be calculated. Therefore, the total scroll offset of the list obtained through the [currentOffset](ts-container-scroll.md#currentoffset) API is estimated and may have errors. You can set [childrenMainSize](#childrenmainsize12) to ensure the accuracy of the total scrolling offset of a list.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| space<sup>7+</sup>        | number&nbsp;\|&nbsp;string                  | No  | Yes| Spacing between list items along the main axis.<br>Default value: **0**<br>If the parameter type is number, the unit is vp.<br>**NOTE**<br>If this parameter is set to a negative number or a value greater than or equal to the length of the list content area, the default value is used.<br>If this parameter is set to a value less than the width of the list divider, the width of the list divider is used as the spacing.<br> Child components of **List** whose **visibility** attribute is set to **None** are not displayed, but the spacing above and below them still takes effect.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| scroller<sup>7+</sup>      | [Scroller](ts-container-scroll.md#scroller) | No  | Yes| Scroller, After being bound to **List**, it can be used to control its scrolling.<br>**NOTE**<br>It cannot be bound to the same scrolling control object as other scrollable components, such as [ArcList](ts-container-arclist.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md).<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## Attributes
 
@@ -130,7 +131,7 @@ Sets the style of the divider for the list items. By default, there is no divide
 
 The divider is drawn between list items along the main axis, and not above the first list item and below the last list item.
 
-In multi-column mode, the start margin of the divider between ListItems is calculated from the start edge of the cross axis of each column. In single-column mode, the start margin of the divider between ListItems is calculated from the start edge of the cross axis of List.
+In multi-column mode, the value of **startMargin** is calculated from the start edge of the cross axis of each column. In single-column mode, it is calculated from the start edge of the cross axis of the list.
 
 When a list item has [polymorphic styles](ts-universal-attributes-polymorphic-style.md) applied, the dividers above and below the pressed child component are not rendered.
 
@@ -144,7 +145,7 @@ When a list item has [polymorphic styles](ts-universal-attributes-polymorphic-st
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ListDividerOptions](#listdivideroptions18) \| null | Yes  | Style of the divider for the list items.<br>Default value: **null**|
+| value  | [ListDividerOptions](#listdivideroptions18) \|&nbsp;null | Yes  | Style of the divider for the list items.<br>Default value: **null**|
 
 ### scrollBar
 
@@ -162,15 +163,15 @@ Sets the scrollbar state.
 
 | Name| Type                                     | Mandatory| Description                                                        |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [BarState](ts-appendix-enums.md#barstate) | Yes  | Scrollbar state.<br>Default value: BarState.Off for API version 9 or earlier, and BarState.Auto for API version 10 or later.|
+| value  | [BarState](ts-appendix-enums.md#barstate) | Yes  | Scrollbar state.<br>In API version 9 and earlier versions, the default value is **BarState.Off**. Since API version 10, the default value is **BarState.Auto**.|
 
 ### cachedCount
 
 cachedCount(value: number)
 
-Number of ListItem or ListItemGroup elements to be preloaded. In lazy loading scenarios, only the ListItem elements above and below the List display area are preloaded. In non-lazy loading scenarios, all elements are loaded. For both lazy and non-lazy loading, only the content within the list display area plus the content equivalent to **cachedCount** outside the display area is laid out. <!--Del-->For details, see [Minimizing White Blocks During Swiping](../../../performance/arkts-performance-improvement-recommendation.md#minimizing-white-blocks-during-swiping).<!--DelEnd-->
+Sets the number of **ListItem** or **ListItemGroup** components to be preloaded (cached). In a lazy loading scenario, only the **cachedCount** rows of **ListItem** components above and below the visible area of the **List** component is preloaded. In a non-lazy loading scenario, all items are loaded at once. For both lazy and non-lazy loading, only the content within the list display area plus the content equivalent to **cachedCount** outside the display area is laid out. <!--Del-->For details, see [Minimizing White Blocks During Swiping](../../../performance/arkts-performance-improvement-recommendation.md#minimizing-white-blocks-during-swiping).<!--DelEnd-->
 
-When **cachedCount** is set for a list, the system preloads and lays out the **cachedCount**-specified number of rows of list items both above and below the currently visible area of the list. When calculating the number of rows for list items, the system takes into account the number of rows from the list items within a list item group. If a list item group does not contain any list items, then the entire list item group is counted as one row.
+When **cachedCount** is set for the list, the system preloads and lays out the **cachedCount**-specified number of rows of list items both above and below the currently visible area of the list. When calculating the number of rows for list items, the system takes into account the number of rows from the list items within a list item group. If a list item group does not contain any list items, then the entire list item group is counted as one row.
 
 When a list is nested with **LazyForEach**, and within **LazyForEach** there is a list item group, **LazyForEach** will create **cachedCount**-specified number of list item groups both above and below the currently visible area of the list.
 
@@ -210,7 +211,7 @@ When **cachedCount** is set for the list, the system preloads and lays out the *
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
 | count  | number | Yes  | Number of list items to be preloaded.<br>Default value: number of nodes visible on the screen, with the maximum value of 16<br>Value range: [0, +∞)|
-| show  | boolean | Yes  | Whether to display the preloaded list items. If this parameter is set to true, the preloaded ListItem is displayed. If this parameter is set to false, the preloaded ListItem is not displayed.<br> Default value: **false**|
+| show  | boolean | Yes  | Whether to display the preloaded list items. If this parameter is set to **true**, the preloaded list items are displayed. If this parameter is set to **false**, the preloaded list items are not displayed.<br> Default value: **false**|
 
 ### cachedCount<sup>22+</sup>
 
@@ -218,17 +219,17 @@ cachedCount(count: number | CacheCountInfo, show: boolean)
 
 Sets the number of list items or list item groups to be cached (preloaded) and specifies whether to display the preloaded nodes.
 
-If the first parameter of the cachedCount attribute is of the number type, count rows of list items are preloaded and laid out above and below the display area in the idle timeslot between frames.
+If the first parameter of the **cachedCount** attribute is of the **number** type, a specified number (specified by **count**) of rows of list items will be preloaded and laid out above and below the visible area during idle frames.
 
-If the first parameter of the cachedCount attribute is of the CacheCountInfo type, when the number of cached rows is less than CacheCountInfo.minCount, the rows are preloaded and laid out in the idle timeslot between frames. When the number of cached rows is greater than CacheCountInfo.maxCount, the nodes that exceed the range are destroyed or reused. When the UI is idle (no animation or user operation), CacheCountInfo.maxCount lines of ListItem are preloaded above and below the display area.
+If the first parameter of the **cachedCount** attribute is of the **CacheCountInfo** type, preloading and layout will occur during idle frames when the number of cached rows is less than **CacheCountInfo.minCount**. When the number of cached rows is greater than **CacheCountInfo.maxCount**, the nodes outside the specified range will  be destroyed or reused. When the UI is idle (no animation or user operation), a specified number (specified by **CacheCountInfo.maxCount**) of rows of list items will be preloaded above and below the visible area.
 
-When calculating the number of ListItem rows, the number of ListItem rows in the ListItemGroup is calculated. If a list item group does not contain any list items, then the entire list item group is counted as one row. This attribute can be combined with the [clip](ts-universal-attributes-sharp-clipping.md#clip12) or [clipContent](ts-container-scrollable-common.md#clipcontent14) attributes to display the preloaded nodes.
+When calculating the number of rows for list items, the system takes into account the number of rows from the list items within a list item group. If a list item group does not contain any list items, then the entire list item group is counted as one row. This attribute can be combined with the [clip](ts-universal-attributes-sharp-clipping.md#clip12) or [clipContent](ts-container-scrollable-common.md#clipcontent14) attributes to display the preloaded nodes.
 
-Default behavior: The count parameter is of the number type by default. The value is set based on the number of nodes displayed on the screen. The maximum value is 16. Preloaded ListItems are not involved in drawing by default.
+Default behavior: The **count** parameter is of the **number** type by default, with its value set based on the number of nodes displayed on the screen, up to a maximum of 16. Preloaded **ListItem** components are not involved in drawing by default.
 
 > **NOTE**
 >
-> You are advised to set cachedCount to n/2 (n indicates the number of list items displayed on one screen). You also need to consider other factors to balance the experience and memory usage. From API version 22 onwards, the maximum and minimum number of cached nodes can be set. You can set the maximum number of cached nodes to a larger value, for example, twice the minimum number of cached nodes. Nodes are created during the idle time of the UI thread, reducing the number of nodes created during preloading and scrolling, improving the scrolling smoothness. For details about the best practice, see [Optimizing the Frame Loss Caused by Slow Loading of Long Lists - Caching List Items](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-best-practices-long-list#section11667144010222).
+> You are advised to set cachedCount to n/2 (n indicates the number of list items displayed on one screen). You also need to consider other factors to balance the experience and memory usage. Starting from API version 22, setting both minimum and maximum cache counts is supported. The maximum cache count can be set to a moderately higher value, such as twice the minimum cache count, to utilize the UI thread's idle time for node creation. This reduces the need to create nodes during scrolling for preloading and enhances scrolling smoothness. For best practices, see [Cache List Items](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-best-practices-long-list#section11667144010222).
 
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 22.
@@ -241,8 +242,8 @@ Default behavior: The count parameter is of the number type by default. The valu
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| count  | number \| [CacheCountInfo](ts-types.md#cachecountinfo22) | Yes  | Number of preloaded ListItems.<br>Value range: [0, +∞)<br>If the parameter type is CacheCountInfo, the parameter indicates the maximum and minimum pre-loaded range.|
-| show  | boolean | Yes  | Whether to display the preloaded list items.<br>true: The preloaded ListItem is displayed.<br>false: The preloaded ListItem is not displayed.|
+| count  | number \| [CacheCountInfo](ts-types.md#cachecountinfo22) | Yes  | Number of preloaded **ListItem** components if the parameter is of the **number** type.<br>Value range: [0, +∞)<br>If the parameter type is CacheCountInfo, the parameter indicates the maximum and minimum preloading range.|
+| show  | boolean | Yes  | Whether to display the preloaded list items.<br>**true**: yes<br>**false**: no|
 
 ### edgeEffect
 
@@ -252,7 +253,7 @@ Sets the effect used when the scroll boundary is reached.
 
 > **NOTE**
 >
-> By default, this component can produce a bounce effect only when there is more than one screen of content. To enable the spring effect, set options of edgeEffect to { alwaysEnabled: true }.
+> By default, this component can produce a bounce effect only when there is more than one screen of content. To produce a bounce effect when there is less than one screen of content, set the **options** parameter of the **edgeEffect** attribute to **{ alwaysEnabled: true }**.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -271,15 +272,15 @@ Sets the effect used when the scroll boundary is reached.
 
 chainAnimation(value: boolean)
 
-Whether to enable the chain linkage effect for the current List component.
+Sets whether to enable the chain linkage effect for the current **List** component.
 
 
 > **NOTE**
 >
-> - During scrolling, the list item being actively dragged by the user's finger is considered the active object, while adjacent items are driven objects. The active object triggers a physics-based spring animation that affects the driven objects.
-> - The driving effect of the chain linkage effect is reflected in the spacing between ListItems. The spacing in the static state can be set by using the space parameter of the List component. If the space parameter is not set and the chain linkage effect is enabled, the spacing is 20 vp by default.
-> - After the chain linkage effect is enabled, the divider of the List component is not displayed.
-> - The chain linkage effect takes effect only when the List component is in single-column mode and the edge effect is of the EdgeEffect.Spring type.
+> - The chain linkage effect refers to the interaction where, during finger swiping, the dragged **ListItem** acts as the driving object, while adjacent items are driven objects. The driving object drives the linkage of the driven objects, following a physics-based spring animation.
+> - The driving effect of the chain linkage effect is reflected in the spacing between **ListItem**s. The spacing in the static state can be set by using the **space** parameter of the **List** component. If the **space** parameter is not set and the chain linkage effect is enabled, the spacing is 20 vp by default.
+> - After the chain linkage effect is enabled, the divider of the **List** component is not displayed.
+> - The chain linkage effect takes effect only when the **List** component is in single-column mode and the edge effect is of the **EdgeEffect.Spring** type.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -319,11 +320,11 @@ Sets the number of columns or rows in the list. If the value is set to the **gut
 
 The rules are as follows:
 
-- If value is of the number type, the number of columns or rows is specified. The column width is obtained by dividing the cross-axis size of the List component by the number of columns.
-- If value is of the LengthConstrain type, the minimum and maximum number of columns or rows are specified. That is, the value parameter of lanes is set to {minLength, maxLength}. The number of lanes (that is, the number of columns) is determined based on the width of the List component to ensure that the column width meets the {minLength, maxLength} restriction during scaling. minLength is preferentially met. That is, the cross axis size of ListItem meets the minimum restriction.
- - If the value parameter of lanes is set to {minLength, maxLength} and the cross-axis size constraint of the parent component is infinite, the list is displayed in one column. The column width of the list is equal to the column width of the largest ListItem in the display area.
+- If the value is of the **number** type, the number of columns or rows is specified. The column width is determined by dividing the cross-axis size of the **List** component by the number of columns.
+- If the value is of the **LengthConstrain** type, the minimum and maximum number of columns or rows are specified. That is, the value parameter of **lanes** is set to** {minLength, maxLength}**. The number of **lanes** (that is, the number of columns) is determined based on the width of the **List** component to ensure that the column width is always in the {minLength, maxLength} range during scaling. The **minLength** condition is prioritized, meaning that the cross-axis size of **ListItem** components is first guaranteed to meet the minimum constraint.
+ - If the **value** parameter of **lane**s is set to **{minLength, maxLength}** and the cross-axis size constraint of the parent component is infinite, the list is displayed in one column. The column width of the list will equal the maximum column width of the **ListItem** within the visible area.
 - Each list item group occupies one row in multi-column mode. Its child list items are arranged based on the **lanes** attribute of the list.
-- When the value parameter of lanes is set to {minLength, maxLength}, the number of columns in ListItemGroup is calculated based on the cross-axis size of ListItemGroup. If the cross-axis width of the list item group is different from that of the list, the number of columns in the list item group may be different from that in the list.
+- When the **value** parameter of **lanes** is set to **{minLength, maxLength}**, the number of columns in **ListItemGroup** is calculated based on the cross-axis size of **ListItemGroup**. If the cross-axis width of the list item group is different from that of the list, the number of columns in the list item group may be different from that in the list.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -335,14 +336,14 @@ The rules are as follows:
 
 | Name              | Type                                                        | Mandatory| Description                                    |
 | -------------------- | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| value                | number \| [LengthConstrain](ts-types.md#lengthconstrain) | Yes  | Number of columns or rows in the list.<br>Default value: **1**<br>Value range: [1, +∞)|
+| value                | number&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) | Yes  | Number of columns or rows in the list.<br>Default value: **1**<br>Value range: [1, +∞)|
 | gutter<sup>10+</sup> | [Dimension](ts-types.md#dimension10)                         | No  | Gap between columns.<br>Default value: **0**<br>Value range: [0, +∞)|
 
 ### lanes<sup>22+</sup>
 
 lanes(value: number | LengthConstrain | ItemFillPolicy, gutter?: Dimension)
 
-Sets the number of columns and the column spacing of the List component. By default, the List component is displayed in one column.
+Sets the number of columns and the column spacing of the **List** component. By default, the **List** component is displayed in one column.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 22.
 
@@ -354,14 +355,14 @@ Sets the number of columns and the column spacing of the List component. By defa
 
 | Name              | Type                                                        | Mandatory| Description                                                        |
 | -------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value                | number \| [LengthConstrain](ts-types.md#lengthconstrain) \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22) | Yes  | Number of columns in the layout of the list component.<br> If this parameter is set to a number, the number of columns is determined by the value of the number type. The value range of the number type is [1, +∞).<br>If this parameter is set to the LengthConstrain type, the number of columns is determined based on the maximum and minimum values in LengthConstrain.<br>If this parameter is set to the ItemFillPolicy type, the number of columns is determined based on the [breakpoint type](../../../ui/arkts-layout-development-grid-layout.md#breakpoints) corresponding to the width of the **List** component. This type takes effect only when the scrolling direction of the list is vertical.|
-| gutter | [Dimension](ts-types.md#dimension10)                         | No  | Gap between columns.<br>Default value: **0**<br>Value range: [0, +∞)  
+| value                | number&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22) | Yes  | Number of columns in the layout of the **List** component.<br> If this parameter is set to a number, the number of columns is determined by this value. The value range of the number type is [1, +∞).<br>If this parameter is set to a value of the **LengthConstrain** type, the number of columns is determined based on the maximum and minimum values specified in **LengthConstrain**.<br>If this parameter is set to a value of the **ItemFillPolicy** type, the number of columns is determined based on the [breakpoint type](../../../ui/arkts-layout-development-grid-layout.md#breakpoints) corresponding to the width of the **List** component. This type takes effect only when the scrolling direction of the list is vertical.|
+| gutter | [Dimension](ts-types.md#dimension10)                         | No  | Gap between columns.<br>Default value: **0**<br>Value range: [0, +∞)|
 
 ### alignListItem<sup>9+</sup>
 
 alignListItem(value: ListItemAlign)
 
-Layout mode of ListItem in the cross axis direction of List when the width of the cross axis of List is greater than the width of the cross axis of ListItem multiplied by lanes plus (lanes – 1) multiplied by gutter.
+Sets the layout mode of list items along the cross axis when the cross-axis width of the list is greater than the value calculated by the following formula: cross-axis width of list items × lanes + (lanes – 1) × gutter.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -379,7 +380,7 @@ Layout mode of ListItem in the cross axis direction of List when the width of th
 
 sticky(value: StickyStyle)
 
-Sets whether to pin the header to the top or the footer to the bottom in the [list item group](ts-container-listitemgroup.md), if set. To support both the pin-to-top and pin-to-bottom features, set **sticky** to **StickyStyle.Header \| StickyStyle.Footer**. From API version 20, the sticky attribute can also be set to StickyStyle.BOTH to support both header sticking and footer sticking.
+Sets whether to pin the header to the top or the footer to the bottom in the [list item group](ts-container-listitemgroup.md), if set. To support both the pin-to-top and pin-to-bottom features, set **sticky** to **StickyStyle.Header \| StickyStyle.Footer**. From API version 20, the **sticky** attribute can also be set to **StickyStyle.BOTH** to enable both sticky header and sticky footer at the same time.
 
 > **NOTE**
 >
@@ -401,9 +402,9 @@ Sets whether to pin the header to the top or the footer to the bottom in the [li
 
 scrollSnapAlign(value: ScrollSnapAlign)
 
-Sets the scroll snap alignment effect for list items. This effect aligns list items to the nearest snap point when scrolling ends.
+Sets the scroll snap alignment effect for list items when scrolling ends.
 
-This API is available only when the heights of list items are the same. During the alignment animation, the scroll operation source type reported by the **onWillScroll** event is **ScrollSource.FLING**.
+This API is available only when the heights of list items are the same. During the alignment animation, the scroll operation source type reported by the [onWillScroll](ts-container-scrollable-common.md#onwillscroll12) event is **ScrollSource.FLING**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -419,7 +420,7 @@ This API is available only when the heights of list items are the same. During t
 
 scrollSnapAnimationSpeed(speed: ScrollSnapAnimationSpeed)
 
-Sets the speed of the snap animation. This parameter takes effect only when the scrolling alignment effect is set.
+Sets the speed of the snap animation for list item scrolling. This parameter takes effect only when the scroll alignment effect is set.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -429,13 +430,13 @@ Sets the speed of the snap animation. This parameter takes effect only when the 
 
 | Name| Type                                         | Mandatory| Description                                                     |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------------------- |
-| speed  | [ScrollSnapAnimationSpeed](#scrollsnapanimationspeed22) | Yes  | Speed of the scrolling animation.<br>Default value: ScrollSnapAnimationSpeed.NORMAL|
+| speed  | [ScrollSnapAnimationSpeed](#scrollsnapanimationspeed22) | Yes  | Speed of the snap animation for listing scrolling.<br>Default value: **ScrollSnapAnimationSpeed.NORMAL**|
 
 ### enableScrollInteraction<sup>10+</sup>
 
 enableScrollInteraction(value: boolean)
 
-Sets whether to support the scrolling gesture.
+Sets whether to support the scroll gesture.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -445,17 +446,17 @@ Sets whether to support the scrolling gesture.
 
 | Name| Type   | Mandatory| Description                               |
 | ------ | ------- | ---- | ----------------------------------- |
-| value  | boolean | Yes  | Whether to support scroll gestures. Whether to enable scroll gestures. With the value **true**, scrolling via finger or mouse is enabled. With the value **false**, scrolling via finger or mouse is disabled, but this does not affect the scrolling APIs of the [Scroller](ts-container-scroll.md#scroller).<br>Default value: **true**|
+| value  | boolean | Yes  | Whether to support the scroll gesture. With the value **true**, scrolling via finger or mouse is enabled. With the value **false**, scrolling via finger or mouse is disabled, but this does not affect the scrolling APIs of the [Scroller](ts-container-scroll.md#scroller).<br>Default value: **true**|
 
 > **NOTE**
 >
-> The component cannot be scrolled by dragging the mouse.
+> The component cannot be scrolled through mouse press-and-drag operations.
 
 ### nestedScroll<sup>10+</sup>
 
 nestedScroll(value: NestedScrollOptions)
 
-Sets the nested scrolling mode in the forward and backward directions to implement scrolling association with the parent component.
+Sets the nested scrolling mode in the forward and backward directions to implement scrolling linkage with the parent component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -465,13 +466,13 @@ Sets the nested scrolling mode in the forward and backward directions to impleme
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| value  | [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10) | Yes  | Nested scrolling options.<br>Default value: { scrollForward: NestedScrollMode.SELF_ONLY, scrollBackward: NestedScrollMode.SELF_ONLY }|
+| value  | [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10) | Yes  | Nested scrolling options.<br>Default value: **{ scrollForward: NestedScrollMode.SELF_ONLY, scrollBackward: NestedScrollMode.SELF_ONLY }**|
 
 ### friction<sup>10+</sup>
 
 friction(value: number | Resource)
 
-Friction coefficient, which takes effect when you manually scroll the scrollable area. This parameter affects only the inertial scrolling process. A value less than or equal to 0 evaluates to the default value.
+Sets the friction coefficient. It applies only to gestures in the scrolling area, and it affects only the inertial scrolling process. A value less than or equal to 0 evaluates to the default value.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -481,7 +482,7 @@ Friction coefficient, which takes effect when you manually scroll the scrollable
 
 | Name| Type                                                | Mandatory| Description                                                        |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number \| [Resource](ts-types.md#resource) | Yes  | Friction coefficient.<br>Default value: 0.6 for non-wearable devices and 0.9 for wearable devices.<br>For non-wearable devices, the default value is 0.7 since API version 11.<br>For non-wearable devices, the default value is 0.75 since API version 12.|
+| value  | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Friction coefficient.<br>Default value: **0.6** for non-wearable devices and **0.9** for wearable devices.<br>Since API version 11, the default value for non-wearable devices is **0.7**.<br>Since API version 12, the default value for non-wearable devices is **0.75**.|
 
 ### contentStartOffset<sup>11+</sup>
 
@@ -489,7 +490,7 @@ contentStartOffset(value: number)
 
 Sets the offset from the start of the list content to the boundary of the list display area.
 
-If the sum of contentStartOffset and contentEndOffset exceeds the length of the list content area, contentStartOffset and contentEndOffset are set to 0.
+If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length of the list content area, both offsets are reset to **0**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -499,15 +500,15 @@ If the sum of contentStartOffset and contentEndOffset exceeds the length of the 
 
 | Name| Type  | Mandatory| Description                                           |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| value  | number | Yes  | Offset from the start of the list content to the boundary of the list display area.<br>Default value: **0**<br>Unit: vp<br>**NOTE**<br>If this parameter is set to a negative value, the default value is used.|
+| value  | number | Yes  | Offset from the start of the list content to the boundary of the list display area.<br>Default value: **0**<br>Unit: vp<br>**NOTE**<br>If the set value is a negative number, the default value will be used.|
 
 ### contentStartOffset<sup>22+</sup>
 
 contentStartOffset(offset: number | Resource)
 
-Sets the offset from the start of the list content to the boundary of the list display area. Compared with [contentStartOffset<sup>11+</sup>](#contentstartoffset11), the parameter name is changed to offset and the resource type is supported.
+Sets the offset from the start of the list content to the boundary of the list display area. Compared with [contentStartOffset<sup>11+</sup>](#contentstartoffset11), the parameter name is changed to **offset** and the Resource type is supported.
 
-If the sum of contentStartOffset and contentEndOffset exceeds the length of the list content area, contentStartOffset and contentEndOffset are set to 0.
+If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length of the list content area, both offsets are reset to **0**.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -517,7 +518,7 @@ If the sum of contentStartOffset and contentEndOffset exceeds the length of the 
 
 | Name| Type  | Mandatory| Description                                           |
 | ------ | ------ | ---- | ----------------------------------------------- |
-| offset  | number \| [Resource](ts-types.md#resource) | Yes  | Offset from the start of the list content to the boundary of the list display area.<br>Default value: **0**<br>Unit: vp<br>If the value is abnormal, for example, a negative number or a non-digit resource, the default value is used.|
+| offset  | number \| [Resource](ts-types.md#resource) | Yes  | Offset from the start of the list content to the boundary of the list display area.<br>Default value: **0**<br>Unit: vp<br>Invalid values (negative numbers or non-numeric Resource values) are treated as the default value.|
 
 ### contentEndOffset<sup>11+</sup>
 
@@ -525,7 +526,7 @@ contentEndOffset(value: number)
 
 Sets the offset from the end of the list content to the boundary of the list display area.
 
-If the sum of contentStartOffset and contentEndOffset exceeds the length of the list content area, contentStartOffset and contentEndOffset are set to 0.
+If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length of the list content area, both offsets are reset to **0**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -535,15 +536,15 @@ If the sum of contentStartOffset and contentEndOffset exceeds the length of the 
 
 | Name| Type  | Mandatory| Description                                         |
 | ------ | ------ | ---- | --------------------------------------------- |
-| value  | number | Yes  | Offset from the end of the list content to the boundary of the list display area.<br>Default value: **0**<br>Unit: vp<br>**NOTE**<br>If the value is a negative number, the default value is used.|
+| value  | number | Yes  | Offset from the end of the list content to the boundary of the list display area.<br>Default value: **0**<br>Unit: vp<br>**NOTE**<br>If the set value is a negative number, the default value will be used.|
 
 ### contentEndOffset<sup>22+</sup>
 
 contentEndOffset(offset: number | Resource)
 
-Sets the offset from the end of the list content to the boundary of the list display area. Compared with [contentEndOffset<sup>11+</sup>](#contentendoffset11), the parameter name is changed to offset and the resource type is supported.
+Sets the offset from the end of the list content to the boundary of the list display area. Compared with [contentEndOffset<sup>11+</sup>](#contentendoffset11), the parameter name is changed to **offset** and the Resource type is supported.
 
-If the sum of contentStartOffset and contentEndOffset exceeds the length of the list content area, contentStartOffset and contentEndOffset are set to 0.
+If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length of the list content area, both offsets are reset to **0**.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -553,7 +554,7 @@ If the sum of contentStartOffset and contentEndOffset exceeds the length of the 
 
 | Name| Type  | Mandatory| Description                                         |
 | ------ | ------ | ---- | --------------------------------------------- |
-| offset  | number \| [Resource](ts-types.md#resource) | Yes  | Offset from the end of the list content to the boundary of the list display area.<br>Default value: **0**<br>Unit: vp<br>If the value is abnormal, for example, a negative number or a non-digit resource, the default value is used.|
+| offset  | number \| [Resource](ts-types.md#resource) | Yes  | Offset from the end of the list content to the boundary of the list display area.<br>Default value: **0**<br>Unit: vp<br>Invalid values (negative numbers or non-numeric Resource values) are treated as the default value.|
 
 ### childrenMainSize<sup>12+</sup>
 
@@ -562,10 +563,10 @@ childrenMainSize(value: ChildrenMainSize)
 Sets the size information of the child components of a **List** component along the main axis.
 
 > **NOTE**
-> - This attribute provides the size information of all child components in the main axis direction for the List component. This ensures that the List component can maintain the accuracy of the scrolling position when the main axis sizes of child components are inconsistent, child components are added or deleted, or [scrollToIndex](ts-container-scroll.md#scrolltoindex) is used. In this way, [scrollTo](ts-container-scroll.md#scrollto) can accurately jump to the specified position, [currentOffset](ts-container-scroll.md#currentoffset) can obtain the accurate scrolling position, and the built-in scroll bar can be smoothly moved without jump.
-> - If the child component is ListItemGroup, the overall size of ListItemGroup in the main axis direction needs to be accurately calculated based on the number of columns of ListItemGroup, the spacing between ListItem in ListItemGroup in the main axis direction, and the size of the header, footer, and ListItem in ListItemGroup, and then the size is transferred to the List component.
-> - If the child component contains ListItemGroup, the [childrenMainSize](./ts-container-listitemgroup.md#childrenmainsize12) attribute must be set for each ListItemGroup. The List component and each ListItemGroup component must be bound to a ChildrenMainSize object through the childrenMainSize attribute interface in one-to-one mode.
-> - When LazyForEach is used to generate child components in the multi-column scenario, ensure that LazyForEach generates all ListItemGroup components or all ListItem components.
+> - This attribute provides the **List** component with the size of all child components in the main-axis direction. This ensures that the **List** component can maintain the accuracy of the scrolling position in scenarios such as varying main-axis sizes among child components, adding or removing child components, or using [scrollToIndex](ts-container-scroll.md#scrolltoindex). In this way, [scrollTo](ts-container-scroll.md#scrollto) can accurately jump to the specified position, [currentOffset](ts-container-scroll.md#currentoffset) can obtain the accurate scroll position, and the built-in scroll bar can be smoothly moved without jumps.
+> - If a child component is **ListItemGroup**, the overall size of **ListItemGroup** in the main-axis direction needs to be accurately calculated based on the column count of **ListItemGroup**, the spacing between list items in **ListItemGroup** in the main-axis direction, and the size of the header, footer, and **ListItem** components in **ListItemGroup**. This calculated size must then be passed to the **List** component.
+> - If a child component contains **ListItemGroup** components, the [childrenMainSize](./ts-container-listitemgroup.md#childrenmainsize12) attribute must be set for each **ListItemGroup** component. The **List** component and each **ListItemGroup** component must be bound to a **ChildrenMainSize** object through the **childrenMainSize** attribute in one-to-one mode.
+> - For a multi-column list where child components are generated using **LazyForEach**, ensure that **LazyForEach** generates either all **ListItemGroup** components or all **ListItem** components.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -575,13 +576,13 @@ Sets the size information of the child components of a **List** component along 
 
 | Name    | Type  | Mandatory| Description                           |
 | ---------- | ------ | ---- | ------------------------------- |
-| value | [ChildrenMainSize](ts-container-scrollable-common.md#childrenmainsize12) | Yes  | This object is used to maintain the size information of child components in the main axis direction.|
+| value | [ChildrenMainSize](ts-container-scrollable-common.md#childrenmainsize12) | Yes  | Size information of child components in the main axis direction.|
 
 ### maintainVisibleContentPosition<sup>12+</sup>
 
 maintainVisibleContentPosition(enabled: boolean)
 
-Sets whether the visible content position should remain unchanged when data is inserted or deleted above the visible area.
+Sets whether to maintain the visible content's position when data is inserted or deleted outside the display area of the component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -591,19 +592,19 @@ Sets whether the visible content position should remain unchanged when data is i
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enabled  | boolean | Yes  | Whether the visible content position should remain unchanged when data is inserted or deleted above the visible area.<br>Default value: **false**<br>**false**: The visible content position will change when data is inserted or deleted. **true**: The visible content position remains unchanged when data is inserted or deleted.|
+| enabled  | boolean | Yes  | Whether to maintain the visible content's position when data is inserted or deleted outside the visible area of the component.<br>Default value: **false**<br>**false**: The visible content position will change when data is inserted or deleted. **true**: The visible content position remains unchanged when data is inserted or deleted.|
 
 > **NOTE**
-> - The position of visible content can remain unchanged only when LazyForEach is used to insert or delete data outside the display area and this attribute is set to true. When ForEach is used to insert or delete data, or LazyForEach is used to reload data, the position of visible content changes accordingly even if the maintainVisibleContentPosition attribute is set to true.
-> - From API version 20, if [Repeat ](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) is used in the lazy loading scenario, the content position remains unchanged even if the maintainVisibleContentPosition attribute is set to true when data is inserted or deleted outside the display area.
-> - When **maintainVisibleContentPosition** is set to **true**, inserting or deleting data above the visible area will trigger **onDidScroll** and **onScrollIndex** events.
+> - The visible content position will remain unchanged if this attribute is set to **true** only when **LazyForEach** is used to insert or delete data outside the visible area. If **ForEach** is used to insert or delete data, or if **LazyForEach** is used for data reloading, the visible content position will change even if **maintainVisibleContentPosition** is set to **true**.
+> - Since API version 20, if [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) is used for lazy loading, the position of the visible content remains unchanged when data is inserted or deleted outside the visible area even if the **maintainVisibleContentPosition** attribute is set to **true**.
+> - When **maintainVisibleContentPosition** is set to **true**, inserting or deleting data above the visible area will trigger [onDidScroll](ts-container-scrollable-common.md#ondidscroll12) and **onScrollIndex** events.
 > - In a multi-column scenario, setting **maintainVisibleContentPosition** to **true** allows you to insert or delete entire rows of data while keeping the visible content position unchanged. If the insertion or deletion does not involve entire rows, however, the visible content position will still change.
 
 ### stackFromEnd<sup>19+</sup>
 
 stackFromEnd(enabled: boolean)
 
-Sets whether the list's layout starts from the bottom (end) rather than the top (beginning).
+Whether the list's layout starts from the bottom (end) rather than the top (beginning).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -618,13 +619,13 @@ Sets whether the list's layout starts from the bottom (end) rather than the top 
 > **NOTE**
 > - When **stackFromEnd** is set to **true**, the following rules apply:<br>If the content of the **List** component is shorter than the component height, the content will be aligned to the bottom of the component.
 > - If the height of a list item in the visible area changes, or if a new list item is inserted, the list items above the changed or inserted item will move upwards to accommodate the new layout.
-> - When stackFromEnd is set to true, the default value of initialIndex in [ListOptions](#listoptions18) is the total number of items minus 1.
+> - When **stackFromEnd** is set to **true**, the default value of **initialIndex** in [ListOptions](#listoptions18) is the total number of items minus 1.
 
 ### focusWrapMode<sup>20+</sup>
 
 focusWrapMode(mode: Optional\<FocusWrapMode\>)
 
-Sets the focus movement mode of the arrow keys.
+Sets the focus wrap mode for arrow keys.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -634,7 +635,7 @@ Sets the focus movement mode of the arrow keys.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| mode   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[FocusWrapMode](ts-appendix-enums.md#focuswrapmode20)\> | Yes  | Focus movement mode of the cross-axis direction arrow keys.<br>Default value: FocusWrapMode.DEFAULT<br>**NOTE**<br>If the value is abnormal, the default value is used. That is, the cross-axis direction arrow keys cannot move to the next line.|
+| mode   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[FocusWrapMode](ts-appendix-enums.md#focuswrapmode20)\> | Yes  | Focus wrap mode for cross-axis arrow keys.<br>Default value: **FocusWrapMode.DEFAULT**<br>**NOTE**<br>Abnormal values are treated as the default value, meaning that cross-axis arrow keys cannot wrap.|
 
 ### syncLoad<sup>20+</sup>
 
@@ -650,15 +651,33 @@ Sets whether to synchronously load all child components in the list.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| enable   | boolean | Yes  | Whether to synchronously load all child components in the list.<br>true: synchronous loading; false: asynchronous loading. Default value: **true**.<br>**NOTE**<br>When this parameter is set to false, in the first display and scrollToIndex redirection scenarios without animation, if the time consumed by the frame layout exceeds 50 ms, the child components that have not been laid out in the list are delayed to the next frame for layout.|
+| enable   | boolean | Yes  | Whether to synchronously load all child components in the list.<br>**true**: yes; **false**: no Default value: **true**<br>**NOTE**<br>When this parameter is set to **false**, in the first display or **scrollToIndex** jumps without animation, if the time consumed by the frame layout exceeds 50 ms, the child components that have not been laid out in the list are delayed to the next frame for layout.|
+
+### editModeOptions<sup>23+</sup>
+
+editModeOptions(options?: EditModeOptions)
+
+Configures the options of the edit mode.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                        | Mandatory| Description                                                        |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| options| [EditModeOptions](ts-container-scrollable-common.md#editmodeoptions23)  | No  | Edit mode options.|
 
 ### editMode<sup>(deprecated)</sup>
 
 editMode(value: boolean)
 
-Sets whether to enable edit mode. For details about how to delete selected list items, see [Example 3](#example-3-setting-the-editable-mode).
+Sets whether to enable edit mode. For details about how to delete selected list items, see [Example 3](#example-3-setting-the-edit-mode).
 
-This parameter is deprecated since API version 9 and has no replacement.
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. No substitute is provided.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -666,7 +685,25 @@ This parameter is deprecated since API version 9 and has no replacement.
 
 | Name| Type  | Mandatory| Description                                              |
 | ------ | ------ | ---- | -------------------------------------------------- |
-| value  | boolean | Yes  | Whether to enable edit mode.<br>Default value: false, indicating that the current list component is not in the editable mode.|
+| value  | boolean | Yes  | Whether to enable edit mode.<br>Default value: **false** (the edit mode is disabled).|
+
+### supportEmptyBranchInLazyLoading<sup>23+</sup>
+
+supportEmptyBranchInLazyLoading(supported: boolean | undefined)
+
+Defines whether the **List** component supports the generation of empty branch nodes that do not contain any child components using the **if/else** rendering control syntax in **LazyForEach** or **Repeat**. If this attribute is not set, empty branch nodes are not supported. This attribute cannot be updated after being set. Therefore, you cannot switch between the behavior of supporting empty branches and the behavior of not supporting empty branches after setting this attribute.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                              |
+| ------ | ------ | ---- | -------------------------------------------------- |
+| supported  | boolean \| undefined | Yes  | Whether the current **List** component supports the use of the [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) rendering syntax in [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) or [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) to generate an empty branch node that contains no child component.<br>**true**: yes; **false**: no<br>If the value is **undefined**, it is processed as **false**.|
 
 ## ListItemAlign<sup>9+</sup>
 
@@ -686,7 +723,7 @@ Sets the alignment mode of child components in the cross-axis direction of the l
 
 ## StickyStyle<sup>9+</sup>
 
-Enumerated values of the ListItemGroup sticky effect.
+Enumerates the sticky styles.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -695,7 +732,7 @@ Enumerated values of the ListItemGroup sticky effect.
 | None   | 0 | In the **ListItemGroup** component, the header is not pinned to the top, and the footer is not pinned to the bottom.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | Header | 1 | In the **ListItemGroup** component, the header is pinned to the top, and the footer is not pinned to the bottom.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
 | Footer | 2 | In the **ListItemGroup** component, the footer is pinned to the bottom, and the header is not pinned to the top.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
-| BOTH<sup>20+</sup> | 3 | The header and footer of ListItemGroup are sticky.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 20.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| BOTH<sup>20+</sup> | 3 | In the **ListItemGroup** component, the header is pinned to the top, and the footer is pinned to the bottom.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 20.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## ScrollSnapAlign<sup>10+</sup>
 
@@ -709,12 +746,12 @@ Enumerates the alignment modes of list items when scrolling ends.
 | ------ | ------ | ---------------------------------------- |
 | NONE   | 0 | No alignment. This is the default value.           |
 | START  | 1 | The first item in the view is aligned at the start of the list.<br>**NOTE**<br>When the list hits the end, the items at the end must be completely displayed. In this case, the items at the start may not be aligned.|
-| CENTER | 2 | The middle items in the view are aligned in the center of the list.<br>**NOTE**<br>The top and end items can be aligned in the center of the list, and the list may be blank.|
+| CENTER | 2 | The middle items in the view are aligned in the center of the list.<br>**NOTE**<br>The top and end items can be aligned to the center of the list. In this case, which may cause empty space to be visible in the list display.|
 | END    | 3 | The last item in the view is aligned at the end of the list.<br>**NOTE**<br>When the list hits the start, the items at the start must be completely displayed. In this case, the items at the end may not be aligned.|
 
 ## ScrollSnapAnimationSpeed<sup>22+</sup>
 
-Enumerates speeds of the snap animation.
+Enumerates speeds of the snap animation for list scrolling.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -722,8 +759,8 @@ Enumerates speeds of the snap animation.
 
 | Name    |  Value | Description                                    |
 | ------ | ------ | ---------------------------------------- |
-| NORMAL   | 0 | By default, the animation speed of a list is limited. This mode is usually used when a list item is large and you need to swipe to scroll one list item.           |
-| SLOW  | 1 | The list limit animation is slow. It is usually used when the list size is small and multiple list items need to be scrolled.|
+| NORMAL   | 0 | Default snap animation speed for the list, typically used when list items are large and scrolling moves one item per swipe.           |
+| SLOW  | 1 | Slower snap animation speed, typically used when list items are small and scrolling moves multiple items per swipe.|
 
 ## CloseSwipeActionOptions<sup>11+</sup>
 
@@ -753,10 +790,10 @@ Defines the divider style of the list or list item group.
 
 | Name    | Type    | Read-Only| Optional| Description                  |
 | ------- | -------- | ---- | -- | ---------------------- |
-| strokeWidth<sup>7+</sup> | [Length](ts-types.md#length) | No  | No| Width of the divider.<br>Unit: vp<br>**NOTE**<br>If this parameter is set to a negative number, a percentage, or a value greater than or equal to the length of the list content area, the value 0 is used.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| strokeWidth<sup>7+</sup> | [Length](ts-types.md#length) | No  | No| Width of the divider.<br>Unit: vp<br>**NOTE**<br>If this parameter is set to a negative number, a percentage, or a value greater than or equal to the length of the list content area, the value **0** will be used.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | color<sup>7+</sup> | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes| Color of the divider.<br>Default value: **0x08000000**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| startMargin<sup>7+</sup> | [Length](ts-types.md#length) | No  | Yes| Distance between the divider and the start edge of the list.<br>Default value: **0**<br>Unit: vp<br>**NOTE**<br>If this parameter is set to a negative number or a percentage, the default value is used.<br>If the sum of endMargin and startMargin exceeds the column width, both startMargin and endMargin are set to 0.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| endMargin<sup>7+</sup> | [Length](ts-types.md#length) | No  | Yes| Distance between the divider and the end edge of the list.<br>Default value: **0**<br>Unit: vp<br> **NOTE**<br>If this parameter is set to a negative number or a percentage, the default value is used.<br>If the sum of endMargin and startMargin exceeds the column width, both startMargin and endMargin are set to 0.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| startMargin<sup>7+</sup> | [Length](ts-types.md#length) | No  | Yes| Distance between the divider and the start edge of the list.<br>Default value: **0**<br>Unit: vp<br>**NOTE**<br>If this parameter is set to a negative number or a percentage, the default value will be used.<br>If **endMargin** and **startMargin** add up to a value that exceeds the column width, they will be set to **0**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| endMargin<sup>7+</sup> | [Length](ts-types.md#length) | No  | Yes| Distance between the divider and the end edge of the list.<br>Default value: **0**<br>Unit: vp<br> **NOTE**<br>If this parameter is set to a negative number or a percentage, the default value will be used.<br>If **endMargin** and **startMargin** add up to a value that exceeds the column width, they will be set to **0**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## Events
 
@@ -770,7 +807,7 @@ Triggered when a child component enters or leaves the list display area. During 
 
 When the list edge scrolling effect is the spring effect, the **onScrollIndex** event is not triggered when the user scrolls the list to the edge or releases the list to rebound.
 
-This event is triggered once when the list is initialized and when the index of the first list item or the next list item in the list display area changes.
+This event is triggered once when the list is initialized and when the index of the first child component or the next child component in the list display area changes.
 
 Since API version 10, this event is also triggered when the child component in the center of the list display area changes.
 
@@ -834,20 +871,20 @@ When the list edge scrolling effect is the spring effect, this event is triggere
 
 onScrollFrameBegin(event: OnScrollFrameBeginCallback)
 
-When this API is called back, the event parameter passes the amount of the upcoming scrolling. The event processing function can calculate the actual amount of scrolling required based on the application scenario and return the actual amount of scrolling as the return value of the event processing function. The list scrolls according to the actual amount of scrolling returned.
+When this API is called back, the event parameter passes the scroll offset that is about to occur. The event processing function can calculate the actually required scroll offset based on the application scenario and return it as the return value. The list will then scroll according to this returned actual scroll offset.
 
 If **listDirection** is set to **Axis.Vertical**, the return value is the amount by which the list needs to scroll in the vertical direction. If **listDirection** is set to **Axis.Horizontal**, the return value is the amount by which the list needs to scroll in the horizontal direction.
 
-This event is triggered when any of the following conditions is met:
+This event is triggered when either of the following conditions is met:
 
-1. Scrolling is triggered by user interaction (such as finger sliding and keyboard and mouse operations).
-2. The list scrolls inertia.
-3. Scrolling is triggered by calling the [fling](ts-container-scroll.md#fling12) API.
+1. Scrolling is initiated by user interaction (for example, finger swipe, keyboard, or mouse operation).
+2. The **List** component scrolls by inertia.
+3. Call the [fling](ts-container-scroll.md#fling12) API to trigger scrolling.
 
-This event is not triggered when any of the following conditions is met:
+This event is not triggered in the following scenarios:
 
-1. Scrolling control APIs other than [fling](ts-container-scroll.md#fling12) are called.
-2. The out-of-bounds bounce effect is supported.
+1. A scroll control API other than [fling](ts-container-scroll.md#fling12) is called.
+2. The out-of-bounds bounce effect is active.
 3. The scrollbar is dragged.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
@@ -878,13 +915,13 @@ Triggered when the list starts scrolling initiated by the user's finger dragging
 
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ------ | ------|
-| event | () => void | Yes| Callback triggered when the list starts to scroll.|
+| event | () => void | Yes| Callback invoked when the list starts scrolling.|
 
 ### onScrollStop
 
 onScrollStop(event: () => void)
 
-Triggered when the list stops scrolling This event is triggered when the sliding stops after the user's finger leaves the screen. This event is also triggered when the animation contained in the scrolling triggered by [Scroller](ts-container-scroll.md#scroller) stops.
+Triggered when the list stops scrolling after the user's finger leaves the screen. This event is also triggered when the animation contained in the scrolling triggered by [Scroller](ts-container-scroll.md#scroller) stops.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -919,15 +956,15 @@ Triggered when a list item moves.
 
 | Type   | Description          |
 | ------- | -------------- |
-| boolean | Whether the item is moved. If the return value is true, the list element is moved. If the return value is false, the list element is not moved.|
+| boolean | Whether the item is moved. If the return value is **true**, the list item is moved. If the return value is **false**, the list item is not moved.|
 
 ### onItemDragStart<sup>8+</sup>
 
-onItemDragStart(event: (event: ItemDragInfo, itemIndex: number) => ((() => any) \| void))
+onItemDragStart(event: OnItemDragStartCallback)
 
 Triggered when a list item starts to be dragged.
 
-The automatic scrolling of the list cannot be triggered when the list is dragged to the edge of the list. You can use the [onMove](./ts-universal-attributes-drag-sorting.md#onmove) API of ForEach, LazyForEach, or Repeat to implement this effect. For details, see [Example 12: Implementing Dragging with OnMove](#example-12-implementing-dragging-with-onmove). However, note that the [onMove](./ts-universal-attributes-drag-sorting.md#onmove) API does not support cross-ListItemGroup dragging.
+Automatic scrolling of the list cannot be triggered when a list item is dragged to the edge of the list. You can use the [onMove](./ts-universal-attributes-drag-sorting.md#onmove) API of **ForEach**, **LazyForEach**, or **Repeat** to implement this effect. For details, see [Example 12: Implementing Dragging with OnMove](#example-12-implementing-dragging-with-onmove). However, note that the [onMove](./ts-universal-attributes-drag-sorting.md#onmove) API does not support cross-**ListItemGroup** dragging.
 
 >**NOTE**
 >
@@ -941,14 +978,13 @@ The automatic scrolling of the list cannot be triggered when the list is dragged
 
 | Name   | Type                                                     | Mandatory| Description                  |
 | --------- | --------------------------------------------------------- | ---- | ---------------------- |
-| event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo) | Yes  | Information about the drag point.        |
-| itemIndex | number                                                    | Yes  | Index of the dragged item.|
+| event     | [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23) | Yes  | Callback triggered when the dragging of a list item starts.<br> In API version 22 and earlier versions, the parameter type is (event: ItemDragInfo, itemIndex: number) => (() => any) \| void. For details about the **event** and **itemIndex** parameters, see [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23).|
 
 ### onItemDragEnter<sup>8+</sup>
 
 onItemDragEnter(event: (event: ItemDragInfo) => void)
 
-Called when the dragged list element is within the list range.
+Called when a dragged list item enters the list.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -964,7 +1000,7 @@ Called when the dragged list element is within the list range.
 
 onItemDragMove(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number) => void)
 
-Called when the dragged list element is moved within the list range.
+Called when a dragged list item moves in the list.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -982,7 +1018,7 @@ Called when the dragged list element is moved within the list range.
 
 onItemDragLeave(event: (event: ItemDragInfo, itemIndex: number) => void)
 
-Called when the dragged list element is out of the list range.
+Called when a dragged list item leaves the list.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -999,9 +1035,9 @@ Called when the dragged list element is out of the list range.
 
 onItemDrop(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number, isSuccess: boolean) => void)
 
-The list bound to this event can be used as the drag release target. This event is triggered when the drag stops within the list range.
+Triggered when the dragged item is dropped on the drop target of the list.
 
-During cross-list drag, if onItemDrop is bound to the position where the drag is released, the value of isSuccess is true. Otherwise, the value of isSuccess is false. During dragging within a list, **isSuccess** is the return value of the **onItemMove** event.
+During dragging across lists, **isSuccess** is set to **true** if the drop target is bound to **onItemDrop**. Otherwise, **isSuccess** is set to **false**. During dragging within a list, **isSuccess** is the return value of the **onItemMove** event.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1014,7 +1050,7 @@ During cross-list drag, if onItemDrop is bound to the position where the drag is
 | event       | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo) | Yes  | Information about the drag point.|
 | itemIndex   | number                                                    | Yes  | Initial position of the dragged item.|
 | insertIndex | number                                                    | Yes  | Index of the position to which the dragged item is dropped.|
-| isSuccess   | boolean                                                   | Yes  | Whether the release is successful. If the return value is true, the list element is successfully released. If the return value is false, the list element is not successfully released. |
+| isSuccess   | boolean                                                   | Yes  | Whether the dragged item is successfully dropped. If the return value is **true**, the list item is successfully dropped. If the return value is **false**, the list item is not successfully dropped. |
 
 ### onScrollVisibleContentChange<sup>12+</sup>
 onScrollVisibleContentChange(handler: OnScrollVisibleContentChangeCallback)
@@ -1041,7 +1077,9 @@ onItemDelete(event: (index: number) => boolean)
 
 Triggered when a list item is deleted.
 
-This API has been deprecated since API version 9 and has no substitute.
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. No substitute is provided.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1062,7 +1100,9 @@ onScroll(event: (scrollOffset: number, scrollState: [ScrollState](#scrollstate))
 
 Triggered when the list scrolls.
 
-This API is deprecated since API version 12. You are advised to use [onDidScroll](ts-container-scrollable-common.md#ondidscroll12) instead.
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 12. You are advised to use [onDidScroll](ts-container-scrollable-common.md#ondidscroll12) instead.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -1078,7 +1118,7 @@ This API is deprecated since API version 12. You are advised to use [onDidScroll
 
 ## ScrollState
 
-Scrolling state.
+Enumerates the scrolling states.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -1108,7 +1148,7 @@ Implements the scroll controller of the **List** component. A **List** component
 
 ### Objects to Import
 
-```
+```ts
 listScroller: ListScroller = new ListScroller();
 ```
 
@@ -1133,7 +1173,7 @@ Obtains the size of a [list item](ts-container-listitem.md) in a [list item grou
 > **NOTE**
 >
 > - The value of **index** must be the index of a child component visible in the display area. Otherwise, the value is considered invalid.
-> - The child component for which **index** is set must be a list item group. Otherwise, the **index **value is considered invalid.
+> - The child component for which **index** is set must be a list item group. Otherwise, the **index** value is considered invalid.
 > - The value of **indexInGroup** must be the index of a list item in the list item group visible in the display area. Otherwise, the value is considered invalid.
 > - When **index** or **indexInGroup** is set to an invalid value, the returned size and position are both **0**.
 
@@ -1151,7 +1191,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 | ID| Error Message|
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 ### getVisibleListContentInfo<sup>14+</sup>
 
 getVisibleListContentInfo(x: number, y: number): VisibleListContentInfo
@@ -1173,16 +1213,16 @@ Obtains the index information of the child component at the specified coordinate
 
 | Type      | Description      |
 | -------------------  | -------- |
-|  [VisibleListContentInfo](#visiblelistcontentinfo12) | Index information of the child component at the specified coordinates.|
+|  [VisibleListContentInfo](#visiblelistcontentinfo12) | Index information of a child component at the specified coordinates.|
 
 > **NOTE**
 >
-> - The reference point of the input coordinates (x, y) is the position of the List component.
-> - If the coordinates are within the range of ListItem and the parent component of ListItem is List, the value of index in the returned object is the index of ListItem in List, and the values of itemGroupArea and itemIndexInGroup are undefined.
-> - If the coordinates are within the range of ListItem and the parent component of ListItem is ListItemGroup, the value of index in the returned object is the index of ListItemGroup in List, the value of itemGroupArea is ListItemGroupArea.IN_LIST_ITEM_AREA, and the value of itemIndexInGroup is the index of ListItem in ListItemGroup.
-> - If the coordinates are not within the range of ListItem but within the range of header or footer of ListItemGroup, the value of index in the returned object is the index of ListItemGroup in List, and the value of itemIndexInGroup is undefined. If the coordinates are within the range of header, the value of itemGroupArea is ListItemGroupArea.IN_HEADER_AREA. If the coordinates are within the range of footer, the value of itemGroupArea is ListItemGroupArea.IN_FOOTER_AREA.
-> - If the coordinates are not within the ListItem or ListItemGroup header or footer, but within the ListItemGroup, the index member of the returned object is the index of the ListItemGroup in the List, itemIndexInGroup is undefined, and itemGroupArea is ListItemGroupArea.NONE.
-> - If the coordinates are not within the ListItem or ListItemGroup, the index member of the returned object is -1, itemIndexInGroup is undefined, and itemGroupArea is undefined.
+> - The reference point of the input coordinates (x, y) is the position of the **List** component.
+> - If the coordinate position falls within the area of the **ListItem** component whose parent component is **List**, the index of a return value object member will be the index of the **ListItem** component in **List**, **itemGroupArea** will return **undefined**, and **itemIndexInGroup** will return **undefined**.
+> - If the coordinate position falls within the area of the **ListItem** component whose parent component is **ListItemGroup**, the index of a return value object member will be the index of the **ListItemGroup** component in **List**, **itemGroupArea** will return **ListItemGroupArea.IN_LIST_ITEM_AREA**, and **itemIndexInGroup** will return the index of **ListItem** in **ListItemGroup**.
+> - If the coordinates are not within the range of **ListItem** but within the range of header or footer of **ListItemGroup**, the index of the returned object member is the index of **ListItemGroup** in **List**, and **itemIndexInGroup** will return **undefined**. If the coordinates are within the range of header, **itemGroupArea** will return **ListItemGroupArea.IN_HEADER_AREA**. If the coordinates are within the range of footer, **itemGroupArea** will return **ListItemGroupArea.IN_FOOTER_AREA**.
+> - If the coordinates are not within the area of a **ListItem** component, nor within the header or footer area of a **ListItemGroup** component, but is within the area of a **ListItemGroup** component, the index of the returned object member will be the index of that **ListItemGroup** within the **List**, **itemIndexInGroup** will return **undefined**, and **itemGroupArea** will return **ListItemGroupArea.NONE**.
+> - If the coordinates are not within a **ListItem** or **ListItemGroup** component, the index of the returned object member is **-1** and both **itemIndexInGroup** and **itemGroupArea** will return **undefined**.
 
 **Error codes**
 
@@ -1191,7 +1231,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 | ID| Error Message|
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   |The controller not bound to component.|
+| 100004   |Controller not bound to a component.|
 ### scrollToItemInGroup<sup>11+</sup>
 
 scrollToItemInGroup(index: number, indexInGroup: number, smooth?: boolean, align?: ScrollAlign): void
@@ -1208,7 +1248,7 @@ Scrolls to the specified list item in the specified list item group.
 | --------------------- | -------- | ---- | ------------------------------------------------------------ |
 | index                 | number   | Yes  | Index of the target list item group in the current container.<br>**NOTE**<br>If the value set is a negative value or greater than the maximum index of the items in the container, the value is deemed abnormal, and no scrolling will be performed.                    |
 | indexInGroup          | number   | Yes  | Index of the target list item in the list item group specified by **index**.<br>**NOTE**<br>If the value set is a negative value or greater than the maximum index of the items in the list item group, the value is deemed abnormal, and no scrolling will be performed.|
-| smooth                | boolean  | No  | Whether the sliding animation is enabled. The options are true (enabled) and false (disabled).<br>Default value: **false**<br>**NOTE**<br>When the animation is enabled, all items that are passed will be loaded and layout calculation will be performed. If a large number of items are loaded, performance problems may occur.|
+| smooth                | boolean  | No  | Whether the scroll animation is enabled. The options are **true** (enabled) and **false** (disabled).<br>Default value: **false**<br>**NOTE**<br>When **smooth** is set to **true**, all passed items are loaded and counted in layout calculation. This may result in performance issues if a large number of items are involved.|
 | align                 | [ScrollAlign](ts-container-scroll.md#scrollalign10)  | No  | How the list item to scroll to is aligned with the container.<br>Default value: **ScrollAlign.START**|
 
 **Error codes**
@@ -1218,7 +1258,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 | ID| Error Message|
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 
 ### closeAllSwipeActions<sup>11+</sup>
 
@@ -1244,7 +1284,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 | ID| Error Message|
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 
 > **NOTE**
 >
@@ -1254,11 +1294,11 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 
 type OnScrollVisibleContentChangeCallback = (start: VisibleListContentInfo, end: VisibleListContentInfo) => void
 
-Called when a child component enters or leaves the list display area.
+Triggered when a child component enters or leaves the list display area.
 
-If the values of start and end are both -1, the List list is empty.
+If the values of **start** and **end** are both **-1**, the **List** component becomes empty.
 
-If the values of start and end are both 0, the List list contains only one child component.
+If the values of **start** and **end** are both **0**, the **List** component contains only one child component.
 
 >**NOTE**
 >
@@ -1272,12 +1312,12 @@ If the values of start and end are both 0, the List list contains only one child
 
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ------ | ------|
-| start | [VisibleListContentInfo](#visiblelistcontentinfo12) | Yes| 1. Index of the first child component in the list display area.<br>2. If the first child component in the list display area is ListItemGroup, you can obtain the area where the first child component in the list display area belongs.<br>3. If the first child component in the list display area is ListItem in ListItemGroup, you can obtain the index of ListItem in ListItemGroup.|
-| end | [VisibleListContentInfo](#visiblelistcontentinfo12) | Yes| 1. Index of the last child component in the list display area.<br>2. If the last child component in the list display area is ListItemGroup, you can obtain the area where the last child component in the list display area belongs.<br>3. If the last child component in the list display area is ListItem in ListItemGroup, you can obtain the index of ListItem in ListItemGroup.|
+| start | [VisibleListContentInfo](#visiblelistcontentinfo12) | Yes| 1. Index of the first child component in the list display area.<br>2. If the first child component in the list display area is **ListItemGroup**, you can obtain the area where the first child component belongs.<br>3. If the first child component in the list display area is **ListItem** in **ListItemGroup**, you can obtain the index of **ListItem** in **ListItemGroup**.|
+| end | [VisibleListContentInfo](#visiblelistcontentinfo12) | Yes| 1. Index of the last child component in the list display area.<br>2. If the last child component in the list display area is **ListItemGroup**, you can obtain the area where the last child component belongs.<br>3. If the last child component in the list display area is **ListItem** in **ListItemGroup**, you can obtain the index of **ListItem** in **ListItemGroup**.|
 
 ## VisibleListContentInfo<sup>12+</sup>
 
-Details of the child components in the visible content area of the list.
+Describes the details of the child components in the visible area of a list.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1285,13 +1325,13 @@ Details of the child components in the visible content area of the list.
 
 | Name| Type| Read-Only| Optional| Description|
 | ------ | ------ | -- | ------ | ------|
-| index | number | No| No| Index of ListItem or ListItemGroup in the list.|
-| itemGroupArea | [ListItemGroupArea](#listitemgrouparea12) | No| Yes| Area where ListItemGroup is located.|
-| itemIndexInGroup | number | No| Yes| Index of ListItem in ListItemGroup.|
+| index | number | No| No| Index of **ListItem** or **ListItemGroup** in the **List** component.|
+| itemGroupArea | [ListItemGroupArea](#listitemgrouparea12) | No| Yes| Area where **ListItemGroup** is located.|
+| itemIndexInGroup | number | No| Yes| Index of **ListItem** in **ListItemGroup**.|
 
 ## ListItemGroupArea<sup>12+</sup>
 
-Enumerates the areas of ListItemGroup.
+Enumerates the areas of **ListItemGroup**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1299,15 +1339,15 @@ Enumerates the areas of ListItemGroup.
 
 | Name    |  Value | Description                                    |
 | ------ | ------ | ---------------------------------------- |
-| NONE |  0  | Area other than the ListItem, header, and footer areas in ListItemGroup.|
-| IN_LIST_ITEM_AREA |  1  | ListItem area in ListItemGroup.|
-| IN_HEADER_AREA |  2  | Header area in ListItemGroup.|
-| IN_FOOTER_AREA |  3  | Footer area in ListItemGroup.|
+| NONE |  0  | Area other than the **ListItem**, header, and footer areas in **ListItemGroup**.|
+| IN_LIST_ITEM_AREA |  1  | **ListItem** area in **ListItemGroup**.|
+| IN_HEADER_AREA |  2  | Header area in **ListItemGroup**.|
+| IN_FOOTER_AREA |  3  | Footer area in **ListItemGroup**.|
 
 ## UIListEvent<sup>19+</sup>
-Returns the value of the [getEvent('List')](../js-apis-arkui-frameNode.md#geteventlist19) method in frameNode, which can be used to set the scroll event for the List node.
+Represents the return value of the [getEvent('List')](../js-apis-arkui-frameNode.md#geteventlist19) method in **frameNode**, which can be used to set scroll events for a **List** node.
 
-UIListEvent is inherited from [UIScrollableCommonEvent](./ts-container-scrollable-common.md#uiscrollablecommonevent19).
+**UIListEvent** inherits from [UIScrollableCommonEvent](./ts-container-scrollable-common.md#uiscrollablecommonevent19).
 
 ### setOnWillScroll<sup>19+</sup>
 
@@ -1315,7 +1355,7 @@ setOnWillScroll(callback:  OnWillScrollCallback | undefined): void
 
 Sets the callback for the [onWillScroll](./ts-container-scrollable-common.md#onwillscroll12) event.
 
-If the input parameter is undefined, the event callback is reset.
+If the input parameter is **undefined**, the event callback is reset.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -1325,7 +1365,7 @@ If the input parameter is undefined, the event callback is reset.
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [OnWillScrollCallback](./ts-container-scrollable-common.md#onwillscrollcallback12) \| undefined | Yes  | Callback function of the onWillScroll event.|
+| callback  | [OnWillScrollCallback](./ts-container-scrollable-common.md#onwillscrollcallback12)&nbsp;\|&nbsp;undefined | Yes  | Callback for the **onWillScroll** event.|
 
 ### setOnDidScroll<sup>19+</sup>
 
@@ -1333,7 +1373,7 @@ setOnDidScroll(callback: OnScrollCallback | undefined): void
 
 Sets the callback for the [onDidScroll](./ts-container-scrollable-common.md#ondidscroll12) event.
 
-If the input parameter is undefined, the event callback will be reset.
+If the input parameter is **undefined**, the event callback is reset.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -1343,15 +1383,15 @@ If the input parameter is undefined, the event callback will be reset.
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [OnScrollCallback](./ts-container-scrollable-common.md#onscrollcallback12) \| undefined | Yes  | Callback for the onDidScroll event.|
+| callback  | [OnScrollCallback](./ts-container-scrollable-common.md#onscrollcallback12)&nbsp;\|&nbsp;undefined | Yes  | Callback for the **onDidScroll** event.|
 
 ### setOnScrollIndex<sup>19+</sup>
 
 setOnScrollIndex(callback: OnListScrollIndexCallback | undefined): void
 
-Sets the callback for the onScrollIndex event.
+Sets the callback of the [onScrollIndex](#onscrollindex) event.
 
-If the input parameter is undefined, the event callback will be reset.
+If the input parameter is **undefined**, the event callback is reset.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -1361,15 +1401,15 @@ If the input parameter is undefined, the event callback will be reset.
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [OnListScrollIndexCallback](#onlistscrollindexcallback19) \| undefined | Yes  | Callback for the onScrollIndex event.|
+| callback  | [OnListScrollIndexCallback](#onlistscrollindexcallback19)&nbsp;\|&nbsp;undefined | Yes  | Callback for the **onScrollIndex** event.|
 
 ### setOnScrollVisibleContentChange<sup>19+</sup>
 
 setOnScrollVisibleContentChange(callback: OnScrollVisibleContentChangeCallback | undefined): void
 
-Sets the callback for the [onScrollVisibleContentChange](#onscrollvisiblecontentchange12) event.
+Sets the callback of the [onScrollVisibleContentChange](#onscrollvisiblecontentchange12) event.
 
-If the input parameter is undefined, the event callback is reset.
+If the input parameter is **undefined**, the event callback is reset.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -1379,12 +1419,12 @@ If the input parameter is undefined, the event callback is reset.
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  |  [OnScrollVisibleContentChangeCallback](./ts-container-list.md#onscrollvisiblecontentchangecallback12) \| undefined | Yes  | Callback function for the onScrollVisibleContentChange event.|
+| callback  |  [OnScrollVisibleContentChangeCallback](./ts-container-list.md#onscrollvisiblecontentchangecallback12)&nbsp;\|&nbsp;undefined | Yes  | Callback for the **onScrollVisibleContentChange** event.|
 
 ## OnListScrollIndexCallback<sup>19+</sup>
 type OnListScrollIndexCallback = (start: number, end: number, center: number) => void
 
-Callback type of the item change event in the visible area of the List component.
+Represents a callback for item changes in the visible area of the **List** component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 19.
 
@@ -1396,7 +1436,7 @@ Callback type of the item change event in the visible area of the List component
 
 | Name              | Type  | Mandatory| Description                                  |
 | -------------------- | ------ | ---- | -------------------------------------- |
-| start   | number | Yes  | Index of the first child component in the display area of the List component.    |
+| start   | number | Yes  | Index of the first child component in the list display area.    |
 | end     | number | Yes  | Index of the last child component in the list display area.|
 | center  | number | Yes  | Index of the center child component in the list display area.|
 
@@ -1405,7 +1445,7 @@ Callback type of the item change event in the visible area of the List component
 ### Example 1: Adding a Scroll Event
 In this example, a vertical list is implemented, and a callback is invoked when the first or last item displayed in the list changes.
 
-ListDataSource implements the LazyForEach data source interface [IDataSource](ts-rendering-control-lazyforeach.md#idatasource), which is used to provide child components for the list through LazyForEach.
+**ListDataSource** implements the **LazyForEach** data source API [IDataSource](ts-rendering-control-lazyforeach.md#idatasource), which is used to provide child components for **List** through **LazyForEach**.
 
 <!--code_no_check-->
 ```ts
@@ -1439,14 +1479,14 @@ export class ListDataSource implements IDataSource {
     }
   }
 
-  // Notify the controller that data has been deleted.
+  // Notify the controller of data deletion.
   notifyDataDelete(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataDelete(index);
     });
   }
 
-  // Notify the controller to add data.
+  // Notify the controller of data insertion.
   notifyDataAdd(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataAdd(index);
@@ -1459,7 +1499,7 @@ export class ListDataSource implements IDataSource {
     this.notifyDataDelete(index);
   }
 
-  // Insert an element at a specified index.
+  // Insert an element at the specified index.
   public insertItem(index: number, data: number): void {
     this.list.splice(index, 0, data);
     this.notifyDataAdd(index);
@@ -1562,7 +1602,7 @@ struct ListLanesExample {
       .alignListItem(this.alignListItem)
       .scrollBar(BarState.Off)
 
-      Button ('Click to change alignListItem:' + this.alignListItem).onClick(() => {
+      Button ('Change alignListItem:' + this.alignListItem).onClick(() => {
         if (this.alignListItem == ListItemAlign.Start) {
           this.alignListItem = ListItemAlign.Center;
         } else if (this.alignListItem == ListItemAlign.Center) {
@@ -1579,8 +1619,8 @@ struct ListLanesExample {
 ![list](figures/list-alignListItem.gif)
 
 
-### Example 3: Setting the Editable Mode
-This example illustrates how to set whether the current **List** component is in editable mode.
+### Example 3: Setting the Edit Mode
+This example illustrates how to set whether the current **List** component is in edit mode.
 
 For details about **ListDataSource** and the complete code, see [Example 1: Adding a Scroll Event](#example-1-adding-a-scroll-event).
 
@@ -1703,9 +1743,9 @@ struct ListExample {
 ![list](figures/list4.gif)
 
 ### Example 5: Implementing Accurate Scrolling
-This example shows that, by setting the **childrenMainSize** attribute, the list can jump to an exact specific location when the **scrollTo** API is called, even when the heights of the child components are inconsistent.
+This example shows that, by setting the [childrenMainSize](#childrenmainsize12) attribute, the list can jump to an exact specific location when the **scrollTo** API is called, even when the heights of the child components are inconsistent.
 
-If the state management V2 is used, see [List and makeObserved 】（../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md# scrolling component).
+For usage with state management V2, see [List and makeObserved](../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md#scroll-components).
 
 For details about **ListDataSource** and the complete code, see [Example 1: Adding a Scroll Event](#example-1-adding-a-scroll-event).
 
@@ -1752,21 +1792,21 @@ struct ListExample {
       .scrollBar(BarState.On)
       .childrenMainSize(this.listChildrenSize)
       .alignListItem(ListItemAlign.Center)
-      Row(){
+      Row({ space: 18 }) {
         Button() { Text('item size + 50') }.onClick(()=>{
           this.listChildrenSize.childDefaultSize += 50;
-        }).height('50%').width('30%')
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
         Button() { Text('item size - 50') }.onClick(()=>{
           if (this.listChildrenSize.childDefaultSize === 0) {
             return;
           }
           this.listChildrenSize.childDefaultSize -= 50;
-        }).height('50%').width('30%')
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
         Button() { Text('scrollTo (0, 310)') }.onClick(()=>{
           // 310: Jump to the position where the top of item 1 is aligned with the top of the list.
           // If childrenMainSize is not set, the scrollTo API may not work correctly when the heights of the list items are inconsistent.
           this.scroller.scrollTo({ xOffset: 0, yOffset: 310 })
-        }).height('50%').width('30%')
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
       }.height('20%')
     }
   }
@@ -1847,7 +1887,7 @@ struct ListItemGroupExample {
 ];
   private scroller: ListScroller = new ListScroller();
   @State listIndexInfo: VisibleListContentInfo = { index: -1 };
-  @State mess:string = "null";
+  @State mess:string = 'null';
   @State itemBackgroundColorArr: boolean[] = [false];
   @Builder
   itemHead(text: string) {
@@ -2008,9 +2048,9 @@ struct ListExample {
 
 ![edgeEffect_list](figures/edgeEffect_list.gif)
 
-### Example 9: Setting the Focus Change on a List
+### Example 9: Setting Focus Wrap on a List
 
-In API version 20 and later versions, the focusWrapMode API is used to implement the effect of wrapping around when the arrow key is used to move the focus.
+In API version 20 and later versions, this example uses the [focusWrapMode](#focuswrapmode20) API to implement the effect of line-wrapping focus navigation with arrow keys in the **List** component.
 
 ```ts
 @Entry
@@ -2057,7 +2097,7 @@ struct ListExample {
 
 ### Example 10: Keeping the Display Content Unchanged When Data Is Inserted Outside the Display Area
 
-This example uses the maintainVisibleContentPosition API to implement infinite loading of historical messages when the user scrolls up.
+This example uses the **maintainVisibleContentPosition** API to implement infinite loading of historical messages when the screen is swiped up.
 
 For details about **ListDataSource** and the complete code, see [Example 1: Adding a Scroll Event](#example-1-adding-a-scroll-event).
 
@@ -2148,7 +2188,7 @@ struct ListScrollBarMarginExample {
 
 ### Example 12: Implementing Dragging with OnMove
 
-This example demonstrates how to use the [onMove](./ts-universal-attributes-drag-sorting.md#onmove) API of ForEach to sort items by dragging them. The list can automatically scroll when an item is dragged to the edge of the list.
+Starting from API version 20, this his example demonstrates how to use the [onMove](./ts-universal-attributes-drag-sorting.md#onmove) API of **ForEach** to sort items by dragging them. The list can automatically scroll when an item is dragged to the edge of the list.
 
 ```ts
 @Entry
@@ -2192,8 +2232,11 @@ struct ForEachSort {
 
 ### Example 13: Configuring Lanes Based on Breakpoints
 
-This example demonstrates how to configure lanes for the list component based on breakpoints.
+In API version 22 and later versions, this example shows how to configure lanes in the **List** component based on breakpoints.
 
+For details about **ListDataSource** and the complete code, see [Example 1: Adding a Scroll Event](#example-1-adding-a-scroll-event).
+
+<!--code_no_check-->
 ```ts
 // xxx.ets
 import { ListDataSource } from './ListDataSource';
@@ -2226,24 +2269,26 @@ struct ListExample {
 }
 ```
 
-When the width of the list is within the sm breakpoint range, two columns are displayed.
+When the list width is within the breakpoint range of sm or smaller, two columns are displayed.
 
 ![sm_list](figures/list_itemFillPolicy_SM.png)
 
-When the width of the list is within the md breakpoint range, three columns are displayed.
+When the list width is within the breakpoint range of md, three columns are displayed.
 
 ![md_list](figures/list_itemFillPolicy_MD.png)
 
-When the width of the list is within the lg breakpoint range, five columns are displayed.
+When the list width is within the breakpoint range of lg or larger, five columns are displayed.
 
 ![lg_list](figures/list_itemFillPolicy_LG.png)
 
 ### Example 14: Obtaining the Total Content Size
 
-This example shows how to obtain the total content size of the list component since API version 22.
+This example demonstrates how to obtain the total content size of the **List** component. This functionality is supported since API version 22.
 
 ```ts
 // xxx.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct ListExample {
@@ -2263,15 +2308,21 @@ struct ListExample {
         }, (item: string) => item)
       }
       .width('90%').height('90%')
-      // Call the contentSize function to obtain the content size.
+      // Button to obtain the content size.
       Button('GetContentSize')
         .onClick(()=> {
-          // Call the contentSize function to obtain the width of the content size.
-          this.contentWidth=this.scrollerForList.contentSize().width;
-          // Call the contentSize function to obtain the height of the content size.
-          this.contentHeight=this.scrollerForList.contentSize().height;
+            // Scroller throws an exception when not bound to a component; wrap with try-catch for safety.
+          	try {
+              // Obtain the content width using contentSize.
+              this.contentWidth=this.scrollerForList.contentSize().width;
+              // Obtain the content height using contentSize.
+              this.contentHeight=this.scrollerForList.contentSize().height;
+            } catch (error) {
+              let err: BusinessError = error as BusinessError;
+      		  console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+            }
         })
-      // Display the obtained content size information in text.
+      // Display the obtained content size.
       Text('Width: '+ this.contentWidth+', Height: '+ this.contentHeight)
         .fontColor(Color.Red)
         .height(50)
@@ -2285,4 +2336,298 @@ struct ListExample {
 ```
 
 ![list_contentStartOffset](figures/listContentSize.gif)
-<!--no_check-->
+
+### Example 15: Dragging Between Two Lists
+
+This example demonstrates the drag and drop effect of list times between two **List** components using events such as **OnItemDragStart**.
+
+```ts
+// xxx.ets
+@ObservedV2
+class ListData {
+  @Trace public title: string = '';
+  @Trace public data: string[] = [];
+
+  constructor(title: string, data: string[]) {
+    this.title = title;
+    this.data = data;
+  }
+}
+
+class DraggingData {
+  public data?: string;
+}
+
+@ComponentV2
+struct DraggableList {
+  @Require @Param data: string[];
+  @Require @Param draggingData: DraggingData;
+
+  @Builder
+  ItemBuilder(data: string, size: SizeOptions, event: ItemDragInfo): void {
+    Stack() {
+      Text(data)
+    }
+    .backgroundColor(Color.White)
+    .borderRadius(4)
+    .size(size)
+  }
+
+  viewWidth: number = 0;
+  lastInsertIndex: number = 0;
+  scroller: Scroller = new Scroller();
+
+  build() {
+    List({ scroller: this.scroller }) {
+      ForEach(this.data, (item: string) => {
+        ListItem() {
+          Text(item)
+        }
+        .width('100%')
+        .height('10%')
+        .margin(10)
+        .backgroundColor(Color.White)
+        .borderRadius(4)
+        .aspectRatio(1)
+      }, (item: string) => item)
+    }
+    .width('50%')
+    .layoutWeight(1)
+    .padding(10)
+    .onItemDragStart((event: ItemDragInfo, itemIndex: number) => {
+      let rect = this.scroller.getItemRect(itemIndex);
+      let size: SizeOptions = {
+        width: rect.width,
+        height: rect.height
+      };
+      this.lastInsertIndex = itemIndex;
+      this.draggingData.data = this.data[itemIndex];
+      this.data.splice(itemIndex, 1);
+
+      return this.ItemBuilder(this.draggingData.data, size, event);
+    })
+    .onItemDragEnter((event: ItemDragInfo) => {
+      console.info('Item drag enter at position:', event.x, event.y);
+    })
+    .onItemDragMove((event: ItemDragInfo, itemIndex: number, insertIndex: number) => {
+      if (this.lastInsertIndex != insertIndex){
+        console.info('insertIndex change from ', this.lastInsertIndex, 'to', insertIndex);
+        this.lastInsertIndex = insertIndex;
+      }
+    })
+    .onItemDragLeave((event: ItemDragInfo, itemIndex: number) => {
+      console.info('Item ' + itemIndex + ' drag leave at position:', event.x, event.y);
+    })
+    .onItemDrop((event: ItemDragInfo, itemIndex: number, insertIndex: number, isSuccess: boolean) => {
+      if (!isSuccess) {
+        this.draggingData.data = undefined;
+        return;
+      }
+      if (insertIndex >= 0) {
+        this.data.splice(insertIndex, 0, this.draggingData.data!);
+      }
+      this.draggingData.data = undefined;
+    })
+    .onSizeChange((oldValue: SizeOptions, newValue: SizeOptions) => {
+      this.viewWidth = newValue.width as number;
+    })
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local data: ListData[] = [
+    new ListData('A', ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8']),
+    new ListData('B', ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8']),
+  ]
+  @Local draggingData: DraggingData = new DraggingData();
+
+  build() {
+    Stack() {
+      Row() {
+        DraggableList({ data: this.data[0].data, draggingData: this.draggingData })
+        DraggableList({ data: this.data[1].data, draggingData: this.draggingData })
+      }
+    }
+    .backgroundColor('#FFDCDCDC')
+  }
+}
+```
+
+![OnItemDrag](figures/listOnItemDrag.gif)
+
+### Example 16: Centering the Clicked Item in ListItemGroup
+
+This example uses the [scrollToItemInGroup](#scrolltoitemingroup11) API to implement the effect of centering the [ListItem](./ts-container-listitem.md) component in the [ListItemGroup](./ts-container-listitemgroup.md) when the [ListItem](./ts-container-listitem.md) is clicked.
+
+``` ts
+import { util } from '@kit.ArkTS';
+
+class Contact {
+  key: string = util.generateRandomUUID(true);
+  name: string;
+  icon: Resource;
+
+  constructor(name: string, icon: Resource) {
+    this.name = name;
+    this.icon = icon;
+  }
+}
+
+class ContactsGroup {
+  title: string = '';
+  contacts: Array<object> | null = null;
+  key: string = '';
+}
+
+@Entry
+@Component
+struct ContactsList {
+  private scroller: ListScroller = new ListScroller();
+  private contactsGroups: ContactsGroup[] = [
+    {
+      title: 'A',
+      contacts: [
+        new Contact('Alice', $r('app.media.icon')),  // Replace $r('app.media.icon') with the image resource file you use.
+        new Contact('Ann', $r('app.media.icon')),
+        new Contact('Angela', $r('app.media.icon'))
+        // ...
+      ],
+      key: util.generateRandomUUID(true)
+    } as ContactsGroup,
+    {
+      title: 'B',
+      contacts: [
+        new Contact('Ben', $r('app.media.icon')),
+        new Contact('Bryan', $r('app.media.icon'))
+        // ...
+      ],
+      key: util.generateRandomUUID(true)
+    } as ContactsGroup,
+    // ...
+  ]
+
+  @Builder
+  itemHead(text: string) {
+    Text(text)
+      .fontSize(20)
+      .backgroundColor('#fff1f3f5')
+      .width('100%')
+      .padding(5)
+  }
+
+  build() {
+    List({ scroller: this.scroller }) {
+      ForEach(this.contactsGroups, (item: ContactsGroup, index: number) => {
+        ListItemGroup({ header: this.itemHead(item.title) }) {
+          ForEach(item.contacts, (contact: Contact, subIndex: number) => {
+            ListItem() {
+              Row() {
+                Image(contact.icon)
+                  .width(40)
+                  .height(40)
+                  .margin(10)
+                Text(contact.name).fontSize(20)
+              }
+              .width('100%')
+              .justifyContent(FlexAlign.Start)
+              .margin(10)
+            }
+            .gesture(
+              TapGesture({ count: 1 })
+                .onAction((event: GestureEvent) => {
+                  if (event) {
+                    const itemRect = this.scroller.getItemRectInGroup(index, subIndex);
+                    console.info ('The', index + 1, 'ListItemGroup of the', subIndex + 1, 'ListItem', x:', itemRect.x,
+                      ' y:', itemRect.y, ' width:', itemRect.width, ' height:', itemRect.height)
+                    this.scroller.scrollToItemInGroup(index, subIndex, true, ScrollAlign.CENTER);
+                  }
+                })
+            )
+          }, (contact: Contact) => JSON.stringify(contact))
+        }
+        .divider({ strokeWidth: 4 })
+        .width('100%')
+      }, (item: ContactsGroup) => JSON.stringify(item))
+    }
+    .onScrollFrameBegin((offset: number, state: ScrollState) => {
+      console.info('List scrollFrameBegin offset: ' + offset + ' state: ' + state.toString());
+      return { offsetRemain: offset };
+    })
+  }
+}
+```
+
+
+
+### Example 16: Setting the Multi-Selection Gather Animation
+
+This example demonstrates how to gather selected list items in the display area when [a long press triggers context menu](ts-universal-attributes-menu.md#bindcontextmenu8) on list items by enabling the multi-selection gather animation switch for **ListItem**.
+
+From API version 23, the [edit mode options](#editmodeoptions23) API is added to the **List** component, which can be used to set the multi-selection gather animation.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct ListExample {
+  numbers1: string[] = ['0', '1', '2'];
+  numbers2: string[] = ['0', '1', '2'];
+
+  @Builder
+  MenuBuilder() {
+    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+      Text('menu item 1')
+        .fontSize(18)
+        .width(120)
+        .height(50)
+        .textAlign(TextAlign.Center)
+      Divider().height(10)
+      Text('menu item 2')
+        .fontSize(18)
+        .width(120)
+        .height(50)
+        .textAlign(TextAlign.Center)
+    }.width(100)
+  }
+
+  @Builder
+  MyPreview() {
+    Column() {
+      Image($r('app.media.startIcon'))
+        .width(200)
+        .height(200)
+    }
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Text('List')
+      List({ space: 10 }) {
+        ForEach(this.numbers1, (day: string) => {
+          ForEach(this.numbers1, (day: string) => {
+            ListItem() {
+              Text(day)
+                .fontSize(16)
+                .backgroundColor(Color.White)
+                .width('100%')
+                .height(50)
+                .textAlign(TextAlign.Center)
+            }
+            .selected(true)
+            .bindContextMenu(this.MenuBuilder, ResponseType.LongPress,
+              { preview: MenuPreviewMode.IMAGE, hapticFeedbackMode: HapticFeedbackMode.ENABLED })
+          }, (day: string) => day)
+        }, (day: string) => day)
+      }
+      .editModeOptions({ enableGatherSelectedItemsAnimation: true })
+      .width('90%')
+      .height(300)
+      .scrollBar(BarState.Off)
+    }.width('100%').margin({ top: 5 }).backgroundColor('#FFDCDCDC')
+  }
+}
+```
+
+![listMultiselectAnimation](figures/listMultiselectAnimation.gif)

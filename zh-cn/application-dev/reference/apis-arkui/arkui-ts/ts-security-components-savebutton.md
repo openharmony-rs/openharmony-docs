@@ -7,7 +7,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-安全控件的保存控件。应用集成保存控件后，用户首次使用保存控件展示弹窗，在点击允许后自动授权，应用会在短时间内获取访问媒体库特权接口的授权。后续使用无需弹窗授权。在API version 19及之前的版本中，授权持续时间为10秒；在API version20及之后的版本中，授权持续时间为1分钟。
+安全控件的保存控件。应用集成保存控件后，用户首次使用保存控件展示弹窗，在点击允许后自动授权，应用会在短时间内获取访问媒体库特权接口的授权。后续使用无需弹窗授权。在API version 19及之前的版本中，授权持续时间为10秒；在API version 20及之后的版本中，授权持续时间为1分钟。
 
 > **说明：**
 >
@@ -56,7 +56,7 @@ SaveButton(options: SaveButtonOptions)
 > **说明：**
 >
 > - icon或text需至少传入一个。<br>
-> - 如果icon、text都不传入，[SaveButton](#savebutton-1)中的options参数不生效，创建的SaveButton为默认样式，默认样式：
+> - 如果icon、text都不传入，SaveButton中的options参数不生效，创建的SaveButton为默认样式，默认样式：
 >
 >   SaveIconStyle默认样式为FULL_FILLED；
 >
@@ -137,7 +137,7 @@ type SaveButtonCallback = (event: ClickEvent, result: SaveButtonOnClickResult, e
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
 | event | [ClickEvent](ts-universal-events-click.md#clickevent) |是 |见ClickEvent对象说明。|
-| result | [SaveButtonOnClickResult](#savebuttononclickresult枚举说明)| 是 | 存储权限的授权结果，授权时长为一分钟，即触发点击后，可以在一分钟之内不限制次数的调用特定媒体库接口，超出一分钟的调用会鉴权失败。|
+| result | [SaveButtonOnClickResult](#savebuttononclickresult枚举说明)| 是 | 授权的结果。|
 | error | [BusinessError&lt;void&gt;](../../apis-basic-services-kit/js-apis-base.md#businesserror) | 否 | 点击按钮时的错误码和错误信息。<br>错误码0表示点击保存控件授权成功或用户取消授权。<br>错误码1表示系统内部错误，包括但不限于：<br>1. ipc通信失败。<br>2. 安全控件弹窗失败。<br>错误码2表示属性设置错误，包括但不限于：<br>1. 字体或图标设置过小。<br>2. 字体或图标与背托颜色相近。<br>3. 字体或图标颜色过于透明。<br>4. padding为负值。<br>5. 按钮被其他组件或窗口遮挡。<br>6. 文本超出背托范围。<br>7. 按钮超出窗口或屏幕。<br>8. 按钮整体尺寸过大。<br>9. 按钮文本被截断，显示不全。<br>10. 相关属性设置影响安全控件显示。|
 
 ## SaveButtonAttribute
@@ -290,7 +290,6 @@ struct Index {
         try {
           const context = this.getUIContext().getHostContext();
           let helper = photoAccessHelper.getPhotoAccessHelper(context);
-          // onClick触发后一分钟内通过createAsset接口创建图片文件，一分钟后createAsset权限收回。
           let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'png');
           // 使用uri打开文件，可以持续写入内容，写入过程不受时间限制。
           let file = await fileIo.open(uri, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);

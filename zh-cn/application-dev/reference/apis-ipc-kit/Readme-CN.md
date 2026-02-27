@@ -1,9 +1,16 @@
 # IPC Kit（进程间通信服务）<!--ipc-api-->
 
+<!--Kit: IPC Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @xdx19211@luodonghui0157-->
+<!--Designer: @zhaopeng_gitee-->
+<!--Tester: @maxiaorong-->
+<!--Adviser: @zhang_yixin13-->
+
 - ArkTS API<!--ipc-arkts-->
   - [@ohos.rpc (RPC通信)](js-apis-rpc.md)
 - C API<!--ipc-c-->
-  - 模块<!--ipc-moudle-->
+  - 模块<!--ipc-module-->
     - [OHIPCParcel](capi-ohipcparcel.md)
     - [OHIPCRemoteObject](capi-ohipcremoteobject.md)
     - [OHIPCSkeleton](capi-ohipcskeleton.md)
@@ -16,6 +23,7 @@
     - [ipc_error_code.h](capi-ipc-error-code-h.md)
     - [ipc_kit.h](capi-ipc-kit-h.md)
   - 结构体<!--ipc-struct-->
+    - [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md)
     - [OH_IPC_MessageOption](capi-ohipcremoteobject-oh-ipc-messageoption.md)
     - [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md)
     - [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md)

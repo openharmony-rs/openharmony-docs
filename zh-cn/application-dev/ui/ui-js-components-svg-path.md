@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-[Svg](../reference/apis-arkui/arkui-js/js-components-svg.md)组件绘制路径时，通过Path中的M（起点）、H（水平线）、a（绘制弧形到指定位置）路径控制指令，并填充颜色实现饼状图效果。
+[svg](../reference/apis-arkui/arkui-js/js-components-svg.md)组件绘制路径时，通过Path中的M（起点）、H（水平线）、a（绘制弧形到指定位置）路径控制指令，并填充颜色实现饼状图效果。
 
 ```html
 <!-- xxx.hml -->
@@ -49,9 +49,9 @@
 >
 > - S/s = smooth curveto  三次贝塞尔曲线命令   设置两组坐标参数： x2 y2, x y。
 >
-> - Q/q = quadratic Belzier curve  二次贝塞尔曲线  设置两组坐标参数： x1 y1, x y。
+> - Q/q = quadratic Bezier curve  二次贝塞尔曲线  设置两组坐标参数： x1 y1, x y。
 >
-> - T/t = smooth quadratic Belzier curveto  二次贝塞尔曲线命令  设置参数： x y。
+> - T/t = smooth quadratic Bezier curveto  二次贝塞尔曲线命令  设置参数： x y。
 >
 > - A/a = elliptical Arc  弧形命令  设置参数： rx ry x-axis-rotation（旋转角度）large-arc-flag（角度大小） sweep-flag（弧线方向） x y。large-arc-flag决定弧线是大于还是小于180度，0表示小角度弧，1表示大角度弧。sweep-flag表示弧线的方向，0表示从起点到终点沿逆时针画弧，1表示从起点到终点沿顺时针画弧。
 >
