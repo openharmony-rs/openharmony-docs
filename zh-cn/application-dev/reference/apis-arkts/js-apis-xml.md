@@ -39,7 +39,7 @@ XmlSerializer的构造函数。
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -85,7 +85,7 @@ setAttributes(name: string, value: string): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -139,7 +139,7 @@ addEmptyElement(name: string): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -186,7 +186,7 @@ setDeclaration(): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -220,7 +220,7 @@ startElement(name: string): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -274,7 +274,7 @@ endElement(): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -308,7 +308,7 @@ setNamespace(prefix: string, namespace: string): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -359,7 +359,7 @@ setComment(text: string): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -410,7 +410,7 @@ setCDATA(text: string): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -457,7 +457,7 @@ setText(text: string): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -507,7 +507,7 @@ setDocType(text: string): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -562,7 +562,7 @@ XmlDynamicSerializer的构造函数。
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -596,7 +596,7 @@ getOutput(): ArrayBuffer
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -635,7 +635,7 @@ setAttributes(name: string, value: string): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -685,7 +685,7 @@ addEmptyElement(name: string): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -727,7 +727,7 @@ setDeclaration(): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -769,7 +769,7 @@ startElement(name: string): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -817,7 +817,7 @@ endElement(): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -859,7 +859,7 @@ setNamespace(prefix: string, namespace: string): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -904,7 +904,7 @@ setComment(text: string): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -950,7 +950,7 @@ setCdata(text: string): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -992,7 +992,7 @@ setText(text: string): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1037,7 +1037,7 @@ setDocType(text: string): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1083,7 +1083,7 @@ constructor(buffer: ArrayBuffer | DataView, encoding?: string)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1129,7 +1129,7 @@ parseXml(option: ParseOptions): void
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1250,7 +1250,7 @@ XML解析选项。
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                           | 类型                                                         | 必填 | 说明                                    |
 | ------------------------------ | ------------------------------------------------------------ | ---- | --------------------------------------- |
@@ -1279,7 +1279,7 @@ ArkTS-Sta: getColumnNumber(): int
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1325,7 +1325,7 @@ ArkTS-Sta: getDepth(): int
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1371,7 +1371,7 @@ ArkTS-Sta: getLineNumber(): int
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1411,7 +1411,7 @@ getName(): string
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1450,7 +1450,7 @@ getNamespace(): string
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1493,7 +1493,7 @@ getPrefix(): string
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1537,7 +1537,7 @@ getText(): string
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1576,7 +1576,7 @@ isEmptyElementTag(): boolean
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1619,7 +1619,7 @@ isWhitespace(): boolean
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1664,7 +1664,7 @@ ArkTS-Sta: getAttributeCount(): int
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 | 类型   | 说明                   |
@@ -1701,7 +1701,7 @@ console.info(str);
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 值   | 说明                  |
 | ---------------- | ---- | --------------------- |

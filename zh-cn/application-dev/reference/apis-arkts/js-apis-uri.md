@@ -25,21 +25,21 @@ import { uri } from '@kit.ArkTS';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| scheme | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的协议部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的协议部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 20 |
-| userInfo | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的用户信息部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的用户信息部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 20 |
-| host | string | 是 | 否 | 获取URI的主机名部分（不带端口），若无此部分则返回null对象。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 20 |
-| port | string | 是 | 否 | 获取URI的端口部分。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 20 |
-| path | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的路径部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的路径部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 20 |
-| query | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的查询部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的查询部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 20 |
-| fragment | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的片段部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的片段部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 20 |
-| authority | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的解码权限组件部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的解码权限组件部分，若无此部分则返回null对象，不支持单独设置为null对象。 <br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 20 |
-| ssp | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的解码案特定部分（方案特定部分是URI的一部分，它包含了特定于协议或方案的信息）。<br/>ArkTS-Sta：获取和设置URI的解码案特定部分，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 20 |
-| encodedUserInfo<sup>12+</sup>  | string | 否   | 否   | ArkTS-Dyn：获取和设置URI的编码用户信息部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的编码用户信息部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   <br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 20 |
-| encodedPath<sup>12+</sup>      | string | 否   | 否   | ArkTS-Dyn：获取和设置URI的编码路径部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的编码路径部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 20 |
-| encodedQuery<sup>12+</sup>     | string | 否   | 否   | ArkTS-Dyn：获取和设置URI的编码查询部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的编码查询部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 20 |
-| encodedFragment<sup>12+</sup>  | string | 否   | 否   | ArkTS-Dyn：获取和设置URI的编码片段部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的编码片段部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 20 |
-| encodedAuthority<sup>12+</sup> | string | 否   | 否   | ArkTS-Dyn：获取和设置URI的编码权限组件部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的编码权限组件部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 20 |
-| encodedSSP<sup>12+</sup>       | string | 否   | 否   | ArkTS-Dyn：获取和设置URI的编码方案特定部分。<br/>ArkTS-Sta：获取和设置URI的编码方案特定部分，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 20 |
+| scheme | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的协议部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的协议部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23 |
+| userInfo | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的用户信息部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的用户信息部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23 |
+| host | string | 是 | 否 | 获取URI的主机名部分（不带端口），若无此部分则返回null对象。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23 |
+| port | string | 是 | 否 | 获取URI的端口部分。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23 |
+| path | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的路径部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的路径部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23 |
+| query | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的查询部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的查询部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23 |
+| fragment | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的片段部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的片段部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23 |
+| authority | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的解码权限组件部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的解码权限组件部分，若无此部分则返回null对象，不支持单独设置为null对象。 <br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23 |
+| ssp | string | 否 | 否 | ArkTS-Dyn：获取和设置URI的解码案特定部分（方案特定部分是URI的一部分，它包含了特定于协议或方案的信息）。<br/>ArkTS-Sta：获取和设置URI的解码案特定部分，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 8 <br> **ArkTS-Sta起始版本：** 23 |
+| encodedUserInfo<sup>12+</sup>  | string | 否   | 否   | ArkTS-Dyn：获取和设置URI的编码用户信息部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的编码用户信息部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   <br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| encodedPath<sup>12+</sup>      | string | 否   | 否   | ArkTS-Dyn：获取和设置URI的编码路径部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的编码路径部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| encodedQuery<sup>12+</sup>     | string | 否   | 否   | ArkTS-Dyn：获取和设置URI的编码查询部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的编码查询部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| encodedFragment<sup>12+</sup>  | string | 否   | 否   | ArkTS-Dyn：获取和设置URI的编码片段部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的编码片段部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| encodedAuthority<sup>12+</sup> | string | 否   | 否   | ArkTS-Dyn：获取和设置URI的编码权限组件部分，若无此部分则返回null对象。<br/>ArkTS-Sta：获取和设置URI的编码权限组件部分，若无此部分则返回null对象，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| encodedSSP<sup>12+</sup>       | string | 否   | 否   | ArkTS-Dyn：获取和设置URI的编码方案特定部分。<br/>ArkTS-Sta：获取和设置URI的编码方案特定部分，不支持单独设置为null对象。<br/>此属性在API version 19之前为只读属性，不可写，修改此属性会报错。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
 
 ### 命名规则
 
@@ -144,7 +144,7 @@ constructor(uri: string)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -184,7 +184,7 @@ toString(): string
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -211,7 +211,7 @@ equalsTo(other: URI): boolean
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -253,7 +253,7 @@ checkIsAbsolute(): boolean
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -294,7 +294,7 @@ normalize(): URI
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -329,7 +329,7 @@ checkRelative(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -358,7 +358,7 @@ checkOpaque(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -387,7 +387,7 @@ checkHierarchical(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -420,7 +420,7 @@ ArkTS-Sta: getQueryValue(key:string): string | null
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -464,7 +464,7 @@ addQueryValue(key:string, value:string): URI
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -507,7 +507,7 @@ addSegment(pathSegment:string): URI
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -549,7 +549,7 @@ addEncodedSegment(pathSegment:string): URI
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -591,7 +591,7 @@ getQueryNames(): string[]
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -621,7 +621,7 @@ getQueryValues(key:string): string[]
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -663,7 +663,7 @@ getBooleanQueryValue(key:string,defaultValue:boolean): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -713,7 +713,7 @@ clearQuery(): URI
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -740,7 +740,7 @@ getLastSegment(): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -767,7 +767,7 @@ getSegment(): string[]
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -794,7 +794,7 @@ createFromParts(scheme: string, ssp: string, fragment: string): URI
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
