@@ -5509,3 +5509,31 @@ Allows an application to add the WiseCard of other applications.
 **Supported devices**: general devices
 
 **Since**: 23
+
+## ohos.permission.MANAGE_LOCAL_EDUCATION_SPACES
+
+Allows a system application to manage the education space.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: tablets
+
+**Since**: 23
+
+## ohos.permission.QUERY_LOCAL_EDUCATION_SPACES
+
+Allows a system application to query the education space properties.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: tablets
+
+**Since**: 23
