@@ -2947,17 +2947,12 @@ let p = Pt.Point.origin;
 
 <!-- @[no_exportAssignOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExportMod.ets) -->    
 
-```typescript
-// module1
+``` TypeScript
+// ExportMod.ets
 export class Point {
   constructor(x: number, y: number) {}
-  static origin = new Point(0, 0)
+  public static origin = new Point(0, 0)
 }
-
-// module2
-import * as Pt from 'module1'
-
-let p = Pt.Point.origin
 ```
 
 <!-- @[no_exportAssignTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoExportAssignment.ets) -->
