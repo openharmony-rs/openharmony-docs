@@ -92,3 +92,23 @@ This error code is reported if the parameter is not within the range of the [Pho
 **Solution**
 
 Ensure that the input parameter is within the range of the PhotoKeys enum.
+
+## 23800202 Invalid Scenario Call
+ 	 
+**Error Message**
+
+Invalid call context. Possible causes: 1. The API is called outside the photo browsing scenario. 2. The API is called when isMovingPhotoBadgeShown is already set to true.
+
+**Description**
+
+An error occurs due to an invalid scenario.
+
+**Possible Causes**
+
+1. This API is called in a non-full image browsing scenario.
+
+2. This API is called when [BaseSelectOptions.isMovingPhotoBadgeShown](arkts-apis-photoAccessHelper-class.md#baseselectoptions) is set to **true**.
+
+**Solution**
+
+Check the usage scenario of the [setMovingPhotoState](ohos-file-PhotoPickerComponent.md#setmovingphotostate23) API.

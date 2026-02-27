@@ -330,7 +330,7 @@ try {
 
 setPasswordPolicy(admin: Want, policy: PasswordPolicy): void
 
-设置设备口令策略。
+设置设备锁屏口令策略。当用户设置锁屏口令时，如果设置的锁屏口令不符合要求，会有安全提示重新设置锁屏口令。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -345,7 +345,7 @@ setPasswordPolicy(admin: Want, policy: PasswordPolicy): void
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
-| policy | [PasswordPolicy](#passwordpolicy) | 是 | 设备口令策略。 |
+| policy | [PasswordPolicy](#passwordpolicy) | 是 | 设备锁屏口令策略。 |
 
 **错误码**：
 
@@ -387,7 +387,7 @@ try {
 
 getPasswordPolicy(admin: Want): PasswordPolicy
 
-获取设备口令策略。
+获取设备锁屏口令策略。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -405,7 +405,7 @@ getPasswordPolicy(admin: Want): PasswordPolicy
 
 | 类型                   | 说明                      |
 | --------------------- | ------------------------- |
-| [PasswordPolicy](#passwordpolicy) | 设备口令策略。 |
+| [PasswordPolicy](#passwordpolicy) | 设备锁屏口令策略。 |
 
 **错误码**：
 
@@ -1163,11 +1163,11 @@ try {
 | 名称   | 类型       | 只读 | 可选 | 说明               |
 | ------ | ---------- | ---- | ---- | ------------------ |
 | inData | Uint8Array | 否   | 否 |证书的二进制内容。 |
-| alias  | string     | 否   | 否 |证书别名。         |
+| alias  | string     | 否   | 否 |证书别名，别名长度小于40个字符。         |
 
 ## PasswordPolicy
 
-设备口令策略。
+设备锁屏口令策略。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1175,7 +1175,7 @@ try {
 | ----------- | --------| ---- | ---- | --------------------------- |
 | complexityRegex | string | 否 | 是 | 口令复杂度正则表达式。 |
 | validityPeriod | number | 否 | 是 | 密码有效期（单位：毫秒）。 |
-| additionalDescription | string | 否 | 是 | 描述文本。 |
+| additionalDescription | string | 否 | 是 | 口令复杂度描述文本，例如：密码中必须包含字母、数字、特殊字符，至少8个字符，最多30个字符。 |
 
 ## ClipboardPolicy
 

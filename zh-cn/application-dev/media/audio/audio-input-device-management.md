@@ -33,6 +33,7 @@ let audioRoutingManager = audioManager.getRoutingManager(); // 再调用AudioMan
 | BLUETOOTH_SCO | 7 | 蓝牙设备SCO（Synchronous Connection Oriented）连接。 | 
 | MIC | 15 | 麦克风。 | 
 | USB_HEADSET | 22 | USB耳机，带麦克风。 | 
+| NEARLINK | 31 | 星闪设备。 | 
 
 ## 获取输入设备信息
 

@@ -11,7 +11,6 @@ The **MovingPhotoView** component is used to play moving photos and control the 
 > **NOTE**
 >
 > This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
->
 > Currently, the **MovingPhotoView** component cannot be used in Previewer.
 
 ## Modules to Import
@@ -20,15 +19,15 @@ The **MovingPhotoView** component is used to play moving photos and control the 
 >
 > - **MovingPhotoViewAttribute** is essential for configuring the **MovingPhotoView** component. In API version 21 and earlier, you must manually import **MovingPhotoViewAttribute** after importing the **MovingPhotoView** component. Otherwise, a compilation error is reported. However, starting from API version 22, the compilation toolchain automatically imports **MovingPhotoViewAttribute** when it detects the **MovingPhotoView** component, so manual import is no longer necessary.
 > - If you manually import **MovingPhotoViewAttribute**, DevEco Studio shows it as disabled (grayed out). In API version 21 and earlier, removing this import causes a compilation error. But from API version 22 onward, removing it does not affect the functionality.
-
-API version 21 and earlier:
+ 
+   API version 21 and earlier:
 
    ```ts
    import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
    ```
 
-API version 22 and later:
-
+   API version 22 and later:
+   
    ```ts
    import { MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
    ```
@@ -60,9 +59,9 @@ MovingPhotoView(options: MovingPhotoViewOptions)
 | controller  | [MovingPhotoViewController](#movingphotoviewcontroller)                                          | No| Yes  | Controller used to control the playback status of the moving photo.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                     |
 | imageAIOptions<sup>18+</sup>   | [ImageAIOptions](../apis-arkui/arkui-ts/ts-image-common.md#imageaioptions12) | No| Yes| AI options. You can set the image analyzer type or bind an image analyzer controller.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
-## Properties
+## Attributes
 
-In addition to the [universal properties](../apis-arkui/arkui-ts/ts-component-general-attributes.md), the following properties are supported.
+In addition to the [universal attributes](../apis-arkui/arkui-ts/ts-component-general-attributes.md), the following attributes are supported.
 
 ### muted
 
@@ -179,7 +178,7 @@ In addition to [universal events](../apis-arkui/arkui-ts/ts-component-general-ev
 
 onComplete(callback: MovingPhotoViewEventCallback)
 
-Called when the image of a moving photo is loaded.
+Called when the image of a moving photo is loaded. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
@@ -196,7 +195,7 @@ Called when the image of a moving photo is loaded.
 
 onStart(callback: MovingPhotoViewEventCallback)
 
-Called when a moving photo starts playing.
+Called when a moving photo starts playing. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -213,7 +212,7 @@ Called when a moving photo starts playing.
 
 onPause(callback: MovingPhotoViewEventCallback)
 
-Called when the playback is paused.
+Called when the playback is paused. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -230,7 +229,7 @@ Called when the playback is paused.
 
 onFinish(callback: MovingPhotoViewEventCallback)
 
-Called when the playback is finished.
+Called when the playback is finished. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -247,7 +246,7 @@ Called when the playback is finished.
 
 onError(callback: MovingPhotoViewEventCallback)
 
-Called when the playback fails.
+Called when the playback fails. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -264,7 +263,7 @@ Called when the playback fails.
 
 onStop(callback: MovingPhotoViewEventCallback)
 
-Called when the playback is stopped by **stop()**.
+Called when the playback is stopped by **stop()**. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -281,7 +280,7 @@ Called when the playback is stopped by **stop()**.
 
 onPrepared(callback: MovingPhotoViewEventCallback)
 
-Called when a moving photo is ready for playback.
+Called when a moving photo is ready for playback. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -589,6 +588,6 @@ struct Index {
   }
 }
 ```
-![AutomicEnergy](figures/AutomicEnergy.gif)
+![AutomaticEnergy](figures/AutomaticEnergy.gif)
 
 <!--RP1--><!--RP1End-->

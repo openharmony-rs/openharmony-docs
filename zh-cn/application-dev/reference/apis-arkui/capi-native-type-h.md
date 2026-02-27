@@ -102,6 +102,14 @@
 | [ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)|ArkUI_Matrix4ScaleOptions|定义矩阵缩放的缩放对象。|
 | [ArkUI_Matrix4TranslationOptions](capi-arkui-nativemodule-arkui-matrix4translationoptions.md)|ArkUI_Matrix4TranslationOptions|定义矩阵平移的平移对象。|
 | [ArkUI_PointF](capi-arkui-nativemodule-arkui-pointf.md)|ArkUI_PointF|定义一个二维坐标点结构体，坐标以浮点类型存储。|
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md) | OH_ArkUI_DecorationStyleOptions | 定义装饰线样式。 |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) | OH_ArkUI_TextDataDetectorConfig | 定义文本实体识别的配置。 |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md) | OH_ArkUI_TextEditorSelectionMenuOptions | 定义文本编辑器的文本选择菜单选项。 |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md) | OH_ArkUI_TextEditorPlaceholderOptions | 定义文本编辑器无输入时的提示文本选项。 |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md) | OH_ArkUI_TextEditorStyledStringController | 定义文本编辑器的属性字符串控制器。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md) | OH_ArkUI_TextEditorParagraphStyle | 定义文本编辑器的段落样式。 |
+| [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md) | OH_ArkUI_ShadowOptions | 定义阴影选项。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md) | OH_ArkUI_TextEditorTextStyle | 定义文本编辑器的文本样式。 |
 
 ### 枚举
 
@@ -202,7 +210,7 @@
 | [ArkUI_ButtonType](#arkui_buttontype)                               | ArkUI_ButtonType                | 定义按钮样式枚举值。                        |
 | [ArkUI_RenderFit](#arkui_renderfit)                                 | ArkUI_RenderFit   | 定义动画终态内容大小与位置的枚举值。 |
 | [ArkUI_SwiperIndicatorType](#arkui_swiperindicatortype)             | ArkUI_SwiperIndicatorType       | 定义Swiper组件的导航指示器类型。             |
-| [ArkUI_AnimationDirection](#arkui_animationdirection)               | ArkUI_AnimationDirection        | 动画播放模式。                           |
+| [ArkUI_AnimationDirection](#arkui_animationdirection)               | ArkUI_AnimationDirection        | 动画播放方向。                           |
 | [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate)   | ArkUI_ListItemSwipeActionState  | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[SwipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的显隐模式。 |
 | [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect)     | ArkUI_ListItemSwipeEdgeEffect   | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[SwipeAction](./arkui-ts/ts-container-listitem.md#listitem10)方法的滚动模式。 |
 | [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) | ArkUI_ListItemSwipeActionDirection | ListItem划出菜单的展开方向。 |
@@ -241,6 +249,11 @@
 | [ArkUI_MarqueeStartPolicy](#arkui_marqueestartpolicy)| ArkUI_MarqueeStartPolicy| 定义跑马灯启动策略枚举。 |
 | [ArkUI_MarqueeUpdatePolicy](#arkui_marqueeupdatepolicy)| ArkUI_MarqueeUpdatePolicy| 定义跑马灯更新策略枚举。 |
 | [ArkUI_PickerIndicatorType](#arkui_pickerindicatortype) | ArkUI_PickerIndicatorType | 选择器的选中指示器类型。 |
+| [OH_ArkUI_HapticFeedbackMode](#oh_arkui_hapticfeedbackmode) | OH_ArkUI_HapticFeedbackMode | 震动效果类型枚举。 |
+| [OH_ArkUI_TextEditorSpanType](#oh_arkui_texteditorspantype) | OH_ArkUI_TextEditorSpanType | 自定义文本选择菜单span类型枚举。 |
+| [OH_ArkUI_TextEditorResponseType](#oh_arkui_texteditorresponsetype) | OH_ArkUI_TextEditorResponseType | 自定义文本选择菜单响应类型枚举。 |
+| [OH_ArkUI_TextMenuType](#oh_arkui_textmenutype) | OH_ArkUI_TextMenuType | 文本菜单类型枚举。 |
+| [OH_ArkUI_LineBreakStrategy](#oh_arkui_linebreakstrategy) | OH_ArkUI_LineBreakStrategy | 换行策略类型枚举。 |
 
 ### 函数
 
@@ -1412,7 +1425,7 @@ enum ArkUI_AnimationCurve
 | ARKUI_CURVE_EASE = 1 | 动画以低速开始，然后加快，在结束前变慢。 |
 | ARKUI_CURVE_EASE_IN = 2 | 动画以低速开始。 |
 | ARKUI_CURVE_EASE_OUT = 3 | 动画以低速结束。 |
-| ARKUI_CURVE_EASE_IN_OUT = 4 | 动画以低速开始和结束。 |
+| ARKUI_CURVE_EASE_IN_OUT = 4 | 动画以低速开始和结束，提供平滑自然的动画过渡效果。 |
 | ARKUI_CURVE_FAST_OUT_SLOW_IN = 5 | 动画标准曲线。 |
 | ARKUI_CURVE_LINEAR_OUT_SLOW_IN = 6 | 动画减速曲线。 |
 | ARKUI_CURVE_FAST_OUT_LINEAR_IN = 7 | 动画加速曲线。 |
@@ -1725,8 +1738,8 @@ enum ArkUI_AnimationPlayMode
 | -- | -- |
 | ARKUI_ANIMATION_PLAY_MODE_NORMAL = 0 | 动画正向播放。 |
 | ARKUI_ANIMATION_PLAY_MODE_REVERSE = 1 | 动画反向播放。 |
-| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE = 2 | 动画在奇数次（1、3、5...）正向播放，在偶数次（2、4、6...）反向播放。 |
-| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE = 3 | 动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。 |
+| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE = 2 | 动画交替循环播放，在奇数次正向播放，在偶数次反向播放。 |
+| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE = 3 | 动画反向交替循环播放，在奇数次反向播放，在偶数次正向播放。 |
 
 ### ArkUI_ImageSize
 
@@ -2121,7 +2134,7 @@ enum ArkUI_ColorStrategy
 **描述：**
 
 
-前景色枚举值。
+前景和阴影的枚举值。
 
 **起始版本：** 12
 
@@ -2238,8 +2251,7 @@ enum ArkUI_MaskType
 
 **描述：**
 
-
-遮罩类型枚举。
+遮罩类型枚举。遮罩是一种用于限制组件显示区域的手段，它利用特定的形状对组件内容进行裁剪，从而实现只有遮罩区域内的内容才可见的效果。
 
 **起始版本：** 12
 
@@ -2390,10 +2402,10 @@ enum ArkUI_TransitionEdge
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TRANSITION_EDGE_TOP = 0 | 窗口的上边缘。 |
-| ARKUI_TRANSITION_EDGE_BOTTOM = 1 | 窗口的下边缘。 |
-| ARKUI_TRANSITION_EDGE_START = 2 | 窗口的左边缘。 |
-| ARKUI_TRANSITION_EDGE_END = 3 | 窗口的右边缘。 |
+| ARKUI_TRANSITION_EDGE_TOP = 0 | 转场从窗口的上边缘滑入和滑出。 |
+| ARKUI_TRANSITION_EDGE_BOTTOM = 1 | 转场从窗口的下边缘滑入和滑出。 |
+| ARKUI_TRANSITION_EDGE_START = 2 | 转场从窗口的左边缘滑入和滑出。 |
+| ARKUI_TRANSITION_EDGE_END = 3 | 转场从窗口的右边缘滑入和滑出。 |
 
 ### ArkUI_FinishCallbackType
 
@@ -2404,14 +2416,14 @@ enum ArkUI_FinishCallbackType
 **描述：**
 
 
-在动画中定义onFinish回调的类型。
+在动画中定义[onFinish](./capi-native-animate-h.md#oh_arkui_animatoroption_registeronfinishcallback)回调的类型。
 
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_FINISH_CALLBACK_REMOVED = 0 | 当整个动画结束并立即删除时，将触发回调。 |
-| ARKUI_FINISH_CALLBACK_LOGICALLY = 1 | 当动画在逻辑上处于下降状态，但可能仍处于其长尾状态时，将触发回调。 |
+| ARKUI_FINISH_CALLBACK_LOGICALLY = 1 | 当动画在逻辑上处于下降状态，但可能仍处于其长尾状态时，将触发回调。长尾状态是指动画即将完全停止前的残余变化过程，此时动画的数值变化已非常微小，接近目标值。 |
 
 ### ArkUI_ListItemAlignment
 
@@ -2695,7 +2707,7 @@ enum ArkUI_AnimationDirection
 **描述：**
 
 
-动画播放模式。
+动画播放方向。
 
 **起始版本：** 12
 
@@ -2703,8 +2715,8 @@ enum ArkUI_AnimationDirection
 | -- | -- |
 | ARKUI_ANIMATION_DIRECTION_NORMAL = 0 | 动画正向循环播放。 |
 | ARKUI_ANIMATION_DIRECTION_REVERSE = 1 | 动画反向循环播放。 |
-| ARKUI_ANIMATION_DIRECTION_ALTERNATE = 2 | 动画交替循环播放，奇数次正向播放，偶数次反向播放。 |
-| ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE = 3 | 动画反向交替循环播放，奇数次反向播放，偶数次正向播放。 |
+| ARKUI_ANIMATION_DIRECTION_ALTERNATE = 2 | 动画交替循环播放，在奇数次正向播放，在偶数次反向播放。 |
+| ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE = 3 | 动画反向交替循环播放，在奇数次反向播放，在偶数次正向播放。 |
 
 ### ArkUI_ListItemSwipeActionState
 
@@ -2797,8 +2809,8 @@ enum ArkUI_AnimationFillMode
 | -- | -- |
 | ARKUI_ANIMATION_FILL_MODE_NONE = 0 | 动画未执行时不会将任何样式应用于目标，动画播放完成之后恢复初始默认状态。 |
 | ARKUI_ANIMATION_FILL_MODE_FORWARDS = 1 | 目标将保留动画执行期间最后一个关键帧的状态。 |
-| ARKUI_ANIMATION_FILL_MODE_BACKWARDS = 2 | 动画将在应用于目标时立即应用第一个关键帧中定义的值，并在delay期间保留此值。 |
-| ARKUI_ANIMATION_FILL_MODE_BOTH = 3 | 动画将遵循Forwards和Backwards的规则，从而在两个方向上扩展动画属性。 |
+| ARKUI_ANIMATION_FILL_MODE_BACKWARDS = 2 | 动画将在应用于目标时立即应用第一个关键帧中定义的值，并在[delay](./capi-native-animate-h.md#oh_arkui_animateoption_setdelay)期间保留此值。 |
+| ARKUI_ANIMATION_FILL_MODE_BOTH = 3 | 动画将遵循[ARKUI_ANIMATION_FILL_MODE_FORWARDS](#arkui_animationfillmode)和[ARKUI_ANIMATION_FILL_MODE_BACKWARDS](#arkui_animationfillmode)的规则，从而在两个方向上扩展动画属性。 |
 
 ### ArkUI_ErrorCode
 
@@ -3371,6 +3383,8 @@ enum ArkUI_TextMenuItemId
 | ARKUI_TEXT_MENU_ITEM_ID_ADDRESS = 13 | 导航前往。对选中的地址提供跳转服务，拉起地图应用。 |
 | ARKUI_TEXT_MENU_ITEM_ID_DATA_TIME = 14 | 新建日程。对选中的日期和时间提供跳转服务，拉起新建日程页面。 |
 | ARKUI_TEXT_MENU_ITEM_ID_ASK_AI = 15 | 问问AI。对选中的文本提供AI问询能力。 |
+| ARKUI_TEXT_MENU_ITEM_ID_AUTO_FILL = 16 | 自动填充。例如自动填充账号密码。<br>**起始版本：** 24 |
+| ARKUI_TEXT_MENU_ITEM_ID_PASSWORD_VAULT = 17 | 密码保险箱。<br>**起始版本：** 24 |
 | ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_BEGIN = 10000 | 应用自定义菜单项起始id，除了系统内置的菜单项id，应用还可以自定义菜单项id。 |
 | ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_END = 20000 | 应用自定义菜单项结束id，除了系统内置的菜单项id，应用还可以自定义菜单项id。 |
 
@@ -3543,6 +3557,98 @@ enum ArkUI_PickerIndicatorType
 | -- | -- |
 | ARKUI_PICKER_INDICATOR_BACKGROUND  = 0 | 背景样式。 |
 | ARKUI_PICKER_INDICATOR_DIVIDER  = 1 | 分割线样式。 |
+
+### OH_ArkUI_HapticFeedbackMode
+
+```c
+enum OH_ArkUI_HapticFeedbackMode
+```
+
+**描述**
+
+震动效果类型枚举。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_HAPTIC_FEEDBACK_MODE_DISABLED = 0 | 无震动效果。 |
+| OH_ARKUI_HAPTIC_FEEDBACK_MODE_ENABLED = 1 | 有震动效果。 |
+| OH_ARKUI_HAPTIC_FEEDBACK_MODE_AUTO = 2 | 跟随系统的震动效果。 |
+
+### OH_ArkUI_TextEditorSpanType
+
+```c
+enum OH_ArkUI_TextEditorSpanType
+```
+
+**描述**
+
+自定义文本选择菜单span类型枚举。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_TEXT = 0 | 文本span |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_IMAGE = 1 | 图片span。 |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_MIXED = 2 | 混合span。 |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_BUILDER = 3 | 自定义布局span。 |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_DEFAULT = 4 | 默认span。 |
+
+### OH_ArkUI_TextEditorResponseType
+
+```c
+enum OH_ArkUI_TextEditorResponseType
+```
+
+**描述**
+
+自定义文本选择菜单响应类型枚举。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_RIGHT_CLICK = 0 | 通过鼠标右键触发菜单弹出。 |
+| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_LONG_PRESS = 1 | 通过长按触发菜单弹出。 |
+| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_SELECT = 2 | 通过鼠标选中触发菜单弹出。 |
+| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_DEFAULT = 3 | 默认响应类型。 |
+
+### OH_ArkUI_TextMenuType
+
+```c
+enum OH_ArkUI_TextMenuType
+```
+
+**描述**
+
+文本菜单类型枚举。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_TEXT_EDITOR_SELECTION_MENU = 0 | 文本选择菜单。 |
+| OH_ARKUI_TEXT_EDITOR_PREVIEW_MENU = 1 | 预览菜单。 |
+
+### OH_ArkUI_LineBreakStrategy
+
+```c
+enum OH_ArkUI_LineBreakStrategy
+```
+
+**描述**
+
+换行策略类型枚举。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_LINE_BREAK_STRATEGY_GREEDY = 0 | 贪婪模式。<br>使每一行尽可能显示多的字符，直到这一行不能显示更多字符时进行折行。 |
+| OH_ARKUI_LINE_BREAK_STRATEGY_HIGH_QUALITY = 1 | 高质量模式。<br>在平衡模式的基础上，尽可能填满行，同时最后一行的权重较低，可能出现最后一行留白较多的情形。 |
+| OH_ARKUI_LINE_BREAK_STRATEGY_BALANCE = 2 | 平衡模式。<br>在不拆词的情况下，尽量使一个段落中每一行的宽度相同。 |
 
 ## 函数说明
 

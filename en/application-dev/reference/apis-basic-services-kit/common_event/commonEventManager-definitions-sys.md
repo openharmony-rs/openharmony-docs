@@ -380,7 +380,7 @@ When a data migration application starts the backup and restore framework to per
 
 **Value**: "usual.event.RESTORE_START"
 
-### COMMON_EVENT_CLOUD_DISK_STATE_CHANGED<sup>21+<sup>
+### COMMON_EVENT_CLOUD_DISK_STATE_CHANGED<sup>21+</sup>
 
 Indicates that the sync root of the cloud disk has been updated.
 

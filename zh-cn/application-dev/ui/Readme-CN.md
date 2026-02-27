@@ -254,8 +254,8 @@
       - [属性修改器 (AttributeModifier)](arkts-user-defined-extension-attributeModifier.md)
       - [属性更新器 (AttributeUpdater)](arkts-user-defined-extension-attributeUpdater.md)
   - [UI国际化](arkts-internationalization.md)
-  - 无障碍与适老化<!--arkts-support-accessibility-friendliness-->
-    - [支持无障碍](arkts-universal-attributes-accessibility.md)
+  - 无障碍与适老化<!--arkts-support-accessibility-friendliness--><!--RP2-->
+    - [支持无障碍](arkts-universal-attributes-accessibility.md)<!--RP2End-->
     - [支持适老化](arkui-support-for-aging-adaptation.md)
   - 主题设置<!--arkts-theme-->
     - [应用深浅色适配](ui-dark-light-color-adaptation.md)
@@ -285,6 +285,7 @@
   - 构建布局<!--arkts-build-layout-ndk-->
     - [使用列表](ndk-loading-long-list.md)
     - [使用瀑布流](ndk-waterflow.md)
+    - [使用网格](ndk-grid.md)
   - 使用文本<!--arkts-build-text-ndk-->
       - [Text组件的文本绘制与显示](ndk-styled-string.md)
       - [输入框文本事件监听](ndk-textarea-event.md)
