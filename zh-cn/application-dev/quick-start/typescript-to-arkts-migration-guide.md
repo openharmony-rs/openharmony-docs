@@ -2285,9 +2285,9 @@ class A {
 
 function main(): void {
   let a = new A();
-  console.info(a.count);  // 打印a。
+  console.info(a.count);  // 打印a
   a.m('b');
-  console.info(a.count);  // 打印b。
+  console.info(a.count);  // 打印b
 }
 ```
 
