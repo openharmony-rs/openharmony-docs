@@ -3542,6 +3542,11 @@ import { C } from 'lib1'
 
 <!-- @[no_tsDeps](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoTsDeps.ets) -->
 
+``` TypeScript
+// lib2.ets
+import { C } from './ExportMod'
+```
+
 ### `class`不能被用作对象
 
 **规则：**`arkts-no-classes-as-obj`
