@@ -1562,15 +1562,15 @@ let c1 = <testCircle>createShape();
 
 let c2 = createShape() as testCircle;
 
-// 如果转换错误，不会产生编译时或运行时报错。
+// 如果转换错误，不会产生编译时或运行时报错
 let c3 = createShape() as testSquare;
-console.info(c3.y); // undefined。
+console.info(c3.y); // undefined
 
-// 在TS中，由于`as`关键字不会在运行时生效，所以`instanceof`的左操作数不会在运行时被装箱成引用类型。
-let e1 = (5.0 as Number) instanceof Number; // false。
+// 在TS中，由于`as`关键字不会在运行时生效，所以`instanceof`的左操作数不会在运行时被装箱成引用类型
+let e1 = (5.0 as Number) instanceof Number; // false
 
 // 创建Number对象，获得预期结果：
-let e2 = (new Number(5.0)) instanceof Number; // true。
+let e2 = (new Number(5.0)) instanceof Number; // true
 ```
 
 **ArkTS**
