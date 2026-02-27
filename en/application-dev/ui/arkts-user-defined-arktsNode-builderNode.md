@@ -125,7 +125,7 @@ The root node of the BuilderNode is directly used as the return value of [makeNo
 
 When combining a BuilderNode with a RenderNode, note the following:
 
-If you mount the RenderNode from the BuilderNode under another RenderNode, you must explicitly specify [selfIdeaSize](../reference/apis-arkui/js-apis-arkui-builderNode.md#renderoptions) as the layout constraint for the BuilderNode. This approach to mounting nodes is not recommended.
+If you mount the RenderNode from the BuilderNode under another RenderNode, you must explicitly specify the **selfIdealSize** attribute of [RenderOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#renderoptions) as the layout constraint for the BuilderNode. This approach to mounting nodes is not recommended.
 
   <!-- @[Main_RenderNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RenderNode.ets) -->
   
@@ -337,11 +337,11 @@ The following example forwards a touch event from one **Column** component to an
   ``` TypeScript
   import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+
   class Params {
     public text: string = 'this is a text';
   }
-  
+
   @Builder
   function buttonBuilder(params: Params) {
     Column() {
@@ -353,7 +353,7 @@ The following example forwards a touch event from one **Column** component to an
         .gesture(
           TapGesture()
             .onAction((event: GestureEvent) => {
-              hilog.info(0xF811,'testTag','%{public}s','TapGesture');
+              hilog.info(0xF811, 'testTag', '%{public}s', 'TapGesture');
             })
         )
     }
@@ -361,34 +361,34 @@ The following example forwards a touch event from one **Column** component to an
     .height(300)
     .backgroundColor(Color.Gray)
   }
-  
+
   // Create and initialize BuilderNode.
   class MyNodeController extends NodeController {
     private rootNode: BuilderNode<[Params]> | null = null;
     private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(buttonBuilder);
-  
+
     makeNode(uiContext: UIContext): FrameNode | null {
       this.rootNode = new BuilderNode(uiContext);
       this.rootNode.build(this.wrapBuilder, { text: 'this is a string' });
       return this.rootNode.getFrameNode();
     }
-  
+
     // Forward touch events to BuilderNode.
     postTouchEvent(touchEvent: TouchEvent): void {
       if (this.rootNode == null) {
         return;
       }
       let result = this.rootNode.postTouchEvent(touchEvent);
-      hilog.info(0xF811,'testTag','%{public}s','result' + result);
+      hilog.info(0xF811, 'testTag', '%{public}s', 'result' + result);
     }
   }
-  
+
   @Entry
   @Component
   struct postTouchEventPage {
     private nodeController: MyNodeController = new MyNodeController();
     @State bgColor: Color = Color.Pink;
-  
+
     build() {
       Column() {
         NodeContainer(this.nodeController)
@@ -409,6 +409,7 @@ The following example forwards a touch event from one **Column** component to an
       }
     }
   }
+
   ```
 
 ## BuilderProxyNode in BuilderNode Causes Tree Structure Changes
@@ -424,7 +425,7 @@ In the following example, touch events are bound to both the **Column** and **Ro
   ``` TypeScript
   import { BuilderNode, typeNode, NodeController, UIContext } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+
   @Component
   struct BlueRowComponent {
     build() {
@@ -436,12 +437,12 @@ In the following example, touch events are bound to both the **Column** and **Ro
         .backgroundColor(0xFF2787D9)
         .onTouch((event: TouchEvent) => {
           // Touching the green Column does not trigger the blue Row's touch event.
-          hilog.info(0xF811,'testTag','%{public}s','blue touched: ' + event.type);
+          hilog.info(0xF811, 'testTag', '%{public}s', 'blue touched: ' + event.type);
         })
       }
     }
   }
-  
+
   @Component
   struct GreenColumnComponent {
     build() {
@@ -453,41 +454,41 @@ In the following example, touch events are bound to both the **Column** and **Ro
       .backgroundColor(0xFF17A98D)
       .hitTestBehavior(HitTestMode.Transparent)
       .onTouch((event: TouchEvent) => {
-        hilog.info(0xF811,'testTag','%{public}s','green touched: ' + event.type);
+        hilog.info(0xF811, 'testTag', '%{public}s', 'green touched: ' + event.type);
       })
     }
   }
-  
+
   @Builder
   function buildBlueRow() {
     // The custom component is mounted to Builder, generating BuilderProxyNode.
     BlueRowComponent()
   }
-  
+
   @Builder
   function buildGreenColumn() {
     // The custom component is mounted to Builder, generating BuilderProxyNode.
     GreenColumnComponent()
   }
-  
+
   class MyNodeController extends NodeController {
     makeNode(uiContext: UIContext): FrameNode | null {
       const relativeContainer = typeNode.createNode(uiContext, 'RelativeContainer');
-  
+
       const blueRowNode = new BuilderNode(uiContext);
       blueRowNode.build(wrapBuilder(buildBlueRow));
-  
+
       const greenColumnNode = new BuilderNode(uiContext);
       greenColumnNode.build(wrapBuilder(buildGreenColumn));
-  
+
       // Overlay greenColumnNode on top of blueRowNode.
       relativeContainer.appendChild(blueRowNode.getFrameNode());
       relativeContainer.appendChild(greenColumnNode.getFrameNode());
-  
+
       return relativeContainer;
     }
   }
-  
+
   @Entry
   @Component
   struct BuilderProxyNode01 {
@@ -508,7 +509,7 @@ In the preceding scenario, to enable touch event propagation, wrap the syntax no
   ``` TypeScript
   import { BuilderNode, typeNode, NodeController, UIContext } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+
   @Component
   struct BlueRowComponent {
     build() {
@@ -520,12 +521,12 @@ In the preceding scenario, to enable touch event propagation, wrap the syntax no
         .backgroundColor(0xFF2787D9)
         .onTouch((event: TouchEvent) => {
           // Touching the green Column triggers the blue Row's touch event.
-          hilog.info(0xF811,'testTag','%{public}s','blue touched: ' + event.type);
+          hilog.info(0xF811, 'testTag', '%{public}s', 'blue touched: ' + event.type);
         })
       }
     }
   }
-  
+
   @Component
   struct GreenColumnComponent {
     build() {
@@ -536,17 +537,17 @@ In the preceding scenario, to enable touch event propagation, wrap the syntax no
       .backgroundColor(0xFF17A98D)
       .hitTestBehavior(HitTestMode.Transparent)
       .onTouch((event: TouchEvent) => {
-        hilog.info(0xF811,'testTag','%{public}s','green touched: ' + event.type);
+        hilog.info(0xF811, 'testTag', '%{public}s', 'green touched: ' + event.type);
       })
     }
   }
-  
+
   @Builder
   function buildBlueRow() {
     // The custom component is mounted to Builder, generating BuilderProxyNode.
     BlueRowComponent()
   }
-  
+
   @Builder
   function buildGreenColumn() {
     // The Builder's root node is a container component (no BuilderProxyNode generated), allowing attribute settings.
@@ -555,25 +556,25 @@ In the preceding scenario, to enable touch event propagation, wrap the syntax no
     }
     .hitTestBehavior(HitTestMode.Transparent)
   }
-  
+
   class MyNodeController extends NodeController {
     makeNode(uiContext: UIContext): FrameNode | null {
       const relativeContainer = typeNode.createNode(uiContext, 'RelativeContainer');
-  
+
       const blueRowNode = new BuilderNode(uiContext);
       blueRowNode.build(wrapBuilder(buildBlueRow));
-  
+
       const greenColumnNode = new BuilderNode(uiContext);
       greenColumnNode.build(wrapBuilder(buildGreenColumn));
-  
+
       // Overlay greenColumnNode on top of blueRowNode.
       relativeContainer.appendChild(blueRowNode.getFrameNode());
       relativeContainer.appendChild(greenColumnNode.getFrameNode());
-  
+
       return relativeContainer;
     }
   }
-  
+
   @Entry
   @Component
   struct Index {
@@ -595,7 +596,7 @@ Alternatively, for custom components, you can directly set attributes. In this c
   ``` TypeScript
   import { BuilderNode, typeNode, NodeController, UIContext } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+
   @Component
   struct BlueRowComponent {
     build() {
@@ -607,12 +608,12 @@ Alternatively, for custom components, you can directly set attributes. In this c
         .backgroundColor(0xFF2787D9)
         .onTouch((event: TouchEvent) => {
           // Touching the green Column triggers the blue Row's touch event.
-          hilog.info(0xF811,'testTag','%{public}s','blue touched: ' + event.type);
+          hilog.info(0xF811, 'testTag', '%{public}s', 'blue touched: ' + event.type);
         })
       }
     }
   }
-  
+
   @Component
   struct GreenColumnComponent {
     build() {
@@ -623,42 +624,42 @@ Alternatively, for custom components, you can directly set attributes. In this c
       .backgroundColor(0xFF17A98D)
       .hitTestBehavior(HitTestMode.Transparent)
       .onTouch((event: TouchEvent) => {
-        hilog.info(0xF811,'testTag','%{public}s','green touched: ' + event.type);
+        hilog.info(0xF811, 'testTag', '%{public}s', 'green touched: ' + event.type);
       })
     }
   }
-  
+
   @Builder
   function buildBlueRow() {
     // The custom component is mounted to Builder, generating BuilderProxyNode.
     BlueRowComponent()
   }
-  
+
   @Builder
   function buildGreenColumn() {
     // Setting attributes directly on the custom component generates a __Common__ node (no BuilderProxyNode).
     GreenColumnComponent()
       .hitTestBehavior(HitTestMode.Transparent)
   }
-  
+
   class MyNodeController extends NodeController {
     makeNode(uiContext: UIContext): FrameNode | null {
       const relativeContainer = typeNode.createNode(uiContext, 'RelativeContainer');
-  
+
       const blueRowNode = new BuilderNode(uiContext);
       blueRowNode.build(wrapBuilder(buildBlueRow));
-  
+
       const greenColumnNode = new BuilderNode(uiContext);
       greenColumnNode.build(wrapBuilder(buildGreenColumn));
-  
+
       // Overlay greenColumnNode on top of blueRowNode.
       relativeContainer.appendChild(blueRowNode.getFrameNode());
       relativeContainer.appendChild(greenColumnNode.getFrameNode());
-  
+
       return relativeContainer;
     }
   }
-  
+
   @Entry
   @Component
   struct Index {
@@ -728,7 +729,8 @@ In the following example, the custom component **ReusableChildComponent** can pa
   function buildNode(param: Params = new Params('hello')) {
     Row() {
       Text(`C${param.item} -- `)
-      ChildComponent2({ item: param.item }) // This custom component cannot be correctly reused in the BuilderNode.
+      // This custom component cannot be correctly reused in the BuilderNode.
+      ChildComponent2({ item: param.item })
     }
   }
   
@@ -874,31 +876,31 @@ In the following example, when **ReusableChildComponent** serves as a direct chi
   ``` TypeScript
   import { FrameNode, NodeController, BuilderNode, UIContext } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+
   const TEST_TAG: string = 'Reusable';
-  
+
   class Params {
     public item: string = '';
-  
+
     constructor(item: string) {
       this.item = item;
     }
   }
-  
+
   @Builder
   function buildNode(param: Params = new Params('Hello')) {
     ChildComponent2({ item: param.item })
   }
-  
+
   class MyNodeController extends NodeController {
     public builderNode: BuilderNode<[Params]> | null = null;
     public item: string = '';
-  
+
     constructor(item: string) {
       super();
       this.item = item;
     }
-  
+
     makeNode(uiContext: UIContext): FrameNode | null {
       if (this.builderNode == null) {
         this.builderNode = new BuilderNode(uiContext, { selfIdealSize: { width: 300, height: 200 } });
@@ -907,51 +909,52 @@ In the following example, when **ReusableChildComponent** serves as a direct chi
       return this.builderNode.getFrameNode();
     }
   }
-  
+
   // This custom component is decorated with @Reusable and therefore cannot be directly mounted as a child node of the BuilderNode.
   @Reusable
   @Component
   struct ReusableChildComponent {
     @Prop item: string = '';
-  
+
     aboutToReuse(params: object): void {
-      hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ReusableChildComponent aboutToReuse ${JSON.stringify(params)}`);
+      hilog.info(0xF811, 'testTag', '%{public}s',
+        `${TEST_TAG} ReusableChildComponent aboutToReuse ${JSON.stringify(params)}`);
     }
-  
+
     aboutToRecycle(): void {
-      hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ReusableChildComponent aboutToRecycle ${this.item}`);
+      hilog.info(0xF811, 'testTag', '%{public}s', `${TEST_TAG} ReusableChildComponent aboutToRecycle ${this.item}`);
     }
-  
+
     build() {
       Text(`A--${this.item}`)
         .id('ReusablePage02')
     }
   }
-  
+
   // Custom component not decorated with @Reusable
   @Component
   struct ChildComponent2 {
     @Prop item: string = '';
-  
+
     aboutToReuse(params: Record<string, object>) {
-      hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ChildComponent2 aboutToReuse ${JSON.stringify(params)}`);
+      hilog.info(0xF811, 'testTag', '%{public}s', `${TEST_TAG} ChildComponent2 aboutToReuse ${JSON.stringify(params)}`);
     }
-  
+
     aboutToRecycle(): void {
-      hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ChildComponent2 aboutToRecycle ${this.item}`);
+      hilog.info(0xF811, 'testTag', '%{public}s', `${TEST_TAG} ChildComponent2 aboutToRecycle ${this.item}`);
     }
-  
+
     build() {
       ReusableChildComponent({ item: this.item })
     }
   }
-  
-  
+
+
   @Entry
   @Component
   struct Index {
     @State controller: MyNodeController = new MyNodeController('Child');
-  
+
     build() {
       Column() {
         NodeContainer(this.controller)
@@ -976,21 +979,21 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
   import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
   import { AbilityConstant, Configuration, EnvironmentCallback } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+
   class Params {
     public text: string = '';
-  
+
     constructor(text: string) {
       this.text = text;
     }
   }
-  
+
   // Custom component
   @Component
   struct TextBuilder {
     // The @Prop decorated attribute is the attribute to be updated in the custom component. It is a basic attribute.
     @Prop message: string = 'TextBuilder';
-  
+
     build() {
       Row() {
         Column() {
@@ -1004,7 +1007,7 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
       }
     }
   }
-  
+
   @Builder
   function buildText(params: Params) {
     Column() {
@@ -1016,31 +1019,31 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
       TextBuilder({ message: params.text }) // Custom component
     }.backgroundColor($r(`app.color.start_window_background`))
   }
-  
+
   class TextNodeController extends NodeController {
     private textNode: BuilderNode<[Params]> | null = null;
     private message: string = '';
-  
+
     constructor(message: string) {
       super();
       this.message = message;
     }
-  
+
     makeNode(context: UIContext): FrameNode | null {
       return this.textNode?.getFrameNode() ? this.textNode?.getFrameNode() : null;
     }
-  
+
     createNode(context: UIContext) {
       this.textNode = new BuilderNode(context);
       this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message));
       builderNodeMap.push(this.textNode);
     }
-  
+
     deleteNode() {
       let node = builderNodeMap.pop();
       node?.dispose();
     }
-  
+
     update(message: string) {
       if (this.textNode !== null) {
         // Call update to perform an update.
@@ -1048,31 +1051,31 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
       }
     }
   }
-  
+
   // Record the created custom node object.
   const builderNodeMap: BuilderNode<[Params]>[] = [];
-  
+
   function updateColorMode() {
     builderNodeMap.forEach((value, index) => {
       // Notify BuilderNode of the environment changes.
       value.updateConfiguration();
     });
   }
-  
+
   @Entry
   @Component
   struct Index {
     @State message: string = 'hello';
     private textNodeController: TextNodeController = new TextNodeController(this.message);
     private count = 0;
-  
+
     aboutToAppear(): void {
       let environmentCallback: EnvironmentCallback = {
         onMemoryLevel: (level: AbilityConstant.MemoryLevel): void => {
-          hilog.info(0xF811,'testTag','%{public}s','onMemoryLevel');
+          hilog.info(0xF811, 'testTag', '%{public}s', 'onMemoryLevel');
         },
         onConfigurationUpdated: (config: Configuration): void => {
-          hilog.info(0xF811,'testTag','%{public}s','onConfigurationUpdated ' + JSON.stringify(config));
+          hilog.info(0xF811, 'testTag', '%{public}s', 'onConfigurationUpdated ' + JSON.stringify(config));
           updateColorMode();
         }
       };
@@ -1081,12 +1084,12 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
       // Create a custom node and add it to the map.
       this.textNodeController.createNode(this.getUIContext());
     }
-  
+
     aboutToDisappear(): void {
       // Remove the reference to the custom node from the map and release the node.
       this.textNodeController.deleteNode();
     }
-  
+
     build() {
       Row() {
         Column() {
@@ -1732,6 +1735,7 @@ import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
 @ObservedV2
 export class Book {
   @Trace name: string = "100";
+
   constructor(name: string) {
     this.name = name;
   }
@@ -1753,7 +1757,7 @@ class TextNodeController extends NodeController {
   makeNode(context: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(context);
     this.textNode = new BuilderNode(context, { selfIdealSize: { width: 150, height: 150 } });
-    this.textNode.build(wrapBuilder<[Book]>(buildText), new  Book (this.name));
+    this.textNode.build(wrapBuilder<[Book]>(buildText), new Book(this.name));
     this.textNode.inheritFreezeOptions(true); // Configure the BuilderNode to inherit the freeze policy from its parent component.
     if (this.rootNode !== null) {
       this.rootNode.appendChild(this.textNode.getFrameNode()); // Mount the BuilderNode to the component tree.
@@ -1786,7 +1790,10 @@ struct BuildNodeChild {
   build() {
     Column() {
       Text(`Book name is  ${this.bookTest.name}`).fontSize(30)
-      Button('change').width('60%').height(40).fontSize(30)
+      Button('change')
+        .width('60%')
+        .height(40)
+        .fontSize(30)
         .onClick(() => {
           this.bookTest.name = "The Old Man and the Sea";
         })
@@ -2471,20 +2478,20 @@ Pre-rendering is particularly suitable for scenarios such as web page initializa
     <!-- @[Web_createNWeb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
     ``` TypeScript
-    import { AbilityConstant, ConfigurationConstant, UIAbility,   Want } from '@kit.AbilityKit';
+    import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { createNWeb } from '../Common/CommonIndex';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { window } from '@kit.ArkUI';
-    
+
     const DOMAIN = 0x0000;
-    
+
     export default class EntryAbility extends UIAbility {
-    // ···
-    
+      // ···
+
       onWindowStageCreate(windowStage: window.WindowStage): void {
         // Main window is created, set main page for this ability
         hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-    
+
         windowStage.loadContent('pages/Index', (err) => {
           createNWeb('', windowStage.getMainWindowSync().getUIContext());
           if (err.code) {
@@ -2494,7 +2501,8 @@ Pre-rendering is particularly suitable for scenarios such as web page initializa
           hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
         });
       }
-    // ···
+
+      // ···
     }
     ```
 
@@ -2510,21 +2518,23 @@ Pre-rendering is particularly suitable for scenarios such as web page initializa
 
     // @Builder content for dynamic component content
     // Data class for input parameters
-    class Data{
+    class Data {
       public url: string = '';
       public controller: WebviewController = new webview.WebviewController();
     }
+
     // Use the Boolean variable shouldInactive to stop rendering after the web page is pre-rendered in the background.
     let shouldInactive: boolean = true;
+
     @Builder
-    function webBuilder(data:Data) {
+    function webBuilder(data: Data) {
       Column() {
         Web({ src: data.url, controller: data.controller })
           .onPageBegin(() => {
             // Call onActive to enable rendering.
             data.controller.onActive();
           })
-          .onFirstMeaningfulPaint(() =>{
+          .onFirstMeaningfulPaint(() => {
             if (!shouldInactive) {
               return;
             }
@@ -2536,14 +2546,17 @@ Pre-rendering is particularly suitable for scenarios such as web page initializa
           .height('100%')
       }
     }
+
     let wrap = wrapBuilder<Data[]>(webBuilder);
+
     // The NodeController instance must be used with a NodeContainer for controlling and feeding back the behavior of the nodes in the NodeContainer.
     export class MyNodeController2 extends NodeController {
       private rootnode: BuilderNode<Data[]> | null = null;
+
       // This function must be overridden, which is used to construct the number of nodes, return the nodes, and attach them to NodeContainer.
       // Called when the corresponding NodeContainer is created or called by the rebuild method.
       makeNode(uiContext: UIContext): FrameNode | null {
-        hilog.info(0xF811,'testTag','%{public}s',' uicontext is undefined :' + (uiContext === undefined));
+        hilog.info(0xF811, 'testTag', '%{public}s', ' uicontext is undefined :' + (uiContext === undefined));
         if (this.rootnode != null) {
           // Return the FrameNode object.
           return this.rootnode.getFrameNode();
@@ -2551,48 +2564,55 @@ Pre-rendering is particularly suitable for scenarios such as web page initializa
         // Return null to detach the dynamic component from the bound node.
         return null;
       }
+
       // Called when the layout size changes.
       aboutToResize(size: Size) {
-        hilog.info(0xF811,'testTag','%{public}s','aboutToResize   width   : ' + size.width  +  ' height : ' + size.height );
+        hilog.info(0xF811, 'testTag', '%{public}s', 'aboutToResize   width   : ' + size.width + ' height : ' + size.height);
       }
+
       // Called when the NodeContainer bound to the controller is about to appear.
       aboutToAppear() {
-        hilog.info(0xF811,'testTag','%{public}s','aboutToAppear');
+        hilog.info(0xF811, 'testTag', '%{public}s', 'aboutToAppear');
         // Keep rendering active when the page is brought to the foreground.
         shouldInactive = false;
       }
+
       // Called when the NodeContainer bound to the controller is about to disappear.
       aboutToDisappear() {
-        hilog.info(0xF811,'testTag','%{public}s','aboutToDisappear');
+        hilog.info(0xF811, 'testTag', '%{public}s', 'aboutToDisappear');
       }
+
       // This function is a custom function and can be used for initialization.
       // Initialize the BuilderNode through UIContext, and then initialize the content in @Builder through the build API in BuilderNode.
-      initWeb(url:string, uiContext:UIContext, control:WebviewController) {
-        if(this.rootnode != null){
+      initWeb(url: string, uiContext: UIContext, control: WebviewController) {
+        if (this.rootnode != null) {
           return;
         }
         // Create a node, during which the UIContext should be passed.
         this.rootnode = new BuilderNode(uiContext);
         // Create a dynamic Web component.
-        this.rootnode.build(wrap, { url:url, controller:control });
+        this.rootnode.build(wrap, { url: url, controller: control });
       }
     }
+
     // Create a Map to store the required NodeController instance.
-    let nodeMap:Map<string, MyNodeController2 | undefined> = new Map();
+    let nodeMap: Map<string, MyNodeController2 | undefined> = new Map();
     // Create a Map to store the required WebViewController instance.
-    let controllerMap:Map<string, WebviewController | undefined> = new Map();
+    let controllerMap: Map<string, WebviewController | undefined> = new Map();
+
     // UIContext is required for initialization and needs to be obtained from the ability.
     export const createNWeb = (url: string, uiContext: UIContext) => {
       // Create a NodeController instance.
       let baseNode = new MyNodeController2();
-      let controller = new webview.WebviewController() ;
+      let controller = new webview.WebviewController();
       // Initialize the custom Web component.
       baseNode.initWeb(url, uiContext, controller);
       controllerMap.set(url, controller);
       nodeMap.set(url, baseNode);
     }
+
     // Customize the API for obtaining the NodeController instance.
-    export const getNWeb = (url : string) : MyNodeController2 | undefined => {
+    export const getNWeb = (url: string): MyNodeController2 | undefined => {
       return nodeMap.get(url);
     }
     ```
