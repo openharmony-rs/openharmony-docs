@@ -1225,14 +1225,14 @@ console.info(obj2['m']); // 此时，'m'会被正确混淆，m可以选择性保
   <!-- @[optionExample_keepPropertyName2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
   
   ``` TypeScript
-  // 间接导出MyClass07。
+  // 间接导出MyClass07
   class MyClass07 {
     greet() {}
   }
   let alias = new MyClass07();
   export { alias };
   
-  // 直接导出MyClass08。
+  // 直接导出MyClass08
   export class MyClass08 {
     exampleName: 'jack'
     exampleAge: 100
