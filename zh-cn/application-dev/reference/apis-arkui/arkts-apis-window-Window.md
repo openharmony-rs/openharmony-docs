@@ -4601,7 +4601,7 @@ on(type: 'keyboardHeightChange', callback: Callback&lt;number&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyboardHeightChange](#onkeyboardheightchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyboardHeightChange](#onkeyboardheightchange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4638,7 +4638,7 @@ try {
 }
 ```
 
-## onKeyboardHeightChange<sup>22+</sup>
+## onKeyboardHeightChange<sup>23+</sup>
 
 onKeyboardHeightChange(callback: Callback&lt;int&gt;): void
 
@@ -4650,7 +4650,7 @@ onKeyboardHeightChange(callback: Callback&lt;int&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4683,7 +4683,7 @@ off(type: 'keyboardHeightChange', callback?: Callback&lt;number&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyboardHeightChange](#offkeyboardheightchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyboardHeightChange](#offkeyboardheightchange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4725,7 +4725,7 @@ try {
 }
 ```
 
-## offKeyboardHeightChange<sup>22+</sup>
+## offKeyboardHeightChange<sup>23+</sup>
 
 offKeyboardHeightChange(callback?: Callback&lt;int&gt;): void
 
@@ -4737,7 +4737,7 @@ offKeyboardHeightChange(callback?: Callback&lt;int&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4777,7 +4777,7 @@ on(type: 'keyboardWillShow', callback: Callback&lt;KeyboardInfo&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyboardWillShow](#onkeyboardwillshow22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyboardWillShow](#onkeyboardwillshow23)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4817,7 +4817,7 @@ try {
 }
 ```
 
-## onKeyboardWillShow<sup>22+</sup>
+## onKeyboardWillShow<sup>23+</sup>
 
 onKeyboardWillShow(callback: Callback&lt;KeyboardInfo&gt;): void
 
@@ -4831,7 +4831,7 @@ onKeyboardWillShow(callback: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4873,7 +4873,7 @@ off(type: 'keyboardWillShow', callback?: Callback&lt;KeyboardInfo&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyboardWillShow](#offkeyboardwillshow22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyboardWillShow](#offkeyboardwillshow23)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4916,7 +4916,7 @@ try {
 }
 ```
 
-## offKeyboardWillShow<sup>22+</sup>
+## offKeyboardWillShow<sup>23+</sup>
 
 offKeyboardWillShow(callback?: Callback&lt;KeyboardInfo&gt;): void
 
@@ -4928,7 +4928,7 @@ offKeyboardWillShow(callback?: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4975,7 +4975,7 @@ on(type: 'keyboardWillHide', callback: Callback&lt;KeyboardInfo&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyboardWillHide](#onkeyboardwillhide22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyboardWillHide](#onkeyboardwillhide23)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -5015,7 +5015,7 @@ try {
 }
 ```
 
-## onKeyboardWillHide<sup>22+</sup>
+## onKeyboardWillHide<sup>23+</sup>
 
 onKeyboardWillHide(callback: Callback&lt;KeyboardInfo&gt;): void
 
@@ -5029,7 +5029,7 @@ onKeyboardWillHide(callback: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5071,7 +5071,7 @@ off(type: 'keyboardWillHide', callback?: Callback&lt;KeyboardInfo&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyboardWillHide](#offkeyboardwillhide22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyboardWillHide](#offkeyboardwillhide23)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -5114,7 +5114,7 @@ try {
 }
 ```
 
-## offKeyboardWillHide<sup>22+</sup>
+## offKeyboardWillHide<sup>23+</sup>
 
 offKeyboardWillHide(callback?: Callback&lt;KeyboardInfo&gt;): void
 
@@ -5126,7 +5126,7 @@ offKeyboardWillHide(callback?: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5173,7 +5173,7 @@ on(type: 'keyboardDidShow', callback: Callback&lt;KeyboardInfo&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyboardDidShow](#onkeyboarddidshow22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyboardDidShow](#onkeyboarddidshow23)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -5211,7 +5211,7 @@ try {
 }
 ```
 
-## onKeyboardDidShow<sup>22+</sup>
+## onKeyboardDidShow<sup>23+</sup>
 
 onKeyboardDidShow(callback: Callback&lt;KeyboardInfo&gt;): void
 
@@ -5226,7 +5226,7 @@ onKeyboardDidShow(callback: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5263,7 +5263,7 @@ off(type: 'keyboardDidShow', callback?: Callback&lt;KeyboardInfo&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyboardDidShow](#offkeyboarddidshow22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyboardDidShow](#offkeyboarddidshow23)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -5305,7 +5305,7 @@ try {
 }
 ```
 
-## offKeyboardDidShow<sup>22+</sup>
+## offKeyboardDidShow<sup>23+</sup>
 
 offKeyboardDidShow(callback?: Callback&lt;KeyboardInfo&gt;): void
 
@@ -5317,7 +5317,7 @@ offKeyboardDidShow(callback?: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5360,7 +5360,7 @@ on(type: 'keyboardDidHide', callback: Callback&lt;KeyboardInfo&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyboardDidHide](#onkeyboarddidhide22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onKeyboardDidHide](#onkeyboarddidhide23)。
 
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
@@ -5399,7 +5399,7 @@ try {
 }
 ```
 
-## onKeyboardDidHide<sup>22+</sup>
+## onKeyboardDidHide<sup>23+</sup>
 
 onKeyboardDidHide(callback: Callback&lt;KeyboardInfo&gt;): void
 
@@ -5414,7 +5414,7 @@ onKeyboardDidHide(callback: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5451,7 +5451,7 @@ off(type: 'keyboardDidHide', callback?: Callback&lt;KeyboardInfo&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyboardDidHide](#offkeyboarddidhide22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offKeyboardDidHide](#offkeyboarddidhide23)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -5493,7 +5493,7 @@ try {
 }
 ```
 
-## offKeyboardDidHide<sup>22+</sup>
+## offKeyboardDidHide<sup>23+</sup>
 
 offKeyboardDidHide(callback?: Callback&lt;KeyboardInfo&gt;): void
 
@@ -5505,7 +5505,7 @@ offKeyboardDidHide(callback?: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8635,7 +8635,7 @@ on(type: 'windowHighlightChange', callback: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowHighlightChange](#onwindowhighlightchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowHighlightChange](#onwindowhighlightchange23)。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -8673,7 +8673,7 @@ try {
 }
 ```
 
-## onWindowHighlightChange<sup>22+</sup>
+## onWindowHighlightChange<sup>23+</sup>
 
 onWindowHighlightChange(callback: Callback&lt;boolean&gt;): void
 
@@ -8683,7 +8683,7 @@ onWindowHighlightChange(callback: Callback&lt;boolean&gt;): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('windowHighlightChange')](#onwindowhighlightchange15)。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -8726,7 +8726,7 @@ off(type: 'windowHighlightChange', callback?: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowHighlightChange](#offWindowHighlightChange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowHighlightChange](#offWindowHighlightChange23)。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -8770,7 +8770,7 @@ try {
 }
 ```
 
-## offWindowHighlightChange<sup>22+</sup>
+## offWindowHighlightChange<sup>23+</sup>
 
 offWindowHighlightChange(callback?: Callback&lt;boolean&gt;): void
 
@@ -8780,7 +8780,7 @@ offWindowHighlightChange(callback?: Callback&lt;boolean&gt;): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('windowHighlightChange')](#offwindowHighlightChange22)。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -10007,7 +10007,7 @@ setWindowFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): v
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -10081,7 +10081,7 @@ setWindowFocusable(isFocusable: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12427,7 +12427,7 @@ keepKeyboardOnFocus(keepKeyboardFlag: boolean): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -13476,7 +13476,7 @@ isFocused(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -13490,7 +13490,7 @@ isFocused(): boolean
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -13958,7 +13958,7 @@ raiseToAppTop(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -14049,7 +14049,7 @@ setRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -15277,7 +15277,7 @@ setExclusivelyHighlighted(exclusivelyHighlighted: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -15301,7 +15301,7 @@ setExclusivelyHighlighted(exclusivelyHighlighted: boolean): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
-| 1300002  | This window state is abnormal.                                                                               |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.                       |
 | 1300003  | This window manager service works abnormally.                                                                |
 | 1300004  | Unauthorized operation.                                                                                |
 
@@ -15358,7 +15358,7 @@ isWindowHighlighted(): boolean
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -15373,7 +15373,7 @@ isWindowHighlighted(): boolean
 | 错误码ID | 错误信息                                                                                                     |
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
-| 1300002  | This window state is abnormal.                                                                               |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.                       |
 
 **示例：**
 

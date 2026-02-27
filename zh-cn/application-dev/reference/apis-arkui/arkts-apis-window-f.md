@@ -556,7 +556,7 @@ ArkTS-Sta: shiftAppWindowFocus(sourceWindowId: int, targetWindowId: int): Promis
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -579,9 +579,9 @@ ArkTS-Sta: shiftAppWindowFocus(sourceWindowId: int, targetWindowId: int): Promis
 | ------- | --------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.  |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                       |
+| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows and subwindows are supported. 2. The two windows are not from the same process. |
 
 **示例：**
 
