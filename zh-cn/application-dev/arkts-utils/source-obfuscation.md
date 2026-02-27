@@ -916,10 +916,10 @@ export class MyClass05 {
 <!-- @[optionExample_useKeepInSource8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
 
 ``` TypeScript
-// example.ts。
+// ArkGuardAbility.ts
 const myMethodName = "myMethod";
 
-// 11，aa，myMethod不会被收集到白名单中。
+// 11，aa，myMethod不会被收集到白名单中
 class MyClass06 {
   // @KeepSymbol
   11:11;
@@ -929,7 +929,7 @@ class MyClass06 {
   [myMethodName](){}
 }
 
-// RED不会被收集到白名单中。
+// RED不会被收集到白名单中
 enum MyEnum {
   // @KeepSymbol
   'RED',
