@@ -3301,8 +3301,8 @@ ArkTS不支持导入断言。因为导入是编译时特性，运行时检查导
 
 <!-- @[no_importAssertions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoImportAssertions.ts) -->   
 
-```typescript
-import { obj } from 'something.json' assert { type: 'json' }
+``` TypeScript
+import { obj } from './Something.json' assert { type: 'json' }
 ```
 
 **ArkTS**
