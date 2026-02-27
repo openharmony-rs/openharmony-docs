@@ -19,31 +19,30 @@
 1. 创建voice_call类型的AVSession，AVSession在构造方法中支持不同的类型参数，由AVSessionType定义，voice_call表示通话类型，如果不创建，将显示空列表。
 
    <!-- @[create_voiceCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/Index.ets) -->    
-  
-   ```ts
-    import { avSession } from '@kit.AVSessionKit';
-    @Entry
-    @Component
-    struct Index {
-      @State message: string = 'hello world';
-    
-      build() { 
-        Column() {
-            Text(this.message)
-              .onClick(async ()=> {
-                try {
-                  let context = this.getUIContext().getHostContext() as Context;
-                // 通话开始时创建voice_call类型的avsession。
-                let session: avSession.AVSession = await avSession.createAVSession(context, 'voiptest', 'voice_call');
-                } catch (err) {
-                  console.error(`AVSession create :  Error: Code: ${err.code}, message: ${err.message}`);
-                }
-              })
-          }
-        .width('100%')
-        .height('100%')
-      }
-    }
+   
+   ``` TypeScript
+   import { AVCastPicker, AVCastPickerState, AVInputCastPicker, avSession } from '@kit.AVSessionKit';
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = '模拟通话';
+     @State session: avSession.AVSession | undefined = undefined;
+     @State context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+     // ...
+   
+     async init() {
+       try {
+         let context = this.getUIContext().getHostContext() as Context;
+         // 通话开始时创建voice_call类型的avsession。
+         this.session = await avSession.createAVSession(context, 'voiptest', 'voice_call');
+       } catch (err) {
+         console.error(`AVSession create :  Error: Code: ${err.code}, message: ${err.message}`);
+       }
+       // ...
+     }
+     // ...
+   }
    ```
 
 2. 在需要切换设备的通话界面创建AVCastPicker组件。
