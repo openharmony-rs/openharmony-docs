@@ -799,18 +799,18 @@ interface MyInterface02 {
 <!-- @[optionExample_useKeepInSource3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
 
 ``` TypeScript
-// 保留枚举名和所有成员名，Color01，RED01，BLUE01不会被混淆。
+// 保留枚举名和所有成员名，Color01，RED01，BLUE01不会被混淆
 // @KeepSymbol
 enum Color01 {
   RED01,
   BLUE01
 }
 
-// 保留枚举名指定的枚举成员名。
+// 保留枚举名指定的枚举成员名
 enum Color02 {
   RED02,
   // @KeepSymbol
-  BLUE02 // Color02，BLUE02不会被混淆。
+  BLUE02 // Color02，BLUE02不会被混淆
 }
 ```
 
