@@ -286,31 +286,36 @@
 1. 创建自定义AVCastPicker，需要新增自定义参数。（对应默认样式实现步骤2）
 
    <!-- @[self_castPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SelfAVCastPicker.ets) -->    
-
-   ```ts
+   
+   ``` TypeScript
    import { AVCastPicker } from '@kit.AVSessionKit';
-
-   @State pickerImage:ResourceStr = $r('app.media.earpiece'); // 自定义资源。
-
-   build() {
-     Row() {
-       Column() {
-         AVCastPicker(
-           {
-             customPicker: (): void => this.ImageBuilder() // 新增自定义参数。
-           }
-         ).size({ height: 45, width:45 })
+   // ...
+   
+   @Entry
+   @Component
+   struct SelfCastPicker {
+     @State pickerImage: ResourceStr = $r('app.media.earpiece'); // 自定义资源。
+     // ...
+     build() {
+       Row() {
+         Column() {
+           AVCastPicker(
+             {
+               customPicker: (): void => this.ImageBuilder() // 新增自定义参数。
+             }
+           ).size({ height: 45, width: 45 })
+         }
        }
      }
-   }
-
-   // 自定义内容。
-   @Builder
-   ImageBuilder() {
-     Image(this.pickerImage)
-       .size({ width: '100%', height: '100%' })
-       .backgroundColor('#00000000')
-       .fillColor(Color.Black)
+   
+     // 自定义内容。
+     @Builder
+     ImageBuilder() {
+       Image(this.pickerImage)
+         .size({ width: '100%', height: '100%' })
+         .backgroundColor('#00000000')
+         .fillColor(Color.Black)
+     }
    }
    ```
 
