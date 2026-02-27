@@ -62,9 +62,9 @@ let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
 media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
   if (captureRecorder != null) {
     avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in createAVScreenCaptureRecorder');
+    console.info('Succeeded in creating avScreenCaptureRecorder');
   } else {
-    console.error('Failed to createAVScreenCaptureRecorder');
+    console.error('Failed to create avScreenCaptureRecorder');
   }
 }).catch((error: BusinessError) => {
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
@@ -124,9 +124,9 @@ let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
 media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
   if (captureRecorder != null) {
     avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in createAVScreenCaptureRecorder');
+    console.info('Succeeded in creating avScreenCaptureRecorder');
   } else {
-    console.error('Failed to createAVScreenCaptureRecorder');
+    console.error('Failed to create avScreenCaptureRecorder');
   }
 }).catch((error: BusinessError) => {
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
@@ -177,9 +177,9 @@ let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
 media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
   if (captureRecorder != null) {
     avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in createAVScreenCaptureRecorder');
+    console.info('Succeeded in creating avScreenCaptureRecorder');
   } else {
-    console.error('Failed to createAVScreenCaptureRecorder');
+    console.error('Failed to create avScreenCaptureRecorder');
   }
 }).catch((error: BusinessError) => {
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
@@ -238,9 +238,9 @@ let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
 media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
   if (captureRecorder != null) {
     avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in createAVScreenCaptureRecorder');
+    console.info('Succeeded in creating avScreenCaptureRecorder');
   } else {
-    console.error('Failed to createAVScreenCaptureRecorder');
+    console.error('Failed to create avScreenCaptureRecorder');
   }
 }).catch((error: BusinessError) => {
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
@@ -298,9 +298,9 @@ let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
 media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
   if (captureRecorder != null) {
     avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in createAVScreenCaptureRecorder');
+    console.info('Succeeded in creating avScreenCaptureRecorder');
   } else {
-    console.error('Failed to createAVScreenCaptureRecorder');
+    console.error('Failed to create avScreenCaptureRecorder');
   }
 }).catch((error: BusinessError) => {
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
@@ -358,9 +358,9 @@ let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
 media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
   if (captureRecorder != null) {
     avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in createAVScreenCaptureRecorder');
+    console.info('Succeeded in creating avScreenCaptureRecorder');
   } else {
-    console.error('Failed to createAVScreenCaptureRecorder');
+    console.error('Failed to create avScreenCaptureRecorder');
   }
 }).catch((error: BusinessError) => {
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
@@ -420,9 +420,9 @@ let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
 media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
   if (captureRecorder != null) {
     avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in createAVScreenCaptureRecorder');
+    console.info('Succeeded in creating avScreenCaptureRecorder');
   } else {
-    console.error('Failed to createAVScreenCaptureRecorder');
+    console.error('Failed to create avScreenCaptureRecorder');
   }
 }).catch((error: BusinessError) => {
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
@@ -478,9 +478,9 @@ let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
 media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
   if (captureRecorder != null) {
     avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in createAVScreenCaptureRecorder');
+    console.info('Succeeded in creating avScreenCaptureRecorder');
   } else {
-    console.error('Failed to createAVScreenCaptureRecorder');
+    console.error('Failed to create avScreenCaptureRecorder');
   }
 }).catch((error: BusinessError) => {
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
@@ -531,9 +531,9 @@ let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
 media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
   if (captureRecorder != null) {
     avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in createAVScreenCaptureRecorder');
+    console.info('Succeeded in creating avScreenCaptureRecorder');
   } else {
-    console.error('Failed to createAVScreenCaptureRecorder');
+    console.error('Failed to create avScreenCaptureRecorder');
   }
 }).catch((error: BusinessError) => {
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
@@ -576,9 +576,9 @@ let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
 media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
   if (captureRecorder != null) {
     avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in createAVScreenCaptureRecorder');
+    console.info('Succeeded in creating avScreenCaptureRecorder');
   } else {
-    console.error('Failed to createAVScreenCaptureRecorder');
+    console.error('Failed to create avScreenCaptureRecorder');
   }
 }).catch((error: BusinessError) => {
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
@@ -629,9 +629,9 @@ let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
 media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
   if (captureRecorder != null) {
     avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in createAVScreenCaptureRecorder');
+    console.info('Succeeded in creating avScreenCaptureRecorder');
   } else {
-    console.error('Failed to createAVScreenCaptureRecorder');
+    console.error('Failed to create avScreenCaptureRecorder');
   }
 }).catch((error: BusinessError) => {
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
@@ -672,9 +672,9 @@ let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
 media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
   if (captureRecorder != null) {
     avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in createAVScreenCaptureRecorder');
+    console.info('Succeeded in creating avScreenCaptureRecorder');
   } else {
-    console.error('Failed to createAVScreenCaptureRecorder');
+    console.error('Failed to create avScreenCaptureRecorder');
   }
 }).catch((error: BusinessError) => {
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
@@ -713,9 +713,9 @@ let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
 media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
   if (captureRecorder != null) {
     avScreenCaptureRecorder = captureRecorder;
-    console.info('Succeeded in createAVScreenCaptureRecorder');
+    console.info('Succeeded in creating avScreenCaptureRecorder');
   } else {
-    console.error('Failed to createAVScreenCaptureRecorder');
+    console.error('Failed to create avScreenCaptureRecorder');
   }
 }).catch((error: BusinessError) => {
   console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
