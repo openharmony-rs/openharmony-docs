@@ -191,7 +191,7 @@ test(a2);
   <!-- @[etsOptionExample_enablePropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ets) --> 
   
   ``` TypeScript
-  // example.ets
+  // ArkGuardAbility.ets
   @Component struct MyExample {
     @State message: string = "hello";
     data: number[] = [];
