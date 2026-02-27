@@ -2137,12 +2137,12 @@ function f(x: number): number {
   return g(x);
 }
 
-// 可以省略返回类型，返回类型可以从f的类型标注推导得到。
+// 可以省略返回类型，返回类型可以从f的类型标注推导得到
 function g(x: number): number {
   return f(x - 1);
 }
 
-// 可以省略返回类型。
+// 可以省略返回类型
 function doOperation(x: number, y: number) {
   return x + y;
 }
