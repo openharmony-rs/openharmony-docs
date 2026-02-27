@@ -68,7 +68,7 @@ Defines a set of animation APIs of ArkUI on the native side.
 | [void OH_ArkUI_KeyframeAnimateOption_Dispose(ArkUI_KeyframeAnimateOption* option)](#oh_arkui_keyframeanimateoption_dispose) | Disposes a keyframe animation parameter object.|
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setdelay) | Sets the overall delay of a keyframe animation, in milliseconds. By default, the keyframe animation starts without any delay.|
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetIterations(ArkUI_KeyframeAnimateOption* option, int32_t value)](#oh_arkui_keyframeanimateoption_setiterations) | Sets the number of times that the keyframe animation is played. By default, the animation is played once. The value **-1** indicates that the animation is played for an unlimited number of times. The value **0** indicates that there is no animation.|
-| [int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAnimateOption* option, void* userData, void (\*onFinish)()(void* userData))](#oh_arkui_keyframeanimateoption_registeronfinishcallback) | Sets the callback invoked when the keyframe animation playback is complete. This function is called after the [keyframe animation](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md) has played for the specified number of times.|
+| [int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAnimateOption* option, void* userData, void (\*onFinish)()(void* userData))](#oh_arkui_keyframeanimateoption_registeronfinishcallback) | Sets the callback invoked when the keyframe animation playback is complete. This API is called after the [keyframe animation](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md) has played for the specified number of times.|
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetExpectedFrameRate(ArkUI_KeyframeAnimateOption* option, ArkUI_ExpectedFrameRateRange* frameRate)](#oh_arkui_keyframeanimateoption_setexpectedframerate) | Sets the expected frame rate for a keyframe animation.|
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetDuration(ArkUI_KeyframeAnimateOption* option, int32_t value, int32_t index)](#oh_arkui_keyframeanimateoption_setduration) | Sets the duration of a keyframe animation, in milliseconds.|
 | [int32_t OH_ArkUI_KeyframeAnimateOption_SetCurve(ArkUI_KeyframeAnimateOption* option, ArkUI_CurveHandle value, int32_t index)](#oh_arkui_keyframeanimateoption_setcurve) | Sets the animation curve for a specific keyframe animation segment.|
@@ -1170,7 +1170,7 @@ Sets the interpolation start point of an animation.
 
 > **NOTE**
 >
-> This method does not take effect when the animation is a [keyframe animation](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md).
+> This API does not take effect when the animation is a [keyframe animation](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md).
 
 **Since**: 12
 
@@ -1201,7 +1201,7 @@ Sets the interpolation end point for the animation of an animator.
 
 > **NOTE**
 >
-> This method does not take effect when the animation is a [keyframe animation](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md).
+> This API does not take effect when the animation is a [keyframe animation](./capi-arkui-nativemodule-arkui-keyframeanimateoption.md).
 
 **Since**: 12
 
