@@ -273,7 +273,7 @@ struct Index{
 @CustomDialog
 export default struct TmsDialog {
   controller?: CustomDialogController
-  dialogController:CustomDialogController|null = null;  // 修改此处的定义声明方式。
+  dialogController:CustomDialogController|null = null;  // 修改此处的定义声明方式
 
   build() {
   }
