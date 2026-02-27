@@ -18,8 +18,8 @@
 let str = '\u2642';
 let res = str.replace(/\b/g, '/');
 console.info('res = ' + res);
-// 期望输出: res = ♂。
-// 实际输出: res = /♂/。
+// 期望输出: res = ♂
+// 实际输出: res = /♂/
 ```
 
 规避方案：暂无。
