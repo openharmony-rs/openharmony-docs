@@ -856,7 +856,7 @@ namespace MyNameSpace {
 <!-- @[optionExample_useKeepInSource6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
 
 ``` TypeScript
-// 保留被标记的变量名，myVal不会被混淆。
+// 保留被标记的变量名，myVal不会被混淆
 // @KeepSymbol
 const myVal = 1;
 ```
