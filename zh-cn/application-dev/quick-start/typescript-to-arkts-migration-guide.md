@@ -3433,7 +3433,7 @@ let c = new C();
 
 <!-- @[no_definiteAssignment_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDefiniteAssignment.ets) -->
 
-```typescript
+``` TypeScript
 class C {
   name: string = ''
   age!: number      // warning: arkts-no-definite-assignment
