@@ -2962,6 +2962,13 @@ let p = Pt.Point.origin
 
 <!-- @[no_exportAssignTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoExportAssignment.ets) -->
 
+``` TypeScript
+// module2
+import * as Pt from './ExportMod'
+
+let p = Pt.Point.origin;
+```
+
 ### 不支持ambient module声明
 
 **规则：**`arkts-no-ambient-decls`
