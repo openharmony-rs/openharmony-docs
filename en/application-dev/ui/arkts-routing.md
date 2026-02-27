@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
@@ -308,7 +308,7 @@ this.getUIContext().getRouter().back();
   this.getUIContext().getRouter().back({
     url: 'pages/pageRouter/jumpPage/BackHome',
     params: {
-      // Replace $r('app.string.pageRouter_jump_text7_fromHome') with the resource file you use.
+      // Replace $r('app.string.pageRouter_jump_text7_fromHome') with the actual resource file. In this example, the value in the resource file is "From the home page."
       info: $r('app.string.pageRouter_jump_text7_fromHome')
     }
   });
@@ -322,7 +322,7 @@ this.getUIContext().getRouter().back();
   this.getUIContext().getRouter().back({
     url: 'myPage', // myPage is the alias of the page to return to.
     params: {
-      // Replace $r('app.string.pageRouter_jump_text7_fromHome') with the resource file you use.
+      // Replace $r('app.string.pageRouter_jump_text7_fromHome') with the actual resource file. In this example, the value in the resource file is "From the home page."
       info: $r('app.string.pageRouter_jump_text7_fromHome')
     }
   });
@@ -504,6 +504,7 @@ onBackClick(): void {
   // Call this.getUIContext().getRouter().showAlertBeforeBackPage to set the information about the confirmation dialog box.
   try {
     this.getUIContext().getRouter().showAlertBeforeBackPage({
+      // Configure the resource whose name is 'pageRouter_dialog_context' and value is a non-empty string in the resources\base\element\string.json file.
       message: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_context') as string, // Set the content of the confirmation dialog box.
     });
   } catch (err) {
@@ -520,6 +521,7 @@ onBackClick(): void {
 The **this.getUIContext().getRouter().showAlertBeforeBackPage** API receives an object as a parameter. The object contains the following attributes:
 
 **message**: content of the dialog box. The value is of the string type.
+
 If the API is called successfully, the confirmation dialog box is displayed on the target page. Otherwise, an exception is thrown and the error code and error information is obtained through **err.code** and **err.message**.
 
 When the user clicks the back button, a confirmation dialog box is displayed, prompting the user to confirm their operation. If the user selects **Cancel**, the application stays on the current page. If the user selects **OK**, the [back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back) API is called and the redirection is performed based on the parameters.
@@ -528,7 +530,7 @@ When the user clicks the back button, a confirmation dialog box is displayed, pr
 
 To implement a custom confirmation dialog box, use [showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog-1) or create a custom dialog box . This topic uses the APIs in the **PromptAction** module an example to describe how to implement a custom confirmation dialog box.
 
-Directly using **router** can lead to the issue of [ambiguous UI context](./arkts-global-interface.md). To avoid this, obtain a [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) instance using the **getUIContext()** API, and then obtain the **router** object bound to that instance through the [getRouter](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter) API.
+Directly using **router** can lead to the issue of [ambiguous UI context](./arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain a [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) instance using the **getUIContext()** API, and then obtain the **router** object bound to that instance through the [getRouter](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter) API.
 
 In the event callback, call the [showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog-1) API.
 
@@ -551,14 +553,17 @@ onBackClick() {
   // Display a custom confirmation dialog box.
   this.getUIContext().getPromptAction().showDialog({
     // "You have not completed payment yet. Are you sure you want to go back?"
-    message: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_context') as string,
+    // Replace $r('app.string.pageRouter_dialog_context') with the actual resource file. In this example, the value in the resource file is "You have not completed payment yet. Are you sure you want to go back?"
+    message: $r('app.string.pageRouter_dialog_context'),
     buttons: [
       {
-        text: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_canceled') as string,
+        // Replace $r('app.string.pageRouter_dialog_canceled') with the actual resource file. In this example, the value in the resource file is "Cancel."
+        text: $r('app.string.pageRouter_dialog_canceled'),
         color: '#FF0000'
       },
       {
-        text: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_confirmed') as string,
+        // Replace $r('app.string.pageRouter_dialog_confirmed') with the actual resource file. In this example, the value in the resource file is "OK."
+        text: $r('app.string.pageRouter_dialog_confirmed'),
         color: '#0099FF'
       }
     ]
@@ -576,7 +581,7 @@ onBackClick() {
     let message = (err as BusinessError).message;
     let code = (err as BusinessError).code;
     hilog.error(DOMAIN, TAG, `Invoke showDialog failed, code is ${code}, message is ${message}`);
-  })
+  });
 }
 ```
 
@@ -669,5 +674,3 @@ struct Index {
   }
 }
 ```
-
-<!--no_check-->

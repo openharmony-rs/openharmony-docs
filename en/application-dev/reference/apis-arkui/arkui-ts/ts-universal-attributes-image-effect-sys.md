@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-With image effects, you can define how a component blends with the existing content on the canvas below.
+This module provides APIs for setting the blur, shadow, and spherical effects of components, and applying image effects to pictures.
 
 > **NOTE**
 >
@@ -69,6 +69,8 @@ If this attribute is not set, the current component and its children are not rem
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**System API**: This is a system API.
+
 **Parameters**
 
 | Name | Type              | Mandatory| Description                                                        |
@@ -80,6 +82,44 @@ If this attribute is not set, the current component and its children are not rem
 | Type| Description|
 | -------- | -------- |
 | T | Current component.|
+
+## systemMaterial<sup>23+</sup>
+
+systemMaterial(material: SystemUiMaterial | undefined): T
+
+Sets the system material for a component. Different system materials have different attribute effects. This API affects the background color ([backgroundColor](ts-universal-attributes-background.md#backgroundcolor)), border color ([borderColor](ts-universal-attributes-border.md#bordercolor)), border width ([borderWidth](ts-universal-attributes-border.md#borderwidth)), and shadow ([shadow](ts-universal-attributes-image-effect.md#shadow)). You are advised not to use this API together with the aforementioned APIs. For details about the example, see [Setting the System Material](../arkts-apis-uimaterial-sys.md#example-1-setting-the-system-material).
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name| Type                           | Mandatory| Description                                                        |
+| ------ | ------------------------------- | ---- | ------------------------------------------------------------ |
+| material  | [SystemUiMaterial](#systemuimaterial23) &nbsp;\|&nbsp; undefined  | Yes  | System material object of the component. Setting it to **undefined** will make the component return to the no-material effect. |
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| T | Current component.|
+
+## SystemUiMaterial<sup>23+</sup>
+
+type SystemUiMaterial = uiMaterial.Material
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**System API**: This is a system API.
+
+| Type                             | Description          |
+| --------------------------------- | -------------- |
+| [uiMaterial.Material](../arkts-apis-uimaterial-sys.md#material)     | System material object.|
 
 ## Example
 ### Example 1: Setting the Brightness Effect
@@ -263,5 +303,3 @@ struct Index {
 ```
 
 ![advancedBlendMode2](figures/advancedBlendMode2.jpg)
-
-<!--no_check-->

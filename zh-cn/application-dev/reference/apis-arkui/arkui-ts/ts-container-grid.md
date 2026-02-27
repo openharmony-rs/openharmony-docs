@@ -1057,7 +1057,7 @@ struct GridExample {
       .backgroundColor(0xFAEEE0)
       .height(300)
 
-      Text('GridLayoutOptions的使用：onGetRectByIndex。').fontColor(0xCCCCCC).fontSize(9).width('90%')
+      Text('GridLayoutOptions的使用：onGetRectByIndex。').fontColor(0x000000).fontSize(14).width('90%')
 
       Grid(undefined, this.layoutOptions3) {
         ForEach(this.numbers2, (day: string) => {
@@ -1152,7 +1152,7 @@ import { GridDataSource } from './GridDataSource';
 struct GridExample {
   numbers: GridDataSource = new GridDataSource([]);
   scroller: Scroller = new Scroller();
-  @State gridPosition: number = 0; //0代表滚动到grid顶部，1代表中间值，2代表滚动到grid底部。
+  @State gridPosition: number = 0; // 0代表滚动到grid顶部，1代表中间值，2代表滚动到grid底部。
 
   aboutToAppear() {
     let list: string[] = [];
@@ -1166,7 +1166,7 @@ struct GridExample {
 
   build() {
     Column({ space: 5 }) {
-      Text('scroll').fontColor(0xCCCCCC).fontSize(9).width('90%')
+      Text('Grid').fontColor(0x000000).fontSize(16).width('90%')
       Grid(this.scroller) {
         LazyForEach(this.numbers, (day: string) => {
           GridItem() {
@@ -1200,7 +1200,7 @@ struct GridExample {
       .onScrollBarUpdate((index: number, offset: number) => {
         console.info('XXX' + 'Grid onScrollBarUpdate,index : ' + index.toString() + ',offset' + offset.toString());
         return { totalOffset: (index / 5) * (80 + 10) - offset, totalLength: 80 * 5 + 10 * 4 };
-      })  //只适用于当前示例代码数据源，如果数据源有变化，则需要修改该部分代码，或者删掉此属性
+      })  // 只适用于当前示例代码数据源，如果数据源有变化，则需要修改该部分代码，或者删掉此属性
       .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
         console.info(scrollOffset.toString());
         console.info(scrollState.toString());
@@ -1275,6 +1275,7 @@ struct GridExample {
 
   build() {
     Column({ space: 5 }) {
+      Text('Grid1').fontColor(0x000000).fontSize(16).width('90%')
       Grid(this.scroller, this.layoutOptions1) {
         LazyForEach(this.numbers, (day: string) => {
           GridItem() {
@@ -1296,7 +1297,7 @@ struct GridExample {
       .backgroundColor(0xFAEEE0)
       .height(300)
 
-      Text('scroll').fontColor(0xCCCCCC).fontSize(9).width('90%')
+      Text('Grid2').fontColor(0x000000).fontSize(16).width('90%')
       // 不使用scroll，需要undefined占位
       Grid(undefined, this.layoutOptions2) {
         LazyForEach(this.numbers, (day: string) => {
@@ -1531,7 +1532,7 @@ struct GridExample {
   scroller: Scroller = new Scroller();
   @State text: string = 'drag';
 
-  @Builder pixelMapBuilder() { //拖拽过程样式
+  @Builder pixelMapBuilder() { // 拖拽过程样式
     Column() {
       Text(this.text)
         .fontSize(16)
@@ -1550,7 +1551,7 @@ struct GridExample {
     this.numbers = new GridDataSource(list);
   }
 
-  changeIndex(index1: number, index2: number) { //交换数组位置
+  changeIndex(index1: number, index2: number) { // 交换数组位置
     this.numbers.swapItem(index1, index2);
   }
 
@@ -1574,18 +1575,18 @@ struct GridExample {
       .width('90%')
       .backgroundColor(0xFAEEE0)
       .height(300)
-      .editMode(true) //设置Grid是否进入编辑模式，进入编辑模式可以拖拽Grid组件内部GridItem
+      .editMode(true) // 设置Grid是否进入编辑模式，进入编辑模式可以拖拽Grid组件内部GridItem
       .supportAnimation(true) // 设置支持动画
-      .onItemDragStart((event: ItemDragInfo, itemIndex: number) => { //第一次拖拽此事件绑定的组件时，触发回调。
+      .onItemDragStart((event: ItemDragInfo, itemIndex: number) => { // 第一次拖拽此事件绑定的组件时，触发回调。
         this.text = this.numbers.getData(itemIndex);
-        return this.pixelMapBuilder(); //设置拖拽过程中显示的图片。
+        return this.pixelMapBuilder(); // 设置拖拽过程中显示的图片。
       })
-      .onItemDrop((event: ItemDragInfo, itemIndex: number, insertIndex: number, isSuccess: boolean) => { //绑定此事件的组件可作为拖拽释放目标，当在本组件范围内停止拖拽行为时，触发回调。
+      .onItemDrop((event: ItemDragInfo, itemIndex: number, insertIndex: number, isSuccess: boolean) => { // 绑定此事件的组件可作为拖拽释放目标，当在本组件范围内停止拖拽行为时，触发回调。
         // isSuccess=false时，说明drop的位置在grid外部；insertIndex > length时，说明有新增元素的事件发生
         if (!isSuccess || insertIndex >= this.numbers.totalCount()) {
           return;
         }
-        console.info('itemIndex:' + itemIndex + ', insertIndex:' + insertIndex); //itemIndex拖拽起始位置，insertIndex拖拽插入位置
+        console.info('itemIndex:' + itemIndex + ', insertIndex:' + insertIndex); // itemIndex拖拽起始位置，insertIndex拖拽插入位置
         this.changeIndex(itemIndex, insertIndex);
       })
     }.width('100%').margin({ top: 5 })
@@ -1638,8 +1639,8 @@ struct GridExample {
     Scroll() {
       Column({ space: 5 }) {
         Blank()
-        Text('rowsTemplate、columnsTemplate都不设置layoutDirection、maxCount、minCount、cellLength才生效')
-          .fontSize(15).fontColor(0xCCCCCC).width('90%')
+        Text('rowsTemplate、columnsTemplate都不设置时，layoutDirection、maxCount、minCount、cellLength才生效')
+          .fontSize(16).fontColor(0x000000).width('90%')
         Grid() {
           LazyForEach(this.numbers, (day: string) => {
             GridItem() {
@@ -1898,7 +1899,7 @@ GridDataSource说明及完整代码参考[示例2可滚动grid和滚动事件](#
 <!--code_no_check-->
 ```ts
 // xxx.ets
-//该示例实现了Grid组件开启边缘渐隐效果并设置边缘渐隐长度
+// 该示例实现了Grid组件开启边缘渐隐效果并设置边缘渐隐长度
 import { LengthMetrics } from '@kit.ArkUI';
 import { GridDataSource } from './GridDataSource';
 
@@ -1920,7 +1921,7 @@ struct GridExample {
 
   build() {
     Column({ space: 5 }) {
-      Text('scroll').fontColor(0xCCCCCC).fontSize(9).width('90%')
+      Text('Grid').fontColor(0x000000).fontSize(16).width('90%')
       Grid(this.scroller) {
         LazyForEach(this.numbers, (day: string) => {
           GridItem() {
@@ -2348,7 +2349,7 @@ struct GridExample {
       return;
     }
     if (this.startIndex === -1) {
-      //（初始接触点在空隙）时，重新配置滑动的初始数据
+      // （初始接触点在空隙）时，重新配置滑动的初始数据
       this.slideActionStart(index);
       return;
     }
@@ -2574,7 +2575,7 @@ struct GridItemExample {
     this.numbers.splice(newIndex, 0, tmp[0]);
   }
 
-  //向下滑
+  // 向下滑
   down(index: number): void {
     // 指定固定GridItem不响应事件
     if (!this.isDraggable(index + 3)) {
@@ -2585,7 +2586,7 @@ struct GridItemExample {
     this.itemMove(index, index + 3);
   }
 
-  //向下滑(右下角为空)
+  // 向下滑(右下角为空)
   down2(index: number): void {
     if (!this.isDraggable(index + 3)) {
       return;
@@ -2595,7 +2596,7 @@ struct GridItemExample {
     this.itemMove(index, index + 3);
   }
 
-  //向上滑
+  // 向上滑
   up(index: number): void {
     if (!this.isDraggable(index - 3)) {
       return;
@@ -2605,7 +2606,7 @@ struct GridItemExample {
     this.itemMove(index, index - 3);
   }
 
-  //向左滑
+  // 向左滑
   left(index: number): void {
     if (!this.isDraggable(index - 1)) {
       return;
@@ -2615,7 +2616,7 @@ struct GridItemExample {
     this.itemMove(index, index - 1);
   }
 
-  //向右滑
+  // 向右滑
   right(index: number): void {
     if (!this.isDraggable(index + 1)) {
       return;
@@ -2625,7 +2626,7 @@ struct GridItemExample {
     this.itemMove(index, index + 1);
   }
 
-  //向右下滑
+  // 向右下滑
   lowerRight(index: number): void {
     if (!this.isDraggable(index + 4)) {
       return;
@@ -2637,7 +2638,7 @@ struct GridItemExample {
     this.itemMove(index, index + 4);
   }
 
-  //向右上滑
+  // 向右上滑
   upperRight(index: number): void {
     if (!this.isDraggable(index - 2)) {
       return;
@@ -2649,7 +2650,7 @@ struct GridItemExample {
     this.itemMove(index, index - 2);
   }
 
-  //向左下滑
+  // 向左下滑
   lowerLeft(index: number): void {
     if (!this.isDraggable(index + 2)) {
       return;
@@ -2661,7 +2662,7 @@ struct GridItemExample {
     this.itemMove(index, index + 2);
   }
 
-  //向左上滑
+  // 向左上滑
   upperLeft(index: number): void {
     if (!this.isDraggable(index - 4)) {
       return;
@@ -2737,39 +2738,39 @@ struct GridItemExample {
                     let index = this.numbers.indexOf(this.dragItem);
                     if (this.offsetY >= this.FIX_VP_Y / 2 && (this.offsetX <= 44 && this.offsetX >= -44) &&
                       ![8, 9, 10].includes(index)) {
-                      //向下滑
+                      // 向下滑
                       this.down(index);
                     } else if (this.offsetY <= -this.FIX_VP_Y / 2 && (this.offsetX <= 44 && this.offsetX >= -44) &&
                       ![0, 1, 2].includes(index)) {
-                      //向上滑
+                      // 向上滑
                       this.up(index);
                     } else if (this.offsetX >= this.FIX_VP_X / 2 && (this.offsetY <= 50 && this.offsetY >= -50) &&
                       ![2, 5, 8, 10].includes(index)) {
-                      //向右滑
+                      // 向右滑
                       this.right(index);
                     } else if (this.offsetX <= -this.FIX_VP_X / 2 && (this.offsetY <= 50 && this.offsetY >= -50) &&
                       ![0, 3, 6, 9].includes(index)) {
-                      //向左滑
+                      // 向左滑
                       this.left(index);
                     } else if (this.offsetX >= this.FIX_VP_X / 2 && this.offsetY >= this.FIX_VP_Y / 2 &&
                       ![2, 5, 7, 8, 9, 10].includes(index)) {
-                      //向右下滑
+                      // 向右下滑
                       this.lowerRight(index);
                     } else if (this.offsetX >= this.FIX_VP_X / 2 && this.offsetY <= -this.FIX_VP_Y / 2 &&
                       ![0, 1, 2, 5, 8].includes(index)) {
-                      //向右上滑
+                      // 向右上滑
                       this.upperRight(index);
                     } else if (this.offsetX <= -this.FIX_VP_X / 2 && this.offsetY >= this.FIX_VP_Y / 2 &&
                       ![0, 3, 6, 9, 10].includes(index)) {
-                      //向左下滑
+                      // 向左下滑
                       this.lowerLeft(index);
                     } else if (this.offsetX <= -this.FIX_VP_X / 2 && this.offsetY <= -this.FIX_VP_Y / 2 &&
                       ![0, 1, 2, 3, 6, 9].includes(index)) {
-                      //向左上滑
+                      // 向左上滑
                       this.upperLeft(index);
                     } else if (this.offsetX >= this.FIX_VP_X / 2 && this.offsetY >= this.FIX_VP_Y / 2 &&
                     [7].includes(index)) {
-                      //向右下滑(右下角为空)
+                      // 向右下滑(右下角为空)
                       this.down2(index);
                     }
                   })
@@ -3038,6 +3039,7 @@ struct GridExample {
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
+<!--code_no_check-->
 ```ts
 // xxx.ets
 import { GridDataSource } from './GridDataSource';

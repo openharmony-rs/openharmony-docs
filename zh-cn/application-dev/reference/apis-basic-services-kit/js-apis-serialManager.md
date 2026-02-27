@@ -606,7 +606,7 @@ function readSync() {
 
 write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-向串口设备异步写入数据。使用Promise异步回调。
+向串口设备异步写数据，每次写入数据长度不超过4KB，数据过大会导致数据丢失，长数据建议分包写入。使用Promise异步回调。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -616,7 +616,7 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 |---------|------------|----|------------------|
 | portId  | number     | 是  | 端口号。      |
 | buffer  | Uint8Array | 是  | 写入数据的缓冲区。 |
-| timeout | number     | 否  | 超时时间（单位：ms），可选参数，默认为0不超时，用户按需选择。 |
+| timeout | number     | 否  | 超时时间（单位：ms），指定时间内等待API在目标端口的缓冲区是否可写，若可写则正常处理，若不可写等待超过指定时间后返回超时。默认值0表示不可写时不等待直接返回。 |
 
 **返回值：**
 
@@ -694,7 +694,7 @@ function write() {
 
 writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
-向串口设备同步写数据。
+向串口设备同步写数据，每次写入数据长度不超过4KB，数据过大会导致数据丢失，长数据建议分包写入。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -704,7 +704,7 @@ writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 |---------|------------|----|------------------|
 | portId  | number     | 是  | 端口号。     |
 | buffer  | Uint8Array | 是  | 写入目标缓冲区。 |
-| timeout | number     | 否  | 超时时间（单位：ms），可选参数，默认为0不超时，用户按需选择。|
+| timeout | number     | 否  | 超时时间（单位：ms），指定时间内等待API在目标端口的缓冲区是否可写，若可写则正常处理，若不可写等待超过指定时间后返回超时。默认值0表示不可写时不等待直接返回。|
 
 **返回值：**
 

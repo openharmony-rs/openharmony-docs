@@ -17,7 +17,7 @@
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 对于使用[XComponent](arkui-ts/ts-basic-components-xcomponent.md)的场景，例如：Video或者相机流媒体展示类组件，不建议使用组件截图相关接口，建议从[surface](../apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11)直接获取图片。
+> - 对于使用[XComponent](arkui-ts/ts-basic-components-xcomponent.md)的场景，例如：Video或者相机流媒体展示类组件，不建议使用组件截图相关接口，建议使用[createPixelMapFromSurface](../apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11)直接获取图片。
 >
 > - 如果组件自身内容不能填满组件大小区域，那么剩余位置截图返回的内容为透明像素。如果组件使用了[图像效果](arkui-ts/ts-universal-attributes-image-effect.md)类属性或其他的效果类属性，则可能产生非用户预期的截图结果。请排查是否需要填充组件透明内容区域，或使用[窗口截图](arkts-apis-window-Window.md#snapshot9)替代。
 >
@@ -84,6 +84,7 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
         Image($r('app.media.img'))
           .autoResize(true)
           .width(200)
@@ -97,7 +98,7 @@ struct SnapshotExample {
           // 建议使用this.getUIContext().getComponentSnapshot().get()
           componentSnapshot.get("root", (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error("error: " + JSON.stringify(error))
+              console.error(`error:${JSON.stringify(error)}`)
               return;
             }
             this.pixmap = pixmap
@@ -172,6 +173,7 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
         Image($r('app.media.img'))
           .autoResize(true)
           .width(200)
@@ -187,7 +189,7 @@ struct SnapshotExample {
             .then((pixmap: image.PixelMap) => {
               this.pixmap = pixmap
             }).catch((err: Error) => {
-            console.error("error: " + err)
+            console.error(`error:${err}`)
           })
         }).margin(10)
     }
@@ -286,7 +288,7 @@ struct OffscreenSnapshotExample {
           },
             (error: Error, pixmap: image.PixelMap) => {
               if (error) {
-                console.error("error: " + JSON.stringify(error))
+                console.error(`error:${JSON.stringify(error)}`)
                 return;
               }
               this.pixmap = pixmap
@@ -404,10 +406,10 @@ struct OffscreenSnapshotExample {
               // ....
               // 获取组件大小和位置
               let info = this.getUIContext().getComponentUtils().getRectangleById("builder")
-              console.info(info.size.width + ' ' + info.size.height + ' ' + info.localOffset.x + ' ' +
-              info.localOffset.y + ' ' + info.windowOffset.x + ' ' + info.windowOffset.y)
+              console.info(`${info.size.width} ${info.size.height} ${info.localOffset.x} ${
+              info.localOffset.y} ${info.windowOffset.x} ${info.windowOffset.y}`)
             }).catch((err: Error) => {
-            console.error("error: " + err)
+            console.error(`error:${err}`)
           })
         })
       Image(this.pixmap)
@@ -458,6 +460,7 @@ getSync(id: string, options?: SnapshotOptions): image.PixelMap
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
 
 > **说明：**
 > 
@@ -478,6 +481,7 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
         Image($r('app.media.img'))
           .autoResize(true)
           .width(200)
@@ -493,7 +497,7 @@ struct SnapshotExample {
             let pixelmap = componentSnapshot.getSync("root", { scale: 2, waitUntilRenderFinished: true })
             this.pixmap = pixelmap
           } catch (error) {
-            console.error("getSync errorCode: " + error.code + " message: " + error.message)
+            console.error(`getSync errorCode:${error.code} message:${error.message}`)
           }
         }).margin(10)
     }
@@ -546,7 +550,8 @@ struct SnapshotColorModeExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.startIcon'))
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.img'))
           .autoResize(true)
           .width(200)
           .height(200)
@@ -558,7 +563,7 @@ struct SnapshotColorModeExample {
         .onClick(() => {
           this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error("error: " + JSON.stringify(error))
+              console.error(`error:${JSON.stringify(error)}`)
               return;
             }
             this.pixmap = pixmap
@@ -576,6 +581,8 @@ struct SnapshotColorModeExample {
   }
 }
 ```
+
+![componentget](figures/componentget.gif)
 
 ## DynamicRangeModeOptions<sup>23+</sup>
 
@@ -604,7 +611,8 @@ struct SnapshotDynamicRangeExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.startIcon'))
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.img'))
           .autoResize(true)
           .width(200)
           .height(200)
@@ -616,7 +624,7 @@ struct SnapshotDynamicRangeExample {
         .onClick(() => {
           this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error("error: " + JSON.stringify(error))
+              console.error(`error:${JSON.stringify(error)}`)
               return;
             }
             this.pixmap = pixmap
@@ -634,6 +642,8 @@ struct SnapshotDynamicRangeExample {
   }
 }
 ```
+
+![componentget](figures/componentget.gif)
 
 ## SnapshotRegionType<sup>15+</sup>
 
@@ -736,10 +746,13 @@ struct SnapshotExample {
               })
             this.pixmap = pixelmap
           } catch (error) {
-            console.error("getSync errorCode: " + error.code + " message: " + error.message)
+            console.error(`getSync errorCode:${error.code} message:${error.message}`)
           }
         }).margin(10)
       Image(this.pixmap).border({ color: Color.Black, width: 2 }).width("600px")
     }.width("100%").align(Alignment.Center)
   }
 }
+```
+
+![localized_snapshot](figures/localized_snapshot.gif)

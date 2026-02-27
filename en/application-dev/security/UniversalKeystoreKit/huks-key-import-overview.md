@@ -95,12 +95,12 @@ According to the workflow, the HUKS capability needs to be invoked when the digi
 - Export the SM2 public key of the peer end to encrypt the generated SM4 key.
 - Use the SM2 public key exported from the peer end, use the NoPadding mode, and specify SM3 as the digest algorithm to encrypt the SM4 key generated on the local end.
 - Import a wrapped key.
-The public key material format returned by the key export API is encapsulated in [X.509 format](huks-concepts.md#public-key-material-format). The key material returned by the key import API must be encapsulated in the **Length<sub>Data</sub>-Data** format, for example, [(Length<sub>EncSm4</sub>Data<sub>EncSm4</sub>)(Length<sub>EncImpKey</sub>Data<sub>EncImpKey</sub>)].
+
+The public key material returned by the key export API is encapsulated in [X.509 format](huks-concepts.md#public-key-material-format). The key material returned by the API for importing encrypted keys is encapsulated in **Length<sub>Data</sub>-Data** format, for example, [(Length<sub>EncSm4</sub>Data<sub>EncSm4</sub>)(Length<sub>EncImpKey</sub>Data<sub>EncImpKey</sub>)].
 
 > **NOTE**
-> 1. To import a key using digital envelope, the tag **HUKS_TAG_UNWRAP_ALGORITHM_SUITE** is required, and the tag value is **HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING**.
-> 2. When importing a key pair of an asymmetric key using digital envelope, you need to add the [OH_HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA tag](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag) and encapsulate the public key in DER format into the tag. Only key pairs can be imported for asymmetric keys.
-> 3. Only <!--RP1-->standard devices<!--RP1End--> support digital envelope import.
+>
+> Only <!--RP1-->standard devices<!--RP1End--> support digital envelope import.
 
 ## Supported Algorithms
 
@@ -160,4 +160,3 @@ HUKS supports various types of keys in different formats. The following table li
 | Asymmetric key pair| - | [Key pair material format](huks-concepts.md#key-pair-material-format)|
 | Public key of an asymmetric key pair| Ed25519, X25519| Key in bytes. For details, see [Importing the Public Key of an X25519 Key Pair](huks-import-key-in-plaintext-arkts.md#importing-the-public-key-of-an-x25519-key-pair).|
 | Public key of an asymmetric key pair| RSA, ECC, ECDH, DSA, DH, SM2| DER format defined in X.509|
-<!--no_check-->

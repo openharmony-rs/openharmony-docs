@@ -62,7 +62,8 @@ Repeat通过[.each()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-r
 ``` TypeScript
 // 在List容器组件中使用Repeat
 @Entry
-@ComponentV2 // 推荐使用V2装饰器
+@ComponentV2
+  // 推荐使用V2装饰器
 struct RepeatExample {
   @Local dataArr: Array<string> = []; // 数据源
 
@@ -412,6 +413,7 @@ struct RepeatLazyLoadingLongData {
   // 假设数据源总长度较长，为1000。初始数组未提供数据。
   @Local arr: Array<string> = [];
   scroller: Scroller = new Scroller();
+
   build() {
     Column({ space: 5 }) {
       // 初始显示位置为index = 100，数据可通过懒加载自动获取。
@@ -419,9 +421,13 @@ struct RepeatLazyLoadingLongData {
         Repeat(this.arr)
           .virtualScroll({
             // 期望的数据源总长度为1000。
-            onTotalCount: () => { return 1000; },
+            onTotalCount: () => {
+              return 1000;
+            },
             // 实现数据懒加载。
-            onLazyLoading: (index: number) => { this.arr[index] = index.toString(); }
+            onLazyLoading: (index: number) => {
+              this.arr[index] = index.toString();
+            }
           })
           .each((obj: RepeatItem<string>) => {
             ListItem() {
@@ -433,10 +439,13 @@ struct RepeatLazyLoadingLongData {
           })
       }
       .height('80%')
-      .border({ width: 1})
+      .border({ width: 1 })
+
       // 显示位置跳转至index = 500，数据可通过懒加载自动获取。
       Button('ScrollToIndex 500')
-        .onClick(() => { this.scroller.scrollToIndex(500); })
+        .onClick(() => {
+          this.scroller.scrollToIndex(500);
+        })
     }
   }
 }
@@ -457,18 +466,23 @@ struct RepeatLazyLoadingLongData {
 @ComponentV2
 struct RepeatLazyLoadingSync {
   @Local arr: Array<string> = [];
+
   build() {
     Column({ space: 5 }) {
       List({ space: 5 }) {
         Repeat(this.arr)
           .virtualScroll({
-            onTotalCount: () => { return 100; },
+            onTotalCount: () => {
+              return 100;
+            },
             // 实现数据懒加载。
             onLazyLoading: (index: number) => {
               // 创建占位符。
               this.arr[index] = '';
               // 模拟高耗时加载过程，通过异步任务加载数据。
-              setTimeout(() => { this.arr[index] = index.toString(); }, 1000);
+              setTimeout(() => {
+                this.arr[index] = index.toString();
+              }, 1000);
             }
           })
           .each((obj: RepeatItem<string>) => {
@@ -481,7 +495,7 @@ struct RepeatLazyLoadingSync {
           })
       }
       .height('100%')
-      .border({ width: 1})
+      .border({ width: 1 })
     }
   }
 }
@@ -508,20 +522,26 @@ struct RepeatLazyLoadingSync {
 @ComponentV2
 struct RepeatLazyLoadingInfinite {
   @Local arr: Array<string> = [];
+
   // 提供首屏显示所需的初始数据。
   aboutToAppear(): void {
     for (let i = 0; i < 15; i++) {
       this.arr.push(i.toString());
     }
   }
+
   build() {
     Column({ space: 5 }) {
       List({ space: 5 }) {
         Repeat(this.arr)
           .virtualScroll({
             // 数据无限懒加载。
-            onTotalCount: () => { return this.arr.length + 1; },
-            onLazyLoading: (index: number) => { this.arr[index] = index.toString(); }
+            onTotalCount: () => {
+              return this.arr.length + 1;
+            },
+            onLazyLoading: (index: number) => {
+              this.arr[index] = index.toString();
+            }
           })
           .each((obj: RepeatItem<string>) => {
             ListItem() {
@@ -533,7 +553,7 @@ struct RepeatLazyLoadingInfinite {
           })
       }
       .height('100%')
-      .border({ width: 1})
+      .border({ width: 1 })
       // 建议设置cachedCount > 0。
       .cachedCount(1)
     }
@@ -584,7 +604,7 @@ struct RepeatVirtualScrollOnMove {
               Text(obj.item)
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
-                .size({height: 100, width: '100%'})
+                .size({ height: 100, width: '100%' })
             }.margin(10)
             .borderRadius(10)
             .backgroundColor('#FFFFFFFF')
@@ -1229,6 +1249,7 @@ struct DemoSwiper {
 ### 显示区域外增删数据时保持滚动位置不变
 
 下面的场景示例中，滚动列表显示区域外的增删数据操作将影响[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)列表滚动条停留的位置：
+
 在List组件中声明Repeat组件，实现key值生成逻辑和each逻辑（如下示例代码），点击按钮“insert”，在屏幕显示的第一个元素前面插入一个元素，列表显示区域数据向下滚动。
 
 <!-- @[repeat_single](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatTemplateSingle.ets) -->
@@ -1295,6 +1316,7 @@ struct RepeatTemplateSingle {
 ![repeat-case1-wrong](figures/repeat-case1-wrong.gif)
 
 以下为修正后的示例：
+
 在部分场景中，我们不希望显示区域外的数据源增删操作或高度变化影响屏幕中[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)列表Scroller停留的位置，可以通过List组件的[onScrollIndex](../../reference/apis-arkui/arkui-ts/ts-container-list.md#onscrollindex)事件对列表滚动动作进行监听，当列表发生滚动时，获取列表滚动位置。使用Scroller组件的[scrollToIndex](../../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrolltoindex)特性，滑动到指定index位置，实现屏幕外的数据源增加/删除数据时，Scroller停留的位置不变的效果。
 
 示例代码仅对增加数据的情况进行展示。
@@ -1528,8 +1550,11 @@ struct RepeatBuilderPage {
             }.border({ width: 1 })
           }).virtualScroll()
       }
-      .cachedCount(1).border({ width: 1 })
-      .width('70%').height('60%').alignListItem(ListItemAlign.Center)
+      .cachedCount(1)
+      .border({ width: 1 })
+      .width('70%')
+      .height('60%')
+      .alignListItem(ListItemAlign.Center)
 
       Button('click to change data.').onClick(() => {
         this.simpleList[0] = 10000; // 修改第一项数据为10000。

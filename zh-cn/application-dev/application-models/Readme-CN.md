@@ -21,6 +21,7 @@
       - [UIAbility组件基本用法](uiability-usage.md)
       - [UIAbility组件与UI的数据同步](uiability-data-sync-with-ui.md)
       - [启动应用内的UIAbility组件](uiability-intra-device-interaction.md)
+      - [通过Call调用实现多端协同](uiability-cross-device-interaction.md)
       - [UIAbility备份恢复](ability-recover-guideline.md)
     - [ExtensionAbility组件](extensionability-overview.md)
       <!--Del-->
@@ -55,6 +56,7 @@
     - 拉起指定应用<!--directional-redirection-->
       - [拉起指定应用概述](app-startup-overview.md)
       - [（可选）使用canOpenLink判断应用是否可访问](canopenlink.md)
+      - [获取目标应用的URL信息](obtaining-target-app-url-info.md)
       - [使用Deep Linking实现应用间跳转](deep-linking-startup.md)
       - [使用App Linking实现应用间跳转](app-linking-startup.md)
       - [显式Want跳转切换应用链接跳转适配指导](uiability-startup-adjust.md)

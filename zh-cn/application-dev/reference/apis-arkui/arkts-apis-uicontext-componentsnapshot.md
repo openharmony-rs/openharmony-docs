@@ -78,7 +78,7 @@ struct SnapshotExample {
         .onClick(() => {
           this.uiContext.getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error('error: ${JSON.stringify(error)}');
+              console.error(`error: ${JSON.stringify(error)}`);
               return;
             }
             this.pixmap = pixmap;
@@ -164,7 +164,7 @@ struct SnapshotExample {
               this.pixmap = pixmap;
             })
             .catch((err: Error) => {
-              console.error("error: " + err);
+              console.error(`error: ${err}`);
             })
         }).margin(10)
     }
@@ -253,7 +253,7 @@ struct ComponentSnapshotExample {
           },
             (error: Error, pixmap: image.PixelMap) => {
               if (error) {
-                console.error('error: ${JSON.stringify(error)}');
+                console.error(`error: ${JSON.stringify(error)}`);
                 return;
               }
               this.pixmap = pixmap;
@@ -355,7 +355,7 @@ struct ComponentSnapshotExample {
               this.pixmap = pixmap;
             })
             .catch((err: Error) => {
-              console.error("error: " + err);
+              console.error(`error: ${err}`);
             })
         })
       Image(this.pixmap)
@@ -436,7 +436,7 @@ struct SnapshotExample {
               this.getUIContext().getComponentSnapshot().getSync("root", { scale: 2, waitUntilRenderFinished: true });
             this.pixmap = pixelmap;
           } catch (error) {
-            console.error("getSync errorCode: " + error.code + " message: " + error.message);
+            console.error(`getSync errorCode: ${error.code} message: ${error.message}`);
           }
         }).margin(10)
     }
@@ -451,7 +451,7 @@ struct SnapshotExample {
 
 getWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
 
-获取已加载的组件的截图，传入组件的[uniqueId](js-apis-arkui-frameNode.md#getuniqueid12)，找到对应组件进行截图。使用Promise异步回调。
+获取已加载的组件的截图，传入组件的uniqueId，找到对应组件进行截图。使用Promise异步回调。
 
 > **说明：**
 >
@@ -465,7 +465,7 @@ getWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOptions): 
 
 | 参数名  | 类型     | 必填   | 说明                                       |
 | ---- | ------ | ---- | ---------------------------------------- |
-| uniqueId   | number | 是    | 目标组件的[uniqueId](js-apis-arkui-frameNode.md#getuniqueid12) <br/>**说明：** 不支持未挂树组件，当传入的组件标识是离屏或缓存未挂树的节点时，系统不会对其进行截图。|
+| uniqueId   | number | 是    | 目标组件的uniqueId。FrameNode节点的uniqueId可通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)接口获取。 <br/>**说明：** 不支持未挂树组件，当传入的组件标识是离屏或缓存未挂树的节点时，系统不会对其进行截图。|
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12)            | 否    | 截图相关的自定义参数。 |
 
 **返回值：**
@@ -533,10 +533,10 @@ struct SnapshotExample {
                 this.pixmap = pixmap;
               })
               .catch((err: Error) => {
-                console.error("error: " + err);
+                console.error(`error: ${err}`);
               })
           } catch (error) {
-            console.error('UniqueId get snapshot Error: ${JSON.stringify(error)}');
+            console.error(`UniqueId get snapshot Error: ${JSON.stringify(error)}`);
           }
         }).margin(10)
     }
@@ -551,7 +551,7 @@ struct SnapshotExample {
 
 getSyncWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOptions): image.PixelMap
 
-获取已加载的组件的截图，传入组件的[uniqueId](js-apis-arkui-frameNode.md#getuniqueid12)，找到对应组件进行截图。同步等待截图完成返回[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)。
+获取已加载的组件的截图，传入组件的uniqueId，找到对应组件进行截图。同步等待截图完成返回[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)。
 
 > **说明：**
 >
@@ -565,7 +565,7 @@ getSyncWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOption
 
 | 参数名  | 类型     | 必填   | 说明                                       |
 | ---- | ------ | ---- | ---------------------------------------- |
-| uniqueId   | number | 是    | 目标组件的[uniqueId](js-apis-arkui-frameNode.md#getuniqueid12)。<br/>**说明：** 不支持未挂树组件，当传入的组件标识是离屏或缓存未挂树的节点时，系统不会对其进行截图。|
+| uniqueId   | number | 是    | 目标组件的uniqueId。FrameNode节点的uniqueId可通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)接口获取。<br/>**说明：** 不支持未挂树组件，当传入的组件标识是离屏或缓存未挂树的节点时，系统不会对其进行截图。|
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12)            | 否    | 截图相关的自定义参数。 |
 
 **返回值：**
@@ -632,7 +632,7 @@ struct SnapshotExample {
               .getSyncWithUniqueId(this.myNodeController.imageNode?.getUniqueId(),
                 { scale: 2, waitUntilRenderFinished: true });
           } catch (error) {
-            console.error('UniqueId getSync snapshot Error: ${JSON.stringify(error)}');
+            console.error(`UniqueId getSync snapshot Error: ${JSON.stringify(error)}`);
           }
         }).margin(10)
     }
@@ -708,7 +708,7 @@ struct ReusableChildComponent {
   }
 
   aboutToRecycle(): void {
-    console.info("ReusableChildComponent aboutToRecycle " + this.text);
+    console.info(`ReusableChildComponent aboutToRecycle ${this.text}`);
   }
 
   build() {
@@ -744,7 +744,7 @@ struct Index {
                 this.pixmap = pixmap;
               })
               .catch((err: Error) => {
-                console.error("error: " + err);
+                console.error(`error: ${err}`);
               })
           })
         Image(this.pixmap)

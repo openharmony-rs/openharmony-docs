@@ -126,9 +126,10 @@ async function sample() {
   };
   try {
     const validationRes = await x509CertChain.validate(param);
-    console.info('X509CertChain validate success');
+    console.info('X509CertChain validate result: success.');
   } catch (err) {
-    console.error('X509CertChain validate failed');
+    let e: BusinessError = err as BusinessError;
+    console.error(`X509CertChain validate failed, errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```

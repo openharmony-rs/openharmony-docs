@@ -27,4 +27,4 @@ Defines the parameters for the connection between the WebSocket client and serve
 
 | Name| Description|
 | -- | -- |
-| WebSocket_Header * headers | Header information.|
+| struct WebSocket_Header *headers | Header information.|

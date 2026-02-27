@@ -6,7 +6,7 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The module describes the shortcut information defined in the [module.json5](../../quick-start/module-configuration-file.md#shortcuts) file of an application. The information can be obtained by running [getAllShortcutInfoForSelf](js-apis-shortcutManager.md#shortcutmanagergetallshortcutinfoforself)<!--Del--> or [getShortcutInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetshortcutinfo9)<!--DelEnd-->.
+The module describes the shortcut information defined in the [module.json5](../../quick-start/module-configuration-file.md#shortcuts) file of an application. The information can be obtained by running [getAllShortcutInfoForSelf](js-apis-shortcutManager.md#shortcutmanagergetallshortcutinfoforself)<!--Del--> or [getShortcutInfo](js-apis-launcherBundleManager-sys.md#launcherbundlemanagergetshortcutinfo)<!--DelEnd-->.
 
 > **NOTE**
 >

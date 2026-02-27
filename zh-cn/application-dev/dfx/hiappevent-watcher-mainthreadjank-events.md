@@ -11,21 +11,19 @@
 
 当应用的主线程执行耗时任务时，开发者会感知到应用卡顿，但卡顿时间未达到系统设定的[应用冻屏](appfreeze-guidelines.md)时间限制，因此不会生成故障日志。为了更好地定位和分析问题，开发者可以查看[主线程超时事件检测原理](apptask-timeout-guidelines.md#检测原理)，根据生成的[主线程超时事件日志规格](apptask-timeout-guidelines.md#日志规格)，分析主线程任务的执行情况。
 
-## 检测原理
+本文面向开发者介绍主线程超时检测原理，以及各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅主线程超时事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。
 
-详见[主线程超时检测原理](apptask-timeout-guidelines.md#检测原理)
+- [订阅主线程超时事件（ArkTS）](hiappevent-watcher-mainthreadjank-events-arkts.md)。
 
-## 接口说明
-
-开发者可以通过HiAppEvent提供的接口订阅主线程超时事件“hiAppEvent.event.MAIN_THREAD_JANK”，系统检测到主线程超时后，会抓取维测信息。开发者通过HiAppEvent监听主线程超时事件，可以在回调函数中获取主线程超时事件相关信息。
-
-- [订阅主线程超时事件（ArkTS）](hiappevent-watcher-mainthreadjank-events-arkts.md)
-
-- [订阅主线程超时事件（C/C++）](hiappevent-watcher-mainthreadjank-events-ndk.md)
+- [订阅主线程超时事件（C/C++）](hiappevent-watcher-mainthreadjank-events-ndk.md)。
 
 > **说明：**
 >
 > 主线程超时事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，支持在原子化服务场景下使用HiAppEvent 进行订阅，从 API version 22 开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。
+
+## 检测原理
+
+详见[主线程超时检测原理](apptask-timeout-guidelines.md#主线程超时检测)。
 
 ## 自定义参数
 
@@ -134,102 +132,75 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
 ### configEventPolicy接口参数设置说明
 
-开发者可以使用上述hiappevent提供的接口，在EventPolicy中配置采样栈接口的参数。
+开发者可以使用上述hiappevent提供的接口，在[EventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22) 中配置采样栈接口的参数。
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| mainThreadJankPolicy | MainThreadJankPolicy | 是 | 主线程超时事件配置策略。 |
+| 名称       | 类型    | 只读 | 可选 | 说明                                         |
+| ---------- | ------- | ---- | ---- | ------------------------------------------ |
+| mainThreadJankPolicy | [MainThreadJankPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#mainthreadjankpolicy22) | 否 | 是   | 主线程超时事件配置策略。 |
 
-主线程超时事件配置策略的定义。
+**参数设置示例**
 
-> **注意：**
->
-> 所有参数均为可选项，不设置时取默认值。
->
-> logType=0时，仅需配置autoStopSampling参数，其他参数均取默认值，无需设置。
->
-> logType=2时，其他参数均不生效，无需设置。
+  展示configEventPolicy接口中logType分别为0，1，2三种类型：
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| logType | number | 否 | 采集日志的类型。默认值：0。<br/>logType=0：其他选项均取默认值，主线程连续两次超时150ms~450ms，采集调用栈；主线程超时450ms，采集trace。<br/>logType=1：仅采集调用栈，触发检测的阈值用户自定义。<br/>logType=2：仅采集trace。 |
-| sampleInterval | number | 否 | 主线程超时检测间隔和采样间隔。单位：毫秒，默认值：150，取值范围：[50, 500]。 |
-| ignoreStartupTime | number | 否 | 应用启动期间忽略主线程超时检测的时间。单位：秒，默认值：10，最小值：3。 |
-| sampleCount | number | 否 | 主线程超时采样次数。单位：次，默认值：10，最小值：1。<br/>最大值需要结合自定义的sampleInterval进行动态计算，计算公式：sampleCount &lt;= (2500 / sampleInterval - 4)。 |
-| reportTimesPerApp | number | 否 | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br/>默认值：1，单位：次。<br/>每分钟上报次数范围：[1, 3]。 |
-| autoStopSampling | boolean | 否 | 主线程超时结束时，是否自动停止采样主线程堆栈。<br/>true: 超时结束或达到设置的采样次数，停止采样。<br/>false：达到设置的采样次数时停止采样。<br/>默认值：false。 |
+  （1）logType=0，用于采样栈或采样trace。仅需配置autoStopSampling参数，其他参数均取默认值，无需设置。
 
-1. sampleCount说明：
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
 
-   （1）2500的含义：根据系统规定，主线程超时事件从检测到上报的时间不可以超过2.5s（即：2500ms）。因此sampleCount的设置值不能超过系统按计算公式得出的最大值。
+  let policy: hiAppEvent.EventPolicy = {
+    "mainThreadJankPolicy" : {
+      "logType": 0, // 采集日志类型
+      "autoStopSampling": true // 超时结束，停止采集堆栈
+    }
+  };
+  hiAppEvent.configEventPolicy(policy).then(() => {
+    hilog.info(0x0000, 'hiAppEvent', `Setting default value successfully.`);
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'hiAppEvent', `Failed to set default value. Code: ${err.code}, message: ${err.message}`);
+  });
+  ```
 
-   （2）4的含义：第一次超时间隔检测时间 + 第二次超时间隔（系统提供两次再次发生超时事件的检测机会）时间 + 收集并上报堆栈信息的时间。
+  （2）logType=1，仅用于采集调用栈。触发检测的阈值用户自定义。
 
-   （3）开发者要结合需求场景，进行合理的设置。
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
 
-2. 参数设置示例
+  let policy: hiAppEvent.EventPolicy = {
+    "mainThreadJankPolicy" : {
+      "logType": 1, // 采集日志类型
+      "sampleInterval": 70, // 触发检测的阈值，采集堆栈间隔
+      "ignoreStartupTime": 11, // 应用启动期间忽略主线程超时检测的时间
+      "sampleCount": 20, // 主线程超时采样次数
+      "reportTimesPerApp": 3, // 主线程超时采样上报次数
+      "autoStopSampling": true // 超时结束，停止采集堆栈
+    }
+  };
+  hiAppEvent.configEventPolicy(policy).then(() => {
+    hilog.info(0x0000, 'hiAppEvent', `Successfully set sampling stack parameters.`);
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
+  });
+  ```
 
-   展示configEventPolicy接口中logType分别为0，1，2三种类型：
+  （3）logType=2，仅用于采集trace。其他参数均不生效，无需设置。
 
-   （1）logType=0，用于采样栈或采样trace。
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
 
-   ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
-
-   let policy: hiAppEvent.EventPolicy = {
-     "mainThreadJankPolicy" : {
-       "logType": 0,
-       "autoStopSampling": true
-     }
-   };
-   hiAppEvent.configEventPolicy(policy).then(() => {
-     hilog.info(0x0000, 'hiAppEvent', `Setting default value successfully.`);
-   }).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'hiAppEvent', `Failed to set default value. Code: ${err.code}, message: ${err.message}`);
-   });
-   ```
-
-   （2）logType=1，仅用于采集调用栈。
-
-   ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
-
-   let policy: hiAppEvent.EventPolicy = {
-     "mainThreadJankPolicy" : {
-       "logType": 1,
-       "sampleInterval": 70,
-       "ignoreStartupTime": 11,
-       "sampleCount": 20,
-       "reportTimesPerApp": 3,
-       "autoStopSampling": true
-     }
-   };
-   hiAppEvent.configEventPolicy(policy).then(() => {
-     hilog.info(0x0000, 'hiAppEvent', `Successfully set sampling stack parameters.`);
-   }).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
-   });
-   ```
-
-   （3）logType=2，仅用于采集trace。
-
-   ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
-
-   let policy: hiAppEvent.EventPolicy = {
-     "mainThreadJankPolicy" : {
-       "logType": 2
-     }
-   };
-   hiAppEvent.configEventPolicy(policy).then(() => {
-     hilog.info(0x0000, 'hiAppEvent', `Set to only collect trace successfully.`);
-   }).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'hiAppEvent', `Failed to set only collect trace. code: ${err.code}, message: ${err.message}`);
-   });
-   ```
+  let policy: hiAppEvent.EventPolicy = {
+    "mainThreadJankPolicy" : {
+      "logType": 2 // 采集日志类型
+    }
+  };
+  hiAppEvent.configEventPolicy(policy).then(() => {
+    hilog.info(0x0000, 'hiAppEvent', `Set to only collect trace successfully.`);
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'hiAppEvent', `Failed to set only collect trace. code: ${err.code}, message: ${err.message}`);
+  });
+  ```
 
 ### OH_HiAppEvent_SetEventConfig接口说明
 

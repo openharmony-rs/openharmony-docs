@@ -365,7 +365,7 @@ class EntryAbility extends UIAbility {
 
 downloadMms\(context: Context, mmsParams: MmsParams\): Promise&lt;void&gt;
 
-发送彩信。使用Promise异步回调。
+下载彩信。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 

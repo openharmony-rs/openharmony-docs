@@ -14,7 +14,7 @@
 
 详细的API说明请参考[AVMetadataExtractor API参考](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md)。
 
-1. 使用createAVMetadataExtractor()创建实例。
+1. 使用[createAVMetadataExtractor()](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavmetadataextractor11-1)创建实例。
    ```ts
    import { media } from '@kit.MediaKit';
    // 创建AVMetadataExtractor对象。
@@ -135,7 +135,7 @@
    import { image } from '@kit.ImageKit';
    // pixelMap对象声明，用于图片显示。
    @State pixelMap: image.PixelMap | undefined = undefined;
-   //获取专辑封面（callback模式）。
+   // 获取专辑封面（callback模式）。
    avMetadataExtractor.fetchAlbumCover((err, pixelMap) => {
      if (err) {
        console.error(TAG, `fetchAlbumCover callback failed, err = ${JSON.stringify(err)}`);
@@ -170,20 +170,22 @@
    // pixelMap对象声明，用于图片显示。
    @State pixelMap: image.PixelMap | undefined = undefined;
    // 接口入参声明。
-   let timesUs: number[] = [];
+   let timesUs: number[] = [0];
    let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
    let param: media.PixelMapParams = {
      width : 300,
      height : 300
    }
    // 获取视频缩略图（callback模式）。
-   avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, async (error, frameInfo) => {
-     if (error) {
-       console.error(TAG, `fetch failed, err = ${JSON.stringify(error)}`);
+   avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
+     if (err) {
+       console.error(`fetch failed, error = ${JSON.stringify(err)}`);
        return;
      }
-     console.info(TAG, `fetch success.`);
-     this.pixelMap = frameInfo.image;
+     console.info(`fetch success.`);
+     if (frameInfo !== undefined && frameInfo.image !== undefined) {
+       this.pixelMap = frameInfo.image;
+     }
    })
 
    // 批量获取缩略图任务耗时可能较长，可以调用cancelAllFetchFrames停止在当前extractor上所有缩略图获取任务（仅对批量获取接口生效）。

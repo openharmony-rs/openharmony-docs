@@ -1756,7 +1756,7 @@ struct ListExample {
 ### 示例5（跳转准确）
 该示例通过设置[childrenMainSize](#childrenmainsize12)属性，实现了List在子组件高度不一致时调用scrollTo接口也可以跳转准确。
 
-如果配合状态管理V2使用，详情见：[List与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md#滚动组件)。
+如果配合状态管理V2使用，详情见：[List与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#滚动组件)。
 
 ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
 
@@ -2307,34 +2307,40 @@ struct ListExample {
   scrollerForList: Scroller = new Scroller()
   @State contentWidth: number = -1;
   @State contentHeight: number = -1;
+
   build() {
     Column() {
       List({ space: 20, initialIndex: 0, scroller: this.scrollerForList }) {
         ForEach(this.arr, (item: number) => {
           ListItem() {
             Text('' + item)
-              .width('100%').height(100).fontSize(16)
-              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+              .width('100%')
+              .height(100)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
           }
         }, (item: string) => item)
       }
       .width('90%').height('90%')
+
       // 点击按钮来调用contentSize函数获取内容尺寸
       Button('GetContentSize')
-        .onClick(()=> {
-            // Scroller未绑定组件时会抛异常，需要加上try catch保护
-          	try {
-              // 通过调用contentSize函数获取内容尺寸的宽度值
-              this.contentWidth=this.scrollerForList.contentSize().width;
-              // 通过调用contentSize函数获取内容尺寸的高度值
-              this.contentHeight=this.scrollerForList.contentSize().height;
-            } catch (error) {
-              let err: BusinessError = error as BusinessError;
-      		  console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
-            }
+        .onClick(() => {
+          // Scroller未绑定组件时会抛异常，需要加上try catch保护
+          try {
+            // 通过调用contentSize函数获取内容尺寸的宽度值
+            this.contentWidth = this.scrollerForList.contentSize().width;
+            // 通过调用contentSize函数获取内容尺寸的高度值
+            this.contentHeight = this.scrollerForList.contentSize().height;
+          } catch (error) {
+            let err: BusinessError = error as BusinessError;
+            console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+          }
         })
       // 将获取到的内容尺寸信息通过文本进行呈现
-      Text('Width：'+ this.contentWidth+'，Height：'+ this.contentHeight)
+      Text('Width：' + this.contentWidth + '，Height：' + this.contentHeight)
         .fontColor(Color.Red)
         .height(50)
     }

@@ -274,7 +274,47 @@ In external storage management scenarios, disabling external storage may not tak
 **Solution**
 
 Restart the device for the control to take effect. In external storage management scenarios, disabling external storage takes effect after the device is restarted. The external storage is not automatically loaded.
-   
+
+## 9200014 Failed to Start the Component
+
+**Error Message**
+
+Failed to start the ability.
+
+**Description**
+
+This error code is generated when the component fails to be started.
+
+**Possible Causes**
+
+1. If the list of apps that cannot be run (for example, by calling the [addDisallowedRunningBundlesSync](js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync) API) is set and the app is in the list, the component fails to be started.
+2. If the list of apps that can be run (for example, by calling the [addAllowedRunningBundles](js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21) API) is set and the app is not in the list, the component fails to be started.
+
+**Solution**
+
+1. Remove the app from the list of apps that cannot run, for example, by calling the [removeDisallowedRunningBundlesSync](js-apis-enterprise-applicationManager.md#applicationmanagerremovedisallowedrunningbundlessync) API.
+2. Add the app to the list of apps that can run, for example, by calling the [addAllowedRunningBundles](js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21) API.
+
+## 9200015 Component Not Exist
+
+**Error Message**
+
+The ability does not exist.
+
+**Description**
+
+This error code is generated when a component that does not exist is started.
+
+**Possible Causes**
+
+1. The input **bundleName** and **abilityName** do not exist.
+2. The passed component is not visible to the outside.
+
+**Solution**
+
+1. Check whether the values of **bundleName** and **abilityName** in **want** are correct.
+2. Check whether the passed component is visible to the outside.
+
 ## 9201001 Failed to Manage the Certificate
 
 **Error Message**
@@ -394,3 +434,104 @@ The possible causes are as follows:
 2. Check whether the application has the MainAbility.
 3. Check whether the application has the tray service.
 4. Check whether the application has been added to the tray.
+
+## 9201006 Installed Enterprise Re-signing Certificate Exceeding the Limit
+
+**Error Message**
+
+The number of certificates has reached the limit.
+
+**Description**
+
+This error code is reported when the number of installed enterprise re-signing certificates reaches 10.
+
+**Possible Causes**
+
+The number of installed enterprise re-signing certificates reaches the upper limit.
+
+**Solution**
+
+Check whether the number of installed enterprise re-signing certificates reaches 10. If yes, uninstall unnecessary certificates.
+
+## 9201007 Invalid Enterprise Re-signing Certificate
+
+**Error Message**
+
+The certificate is invalid.
+
+**Description**
+
+This error code is generated when the enterprise re-signing certificate fails to be installed.
+
+**Possible Causes**
+
+The enterprise re-signing certificate fails to be installed. The possible causes are as follows:
+
+1. The certificate is invalid.
+2. A certificate with the same name has been installed.
+
+**Solution**
+
+1. Check whether the certificate is a valid enterprise re-signing certificate.
+2. Check whether a certificate with the same name has been installed.
+
+## 9201008 Enterprise Re-signing Certificate Not Exist
+
+**Error Message**
+
+The certificate does not exist.
+
+**Description**
+
+This error code is generated when the enterprise re-signing certificate fails to be uninstalled.
+
+**Possible Causes**
+
+The uninstalled certificate does not exist.
+
+**Solution**
+
+Check whether the uninstalled certificate exists.
+
+## 9201009 Failed to Create a Log Collection Task
+
+**Error Message**
+
+Collecting logs, please try again later.
+
+**Description**
+
+This error code is generated when a log collection task fails to be created.
+
+**Possible Causes**
+
+When a log collection task is being executed, the [systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23) API is called to create a log collection task.
+
+**Solution**
+
+After the previous log collection task is complete (that is, the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonlogcollected23) callback is received), the [systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23) API is called to create a log collection task.
+
+## 9201010 Failed to Configure the Ethernet Network Interface
+
+**Error Message**
+
+Ethernet configuration failed. Ethernet device not connected.
+
+**Description**
+
+The Ethernet configuration fails, or the Ethernet device is not connected.
+
+**Possible Causes**
+
+The Ethernet configuration fails. The possible causes are as follows:
+
+1. The NIC is not enabled.
+2. The NIC name is incorrect.
+3. The configuration parameters are incorrect.
+
+**Solution**
+
+1. Check whether the NIC is enabled.
+2. Check whether the input NIC name is correct.
+3. Check whether the configured parameters are correct.
+<!--no_check-->
