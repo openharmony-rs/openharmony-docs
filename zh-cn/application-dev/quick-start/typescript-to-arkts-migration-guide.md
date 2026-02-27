@@ -3422,8 +3422,8 @@ let n2: number = 0;
 
 ``` TypeScript
 class C {
-  name: string  // 只有在开启strictPropertyInitialization选项时会产生编译时错误。
-  age: number   // 只有在开启strictPropertyInitialization选项时会产生编译时错误。
+  name: string  // 只有在开启strictPropertyInitialization选项时会产生编译时错误
+  age: number   // 只有在开启strictPropertyInitialization选项时会产生编译时错误
 }
 
 let c = new C();
