@@ -457,9 +457,9 @@ export interface MyInfo {
 <!-- @[call_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
-// file2.ts
-import { MyInfo } from './file1';
-// ...
+// FileOutside.ts
+import { MyInfo } from './FileInside';
+  // ...
   const person: MyInfo = {
     age: 20,
     address: {
