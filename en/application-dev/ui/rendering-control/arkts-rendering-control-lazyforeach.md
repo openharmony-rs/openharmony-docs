@@ -69,7 +69,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-/** For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
@@ -220,7 +220,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 <!-- @[add_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/AddingData.ets) -->
 
 ``` TypeScript
-/** For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -289,7 +289,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-/** For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
@@ -367,7 +367,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-/** For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
@@ -452,7 +452,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-/** For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
@@ -525,7 +525,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-/** For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
@@ -604,7 +604,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-/** For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
@@ -680,7 +680,7 @@ struct PreciselyModifyingData {
 }
 ```
 
-The **onDatasetChange** API allows you to notify **LazyForEach** at a time to add, delete, move, and exchange data. In the preceding scenario, after **change data** is clicked, multiple operations are executed simultaneously: The second item moves to the fourth, the fifth and seventh items exchange positions, items **"Hello 1"** and **"Hello 2"** are inserted starting at the ninth position, and two items are deleted beginning at the eleventh position. 
+The **onDatasetChange** API allows you to notify **LazyForEach** at a time to add, delete, move, and exchange data. In the preceding scenario, after **change data** is clicked, multiple operations are executed simultaneously: The second item moves to the fourth, the fifth and seventh items exchange positions, items **Hello 1** and **Hello 2** are inserted starting at the ninth position, and two items are deleted beginning at the eleventh position. 
 
 **Modifying Data in Batches in LazyForEach** 
 ![LazyForEach-Change-MultiData](figures/LazyForEach-Change-MultiData.gif)  
@@ -693,7 +693,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-/** For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
@@ -762,7 +762,7 @@ struct PreciselyModifyingDataTwo {
 }
 ```
 
-**Modifying Data in Batches in LazyForEach** 
+**Modifying Multiple Data Items in LazyForEach** 
 ![LazyForEach-Change-MultiData2](figures/LazyForEach-Change-MultiData2.gif)  
 
 Key usage considerations:
@@ -802,7 +802,7 @@ For details about the **GenericBasicDataSource** implementation, see [BasicDataS
 <!-- @[changing_data_sub_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ChangingDataSubproperties.ets) -->
 
 ``` TypeScript
-/** For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section. **/
+// For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section.
 import { GenericBasicDataSource } from './GenericBasicDataSource';
 
 class MySubDataSource extends GenericBasicDataSource<StringData> {
@@ -887,7 +887,7 @@ For details about the **GenericBasicDataSource** implementation, see [BasicDataS
 <!-- @[observing_nested_class_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ObservingNestedClassProperties.ets) -->    
 
 ``` TypeScript
-/** For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section. **/
+// For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section.
 import { GenericBasicDataSource } from './GenericBasicDataSource';
 
 class PropertiesDataSource extends GenericBasicDataSource<ClassPropertiesStringData> {
@@ -976,7 +976,7 @@ For details about the **GenericBasicDataSource** implementation, see [BasicDataS
 <!-- @[observing_component_internal_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ObservingComponentInternalState.ets) -->    
 
 ``` TypeScript
-/** For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section. **/
+// For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section.
 import { GenericBasicDataSource } from './GenericBasicDataSource';
 
 class MyStateDataSource extends GenericBasicDataSource<StateStringData> {
@@ -1060,7 +1060,7 @@ For details about the **GenericBasicDataSource** implementation, see [BasicDataS
 <!-- @[receiving_external_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ReceivingExternalInput.ets) -->    
 
 ``` TypeScript
-/** For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section. **/
+// For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section.
 import { GenericBasicDataSource } from './GenericBasicDataSource';
 
 class MyInputDataSource extends GenericBasicDataSource<InputStringData> {
@@ -1137,7 +1137,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 <!-- @[drag_sorting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/DragandDropSorting.ets) -->
 
 ``` TypeScript
-/** For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
 import { BasicDataSource } from './BasicDataSource';
 
 class DragAndDropDataSource extends BasicDataSource {
@@ -1278,7 +1278,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-/** For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
@@ -1438,7 +1438,7 @@ For details about the **GenericBasicDataSource** implementation, see [BasicDataS
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-/** For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section. **/
+// For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section.
 import { GenericBasicDataSource } from './GenericBasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
@@ -1617,7 +1617,7 @@ For details about the **GenericBasicDataSource** implementation, see [BasicDataS
 <!-- @[ui_not_rerendered](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/UINotRerenderedWhenObjectLinkIsChanged.ets) -->    
 
 ``` TypeScript
-/** For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section. **/
+// For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section.
 import { GenericBasicDataSource } from './GenericBasicDataSource';
 
 class UINoteRenderingSource extends GenericBasicDataSource<UINoteRenderingStringData> {
@@ -1782,7 +1782,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-/** For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
@@ -1810,7 +1810,7 @@ class ScreenFliceringDataSource extends BasicDataSource {
       this.dataArray.push(`Hello ${i}`);
     }
     // Replace notifyDataReload.
-    this.notifyDatasetChange([{ type: DataOperationType.ADD, index: totalCount - 1, count: batch }]);
+    this.notifyDatasetChange([{ type: DataOperationType.ADD, index: totalCount, count: batch }]);
   }
 }
 
