@@ -157,9 +157,9 @@ export let c: number = 4;
 <!-- @[namespaces_Variables_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/ModuleIndex.ts) -->
 
 ``` TypeScript
-//module_index.ts
-import { a, b } from "./module_foo"
-import * as c from "./module_bar"
+// ModuleIndex.ts
+import { a, b } from "./ModuleFoo";
+import * as c from "./ModuleBar";
 
 export let d: number = 3;
 
