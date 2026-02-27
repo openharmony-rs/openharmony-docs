@@ -346,7 +346,7 @@ test(a2);
   <!-- @[testOptionExample_enableFilenameObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/FilenameObfuscationTest/FilenameObfuscationTest.ts) -->        
   
   ``` TypeScript
-  // test1/test2.ts
+  // FilenameObfuscationTest/FilenameObfuscationTest.ts
   export function foo () {}
   ```
 
