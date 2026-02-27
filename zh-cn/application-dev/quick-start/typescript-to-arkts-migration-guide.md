@@ -1250,11 +1250,11 @@ function getPoint(o: Point): Point {
   return o;
 }
 
-// TS支持structural typing，可以推断p的类型为Point。
+// TS支持structural typing，可以推断p的类型为Point
 let p = { x: 5, y: 10 };
 getPoint(p);
 
-// 可通过上下文推断出对象字面量的类型为Point。
+// 可通过上下文推断出对象字面量的类型为Point
 getPoint({ x: 5, y: 10 });
 ```
 
