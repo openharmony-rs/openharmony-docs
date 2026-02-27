@@ -1690,7 +1690,7 @@ delete p.y;
 <!-- @[no_delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDelete.ets) -->  
 
 ``` TypeScript
-// 可以声明一个可空类型并使用null作为缺省值。
+// 可以声明一个可空类型并使用null作为缺省值
 class Point {
   public x: number | null = 0;
   public y: number | null = 0;
