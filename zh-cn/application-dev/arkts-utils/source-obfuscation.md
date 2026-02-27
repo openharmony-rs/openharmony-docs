@@ -872,10 +872,10 @@ const myVal = 1;
 <!-- @[etsOptionExample_useKeepInSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ets) -->    
 
 ``` TypeScript
-// 保留被标记的注解声明，MyAnnotation不会被混淆。
+// 保留被标记的注解声明，MyAnnotation不会被混淆
 // @KeepSymbol
 @interface MyAnnotation2 {
-  // 标记注解成员无效，authorName不会被收集到白名单。
+  // 标记注解成员无效，authorName不会被收集到白名单
   // @KeepSymbol
   authorName: string;
   revision: number = 1;
