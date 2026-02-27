@@ -303,31 +303,32 @@
 1. 在需要切换设备的通话界面创建AVInputCastPicker组件。
 
    <!-- @[default_InputCastPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/DefaultAVInputCastPicker.ets) -->   
-
-   ```ts
+   
+   ``` TypeScript
    import { AVCastPickerState, AVInputCastPicker } from '@kit.AVSessionKit';
-
-   // 设备列表显示状态变化回调（可选）。
-   private onStateChange(state: AVCastPickerState) {
-     if (state === AVCastPickerState.STATE_APPEARING) {
-       console.info('The picker starts showing.');
-     } else if (state === AVCastPickerState.STATE_DISAPPEARING) {
-       console.info('The picker finishes presenting.');
-     }
-   }
-
-   // 创建组件，并设置大小。
-   build() {
-     Row() {
-       Column() {
-         AVInputCastPicker(
-         {
-           onStateChange: this.onStateChange
-         }
-         ).size({ height:45, width:45 })
+   
+   // ...
+     // 设备列表显示状态变化回调（可选）。
+     private onStateChange(state: AVCastPickerState) {
+       if (state === AVCastPickerState.STATE_APPEARING) {
+         console.info('The picker starts showing.');
+       } else if (state === AVCastPickerState.STATE_DISAPPEARING) {
+         console.info('The picker finishes presenting.');
        }
      }
-   }
+   
+     // 创建组件，并设置大小。
+     build() {
+       Row() {
+         Column() {
+           AVInputCastPicker(
+             {
+               onStateChange: this.onStateChange
+             }
+           ).size({ height: 45, width: 45 })
+         }
+       }
+     }
    ```
 
 2. 实现通话功能，请参考[开发音频通话功能](../audio/audio-call-development.md)。
