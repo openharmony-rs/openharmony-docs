@@ -4166,7 +4166,7 @@ export default class RaiseMainWindowAbility extends UIAbility {
 }
 ```
 ```json5
-//module.json5
+// module.json5
 {
   "module": {
     "name": "entry",
@@ -6023,7 +6023,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let windowClass: window.Window | undefined = undefined;
 let config: window.Configuration = {
   name: "systemTypeWindow",
-  windowType: window.WindowType.TYPE_PANEL, //根据需要自选系统窗口类型
+  windowType: window.WindowType.TYPE_PANEL, // 根据需要自选系统窗口类型
   ctx: this.context
 };
 let promise = window.createWindow(config);
