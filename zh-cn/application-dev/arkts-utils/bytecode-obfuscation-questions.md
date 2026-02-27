@@ -139,7 +139,7 @@ this.__messageStr = new ObservedPropertySimplePU('Hello World', this, "messageSt
 // Sample.ets
 import { Type } from '@kit.ArkUI';
 
-// 数据中心。
+// 数据中心
 @ObservedV2
 class SampleChild {
   @Trace public p123: number = 0;
@@ -148,7 +148,7 @@ class SampleChild {
 
 @ObservedV2
 export class Sample {
-  // 对于复杂对象需要@Type修饰，确保序列化成功。
+  // 对于复杂对象需要@Type修饰，确保序列化成功
   @Type(SampleChild)
   @Trace public f123: SampleChild = new SampleChild();
 }
