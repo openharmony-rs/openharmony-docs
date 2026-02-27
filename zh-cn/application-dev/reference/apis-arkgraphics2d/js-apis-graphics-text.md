@@ -834,12 +834,11 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
-
 | 名称      | 类型                                                 | 只读 | 可选 | 说明                                       |
 | --------- | ---------------------------------------------------- | --  | ---  | ----------------------------------------- |
-| axis      | string                                               | 否  |  否   | 可变字体属性键值对中的关键字标识的字符串。       |
-| value     | number                                               | 否  |  否   | 可变字体属性键值对的值。                        |
+| axis      | string                                               | 否  |  否   | 可变字体属性键值对中的关键字标识的字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。       |
+| value     | number                                               | 否  |  否   | 可变字体属性键值对的值。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。                        |
+| isNormalized<sup>24+</sup>     | boolean                         | 否  |  是   | 是否归一化。值为true时，value字段取值范围为-1~1，映射字体文件中配置的最小值到最大值范围，0表示字体文件中配置的默认值；值为false时，value字段取值范围为字体文件本身支持调节的范围；默认为false。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。  |
 
 ## TextBadgeType<sup>20+</sup>
 
