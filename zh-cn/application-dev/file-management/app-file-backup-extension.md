@@ -120,7 +120,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
    // ...
    
    class BackupExt extends BackupExtensionAbility {
-     //onBackupEx
+     // onBackupEx
      async onBackupEx(backupInfo: string): Promise<string> {
        console.info('onBackupEx ok');
        let errorInfo: ErrorInfo = {
