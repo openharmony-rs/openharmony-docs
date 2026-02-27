@@ -929,7 +929,7 @@ ArkTS不支持structural typing，编译器无法比较两种类型的`public`AP
 
 <!-- @[no_structuralTyping_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoStructuralTyping.ts) -->    
 
-```typescript
+``` TypeScript
 interface I1 {
   f(): string
 }
