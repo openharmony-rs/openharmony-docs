@@ -45,33 +45,7 @@ AVSession在构造方法中支持不同的类型参数，由 [AVSessionType](../
 >
 > 以下示例代码仅展示创建AVSession对象的接口调用，应用在真正使用时，需要确保AVSession对象实例在应用后台播放业务活动期间一直存在，避免被系统回收、释放，导致后台发声时被系统管控。
 
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          // 开始创建并激活媒体会话。
-          // 创建session。
-          let context = this.getUIContext().getHostContext() as Context;
-          let type: AVSessionManager.AVSessionType = 'audio';
-          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-          // 激活接口要在元数据、控制命令注册完成之后再执行。
-          await session.activate();
-          console.info(`session create done : sessionId : ${session.sessionId}`);
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+<!-- @[createAVSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/CreateAVSession.ets) -->
 
 ## 创建后台任务
 
@@ -86,94 +60,13 @@ struct Index {
 
 应用可以通过setAVMetadata把会话的一些元数据信息设置给系统，从而在播控中心界面进行展示，包括但不限于：当前媒体的ID（assetId），上一首媒体的ID（previousAssetId），下一首媒体的ID（nextAssetId），标题（title），专辑作者（author），专辑名称（album），词作者（writer），媒体时长（duration）等。
 
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          try {
-            let context = this.getUIContext().getHostContext() as Context;
-            // 假设已经创建了一个session，如何创建session可以参考之前的案例。
-            let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', 'audio');
-            // 设置必要的媒体信息。
-            let metadata: AVSessionManager.AVMetadata = {
-              assetId: '0', // 由应用指定，用于标识应用媒体库里的媒体。
-              title: 'TITLE',
-              mediaImage: 'IMAGE',
-              artist: 'ARTIST',
-            };
-            session.setAVMetadata(metadata).then(() => {
-              console.info(`SetAVMetadata successfully`);
-            }).catch((err: BusinessError) => {
-              console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
-            });
-          } catch (err) {
-            if (err) {
-              console.error(`AVSession create Error: Code: ${err.code}, message: ${err.message}`);
-            }
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+<!-- @[setAVMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SetAVMetadata.ets) -->
 
 ### 歌词
 
 对于长音频来说，播控中心提供了歌词的展示页面，对于应用来说，接入也比较简单，只需要把歌词内容设置给系统。播控中心会解析歌词内容，并根据播放进度进行同步的刷新。
 
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let context = this.getUIContext().getHostContext() as Context;
-          // 假设已经创建了一个session，如何创建session可以参考之前的案例。
-          let type: AVSessionManager.AVSessionType = 'audio';
-          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-
-          // 把歌词信息设置给AVSession。
-          let metadata: AVSessionManager.AVMetadata = {
-            assetId: '0',
-            title: 'TITLE',
-            mediaImage: 'IMAGE',
-            // LRC中有两类元素：一种是时间标签+歌词，一种是ID标签。
-            // 例如：[00:25.44]xxx\r\n[00:26.44]xxx\r\n。
-            lyric: "lrc格式歌词内容",
-            // singleLyricText字段存储单条歌词文本，不包含时间戳。
-            // 例如："单条歌词内容"。
-            singleLyricText: "单条歌词内容",
-          };
-          session.setAVMetadata(metadata).then(() => {
-            console.info(`SetAVMetadata successfully`);
-          }).catch((err: BusinessError) => {
-            console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+<!-- @[settingLyrics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingLyrics.ets) -->
 
 <!--RP1-->
 <!--RP1End-->
@@ -184,44 +77,7 @@ struct Index {
 
 对于应用来说，接入只需要在AVMetadata中通知系统，当前播放音频的音源标识，播控就会同步展示。
 
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let context = this.getUIContext().getHostContext() as Context;
-          // 假设已经创建了一个session，如何创建session可以参考之前的案例。
-          let type: AVSessionManager.AVSessionType = 'audio';
-          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-
-          // 把媒体音源信息设置给AVSession。
-          let metadata: AVSessionManager.AVMetadata = {
-            assetId: '0',
-            title: 'TITLE',
-            mediaImage: 'IMAGE',
-            // 标识该媒体音源是Audio Vivid。
-            displayTags: AVSessionManager.DisplayTag.TAG_AUDIO_VIVID,
-          };
-          session.setAVMetadata(metadata).then(() => {
-            console.info(`SetAVMetadata successfully`);
-          }).catch((err: BusinessError) => {
-            console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+<!-- @[displayTagsOfMediaAssets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/DisplayTagsOfMediaAssets.ets) -->
 
 ## 设置播放状态
 
@@ -231,103 +87,13 @@ struct Index {
 
 播放状态一般是在资源播放后会进行变化的内容，包括：当前媒体的播放状态（state）、播放位置（position）、播放倍速（speed）、缓冲时间（bufferedTime）、循环模式（loopMode）、是否收藏（isFavorite）、正在播放的媒体Id（activeItemId）、自定义媒体数据（extras）等。
 
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let context = this.getUIContext().getHostContext() as Context;
-          // 假设已经创建了一个session，如何创建session可以参考之前的案例。
-          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', 'audio');
-
-          // 播放器逻辑··· 引发媒体信息与播放状态的变更。
-          // 简单设置一个播放状态 - 暂停 未收藏。
-          let playbackState: AVSessionManager.AVPlaybackState = {
-            state: AVSessionManager.PlaybackState.PLAYBACK_STATE_PAUSE,
-            isFavorite: false
-          };
-          session.setAVPlaybackState(playbackState, (err: BusinessError) => {
-            if (err) {
-              console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
-            } else {
-              console.info(`SetAVPlaybackState successfully`);
-            }
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+<!-- @[settingGeneralStateInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingGeneralStateInformation.ets) -->
 
 ### 进度条
 
 应用如果支持在播控中心展示进度，那么在媒体资源播放中，需要设置资源的时长、播放状态（暂停、播放）、播放位置、倍速，播控中心会使用这些信息进行进度的展示：
 
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let context = this.getUIContext().getHostContext() as Context;
-          // 假设已经创建了一个session，如何创建session可以参考之前的案例。
-          let type: AVSessionManager.AVSessionType = 'audio';
-          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-
-          // 设置媒体资源时长。
-          let metadata: AVSessionManager.AVMetadata = {
-            assetId: '0',
-            title: 'TITLE',
-            mediaImage: 'IMAGE',
-            duration: 23000, // 资源的时长，以ms为单位。
-          };
-          session.setAVMetadata(metadata).then(() => {
-            console.info(`SetAVMetadata successfully`);
-          }).catch((err: BusinessError) => {
-            console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
-          });
-
-          // 设置状态： 播放状态，进度位置，播放倍速，缓存的时间。
-          let playbackState: AVSessionManager.AVPlaybackState = {
-            state: AVSessionManager.PlaybackState.PLAYBACK_STATE_PLAY, // 播放状态。
-            position: {
-              elapsedTime: 1000, // 已经播放的位置，以ms为单位。
-              updateTime: new Date().getTime(), // 应用更新当前位置时的时间戳，以ms为单位。
-            },
-            speed: 1.0, // 可选，默认是1.0，播放的倍速，按照应用内支持的speed进行设置，系统不做校验。
-            bufferedTime: 14000, // 可选，资源缓存的时间，以ms为单位。
-          };
-          session.setAVPlaybackState(playbackState, (err) => {
-            if (err) {
-              console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
-            } else {
-              console.info(`SetAVPlaybackState successfully`);
-            }
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+<!-- @[settingTheProgressBar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingTheProgressBar.ets) -->
 
 系统的播控中心会根据应用设置的信息自行进行播放进度的计算，而不需要应用实时更新播放进度；但是应用需要如下状态发生变化的时候，再更新AVPlaybackState，否则系统会发生计算错误。
 
@@ -397,36 +163,7 @@ struct Index {
 
 系统支持的控制命令对于不支持的控制，比如应用不支持“上一首”的命令处理，只需要使用off 接口注销对应的控制命令，系统的播控中心会相应的对该控制界面进行置灰处理，以明确告知用户此控制命令不支持。
 
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let context = this.getUIContext().getHostContext() as Context;
-          // 假设已经创建了一个session，如何创建session可以参考之前的案例。
-          let type: AVSessionManager.AVSessionType = 'audio';
-          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-
-          // 取消指定session下的相关监听。
-          session.off('play');
-          session.off('pause');
-          session.off('stop');
-          session.off('playNext');
-          session.off('playPrevious');
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+<!-- @[handing_unSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/HandlingUnsupportedCommands.ets) -->
 
 ### 快进快退
 
@@ -454,95 +191,13 @@ struct Index {
     | 注册快进/快退事件 | “快进”、“快退”|  注册快进事件 →“快进”按钮可用。<br>注册快退事件 →“快退”按钮可用。<br>未注册对应事件的按钮不可用。 |
     | 注册上一首/下一首及快进/快退事件 | “快进”、“快退”|  注册快进事件 →“快进”按钮可用。<br>注册快退事件 →“快退”按钮可用。<br>未注册对应事件的按钮不可用。 |
 
-  ```ts
-  import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  @Entry
-  @Component
-  struct Index {
-    @State message: string = 'hello world';
-
-    build() {
-      Column() {
-        Text(this.message)
-          .onClick(async () => {
-            let context = this.getUIContext().getHostContext() as Context;
-            // 假设已经创建了一个session，如何创建session可以参考之前的案例。
-            let type: AVSessionManager.AVSessionType = 'audio';
-            let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-
-            // 设置支持的快进快退的时长设置给AVSession。
-            let metadata: AVSessionManager.AVMetadata = {
-              assetId: '0', // 由应用指定，用于标识应用媒体库里的媒体。
-              title: 'TITLE',
-              mediaImage: 'IMAGE',
-              skipIntervals: AVSessionManager.SkipIntervals.SECONDS_10,
-            };
-            session.setAVMetadata(metadata).then(() => {
-              console.info(`SetAVMetadata successfully`);
-            }).catch((err: BusinessError) => {
-              console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
-            });
-
-            session.on('fastForward', (time ?: number) => {
-              console.info(`on fastForward , do fastForward task`);
-              // do some tasks ···
-            });
-            session.on('rewind', (time ?: number) => {
-              console.info(`on rewind , do rewind task`);
-              // do some tasks ···
-            });
-          })
-      }
-      .width('100%')
-      .height('100%')
-    }
-  }
-  ```
+  <!-- @[settingFastForward](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingFastForward.ets) -->
 
 ### 收藏
 
 音乐类应用实现收藏功能，那么需要注册收藏的控制响应[on('toggleFavorite')](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#ontogglefavorite10)。
 
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let context = this.getUIContext().getHostContext() as Context;
-          // 假设已经创建了一个session，如何创建session可以参考之前的案例。
-          let type: AVSessionManager.AVSessionType = 'audio';
-          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-          session.on('toggleFavorite', (assetId) => {
-            console.info(`on toggleFavorite `);
-            // 应用收到收藏命令，进行收藏处理。
-
-            // 应用内完成或者取消收藏，把新的收藏状态设置给AVSession。
-            let playbackState: AVSessionManager.AVPlaybackState = {
-              isFavorite: true,
-            };
-            session.setAVPlaybackState(playbackState).then(() => {
-              console.info(`SetAVPlaybackState successfully`);
-            }).catch((err: BusinessError) => {
-              console.error(`SetAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
-            });
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+<!-- @[toggleFavorite_mediaAssets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/FavoritingMediaAssets.ets) -->
 
 ### 循环模式
 
@@ -554,114 +209,13 @@ struct Index {
 
 实现参考：
 
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let context = this.getUIContext().getHostContext() as Context;
-          // 假设已经创建了一个session，如何创建session可以参考之前的案例。
-          let type: AVSessionManager.AVSessionType = 'audio';
-          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-
-          // 应用启动时/内部切换循环模式，需要把应用内的当前的循环模式设置给AVSession。
-          let playBackState: AVSessionManager.AVPlaybackState = {
-            loopMode: AVSessionManager.LoopMode.LOOP_MODE_SINGLE,
-          };
-          session.setAVPlaybackState(playBackState).then(() => {
-            console.info(`set AVPlaybackState successfully`);
-          }).catch((err: BusinessError) => {
-            console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
-          });
-
-          // 应用注册循环模式的控制监听。
-          session.on('setLoopMode', (mode) => {
-            console.info(`on setLoopMode ${mode}`);
-            // 应用收到设置循环模式的指令后，应用自定下一个模式，切换完毕后通过AVPlaybackState上报切换后的LoopMode。
-            let playBackState: AVSessionManager.AVPlaybackState = {
-              loopMode: AVSessionManager.LoopMode.LOOP_MODE_SINGLE,
-            };
-            session.setAVPlaybackState(playBackState).then(() => {
-              console.info(`set AVPlaybackState successfully`);
-            }).catch((err: BusinessError) => {
-              console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
-            });
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+<!-- @[settingTheLoopMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingTheLoopMode.ets) -->
 
 ### 进度控制
 
 应用如果支持进度显示，进一步也可以支持进度控制。应用需要响应seek的控制命令，那么当用户在播控中心的界面上进行拖动操作时，应用就会收到对应的回调。参考实现：
 
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let context = this.getUIContext().getHostContext() as Context;
-          // 假设已经创建了一个session，如何创建session可以参考之前的案例。
-          let type: AVSessionManager.AVSessionType = 'audio';
-          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-
-          session.on('seek', (position: number) => {
-            console.info(`on seek , the time is ${JSON.stringify(position)}`);
-
-            // 由于应用内seek可能会触发较长的缓冲等待，可以先把状态设置为 Buffering。
-            let playbackState: AVSessionManager.AVPlaybackState = {
-              state: AVSessionManager.PlaybackState.PLAYBACK_STATE_BUFFERING, // 缓冲状态。
-            };
-            session.setAVPlaybackState(playbackState, (err) => {
-              if (err) {
-                console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
-              } else {
-                console.info(`SetAVPlaybackState successfully`);
-              }
-            });
-
-            // 应用响应seek命令，使用应用内播放器完成seek实现。
-
-            // 应用内更新新的位置后，也需要同步更新状态给系统。
-            playbackState.state = AVSessionManager.PlaybackState.PLAYBACK_STATE_PLAY; // 播放状态。
-            playbackState.position = {
-              elapsedTime: position, // 已经播放的位置，以ms为单位。
-              updateTime: new Date().getTime(), // 应用更新当前位置的时间戳，以ms为单位。
-            }
-            session.setAVPlaybackState(playbackState, (err) => {
-              if (err) {
-                console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
-              } else {
-                console.info(`SetAVPlaybackState successfully`);
-              }
-            });
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+<!-- @[performingProgressControl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/PerformingProgressControl.ets) -->
 
 ## 适配媒体通知
 
@@ -687,59 +241,7 @@ struct Index {
   | fastForward    | 快进命令。 |
   | rewind    | 快退命令。 |
 
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          try {
-            let context = this.getUIContext().getHostContext() as Context;
-            let type: AVSessionManager.AVSessionType = 'audio';
-            let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-            // 设置必要的媒体信息，务必设置，否则接收不到控制事件。
-            let metadata: AVSessionManager.AVMetadata = {
-              assetId: '0', // 由应用指定，用于标识应用媒体库里的媒体。
-              title: 'TITLE',
-              mediaImage: 'IMAGE',
-              artist: 'ARTIST'
-            };
-            session.setAVMetadata(metadata).then(() => {
-              console.info(`SetAVMetadata successfully`);
-            }).catch((err: BusinessError) => {
-              console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
-            });
-            // 一般在监听器中会对播放器做相应逻辑处理。
-            // 处理完后需要通过set接口同步播放相关信息，参考上面的用例。
-            session.on('play', () => {
-              console.info(`on play , do play task`);
-              // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('play')取消监听。
-              // 处理完毕后，请使用setAVPlayState上报播放状态。
-            });
-            session.on('pause', () => {
-              console.info(`on pause , do pause task`);
-              // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('pause')取消监听。
-              // 处理完毕后，请使用setAVPlayState上报播放状态。
-            });
-          } catch (err) {
-            if (err) {
-              console.error(`AVSession create Error: Code: ${err.code}, message: ${err.message}`);
-            }
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+<!-- @[adaptingToBluetoothMethodOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/AdaptingToBluetoothMethodOne.ets) -->
 
 - 方式二：
 
@@ -756,45 +258,7 @@ struct Index {
   | KEYCODE_MEDIA_PLAY    | 多媒体键：播放 |
   | KEYCODE_MEDIA_PAUSE   | 多媒体键：暂停|
 
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let context = this.getUIContext().getHostContext() as Context;
-          let type: AVSessionManager.AVSessionType = 'audio';
-          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-          // 设置必要的媒体信息，务必设置，否则接收不到按键事件。
-          let metadata: AVSessionManager.AVMetadata = {
-            assetId: '0', // 由应用指定，用于标识应用媒体库里的媒体。
-            title: 'TITLE',
-            mediaImage: 'IMAGE',
-            artist: 'ARTIST'
-          };
-          session.setAVMetadata(metadata).then(() => {
-            console.info(`SetAVMetadata successfully`);
-          }).catch((err: BusinessError) => {
-            console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
-          });
-          session.on('handleKeyEvent', (event) => {
-            // 解析keycode，应用需要根据keycode对播放器做相应逻辑处理。
-            console.info(`on handleKeyEvent, keyCode=${event.key.code}`);
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+<!-- @[adaptingToBluetoothMethodTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/AdaptingToBluetoothMethodTwo.ets) -->
 
 > **说明：**
 >
