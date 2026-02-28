@@ -15527,6 +15527,10 @@ setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor
 
 **设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -15555,6 +15559,7 @@ setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -15579,6 +15584,38 @@ export default class EntryAbility extends UIAbility {
           console.error(`setRelativePositionToParentWindowEnabled failed. ${error.code} ${error.message}`);
         })
       }).catch((error: BusinessError) => {
+        console.error(`createSubWindow failed. ${error.code} ${error.message}`);
+      })
+    });
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (loadError: BusinessError<void> | null): void => {
+      if (loadError && loadError.code) {
+        console.error(`Failed to load the content. Cause code: ${loadError.code}, message: ${loadError.message}`);
+        return;
+      }
+      console.info("Succeeded in loading the content.");
+      windowStage.createSubWindow("subWindow").then((subWindow: window.Window) => {
+        if (subWindow == null) {
+          console.error("Failed to create the subWindow. Cause: The data is empty");
+          return null;
+        }
+        subWindow.setRelativePositionToParentWindowEnabled(true).then(() => {
+          console.info("after set relative position to parent window enabled");
+        }).catch((error: Error) => {
+          console.error(`setRelativePositionToParentWindowEnabled failed. ${error.code} ${error.message}`);
+        })
+      }).catch((error: Error)=>{
         console.error(`createSubWindow failed. ${error.code} ${error.message}`);
       })
     });
@@ -15961,6 +15998,10 @@ isInFreeWindowMode(): boolean
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                | 说明                      |
@@ -15989,9 +16030,15 @@ on(type: 'freeWindowModeChange', callback: Callback&lt;boolean&gt;): void
 
 开启自由窗口模式变化事件的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFreeWindowModeChange](#onfreewindowmodechange23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -16021,15 +16068,62 @@ try {
 }
 ```
 
+## onFreeWindowModeChange<sup>23+</sup>
+
+onFreeWindowModeChange(callback: Callback&lt;boolean&gt;): void
+
+开启自由窗口模式变化事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('freeWindowModeChange')](#onfreewindowmodechange22)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。返回当前窗口是否在自由窗口模式，true表示是自由窗口模式，false表示非自由窗口模式。                           |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 1300002  | This window state is abnormal.                       |
+| 1300003  | This window manager service works abnormally.        |
+
+**示例：**
+
+```ts
+try {
+  windowClass.onFreeWindowModeChange((data) => {
+    console.info('Succeeded in enabling the listener for free window mode changes. Data: ' + JSON.stringify(data));
+  });
+} catch (exception: Error) {
+  console.error(`Failed to enable the listener for free window mode changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## off('freeWindowModeChange')<sup>22+</sup>
 
 off(type: 'freeWindowModeChange', callback?: Callback&lt;boolean&gt;): void
 
 关闭自由窗口模式变化事件的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFreeWindowModeChange](#offfreewindowmodechange23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -16061,6 +16155,53 @@ try {
   // 如果通过on开启多个callback进行监听，同时关闭所有监听
   windowClass.off('freeWindowModeChange');
 } catch (exception) {
+  console.error(`Failed to disable the listener for free window mode change. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offFreeWindowModeChange<sup>23+</sup>
+
+offFreeWindowModeChange(callback?: Callback&lt;boolean&gt;): void
+
+关闭自由窗口模式变化事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('freeWindowModeChange')](#offfreewindowmodechange22)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                          | 必填 | 说明                                                     |
+| -------- | ----------------------------- | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数。返回当前窗口是否在自由窗口模式。如果传入参数，则关闭该监听。如果未传入参数，则关闭自由窗口模式变化事件的监听。                           |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 1300002  | This window state is abnormal.                       |
+| 1300003  | This window manager service works abnormally.        |
+
+**示例：**
+
+```ts
+const callback = (isInFreeWindowMode: boolean) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  windowClass.onFreeWindowModeChange(callback);
+  // 关闭指定callback的监听
+  windowClass.offFreeWindowModeChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听
+  windowClass.offFreeWindowModeChange();
+} catch (exception: Error) {
   console.error(`Failed to disable the listener for free window mode change. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
