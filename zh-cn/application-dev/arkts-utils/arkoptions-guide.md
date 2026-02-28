@@ -47,10 +47,10 @@ types字段支持填写包名、包所在位置的相对路径以及声明文件
 如果在types字段中填写包名或者包所在位置的相对路径，需要在工程文件/entry/oh-package.json5中dependencies作如下配置：
 <!-- @[dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/oh-package.json5) -->
 
-```json
+``` JSON5
 "dependencies": {
-  "@types/chai": "latest",
-  "@types/mocha": "latest"
+  "@types/pako": "latest",
+  "@types/mime": "latest"
 }
 ```
 
