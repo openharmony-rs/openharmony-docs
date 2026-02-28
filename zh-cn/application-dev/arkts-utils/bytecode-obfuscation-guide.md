@@ -10,7 +10,7 @@
 > 
 > 为了避免后续修改代码影响现网问题分析定位，建议开发者在版本发布时，本地备份build/default/cache/default/default@XXXCompileArkTS/esmodule/release/obfuscation路径下的全部内容；有条件的可以直接备份release目录。
 > 
-> 静态字节码混淆，备份build/default/cache/default/default@CompileStaticArkTS/obfuscation路径下的全部内容；有条件的可以直接备份default@CompileStaticArkTS目录。
+> ArkTS-Sta的字节码混淆，备份build/default/cache/default/default@CompileStaticArkTS/obfuscation路径下的全部内容；有条件的可以直接备份default@CompileStaticArkTS目录。
 
 ## 字节码混淆开启步骤
 
@@ -20,7 +20,7 @@
 
 ### 开启混淆步骤
 
-从API version 20开始，字节码混淆能力已在系统中集成，从API version 23开始，静态字节码混淆能力已在系统中集成。
+从API version 20开始，字节码混淆能力已在系统中集成，从API version 23开始，ArkTS-Sta的字节码混淆能力已在系统中集成。
 
 可通过以下方式在DevEco Studio开启混淆功能。
 
@@ -87,7 +87,7 @@
     > 
     > 此外，混淆规则配置文件中默认开启了四项推荐的混淆选项：`-enable-property-obfuscation`、`-enable-toplevel-obfuscation`、`-enable-filename-obfuscation`和`-enable-export-obfuscation`，开发者可以根据需要进一步修改混淆配置。
 
-   **静态字节码混淆中**，打开混淆开关，默认所有名称都将被混淆，main函数，构造函数和系统函数除外。如需保留名称，请在files字段指定的混淆配置文件`obfuscation-rules.txt`中进行选项配置。
+   **ArkTS-Sta的字节码混淆中**，打开混淆开关，默认所有名称都将被混淆，main函数，构造函数和系统函数除外。如需保留名称，请在files字段指定的混淆配置文件`obfuscation-rules.txt`中进行选项配置。
    
     以DevEco Studio6.0.0.600及更高版本为例，混淆配置文件如下所示，该配置内容表示保留ClassName和该类的所有成员、方法：
     
@@ -99,7 +99,7 @@
 
     > **说明：**
     > 
-    > 新建工程中，混淆功能默认关闭。如需开启，请将模块的`build-profile.json5`文件中的`ruleOptions.enable`字段设置为`true`。开启后，静态字节码混淆将自动启用，开发者可根据需要进一步修改混淆配置。
+    > 新建工程中，混淆功能默认关闭。如需开启，请将模块的`build-profile.json5`文件中的`ruleOptions.enable`字段设置为`true`。开启后，ArkTS-Sta的字节码混淆将自动启用，开发者可根据需要进一步修改混淆配置。
    
 
 * 指定release编译
@@ -118,7 +118,7 @@
     不论是HAP、HAR还是HSP，在本模块的`build-profile.json5`配置文件中都有`arkOptions.obfuscation.ruleOptions.files`字段，用于指定在编译本模块时需要生效的混淆规则，新建工程时会创建默认文件`obfuscation-rules.txt`。
     > **注意：**
     > 
-    > 静态字节码混淆目前只支持 `obfuscation-rules.txt`配置文件和HAP。
+    > ArkTS-Sta的字节码混淆目前只支持 `obfuscation-rules.txt`配置文件和HAP。
 
 * `consumer-rules.txt`
 
@@ -219,7 +219,7 @@
 
 ![bytecode-build-product](figures/bytecode-build-product.png)
 
-## 查看静态字节码混淆效果
+## 查看ArkTS-Sta的字节码混淆效果
 
 在混淆结束后会生成中间产物，因此可以在编译产物build目录中找到混淆后的中间产物以查看混淆效果，同时可以找到混淆生成的名称映射表及系统API白名单文件。
 
@@ -236,7 +236,7 @@
 
 > **说明：** 
 > 
-> 静态字节码混淆暂不支持报错栈还原。
+> ArkTS-Sta的字节码混淆暂不支持报错栈还原。
 
 经过混淆的应用程序中代码名称会发生更改，crash时打印的报错栈更难以理解，因为报错栈与源码不完全一致。
 
