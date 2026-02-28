@@ -1723,13 +1723,13 @@ layoutWithConstraints(size: TextRectSize): TextLayoutResult
 
 | 参数名 | 类型                                      | 必填 | 说明                       |
 | ----- | ----------------------------------------- | ---- | -------------------------- |
-| size  | [TextRectSize](#textrectsize) | 是   | 约束的高度和宽度，单位为px。|
+| size  | [TextRectSize](#textrectsize24) | 是   | 约束的高度和宽度，单位为px。|
 
 **返回值：**
 
 | 类型                                        | 说明                                    |
 | ------------------------------------------- | --------------------------------------- |
-| [TextLayoutResult](#textlayoutresult) | 布局后的实际尺寸和排版后容下的字符范围。|
+| [TextLayoutResult](#textlayoutresult24) | 布局后的实际尺寸和排版后容下的字符范围。|
 
 **示例：**
 
