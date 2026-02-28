@@ -40,6 +40,10 @@
 
 <!-- @[avSession_manager_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/LocalAVSessionOverview/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+```
+
 根命名域中的所有方法都可以作为AVSessionManager的方法。
 
 例如，媒体会话提供方通过AVSessionManager创建媒体会话的示例如下所示：
