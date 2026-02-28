@@ -34,6 +34,12 @@ target_link_libraries(entry PUBLIC libohavsession.so)
 1. 创建会话并激活媒体，需要传入会话类型`AVSession_Type`，自定义的TAG，以及应用的包名、ability名字。
 
    <!-- @[create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   OH_AVSession* avsession;
+   OH_AVSession_Create(SESSION_TYPE_AUDIO, "testsession", "com.example.application", "MainAbility", &avsession);
+   OH_AVSession_Activate(avsession);
+   ```
  
    `AVSession_Type`包含如下四种类型：
  
