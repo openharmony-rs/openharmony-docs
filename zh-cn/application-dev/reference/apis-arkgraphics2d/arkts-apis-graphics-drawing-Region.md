@@ -37,7 +37,7 @@ constructor()
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -89,7 +89,7 @@ constructor(region: Region)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -151,7 +151,7 @@ ArkTS-Sta: constructor(left: int, top: int, right: int, bottom: int)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -206,11 +206,11 @@ isEqual(other: Region): boolean
 
 用于判断其他区域是否与当前区域相等。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Dyn起始版本：** 24
 
 **参数：**
 
@@ -229,6 +229,7 @@ isEqual(other: Region): boolean
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
@@ -256,11 +257,11 @@ isComplex(): boolean
 
 判断当前区域是否包含多个矩形。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -301,11 +302,11 @@ isEmpty(): boolean
 
 判断当前区域是否为空。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -340,21 +341,23 @@ class DrawingRenderNode extends RenderNode {
 
 ## getBounds<sup>20+</sup>
 
-getBounds(): common2D.Rect
+ArkTS-Dyn: getBounds(): common2D.Rect
+
+ArkTS-Sta: getBounds(): common2D.Rect | undefined
 
 获取区域的边界。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
 
+**ArkTS-Sta起始版本：** 24
+
 **返回值：**
 
-| 类型    | 说明           |
-| ------- | -------------- |
-| [common2D.Rect](js-apis-graphics-common2D.md#rect) | 返回当前区域的边界矩形。 |
+| 类型                                                         | 说明                     |
+| ------------------------------------------------------------ | ------------------------ |
+| ArkTS-Dyn: [common2D.Rect](js-apis-graphics-common2D.md#rect)<br/>ArkTS-Sta: [common2D.Rect](js-apis-graphics-common2D.md#rect) \| undefined | 返回当前区域的边界矩形。 |
 
 **示例：**
 
@@ -367,21 +370,23 @@ let rect = region.getBounds();
 
 ## getBoundaryPath<sup>20+</sup>
 
-getBoundaryPath(): Path
+ArkTS-Dyn: getBoundaryPath(): Path
+
+ArkTS-Sta: getBoundaryPath(): Path | undefined
 
 返回一个新路径，该路径取自当前区域的边界。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
 
+**ArkTS-Sta起始版本：** 24
+
 **返回值：**
 
-| 类型    | 说明           |
-| ------- | -------------- |
-| [Path](arkts-apis-graphics-drawing-Path.md)  | 返回当前区域边界的路径。 |
+| 类型                                                         | 说明                     |
+| ------------------------------------------------------------ | ------------------------ |
+| ArkTS-Dyn: [Path](arkts-apis-graphics-drawing-Path.md)<br/>ArkTS-Sta: [Path](arkts-apis-graphics-drawing-Path.md) \| undefined | 返回当前区域边界的路径。 |
 
 **示例：**
 
@@ -403,7 +408,7 @@ ArkTS-Sta: isPointContained(x: int, y:int): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -428,7 +433,6 @@ ArkTS-Sta: isPointContained(x: int, y:int): boolean
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -452,30 +456,6 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-ArkTS-Sta示例：
-```ts
-import { RenderNode, DrawContext } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
-
-class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
-    const canvas = context.canvas;
-    const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
-    pen.setStrokeWidth(10.0);
-    canvas.attachPen(pen);
-    let region = new drawing.Region();
-    region.setRect(100, 100, 400, 400);
-    let flag: boolean = false;
-    flag = region.isPointContained(200,200);
-    console.info("region isPointContained : " + flag);
-    canvas.drawPoint(200.0,200.0);
-    canvas.drawRegion(region);
-    canvas.detachPen();
-  }
-}
-```
-
 ## offset<sup>20+</sup>
 
 ArkTS-Dyn: offset(dx: number, dy: number): void
@@ -488,7 +468,7 @@ ArkTS-Sta: offset(dx: int, dy: int): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -507,12 +487,12 @@ class DrawingRenderNode extends RenderNode {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
     pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
-    pen.setStrokeWidth(10);
+    pen.setStrokeWidth(10.0);
     canvas.attachPen(pen);
     let region = new drawing.Region();
     region.setRect(100, 100, 400, 400);
     region.offset(10, 20);
-    canvas.drawPoint(200,200);
+    canvas.drawPoint(200.0, 200.0);
     canvas.drawRegion(region);
     canvas.detachPen();
   }
@@ -529,7 +509,7 @@ isRegionContained(other: Region) : boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -553,7 +533,6 @@ isRegionContained(other: Region) : boolean
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -579,32 +558,6 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-ArkTS-Sta示例：
-````ts
-import { RenderNode, DrawContext } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
-
-class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
-    const canvas = context.canvas;
-    const pen = new drawing.Pen();
-    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
-    pen.setStrokeWidth(10.0);
-    canvas.attachPen(pen);
-    let region = new drawing.Region();
-    let other = new drawing.Region();
-    region.setRect(100, 100, 400, 400);
-    other.setRect(150, 150, 250 ,250);
-    let flag: boolean = false;
-    flag = region.isRegionContained(other);
-    console.info("region isRegionContained : " + flag);
-    canvas.drawRegion(region);
-    canvas.drawRegion(other);
-    canvas.detachPen();
-  }
-}
-````
-
 ## op<sup>12+</sup>
 
 op(region: Region, regionOp: RegionOp) : boolean
@@ -615,7 +568,7 @@ op(region: Region, regionOp: RegionOp) : boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -702,7 +655,7 @@ ArkTS-Sta: quickReject(left: int, top: int, right: int, bottom: int): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -781,11 +734,11 @@ quickRejectRegion(region: Region): boolean
 
 判断当前区域是否与另一个区域不相交。实际上比较的是两个区域的外接矩形是否不相交，因此会有误差。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -834,7 +787,7 @@ setPath(path: Path, clip: Region) : boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -915,11 +868,11 @@ setRegion(region: Region): void
 
 设置当前区域为另一块区域。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Dyn起始版本：** 24
 
 **参数：**
 
@@ -956,11 +909,11 @@ setEmpty(): void
 
 设置当前区域为空。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -993,7 +946,7 @@ ArkTS-Sta: setRect(left: int, top: int, right: int, bottom: int): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
