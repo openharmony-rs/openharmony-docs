@@ -635,6 +635,65 @@ struct Index {
 
 <!-- @[settingTheLoopMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingTheLoopMode.ets) -->
 
+``` TypeScript
+import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+  // ...
+
+  build() {
+    Column() {
+      // ...
+      Text(this.message)
+        .onClick(async () => {
+          let context = this.getUIContext().getHostContext() as Context;
+          // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+          let type: AVSessionManager.AVSessionType = 'audio';
+          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+          // ...
+
+          // 应用启动时/内部切换循环模式，需要把应用内的当前的循环模式设置给AVSession。
+          let playBackState: AVSessionManager.AVPlaybackState = {
+            loopMode: AVSessionManager.LoopMode.LOOP_MODE_SINGLE,
+          };
+          session.setAVPlaybackState(playBackState).then(() => {
+            console.info(`set AVPlaybackState successfully`);
+            // ...
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
+            // ...
+          });
+
+          // 应用注册循环模式的控制监听。
+          session.on('setLoopMode', (mode) => {
+            console.info(`on setLoopMode ${mode}`);
+            // ...
+            // 应用收到设置循环模式的指令后，应用自定下一个模式，切换完毕后通过AVPlaybackState上报切换后的LoopMode。
+            let playBackState: AVSessionManager.AVPlaybackState = {
+              loopMode: AVSessionManager.LoopMode.LOOP_MODE_SINGLE,
+            };
+            session.setAVPlaybackState(playBackState).then(() => {
+              console.info(`set AVPlaybackState successfully`);
+              // ...
+            }).catch((err: BusinessError) => {
+              console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
+              // ...
+            });
+          });
+          // ...
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ### 进度控制
 
 应用如果支持进度显示，进一步也可以支持进度控制。应用需要响应seek的控制命令，那么当用户在播控中心的界面上进行拖动操作时，应用就会收到对应的回调。参考实现：
