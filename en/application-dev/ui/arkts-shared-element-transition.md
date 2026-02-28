@@ -10,8 +10,9 @@ Shared element transition is a type of transition achieved by animating the size
 
 Let's look at an example. After an image is clicked, it disappears, and a new image appears in another position. Because the two images have the same content, we can add shared element transition to them. The figures below show the results with and without a shared element transition. Clearly, the presence of the shared element transition renders the transition natural and smooth.
 
-![en-us_image_0000001599644876](figures/en-us_image_0000001599644876.gif)|![en-us_image_0000001599644877](figures/en-us_image_0000001599644877.gif)
----|---
+| Frame-by-Frame Transition Effect| Shared Element Transition|
+| ------ | ---- |
+| ![en-us_image_0000001599644876](figures/en-us_image_0000001599644876.gif)|![en-us_image_0000001599644877](figures/en-us_image_0000001599644877.gif)|
 
 There are multiple methods for implementing the shared element transition. During real-world development, choose the method that best meets the requirements of your project.
 
@@ -200,15 +201,15 @@ Use [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecon
 
 ### Using with Stack
 
-With the **Stack** container, where later defined components appear on top, you can control the position to ensure that the component is on top after being migrated across nodes. For example, in the scenario of expanding and collapsing widgets, the implementation steps are as follows:
+You can leverage the characteristic of **Stack** where components defined later are placed on top to control the stacking order of components after cross-node migration. Taking the scenario of expanding and collapsing a widget as an example, the implementation steps are as follows:
 
-- When expanding a widget, obtain the source node (node A)'s position and migrate the components to a higher-level node (node B) with the same position.
+- When expanding a widget, obtain the position of the clicked widget A and migrate widget A to the expanded page B, which is positioned at the same location as widget A. The expanded page B has a higher stacking order than the clicked widget A.
 
-- Add a property animation to node B to make it expand and move to the expanded position, creating a shared element transition.
+- Add a property animation to the expanded page B to expand and move it to the expanded position, completing a shared element transition effect.
 
-- When collapsing the widget, add a property animation to node B to make it collapse and move back to the position of node A, creating a shared element transition.
+- When collapsing the widget, add a property animation to the expanded page B to collapse and move it back to its original position (the position of clicked widget A), achieving a shared element transition effect.
 
-- At the end of the animation, use a callback to migrate the components from node B back to node A.
+- In the animation completion callback, migrate the components from the expanded page B back to the clicked widget A.
 
 <!-- @[stack_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template3/Index.ets) -->
 
@@ -845,7 +846,7 @@ export struct PageTwo {
           Column({ space: 20 }) {
             NodeContainer(this.myNodeController);
             if (this.animationProperties.showDetailContent) {
-              // Replace $r('app.string.shareTransition_text8') with the actual resource file. In this example, the value in the resource file is "Expanded content."
+              // Replace $r('app.string.shareTransition_text8') with the actual resource file. In this example, the value in the resource file is "Expanded."
               Text($r('app.string.shareTransition_text8'))
                 .fontSize(20)
                 .transition(TransitionEffect.OPACITY)
@@ -2044,7 +2045,7 @@ struct Index {
       // Replace $r('app.media.sunset_sky') with the actual resource file.
       avatar: $r('app.media.sunset_sky'),
       name: 'Bob',
-      // Replace $r('app.string.shareTransition_text2') with the actual resource file. In this example, the value in the resource file is "Hello, world."
+      // Replace $r('app.string.shareTransition_text2') with the actual resource file. In this example, the value in the resource file is "Hello World."
       message: $r('app.string.shareTransition_text2'),
       // Replace $r('app.media.island') with the actual resource file.
       images: [$r('app.media.island')]
