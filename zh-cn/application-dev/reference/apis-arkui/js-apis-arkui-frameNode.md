@@ -1367,7 +1367,7 @@ getInspectorInfo(): Object
 | Object | 节点的结构信息。 |
 
 以查询[Button](arkui-ts/ts-basic-components-button.md)组件节点为例获取到的Object结果部分值如下。
-```json
+```json5
 {
     "$type": "Button",
     "$ID": 44,

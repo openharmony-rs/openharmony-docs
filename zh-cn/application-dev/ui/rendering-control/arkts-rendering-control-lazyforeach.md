@@ -133,7 +133,7 @@ struct InitialRendering {
 BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
+// BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -1207,7 +1207,7 @@ struct DragandDropSorting {
 BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
+// BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -1353,7 +1353,7 @@ struct UnexpectedRenderingResults {
 GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: [泛型数组的BasicDataSource代码](#泛型数组的basicdatasource代码)。
 
 ```ts
-/** GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码 **/
+// GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码。
 import { GenericBasicDataSource } from './GenericBasicDataSource';
 
 class MyDataSource extends GenericBasicDataSource<StringData> {
@@ -1525,7 +1525,7 @@ struct ImageFlickeringChildComponent {
 GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: [泛型数组的BasicDataSource代码](#泛型数组的basicdatasource代码)。
 
 ```ts
-/** GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码 **/
+// GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码。
 import { GenericBasicDataSource } from './GenericBasicDataSource';
 
 class MyDataSource extends GenericBasicDataSource<StringData> {
@@ -1703,7 +1703,7 @@ struct UINotRerenderedChildComponent {
 BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
+// BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -1861,7 +1861,7 @@ struct ScreenFlickeringInList {
 GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: [泛型数组的BasicDataSource代码](#泛型数组的basicdatasource代码)。
 
 ```ts
-/** GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码 **/
+// GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码。
 import { GenericBasicDataSource } from './GenericBasicDataSource';
 
 class MyDataSource extends GenericBasicDataSource<StringData> {
@@ -1953,7 +1953,7 @@ struct ChildComponent {
 BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
+// BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -2032,7 +2032,7 @@ LazyForEach(this.data, (item: string) => {
 BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
+// BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -2176,7 +2176,7 @@ export class BasicDataSource implements IDataSource {
     this.listeners.forEach(listener => {
       listener.onDataMove(from, to);
       // 写法2：listener.onDatasetChange(
-      //         [{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
+      // [{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
     });
   }
 
