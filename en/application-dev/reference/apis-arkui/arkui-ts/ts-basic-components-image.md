@@ -1047,7 +1047,7 @@ Describes the download information when an online image fails to load or encount
 | ---- | ------ |
 | [DownloadInfo](../../apis-basic-services-kit/js-apis-request-cacheDownload.md#downloadinfo20) | Download information returned when a network resource fails to load, including resource information, network request information, and performance statistics.|
 
-## Example
+## Examples
 
 ### Example 1: Loading Images of Basic Types
 
