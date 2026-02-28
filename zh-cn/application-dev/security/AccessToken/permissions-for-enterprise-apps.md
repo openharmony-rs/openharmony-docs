@@ -515,7 +515,7 @@
 
 ## ohos.permission.SCAN_REMEDIATE_VIRUS
  	 
- 允许应用执行病毒扫描和处置操作。
+允许应用执行病毒扫描和处置操作。
  	 
 此权限仅面向杀毒软件开放申请。
  	 
