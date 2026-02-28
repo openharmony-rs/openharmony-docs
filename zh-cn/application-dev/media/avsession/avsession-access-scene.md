@@ -700,6 +700,73 @@ struct Index {
 
 <!-- @[performingProgressControl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/PerformingProgressControl.ets) -->
 
+``` TypeScript
+import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+// ...
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+  // ...
+
+  build() {
+    Column() {
+      // ...
+      Text(this.message)
+        .onClick(async () => {
+          let context = this.getUIContext().getHostContext() as Context;
+          // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+          let type: AVSessionManager.AVSessionType = 'audio';
+          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+          // ...
+
+          session.on('seek', (position: number) => {
+            console.info(`on seek , the time is ${JSON.stringify(position)}`);
+            // ...
+
+            // 由于应用内seek可能会触发较长的缓冲等待，可以先把状态设置为 Buffering。
+            let playbackState: AVSessionManager.AVPlaybackState = {
+              state: AVSessionManager.PlaybackState.PLAYBACK_STATE_BUFFERING, // Buffering state.
+            };
+            session.setAVPlaybackState(playbackState, (err) => {
+              if (err) {
+                console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
+                // ...
+              } else {
+                console.info(`SetAVPlaybackState successfully`);
+                // ...
+              }
+            });
+
+            // 应用响应seek命令，使用应用内播放器完成seek实现。
+
+            // 应用内更新新的位置后，也需要同步更新状态给系统。
+            playbackState.state = AVSessionManager.PlaybackState.PLAYBACK_STATE_PLAY; // 播放状态。
+            playbackState.position = {
+              elapsedTime: position, // 已经播放的位置，以ms为单位。
+              updateTime: new Date().getTime(), // 应用更新当前位置的时间戳，以ms为单位。
+            }
+            session.setAVPlaybackState(playbackState, (err) => {
+              if (err) {
+                console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
+                // ...
+              } else {
+                console.info(`SetAVPlaybackState successfully`);
+                // ...
+              }
+            });
+          });
+
+          // ...
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## 适配媒体通知
 
 当前系统不直接向应用提供主动发送媒体控制通知的接口，那么当应用正确接入媒体播控中心并进入播放状态时，系统会自动发送通知，同时在通知和锁屏界面进行展示。
