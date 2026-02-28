@@ -363,9 +363,11 @@ testInstanceof();
 ``` TypeScript
 // pages/Sendable.ets
 'use shared'
+
 @Sendable
 export class A {
   public name: string = 'name';
+
   printName(): string {
     return this.name;
   }
