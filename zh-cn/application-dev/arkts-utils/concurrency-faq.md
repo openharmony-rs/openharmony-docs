@@ -440,7 +440,7 @@ JS异常：TypeError: Cannot set sendable property with mismatched type
    <!-- @[define_resolveTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteMismatchTypeTwo.ets) -->     
    
    ``` TypeScript
-   // Index.ets
+   // SoluteMismatchTypeTwo.ets
    import { collections } from '@kit.ArkTS'
    
    @Sendable
