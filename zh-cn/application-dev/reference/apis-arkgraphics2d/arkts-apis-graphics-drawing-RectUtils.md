@@ -33,17 +33,23 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 ## makeEmpty<sup>20+</sup>
 
-static makeEmpty(): common2D.Rect
+ArkTS-Dyn: static makeEmpty(): common2D.Rect
+
+ArkTS-Sta: static makeEmpty(): common2D.Rect | undefined
 
 创建一个上下左右边界坐标都是0的矩形。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 **返回值：**
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [common2D.Rect](js-apis-graphics-common2D.md#rect) | 创建的矩形对象。 |
+| ArkTS-Dyn: [common2D.Rect](js-apis-graphics-common2D.md#rect)<br/>ArkTS-Sta: [common2D.Rect](js-apis-graphics-common2D.md#rect) \| undefined | 创建的矩形对象。 |
 
 **示例：**
 
@@ -55,42 +61,54 @@ let rect = drawing.RectUtils.makeEmpty();
 
 ## makeLtrb<sup>20+</sup>
 
-static makeLtrb(left: number, top: number, right: number, bottom: number): common2D.Rect
+ArkTS-Dyn: static makeLtrb(left: number, top: number, right: number, bottom: number): common2D.Rect
+
+ArkTS-Sta: static makeLtrb(left: double, top: double, right: double, bottom: double): common2D.Rect | undefined
 
 创建指定上下左右边界的矩形。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| left   | number | 是   | 矩形的左上角x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
-| top    | number | 是   | 矩形的左上角y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
-| right  | number | 是   | 矩形的右下角x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
-| bottom | number | 是   | 矩形的右下角y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
+| left   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的左上角x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
+| top    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的左上角y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
+| right  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的右下角x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
+| bottom | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的右下角y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
 
 **返回值：**
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [common2D.Rect](js-apis-graphics-common2D.md#rect) | 创建的矩形。 |
+| ArkTS-Dyn: [common2D.Rect](js-apis-graphics-common2D.md#rect)<br/>ArkTS-Sta: [common2D.Rect](js-apis-graphics-common2D.md#rect) \| undefined | 创建的矩形。 |
 
 **示例：**
 
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
 
-let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
+let rect = drawing.RectUtils.makeLtrb(10.0, 10.0, 20.0, 20.0);
 ```
 
 ## makeCopy<sup>20+</sup>
 
-static makeCopy(src: common2D.Rect): common2D.Rect
+ArkTS-Dyn: static makeCopy(src: common2D.Rect): common2D.Rect
+
+ArkTS-Sta: static makeCopy(src: common2D.Rect): common2D.Rect | undefined
 
 拷贝一个矩形。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -98,14 +116,15 @@ static makeCopy(src: common2D.Rect): common2D.Rect
 | ------ | ------ | ---- | -------------- |
 | src   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是   | 用于拷贝的矩形。 |
 
-
 **返回值：**
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [common2D.Rect](js-apis-graphics-common2D.md#rect) | 创建的新矩形。 |
+| ArkTS-Dyn: [common2D.Rect](js-apis-graphics-common2D.md#rect)<br/>ArkTS-Sta: [common2D.Rect](js-apis-graphics-common2D.md#rect) \| undefined | 创建的新矩形。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
@@ -117,13 +136,34 @@ console.info('rect2.right: ', rect2.right);
 console.info('rect2.bottom: ', rect2.bottom);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+let rect = drawing.RectUtils.makeLtrb(10.0, 10.0, 20.0, 20.0);
+if (rect == undefined) {
+    return;
+}
+let rect2 = drawing.RectUtils.makeCopy(rect);
+console.info('rect2.left:', rect2?.left);
+console.info('rect2.top: ', rect2?.top);
+console.info('rect2.right: ', rect2?.right);
+console.info('rect2.bottom: ', rect2?.bottom);
+```
+
 ## getWidth<sup>20+</sup>
 
-static getWidth(rect: common2D.Rect): number
+ArkTS-Dyn: static getWidth(rect: common2D.Rect): number
+
+ArkTS-Sta: static getWidth(rect: common2D.Rect): double
 
 获取矩形的宽度。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -136,9 +176,11 @@ static getWidth(rect: common2D.Rect): number
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| number | 返回矩形的宽。如果矩形的左边界大于右边界，获取的宽度为负值，左边界小于右边界则为正值。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回矩形的宽。如果矩形的左边界大于右边界，获取的宽度为负值，左边界小于右边界则为正值。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
@@ -147,13 +189,31 @@ let width = drawing.RectUtils.getWidth(rect);
 console.info('width:', width);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+let rect = drawing.RectUtils.makeLtrb(10.0, 10.0, 20.0, 20.0);
+if (rect == undefined) {
+    return;
+}
+let width = drawing.RectUtils.getWidth(rect);
+console.info('width:', width);
+```
+
 ## getHeight<sup>20+</sup>
 
-static getHeight(rect: common2D.Rect): number
+ArkTS-Dyn: static getHeight(rect: common2D.Rect): number
+
+ArkTS-Sta: static getHeight(rect: common2D.Rect): double
 
 获取矩形的高度。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -165,9 +225,11 @@ static getHeight(rect: common2D.Rect): number
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| number | 返回矩形的高。如果矩形的上边界大于下边界，获取的高度为负值，上边界小于下边界则为正值。|
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回矩形的高。如果矩形的上边界大于下边界，获取的高度为负值，上边界小于下边界则为正值。|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
@@ -175,13 +237,30 @@ let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
 let height = drawing.RectUtils.getHeight(rect);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+let rect = drawing.RectUtils.makeLtrb(10.0, 10.0, 20.0, 20.0);
+if (rect == undefined) {
+    return;
+}
+let height = drawing.RectUtils.getHeight(rect);
+```
+
 ## centerX<sup>20+</sup>
 
-static centerX(rect: common2D.Rect): number
+ArkTS-Dyn: static centerX(rect: common2D.Rect): number
+
+ArkTS-Sta: static centerX(rect: common2D.Rect): double
 
 获取矩形中心的横坐标。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -193,9 +272,11 @@ static centerX(rect: common2D.Rect): number
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| number | 返回矩形中心的横坐标。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回矩形中心的横坐标。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
@@ -203,13 +284,30 @@ let rect = drawing.RectUtils.makeLtrb(20, 30, 30, 40);
 let x = drawing.RectUtils.centerX(rect);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+let rect = drawing.RectUtils.makeLtrb(20.0, 30.0, 30.0, 40.0);
+if (rect == undefined) {
+    return;
+}
+let x = drawing.RectUtils.centerX(rect);
+```
+
 ## centerY<sup>20+</sup>
 
-static centerY(rect: common2D.Rect): number
+ArkTS-Dyn: static centerY(rect: common2D.Rect): number
+
+ArkTS-Sta: static centerY(rect: common2D.Rect): double
 
 获取矩形中心的纵坐标。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -221,13 +319,26 @@ static centerY(rect: common2D.Rect): number
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| number | 返回矩形中心的纵坐标。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回矩形中心的纵坐标。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
 let rect = drawing.RectUtils.makeLtrb(20, 30, 30, 40);
+let x = drawing.RectUtils.centerY(rect);
+```
+
+ArkTS-Dyn示例：
+
+```ts
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+let rect = drawing.RectUtils.makeLtrb(20.0, 30.0, 30.0, 40.0);
+if (rect == undefined) {
+    return;
+}
 let x = drawing.RectUtils.centerY(rect);
 ```
 
@@ -238,6 +349,10 @@ static contains(rect: common2D.Rect, other: common2D.Rect): boolean
 判断一个矩形是否完全包含另外一个矩形。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -254,6 +369,8 @@ static contains(rect: common2D.Rect, other: common2D.Rect): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
 let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
@@ -262,23 +379,42 @@ let isContains = drawing.RectUtils.contains(rect2, rect);
 console.info('isContains: ', isContains);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+let rect = drawing.RectUtils.makeLtrb(10.0, 10.0, 20.0, 20.0);
+let rect2 = drawing.RectUtils.makeLtrb(0.0, 0.0, 40.0, 40.0);
+if (rect == undefined || rect2 == undefined) {
+    return;
+}
+let isContains = drawing.RectUtils.contains(rect2, rect);
+console.info('isContains: ', isContains);
+```
+
 ## contains<sup>20+</sup>
 
-static contains(rect: common2D.Rect, left: number, top: number, right: number, bottom: number): boolean
+ArkTS-Dyn: static contains(rect: common2D.Rect, left: number, top: number, right: number, bottom: number): boolean
+
+ArkTS-Sta: static contains(rect: common2D.Rect, left: double, top: double, right: double, bottom: double): boolean
 
 判断一个矩形是否完全包含另外一个矩形（另一个矩形分别用左上右下坐标表示）。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
 | rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是   | 矩形对象。 |
-| left   | number | 是   | 矩形的左上角x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
-| top    | number | 是   | 矩形的左上角y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
-| right  | number | 是   | 矩形的右下角x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
-| bottom | number | 是   | 矩形的右下角y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
+| left   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的左上角x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
+| top    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的左上角y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
+| right  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的右下角x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
+| bottom | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的右下角y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
 
 **返回值：**
 
@@ -288,6 +424,8 @@ static contains(rect: common2D.Rect, left: number, top: number, right: number, b
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
 let rect = drawing.RectUtils.makeLtrb(0, 0, 100, 100);
@@ -295,21 +433,39 @@ let isContains = drawing.RectUtils.contains(rect, 10, 20, 30, 40);
 console.info('isContains :', isContains);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+let rect = drawing.RectUtils.makeLtrb(0.0, 0.0, 100.0, 100.0);
+if (rect == undefined) {
+    return;
+}
+let isContains = drawing.RectUtils.contains(rect, 10.0, 20.0, 30.0, 40.0);
+console.info('isContains :', isContains);
+```
+
 ## contains<sup>20+</sup>
 
-static contains(rect: common2D.Rect, x: number, y: number): boolean
+ArkTS-Dyn: static contains(rect: common2D.Rect, x: number, y: number): boolean
+
+ArkTS-Sta: static contains(rect: common2D.Rect, x: double, y: double): boolean
 
 判断一个矩形是否完全包含一个点。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
 | rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是   | 矩形对象。 |
-| x   | number | 是   | 要判断点的x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
-| y    | number | 是  | 要判断点的y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
+| x   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 要判断点的x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
+| y    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是  | 要判断点的y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
 
 **返回值：**
 
@@ -319,6 +475,8 @@ static contains(rect: common2D.Rect, x: number, y: number): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
 let rect = drawing.RectUtils.makeLtrb(0, 0, 100, 100);
@@ -326,30 +484,65 @@ let isContains = drawing.RectUtils.contains(rect, 10, 20);
 console.info('isContains: ', isContains);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+let rect = drawing.RectUtils.makeLtrb(0.0, 0.0, 100.0, 100.0);
+if (rect == undefined) {
+    return;
+}
+let isContains = drawing.RectUtils.contains(rect, 10.0, 20.0);
+console.info('isContains: ', isContains);
+```
+
 ## inset<sup>20+</sup>
 
-static inset(rect: common2D.Rect, left: number, top: number, right: number, bottom: number): void
+ArkTS-Dyn: static inset(rect: common2D.Rect, left: number, top: number, right: number, bottom: number): void
+
+ArkTS-Sta: static inset(rect: common2D.Rect, left: double, top: double, right: double, bottom: double): void
 
 将指定矩形的左边界、上边界、右边界和下边界分别和传入的"左上右下"的值相加。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
 | rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是   | 矩形对象。 |
-| left   | number | 是   | 添加到矩形左边界的值（矩形左上角横坐标），该参数为浮点数。0表示不进行任何运算，正数表示进行相加运算，负数表示相减运算。 |
-| top    | number | 是   | 添加到矩形上边界的值（矩形左上角纵坐标），该参数为浮点数。0表示不进行任何运算，正数表示进行相加运算，负数表示相减运算。 |
-| right  | number | 是   | 添加到矩形右边界的值（矩形右下角横坐标），该参数为浮点数。0表示不进行任何运算，正数表示进行相加运算，负数表示相减运算。 |
-| bottom | number | 是   | 添加到矩形下边界的值（矩形右下角纵坐标），该参数为浮点数。0表示不进行任何运算，正数表示进行相加运算，负数表示相减运算。 |
+| left   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 添加到矩形左边界的值（矩形左上角横坐标），该参数为浮点数。0表示不进行任何运算，正数表示进行相加运算，负数表示相减运算。 |
+| top    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 添加到矩形上边界的值（矩形左上角纵坐标），该参数为浮点数。0表示不进行任何运算，正数表示进行相加运算，负数表示相减运算。 |
+| right  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 添加到矩形右边界的值（矩形右下角横坐标），该参数为浮点数。0表示不进行任何运算，正数表示进行相加运算，负数表示相减运算。 |
+| bottom | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 添加到矩形下边界的值（矩形右下角纵坐标），该参数为浮点数。0表示不进行任何运算，正数表示进行相加运算，负数表示相减运算。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
 let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
 drawing.RectUtils.inset(rect, 10, -20, 30, 60);
+console.info('rect.left:', rect.left);
+console.info('rect.top: ', rect.top);
+console.info('rect.right: ', rect.right);
+console.info('rect.bottom: ', rect.bottom);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+let rect = drawing.RectUtils.makeLtrb(10.0, 10.0, 20.0, 20.0);
+if (rect == undefined) {
+    return;
+}
+drawing.RectUtils.inset(rect, 10.0, -20.0, 30.0, 60.0);
 console.info('rect.left:', rect.left);
 console.info('rect.top: ', rect.top);
 console.info('rect.right: ', rect.right);
@@ -363,6 +556,10 @@ static intersect(rect: common2D.Rect, other: common2D.Rect): boolean
 计算两个矩形的交集区域，并将交集结果更新到第一个入参代表的矩形区域。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -379,10 +576,29 @@ static intersect(rect: common2D.Rect, other: common2D.Rect): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
 let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
 let rect2 = drawing.RectUtils.makeLtrb(10, 10, 40, 40);
+let isIntersect = drawing.RectUtils.intersect(rect, rect2);
+console.info('isIntersect :', isIntersect);
+console.info('rect.left:', rect.left);
+console.info('rect.top: ', rect.top);
+console.info('rect.right: ', rect.right);
+console.info('rect.bottom: ', rect.bottom);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+let rect = drawing.RectUtils.makeLtrb(0.0, 0.0, 20.0, 20.0);
+let rect2 = drawing.RectUtils.makeLtrb(10.0, 10.0, 40.0, 40.0);
+if (rect == undefined || rect2 == undefined) {
+    return;
+}
 let isIntersect = drawing.RectUtils.intersect(rect, rect2);
 console.info('isIntersect :', isIntersect);
 console.info('rect.left:', rect.left);
@@ -399,6 +615,10 @@ static isIntersect(rect: common2D.Rect, other: common2D.Rect): boolean
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明           |
@@ -414,10 +634,25 @@ static isIntersect(rect: common2D.Rect, other: common2D.Rect): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
 let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
 let rect2 = drawing.RectUtils.makeLtrb(10, 10, 40, 40);
+let isIntersect = drawing.RectUtils.isIntersect(rect, rect2);
+console.info('isIntersect :', isIntersect);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+let rect = drawing.RectUtils.makeLtrb(0.0, 0.0, 20.0, 20.0);
+let rect2 = drawing.RectUtils.makeLtrb(10.0, 10.0, 40.0, 40.0);
+if (rect == undefined || rect2 == undefined) {
+    return;
+}
 let isIntersect = drawing.RectUtils.isIntersect(rect, rect2);
 console.info('isIntersect :', isIntersect);
 ```
@@ -430,6 +665,10 @@ static union(rect: common2D.Rect, other: common2D.Rect): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明           |
@@ -439,10 +678,28 @@ static union(rect: common2D.Rect, other: common2D.Rect): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
 let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
 let rect2 = drawing.RectUtils.makeLtrb(10, 10, 40, 40);
+drawing.RectUtils.union(rect, rect2);
+console.info('rect.left:', rect.left);
+console.info('rect.top: ', rect.top);
+console.info('rect.right: ', rect.right);
+console.info('rect.bottom: ', rect.bottom);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+let rect = drawing.RectUtils.makeLtrb(0.0, 0.0, 20.0, 20.0);
+let rect2 = drawing.RectUtils.makeLtrb(10.0, 10.0, 40.0, 40.0);
+if (rect == undefined || rect2 == undefined) {
+    return;
+}
 drawing.RectUtils.union(rect, rect2);
 console.info('rect.left:', rect.left);
 console.info('rect.top: ', rect.top);
@@ -458,6 +715,10 @@ static isEmpty(rect: common2D.Rect): boolean
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明            |
@@ -472,6 +733,8 @@ static isEmpty(rect: common2D.Rect): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
 let rect = drawing.RectUtils.makeEmpty();
@@ -482,23 +745,49 @@ isEmpty = drawing.RectUtils.isEmpty(rect2);
 console.info('isEmpty :', isEmpty);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+let rect = drawing.RectUtils.makeEmpty();
+if (rect == undefined) {
+    return;
+}
+let isEmpty = drawing.RectUtils.isEmpty(rect);
+console.info('isEmpty :', isEmpty);
+let rect2 = drawing.RectUtils.makeLtrb(0.0, 0.0, 20.0, 20.0);
+if (rect2 == undefined) {
+    return;
+}
+isEmpty = drawing.RectUtils.isEmpty(rect2);
+console.info('isEmpty :', isEmpty);
+```
+
 ## offset<sup>20+</sup>
 
-static offset(rect: common2D.Rect, dx: number, dy: number): void
+ArkTS-Dyn: static offset(rect: common2D.Rect, dx: number, dy: number): void
+
+ArkTS-Sta: static offset(rect: common2D.Rect, dx: double, dy: double): void
 
 对矩形进行平移。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
 | rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是   | 发生偏移的矩形区域。 |
-| dx   | number | 是    | 水平方向平移的距离，该参数为浮点数。0表示不平移，负数表示向左平移，正数表示向右平移。 |
-| dy    | number | 是   | 竖直方向平移的距离，该参数为浮点数。0表示不平移，负数表示向上平移，正数表示向下平移。 |
+| dx   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 水平方向平移的距离，该参数为浮点数。0表示不平移，负数表示向左平移，正数表示向右平移。 |
+| dy    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 竖直方向平移的距离，该参数为浮点数。0表示不平移，负数表示向上平移，正数表示向下平移。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
@@ -510,28 +799,66 @@ console.info('rect.right: ', rect.right);
 console.info('rect.bottom: ', rect.bottom);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+let rect = drawing.RectUtils.makeLtrb(0.0, 0.0, 20.0, 20.0);
+if (rect == undefined) {
+    return;
+}
+drawing.RectUtils.offset(rect, 10, 20);
+console.info('rect.left:', rect.left);
+console.info('rect.top: ', rect.top);
+console.info('rect.right: ', rect.right);
+console.info('rect.bottom: ', rect.bottom);
+```
+
 ## offsetTo<sup>20+</sup>
 
-static offsetTo(rect: common2D.Rect, newLeft: number, newTop: number): void
+ArkTS-Dyn: static offsetTo(rect: common2D.Rect, newLeft: number, newTop: number): void
+
+ArkTS-Sta: static offsetTo(rect: common2D.Rect, newLeft: double, newTop: double): void
 
 将矩形平移到指定位置。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
 | rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是   | 发生偏移的矩形区域。 |
-| newLeft   | number | 是   | 要平移到的对应位置的x轴坐标，浮点数。0表示坐标原点，负数位于坐标原点左侧，正数位于坐标原点右侧。 |
-| newTop    | number | 是   | 要平移到的对应位置的y轴坐标，浮点数。0表示坐标原点，负数位于坐标原点上侧，正数位于坐标原点下侧。 |
+| newLeft   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 要平移到的对应位置的x轴坐标，浮点数。0表示坐标原点，负数位于坐标原点左侧，正数位于坐标原点右侧。 |
+| newTop    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 要平移到的对应位置的y轴坐标，浮点数。0表示坐标原点，负数位于坐标原点上侧，正数位于坐标原点下侧。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
 let rect = drawing.RectUtils.makeLtrb(20, 20, 40, 40);
 drawing.RectUtils.offsetTo(rect, 10, 20);
+console.info('rect.left:', rect.left);
+console.info('rect.top: ', rect.top);
+console.info('rect.right: ', rect.right);
+console.info('rect.bottom: ', rect.bottom);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+let rect = drawing.RectUtils.makeLtrb(20.0, 20.0, 40.0, 40.0);
+if (rect == undefined) {
+    return;
+}
+drawing.RectUtils.offsetTo(rect, 10.0, 20.0);
 console.info('rect.left:', rect.left);
 console.info('rect.top: ', rect.top);
 console.info('rect.right: ', rect.right);
@@ -546,6 +873,10 @@ static setRect(rect: common2D.Rect, other: common2D.Rect): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明           |
@@ -554,6 +885,8 @@ static setRect(rect: common2D.Rect, other: common2D.Rect): void
 | other   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是   | 用于赋值的矩形。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
@@ -566,25 +899,49 @@ console.info('rect2.right: ', rect2.right);
 console.info('rect2.bottom: ', rect2.bottom);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+let rect = drawing.RectUtils.makeLtrb(10.0, 20.0, 30.0, 40.0);
+let rect2 = drawing.RectUtils.makeEmpty();
+if (rect == undefined || rect2 == undefined) {
+    return;
+}
+drawing.RectUtils.setRect(rect2, rect);
+console.info('rect2.left:', rect2.left);
+console.info('rect2.top: ', rect2.top);
+console.info('rect2.right: ', rect2.right);
+console.info('rect2.bottom: ', rect2.bottom);
+```
+
 ## setLtrb<sup>20+</sup>
 
-static setLtrb(rect: common2D.Rect, left: number, top: number, right: number, bottom: number): void
+ArkTS-Dyn: static setLtrb(rect: common2D.Rect, left: number, top: number, right: number, bottom: number): void
+
+ArkTS-Sta: static setLtrb(rect: common2D.Rect, left: double, top: double, right: double, bottom: double): void
 
 使用传入的"上下左右"的值更新当前矩形的上下左右边界值。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
 | rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是   | 矩形对象。 |
-| left   | number | 是   | 矩形的左上角x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
-| top    | number | 是   | 矩形的左上角y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
-| right  | number | 是   | 矩形的右下角x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
-| bottom | number | 是   | 矩形的右下角y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
+| left   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的左上角x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
+| top    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的左上角y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
+| right  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的右下角x轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点左侧，正数表示位于坐标原点右侧。 |
+| bottom | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的右下角y轴坐标，该参数为浮点数。0表示坐标原点，负数表示位于坐标原点上侧，正数表示位于坐标原点下侧。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
@@ -596,6 +953,21 @@ console.info('rect.right: ', rect.right);
 console.info('rect.bottom: ', rect.bottom);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+let rect = drawing.RectUtils.makeEmpty();
+if (rect == undefined) {
+    return;
+}
+drawing.RectUtils.setLtrb(rect, 10.0, 20.0, 30.0, 60.0);
+console.info('rect.left:', rect?.left);
+console.info('rect.top: ', rect?.top);
+console.info('rect.right: ', rect?.right);
+console.info('rect.bottom: ', rect?.bottom);
+```
+
 ## setEmpty<sup>20+</sup>
 
 static setEmpty(rect: common2D.Rect): void
@@ -603,6 +975,10 @@ static setEmpty(rect: common2D.Rect): void
 将矩形的上下左右边界都设为0。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -612,6 +988,8 @@ static setEmpty(rect: common2D.Rect): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
 let rect = drawing.RectUtils.makeLtrb(10, 20, 20, 30);
@@ -620,6 +998,21 @@ console.info('rect.left:', rect.left);
 console.info('rect.top: ', rect.top);
 console.info('rect.right: ', rect.right);
 console.info('rect.bottom: ', rect.bottom);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+let rect = drawing.RectUtils.makeLtrb(10.0, 20.0, 20.0, 30.0);
+if (rect == undefined) {
+    return;
+}
+drawing.RectUtils.setEmpty(rect)
+console.info('rect.left:', rect?.left);
+console.info('rect.top: ', rect?.top);
+console.info('rect.right: ', rect?.right);
+console.info('rect.bottom: ', rect?.bottom);
 ```
 
 ## sort<sup>20+</sup>
@@ -632,6 +1025,10 @@ static sort(rect: common2D.Rect): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明            |
@@ -639,6 +1036,8 @@ static sort(rect: common2D.Rect): void
 | rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是   | 用于设置的矩形对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
@@ -650,6 +1049,21 @@ console.info('rect.right: ', rect.right);
 console.info('rect.bottom: ', rect.bottom);
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+let rect = drawing.RectUtils.makeLtrb(20.0, 40.0, 30.0, 30.0);
+if (rect == undefined) {
+    return;
+}
+drawing.RectUtils.sort(rect);
+console.info('rect.left:', rect?.left);
+console.info('rect.top: ', rect?.top);
+console.info('rect.right: ', rect?.right);
+console.info('rect.bottom: ', rect?.bottom);
+```
+
 ## isEqual<sup>20+</sup>
 
 static isEqual(rect: common2D.Rect, other: common2D.Rect): boolean
@@ -657,6 +1071,10 @@ static isEqual(rect: common2D.Rect, other: common2D.Rect): boolean
 判断两个矩形是否相等。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -673,10 +1091,25 @@ static isEqual(rect: common2D.Rect, other: common2D.Rect): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drawing, common2D } from '@kit.ArkGraphics2D';
 let rect = drawing.RectUtils.makeLtrb(10, 20, 20, 30);
 let rect2 = drawing.RectUtils.makeEmpty();
+let isEqual = drawing.RectUtils.isEqual(rect, rect2);
+console.info('isEqual :', isEqual);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+let rect = drawing.RectUtils.makeLtrb(10.0, 20.0, 20.0, 30.0);
+let rect2 = drawing.RectUtils.makeEmpty();
+if (rect == undefined || rect2 == undefined) {
+    return;
+}
 let isEqual = drawing.RectUtils.isEqual(rect, rect2);
 console.info('isEqual :', isEqual);
 ```
