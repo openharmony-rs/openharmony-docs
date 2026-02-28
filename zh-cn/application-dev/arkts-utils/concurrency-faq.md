@@ -427,6 +427,7 @@ JS异常：TypeError: Cannot set sendable property with mismatched type
      constructor(b: B) {
        this.b = b;
      }
+   
      public b: B | undefined = undefined;
    }
    ```
