@@ -1,4 +1,4 @@
-# Interface (Window)
+﻿# Interface (Window)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @waterwin-->
@@ -1803,7 +1803,7 @@ try {
 }
 ```
 
-## getWindowAvoidAreaIgnoringVisibility<sup>23+</sup>
+## getWindowAvoidAreaIgnoringVisibility<sup>22+</sup>
 
 getWindowAvoidAreaIgnoringVisibility(type: AvoidAreaType): AvoidArea
 
@@ -2371,9 +2371,9 @@ setImmersiveModeEnabledState(enabled: boolean): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.  Possible cause: The window is not created or destroyed.              |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal IPC error.|
-| 1300004 | Unauthorized operation.   Possible cause: Invalid window type. Only main windows and subwindows are supported.            |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported.            |
 
 **示例：**
 
@@ -2428,7 +2428,7 @@ getImmersiveModeEnabledState(): boolean
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------------------- |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
-| 1300004  | Unauthorized operation.  Possible cause: Invalid window type. Only main windows and subwindows are supported.             |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported.             |
 
 **示例：**
 
@@ -2785,7 +2785,7 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.  Possible cause: 1. The window is not created or destroyed; 2. Internal task error.             |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.             |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -2898,7 +2898,7 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.  Possible cause: 1. The window is not created or destroyed; 2. Internal task error.             |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.             |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5877,6 +5877,8 @@ on(type: 'screenshotAppEvent', callback: Callback&lt;ScreenshotEventType&gt;): v
 
 开启屏幕截屏事件类型的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **ArkTS-Dyn起始版本：** 20
@@ -5915,6 +5917,8 @@ try {
 off(type: 'screenshotAppEvent', callback?: Callback&lt;ScreenshotEventType&gt;): void
 
 关闭屏幕截屏事件类型的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -14939,9 +14943,9 @@ setGestureBackEnabled(enabled: boolean): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
-| 1300002  | This window state is abnormal.  Possible cause: The window is not created or destroyed.                                                                             |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.                                                                             |
 | 1300003  | This window manager service works abnormally.                                                                |
-| 1300004  | Unauthorized operation.  Possible cause: Invalid window type. Only main windows are supported.                                                                              |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.                                                                              |
 
 **示例：**
 
@@ -15051,8 +15055,8 @@ isGestureBackEnabled(): boolean
 | 错误码ID | 错误信息                                                                                                     |
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
-| 1300002  | This window state is abnormal.  Possible cause: The window is not created or destroyed.                                                                             |
-| 1300004  | Unauthorized operation.  Possible cause: Invalid window type. Only main windows are supported.                                                                         |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.                                                                             |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.                                                                         |
 
 **示例：**
 

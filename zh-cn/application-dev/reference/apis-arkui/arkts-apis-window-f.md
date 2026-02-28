@@ -1226,7 +1226,7 @@ ArkTS-Sta: getGlobalWindowMode(displayId?: long): Promise&lt;int&gt;
 |----------| ------------------------------ |
 | 801      | Capability not supported. function getGlobalWindowMode can not work correctly due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error.|
-| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. The parameter format is incorrect.|
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range; 2. The parameter format is incorrect.|
 
 **示例：**
 
