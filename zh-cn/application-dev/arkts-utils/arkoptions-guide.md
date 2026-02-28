@@ -45,6 +45,8 @@ types字段支持填写包名、包所在位置的相对路径以及声明文件
 ### 注意事项
 
 如果在types字段中填写包名或者包所在位置的相对路径，需要在工程文件/entry/oh-package.json5中dependencies作如下配置：
+<!-- @[dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/oh-package.json5) -->
+
 ```json
 "dependencies": {
   "@types/chai": "latest",
@@ -62,7 +64,7 @@ declare namespace Global {
 ```
 
 通过types全局引入后，对全局类型的使用示例如下：
-<!-- @[call_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[test_party](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // 在entry/src/main/ets/pages/Index.ets
