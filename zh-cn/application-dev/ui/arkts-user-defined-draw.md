@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-NDK提供了自定义绘制节点的能力，通过以下接口，开发者可以实现基于NDK侧Custom类型节点的自绘制能力。
+NDK提供了自定义绘制节点的能力，通过以下接口，开发者可以实现基于NDK侧[ARKUI_NODE_CUSTOM](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)类型节点的自绘制能力。
 
 ## 自定义绘制内容
 

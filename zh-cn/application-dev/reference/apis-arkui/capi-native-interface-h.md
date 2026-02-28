@@ -98,7 +98,7 @@ void* OH_ArkUI_QueryModuleInterfaceByName(ArkUI_NativeAPIVariantKind type, const
 ### OH_ArkUI_GetModuleInterface()
 
 ```c
-OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)                             \
+#define OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)                     \
 do {                                                                                                 \
         void* anyNativeAPI = OH_ArkUI_QueryModuleInterfaceByName(nativeAPIVariantKind, #structType); \
         if (anyNativeAPI) {                                                                          \
