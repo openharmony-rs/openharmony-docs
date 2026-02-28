@@ -47,7 +47,7 @@ constructor()
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -67,7 +67,7 @@ constructor(matrix: Matrix)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -90,11 +90,11 @@ isAffine(): boolean
 
 判断当前矩阵是否为仿射矩阵。仿射矩阵是一种包括平移、旋转、缩放等变换的矩阵。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -108,7 +108,7 @@ isAffine(): boolean
 import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
-matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
+matrix.setMatrix([1.0, 0.5, 1.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0]);
 let isAff = matrix.isAffine();
 console.info('isAff :', isAff);
 ```
@@ -119,11 +119,11 @@ rectStaysRect(): boolean
 
 判断经过该矩阵映射后的矩形的形状是否仍为矩形。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -137,7 +137,7 @@ rectStaysRect(): boolean
 import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
-matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
+matrix.setMatrix([1.0, 0.5, 1.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0]);
 let matrix2 = new drawing.Matrix(matrix);
 let isRect = matrix2.rectStaysRect();
 console.info('isRect :', isRect);
@@ -145,24 +145,26 @@ console.info('isRect :', isRect);
 
 ## setSkew<sup>20+</sup>
 
-setSkew(kx: number, ky: number, px: number, py: number): void
+ArkTS-Dyn: setSkew(kx: number, ky: number, px: number, py: number): void
+
+ArkTS-Sta: setSkew(kx: double, ky: double, px: double, py: double): void
 
 设置矩阵的倾斜系数。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名         | 类型                                       | 必填   | 说明                       |
 | ----------- | ---------------------------------------- | ---- | -------------------             |
-| kx          | number | 是    | x轴上的倾斜量，该参数为浮点数。正值会使绘制沿y轴增量方向向右倾斜；负值会使绘制沿y轴增量方向向左倾斜。        |
-| ky          | number | 是    | y轴上的倾斜量，该参数为浮点数。正值会使绘制沿x轴增量方向向下倾斜；负值会使绘制沿x轴增量方向向上倾斜。        |
-| px          | number | 是    | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。     |
-| py          | number | 是    | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。     |
+| kx          | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | x轴上的倾斜量，该参数为浮点数。正值会使绘制沿y轴增量方向向右倾斜；负值会使绘制沿y轴增量方向向左倾斜。        |
+| ky          | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | y轴上的倾斜量，该参数为浮点数。正值会使绘制沿x轴增量方向向下倾斜；负值会使绘制沿x轴增量方向向上倾斜。        |
+| px          | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。     |
+| py          | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。     |
 
 **示例：**
 
@@ -170,30 +172,32 @@ setSkew(kx: number, ky: number, px: number, py: number): void
 import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
-matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
-matrix.setSkew(2, 0.5, 0.5, 2);
+matrix.setMatrix([1.0, 0.5, 1.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0]);
+matrix.setSkew(2.0, 0.5, 0.5, 2.0);
 ```
 
 ## setSinCos<sup>20+</sup>
 
-setSinCos(sinValue: number, cosValue: number, px: number, py: number): void
+ArkTS-Dyn: setSinCos(sinValue: number, cosValue: number, px: number, py: number): void
+
+ArkTS-Sta: setSinCos(sinValue: double, cosValue: double, px: double, py: double): void
 
 设置矩阵，使其围绕旋转中心(px, py)以指定的正弦值和余弦值旋转。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
 
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名         | 类型                                       | 必填   | 说明            |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
-| sinValue          | number | 是    | 旋转角度的正弦值。仅当正弦值和余弦值的平方和为1时，为旋转变换，否则矩阵可能包含平移缩放等其他变换。          |
-| cosValue          | number | 是    | 旋转角度的余弦值。仅当正弦值和余弦值的平方和为1时，为旋转变换，否则矩阵可能包含平移缩放等其他变换。            |
-| px          | number | 是    | 旋转中心的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。     |
-| py          | number | 是    | 旋转中心的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。    |
+| sinValue          | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 旋转角度的正弦值。仅当正弦值和余弦值的平方和为1时，为旋转变换，否则矩阵可能包含平移缩放等其他变换。          |
+| cosValue          | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 旋转角度的余弦值。仅当正弦值和余弦值的平方和为1时，为旋转变换，否则矩阵可能包含平移缩放等其他变换。            |
+| px          | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 旋转中心的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。     |
+| py          | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 旋转中心的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。    |
 
 **示例：**
 
@@ -201,8 +205,8 @@ setSinCos(sinValue: number, cosValue: number, px: number, py: number): void
 import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
-matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
-matrix.setSinCos(0, 1, 1, 0);
+matrix.setMatrix([1.0, 0.5, 1.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0]);
+matrix.setSinCos(0.0, 1.0, 1.0, 0.0);
 ```
 
 ## setRotation<sup>12+</sup>
@@ -217,7 +221,7 @@ ArkTS-Sta: setRotation(degree: double, px: double, py: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -256,7 +260,7 @@ ArkTS-Sta: setScale(sx: double, sy: double, px: double, py: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -296,7 +300,7 @@ ArkTS-Sta: setTranslation(dx: double, dy: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -334,7 +338,7 @@ ArkTS-Sta: setMatrix(values: Array\<double>): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -352,16 +356,6 @@ ArkTS-Sta: setMatrix(values: Array\<double>): void
 
 **示例：**
 
-ArkTS-Dyn示例：
-```ts
-import { drawing } from '@kit.ArkGraphics2D';
-
-let matrix = new drawing.Matrix();
-let value: Array<number> = [2, 2, 2, 2, 2, 2, 2, 2, 2];
-matrix.setMatrix(value);
-```
-
-ArkTS-Sta示例：
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
@@ -380,7 +374,7 @@ preConcat(matrix: Matrix): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -410,21 +404,23 @@ matrix1.preConcat(matrix2);
 
 ## setMatrix<sup>20+</sup>
 
-setMatrix(matrix: Array\<number> \| Matrix): void
+ArkTS-Dyn: setMatrix(matrix: Array\<number> \| Matrix): void
+
+ArkTS-Sta: setMatrix(matrix: Array\<double> \| Matrix): void
 
 用一个矩阵对当前矩阵进行更新。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
 
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型                                                 | 必填 | 说明             |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| matrix | Array\<number> \| [Matrix](arkts-apis-graphics-drawing-Matrix.md) | 是   | 用于更新的数组或矩阵。 |
+| matrix | ArkTS-Dyn: Array\<number> \| [Matrix](arkts-apis-graphics-drawing-Matrix.md)<br/>ArkTS-Sta: Array<double> | 是   | 用于更新的数组或矩阵。 |
 
 **示例：**
 
@@ -432,7 +428,7 @@ setMatrix(matrix: Array\<number> \| Matrix): void
 import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix1 = new drawing.Matrix();
-matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+matrix1.setMatrix([2.0, 1.0, 3.0, 1.0, 2.0, 1.0, 3.0, 1.0, 2.0]);
 let matrix2 = new drawing.Matrix();
 matrix1.setMatrix(matrix2);
 ```
@@ -443,11 +439,11 @@ setConcat(matrixA: Matrix, matrixB: Matrix): void
 
 用两个矩阵的乘积更新当前矩阵。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -462,9 +458,9 @@ setConcat(matrixA: Matrix, matrixB: Matrix): void
 import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix1 = new drawing.Matrix();
-matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+matrix1.setMatrix([2.0, 1.0, 3.0, 1.0, 2.0, 1.0, 3.0, 1.0, 2.0]);
 let matrix2 = new drawing.Matrix();
-matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
+matrix2.setMatrix([-2.0, 1.0, 3.0, 1.0, 0.0, -1.0, 3.0, -1.0, 2.0]);
 matrix1.setConcat(matrix2, matrix1);
 ```
 
@@ -474,11 +470,11 @@ postConcat(matrix: Matrix): void
 
 用当前矩阵右乘一个矩阵。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -498,9 +494,9 @@ if (matrix.isIdentity()) {
   console.info("matrix is not identity.");
 }
 let matrix1 = new drawing.Matrix();
-matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
+matrix1.setMatrix([2.0, 1.0, 3.0, 1.0, 2.0, 1.0, 3.0, 1.0, 2.0]);
 let matrix2 = new drawing.Matrix();
-matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
+matrix2.setMatrix([-2.0, 1.0, 3.0, 1.0, 0.0, -1.0, 3.0, -1.0, 2.0]);
 matrix1.postConcat(matrix2);
 ```
 
@@ -516,7 +512,7 @@ ArkTS-Sta: isEqual(matrix: Matrix): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -566,7 +562,7 @@ ArkTS-Sta: invert(matrix: Matrix): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -614,7 +610,7 @@ isIdentity(): Boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -647,7 +643,7 @@ ArkTS-Sta: getValue(index: int): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -692,7 +688,7 @@ ArkTS-Sta: postRotate(degree: double, px: double, py: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -750,7 +746,7 @@ ArkTS-Sta: postScale(sx: double, sy: double, px: double, py: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -811,7 +807,7 @@ ArkTS-Sta: postTranslate(dx: double, dy: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -866,7 +862,7 @@ ArkTS-Sta: preRotate(degree: double, px: double, py: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -914,24 +910,26 @@ if (matrix.getAll() != undefined) {
 
 ## postSkew<sup>20+</sup>
 
-postSkew(kx: number, ky: number, px: number, py: number): void
+ArkTS-Dyn: (kx: number, ky: number, px: number, py: number): void
+
+ArkTS-Sta: (kx: double, ky: double, px: double, py: double): void
 
 当前矩阵右乘一个倾斜变换矩阵。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
 
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名         | 类型                                       | 必填   | 说明             |
 | ----------- | ---------------------------------------- | ---- | -------------------   |
-| kx          | number | 是    | x轴上的倾斜量，该参数为浮点数。正值会使绘制沿y轴增量方向向右倾斜；负值会使绘制沿y轴增量方向向左倾斜。           |
-| ky          | number | 是    | y轴上的倾斜量，该参数为浮点数。正值会使绘制沿x轴增量方向向下倾斜；负值会使绘制沿x轴增量方向向上倾斜。           |
-| px          | number | 是    | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。    |
-| py          | number | 是    | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。   |
+| kx          | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | x轴上的倾斜量，该参数为浮点数。正值会使绘制沿y轴增量方向向右倾斜；负值会使绘制沿y轴增量方向向左倾斜。           |
+| ky          | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | y轴上的倾斜量，该参数为浮点数。正值会使绘制沿x轴增量方向向下倾斜；负值会使绘制沿x轴增量方向向上倾斜。           |
+| px          | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。    |
+| py          | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。   |
 
 **示例：**
 
@@ -943,24 +941,26 @@ matrix.postSkew(2.0, 1.0, 2.0, 1.0);
 
 ## preSkew<sup>20+</sup>
 
-preSkew(kx: number, ky: number, px: number, py: number): void
+ArkTS-Dyn: preSkew(kx: number, ky: number, px: number, py: number): void
+
+ArkTS-Sta: preSkew(kx: double, ky: double, px: double, py: double): void
 
 当前矩阵左乘一个倾斜变换矩阵。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
 
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名         | 类型                                       | 必填   | 说明             |
 | ----------- | ---------------------------------------- | ---- | -------------------   |
-| kx          | number | 是    | x轴上的倾斜量，该参数为浮点数。正值会使绘制沿y轴增量方向向右倾斜；负值会使绘制沿y轴增量方向向左倾斜。           |
-| ky          | number | 是    | y轴上的倾斜量，该参数为浮点数。正值会使绘制沿x轴增量方向向下倾斜；负值会使绘制沿x轴增量方向向上倾斜。           |
-| px          | number | 是    | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。        |
-| py          | number | 是    | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。        |
+| kx          | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | x轴上的倾斜量，该参数为浮点数。正值会使绘制沿y轴增量方向向右倾斜；负值会使绘制沿y轴增量方向向左倾斜。           |
+| ky          | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | y轴上的倾斜量，该参数为浮点数。正值会使绘制沿x轴增量方向向下倾斜；负值会使绘制沿x轴增量方向向上倾斜。           |
+| px          | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 倾斜中心点的x轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点右侧，负数表示位于坐标原点左侧。        |
+| py          | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 倾斜中心点的y轴坐标，该参数为浮点数。0表示坐标原点，正数表示位于坐标原点下侧，负数表示位于坐标原点上侧。        |
 
 **示例：**
 
@@ -972,21 +972,23 @@ matrix.preSkew(2.0, 1.0, 2.0, 1.0);
 
 ## mapRadius<sup>20+</sup>
 
-mapRadius(radius: number): number
+ArkTS-Dyn: mapRadius(radius: number): number
+
+ArkTS-Sta: mapRadius(radius: double): double
 
 返回半径为radius的圆经过当前矩阵映射形成的椭圆的平均半径。平均半径的平方为椭圆长轴长度和短轴长度的乘积。若当前矩阵包含透视变换，则该结果无意义。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
 
+**ArkTS-Dyn起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型                                                 | 必填 | 说明             |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| radius  | number | 是   | 用于计算的圆的半径，浮点数。如果是负数，则按照绝对值进行计算。 |
+| radius  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 用于计算的圆的半径，浮点数。如果是负数，则按照绝对值进行计算。 |
 
 **返回值：**
 
@@ -1000,8 +1002,8 @@ mapRadius(radius: number): number
 import {drawing} from "@kit.ArkGraphics2D"
 
 let matrix = new drawing.Matrix();
-matrix.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
-let radius = matrix.mapRadius(10);
+matrix.setMatrix([2.0, 1.0, 3.0, 1.0, 2.0, 1.0, 3.0, 1.0, 2.0]);
+let radius = matrix.mapRadius(10.0);
 console.info('radius', radius);
 ```
 
@@ -1017,7 +1019,7 @@ ArkTS-Sta: preScale(sx: double, sy: double, px: double, py: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1078,7 +1080,7 @@ ArkTS-Sta: preTranslate(dx: double, dy: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1131,7 +1133,7 @@ reset(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -1169,7 +1171,7 @@ ArkTS-Sta: mapPoints(src: Array\<common2D.Point>): Array\<common2D.Point> | unde
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1218,7 +1220,7 @@ ArkTS-Sta: getAll(): Array\<double> | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1247,7 +1249,7 @@ mapRect(dst: common2D.Rect, src: common2D.Rect): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1293,7 +1295,7 @@ setRectToRect(src: common2D.Rect, dst: common2D.Rect, scaleToFit: ScaleToFit): b
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1357,7 +1359,7 @@ ArkTS-Sta: setPolyToPoly(src: Array\<common2D.Point>, dst: Array\<common2D.Point
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
