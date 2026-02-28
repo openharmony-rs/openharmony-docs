@@ -340,6 +340,102 @@
 
      
     <!-- @[fixedPlaybackControlCommands](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/FixedPlaybackControlCommands.ets) -->
+    
+    ``` TypeScript
+    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+    // ...
+    
+    @Entry
+    @Component
+    struct Index {
+      @State message: string = 'hello world';
+      // ...
+    
+      build() {
+        Column() {
+          // ...
+          Text(this.message)
+            .onClick(async () => {
+              let context = this.getUIContext().getHostContext() as Context;
+              // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+              let type: AVSessionManager.AVSessionType = 'audio';
+              let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+              // ...
+              // 一般在监听器中会对播放器做相应逻辑处理。
+              // 不要忘记处理完后需要通过set接口同步播放相关信息，参考上面的用例。
+              session.on('play', () => {
+                console.info(`on play , do play task`);
+                // ...
+                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('play')取消监听。
+                // 处理完毕后，请使用SetAVPlaybackState上报播放状态。
+              });
+              session.on('pause', () => {
+                console.info(`on pause , do pause task`);
+                // ...
+                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('pause')取消监听。
+                // 处理完毕后，请使用SetAVPlaybackState上报播放状态。
+              });
+              session.on('stop', () => {
+                console.info(`on stop , do stop task`);
+                // ...
+                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('stop')取消监听。
+                // 处理完毕后，请使用SetAVPlaybackState上报播放状态。
+              });
+              session.on('playNext', () => {
+                console.info(`on playNext , do playNext task`);
+                // ...
+                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('playNext')取消监听。
+                // 处理完毕后，请使用SetAVPlaybackState上报播放状态，使用SetAVMetadata上报媒体信息。
+              });
+              session.on('playPrevious', () => {
+                console.info(`on playPrevious , do playPrevious task`);
+                // ...
+                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('playPrevious')取消监听。
+                // 处理完毕后，请使用SetAVPlaybackState上报播放状态，使用SetAVMetadata上报媒体信息。
+              });
+              session.on('fastForward', () => {
+                console.info(`on fastForward , do fastForward task`);
+                // ...
+                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('fastForward')取消监听。
+                // 处理完毕后，请使用SetAVPlaybackState上报播放状态和播放position。
+              });
+              session.on('rewind', () => {
+                console.info(`on rewind , do rewind task`);
+                // ...
+                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('rewind')取消监听。
+                // 处理完毕后，请使用SetAVPlaybackState上报播放状态和播放position。
+              });
+              session.on('seek', (time) => {
+                console.info(`on seek , the seek time is ${time}`);
+                // ...
+                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('seek')取消监听。
+                // 处理完毕后，请使用SetAVPlaybackState上报播放状态和播放position。
+              });
+              session.on('setSpeed', (speed) => {
+                console.info(`on setSpeed , the speed is ${speed}`);
+                // ...
+                // 实现具体功能。
+              });
+              session.on('setLoopMode', (mode) => {
+                console.info(`on setLoopMode , the loop mode is ${mode}`);
+                // ...
+                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('setLoopMode')取消监听。
+                // 应用自定下一个模式，处理完毕后，请使用SetAVPlaybackState上报切换后的LoopMode。
+              });
+              session.on('toggleFavorite', (assetId) => {
+                console.info(`on toggleFavorite , the target asset Id is ${assetId}`);
+                // ...
+                // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('toggleFavorite')取消监听。
+                // 处理完毕后，请使用SetAVPlaybackState上报收藏结果isFavorite。
+              });
+              // ...
+            })
+        }
+        .width('100%')
+        .height('100%')
+      }
+    }
+    ```
 
    6.2 高级播控事件的监听
 
