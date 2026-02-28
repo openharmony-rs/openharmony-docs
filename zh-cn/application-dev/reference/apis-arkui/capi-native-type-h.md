@@ -189,7 +189,7 @@
 | [ArkUI_ButtonType](#arkui_buttontype)                               | ArkUI_ButtonType                | 定义按钮样式枚举值。                        |
 | [ArkUI_RenderFit](#arkui_renderfit)                                 | ArkUI_RenderFit   | 定义动画终态内容大小与位置的枚举值。 |
 | [ArkUI_SwiperIndicatorType](#arkui_swiperindicatortype)             | ArkUI_SwiperIndicatorType       | 定义Swiper组件的导航指示器类型。             |
-| [ArkUI_AnimationDirection](#arkui_animationdirection)               | ArkUI_AnimationDirection        | 动画播放模式。                           |
+| [ArkUI_AnimationDirection](#arkui_animationdirection)               | ArkUI_AnimationDirection        | 动画播放方向。                           |
 | [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate)   | ArkUI_ListItemSwipeActionState  | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[SwipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的显隐模式。 |
 | [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect)     | ArkUI_ListItemSwipeEdgeEffect   | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[SwipeAction](./arkui-ts/ts-container-listitem.md#listitem10)方法的滚动模式。 |
 | [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) | ArkUI_ListItemSwipeActionDirection | ListItem划出菜单的展开方向。 |
@@ -1285,7 +1285,7 @@ enum ArkUI_AnimationCurve
 | ARKUI_CURVE_EASE = 1 | 动画以低速开始，然后加快，在结束前变慢。 |
 | ARKUI_CURVE_EASE_IN = 2 | 动画以低速开始。 |
 | ARKUI_CURVE_EASE_OUT = 3 | 动画以低速结束。 |
-| ARKUI_CURVE_EASE_IN_OUT = 4 | 动画以低速开始和结束。 |
+| ARKUI_CURVE_EASE_IN_OUT = 4 | 动画以低速开始和结束，提供平滑自然的动画过渡效果。 |
 | ARKUI_CURVE_FAST_OUT_SLOW_IN = 5 | 动画标准曲线。 |
 | ARKUI_CURVE_LINEAR_OUT_SLOW_IN = 6 | 动画减速曲线。 |
 | ARKUI_CURVE_FAST_OUT_LINEAR_IN = 7 | 动画加速曲线。 |
@@ -1598,8 +1598,8 @@ enum ArkUI_AnimationPlayMode
 | -- | -- |
 | ARKUI_ANIMATION_PLAY_MODE_NORMAL = 0 | 动画正向播放。 |
 | ARKUI_ANIMATION_PLAY_MODE_REVERSE = 1 | 动画反向播放。 |
-| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE = 2 | 动画在奇数次（1、3、5...）正向播放，在偶数次（2、4、6...）反向播放。 |
-| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE = 3 | 动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。 |
+| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE = 2 | 动画交替循环播放，在奇数次正向播放，在偶数次反向播放。 |
+| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE = 3 | 动画反向交替循环播放，在奇数次反向播放，在偶数次正向播放。 |
 
 ### ArkUI_ImageSize
 
@@ -1994,7 +1994,7 @@ enum ArkUI_ColorStrategy
 **描述：**
 
 
-前景色枚举值。
+前景和阴影的枚举值。
 
 **起始版本：** 12
 
@@ -2111,8 +2111,7 @@ enum ArkUI_MaskType
 
 **描述：**
 
-
-遮罩类型枚举。
+遮罩类型枚举。遮罩是一种用于限制组件显示区域的手段，它利用特定的形状对组件内容进行裁剪，从而实现只有遮罩区域内的内容才可见的效果。
 
 **起始版本：** 12
 
@@ -2261,10 +2260,10 @@ enum ArkUI_TransitionEdge
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TRANSITION_EDGE_TOP = 0 | 窗口的上边缘。 |
-| ARKUI_TRANSITION_EDGE_BOTTOM = 1 | 窗口的下边缘。 |
-| ARKUI_TRANSITION_EDGE_START = 2 | 窗口的左边缘。 |
-| ARKUI_TRANSITION_EDGE_END = 3 | 窗口的右边缘。 |
+| ARKUI_TRANSITION_EDGE_TOP = 0 | 转场从窗口的上边缘滑入和滑出。 |
+| ARKUI_TRANSITION_EDGE_BOTTOM = 1 | 转场从窗口的下边缘滑入和滑出。 |
+| ARKUI_TRANSITION_EDGE_START = 2 | 转场从窗口的左边缘滑入和滑出。 |
+| ARKUI_TRANSITION_EDGE_END = 3 | 转场从窗口的右边缘滑入和滑出。 |
 
 ### ArkUI_FinishCallbackType
 
@@ -2275,14 +2274,14 @@ enum ArkUI_FinishCallbackType
 **描述：**
 
 
-在动画中定义onFinish回调的类型。
+在动画中定义[onFinish](./capi-native-animate-h.md#oh_arkui_animatoroption_registeronfinishcallback)回调的类型。
 
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_FINISH_CALLBACK_REMOVED = 0 | 当整个动画结束并立即删除时，将触发回调。 |
-| ARKUI_FINISH_CALLBACK_LOGICALLY = 1 | 当动画在逻辑上处于下降状态，但可能仍处于其长尾状态时，将触发回调。 |
+| ARKUI_FINISH_CALLBACK_LOGICALLY = 1 | 当动画在逻辑上处于下降状态，但可能仍处于其长尾状态时，将触发回调。长尾状态是指动画即将完全停止前的残余变化过程，此时动画的数值变化已非常微小，接近目标值。 |
 
 ### ArkUI_ListItemAlignment
 
@@ -2566,7 +2565,7 @@ enum ArkUI_AnimationDirection
 **描述：**
 
 
-动画播放模式。
+动画播放方向。
 
 **起始版本：** 12
 
@@ -2574,8 +2573,8 @@ enum ArkUI_AnimationDirection
 | -- | -- |
 | ARKUI_ANIMATION_DIRECTION_NORMAL = 0 | 动画正向循环播放。 |
 | ARKUI_ANIMATION_DIRECTION_REVERSE = 1 | 动画反向循环播放。 |
-| ARKUI_ANIMATION_DIRECTION_ALTERNATE = 2 | 动画交替循环播放，奇数次正向播放，偶数次反向播放。 |
-| ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE = 3 | 动画反向交替循环播放，奇数次反向播放，偶数次正向播放。 |
+| ARKUI_ANIMATION_DIRECTION_ALTERNATE = 2 | 动画交替循环播放，在奇数次正向播放，在偶数次反向播放。 |
+| ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE = 3 | 动画反向交替循环播放，在奇数次反向播放，在偶数次正向播放。 |
 
 ### ArkUI_ListItemSwipeActionState
 
@@ -2668,8 +2667,8 @@ enum ArkUI_AnimationFillMode
 | -- | -- |
 | ARKUI_ANIMATION_FILL_MODE_NONE = 0 | 动画未执行时不会将任何样式应用于目标，动画播放完成之后恢复初始默认状态。 |
 | ARKUI_ANIMATION_FILL_MODE_FORWARDS = 1 | 目标将保留动画执行期间最后一个关键帧的状态。 |
-| ARKUI_ANIMATION_FILL_MODE_BACKWARDS = 2 | 动画将在应用于目标时立即应用第一个关键帧中定义的值，并在delay期间保留此值。 |
-| ARKUI_ANIMATION_FILL_MODE_BOTH = 3 | 动画将遵循Forwards和Backwards的规则，从而在两个方向上扩展动画属性。 |
+| ARKUI_ANIMATION_FILL_MODE_BACKWARDS = 2 | 动画将在应用于目标时立即应用第一个关键帧中定义的值，并在[delay](./capi-native-animate-h.md#oh_arkui_animateoption_setdelay)期间保留此值。 |
+| ARKUI_ANIMATION_FILL_MODE_BOTH = 3 | 动画将遵循[ARKUI_ANIMATION_FILL_MODE_FORWARDS](#arkui_animationfillmode)和[ARKUI_ANIMATION_FILL_MODE_BACKWARDS](#arkui_animationfillmode)的规则，从而在两个方向上扩展动画属性。 |
 
 ### ArkUI_ErrorCode
 

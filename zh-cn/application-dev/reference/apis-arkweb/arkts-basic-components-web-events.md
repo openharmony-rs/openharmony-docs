@@ -1625,7 +1625,7 @@ struct Index {
           return;
         }
 
-        //注：badssl.com-client.p12需要替换为实际使用的证书文件
+        // 注：badssl.com-client.p12需要替换为实际使用的证书文件
         let value: Uint8Array = this.context.resourceManager.getRawFileContentSync("badssl.com-client.p12");
         certificateManager.installPrivateCertificate(value, 'badssl.com', "1",
           async (err: BusinessError, data: certificateManager.CMResult) => {
@@ -2663,7 +2663,7 @@ onActivateContent(callback: Callback\<void>)
             }
           })
           .onActivateContent(() => {
-            //该Web需要展示到前面，建议应用在这里进行tab或window切换的动作展示此web
+            // 该Web需要展示到前面，建议应用在这里进行tab或window切换的动作展示此web
             console.info("NewWebViewComp onActivateContent")
           })
       }.height("50%")
@@ -3464,6 +3464,11 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
 
 收到网站安全风险检查结果时触发的回调。
 
+> **说明：**
+>
+> - 需要使用release包，debug包不生效。
+> - 开启未成年模式，设置网页内容拦截，触发回调。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3500,6 +3505,11 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
 onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
 
 网站安全风险检查结束时触发的回调。
+
+> **说明：**
+>
+> - 需要使用release包，debug包不生效。
+> - 开启未成年模式，设置网页内容拦截，触发回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3873,6 +3883,10 @@ onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void)
 onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionCallback)
 
 智能防跟踪功能使能时，当追踪者cookie被拦截时触发该回调。
+
+> **说明：**
+>
+> - 需要使用release包，debug包不生效。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

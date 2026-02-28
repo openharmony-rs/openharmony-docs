@@ -10,11 +10,11 @@ This **restrictions** module provides APIs for disallowing general features of d
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
 
 ## Modules to Import
 
@@ -60,7 +60,7 @@ Disallows a feature.
 |mtpServer<sup>18+</sup>|MTP server capability, currently supported only on phone and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |sambaClient<sup>20+</sup>|Samba client capability, currently supported only on PC/2-in-1 devices. <br>Samba is a free software that implements the SMB protocol on Linux and UNIX systems, consisting of both server and client programs. <br>Server Messages Block (SMB) is a communication protocol for sharing files and printers over the local area network (LAN), enabling access to shared file systems, printers, and other resources between devices on the same LAN. As a client/server protocol, SMB allows clients to access shared resources hosted on servers.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |sambaServer<sup>20+</sup>|Samba server capability, currently supported only on PC/2-in-1 devices.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
-|backupAndRestore<sup>20+</sup>|Backup and restore capability. If this feature is disabled, the **Settings** > **System** > **Backup & Restore** and **Settings** > **Cloud** options will become unavailable. Currently, this feature is supported only on smartphones and tablets. To completely disable the backup and restore capability, you are advised to call [applicationManager.addDisallowedRunningBundlesSync](./js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync) to disable applications with this feature, such as Backup & Restore, HiSuite, and Cloud.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|backupAndRestore<sup>20+</sup>|Backup and restore capability. If this feature is disabled, the **Settings** > **System** > **Backup & Restore** and **Settings** > **Cloud** options will be dimmed. Currently, this feature is supported only on phones and tablets. To completely disable the backup and restore capability, you are advised to call [applicationManager.addDisallowedRunningBundlesSync](./js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync) to disable applications with this feature, such as Backup & Restore, HiSuite, and Cloud.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |maintenanceMode<sup>20+</sup>|Device maintenance mode capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |mms<sup>20+</sup>|Multimedia Messaging Service (MMS) capability to receive and send multimedia messages. Currently, this feature is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |sms<sup>20+</sup>|Short Messaging Service (SMS) capability to receive and send SMS messages. Currently, this feature is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
@@ -68,7 +68,7 @@ Disallows a feature.
 |airplaneMode<sup>20+</sup>|Airplane mode capability, which is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_NETWORK|
 |vpn<sup>20+</sup>|Virtual Private Network (VPN) capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |notification<sup>20+</sup>|Device notification capability. Disabling this feature prevents system applications and third-party applications from displaying notifications. The notification capability of system services is not affected.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
-|nfc<sup>20+</sup>|Near Field Communication (NFC) capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|nfc<sup>20+</sup>|Near Field Communication (NFC) capability, which is supported only on phones and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |privateSpace<sup>20+</sup>|Privacy space creation capability, which is supported only on smartphones and tablets. This setting does not affect existing private spaces.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |telephoneCall<sup>20+</sup>|Call capability. Disabling this feature blocks incoming or outgoing calls. Currently, this feature is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |appClone<sup>21+</sup>|[Application clone capability](../../quick-start/app-clone.md). When this feature is disabled, new application clones cannot be created. This feature is invalid for the application clone that has been created.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
@@ -147,7 +147,7 @@ Queries whether a feature is disabled.
 |mtpServer<sup>18+</sup>|MTP server capability, currently supported only on phone and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |sambaClient<sup>20+</sup>|Samba client capability, currently supported only on PC/2-in-1 devices. <br>Samba is a free software that implements the SMB protocol on Linux and UNIX systems, consisting of both server and client programs. <br>Server Messages Block (SMB) is a communication protocol for sharing files and printers over the local area network (LAN), enabling access to shared file systems, printers, and other resources between devices on the same LAN. As a client/server protocol, SMB allows clients to access shared resources hosted on servers.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |sambaServer<sup>20+</sup>|Samba server capability, currently supported only on PC/2-in-1 devices.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
-|backupAndRestore<sup>20+</sup>|Backup and restore capability. If this feature is disabled, the **Settings** > **System** > **Backup & Restore** and **Settings** > **Cloud** options will become unavailable. Currently, this feature is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|backupAndRestore<sup>20+</sup>|Backup and restore capability. If this feature is disabled, the **Settings** > **System** > **Backup & Restore** and **Settings** > **Cloud** options will be dimmed. Currently, this feature is supported only on phones and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |maintenanceMode<sup>20+</sup>|Device maintenance mode capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |mms<sup>20+</sup>|Multimedia Messaging Service (MMS) capability to receive and send multimedia messages. Currently, this feature is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |sms<sup>20+</sup>|Short Messaging Service (SMS) capability to receive and send SMS messages. Currently, this feature is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
@@ -155,7 +155,7 @@ Queries whether a feature is disabled.
 |airplaneMode<sup>20+</sup>|Airplane mode capability, which is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_NETWORK|
 |vpn<sup>20+</sup>|Virtual Private Network (VPN) capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |notification<sup>20+</sup>|Device notification capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
-|nfc<sup>20+</sup>|Near Field Communication (NFC) capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|nfc<sup>20+</sup>|Near Field Communication (NFC) capability, which is supported only on phones and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |privateSpace<sup>20+</sup>|Privacy space creation capability, which is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |telephoneCall<sup>20+</sup>|Call capability. Disabling this feature blocks incoming or outgoing calls. Currently, this feature is supported only on smartphones and tablets.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |appClone<sup>21+</sup>|[Application clone capability](../../quick-start/app-clone.md). When this feature is disabled, new application clones cannot be created.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
