@@ -371,7 +371,7 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。
 
-**系统能力：**SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 **参数：**
 
@@ -404,7 +404,7 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<boolean>): void
 
 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。
 
-**系统能力：**SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 **参数：**
 
@@ -511,7 +511,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 | networkType     | [NetworkType](#networktype)       | 否    | 是    |网络类型。             |
 | isCharging      | boolean                           | 否    | 是    |是否充电，默认为false。<br>- true表示充电触发延迟任务回调。<br>- false表示不充电触发延迟任务回调。|
 | chargerType     | [ChargingType](#chargingtype)     | 否    | 是    |充电类型。             |
-| batteryLevel    | number                            | 否    | 是    |电量。<br>- 取值范围[0, 100]。            |
+| batteryLevel    | number                            | 否    | 是    |电量。<br>取值范围：[0, 100]        |
 | batteryStatus   | [BatteryStatus](#batterystatus)   | 否    | 是    |电池状态。             |
 | storageRequest  | [StorageRequest](#storagerequest) | 否    | 是    |存储状态。             |
 | isRepeat        | boolean                           | 否    | 是    |是否循环任务，默认为false。<br>- true表示循环任务。 <br>- false表示非循环任务。 |
