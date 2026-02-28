@@ -576,6 +576,53 @@ struct Index {
 
 <!-- @[toggleFavorite_mediaAssets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/FavoritingMediaAssets.ets) -->
 
+``` TypeScript
+import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+  // ...
+
+  build() {
+    Column() {
+      // ...
+      Text(this.message)
+        .onClick(async () => {
+          let context = this.getUIContext().getHostContext() as Context;
+          // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+          let type: AVSessionManager.AVSessionType = 'audio';
+          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+          // ...
+          session.on('toggleFavorite', (assetId) => {
+            console.info(`on toggleFavorite `);
+            // ...
+            // 应用收到收藏命令，进行收藏处理。
+
+            // 应用内完成或者取消收藏，把新的收藏状态设置给AVSession。
+            let playbackState: AVSessionManager.AVPlaybackState = {
+              isFavorite: true,
+            };
+            session.setAVPlaybackState(playbackState).then(() => {
+              console.info(`SetAVPlaybackState successfully`);
+              // ...
+            }).catch((err: BusinessError) => {
+              console.error(`SetAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
+              // ...
+            });
+          });
+          // ...
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ### 循环模式
 
 针对音乐类应用，系统的播控中心界面会默认展示循环模式的控制操作，目前系统支持四种固定的循环模式控制，参考: [LoopMode](../../reference/apis-avsession-kit/arkts-apis-avsession-e.md#loopmode10)。
