@@ -529,13 +529,15 @@ TaskPool的任务执行函数Concurrent函数只能使用局部变量和函数�
    <!-- @[define_sendableTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->      
    
    ``` TypeScript
-   // sendable.ets，与Index.ets在同级目录下。
+   // Sendable.ets，与Index.ets在同级目录下
    @Sendable
    export class TestClass {
      public name: string = 'test';
+   
      setName(name: string) {
        this.name = name;
      }
+   
      getName(): string {
        return this.name;
      }
