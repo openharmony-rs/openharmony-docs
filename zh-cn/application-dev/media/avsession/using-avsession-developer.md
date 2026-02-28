@@ -509,6 +509,55 @@
 7. 获取当前媒体会话自身的控制器，与媒体会话对应进行通信交互。
      
       <!-- @[getController](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/GetController.ets) -->
+      
+      ``` TypeScript
+      import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+      // ...
+      
+      @Entry
+      @Component
+      struct Index {
+        @State message: string = 'hello world';
+        // ...
+      
+        build() {
+          Column() {
+            // ...
+            Text(this.message)
+              .onClick(async () => {
+                try {
+                  let context = this.getUIContext().getHostContext() as Context;
+                  // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+                  let type: AVSessionManager.AVSessionType = 'audio';
+                  let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+      
+                  // 通过已有session获取一个controller对象。
+                  let controller = await session.getController();
+                  // ...
+      
+                  // controller可以与原session对象进行基本的通信交互，比如下发播放命令。
+                  let avCommand: AVSessionManager.AVControlCommand = { command: 'play' };
+                  controller.sendControlCommand(avCommand);
+      
+                  // 或者做状态变更监听。
+                  controller.on('playbackStateChange', 'all', (state) => {
+      
+                    // do some things.
+                  });
+                  // ...
+                } catch (err) {
+                  if (err) {
+                    console.error(`AVSession create or getController Error: Code: ${err.code}, message: ${err.message}`);
+                    // ...
+                  }
+                }
+              })
+          }
+          .width('100%')
+          .height('100%')
+        }
+      }
+      ```
 
 8. 音视频应用在退出，并且不需要继续播放时，及时取消监听以及销毁媒体会话释放资源。
 
