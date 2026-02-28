@@ -48,6 +48,44 @@
    > 以下示例代码仅展示创建AVSession对象的接口调用，应用在真正使用时，需要确保AVSession对象实例在应用后台播放业务活动期间一直存在，避免被系统回收、释放，导致后台发声时被系统管控。
 
       <!-- @[createAVSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/CreateAVSession.ets) -->
+      
+      ``` TypeScript
+      import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+      // ...
+      
+      @Entry
+      @Component
+      struct Index {
+        @State message: string = 'hello world';
+        // ...
+      
+        build() {
+          Column() {
+            // ...
+            Text(this.message)
+              .onClick(async () => {
+                try {
+                  // 开始创建并激活媒体会话。
+                  // 创建session。
+                  let context = this.getUIContext().getHostContext() as Context;
+                  let type: AVSessionManager.AVSessionType = 'audio';
+                  let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+                  await session.activate();
+                  console.info(`session create done : sessionId : ${session.sessionId}`);
+                  // ...
+                } catch (err) {
+                  if (err) {
+                    console.error(`AVSession create Error: Code: ${err.code}, message: ${err.message}`);
+                    // ...
+                  }
+                }
+              })
+          }
+          .width('100%')
+          .height('100%')
+        }
+      }
+      ```
 
 2. 跟随媒体信息的变化，及时设置媒体会话信息。需要设置的媒体会话信息主要包括：
    - 媒体会话元数据AVMetadata。
