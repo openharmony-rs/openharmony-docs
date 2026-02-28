@@ -83,6 +83,7 @@
     - [@ohos.wallpaper (壁纸)](js-apis-wallpaper.md)
     - [@ohos.resourceschedule.systemload (性能功耗热融合档位)](js-apis-resourceschedule-systemload.md)
     - [@ohos.systemDateTime (系统时间、时区)](js-apis-date-time.md)
+    - [@ohos.intelligentScene (情景模式)](js-apis-intelligentScene.md)
     <!--Del-->
     - [@ohos.configPolicy (配置策略)(系统接口)](js-apis-configPolicy-sys.md)
     - [@ohos.settings (设置数据项名称)(系统接口)](js-apis-settings-sys.md)
@@ -91,7 +92,6 @@
     - [@ohos.wallpaper (壁纸)(系统接口)](js-apis-wallpaper-sys.md)
     - [@ohos.WallpaperExtensionAbility (WallpaperExtensionAbility)(系统接口)](js-apis-WallpaperExtensionAbility-sys.md)
     - [@ohos.systemTimer (系统定时器)(系统接口)](js-apis-system-timer-sys.md)
-    - [@ohos.intelligentScene (情景模式)](js-apis-intelligentScene.md)
     <!--DelEnd-->
   - 已停止维护的接口<!--basic-services-arkts-dep-->
     - [系统公共事件定义](common_event/commonEvent-definitions.md)
@@ -181,9 +181,9 @@
   - [打印服务错误码](errorcode-print.md)
   - [设置数据项错误码](errorcode-settings.md)
   - [划词服务错误码](errorcode-selection.md)
+  - [情景模式错误码](errorcode-intelligentScene.md)
   <!--Del-->
   - [锁屏服务错误码](errorcode-screenlock.md)
   - [设备证明错误码](errorcode-deviceAttest.md)
   - [智能语音错误码](errorcode-intelligentVoice.md)
-  - [情景模式错误码](errorcode-intelligentScene.md)
   <!--DelEnd-->
