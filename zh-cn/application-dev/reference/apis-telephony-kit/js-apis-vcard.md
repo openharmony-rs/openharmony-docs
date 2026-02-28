@@ -343,3 +343,25 @@ class EntryAbility extends UIAbility {
 }
 
 ```
+## VCardBuilderOptions
+
+VCard版本和编码信息。
+
+**系统能力**：SystemCapability.Telephony.CoreService
+
+| 名称         | 类型   | 必填 |    说明    |
+| ------------ | ------ | ---- | ---------- |
+| cardType     | [VCardType](#vcardtype11) |  否  | VCard版本类型 (默认值为VERSION_21)。     |
+| charset       | string |  否  | VCard编码类型（默认值为'UTF-8'）。     |
+
+## VCardType
+
+VCard版本类型。
+
+**系统能力**：SystemCapability.Telephony.CoreService
+
+| 名称            | 值   | 说明       |
+| --------------- | ---- | ---------- |
+| VERSION_21 | 0 | VCard2.1版本。 |
+| VERSION_30 | 1 | VCard3.0版本。 |
+| VERSION_40 | 2 | VCard4.0版本。 |
