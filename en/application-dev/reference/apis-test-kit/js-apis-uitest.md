@@ -6608,7 +6608,7 @@ All APIs provided in this class use a promise to return the result and must be i
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [[Component<sup>9+</sup>](#component9)](#on9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Component<sup>9+</sup>](#component9) instead.
 
 ### click<sup>(deprecated)</sup>
 
