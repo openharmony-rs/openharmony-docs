@@ -292,6 +292,42 @@
 
     <!-- @[setExtras](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/SetExtras.ets) -->
     
+    ``` TypeScript
+    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    // ...
+    
+    @Entry
+    @Component
+    struct Index {
+      @State message: string = 'hello world';
+      // ...
+    
+      build() {
+        Column() {
+          // ...
+          Text(this.message)
+            .onClick(async () => {
+              let context = this.getUIContext().getHostContext() as Context;
+              // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+              let type: AVSessionManager.AVSessionType = 'audio';
+              let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+              await session.setExtras({ extra: 'This is my custom media packet' }).then(() => {
+                console.info(`Set extras successfully`);
+                // ...
+              }).catch((err: BusinessError) => {
+                console.error(`Failed to set extras. Code: ${err.code}, message: ${err.message}`);
+                // ...
+              })
+              // ...
+            })
+        }
+        .width('100%')
+        .height('100%')
+      }
+    }
+    ```
+    
 6. 注册播控命令事件监听，便于响应用户通过媒体会话控制方，例如播控中心，下发的播控命令。
     
    在Session侧注册的监听分为`固定播控命令`和`高级播控事件`两种。
