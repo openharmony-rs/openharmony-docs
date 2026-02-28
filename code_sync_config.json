@@ -45988,5 +45988,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/web/web-crashpad.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebGetDmpFiles/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":45,
+						"name":"web_get_dmp_files",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
