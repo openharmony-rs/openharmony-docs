@@ -35,7 +35,7 @@ constructor()
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -55,7 +55,7 @@ constructor(pen: Pen)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -95,7 +95,7 @@ ArkTS-Sta: setMiterLimit(miter: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -132,7 +132,7 @@ ArkTS-Sta: getMiterLimit(): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -159,7 +159,7 @@ setImageFilter(filter: ImageFilter | null): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -213,7 +213,7 @@ getColorFilter(): ColorFilter | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -255,7 +255,7 @@ setColor(color: common2D.Color) : void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -293,7 +293,7 @@ ArkTS-Sta: setColor(alpha: int, red: int, green: int, blue: int): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -333,7 +333,7 @@ ArkTS-Sta: setColor(color: int): void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -356,11 +356,11 @@ setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceMa
 
 设置画笔的颜色以及标准色域，与[setColor](#setcolor)区别在于可以单独设置色域，适用于需要单独设置色域的场景。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -376,7 +376,7 @@ import { common2D, drawing, colorSpaceManager } from "@kit.ArkGraphics2D";
 
 const pen = new drawing.Pen();
 let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG);
-let color4f:common2D.Color4f = {alpha:1, red:0.5, green:0.4, blue:0.7};
+let color4f:common2D.Color4f = {alpha:1.0, red:0.5, green:0.4, blue:0.7};
 pen.setColor4f(color4f, colorSpace);
 ```
 
@@ -392,7 +392,7 @@ ArkTS-Sta: getColor(): common2D.Color | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -413,21 +413,23 @@ let colorGet = pen.getColor();
 
 ## getColor4f<sup>20+</sup>
 
-getColor4f(): common2D.Color4f
+ArkTS-Dyn: getColor4f(): common2D.Color4f
+
+ArkTS-Sta: getColor4f(): common2D.Color4f | undefined
 
 获取画笔的颜色，与[getColor](#getcolor12)的区别在于返回值类型为浮点数，适用于需要浮点数类型的场景。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
 
+**ArkTS-Sta起始版本：** 24
+
 **返回值：**
 
 | 类型           | 说明            |
 | -------------- | -------------- |
-|[common2D.Color4f](js-apis-graphics-common2D.md#color4f20) | 返回画笔的颜色。 |
+|ArkTS-Dyn: [common2D.Color4f](js-apis-graphics-common2D.md#color4f20)<br/>AtkTS-Sta:  [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) \| undefined | 返回画笔的颜色。获取失败时返回undefined。 |
 
 **示例：**
 
@@ -436,7 +438,7 @@ import { common2D, drawing, colorSpaceManager } from "@kit.ArkGraphics2D";
 
 const pen = new drawing.Pen();
 let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG);
-let color4f:common2D.Color4f = {alpha:1, red:0.5, green:0.4, blue:0.7};
+let color4f:common2D.Color4f = {alpha:1.0, red:0.5, green:0.4, blue:0.7};
 pen.setColor4f(color4f, colorSpace);
 let color = pen.getColor4f();
 ```
@@ -453,7 +455,7 @@ ArkTS-Sta: getHexColor(): int
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -485,7 +487,7 @@ ArkTS-Sta: setStrokeWidth(width: double) : void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -522,7 +524,7 @@ ArkTS-Sta: getWidth(): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -549,7 +551,7 @@ setAntiAlias(aa: boolean) : void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -584,7 +586,7 @@ isAntiAlias(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -613,7 +615,7 @@ ArkTS-Sta: setAlpha(alpha: int) : void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -650,7 +652,7 @@ ArkTS-Sta: getAlpha(): int
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -677,7 +679,7 @@ setColorFilter(filter: ColorFilter | null) : void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -726,7 +728,7 @@ setMaskFilter(filter: MaskFilter | null): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -792,7 +794,7 @@ setPathEffect(effect: PathEffect | null): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -858,7 +860,7 @@ setShaderEffect(shaderEffect: ShaderEffect | null): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -907,7 +909,7 @@ setShadowLayer(shadowLayer: ShadowLayer | null): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1001,7 +1003,7 @@ setBlendMode(mode: BlendMode) : void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1036,7 +1038,7 @@ setJoinStyle(style: JoinStyle): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1096,7 +1098,7 @@ getJoinStyle(): JoinStyle
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1150,7 +1152,7 @@ setCapStyle(style: CapStyle): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1210,7 +1212,7 @@ getCapStyle(): CapStyle
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1264,7 +1266,7 @@ setDither(dither: boolean) : void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1299,7 +1301,7 @@ getFillPath(src: Path, dst: Path): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1358,7 +1360,7 @@ reset(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
