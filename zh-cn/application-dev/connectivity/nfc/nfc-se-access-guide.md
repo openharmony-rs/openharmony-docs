@@ -38,7 +38,7 @@
 
 > **注意：**
 >
-> - 从API version 9之后的应用开发新增支持Stage模型，作为目前主推并长期演进的模型。
+> - 从API version 9之后的应用开发新增支持[Stage模型](../../application-models/ability-terminology.md#stage模型)，作为目前主推并长期演进的模型。
 > - 由于SE的安全级别较高，必须将构建模式设置为release进行打包，否则应用将无法正常运行。
 
 ```ts
