@@ -96,6 +96,18 @@ type CallState = call.CallState
 | [call.CallState](js-apis-call.md#callstate) | 通话状态码（去电过程仅通知CALL_STATE_OFFHOOK状态）。 |
 
 
+ ## CCallState<sup>23+</sup>
+ 	  	 
+type CCallState = call.CCallState
+
+运营商通话状态码。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+|       类型       |            说明             |
+| ---------------- | --------------------------- |
+| [call.CCallState](js-apis-call.md#ccallstate23) | 通话状态码（运营商通话状态码）。 |
+
 ## CardType
 
 type CardType = sim.CardType
@@ -1056,8 +1068,8 @@ SIM卡激活状态变化的监听，使用callback方式作为异步方法。
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| slotId   | number            | 否    | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
-|callback  | Callback&lt;boolean&gt;|否| 以callback形式返回结果。<br/>- true：激活。<br/>- false：未激活。|
+| slotId   | number            | 是    | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
+|callback  | Callback&lt;boolean&gt;|是| 以callback形式返回结果。<br/>- true：激活。<br/>- false：未激活。|
 
 **错误码：**
 
@@ -1132,9 +1144,11 @@ onCCallStateChange\(callback: Callback\<CCallStateInfo\>, options?: ObserverOpti
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
+**需要权限**：ohos.permission.MANAGE_CALL_FOR_DEVICES
+
 **参数：**
 
-|     名称            |         类型      | 必填 | 说明                                    |
+|     参数名            |         类型      | 必填 | 说明                                    |
 | ------------------- | ------------------| ---- | --------------------------------------- |
 | callback | Callback\<[CCallState](js-apis-call.md#ccallstate23)\> | 是   | 以callback形式异步返回结果。<br/>应用可获取到CCallState。<br/> |
 | options  | [ObserverOptions](#observeroptions11)                  | 否 | 电话相关事件订阅参数可选项。                |
@@ -1146,17 +1160,17 @@ onCCallStateChange\(callback: Callback\<CCallStateInfo\>, options?: ObserverOpti
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied                         |
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Service connection failed.                   |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error.                               |
+| 8800001  | Invalid parameter value.                     |
+| 8800002  | Service connection failed.                   |
+| 8800003  | System internal error.                       |
+| 8800999  | Unknown error.                               |
 
 **示例：**
 
 ```ts
 import { call } from '@kit.TelephonyKit';
 
-let callback: (data: call.CCallStateInfo) => void = (data: call.CCallStateInfo) => {
+let callback: (data: CCallStateInfo) => void = (data: CCallStateInfo) => {
     console.info("onCCallStateChange, data:" + JSON.stringify(data));
 }
 let options: observer.ObserverOptions = {
@@ -1169,17 +1183,19 @@ observer.onCCallStateChange(callback);
 
 ## observer.offCCallStateChange<sup>23+</sup>
 
-offCCallStateChange\(callback: Callback\<CCallStateInfo\>\): void
+offCCallStateChange\(callback?: Callback\<CCallStateInfo\>\): void
 
 取消三方应用监听运营商通话状态并获取通话号码，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
+**需要权限**：ohos.permission.MANAGE_CALL_FOR_DEVICES
+
 **参数：**
 
 |     名称            |         类型      | 必填 | 说明                                    |
 | ------------------- | ------------------| ---- | --------------------------------------- |
-| callback | Callback\<[CCallState](js-apis-call.md#ccallstate23)\> | 是   | 以callback形式异步返回结果。<br/>应用可获取到CCallState。<br/> |
+| callback | Callback\<[CCallState](js-apis-call.md#ccallstate23)\> | 否   | 以callback形式异步返回结果。<br/>应用可获取到CCallState。<br/> |
 
 **错误码：**
 
@@ -1188,17 +1204,17 @@ offCCallStateChange\(callback: Callback\<CCallStateInfo\>\): void
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied                         |
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Service connection failed.                   |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error.                               |
+| 8800001  | Invalid parameter value.                     |
+| 8800002  | Service connection failed.                   |
+| 8800003  | System internal error.                       |
+| 8800999  | Unknown error.                               |
 
 **示例：**
 
 ```ts
 import { call } from '@kit.TelephonyKit';
 
-let callback: (data: call.CCallStateInfo) => void = (data: call.CCallStateInfo) => {
+let callback: (data: CCallStateInfo) => void = (data: CCallStateInfo) => {
     console.info("onCCallStateChange, data:" + JSON.stringify(data));
 }
 
@@ -1251,6 +1267,18 @@ SIM卡类型和状态。
 | ------------------- | -------------------------------------- | ---- | ---- | -------- |
 | state               | [CallState](js-apis-call.md#callstate) | 否   | 否   | 通话类型。 |
 | number              | string                                 | 否   | 否   | 电话号码。 |
+
+
+ ## CCallStateInfo<sup>23+</sup>
+ 	  	 
+通话状态相关信息。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+|     名称            |                 类型                    | 只读 | 可选 | 说明     |
+| ------------------- | -------------------------------------- | ---- | ---- | -------- |
+| state               | [CCallState](js-apis-call.md#ccallstate23) | 否   | 否   | 通话类型。 |
+| telenumber              | string                                 | 否   | 否   | 电话号码。 |
 
 
 ## DataConnectionStateInfo<sup>11+</sup>
