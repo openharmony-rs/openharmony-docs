@@ -577,11 +577,11 @@ Sendable装饰器修饰的类与Observed装饰器修饰的类定义在同一个e
 
 <!-- @[initialize_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteItemInitialized.ets) -->     
 
-```ts
-// Index.ets: 在Index页面新增以下代码
+``` TypeScript
+// SoluteItemInitialized.ets
 import { taskpool } from '@kit.ArkTS'
 import { BusinessError } from '@kit.BasicServicesKit'
-import { SendableItem } from './sendable'
+import { SendableItem } from './Sendable'
 
 @Concurrent
 function createTask() {
