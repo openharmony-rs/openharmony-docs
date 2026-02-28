@@ -26,8 +26,6 @@ type BufferEncoding = 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' 
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 | 类型    | 说明                 |
 | ------- | -------------------- |
 | 'ascii' | 表示ascii格式。 |
@@ -51,8 +49,6 @@ alloc(size: number, fill?: string | FastBuffer | number, encoding?: BufferEncodi
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -94,8 +90,6 @@ allocUninitializedFromPool(size: number): FastBuffer
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -130,8 +124,6 @@ allocUninitialized(size: number): FastBuffer
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -163,8 +155,6 @@ byteLength(value: string | FastBuffer | TypedArray | DataView | ArrayBuffer | Sh
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -198,8 +188,6 @@ compare(buf1: FastBuffer | Uint8Array, buf2: FastBuffer | Uint8Array): -1 | 0 | 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -247,8 +235,6 @@ concat(list: FastBuffer[] | Uint8Array[], totalLength?: number): FastBuffer
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **参数：**
@@ -292,8 +278,6 @@ from(array: number[]): FastBuffer
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **参数：**
@@ -327,8 +311,6 @@ from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?:
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -374,8 +356,6 @@ from(buffer: FastBuffer | Uint8Array): FastBuffer
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -426,8 +406,6 @@ from(value: string, encoding?: BufferEncoding): FastBuffer
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -465,8 +443,6 @@ isBuffer(obj: Object): boolean
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -512,8 +488,6 @@ isEncoding(encoding: string): boolean
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -551,8 +525,6 @@ fastbuffer.transcode支持的编码：'ascii' | 'utf8' | 'utf16le'| 'ucs2' | 'la
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **参数：**
@@ -584,8 +556,6 @@ console.info("newBuf = " + newBuf.toString('ascii'));
 ### 属性
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -619,8 +589,6 @@ compare(target: FastBuffer | Uint8Array, targetStart?: number, targetEnd?: numbe
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -673,8 +641,6 @@ copy(target: FastBuffer| Uint8Array, targetStart?: number, sourceStart?: number,
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -726,8 +692,6 @@ entries(): IterableIterator&lt;[number,&nbsp;number]&gt;
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **返回值：**
 
 | 类型 | 说明 |
@@ -765,8 +729,6 @@ equals(otherBuffer: Uint8Array | FastBuffer): boolean
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -812,8 +774,6 @@ fill(value: string | FastBuffer | Uint8Array | number, offset?: number, end?: nu
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -864,8 +824,6 @@ includes(value: string | number | FastBuffer | Uint8Array, byteOffset?: number, 
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -906,8 +864,6 @@ indexOf(value: string | number | FastBuffer | Uint8Array, byteOffset?: number, e
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -944,8 +900,6 @@ keys(): IterableIterator&lt;number&gt;
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **返回值：**
 
 | 类型 | 说明 |
@@ -981,8 +935,6 @@ values(): IterableIterator&lt;number&gt;
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **返回值：**
 
@@ -1026,8 +978,6 @@ lastIndexOf(value: string | number | FastBuffer | Uint8Array, byteOffset?: numbe
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1064,8 +1014,6 @@ readBigInt64BE(offset?: number): bigint
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -1113,8 +1061,6 @@ readBigInt64LE(offset?: number): bigint
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1161,8 +1107,6 @@ readBigUInt64BE(offset?: number): bigint
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1207,8 +1151,6 @@ readBigUInt64LE(offset?: number): bigint
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -1256,8 +1198,6 @@ readDoubleBE(offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1301,8 +1241,6 @@ readDoubleLE(offset?: number): number
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -1348,8 +1286,6 @@ readFloatBE(offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1394,8 +1330,6 @@ readFloatLE(offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1439,8 +1373,6 @@ readInt8(offset?: number): number
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -1488,8 +1420,6 @@ readInt16BE(offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1533,8 +1463,6 @@ readInt16LE(offset?: number): number
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -1580,8 +1508,6 @@ readInt32BE(offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1626,8 +1552,6 @@ readInt32LE(offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1671,8 +1595,6 @@ readIntBE(offset: number, byteLength: number): number
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -1722,8 +1644,6 @@ readIntLE(offset: number, byteLength: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1770,8 +1690,6 @@ readUInt8(offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1816,8 +1734,6 @@ readUInt16BE(offset?: number): number
 从指定的`offset`处读取无符号的大端序16位整数。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1868,8 +1784,6 @@ readUInt16LE(offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1917,8 +1831,6 @@ readUInt32BE(offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1961,8 +1873,6 @@ readUInt32LE(offset?: number): number
 从指定的`offset`处的buf读取无符号的小端序32位整数。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2011,8 +1921,6 @@ readUIntBE(offset: number, byteLength: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2059,8 +1967,6 @@ readUIntLE(offset: number, byteLength: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2105,8 +2011,6 @@ subarray(start?: number, end?: number): FastBuffer
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **参数：**
@@ -2147,9 +2051,6 @@ swap16(): FastBuffer
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
-
 **返回值：**
 
 | 类型 | 说明 |
@@ -2186,9 +2087,6 @@ swap32(): FastBuffer
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
-
 
 **返回值：**
 
@@ -2227,9 +2125,6 @@ swap64(): FastBuffer
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
-
 **返回值：**
 
 | 类型 | 说明 |
@@ -2267,9 +2162,6 @@ toJSON(): Object
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
-
 **返回值：**
 
 | 类型 | 说明 |
@@ -2296,8 +2188,6 @@ toString(encoding?: string, start?: number, end?: number): string
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -2343,8 +2233,6 @@ write(str: string, offset?: number, length?: number, encoding?: string): number
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -2397,8 +2285,6 @@ writeBigInt64BE(value: bigint, offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2441,8 +2327,6 @@ writeBigInt64LE(value: bigint, offset?: number): number
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -2487,8 +2371,6 @@ writeBigUInt64BE(value: bigint, offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2531,8 +2413,6 @@ writeBigUInt64LE(value: bigint, offset?: number): number
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -2577,8 +2457,6 @@ writeDoubleBE(value: number, offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2622,8 +2500,6 @@ writeDoubleLE(value: number, offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2666,8 +2542,6 @@ writeFloatBE(value: number, offset?: number): number
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -2713,8 +2587,6 @@ writeFloatLE(value: number, offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2757,8 +2629,6 @@ writeInt8(value: number, offset?: number): number
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -2807,8 +2677,6 @@ writeInt16BE(value: number, offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2853,8 +2721,6 @@ writeInt16LE(value: number, offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2897,8 +2763,6 @@ writeInt32BE(value: number, offset?: number): number
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -2944,8 +2808,6 @@ writeInt32LE(value: number, offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2988,8 +2850,6 @@ writeIntBE(value: number, offset: number, byteLength: number): number
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3036,8 +2896,6 @@ writeIntLE(value: number, offset: number, byteLength: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -3081,8 +2939,6 @@ writeUInt8(value: number, offset?: number): number
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3136,8 +2992,6 @@ writeUInt16BE(value: number, offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -3183,8 +3037,6 @@ writeUInt16LE(value: number, offset?: number): number
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3232,8 +3084,6 @@ writeUInt32BE(value: number, offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -3276,8 +3126,6 @@ writeUInt32LE(value: number, offset?: number): number
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3322,8 +3170,6 @@ writeUIntBE(value: number, offset: number, byteLength: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 20
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -3367,8 +3213,6 @@ writeUIntLE(value: number, offset: number, byteLength: number): number
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
-
-**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
