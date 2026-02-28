@@ -247,6 +247,43 @@
    > **说明：**<br>
    > 通过dispatchSessionEvent方法设置的数据不会保存在会话对象或AVSession服务中。
     <!-- @[dispatchSessionEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/DispatchSessionEvent.ets) -->
+    
+    ``` TypeScript
+    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    // ...
+    
+    @Entry
+    @Component
+    struct Index {
+      @State message: string = 'hello world';
+      // ...
+    
+      build() {
+        Column() {
+          // ...
+          Text(this.message)
+            .onClick(async () => {
+              let context = this.getUIContext().getHostContext() as Context;
+              // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+              let type: AVSessionManager.AVSessionType = 'audio';
+              let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+              let eventName = 'dynamic_lyric';
+              await session.dispatchSessionEvent(eventName, { lyric: 'This is my lyric' }).then(() => {
+                console.info(`Dispatch session event successfully`);
+                // ...
+              }).catch((err: BusinessError) => {
+                console.error(`Failed to dispatch session event. Code: ${err.code}, message: ${err.message}`);
+                // ...
+              })
+              // ...
+            })
+        }
+        .width('100%')
+        .height('100%')
+      }
+    }
+    ```
 
 5. 设置与当前会话相关的自定义媒体数据包，以供媒体控制方接收到事件后进行相应的操作。
 
