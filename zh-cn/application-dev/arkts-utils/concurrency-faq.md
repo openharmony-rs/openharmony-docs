@@ -460,12 +460,13 @@ JS异常：TypeError: Cannot set sendable property with mismatched type
    <!-- @[define_resolveThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteMismatchTypeThree.ets) -->    
    
    ``` TypeScript
-   // Index.ets
+   // SoluteMismatchTypeThree.ets
    import { collections } from '@kit.ArkTS'
    
    @Sendable
    export class CollectionsArray extends collections.Array<string> {
      public ans: string = 'test';
+   
      constructor() {
        super();
      }
@@ -474,9 +475,10 @@ JS异常：TypeError: Cannot set sendable property with mismatched type
        this.ans = str;
      }
    }
+   
    let arr = new CollectionsArray();
-   arr.slice(1)
-   arr.set('success')
+   arr.slice(1);
+   arr.set('success');
    ```
 
 ### 新增属性异常
