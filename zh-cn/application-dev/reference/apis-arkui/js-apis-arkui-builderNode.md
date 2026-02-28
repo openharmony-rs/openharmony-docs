@@ -3513,7 +3513,7 @@ struct Index {
 
 > **说明：**
 >
-> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+> 从API version 23开始，支持跨BuilderNode配对\@Provider和\@Consumer。
 
 设置BuilderNode的[BuildOptions](#buildoptions12)中enableProvideConsumeCrossing为true，以实现BuilderNode内部自定义组件的@Consumer变量与所在自定义组件的@Provider装饰的状态变量双向同步。
 
@@ -3600,7 +3600,7 @@ struct AddChild {
 
 > **说明：**
 >
-> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+> 从API version 23开始，支持跨BuilderNode配对\@Provider和\@Consumer。
 
 该示例演示了BuilderNode挂载到组件树和从组件树卸载时，@Consumer与@Provider的同步关系变化。
 
@@ -3724,7 +3724,7 @@ struct TestRemove {
 
 > **说明：**
 >
-> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+> 从API version 23开始，支持跨BuilderNode配对\@Provider和\@Consumer。
 
 该示例演示了BuilderNode挂载到组件树后，再挂载到另一个组件树时，@Consumer与@Provider的同步关系变化。
 
@@ -3863,7 +3863,7 @@ struct ConsumerChild {
 
 > **说明：**
 >
-> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+> 从API version 23开始，支持跨BuilderNode配对\@Provider和\@Consumer。
 
 该示例演示了BuilderNode互相嵌套场景下@Consumer和@Provider的同步关系变化。
 
@@ -3988,7 +3988,7 @@ struct BuildNodeToBuildNodeChild {
 
 > **说明：**
 >
-> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+> 从API version 23开始，支持跨BuilderNode配对\@Provider和\@Consumer。
 
 该示例演示了当@Consumer所在的自定义组件在BuilderNode下且该自定义组件存在子组件时，@Consumer和@Provider之间的同步关系。
 
@@ -4137,7 +4137,7 @@ struct NestedComponentChildChld {
 
 > **说明：**
 >
-> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+> 从API version 23开始，支持跨BuilderNode配对\@Provider和\@Consumer。
 
 该示例演示了组件树为@Provider-@Consumer-BuilderNode-@Consumer的情况时，@Consumer和@Provider之间的同步关系。
 
@@ -4298,7 +4298,7 @@ struct NestedComponentChild {
 
 > **说明：**
 >
-> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+> 从API version 23开始，支持跨BuilderNode配对\@Provider和\@Consumer。
 
 该示例演示了组件树为@Provider-BuilderNode-@Provider-@Consumer的情况时，@Consumer和@Provider之间的同步关系。
 
