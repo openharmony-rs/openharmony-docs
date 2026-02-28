@@ -49,10 +49,12 @@
   - 开发体验好：界面也是代码，让开发者的编程体验得到提升。
 
 - 性能优越
+
   - 声明式UI前端和UI后端分层：UI后端采用C++语言构建，提供对应前端的基础组件、布局、动效、交互事件、组件状态管理和渲染管线。
   - 语言编译器和运行时的优化：统一字节码、高效FFI（Foreign Function Interface）、AOT（Ahead Of Time）、引擎极小化、类型优化等。
 
 - 生态容易快速推进
+
   能够借力主流语言生态快速推进，语言相对中立友好，有相应的标准组织可以逐步演进。
 
 
@@ -66,18 +68,23 @@
 
 
 - **声明式UI前端**
+
   提供了UI开发范式的基础语言规范，并提供内置的UI组件、布局和动画，提供了多种状态管理机制，为应用开发者提供一系列接口支持。
 
 - **语言运行时**
+
   选用方舟语言运行时，提供了针对UI范式语法的解析能力、跨语言调用支持的能力和TS语言高性能运行环境。
 
 - **声明式UI后端引擎**
+
   后端引擎提供了兼容不同开发范式的UI渲染管线，提供多种基础组件、布局计算、动效、交互事件，提供了状态管理和绘制能力。
 
 - **渲染引擎**
+
   提供了高效的绘制能力，将渲染管线收集的渲染指令，绘制到屏幕的能力。
 
 - **平台适配层**
+
   提供了对系统平台的抽象接口，具备接入不同系统的能力，如系统渲染管线、生命周期调度等。
 
 
@@ -102,7 +109,7 @@
 | 使用动画        | 介绍了组件和页面使用动画的典型场景。                  | - [属性动画](arkts-attribute-animation-overview.md)<br>- [转场动画](arkts-transition-overview.md)<br>- [粒子动画](arkts-particle-animation.md)<br>- [组件动画](arkts-component-animation.md)<br>- [动画曲线](arkts-traditional-curve.md)<br>- [动画衔接](arkts-animation-smoothing.md)<br>- [动画效果](arkts-blur-effect.md)<br>- [帧动画](arkts-animator.md) |
 | 使用自定义能力        | 介绍了自定义能力的基本概念和如何使用自定义能力。       | -&nbsp;[自定义组合](arkts-user-defined-composition.md)<br/>-&nbsp;[自定义节点](arkts-user-defined-node.md)<br/>-&nbsp;[自定义扩展](arkts-user-defined-modifier.md)|
 | UI国际化        | 介绍如何实现应用程序UI界面的国际化，包含资源配置和镜像布局。       | -&nbsp;[UI国际化](arkts-internationalization.md) |
-| 无障碍与适老化      | 介绍了无障碍和适老化的使用场景和使用方法。   | -&nbsp;[支持无障碍](arkts-universal-attributes-accessibility.md)<br/>-&nbsp;[支持适老化](arkui-support-for-aging-adaptation.md) |
+| 无障碍与适老化      | 介绍了无障碍和适老化的使用场景和使用方法。   | <!--RP1-->-&nbsp;[支持无障碍](arkts-universal-attributes-accessibility.md)<br/>-&nbsp;<!--RP1End-->[支持适老化](arkui-support-for-aging-adaptation.md) |
 | 主题设置       | 介绍了应用级和页面级的主题设置能力。       | -&nbsp;[应用深浅色适配](ui-dark-light-color-adaptation.md)<br/>-&nbsp;[设置应用内主题换肤](theme_skinning.md) |
 | UI系统场景化能力 | 介绍了如何使用UIContext中对应的接口获取与实例绑定的对象，以及全屏方式拉起原子化服务的方法。 | -&nbsp;[使用UI上下文接口操作界面](arkts-global-interface.md)<br/>- [全屏启动原子化服务组件](arkts-FullScreenComponent.md) |
 
