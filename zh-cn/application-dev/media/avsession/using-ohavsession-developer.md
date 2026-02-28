@@ -94,6 +94,11 @@ target_link_libraries(entry PUBLIC libohavsession.so)
    在不使用AVMetadata之后，开发者应该执行OH_AVMetadataBuilder_Destroy接口来销毁元数据，且不要继续使用。
    
    <!-- @[destroy_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   OH_AVMetadata_Destroy(ohMetadata);
+   OH_AVMetadataBuilder_Destroy(builder);
+   ```
 
 3. 跟随媒体播放状态的变化，及时更新媒体播放状态。
 
