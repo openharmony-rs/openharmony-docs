@@ -5877,7 +5877,7 @@ on(type: 'screenshotAppEvent', callback: Callback&lt;ScreenshotEventType&gt;): v
 
 开启屏幕截屏事件类型的监听。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -5918,7 +5918,7 @@ off(type: 'screenshotAppEvent', callback?: Callback&lt;ScreenshotEventType&gt;):
 
 关闭屏幕截屏事件类型的监听。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -6675,6 +6675,8 @@ on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): voi
 - 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
 - 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动悬浮窗时返回的下层窗口依然是可见的。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **ArkTS-Dyn起始版本：** 22
@@ -6714,6 +6716,8 @@ try {
 off(type: 'occlusionStateChanged', callback?: Callback&lt;OcclusionState&gt;): void
 
 关闭窗口可见性状态变化事件的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
