@@ -83,7 +83,7 @@ static query(name: string): AsyncLockState
 
 | 类型                               | 说明                            |
 | --------------------------------- | ------------------------------- |
-| [AsyncLockState](#asynclockstate) | 一个包含状态描述的异步锁状态实例。 |
+| [AsyncLockState](#asynclockstate) | 一个包含状态描述的异步锁状态实例。查询不存在的锁会抛出Error，错误信息示例：AsyncLock:: Lock 'lockName' not found。|
 
 **示例：**
 
@@ -91,11 +91,14 @@ static query(name: string): AsyncLockState
 // 你已经在别的地方创建了一个锁。
 // let lock = AsyncLock.request("queryTestLock");
 let state = AsyncLock.query("queryTestLock");
-if (!state) {
-  throw new Error("测试失败：期望有效的状态，但得到的是 " + state);
-}
 let pending: AsyncLockInfo[] = state.pending;
 let held: AsyncLockInfo[] = state.held;
+
+try {
+  AsyncLock.query("notExistLock");
+} catch (e) {
+  console.info("query failed: " + e);
+}
 ```
 
 ### queryAll
@@ -181,7 +184,7 @@ let p1 = lock.lockAsync<void>(() => {
 
 lockAsync\<T, U>(callback: AsyncLockCallback\<T>, mode: AsyncLockMode, options: AsyncLockOptions\<U>): Promise\<T>
 
-在获取的锁下执行操作。该方法首先获取锁，然后调用回调，最后释放锁。回调在调用[lockAsync](#lockasync)的同一线程中以异步方式执行。在[AsyncLockOptions](#asynclockoptionst)中可以提供一个可选的超时值。在这种情况下，如果超时前未能获取锁，lockAsync将拒绝返回的Promise并带上一个Error实例，携带超时异常信息。使用Promise异步回调。
+在获取的锁下执行操作。该方法首先获取锁，然后调用回调，最后释放锁。回调在调用[lockAsync](#lockasync)的同一线程中以异步方式执行。通过[AsyncLockOptions](#asynclockoptionst)可配置非阻塞模式（isAvailable）、取消信号（signal）和超时（timeout）。锁不可立即获取且isAvailable为true时会立即拒绝。等待期间若signal.aborted为true或超过timeout，返回的Promise会被拒绝。使用Promise异步回调。
 
 **参数：**
 
@@ -256,15 +259,15 @@ lock.lockAsync(async () => {
 
 ## AsyncLockOptions\<T>
 
-表示锁操作选项的类。
+表示[lockAsync](#lockasync-2)参数的配置项，用于控制锁请求的等待策略（非阻塞、取消、超时）。
 
 ### 属性
 
-| 参数名      | 类型                                  | 只读 | 可选 | 说明                                                                                                                                                                 |
-| ----------- | ------------------------------------- | ---- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| isAvailable | boolean                               | 否   | 否   | 当前锁是否可用。取值为true，则只有在尚未持有锁定请求时才会授予该锁定请求；为false则表示将等待当前锁被释放。默认为 false。                                            |
-| signal      | [AbortSignal\<T>](#abortsignalt) \| null | 否   | 否   | 用于中止异步操作的对象。当signal.aborted 为true时，锁请求将被丢弃；当signal.aborted为false时，请求会继续等待获取锁；当signal为null时，请求正常排队运行。默认为null。 |
-| timeout     | int                                | 否   | 否   | 锁操作的超时时间（毫秒）。如果该值大于零，且运行超过该时间，[lockAsync](#lockasync)将返回被拒绝的Promise。默认为0。                                                 |
+| 名称        | 类型                                  | 只读 | 可选 | 说明                                                                                                                                      |
+| ----------- | ------------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| isAvailable | boolean                               | 否   | 否   | 是否启用非阻塞尝试开锁（try-lock）模式。默认值为false。<br/>false：锁不可用时进入等待。<br/>true：锁不可立即获取时直接拒绝，不阻塞等待。 |
+| signal      | [AbortSignal\<T>](#abortsignalt) \| null | 否   | 否   | 取消信号。默认值为null。<br/>为null时不支持取消。<br/>传入AbortSignal后，当signal.aborted为true时请求会被取消，Promise被拒绝。            |
+| timeout     | int                                   | 否   | 否   | 锁请求最大等待时长（毫秒）。默认值为0。<br/>0表示不设置超时。<br/>大于0表示超过该时长仍未获取到锁时超时拒绝。                            |
 
 ### constructor
 
@@ -275,31 +278,30 @@ constructor()
 **示例：**
 
 ```ts
-let s: AbortSignal<string> = { aborted: false, reason: "Aborted" };
 let options = new AsyncLockOptions<string>();
-options.isAvailable = false;
-options.signal = s;
+options.isAvailable = true;
+options.timeout = 1000;
 ```
 
 ### constructor
 
 constructor(isAvailable: boolean, signal: AbortSignal\<T> | null, timeout: int)
 
-有参构造函数。根据输入参数创建异步锁配置项实例。
+有参构造函数。按顺序设置非阻塞模式、取消信号和超时配置。
 
 **参数：**
 
-| 参数名      | 类型                                    | 必填 | 说明                      |
-| ----------- | --------------------------------------- | ---- | ------------------------ |
-| isAvailable | boolean                                 | 是   | 当前锁是否可用。取值为true，则只有在尚未持有锁定请求时才会授予该锁定请求；为false则表示将等待当前锁被释放。           |
-| signal      | [AbortSignal\<T>](#abortsignalt) \| null | 是   | 用于中止异步操作的对象。当signal.aborted 为true时，锁请求将被丢弃；当signal.aborted为false时，请求会继续等待获取锁；当signal为null时，请求正常排队运行。   |
-| timeout     | int                                  | 是   | 锁操作的超时时间（毫秒）。如果该值大于零，且运行超过该时间，[lockAsync](#lockasync)将返回被拒绝的Promise。 |
+| 参数名      | 类型                                    | 必填 | 说明                                                  |
+| ----------- | --------------------------------------- | ---- | ----------------------------------------------------- |
+| isAvailable | boolean                                 | 是   | 是否使用非阻塞尝试开锁模式。                           |
+| signal      | [AbortSignal\<T>](#abortsignalt) \| null | 是   | 取消信号；传null表示不启用取消。                       |
+| timeout     | int                                     | 是   | 最大等待时长（毫秒）。0表示无超时限制，大于0表示启用超时。 |
 
 **示例：**
 
 ```ts
 let s: AbortSignal<string> = { aborted: false, reason: "Aborted" };
-let options = new AsyncLockOptions<string>(false, s, 0);
+let options = new AsyncLockOptions<string>(false, s, 3000);
 ```
 
 ## AsyncLockState
@@ -333,5 +335,5 @@ let options = new AsyncLockOptions<string>(false, s, 0);
 
 | 名称    | 类型    | 只读 | 可选 | 说明                                                                          |
 | ------- | ------- | ---- | ---- | --------------------------------------------------------------------------- |
-| aborted | boolean | 否   | 否   | 锁请求终止标志。设置为true时，锁请求将被丢弃；设置为false时，请求会继续等待获取锁。|
+| aborted | boolean | 否   | 否   | 锁请求中止标志。设置为true时，锁请求将被丢弃；设置为false时，请求会继续等待获取锁。|
 | reason  | T       | 否   | 否   | 中止的原因。此值将用于拒绝[lockAsync](#lockasync)返回的Promise。                |
