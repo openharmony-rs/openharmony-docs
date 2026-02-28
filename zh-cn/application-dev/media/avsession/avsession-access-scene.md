@@ -263,6 +263,50 @@ struct Index {
 
 <!-- @[settingGeneralStateInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingGeneralStateInformation.ets) -->
 
+``` TypeScript
+import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+  // ...
+
+  build() {
+    Column() {
+      // ...
+      Text(this.message)
+        .onClick(async () => {
+          let context = this.getUIContext().getHostContext() as Context;
+          // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', 'audio');
+
+          // 播放器逻辑··· 引发媒体信息与播放状态的变更。
+          // 简单设置一个播放状态 - 暂停 未收藏。
+          let playbackState: AVSessionManager.AVPlaybackState = {
+            state: AVSessionManager.PlaybackState.PLAYBACK_STATE_PAUSE,
+            isFavorite: false
+          };
+          session.setAVPlaybackState(playbackState, (err: BusinessError) => {
+            if (err) {
+              console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
+              // ...
+            } else {
+              console.info(`SetAVPlaybackState successfully`);
+              // ...
+            }
+          });
+          // ...
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ### 进度条
 
 应用如果支持在播控中心展示进度，那么在媒体资源播放中，需要设置资源的时长、播放状态（暂停、播放）、播放位置、倍速，播控中心会使用这些信息进行进度的展示：
