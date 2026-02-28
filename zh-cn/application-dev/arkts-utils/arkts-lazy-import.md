@@ -553,6 +553,9 @@ struct Index {
 工具筛选出冗余文件后，开发者可在引入时添加`lazy`关键字，标记文件可延迟加载。
 
 ```javascript
+// A.ets
+export let A = "A";
+
 // 此处添加lazy关键字，标记该文件可延迟加载
 import lazy { A } from "./A";
 
