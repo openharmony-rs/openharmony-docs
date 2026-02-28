@@ -59,64 +59,65 @@ PageAbility生命周期回调与生命周期状态的关系如下图所示。
 
 下面通过一个完整的示例展示FA模型PageAbility生命周期的使用。
 
-1. 实现Ability生命周期回调
+1. app.ets中实现Ability生命周期回调。
 
     ```ts
     // app.ets示例代码如下：
     import commonEvent from '@ohos.commonEvent';
-    import Base from '@ohos.base';
+    import { BusinessError } from '@kit.BasicServicesKit';
 
-    const printLog = "Fa:MainAbility:";
+    const TAG = "Fa:MainAbility:";
     const listPush = "Fa_MainAbility_";
 
     class Test {
       onCreate() {
-        console.info(printLog + 'onCreate');
+        console.info(TAG, `onCreate`);
       }
 
       onDestroy() {
-        console.info(printLog + 'onDestroy');
+        console.info(TAG, `onDestroy`);
         // 发送事件通知Ability已销毁
-        commonEvent.publish("Fa_MainAbility_onDestroy", (err: Base.BusinessError) => {
-          console.info(printLog + listPush + "onDestroy" + JSON.stringify(err));
+        commonEvent.publish("Fa_MainAbility_onDestroy", (err: BusinessError) => {
+          console.info(TAG, listPush, `onDestroy`, `err: ${JSON.stringify(err)}`);
         });
       }
 
       onActive() {
-        console.info(printLog + 'onActive');
+        console.info(TAG, `onActive`);
       }
 
       onInactive() {
-        console.info(printLog + 'onInactive');
+        console.info(TAG, `onInactive`);
       }
 
       onShow() {
-        console.info(printLog + 'onShow');
+        console.info(TAG, `onShow`);
       }
 
       onHide() {
-        console.info(printLog + 'onHide');
+        console.info(TAG, `onHide`);
       }
 
       onContinue(wantParam: Record<string, Object>) {
-        console.info(printLog + 'onContinue');
+        console.info(TAG, `onContinue`);
         return true;
       }
 
       onNewWant(want: Record<string, Object>, launchParam: Record<string, number>) {
-        console.info(printLog + 'onNewWant');
+        console.info(TAG, `onNewWant`);
       }
     }
 
     export default new Test()
     ```
 
-2. 页面提供一个"terminateSelf"按钮，点击后调用`terminateSelf`接口关闭Ability，从而触发`onDestroy`生命周期回调。
+2. Index.ets页面提供一个"terminateSelf"按钮，点击后调用[featureAbility.terminateSelf](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilityterminateself7-1
+)接口关闭Ability，从而触发`onDestroy`生命周期回调。
 
     ```ts
     // Index.ets示例代码如下：
     import ability_featureAbility from '@ohos.ability.featureAbility';
-    import Base from '@ohos.base';
+    import { BusinessError } from '@kit.BasicServicesKit';
 
     @Entry
     @Component
@@ -125,11 +126,11 @@ PageAbility生命周期回调与生命周期状态的关系如下图所示。
 
       // 点击terminateSelf按钮关闭自己
       terminateSelf() {
-        console.info('Index: terminateSelf called');
+        console.info(`Index: terminateSelf called`);
         ability_featureAbility.terminateSelf().then((data) => {
-          console.info('Index: terminateSelf success data = ' + JSON.stringify(data));
-        }).catch((err: Base.BusinessError) => {
-          console.info('Index: terminateSelf err = ' + JSON.stringify(err));
+          console.info(`Index: terminateSelf success data = : ${JSON.stringify(data)}`);
+        }).catch((err: BusinessError) => {
+          console.info(`Index: terminateSelf err = ${JSON.stringify(err)}`);
         });
       }
 
@@ -173,5 +174,5 @@ PageAbility生命周期回调与生命周期状态的关系如下图所示。
     | onDestroy | Ability被销毁前 | 回收资源、清空缓存 |
 
     通过运行上述示例，开发者可以观察到完整的生命周期回调流程：
-    - 应用启动时依次调用：`onCreate` → `onShow` → `onActive`
+    - 应用启动时依次调用：`onCreate` → `onActive`
     - 点击按钮调用`terminateSelf`后依次调用：`onInactive` → `onHide` → `onDestroy`
