@@ -1367,7 +1367,7 @@ getInspectorInfo(): Object
 | Object | 节点的结构信息。 |
 
 以查询[Button](arkui-ts/ts-basic-components-button.md)组件节点为例获取到的Object结果部分值如下。
-```json
+```json5
 {
     "$type": "Button",
     "$ID": 44,
@@ -2574,7 +2574,7 @@ struct Index {
     if (isOnRenderTree) {
       hilog.info(1, 'frameNode', 'is on render tree');
     } else {
-      hilog.info(1, 'frameNode', 'is not no render tree');
+      hilog.info(1, 'frameNode', 'is not on render tree');
     }
   }
 
@@ -2608,7 +2608,7 @@ struct Index {
         let textNode1 = this.getUIContext().getFrameNodeById("hello1");
         if (textNode1 != null) {
           let isOnRenderTree = textNode1!.isInRenderState();
-          isOnRenderTree ? this.message = 'is on render tree' : 'is not no render tree'
+          isOnRenderTree ? this.message = 'is on render tree' : 'is not on render tree'
           hilog.info(1, 'frameNode', 'is hello1 on RenderTree: %{public}s', isOnRenderTree);
         }
       })
