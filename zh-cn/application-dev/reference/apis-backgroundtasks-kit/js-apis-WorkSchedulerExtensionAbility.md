@@ -49,7 +49,7 @@ onWorkStart(work: workScheduler.WorkInfo): void
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**参数：**
 
 | 参数名  | 类型                                       | 必填   | 说明             |
 | ---- | ---------------------------------------- | ---- | -------------- |
@@ -77,7 +77,7 @@ onWorkStop(work: workScheduler.WorkInfo): void
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**参数：**
 
 | 参数名  | 类型                                       | 必填   | 说明             |
 | ---- | ---------------------------------------- | ---- | -------------- |
