@@ -5662,6 +5662,7 @@ ArkTS-Sta: getAllBundleInstallInfo(): Promise\<Array\<Record\<string, RecordData
 | 202 | Permission denied, non-system app called system api. |
 
 **示例：**
+
 ArkTS-Dyn:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
@@ -5679,6 +5680,7 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllBundleInstallInfo failed. Cause: %{public}s', message);
 }
 ```
+
 ArkTS-Sta:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
