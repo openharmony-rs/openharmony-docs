@@ -2103,7 +2103,7 @@ setTitleAndDockHoverShown(isTitleHoverShown?: boolean, isDockHoverShown?: boolea
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2496,7 +2496,7 @@ setWindowDelayRaiseOnDrag(isEnabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7585,7 +7585,7 @@ on(type: 'windowTitleButtonRectChange', callback: Callback&lt;TitleButtonRect&gt
 
 **ArkTS模式：** 该接口仅适用ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowTitleButtonRectChange](#onwindowtitlebuttonrectchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowTitleButtonRectChange](#onwindowtitlebuttonrectchange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7624,7 +7624,7 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 })
 ```
 
-## onWindowTitleButtonRectChange<sup>22+</sup>
+## onWindowTitleButtonRectChange<sup>23+</sup>
 
 onWindowTitleButtonRectChange(callback: Callback&lt;TitleButtonRect&gt;): void
 
@@ -7636,7 +7636,7 @@ onWindowTitleButtonRectChange(callback: Callback&lt;TitleButtonRect&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7677,7 +7677,7 @@ off(type: 'windowTitleButtonRectChange', callback?: Callback&lt;TitleButtonRect&
 
 **ArkTS模式：** 该接口仅适用ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowTitleButtonRectChange](#offwindowtitlebuttonrectchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowTitleButtonRectChange](#offwindowtitlebuttonrectchange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7722,7 +7722,7 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 })
 ```
 
-## offWindowTitleButtonRectChange<sup>22+</sup>
+## offWindowTitleButtonRectChange<sup>23+</sup>
 
 offWindowTitleButtonRectChange(callback?: Callback&lt;TitleButtonRect&gt;): void
 
@@ -7734,7 +7734,7 @@ offWindowTitleButtonRectChange(callback?: Callback&lt;TitleButtonRect&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7781,7 +7781,7 @@ on(type:  'windowRectChange', callback: Callback&lt;RectChangeOptions&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowRectChange](#onwindowrectchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowRectChange](#onwindowrectchange23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -7819,7 +7819,7 @@ try {
 }
 ```
 
-## onWindowRectChange<sup>22+</sup>
+## onWindowRectChange<sup>23+</sup>
 
 onWindowRectChange(callback: Callback&lt;RectChangeOptions&gt;): void
 
@@ -7831,7 +7831,7 @@ onWindowRectChange(callback: Callback&lt;RectChangeOptions&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7870,7 +7870,7 @@ off(type: 'windowRectChange', callback?: Callback&lt;RectChangeOptions&gt;): voi
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowRectChange](#offwindowrectchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowRectChange](#offwindowrectchange23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -7913,7 +7913,7 @@ try {
 }
 ```
 
-## offWindowRectChange<sup>22+</sup>
+## offWindowRectChange<sup>23+</sup>
 
 offWindowRectChange(callback?: Callback&lt;RectChangeOptions&gt;): void
 
@@ -7925,7 +7925,7 @@ offWindowRectChange(callback?: Callback&lt;RectChangeOptions&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8212,9 +8212,9 @@ onSubWindowClose(callback: Callback&lt;void&gt;): void
 
 当重复注册窗口关闭事件的监听时，最后一次注册成功的监听事件生效。
 
-该接口触发的窗口关闭事件监听回调函数是同步执行，子窗口的异步关闭事件监听参考[onWindowWillClose](#onwindowwillclose22)方法。
+该接口触发的窗口关闭事件监听回调函数是同步执行，子窗口的异步关闭事件监听参考[onWindowWillClose](#onwindowwillclose23)方法。
 
-如果存在[onWindowWillClose](#onwindowwillclose22)监听事件，只响应[onWindowWillClose](#onwindowwillclose22)接口。
+如果存在[onWindowWillClose](#onwindowwillclose23)监听事件，只响应[onWindowWillClose](#onwindowwillclose23)接口。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -8361,7 +8361,7 @@ on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&g
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowWillClose](#onwindowwillclose22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowWillClose](#onwindowwillclose23)。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -8422,7 +8422,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## onWindowWillClose<sup>22+</sup>
+## onWindowWillClose<sup>23+</sup>
 
 onWindowWillClose(callback: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
 
@@ -8438,7 +8438,7 @@ onWindowWillClose(callback: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8496,7 +8496,7 @@ off(type: 'windowWillClose', callback?: Callback&lt;void, Promise&lt;boolean&gt;
 
 **ArkTS模式：** 该接口仅适用ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowWillClose](#offwindowwillclose22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowWillClose](#offwindowwillclose23)。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -8560,7 +8560,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## offWindowWillClose<sup>22+</sup>
+## offWindowWillClose<sup>23+</sup>
 
 offWindowWillClose(callback?: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
 
@@ -8574,7 +8574,7 @@ offWindowWillClose(callback?: Callback&lt;void, Promise&lt;boolean&gt;&gt;): voi
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -11228,7 +11228,7 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -11295,7 +11295,7 @@ minimize(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -11354,7 +11354,7 @@ maximize(presentation?: MaximizePresentation): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -11452,7 +11452,7 @@ setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -11518,7 +11518,7 @@ setResizeByDragEnabled(enable: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -11594,7 +11594,7 @@ recover(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -11891,7 +11891,7 @@ getWindowLimits(): WindowLimits
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -11945,7 +11945,7 @@ setWindowLimits(windowLimits: WindowLimits): Promise&lt;WindowLimits&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12040,7 +12040,7 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;Win
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12379,7 +12379,7 @@ setWindowDecorVisible(isVisible: boolean): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12471,7 +12471,7 @@ getWindowDecorVisible(): boolean
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -12536,7 +12536,7 @@ setWindowTitle(titleName: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12616,7 +12616,7 @@ setWindowTitleMoveEnabled(enabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12926,7 +12926,7 @@ ArkTS-Sta: setWindowDecorHeight(height: int): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12995,7 +12995,7 @@ setDecorButtonStyle(dectorStyle: DecorButtonStyle): void
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -13099,7 +13099,7 @@ getDecorButtonStyle(): DecorButtonStyle
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -13159,7 +13159,7 @@ ArkTS-Sta: getWindowDecorHeight(): int
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -13217,7 +13217,7 @@ getTitleButtonRect(): TitleButtonRect
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -13498,7 +13498,7 @@ ArkTS-Sta: setParentWindow(windowId: int): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -13626,7 +13626,7 @@ setWindowTitleButtonVisible(isMaximizeButtonVisible: boolean, isMinimizeButtonVi
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -13734,7 +13734,7 @@ setWindowTopmost(isWindowTopmost: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
@@ -14417,7 +14417,7 @@ startMoving(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -14562,7 +14562,7 @@ ArkTS-Sta: startMoving(offsetX: int, offsetY: int): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -14699,7 +14699,7 @@ stopMoving(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -15009,7 +15009,7 @@ ArkTS-Sta: setWindowShadowRadius(radius: double): void
 
 **ArkTS-Dyn起始版本：** 17
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -15062,7 +15062,7 @@ ArkTS-Sta: setWindowCornerRadius(cornerRadius: double): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 17
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -15122,7 +15122,7 @@ ArkTS-Sta: getWindowCornerRadius(): double
 
 **ArkTS-Dyn起始版本：** 17
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -15322,7 +15322,7 @@ setFollowParentMultiScreenPolicy(enabled: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 17
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
