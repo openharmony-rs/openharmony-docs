@@ -57,6 +57,40 @@ target_link_libraries(entry PUBLIC libohavsession.so)
  
    <!-- @[construct_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->
    
+   ``` C++
+   //创建OH_AVMetadataBuilder构造器。
+   OH_AVMetadataBuilder* builder;
+   OH_AVMetadataBuilder_Create(&builder);
+       
+   OH_AVMetadata* ohMetadata;
+   OH_AVMetadataBuilder_SetTitle(builder, "Anonymous title");
+   OH_AVMetadataBuilder_SetArtist(builder, "Anonymous artist");
+   OH_AVMetadataBuilder_SetAuthor(builder, "Anonymous author");
+   OH_AVMetadataBuilder_SetAlbum(builder, "Anonymous album");
+   OH_AVMetadataBuilder_SetWriter(builder, "Anonymous writer");
+   OH_AVMetadataBuilder_SetComposer(builder, "Anonymous composer");
+   OH_AVMetadataBuilder_SetDuration(builder, DURATION_TIME);
+   // MediaImageUri只支持网络地址。
+   OH_AVMetadataBuilder_SetMediaImageUri(builder, "https://xxx.xxx.xx");
+   OH_AVMetadataBuilder_SetSubtitle(builder, "Anonymous subtitle");
+   OH_AVMetadataBuilder_SetDescription(builder, "For somebody");
+   // Lyric只支持媒体歌词内容（应用需将歌词内容拼接为一个字符串传入）。
+   OH_AVMetadataBuilder_SetLyric(builder, "balabala");
+   OH_AVMetadataBuilder_SetAssetId(builder, "000");
+   OH_AVMetadataBuilder_SetSkipIntervals(builder, SECONDS_30);
+   OH_AVMetadataBuilder_SetDisplayTags(builder,  AVSESSION_DISPLAYTAG_AUDIO_VIVID);
+   
+   /**
+    * generate an AVMetadata 构造AVMetadata对象
+    */
+   OH_AVMetadataBuilder_GenerateAVMetadata(builder, &ohMetadata);
+       
+   /**
+    * set AVMetadata 设置AVMetadata对象
+    */
+   OH_AVSession_SetAVMetadata(avsession, ohMetadata);
+   ```
+   
    在不使用AVMetadata之后，开发者应该执行OH_AVMetadataBuilder_Destroy接口来销毁元数据，且不要继续使用。
    
    <!-- @[destroy_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->
