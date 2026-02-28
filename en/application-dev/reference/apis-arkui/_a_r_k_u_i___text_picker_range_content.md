@@ -1,0 +1,45 @@
+# ARKUI_TextPickerRangeContent
+
+
+## Overview
+
+Defines the image resource struct for the single-column text picker.
+
+**Since**: 12
+
+**Related module**: [ArkUI_NativeModule](_ark_u_i___native_module.md)
+
+**Header file**: [native_type.h](native__type_8h.md)
+
+## Summary
+
+
+### Member Variables
+
+| Name| Description| 
+| -------- | -------- |
+| const char \* [icon](#icon) | Image resource. | 
+| const char \* [text](#text) | Text information. | 
+
+
+## Member Variable Description
+
+
+### icon
+
+```
+const char* ARKUI_TextPickerRangeContent::icon
+```
+**Description**
+
+Image resource.
+
+
+### text
+
+```
+const char* ARKUI_TextPickerRangeContent::text
+```
+**Description**
+
+Text information.
