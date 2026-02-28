@@ -38,9 +38,7 @@
 
 实际上，AVSessionManager与AVSession、AVSessionController对象不同，并不是一个具体的对象，它是媒体会话的根命名域。在实际编程过程中，可以通过如下方式引入：
 
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-```
+<!-- @[avSession_manager_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/LocalAVSessionOverview/entry/src/main/ets/pages/Index.ets) -->
 
 根命名域中的所有方法都可以作为AVSessionManager的方法。
 
@@ -50,29 +48,7 @@ import { avSession as AVSessionManager } from '@kit.AVSessionKit';
 >
 > 以下示例代码仅展示创建AVSession对象的接口调用，应用在真正使用时，需要确保AVSession对象实例在应用后台播放业务活动期间一直存在，避免被系统回收、释放，导致后台发声时被系统管控。
  
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          // 创建session。
-          let context = this.getUIContext().getHostContext() as Context;
-          let session: AVSessionManager.AVSession = await AVSessionManager.createAVSession(context, 'SESSION_NAME', 'audio');
-          console.info(`session create done : sessionId : ${session.sessionId}`);
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+<!-- @[avSession_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/LocalAVSessionOverview/entry/src/main/ets/pages/Index.ets) -->
 <!--Del-->
 例如，媒体会话控制方通过AVSessionManager创建媒体会话控制器的示例如下所示：
 
