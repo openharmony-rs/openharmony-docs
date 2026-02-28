@@ -1621,8 +1621,8 @@ Check kernel permission compression failed.
 
 **可能原因**
 
-1. 模块的module.json中配置了executableBinaryPaths字段（表示模块具有内核权限）。
-2. 同时compressNativeLibs和extractNativeLibs两个配置项的值都为false。
+1. 模块的[module.json5](../quick-start/module-configuration-file.md)中配置了executableBinaryPaths字段（表示模块具有内核权限）。
+2. compressNativeLibs和extractNativeLibs两个配置项的值都为false。
 
 **处理步骤**
 
