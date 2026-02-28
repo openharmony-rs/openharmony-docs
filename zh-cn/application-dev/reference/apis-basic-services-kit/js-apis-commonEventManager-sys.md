@@ -35,7 +35,7 @@ ArkTS-Sta: publishAsUser(event: string, userId: int, callback: AsyncCallback\<vo
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -118,7 +118,7 @@ ArkTS-Sta: publishAsUser(event: string, userId: int, options: CommonEventPublish
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -212,7 +212,7 @@ removeStickyCommonEvent(event: string, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -276,7 +276,7 @@ removeStickyCommonEvent(event: string): Promise\<void>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -341,7 +341,7 @@ setStaticSubscriberState(enable: boolean, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -403,7 +403,7 @@ setStaticSubscriberState(enable: boolean): Promise\<void>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 

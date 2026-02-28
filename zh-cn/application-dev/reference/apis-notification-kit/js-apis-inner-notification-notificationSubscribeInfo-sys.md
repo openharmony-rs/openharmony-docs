@@ -17,8 +17,8 @@
 
 | 名称                 | 类型                  | 只读 | 可选 | 说明                                       |
 | -------------------- | --------------------- | ---- | --- | ------------------------------------------ |
-| bundleNames          | Array<string\>         | 否 | 是 | 应用Bundle名称。 不传递该参数时，默认订阅所有应用的通知。<br/> **ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20      |
-| userId               | ArkTS-Dyn: number <br/>ArkTS-Sta: int     | 否 | 是  | 用户ID。不传递该参数时，默认订阅所有用户ID的通知。<br/> **ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20    |
-| deviceType<sup>12+</sup>           | string                | 否 | 是 | 设备类型。根据[设备信息](../apis-basic-services-kit/js-apis-device-info.md)获取。<br/> **ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：20   |
-| slotTypes<sup>18+</sup>   | Array<[notificationManager.SlotType](js-apis-notificationManager.md#slottype)\>| 否 | 是 | 通知渠道类型。不传递该参数时，默认订阅所有渠道类型的通知。<br/> **ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：20 |
-| filterLimit<sup>18+</sup>   | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 是 | 通知过滤范围。取值范围包括：<br>- 0：不进行任何过滤，订阅全部通知。 <br>- 1：将渠道类型为[SOCIAL_COMMUNICATION](js-apis-notificationManager.md#slottype)且[userInput](js-apis-inner-notification-notificationActionButton.md#属性)为空的通知过滤掉。<br>- 2：将渠道类型为[SOCIAL_COMMUNICATION](js-apis-notificationManager.md#slottype)且[userInput](js-apis-inner-notification-notificationActionButton.md#属性)不为空的通知过滤掉。<br/> **ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：20 |
+| bundleNames          | Array<string\>         | 否 | 是 | 应用Bundle名称。 不传递该参数时，默认订阅所有应用的通知。<br/> **ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23      |
+| userId               | ArkTS-Dyn: number <br/>ArkTS-Sta: int     | 否 | 是  | 用户ID。不传递该参数时，默认订阅所有用户ID的通知。<br/> **ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23    |
+| deviceType<sup>12+</sup>           | string                | 否 | 是 | 设备类型。根据[设备信息](../apis-basic-services-kit/js-apis-device-info.md)获取。<br/> **ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23   |
+| slotTypes<sup>18+</sup>   | Array<[notificationManager.SlotType](js-apis-notificationManager.md#slottype)\>| 否 | 是 | 通知渠道类型。不传递该参数时，默认订阅所有渠道类型的通知。<br/> **ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| filterLimit<sup>18+</sup>   | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 是 | 通知过滤范围。取值范围包括：<br>- 0：不进行任何过滤，订阅全部通知。 <br>- 1：将渠道类型为[SOCIAL_COMMUNICATION](js-apis-notificationManager.md#slottype)且[userInput](js-apis-inner-notification-notificationActionButton.md#属性)为空的通知过滤掉。<br>- 2：将渠道类型为[SOCIAL_COMMUNICATION](js-apis-notificationManager.md#slottype)且[userInput](js-apis-inner-notification-notificationActionButton.md#属性)不为空的通知过滤掉。<br/> **ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |

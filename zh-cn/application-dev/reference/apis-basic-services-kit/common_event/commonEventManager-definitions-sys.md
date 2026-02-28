@@ -26,7 +26,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.RECEIVER_STARTUP_COMPLETED（该权限仅系统应用可申请）
 
@@ -47,7 +47,7 @@
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -66,7 +66,7 @@
 
 **ArkTS-Dyn起始版本**：15
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.GET_BUNDLE_RESOURCES
 
@@ -85,7 +85,7 @@
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.CHANGE_DEFAULT_APPLICATION
 
@@ -104,7 +104,7 @@
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.MANAGE_SHORTCUTS
 
@@ -121,7 +121,7 @@
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -138,7 +138,7 @@
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -160,7 +160,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -182,7 +182,7 @@
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -200,7 +200,7 @@
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -220,7 +220,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -241,7 +241,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
 
@@ -262,7 +262,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
 
@@ -283,7 +283,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.GET_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
 
@@ -304,7 +304,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
 
@@ -328,7 +328,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER
 
@@ -348,7 +348,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER
 
@@ -367,7 +367,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER
 
@@ -386,7 +386,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER
 
@@ -405,7 +405,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER
 
@@ -424,7 +424,7 @@
 
 **ArkTS-Dyn起始版本**：13
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.START_RESTORE_NOTIFICATION
 
@@ -445,7 +445,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
 
@@ -462,7 +462,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -483,7 +483,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
 
@@ -505,7 +505,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -543,7 +543,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -562,7 +562,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -581,7 +581,7 @@
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -600,7 +600,7 @@
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -619,7 +619,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -638,7 +638,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -657,7 +657,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.GET_TELEPHONY_STATE（该权限仅系统应用可申请）
 
@@ -676,7 +676,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -695,7 +695,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -714,7 +714,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -737,7 +737,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -756,7 +756,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -775,7 +775,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -794,7 +794,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -813,7 +813,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
 
@@ -830,7 +830,7 @@
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -846,7 +846,7 @@
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -862,7 +862,7 @@
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -878,7 +878,7 @@
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -894,7 +894,7 @@
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
