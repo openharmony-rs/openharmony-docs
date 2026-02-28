@@ -547,7 +547,7 @@ TaskPool的任务执行函数Concurrent函数只能使用局部变量和函数�
    <!-- @[save_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SaveResult.ets) -->      
    
    ``` TypeScript
-   // Index.ets
+   // SaveResult.ets
    import { taskpool } from '@kit.ArkTS'
    import { BusinessError } from '@kit.BasicServicesKit'
    import { TestClass } from './Sendable'
@@ -556,6 +556,7 @@ TaskPool的任务执行函数Concurrent函数只能使用局部变量和函数�
    function createTask(a: number): string {
      return `test${a}`;
    }
+   
    function executeTask() {
      let testObject: TestClass = new TestClass();
      let task: taskpool.Task = new taskpool.Task(createTask, 1)
