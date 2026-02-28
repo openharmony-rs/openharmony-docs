@@ -68,9 +68,9 @@ declare namespace Global {
 
 ``` TypeScript
 // 在entry/src/main/ets/pages/Index.ets
-let a: Chai.Message;
-let b: Mocha.HookFunction;
-let c: Global.ObjectType;
+let testPako: pako.constants = 0;
+let testMime: mime.TypeMap = {};
+let testGlobal: Global.ObjectType = 'test';
 ```
 
 ## maxFlowDepth
