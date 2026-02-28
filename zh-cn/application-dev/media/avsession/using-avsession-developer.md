@@ -447,6 +447,64 @@
    - commonCommand: 自定义控制命令变化的事件。
 
     <!-- @[advancedPlayback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/AdvancedPlaybackControlEvents.ets) -->
+    
+    ``` TypeScript
+    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+    // ...
+    
+    @Entry
+    @Component
+    struct Index {
+      @State message: string = 'hello world';
+      // ...
+    
+      build() {
+        Column() {
+          // ...
+          Text(this.message)
+            .onClick(async () => {
+              try {
+                let context = this.getUIContext().getHostContext() as Context;
+                // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+                let type: AVSessionManager.AVSessionType = 'audio';
+                let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+                // ...
+                // 一般在监听器中会对播放器做相应逻辑处理。
+                // 不要忘记处理完后需要通过set接口同步播放相关信息，参考上面的用例。
+                session.on('skipToQueueItem', (itemId) => {
+                  console.info(`on skipToQueueItem , do skip task`);
+                  // ...
+                  // 实现具体功能。
+                });
+                session.on('handleKeyEvent', (event) => {
+                  console.info(`on handleKeyEvent , the event is ${JSON.stringify(event)}`);
+                  // ...
+                  // 实现具体功能。
+                });
+                session.on('outputDeviceChange', (device) => {
+                  console.info(`on outputDeviceChange , the device info is ${JSON.stringify(device)}`);
+                  // ...
+                  // 实现具体功能。
+                });
+                session.on('commonCommand', (commandString, args) => {
+                  console.info(`on commonCommand , command is ${commandString}, args are ${JSON.stringify(args)}`);
+                  // ...
+                  // 实现具体功能。
+                });
+                // ...
+              } catch (err) {
+                if (err) {
+                  console.error(`AVSession create Error: Code: ${err.code}, message: ${err.message}`);
+                  // ...
+                }
+              }
+            })
+        }
+        .width('100%')
+        .height('100%')
+      }
+    }
+    ```
 
 7. 获取当前媒体会话自身的控制器，与媒体会话对应进行通信交互。
      
