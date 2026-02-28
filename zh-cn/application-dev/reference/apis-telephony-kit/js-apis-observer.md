@@ -1218,7 +1218,8 @@ let callback: (data: CCallStateInfo) => void = (data: CCallStateInfo) => {
     console.info("onCCallStateChange, data:" + JSON.stringify(data));
 }
 
-observer.off(callback);
+observer.offCCallStateChange(callback);
+observer.offCCallStateChange();
 ```
 
 ## LockReason<sup>8+</sup>
