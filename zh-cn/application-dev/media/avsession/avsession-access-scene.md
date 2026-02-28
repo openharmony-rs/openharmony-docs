@@ -94,6 +94,54 @@ struct Index {
 
 <!-- @[setAVMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SetAVMetadata.ets) -->
 
+``` TypeScript
+import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+  // ...
+
+  build() {
+    Column() {
+      // ...
+      Text(this.message)
+        .onClick(async () => {
+          try {
+            let context = this.getUIContext().getHostContext() as Context;
+            // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+            let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', 'audio');
+            // 设置必要的媒体信息。
+            let metadata: AVSessionManager.AVMetadata = {
+              assetId: '0', // 由应用指定，用于标识应用媒体库里的媒体。
+              title: 'TITLE',
+              mediaImage: 'IMAGE',
+              artist: 'ARTIST',
+            };
+            session.setAVMetadata(metadata).then(() => {
+              console.info(`SetAVMetadata successfully`);
+              // ...
+            }).catch((err: BusinessError) => {
+              console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+              // ...
+            });
+          } catch (err) {
+            if (err) {
+              console.error(`AVSession create Error: Code: ${err.code}, message: ${err.message}`);
+              // ...
+            }
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ### 歌词
 
 对于长音频来说，播控中心提供了歌词的展示页面，对于应用来说，接入也比较简单，只需要把歌词内容设置给系统。播控中心会解析歌词内容，并根据播放进度进行同步的刷新。
