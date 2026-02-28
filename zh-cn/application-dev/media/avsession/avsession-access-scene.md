@@ -389,19 +389,19 @@ struct Index {
 
 1. 歌曲支持试听
 
-    （1）应用不需要设置完整的歌曲时长，则只需要设置歌曲的试听时长。当应用仅设置歌曲的试听时长而不是完整时长，用户在播控中心触发进度控制时，应用收到的时长也是VIP试听时长内的相对时间戳位置，而不是完整歌曲的绝对时间戳位置，应用需要重新计算歌曲从零开始的绝对时间戳进行实际响应处理。
+   （1）应用不需要设置完整的歌曲时长，则只需要设置歌曲的试听时长。当应用仅设置歌曲的试听时长而不是完整时长，用户在播控中心触发进度控制时，应用收到的时长也是VIP试听时长内的相对时间戳位置，而不是完整歌曲的绝对时间戳位置，应用需要重新计算歌曲从零开始的绝对时间戳进行实际响应处理。
     
-    （2）如果应用设置完整歌曲时长，但需要系统支持试听片段，也可以在播放时上报起始进度position，当收到的seek指令超过试听片段时，上报试听截止position，系统播控的进度会跟随回弹。
+   （2）如果应用设置完整歌曲时长，但需要系统支持试听片段，也可以在播放时上报起始进度position，当收到的seek指令超过试听片段时，上报试听截止position，系统播控的进度会跟随回弹。
 
 2. 歌曲不支持试听
 
-    如果歌曲不支持试听，那么理论上应用内也不支持播放，这时可以把 duration 设置为 -1，以通知系统不显示实际的时长。
+   如果歌曲不支持试听，那么理论上应用内也不支持播放，这时可以把 duration 设置为 -1，以通知系统不显示实际的时长。
 
 3. 广告等内容的时长设置
 
-    对于有前贴广告、后贴广告的资源来说，建议这么处理：
-    - 播放广告时，单独设置广告的时长 duration。
-    - 当进入到正片播放的时候，则重新设置一次新的时长，以与广告进行区分。
+   对于有前贴广告、后贴广告的资源来说，建议这么处理：
+   - 播放广告时，单独设置广告的时长 duration。
+   - 当进入到正片播放的时候，则重新设置一次新的时长，以与广告进行区分。
 
 ## 注册控制命令
 
@@ -445,46 +445,7 @@ struct Index {
 
 系统支持的控制命令对于不支持的控制，比如应用不支持“上一首”的命令处理，只需要使用off 接口注销对应的控制命令，系统的播控中心会相应的对该控制界面进行置灰处理，以明确告知用户此控制命令不支持。
 
-<!-- @[handing_unSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/HandlingUnsupportedCommands.ets) -->
-
-``` TypeScript
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let context = this.getUIContext().getHostContext() as Context;
-          // 假设已经创建了一个session，如何创建session可以参考之前的案例。
-          let type: AVSessionManager.AVSessionType = 'audio';
-          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-
-          // 取消指定session下的相关监听。
-          session.off('play');
-          session.off('pause');
-          session.off('stop');
-          session.off('playNext');
-          session.off('playPrevious');
-          // 主动销毁已创建的session。
-          session.destroy((err) => {
-            if (err) {
-              console.error(`Failed to destroy session. Code: ${err.code}, message: ${err.message}`);
-            } else {
-              console.info(`Destroy : SUCCESS `);
-            }
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+<!-- @[handing_unSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/HandlingUnsupportedCommands.ets) -->  
 
 ### 快进快退
 
@@ -496,21 +457,21 @@ struct Index {
 
 - **当AVSessionType是audio时：**
 
-    | 应用注册的事件组合 | 播放中心显示按钮 | 按钮是否可用 |
-    | ------------ | ------------ | ------------ |
-    | 未注册任何事件 | “上一首”、“下一首” | 所有按钮置灰，无法点击。 |
-    | 注册上一首/下一首事件 | “上一首”、“下一首” | 注册上一首事件 →“上一首”按钮可用。<br>注册下一首事件 →“下一首”按钮可用。<br>未注册对应事件的按钮不可用。  |
-    | 注册快进/快退事件 | “上一首”、“下一首”|  所有按钮置灰，无法点击。 |
-    | 注册上一首/下一首及快进/快退事件 | “上一首”、“下一首” | 注册上一首事件 →“上一首”按钮可用。<br>注册下一首事件 →“下一首”按钮可用。<br>未注册对应事件的按钮不可用。  |
+  | 应用注册的事件组合 | 播放中心显示按钮 | 按钮是否可用 |
+  | ------------ | ------------ | ------------ |
+  | 未注册任何事件 | “上一首”、“下一首” | 所有按钮置灰，无法点击。 |
+  | 注册上一首/下一首事件 | “上一首”、“下一首” | 注册上一首事件 →“上一首”按钮可用。<br>注册下一首事件 →“下一首”按钮可用。<br>未注册对应事件的按钮不可用。  |
+  | 注册快进/快退事件 | “上一首”、“下一首”|  所有按钮置灰，无法点击。 |
+  | 注册上一首/下一首及快进/快退事件 | “上一首”、“下一首” | 注册上一首事件 →“上一首”按钮可用。<br>注册下一首事件 →“下一首”按钮可用。<br>未注册对应事件的按钮不可用。  |
 
 - **当AVSessionType是video时：**
 
-    | 应用注册的事件组合 | 播放中心显示按钮 | 按钮是否可用 |
-    | ------------ | ------------ | ------------ |
-    | 未注册任何事件 | “快进”、“快退” | 所有按钮置灰，无法点击。 |
-    | 注册上一首/下一首事件 | “上一首”、“下一首” | 注册上一首事件 →“上一首”按钮可用。<br>注册下一首事件 →“下一首”按钮可用。<br>未注册对应事件的按钮不可用。  |
-    | 注册快进/快退事件 | “快进”、“快退”|  注册快进事件 →“快进”按钮可用。<br>注册快退事件 →“快退”按钮可用。<br>未注册对应事件的按钮不可用。 |
-    | 注册上一首/下一首及快进/快退事件 | “快进”、“快退”|  注册快进事件 →“快进”按钮可用。<br>注册快退事件 →“快退”按钮可用。<br>未注册对应事件的按钮不可用。 |
+  | 应用注册的事件组合 | 播放中心显示按钮 | 按钮是否可用 |
+  | ------------ | ------------ | ------------ |
+  | 未注册任何事件 | “快进”、“快退” | 所有按钮置灰，无法点击。 |
+  | 注册上一首/下一首事件 | “上一首”、“下一首” | 注册上一首事件 →“上一首”按钮可用。<br>注册下一首事件 →“下一首”按钮可用。<br>未注册对应事件的按钮不可用。  |
+  | 注册快进/快退事件 | “快进”、“快退”|  注册快进事件 →“快进”按钮可用。<br>注册快退事件 →“快退”按钮可用。<br>未注册对应事件的按钮不可用。 |
+  | 注册上一首/下一首及快进/快退事件 | “快进”、“快退”|  注册快进事件 →“快进”按钮可用。<br>注册快退事件 →“快退”按钮可用。<br>未注册对应事件的按钮不可用。 |
 
   <!-- @[settingFastForward](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingFastForward.ets) -->
   
@@ -793,6 +754,70 @@ struct Index {
 
 <!-- @[adaptingToBluetoothMethodOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/AdaptingToBluetoothMethodOne.ets) -->
 
+``` TypeScript
+import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+  // ...
+
+  build() {
+    Column() {
+      // ...
+      Text(this.message)
+        .onClick(async () => {
+          try {
+            let context = this.getUIContext().getHostContext() as Context;
+            let type: AVSessionManager.AVSessionType = 'audio';
+            let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+            // ...
+            // 设置必要的媒体信息，务必设置，否则接收不到控制事件。
+            let metadata: AVSessionManager.AVMetadata = {
+              assetId: '0', // 由应用指定，用于标识应用媒体库里的媒体。
+              title: 'TITLE',
+              mediaImage: 'IMAGE',
+              artist: 'ARTIST'
+            };
+            session.setAVMetadata(metadata).then(() => {
+              console.info(`SetAVMetadata successfully`);
+              // ...
+            }).catch((err: BusinessError) => {
+              console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+              // ...
+            });
+            // 一般在监听器中会对播放器做相应逻辑处理。
+            // 处理完后需要通过set接口同步播放相关信息，参考上面的用例。
+            session.on('play', () => {
+              console.info(`on play , do play task`);
+              // ...
+              // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('play')取消监听。
+              // 处理完毕后，请使用setAVPlayState上报播放状态。
+            });
+            session.on('pause', () => {
+              console.info(`on pause , do pause task`);
+              // ...
+              // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('pause')取消监听。
+              // 处理完毕后，请使用setAVPlayState上报播放状态。
+            });
+            // ...
+          } catch (err) {
+            if (err) {
+              console.error(`AVSession create Error: Code: ${err.code}, message: ${err.message}`);
+              // ...
+            }
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 - 方式二：
 
   通过AVSession注册[HandleMediaKeyEvent](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onhandlekeyevent10)指令。该回调接口会直接转发媒体按键事件[KeyEvent](../../reference/apis-input-kit/js-apis-keyevent.md)。应用需要自行识别按键事件的类型，并响应事件实现对应的功能。目前支持转发的按键事件类型如下：
@@ -808,7 +833,55 @@ struct Index {
   | KEYCODE_MEDIA_PLAY    | 多媒体键：播放 |
   | KEYCODE_MEDIA_PAUSE   | 多媒体键：暂停|
 
-<!-- @[adaptingToBluetoothMethodTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/AdaptingToBluetoothMethodTwo.ets) -->
+  <!-- @[adaptingToBluetoothMethodTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/AdaptingToBluetoothMethodTwo.ets) -->       
+
+  ``` TypeScript
+  import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  // ...
+
+  @Entry
+  @Component
+  struct Index {
+    @State message: string = 'hello world';
+    // ...
+
+    build() {
+      Column() {
+        // ...
+        Text(this.message)
+          .onClick(async () => {
+            let context = this.getUIContext().getHostContext() as Context;
+            let type: AVSessionManager.AVSessionType = 'audio';
+            let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+            // ...
+            // 设置必要的媒体信息，务必设置，否则接收不到按键事件。
+            let metadata: AVSessionManager.AVMetadata = {
+              assetId: '0', // 由应用指定，用于标识应用媒体库里的媒体。
+              title: 'TITLE',
+              mediaImage: 'IMAGE',
+              artist: 'ARTIST'
+            };
+            session.setAVMetadata(metadata).then(() => {
+              console.info(`SetAVMetadata successfully`);
+              // ...
+            }).catch((err: BusinessError) => {
+              console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+              // ...
+            });
+            session.on('handleKeyEvent', (event) => {
+              // 解析keycode，应用需要根据keycode对播放器做相应逻辑处理。
+              console.info(`on handleKeyEvent, keyCode=${event.key.code}`);
+              // ...
+            });
+            // ...
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+  ```
 
 > **说明：**
 >
