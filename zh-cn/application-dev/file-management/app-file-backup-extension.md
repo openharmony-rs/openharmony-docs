@@ -8,7 +8,7 @@
 
 应用接入数据备份恢复需要通过BackupExtensionAbility实现。
 
-BackupExtensionAbility，是[Stage模型](../application-models/stage-model-development-overview.md)中扩展组件[ExtensionAbility](../application-models/extensionability-overview.md)的派生类。开发者可以通过修改配置文件定制备份恢复框架的行为，包括是否允许备份恢复，备份哪些文件等。
+BackupExtensionAbility是[Stage模型](../application-models/stage-model-development-overview.md)中扩展组件[ExtensionAbility](../application-models/extensionability-overview.md)的派生类。开发者可以通过修改配置文件定制备份恢复框架的行为，包括是否允许备份恢复，备份哪些文件等。
 
 ## 接口说明
 
@@ -52,9 +52,6 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
                        "resource": "$profile:backup_config"
                    }
                ],
-               // 在BackupExtension.ets文件里自定义继承BackupExtensionAbility，重写其中的onBackup/onBackupEx和
-               // onRestore/onRestoreEx方法，推荐使用onBackupEx/onRestoreEx。
-               // 如果没有特殊要求可以空实现，则备份恢复服务会按照统一的备份恢复数据规则进行备份恢复。
                "srcEntry": "./ets/BackupExtension/BackupExtension.ets"
            }      
        ]
@@ -121,7 +118,7 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
    // ...
    
    class BackupExt extends BackupExtensionAbility {
-     //onBackupEx
+     // onBackupEx
      async onBackupEx(backupInfo: string): Promise<string> {
        console.info('onBackupEx ok');
        let errorInfo: ErrorInfo = {
@@ -202,7 +199,6 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
 | fullBackupOnly       | 布尔值     | 否   | 是否使用应用默认恢复目录，默认值为false。当值为true时，恢复数据时会通过临时路径进行缓存，临时路径可通过[backupDir](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md#属性)获取。当值为false或者不配置该字段时，恢复数据会以'/'为根目录解压数据。 |
 | restoreDeps          | 字符串     | 否   | **不推荐使用**，应用恢复时依赖其他应用数据，默认值为""，需要配置依赖应用名称。当前仅支持最多一个依赖项。配置的依赖仅在一次恢复任务上下文生效，如果一次恢复任务中没有检测到依赖应用，则忽略该依赖描述继续执行恢复任务。**依赖应用未恢复或者恢复失败都会导致本应用恢复失败**。 |
 | extraInfo            | json串     | 否   | 额外信息可通过该字段传递。             |
-| compatibleDirMapping            | 对象数组     | 否   | 该字段可以实现备份时按A路径进行备份，恢复时按B路径进行恢复。数组子项为对象，包含2个key，backupDir（待备份路径）和restoreDir（待恢复路径）。<br> **说明**：从API version 23开始，支持该字段。             |  
 
 **字段说明：**
 
@@ -219,33 +215,7 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
    - 如果配置了fullBackupOnly为false，数据会被直接解压到：**/data/storage/el2/base/files/A/** 目录下；
    - 如果配置了fullBackupOnly为true，数据则会被解压到：**临时路径backupDir + /restore/data/storage/el2/base/files/A/** 目录下。
 
-2. **有关compatibleDirMapping字段的说明**  
-
-   其内容的数组长度不能超过1000。  
-
-   子项的restoreDir配置内容必须包含在includes的配置中，否则不生效，且该字段不支持通配符。  
-
-   子项的backupDir和restoreDir不能包含\|\|\|\|字符串。
-
-   **字段配置示例**：  
-
-   "compatibleDirMapping": [
-
-   {"backupDir": "/data/storage/el2/base/files/nulldir", "restoreDir": "/data/storage/el2/base/files/restore/nulldir"},
-
-   {"backupDir": "/data/storage/el2/base/files/zerofile", "restoreDir": "/data/storage/el2/base/files/restore/zerofile"}
-
-   ]
-
-   另外增加这个配置项还无法生效，需要在onBackupEx的实现中以json字符串格式返回需要开启的路径列表。  
-
-   路径列表内容需要与backup_config中compatibleDirMapping字段配置的restoreDir内容一致，不用全部包含，可以为其子集，也可以返回空表示不开启路径映射。
-
-   **onBackupEx返回值示例**：
-     
-   {"compatibleDirMapping" ： ["/data/storage/el2/base/files/restore/nulldir", "/data/storage/el2/base/files/restore/zerofile"] }  
-
-3. **includes支持的路径清单列表如下：**
+2. **includes支持的路径清单列表如下：**
 
    ```json
    {
