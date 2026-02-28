@@ -200,6 +200,47 @@
    设置UIAbility时通过WantAgent接口实现，更多关于WantAgent的信息请参考[WantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md)。
 
       <!-- @[wantAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/WantAgent.ets) -->
+      
+      ``` TypeScript
+      import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+      import { wantAgent } from '@kit.AbilityKit';
+      
+      @Entry
+      @Component
+      struct Index {
+        @State message: string = 'hello world';
+      
+        build() {
+          Column() {
+            Text(this.message)
+              .onClick(async () => {
+                let context = this.getUIContext().getHostContext() as Context;
+                let type: AVSessionManager.AVSessionType = 'audio';
+                // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+                let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+                let wantAgentInfo: wantAgent.WantAgentInfo = {
+                  wants: [
+                    {
+                      bundleName: 'com.example.musicdemo',
+                      abilityName: 'MainAbility'
+                    }
+                  ],
+                  // OperationType.START_ABILITIES
+                  operationType: 2,
+                  requestCode: 0,
+                  wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+                }
+                wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
+                  session.setLaunchAbility(agent);
+                })
+                // ...
+              })
+          }
+          .width('100%')
+          .height('100%')
+        }
+      }
+      ```
     
 4. 设置一个即时的自定义会话事件，以供媒体控制方接收到事件后进行相应的操作。
 
