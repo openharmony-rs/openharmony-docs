@@ -624,7 +624,7 @@ Observed装饰器仅支持在UI线程使用，不能在子线程、Worker、Task
 <!-- @[initialize_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SoluteItemInitialized.ets) -->     
 
 ``` TypeScript
-// Index.ets
+// SoluteItemInitialized.ets
 import { taskpool } from '@kit.ArkTS'
 import { BusinessError } from '@kit.BasicServicesKit'
 import { SendableItem } from './Sendable'
