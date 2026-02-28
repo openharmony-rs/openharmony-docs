@@ -12,9 +12,9 @@ The **svg** component can also be used to draw text.
 ## Text
 
 > **NOTE**
-> - The text content must be written in the **<text>** area. The **<tspan>** child element label can be nested.
+> - The text content must be written in the **&lt;text&gt;** area. The **&lt;tspan&gt;** child element label can be nested.
 >
-> - **<text>** can be nested only by the parent element label **svg**.
+> - **&lt;text&gt;** can be nested only by the parent element label **svg**.
 >
 > - Only the default font **sans-serif** is supported.
 
