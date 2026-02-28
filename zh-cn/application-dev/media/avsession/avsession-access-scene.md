@@ -47,6 +47,38 @@ AVSession在构造方法中支持不同的类型参数，由 [AVSessionType](../
 
 <!-- @[createAVSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/CreateAVSession.ets) -->
 
+``` TypeScript
+import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+// ...
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+  // ...
+
+  build() {
+    Column() {
+      // ...
+      Text(this.message)
+        .onClick(async () => {
+          // 开始创建并激活媒体会话。
+          // 创建session。
+          let context = this.getUIContext().getHostContext() as Context;
+          let type: AVSessionManager.AVSessionType = 'audio';
+          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+          // 激活接口要在元数据、控制命令注册完成之后再执行。
+          await session.activate();
+          console.info(`session create done : sessionId : ${session.sessionId}`);
+          // ...
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## 创建后台任务
 
 当应用需要实现后台播放等功能时，需要使用[BackgroundTasks Kit](../../task-management/background-task-overview.md)（后台任务管理）的能力，申请对应的长时任务，避免进入挂起（Suspend）状态。
