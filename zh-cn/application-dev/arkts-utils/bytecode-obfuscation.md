@@ -19,8 +19,7 @@
 |远程HSP|构建后打包生成的HSP包。|
 |三方库|由第三方开发并发布的库，发布到OHPM中心仓，供其他应用使用。|
 |名称混淆|将代码中的函数名、类名、文件名等标识符修改为无意义的名称。|
-|字节码混淆|应用于ArkTS-Dyn/TS/JS字节码层面的代码保护技术。对编译后生成的字节码进行混淆，以增加逆向工程的难度，保护应用的知识产权。|
-|静态字节码混淆|应用于ArkTS-Sta字节码层面的代码保护技术。对编译后生成的字节码进行混淆，以增加逆向工程的难度，保护应用的知识产权。|
+|字节码混淆|应用于ArkTS-Dyn/ArkTS-Sta/TS/JS字节码层面的代码保护技术。对编译后生成的字节码进行混淆，以增加逆向工程的难度，保护应用的知识产权。|
 
 ## 混淆生效范围
 
@@ -102,7 +101,7 @@ test(a2);
 
 ![w3332](figures/bytecode-compilation-process.png)
 
-下图为静态字节码混淆应用编译的简要流程图：
+下图为ArkTS-Sta字节码混淆应用编译的简要流程图：
 
 ![w3332](figures/bytecode-static-compilation-process.png)
 
@@ -112,7 +111,6 @@ test(a2);
 
 在使用混淆功能前，建议开发者先通过文档了解[混淆选项的能力](#混淆选项)与[混淆选项所需要保留白名单的场景](#保留选项)，再根据开发需求选择对应的混淆功能。
 
-字节码混淆和静态字节码混淆共用同一套配置，混淆流程基本一致。字节码混淆主要针对ArkTS-Dyn、TS、JS编译后的字节码进行混淆； 静态字节码混淆主要针对ArkTS-Sta编译后的字节码进行混淆。
 
 ## 混淆选项
 
@@ -125,7 +123,7 @@ test(a2);
 |关闭混淆|[`-disable-obfuscation`](#-disable-obfuscation)|否|
 |开启字节码混淆|[`-enable-bytecode-obfuscation`](#-enable-bytecode-obfuscation)|否|
 |开启字节码混淆调试能力|[`-enable-bytecode-obfuscation-debugging`](#-enable-bytecode-obfuscation-debugging)|否|
-|console打印删除|[`-remove-log`](#-remove-log)|静态字节码混淆支持hilog部分语句的打印删除|
+|console打印删除|[`-remove-log`](#-remove-log)|ArkTS-Sta的字节码混淆支持hilog部分语句的打印删除|
 |名称缓存输出|[`-print-namecache`](#-print-namecache)|否|
 |名称缓存复用|[`-apply-namecache`](#-apply-namecache)|否|
 
@@ -141,7 +139,7 @@ test(a2);
 |代码压缩|[`-compact`](#-compact)|
 |合并依赖模块选项|[`-enable-lib-obfuscation-options`](#-enable-lib-obfuscation-options)|
 
-**静态字节码混淆选项**
+**字节码混淆选项（ArkTS-Sta）**
 
 | 功能 | 选项 |
 | --- | --- |
@@ -167,7 +165,7 @@ test(a2);
 ### -remove-log
 
 删除对console.*语句的调用，要求console.*语句返回值未被调用，
-静态字节码混淆删除对`console.*（console.toString()除外）`和`hilog.info，hilog.error，hilog.debug，hilog.fatal，hilog.warn`语句的调用，要求上述语句返回值未被调用，效果如下：
+ArkTS-Sta的字节码混淆删除对`console.*（console.toString()除外）`和`hilog.info，hilog.error，hilog.debug，hilog.fatal，hilog.warn`语句的调用，要求上述语句返回值未被调用，效果如下：
 
 <!-- @[optionExample_removeLog1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->      
 
@@ -568,7 +566,7 @@ class TestA { static prop1: number = 0; } TestA.prop1;
 **共同保留选项**
 | 功能 | 选项 | 是否有区别 |
 | --- | --- | --- |
-|指定保留源码文件中的所有名称|[-keep](#-keep)|静态字节码混淆对写法进行了扩展|
+|指定保留源码文件中的所有名称|[-keep](#-keep)|ArkTS-Sta的字节码混淆对写法进行了扩展|
 |指定保留文件/文件夹名称|[-keep-file-name](#-keep-file-name)|无|
 
 **字节码保留选项**
@@ -578,13 +576,13 @@ class TestA { static prop1: number = 0; } TestA.prop1;
 |指定保留顶层作用域或导入导出元素名称|[-keep-global-name](#-keep-global-name)|
 |指定保留声明文件中的所有名称|[-keep-dts](#-keep-dts)|
 
-**静态字节码混淆选项**
+**字节码混淆选项（ArkTS-Sta）**
 | 功能 | 选项 |
 | --- | --- |
 |指定要保留的类和其成员|[-keep-class-with-members](#-keep-class-with-members)|
 |指定要保留的类成员	|[-keep-class-members](#-keep-class-members) |
 
-### 静态字节码keep相关混淆项区别
+### 字节码keep相关混淆项区别（ArkTS-Sta）
 
 |配置项|	功能|	类名保留|	显示指定类路径|
 |-----|-----|-----|-----|
@@ -592,7 +590,7 @@ class TestA { static prop1: number = 0; } TestA.prop1;
 |[-keep-class-with-members](#-keep-class-with-members)|通过成员条件确定哪些类名不混淆	|是	|否|
 |[-keep-class-members](#-keep-class-members)|通过条件指定成员不混淆	|否	|否|
 
-### 静态字节码keep中使用的类型说明
+### 字节码keep中使用的类型说明（ArkTS-Sta）
 
 keep中属性等匹配的类型是字节码中的类型, 而非代码中使用的类型；同时部分语法类型在联合类型中的类型名和单独使用时不一样，在keep中匹配类型时需根据表中的对应关系进行转换。
 
@@ -669,7 +667,7 @@ let uType1: UserTuple1 = ["Tom", 18, true];
 ../oh_modules/json5          // 引用的三方库json5里所有文件中的名称都不混淆
 ```
 
-**静态字节码混淆中**，保留包含指定的目录、类，属性，方法；支持使用[通配符](#静态字节码混淆保留选项支持的通配符)。例如：
+**ArkTS-Sta的字节码混淆中**，保留包含指定的目录、类，属性，方法；支持使用[通配符](#字节码混淆保留选项支持的通配符（ArkTS-Sta）)。例如：
 
 **1.** 保留目录名不混淆。
 
@@ -708,7 +706,7 @@ let uType1: UserTuple1 = ["Tom", 18, true];
 
 使用前后，效果如下：
 
-* -keep package entry.src.main.ets.entryability.StaticDemo { message01: [f64](#静态字节码keep中使用的类型说明);}
+* -keep package entry.src.main.ets.entryability.StaticDemo { message01: [f64](#字节码keep中使用的类型说明（ArkTS-Sta）);}
 
     ```typescript
     //StaticDemo.ets
@@ -737,7 +735,7 @@ let uType1: UserTuple1 = ["Tom", 18, true];
     }
     ```
 
-* -keep package entry.src.main.ets.entryability.StaticDemo { uType: [std.core.Tuple3](#静态字节码keep中使用的类型说明);} 保留元组的名称。`Tuple3`表示Tuple有3个参数。
+* -keep package entry.src.main.ets.entryability.StaticDemo { uType: [std.core.Tuple3](#字节码keep中使用的类型说明（ArkTS-Sta）);} 保留元组的名称。`Tuple3`表示Tuple有3个参数。
 
     ```typescript
     //StaticDemo.ets
@@ -766,11 +764,11 @@ let uType1: UserTuple1 = ["Tom", 18, true];
     }
     ```
 
-* 使用 -keep package entry.src.main.ets.entryability.StaticDemo { fooTest1(std.core.FunctionR1): [std.core.Function1](#静态字节码keep中使用的类型说明);},
+* 使用 -keep package entry.src.main.ets.entryability.StaticDemo { fooTest1(std.core.FunctionR1): [std.core.Function1](#字节码keep中使用的类型说明（ArkTS-Sta）);},
 
-  -keep package entry.src.main.ets.entryability.StaticDemo { fooTest2(std.core.FunctionR2): [std.core.Function1](#静态字节码keep中使用的类型说明);},
+  -keep package entry.src.main.ets.entryability.StaticDemo { fooTest2(std.core.FunctionR2): [std.core.Function1](#字节码keep中使用的类型说明（ArkTS-Sta）);},
 
-  -keep package entry.src.main.ets.entryability.StaticDemo { fooTest3(std.core.FunctionR1): [std.core.FunctionR1](#静态字节码keep中使用的类型说明);} 保留lambda函数名。
+  -keep package entry.src.main.ets.entryability.StaticDemo { fooTest3(std.core.FunctionR1): [std.core.FunctionR1](#字节码keep中使用的类型说明（ArkTS-Sta）);} 保留lambda函数名。
   
   Function1的1表示函数有一个参数，FunctionR2的R表示使用可变参数，2表示有两个参数。
 
@@ -1016,7 +1014,7 @@ index
 entry
 ```
 
-静态字节码混淆：
+ArkTS-Sta的字节码混淆：
 
 ```txt
 -keep-file-name a.b.c.d
@@ -1327,7 +1325,7 @@ export namespace Ns {
 
 使用前后，效果如下：
 
-* -keep-class-with-members class entry.src.main.ets.entryability.StaticDemo.ClassTest {name: [std.core.String](#静态字节码keep中使用的类型说明);}
+* -keep-class-with-members class entry.src.main.ets.entryability.StaticDemo.ClassTest {name: [std.core.String](#字节码keep中使用的类型说明（ArkTS-Sta）);}
 
     ```typescript
     //StaticDemo.ets
@@ -1382,7 +1380,7 @@ export namespace Ns {
 
 使用前后，效果如下：
 
-* -keep-class-members class entry.src.main.ets.entryability.StaticDemo.ClassTest {name: [std.core.String](#静态字节码keep中使用的类型说明);}
+* -keep-class-members class entry.src.main.ets.entryability.StaticDemo.ClassTest {name: [std.core.String](#字节码keep中使用的类型说明（ArkTS-Sta）);}
 
     ```typescript
     //StaticDemo.ets
@@ -1529,7 +1527,7 @@ class A {
 
 **2.** -keep选项中只允许使用`/`路径格式，不支持`\`或`\\`。
 
-## 静态字节码混淆保留选项支持的通配符
+## 字节码混淆保留选项支持的通配符（ArkTS-Sta）
 
 ### class_specification
 
@@ -1560,7 +1558,7 @@ class A {
 
 > **注意：**
 > 
-> 1. 由于静态字节码中不识别type类型别名，type类型keep时需要keep原类型。
+> 1. 由于ArkTS-Sta的字节码中不识别type类型别名，type类型keep时需要keep原类型。
 > 2. 泛型type类型keep时不能添加<>部分; 例如 Promise<void>类型在keep时, 需写成Promise。
 
 
@@ -1834,7 +1832,7 @@ class A {
 
 ## 混淆规则合并策略
 
->注意：静态字节码混淆暂不支持
+>注意：ArkTS-Sta的字节码混淆暂不支持
 >
 
 在编译一个模块时，默认情况下，生效的混淆规则为**当前编译模块的混淆规则**与**依赖模块混淆规则**的合并结果，具体规则如下：
