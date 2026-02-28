@@ -39,9 +39,6 @@ By default, BFCache can store only one page, and the page can be stored for 600 
 
 In the following example, the maximum number of pages that can be cached in the **Web** component is set to **10**, and each page is cached for 300s.
   
-```ts
-// Index.ets
-```
 <!-- @[web_module_page_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry2/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript

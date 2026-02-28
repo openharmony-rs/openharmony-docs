@@ -56,4 +56,4 @@ Based on the scheduled update information configured by the widget provider, the
 
 1. The widget provider is only allowed to update its own widgets.
 2. The widget host is only allowed to update the widgets added to it.
-3. Since API version 20, if the widget data is updated using shared memory, the total size of the updated data cannot exceed 10 MB, and the number of updated images cannot exceed 20. In API version 19 and earlier versions, the maximum number of image files is 5, and the maximum memory size of each image is 2 MB. Exceeding this 2 MB limit for any image will result in abnormal display.
+3. Starting from API version 20, when widget refresh data is updated via shared memory, the total size of the refreshed data must not exceed 10 MB, and the number of refreshed images must not exceed 20. For API version 19 and earlier versions, the maximum number of image files is 5, with a 2 MB memory limit per image. Any images that exceed these limits will display abnormally.

@@ -14,7 +14,7 @@ Most mainstream HEIF images currently use HEVC (H.265) encoding, which is also t
 
 The system has supported HEIF image encoding, decoding, and display since API version 12. If your application uses system modules such as Image Kit, ArkUI **Image** component, or ArkWeb to implement image processing, you can handle HEIF images in the same way as JPEG, PNG, and other formats.
 
-For details about how to decode HEIF images, see [Using ImageSource to Decode Images](../image-decoding.md) and [Using Image_NativeModule to Decode Images](../image-source-c.md).
+For details about how to decode HEIF images, see [Image Decoding Guide (ArkTS)](../image-decoding.md) and [Image Decoding Guide (C/C++)](../image-source-c.md).
 
 For details about how to display HEIF images, see [Image Display (Image)](../../../ui/arkts-graphics-display.md).
 
@@ -26,7 +26,7 @@ For details about how to upload HEIF images using ArkWeb, see [Uploading a File 
 
 ### What should I do when a message is displayed indicating unsupported format when uploading HEIF images
 
-You can use the **supportedFormats** property of [ImageSource](../../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#properties) and [ImagePacker](../../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#properties) to view the image formats supported for encoding and decoding. If the query result contains **image/heic**, the device supports HEIF image encoding and decoding.
+You can use the **supportedFormats** property of [ImageSource](../../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#) and [ImagePacker](../../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#) to view the image formats supported for encoding and decoding. If the query result contains **image/heic**, the device supports HEIF image encoding and decoding.
 
 The system does not block the upload of HEIF images. If HEIF image upload fails, it might be because the application has filtering restrictions on image files with the extensions .heic, .heif, .HEIC, or .HEIF.
 

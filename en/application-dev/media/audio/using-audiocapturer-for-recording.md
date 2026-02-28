@@ -18,7 +18,7 @@ The figure below shows the state changes of the AudioCapturer. After an AudioCap
 
 ![AudioCapturer state change](figures/audiocapturer-status-change.png)
 
-You can call **on('stateChange')** to listen for state changes of the AudioCapturer. For details about each state, please refer to [AudioState](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiostate8).
+The [on('stateChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#onstatechange8) method can be used to listen for the state change of AudioCapturer. For details about the value and description of each state, see [AudioState](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiostate8).
 
 ### How to Develop
 
@@ -58,7 +58,7 @@ You can call **on('stateChange')** to listen for state changes of the AudioCaptu
    });
    ```
 
-2. Call **on('readData')** to subscribe to the audio data read callback.
+2. Call [on('readData')](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#onreaddata11) to subscribe to the audio data read callback.
    > **NOTE**
    > - **Thread management**: You are advised not to use multiple threads for data reading. If multithreading is necessary for data reading, ensure proper thread management.
    > - **Thread performance**: Do not execute time-consuming tasks in the thread where the **readData** API resides. Failing to do so may delay the data processing thread's response to callbacks, potentially causing issues like missing audio data, lag, and noise.
@@ -92,7 +92,7 @@ You can call **on('stateChange')** to listen for state changes of the AudioCaptu
    audioCapturer.on('readData', readDataCallback);
    ```
 
-3. Call **start()** to switch the AudioCapturer to the **running** state and start recording.
+3. Call the [start](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#start8) method to enter the running state and start audio recording.
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -106,7 +106,7 @@ You can call **on('stateChange')** to listen for state changes of the AudioCaptu
    });
    ```
 
-4. Call **stop()** to stop recording.
+4. Call the [stop](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#stop8) method to stop recording.
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -120,7 +120,7 @@ You can call **on('stateChange')** to listen for state changes of the AudioCaptu
    });
    ```
 
-5. Call **release()** to release the instance.
+5. Call the [release](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#release8) method to destroy the instance and release resources.
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';

@@ -29,10 +29,11 @@ The table below lists the supported audio input devices.
 | BLUETOOTH_SCO | 7 | Bluetooth device using Synchronous Connection Oriented (SCO) links.| 
 | MIC | 15 | Microphone.| 
 | USB_HEADSET | 22 | USB Type-C headset.| 
+| NEARLINK | 31 | NearLink device.| 
 
 ## Obtaining Input Device Information
 
-Use **getDevices()** to obtain information about all the input devices.
+Use the [getDevices](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getdevices9) method to obtain information about all input devices.
 
 ```ts
 import { audio } from '@kit.AudioKit';
