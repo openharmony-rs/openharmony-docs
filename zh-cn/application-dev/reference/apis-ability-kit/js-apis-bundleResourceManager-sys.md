@@ -658,6 +658,8 @@ ArkTS-Sta: getLauncherAbilityResourceInfoList(optionsList: Array\<BundleOptions>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
