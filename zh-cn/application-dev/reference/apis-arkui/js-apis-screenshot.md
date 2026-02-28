@@ -138,7 +138,7 @@ capture(options?: CaptureOption): Promise&lt;image.PixelMap&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
+| 401     | Parameter error. Possible causes: 1.Incorrect parameter types. 2.Parameter verification failed.|
 | 801 | Capability not supported on this device.|
 | 1400003 | This display manager service works abnormally.|
 
