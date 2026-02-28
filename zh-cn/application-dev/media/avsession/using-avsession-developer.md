@@ -94,6 +94,105 @@
    音视频应用设置的媒体会话信息，会被媒体会话控制方通过AVSessionController相关方法获取后进行显示或处理。
      
       <!-- @[setAVSessionInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/SetAVSessionInformation.ets) -->
+      
+      ``` TypeScript
+      import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+      import { BusinessError } from '@kit.BasicServicesKit';
+      // ...
+      
+      @Entry
+      @Component
+      struct Index {
+        @State message: string = 'hello world';
+        // ...
+      
+        build() {
+          Column() {
+            // ...
+            Text(this.message)
+              .onClick(async () => {
+                let context = this.getUIContext().getHostContext() as Context;
+                // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+                let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', 'audio');
+                // 播放器逻辑··· 引发媒体信息与播放状态的变更。
+                // 设置必要的媒体信息。
+                let metadata: AVSessionManager.AVMetadata = {
+                  assetId: '0', // 由应用指定，用于标识应用媒体库里的媒体。
+                  title: 'TITLE',
+                  mediaImage: 'IMAGE',
+                  artist: 'ARTIST'
+                };
+                session.setAVMetadata(metadata).then(() => {
+                  console.info(`SetAVMetadata successfully`);
+                  // ...
+                }).catch((err: BusinessError) => {
+                  console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+                  // ...
+                });
+                // 简单设置一个播放状态 - 暂停 未收藏。
+                let playbackState: AVSessionManager.AVPlaybackState = {
+                  state: AVSessionManager.PlaybackState.PLAYBACK_STATE_PAUSE,
+                  isFavorite: false
+                };
+                session.setAVPlaybackState(playbackState, (err) => {
+                  if (err) {
+                    console.error(`Failed to set AVPlaybackState. Code: ${err.code}, message: ${err.message}`);
+                    // ...
+                  } else {
+                    console.info(`SetAVPlaybackState successfully`);
+                    // ...
+                  }
+                });
+                // 设置一个播放列表。
+                let queueItemDescription1: AVSessionManager.AVMediaDescription = {
+                  assetId: '001',
+                  title: 'music_name',
+                  subtitle: 'music_sub_name',
+                  description: 'music_description',
+                  mediaImage: 'PIXELMAP_OBJECT',
+                  extras: { 'extras': 'any' }
+                };
+                let queueItem1: AVSessionManager.AVQueueItem = {
+                  itemId: 1,
+                  description: queueItemDescription1
+                };
+                let queueItemDescription2: AVSessionManager.AVMediaDescription = {
+                  assetId: '002',
+                  title: 'music_name',
+                  subtitle: 'music_sub_name',
+                  description: 'music_description',
+                  mediaImage: 'PIXELMAP_OBJECT',
+                  extras: { 'extras': 'any' }
+                };
+                let queueItem2: AVSessionManager.AVQueueItem = {
+                  itemId: 2,
+                  description: queueItemDescription2
+                };
+                let queueItemsArray = [queueItem1, queueItem2];
+                session.setAVQueueItems(queueItemsArray).then(() => {
+                  console.info(`SetAVQueueItems successfully`);
+                  // ...
+                }).catch((err: BusinessError) => {
+                  console.error(`Failed to set AVQueueItem, error code: ${err.code}, error message: ${err.message}`);
+                  // ...
+                });
+                // 设置媒体播放列表名称。
+                let queueTitle = 'QUEUE_TITLE';
+                session.setAVQueueTitle(queueTitle).then(() => {
+                  console.info(`SetAVQueueTitle successfully`);
+                  // ...
+                }).catch((err: BusinessError) => {
+                  console.error(`Failed to set AVQueueTitle, error code: ${err.code}, error message: ${err.message}`);
+                  // ...
+                });
+                // ...
+              })
+          }
+          .width('100%')
+          .height('100%')
+        }
+      }
+      ```
 
 
 3. 设置用于被媒体会话控制方拉起的UIAbility。当用户操作媒体会话控制方的界面时，例如点击播控中心的卡片，可以拉起此处配置的UIAbility。
