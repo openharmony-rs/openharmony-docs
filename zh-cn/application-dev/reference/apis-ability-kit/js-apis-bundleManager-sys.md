@@ -6341,7 +6341,7 @@ try {
 
 recoverBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
 
-恢复指定用户下指定应用的备份数据。使用Promise异步回调。
+恢复指定用户下指定应用或分身应用的备份数据。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6403,7 +6403,7 @@ try {
 
 removeBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
 
-删除指定用户下指定应用的备份数据。使用Promise异步回调。
+删除指定用户下指定应用或分身应用的备份数据。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6518,7 +6518,7 @@ try {
 
 isApplicationDisableForbidden(bundleName: string, userId: number, appIndex: number): boolean
 
-以同步方法查询指定用户下指定应用是否被设置禁止停用。
+以同步方法查询指定用户下指定应用或分身应用是否被设置禁止停用。
 
 **系统接口：** 此接口为系统接口。
 

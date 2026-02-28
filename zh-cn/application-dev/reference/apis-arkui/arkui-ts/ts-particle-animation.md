@@ -1444,7 +1444,7 @@ struct ParticleExample4 {
 ![particle](figures/emitters.gif)
 
 ### 示例5（环形发射器创建）
-描述粒子动画环形发射器创建的基础用法。
+该示例实现了粒子动画环形发射器每隔一秒钟沿着圆弧30度递增，周期性发射粒子，直至布满整个圆环。
 <!-- @[particle_example5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template5/Index.ets) -->
 
 ``` TypeScript

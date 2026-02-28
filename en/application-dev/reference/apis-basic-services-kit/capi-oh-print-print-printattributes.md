@@ -32,7 +32,7 @@ Defines a struct for the print attributes.
 | uint32_t copyNumber                                        | Number of copies to print.                |
 | uint32_t duplexMode                                        | Duplex mode.            |
 | uint32_t colorMode                                         | Color mode.            |
-| bool isSequential                                          | Whether to print in a sequential manner.            |
-| bool isLandscape                                           | Whether to print in the landscape mode.|
-| bool hasOption                                             | Whether the printing has an option flag.        |
+| bool isSequential                                          | Whether pages are printed in sequential order.<br>The value **true** indicates that pages are printed in sequential order, and **false** indicates the opposite.|
+| bool isLandscape                                           | Whether pages are printed in landscape mode.<br>The value **true** indicates that pages are printed in landscape mode, and **false** indicates that pages are printed in portrait mode.|
+| bool hasOption                                             | Whether the printing has an option flag.<br>The value **true** indicates that the printing has an option flag, and **false** indicates the opposite.|
 | char options[256]                                          | Print options.            |

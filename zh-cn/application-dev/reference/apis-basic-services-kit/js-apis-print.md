@@ -1748,15 +1748,15 @@ let tempPath = '/data/stroage/el2/base/haps/entry/files/note.jpg';
 let file: fs.File;
 file = fs.openSync(tempPath, 4);
 
-let printJobData: print.printJobData = {
+let printJobData: print.PrintJobData = {
     printerId: "printerId",
     jobName: "jobName",
     documentFormat: print.PrintDocumentFormat.DOCUMENT_FORMAT_AUTO,
     docFlavor: print.DocFlavor.FILE_DESCRIPTOR,
     copyNumber: 1,
-    isLandscape: 0,
+    isLandscape: false,
     colorMode: print.PrintColorMode.COLOR_MODE_MONOCHROME,
-    dulpexMode: print.PrintDuplexMode.DUPLEX_MODE_NONE,
+    duplexMode: print.PrintDuplexMode.DUPLEX_MODE_NONE,
     pageSize: {id: "ISO_A4", name: "ISO_A4", width:8268, height: 11692},
     fdList: [file.fd],
 }
@@ -1796,7 +1796,7 @@ print.startPrint(printJobData).then(() => {
 | FILE_DESCRIPTOR | 0 | 表示文件数据。 |
 | BYTES | 1 | 表示二进制数据。 |
 
-## printJobData<sup>23+</sup>
+## PrintJobData<sup>23+</sup>
 
 定义打印任务的接口。
 
