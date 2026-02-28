@@ -24,7 +24,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    nodeAPI = nativeNodeAPI;
    ```
 
-   创建Image节点，并设置draggable和其它相关属性。
+   创建Image节点，通过[OH_ArkUI_SetNodeDraggable](../reference/apis-arkui/capi-drag-and-drop-h.md#oh_arkui_setnodedraggable)设置节点可拖拽，并设置其他相关属性。
 
    <!-- @[create_imageNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/thirdmodule.h) -->
    
@@ -266,7 +266,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
 5. 处理NODE_ON_DROP事件。
 
-   在NODE_ON_DROP事件中，应用可以执行与落入阶段相关的操作，通常需要获取拖拽过程中传递的数据。例如，引用<database/udmf/udmf_meta.h>头文件，获取[OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md)，判断是否存在所需的数据类型，从[OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md)中提取相应的数据，最后销毁指针。
+   在NODE_ON_DROP事件中，应用可以执行与落入阶段相关的操作，通常需要获取拖拽过程中传递的数据。例如，引用[udmf_meta.h](../reference/apis-arkdata/capi-udmf-meta-h.md)头文件，获取[OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md)，判断是否存在所需的数据类型，从[OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md)中提取相应的数据，最后销毁指针。
 
    <!-- @[on_drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/firstmodule.h) -->
    
