@@ -27,14 +27,14 @@ startWork(work: WorkInfo): void
 
 申请延迟任务，成功后会把任务添加到执行队列，满足触发条件后由系统调度执行。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**参数：**
 | 参数名  | 类型                    | 必填   | 说明             |
 | ---- | --------------------- | ---- | -------------- |
 | work | [WorkInfo](#workinfo) | 是    | 指定延迟任务具体信息，比如延迟任务ID、触发条件等。|
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -47,7 +47,7 @@ startWork(work: WorkInfo): void
 | 9700004 | Check on workInfo failed. |
 | 9700005 | Calling startWork failed. |
 
-**示例**：
+**示例：**
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -81,16 +81,16 @@ stopWork(work: WorkInfo, needCancel?: boolean): void
 
 取消延迟任务。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**参数：**
 
 | 参数名        | 类型                    | 必填   | 说明         |
 | ---------- | --------------------- | ---- | ---------- |
 | work       | [WorkInfo](#workinfo) | 是    | 要停止或移除的延迟任务。 |
 | needCancel | boolean               | 否    | 是否需要移除任务。<br>true表示停止并移除，false表示只停止不移除。默认为false。|
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -102,7 +102,7 @@ stopWork(work: WorkInfo, needCancel?: boolean): void
 | 9700003 | System service operation failed. |
 | 9700004 | Check on workInfo failed. |
 
-**示例**：
+**示例：**
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -136,16 +136,16 @@ getWorkStatus(workId: number, callback : AsyncCallback\<WorkInfo>): void
 
 通过workId获取延迟任务，使用Callback异步回调。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**参数：**
 
 | 参数名      | 类型                                    | 必填   | 说明                                       |
 | -------- | ------------------------------------- | ---- | ---------------------------------------- |
 | workId   | number                                | 是    | 延迟任务Id。                                 |
 | callback | AsyncCallback\<[WorkInfo](#workinfo)> | 是    | 回调函数。如果workId有效，则返回从WorkSchedulerService获取的任务，否则抛出异常。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -157,7 +157,7 @@ getWorkStatus(workId: number, callback : AsyncCallback\<WorkInfo>): void
 | 9700003 | System service operation failed. |
 | 9700004 | Check on workInfo failed. |
 
-**示例**：
+**示例：**
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -178,21 +178,21 @@ getWorkStatus(workId: number): Promise\<WorkInfo>
 
 通过workId获取延迟任务，使用Promise异步回调。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**参数：**
 
 | 参数名    | 类型     | 必填   | 说明       |
 | ------ | ------ | ---- | -------- |
 | workId | number | 是    | 延迟任务Id。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                              | 说明                                       |
 | ------------------------------- | ---------------------------------------- |
 | Promise\<[WorkInfo](#workinfo)> | Promise对象，如果workId有效，则返回从WorkSchedulerService获取的任务，否则抛出异常。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -204,7 +204,7 @@ getWorkStatus(workId: number): Promise\<WorkInfo>
 | 9700003 | System service operation failed. |
 | 9700004 | Check on workInfo failed. |
 
-**示例**：
+**示例：**
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -227,21 +227,21 @@ obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
 >
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[obtainAllWorks<sup>10+<sup>](#workschedulerobtainallworks10)替代。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**参数：**
 
 | 参数名      | 类型                   | 必填   | 说明                              |
 | -------- | -------------------- | ---- | ------------------------------- |
 | callback |  AsyncCallback\<void> | 是    | 回调函数，获取成功时，err为undefined，否则为错误对象。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                              | 说明                                       |
 | ------------------------------- | ---------------------------------------- |
 | Array\<[WorkInfo](#workinfo)> | 延迟任务列表，如果已添加延迟任务到执行队列，则返回当前应用所有的延迟任务列表；否则返回空列表。|
   
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -258,15 +258,15 @@ obtainAllWorks(callback : AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
 
 获取当前应用所有的延迟任务，使用Callback异步回调。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**参数：**
 
 | 参数名      | 类型                   | 必填   | 说明                              |
 | -------- | -------------------- | ---- | ------------------------------- |
-| callback |  AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt; | 是    | 回调函数，获取成功时，err为undefined，否则为错误对象。 |
+| callback |  AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt; | 是    | 回调函数，获取成功时，返回当前应用所有的延迟任务列表，否则抛出异常。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -277,7 +277,7 @@ obtainAllWorks(callback : AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
 
-**示例**：
+**示例：**
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -298,15 +298,15 @@ obtainAllWorks(): Promise\<Array\<WorkInfo>>
 
 获取当前应用所有的延迟任务，使用Promise异步回调。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**返回值**：
+**返回值：**
 
 | 类型                                     | 说明                             |
 | -------------------------------------- | ------------------------------ |
 | Promise<Array\<[WorkInfo](#workinfo)>> | Promise对象，返回当前应用所有的延迟任务。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -317,7 +317,7 @@ obtainAllWorks(): Promise\<Array\<WorkInfo>>
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
 
-**示例**：
+**示例：**
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -336,9 +336,9 @@ stopAndClearWorks(): void
 
 停止和取消当前应用所有的延迟任务。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -349,7 +349,7 @@ stopAndClearWorks(): void
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
 
-**示例**：
+**示例：**
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -371,22 +371,22 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：**SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**参数：**
 
 | 参数名      | 类型                   | 必填   | 说明                                       |
 | -------- | -------------------- | ---- | ---------------------------------------- |
 | workId   | number               | 是    | 指定延迟任务的Id。                                 |
 | callback | AsyncCallback\<void> | 是    | 回调函数。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                              | 说明                                       |
 | ------------------------------- | ---------------------------------------- |
 |boolean| 检查延迟任务最后一次执行是否超时，如果workId有效，则返回从WorkSchedulerService获取的任务最后一次执行是否超时；否则，抛出异常。true，对应workId延迟任务最后一次执行超时，false，对应workId延迟任务最后一次执行未超时。|
   
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -404,16 +404,16 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<boolean>): void
 
 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：**SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**参数：**
 
 | 参数名      | 类型                   | 必填   | 说明                                       |
 | -------- | -------------------- | ---- | ---------------------------------------- |
 | workId   | number               | 是    | 指定延迟任务的Id。                                 |
 | callback | AsyncCallback\<boolean> | 是    | 回调函数。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -425,7 +425,7 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<boolean>): void
 | 9700003 | System service operation failed. |
 | 9700004 | Check on workInfo failed. |
 
-**示例**：
+**示例：**
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -446,21 +446,21 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 检查延迟任务的最后一次执行是否超时，使用Promise形式返回。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-**参数**：
+**参数：**
 
 | 参数名    | 类型     | 必填   | 说明       |
 | ------ | ------ | ---- | -------- |
 | workId | number | 是    | 指定延迟任务的Id。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                                       |
 | ----------------- | ---------------------------------------- |
 | Promise\<boolean> | Promise对象。返回true表示指定任务的最后一次执行超时，false表示未超时。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -472,7 +472,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 | 9700003 | System service operation failed. |
 | 9700004 | Check on workInfo failed. |
 
-**示例**：
+**示例：**
 
 ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -501,7 +501,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 >  4. 对于循环任务，任务执行间隔至少2小时。设置了循环任务时间间隔时，须同时设置是否循环或循环次数中的一个。
 >  5. 对于可选参数，如果缺省表示延迟任务的触发不依赖该条件。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 | 名称             | 类型                                | 只读   | 可选   | 说明               |
 | --------------- | --------------------------------- | ---- | ---- | ---------------- |
@@ -527,7 +527,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 触发延迟任务回调的网络类型。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 | 名称                     | 值  | 说明                      |
 | ---------------------- | ---- | ----------------------- |
@@ -542,7 +542,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 触发延迟任务回调的充电类型。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 | 名称                        | 值  | 说明                   |
 | ------------------------- | ---- | -------------------- |
@@ -555,7 +555,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 触发延迟任务回调的电池状态。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 | 名称                         | 值  | 说明                         |
 | -------------------------- | ---- | -------------------------- |
@@ -567,7 +567,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 
 触发延迟任务回调的存储状态。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 | 名称                        | 值  | 说明                             |
 | ------------------------- | ---- | ------------------------------ |
