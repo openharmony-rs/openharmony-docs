@@ -144,8 +144,8 @@ PixelMap的初始化选项。
 | 名称                     | 类型                                                    | 只读 | 可选 | 说明                                                         |
 | ------------------------ | ------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | desiredAuxiliaryPictures | Array\<[AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13)> | 否   | 否   | 设置AuxiliaryPicture类型，当未指定或传入空的Array时，系统会解码所有可用的AuxiliaryPicture类型。 <br>如果不希望解码任何辅助图，可以直接解码为PixelMap，使用PixelMap创建仅包含主图的Picture。|
-| desiredSizeForMainPixelMap | [Size](#size) | 否   | 是   | 期望输出主图大小，必须为正整数，默认为主图原始尺寸。若指定尺寸与主图原始尺寸不一致，则会进行拉伸/缩放到指定尺寸。辅助图的宽度与高度均将与主图按照同比例进行相应拉伸/缩放。|
-| desiredPixelFormat | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 否   | 是   | 解码的像素格式。默认值为RGBA_8888。仅支持设置：RGBA_8888、BGRA_8888、RGB_565、NV12及NV21。设置其他不支持的像素格式时，返回解码失败。|
+| desiredSizeForMainPixelMap<sup>24+</sup> | [Size](#size) | 否   | 是   | 期望输出主图大小，必须为正整数，默认为主图原始尺寸。<br>若指定尺寸与主图原始尺寸不一致，则会进行拉伸/缩放到指定尺寸。<br>辅助图的宽度与高度均将与主图按照同比例进行相应拉伸/缩放。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| desiredPixelFormat<sup>24+</sup> | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 否   | 是   | 解码的像素格式。默认值为RGBA_8888。<br>仅支持设置：RGBA_8888、BGRA_8888、RGB_565、NV12及NV21。设置其他不支持的像素格式时，返回解码失败。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## Region<sup>8+</sup>
 
