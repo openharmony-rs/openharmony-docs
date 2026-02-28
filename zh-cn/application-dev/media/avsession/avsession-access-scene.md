@@ -447,6 +447,45 @@ struct Index {
 
 <!-- @[handing_unSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/HandlingUnsupportedCommands.ets) -->
 
+``` TypeScript
+import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(async () => {
+          let context = this.getUIContext().getHostContext() as Context;
+          // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+          let type: AVSessionManager.AVSessionType = 'audio';
+          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+
+          // 取消指定session下的相关监听。
+          session.off('play');
+          session.off('pause');
+          session.off('stop');
+          session.off('playNext');
+          session.off('playPrevious');
+          // 主动销毁已创建的session。
+          session.destroy((err) => {
+            if (err) {
+              console.error(`Failed to destroy session. Code: ${err.code}, message: ${err.message}`);
+            } else {
+              console.info(`Destroy : SUCCESS `);
+            }
+          });
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ### 快进快退
 
 系统支持三种快进/快退的时长，应用可以通过接口进行设置；同时注册快进/快退的回调命令，以响应控制。
