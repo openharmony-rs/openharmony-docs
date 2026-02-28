@@ -744,7 +744,7 @@ AppAbility
 2. 将HAP与HSP共同依赖的本地源码HAR以release模式构建打包，这样此HAR在被依赖时，其文件名与对外接口不会被混淆。
 
 
-## 静态字节码混淆常规问题处理
+## 字节码混淆常规问题处理（ArkTS-Sta）
 
 ### 开启-enable-bytecode-obfuscation，没有生成相应的混淆文件如何处理
 
@@ -814,8 +814,8 @@ class ExampleClass extends AbstractClass {
 
 ### 混合工程/interop相关的问题和解决方案
 
-对于包含Arkts-Dyn与Arkts-Sta组件的混合工程，请注意字节码混淆和静态字节码混淆会独立执行各自的混淆流程。
+对于包含ArkTS-Dyn与ArkTS-Sta组件的混合工程，请注意ArkTS-Dyn的字节码混淆和ArkTS-Sta的字节码混淆会独立执行各自的混淆流程。
 
-若工程中存在通过 interop 机制进行Arkts-Dyn和Arkts-Sta交互，开发者需手动将交互所涉及的关键类、方法或字段等添加到混淆白名单中，同时将涉及的文件路径添加到百名单中，以确保混淆后名称一致，避免因混淆导致交互失败。
+若工程中存在通过 interop 机制进行Arkts-Dyn和ArkTS-Sta交互，开发者需手动将交互所涉及的关键类、方法或字段等添加到混淆白名单中，同时将涉及的文件路径添加到百名单中，以确保混淆后名称一致，避免因混淆导致交互失败。
 
-若工程中存在Arkts-Dyn组件引用Arkts-Sta组件，开发者需要手动将Arkts-Sta组件相关的文件路径和文件的所有内容进行keep处理。
+若工程中存在Arkts-Dyn组件引用ArkTS-Sta组件，开发者需要手动将ArkTS-Sta组件相关的文件路径和文件的所有内容进行keep处理。
