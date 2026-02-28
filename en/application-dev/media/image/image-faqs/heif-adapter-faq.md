@@ -26,7 +26,7 @@ For details about how to upload HEIF images using ArkWeb, see [Uploading a File 
 
 ### What should I do when a message is displayed indicating unsupported format when uploading HEIF images
 
-You can use the **supportedFormats** property of [ImageSource](../../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#) and [ImagePacker](../../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#) to view the image formats supported for encoding and decoding. If the query result contains **image/heic**, the device supports HEIF image encoding and decoding.
+You can use the **supportedFormats** property of [ImageSource](../../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#properties) and [ImagePacker](../../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#properties) to view the image formats supported for encoding and decoding. If the query result contains **image/heic**, the device supports HEIF image encoding and decoding.
 
 The system does not block the upload of HEIF images. If HEIF image upload fails, it might be because the application has filtering restrictions on image files with the extensions .heic, .heif, .HEIC, or .HEIF.
 
