@@ -383,9 +383,9 @@ import { worker, ThreadWorkerGlobalScope, MessageEvents } from '@kit.ArkTS'
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 workerPort.onmessage = (e: MessageEvents) => {
-  let a : A = e.data as A;
+  let a: A = e.data as A;
   if (a instanceof A) {
-    // 打印test instanceof in worker thread success。
+    // 打印test instanceof in worker thread success
     console.info('test instanceof in worker thread success');
   } else {
     console.info('test instanceof in worker thread failed');
