@@ -55,41 +55,7 @@ target_link_libraries(entry PUBLIC libohavsession.so)
  
    使用OH_AVMetadataBuilder构造元数据示例：
  
-   <!-- @[construct_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->
-   
-   ``` C++
-   //创建OH_AVMetadataBuilder构造器。
-   OH_AVMetadataBuilder* builder;
-   OH_AVMetadataBuilder_Create(&builder);
-       
-   OH_AVMetadata* ohMetadata;
-   OH_AVMetadataBuilder_SetTitle(builder, "Anonymous title");
-   OH_AVMetadataBuilder_SetArtist(builder, "Anonymous artist");
-   OH_AVMetadataBuilder_SetAuthor(builder, "Anonymous author");
-   OH_AVMetadataBuilder_SetAlbum(builder, "Anonymous album");
-   OH_AVMetadataBuilder_SetWriter(builder, "Anonymous writer");
-   OH_AVMetadataBuilder_SetComposer(builder, "Anonymous composer");
-   OH_AVMetadataBuilder_SetDuration(builder, DURATION_TIME);
-   // MediaImageUri只支持网络地址。
-   OH_AVMetadataBuilder_SetMediaImageUri(builder, "https://xxx.xxx.xx");
-   OH_AVMetadataBuilder_SetSubtitle(builder, "Anonymous subtitle");
-   OH_AVMetadataBuilder_SetDescription(builder, "For somebody");
-   // Lyric只支持媒体歌词内容（应用需将歌词内容拼接为一个字符串传入）。
-   OH_AVMetadataBuilder_SetLyric(builder, "balabala");
-   OH_AVMetadataBuilder_SetAssetId(builder, "000");
-   OH_AVMetadataBuilder_SetSkipIntervals(builder, SECONDS_30);
-   OH_AVMetadataBuilder_SetDisplayTags(builder,  AVSESSION_DISPLAYTAG_AUDIO_VIVID);
-   
-   /**
-    * generate an AVMetadata 构造AVMetadata对象
-    */
-   OH_AVMetadataBuilder_GenerateAVMetadata(builder, &ohMetadata);
-       
-   /**
-    * set AVMetadata 设置AVMetadata对象
-    */
-   OH_AVSession_SetAVMetadata(avsession, ohMetadata);
-   ```
+   <!-- @[construct_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->  
    
    在不使用AVMetadata之后，开发者应该执行OH_AVMetadataBuilder_Destroy接口来销毁元数据，且不要继续使用。
    
@@ -104,22 +70,7 @@ target_link_libraries(entry PUBLIC libohavsession.so)
 
    媒体播放状态，包含状态值、播放位置、播放速度、收藏状态等，可以按需使用对应的接口进行设置。
    
-   <!-- @[state_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->
-   
-   ``` C++
-   AVSession_ErrCode ret = AV_SESSION_ERR_SUCCESS;
-       
-   // 设置播放状态，其中state范围应为[0,11]。
-   AVSession_PlaybackState state = PLAYBACK_STATE_PREPARING;
-   ret = OH_AVSession_SetPlaybackState(avsession, state);
-   // ...
-       
-   // 设置播放位置。
-   AVSession_PlaybackPosition* playbackPosition = new AVSession_PlaybackPosition;
-   playbackPosition->elapsedTime = ELAPSED_TIME;
-   playbackPosition->updateTime = UPDATE_TIME;
-   ret = OH_AVSession_SetPlaybackPosition(avsession, playbackPosition);
-   ```
+   <!-- @[state_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->  
 
 4. 注册播控命令事件监听，便于响应用户通过媒体会话控制方，例如播控中心下发的播控命令。
 
@@ -175,6 +126,10 @@ target_link_libraries(entry PUBLIC libohavsession.so)
 5. 音视频应用在退出，并且不需要继续播放时，及时取消监听以及销毁媒体会话释放资源。示例代码如下所示：
  
    <!-- @[destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   OH_AVSession_Destroy(avsession);
+   ```
 
 ## 相关实例
 
