@@ -1139,7 +1139,7 @@ observer.offGetSimActiveState(simActiveState);
 
 ## observer.onCCallStateChange<sup>23+</sup>
 
-onCCallStateChange\(callback?: Callback\<CCallStateInfo\>, options?: ObserverOptions): void
+onCCallStateChange\(callback: Callback\<CCallStateInfo\>, options?: ObserverOptions): void
 
 三方应用监听运营商通话状态并获取通话号码，使用callback方式作为异步方法。
 
@@ -1151,7 +1151,7 @@ onCCallStateChange\(callback?: Callback\<CCallStateInfo\>, options?: ObserverOpt
 
 |     参数名            |         类型      | 必填 | 说明                                    |
 | ------------------- | ------------------| ---- | --------------------------------------- |
-| callback | Callback\<[CCallState](js-apis-call.md#ccallstate23)\> | 否   | 以callback形式异步返回结果。<br/>应用可获取到CCallState。<br/> |
+| callback | Callback\<[CCallState](js-apis-call.md#ccallstate23)\> | 是   | 以callback形式异步返回结果。<br/>应用可获取到CCallState。<br/> |
 | options  | [ObserverOptions](#observeroptions11)                  | 否 | 电话相关事件订阅参数可选项。                |
 
 **错误码：**
