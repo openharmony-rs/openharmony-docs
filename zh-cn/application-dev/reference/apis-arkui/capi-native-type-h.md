@@ -7142,7 +7142,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetActionAreaDistance(ArkUI_ListItemSwipeA
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | ListItemSwipeActionItem实例。 |
-| float distance | 组件长距离滑动删除距离阈值。 |
+| float distance | 组件长距离滑动删除距离阈值，单位vp。 |
 
 ### OH_ArkUI_ListItemSwipeActionItem_GetActionAreaDistance()
 
@@ -7168,7 +7168,7 @@ float OH_ArkUI_ListItemSwipeActionItem_GetActionAreaDistance(ArkUI_ListItemSwipe
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 组件长距离滑动删除距离阈值。异常时返回值：0。 |
+| float | 组件长距离滑动删除距离阈值，单位vp，异常时返回值：0。 |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionArea()
 
@@ -7200,7 +7200,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionAreaWithUserData(ArkUI_Lis
 **描述：**
 
 
-设置滑动条目进入删除区域时调用的事件。
+设置滑动条目进入删除区域时调用的事件，回调事件会传入用户自定义数据。
 
 **起始版本：** 12
 
@@ -7222,7 +7222,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnAction(ArkUI_ListItemSwipeActionItem*
 **描述：**
 
 
-设置组件进入长距删除区后删除ListItem时调用的事件。
+设置组件进入长距删除区后删除[ListItem](./arkui-ts/ts-container-listitem.md)时调用的事件。
 
 **起始版本：** 12
 
@@ -7286,7 +7286,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionAreaWithUserData(ArkUI_List
 **描述：**
 
 
-设置滑动条目退出删除区域时调用的事件。
+设置滑动条目退出删除区域时调用的事件，回调事件会传入用户自定义数据。
 
 **起始版本：** 12
 
@@ -7318,7 +7318,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChange(ArkUI_ListItemSwipeAction
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | ListItemSwipeActionItem实例。 |
-| callback | 回调事件。swipeActionState 变化后的状态。 |
+| callback | 回调事件。传入参数为swipeActionState，表示列表项滑动状态。 |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData()
 
@@ -7340,7 +7340,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData(ArkUI_ListIte
 | -- | -- |
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | ListItemSwipeActionItem实例。 |
 |  void* userData | 用户自定义数据。 |
-| callback | 回调事件。swipeActionState 变化后的状态。 |
+| callback | 回调事件。传入参数为swipeActionState，表示列表项滑动状态。 |
 
 ### OH_ArkUI_ListItemSwipeActionOption_Create()
 
@@ -7432,7 +7432,7 @@ void OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect(ArkUI_ListItemSwipeActionO
 **描述：**
 
 
-设置滑动效果。
+设置边缘滑动效果。
 
 **起始版本：** 12
 
@@ -7442,7 +7442,7 @@ void OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect(ArkUI_ListItemSwipeActionO
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | ListItemSwipeActionItem实例。 |
-| [ArkUI_ListItemSwipeEdgeEffect](capi-native-type-h.md#arkui_listitemswipeedgeeffect) edgeEffect | 滑动效果。 |
+| [ArkUI_ListItemSwipeEdgeEffect](capi-native-type-h.md#arkui_listitemswipeedgeeffect) edgeEffect | 边缘滑动效果。 |
 
 ### OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect()
 
@@ -7453,7 +7453,7 @@ int32_t OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect(ArkUI_ListItemSwipeActi
 **描述：**
 
 
-获取滑动效果。
+获取边缘滑动效果。
 
 **起始版本：** 12
 
@@ -7468,7 +7468,7 @@ int32_t OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect(ArkUI_ListItemSwipeActi
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 滑动效果。默认返回值：[ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING](#arkui_listitemswipeedgeeffect)。 |
+| int32_t | 边缘滑动效果。默认返回值：[ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING](#arkui_listitemswipeedgeeffect)。 |
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange()
 
@@ -7489,7 +7489,7 @@ void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange(ArkUI_ListItemSwipeAct
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | ListItemSwipeActionItem实例。 |
-| callback | 回调事件。offset 滑动偏移量。 |
+| callback | 回调事件。offset 滑动偏移量，单位vp。 |
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData()
 
@@ -7511,7 +7511,7 @@ void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData(ArkUI_List
 | -- | -- |
 | [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | ListItemSwipeActionItem实例。 |
 |  void* userData | 用户自定义数据。 |
-| callback | 回调事件。offset 滑动偏移量。 |
+| callback | 回调事件。offset 滑动偏移量，单位vp。 |
 
 ### OH_ArkUI_ListItemSwipeAction_Expand()
 
@@ -8469,7 +8469,7 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildre
 **描述：**
 
 
-设置List组件的ChildrenMainSizeOption默认大小。
+设置[List](./arkui-ts/ts-container-list.md)组件列表项在主轴方向的默认尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。
 
 **起始版本：** 12
 
@@ -8479,7 +8479,7 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildre
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
-| float defaultMainSize | List下的ListItem的默认大小，单位为vp。 |
+| float defaultMainSize | 列表项在主轴方向的默认尺寸值，单位为vp。 |
 
 **返回：**
 
@@ -8496,7 +8496,7 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenM
 **描述：**
 
 
-获取List组件的ChildrenMainSizeOption默认大小。
+获取[List](./arkui-ts/ts-container-list.md)组件的列表项在主轴方向的默认尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。
 
 **起始版本：** 12
 
@@ -8511,7 +8511,7 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenM
 
 | 类型 | 说明 |
 | -- | -- |
-| float | List下的ListItem的默认大小，默认为0，单位为vp，option为空指针时返回-1。 |
+| float | 列表项在主轴方向的默认尺寸值，默认为0，单位为[vp](../apis-arkui/arkui-ts/ts-types.md#vp10)，option为空指针时返回-1。 |
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Resize()
 
@@ -8522,7 +8522,7 @@ void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* opti
 **描述：**
 
 
-重置List组件的ChildrenMainSizeOption的数组大小。
+调整[List](./arkui-ts/ts-container-list.md)组件子项主轴尺寸数组的容量大小。
 
 **起始版本：** 12
 
@@ -8532,7 +8532,7 @@ void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* opti
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
-| int32_t totalSize | 数组大小。 |
+| int32_t totalSize | 目标数组容量大小。 |
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Splice()
 
@@ -8543,7 +8543,7 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* o
 **描述：**
 
 
-对List组件的ChildrenMainSizeOption数组操作大小调整。
+对[List](./arkui-ts/ts-container-list.md)组件子项主轴尺寸数组进行大小调整。
 
 **起始版本：** 12
 
@@ -8553,9 +8553,9 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* o
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
-| int32_t index | 要修改MainSize的数组起始位置。 |
-| int32_t deleteCount | 要删除的MainSize数组从index开始的数量。 |
-| int32_t addCount | 要添加的MainSize数组从index开始的数量。 |
+| int32_t index | 操作起始索引位置。 |
+| int32_t deleteCount | 从起始位置开始删除的元素数量。 |
+| int32_t addCount | 从起始位置开始新增的元素数量。 |
 
 **返回：**
 
@@ -8572,7 +8572,7 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSiz
 **描述：**
 
 
-更新List组件的ChildrenMainSizeOption数组的值。
+更新[List](./arkui-ts/ts-container-list.md)组件子项主轴尺寸数组中指定索引位置的尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。
 
 **起始版本：** 12
 
@@ -8582,8 +8582,8 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSiz
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
-| int32_t index | 要修改MainSize的数组起始位置。 |
-| float mainSize | 实际修改的值。 |
+| int32_t index | 目标元素的数组索引位置。 |
+| float mainSize | 要设置的主轴尺寸值，单位为vp。 |
 
 **返回：**
 
@@ -8600,7 +8600,7 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetMainSize(ArkUI_ListChildrenMainSize
 **描述：**
 
 
-获取List组件的ChildrenMainSizeOption数组的值。
+获取[List](./arkui-ts/ts-container-list.md)组件子项主轴尺寸数组中指定索引位置的尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。
 
 **起始版本：** 12
 
@@ -8610,7 +8610,7 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetMainSize(ArkUI_ListChildrenMainSize
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
-| int32_t index | 要获取的值的下标位置。 |
+| int32_t index | 目标元素的数组索引位置。 |
 
 **返回：**
 
