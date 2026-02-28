@@ -69,7 +69,7 @@ export default class EntryAbility extends UIAbility {
 
 ## 预加载
 
-此方法可针对资源级进行优化。如果能够预测到Web组件将要加载的页面或者即将要跳转的页面。可以通过[prefetchPage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchpage10)来预加载即将要加载页面。
+此方法可针对资源级进行优化。如果能够预测到Web组件将要加载的页面或者即将要跳转的页面。可以通过[prefetchPage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchpage10)来预加载即将要加载的页面。
 
 预加载会提前下载页面所需的资源，包括主资源子资源，避免阻塞页面渲染。但不会执行网页JavaScript代码。预加载是WebviewController的实例方法，需要一个已经关联好Web组件的WebviewController实例。
 
