@@ -1569,7 +1569,7 @@ struct Index {
 | 名称        | 类型                      | 只读 | 可选 | 说明                                    |
 | ----------- | ------------------------- | ---- | --- | --------------------------------------- |
 | fitStrRange | Array\<[Range](#range)\>  | 否   | 否   | 布局后可以容纳的字符范围数组。       |
-| correctRect  | [TextRectSize](#textrectsize) | 否   | 否   | 布局后段落的矩形尺寸。 |
+| correctRect  | [TextRectSize](#textrectsize24) | 否   | 否   | 布局后段落的矩形尺寸。 |
 
 ## Paragraph
 
