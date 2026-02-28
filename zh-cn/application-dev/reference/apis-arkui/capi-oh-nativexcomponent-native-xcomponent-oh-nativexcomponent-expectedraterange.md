@@ -26,8 +26,8 @@ typedef struct {...} OH_NativeXComponent_ExpectedRateRange
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t min | 期望帧率范围最小值。 |
-| int32_t max | 期望帧率范围最大值。 |
-| int32_t expected | 期望帧率。 |
+| int32_t min | 期望帧率范围最小值。单位为帧/秒（fps）。 |
+| int32_t max | 期望帧率范围最大值。单位为帧/秒（fps）。|
+| int32_t expected | 期望帧率。单位为帧/秒（fps）。 |
 
 
