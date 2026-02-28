@@ -564,6 +564,42 @@
    取消播控命令监听的示例代码如下所示 ：
 
       <!-- @[off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/Off.ets) -->
+      
+      ``` TypeScript
+      import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+      
+      @Entry
+      @Component
+      struct Index {
+        @State message: string = 'hello world';
+      
+        build() {
+          Column() {
+            Text(this.message)
+              .onClick(async () => {
+                let context = this.getUIContext().getHostContext() as Context;
+                // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+                let type: AVSessionManager.AVSessionType = 'audio';
+                let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+      
+                // 取消指定session下的相关监听。
+                session.off('play');
+                session.off('pause');
+                session.off('stop');
+                session.off('playNext');
+                session.off('playPrevious');
+                session.off('skipToQueueItem');
+                session.off('handleKeyEvent');
+                session.off('outputDeviceChange');
+                session.off('commonCommand');
+                // ...
+              })
+          }
+          .width('100%')
+          .height('100%')
+        }
+      }
+      ```
 
       销毁媒体会话示例代码如下所示：
      
