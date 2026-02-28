@@ -181,7 +181,7 @@ enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt;, callback: Ca
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | isEnabled | boolean | 是| 是否使能ArkTS对象内存泄漏检测功能。true：开启ArkTS内存泄漏检测功能；false：关闭ArkTS内存泄漏检测功能。|
-| configs | LeakWatcherConfig | 是| 配置项，对象中包含多个用于内存泄漏监测的配置属性。<br>可配置项包括：<br>objectWatcher: string<br>objectUniqueIDs: Array&lt;number&gt;<br>checkInterval: number<br>retainedVisibleThreshold: number<br>retainedInvisibleThreshold: number<br>maxStoredHeapDumps: number<br>dumpHeapWaitTimeMs: number<br>whiteList: Array&lt;string&gt;<br>[配置项参数详细说明](../../dfx/jsleakwatcher-view.md)<br>**说明**：对象中参数类型传入空值或假值代表该属性设置为默认值。|
+| configs | LeakWatcherConfig | 是| 配置项，对象中包含多个用于内存泄漏监测的配置属性。<br>可配置项包括：<br>objectWatcher: Array&lt;string&gt;<br>objectUniqueIDs: Array&lt;number&gt;<br>checkInterval: number<br>retainedVisibleThreshold: number<br>retainedInvisibleThreshold: number<br>maxStoredHeapDumps: number<br>dumpHeapWaitTimeMs: number<br>whiteList: Array&lt;string&gt;<br>[配置项参数详细说明](../../dfx/jsleakwatcher-view.md)<br>**说明**：对象中参数类型传入空值或假值代表该属性设置为默认值。|
 | callback | Callback&lt;Array&lt;string&gt;&gt; | 是| 回调函数，用于接收jsLeakWatcher.enableLeakWatcher接口的返回的内存泄漏的对象。<br>回调函数中传入一个数组对象，索引0为泄漏列表文件名，后缀为.jsleaklist；索引1为虚拟机内存快照文件名，后缀为.rawheap。|
 
 
@@ -202,7 +202,7 @@ enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt;, callback: Ca
 // 监测ArkTS对象CustomComponent的内存泄漏
 // 对象中类型传入空值或假值代表该属性设置为默认值
 let config: LeakWatcherConfig = {
-    objectWatcher: "CustomComponent",
+    objectWatcher: ["CustomComponent"],
     objectUniqueIDs: [],
     checkInterval: 10000,
     retainedVisibleThreshold: 5,
