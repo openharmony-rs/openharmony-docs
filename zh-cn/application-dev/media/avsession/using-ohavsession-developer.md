@@ -22,6 +22,12 @@ target_link_libraries(entry PUBLIC libohavsession.so)
 
 <!-- @[avSession_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+#include <multimedia/av_session/native_avmetadata.h>
+#include <multimedia/av_session/native_avsession.h>
+#include <multimedia/av_session/native_avsession_errors.h>
+```
+
 ## 开发步骤及注意事项
 
 开发者可以通过以下几个步骤在NDK接入本地会话。
