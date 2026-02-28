@@ -85,7 +85,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
    下面的示例展示了一个空实现的`BackupExtension.ets`文件：
 
     ```ts
-    //onBackup && onRestore
+    // onBackup && onRestore
     import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
     import {hilog} from '@kit.PerformanceAnalysisKit';
     
@@ -95,7 +95,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
       async onBackup ()   {
         hilog.info(0x0000, TAG, `onBackup ok`);
       }
-      //onRestore
+      // onRestore
       async onRestore (bundleVersion : BundleVersion) {
         hilog.info(0x0000, TAG, `onRestore end`);
       }
@@ -118,7 +118,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
    // ...
    
    class BackupExt extends BackupExtensionAbility {
-     //onBackupEx
+     // onBackupEx
      async onBackupEx(backupInfo: string): Promise<string> {
        console.info('onBackupEx ok');
        let errorInfo: ErrorInfo = {
