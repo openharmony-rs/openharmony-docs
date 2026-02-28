@@ -105,6 +105,21 @@ target_link_libraries(entry PUBLIC libohavsession.so)
    媒体播放状态，包含状态值、播放位置、播放速度、收藏状态等，可以按需使用对应的接口进行设置。
    
    <!-- @[state_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   AVSession_ErrCode ret = AV_SESSION_ERR_SUCCESS;
+       
+   // 设置播放状态，其中state范围应为[0,11]。
+   AVSession_PlaybackState state = PLAYBACK_STATE_PREPARING;
+   ret = OH_AVSession_SetPlaybackState(avsession, state);
+   // ...
+       
+   // 设置播放位置。
+   AVSession_PlaybackPosition* playbackPosition = new AVSession_PlaybackPosition;
+   playbackPosition->elapsedTime = ELAPSED_TIME;
+   playbackPosition->updateTime = UPDATE_TIME;
+   ret = OH_AVSession_SetPlaybackPosition(avsession, playbackPosition);
+   ```
 
 4. 注册播控命令事件监听，便于响应用户通过媒体会话控制方，例如播控中心下发的播控命令。
 
