@@ -148,6 +148,55 @@ struct Index {
 
 <!-- @[settingLyrics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingLyrics.ets) -->
 
+``` TypeScript
+import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+  // ...
+
+  build() {
+    Column() {
+      // ...
+      Text(this.message)
+        .onClick(async () => {
+          let context = this.getUIContext().getHostContext() as Context;
+          // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+          let type: AVSessionManager.AVSessionType = 'audio';
+          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+
+          // 把歌词信息设置给AVSession。
+          let metadata: AVSessionManager.AVMetadata = {
+            assetId: '0',
+            title: 'TITLE',
+            mediaImage: 'IMAGE',
+            // LRC中有两类元素：一种是时间标签+歌词，一种是ID标签。
+            // 例如：[00:25.44]xxx\r\n[00:26.44]xxx\r\n。
+            lyric: 'lrc格式歌词内容',
+            // singleLyricText字段存储单条歌词文本，不包含时间戳。
+            // 例如："单条歌词内容"。
+            singleLyricText: '单条歌词内容',
+          };
+          session.setAVMetadata(metadata).then(() => {
+            console.info(`SetAVMetadata successfully`);
+            // ...
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+            // ...
+          });
+          // ...
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 <!--RP1-->
 <!--RP1End-->
 
