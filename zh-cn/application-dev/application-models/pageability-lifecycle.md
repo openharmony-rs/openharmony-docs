@@ -55,11 +55,11 @@ PageAbility生命周期回调与生命周期状态的关系如下图所示。
 > 2. 目前app.js环境中仅支持onCreate和onDestroy回调，app.ets环境支持全量生命周期回调。
 
 
-## 实例代码
+## 开发指导
 
 下面通过一个完整的示例展示FA模型PageAbility生命周期的使用。
 
-1. app.ets中实现Ability生命周期回调。
+1. 在app.ets文件中实现Ability生命周期回调。
 
     ```ts
     // app.ets示例代码如下：
@@ -111,8 +111,7 @@ PageAbility生命周期回调与生命周期状态的关系如下图所示。
     export default new Test()
     ```
 
-2. Index.ets页面提供一个"terminateSelf"按钮，点击后调用[featureAbility.terminateSelf](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilityterminateself7-1
-)接口关闭Ability，从而触发`onDestroy`生命周期回调。
+2. Index.ets页面提供一个"terminateSelf"按钮，点击后调用[featureAbility.terminateSelf](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilityterminateself7-1)接口关闭Ability，从而触发`onDestroy`生命周期回调。
 
     ```ts
     // Index.ets示例代码如下：
