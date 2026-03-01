@@ -184,6 +184,7 @@ UI输入事件类型定义。
 | ARKUI_UIINPUTEVENT_TYPE_AXIS = 2 | 轴事件。 |
 | ARKUI_UIINPUTEVENT_TYPE_MOUSE = 3 | 鼠标事件。|
 | ARKUI_UIINPUTEVENT_TYPE_KEY = 4 | 按键事件。<br>**起始版本：** 20 |
+| ARKUI_UIINPUTEVENT_TYPE_DIGITAL_CROWN = 5 | 表冠事件。<br>**起始版本：** 24 |
 
 ### anonymous1
 
@@ -465,6 +466,25 @@ enum ArkUI_TouchTestStrategy
 | ARKUI_TOUCH_TEST_STRATEGY_DEFAULT = 0 | 自定义分发不产生影响，系统按当前节点命中状态分发事件。  |
 | ARKUI_TOUCH_TEST_STRATEGY_FORWARD_COMPETITION = 1 | 应用指定分发事件到某个子节点，其他兄弟节点是否分发事件交由系统决定。  |
 | ARKUI_TOUCH_TEST_STRATEGY_FORWARD = 2 | 应用指定分发事件到某个子节点，系统不再分发事件到其他兄弟节点。  |
+
+### ArkUI_CrownEvent_Action
+
+```c
+enum ArkUI_CrownEvent_Action
+```
+
+**描述：**
+
+
+定义表冠事件的阶段。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_CROWNEVENT_ACTION_UNKNOWN = 0 | 未知的表冠事件阶段。  |
+| ARKUI_CROWNEVENT_ACTION_UPDATE = 1 | 表冠事件更新。  |
+| ARKUI_CROWNEVENT_ACTION_END = 2 | 表冠事件结束。  |
 
 ## 函数说明
 
@@ -3179,3 +3199,124 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_SetTouchResultId(ArkUI_TouchTestInfo* inf
 | 类型 | 说明 |
 | -- | -- |
 | ArkUI_ErrorCode | 返回结果代码。<br>如果操作成功，则返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>如果入参错误，则返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。|
+
+### OH_ArkUI_DigitalCrownEvent_GetEventTime()
+
+``` c
+int64_t OH_ArkUI_DigitalCrownEvent_GetEventTime(const ArkUI_UIInputEvent* event)
+```
+
+**描述：**
+
+获取表冠事件发生的时间。单位为ns。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_UIInputEvent*](capi-arkui-eventmodule-arkui-uiinputevent.md) event | 表示指向当前UI输入事件的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int64_t | 返回UI输入事件发生的时间，如果参数有误，则返回<b>0</b>。|
+
+### OH_ArkUI_DigitalCrownEvent_GetAngularVelocity()
+
+``` c
+double OH_ArkUI_DigitalCrownEvent_GetAngularVelocity(const ArkUI_UIInputEvent* event)
+```
+
+**描述：**
+
+获取表冠事件发生的角速度。单位为°/s。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_UIInputEvent*](capi-arkui-eventmodule-arkui-uiinputevent.md) event | 表示指向当前UI输入事件的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| double | 返回UI输入事件发生的角速度，如果参数有误，则返回<b>0.0</b>。|
+
+### OH_ArkUI_DigitalCrownEvent_GetDegree()
+
+``` c
+double OH_ArkUI_DigitalCrownEvent_GetDegree(const ArkUI_UIInputEvent* event)
+```
+
+**描述：**
+
+获取表冠事件发生的旋转角度。单位为°。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_UIInputEvent*](capi-arkui-eventmodule-arkui-uiinputevent.md) event | 表示指向当前UI输入事件的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| double | 返回UI输入事件发生的旋转角度，如果参数有误，则返回<b>0.0</b>。|
+
+### OH_ArkUI_DigitalCrownEvent_GetAction()
+
+``` c
+ArkUI_CrownEvent_Action OH_ArkUI_DigitalCrownEvent_GetAction(const ArkUI_UIInputEvent* event)
+```
+
+**描述：**
+
+获取表冠事件发生的阶段。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_UIInputEvent*](capi-arkui-eventmodule-arkui-uiinputevent.md) event | 表示指向当前UI输入事件的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_CrownEvent_Action](#arkui_crownevent_action)  | 返回UI输入事件发生时旋转表冠的行为。如果入参错误，则返回<b>[ARKUI_CROWNEVENT_ACTION_UNKNOWN](#arkui_crownevent_action)</b>。|
+
+### OH_ArkUI_DigitalCrownEvent_SetStopPropagation()
+
+``` c
+ArkUI_ErrorCode OH_ArkUI_DigitalCrownEvent_SetStopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)
+```
+
+**描述：**
+
+设置是否阻止事件冒泡。仅适用于入参event里存储的是表冠事件对象的场景。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_UIInputEvent*](capi-arkui-eventmodule-arkui-uiinputevent.md) event | 表示指向当前UI输入事件的指针。 |
+|bool stopPropagation|表示是否阻止事件冒泡。true表示阻止事件冒泡，false表示不阻止事件冒泡。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 参数异常。<br>|

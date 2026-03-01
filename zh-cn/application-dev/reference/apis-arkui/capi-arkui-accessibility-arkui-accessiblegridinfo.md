@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_AccessibleGridInfo
 
 ## 概述
 
-用于配置特定组件（如[List](arkui-ts/ts-container-list.md)、[Flex](arkui-ts/ts-container-flex.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-basic-components-span.md)组件）的网格布局属性。
+用于配置特定组件（如[List](arkui-ts/ts-container-list.md)、[Flex](arkui-ts/ts-container-flex.md)、[Select](arkui-ts/ts-basic-components-select.md)、[Swiper](arkui-ts/ts-container-swiper.md)组件）的网格布局属性。
 
 **起始版本：** 13
 

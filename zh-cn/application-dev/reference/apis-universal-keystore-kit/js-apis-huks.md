@@ -119,6 +119,8 @@ generateKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\
 
 **示例：**
 
+ArkTS示例：
+
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
 
@@ -152,6 +154,91 @@ huks.generateKeyItem(keyAlias, options, (error, data) => {
     console.info(`callback: generateKeyItem key success`);
   }
 });
+```
+
+JS示例：
+
+> **说明**
+>
+> JS示例代码仅供<!--RP4-->轻量级设备<!--RP4End-->使用。
+
+```xml
+<stack class="container">
+    <input class="generateBtn" @click="generateKey">生成密钥</input>
+    <text class="result">{{result}}</text>
+</stack>
+```
+
+```css
+.container {
+  width: 454px;
+  height: 800px;
+  background-color: #ffffffff;
+}
+
+.generateBtn {
+  left: 77px;
+  top: 100px;
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  color: white;
+  background-color: orange;
+  font-size: 25px;
+}
+
+.result {
+  left: 30px;
+  top: 190px;
+  width: 390px;
+  height: 80px;
+  text-align: center;
+  color: #ff000000;
+  background-color: #ffffffff;
+  font-size: 25px;
+}
+```
+
+```js
+import huks from '@ohos.security.huks';
+
+function testGenerateKey() {
+    let huksInfo;
+    let keyAlias = 'keyAlias';
+    let properties = [{
+        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+        value: huks.HuksKeyAlg.HUKS_ALG_DES
+    }, {
+        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+        value: huks.HuksKeySize.HUKS_DES_KEY_SIZE_64
+    }, {
+        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+        value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT |
+        huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+    }];
+    let options = {
+        properties: properties
+    };
+
+    huks.generateKeyItem(keyAlias, options, (err) => {
+        if (err) {
+            huksInfo = 'generate key return code: ' + err.code + ', message: ' + err.message;
+        } else {
+            huksInfo = 'The key has been generated success.';
+        }
+    });
+    return huksInfo;
+}
+
+export default {
+    data: {
+        result: ''
+    },
+
+    generateKey() {
+        this.result = testGenerateKey();
+    }
+};
 ```
 
 ## huks.generateKeyItem<sup>9+</sup>
@@ -269,6 +356,8 @@ deleteKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<v
 
 **示例：**
 
+ArkTS示例：
+
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
 
@@ -284,6 +373,82 @@ huks.deleteKeyItem(keyAlias, emptyOptions, (error, data) => {
     console.info(`callback: deleteKeyItem key success`);
   }
 });
+```
+
+JS示例：
+
+> **说明**
+>
+> JS示例代码仅供<!--RP4-->轻量级设备<!--RP4End-->使用。
+
+```xml
+<stack class="container">
+    <input class="deleteBtn" @click="deleteKey">删除密钥</input>
+    <text class="result">{{result}}</text>
+</stack>
+```
+
+```css
+.container {
+  width: 454px;
+  height: 800px;
+  background-color: #ffffffff;
+}
+
+.deleteBtn {
+  left: 77px;
+  top: 100px;
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  color: white;
+  background-color: orange;
+  font-size: 25px;
+}
+
+.result {
+  left: 30px;
+  top: 190px;
+  width: 390px;
+  height: 80px;
+  text-align: center;
+  color: #ff000000;
+  background-color: #ffffffff;
+  font-size: 25px;
+}
+```
+
+```js
+import huks from '@ohos.security.huks';
+
+function testDeleteKey() {
+    let huksInfo;
+    let keyAlias = 'keyAlias';
+    let emptyOptions = {
+        properties: []
+    };
+    huks.deleteKeyItem(keyAlias, emptyOptions, (err, data) => {
+        if (err) {
+            console.error('callback: deleteKeyItem failed.');
+            huksInfo = 'delete key return code: ' + err.code + ', message: ' + err.message;
+        } else {
+            console.info('callback: deleteKeyItem key success.');
+            huksInfo = 'The key has been deleted success.';
+        }
+    });
+    return huksInfo;
+}
+
+export default {
+    data: {
+        result: ''
+    },
+
+    deleteKey() {
+        this.result = testDeleteKey();
+    }
+};
+
 ```
 
 ## huks.deleteKeyItem<sup>9+</sup>
@@ -1677,6 +1842,8 @@ isKeyItemExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<
 
 **示例：**
 
+ArkTS示例：
+
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
 
@@ -1697,6 +1864,88 @@ huks.isKeyItemExist(keyAlias, emptyOptions, (error, data) => {
     }
   }
 });
+```
+
+JS示例：
+
+> **说明**
+>
+> JS示例代码仅供<!--RP4-->轻量级设备<!--RP4End-->使用。
+
+```xml
+<stack class="container">
+    <input class="existBtn" @click="existKey">查询密钥</input>
+    <text class="result">{{result}}</text>
+</stack>
+```
+
+```css
+.container {
+  width: 454px;
+  height: 800px;
+  background-color: #ffffffff;
+}
+
+.existBtn {
+  left: 77px;
+  top: 100px;
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  color: white;
+  background-color: orange;
+  font-size: 25px;
+}
+
+.result {
+  left: 30px;
+  top: 190px;
+  width: 390px;
+  height: 80px;
+  text-align: center;
+  color: #ff000000;
+  background-color: #ffffffff;
+  font-size: 25px;
+}
+```
+
+```js
+import huks from '@ohos.security.huks';
+
+function testKeyExist() {
+    let huksInfo;
+    let keyAlias = 'keyAlias';
+    let emptyOptions = {
+        properties: []
+    };
+
+    huks.isKeyItemExist(keyAlias, emptyOptions, (err, data) => {
+        if (err) {
+            console.error('callback: isKeyItemExist failed.');
+            huksInfo = 'delete key return code: ' + err.code + ', message: ' + err.message;
+        } else {
+            if (data) {
+                console.info(`keyAlias: ${keyAlias} is existed!`);
+                huksInfo = 'keyAlias is exist.';
+            } else {
+                console.error('find key failed.');
+                huksInfo = 'keyAlias is not exist.';
+            }
+        }
+    });
+    return huksInfo;
+}
+
+export default {
+    data: {
+        result: ''
+    },
+
+    existKey() {
+        this.result = testKeyExist();
+    },
+};
+
 ```
 
 ## huks.isKeyItemExist<sup>9+</sup>
@@ -2288,6 +2537,8 @@ abortSession终止密钥操作。使用callback异步回调。
 
 **示例：**
 
+ArkTS示例：
+
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';
 
@@ -2349,6 +2600,298 @@ async function huksAbort() {
     }
   });
 }
+```
+
+JS示例：
+
+> **说明**
+>
+> JS示例代码仅供<!--RP4-->轻量级设备<!--RP4End-->使用。
+
+```xml
+<stack class="container">
+    <input class="threeStageBtn1" @click="threeStageEncrypt">加密数据</input>
+    <input class="threeStageBtn2" @click="threeStageDecrypt">解密数据</input>
+    <text class="result">{{result}}</text>
+</stack>
+```
+
+```css
+.container {
+  width: 454px;
+  height: 800px;
+  background-color: #ffffffff;
+}
+
+.threeStageBtn1 {
+  left: 77px;
+  top: 100px;
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  color: white;
+  background-color: orange;
+  font-size: 25px;
+}
+
+.threeStageBtn2 {
+  left: 77px;
+  top: 190px;
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  color: white;
+  background-color: orange;
+  font-size: 25px;
+}
+
+.result {
+  left: 30px;
+  top: 280px;
+  width: 390px;
+  height: 80px;
+  text-align: center;
+  color: #ff000000;
+  background-color: #ffffffff;
+  font-size: 25px;
+}
+```
+
+```js
+import huks from '@ohos.security.huks';
+import cryptoFramework from '@ohos.security.cryptoFramework';
+
+/* huks.initSession、huks.updateSession、huks.finishSession为三段式接口，需要一起使用，
+ * 当这三个操作中的任一阶段发生错误时，都需要调用huks.abortSession来终止密钥的使用
+ *
+ * 以下以使用DES/CBC/NoPadding加解密为例
+ */
+
+const keyAlias = 'keyAlias';
+let handle;
+let plainText = 'DESAAAdffssghCBC5612345612345L64';
+let cipherText;
+/*
+ * 在实际工程中不建议写定IV值，在DevEco Studio中使用模拟器编译时实际上只是一个预览器，
+ * 因此调用cryptoFramework接口会失败，可以通过写定IV的值规避此问题，但在实际工程中仍
+ * 建议使用随机接口生成IV
+ */
+let IV = cryptoFramework.createRandom().generateRandomSync(8).data;
+
+function stringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+
+    return new Uint8Array(arr);
+}
+
+function uint8ArrayToString(fileData) {
+    let dataString = '';
+    for (let i = 0; i < fileData.length; i++) {
+        dataString += String.fromCharCode(fileData[i]);
+    }
+
+    return dataString;
+}
+
+function getDesEncryptProperties() {
+    let properties = [{
+        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+        value: huks.HuksKeyAlg.HUKS_ALG_DES
+    }, {
+        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+        value: huks.HuksKeySize.HUKS_DES_KEY_SIZE_64
+    }, {
+        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+        value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
+    }, {
+        tag: huks.HuksTag.HUKS_TAG_PADDING,
+        value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+    }, {
+        tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+        value: huks.HuksCipherMode.HUKS_MODE_CBC
+    }, {
+        tag: huks.HuksTag.HUKS_TAG_IV,
+        value: IV
+    }];
+    return properties;
+}
+
+function getDesDecryptProperties() {
+    let properties = [{
+        tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+        value: huks.HuksKeyAlg.HUKS_ALG_DES
+    }, {
+        tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+        value: huks.HuksKeySize.HUKS_DES_KEY_SIZE_64
+    }, {
+        tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+        value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
+    }, {
+        tag: huks.HuksTag.HUKS_TAG_PADDING,
+        value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+    }, {
+        tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+        value: huks.HuksCipherMode.HUKS_MODE_CBC
+    }, {
+        tag: huks.HuksTag.HUKS_TAG_IV,
+        value: IV
+    }];
+    return properties;
+}
+
+function testThreeStageEncrypt() {
+    let huksInfo;
+    let ret = true;
+    let initOptions = {
+        properties: getDesEncryptProperties(),
+        inData: new Uint8Array()
+    };
+    let updateOptions = {
+        properties: getDesEncryptProperties(),
+        inData: stringToUint8Array(plainText.substring(0, 16))
+    };
+    let finishOptions = {
+        properties: getDesEncryptProperties(),
+        inData: stringToUint8Array(plainText.substring(16, 32))
+    };
+
+    huks.initSession(keyAlias, initOptions, (err, data) => {
+        if (err) {
+            huksInfo = 'encrypt initSession return code: ' + err.code + ', message: ' + err.message;
+            ret = false;
+            huks.abortSession(data.handle, initOptions, (abortErr) => {
+                if (abortErr) {
+                    huksInfo = 'encrypt init abort return code: ' + abortErr.code + ', message: ' + abortErr.message;
+                }
+            });
+        } else {
+            handle = data.handle;
+        }
+    });
+
+    if (!ret) {
+        return huksInfo;
+    }
+
+    huks.updateSession(handle, updateOptions, (err, data) => {
+        if (err) {
+            huksInfo = 'encrypt updateSession return code: ' + err.code + ', message: ' + err.message;
+            ret = false;
+            huks.abortSession(handle, updateOptions, (abortErr) => {
+                if (abortErr) {
+                    huksInfo = 'encrypt update abort return code: ' + abortErr.code + ', message: ' + abortErr.message;
+                }
+            });
+        } else {
+            cipherText = uint8ArrayToString(data.outData);
+            huksInfo = cipherText;
+        }
+    });
+    
+    if (!ret) {
+        return huksInfo;
+    }
+
+    huks.finishSession(handle, finishOptions, (err, data) => {
+        if (err) {
+            huksInfo = 'encrypt finishSession return code: ' + err.code + ', message: ' + err.message;
+            huks.abortSession(handle, finishOptions, (abortErr) => {
+                if (abortErr) {
+                    huksInfo = 'encrypt finish abort return code: ' + abortErr.code + ', message: ' + abortErr.message;
+                }
+            });
+        } else {
+            cipherText = cipherText + uint8ArrayToString(data.outData);
+            huksInfo = cipherText;
+        }
+    });
+
+    return huksInfo;
+}
+
+function testThreeStageDecrypt() {
+    let huksInfo;
+    let ret = true;
+    let outPlainText;
+    let initOptions = {
+        properties: getDesDecryptProperties(),
+        inData: new Uint8Array()
+    };
+    let updateOptions = {
+        properties: getDesDecryptProperties(),
+        inData: stringToUint8Array(cipherText.substring(0, 16))
+    };
+    let finishOptions = {
+        properties: getDesDecryptProperties(),
+        inData: stringToUint8Array(cipherText.substring(16, 32))
+    };
+
+    huks.initSession(keyAlias, initOptions, (err, data) => {
+        if (err) {
+            huksInfo = 'decrypt initSession return code: ' + err.code + ', message: ' + err.message;
+            ret = false;
+            huks.abortSession(handle, initOptions, (abortErr) => {
+                if (abortErr) {
+                    huksInfo = 'decrypt init abort return code: ' + abortErr.code + ', message: ' + abortErr.message;
+                }
+            });
+        } else {
+            handle = data.handle;
+        }
+    });
+
+    if (!ret) {
+        return huksInfo;
+    }
+
+    huks.updateSession(handle, updateOptions, (err, data) => {
+        if (err) {
+            huksInfo = 'decrypt updateSession return code: ' + err.code + ', message: ' + err.message;
+            ret = false;
+            huks.abortSession(handle, updateOptions, (abortErr) => {
+                if (abortErr) {
+                    huksInfo = 'decrypt update abort return code: ' + abortErr.code + ', message: ' + abortErr.message;
+                }
+            });
+        } else {
+            outPlainText = uint8ArrayToString(data.outData);
+            huksInfo = outPlainText;
+        }
+    });
+
+    huks.finishSession(handle, finishOptions, (err, data) => {
+       if (err) {
+           huksInfo = 'decrypt finishSession return code: ' + err.code + ', message: ' + err.message;
+           huks.abortSession(handle, finishOptions, (abortErr) => {
+               if (abortErr) {
+                   huksInfo = 'decrypt finish abort return code: ' + abortErr.code + ', message: ' + abortErr.message;
+               }
+           });
+       } else {
+           outPlainText = outPlainText + uint8ArrayToString(data.outData);
+           huksInfo = outPlainText;
+       }
+    });
+
+    return huksInfo;
+}
+
+export default {
+    data: {
+        result: ''
+    },
+
+    threeStageEncrypt() {
+        this.result = testThreeStageEncrypt();
+    },
+
+    threeStageDecrypt() {
+        this.result = testThreeStageDecrypt();
+    }
+};
 ```
 
 ## huks.abortSession<sup>9+</sup>
@@ -2971,7 +3514,7 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 | HUKS_TAG_INVALID<sup>(deprecated)</sup>                     | HuksTagType.HUKS_TAG_TYPE_INVALID \| 0   | 表示非法的Tag。<br/>**说明：** 从API version 8开始使用，从API version 9开始废弃。 <br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_ALGORITHM                                          | HuksTagType.HUKS_TAG_TYPE_UINT \| 1      | 表示算法的Tag。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_PURPOSE                                            | HuksTagType.HUKS_TAG_TYPE_UINT \| 2      | 表示密钥用途的Tag。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_KEY_SIZE                                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 3      | 表示密钥长度的Tag。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_KEY_SIZE                                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 3      | 表示密钥长度的Tag，单位：bit。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_DIGEST                                             | HuksTagType.HUKS_TAG_TYPE_UINT \| 4      | 表示摘要算法的Tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_PADDING                                            | HuksTagType.HUKS_TAG_TYPE_UINT \| 5      | 表示填充模式的Tag。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_BLOCK_MODE                                         | HuksTagType.HUKS_TAG_TYPE_UINT \| 6      | 表示加密模式的Tag。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
@@ -2992,7 +3535,7 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 | HUKS_TAG_AGREE_PRIVATE_KEY_ALIAS                            | HuksTagType.HUKS_TAG_TYPE_BYTES \| 21    | 表示密钥协商时的私钥别名。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_AGREE_PUBLIC_KEY                                   | HuksTagType.HUKS_TAG_TYPE_BYTES \| 22    | 表示密钥协商时的公钥。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_KEY_ALIAS                                          | HuksTagType.HUKS_TAG_TYPE_BYTES \| 23    | 表示密钥别名。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_DERIVE_KEY_SIZE                                    | HuksTagType.HUKS_TAG_TYPE_UINT \| 24     | 表示派生密钥的大小。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
+| HUKS_TAG_DERIVE_KEY_SIZE                                    | HuksTagType.HUKS_TAG_TYPE_UINT \| 24     | 表示派生密钥的大小，单位：byte。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_IMPORT_KEY_TYPE<sup>9+</sup>                       | HuksTagType.HUKS_TAG_TYPE_UINT \| 25     | 表示导入的密钥类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>9-11</sup>|
 | HUKS_TAG_UNWRAP_ALGORITHM_SUITE<sup>9+</sup>                | HuksTagType.HUKS_TAG_TYPE_UINT \| 26     | 表示安全导入密钥的套件。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>9-11</sup>|
 | HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG<sup>10+</sup>      | HuksTagType.HUKS_TAG_TYPE_UINT \|29      | 表示派生密钥/协商密钥的存储类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>10-11</sup>|
@@ -3005,7 +3548,7 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 | HUKS_TAG_USER_ID                                            | HuksTagType.HUKS_TAG_TYPE_UINT \| 302    | 表示当前密钥属于哪个userID。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_NO_AUTH_REQUIRED                                   | HuksTagType.HUKS_TAG_TYPE_BOOL \| 303    | 预留。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core<sup>12+</sup> <br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_USER_AUTH_TYPE                                     | HuksTagType.HUKS_TAG_TYPE_UINT \| 304    | 表示用户认证类型。从[HuksUserAuthType](#huksuserauthtype9)中选择，需要与安全访问控制类型同时设置。支持同时指定两种用户认证类型，如：安全访问控制类型指定为HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL时，密钥访问认证类型可以指定以下三种： HUKS_USER_AUTH_TYPE_FACE 、HUKS_USER_AUTH_TYPE_FINGERPRINT、HUKS_USER_AUTH_TYPE_FACE \| HUKS_USER_AUTH_TYPE_FINGERPRINT   <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
-| HUKS_TAG_AUTH_TIMEOUT                                       | HuksTagType.HUKS_TAG_TYPE_UINT \| 305    | 表示auth token单次有效期。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
+| HUKS_TAG_AUTH_TIMEOUT                                       | HuksTagType.HUKS_TAG_TYPE_UINT \| 305    | 表示auth token单次有效期，单位：s。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_AUTH_TOKEN                                         | HuksTagType.HUKS_TAG_TYPE_BYTES \| 306   | 用于传入authToken的字段。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_KEY_AUTH_ACCESS_TYPE<sup>9+</sup>                  | HuksTagType.HUKS_TAG_TYPE_UINT \| 307    | 表示安全访问控制类型。从[HuksAuthAccessType](#huksauthaccesstype9)中选择，需要和用户认证类型同时设置。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_KEY_SECURE_SIGN_TYPE<sup>9+</sup>                  | HuksTagType.HUKS_TAG_TYPE_UINT \| 308    | 表示生成或导入密钥时，指定该密钥的签名类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
@@ -3030,7 +3573,7 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 | HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO                      | HuksTagType.HUKS_TAG_TYPE_BYTES \| 514   | 表示attestation时的安全凭据。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_ATTESTATION_ID_VERSION_INFO                        | HuksTagType.HUKS_TAG_TYPE_BYTES \| 515   | 表示attestation时的版本号。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_KEY_OVERRIDE<sup>20+</sup>                         | HuksTagType.HUKS_TAG_TYPE_BOOL \| 520   | 表示是否覆写同名密钥。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
-| HUKS_TAG_AE_TAG_LEN<sup>22+</sup>                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 521   | 表示指定的AEAD标签长度。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
+| HUKS_TAG_AE_TAG_LEN<sup>22+</sup>                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 521   | 表示指定的AEAD标签长度，单位：byte。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
 | HUKS_TAG_KEY_CLASS<sup>22+</sup>                           | HuksTagType.HUKS_TAG_TYPE_UINT \| 522   | 表示密钥来源。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_KEY_ACCESS_GROUP<sup>23+</sup>                     | HuksTagType.HUKS_TAG_TYPE_BYTES \| 523   | 表示指定的分组信息。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Extension |
 | HUKS_TAG_IS_KEY_ALIAS                                       | HuksTagType.HUKS_TAG_TYPE_BOOL \| 1001   | 表示是否使用生成key时传入的别名的Tag。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core |
