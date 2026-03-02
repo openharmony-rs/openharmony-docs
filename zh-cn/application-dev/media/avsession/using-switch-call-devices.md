@@ -283,7 +283,7 @@
 
 存在差异的步骤如下所示。
 
-1. 创建自定义AVCastPicker，需要新增自定义参数。（对应默认样式实现步骤2）
+1. 创建自定义AVCastPicker，需要新增自定义参数（对应默认样式实现步骤2）。
 
    <!-- @[self_castPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SelfAVCastPicker.ets) -->    
    
