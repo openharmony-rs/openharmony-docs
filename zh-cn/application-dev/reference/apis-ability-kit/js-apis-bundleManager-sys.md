@@ -5635,7 +5635,7 @@ ArkTS-Sta: getAllBundleInstallInfo(): Promise\<Array\<Record\<string, RecordData
 
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| ArkTS-Dyn: Promise\<Array\<Record\<string, Object\>\>\> </br> ArkTS-Sta: Promise\<Array\<Record\<string, RecordData\>\>\>| Promise对象，返回所有应用的扩展安装信息集合列表。 |
+| ArkTS-Dyn: Promise\<Array\<Record\<string, Object\>\>\> </br> ArkTS-Sta: Promise\<Array\<Record\<string, [RecordData](../apis-arkdata/js-apis-data-preferences.md#recorddata23)\>\>\>| Promise对象，返回所有应用的扩展安装信息集合列表。 |
 
 **返回扩展安装信息集合字段说明：**
 
