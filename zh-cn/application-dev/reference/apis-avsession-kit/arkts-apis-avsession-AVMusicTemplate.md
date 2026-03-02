@@ -230,7 +230,7 @@ offQueryMainTabs(callback?: QueryMainTabsEvent): void
 
 **示例：**
 
-请参考[onQueryMainTabs](##onQueryMainTabs23)的示例。
+请参考[onQueryMainTabs](#onQueryMainTabs23)的示例。
 
 ## onQueryMediaTabContent<sup>23+</sup>
 
@@ -369,7 +369,7 @@ offQueryMediaTabContent(callback?: QueryMediaTabContentEvent): void
 
 **示例：**
 
-请参考[onQueryMediaTabContent](##onQueryMediaTabContent23)的示例。
+请参考[onQueryMediaTabContent](#onQueryMediaTabContent23)的示例。
 
 ## onQueryMediaEntity<sup>23+</sup>
 
@@ -494,7 +494,7 @@ offQueryMediaEntity(callback?: QueryMediaEntityEvent): void
 
 **示例：**
 
-请参考[onQueryMediaEntity](##onQueryMediaEntity23)的示例。
+请参考[onQueryMediaEntity](#onQueryMediaEntity23)的示例。
 
 ## onQueryCompilation<sup>23+</sup>
 
@@ -619,7 +619,7 @@ offQueryCompilation(callback?: QueryCompilationEvent): void
 
 **示例：**
 
-请参考[onQueryCompilation](##onQueryCompilation23)的示例。
+请参考[onQueryCompilation](#onQueryCompilation23)的示例。
 
 ## onQueryPlaylist<sup>23+</sup>
 
@@ -744,7 +744,7 @@ offQueryPlaylist(callback?: QueryPlaylistEvent): void
 
 **示例：**
 
-请参考[onQueryPlaylist](##onQueryPlaylist23)的示例。
+请参考[onQueryPlaylist](#onQueryPlaylist23)的示例。
 
 ## onQueryCurrentSingle<sup>23+</sup>
 
@@ -880,7 +880,7 @@ offQueryCurrentSingle(callback?: QueryCurrentSingleEvent): void
 
 **示例：**
 
-请参考[onQueryCurrentSingle](##onQueryCurrentSingle23)的示例。
+请参考[onQueryCurrentSingle](#onQueryCurrentSingle23)的示例。
 
 ## onQueryCompilationByKeyword<sup>23+</sup>
 
@@ -1005,7 +1005,7 @@ offQueryCompilationByKeyword(callback?: QueryCompilationByKeywordEvent): void
 
 **示例：**
 
-请参考[onQueryCompilationByKeyword](##onQueryCompilationByKeyword23)的示例。
+请参考[onQueryCompilationByKeyword](#onQueryCompilationByKeyword23)的示例。
 
 ## onQueryMediaEntityByKeyword<sup>23+</sup>
 
@@ -1130,7 +1130,7 @@ offQueryMediaEntityByKeyword(callback?: QueryMediaEntityByKeywordEvent): void
 
 **示例：**
 
-请参考[onQueryMediaEntityByKeyword](##onQueryMediaEntityByKeyword23)的示例。
+请参考[onQueryMediaEntityByKeyword](#onQueryMediaEntityByKeyword23)的示例。
 
 ## onQueryRecommendMediaEntityList<sup>23+</sup>
 
@@ -1236,7 +1236,7 @@ offQueryRecommendMediaEntityList(callback?: QueryRecommendMediaEntityListEvent):
 
 **示例：**
 
-请参考[onQueryRecommendMediaEntityList](##onQueryRecommendMediaEntityList23)的示例。
+请参考[onQueryRecommendMediaEntityList](#onQueryRecommendMediaEntityList23)的示例。
 
 ## onQueryHotWords<sup>23+</sup>
 
@@ -1323,7 +1323,7 @@ offQueryHotWords(callback?: QueryHotWordsEvent): void
 
 **示例：**
 
-请参考[onQueryHotWords](##onQueryHotWords23)的示例。
+请参考[onQueryHotWords](#onQueryHotWords23)的示例。
 
 ## onQuerySearchHistory<sup>23+</sup>
 
@@ -1410,7 +1410,7 @@ offQuerySearchHistory(callback?: QuerySearchHistoryEvent): void
 
 **示例：**
 
-请参考[onQuerySearchHistory](##onQuerySearchHistory23)的示例。
+请参考[onQuerySearchHistory](#onQuerySearchHistory23)的示例。
 
 ## onClearSearchHistory<sup>23+</sup>
 
@@ -1509,7 +1509,7 @@ offClearSearchHistory(callback?: ClearSearchHistoryEvent): void
 
 **示例：**
 
-请参考[onClearSearchHistory](##onClearSearchHistory23)的示例。
+请参考[onClearSearchHistory](#onClearSearchHistory23)的示例。
 
 ## onLogin<sup>23+</sup>
 
@@ -1615,7 +1615,7 @@ offLogin(callback?: LoginEvent): void
 
 **示例：**
 
-请参考[onLogin](##onLogin23)的示例。
+请参考[onLogin](#onLogin23)的示例。
 
 ## onRequestDialogInfo<sup>23+</sup>
 
@@ -1727,7 +1727,7 @@ offRequestDialogInfo(callback?: RequestDialogInfoEvent): void
 
 **示例：**
 
-请参考[onRequestDialogInfo](##onRequestDialogInfo23)的示例。
+请参考[onRequestDialogInfo](#onRequestDialogInfo23)的示例。
 
 ## onHandleMemberPurchase<sup>23+</sup>
 
@@ -1839,7 +1839,7 @@ offHandleMemberPurchase(callback?: HandleMemberPurchaseEvent): void
 
 **示例：**
 
-请参考[onHandleMemberPurchase](##onHandleMemberPurchase23)的示例。
+请参考[onHandleMemberPurchase](#onHandleMemberPurchase23)的示例。
 
 ## onQueryMemberPurchase<sup>23+</sup>
 
@@ -1943,7 +1943,7 @@ offQueryMemberPurchase(callback?: QueryMemberPurchaseEvent): void
 
 **示例：**
 
-请参考[onQueryMemberPurchase](##onQueryMemberPurchase23)的示例。
+请参考[onQueryMemberPurchase](#onQueryMemberPurchase23)的示例。
 
 ## onQueryCustomContent<sup>23+</sup>
 
@@ -2063,7 +2063,7 @@ offQueryCustomContent(callback?: QueryCustomContentEvent): void
 
 **示例：**
 
-请参考[onQueryCustomContent](##onQueryCustomContent23)的示例。
+请参考[onQueryCustomContent](#onQueryCustomContent23)的示例。
 
 ## onDownloadMediaEntity<sup>23+</sup>
 
@@ -2186,7 +2186,7 @@ offDownloadMediaEntity(callback?: DownloadMediaEntityEvent): void
 
 **示例：**
 
-请参考[onDownloadMediaEntity](##onDownloadMediaEntity23)的示例。
+请参考[onDownloadMediaEntity](#onDownloadMediaEntity23)的示例。
 
 ## onSettingsChange<sup>23+</sup>
 
@@ -2291,7 +2291,7 @@ offSettingsChange(callback?: SettingsChangeEvent): void
 
 **示例：**
 
-请参考[onSettingsChange](##onSettingsChange23)的示例。
+请参考[onSettingsChange](#onSettingsChange23)的示例。
 
 ## onProblemAndAdvice<sup>23+</sup>
 
@@ -2390,7 +2390,7 @@ offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 
 **示例：**
 
-请参考[onProblemAndAdvice](##onProblemAndAdvice23)的示例。
+请参考[onProblemAndAdvice](#onProblemAndAdvice23)的示例。
 
 ## onPlayForSearch<sup>23+</sup>
 
@@ -2490,7 +2490,7 @@ offPlayForSearch(callback?: PlayForSearchEvent): void
 
 **示例：**
 
-请参考[onPlayForSearch](##onPlayForSearch23)的示例。
+请参考[onPlayForSearch](#onPlayForSearch23)的示例。
 
 ## onExecuteAction<sup>23+</sup>
 
@@ -2576,7 +2576,7 @@ offExecuteAction(callback?: ExecuteActionEvent): void
 
 **示例：**
 
-请参考[onExecuteAction](##onExecuteAction23)的示例。
+请参考[onExecuteAction](#onExecuteAction23)的示例。
 
 ## onPlayMediaEntity<sup>23+</sup>
 
@@ -2657,7 +2657,7 @@ offPlayMediaEntity(callback?: PlayMediaEntityEvent): void
 
 **示例：**
 
-请参考[onPlayMediaEntity](##onPlayMediaEntity23)的示例。
+请参考[onPlayMediaEntity](#onPlayMediaEntity23)的示例。
 
 ## onFavoriteMediaEntity<sup>23+</sup>
 
@@ -2757,7 +2757,7 @@ offFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 
 **示例：**
 
-请参考[onFavoriteMediaEntity](##onFavoriteMediaEntity23)的示例。
+请参考[onFavoriteMediaEntity](#onFavoriteMediaEntity23)的示例。
 
 ## setUserInfo<sup>23+</sup>
 
@@ -3163,7 +3163,7 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise&lt;void&gt;
 
 **示例：**
 
-请参考[onDownloadMediaEntity](##onDownloadMediaEntity23)的示例。
+请参考[onDownloadMediaEntity](#onDownloadMediaEntity23)的示例。
 
 ## setCustomElements<sup>23+</sup>
 

@@ -342,9 +342,9 @@ getAllAVMusicTemplateDescriptors(userId?: int): AVMusicTemplateDescriptor[]
 
 **返回值：**
 
-| 类型                                                         | 说明                 |
-| ------------------------------------------------------------ | -------------------- |
-| [AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor)[] | 音频模板描述的集合。 |
+| 类型                                                                                                  | 说明                 |
+|-----------------------------------------------------------------------------------------------------| -------------------- |
+| [AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor23)[] | 音频模板描述的集合。 |
 
 **错误码：**
 
@@ -404,9 +404,9 @@ onAVMusicTemplateCreate(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): vo
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                         |
-| -------- | ------------------------------------------------------------ | ---- | ---------------------------- |
-| callback | Callback<[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor)> | 是   | 回调函数，返回音频模板描述。 |
+| 参数名   | 类型                                                                                                          | 必填 | 说明                         |
+| -------- |-------------------------------------------------------------------------------------------------------------| ---- | ---------------------------- |
+| callback | Callback<[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor23)> | 是   | 回调函数，返回音频模板描述。 |
 
 **错误码：**
 
@@ -468,9 +468,9 @@ offAVMusicTemplateCreate(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;): 
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                         |
-| -------- | ------------------------------------------------------------ | ---- | ---------------------------- |
-| callback | Callback<[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor)> | 否   | 回调函数，返回音频模板描述。 |
+| 参数名   | 类型                                                                                                          | 必填 | 说明                         |
+| -------- |-------------------------------------------------------------------------------------------------------------| ---- | ---------------------------- |
+| callback | Callback<[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor23)> | 否   | 回调函数，返回音频模板描述。 |
 
 **错误码：**
 
@@ -518,9 +518,9 @@ onAVMusicTemplateDestroy(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): v
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                         |
-| -------- | ------------------------------------------------------------ | ---- | ---------------------------- |
-| callback | Callback<[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor)> | 是   | 回调函数，返回音频模板描述。 |
+| 参数名   | 类型                                                                                                          | 必填 | 说明                         |
+| -------- |-------------------------------------------------------------------------------------------------------------| ---- | ---------------------------- |
+| callback | Callback<[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor23)> | 是   | 回调函数，返回音频模板描述。 |
 
 **错误码：**
 
@@ -573,9 +573,9 @@ offAVMusicTemplateDestroy(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;):
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                         |
-| -------- | ------------------------------------------------------------ | ---- | ---------------------------- |
-| callback | Callback<[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor)> | 否   | 回调函数，返回音频模板描述。 |
+| 参数名   | 类型                                                                                                          | 必填 | 说明                         |
+| -------- |-------------------------------------------------------------------------------------------------------------| ---- | ---------------------------- |
+| callback | Callback<[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor23)> | 否   | 回调函数，返回音频模板描述。 |
 
 **错误码：**
 

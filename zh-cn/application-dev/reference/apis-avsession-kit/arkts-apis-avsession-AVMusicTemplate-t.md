@@ -35,13 +35,13 @@ type QueryMainTabsEvent = () => Promise<MediaTab[]>
 
 **返回值：**
 
-| 类型                                                         | 说明                                |
-| ------------------------------------------------------------ | ----------------------------------- |
-| Promise<[MediaTab](arkts-apis-avsession-AVMusicTemplate-i.md#mediatab)[]> | Promise对象。返回媒体标签页的集合。 |
+| 类型                                                                          | 说明                                |
+|-----------------------------------------------------------------------------| ----------------------------------- |
+| Promise<[MediaTab](arkts-apis-avsession-AVMusicTemplate-i.md#mediatab23)[]> | Promise对象。返回媒体标签页的集合。 |
 
 **示例：**
 
-请参考[onQueryMainTabs](./arkts-apis-avsession-AVMusicTemplate.md#onQueryMainTabs23)的示例。
+请参考[onQueryMainTabs](arkts-apis-avsession-AVMusicTemplate.md#onquerymaintabs23)的示例。
 
 ## QueryMediaTabContentEvent<sup>23+</sup>
 
@@ -63,13 +63,13 @@ type QueryMediaTabContentEvent = (tabId: string) => Promise&lt;MediaTabContent&g
 
 **返回值：**
 
-| 类型                                                         | 说明                              |
-| ------------------------------------------------------------ | --------------------------------- |
-| Promise<[MediaTabContent](arkts-apis-avsession-AVMusicTemplate-i.md#mediatabcontent)> | Promise对象。返回媒体标签页内容。 |
+| 类型                                                                                      | 说明                              |
+|-----------------------------------------------------------------------------------------| --------------------------------- |
+| Promise<[MediaTabContent](arkts-apis-avsession-AVMusicTemplate-i.md#mediatabcontent23)> | Promise对象。返回媒体标签页内容。 |
 
 **示例：**
 
-请参考[onQueryMediaTabContent](./arkts-apis-avsession-AVMusicTemplate.md#onQueryMediaTabContent23)的示例。
+请参考[onQueryMediaTabContent](arkts-apis-avsession-AVMusicTemplate.md#onquerymediatabcontent23)的示例。
 
 ## QueryMediaEntityEvent<sup>23+</sup>
 
@@ -85,19 +85,19 @@ type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise&lt;PageM
 
 **参数：**
 
-| 参数名 | 类型                                                         | 必填 | 说明                 |
-| ------ | ------------------------------------------------------------ | ---- | -------------------- |
-| params | [QueryMediaEntityParam](arkts-apis-avsession-AVMusicTemplate-i.md#querymediaentityparam) | 是   | 查询媒体实例的参数。 |
+| 参数名 | 类型                                                                                         | 必填 | 说明                 |
+| ------ |--------------------------------------------------------------------------------------------| ---- | -------------------- |
+| params | [QueryMediaEntityParam](arkts-apis-avsession-AVMusicTemplate-i.md#querymediaentityparam23) | 是   | 查询媒体实例的参数。 |
 
 **返回值：**
 
-| 类型                                                         | 说明                              |
-| ------------------------------------------------------------ | --------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回分页内容的对象。 |
+| 类型                                                                                      | 说明                              |
+|-----------------------------------------------------------------------------------------| --------------------------------- |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity23)> | Promise对象。返回分页内容的对象。 |
 
 **示例：**
 
-请参考[onQueryMediaEntity](./arkts-apis-avsession-AVMusicTemplate.md#onQueryMediaEntity23)的示例。
+请参考[onQueryMediaEntity](arkts-apis-avsession-AVMusicTemplate.md#onquerymediaentity23)的示例。
 
 ## QueryCompilationEvent<sup>23+</sup>
 
@@ -120,13 +120,13 @@ type QueryCompilationEvent = (compilationId: string, pageIndex: int) => Promise&
 
 **返回值：**
 
-| 类型                                                         | 说明                              |
-| ------------------------------------------------------------ | --------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回分页内容的对象。 |
+| 类型                                                                                      | 说明                              |
+|-----------------------------------------------------------------------------------------| --------------------------------- |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity23)> | Promise对象。返回分页内容的对象。 |
 
 **示例：**
 
-请参考[onQueryCompilation](./arkts-apis-avsession-AVMusicTemplate.md#onQueryCompilation23)的示例。
+请参考[onQueryCompilation](arkts-apis-avsession-AVMusicTemplate.md#onquerycompilation23)的示例。
 
 ## QueryPlaylistEvent<sup>23+</sup>
 
@@ -142,20 +142,20 @@ type QueryPlaylistEvent = (pageIndex: int, sort: Sort) => Promise&lt;PageMediaEn
 
 **参数：**
 
-| 参数名    | 类型                                                   | 必填 | 说明           |
-| --------- | ------------------------------------------------------ | ---- | -------------- |
-| pageIndex | int                                                    | 是   | 合集的ID。     |
-| sort      | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort) | 是   | 排序的枚举值。 |
+| 参数名    | 类型                                                       | 必填 | 说明           |
+| --------- |----------------------------------------------------------| ---- | -------------- |
+| pageIndex | int                                                      | 是   | 合集的ID。     |
+| sort      | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort23) | 是   | 排序的枚举值。 |
 
 **返回值：**
 
-| 类型                                                         | 说明                              |
-| ------------------------------------------------------------ | --------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回分页内容的对象。 |
+| 类型                                                                                      | 说明                              |
+|-----------------------------------------------------------------------------------------| --------------------------------- |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity23)> | Promise对象。返回分页内容的对象。 |
 
 **示例：**
 
-请参考[onQueryPlaylist](./arkts-apis-avsession-AVMusicTemplate.md#onQueryPlaylist23)的示例。
+请参考[onQueryPlaylist](arkts-apis-avsession-AVMusicTemplate.md#onqueryplaylist23)的示例。
 
 ## QueryCurrentSingleEvent<sup>23+</sup>
 
@@ -171,13 +171,13 @@ type QueryCurrentSingleEvent = () => Promise&lt;Single&gt;
 
 **返回值：**
 
-| 类型                                                         | 说明                              |
-| ------------------------------------------------------------ | --------------------------------- |
-| Promise<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single)> | Promise对象。返回分页内容的对象。 |
+| 类型                                                                    | 说明                              |
+|-----------------------------------------------------------------------| --------------------------------- |
+| Promise<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single23)> | Promise对象。返回分页内容的对象。 |
 
 **示例：**
 
-请参考[onQueryCurrentSingle](./arkts-apis-avsession-AVMusicTemplate.md#onQueryCurrentSingle23)的示例。
+请参考[onQueryCurrentSingle](arkts-apis-avsession-AVMusicTemplate.md#onquerycurrentsingle23)的示例。
 
 ## QueryCompilationByKeywordEvent<sup>23+</sup>
 
@@ -199,13 +199,13 @@ type QueryCompilationByKeywordEvent = (keyword: string) => Promise&lt;Compilatio
 
 **返回值：**
 
-| 类型                                                         | 说明                          |
-| ------------------------------------------------------------ | ----------------------------- |
-| Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md#compilation)[]> | Promise对象。返回合集的数组。 |
+| 类型                                                                                | 说明                          |
+|-----------------------------------------------------------------------------------| ----------------------------- |
+| Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md#compilation23)[]> | Promise对象。返回合集的数组。 |
 
 **示例：**
 
-请参考[onQueryCompilationByKeyword](./arkts-apis-avsession-AVMusicTemplate.md#onQueryCompilationByKeyword23)的示例。
+请参考[onQueryCompilationByKeyword](arkts-apis-avsession-AVMusicTemplate.md#onquerycompilationbykeyword23)的示例。
 
 ## QueryMediaEntityByKeywordEvent<sup>23+</sup>
 
@@ -221,21 +221,21 @@ type QueryMediaEntityByKeywordEvent = (keyword: string, searchType: EntityType, 
 
 **参数：**
 
-| 参数名     | 类型                                                         | 必填 | 说明                   |
-| ---------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| keyword    | string                                                       | 是   | 用于查找媒体的关键字。 |
-| searchType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 是   | 要搜索的媒体资源类型。 |
-| pageIndex  | int                                                          | 是   | 页面的索引。从0开始。  |
+| 参数名     | 类型                                                                   | 必填 | 说明                   |
+| ---------- |----------------------------------------------------------------------| ---- | ---------------------- |
+| keyword    | string                                                               | 是   | 用于查找媒体的关键字。 |
+| searchType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype23) | 是   | 要搜索的媒体资源类型。 |
+| pageIndex  | int                                                                  | 是   | 页面的索引。从0开始。  |
 
 **返回值：**
 
-| 类型                                                         | 说明                          |
-| ------------------------------------------------------------ | ----------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回分页的实体。 |
+| 类型                                                                                      | 说明                          |
+|-----------------------------------------------------------------------------------------| ----------------------------- |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity23)> | Promise对象。返回分页的实体。 |
 
 **示例：**
 
-请参考[onQueryMediaEntityByKeyword](./arkts-apis-avsession-AVMusicTemplate.md#onQueryMediaEntityByKeyword23)的示例。
+请参考[onQueryMediaEntityByKeyword](arkts-apis-avsession-AVMusicTemplate.md#onquerymediaentitybykeyword23)的示例。
 
 ## QueryRecommendMediaEntityListEvent<sup>23+</sup>
 
@@ -251,13 +251,13 @@ type QueryRecommendMediaEntityListEvent = () => Promise&lt;MediaEntity[]&gt;
 
 **返回值：**
 
-| 类型                                                         | 说明                              |
-| ------------------------------------------------------------ | --------------------------------- |
-| Promise<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[]> | Promise对象。返回媒体实例的数组。 |
+| 类型                                                                                | 说明                              |
+|-----------------------------------------------------------------------------------| --------------------------------- |
+| Promise<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23)[]> | Promise对象。返回媒体实例的数组。 |
 
 **示例：**
 
-请参考[onQueryRecommendMediaEntityList](./arkts-apis-avsession-AVMusicTemplate.md#onQueryRecommendMediaEntityList23)的示例。
+请参考[onQueryRecommendMediaEntityList](arkts-apis-avsession-AVMusicTemplate.md#onqueryrecommendmediaentitylist23)的示例。
 
 ## QueryHotWordsEvent<sup>23+</sup>
 
@@ -279,7 +279,7 @@ type QueryHotWordsEvent = () => Promise&lt;string[]&gt;
 
 **示例：**
 
-请参考[onQueryHotWords](./arkts-apis-avsession-AVMusicTemplate.md#onQueryHotWords23)的示例。
+请参考[onQueryHotWords](arkts-apis-avsession-AVMusicTemplate.md#onqueryhotwords23)的示例。
 
 ## QuerySearchHistoryEvent<sup>23+</sup>
 
@@ -301,7 +301,7 @@ type QuerySearchHistoryEvent = () => Promise&lt;string[]&gt;
 
 **示例：**
 
-请参考[onQuerySearchHistory](./arkts-apis-avsession-AVMusicTemplate.md#onQuerySearchHistory23)的示例。
+请参考[onQuerySearchHistory](arkts-apis-avsession-AVMusicTemplate.md#onquerysearchhistory23)的示例。
 
 ## ClearSearchHistoryEvent<sup>23+</sup>
 
@@ -317,13 +317,13 @@ type ClearSearchHistoryEvent = () => Promise&lt;OperResult&gt;
 
 **返回值：**
 
-| 类型                                                         | 说明                              |
-| ------------------------------------------------------------ | --------------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果的对象。 |
+| 类型                                                                            | 说明                              |
+|-------------------------------------------------------------------------------| --------------------------------- |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)> | Promise对象。返回操作结果的对象。 |
 
 **示例：**
 
-请参考[onClearSearchHistory](./arkts-apis-avsession-AVMusicTemplate.md#onClearSearchHistory23)的示例。
+请参考[onClearSearchHistory](arkts-apis-avsession-AVMusicTemplate.md#onclearsearchhistory23)的示例。
 
 ## LoginEvent<sup>23+</sup>
 
@@ -340,9 +340,9 @@ type LoginEvent = (controlType: LoginType, id?: string) => Promise&lt;QrCodeInfo
 **参数：**
 
 | 参数名      | 类型                       | 必填 | 说明       |
-| ----------- | -------------------------- | ---- | ---------- |
-| controlType | [LoginType](##LoginType23) | 是   | 登录类型。 |
-| id          | string                     | 否   | id。       |
+| ----------- | ------------------------- | ---- | ---------- |
+| controlType | [LoginType](#logintype23) | 是   | 登录类型。 |
+| id          | string                    | 否   | id。       |
 
 **返回值：**
 
@@ -352,7 +352,7 @@ type LoginEvent = (controlType: LoginType, id?: string) => Promise&lt;QrCodeInfo
 
 **示例：**
 
-请参考[onLogin](./arkts-apis-avsession-AVMusicTemplate.md#onLogin23)的示例。
+请参考[onLogin](arkts-apis-avsession-AVMusicTemplate.md#onlogin23)的示例。
 
 ## LoginType<sup>23+</sup>
 
@@ -390,8 +390,8 @@ type RequestDialogInfoEvent = (actionType: DialogActionType, actionInfo?: Dialog
 **参数：**
 
 | 参数名     | 类型                                                         | 必填 | 说明                 |
-| ---------- | ------------------------------------------------------------ | ---- | -------------------- |
-| actionType | [DialogActionType](##DialogActionType23)                     | 是   | 弹框类型。           |
+| ---------- | ----------------------------------------------------------- | ---- | -------------------- |
+| actionType | [DialogActionType](#dialogactiontype23)                     | 是   | 弹框类型。           |
 | actionInfo | [DialogActionInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialogactioninfo23) | 否   | 弹框动作结果的信息。 |
 
 **返回值：**
@@ -402,7 +402,7 @@ type RequestDialogInfoEvent = (actionType: DialogActionType, actionInfo?: Dialog
 
 **示例：**
 
-请参考[onRequestDialogInfo](./arkts-apis-avsession-AVMusicTemplate.md#onRequestDialogInfo23)的示例。
+请参考[onRequestDialogInfo](arkts-apis-avsession-AVMusicTemplate.md#onrequestdialoginfo23)的示例。
 
 ## DialogActionType<sup>23+</sup>
 
@@ -450,7 +450,7 @@ type HandleMemberPurchaseEvent = (info: MemberPurchaseInfo) => Promise&lt;Dialog
 
 **示例：**
 
-请参考[onHandleMemberPurchase](./arkts-apis-avsession-AVMusicTemplate.md#onHandleMemberPurchase23)的示例。
+请参考[onHandleMemberPurchase](arkts-apis-avsession-AVMusicTemplate.md#onhandlememberpurchase23)的示例。
 
 ## QueryMemberPurchaseEvent<sup>23+</sup>
 
@@ -478,7 +478,7 @@ type QueryMemberPurchaseEvent = (memberPurchaseType: MemberPurchaseType) => Prom
 
 **示例：**
 
-请参考[onQueryMemberPurchase](./arkts-apis-avsession-AVMusicTemplate.md#onQueryMemberPurchase23)的示例。
+请参考[onQueryMemberPurchase](arkts-apis-avsession-AVMusicTemplate.md#onquerymemberpurchase23)的示例。
 
 ## QueryCustomContentEvent<sup>23+</sup>
 
@@ -495,8 +495,8 @@ type QueryCustomContentEvent = (queryType: CustomType[]) => Promise&lt;CustomEle
 **参数：**
 
 | 参数名    | 类型                           | 必填 | 说明                                        |
-| --------- | ------------------------------ | ---- | ------------------------------------------- |
-| queryType | [CustomType](##CustomType23)[] | 是   | 自定义类型：用户信息 ，选项卡，编译，设置。 |
+| --------- | ----------------------------- | ---- | ------------------------------------------- |
+| queryType | [CustomType](#customtype23)[] | 是   | 自定义类型：用户信息 ，选项卡，编译，设置。 |
 
 **返回值：**
 
@@ -506,7 +506,7 @@ type QueryCustomContentEvent = (queryType: CustomType[]) => Promise&lt;CustomEle
 
 **示例：**
 
-请参考[onQueryCustomContent](./arkts-apis-avsession-AVMusicTemplate.md#onQueryCustomContent23)的示例。
+请参考[onQueryCustomContent](arkts-apis-avsession-AVMusicTemplate.md#onquerycustomcontent23)的示例。
 
 ## CustomType<sup>23+</sup>
 
@@ -544,8 +544,8 @@ type DownloadMediaEntityEvent = (controlType: DownloadControlType, mediaEntity: 
 **参数：**
 
 | 参数名      | 类型                                                         | 必填 | 说明                                        |
-| ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------- |
-| controlType | [DownloadControlType](##DownloadControlType23)               | 是   | 自定义类型：用户信息 ，选项卡，合集，设置。 |
+| ----------- | ----------------------------------------------------------- | ---- | ------------------------------------------- |
+| controlType | [DownloadControlType](#downloadcontroltype23)               | 是   | 自定义类型：用户信息 ，选项卡，合集，设置。 |
 | mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23) | 是   | 媒体实例。                                  |
 
 **返回值：**
@@ -556,7 +556,7 @@ type DownloadMediaEntityEvent = (controlType: DownloadControlType, mediaEntity: 
 
 **示例：**
 
-请参考[onDownloadMediaEntity](./arkts-apis-avsession-AVMusicTemplate.md#onDownloadMediaEntity23)的示例。
+请参考[onDownloadMediaEntity](arkts-apis-avsession-AVMusicTemplate.md#ondownloadmediaentity23)的示例。
 
 ## DownloadControlType<sup>23+</sup>
 
@@ -605,7 +605,7 @@ type SettingsChangeEvent = (settingItem: SettingItem) => Promise&lt;SettingItem&
 
 **示例：**
 
-请参考[onSettingsChange](./arkts-apis-avsession-AVMusicTemplate.md#onSettingsChange23)的示例。
+请参考[onSettingsChange](arkts-apis-avsession-AVMusicTemplate.md#onsettingschange23)的示例。
 
 ## ProblemAndAdviceEvent<sup>23+</sup>
 
@@ -633,7 +633,7 @@ type ProblemAndAdviceEvent = (advice: string) => Promise&lt;OperResult&gt;
 
 **示例：**
 
-请参考[onProblemAndAdvice](./arkts-apis-avsession-AVMusicTemplate.md#onProblemAndAdvice23)的示例。
+请参考[onProblemAndAdvice](arkts-apis-avsession-AVMusicTemplate.md#onproblemandadvice23)的示例。
 
 ## PlayForSearchEvent<sup>23+</sup>
 
@@ -662,7 +662,7 @@ type PlayForSearchEvent = (command: SearchPlayInfoType, args: SearchPlayInfo) =>
 
 **示例：**
 
-请参考[onPlayForSearch](./arkts-apis-avsession-AVMusicTemplate.md#onPlayForSearch23)的示例。
+请参考[onPlayForSearch](arkts-apis-avsession-AVMusicTemplate.md#onplayforsearch23)的示例。
 
 ## ExecuteActionEvent<sup>23+</sup>
 
@@ -691,7 +691,7 @@ type ExecuteActionEvent = (actionType: string, params: string) => Promise&lt;str
 
 **示例：**
 
-请参考[onExecuteAction](./arkts-apis-avsession-AVMusicTemplate.md#onExecuteAction23)的示例。
+请参考[onExecuteAction](arkts-apis-avsession-AVMusicTemplate.md#onexecuteaction23)的示例。
 
 ## PlayMediaEntityEvent<sup>23+</sup>
 
@@ -713,7 +713,7 @@ type PlayMediaEntityEvent = (mediaEntity: MediaEntity) => Promise&lt;void&gt;
 
 **示例：**
 
-请参考[onPlayMediaEntity](./arkts-apis-avsession-AVMusicTemplate.md#onPlayMediaEntity23)的示例。
+请参考[onPlayMediaEntity](arkts-apis-avsession-AVMusicTemplate.md#onplaymediaentity23)的示例。
 
 ## FavoriteMediaEntityEvent<sup>23+</sup>
 
@@ -731,7 +731,7 @@ type FavoriteMediaEntityEvent = (actionType: MediaFavoriteType, mediaEntity: Med
 
 | 参数名      | 类型                                                         | 必填 | 说明       |
 | ----------- | ------------------------------------------------------------ | ---- | ---------- |
-| actionType  | [MediaFavoriteType](##MediaFavoriteType23)                   | 是   | 操作类型。 |
+| actionType  | [MediaFavoriteType](#mediafavoritetype23)                   | 是   | 操作类型。 |
 | mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23) | 是   | 媒体实体。 |
 
 **返回值：**
@@ -742,7 +742,7 @@ type FavoriteMediaEntityEvent = (actionType: MediaFavoriteType, mediaEntity: Med
 
 **示例：**
 
-请参考[onFavoriteMediaEntity](./arkts-apis-avsession-AVMusicTemplate.md#onFavoriteMediaEntity23)的示例。
+请参考[onFavoriteMediaEntity](arkts-apis-avsession-AVMusicTemplate.md#onfavoritemediaentity23)的示例。
 
 ## MediaFavoriteType<sup>23+</sup>
 
@@ -818,13 +818,13 @@ type ReportDialogCommandEvent = (type: DialogControlType, buttonInfo: DialogInfo
 **参数：**
 
 | 参数名     | 类型                                                         | 必填 | 说明           |
-| ---------- | ------------------------------------------------------------ | ---- | -------------- |
-| type       | [DialogControlType](##DialogControlType23)                   | 是   | 弹框控制类型。 |
+| ---------- | ----------------------------------------------------------- | ---- | -------------- |
+| type       | [DialogControlType](#DialogControlType23)                   | 是   | 弹框控制类型。 |
 | buttonInfo | [DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo23) | 是   | 弹框信息。     |
 
 **示例：**
 
-请参考[onDialogCommandChange](./arkts-apis-avsession-AVMusicTemplateController.md#onDialogCommandChange23)的示例。
+请参考[onDialogCommandChange](arkts-apis-avsession-AVMusicTemplateController.md#ondialogcommandchange23)的示例。
 
 ## ReportTabContentEvent<sup>23+</sup>
 
@@ -847,7 +847,7 @@ type ReportTabContentEvent = (tabId: string, tabContent: MediaTabContent) => voi
 
 **示例：**
 
-请参考[onTabContentChange](./arkts-apis-avsession-AVMusicTemplateController.md#onTabContentChange23)的示例。
+请参考[onTabContentChange](arkts-apis-avsession-AVMusicTemplateController.md#ontabcontentchange23)的示例。
 
 ## ReportCustomElementsChangeEvent<sup>23+</sup>
 
@@ -864,14 +864,14 @@ type ReportCustomElementsChangeEvent = (actionType: ActionType, customType: Cust
 **参数：**
 
 | 参数名        | 类型                                                         | 必填 | 说明         |
-| ------------- | ------------------------------------------------------------ | ---- | ------------ |
-| actionType    | [ActionType](##ActionType23)                                 | 是   | 操作类型。   |
-| customType    | [CustomType](##CustomType23)                                 | 是   | 自定义类型。 |
+| ------------- | ----------------------------------------------------------- | ---- | ------------ |
+| actionType    | [ActionType](#actiontype23)                                | 是   | 操作类型。   |
+| customType    | [CustomType](#customtype23)                                 | 是   | 自定义类型。 |
 | customElement | [CustomElement](arkts-apis-avsession-AVMusicTemplate-i.md#customelement23) | 是   | 自定义元素。 |
 
 **示例：**
 
-请参考[onCustomElementsChange](./arkts-apis-avsession-AVMusicTemplateController.md#onCustomElementsChange23)的示例。
+请参考[onCustomElementsChange](arkts-apis-avsession-AVMusicTemplateController.md#oncustomelementschange23)的示例。
 
 ## ReportExecuteActionEvent<sup>23+</sup>
 
@@ -894,7 +894,7 @@ type ReportExecuteActionEvent = (actionType: string, params: string) => void
 
 **示例：**
 
-请参考[onReportExecuteAction](./arkts-apis-avsession-AVMusicTemplateController.md#onReportExecuteAction23)的示例。
+请参考[onReportExecuteAction](arkts-apis-avsession-AVMusicTemplateController.md#onreportexecuteaction23)的示例。
 
 ## ReportExecuteAbilityEvent<sup>23+</sup>
 
@@ -916,4 +916,4 @@ type ReportExecuteAbilityEvent = (want: WantAgent) => void
 
 **示例：**
 
-请参考[onExtensionAbilityChange](./arkts-apis-avsession-AVMusicTemplateController.md#onExtensionAbilityChange23)的示例。
+请参考[onExtensionAbilityChange](arkts-apis-avsession-AVMusicTemplateController.md#onextensionabilitychange23)的示例。
