@@ -301,6 +301,10 @@ on(type: 'progressUpdate', callback: Callback\<number>): void
 
 注册转码进度更新事件，并通过注册的回调方法通知开发者。开发者只能注册一个进度更新事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是onProgressUpdate。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
 **ArkTS-Dyn起始版本：** 12
@@ -326,6 +330,10 @@ off(type:'progressUpdate', callback?: Callback\<number>): void
 
 取消注册转码进度更新事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是offProgressUpdate。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
 **ArkTS-Dyn起始版本：** 12
@@ -350,6 +358,10 @@ on(type: 'error', callback: ErrorCallback): void
 注册AVTranscoder的错误事件，该事件仅用于错误提示。如果AVTranscoder上报error事件，开发者需要通过[release()](#release12)退出转码操作。
 
 开发者只能订阅一个错误事件的回调方法，当开发者重复订阅时，以最后一次订阅的回调接口为准。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是onError。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -393,6 +405,10 @@ off(type:'error', callback?: ErrorCallback): void
 
 取消注册转码错误事件，取消后不再接收到AVTranscoder的错误事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是offError。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
 **ArkTS-Dyn起始版本：** 12
@@ -417,6 +433,10 @@ on(type: 'complete', callback: Callback\<void>): void
 注册转码完成事件，并通过注册的回调方法通知开发者。开发者只能注册一个进度更新事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。
 
 当AVTranscoder上报complete事件时，当前转码操作已完成，开发者需要通过[release()](#release12)退出转码操作。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是onComplete。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
@@ -446,6 +466,10 @@ avTranscoder.on('complete', async () => {
 off(type:'complete', callback?: Callback\<void>): void
 
 取消注册转码完成事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是offComplete。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
