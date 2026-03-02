@@ -9,7 +9,7 @@
 >
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-调用[avMusicTemplate.createAVMusicTemplate](arkts-apis-avsession-AVMusicTemplate-f.md#createAVMusicTemplate23)后，返回实例，可以获得ID，启动音频模板界面，设置数据获取方法，同步数据给模板控制方等操作。
+调用[avMusicTemplate.createAVMusicTemplate](arkts-apis-avsession-AVMusicTemplate-f.md#createavmusictemplate23)后，返回实例，可以获得ID，启动音频模板界面，设置数据获取方法，同步数据给模板控制方等操作。
 
 ## 导入模块
 
@@ -100,7 +100,7 @@ startTemplate(): Promise&lt;OperResult&gt;
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise\<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md##OperResult23)> | Promise对象。返回操作结果。 |
+| Promise\<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)> | Promise对象。返回操作结果。 |
 
 **错误码：**
 
@@ -143,7 +143,7 @@ onQueryMainTabs(callback: QueryMainTabsEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明               |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
-| callback | [QueryMainTabsEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryMainTabsEvent23) | 是   | 查询主选项卡回调。 |
+| callback | [QueryMainTabsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymaintabsevent23) | 是   | 查询主选项卡回调。 |
 
 **返回值：**
 
@@ -220,7 +220,7 @@ offQueryMainTabs(callback?: QueryMainTabsEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明               |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
-| callback | [QueryMainTabsEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryMainTabsEvent23) | 否   | 查询主选项卡事件。 |
+| callback | [QueryMainTabsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymaintabsevent23) | 否   | 查询主选项卡事件。 |
 
 **返回值：**
 
@@ -248,7 +248,7 @@ onQueryMediaTabContent(callback: QueryMediaTabContentEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                       |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| callback | [QueryMediaTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryMediaTabContentEvent23) | 是   | 查询媒体标签页内容的事件。 |
+| callback | [QueryMediaTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediatabcontentevent23) | 是   | 查询媒体标签页内容的事件。 |
 
 **返回值：**
 
@@ -359,7 +359,7 @@ offQueryMediaTabContent(callback?: QueryMediaTabContentEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                       |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| callback | [QueryMediaTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryMediaTabContentEvent23) | 否   | 查询媒体标签页内容的事件。 |
+| callback | [QueryMediaTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediatabcontentevent23) | 否   | 查询媒体标签页内容的事件。 |
 
 **返回值：**
 
@@ -387,7 +387,7 @@ onQueryMediaEntity(callback: QueryMediaEntityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryMediaEntityEvent23) | 是   | 查询媒体实体的事件。 |
+| callback | [QueryMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentityevent23) | 是   | 查询媒体实体的事件。 |
 
 **返回值：**
 
@@ -484,7 +484,7 @@ offQueryMediaEntity(callback?: QueryMediaEntityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryMediaEntityEvent23) | 否   | 查询媒体实体的事件。 |
+| callback | [QueryMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentityevent23) | 否   | 查询媒体实体的事件。 |
 
 **返回值：**
 
@@ -512,7 +512,7 @@ onQueryCompilation(callback: QueryCompilationEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [QueryCompilationEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryCompilationEvent23) | 是   | 查询合集的事件。 |
+| callback | [QueryCompilationEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationevent23) | 是   | 查询合集的事件。 |
 
 **返回值：**
 
@@ -609,7 +609,7 @@ offQueryCompilation(callback?: QueryCompilationEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [QueryCompilationEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryCompilationEvent23) | 否   | 查询合集的事件。 |
+| callback | [QueryCompilationEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationevent23) | 否   | 查询合集的事件。 |
 
 **返回值：**
 
@@ -637,7 +637,7 @@ onQueryPlaylist(callback: QueryPlaylistEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryPlaylistEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryPlaylistEvent23) | 是   | 查询播放列表的事件。 |
+| callback | [QueryPlaylistEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryplaylistevent23) | 是   | 查询播放列表的事件。 |
 
 **返回值：**
 
@@ -734,7 +734,7 @@ offQueryPlaylist(callback?: QueryPlaylistEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryPlaylistEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryPlaylistEvent23) | 否   | 查询播放列表的事件。 |
+| callback | [QueryPlaylistEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryplaylistevent23) | 否   | 查询播放列表的事件。 |
 
 **返回值：**
 
@@ -762,7 +762,7 @@ onQueryCurrentSingle(callback: QueryCurrentSingleEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryCurrentSingleEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryCurrentSingleEvent23) | 是   | 查询当前单曲的事件。 |
+| callback | [QueryCurrentSingleEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycurrentsingleevent23) | 是   | 查询当前单曲的事件。 |
 
 **返回值：**
 
@@ -870,7 +870,7 @@ offQueryCurrentSingle(callback?: QueryCurrentSingleEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryCurrentSingleEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryCurrentSingleEvent23) | 否   | 查询当前单曲的事件。 |
+| callback | [QueryCurrentSingleEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycurrentsingleevent23) | 否   | 查询当前单曲的事件。 |
 
 **返回值：**
 
@@ -898,7 +898,7 @@ onQueryCompilationByKeyword(callback: QueryCompilationByKeywordEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback | [QueryCompilationByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryCompilationByKeywordEvent23) | 是   | 按关键字查询合集的事件。 |
+| callback | [QueryCompilationByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationbykeywordevent23) | 是   | 按关键字查询合集的事件。 |
 
 **返回值：**
 
@@ -995,7 +995,7 @@ offQueryCompilationByKeyword(callback?: QueryCompilationByKeywordEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback | [QueryCompilationByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryCompilationByKeywordEvent23) | 否   | 按关键字查询合集的事件。 |
+| callback | [QueryCompilationByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationbykeywordevent23) | 否   | 按关键字查询合集的事件。 |
 
 **返回值：**
 
@@ -1023,7 +1023,7 @@ onQueryMediaEntityByKeyword(callback: QueryMediaEntityByKeywordEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                         |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------- |
-| callback | [QueryMediaEntityByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryMediaEntityByKeywordEvent23) | 是   | 按关键字查询媒体实体的事件。 |
+| callback | [QueryMediaEntityByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentitybykeywordevent23) | 是   | 按关键字查询媒体实体的事件。 |
 
 **返回值：**
 
@@ -1120,7 +1120,7 @@ offQueryMediaEntityByKeyword(callback?: QueryMediaEntityByKeywordEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                         |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------- |
-| callback | [QueryMediaEntityByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryMediaEntityByKeywordEvent23) | 否   | 按关键字查询媒体实体的事件。 |
+| callback | [QueryMediaEntityByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentitybykeywordevent23) | 否   | 按关键字查询媒体实体的事件。 |
 
 **返回值：**
 
@@ -1148,7 +1148,7 @@ onQueryRecommendMediaEntityList(callback: QueryRecommendMediaEntityListEvent): v
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback | [QueryRecommendMediaEntityListEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryRecommendMediaEntityListEvent23) | 是   | 查询推荐媒体列表的事件。 |
+| callback | [QueryRecommendMediaEntityListEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryrecommendmediaentitylistevent23) | 是   | 查询推荐媒体列表的事件。 |
 
 **返回值：**
 
@@ -1226,7 +1226,7 @@ offQueryRecommendMediaEntityList(callback?: QueryRecommendMediaEntityListEvent):
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback | [QueryRecommendMediaEntityListEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryRecommendMediaEntityListEvent23) | 否   | 查询推荐媒体列表的事件。 |
+| callback | [QueryRecommendMediaEntityListEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryrecommendmediaentitylistevent23) | 否   | 查询推荐媒体列表的事件。 |
 
 **返回值：**
 
@@ -1254,7 +1254,7 @@ onQueryHotWords(callback: QueryHotWordsEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [QueryHotWordsEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryHotWordsEvent23) | 是   | 查询热词的事件。 |
+| callback | [QueryHotWordsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryhotwordsevent23) | 是   | 查询热词的事件。 |
 
 **返回值：**
 
@@ -1313,7 +1313,7 @@ offQueryHotWords(callback?: QueryHotWordsEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [QueryHotWordsEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryHotWordsEvent23) | 否   | 查询热词的事件。 |
+| callback | [QueryHotWordsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryhotwordsevent23) | 否   | 查询热词的事件。 |
 
 **返回值：**
 
@@ -1341,7 +1341,7 @@ onQuerySearchHistory(callback: QuerySearchHistoryEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QuerySearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QuerySearchHistoryEvent23) | 是   | 查询搜索历史的事件。 |
+| callback | [QuerySearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querysearchhistoryevent23) | 是   | 查询搜索历史的事件。 |
 
 **返回值：**
 
@@ -1400,7 +1400,7 @@ offQuerySearchHistory(callback?: QuerySearchHistoryEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QuerySearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QuerySearchHistoryEvent23) | 否   | 查询搜索历史的事件。 |
+| callback | [QuerySearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querysearchhistoryevent23) | 否   | 查询搜索历史的事件。 |
 
 **返回值：**
 
@@ -1428,7 +1428,7 @@ onClearSearchHistory(callback: ClearSearchHistoryEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [ClearSearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md##ClearSearchHistoryEvent23) | 是   | 清除搜索历史的事件。 |
+| callback | [ClearSearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#clearsearchhistoryevent23) | 是   | 清除搜索历史的事件。 |
 
 **返回值：**
 
@@ -1499,7 +1499,7 @@ offClearSearchHistory(callback?: ClearSearchHistoryEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [ClearSearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md##ClearSearchHistoryEvent23) | 否   | 清除搜索历史的事件。 |
+| callback | [ClearSearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#clearsearchhistoryevent23) | 否   | 清除搜索历史的事件。 |
 
 **返回值：**
 
@@ -1527,7 +1527,7 @@ onLogin(callback: LoginEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明       |
 | -------- | ------------------------------------------------------------ | ---- | ---------- |
-| callback | [LoginEvent](arkts-apis-avsession-AVMusicTemplate-t.md##LoginEvent23) | 是   | 登录事件。 |
+| callback | [LoginEvent](arkts-apis-avsession-AVMusicTemplate-t.md#loginevent23) | 是   | 登录事件。 |
 
 **返回值：**
 
@@ -1605,7 +1605,7 @@ offLogin(callback?: LoginEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明       |
 | -------- | ------------------------------------------------------------ | ---- | ---------- |
-| callback | [LoginEvent](arkts-apis-avsession-AVMusicTemplate-t.md##LoginEvent23) | 否   | 登录事件。 |
+| callback | [LoginEvent](arkts-apis-avsession-AVMusicTemplate-t.md#loginevent23) | 否   | 登录事件。 |
 
 **返回值：**
 
@@ -1633,7 +1633,7 @@ onRequestDialogInfo(callback: RequestDialogInfoEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [RequestDialogInfoEvent](arkts-apis-avsession-AVMusicTemplate-t.md##RequestDialogInfoEvent23) | 是   | 请求弹框信息的事件。 |
+| callback | [RequestDialogInfoEvent](arkts-apis-avsession-AVMusicTemplate-t.md#requestdialoginfoevent23) | 是   | 请求弹框信息的事件。 |
 
 **返回值：**
 
@@ -1717,7 +1717,7 @@ offRequestDialogInfo(callback?: RequestDialogInfoEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [RequestDialogInfoEvent](arkts-apis-avsession-AVMusicTemplate-t.md##RequestDialogInfoEvent23) | 否   | 请求弹框信息的事件。 |
+| callback | [RequestDialogInfoEvent](arkts-apis-avsession-AVMusicTemplate-t.md#requestdialoginfoevent23) | 否   | 请求弹框信息的事件。 |
 
 **返回值：**
 
@@ -1745,7 +1745,7 @@ onHandleMemberPurchase(callback: HandleMemberPurchaseEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [HandleMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md##HandleMemberPurchaseEvent23) | 是   | 处理购买会员的事件。 |
+| callback | [HandleMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#handlememberpurchaseevent23) | 是   | 处理购买会员的事件。 |
 
 **返回值：**
 
@@ -1829,7 +1829,7 @@ offHandleMemberPurchase(callback?: HandleMemberPurchaseEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [HandleMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md##HandleMemberPurchaseEvent23) | 否   | 处理购买会员的事件。 |
+| callback | [HandleMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#handlememberpurchaseevent23) | 否   | 处理购买会员的事件。 |
 
 **返回值：**
 
@@ -1857,7 +1857,7 @@ onQueryMemberPurchase(callback: QueryMemberPurchaseEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryMemberPurchaseEvent23) | 是   | 查询购买会员的事件。 |
+| callback | [QueryMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymemberpurchaseevent23) | 是   | 查询购买会员的事件。 |
 
 **返回值：**
 
@@ -1933,7 +1933,7 @@ offQueryMemberPurchase(callback?: QueryMemberPurchaseEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryMemberPurchaseEvent23) | 否   | 查询购买会员的事件。 |
+| callback | [QueryMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymemberpurchaseevent23) | 否   | 查询购买会员的事件。 |
 
 **返回值：**
 
@@ -1961,7 +1961,7 @@ onQueryCustomContent(callback: QueryCustomContentEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                   |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| callback | [QueryCustomContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryCustomContentEvent23) | 是   | 查询自定义内容的事件。 |
+| callback | [QueryCustomContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycustomcontentevent23) | 是   | 查询自定义内容的事件。 |
 
 **返回值：**
 
@@ -2053,7 +2053,7 @@ offQueryCustomContent(callback?: QueryCustomContentEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                   |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| callback | [QueryCustomContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md##QueryCustomContentEvent23) | 否   | 查询自定义内容的事件。 |
+| callback | [QueryCustomContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycustomcontentevent23) | 否   | 查询自定义内容的事件。 |
 
 **返回值：**
 
@@ -2081,7 +2081,7 @@ onDownloadMediaEntity(callback: DownloadMediaEntityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [DownloadMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md##DownloadMediaEntityEvent23) | 是   | 下载媒体实体的事件。 |
+| callback | [DownloadMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#downloadmediaentityevent23) | 是   | 下载媒体实体的事件。 |
 
 **返回值：**
 
@@ -2176,7 +2176,7 @@ offDownloadMediaEntity(callback?: DownloadMediaEntityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [DownloadMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md##DownloadMediaEntityEvent23) | 否   | 下载媒体实体的事件。 |
+| callback | [DownloadMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#downloadmediaentityevent23) | 否   | 下载媒体实体的事件。 |
 
 **返回值：**
 
@@ -2204,7 +2204,7 @@ onSettingsChange(callback: SettingsChangeEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [SettingsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md##SettingsChangeEvent23) | 是   | 设置改变的事件。 |
+| callback | [SettingsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#settingschangeevent23) | 是   | 设置改变的事件。 |
 
 **返回值：**
 
@@ -2281,7 +2281,7 @@ offSettingsChange(callback?: SettingsChangeEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [SettingsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md##SettingsChangeEvent23) | 否   | 设置改变的事件。 |
+| callback | [SettingsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#settingschangeevent23) | 否   | 设置改变的事件。 |
 
 **返回值：**
 
@@ -2309,7 +2309,7 @@ onProblemAndAdvice(callback: ProblemAndAdviceEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                   |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md##ProblemAndAdviceEvent23) | 是   | 问题与建议活动的事件。 |
+| callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md#problemandadviceevent23) | 是   | 问题与建议活动的事件。 |
 
 **返回值：**
 
@@ -2380,7 +2380,7 @@ offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                   |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md##ProblemAndAdviceEvent23) | 否   | 问题与建议活动的事件。 |
+| callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md#problemandadviceevent23) | 否   | 问题与建议活动的事件。 |
 
 **返回值：**
 
@@ -2408,7 +2408,7 @@ onPlayForSearch(callback: PlayForSearchEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明         |
 | -------- | ------------------------------------------------------------ | ---- | ------------ |
-| callback | [PlayForSearchEvent](arkts-apis-avsession-AVMusicTemplate-t.md##PlayForSearchEvent23) | 是   | 搜播的事件。 |
+| callback | [PlayForSearchEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playforsearchevent23) | 是   | 搜播的事件。 |
 
 **返回值：**
 
@@ -2480,7 +2480,7 @@ offPlayForSearch(callback?: PlayForSearchEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明         |
 | -------- | ------------------------------------------------------------ | ---- | ------------ |
-| callback | [PlayForSearchEvent](arkts-apis-avsession-AVMusicTemplate-t.md##PlayForSearchEvent23) | 否   | 搜播的事件。 |
+| callback | [PlayForSearchEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playforsearchevent23) | 否   | 搜播的事件。 |
 
 **返回值：**
 
@@ -2508,7 +2508,7 @@ onExecuteAction(callback: ExecuteActionEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [ExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md##ExecuteActionEvent23) | 是   | 执行操作的事件。 |
+| callback | [ExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#executeactionevent23) | 是   | 执行操作的事件。 |
 
 **返回值：**
 
@@ -2566,7 +2566,7 @@ offExecuteAction(callback?: ExecuteActionEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [ExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md##ExecuteActionEvent23) | 否   | 执行操作的事件。 |
+| callback | [ExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#executeactionevent23) | 否   | 执行操作的事件。 |
 
 **返回值：**
 
@@ -2594,7 +2594,7 @@ onPlayMediaEntity(callback: PlayMediaEntityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [PlayMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md##PlayMediaEntityEvent23) | 是   | 播放媒体实体的事件。 |
+| callback | [PlayMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playmediaentityevent23) | 是   | 播放媒体实体的事件。 |
 
 **返回值：**
 
@@ -2647,7 +2647,7 @@ offPlayMediaEntity(callback?: PlayMediaEntityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [PlayMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md##PlayMediaEntityEvent23) | 否   | 播放媒体实体的事件。 |
+| callback | [PlayMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playmediaentityevent23) | 否   | 播放媒体实体的事件。 |
 
 **返回值：**
 
@@ -2675,7 +2675,7 @@ onFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [FavoriteMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md##FavoriteMediaEntityEvent23) | 是   | 收藏媒体实体的事件。 |
+| callback | [FavoriteMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#favoritemediaentityevent23) | 是   | 收藏媒体实体的事件。 |
 
 **返回值：**
 
@@ -2747,7 +2747,7 @@ offFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [FavoriteMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md##FavoriteMediaEntityEvent23) | 否   | 收藏媒体实体的事件。 |
+| callback | [FavoriteMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#favoritemediaentityevent23) | 否   | 收藏媒体实体的事件。 |
 
 **返回值：**
 
@@ -2775,7 +2775,7 @@ setUserInfo(userInfo: UserInfo): Promise&lt;void&gt;
 
 | 参数名   | 类型                                                         | 必填 | 说明       |
 | -------- | ------------------------------------------------------------ | ---- | ---------- |
-| userInfo | [UserInfo](arkts-apis-avsession-AVMusicTemplate-i.md##UserInfo23) | 是   | 用户信息。 |
+| userInfo | [UserInfo](arkts-apis-avsession-AVMusicTemplate-i.md#userinfo23) | 是   | 用户信息。 |
 
 **返回值：**
 
@@ -2835,8 +2835,8 @@ setDialogCommand(type: DialogControlType, dialogInfo: DialogInfo): Promise&lt;vo
 
 | 参数名     | 类型                                                         | 必填 | 说明           |
 | ---------- | ------------------------------------------------------------ | ---- | -------------- |
-| type       | [DialogControlType](arkts-apis-avsession-AVMusicTemplate-t.md##DialogControlType23) | 是   | 弹框控制类型。 |
-| dialogInfo | [DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md##DialogInfo23) | 是   | 弹框信息。     |
+| type       | [DialogControlType](arkts-apis-avsession-AVMusicTemplate-t.md#dialogcontroltype23) | 是   | 弹框控制类型。 |
+| dialogInfo | [DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo23) | 是   | 弹框信息。     |
 
 **返回值：**
 
@@ -2891,7 +2891,7 @@ setCurrentSingle(single: Single): Promise&lt;void&gt;
 
 | 参数名 | 类型                                                         | 必填 | 说明       |
 | ------ | ------------------------------------------------------------ | ---- | ---------- |
-| single | [Single](arkts-apis-avsession-AVMusicTemplate-i.md##Single23) | 是   | 当前单曲。 |
+| single | [Single](arkts-apis-avsession-AVMusicTemplate-i.md#single23) | 是   | 当前单曲。 |
 
 **返回值：**
 
@@ -2979,7 +2979,7 @@ setMediaEntities(entities: MediaEntity[]): Promise&lt;void&gt;
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| entities | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md##MediaEntity23)[] | 是   | 媒体实体的数组。 |
+| entities | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23)[] | 是   | 媒体实体的数组。 |
 
 **返回值：**
 
@@ -3029,7 +3029,7 @@ setTabContent(tabId: string, tabContent: MediaTabContent): Promise&lt;void&gt;
 | 参数名     | 类型                                                         | 必填 | 说明             |
 | ---------- | ------------------------------------------------------------ | ---- | ---------------- |
 | tabId      | string                                                       | 是   | 标签的ID。       |
-| tabContent | [MediaTabContent](arkts-apis-avsession-AVMusicTemplate-i.md##MediaTabContent23) | 是   | 媒体标签页内容。 |
+| tabContent | [MediaTabContent](arkts-apis-avsession-AVMusicTemplate-i.md#mediatabcontent23) | 是   | 媒体标签页内容。 |
 
 **返回值：**
 
@@ -3093,7 +3093,7 @@ setPlaylist(playlist: PageMediaEntity): Promise&lt;void&gt;
 
 | 参数名   | 类型                                                         | 必填 | 说明           |
 | -------- | ------------------------------------------------------------ | ---- | -------------- |
-| playlist | [PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md##PageMediaEntity23) | 是   | 分页媒体实体。 |
+| playlist | [PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity23) | 是   | 分页媒体实体。 |
 
 **返回值：**
 
@@ -3153,7 +3153,7 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise&lt;void&gt;
 
 | 参数名 | 类型                                                         | 必填 | 说明       |
 | ------ | ------------------------------------------------------------ | ---- | ---------- |
-| single | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md##MediaEntity23) | 是   | 媒体实体。 |
+| single | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23) | 是   | 媒体实体。 |
 
 **返回值：**
 
@@ -3181,9 +3181,9 @@ setCustomElements(actionType: ActionType, customType: CustomType, customElement:
 
 | 参数名        | 类型                                                         | 必填 | 说明         |
 | ------------- | ------------------------------------------------------------ | ---- | ------------ |
-| actionType    | [ActionType](arkts-apis-avsession-AVMusicTemplate-t.md##ActionType23) | 是   | 操作类型。   |
-| customType    | [CustomType](arkts-apis-avsession-AVMusicTemplate-t.md##CustomType23) | 是   | 自定义类型。 |
-| customElement | [CustomElement](arkts-apis-avsession-AVMusicTemplate-i.md##CustomElement23) | 是   | 自定义元素。 |
+| actionType    | [ActionType](arkts-apis-avsession-AVMusicTemplate-t.md#actiontype23) | 是   | 操作类型。   |
+| customType    | [CustomType](arkts-apis-avsession-AVMusicTemplate-t.md#customtype23) | 是   | 自定义类型。 |
+| customElement | [CustomElement](arkts-apis-avsession-AVMusicTemplate-i.md#customelement23) | 是   | 自定义元素。 |
 
 **返回值：**
 
@@ -3247,7 +3247,7 @@ setSettings(settingItems: SettingItem[]): Promise&lt;void&gt;
 
 | 参数名       | 类型                                                         | 必填 | 说明         |
 | ------------ | ------------------------------------------------------------ | ---- | ------------ |
-| settingItems | [SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md##SettingItem23) | 是   | 设置项数组。 |
+| settingItems | [SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem23) | 是   | 设置项数组。 |
 
 **返回值：**
 

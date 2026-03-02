@@ -59,7 +59,7 @@
 
 ## MediaTabContent<sup>23+</sup>
 
-媒体标签页内容的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#OperResult)的子类
+媒体标签页内容的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)的子类
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -74,7 +74,7 @@
 
 ## Compilation<sup>23+</sup>
 
-合集的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#OperResult)的子类
+合集的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)的子类
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -88,7 +88,7 @@
 | title           | string                                                       | 否   | 否   | 合集的标题。                                      |
 | hasMoreData     | boolean                                                      | 否   | 否   | 是否有更多的合集数据。true表示有，false表示没有。 |
 | totalSize       | int                                                          | 否   | 否   | 合集内音频的个数。                                |
-| memberMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md##EntityType23+) | 否   | 否   | 合集的媒体资源类型                                |
+| memberMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype23+) | 否   | 否   | 合集的媒体资源类型                                |
 | topElements     | [MediaEntity](#MediaEntity23+)                               | 否   | 否   | 合集的内容                                        |
 
 ## Banner<sup>23+</sup>
@@ -138,7 +138,7 @@
 
 ## MediaEntity<sup>23+</sup>
 
-媒体实例的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#OperResult)的子类
+媒体实例的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)的子类
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -149,13 +149,13 @@
 | 名称            | 类型                                                         | 只读 | 可选 | 说明                    |
 | --------------- | ------------------------------------------------------------ | ---- | ---- | ----------------------- |
 | mediaId         | string                                                       | 否   | 否   | 媒体资源的ID。          |
-| mediaType       | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md##EntityType23+) | 否   | 否   | 媒体资源的类型。        |
+| mediaType       | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype23+) | 否   | 否   | 媒体资源的类型。        |
 | parentId        | string                                                       | 否   | 否   | 父级的媒体资源ID。      |
-| parentMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md##EntityType23+) | 否   | 否   | 父级的媒体资源类型。    |
+| parentMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype23+) | 否   | 否   | 父级的媒体资源类型。    |
 | title           | string                                                       | 否   | 否   | 媒体资源的标题。        |
 | desc            | string                                                       | 否   | 是   | 媒体资源的描述。        |
 | imageUrl        | string                                                       | 否   | 否   | 媒体资源的封面图片URL。 |
-| playState       | [PlaybackState](arkts-apis-avsession-AVMusicTemplate-e.md#PlaybackState23) | 否   | 否   | 媒体资源的播放状态。    |
+| playState       | [PlaybackState](arkts-apis-avsession-AVMusicTemplate-e.md#playbackstate23) | 否   | 否   | 媒体资源的播放状态。    |
 
 ## QueryMediaEntityParam<sup>23+</sup>
 
@@ -171,10 +171,10 @@
 | ------------- | ------------------------------------------------------------ | ---- | ---- | -------------------- |
 | entityId      | string                                                       | 否   | 否   | 媒体实例的ID。       |
 | pageIndex     | int                                                          | 否   | 否   | 媒体标签页的索引。   |
-| type          | [EntityType](arkts-apis-avsession-AVMusicTemplate-i.md#EntityType) | 否   | 否   | 媒体资源类型。       |
-| subEntityType | [EntityType](arkts-apis-avsession-AVMusicTemplate-i.md#EntityType) | 否   | 是   | 下级的媒体资源类型。 |
-| sort          | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#Sort)       | 否   | 是   | 排序。               |
-| episodeRange  | [EpisodeRange](arkts-apis-avsession-AVMusicTemplate-i.md#EpisodeRange) | 否   | 是   | 要查询的剧集区间。   |
+| type          | [EntityType](arkts-apis-avsession-AVMusicTemplate-i.md#entitytype) | 否   | 否   | 媒体资源类型。       |
+| subEntityType | [EntityType](arkts-apis-avsession-AVMusicTemplate-i.md#entitytype) | 否   | 是   | 下级的媒体资源类型。 |
+| sort          | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort)       | 否   | 是   | 排序。               |
+| episodeRange  | [EpisodeRange](arkts-apis-avsession-AVMusicTemplate-i.md#episoderange) | 否   | 是   | 要查询的剧集区间。   |
 
 ## EpisodeRange<sup>23+</sup>
 
@@ -193,7 +193,7 @@
 
 ## PageMediaEntity<sup>23+</sup>
 
-标签页媒体的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#OperResult)的子类
+标签页媒体的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)的子类
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -207,14 +207,14 @@
 | pageSize        | int                                                          | 否   | 否   | 页面的大小。                              |
 | hasMoreData     | boolean                                                      | 否   | 否   | 是否有下一页。true表示有，false表示没有。 |
 | totalSize       | int                                                          | 否   | 否   | 数据总大小。                              |
-| memberMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md##EntityType23+) | 否   | 否   | 媒体资源类型。                            |
-| elements        | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#MediaEntity)[] | 否   | 否   | 媒体实例的数组                            |
-| sort            | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#Sort)       | 否   | 是   | 排序                                      |
-| episodeRange    | [EpisodeRange](arkts-apis-avsession-AVMusicTemplate-i.md#EpisodeRange) | 否   | 是   | 剧集区间                                  |
+| memberMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype23+) | 否   | 否   | 媒体资源类型。                            |
+| elements        | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[] | 否   | 否   | 媒体实例的数组                            |
+| sort            | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort)       | 否   | 是   | 排序                                      |
+| episodeRange    | [EpisodeRange](arkts-apis-avsession-AVMusicTemplate-i.md#episoderange) | 否   | 是   | 剧集区间                                  |
 
 ## Single<sup>23+</sup>
 
-单曲的定义。[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#MediaEntity)的子类
+单曲的定义。[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)的子类
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -226,11 +226,11 @@
 | ---------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------ |
 | isVip            | boolean                                                      | 否   | 否   | 是否是VIP歌曲。true表示是，false表示不是。 |
 | singer           | string                                                       | 否   | 否   | 歌手的名字。                               |
-| playInfo         | [PlayInfo](arkts-apis-avsession-AVMusicTemplate-i.md#PlayInfo) | 否   | 否   | 播放信息。                                 |
-| favSubscribeData | [FavoriteData](arkts-apis-avsession-AVMusicTemplate-i.md#FavoriteData) | 否   | 否   | 收藏或订阅的信息。                         |
+| playInfo         | [PlayInfo](arkts-apis-avsession-AVMusicTemplate-i.md#playinfo) | 否   | 否   | 播放信息。                                 |
+| favSubscribeData | [FavoriteData](arkts-apis-avsession-AVMusicTemplate-i.md#favoritedata) | 否   | 否   | 收藏或订阅的信息。                         |
 | tags             | string[]                                                     | 否   | 是   | 歌曲标签信息的数组。                       |
 | settings         | [SettingItem](##SettingItem23)[]                             | 否   | 是   | 歌曲设置项的数组。                         |
-| downloadStatus   | [DownloadStatus](arkts-apis-avsession-AVMusicTemplate-e.md#DownloadStatus23) | 否   | 是   | 下载状态。                                 |
+| downloadStatus   | [DownloadStatus](arkts-apis-avsession-AVMusicTemplate-e.md#downloadstatus23) | 否   | 是   | 下载状态。                                 |
 | downloadProgress | int                                                          | 否   | 是   | 下载进度。                                 |
 
 ## PlayInfo<sup>23+</sup>
@@ -295,8 +295,8 @@
 | id           | string                                                       | 否   | 否   | 设置项的ID。             |
 | title        | string                                                       | 否   | 否   | 设置项的标题。           |
 | desc         | string                                                       | 否   | 否   | 设置项的描述。           |
-| settingType  | [SettingType](arkts-apis-avsession-AVMusicTemplate-e.md#SettingType23+) | 否   | 是   | 设置项的类型。           |
-| settingValue | string \| boolean \| [SettingContent](arkts-apis-avsession-AVMusicTemplate-i.md#SettingContent)[] \| [WantAgent](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#WantAgent) | 否   | 是   | 设置项的值。             |
+| settingType  | [SettingType](arkts-apis-avsession-AVMusicTemplate-e.md#settingtype23+) | 否   | 是   | 设置项的类型。           |
+| settingValue | string \| boolean \| [SettingContent](arkts-apis-avsession-AVMusicTemplate-i.md#settingcontent)[] \| [WantAgent](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#WantAgent) | 否   | 是   | 设置项的值。             |
 | mediaId      | string                                                       | 否   | 否   | 与当前设置关联的媒体ID。 |
 
 ## SettingContent<sup>23+</sup>
@@ -318,7 +318,7 @@
 
 ## PageMediaEntity<sup>23+</sup>
 
-设置内容的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#OperResult)的子类。
+设置内容的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)的子类。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -384,10 +384,10 @@
 | 名称        | 类型                                                         | 只读 | 可选 | 说明                 |
 | ----------- | ------------------------------------------------------------ | ---- | ---- | -------------------- |
 | dialogId    | string                                                       | 否   | 否   | 弹框的ID。           |
-| dialogType  | [DialogType](arkts-apis-avsession-AVMusicTemplate-e.md##DialogType23) | 否   | 否   | 弹框的类型。         |
+| dialogType  | [DialogType](arkts-apis-avsession-AVMusicTemplate-e.md#dialogtype23) | 否   | 否   | 弹框的类型。         |
 | title       | string                                                       | 否   | 是   | 弹框的标题。         |
 | text        | string                                                       | 否   | 是   | 弹框的内容。         |
-| buttons     | [DialogButtonInfo](arkts-apis-avsession-AVMusicTemplate-i.md##DialogButtonInfo23)[] | 否   | 是   | 弹框的按钮的数组。   |
+| buttons     | [DialogButtonInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialogbuttoninfo23)[] | 否   | 是   | 弹框的按钮的数组。   |
 | qrCodes     | [QrCodeInfo](##QrCodeInfo23)[]                               | 否   | 是   | 弹框的二维码的数组。 |
 | description | string                                                       | 否   | 是   | 对话框的其他信息。   |
 
@@ -405,7 +405,7 @@
 | ---------- | ------------------------------------------------------------ | ---- | ---- | ------------ |
 | buttonId   | string                                                       | 否   | 否   | 按钮的ID。   |
 | buttonText | string                                                       | 否   | 否   | 按钮的文本。 |
-| buttonType | [ButtonType](arkts-apis-avsession-AVMusicTemplate-e.md##ButtonType23) | 否   | 否   | 按钮的类型。 |
+| buttonType | [ButtonType](arkts-apis-avsession-AVMusicTemplate-e.md#buttontype23) | 否   | 否   | 按钮的类型。 |
 
 ## MemberPurchaseInfo<sup>23+</sup>
 
@@ -423,11 +423,11 @@
 | diagramUrl         | string                                                       | 否   | 否   | 会员购买演示的URL必须采用21:9的宽高比。 |
 | diagramData        | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 会员购买图片。                          |
 | diagramContent     | string                                                       | 否   | 否   | 会员购买图片的内容。                    |
-| memberPurchaseType | [MemberPurchaseType](arkts-apis-avsession-AVMusicTemplate-e.md##MemberPurchaseType23) | 否   | 否   | 会员购买类型。                          |
+| memberPurchaseType | [MemberPurchaseType](arkts-apis-avsession-AVMusicTemplate-e.md#memberpurchasetype23) | 否   | 否   | 会员购买类型。                          |
 
 ## CustomElement<sup>23+</sup>
 
-我的页面的自定义元素的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#OperResult)的子类。
+我的页面的自定义元素的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)的子类。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 

@@ -9,7 +9,7 @@
 >
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-调用[avMusicTemplate.createAVMusicTemplateController](arkts-apis-avsession-AVMusicTemplate-f.md#createAVMusicTemplateController23)后，返回实例，可以获得ID，查询等操作。
+调用[avMusicTemplate.createAVMusicTemplateController](arkts-apis-avsession-AVMusicTemplate-f.md#createavmusictemplatecontroller23)后，返回实例，可以获得ID，查询等操作。
 
 ## 导入模块
 
@@ -193,7 +193,7 @@ queryMainTabs(): Promise&lt;MediaTab[]&gt;
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise<[MediaTab](arkts-apis-avsession-AVMusicTemplate-i.md##MediaTab23)[]> | Promise对象。返回媒体标签页数组。 |
+| Promise<[MediaTab](arkts-apis-avsession-AVMusicTemplate-i.md#mediatab23)[]> | Promise对象。返回媒体标签页数组。 |
 
 **示例：**
 
@@ -247,7 +247,7 @@ queryMediaTabContent(tabId: string): Promise&lt;MediaTabContent&gt;
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise<[MediaTabContent](arkts-apis-avsession-AVMusicTemplate-i.md##MediaTabContent23)> | Promise对象。返回媒体标签页内容。 |
+| Promise<[MediaTabContent](arkts-apis-avsession-AVMusicTemplate-i.md#mediatabcontent23)> | Promise对象。返回媒体标签页内容。 |
 
 **示例：**
 
@@ -297,13 +297,13 @@ queryMediaEntity(params: QueryMediaEntityParam): Promise&lt;PageMediaEntity&gt;
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| params | [QueryMediaEntityParam](arkts-apis-avsession-AVMusicTemplate-i.md##QueryMediaEntityParam23) | 是   | 查询媒体实体参数。 |
+| params | [QueryMediaEntityParam](arkts-apis-avsession-AVMusicTemplate-i.md#querymediaentityparam23) | 是   | 查询媒体实体参数。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                                  |
 | ------------------------------------------------------------ | ------------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md##PageMediaEntity23)> | Promise对象。返回标签页媒体实体内容。 |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity23)> | Promise对象。返回标签页媒体实体内容。 |
 
 **示例：**
 
@@ -367,7 +367,7 @@ queryCompilation(compilationId: string, pageIndex: int): Promise&lt;PageMediaEnt
 
 | 类型                                                         | 说明                                  |
 | ------------------------------------------------------------ | ------------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md##PageMediaEntity23)> | Promise对象。返回标签页媒体实体内容。 |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity23)> | Promise对象。返回标签页媒体实体内容。 |
 
 **示例：**
 
@@ -421,13 +421,13 @@ queryPlaylist(pageIndex: int, sort: Sort): Promise&lt;PageMediaEntity&gt;
 | 参数名    | 类型                                                      | 必填 | 说明           |
 | --------- | --------------------------------------------------------- | ---- | -------------- |
 | pageIndex | int                                                       | 是   | 标签页的索引。 |
-| sort      | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md##Sort23) | 是   | 排序类型。     |
+| sort      | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort23) | 是   | 排序类型。     |
 
 **返回值：**
 
 | 类型                                                         | 说明                                  |
 | ------------------------------------------------------------ | ------------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md##PageMediaEntity23)> | Promise对象。返回标签页媒体实体内容。 |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity23)> | Promise对象。返回标签页媒体实体内容。 |
 
 **示例：**
 
@@ -480,7 +480,7 @@ queryCurrentSingle(): Promise&lt;Single&gt;
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[Single](arkts-apis-avsession-AVMusicTemplate-i.md##Single23)> | Promise对象。返回当前单曲。 |
+| Promise<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single23)> | Promise对象。返回当前单曲。 |
 
 **示例：**
 
@@ -536,7 +536,7 @@ queryCompilationByKeyword(keyword: string): Promise&lt;Compilation[]&gt;
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md##Compilation23)[]> | Promise对象。返回合集数组。 |
+| Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md#compilation23)[]> | Promise对象。返回合集数组。 |
 
 **示例：**
 
@@ -588,14 +588,14 @@ queryMediaEntityByKeyword(keyword: string, searchType: EntityType, pageIndex: in
 | 参数名     | 类型                                                         | 必填 | 说明           |
 | ---------- | ------------------------------------------------------------ | ---- | -------------- |
 | keyword    | string                                                       | 是   | 关键字。       |
-| searchType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md##EntityType23) | 是   | 媒体资源类型。 |
+| searchType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype23) | 是   | 媒体资源类型。 |
 | pageIndex  | int                                                          | 是   | 标签页索引。   |
 
 **返回值：**
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md##Compilation23)[]> | Promise对象。返回合集数组。 |
+| Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md#compilation23)[]> | Promise对象。返回合集数组。 |
 
 **示例：**
 
@@ -649,7 +649,7 @@ queryRecommendMediaEntityList(): Promise&lt;MediaEntity[]&gt;
 
 | 类型                                                         | 说明                            |
 | ------------------------------------------------------------ | ------------------------------- |
-| Promise<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md##MediaEntity23)[]> | Promise对象。返回媒体实体数组。 |
+| Promise<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23)[]> | Promise对象。返回媒体实体数组。 |
 
 **示例：**
 
@@ -799,7 +799,7 @@ clearSearchHistory(): Promise&lt;OperResult&gt;
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md##OperResult23)> | Promise对象。返回操作结果。 |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)> | Promise对象。返回操作结果。 |
 
 **示例：**
 
@@ -849,13 +849,13 @@ updateSettings(settingItem: SettingItem): Promise&lt;SettingItem&gt;
 
 | 参数名      | 类型                                                         | 必填 | 说明             |
 | ----------- | ------------------------------------------------------------ | ---- | ---------------- |
-| settingItem | [SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md##SettingItem23) | 是   | 待更新的设置项。 |
+| settingItem | [SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem23) | 是   | 待更新的设置项。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md##SettingItem23)> | Promise对象。返回更新后的设置项。 |
+| Promise<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem23)> | Promise对象。返回更新后的设置项。 |
 
 **示例：**
 
@@ -919,7 +919,7 @@ reportProblemAndAdvice(advice: string): Promise&lt;OperResult&gt;
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md##OperResult23)> | Promise对象。返回操作结果。 |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)> | Promise对象。返回操作结果。 |
 
 **示例：**
 
@@ -970,14 +970,14 @@ login(controlType: LoginType, id?: string): Promise&lt;QrCodeInfo[]&gt;
 
 | 参数名      | 类型                                                         | 必填 | 说明       |
 | ----------- | ------------------------------------------------------------ | ---- | ---------- |
-| controlType | [LoginType](arkts-apis-avsession-AVMusicTemplate-t.md##LoginType23) | 是   | 登录类型。 |
+| controlType | [LoginType](arkts-apis-avsession-AVMusicTemplate-t.md#logintype23) | 是   | 登录类型。 |
 | id          | string                                                       | 否   | 二维码ID。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise<[QrCodeInfo](arkts-apis-avsession-AVMusicTemplate-i.md##QrCodeInfo23)[]> | Promise对象。返回二维码信息的数组。 |
+| Promise<[QrCodeInfo](arkts-apis-avsession-AVMusicTemplate-i.md#qrcodeinfo23)[]> | Promise对象。返回二维码信息的数组。 |
 
 **示例：**
 
@@ -1030,14 +1030,14 @@ requestDialogInfo(actionType: DialogActionType, actionInfo?: DialogActionInfo): 
 
 | 参数名     | 类型                                                         | 必填 | 说明             |
 | ---------- | ------------------------------------------------------------ | ---- | ---------------- |
-| actionType | [DialogActionType](arkts-apis-avsession-AVMusicTemplate-t.md##DialogActionType23) | 是   | 弹框操作类型。   |
-| actionInfo | [DialogActionInfo](arkts-apis-avsession-AVMusicTemplate-i.md##DialogActionInfo23) | 否   | 弹框操作的信息。 |
+| actionType | [DialogActionType](arkts-apis-avsession-AVMusicTemplate-t.md#dialogactiontype23) | 是   | 弹框操作类型。   |
+| actionInfo | [DialogActionInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialogactioninfo23) | 否   | 弹框操作的信息。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md##DialogInfo23)> | Promise对象。返回弹框信息。 |
+| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo23)> | Promise对象。返回弹框信息。 |
 
 **示例：**
 
@@ -1095,13 +1095,13 @@ handleMemberPurchase(info: MemberPurchaseInfo): Promise&lt;DialogInfo&gt;
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| info   | [MemberPurchaseInfo](arkts-apis-avsession-AVMusicTemplate-i.md##MemberPurchaseInfo23) | 是   | 购买会员的信息。 |
+| info   | [MemberPurchaseInfo](arkts-apis-avsession-AVMusicTemplate-i.md#memberpurchaseinfo23) | 是   | 购买会员的信息。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md##DialogInfo23)> | Promise对象。返回弹框信息。 |
+| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo23)> | Promise对象。返回弹框信息。 |
 
 **示例：**
 
@@ -1158,13 +1158,13 @@ queryMemberPurchase(memberPurchaseType: MemberPurchaseType): Promise&lt;MemberPu
 
 | 参数名             | 类型                                                         | 必填 | 说明           |
 | ------------------ | ------------------------------------------------------------ | ---- | -------------- |
-| memberPurchaseType | [MemberPurchaseType](arkts-apis-avsession-AVMusicTemplate-e.md##MemberPurchaseType23) | 是   | 会员购买类型。 |
+| memberPurchaseType | [MemberPurchaseType](arkts-apis-avsession-AVMusicTemplate-e.md#memberpurchasetype23) | 是   | 会员购买类型。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                                  |
 | ------------------------------------------------------------ | ------------------------------------- |
-| Promise<[MemberPurchaseInfo](arkts-apis-avsession-AVMusicTemplate-i.md##MemberPurchaseInfo23)[]> | Promise对象。返回购买会员信息的数组。 |
+| Promise<[MemberPurchaseInfo](arkts-apis-avsession-AVMusicTemplate-i.md#memberpurchaseinfo23)[]> | Promise对象。返回购买会员信息的数组。 |
 
 **示例：**
 
@@ -1217,13 +1217,13 @@ queryCustomContent(queryType: CustomType[]): Promise&lt;CustomElement&gt;
 
 | 参数名    | 类型                                                         | 必填 | 说明             |
 | --------- | ------------------------------------------------------------ | ---- | ---------------- |
-| queryType | [CustomType](arkts-apis-avsession-AVMusicTemplate-t.md##CustomType23)[] | 是   | 自定义类型数组。 |
+| queryType | [CustomType](arkts-apis-avsession-AVMusicTemplate-t.md#customtype23)[] | 是   | 自定义类型数组。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                          |
 | ------------------------------------------------------------ | ----------------------------- |
-| Promise<[CustomElement](arkts-apis-avsession-AVMusicTemplate-i.md##CustomElement23)> | Promise对象。返回自定义元素。 |
+| Promise<[CustomElement](arkts-apis-avsession-AVMusicTemplate-i.md#customelement23)> | Promise对象。返回自定义元素。 |
 
 **示例：**
 
@@ -1275,14 +1275,14 @@ downloadMediaEntity(controlType: DownloadControlType, mediaEntity: MediaEntity):
 
 | 参数名      | 类型                                                         | 必填 | 说明             |
 | ----------- | ------------------------------------------------------------ | ---- | ---------------- |
-| controlType | [DownloadControlType](arkts-apis-avsession-AVMusicTemplate-t.md##DownloadControlType23) | 是   | 下载的控制类型。 |
-| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md##MediaEntity23) | 是   | 媒体实体。       |
+| controlType | [DownloadControlType](arkts-apis-avsession-AVMusicTemplate-t.md#downloadcontroltype23) | 是   | 下载的控制类型。 |
+| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23) | 是   | 媒体实体。       |
 
 **返回值：**
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md##OperResult23)> | Promise对象。返回操作结果。 |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)> | Promise对象。返回操作结果。 |
 
 **示例：**
 
@@ -1343,14 +1343,14 @@ playForSearch(command: SearchPlayInfoType, args: SearchPlayInfo): Promise&lt;Ope
 
 | 参数名  | 类型                                                         | 必填 | 说明                 |
 | ------- | ------------------------------------------------------------ | ---- | -------------------- |
-| command | [SearchPlayInfoType](arkts-apis-avsession-AVMusicTemplate-e.md##SearchPlayInfoType23) | 是   | 搜播的信息类型枚举。 |
-| args    | [SearchPlayInfo](arkts-apis-avsession-AVMusicTemplate-i.md##SearchPlayInfo23) | 是   | 搜播信息。           |
+| command | [SearchPlayInfoType](arkts-apis-avsession-AVMusicTemplate-e.md#searchplayinfotype23) | 是   | 搜播的信息类型枚举。 |
+| args    | [SearchPlayInfo](arkts-apis-avsession-AVMusicTemplate-i.md#searchplayinfo23) | 是   | 搜播信息。           |
 
 **返回值：**
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md##OperResult23)> | Promise对象。返回操作结果。 |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)> | Promise对象。返回操作结果。 |
 
 **示例：**
 
@@ -1473,7 +1473,7 @@ playMediaEntity(mediaEntity: MediaEntity): Promise&lt;void&gt;
 
 | 参数名      | 类型                                                         | 必填 | 说明       |
 | ----------- | ------------------------------------------------------------ | ---- | ---------- |
-| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md##MediaEntity23) | 是   | 媒体实体。 |
+| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23) | 是   | 媒体实体。 |
 
 **返回值：**
 
@@ -1523,14 +1523,14 @@ favoriteMediaEntity(actionType: MediaFavoriteType, mediaEntity: MediaEntity): Pr
 
 | 参数名      | 类型                                                         | 必填 | 说明             |
 | ----------- | ------------------------------------------------------------ | ---- | ---------------- |
-| actionType  | [MediaFavoriteType](arkts-apis-avsession-AVMusicTemplate-t.md##MediaFavoriteType23) | 是   | 媒体收藏的类型。 |
-| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md##MediaEntity23) | 是   | 媒体实体。       |
+| actionType  | [MediaFavoriteType](arkts-apis-avsession-AVMusicTemplate-t.md#mediafavoritetype23) | 是   | 媒体收藏的类型。 |
+| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23) | 是   | 媒体实体。       |
 
 **返回值：**
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md##OperResult23)> | Promise对象。返回操作结果。 |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)> | Promise对象。返回操作结果。 |
 
 **示例：**
 
@@ -1591,7 +1591,7 @@ onUserInfoChange(callback: Callback&lt;UserInfo&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                               |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| callback | Callback<[UserInfo](arkts-apis-avsession-AVMusicTemplate-i.md##UserInfo23)> | 是   | Callback类型的回调。返回用户信息。 |
+| callback | Callback<[UserInfo](arkts-apis-avsession-AVMusicTemplate-i.md#userinfo23)> | 是   | Callback类型的回调。返回用户信息。 |
 
 **示例：**
 
@@ -1629,7 +1629,7 @@ offUserInfoChange(callback?: Callback&lt;UserInfo&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                               |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| callback | Callback<[UserInfo](arkts-apis-avsession-AVMusicTemplate-i.md##UserInfo23)> | 否   | Callback类型的回调。返回用户信息。 |
+| callback | Callback<[UserInfo](arkts-apis-avsession-AVMusicTemplate-i.md#userinfo23)> | 否   | Callback类型的回调。返回用户信息。 |
 
 **示例：**
 
@@ -1665,7 +1665,7 @@ onDialogCommandChange(callback: ReportDialogCommandEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明               |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
-| callback | [ReportDialogCommandEvent](arkts-apis-avsession-AVMusicTemplate-t.md##ReportDialogCommandEvent23) | 是   | 上报弹框命令事件。 |
+| callback | [ReportDialogCommandEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportdialogcommandevent23) | 是   | 上报弹框命令事件。 |
 
 **示例：**
 
@@ -1704,7 +1704,7 @@ offDialogCommandChange(callback?: ReportDialogCommandEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明               |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
-| callback | [ReportDialogCommandEvent](arkts-apis-avsession-AVMusicTemplate-t.md##ReportDialogCommandEvent23) | 否   | 上报弹框命令事件。 |
+| callback | [ReportDialogCommandEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportdialogcommandevent23) | 否   | 上报弹框命令事件。 |
 
 **示例：**
 
@@ -1740,7 +1740,7 @@ onCurrentSingleChange(callback: Callback&lt;Single&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                     |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| callback | Callback<[Single](arkts-apis-avsession-AVMusicTemplate-i.md##Single23)> | 是   | Callback类型的回调。返回当前单曲的信息。 |
+| callback | Callback<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single23)> | 是   | Callback类型的回调。返回当前单曲的信息。 |
 
 **示例：**
 
@@ -1778,7 +1778,7 @@ offCurrentSingleChange(callback?: Callback&lt;Single&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                     |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| callback | Callback<[Single](arkts-apis-avsession-AVMusicTemplate-i.md##Single23)> | 否   | Callback类型的回调。返回当前单曲的信息。 |
+| callback | Callback<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single23)> | 否   | Callback类型的回调。返回当前单曲的信息。 |
 
 **示例：**
 
@@ -1814,7 +1814,7 @@ onMediaEntitiesChange(callback: Callback&lt;MediaEntity[]&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md##MediaEntity23)[]> | 是   | Callback类型的回调。返回媒体实体数组。 |
+| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23)[]> | 是   | Callback类型的回调。返回媒体实体数组。 |
 
 **示例：**
 
@@ -1853,7 +1853,7 @@ offMediaEntitiesChange(callback?: Callback&lt;MediaEntity[]&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md##MediaEntity23)[]> | 否   | Callback类型的回调。返回媒体实体数组。 |
+| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23)[]> | 否   | Callback类型的回调。返回媒体实体数组。 |
 
 **示例：**
 
@@ -1889,7 +1889,7 @@ onTabContentChange(callback: ReportTabContentEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [ReportTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md##ReportTabContentEvent23) | 是   | 上报标签页内容事件。 |
+| callback | [ReportTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reporttabcontentevent23) | 是   | 上报标签页内容事件。 |
 
 **示例：**
 
@@ -1928,7 +1928,7 @@ offTabContentChange(callback?: ReportTabContentEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [ReportTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md##ReportTabContentEvent23) | 否   | 上报标签页内容事件。 |
+| callback | [ReportTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reporttabcontentevent23) | 否   | 上报标签页内容事件。 |
 
 **示例：**
 
@@ -1964,7 +1964,7 @@ onPlaylistChange(callback: Callback&lt;PageMediaEntity&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                         |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------- |
-| callback | Callback<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md##PageMediaEntity23)> | 是   | Callback类型的回调。返回标签页媒体实体信息。 |
+| callback | Callback<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity23)> | 是   | Callback类型的回调。返回标签页媒体实体信息。 |
 
 **示例：**
 
@@ -2003,7 +2003,7 @@ offPlaylistChange(callback?: Callback&lt;PageMediaEntity&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                         |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------- |
-| callback | Callback<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md##PageMediaEntity23)> | 否   | Callback类型的回调。返回标签页媒体实体信息。 |
+| callback | Callback<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity23)> | 否   | Callback类型的回调。返回标签页媒体实体信息。 |
 
 **示例：**
 
@@ -2039,7 +2039,7 @@ onDownloadMediaEntityStatusChange(callback: Callback&lt;MediaEntity&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md##MediaEntity23)> | 是   | Callback类型的回调。返回媒体实体信息。 |
+| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23)> | 是   | Callback类型的回调。返回媒体实体信息。 |
 
 **示例：**
 
@@ -2078,7 +2078,7 @@ offDownloadMediaEntityStatusChange(callback?: Callback&lt;MediaEntity&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md##MediaEntity23)> | 否   | Callback类型的回调。返回媒体实体信息。 |
+| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23)> | 否   | Callback类型的回调。返回媒体实体信息。 |
 
 **示例：**
 
@@ -2114,7 +2114,7 @@ onCustomElementsChange(callback: ReportCustomElementsChangeEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback | [ReportCustomElementsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md##ReportCustomElementsChangeEvent23) | 是   | 上报自定义元素改变事件。 |
+| callback | [ReportCustomElementsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportcustomelementschangeevent23) | 是   | 上报自定义元素改变事件。 |
 
 **示例：**
 
@@ -2154,7 +2154,7 @@ offCustomElementsChange(callback?: ReportCustomElementsChangeEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback | [ReportCustomElementsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md##ReportCustomElementsChangeEvent23) | 否   | 上报自定义元素改变事件。 |
+| callback | [ReportCustomElementsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportcustomelementschangeevent23) | 否   | 上报自定义元素改变事件。 |
 
 **示例：**
 
@@ -2190,7 +2190,7 @@ onSettingsChange(callback: Callback&lt;SettingItem[]&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                 |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------ |
-| callback | Callback<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md##SettingItem23)[]> | 是   | Callback类型的回调。返回设置项数组。 |
+| callback | Callback<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem23)[]> | 是   | Callback类型的回调。返回设置项数组。 |
 
 **示例：**
 
@@ -2229,7 +2229,7 @@ offSettingsChange(callback?: Callback&lt;SettingItem[]&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                 |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------ |
-| callback | Callback<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md##SettingItem23)[]> | 否   | Callback类型的回调。返回设置项数组。 |
+| callback | Callback<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem23)[]> | 否   | Callback类型的回调。返回设置项数组。 |
 
 **示例：**
 
@@ -2265,7 +2265,7 @@ onReportExecuteAction(callback: ReportExecuteActionEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [ReportExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md##ReportExecuteActionEvent23) | 是   | 上报执行动作的事件。 |
+| callback | [ReportExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteactionevent23) | 是   | 上报执行动作的事件。 |
 
 **示例：**
 
@@ -2304,7 +2304,7 @@ offReportExecuteAction(callback?: ReportExecuteActionEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [ReportExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md##ReportExecuteActionEvent23) | 否   | 上报执行动作的事件。 |
+| callback | [ReportExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteactionevent23) | 否   | 上报执行动作的事件。 |
 
 **示例：**
 
@@ -2340,7 +2340,7 @@ onExtensionAbilityChange(callback: ReportExecuteAbilityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                 |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| callback | [ReportExecuteAbilityEvent](arkts-apis-avsession-AVMusicTemplate-t.md##ReportExecuteAbilityEvent23) | 是   | 通知音频模板控制方拉起指定三方应用界面的信息的事件。 |
+| callback | [ReportExecuteAbilityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteabilityevent23) | 是   | 通知音频模板控制方拉起指定三方应用界面的信息的事件。 |
 
 **示例：**
 
@@ -2379,7 +2379,7 @@ offExtensionAbilityChange(callback?: ReportExecuteAbilityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                 |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| callback | [ReportExecuteAbilityEvent](arkts-apis-avsession-AVMusicTemplate-t.md##ReportExecuteAbilityEvent23) | 否   | 通知音频模板控制方拉起指定三方应用界面的信息的事件。 |
+| callback | [ReportExecuteAbilityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteabilityevent23) | 否   | 通知音频模板控制方拉起指定三方应用界面的信息的事件。 |
 
 **示例：**
 
