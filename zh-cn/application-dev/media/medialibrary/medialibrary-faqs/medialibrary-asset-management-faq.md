@@ -26,8 +26,8 @@
 
 | 媒体文件操作  | 标准实现方式  |
 | :------------ | :------------ |
-| <!--Del-->新增（仅系统应用）<!--DelEnd-->  |<!--Del-->[创建媒体资源](../photoAccessHelper-resource-guidelines.md#创建媒体资源)<!--DelEnd-->  |
-|  <!--Del-->删除（仅系统应用）<!--DelEnd-->  | <!--Del-->[将文件放入回收站](../photoAccessHelper-resource-guidelines.md#将文件放入回收站)<!--DelEnd-->  |
+| <!--DelRow-->新增（仅系统应用）  | [创建媒体资源](../photoAccessHelper-resource-guidelines.md#创建媒体资源)  |
+| <!--DelRow-->删除（仅系统应用）  | [将文件放入回收站](../photoAccessHelper-resource-guidelines.md#将文件放入回收站)  |
 | 获取  | [获取指定媒体资源](../photoAccessHelper-resource-guidelines.md#获取指定媒体资源)<br>[获取图片和视频缩略图](../photoAccessHelper-resource-guidelines.md#获取图片和视频缩略图)<br>[使用Picker选择媒体库资源](../photoAccessHelper-photoviewpicker.md)  |
 | 重命名  | [重命名媒体资源](../photoAccessHelper-resource-guidelines.md#重命名媒体资源)  |
 | 保存到图库  | [保存媒体库资源](../photoAccessHelper-savebutton.md)  |
