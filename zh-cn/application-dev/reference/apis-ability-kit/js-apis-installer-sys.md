@@ -1813,7 +1813,7 @@ try {
 | isKeepData                     | boolean                        | 否                       | 是| 卸载时是否保留数据目录，默认值为false。true表示卸载时保留数据目录，false表示卸载时不保留数据目录。 |
 | hashParams        | Array<[HashParam](#hashparam)> | 否 | 是| 哈希值参数，默认值为空。         |
 | crowdtestDeadline| number                         | 否                       | 是 | 众测活动的截止日期，默认值为-1，表示无截止日期约束。 |
-| sharedBundleDirPaths<sup>10+</sup> | Array\<string> | 否 | 是|共享包文件所在路径，默认值为空。 |
+| sharedBundleDirPaths<sup>10+</sup> | Array\<string> | 否 | 是|共享包文件所在路径，默认值为空。从API version 24开始，当指定目录时，路径目录下可以存在多个同包名、不同模块名的HSP。API version 23及之前版本，路径目录下只能存在一个HSP。 |
 | specifiedDistributionType<sup>10+</sup> | string | 否 | 是|应用安装时指定的[分发类型](../../security/app-provision-structure.md)，默认值为空，最大长度为128字节。该字段通常由操作系统运营方的应用市场指定。 |
 | additionalInfo<sup>10+</sup> | string | 否 | 是|应用安装时的额外信息，默认值为空，最大长度为3000字节。该字段通常由操作系统运营方的应用市场在安装企业应用时指定，用于保存应用的额外信息。 |
 | verifyCodeParams<sup>(deprecated)<sup> | Array<[VerifyCodeParam](#verifycodeparamdeprecated)> | 否 | 是| 代码签名文件参数，默认值为空。<br/>**说明：**<br/> 从API version 10开始支持，从API version 11开始不再维护，应用的代码签名文件将集成到安装包中，不再需要通过本接口指定安装包的代码签名文件。  |
