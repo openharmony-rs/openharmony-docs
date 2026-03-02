@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 12开始支持。
 
@@ -19,10 +20,14 @@ import { media } from '@kit.MediaKit';
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 类型                                 | 只读 | 可选 | 说明               |
 | ------- | ------------------------------------ | ---- | ---- | ------------------ |
 | fdSrc<sup>12+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       |  否  | 否   | 源媒体文件描述，通过该属性设置数据源。<br/> **使用示例**：<br/>假设一个连续存储的媒体文件，地址偏移:0，字节长度:100。其文件描述为 AVFileDescriptor { fd = 资源句柄; offset = 0; length = 100; }。<br>**说明：** <br> - 将资源句柄（fd）传递给 AVTranscoder 实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个 AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致视频转码数据获取异常。 |
-| fdDst<sup>12+</sup>                               | number                 |  否  | 否   | 目标媒体文件描述，通过该属性设置数据输出。在创建AVTranscoder实例后，必须设置fdSrc和fdDst属性。<br>**说明：** <br> - 将资源句柄（fd）传递给 AVTranscoder 实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个 AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致视频转码数据获取异常。 |
+| fdDst<sup>12+</sup>                               | ArkTS-Dyn: number<br>ArkTS-Sta: int                 |  否  | 否   | 目标媒体文件描述，通过该属性设置数据输出。在创建AVTranscoder实例后，必须设置fdSrc和fdDst属性。<br>**说明：** <br> - 将资源句柄（fd）传递给 AVTranscoder 实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个 AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致视频转码数据获取异常。 |
 
 ## prepare<sup>12+</sup>
 
@@ -31,6 +36,10 @@ prepare(config: AVTranscoderConfig): Promise\<void>
 异步方式进行视频转码的参数设置。通过Promise获取返回值。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -46,7 +55,7 @@ prepare(config: AVTranscoderConfig): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
@@ -87,6 +96,10 @@ start(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                                  |
@@ -124,6 +137,10 @@ pause(): Promise\<void>
 需要[start()](#start12)事件成功触发后，才能调用pause方法，可以通过调用[resume()](#resume12)接口来恢复转码。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -163,6 +180,10 @@ resume(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                                  |
@@ -200,6 +221,10 @@ cancel(): Promise\<void>
 需要在[prepare()](#prepare12)、[start()](#start12)、[pause()](#pause12)或[resume()](#resume12)事件成功触发后，才能调用cancel方法。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -239,6 +264,10 @@ release(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                                        |
@@ -272,7 +301,13 @@ on(type: 'progressUpdate', callback: Callback\<number>): void
 
 注册转码进度更新事件，并通过注册的回调方法通知开发者。开发者只能注册一个进度更新事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是onProgressUpdate。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -295,7 +330,13 @@ off(type:'progressUpdate', callback?: Callback\<number>): void
 
 取消注册转码进度更新事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是offProgressUpdate。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -314,11 +355,17 @@ avTranscoder.off('progressUpdate');
 
 on(type: 'error', callback: ErrorCallback): void
 
-注册AVtranscoder的错误事件，该事件仅用于错误提示。如果AVTranscoder上报error事件，开发者需要通过[release()](#release12)退出转码操作。
+注册AVTranscoder的错误事件，该事件仅用于错误提示。如果AVTranscoder上报error事件，开发者需要通过[release()](#release12)退出转码操作。
 
 开发者只能订阅一个错误事件的回调方法，当开发者重复订阅时，以最后一次订阅的回调接口为准。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是onError。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -329,7 +376,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
@@ -358,7 +405,13 @@ off(type:'error', callback?: ErrorCallback): void
 
 取消注册转码错误事件，取消后不再接收到AVTranscoder的错误事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是offError。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -381,7 +434,13 @@ on(type: 'complete', callback: Callback\<void>): void
 
 当AVTranscoder上报complete事件时，当前转码操作已完成，开发者需要通过[release()](#release12)退出转码操作。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是onComplete。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -408,7 +467,13 @@ off(type:'complete', callback?: Callback\<void>): void
 
 取消注册转码完成事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是offComplete。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
