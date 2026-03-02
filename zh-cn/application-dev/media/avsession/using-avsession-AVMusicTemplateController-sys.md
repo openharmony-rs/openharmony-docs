@@ -331,3 +331,76 @@ OpenHarmony系统预置的媒体中心，作为音频模板控制方与音视频
 5. 在音频模板控制方应用退出时及时取消事件监听，并释放资源。详情请查看[模板API接口](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate-f.md)和[AVMusicTemplateController API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
 
    <!-- @[release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
+   
+   ``` TypeScript
+   import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+   // ...
+   
+   const TAG: string = 'ControllerManager';
+   
+   export class ControllerManager {
+     private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
+     private currentBundleName: string | undefined = undefined;
+     // ...
+     /**
+      * 注销监听
+      */
+     public unregisterListener() {
+       // 注销用户信息改变的监听。
+       this.controller?.offUserInfoChange();
+   
+       // 注销弹框命令改变的监听。
+       this.controller?.offDialogCommandChange();
+   
+       // 注销当前单曲改变的监听。
+       this.controller?.offCurrentSingleChange();
+   
+       // 注销媒体实体改变的监听。
+       this.controller?.offMediaEntitiesChange();
+   
+       // 注销标签页内容改变的监听。
+       this.controller?.offTabContentChange();
+   
+       // 注销播放列表改变的监听。
+       this.controller?.offPlaylistChange();
+   
+       // 注销下载媒体状态改变的监听。
+       this.controller?.offDownloadMediaEntityStatusChange();
+   
+       // 注销自定义元素改变的监听。
+       this.controller?.offCustomElementsChange();
+   
+       // 注销设置改变的监听。
+       this.controller?.offSettingsChange();
+   
+       // 注销上报执行动作的监听。
+       this.controller?.offReportExecuteAction();
+   
+       // 注销通知媒体中心拉起指定三方应用界面的信息的监听。
+       this.controller?.offExtensionAbilityChange();
+     }
+   
+     /**
+      * 销毁控制器
+      */
+     public destroyController() {
+       console.info(TAG, 'destroyController')
+       this.controller?.destroy();
+       this.controller = undefined;
+       this.currentBundleName = undefined;
+     }
+   
+     /**
+      * 反注册模板监听
+      */
+     public unregisterAVMusicTemplateListener() {
+       try {
+         avMusicTemplate.offAVMusicTemplateCreate();
+         avMusicTemplate.offAVMusicTemplateDestroy();
+       } catch (e) {
+         console.error(TAG, `unregisterAVMusicTemplateListener: errCode: ${e?.code}`);
+       }
+     }
+     // ...
+   }
+   ```
