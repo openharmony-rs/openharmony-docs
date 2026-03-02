@@ -275,6 +275,53 @@ OpenHarmony系统预置的媒体中心，作为音频模板控制方与音视频
 
    <!-- @[play_for_search](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
    
+   ``` TypeScript
+   import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+   // ...
+   
+   const TAG: string = 'ControllerManager';
+   
+   export class ControllerManager {
+     private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
+     // ...
+   
+     /**
+      * 模拟搜播。
+      *
+      * @returns Promise类型操作结果。
+      */
+     public async playForSearch(): Promise<boolean> {
+       let command: avMusicTemplate.SearchPlayInfoType = avMusicTemplate.SearchPlayInfoType.PLAY_MUSIC;
+       let searchPlayMusicItems: avMusicTemplate.SearchPlayMusicItem[] = [{
+         entityId: 'entityId',
+         entityName: 'entityName'
+       }];
+       let searchPlayMusicInfo: avMusicTemplate.SearchPlayMusicInfo = {
+         items: searchPlayMusicItems,
+         displayName: 'displayName',
+         description: 'description'
+       };
+       let searchPlayInfo: avMusicTemplate.SearchPlayInfo = {
+         musicInfo: searchPlayMusicInfo
+       };
+       try {
+         let operResult: avMusicTemplate.OperResult | undefined =
+           await this.controller?.playForSearch(command, searchPlayInfo);
+         if (operResult?.errorCode != 0) {
+           console.warn(TAG, 'playForSearch fail')
+           return false;
+         }
+         console.info(TAG, 'playForSearch success')
+         return true;
+       } catch (e) {
+         console.error(TAG, `playForSearch failed, errCode: ${e?.code}`)
+         return false;
+       }
+     };
+     // ...
+   }
+   ```
+   
 4. 在不能实时获得数据的场景下，音频模板控制方需要注册监听，接受音频模板提供方主动同步过来的数据。例如登录导致用户信息变化的场景，需要如下接口，详情请查看[AVMusicTemplateController API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
 
    - onUserInfoChange：用户信息变化事件。用户在音频模板控制方界面扫码登录，而登录状态只有音频模板控制方才能感知，此时需要注册改监听接受数据。
