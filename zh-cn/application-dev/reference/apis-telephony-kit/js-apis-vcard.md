@@ -351,7 +351,7 @@ VCard版本和编码信息。
 
 | 名称         | 类型   | 必填 |    说明    |
 | ------------ | ------ | ---- | ---------- |
-| cardType     | [VCardType](#vcardtype11) |  否  | VCard版本类型 (默认值为VERSION_21)。     |
+| cardType     | [VCardType](../apis-telephony-kit/js-apis-vcard.md) |  否  | VCard版本类型 (默认值为VERSION_21)。     |
 | charset       | string |  否  | VCard编码类型（默认值为'UTF-8'）。     |
 
 ## VCardType
