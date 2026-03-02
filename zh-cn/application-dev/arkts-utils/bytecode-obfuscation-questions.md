@@ -100,6 +100,7 @@ nameCache.json文件：
 **UI混淆差异**
 
 字节码混淆不提供UI混淆的能力。
+
 由于字节码中UI组件存在大量字符串的形式绑定属性、方法、类、变量等，字节码混淆已通过系统白名单扫描的机制，保证功能正常。
 
 **以字符串的形式作为函数参数绑定属性**
@@ -132,13 +133,13 @@ this.__messageStr = new ObservedPropertySimplePU('Hello World', this, "messageSt
 
 源码：
 
-<!-- @[import_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/Sample.ets) -->
+<!-- @[import_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/Sample.ets) -->  
 
 ``` TypeScript
 // Sample.ets
 import { Type } from '@kit.ArkUI';
 
-// 数据中心。
+// 数据中心
 @ObservedV2
 class SampleChild {
   @Trace public p123: number = 0;
@@ -147,7 +148,7 @@ class SampleChild {
 
 @ObservedV2
 export class Sample {
-  // 对于复杂对象需要@Type修饰，确保序列化成功。
+  // 对于复杂对象需要@Type修饰，确保序列化成功
   @Type(SampleChild)
   @Trace public f123: SampleChild = new SampleChild();
 }
@@ -192,13 +193,21 @@ callargs2 0x2e, v2, v3
 3. 参考本文已有的问题，若是相似场景可参考对应的解决方法快速解决。
 4. 若常见案例中未找到相似案例，建议依据各项配置功能正向定位（若不需要相应功能，可删除对应配置项）。
 5. 应用运行时崩溃分析方法：
+
     a.打开应用运行日志或者点击DevEco Studio中出现的Crash弹窗，找到运行时崩溃栈。
+
     b.应用运行时崩溃栈中的行号为编译产物的行号，方法名也可能为混淆后名称；因此排查时建议直接根据崩溃栈查看编译产物，进而分析哪些名称不能被混淆，然后将其配置进白名单中。
+
 6. 应用在运行时未崩溃但出现功能异常的分析方法（比如白屏）：
+
     a.打开应用运行日志：选择HiLog，检索与功能异常直接相关的日志，定位问题发生的上下文。
+
     b.定位异常代码段：通过分析日志，找到导致功能异常的具体代码块。
+
     c.增强日志输出：在疑似异常的功能代码中，对处理的数据字段增加日志记录。
+
     d.分析并确定关键字段：通过对新增日志输出的分析，识别是否由于混淆导致该字段的数据异常。
+
     e.配置白名单保护关键字段：将确认在混淆后对应用功能产生直接影响的关键字段添加到白名单中。
 
 ## 常规配置问题处理
@@ -225,12 +234,13 @@ callargs2 0x2e, v2, v3
 
 **问题现象**：使用@CustomDialog，自定义对话框，内部再弹出另一个对话框，开启字节码混淆后，执行build失败，报错信息为：
 Error message: ArkTSCompilerError: ArkTS:ERROR Failed to execute ByteCode Obfuscate.
+
 Error message: [Class]get different name for method:&entry/src/main/ets/pages/XXXX&.#~@0>#setController^1.
 
-<!-- @[export_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/Sample1.ets) -->
+<!-- @[export_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/SampleTmsDialog.ets) -->  
 
 ``` TypeScript
-// 代码1。
+// 代码1
 @CustomDialog
 export default struct TmsDialog {
   controller?: CustomDialogController
@@ -240,7 +250,7 @@ export default struct TmsDialog {
   }
 }
 
-// 代码2。
+// 代码2
 @CustomDialog
 struct Index{
   controller?: CustomDialogController
@@ -257,13 +267,13 @@ struct Index{
 
 **解决方案**：
 
-<!-- @[fix_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/Sample1.ets) -->
+<!-- @[fix_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/SampleTmsDialog.ets) -->
 
 ``` TypeScript
 @CustomDialog
 export default struct TmsDialog {
   controller?: CustomDialogController
-  dialogController:CustomDialogController|null = null;  // 修改此处的定义声明方式。
+  dialogController:CustomDialogController|null = null;  // 修改此处的定义声明方式
 
   build() {
   }
@@ -282,21 +292,25 @@ export default struct TmsDialog {
 
 **案例一：报错内容为 Cannot read property 'xxx' of undefined**
 
-```ts
-// 示例JSON文件结构（test.json）：
+<!-- @[import_json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/ImportJson.ets) -->  
+
+``` TypeScript
+// 示例JSON文件结构（ImportJson.json）：
 /*
 {
   "jsonObj": {
     "jsonProperty": "value"
   }
 }
-*/
+ */
 
 // 混淆前
-import jsonData from "./test.json";
+import jsonData from './ImportJson.json';
 
 let jsonProp = jsonData.jsonObj.jsonProperty;
+```
 
+``` TypeScript
 // 混淆后
 import jsonData from "./test.json";
 
@@ -309,6 +323,7 @@ let jsonProp = jsonData.i.j;
 **案例二：使用了数据库相关的字段，开启属性混淆后，出现报错**
 
 报错内容为table Account has no column named a23 in 'INSERT INTO Account(a23)'。
+
 代码里使用了数据库字段，混淆时该SQL语句中字段名称被混淆，但数据库中字段为原始名称，从而导致报错。
 **解决方案**：使用-keep-property-name选项将使用到的数据库字段配置到白名单。
 
@@ -317,12 +332,12 @@ let jsonProp = jsonData.i.j;
 **问题现象**：
 parameters的类型为Record<string, Object>，在开启属性混淆后，parameters对象中的属性linkSource被混淆，进而导致功能异常。示例如下：
 
-<!-- @[import_want](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->
+<!-- @[import_want](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) --> 
 
 ``` TypeScript
-// 混淆前。
+// 混淆前
 import { Want } from '@kit.AbilityKit';
-// ...
+  // ...
   let petalMapWant: Want = {
     bundleName: 'com.example.myapplication',
     uri: 'maps://',
@@ -364,7 +379,7 @@ linkSource
 
 使用@Type和@Trace组合修饰的装饰器属性，可以正常混淆，但混淆后，功能异常。
 
-<!-- @[export_decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/Sample2.ets) -->    
+<!-- @[export_decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/SampleChild.ets) -->    
 
 ``` TypeScript
 // Sample.ets
@@ -378,19 +393,19 @@ class SampleChild {
 
 @ObservedV2
 export class Sample {
-  // 对于复杂对象需要@Type修饰，确保序列化成功。
+  // 对于复杂对象需要@Type修饰，确保序列化成功
   @Type(SampleChild)
   @Trace public f123: SampleChild = new SampleChild();
 }
 ```
 
-<!-- @[call_decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/a.ets) -->
+<!-- @[call_decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/CallDecorator.ets) -->
 
 ``` TypeScript
-// Call the API。
-// a.ets
+// Call the API
+// CallDecorator.ets
 import { PersistenceV2 } from '@kit.ArkUI';
-import { Sample } from './Sample2';
+import { Sample } from './SampleChild';
 
 @Entry
 @ComponentV2
@@ -434,11 +449,11 @@ p123
 
 并且在file2.ts中导入file1.ts的接口。此时，接口中有属性的类型为对象类型，该对象类型的属性在file1.ts中被保留，在file2.ts中被混淆，从而导致调用时引发功能异常。示例如下：
 
-<!-- @[export_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/file1.ts) -->
+<!-- @[export_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/ExportInterface.ts) -->
 
 ``` TypeScript
-// 混淆前。
-// file1.ts
+// 混淆前
+// ExportInterface.ts
 export interface MyInfo {
   age: number;
   address: {
@@ -447,12 +462,12 @@ export interface MyInfo {
 }
 ```
 
-<!-- @[import_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->
+<!-- @[import_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->   
 
 ``` TypeScript
-// file2.ts
-import { MyInfo } from './file1';
-// ...
+// ExportCompositeInterface.ts
+import { MyInfo } from './ExportCompositeInterface';
+  // ...
   const person: MyInfo = {
     age: 20,
     address: {
@@ -482,10 +497,10 @@ const person: MyInfo = {
 
 **方案一**：使用interface定义该属性的类型，并使用export进行导出，这样该属性会自动被收集到属性白名单中。示例如下：
 
-<!-- @[export_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/file2.ts) -->
+<!-- @[export_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/ExportCompositeInterface.ts) -->
 
 ``` TypeScript
-// file1.ts
+// ExportCompositeInterface.ts
 export interface AddressType {
   city1: string
 }
@@ -516,18 +531,23 @@ HSP需要将给其他模块用的方法配置到白名单中。因为主模块�
 ![bytecode-buildoptionset](figures/bytecode-buildoptionset.png)
 
 **案例一：动态导入某个类，类定义的地方被混淆，导入类名时却没有混淆，导致报错**
+<!-- @[export_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/ExportUtils.ts) -->
 
 ``` TypeScript
 // 混淆前
-// utils.ts
+// ExportUtils.ts
 export function add(a: number, b: number): number {
-    return a + b;
+  return a + b;
 }
+```
 
+<!-- @[import_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) --> 
+
+``` TypeScript
 // main.ts
 async function loadAndUseAdd() {
     try {
-        const mathUtils = await import('./utils');
+        const mathUtils = await import('./ExportUtils');
         const result = mathUtils.add(2, 3);
     } catch (error) {
         console.error('Failure reason:', error);
@@ -568,11 +588,11 @@ i();
 
 **案例二：在使用namespace中的方法时，该方法定义的地方被混淆了，但使用的地方却没有被混淆，导致报错**
 
-<!-- @[export_ns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/export.ts) -->
+<!-- @[export_ns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/ExportNs.ts) -->
 
 ``` TypeScript
-// 混淆前。
-// export.ts
+// 混淆前
+// ExportNs.ts
 export namespace NS {
   export function foo() {
     console.info(`export NS function foo is called`);
@@ -580,12 +600,12 @@ export namespace NS {
 }
 ```
 
-<!-- @[import_ns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->
+<!-- @[import_ns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) --> 
 
 ``` TypeScript
 // import.ts
-import { NS } from './export';
-// ...
+import { NS } from './ExportNs';
+  // ...
   NS.foo();
 ```
 
@@ -611,11 +631,11 @@ namespace中的foo属于export元素，当通过NS.foo调用时被视为属性�
 
 **案例三：使用了declare global，混淆后报语法错误**
 
-<!-- @[declare_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/file1.ts) -->
+<!-- @[declare_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/ExportInterface.ts) -->
 
 ``` TypeScript
-// file.ts
-// 混淆前。
+// ExportInterface.ts
+// 混淆前
 declare global {
   var myAge : string
 }
@@ -680,11 +700,11 @@ export function FieldType(...types: Function[]): PropertyDecorator {
 
 ### 未开启-enable-string-property-obfuscation混淆选项，字符串字面量属性名却被混淆，导致字符串字面量属性名的值为undefined
 
-<!-- @[fix_age](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/file1.ts) -->
+<!-- @[fix_age](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/ExportInterface.ts) -->
 
 ``` TypeScript
-// file.ts
-// 混淆前。
+// ExportInterface.ts
+// 混淆前
 const person = {
   myAge: 18
 }
@@ -736,6 +756,7 @@ AppAbility
     **问题一**：单例功能异常问题。原因是HAP与HSP独立执行构建与混淆流程，本地源码HAR模块在HAP与HSP的包中可能会出现相同的文件名被混淆成不同文件名的情况。
     **问题二**：接口调用失败问题。原因是HAP与HSP独立执行构建与混淆流程，本地源码HAR模块在HAP与HSP的包中可能会出现不同的文件名被混淆成相同的文件名的情况。
 * 若开启-enable-export-obfuscation和-enable-toplevel-obfuscation选项，在应用运行时会出现加载接口失败的问题。
+
     原因是HAP与HSP独立执行构建与混淆流程，本地源码HAR模块中暴露的接口在HAP与HSP中被混淆成不同的名称。
 
 **解决方案**：
