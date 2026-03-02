@@ -227,7 +227,7 @@ objectRepeat(value: ImageRepeat)
 
 interpolation(value: ImageInterpolation)
 
-设置图片的插值效果，即缓解图片在缩放时的锯齿问题。SVG类型图源不支持该属性。
+定义图片插值效果。用于优化图片缩放时的锯齿问题。SVG类型图源不支持该属性。
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
 
