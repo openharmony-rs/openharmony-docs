@@ -1268,7 +1268,7 @@ Unsupported options, e.g, cannot convert image into desired pixel format.
 
 **错误信息**
 
-Invalid parameter. Possible causes: 1. The index is negative. 2. The index is greater than or equal to the number of frames in the image.
+Invalid parameter.
 
 **错误描述**
 
