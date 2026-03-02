@@ -171,8 +171,8 @@
 | ------------- |--------------------------------------------------------------------------| ---- | ---- | -------------------- |
 | entityId      | string                                                                   | 否   | 否   | 媒体实例的ID。       |
 | pageIndex     | int                                                                      | 否   | 否   | 媒体标签页的索引。   |
-| type          | [EntityType](arkts-apis-avsession-AVMusicTemplate-i.md#entitytype23)     | 否   | 否   | 媒体资源类型。       |
-| subEntityType | [EntityType](arkts-apis-avsession-AVMusicTemplate-i.md#entitytype23)     | 否   | 是   | 下级的媒体资源类型。 |
+| type          | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype23)     | 否   | 否   | 媒体资源类型。       |
+| subEntityType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype23)     | 否   | 是   | 下级的媒体资源类型。 |
 | sort          | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort23)                 | 否   | 是   | 排序。               |
 | episodeRange  | [EpisodeRange](arkts-apis-avsession-AVMusicTemplate-i.md#episoderange23) | 否   | 是   | 要查询的剧集区间。   |
 
