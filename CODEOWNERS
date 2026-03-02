@@ -1244,6 +1244,8 @@ zh-cn/application-dev/reference/apis-arkui/errorcode-node-render-monitor.md	@fan
 zh-cn/application-dev/reference/apis-arkui/errorcode-node-render.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-node.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-nodeadapter.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/errorcode-rendering-control.md @sunbees	@liuli0427	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/errorcode-attributeModifier.md @sunbees	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-promptAction.md	@liyi0309	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-router.md	@jiangdayuan	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-scroll.md	@yylong	@rongShao-Z @huchuyun	 @Brilliantry_Rui
