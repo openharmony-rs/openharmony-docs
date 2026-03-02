@@ -12,7 +12,7 @@
 
 **图1** 录制状态变化示意图
 
-![Recording status change](figures/recording-status-change.png)
+![Recording status change](figures/audio-recording-status-change.png)
 
 状态的详细说明请参考[AVRecorderState](../../reference/apis-media-kit/arkts-apis-media-t.md#avrecorderstate9)。
 

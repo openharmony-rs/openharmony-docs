@@ -276,7 +276,7 @@ For details about how to obtain the preview stream data, see [Dual-Channel Previ
 
 ## MetadataObject
 
-Describes the camera metadata, which is the data source of [CameraInput](arkts-apis-camera-CameraInput.md). The metadata is obtained through metadataOutput.on('metadataObjectsAvailable').
+Describes the camera metadata, which is the data source of [CameraInput](arkts-apis-camera-CameraInput.md). The metadata is obtained through **metadataOutput.on('metadataObjectsAvailable')**.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -324,3 +324,16 @@ Describes the information about the sensitivity (ISO) settings.
 | Name| Type   | Read-only| Optional| Description          |
 | ---- | ------- | ---- |--| -------------- |
 | iso  | number  | Yes  | Yes| ISO.       |
+
+## CameraOcclusionDetectionResult<sup>23+</sup>
+
+Describes the instance returned by the occlusion status callback, which indicates whether the camera lens is blocked or dirty.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                | Type      | Read-only| Optional| Description                               |
+|--------------------| ---------- | ---- | ---- |-----------------------------------|
+| isCameraOccluded   | boolean    | Yes  | No  | Whether the camera lens is blocked. **true** if blocked, **false** otherwise.|
+| isCameraLensDirty  | boolean    | Yes  | No  | Whether the camera lens is dirty. **true** if dirty, false otherwise.|

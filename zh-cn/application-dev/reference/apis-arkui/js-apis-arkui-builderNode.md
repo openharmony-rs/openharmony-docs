@@ -89,7 +89,7 @@ build的可选参数。
 
 | 名称          | 类型               | 只读 | 可选 | 说明                                                         |
 | ------------- | ----------------- | ---- | ---- | ------------------------------------------------------------ |
-| nestingBuilderSupported | boolean | 否   | 是   | 是否支持Builder嵌套Builder进行使用。其中，true表示支持，false表示不支持。<br/>默认值：false <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| nestingBuilderSupported | boolean | 否   | 是   | 是否支持Builder嵌套Builder进行使用。其中，true表示支持，false表示不支持。<br/>默认值：false <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | localStorage<sup>20+</sup> | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否   | 是   | 给当前BuilderNode设置LocalStorage，挂载在此BuilderNode下的自定义组件共享该LocalStorage。如果自定义组件构造函数同时也传入LocalStorage，优先使用构造函数中传入的LocalStorage。<br/>默认值：null <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | enableProvideConsumeCrossing<sup>20+</sup> | boolean | 否   | 是   | 定义BuilderNode内[状态管理V1](../../ui/state-management/arkts-state-management-overview.md#状态管理v1)自定义组件的@Consume是否与BuilderNode外部的@Provide状态互通，BuilderNode内[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)自定义组件的@Consumer是否与BuilderNode外部的@Provider状态互通。<br/>从API version 20开始支持状态管理V1自定义组件的状态互通，从API version 22开始支持状态管理V2自定义组件的状态互通。<br/>true表示支持，false表示不支持。<br/>默认值：false <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
@@ -900,7 +900,7 @@ class Params {
 function buildNode(param: Params = new Params("hello")) {
   Row() {
     Text(`C${param.item} -- `)
-    ReusableChildComponent2({ item: param.item }) //该自定义组件在BuilderNode中无法被正确复用
+    ReusableChildComponent2({ item: param.item }) // 该自定义组件在BuilderNode中无法被正确复用
   }
 }
 
@@ -1160,12 +1160,12 @@ struct Index {
     // 设置应用深浅色跟随系统
     this.getUIContext()
       .getHostContext()?.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
-    //创建自定义节点并添加至builderNodeMap
+    // 创建自定义节点并添加至builderNodeMap
     this.textNodeController.createNode(this.getUIContext());
   }
 
   aboutToDisappear(): void {
-    //移除map中的引用，并将自定义节点释放
+    // 移除map中的引用，并将自定义节点释放
     this.textNodeController.deleteNode();
   }
 
@@ -2418,12 +2418,12 @@ struct Index {
     // 设置应用深浅色跟随系统
     this.getUIContext()
       .getHostContext()?.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
-    //创建自定义节点并添加至builderNodeMap
+    // 创建自定义节点并添加至builderNodeMap
     this.textNodeController.createNode(this.getUIContext());
   }
 
   aboutToDisappear(): void {
-    //移除builderNodeMap中的引用，并将自定义节点释放
+    // 移除builderNodeMap中的引用，并将自定义节点释放
     this.textNodeController.deleteNode();
   }
 

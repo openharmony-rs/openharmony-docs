@@ -6,6 +6,10 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_TextContentBaseController ArkUI_TextContentBaseController
+```
+
 ## 概述
 
 定义文本内容基础控制器。

@@ -308,9 +308,9 @@ type OnRatingChangeCallback = (rating: number) => void
 
 | 名称                       | 类型   | 只读 | 可选 | 说明                                                         |
 | -------------------------- | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| backgroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 未选中的星级的图片链接，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例4（通过Resource资源设置评分的样式）](#示例4通过resource资源设置评分的样式)代码。|
-| foregroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例4（通过Resource资源设置评分的样式）](#示例4通过resource资源设置评分的样式)代码。|
-| secondaryUri<sup>7+</sup>  | [ResourceStr](ts-types.md#resourcestr) | 否   | 是  | 部分选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例4（通过Resource资源设置评分的样式）](#示例4通过resource资源设置评分的样式)代码。|
+| backgroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 未选中的星级的图片链接，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](#示例3通过resource资源设置评分的样式)代码。|
+| foregroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](#示例3通过resource资源设置评分的样式)代码。|
+| secondaryUri<sup>7+</sup>  | [ResourceStr](ts-types.md#resourcestr) | 否   | 是  | 部分选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](#示例3通过resource资源设置评分的样式)代码。|
 
 > **说明：** 
 >
@@ -376,43 +376,7 @@ struct RatingExample {
 
 ![rating](figures/rating.gif)
 
-### 示例2（设置评分的样式）
-
-以下示例展示了如何通过配置starStyle实现自定义星级的图片链接。
-
-```ts
-// xxx.ets
-@Entry
-@Component
-struct RatingExample {
-  @State rating: number = 3.5;
-
-  build() {
-    Column() {
-      Rating({ rating: this.rating, indicator: false })
-        .stars(5)
-        .stepSize(0.5)
-        .starStyle({
-          backgroundUri: '/common/image1.png', // common目录与pages同级
-          foregroundUri: '/common/image2.png',
-          secondaryUri: '/common/image3.png'
-        })
-        .margin({ top: 24 })
-        .onChange((value: number) => {
-          this.rating = value;
-        })
-      Text('current score is ' + this.rating)
-        .fontSize(16)
-        .fontColor('rgba(24,36,49,0.60)')
-        .margin({ top: 16 })
-    }.width('100%').height('100%').backgroundColor('#F1F3F5')
-  }
-}
-```
-
-![rating1](figures/rating1.gif)
-
-### 示例3（自定义评分条）
+### 示例2（自定义评分条）
 以下示例实现了自定义评分条的功能，其中每个圆圈表示0.5分。当ratingIndicator为true时，评分条作为指示器使用，不可改变评分；当为false时，可进行评分。ratingStars用于设置评分总数，ratingStepsize用于设置评分步长。
 
 ```ts
@@ -616,9 +580,9 @@ struct ratingExample {
 
 ![rating2](figures/rating2.gif)
 
-### 示例4（通过Resource资源设置评分的样式）
+### 示例3（通过Resource资源设置评分的样式）
 
-该示例通过Resource资源配置starStyle，实现自定义星级图片链接。
+该示例通过Resource资源配置starStyle，实现自定义星级图片链接，API version 20之后推荐使用该方法设置样式。
 
 ```ts
 // xxx.ets
@@ -637,6 +601,46 @@ struct RatingExample {
           backgroundUri: $r('app.media.imag1'),
           foregroundUri: $r('app.media.imag2'),
           secondaryUri: $r('app.media.imag3')
+        })
+        .margin({ top: 24 })
+        .onChange((value: number) => {
+          this.rating = value;
+        })
+      Text('current score is ' + this.rating)
+        .fontSize(16)
+        .fontColor('rgba(24,36,49,0.60)')
+        .margin({ top: 16 })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+
+![rating1](figures/rating1.gif)
+
+### 示例4（设置评分的样式）
+
+以下示例展示了如何通过配置starStyle实现自定义星级的图片链接。
+
+> **说明**
+>
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)中相关介绍。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct RatingExample {
+  @State rating: number = 3.5;
+
+  build() {
+    Column() {
+      Rating({ rating: this.rating, indicator: false })
+        .stars(5)
+        .stepSize(0.5)
+        .starStyle({
+          backgroundUri: '/common/image1.png', // common目录与pages同级
+          foregroundUri: '/common/image2.png',
+          secondaryUri: '/common/image3.png'
         })
         .margin({ top: 24 })
         .onChange((value: number) => {

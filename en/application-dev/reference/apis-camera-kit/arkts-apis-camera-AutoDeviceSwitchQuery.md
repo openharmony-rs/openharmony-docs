@@ -6,7 +6,9 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-AutoDeviceSwitchQuery is used to check whether a device supports automatic camera switch.
+**AutoDeviceSwitchQuery** is used to check whether a device supports automatic camera switch.
+
+[Automatic Camera Switching](./arkts-apis-camera-AutoDeviceSwitch.md#enableautodeviceswitch13) is supported only on foldable devices. For details about how to enable this capability, see [enableAutoDeviceSwitch](./arkts-apis-camera-AutoDeviceSwitch.md#enableautodeviceswitch13).
 
 > **NOTE**
 >
@@ -38,6 +40,9 @@ Checks whether the device supports automatic camera switch.
 **Example**
 
 ```ts
+
+// Check whether the foldable device supports automatic camera switch.
+// If the sample code returns **true**, you can continue to use enableAutoDeviceSwitch to enable automatic camera switching.
 function isAutoDeviceSwitchSupported(session: camera.PhotoSession): boolean {
   let isSupported = false;
   isSupported = session.isAutoDeviceSwitchSupported();

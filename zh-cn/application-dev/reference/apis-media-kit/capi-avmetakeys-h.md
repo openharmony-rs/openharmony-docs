@@ -10,6 +10,8 @@
 
 定义音视频元数据键。
 
+**引用文件：** <multimedia/player_framework/avmetakeys.h>
+
 **库：** libavmedia_base.so
 
 **系统能力：** SystemCapability.Multimedia.Media.Core

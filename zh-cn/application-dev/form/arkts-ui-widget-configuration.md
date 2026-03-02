@@ -102,7 +102,7 @@
 | previewImages | 表示卡片预览图, 与配置项`supportDimensions`一一对应。智能穿戴卡片必须配置，当前仅支持在智能穿戴上使用。| 字符串数组 | 可缺省，缺省值：[]。 |
 | <!--DelRow-->formVisibleNotify | 表示是否通知卡片提供方可见状态变化（仅对系统应用的卡片生效）。<br/>-&nbsp;true：通知卡片提供方可见状态变化。<br/>-&nbsp;false：不通知卡片提供方可见状态变化。 | 布尔类型 | 可缺省，缺省值为false。 |
 | transparencyEnabled | 表示是否为背板透明卡片（仅对系统应用或者申请了背板透明卡片能力的ArkTS卡片生效）。 <br/>-&nbsp;true：表示是背板透明卡片。<br/>-&nbsp;false：表示不是背板透明卡片。<br/>| 布尔类型 | 可缺省，缺省值为false。 |
-|enableBlurBackground|表示卡片是否使用模糊背板。<br/>-&nbsp;true：开启模糊背板。<br/>-&nbsp;false：关闭模糊背板。|布尔类型|可缺省，缺省值为false。|
+|enableBlurBackground|表示卡片是否使用模糊背板。<br/>-&nbsp;true：开启模糊背板。<br/>-&nbsp;false：关闭模糊背板。<br/>**说明：**<br/>本特性对产品功耗、性能要求较高，从API version 23开始仅在旗舰机型上支持，在不支持的机型上调用后不生效。|布尔类型|可缺省，缺省值为false。|
 |renderingMode|表示卡片的渲染模式，取值范围如下：<br/>-&nbsp;autoColor：自动模式，呈现效果可以根据卡片使用方确定最终是全彩模式还是单色模式<!--RP7--><!--RP7End-->。该模式下卡片中的颜色和图片允许卡片使用方修改，卡片配置了该模式就可以添加到桌面或锁屏上。<br/>-&nbsp;fullColor：全彩模式<!--RP7--><!--RP7End-->。该模式下卡片中的颜色和图片不允许被卡片使用方修改，卡片配置了该模式就可以添加到桌面上。<br/>-&nbsp;singleColor：单色模式，通过透明度和模糊区分元素，不使用任何色相<!--RP7--><!--RP7End-->。该模式下卡片中的颜色和图片允许卡片使用方修改，卡片配置了该模式就可以添加到锁屏上。<br/>**说明：**<br/>从API version 15开始，支持该字段。 |字符串|可缺省，缺省值为“fullColor”。|
 |multiScheduledUpdateTime|表示卡片的多定点刷新的时刻，作为单点刷新的一个附加参数，采用24小时制，精确到分钟，多个时间用英文逗号分隔，最多写24个时间。<br/>**说明：**<br/>从API version 18开始，支持该字段。multiScheduledUpdateTime需要配合scheduledUpdateTime使用。|字符串|可缺省，缺省时不进行多定点刷新。|
 |conditionUpdate|表示卡片的支持的条件刷新（仅对系统应用的ArkTS卡片生效）。取值范围如下：<br/>-&nbsp;network：表示支持网络刷新。<br/>**说明：**<br/>从API version 18开始，支持该字段。|字符串数组|可缺省，缺省值为空字符串数组。|
@@ -157,7 +157,7 @@
 | subBundleName     | 字符串 | 否  | 趣味交互场景[独立分包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)，默认为空。|
 | keepStateDuration | 数值  | 否  | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为[0,10000]的整数，超过取值范围则取默认值10000。                                               |
 
-```json
+```json5
 {
   "forms": [
     {
@@ -181,7 +181,7 @@
 | <!--DelRow-->disabledDesktopBehaviors | 字符串数组 | 否  | 支持的取值包括SWIPE_DESKTOP（滑动桌面）、PULL_DOWN_SEARCH（下拉全搜）、LONG_CLICK（长按）、DRAG（拖动）。可以取值一个或多个，缺省表示不禁用任何行为。 |
 
 <!--RP2-->
-   ```json
+   ```json5
    {
      "forms": [
        {
@@ -211,7 +211,7 @@
 | isAdapted | 标识卡片是否针对横屏待机显示界面做过适配，配置成true，会把卡片布局组件中backgroudimage移除。<br/>-&nbsp;true：表示卡片适配过横屏待机显示界面。<br/>-&nbsp;false：表示卡片没有适配过横屏待机显示界面。 | 布尔值 | 可缺省，缺省值为false。 |
 | isPrivacySensitive | 标识卡片是否是隐私敏感卡片，隐私敏感卡片在横屏待机显示界面展示会用蒙层覆盖。<br/>-&nbsp;true：表示卡片是隐私敏感卡片。<br/>-&nbsp;false：表示卡片不是隐私敏感卡片。 | 布尔值 | 可缺省，缺省值为false。 |
 
-   ```json
+   ```json5
    {
      "forms": [
        {
@@ -229,7 +229,7 @@
 ### 配置文件示例
 
 <!--RP1-->
-   ```json
+   ```json5
    {
      "forms": [
        {

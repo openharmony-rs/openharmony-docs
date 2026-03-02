@@ -146,7 +146,7 @@ int32_t OH_ArkUI_GetDrawableDescriptorFromNapiValue(napi_env env, napi_value val
 **描述：**
 
 
-将ArkTS侧创建的DrawableDescriptor对象映射到Native侧的ArkUI_DrawableDescriptor。
+将ArkTS侧创建的[DrawableDescriptor](arkui-ts/ts-basic-components-image.md#drawabledescriptor10)对象映射到Native侧的[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。
 
 **起始版本：** 12
 
@@ -174,7 +174,7 @@ int32_t OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue(napi_env env, napi_v
 **描述：**
 
 
-将ArkTS侧创建的$r资源对象映射到Native侧的ArkUI_DrawableDescriptor。
+将ArkTS侧创建的[$r](js-apis-arkui-resource.md)资源对象映射到Native侧的[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。
 
 **起始版本：** 12
 
