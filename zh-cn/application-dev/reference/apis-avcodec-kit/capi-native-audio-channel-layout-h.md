@@ -49,36 +49,36 @@ enum OH_AudioChannelSet
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CH_SET_FRONT_LEFT = 1ULL << 0U | 左前声道 |
-| CH_SET_FRONT_RIGHT = 1ULL << 1U | 右前声道 |
-| CH_SET_FRONT_CENTER = 1ULL << 2U | 中前声道 |
-| CH_SET_LOW_FREQUENCY = 1ULL << 3U | 低频声道 |
-| CH_SET_BACK_LEFT = 1ULL << 4U | 左后声道 |
-| CH_SET_BACK_RIGHT = 1ULL << 5U | 右后声道 |
-| CH_SET_FRONT_LEFT_OF_CENTER = 1ULL << 6U | 左前中置声道 |
-| CH_SET_FRONT_RIGHT_OF_CENTER = 1ULL << 7U | 右前中置声道 |
-| CH_SET_BACK_CENTER = 1ULL << 8U | 后方中置声道 |
-| CH_SET_SIDE_LEFT = 1ULL << 9U | 左侧声道 |
-| CH_SET_SIDE_RIGHT = 1ULL << 10U | 右侧声道 |
-| CH_SET_TOP_CENTER = 1ULL << 11U | 上方中置声道 |
-| CH_SET_TOP_FRONT_LEFT = 1ULL << 12U | 上方左前声道 |
-| CH_SET_TOP_FRONT_CENTER = 1ULL << 13U | 上方中前声道 |
-| CH_SET_TOP_FRONT_RIGHT = 1ULL << 14U | 上方右前声道 |
-| CH_SET_TOP_BACK_LEFT = 1ULL << 15U | 上方左后声道 |
-| CH_SET_TOP_BACK_CENTER = 1ULL << 16U | 上方中后声道 |
-| CH_SET_TOP_BACK_RIGHT = 1ULL << 17U | 上方右后声道 |
-| CH_SET_STEREO_LEFT = 1ULL << 29U | 立体声左声道 |
-| CH_SET_STEREO_RIGHT = 1ULL << 30U | 立体声右声道 |
-| CH_SET_WIDE_LEFT = 1ULL << 31U | 宽左声道 |
-| CH_SET_WIDE_RIGHT = 1ULL << 32U | 宽右声道 |
-| CH_SET_SURROUND_DIRECT_LEFT = 1ULL << 33U | 左环绕声道 |
-| CH_SET_SURROUND_DIRECT_RIGHT = 1ULL << 34U | 右环绕声道 |
-| CH_SET_LOW_FREQUENCY_2 = 1ULL << 35U | 低频声道2 |
-| CH_SET_TOP_SIDE_LEFT = 1ULL << 36U | 上方左侧声道 |
-| CH_SET_TOP_SIDE_RIGHT = 1ULL << 37U | 上方右侧声道 |
-| CH_SET_BOTTOM_FRONT_CENTER = 1ULL << 38U | 下方中前声道 |
-| CH_SET_BOTTOM_FRONT_LEFT = 1ULL << 39U | 下方左前声道 |
-| CH_SET_BOTTOM_FRONT_RIGHT = 1ULL << 40U | 下方右前声道 |
+| CH_SET_FRONT_LEFT = 1ULL << 0U | 左前声道。 |
+| CH_SET_FRONT_RIGHT = 1ULL << 1U | 右前声道。 |
+| CH_SET_FRONT_CENTER = 1ULL << 2U | 中前声道。 |
+| CH_SET_LOW_FREQUENCY = 1ULL << 3U | 低频声道。 |
+| CH_SET_BACK_LEFT = 1ULL << 4U | 左后声道。 |
+| CH_SET_BACK_RIGHT = 1ULL << 5U | 右后声道。 |
+| CH_SET_FRONT_LEFT_OF_CENTER = 1ULL << 6U | 左前中置声道。 |
+| CH_SET_FRONT_RIGHT_OF_CENTER = 1ULL << 7U | 右前中置声道。 |
+| CH_SET_BACK_CENTER = 1ULL << 8U | 后方中置声道。 |
+| CH_SET_SIDE_LEFT = 1ULL << 9U | 左侧声道。 |
+| CH_SET_SIDE_RIGHT = 1ULL << 10U | 右侧声道。 |
+| CH_SET_TOP_CENTER = 1ULL << 11U | 上方中置声道。 |
+| CH_SET_TOP_FRONT_LEFT = 1ULL << 12U | 上方左前声道。 |
+| CH_SET_TOP_FRONT_CENTER = 1ULL << 13U | 上方中前声道。 |
+| CH_SET_TOP_FRONT_RIGHT = 1ULL << 14U | 上方右前声道。 |
+| CH_SET_TOP_BACK_LEFT = 1ULL << 15U | 上方左后声道。 |
+| CH_SET_TOP_BACK_CENTER = 1ULL << 16U | 上方中后声道。 |
+| CH_SET_TOP_BACK_RIGHT = 1ULL << 17U | 上方右后声道。 |
+| CH_SET_STEREO_LEFT = 1ULL << 29U | 立体声左声道。 |
+| CH_SET_STEREO_RIGHT = 1ULL << 30U | 立体声右声道。 |
+| CH_SET_WIDE_LEFT = 1ULL << 31U | 宽左声道。 |
+| CH_SET_WIDE_RIGHT = 1ULL << 32U | 宽右声道。 |
+| CH_SET_SURROUND_DIRECT_LEFT = 1ULL << 33U | 左环绕声道。 |
+| CH_SET_SURROUND_DIRECT_RIGHT = 1ULL << 34U | 右环绕声道。 |
+| CH_SET_LOW_FREQUENCY_2 = 1ULL << 35U | 低频声道2。 |
+| CH_SET_TOP_SIDE_LEFT = 1ULL << 36U | 上方左侧声道。 |
+| CH_SET_TOP_SIDE_RIGHT = 1ULL << 37U | 上方右侧声道。 |
+| CH_SET_BOTTOM_FRONT_CENTER = 1ULL << 38U | 下方中前声道。 |
+| CH_SET_BOTTOM_FRONT_LEFT = 1ULL << 39U | 下方左前声道。 |
+| CH_SET_BOTTOM_FRONT_RIGHT = 1ULL << 40U | 下方右前声道。 |
 
 ### OH_AmbAttributeSet
 
@@ -96,14 +96,14 @@ enum OH_AmbAttributeSet
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AMB_ORD_1 = 1ULL << 0U | 一阶高保真立体声混响 |
-| AMB_ORD_2 = 2ULL << 0U | 二阶高保真立体声混响 |
-| AMB_ORD_3 = 3ULL << 0U | 三阶高保真立体声混响 |
-| AMB_COM_ACN = 0ULL << 8U | ACN通道排序的高保真立体声混响 |
-| AMB_COM_FUMA = 1ULL << 8U | FUMA通道排序的高保真立体声混响 |
-| AMB_NOR_N3D = 0ULL << 12U | N3D归一化的高保真立体声混响 |
-| AMB_NOR_SN3D = 1ULL << 12U | SN3D归一化的高保真立体声混响 |
-| AMB_MODE = 1ULL << 44U | 高保真立体声混响的声道布局 |
+| AMB_ORD_1 = 1ULL << 0U | 一阶高保真立体声混响。 |
+| AMB_ORD_2 = 2ULL << 0U | 二阶高保真立体声混响。 |
+| AMB_ORD_3 = 3ULL << 0U | 三阶高保真立体声混响。 |
+| AMB_COM_ACN = 0ULL << 8U | ACN通道排序的高保真立体声混响。 |
+| AMB_COM_FUMA = 1ULL << 8U | FUMA通道排序的高保真立体声混响。 |
+| AMB_NOR_N3D = 0ULL << 12U | N3D归一化的高保真立体声混响。 |
+| AMB_NOR_SN3D = 1ULL << 12U | SN3D归一化的高保真立体声混响。 |
+| AMB_MODE = 1ULL << 44U | 高保真立体声混响的声道布局。 |
 
 ### OH_AudioChannelLayout
 
@@ -121,7 +121,7 @@ enum OH_AudioChannelLayout
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CH_LAYOUT_UNKNOWN = 0ULL | 未知声道布局 |
+| CH_LAYOUT_UNKNOWN = 0ULL | 未知声道布局。 |
 | CH_LAYOUT_MONO = CH_SET_FRONT_CENTER | 单声道布局，共1个声道。 |
 | CH_LAYOUT_STEREO = CH_SET_FRONT_LEFT \| CH_SET_FRONT_RIGHT | 立体声布局，共2个声道。 |
 | CH_LAYOUT_STEREO_DOWNMIX = CH_SET_STEREO_LEFT \| CH_SET_STEREO_RIGHT | 立体声下混布局，共2个声道。 |
