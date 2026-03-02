@@ -20,7 +20,7 @@
 
 ## 使用方式
 
-使用[FrameNodeOptions](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenodeoptions24)接口配置FrameNode创建时的选项，可设置FrameNode是否支持多线程操作。
+使用[FrameNodeOptions](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenodeoptions24)接口在FrameNode创建时设置FrameNode是否支持多线程操作。
 
 ### 创建支持多线程的FrameNode
 
@@ -82,35 +82,15 @@
 | 接口名 | 描述 | 非UI线程调用 | 多线程规格 |
 | -------- | ------- | ------- | ------- |  
 | [constructor](../reference/apis-arkui/js-apis-arkui-frameNode.md#constructor23) | 创建FrameNode。 | 支持 | 支持在任意线程调用。 |
-| typeNode.createColumnNode | 创建Column类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| typeNode.createRowNode | 创建Row类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| typeNode.createStackNode | 创建Stack类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| typeNode.createFlexNode | 创建Flex类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| typeNode.createRelativeContainerNode | 创建RelativeContainer类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| typeNode.createLoadingProgressNode | 创建LoadingProgress类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| typeNode.createImageNode | 创建Image类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| typeNode.createListNode | 创建List类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| typeNode.createListItemNode | 创建ListItem类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| typeNode.createListItemGroupNode | 创建ListItemGroup类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| typeNode.createProgressNode | 创建Progress类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| typeNode.createScrollNode | 创建Scroll类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| typeNode.createGridNode | 创建Grid类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| typeNode.createGridItemNode | 创建GridItem类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| typeNode.createWaterFlowNode | 创建WaterFlow类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| typeNode.createFlowItemNode | 创建FlowItem类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| typeNode.createTextNode | 创建Text类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| typeNode.createTextInputNode | 创建TextInput类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| typeNode.createTextAreaNode | 创建TextArea类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| typeNode.createSwiperNode | 创建Swiper类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| [typeNode.createXComponentNodeDefault](../reference/apis-arkui/js-apis-arkui-frameNode.md#createxcomponentnodedefault23) | 创建XComponent类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| [typeNode.createXComponentNodeWithOptions](../reference/apis-arkui/js-apis-arkui-frameNode.md#createxcomponentnodewithoptions23) | 创建XComponent类型的FrameNode（带选项）。 | 支持 | 支持在任意线程调用。 |
-| [typeNode.createButtonNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#createbuttonnode23) | 创建Button类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| [typeNode.createCheckboxNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#createcheckboxnode23) | 创建Checkbox类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| [typeNode.createCheckboxGroupNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#createcheckboxgroupnode23) | 创建CheckboxGroup类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| [typeNode.createRadioNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#createradionode23) | 创建Radio类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| [typeNode.createSliderNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#createslidernode23) | 创建Slider类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| [typeNode.createToggleNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#createtogglenode23) | 创建Toggle类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
-| [disposeNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#dispose12) | 销毁节点指针指向的节点对象。 | 支持 | 在非UI线程调用函数操作已挂载到UI树上的节点时，接口抛出异常。 |
+| typeNode.[createXComponentNodeDefault](../reference/apis-arkui/js-apis-arkui-frameNode.md#createxcomponentnodedefault23) | 创建XComponent类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
+| typeNode.[createXComponentNodeWithOptions](../reference/apis-arkui/js-apis-arkui-frameNode.md#createxcomponentnodewithoptions23) | 创建XComponent类型的FrameNode（带选项）。 | 支持 | 支持在任意线程调用。 |
+| typeNode.[createButtonNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#createbuttonnode23) | 创建Button类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
+| typeNode.[createCheckboxNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#createcheckboxnode23) | 创建Checkbox类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
+| typeNode.[createCheckboxGroupNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#createcheckboxgroupnode23) | 创建CheckboxGroup类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
+| typeNode.[createRadioNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#createradionode23) | 创建Radio类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
+| typeNode.[createSliderNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#createslidernode23) | 创建Slider类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
+| typeNode.[createToggleNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#createtogglenode23) | 创建Toggle类型的FrameNode。 | 支持 | 支持在任意线程调用。 |
+| [dispose](../reference/apis-arkui/js-apis-arkui-frameNode.md#dispose12) | 销毁节点指针指向的节点对象。 | 支持 | 在非UI线程调用函数操作已挂载到UI树上的节点时，接口抛出异常。 |
 
 ### 组件树操作
 
@@ -122,12 +102,10 @@
 | [clearChildren](../reference/apis-arkui/js-apis-arkui-frameNode.md#clearchildren12) | 移除node节点的所有子节点。 | 支持 | 在非UI线程调用函数操作已挂载到UI树上的节点时，接口抛出异常。 |
 | [getChild](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchild12) | 获取node节点的子节点指针，位置由position指定。 | 支持 | 在非UI线程调用函数操作已挂载到UI树上的节点时，接口抛出异常。 |
 | [getFirstChild](../reference/apis-arkui/js-apis-arkui-frameNode.md#getfirstchild12) | 获取node节点的第一个子节点指针。 | 支持 | 在非UI线程调用函数操作已挂载到UI树上的节点时，接口抛出异常。 |
-| [getNextSibling](../reference/apis-arkui/js-apis-arkui-frameNode.md#getnextsibling12) | 获取node节点的下一个兄弟节点指针。 | 支持 | 在非UI线程调用函数操作已挂载到UI树上的节点时，接口抛出异常。 |
+| [getNextSibling](../reference/apis-arkui/js-apis-arkui-frameNode.md#getnextsibling12) | 获取node节点的下一个同级节点指针。 | 支持 | 在非UI线程调用函数操作已挂载到UI树上的节点时，接口抛出异常。 |
 | [getPreviousSibling](../reference/apis-arkui/js-apis-arkui-frameNode.md#getprevioussibling12) | 获取node节点的上一个兄弟节点指针。 | 支持 | 在非UI线程调用函数操作已挂载到UI树上的节点时，接口抛出异常。 |
 | [getParent](../reference/apis-arkui/js-apis-arkui-frameNode.md#getparent12) | 获取node节点的父节点。 | 支持 | 在非UI线程调用函数操作已挂载到UI树上的节点时，接口抛出异常。 |
-| [getChildrenCount](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchildrencount12) | 获取node节点的子节点个数。 | 支持 | 在非UI线程调用函数操作已挂载到UI树上的节点时，接口抛出异常。 |
-| adoptChild | 收养子节点。 | 不支持 | 只支持UI线程调用，否则接口抛出异常。 |
-| removeAdoptedChild | 移除收养的子节点。 | 不支持 | 只支持UI线程调用，否则接口抛出异常。 |
+| [getChildrenCount](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchildrencount12) | 获取node节点的子节点数量。 | 支持 | 在非UI线程调用函数操作已挂载到UI树上的节点时，接口抛出异常。 |
 | [moveTo](../reference/apis-arkui/js-apis-arkui-frameNode.md#moveto18) | 移动节点到指定位置。 | 不支持 | 只支持UI线程调用，否则接口抛出异常。 |
 
 ### 组件属性查询
@@ -137,12 +115,10 @@
 | [getId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getid12) | 获取节点ID。 | 支持 | 在非UI线程调用函数操作已挂载到UI树上的节点时，接口抛出异常。 |
 | [getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12) | 获取唯一ID。 | 支持 | 在非UI线程调用函数操作已挂载到UI树上的节点时，接口抛出异常。 |
 | [getNodeType](../reference/apis-arkui/js-apis-arkui-frameNode.md#getnodetype12) | 获取节点类型。 | 支持 | 在非UI线程调用函数操作已挂载到UI树上的节点时，接口抛出异常。 |
-| [getOpacity](../reference/apis-arkui/js-apis-arkui-frameNode.md#getopacity12) | 获取透明度。 | 支持 | 在非UI线程调用函数操作已挂载到UI树上的节点时，接口抛出异常。 |
+| [getOpacity](../reference/apis-arkui/js-apis-arkui-frameNode.md#getopacity12) | 获取不透明度。 | 支持 | 在非UI线程调用函数操作已挂载到UI树上的节点时，接口抛出异常。 |
 | [isVisible](../reference/apis-arkui/js-apis-arkui-frameNode.md#isvisible12) | 获取可见性。 | 支持 | 在非UI线程调用函数操作已挂载到UI树上的节点时，接口抛出异常。 |
 | [isClipToFrame](../reference/apis-arkui/js-apis-arkui-frameNode.md#iscliptoframe12) | 获取裁剪状态。 | 支持 | 在非UI线程调用函数操作已挂载到UI树上的节点时，接口抛出异常。 |
 | [isAttached](../reference/apis-arkui/js-apis-arkui-frameNode.md#isattached12) | 获取是否已挂载。 | 不支持 | 只支持UI线程调用，否则接口抛出异常。 |
-| isOnMainTree | 获取是否在主树上。 | 不支持 | 只支持UI线程调用，否则接口抛出异常。 |
-| isOnRenderTree | 获取是否在渲染树上。 | 不支持 | 只支持UI线程调用，否则接口抛出异常。 |
 
 ### 组件布局测算
 
@@ -184,7 +160,7 @@
 
 | 接口名 | 描述 | 非UI线程调用 | 多线程规格 |
 | -------- | ------- | ------- | ------- | 
-| getCommonEvent | 获取公共事件。 | 支持 | 在非UI线程调用函数操作已挂载到UI树上的节点时，接口抛出异常。 |
+| [commonEvent](../reference/apis-arkui/js-apis-arkui-frameNode.md#commonEvent12) | 获取公共事件。 | 支持 | 在非UI线程调用函数操作已挂载到UI树上的节点时，接口抛出异常。 |
 | [getInteractionEventBindingInfo](../reference/apis-arkui/js-apis-arkui-frameNode.md#getinteractioneventbindinginfo19) | 获取交互事件绑定信息。 | 不支持 | 只支持UI线程调用，否则接口抛出异常。 |
 | [addSupportedUIStates](../reference/apis-arkui/js-apis-arkui-frameNode.md#addsupporteduistates20) | 添加支持的UI状态。 | 不支持 | 只支持UI线程调用，否则接口抛出异常。 |
 | [removeSupportedUIStates](../reference/apis-arkui/js-apis-arkui-frameNode.md#removesupporteduistates20) | 移除支持的UI状态。 | 不支持 | 只支持UI线程调用，否则接口抛出异常。 |
@@ -197,7 +173,6 @@
 | [disposeTree](../reference/apis-arkui/js-apis-arkui-frameNode.md#disposetree12) | 销毁节点树。 | 不支持 | 只支持UI线程调用，否则接口抛出异常。 |
 | [reuse](../reference/apis-arkui/js-apis-arkui-frameNode.md#reuse18) | 复用节点。 | 不支持 | 只支持UI线程调用，否则接口抛出异常。 |
 | [recycle](../reference/apis-arkui/js-apis-arkui-frameNode.md#recycle18) | 回收节点。 | 不支持 | 只支持UI线程调用，否则接口抛出异常。 |
-| applyAttributesFinish | 应用属性完成。 | 不支持 | 只支持UI线程调用，否则接口抛出异常。 |
 
 ### 组件跨语言
 

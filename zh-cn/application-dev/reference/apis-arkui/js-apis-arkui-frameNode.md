@@ -32,7 +32,7 @@ import { FrameNode, LayoutConstraint, ExpandMode, typeNode, NodeAdapter } from "
 
 ## FrameNodeOptions<sup>24+</sup>
 
-用于配置FrameNode创建时的选项，可设置FrameNode是否支持多线程操作。
+FrameNode选项，可设置FrameNode是否支持多线程操作。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -168,7 +168,7 @@ FrameNode的构造函数。
 | 参数名    | 类型                                      | 必填 | 说明                               |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
 | uiContext | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
-| options<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | 配置FrameNode创建时的选项。 |
+| options<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | FrameNode创建时的可选参数。默认值：undefined，表示不支持多线程操作。 |
 
 **示例：**
 
@@ -4519,7 +4519,7 @@ createButtonNode(context: UIContext, options?: FrameNodeOptions): Button
 | 参数名 | 类型 | 必填 | 说明  |
 | ------------------ | ------------------ | ------------------- | ------------------- |
 | context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
-| options<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | 配置FrameNode创建时的选项。 |
+| options<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | FrameNode创建时的可选参数。默认值：undefined，表示不支持多线程操作。|
 
 **返回值：**
 
@@ -4599,7 +4599,7 @@ createCheckboxNode(context: UIContext, options?: FrameNodeOptions): Checkbox
 | 参数名 | 类型 | 必填 | 说明  |
 | ------------------ | ------------------ | ------------------- | ------------------- |
 | context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
-| options<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | 配置FrameNode创建时的选项。 |
+| options<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | FrameNode创建时的可选参数。默认值：undefined，表示不支持多线程操作。 |
 
 **返回值：**
 
@@ -4679,7 +4679,7 @@ createCheckboxGroupNode(context: UIContext, options?: FrameNodeOptions): Checkbo
 | 参数名 | 类型 | 必填 | 说明  |
 | ------------------ | ------------------ | ------------------- | ------------------- |
 | context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
-| options<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | 配置FrameNode创建时的选项。 |
+| options<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | FrameNode创建时的可选参数。默认值：undefined，表示不支持多线程操作。 |
 
 **返回值：**
 
@@ -4759,7 +4759,7 @@ createRadioNode(context: UIContext, options?: FrameNodeOptions): Radio
 | 参数名 | 类型 | 必填 | 说明  |
 | ------------------ | ------------------ | ------------------- | ------------------- |
 | context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
-| options<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | 配置FrameNode创建时的选项。 |
+| options<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | FrameNode创建时的可选参数。默认值：undefined，表示不支持多线程操作。 |
 
 **返回值：**
 
@@ -4993,7 +4993,7 @@ createSliderNode(context: UIContext, options?: FrameNodeOptions): Slider
 | 参数名 | 类型 | 必填 | 说明  |
 | ------------------ | ------------------ | ------------------- | ------------------- |
 | context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
-| options<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | 配置FrameNode创建时的选项。 |
+| options<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | FrameNode创建时的可选参数。默认值：undefined，表示不支持多线程操作。 |
 
 **返回值：**
 
@@ -5074,7 +5074,7 @@ createToggleNode(context: UIContext, options?: ToggleOptions, frameNodeOptions?:
 | ------------------ | ------------------ | ------------------- | ------------------- |
 | context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
 | options | [ToggleOptions](./arkui-ts/ts-basic-components-toggle.md#toggleoptions18对象说明) | 否 | 创建Toggle节点的接口参数，仅可通过ToggleOptions中的type属性设置开关样式。 |
-| frameNodeOptions<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | 配置FrameNode创建时的选项。 |
+| frameNodeOptions<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | FrameNode创建时的可选参数。默认值：undefined，表示不支持多线程操作。 |
 
 **返回值：**
 
@@ -5681,7 +5681,7 @@ createXComponentNodeWithOptions(context: UIContext, value: XComponentOptions, op
 | ------------------ | ------------------ | ------------------- | ------------------- |
 | context | [UIContext](./js-apis-arkui-UIContext.md#uicontext) | 是   | 创建对应节点时所需的UI上下文。 |
 | value | [XComponentOptions](./arkui-ts/ts-basic-components-xcomponent.md#xcomponentoptions12) | 是 | 定义XComponent的具体配置参数，包括组件类型等。 |
-| options<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | 配置FrameNode创建时的选项。 |
+| options<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | FrameNode创建时的可选参数。默认值：undefined，表示不支持多线程操作。 |
 
 **返回值：**
 
@@ -5778,7 +5778,7 @@ createXComponentNodeWithNativeParameters(context: UIContext, parameters: NativeX
 | ------------------ | ------------------ | ------------------- | ------------------- |
 | context | [UIContext](./js-apis-arkui-UIContext.md#uicontext) | 是   | 创建对应节点时所需的UI上下文。 |
 | parameters | [NativeXComponentParameters](./arkui-ts/ts-basic-components-xcomponent.md#nativexcomponentparameters19) | 是 | 定义XComponent的具体配置参数，包括组件类型等。 |
-| options<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | 配置FrameNode创建时的选项。 |
+| options<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | FrameNode创建时的可选参数。默认值：undefined，表示不支持多线程操作。 |
 
 **返回值：**
 
@@ -5871,7 +5871,7 @@ createXComponentNodeDefault(context: UIContext, options?: FrameNodeOptions): XCo
 | 参数名 | 类型 | 必填 | 说明  |
 | ------------------ | ------------------ | ------------------- | ------------------- |
 | context | [UIContext](./js-apis-arkui-UIContext.md#uicontext) | 是   | 创建对应节点时所需的UI上下文。 |
-| options<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | 配置FrameNode创建时的选项。 |
+| options<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | FrameNode创建时的可选参数。默认值：undefined，表示不支持多线程操作。 |
 
 **返回值：**
 
