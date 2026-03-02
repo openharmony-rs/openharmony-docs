@@ -35,7 +35,7 @@ on(event: InnerEvent, callback: Callback\<EventData\>): void
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -90,7 +90,7 @@ on(eventId: string, callback:  Callback\<EventData\>): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onEventData](#emitteroneventdata22)
+**相关接口**: 该接口对应的ArkTS-Sta接口是[onEventData](#emitteroneventdata23)
 
 **ArkTS-Dyn起始版本**：11
 
@@ -113,7 +113,7 @@ let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
 emitter.on(`eventId`, callback);
 ```
 
-## emitter.onEventData<sup>22+</sup>
+## emitter.onEventData<sup>23+</sup>
 
 onEventData(eventId: string, callback:  Callback\<EventData\>): void
 
@@ -125,7 +125,7 @@ onEventData(eventId: string, callback:  Callback\<EventData\>): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#emitteron11)
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -159,7 +159,7 @@ on<T\>(eventId: string, callback:  Callback\<GenericEventData<T\>\>): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onGenericEventData](#emitterongenericeventdata22)
+**相关接口**: 该接口对应的ArkTS-Sta接口是[onGenericEventData](#emitterongenericeventdata23)
 
 **ArkTS-Dyn起始版本**：12
 
@@ -196,7 +196,7 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
 emitter.on("eventId", callback);
 ```
 
-## emitter.onGenericEventData<sup>22+</sup>
+## emitter.onGenericEventData<sup>23+</sup>
 
 onGenericEventData<T\>(eventId: string, callback:  Callback\<GenericEventData<T\>\>): void
 
@@ -208,7 +208,7 @@ onGenericEventData<T\>(eventId: string, callback:  Callback\<GenericEventData<T\
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#emitteron12)
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -254,7 +254,7 @@ once(event: InnerEvent, callback: Callback\<EventData\>): void
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -307,7 +307,7 @@ once(eventId: string, callback: Callback\<EventData\>): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onceEventData](#emitteronceeventdata22)
+**相关接口**: 该接口对应的ArkTS-Sta接口是[onceEventData](#emitteronceeventdata23)
 
 **ArkTS-Dyn起始版本**：11
 
@@ -330,7 +330,7 @@ let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
 emitter.once("eventId", callback);
 ```
 
-## emitter.onceEventData<sup>22+</sup>
+## emitter.onceEventData<sup>23+</sup>
 
 onceEventData(eventId: string, callback: Callback\<EventData\>): void
 
@@ -342,7 +342,7 @@ onceEventData(eventId: string, callback: Callback\<EventData\>): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[once](#emitteronce11)
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -377,7 +377,7 @@ once<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onceGenericEventData](#emitteroncegenericeventdata22)
+**相关接口**: 该接口对应的ArkTS-Sta接口是[onceGenericEventData](#emitteroncegenericeventdata23)
 
 **参数：**
 
@@ -412,7 +412,7 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
 emitter.once("eventId", callback);
 ```
 
-## emitter.onceGenericEventData<sup>22+</sup>
+## emitter.onceGenericEventData<sup>23+</sup>
 
 onceGenericEventData<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
@@ -424,7 +424,7 @@ onceGenericEventData<T\>(eventId: string, callback: Callback\<GenericEventData<T
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[once](#emitteronce12)
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -474,7 +474,7 @@ ArkTS-Sta: off(eventId: long): void
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -503,7 +503,7 @@ off(eventId: string): void
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -534,7 +534,7 @@ ArkTS-Sta: off(eventId: long, callback: Callback\<EventData\>): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -583,7 +583,7 @@ off(eventId: string, callback: Callback\<EventData\>): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offEventData](#emitteroffeventdata22)
+**相关接口**: 该接口对应的ArkTS-Sta接口是[offEventData](#emitteroffeventdata23)
 
 **ArkTS-Dyn起始版本**：11
 
@@ -607,13 +607,13 @@ let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
 emitter.off("eventId", callback);
 ```
 
-## emitter.offEventData<sup>22+</sup>
+## emitter.offEventData<sup>23+</sup>
 
 offEventData(eventId: string, callback: Callback\<EventData\>): void
 
-取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[onEventData](#emitteroneventdata22)或[onceEventData](#emitteronceeventdata22)接口订阅callback时，该接口才生效。使用callback异步回调。
+取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[onEventData](#emitteroneventdata23)或[onceEventData](#emitteronceeventdata23)接口订阅callback时，该接口才生效。使用callback异步回调。
 
-使用该接口取消某个事件订阅后，已通过[emit](#emitteremit11)接口发布但尚未被执行的事件将被取消。
+使用该接口取消某个事件订阅后，已通过[emit(eventId: string, data：EventData)](#emitteremit23-1)接口发布但尚未被执行的事件将被取消。
 
 **系统能力**: `SystemCapability.Notification.Emitter`
 
@@ -621,7 +621,7 @@ offEventData(eventId: string, callback: Callback\<EventData\>): void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#emitteroff11-1)
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -658,7 +658,7 @@ off<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offGenericEventData](#emitteroffgenericeventdata22)
+**相关接口**: 该接口对应的ArkTS-Sta接口是[offGenericEventData](#emitteroffgenericeventdata23)
 
 **ArkTS-Dyn起始版本**：12
 
@@ -696,13 +696,13 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
 emitter.off("eventId", callback);
 ```
 
-## emitter.offGenericEventData<sup>22+</sup>
+## emitter.offGenericEventData<sup>23+</sup>
 
 offGenericEventData<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
-取消订阅当前Emitter类实例的事件。仅当已使用[onGenericEventData](#emitterongenericeventdata22)或[onceGenericEventData](#emitteroncegenericeventdata22)接口订阅了事件ID为eventId且回调处理函数为callback的事件时，该接口才生效。使用callback异步回调。
+取消订阅当前Emitter类实例的事件。仅当已使用[onGenericEventData](#emitterongenericeventdata23)或[onceGenericEventData](#emitteroncegenericeventdata23)接口订阅了事件ID为eventId且回调处理函数为callback的事件时，该接口才生效。使用callback异步回调。
 
-使用该接口取消事件订阅后，已通过[emit](#emitteremit12)接口发布但尚未执行的事件将被取消。
+使用该接口取消事件订阅后，已通过[emit<T\>(eventId: string, data: GenericEventData<T\>)](#emitteremit23-2)接口发布但尚未执行的事件将被取消。
 
 **系统能力**: `SystemCapability.Notification.Emitter`
 
@@ -710,7 +710,7 @@ offGenericEventData<T\>(eventId: string, callback: Callback\<GenericEventData<T\
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#emitteroff12)
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -760,7 +760,7 @@ ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -823,7 +823,7 @@ ArkTS-Dyn: 该接口支持跨线程传输数据对象，需要遵循数据跨线
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[emit(eventId: string)](#emitteremit22)和[emit(eventId: string, data：EventData)](#emitteremit22-1)
+**相关接口**: 该接口对应的ArkTS-Sta接口是[emit(eventId: string)](#emitteremit23)和[emit(eventId: string, data：EventData)](#emitteremit23-1)
 
 **ArkTS-Dyn起始版本**：11
 
@@ -847,7 +847,7 @@ let eventData: emitter.EventData = {
 emitter.emit("eventId", eventData);
 ```
 
-## emitter.emit<sup>22+</sup>
+## emitter.emit<sup>23+</sup>
 
 emit(eventId: string): void
 
@@ -855,7 +855,7 @@ emit(eventId: string): void
 
 ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[ArkTS-Sta并发迁移规则](../../quick-start/arkts-dyn-to-sta-concurrency-rules.md)。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**: `SystemCapability.Notification.Emitter`
 
@@ -863,7 +863,7 @@ ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[emit(eventId: string, data?: EventData)](#emitteremit11)或[emit<T\>(eventId: string, data?: GenericEventData<T\>)](#emitteremit12)
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -878,7 +878,7 @@ emitter.emit("eventId");
 ```
 
 
-## emitter.emit<sup>22+</sup>
+## emitter.emit<sup>23+</sup>
 
 emit(eventId: string, data: EventData): void
 
@@ -886,7 +886,7 @@ emit(eventId: string, data: EventData): void
 
 ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[ArkTS-Sta并发迁移规则](../../quick-start/arkts-dyn-to-sta-concurrency-rules.md)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**: `SystemCapability.Notification.Emitter`
 
@@ -894,7 +894,7 @@ ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[emit](#emitteremit11)
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -935,7 +935,7 @@ ArkTS-Dyn: 该接口支持跨线程传输数据对象，需要遵循数据跨线
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[emit<T\>(eventId: string, data: GenericEventData<T\>)](#emitteremit22-2)和[emit(eventId: string)](#emitteremit22)
+**相关接口**: 该接口对应的ArkTS-Sta接口是[emit<T\>(eventId: string, data: GenericEventData<T\>)](#emitteremit23-2)和[emit(eventId: string)](#emitteremit23)
 
 **ArkTS-Dyn起始版本**：12
 
@@ -965,7 +965,7 @@ let eventData: emitter.GenericEventData<Sample> = {
 emitter.emit("eventId", eventData);
 ```
 
-## emitter.emit<sup>22+</sup>
+## emitter.emit<sup>23+</sup>
 
 emit<T\>(eventId: string, data: GenericEventData<T\>): void
 
@@ -973,7 +973,7 @@ emit<T\>(eventId: string, data: GenericEventData<T\>): void
 
 ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[ArkTS-Sta并发迁移规则](../../quick-start/arkts-dyn-to-sta-concurrency-rules.md)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**: `SystemCapability.Notification.Emitter`
 
@@ -981,7 +981,7 @@ ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[emit](#emitteremit12)
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 参数名  | 类型                    | 必填 | 说明             |
 | ------- | ----------------------- | ---- | ---------------- |
@@ -1024,7 +1024,7 @@ ArkTS-Dyn: 该接口支持跨线程传输数据对象，需要遵循数据跨线
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[emit(eventId: string, options: Options)](#emitteremit22-3)和[emit(eventId: string, options: Options, data: EventData)](#emitteremit22-4)
+**相关接口**: 该接口对应的ArkTS-Sta接口是[emit(eventId: string, options: Options)](#emitteremit23-3)和[emit(eventId: string, options: Options, data: EventData)](#emitteremit23-4)
 
 **参数：**
 
@@ -1061,7 +1061,7 @@ let options: emitter.Options = {
 emitter.emit("eventId", options);
 ```
 
-## emitter.emit<sup>22+</sup>
+## emitter.emit<sup>23+</sup>
 
 emit(eventId: string, options: Options): void
 
@@ -1069,7 +1069,7 @@ emit(eventId: string, options: Options): void
 
 ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[ArkTS-Sta并发迁移规则](../../quick-start/arkts-dyn-to-sta-concurrency-rules.md)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**: `SystemCapability.Notification.Emitter`
 
@@ -1077,7 +1077,7 @@ ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[emit](#emitteremit11-1)
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1096,7 +1096,7 @@ let options: emitter.Options = {
 emitter.emit("eventId", options);
 ```
 
-## emitter.emit<sup>22+</sup>
+## emitter.emit<sup>23+</sup>
 
 emit(eventId: string, options: Options, data: EventData): void
 
@@ -1104,7 +1104,7 @@ emit(eventId: string, options: Options, data: EventData): void
 
 ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见[ArkTS-Sta并发迁移规则](../../quick-start/arkts-dyn-to-sta-concurrency-rules.md)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**: `SystemCapability.Notification.Emitter`
 
@@ -1112,7 +1112,7 @@ ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[emit](#emitteremit11-1)
 
-**ArkTS-Sta起始版本**：22 
+**ArkTS-Sta起始版本**：23 
 
 **参数：**
 
@@ -1159,7 +1159,7 @@ ArkTS-Sta: 该接口支持跨线程传输数据对象，需要遵循数据跨线
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1231,7 +1231,7 @@ ArkTS-Sta: getListenerCount(eventId: long | string): long
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1262,7 +1262,7 @@ let count = emitter.getListenerCount("eventId");
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称      | 值    | 说明                                                |
 | --------- | ---- | --------------------------------------------------- |
@@ -1281,7 +1281,7 @@ let count = emitter.getListenerCount("eventId");
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称     | 类型                        | 只读 | 可选 | 说明                                 |
 | -------- | ------------------------------- | ---- | ---- | ------------------------------ |
@@ -1299,7 +1299,7 @@ let count = emitter.getListenerCount("eventId");
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 类型           | 只读 | 可选 | 说明           |
 | ---- | ------------------ | ---- | ---- | -------------- |
@@ -1315,7 +1315,7 @@ let count = emitter.getListenerCount("eventId");
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称     | 类型                            | 只读 | 可选 | 说明           |
 | -------- | ------------------------------- | ---- | ---- | -------------- |
@@ -1328,6 +1328,10 @@ let count = emitter.getListenerCount("eventId");
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**: `SystemCapability.Notification.Emitter`
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 | 名称     | 类型                            | 只读 | 可选 | 说明           |
 | -------- | ------------------------------- | ---- | ---- | -------------- |

@@ -27,7 +27,7 @@ UIExtension宿主窗代理。
 
 | 名称                                 | 类型                  | 只读 | 可选 | 说明                                                                                                     |
 | ------------------------------------| -------------------------------------------------- | ---- | ---- | ------------------------------------------------------------------------------------------------------ |
-| properties<sup>14+</sup>            | [WindowProxyProperties](#windowproxyproperties14) |  否  |  否  | 组件（EmbeddedComponent或UIExtensionComponent）的信息。<br/>**约束：** 由于架构约束，不建议在[onSessionCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)阶段同步获取该值，建议在收到[on('windowSizeChange')](../apis-arkui/js-apis-arkui-uiExtension.md#onwindowsizechange)回调之后获取。<br/>**ArkTS-Dyn起始版本：** 14 <br/>**ArkTS-Sta起始版本：** 22                                                                             |
+| properties<sup>14+</sup>            | [WindowProxyProperties](#windowproxyproperties14) |  否  |  否  | 组件（EmbeddedComponent或UIExtensionComponent）的信息。<br/>**约束：** 由于架构约束，不建议在[onSessionCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)阶段同步获取该值，建议在收到[on('windowSizeChange')](../apis-arkui/js-apis-arkui-uiExtension.md#onwindowsizechange)回调之后获取。<br/>**ArkTS-Dyn起始版本：** 14 <br/>**ArkTS-Sta起始版本：** 23                                                                             |
 
 ### getWindowAvoidArea
 
@@ -39,7 +39,7 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -106,7 +106,7 @@ on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaInfo&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onAvoidAreaChange](#onavoidareachange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAvoidAreaChange](#onavoidareachange23)。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
@@ -147,7 +147,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 }
 ```
 
-### onAvoidAreaChange<sup>22+</sup>
+### onAvoidAreaChange<sup>23+</sup>
 
 onAvoidAreaChange(callback: Callback&lt;AvoidAreaInfo&gt;): void
 
@@ -159,7 +159,7 @@ onAvoidAreaChange(callback: Callback&lt;AvoidAreaInfo&gt;): void
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -195,7 +195,7 @@ off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaInfo&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offAvoidAreaChange](#offavoidareachange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAvoidAreaChange](#offavoidareachange23)。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
@@ -233,7 +233,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 }
 ```
 
-### offAvoidAreaChange<sup>22+</sup>
+### offAvoidAreaChange<sup>23+</sup>
 
 offAvoidAreaChange(callback?: Callback&lt;AvoidAreaInfo&gt;): void
 
@@ -245,7 +245,7 @@ offAvoidAreaChange(callback?: Callback&lt;AvoidAreaInfo&gt;): void
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -282,7 +282,7 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowSizeChange](#onwindowsizechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowSizeChange](#onwindowsizechange23)。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
@@ -323,7 +323,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 }
 ```
 
-### onWindowSizeChange<sup>22+</sup>
+### onWindowSizeChange<sup>23+</sup>
 
 onWindowSizeChange(callback: Callback&lt;window.Size&gt;): void
 
@@ -333,7 +333,7 @@ onWindowSizeChange(callback: Callback&lt;window.Size&gt;): void
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -369,7 +369,7 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowSizeChange](#offwindowsizechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowSizeChange](#offwindowsizechange23)。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
@@ -407,7 +407,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 }
 ```
 
-### offWindowSizeChange<sup>22+</sup>
+### offWindowSizeChange<sup>23+</sup>
 
 offWindowSizeChange(callback?: Callback<window.Size>): void
 
@@ -417,7 +417,7 @@ offWindowSizeChange(callback?: Callback<window.Size>): void
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -454,7 +454,7 @@ on(type: 'rectChange', reasons: number, callback: Callback&lt;RectChangeOptions&
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onRectChange](#onrectchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onRectChange](#onrectchange23)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -499,7 +499,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 }
 ```
 
-### onRectChange<sup>22+</sup>
+### onRectChange<sup>23+</sup>
 
 onRectChange(reasons: int, callback: Callback&lt;RectChangeOptions&gt;): void
 
@@ -511,7 +511,7 @@ onRectChange(reasons: int, callback: Callback&lt;RectChangeOptions&gt;): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
@@ -519,8 +519,8 @@ onRectChange(reasons: int, callback: Callback&lt;RectChangeOptions&gt;): void
 
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
-| reasons  | int                         | 是   | 触发组件（EmbeddedComponent或UIExtensionComponent）位置及尺寸变化的原因，具体取值可参考[RectChangeReason](#rectchangereason22)枚举值。 |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[RectChangeOptions](#rectchangeoptions22)> | 是 | 回调函数。返回当前组件（EmbeddedComponent或UIExtensionComponent）矩形变化值及变化原因。 |
+| reasons  | int                         | 是   | 触发组件（EmbeddedComponent或UIExtensionComponent）位置及尺寸变化的原因，具体取值可参考[RectChangeReason](#rectchangereason23)枚举值。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[RectChangeOptions](#rectchangeoptions23)> | 是 | 回调函数。返回当前组件（EmbeddedComponent或UIExtensionComponent）矩形变化值及变化原因。 |
 
 **错误码：**
 
@@ -558,7 +558,7 @@ off(type: 'rectChange', callback?: Callback&lt;RectChangeOptions&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offRectChange](#offrectchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offRectChange](#offrectchange23)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -599,7 +599,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 }
 ```
 
-### offRectChange<sup>22+</sup>
+### offRectChange<sup>23+</sup>
 
 offRectChange(callback?: Callback&lt;RectChangeOptions&gt;): void
 
@@ -611,7 +611,7 @@ offRectChange(callback?: Callback&lt;RectChangeOptions&gt;): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
@@ -619,7 +619,7 @@ offRectChange(callback?: Callback&lt;RectChangeOptions&gt;): void
 
 | 参数名   | 类型                           | 必填 | 说明                                                         |
 | -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[RectChangeOptions](#rectchangeoptions22)> | 否   | 回调函数。返回当前组件（EmbeddedComponent或UIExtensionComponent）矩形变化值及变化原因。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有组件（EmbeddedComponent或UIExtensionComponent）矩形变化的监听。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[RectChangeOptions](#rectchangeoptions23)> | 否   | 回调函数。返回当前组件（EmbeddedComponent或UIExtensionComponent）矩形变化值及变化原因。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有组件（EmbeddedComponent或UIExtensionComponent）矩形变化的监听。 |
 
 **错误码：**
 
@@ -660,7 +660,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -687,7 +687,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 | ------- | ------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. |
 
 **示例：**
 
@@ -797,7 +797,7 @@ ArkTS-Sta: occupyEvents(eventFlags: int): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -819,8 +819,8 @@ ArkTS-Sta: occupyEvents(eventFlags: int): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
-| 1300002  | This window state is abnormal. |
+| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.   |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
 | 1300003  | This window manager service works abnormally. |
 
 **示例：**
@@ -889,7 +889,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -911,7 +911,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -928,7 +928,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -944,7 +944,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -960,7 +960,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 

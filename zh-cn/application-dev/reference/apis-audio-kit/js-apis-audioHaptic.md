@@ -62,10 +62,10 @@ let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.get
 
 **ArkTS-Sta起始版本：** 20
 
-| 名称      | 类型            |必填   | 说明                              |
-| --------- | -------------- | ---- | --------------------------------- |
-| muteAudio   | boolean      | 否   | 是否将音频静音，true表示将音频静音，false表示正常播放声音。若不填该参数，则默认为false。 |
-| muteHaptics | boolean      | 否   | 是否禁止振动，true表示将禁止振动，false表示正常振动。若不填该参数，则默认为false。 |
+| 名称      | 类型            |只读  | 可选 | 说明                              |
+| --------- | -------------- | ---- |---| --------------------------------- |
+| muteAudio   | boolean      | 否   | 是 | 是否将音频静音，true表示将音频静音，false表示正常播放声音。若不填该参数，则默认为false。 |
+| muteHaptics | boolean      | 否   | 是 | 是否禁止振动，true表示将禁止振动，false表示正常振动。若不填该参数，则默认为false。 |
 
 ## AudioHapticManager<sup>11+</sup>
 

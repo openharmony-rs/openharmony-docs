@@ -29,7 +29,7 @@ subscribe(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, c
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -119,7 +119,7 @@ subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>): 
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -199,7 +199,7 @@ subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo):
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -276,7 +276,7 @@ subscribeSelf(subscriber: NotificationSubscriber): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -354,7 +354,7 @@ unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>)
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -432,7 +432,7 @@ unsubscribe(subscriber: NotificationSubscriber): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -509,7 +509,7 @@ remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveRea
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -600,7 +600,7 @@ remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveRea
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -690,7 +690,7 @@ remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback\<void\>):
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -762,7 +762,7 @@ remove(hashCode: string, reason: RemoveReason): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -833,7 +833,7 @@ remove(hashCodes: Array\<String\>, reason: RemoveReason, callback: AsyncCallback
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -904,7 +904,7 @@ remove(hashCodes: Array\<String\>, reason: RemoveReason): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -974,7 +974,7 @@ removeAll(bundle: BundleOption, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1049,7 +1049,7 @@ removeAll(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1114,7 +1114,7 @@ removeAll(bundle?: BundleOption): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1184,7 +1184,7 @@ ArkTS-Sta: removeAll(userId: int, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1257,7 +1257,7 @@ ArkTS-Sta: removeAll(userId: int): Promise\<void>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1325,7 +1325,7 @@ distributeOperation(hashcode: string, operationInfo?: OperationInfo): Promise\<v
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1394,7 +1394,7 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称  | 类型   | 可选 | 说明     |
 | ----- | ------ | --- | -------- |
@@ -1409,7 +1409,7 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称                 | 值  | 说明                  |
 | -------------------- | --- | -------------------- |
@@ -1424,7 +1424,7 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 
 | 名称  | 类型   | 只读 | 可选 | 说明     |
 | ----- | ------ | --- | --- | -------- |
-| actionName    | string | 否  | 是  | 描述通知中显示的操作按钮（与通知[NotificationActionButton](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton)中title字段保持一致）。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：22 |
-| userInput | string | 否  | 是  | 用户输入（用于通知跨设备快捷回复场景传递用户输入，与通知[NotificationUserInput](js-apis-inner-notification-notificationUserInput.md#notificationuserinput)中inputKey字段保持一致）。 <br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：22 |
-| operationType | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 是 | 动作操作类型。 <br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：22 |
-| buttonIndex   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 是 | 操作按钮索引。 <br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：22 |
+| actionName    | string | 否  | 是  | 描述通知中显示的操作按钮（与通知[NotificationActionButton](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton)中title字段保持一致）。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| userInput | string | 否  | 是  | 用户输入（用于通知跨设备快捷回复场景传递用户输入，与通知[NotificationUserInput](js-apis-inner-notification-notificationUserInput.md#notificationuserinput)中inputKey字段保持一致）。 <br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| operationType | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 是 | 动作操作类型。 <br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
+| buttonIndex   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 是 | 操作按钮索引。 <br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |

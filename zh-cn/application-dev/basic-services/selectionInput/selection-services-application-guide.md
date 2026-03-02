@@ -12,6 +12,7 @@
 | 名称 | 描述 |
 | ---- | ---- |
 | [on(type: 'selectionCompleted', callback: Callback\<SelectionInfo\>): void](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanageronselectioncompleted) | 订阅划词完成事件，使用`callback`回调函数。 |
+| [onSelectionComplete(callback: Callback\<SelectionInfo>): void](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#onselectioncomplete) | 订阅划词完成事件，使用`callback`回调函数。 |
 | [getSelectionContent(): Promise\<string\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#getselectioncontent) | 获取选中文本的内容。 |
 | [createPanel(ctx: Context, info: PanelInfo): Promise\<Panel\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#createpanel) | 创建划词面板。 |
 | [show(): Promise\<void\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#show) | 显示面板。 |

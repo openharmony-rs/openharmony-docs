@@ -32,7 +32,7 @@ ArkTS-Sta: type Value = string | double | Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型                | 说明                           |
 | ------------------- | ------------------------------ |
@@ -56,7 +56,7 @@ ArkTS-Sta: type Rounding = int
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
@@ -78,7 +78,7 @@ ArkTS-Sta: type Modulo = int
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
@@ -94,19 +94,19 @@ ArkTS-Sta: type Modulo = int
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
-| 名称      | 类型                   | 只读 | 必填 | 说明                                                         |
+| 名称      | 类型                   | 只读 | 可选 | 说明                                                         |
 | --------- | ---------------------- | ---- | ---- | ------------------------------------------------------------ |
-| precision | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 运算结果的最大有效位数，取值范围为[1, 1e9]，默认值为20。 |
+| precision | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 运算结果的最大有效位数，取值范围为[1, 1e9]，默认值为20。 |
 | rounding  | [Rounding](#rounding) | 否   | 否   | 舍入模式，取值范围为0到8的整数，默认值为4。 |
-| toExpNeg  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 指数表示法的负指数值的极限值，若Decimal的负指数小于等于该值时，使用科学计数法表示，[toString](#tostring)方法中使用，取值范围为[-9e15, 0]，默认值为-7。 |
-| toExpPos  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 指数表示法的正指数值的极限值，若Decimal的正指数大于等于该值时，使用科学计数法表示，[toString](#tostring)方法中使用，取值范围为[0, 9e15]，默认值为21。 |
-| minE      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 负指数极限，若Decimal的指数值小于该值，会下溢到零，取值范围为[-9e15, 0]，默认值为-9e15。 |
-| maxE      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 正指数极限，若Decimal的指数值大于该值，会溢出至无穷大，取值范围为[0, 9e15]，默认值为9e15。 |
-| crypto    | boolean                | 否   | 否   | 确定是否使用加密安全伪随机数生成的值，true表示使用加密安全伪随机数，false表示不使用，默认值为false。该能力不支持使用，报错的错误码为：10200061。  |
-| modulo    | [Modulo](#modulo)      | 否   | 否   | 模计算时使用的舍入模式，取值范围为0到9的整数，默认值为1。    |
-| defaults  | boolean                | 否   | 否   | 表示未指定的属性是否被设置为默认值，true表示使用默认值，false表示不使用默认值，默认值为true。 |
+| toExpNeg  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 指数表示法的负指数值的极限值，若Decimal的负指数小于等于该值时，使用科学计数法表示，[toString](#tostring)方法中使用，取值范围为[-9e15, 0]，默认值为-7。 |
+| toExpPos  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 指数表示法的正指数值的极限值，若Decimal的正指数大于等于该值时，使用科学计数法表示，[toString](#tostring)方法中使用，取值范围为[0, 9e15]，默认值为21。 |
+| minE      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 负指数极限，若Decimal的指数值小于该值，会下溢到零，取值范围为[-9e15, 0]，默认值为-9e15。 |
+| maxE      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 正指数极限，若Decimal的指数值大于该值，会溢出至无穷大，取值范围为[0, 9e15]，默认值为9e15。 |
+| crypto    | boolean                | 否   | 是   | 确定是否使用加密安全伪随机数生成的值，true表示使用加密安全伪随机数，false表示不使用，默认值为false。该能力不支持使用，报错的错误码为：10200061。  |
+| modulo    | [Modulo](#modulo)      | 否   | 是   | 模计算时使用的舍入模式，取值范围为0到9的整数，默认值为1。    |
+| defaults  | boolean                | 否   | 是   | 表示未指定的属性是否被设置为默认值，true表示使用默认值，false表示不使用默认值，默认值为true。 |
 
 ## Decimal
 
@@ -120,9 +120,9 @@ ArkTS-Sta: type Modulo = int
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型     | 只读 | 必填 | 说明                                      |
+| 名称 | 类型     | 只读 | 可选 | 说明                                      |
 | ---- | -------- | ---- | ---- | ----------------------------------------- |
 | d    | ArkTS-Dyn: number[] <br> ArkTS-Sta: Array\<double\> \| null | 是   | 否   | digits：表示Decimal数整数部分和小数部分。 |
 | e    | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 是   | 否   | exponent：表示Decimal数的十进制指数。 |
@@ -136,7 +136,7 @@ ArkTS-Sta: type Modulo = int
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 类型   | 值   | 说明                                                         |
 | ------------------ | ------ | ---- | ------------------------------------------------------------ |
@@ -163,7 +163,7 @@ Decimal的构造函数。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -198,7 +198,7 @@ abs(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -225,7 +225,7 @@ floor(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -252,7 +252,7 @@ ceil(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 **返回值：**
@@ -280,7 +280,7 @@ trunc(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -307,7 +307,7 @@ clamp(min: Value, max: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -329,7 +329,7 @@ clamp(min: Value, max: Value): Decimal
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes:1. Incorrect parameter types;2. Parameter verification failed. |
-| 10200001 | The value of 'min' is out of range.                          |
+| 10200001 | The value of `min` is out of range.                          |
 
 **示例：**
 
@@ -352,7 +352,7 @@ add(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -395,7 +395,7 @@ sub(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -438,7 +438,7 @@ mul(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -481,7 +481,7 @@ div(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -524,7 +524,7 @@ mod(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -567,7 +567,7 @@ sqrt(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -596,7 +596,7 @@ cbrt(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -625,7 +625,7 @@ pow(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -669,7 +669,7 @@ exp(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -706,7 +706,7 @@ log(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -750,7 +750,7 @@ ln(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -785,7 +785,7 @@ cos(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -812,7 +812,7 @@ sin(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -839,7 +839,7 @@ tan(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -866,7 +866,7 @@ cosh(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -893,7 +893,7 @@ sinh(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -920,7 +920,7 @@ tanh(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -947,7 +947,7 @@ acos(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -982,7 +982,7 @@ asin(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1017,7 +1017,7 @@ atan(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1052,7 +1052,7 @@ acosh(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1087,7 +1087,7 @@ asinh(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1122,7 +1122,7 @@ atanh(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1159,7 +1159,7 @@ Decimal的比较方法。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1217,7 +1217,7 @@ equals(n: Value): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1259,7 +1259,7 @@ greaterThan(n: Value): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1301,7 +1301,7 @@ greaterThanOrEqualTo(n: Value): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1343,7 +1343,7 @@ lessThan(n: Value): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1385,7 +1385,7 @@ lessThanOrEqualTo(n: Value): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1427,7 +1427,7 @@ isFinite(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1455,7 +1455,7 @@ isInteger(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1483,7 +1483,7 @@ isNaN(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1511,7 +1511,7 @@ isNegative(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1543,7 +1543,7 @@ isPositive(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1575,7 +1575,7 @@ isZero(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1605,7 +1605,7 @@ dividedToIntegerBy(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1648,7 +1648,7 @@ negate(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1678,7 +1678,7 @@ toBinary(): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1710,7 +1710,7 @@ ArkTS-Sta: toBinary(significantDigits: double): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1730,7 +1730,7 @@ ArkTS-Sta: toBinary(significantDigits: double): string
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 10200001 | The value of 'significantDigits' is out of range. |
+| 10200001 | The value of `significantDigits` is out of range. |
 
 **示例：**
 
@@ -1754,7 +1754,7 @@ ArkTS-Sta: toBinary(significantDigits: double, rounding: Rounding): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1775,7 +1775,7 @@ ArkTS-Sta: toBinary(significantDigits: double, rounding: Rounding): string
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 10200001 | The value of 'significantDigits \| rounding' is out of range. |
+| 10200001 | The value of `significantDigits \| rounding` is out of range. |
 
 **示例：**
 
@@ -1799,7 +1799,7 @@ toOctal(): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1831,7 +1831,7 @@ ArkTS-Sta: toOctal(significantDigits: double): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1851,7 +1851,7 @@ ArkTS-Sta: toOctal(significantDigits: double): string
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 10200001 | The value of 'significantDigits' is out of range. |
+| 10200001 | The value of `significantDigits` is out of range. |
 
 **示例：**
 
@@ -1875,7 +1875,7 @@ ArkTS-Sta: toOctal(significantDigits: double, rounding: Rounding): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1896,7 +1896,7 @@ ArkTS-Sta: toOctal(significantDigits: double, rounding: Rounding): string
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 10200001 | The value of 'significantDigits \| rounding' is out of range. |
+| 10200001 | The value of `significantDigits \| rounding` is out of range. |
 
 **示例：**
 
@@ -1920,7 +1920,7 @@ toHexadecimal(): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1952,7 +1952,7 @@ ArkTS-Sta: toHexadecimal(significantDigits: double): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1972,7 +1972,7 @@ ArkTS-Sta: toHexadecimal(significantDigits: double): string
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 10200001 | The value of 'significantDigits' is out of range. |
+| 10200001 | The value of `significantDigits` is out of range. |
 
 **示例：**
 
@@ -1996,7 +1996,7 @@ ArkTS-Sta: toHexadecimal(significantDigits: double, rounding: Rounding): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2017,7 +2017,7 @@ ArkTS-Sta: toHexadecimal(significantDigits: double, rounding: Rounding): string
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 10200001 | The value of 'significantDigits \| rounding' is out of range. |
+| 10200001 | The value of `significantDigits \| rounding` is out of range. |
 
 **示例：**
 
@@ -2039,7 +2039,7 @@ toDecimalPlaces(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2071,7 +2071,7 @@ ArkTS-Sta: toDecimalPlaces(decimalPlaces: double): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2091,7 +2091,7 @@ ArkTS-Sta: toDecimalPlaces(decimalPlaces: double): Decimal
 
 | 错误码ID | 错误信息                                      |
 | -------- | --------------------------------------------- |
-| 10200001 | The value of 'decimalPlaces' is out of range. |
+| 10200001 | The value of `decimalPlaces` is out of range. |
 
 **示例：**
 
@@ -2115,7 +2115,7 @@ ArkTS-Sta: toDecimalPlaces(decimalPlaces: double, rounding: Rounding): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2136,7 +2136,7 @@ ArkTS-Sta: toDecimalPlaces(decimalPlaces: double, rounding: Rounding): Decimal
 
 | 错误码ID | 错误信息                                                  |
 | -------- | --------------------------------------------------------- |
-| 10200001 | The value of 'decimalPlaces \| rounding' is out of range. |
+| 10200001 | The value of `decimalPlaces \| rounding` is out of range. |
 
 **示例：**
 
@@ -2159,7 +2159,7 @@ toExponential(): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2191,7 +2191,7 @@ ArkTS-Sta: toExponential(decimalPlaces: double): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2211,7 +2211,7 @@ ArkTS-Sta: toExponential(decimalPlaces: double): string
 
 | 错误码ID | 错误信息                                      |
 | -------- | --------------------------------------------- |
-| 10200001 | The value of 'decimalPlaces' is out of range. |
+| 10200001 | The value of `decimalPlaces` is out of range. |
 
 **示例：**
 
@@ -2237,7 +2237,7 @@ ArkTS-Sta: toExponential(decimalPlaces: double, rounding: Rounding): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2258,7 +2258,7 @@ ArkTS-Sta: toExponential(decimalPlaces: double, rounding: Rounding): string
 
 | 错误码ID | 错误信息                                                  |
 | -------- | --------------------------------------------------------- |
-| 10200001 | The value of 'decimalPlaces \| rounding' is out of range. |
+| 10200001 | The value of `decimalPlaces \| rounding` is out of range. |
 
 **示例：**
 
@@ -2280,7 +2280,7 @@ toFixed(): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2312,7 +2312,7 @@ ArkTS-Sta: toFixed(decimalPlaces: double): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2332,7 +2332,7 @@ ArkTS-Sta: toFixed(decimalPlaces: double): string
 
 | 错误码ID | 错误信息                                      |
 | -------- | --------------------------------------------- |
-| 10200001 | The value of 'decimalPlaces' is out of range. |
+| 10200001 | The value of `decimalPlaces` is out of range. |
 
 **示例：**
 
@@ -2358,7 +2358,7 @@ ArkTS-Sta: toFixed(decimalPlaces: double, rounding: Rounding): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2379,7 +2379,7 @@ ArkTS-Sta: toFixed(decimalPlaces: double, rounding: Rounding): string
 
 | 错误码ID | 错误信息                                                  |
 | -------- | --------------------------------------------------------- |
-| 10200001 | The value of 'decimalPlaces \| rounding' is out of range. |
+| 10200001 | The value of `decimalPlaces \| rounding` is out of range. |
 
 **示例：**
 
@@ -2401,7 +2401,7 @@ toFraction(): Decimal[]
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2429,7 +2429,7 @@ toFraction(maxDenominator: Value): Decimal[]
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2475,7 +2475,7 @@ toNearest(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2517,7 +2517,7 @@ toNearest(n: Value, rounding: Rounding): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2539,7 +2539,7 @@ toNearest(n: Value, rounding: Rounding): Decimal
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
 | 401      | Parameter error. Possible causes:1. Incorrect parameter types;2. Parameter verification failed. |
-| 10200001 | The value of 'rounding' is out of range. |
+| 10200001 | The value of `rounding` is out of range. |
 
 **示例：**
 
@@ -2563,7 +2563,7 @@ toPrecision(): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2595,7 +2595,7 @@ ArkTS-Sta: toPrecision(significantDigits: double): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2615,7 +2615,7 @@ ArkTS-Sta: toPrecision(significantDigits: double): string
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 10200001 | The value of 'significantDigits' is out of range. |
+| 10200001 | The value of `significantDigits` is out of range. |
 
 **示例：**
 
@@ -2640,7 +2640,7 @@ ArkTS-Sta: toPrecision(significantDigits: double, rounding: Rounding): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2661,7 +2661,7 @@ ArkTS-Sta: toPrecision(significantDigits: double, rounding: Rounding): string
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 10200001 | The value of 'significantDigits \|  rounding' is out of range. |
+| 10200001 | The value of `significantDigits \|  rounding` is out of range. |
 
 **示例：**
 
@@ -2685,7 +2685,7 @@ toSignificantDigits(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2717,7 +2717,7 @@ ArkTS-Sta: toSignificantDigits(significantDigits: double): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2737,7 +2737,7 @@ ArkTS-Sta: toSignificantDigits(significantDigits: double): Decimal
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 10200001 | The value of 'significantDigits' is out of range. |
+| 10200001 | The value of `significantDigits` is out of range. |
 
 **示例：**
 
@@ -2761,7 +2761,7 @@ ArkTS-Sta: toSignificantDigits(significantDigits: double, rounding: Rounding): D
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2782,7 +2782,7 @@ ArkTS-Sta: toSignificantDigits(significantDigits: double, rounding: Rounding): D
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 10200001 | The value of 'significantDigits \|  rounding' is out of range. |
+| 10200001 | The value of `significantDigits \|  rounding` is out of range. |
 
 **示例：**
 
@@ -2808,7 +2808,7 @@ ArkTS-Sta: 将值转换为double类型。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2844,7 +2844,7 @@ toString(): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2881,7 +2881,7 @@ valueOf(): string
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2911,7 +2911,7 @@ ArkTS-Sta: decimalPlaces(): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2949,7 +2949,7 @@ ArkTS-Sta: precision(): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2987,7 +2987,7 @@ ArkTS-Sta: precision(includeZeros: boolean | int): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3007,7 +3007,7 @@ ArkTS-Sta: precision(includeZeros: boolean | int): double
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 10200001 | The value of includeZeros is out of range. |
+| 10200001 | The value of `includeZeros` is out of range. |
 
 **示例：**
 
@@ -3039,7 +3039,7 @@ static abs(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3080,7 +3080,7 @@ static floor(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3121,7 +3121,7 @@ static ceil(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3162,7 +3162,7 @@ static trunc(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3203,7 +3203,7 @@ static clamp(n: Value, min: Value, max: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3226,7 +3226,7 @@ static clamp(n: Value, min: Value, max: Value): Decimal
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes:1. Incorrect parameter types;2. Parameter verification failed. |
-| 10200001 | The value of 'min' is out of range.                          |
+| 10200001 | The value of `min` is out of range.                          |
 
 **示例：**
 
@@ -3249,7 +3249,7 @@ static add(x: Value, y: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3293,7 +3293,7 @@ static sum(...n: Value[]): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3336,7 +3336,7 @@ static sub(x: Value, y: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3380,7 +3380,7 @@ static mul(x: Value, y: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3424,7 +3424,7 @@ static div(x: Value, y: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3469,7 +3469,7 @@ static mod(x: Value, y: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3513,7 +3513,7 @@ static sqrt(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3556,7 +3556,7 @@ static cbrt(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3597,7 +3597,7 @@ static pow(base: Value, exponent: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3642,7 +3642,7 @@ static exp(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3686,7 +3686,7 @@ static log(n: Value, base: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3731,7 +3731,7 @@ static ln(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3775,7 +3775,7 @@ static log2(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3819,7 +3819,7 @@ static log10(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3863,7 +3863,7 @@ static cos(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3906,7 +3906,7 @@ static sin(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3949,7 +3949,7 @@ static tan(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3992,7 +3992,7 @@ static cosh(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4035,7 +4035,7 @@ static sinh(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4078,7 +4078,7 @@ static tanh(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4121,7 +4121,7 @@ static acos(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4165,7 +4165,7 @@ static asin(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4209,7 +4209,7 @@ static atan(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4253,7 +4253,7 @@ static acosh(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4297,7 +4297,7 @@ static asinh(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4341,7 +4341,7 @@ static atanh(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4385,7 +4385,7 @@ static atan2(y: Value, x: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4430,7 +4430,7 @@ static hypot(...n: Value[]): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4471,7 +4471,7 @@ static max(...n: Value[]): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4512,7 +4512,7 @@ static min(...n: Value[]): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4553,7 +4553,7 @@ static random(): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -4589,7 +4589,7 @@ ArkTS-Sta: static random(significantDigits: double): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4632,7 +4632,7 @@ ArkTS-Sta: static sign(n: Value): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4680,7 +4680,7 @@ static round(n: Value): Decimal
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4722,7 +4722,7 @@ static set(config: DecimalConfig):void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4737,7 +4737,7 @@ static set(config: DecimalConfig):void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes:1. Incorrect parameter types;2. Parameter verification failed. |
-| 10200001 | The value of 'DecimalConfig.properties' is out of range.     |
+| 10200001 | The value of `DecimalConfig.properties` is out of range.     |
 | 10200061 | Crypto unavailable.                                          |
 
 **示例1：**

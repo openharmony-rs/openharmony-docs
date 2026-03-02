@@ -3929,3 +3929,164 @@ struct Index {
 ```
 
 ![Text_line_height_multiple](figures/Text_lineHeightMultiple.png)
+
+### 示例27（获取指定坐标和范围对应的文本信息）
+
+从API version 24开始，支持[getCharacterPositionAtCoordinate](ts-text-common.md#getcharacterpositionatcoordinate24)，[getGlyphRangeForCharacterRange](ts-text-common.md#getglyphrangeforcharacterrange24)，[getCharacterRangeForGlyphRange](ts-text-common.md#getcharacterrangeforglyphrange24)接口。该示例通过[getLayoutManager](#getlayoutmanager12)接口调用文本的布局管理对象获取文本信息，通过[LayoutManager](ts-text-common.md#layoutmanager12)中的[getCharacterPositionAtCoordinate](ts-text-common.md#getcharacterpositionatcoordinate24)获取坐标字符的位置信息，通过[getGlyphRangeForCharacterRange](ts-text-common.md#getglyphrangeforcharacterrange24)根据字符索引范围获取字形索引范围和实际的字符索引范围，通过[getCharacterRangeForGlyphRange](ts-text-common.md#getcharacterrangeforglyphrange24)根据字形索引范围获取字符索引范围和实际的字形索引范围。
+
+ArkTS-Dyn示例：
+
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+ 	 
+@Entry
+@Component
+struct TextExample10 {
+  @State start: number = 10;
+  @State end: number = 20;
+  textController: TextController = new TextController();
+  textStr: string = "Hello World! 您好，世界!";
+  @State str1: string = ""
+  @State str2: string = ""
+  @State str3: string = ""
+  @State str4: string = ""
+  textStyleAttrs: TextStyle =
+    new TextStyle({ fontWeight: FontWeight.Bolder, fontSize: LengthMetrics.vp(24), fontStyle: FontStyle.Italic });
+  titleParagraphStyleAttr: ParagraphStyle =
+    new ParagraphStyle({ paragraphSpacing: LengthMetrics.px(50), textIndent: LengthMetrics.vp(15) });
+  mutableStyledString: MutableStyledString =
+    new MutableStyledString("属性字符串TextStyle测试\n属性字符串测试\n属性字符串TextStyle测试");
+
+  build() {
+    Column() {
+      Text(this.textStr, { controller: this.textController }) {
+        Span("Hello World 123 \n")
+        Span("Hello World 456 \n")
+        Span("Hello World 789 \n")
+      }
+      .fontSize(25)
+      .borderWidth(1)
+
+      Text(this.str1)
+      Text(this.str2)
+      Text(this.str3)
+      Text(this.str4)
+
+      Button("点击可增加属性字符串").onClick(() => {
+        this.textController.setStyledString(this.mutableStyledString)
+      })
+
+      Button("相对组件坐标[150,50]字形信息")
+        .onClick(() => {
+          let layoutManager: LayoutManager = this.textController.getLayoutManager();
+          let position1: PositionWithAffinity = layoutManager.getGlyphPositionAtCoordinate(150, 50);
+          this.str1 = "相对组件坐标[150,50] glyphPosition position: " + position1.position +
+            " affinity: " +
+          position1.affinity;
+
+          let position2: PositionWithAffinity =
+            layoutManager.getCharacterPositionAtCoordinate(150, 50) as PositionWithAffinity;
+          this.str2 = "相对组件坐标[150,50] characterPosition position: " + position2.position +
+            " affinity: " +
+          position2.affinity;
+
+          let range1: TextRange = { start: this.start, end: this.end };
+          let ranges1: Array<TextRange> = layoutManager.getGlyphRangeForCharacterRange(range1) as Array<TextRange>
+          this.str3 = "getGlyphRangeForCharacterRange 字形数 " + ranges1[0].start + " " + ranges1[0].end + "\n" +
+            "getGlyphRangeForCharacterRange 实际字符数 " + ranges1[1].start + " " + ranges1[1].end
+
+          let range2: TextRange = { start: this.start, end: this.end };
+          let ranges2: Array<TextRange> = layoutManager.getCharacterRangeForGlyphRange(range2) as Array<TextRange>
+          this.str4 = "getCharacterRangeForGlyphRange 字符数 " + ranges2[0].start + " " + ranges2[0].end + "\n" +
+            "getCharacterRangeForGlyphRange 实际字形数 " + ranges2[1].start + " " + ranges2[1].end
+        })
+        .margin({ bottom: 20, top: 10 })
+    }.justifyContent(FlexAlign.Center).width("100%").height("100%")
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+
+import { Entry, Text, Column, Component, Button, ClickEvent, TextController, TextStyle, ParagraphStyle, MutableStyledString, LayoutManager, PositionWithAffinity, TextRange Span, Row, FontWeight, LengthMetrics, FontStyle, TextStyleInterface, StyleOptions, ParagraphStyleInterface, StyledStringKey, Color, FlexAlign } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+
+// xxx.ets
+@Entry
+@Component
+struct TextExample10 {
+  @State start: int = 10;
+  @State end: int = 20;
+  @State str1: string = ""
+  @State str2: string = ""
+  @State str3: string = ""
+  @State str4: string = ""
+  textController: TextController = new TextController();
+  textStr: string = "Hello World! 您好，世界!";
+  textStyleAttrs: TextStyle =
+    new TextStyle({
+      fontWeight: FontWeight.Bolder,
+      fontSize: LengthMetrics.vp(24),
+      fontStyle: FontStyle.Italic
+    } as TextStyleInterface);
+  titleParagraphStyleAttr: ParagraphStyle =
+    new ParagraphStyle({
+      paragraphSpacing: LengthMetrics.px(50),
+      textIndent: LengthMetrics.vp(15)
+    } as ParagraphStyleInterface);
+  mutableStyledString: MutableStyledString =
+    new MutableStyledString("属性字符串TextStyle测试\n属性字符串测试\n属性字符串TextStyle测试");
+
+  build() {
+    Column() {
+      Text(this.textStr, { controller: this.textController }) {
+        Span("Hello World 123 \n")
+        Span("Hello World 456 \n")
+        Span("Hello World 789 \n")
+      }
+      .fontSize(25)
+      .borderWidth(1)
+
+      Text(this.str1)
+      Text(this.str2)
+      Text(this.str3)
+      Text(this.str4)
+
+      Button("点击可增加属性字符串").onClick(() => {
+        this.textController.setStyledString(this.mutableStyledString)
+      })
+
+      Button("相对组件坐标[150,50]字形信息")
+        .onClick(() => {
+          let layoutManager: LayoutManager = this.textController.getLayoutManager() as LayoutManager;
+          let position1: PositionWithAffinity = layoutManager.getGlyphPositionAtCoordinate(150, 50) as PositionWithAffinity;
+          this.str1 = "相对组件坐标[150,50] glyphPosition position: " + position1.position +
+            " affinity: " +
+          position1.affinity;
+
+          let position2: PositionWithAffinity =
+            layoutManager.getCharacterPositionAtCoordinate(150, 50) as PositionWithAffinity;
+          this.str2 = "相对组件坐标[150,50] characterPosition position: " + position2.position +
+            " affinity: " +
+          position2.affinity;
+
+          let range1: TextRange = { start: this.start, end: this.end };
+          let ranges1: Array<TextRange> = layoutManager.getGlyphRangeForCharacterRange(range1) as Array<TextRange>
+          this.str3 = "getGlyphRangeForCharacterRange 字形数 " + ranges1[0].start + " " + ranges1[0].end + "\n" +
+            "getGlyphRangeForCharacterRange 实际字符数 " + ranges1[1].start + " " + ranges1[1].end
+
+          let range2: TextRange = { start: this.start, end: this.end };
+          let ranges2: Array<TextRange> = layoutManager.getCharacterRangeForGlyphRange(range2) as Array<TextRange>
+          this.str4 = "getCharacterRangeForGlyphRange 字符数 " + ranges2[0].start + " " + ranges2[0].end + "\n" +
+            "getCharacterRangeForGlyphRange 实际字形数 " + ranges2[1].start + " " + ranges2[1].end
+        })
+        .margin({ bottom: 20, top: 10 })
+    }.justifyContent(FlexAlign.Center).width("100%").height("100%")
+  }
+}
+```
+
+![textRangePosition](figures/textRange_Position.gif)

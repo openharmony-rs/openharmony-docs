@@ -209,15 +209,19 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型                                    | 只读 | 可选 | 说明                                                         |
 | --------------- | ---------------------------------------- |---- | ---- | ------------------------------------------------------------ |
-| audioBitrate | number     | 否 | 是 | 输出音频的码率，单位为比特率（bps），支持范围[1-500000]。默认设置为48Kbps。|
+| audioBitrate | ArkTS-Dyn: number<br>ArkTS-Sta: int     | 否 | 是 | 输出音频的码率，单位为比特率（bps），支持范围[1-500000]。默认设置为48Kbps。|
 | audioCodec | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)     | 否 | 是  | 输出音频的编码格式，当前仅支持AAC。默认设置为AAC。                   |
 | fileFormat         | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | 否 | 否   | 输出视频文件的封装格式，当前视频文件仅支持MP4。|
-| videoBitrate         | number | 否 |  是  | 输出视频的码率，单位为比特率（bps）。默认码率按输出视频的分辨率设置，[240p，480P]默认码率值为1Mbps，(480P,720P]默认码率值为2Mbps，(720P,1080P]默认码率值为4Mbps，1080P及以上默认值为8Mbps。|
+| videoBitrate         | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |  是  | 输出视频的码率，单位为比特率（bps）。默认码率按输出视频的分辨率设置，[240p，480P]默认码率值为1Mbps，(480P,720P]默认码率值为2Mbps，(720P,1080P]默认码率值为4Mbps，1080P及以上默认值为8Mbps。|
 | videoCodec        | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8) | 否 | 是   | 输出视频的编码格式，当前仅支持AVC和HEVC。若源视频编码格式为HEVC，则默认设置为HEVC，否则默认设置为AVC。|
-| videoFrameWidth        | number | 否 |  是   | 输出视频帧的宽，单位为像素（px），支持范围[240-3840]。默认设置为源视频帧的宽。|
-| videoFrameHeight        | number | 否 |  是   | 输出视频帧的高，单位为像素（px），支持范围[240-2160]。默认设置为源视频帧的高。|
+| videoFrameWidth        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |  是   | 输出视频帧的宽，单位为像素（px），支持范围[240-3840]。默认设置为源视频帧的宽。|
+| videoFrameHeight        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |  是   | 输出视频帧的高，单位为像素（px），支持范围[240-2160]。默认设置为源视频帧的高。|
 
 ## AVMetadata<sup>11+</sup>
 
@@ -226,29 +230,29 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| album     | string | 否   | 是   | 专辑的标题。不支持AVRecorder设置该属性。 <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| albumArtist | string | 否   | 是   | 专辑的艺术家。不支持AVRecorder设置该属性。 <br> **ArkTS-Dyn起始版本：** 11 <br> **0起始版本：** 23 |
-| artist | string | 否   | 是   | 媒体资源的艺术家。不支持AVRecorder设置该属性。 <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| author | string | 否   | 是   | 媒体资源的作者。不支持AVRecorder设置该属性。 <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| dateTime | string | 否   | 是   | 媒体资源的创建时间。不支持AVRecorder设置该属性。 <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| dateTimeFormat | string | 否   | 是   | 媒体资源的创建时间，按YYYY-MM-DD HH:mm:ss格式输出。不支持AVRecorder设置该属性。 <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| composer | string | 否   | 是   | 媒体资源的作曲家。不支持AVRecorder设置该属性。 <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| duration | string | 否   | 是   | 媒体资源的时长。不支持AVRecorder设置该属性。 <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| genre | string | 否   | 是   | 媒体资源的类型或体裁。 <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| hasAudio | string | 否   | 是   | 媒体资源是否包含音频。不支持AVRecorder设置该属性。 <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| hasVideo | string | 否   | 是   | 媒体资源是否包含视频。不支持AVRecorder设置该属性。 <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| mimeType | string | 否   | 是   | 媒体资源的mime类型。不支持AVRecorder设置该属性。 <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| trackCount | string | 否   | 是   | 媒体资源的轨道数量。不支持AVRecorder设置该属性。 <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| sampleRate | string | 否   | 是   | 音频的采样率，单位为赫兹（Hz）。不支持AVRecorder设置该属性。 <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| title | string | 否   | 是   | 媒体资源的标题。不支持AVRecorder设置该属性。 <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| videoHeight | string | 否   | 是   | 视频的高度，单位为像素。不支持AVRecorder设置该属性。 <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| videoWidth | string | 否   | 是   | 视频的宽度，单位为像素。不支持AVRecorder设置该属性。 <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| videoOrientation | string | 否   | 是   | 视频的旋转方向，单位为度（°）。 <br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| hdrType<sup>12+</sup> | [HdrType](arkts-apis-media-e.md#hdrtype12) | 否   | 是   | 媒体资源的HDR类型。不支持AVRecorder设置该属性。 <br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
-| location<sup>12+</sup> | [Location](#location) | 否   | 是 | 视频的地理位置信息。 <br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
-| customInfo<sup>12+</sup> | Record<string, string> | 否   | 是 | 从moov.meta.list 获取的自定义参数键值映射。 <br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
-| tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | 是   | 是 | 媒体资源的轨道信息。不支持AVRecorder设置该属性。 <br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23 |
+| ------ | ------ | ---- | ---- |------------------------------------------------------------ |
+| album     | string | 否 | 是 | 专辑的标题。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| albumArtist | string | 否 | 是 | 专辑的艺术家。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| artist | string | 否 | 是 | 媒体资源的艺术家。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| author | string | 否 | 是 | 媒体资源的作者。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| dateTime | string | 否 | 是 | 媒体资源的创建时间。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| dateTimeFormat | string | 否 | 是 | 媒体资源的创建时间，按YYYY-MM-DD HH:mm:ss格式输出。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| composer | string | 否 | 是 | 媒体资源的作曲家。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| duration | string | 否 | 是 | 媒体资源的时长。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| genre | string | 否 | 是 | 媒体资源的类型或体裁。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| hasAudio | string | 否 | 是 | 媒体资源是否包含音频。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| hasVideo | string | 否 | 是 | 媒体资源是否包含视频。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| mimeType | string | 否 | 是 | 媒体资源的mime类型。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| trackCount | string | 否 | 是 | 媒体资源的轨道数量。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| sampleRate | string | 否 | 是 | 音频的采样率，单位为赫兹（Hz）。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| title | string | 否 | 是 | 媒体资源的标题。当前版本为只读参数。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| videoHeight | string | 否 | 是 | 视频的高度，单位为像素（px）。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| videoWidth | string | 否 | 是 | 视频的宽度，单位为像素（px）。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| videoOrientation | string | 否 | 是 | 视频的旋转方向，单位为度（°）。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| hdrType<sup>12+</sup> | [HdrType](arkts-apis-media-e.md#hdrtype12) | 否 | 是 | 媒体资源的HDR类型。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| location<sup>12+</sup> | [Location](#location) | 否 | 是 | 视频的地理位置信息。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| customInfo<sup>12+</sup> | Record<string, string> | 否 | 是 | 从moov.meta.list 获取的自定义参数键值映射。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | 否 | 是 | 媒体资源的轨道信息。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23 |
 
 > **说明：**
 > AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)的范围如下：

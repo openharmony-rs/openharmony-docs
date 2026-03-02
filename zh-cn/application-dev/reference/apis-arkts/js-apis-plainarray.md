@@ -35,7 +35,7 @@ import { PlainArray } from '@kit.ArkTS';
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -54,7 +54,7 @@ PlainArray的构造函数。
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -83,7 +83,7 @@ isEmpty(): boolean
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -122,7 +122,7 @@ ArkTS-Sta: has(key: int): boolean
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -221,7 +221,7 @@ get(key: int): T \| undefined
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -266,7 +266,7 @@ ArkTS-Sta: getIndexOfKey(key: int): int
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -324,7 +324,7 @@ ArkTS-Sta: getIndexOfValue(value: T): int
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -370,7 +370,7 @@ ArkTS-Sta: getKeyAt(index: int): int
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -426,7 +426,7 @@ ArkTS-Sta: getValueAt(index: int): T
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -482,7 +482,7 @@ clone(): PlainArray&lt;T&gt;
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -522,7 +522,7 @@ ArkTS-Sta: add(key: int, value: T): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -659,7 +659,7 @@ remove(key: int): T \| undefined
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -702,7 +702,7 @@ removeAt(index: int): T \| undefined
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -747,7 +747,7 @@ ArkTS-Sta: removeRangeFrom(index: int, size: int): int
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -807,7 +807,7 @@ ArkTS-Sta: setValueAt(index: int, value: T): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -870,7 +870,7 @@ toString(): String
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -908,7 +908,7 @@ clear(): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -999,7 +999,7 @@ forEach(callbackFn: PlainArrayForEachCb\<T\>): void
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1088,7 +1088,7 @@ for(let i = 0;i < 10;i++) {
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1124,7 +1124,7 @@ PlainArray中forEach方法的回调函数。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

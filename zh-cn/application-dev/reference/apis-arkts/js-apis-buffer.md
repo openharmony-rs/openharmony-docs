@@ -25,7 +25,7 @@ import { buffer } from '@kit.ArkTS';
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型 | 只读 | 可选 | 说明               |
 | --------- | -------- | ---- | ---- | ------------------ |
@@ -46,7 +46,7 @@ type TypedArray = Int8Array | Uint8Array | Uint8ClampedArray | Int16Array | Uint
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型    | 说明                 |
 | ------- | -------------------- |
@@ -76,7 +76,7 @@ type ArrayUnionType = Array\<Int8Array\> | Array\<Uint8Array\> | Array\<Uint8Cla
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型    | 说明                 |
 | ------- | -------------------- |
@@ -108,7 +108,7 @@ type BufferEncoding = | 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型    | 说明                 |
 | ------- | -------------------- |
@@ -138,7 +138,7 @@ ArkTS-Sta: alloc(size: int, fill?: string | Buffer | int | double | long, encodi
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -215,7 +215,7 @@ ArkTS-Sta：allocUninitializedFromPool(size: int): Buffer
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -280,7 +280,7 @@ ArkTS-Sta：allocUninitialized(size: int): Buffer
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -387,7 +387,7 @@ byteLength(doc: string | Buffer | TypedArray | DataView | ArrayBuffer, encoding?
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -472,7 +472,7 @@ compare(buf1: Buffer | Uint8Array, buf2: Buffer | Uint8Array): int
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -514,7 +514,7 @@ ArkTS-Sta：concat(list: Buffer[] | Uint8Array[], totalLength?: int): Buffer
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -574,7 +574,7 @@ ArkTS-Sta：from(array: double[]): Buffer
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -671,7 +671,7 @@ from(arrayBuffer: ArrayBuffer, byteOffset?: int, length?: int): Buffer
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -718,7 +718,7 @@ from(buffer: Buffer | Uint8Array): Buffer
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -777,7 +777,7 @@ ArkTS-Sta：from(object: Object, offsetOrEncoding: int | string, length: int): B
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -828,7 +828,7 @@ from(string: String, encoding?: BufferEncoding): Buffer
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -884,7 +884,7 @@ isBuffer(obj: Object): boolean
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -933,7 +933,7 @@ isEncoding(encoding: string): boolean
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -974,7 +974,7 @@ transcode(source: Buffer | Uint8Array, fromEnc: string, toEnc: string): Buffer
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1024,7 +1024,7 @@ console.info("newBuf = " + newBuf.toString('ascii'));
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -1122,7 +1122,7 @@ compare(target: Buffer | Uint8Array, targetStart?: int, targetEnd?: int, sourceS
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1178,7 +1178,7 @@ ArkTS-Sta：copy(target: Buffer| Uint8Array, targetStart?: int, sourceStart?: in
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1245,7 +1245,7 @@ ArkTS-Sta：entries(): IterableIterator&lt;[int,&nbsp;long]&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1285,7 +1285,7 @@ equals(otherBuffer: Uint8Array | Buffer): boolean
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1342,7 +1342,7 @@ ArkTS-Sta：fill(value: string | Buffer | Uint8Array | int | double | long, offs
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1403,7 +1403,7 @@ ArkTS-Sta：includes(value: string | int | double | long | Buffer | Uint8Array, 
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1459,7 +1459,7 @@ ArkTS-Sta：indexOf(value: string | int | double | long | Buffer | Uint8Array, b
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1515,7 +1515,7 @@ ArkTS-Sta：keys(): IterableIterator&lt;int&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1557,7 +1557,7 @@ ArkTS-Sta：lastIndexOf(value: string | int | double | long | Buffer | Uint8Arra
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1614,7 +1614,7 @@ ArkTS-Sta：readBigInt64BE(offset?: int): bigint
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1677,7 +1677,7 @@ ArkTS-Sta：readBigInt64LE(offset?: int): bigint
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1740,7 +1740,7 @@ ArkTS-Sta：readBigUInt64BE(offset?: int): bigint
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1802,7 +1802,7 @@ ArkTS-Sta：readBigUInt64LE(offset?: int): bigint
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1865,7 +1865,7 @@ ArkTS-Sta：readDoubleBE(offset?: int): double
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1926,7 +1926,7 @@ ArkTS-Sta：readDoubleLE(offset?: int): double
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1987,7 +1987,7 @@ ArkTS-Sta：readFloatBE(offset?: int): double
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2048,7 +2048,7 @@ ArkTS-Sta：readFloatLE(offset?: int): double
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2109,7 +2109,7 @@ ArkTS-Sta：readInt8(offset?: int): long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2172,7 +2172,7 @@ ArkTS-Sta：readInt16BE(offset?: int): long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2233,7 +2233,7 @@ ArkTS-Sta：readInt16LE(offset?: int): long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2294,7 +2294,7 @@ ArkTS-Sta：readInt32BE(offset?: int): long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2355,7 +2355,7 @@ ArkTS-Sta：readInt32LE(offset?: int): long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2416,7 +2416,7 @@ ArkTS-Sta：readIntBE(offset: int, byteLength: int): long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2481,7 +2481,7 @@ ArkTS-Sta：readIntLE(offset: int, byteLength: int): long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2544,7 +2544,7 @@ ArkTS-Sta：readUInt8(offset?: int): long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2608,7 +2608,7 @@ ArkTS-Sta：readUInt16BE(offset?: int): long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2672,7 +2672,7 @@ ArkTS-Sta：readUInt16LE(offset?: int): long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2736,7 +2736,7 @@ ArkTS-Sta：readUInt32BE(offset?: int): long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2798,7 +2798,7 @@ ArkTS-Sta：readUInt32LE(offset?: int): long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2860,7 +2860,7 @@ ArkTS-Sta：readUIntBE(offset: int, byteLength: int): long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2923,7 +2923,7 @@ ArkTS-Sta：readUIntLE(offset: int, byteLength: int): long
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2986,7 +2986,7 @@ ArkTS-Sta：subarray(start?: int, end?: int): Buffer
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3028,7 +3028,7 @@ swap16(): Buffer
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 
 **返回值：**
@@ -3070,7 +3070,7 @@ swap32(): Buffer
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3111,7 +3111,7 @@ swap64(): Buffer
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3263,7 +3263,7 @@ toString(encoding?: BufferEncoding, start?: int, end?: int): string
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3306,7 +3306,7 @@ ArkTS-Sta：values(): IterableIterator&lt;long&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3348,7 +3348,7 @@ ArkTS-Sta：write(str: string, offset?: int, length?: int, encoding?: string): i
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3415,7 +3415,7 @@ ArkTS-Sta：writeBigInt64BE(value: bigint, offset?: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3475,7 +3475,7 @@ ArkTS-Sta：writeBigInt64LE(value: bigint, offset?: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3535,7 +3535,7 @@ ArkTS-Sta：writeBigUInt64BE(value: bigint, offset?: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3595,7 +3595,7 @@ ArkTS-Sta：writeBigUInt64LE(value: bigint, offset?: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3655,7 +3655,7 @@ ArkTS-Sta：writeDoubleBE(value: double, offset?: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3715,7 +3715,7 @@ ArkTS-Sta：writeDoubleLE(value: double, offset?: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3775,7 +3775,7 @@ ArkTS-Sta：writeFloatBE(value: double, offset?: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3836,7 +3836,7 @@ ArkTS-Sta：writeFloatLE(value: double, offset?: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3896,7 +3896,7 @@ ArkTS-Sta：writeInt8(value: long, offset?: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3960,7 +3960,7 @@ ArkTS-Sta：writeInt16BE(value: long, offset?: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4021,7 +4021,7 @@ ArkTS-Sta：writeInt16LE(value: long, offset?: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4081,7 +4081,7 @@ ArkTS-Sta：writeInt32BE(value: long, offset?: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4142,7 +4142,7 @@ ArkTS-Sta：writeInt32LE(value: long, offset?: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4202,7 +4202,7 @@ ArkTS-Sta：writeIntBE(value: long, offset: int, byteLength: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4264,7 +4264,7 @@ ArkTS-Sta：writeIntLE(value: long, offset: int, byteLength: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4325,7 +4325,7 @@ ArkTS-Sta：writeUInt8(value: long, offset?: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4394,7 +4394,7 @@ ArkTS-Sta：writeUInt16BE(value: long, offset?: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4457,7 +4457,7 @@ ArkTS-Sta：writeUInt16LE(value: long, offset?: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4520,7 +4520,7 @@ ArkTS-Sta：writeUInt32BE(value: long, offset?: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4580,7 +4580,7 @@ ArkTS-Sta：writeUInt32LE(value: long, offset?: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4640,7 +4640,7 @@ ArkTS-Sta：writeUIntBE(value: long, offset: int, byteLength: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4701,7 +4701,7 @@ ArkTS-Sta：writeUIntLE(value: long, offset: int, byteLength: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4760,7 +4760,7 @@ console.info("result = " + result);
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4809,7 +4809,7 @@ console.info("result2 = " + result2);
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -4871,7 +4871,7 @@ Blob的构造函数。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4902,7 +4902,7 @@ arrayBuffer(): Promise&lt;ArrayBuffer&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 | 类型 | 说明 |
@@ -4935,7 +4935,7 @@ ArkTS-Sta：slice(start?: int, end?: int, type?: string): Blob
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4972,7 +4972,7 @@ text(): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 | 类型 | 说明 |

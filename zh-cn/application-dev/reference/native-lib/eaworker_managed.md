@@ -6,14 +6,14 @@ EAWorker类为开发者提供了以独占线程模式执行异步任务的接口
 > 使用完毕后，必须显式调用[join](#join)方法来释放线程资源，以避免内存泄漏。
 
 文档中涉及的概念及解释：
-- 互操作（interop）：ArkTS1.2和ArkTS1.1代码相互操作。由于ArkTS1.1运行时为单线程实例，因此支持互操作的EAWorker会持有不同的ArkTS1.1运行时实例用于执行ArkTS1.1字节码，对应的ArkTS1.1中全局变量在不同的线程中也对应不同的实例。
+- 互操作（interop）：ArkTS-Sta和ArkTS-Dyn代码相互操作。由于ArkTS-Dyn运行时为单线程实例，因此支持互操作的EAWorker会持有不同的ArkTS-Dyn运行时实例用于执行ArkTS-Dyn字节码，对应的ArkTS-Dyn中全局变量在不同的线程中也对应不同的实例。
 
 ## constructor
 constructor(needInterop?: boolean = false)
 
 EAWorker的构造器，用于创建支持或者不支持interop能力的EAWorker。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **参数:**
 | 参数名         | 类型      | 必填| 说明                                                                        |
@@ -25,7 +25,7 @@ EAWorker的构造器，用于创建支持或者不支持interop能力的EAWorker
 // 创建基础实例（不开启互操作）
 let worker = new EAWorker();
 
-// 创建支持ArkTS1.1互操作的实例
+// 创建支持ArkTS-Dyn互操作的实例
 let interopWorker = new EAWorker(true);
 ```
 
@@ -34,7 +34,7 @@ constructor(name: string, needInterop?: boolean = false)
 
 EAWorker的构造器，用于创建指定名称的支持或者不支持互操作能力的EAWorker。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **参数:**
 | 参数名         | 类型      | 必填| 说明                                                                        |
@@ -56,7 +56,7 @@ constructor(task: ()=> void, needInterop?: boolean = false)
 
 EAWorker的构造器，用于创建支持或不支持互操作能力的EAWorker，并在调用EAWorker对象的[start](#start)方法后执行指定任务。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **参数:**
 | 参数名         | 类型      | 必填| 说明                                                                        |
@@ -77,7 +77,7 @@ constructor(name: string, task: ()=> void, needInterop?: boolean = false)
 
 EAWorker的构造器用于创建指定名称、支持或不支持互操作能力的EAWorker，并在调用EAWorker对象的[start](#start)方法后执行指定任务。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **参数:**
 | 参数名         | 类型      | 必填| 说明                                                                        |
@@ -99,7 +99,7 @@ getWorkerId(): int | undefined
 
 获取当前EAWorker实例的ID。如果未调用[start](#start)方法，返回undefined。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **返回值：**
 | 类型       | 说明                 |
@@ -119,7 +119,7 @@ getName(): string
 
 获取当前EAWorker实例的名称。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **返回值：**
 | 类型       | 说明                 |
@@ -138,7 +138,7 @@ start(): void
 
 启动EAWorker实例的任务循环，开始接收和执行任务。主线程的Worker禁止调用start方法。EAWorker实例仅能启动一次。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **示例：**
 ```ts
@@ -151,7 +151,7 @@ isAlive(): boolean
 
 检查当前EAWorker实例是否已经start，如果当前实例调用过start方法，则返回true，否则返回false。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **返回值：**
 | 类型       | 说明                 |
@@ -172,7 +172,7 @@ setPriority(newPriority: WorkerPriority): void
 
 设置EAWorker实例的优先级。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **参数：**
 |参数名|类型|必填|说明|
@@ -190,7 +190,7 @@ getPriority(): WorkerPriority
 
 返回当前EAWorker实例的优先级。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **返回值：**
 | 类型       | 说明                 |
@@ -217,7 +217,7 @@ quit(): void
 > - 禁止重复调用：每个EAWorker实例只能退出一次。
 > - 启动前禁止调用：必须在调用start()方法启动EAWorker实例后才能执行quit()操作。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **示例：**
 ```ts
@@ -230,7 +230,7 @@ setUncaughtExceptionHandler(eh: (e: Error) => void): void
 
 设置未捕获异常处理器。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **参数：**
 |参数名|类型|必填|说明|
@@ -250,7 +250,7 @@ getUncaughtExceptionHandler(): (e: Error) => void
 
 获取当前设置的未捕获异常处理器。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **返回值：**
 | 类型       | 说明                 |
@@ -268,7 +268,7 @@ static main(): EAWorker
 
 获取主线程的EAWorker实例。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **返回值：**
 | 类型       | 说明                 |
@@ -285,7 +285,7 @@ static current(): EAWorker | undefined
 
 获取当前线程的EAWorker实例。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **返回值：**
 | 类型       | 说明                 |
@@ -302,7 +302,7 @@ postTask(callback: ()=>void): boolean
 
 向EAWorker提交任务。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **参数：**
 |参数名|类型|必填|说明|
@@ -332,7 +332,7 @@ run\<R\>(task: Function, ...args?: NullishType[]): Job\<R\>
 > 
 > 若未声明泛型类型场景下调用接口得到返回值后调用Await方法，会抛出类型转换错误。
 
-**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+**ArkTS版本：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 | 参数名  | 类型              | 必填  | 说明           |
@@ -363,17 +363,17 @@ const job = worker.run<int>(logNumber, 42);
 // 获取异步结果
 console.info(0x0000, "testTag", "Result: " + job.Await());  // 输出：Result: 84
 ```
-创建支持与ArkTS1.1互操作的EAWorker并执行任务。
+创建支持与ArkTS-Dyn互操作的EAWorker并执行任务。
 ```ts
-// ArkTS1.1 文件 taskFile.ets
+// ArkTS-Dyn 文件 taskFile.ets
 export function task(a: number): string {
-    console.info(0x0000, "testTag", "ArkTS 1.1 task called: " + a); // 输出：ArkTS 1.1 task called: 1
+    console.info(0x0000, "testTag", "ArkTS-Dyn task called: " + a); // 输出：ArkTS-Dyn task called: 1
     return "success";
 }
 ```
 
 ```ts
-// ArkTS1.2 文件
+// ArkTS-Sta 文件
 let eaw = new EAWorker(true);
 eaw.start();
 let job = eaw.run<string>((a:number): string => {
@@ -385,15 +385,20 @@ console.info(0x0000, "testTag", "res: " + job.Await()); // 输出：res: success
 ```
 
 ## join
-join(): void
+join(): Job<void\>
 
-主动销毁Worker线程资源。调用此接口会向EAWorker提交任务请求释放当前EAWorker实例绑定的线程，停止接收新任务并回收系统资源。
+主动异步销毁Worker线程资源。调用此接口会向EAWorker提交任务，请求释放当前EAWorker实例绑定的线程，停止接收新任务并回收系统资源。
+
+**返回值：**
+| 类型       | 说明                 |
+| -------- | ------------------ |
+| Job\<void\>   | 表示join任务的异步执行结果，可通过[Await](./job.md#await)等待资源释放完成。 |
 
 > **说明：**
 > 
-> 开发者调用join之后，EAWorker实例不会立即被回收，但系统线程资源已经销毁。因此，调用join后不应继续使用EAWorker实例提交任务。
+> 开发者调用join之后，EAWorker实例不会立即被回收，线程资源释放是异步过程。若需要确保释放完成，请对返回的Job调用[Await](./job.md#await)。调用join后不应继续使用EAWorker实例提交任务。
 
-**ArkTS版本：** 该接口仅适用于ArkTS1.2。
+**ArkTS版本：** 该接口仅适用于ArkTS-Sta。
 
 **示例：**
 ```ts
@@ -403,7 +408,8 @@ eaw.run<void>(() => {
     console.info(0x0000, "testTag", "hello");
 });
 
-eaw.join();
+let job = eaw.join();
+job.Await();
 ```
 
 ## WorkerPriority
