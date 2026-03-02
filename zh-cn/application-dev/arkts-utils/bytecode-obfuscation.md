@@ -568,12 +568,14 @@ class TestA { static prop1: number = 0; } TestA.prop1;
 ### 已有保留选项汇总
 
 **共同保留选项**
+
 | 功能 | 选项 | 是否有区别 |
 | --- | --- | --- |
 |指定保留源码文件中的所有名称|[-keep](#-keep)|ArkTS-Sta的字节码混淆对写法进行了扩展|
 |指定保留文件/文件夹名称|[-keep-file-name](#-keep-file-name)|无|
 
 **字节码保留选项**
+
 | 功能 | 选项 |
 | --- | --- |
 |指定保留属性名称|[-keep-property-name](#-keep-property-name)|
@@ -581,6 +583,7 @@ class TestA { static prop1: number = 0; } TestA.prop1;
 |指定保留声明文件中的所有名称|[-keep-dts](#-keep-dts)|
 
 **字节码混淆选项（ArkTS-Sta）**
+
 | 功能 | 选项 |
 | --- | --- |
 |指定要保留的类和其成员|[-keep-class-with-members](#-keep-class-with-members)|
@@ -590,7 +593,7 @@ class TestA { static prop1: number = 0; } TestA.prop1;
 
 |配置项|	功能|	类名保留|	显示指定类路径|
 |-----|-----|-----|-----|
-|[-keep](#-keep-property-name)	|指定类及成员不混淆|	是|	是|
+|[-keep](#-keep)|指定类及成员不混淆|	是|	是|
 |[-keep-class-with-members](#-keep-class-with-members)|通过成员条件确定哪些类名不混淆	|是	|否|
 |[-keep-class-members](#-keep-class-members)|通过条件指定成员不混淆	|否	|否|
 
@@ -1006,6 +1009,7 @@ let uType1: UserTuple1 = ["Tom", 18, true];
 **使用该选项时，需要注意以下事项：**
 
 **1.** 被-`keep filepath`所保留的文件，其依赖链路上的文件中导出名称及其属性都会被保留。
+
 **2.** 该功能不影响文件名混淆`-enable-filename-obfuscation`的功能。
 
 ### -keep-file-name
@@ -1821,7 +1825,7 @@ toplevel和文件通配符使用方式如下：
 
 **使用通配符时，需要注意以下事项：**
   
-**1.** 以上选项，不支持配置通配符*、?、!作其它含义使用。 例如：
+以上选项，不支持配置通配符*、?、!作其它含义使用。 例如：
 
 ```
 class A {
@@ -1836,8 +1840,10 @@ class A {
 
 ## 混淆规则合并策略
 
->注意：ArkTS-Sta的字节码混淆暂不支持
->
+> **注意：**
+>   
+> ArkTS-Sta的字节码混淆暂不支持
+  
 
 在编译一个模块时，默认情况下，生效的混淆规则为**当前编译模块的混淆规则**与**依赖模块混淆规则**的合并结果，具体规则如下：
 
