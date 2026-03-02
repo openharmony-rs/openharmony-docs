@@ -9,11 +9,10 @@
 ## 参考索引
 | 名称 | 资源链接 | 主要用途 | 定位 |
 | ---- | ---- | ---- | ---- |
-| ANI快速入门指南（本文档） | **[ani-usage-scenarios.md](https://gitee.com/openharmony/docs/blob/OpenHarmony_feature_20250328/zh-cn/application-dev/arkts-utils/ani-usage-scenarios.md)** | 综合的ANI文档；解决大多数问题 | 初学者指南，必读参考资料 |
-| ANI用法示例（ani_cookbook） | **[ani_cookbook](https://gitee.com/LeechyLiang/ani_cookbook)** | 提供从简单到高级用例的即用型函数示例 | 实用的烹饪书和入门工具包 |
-| ANI接口测试套件 | **[ani/tests测试文件夹](https://gitee.com/openharmony/arkcompiler_runtime_core/tree/OpenHarmony_feature_20250702/static_core/plugins/ets/tests/ani/tests)** | 验证ANI函数及其正确性；始终保持功能可用 | 用于验证API用法的参考资料 |
-| ani.h头文件 | **[ani.h](https://gitee.com/openharmony/arkcompiler_runtime_core/blob/OpenHarmony_feature_20250702/static_core/plugins/ets/runtime/ani/ani.h)** | 核心定义文件，包括函数声明、类型和继承关系 | 所有定义的来源 |
-| ArkTs语言规范 | **[下载地址](https://gitee.com/igelhaus/arkcompiler_runtime_core/releases/)** | 提供ArkTs语言的各种规范文档下载 | ArkTs语言规范参考资料 |
+| ANI快速入门指南 | **本文档** | 综合的ANI文档；解决大多数问题 | 初学者指南，必读参考资料 |
+| ANI接口测试套件 | **[ani/tests测试文件夹](https://gitcode.com/openharmony/arkcompiler_runtime_core/tree/master/static_core/plugins/ets/tests/ani/tests)** | 验证ANI函数及其正确性；始终保持功能可用 | 用于验证API用法的参考资料 |
+| ani.h头文件 | **[ani.h](https://gitcode.com/openharmony/arkcompiler_runtime_core/blob/master/static_core/plugins/ets/runtime/ani/ani.h)** | 核心定义文件，包括函数声明、类型和继承关系 | 所有定义的来源 |
+| ArkTs语言规范 | **[下载地址](https://gitcode.com/openharmony/arkcompiler_runtime_core/releases/OpenHarmony-v6.0-Release)** | 提供ArkTs语言的各种规范文档下载 | ArkTs语言规范参考资料 |
 
 ## 使用建议
 在进行NAPI到ANI的迁移任务时，请遵循以下步骤：
@@ -21,10 +20,35 @@
 2. **研究迁移示例**：参考`napi2ani.md`获取实际的映射示例。观察结构、参数处理和错误处理策略。
 3. **实践与验证**：在自己的开发环境中克隆并运行`ani_cookbook`中的示例。通过实践验证加深理解，并熟悉ANI API。
 
-# ANI场景文档
+# ANI实用场景文档
 ## 1 使用`loadLibrary`
-### 1.1 native函数绑定
-绑定native函数的过程涉及几个关键步骤：
+### 1.1 native绑定
+
+**什么是native方法**
+
+在ArkTS-Sta的开发中`native method/function`是连接应用层业务逻辑与系统底层能力的桥梁。
+```js
+native function add(a: int, b: int): int;
+class calc {
+    native sub(a: int, b: int): int;
+}
+```
+> Native function：在ArkTS定义的模块（Module）顶层或命名空间（Namespace）内，但其具体实现是在C/C++代码中完成的函数。
+
+> Native method：指定义在ArkTS类（Class）内部的方法， 其实现是在C/C++中完成的函数。
+
+**为什么要使用它们？**
+1. 极致性能：对于图像处理、复杂数学运算、物理引擎等计算密集型任务，C++的执行效率远高于脚本语言。
+2. 复用既有库：可以直接调用已有的C/C++三方库（如 OpenCV、FFmpeg 等），无需用ArkTS重写。
+3. 访问系统底层：某些底层硬件接口或操作系统特定的API只能通过C/C++访问。
+
+**它们是如何工作的？**
+1. 声明：在ArkTS中通过native关键字告诉编译器：“这个函数我先写在这，但它的代码在别处”。
+2. 加载：通过loadLibrary加载编译好的.so动态链接库。
+3. 绑定（Binding）：这是最关键的一步，程序运行期间需要将ArkTS的函数名与C++中的函数指针进行一一对应。ANI提供的 `Bind` 系列API执行这种“映射”操作。
+4. 执行：当你在ArkTS中调用该函数时，虚拟机（VM）会暂停当前的脚本执行，跳转到对应的C++代码中运行，完成后再带回结果。
+
+**绑定native函数的过程涉及几个关键步骤：**
 1. 在`.ets`文件中声明native函数和方法。
 2. 在托管代码中调用`loadLibrary("libraryName")`：
     - 可以在静态块或任何别的入口点（例如`main`函数）中完成，确保native library在调用任何native函数之前被加载，并将所有的native function绑定到其实现。
@@ -69,7 +93,7 @@ void nativeNamespaceFunction(ani_env* env, ...);
 ---
 ### 1.1.2 绑定类中的方法
 
-下面的代码展示如何将ArkTS中声明的native function与对应的C++实现绑定。
+下面的代码展示如何将ArkTS中声明的native method与对应的C++实现绑定。
 为了保证在使用`Class_BindNativeMethods`的时候有正确的函数签名，可以先对 ABC 文件进行反汇编。
 
 **ArkTS代码**：
@@ -115,7 +139,7 @@ env->Class_BindStaticNativeMethods(cls, staticMethods.data(), staticMethods.size
 > 使用`reinterpret_cast<void*>`消除c++函数的类型。
 ---
 
-### 1.1.3 绑定命名空间中的方法
+### 1.1.3 绑定命名空间中的函数
 **ArkTS代码**：
 ```ts
 namespace PasteData {
@@ -221,10 +245,11 @@ function foo(a: int, b: int = 3): void
 ---
 ### 1.1.6 反汇编ABC文件
 要反汇编`.abc`文件，请使用`ark_disasm`二进制文件，它在以下仓库的常规项目构建过程中生成：
-- [`arkcompiler_runtime_core`](https://gitee.com/openharmony/arkcompiler_runtime_core/tree/OpenHarmony_feature_20241108/)
-- [`arkcompiler_ets_frontend`](https://gitee.com/openharmony/arkcompiler_ets_frontend/tree/OpenHarmony_feature_20241108/)
+- [`arkcompiler_runtime_core`](https://gitcode.com/openharmony/arkcompiler_runtime_core)
 
-**构建说明**：[遵循本指南](https://gitee.com/JianfeiLee/arkcompiler_runtime_core/wikis/%E4%B8%8B%E8%BD%BD%E5%92%8C%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8CArkTS%E6%BC%94%E8%BF%9B%E7%89%88%E4%BB%A3%E7%A0%81)
+- [`arkcompiler_ets_frontend`](https://gitcode.com/openharmony/arkcompiler_ets_frontend)
+
+**反汇编工具构建说明**：[遵循本指南](https://gitcode.com/openharmony/arkcompiler_runtime_core/blob/master/README_zh.md)
 
 **用法**：
 
@@ -232,7 +257,7 @@ function foo(a: int, b: int = 3): void
 ./out/bin/ark_disasm yourabcfile.abc dumpfile.txt
 ```
 
-> 如果反汇编失败，请检查工具和运行时之间的版本是否匹配。
+> 如果反汇编失败，请检查工具和编译器之间的版本是否匹配。
 
 ### 1.2 类加载失败诊断
 
@@ -250,7 +275,7 @@ at std.core.LinkerUnresolvedClassError.<ctor> (<unknown>:36)
 
 
 ---
-### 1.2.1 不正确的`loadLibrary`用法
+### 1.2.1 `loadLibrary`用法
 
 ArkTS 1.2使用模块和类的延迟初始化。在实践中，这意味着静态块和 top 级语句仅在第一次访问作为类或模块一部分定义的实体之前执行。考虑以下示例：
 
@@ -1262,14 +1287,98 @@ void OnExitImpl(ani_env *env) {
 - `GlobalReference_Create`返回的`ani_ref`被认为与原先的object相同。
 - 当`global reference`不再被使用时，必须使用`GlobalReference_Delete`删除。避免内存耗尽。
 
-### 9.2 VM 和 env 生命周期
+### 9.2 Native线程回调中的引用管理
+在纯 Native 线程（非 Virtual Machine (VM) 调用的线程，例如定时器、传感器回调、网络线程）中触发回调时，没有 VM 自动管理的栈帧（Stack Frame）。
+
+这意味着：
++ 没有自动回收：在该线程中创建的任何局部引用（Local Reference），在函数返回后不会自动释放。
++ 引用表溢出风险：如果不手动释放，这些引用会一直累积，直到线程销毁或达到引用表上限（导致 Crash）。
+
+**以下常见操作会产生局部引用：**
++ 创建新对象 (Object_New)
++ 创建字符串 (String_NewUTF8)
++ 创建数组 (Array_New)
++ 获取类对象 (FindClass)
++ ...
+
+**错误示范：**
+
+以下代码模拟了一个传感器数据回调。虽然逻辑看似简单，但由于未释放 ani_object data，每次回调都会泄漏一个引用，运行一段时间后必然崩溃。
+
+```cpp
+// 假设这是一个通过 pthread 或 std::thread 运行的后台工作函数
+void BackgroundWorkerThread(ani_vm* vm) {
+    // 1. 线程挂载：Env 的生命周期从此开始
+    ani_env *env {nullptr};
+    ani_option interopEnabled {"--interop=disable", nullptr};
+    ani_options aniArgs {1, &interopEnabled};
+    auto status = vm->AttachCurrentThread(&aniArgs, ANI_VERSION_1, &env);
+    if (status != ANI_OK) return;
+
+    // 模拟一个长期的任务循环（例如：监听网络、传感器、渲染循环）
+    while (g_isRunning) {
+        // 危险操作：在此函数内新建了对象，但以为函数返回就会自动释放
+        // 实际上，因为线程没有 Detach，这些对象一直堆积在 env 的引用表中
+        HandleOneDataPacket(env); 
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+    
+    // 2. 线程卸载：只有到了这里，引用才会被释放
+    vm->DetachCurrentThread();
+}
+
+// 具体的处理函数
+void HandleOneDataPacket(ani_env* env) {
+    // 创建一个新的局部引用 (Object_New)
+    ani_object data;
+    if (env->Object_New(cls, ctor, &data) != ANI_OK) return;
+
+    // 回调 ArkTS 层
+    env->Object_CallMethod_Void(callback, method, data);
+
+    // 【错误】：没有手动 Delete。
+    // 当前场景为Native->Native回调没有手动 Delete是错误的，而在 ArkTS->Native 场景下，这里不需要 delete。
+    // 但在 BackgroundWorkerThread 中，这个 data 对象会一直存活！
+}
+```
+**正确示范：** 
+
+使用 LocalScope 管理作用域。为了避免手动管理每个对象的麻烦，并确保安全，推荐在循环体内部或处理函数的入口/出口使用 CreateLocalScope 和 DestroyLocalScope。
+
+```cpp
+void BackgroundWorkerThread(JavaVM* vm) {
+    ani_env *env {nullptr};
+    ani_option interopEnabled {"--interop=disable", nullptr};
+    ani_options aniArgs {1, &interopEnabled};
+    auto status = vm->AttachCurrentThread(&aniArgs, ANI_VERSION_1, &env);
+    if (status != ANI_OK) return;
+
+    while (g_isRunning) {
+        // 最佳实践：在循环的每一次迭代中建立独立的引用作用域
+        // 这样可以确保每次循环结束，产生的所有引用（无论多少）都会被清空
+        env->CreateLocalScope(16); 
+
+        // 执行具体的业务逻辑（里面可能创建了 object, string, array 等）
+        HandleOneDataPacket(env);
+
+        // 弹栈：一次性销毁本次循环中创建的所有局部引用
+        env->DestroyLocalScope();
+        
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+    
+    vm->DetachCurrentThread();
+}
+```
+
+### 9.3 VM 和 env 生命周期
 - `ani_vm` 在应用启动时创建，其生命周期与应用相同。
 - 每个 `ani_env` 与协程一一对应。在 native 函数调用期间，可以保证 `ani_env` 是有效的。
 
 **`ani_env` 只能在其创建的线程中使用。**
 当协程结束时，`ani_env` 会被销毁，成为悬空指针。
 
-### 解决方案：使用 `AttachCurrentThread`
+**解决方案：**使用 `AttachCurrentThread`
 
 从 `env` 获取 `vm`：
 ```cpp
@@ -1327,7 +1436,7 @@ ani_status PromiseResolver_Reject(ani_env *env, ani_resolver resolver, ani_error
 
 **建议：**
 - 定义一个在其他线程上执行的lambda表达式时，**捕获`ani_vm`而不是`ani_env`**。
-- 参考[9.2章节](#92-vm-和-env-生命周期)正确使用`AttachCurrenThread`和`GetEnv`。
+- 参考[9.3 vm 和 env 生命周期](#93-vm-和-env-生命周期)正确使用`AttachCurrenThread`和`GetEnv`。
 
 ## 11 可变长度数组：Array<T> 和 T[]
 
@@ -1491,6 +1600,10 @@ try {
 2. 异步情况：使用 `.catch()`
 
 ## 16 字符串 String
+  
+ **注意**: 
+ 
+ 在“非VerifyANI”模式下，为了性能不验证编码。调用者有责任确保传入的是合法UTF-8/UTF-16字符。传入非法数据构建的ani_string，ANI不保证转换回 c_str时内容的正确性，但不会导致 ANI 自身崩溃。
 
 ### 16.1 将 `std::string` 转换为 `ani_string`
 ```cpp
@@ -1620,7 +1733,54 @@ void callWithTupleImpl(ani_env *env, ani_tuple_value tuple) {
 ```
 上述元组示例，通过传入元组对象和序号参数，获取对应元组序号位置的值。
 
-## 19 错误码分析
+## 19  Native调用优化注解
+**资源链接：** **[Native_Call Optimization](https://gitcode.com/openharmony/arkcompiler_runtime_core/blob/master/static_core/plugins/ets/compiler/docs/native_call_opt_doc.md)** 
+
+**支持的Native调用模式：**
+
+目前ArkTS-Sta支持三种Native调用模式：
+- @ani.unsafe.Direct ：最轻量，不允许传递托管对象，也不进行协程状态切换。这意味着调用时不需要处理垃圾回收相关的问题，也不需要通知运行时进入“本地代码执行”状态，因此开销最小。在@ani.unsafe.Direct注解模式下的native函数不允许任何涉及ArkTS-Sta对象的操作（包括但不限于创建、销毁、返回），仅用于涉及基础类型的纯粹数值计算；
+- @ani.unsafe.Quick ：允许传递托管对象，但仍不切换协程状态。这可能意味着对象引用可以直接传递，但运行时不需要标记当前协程处于本地代码中（可能影响 GC 或调试）；
+- 默认模式（无注解）：完整的托管-本地边界处理，包括协程状态切换，以便正确管理 GC 根和异常。
+
+**注解不能使用的场景：**
+
+一个native接口运行时间很长或者涉及读文件、联网相关的操作，不可以使用这两个注解。
+
+**@ani.unsafe.Direct 示例代码：**
+```cpp
+// ets侧 @ani.unsafe.Direct绑定方法
+@ani.unsafe.Direct
+native aniToCppBooleanE2EOneParamWithParse(value: boolean): boolean;
+// C++侧 方法实现
+static ani_boolean aniToCppBooleanE2EOneParamWithParse([[maybe_unused]] ani_env *env, [[maybe_unused]] ani_object object,
+    ani_boolean value)
+{
+    bool result = value;
+    ani_boolean returnResult = result;
+    return returnResult;
+}
+```
+
+**@ani.unsafe.Quick 示例代码：**
+```cpp
+// ets侧 @ani.unsafe.Quick绑定方法
+@ani.unsafe.Quick
+native aniToCppBooleanArrayE2EWithParse(a: FixedArray<boolean>, length: int): void;
+// C++侧 方法实现
+static void aniToCppBooleanArrayE2EWithParse([[maybe_unused]] ani_env *env, [[maybe_unused]] ani_object object, ani_fixedarray_boolean arr, ani_int length)
+{
+    ani_size size = length;
+    std::vector<ani_boolean> nativeBuffer(size);
+    env->FixedArray_GetRegion_Boolean(arr, 0, size, nativeBuffer.data());
+    ani_boolean value0;
+    for (ani_size i = 0; i < size ; i++) {
+        value0 = nativeBuffer[i];
+    }
+}
+```
+
+## 20 错误码分析
 ```cpp
 typedef enum {
     ANI_OK,
@@ -1659,16 +1819,19 @@ typedef enum {
 | `ANI_INVALID_VERSION`    | 13    | 版本无效                   | 常见于 VM 创建时                   |
 | `ANI_AMBIGUOUS`          | 14    | 存在歧义                   | 避免在签名中使用 nullptr            |
 
-### 19.1 错误码 2：`ANI_INVALID_ARGS`
+### 20.1 错误码 2：`ANI_INVALID_ARGS`
 这表明的某个参数是非法的 `nullptr`。
 示例：
 ```cpp
 Object_CallMethodByName_Boolean(nullptr, ...);
 ```
 
-### 19.2 错误码 6：`ANI_PENDING_ERROR`
-这意味着 ArkTS 运行时抛出了异常。
-可使用以下代码捕获并描述该异常：
+### 20.2 错误码 6：`ANI_PENDING_ERROR`
+该错误码表示在执行当前的 ANI 操作期间，ArkTS 运行时（VM）内部抛出了一个异常，且该异常尚未被 C++ 侧/ArkTS侧捕获或处理。这通常对应于 ArkTS 代码中的 throw new Error(...)，或者运行时错误（如类型不匹配、访问未定义属性等）。
+  
+  当 `ANI_PENDING_ERROR` 发生时，该 `ani_env` 处于“异常挂起”状态。在此状态被清除之前，绝大多数后续的 ANI 函数调用都会直接失败（通常也返回` ANI_PENDING_ERROR`），而不会执行任何实际操作。
+  
+**注意** ：必须先清除异常，才能继续调用其他 ANI 接口。可使用以下代码捕获并描述该异常：
 
 ```cpp
 // Code that causes error...
@@ -1683,9 +1846,21 @@ std::cerr.rdbuf(oldStderr);
 std::string output = buffer.str();
 // Log captured `output`
 ```
+该异常同样可以在ArkTS侧被捕获
+  ```typescript
+  // ArkTS 代码
 
+try {
+    // 调用可能存在出现未处理异常的函数
+    nativeLib.triggerException();
+} catch (e) {
+    // 这里会捕获到 Error 传递的消息
+    console.error("Caught an exception from Native side!");
+    console.error("Error Message: " + e.message);
+}
+  ```
 
-### 19.3 错误码 7：`ANI_NOT_FOUND`
+### 20.3 错误码 7：`ANI_NOT_FOUND`
 要确保 `.d.ets` 和 `.ets` 文件完全一致。否则，native 方法在设备上可能总是失败。
 ```ts
 // .d.ets 文件
@@ -1699,7 +1874,7 @@ class A {
 }
 ```
 
-### 19.4 错误码 14：`ANI_AMBIGUOUS`
+### 20.4 错误码 14：`ANI_AMBIGUOUS`
 
 当存在重载且在 mangling 中使用 `nullptr` 时会出现此错误：
 
@@ -1713,7 +1888,7 @@ FindMethod(cls, "foo", nullptr, &method); // 错误
 FindMethod(cls, "foo", "d:", &method);   // 正确
 ```
 
-## 20 常见问题解答（FAQ）
+## 21 常见问题解答（FAQ）
 - **BussinessError无法创建或行为异常**：检查是否存在`BussinessError$partial`。系统可能包含内置的`BussinessError`，这会在ABC文件中引发冲突。请联系前端和标准库的维护人员。
 - **`Object_New`后程序崩溃**：通常是由于参数类型不匹配。在查找构造函数时，绝不要使用`nullptr`作为签名。
 - **声明和实现不匹配**：`.d.ets`和`.ets`文件之间的不一致会导致字段或方法无法识别。
