@@ -27,7 +27,7 @@ declare class DrawModifier {
 }
 ```
 
-The **DrawModifier** API allows you to define drawing methods at different layers of a component:  foreground (**drawForeground**), content foreground (**drawFront**), content (**drawContent**), and content background (**drawBehind**). You need to override these methods and use the [Canvas](arkts-drawing-customization-on-canvas.md) API to implement custom drawing. The following figure illustrates the layers of custom drawing.
+The **DrawModifier** API allows you to define drawing methods at different layers of a component: foreground (**drawForeground**), content foreground (**drawFront**), content (**drawContent**), and content background (**drawBehind**). You need to override these methods and use the [Canvas](arkts-drawing-customization-on-canvas.md) API to implement custom drawing. The following figure illustrates the layers of custom drawing.
 
 ![](figures/drawModifier.png)
 
@@ -35,13 +35,13 @@ The **DrawModifier** API allows you to define drawing methods at different layer
 
 > **NOTE**
 >
-> Each **DrawModifier** instance can be assigned to only one component. Reusing the same instance across multiple components is not allowed.
+> Each **DrawModifier** instance can be set for only one component. Repeated setting is not allowed.
 >
 > The **drawContent** method replaces the component's original content drawing logic.
 >
 > The **drawForeground** method is supported since API version 20.
 >
-> For details about NDK-based custom drawing capabilities and examples, see [Implementing Custom Drawing](./arkts-user-defined-draw.md).
+> For details about NDK-based custom drawing capabilities and examples, see [Custom Drawing](./arkts-user-defined-draw.md).
 
 ## Custom Drawing Using drawFront, drawContent, and drawBehind
 
@@ -54,7 +54,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 import { AnimatorResult } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const LOG_PRINT_DOMAIN:  number = 0xFF00;
+const LOG_PRINT_DOMAIN: number = 0xFF00;
 const PREFIX: string = '[Sample]'
 
 class MyFullDrawModifier extends DrawModifier {
@@ -424,20 +424,20 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Stack().width(300).height(300).drawModifier(this.myDrawModifier).position({x:10,y:10})
+        Stack().width(300).height(300).drawModifier(this.myDrawModifier).position({ x: 10, y: 10 })
       }
       .borderWidth(1)
       .height(200)
       .width('45%')
 
       Column() {
-        Stack().width(300).height(300).drawModifier(this.myDrawModifier1).position({x:10,y:10})
+        Stack().width(300).height(300).drawModifier(this.myDrawModifier1).position({ x: 10, y: 10 })
       }
       .borderWidth(1)
       .height(200)
       .width('45%')
     }.height('100%')
-    .width('100%').position({x:10,y:10})
+    .width('100%').position({ x: 10, y: 10 })
 
   }
 }
