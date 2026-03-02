@@ -218,6 +218,57 @@ OpenHarmony系统预置的媒体中心，作为音频模板控制方与音视频
    
    <!-- @[query_home_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
    
+   ``` TypeScript
+   import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+   // ...
+   
+   const TAG: string = 'ControllerManager';
+   
+   export class ControllerManager {
+     private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
+     // ...
+   
+     /**
+      * 查询主标签。
+      */
+     public async queryMainTabs(): Promise<avMusicTemplate.MediaTab[]> {
+       let tabs: avMusicTemplate.MediaTab[] = [];
+       if (!this.controller) {
+         console.info(TAG, 'queryMainTabs: controller is undefined')
+         return tabs;
+       }
+       try {
+         console.info(TAG, 'queryMainTabs')
+         tabs = await this.controller.queryMainTabs();
+       } catch (e) {
+         console.error(TAG, `queryMainTabs failed, errCode: ${e?.code}`)
+       }
+       return tabs;
+     }
+   
+     /**
+      * 模拟查询媒体标签页内容
+      *
+      * @param tabId 标签页ID
+      */
+     public async queryMediaTabContent(tabId: string): Promise<avMusicTemplate.MediaTabContent | undefined> {
+       try {
+         let tabContent: avMusicTemplate.MediaTabContent | undefined = await this.controller?.queryMediaTabContent(tabId);
+         if (tabContent?.errorCode != 0) {
+           console.warn(TAG, 'queryMediaTabContent fail')
+           return undefined;
+         }
+         console.info(TAG, 'queryMediaTabContent success')
+         return tabContent;
+       } catch (e) {
+         console.error(TAG, `queryMediaTabContent failed, errCode: ${e?.code}`)
+         return undefined;
+       }
+     }
+     // ...
+   }
+   ```
+   
 3. 音频模板控制方根据操作下发指令给媒体提供方（需要媒体提供方已经注册相关监听）。例如搜播需要接口如下，详情请查看[AVMusicTemplateController API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
 
    - playForSearch：搜播。支持音视频，示例仅以音频为例。视频需将实体类SearchPlayInfo的成员变量更换为SearchPlayVideoInfo类型的videoInfo。
