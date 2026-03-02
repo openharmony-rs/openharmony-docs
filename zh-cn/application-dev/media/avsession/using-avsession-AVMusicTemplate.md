@@ -24,6 +24,40 @@
    
    <!-- @[ability_create_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
+   ``` TypeScript
+   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { TemplateManager } from '../manager/TemplateManager';
+   
+   export default class EntryAbility extends UIAbility {
+     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+       console.info('onCreate');
+       TemplateManager.getInstance().createTemplate();
+     }
+   
+     // ...
+     onForeground(): void {
+       console.info('onForeground');
+       this.startTemplateControllerAbility();
+     }
+   
+     private startTemplateControllerAbility() {
+       let want: Want = {
+         bundleName: 'com.example.templatecontroller',
+         abilityName: 'EntryAbility',
+         parameters: {
+           bundleName: 'com.example.templateprovider'
+         }
+       }
+       this.context.startAbility(want).then(() => {
+         console.info('startTemplateControllerAbility: startAbility success');
+       }).catch((e: BusinessError) => {
+         console.error(`startTemplateControllerAbility: startAbility: errCode: ${e?.code}}`);
+       });
+     }
+   }
+   ```
+   
    <!-- @[manager_create_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
    
 2. 根据需要注册事件监听，并提供相应信息的获取方法。音频应用设置的音频模板信息，会被音频模板控制方通过AVMusicTemplateController相关方法获取后进行显示或处理。例如主界面显示，需要如下接口，详情请查看[AVMusicTemplate API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。
