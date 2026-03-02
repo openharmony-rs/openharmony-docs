@@ -36,7 +36,7 @@ closeContextMenu(): void
 
 copyImage(): void
 
-WebContextMenuParam有图片内容则复制图片。
+WebContextMenuParam有图片内容则复制图片，API version 24开始支持对canvas图片进行复制。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -109,5 +109,13 @@ pasteAndMatchStyle(): void
 requestPasswordAutoFill(): void
 
 请求密码保险箱中的用户名或密码数据自动填充到当前获得焦点的输入框中。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## saveImage<sup>24+</sup>
+
+saveImage(): void
+
+执行一个和上下文菜单相关的保存图片操作，调用后将触发下载流程。
 
 **系统能力：** SystemCapability.Web.Webview.Core
