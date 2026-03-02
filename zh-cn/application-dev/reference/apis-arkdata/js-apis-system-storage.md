@@ -20,14 +20,6 @@
 
 ## 导入模块
 
-ArkTS示例：
-
-```js
-import storage from '@system.storage';
-```
-
-JS示例：
-
 ```js
 import storage from '@system.storage';
 ```
@@ -56,13 +48,13 @@ export default {
     storage.get({            
       key: 'storage_key',            
       success: function(data) {                
-        console.log('call storage.get success: ' + data);            
+        console.info('call storage.get success: ' + data);            
       },            
       fail: function(data, code) {                
-        console.log('call storage.get fail, code: ' + code + ', data: ' + data);            
+        console.error('call storage.get fail, code: ' + code + ', data: ' + data);            
       },            
       complete: function() {                
-        console.log('call complete');            
+        console.info('call complete');            
       },
     });    
   }
@@ -117,10 +109,10 @@ export default {
         storage.get({
             key: 'storage_key',
             success: function(data) {
-                console.log('call storage.get success: ' + data);
+                console.info('call storage.get success: ' + data);
             },
             fail: function(data, code) {
-                console.log('call storage.get fail, code: ' + code + ', data: ' + data);
+                console.error('call storage.get fail, code: ' + code + ', data: ' + data);
             }
         });
     },
@@ -152,10 +144,10 @@ export default {
       key: 'storage_key',            
       value: 'storage value',            
       success: function() {                
-        console.log('call storage.set success.');            
+        console.info('call storage.set success.');            
       },            
       fail: function(data, code) {                
-        console.log('call storage.set fail, code: ' + code + ', data: ' + data);            
+        console.error('call storage.set fail, code: ' + code + ', data: ' + data);            
       },        
     });    
   }
@@ -211,10 +203,10 @@ export default {
             key: 'storage_key',
             value: 'test_storage_value',
             success: function() {
-                console.log('call storage.set success.');
+                console.info('call storage.set success.');
             },
             fail: function(data, code) {
-                console.log('call storage.set fail, code: ' + code + ', data: ' + data);
+                console.error('call storage.set fail, code: ' + code + ', data: ' + data);
             },
         });
     }
@@ -243,10 +235,10 @@ export default {
   storageClear() {        
     storage.clear({            
       success: function() {                
-        console.log('call storage.clear success.');            
+        console.info('call storage.clear success.');            
       },            
       fail: function(data, code) {                
-        console.log('call storage.clear fail, code: ' + code + ', data: ' + data);            
+        console.error('call storage.clear fail, code: ' + code + ', data: ' + data);            
       },        
     });    
   }
@@ -300,10 +292,10 @@ export default {
     storageClear() {
         storage.clear({
             success: function() {
-                console.log('call storage.clear success.');
+                console.info('call storage.clear success.');
             },
             fail: function(data, code) {
-                console.log('call storage.clear fail, code: ' + code + ', data: ' + data);
+                console.error('call storage.clear fail, code: ' + code + ', data: ' + data);
             },
         });
     }
@@ -338,10 +330,10 @@ export default {
     storage.delete({            
       key: 'Storage1',            
       success: function() {                
-        console.log('call storage.delete success.');            
+        console.info('call storage.delete success.');            
       },            
       fail: function(data, code) {                
-        console.log('call storage.delete fail, code: ' + code + ', data: ' + data);            
+        console.error('call storage.delete fail, code: ' + code + ', data: ' + data);            
       },        
     });    
   }
@@ -396,10 +388,10 @@ export default {
         storage.delete({
             key: 'storage_key',
             success: function() {
-                console.log('call storage.delete success.');
+                console.info('call storage.delete success.');
             },
             fail: function(data, code) {
-                console.log('call storage.delete fail, code: ' + code + ', data: ' + data);
+                console.error('call storage.delete fail, code: ' + code + ', data: ' + data);
             },
         });
     }
