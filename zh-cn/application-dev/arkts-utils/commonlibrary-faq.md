@@ -77,7 +77,7 @@ clearAnimation(): void {
 
 可以通过以下方法快速定位：
 
-重写globalThis.clearTimeout = () = > { 打印调用栈 }定位是在哪里被删除的。
+重写globalThis.clearTimeout函数，实现在调用clearTimeout函数时打印调用栈，快速定位定时器是在哪里被删除的。
 
 示例代码：
 
@@ -93,7 +93,7 @@ export function test() {
 
         // 检查所有可能的 timerId = 0 的情况
         if (timeoutId === 0 || timeoutId === "0") {
-            console.log("清除 timerId = 0 !", new Error().stack);
+            console.info("清除 timerId = 0 !", new Error().stack);
             // 触发断点
             debugger;
         }
