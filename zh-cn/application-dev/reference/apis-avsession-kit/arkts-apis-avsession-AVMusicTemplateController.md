@@ -9,7 +9,7 @@
 >
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-调用[avMusicTemplate.createAVMusicTemplateController](arkts-apis-avsession-AVMusicTemplate-f.md#avmusictemplate.createavmusictemplatecontroller23)后，返回实例，可以获得ID，查询等操作。
+调用[avMusicTemplate.createAVMusicTemplateController](arkts-apis-avsession-AVMusicTemplate-f.md#avmusictemplatecreateavmusictemplatecontroller23)后，返回实例，可以获得ID，查询等操作。
 
 ## 导入模块
 
