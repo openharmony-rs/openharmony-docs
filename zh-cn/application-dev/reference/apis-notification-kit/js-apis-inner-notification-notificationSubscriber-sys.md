@@ -27,7 +27,7 @@ onConsume?: (data: SubscribeCallbackData) => void
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -99,7 +99,7 @@ onCancel?: (data: SubscribeCallbackData) => void
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -172,7 +172,7 @@ onUpdate?: (data: NotificationSortingMap) => void
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -237,7 +237,7 @@ onConnect?: () => void
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -305,7 +305,7 @@ onDisconnect?: () => void
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -401,7 +401,7 @@ onDestroy?: () => void
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -518,7 +518,7 @@ onDoNotDisturbChanged?: (mode: notificationManager.DoNotDisturbDate) => void
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -588,7 +588,7 @@ onEnabledNotificationChanged?: (callbackData: EnabledNotificationCallbackData) =
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -734,7 +734,7 @@ onBadgeChanged?: (data: BadgeNumberCallbackData) => void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -802,7 +802,7 @@ onBadgeEnabledChanged?: BadgeEnabledChangedCallback
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -869,7 +869,7 @@ onBatchCancel?: (data: Array<SubscribeCallbackData\>) => void
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1090,7 +1090,7 @@ try {
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称            | 类型                                                                 | 只读 | 可选 | 说明     |
 | --------------- |--------------------------------------------------------------------| ---- | --- | -------- |
@@ -1109,7 +1109,7 @@ try {
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称   | 类型    | 只读 | 可选 | 说明             |
 | ------ | ------- | ---- | --- | ---------------- |
@@ -1165,11 +1165,11 @@ type EnabledSilentReminderChangedCallback = (callbackData: EnabledSilentReminder
 
 | 名称        | 类型   | 只读 | 可选 | 说明         |
 | ----------- | ------ | ---- | ---- | ------------ |
-| bundle      | string | 是   | 否   | 应用的包名。 <br/> **ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：20 |
-| uid         | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 应用的uid。 <br/> **ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：20 |
-| badgeNumber | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 角标个数。 <br/> **ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：20 |
+| bundle      | string | 是   | 否   | 应用的包名。 <br/> **ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：23 |
+| uid         | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 应用的uid。 <br/> **ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：23 |
+| badgeNumber | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 角标个数。 <br/> **ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：23 |
 | instanceKey<sup>(deprecated)</sup>  | number | 是   | 是   | 应用实例键值。<br>从API version 12开始支持，从API version 15开始废弃，建议使用替代。 <br/>**ArkTS模式：** 该属性仅适用于ArkTS-Dyn<br/>**ArkTS-Dyn起始版本**：12  |
-| appInstanceKey<sup>15+</sup>  | string | 是   | 是   | 应用实例键值。 <br/> **ArkTS-Dyn起始版本**：15<br/>**ArkTS-Sta起始版本**：20 |
+| appInstanceKey<sup>15+</sup>  | string | 是   | 是   | 应用实例键值。 <br/> **ArkTS-Dyn起始版本**：15<br/>**ArkTS-Sta起始版本**：23 |
 
 
 ## BadgeEnabledChangedCallback<sup>12+</sup>

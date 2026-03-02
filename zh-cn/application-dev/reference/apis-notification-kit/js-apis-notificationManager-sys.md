@@ -31,7 +31,7 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int, callback: AsyncCal
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -145,7 +145,7 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -256,7 +256,7 @@ addSlot(slot: NotificationSlot, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -333,7 +333,7 @@ addSlot(slot: NotificationSlot): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -407,7 +407,7 @@ addSlots(slots: Array\<NotificationSlot\>, callback: AsyncCallback\<void\>): voi
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -493,7 +493,7 @@ addSlots(slots: Array\<NotificationSlot\>): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -576,7 +576,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean, callback: AsyncCall
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -652,7 +652,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -723,7 +723,7 @@ getAllNotificationEnabledBundles(): Promise<Array<BundleOption\>>
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -863,7 +863,7 @@ isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback\<boolean\>):
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -942,7 +942,7 @@ isNotificationEnabled(bundle: BundleOption): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1018,7 +1018,7 @@ ArkTS-Sta: isNotificationEnabled(userId: int, callback: AsyncCallback\<boolean\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1095,7 +1095,7 @@ ArkTS-Sta: isNotificationEnabled(userId: int): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1169,7 +1169,7 @@ displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<voi
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1248,7 +1248,7 @@ displayBadge(bundle: BundleOption, enable: boolean): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1326,7 +1326,7 @@ isBadgeDisplayed(bundle: BundleOption, callback: AsyncCallback\<boolean\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1404,7 +1404,7 @@ isBadgeDisplayed(bundle: BundleOption): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1485,7 +1485,7 @@ ArkTS-Sta: setSlotFlagsByBundle(bundle: BundleOption, slotFlags: long): Promise\
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1571,7 +1571,7 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCal
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1658,7 +1658,7 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1748,7 +1748,7 @@ ArkTS-Sta: getSlotFlagsByBundle(bundle: BundleOption): Promise\<long\>
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1825,7 +1825,7 @@ getSlotsByBundle(bundle: BundleOption, callback: AsyncCallback\<Array\<Notificat
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1903,7 +1903,7 @@ getSlotsByBundle(bundle: BundleOption): Promise\<Array\<NotificationSlot>>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1984,7 +1984,7 @@ ArkTS-Sta: getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<lon
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2068,7 +2068,7 @@ ArkTS-Sta: getSlotNumByBundle(bundle: BundleOption): Promise\<long\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2145,7 +2145,7 @@ getAllActiveNotifications(callback: AsyncCallback\<Array\<NotificationRequest>>)
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2212,7 +2212,7 @@ getAllActiveNotifications(): Promise\<Array\<NotificationRequest\>\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -2272,7 +2272,7 @@ ArkTS-Sta: getActiveNotificationByFilter(filter: NotificationFilter, callback: A
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2369,7 +2369,7 @@ ArkTS-Sta: getActiveNotificationByFilter(filter: NotificationFilter): Promise\<N
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2463,7 +2463,7 @@ removeGroupByBundle(bundle: BundleOption, groupName: string, callback: AsyncCall
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2541,7 +2541,7 @@ removeGroupByBundle(bundle: BundleOption, groupName: string): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2620,7 +2620,7 @@ setDoNotDisturbDate(date: DoNotDisturbDate, callback: AsyncCallback\<void\>): vo
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2704,7 +2704,7 @@ setDoNotDisturbDate(date: DoNotDisturbDate): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2786,7 +2786,7 @@ ArkTS-Sta: setDoNotDisturbDate(date: DoNotDisturbDate, userId: int, callback: As
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 
 **参数：**
@@ -2881,7 +2881,7 @@ ArkTS-Sta: setDoNotDisturbDate(date: DoNotDisturbDate, userId: int): Promise\<vo
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2970,7 +2970,7 @@ getDoNotDisturbDate(callback: AsyncCallback\<DoNotDisturbDate\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3041,7 +3041,7 @@ getDoNotDisturbDate(): Promise\<DoNotDisturbDate\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -3105,7 +3105,7 @@ ArkTS-Sta: getDoNotDisturbDate(userId: int, callback: AsyncCallback\<DoNotDistur
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3186,7 +3186,7 @@ ArkTS-Sta: getDoNotDisturbDate(userId: int): Promise\<DoNotDisturbDate\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3262,7 +3262,7 @@ notificationManager.getDoNotDisturbDate(userId).then((data: notificationManager.
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3332,7 +3332,7 @@ isSupportDoNotDisturbMode(): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -3393,7 +3393,7 @@ setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3465,7 +3465,7 @@ setDistributedEnable(enable: boolean): Promise\<void>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3536,7 +3536,7 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3618,7 +3618,7 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3699,7 +3699,7 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3778,7 +3778,7 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3856,7 +3856,7 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3924,7 +3924,7 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -3985,7 +3985,7 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4103,7 +4103,7 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4217,7 +4217,7 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4332,7 +4332,7 @@ ArkTS-Sta: cancelAsBundle(id: int, representativeBundle: string, userId: int, ca
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4414,7 +4414,7 @@ ArkTS-Sta: cancelAsBundle(id: int, representativeBundle: string, userId: int): P
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4494,7 +4494,7 @@ ArkTS-Sta: cancelAsBundle(representativeBundle: BundleOption, id: int): Promise\
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4575,7 +4575,7 @@ ArkTS-Sta: cancel(representativeBundle: BundleOption, id: int): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4655,7 +4655,7 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4740,7 +4740,7 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4828,7 +4828,7 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4909,7 +4909,7 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType, callback: AsyncC
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4991,7 +4991,7 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolea
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5066,7 +5066,7 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean, ca
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：** 
 
@@ -5145,7 +5145,7 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean): P
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5221,7 +5221,7 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int, callback: AsyncCall
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5294,7 +5294,7 @@ ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int): Promise\<boolean>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5493,7 +5493,7 @@ onCheckNotification(callback: (checkInfo: NotificationCheckInfo) => Notification
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#notificationmanageron10)
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5555,7 +5555,7 @@ onCheckNotification(checkRequest: NotificationCheckRequest,
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#notificationmanageron11)
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5667,7 +5667,7 @@ offCheckNotification(
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#notificationmanageroff10)
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5717,7 +5717,7 @@ ArkTS-Sta: triggerSystemLiveView(bundle: BundleOption, notificationId: int, butt
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5811,7 +5811,7 @@ subscribeSystemLiveView(subscriber: SystemLiveViewSubscriber): Promise\<void>
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5891,7 +5891,7 @@ setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: 
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5978,7 +5978,7 @@ isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -6062,7 +6062,7 @@ setSmartReminderEnabled(deviceType: string, enable: boolean): Promise<void\>
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -6138,7 +6138,7 @@ isSmartReminderEnabled(deviceType: string): Promise<boolean\>
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -6211,7 +6211,7 @@ ArkTS-Sta: setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: int): Promi
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -6298,7 +6298,7 @@ ArkTS-Sta：getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -6383,7 +6383,7 @@ addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -6607,7 +6607,7 @@ removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -6776,7 +6776,7 @@ ArkTS-Sta: setAdditionalConfig(key: string, value: string): Promise\<int\>
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -6848,7 +6848,7 @@ ArkTS-Sta: getDoNotDisturbProfile(id: long): Promise\<DoNotDisturbProfile\>
 
 **ArkTS-Dyn起始版本**：13
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -7160,7 +7160,7 @@ ArkTS-Sta: setTargetDeviceStatus(deviceType: string, status: long): Promise\<voi
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -7223,7 +7223,7 @@ setDistributedEnabledBySlot(slot: SlotType, deviceType: string, enabled: boolean
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -7297,7 +7297,7 @@ isDistributedEnabledBySlot(slot: SlotType, deviceType: string): Promise\<boolean
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -7519,7 +7519,7 @@ setBadgeDisplayStatusByBundles(badges: Map<BundleOption, boolean>): Promise\<voi
 
 **ArkTS-Dyn起始版本**：21
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -7596,7 +7596,7 @@ getBadgeDisplayStatusByBundles(bundles:Array\<BundleOption\>): Promise\<Map\<Bun
 
 **ArkTS-Dyn起始版本**：21
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -7682,7 +7682,7 @@ setReminderInfoByBundles(reminderInfos: Array\<NotificationReminderInfo\>): Prom
 
 **ArkTS-Dyn起始版本**：21
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -7768,7 +7768,7 @@ getReminderInfoByBundles(bundles: Array\<BundleOption\>):  Promise\<Array\<Notif
 
 **ArkTS-Dyn起始版本**：21
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -7853,7 +7853,7 @@ ArkTS-Sta: onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<long\
 
 **ArkTS-Dyn起始版本**：22
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -7919,7 +7919,7 @@ offBadgeNumberQuery(): void
 
 **ArkTS-Dyn起始版本**：22
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **错误码**：
 
@@ -7971,7 +7971,7 @@ setRingtoneInfoByBundle(bundle: BundleOption, ringtoneInfo: RingtoneInfo): Promi
 
 **ArkTS-Dyn起始版本**：21
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数说明：**
 
@@ -8080,7 +8080,7 @@ getRingtoneInfoByBundle(bundle: BundleOption): Promise\<RingtoneInfo\>
 
 **ArkTS-Dyn起始版本**：21
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数说明：**
 
@@ -9107,7 +9107,7 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称  | 类型                                  | 只读 | 可选 | 说明                   |
 | ----- | ------------------------------------- | ---- | ---- | ---------------------- |
@@ -9123,7 +9123,7 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称         | 值               | 说明                                       |
 | ------------ | ---------------- | ------------------------------------------ |
@@ -9142,7 +9142,7 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 
 **ArkTS-Dyn起始版本**：21
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称             | 类型                            | 只读 | 可选 | 说明             |
 | ---------------- | ------------------------------- | ---- | ---- | ---------------- |
@@ -9159,7 +9159,7 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                 | 值  | 说明                               |
 | -------------------- | --- | --------------------------------- |
@@ -9177,7 +9177,7 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                 | 值  | 说明                  |
 | -------------------- | --- | -------------------- |
@@ -9195,13 +9195,13 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 
 | 名称                         | 类型                         | 只读 | 可选 | 说明            |
 | ---------------------------- | ---------------------------- | ---- | --- | --------------- |
-| bundleName                   | string                       | 否   | 否   | Bundle名称。<br/>**ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：22    |
-| notificationId               | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 通知ID。<br/>**ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：22        |
-| label<sup>11+</sup>          | string                       | 否   | 是   | 通知标签。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22     |
-| contentType                  | [ContentType](./js-apis-notificationManager.md#contenttype)  | 否   | 否   | 通知类型。<br/>**ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：22      |
-| creatorUserId<sup>11+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 通知的user ID。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22 |
-| slotType<sup>11+</sup>       | [SlotType](./js-apis-notificationManager.md#slottype)        | 否   | 否   | 渠道类型。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22      |
-| extraInfos<sup>11+</sup>     | ArkTS-Dyn: Record<string, Object\><br/>ArkTS-Sta: Record<string, RecordData>  | 否   | 是   | 实况通知的附加信息。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22 |
+| bundleName                   | string                       | 否   | 否   | Bundle名称。<br/>**ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：23    |
+| notificationId               | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 通知ID。<br/>**ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：23        |
+| label<sup>11+</sup>          | string                       | 否   | 是   | 通知标签。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23     |
+| contentType                  | [ContentType](./js-apis-notificationManager.md#contenttype)  | 否   | 否   | 通知类型。<br/>**ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：23      |
+| creatorUserId<sup>11+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 通知的user ID。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| slotType<sup>11+</sup>       | [SlotType](./js-apis-notificationManager.md#slottype)        | 否   | 否   | 渠道类型。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23      |
+| extraInfos<sup>11+</sup>     | ArkTS-Dyn: Record<string, Object\><br/>ArkTS-Sta: Record<string, RecordData>  | 否   | 是   | 实况通知的附加信息。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
 
 ## NotificationCheckResult<sup>10+</sup>
 
@@ -9213,7 +9213,7 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称    | 类型                                  | 只读 | 可选 | 说明                   |
 | ------- | ------------------------------------ | ---- |---- | ---------------------- |
@@ -9233,7 +9233,7 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称    | 类型                                  | 只读 | 可选 | 说明                   |
 | ------- | ------------------------------------ | ---- | ---- | ---------------------- |
@@ -9250,7 +9250,7 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 ### SystemLiveViewSubscriber.onResponse
 
@@ -9260,7 +9260,7 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称    | 类型                                  | 只读 | 可选 | 说明                   |
 | ------- | ------------------------------------ | ---- | ---- | ---------------------- |
@@ -9273,7 +9273,7 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                                | 值     | 说明                                                         |
 | ----------------------------------- | ------ | ------------------------------------------------------------ |
@@ -9289,7 +9289,7 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                                 | 值   | 说明     |
 | ------------------------------------ | ---- | -------- |
@@ -9310,7 +9310,7 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 
 **ArkTS-Dyn起始版本**：21
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                 | 值  | 说明                               |
 | --------------------| --- | --------------------------------- |
@@ -9328,7 +9328,7 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称  | 类型                                  | 只读 | 可选 | 说明                   |
 | ----- | ------------------------------------- | ---- | ---- | ---------------------- |
@@ -9380,7 +9380,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 
 **ArkTS-Dyn起始版本**：21
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称      | 类型    | 只读 | 可选 | 说明           |
 | --------- | ------ | ---- | ---- | ------------- |

@@ -15,7 +15,7 @@
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称           | 类型                                                                        | 只读 | 可选 | 说明               |
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
@@ -31,11 +31,11 @@
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称           | 类型                                                                        | 只读 | 可选 | 说明               |
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
-| structuredText<sup>21+</sup> | Map<string, string> |  否  |  是  | 通知结构化字段。当前仅支持服务提醒类短信在通知中心结构化展示。（key/value大小不超过512字节，超出部分会被截断，最多支持3对结构化数据，超出部分会被忽略。）<br/>**ArkTS-Dyn起始版本**：21<br/>**ArkTS-Sta起始版本**：22   |
+| structuredText<sup>21+</sup> | Map<string, string> |  否  |  是  | 通知结构化字段。当前仅支持服务提醒类短信在通知中心结构化展示。（key/value大小不超过512字节，超出部分会被截断，最多支持3对结构化数据，超出部分会被忽略。）<br/>**ArkTS-Dyn起始版本**：21<br/>**ArkTS-Sta起始版本**：23   |
 
 ## NotificationLiveViewContent<sup>11+</sup>
 
@@ -47,12 +47,12 @@
 
 | 名称           | 类型                                                                | 只读| 可选 | 说明                                                  |
 | -------------- | ------------------------------------------------------------------ | --- | --- | ------------------------------------------------------|
-| status         | [LiveViewStatus](#liveviewstatus11)                                | 否  | 否  | 通知状态。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22                  |
-| version        | ArkTS-Dyn: number<br/>ArkTS-Sta: int                               | 否  | 是  | 通知版本号（如果数据库存储版本号为0xffffffff，则本次更新和结束不校验版本号大小，否则需要校验本次版本号>数据库存储版本号）。不填默认为0xffffffff。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22|
-| extraInfo      | ArkTS-Dyn: Record<string, Object\><br/>ArkTS-Sta: Record<string, RecordData> | 否  | 是  | 实况通知附加内容。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22           |
-| pictureInfo    | Record<string, Array<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\>\> | 否  | 是  | 实况通知附加内容中的图片信息。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22|
-| isLocalUpdateOnly<sup>12+</sup> | boolean                                           | 否  | 是  | 实况窗是否只在本地更新。默认为false。<br> - true：是。<br> - false：否。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：22    |
-| extensionWantAgent<sup>20+</sup> | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)    |  否  |  是  | 点击辅助区的跳转动作。 <br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：22   |
+| status         | [LiveViewStatus](#liveviewstatus11)                                | 否  | 否  | 通知状态。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23                  |
+| version        | ArkTS-Dyn: number<br/>ArkTS-Sta: int                               | 否  | 是  | 通知版本号（如果数据库存储版本号为0xffffffff，则本次更新和结束不校验版本号大小，否则需要校验本次版本号>数据库存储版本号）。不填默认为0xffffffff。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23|
+| extraInfo      | ArkTS-Dyn: Record<string, Object\><br/>ArkTS-Sta: Record<string, RecordData> | 否  | 是  | 实况通知附加内容。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23           |
+| pictureInfo    | Record<string, Array<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\>\> | 否  | 是  | 实况通知附加内容中的图片信息。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23|
+| isLocalUpdateOnly<sup>12+</sup> | boolean                                           | 否  | 是  | 实况窗是否只在本地更新。默认为false。<br> - true：是。<br> - false：否。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23    |
+| extensionWantAgent<sup>20+</sup> | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)    |  否  |  是  | 点击辅助区的跳转动作。 <br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23   |
 
 ## NotificationSystemLiveViewContent<sup>18+</sup>
 
@@ -62,7 +62,7 @@
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **系统接口**：此接口为系统接口。
 
@@ -81,9 +81,9 @@
 
 | 名称                  |  类型                         | 只读 | 可选 | 说明                              |
 | --------------------- | ---------------------------- | ---- | ---- | -------------------------------- |
-| content<sup>12+</sup> | string                       |  否  |  是  | 胶囊的拓展文本。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：22                   |
-| time<sup>18+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否  |  是  | 即时任务类实况胶囊展示时长（单位：秒）。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：22   |
-| capsuleButtons<sup>18+</sup> | Array\<[NotificationIconButton](#notificationiconbutton18)\>    |  否  |  是  | 即时任务类实况胶囊的按钮（最多支持2个）。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：22      |
+| content<sup>12+</sup> | string                       |  否  |  是  | 胶囊的拓展文本。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23                   |
+| time<sup>18+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否  |  是  | 即时任务类实况胶囊展示时长（单位：秒）。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23   |
+| capsuleButtons<sup>18+</sup> | Array\<[NotificationIconButton](#notificationiconbutton18)\>    |  否  |  是  | 即时任务类实况胶囊的按钮（最多支持2个）。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23      |
 
 ## LiveViewStatus<sup>11+</sup>
 
@@ -95,10 +95,10 @@
 
 | 名称                         | 值 |   说明   |
 | ---------------------------- |----|----------|
-| LIVE_VIEW_CREATE             | 0  | 创建<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22 |
-| LIVE_VIEW_INCREMENTAL_UPDATE | 1  | 增量更新<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22 |
-| LIVE_VIEW_END                | 2  | 结束<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22 |
-| LIVE_VIEW_FULL_UPDATE        | 3  | 全量更新<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22 |
+| LIVE_VIEW_CREATE             | 0  | 创建<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| LIVE_VIEW_INCREMENTAL_UPDATE | 1  | 增量更新<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| LIVE_VIEW_END                | 2  | 结束<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| LIVE_VIEW_FULL_UPDATE        | 3  | 全量更新<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
 | LIVE_VIEW_PENDING_CREATE<sup>23+</sup>     | 4  | 条件触发创建<br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 | LIVE_VIEW_PENDING_END<sup>23+</sup>        | 6  | 条件触发结束<br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
@@ -112,7 +112,7 @@
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称  | 类型                                                   | 只读 | 可选 | 说明             |
 | ----- | ----------------------------------------------------- | --- | --- | ----------------- |
@@ -131,7 +131,7 @@
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                         | 值 |   说明   |
 | ---------------------------- |----|----------|
@@ -145,7 +145,7 @@
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称           | 类型                                                                        | 只读 | 可选 | 说明               |
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |

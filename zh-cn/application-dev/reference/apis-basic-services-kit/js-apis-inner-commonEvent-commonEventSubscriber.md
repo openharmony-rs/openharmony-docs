@@ -15,7 +15,7 @@
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 ### 使用说明
 
@@ -52,7 +52,7 @@ ArkTS-Sta: 获取有序公共事件传递的数据（int类型）。使用callba
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -112,7 +112,7 @@ ArkTS-Sta: 获取有序公共事件传递的数据（int类型）。使用Promis
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -160,7 +160,7 @@ ArkTS-Sta: 获取有序公共事件传递的数据（int类型）。
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -202,7 +202,7 @@ ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。使用callba
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -263,7 +263,7 @@ ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。使用Promis
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -325,7 +325,7 @@ ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -366,7 +366,7 @@ getData(callback: AsyncCallback\<string>): void
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -424,7 +424,7 @@ getData(): Promise\<string>
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -468,7 +468,7 @@ getDataSync(): string
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -497,7 +497,7 @@ setData(data: string, callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -554,7 +554,7 @@ setData(data: string): Promise\<void>
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -612,7 +612,7 @@ setDataSync(data: string): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -655,7 +655,7 @@ ArkTS-Sta: setCodeAndData(code: int, data: string, callback:AsyncCallback\<void>
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -715,7 +715,7 @@ ArkTS-Sta: setCodeAndData(code: int, data: string): Promise\<void>
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -774,7 +774,7 @@ ArkTS-Sta: setCodeAndDataSync(code: int, data: string): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -815,7 +815,7 @@ isOrderedCommonEvent(callback: AsyncCallback\<boolean>): void
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -869,7 +869,7 @@ isOrderedCommonEvent(): Promise\<boolean>
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -911,7 +911,7 @@ isOrderedCommonEventSync(): boolean
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -938,7 +938,7 @@ isStickyCommonEvent(callback: AsyncCallback\<boolean>): void
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -992,7 +992,7 @@ isStickyCommonEvent(): Promise\<boolean>
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -1034,7 +1034,7 @@ isStickyCommonEventSync(): boolean
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -1061,7 +1061,7 @@ abortCommonEvent(callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1127,7 +1127,7 @@ abortCommonEvent(): Promise\<void>
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -1179,7 +1179,7 @@ abortCommonEventSync(): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **示例：**
 
@@ -1217,7 +1217,7 @@ clearAbortCommonEvent(callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1285,7 +1285,7 @@ clearAbortCommonEvent(): Promise\<void>
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -1337,7 +1337,7 @@ clearAbortCommonEventSync(): void
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **示例：**
 
@@ -1375,7 +1375,7 @@ getAbortCommonEvent(callback: AsyncCallback\<boolean>): void
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1429,7 +1429,7 @@ getAbortCommonEvent(): Promise\<boolean>
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -1471,7 +1471,7 @@ getAbortCommonEventSync(): boolean
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -1502,7 +1502,7 @@ ArkTS-Sta: getSubscribeInfo(callback: AsyncCallback\<CommonEventSubscribeInfo|nu
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1560,7 +1560,7 @@ ArkTS-Sta: getSubscribeInfo(): Promise\<CommonEventSubscribeInfo|null>
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -1606,7 +1606,7 @@ ArkTS-Sta: getSubscribeInfoSync(): CommonEventSubscribeInfo|null
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -1642,7 +1642,7 @@ finishCommonEvent(callback: AsyncCallback\<void>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1696,7 +1696,7 @@ finishCommonEvent(): Promise\<void>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
