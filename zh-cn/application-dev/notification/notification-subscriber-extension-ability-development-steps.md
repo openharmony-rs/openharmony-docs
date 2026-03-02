@@ -206,14 +206,20 @@
      onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
        hilog.info(DOMAIN, 'testTag', `on receive message ${JSON.stringify(notificationInfo)}`)
        notificationExtensionSubscription.getSubscribeInfo()
-         .then(info => {
+         .then(async (info) => {
            if (this.sppClientManager == undefined) {
              this.sppClientManager = new SppClientManager(info[0].addr);
            }
            if (this.sppClientManager.isConnect()) {
              this.sendPublishWithRetry(notificationInfo);
            } else {
-             this.sppClientManager.startConnect()
+             try {
+               await this.sppClientManager.startConnect().then(() => {
+                 hilog.info(DOMAIN, 'testTag', `startConnect success`);
+               });
+             } catch (err) {
+               hilog.error(DOMAIN, 'testTag', `Failed to start connect: ${JSON.stringify(err)}`);
+             }
              setTimeout(() => {
                this.sendPublishWithRetry(notificationInfo);
              }, 3000)
@@ -224,12 +230,18 @@
        });
      }
      // Sends a publish notification and retries once upon failure.
-     private sendPublishWithRetry(notificationInfo: notificationExtensionSubscription.NotificationInfo) {
+     private async sendPublishWithRetry(notificationInfo: notificationExtensionSubscription.NotificationInfo) {
        try {
          this.sppClientManager!.sendNotificationData(notificationInfo);
        } catch (err) {
          hilog.error(DOMAIN, 'testTag', `send failed, errCode ${err.code}, errorMessage ${err.message}, and retry one times`);
-         this.sppClientManager!.startConnect();
+         try {
+           await this.sppClientManager!.startConnect().then(() => {
+             hilog.info(DOMAIN, 'testTag', `startConnect success`);
+           });
+         } catch (err) {
+           hilog.error(DOMAIN, 'testTag', `Failed to start connect: ${JSON.stringify(err)}`);
+         }
          setTimeout(() => {
            this.sppClientManager!.sendNotificationData(notificationInfo);
          }, 3000);
@@ -240,14 +252,20 @@
      onCancelMessages(hashCodes: Array<string>): void {
        hilog.info(DOMAIN, 'testTag', `on cancel message ${JSON.stringify(hashCodes)}`)
        notificationExtensionSubscription.getSubscribeInfo()
-         .then(info => {
+         .then(async (info) => {
            if (this.sppClientManager == undefined) {
              this.sppClientManager = new SppClientManager(info[0].addr);
            }
            if (this.sppClientManager.isConnect()) {
              this.sendCancelWithRetry(hashCodes);
            } else {
-             this.sppClientManager.startConnect()
+             try {
+               await this.sppClientManager.startConnect().then(() => {
+                 hilog.info(DOMAIN, 'testTag', `startConnect success`);
+               });
+             } catch (err) {
+               hilog.error(DOMAIN, 'testTag', `Failed to start connect: ${JSON.stringify(err)}`);
+             }
              setTimeout(() => {
                this.sendCancelWithRetry(hashCodes);
              }, 3000)
@@ -257,12 +275,18 @@
        });
      }
      // Retries a cancel operation if it fails.
-     private sendCancelWithRetry(hashCodes: string[]) {
+     private async sendCancelWithRetry(hashCodes: string[]) {
        try {
          this.sppClientManager!.sendCancelNotificationData(hashCodes);
        } catch (err) {
          hilog.error(DOMAIN, 'testTag', `send failed, errCode ${err.code}, errorMessage ${err.message}, and retry one times`);
-         this.sppClientManager!.startConnect();
+         try {
+           await this.sppClientManager!.startConnect().then(() => {
+             hilog.info(DOMAIN, 'testTag', `startConnect success`);
+           });
+         } catch (err) {
+           hilog.error(DOMAIN, 'testTag', `Failed to start connect: ${JSON.stringify(err)}`);
+         }
          setTimeout(() => {
            this.sppClientManager!.sendCancelNotificationData(hashCodes);
          }, 3000);
