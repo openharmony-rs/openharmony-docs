@@ -22,6 +22,195 @@ OpenHarmony系统预置的媒体中心，作为音频模板控制方与音视频
    
    <!-- @[create_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
    
+   ``` TypeScript
+   import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+   // ...
+   
+   const TAG: string = 'ControllerManager';
+   
+   export class ControllerManager {
+     private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
+     private currentBundleName: string | undefined = undefined;
+     // ...
+     private templateCreateCallback: Callback<avMusicTemplate.AVMusicTemplateDescriptor> =
+       (descriptor: avMusicTemplate.AVMusicTemplateDescriptor) => {
+         if (this.isInvalid(descriptor)) {
+           console.warn(TAG, 'templateCreateCallback: descriptor is invalid');
+           return;
+         }
+         console.info(TAG, `templateCreateCallback, bundleName: ${descriptor.bundleName}`);
+         this.createController(descriptor.sessionId, descriptor.bundleName);
+       };
+     private templateDestroyCallback: Callback<avMusicTemplate.AVMusicTemplateDescriptor> =
+       (descriptor: avMusicTemplate.AVMusicTemplateDescriptor) => {
+         if (this.isInvalid(descriptor)) {
+           console.warn(TAG, 'templateDestroyCallback: descriptor is invalid');
+           return;
+         }
+         if (this.isStringEmpty(this.currentBundleName)) {
+           console.warn(TAG, 'templateDestroyCallback: current bundleName is empty');
+           return;
+         }
+         if (this.currentBundleName !== descriptor.bundleName) {
+           console.warn(TAG, 'templateDestroyCallback: not current bundleName');
+           return;
+         }
+         this.unregisterListener();
+         this.destroyController();
+       };
+     // ...
+   
+     /**
+      * 通过getAllAVMusicTemplateDescriptors创建模板
+      */
+     public createAvMusicTemplateController(bundleName: string) {
+       if (this.isStringEmpty(bundleName)) {
+         console.warn(TAG, 'createAvMusicTemplateController: bundleName is empty');
+         return;
+       }
+       this.currentBundleName = bundleName;
+       try {
+         // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES
+         let descriptors: avMusicTemplate.AVMusicTemplateDescriptor[] = avMusicTemplate.getAllAVMusicTemplateDescriptors();
+         if (this.isEmptyArray(descriptors)) {
+           console.info(TAG, 'createAvMusicTemplateController: descriptors is empty');
+           return;
+         }
+         for (let descriptor of descriptors) {
+           if (descriptor === null || descriptor === undefined) {
+             console.warn(TAG, 'createAvMusicTemplateController: descriptor is invalid continue');
+             continue;
+           }
+           if (this.currentBundleName === descriptor.bundleName) {
+             this.createController(descriptor.sessionId, descriptor.bundleName);
+             return;
+           }
+         }
+       } catch (e) {
+         console.error(TAG, `getAllAVMusicTemplateDescriptors failed, errCode: ${e?.code}`);
+       }
+     };
+   
+     private isInvalid<T>(obj: T): boolean {
+       return obj === undefined || obj === null;
+     }
+   
+     private isStringEmpty(str: string | undefined): boolean {
+       return str === undefined || str === null || str.trim().length === 0;
+     }
+   
+     private isEmptyArray<T>(array: T[]): boolean {
+       return this.isInvalid(array) || array.length <= 0;
+     }
+   
+     /**
+      * 注册模板监听
+      */
+     public registerAVMusicTemplateListener() {
+       try {
+         // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES
+         avMusicTemplate.onAVMusicTemplateCreate(this.templateCreateCallback);
+         // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES
+         avMusicTemplate.onAVMusicTemplateDestroy(this.templateDestroyCallback);
+       } catch (e) {
+         console.error(TAG, `registerAVMusicTemplateListener: errCode: ${e?.code}`);
+       }
+     }
+   
+     private createController(sessionId: string, bundleName: string) {
+       if (this.currentBundleName === null || this.currentBundleName === undefined) {
+         console.warn(TAG, 'createController: sessionId is invalid');
+         return;
+       }
+       if (sessionId === null || sessionId === undefined) {
+         console.warn(TAG, 'createController: sessionId is invalid');
+         return;
+       }
+       if (bundleName === null || bundleName === undefined) {
+         console.warn(TAG, 'createController: bundleName is invalid');
+         return;
+       }
+       if (this.currentBundleName !== bundleName) {
+         console.warn(TAG, 'createController: not current bundleName');
+         return;
+       }
+       if (this.controller != undefined) {
+         console.warn(TAG, 'createController: controller not undefined');
+         return;
+       }
+       try {
+         this.controller = avMusicTemplate.createAVMusicTemplateController(sessionId);
+         console.info(TAG, `createController success, bundleName: ${this.currentBundleName}`);
+         // ...
+       } catch (e) {
+         console.error(TAG, `createController: errCode: ${e?.code}`);
+       }
+     }
+   
+     // ...
+     /**
+      * 注销监听
+      */
+     public unregisterListener() {
+       // 注销用户信息改变的监听。
+       this.controller?.offUserInfoChange();
+   
+       // 注销弹框命令改变的监听。
+       this.controller?.offDialogCommandChange();
+   
+       // 注销当前单曲改变的监听。
+       this.controller?.offCurrentSingleChange();
+   
+       // 注销媒体实体改变的监听。
+       this.controller?.offMediaEntitiesChange();
+   
+       // 注销标签页内容改变的监听。
+       this.controller?.offTabContentChange();
+   
+       // 注销播放列表改变的监听。
+       this.controller?.offPlaylistChange();
+   
+       // 注销下载媒体状态改变的监听。
+       this.controller?.offDownloadMediaEntityStatusChange();
+   
+       // 注销自定义元素改变的监听。
+       this.controller?.offCustomElementsChange();
+   
+       // 注销设置改变的监听。
+       this.controller?.offSettingsChange();
+   
+       // 注销上报执行动作的监听。
+       this.controller?.offReportExecuteAction();
+   
+       // 注销通知媒体中心拉起指定三方应用界面的信息的监听。
+       this.controller?.offExtensionAbilityChange();
+     }
+   
+     /**
+      * 销毁控制器
+      */
+     public destroyController() {
+       console.info(TAG, 'destroyController')
+       this.controller?.destroy();
+       this.controller = undefined;
+       this.currentBundleName = undefined;
+     }
+   
+     /**
+      * 反注册模板监听
+      */
+     public unregisterAVMusicTemplateListener() {
+       try {
+         avMusicTemplate.offAVMusicTemplateCreate();
+         avMusicTemplate.offAVMusicTemplateDestroy();
+       } catch (e) {
+         console.error(TAG, `unregisterAVMusicTemplateListener: errCode: ${e?.code}`);
+       }
+     }
+     // ...
+   }
+   ```
+   
 2. 音频模板控制方根据需要查询音频模板提供方相关的信息，用于界面展示（需要音频模板提供方注册相关接口）。例如主界面展示需要先获取主标签TAB，然后根据tabId查询标签页内容，需要接口如下，详情请查看[AVMusicTemplateController API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
 
    - queryMainTabs：查询主标签。
