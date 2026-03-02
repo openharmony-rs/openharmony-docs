@@ -272,3 +272,45 @@
 4. 媒体应用根据实际注册，在退出时及时注销事件监听，并释放资源。详情请查看[AVMusicTemplate API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。
 
    <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
+   
+   ``` TypeScript
+   import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+   // ...
+   
+   export class TemplateManager {
+     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+     // ...
+     /**
+      * 注销监听。
+      */
+     public unregisterListener() {
+       this.template?.offQueryMainTabs();
+       this.template?.offQueryMediaTabContent();
+       this.template?.offQueryMediaEntity();
+       this.template?.offQueryCompilation();
+       this.template?.offQueryPlaylist();
+       this.template?.offQueryCurrentSingle();
+       this.template?.offQueryCompilationByKeyword();
+       this.template?.offQueryMediaEntityByKeyword();
+       this.template?.offQueryRecommendMediaEntityList();
+       this.template?.offQueryHotWords();
+       this.template?.offQuerySearchHistory();
+       this.template?.offClearSearchHistory();
+       this.template?.offLogin();
+       this.template?.offRequestDialogInfo();
+       this.template?.offHandleMemberPurchase();
+       this.template?.offQueryMemberPurchase();
+       this.template?.offQueryCustomContent();
+       this.template?.offDownloadMediaEntity();
+       this.template?.offSettingsChange();
+       this.template?.offProblemAndAdvice();
+       this.template?.offPlayForSearch();
+       this.template?.offExecuteAction();
+       this.template?.offPlayMediaEntity();
+       this.template?.offFavoriteMediaEntity();
+       this.template?.destroy();
+       this.template = undefined;
+     };
+     // ...
+   }
+   ```
