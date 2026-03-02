@@ -80,7 +80,7 @@ enum Input_PointerStyle
 | MIDDLE_BTN_NORTH = 32   | 向北滚动   |![MID_Btn_North.png](./figures/MID_Btn_North.png)|
 | MIDDLE_BTN_NORTH_SOUTH = 33   | 向南北滚动  |![MID_Btn_North_South.png](./figures/MID_Btn_North_South.png)|
 | MIDDLE_BTN_NORTH_EAST = 34   | 向东北滚动  |![MID_Btn_North_East.png](./figures/MID_Btn_North_East.png)|
-| MIDDLE_BTN_NORTH_WEST= 35   | 向西北滚动  |![MID_Btn_North_West.png](./figures/MID_Btn_North_West.png)|
+| MIDDLE_BTN_NORTH_WEST = 35   | 向西北滚动  |![MID_Btn_North_West.png](./figures/MID_Btn_North_West.png)|
 | MIDDLE_BTN_SOUTH_EAST = 36   | 向东南滚动  |![MID_Btn_South_East.png](./figures/MID_Btn_South_East.png)|
 | MIDDLE_BTN_SOUTH_WEST = 37   | 向西南滚动  |![MID_Btn_South_West.png](./figures/MID_Btn_South_West.png)|
 | MIDDLE_BTN_NORTH_SOUTH_WEST_EAST = 38   | 四向锥形移动 |![MID_Btn_North_South_West_East.png](./figures/MID_Btn_North_South_West_East.png)|
