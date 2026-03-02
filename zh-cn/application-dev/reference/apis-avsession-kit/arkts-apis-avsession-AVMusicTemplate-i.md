@@ -70,7 +70,7 @@
 | 名称         | 类型                              | 只读 | 可选 | 说明                 |
 | ------------ | ------------------------------- | ---- | ---- | -------------------- |
 | tabId        | string                          | 否   | 否   | 标签页的ID。         |
-| compilations | [Compilation](#Compilation23)[] | 否   | 否   | 页面内容的合集数组。 |
+| compilations | [Compilation](#compilation23)[] | 否   | 否   | 页面内容的合集数组。 |
 
 ## Compilation<sup>23+</sup>
 
@@ -89,11 +89,11 @@
 | hasMoreData     | boolean                                                     | 否   | 否   | 是否有更多的合集数据。true表示有，false表示没有。 |
 | totalSize       | int                                                         | 否   | 否   | 合集内音频的个数。                                |
 | memberMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype23) | 否   | 否   | 合集的媒体资源类型                                |
-| topElements     | [MediaEntity](#MediaEntity23)                               | 否   | 否   | 合集的内容                                        |
+| topElements     | [MediaEntity](#mediaentity23)                               | 否   | 否   | 合集的内容                                        |
 
 ## Banner<sup>23+</sup>
 
-海报的定义。[MediaEntity](#MediaEntity23)的子类。
+海报的定义。[MediaEntity](#mediaentity23)的子类。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -107,7 +107,7 @@
 
 ## Album<sup>23+</sup>
 
-专辑的定义。[MediaEntity](#MediaEntity23)的子类。
+专辑的定义。[MediaEntity](#mediaentity23)的子类。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -119,12 +119,12 @@
 | ---------------- | ------------------------------- | ---- | ---- | ------------------ |
 | singer           | string                          | 否   | 否   | 歌手。             |
 | playCounts       | string                          | 否   | 否   | 播放量。           |
-| favSubscribeData | [FavoriteData](#FavoriteData23) | 否   | 否   | 收藏或订阅的信息。 |
+| favSubscribeData | [FavoriteData](#favoritedata23) | 否   | 否   | 收藏或订阅的信息。 |
 | episodeCounts    | string                          | 否   | 是   | 专辑的总音频数。   |
 
 ## Ranking<sup>23+</sup>
 
-排行榜的定义。[MediaEntity](#MediaEntity23)的子类。
+排行榜的定义。[MediaEntity](#mediaentity23)的子类。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -134,7 +134,7 @@
 
 | 名称        | 类型                             | 只读 | 可选 | 说明               |
 | ----------- | ------------------------------- | ---- | ---- | ------------------ |
-| topElements | [MediaEntity](#MediaEntity23)[] | 否   | 否   | 榜单下的推荐歌曲。 |
+| topElements | [MediaEntity](#mediaentity23)[] | 否   | 否   | 榜单下的推荐歌曲。 |
 
 ## MediaEntity<sup>23+</sup>
 
@@ -229,7 +229,7 @@
 | playInfo         | [PlayInfo](arkts-apis-avsession-AVMusicTemplate-i.md#playinfo23)            | 否   | 否   | 播放信息。                                 |
 | favSubscribeData | [FavoriteData](arkts-apis-avsession-AVMusicTemplate-i.md#favoritedata23)    | 否   | 否   | 收藏或订阅的信息。                         |
 | tags             | string[]                                                                    | 否   | 是   | 歌曲标签信息的数组。                       |
-| settings         | [SettingItem](#SettingItem23)[]                                             | 否   | 是   | 歌曲设置项的数组。                         |
+| settings         | [SettingItem](#settingitem23)[]                                             | 否   | 是   | 歌曲设置项的数组。                         |
 | downloadStatus   | [DownloadStatus](arkts-apis-avsession-AVMusicTemplate-e.md#downloadstatus23) | 否   | 是   | 下载状态。                                 |
 | downloadProgress | int                                                                         | 否   | 是   | 下载进度。                                 |
 
@@ -388,7 +388,7 @@
 | title       | string                                                      | 否   | 是   | 弹框的标题。         |
 | text        | string                                                      | 否   | 是   | 弹框的内容。         |
 | buttons     | [DialogButtonInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialogbuttoninfo23)[] | 否   | 是   | 弹框的按钮的数组。   |
-| qrCodes     | [QrCodeInfo](#QrCodeInfo23)[]                               | 否   | 是   | 弹框的二维码的数组。 |
+| qrCodes     | [QrCodeInfo](#qrcodeinfo23)[]                               | 否   | 是   | 弹框的二维码的数组。 |
 | description | string                                                      | 否   | 是   | 对话框的其他信息。   |
 
 ## DialogButtonInfo<sup>23+</sup>
@@ -437,10 +437,10 @@
 
 | 名称               | 类型                             | 只读 | 可选 | 说明         |
 | ------------------ | ------------------------------ | ---- | ---- | ------------ |
-| userInfo           | [UserInfo](#UserInfo23)        | 否   | 是   | 用户信息。   |
-| tabs               | [MediaTab](#MediaTab23)[]      | 否   | 是   | 标签页信息。 |
-| customCompilations | [Compilation](#Compilation23)[] | 否   | 是   | 合集数组。   |
-| settings           | [SettingItem](#SettingItem23)[] | 否   | 是   | 设置项数组。 |
+| userInfo           | [UserInfo](#userinfo23)        | 否   | 是   | 用户信息。   |
+| tabs               | [MediaTab](#mediatab23)[]      | 否   | 是   | 标签页信息。 |
+| customCompilations | [Compilation](#compilation23)[] | 否   | 是   | 合集数组。   |
+| settings           | [SettingItem](#settingitem23)[] | 否   | 是   | 设置项数组。 |
 
 ## UserInfo<sup>23+</sup>
 
@@ -473,8 +473,8 @@
 
 | 名称      | 类型                                           | 只读 | 可选 | 说明             |
 | --------- | --------------------------------------------- | ---- | ---- | ---------------- |
-| musicInfo | [SearchPlayMusicInfo](#SearchPlayMusicInfo23) | 否   | 是   | 搜播的音频信息。 |
-| videoInfo | [SearchPlayVideoInfo](#SearchPlayVideoInfo23) | 否   | 是   | 搜播的视频信息。 |
+| musicInfo | [SearchPlayMusicInfo](#searchplaymusicinfo23) | 否   | 是   | 搜播的音频信息。 |
+| videoInfo | [SearchPlayVideoInfo](#searchplayvideoinfo23) | 否   | 是   | 搜播的视频信息。 |
 
 ## SearchPlayMusicInfo<sup>23+</sup>
 
@@ -488,7 +488,7 @@
 
 | 名称          | 类型                                             | 只读 | 可选 | 说明                                        |
 | ------------- | ----------------------------------------------- | ---- | ---- | ------------------------------------------- |
-| items         | [SearchPlayMusicItem](#SearchPlayMusicItem23)[] | 否   | 否   | 音频信息。                                  |
+| items         | [SearchPlayMusicItem](#searchplaymusicitem23)[] | 否   | 否   | 音频信息。                                  |
 | displayName   | string                                          | 否   | 是   | 音频的显示名称。                            |
 | description   | string                                          | 否   | 是   | 其他对音频的描述。                          |
 | playMusicOnly | boolean                                         | 否   | 是   | 是否仅仅播放音频。true表示是，false表示否。 |

@@ -819,7 +819,7 @@ type ReportDialogCommandEvent = (type: DialogControlType, buttonInfo: DialogInfo
 
 | 参数名     | 类型                                                         | 必填 | 说明           |
 | ---------- | ----------------------------------------------------------- | ---- | -------------- |
-| type       | [DialogControlType](#DialogControlType23)                   | 是   | 弹框控制类型。 |
+| type       | [DialogControlType](#dialogcontroltype23)                   | 是   | 弹框控制类型。 |
 | buttonInfo | [DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo23) | 是   | 弹框信息。     |
 
 **示例：**
