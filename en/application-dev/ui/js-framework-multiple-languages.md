@@ -108,7 +108,7 @@ Multi-language syntax used on application development pages (including simple fo
   | Parameter  | Type         | Mandatory| Description                                                        |
   | ------ | ------------- | ---- | ------------------------------------------------------------ |
   | path   | string        | Yes  | Path of the language resource key.                                                  |
-  | params | Array \| Object | No  | Content used to replace placeholders during runtime. There are two types of placeholders available:<br>- Named placeholder, for example, **{name}**. The actual content must be of the object type, for example, `$t('strings.object', {name:'Hello world'})`.<br> - Digit placeholder, for example, **{0}**. The actual content must be of the array type, for example, `$t('strings.array', ['Hello world']`.|
+  | params | Array \| Object | No  | Content used to replace placeholders during runtime. There are two types of placeholders available:<br>- Named placeholder, for example, **{name}**. The actual content must be of the object type, for example, `$t('strings.object', {name:'Hello world'})`.<br> - Digit placeholder, for example, **{0}**. The actual content must be of the array type, for example, **$t('strings.array', ['Hello world'])**.|
 
 - Example code for simple formatting
   ```html
