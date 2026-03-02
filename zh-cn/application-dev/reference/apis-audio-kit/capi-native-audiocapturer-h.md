@@ -517,7 +517,7 @@ typedef void (*OH_AudioCapturer_OnReadDataCallback)(OH_AudioCapturer* capturer, 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | 指向[OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer)创建的音频流实例。 |
-|  void* userData | 指向应用自定义的数据存储区域。 |
+|  void* userData | 指向应用自定义的数据存储区域，方便应用给自身传递数据。 |
 |  void* audioData | 指向录制数据存储区域，用于应用读取录制数据。 |
 | int32_t audioDataSize | 录制数据的长度。 |
 
