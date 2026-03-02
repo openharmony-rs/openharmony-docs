@@ -227,7 +227,7 @@ Wifi 代理配置。
 
 ## wifiManager.getDeviceConfig<sup>24+</sup>
 
-getDeviceConfig(networkId: number): WifiDeviceConfig
+getDeviceConfig(networkId: int): WifiDeviceConfig
 
 根据网络ID获取单条网络配置。
 
@@ -242,7 +242,7 @@ getDeviceConfig(networkId: number): WifiDeviceConfig
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| networkId | number | 是 | 待查询的网络配置ID。 |
+| networkId | int | 是 | 待查询的网络配置ID。 |
 
 **返回值：**
 
@@ -258,7 +258,6 @@ getDeviceConfig(networkId: number): WifiDeviceConfig
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
