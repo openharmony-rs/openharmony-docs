@@ -60,6 +60,49 @@
    
    <!-- @[manager_create_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
    
+   ``` TypeScript
+   import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+   // ...
+   
+   export class TemplateManager {
+     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+     private static sInstance: TemplateManager;
+     // ...
+     private constructor() {
+     }
+   
+     /**
+      * 获取模板控制器实例
+      *
+      * @returns 模板控制器实例
+      */
+     public static getInstance(): TemplateManager {
+       if (!TemplateManager.sInstance) {
+         TemplateManager.sInstance = new TemplateManager();
+       }
+       return TemplateManager.sInstance;
+     };
+   
+     /**
+      * 创建音频模板
+      */
+     public createTemplate() {
+       if (this.template) {
+         console.warn('createTemplate: template not undefined');
+         return
+       }
+       try {
+         this.template = avMusicTemplate.createAVMusicTemplate(avMusicTemplate.AVMusicTemplateType.DEFAULT);
+         console.info('createTemplate: success');
+         // ...
+       } catch (e) {
+         console.error(`createTemplate, errCode: ${e?.code}`);
+       }
+     }
+     // ...
+   }
+   ```
+   
 2. 根据需要注册事件监听，并提供相应信息的获取方法。音频应用设置的音频模板信息，会被音频模板控制方通过AVMusicTemplateController相关方法获取后进行显示或处理。例如主界面显示，需要如下接口，详情请查看[AVMusicTemplate API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。
    
    - onQueryMainTabs：注册查询主标签事件监听。提供主界面展示的TAB数据集合，并约定我的界面的tabId（媒体中心的为"minePage"）。
