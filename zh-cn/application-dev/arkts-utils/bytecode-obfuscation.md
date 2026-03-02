@@ -109,6 +109,8 @@ test(a2);
 
 ![w3332](figures/bytecode-static-compilation-process.png)
 
+源码混淆仅适用于ArkTS-Dyn语言，ArkTS-Sta的字节码混淆不涉及源码混淆部分。
+
 开发者可以在模块的build-profile.json5配置文件中开启混淆功能，详细参考[字节码混淆开启指南](bytecode-obfuscation-guide.md)，从而在编译打包的过程中自动对abc进行混淆处理。
 
 混淆过程中，首先读取混淆开关。在开关开启的情况下，解析混淆配置文件，并依据[混淆规则合并策略](#混淆规则合并策略)合并混淆规则。然后按照混淆规则对生成的abc文件进行字节码混淆，最后将混淆后的中间文件落盘至build目录。开发者可以通过build目录中混淆后的产物，确认混淆效果。
