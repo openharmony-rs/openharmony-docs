@@ -17,7 +17,7 @@ Promise是ArkTS中用来处理异步操作的对象，Promise有pending（待定
 - **同步**：同步是指代码按顺序执行，一行代码执行完后继续执行下一行。如果某个操作耗时较长，整个程序会被阻塞。
 - **异步**：异步是指任务可以同时执行，不需要等待上一个任务结束。常见的异步操作有定时器、事件监听和网络请求等。异步任务不会阻塞后续任务的执行，而是通过回调函数或Promise对象来处理任务的结果。
 - **Promise**：Promise是一个ArkTS对象，用于处理异步操作。通过then、catch和finally方法添加自定义逻辑。
-- **deferred**：deferred是延迟对象，与Promise关联，设置Promise的回调函数resolve和reject。维护异步模型状态。
+- **deferred**：deferred是用来控制Promise状态的对象，通过它可以在未来的某个时刻将Promise的状态标记为已完成fulfilled（已兑现）或rejected（已拒绝）。
 - **resolve**：此函数可以将Promise的状态从pending（待定）改为fulfilled（已兑现），向resolve中传入的参数可以在Promise对象的then方法中获取。
 - **reject**：此函数可以将Promise的状态从pending（待定）改为rejected（已拒绝），向reject中传入的参数可以在Promise对象的catch方法中获取。
 
