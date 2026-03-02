@@ -328,6 +328,29 @@ OpenHarmony系统预置的媒体中心，作为音频模板控制方与音视频
    
    <!-- @[register_user_info_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
    
+   ``` TypeScript
+   import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
+   // ...
+   
+   const TAG: string = 'ControllerManager';
+   
+   export class ControllerManager {
+     private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
+     // ...
+     private userInfoChangeCallback: Callback<avMusicTemplate.UserInfo> = (userInfo: avMusicTemplate.UserInfo) => {
+       console.info(TAG, 'userInfoChangeCallback');
+     };
+     // ...
+   
+     private registerListener() {
+       // 注册用户信息改变的监听。
+       this.controller?.onUserInfoChange(this.userInfoChangeCallback);
+       // ...
+     }
+     // ...
+   }
+   ```
+   
 5. 在音频模板控制方应用退出时及时取消事件监听，并释放资源。详情请查看[模板API接口](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate-f.md)和[AVMusicTemplateController API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
 
    <!-- @[release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
