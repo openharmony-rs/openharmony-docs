@@ -1231,7 +1231,7 @@ int32_t OH_NativeXComponent_UnregisterOnFrameCallback(OH_NativeXComponent* compo
 | -- | -- |
 | int32_t | 返回执行的状态代码。<br>[OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 执行成功。<br>[OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 传入参数异常。 |
 
-### OH_NativeXComponent_AttachNativeRootNode()<sup>(deprecated)</sup>
+### OH_NativeXComponent_AttachNativeRootNode()
 
 ```c
 int32_t OH_NativeXComponent_AttachNativeRootNode(OH_NativeXComponent* component, ArkUI_NodeHandle root)
@@ -1242,9 +1242,11 @@ int32_t OH_NativeXComponent_AttachNativeRootNode(OH_NativeXComponent* component,
 
 将通过ArkUI的Native接口创建出来的UI组件挂载到当前XComponent上。
 
-> **说明：**
->
-> 从API version 12开始支持，从API version 20开始废弃，建议使用[OH_ArkUI_NodeContent_AddNode](capi-native-node-h.md#oh_arkui_nodecontent_addnode)替代。
+**起始版本：** 12
+
+**废弃版本：** 20
+
+**替代接口：** [OH_ArkUI_NodeContent_AddNode](capi-native-node-h.md#oh_arkui_nodecontent_addnode)
 
 **参数：**
 
@@ -1259,7 +1261,7 @@ int32_t OH_NativeXComponent_AttachNativeRootNode(OH_NativeXComponent* component,
 | -- | -- |
 | int32_t | 返回执行的状态代码。<br>返回 [OH_NATIVEXCOMPONENT_RESULT_SUCCESS](capi-native-interface-xcomponent-h.md#anonymous) - 成功。<br>返回 [OH_NATIVEXCOMPONENT_RESULT_BAD_PARAMETER](capi-native-interface-xcomponent-h.md#anonymous) - 参数异常。|
 
-### OH_NativeXComponent_DetachNativeRootNode()<sup>(deprecated)</sup>
+### OH_NativeXComponent_DetachNativeRootNode()
 
 ```c
 int32_t OH_NativeXComponent_DetachNativeRootNode(OH_NativeXComponent* component, ArkUI_NodeHandle root)
@@ -1270,10 +1272,11 @@ int32_t OH_NativeXComponent_DetachNativeRootNode(OH_NativeXComponent* component,
 
 将ArkUI的Native组件从当前XComponent上卸载。
 
-> **说明：**
->
-> 从API version 12开始支持，从API version 20开始废弃，建议使用[OH_ArkUI_NodeContent_RemoveNode](capi-native-node-h.md#oh_arkui_nodecontent_removenode)替代。
+**起始版本：** 12
 
+**废弃版本：** 20
+
+**替代接口：** [OH_ArkUI_NodeContent_RemoveNode](capi-native-node-h.md#oh_arkui_nodecontent_removenode)
 
 **参数：**
 
