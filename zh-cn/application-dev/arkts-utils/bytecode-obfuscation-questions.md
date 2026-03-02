@@ -754,7 +754,7 @@ AppAbility
 
 首先在obfuscation-rules.txt文件中，开启-enable-bytecode-obfuscation-debugging， 重新rebuild编译后，查看build下的debug.txt文件，查找是否有混淆错误信息；如果新增内容混淆失败，可以先尝试keep保留。
 
-### 为什么interface中get set方法可以精准keep，而class中get set方法不可以
+### 为什么interface中get/set方法可以精准keep，而class中get set方法不可以
 
 interface中定义的field，get/set方法和其field字段同名，但class中定义一个field，语法限制必须将get set重命名，这样会导致混淆时无法将两者进行关联，会混淆成不同名字； 需要使用通配符*去全量keep。
 
@@ -778,7 +778,9 @@ class ClassTest{
 
 代码中 `set name` 或 `get name`无法单独精准keep， 需要使用 `-keep class entry.src.main.ets.entryability.StaticDemo.ClassTest {*;}`全量keep。
 
-### class中static和instance变量重名，编译异常报错，不支持对该场景混淆，需要手动keep，或重命名变量
+### class中static和instance变量重名，编译异常报错
+
+不支持class中static和instance变量重名的混淆，需要手动keep，或重命名变量
 
 ```typescript
 //StaticDemo.ets
@@ -793,7 +795,7 @@ keep命令：
 -keep-class-members class entry.src.main.ets.entryability.StaticDemo.ClassTest { age; }
 ```
 
-### 继承的虚拟类的方法，在进行abstract修饰符keep时，子类和父类都会被keep。
+### 继承的虚拟类的方法，在进行abstract修饰符keep时，子类和父类都会被keep
 
 ```typescript
 //StaticDemo.ets
@@ -816,6 +818,6 @@ class ExampleClass extends AbstractClass {
 
 对于包含ArkTS-Dyn与ArkTS-Sta组件的混合工程，请注意ArkTS-Dyn的字节码混淆和ArkTS-Sta的字节码混淆会独立执行各自的混淆流程。
 
-若工程中存在通过 interop 机制进行Arkts-Dyn和ArkTS-Sta交互，开发者需手动将交互所涉及的关键类、方法或字段等添加到混淆白名单中，同时将涉及的文件路径添加到百名单中，以确保混淆后名称一致，避免因混淆导致交互失败。
+若工程中存在通过interop机制进行Arkts-Dyn和ArkTS-Sta交互，开发者需手动将交互所涉及的关键类、方法或字段等添加到混淆白名单中，同时将涉及的文件路径添加到百名单中，以确保混淆后名称一致，避免因混淆导致交互失败。
 
 若工程中存在Arkts-Dyn组件引用ArkTS-Sta组件，开发者需要手动将ArkTS-Sta组件相关的文件路径和文件的所有内容进行keep处理。
