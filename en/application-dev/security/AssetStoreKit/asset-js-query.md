@@ -55,6 +55,8 @@ Assets queried in batches need to be transmitted to services through the IPC cha
 > The **asset** module provides an asynchronous API and a synchronous API for querying assets. The following uses the asynchronous API as an example. For more information about the APIs, see [Asset Store Service](../../reference/apis-asset-store-kit/js-apis-asset.md).
 >
 > For details about how to query the plaintext of an asset in a group, see [Querying the Plaintext of an Asset in a Group](asset-js-group-access-control.md#querying-the-plaintext-of-an-asset-in-a-group). For details about how to query the attributes of an asset in a group, see [Querying the Attributes of an Asset in a Group](asset-js-group-access-control.md#querying-the-attributes-of-an-asset-in-a-group).
+> 
+> Before querying an asset, ensure that the asset exists. For details about how to add an asset, see [Adding an Asset](asset-js-add.md). Otherwise, the **NOT_FOUND** error (24000002) is reported.
 
 ### Querying the Plaintext of an Asset
 
@@ -151,7 +153,7 @@ export async function queryAssetAttribute(): Promise<string> {
 
 ### Querying Attributes of Assets
 
-Query attributes of assets with tag 1 of **demo_label** and return a total of 10 records sorted by **DATA_LABEL_NORMAL_1** starting from the fifth record that matches the search criteria.
+Query attributes of assets whose label is **demo_label** in batches. A total of 10 records that meet the conditions are returned. The results are sorted by the content of the **DATA_LABEL_NORMAL_1** attribute.
 
 <!-- @[query_batch_attributes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_batch_attrs.ets) -->
 
