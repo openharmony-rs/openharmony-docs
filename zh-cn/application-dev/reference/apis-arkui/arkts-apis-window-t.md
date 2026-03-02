@@ -107,3 +107,29 @@ type RotationChangeCallback<T, U> = (info: T) => U
 | 类型 | 说明 |
 | -------------------------------- | ------------------------------------ |
 | U | <br>ArkTS-Dyn: 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void类型的返回值。<br>ArkTS-Sta: 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| undefined类型的返回值。 |
+
+## Callback<sup>23+</sup>
+
+type Callback<T, V = void> = (data: T) => V
+
+通用回调函数。
+
+开发者在使用时，可自定义data的参数类型，回调函数返回对应类型的信息。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | -------------------------- |
+| data | T    | 是   | 回调函数调用时需要传入T类型的参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------------------------------- | ------------------------------------ |
+| V | 回调函数需要返回V类型的返回值。 |

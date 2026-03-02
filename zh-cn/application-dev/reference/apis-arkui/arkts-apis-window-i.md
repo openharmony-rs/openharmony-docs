@@ -445,13 +445,13 @@
 
 开发者在使用时，可自定义data的参数类型，回调函数返回对应类型的信息。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 **ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
