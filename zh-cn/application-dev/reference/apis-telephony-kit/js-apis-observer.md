@@ -1151,7 +1151,7 @@ onCCallStateChange\(callback: Callback\<CCallStateInfo\>, options?: ObserverOpti
 
 |     参数名            |         类型      | 必填 | 说明                                    |
 | ------------------- | ------------------| ---- | --------------------------------------- |
-| callback | Callback\<[CCallStateInfo](js-apis-call.md#ccallstate23)\> | 是   | 以callback形式异步返回结果。<br/>应用可获取到CCallState。<br/> |
+| callback | Callback\<[CCallStateInfo](js-apis-observer.md#ccallstateinfo23)\> | 是   | 以callback形式异步返回结果。<br/>应用可获取到CCallState。<br/> |
 | options  | [ObserverOptions](#observeroptions11)                  | 否 | 电话相关事件订阅参数可选项。                |
 
 **错误码：**
@@ -1196,7 +1196,7 @@ offCCallStateChange\(callback?: Callback\<CCallStateInfo\>\): void
 
 |     参数名            |         类型      | 必填 | 说明                                    |
 | ------------------- | ------------------| ---- | --------------------------------------- |
-| callback | Callback\<[CCallStateInfo](js-apis-call.md#ccallstate23)\> | 否   | 以callback形式异步返回结果。<br/>应用可获取到CCallState。<br/> |
+| callback | Callback\<[CCallStateInfo](js-apis-observer.md#ccallstateinfo23)\> | 否   | 以callback形式异步返回结果。<br/>应用可获取到CCallState。<br/> |
 
 **错误码：**
 
