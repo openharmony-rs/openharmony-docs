@@ -159,6 +159,24 @@ The current FrameNode is not on the main tree.
 
 将当前节点挂载到主节点树上，再执行当前操作。
 
+## 100029 BuilderNode中，状态管理V2尚未支持组件复用功能
+
+**错误信息**
+
+Reuse/Recycle not implemented for ViewV2, yet.
+
+**错误描述**
+
+BuilderNode中，[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)暂不支持[组件复用](./js-apis-arkui-builderNode.md#reuse12)。
+
+**可能原因**
+
+BuilderNode中，状态管理V2暂不支持组件复用。
+
+**处理步骤**
+
+使用状态管理V2时，不在BuilderNode节点上使用组件复用相关功能。
+
 ## 106103 对应的操作不支持ArkTS创建的节点
 
 **错误信息**
