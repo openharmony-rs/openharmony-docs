@@ -43334,13 +43334,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/test1/test2.ts",
-				"functions":[
-					{
-						"end_line":19,
-						"name":"testOptionExample_enableFilenameObfuscation",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/cpp/types/libentry/Index.d.ts",
@@ -43364,6 +43358,20 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/file2.ts",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/FilenameObfuscationTest/FilenameObfuscationTest.ts",
+				"functions":[
+					{
+						"end_line":19,
+						"name":"testOptionExample_enableFilenameObfuscation",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/DynamicImportFile.ts",
 				"functions":[
 					{
 						"end_line":19,
