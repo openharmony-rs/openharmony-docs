@@ -97,7 +97,7 @@
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_AccessibilityElementInfo* elementInfo, int32_t offset)](#oh_arkui_accessibilityelementinfosetaccessibilityoffset) | 为ArkUI_AccessibilityElementInfo设置offset。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityGroup)](#oh_arkui_accessibilityelementinfosetaccessibilitygroup) | 为ArkUI_AccessibilityElementInfo设置无障碍分组。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityLevel)](#oh_arkui_accessibilityelementinfosetaccessibilitylevel) | 为ArkUI_AccessibilityElementInfo设置无障碍重要性。 |
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t zIndex)](#oh_arkui_accessibilityelementinfosetzindex) | 为ArkUI_AccessibilityElementInfo设置zIndex。 |
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t zIndex)](#oh_arkui_accessibilityelementinfosetzindex) | 为ArkUI_AccessibilityElementInfo设置组件z序。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(ArkUI_AccessibilityElementInfo* elementInfo, float opacity)](#oh_arkui_accessibilityelementinfosetaccessibilityopacity) | 为ArkUI_AccessibilityElementInfo设置透明度。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundColor)](#oh_arkui_accessibilityelementinfosetbackgroundcolor) | 为ArkUI_AccessibilityElementInfo设置背景色。 |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundImage)](#oh_arkui_accessibilityelementinfosetbackgroundimage) | 为ArkUI_AccessibilityElementInfo设置背景图。 |
@@ -109,7 +109,7 @@
 | [ArkUI_AccessibilityEventInfo* OH_ArkUI_CreateAccessibilityEventInfo(void)](#oh_arkui_createaccessibilityeventinfo) | 创建一个ArkUI_AccessibilityEventInfo对象，创建后需要调用OH_ArkUI_DestoryAccessibilityEventInfo释放。 |
 | [void OH_ArkUI_DestoryAccessibilityEventInfo(ArkUI_AccessibilityEventInfo* eventInfo)](#oh_arkui_destoryaccessibilityeventinfo) | 销毁ArkUI_AccessibilityEventInfo对象。 |
 | [int32_t OH_ArkUI_AccessibilityEventSetEventType(ArkUI_AccessibilityEventInfo* eventInfo,  ArkUI_AccessibilityEventType eventType)](#oh_arkui_accessibilityeventseteventtype) | 为ArkUI_AccessibilityEventInfo设置事件类型。 |
-| [int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_AccessibilityEventInfo* eventInfo,  const char* textAnnouncedForAccessibility)](#oh_arkui_accessibilityeventsettextannouncedforaccessibility) | 为ArkUI_AccessibilityEventInfo设置textAnnouncedForAccessibility。 |
+| [int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_AccessibilityEventInfo* eventInfo,  const char* textAnnouncedForAccessibility)](#oh_arkui_accessibilityeventsettextannouncedforaccessibility) | 为ArkUI_AccessibilityEventInfo设置主动播报的内容。 |
 | [int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInfo* eventInfo,  int32_t requestFocusId)](#oh_arkui_accessibilityeventsetrequestfocusid) | 为ArkUI_AccessibilityEventInfo设置requestFocusId。 |
 | [int32_t OH_ArkUI_AccessibilityEventSetElementInfo(ArkUI_AccessibilityEventInfo* eventInfo,  ArkUI_AccessibilityElementInfo* elementInfo)](#oh_arkui_accessibilityeventsetelementinfo) | 为ArkUI_AccessibilityEventInfo设置elementInfo。 |
 | [int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionArguments* arguments, const char* key, char** value)](#oh_arkui_findaccessibilityactionargumentbykey) | 获取ArkUI_AccessibilityActionArguments中指定key的value值。 |
@@ -1277,7 +1277,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_Accessibil
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfo的指针。 |
-| int32_t offset | 对于可滚动类控件，如List、Grid，内容区相对于元素顶部坐标的滚动像素偏移量。 |
+| int32_t offset | 对于可滚动类控件，如[List](./arkui-ts/ts-container-list.md)、[Grid](./arkui-ts/ts-container-grid.md)，内容区相对于元素顶部坐标的滚动像素偏移量。 |
 
 **返回：**
 
@@ -1348,7 +1348,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInf
 **描述：**
 
 
-为ArkUI_AccessibilityElementInfo设置zIndex。
+为ArkUI_AccessibilityElementInfo设置组件z序。
 
 **起始版本：** 13
 
@@ -1358,7 +1358,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInf
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfo的指针。 |
-| int32_t zIndex | 组件z序，用于控制元素在垂直于屏幕的z轴上的位置。UITest需要使用。 |
+| int32_t zIndex | 组件z序，用于控制元素在垂直于屏幕的z轴上的位置。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。 |
 
 **返回：**
 
@@ -1385,7 +1385,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(ArkUI_Accessibi
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfo的指针。 |
-| float opacity | 表示透明度。其取值范围是0到1，其中1表示完全不透明，0表示完全透明。UITest需要使用。 |
+| float opacity | 表示透明度。其取值范围是0到1，其中1表示完全不透明，0表示完全透明。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。 |
 
 **返回：**
 
@@ -1412,7 +1412,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityE
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfo的指针。 |
-| const char* backgroundColor | 表示背景色。UITest需要使用。 |
+| const char* backgroundColor | 表示背景色。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。 |
 
 **返回：**
 
@@ -1439,7 +1439,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityE
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfo的指针。 |
-| const char* backgroundImage | 表示背景图片。UITest需要使用。 |
+| const char* backgroundImage | 表示背景图片。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。 |
 
 **返回：**
 
@@ -1466,7 +1466,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBlur(ArkUI_AccessibilityElementInfo*
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfo的指针。 |
-| const char* blur | 表示模糊度。UITest需要使用。 |
+| const char* blur | 表示模糊度。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。 |
 
 **返回：**
 
@@ -1642,7 +1642,7 @@ int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_Access
 **描述：**
 
 
-为ArkUI_AccessibilityEventInfo设置textAnnouncedForAccessibility。
+为ArkUI_AccessibilityEventInfo设置主动播报的内容。
 
 **起始版本：** 13
 
@@ -1652,7 +1652,7 @@ int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_Access
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md)* eventInfo | 表示事件信息。 |
-| const char* textAnnouncedForAccessibility | 表示textAnnouncedForAccessibility。 |
+| const char* textAnnouncedForAccessibility | 表示主动播报的内容。 |
 
 **返回：**
 
