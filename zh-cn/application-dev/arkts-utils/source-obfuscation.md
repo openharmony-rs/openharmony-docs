@@ -1336,6 +1336,21 @@ console.info(obj2['m']); // 此时，'m'会被正确混淆，m可以选择性保
   }
   ```
 
+8.使用到的数字字面量属性需要手动保留，例如：
+
+ <!-- @[optionExample_keepPropertyName6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->       
+ 
+ ``` TypeScript
+ class MyClass09 {
+   123 = 'numeric-prop'; // 数字字面量属性
+   [456] = 'computed'; // 计算属性中的数字
+   method() {
+     console.info(this[123]); // 123和456需要被保留
+     console.info(this[456]);
+   }
+ }
+ ```
+
 ### -keep-global-name
 
 指定要保留的顶层作用域及导入和导出元素的名称，支持使用[名称类通配符](#保留选项支持的通配符)。配置方式如下：
