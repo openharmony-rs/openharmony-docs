@@ -343,7 +343,7 @@ class EntryAbility extends UIAbility {
 }
 
 ```
-## VCardBuilderOptions<sup>23+</sup>
+## VCardBuilderOptions
 
 VCard版本和编码信息。
 
@@ -354,7 +354,7 @@ VCard版本和编码信息。
 | cardType     | [VCardType](#vcardtype11) |  否  | VCard版本类型 (默认值为VERSION_21)。     |
 | charset       | string |  否  | VCard编码类型（默认值为'UTF-8'）。     |
 
-## VCardType<sup>23+</sup>
+## VCardType
 
 VCard版本类型。
 
