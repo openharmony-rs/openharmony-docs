@@ -1,5 +1,10 @@
 # 音频模板错误码
-
+<!--Kit: AVSession Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @gcw_gyH0B0hP-->
+<!--Designer: @ccfriend-->
+<!--Tester: @chen-gong1-->
+<!--Adviser: @w_Machine_cc-->
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/errorcode-universal.md)。
