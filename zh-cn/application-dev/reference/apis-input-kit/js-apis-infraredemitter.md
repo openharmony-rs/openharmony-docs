@@ -1,5 +1,12 @@
 # @ohos.multimodalInput.infraredEmitter (红外管理)
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 红外管理模块提供产生特定频率和大小的红外信号，以及查询设备支持的频率范围等功能。
 
 > **说明**：
@@ -25,7 +32,7 @@ ArkTS-Sta: transmitInfrared(infraredFrequency: long, pattern: Array&lt;long&gt;)
 
 **需要权限**：ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 
-**系统能力**：SystemCapability.MultimodalInput.Input. InfraredEmitter
+**系统能力**：SystemCapability.MultimodalInput.Input.InfraredEmitter
 
 **ArkTS-Dyn起始版本**：15
 
@@ -35,8 +42,8 @@ ArkTS-Sta: transmitInfrared(infraredFrequency: long, pattern: Array&lt;long&gt;)
 
 | 参数名       | 类型                        | 必填   | 说明                                       |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
-| infraredFrequency | ArkTS-Dyn: number<br/>ArkTS-Sta: long             | 是    | 红外频率，单位Hz。 |
-| pattern | ArkTS-Dyn: Array&lt;number&gt;<br/>ArkTS-Sta: Array&lt;long&gt;| 是    | 红外电平信号，单位是us，电平信号的数量取值范围[0,1024]，电平信号数量需为偶数。<br/>比如[100,200,300,400]该电平信号数组，其中表示100us为高电平信号、200us为低电平信号、300us为高电平信号、400us为低电平信号。 |
+| infraredFrequency | ArkTS-Dyn: number<br/>ArkTS-Sta: long             | 是    | 红外频率，单位：Hz。 |
+| pattern | ArkTS-Dyn: Array&lt;number&gt;<br/>ArkTS-Sta: Array&lt;long&gt;| 是    | 红外电平信号，单位：μs。电平信号的数量取值范围为[0,1024]。电平信号的取值需大于0。<br/>比如[100,200,300,400]该电平信号数组，其中100us为高电平信号、200us为低电平信号、300us为高电平信号、400us为低电平信号。 |
 
 **错误码：**
 
@@ -100,7 +107,7 @@ struct Index {
 
 getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
-查询手机支持的红外信号的频率范围。
+查询设备支持的红外信号的频率范围。
 
 **需要权限**：ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 
@@ -114,7 +121,7 @@ getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
 **返回值**：
 
-| 参数                  | 说明                  |
+| 类型                  | 说明                  |
 | ------------------- | ------------------- |
 | Array&lt;[InfraredFrequency](#infraredfrequency15)&gt; | 红外信号的频率范围，包含多组最大和最小频率。<br/>从API version 23开始，当设备不具有红外发射器，返回一组最大和最小频率，且均为0Hz。 |
 
@@ -142,7 +149,7 @@ struct Index {
         .onClick(() => {
           try {
             let frequencies = infraredEmitter.getInfraredFrequencies();
-            console.log(`frequencies: ${JSON.stringify(frequencies)}`);
+            console.info(`frequencies: ${JSON.stringify(frequencies)}`);
           } catch (error) {
             console.error(`Get infrared frequencies failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -167,7 +174,7 @@ struct Index {
         .onClick(() => {
           try {
             let frequencies = infraredEmitter.getInfraredFrequencies();
-            console.log(`frequencies: ${JSON.stringify(frequencies)}`);
+            console.info(`frequencies: ${JSON.stringify(frequencies)}`);
           } catch (error) {
             console.error(`Get infrared frequencies failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }

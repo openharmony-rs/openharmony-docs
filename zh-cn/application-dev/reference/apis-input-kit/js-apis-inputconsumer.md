@@ -1,5 +1,12 @@
 # @ohos.multimodalInput.inputConsumer (全局快捷键)
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 全局快捷键订阅模块，用于处理组合按键的订阅，本模块也支持音量键拦截监听能力。
 
 > **说明：**
@@ -58,6 +65,8 @@ getAllSystemHotkeys(): Promise&lt;Array&lt;HotkeyOptions&gt;&gt;
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
+**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
+
 **ArkTS-Dyn起始版本**：14
 
 **ArkTS-Sta起始版本**：23
@@ -82,6 +91,7 @@ ArkTS-Dyn示例：
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -91,8 +101,10 @@ struct Index {
       Text()
         .onClick(() => {
           inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
-            console.log(`List of system hotkeys : ${JSON.stringify(data)}`);
-          });
+            console.info(`List of system hotkeys : ${JSON.stringify(data)}`);
+          }).catch((error: BusinessError) => {
+            console.error(`Get all system hotkeys failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          })
         })
     }
   }
@@ -113,7 +125,7 @@ struct Index {
       Text()
         .onClick(() => {
           inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
-            console.log(`List of system hotkeys : ${JSON.stringify(data)}`);
+            console.info(`List of system hotkeys : ${JSON.stringify(data)}`);
           });
         })
     }
@@ -125,9 +137,11 @@ struct Index {
 
 on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;HotkeyOptions&gt;): void
 
-订阅应用快捷键。获取满足条件的组合按键输入事件，使用Callback异步回调。
+订阅应用快捷键。获取满足条件的组合按键输入事件，使用callback异步回调。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -169,12 +183,12 @@ struct Index {
           let leftCtrlKey = 2072;
           let zKey = 2042;
           let hotkeyOptions: inputConsumer.HotkeyOptions = {
-            preKeys: [ leftCtrlKey ],
+            preKeys: [leftCtrlKey],
             finalKey: zKey,
             isRepeat: true
           };
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
-            console.log(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
+            console.info(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
           }
           try {
             inputConsumer.on("hotkeyChange", hotkeyOptions, hotkeyCallback);
@@ -240,7 +254,7 @@ struct Index {
             isRepeat: true
           };
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
-            console.log(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
+            console.info(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
           }
           try {
             inputConsumer.onHotkeyChange(hotkeyOptions, hotkeyCallback);
@@ -257,9 +271,11 @@ struct Index {
 
 off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;HotkeyOptions&gt;): void
 
-取消订阅应用快捷键。
+取消订阅应用快捷键。使用callback异步回调。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
@@ -300,13 +316,13 @@ struct Index {
           let zKey = 2042;
           // 取消订阅单个应用快捷键回调函数
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
-            console.log(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
+            console.info(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
           }
-          let hotkeyOption: inputConsumer.HotkeyOptions = {preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true};
+          let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
           try {
             inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
             inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
-            console.log(`Unsubscribe success`);
+            console.info(`Unsubscribe success`);
           } catch (error) {
             console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -368,7 +384,7 @@ struct Index {
             isRepeat: true
           };
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
-            console.log(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
+            console.info(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
           }
           try {
             inputConsumer.onHotkeyChange(hotkeyOptions, hotkeyCallback);
@@ -395,7 +411,7 @@ on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
-**设备行为差异：** API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在其他设备上返回801错误码。
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
@@ -409,7 +425,7 @@ on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent
 | ---------- | --------------------------             | ----  | ---------- |
 | type       | string                                 | 是     | 事件类型，固定取值为'keyPressed'。        |
 | options    | [KeyPressedConfig](#keypressedconfig16)| 是     | 按键事件消费设置。           |
-| callback   | Callback&lt;[KeyEvent](./js-apis-keyevent.md#keyevent)&gt; | 是    | 回调函数，用于返回按键事件。 |
+| callback   | Callback&lt;[KeyEvent](./js-apis-keyevent.md#keyevent)&gt; | 是    | 回调函数，用于返回按键事件。订阅不同的按键事件需要使用不同的callback，否则订阅不生效。 |
 
 **错误码**：
 
@@ -439,7 +455,7 @@ struct Index {
               isRepeat: false,
             }
             inputConsumer.on('keyPressed', options, (event: KeyEvent) => {
-              console.log(`Subscribe success ${JSON.stringify(event)}`);
+              console.info(`Subscribe success ${JSON.stringify(event)}`);
             });
           } catch (error) {
             console.error(`Subscribe execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -505,7 +521,7 @@ struct Index {
               isRepeat: false,
             }
             inputConsumer.onKeyPressed(options, (event: KeyEvent) => {
-              console.log(`Subscribe success ${JSON.stringify(event)}`);
+              console.info(`Subscribe success ${JSON.stringify(event)}`);
             });
           } catch (error) {
             console.error(`Subscribe execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -524,7 +540,7 @@ off(type: 'keyPressed', callback?: Callback&lt;KeyEvent&gt;): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
-**设备行为差异：** API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在其他设备上返回801错误码。
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
@@ -562,9 +578,16 @@ struct Index {
         .onClick(() => {
           try {
             // 取消指定回调函数
-            inputConsumer.off('keyPressed', (event: KeyEvent) => {
-              console.log(`Unsubscribe success ${JSON.stringify(event)}`);
-            });
+            let options: inputConsumer.KeyPressedConfig = {
+              key: 16,
+              action: 1,
+              isRepeat: false,
+            }
+            let callback = (event: KeyEvent) => {
+              console.info(`Unsubscribe success ${JSON.stringify(event)}`);
+            }
+            inputConsumer.on('keyPressed', options, callback);
+            inputConsumer.off('keyPressed', callback);
             // 取消当前已订阅的所有回调函数
             inputConsumer.off("keyPressed");
           } catch (error) {
@@ -628,7 +651,7 @@ struct Index {
               isRepeat: false,
             }
             let callback = (event: KeyEvent) => {
-              console.log(`Subscribe success ${JSON.stringify(event)}`);
+              console.info(`Subscribe success ${JSON.stringify(event)}`);
             };
             inputConsumer.onKeyPressed(options, callback);
             // 取消指定回调函数

@@ -1,13 +1,20 @@
 # @ohos.multimodalInput.inputDeviceCooperate (键鼠穿越)(系统接口)
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 键鼠穿越功能模块，提供两台或多台设备组网协同后键鼠共享能力，实现键鼠输入设备的跨设备协同操作。
 
-> **说明**：
+> **说明**
 >
 >- 本模块仅支持ArkTS-Dyn。
 >
->- 从API Version 10开始，该接口不再维护，推荐使用新接口[@ohos.cooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md) (键鼠穿越)。
->
+>- 本模块接口从API Version 10开始不再维护，从API version 23开始废弃，推荐使用新接口[@ohos.cooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md) (键鼠穿越)。
+> 
 >- 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 >- 本模块接口均为系统接口。
@@ -18,11 +25,15 @@
 import { inputDeviceCooperate } from '@kit.InputKit';
 ```
 
-## inputDeviceCooperate.enable
+## inputDeviceCooperate.enable<sup>(deprecated)</sup>
 
 enable(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 开启、关闭键鼠穿越，使用AsyncCallback异步方式返回结果。
+
+> **说明：**
+>
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.prepareCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatepreparecooperate11)、[cooperate.unprepareCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateunpreparecooperate11)替代。
 
 **系统能力**: SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -31,7 +42,7 @@ enable(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 | 参数名    | 类型      | 必填  | 说明    |
 | -------- | ------------------------- | ---- | --------------------------- |
 | enable   | boolean                   | 是   | 键鼠穿越使能状态。 |
-| callback | AsyncCallback&lt;void&gt;  | 是  |回调函数，异步返回键鼠穿越开启、关闭结果。   |
+| callback | AsyncCallback&lt;void&gt;  | 是  | 回调函数，异步返回键鼠穿越开启、关闭结果。   |
 
 **错误码**：
 
@@ -61,7 +72,7 @@ struct Index {
                 console.error(`Keyboard mouse crossing enable failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Keyboard mouse crossing enable success.`);
+              console.info(`Keyboard mouse crossing enable success.`);
             });
           } catch (error) {
             console.error(`Keyboard mouse crossing enable failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -72,11 +83,15 @@ struct Index {
 }
 ```
 
-## inputDeviceCooperate.enable
+## inputDeviceCooperate.enable<sup>(deprecated)</sup>
 
 enable(enable: boolean): Promise&lt;void&gt;
 
-开启、关闭键鼠穿越，使用Promise异步方式返回结果。
+开启、关闭键鼠穿越，使用Promise异步回调。
+
+> **说明：**
+>
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.prepareCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatepreparecooperate11-1)、[cooperate.unprepareCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateunpreparecooperate11-1)替代。
 
 **系统能力**： SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -88,9 +103,9 @@ enable(enable: boolean): Promise&lt;void&gt;
 
 **返回值**：
 
-| 参数                 | 说明                     |
+| 类型                 | 说明                     |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt;      | Promise对象，异步返回键鼠穿越开启、关闭结果。        |
+| Promise&lt;void&gt;      | Promise对象，无返回结果的Promise对象。        |
 
 **错误码**：
 
@@ -115,7 +130,7 @@ struct Index {
         .onClick(() => {
           try {
             inputDeviceCooperate.enable(true).then(() => {
-              console.log(`Keyboard mouse crossing enable success.`);
+              console.info(`Keyboard mouse crossing enable success.`);
             }, (error: BusinessError) => {
               console.error(`Keyboard mouse crossing enable failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
             });
@@ -128,11 +143,15 @@ struct Index {
 }
 ```
 
-## inputDeviceCooperate.start
+## inputDeviceCooperate.start<sup>(deprecated)</sup>
 
 start(sinkDeviceDescriptor: string, srcInputDeviceId: number, callback: AsyncCallback\<void>): void
 
 启动键鼠穿越，使用AsyncCallback异步方式返回结果。
+
+> **说明：**
+>
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.activateCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateactivatecooperate11)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -167,7 +186,7 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          let sinkDeviceDescriptor = "descriptor";
+          const sinkDeviceDescriptor = "descriptor";
           let srcInputDeviceId = 0;
           try {
             inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId, (error: BusinessError) => {
@@ -175,7 +194,7 @@ struct Index {
                 console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Start Keyboard mouse crossing success.`);
+              console.info(`Start Keyboard mouse crossing success.`);
             });
           } catch (error) {
             console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -186,11 +205,15 @@ struct Index {
 }
 ```
 
-## inputDeviceCooperate.start
+## inputDeviceCooperate.start<sup>(deprecated)</sup>
 
 start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise\<void>
 
-启动键鼠穿越，使用Promise异步方式返回结果。
+启动键鼠穿越，使用Promise异步回调。
+
+> **说明：**
+>
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.activateCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateactivatecooperate11-1)替代。
 
 **系统能力**: SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -205,7 +228,7 @@ start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise\<void>
 
 **返回值**：
 
-| 参数名                  | 说明                             |
+| 类型                  | 说明                             |
 | ---------------------- | ------------------------------- |
 | Promise\<void>         | Promise对象，异步返回键鼠穿越启动、关闭结果。       |
 
@@ -232,11 +255,11 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          let sinkDeviceDescriptor = "descriptor";
-          let srcInputDeviceId = 0;
+          const sinkDeviceDescriptor = "descriptor";
+          const srcInputDeviceId = 0;
           try {
             inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId).then(() => {
-              console.log(`Start Keyboard mouse crossing success.`);
+              console.info(`Start Keyboard mouse crossing success.`);
             }, (error: BusinessError) => {
               console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
             });
@@ -249,11 +272,15 @@ struct Index {
 }
 ```
 
-## inputDeviceCooperate.stop
+## inputDeviceCooperate.stop<sup>(deprecated)</sup>
 
 stop(callback: AsyncCallback\<void>): void
 
 停止键鼠穿越，使用AsyncCallback异步方式返回结果。
+
+> **说明：**
+>
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.deactivateCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatedeactivatecooperate11)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -290,7 +317,7 @@ struct Index {
                 console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Stop Keyboard mouse crossing success.`);
+              console.info(`Stop Keyboard mouse crossing success.`);
             });
           } catch (error) {
             console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -301,17 +328,21 @@ struct Index {
 }
 ```
 
-## inputDeviceCooperate.stop
+## inputDeviceCooperate.stop<sup>(deprecated)</sup>
 
 stop(): Promise\<void>
 
-停止键鼠穿越，使用Promise异步方式返回结果。
+停止键鼠穿越，使用Promise异步回调。
+
+> **说明：**
+>
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.deactivateCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatedeactivatecooperate11-1)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
 **返回值**：
 
-| 参数名                | 说明                            |
+| 类型                | 说明                            |
 | --------             | ----------------------------   |
 | Promise\<void>       |  Promise对象，异步返回停止键鼠穿越结果。      |
 
@@ -330,7 +361,7 @@ struct Index {
         .onClick(() => {
           try {
             inputDeviceCooperate.stop().then(() => {
-              console.log(`Stop Keyboard mouse crossing success.`);
+              console.info(`Stop Keyboard mouse crossing success.`);
             }, (error: BusinessError) => {
               console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
             });
@@ -343,11 +374,15 @@ struct Index {
 }
 ```
 
-## inputDeviceCooperate.getState
+## inputDeviceCooperate.getState<sup>(deprecated)</sup>
 
 getState(deviceDescriptor: string, callback: AsyncCallback<{ state: boolean }>): void
 
 获取键鼠穿越开关的状态，使用AsyncCallback异步方式返回结果。
+
+> **说明：**
+>
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.getCooperateSwitchState](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperategetcooperateswitchstate11)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -387,7 +422,7 @@ struct Index {
                 console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Get the status success, data: ${JSON.stringify(data)}`);
+              console.info(`Get the status success, data: ${JSON.stringify(data)}`);
             });
           } catch (error) {
             console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -398,11 +433,15 @@ struct Index {
 }
 ```
 
-## inputDeviceCooperate.getState
+## inputDeviceCooperate.getState<sup>(deprecated)</sup>
 
 getState(deviceDescriptor: string): Promise<{ state: boolean }>
 
-获取键鼠穿越开关的状态，使用Promise异步方式返回结果。
+获取键鼠穿越开关的状态，使用Promise异步回调。
+
+> **说明：**
+>
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.getCooperateSwitchState](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperategetcooperateswitchstate11-1)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -414,9 +453,9 @@ getState(deviceDescriptor: string): Promise<{ state: boolean }>
 
 **返回值**：
 
-| 参数                        | 说明                     |
+| 类型                        | 说明                     |
 | -------------------        | ------------------------------- |
-| Promise<{ state: boolean }>| Promise对象，异步返回键鼠穿越开关状态。ture 表示键鼠穿越开关打开，false表示键鼠穿越开关关闭。       |
+| Promise<{ state: boolean }>| Promise对象，异步返回键鼠穿越开关状态。true表示键鼠穿越开关打开，false表示键鼠穿越开关关闭。       |
 
 **错误码**：
 
@@ -443,7 +482,7 @@ struct Index {
           let deviceDescriptor = "descriptor";
           try {
             inputDeviceCooperate.getState(deviceDescriptor).then((data: object) => {
-              console.log(`Get the status success, data: ${JSON.stringify(data)}`);
+              console.info(`Get the status success, data: ${JSON.stringify(data)}`);
             }, (error: BusinessError) => {
               console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
             });
@@ -456,11 +495,15 @@ struct Index {
 }
 ```
 
-## on('cooperation')
+## inputDeviceCooperate.on('cooperation')<sup>(deprecated)</sup>
 
 on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, eventMsg: EventMsg }>): void
 
 注册监听键鼠穿越状态。
+
+> **说明：**
+>
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.on](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#oncooperatemessage11)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -469,7 +512,7 @@ on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, even
 | 参数名                | 类型                                                             | 必填 | 说明                            |
 | --------             | ----------------------------                                    | ---- | ----------------------------   |
 | type                 | string                                                          |  是  | 注册类型，取值”cooperation“。         |
-| callback             | AsyncCallback<{ deviceDescriptor: string, eventMsg: [EventMsg](#eventmsg) }> |  是  | 回调函数，异步返回键鼠穿越事件。    |
+| callback             | AsyncCallback<{ deviceDescriptor: string, eventMsg: [EventMsg](#eventmsgdeprecated) }> |  是  | 回调函数，异步返回键鼠穿越事件。    |
 
 **错误码**：
 
@@ -493,7 +536,7 @@ struct Index {
       Text()
         .onClick(() => {
           let callback = (msg: object) => {
-            console.log(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
+            console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
             return false;
           }
           try {
@@ -507,11 +550,15 @@ struct Index {
 }
 ```
 
-## off('cooperation')
+## inputDeviceCooperate.off('cooperation')<sup>(deprecated)</sup>
 
 off(type: 'cooperation', callback?: AsyncCallback\<void>): void
 
 关闭监听键鼠穿越状态。
+
+> **说明：**
+>
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.off](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#offcooperatemessage11)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -545,16 +592,12 @@ struct Index {
         .onClick(() => {
           // 取消注册单个回调函数
           let callbackOn = (msg: object) => {
-            console.log(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
-            return false;
-          }
-          let callbackOff = () => {
-            console.log(`Keyboard mouse crossing event`);
+            console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
             return false;
           }
           try {
             inputDeviceCooperate.on('cooperation', callbackOn);
-            inputDeviceCooperate.off("cooperation", callbackOff);
+            inputDeviceCooperate.off("cooperation", callbackOn);
           } catch (error) {
             console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -575,7 +618,7 @@ struct Index {
         .onClick(() => {
           // 取消注册所有回调函数
           let callback = (msg: object) => {
-            console.log(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
+            console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
             return false;
           }
           try {
@@ -590,9 +633,13 @@ struct Index {
 }
 ```
 
-## EventMsg
+## EventMsg<sup>(deprecated)</sup>
 
 键鼠穿越事件。
+
+> **说明：**
+>
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[CooperateMessage](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatemessage11)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 

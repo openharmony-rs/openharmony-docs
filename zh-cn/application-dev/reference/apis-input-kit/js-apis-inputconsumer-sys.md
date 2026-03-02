@@ -1,5 +1,12 @@
 # @ohos.multimodalInput.inputConsumer (全局快捷键)(系统接口)
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 全局快捷键订阅模块，用于处理组合按键的订阅。
 
 > **说明：**
@@ -19,11 +26,15 @@
 import { inputConsumer } from '@kit.InputKit';
 ```
 
-## inputConsumer.on
+## inputConsumer.on('key')
 
 on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): void
 
-订阅系统快捷键，当满足条件的组合按键输入事件发生时，使用Callback异步方式上报组合按键数据。
+订阅系统快捷键，当满足条件的组合按键输入事件发生时，使用callback异步方式上报组合按键数据。
+> **说明：**
+>
+> - 支持仅订阅按键的down事件，或者同时订阅按键的down事件和up事件。
+> - 若需要仅订阅按键的up事件，会存在down事件被焦点窗口消费，而无up事件闭环的风险，需要排查设计实现是否合理。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -50,7 +61,7 @@ on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): v
 | 202  | Permission denied, non-system app called system api. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例：** 
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
@@ -71,7 +82,7 @@ struct Index {
             finalKeyDownDuration: 0
           };
           let callback = (keyOptions: inputConsumer.KeyOptions) => {
-            console.log(`keyOptions: ${JSON.stringify(keyOptions)}`);
+            console.info(`keyOptions: ${JSON.stringify(keyOptions)}`);
           }
           try {
             inputConsumer.on("key", keyOptions, callback);
@@ -137,7 +148,7 @@ struct Index {
             finalKeyDownDuration: 0
           };
           let callback = (keyOptions: inputConsumer.KeyOptions) => {
-            console.log(`keyOptions: ${JSON.stringify(keyOptions)}`);
+            console.info(`keyOptions: ${JSON.stringify(keyOptions)}`);
           }
           try {
             inputConsumer.onKey(keyOptions, callback);
@@ -150,11 +161,11 @@ struct Index {
 }
 ```
 
-## inputConsumer.off
+## inputConsumer.off('key')
 
 off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 
-取消订阅系统快捷键。
+取消订阅系统快捷键。使用callback异步回调。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -181,7 +192,7 @@ off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;):
 | 202  | Permission denied, non-system app called system api. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例：** 
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
@@ -197,13 +208,13 @@ struct Index {
           let tabKey = 2049;
           // 取消订阅单个回调函数
           let callback = (keyOptions: inputConsumer.KeyOptions) => {
-            console.log(`keyOptions: ${JSON.stringify(keyOptions)}`);
+            console.info(`keyOptions: ${JSON.stringify(keyOptions)}`);
           }
           let keyOption: inputConsumer.KeyOptions = {preKeys: [leftAltKey], finalKey: tabKey, isFinalKeyDown: true, finalKeyDownDuration: 0};
           try {
             inputConsumer.on("key", keyOption, callback);
             inputConsumer.off("key", keyOption, callback);
-            console.log(`Unsubscribe success`);
+            console.info(`Unsubscribe success`);
           } catch (error) {
             console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -226,13 +237,13 @@ struct Index {
           let tabKey = 2049;
           // 取消订阅所有回调函数
           let callback = (keyOptions: inputConsumer.KeyOptions) => {
-            console.log(`keyOptions: ${JSON.stringify(keyOptions)}`);
+            console.info(`keyOptions: ${JSON.stringify(keyOptions)}`);
           }
           let keyOption: inputConsumer.KeyOptions = {preKeys: [leftAltKey], finalKey: tabKey, isFinalKeyDown: true, finalKeyDownDuration: 0};
           try {
             inputConsumer.on("key", keyOption, callback);
             inputConsumer.off("key", keyOption);
-            console.log(`Unsubscribe success`);
+            console.info(`Unsubscribe success`);
           } catch (error) {
             console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -296,7 +307,7 @@ struct Index {
             finalKeyDownDuration: 0
           };
           let callback = (keyOptions: inputConsumer.KeyOptions) => {
-            console.log(`keyOptions: ${JSON.stringify(keyOptions)}`);
+            console.info(`keyOptions: ${JSON.stringify(keyOptions)}`);
           }
           try {
             // 取消订阅单个回调函数
@@ -332,7 +343,7 @@ setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
 | 参数名         | 类型                         | 必填   | 说明                                       |
 | ---------- | -------------------------- | ---- | ---------------------------------------- |
 | shieldMode       | [ShieldMode](js-apis-inputconsumer-sys.md#shieldmode11)                     | 是    | 系统快捷键屏蔽类型，目前仅支持取值为'FACTORY_MODE'，表示屏蔽所有系统快捷键。                       |
-| isShield | boolean  | 是    | 屏蔽类型生效状态，true代表屏蔽类型生效，flase代表不生效。              |
+| isShield | boolean  | 是    | 屏蔽类型生效状态，true代表屏蔽类型生效，false代表不生效。              |
 
 **错误码**：
 
@@ -344,7 +355,7 @@ setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
 | 202  | SystemAPI permission error. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例：** 
 
 ArkTS-Dyn示例：
 
@@ -361,7 +372,7 @@ struct Index {
           let FACTORY_MODE = 0;
           try {
             inputConsumer.setShieldStatus(FACTORY_MODE,true);
-            console.log(`set shield status success`);
+            console.info(`set shield status success`);
           } catch (error) {
             console.error(`set shield status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -388,7 +399,7 @@ struct Index {
           let mode = inputConsumer.ShieldMode.FACTORY_MODE;
           try {
             inputConsumer.setShieldStatus(mode, true);
-            console.log(`set shield status success`);
+            console.info(`set shield status success`);
           } catch (error) {
             console.error(`set shield status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -422,7 +433,7 @@ getShieldStatus(shieldMode: ShieldMode): boolean
 
 | 类型         |  说明                                       |
 | ---------- |  ---------------------------------------- |
-| boolean                    | 屏蔽类型生效状态，true代表屏蔽类型生效，flase代表不生效。                       |
+| boolean                    | 屏蔽类型生效状态，true代表屏蔽类型生效，false代表不生效。                       |
 
 **错误码**：
 
@@ -434,7 +445,7 @@ getShieldStatus(shieldMode: ShieldMode): boolean
 | 202  | SystemAPI permission error. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例：** 
 
 ArkTS-Dyn示例：
 
@@ -451,7 +462,7 @@ struct Index {
           try {
             let FACTORY_MODE = 0;
             let shieldstatusResult:Boolean =  inputConsumer.getShieldStatus(FACTORY_MODE);
-            console.log(` get shield status result:${JSON.stringify(shieldstatusResult)}`);
+            console.info(` get shield status result:${JSON.stringify(shieldstatusResult)}`);
           } catch (error) {
             console.error(`Failed to get shield status, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -478,7 +489,7 @@ struct Index {
           let mode = inputConsumer.ShieldMode.FACTORY_MODE;
           try {
             let result: Boolean =  inputConsumer.getShieldStatus(mode);
-            console.log(` get shield status result:${JSON.stringify(result)}`);
+            console.info(` get shield status result:${JSON.stringify(result)}`);
           } catch (error) {
             console.error(`set shield status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -490,7 +501,7 @@ struct Index {
 
 ## KeyOptions
 
-快捷键选项。
+组合键选项。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -499,7 +510,7 @@ struct Index {
 | --------- | -------- | ---- | ---- | ------- |
 | preKeys    | ArkTS-Dyn: Array\<number> <br/>ArkTS-Sta: Array\<int>  | 否    | 否 | 前置按键集合，数量范围[0, 4]，前置按键无顺序要求。<br>如组合按键Ctrl+Alt+A中，Ctrl+Alt称为前置按键。 <br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：23|
 | finalKey             | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否    |  否 | 最终按键，此项必填，最终按键触发上报回调函数。<br>如组合按键Ctrl+Alt+A中，A称为最终按键按键。<br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：23 |
-| isFinalKeyDown       | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean| 否    |  否 | 最终按键状态。<br>ture表示按键按下，false表示按键抬起。<br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：23 |
+| isFinalKeyDown       | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean| 否    |  否 | 最终按键状态。<br>true表示按键按下，false表示按键抬起。<br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：23 |
 | finalKeyDownDuration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否    |  否 | 最终按键保持按下持续时间，单位：μs。<br>当finalKeyDownDuration为0时，立即触发回调函数。<br>当finalKeyDownDuration大于0时，isFinalKeyDown为true，则最终按键按下超过设置时长后触发回调函数；isFinalKeyDown为false，则最终按键按下到抬起时间小于设置时长时触发回调函数。 <br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：23  |
 | isRepeat<sup>18+</sup> | ArkTS-Dyn: boolean  <br/>ArkTS-Sta: boolean | 否      | 否      | 是否上报重复的按键事件。true表示上报，false表示不上报，若不填默认为true。 <br>**ArkTS-Dyn起始版本**: 18 <br>**ArkTS-Sta起始版本**：23|
 
