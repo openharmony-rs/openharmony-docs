@@ -27,20 +27,20 @@ To properly display an image, you need to carry out the specific operations asso
 | 7      | "Right-bottom" | Horizontal mirror flip followed by a clockwise rotation of 90°.|
 | 8      | "Left-bottom"  | Clockwise rotation of 270°.               |
 
-In ArkTS scenarios, for details about how to read and edit the rotation angle information of an image, see [Editing EXIF Data](../image-tool.md). The corresponding **propertyKey** must be set to **ORIENTATION**.
+In ArkTS scenarios, for details about how to read and edit the rotation angle information of an image, see [Editing Exif Data](../image-tool.md). The corresponding **propertyKey** must be set to **ORIENTATION**.
 
-In C/C++ scenarios, for details about how to read and edit the rotation angle information of an image, see [Using Image_NativeModule to Edit EXIF Data](../image-tool-c.md). The corresponding **key** must be set to **OHOS_IMAGE_PROPERTY_ORIENTATION**.
+In C/C++ scenarios, for details about how to read and edit the rotation angle information of an image, see [Using Image_NativeModule to Edit Exif Data](../image-tool-c.md). The corresponding **key** must be set to **OHOS_IMAGE_PROPERTY_ORIENTATION**.
 
 ## FAQs
 
 ### What should I do if the image rotation angle is null?
 
-Some images may lack EXIF data or may not have the **Orientation** field written in the EXIF data. These images do not require rotation (consistent with the case where **Orientation** is 1).
+Some images may lack Exif data or may not have the **Orientation** field written in the Exif data. These images do not require rotation (consistent with the case where **Orientation** is **1**).
 
-### Why EXIF Data might be lost?
+### Why Exif data might be lost?
 
-This is related to the source of the image. Images transmitted over the network may have been re-encoded without preserving EXIF data. As a result, the rotation angle cannot be obtained.
+This is related to the source of the image. Images transmitted over the network may have been re-encoded without preserving Exif data. As a result, the rotation angle cannot be obtained.
 
-### How do I save EXIF data during image encoding?
+### How do I save Exif data during image encoding?
 
 When calling the image encoding API, set **needsPackProperties** of [packingOption](../../../reference/apis-image-kit/arkts-apis-image-i.md#packingoption) to **true**. (The default value is **false**.)

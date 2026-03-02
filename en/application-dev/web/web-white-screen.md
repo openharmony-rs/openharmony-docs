@@ -393,6 +393,7 @@ The following table lists log keywords and the corresponding descriptions.
 | final url: ***, error_code xxx(net::ERR_XXX) | An error is reported during the main resource loading.|
 
 The following figure shows the key points contained during the **Web** component loading process. The following table lists the log keywords during the **Web** component loading process.
+
 ![web-white-page-load](figures/web-white-page-load.PNG)
 
 | Keyword  | Description |                       

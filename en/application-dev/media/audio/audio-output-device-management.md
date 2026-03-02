@@ -37,10 +37,11 @@ The table below lists the supported output devices.
 | BLUETOOTH_SCO | 7 | Bluetooth device using Synchronous Connection Oriented (SCO) links.| 
 | BLUETOOTH_A2DP | 8 | Bluetooth device using Advanced Audio Distribution Profile (A2DP) links.| 
 | USB_HEADSET | 22 | USB Type-C headset.| 
+| NEARLINK | 31 | NearLink device.| 
 
 ### Obtaining Output Device Information
 
-Use **getDevices()** to obtain information about all the output devices.
+Use the [getDevices](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getdevices9) method to obtain information about all output devices.
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -113,7 +114,7 @@ async function selectOutputDevice() {
 
 ### Obtaining Information About the Output Device with the Highest Priority
 
-Call **getPreferOutputDeviceForRendererInfo()** to obtain the output device with the highest priority.
+Use the [getPreferOutputDeviceForRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getpreferoutputdeviceforrendererinfo10) method to obtain information about the output device with the highest priority.
 
 > **NOTE**
 >
@@ -158,7 +159,7 @@ audioRoutingManager.off('preferOutputDeviceChangeForRendererInfo');
 ```
 
 ## Querying and Listening for Audio Output Devices Using AudioSession
-Applications using the player SDK to play audio streams do not hold an AudioRenderer object. As a result, they cannot flexibly control the selection of playback devices and listen for the device status. Starting from API version 20, AudioSession not only introduces focus management but also provides capabilities for managing audio output devices, including setting the default output device and listening for device changes. For more information, refer to the following documentation:
+Applications using the player SDK to play audio streams do not hold an [AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md) object. As a result, they cannot flexibly control the selection of playback devices and listen for the device status. Starting from API version 20, AudioSession not only introduces focus management but also provides capabilities for managing audio output devices, including setting the default output device and listening for device changes. For more information, refer to the following documentation:
 - ArkTS APIs: [AudioSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md)
 - C APIs: [native_audio_session_manager.h](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md)
 
@@ -215,7 +216,7 @@ Subscribe to [CurrentOutputDeviceChangedEvent](../../reference/apis-audio-kit/ar
 
 > **NOTE**
 >
->**currentOutputDeviceChangedCallback** includes the reason for the device change and the recommended subsequent actions. Applications should handle different change reasons accordingly and continue or stop playback as recommended by the system.
+> **currentOutputDeviceChangedCallback** includes the reason for the device change and the recommended subsequent actions. Applications should handle different change reasons accordingly and continue or stop playback as recommended by the system.
 
 ```ts
 import { audio } from '@kit.AudioKit';
