@@ -281,7 +281,7 @@ setValueForAccount(admin: Want, item: SettingsItem, accountId: number, value: st
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | item   | [SettingsItem](#settingsitem24)                                                  | 是   | 设备设置策略类型。|
 | accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。                       |
-| value  | string                                                  | 是   | 策略类型值。<br/>当item为[SettingsItem.DEVICE_NAME](#settingsitem24)时，value为设备名称的字符串。 字符串长度范围：大于等于1，小于等于100。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，value为三键导航的开关状态，'0'表示打开三件导航，'1'表示关闭三键导航。|
+| value  | string                                                  | 是   | 策略类型值。<br/>当item为[SettingsItem.DEVICE_NAME](#settingsitem24)时，value为设备名称的字符串。 字符串长度范围：大于等于1，小于等于100。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，value为三键导航的开关状态，'0'表示打开三键导航，'1'表示关闭三键导航。|
 
 **错误码**：
 
