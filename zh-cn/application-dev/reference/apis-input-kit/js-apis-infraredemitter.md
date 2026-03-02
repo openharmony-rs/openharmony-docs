@@ -13,7 +13,7 @@
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 
 ## 导入模块
@@ -22,7 +22,7 @@
 import { infraredEmitter } from '@kit.InputKit';
 ```
 
-## infraredEmitter.transmitInfrared<sup>15+</sup>
+## infraredEmitter.transmitInfrared
 
 ArkTS-Dyn: transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
 
@@ -103,7 +103,7 @@ struct Index {
 }
 ```
 
-## infraredEmitter.getInfraredFrequencies<sup>15+</sup>
+## infraredEmitter.getInfraredFrequencies
 
 getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
@@ -123,7 +123,7 @@ getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| Array&lt;[InfraredFrequency](#infraredfrequency15)&gt; | 红外信号的频率范围，包含多组最大和最小频率。<br/>从API version 23开始，当设备不具有红外发射器，返回一组最大和最小频率，且均为0Hz。 |
+| Array&lt;[InfraredFrequency](#infraredfrequency)&gt; | 红外信号的频率范围，包含多组最大和最小频率。<br/>从API version 23开始，当设备不具有红外发射器，返回一组最大和最小频率，且均为0Hz。 |
 
 **错误码：**
 
@@ -184,7 +184,7 @@ struct Index {
 }
 ```
 
-##  InfraredFrequency<sup>15+</sup>
+##  InfraredFrequency
 
 红外信号的频率范围。
 
