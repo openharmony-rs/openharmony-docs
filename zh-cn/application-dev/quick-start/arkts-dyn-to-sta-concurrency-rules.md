@@ -1239,21 +1239,21 @@ async function test<U>(func: () => Promise<U>): Promise<Awaited<U>> {
 }
 ```
 
-## 禁用泛型lambda表达式
+## 泛型异步箭头函数需修改为泛型异步函数声明
 
 **规则：** `arkts-promise-disable-generic-lambda-expressions`
 
 **规则解释：**
 
-ArkTS-Sta中不支持lambda泛型表达式。
+ArkTS-Sta中不支持泛型异步箭头函数，需要修改为泛型异步函数声明。
 
 **变更原因：**
 
-ArkTS-Sta中不支持lambda泛型表达式。
+ArkTS-Sta中不支持泛型异步箭头函数。
 
 **适配建议：**
 
-移除所有使用泛型lambda表达式的Promise。
+将所有泛型异步箭头函数修改为泛型异步函数声明。
 
 **示例：**
 
@@ -1267,5 +1267,8 @@ let test = async<T>(value:T) : Promise<T> => {
 
 ArkTS-Sta
 
-不支持此类写法。
-
+```typescript
+async function test<T>(value:T) : Promise<T> {
+    return value;
+}
+```
