@@ -238,24 +238,32 @@ export class GrandFather {
 }
 @ObservedV2
 export class Father extends GrandFather{
+  @Trace name: string = 'father';
+
   constructor(father: number) {
     super(father);
   }
 }
 @ObservedV2
 export class Uncle extends GrandFather {
+  @Trace name: string = 'uncle';
+
   constructor(uncle: number) {
     super(uncle);
   }
 }
 @ObservedV2
 export class Son extends Father { // 定义静态@ObservedV2装饰的类并导出
+  @Trace name: string = 'son';
+
   constructor(son: number) {
     super(son);
   }
 }
 @ObservedV2
 export class Cousin extends Uncle { // 定义静态@ObservedV2装饰的类并导出
+  @Trace name: string = 'cousin';
+  
   constructor(cousin: number) {
     super(cousin);
   }
