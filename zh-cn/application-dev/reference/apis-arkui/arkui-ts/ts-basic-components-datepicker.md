@@ -102,6 +102,10 @@ lunar(value: boolean)
 
 设置日期是否显示为农历。
 
+> **说明：**
+>
+> 仅在简体中文和繁体中文语言环境下生效，其他语言环境下设置该属性无效果。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -117,6 +121,10 @@ lunar(value: boolean)
 lunar(isLunar: Optional\<boolean>)
 
 设置弹窗的日期是否显示为农历。与[lunar](#lunar)相比，isLunar参数新增了对undefined类型的支持。
+
+> **说明：**
+>
+> 仅在简体中文和繁体中文语言环境下生效，其他语言环境下设置该属性无效果。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
