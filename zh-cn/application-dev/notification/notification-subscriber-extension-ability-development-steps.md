@@ -52,7 +52,7 @@
    ```
 3. 连接穿戴设备，使用[蓝牙模块](../connectivity/connectivity-kit-intro.md#蓝牙简介)接口获取地址，然后通过[subscribe](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionsubscribe)/[unsubscribe](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionunsubscribe)接口订阅或取消订阅通知。
 
-4. 实现[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)后，还需要在合适的时机调用[OpenSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings)接口，打开通知扩展订阅设置页面，引导用户授予获取本机通知的权限，该页面以半模态弹窗显示。建议在设备管理页面提供一个通知授权的按钮，用户点击按钮则调用[OpenSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings)接口。
+4. 实现[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)后，还需要在合适的时机调用[openSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings)接口，打开通知扩展订阅设置页面，引导用户授予获取本机通知的权限，该页面以半模态弹窗显示。建议在设备管理页面提供一个通知授权的按钮，用户点击按钮则调用[openSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings)接口。
 
 5. 在应用的module.json5文件中配置extensionAbilities。
    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/module.json5)-->
@@ -207,14 +207,20 @@
      onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
        hilog.info(DOMAIN, 'testTag', `on receive message ${JSON.stringify(notificationInfo)}`)
        notificationExtensionSubscription.getSubscribeInfo()
-         .then(info => {
+         .then(async (info) => {
            if (this.sppClientManager == undefined) {
              this.sppClientManager = new SppClientManager(info[0].addr);
            }
            if (this.sppClientManager.isConnect()) {
              this.sendPublishWithRetry(notificationInfo);
            } else {
-             this.sppClientManager.startConnect()
+             try {
+               await this.sppClientManager.startConnect().then(() => {
+                 hilog.info(DOMAIN, 'testTag', `startConnect success`);
+               });
+             } catch (err) {
+               hilog.error(DOMAIN, 'testTag', `Failed to start connect: ${JSON.stringify(err)}`);
+             }
              setTimeout(() => {
                this.sendPublishWithRetry(notificationInfo);
              }, 3000)
@@ -225,12 +231,18 @@
        });
      }
      // Sends a publish notification and retries once upon failure.
-     private sendPublishWithRetry(notificationInfo: notificationExtensionSubscription.NotificationInfo) {
+     private async sendPublishWithRetry(notificationInfo: notificationExtensionSubscription.NotificationInfo) {
        try {
          this.sppClientManager!.sendNotificationData(notificationInfo);
        } catch (err) {
          hilog.error(DOMAIN, 'testTag', `send failed, errCode ${err.code}, errorMessage ${err.message}, and retry one times`);
-         this.sppClientManager!.startConnect();
+         try {
+           await this.sppClientManager!.startConnect().then(() => {
+             hilog.info(DOMAIN, 'testTag', `startConnect success`);
+           });
+         } catch (err) {
+           hilog.error(DOMAIN, 'testTag', `Failed to start connect: ${JSON.stringify(err)}`);
+         }
          setTimeout(() => {
            this.sppClientManager!.sendNotificationData(notificationInfo);
          }, 3000);
@@ -241,14 +253,20 @@
      onCancelMessages(hashCodes: Array<string>): void {
        hilog.info(DOMAIN, 'testTag', `on cancel message ${JSON.stringify(hashCodes)}`)
        notificationExtensionSubscription.getSubscribeInfo()
-         .then(info => {
+         .then(async (info) => {
            if (this.sppClientManager == undefined) {
              this.sppClientManager = new SppClientManager(info[0].addr);
            }
            if (this.sppClientManager.isConnect()) {
              this.sendCancelWithRetry(hashCodes);
            } else {
-             this.sppClientManager.startConnect()
+             try {
+               await this.sppClientManager.startConnect().then(() => {
+                 hilog.info(DOMAIN, 'testTag', `startConnect success`);
+               });
+             } catch (err) {
+               hilog.error(DOMAIN, 'testTag', `Failed to start connect: ${JSON.stringify(err)}`);
+             }
              setTimeout(() => {
                this.sendCancelWithRetry(hashCodes);
              }, 3000)
@@ -258,12 +276,18 @@
        });
      }
      // Retries a cancel operation if it fails.
-     private sendCancelWithRetry(hashCodes: string[]) {
+     private async sendCancelWithRetry(hashCodes: string[]) {
        try {
          this.sppClientManager!.sendCancelNotificationData(hashCodes);
        } catch (err) {
          hilog.error(DOMAIN, 'testTag', `send failed, errCode ${err.code}, errorMessage ${err.message}, and retry one times`);
-         this.sppClientManager!.startConnect();
+         try {
+           await this.sppClientManager!.startConnect().then(() => {
+             hilog.info(DOMAIN, 'testTag', `startConnect success`);
+           });
+         } catch (err) {
+           hilog.error(DOMAIN, 'testTag', `Failed to start connect: ${JSON.stringify(err)}`);
+         }
          setTimeout(() => {
            this.sppClientManager!.sendCancelNotificationData(hashCodes);
          }, 3000);
