@@ -83,7 +83,7 @@
     
     > **说明：**
     > 
-    >新建工程中，混淆功能默认关闭。如需开启，请将模块`build-profile.json5`文件中的`ruleOptions.enable`字段的值设置为`true`。还需要将混淆规则配置文件`obfuscation-rules.txt`中的`-enable-bytecode-obfuscation`、`-enable-bytecode-obfuscation-debugging`选项按需启用。
+    > 新建工程中，混淆功能默认关闭。如需开启，请将模块`build-profile.json5`文件中的`ruleOptions.enable`字段的值设置为`true`。还需要将混淆规则配置文件`obfuscation-rules.txt`中的`-enable-bytecode-obfuscation`、`-enable-bytecode-obfuscation-debugging`选项按需启用。
     > 
     > 此外，混淆规则配置文件中默认开启了四项推荐的混淆选项：`-enable-property-obfuscation`、`-enable-toplevel-obfuscation`、`-enable-filename-obfuscation`和`-enable-export-obfuscation`，开发者可以根据需要进一步修改混淆配置。
 
@@ -158,7 +158,7 @@
 ### 字节码混淆选项配置指导
 
 1. 开启`-enable-toplevel-obfuscation`选项，如果代码中有globalThis访问全局变量，会出现访问失败的情况，需要使用`-keep-global-name`来保留此全局变量名称。
-2. 待上述选项开启成功后，开启`-enable-property-obfuscation`
+2. 待上述选项开启成功后，开启`-enable-property-obfuscation`。
     1. 若代码中存在静态定义、动态访问的情况或者动态定义、静态访问的情况，需要使用`-keep-property-name`保留属性名称。示例：
 
         <!-- @[example_openObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->    
