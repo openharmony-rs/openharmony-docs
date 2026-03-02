@@ -82,14 +82,14 @@ ohos.permission.DISTRIBUTED_DATASYNC：分布式数据同步权限
    
    ``` TypeScript
    let atManager = abilityAccessCtrl.createAtManager();
-   atManager.requestPermissionsFromUser(getContext(this), ['ohos.permission.DISTRIBUTED_DATASYNC'])
+   atManager.requestPermissionsFromUser(context, ['ohos.permission.DISTRIBUTED_DATASYNC'])
      .then(async (data) => {
        logger.info(`data: ${JSON.stringify(data)}`);
        // ...
      })
      .catch((err: BusinessError) => {
        logger.error(`requestPermissionsFromUser error: ${JSON.stringify(err)}`);
-   });
+     });
    ```
 
 
@@ -156,9 +156,7 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
    startDeviceDiscovery(): void {
      if (typeof (this.deviceManager) == 'undefined') {
        logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
-       promptAction.showToast({
-         message: 'deviceManager has not initialized'
-       });
+       this.showErrMsg('deviceManager has not initialized');
        return;
      }
      let self = this;
@@ -219,9 +217,7 @@ bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , cal
      logger.info('[DeviceManager.RemoteDeviceModel] authenticateDevice ' + JSON.stringify(device));
      if (typeof (this.deviceManager) == 'undefined') {
        logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
-       promptAction.showToast({
-         message: 'deviceManager has not initialized'
-       });
+       this.showErrMsg('deviceManager has not initialized');
        return;
      }
    
@@ -282,9 +278,7 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
    getTrustedDeviceList(): void {
      if (typeof (this.deviceManager) == 'undefined') {
        logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
-       promptAction.showToast({
-         message: 'deviceManager has not initialized'
-       });
+       this.showErrMsg('deviceManager has not initialized');
        return;
      }
    
@@ -292,12 +286,9 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
      try {
        this.trustedDeviceList = this.deviceManager.getAvailableDeviceListSync();
        // ...
-     } catch (err) {
-       let error: BusinessError = err as BusinessError;
+     } catch (error) {
        logger.error('[DeviceManager.RemoteDeviceModel] getTrustedDeviceList error: ${error}' + error.toString());
-       promptAction.showToast({
-         message: 'getTrustedDeviceList failed'
-       });
+       this.showErrMsg('getTrustedDeviceList failed');
      }
    }
    ```
@@ -341,9 +332,7 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
      logger.info('[DeviceManager.RemoteDeviceModel] registerDeviceStateListener');
      if (typeof (this.deviceManager) == 'undefined') {
        logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
-       promptAction.showToast({
-         message: 'deviceManager has not initialized'
-       });
+       this.showErrMsg('deviceManager has not initialized');
        return;
      }
    
