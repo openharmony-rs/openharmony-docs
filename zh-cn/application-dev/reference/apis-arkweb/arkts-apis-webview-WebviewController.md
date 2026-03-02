@@ -36,7 +36,7 @@ constructor(webTag?: string)
 > 
 > 传入参数为空：new webview.WebviewController("")或new webview.WebviewController(undefined)，该场景下参数无意义，无法区分多个实例，直接返回undefined，需要开发者判断返回值是否正常。
 >
-> Web组件销毁后会解绑WebViewController，之后调用WebviewController的非静态方法会抛出17100001异常，应注意调用时机和捕获异常，防止进程异常退出。
+> Web组件销毁后会解绑WebViewController，之后调用WebviewController的非静态方法会抛出[17100001](../apis-arkweb/errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联)异常，应注意调用时机和捕获异常，防止进程异常退出。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -130,7 +130,7 @@ struct WebComponent {
 
 static initializeWebEngine(): void
 
-在 Web 组件初始化之前，通过此接口加载 Web 引擎的动态库文件，以提高启动性能。自动预连接历史访问过的高频网站。
+在Web组件初始化之前，通过此接口加载Web引擎的动态库文件，以提高启动性能。自动预连接历史访问过的高频网站。
 
 > **说明：**
 >
@@ -141,7 +141,7 @@ static initializeWebEngine(): void
 
 **示例：**
 
-本示例以EntryAbility为例，描述了在 Ability 创建阶段完成 Web 组件动态库加载的功能。
+本示例以EntryAbility为例，描述了在Ability创建阶段完成Web组件动态库加载的功能。
 
 ```ts
 // EntryAbility.ets
