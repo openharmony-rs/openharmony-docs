@@ -537,7 +537,7 @@ getReadPosition(): number
 
   | 类型   | 说明   |
   | ------ | ------ |
-  | number | 表示返回MessageSequence实例中当前读取位置的字节偏移量。 |
+  | number | 返回MessageSequence实例中当前读取位置。 |
 
 **示例：**
 
@@ -570,7 +570,7 @@ getWritePosition(): number
 
   | 类型   | 说明  |
   | ------ | ----- |
-  | number | 表示返回MessageSequence实例中当前写入位置的字节偏移量。 |
+  | number | 返回MessageSequence实例中当前写入位置。 |
 
 **示例：**
 
@@ -603,7 +603,7 @@ rewindRead(pos: number): void
 
   | 参数名 | 类型   | 必填 | 说明    |
   | ------ | ------ | ---- | ------- |
-  | pos    | number | 是   | 表示开始读取数据的目标位置的字节偏移量。 |
+  | pos    | number | 是   | 开始读取数据的目标位置。 |
 
 **错误码：**
 
@@ -649,7 +649,7 @@ rewindWrite(pos: number): void
 
   | 参数名 | 类型   | 必填 | 说明  |
   | ------ | ------ | ---- | ----- |
-  | pos    | number | 是   | 表示开始写入数据的目标位置的字节偏移量。 |
+  | pos    | number | 是   | 开始写入数据的目标位置。 |
 
 **错误码：**
 
