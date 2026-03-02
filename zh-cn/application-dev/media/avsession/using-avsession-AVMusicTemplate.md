@@ -1,4 +1,10 @@
 # 媒体应用接入指南
+<!--Kit: AVSession Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @gcw_gyH0B0hP-->
+<!--Designer: @ccfriend-->
+<!--Tester: @chen-gong1-->
+<!--Adviser: @w_Machine_cc-->
 媒体应用在实现音频功能的同时，需要作为音频模板提供方接入媒体会话，在音频模板控制方（例如媒体中心）中展示音频相关信息，并响应音频模板控制方下发的播控命令。音频模板控制方支持音频和视频，接入方式相同，以下仅以音频为例。
 
 ## 基本概念
