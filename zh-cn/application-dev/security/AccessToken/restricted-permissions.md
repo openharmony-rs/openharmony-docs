@@ -1021,3 +1021,17 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：General
 
 **起始版本**：23
+
+## ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION
+
+允许适配对象编辑框架的应用进行注册，以提供宿主应用嵌入本应用文档的能力。
+
+<!--RP66--><!--RP66End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：24

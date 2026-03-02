@@ -656,3 +656,17 @@
 **支持设备**：2in1
 
 **起始版本**：23
+
+## ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
+
+允许应用查询对象编辑Extension信息和拉起对象编辑Extension组件。
+
+应用获取该权限后，表示允许应用查询对象编辑服务的相关注册信息和拉起对象编辑服务。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Phone | Tablet
+
+**起始版本**：24
