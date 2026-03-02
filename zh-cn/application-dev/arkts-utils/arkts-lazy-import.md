@@ -568,8 +568,8 @@ struct Index {
 // A.ets
 export let A = "A";
 
-// 此处添加lazy关键字，标记该文件可延迟加载
-import lazy { A } from "./A";
+// Index.ets
+import lazy { A } from "./A"; // 此处添加lazy关键字，标记该文件可延迟加载
 
 @Entry
 @Component
