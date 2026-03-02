@@ -1597,11 +1597,11 @@ ArkTS-Sta: on(type: 'loadComplete', callback: Callback\<int>): void
 
 音频池资源加载完成监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
 **ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1642,11 +1642,11 @@ off(type: 'loadComplete'): void
 
 取消监听资源的加载完成。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
 **ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1690,11 +1690,11 @@ ArkTS-Sta:on(type: 'playFinishedWithStreamId', callback: Callback\<int>): void
 
 当同时注册[on('playFinished')](#onplayfinished)事件回调和[on('playFinishedWithStreamId')](#onplayfinishedwithstreamid18)事件回调时，当音频播放完成的时候，仅会触发'playFinishedWithStreamId'事件回调，不会触发'playFinished'事件回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
 **ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1734,11 +1734,11 @@ off(type: 'playFinishedWithStreamId'): void
 
 取消监听音频池资源播放完成。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
 **ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1775,11 +1775,11 @@ on(type: 'playFinished', callback: Callback\<void>): void
 
 音频池资源播放完成监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
 **ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1820,11 +1820,11 @@ off(type: 'playFinished'): void
 
 取消监听音频池资源播放完成。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
 **ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1862,11 +1862,11 @@ on(type: 'error', callback: ErrorCallback): void
 
 监听[SoundPool](#soundpool)的错误事件，该事件仅用于错误提示。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
 **ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1908,11 +1908,11 @@ off(type: 'error'): void
 
 取消监听音频池的错误事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
 **ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1949,11 +1949,11 @@ on(type: 'errorOccurred', callback: Callback\<ErrorInfo>): void
 
 监听[SoundPool](#soundpool)的错误事件，并返回包含错误码、错误发生阶段、资源ID和音频流ID的[ErrorInfo](#errorinfo20)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
 **ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1998,11 +1998,11 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 取消监听音频池的错误事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
 **ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
