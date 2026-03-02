@@ -659,9 +659,9 @@
 
 ## ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
 
-允许应用查询对象编辑Extension信息和拉起对象编辑Extension组件。
+允许应用查询对象编辑Extension信息和启动对象编辑Extension服务。
 
-应用获取该权限后，表示允许应用查询对象编辑服务的相关注册信息和拉起对象编辑服务。
+获取该权限后，应用可以查询对象编辑服务的相关注册信息并启动该服务。
 
 **权限级别**：normal
 
