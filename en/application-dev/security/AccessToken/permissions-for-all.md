@@ -656,3 +656,17 @@ With this permission, the application allows the system to dump application memo
 **Supported devices**: 2in1
 
 **Since**: 23
+
+## ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
+
+Allows an application to query information about and launch ObjectEditorExtensionAbility components.
+
+With this permission, the application can query available types of pluggable embedded content and edit the corresponding content.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | phones | tablets
+
+**Since**: 24

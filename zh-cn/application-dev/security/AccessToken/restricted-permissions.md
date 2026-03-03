@@ -1026,7 +1026,9 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 允许应用注册ObjectEditorExtensionAbility组件。
 
-<!--RP66--><!--RP66End-->
+获取该权限后，应用可以提供嵌入内容编辑服务给其他应用使用。
+
+<!--RP67--><!--RP67End-->
 
 **权限级别**：system_basic
 
