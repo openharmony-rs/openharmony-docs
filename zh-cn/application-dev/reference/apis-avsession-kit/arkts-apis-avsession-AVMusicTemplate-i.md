@@ -138,7 +138,7 @@
 
 ## MediaEntity<sup>23+</sup>
 
-媒体实例的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)的子类
+媒体实例的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)的子类。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -302,23 +302,6 @@
 ## SettingContent<sup>23+</sup>
 
 设置内容的定义。
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-| 名称       | 类型                                                         | 只读 | 可选 | 说明                                                  |
-| ---------- | ------------------------------------------------------------ | ---- | ---- | ----------------------------------------------------- |
-| value      | string                                                       | 否   | 否   | 设置的内容。                                          |
-| isSelected | string                                                       | 否   | 否   | 是否选择本设置项内容。true表示选择，false表示不选择。 |
-| textTags   | string[]                                                     | 否   | 是   | 设置内容的描述的数组。                                |
-| imageTags  | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md)[] | 否   | 是   | 设置内容的标签描述的数组。                            |
-
-## PageMediaEntity<sup>23+</sup>
-
-设置内容的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)的子类。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 

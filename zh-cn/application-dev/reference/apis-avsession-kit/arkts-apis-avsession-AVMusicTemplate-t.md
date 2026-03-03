@@ -142,9 +142,9 @@ type QueryPlaylistEvent = (pageIndex: int, sort: Sort) => Promise&lt;PageMediaEn
 
 **参数：**
 
-| 参数名    | 类型                                                       | 必填 | 说明           |
-| --------- |----------------------------------------------------------| ---- | -------------- |
-| pageIndex | int                                                      | 是   | 合集的ID。     |
+| 参数名    | 类型                                                     | 必填 | 说明           |
+| --------- | -------------------------------------------------------- | ---- | -------------- |
+| pageIndex | int                                                      | 是   | 页面的索引。   |
 | sort      | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort23) | 是   | 排序的枚举值。 |
 
 **返回值：**
@@ -171,9 +171,9 @@ type QueryCurrentSingleEvent = () => Promise&lt;Single&gt;
 
 **返回值：**
 
-| 类型                                                                    | 说明                              |
-|-----------------------------------------------------------------------| --------------------------------- |
-| Promise<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single23)> | Promise对象。返回分页内容的对象。 |
+| 类型                                                         | 说明                          |
+| ------------------------------------------------------------ | ----------------------------- |
+| Promise<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single23)> | Promise对象。返回Single对象。 |
 
 **示例：**
 
@@ -379,7 +379,7 @@ type LoginType = 'queryLoginInfo' | 'refreshLoginInfo' | 'cancel' | 'logout'
 
 type RequestDialogInfoEvent = (actionType: DialogActionType, actionInfo?: DialogActionInfo) => Promise&lt;DialogInfo&gt;
 
-登录的事件类型。
+请求对话框信息的事件类型。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -496,7 +496,7 @@ type QueryCustomContentEvent = (queryType: CustomType[]) => Promise&lt;CustomEle
 
 | 参数名    | 类型                           | 必填 | 说明                                        |
 | --------- | ----------------------------- | ---- | ------------------------------------------- |
-| queryType | [CustomType](#customtype23)[] | 是   | 自定义类型：用户信息 ，选项卡，编译，设置。 |
+| queryType | [CustomType](#customtype23)[] | 是   | 自定义类型：包含用户基本信息、界面选项卡配置、代码编译选项和系统设置项。 |
 
 **返回值：**
 
@@ -543,10 +543,10 @@ type DownloadMediaEntityEvent = (controlType: DownloadControlType, mediaEntity: 
 
 **参数：**
 
-| 参数名      | 类型                                                         | 必填 | 说明                                        |
-| ----------- | ----------------------------------------------------------- | ---- | ------------------------------------------- |
-| controlType | [DownloadControlType](#downloadcontroltype23)               | 是   | 自定义类型：用户信息 ，选项卡，合集，设置。 |
-| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23) | 是   | 媒体实例。                                  |
+| 参数名      | 类型                                                         | 必填 | 说明                                       |
+| ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
+| controlType | [DownloadControlType](#downloadcontroltype23)                | 是   | 可选项包括：用户信息，选项卡，合集，设置。 |
+| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23) | 是   | 媒体实例。                                 |
 
 **返回值：**
 

@@ -38,7 +38,7 @@
 | UNKNOWN       | 0    | 未知的类型。 |
 | SINGLE        | 1    | 单曲类型。   |
 | SINGER        | 2    | 歌手类型。   |
-| ALBUM         | 3    | 专辑类型     |
+| ALBUM         | 3    | 专辑类型。   |
 | RANKING       | 4    | 排行榜类型。 |
 | BANNER        | 5    | 海报类型。   |
 | RADIO_STATION | 6    | 电台类型。   |
@@ -58,7 +58,7 @@
 | PLAYBACK_STATE_PREPARE   | 0    | 准备状态。 |
 | PLAYBACK_STATE_PLAY      | 1    | 播放中。   |
 | PLAYBACK_STATE_PAUSE     | 2    | 暂停状态。 |
-| PLAYBACK_STATE_STOP      | 3    | 停止状态   |
+| PLAYBACK_STATE_STOP      | 3    | 停止状态。 |
 | PLAYBACK_STATE_COMPLETED | 4    | 播放完成。 |
 | PLAYBACK_STATE_ERROR     | 5    | 错误状态。 |
 | PLAYBACK_STATE_BUFFERING | 6    | 缓冲状态。 |
