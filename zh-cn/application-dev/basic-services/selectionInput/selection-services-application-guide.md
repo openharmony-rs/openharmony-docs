@@ -120,61 +120,19 @@
 
 3. 在[SelectionExtAbility.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets)文件中，开发者可实现扩展能力类。该类需要继承[SelectionExtensionAbility](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)，用于划词扩展生命周期的管理。
     <!-- @[SelectionExtAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets) -->
-
-    ``` TypeScript
-    import { selectionManager, SelectionExtensionAbility} from '@kit.BasicServicesKit';
-    import { Want } from '@kit.AbilityKit';
-    import { rpc } from '@kit.IPCKit';
-
-    class SelectionAbilityStub extends rpc.RemoteObject {
-      constructor(des: string) {
-        super(des);
-      }
-
-      onRemoteMessageRequest(
-        code: number,
-        data: rpc.MessageSequence,
-        reply: rpc.MessageSequence,
-        options: rpc.MessageOption
-      ): boolean | Promise<boolean> {
-        return true;
-      }
-    }
-
-    class SelectionExtAbility extends SelectionExtensionAbility {
-      private panel_: selectionManager.Panel | undefined = undefined;
-
-      onConnect(want: Want): rpc.RemoteObject {
-        // 当SelectionExtensionAbility实例完成创建时，系统会触发该回调。开发者可在该回调中执行初始化逻辑（如定义变量、加载资源、监听划词事件等）。
-        return new SelectionAbilityStub('remote');
-      }
-
-      onDisconnect(): void {
-        // 当SelectionExtensionAbility实例被销毁（例如用户关闭划词开关或切换划词应用）时，系统触发该回调。开发者可以在该生命周期中执行资源清理、数据保存等相关操作。
-        selectionManager.destroyPanel(this.panel_);
-      }
-    }
-
-    export default SelectionExtAbility;
-    ```
-    上述代码中，划词扩展被拉起时会触发[onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#onconnect)回调，可以在该回调中监听划词事件，完成划词窗口的创建、窗口内容的设定、窗口的移动、窗口的显示和隐藏等操作；当划词扩展退出时会触发[onDisconnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#ondisconnect)回调，可以在该回调中完成窗口销毁的操作。详细内容可参见下面第4步。
-
-
-4. 在划词扩展被拉起时，可以提前创建划词窗口（但不调用[show](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#show)接口），以缩短用户在第一次划词时的响应延迟。同时，可以在[onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#onconnect)中监听划词事件，执行后续的弹窗操作。通过监听[selectionCompleted](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanageronselectioncompleted)获取[SelectionInfo](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectioninfo)其中包含了划词操作的起始和结束坐标等信息。通过调用[getSelectionContent](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#getselectioncontent)接口获取划词内容。
-    <!-- @[SelectionExtAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets) -->
-
+    
     ``` TypeScript
     import { selectionManager, PanelInfo, PanelType, SelectionExtensionAbility, BusinessError } from '@kit.BasicServicesKit';
     import { SelectionModel } from '../models/SelectionModel';
     import { Want } from '@kit.AbilityKit';
     import { rpc } from '@kit.IPCKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
+    
     class SelectionAbilityStub extends rpc.RemoteObject {
       constructor(des: string) {
         super(des);
       }
-
+    
       onRemoteMessageRequest(
         code: number,
         data: rpc.MessageSequence,
@@ -184,10 +142,10 @@
         return true;
       }
     }
-
+    
     class SelectionExtAbility extends SelectionExtensionAbility {
       private panel_: selectionManager.Panel | undefined = undefined;
-
+    
       onConnect(want: Want): rpc.RemoteObject {
         SelectionModel.getInstance().setContext(this.context);
         selectionManager.on('selectionCompleted', async (info: selectionManager.SelectionInfo) => {
@@ -198,11 +156,11 @@
         });
         return new SelectionAbilityStub('remote');
       }
-
+    
       onDisconnect(): void {
         selectionManager.destroyPanel(this.panel_);
       }
-
+    
       async createSelectionPanel() {
         let panelInfo: PanelInfo = {
           panelType: PanelType.MENU_PANEL,
@@ -226,7 +184,7 @@
           hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to createPanel, error: ${JSON.stringify(error)}`);
         }
       }
-
+    
       async onSelected(info: selectionManager.SelectionInfo) {
         SelectionModel.getInstance().setSelectionInfo(info);
         try {
@@ -234,6 +192,7 @@
           SelectionModel.getInstance().setSelectionContent(content);
         } catch (error) {
           hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to get selection content: ${JSON.stringify(error)}`);
+          return;
         }
         if (!this.panel_) {
           hilog.info(0x0000, 'SelectionExtensionAbility', 'Panel is not created yet.');
@@ -247,7 +206,7 @@
             hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to move, error: ${JSON.stringify(error)}`);
             return;
           });
-
+    
         await this.panel_.show()    // 显示弹窗
           .then(() => {
             hilog.info(0x0000, 'SelectionExtensionAbility', 'Show succeed.');
@@ -256,31 +215,140 @@
             hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to show panel, error: ${JSON.stringify(error)}`);
             return;
           });
-
+    
         this.panel_.on('hidden', () => {    // 监听弹窗隐藏（窗口失焦时会触发隐藏）
           hilog.info(0x0000, 'SelectionExtensionAbility', 'panel has hidden.');
         })
       }
     }
+    
+    export default SelectionExtAbility;
+    ```
+    上述代码中，划词扩展被拉起时会触发[onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#onconnect)回调，可以在该回调中监听划词事件，完成划词窗口的创建、窗口内容的设定、窗口的移动、窗口的显示和隐藏等操作；当划词扩展退出时会触发[onDisconnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#ondisconnect)回调，可以在该回调中完成窗口销毁的操作。详细内容可参见下面第4步。
 
+
+4. 在划词扩展被拉起时，可以提前创建划词窗口（但不调用[show](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#show)接口），以缩短用户在第一次划词时的响应延迟。同时，可以在[onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#onconnect)中监听划词事件，执行后续的弹窗操作。通过监听[selectionCompleted](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanageronselectioncompleted)获取[SelectionInfo](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectioninfo)其中包含了划词操作的起始和结束坐标等信息。通过调用[getSelectionContent](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#getselectioncontent)接口获取划词内容。
+    <!-- @[SelectionExtAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets) -->
+    
+    ``` TypeScript
+    import { selectionManager, PanelInfo, PanelType, SelectionExtensionAbility, BusinessError } from '@kit.BasicServicesKit';
+    import { SelectionModel } from '../models/SelectionModel';
+    import { Want } from '@kit.AbilityKit';
+    import { rpc } from '@kit.IPCKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    
+    class SelectionAbilityStub extends rpc.RemoteObject {
+      constructor(des: string) {
+        super(des);
+      }
+    
+      onRemoteMessageRequest(
+        code: number,
+        data: rpc.MessageSequence,
+        reply: rpc.MessageSequence,
+        options: rpc.MessageOption
+      ): boolean | Promise<boolean> {
+        return true;
+      }
+    }
+    
+    class SelectionExtAbility extends SelectionExtensionAbility {
+      private panel_: selectionManager.Panel | undefined = undefined;
+    
+      onConnect(want: Want): rpc.RemoteObject {
+        SelectionModel.getInstance().setContext(this.context);
+        selectionManager.on('selectionCompleted', async (info: selectionManager.SelectionInfo) => {
+          if (this.panel_ == undefined) {
+            await this.createSelectionPanel();
+          }
+          this.onSelected(info);
+        });
+        return new SelectionAbilityStub('remote');
+      }
+    
+      onDisconnect(): void {
+        selectionManager.destroyPanel(this.panel_);
+      }
+    
+      async createSelectionPanel() {
+        let panelInfo: PanelInfo = {
+          panelType: PanelType.MENU_PANEL,
+          x: 0,
+          y: 0,
+          width: 500,
+          height: 300
+        }
+        try {
+          let panel: selectionManager.Panel = await selectionManager.createPanel(this.context, panelInfo);    // 创建菜单面板
+          this.panel_ = panel;
+          panel.setUiContent('pages/MenuPanel')   // 设置菜单面板样式
+            .then(() => {
+              hilog.info(0x0000, 'SelectionExtensionAbility', 'Succeed to setUiContent [pages/MenuPanel].');
+            })
+            .catch((error: BusinessError) => {
+              hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to setUiContent, error: ${JSON.stringify(error)}`);
+              return;
+            })
+        } catch(error) {
+          hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to createPanel, error: ${JSON.stringify(error)}`);
+        }
+      }
+    
+      async onSelected(info: selectionManager.SelectionInfo) {
+        SelectionModel.getInstance().setSelectionInfo(info);
+        try {
+          let content = await selectionManager.getSelectionContent();   // 获取划词内容
+          SelectionModel.getInstance().setSelectionContent(content);
+        } catch (error) {
+          hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to get selection content: ${JSON.stringify(error)}`);
+          return;
+        }
+        if (!this.panel_) {
+          hilog.info(0x0000, 'SelectionExtensionAbility', 'Panel is not created yet.');
+          return;
+        }
+        this.panel_.moveToGlobalDisplay(info.startDisplayX, info.startDisplayY)    // 将弹窗移动到用户鼠标划词的起始点
+          .then(() => {
+            hilog.info(0x0000, 'SelectionExtensionAbility', 'Move succeed.');
+          })
+          .catch((error: BusinessError) => {
+            hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to move, error: ${JSON.stringify(error)}`);
+            return;
+          });
+    
+        await this.panel_.show()    // 显示弹窗
+          .then(() => {
+            hilog.info(0x0000, 'SelectionExtensionAbility', 'Show succeed.');
+          })
+          .catch((error: BusinessError) => {
+            hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to show panel, error: ${JSON.stringify(error)}`);
+            return;
+          });
+    
+        this.panel_.on('hidden', () => {    // 监听弹窗隐藏（窗口失焦时会触发隐藏）
+          hilog.info(0x0000, 'SelectionExtensionAbility', 'panel has hidden.');
+        })
+      }
+    }
+    
     export default SelectionExtAbility;
     ```
 
 5. 在[MenuPanel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets)文件中，开发者可根据业务内容自主实现菜单面板的显示效果，例如提供翻译、查询、扩写等按钮。并且可以通过绑定点击事件，弹出不同的主面板，以展示不同的内容。本示例仅提供了一个简单的点击按钮，用于展示如何弹出主面板。
     <!-- @[MenuPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets) -->
-
+    
     ``` TypeScript
     import { SelectionModel } from '../models/SelectionModel';
     import { selectionManager, PanelInfo, BusinessError, PanelType, SelectionExtensionContext } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { Want } from '@kit.AbilityKit';
-
+    
     @Entry
     @Component
     struct MenuPanel {
       @State message: string = 'MenuPanel';
       selectionInfo: selectionManager.SelectionInfo | undefined = undefined;
-
+    
       CreateMainPanel() {
         this.selectionInfo = SelectionModel.getInstance().getSelectionInfo();
         let panelInfo: PanelInfo = {
@@ -312,7 +380,7 @@
                 hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to setUiContent of main panel, error: [${JSON.stringify(error)}]`);
                 return;
               });
-
+    
             await panel.show()
               .then(() => {
                 hilog.info(0x0000, 'SelectionExtensionAbility', 'Succeed to show main panel.');
@@ -327,7 +395,7 @@
             return;
           });
       }
-
+    
       startEntryAbility() {   // 拉起应用
         let wantAbility: Want = {
           bundleName: 'com.selection.selectionapplication',   // 应用的bundleName
@@ -344,7 +412,7 @@
             })
         }
       }
-
+    
       build() {
         Column() {
           Button('click to show MAIN_PANEL')
@@ -365,7 +433,7 @@
 
 6. 在[MainPanel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MainPanel.ets)文件中，开发者可根据业务场景，自行实现主面板的显示效果。本示例仅提供了一个简单的展示划词内容的主面板，具体的业务侧功能需要开发者自行实现。
     <!-- @[MainPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MainPanel.ets) -->
-
+    
     ``` TypeScript
     import { SelectionModel } from '../models/SelectionModel';
     import { selectionManager } from '@kit.BasicServicesKit';
@@ -373,14 +441,14 @@
     @Component
     struct MainPanel {
       @State message: string = 'MainPanel';
-
+    
       aboutToAppear(): void {
         let content: string | undefined = SelectionModel.getInstance().getSelectionContent();
         if (content !== undefined) {
           this.message = content;
         }
       }
-
+    
       build() {
         RelativeContainer() {
           Text(this.message)
