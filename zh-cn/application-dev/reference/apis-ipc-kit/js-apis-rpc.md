@@ -537,7 +537,7 @@ getReadPosition(): number
 
   | 类型   | 说明   |
   | ------ | ------ |
-  | number | 返回MessageSequence实例中当前读取位置。 |
+  | number | 返回MessageSequence实例中的当前读取位置。 |
 
 **示例：**
 
@@ -570,7 +570,7 @@ getWritePosition(): number
 
   | 类型   | 说明  |
   | ------ | ----- |
-  | number | 返回MessageSequence实例中当前写入位置。 |
+  | number | 返回MessageSequence实例中的当前写入位置。 |
 
 **示例：**
 
@@ -8974,7 +8974,7 @@ class TestRemoteObject extends rpc.MessageOption {
 
 isAsync(): boolean
 
-获取[SendMessageRequest](#sendmessagerequest9-2)调用中确定同步或是异步的标志。
+获取[sendMessageRequest](#sendmessagerequest9-2)调用中确定同步或是异步的标志。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -9002,7 +9002,7 @@ try {
 
 setAsync(isAsync: boolean): void
 
-设置[SendMessageRequest](#sendmessagerequest9-2)调用中确定同步或是异步的标志。
+设置[sendMessageRequest](#sendmessagerequest9-2)调用中确定同步或是异步的标志。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -9191,7 +9191,7 @@ try {
 
 static getCallingPid(): number
 
-静态方法，获取调用者的PID。此方法由RemoteObject对象在IPC上下文环境（[onRemoteMessageRequest](#onremotemessagerequest9)）中调用，不在则返回本进程的PID。
+静态方法，获取调用者的PID。此方法由[RemoteObject](#remoteobject)对象在IPC上下文环境（[onRemoteMessageRequest](#onremotemessagerequest9)）中调用，不在则返回本进程的PID。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -9225,7 +9225,7 @@ class Stub extends rpc.RemoteObject {
 
 static getCallingUid(): number
 
-静态方法，获取调用者的UID。此方法由RemoteObject对象在IPC上下文环境（[onRemoteMessageRequest](#onremotemessagerequest9)）中调用，不在则返回本进程的UID。
+静态方法，获取调用者的UID。此方法由[RemoteObject](#remoteobject)对象在IPC上下文环境（[onRemoteMessageRequest](#onremotemessagerequest9)）中调用，不在则返回本进程的UID。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
