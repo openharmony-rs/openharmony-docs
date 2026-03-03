@@ -129,7 +129,7 @@ test(a2);
 |关闭混淆|[`-disable-obfuscation`](#-disable-obfuscation)|否|
 |开启字节码混淆|[`-enable-bytecode-obfuscation`](#-enable-bytecode-obfuscation)|否|
 |开启字节码混淆调试能力|[`-enable-bytecode-obfuscation-debugging`](#-enable-bytecode-obfuscation-debugging)|否|
-|console打印删除|[`-remove-log`](#-remove-log)|ArkTS-Sta的字节码混淆支持hilog部分语句的打印删除|
+|console打印删除|[`-remove-log`](#-remove-log)|ArkTS-Sta的字节码混淆支持hilog部分语句的打印删除。|
 |名称缓存输出|[`-print-namecache`](#-print-namecache)|否|
 |名称缓存复用|[`-apply-namecache`](#-apply-namecache)|否|
 
@@ -192,49 +192,48 @@ if (flag) {
 若配置该选项，以下场景中的`console.*`或`hilog`特定语句会被删除：
 
 1. 文件顶层的调用
-    <!-- @[optionExample_removeLog2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->    
+   <!-- @[optionExample_removeLog2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->    
     
-    ``` TypeScript
-    console.info("in tolevel");
-    hilog.info(0x0000, 'testTag', 'in tolevel');
-    ```
+   ``` TypeScript
+   console.info("in tolevel");
+   hilog.info(0x0000, 'testTag', 'in tolevel');
+   ```
 
 2. 代码块中的调用
-    <!-- @[optionExample_removeLog3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
+   <!-- @[optionExample_removeLog3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
     
-    ``` TypeScript
-    function foo1() {
+   ``` TypeScript
+   function foo1() {
       console.info('in block');
       hilog.info(0x0000, 'testTag', 'in block');
-    }
-    ```
+   }
+   ```
   
 3. module或namespace中的调用
-    <!-- @[optionExample_removeLog4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
+   <!-- @[optionExample_removeLog4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
     
-    ``` TypeScript
-    // example.ts
-    namespace ns {
-      console.info('in ns');
-      hilog.info(0x0000, 'testTag', 'in ns');
+   ``` TypeScript
+   // example.ts
+   namespace ns {
+     console.info('in ns');
+     hilog.info(0x0000, 'testTag', 'in ns');
     }
-    ```
+   ```
   
 4. switch语句中的调用
-    例如
-    <!-- @[optionExample_removeLog5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
+   <!-- @[optionExample_removeLog5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
     
-    ``` TypeScript
-    switch (value) {
-      case 1:
-        console.info("in switch case");
-        hilog.info(0x0000, 'testTag', 'in switch case');
-        break;
-      default:
-        console.info("default");
-        hilog.info(0x0000, 'testTag', 'default');
-    }
-    ```
+   ``` TypeScript
+   switch (value) {
+     case 1:
+       console.info("in switch case");
+       hilog.info(0x0000, 'testTag', 'in switch case');
+       break;
+     default:
+       console.info("default");
+       hilog.info(0x0000, 'testTag', 'default');
+   }
+   ```
 
 ### -print-namecache
 
@@ -517,7 +516,7 @@ class TestA { static prop1: number = 0; } TestA.prop1;
 -print-seeds ./seedFile.log
 ```
 
-如果不指定目录，开启后，默认在`obfuscation`目录下生成一个`seedFile.log`文件，用来显示匹配到的类及其成员；如下图，也可以自己配置目录，将结果输出到指定目录。
+如果不指定目录，开启后，默认在`obfuscation`目录下生成一个`seedFile.log`文件，用来显示匹配到的类及其成员，如下图。也可以自己配置目录，将结果输出到指定目录。
 
 ![bytecode-static-printseed](figures/bytecode-static-printseed.png)
 
