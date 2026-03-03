@@ -88,7 +88,7 @@ For details about the algorithm specifications, see [3DES](crypto-sym-key-genera
 
 For details, see [HMAC](crypto-sym-key-generation-conversion-spec.md#hmac).
 
-1. Obtain the HMAC binary key and encapsulate it into a **DataBlob** object.
+1. Obtain the HMAC binary key data and encapsulate it into a [DataBlob](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#datablob) object.
 
 2. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) with the string parameter **'HMAC'** to create a symmetric key generator (**SymKeyGenerator**) object for an HMAC key of [1, 32768] bits.
 
