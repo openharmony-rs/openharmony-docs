@@ -190,8 +190,8 @@
 | [ArkUI_RenderFit](#arkui_renderfit)                                 | ArkUI_RenderFit   | 定义动画终态内容大小与位置的枚举值。 |
 | [ArkUI_SwiperIndicatorType](#arkui_swiperindicatortype)             | ArkUI_SwiperIndicatorType       | 定义Swiper组件的导航指示器类型。             |
 | [ArkUI_AnimationDirection](#arkui_animationdirection)               | ArkUI_AnimationDirection        | 动画播放方向。                           |
-| [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate)   | ArkUI_ListItemSwipeActionState  | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[SwipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的显隐模式。 |
-| [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect)     | ArkUI_ListItemSwipeEdgeEffect   | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[SwipeAction](./arkui-ts/ts-container-listitem.md#listitem10)方法的滚动模式。 |
+| [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate)   | ArkUI_ListItemSwipeActionState  | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的显隐模式。 |
+| [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect)     | ArkUI_ListItemSwipeEdgeEffect   | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的滚动模式。 |
 | [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) | ArkUI_ListItemSwipeActionDirection | ListItem划出菜单的展开方向。 |
 | [ArkUI_AnimationStatus](#arkui_animationstatus)                     | ArkUI_AnimationStatus           | 定义帧动画的播放状态。                       |
 | [ArkUI_AnimationFillMode](#arkui_animationfillmode)                 | ArkUI_AnimationFillMode         | 定义帧动画组件在动画开始前和结束后的状态。             |
@@ -2604,7 +2604,7 @@ enum ArkUI_ListItemSwipeEdgeEffect
 **描述：**
 
 
-定义Listitem组件[SwipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的滚动模式，默认值为ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING。
+定义Listitem组件[swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的滚动模式，默认值为ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING。
 
 **起始版本：** 12
 
