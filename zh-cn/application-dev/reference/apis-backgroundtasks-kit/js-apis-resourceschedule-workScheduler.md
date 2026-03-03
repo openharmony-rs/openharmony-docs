@@ -142,12 +142,6 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const parameter: Record<string, int | double | string | boolean> = {
-  "mykey0": 1,
-  "mykey1": "string value",
-  "mykey2": true,
-  "mkkey3": 1.5
-};
 let workInfo: workScheduler.WorkInfo = {
   workId: 1,
   batteryStatus: workScheduler.BatteryStatus.BATTERY_STATUS_LOW,
@@ -155,7 +149,12 @@ let workInfo: workScheduler.WorkInfo = {
   isPersisted: true,
   bundleName: "com.example.myapplication",
   abilityName: "MyExtension",
-  parameters: parameter
+  parameters: {
+    mykey0: 1,
+    mykey1: "string value",
+    mykey2: true,
+    mykey3: 1.5
+  }
 }
 try {
   workScheduler.stopWork(workInfo, false);
@@ -170,6 +169,12 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+const parameter: Record<string, int | double | string | boolean> = {
+  "mykey0": 1,
+  "mykey1": "string value",
+  "mykey2": true,
+  "mkkey3": 1.5
+};
 let workInfo: workScheduler.WorkInfo = {
   workId: 1,
   batteryStatus: workScheduler.BatteryStatus.BATTERY_STATUS_LOW,
@@ -177,12 +182,7 @@ let workInfo: workScheduler.WorkInfo = {
   isPersisted: true,
   bundleName: "com.example.myapplication",
   abilityName: "MyExtension",
-  parameters: {
-    mykey0: 1,
-    mykey1: "string value",
-    mykey2: true,
-    mykey3: 1.5
-  }
+  parameters: parameter
 }
 try {
   workScheduler.stopWork(workInfo, false);
