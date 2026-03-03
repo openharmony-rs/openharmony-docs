@@ -591,7 +591,7 @@ class TestA { static prop1: number = 0; } TestA.prop1;
 |指定要保留的类和其成员|[-keep-class-with-members](#-keep-class-with-members)|
 |指定要保留的类成员	|[-keep-class-members](#-keep-class-members) |
 
-### 字节码keep相关混淆项区别（ArkTS-Sta）
+### 字节码keep保留选项区别（ArkTS-Sta）
 
 |配置项|	功能|	类名保留|	显示指定类路径|
 |-----|-----|-----|-----|
