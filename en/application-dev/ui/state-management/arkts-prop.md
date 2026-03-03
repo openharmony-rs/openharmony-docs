@@ -29,7 +29,7 @@ Variables decorated with \@Prop have the following features:
 | \@Prop Decorator| Description                                      |
 | ----------- | ---------------------------------------- |
 | Parameters      | None.                                       |
-| Synchronization type       | One-way: from the data source provided by the parent component to the @Prop decorated variable.<br>For details about the scenarios of nested types, see [Observed Changes](#observed-changes).|
+| Synchronization type       | One-way synchronization: from the data source provided by the parent component to the @Prop decorated variable.<br>For details about the scenarios of nested types, see [Observed Changes](#observed-changes).|
 | Allowed variable types  |  Object, class, string, number, Boolean, enum, and array of these types.<br>API version 10 and later: [Date type](#decorating-variables-of-the-date-type).<br>API version 11 and later: [Map](#decorating-variables-of-the-map-type), [Set](#decorating-variables-of-the-set-type), undefined, null, union types defined by the ArkUI framework, for example, [Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length), [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr), and [ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor). For details, see [Using Union Types](#using-union-types).<br>For details about the scenarios of supported types, see [Observed Changes](#observed-changes).|
 | Disallowed variable types| Function.     |
 | Number of nested layers       | In component reuse scenarios, it is recommended that @Prop be nested with no more than five layers of data. If @Prop is nested with too many layers of data, garbage collection and increased memory usage caused by deep copy will arise, resulting in performance issues. To avoid such issues, use [\@ObjectLink](arkts-observed-and-objectlink.md) instead.|
@@ -132,7 +132,7 @@ For synchronization between \@State and \@Prop decorated variables:
 - The value of an \@State decorated variable in the parent component is used to initialize an \@Prop decorated variable in the child component. Any change to an \@State decorated variable is updated to the @Prop decorated variable.
 - However, any change to the @Prop decorated variable does not affect the value of its source @State decorated variable.
 - In addition to \@State, the source can also be decorated with \@Link or \@Prop, where the mechanisms for syncing the \@Prop decorated variable is the same.
-- The source and \@Prop decorated variable must be of the same type. The \@Prop decorated variable can be of simple and class types.
+- The type of the source and the @Prop decorated variable must be the same.
 
 - When the decorated object is of the Date type, the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**. For details, see [Decorating Variables of the Date Type](#decorating-variables-of-the-map-type).
 
@@ -191,7 +191,41 @@ struct Father {
 
 ## Constraints
 
-When decorating variables, \@Prop makes a deep copy, during which all types, except primitive types, Map, Set, Date, and Array, will be lost. For example, for complex types provided by N-API, such as [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md), because they are partially implemented in the native code, complete data cannot be obtained through a deep copy in ArkTS. Similarly, the original type of the RegExp type is lost during the copy process. As a result, related regular functions cannot be invoked after being decorated by \@Prop.
+- When decorating variables, \@Prop makes a deep copy, during which all types, except primitive types, Map, Set, Date, and Array, will be lost. For example, for complex types provided by N-API, such as [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md), because they are partially implemented in the native code, complete data cannot be obtained through a deep copy in ArkTS. Similarly, the original type of the RegExp type is lost during the copy process. As a result, related regular functions cannot be invoked after being decorated by \@Prop.
+
+- If the parent component passes **undefined**, the variable decorated by \@Prop is still initialized using the local default value.
+  
+  <!-- @[prop_twenty_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwenty.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct Parent {
+    @State count: number | undefined = undefined;
+  
+    build() {
+      Column() {
+        Text(`Parent count value: ${this.count}`)
+          .fontSize(20)
+          .margin(10)
+        Child({ count: this.count })
+      }
+    }
+  }
+  
+  @Component
+  struct Child {
+    @Prop count: number | undefined = 0;
+  
+    build() {
+      Column() {
+        Text(`Child count value: ${this.count}`)
+          .fontSize(20)
+          .margin(10)
+      }
+    }
+  }
+  ```
 
 ## Use Scenarios
 
@@ -722,13 +756,80 @@ struct Child {
 
 ![Video-prop-UsageScenario-three](figures/Video-prop-UsageScenario-three.gif)
 
+### Decorating Variables of the Array Type
+
+In this example, the **message** variable is of the **number[]** type. When the button is clicked, the value of **message** changes, and the UI is re-rendered.
+
+<!-- @[prop_nineteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageNineteen.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct Index {
+  @State message: number[] = [0, 1, 2, 3];
+
+  build() {
+    Column() {
+      Child({ message: this.message })
+    }
+  }
+}
+
+@Component
+struct Child {
+  @Prop message: number[] = [0, 1, 2, 3];
+
+  build() {
+    Row() {
+      Column() {
+        ForEach(this.message, (item: number) => {
+          Text(`${item}`)
+            .fontSize(20)
+            .margin(10)
+        })
+        // Add an element to the array, triggering UI update.
+        Button('Push element')
+          .onClick(() => {
+            this.message.push(4);
+          })
+          .width(300)
+          .margin(10)
+        // Delete an array element, triggering UI update.
+        Button('Pop element')
+          .onClick(() => {
+            this.message.pop();
+          })
+          .width(300)
+          .margin(10)
+        // Reassign the value of the array, triggering UI update.
+        Button('Reset array')
+          .onClick(() => {
+            this.message = [9, 8, 7, 6];
+          })
+          .width(300)
+          .margin(10)
+        // Update the array element, triggering UI update.
+        Button('Modify element[0]')
+          .onClick(() => {
+            this.message[0] = 10;
+          })
+          .width(300)
+          .margin(10)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ### Decorating Variables of the Map Type
 
 > **NOTE**
 >
 > Since API version 11, \@Prop supports the Map type.
 
-In this example, the **value** variable is of the Map\<number, string\> type. When the button is clicked, the value of **message** changes, and the UI is re-rendered.
+In this example, the **value** variable is of the Map\<number, string\> type. When the button is clicked, the value of **value** changes, and the UI is re-rendered.
 
 <!-- @[prop_ten_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTen.ets) -->
 

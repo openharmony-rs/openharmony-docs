@@ -28,511 +28,517 @@ When developing complex UIs, rendering efficiency is a key consideration. For ex
 
 ## Constraints
 
-- The \@Reusable decorator only applies to custom components.
+### Custom Components Only
 
-- \@Reusable is not compatible with [\@ComponentV2](./arkts-create-custom-components.md#componentv2). For **\@ComponentV2** reuse, use the [\@ReusableV2decorator](./arkts-new-reusableV2.md) instead.
+The \@Reusable decorator is only applicable to custom components [\@Component](./arkts-create-custom-components.md#component) and cannot be used together with [\@Builder](./arkts-builder.md).
 
-    <!-- @[reusable_for_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForCustomComponents.ets) -->
-    
-    ``` TypeScript
-    import { ComponentContent } from '@kit.ArkUI';
-    
-    // @Builder cannot be used together with @Reusable.
-    // @Reusable
-    @Builder
-    function buildCreativeLoadingDialog(closedClick: () => void) {
-      Crash();
+\@Reusable is not compatible with [\@ComponentV2](./arkts-create-custom-components.md#componentv2). For **\@ComponentV2** reuse, use the [\@ReusableV2decorator](./arkts-new-reusableV2.md) instead.
+
+<!-- @[reusable_for_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForCustomComponents.ets) -->
+
+``` TypeScript
+import { ComponentContent } from '@kit.ArkUI';
+
+// @Builder cannot be used together with @Reusable.
+// @Reusable
+@Builder
+function buildCreativeLoadingDialog(closedClick: () => void) {
+  Crash();
+}
+
+@Component
+export struct Crash {
+  build() {
+    Column() {
+      Text('Crash')
+        .fontSize(12)
+        .lineHeight(18)
+        .fontColor(Color.Blue)
+        .margin({
+          left: 6
+        })
+    }.width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  private uiContext = this.getUIContext();
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('Index')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          let contentNode = new ComponentContent(this.uiContext, wrapBuilder(buildCreativeLoadingDialog), () => {
+          });
+          this.uiContext.getPromptAction().openCustomDialog(contentNode);
+        })
     }
-    
-    @Component
-    export struct Crash {
-      build() {
-        Column() {
-          Text('Crash')
-            .fontSize(12)
-            .lineHeight(18)
-            .fontColor(Color.Blue)
-            .margin({
-              left: 6
-            })
-        }.width('100%')
-        .height('100%')
-        .justifyContent(FlexAlign.Center)
-      }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### Constraints on Updating State Variables
+
+When a custom component decorated with @Reusable is reused, the **aboutToReuse** API is invoked recursively for the component and all its child components. Avoid modifying state variables of the parent component in its child component's **aboutToReuse** API. Such modification will not take effect. To update the parent component's state variables, use **setTimeout** to delay execution, moving the task outside the scope of component reuse.
+
+**Incorrect Usage**
+
+Modifying a parent component's state variable in its child component's **aboutToReuse** API:
+
+<!-- @[reusable_for_incorrect_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableIncorrectSample.ets) -->
+
+``` TypeScript
+class IncorrectBasicDataSource implements IDataSource {
+  private listener: DataChangeListener | undefined = undefined;
+  public dataArray: number[] = [];
+
+  totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  getData(index: number): number {
+    return this.dataArray[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    this.listener = listener;
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    this.listener = undefined;
+  }
+}
+
+@Entry
+@Component
+struct IncorrectIndex {
+  private data: IncorrectBasicDataSource = new IncorrectBasicDataSource();
+
+  aboutToAppear(): void {
+    for (let index = 1; index < 20; index++) {
+      this.data.dataArray.push(index);
     }
-    
-    @Entry
-    @Component
-    struct Index {
-      @State message: string = 'Hello World';
-      private uiContext = this.getUIContext();
-    
-      build() {
-        RelativeContainer() {
-          Text(this.message)
-            .id('Index')
-            .fontSize(50)
-            .fontWeight(FontWeight.Bold)
-            .alignRules({
-              center: { anchor: '__container__', align: VerticalAlign.Center },
-              middle: { anchor: '__container__', align: HorizontalAlign.Center }
-            })
-            .onClick(() => {
-              let contentNode = new ComponentContent(this.uiContext, wrapBuilder(buildCreativeLoadingDialog), () => {
-              });
-              this.uiContext.getPromptAction().openCustomDialog(contentNode);
-            })
+  }
+
+  build() {
+    List() {
+      LazyForEach(this.data, (item: number, index: number) => {
+        ListItem() {
+          IncorrectReuseComponent({ num: item });
         }
-        .height('100%')
-        .width('100%')
-      }
+      }, (item: number, index: number) => index.toString())
+    }.cachedCount(0)
+  }
+}
+
+@Reusable
+@Component
+struct IncorrectReuseComponent {
+  @State num: number = 0;
+
+  aboutToReuse(params: ESObject): void {
+    this.num = params.num;
+  }
+
+  build() {
+    Column() {
+      Text('ReuseComponent num:' + this.num.toString())
+      IncorrectReuseComponentChild({ num: this.num })
+      Button('plus')
+        .onClick(() => {
+          this.num += 10;
+        })
     }
-    ```
+    .height(200)
+  }
+}
 
-- When an @Reusable decorated custom component is reused, the **aboutToReuse** API is invoked recursively for the component and all its child components. Avoid modifying state variables of the parent component in its child component's **aboutToReuse** API. Such modification will not take effect. To update the parent component's state variables, use **setTimeout** to delay execution, moving the task outside the scope of component reuse.
+@Component
+struct IncorrectReuseComponentChild {
+  @Link num: number;
 
+  aboutToReuse(params: ESObject): void {
+    this.num = -1 * params.num;
+  }
 
-  **Incorrect Usage**
+  build() {
+    Text('ReuseComponentChild num:' + this.num.toString())
+  }
+}
+```
 
-  Modifying a parent component's state variable in its child component's **aboutToReuse** API:
+**Correct Usage**
 
-  <!-- @[reusable_for_incorrect_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableIncorrectSample.ets) -->
-  
-  ``` TypeScript
-  class IncorrectBasicDataSource implements IDataSource {
-    private listener: DataChangeListener | undefined = undefined;
-    public dataArray: number[] = [];
-  
-    totalCount(): number {
-      return this.dataArray.length;
-    }
-  
-    getData(index: number): number {
-      return this.dataArray[index];
-    }
-  
-    registerDataChangeListener(listener: DataChangeListener): void {
-      this.listener = listener;
-    }
-  
-    unregisterDataChangeListener(listener: DataChangeListener): void {
-      this.listener = undefined;
+To modify a parent component's state variable in a child component's **aboutToReuse** API, use **setTimeout** to move the modification outside the scope of component reuse:
+
+<!-- @[reusable_for_correct_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableCorrectSample.ets) -->
+
+``` TypeScript
+class BasicDataSource implements IDataSource {
+  private listener: DataChangeListener | undefined = undefined;
+  public dataArray: number[] = [];
+
+  totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  getData(index: number): number {
+    return this.dataArray[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    this.listener = listener;
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    this.listener = undefined;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private data: BasicDataSource = new BasicDataSource();
+
+  aboutToAppear(): void {
+    for (let index = 1; index <= 20; index++) { // Loop 20 times.
+      this.data.dataArray.push(index);
     }
   }
-  
-  @Entry
-  @Component
-  struct IncorrectIndex {
-    private data: IncorrectBasicDataSource = new IncorrectBasicDataSource();
-  
-    aboutToAppear(): void {
-      for (let index = 1; index < 20; index++) {
-        this.data.dataArray.push(index);
-      }
-    }
-  
-    build() {
-      List() {
-        LazyForEach(this.data, (item: number, index: number) => {
-          ListItem() {
-            IncorrectReuseComponent({ num: item });
-          }
-        }, (item: number, index: number) => index.toString())
-      }.cachedCount(0)
-    }
+
+  build() {
+    List() {
+      LazyForEach(this.data, (item: number, index: number) => {
+        ListItem() {
+          ReuseComponent({ num: item })
+        }
+      }, (item: number, index: number) => index.toString())
+    }.cachedCount(0)
   }
-  
-  @Reusable
-  @Component
-  struct IncorrectReuseComponent {
-    @State num: number = 0;
-  
-    aboutToReuse(params: ESObject): void {
-      this.num = params.num;
-    }
-  
-    build() {
-      Column() {
-        Text('ReuseComponent num:' + this.num.toString())
-        IncorrectReuseComponentChild({ num: this.num })
-        Button('plus')
-          .onClick(() => {
-            this.num += 10;
-          })
-      }
-      .height(200)
-    }
+}
+
+@Reusable
+@Component
+struct ReuseComponent {
+  @State num: number = 0;
+
+  aboutToReuse(params: ESObject): void {
+    this.num = params.num;
   }
-  
-  @Component
-  struct IncorrectReuseComponentChild {
-    @Link num: number;
-  
-    aboutToReuse(params: ESObject): void {
+
+  build() {
+    Column() {
+      Text('ReuseComponent num:' + this.num.toString())
+      ReuseComponentChild({ num: this.num })
+      Button('plus')
+        .onClick(() => {
+          this.num += 10; // Increment the number by 10 on each click.
+        })
+    }
+    .height(200)
+  }
+}
+
+@Component
+struct ReuseComponentChild {
+  @Link num: number;
+
+  aboutToReuse(params: ESObject): void {
+    setTimeout(() => {
       this.num = -1 * params.num;
-    }
-  
-    build() {
-      Text('ReuseComponentChild num:' + this.num.toString())
-    }
+    }, 1)
   }
-  ```
 
-
-  **Correct Usage**
-
-  To modify a parent component's state variable in a child component's **aboutToReuse** API, use **setTimeout** to move the modification outside the scope of component reuse:
-
-  <!-- @[reusable_for_correct_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableCorrectSample.ets) -->
-  
-  ``` TypeScript
-  class BasicDataSource implements IDataSource {
-    private listener: DataChangeListener | undefined = undefined;
-    public dataArray: number[] = [];
-  
-    totalCount(): number {
-      return this.dataArray.length;
-    }
-  
-    getData(index: number): number {
-      return this.dataArray[index];
-    }
-  
-    registerDataChangeListener(listener: DataChangeListener): void {
-      this.listener = listener;
-    }
-  
-    unregisterDataChangeListener(listener: DataChangeListener): void {
-      this.listener = undefined;
-    }
+  build() {
+    Text('ReuseComponentChild num:' + this.num.toString());
   }
-  
-  @Entry
-  @Component
-  struct Index {
-    private data: BasicDataSource = new BasicDataSource();
-  
-    aboutToAppear(): void {
-      for (let index = 1; index <= 20; index++) { // Loop 20 times.
-        this.data.dataArray.push(index);
+}
+```
+
+### Consistent Component Structure
+
+Custom components decorated with @Reusable should maintain the same component structure before and after reuse. Otherwise, child components may be created or destroyed during the reuse process, reducing reuse efficiency and performance, and potentially causing abnormal application behavior.<br>
+For child components created during reuse, the framework will call the **aboutToReuse** method followed by the **aboutToAppear** method after their creation. When aboutToReuse is called, since aboutToAppear has not yet been executed and internal child components have not been created, operations that depend on the execution result of aboutToAppear or the states of internal child components in aboutToReuse will cause unexpected behavior. After calling **aboutToReuse**, the framework will then call **aboutToAppear** to initialize the component.<br>
+For scenarios where component structures differ, you must differentiate them by setting different **reuseId** values. For details, see [Scenarios Involving Multiple Item Types](#scenarios-involving-multiple-item-types).
+
+**Incorrect Usage**
+
+Component structures differ but are not distinguished via **reuseId**.<br>
+In the following example, first click the **show/hide branch A** button to recycle the component, then click the **show/hide branch B** button to reuse the component. The child component **ReusableChildB** is created during reuse, and both the **aboutToReuse** and **aboutToAppear** methods are called sequentially.
+
+<!-- @[reusable_for_incorrect_reuseid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForIncorrectReuseId.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_ReusableComponent]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'ReusableComponent_';
+
+@Entry
+@Component
+struct Index {
+  @State showBranchA: boolean = true;
+  @State showBranchB: boolean = false;
+
+  build() {
+    Column({ space: 5 }) {
+      Button('show/hide branch A')
+        .onClick(() => {
+          this.showBranchA = !this.showBranchA;
+        })
+      if (this.showBranchA) {
+        ReusableComponent({ flag: true })
       }
-    }
-  
-    build() {
-      List() {
-        LazyForEach(this.data, (item: number, index: number) => {
-          ListItem() {
-            ReuseComponent({ num: item })
-          }
-        }, (item: number, index: number) => index.toString())
-      }.cachedCount(0)
-    }
-  }
-  
-  @Reusable
-  @Component
-  struct ReuseComponent {
-    @State num: number = 0;
-  
-    aboutToReuse(params: ESObject): void {
-      this.num = params.num;
-    }
-  
-    build() {
-      Column() {
-        Text('ReuseComponent num:' + this.num.toString())
-        ReuseComponentChild({ num: this.num })
-        Button('plus')
-          .onClick(() => {
-            this.num += 10; // Increment the number by 10 on each click.
-          })
-      }
-      .height(200)
-    }
-  }
-  
-  @Component
-  struct ReuseComponentChild {
-    @Link num: number;
-  
-    aboutToReuse(params: ESObject): void {
-      setTimeout(() => {
-        this.num = -1 * params.num;
-      }, 1)
-    }
-  
-    build() {
-      Text('ReuseComponentChild num:' + this.num.toString());
-    }
-  }
-  ```
-
-- Custom components decorated with @Reusable should maintain the same component structure before and after reuse. Otherwise, child components may be created or destroyed during the reuse process, reducing reuse efficiency and performance, and potentially causing abnormal application behavior.<br>
-  For child components created during reuse, the framework will call the **aboutToReuse** method followed by the **aboutToAppear** method after their creation. When **aboutToReuse** is called, since **aboutToAppear** has not yet been executed and internal child components have not been created, unexpected behavior may occur. After calling **aboutToReuse**, the framework will then call **aboutToAppear** to initialize the component.<br>
-  For scenarios where component structures differ, you must differentiate them by setting different **reuseId** values. For details, see [Multiple Item Types](#multiple-item-types).
-
-  **Incorrect Usage**
-
-  Component structures differ but are not distinguished via **reuseId**.<br>
-  In the following example, first click the **show/hide branch A** button to recycle the component, then click the **show/hide branch B** button to reuse the component. The child component **ReusableChildB** is created during reuse, and both the **aboutToReuse** and **aboutToAppear** methods are called sequentially.
-
-  <!-- @[reusable_for_incorrect_reuseid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForIncorrectReuseId.ets) -->
-  
-  ``` TypeScript
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  
-  const TAG = '[Sample_ReusableComponent]';
-  const DOMAIN = 0xF811;
-  const BUNDLE = 'ReusableComponent_';
-  
-  @Entry
-  @Component
-  struct Index {
-    @State showBranchA: boolean = true;
-    @State showBranchB: boolean = false;
-  
-    build() {
-      Column({ space: 5 }) {
-        Button('show/hide branch A')
-          .onClick(() => {
-            this.showBranchA = !this.showBranchA;
-          })
-        if (this.showBranchA) {
-          ReusableComponent({ flag: true })
-        }
-        Button('show/hide branch B')
-          .onClick(() => {
-            this.showBranchB = !this.showBranchB;
-          })
-        if (this.showBranchB) {
-          ReusableComponent({ flag: false })
-        }
+      Button('show/hide branch B')
+        .onClick(() => {
+          this.showBranchB = !this.showBranchB;
+        })
+      if (this.showBranchB) {
+        ReusableComponent({ flag: false })
       }
     }
   }
-  
-  @Reusable
-  @Component
-  struct ReusableComponent {
-    @Require @Prop flag: boolean = true;
-  
-    aboutToAppear() {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToAppear');
-    }
-  
-    aboutToReuse(params: ESObject) {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToReuse');
-      this.flag = params.flag;
-    }
-  
-    build() {
-      Column({ space: 5 }) {
-        Text('ReusableComponent')
-        if (this.flag) {
-          ReusableChildA()
-        } else {
-          ReusableChildB()
-        }
-      }.border({ width: 1 })
-    }
+}
+
+@Reusable
+@Component
+struct ReusableComponent {
+  @Require @Prop flag: boolean = true;
+
+  aboutToAppear() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToAppear');
   }
-  
-  @Component
-  struct ReusableChildA {
-    aboutToAppear() {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToAppear');
-    }
-  
-    aboutToReuse() {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToReuse');
-    }
-  
-    build() {
-      Text('ReusableChildA')
-        .border({ width: 1 })
-    }
+
+  aboutToReuse(params: ESObject) {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToReuse');
+    this.flag = params.flag;
   }
-  
-  @Component
-  struct ReusableChildB {
-    aboutToAppear() {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToAppear');
-    }
-  
-    aboutToReuse() {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToReuse');
-    }
-  
-    build() {
-      Text('ReusableChildB')
-        .border({ width: 1 })
-    }
+
+  build() {
+    Column({ space: 5 }) {
+      Text('ReusableComponent')
+      if (this.flag) {
+        ReusableChildA()
+      } else {
+        ReusableChildB()
+      }
+    }.border({ width: 1 })
   }
-  ```
+}
 
+@Component
+struct ReusableChildA {
+  aboutToAppear() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToAppear');
+  }
 
-  **Correct Usage**
+  aboutToReuse() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToReuse');
+  }
 
-  Component structures differ and are distinguished via **reuseId**.
+  build() {
+    Text('ReusableChildA')
+      .border({ width: 1 })
+  }
+}
 
-  <!-- @[reusable_for_reuseid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForReuseId.ets) -->
-  
-  ``` TypeScript
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  
-  const TAG = '[Sample_ReusableComponent]';
-  const DOMAIN = 0xF811;
-  const BUNDLE = 'ReusableComponent_';
-  
-  @Entry
-  @Component
-  struct Index {
-    @State showBranchA: boolean = true;
-    @State showBranchB: boolean = false;
-  
-    build() {
-      Column({ space: 5 }) {
-        Button('show/hide branch A')
-          .onClick(() => {
-            this.showBranchA = !this.showBranchA;
-          })
-        if (this.showBranchA) {
-          ReusableComponent({ flag: true })
-            .reuseId('ReuseA') // Use reuseId to distinguish between reusable components with different structures.
-        }
-        Button('show/hide branch B')
-          .onClick(() => {
-            this.showBranchB = !this.showBranchB;
-          })
-        if (this.showBranchB) {
-          ReusableComponent({ flag: false })
-            .reuseId('ReuseB') // Use reuseId to distinguish between reusable components with different structures.
-        }
+@Component
+struct ReusableChildB {
+  aboutToAppear() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToAppear');
+  }
+
+  aboutToReuse() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToReuse');
+  }
+
+  build() {
+    Text('ReusableChildB')
+      .border({ width: 1 })
+  }
+}
+```
+
+**Correct Usage**
+
+Component structures differ and are distinguished via **reuseId**.
+
+<!-- @[reusable_for_reuseid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForReuseId.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_ReusableComponent]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'ReusableComponent_';
+
+@Entry
+@Component
+struct Index {
+  @State showBranchA: boolean = true;
+  @State showBranchB: boolean = false;
+
+  build() {
+    Column({ space: 5 }) {
+      Button('show/hide branch A')
+        .onClick(() => {
+          this.showBranchA = !this.showBranchA;
+        })
+      if (this.showBranchA) {
+        ReusableComponent({ flag: true })
+          .reuseId('ReuseA') // Use reuseId to distinguish between reusable components with different structures.
+      }
+      Button('show/hide branch B')
+        .onClick(() => {
+          this.showBranchB = !this.showBranchB;
+        })
+      if (this.showBranchB) {
+        ReusableComponent({ flag: false })
+          .reuseId('ReuseB') // Use reuseId to distinguish between reusable components with different structures.
       }
     }
   }
-  
-  @Reusable
-  @Component
-  struct ReusableComponent {
-    @Require @Prop flag: boolean = true;
-  
-    aboutToAppear() {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToAppear');
-    }
-  
-    aboutToReuse(params: ESObject) {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToReuse');
-      this.flag = params.flag;
-    }
-  
-    build() {
-      Column({ space: 5 }) {
-        Text('ReusableComponent')
-        if (this.flag) {
-          ReusableChildA()
-        } else {
-          ReusableChildB()
-        }
-      }.border({ width: 1 })
-    }
-  }
-  
-  @Component
-  struct ReusableChildA {
-    aboutToAppear() {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToAppear');
-    }
-  
-    aboutToReuse() {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToReuse');
-    }
-  
-    build() {
-      Text('ReusableChildA')
-        .border({ width: 1 })
-    }
-  }
-  
-  @Component
-  struct ReusableChildB {
-    aboutToAppear() {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToAppear');
-    }
-  
-    aboutToReuse() {
-      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToReuse');
-    }
-  
-    build() {
-      Text('ReusableChildB')
-        .border({ width: 1 })
-    }
-  }
-  ```
-  
+}
 
-- **ComponentContent** does not support passing \@Reusable decorated custom components.
+@Reusable
+@Component
+struct ReusableComponent {
+  @Require @Prop flag: boolean = true;
 
-  <!-- @[component_content_not_support_reusable_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ComponentContentNotSupportReusable.ets) -->
-  
-  ``` TypeScript
-  import { ComponentContent } from '@kit.ArkUI';
-  
-  @Builder
-  function buildCreativeLoadingDialog(closedClick: () => void) {
-    Crash();
+  aboutToAppear() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToAppear');
   }
-  
-  // The dialog box pops up correctly if @Reusable is commented out; it crashes when @Reusable is added.
-  @Reusable
-  @Component
-  export struct Crash {
-    build() {
-      Column() {
-        Text('Crash')
-          .fontSize(12)
-          .lineHeight(18)
-          .fontColor(Color.Blue)
-          .margin({
-            left: 6
-          })
-      }.width('100%')
-      .height('100%')
-      .justifyContent(FlexAlign.Center)
-    }
+
+  aboutToReuse(params: ESObject) {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToReuse');
+    this.flag = params.flag;
   }
-  
-  @Entry
-  @Component
-  struct Index {
-    @State message: string = 'Hello World';
-    private uiContext = this.getUIContext();
-  
-    build() {
-      RelativeContainer() {
-        Text(this.message)
-          .id('Index')
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-          .alignRules({
-            center: { anchor: '__container__', align: VerticalAlign.Center },
-            middle: { anchor: '__container__', align: HorizontalAlign.Center }
-          })
-          .onClick(() => {
-            // ComponentContent is based on BuilderNode, which does not support @Reusable decorated custom components.
-            let contentNode = new ComponentContent(this.uiContext, wrapBuilder(buildCreativeLoadingDialog), () => {
-            });
-            this.uiContext.getPromptAction().openCustomDialog(contentNode);
-          })
+
+  build() {
+    Column({ space: 5 }) {
+      Text('ReusableComponent')
+      if (this.flag) {
+        ReusableChildA()
+      } else {
+        ReusableChildB()
       }
-      .height('100%')
-      .width('100%')
-    }
+    }.border({ width: 1 })
   }
-  ```
+}
 
-- Nesting \@Reusable decorators is not recommended, as it increases memory usage, reduces reuse efficiency, and complicates maintenance. Nested usage creates additional cache pools with identical tree structures, leading to low reuse efficiency. In addition, it complicates lifecycle management and makes resource and variable sharing difficult.
+@Component
+struct ReusableChildA {
+  aboutToAppear() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToAppear');
+  }
+
+  aboutToReuse() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToReuse');
+  }
+
+  build() {
+    Text('ReusableChildA')
+      .border({ width: 1 })
+  }
+}
+
+@Component
+struct ReusableChildB {
+  aboutToAppear() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToAppear');
+  }
+
+  aboutToReuse() {
+    hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToReuse');
+  }
+
+  build() {
+    Text('ReusableChildB')
+      .border({ width: 1 })
+  }
+}
+```
+  
+### Unsupported ComponentContent
+
+**ComponentContent** does not support passing \@Reusable decorated custom components.
+
+<!-- @[component_content_not_support_reusable_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ComponentContentNotSupportReusable.ets) -->
+
+``` TypeScript
+import { ComponentContent } from '@kit.ArkUI';
+
+@Builder
+function buildCreativeLoadingDialog(closedClick: () => void) {
+  Crash();
+}
+
+// The dialog box pops up correctly if @Reusable is commented out; it crashes when @Reusable is added.
+@Reusable
+@Component
+export struct Crash {
+  build() {
+    Column() {
+      Text('Crash')
+        .fontSize(12)
+        .lineHeight(18)
+        .fontColor(Color.Blue)
+        .margin({
+          left: 6
+        })
+    }.width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  private uiContext = this.getUIContext();
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('Index')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          // ComponentContent is based on BuilderNode, which does not support @Reusable decorated custom components.
+          let contentNode = new ComponentContent(this.uiContext, wrapBuilder(buildCreativeLoadingDialog), () => {
+          });
+          this.uiContext.getPromptAction().openCustomDialog(contentNode);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### Avoid Nesting Usage
+
+Nesting \@Reusable decorators is not recommended, as it increases memory usage, reduces reuse efficiency, and complicates maintenance. Nested usage creates additional cache pools with identical tree structures, leading to low reuse efficiency. In addition, it complicates lifecycle management and makes resource and variable sharing difficult.
 
 
 ## Use Scenarios
@@ -601,88 +607,88 @@ struct Child {
 
 ### List Scrolling with LazyForEach
 
-- When a user scrolls a list containing a large amount of data, frequent creation and destruction of list items can cause lag and performance issues. The reuse mechanism of the **List** component can reuse the existing list items to improve the scrolling smoothness.
+When a user scrolls a list containing a large amount of data, frequent creation and destruction of list items can cause lag and performance issues. The reuse mechanism of the **List** component can reuse the existing list items to improve the scrolling smoothness.
 
-- In the following example, the **CardView** custom component is marked as reusable. Scrolling the list up or down triggers reuse of **CardView**.
+In the following example, the **CardView** custom component is marked as reusable. Scrolling the list up or down triggers reuse of **CardView**.
 
-  <!-- @[list_scrolling_with_lazy_for_each](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ListScrollingWithLazyForEach.ets) -->
+<!-- @[list_scrolling_with_lazy_for_each](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ListScrollingWithLazyForEach.ets) -->
   
-  ``` TypeScript
-  class MyDataSource implements IDataSource {
-    private dataArray: string[] = [];
-    private listener: DataChangeListener | undefined;
-  
-    public totalCount(): number {
-      return this.dataArray.length;
-    }
-  
-    public getData(index: number): string {
-      return this.dataArray[index];
-    }
-  
-    public pushData(data: string): void {
-      this.dataArray.push(data);
-    }
-  
-    public reloadListener(): void {
-      this.listener?.onDataReloaded();
-    }
-  
-    public registerDataChangeListener(listener: DataChangeListener): void {
-      this.listener = listener;
-    }
-  
-    public unregisterDataChangeListener(listener: DataChangeListener): void {
-      this.listener = undefined;
+``` TypeScript
+class MyDataSource implements IDataSource {
+  private dataArray: string[] = [];
+  private listener: DataChangeListener | undefined;
+
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  public getData(index: number): string {
+    return this.dataArray[index];
+  }
+
+  public pushData(data: string): void {
+    this.dataArray.push(data);
+  }
+
+  public reloadListener(): void {
+    this.listener?.onDataReloaded();
+  }
+
+  public registerDataChangeListener(listener: DataChangeListener): void {
+    this.listener = listener;
+  }
+
+  public unregisterDataChangeListener(listener: DataChangeListener): void {
+    this.listener = undefined;
+  }
+}
+
+@Entry
+@Component
+struct ReuseDemo {
+  private data: MyDataSource = new MyDataSource();
+
+  aboutToAppear() {
+    for (let i = 1; i <= 1000; i++) { // Loop 1000 times.
+      this.data.pushData(i + '');
     }
   }
-  
-  @Entry
-  @Component
-  struct ReuseDemo {
-    private data: MyDataSource = new MyDataSource();
-  
-    aboutToAppear() {
-      for (let i = 1; i <= 1000; i++) { // Loop 1000 times.
-        this.data.pushData(i + '');
-      }
-    }
-  
-    // ...
-    build() {
-      Column() {
-        List() {
-          LazyForEach(this.data, (item: string) => {
-            ListItem() {
-              CardView({ item: item });
-            }
-          }, (item: string) => item)
-        }
+
+  // ...
+  build() {
+    Column() {
+      List() {
+        LazyForEach(this.data, (item: string) => {
+          ListItem() {
+            CardView({ item: item });
+          }
+        }, (item: string) => item)
       }
     }
   }
-  
-  // Reusable component
-  @Reusable
-  @Component
-  export struct CardView {
-    // Only the item variable decorated with@State will be updated.
-    @State item: string = '';
-  
-    aboutToReuse(params: Record<string, Object>): void {
-      this.item = params.item as string;
-    }
-  
-    build() {
-      Column() {
-        Text(this.item)
-          .fontSize(30)
-      }
-      .borderWidth(1)
-      .height(100)
-    }
+}
+
+// Reusable component
+@Reusable
+@Component
+export struct CardView {
+  // Only the item variable decorated with@State will be updated.
+  @State item: string = '';
+
+  aboutToReuse(params: Record<string, Object>): void {
+    this.item = params.item as string;
   }
-  ```
+
+  build() {
+    Column() {
+      Text(this.item)
+        .fontSize(30)
+    }
+    .borderWidth(1)
+    .height(100)
+  }
+}
+```
 
 ### List Scrolling with if Statements
 
@@ -705,6 +711,7 @@ struct Index {
   aboutToAppear(): void {
     for (let i = 0; i < 20; i++) { // Loop 20 times.
       let title = i + 1 + 'test_if';
+      // Ensure that the app.media.app_icon file is added to src/main/resources/base/media. Missing this file will trigger a blank image.
       this.dataSource.pushData(new FriendMoment(i.toString(), title, 'app.media.app_icon'));
     }
 
@@ -1549,7 +1556,7 @@ struct ReusableChildComponent {
   }
   ```
 
-### Multiple Item Types
+### Scenarios Involving Multiple Item Types
 
 **Standard**
 
