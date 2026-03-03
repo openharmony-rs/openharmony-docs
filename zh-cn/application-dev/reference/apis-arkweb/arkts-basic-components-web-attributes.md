@@ -1428,7 +1428,7 @@ struct NewWebViewComp {
                     }
                 })
                 .onActivateContent(() => {
-                    //该Web需要展示到前台，建议应用在这里进行tab或window切换的动作
+                    // 该Web需要展示到前台，建议应用在这里进行tab或window切换的动作
                     console.info("NewWebViewComp onActivateContent")
                 })
         }
@@ -3997,6 +3997,47 @@ enableAutoFill(value: boolean)
       </form>
     </body>
   </html>
+  ```
+
+## enableDefaultContextMenu<sup>24+</sup>
+
+enableDefaultContextMenu(enable: boolean)
+
+设置是否启用默认右键上下文菜单。不调用该方法时，默认不启用。默认菜单仅支持CUT、COPY、PASTE、SELECT_ALL菜单项。
+
+> **说明：**
+>
+> - 当设置了[onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9)回调并在回调中返回true时，本接口的设置不生效。
+> - 默认菜单项会受[editMenuOptions](#editmenuoptions12)控制，通过该属性可以自定义菜单选项。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                                    |
+| ------- | ------- | ---- | --------------------------------------- |
+| enable  | boolean | 是   | 是否启用默认右键上下文菜单，true表示启用，false表示不启用。<br>传入undefined或null时为false。 |
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .enableDefaultContextMenu(true)
+      }
+    }
+  }
   ```
 
 ## password<sup>(deprecated)</sup>

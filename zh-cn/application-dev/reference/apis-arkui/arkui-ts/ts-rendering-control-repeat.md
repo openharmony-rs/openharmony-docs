@@ -172,7 +172,7 @@ template(type: string, itemBuilder: RepeatItemBuilder\<T\>, templateOptions?: Te
 | ------ | ---------- | -------- | -------- |
 | type | string | 是 | 当前模板类型。 |
 | itemBuilder  | [RepeatItemBuilder](#repeatitembuildert)\<T\> | 是 | 组件生成函数。 |
-| templateOptions | [TemplateOptions](#templateoptions对象说明) | 否 | 当前模板配置项。 |
+| templateOptions | [TemplateOptions](#templateoptions对象说明) | 否 | 当前模板配置项。<br/>默认值为undefined。 |
 
 **示例：**
 ```ts
@@ -357,7 +357,7 @@ type RepeatItemBuilder\<T\> = (repeatItem: RepeatItem\<T\>) => void
 
 | 参数名     | 类型          | 必填      | 说明                                    |
 | ---------- | ------------- | --------------------------------------- | --------------------------------------- |
-| repeatItem | [RepeatItem](#repeatitemt)\<T\> | 否 | 将item和index结合到一起的一个状态变量。 |
+| repeatItem | [RepeatItem](#repeatitemt)\<T\> | 否 | 将item和index结合到一起的一个状态变量。<br/>默认值为undefined。 |
 
 ## TemplateOptions对象说明
 
@@ -403,5 +403,5 @@ type TemplateTypedFunc\<T\> = (item: T, index: number) => string
 
 | 参数名 | 类型   | 必填 | 说明                                         |
 | ------ | ------ | ---- | -------------------------------------------- |
-| item   | T      | 否   | arr中每一个数据项。T为开发者传入的数据类型。 |
-| index  | number | 否   | 当前数据项对应的索引。                       |
+| item   | T      | 否   | arr中每一个数据项。T为开发者传入的数据类型。<br/>默认值为undefined。 |
+| index  | number | 否   | 当前数据项对应的索引。<br/>默认值为undefined。                    |

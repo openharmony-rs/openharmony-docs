@@ -40,7 +40,7 @@ Provides information about the drop-down menu options.
 | ------ | ----------------------------------- | ---- | -------------- | -------------- |
 | value  | [ResourceStr](ts-types.md#resourcestr) | No | No| Value of the drop-down menu option.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | icon   | [ResourceStr](ts-types.md#resourcestr) | No  | Yes | Icon of the drop-down menu option.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| symbolIcon<sup>12+</sup>  |[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) | No  | Yes | Symbol icon of drop-down menu option.<br>**symbolIcon** takes precedence over **icon**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| symbolIcon<sup>12+</sup>  |[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) | No  | Yes | Symbol icon of the drop-down menu option.<br>**symbolIcon** takes precedence over **icon**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## Attributes
 
@@ -88,7 +88,7 @@ This attribute supports two-way binding through [$$](../../../ui/state-managemen
 
 value(value: ResourceStr)
 
-Sets the text content of drop-down button. After a menu option is selected, the button text will automatically update to display the selected option's text.
+Sets the text content of the drop-down button. After a menu option is selected, the button text will automatically update to display the selected option's text.
 
 Since API version 10, this attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).
 
@@ -108,7 +108,7 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 
 value(resStr: Optional\<ResourceStr>)
 
-Sets the text content of drop-down button. After a menu option is selected, the button text will automatically update to display the selected option's text. Compared with [value](#value), this API supports the **undefined** type for the **resStr** parameter.
+Sets the text content of the drop-down button. After a menu option is selected, the button text will automatically update to display the selected option's text. Compared with [value](#value), this API supports the **undefined** type for the **resStr** parameter.
 
 This attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md) and [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).
 
@@ -886,17 +886,19 @@ If both [selectedOptionFont](#selectedoptionfont) and **Font** of **selectedOpti
 
 showInSubWindow(showInSubWindow:Optional\<boolean>)
 
-Sets whether the drop-down menu is displayed in the subwindow.
+Sets whether the drop-down menu is displayed in the subwindow. If this API is not used, the drop-down menu is not displayed in the subwindow by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior difference**: This API is supported on PCs and 2-in-1 devices but not available on other devices.
+
 **Parameters**
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| showInSubWindow  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether the drop-down menu is displayed in the subwindow.<br>**true**: The drop-down menu is displayed in the subwindow and takes effect only for 2-in-1 devices.<br>**false**: The drop-down menu is not displayed in the subwindow.<br>Default value: **true** for 2-in-1 devices and **false** for other devices|
+| showInSubWindow  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether the drop-down menu is displayed in the subwindow.<br>**true**: The drop-down menu is displayed in the subwindow.<br>**false**: The drop-down menu is not displayed in the subwindow.|
 
 ### keyboardAvoidMode<sup>23+</sup>
 

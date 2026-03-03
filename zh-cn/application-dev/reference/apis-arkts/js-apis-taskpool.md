@@ -203,6 +203,81 @@ taskpool.execute(task3, taskpool.Priority.HIGH).then((value: Object) => {
 });
 ```
 
+## taskpool.execute<sup>24+</sup>
+
+execute(task: Task, configs: Configs): Promise\<Object>
+
+将创建好的任务添加到taskpool的内部任务队列中，任务不会立即执行，而是等待分发到工作线程执行。当前模式支持设置任务优先级、设置超时时间和通过cancel取消任务。使用Promise异步回调。
+
+> **说明：**
+>
+> - 不支持执行任务组任务。
+> - 不支持执行串行队列任务。
+> - 不支持执行异步队列任务。
+> - 不支持执行周期性任务。
+> - 不支持执行延迟任务。
+> - 不支持执行存在依赖的任务。
+> - 不支持任务重复执行。
+> - 设置过超时的任务无法被其他任务依赖，也无法依赖其他任务。
+> - 如果任务设置了失败监听，任务执行超时了，失败监听不会被触发。
+> - 如果任务使用sendData来往宿主线程发消息，任务超时之后，宿主线程不再接收到消息。
+> - 在抛出超时异常信息之后，执行中的任务还是会在线程中继续执行，但是最终不会返回执行结果。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名   | 类型                  | 必填 | 说明                                       |
+| -------- | --------------------- | ---- | ---------------------------------------- |
+| task     | [Task](#task)         | 是   | 需要在任务池中执行的任务。                  |
+| configs | [Configs](#configs24) | 是   | 该参数可以设置超时时间和任务优先级。 |
+
+**返回值：**
+
+| 类型              | 说明              |
+| ----------------  | ---------------- |
+| Promise\<Object> | Promise对象，返回任务函数的执行结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | ------------------------------------------- |
+| 10200006 | An exception occurred during serialization. |
+| 10200014 | The function is not marked as concurrent.     |
+| 10200051 | The periodic task cannot be executed again. |
+| 10200057 | The task cannot be executed by two APIs.  |
+| 10200058 | Task timed out.  |
+
+**示例：**
+
+```ts
+@Concurrent
+function printArgs(args: number, time: number): number {
+  let start = Date.now();
+  while (Date.now() - start < time) {
+    continue;
+  }
+  return args;
+}
+
+let task: taskpool.Task = new taskpool.Task(printArgs, 100, 1000);
+let config: taskpool.Configs = { timeout: 500, priority: taskpool.Priority.HIGH };
+taskpool.execute(task, config).catch((e: BusinessError) => {
+  // taskpool: err code:10200058, message:Task timed out.
+  console.error(`taskpool: err code:${e.code}, message:${e.message}`);
+})
+try {
+  taskpool.execute(task, { timeout: 500 });
+} catch (e) {
+  // taskpool: execute again err code:10200057,
+  // message:The task cannot be executed by two APIs, the timeout task cannot be executed again.
+  console.error(`taskpool: execute again err code:${e.code}, message:${e.message}`);
+}
+```
 
 ## taskpool.execute<sup>13+</sup>
 
@@ -264,6 +339,83 @@ taskpool.execute<[number], number>(task3, taskpool.Priority.HIGH).then((value: n
 });
 ```
 
+## taskpool.execute<sup>24+</sup>
+
+execute<A extends Array\<Object>, R>(task: GenericsTask<A, R>, configs: Configs): Promise\<R>
+
+将创建好的泛型任务放入taskpool的内部任务队列，不校验任务的参数类型和返回值类型。使用Promise异步回调。
+
+execute任务的校验是结合new GenericsTask一起用的，参数、返回值类型需与new GenericsTask中的类型保持一致。
+
+> **说明：**
+>
+> - 不支持执行任务组任务。
+> - 不支持执行串行队列任务。
+> - 不支持执行异步队列任务。
+> - 不支持执行周期性任务。
+> - 不支持执行延迟任务。
+> - 不支持执行存在依赖的任务。
+> - 不支持任务重复执行。
+> - 设置过超时的任务无法被其他任务依赖，也无法依赖其他任务。
+> - 如果任务设置了失败监听，任务执行超时了，失败监听不会被触发。
+> - 如果任务使用sendData来往宿主线程发消息，任务超时之后，宿主线程不再接收到消息。
+> - 在抛出超时异常信息之后，执行中的任务还是会在线程中继续执行，但是最终不会返回执行结果。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名   | 类型                  | 必填 | 说明                                       |
+| -------- | --------------------- | ---- | ---------------------------------------- |
+| task     | [GenericsTask<A, R>](#genericstask13)         | 是   | 需要在任务池中执行的泛型任务。                  |
+| configs | [Configs](#configs24) | 是   | 该参数可以设置超时时间和任务优先级。 |
+
+**返回值：**
+
+| 类型              | 说明              |
+| ----------------  | ---------------- |
+| Promise\<R> | Promise对象，返回任务函数的执行结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | ------------------------------------------- |
+| 10200006 | An exception occurred during serialization. |
+| 10200014 | The function is not marked as concurrent.     |
+| 10200051 | The periodic task cannot be executed again. |
+| 10200057 | The task cannot be executed by two APIs.  |
+| 10200058 | Task timed out.  |
+
+**示例：**
+
+```ts
+@Concurrent
+function printArgs(args: number, time: number): number {
+  let start = Date.now();
+  while (Date.now() - start < time) {
+    continue;
+  }
+  return args;
+}
+
+let task: taskpool.Task = new taskpool.GenericsTask<[number, number], number>(printArgs, 100, 1000);
+let config: taskpool.Configs = { timeout: 500, priority: taskpool.Priority.MEDIUM };
+taskpool.execute<[number, number], number>(task, config).catch((e: BusinessError) => {
+  // taskpool: err code:10200058, message:Task timed out.
+  console.error(`taskpool: err code:${e.code}, message:${e.message}`);
+})
+try {
+  taskpool.execute<[number, number], number>(task, { timeout: 500 });
+} catch (e) {
+  // taskpool: execute again err code:10200057,
+  // message:The task cannot be executed by two APIs, the timeout task cannot be executed again.
+  console.error(`taskpool: execute again err code:${e.code}, message:${e.message}`);
+}
+```
 
 ## taskpool.execute<sup>10+</sup>
 
@@ -296,6 +448,7 @@ execute(group: TaskGroup, priority?: Priority): Promise<Object[]>
 | -------- | ------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200006 | An exception occurred during serialization. |
+| 10200059 | TaskGroup cannot be re-executed. |
 
 **示例：**
 
@@ -324,6 +477,74 @@ taskpool.execute(taskGroup1).then((res: Array<Object>) => {
 taskpool.execute(taskGroup2).then((res: Array<Object>) => {
   console.info("taskpool execute res is:" + res);
 });
+```
+
+## taskpool.execute<sup>24+</sup>
+
+execute(group: TaskGroup, configs: Configs): Promise<Object[]>
+
+将创建好的任务组放入taskpool内部任务队列，任务组中的任务不会立即执行，而是等待分发到工作线程执行。任务组中任务全部执行完成后，结果数组统一返回。此模式适用于执行关联任务。使用Promise异步回调。
+
+configs配置里可以指定任务组执行的超时时间和优先级。指定的超时时间到了，但是任务组还未完成，则会抛出任务组超时的异常信息。
+
+> **说明：**
+>
+> - 不支持任务组重复执行。
+> - 在抛出超时异常信息之后，执行中的任务还是会在线程中继续执行，但是最终不会返回执行结果。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名     | 类型                        | 必填 | 说明                                                           |
+| --------- | --------------------------- | ---- | -------------------------------------------------------------- |
+| group     | [TaskGroup](#taskgroup10)     | 是   | 需要在任务池中执行的任务组。                                      |
+| configs  | [Configs](#configs24)       | 是   | 该参数可以设置超时时间和任务优先级。 |
+
+**返回值：**
+
+| 类型                 | 说明                               |
+| ----------------    | ---------------------------------- |
+| Promise\<Object[]>  | Promise对象数组，返回任务函数的执行结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | ------------------------------------------- |
+| 10200006 | An exception occurred during serialization. |
+| 10200059 | TaskGroup cannot be re-executed. |
+| 10200070 | TaskGroup timed out. |
+
+**示例：**
+
+```ts
+@Concurrent
+function printArgs(args: number, time: number): number {
+  let start = Date.now();
+  while (Date.now() - start < time) {
+    continue;
+  }
+  return args;
+}
+
+let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
+taskGroup.addTask(printArgs, 10, 1000);
+let config: taskpool.Configs = {timeout: 500, priority: taskpool.Priority.HIGH};
+taskpool.execute(taskGroup, config).catch((e:BusinessError) => {
+  // taskpool: err code:10200070, message:TaskGroup timed out.
+  console.error(`taskpool: err code:${e.code}, message:${e.message}`);
+})
+try {
+  taskpool.execute(taskGroup, config);
+} catch (e) {
+  // taskpool: execute again err code:10200059,
+  // message:TaskGroup cannot be re-executed,taskGroup has already set timeout.
+  console.error(`taskpool: execute again err code:${e.code}, message:${e.message}`);
+}
 ```
 
 ## taskpool.executeDelayed<sup>11+</sup>
@@ -1090,7 +1311,7 @@ Task的构造函数。
 
 ```ts
 @Concurrent
-function printArgs(args: number): number {
+function printArgs(args: string): string {
   console.info("printArgs: " + args);
   return args;
 }
@@ -2709,6 +2930,19 @@ function runningCancelError() {
   }, 2000);
 }
 ```
+
+## Configs<sup>24+</sup>
+
+任务或任务组的配置项。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+| 名称     | 类型                | 只读 | 可选 | 说明                                                           |
+| -------- | ------------------ | ---- | ---- | ------------------------------------------------------------- |
+| timeout | number             | 否   | 是   | 超时时间，单位：ms。建议传入整数，若传入小数，会被向下取整。<br>如果省略该参数，timeout取默认值0，不执行超时逻辑。<br>**注意**：<br>1. 该超时时间非精准时间，实际超时时间可能会与预期存在误差。<br>2. 如果值小于1，会被默认取0。<br>3. timeout值受系统限制，超出2^31 - 1时会溢出，timeout值为0。 |
+| priority   | [Priority](#priority)   | 否   | 是   | 任务的优先级。默认值为taskpool.Priority.MEDIUM。 |
 
 ## 其他说明
 

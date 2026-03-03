@@ -41,6 +41,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    
    ``` C
    #define DEFAULT_WIDTH 200.0
+   // 设置节点宽度
    void SetWidth(ArkUI_NodeHandle &node, float width = DEFAULT_WIDTH)
    {
        if (!nodeAPI) {
@@ -52,6 +53,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    
    #define DEFAULT_HEIGHT 200.0
+   // 设置节点高度
    void SetHeight(ArkUI_NodeHandle &node, float height = DEFAULT_HEIGHT)
    {
        if (!nodeAPI) {
@@ -63,6 +65,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    
    #define DEFAULT_BG_COLOR 0xFFFFFFFF
+   // 设置节点背景颜色
    void SetBackgroundColor(ArkUI_NodeHandle &node, uint32_t color = DEFAULT_BG_COLOR)
    {
        if (!nodeAPI) {
@@ -74,6 +77,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    
    #define DEFAULT_MARGIN 5.0
+   // 设置节点外边距
    void SetMargin(ArkUI_NodeHandle &node, float margin = DEFAULT_MARGIN)
    {
        if (!nodeAPI) {
@@ -84,6 +88,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_MARGIN, &marginItem);
    }
    
+   // 设置Button节点标签
    void SetButtonLabel(ArkUI_NodeHandle &node, const char *label)
    {
        if (!nodeAPI) {
@@ -93,6 +98,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_BUTTON_LABEL, &NODE_Button_SRC_Item);
    }
    
+   // 设置节点标识符
    void SetId(ArkUI_NodeHandle &node, const char *id)
    {
        if (!nodeAPI) {
@@ -103,6 +109,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    
    #define DEFAULT_BORDER_WIDTH 0.0
+   // 设置节点边框宽度
    void SetBorderWidth(ArkUI_NodeHandle &node, float width = DEFAULT_BORDER_WIDTH)
    {
        if (!nodeAPI) {
@@ -114,6 +121,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    
    #define DEFAULT_BORDER_COLOR 0xFF000000
+   // 设置节点边框颜色
    void SetBorderColor(ArkUI_NodeHandle &node, uint32_t color = DEFAULT_BORDER_COLOR)
    {
        if (!nodeAPI) {
@@ -124,6 +132,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_BORDER_COLOR, &borderColorItem);
    }
    
+   // 设置节点常用属性（宽高、背景色、外边距、边框样式）
    void SetCommonAttribute(ArkUI_NodeHandle &node, float width = DEFAULT_WIDTH, float height = DEFAULT_HEIGHT,
                            unsigned int color = DEFAULT_BG_COLOR, float margin = DEFAULT_MARGIN)
    {
@@ -362,6 +371,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    
    ``` C
    #define DEFAULT_WIDTH 200.0
+   // 设置节点宽度
    void SetWidth(ArkUI_NodeHandle &node, float width = DEFAULT_WIDTH)
    {
        if (!nodeAPI) {
@@ -373,6 +383,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    
    #define DEFAULT_HEIGHT 200.0
+   // 设置节点高度
    void SetHeight(ArkUI_NodeHandle &node, float height = DEFAULT_HEIGHT)
    {
        if (!nodeAPI) {
@@ -384,6 +395,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    
    #define DEFAULT_BG_COLOR 0xFFFFFFFF
+   // 设置节点背景颜色
    void SetBackgroundColor(ArkUI_NodeHandle &node, uint32_t color = DEFAULT_BG_COLOR)
    {
        if (!nodeAPI) {
@@ -395,6 +407,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    
    #define DEFAULT_MARGIN 5.0
+   // 设置节点外边距
    void SetMargin(ArkUI_NodeHandle &node, float margin = DEFAULT_MARGIN)
    {
        if (!nodeAPI) {
@@ -405,6 +418,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_MARGIN, &marginItem);
    }
    
+   // 设置Button节点标签
    void SetButtonLabel(ArkUI_NodeHandle &node, const char *label)
    {
        if (!nodeAPI) {
@@ -414,6 +428,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_BUTTON_LABEL, &NODE_Button_SRC_Item);
    }
    
+   // 设置节点标识符
    void SetId(ArkUI_NodeHandle &node, const char *id)
    {
        if (!nodeAPI) {
@@ -424,6 +439,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    
    #define DEFAULT_BORDER_WIDTH 0.0
+   // 设置节点边框宽度
    void SetBorderWidth(ArkUI_NodeHandle &node, float width = DEFAULT_BORDER_WIDTH)
    {
        if (!nodeAPI) {
@@ -435,6 +451,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    
    #define DEFAULT_BORDER_COLOR 0xFF000000
+   // 设置节点边框颜色
    void SetBorderColor(ArkUI_NodeHandle &node, uint32_t color = DEFAULT_BORDER_COLOR)
    {
        if (!nodeAPI) {
@@ -445,6 +462,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_BORDER_COLOR, &borderColorItem);
    }
    
+   // 设置节点常用属性（宽高、背景色、外边距、边框样式）
    void SetCommonAttribute(ArkUI_NodeHandle &node, float width = DEFAULT_WIDTH, float height = DEFAULT_HEIGHT,
                            unsigned int color = DEFAULT_BG_COLOR, float margin = DEFAULT_MARGIN)
    {

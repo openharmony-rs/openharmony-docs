@@ -1,7 +1,7 @@
 # Drag Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -10,11 +10,11 @@ The ArkUI framework provides a set of drag event APIs to help you implement drag
 
 ## Basic Drag Implementation
 
-In ArkUI, you can implement the drag-and-drop functionality using C and C++ by calling C APIs. The following provides step-by-step instructions using the **Image** component as an example, along with key points to keep in mind during development.
+In ArkUI, you can implement the drag-and-drop functionality using C and C++ by calling C APIs. The following provides step-by-step instructions using the **Image** component as an example, along with key points to keep in mind during development.  
 
 1. Set a component draggable.
 
-   Obtain the [Node-API](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface), which you will need for node operations, such as creating a node.
+   Initialize **nodeAPI** using the [OH_ArkUI_GetModuleInterface](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface) API. Node operations, such as creating a node, must be performed through **nodeAPI**.
 
    <!-- @[get_nodeAPI](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/manager.cpp) -->
    
@@ -32,8 +32,8 @@ In ArkUI, you can implement the drag-and-drop functionality using C and C++ by c
    dragImage2 = nodeAPI->createNode(ARKUI_NODE_IMAGE);
    SetId(dragImage2, "dragImage");
    SetCommonAttribute(dragImage2, 140.0f, 140.0f, 0xFFFFFFFF, 5.0f);
-   // Replace src/main/ets/resources/seagull.png with the image resource file you use.
-   SetImageSrc(dragImage2, "/resources/seagull.png");
+   // Replace src/main/resources/base/media/seagull.png with the image resource file you use.
+   SetImageSrc(dragImage2, "/resources/base/media/seagull.png");
    OH_ArkUI_SetNodeDraggable(dragImage2, true);
    nodeAPI->registerNodeEvent(dragImage2, NODE_ON_DRAG_START, 1, nullptr);
    ```
@@ -239,7 +239,7 @@ In ArkUI, you can implement the drag-and-drop functionality using C and C++ by c
 
 4. Handle the **NODE_ON_DRAG_START** event.
 
-   In the **NODE_ON_DRAG_START** event, perform operations required to initiate the drag operation, typically involving data processing. For example, create an **OH_UdmfRecord** object, add the **imageUri** data required to the [OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md) as the fileUri type, set the **OH_UdmfRecord** to the [OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md) object, and set the **OH_UdmfData** to the [DragEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-dragevent.md).
+   In the **NODE_ON_DRAG_START** event, perform operations required to initiate the drag operation, typically involving data processing. For example, create an [OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md), add the data **imageValue** required for dragging an image to **OH_UdmfRecord** as the [OH_UdsFileUri](../reference/apis-arkdata/capi-udmf-oh-udsfileuri.md) type, then set **OH_UdmfRecord** into [OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md), and finally set **OH_UdmfData** into [DragEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-dragevent.md).
 
    <!-- @[drag_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/thirdmodule.h) -->
    
@@ -249,14 +249,14 @@ In ArkUI, you can implement the drag-and-drop functionality using C and C++ by c
        int returnValue;
        OH_UdmfRecord *record = OH_UdmfRecord_Create();
        OH_UdsFileUri *imageValue = OH_UdsFileUri_Create();
-       // Replace src/main/ets/resources/seagull.png with the image resource file you use.
-       returnValue = OH_UdsFileUri_SetFileUri(imageValue, "/resources/seagull.png");
+       // Replace src/main/resources/base/media/seagull.png with the image resource file you use.
+       returnValue = OH_UdsFileUri_SetFileUri(imageValue, "/resources/base/media/seagull.png");
        returnValue = OH_UdmfRecord_AddFileUri(record, imageValue);
        OH_UdmfData *data = OH_UdmfData_Create();
        returnValue = OH_UdmfData_AddRecord(data, record);
        returnValue = OH_ArkUI_DragEvent_SetData(dragEvent, data);
    }
-   // ···
+   // ...
                case NODE_ON_DRAG_START: {
                    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DRAG_START EventReceiver");
                    SetImageData(dragEvent);
@@ -338,7 +338,7 @@ In ArkUI, you can implement the drag-and-drop functionality using C and C++ by c
 
 ## Initiating a Drag Operation
 
-In addition to the basic drag-and-drop functionality, ArkUI allows you to initiate a drag operation using C APIs. The following example demonstrates how to use C APIs to start a drag operation with text data and highlights key points to keep in mind during development.
+In addition to the basic drag-and-drop functionality, ArkUI allows you to initiate a drag operation using C APIs. The following example demonstrates how to use C APIs to start a drag operation with text data and highlights key points to keep in mind during development.  
 
 1. Register node events.
 

@@ -18,162 +18,71 @@ When the registered event is detected as a drawing type, you can use the custom 
 
 The following scenarios are based on the project configuration described in [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md).
 
-- Use the **create** API of **ArkUI_NativeNodeAPI_1** to create a custom node, passing **ARKUI_NODE_CUSTOM**.
-    <!-- @[create_customNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/Drawing.h) -->
-    
-    ``` C
-    auto customNode = nodeAPI->createNode(ARKUI_NODE_CUSTOM);
-    ```
+- Create a custom node by passing the [ARKUI_NODE_CUSTOM](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype) enumerated value through the [createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode) API of [ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md).
+  <!-- @[create_customNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeDrawPageSample/entry/src/main/cpp/Drawing.h) -->
+  
+  ``` C
+  auto customNode = nodeAPI->createNode(ARKUI_NODE_CUSTOM);
+  ```
     
 - Register the custom event with the custom node, event type (for example, **ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW**; for details about the supported event types, see [ArkUI_NodeCustomEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodecustomeventtype)), event ID, and **UserData**.
-    <!-- @[userdata_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/Drawing.h) -->
-    
-    ``` C
-    // UserData
-    struct A {
-        int32_t a = 6;
-        bool flag = true;
-        ArkUI_NodeHandle node;
-    };
-    A *a = new A;
-    a->node = customNode;
-    // ···
-    nodeAPI->registerNodeCustomEvent(customNode, ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW, 1, a);
-    // Define the event callback.
-    nodeAPI->registerNodeCustomEventReceiver([](ArkUI_NodeCustomEvent *event) {
-        // Event callback logic
-        // ···
-    });
-    ```
+  <!-- @[userdata_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeDrawPageSample/entry/src/main/cpp/Drawing.h) -->
+  
+  ``` C
+  // UserData
+  struct A {
+      int32_t a = 6;
+      bool flag = true;
+      ArkUI_NodeHandle node;
+  };
+  A *a = new A;
+  a->node = customNode;
+  // ...
+  nodeAPI->registerNodeCustomEvent(customNode, ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW, 1, a);
+  // Define the event callback.
+  nodeAPI->registerNodeCustomEventReceiver([](ArkUI_NodeCustomEvent *event) {
+      // Event callback logic
+      // ...
+  });
+  ```
     
 - In the callback, obtain the event type, event ID, and UserData to determine the execution logic using the following APIs: [OH_ArkUI_NodeCustomEvent_GetEventType](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_geteventtype), [OH_ArkUI_NodeCustomEvent_GetEventTargetId](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_geteventtargetid), and [OH_ArkUI_NodeCustomEvent_GetUserData](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_getuserdata).
 
-    <!-- @[nodeCustomEvent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/Drawing.h) -->
+  <!-- @[nodeCustomEvent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeDrawPageSample/entry/src/main/cpp/Drawing.h) -->
+  
+  ``` C
+  auto type = OH_ArkUI_NodeCustomEvent_GetEventType(event);
+  auto targetId = OH_ArkUI_NodeCustomEvent_GetEventTargetId(event);
+  auto userData = reinterpret_cast<A *>(OH_ArkUI_NodeCustomEvent_GetUserData(event));
+  ```
     
-    ``` C
-    auto type = OH_ArkUI_NodeCustomEvent_GetEventType(event);
-    auto targetId = OH_ArkUI_NodeCustomEvent_GetEventTargetId(event);
-    auto userData = reinterpret_cast<A *>(OH_ArkUI_NodeCustomEvent_GetUserData(event));
-    ```
-    
-- Use [OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_getdrawcontextindraw) to obtain the drawing context from the custom event, and then pass it to [OH_ArkUI_DrawContext_GetCanvas](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_drawcontext_getcanvas) to obtain the drawing canvas pointer. This pointer is then cast to an **OH_Drawing_Canvas** pointer for drawing operations.
-    <!-- @[drawCanvas_Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/Drawing.h) -->
-    
-    ``` C
-    // Obtain the drawing context for the custom event.
-    auto *drawContext = OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(event);
-    // Obtain the drawing canvas pointer.
-    auto *canvas1 = OH_ArkUI_DrawContext_GetCanvas(drawContext);
-    // Cast the pointer to an OH_Drawing_Canvas pointer for drawing.
-    OH_Drawing_Canvas *canvas = reinterpret_cast<OH_Drawing_Canvas *>(canvas1);
-    // Drawing logic.
-    int32_t width = SIZE_1000;
-    int32_t height = SIZE_1000;
-    auto path = OH_Drawing_PathCreate();
-    OH_Drawing_PathMoveTo(path, width / SIZE_4, height / SIZE_4);
-    OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
-    OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
-    OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
-    OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
-    OH_Drawing_PathClose(path);
-    auto pen = OH_Drawing_PenCreate();
-    OH_Drawing_PenSetWidth(pen, SIZE_10);
-    OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_R1, RGBA_G1, RGBA_B1, RGBA_A1));
-    OH_Drawing_CanvasAttachPen(canvas, pen);
-    OH_Drawing_CanvasDrawPath(canvas, path);
-    ```
+- [OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_getdrawcontextindraw) obtains the drawing context through the custom component event and transfers the drawing context to [OH_ArkUI_DrawContext_GetCanvas](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_drawcontext_getcanvas) to obtain the canvas pointer for drawing. The pointer is then converted to a [OH_Drawing_Canvas](../reference/apis-arkgraphics2d/capi-drawing-oh-drawing-canvas.md) pointer for drawing.
+  <!-- @[drawCanvas_Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeDrawPageSample/entry/src/main/cpp/Drawing.h) -->
+  
+  ``` C
+  // Obtain the drawing context for the custom event.
+  auto *drawContext = OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(event);
+  // Obtain the drawing canvas pointer.
+  auto *canvas1 = OH_ArkUI_DrawContext_GetCanvas(drawContext);
+  // Cast the pointer to an OH_Drawing_Canvas pointer for drawing.
+  OH_Drawing_Canvas *canvas = reinterpret_cast<OH_Drawing_Canvas *>(canvas1);
+  // Drawing logic.
+  int32_t width = SIZE_1000;  // SIZE_1000 = 1000
+  int32_t height = SIZE_1000; // SIZE_1000 = 1000
+  auto path = OH_Drawing_PathCreate();
+  OH_Drawing_PathMoveTo(path, width / SIZE_4, height / SIZE_4);                   // SIZE_4 = 4
+  OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4); // SIZE_3 = 3,SIZE_4 = 4
+  OH_Drawing_PathClose(path);
+  auto pen = OH_Drawing_PenCreate();
+  OH_Drawing_PenSetWidth(pen, SIZE_10); // SIZE_10=10
+  OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x4A, 0x4F));
+  OH_Drawing_CanvasAttachPen(canvas, pen);
+  OH_Drawing_CanvasDrawPath(canvas, path);
+  ```
     
 **Complete content drawing example**:
-<!-- @[drawing_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/Drawing.h) -->
 
-``` C
-#include <arkui/native_node.h>
-#include <arkui/native_node_napi.h>
-#include <native_drawing/drawing_canvas.h>
-#include <native_drawing/drawing_color.h>
-#include <native_drawing/drawing_path.h>
-#include <native_drawing/drawing_pen.h>
-
-#define SIZE_3 3
-#define SIZE_4 4
-#define SIZE_10 10
-#define SIZE_150 150
-#define SIZE_200 200
-#define SIZE_480 480
-#define SIZE_720 720
-#define SIZE_1000 1000
-#define COLOR_YELLOW 0xFFFFFF00
-#define RGBA_R1 0xFF
-#define RGBA_G1 0xFF
-#define RGBA_B1 0x00
-#define RGBA_A1 0x00
-
-ArkUI_NodeHandle test_draw(ArkUI_NativeNodeAPI_1 *nodeAPI)
-{
-    // Create a node.
-    auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
-    auto customNode = nodeAPI->createNode(ARKUI_NODE_CUSTOM);
-    ArkUI_NumberValue value[] = {SIZE_480};
-    ArkUI_AttributeItem item = {value, 1};
-    // Set attributes.
-    nodeAPI->setAttribute(column, NODE_WIDTH, &item);
-    value[0].i32 = SIZE_720;
-    nodeAPI->setAttribute(column, NODE_HEIGHT, &item);
-    ArkUI_NumberValue NODE_WIDTH_value[] = {SIZE_200};
-    ArkUI_AttributeItem NODE_WIDTH_Item[] = {NODE_WIDTH_value, 1};
-    ArkUI_NumberValue NODE_HEIGHT_value[] = {SIZE_200};
-    ArkUI_AttributeItem NODE_HEIGHT_Item[] = {NODE_HEIGHT_value, 1};
-    ArkUI_NumberValue NODE_BACKGROUND_COLOR_item_value[] = {{.u32 = COLOR_YELLOW}};
-    ArkUI_AttributeItem NODE_BACKGROUND_COLOR_Item[] = {NODE_BACKGROUND_COLOR_item_value, 1};
-    // UserData
-    struct A {
-        int32_t a = 6;
-        bool flag = true;
-        ArkUI_NodeHandle node;
-    };
-    A *a = new A;
-    a->node = customNode;
-    nodeAPI->setAttribute(customNode, NODE_WIDTH, NODE_WIDTH_Item);
-    nodeAPI->setAttribute(customNode, NODE_HEIGHT, NODE_HEIGHT_Item);
-    nodeAPI->setAttribute(customNode, NODE_BACKGROUND_COLOR, NODE_BACKGROUND_COLOR_Item);
-    // Register the event.
-    nodeAPI->registerNodeCustomEvent(customNode, ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW, 1, a);
-    // Define the event callback.
-    nodeAPI->registerNodeCustomEventReceiver([](ArkUI_NodeCustomEvent *event) {
-        // Event callback logic
-        // Obtain information from the custom event.
-        auto type = OH_ArkUI_NodeCustomEvent_GetEventType(event);
-        auto targetId = OH_ArkUI_NodeCustomEvent_GetEventTargetId(event);
-        auto userData = reinterpret_cast<A *>(OH_ArkUI_NodeCustomEvent_GetUserData(event));
-        if (type == ARKUI_NODE_CUSTOM_EVENT_ON_FOREGROUND_DRAW && targetId == 1 && userData->flag) {
-            // Obtain the drawing context for the custom event.
-            auto *drawContext = OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(event);
-            // Obtain the drawing canvas pointer.
-            auto *canvas1 = OH_ArkUI_DrawContext_GetCanvas(drawContext);
-            // Cast the pointer to an OH_Drawing_Canvas pointer for drawing.
-            OH_Drawing_Canvas *canvas = reinterpret_cast<OH_Drawing_Canvas *>(canvas1);
-            // ···
-            int32_t width = SIZE_1000;
-            int32_t height = SIZE_1000;
-            auto path = OH_Drawing_PathCreate();
-            OH_Drawing_PathMoveTo(path, width / SIZE_4, height / SIZE_4);
-            OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
-            OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
-            OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
-            OH_Drawing_PathLineTo(path, width * SIZE_3 / SIZE_4, height * SIZE_3 / SIZE_4);
-            OH_Drawing_PathClose(path);
-            auto pen = OH_Drawing_PenCreate();
-            OH_Drawing_PenSetWidth(pen, SIZE_10);
-            OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_R1, RGBA_G1, RGBA_B1, RGBA_A1));
-            OH_Drawing_CanvasAttachPen(canvas, pen);
-            OH_Drawing_CanvasDrawPath(canvas, path);
-        }
-    });
-    // Add the custom node to the tree.
-    nodeAPI->addChild(column, customNode);
-    return column;
-}
-```
+ 
 
 ![Custom drawing](figures/custom_drawing.jpg)
 
@@ -185,7 +94,7 @@ The following example creates a custom drawing component capable of rendering cu
 
 2. Create an encapsulated object for the custom drawing component.
 
-   <!-- @[arkUICustomNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUICustomNode.h) -->
+   <!-- @[arkUICustomNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUICustomNode.h) --> 
    
    ``` C
    #ifndef MYAPPLICATION_ARKUICUSTOMNODE_H
@@ -226,11 +135,14 @@ The following example creates a custom drawing component capable of rendering cu
        }
    
    private:
-       // ···
+       int32_t NUM_2 = 2;
+       int32_t NUM_3 = 3;
+       int32_t NUM_4 = 4;
+       int32_t NUM_5 = 5;
        static void OnStaticCustomEvent(ArkUI_NodeCustomEvent *event)
        {
            // Obtain the component instance object and call the related instance method.
-           // ···
+           // ...
            auto customNode = reinterpret_cast<ArkUICustomNode *>(OH_ArkUI_NodeCustomEvent_GetUserData(event));
            auto type = OH_ArkUI_NodeCustomEvent_GetEventType(event);
            switch (type) {
@@ -244,7 +156,7 @@ The following example creates a custom drawing component capable of rendering cu
                case ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT:
                    customNode->OnDrawFront(event);
                    break;
-               // ···
+               // ...
                default:
                    break;
            }
@@ -322,7 +234,7 @@ The following example creates a custom drawing component capable of rendering cu
            OH_Drawing_BrushDestroy(brush);
            OH_Drawing_PathDestroy(path);
        }
-       // ···
+       // ...
    };
    
    } // namespace NativeModule
@@ -386,4 +298,6 @@ The following example creates a custom drawing component capable of rendering cu
     } // namespace NativeModule
     ```
     
+  
+
 ![customDrawLayer](figures/capiDrawLayer.jpg)

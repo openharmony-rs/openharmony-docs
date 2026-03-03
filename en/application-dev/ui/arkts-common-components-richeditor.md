@@ -264,19 +264,43 @@ TextBuilder() {
   .borderRadius('20')
   .width(220)
 }
-// ...
-          // Replace $r('app.string.AddBuilderDecoratorContent_Button_1') with the actual resource file. In this example, the value in the resource file is "addBuilderSpan."
-          Button($r('app.string.AddBuilderDecoratorContent_Button_1'), {
-            buttonStyle: ButtonStyleMode.NORMAL
+build() {
+  // ...
+    Column({ space: 12 }) {
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan(
+            /* 
+             * Replace $r('app.string.AddBuilderDecoratorContent_Text_3') with the actual resource file.
+             * In this example, the value in the resource file is "Click the button to add builderspan here."
+             */
+            $r('app.string.AddBuilderDecoratorContent_Text_3'), {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
           })
-            .height(30)
-            .fontSize(13)
-            .onClick(() => {
-              this.myBuilder = () => {
-                this.TextBuilder()
-              }
-              this.controller.addBuilderSpan(this.myBuilder)
-            })
+        })
+      Row() {
+        /* 
+         * Replace $r('app.string.AddBuilderDecoratorContent_Button_1') with the actual resource file.
+         * In this example, the value in the resource file is "addBuilderSpan."
+         */
+        Button($r('app.string.AddBuilderDecoratorContent_Button_1'), {
+          buttonStyle: ButtonStyleMode.NORMAL
+        })
+          .height(30)
+          .fontSize(13)
+          .onClick(() => {
+            this.myBuilder = () => {
+              this.TextBuilder()
+            }
+            this.controller.addBuilderSpan(this.myBuilder)
+          })
+      }.justifyContent(FlexAlign.Center).width('100%')
+    }
+  // ...
+}
 ```
 
 ![alt text](figures/richeditor_image_add_builder_span2.0.gif)
@@ -921,27 +945,25 @@ struct PrepareMenu {
 
   build() {
     Column() {
-      ComponentCard({
-        // Replace $r('app.string.Set_Attributes_title_13') with the actual resource file. In this example, the value in the resource file is "Manage selected menu items."
-        title: $r('app.string.Set_Attributes_title_13'),
-        /* Replace $r('app.string.Set_Attributes_title_13_desc') with the actual resource file. In this example,
-         the value in the resource file is "When the rich text selection range changes, the onPrepareMenu callback is triggered before the menu is displayed. You can configure menu data within this callback."
-        description: $r('app.string.Set_Attributes_title_13_desc')
-      }) {
-        RichEditor(this.options)
-          .onReady(() => {
-            this.controller.addTextSpan('RichEditor editMenuOptions');
-          })
-          .editMenuOptions(this.editMenuOptions)
-          .onSelectionChange((range: RichEditorRange) => {
-            this.endIndex = range.end;
-          })
-          .height(50)
-          .margin({ top: 100 })
-          .borderWidth(1)
-          .borderColor(Color.Red)
-      }
-    }
+      // ...
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan('RichEditor editMenuOptions');
+        })
+        .editMenuOptions(this.editMenuOptions)
+        .onSelectionChange((range: RichEditorRange) => {
+          this.endIndex = range.end;
+        })
+        .height(50)
+        .margin({ top: 100 })
+        .borderWidth(1)
+        .borderColor(Color.Red)
+      // ...
+    }.alignItems(HorizontalAlign.Start)
+    .backgroundColor('#fff')
+    .borderRadius(12)
+    .padding(12)
+    .width('100%')
   }
 }
 ```
@@ -1159,20 +1181,32 @@ This API controls the text display area to prevent overly long content from disr
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
 options: RichEditorOptions = { controller: this.controller };
-// ...
-      /*Replace $r('app.string.SetAttributes_Text_7') with the actual resource file. In this example,
-       the value in the resource file is "The maximum number of lines is set.\nExcess content will be displayed in scrolling mode.\nExceeds 1 line\nExceeds 2 lines\nExceeds 3 lines\nExceeds 4 lines." */
-      RichEditor(this.options)
-        .onReady(() => {
-          this.controller.addTextSpan(resource.resourceToString($r('app.string.SetAttributes_Text_7')),
-            {
-              style: {
-                fontColor: Color.Black,
-                fontSize: 15
-              }
-            })
-        })
-        .maxLines(2)
+
+build() {
+  Column() {
+    // ...
+    /*
+     *Replace $r('app.string.SetAttributes_Text_7') with the actual resource file. In this example,
+     * the value in the resource file is "The maximum number of lines is set.\nExcess content will be displayed in scrolling mode.\nExceeds 1 line\nExceeds 2 lines\nExceeds 3 lines\nExceeds 4 lines."
+     */
+    RichEditor(this.options)
+      .onReady(() => {
+        this.controller.addTextSpan(resource.resourceToString($r('app.string.SetAttributes_Text_7')),
+          {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
+          })
+      })
+      .maxLines(2)
+    // ...
+  }.alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
 ```
 
 ![max lines](figures/RichEditor_maxLines.gif)

@@ -48,7 +48,7 @@ CheckboxGroup(options?: CheckboxGroupOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| group | string | 否 | 是 | 群组名称。<br/>**说明：** <br/>具有相同群组名称的多个CheckboxGroup，仅第一个CheckboxGroup生效。 |
+| group | string | 否 | 是 | 群组名称。<br/>默认值：undefined，默认状态下管理[CheckboxOptions](ts-basic-components-checkbox.md#checkboxoptions对象说明)属性group信息为undefined的节点。 <br/>**说明：** <br/>具有相同群组名称的多个CheckboxGroup，仅第一个CheckboxGroup生效。 |
 
 ## 属性
 

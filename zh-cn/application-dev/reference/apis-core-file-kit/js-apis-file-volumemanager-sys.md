@@ -23,7 +23,7 @@ import { volumeManager } from '@kit.CoreFileKit';
 
 getAllVolumes(): Promise&lt;Array&lt;Volume&gt;&gt;
 
-异步获取当前外置存储中所有卷设备信息，使用Promise异步回调。
+获取当前外置存储中所有卷设备信息，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -64,7 +64,7 @@ getAllVolumes(): Promise&lt;Array&lt;Volume&gt;&gt;
 
 getAllVolumes(callback: AsyncCallback&lt;Array&lt;Volume&gt;&gt;): void
 
-异步获取当前外置存储中所有卷设备信息，使用callback异步回调。
+获取当前外置存储中所有卷设备信息，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -103,7 +103,7 @@ getAllVolumes(callback: AsyncCallback&lt;Array&lt;Volume&gt;&gt;): void
 
 mount(volumeId: string): Promise&lt;void&gt;
 
-异步挂载指定卷设备，使用Promise异步回调。当前仅支持vfat、exfat以及ntfs三种文件系统的卷设备挂载。
+挂载指定卷设备，使用Promise异步回调。当前仅支持vfat、exfat以及ntfs三种文件系统的卷设备挂载。
 
 **系统接口**：此接口为系统接口。
 
@@ -155,7 +155,7 @@ mount(volumeId: string): Promise&lt;void&gt;
 
 mount(volumeId: string, callback:AsyncCallback&lt;void&gt;):void
 
-异步挂载指定卷设备，使用callback异步回调。当前仅支持vfat、exfat以及ntfs三种文件系统的卷设备挂载。
+挂载指定卷设备，使用callback异步回调。当前仅支持vfat、exfat以及ntfs三种文件系统的卷设备挂载。
 
 **系统接口**：此接口为系统接口。
 
@@ -200,7 +200,7 @@ mount(volumeId: string, callback:AsyncCallback&lt;void&gt;):void
 
 unmount(volumeId: string): Promise&lt;void&gt;
 
-异步卸载指定卷设备，使用Promise异步回调。
+卸载指定卷设备，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -252,7 +252,7 @@ unmount(volumeId: string): Promise&lt;void&gt;
 
 unmount(volumeId: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步卸载指定卷设备，使用callback异步回调。
+卸载指定卷设备，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -297,7 +297,7 @@ unmount(volumeId: string, callback: AsyncCallback&lt;void&gt;): void
 
 getVolumeByUuid(uuid: string): Promise&lt;Volume&gt;
 
-异步通过卷设备uuid获得指定卷设备信息，使用Promise异步回调。
+通过卷设备uuid获得指定卷设备信息，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -346,7 +346,7 @@ getVolumeByUuid(uuid: string): Promise&lt;Volume&gt;
 
 getVolumeByUuid(uuid: string, callback: AsyncCallback&lt;Volume&gt;): void
 
-异步通过卷设备uuid获得指定卷设备信息，使用callback异步回调。
+通过卷设备uuid获得指定卷设备信息，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -388,7 +388,7 @@ getVolumeByUuid(uuid: string, callback: AsyncCallback&lt;Volume&gt;): void
 
 getVolumeById(volumeId: string): Promise&lt;Volume&gt;
 
-异步通过卷设备id获得指定卷设备信息，使用Promise异步回调。
+通过卷设备id获得指定卷设备信息，使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -437,7 +437,7 @@ getVolumeById(volumeId: string): Promise&lt;Volume&gt;
 
 getVolumeById(volumeId: string, callback: AsyncCallback&lt;Volume&gt;): void
 
-异步通过指定卷设备id获得卷设备信息，使用callback异步回调。
+通过指定卷设备id获得卷设备信息，使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -479,7 +479,7 @@ getVolumeById(volumeId: string, callback: AsyncCallback&lt;Volume&gt;): void
 
 setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
 
-异步修改指定卷设备描述，使用Promise异步回调。
+修改指定卷设备描述，使用Promise异步回调。当前仅支持修改ntfs和exfat两种文件系统类型的设备描述，只有处于卸载状态的卷设备可以修改设备描述。
 
 **系统接口**：此接口为系统接口。
 
@@ -532,7 +532,7 @@ setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
 
 setVolumeDescription(uuid: string, description: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步修改指定卷设备描述，使用callback异步回调。
+修改指定卷设备描述，使用callback异步回调。当前仅支持修改ntfs和exfat两种文件系统类型的设备描述，只有处于卸载状态的卷设备可以修改设备描述。
 
 **系统接口**：此接口为系统接口。
 
@@ -578,7 +578,7 @@ setVolumeDescription(uuid: string, description: string, callback: AsyncCallback&
 
 format(volumeId: string, fsType: string): Promise&lt;void&gt;
 
-异步对指定卷设备进行格式化，使用Promise异步回调。当前仅支持vfat和exfat两种文件系统类型的格式化，只有处于卸载状态的卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。
+对指定卷设备进行格式化，使用Promise异步回调。当前仅支持vfat和exfat两种文件系统类型的格式化，只有处于卸载状态的卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。
 
 **系统接口**：此接口为系统接口。
 
@@ -631,7 +631,7 @@ format(volumeId: string, fsType: string): Promise&lt;void&gt;
 
 format(volumeId: string, fsType: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步对指定卷设备进行格式化，使用callback异步回调。当前仅支持vfat和exfat两种文件系统类型的格式化，只有处于卸载状态的卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。
+对指定卷设备进行格式化，使用callback异步回调。当前仅支持vfat和exfat两种文件系统类型的格式化，只有处于卸载状态的卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。
 
 **系统接口**：此接口为系统接口。
 
@@ -677,7 +677,7 @@ format(volumeId: string, fsType: string, callback: AsyncCallback&lt;void&gt;): v
 
 partition(diskId: string, type: number): Promise&lt;void&gt;
 
-异步对磁盘设备进行分区，使用Promise异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。
+对磁盘设备进行分区，使用Promise异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。不支持对光盘进行分区。
 
 **系统接口**：此接口为系统接口。
 
@@ -695,7 +695,7 @@ partition(diskId: string, type: number): Promise&lt;void&gt;
 **返回值：**
 
   | 类型                      | 说明                       |
-   | --------------------- | ----------------------- |
+  | --------------------- | ----------------------- |
   | Promise&lt;void&gt;   | 无返回结果的Promise对象。              |
 
 **错误码：**
@@ -728,7 +728,7 @@ partition(diskId: string, type: number): Promise&lt;void&gt;
 
 partition(diskId: string, type: number, callback: AsyncCallback&lt;void&gt;): void
 
-异步对磁盘进行分区，使用callback异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。
+对磁盘进行分区，使用callback异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。不支持对光盘进行分区。
 
 **系统接口**：此接口为系统接口。
 
@@ -785,4 +785,4 @@ partition(diskId: string, type: number, callback: AsyncCallback&lt;void&gt;): vo
 | removable   | boolean | 否 | 否 | 表示卷设备是否可移除，当前仅支持可移除存储设备。true为可移除；false为不可移除。 |
 | state       | number  | 否 | 否 | 卷设备状态标识：<br>0：卸载状态 UNMOUNTED。<br> 1：检查状态 CHECKING。<br> 2：挂载状态 MOUNTED。<br> 3：正在弹出状态 EJECTING。          |
 | path        | string  | 否 | 否 | 卷设备的挂载地址，一般为/mnt/data/external/{uuid}。         |
-| fsType<sup>12+</sup>        | string  | 否 | 否 | 文件系统的类型，常见有ext2、vfat、NTFS等。       |
+| fsType<sup>12+</sup>        | string  | 否 | 否 | 文件系统的类型，常见有ext2、vfat、NTFS等。<br>**说明**：从API version 24开始，支持ISO9660、UDF。      |

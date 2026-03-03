@@ -65,8 +65,8 @@ export default {
       iterations: 2,
       begin: 0,
       end: 180
-    };// Set parameters.
-    this.animation = this.getUIContext().createAnimator(options);// Create an animation.
+    }; // Set parameters.
+    this.animation = this.getUIContext().createAnimator(options); // Create an animation.
   },
   playAnimation() {
     var _this = this;
@@ -78,15 +78,16 @@ export default {
 }
 ```
 
-![en-us_image_0000001267887885](figures/en-us_image_0000001267887885.gif)
+![en-us_image_0000001174756776](figures/en-us_image_0000001174756776.gif)
 
 > **NOTE**
->
 > - When you use **createAnimator** to create an animation object, you must pass the **options** parameter.
 >
 > - **begin** indicates the start point of the animation interpolation. If it is not set, the default value **0** is used.
 >
 > - **end** indicates the end point of the animation interpolation. If it is not set, the default value **1** is used.
+>
+> - The sample code cannot run on the emulator.
 
 
 ## Adding Animation Events and Calling Methods
@@ -215,7 +216,7 @@ export default {
   },
   finishAnimation() {
     var _this= this;
-   // Add an animation completion event.
+    // Add an animation completion event.
     this.animation.onfinish = function() {
       this.getUIContext().getPromptAction().showToast({
         message: 'finish'
@@ -232,7 +233,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001223287724](figures/en-us_image_0000001223287724.gif)
+![en-us_image_0000001220635059](figures/en-us_image_0000001220635059.gif)
 
 > **NOTE**
 >

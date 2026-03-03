@@ -406,8 +406,8 @@ You can customize the component style by setting various style attributes.
     @State meshArray: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360];
   
     aboutToAppear(): void {
-      // Replace 'common/image/image.png' with the image resource file you use.
-      let img: ImageBitmap = new ImageBitmap('common/image/image.png');
+      // Replace 'resources/base/media/image.png' with the image resource file you use.
+      let img: ImageBitmap = new ImageBitmap('resources/base/media/image.png');
       ctx.drawImage(img, 0, 0, 100, 100);
       this.pixelMap = ctx.getPixelMap(0, 0, 150, 150);
     }
@@ -419,8 +419,8 @@ You can customize the component style by setting various style attributes.
           .width(150)
           .height(150)
           .onClick(() => {
-            // Replace 'common/image/image.png' with the image resource file you use.
-            let img: ImageBitmap = new ImageBitmap('common/image/image.png');
+            // Replace 'resources/base/media/image.png' with the image resource file you use.
+            let img: ImageBitmap = new ImageBitmap('resources/base/media/image.png');
             ctx.drawImage(img, 0, 0, 100, 100);
             this.pixelMap = ctx.getPixelMap(1, 1, 150, 150);
             this.myNodeController.rebuild();

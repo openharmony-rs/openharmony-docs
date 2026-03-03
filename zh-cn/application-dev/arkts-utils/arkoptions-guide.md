@@ -38,8 +38,8 @@ arkOptions中types字段示例：
 ```
 
 types字段支持填写包名、包所在位置的相对路径以及声明文件所在相对路径，仅支持当前模块内的查找，若目录下存在同名文件（后缀不同），默认加载顺序.d.ets > .d.ts。<br />
-（1）填写包名方式：通过包名到oh_modules/@types/目录查找包名中定义的声明文件，如"node"。<br />
-（2）填写包所在相对路径方式：支持在基于build-profile.json5的相对路径中查找定义的声明文件，如"./oh_modules/@types/node"。<br />
+（1）填写包名方式：通过包名到oh_modules/@types/目录查找包名中定义的声明文件，如"pako"。<br />
+（2）填写包所在相对路径方式：支持在基于build-profile.json5的相对路径中查找定义的声明文件，如"./oh_modules/@types/mime"。<br />
 （3）填写声明文件所在相对路径方式：支持查找相对路径下的声明文件，如"./src/main/ets/pages/global"。
 
 ### 注意事项
