@@ -1735,7 +1735,7 @@ layoutWithConstraints(size: TextRectSize): TextLayoutResult
 
 ```ts
 let size: text.TextRectSize = { width: 200, height: 100 };
-let result = paragraph.layoutWithConstraints(size);
+let result = paragraph.layoutWithConstraints(size); // 功能增强的 layoutSync
 console.info('Width: ' + result.correctRect.width + ', Height: ' + result.correctRect.height);
 for (let i = 0; i < result.fitStrRange.length; ++i) {
   console.info('fitRange: [' + result.fitStrRange[i].start + ', ' + result.fitStrRange[i].end + ']');
