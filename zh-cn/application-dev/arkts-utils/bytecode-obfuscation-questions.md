@@ -809,10 +809,8 @@ class ExampleClass extends AbstractClass {
     protected override PROTECTED_ABSTRACT_METHOD():void{};
 }
 ```
-为保证父子类继承的属性或者方法多态一致性，在keep的时候，会一起被保留，例如：
-添加 `-keep class entry.src.main.ets.entryability.StaticDemo.AbstractClass {PROTECTED_ABSTRACT_METHOD():void;}` 或
-`-keep class entry.src.main.ets.entryability.StaticDemo.ExampleClass{PROTECTED_ABSTRACT_METHOD():void;}` 时，
-`AbstractClass`和`ExampleClass`中的`PROTECTED_ABSTRACT_METHOD()`会被同时保留。
+为保证父子类继承的属性或者方法多态一致性，在keep的时候，会一起被保留。例如：
+添加`-keep class entry.src.main.ets.entryability.StaticDemo.AbstractClass {PROTECTED_ABSTRACT_METHOD():void;}`或`-keep class entry.src.main.ets.entryability.StaticDemo.ExampleClass{PROTECTED_ABSTRACT_METHOD():void;}`时，`AbstractClass`和`ExampleClass`中的`PROTECTED_ABSTRACT_METHOD()`会被同时保留。
 
 ### 混合工程/interop相关的问题和解决方案
 
