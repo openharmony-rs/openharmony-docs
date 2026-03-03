@@ -74,7 +74,14 @@
 
 ## Compilation<sup>23+</sup>
 
-合集的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)的子类
+```json
+[{
+  "problematic sentence": "合集的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)的子类",
+  "reason": "句子明显缺少结束标点",
+  "line_number": "",
+  "fixed sentence": "合集的定义是[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)的子类。"
+}]
+```
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -93,9 +100,7 @@
 
 ## Banner<sup>23+</sup>
 
-海报的定义。[MediaEntity](#mediaentity23)的子类。
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+海报的定义。[MediaEn海报的定义。继承自[MediaEntity](#mediaentity23)，用于展示媒体内容的视觉元素。* 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -440,7 +445,7 @@
 | userInfoId    | string  | 否   | 否   | 用户信息的ID。                              |
 | nickName      | string  | 否   | 否   | 昵称。                                      |
 | profilePicUrl | string  | 否   | 否   | 用户的头像图片URL。                         |
-| tips          | string  | 否   | 否   | 其他对用户的描述。                          |
+| tips          | string  | 否   | 否   | 对用户的描述。                          |
 | isLogin       | boolean | 否   | 否   | 是否登录。true表示已登录，false表示未登录。 |
 | isVip         | boolean | 否   | 否   | 是否是VIP。true表示是，false表示否。        |
 
@@ -473,7 +478,7 @@
 | ------------- | ----------------------------------------------- | ---- | ---- | ------------------------------------------- |
 | items         | [SearchPlayMusicItem](#searchplaymusicitem23)[] | 否   | 否   | 音频信息。                                  |
 | displayName   | string                                          | 否   | 是   | 音频的显示名称。                            |
-| description   | string                                          | 否   | 是   | 其他对音频的描述。                          |
+| description   | string                                          | 否   | 是   | 对音频的描述。                          |
 | playMusicOnly | boolean                                         | 否   | 是   | 是否仅仅播放音频。true表示是，false表示否。 |
 | playMode      | string                                          | 否   | 是   | 播放模式。                                  |
 

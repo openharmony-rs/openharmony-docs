@@ -545,7 +545,7 @@ type DownloadMediaEntityEvent = (controlType: DownloadControlType, mediaEntity: 
 
 | 参数名      | 类型                                                         | 必填 | 说明                                       |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
-| controlType | [DownloadControlType](#downloadcontroltype23)                | 是   | 可选项包括：用户信息，选项卡，合集，设置。 |
+| controlType | [DownloadControlType](#downloadcontroltype23)                | 是   | controlType的可选项包括：用户信息，选项卡，合集，设置。 |
 | mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23) | 是   | 媒体实例。                                 |
 
 **返回值：**
@@ -562,7 +562,7 @@ type DownloadMediaEntityEvent = (controlType: DownloadControlType, mediaEntity: 
 
 type DownloadControlType = 'startDownload' | 'deleteDownload' | 'resumeDownload' | 'pauseDownload'
 
-下载的控制类型的定义。
+定义下载操作的控制类型，包括开始下载、删除下载、恢复下载和暂停下载。
 
 该类型可取的值为下表字符串。
 

@@ -209,7 +209,7 @@ export class TemplateManager {
 
 offQueryMainTabs(callback?: QueryMainTabsEvent): void
 
-注销查询主标签监听。
+注销查询主标签事件监听。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -237,7 +237,7 @@ offQueryMainTabs(callback?: QueryMainTabsEvent): void
 
 onQueryMediaTabContent(callback: QueryMediaTabContentEvent): void
 
-注册查询媒体标签内容监听。
+注册查询媒体标签内容事件监听。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -348,7 +348,7 @@ export class TemplateManager {
 
 offQueryMediaTabContent(callback?: QueryMediaTabContentEvent): void
 
-注销查询媒体标签内容监听。
+取消查询媒体标签内容监听。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -2310,7 +2310,7 @@ onProblemAndAdvice(callback: ProblemAndAdviceEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                   |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md#problemandadviceevent23) | 是   | 问题与建议活动的事件。 |
+| callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md#problemandadviceevent23) | 是   | 问题与建议的事件。 |
 
 **返回值：**
 
@@ -2381,7 +2381,7 @@ offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                   |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md#problemandadviceevent23) | 否   | 问题与建议活动的事件。 |
+| callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md#problemandadviceevent23) | 否   | 问题与建议的事件。 |
 
 **返回值：**
 

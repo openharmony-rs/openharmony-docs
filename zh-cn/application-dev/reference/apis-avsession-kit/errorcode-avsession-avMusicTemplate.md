@@ -192,7 +192,7 @@ The data exceeds the maximum allowable transmission capacity.
 
 **处理步骤**
 
-1. 针对数据量大的采用分批传输。
+1. 针对超过1MB的数据采用分批传输。
 
 ## 350000011 写数据失败，数据不可用
 

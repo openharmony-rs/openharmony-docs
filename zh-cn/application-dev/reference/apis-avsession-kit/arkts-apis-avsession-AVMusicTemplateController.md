@@ -1473,7 +1473,7 @@ playMediaEntity(mediaEntity: MediaEntity): Promise&lt;void&gt;
 
 | 参数名      | 类型                                                         | 必填 | 说明       |
 | ----------- | ------------------------------------------------------------ | ---- | ---------- |
-| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23) | 是   | 媒体实体。 |
+| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23) | 是   | 包含标题、作者等元数据的媒体实体对象。 |
 
 **返回值：**
 
@@ -2328,7 +2328,7 @@ export class ControllerManager {
 
 onExtensionAbilityChange(callback: ReportExecuteAbilityEvent): void
 
-注册通知音频模板控制方拉起指定媒体应用界面的信息的回调。
+注册通知音频模板控制方拉起由用户指定的媒体应用界面的信息的回调。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -2367,7 +2367,7 @@ export class ControllerManager {
 
 offExtensionAbilityChange(callback?: ReportExecuteAbilityEvent): void
 
-注销通知音频模板控制方拉起特定媒体应用播放界面的信息的回调。
+注销通知音频模板控制方拉起指定媒体应用播放界面的信息的回调。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -2379,7 +2379,7 @@ offExtensionAbilityChange(callback?: ReportExecuteAbilityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                 |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| callback | [ReportExecuteAbilityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteabilityevent23) | 否   | 通知音频模板控制器拉起特定第三方应用界面的事件回调。 |
+| callback | [ReportExecuteAbilityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteabilityevent23) | 否   | 通知音频模板控制方拉起特定三方应用界面的事件回调。 |
 
 **示例：**
 
