@@ -584,7 +584,7 @@ class TestA { static prop1: number = 0; } TestA.prop1;
 |指定保留顶层作用域或导入导出元素名称|[-keep-global-name](#-keep-global-name)|
 |指定保留声明文件中的所有名称|[-keep-dts](#-keep-dts)|
 
-**字节码混淆选项（ArkTS-Sta）**
+**字节码保留选项（ArkTS-Sta）**
 
 | 功能 | 选项 |
 | --- | --- |
