@@ -26,7 +26,7 @@ let msg = new concurrency.Message(messageHandler);
 ## constructor
 constructor(what: int, handler: MessageHandler)
 
-Message的构造器，用于构造消息实例，需要传入消息标识符和[MessageHandler](./message_handler.md)来指定消息处理的逻辑。
+Message的构造器，用于构造消息实例，需要传入消息标识符和[MessageHandler](./message_handler.md)来指定消息处理的逻辑。不传入标识符时消息标识符默认值为-1000000，传入消息标识符构造实例时，避免使用-1000000作为消息标识符。
 
 **ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
@@ -51,7 +51,7 @@ let msg = new concurrency.Message(EmptyMessageType, messageHandler);
 ## constructor
 constructor(what: int, obj: Object, handler: MessageHandler)
 
-Message的构造器，用于构造消息，需要传入消息标识符、[MessageHandler](./message_handler.md)和消息数据来指定消息处理的逻辑。
+Message的构造器，用于构造消息，需要传入消息标识符、[MessageHandler](./message_handler.md)和消息数据来指定消息处理的逻辑。不传入标识符时消息标识符默认值为-1000000，传入消息标识符构造实例时，避免使用-1000000作为消息标识符。
 
 **ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
@@ -126,7 +126,7 @@ msg.sendToTarget();
 ## getWhat
 getWhat(): int
 
-返回消息的标识符。
+返回消息的标识符。默认值为-1000000，当未指定消息的标识符时，会返回默认值。
 
 **ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
