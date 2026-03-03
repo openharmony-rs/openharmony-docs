@@ -72,3 +72,37 @@ export default class UserTestRunner implements TestRunner {
   }
 }
 ```
+
+## TestRunner.onStop
+
+onStop(): void
+
+当测试完成时，系统会在测试环境退出前触发该回调。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**示例：**
+
+```ts
+import { TestRunner } from '@kit.TestKit';
+
+export default class UserTestRunner implements TestRunner {
+  onPrepare() {
+    console.info('Trigger onPrepare');
+  }
+
+  onRun() {
+    console.info('Trigger onRun');
+  }
+
+  onStop() {
+    console.info('Trigger onStop');
+  }
+}
+```
