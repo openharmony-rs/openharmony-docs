@@ -404,6 +404,55 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 
+```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { wantAgent, WantAgent } from '@kit.AbilityKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+function callback(error: BusinessError<void> | null, data?: int) {
+  if (error) {
+    console.error(`Operation startBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info("Operation startBackgroundRunning succeeded");
+  }
+}
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let wantAgentInfo: wantAgent.WantAgentInfo = {
+      // 点击通知后，将要执行的动作列表
+      wants: [
+        {
+          bundleName: "com.example.myapplication",
+          abilityName: "EntryAbility"
+        }
+      ],
+      // 点击通知后，动作类型
+      actionType: wantAgent.OperationType.START_ABILITY,
+      // 使用者自定义的一个私有值
+      requestCode: 0,
+      // 点击通知后，动作执行属性
+      actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+    };
+
+    try {
+      // 通过wantAgent模块下getWantAgent方法获取WantAgent对象
+      wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
+        try {
+          backgroundTaskManager.startBackgroundRunning(this.context,
+            backgroundTaskManager.BackgroundMode.LOCATION, wantAgentObj, callback)
+        } catch (error) {
+          console.error(`Operation startBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+        }
+      });
+    } catch (error) {
+      console.error(`Operation getWantAgent failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
 ## backgroundTaskManager.startBackgroundRunning
 
 startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt;
@@ -502,6 +551,51 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 
+```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { wantAgent, WantAgent } from '@kit.AbilityKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let wantAgentInfo: wantAgent.WantAgentInfo = {
+      // 点击通知后，将要执行的动作列表
+      wants: [
+        {
+          bundleName: "com.example.myapplication",
+          abilityName: "EntryAbility"
+        }
+      ],
+      // 点击通知后，动作类型
+      actionType: wantAgent.OperationType.START_ABILITY,
+      // 使用者自定义的一个私有值
+      requestCode: 0,
+      // 点击通知后，动作执行属性
+      actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+    };
+
+    try {
+      // 通过wantAgent模块下getWantAgent方法获取WantAgent对象
+      wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
+        try {
+          backgroundTaskManager.startBackgroundRunning(this.context,
+            backgroundTaskManager.BackgroundMode.LOCATION, wantAgentObj).then(() => {
+              console.info("Operation startBackgroundRunning succeeded");
+            }).catch((error) => {
+              console.error(`Operation startBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+            });
+        } catch (error) {
+          console.error(`Operation startBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+        }
+      });
+    } catch (error) {
+      console.error(`Operation getWantAgent failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
 ## backgroundTaskManager.stopBackgroundRunning
 
 stopBackgroundRunning(context: Context, callback: AsyncCallback&lt;void&gt;): void
@@ -567,6 +661,30 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ArkTS-Sta示例：
+
+```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+function callback(error: BusinessError<void> | null, data?: int) {
+  if (error) {
+    console.error(`Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info("Operation stopBackgroundRunning succeeded");
+  }
+}
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      backgroundTaskManager.stopBackgroundRunning(this.context, callback);
+    } catch (error) {
+      console.error(`Operation stopBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
 
 ## backgroundTaskManager.stopBackgroundRunning
 
@@ -634,6 +752,26 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ArkTS-Sta示例：
+
+```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      backgroundTaskManager.stopBackgroundRunning(this.context).then(() => {
+        console.info("Operation stopBackgroundRunning succeeded");
+      }).catch((error) => {
+        console.error(`Operation stopBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+      });
+    } catch (error) {
+      console.error(`Operation stopBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
 
 ## backgroundTaskManager.startBackgroundRunning<sup>12+</sup>
 
@@ -775,6 +913,55 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 
+```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { wantAgent, WantAgent } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  id: int = 0; // 保存通知id
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let wantAgentInfo: wantAgent.WantAgentInfo = {
+      // 点击通知后，将要执行的动作列表
+      wants: [
+        {
+          bundleName: "com.huawei.ani.myapplication",
+          abilityName: "EntryAbility"
+        }
+      ],
+      // 点击通知后，动作类型
+      actionType: wantAgent.OperationType.START_ABILITY,
+      // 使用者自定义的一个私有值
+      requestCode: 0,
+      // 点击通知后，动作执行属性
+      actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+    };
+
+    try {
+      // 通过wantAgent模块下getWantAgent方法获取WantAgent对象
+      wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
+        try {
+          let list: Array<string> = ["dataTransfer"];
+          backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
+            console.info("Operation startBackgroundRunning succeeded");
+            // 对于上传下载类的长时任务，应用可以使用res中返回的notificationId来更新通知，比如发送带进度条的模板通知
+            this.id = res.notificationId;
+          }).catch((error) => {
+            console.error(`Operation startBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).code}`);
+          });
+        } catch (error) {
+          console.error(`Operation startBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+        }
+      });
+    } catch (error) {
+      console.error(`Operation getWantAgent failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
 ## backgroundTaskManager.updateBackgroundRunning<sup>12+</sup>
 
 updateBackgroundRunning(context: Context, bgModes: string[]): Promise&lt;ContinuousTaskNotification&gt;
@@ -851,6 +1038,32 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ArkTS-Sta示例：
+
+```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    try {
+      try {
+        // 必须先执行startBackgroundRunning，才能调用updateBackgroundRunning，这里假设已经申请过
+        let list: Array<string> = ["audioPlayback"];
+        backgroundTaskManager.updateBackgroundRunning(this.context, list).then(() => {
+          console.info("Operation updateBackgroundRunning succeeded");
+        }).catch((error) => {
+          console.error(`Operation updateBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).code}`);
+        });
+      } catch (error) {
+        console.error(`Operation updateBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+      }
+    } catch (error) {
+      console.error(`Operation getWantAgent failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
 
 ## backgroundTaskManager.getAllContinuousTasks<sup>20+</sup>
 
