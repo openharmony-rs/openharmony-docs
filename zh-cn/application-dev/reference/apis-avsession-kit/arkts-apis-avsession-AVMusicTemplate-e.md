@@ -5,15 +5,18 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
+
+
+
 > **说明：**
 >
 > 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## AVMusicTemplateType
 
-音频模板类型的枚举。
+表示音频模板类型的枚举。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -25,9 +28,9 @@
 
 ## EntityType
 
-媒体资源类型的枚举。
+表示媒体资源类型的枚举。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -45,29 +48,29 @@
 
 ## PlaybackState
 
-媒体资源的播放状态的枚举。
+表示媒体资源的播放状态的枚举。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称                     | 值   | 说明       |
-| ------------------------ | ---- | ---------- |
-| PLAYBACK_STATE_PREPARE   | 0    | 准备状态。 |
-| PLAYBACK_STATE_PLAY      | 1    | 播放中。   |
-| PLAYBACK_STATE_PAUSE     | 2    | 暂停状态。 |
-| PLAYBACK_STATE_STOP      | 3    | 停止状态。 |
-| PLAYBACK_STATE_COMPLETED | 4    | 播放完成。 |
-| PLAYBACK_STATE_ERROR     | 5    | 错误状态。 |
-| PLAYBACK_STATE_BUFFERING | 6    | 缓冲状态。 |
+| 名称                     | 值   | 说明                                                         |
+| ------------------------ | ---- | ------------------------------------------------------------ |
+| PLAYBACK_STATE_PREPARE   | 0    | 准备状态。表示媒体文件尚未准备好播放，媒体正在加载或缓冲中。 |
+| PLAYBACK_STATE_PLAY      | 1    | 正在播放状态。                                               |
+| PLAYBACK_STATE_PAUSE     | 2    | 暂停状态。                                                   |
+| PLAYBACK_STATE_STOP      | 3    | 停止状态。                                                   |
+| PLAYBACK_STATE_COMPLETED | 4    | 播放完成状态。                                               |
+| PLAYBACK_STATE_ERROR     | 5    | 播放错误状态。                                               |
+| PLAYBACK_STATE_BUFFERING | 6    | 缓冲状态。                                                   |
 
 ## Sort
 
-排序类型的枚举。
+表示排序类型的枚举。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -81,9 +84,9 @@
 
 ## SettingType
 
-设置类型的枚举。
+表示设置类型的枚举。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -97,9 +100,9 @@
 
 ## DialogType
 
-弹框类型的枚举。
+表示弹框类型的枚举。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -118,9 +121,9 @@
 
 ## ButtonType
 
-按钮类型的枚举。
+表示按钮类型的枚举。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -133,9 +136,9 @@
 
 ## MemberPurchaseType
 
-会员购买类型的枚举。
+表示会员购买类型的枚举。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -148,9 +151,9 @@
 
 ## SearchPlayInfoType
 
-搜播信息类型的枚举。
+表示搜播信息类型的枚举。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -163,9 +166,9 @@
 
 ## DownloadStatus
 
-下载状态类型的枚举。
+表示下载状态类型的枚举。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -5,6 +5,9 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
+
+
+
 > **说明：**
 >
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -19,7 +22,7 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 
 ## 属性
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -183,7 +186,7 @@ queryMainTabs(): Promise&lt;MediaTab[]&gt;
 
 查询主标签。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -231,7 +234,7 @@ queryMediaTabContent(tabId: string): Promise&lt;MediaTabContent&gt;
 
 查询媒体标签内容。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -287,7 +290,7 @@ queryMediaEntity(params: QueryMediaEntityParam): Promise&lt;PageMediaEntity&gt;
 
 查询媒体实体。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -350,7 +353,7 @@ queryCompilation(compilationId: string, pageIndex: int): Promise&lt;PageMediaEnt
 
 查询合集。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -410,7 +413,7 @@ queryPlaylist(pageIndex: int, sort: Sort): Promise&lt;PageMediaEntity&gt;
 
 查询播放列表。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -470,7 +473,7 @@ queryCurrentSingle(): Promise&lt;Single&gt;
 
 查询当前单曲。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -520,7 +523,7 @@ queryCompilationByKeyword(keyword: string): Promise&lt;Compilation[]&gt;
 
 按关键字查询合集。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -577,7 +580,7 @@ queryMediaEntityByKeyword(keyword: string, searchType: EntityType, pageIndex: in
 
 按关键字查询媒体实体。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -639,7 +642,7 @@ queryRecommendMediaEntityList(): Promise&lt;MediaEntity[]&gt;
 
 查询推荐的媒体实体列表。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -689,7 +692,7 @@ queryHotWords(): Promise&lt;string[]&gt;
 
 查询热词。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -739,7 +742,7 @@ querySearchHistory(): Promise&lt;string[]&gt;
 
 查询搜索历史。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -789,7 +792,7 @@ clearSearchHistory(): Promise&lt;OperResult&gt;
 
 清除搜索历史。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -839,7 +842,7 @@ updateSettings(settingItem: SettingItem): Promise&lt;SettingItem&gt;
 
 更新设置信息。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -903,7 +906,7 @@ reportProblemAndAdvice(advice: string): Promise&lt;OperResult&gt;
 
 报告问题和建议。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -960,7 +963,7 @@ login(controlType: LoginType, id?: string): Promise&lt;QrCodeInfo[]&gt;
 
 登录。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1020,7 +1023,7 @@ requestDialogInfo(actionType: DialogActionType, actionInfo?: DialogActionInfo): 
 
 请求弹框信息。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1085,7 +1088,7 @@ handleMemberPurchase(info: MemberPurchaseInfo): Promise&lt;DialogInfo&gt;
 
 处理购买会员情况。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1148,7 +1151,7 @@ queryMemberPurchase(memberPurchaseType: MemberPurchaseType): Promise&lt;MemberPu
 
 查询购买会员的情况。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1207,7 +1210,7 @@ queryCustomContent(queryType: CustomType[]): Promise&lt;CustomElement&gt;
 
 查询自定义内容。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1265,7 +1268,7 @@ downloadMediaEntity(controlType: DownloadControlType, mediaEntity: MediaEntity):
 
 下载媒体实体。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1333,7 +1336,7 @@ playForSearch(command: SearchPlayInfoType, args: SearchPlayInfo): Promise&lt;Ope
 
 搜播。支持音视频，示例仅以音频为例。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1404,7 +1407,7 @@ executeAction(actionType: string, params: string): Promise&lt;string&gt;
 
 执行动作。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1463,7 +1466,7 @@ playMediaEntity(mediaEntity: MediaEntity): Promise&lt;void&gt;
 
 播放媒体。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1513,7 +1516,7 @@ favoriteMediaEntity(actionType: MediaFavoriteType, mediaEntity: MediaEntity): Pr
 
 收藏媒体。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1581,7 +1584,7 @@ onUserInfoChange(callback: Callback&lt;UserInfo&gt;): void
 
 注册用户信息改变的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1619,7 +1622,7 @@ offUserInfoChange(callback?: Callback&lt;UserInfo&gt;): void
 
 注销用户信息改变的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1655,7 +1658,7 @@ onDialogCommandChange(callback: ReportDialogCommandEvent): void
 
 注册弹框命令改变的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1694,7 +1697,7 @@ offDialogCommandChange(callback?: ReportDialogCommandEvent): void
 
 注销弹框命令改变的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1730,7 +1733,7 @@ onCurrentSingleChange(callback: Callback&lt;Single&gt;): void
 
 注册当前单曲改变的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1768,7 +1771,7 @@ offCurrentSingleChange(callback?: Callback&lt;Single&gt;): void
 
 注销当前单曲改变的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1804,7 +1807,7 @@ onMediaEntitiesChange(callback: Callback&lt;MediaEntity[]&gt;): void
 
 注册媒体实体改变的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1843,7 +1846,7 @@ offMediaEntitiesChange(callback?: Callback&lt;MediaEntity[]&gt;): void
 
 注销媒体实体改变的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1879,7 +1882,7 @@ onTabContentChange(callback: ReportTabContentEvent): void
 
 注册标签页内容改变的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1918,7 +1921,7 @@ offTabContentChange(callback?: ReportTabContentEvent): void
 
 注销标签页内容改变的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1954,7 +1957,7 @@ onPlaylistChange(callback: Callback&lt;PageMediaEntity&gt;): void
 
 注册上报播放列表改变的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1993,7 +1996,7 @@ offPlaylistChange(callback?: Callback&lt;PageMediaEntity&gt;): void
 
 注销上报播放列表改变的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2029,7 +2032,7 @@ onDownloadMediaEntityStatusChange(callback: Callback&lt;MediaEntity&gt;): void
 
 注册上报下载媒体状态改变的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2068,7 +2071,7 @@ offDownloadMediaEntityStatusChange(callback?: Callback&lt;MediaEntity&gt;): void
 
 注销上报下载媒体状态改变的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2104,7 +2107,7 @@ onCustomElementsChange(callback: ReportCustomElementsChangeEvent): void
 
 注册上报自定义元素改变的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2144,7 +2147,7 @@ offCustomElementsChange(callback?: ReportCustomElementsChangeEvent): void
 
 注销上报自定义元素改变的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2180,7 +2183,7 @@ onSettingsChange(callback: Callback&lt;SettingItem[]&gt;): void
 
 注册上报设置改变的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2219,7 +2222,7 @@ offSettingsChange(callback?: Callback&lt;SettingItem[]&gt;): void
 
 注销上报设置改变的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2255,7 +2258,7 @@ onReportExecuteAction(callback: ReportExecuteActionEvent): void
 
 注册上报执行动作的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2294,7 +2297,7 @@ offReportExecuteAction(callback?: ReportExecuteActionEvent): void
 
 注销上报执行动作的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2330,7 +2333,7 @@ onExtensionAbilityChange(callback: ReportExecuteAbilityEvent): void
 
 注册通知音频模板控制方拉起由用户指定的媒体应用界面的信息的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2369,7 +2372,7 @@ offExtensionAbilityChange(callback?: ReportExecuteAbilityEvent): void
 
 注销通知音频模板控制方拉起指定媒体应用播放界面的信息的回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2405,7 +2408,7 @@ destroy(): Promise&lt;void&gt;
 
 销毁音频模板控制器。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -5,6 +5,9 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
+
+
+
 > **说明：**
 >
 > 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -15,7 +18,7 @@ type NoParamAsyncCallback = () => Promise&lt;void&gt;
 
 定义无参数的异步回调函数类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -27,7 +30,7 @@ type QueryMainTabsEvent = () => Promise<MediaTab[]>
 
 查询主选项卡的事件。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -49,7 +52,7 @@ type QueryMediaTabContentEvent = (tabId: string) => Promise&lt;MediaTabContent&g
 
 查询媒体标签页内容的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -77,7 +80,7 @@ type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise&lt;PageM
 
 查询媒体实例的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -105,7 +108,7 @@ type QueryCompilationEvent = (compilationId: string, pageIndex: int) => Promise&
 
 查询合集的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -134,7 +137,7 @@ type QueryPlaylistEvent = (pageIndex: int, sort: Sort) => Promise&lt;PageMediaEn
 
 查询播放列表的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -163,7 +166,7 @@ type QueryCurrentSingleEvent = () => Promise&lt;Single&gt;
 
 查询当前单曲的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -185,7 +188,7 @@ type QueryCompilationByKeywordEvent = (keyword: string) => Promise&lt;Compilatio
 
 按关键字查询合集的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -213,7 +216,7 @@ type QueryMediaEntityByKeywordEvent = (keyword: string, searchType: EntityType, 
 
 按关键字查询媒体实体的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -243,7 +246,7 @@ type QueryRecommendMediaEntityListEvent = () => Promise&lt;MediaEntity[]&gt;
 
 查询推荐媒体实体列表的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -265,7 +268,7 @@ type QueryHotWordsEvent = () => Promise&lt;string[]&gt;
 
 查询热词的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -287,7 +290,7 @@ type QuerySearchHistoryEvent = () => Promise&lt;string[]&gt;
 
 查询搜索历史的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -309,7 +312,7 @@ type ClearSearchHistoryEvent = () => Promise&lt;OperResult&gt;
 
 清除搜索历史的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -331,7 +334,7 @@ type LoginEvent = (controlType: LoginType, id?: string) => Promise&lt;QrCodeInfo
 
 登录的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -362,7 +365,7 @@ type LoginType = 'queryLoginInfo' | 'refreshLoginInfo' | 'cancel' | 'logout'
 
 该类型可取的值为下表字符串。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -381,7 +384,7 @@ type RequestDialogInfoEvent = (actionType: DialogActionType, actionInfo?: Dialog
 
 请求对话框信息的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -412,7 +415,7 @@ type DialogActionType = 'open' | 'close' | 'refresh'
 
 该类型可取的值为下表字符串。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -430,7 +433,7 @@ type HandleMemberPurchaseEvent = (info: MemberPurchaseInfo) => Promise&lt;Dialog
 
 处理购买会员的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -458,7 +461,7 @@ type QueryMemberPurchaseEvent = (memberPurchaseType: MemberPurchaseType) => Prom
 
 查询购买会员的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -486,7 +489,7 @@ type QueryCustomContentEvent = (queryType: CustomType[]) => Promise&lt;CustomEle
 
 查询自定义内容的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -516,7 +519,7 @@ type CustomType = 'USER_INFO' | 'TAB' | 'COMPILATION' | 'SETTINGS'
 
 该类型可取的值为下表字符串。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -535,7 +538,7 @@ type DownloadMediaEntityEvent = (controlType: DownloadControlType, mediaEntity: 
 
 下载媒体实体的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -566,7 +569,7 @@ type DownloadControlType = 'startDownload' | 'deleteDownload' | 'resumeDownload'
 
 该类型可取的值为下表字符串。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -585,7 +588,7 @@ type SettingsChangeEvent = (settingItem: SettingItem) => Promise&lt;SettingItem&
 
 设置改变的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -613,7 +616,7 @@ type ProblemAndAdviceEvent = (advice: string) => Promise&lt;OperResult&gt;
 
 问题与建议活动的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -641,7 +644,7 @@ type PlayForSearchEvent = (command: SearchPlayInfoType, args: SearchPlayInfo) =>
 
 搜播的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -670,7 +673,7 @@ type ExecuteActionEvent = (actionType: string, params: string) => Promise&lt;str
 
 执行操作的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -699,7 +702,7 @@ type PlayMediaEntityEvent = (mediaEntity: MediaEntity) => Promise&lt;void&gt;
 
 播放媒体实体的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -721,7 +724,7 @@ type FavoriteMediaEntityEvent = (actionType: MediaFavoriteType, mediaEntity: Med
 
 收藏媒体实体的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -752,7 +755,7 @@ type MediaFavoriteType = 'addFavorite' | 'removeFavorite'
 
 该类型可取的值为下表字符串。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -771,7 +774,7 @@ type DialogControlType = 'open' | 'close' | 'refresh' | 'toast'
 
 该类型可取的值为下表字符串。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -792,7 +795,7 @@ type ActionType = 'add' | 'remove'
 
 该类型可取的值为下表字符串。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -809,7 +812,7 @@ type ReportDialogCommandEvent = (type: DialogControlType, buttonInfo: DialogInfo
 
 上报弹框命令的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -832,7 +835,7 @@ type ReportTabContentEvent = (tabId: string, tabContent: MediaTabContent) => voi
 
 上报标签页内容的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -855,7 +858,7 @@ type ReportCustomElementsChangeEvent = (actionType: ActionType, customType: Cust
 
 上报自定义元素改变的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -879,7 +882,7 @@ type ReportExecuteActionEvent = (actionType: string, params: string) => void
 
 上报执行动作的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -902,7 +905,7 @@ type ReportExecuteAbilityEvent = (want: WantAgent) => void
 
 通知音频模板控制方拉起指定三方应用界面的信息的事件类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
