@@ -32593,7 +32593,7 @@
 						"start_line":34
 					},
 					{
-						"end_line":53,
+						"end_line":54,
 						"name":"define_receiverInstance",
 						"start_line":46
 					},
@@ -32618,9 +32618,9 @@
 						"start_line":130
 					},
 					{
-						"end_line":161,
+						"end_line":173,
 						"name":"define_callback",
-						"start_line":142
+						"start_line":143
 					},
 					{
 						"end_line":195,
@@ -32628,9 +32628,9 @@
 						"start_line":163
 					},
 					{
-						"end_line":236,
+						"end_line":252,
 						"name":"init_receiver",
-						"start_line":197
+						"start_line":209
 					},
 					{
 						"end_line":273,
@@ -32658,9 +32658,9 @@
 						"start_line":352
 					},
 					{
-						"end_line":411,
+						"end_line":427,
 						"name":"load_cameraSession",
-						"start_line":393
+						"start_line":408
 					},
 					{
 						"end_line":433,
@@ -32693,9 +32693,9 @@
 						"start_line":566
 					},
 					{
-						"end_line":601,
+						"end_line":629,
 						"name":"release_receiver",
-						"start_line":582
+						"start_line":598
 					}
 				]
 			}
