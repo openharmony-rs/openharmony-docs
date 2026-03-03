@@ -55,7 +55,7 @@ target_link_libraries(entry PUBLIC libohavsession.so)
  
    使用OH_AVMetadataBuilder构造元数据示例：
  
-   <!-- @[construct_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->  
+   <!-- @[construct_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) --> 
    
    在不使用AVMetadata之后，开发者应该执行OH_AVMetadataBuilder_Destroy接口来销毁元数据，且不要继续使用。
    
@@ -70,7 +70,7 @@ target_link_libraries(entry PUBLIC libohavsession.so)
 
    媒体播放状态，包含状态值、播放位置、播放速度、收藏状态等，可以按需使用对应的接口进行设置。
    
-   <!-- @[state_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->  
+   <!-- @[state_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) --> 
 
 4. 注册播控命令事件监听，便于响应用户通过媒体会话控制方，例如播控中心下发的播控命令。
 
