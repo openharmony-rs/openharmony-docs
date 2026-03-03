@@ -46387,5 +46387,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/basic-services/selectionInput/selection-services-application-guide.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/models/SelectionModel.ets",
+				"functions":[
+					{
+						"end_line":80,
+						"name":"SelectionModel",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets",
+				"functions":[
+					{
+						"end_line":118,
+						"name":"SelectionExtAbility",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets",
+				"functions":[
+					{
+						"end_line":108,
+						"name":"MenuPanel",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MainPanel.ets",
+				"functions":[
+					{
+						"end_line":54,
+						"name":"MainPanel",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
