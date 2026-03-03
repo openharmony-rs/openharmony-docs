@@ -1593,8 +1593,6 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ArkTS-Dyn: on(type: 'loadComplete', callback: Callback\<number>): void
 
-ArkTS-Sta: on(type: 'loadComplete', callback: Callback\<int>): void
-
 音频池资源加载完成监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -1681,8 +1679,6 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 ### on('playFinishedWithStreamId')<sup>18+</sup>
 
 ArkTS-Dyn: on(type: 'playFinishedWithStreamId', callback: Callback\<number>): void
-
-ArkTS-Sta:on(type: 'playFinishedWithStreamId', callback: Callback\<int>): void
 
 音频池资源播放完成监听，同时返回播放结束的音频的streamId。
 
