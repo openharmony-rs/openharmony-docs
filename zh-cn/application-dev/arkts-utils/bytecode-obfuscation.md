@@ -204,8 +204,8 @@ if (flag) {
     
    ``` TypeScript
    function foo1() {
-      console.info('in block');
-      hilog.info(0x0000, 'testTag', 'in block');
+     console.info('in block');
+     hilog.info(0x0000, 'testTag', 'in block');
    }
    ```
   
@@ -271,74 +271,74 @@ if (flag) {
 
 开启属性名称混淆，效果如下：
 
-<!-- @[optionExample_enablePropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->
+   <!-- @[optionExample_enablePropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->
 
-``` TypeScript
-// test.ts
-// 混淆前：
-class TestA {
-  static prop1: number = 0;
-}
-TestA.prop1;
-```
+   ``` TypeScript
+   // test.ts
+   // 混淆前：
+   class TestA {
+     static prop1: number = 0;
+   }
+   TestA.prop1;
+   ```
 
-```ts
-// 混淆后：
-class TestA {
-    static i: number = 0;
-}
-TestA.i;
-```
+   ```ts
+   // 混淆后：
+   class TestA {
+       static i: number = 0;
+   }
+   TestA.i;
+   ```
 
 若配置该选项，那么所有的属性名都会被混淆，除了下面场景：
 
 * 在未开启`-enable-export-obfuscation`选项的情况下，被`import/export`直接导入或导出的类、对象的属性名不会被混淆。例如下面例子中的属性名`data`不会被混淆。
 
-    <!-- @[optionExample_enablePropertyObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->    
-    
-    ``` TypeScript
-    // example.ts
-    export class MyClass01 {
-      data1: string;
-    }
-    ```
+   <!-- @[optionExample_enablePropertyObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->    
+   
+   ``` TypeScript
+   // example.ts
+   export class MyClass01 {
+     data1: string;
+   }
+   ```
 
 * ArkUI组件中的属性名不会被混淆。例如下面例子中的`message`和`data`不会被混淆。
 
-    <!-- @[etsOptionExample_enablePropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ets) -->    
-    
-    ``` TypeScript
-    // example.ets
-    @Component struct MyExample {
-      @State message: string = "hello";
-      data: number[] = [];
-    
-      build() {
-      }
-    }
-    ```
+   <!-- @[etsOptionExample_enablePropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ets) -->    
+   
+   ``` TypeScript
+   // example.ets
+   @Component struct MyExample {
+     @State message: string = "hello";
+     data: number[] = [];
+   
+     build() {
+     }
+   }
+   ```
 
 * 被[保留选项指定的属性名](#-keep-property-name)不会被混淆。
 * SDK API列表中的属性名不会被混淆。SDK API列表是构建时从SDK中自动提取出来的一个名称列表，其缓存文件为systemApiCache.json，路径为工程目录下build/default/cache/{...}/release/obfuscation中。
 * 字符串字面量属性名不会被混淆。例如下面例子中的`firstName`和`personAge`不会被混淆。
 
-    <!-- @[optionExample_enablePropertyObfuscation3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->   
-    
-    ``` TypeScript
-    let person = {"firstName": "abc"};
-    person["personAge"] = 22;
-    ```
+   <!-- @[optionExample_enablePropertyObfuscation3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->   
+   
+   ``` TypeScript
+   let person = {"firstName": "abc"};
+   person["personAge"] = 22;
+   ```
 
 * 注解成员名不会被混淆。例如下面例子中的`authorName`和`revision`不会被混淆。
 
-    <!-- @[etsOptionExample_enablePropertyObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ets) -->   
-    
-    ``` TypeScript
-    @interface MyAnnotation1 {
-      authorName: string;
-      revision: number;
-    }
-    ```
+   <!-- @[etsOptionExample_enablePropertyObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ets) -->   
+   
+   ``` TypeScript
+   @interface MyAnnotation1 {
+     authorName: string;
+     revision: number;
+   }
+   ```
 
 ### -enable-string-property-obfuscation
 
@@ -353,14 +353,14 @@ TestA.i;
 
 根据上述配置，下面例子中的"firstName"和"personAge"混淆效果如下：
 
-<!-- @[optionExample_enableStringPropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
+   <!-- @[optionExample_enableStringPropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
 
-``` TypeScript
-let person = {"firstName": "abc"};
-person["personAge"] = 22;
-```
+   ``` TypeScript
+   let person = {"firstName": "abc"};
+   person["personAge"] = 22;
+   ```
 
-```ts
+   ```ts
 // 混淆后：
 let person = {"a": "abc"};
 person["b"] = 22;
@@ -687,23 +687,23 @@ let uType1: UserTuple1 = ["Tom", 18, true];
 
 * -keep entry.src.main.ets.entryability
 
-    ```json
-    //使用前
-    {
-      "entry.src.main.ets.entryability.StaticDemo": {
-        "#obfName": "a",
-      }
-    }
-    ```
+   ```json
+   //使用前
+   {
+     "entry.src.main.ets.entryability.StaticDemo": {
+       "#obfName": "a",
+     }
+   }
+   ```
 
-    ```json
-    //使用后
-    {
-      "entry.src.main.ets.entryability.StaticDemo": {
-        "#obfName": "entry.src.main.ets.entryability.a"
-      }  
-    }
-    ```
+   ```json
+   //使用后
+   {
+     "entry.src.main.ets.entryability.StaticDemo": {
+       "#obfName": "entry.src.main.ets.entryability.a"
+     }  
+   }
+   ```
 
 **2.** 保留指定包下的内容不混淆。
 
@@ -716,61 +716,61 @@ let uType1: UserTuple1 = ["Tom", 18, true];
 
 * -keep package entry.src.main.ets.entryability.StaticDemo { message01: [f64](#字节码keep中使用的类型说明（ArkTS-Sta）);}
 
-    ```typescript
-    //StaticDemo.ets
+   ```typescript
+   //StaticDemo.ets
 
-    type type01 = number;
-    let message01: type01 = 1;
-    ```
+   type type01 = number;
+   let message01: type01 = 1;
+   ```
 
-    ```json
-    //使用前
-    {
-      "entry.src.main.ets.entryability.StaticDemo": {
-        "#obfName": "a",
-        "message01": "d"
-      }
-    }
-    ```
+   ```json
+   //使用前
+   {
+     "entry.src.main.ets.entryability.StaticDemo": {
+       "#obfName": "a",
+       "message01": "d"
+     }
+   }
+   ```
 
-    ```json
-    //使用后
-    {
-      "entry.src.main.ets.entryability.StaticDemo": {
-        "#obfName": "entry.src.main.ets.entryability.StaticDemo",
-        "message01": "message01"
-      }
-    }
-    ```
+   ```json
+   //使用后
+   {
+     "entry.src.main.ets.entryability.StaticDemo": {
+       "#obfName": "entry.src.main.ets.entryability.StaticDemo",
+       "message01": "message01"
+     }
+   }
+   ```
 
 * -keep package entry.src.main.ets.entryability.StaticDemo { uType: [std.core.Tuple3](#字节码keep中使用的类型说明（ArkTS-Sta）);} 保留元组的名称。`Tuple3`表示Tuple有3个参数。
 
-    ```typescript
-    //StaticDemo.ets
+   ```typescript
+   //StaticDemo.ets
 
-    type UserTuple = [string, number, boolean];
-    let uType: UserTuple = ["Tom", 18, true];
-    ```
+   type UserTuple = [string, number, boolean];
+   let uType: UserTuple = ["Tom", 18, true];
+   ```
 
-    ```json
-    //使用前
-    {
-      "entry.src.main.ets.entryability.StaticDemo": {
-        "#obfName": "a",
-        "uType": "g"
-      }
-    }
-    ```
+   ```json
+   //使用前
+   {
+     "entry.src.main.ets.entryability.StaticDemo": {
+       "#obfName": "a",
+       "uType": "g"
+     }
+   }
+   ```
 
-    ```json
-    //使用后
-    {
-      "entry.src.main.ets.entryability.StaticDemo": {
-        "#obfName": "entry.src.main.ets.entryability.StaticDemo",
-        "uType": "uType"
-      }
-    }
-    ```
+   ```json
+   //使用后
+   {
+     "entry.src.main.ets.entryability.StaticDemo": {
+       "#obfName": "entry.src.main.ets.entryability.StaticDemo",
+       "uType": "uType"
+     }
+   }
+   ```
 
 * 使用 -keep package entry.src.main.ets.entryability.StaticDemo { fooTest1(std.core.FunctionR1): [std.core.Function1](#字节码keep中使用的类型说明（ArkTS-Sta）);},
 
@@ -780,45 +780,45 @@ let uType1: UserTuple1 = ["Tom", 18, true];
   
   Function1的1表示函数有一个参数，FunctionR2的R表示使用可变参数，2表示有两个参数。
 
-    ```typescript
-    //StaticDemo.ets
+   ```typescript
+   //StaticDemo.ets
 
-    function fooTest1(func1:(a:number, ...args:number[])=>number):(a:number)=>number  {
-        return (a:number)=>func1(a, 3);
-    }
+   function fooTest1(func1:(a:number, ...args:number[])=>number):(a:number)=>number  {
+       return (a:number)=>func1(a, 3);
+   }
 
-    function fooTest2(func1:(a:number, b:number, ...args:number[])=>number):(a:number)=>number  {
-        return (a:number)=>func1(a, 3);
-    }
+   function fooTest2(func1:(a:number, b:number, ...args:number[])=>number):(a:number)=>number  {
+       return (a:number)=>func1(a, 3);
+   }
 
-    function fooTest3(func1:(a:number, ...args:number[])=>number):(a:number, ...args:number[])=>number  {
-        return (a:number, ...args:number[])=>func1(a, 3);
-    }
-    ```
+   function fooTest3(func1:(a:number, ...args:number[])=>number):(a:number, ...args:number[])=>number  {
+       return (a:number, ...args:number[])=>func1(a, 3);
+   }
+   ```
 
-    ```json5
-    //使用前
-    {
-      "entry.src.main.ets.entryability.StaticDemo": {
-        "#obfName": "a",
-        "fooTest1:std.core.FunctionR1;std.core.Function1;": "b",
-        "fooTest2:std.core.FunctionR2;std.core.Function1;": "a",
-        "fooTest3:std.core.FunctionR1;std.core.FunctionR1;": "a",
-      }
-    }
-    ```
+   ```json5
+   //使用前
+   {
+     "entry.src.main.ets.entryability.StaticDemo": {
+       "#obfName": "a",
+       "fooTest1:std.core.FunctionR1;std.core.Function1;": "b",
+       "fooTest2:std.core.FunctionR2;std.core.Function1;": "a",
+       "fooTest3:std.core.FunctionR1;std.core.FunctionR1;": "a",
+     }
+   }
+   ```
 
-    ```json5
-    //使用后
-    {
-      "entry.src.main.ets.entryability.StaticDemo": {
-        "#obfName": "entry.src.main.ets.entryability.StaticDemo",
-        "fooTest1:std.core.FunctionR1;std.core.Function1;": "fooTest1",
-        "fooTest2:std.core.FunctionR2;std.core.Function1;": "fooTest2",
-        "fooTest3:std.core.FunctionR1;std.core.FunctionR1;": "fooTest3"
-      }
-    }
-    ```
+   ```json5
+   //使用后
+   {
+     "entry.src.main.ets.entryability.StaticDemo": {
+       "#obfName": "entry.src.main.ets.entryability.StaticDemo",
+       "fooTest1:std.core.FunctionR1;std.core.Function1;": "fooTest1",
+       "fooTest2:std.core.FunctionR2;std.core.Function1;": "fooTest2",
+       "fooTest3:std.core.FunctionR1;std.core.FunctionR1;": "fooTest3"
+     }
+   }
+   ```
 
 **3.** 保留指定文件中的某个函数不混淆。
 
@@ -830,32 +830,32 @@ let uType1: UserTuple1 = ["Tom", 18, true];
 
 * -keep package entry.src.main.ets.entryability.StaticDemo { getDemoName():void;}
 
-    ```typescript
-    //StaticDemo.ets
+   ```typescript
+   //StaticDemo.ets
 
-    function getDemoName() {
-    }
-    ```
+   function getDemoName() {
+   }
+   ```
 
-    ```json5
-    //使用前
-    {
-      "entry.src.main.ets.entryability.StaticDemo": {
-        "#obfName": "a",
-        "getDemoName:void;": "a"
-      }
-    }
-    ```
+   ```json5
+   //使用前
+   {
+     "entry.src.main.ets.entryability.StaticDemo": {
+       "#obfName": "a",
+       "getDemoName:void;": "a"
+     }
+   }
+   ```
 
-    ```json5
-    //使用后
-    {
-      "entry.src.main.ets.entryability.StaticDemo": {
-        "#obfName": "entry.src.main.ets.entryability.StaticDemo",
-        "getDemoName:void;": "getDemoName"
-      }
-    }
-    ```
+   ```json5
+   //使用后
+   {
+     "entry.src.main.ets.entryability.StaticDemo": {
+       "#obfName": "entry.src.main.ets.entryability.StaticDemo",
+       "getDemoName:void;": "getDemoName"
+     }
+   }
+   ```
 
 **4.** 保留带特定注解的类。
 
@@ -867,49 +867,49 @@ let uType1: UserTuple1 = ["Tom", 18, true];
 
 * -keep @testAnnoClass class entry.src.main.ets.entryability.StaticDemo.* {*;}
 
-    ```typescript
-    //Annotations.ets
+   ```typescript
+   //Annotations.ets
 
-    export @interface testAnnoClass {
-        prop1: number = 123;
-        prop2: string = "testAnno" ;
-    }
+   export @interface testAnnoClass {
+       prop1: number = 123;
+       prop2: string = "testAnno" ;
+   }
 
-    //StaticDemo.ets
+   //StaticDemo.ets
 
-    import {testAnnoClass} from '../Annotations'
+   import {testAnnoClass} from '../Annotations'
 
-    @testAnnoClass({prop1 : 123 , prop2 : "testAnno"})
-    class ClassName03 {
-        public static ClassMember03 : number = 3;
-    }
-    ```
+   @testAnnoClass({prop1 : 123 , prop2 : "testAnno"})
+   class ClassName03 {
+       public static ClassMember03 : number = 3;
+   }
+   ```
 
-    ```json5
-    //使用前
-    {
-      "entry.src.main.ets.entryability.StaticDemo": {
-        "#obfName": "a",
-        "ClassName03": {
-          "#obfName": "a",
-          "ClassMember03": "d"
-        }
-      }
-    }
-    ```
+   ```json5
+   //使用前
+   {
+     "entry.src.main.ets.entryability.StaticDemo": {
+       "#obfName": "a",
+       "ClassName03": {
+         "#obfName": "a",
+         "ClassMember03": "d"
+       }
+     }
+   }
+   ```
 
-    ```json5
-    //使用后
-    {
-      "entry.src.main.ets.entryability.StaticDemo": {
-        "#obfName": "a",
-        "ClassName03": {
-          "#obfName": "ClassName03",
-          "ClassMember03": "ClassMember03"
-        }
-      }
-    }
-    ```
+   ```json5
+   //使用后
+   {
+     "entry.src.main.ets.entryability.StaticDemo": {
+       "#obfName": "a",
+       "ClassName03": {
+         "#obfName": "ClassName03",
+         "ClassMember03": "ClassMember03"
+       }
+     }
+   }
+   ```
 
 **5.** 保留所有继承自特定基类的子类。
 
@@ -921,48 +921,48 @@ let uType1: UserTuple1 = ["Tom", 18, true];
 
 * -keep class entry.src.main.ets.entryability.StaticDemo.* extends entry.src.main.ets.BaseClass.BaseClass {*;}
 
-    ```typescript
-    //BaseClass.ets
+   ```typescript
+   //BaseClass.ets
 
-    export class BaseClass {
-        prop1: number = 100;
-        prop2: string = "baseClass" ;
-    }
+   export class BaseClass {
+       prop1: number = 100;
+       prop2: string = "baseClass" ;
+   }
 
-    //StaticDemo.ets
+   //StaticDemo.ets
 
-    import {BaseClass} from '../BaseClass'
+   import {BaseClass} from '../BaseClass'
 
-    class ClassName02 extends BaseClass {
-        public static ClassMember02 : number = 2;
-    }
-    ```
+   class ClassName02 extends BaseClass {
+       public static ClassMember02 : number = 2;
+   }
+   ```
 
-    ```json5
-    //使用前
-    {
-      "entry.src.main.ets.entryability.StaticDemo": {
-        "#obfName": "a",
-        "ClassName02": {
-          "#obfName": "a",
-          "ClassMember02": "e"
-        }
-      }
-    }
-    ```
+   ```json5
+   //使用前
+   {
+     "entry.src.main.ets.entryability.StaticDemo": {
+       "#obfName": "a",
+       "ClassName02": {
+         "#obfName": "a",
+         "ClassMember02": "e"
+       }
+     }
+   }
+   ```
 
-    ```json5
-    //使用后
-    {
-      "entry.src.main.ets.entryability.StaticDemo": {
-        "#obfName": "a",
-        "ClassName02": {
-          "#obfName": "ClassName02",
-          "ClassMember02": "ClassMember02"
-        }
-      }
-    }
-    ```
+   ```json5
+   //使用后
+   {
+     "entry.src.main.ets.entryability.StaticDemo": {
+       "#obfName": "a",
+       "ClassName02": {
+         "#obfName": "ClassName02",
+         "ClassMember02": "ClassMember02"
+       }
+     }
+   }
+   ```
 
 **6.** 保留注解的类或接口类。
 
@@ -974,38 +974,38 @@ let uType1: UserTuple1 = ["Tom", 18, true];
 
 * -keep interface entry.src.main.ets.Annotations.testAnnoClass
 
-    ```typescript
-    //Annotations.ets
+   ```typescript
+   //Annotations.ets
 
-    export @interface testAnnoClass {
-        prop1: number = 123;
-        prop2: string = "testAnno" ;
-    }
-    ```
+   export @interface testAnnoClass {
+       prop1: number = 123;
+       prop2: string = "testAnno" ;
+   }
+   ```
 
-    ```json5
-    //使用前
-    {
-      "entry.src.main.ets.Annotations": {
-        "#obfName": "b",
-        "testAnnoClass": {
-          "#obfName": "a"
-        }
-      }
-    }
-    ```
+   ```json5
+   //使用前
+   {
+     "entry.src.main.ets.Annotations": {
+       "#obfName": "b",
+       "testAnnoClass": {
+         "#obfName": "a"
+       }
+     }
+   }
+   ```
 
-    ```json5
-    //使用后
-    {
-      "entry.src.main.ets.Annotations": {
-        "#obfName": "b",
-        "testAnnoClass": {
-          "#obfName": "testAnnoClass"
-        }
-      }
-    }
-    ```
+   ```json5
+   //使用后
+   {
+     "entry.src.main.ets.Annotations": {
+       "#obfName": "b",
+       "testAnnoClass": {
+         "#obfName": "testAnnoClass"
+       }
+     }
+   }
+   ```
 
 **使用该选项时，需要注意以下事项：**
 
@@ -1033,25 +1033,25 @@ ArkTS-Sta的字节码混淆：
 
 * -keep-file-name entry.src.main.ets.entryability.StaticDemo
 
-    ```json
-    //使用前
-    {
-      "entry.src.main.ets.entryability.StaticDemo": {
-        "#obfName": "a",
-        "uType1": "m"
-      }
-    }
-    ```
+   ```json
+   //使用前
+   {
+     "entry.src.main.ets.entryability.StaticDemo": {
+       "#obfName": "a",
+       "uType1": "m"
+     }
+   }
+   ```
 
-    ```json
-    //使用后
-    {
-      "entry.src.main.ets.entryability.StaticDemo": {
-        "#obfName": "entry.src.main.ets.entryability.StaticDemo",
-        "uType1": "m"
-      }
-    }
-    ```
+   ```json
+   //使用后
+   {
+     "entry.src.main.ets.entryability.StaticDemo": {
+       "#obfName": "entry.src.main.ets.entryability.StaticDemo",
+       "uType1": "m"
+     }
+   }
+   ```
 
 **下列文件名应该被保留**
 
@@ -1336,45 +1336,45 @@ export namespace Ns {
 
 * -keep-class-with-members class entry.src.main.ets.entryability.StaticDemo.ClassTest {name: [std.core.String](#字节码keep中使用的类型说明（ArkTS-Sta）);}
 
-    ```typescript
-    //StaticDemo.ets
+   ```typescript
+   //StaticDemo.ets
 
-    class ClassTest{
-        public static age: number = 10;
-        name: string = "test";
-        sex: number = 0;
-    }
-    ```
+   class ClassTest{
+       public static age: number = 10;
+       name: string = "test";
+       sex: number = 0;
+   }
+   ```
 
-    ```json
-    //使用前
-    {
-      "entry.src.main.ets.entryability.StaticDemo": {
-        "#obfName": "a",
-        "ClassTest": {
-          "#obfName": "b",
-          "name": "b",
-          "age": "c",
-          "sex": "a"
-        }
-      }
-    }
-    ```
+   ```json
+   //使用前
+   {
+     "entry.src.main.ets.entryability.StaticDemo": {
+       "#obfName": "a",
+       "ClassTest": {
+         "#obfName": "b",
+         "name": "b",
+         "age": "c",
+         "sex": "a"
+       }
+     }
+   }
+   ```
 
-    ```json
-    //使用后
-    {
-      "entry.src.main.ets.entryability.StaticDemo": {
-        "#obfName": "a",
-        "ClassTest": {
-          "#obfName": "ClassTest",
-          "name": "name",
-          "age": "b",
-          "sex": "a"
-        }
-      }
-    }
-    ```
+   ```json
+   //使用后
+   {
+     "entry.src.main.ets.entryability.StaticDemo": {
+       "#obfName": "a",
+       "ClassTest": {
+         "#obfName": "ClassTest",
+         "name": "name",
+         "age": "b",
+         "sex": "a"
+       }
+     }
+   }
+   ```
 
 ### -keep-class-members
 
@@ -1391,45 +1391,45 @@ export namespace Ns {
 
 * -keep-class-members class entry.src.main.ets.entryability.StaticDemo.ClassTest {name: [std.core.String](#字节码keep中使用的类型说明（ArkTS-Sta）);}
 
-    ```typescript
-    //StaticDemo.ets
+   ```typescript
+   //StaticDemo.ets
 
-    class ClassTest{
-        public static age: number = 10;
-        name: string = "test";
-        sex: number = 0;
-    }
-    ```
+   class ClassTest{
+       public static age: number = 10;
+       name: string = "test";
+       sex: number = 0;
+   }
+   ```
 
-    ```json
-    //使用前
-    {
-      "entry.src.main.ets.entryability.StaticDemo": {
-        "#obfName": "a",
-        "ClassTest": {
-          "#obfName": "b",
-          "name": "b",
-          "age": "c",
-          "sex": "a"
-        }
-      }
-    }
-    ```
+   ```json
+   //使用前
+   {
+     "entry.src.main.ets.entryability.StaticDemo": {
+       "#obfName": "a",
+       "ClassTest": {
+         "#obfName": "b",
+         "name": "b",
+         "age": "c",
+         "sex": "a"
+       }
+     }
+   }
+   ```
 
-    ```json
-    //使用后
-    {
-      "entry.src.main.ets.entryability.StaticDemo": {
-        "#obfName": "a",
-        "ClassTest": {
-          "#obfName": "b",
-          "name": "name",
-          "age": "b",
-          "sex": "a"
-        }
-      }
-    }
-    ```
+   ```json
+   //使用后
+   {
+     "entry.src.main.ets.entryability.StaticDemo": {
+       "#obfName": "a",
+       "ClassTest": {
+         "#obfName": "b",
+         "name": "name",
+         "age": "b",
+         "sex": "a"
+       }
+     }
+   }
+   ```
 
 ## 字节码混淆保留选项支持的通配符
 
@@ -1769,60 +1769,60 @@ toplevel和文件通配符使用方式如下：
 **使用示例：**
 
 * 保留entry.src.main.ets目录下（包含子目录）所有以2为结尾命名的文件名：
-    ```txt
-    -keep-file-name entry.src.main.ets.**2
-    ```
+   ```txt
+   -keep-file-name entry.src.main.ets.**2
+   ```
 
 * 保留entry.src.main.ets.entryability目录下abcdcba文件名：
 
-    ```txt
-    -keep-file-name entry.src.main.ets.entryability.?b*d<2>b<1>
-    ```
+   ```txt
+   -keep-file-name entry.src.main.ets.entryability.?b*d<2>b<1>
+   ```
 
 * 保留StaticDemo文件内的函数getDemoName()：
 
-    ```txt
-    -keep package entry.src.main.ets.entryability.StaticDemo { getDemoName():%;}
-    ```
+   ```txt
+   -keep package entry.src.main.ets.entryability.StaticDemo { getDemoName():%;}
+   ```
   和`-keep package entry.src.main.ets.entryability.StaticDemo { getDemoName():void;}` 用法效果一致。
 
 * 表示路径a.b下所有文件夹（不包含子文件夹）对应的路径不会被混淆：
 
-    ```txt
-    -keep a.b.*
-    ```
+   ```txt
+   -keep a.b.*
+   ```
 
   例如：-keep entry.src.main.ets.*
 
-  ```json
-  {
-    "entry.src.main.ets.entryability.testFile": {
+   ```json
+   {
+     "entry.src.main.ets.entryability.testFile": {
       "#obfName": "entry.src.main.ets.entryability.a"
-    },
-    "entry.src.main.ets.pages.Test2": {
+     },
+   "entry.src.main.ets.pages.Test2": {
       "#obfName": "entry.src.main.ets.pages.a"
-    }
-  }
+     }
+   }
   ```
 
 * 表示路径a.b.下所有文件夹（包含子文件夹）对应的路径不会被混淆：
 
-    ```txt
-    -keep a.b.**
-    ```
+   ```txt
+   -keep a.b.**
+   ```
 
   例如：-keep entry.src.main.**
 
-  ```json
-  {
-    "entry.src.main.ets.entryability.testFile": {
-      "#obfName": "entry.src.main.ets.entryability.a"
-    },
-    "entry.src.main.ets.pages.Test2": {
-      "#obfName": "entry.src.main.ets.pages.a"
-    }
-  }
-  ```
+   ```json
+   {
+     "entry.src.main.ets.entryability.testFile": {
+       "#obfName": "entry.src.main.ets.entryability.a"
+     },
+     "entry.src.main.ets.pages.Test2": {
+       "#obfName": "entry.src.main.ets.pages.a"
+     }
+   }
+   ```
 
 **使用通配符时，需要注意以下事项：**
   
