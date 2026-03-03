@@ -421,3 +421,7 @@ job.Await();
 |PRIORITY_LOW|1|线程优先级低。|
 |PRIORITY_DEFAULT|2|线程优先级中。|
 |PRIORITY_HIGH|3|线程优先级高。|
+
+## FAQ
+### 如何进行异常处理
+EAWorker中运行的任务如果出现未捕获的异常，可以通过[Await](../native-lib/job.md#await)来选择合适的线程进行异常处理，具体请参考[迁移文档](../../quick-start/arkts-dyn-to-sta-worker-migration-guide.md)。
