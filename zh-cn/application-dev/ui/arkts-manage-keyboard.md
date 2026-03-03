@@ -236,12 +236,12 @@ struct demo_text_1 {
 系统路由表配置
 
 在跳转目标模块的配置文件module.json5添加路由表配置
-```json
+```json5
 {
   "module": {
-    //...
+    // ...
     "routerMap": "$profile:route_map",
-    //...
+    // ...
   }
 }
 
@@ -249,7 +249,7 @@ struct demo_text_1 {
 
 在工程resources/base/profile中创建route_map.json文件。添加如下配置信息
 
-```json
+```json5
 // route_map.json
 {
   "routerMap": [
