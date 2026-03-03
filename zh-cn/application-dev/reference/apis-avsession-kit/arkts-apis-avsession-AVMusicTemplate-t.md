@@ -9,7 +9,7 @@
 >
 > 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-## NoParamAsyncCallback<sup>23+</sup>
+## NoParamAsyncCallback
 
 type NoParamAsyncCallback = () => Promise&lt;void&gt;
 
@@ -17,11 +17,11 @@ type NoParamAsyncCallback = () => Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-## QueryMainTabsEvent<sup>23+</sup>
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+
+## QueryMainTabsEvent
 
 type QueryMainTabsEvent = () => Promise<MediaTab[]>
 
@@ -29,21 +29,21 @@ type QueryMainTabsEvent = () => Promise<MediaTab[]>
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **返回值：**
 
-| 类型                                                                          | 说明                                |
-|-----------------------------------------------------------------------------| ----------------------------------- |
-| Promise<[MediaTab](arkts-apis-avsession-AVMusicTemplate-i.md#mediatab23)[]> | Promise对象。返回媒体标签页的集合。 |
+| 类型                                                                        | 说明                                |
+|---------------------------------------------------------------------------| ----------------------------------- |
+| Promise<[MediaTab](arkts-apis-avsession-AVMusicTemplate-i.md#mediatab)[]> | Promise对象。返回媒体标签页的集合。 |
 
 **示例：**
 
-请参考[onQueryMainTabs](arkts-apis-avsession-AVMusicTemplate.md#onquerymaintabs23)的示例。
+请参考[onQueryMainTabs](arkts-apis-avsession-AVMusicTemplate.md#onquerymaintabs)的示例。
 
-## QueryMediaTabContentEvent<sup>23+</sup>
+## QueryMediaTabContentEvent
 
 type QueryMediaTabContentEvent = (tabId: string) => Promise&lt;MediaTabContent&gt;
 
@@ -51,9 +51,9 @@ type QueryMediaTabContentEvent = (tabId: string) => Promise&lt;MediaTabContent&g
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
@@ -63,15 +63,15 @@ type QueryMediaTabContentEvent = (tabId: string) => Promise&lt;MediaTabContent&g
 
 **返回值：**
 
-| 类型                                                                                      | 说明                              |
-|-----------------------------------------------------------------------------------------| --------------------------------- |
-| Promise<[MediaTabContent](arkts-apis-avsession-AVMusicTemplate-i.md#mediatabcontent23)> | Promise对象。返回媒体标签页内容。 |
+| 类型                                                                                    | 说明                              |
+|---------------------------------------------------------------------------------------| --------------------------------- |
+| Promise<[MediaTabContent](arkts-apis-avsession-AVMusicTemplate-i.md#mediatabcontent)> | Promise对象。返回媒体标签页内容。 |
 
 **示例：**
 
-请参考[onQueryMediaTabContent](arkts-apis-avsession-AVMusicTemplate.md#onquerymediatabcontent23)的示例。
+请参考[onQueryMediaTabContent](arkts-apis-avsession-AVMusicTemplate.md#onquerymediatabcontent)的示例。
 
-## QueryMediaEntityEvent<sup>23+</sup>
+## QueryMediaEntityEvent
 
 type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise&lt;PageMediaEntity&gt;
 
@@ -79,27 +79,27 @@ type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise&lt;PageM
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
-| 参数名 | 类型                                                                                         | 必填 | 说明                 |
-| ------ |--------------------------------------------------------------------------------------------| ---- | -------------------- |
-| params | [QueryMediaEntityParam](arkts-apis-avsession-AVMusicTemplate-i.md#querymediaentityparam23) | 是   | 查询媒体实例的参数。 |
+| 参数名 | 类型                                                                                       | 必填 | 说明                 |
+| ------ |------------------------------------------------------------------------------------------| ---- | -------------------- |
+| params | [QueryMediaEntityParam](arkts-apis-avsession-AVMusicTemplate-i.md#querymediaentityparam) | 是   | 查询媒体实例的参数。 |
 
 **返回值：**
 
-| 类型                                                                                      | 说明                              |
-|-----------------------------------------------------------------------------------------| --------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity23)> | Promise对象。返回分页内容的对象。 |
+| 类型                                                                                    | 说明                              |
+|---------------------------------------------------------------------------------------| --------------------------------- |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回分页内容的对象。 |
 
 **示例：**
 
-请参考[onQueryMediaEntity](arkts-apis-avsession-AVMusicTemplate.md#onquerymediaentity23)的示例。
+请参考[onQueryMediaEntity](arkts-apis-avsession-AVMusicTemplate.md#onquerymediaentity)的示例。
 
-## QueryCompilationEvent<sup>23+</sup>
+## QueryCompilationEvent
 
 type QueryCompilationEvent = (compilationId: string, pageIndex: int) => Promise&lt;PageMediaEntity&gt;
 
@@ -107,9 +107,9 @@ type QueryCompilationEvent = (compilationId: string, pageIndex: int) => Promise&
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
@@ -120,15 +120,15 @@ type QueryCompilationEvent = (compilationId: string, pageIndex: int) => Promise&
 
 **返回值：**
 
-| 类型                                                                                      | 说明                              |
-|-----------------------------------------------------------------------------------------| --------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity23)> | Promise对象。返回分页内容的对象。 |
+| 类型                                                                                    | 说明                              |
+|---------------------------------------------------------------------------------------| --------------------------------- |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回分页内容的对象。 |
 
 **示例：**
 
-请参考[onQueryCompilation](arkts-apis-avsession-AVMusicTemplate.md#onquerycompilation23)的示例。
+请参考[onQueryCompilation](arkts-apis-avsession-AVMusicTemplate.md#onquerycompilation)的示例。
 
-## QueryPlaylistEvent<sup>23+</sup>
+## QueryPlaylistEvent
 
 type QueryPlaylistEvent = (pageIndex: int, sort: Sort) => Promise&lt;PageMediaEntity&gt;
 
@@ -136,28 +136,28 @@ type QueryPlaylistEvent = (pageIndex: int, sort: Sort) => Promise&lt;PageMediaEn
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名    | 类型                                                     | 必填 | 说明           |
-| --------- | -------------------------------------------------------- | ---- | -------------- |
-| pageIndex | int                                                      | 是   | 页面的索引。   |
-| sort      | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort23) | 是   | 排序的枚举值。 |
+| --------- | ------------------------------------------------------ | ---- | -------------- |
+| pageIndex | int                                                    | 是   | 页面的索引。   |
+| sort      | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort) | 是   | 排序的枚举值。 |
 
 **返回值：**
 
-| 类型                                                                                      | 说明                              |
-|-----------------------------------------------------------------------------------------| --------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity23)> | Promise对象。返回分页内容的对象。 |
+| 类型                                                                                    | 说明                              |
+|---------------------------------------------------------------------------------------| --------------------------------- |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回分页内容的对象。 |
 
 **示例：**
 
-请参考[onQueryPlaylist](arkts-apis-avsession-AVMusicTemplate.md#onqueryplaylist23)的示例。
+请参考[onQueryPlaylist](arkts-apis-avsession-AVMusicTemplate.md#onqueryplaylist)的示例。
 
-## QueryCurrentSingleEvent<sup>23+</sup>
+## QueryCurrentSingleEvent
 
 type QueryCurrentSingleEvent = () => Promise&lt;Single&gt;
 
@@ -165,21 +165,21 @@ type QueryCurrentSingleEvent = () => Promise&lt;Single&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **返回值：**
 
 | 类型                                                         | 说明                          |
 | ------------------------------------------------------------ | ----------------------------- |
-| Promise<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single23)> | Promise对象。返回Single对象。 |
+| Promise<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single)> | Promise对象。返回Single对象。 |
 
 **示例：**
 
-请参考[onQueryCurrentSingle](arkts-apis-avsession-AVMusicTemplate.md#onquerycurrentsingle23)的示例。
+请参考[onQueryCurrentSingle](arkts-apis-avsession-AVMusicTemplate.md#onquerycurrentsingle)的示例。
 
-## QueryCompilationByKeywordEvent<sup>23+</sup>
+## QueryCompilationByKeywordEvent
 
 type QueryCompilationByKeywordEvent = (keyword: string) => Promise&lt;Compilation[]&gt;
 
@@ -187,9 +187,9 @@ type QueryCompilationByKeywordEvent = (keyword: string) => Promise&lt;Compilatio
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
@@ -199,15 +199,15 @@ type QueryCompilationByKeywordEvent = (keyword: string) => Promise&lt;Compilatio
 
 **返回值：**
 
-| 类型                                                                                | 说明                          |
-|-----------------------------------------------------------------------------------| ----------------------------- |
-| Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md#compilation23)[]> | Promise对象。返回合集的数组。 |
+| 类型                                                                              | 说明                          |
+|---------------------------------------------------------------------------------| ----------------------------- |
+| Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md#compilation)[]> | Promise对象。返回合集的数组。 |
 
 **示例：**
 
-请参考[onQueryCompilationByKeyword](arkts-apis-avsession-AVMusicTemplate.md#onquerycompilationbykeyword23)的示例。
+请参考[onQueryCompilationByKeyword](arkts-apis-avsession-AVMusicTemplate.md#onquerycompilationbykeyword)的示例。
 
-## QueryMediaEntityByKeywordEvent<sup>23+</sup>
+## QueryMediaEntityByKeywordEvent
 
 type QueryMediaEntityByKeywordEvent = (keyword: string, searchType: EntityType, pageIndex: int) => Promise&lt;PageMediaEntity&gt;
 
@@ -215,29 +215,29 @@ type QueryMediaEntityByKeywordEvent = (keyword: string, searchType: EntityType, 
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
-| 参数名     | 类型                                                                   | 必填 | 说明                   |
-| ---------- |----------------------------------------------------------------------| ---- | ---------------------- |
-| keyword    | string                                                               | 是   | 用于查找媒体的关键字。 |
-| searchType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype23) | 是   | 要搜索的媒体资源类型。 |
-| pageIndex  | int                                                                  | 是   | 页面的索引。从0开始。  |
+| 参数名     | 类型                                                                 | 必填 | 说明                   |
+| ---------- |--------------------------------------------------------------------| ---- | ---------------------- |
+| keyword    | string                                                             | 是   | 用于查找媒体的关键字。 |
+| searchType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 是   | 要搜索的媒体资源类型。 |
+| pageIndex  | int                                                                | 是   | 页面的索引。从0开始。  |
 
 **返回值：**
 
-| 类型                                                                                      | 说明                          |
-|-----------------------------------------------------------------------------------------| ----------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity23)> | Promise对象。返回分页的实体。 |
+| 类型                                                                                    | 说明                          |
+|---------------------------------------------------------------------------------------| ----------------------------- |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回分页的实体。 |
 
 **示例：**
 
-请参考[onQueryMediaEntityByKeyword](arkts-apis-avsession-AVMusicTemplate.md#onquerymediaentitybykeyword23)的示例。
+请参考[onQueryMediaEntityByKeyword](arkts-apis-avsession-AVMusicTemplate.md#onquerymediaentitybykeyword)的示例。
 
-## QueryRecommendMediaEntityListEvent<sup>23+</sup>
+## QueryRecommendMediaEntityListEvent
 
 type QueryRecommendMediaEntityListEvent = () => Promise&lt;MediaEntity[]&gt;
 
@@ -245,21 +245,21 @@ type QueryRecommendMediaEntityListEvent = () => Promise&lt;MediaEntity[]&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **返回值：**
 
-| 类型                                                                                | 说明                              |
-|-----------------------------------------------------------------------------------| --------------------------------- |
-| Promise<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23)[]> | Promise对象。返回媒体实例的数组。 |
+| 类型                                                                              | 说明                              |
+|---------------------------------------------------------------------------------| --------------------------------- |
+| Promise<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[]> | Promise对象。返回媒体实例的数组。 |
 
 **示例：**
 
-请参考[onQueryRecommendMediaEntityList](arkts-apis-avsession-AVMusicTemplate.md#onqueryrecommendmediaentitylist23)的示例。
+请参考[onQueryRecommendMediaEntityList](arkts-apis-avsession-AVMusicTemplate.md#onqueryrecommendmediaentitylist)的示例。
 
-## QueryHotWordsEvent<sup>23+</sup>
+## QueryHotWordsEvent
 
 type QueryHotWordsEvent = () => Promise&lt;string[]&gt;
 
@@ -267,9 +267,9 @@ type QueryHotWordsEvent = () => Promise&lt;string[]&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **返回值：**
 
@@ -279,9 +279,9 @@ type QueryHotWordsEvent = () => Promise&lt;string[]&gt;
 
 **示例：**
 
-请参考[onQueryHotWords](arkts-apis-avsession-AVMusicTemplate.md#onqueryhotwords23)的示例。
+请参考[onQueryHotWords](arkts-apis-avsession-AVMusicTemplate.md#onqueryhotwords)的示例。
 
-## QuerySearchHistoryEvent<sup>23+</sup>
+## QuerySearchHistoryEvent
 
 type QuerySearchHistoryEvent = () => Promise&lt;string[]&gt;
 
@@ -289,9 +289,9 @@ type QuerySearchHistoryEvent = () => Promise&lt;string[]&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **返回值：**
 
@@ -301,9 +301,9 @@ type QuerySearchHistoryEvent = () => Promise&lt;string[]&gt;
 
 **示例：**
 
-请参考[onQuerySearchHistory](arkts-apis-avsession-AVMusicTemplate.md#onquerysearchhistory23)的示例。
+请参考[onQuerySearchHistory](arkts-apis-avsession-AVMusicTemplate.md#onquerysearchhistory)的示例。
 
-## ClearSearchHistoryEvent<sup>23+</sup>
+## ClearSearchHistoryEvent
 
 type ClearSearchHistoryEvent = () => Promise&lt;OperResult&gt;
 
@@ -311,21 +311,21 @@ type ClearSearchHistoryEvent = () => Promise&lt;OperResult&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **返回值：**
 
-| 类型                                                                            | 说明                              |
-|-------------------------------------------------------------------------------| --------------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)> | Promise对象。返回操作结果的对象。 |
+| 类型                                                                          | 说明                              |
+|-----------------------------------------------------------------------------| --------------------------------- |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果的对象。 |
 
 **示例：**
 
-请参考[onClearSearchHistory](arkts-apis-avsession-AVMusicTemplate.md#onclearsearchhistory23)的示例。
+请参考[onClearSearchHistory](arkts-apis-avsession-AVMusicTemplate.md#onclearsearchhistory)的示例。
 
-## LoginEvent<sup>23+</sup>
+## LoginEvent
 
 type LoginEvent = (controlType: LoginType, id?: string) => Promise&lt;QrCodeInfo[]&gt;
 
@@ -333,28 +333,28 @@ type LoginEvent = (controlType: LoginType, id?: string) => Promise&lt;QrCodeInfo
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
-| 参数名      | 类型                       | 必填 | 说明       |
-| ----------- | ------------------------- | ---- | ---------- |
-| controlType | [LoginType](#logintype23) | 是   | 登录类型。 |
-| id          | string                    | 否   | id。       |
+| 参数名      | 类型                      | 必填 | 说明       |
+| ----------- | ----------------------- | ---- | ---------- |
+| controlType | [LoginType](#logintype) | 是   | 登录类型。 |
+| id          | string                  | 否   | id。       |
 
 **返回值：**
 
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise<[QrCodeInfo](arkts-apis-avsession-AVMusicTemplate-i.md#qrcodeinfo23)[]> | Promise对象。返回二维码信息的数组。 |
+| Promise<[QrCodeInfo](arkts-apis-avsession-AVMusicTemplate-i.md#qrcodeinfo)[]> | Promise对象。返回二维码信息的数组。 |
 
 **示例：**
 
-请参考[onLogin](arkts-apis-avsession-AVMusicTemplate.md#onlogin23)的示例。
+请参考[onLogin](arkts-apis-avsession-AVMusicTemplate.md#onlogin)的示例。
 
-## LoginType<sup>23+</sup>
+## LoginType
 
 type LoginType = 'queryLoginInfo' | 'refreshLoginInfo' | 'cancel' | 'logout'
 
@@ -364,9 +364,9 @@ type LoginType = 'queryLoginInfo' | 'refreshLoginInfo' | 'cancel' | 'logout'
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | 类型               | 说明           |
 | ------------------ | -------------- |
@@ -375,7 +375,7 @@ type LoginType = 'queryLoginInfo' | 'refreshLoginInfo' | 'cancel' | 'logout'
 | 'cancel'           | 取消。         |
 | 'logout'           | 退出登录。     |
 
-## RequestDialogInfoEvent<sup>23+</sup>
+## RequestDialogInfoEvent
 
 type RequestDialogInfoEvent = (actionType: DialogActionType, actionInfo?: DialogActionInfo) => Promise&lt;DialogInfo&gt;
 
@@ -383,28 +383,28 @@ type RequestDialogInfoEvent = (actionType: DialogActionType, actionInfo?: Dialog
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
-| 参数名     | 类型                                                         | 必填 | 说明                 |
-| ---------- | ----------------------------------------------------------- | ---- | -------------------- |
-| actionType | [DialogActionType](#dialogactiontype23)                     | 是   | 弹框类型。           |
-| actionInfo | [DialogActionInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialogactioninfo23) | 否   | 弹框动作结果的信息。 |
+| 参数名     | 类型                                                        | 必填 | 说明                 |
+| ---------- | --------------------------------------------------------- | ---- | -------------------- |
+| actionType | [DialogActionType](#dialogactiontype)                     | 是   | 弹框类型。           |
+| actionInfo | [DialogActionInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialogactioninfo) | 否   | 弹框动作结果的信息。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo23)> | Promise对象。返回弹框信息。 |
+| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo)> | Promise对象。返回弹框信息。 |
 
 **示例：**
 
-请参考[onRequestDialogInfo](arkts-apis-avsession-AVMusicTemplate.md#onrequestdialoginfo23)的示例。
+请参考[onRequestDialogInfo](arkts-apis-avsession-AVMusicTemplate.md#onrequestdialoginfo)的示例。
 
-## DialogActionType<sup>23+</sup>
+## DialogActionType
 
 type DialogActionType = 'open' | 'close' | 'refresh'
 
@@ -414,9 +414,9 @@ type DialogActionType = 'open' | 'close' | 'refresh'
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | 类型      | 说明   |
 | --------- | ------ |
@@ -424,7 +424,7 @@ type DialogActionType = 'open' | 'close' | 'refresh'
 | 'close'   | 关闭。 |
 | 'refresh' | 刷新。 |
 
-## HandleMemberPurchaseEvent<sup>23+</sup>
+## HandleMemberPurchaseEvent
 
 type HandleMemberPurchaseEvent = (info: MemberPurchaseInfo) => Promise&lt;DialogInfo&gt;
 
@@ -432,27 +432,27 @@ type HandleMemberPurchaseEvent = (info: MemberPurchaseInfo) => Promise&lt;Dialog
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| info   | [MemberPurchaseInfo](arkts-apis-avsession-AVMusicTemplate-i.md#memberpurchaseinfo23) | 是   | 购买会员的信息。 |
+| info   | [MemberPurchaseInfo](arkts-apis-avsession-AVMusicTemplate-i.md#memberpurchaseinfo) | 是   | 购买会员的信息。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo23)> | Promise对象。返回弹框信息。 |
+| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo)> | Promise对象。返回弹框信息。 |
 
 **示例：**
 
-请参考[onHandleMemberPurchase](arkts-apis-avsession-AVMusicTemplate.md#onhandlememberpurchase23)的示例。
+请参考[onHandleMemberPurchase](arkts-apis-avsession-AVMusicTemplate.md#onhandlememberpurchase)的示例。
 
-## QueryMemberPurchaseEvent<sup>23+</sup>
+## QueryMemberPurchaseEvent
 
 type QueryMemberPurchaseEvent = (memberPurchaseType: MemberPurchaseType) => Promise&lt;MemberPurchaseInfo[]&gt;
 
@@ -460,27 +460,27 @@ type QueryMemberPurchaseEvent = (memberPurchaseType: MemberPurchaseType) => Prom
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名             | 类型                                                         | 必填 | 说明             |
 | ------------------ | ------------------------------------------------------------ | ---- | ---------------- |
-| memberPurchaseType | [MemberPurchaseType](arkts-apis-avsession-AVMusicTemplate-e.md#memberpurchasetype23) | 是   | 购买会员的类型。 |
+| memberPurchaseType | [MemberPurchaseType](arkts-apis-avsession-AVMusicTemplate-e.md#memberpurchasetype) | 是   | 购买会员的类型。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                                  |
 | ------------------------------------------------------------ | ------------------------------------- |
-| Promise<[MemberPurchaseInfo](arkts-apis-avsession-AVMusicTemplate-i.md#memberpurchaseinfo23)[]> | Promise对象。返回会员购买信息的数组。 |
+| Promise<[MemberPurchaseInfo](arkts-apis-avsession-AVMusicTemplate-i.md#memberpurchaseinfo)[]> | Promise对象。返回会员购买信息的数组。 |
 
 **示例：**
 
-请参考[onQueryMemberPurchase](arkts-apis-avsession-AVMusicTemplate.md#onquerymemberpurchase23)的示例。
+请参考[onQueryMemberPurchase](arkts-apis-avsession-AVMusicTemplate.md#onquerymemberpurchase)的示例。
 
-## QueryCustomContentEvent<sup>23+</sup>
+## QueryCustomContentEvent
 
 type QueryCustomContentEvent = (queryType: CustomType[]) => Promise&lt;CustomElement&gt;
 
@@ -488,27 +488,27 @@ type QueryCustomContentEvent = (queryType: CustomType[]) => Promise&lt;CustomEle
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
-| 参数名    | 类型                           | 必填 | 说明                                        |
-| --------- | ----------------------------- | ---- | ------------------------------------------- |
-| queryType | [CustomType](#customtype23)[] | 是   | 自定义类型：包含用户基本信息、界面选项卡配置、代码编译选项和系统设置项。 |
+| 参数名    | 类型                          | 必填 | 说明                                        |
+| --------- | --------------------------- | ---- | ------------------------------------------- |
+| queryType | [CustomType](#customtype)[] | 是   | 自定义类型：包含用户基本信息、界面选项卡配置、代码编译选项和系统设置项。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                                    |
 | ------------------------------------------------------------ | --------------------------------------- |
-| Promise<[CustomElement](arkts-apis-avsession-AVMusicTemplate-i.md#customelement23)> | Promise对象。返回我的页面的自定义元素。 |
+| Promise<[CustomElement](arkts-apis-avsession-AVMusicTemplate-i.md#customelement)> | Promise对象。返回我的页面的自定义元素。 |
 
 **示例：**
 
-请参考[onQueryCustomContent](arkts-apis-avsession-AVMusicTemplate.md#onquerycustomcontent23)的示例。
+请参考[onQueryCustomContent](arkts-apis-avsession-AVMusicTemplate.md#onquerycustomcontent)的示例。
 
-## CustomType<sup>23+</sup>
+## CustomType
 
 type CustomType = 'USER_INFO' | 'TAB' | 'COMPILATION' | 'SETTINGS'
 
@@ -518,9 +518,9 @@ type CustomType = 'USER_INFO' | 'TAB' | 'COMPILATION' | 'SETTINGS'
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | 类型          | 说明       |
 | ------------- | ---------- |
@@ -529,7 +529,7 @@ type CustomType = 'USER_INFO' | 'TAB' | 'COMPILATION' | 'SETTINGS'
 | 'COMPILATION' | 合集。     |
 | 'SETTINGS'    | 设置。     |
 
-## DownloadMediaEntityEvent<sup>23+</sup>
+## DownloadMediaEntityEvent
 
 type DownloadMediaEntityEvent = (controlType: DownloadControlType, mediaEntity: MediaEntity) => Promise&lt;OperResult&gt;
 
@@ -537,28 +537,28 @@ type DownloadMediaEntityEvent = (controlType: DownloadControlType, mediaEntity: 
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名      | 类型                                                         | 必填 | 说明                                       |
-| ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
-| controlType | [DownloadControlType](#downloadcontroltype23)                | 是   | controlType的可选项包括：用户信息，选项卡，合集，设置。 |
-| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23) | 是   | 媒体实例。                                 |
+| ----------- | ---------------------------------------------------------- | ---- | ------------------------------------------ |
+| controlType | [DownloadControlType](#downloadcontroltype)                | 是   | controlType的可选项包括：用户信息，选项卡，合集，设置。 |
+| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity) | 是   | 媒体实例。                                 |
 
 **返回值：**
 
 | 类型                                                         | 说明                            |
 | ------------------------------------------------------------ | ------------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)> | Promise对象。返回操作结果对象。 |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果对象。 |
 
 **示例：**
 
-请参考[onDownloadMediaEntity](arkts-apis-avsession-AVMusicTemplate.md#ondownloadmediaentity23)的示例。
+请参考[onDownloadMediaEntity](arkts-apis-avsession-AVMusicTemplate.md#ondownloadmediaentity)的示例。
 
-## DownloadControlType<sup>23+</sup>
+## DownloadControlType
 
 type DownloadControlType = 'startDownload' | 'deleteDownload' | 'resumeDownload' | 'pauseDownload'
 
@@ -568,9 +568,9 @@ type DownloadControlType = 'startDownload' | 'deleteDownload' | 'resumeDownload'
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | 类型             | 说明       |
 | ---------------- | ---------- |
@@ -579,7 +579,7 @@ type DownloadControlType = 'startDownload' | 'deleteDownload' | 'resumeDownload'
 | 'resumeDownload' | 恢复下载。 |
 | 'pauseDownload'  | 暂停下载。 |
 
-## SettingsChangeEvent<sup>23+</sup>
+## SettingsChangeEvent
 
 type SettingsChangeEvent = (settingItem: SettingItem) => Promise&lt;SettingItem&gt;
 
@@ -587,27 +587,27 @@ type SettingsChangeEvent = (settingItem: SettingItem) => Promise&lt;SettingItem&
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名      | 类型                                                         | 必填 | 说明     |
 | ----------- | ------------------------------------------------------------ | ---- | -------- |
-| settingItem | [SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem23) | 是   | 设置项。 |
+| settingItem | [SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem) | 是   | 设置项。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                      |
 | ------------------------------------------------------------ | ------------------------- |
-| Promise<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem23)> | Promise对象。返回设置项。 |
+| Promise<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem)> | Promise对象。返回设置项。 |
 
 **示例：**
 
-请参考[onSettingsChange](arkts-apis-avsession-AVMusicTemplate.md#onsettingschange23)的示例。
+请参考[onSettingsChange](arkts-apis-avsession-AVMusicTemplate.md#onsettingschange)的示例。
 
-## ProblemAndAdviceEvent<sup>23+</sup>
+## ProblemAndAdviceEvent
 
 type ProblemAndAdviceEvent = (advice: string) => Promise&lt;OperResult&gt;
 
@@ -615,9 +615,9 @@ type ProblemAndAdviceEvent = (advice: string) => Promise&lt;OperResult&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
@@ -629,13 +629,13 @@ type ProblemAndAdviceEvent = (advice: string) => Promise&lt;OperResult&gt;
 
 | 类型                                                         | 说明                            |
 | ------------------------------------------------------------ | ------------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)> | Promise对象。返回操作结果对象。 |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果对象。 |
 
 **示例：**
 
-请参考[onProblemAndAdvice](arkts-apis-avsession-AVMusicTemplate.md#onproblemandadvice23)的示例。
+请参考[onProblemAndAdvice](arkts-apis-avsession-AVMusicTemplate.md#onproblemandadvice)的示例。
 
-## PlayForSearchEvent<sup>23+</sup>
+## PlayForSearchEvent
 
 type PlayForSearchEvent = (command: SearchPlayInfoType, args: SearchPlayInfo) => Promise&lt;OperResult&gt;
 
@@ -643,28 +643,28 @@ type PlayForSearchEvent = (command: SearchPlayInfoType, args: SearchPlayInfo) =>
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名  | 类型                                                         | 必填 | 说明             |
 | ------- | ------------------------------------------------------------ | ---- | ---------------- |
-| command | [SearchPlayInfoType](arkts-apis-avsession-AVMusicTemplate-e.md#searchplayinfotype23) | 是   | 搜播信息的类型。 |
-| args    | [SearchPlayInfo](arkts-apis-avsession-AVMusicTemplate-i.md#searchplayinfo23) | 是   | 搜播信息。       |
+| command | [SearchPlayInfoType](arkts-apis-avsession-AVMusicTemplate-e.md#searchplayinfotype) | 是   | 搜播信息的类型。 |
+| args    | [SearchPlayInfo](arkts-apis-avsession-AVMusicTemplate-i.md#searchplayinfo) | 是   | 搜播信息。       |
 
 **返回值：**
 
 | 类型                                                         | 说明                            |
 | ------------------------------------------------------------ | ------------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)> | Promise对象。返回操作结果对象。 |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果对象。 |
 
 **示例：**
 
-请参考[onPlayForSearch](arkts-apis-avsession-AVMusicTemplate.md#onplayforsearch23)的示例。
+请参考[onPlayForSearch](arkts-apis-avsession-AVMusicTemplate.md#onplayforsearch)的示例。
 
-## ExecuteActionEvent<sup>23+</sup>
+## ExecuteActionEvent
 
 type ExecuteActionEvent = (actionType: string, params: string) => Promise&lt;string&gt;
 
@@ -672,9 +672,9 @@ type ExecuteActionEvent = (actionType: string, params: string) => Promise&lt;str
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
@@ -691,9 +691,9 @@ type ExecuteActionEvent = (actionType: string, params: string) => Promise&lt;str
 
 **示例：**
 
-请参考[onExecuteAction](arkts-apis-avsession-AVMusicTemplate.md#onexecuteaction23)的示例。
+请参考[onExecuteAction](arkts-apis-avsession-AVMusicTemplate.md#onexecuteaction)的示例。
 
-## PlayMediaEntityEvent<sup>23+</sup>
+## PlayMediaEntityEvent
 
 type PlayMediaEntityEvent = (mediaEntity: MediaEntity) => Promise&lt;void&gt;
 
@@ -701,21 +701,21 @@ type PlayMediaEntityEvent = (mediaEntity: MediaEntity) => Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名      | 类型                                                         | 必填 | 说明       |
 | ----------- | ------------------------------------------------------------ | ---- | ---------- |
-| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23) | 是   | 媒体实体。 |
+| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity) | 是   | 媒体实体。 |
 
 **示例：**
 
-请参考[onPlayMediaEntity](arkts-apis-avsession-AVMusicTemplate.md#onplaymediaentity23)的示例。
+请参考[onPlayMediaEntity](arkts-apis-avsession-AVMusicTemplate.md#onplaymediaentity)的示例。
 
-## FavoriteMediaEntityEvent<sup>23+</sup>
+## FavoriteMediaEntityEvent
 
 type FavoriteMediaEntityEvent = (actionType: MediaFavoriteType, mediaEntity: MediaEntity) => Promise&lt;OperResult&gt;
 
@@ -723,16 +723,16 @@ type FavoriteMediaEntityEvent = (actionType: MediaFavoriteType, mediaEntity: Med
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
-| 参数名      | 类型                                                         | 必填 | 说明       |
-| ----------- | ------------------------------------------------------------ | ---- | ---------- |
-| actionType  | [MediaFavoriteType](#mediafavoritetype23)                   | 是   | 操作类型。 |
-| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23) | 是   | 媒体实体。 |
+| 参数名      | 类型                                                        | 必填 | 说明       |
+| ----------- | ---------------------------------------------------------- | ---- | ---------- |
+| actionType  | [MediaFavoriteType](#mediafavoritetype)                   | 是   | 操作类型。 |
+| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity) | 是   | 媒体实体。 |
 
 **返回值：**
 
@@ -742,9 +742,9 @@ type FavoriteMediaEntityEvent = (actionType: MediaFavoriteType, mediaEntity: Med
 
 **示例：**
 
-请参考[onFavoriteMediaEntity](arkts-apis-avsession-AVMusicTemplate.md#onfavoritemediaentity23)的示例。
+请参考[onFavoriteMediaEntity](arkts-apis-avsession-AVMusicTemplate.md#onfavoritemediaentity)的示例。
 
-## MediaFavoriteType<sup>23+</sup>
+## MediaFavoriteType
 
 type MediaFavoriteType = 'addFavorite' | 'removeFavorite'
 
@@ -754,16 +754,16 @@ type MediaFavoriteType = 'addFavorite' | 'removeFavorite'
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | 类型             | 说明       |
 | ---------------- | ---------- |
 | 'addFavorite'    | 添加收藏。 |
 | 'removeFavorite' | 取消收藏。 |
 
-## DialogControlType<sup>23+</sup>
+## DialogControlType
 
 type DialogControlType = 'open' | 'close' | 'refresh' | 'toast'
 
@@ -773,9 +773,9 @@ type DialogControlType = 'open' | 'close' | 'refresh' | 'toast'
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | 类型      | 说明   |
 | --------- | ------ |
@@ -784,7 +784,7 @@ type DialogControlType = 'open' | 'close' | 'refresh' | 'toast'
 | 'refresh' | 刷新。 |
 | 'toast'   | 提示。 |
 
-## ActionType<sup>23+</sup>
+## ActionType
 
 type ActionType = 'add' | 'remove'
 
@@ -794,16 +794,16 @@ type ActionType = 'add' | 'remove'
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | 类型     | 说明   |
 | -------- | ------ |
 | 'add'    | 添加。 |
 | 'remove' | 移除。 |
 
-## ReportDialogCommandEvent<sup>23+</sup>
+## ReportDialogCommandEvent
 
 type ReportDialogCommandEvent = (type: DialogControlType, buttonInfo: DialogInfo) => void
 
@@ -811,22 +811,22 @@ type ReportDialogCommandEvent = (type: DialogControlType, buttonInfo: DialogInfo
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
-| 参数名     | 类型                                                         | 必填 | 说明           |
-| ---------- | ----------------------------------------------------------- | ---- | -------------- |
-| type       | [DialogControlType](#dialogcontroltype23)                   | 是   | 弹框控制类型。 |
-| buttonInfo | [DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo23) | 是   | 弹框信息。     |
+| 参数名     | 类型                                                        | 必填 | 说明           |
+| ---------- | --------------------------------------------------------- | ---- | -------------- |
+| type       | [DialogControlType](#dialogcontroltype)                   | 是   | 弹框控制类型。 |
+| buttonInfo | [DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo) | 是   | 弹框信息。     |
 
 **示例：**
 
-请参考[onDialogCommandChange](arkts-apis-avsession-AVMusicTemplateController.md#ondialogcommandchange23)的示例。
+请参考[onDialogCommandChange](arkts-apis-avsession-AVMusicTemplateController.md#ondialogcommandchange)的示例。
 
-## ReportTabContentEvent<sup>23+</sup>
+## ReportTabContentEvent
 
 type ReportTabContentEvent = (tabId: string, tabContent: MediaTabContent) => void
 
@@ -834,22 +834,22 @@ type ReportTabContentEvent = (tabId: string, tabContent: MediaTabContent) => voi
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名     | 类型                                                         | 必填 | 说明           |
 | ---------- | ------------------------------------------------------------ | ---- | -------------- |
 | tabId      | string                                                       | 是   | 标签页的ID。   |
-| tabContent | [MediaTabContent](arkts-apis-avsession-AVMusicTemplate-i.md#mediatabcontent23) | 是   | 标签页的内容。 |
+| tabContent | [MediaTabContent](arkts-apis-avsession-AVMusicTemplate-i.md#mediatabcontent) | 是   | 标签页的内容。 |
 
 **示例：**
 
-请参考[onTabContentChange](arkts-apis-avsession-AVMusicTemplateController.md#ontabcontentchange23)的示例。
+请参考[onTabContentChange](arkts-apis-avsession-AVMusicTemplateController.md#ontabcontentchange)的示例。
 
-## ReportCustomElementsChangeEvent<sup>23+</sup>
+## ReportCustomElementsChangeEvent
 
 type ReportCustomElementsChangeEvent = (actionType: ActionType, customType: CustomType, customElement: CustomElement) => void
 
@@ -857,23 +857,23 @@ type ReportCustomElementsChangeEvent = (actionType: ActionType, customType: Cust
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
-| 参数名        | 类型                                                         | 必填 | 说明         |
-| ------------- | ----------------------------------------------------------- | ---- | ------------ |
-| actionType    | [ActionType](#actiontype23)                                | 是   | 操作类型。   |
-| customType    | [CustomType](#customtype23)                                 | 是   | 自定义类型。 |
-| customElement | [CustomElement](arkts-apis-avsession-AVMusicTemplate-i.md#customelement23) | 是   | 自定义元素。 |
+| 参数名        | 类型                                                      | 必填 | 说明         |
+| ------------- | ------------------------------------------------------- | ---- | ------------ |
+| actionType    | [ActionType](#actiontype)                               | 是   | 操作类型。   |
+| customType    | [CustomType](#customtype)                               | 是   | 自定义类型。 |
+| customElement | [CustomElement](arkts-apis-avsession-AVMusicTemplate-i.md#customelement) | 是   | 自定义元素。 |
 
 **示例：**
 
-请参考[onCustomElementsChange](arkts-apis-avsession-AVMusicTemplateController.md#oncustomelementschange23)的示例。
+请参考[onCustomElementsChange](arkts-apis-avsession-AVMusicTemplateController.md#oncustomelementschange)的示例。
 
-## ReportExecuteActionEvent<sup>23+</sup>
+## ReportExecuteActionEvent
 
 type ReportExecuteActionEvent = (actionType: string, params: string) => void
 
@@ -881,9 +881,9 @@ type ReportExecuteActionEvent = (actionType: string, params: string) => void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
@@ -894,9 +894,9 @@ type ReportExecuteActionEvent = (actionType: string, params: string) => void
 
 **示例：**
 
-请参考[onReportExecuteAction](arkts-apis-avsession-AVMusicTemplateController.md#onreportexecuteaction23)的示例。
+请参考[onReportExecuteAction](arkts-apis-avsession-AVMusicTemplateController.md#onreportexecuteaction)的示例。
 
-## ReportExecuteAbilityEvent<sup>23+</sup>
+## ReportExecuteAbilityEvent
 
 type ReportExecuteAbilityEvent = (want: WantAgent) => void
 
@@ -904,9 +904,9 @@ type ReportExecuteAbilityEvent = (want: WantAgent) => void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
@@ -916,4 +916,4 @@ type ReportExecuteAbilityEvent = (want: WantAgent) => void
 
 **示例：**
 
-请参考[onExtensionAbilityChange](arkts-apis-avsession-AVMusicTemplateController.md#onextensionabilitychange23)的示例。
+请参考[onExtensionAbilityChange](arkts-apis-avsession-AVMusicTemplateController.md#onextensionabilitychange)的示例。

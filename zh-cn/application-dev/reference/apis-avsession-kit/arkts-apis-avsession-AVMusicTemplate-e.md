@@ -9,29 +9,29 @@
 >
 > 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-## AVMusicTemplateType<sup>23+</sup>
+## AVMusicTemplateType
 
 音频模板类型的枚举。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | 名称    | 值         | 说明     |
 | ------- | ---------- | -------- |
 | DEFAULT | 'smartCar' | 智选车。 |
 
-## EntityType<sup>23+</sup>
+## EntityType
 
 媒体资源类型的枚举。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | 名称          | 值   | 说明         |
 | ------------- | ---- | ------------ |
@@ -43,15 +43,15 @@
 | BANNER        | 5    | 海报类型。   |
 | RADIO_STATION | 6    | 电台类型。   |
 
-## PlaybackState<sup>23+</sup>
+## PlaybackState
 
 媒体资源的播放状态的枚举。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | 名称                     | 值   | 说明       |
 | ------------------------ | ---- | ---------- |
@@ -63,15 +63,15 @@
 | PLAYBACK_STATE_ERROR     | 5    | 错误状态。 |
 | PLAYBACK_STATE_BUFFERING | 6    | 缓冲状态。 |
 
-## Sort<sup>23+</sup>
+## Sort
 
 排序类型的枚举。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | 名称          | 值   | 说明   |
 | ------------- | ---- | ------ |
@@ -79,15 +79,15 @@
 | ORDER         | 1    | 正序。 |
 | REVERSE_ORDER | 2    | 倒序。 |
 
-## SettingType<sup>23+</sup>
+## SettingType
 
 设置类型的枚举。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | 名称   | 值   | 说明                                             |
 | ------ | ---- | ------------------------------------------------ |
@@ -95,15 +95,15 @@
 | LIST   | 1    | 列表设置，用于从多个选项中选择一个选项。 |
 | JUMP   | 2    | 跳转设置，用于跳转到另一个界面。             |
 
-## DialogType<sup>23+</sup>
+## DialogType
 
 弹框类型的枚举。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | 名称     | 值   | 说明       |
 | -------- | ---- | ---------- |
@@ -116,60 +116,60 @@
 | ERROR    | 6    | 错误弹框。 |
 | UNKNOWN  | 7    | 未知弹框。 |
 
-## ButtonType<sup>23+</sup>
+## ButtonType
 
 按钮类型的枚举。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | 名称      | 值   | 说明       |
 | --------- | ---- | ---------- |
 | NORMAL    | 0    | 正常按钮。 |
 | EMPHASIZE | 1    | 强调按钮。 |
 
-## MemberPurchaseType<sup>23+</sup>
+## MemberPurchaseType
 
 会员购买类型的枚举。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | 名称   | 值       | 说明   |
 | ------ | -------- | ------ |
 | NORMAL | 'normal' | 常规。 |
 | BANNER | 'banner' | 横幅。 |
 
-## SearchPlayInfoType<sup>23+</sup>
+## SearchPlayInfoType
 
 搜播信息类型的枚举。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | 名称       | 值          | 说明       |
 | ---------- | ----------- | ---------- |
 | PLAY_MUSIC | 'playMusic' | 播放音乐。 |
 | PLAY_VIDEO | 'playVideo' | 播放视频。 |
 
-## DownloadStatus<sup>23+</sup>
+## DownloadStatus
 
 下载状态类型的枚举。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | 名称             | 值   | 说明       |
 | ---------------- | ---- | ---------- |

@@ -10,7 +10,7 @@
 >
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-调用[avMusicTemplate.createAVMusicTemplate](arkts-apis-avsession-AVMusicTemplate-f.md#avmusictemplatecreateavmusictemplate23)后，返回实例，可以获得ID，启动音频模板界面，设置数据获取方法，同步数据给模板控制方，以及执行其他相关操作。
+调用[avMusicTemplate.createAVMusicTemplate](arkts-apis-avsession-AVMusicTemplate-f.md#avmusictemplatecreateavmusictemplate)后，返回实例，可以获得ID，启动音频模板界面，设置数据获取方法，同步数据给模板控制方，以及执行其他相关操作。
 
 ## 导入模块
 
@@ -22,9 +22,9 @@ import { aVMusicTemplate } from '@kit.AVSessionKit';
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | 名称       | 类型   | 只读 | 可选 | 说明                 |
 | :--------- | :----- | :--- | :--- | :------------------- |
@@ -56,9 +56,9 @@ export class TemplateManager {
   }
 
   /**
-   * 获取模板控制器实例
+   * 获取模板控制器实例。
    *
-   * @returns 模板控制器实例
+   * @returns 模板控制器实例。
    */
   public static getInstance(): TemplateManager {
     if (!TemplateManager.sInstance) {
@@ -68,7 +68,7 @@ export class TemplateManager {
   };
 
   /**
-   * 创建音频模板
+   * 创建音频模板。
    */
   public createTemplate() {
     if (this.template) {
@@ -85,7 +85,7 @@ export class TemplateManager {
 }
 ```
 
-## startTemplate<sup>23+</sup>
+## startTemplate
 
 startTemplate(): Promise&lt;OperResult&gt;
 
@@ -93,15 +93,15 @@ startTemplate(): Promise&lt;OperResult&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **返回值：**
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise\<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)> | Promise对象。返回操作结果。 |
+| Promise\<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果。 |
 
 **错误码：**
 
@@ -120,7 +120,7 @@ export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
 
   /**
-   * 模拟开启模板
+   * 模拟开启模板。
    */
   public startTemplate() {
     this.template?.startTemplate();
@@ -128,7 +128,7 @@ export class TemplateManager {
 }
 ```
 
-## onQueryMainTabs<sup>23+</sup>
+## onQueryMainTabs
 
 onQueryMainTabs(callback: QueryMainTabsEvent): void
 
@@ -136,15 +136,15 @@ onQueryMainTabs(callback: QueryMainTabsEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明               |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
-| callback | [QueryMainTabsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymaintabsevent23) | 是   | 查询主选项卡回调。 |
+| callback | [QueryMainTabsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymaintabsevent) | 是   | 查询主选项卡回调。 |
 
 **返回值：**
 
@@ -179,7 +179,7 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offQueryMainTabs();
@@ -188,7 +188,7 @@ export class TemplateManager {
   /**
    * 模拟获取主界面的所有TAB。
    *
-   * @returns Promise类型MediaTab数组
+   * @returns Promise类型MediaTab数组。
    */
   private async getMainTabs(): Promise<avMusicTemplate.MediaTab[]> {
     let homeTab: avMusicTemplate.MediaTab = {
@@ -205,7 +205,7 @@ export class TemplateManager {
 }
 ```
 
-## offQueryMainTabs<sup>23+</sup>
+## offQueryMainTabs
 
 offQueryMainTabs(callback?: QueryMainTabsEvent): void
 
@@ -213,15 +213,15 @@ offQueryMainTabs(callback?: QueryMainTabsEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明               |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
-| callback | [QueryMainTabsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymaintabsevent23) | 否   | 查询主选项卡回调。 |
+| callback | [QueryMainTabsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymaintabsevent) | 否   | 查询主选项卡回调。 |
 
 **返回值：**
 
@@ -231,9 +231,9 @@ offQueryMainTabs(callback?: QueryMainTabsEvent): void
 
 **示例：**
 
-请参考[onQueryMainTabs](#onquerymaintabs23)的示例。
+请参考[onQueryMainTabs](#onquerymaintabs)的示例。
 
-## onQueryMediaTabContent<sup>23+</sup>
+## onQueryMediaTabContent
 
 onQueryMediaTabContent(callback: QueryMediaTabContentEvent): void
 
@@ -241,15 +241,15 @@ onQueryMediaTabContent(callback: QueryMediaTabContentEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                       |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| callback | [QueryMediaTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediatabcontentevent23) | 是   | 查询媒体标签页内容的事件。 |
+| callback | [QueryMediaTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediatabcontentevent) | 是   | 查询媒体标签页内容的事件。 |
 
 **返回值：**
 
@@ -284,7 +284,7 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offQueryMediaTabContent();
@@ -308,7 +308,7 @@ export class TemplateManager {
   /**
    * 模拟获取合集数据。
    *
-   * @returns 合集
+   * @returns 合集。
    */
   private async createCompilation(): Promise<avMusicTemplate.Compilation> {
     let mediaEntity: avMusicTemplate.MediaEntity = await this.createMediaEntity();
@@ -325,9 +325,9 @@ export class TemplateManager {
   };
 
   /**
-   * 模拟获取媒体数据
+   * 模拟获取媒体数据。
    *
-   * @returns 媒体数据
+   * @returns 媒体数据。
    */
   private async createMediaEntity(): Promise<avMusicTemplate.MediaEntity> {
     let mediaEntity: avMusicTemplate.MediaEntity = {
@@ -344,7 +344,7 @@ export class TemplateManager {
 }
 ```
 
-## offQueryMediaTabContent<sup>23+</sup>
+## offQueryMediaTabContent
 
 offQueryMediaTabContent(callback?: QueryMediaTabContentEvent): void
 
@@ -352,15 +352,15 @@ offQueryMediaTabContent(callback?: QueryMediaTabContentEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                           |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
-| callback | [QueryMediaTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediatabcontentevent23) | 否   | 查询媒体标签页内容的回调函数。 |
+| callback | [QueryMediaTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediatabcontentevent) | 否   | 查询媒体标签页内容的回调函数。 |
 
 **返回值：**
 
@@ -370,9 +370,9 @@ offQueryMediaTabContent(callback?: QueryMediaTabContentEvent): void
 
 **示例：**
 
-请参考[onQueryMediaTabContent](#onquerymediatabcontent23)的示例。
+请参考[onQueryMediaTabContent](#onquerymediatabcontent)的示例。
 
-## onQueryMediaEntity<sup>23+</sup>
+## onQueryMediaEntity
 
 onQueryMediaEntity(callback: QueryMediaEntityEvent): void
 
@@ -380,15 +380,15 @@ onQueryMediaEntity(callback: QueryMediaEntityEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentityevent23) | 是   | 查询媒体实体的事件。 |
+| callback | [QueryMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentityevent) | 是   | 查询媒体实体的事件。 |
 
 **返回值：**
 
@@ -424,7 +424,7 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offQueryMediaEntity();
@@ -450,9 +450,9 @@ export class TemplateManager {
   };
 
   /**
-   * 模拟获取媒体数据
+   * 模拟获取媒体数据。
    *
-   * @returns 媒体数据
+   * @returns 媒体数据。
    */
   private async createMediaEntity(): Promise<avMusicTemplate.MediaEntity> {
     let mediaEntity: avMusicTemplate.MediaEntity = {
@@ -469,7 +469,7 @@ export class TemplateManager {
 }
 ```
 
-## offQueryMediaEntity<sup>23+</sup>
+## offQueryMediaEntity
 
 offQueryMediaEntity(callback?: QueryMediaEntityEvent): void
 
@@ -477,15 +477,15 @@ offQueryMediaEntity(callback?: QueryMediaEntityEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentityevent23) | 否   | 查询媒体实体的事件。 |
+| callback | [QueryMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentityevent) | 否   | 查询媒体实体的事件。 |
 
 **返回值：**
 
@@ -495,9 +495,9 @@ offQueryMediaEntity(callback?: QueryMediaEntityEvent): void
 
 **示例：**
 
-请参考[onQueryMediaEntity](#onquerymediaentity23)的示例。
+请参考[onQueryMediaEntity](#onquerymediaentity)的示例。
 
-## onQueryCompilation<sup>23+</sup>
+## onQueryCompilation
 
 onQueryCompilation(callback: QueryCompilationEvent): void
 
@@ -505,15 +505,15 @@ onQueryCompilation(callback: QueryCompilationEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [QueryCompilationEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationevent23) | 是   | 查询合集的事件。 |
+| callback | [QueryCompilationEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationevent) | 是   | 查询合集的事件。 |
 
 **返回值：**
 
@@ -549,7 +549,7 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offQueryCompilation();
@@ -575,9 +575,9 @@ export class TemplateManager {
   };
 
   /**
-   * 模拟获取媒体数据
+   * 模拟获取媒体数据。
    *
-   * @returns 媒体数据
+   * @returns 媒体数据。
    */
   private async createMediaEntity(): Promise<avMusicTemplate.MediaEntity> {
     let mediaEntity: avMusicTemplate.MediaEntity = {
@@ -594,7 +594,7 @@ export class TemplateManager {
 }
 ```
 
-## offQueryCompilation<sup>23+</sup>
+## offQueryCompilation
 
 offQueryCompilation(callback?: QueryCompilationEvent): void
 
@@ -602,15 +602,15 @@ offQueryCompilation(callback?: QueryCompilationEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [QueryCompilationEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationevent23) | 否   | 查询合集的事件。 |
+| callback | [QueryCompilationEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationevent) | 否   | 查询合集的事件。 |
 
 **返回值：**
 
@@ -620,9 +620,9 @@ offQueryCompilation(callback?: QueryCompilationEvent): void
 
 **示例：**
 
-请参考[onQueryCompilation](#onquerycompilation23)的示例。
+请参考[onQueryCompilation](#onquerycompilation)的示例。
 
-## onQueryPlaylist<sup>23+</sup>
+## onQueryPlaylist
 
 onQueryPlaylist(callback: QueryPlaylistEvent): void
 
@@ -630,15 +630,15 @@ onQueryPlaylist(callback: QueryPlaylistEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryPlaylistEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryplaylistevent23) | 是   | 查询播放列表的事件。 |
+| callback | [QueryPlaylistEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryplaylistevent) | 是   | 查询播放列表的事件。 |
 
 **返回值：**
 
@@ -674,7 +674,7 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offQueryPlaylist();
@@ -700,9 +700,9 @@ export class TemplateManager {
   };
 
   /**
-   * 模拟获取媒体数据
+   * 模拟获取媒体数据。
    *
-   * @returns 媒体数据
+   * @returns 媒体数据。
    */
   private async createMediaEntity(): Promise<avMusicTemplate.MediaEntity> {
     let mediaEntity: avMusicTemplate.MediaEntity = {
@@ -719,7 +719,7 @@ export class TemplateManager {
 }
 ```
 
-## offQueryPlaylist<sup>23+</sup>
+## offQueryPlaylist
 
 offQueryPlaylist(callback?: QueryPlaylistEvent): void
 
@@ -727,15 +727,15 @@ offQueryPlaylist(callback?: QueryPlaylistEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryPlaylistEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryplaylistevent23) | 否   | 查询播放列表的事件。 |
+| callback | [QueryPlaylistEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryplaylistevent) | 否   | 查询播放列表的事件。 |
 
 **返回值：**
 
@@ -745,9 +745,9 @@ offQueryPlaylist(callback?: QueryPlaylistEvent): void
 
 **示例：**
 
-请参考[onQueryPlaylist](#onqueryplaylist23)的示例。
+请参考[onQueryPlaylist](#onqueryplaylist)的示例。
 
-## onQueryCurrentSingle<sup>23+</sup>
+## onQueryCurrentSingle
 
 onQueryCurrentSingle(callback: QueryCurrentSingleEvent): void
 
@@ -755,15 +755,15 @@ onQueryCurrentSingle(callback: QueryCurrentSingleEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryCurrentSingleEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycurrentsingleevent23) | 是   | 查询当前单曲的事件。 |
+| callback | [QueryCurrentSingleEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycurrentsingleevent) | 是   | 查询当前单曲的事件。 |
 
 **返回值：**
 
@@ -798,16 +798,16 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offQueryCurrentSingle();
   }
 
   /**
-   * 模拟获取当前单曲
+   * 模拟获取当前单曲。
    *
-   * @returns 当前单曲
+   * @returns 当前单曲。
    */
   private async createCurrentSingle(): Promise<avMusicTemplate.Single> {
     let playInfo: avMusicTemplate.PlayInfo = {
@@ -855,7 +855,7 @@ export class TemplateManager {
 }
 ```
 
-## offQueryCurrentSingle<sup>23+</sup>
+## offQueryCurrentSingle
 
 offQueryCurrentSingle(callback?: QueryCurrentSingleEvent): void
 
@@ -863,15 +863,15 @@ offQueryCurrentSingle(callback?: QueryCurrentSingleEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryCurrentSingleEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycurrentsingleevent23) | 否   | 查询当前单曲的事件。 |
+| callback | [QueryCurrentSingleEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycurrentsingleevent) | 否   | 查询当前单曲的事件。 |
 
 **返回值：**
 
@@ -881,9 +881,9 @@ offQueryCurrentSingle(callback?: QueryCurrentSingleEvent): void
 
 **示例：**
 
-请参考[onQueryCurrentSingle](#onquerycurrentsingle23)的示例。
+请参考[onQueryCurrentSingle](#onquerycurrentsingle)的示例。
 
-## onQueryCompilationByKeyword<sup>23+</sup>
+## onQueryCompilationByKeyword
 
 onQueryCompilationByKeyword(callback: QueryCompilationByKeywordEvent): void
 
@@ -891,15 +891,15 @@ onQueryCompilationByKeyword(callback: QueryCompilationByKeywordEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback | [QueryCompilationByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationbykeywordevent23) | 是   | 按关键字查询合集的事件。 |
+| callback | [QueryCompilationByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationbykeywordevent) | 是   | 按关键字查询合集的事件。 |
 
 **返回值：**
 
@@ -935,7 +935,7 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offQueryCompilationByKeyword();
@@ -944,7 +944,7 @@ export class TemplateManager {
   /**
    * 模拟获取合集数据。
    *
-   * @returns 合集
+   * @returns 合集。
    */
   private async createCompilation(): Promise<avMusicTemplate.Compilation> {
     let mediaEntity: avMusicTemplate.MediaEntity = await this.createMediaEntity();
@@ -961,9 +961,9 @@ export class TemplateManager {
   };
 
   /**
-   * 模拟获取媒体数据
+   * 模拟获取媒体数据。
    *
-   * @returns 媒体数据
+   * @returns 媒体数据。
    */
   private async createMediaEntity(): Promise<avMusicTemplate.MediaEntity> {
     let mediaEntity: avMusicTemplate.MediaEntity = {
@@ -980,7 +980,7 @@ export class TemplateManager {
 }
 ```
 
-## offQueryCompilationByKeyword<sup>23+</sup>
+## offQueryCompilationByKeyword
 
 offQueryCompilationByKeyword(callback?: QueryCompilationByKeywordEvent): void
 
@@ -988,15 +988,15 @@ offQueryCompilationByKeyword(callback?: QueryCompilationByKeywordEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback | [QueryCompilationByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationbykeywordevent23) | 否   | 按关键字查询合集的事件。 |
+| callback | [QueryCompilationByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationbykeywordevent) | 否   | 按关键字查询合集的事件。 |
 
 **返回值：**
 
@@ -1006,9 +1006,9 @@ offQueryCompilationByKeyword(callback?: QueryCompilationByKeywordEvent): void
 
 **示例：**
 
-请参考[onQueryCompilationByKeyword](#onquerycompilationbykeyword23)的示例。
+请参考[onQueryCompilationByKeyword](#onquerycompilationbykeyword)的示例。
 
-## onQueryMediaEntityByKeyword<sup>23+</sup>
+## onQueryMediaEntityByKeyword
 
 onQueryMediaEntityByKeyword(callback: QueryMediaEntityByKeywordEvent): void
 
@@ -1016,15 +1016,15 @@ onQueryMediaEntityByKeyword(callback: QueryMediaEntityByKeywordEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                         |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------- |
-| callback | [QueryMediaEntityByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentitybykeywordevent23) | 是   | 按关键字查询媒体实体的事件。 |
+| callback | [QueryMediaEntityByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentitybykeywordevent) | 是   | 按关键字查询媒体实体的事件。 |
 
 **返回值：**
 
@@ -1060,7 +1060,7 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offQueryMediaEntityByKeyword();
@@ -1086,9 +1086,9 @@ export class TemplateManager {
   };
 
   /**
-   * 模拟获取媒体数据
+   * 模拟获取媒体数据。
    *
-   * @returns 媒体数据
+   * @returns 媒体数据。
    */
   private async createMediaEntity(): Promise<avMusicTemplate.MediaEntity> {
     let mediaEntity: avMusicTemplate.MediaEntity = {
@@ -1105,7 +1105,7 @@ export class TemplateManager {
 }
 ```
 
-## offQueryMediaEntityByKeyword<sup>23+</sup>
+## offQueryMediaEntityByKeyword
 
 offQueryMediaEntityByKeyword(callback?: QueryMediaEntityByKeywordEvent): void
 
@@ -1113,15 +1113,15 @@ offQueryMediaEntityByKeyword(callback?: QueryMediaEntityByKeywordEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                         |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------- |
-| callback | [QueryMediaEntityByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentitybykeywordevent23) | 否   | 按关键字查询媒体实体的事件。 |
+| callback | [QueryMediaEntityByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentitybykeywordevent) | 否   | 按关键字查询媒体实体的事件。 |
 
 **返回值：**
 
@@ -1131,9 +1131,9 @@ offQueryMediaEntityByKeyword(callback?: QueryMediaEntityByKeywordEvent): void
 
 **示例：**
 
-请参考[onQueryMediaEntityByKeyword](#onquerymediaentitybykeyword23)的示例。
+请参考[onQueryMediaEntityByKeyword](#onquerymediaentitybykeyword)的示例。
 
-## onQueryRecommendMediaEntityList<sup>23+</sup>
+## onQueryRecommendMediaEntityList
 
 onQueryRecommendMediaEntityList(callback: QueryRecommendMediaEntityListEvent): void
 
@@ -1141,15 +1141,15 @@ onQueryRecommendMediaEntityList(callback: QueryRecommendMediaEntityListEvent): v
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback | [QueryRecommendMediaEntityListEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryrecommendmediaentitylistevent23) | 是   | 查询推荐媒体列表的事件。 |
+| callback | [QueryRecommendMediaEntityListEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryrecommendmediaentitylistevent) | 是   | 查询推荐媒体列表的事件。 |
 
 **返回值：**
 
@@ -1185,16 +1185,16 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offQueryRecommendMediaEntityList();
   }
 
   /**
-   * 模拟获取媒体数据
+   * 模拟获取媒体数据。
    *
-   * @returns 媒体数据
+   * @returns 媒体数据。
    */
   private async createMediaEntity(): Promise<avMusicTemplate.MediaEntity> {
     let mediaEntity: avMusicTemplate.MediaEntity = {
@@ -1211,7 +1211,7 @@ export class TemplateManager {
 }
 ```
 
-## offQueryRecommendMediaEntityList<sup>23+</sup>
+## offQueryRecommendMediaEntityList
 
 offQueryRecommendMediaEntityList(callback?: QueryRecommendMediaEntityListEvent): void
 
@@ -1219,15 +1219,15 @@ offQueryRecommendMediaEntityList(callback?: QueryRecommendMediaEntityListEvent):
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback | [QueryRecommendMediaEntityListEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryrecommendmediaentitylistevent23) | 否   | 查询推荐媒体列表的事件。 |
+| callback | [QueryRecommendMediaEntityListEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryrecommendmediaentitylistevent) | 否   | 查询推荐媒体列表的事件。 |
 
 **返回值：**
 
@@ -1237,9 +1237,9 @@ offQueryRecommendMediaEntityList(callback?: QueryRecommendMediaEntityListEvent):
 
 **示例：**
 
-请参考[onQueryRecommendMediaEntityList](#onqueryrecommendmediaentitylist23)的示例。
+请参考[onQueryRecommendMediaEntityList](#onqueryrecommendmediaentitylist)的示例。
 
-## onQueryHotWords<sup>23+</sup>
+## onQueryHotWords
 
 onQueryHotWords(callback: QueryHotWordsEvent): void
 
@@ -1247,15 +1247,15 @@ onQueryHotWords(callback: QueryHotWordsEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [QueryHotWordsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryhotwordsevent23) | 是   | 查询热词的事件。 |
+| callback | [QueryHotWordsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryhotwordsevent) | 是   | 查询热词的事件。 |
 
 **返回值：**
 
@@ -1290,7 +1290,7 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offQueryHotWords();
@@ -1298,7 +1298,7 @@ export class TemplateManager {
 }
 ```
 
-## offQueryHotWords<sup>23+</sup>
+## offQueryHotWords
 
 offQueryHotWords(callback?: QueryHotWordsEvent): void
 
@@ -1306,15 +1306,15 @@ offQueryHotWords(callback?: QueryHotWordsEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [QueryHotWordsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryhotwordsevent23) | 否   | 查询热词的事件。 |
+| callback | [QueryHotWordsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryhotwordsevent) | 否   | 查询热词的事件。 |
 
 **返回值：**
 
@@ -1324,9 +1324,9 @@ offQueryHotWords(callback?: QueryHotWordsEvent): void
 
 **示例：**
 
-请参考[onQueryHotWords](#onqueryhotwords23)的示例。
+请参考[onQueryHotWords](#onqueryhotwords)的示例。
 
-## onQuerySearchHistory<sup>23+</sup>
+## onQuerySearchHistory
 
 onQuerySearchHistory(callback: QuerySearchHistoryEvent): void
 
@@ -1334,15 +1334,15 @@ onQuerySearchHistory(callback: QuerySearchHistoryEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QuerySearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querysearchhistoryevent23) | 是   | 查询搜索历史的事件。 |
+| callback | [QuerySearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querysearchhistoryevent) | 是   | 查询搜索历史的事件。 |
 
 **返回值：**
 
@@ -1377,7 +1377,7 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offClearSearchHistory();
@@ -1385,7 +1385,7 @@ export class TemplateManager {
 }
 ```
 
-## offQuerySearchHistory<sup>23+</sup>
+## offQuerySearchHistory
 
 offQuerySearchHistory(callback?: QuerySearchHistoryEvent): void
 
@@ -1393,15 +1393,15 @@ offQuerySearchHistory(callback?: QuerySearchHistoryEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QuerySearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querysearchhistoryevent23) | 否   | 查询搜索历史的事件。 |
+| callback | [QuerySearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querysearchhistoryevent) | 否   | 查询搜索历史的事件。 |
 
 **返回值：**
 
@@ -1411,9 +1411,9 @@ offQuerySearchHistory(callback?: QuerySearchHistoryEvent): void
 
 **示例：**
 
-请参考[onQuerySearchHistory](#onquerysearchhistory23)的示例。
+请参考[onQuerySearchHistory](#onquerysearchhistory)的示例。
 
-## onClearSearchHistory<sup>23+</sup>
+## onClearSearchHistory
 
 onClearSearchHistory(callback: ClearSearchHistoryEvent): void
 
@@ -1421,15 +1421,15 @@ onClearSearchHistory(callback: ClearSearchHistoryEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [ClearSearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#clearsearchhistoryevent23) | 是   | 清除搜索历史的事件。 |
+| callback | [ClearSearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#clearsearchhistoryevent) | 是   | 清除搜索历史的事件。 |
 
 **返回值：**
 
@@ -1464,16 +1464,16 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offClearSearchHistory();
   }
 
   /**
-   * 模拟操作结果
+   * 模拟操作结果。
    *
-   * @returns 操作结果
+   * @returns 操作结果。
    */
   private async createOperResult(): Promise<avMusicTemplate.OperResult> {
     let operResult: avMusicTemplate.OperResult = {
@@ -1484,7 +1484,7 @@ export class TemplateManager {
 }
 ```
 
-## offClearSearchHistory<sup>23+</sup>
+## offClearSearchHistory
 
 offClearSearchHistory(callback?: ClearSearchHistoryEvent): void
 
@@ -1492,15 +1492,15 @@ offClearSearchHistory(callback?: ClearSearchHistoryEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [ClearSearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#clearsearchhistoryevent23) | 否   | 清除搜索历史的事件。 |
+| callback | [ClearSearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#clearsearchhistoryevent) | 否   | 清除搜索历史的事件。 |
 
 **返回值：**
 
@@ -1510,9 +1510,9 @@ offClearSearchHistory(callback?: ClearSearchHistoryEvent): void
 
 **示例：**
 
-请参考[onClearSearchHistory](#onclearsearchhistory23)的示例。
+请参考[onClearSearchHistory](#onclearsearchhistory)的示例。
 
-## onLogin<sup>23+</sup>
+## onLogin
 
 onLogin(callback: LoginEvent): void
 
@@ -1520,15 +1520,15 @@ onLogin(callback: LoginEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明       |
 | -------- | ------------------------------------------------------------ | ---- | ---------- |
-| callback | [LoginEvent](arkts-apis-avsession-AVMusicTemplate-t.md#loginevent23) | 是   | 登录事件。 |
+| callback | [LoginEvent](arkts-apis-avsession-AVMusicTemplate-t.md#loginevent) | 是   | 登录事件。 |
 
 **返回值：**
 
@@ -1564,16 +1564,16 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offLogin();
   }
 
   /**
-   * 模拟创建二维码信息数组
+   * 模拟创建二维码信息数组。
    *
-   * @returns Promise类型的二维码信息数组
+   * @returns Promise类型的二维码信息数组。
    */
   private async createQrCodeInfo(): Promise<avMusicTemplate.QrCodeInfo> {
     let qrCodeInfo: avMusicTemplate.QrCodeInfo = {
@@ -1590,7 +1590,7 @@ export class TemplateManager {
 }
 ```
 
-## offLogin<sup>23+</sup>
+## offLogin
 
 offLogin(callback?: LoginEvent): void
 
@@ -1598,15 +1598,15 @@ offLogin(callback?: LoginEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明       |
 | -------- | ------------------------------------------------------------ | ---- | ---------- |
-| callback | [LoginEvent](arkts-apis-avsession-AVMusicTemplate-t.md#loginevent23) | 否   | 登录事件。 |
+| callback | [LoginEvent](arkts-apis-avsession-AVMusicTemplate-t.md#loginevent) | 否   | 登录事件。 |
 
 **返回值：**
 
@@ -1616,9 +1616,9 @@ offLogin(callback?: LoginEvent): void
 
 **示例：**
 
-请参考[onLogin](#onlogin23)的示例。
+请参考[onLogin](#onlogin)的示例。
 
-## onRequestDialogInfo<sup>23+</sup>
+## onRequestDialogInfo
 
 onRequestDialogInfo(callback: RequestDialogInfoEvent): void
 
@@ -1626,15 +1626,15 @@ onRequestDialogInfo(callback: RequestDialogInfoEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [RequestDialogInfoEvent](arkts-apis-avsession-AVMusicTemplate-t.md#requestdialoginfoevent23) | 是   | 请求弹框信息的事件。 |
+| callback | [RequestDialogInfoEvent](arkts-apis-avsession-AVMusicTemplate-t.md#requestdialoginfoevent) | 是   | 请求弹框信息的事件。 |
 
 **返回值：**
 
@@ -1670,16 +1670,16 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offRequestDialogInfo();
   }
 
   /**
-   * 模拟弹框信息
+   * 模拟弹框信息。
    *
-   * @returns 弹框信息
+   * @returns 弹框信息。
    */
   private async createDialogInfo(): Promise<avMusicTemplate.DialogInfo> {
     let qrCodeInfo: avMusicTemplate.QrCodeInfo[] = [{
@@ -1702,7 +1702,7 @@ export class TemplateManager {
 }
 ```
 
-## offRequestDialogInfo<sup>23+</sup>
+## offRequestDialogInfo
 
 offRequestDialogInfo(callback?: RequestDialogInfoEvent): void
 
@@ -1710,15 +1710,15 @@ offRequestDialogInfo(callback?: RequestDialogInfoEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [RequestDialogInfoEvent](arkts-apis-avsession-AVMusicTemplate-t.md#requestdialoginfoevent23) | 否   | 请求弹框信息的事件。 |
+| callback | [RequestDialogInfoEvent](arkts-apis-avsession-AVMusicTemplate-t.md#requestdialoginfoevent) | 否   | 请求弹框信息的事件。 |
 
 **返回值：**
 
@@ -1728,9 +1728,9 @@ offRequestDialogInfo(callback?: RequestDialogInfoEvent): void
 
 **示例：**
 
-请参考[onRequestDialogInfo](#onrequestdialoginfo23)的示例。
+请参考[onRequestDialogInfo](#onrequestdialoginfo)的示例。
 
-## onHandleMemberPurchase<sup>23+</sup>
+## onHandleMemberPurchase
 
 onHandleMemberPurchase(callback: HandleMemberPurchaseEvent): void
 
@@ -1738,15 +1738,15 @@ onHandleMemberPurchase(callback: HandleMemberPurchaseEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [HandleMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#handlememberpurchaseevent23) | 是   | 处理购买会员的事件。 |
+| callback | [HandleMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#handlememberpurchaseevent) | 是   | 处理购买会员的事件。 |
 
 **返回值：**
 
@@ -1782,16 +1782,16 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offHandleMemberPurchase();
   }
 
   /**
-   * 模拟弹框信息
+   * 模拟弹框信息。
    *
-   * @returns 弹框信息
+   * @returns 弹框信息。
    */
   private async createDialogInfo(): Promise<avMusicTemplate.DialogInfo> {
     let qrCodeInfo: avMusicTemplate.QrCodeInfo[] = [{
@@ -1814,7 +1814,7 @@ export class TemplateManager {
 }
 ```
 
-## offHandleMemberPurchase<sup>23+</sup>
+## offHandleMemberPurchase
 
 offHandleMemberPurchase(callback?: HandleMemberPurchaseEvent): void
 
@@ -1822,15 +1822,15 @@ offHandleMemberPurchase(callback?: HandleMemberPurchaseEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [HandleMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#handlememberpurchaseevent23) | 否   | 处理购买会员的事件。 |
+| callback | [HandleMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#handlememberpurchaseevent) | 否   | 处理购买会员的事件。 |
 
 **返回值：**
 
@@ -1840,9 +1840,9 @@ offHandleMemberPurchase(callback?: HandleMemberPurchaseEvent): void
 
 **示例：**
 
-请参考[onHandleMemberPurchase](#onhandlememberpurchase23)的示例。
+请参考[onHandleMemberPurchase](#onhandlememberpurchase)的示例。
 
-## onQueryMemberPurchase<sup>23+</sup>
+## onQueryMemberPurchase
 
 onQueryMemberPurchase(callback: QueryMemberPurchaseEvent): void
 
@@ -1850,15 +1850,15 @@ onQueryMemberPurchase(callback: QueryMemberPurchaseEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymemberpurchaseevent23) | 是   | 查询购买会员的事件。 |
+| callback | [QueryMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymemberpurchaseevent) | 是   | 查询购买会员的事件。 |
 
 **返回值：**
 
@@ -1895,16 +1895,16 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offQueryMemberPurchase();
   }
 
   /**
-   * 模拟查询会员购买信息
+   * 模拟查询会员购买信息。
    *
-   * @returns Promise类型的购买会员信息数组
+   * @returns Promise类型的购买会员信息数组。
    */
   private async createQueryMemberPurchase(): Promise<avMusicTemplate.MemberPurchaseInfo> {
     let memberPurchaseInfo: avMusicTemplate.MemberPurchaseInfo = {
@@ -1918,7 +1918,7 @@ export class TemplateManager {
 }
 ```
 
-## offQueryMemberPurchase<sup>23+</sup>
+## offQueryMemberPurchase
 
 offQueryMemberPurchase(callback?: QueryMemberPurchaseEvent): void
 
@@ -1926,15 +1926,15 @@ offQueryMemberPurchase(callback?: QueryMemberPurchaseEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [QueryMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymemberpurchaseevent23) | 否   | 查询购买会员的事件。 |
+| callback | [QueryMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymemberpurchaseevent) | 否   | 查询购买会员的事件。 |
 
 **返回值：**
 
@@ -1944,9 +1944,9 @@ offQueryMemberPurchase(callback?: QueryMemberPurchaseEvent): void
 
 **示例：**
 
-请参考[onQueryMemberPurchase](#onquerymemberpurchase23)的示例。
+请参考[onQueryMemberPurchase](#onquerymemberpurchase)的示例。
 
-## onQueryCustomContent<sup>23+</sup>
+## onQueryCustomContent
 
 onQueryCustomContent(callback: QueryCustomContentEvent): void
 
@@ -1954,15 +1954,15 @@ onQueryCustomContent(callback: QueryCustomContentEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                   |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| callback | [QueryCustomContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycustomcontentevent23) | 是   | 查询自定义内容的事件。 |
+| callback | [QueryCustomContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycustomcontentevent) | 是   | 查询自定义内容的事件。 |
 
 **返回值：**
 
@@ -1998,16 +1998,16 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offQueryCustomContent();
   }
 
   /**
-   * 模拟获取自定义内容
+   * 模拟获取自定义内容。
    *
-   * @returns 自定义元素
+   * @returns 自定义元素。
    */
   private async createCustomContent(): Promise<avMusicTemplate.CustomElement> {
     let mediaEntity: avMusicTemplate.MediaEntity = {
@@ -2038,7 +2038,7 @@ export class TemplateManager {
 }
 ```
 
-## offQueryCustomContent<sup>23+</sup>
+## offQueryCustomContent
 
 offQueryCustomContent(callback?: QueryCustomContentEvent): void
 
@@ -2046,15 +2046,15 @@ offQueryCustomContent(callback?: QueryCustomContentEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                   |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| callback | [QueryCustomContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycustomcontentevent23) | 否   | 查询自定义内容的事件。 |
+| callback | [QueryCustomContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycustomcontentevent) | 否   | 查询自定义内容的事件。 |
 
 **返回值：**
 
@@ -2064,9 +2064,9 @@ offQueryCustomContent(callback?: QueryCustomContentEvent): void
 
 **示例：**
 
-请参考[onQueryCustomContent](#onquerycustomcontent23)的示例。
+请参考[onQueryCustomContent](#onquerycustomcontent)的示例。
 
-## onDownloadMediaEntity<sup>23+</sup>
+## onDownloadMediaEntity
 
 onDownloadMediaEntity(callback: DownloadMediaEntityEvent): void
 
@@ -2074,15 +2074,15 @@ onDownloadMediaEntity(callback: DownloadMediaEntityEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [DownloadMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#downloadmediaentityevent23) | 是   | 下载媒体实体的事件。 |
+| callback | [DownloadMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#downloadmediaentityevent) | 是   | 下载媒体实体的事件。 |
 
 **返回值：**
 
@@ -2119,28 +2119,28 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offDownloadMediaEntity();
   }
 
   /**
-   * 下载状态，进度刷新
+   * 下载状态，进度刷新。
    */
   public setDownloadMediaEntityStatus(mediaEntity: avMusicTemplate.MediaEntity) {
     this.template?.setDownloadMediaEntityStatus(mediaEntity);
   };
 
   /**
-   * 模拟设置改变
+   * 模拟设置改变。
    *
    * @returns Promise类型的设置条目
    */
   /**
-   * 模拟操作结果
+   * 模拟操作结果。
    *
-   * @returns 操作结果
+   * @returns 操作结果。
    */
   private async createOperResult(): Promise<avMusicTemplate.OperResult> {
     let operResult: avMusicTemplate.OperResult = {
@@ -2150,9 +2150,9 @@ export class TemplateManager {
   };
 
   /**
-   * 模拟下载过程
+   * 模拟下载过程。
    *
-   * @param mediaEntity 媒体实体
+   * @param mediaEntity 媒体实体。
    */
   private async downloadMediaEntity(mediaEntity: avMusicTemplate.MediaEntity) {
     // 下载完成之后。
@@ -2161,7 +2161,7 @@ export class TemplateManager {
 }
 ```
 
-## offDownloadMediaEntity<sup>23+</sup>
+## offDownloadMediaEntity
 
 offDownloadMediaEntity(callback?: DownloadMediaEntityEvent): void
 
@@ -2169,15 +2169,15 @@ offDownloadMediaEntity(callback?: DownloadMediaEntityEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [DownloadMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#downloadmediaentityevent23) | 否   | 下载媒体实体的事件。 |
+| callback | [DownloadMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#downloadmediaentityevent) | 否   | 下载媒体实体的事件。 |
 
 **返回值：**
 
@@ -2187,9 +2187,9 @@ offDownloadMediaEntity(callback?: DownloadMediaEntityEvent): void
 
 **示例：**
 
-请参考[onDownloadMediaEntity](#ondownloadmediaentity23)的示例。
+请参考[onDownloadMediaEntity](#ondownloadmediaentity)的示例。
 
-## onSettingsChange<sup>23+</sup>
+## onSettingsChange
 
 onSettingsChange(callback: SettingsChangeEvent): void
 
@@ -2197,15 +2197,15 @@ onSettingsChange(callback: SettingsChangeEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [SettingsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#settingschangeevent23) | 是   | 设置改变的事件。 |
+| callback | [SettingsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#settingschangeevent) | 是   | 设置改变的事件。 |
 
 **返回值：**
 
@@ -2241,16 +2241,16 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offSettingsChange();
   }
 
   /**
-   * 模拟设置改变
+   * 模拟设置改变。
    *
-   * @returns Promise类型的设置条目
+   * @returns Promise类型的设置条目。
    */
   private async settingsChange(): Promise<avMusicTemplate.SettingItem> {
     let setting: avMusicTemplate.SettingItem = {
@@ -2266,7 +2266,7 @@ export class TemplateManager {
 }
 ```
 
-## offSettingsChange<sup>23+</sup>
+## offSettingsChange
 
 offSettingsChange(callback?: SettingsChangeEvent): void
 
@@ -2274,15 +2274,15 @@ offSettingsChange(callback?: SettingsChangeEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [SettingsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#settingschangeevent23) | 否   | 设置改变的事件。 |
+| callback | [SettingsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#settingschangeevent) | 否   | 设置改变的事件。 |
 
 **返回值：**
 
@@ -2292,9 +2292,9 @@ offSettingsChange(callback?: SettingsChangeEvent): void
 
 **示例：**
 
-请参考[onSettingsChange](#onsettingschange23)的示例。
+请参考[onSettingsChange](#onsettingschange)的示例。
 
-## onProblemAndAdvice<sup>23+</sup>
+## onProblemAndAdvice
 
 onProblemAndAdvice(callback: ProblemAndAdviceEvent): void
 
@@ -2302,15 +2302,15 @@ onProblemAndAdvice(callback: ProblemAndAdviceEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                   |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md#problemandadviceevent23) | 是   | 问题与建议的事件。 |
+| callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md#problemandadviceevent) | 是   | 问题与建议的事件。 |
 
 **返回值：**
 
@@ -2345,16 +2345,16 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offProblemAndAdvice();
   }
 
   /**
-   * 模拟操作结果
+   * 模拟操作结果。
    *
-   * @returns 操作结果
+   * @returns 操作结果。
    */
   private async createOperResult(): Promise<avMusicTemplate.OperResult> {
     let operResult: avMusicTemplate.OperResult = {
@@ -2365,7 +2365,7 @@ export class TemplateManager {
 }
 ```
 
-## offProblemAndAdvice<sup>23+</sup>
+## offProblemAndAdvice
 
 offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 
@@ -2373,15 +2373,15 @@ offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                   |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md#problemandadviceevent23) | 否   | 问题与建议的事件。 |
+| callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md#problemandadviceevent) | 否   | 问题与建议的事件。 |
 
 **返回值：**
 
@@ -2391,9 +2391,9 @@ offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 
 **示例：**
 
-请参考[onProblemAndAdvice](#onproblemandadvice23)的示例。
+请参考[onProblemAndAdvice](#onproblemandadvice)的示例。
 
-## onPlayForSearch<sup>23+</sup>
+## onPlayForSearch
 
 onPlayForSearch(callback: PlayForSearchEvent): void
 
@@ -2401,15 +2401,15 @@ onPlayForSearch(callback: PlayForSearchEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明         |
 | -------- | ------------------------------------------------------------ | ---- | ------------ |
-| callback | [PlayForSearchEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playforsearchevent23) | 是   | 搜播的事件。 |
+| callback | [PlayForSearchEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playforsearchevent) | 是   | 搜播的事件。 |
 
 **返回值：**
 
@@ -2445,16 +2445,16 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offPlayForSearch();
   }
 
   /**
-   * 模拟操作结果
+   * 模拟操作结果。
    *
-   * @returns 操作结果
+   * @returns 操作结果。
    */
   private async createOperResult(): Promise<avMusicTemplate.OperResult> {
     let operResult: avMusicTemplate.OperResult = {
@@ -2465,7 +2465,7 @@ export class TemplateManager {
 }
 ```
 
-## offPlayForSearch<sup>23+</sup>
+## offPlayForSearch
 
 offPlayForSearch(callback?: PlayForSearchEvent): void
 
@@ -2473,15 +2473,15 @@ offPlayForSearch(callback?: PlayForSearchEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明         |
 | -------- | ------------------------------------------------------------ | ---- | ------------ |
-| callback | [PlayForSearchEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playforsearchevent23) | 否   | 搜播的事件。 |
+| callback | [PlayForSearchEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playforsearchevent) | 否   | 搜播的事件。 |
 
 **返回值：**
 
@@ -2491,9 +2491,9 @@ offPlayForSearch(callback?: PlayForSearchEvent): void
 
 **示例：**
 
-请参考[onPlayForSearch](#onplayforsearch23)的示例。
+请参考[onPlayForSearch](#onplayforsearch)的示例。
 
-## onExecuteAction<sup>23+</sup>
+## onExecuteAction
 
 onExecuteAction(callback: ExecuteActionEvent): void
 
@@ -2501,15 +2501,15 @@ onExecuteAction(callback: ExecuteActionEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [ExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#executeactionevent23) | 是   | 执行操作的事件。 |
+| callback | [ExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#executeactionevent) | 是   | 执行操作的事件。 |
 
 **返回值：**
 
@@ -2543,7 +2543,7 @@ export class TemplateManager {
     this.template?.onExecuteAction(this.executeActionEvent);  }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     this.template?.offExecuteAction();
@@ -2551,7 +2551,7 @@ export class TemplateManager {
 }
 ```
 
-## offExecuteAction<sup>23+</sup>
+## offExecuteAction
 
 offExecuteAction(callback?: ExecuteActionEvent): void
 
@@ -2559,15 +2559,15 @@ offExecuteAction(callback?: ExecuteActionEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| callback | [ExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#executeactionevent23) | 否   | 执行操作的事件。 |
+| callback | [ExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#executeactionevent) | 否   | 执行操作的事件。 |
 
 **返回值：**
 
@@ -2577,9 +2577,9 @@ offExecuteAction(callback?: ExecuteActionEvent): void
 
 **示例：**
 
-请参考[onExecuteAction](#onexecuteaction23)的示例。
+请参考[onExecuteAction](#onexecuteaction)的示例。
 
-## onPlayMediaEntity<sup>23+</sup>
+## onPlayMediaEntity
 
 onPlayMediaEntity(callback: PlayMediaEntityEvent): void
 
@@ -2587,15 +2587,15 @@ onPlayMediaEntity(callback: PlayMediaEntityEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [PlayMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playmediaentityevent23) | 是   | 播放媒体实体的事件。 |
+| callback | [PlayMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playmediaentityevent) | 是   | 播放媒体实体的事件。 |
 
 **返回值：**
 
@@ -2623,7 +2623,7 @@ export class TemplateManager {
     }
 
     /**
-     * 注销监听
+     * 注销监听。
      */
     public unregisterListener() {
         this.template?.offPlayMediaEntity();
@@ -2632,7 +2632,7 @@ export class TemplateManager {
 ```
 
 
-## offPlayMediaEntity<sup>23+</sup>
+## offPlayMediaEntity
 
 offPlayMediaEntity(callback?: PlayMediaEntityEvent): void
 
@@ -2640,15 +2640,15 @@ offPlayMediaEntity(callback?: PlayMediaEntityEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [PlayMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playmediaentityevent23) | 否   | 播放媒体实体的事件。 |
+| callback | [PlayMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playmediaentityevent) | 否   | 播放媒体实体的事件。 |
 
 **返回值：**
 
@@ -2658,9 +2658,9 @@ offPlayMediaEntity(callback?: PlayMediaEntityEvent): void
 
 **示例：**
 
-请参考[onPlayMediaEntity](#onplaymediaentity23)的示例。
+请参考[onPlayMediaEntity](#onplaymediaentity)的示例。
 
-## onFavoriteMediaEntity<sup>23+</sup>
+## onFavoriteMediaEntity
 
 onFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 
@@ -2668,15 +2668,15 @@ onFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [FavoriteMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#favoritemediaentityevent23) | 是   | 收藏媒体实体的事件。 |
+| callback | [FavoriteMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#favoritemediaentityevent) | 是   | 收藏媒体实体的事件。 |
 
 **返回值：**
 
@@ -2712,16 +2712,16 @@ export class TemplateManager {
     }
 
     /**
-     * 注销监听
+     * 注销监听。
      */
     public unregisterListener() {
         this.template?.offFavoriteMediaEntity();
     }
 
     /**
-     * 模拟操作结果
+     * 模拟操作结果。
      *
-     * @returns 操作结果
+     * @returns 操作结果。
      */
     private async createOperResult(): Promise<avMusicTemplate.OperResult> {
         let operResult: avMusicTemplate.OperResult = {
@@ -2732,7 +2732,7 @@ export class TemplateManager {
 }
 
 ```
-## offFavoriteMediaEntity<sup>23+</sup>
+## offFavoriteMediaEntity
 
 offFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 
@@ -2740,15 +2740,15 @@ offFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [FavoriteMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#favoritemediaentityevent23) | 否   | 收藏媒体实体的事件。 |
+| callback | [FavoriteMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#favoritemediaentityevent) | 否   | 收藏媒体实体的事件。 |
 
 **返回值：**
 
@@ -2758,9 +2758,9 @@ offFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 
 **示例：**
 
-请参考[onFavoriteMediaEntity](#onfavoritemediaentity23)的示例。
+请参考[onFavoriteMediaEntity](#onfavoritemediaentity)的示例。
 
-## setUserInfo<sup>23+</sup>
+## setUserInfo
 
 setUserInfo(userInfo: UserInfo): Promise&lt;void&gt;
 
@@ -2768,15 +2768,15 @@ setUserInfo(userInfo: UserInfo): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明       |
 | -------- | ------------------------------------------------------------ | ---- | ---------- |
-| userInfo | [UserInfo](arkts-apis-avsession-AVMusicTemplate-i.md#userinfo23) | 是   | 用户信息。 |
+| userInfo | [UserInfo](arkts-apis-avsession-AVMusicTemplate-i.md#userinfo) | 是   | 用户信息。 |
 
 **返回值：**
 
@@ -2794,9 +2794,9 @@ export class TemplateManager {
     private isLogin: boolean = false;
 
     /**
-     * 模拟登录状态改变
+     * 模拟登录状态改变。
      *
-     * @param isLogin 是否登录
+     * @param isLogin 是否登录。
      */
     public setLoginState(isLogin: boolean) {
         this.isLogin = isLogin;
@@ -2804,7 +2804,7 @@ export class TemplateManager {
     }
 
     /**
-     * 用户信息发生变化后通知界面刷新用户信息，如登陆账号后
+     * 用户信息发生变化后通知界面刷新用户信息，如登陆账号后。
      */
     public setUserInfo() {
         let userInfo: avMusicTemplate.UserInfo = {
@@ -2820,7 +2820,7 @@ export class TemplateManager {
 }
 ```
 
-## setDialogCommand<sup>23+</sup>
+## setDialogCommand
 
 setDialogCommand(type: DialogControlType, dialogInfo: DialogInfo): Promise&lt;void&gt;
 
@@ -2828,16 +2828,16 @@ setDialogCommand(type: DialogControlType, dialogInfo: DialogInfo): Promise&lt;vo
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名     | 类型                                                         | 必填 | 说明           |
 | ---------- | ------------------------------------------------------------ | ---- | -------------- |
-| type       | [DialogControlType](arkts-apis-avsession-AVMusicTemplate-t.md#dialogcontroltype23) | 是   | 弹框控制类型。 |
-| dialogInfo | [DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo23) | 是   | 弹框信息。     |
+| type       | [DialogControlType](arkts-apis-avsession-AVMusicTemplate-t.md#dialogcontroltype) | 是   | 弹框控制类型。 |
+| dialogInfo | [DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo) | 是   | 弹框信息。     |
 
 **返回值：**
 
@@ -2854,7 +2854,7 @@ export class TemplateManager {
     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
 
     /**
-     * 弹框相关的操作，如：打开，关闭
+     * 弹框相关的操作，如：打开，关闭。
      */
     public setDialogCommand() {
         let type: avMusicTemplate.DialogControlType = 'open';
@@ -2876,7 +2876,7 @@ export class TemplateManager {
     };
 }
 ```
-## setCurrentSingle<sup>23+</sup>
+## setCurrentSingle
 
 setCurrentSingle(single: Single): Promise&lt;void&gt;
 
@@ -2884,15 +2884,15 @@ setCurrentSingle(single: Single): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明       |
-| ------ | ------------------------------------------------------------ | ---- | ---------- |
-| single | [Single](arkts-apis-avsession-AVMusicTemplate-i.md#single23) | 是   | 当前单曲。 |
+| ------ | ---------------------------------------------------------- | ---- | ---------- |
+| single | [Single](arkts-apis-avsession-AVMusicTemplate-i.md#single) | 是   | 当前单曲。 |
 
 **返回值：**
 
@@ -2914,9 +2914,9 @@ export class TemplateManager {
     };
 
     /**
-     * 模拟获取当前单曲
+     * 模拟获取当前单曲。
      *
-     * @returns 当前单曲
+     * @returns 当前单曲。
      */
     private async createCurrentSingle(): Promise<avMusicTemplate.Single> {
         let playInfo: avMusicTemplate.PlayInfo = {
@@ -2964,7 +2964,7 @@ export class TemplateManager {
 }
 ```
 
-## setMediaEntities<sup>23+</sup>
+## setMediaEntities
 
 setMediaEntities(entities: MediaEntity[]): Promise&lt;void&gt;
 
@@ -2972,15 +2972,15 @@ setMediaEntities(entities: MediaEntity[]): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| entities | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23)[] | 是   | 媒体实体的数组。 |
+| entities | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[] | 是   | 媒体实体的数组。 |
 
 **返回值：**
 
@@ -2997,7 +2997,7 @@ export class TemplateManager {
     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
 
     /**
-     * 媒体播放后信息后，如：歌单的播放状态
+     * 媒体播放后信息后，如：歌单的播放状态。
      */
     public setMediaEntities() {
         let mediaEntities: avMusicTemplate.MediaEntity[] = [{
@@ -3013,7 +3013,7 @@ export class TemplateManager {
     };
 }
 ```
-## setTabContent<sup>23+</sup>
+## setTabContent
 
 setTabContent(tabId: string, tabContent: MediaTabContent): Promise&lt;void&gt;
 
@@ -3021,16 +3021,16 @@ setTabContent(tabId: string, tabContent: MediaTabContent): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名     | 类型                                                         | 必填 | 说明             |
 | ---------- | ------------------------------------------------------------ | ---- | ---------------- |
 | tabId      | string                                                       | 是   | 标签的ID。       |
-| tabContent | [MediaTabContent](arkts-apis-avsession-AVMusicTemplate-i.md#mediatabcontent23) | 是   | 媒体标签页内容。 |
+| tabContent | [MediaTabContent](arkts-apis-avsession-AVMusicTemplate-i.md#mediatabcontent) | 是   | 媒体标签页内容。 |
 
 **返回值：**
 
@@ -3046,7 +3046,7 @@ import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
 export class TemplateManager {
     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
     /**
-     * 某个tab页签下的内容发生变化后通知界面刷新
+     * 某个tab页签下的内容发生变化后通知界面刷新。
      */
     public setTabContent() {
         let mediaEntity: avMusicTemplate.MediaEntity[] = [{
@@ -3078,7 +3078,7 @@ export class TemplateManager {
     };
 }
 ```
-## setPlaylist<sup>23+</sup>
+## setPlaylist
 
 setPlaylist(playlist: PageMediaEntity): Promise&lt;void&gt;
 
@@ -3086,15 +3086,15 @@ setPlaylist(playlist: PageMediaEntity): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明           |
 | -------- | ------------------------------------------------------------ | ---- | -------------- |
-| playlist | [PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity23) | 是   | 分页媒体实体。 |
+| playlist | [PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity) | 是   | 分页媒体实体。 |
 
 **返回值：**
 
@@ -3111,7 +3111,7 @@ export class TemplateManager {
     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
 
     /**
-     * 播放列表发送变化后通知界面刷新
+     * 播放列表发送变化后通知界面刷新。
      */
     public setPlaylist() {
         let mediaEntity: avMusicTemplate.MediaEntity = {
@@ -3138,7 +3138,7 @@ export class TemplateManager {
 }
 ```
 
-## setDownloadMediaEntityStatus<sup>23+</sup>
+## setDownloadMediaEntityStatus
 
 setDownloadMediaEntityStatus(single: MediaEntity): Promise&lt;void&gt;
 
@@ -3146,15 +3146,15 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明       |
 | ------ | ------------------------------------------------------------ | ---- | ---------- |
-| single | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23) | 是   | 媒体实体。 |
+| single | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity) | 是   | 媒体实体。 |
 
 **返回值：**
 
@@ -3164,9 +3164,9 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise&lt;void&gt;
 
 **示例：**
 
-请参考[onDownloadMediaEntity](#ondownloadmediaentity23)的示例。
+请参考[onDownloadMediaEntity](#ondownloadmediaentity)的示例。
 
-## setCustomElements<sup>23+</sup>
+## setCustomElements
 
 setCustomElements(actionType: ActionType, customType: CustomType, customElement: CustomElement): Promise&lt;void&gt;
 
@@ -3174,17 +3174,17 @@ setCustomElements(actionType: ActionType, customType: CustomType, customElement:
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名        | 类型                                                         | 必填 | 说明         |
 | ------------- | ------------------------------------------------------------ | ---- | ------------ |
-| actionType    | [ActionType](arkts-apis-avsession-AVMusicTemplate-t.md#actiontype23) | 是   | 操作类型。   |
-| customType    | [CustomType](arkts-apis-avsession-AVMusicTemplate-t.md#customtype23) | 是   | 自定义类型。 |
-| customElement | [CustomElement](arkts-apis-avsession-AVMusicTemplate-i.md#customelement23) | 是   | 自定义元素。 |
+| actionType    | [ActionType](arkts-apis-avsession-AVMusicTemplate-t.md#actiontype) | 是   | 操作类型。   |
+| customType    | [CustomType](arkts-apis-avsession-AVMusicTemplate-t.md#customtype) | 是   | 自定义类型。 |
+| customElement | [CustomElement](arkts-apis-avsession-AVMusicTemplate-i.md#customelement) | 是   | 自定义元素。 |
 
 **返回值：**
 
@@ -3201,7 +3201,7 @@ export class TemplateManager {
     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
 
     /**
-     * 自定义数据发生变化后通知
+     * 自定义数据发生变化后通知。
      */
     public setCustomElements() {
         let mediaEntity: avMusicTemplate.MediaEntity = {
@@ -3232,7 +3232,7 @@ export class TemplateManager {
     };
 }
 ```
-## setSettings<sup>23+</sup>
+## setSettings
 
 setSettings(settingItems: SettingItem[]): Promise&lt;void&gt;
 
@@ -3240,15 +3240,15 @@ setSettings(settingItems: SettingItem[]): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名       | 类型                                                         | 必填 | 说明         |
 | ------------ | ------------------------------------------------------------ | ---- | ------------ |
-| settingItems | [SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem23) | 是   | 设置项数组。 |
+| settingItems | [SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem) | 是   | 设置项数组。 |
 
 **返回值：**
 
@@ -3265,7 +3265,7 @@ export class TemplateManager {
     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
 
     /**
-     * 设置项变化后通知
+     * 设置项变化后通知。
      */
     public setSettings() {
         let settingItems: avMusicTemplate.SettingItem[] = [{
@@ -3281,7 +3281,7 @@ export class TemplateManager {
 }
 ```
 
-## reportExecuteAction<sup>23+</sup>
+## reportExecuteAction
 
 reportExecuteAction(actionType: string, params: string): Promise&lt;void&gt;
 
@@ -3289,9 +3289,9 @@ reportExecuteAction(actionType: string, params: string): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
@@ -3315,7 +3315,7 @@ export class TemplateManager {
     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
 
     /**
-     * 模拟向媒体中心同步执行操作信息
+     * 模拟向媒体中心同步执行操作信息。
      */
     public reportExecuteAction() {
         let actionType: string = 'actionType';
@@ -3325,7 +3325,7 @@ export class TemplateManager {
 }
 ```
 
-## setExtensionAbility<sup>23+</sup>
+## setExtensionAbility
 
 setExtensionAbility(want: WantAgent): Promise&lt;void&gt;
 
@@ -3333,9 +3333,9 @@ setExtensionAbility(want: WantAgent): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
@@ -3360,7 +3360,7 @@ export class TemplateManager {
     private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
 
     /**
-     * 媒体应用需要拉起应用的自定义界面时调用
+     * 媒体应用需要拉起应用的自定义界面时调用。
      */
     public setExtensionAbility() {
         let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -3387,7 +3387,7 @@ export class TemplateManager {
 ```
 
 
-## destroy<sup>23+</sup>
+## destroy
 
 destroy(): Promise&lt;void&gt;
 
@@ -3395,9 +3395,9 @@ destroy(): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **返回值：**
 

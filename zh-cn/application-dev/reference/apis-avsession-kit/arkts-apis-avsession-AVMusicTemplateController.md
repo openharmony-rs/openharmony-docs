@@ -9,7 +9,7 @@
 >
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-调用[avMusicTemplate.createAVMusicTemplateController](arkts-apis-avsession-AVMusicTemplate-f.md#avmusictemplatecreateavmusictemplatecontroller23)后，返回实例，可以获得ID，查询等操作。
+调用[avMusicTemplate.createAVMusicTemplateController](arkts-apis-avsession-AVMusicTemplate-f.md#avmusictemplatecreateavmusictemplatecontroller)后，返回实例，可以获得ID，查询等操作。
 
 ## 导入模块
 
@@ -21,9 +21,9 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | 名称      | 类型    | 只读 | 可选 | 说明                                                    |
 | :-------- | :------ | :--- | :--- | :------------------------------------------------------ |
@@ -80,9 +80,9 @@ export class ControllerManager {
   }
 
   /**
-   * 获取模板控制器实例
+   * 获取模板控制器实例。
    *
-   * @returns 模板控制器实例
+   * @returns 模板控制器实例。
    */
   public static getInstance(): ControllerManager {
     if (!ControllerManager.sInstance) {
@@ -92,7 +92,7 @@ export class ControllerManager {
   }
 
   /**
-   * 创建模板
+   * 创建模板。
    */
   public createAvMusicTemplateController(bundleName: string) {
     if (this.isStringEmpty(bundleName)) {
@@ -135,7 +135,7 @@ export class ControllerManager {
   }
 
   /**
-   * 注册模板监听
+   * 注册模板监听。
    */
   public registerAVMusicTemplateListener() {
     try {
@@ -177,7 +177,7 @@ export class ControllerManager {
 }
 ```
 
-## queryMainTabs<sup>23+</sup>
+## queryMainTabs
 
 queryMainTabs(): Promise&lt;MediaTab[]&gt;
 
@@ -185,15 +185,15 @@ queryMainTabs(): Promise&lt;MediaTab[]&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **返回值：**
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise<[MediaTab](arkts-apis-avsession-AVMusicTemplate-i.md#mediatab23)[]> | Promise对象。返回媒体标签页数组。 |
+| Promise<[MediaTab](arkts-apis-avsession-AVMusicTemplate-i.md#mediatab)[]> | Promise对象。返回媒体标签页数组。 |
 
 **示例：**
 
@@ -225,7 +225,7 @@ export class ControllerManager {
 }
 ```
 
-## queryMediaTabContent<sup>23+</sup>
+## queryMediaTabContent
 
 queryMediaTabContent(tabId: string): Promise&lt;MediaTabContent&gt;
 
@@ -233,9 +233,9 @@ queryMediaTabContent(tabId: string): Promise&lt;MediaTabContent&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
@@ -247,7 +247,7 @@ queryMediaTabContent(tabId: string): Promise&lt;MediaTabContent&gt;
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise<[MediaTabContent](arkts-apis-avsession-AVMusicTemplate-i.md#mediatabcontent23)> | Promise对象。返回媒体标签页内容。 |
+| Promise<[MediaTabContent](arkts-apis-avsession-AVMusicTemplate-i.md#mediatabcontent)> | Promise对象。返回媒体标签页内容。 |
 
 **示例：**
 
@@ -260,9 +260,9 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 模拟查询媒体标签页内容
+   * 模拟查询媒体标签页内容。
    *
-   * @param tabId 标签页ID
+   * @param tabId 标签页ID。
    */
   public async queryMediaTabContent(tabId: string): Promise<avMusicTemplate.MediaTabContent | undefined> {
     try {
@@ -281,7 +281,7 @@ export class ControllerManager {
 }
 ```
 
-## queryMediaEntity<sup>23+</sup>
+## queryMediaEntity
 
 queryMediaEntity(params: QueryMediaEntityParam): Promise&lt;PageMediaEntity&gt;
 
@@ -289,21 +289,21 @@ queryMediaEntity(params: QueryMediaEntityParam): Promise&lt;PageMediaEntity&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| params | [QueryMediaEntityParam](arkts-apis-avsession-AVMusicTemplate-i.md#querymediaentityparam23) | 是   | 查询媒体实体参数。 |
+| params | [QueryMediaEntityParam](arkts-apis-avsession-AVMusicTemplate-i.md#querymediaentityparam) | 是   | 查询媒体实体参数。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                                  |
 | ------------------------------------------------------------ | ------------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity23)> | Promise对象。返回标签页媒体实体内容。 |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回标签页媒体实体内容。 |
 
 **示例：**
 
@@ -316,9 +316,9 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 模拟查询媒体实体
+   * 模拟查询媒体实体。
    *
-   * @returns 页面媒体实体
+   * @returns 页面媒体实体。
    */
   public async queryMediaEntity(): Promise<avMusicTemplate.PageMediaEntity | undefined> {
     // 查询媒体实体。
@@ -344,7 +344,7 @@ export class ControllerManager {
 }
 ```
 
-## queryCompilation<sup>23+</sup>
+## queryCompilation
 
 queryCompilation(compilationId: string, pageIndex: int): Promise&lt;PageMediaEntity&gt;
 
@@ -352,9 +352,9 @@ queryCompilation(compilationId: string, pageIndex: int): Promise&lt;PageMediaEnt
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
@@ -367,7 +367,7 @@ queryCompilation(compilationId: string, pageIndex: int): Promise&lt;PageMediaEnt
 
 | 类型                                                         | 说明                                  |
 | ------------------------------------------------------------ | ------------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity23)> | Promise对象。返回标签页媒体实体内容。 |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回标签页媒体实体内容。 |
 
 **示例：**
 
@@ -380,9 +380,9 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 模拟查询合集
+   * 模拟查询合集。
    *
-   * @returns 页面媒体实体
+   * @returns 页面媒体实体。
    */
   public async queryCompilation(): Promise<avMusicTemplate.PageMediaEntity | undefined> {
     let compilationId: string = 'compilationId';
@@ -404,7 +404,7 @@ export class ControllerManager {
 }
 ```
 
-## queryPlaylist<sup>23+</sup>
+## queryPlaylist
 
 queryPlaylist(pageIndex: int, sort: Sort): Promise&lt;PageMediaEntity&gt;
 
@@ -412,22 +412,22 @@ queryPlaylist(pageIndex: int, sort: Sort): Promise&lt;PageMediaEntity&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
-| 参数名    | 类型                                                      | 必填 | 说明           |
-| --------- | --------------------------------------------------------- | ---- | -------------- |
-| pageIndex | int                                                       | 是   | 标签页的索引。 |
-| sort      | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort23) | 是   | 排序类型。     |
+| 参数名    | 类型                                                     | 必填 | 说明           |
+| --------- | ------------------------------------------------------- | ---- | -------------- |
+| pageIndex | int                                                     | 是   | 标签页的索引。 |
+| sort      | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort) | 是   | 排序类型。     |
 
 **返回值：**
 
 | 类型                                                         | 说明                                  |
 | ------------------------------------------------------------ | ------------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity23)> | Promise对象。返回标签页媒体实体内容。 |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回标签页媒体实体内容。 |
 
 **示例：**
 
@@ -440,9 +440,9 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 模拟查询播放列表
+   * 模拟查询播放列表。
    *
-   * @returns 页面媒体实体
+   * @returns 页面媒体实体。
    */
   public async queryPlaylist(): Promise<avMusicTemplate.PageMediaEntity | undefined> {
     let pageIndex: number = 0;
@@ -464,7 +464,7 @@ export class ControllerManager {
 }
 ```
 
-## queryCurrentSingle<sup>23+</sup>
+## queryCurrentSingle
 
 queryCurrentSingle(): Promise&lt;Single&gt;
 
@@ -472,15 +472,15 @@ queryCurrentSingle(): Promise&lt;Single&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **返回值：**
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single23)> | Promise对象。返回当前单曲。 |
+| Promise<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single)> | Promise对象。返回当前单曲。 |
 
 **示例：**
 
@@ -493,9 +493,9 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 模拟查询当前单曲
+   * 模拟查询当前单曲。
    *
-   * @returns 单曲
+   * @returns 单曲。
    */
   public async queryCurrentSingle(): Promise<avMusicTemplate.Single | undefined> {
     try {
@@ -514,7 +514,7 @@ export class ControllerManager {
 }
 ```
 
-## queryCompilationByKeyword<sup>23+</sup>
+## queryCompilationByKeyword
 
 queryCompilationByKeyword(keyword: string): Promise&lt;Compilation[]&gt;
 
@@ -522,9 +522,9 @@ queryCompilationByKeyword(keyword: string): Promise&lt;Compilation[]&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
@@ -536,7 +536,7 @@ queryCompilationByKeyword(keyword: string): Promise&lt;Compilation[]&gt;
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md#compilation23)[]> | Promise对象。返回合集数组。 |
+| Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md#compilation)[]> | Promise对象。返回合集数组。 |
 
 **示例：**
 
@@ -549,9 +549,9 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 模拟按关键字查询合集
+   * 模拟按关键字查询合集。
    *
-   * @returns 合集数组
+   * @returns 合集数组。
    */
   public async queryCompilationByKeyword(): Promise<avMusicTemplate.Compilation[]> {
     let compilations: avMusicTemplate.Compilation[] = [];
@@ -571,7 +571,7 @@ export class ControllerManager {
 }
 ```
 
-## queryMediaEntityByKeyword<sup>23+</sup>
+## queryMediaEntityByKeyword
 
 queryMediaEntityByKeyword(keyword: string, searchType: EntityType, pageIndex: int): Promise&lt;PageMediaEntity&gt;
 
@@ -579,23 +579,23 @@ queryMediaEntityByKeyword(keyword: string, searchType: EntityType, pageIndex: in
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名     | 类型                                                         | 必填 | 说明           |
 | ---------- | ------------------------------------------------------------ | ---- | -------------- |
 | keyword    | string                                                       | 是   | 关键字。       |
-| searchType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype23) | 是   | 媒体资源类型。 |
+| searchType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 是   | 媒体资源类型。 |
 | pageIndex  | int                                                          | 是   | 标签页索引。   |
 
 **返回值：**
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md#compilation23)[]> | Promise对象。返回合集数组。 |
+| Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md#compilation)[]> | Promise对象。返回合集数组。 |
 
 **示例：**
 
@@ -608,9 +608,9 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 模拟按关键字查询媒体实体
+   * 模拟按关键字查询媒体实体。
    *
-   * @returns 合集数组
+   * @returns 合集数组。
    */
   public async queryMediaEntityByKeyword(): Promise<avMusicTemplate.PageMediaEntity | undefined> {
     let keyword: string = 'keyword';
@@ -633,7 +633,7 @@ export class ControllerManager {
 }
 ```
 
-## queryRecommendMediaEntityList<sup>23+</sup>
+## queryRecommendMediaEntityList
 
 queryRecommendMediaEntityList(): Promise&lt;MediaEntity[]&gt;
 
@@ -641,15 +641,15 @@ queryRecommendMediaEntityList(): Promise&lt;MediaEntity[]&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **返回值：**
 
 | 类型                                                         | 说明                            |
 | ------------------------------------------------------------ | ------------------------------- |
-| Promise<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23)[]> | Promise对象。返回媒体实体数组。 |
+| Promise<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[]> | Promise对象。返回媒体实体数组。 |
 
 **示例：**
 
@@ -662,9 +662,9 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 模拟查询推荐的媒体实体列表
+   * 模拟查询推荐的媒体实体列表。
    *
-   * @returns 媒体实体数组
+   * @returns 媒体实体数组。
    */
   public async queryRecommendMediaEntityList(): Promise<avMusicTemplate.MediaEntity[]> {
     let mediaEntities: avMusicTemplate.MediaEntity[] = [];
@@ -683,7 +683,7 @@ export class ControllerManager {
 }
 ```
 
-## queryHotWords<sup>23+</sup>
+## queryHotWords
 
 queryHotWords(): Promise&lt;string[]&gt;
 
@@ -691,9 +691,9 @@ queryHotWords(): Promise&lt;string[]&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **返回值：**
 
@@ -712,9 +712,9 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 模拟查询热词
+   * 模拟查询热词。
    *
-   * @returns 热词数组
+   * @returns 热词数组。
    */
   public async queryHotWords(): Promise<string[]> {
     let hotWords: string[] = [];
@@ -733,7 +733,7 @@ export class ControllerManager {
 }
 ```
 
-## querySearchHistory<sup>23+</sup>
+## querySearchHistory
 
 querySearchHistory(): Promise&lt;string[]&gt;
 
@@ -741,9 +741,9 @@ querySearchHistory(): Promise&lt;string[]&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **返回值：**
 
@@ -762,9 +762,9 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 模拟查询搜索历史
+   * 模拟查询搜索历史。
    *
-   * @returns 搜索历史数组
+   * @returns 搜索历史数组。
    */
   public async querySearchHistory(): Promise<string[]> {
     let searchHistory: string[] = [];
@@ -783,7 +783,7 @@ export class ControllerManager {
 }
 ```
 
-## clearSearchHistory<sup>23+</sup>
+## clearSearchHistory
 
 clearSearchHistory(): Promise&lt;OperResult&gt;
 
@@ -791,15 +791,15 @@ clearSearchHistory(): Promise&lt;OperResult&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **返回值：**
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)> | Promise对象。返回操作结果。 |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果。 |
 
 **示例：**
 
@@ -812,7 +812,7 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 模拟清除搜索历史
+   * 模拟清除搜索历史。
    *
    * @returns Promise类型的boolean，清除成功或者失败
    */
@@ -833,7 +833,7 @@ export class ControllerManager {
 }
 ```
 
-## updateSettings<sup>23+</sup>
+## updateSettings
 
 updateSettings(settingItem: SettingItem): Promise&lt;SettingItem&gt;
 
@@ -841,21 +841,21 @@ updateSettings(settingItem: SettingItem): Promise&lt;SettingItem&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名      | 类型                                                         | 必填 | 说明             |
 | ----------- | ------------------------------------------------------------ | ---- | ---------------- |
-| settingItem | [SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem23) | 是   | 待更新的设置项。 |
+| settingItem | [SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem) | 是   | 待更新的设置项。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem23)> | Promise对象。返回更新后的设置项。 |
+| Promise<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem)> | Promise对象。返回更新后的设置项。 |
 
 **示例：**
 
@@ -870,7 +870,7 @@ export class ControllerManager {
   /**
    * 模拟更新设置信息。
    *
-   * @returns Promise类型更新后的设置项
+   * @returns Promise类型更新后的设置项。
    */
   public async updateSettings(): Promise<avMusicTemplate.SettingItem | undefined> {
     let settingItem: avMusicTemplate.SettingItem = {
@@ -897,7 +897,7 @@ export class ControllerManager {
 }
 ```
 
-## reportProblemAndAdvice<sup>23+</sup>
+## reportProblemAndAdvice
 
 reportProblemAndAdvice(advice: string): Promise&lt;OperResult&gt;
 
@@ -905,9 +905,9 @@ reportProblemAndAdvice(advice: string): Promise&lt;OperResult&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
@@ -919,7 +919,7 @@ reportProblemAndAdvice(advice: string): Promise&lt;OperResult&gt;
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)> | Promise对象。返回操作结果。 |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果。 |
 
 **示例：**
 
@@ -954,7 +954,7 @@ export class ControllerManager {
 }
 ```
 
-## login<sup>23+</sup>
+## login
 
 login(controlType: LoginType, id?: string): Promise&lt;QrCodeInfo[]&gt;
 
@@ -962,22 +962,22 @@ login(controlType: LoginType, id?: string): Promise&lt;QrCodeInfo[]&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名      | 类型                                                         | 必填 | 说明       |
 | ----------- | ------------------------------------------------------------ | ---- | ---------- |
-| controlType | [LoginType](arkts-apis-avsession-AVMusicTemplate-t.md#logintype23) | 是   | 登录类型。 |
+| controlType | [LoginType](arkts-apis-avsession-AVMusicTemplate-t.md#logintype) | 是   | 登录类型。 |
 | id          | string                                                       | 否   | 二维码ID。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise<[QrCodeInfo](arkts-apis-avsession-AVMusicTemplate-i.md#qrcodeinfo23)[]> | Promise对象。返回二维码信息的数组。 |
+| Promise<[QrCodeInfo](arkts-apis-avsession-AVMusicTemplate-i.md#qrcodeinfo)[]> | Promise对象。返回二维码信息的数组。 |
 
 **示例：**
 
@@ -1014,7 +1014,7 @@ export class ControllerManager {
 }
 ```
 
-## requestDialogInfo<sup>23+</sup>
+## requestDialogInfo
 
 requestDialogInfo(actionType: DialogActionType, actionInfo?: DialogActionInfo): Promise&lt;DialogInfo&gt;
 
@@ -1022,22 +1022,22 @@ requestDialogInfo(actionType: DialogActionType, actionInfo?: DialogActionInfo): 
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名     | 类型                                                         | 必填 | 说明             |
 | ---------- | ------------------------------------------------------------ | ---- | ---------------- |
-| actionType | [DialogActionType](arkts-apis-avsession-AVMusicTemplate-t.md#dialogactiontype23) | 是   | 弹框操作类型。   |
-| actionInfo | [DialogActionInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialogactioninfo23) | 否   | 弹框操作的信息。 |
+| actionType | [DialogActionType](arkts-apis-avsession-AVMusicTemplate-t.md#dialogactiontype) | 是   | 弹框操作类型。   |
+| actionInfo | [DialogActionInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialogactioninfo) | 否   | 弹框操作的信息。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo23)> | Promise对象。返回弹框信息。 |
+| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo)> | Promise对象。返回弹框信息。 |
 
 **示例：**
 
@@ -1079,7 +1079,7 @@ export class ControllerManager {
 }
 ```
 
-## handleMemberPurchase<sup>23+</sup>
+## handleMemberPurchase
 
 handleMemberPurchase(info: MemberPurchaseInfo): Promise&lt;DialogInfo&gt;
 
@@ -1087,21 +1087,21 @@ handleMemberPurchase(info: MemberPurchaseInfo): Promise&lt;DialogInfo&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| info   | [MemberPurchaseInfo](arkts-apis-avsession-AVMusicTemplate-i.md#memberpurchaseinfo23) | 是   | 购买会员的信息。 |
+| info   | [MemberPurchaseInfo](arkts-apis-avsession-AVMusicTemplate-i.md#memberpurchaseinfo) | 是   | 购买会员的信息。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo23)> | Promise对象。返回弹框信息。 |
+| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo)> | Promise对象。返回弹框信息。 |
 
 **示例：**
 
@@ -1142,7 +1142,7 @@ export class ControllerManager {
 }
 ```
 
-## queryMemberPurchase<sup>23+</sup>
+## queryMemberPurchase
 
 queryMemberPurchase(memberPurchaseType: MemberPurchaseType): Promise&lt;MemberPurchaseInfo[]&gt;
 
@@ -1150,21 +1150,21 @@ queryMemberPurchase(memberPurchaseType: MemberPurchaseType): Promise&lt;MemberPu
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名             | 类型                                                         | 必填 | 说明           |
 | ------------------ | ------------------------------------------------------------ | ---- | -------------- |
-| memberPurchaseType | [MemberPurchaseType](arkts-apis-avsession-AVMusicTemplate-e.md#memberpurchasetype23) | 是   | 会员购买类型。 |
+| memberPurchaseType | [MemberPurchaseType](arkts-apis-avsession-AVMusicTemplate-e.md#memberpurchasetype) | 是   | 会员购买类型。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                                  |
 | ------------------------------------------------------------ | ------------------------------------- |
-| Promise<[MemberPurchaseInfo](arkts-apis-avsession-AVMusicTemplate-i.md#memberpurchaseinfo23)[]> | Promise对象。返回购买会员信息的数组。 |
+| Promise<[MemberPurchaseInfo](arkts-apis-avsession-AVMusicTemplate-i.md#memberpurchaseinfo)[]> | Promise对象。返回购买会员信息的数组。 |
 
 **示例：**
 
@@ -1177,9 +1177,9 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 模拟查询购买会员的情况
+   * 模拟查询购买会员的情况。
    *
-   * @returns 会员购买信息列表
+   * @returns 会员购买信息列表。
    */
   public async queryMemberPurchase(): Promise<avMusicTemplate.MemberPurchaseInfo[]> {
     let memberPurchaseInfo: avMusicTemplate.MemberPurchaseInfo[] = [];
@@ -1201,7 +1201,7 @@ export class ControllerManager {
 
 
 
-## queryCustomContent<sup>23+</sup>
+## queryCustomContent
 
 queryCustomContent(queryType: CustomType[]): Promise&lt;CustomElement&gt;
 
@@ -1209,21 +1209,21 @@ queryCustomContent(queryType: CustomType[]): Promise&lt;CustomElement&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名    | 类型                                                         | 必填 | 说明             |
 | --------- | ------------------------------------------------------------ | ---- | ---------------- |
-| queryType | [CustomType](arkts-apis-avsession-AVMusicTemplate-t.md#customtype23)[] | 是   | 自定义类型数组。 |
+| queryType | [CustomType](arkts-apis-avsession-AVMusicTemplate-t.md#customtype)[] | 是   | 自定义类型数组。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                          |
 | ------------------------------------------------------------ | ----------------------------- |
-| Promise<[CustomElement](arkts-apis-avsession-AVMusicTemplate-i.md#customelement23)> | Promise对象。返回自定义元素。 |
+| Promise<[CustomElement](arkts-apis-avsession-AVMusicTemplate-i.md#customelement)> | Promise对象。返回自定义元素。 |
 
 **示例：**
 
@@ -1236,9 +1236,9 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 模拟查询自定义内容
+   * 模拟查询自定义内容。
    *
-   * @returns 自定义元素
+   * @returns 自定义元素。
    */
   public async queryCustomContent(): Promise<avMusicTemplate.CustomElement | undefined> {
     let queryType: avMusicTemplate.CustomType[] = ['USER_INFO', 'TAB', 'COMPILATION', 'SETTINGS'];
@@ -1259,7 +1259,7 @@ export class ControllerManager {
 }
 ```
 
-## downloadMediaEntity<sup>23+</sup>
+## downloadMediaEntity
 
 downloadMediaEntity(controlType: DownloadControlType, mediaEntity: MediaEntity): Promise&lt;OperResult&gt;
 
@@ -1267,22 +1267,22 @@ downloadMediaEntity(controlType: DownloadControlType, mediaEntity: MediaEntity):
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名      | 类型                                                         | 必填 | 说明             |
 | ----------- | ------------------------------------------------------------ | ---- | ---------------- |
-| controlType | [DownloadControlType](arkts-apis-avsession-AVMusicTemplate-t.md#downloadcontroltype23) | 是   | 下载的控制类型。 |
-| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23) | 是   | 媒体实体。       |
+| controlType | [DownloadControlType](arkts-apis-avsession-AVMusicTemplate-t.md#downloadcontroltype) | 是   | 下载的控制类型。 |
+| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity) | 是   | 媒体实体。       |
 
 **返回值：**
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)> | Promise对象。返回操作结果。 |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果。 |
 
 **示例：**
 
@@ -1327,7 +1327,7 @@ export class ControllerManager {
 }
 ```
 
-## playForSearch<sup>23+</sup>
+## playForSearch
 
 playForSearch(command: SearchPlayInfoType, args: SearchPlayInfo): Promise&lt;OperResult&gt;
 
@@ -1335,22 +1335,22 @@ playForSearch(command: SearchPlayInfoType, args: SearchPlayInfo): Promise&lt;Ope
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名  | 类型                                                         | 必填 | 说明                 |
 | ------- | ------------------------------------------------------------ | ---- | -------------------- |
-| command | [SearchPlayInfoType](arkts-apis-avsession-AVMusicTemplate-e.md#searchplayinfotype23) | 是   | 搜播的信息类型枚举。 |
-| args    | [SearchPlayInfo](arkts-apis-avsession-AVMusicTemplate-i.md#searchplayinfo23) | 是   | 搜播信息。           |
+| command | [SearchPlayInfoType](arkts-apis-avsession-AVMusicTemplate-e.md#searchplayinfotype) | 是   | 搜播的信息类型枚举。 |
+| args    | [SearchPlayInfo](arkts-apis-avsession-AVMusicTemplate-i.md#searchplayinfo) | 是   | 搜播信息。           |
 
 **返回值：**
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)> | Promise对象。返回操作结果。 |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果。 |
 
 **示例：**
 
@@ -1398,7 +1398,7 @@ export class ControllerManager {
 }
 ```
 
-## executeAction<sup>23+</sup>
+## executeAction
 
 executeAction(actionType: string, params: string): Promise&lt;string&gt;
 
@@ -1406,9 +1406,9 @@ executeAction(actionType: string, params: string): Promise&lt;string&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
@@ -1457,7 +1457,7 @@ export class ControllerManager {
 }
 ```
 
-## playMediaEntity<sup>23+</sup>
+## playMediaEntity
 
 playMediaEntity(mediaEntity: MediaEntity): Promise&lt;void&gt;
 
@@ -1465,15 +1465,15 @@ playMediaEntity(mediaEntity: MediaEntity): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名      | 类型                                                         | 必填 | 说明       |
 | ----------- | ------------------------------------------------------------ | ---- | ---------- |
-| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23) | 是   | 包含标题、作者等元数据的媒体实体对象。 |
+| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity) | 是   | 包含标题、作者等元数据的媒体实体对象。 |
 
 **返回值：**
 
@@ -1507,7 +1507,7 @@ export class ControllerManager {
 }
 ```
 
-## favoriteMediaEntity<sup>23+</sup>
+## favoriteMediaEntity
 
 favoriteMediaEntity(actionType: MediaFavoriteType, mediaEntity: MediaEntity): Promise&lt;OperResult&gt;
 
@@ -1515,22 +1515,22 @@ favoriteMediaEntity(actionType: MediaFavoriteType, mediaEntity: MediaEntity): Pr
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名      | 类型                                                         | 必填 | 说明             |
 | ----------- | ------------------------------------------------------------ | ---- | ---------------- |
-| actionType  | [MediaFavoriteType](arkts-apis-avsession-AVMusicTemplate-t.md#mediafavoritetype23) | 是   | 媒体收藏的类型。 |
-| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23) | 是   | 媒体实体。       |
+| actionType  | [MediaFavoriteType](arkts-apis-avsession-AVMusicTemplate-t.md#mediafavoritetype) | 是   | 媒体收藏的类型。 |
+| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity) | 是   | 媒体实体。       |
 
 **返回值：**
 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)> | Promise对象。返回操作结果。 |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果。 |
 
 **示例：**
 
@@ -1575,7 +1575,7 @@ export class ControllerManager {
 }
 ```
 
-## onUserInfoChange<sup>23+</sup>
+## onUserInfoChange
 
 onUserInfoChange(callback: Callback&lt;UserInfo&gt;): void
 
@@ -1583,15 +1583,15 @@ onUserInfoChange(callback: Callback&lt;UserInfo&gt;): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                               |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| callback | Callback<[UserInfo](arkts-apis-avsession-AVMusicTemplate-i.md#userinfo23)> | 是   | Callback类型的回调。返回用户信息。 |
+| callback | Callback<[UserInfo](arkts-apis-avsession-AVMusicTemplate-i.md#userinfo)> | 是   | Callback类型的回调。返回用户信息。 |
 
 **示例：**
 
@@ -1613,7 +1613,7 @@ export class ControllerManager {
 }
 ```
 
-## offUserInfoChange<sup>23+</sup>
+## offUserInfoChange
 
 offUserInfoChange(callback?: Callback&lt;UserInfo&gt;): void
 
@@ -1621,15 +1621,15 @@ offUserInfoChange(callback?: Callback&lt;UserInfo&gt;): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                               |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| callback | Callback<[UserInfo](arkts-apis-avsession-AVMusicTemplate-i.md#userinfo23)> | 否   | Callback类型的回调。返回用户信息。 |
+| callback | Callback<[UserInfo](arkts-apis-avsession-AVMusicTemplate-i.md#userinfo)> | 否   | Callback类型的回调。返回用户信息。 |
 
 **示例：**
 
@@ -1649,7 +1649,7 @@ export class ControllerManager {
 }
 ```
 
-## onDialogCommandChange<sup>23+</sup>
+## onDialogCommandChange
 
 onDialogCommandChange(callback: ReportDialogCommandEvent): void
 
@@ -1657,15 +1657,15 @@ onDialogCommandChange(callback: ReportDialogCommandEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明               |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
-| callback | [ReportDialogCommandEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportdialogcommandevent23) | 是   | 上报弹框命令事件。 |
+| callback | [ReportDialogCommandEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportdialogcommandevent) | 是   | 上报弹框命令事件。 |
 
 **示例：**
 
@@ -1688,7 +1688,7 @@ export class ControllerManager {
 }
 ```
 
-## offDialogCommandChange<sup>23+</sup>
+## offDialogCommandChange
 
 offDialogCommandChange(callback?: ReportDialogCommandEvent): void
 
@@ -1696,15 +1696,15 @@ offDialogCommandChange(callback?: ReportDialogCommandEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明               |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
-| callback | [ReportDialogCommandEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportdialogcommandevent23) | 否   | 上报弹框命令事件。 |
+| callback | [ReportDialogCommandEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportdialogcommandevent) | 否   | 上报弹框命令事件。 |
 
 **示例：**
 
@@ -1715,7 +1715,7 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     // 注销弹框命令改变的监听。
@@ -1724,7 +1724,7 @@ export class ControllerManager {
 }
 ```
 
-## onCurrentSingleChange<sup>23+</sup>
+## onCurrentSingleChange
 
 onCurrentSingleChange(callback: Callback&lt;Single&gt;): void
 
@@ -1732,15 +1732,15 @@ onCurrentSingleChange(callback: Callback&lt;Single&gt;): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                     |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| callback | Callback<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single23)> | 是   | Callback类型的回调。返回当前单曲的信息。 |
+| callback | Callback<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single)> | 是   | Callback类型的回调。返回当前单曲的信息。 |
 
 **示例：**
 
@@ -1762,7 +1762,7 @@ export class ControllerManager {
 }
 ```
 
-## offCurrentSingleChange<sup>23+</sup>
+## offCurrentSingleChange
 
 offCurrentSingleChange(callback?: Callback&lt;Single&gt;): void
 
@@ -1770,15 +1770,15 @@ offCurrentSingleChange(callback?: Callback&lt;Single&gt;): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                     |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| callback | Callback<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single23)> | 否   | Callback类型的回调。返回当前单曲的信息。 |
+| callback | Callback<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single)> | 否   | Callback类型的回调。返回当前单曲的信息。 |
 
 **示例：**
 
@@ -1789,7 +1789,7 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     // 注销当前单曲改变的监听。
@@ -1798,7 +1798,7 @@ export class ControllerManager {
 }
 ```
 
-## onMediaEntitiesChange<sup>23+</sup>
+## onMediaEntitiesChange
 
 onMediaEntitiesChange(callback: Callback&lt;MediaEntity[]&gt;): void
 
@@ -1806,15 +1806,15 @@ onMediaEntitiesChange(callback: Callback&lt;MediaEntity[]&gt;): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23)[]> | 是   | Callback类型的回调。返回媒体实体数组。 |
+| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[]> | 是   | Callback类型的回调。返回媒体实体数组。 |
 
 **示例：**
 
@@ -1837,7 +1837,7 @@ export class ControllerManager {
 }
 ```
 
-## offMediaEntitiesChange<sup>23+</sup>
+## offMediaEntitiesChange
 
 offMediaEntitiesChange(callback?: Callback&lt;MediaEntity[]&gt;): void
 
@@ -1845,15 +1845,15 @@ offMediaEntitiesChange(callback?: Callback&lt;MediaEntity[]&gt;): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23)[]> | 否   | Callback类型的回调。返回媒体实体数组。 |
+| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[]> | 否   | Callback类型的回调。返回媒体实体数组。 |
 
 **示例：**
 
@@ -1864,7 +1864,7 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     // 注销媒体实体改变的监听。
@@ -1873,7 +1873,7 @@ export class ControllerManager {
 }
 ```
 
-## onTabContentChange<sup>23+</sup>
+## onTabContentChange
 
 onTabContentChange(callback: ReportTabContentEvent): void
 
@@ -1881,15 +1881,15 @@ onTabContentChange(callback: ReportTabContentEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [ReportTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reporttabcontentevent23) | 是   | 上报标签页内容事件。 |
+| callback | [ReportTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reporttabcontentevent) | 是   | 上报标签页内容事件。 |
 
 **示例：**
 
@@ -1912,7 +1912,7 @@ export class ControllerManager {
 }
 ```
 
-## offTabContentChange<sup>23+</sup>
+## offTabContentChange
 
 offTabContentChange(callback?: ReportTabContentEvent): void
 
@@ -1920,15 +1920,15 @@ offTabContentChange(callback?: ReportTabContentEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [ReportTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reporttabcontentevent23) | 否   | 上报标签页内容事件。 |
+| callback | [ReportTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reporttabcontentevent) | 否   | 上报标签页内容事件。 |
 
 **示例：**
 
@@ -1939,7 +1939,7 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     // 注销标签页内容改变的监听。
@@ -1948,7 +1948,7 @@ export class ControllerManager {
 }
 ```
 
-## onPlaylistChange<sup>23+</sup>
+## onPlaylistChange
 
 onPlaylistChange(callback: Callback&lt;PageMediaEntity&gt;): void
 
@@ -1956,15 +1956,15 @@ onPlaylistChange(callback: Callback&lt;PageMediaEntity&gt;): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                         |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------- |
-| callback | Callback<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity23)> | 是   | Callback类型的回调。返回标签页媒体实体信息。 |
+| callback | Callback<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | 是   | Callback类型的回调。返回标签页媒体实体信息。 |
 
 **示例：**
 
@@ -1987,7 +1987,7 @@ export class ControllerManager {
 }
 ```
 
-## offPlaylistChange<sup>23+</sup>
+## offPlaylistChange
 
 offPlaylistChange(callback?: Callback&lt;PageMediaEntity&gt;): void
 
@@ -1995,15 +1995,15 @@ offPlaylistChange(callback?: Callback&lt;PageMediaEntity&gt;): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                         |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------- |
-| callback | Callback<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity23)> | 否   | Callback类型的回调。返回标签页媒体实体信息。 |
+| callback | Callback<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | 否   | Callback类型的回调。返回标签页媒体实体信息。 |
 
 **示例：**
 
@@ -2014,7 +2014,7 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     // 注销播放列表改变的监听。
@@ -2023,7 +2023,7 @@ export class ControllerManager {
 }
 ```
 
-## onDownloadMediaEntityStatusChange<sup>23+</sup>
+## onDownloadMediaEntityStatusChange
 
 onDownloadMediaEntityStatusChange(callback: Callback&lt;MediaEntity&gt;): void
 
@@ -2031,15 +2031,15 @@ onDownloadMediaEntityStatusChange(callback: Callback&lt;MediaEntity&gt;): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23)> | 是   | Callback类型的回调。返回媒体实体信息。 |
+| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)> | 是   | Callback类型的回调。返回媒体实体信息。 |
 
 **示例：**
 
@@ -2062,7 +2062,7 @@ export class ControllerManager {
 }
 ```
 
-## offDownloadMediaEntityStatusChange<sup>23+</sup>
+## offDownloadMediaEntityStatusChange
 
 offDownloadMediaEntityStatusChange(callback?: Callback&lt;MediaEntity&gt;): void
 
@@ -2070,15 +2070,15 @@ offDownloadMediaEntityStatusChange(callback?: Callback&lt;MediaEntity&gt;): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity23)> | 否   | Callback类型的回调。返回媒体实体信息。 |
+| callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)> | 否   | Callback类型的回调。返回媒体实体信息。 |
 
 **示例：**
 
@@ -2089,7 +2089,7 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     // 注销下载媒体状态改变的监听。
@@ -2098,7 +2098,7 @@ export class ControllerManager {
 }
 ```
 
-## onCustomElementsChange<sup>23+</sup>
+## onCustomElementsChange
 
 onCustomElementsChange(callback: ReportCustomElementsChangeEvent): void
 
@@ -2106,15 +2106,15 @@ onCustomElementsChange(callback: ReportCustomElementsChangeEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback | [ReportCustomElementsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportcustomelementschangeevent23) | 是   | 上报自定义元素改变事件。 |
+| callback | [ReportCustomElementsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportcustomelementschangeevent) | 是   | 上报自定义元素改变事件。 |
 
 **示例：**
 
@@ -2138,7 +2138,7 @@ export class ControllerManager {
 }
 ```
 
-## offCustomElementsChange<sup>23+</sup>
+## offCustomElementsChange
 
 offCustomElementsChange(callback?: ReportCustomElementsChangeEvent): void
 
@@ -2146,15 +2146,15 @@ offCustomElementsChange(callback?: ReportCustomElementsChangeEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback | [ReportCustomElementsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportcustomelementschangeevent23) | 否   | 上报自定义元素改变事件。 |
+| callback | [ReportCustomElementsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportcustomelementschangeevent) | 否   | 上报自定义元素改变事件。 |
 
 **示例：**
 
@@ -2165,7 +2165,7 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     // 注销自定义元素改变的监听。
@@ -2174,7 +2174,7 @@ export class ControllerManager {
 }
 ```
 
-## onSettingsChange<sup>23+</sup>
+## onSettingsChange
 
 onSettingsChange(callback: Callback&lt;SettingItem[]&gt;): void
 
@@ -2182,15 +2182,15 @@ onSettingsChange(callback: Callback&lt;SettingItem[]&gt;): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                 |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------ |
-| callback | Callback<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem23)[]> | 是   | Callback类型的回调。返回设置项数组。 |
+| callback | Callback<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem)[]> | 是   | Callback类型的回调。返回设置项数组。 |
 
 **示例：**
 
@@ -2213,7 +2213,7 @@ export class ControllerManager {
 }
 ```
 
-## offSettingsChange<sup>23+</sup>
+## offSettingsChange
 
 offSettingsChange(callback?: Callback&lt;SettingItem[]&gt;): void
 
@@ -2221,15 +2221,15 @@ offSettingsChange(callback?: Callback&lt;SettingItem[]&gt;): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                 |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------ |
-| callback | Callback<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem23)[]> | 否   | 回调函数，用于接收并处理设置项数组。 |
+| callback | Callback<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem)[]> | 否   | 回调函数，用于接收并处理设置项数组。 |
 
 **示例：**
 
@@ -2240,7 +2240,7 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     // 注销设置改变的监听。
@@ -2249,7 +2249,7 @@ export class ControllerManager {
 }
 ```
 
-## onReportExecuteAction<sup>23+</sup>
+## onReportExecuteAction
 
 onReportExecuteAction(callback: ReportExecuteActionEvent): void
 
@@ -2257,15 +2257,15 @@ onReportExecuteAction(callback: ReportExecuteActionEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                   |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------ |
-| callback | [ReportExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteactionevent23) | 是   | 当用户点击音频模板界面按钮时，上报对应按钮动作的事件。 |
+| callback | [ReportExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteactionevent) | 是   | 当用户点击音频模板界面按钮时，上报对应按钮动作的事件。 |
 
 **示例：**
 
@@ -2288,7 +2288,7 @@ export class ControllerManager {
 }
 ```
 
-## offReportExecuteAction<sup>23+</sup>
+## offReportExecuteAction
 
 offReportExecuteAction(callback?: ReportExecuteActionEvent): void
 
@@ -2296,15 +2296,15 @@ offReportExecuteAction(callback?: ReportExecuteActionEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [ReportExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteactionevent23) | 否   | 上报执行动作的事件。 |
+| callback | [ReportExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteactionevent) | 否   | 上报执行动作的事件。 |
 
 **示例：**
 
@@ -2315,7 +2315,7 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     // 注销上报执行动作的监听。
@@ -2324,7 +2324,7 @@ export class ControllerManager {
 }
 ```
 
-## onExtensionAbilityChange<sup>23+</sup>
+## onExtensionAbilityChange
 
 onExtensionAbilityChange(callback: ReportExecuteAbilityEvent): void
 
@@ -2332,15 +2332,15 @@ onExtensionAbilityChange(callback: ReportExecuteAbilityEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [ReportExecuteAbilityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteabilityevent23) | 是   | 通知音频模板控制方拉起指定三方应用界面的事件，包含应用包名和界面名称等信息。 |
+| callback | [ReportExecuteAbilityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteabilityevent) | 是   | 通知音频模板控制方拉起指定三方应用界面的事件，包含应用包名和界面名称等信息。 |
 
 **示例：**
 
@@ -2363,7 +2363,7 @@ export class ControllerManager {
 }
 ```
 
-## offExtensionAbilityChange<sup>23+</sup>
+## offExtensionAbilityChange
 
 offExtensionAbilityChange(callback?: ReportExecuteAbilityEvent): void
 
@@ -2371,15 +2371,15 @@ offExtensionAbilityChange(callback?: ReportExecuteAbilityEvent): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                 |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| callback | [ReportExecuteAbilityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteabilityevent23) | 否   | 通知音频模板控制方拉起特定三方应用界面的事件回调。 |
+| callback | [ReportExecuteAbilityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteabilityevent) | 否   | 通知音频模板控制方拉起特定三方应用界面的事件回调。 |
 
 **示例：**
 
@@ -2390,7 +2390,7 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     // 注销通知媒体中心拉起指定三方应用界面的信息的监听。
@@ -2399,7 +2399,7 @@ export class ControllerManager {
 }
 ```
 
-## destroy<sup>23+</sup>
+## destroy
 
 destroy(): Promise&lt;void&gt;
 
@@ -2407,9 +2407,9 @@ destroy(): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ```ts
 import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
@@ -2421,7 +2421,7 @@ export class ControllerManager {
   private currentBundleName: string | undefined = undefined;
 
   /**
-   * 销毁控制器
+   * 销毁控制器。
    */
   public destroyController() {
     console.info(TAG, 'destroyController')

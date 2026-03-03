@@ -15,7 +15,7 @@
 import { avMusicTemplate } from '@kit.AVSessionKit';
 ```
 
-## avMusicTemplate.createAVMusicTemplate<sup>23+</sup>
+## avMusicTemplate.createAVMusicTemplate
 
 createAVMusicTemplate(accessType: AVMusicTemplateType): AVMusicTemplate
 
@@ -23,15 +23,15 @@ createAVMusicTemplate(accessType: AVMusicTemplateType): AVMusicTemplate
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
 | 参数名     | 类型                                                         | 必填 | 说明               |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------ |
-| accessType | [AVMusicTemplateType](arkts-apis-avsession-AVMusicTemplate-e.md#avmusictemplatetype23) | 是   | 音频模板枚举类型。 |
+| accessType | [AVMusicTemplateType](arkts-apis-avsession-AVMusicTemplate-e.md#avmusictemplatetype) | 是   | 音频模板枚举类型。 |
 
 **返回值：**
 
@@ -73,9 +73,9 @@ export class TemplateManager {
   }
 
   /**
-   * 获取模板控制器实例
+   * 获取模板控制器实例。
    *
-   * @returns 模板控制器实例
+   * @returns 模板控制器实例。
    */
   public static getInstance(): TemplateManager {
     if (!TemplateManager.sInstance) {
@@ -85,7 +85,7 @@ export class TemplateManager {
   };
 
   /**
-   * 创建音频模板
+   * 创建音频模板。
    */
   public createTemplate() {
     if (this.template) {
@@ -105,7 +105,7 @@ export class TemplateManager {
 
 
 
-## avMusicTemplate.createAVMusicTemplateController<sup>23+</sup>
+## avMusicTemplate.createAVMusicTemplateController
 
 createAVMusicTemplateController(sessionId: string): AVMusicTemplateController
 
@@ -113,9 +113,9 @@ createAVMusicTemplateController(sessionId: string): AVMusicTemplateController
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
@@ -215,7 +215,7 @@ export class ControllerManager {
   }
 
   /**
-   * 注册模板监听
+   * 注册模板监听。
    */
   public registerAVMusicTemplateListener() {
     try {
@@ -259,7 +259,7 @@ export class ControllerManager {
   }
 
   /**
-   * 注销监听
+   * 注销监听。
    */
   public unregisterListener() {
     // 注销用户信息改变的监听。
@@ -297,7 +297,7 @@ export class ControllerManager {
   }
 
   /**
-   * 销毁控制器
+   * 销毁控制器。
    */
   public destroyController() {
     console.info(TAG, 'destroyController')
@@ -307,7 +307,7 @@ export class ControllerManager {
   }
 
   /**
-   * 反注册模板监听
+   * 反注册模板监听。
    */
   public unregisterAVMusicTemplateListener() {
     try {
@@ -320,7 +320,7 @@ export class ControllerManager {
 }
 ```
 
-## avMusicTemplate.getAllAVMusicTemplateDescriptors<sup>23+</sup>
+## avMusicTemplate.getAllAVMusicTemplateDescriptors
 
 getAllAVMusicTemplateDescriptors(userId?: int): AVMusicTemplateDescriptor[]
 
@@ -332,8 +332,6 @@ getAllAVMusicTemplateDescriptors(userId?: int): AVMusicTemplateDescriptor[]
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明     |
@@ -342,9 +340,9 @@ getAllAVMusicTemplateDescriptors(userId?: int): AVMusicTemplateDescriptor[]
 
 **返回值：**
 
-| 类型                                                                                                  | 说明                 |
-|-----------------------------------------------------------------------------------------------------| -------------------- |
-| [AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor23)[] | 音频模板描述的集合。 |
+| 类型                                                                                                 | 说明                 |
+|----------------------------------------------------------------------------------------------------| -------------------- |
+| [AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor)[] | 音频模板描述的集合。 |
 
 **错误码：**
 
@@ -366,7 +364,7 @@ export class ControllerManager {
   private currentBundleName: string | undefined = undefined;
 
   /**
-   * 创建模板
+   * 创建模板。
    */
   public createAvMusicTemplateController(bundleName: string) {
     if (this.isStringEmpty(bundleName)) {
@@ -388,7 +386,7 @@ export class ControllerManager {
 }
 ```
 
-## avMusicTemplate.onAVMusicTemplateCreate<sup>23+</sup>
+## avMusicTemplate.onAVMusicTemplateCreate
 
 onAVMusicTemplateCreate(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): void
 
@@ -398,15 +396,15 @@ onAVMusicTemplateCreate(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): vo
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
-| 参数名   | 类型                                                                                                          | 必填 | 说明                         |
-| -------- |-------------------------------------------------------------------------------------------------------------| ---- | ---------------------------- |
-| callback | Callback<[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor23)> | 是   | 回调函数，返回音频模板描述。 |
+| 参数名   | 类型                                                                                                         | 必填 | 说明                         |
+| -------- |------------------------------------------------------------------------------------------------------------| ---- | ---------------------------- |
+| callback | Callback<[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor)> | 是   | 回调函数，返回音频模板描述。 |
 
 **错误码：**
 
@@ -439,7 +437,7 @@ export class ControllerManager {
   }
 
   /**
-   * 注册模板监听
+   * 注册模板监听。
    */
   public registerAVMusicTemplateListener() {
     try {
@@ -452,7 +450,7 @@ export class ControllerManager {
 }
 ```
 
-## avMusicTemplate.offAVMusicTemplateCreate<sup>23+</sup>
+## avMusicTemplate.offAVMusicTemplateCreate
 
 offAVMusicTemplateCreate(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;): void
 
@@ -462,15 +460,15 @@ offAVMusicTemplateCreate(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;): 
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
-| 参数名   | 类型                                                                                                          | 必填 | 说明                         |
-| -------- |-------------------------------------------------------------------------------------------------------------| ---- | ---------------------------- |
-| callback | Callback<[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor23)> | 否   | 回调函数，返回音频模板描述。 |
+| 参数名   | 类型                                                                                                         | 必填 | 说明                         |
+| -------- |------------------------------------------------------------------------------------------------------------| ---- | ---------------------------- |
+| callback | Callback<[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor)> | 否   | 回调函数，返回音频模板描述。 |
 
 **错误码：**
 
@@ -490,7 +488,7 @@ const TAG: string = 'ControllerManager';
 
 export class ControllerManager {
   /**
-   * 反注册模板监听
+   * 反注册模板监听。
    */
   public unregisterAVMusicTemplateListener() {
     try {
@@ -502,7 +500,7 @@ export class ControllerManager {
 }
 ```
 
-## avMusicTemplate.onAVMusicTemplateDestroy<sup>23+</sup>
+## avMusicTemplate.onAVMusicTemplateDestroy
 
 onAVMusicTemplateDestroy(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): void
 
@@ -512,15 +510,15 @@ onAVMusicTemplateDestroy(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): v
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
-| 参数名   | 类型                                                                                                          | 必填 | 说明                         |
-| -------- |-------------------------------------------------------------------------------------------------------------| ---- | ---------------------------- |
-| callback | Callback<[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor23)> | 是   | 回调函数，返回音频模板描述。 |
+| 参数名   | 类型                                                                                                         | 必填 | 说明                         |
+| -------- |------------------------------------------------------------------------------------------------------------| ---- | ---------------------------- |
+| callback | Callback<[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor)> | 是   | 回调函数，返回音频模板描述。 |
 
 **错误码：**
 
@@ -544,7 +542,7 @@ export class ControllerManager {
     };
 
   /**
-   * 注册模板监听
+   * 注册模板监听。
    */
   public registerAVMusicTemplateListener() {
     try {
@@ -557,7 +555,7 @@ export class ControllerManager {
 }
 ```
 
-## avMusicTemplate.offAVMusicTemplateDestroy<sup>23+</sup>
+## avMusicTemplate.offAVMusicTemplateDestroy
 
 offAVMusicTemplateDestroy(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;): void
 
@@ -567,15 +565,15 @@ offAVMusicTemplateDestroy(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;):
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
 
-| 参数名   | 类型                                                                                                          | 必填 | 说明                         |
-| -------- |-------------------------------------------------------------------------------------------------------------| ---- | ---------------------------- |
-| callback | Callback<[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor23)> | 否   | 回调函数，返回音频模板描述。 |
+| 参数名   | 类型                                                                                                         | 必填 | 说明                         |
+| -------- |------------------------------------------------------------------------------------------------------------| ---- | ---------------------------- |
+| callback | Callback<[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor)> | 否   | 回调函数，返回音频模板描述。 |
 
 **错误码：**
 
@@ -595,7 +593,7 @@ const TAG: string = 'ControllerManager';
 
 export class ControllerManager {
   /**
-   * 反注册模板监听
+   * 反注册模板监听。
    */
   public unregisterAVMusicTemplateListener() {
     try {
