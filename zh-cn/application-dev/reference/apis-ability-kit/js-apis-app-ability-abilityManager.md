@@ -138,6 +138,33 @@ export default class EntryAbility extends EmbeddableUIAbility {
 }
 ```
 
+## abilityManager.isEmbeddedUIExtensionSupported<sup>26+</sup>
+
+isEmbeddedUIExtensionSupported(): boolean
+
+判断当前设备是否支持[EmbeddedUIExtensionAbility](js-apis-app-ability-embeddedUIExtensionAbility.md)。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 返回true表示当前设备支持；返回false表示当前设备不支持。 |
+
+**示例：**
+
+```ts
+import { abilityManager, UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let isSupported: boolean = abilityManager.isEmbeddedUIExtensionSupported();
+    console.info(`isEmbeddedUIExtensionSupported is ${isSupported}`);
+  }
+}
+```
+
 ## AbilityRunningInfo<sup>14+</sup>
 
 type AbilityRunningInfo = _AbilityRunningInfo
