@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供ArkTS侧的FrameNode转换NodeHandle的方式。
+提供ArkTS侧的[FrameNode](js-apis-arkui-frameNode.md)转换[NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)的方式。
 
 **引用文件：** <arkui/native_node_napi.h>
 
@@ -90,7 +90,7 @@ int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_C
 **描述：**
 
 
-获取ArkTS侧创建的UIContext对象映射到Native侧的ArkUI_ContextHandle。
+获取ArkTS侧创建的[UIContext](arkts-apis-uicontext-uicontext.md)对象映射到Native侧的ArkUI_ContextHandle。
 
 **起始版本：** 12
 
