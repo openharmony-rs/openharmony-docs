@@ -188,7 +188,7 @@ The data exceeds the maximum allowable transmission capacity.
 
 **可能原因**
 
-1. 传输的数据超过允许传输的10MB容量限制。
+1. 传输的数据超过允许传输的1MB容量限制。
 
 **处理步骤**
 
