@@ -83,6 +83,7 @@
     - [@ohos.wallpaper (Wallpaper)](js-apis-wallpaper.md)
     - [@ohos.resourceschedule.systemload (System Load Level Management)](js-apis-resourceschedule-systemload.md)
     - [@ohos.systemDateTime (System Time and Time Zone)](js-apis-date-time.md)
+    - [@ohos.intelligentScene (Intelligent Scene)](js-apis-intelligentScene.md)
     <!--Del-->
     - [@ohos.configPolicy (Configuration Policy) (System API)](js-apis-configPolicy-sys.md)
     - [@ohos.settings (Data Item Settings) (System API)](js-apis-settings-sys.md)
@@ -91,7 +92,6 @@
     - [@ohos.wallpaper (Wallpaper) (System API)](js-apis-wallpaper-sys.md)
     - [@ohos.WallpaperExtensionAbility (WallpaperExtensionAbility) (System API)](js-apis-WallpaperExtensionAbility-sys.md)
     - [@ohos.systemTimer (System Timer) (System API)](js-apis-system-timer-sys.md)
-    - [@ohos.intelligentScene (Intelligent Scene)](js-apis-intelligentScene.md)
     <!--DelEnd-->
   - APIs No Longer Maintained<!--basic-services-arkts-dep-->
     - [System Common Events](common_event/commonEvent-definitions.md)
@@ -181,9 +181,9 @@
   - [Print Service Error Codes](errorcode-print.md)
   - [Settings Error Codes](errorcode-settings.md)
   - [Word Selection Service Error Codes](errorcode-selection.md)
+  - [Intelligent Scene Error Codes](errorcode-intelligentScene.md)
   <!--Del-->
   - [Screen Lock Management Error Codes](errorcode-screenlock.md)
   - [Device Attestation Error Codes](errorcode-deviceAttest.md)
   - [Intelligent Voice Error Codes](errorcode-intelligentVoice.md)
-  - [Intelligent Scene Error Codes](errorcode-intelligentScene.md)
   <!--DelEnd-->
