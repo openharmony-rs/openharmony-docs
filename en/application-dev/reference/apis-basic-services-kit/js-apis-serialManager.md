@@ -606,7 +606,7 @@ function readSync() {
 
 write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-Writes data to the serial port device asynchronously. This API uses a promise to return the result.
+Writes data to the serial port device asynchronously. The length of data written each time cannot exceed 4 KB; otherwise, data loss may occur. You are advised to write long data in multiple packets. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -694,7 +694,7 @@ function write() {
 
 writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
-Writes data to the serial port device synchronously.
+Writes data to the serial port device synchronously. The length of data written each time cannot exceed 4 KB; otherwise, data loss may occur. You are advised to write long data in multiple packets.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
