@@ -13114,9 +13114,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp",
 				"functions":[
 					{
-						"end_line":394,
+						"end_line":411,
 						"name":"native_xcomponent_declarative_surface_callback",
-						"start_line":372
+						"start_line":388
 					},
 					{
 						"end_line":392,
