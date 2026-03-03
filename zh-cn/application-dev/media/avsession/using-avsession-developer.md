@@ -246,7 +246,7 @@
 
    > **说明：**<br>
    > 通过dispatchSessionEvent方法设置的数据不会保存在会话对象或AVSession服务中。
-   
+
    <!-- @[dispatchSessionEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/DispatchSessionEvent.ets) -->
    
    ``` TypeScript
@@ -333,8 +333,9 @@
     
    在Session侧注册的监听分为`固定播控命令`和`高级播控事件`两种。
     
-   6.1 固定控制命令的监听 
+   6.1 固定控制命令的监听。
    > **说明：**
+   >
    > 媒体会话提供方在注册相关固定播控命令事件监听时，监听的事件会在媒体会话控制方的getValidCommands()方法中体现，即媒体会话控制方会认为对应的方法有效，进而根据需要触发相应暂不使用时的事件。为了保证媒体会话控制方下发的播控命令可以被正常执行，媒体会话提供方请勿进行无逻辑的空实现监听。
 
    Session侧的固定播控命令主要包括播放、暂停、上一首、下一首等基础操作命令，详细介绍请参见[AVControlCommand](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avcontrolcommand10)。
@@ -438,7 +439,7 @@
    }
    ```
 
-   6.2 高级播控事件的监听
+   6.2 高级播控事件的监听。
 
    Session侧的可以注册的高级播控事件主要包括：
 
