@@ -1169,9 +1169,9 @@ onCCallStateChange\(callback: Callback\<CCallStateInfo\>, options?: ObserverOpti
 **示例：**
 
 ```ts
-import { call } from '@kit.TelephonyKit';
+import { call，observer } from '@kit.TelephonyKit';
 
-let callback: (data: CCallStateInfo) => void = (data: CCallStateInfo) => {
+let callback: (data: observer.CCallStateInfo) => void = (data: observer.CCallStateInfo) => {
     console.info("onCCallStateChange, data:" + JSON.stringify(data));
 }
 let options: observer.ObserverOptions = {
@@ -1213,9 +1213,9 @@ offCCallStateChange\(callback?: Callback\<CCallStateInfo\>\): void
 **示例：**
 
 ```ts
-import { call } from '@kit.TelephonyKit';
+import { call, observer } from '@kit.TelephonyKit';
 
-let callback: (data: CCallStateInfo) => void = (data: CCallStateInfo) => {
+let callback: (data: observer.CCallStateInfo) => void = (data: observer.CCallStateInfo) => {
     console.info("onCCallStateChange, data:" + JSON.stringify(data));
 }
 
