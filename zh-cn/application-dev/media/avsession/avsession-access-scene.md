@@ -445,7 +445,7 @@ struct Index {
 
 系统支持的控制命令对于不支持的控制，比如应用不支持“上一首”的命令处理，只需要使用off 接口注销对应的控制命令，系统的播控中心会相应的对该控制界面进行置灰处理，以明确告知用户此控制命令不支持。
 
-<!-- @[handing_unSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/HandlingUnsupportedCommands.ets) -->  
+<!-- @[handing_unSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/HandlingUnsupportedCommands.ets) --> 
 
 ### 快进快退
 
@@ -833,56 +833,9 @@ struct Index {
   | KEYCODE_MEDIA_PLAY    | 多媒体键：播放 |
   | KEYCODE_MEDIA_PAUSE   | 多媒体键：暂停|
 
-  <!-- @[adaptingToBluetoothMethodTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/AdaptingToBluetoothMethodTwo.ets) -->       
+  <!-- @[adaptingToBluetoothMethodTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/AdaptingToBluetoothMethodTwo.ets) -->  
 
-  ``` TypeScript
-  import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  // ...
-
-  @Entry
-  @Component
-  struct Index {
-    @State message: string = 'hello world';
-    // ...
-
-    build() {
-      Column() {
-        // ...
-        Text(this.message)
-          .onClick(async () => {
-            let context = this.getUIContext().getHostContext() as Context;
-            let type: AVSessionManager.AVSessionType = 'audio';
-            let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-            // ...
-            // 设置必要的媒体信息，务必设置，否则接收不到按键事件。
-            let metadata: AVSessionManager.AVMetadata = {
-              assetId: '0', // 由应用指定，用于标识应用媒体库里的媒体。
-              title: 'TITLE',
-              mediaImage: 'IMAGE',
-              artist: 'ARTIST'
-            };
-            session.setAVMetadata(metadata).then(() => {
-              console.info(`SetAVMetadata successfully`);
-              // ...
-            }).catch((err: BusinessError) => {
-              console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
-              // ...
-            });
-            session.on('handleKeyEvent', (event) => {
-              // 解析keycode，应用需要根据keycode对播放器做相应逻辑处理。
-              console.info(`on handleKeyEvent, keyCode=${event.key.code}`);
-              // ...
-            });
-            // ...
-          })
-      }
-      .width('100%')
-      .height('100%')
-    }
-  }
-  ```
-
+  
 > **说明：**
 >
 > 1. 方式一与方式二均需正确设置媒体信息AVMetadata并注册相应控制接口，否则会无法接收到控制指令与按键事件。
