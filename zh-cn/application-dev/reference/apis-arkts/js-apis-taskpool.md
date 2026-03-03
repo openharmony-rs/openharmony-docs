@@ -1002,7 +1002,7 @@ Task的构造函数。
 
 ```ts
 @Concurrent
-function printArgs(args: number): number {
+function printArgs(args: string): string {
   console.info("printArgs: " + args);
   return args;
 }
