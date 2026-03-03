@@ -387,6 +387,25 @@ The client request parameter is incorrect or exceeds the processing capability.
 1. Check whether the client request parameter is correct.
 2. Destroy this instance and re-create it. If the re-creation fails, stop related operations.
 
+## 5411012 Request Not Supported Due to HTTP Plaintext Interception
+
+**Error Message**
+
+Http cleartext traffic is not permitted.
+
+**Description**
+
+HTTP plaintext access is not allowed.
+
+**Possible Causes**
+
+The client has configured **forbidding HTTP plaintext access** for the related domain name in the **network_config.json** file.
+
+**Solution**
+
+1. Check whether HTTP plaintext access interception is performed for the related domain name in the **network_config.json** file.
+2. If interception is not required, configure the domain name permission by referring to [Configuring Plaintext HTTP Access Permissions](../../network/http-request.md#configuring-plaintext-http-access-permissions).
+
 ## 5410002 Seek in SEEK_CONTINUOUS Mode Is Not Supported
 
 **Error Message**

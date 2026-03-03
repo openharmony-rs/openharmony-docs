@@ -1,7 +1,7 @@
 # 自定义事件拦截
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -75,7 +75,7 @@ struct Index {
         // 使用touches时需要先校验是否为空
         if (event && event.touches) {
           let touches = event.touches;
-          for(let i = 0; touches[i] != null; i++) {
+          for (let i = 0; touches[i] != null; i++) {
             console.info('onTouchIntercept touches:', JSON.stringify(touches[i]));
           }
         }

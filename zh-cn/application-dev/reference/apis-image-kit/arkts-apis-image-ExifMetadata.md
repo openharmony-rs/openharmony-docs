@@ -126,7 +126,7 @@ import { image } from '@kit.ImageKit';
 | meteringMode                        | number                                             | 否   | 是   | 测光模式。                                                   |
 | lightSource                         | number                                             | 否   | 是   | 光源。                                                       |
 | flash                               | number                                             | 否   | 是   | 闪光。                                                       |
-| focalLength                         | number                                             | 否   | 是   | 焦距。，单位为毫米。                                                       |
+| focalLength                         | number                                             | 否   | 是   | 焦距。单位为毫米。                                                       |
 | subjectArea                         | number[]                                           | 否   | 是   | 用于指示主要对象在整个场景中的位置和区域。                   |
 | makerNote                           | ArrayBuffer                                        | 否   | 是   | Exif/相机文件系统设计规则DCF（Design rule for Camera File system）写入器制造商记录所需信息的标签。                     |
 | userComment                         | string                                             | 否   | 是   | 用户评论。                                                   |
@@ -138,7 +138,7 @@ import { image } from '@kit.ImageKit';
 | pixelXDimension                     | number                                             | 否   | 是   | 图像在X轴上的（二维坐标系中的Horizontal Axis）尺寸。           |
 | pixelYDimension                     | number                                             | 否   | 是   | 图像在Y轴上的（二维坐标系中的Vertical Axis）尺寸。             |
 | relatedSoundFile                    | string                                             | 否   | 是   | 与图像数据相关的音频文件的名称。                             |
-| flashEnergy                         | number                                             | 否   | 是   | 图像捕获时的闪光灯能量。单位为光束烛光秒(BCPS，Beam Candlepower Seconds)。 |
+| flashEnergy                         | number                                             | 否   | 是   | 图像捕获时的闪光灯能量。单位为光束烛光秒（BCPS，Beam Candlepower Seconds）。 |
 | spatialFrequencyResponse            | ArrayBuffer                                        | 否   | 是   | 相机或输入设备空间频率表。                                   |
 | focalPlaneXResolution               | number                                             | 否   | 是   | 传感器物理平面X轴方向上每单位物理长度的像素数量。          |
 | focalPlaneYResolution               | number                                             | 否   | 是   | 传感器物理平面Y轴方向上每单位物理长度的像素数量。          |

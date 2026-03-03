@@ -34,7 +34,7 @@ Rect(options?: RectOptions | RoundedRectOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [RectOptions](ts-drawing-components-rect.md#rectoptions18对象说明) \| [RoundedRectOptions](ts-drawing-components-rect.md#roundedrectoptions18对象说明)  | 否 | Rect绘制属性。<br/>异常值undefined和null按照无效值处理。|
+| options | [RectOptions](ts-drawing-components-rect.md#rectoptions18对象说明) \| [RoundedRectOptions](ts-drawing-components-rect.md#roundedrectoptions18对象说明)  | 否 | Rect绘制属性。<br/>异常值undefined和null按照无效值处理，本次设置不生效。|
 
 ## RectOptions<sup>18+</sup>对象说明
 
@@ -150,7 +150,7 @@ fill(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                   |
 | ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 填充区域颜色。<br/>默认值：Color.Black <br/>异常值undefined、null、NaN和Infinity按照默认值处理。|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 填充区域颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Black <br/>异常值undefined、null、NaN和Infinity按照默认值处理。|
 
 ### fillOpacity
 
@@ -186,7 +186,7 @@ stroke(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 边框颜色。<br/>异常值undefined和null按照默认值处理，NaN和Infinity按照Color.Black处理。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 边框颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Transparent<br/>异常值undefined和null按照默认值处理，NaN和Infinity按照[Color](ts-appendix-enums.md#color).Black处理。 |
 
 ### strokeDashArray
 
@@ -439,16 +439,16 @@ struct RectExample {
   build() {
     Column({ space: 10 }) {
       // 绘制90% * 50矩形，圆角半径为5
-      Rect({ width: '90%', height: '50', radius: '5' })//使用string类型
+      Rect({ width: '90%', height: '50', radius: '5' }) // 使用string类型
         .fill(Color.Green)
       // 绘制200 * 50的矩形框，圆角半径为5
-      Rect({ width: 200, height: 50, radius: 5 })//使用number类型
+      Rect({ width: 200, height: 50, radius: 5 }) // 使用number类型
         .fillOpacity(0)
         .stroke(Color.Red)
         .strokeWidth(3)
       // 绘制200 * 50矩形, 圆角宽80, 圆角高20
       Rect({
-        width: $r('app.string.RectWidth'), //使用Resource类型，需用户自定义
+        width: $r('app.string.RectWidth'), // 使用Resource类型，需用户自定义
         height: $r('app.string.RectHeight'),
         radius: $r('app.string.RectRadius')
       })

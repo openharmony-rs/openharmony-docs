@@ -3569,6 +3569,11 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
 
 收到网站安全风险检查结果时触发的回调。
 
+> **说明：**
+>
+> - 需要使用release包，debug包不生效。
+> - 开启未成年模式，设置网页内容拦截，触发回调。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3605,6 +3610,11 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
 onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
 
 网站安全风险检查结束时触发的回调。
+
+> **说明：**
+>
+> - 需要使用release包，debug包不生效。
+> - 开启未成年模式，设置网页内容拦截，触发回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3978,6 +3988,10 @@ onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void)
 onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionCallback)
 
 智能防跟踪功能使能时，当追踪者cookie被拦截时触发该回调。
+
+> **说明：**
+>
+> - 需要使用release包，debug包不生效。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -5046,7 +5060,7 @@ onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback)
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| Callback  | [OnCameraCaptureStateChangeCallback](arkts-basic-components-web-t.md#oncameracapturestatechangecallback23) | 是   | 回调函数。当摄像头捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
+| callback  | [OnCameraCaptureStateChangeCallback](arkts-basic-components-web-t.md#oncameracapturestatechangecallback23) | 是   | 回调函数。当摄像头捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
 
 **示例：**
 
@@ -5189,7 +5203,7 @@ onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| Callback  | [OnMicrophoneCaptureStateChangeCallback](./arkts-basic-components-web-t.md#onmicrophonecapturestatechangecallback23) | 是   | 回调函数。当麦克风捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
+| callback  | [OnMicrophoneCaptureStateChangeCallback](./arkts-basic-components-web-t.md#onmicrophonecapturestatechangecallback23) | 是   | 回调函数。当麦克风捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
 
 **示例：**
 

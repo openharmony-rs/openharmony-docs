@@ -92,3 +92,17 @@ let resourceLoader: media.MediaSourceLoader = {
 
 mediaSource.setMediaResourceLoaderDelegate(resourceLoader);
 ```
+
+## enableOfflineCache<sup>23+</sup>
+
+enableOfflineCache(enable: boolean): void
+
+Sets whether to enable offline caching during video playback.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+**Parameters**
+
+| Name  | Type    | Mandatory| Description                |
+| -------- | -------- | ---- | -------------------- |
+| enable | boolean | Yes  | Whether to enable offline caching during video playback. **true** to enable, **false** otherwise.|

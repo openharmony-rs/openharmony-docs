@@ -628,6 +628,22 @@ The PIN for user authentication has expired.
 
 Reset the PIN.
 
+<!--Del-->
+## 12300120 Credential Expired
+
+**Error Message**
+
+The credentials are no longer valid.
+
+**Possible Causes**
+
+In the companion device authentication scenario, the companion device has expired.
+
+**Solution**
+
+Delete the companion device and bind it again.
+<!--DelEnd-->
+
 ## 12400001 Application Not Exist
 
 **Error Message**

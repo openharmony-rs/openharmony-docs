@@ -1,6 +1,6 @@
 # Account Subsystem Changelog
 
-## cl.account_os_account.1 OsAccountInfo.type Value Type Change
+## cl.account_os_account.1 OsAccountInfo.type Value Type Is Changed
 
 Changed the value type of **OsAccountInfo.type** from object to **OsAccountType** enum.
 
@@ -10,7 +10,7 @@ The mode for reading the **OsAccountInfo.type** value needs to be changed for th
 
 **Key API/Component Changes**
 
-The following APIs are involved:
+Involved APIs:
 - AccountManager
   - queryAllCreatedOsAccounts(callback: AsyncCallback&lt;Array&lt;OsAccountInfo&gt;&gt;): void;
   - queryAllCreatedOsAccounts(): Promise&lt;Array&lt;OsAccountInfo&gt;&gt;;

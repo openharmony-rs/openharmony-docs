@@ -41,9 +41,9 @@
 
 ## 文件介绍
 
-1. InputMethodService.ts文件。
+1. InputMethodService.ets文件。
 
-   在InputMethodService.ts文件中，增加导入InputMethodExtensionAbility的依赖包，自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调。
+   在InputMethodService.ets文件中，增加导入InputMethodExtensionAbility的依赖包，自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调。
 
    <!-- @[input_case_module_import_InputMethodExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/InputMethodService.ets) -->
    
@@ -74,7 +74,7 @@
    ```
 
 
-2. KeyboardController.ts文件。KeyboardController中除创建输入法窗口，设置输入法事件监听，实现文本插入、删除之外，还可以获取[输入法键盘与系统面板的偏移区域](../reference/apis-ime-kit/js-apis-inputmethodengine.md#getsystempanelcurrentinsets21)，输入法系统面板在不同设备上存在差异，当设备有系统面板时，输入法软键盘相对系统面板的偏移区域如图所示：
+2. KeyboardController.ets文件。KeyboardController中除创建输入法窗口，设置输入法事件监听，实现文本插入、删除之外，还可以获取[输入法键盘与系统面板的偏移区域](../reference/apis-ime-kit/js-apis-inputmethodengine.md#getsystempanelcurrentinsets21)，输入法系统面板在不同设备上存在差异，当设备有系统面板时，输入法软键盘相对系统面板的偏移区域如图所示：
 
    ![偏移区域示意图](./figures/系统面板与软键盘偏移区域示意图.png)
 
@@ -456,7 +456,7 @@
 
 
  
-3. KeyboardKeyData.ts文件。
+3. KeyboardKeyData.ets文件。
 
    定义软键盘的按键显示内容。
 
@@ -815,18 +815,13 @@
    <!-- @[input_case_input_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
    
    ``` TypeScript
-   import deviceInfo from '@ohos.deviceInfo';
+   import { deviceInfo } from '@kit.BasicServicesKit';
    import Log from '../../model/Log';
    import { EditView } from '../../components/EditView';
    import { InputHandler } from '../model/KeyboardController';
    import {
      MenuType,
      SubMenuType,
-     keySourceListData,
-     numberSourceListData,
-     symbolSourceListData,
-     keySourceListType,
-     sourceListType
    } from '../../model/KeyboardKeyData';
    import { KeyMenu } from '../../components/KeyMenu';
    import { NumberMenu } from '../../components/NumberMenu';

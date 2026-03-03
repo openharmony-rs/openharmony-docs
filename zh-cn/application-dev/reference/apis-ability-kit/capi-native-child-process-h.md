@@ -60,7 +60,7 @@
 | [Ability_NativeChildProcess_ErrCode OH_Ability_RegisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)](#oh_ability_registernativechildprocessexitcallback) | - | 注册子进程退出回调。只有[OH_Ability_StartNativeChildProcess](#oh_ability_startnativechildprocess)、[OH_Ability_StartNativeChildProcessWithConfigs](#oh_ability_startnativechildprocesswithconfigs)和[@ohos.app.ability.childProcessManager的startNativeChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartnativechildprocess13)启动的子进程退出时才会触发所注册的回调函数。重复注册同一个回调函数只会保留一个。 |
 | [Ability_NativeChildProcess_ErrCode OH_Ability_UnregisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)](#oh_ability_unregisternativechildprocessexitcallback) | - | 解注册子进程退出回调。 |
 | [Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationUid(Ability_ChildProcessConfigs* configs, bool enableIsolationUid)](#oh_ability_childprocessconfigs_setisolationuid) | - | 设置子进程配置信息对象的uid是否隔离。该设置仅在NativeChildProcess_IsolationMode为NCP_ISOLATION_MODE_ISOLATED时生效。 |
-| [Ability_NativeChildProcess_ErrCode OH_Ability_KillChildProcess(int32_t pid))](#oh_ability_killchildprocess) | - | 终止当前进程创建的子进程。 |
+| [Ability_NativeChildProcess_ErrCode OH_Ability_KillChildProcess(int32_t pid)](#oh_ability_killchildprocess) | - | 终止当前进程创建的子进程。 |
 
 ## 枚举类型说明
 

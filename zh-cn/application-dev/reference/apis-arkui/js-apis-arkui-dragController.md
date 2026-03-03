@@ -75,7 +75,8 @@ class DragInfo {
 struct DragControllerPage {
   @State text: string = ''
 
-  @Builder DraggingBuilder() {
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
         .fontColor(Color.White)
@@ -90,8 +91,8 @@ struct DragControllerPage {
     Column() {
       Button('touch to execute drag')
         .margin(10)
-        .onTouch((event?:TouchEvent) => {
-          if(event){
+        .onTouch((event?: TouchEvent) => {
+          if (event) {
             if (event.type == TouchType.Down) {
               let text = new unifiedDataChannel.PlainText()
               text.textContent = 'drag text'
@@ -104,8 +105,10 @@ struct DragControllerPage {
                 extraParams: ''
               }
               let eve: DragInfo = new DragInfo();
-              this.getUIContext().getDragController().executeDrag(()=>{this.DraggingBuilder()}, dragInfo, (err, eve) => { // 建议使用 this.getUIContext().getDragController().executeDrag()接口
-                if(eve.event){
+              this.getUIContext().getDragController().executeDrag(() => {
+                this.DraggingBuilder()
+              }, dragInfo, (err, eve) => { // 建议使用 this.getUIContext().getDragController().executeDrag()接口
+                if (eve.event) {
                   if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                     // ...
                   } else if (eve.event.getResult() == DragResult.DRAG_FAILED) {
@@ -119,10 +122,10 @@ struct DragControllerPage {
       Text(this.text)
         .height(100)
         .width(150)
-        .margin({top:20})
-        .border({color:Color.Black,width:1})
-        .onDrop((dragEvent?:DragEvent)=>{
-          if(dragEvent){
+        .margin({ top: 20 })
+        .border({ color: Color.Black, width: 1 })
+        .onDrop((dragEvent?: DragEvent) => {
+          if (dragEvent) {
             let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData().getRecords();
             let plainText: unifiedDataChannel.PlainText = records[0] as unifiedDataChannel.PlainText;
             this.text = plainText.textContent;
@@ -190,10 +193,11 @@ class DragInfo {
 @Entry
 @Component
 struct DragControllerPage {
-  @State pixmap: image.PixelMap|undefined = undefined
+  @State pixmap: image.PixelMap | undefined = undefined
   @State text: string = ''
 
-  @Builder DraggingBuilder() {
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
         .fontColor(Color.White)
@@ -203,7 +207,8 @@ struct DragControllerPage {
     .backgroundColor(Color.Blue)
   }
 
-  @Builder PixmapBuilder() {
+  @Builder
+  PixmapBuilder() {
     Column() {
       Text("PixmapBuilder")
         .fontColor(Color.White)
@@ -227,8 +232,8 @@ struct DragControllerPage {
     Column() {
       Button('touch to execute drag')
         .margin(10)
-        .onTouch((event?:TouchEvent) => {
-          if(event){
+        .onTouch((event?: TouchEvent) => {
+          if (event) {
             if (event.type == TouchType.Down) {
               let text = new unifiedDataChannel.PlainText()
               text.textContent = 'drag text'
@@ -242,11 +247,15 @@ struct DragControllerPage {
               }
               let dragItemInfo: DragItemInfo = {
                 pixelMap: this.pixmap,
-                builder: ()=>{this.DraggingBuilder()},
+                builder: () => {
+                  this.DraggingBuilder()
+                },
                 extraInfo: "DragItemInfoTest"
               }
               let eve: DragInfo = new DragInfo();
-              this.getUIContext().getDragController().executeDrag(dragItemInfo, dragInfo) // 建议使用 this.getUIContext().getDragController().executeDrag()接口
+              this.getUIContext()
+                .getDragController()
+                .executeDrag(dragItemInfo, dragInfo) // 建议使用 this.getUIContext().getDragController().executeDrag()接口
                 .then((eve) => {
                   if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                     // ...
@@ -254,7 +263,7 @@ struct DragControllerPage {
                     // ...
                   }
                 })
-                .catch((err:Error) => {
+                .catch((err: Error) => {
                 })
             }
           }
@@ -262,10 +271,10 @@ struct DragControllerPage {
       Text(this.text)
         .height(100)
         .width(150)
-        .margin({top:20})
-        .border({color:Color.Black,width:1})
-        .onDrop((dragEvent?:DragEvent)=>{
-          if(dragEvent){
+        .margin({ top: 20 })
+        .border({ color: Color.Black, width: 1 })
+        .onDrop((dragEvent?: DragEvent) => {
+          if (dragEvent) {
             let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData().getRecords();
             let plainText: unifiedDataChannel.PlainText = records[0] as unifiedDataChannel.PlainText;
             this.text = plainText.textContent;
@@ -349,8 +358,10 @@ struct DragControllerPage {
   @State pixmap: image.PixelMap | null = null
   @State text: string = ''
   private dragAction: dragController.DragAction | null = null;
-  customBuilders:Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
-  @Builder DraggingBuilder() {
+  customBuilders: Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
+
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
         .fontColor(Color.White)
@@ -370,8 +381,8 @@ struct DragControllerPage {
           .height('100%')
           .fontColor(Color.White)
           .fontSize(18)
-          .onDrop((dragEvent?:DragEvent)=>{
-            if(dragEvent){
+          .onDrop((dragEvent?: DragEvent) => {
+            if (dragEvent) {
               let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData().getRecords();
               let plainText: unifiedDataChannel.PlainText = records[0] as unifiedDataChannel.PlainText;
               this.text = plainText.textContent;
@@ -383,14 +394,20 @@ struct DragControllerPage {
       .backgroundColor(Color.Red)
       .margin(10)
 
-      Button('多对象dragAction customBuilder拖拽').onTouch((event?:TouchEvent) => {
-        if(event){
+      Button('多对象dragAction customBuilder拖拽').onTouch((event?: TouchEvent) => {
+        if (event) {
           if (event.type == TouchType.Down) {
             console.info("multi drag Down by listener");
             this.customBuilders.splice(0, this.customBuilders.length);
-            this.customBuilders.push(()=>{this.DraggingBuilder()});
-            this.customBuilders.push(()=>{this.DraggingBuilder()});
-            this.customBuilders.push(()=>{this.DraggingBuilder()});
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
             let text = new unifiedDataChannel.PlainText()
             text.textContent = 'drag text'
             let unifiedData = new unifiedDataChannel.UnifiedData(text)
@@ -399,16 +416,19 @@ struct DragControllerPage {
               data: unifiedData,
               extraParams: ''
             }
-            try{
-              this.dragAction = this.getUIContext().getDragController().createDragAction(this.customBuilders, dragInfo) // 建议使用 this.getUIContext().getDragController().createDragAction()接口
-              if(!this.dragAction){
+            try {
+              this.dragAction = this.getUIContext()
+                .getDragController()
+                .createDragAction(this.customBuilders,
+                  dragInfo) // 建议使用 this.getUIContext().getDragController().createDragAction()接口
+              if (!this.dragAction) {
                 console.info("listener dragAction is null");
                 return
               }
-              this.dragAction.on('statusChange', (dragAndDropInfo: dragController.DragAndDropInfo)=>{
+              this.dragAction.on('statusChange', (dragAndDropInfo: dragController.DragAndDropInfo) => {
                 if (dragAndDropInfo.status == dragController.DragStatus.STARTED) {
                   console.info("drag has start");
-                } else if (dragAndDropInfo.status == dragController.DragStatus.ENDED){
+                } else if (dragAndDropInfo.status == dragController.DragStatus.ENDED) {
                   console.info("drag has end");
                   if (!this.dragAction) {
                     return
@@ -416,15 +436,16 @@ struct DragControllerPage {
                   this.dragAction.off('statusChange')
                 }
               })
-              this.dragAction.startDrag().then(()=>{}).catch((err:Error)=>{
-                console.error("start drag Error:" + err.message);
+              this.dragAction.startDrag().then(() => {
+              }).catch((err: Error) => {
+                console.error(`start drag Error:${err.message}`);
               })
-            } catch(err) {
-              console.error("create dragAction Error:" + err.message);
+            } catch (err) {
+              console.error(`create dragAction Error:${err.message}`);
             }
           }
         }
-      }).margin({top:20})
+      }).margin({ top: 20 })
     }
   }
 }
@@ -474,8 +495,10 @@ import { unifiedDataChannel } from '@kit.ArkData';
 @Component
 struct DragControllerPage {
   private dragAction: dragController.DragAction | null = null;
-  customBuilders:Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
-  @Builder DraggingBuilder() {
+  customBuilders: Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
+
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
         .fontColor(Color.White)
@@ -488,11 +511,13 @@ struct DragControllerPage {
 
   build() {
     Column() {
-      Button('touch to execute drag').onTouch((event?:TouchEvent) => {
-        if(event){
+      Button('touch to execute drag').onTouch((event?: TouchEvent) => {
+        if (event) {
           if (event.type == TouchType.Down) {
             this.customBuilders.splice(0, this.customBuilders.length);
-            this.customBuilders.push(()=>{this.DraggingBuilder()});
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
             let text = new unifiedDataChannel.PlainText()
             text.textContent = 'drag text'
             let unifiedData = new unifiedDataChannel.UnifiedData(text)
@@ -501,21 +526,25 @@ struct DragControllerPage {
               data: unifiedData,
               extraParams: ''
             }
-            try{
-              this.dragAction = this.getUIContext().getDragController().createDragAction(this.customBuilders, dragInfo) // 建议使用 this.getUIContext().getDragController().createDragAction()接口
-              if(!this.dragAction){
+            try {
+              this.dragAction = this.getUIContext()
+                .getDragController()
+                .createDragAction(this.customBuilders,
+                  dragInfo) // 建议使用 this.getUIContext().getDragController().createDragAction()接口
+              if (!this.dragAction) {
                 console.info("listener dragAction is null");
                 return;
               }
-              this.dragAction.startDrag().then(()=>{}).catch((err:Error)=>{
+              this.dragAction.startDrag().then(() => {
+              }).catch((err: Error) => {
                 console.error(`start drag Error: ${err.message}`);
               })
-            } catch(err) {
+            } catch (err) {
               console.error(`create dragAction Error: ${err.message}`);
             }
           }
         }
-      }).margin({top:20})
+      }).margin({ top: 20 })
     }
   }
 }
@@ -726,8 +755,10 @@ import { unifiedDataChannel } from '@kit.ArkData';
 @Component
 struct DragControllerPage {
   private dragAction: dragController.DragAction | null = null;
-  customBuilders:Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
-  @Builder DraggingBuilder() {
+  customBuilders: Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
+
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
         .fontColor(Color.White)
@@ -740,11 +771,13 @@ struct DragControllerPage {
 
   build() {
     Column() {
-      Button('touch to execute drag').onTouch((event?:TouchEvent) => {
-        if(event){
+      Button('touch to execute drag').onTouch((event?: TouchEvent) => {
+        if (event) {
           if (event.type == TouchType.Down) {
             this.customBuilders.splice(0, this.customBuilders.length);
-            this.customBuilders.push(()=>{this.DraggingBuilder()});
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
             let text = new unifiedDataChannel.PlainText()
             text.textContent = 'drag text'
             let unifiedData = new unifiedDataChannel.UnifiedData(text)
@@ -756,23 +789,27 @@ struct DragControllerPage {
             let func = (dragAndDropInfo: dragController.DragAndDropInfo) => {
               console.info(`Register to listen on drag status ${JSON.stringify(dragAndDropInfo)}`);
             }
-            try{
-              this.dragAction = this.getUIContext().getDragController().createDragAction(this.customBuilders, dragInfo) // 建议使用 this.getUIContext().getDragController().createDragAction()接口
-              if(!this.dragAction){
+            try {
+              this.dragAction = this.getUIContext()
+                .getDragController()
+                .createDragAction(this.customBuilders,
+                  dragInfo) // 建议使用 this.getUIContext().getDragController().createDragAction()接口
+              if (!this.dragAction) {
                 console.info("listener dragAction is null");
                 return;
               }
               // 监听状态改变，触发后打印func中的日志
               this.dragAction.on('statusChange', func);
-              this.dragAction.startDrag().then(()=>{}).catch((err:Error)=>{
+              this.dragAction.startDrag().then(() => {
+              }).catch((err: Error) => {
                 console.error(`start drag Error: ${err.message}`);
               })
-            } catch(err) {
+            } catch (err) {
               console.error(`create dragAction Error: ${err.message}`);
             }
           }
         }
-      }).margin({top:20})
+      }).margin({ top: 20 })
     }
   }
 }
@@ -808,8 +845,10 @@ import { unifiedDataChannel } from '@kit.ArkData';
 @Component
 struct DragControllerPage {
   private dragAction: dragController.DragAction | null = null;
-  customBuilders:Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
-  @Builder DraggingBuilder() {
+  customBuilders: Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
+
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
         .fontColor(Color.White)
@@ -822,11 +861,13 @@ struct DragControllerPage {
 
   build() {
     Column() {
-      Button('touch to execute drag').onTouch((event?:TouchEvent) => {
-        if(event){
+      Button('touch to execute drag').onTouch((event?: TouchEvent) => {
+        if (event) {
           if (event.type == TouchType.Down) {
             this.customBuilders.splice(0, this.customBuilders.length);
-            this.customBuilders.push(()=>{this.DraggingBuilder()});
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
             let text = new unifiedDataChannel.PlainText()
             text.textContent = 'drag text'
             let unifiedData = new unifiedDataChannel.UnifiedData(text)
@@ -838,20 +879,24 @@ struct DragControllerPage {
             let func = (dragAndDropInfo: dragController.DragAndDropInfo) => {
               console.info(`Register to listen on drag status ${JSON.stringify(dragAndDropInfo)}`);
             }
-            this.dragAction = this.getUIContext().getDragController().createDragAction(this.customBuilders, dragInfo) // 建议使用 this.getUIContext().getDragController().createDragAction()接口
-            if(!this.dragAction){
+            this.dragAction = this.getUIContext()
+              .getDragController()
+              .createDragAction(this.customBuilders,
+                dragInfo) // 建议使用 this.getUIContext().getDragController().createDragAction()接口
+            if (!this.dragAction) {
               console.info("listener dragAction is null");
               return;
             }
             this.dragAction.on('statusChange', func);
             // 取消监听，发起拖拽后不会打印func中的日志
             this.dragAction.off('statusChange', func);
-            this.dragAction.startDrag().then(()=>{}).catch((err:Error)=>{
+            this.dragAction.startDrag().then(() => {
+            }).catch((err: Error) => {
               console.error(`start drag Error: ${err.message}`);
             })
           }
         }
-      }).margin({top:20})
+      }).margin({ top: 20 })
     }
   }
 }
@@ -1012,10 +1057,12 @@ animate(options: AnimationOptions, handler: () => void): void
 
        windowStage.loadContent('pages/Index', this.storage, (err, data) => {
          if (err.code) {
-           hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', `Code is ${err.code}, message is ${err.message}`);
+           hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s',
+             `Code is ${err.code}, message is ${err.message}`);
            return;
          }
-         hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s',  `Code is ${err.code}, message is ${err.message}`);
+         hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s',
+           `Code is ${err.code}, message is ${err.message}`);
          windowStage.getMainWindow((err, data) => {
            if (err.code) {
              hilog.error(0x0000, `Failed to obtain the main window. Cause: ${err.message}`, '');
@@ -1045,10 +1092,11 @@ animate(options: AnimationOptions, handler: () => void): void
    @Entry()
    @Component
    struct DragControllerPage {
-     @State pixmap: image.PixelMap|null = null;
+     @State pixmap: image.PixelMap | null = null;
      storages = this.getUIContext().getSharedLocalStorage();
 
-     @Builder DraggingBuilder() {
+     @Builder
+     DraggingBuilder() {
        Column() {
          Text("DraggingBuilder")
            .fontColor(Color.White)
@@ -1059,7 +1107,8 @@ animate(options: AnimationOptions, handler: () => void): void
        .backgroundColor(Color.Blue)
      }
 
-     @Builder PixmapBuilder() {
+     @Builder
+     PixmapBuilder() {
        Column() {
          Text("PixmapBuilder")
        }
@@ -1073,28 +1122,28 @@ animate(options: AnimationOptions, handler: () => void): void
          Button('拖拽至此处')
            .margin(10)
            .onDragEnter(() => {
-           try {
-             let uiContext: UIContext = this.storages?.get<UIContext>('uiContext') as UIContext;
-             let previewObj: dragController.DragPreview = uiContext.getDragController().getDragPreview();
-             let foregroundColor: ResourceColor = Color.Green;
+             try {
+               let uiContext: UIContext = this.storages?.get<UIContext>('uiContext') as UIContext;
+               let previewObj: dragController.DragPreview = uiContext.getDragController().getDragPreview();
+               let foregroundColor: ResourceColor = Color.Green;
 
-             let previewAnimation: dragController.AnimationOptions = {
-               curve: curves.cubicBezierCurve(0.2,0,0,1),
+               let previewAnimation: dragController.AnimationOptions = {
+                 curve: curves.cubicBezierCurve(0.2, 0, 0, 1),
+               }
+               previewObj.animate(previewAnimation, () => {
+                 previewObj.setForegroundColor(foregroundColor);
+               });
+             } catch (error) {
+               let msg = (error as BusinessError).message;
+               let code = (error as BusinessError).code;
+               hilog.error(0x0000, `show error code is ${code}, message is ${msg}`, '');
              }
-             previewObj.animate(previewAnimation, () => {
-               previewObj.setForegroundColor(foregroundColor);
-             });
-           } catch (error) {
-             let msg = (error as BusinessError).message;
-             let code = (error as BusinessError).code;
-             hilog.error(0x0000, `show error code is ${code}, message is ${msg}`, '');
-           }
-         })
-           .onDrop(() => {
-             this.getUIContext().getPromptAction().showToast({duration: 100, message: 'Drag Success', bottom: 400})
            })
-         Button('拖起').onTouch((event?:TouchEvent) => {
-           if(event){
+           .onDrop(() => {
+             this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success', bottom: 400 })
+           })
+         Button('拖起').onTouch((event?: TouchEvent) => {
+           if (event) {
              if (event.type == TouchType.Down) {
                let text = new unifiedDataChannel.Text()
                let unifiedData = new unifiedDataChannel.UnifiedData(text)
@@ -1104,21 +1153,23 @@ animate(options: AnimationOptions, handler: () => void): void
                  extraParams: ''
                }
                let eve: DragInfo = new DragInfo();
-               this.getUIContext().getDragController().executeDrag(() => { // 建议使用 this.getUIContext().getDragController().executeDrag()接口
-                 this.DraggingBuilder()
-               }, dragInfo, (err , eve) => {
-                 hilog.info(0x0000, `${JSON.stringify(err)}`, '')
-                 if (eve && eve.event) {
-                   if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
-                     hilog.info(0x0000, 'success', '');
-                   } else if (eve.event.getResult() == DragResult.DRAG_FAILED) {
-                     hilog.info(0x0000, 'failed', '');
+               this.getUIContext()
+                 .getDragController()
+                 .executeDrag(() => { // 建议使用 this.getUIContext().getDragController().executeDrag()接口
+                   this.DraggingBuilder()
+                 }, dragInfo, (err, eve) => {
+                   hilog.info(0x0000, `${JSON.stringify(err)}`, '')
+                   if (eve && eve.event) {
+                     if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
+                       hilog.info(0x0000, 'success', '');
+                     } else if (eve.event.getResult() == DragResult.DRAG_FAILED) {
+                       hilog.info(0x0000, 'failed', '');
+                     }
                    }
-                 }
-               })
+                 })
              }
            }
-         }).margin({top:100})
+         }).margin({ top: 100 })
        }
        .width('100%')
        .height('100%')

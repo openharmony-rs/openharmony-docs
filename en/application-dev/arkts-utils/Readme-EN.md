@@ -4,7 +4,7 @@
 <!--Owner: @flyingwolf-->
 <!--Designer: @flyingwolf-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 - [About This Kit](arkts-overview.md)
 - ArkTS Common Library<!--arkts-utils-->

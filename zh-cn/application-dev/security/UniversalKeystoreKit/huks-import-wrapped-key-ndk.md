@@ -1,4 +1,4 @@
-# 加密导入密钥(C/C++)
+# 安全导入密钥(C/C++)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-以加密导入ECDH密钥对为例，涉及业务侧加密密钥的[密钥生成](huks-key-generation-overview.md)、[协商](huks-key-agreement-overview.md)等操作不在本示例中体现。
+以安全导入ECDH密钥对为例，涉及业务侧加密密钥的[密钥生成](huks-key-generation-overview.md)、[协商](huks-key-agreement-overview.md)等操作不在本示例中体现。
 
 具体的场景介绍及支持的算法规格，请参考[密钥导入支持的算法](huks-key-import-overview.md#支持的算法)。
 
@@ -20,26 +20,22 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 1. 设备A（导入设备）将待导入密钥转换成[HUKS密钥材料格式](huks-concepts.md#密钥材料格式)To_Import_Key（仅针对非对称密钥，若待导入密钥是对称密钥则可省略此步骤）。
 
-2. 设备B（被导入设备）生成一个加密导入用途的、用于协商的非对称密钥对Wrapping_Key（公钥Wrapping_Pk，私钥Wrapping_Sk），其密钥用途设置为unwrap，导出Wrapping_Key的公钥材料Wrapping_Pk并保存。
+2. 设备B（被导入设备）生成一个安全导入用途的非对称密钥对Wrapping_Key（公钥Wrapping_Pk，私钥Wrapping_Sk），导出Wrapping_Key的公钥材料Wrapping_Pk发送给设备A。
 
-3. 设备A使用和设备B同样的算法，生成一个加密导入用途的、用于协商的非对称密钥对Caller_Key（公钥Caller_Pk，私钥Caller_Sk），导出Caller_Key的公钥材料Caller_Pk并保存。
+3. 设备A使用和设备B同样的算法，生成一个用于协商的非对称密钥对Caller_Key（公钥Caller_Pk，私钥Caller_Sk），导出Caller_Key的公钥材料Caller_Pk并保存。
 
-4. 设备A生成一个对称密钥Caller_Kek，该密钥后续将用于加密To_Import_Key。
+4. 设备A生成一个对称密钥Caller_Kek，该密钥用于加密To_Import_Key生成To_Import_Key_Enc。
 
-5. 设备A基于Caller_Key的私钥Caller_Sk和设备B Wrapping_Key的公钥Wrapping_Pk，协商出Shared_Key。
+5. 设备A基于Caller_Key的私钥Caller_Sk和设备B Wrapping_Key的公钥Wrapping_Pk，协商出Shared_Key，使用Shared_Key加密Caller_Kek，生成Caller_Kek_Enc。
 
-6. 设备A使用Caller_Kek加密To_Import_Key，生成To_Import_Key_Enc。
+6. 设备A封装Caller_Pk、Caller_Kek_Enc、To_Import_Key_Enc等安全导入的密钥材料并发送给设备B，安全导入密钥材料格式见[安全导入密钥材料格式](huks-key-import-overview.md#安全导入密钥材料格式)。
 
-7. 设备A使用Shared_Key加密Caller_Kek，生成Caller_Kek_Enc。
+7. 设备B导入封装的加密密钥材料。
 
-8. 设备A封装Caller_Pk、Caller_Kek_Enc、To_Import_Key_Enc等加密导入的密钥材料并发送给设备B，加密导入密钥材料格式见[加密导入密钥材料格式](huks-key-import-overview.md#加密导入密钥材料格式)。
-
-9. 设备B导入封装的加密密钥材料。
-
-10. 设备A、B删除用于加密导入的密钥。
+8. 设备A、B删除用于安全导入的密钥。
 
 ## 开发案例
-构造加密导入密钥的参数集
+构造安全导入密钥的参数集
 <!-- @[prepare_import_key_cpp_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
@@ -174,7 +170,7 @@ static struct OH_Huks_Param g_importAgreeKeyParams[] = {
 ```
 <!-- -->
 
-加密导入密钥的核心函数实现
+安全导入密钥的核心函数实现
 <!-- @[encrypt_import_key_cpp_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
@@ -472,7 +468,7 @@ static OH_Huks_Result ImportWrappedKey(const struct HksImportWrappedKeyTestParam
 ```
 <!-- -->
 
-加密导入密钥的完整流程实现
+安全导入密钥的完整流程实现
 <!-- @[encrypt_import_key_cpp_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
@@ -490,20 +486,22 @@ OH_Huks_Result HksImportWrappedKeyTestCommonCase(const struct HksImportWrappedKe
     struct OH_Huks_Blob plainCipherText = {OH_HUKS_MAX_KEY_SIZE, plainKeyCipherBuffer};
     uint8_t kekCipherTextBuffer[OH_HUKS_MAX_KEY_SIZE] = {0};
     struct OH_Huks_Blob kekCipherText = {OH_HUKS_MAX_KEY_SIZE, kekCipherTextBuffer};
-    /* 模拟加密导入密钥场景，设备A为远端设备（导入设备），设备B为本端设备（被导入设备） */
+    /* 模拟安全导入密钥场景，设备A为远端设备（导入设备），设备B为本端设备（被导入设备） */
     do {
         /**
-         * 1.设备A将待导入密钥转换成HUKS密钥材料格式To_Import_Key（仅针对非对称密钥，若待导入密钥是对称密钥则可省略此步骤），
+         * 1. 设备A将待导入密钥转换成HUKS密钥材料格式To_Import_Key（仅针对非对称密钥，若待导入密钥是对称密钥则可省略此步骤），
          *   本示例使用g_importedAes256PlainKey（对称密钥）作为模拟
          */
-        /* 2.设备B生成一个加密导入用途的、用于协商的非对称密钥对Wrapping_Key（公钥Wrapping_Pk，私钥Wrapping_Sk），
-         * 其密钥用途设置为unwrap，导出Wrapping_Key公钥Wrapping_Pk存放在变量huksPublicKey中
+        /**
+         * 2. 设备B生成一个加密导入用途的、用于协商的非对称密钥对Wrapping_Key（公钥Wrapping_Pk，私钥Wrapping_Sk），
+         * 导出Wrapping_Key公钥Wrapping_Pk存放在变量huksPublicKey中
          */
         ret = GenerateAndExportHuksPublicKey(params, &huksPublicKey);
         if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
             break;
         }
-        /* 3.设备A使用和设备B同样的算法，生成一个加密导入用途的、用于协商的非对称密钥对Caller_Key（公钥Caller_Pk，私钥Caller_Sk），
+        /**
+         * 3. 设备A使用和设备B同样的算法，生成一个用于协商的非对称密钥对Caller_Key（公钥Caller_Pk，私钥Caller_Sk），
          * 导出Caller_Key公钥Caller_Pk存放在变量callerSelfPublicKey中
          */
         ret = GenerateAndExportCallerPublicKey(params, &callerSelfPublicKey);
@@ -512,27 +510,28 @@ OH_Huks_Result HksImportWrappedKeyTestCommonCase(const struct HksImportWrappedKe
         }
         /**
          * 4. 设备A生成一个对称密钥Caller_Kek，该密钥后续将用于加密To_Import_Key
-         * 5. 设备A基于Caller_Key的私钥Caller_Sk和设备B Wrapping_Key的公钥Wrapping_Pk，协商出Shared_Key
+         * 设备A基于Caller_Key的私钥Caller_Sk和设备B Wrapping_Key的公钥Wrapping_Pk，协商出Shared_Key
          */
         ret = ImportKekAndAgreeSharedSecret(params, &huksPublicKey, &outSharedKey);
         if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
             break;
         }
         /**
-         * 6. 设备A使用Caller_Kek加密To_Import_Key，生成To_Import_Key_Enc
-         * 7. 设备A使用Shared_Key加密Caller_Kek，生成Caller_Kek_Enc
+         * 5. 设备A使用Caller_Kek加密To_Import_Key，生成To_Import_Key_Enc
+         * 设备A使用Shared_Key加密Caller_Kek，生成Caller_Kek_Enc
          */
         ret = EncryptImportedPlainKeyAndKek(params, &plainCipherText, &kekCipherText);
         if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
             break;
         }
-        /* 8. 设备A封装Caller_Pk、To_Import_Key_Enc、Caller_Kek_Enc等加密导入的材料并发送给设备B。
+        /**
+         * 6. 设备A封装Caller_Pk、To_Import_Key_Enc、Caller_Kek_Enc等安全导入的材料并发送给设备B。
          * 本示例作为变量存放在callerSelfPublicKey，plainCipherText，kekCipherText
-         * 9. 设备B导入封装的加密密钥材料
+         * 7. 设备B导入封装的加密密钥材料
          */
         ret = ImportWrappedKey(params, &plainCipherText, &kekCipherText, &callerSelfPublicKey, &wrappedKeyData);
     } while (0);
-    /* 10. 设备A、B删除用于加密导入的密钥 */
+    /* 8. 设备A、B删除用于安全导入的密钥 */
     HUKS_FREE_BLOB(huksPublicKey);
     HUKS_FREE_BLOB(callerSelfPublicKey);
     HUKS_FREE_BLOB(outSharedKey);
@@ -630,7 +629,7 @@ static napi_value IsKeyExist(napi_env env, napi_callback_info info)
         (uint8_t *)"test_key"
     };
 
-    /* 2.调用OH_Huks_IsKeyItemExist判断密钥是否存在  */
+    /* 2.调用OH_Huks_IsKeyItemExist判断密钥是否存在 */
     struct OH_Huks_Result ohResult = OH_Huks_IsKeyItemExist(&keyAlias, NULL);
     napi_value ret;
     napi_create_int32(env, ohResult.errorCode, &ret);
@@ -656,7 +655,7 @@ static napi_value IsKeyExist(napi_env env, napi_callback_info info)
         (uint8_t *)"test_key"
     };
     
-    /* 2.调用OH_Huks_IsKeyItemExist判断密钥是否存在  */
+    /* 2.调用OH_Huks_IsKeyItemExist判断密钥是否存在 */
     struct OH_Huks_Result ohResult = OH_Huks_IsKeyItemExist(&keyAlias, NULL);
     if (ohResult.errorCode != OH_HUKS_SUCCESS) {
         // 失败。

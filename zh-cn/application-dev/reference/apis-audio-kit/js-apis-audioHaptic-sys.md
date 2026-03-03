@@ -143,7 +143,7 @@ setHapticsIntensity(intensity: number): Promise&lt;void&gt;
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&amp;lt;void&amp;gt; | Promise对象，无返回结果。 |
+| Promise<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -195,7 +195,7 @@ setHapticsRamp(duration: number, startIntensity: number, endIntensity: number): 
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&amp;lt;void&amp;gt; | Promise对象，无返回结果。 |
+| Promise<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 

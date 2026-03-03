@@ -6,9 +6,13 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_TextContentBaseController ArkUI_TextContentBaseController
+```
+
 ## Overview
 
-Defines the basic controller for text.
+Defines a basic controller for text.
 
 **Since**: 23
 

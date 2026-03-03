@@ -9,7 +9,7 @@
 
 ## 场景介绍
 
-当计算机在一段时间内没有检测到用户活动（如键盘或鼠标输入）时，通常系统会自动尝试进入睡眠，使用RunningLockType.BACKGROUND_USER_IDLE运行锁，保证在持锁过程中系统不会进入自动睡眠，保证业务正常运行。
+当计算机在一段时间内没有检测到用户活动（如键盘或鼠标输入）时，系统会自动尝试进入睡眠，使用RunningLockType.BACKGROUND_USER_IDLE运行锁，保证在持锁过程中系统不会进入自动睡眠，保证业务正常运行。
 
 ## 环境准备
 
@@ -21,6 +21,7 @@
 
 
 - SDK版本配置：
+
   RunningLockType.BACKGROUND_USER_IDLE类型的运行锁，所需SDK版本为API version 23及以上才可使用。
 
 

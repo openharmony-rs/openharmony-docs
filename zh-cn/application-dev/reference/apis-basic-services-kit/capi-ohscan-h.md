@@ -283,7 +283,7 @@ int32_t OH_Scan_StartScan(const char* scannerId, bool batchMode)
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**需要权限：** code ohos.permission.PRINT
+**需要权限：** ohos.permission.PRINT
 
 **起始版本：** 12
 

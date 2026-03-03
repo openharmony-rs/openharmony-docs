@@ -7,7 +7,7 @@
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
-WallpaperExtensionAbility为壁纸拓展模块，提供应用生命周期回调和监听壁纸变化的能力。
+WallpaperExtensionAbility为壁纸扩展模块，提供应用生命周期回调和监听壁纸变化的能力。
 
 > **说明：**
 >
@@ -27,7 +27,7 @@ import { WallpaperExtensionAbility } from '@kit.BasicServicesKit';
 
 onCreate(want: object): void
 
-初始化壁纸拓展应用。在拉起Extension壁纸拓展应用时触发回调，执行初始化应用操作。不支持多线程并发调用。
+初始化壁纸扩展应用。在拉起Extension壁纸扩展应用时触发回调，执行初始化应用操作。不支持多线程并发调用。
 
 **系统能力：** SystemCapability.MiscServices.Wallpaper
 
@@ -85,7 +85,7 @@ class WallpaperExt extends WallpaperExtensionAbility {
 
 onDestroy(): void
 
-清理壁纸拓展应用资源。在销毁壁纸拓展应用时触发回调，执行资源清理。不支持多线程并发调用。
+清理壁纸扩展应用资源。在销毁壁纸扩展应用时触发回调，执行资源清理。不支持多线程并发调用。
 
 **系统能力：** SystemCapability.MiscServices.Wallpaper
 

@@ -66,11 +66,11 @@ divider(value: ColumnSplitDividerStyle | null)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ColumnSplitDividerStyle](#columnsplitdividerstyle10对象说明)&nbsp;\|&nbsp;null | 是   | 分割线的margin，即设置分割线与上下子节点的距离。<br/>默认值：null。当设置为null时，分割线上下margin为0.0vp。<br />非法值：按默认值处理。 |
+| value  | [ColumnSplitDividerStyle](#columnsplitdividerstyle10对象说明)&nbsp;\|&nbsp;null | 是   | 分割线的margin，即设置分割线与子组件的距离。<br/>默认值：null。当设置为null时，分割线与子组件的距离为0vp。<br />非法值：按默认值处理。 |
 
 ## ColumnSplitDividerStyle<sup>10+</sup>对象说明
 
-设置分割线与上下子节点的距离。
+设置子组件与上下分割线的距离。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -78,8 +78,8 @@ divider(value: ColumnSplitDividerStyle | null)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| startMargin | [Dimension](ts-types.md#dimension10)       | 否 | 是  | 分割线与其上方子组件的距离。<br/>默认值：0 <br />非法值：按默认值处理。 |
-| endMargin   | [Dimension](ts-types.md#dimension10)       | 否 | 是  | 分割线与其下方子组件的距离。<br/>默认值：0 <br />非法值：按默认值处理。 |
+| startMargin | [Dimension](ts-types.md#dimension10)       | 否 | 是  | 子组件与其上方分割线的距离。<br/>默认值：0 <br />非法值：按默认值处理，此时[getInspectorByKey()](ts-universal-attributes-component-id.md#getinspectorbykey9)接口获取到的属性值为undefined。 |
+| endMargin   | [Dimension](ts-types.md#dimension10)       | 否 | 是  | 子组件与其下方分割线的距离。<br/>默认值：0 <br />非法值：按默认值处理，此时[getInspectorByKey()](ts-universal-attributes-component-id.md#getinspectorbykey9)接口获取到的属性值为undefined。 |
 
 >  **说明：**
 >
@@ -142,7 +142,7 @@ struct ColumnSplitDividerExample {
         Text('5').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
       }
       .borderWidth(1)
-      .divider({ startMargin: 5, endMargin: 5 }) //设置间隔
+      .divider({ startMargin: 5, endMargin: 5 }) // 设置间隔
       .width('90%')
       .height('60%')
     }.width('100%')

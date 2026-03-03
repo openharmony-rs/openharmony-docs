@@ -1,4 +1,4 @@
-# NDK支持多线程创建组件
+# 使用多线程NDK接口并行化构建UI页面
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
@@ -94,9 +94,7 @@
 
 - 在非UI线程调用多线程NDK接口操作处于Attached状态的组件。
 
-<!--Del-->
-多线程NDK适配过程中遇到的更多问题可以参考[NDK开发常见问题](../faqs/faqs-ndk.md)。
-<!--DelEnd-->
+多线程NDK适配过程中遇到的更多问题可以参考[UI并行化常见问题](multi-thread-ui-build-faq.md)。
 
 ## 多线程NDK接口集合规格
 
@@ -361,9 +359,8 @@ napi_value CreateNodeTreeOnMultiThread(napi_env env, napi_callback_info info);
 napi_value DisposeNodeTreeOnMultiThread(napi_env env, napi_callback_info info);
 } // namespace NativeModule
 
-#endif //MYAPPLICATION_CREATENODE_H
+#endif // MYAPPLICATION_CREATENODE_H
 ```
- 
 
 ``` cpp
 // CreateNode.cpp
@@ -639,4 +636,6 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_mo
 
 如下实例展示了在高负载组件创建场景下如何使用多线程NDK接口，将组件创建任务拆分成多个子任务，分派给多个线程并发执行来优化页面跳转场景的响应时延和完成时延。
 
+<!--RP1-->
 [使用NDK多线程创建UI组件](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/NdkBuildOnMultiThread)
+<!--RP1End-->

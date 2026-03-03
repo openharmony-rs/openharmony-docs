@@ -27,4 +27,4 @@ Defines a struct for the printer property list.
 | Name| Description|
 | -- | -- |
 | uint32_t count | Number of properties.|
-| [Print_Property](capi-oh-print-print-property.md) *list | Property pointer array.|
+| [Print_Property](capi-oh-print-print-property.md) *list | Pointer to the property array.|

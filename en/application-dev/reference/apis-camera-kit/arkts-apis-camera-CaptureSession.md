@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-CaptureSession implements a capture session, which saves all [CameraInput](arkts-apis-camera-CameraInput.md) and [CameraOutput](arkts-apis-camera-CameraOutput.md) instances required to run the camera and requests the camera to complete shooting or video recording.
+**CaptureSession** implements a capture session, which saves all [CameraInput](arkts-apis-camera-CameraInput.md) and [CameraOutput](arkts-apis-camera-CameraOutput.md) instances required to run the camera and requests the camera to complete shooting or video recording.
 
 > **NOTE**
 >
@@ -25,8 +25,7 @@ beginConfig(): void
 Starts configuration for the session.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.beginConfig](arkts-apis-camera-Session.md#beginconfig11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.beginConfig](arkts-apis-camera-Session.md#beginconfig11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -61,8 +60,7 @@ commitConfig(callback: AsyncCallback\<void\>): void
 Commits the configuration for this session. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -104,8 +102,7 @@ commitConfig(): Promise\<void\>
 Commits the configuration for this session. This API uses a promise to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11-1) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11-1) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -146,8 +143,7 @@ addInput(cameraInput: CameraInput): void
 Adds a [CameraInput](arkts-apis-camera-CameraInput.md) instance to this session.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.addInput](arkts-apis-camera-Session.md#addinput11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.addInput](arkts-apis-camera-Session.md#addinput11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -189,8 +185,7 @@ removeInput(cameraInput: CameraInput): void
 Removes a [CameraInput](arkts-apis-camera-CameraInput.md) instance from this session.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.removeInput](arkts-apis-camera-Session.md#removeinput11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.removeInput](arkts-apis-camera-Session.md#removeinput11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -232,8 +227,7 @@ addOutput(cameraOutput: CameraOutput): void
 Adds a [CameraOutput](arkts-apis-camera-CameraOutput.md) instance to this session.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.addOutput](arkts-apis-camera-Session.md#addoutput11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.addOutput](arkts-apis-camera-Session.md#addoutput11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -275,8 +269,7 @@ removeOutput(cameraOutput: CameraOutput): void
 Removes a [CameraOutput](arkts-apis-camera-CameraOutput.md) instance from this session.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.removeOutput](arkts-apis-camera-Session.md#removeoutput11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.removeOutput](arkts-apis-camera-Session.md#removeoutput11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -318,8 +311,7 @@ start(callback: AsyncCallback\<void\>): void
 Starts this session. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.start](arkts-apis-camera-Session.md#start11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.start](arkts-apis-camera-Session.md#start11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -361,8 +353,7 @@ start(): Promise\<void\>
 Starts this session. This API uses a promise to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.start](arkts-apis-camera-Session.md#start11-1) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.start](arkts-apis-camera-Session.md#start11-1) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -402,8 +393,7 @@ stop(callback: AsyncCallback\<void\>): void
 Stops this session. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.stop](arkts-apis-camera-Session.md#stop11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.stop](arkts-apis-camera-Session.md#stop11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -444,8 +434,7 @@ stop(): Promise\<void\>
 Stops this session. This API uses a promise to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.stop](arkts-apis-camera-Session.md#stop11-1) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.stop](arkts-apis-camera-Session.md#stop11-1) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -484,8 +473,7 @@ release(callback: AsyncCallback\<void\>): void
 Releases this session. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.release](arkts-apis-camera-Session.md#release11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.release](arkts-apis-camera-Session.md#release11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -526,8 +514,7 @@ release(): Promise\<void\>
 Releases this session. This API uses a promise to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.release](arkts-apis-camera-Session.md#release11-1) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Session.release](arkts-apis-camera-Session.md#release11-1) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -566,8 +553,7 @@ hasFlash(): boolean
 Checks whether the camera device has flash.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Flash.hasFlash](arkts-apis-camera-FlashQuery.md#hasflash11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Flash.hasFlash](arkts-apis-camera-FlashQuery.md#hasflash11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -607,11 +593,10 @@ function hasFlash(captureSession: camera.CaptureSession): boolean {
 
 isFlashModeSupported(flashMode: FlashMode): boolean
 
-Checks whether a flash mode is supported.
+Checks whether the flash mode is supported.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Flash.isFlashModeSupported](arkts-apis-camera-FlashQuery.md#isflashmodesupported11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Flash.isFlashModeSupported](arkts-apis-camera-FlashQuery.md#isflashmodesupported11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -665,8 +650,7 @@ Before the setting, do the following checks:
 2. Use [isFlashModeSupported](#isflashmodesupporteddeprecated) to check whether the camera device supports the flash mode.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Flash.setFlashMode](arkts-apis-camera-Flash.md#setflashmode11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Flash.setFlashMode](arkts-apis-camera-Flash.md#setflashmode11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -707,8 +691,7 @@ getFlashMode(): FlashMode
 Obtains the flash mode in use.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Flash.getFlashMode](arkts-apis-camera-Flash.md#getflashmode11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Flash.getFlashMode](arkts-apis-camera-Flash.md#getflashmode11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -751,8 +734,7 @@ isExposureModeSupported(aeMode: ExposureMode): boolean
 Checks whether an exposure mode is supported.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [AutoExposure.isExposureModeSupported](arkts-apis-camera-AutoExposureQuery.md#isexposuremodesupported11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [AutoExposure.isExposureModeSupported](arkts-apis-camera-AutoExposureQuery.md#isexposuremodesupported11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -801,8 +783,7 @@ getExposureMode(): ExposureMode
 Obtains the exposure mode in use.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [AutoExposure.getExposureMode](arkts-apis-camera-AutoExposure.md#getexposuremode11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [AutoExposure.getExposureMode](arkts-apis-camera-AutoExposure.md#getexposuremode11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -845,8 +826,7 @@ setExposureMode(aeMode: ExposureMode): void
 Sets an exposure mode. Before the setting, call [isExposureModeSupported](#isexposuremodesupporteddeprecated) to check whether the target exposure mode is supported.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [AutoExposure.setExposureMode](arkts-apis-camera-AutoExposure.md#setexposuremode11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [AutoExposure.setExposureMode](arkts-apis-camera-AutoExposure.md#setexposuremode11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -887,8 +867,7 @@ getMeteringPoint(): Point
 Obtains the metering point of the camera device.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [AutoExposure.getMeteringPoint](arkts-apis-camera-AutoExposure.md#getmeteringpoint11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [AutoExposure.getMeteringPoint](arkts-apis-camera-AutoExposure.md#getmeteringpoint11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -928,15 +907,12 @@ function getMeteringPoint(captureSession: camera.CaptureSession): camera.Point |
 
 setMeteringPoint(point: Point): void
 
-Sets the metering point, which is the center point of the metering rectangle.
-
-The metering point must be in the coordinate system (0-1), where the top-left corner is {0, 0} and the top-right corner is {1, 1}.
+Sets the metering point, which is the center point of the metering rectangle. The metering point must be in the coordinate system (0-1), where the top-left corner is {0, 0} and the bottom-right corner is {1, 1}.
 
 The coordinate system is based on the horizontal device direction with the device's charging port on the right. If the layout of the preview screen of an application is based on the vertical direction with the charging port on the lower side, the layout width and height are {w, h}, and the touch point is {x, y}, then the coordinate point after conversion is {y/h, 1-x/w}.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [AutoExposure.setMeteringPoint](arkts-apis-camera-AutoExposure.md#setmeteringpoint11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [AutoExposure.setMeteringPoint](arkts-apis-camera-AutoExposure.md#setmeteringpoint11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -978,8 +954,7 @@ getExposureBiasRange(): Array\<number\>
 Obtains the exposure compensation values of the camera device.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [AutoExposure.getExposureBiasRange](arkts-apis-camera-AutoExposureQuery.md#getexposurebiasrange11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [AutoExposure.getExposureBiasRange](arkts-apis-camera-AutoExposureQuery.md#getexposurebiasrange11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -1024,8 +999,7 @@ Sets an exposure compensation value (EV).
 Before the setting, you are advised to use [getExposureBiasRange](#getexposurebiasrangedeprecated) to obtain the supported values.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [AutoExposure.setExposureBias](arkts-apis-camera-AutoExposure.md#setexposurebias11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [AutoExposure.setExposureBias](arkts-apis-camera-AutoExposure.md#setexposurebias11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -1069,8 +1043,7 @@ getExposureValue(): number
 Obtains the exposure value in use.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [AutoExposure.getExposureValue](arkts-apis-camera-AutoExposure.md#getexposurevalue11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [AutoExposure.getExposureValue](arkts-apis-camera-AutoExposure.md#getexposurevalue11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -1114,8 +1087,7 @@ isFocusModeSupported(afMode: FocusMode): boolean
 Checks whether a focus mode is supported.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Focus.isFocusModeSupported](arkts-apis-camera-FocusQuery.md#isfocusmodesupported11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Focus.isFocusModeSupported](arkts-apis-camera-FocusQuery.md#isfocusmodesupported11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -1166,8 +1138,7 @@ Sets a focus mode.
 Before the setting, call [isFocusModeSupported](#isfocusmodesupporteddeprecated) to check whether the focus mode is supported.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Focus.setFocusMode](arkts-apis-camera-Focus.md#setfocusmode11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Focus.setFocusMode](arkts-apis-camera-Focus.md#setfocusmode11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -1208,8 +1179,7 @@ getFocusMode(): FocusMode
 Obtains the focus mode in use.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Focus.getFocusMode](arkts-apis-camera-Focus.md#getfocusmode11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Focus.getFocusMode](arkts-apis-camera-Focus.md#getfocusmode11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -1249,13 +1219,12 @@ function getFocusMode(captureSession: camera.CaptureSession): camera.FocusMode |
 
 setFocusPoint(point: Point): void
 
-Sets the focal point. The focal point must be in the coordinate system (0-1), where the top-left corner is {0, 0} and the top-right corner is {1, 1}.
+Sets the focal point. The focal point must be in the coordinate system (0-1), where the top-left corner is {0, 0} and the bottom-right corner is {1, 1}.
 
 The coordinate system is based on the horizontal device direction with the device's charging port on the right. If the layout of the preview screen of an application is based on the vertical direction with the charging port on the lower side, the layout width and height are {w, h}, and the touch point is {x, y}, then the coordinate point after conversion is {y/h, 1-x/w}.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Focus.setFocusPoint](arkts-apis-camera-Focus.md#setfocuspoint11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Focus.setFocusPoint](arkts-apis-camera-Focus.md#setfocuspoint11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -1297,8 +1266,7 @@ getFocusPoint(): Point
 Obtains the focal point of the camera device.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Focus.getFocusPoint](arkts-apis-camera-Focus.md#getfocuspoint11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Focus.getFocusPoint](arkts-apis-camera-Focus.md#getfocuspoint11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -1341,8 +1309,7 @@ getFocalLength(): number
 Obtains the focal length of the camera device.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Focus.getFocalLength](arkts-apis-camera-Focus.md#getfocallength11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Focus.getFocalLength](arkts-apis-camera-Focus.md#getfocallength11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -1386,8 +1353,7 @@ getZoomRatioRange(): Array\<number\>
 Obtains the supported zoom ratio range.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Zoom.getZoomRatioRange](arkts-apis-camera-ZoomQuery.md#getzoomratiorange11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Zoom.getZoomRatioRange](arkts-apis-camera-ZoomQuery.md#getzoomratiorange11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -1430,8 +1396,7 @@ setZoomRatio(zoomRatio: number): void
 Sets a zoom ratio, with a maximum precision of two decimal places.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Zoom.setZoomRatio](arkts-apis-camera-Zoom.md#setzoomratio11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Zoom.setZoomRatio](arkts-apis-camera-Zoom.md#setzoomratio11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -1476,8 +1441,7 @@ getZoomRatio(): number
 Obtains the zoom ratio in use.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Zoom.getZoomRatio](arkts-apis-camera-Zoom.md#getzoomratio11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Zoom.getZoomRatio](arkts-apis-camera-Zoom.md#getzoomratio11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -1521,8 +1485,7 @@ isVideoStabilizationModeSupported(vsMode: VideoStabilizationMode): boolean
 Checks whether a video stabilization mode is supported. 
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Stabilization.isVideoStabilizationModeSupported](arkts-apis-camera-StabilizationQuery.md#isvideostabilizationmodesupported11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Stabilization.isVideoStabilizationModeSupported](arkts-apis-camera-StabilizationQuery.md#isvideostabilizationmodesupported11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -1571,8 +1534,7 @@ getActiveVideoStabilizationMode(): VideoStabilizationMode
 Obtains the video stabilization mode in use.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Stabilization.getActiveVideoStabilizationMode](arkts-apis-camera-Stabilization.md#getactivevideostabilizationmode11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Stabilization.getActiveVideoStabilizationMode](arkts-apis-camera-Stabilization.md#getactivevideostabilizationmode11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -1615,8 +1577,7 @@ setVideoStabilizationMode(mode: VideoStabilizationMode): void
 Sets a video stabilization mode. Before the setting, call [isVideoStabilizationModeSupported](#isvideostabilizationmodesupporteddeprecated) to check whether the target video stabilization mode is supported.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Stabilization.setVideoStabilizationMode](arkts-apis-camera-Stabilization.md#setvideostabilizationmode11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Stabilization.setVideoStabilizationMode](arkts-apis-camera-Stabilization.md#setvideostabilizationmode11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -1694,8 +1655,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 Unsubscribes from focus state change events.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [VideoSession.off('focusStateChange')](arkts-apis-camera-VideoSession.md#offfocusstatechange11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [VideoSession.off('focusStateChange')](arkts-apis-camera-VideoSession.md#offfocusstatechange11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -1725,8 +1685,7 @@ Subscribes to CaptureSession error events. This API uses an asynchronous callbac
 > Currently, you cannot use **off()** to unregister the callback in the callback method of **on()**.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [VideoSession.on('error')](arkts-apis-camera-VideoSession.md#onerror11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [VideoSession.on('error')](arkts-apis-camera-VideoSession.md#onerror11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
@@ -1756,8 +1715,7 @@ off(type: 'error', callback?: ErrorCallback): void
 Unsubscribes from CaptureSession error events. This API uses a callback to return the result.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [VideoSession.off('error')](arkts-apis-camera-VideoSession.md#offerror11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [VideoSession.off('error')](arkts-apis-camera-VideoSession.md#offerror11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 

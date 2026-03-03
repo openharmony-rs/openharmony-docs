@@ -1,9 +1,9 @@
 # ComponentContent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyi0309-->
-<!--Designer: @liyi0309-->
-<!--Tester: @lxl007-->
+<!--Owner: @ZhangYu-Home-->
+<!--Designer: @ZhangYu-Home-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 有两种创建实体封装组件的方式。开发者在开发过程中任选下面方式其一即可。
@@ -171,6 +171,7 @@ import { ComponentContent } from "@kit.ArkUI";
 
 class Params {
   text: string = "";
+
   constructor(text: string) {
     this.text = text;
   }
@@ -182,7 +183,7 @@ function buildText(params: Params) {
     Text(params.text)
       .fontSize(50)
       .fontWeight(FontWeight.Bold)
-      .margin({bottom: 36})
+      .margin({ bottom: 36 })
   }.backgroundColor('#FFF0F0F0')
 }
 
@@ -195,16 +196,16 @@ struct Index {
     Row() {
       Column() {
         Button("click me")
-            .onClick(() => {
-                let uiContext = this.getUIContext();
-                let promptAction = uiContext.getPromptAction();
-                let contentNode = new ComponentContent(uiContext, wrapBuilder(buildText), new Params(this.message));
-                promptAction.openCustomDialog(contentNode);
+          .onClick(() => {
+            let uiContext = this.getUIContext();
+            let promptAction = uiContext.getPromptAction();
+            let contentNode = new ComponentContent(uiContext, wrapBuilder(buildText), new Params(this.message));
+            promptAction.openCustomDialog(contentNode);
 
-                setTimeout(() => {
-                  contentNode.update(new Params("new message"));
-                }, 2000);    //2秒后自动更新弹窗内容文本
-            })
+            setTimeout(() => {
+              contentNode.update(new Params("new message"));
+            }, 2000); // 2秒后自动更新弹窗内容文本
+          })
       }
       .width('100%')
       .height('100%')
@@ -287,7 +288,7 @@ class Params {
 function buildNode(param: Params = new Params("hello")) {
   Row() {
     Text(`C${param.item} -- `)
-    ReusableChildComponent2({ item: param.item }) //该自定义组件在ComponentContent中无法被正确复用
+    ReusableChildComponent2({ item: param.item }) // 该自定义组件在ComponentContent中无法被正确复用
   }
 }
 
@@ -435,6 +436,7 @@ import { ComponentContent } from '@kit.ArkUI';
 
 class Params {
   text: string = "";
+
   constructor(text: string) {
     this.text = text;
   }
@@ -459,26 +461,26 @@ struct Index {
     Row() {
       Column() {
         Button("click me")
-            .onClick(() => {
-                let uiContext = this.getUIContext();
-                let promptAction = uiContext.getPromptAction();
-                let contentNode = new ComponentContent(uiContext, wrapBuilder(buildText), new Params(this.message));
-                promptAction.openCustomDialog(contentNode);
+          .onClick(() => {
+            let uiContext = this.getUIContext();
+            let promptAction = uiContext.getPromptAction();
+            let contentNode = new ComponentContent(uiContext, wrapBuilder(buildText), new Params(this.message));
+            promptAction.openCustomDialog(contentNode);
 
-                setTimeout(() => {
-                  promptAction.closeCustomDialog(contentNode)
-                    .then(() => {
-                      console.info('customDialog closed.');
-                      if (contentNode !== null) {
-                        contentNode.dispose();   //释放contentNode
-                      }
-                    }).catch((error: BusinessError) => {
-                      let message = (error as BusinessError).message;
-                      let code = (error as BusinessError).code;
-                      console.error(`closeCustomDialog args error code is ${code}, message is ${message}`);
-                    })
-                }, 2000);     //2秒后自动关闭
-            })
+            setTimeout(() => {
+              promptAction.closeCustomDialog(contentNode)
+                .then(() => {
+                  console.info('customDialog closed.');
+                  if (contentNode !== null) {
+                    contentNode.dispose(); // 释放contentNode
+                  }
+                }).catch((error: BusinessError) => {
+                let message = (error as BusinessError).message;
+                let code = (error as BusinessError).code;
+                console.error(`closeCustomDialog args error code is ${code}, message is ${message}`);
+              })
+            }, 2000); // 2秒后自动关闭
+          })
       }
       .width('100%')
       .height('100%')
@@ -580,7 +582,7 @@ struct FrameNodeTypeTest {
   }
 
   aboutToDisappear(): void {
-    //移除map中的引用，并将自定义节点释放
+    // 移除map中的引用，并将自定义节点释放
     this.myNodeController.deleteNode();
   }
 
@@ -627,6 +629,7 @@ import { ComponentContent } from '@kit.ArkUI';
 
 class Params {
   text: string = "";
+
   constructor(text: string) {
     this.text = text;
   }
@@ -664,16 +667,19 @@ struct Index {
                 .then(() => {
                   console.info('customDialog closed.');
                   if (contentNode !== null) {
-                    this.beforeDispose = contentNode.isDisposed() ? 'before dispose componentContent isDisposed is true' : 'before dispose componentContent isDisposed is false';
-                    contentNode.dispose();   //释放contentNode
-                    this.afterDispose = contentNode.isDisposed() ? 'after dispose componentContent isDisposed is true' : 'after dispose componentContent isDisposed is false';
+                    this.beforeDispose =
+                      contentNode.isDisposed() ? 'before dispose componentContent isDisposed is true' :
+                        'before dispose componentContent isDisposed is false';
+                    contentNode.dispose(); // 释放contentNode
+                    this.afterDispose = contentNode.isDisposed() ? 'after dispose componentContent isDisposed is true' :
+                      'after dispose componentContent isDisposed is false';
                   }
                 }).catch((error: BusinessError) => {
                 let message = (error as BusinessError).message;
                 let code = (error as BusinessError).code;
                 console.error(`closeCustomDialog args error code is ${code}, message is ${message}`);
               })
-            }, 1000);     //1秒后自动关闭
+            }, 1000); // 1秒后自动关闭
           })
         Text(this.beforeDispose)
           .fontSize(25)
@@ -714,7 +720,6 @@ inheritFreezeOptions(enabled: boolean): void
 **示例：**
 
 ```ts
-
 import { ComponentContent, FrameNode, NodeController } from '@kit.ArkUI';
 
 class Params {
@@ -725,7 +730,8 @@ class Params {
   }
 }
 
-@Builder // builder组件
+@Builder
+// builder组件
 function buildText(params: Params) {
 
   Column() {
@@ -740,7 +746,8 @@ class TextNodeController extends NodeController {
 
   makeNode(context: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(context);
-    this.contentNode = new ComponentContent(context, wrapBuilder(buildText), new Params(this.count)); // 通过buildText创建ComponentContent
+    this.contentNode =
+      new ComponentContent(context, wrapBuilder(buildText), new Params(this.count)); // 通过buildText创建ComponentContent
     this.contentNode.inheritFreezeOptions(true); // 设置ComponentContent的冻结继承状态为True
     if (this.rootNode !== null) {
       this.rootNode.addComponentContent(this.contentNode); // 将ComponentContent上树
@@ -861,7 +868,8 @@ struct pageTwoStack { // 页面二
   }
 }
 
-@Component({ freezeWhenInactive: true }) // 设置冻结策略为不活跃冻结
+@Component({ freezeWhenInactive: true })
+  // 设置冻结策略为不活跃冻结
 struct NavigationContentMsgStack {
   @Link message: number;
   @Link index: number;
@@ -876,7 +884,8 @@ struct NavigationContentMsgStack {
   }
 }
 
-@Component({ freezeWhenInactive: true }) // 设置冻结策略为不活跃冻结
+@Component({ freezeWhenInactive: true })
+  // 设置冻结策略为不活跃冻结
 struct TextBuilder {
   @Prop @Watch("info") message: number = 0;
 
@@ -1076,7 +1085,6 @@ struct ReusableChildComponent {
   @Prop item: string = '';
   @Prop switch: string = '';
   private content: NodeContent = new NodeContent();
-  
   // 创建ReactiveComponentContent实例，封装Builder动态内容
   private componentContent: ReactiveComponentContent<[string]> = new ReactiveComponentContent<[string]>(
     this.getUIContext(),
@@ -1202,11 +1210,11 @@ struct Index {
 
 dispose(): void
 
+立即释放当前ReactiveComponentContent对象对[实体节点](../../ui/arkts-user-defined-node.md#基本概念)的引用关系。关于ReactiveComponentContent的解绑场景请参见[解除实体节点引用关系](../../ui/arkts-user-defined-arktsNode-builderNode.md#解除实体节点引用关系)。
+
 > **说明：**
 >
 > ReactiveComponentContent对象调用dispose接口后，会与后端实体节点解除引用关系。若前端ReactiveComponentContent对象无法释放，容易导致内存泄漏。建议开发者在不需要操作该ReactiveComponentContent对象时，主动调用dispose释放后端节点，以减少引用关系的复杂性，降低内存泄漏风险。
-
-立即释放当前ReactiveComponentContent对象对[实体节点](../../ui/arkts-user-defined-node.md#基本概念)的引用关系。关于ReactiveComponentContent的解绑场景请参见[解除实体节点引用关系](../../ui/arkts-user-defined-arktsNode-builderNode.md#解除实体节点引用关系)。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1227,7 +1235,7 @@ import {
   FrameNode
 } from '@kit.ArkUI';
 
-//dispose
+// dispose
 @Builder
 function buildText(
   MsgAge: MutableBinding<number>,
@@ -1469,6 +1477,7 @@ class GeneratedObjectLiteralInterface_1 {
   constructor(age: number) {
     this.age = age;
   }
+
   @Trace age: number = 0; // 使用@Trace装饰器追踪属性变化
 }
 
@@ -1477,6 +1486,7 @@ class GeneratedObjectLiteralInterface_2 {
   constructor(age: number) {
     this.age = age;
   }
+
   age: number = 0; // 普通属性，无自动追踪
 }
 
@@ -1488,7 +1498,6 @@ struct Index {
   params: GeneratedObjectLiteralInterface_1 = new GeneratedObjectLiteralInterface_1(25);
   // V1装饰器的数据对象，需要手动更新
   params2: GeneratedObjectLiteralInterface_2 = new GeneratedObjectLiteralInterface_2(25);
-
   private componentContent: ReactiveComponentContent<[Binding<number>]> | null = null
 
   build() {
@@ -1510,7 +1519,7 @@ struct Index {
 
               this.content.addFrameNode(column);
             })
-          
+
           // 创建使用V1装饰器的ReactiveComponentContent
           Button('绑定参数由V1装饰器装饰').onClick(
             () => {
@@ -1528,19 +1537,19 @@ struct Index {
               column.addComponentContent(this.componentContent);
               this.content.addFrameNode(column);
             })
-          
+
           // 更新V2装饰器的数据（自动更新）
           Button('change age - V2可自动更新').onClick(() => {
             this.params.age += 1; // V2装饰器会自动检测变化并更新UI
           })
-          
+
           // 更新V1装饰器的数据（需要手动更新）
           Button('change age - V1需手动更新').onClick(() => {
             this.params2.age += 1;
             // 对于V1装饰器的数据，需要手动调用flushState来触发UI更新
             this.componentContent?.flushState();
           })
-          
+
           // 显示动态创建的内容
           ContentSlot(this.content)
         }

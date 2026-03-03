@@ -602,7 +602,7 @@ Sets the alignment between the drop-down button and the drop-down menu. Compared
 
 optionWidth(value: Dimension | OptionWidthMode )
 
-Sets the width for the drop-down menu option. Percentage values not supported. **OptionWidthMode** specifies whether to inherit the width of the drop-down button.
+Sets the width for the drop-down menu option. Percentage values are not supported. **OptionWidthMode** specifies whether to inherit the width of the drop-down button.
 
 If an invalid value or a value less than the minimum width of 56 vp is set, the attribute has no effect. In this case, the option width uses the default value, which is the width of two columns.
 
@@ -622,7 +622,7 @@ The **Select** component maintains 16 vp spacing from both left and right screen
 
 optionWidth(width: Optional\<Dimension | OptionWidthMode> )
 
-Sets the width for the drop-down menu option. Percentage values not supported. **OptionWidthMode** specifies whether to inherit the width of the drop-down button. Compared with [optionWidth](#optionwidth11)<sup>11+</sup>, this API supports the **undefined** type for the **width** parameter.
+Sets the width for the drop-down menu option. Percentage values are not supported. **OptionWidthMode** specifies whether to inherit the width of the drop-down button. Compared with [optionWidth](#optionwidth11)<sup>11+</sup>, this API supports the **undefined** type for the **width** parameter.
 
 If an invalid value or a value less than the minimum width of 56 vp is set, the attribute has no effect. In this case, the option width uses the default value, which is the width of two columns.
 
@@ -642,7 +642,7 @@ The **Select** component maintains 16 vp spacing from both left and right screen
 
 optionHeight(value: Dimension)
 
-Sets the maximum height for the drop-down menu. Percentage values not supported. The default maximum height is 80% of the available screen height, and any custom maximum height setting must not exceed this limit.
+Sets the maximum height for the drop-down menu. Percentage values are not supported. The default maximum height is 80% of the available screen height, and any custom maximum height setting must not exceed this limit.
 
 This attribute has no effect when set to abnormal values or zero.
 
@@ -662,7 +662,7 @@ If the actual height of all drop-down menu options is less than the set height, 
 
 optionHeight(height: Optional\<Dimension>)
 
-Sets the maximum height for the drop-down menu. Percentage values not supported. The default maximum height is 80% of the available screen height, and any custom maximum height setting must not exceed this limit. Compared with [optionHeight](#optionheight11)<sup>11+</sup>, this API supports the **undefined** type for the **height** parameter.
+Sets the maximum height for the drop-down menu. Percentage values are not supported. The default maximum height is 80% of the available screen height, and any custom maximum height setting must not exceed this limit. Compared with [optionHeight](#optionheight11)<sup>11+</sup>, this API supports the **undefined** type for the **height** parameter.
 
 This attribute has no effect when set to abnormal values or zero.
 
@@ -886,7 +886,7 @@ If both [selectedOptionFont](#selectedoptionfont) and **Font** of **selectedOpti
 
 showInSubWindow(showInSubWindow:Optional\<boolean>)
 
-Sets whether the drop-down menu is displayed in the sub-window.
+Sets whether the drop-down menu is displayed in the subwindow.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -896,13 +896,13 @@ Sets whether the drop-down menu is displayed in the sub-window.
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| showInSubWindow  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether the drop-down menu is displayed in the sub-window.<br>**true** indicates that the drop-down list box is displayed in the sub-window and takes effect only for 2-in-1 devices.<br>**false**: indicates that the drop-down menu is not displayed in the sub-window.<br>Default value: **true** for 2-in-1 devices and **false** for other devices|
+| showInSubWindow  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether the drop-down menu is displayed in the subwindow.<br>**true**: The drop-down menu is displayed in the subwindow and takes effect only for 2-in-1 devices.<br>**false**: The drop-down menu is not displayed in the subwindow.<br>Default value: **true** for 2-in-1 devices and **false** for other devices|
 
 ### keyboardAvoidMode<sup>23+</sup>
 
 keyboardAvoidMode(mode:Optional\<MenuKeyboardAvoidMode>)
 
-Sets whether the drop-down menu avoids the soft keyboard. If this interface is not used, the soft keyboard is not avoided by default.
+Sets whether the drop-down menu avoids the soft keyboard. If this API is not used, the drop-down menu avoids the soft keyboard by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -914,13 +914,13 @@ Sets whether the drop-down menu avoids the soft keyboard. If this interface is n
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[MenuKeyboardAvoidMode](ts-universal-attributes-menu.md#menukeyboardavoidmode23)> | Yes| Whether the drop-down menu avoids the soft keyboard. If the value is undefined, **MenuKeyboardAvoidMode.NONE** is used.|
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[MenuKeyboardAvoidMode](ts-universal-attributes-menu.md#menukeyboardavoidmode23)> | Yes| Whether the drop-down menu avoids the soft keyboard. If the value is **undefined**, it is treated as **MenuKeyboardAvoidMode.NONE**.|
 
 ### minKeyboardAvoidDistance<sup>23+</sup>
 
 minKeyboardAvoidDistance(distance:Optional\<LengthMetrics>)
 
-Sets the minimum distance between the Select menu and the soft keyboard. If this API is not used, the minimum distance is 8 vp by default. This member is valid only when [keyboardAvoidMode](#keyboardavoidmode23) is set to disable the soft keyboard.
+Sets the minimum distance for the **Select** component to avoid the soft keyboard. If this API is not used, the minimum distance is 8 vp by default. This API is valid only when [keyboardAvoidMode](#keyboardavoidmode23) is set to avoid the soft keyboard.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -932,7 +932,7 @@ Sets the minimum distance between the Select menu and the soft keyboard. If this
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| distance | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | Yes| Sets the minimum distance between the drop-down menu and the soft keyboard. If the value is set to a negative number or undefined, the value is processed as 8vp.|
+| distance | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | Yes| Sets the minimum distance for the drop-down menu to avoid the soft keyboard. If the value is set to a negative number or **undefined**, the value 8 vp will be used.|
 
 ## ArrowPosition<sup>10+</sup>
 
@@ -1540,11 +1540,11 @@ struct SelectExample {
 
 ![select-menu-outline](figures/selectMenuOutline.png)
 
-### Example 10: Setting the Pop-up Menu of Select to Avoid the Soft Keyboard
+### Example 10: Setting the Pop-Up Menu of Select to Avoid the Soft Keyboard
 
-In this example, the [keyboardAvoidMode](#keyboardavoidmode23) and [minKeyboardAvoidDistance](#minkeyboardavoiddistance23) APIs are called, allows the drop-down menu to avoid the soft keyboard and customizes the minimum distance for avoiding the soft keyboard.
+This example demonstrates how to configure the drop-down menu to avoid the soft keyboard and customize the minimum distance for avoiding the soft keyboard by calling the [keyboardAvoidMode](#keyboardavoidmode23) and [minKeyboardAvoidDistance](#minkeyboardavoiddistance23) APIs.
 
-Added the keyboardAvoidMode and minKeyboardAvoidDistance APIs since API version 23.
+The **keyboardAvoidMode** and **minKeyboardAvoidDistance** APIs are added since API version 23.
 
 ``` ts
 import { inputMethod } from '@kit.IMEKit';

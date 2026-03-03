@@ -11,19 +11,23 @@ To request permissions for your application, declare all the permissions one by 
 
 ## Declaring Permissions in the Configuration File
 
-Declare the permissions required by your application under **requestPermissions** in the **module.json5** file.
+You must declare permissions in the requestPermissions tag of the [module.json5 configuration file](../../quick-start/module-configuration-file.md) for the application.
 
 | Field| Description| Data Type| Value Range|
 | -------- | -------- | -------- | -------- |
 | name | Name of the permission to request.| String| This field is mandatory. The value must be a permission defined in the system. For details, see [Application Permissions](app-permissions.md).|
-| reason | Reason for requesting the permission.| String| This field is optional. It is used for application release verification. It must be specified for a user_grant or manual_settings permission and support multilingual adaptation.<br><br>It can be referenced as a string resource in $string: \*\*\* format.<br> To configure the string resource reference, add the **"name": "reason"** tag to the **string.json** file. For details, see [Resource File Examples](../../quick-start/resource-categories-and-access.md).<br>For details about how to set **reason**, see [Specifications for reason](#specifications-for-reason).|
+| reason | Reason for requesting the permission.| String| This field is optional. It is used for application release verification. It must be specified for a user_grant or manual_settings permission and support multilingual adaptation.<br><br>It can be referenced as a string resource in $string: \*\*\* format.<br> To configure the string resource reference, add the **"name": "reason"** tag to the **string.json** file. For details, see [Resource File Examples](../../quick-start/resource-categories-and-access.md#resource-file-examples).<br>For details about how to set **reason**, see [Specifications for reason](#specifications-for-reason).|
 | usedScene | Use case of the permission. This field is used for application release verification. It has two parameters:<br>- **abilities**: names of the abilities (UIAbility or ExtensionAbility) that use the permission.<br>- **when**: when the permission is used.| Object| **usedScene** is mandatory when your application requests a user_grant or manual_settings permission and is optional in other cases.<br> <br>- **abilities** is optional. The value is a string array of multiple UIAbility or ExtensionAbility names<br>- **when** is optional. Set it to **inuse** or **always**. It cannot be empty when set.<br>You are advised to set this parameter when your application requests a user_grant or manual_settings permission.|
 
 > **NOTE**<br>
 >
-> The permissions requested for a module are valid in the entire application. You do not need to request the same permissions for the project.
+> In the multi-HAP scenario, you do not need to add the permissions declared in the [entry](../../quick-start/hap-package.md) module to the [feature](../../quick-start/hap-package.md) module. The permissions take effect in the entire application.
+> 
+> Similarly, you do not need to add the permissions declared in the [feature](../../quick-start/hap-package.md) module to the [entry](../../quick-start/hap-package.md) module.
 
 ## Example
+
+Declare permissions in the requestPermissions tag of the [module.json5 configuration file](../../quick-start/module-configuration-file.md).
 
 > **NOTE**<br>
 >

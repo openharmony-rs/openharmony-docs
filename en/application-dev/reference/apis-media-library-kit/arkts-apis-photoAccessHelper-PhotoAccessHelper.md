@@ -27,7 +27,7 @@ Obtains image and video assets. This API uses an asynchronous callback to return
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
+ When this API is called in picker mode to query the image or video resource corresponding to a specified URI, the **ohos.permission.READ_IMAGEVIDEO** permission is not required. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
 
 **Parameters**
 
@@ -90,7 +90,7 @@ Obtains image and video assets. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
+ When this API is called in picker mode to query the image or video resource corresponding to a specified URI, the **ohos.permission.READ_IMAGEVIDEO** permission is not required. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
 
 **Parameters**
 
@@ -217,7 +217,7 @@ createAsset(photoType: PhotoType, extension: string, options: CreateOptions, cal
 
 Creates an image or video asset with the specified file type, file name extension, and options. This API uses an asynchronous callback to return the result.
 
-If you do not have the ohos.permission.WRITE_IMAGEVIDEO permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
+If you do not have the **ohos.permission.WRITE_IMAGEVIDEO** permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -276,7 +276,7 @@ createAsset(photoType: PhotoType, extension: string, callback: AsyncCallback&lt;
 
 Creates an image or video asset with the specified file type and file name extension. This API uses an asynchronous callback to return the result.
 
-If you do not have the ohos.permission.WRITE_IMAGEVIDEO permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
+If you do not have the **ohos.permission.WRITE_IMAGEVIDEO** permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -331,7 +331,7 @@ createAsset(photoType: PhotoType, extension: string, options?: CreateOptions): P
 
 Creates an image or video asset with the specified file type, file name extension, and options. This API uses a promise to return the result.
 
-If you do not have the ohos.permission.WRITE_IMAGEVIDEO permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
+If you do not have the **ohos.permission.WRITE_IMAGEVIDEO** permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -384,6 +384,66 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('createAsset successfully');
   } catch (err) {
     console.error(`createAsset failed, error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+## createPhotoAsset<sup>23+</sup>
+
+createPhotoAsset(photoType: PhotoType, extension: string, title?: string): Promise\<string\>
+
+Creates an image or video resource with the specified file type, extension, and title. This API uses a promise to return the result.
+
+If you do not have the **ohos.permission.WRITE_IMAGEVIDEO** permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name  | Type                    | Mandatory| Description                     |
+| -------- | ------------------------ | ---- | ------------------------- |
+| photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)        | Yes  | Type of the file to be created. For example, **IMAGE** or **VIDEO**.             |
+| extension  | string        | Yes  | File name extension. For example, **'jpg'**.             |
+| title | string | No  | Title of the image or video resource.    |
+
+**Return value**
+
+| Type                       | Description          |
+| --------------------------- | -------------- |
+| Promise&lt;string&gt; | Promise used to return the URL of the created image or video.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | The scenario parameter verification fails.Possible causes: 1. The extension format is unsupported. 2. Title contains unsupported character, such as . .. \ / : * ? " ' ` < > \| { } [ ]. 3. The title is an empty string 4. The total length of title and extension is more than 255. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2.The file system is abnormal; 3. The IPC request timed out.|
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('createPhotoAssetDemo');
+  try {
+    let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
+    let extension: string = 'jpg';
+    let title: string = 'testPhoto';
+    let uri: string = await phAccessHelper.createPhotoAsset(photoType, extension, title);
+    console.info('createPhotoAsset uri' + uri);
+    console.info('createPhotoAsset successfully');
+  } catch (err) {
+    console.error(`createPhotoAsset failed, error: ${err.code}, ${err.message}`);
   }
 }
 ```
@@ -630,11 +690,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   }
   let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
       console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-    //file had changed, do something.
+    // file had changed, do something.
   }
   let onCallback2 = (changeData: photoAccessHelper.ChangeData) => {
       console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-    //file had changed, do something.
+    // file had changed, do something.
   }
   // Register onCallback1.
   phAccessHelper.registerChange(photoAsset.uri, false, onCallback1);
@@ -715,7 +775,7 @@ Applies media changes. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 
-If you do not have the ohos.permission.WRITE_IMAGEVIDEO permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
+If you do not have the **ohos.permission.WRITE_IMAGEVIDEO** permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -751,7 +811,7 @@ This API depends on the [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#m
 
 release(callback: AsyncCallback&lt;void&gt;): void
 
-Releases this PhotoAccessHelper instance. This API uses an asynchronous callback to return the result.
+Releases the **PhotoAccessHelper** instance. This API uses an asynchronous callback to return the result.
 
 Call this API when the APIs of the PhotoAccessHelper instance are no longer used.
 
@@ -794,7 +854,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 release(): Promise&lt;void&gt;
 
-Releases this PhotoAccessHelper instance. This API uses a promise to return the result.
+Releases the **PhotoAccessHelper** instance. This API uses a promise to return the result.
 
 Call this API when the APIs of the PhotoAccessHelper instance are no longer used.
 
@@ -842,7 +902,7 @@ The dialog box must display the application name, but this cannot be directly ob
 
 > **NOTE**
 >
-> If the passed URI is a sandbox path, photos or videos can be saved but cannot be previewed.
+> If the passed URI is a sandbox path, images or videos can be saved but cannot be previewed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -859,7 +919,7 @@ The dialog box must display the application name, but this cannot be directly ob
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return a URI list. The URIs are granted with the permission for the application to write data. If the URIs fail to be generated, a batch creation error code will be returned.<br>The error code **-3006** means that there are invalid characters; **-2004** means that the image type does not match the file name extension; **-203** means that the file operation is abnormal.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return a URI list. The URIs are granted with the permission for the application to write data. If the URIs fail to be generated, a batch creation error code will be returned.<br>The return values are as follows:<br>- **-3006**: Invalid characters, which are not allowed.<br>-**-2004**: The image type does not match the file name extension.<br>-**-203**: Invalid file operation.|
 
 **Error codes**
 
@@ -901,12 +961,150 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+## showAssetsCreationDialogEx<sup>23+</sup>
+
+showAssetsCreationDialogEx(srcFileUris: Array&lt;string&gt;, creationSettings: Array&lt;CreationSetting&gt;): Promise&lt;Array&lt;string&gt;&gt;
+
+Displays a dialog box for the user to confirm whether to save the images or videos. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - If the user agrees, the list of created URIs with the save permission granted is returned. The list is permanently valid and supports image or video writing. If the user rejects, an empty list is returned.
+> - The dialog box must display the application name. The name and icon need to be configured in the **label** and **icon** items in the **abilities** tag of the **module.json5** file.
+> - When the passed URI is a sandbox path, images or videos can be saved properly, but the preview is not displayed.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name          | Type                                                                                | Mandatory| Description                     |
+| ---------------- |-------------------------------------------------------------------------------------| ---- | ------------------------- |
+| srcFileUris      | Array&lt;string&gt;                                                                 | Yes| [URIs](../../file-management/user-file-uri-intro.md#media-file-uri) of the images or videos to be saved to the media library.<br>**NOTE**<br>- A maximum of 100 images can be saved at a time.<br>- Only image and video URIs are supported.<br>- URIs cannot be manually constructed. You must call APIs to obtain them. For details, see [Obtaining a Media File URI](../../file-management/user-file-uri-intro.md#obtaining-a-media-file-uri). |
+| creationSettings | Array&lt;[CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23)&gt; | Yes| Configuration for saving images or videos to the media library, including the file name. The URI in this parameter must correspond to that in the **srcFileUris** parameter.|
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return a URI list. The application can use the returned URI to write data.|
+
+**Error codes**
+
+For details about the error codes, see [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ----------------------- |
+| 23800301 |Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('ShowAssetsCreationDialogExDemo.');
+
+  try {
+    // Obtain the sandbox URIs of the images or videos to be saved to the media library.
+    let srcFileUris: Array<string> = [
+      'file://fileUriDemo1' // The URI here is an example only.
+    ];
+    let creationSettings: Array<photoAccessHelper.CreationSetting> = [
+      {
+        title: 'test2', // Optional.
+        fileNameExtension: 'jpg',
+        photoType: photoAccessHelper.PhotoType.IMAGE
+      }
+    ];
+    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, photoCreationConfigs);
+    console.info('showAssetsCreationDialogEx success, data is ' + desFileUris);
+  } catch (err) {
+    console.error('showAssetsCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+  }
+}
+```
+## showSingleAssetCreationDialogEx<sup>23+</sup>
+
+showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSetting, isImageFullyDisplayed: boolean): Promise&lt;string&gt;
+
+Displays a dialog box for the user to confirm whether to save an image or video. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - If the user agrees to save the images or videos, this API returns a URI that has been created and granted with the save permission (this URI is permanent), and the application can use this URI to write the image or video. If the user declines to save the image or video, this API returns an empty string.
+> - The dialog box must display the application name, but this cannot be directly obtained. Therefore, when calling this API, ensure that the **abilities** tag in the **module.json5** file is configured with **label** and **icon** items. Note that the icon is not affected by the **icon** item in the **abilities** tag and cannot be modified.
+> - If the passed URI is a sandbox path, images or videos can be saved but cannot be previewed.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name  | Type                                                                  | Mandatory| Description                     |
+| -------- |----------------------------------------------------------------------| ---- | ------------------------- |
+| srcFileUri | string | Yes| [URIs](../../file-management/user-file-uri-intro.md#media-file-uri) of the images or videos to be saved to the media library.<br>**NOTE**<br>- Only one image can be saved at a time.<br>- Only image and video URIs are supported.<br>- URIs cannot be manually constructed. You must call APIs to obtain them. For details, see [Obtaining a Media File URI](../../file-management/user-file-uri-intro.md#obtaining-a-media-file-uri). |
+| creationSetting | [CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23) | Yes| Configuration for saving the image or video, including the file name. The value must be consistent with that of **srcFileUri **.|
+| isImageFullyDisplayed | boolean | Yes| Whether the image is displayed completely. The value **true** indicates that the image is displayed completely, and **false** indicates the opposite. |
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise&lt;string&gt; | Promise used to return the URI of the media library file to the application. The URIs are granted with the permission for the application to write data. If the URIs fail to be generated, a batch creation error code will be returned.<br>The return values are as follows:<br>- **-3006**: Invalid characters, which are not allowed.<br>-**-2004**: The image type does not match the file name extension.<br>-**-203**: Invalid file operation.|
+
+**Error codes**
+
+For details about the error codes, see [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 23800301 |Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('ShowSingleAssetCreationDialogExDemo.');
+
+  try {
+    // Obtain the sandbox URIs of the images or videos to be saved to the media library.
+    let srcFileUri: string = [
+      'file://fileUriDemo1' // The URI here is an example only.
+    ];
+    let creationSetting: photoAccessHelper.CreationSetting = {
+      title: 'test2', // Optional.
+      fileNameExtension: 'jpg',
+      photoType: photoAccessHelper.PhotoType.IMAGE
+    }
+    let isImageFullyDisplayed: boolean = true
+    let desFileUri: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUris, photoCreationConfigs, isImageFullyDisplayed);
+    console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUris);
+  } catch (err) {
+    console.error('showSingleAssetCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+  }
+}
+```
+
 ## createAssetWithShortTermPermission<sup>12+</sup>
 
 createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Promise&lt;string&gt;
 
-Creates an asset with a temporary permission of the given period. When this API is called by an application for the first time, a dialog box will be displayed for the user to confirm whether to save the asset. If the user agrees to save the asset, the asset instance will be created and the file URI granted with the save permission will be returned. The application can write the asset based on the URI
-within 5 minutes after the user agrees to save the asset. If the same application calls this API again within the 5 minutes, the authorized URI can be automatically returned without the need to display the conformation dialog box.
+Creates an asset with a temporary permission of the given period. When this API is called by an application for the first time, a dialog box will be displayed for the user to confirm whether to save the asset. If the user agrees to save the asset, the asset instance will be created and the file URI granted with the save permission will be returned. The application can write the asset based on the URI.
+
+Within 5 minutes after the user agrees to save the asset, if the same application calls this API again, the authorized URI can be automatically returned without the need to display the confirmation dialog box. Exiting the application will terminate the authorization, and the user need to re-trigger the dialog box for authorization confirmation when the application is re-launched.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -976,11 +1174,49 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+## createAssetWithShortTermPermissionEx<sup>23+</sup>
+
+createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise&lt;string&gt;
+
+Displays the dialog box for the first time for the user to confirm whether to save the asset. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - After the user agrees to save the asset, the API returns the URI of the created asset that has the save permission. The application can use the URI to write the image or video.
+> - Within 5 minutes after the user agrees to save the asset, if the same application calls this API again, the system directly returns the authorized URI for the application to save the image or video without displaying a confirmation dialog box. Exiting the application will terminate the authorization, and the user need to re-trigger the dialog box for authorization confirmation when the application is re-launched.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Required permissions**: ohos.permission.SHORT_TERM_WRITE_IMAGEVIDEO
+
+**Parameters**
+
+| Name  | Type                                                                  | Mandatory| Description                     |
+| -------- |----------------------------------------------------------------------| ---- | ------------------------- |
+| creationSetting | [CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23) | Yes| Configuration for saving a media asset (image or video) to the media library, including the file name.|
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise&lt;string&gt; | Promise used to return the URI of the media library file to the application. The application can use the returned URI to write data.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission denied |
+| 14000011 |  Internal system error |
+
 ## requestPhotoUrisReadPermission<sup>14+</sup>
 
 requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Array&lt;string&gt;&gt;
 
-<!--RP1--><!--RP1End-->Grants the save permission for URIs. This API uses a promise to return the result.
+<!--RP1--><!--RP1End-->Grants the read permission for unauthorized URIs, returning a list of URIs that have been created and granted the permission.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -996,7 +1232,7 @@ requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Arr
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URIs granted with the save permission.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URIs granted with the permission.|
 
 **Error codes**
 
@@ -1026,6 +1262,64 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     console.info('requestPhotoUrisReadPermission success, data is ' + desFileUris);
   } catch (err) {
     console.error('requestPhotoUrisReadPermission failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+  }
+}
+```
+
+## requestPhotoUrisReadPermissionEx<sup>23+</sup>
+ 	 
+requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;RequestReadPermissionResult&gt;
+
+Grants the read permission for unauthorized URIs. This API uses a promise to return the authorization result.
+
+It contains the list of URIs that have been created and granted the save permission and the list of invalid URIs.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+  
+​**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name  | Type                                                                  | Mandatory| Description                     |
+| -------- |----------------------------------------------------------------------| ---- | ------------------------- |
+| srcFileUris | Array&lt;string&gt; | Yes| [URIs](../../file-management/user-file-uri-intro.md#media-file-uri) of the images or videos to be granted with the permission.<br>**NOTE**<br>Only image and video URIs are supported, and the maximum number of URIs is 100.|
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise&lt;RequestReadPermissionResult&gt; | Promise used to return the list of URIs granted with the permission and the list of invalid URIs.|
+
+**Error codes**
+
+For details about the error codes, see [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 23800301 |  Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+console.info('requestPhotoUrisReadPermissionExDemo.');
+
+  try {
+    // Obtain the URIs of the images or videos to be granted with the permission.
+    let srcFileUris: Array<string> = [
+      'file://fileUriDemo1' // The URI here is an example only.
+    ];
+    let requestReadPermissionResult: photoAccessHelper.RequestReadPermissionResult = await phAccessHelper.requestPhotoUrisReadPermissionEx(srcFileUris);
+    console.info('requestPhotoUrisReadPermissionEx success, data is ' + requestReadPermissionResult);
+  } catch (err) {
+    console.error('requestPhotoUrisReadPermissionEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
   }
 }
 ```
@@ -1516,7 +1810,7 @@ Obtains the information about the recent image or video when the application use
 
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
-| options | [RecentPhotoOptions](arkts-apis-photoAccessHelper-class.md#recentphotooptions20) | No  | Options for retrieving the recent image or video. If this parameter is not provided, the API finds the recent image or video based on the timestamp.<br>If this parameter is specified, it must match the **options** configuration in the **RecentPhotoComponent**. Otherwise, there may be discrepancies where the API finds a recent image or video but the component does not.|
+| options | [RecentPhotoOptions](arkts-apis-photoAccessHelper-class.md#recentphotooptions20) | No  | Options for retrieving the recent image or video. If this parameter is not specified, the latest image is retrieved according to the creation time.<br>If this parameter is specified, it must match the **options** configuration in the **RecentPhotoComponent**. Otherwise, there may be discrepancies where the API finds a recent image or video but the component does not.|
 
 **Return value**
 
@@ -1553,7 +1847,7 @@ getAlbumIdByLpath(lpath: string): Promise&lt;number&gt;
 
 Obtains the album ID in the media library based on the album's virtual path. This API uses a promise to return the result.
 
-This API supports the following albums: camera application album ('/DCIM/Camera'), screenshot application album ('/Pictures/Screenshots'), and screen recording application album ('/Pictures/Screenrecords').
+This API supports the following albums: camera application album (**/DCIM/Camera**), screenshot application album (**/Pictures/Screenshots**), and screen recording application album (**/Pictures/Screenrecords**).
 
 ​**Model restriction**: This API can be used only in the stage model.
 
@@ -1597,5 +1891,307 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     } catch (err) {
       console.error(`getAlbumIdByLpath failed: ${err.code}, ${err.message}`);
     }
+}
+```
+
+## onSinglePhotoChange<sup>23+</sup> 
+
+onSinglePhotoChange(asset: PhotoAsset, callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
+
+Registers a listener for changes of a single common asset. This API uses an asynchronous callback to return the result.
+
+**Required permissions**: ohos.permission.READ_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description     |
+|-----------|-------------------------|-----------|-----------------|
+| asset | PhotoAsset | Yes| Asset to be listened for. After the registration is complete, any change to the media assets is returned through the callback.|
+| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | Yes| Callback used to return the media asset information after change, which is [PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20).<br>**NOTE**<br>This API can be used to register multiple different callbacks.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The same callback is registered repeatedly. 2. Asset has been removed. 3. The uri of the asset invalid.|
+| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
+  // Operations performed when the callback is triggered.
+}
+let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
+  // Operations performed when the callback is triggered.
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onSinglePhotoChangeDemo.');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOptions);
+    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+
+    if (albumFetchResult.isAfterLast()) {
+      console.error('lack of album to be moved into');
+      return;
+    }
+    // Register onCallback1.
+    phAccessHelper.onSinglePhotoChange(asset, onCallback1);
+    // Register onCallback2.
+    phAccessHelper.onSinglePhotoChange(asset, onCallback2);
+  } catch (error) {
+    console.error('onSinglePhotoChangeDemo failed, errCode is', error);
+  }
+}
+```
+
+## offSinglePhotoChange<sup>23+</sup> 
+
+offSinglePhotoChange(asset?: PhotoAsset, callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void;
+
+Unregisters the listener for a single asset. The rules are as follows: (1) If no parameter is specified, all listeners for the single assets are unregistered. (2) If **asset** is specified but **callback** is not specified, all callback listeners of the **asset** are unregistered. (3) If both **asset** and **callback** are specified, the listener for the specified **callback** is unregistered.
+
+**Required permissions**: ohos.permission.READ_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description     |
+|-----------|-------------------------|-----------|-----------------|
+| asset | PhotoAsset | No| Asset for which the listener is canceled. After the unregistration is complete, any change to the **asset** is no longer returned through the **callback**. If this parameter is not specified, all listeners for a single asset are unregistered.|
+| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | No| Callback used for the unregistration. If this parameter is not specified, all callbacks of the **asset** parameter are unregistered.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The same callback is unregistered repeatedly. 2. The uri of the asset invalid. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
+  // Operations performed when the callback is triggered.
+}
+let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
+  // Operations performed when the callback is triggered.
+}
+let onCallback3 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback3 success, changeData: ' + JSON.stringify(changeData));
+  // Operations performed when the callback is triggered.
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onSinglePhotoChangeDemo.');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOptions);
+    let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+
+    if (albumFetchResult.isAfterLast()) {
+      console.error('lack of album to be moved into');
+      return;
+    }
+    // Register onCallback1.
+    phAccessHelper.onSinglePhotoChange(asset, onCallback1);
+    // Register onCallback2.
+    phAccessHelper.onSinglePhotoChange(asset, onCallback2);
+    // Register onCallback3.
+    phAccessHelper.onSinglePhotoChange(asset, onCallback3);
+
+    // Unregister onCallback1.
+    phAccessHelper.offSinglePhotoChange(asset, onCallback1);
+    // Unregister all callbacks of the asset.
+    phAccessHelper.offSinglePhotoChange(asset);
+    // Unregister all listeners of the singlePhotoAssetChange type.
+    phAccessHelper.offSinglePhotoChange();
+  } catch (error) {
+    console.error('offSinglePhotoChangeDemo failed, errCode is', error);
+  }
+}
+```
+
+## onSinglePhotoAlbumChange<sup>23+</sup> 
+
+onSinglePhotoAlbumChange(album: Album, callback: Callback&lt;AlbumChangeInfos&gt;): void;
+
+Registers a listener for changes of a single common asset. This API uses an asynchronous callback to return the result.
+
+**Required permissions**: ohos.permission.READ_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description     |
+|-----------|-------------------------|-----------|-----------------|
+| album | Album | Yes| Album to be listened for. After the registration is complete, any change to the albums is returned through the callback.|
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | Yes| Callback used to return the album information after change, which is [PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20).<br>**NOTE**<br>This API can be used to register multiple different callbacks.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The same callback is registered repeatedly. 2. Album has been removed. 3. The uri of the album invalid.|
+| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
+  // Operations performed when the callback is triggered.
+}
+let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
+  // Operations performed when the callback is triggered.
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onSinglePhotoAlbumChangeDemo.');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+
+    if (albumFetchResult.isAfterLast()) {
+      console.error('lack of album to be moved into');
+      return;
+    }
+    // Register onCallback1.
+    phAccessHelper.onSinglePhotoAlbumChange(album, onCallback1);
+    // Register onCallback2.
+    phAccessHelper.onSinglePhotoAlbumChange(album, onCallback2);
+  } catch (error) {
+    console.error('onSinglePhotoAlbumChangeDemo failed, errCode is', error);
+  }
+}
+```
+
+## offSinglePhotoAlbumChange<sup>23+</sup> 
+
+offSinglePhotoAlbumChange(album?: Album, callback?: Callback&lt;AlbumChangeInfos&gt;): void
+
+Unregisters the listener for a single album. The rules are as follows: (1) If no parameter is specified, the listeners for all single albums are unregistered. (2) If **album** is specified but **callback** is not specified, all callback listeners of the album are unregistered. (3) If both **album** and **callback** are specified, only the specified callback listener is unregistered.
+
+**Required permissions**: ohos.permission.READ_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description     |
+|-----------|-------------------------|-----------|-----------------|
+| album | Album | No| Album for which the listener is unregistered. After the unregistration is complete, any change to the album is no longer returned through the callback.|
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | No| Callback used for the unregistration. If this parameter is not specified, all callbacks of the **asset** parameter are unregistered.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1.The same callback is unregistered repeatedly. 2. The uri of the album invalid.|
+| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
+  // Operations performed when the callback is triggered.
+}
+let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
+  // Operations performed when the callback is triggered.
+}
+let onCallback3 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback3 success, changeData: ' + JSON.stringify(changeData));
+  // Operations performed when the callback is triggered.
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onSinglePhotoChangeDemo.');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  try {
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
+    let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
+
+    if (albumFetchResult.isAfterLast()) {
+      console.error('lack of album to be moved into');
+      return;
+    }
+    // Register onCallback1.
+    phAccessHelper.onSinglePhotoAlbumChange(album, onCallback1);
+    // Register onCallback2.
+    phAccessHelper.onSinglePhotoAlbumChange(album, onCallback2);
+    // Register onCallback3.
+    phAccessHelper.onSinglePhotoAlbumChange(album, onCallback3);
+
+    // Unregister onCallback1.
+    phAccessHelper.offSinglePhotoAlbumChange(album, onCallback1);
+    // Unregister all callbacks of the album.
+    phAccessHelper.offSinglePhotoAlbumChange(album);
+    // Unregister all listeners of the singlePhotoAlbumChange type.
+    phAccessHelper.offSinglePhotoAlbumChange();
+  } catch (error) {
+    console.error('offSinglePhotoAlbumChangeDemo failed, errCode is', error);
+  }
 }
 ```

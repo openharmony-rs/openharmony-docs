@@ -158,7 +158,7 @@ You are advised to use the [getSystemFontFullNamesByType](../apis-arkgraphics2d/
 
 > **NOTE**
 >
-> Directly using **font** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context by using the [getFont](arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](arkts-apis-uicontext-uicontext.md).
+> Directly using **font** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context by using the [getFont](arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](./arkts-apis-uicontext-uicontext.md).
 
 **Example**
 
@@ -275,9 +275,12 @@ struct FontExample {
 ```
 
 ## font.getUIFontConfig<sup>11+</sup>
+
 getUIFontConfig() : UIFontConfig
 
-Obtains the UI font configuration of the system.
+Obtains the UI font configuration information in the system font configuration file.
+
+This API can only obtain the information in the configuration file. If the UI context is not clear, **undefined** may be returned. If you want to obtain the full font configuration information, you are advised to use the [getSystemFontFullNamesByType](../apis-arkgraphics2d/js-apis-graphics-text.md#textgetsystemfontfullnamesbytype14) API of the font engine.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

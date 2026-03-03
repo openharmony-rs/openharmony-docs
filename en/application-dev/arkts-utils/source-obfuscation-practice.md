@@ -4,7 +4,7 @@
 <!--Owner: @zju-wyx-->
 <!--Designer: @xiao-peiyang; @dengxinyu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 Different package types serve distinct purposes and have unique build processes, which means you need to consider different factors when applying obfuscation. This topic offers tailored recommendations for three package types: [HAP](../quick-start/hap-package.md), [HAR](../quick-start/har-package.md), and [HSP](../quick-start/in-app-hsp.md), aiming to help you implement obfuscation effectively.
 
@@ -24,7 +24,7 @@ After the option configuration, you must configure the corresponding trustlists 
 - For new applications, you are advised to configure these options from the start and gradually add trustlist configurations as needed during development.
 - For existing applications, configure these options one by one in the suggested order. Compare the obfuscation products to understand the impact of each option, and refer to [Obfuscation Configuration Guidelines](source-obfuscation-guide.md#obfuscation-configuration-guidelines) for troubleshooting.
 
-Once the application is functioning correctly, you can enable additional features such as code compression (`-compact`) and log removal (`-remove-log`) to enhance the code obfuscation effect and prepare the release package.
+Once the application is functioning correctly, you can enable additional features such as code compression (`-compact`) and log removal (`-remove-log` or `-remove-nosideeffects-calls`) to enhance the code obfuscation effect and prepare the release package.
 
 ## HAP Package Obfuscation Recommendations
 

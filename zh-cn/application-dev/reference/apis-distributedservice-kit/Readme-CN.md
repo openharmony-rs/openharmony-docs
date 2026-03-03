@@ -24,22 +24,18 @@
     - [@ohos.distributedHardware.deviceManager (设备管理)(系统接口)(待删除)](js-apis-device-manager-sys.md)
   
   <!--DelEnd-->
-- 错误码<!--distributed-service-arkts-errcode-->
-  
-  - [设备管理错误码](errorcode-device-manager.md)
-  
-  <!--Del-->
-  
-  - [键鼠穿越管理错误码](errorcode-devicestatus.md)
-  
-  <!--DelEnd-->
-  - [增强连接错误码](errorcode-link-enhance.md)
-  - [代理通道管理错误码](errorcode-proxyChannelManager.md)
 - C API<!--distributed-service-c-->
   - 模块<!--distributed-service-module-->
     - [DeviceManager](capi-devicemanager.md)
   - 头文件<!--distributed-service-headerfile-->
     - [oh_device_manager.h](capi-oh-device-manager-h.md)
     - [oh_device_manager_err_code.h](capi-oh-device-manager-err-code-h.md)
+- 错误码<!--distributed-service-arkts-errcode-->
+  - [设备管理错误码](errorcode-device-manager.md)
+  <!--Del-->
+  - [键鼠穿越管理错误码](errorcode-devicestatus.md)
+  <!--DelEnd-->
+  - [增强连接错误码](errorcode-link-enhance.md)
+  - [代理通道管理错误码](errorcode-proxyChannelManager.md)
     
 

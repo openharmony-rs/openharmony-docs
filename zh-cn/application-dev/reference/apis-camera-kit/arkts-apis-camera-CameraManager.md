@@ -454,6 +454,13 @@ createVideoOutput(profile: VideoProfile, surfaceId: string): VideoOutput
 
 创建录像输出对象，同步返回结果。
 
+在录像模式下，使能SDR或HDR_VIVID拍摄效果时，CameraFormat与ColorSpace必须按照下列表格中的对应关系配置，若不满足表格中CameraFormat与ColorSpace配置，会导致预览异常等问题。
+
+| SDR/HDR拍摄         | CameraFormat             | ColorSpace       |
+|--------------------|--------------------------|------------------|
+| SDR                | CAMERA_FORMAT_YUV_420_SP | BT709_LIMIT      |
+| HDR_VIVID          | CAMERA_FORMAT_YCRCB_P010<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG_LIMIT<br>BT2020_HLG_FULL |
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core

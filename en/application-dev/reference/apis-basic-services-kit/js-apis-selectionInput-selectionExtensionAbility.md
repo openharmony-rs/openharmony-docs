@@ -10,8 +10,9 @@
 This module provides ExtensionAbility for word selection, allowing users to search or translate text selected using a mouse or touchpad.
 
 > **NOTE**
-
-The initial APIs of this module are supported since API version 24. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The initial APIs of this module are supported since API version 24. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - This module is supported only on PCs/2-in-1 devices.
 
 ## Modules to Import
 
@@ -20,9 +21,9 @@ import { SelectionExtensionAbility } from '@kit.BasicServicesKit';
 ```
 ## SelectionExtensionAbility
 
-### Properties
-
 **System capability**: SystemCapability.SelectionInput.Selection
+
+**Model constraint**: This API can be used only in the stage model.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
@@ -35,6 +36,8 @@ onConnect(want: Want): rpc.RemoteObject
 Called when the SelectionExtensionAbility instance is created. You can execute initialization logic (such as defining variables, loading resources, and listening for word selection events) within this callback.
 
 **System capability**: SystemCapability.SelectionInput.Selection
+
+**Model constraint**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -84,6 +87,8 @@ After the **onDisconnect()** lifecycle callback is executed, the application may
 The callback is invoked only when the SelectionExtensionAbility exits gracefully. It is not invoked in cases of abnormal exits (for example, process termination due to low memory conditions).
 
 **System capability**: SystemCapability.SelectionInput.Selection
+
+**Model constraint**: This API can be used only in the stage model.
 
 **Example**
 

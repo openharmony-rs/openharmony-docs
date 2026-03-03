@@ -219,7 +219,7 @@ Describes the widget animation information.
 |-----|-----|------|-----|---------------------------------|
 | area     | [Rect](#rect20) | No| No  | Overflow animation area. The upper-left corner of the widget is used as the origin, in vp.  |
 | duration | number | No| No  | Animation duration, in ms. The value is an integer greater than 0, and <!--Del-->for third-party applications, <!--DelEnd-->the value cannot exceed 3500. <!--Del-->This restriction does not apply to system applications.<!--DelEnd-->|
-| useDefaultAnimation | boolean | No| Yes  | Whether to enable the default animation provided by the system when the interactive widget state is switched. The default value is **true**. The value **false** indicates the image is directly switched without animation, with the widget UI in the inactive state matching that in the active state during the switch.|
+| useDefaultAnimation | boolean | No| Yes  | Whether to enable the system-provided default animation when an interactive widget switches states. The default value is **true**.<br>- **true**: enable the system-provided default transition animation.<br>- **false**: disable the system-provided default transition animation. The widget state switches directly with no animation applied, which is applicable for scenarios where the widget UI is identical in both inactive and active states during switching.|
 
 ## Rect<sup>20+</sup>
 

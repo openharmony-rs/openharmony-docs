@@ -1,4 +1,10 @@
 # Camera Kit
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 - ArkTS APIs<!--camera-arkts-->
   - @ohos.multimedia.camera (Camera Management)<!--js-apis-camera-->
@@ -11,6 +17,7 @@
     - [Interface (CameraInput)](arkts-apis-camera-CameraInput.md)
     - [Interface (CameraManager)](arkts-apis-camera-CameraManager.md)
     - [Interface (CameraOutput)](arkts-apis-camera-CameraOutput.md)
+    - [Interface (CapturePhoto)](arkts-apis-camera-CapturePhoto.md)
     - [Interface (ColorManagement)](arkts-apis-camera-ColorManagement.md)
     - [Interface (ColorManagementQuery)](arkts-apis-camera-ColorManagementQuery.md)
     - [Interface (ControlCenter)](arkts-apis-camera-ControlCenter.md)
@@ -38,6 +45,7 @@
     - [Interface (ZoomQuery)](arkts-apis-camera-ZoomQuery.md)
     - [Interfaces (Others)](arkts-apis-camera-i.md)
     - [Enums](arkts-apis-camera-e.md)
+    - [Types](arkts-apis-camera-t.md)
     - [Deprecated Interface (CaptureSession, deprecated)](arkts-apis-camera-CaptureSession.md)
   - [@ohos.multimedia.cameraPicker (Camera Picker)](js-apis-cameraPicker.md)
   <!--Del-->
@@ -64,6 +72,7 @@
     - [Camera_VideoProfile](capi-oh-camera-camera-videoprofile.md)
     - [Camera_OutputCapability](capi-oh-camera-camera-outputcapability.md)
     - [Camera_Device](capi-oh-camera-camera-device.md)
+    - [Camera_DeviceQueryInfo](capi-oh-camera-camera-devicequeryinfo.md)
     - [Camera_StatusInfo](capi-oh-camera-camera-statusinfo.md)
     - [Camera_Point](capi-oh-camera-camera-point.md)
     - [Camera_Location](capi-oh-camera-camera-location.md)
@@ -95,5 +104,6 @@
     - [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)
     - [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md)
     - [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)
+    - [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md)
 - Error Codes<!--camera-arkts-errcode-->
   - [Camera Error Codes](errorcode-camera.md)

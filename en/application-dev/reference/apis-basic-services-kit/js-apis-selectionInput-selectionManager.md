@@ -12,6 +12,7 @@ This module provides word selection management capabilities, including creating,
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 24. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - This module is supported only on PCs/2-in-1 devices.
 > - APIs of this module can be called only by applications that integrate the ExtensionAbility for word selection.
 
 ## Modules to Import
@@ -20,11 +21,9 @@ This module provides word selection management capabilities, including creating,
 import { selectionManager } from '@kit.BasicServicesKit';
 ```
 
-## selectionManager
+## selectionManager.on('selectionCompleted')
 
-### selectionManager.on('selectionCompleted')
-
-selectionManager.on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
+on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 
 Registers a callback to listen for the word selection completion event. This API uses an asynchronous callback to return the result.
 
@@ -59,9 +58,9 @@ try {
 }
 ```
 
-### selectionManager.off('selectionCompleted')
+## selectionManager.off('selectionCompleted')
 
-selectionManager.off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
+off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 
 Unregisters the callback used to listen for the word selection completion event. This API uses an asynchronous callback to return the result.
 
@@ -91,9 +90,9 @@ try {
 }
 ```
 
-### selectionManager.getSelectionContent()
+## getSelectionContent()
 
-selectionManager.getSelectionContent(): Promise\<string>
+getSelectionContent(): Promise\<string>
 
 Obtains this selected text content. This API uses a promise to return the result.
 
@@ -131,7 +130,7 @@ selectionManager.on('selectionCompleted', async (info: selectionManager.Selectio
 });
 ```
 
-### selectionManager.createPanel
+## createPanel
 
 createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
@@ -140,6 +139,8 @@ Creates a word selection panel. This API uses a promise to return the result.
 Only one [main panel](./js-apis-selectionInput-selectionPanel.md) and one [menu panel](./js-apis-selectionInput-selectionPanel.md) can be created for a single word selection application.
 
 **System capability**: SystemCapability.SelectionInput.Selection
+
+**Model constraint**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -151,7 +152,7 @@ Only one [main panel](./js-apis-selectionInput-selectionPanel.md) and one [menu 
 **Return value**
 | Type  | Description                                                                |
 | ------- | ------------------------------------------------------------------ |
-| Promise\<[Panel](#selectionmanagerpanel)> | Promise used to return the word selection panel created. |
+| Promise\<[Panel](#panel)> | Promise used to return the word selection panel created. |
 
 **Error codes**
 
@@ -204,19 +205,21 @@ class ServiceExtAbility extends SelectionExtensionAbility {
 export default ServiceExtAbility;
 ```
 
-### selectionManager.destroyPanel
+## destroyPanel
 
-selectionManager.destroyPanel(panel: Panel): Promise\<void>
+destroyPanel(panel: Panel): Promise\<void>
 
 Destroys the word selection panel. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.SelectionInput.Selection
 
+**Model constraint**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type       | Mandatory| Description                    |
 | ---------| ----------- | ---- | ------------------------ |
-| panel    | [Panel](#selectionmanagerpanel)       | Yes  | Word selection panel to destroy.     |
+| panel    | [Panel](#panel)       | Yes  | Word selection panel to destroy.     |
 
 **Return value**
 | Type   | Description                                                                |
@@ -287,11 +290,13 @@ class ServiceExtAbility extends SelectionExtensionAbility {
 export default ServiceExtAbility;
 ```
 
-### SelectionInfo
+## SelectionInfo
 
 Defines the information of a word selection event.
 
 **System capability**: SystemCapability.SelectionInput.Selection
+
+**Model constraint**: This API can be used only in the stage model.
 
 | Name     | Type| Read-Only| Optional| Description        |
 | --------- | -------- | ---- | ---- | ------------ |
@@ -308,9 +313,15 @@ Defines the information of a word selection event.
 | windowID      |number| No  | No  | ID of the window where words are selected.|
 | bundleName    |string| No  | No  | Bundle name of the application where words are selected.|
 
-## selectionManager.Panel
+## Panel
 
-In the following API examples, you must first use [createPanel](#selectionmanagercreatepanel) to obtain a **Panel** instance, and then call the APIs using the obtained instance.
+Represents the word selection panel.
+
+**System capability**: SystemCapability.SelectionInput.Selection
+
+**Model constraint**: This API can be used only in the stage model.
+
+In the following APIs, you must first use [createPanel](#createpanel) to obtain a **Panel** instance, and then call the APIs using the obtained instance.
 
 ### setUiContent
 
@@ -319,6 +330,8 @@ setUiContent(path: string): Promise\<void>
 Sets the page content for the word selection panel. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.SelectionInput.Selection
+
+**Model constraint**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -364,6 +377,8 @@ show(): Promise\<void>
 Shows the word selection panel. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.SelectionInput.Selection
+
+**Model constraint**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -434,6 +449,8 @@ startMoving(): Promise\<void>
 Moves the word selection panel by dragging. This API uses a promise to return the result. This API must be written in the **onTouch** callback and the event type must be **TouchType.Down**.
 
 **System capability**: SystemCapability.SelectionInput.Selection
+
+**Model constraint**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -530,6 +547,8 @@ moveToGlobalDisplay(x: number, y: number): Promise\<void>
 Moves the word selection panel to the specified coordinates on the screen. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.SelectionInput.Selection
+
+**Model constraint**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -681,11 +700,13 @@ try {
 }
 ```
 
-### SelectionType
+## SelectionType
 
 Enumerates the operations for selecting words.
 
 **System capability**: SystemCapability.SelectionInput.Selection
+
+**Model constraint**: This API can be used only in the stage model.
 
 | Name        | Value| Description              |
 | ------------ | -- | ------------------ |

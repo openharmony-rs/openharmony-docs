@@ -928,7 +928,7 @@ try {
 
 addKeyEventPolicies(admin: Want, keyPolicies: Array&lt;KeyEventPolicy&gt;): void
 
-添加按键事件处理策略。系统触发按键事件时，若匹配下发的按键事件策略，将通过[EnterpriseAdminExtensionAbility.onKeyEvent](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonkeyevent23)回调通知MDM应用，并携带匹配策略的按键事件信息。 
+添加按键事件处理策略。系统触发按键事件时，若匹配下发的按键事件策略，将通过[EnterpriseAdminExtensionAbility.onKeyEvent](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)回调通知MDM应用，并携带匹配策略的按键事件信息。 
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -943,7 +943,7 @@ addKeyEventPolicies(admin: Want, keyPolicies: Array&lt;KeyEventPolicy&gt;): void
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| keyPolicies     | Array&lt;[KeyEventPolicy](#keyeventpolicy23)&gt; | 是   | 按键策略。支持物理按键（电源键、音量加、音量减），导航键（回退、主页、最近打开）。物理键支持任意组合为组合键，导航键不支持组合。组合键事件响应详见[按键事件回调](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonkeyevent23)接口。 |
+| keyPolicies     | Array&lt;[KeyEventPolicy](#keyeventpolicy23)&gt; | 是   | 按键策略。支持物理按键（电源键、音量加、音量减），导航键（回退、主页、最近打开）。物理键支持任意组合为组合键，导航键不支持组合。组合键事件响应详见[按键事件回调](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)接口。 |
 
 **错误码**：
 
@@ -1111,8 +1111,8 @@ startCollectLog(admin: Want): Promise&lt;void&gt;
 
 - 调用接口后，系统会启动一个日志收集任务，任务启动后接口立即返回。任务可能会因为系统性能等原因导致收集失败。
 - 允许多个MDM应用调用，不同MDM应用在不同用户下收集的日志分开保存，互不影响。同一时间只允许一个MDM应用启动日志收集任务，在任务执行完成前调用本接口会返回错误码9201009，任务执行完成后，允许其他MDM应用调用。
-- 任务执行完成后，通过[EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonlogcollected23)回调函数通知给MDM应用，系统将已收集的日志文件挂载到MDM应用沙箱路径，MDM应用可以在回调函数中读取已收集的日志。
-- 如果日志收集任务执行超过5分钟，[EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonlogcollected23)回调函数会返回日志收集任务失败。
+- 任务执行完成后，通过[EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23)回调函数通知给MDM应用，系统将已收集的日志文件挂载到MDM应用沙箱路径，MDM应用可以在回调函数中读取已收集的日志。
+- 如果日志收集任务执行超过5分钟，[EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23)回调函数会返回日志收集任务失败。
 - 应用取走日志后，建议调用[systemManager.finishLogCollected](#systemmanagerfinishlogcollected23)删除已收集到的日志。
 
 **需要权限：** ohos.permission.ENTERPRISE_READ_LOG
@@ -1176,7 +1176,7 @@ finishLogCollected(admin: Want): void
 
 > **说明：**
 > 
-> 在应用调用[startCollectLog](#systemmanagerstartcollectlog23)开始收集日志后，收到[EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonlogcollected23)回调时，建议立即拷贝或者处理日志，并调用此接口删除收集到的日志。
+> 在应用调用[startCollectLog](#systemmanagerstartcollectlog23)开始收集日志后，收到[EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23)回调时，建议立即拷贝或者处理日志，并调用此接口删除收集到的日志。
 > 
 > 若不调本接口，设备日志会占用系统存储空间，不影响下一次调用[startCollectLog](#systemmanagerstartcollectlog23)启动日志收集任务。
 
@@ -1388,7 +1388,7 @@ try {
 
 ## KeyCode<sup>23+</sup>
 
-按键编码。[添加按键事件策略](#systemmanageraddkeyeventpolicies23)、[删除按键事件策略](#systemmanagerremovekeyeventpolicies23)、[获取按键事件策略](#systemmanagergetkeyeventpolicies23)和[按键事件回调](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonkeyevent23)接口通过按键编码映射到设备对应实际按键。
+按键编码。[添加按键事件策略](#systemmanageraddkeyeventpolicies23)、[删除按键事件策略](#systemmanagerremovekeyeventpolicies23)、[获取按键事件策略](#systemmanagergetkeyeventpolicies23)和[按键事件回调](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)接口通过按键编码映射到设备对应实际按键。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1414,11 +1414,11 @@ try {
 | 名称               | 值  | 说明    |
 | -----------------  | ---- | ----- |
 | INTERCEPTION     | 0 |  拦截消息。设置后仅会拦截当前按键事件，系统不会再处理该事件，按键回调接口也不会响应按键事件。例如：下发电源键拦截策略后，按电源键无任何响应，无法关机，无法锁屏，仅影响开机状态下电源键事件，关机时可通过电源键正常开机。 |
-| CUSTOM        | 1 | 拦截并转发消息。 设置后会拦截当前按键事件，系统不会再处理该事件，同时通过[EnterpriseAdminExtensionAbility.onKeyEvent](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonkeyevent23)回调接口将发生的按键事件通知给MDM应用，通知MDM应用处理该事件的过程不会阻塞系统后续的其他事件处理。|
+| CUSTOM        | 1 | 拦截并转发消息。 设置后会拦截当前按键事件，系统不会再处理该事件，同时通过[EnterpriseAdminExtensionAbility.onKeyEvent](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)回调接口将发生的按键事件通知给MDM应用，通知MDM应用处理该事件的过程不会阻塞系统后续的其他事件处理。|
 
 ## KeyEvent<sup>23+</sup>
 
-按键事件。[EnterpriseAdminExtensionAbility.onKeyEvent](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonkeyevent23)按键事件回调触发时，传递当前按键事件信息。
+按键事件。[EnterpriseAdminExtensionAbility.onKeyEvent](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)按键事件回调触发时，传递当前按键事件信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

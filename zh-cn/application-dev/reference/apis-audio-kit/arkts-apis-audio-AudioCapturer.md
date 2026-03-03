@@ -888,7 +888,7 @@ on(type: 'inputDeviceChange', callback: Callback\<AudioDeviceDescriptors>): void
 | 参数名   | 类型                       | 必填 | 说明                                        |
 | :------- | :------------------------- | :--- | :------------------------------------------ |
 | type     | string                     | 是   | 事件回调类型，支持的事件为'inputDeviceChange'，当音频输入设备发生变化时，触发该事件。 |
-| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) > | 是   | 回调函数，返回监听的音频输入设备变化(返回数据为切换后的设备信息)。 |
+| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) > | 是   | 回调函数，返回变化后的音频输入设备信息。 |
 
 **错误码：**
 
@@ -921,7 +921,7 @@ off(type: 'inputDeviceChange', callback?: Callback\<AudioDeviceDescriptors>): vo
 | 参数名   | 类型                       | 必填 | 说明                                       |
 | :------- | :------------------------- | :--- |:-----------------------------------------|
 | type     | string                     | 是   | 事件回调类型，支持的事件为'inputDeviceChange'，当取消监听音频输入设备更改事件时，触发该事件。 |
-| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) > | 否   | 回调函数，返回监听的音频输入设备信息。 |
+| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) > | 否   | 回调函数，返回音频输入设备信息。 |
 
 **错误码：**
 

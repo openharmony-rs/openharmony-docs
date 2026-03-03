@@ -10,7 +10,7 @@
 > 
 > The initial APIs of this module are supported since API version 22. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
-For details about the development, see [\@Env](../../../ui/arkts-env-system-property.md).
+For details about the developer guide, see [\@Env Developer Guide](../../../ui/arkts-env-system-property.md).
 
 
 ## \@Env
@@ -63,6 +63,7 @@ Defines the @Env decorator type.
 
 **Error codes**
 
+For details, see [@Env Error Codes](../errorcode-env.md).
 | ID| Error Message|
 | ------- | -------------------------------- |
 |140000|Invalid key for @Env|
@@ -80,5 +81,4 @@ Defines the enumerated values of the environment variable.
 |WINDOW_SIZE_PX<sup>23+</sup>|'system.window.size.px'|[@Env](#env) variable parameter. You can obtain the [Size](../arkts-apis-window-i.md#size7) instance through \@Env(SystemProperties.WINDOW_SIZE_PX).<br>When this decorator is declared in [\@Component](../../../ui/state-management/arkts-create-custom-components.md#component) or [\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2), it is used to obtain the size (in px) of the window where the current custom component is located.<br>**Model restriction**: This API can be used only in the stage model.|
 |WINDOW_AVOID_AREA<sup>23+</sup>|'system.window.avoidarea'|[@Env](#env) variable parameter. You can obtain the [UIEnvWindowAvoidAreaInfoVP](../arkts-apis-window-i.md#uienvwindowavoidareainfovp23) instance through \@Env(SystemProperties.WINDOW_AVOID_AREA).<br>When this decorator is declared in [\@Component](../../../ui/state-management/arkts-create-custom-components.md#component) or [\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2), it is used to obtain the avoid area (in vp) of the window where the current custom component is located.<br>**Model restriction**: This API can be used only in the stage model.|
 |WINDOW_AVOID_AREA_PX<sup>23+</sup>|'system.window.avoidarea.px'|[@Env](#env) variable parameter. You can obtain the [UIEnvWindowAvoidAreaInfoPX](../arkts-apis-window-i.md#uienvwindowavoidareainfopx23) instance through \@Env(SystemProperties.WINDOW_AVOID_AREA_PX).<br>When this decorator is declared in [\@Component](../../../ui/state-management/arkts-create-custom-components.md#component) or [\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2), it is used to obtain the avoid area (in px) of the window where the current custom component is located.<br>**Model restriction**: This API can be used only in the stage model.|
-
 <!--no_check-->

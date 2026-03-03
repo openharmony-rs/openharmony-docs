@@ -1001,7 +1001,7 @@ getAppVolumePercentageForUid(uid: number\): Promise<number\>
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回应用的音量（范围为0到100）。 |
+| Promise&lt;number&gt; | Promise对象，返回应用的音量（范围为[0, 100]）。 |
 
 **错误码：**
 
@@ -1027,7 +1027,7 @@ audioVolumeManager.getAppVolumePercentageForUid(20010041).then((value: number) =
 
 setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
 
-根据应用ID设置指定应用的音量（范围为0到100）。使用Promise异步回调。
+根据应用ID设置指定应用的音量（范围为[0, 100]）。使用Promise异步回调。
 
 **系统接口：** 该接口为系统接口。
 
@@ -4907,6 +4907,7 @@ try {
 ## TonePlayer<sup>9+</sup>
 
 提供播放和管理DTMF（Dual Tone Multi Frequency，双音多频）音调的方法，包括各种系统监听音调、专有音调，如拨号音、通话回铃音等。
+
 在调用TonePlayer的接口前，需要先通过[createTonePlayer](#audiocreatetoneplayer9)创建实例。
 
 **系统接口：** 该接口为系统接口。

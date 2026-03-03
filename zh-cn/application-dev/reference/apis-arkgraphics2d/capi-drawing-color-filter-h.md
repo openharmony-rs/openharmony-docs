@@ -217,7 +217,7 @@ void OH_Drawing_ColorFilterDestroy(OH_Drawing_ColorFilter* colorFilter)
 
 **描述**
 
-销毁颜色滤波器对象，并收回该对象占用的内存。
+销毁颜色滤波器对象，并回收该对象占用的内存。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

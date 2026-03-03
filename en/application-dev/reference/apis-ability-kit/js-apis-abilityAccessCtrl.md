@@ -268,6 +268,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 For details about how to obtain the context in the example, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
 For details about the process and example of applying for user authorization, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 <!--code_no_check-->
 ```ts
@@ -275,6 +276,7 @@ import { abilityAccessCtrl, Context, PermissionRequestResult, common } from '@ki
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// Obtain the context within the component.
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: BusinessError, data: PermissionRequestResult) => {
   if (err) {
@@ -308,7 +310,7 @@ If the user rejects to grant permissions, the dialog box cannot be displayed aga
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | context | [Context](js-apis-inner-application-context.md) | Yes| Context of the <!--RP1-->UIAbility<!--RP1End--> that requests the permission.|
-| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | Yes| Permission to verify. For details about the permission, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | Yes| Permissions to request. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
 
 **Return value**
 
@@ -329,6 +331,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 For details about how to obtain the context in the example, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
 For details about the process and example of applying for user authorization, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 <!--code_no_check-->
 ```ts
@@ -336,6 +339,7 @@ import { abilityAccessCtrl, Context, PermissionRequestResult, common } from '@ki
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// Obtain the context within the component.
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA']).then((data: PermissionRequestResult) => {
   console.info(`requestPermissionsFromUser success, result: ${data}`);
@@ -399,6 +403,7 @@ import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// Obtain the context within the component.
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.requestPermissionOnSetting(context, ['ohos.permission.CAMERA']).then((data: Array<abilityAccessCtrl.GrantStatus>) => {
   console.info(`requestPermissionOnSetting success, result: ${data}`);
@@ -457,6 +462,7 @@ import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// Obtain the context within the component.
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.requestGlobalSwitch(context, abilityAccessCtrl.SwitchType.CAMERA).then((data: Boolean) => {
   console.info(`requestGlobalSwitch success, result: ${data}`);
@@ -553,6 +559,7 @@ import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// Obtain the context within the component.
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.openPermissionOnSetting(context, 'ohos.permission.HOOK_KEY_EVENT').then((data: abilityAccessCtrl.SelectedResult) => {
   console.info(`openPermissionOnSetting success, result: ${data}`);

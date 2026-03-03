@@ -39,7 +39,7 @@ Declares a set of custom dialog box APIs of ArkUI on the native side.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [ArkUI_DismissReason](#arkui_dismissreason) | ArkUI_DismissReason | Enumerates the actions for triggering closure of the dialog box.|
-| [ArkUI_LevelMode](#arkui_levelmode) | ArkUI_LevelMode | Enumerates the display levels of the dialog box.|
+| [ArkUI_LevelMode](#arkui_levelmode) | ArkUI_LevelMode | Enumerates the display level modes of the dialog box.|
 | [ArkUI_ImmersiveMode](#arkui_immersivemode) | ArkUI_ImmersiveMode | Enumerates the display areas of the embedded dialog box overlay.|
 | [ArkUI_DialogState](#arkui_dialogstate) | ArkUI_DialogState | Enumerates the dialog box status.|
 
@@ -501,7 +501,7 @@ Sets the background color of a dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
-| uint32_t backgroundColor | Background color of the dialog box.|
+| uint32_t backgroundColor | Background color of the dialog box, in 0xARGB format.|
 
 **Returns**
 
@@ -528,10 +528,10 @@ Sets the corner radius for a custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
-| float topLeft | Radius of the upper left corner of the dialog box.|
-| float topRight | Radius of the upper right corner of the dialog box.|
-| float bottomLeft | Radius of the lower left corner of the dialog box.|
-| float bottomRight | Radius of the lower right corner of the dialog box.|
+| float topLeft | Radius of the upper left corner of the dialog box, in vp.|
+| float topRight | Radius of the upper right corner of the dialog box, in vp.|
+| float bottomLeft | Radius of the lower left corner of the dialog box, in vp.|
+| float bottomRight | Radius of the lower right corner of the dialog box, in vp.|
 
 **Returns**
 
@@ -589,10 +589,10 @@ Sets the border color of the dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
-| uint32_t top | Color of the top border of the dialog box.|
-| uint32_t right | Color of the right border of the dialog box.|
-| uint32_t bottom | Color of the bottom border of the dialog box.|
-| uint32_t left | Color of the left border of the dialog box.|
+| uint32_t top | Color of the top border of the dialog box, in 0xARGB format.|
+| uint32_t right | Color of the right border of the dialog box, in 0xARGB format.|
+| uint32_t bottom | Color of the bottom border of the dialog box, in 0xARGB format.|
+| uint32_t left | Color of the left border of the dialog box, in 0xARGB format.|
 
 **Returns**
 
@@ -619,10 +619,10 @@ Sets the border style of a dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
-| int32_t top | Style of the top border of the dialog box.|
-| int32_t right | Style of the right border of the dialog box.|
-| int32_t bottom | Style of the bottom border of the dialog box.|
-| int32_t left | Style of the left border of the dialog box.|
+| int32_t top | Style of the top border of the dialog box. The parameter type is [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle). The default value is **ARKUI_BORDER_STYLE_SOLID**.|
+| int32_t right | Style of the right border of the dialog box. The parameter type is [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle). The default value is **ARKUI_BORDER_STYLE_SOLID**.|
+| int32_t bottom | Style of the bottom border of the dialog box. The parameter type is [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle). The default value is **ARKUI_BORDER_STYLE_SOLID**.|
+| int32_t left | Style of the left border of the dialog box. The parameter type is [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle). The default value is **ARKUI_BORDER_STYLE_SOLID**.|
 
 **Returns**
 
@@ -677,7 +677,7 @@ Sets the height of the dialog box background.
 | Name| Description|
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
-| float height | Width of the dialog box background.|
+| float height | Height of the dialog box background.|
 | [ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit) unit | Unit of the height. The default value is vp.|
 
 **Returns**
@@ -787,8 +787,8 @@ Sets the alignment mode of a dialog box.
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
 | int32_t alignment | Alignment mode of the dialog box. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment).|
-| float offsetX | Horizontal offset of the custom dialog box. The value is a floating point number.|
-| float offsetY | Vertical offset of the custom dialog box. The value is a floating point number.|
+| float offsetX | Horizontal offset of the dialog box. The value is a floating point number, in vp.|
+| float offsetY | Vertical offset of the dialog box. The value is a floating point number, in vp.|
 
 **Returns**
 

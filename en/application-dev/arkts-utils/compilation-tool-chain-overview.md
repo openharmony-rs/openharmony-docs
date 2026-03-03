@@ -4,7 +4,7 @@
 <!--Owner: @chenmudan; @hufeng20; @ctw-ian-->
 <!--Designer: @hufeng20; @ctw-ian-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The ArkTS SDK provides a comprehensive toolchain for compiling ArkTS applications. Integrated with the [Hvigor](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor) task orchestration tool, this toolchain compiles ArkTS/TS/JS source code into Ark bytecode files (*.abc).
 

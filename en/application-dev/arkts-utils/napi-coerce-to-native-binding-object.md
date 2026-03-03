@@ -12,7 +12,9 @@ Native Transferable objects support two distinct modes: shared mode and transfer
 
 1. Implement features in native code.
 
-   ```cpp
+   <!-- @[define_customNativeObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseTransferable/entry/src/main/cpp/napi_init.cpp) -->  
+   
+   ``` C++
    // napi_init.cpp
    #include <mutex>
    #include <unordered_set>
@@ -254,13 +256,15 @@ Native Transferable objects support two distinct modes: shared mode and transfer
            {"store", nullptr, CustomNativeObject::Store, nullptr, nullptr, nullptr, napi_default, nullptr},
            {"erase", nullptr, CustomNativeObject::Erase, nullptr, nullptr, nullptr, napi_default, nullptr},
            {"clear", nullptr, CustomNativeObject::Clear, nullptr, nullptr, nullptr, napi_default, nullptr},
-           {"setTransferDetached", nullptr, CustomNativeObject::SetTransferDetached, nullptr, nullptr, nullptr, napi_default, nullptr}};
+           {"setTransferDetached", nullptr, CustomNativeObject::SetTransferDetached,
+               nullptr, nullptr, nullptr, napi_default, nullptr}};
        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
        auto &object = CustomNativeObject::GetInstance();
        napi_wrap(env, exports, reinterpret_cast<void*>(&object), FinalizeCallback, nullptr, nullptr);
        napi_ref exportsRef;
        napi_create_reference(env, exports, 1, &exportsRef);
-       napi_coerce_to_native_binding_object(env, exports, DetachCallback, AttachCallback, reinterpret_cast<void*>(&object), exportsRef);
+       napi_coerce_to_native_binding_object(env, exports, DetachCallback,
+           AttachCallback, reinterpret_cast<void*>(&object), exportsRef);
        return exports;
    }
    EXTERN_C_END
@@ -281,10 +285,11 @@ Native Transferable objects support two distinct modes: shared mode and transfer
    }
    ```
 
-
 2. Declare the APIs in ArkTS.
 
-   ```ts
+   <!-- @[declare_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseTransferable/entry/src/main/cpp/types/libentry/Index.d.ts) -->    
+   
+   ``` TypeScript
    // Index.d.ts
    export const getAddress: () => number;
    export const getSetSize: () => number;
@@ -295,45 +300,48 @@ Native Transferable objects support two distinct modes: shared mode and transfer
    ```
 
 3. Call native functions from ArkTS objects.
-   
+
    In transfer mode, after cross-thread transfer, the original ArkTS object is unbound from the native object and can no longer access it. The following is an example:
-   ```ts
+   
+   <!-- @[load_trans](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseTransferable/entry/src/main/ets/pages/TransferableCase.ets) -->  
+   
+   ``` TypeScript
    import testNapi from 'libentry.so';
    import { taskpool } from '@kit.ArkTS';
    
    @Concurrent
    function getAddress() {
      let address: number = testNapi.getAddress();
-     console.info("taskpool:: address is " + address);
+     console.info('taskpool:: address is ' + address);
    }
    
    @Concurrent
    function store(a:number, b:number, c:number) {
      let size:number = testNapi.getSetSize();
-     console.info("set size is " + size + " before store");
+     console.info('set size is ' + size + ' before store');
      testNapi.store(a);
      testNapi.store(b);
      testNapi.store(c);
      size = testNapi.getSetSize();
-     console.info("set size is " + size + " after store");
+     console.info('set size is ' + size + ' after store');
    }
    
    @Concurrent
    function erase(a:number) {
      let size:number = testNapi.getSetSize();
-     console.info("set size is " + size + " before erase");
+     console.info('set size is ' + size + ' before erase');
      testNapi.erase(a);
      size = testNapi.getSetSize();
-     console.info("set size is " + size + " after erase");
+     console.info('set size is ' + size + ' after erase');
    }
    
    @Concurrent
    function clear() {
      let size:number = testNapi.getSetSize();
-     console.info("set size is " + size + " before clear");
+     console.info('set size is ' + size + ' before clear');
      testNapi.clear();
      size = testNapi.getSetSize();
-     console.info("set size is " + size + " after clear");
+     console.info('set size is ' + size + ' after clear');
    }
    
    // Transfer mode.
@@ -341,21 +349,21 @@ Native Transferable objects support two distinct modes: shared mode and transfer
      // Set setTransferDetached to true to enable the transfer mode.
      testNapi.setTransferDetached(true);
      let address:number = testNapi.getAddress();
-     console.info("host thread address is " + address);
+     console.info('host thread address is ' + address);
    
      let task1 = new taskpool.Task(getAddress, testNapi);
      await taskpool.execute(task1);
-     
+   
      let task2 = new taskpool.Task(store, 1, 2, 3);
      await taskpool.execute(task2);
    
      let task3 = new taskpool.Task(store, 4, 5, 6);
      await taskpool.execute(task3);
-
+   
      // In transfer mode, after testNapi is transferred across threads, the main thread can no longer access the value of the native object.
      let size:number = testNapi.getSetSize();
      // The output log is "host thread size is undefined".
-     console.info("host thread size is " + size);
+     console.info('host thread size is ' + size);
    
      let task4 = new taskpool.Task(erase, 3);
      await taskpool.execute(task4);
@@ -390,7 +398,10 @@ Native Transferable objects support two distinct modes: shared mode and transfer
    ```
 
    In shared mode, the original ArkTS object retains access to the native object after cross-thread transfer. The following is an example:
-   ```ts
+
+   <!-- @[load_share](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseTransferable/entry/src/main/ets/pages/ShareCase.ets) --> 
+   
+   ``` TypeScript
    // Index.ets
    import testNapi from 'libentry.so';
    import { taskpool } from '@kit.ArkTS';
@@ -398,42 +409,42 @@ Native Transferable objects support two distinct modes: shared mode and transfer
    @Concurrent
    function getAddress() {
      let address: number = testNapi.getAddress();
-     console.info("taskpool:: address is " + address);
+     console.info('taskpool:: address is ' + address);
    }
    
    @Concurrent
    function store(a:number, b:number, c:number) {
      let size:number = testNapi.getSetSize();
-     console.info("set size is " + size + " before store");
+     console.info('set size is ' + size + ' before store');
      testNapi.store(a);
      testNapi.store(b);
      testNapi.store(c);
      size = testNapi.getSetSize();
-     console.info("set size is " + size + " after store");
+     console.info('set size is ' + size + ' after store');
    }
    
    @Concurrent
    function erase(a:number) {
      let size:number = testNapi.getSetSize();
-     console.info("set size is " + size + " before erase");
+     console.info('set size is ' + size + ' before erase');
      testNapi.erase(a);
      size = testNapi.getSetSize();
-     console.info("set size is " + size + " after erase");
+     console.info('set size is ' + size + ' after erase');
    }
    
    @Concurrent
    function clear() {
      let size:number = testNapi.getSetSize();
-     console.info("set size is " + size + " before clear");
+     console.info('set size is ' + size + ' before clear');
      testNapi.clear();
      size = testNapi.getSetSize();
-     console.info("set size is " + size + " after clear");
+     console.info('set size is ' + size + ' after clear');
    }
    
    // Shared mode.
    async function test(): Promise<void> {
      let address:number = testNapi.getAddress();
-     console.info("host thread address is " + address);
+     console.info('host thread address is ' + address);
    
      let task1 = new taskpool.Task(getAddress, testNapi);
      await taskpool.execute(task1);
@@ -447,7 +458,7 @@ Native Transferable objects support two distinct modes: shared mode and transfer
      // In shared mode, after testNapi is transferred across threads, the main thread can continue to access the value of the native object.
      let size:number = testNapi.getSetSize();
      // The output log is "host thread size is 6".
-     console.info("host thread size is " + size);
+     console.info('host thread size is ' + size);
    
      let task4 = new taskpool.Task(erase, 3);
      await taskpool.execute(task4);

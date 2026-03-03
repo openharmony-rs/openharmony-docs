@@ -90,15 +90,15 @@ NavDestination not found.
 
 **Description**
 
-This error code is reported when no **NavDestination** component is found for the target page of navigation.
+This error code is reported when no **NavDestination** component is found for navigation.
 
 **Possible Causes**
 
-The **NavDestination** component is unavailable for the target page of navigation.
+No **NavDestination** component is available for navigation.
 
 **Solution**
 
-Make sure there is a **NavDestiantion** component for the target page of navigation.
+Make sure there is a **NavDestiantion** component for navigation.
 
 ## 106200 Invalid Index Value
 
@@ -180,7 +180,7 @@ hsp silent install fail.
 
 **Description**
 
-This error code is reported when the download of the HSP, which contains the target navigation page, fails before the navigation can occur.
+This error code is reported when the download of the HSP, which contains the target page, fails before **Navigation** performs the redirection.
 
 **Possible Causes**
 

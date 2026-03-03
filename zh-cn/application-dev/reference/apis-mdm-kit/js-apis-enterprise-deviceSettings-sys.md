@@ -338,7 +338,7 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
 | 名称         | 类型     | 只读 | 可选 | 说明                            |
 | ----------- | --------| ----- | ---- | ------------------------------- |
 | inData | Uint8Array | 否 | 否 |证书的二进制内容。 |
-| alias | string | 否 | 否 |证书别名。 |
+| alias | string | 否 | 否 |证书别名，别名长度小于40个字符。 |
 
 ## deviceSettings.uninstallUserCertificate
 

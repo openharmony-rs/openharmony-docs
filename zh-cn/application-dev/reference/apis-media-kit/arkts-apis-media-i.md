@@ -85,7 +85,7 @@ import { media } from '@kit.MediaKit';
 function printfItemDescription(obj: media.MediaDescription, key: string) {
   let property: Object = obj[key];
   console.info('audio key is ' + key); // 通过key值获取对应的value。key值具体可见MediaDescriptionKey。
-  console.info('audio value is ' + property); //对应key值得value。其类型可为任意类型，具体key对应value的类型可参考MediaDescriptionKey。
+  console.info('audio value is ' + property); // 对应key值得value。其类型可为任意类型，具体key对应value的类型可参考MediaDescriptionKey。
 }
 
 let avPlayer: media.AVPlayer | undefined = undefined;
@@ -96,7 +96,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
     avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
       if (arrList != null) {
         for (let i = 0; i < arrList.length; i++) {
-          printfItemDescription(arrList[i], media.MediaDescriptionKey.MD_KEY_TRACK_TYPE);  //打印出每条轨道MD_KEY_TRACK_TYPE的值。
+          printfItemDescription(arrList[i], media.MediaDescriptionKey.MD_KEY_TRACK_TYPE); // 打印出每条轨道MD_KEY_TRACK_TYPE的值。
         }
       } else {
         console.error(`Failed to get TrackDescription, error:${error}`);
@@ -147,7 +147,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | 名称             | 类型                                         | 只读 | 可选 | 说明                                                         |
 | ---------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | audioBitrate     | number                                       | 否   | 是   | 音频编码比特率，选择音频录制时必填。<br>支持范围：<br>- AAC编码格式支持比特率范围[32000, 500000]。<br>- G711-mulaw编码格式支持比特率大小：64000。<br>- MP3编码格式支持范围[8000, 16000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000]。<br>当使用MP3编码格式时，采样率和比特率的映射关系： <br>- 采样率使用16K以下时，对应比特率范围为[8000 - 64000]。<br>- 采样率使用16K~32K时对应的比特率范围为[8000, 160000]。<br>- 采样率使用32K以上时对应的比特率范围为[32000, 320000]。<br>- AMR_NB编码格式支持比特率范围[4750, 5150, 5900, 6700, 7400, 7950, 10200, 12200]。<br>- AMR_WB编码格式支持比特率范围[6600, 8850, 12650, 14250, 15850, 18250, 19850, 23050, 23850]。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
-| audioChannels    | number                                       | 否   | 是   | 音频采集声道数，选择音频录制时必填。<br>- AAC编码格式支持范围[1, 8]。<br>- G711-mulaw编码格式支持大小：1。<br>- MP3编码格式支持范围[1, 2]。<br>- AMR-NB和AMR-WB编码格式支持大小：1。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。       |
+| audioChannels    | number                                       | 否   | 是   | 音频采集声道数，选择音频录制时必填。<br>- AAC编码格式支持范围[1, 2]。<br>- G711-mulaw编码格式支持大小：1。<br>- MP3编码格式支持范围[1, 2]。<br>- AMR-NB和AMR-WB编码格式支持大小：1。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。       |
 | audioCodec       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | 否   | 是   | 音频编码格式，选择音频录制时必填。<br>当前支持AUDIO_AAC、AUDIO_MP3、AUDIO_G711MU、AUDIO_AMR_NB和AUDIO_AMR_WB。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。     |
 | aacProfile<sup>22+</sup>       | [AacProfile](arkts-apis-media-e.md#aacprofile22)             | 否   | 是   | 音频编码扩展格式，默认为AAC_LC格式。<br>当前支持类型：AAC_LC、AAC_HE和AAC_HE_V2。<br> **原子化服务API：** 从API version 22 开始，该接口支持在原子化服务中使用。     |
 | audioSampleRate  | number                                       | 否   | 是   | 音频采样率，选择音频录制时必填。<br>支持范围：<br>- AAC编码支持采样率范围[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000]。<br>- G711-mulaw编码支持采样率大小：8000。<br>- MP3编码支持采样率范围[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000]。<br>- AMR_NB编码支持采样率大小：8000。<br>- AMR_WB编码支持采样率大小：16000。<br>可变比特率模式，码率仅作参考。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
@@ -167,7 +167,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 
 |编码格式|封装格式|采样率|比特率|声道数|
 |----|----|----|----|----|
-|AUDIO_AAC|MP4,M4A|[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000]|[32000-500000]|[1-8]|
+|AUDIO_AAC|MP4,M4A|[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000]|[32000-500000]|[1-2]|
 |AUDIO_MP3|MP3|[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000]|<br>- 采样率使用16000以下时，对应比特率范围为[8000, 16000, 32000, 40000, 48000, 56000, 64000]。<br>- 采样率使用16000~32000时对应的比特率范围为[8000, 16000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000]。<br>- 采样率使用32000以上时对应的比特率范围为[32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000]。|[1-2]|
 |AUDIO_G711MU|WAV|[8000]|[64000]|[1]|
 |AUDIO_AMR_NB<sup>18+</sup> |AMR|[8000]|[4750, 5150, 5900, 6700, 7400, 7950, 10200, 12200]|[1]|
@@ -431,10 +431,10 @@ async function setupPlayer() {
 | 名称              | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ----------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | fd                | number                                                       | 否   | 否   | 录制输出的文件fd。                                           |
-| frameWidth        | number                                                       | 否   | 是   | 录屏的视频宽度，默认屏幕宽度，根据不同屏幕默认值不同，单位px。 |
-| frameHeight       | number                                                       | 否   | 是   | 录屏的视频高度，默认屏幕高度，根据不同屏幕默认值不同，单位px。 |
-| videoBitrate      | number                                                       | 否   | 是   | 录屏的视频比特率，默认10000000。                             |
-| audioSampleRate   | number                                                       | 否   | 是   | 录屏的音频采样率，内录的系统音和外录的麦克风都是用此采样率，默认48000，仅支持设置48000或16000。 |
+| frameWidth        | number                                                       | 否   | 是   | 录屏的视频宽度。<br>默认屏幕宽度，根据不同屏幕默认值不同，单位为像素（px）。 |
+| frameHeight       | number                                                       | 否   | 是   | 录屏的视频高度。<br>默认屏幕高度，根据不同屏幕默认值不同，单位为像素（px）。 |
+| videoBitrate      | number                                                       | 否   | 是   | 录屏的视频比特率。<br>，默认为10000000。                            |
+| audioSampleRate   | number                                                       | 否   | 是   | 录屏的音频采样率。<br>内录的系统音和外录的麦克风都是用此采样率，默认48000，仅支持设置48000或16000。 |
 | audioChannelCount | number                                                       | 否   | 是   | 录屏的音频通道数，内录的系统音和外录的麦克风都是用此通道数，默认2声道，仅支持设置1或2声道。 |
 | audioBitrate      | number                                                       | 否   | 是   | 录屏的音频比特率，内录的系统音和外录的麦克风都是用此比特率，默认96000。 |
 | preset            | [AVScreenCaptureRecordPreset](arkts-apis-media-e.md#avscreencapturerecordpreset12) | 否   | 是   | 录屏使用的编码和封装格式，默认SCREEN_RECORD_PRESET_H264_AAC_MP4格式。 |

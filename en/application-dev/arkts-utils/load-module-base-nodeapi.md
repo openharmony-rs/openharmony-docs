@@ -4,7 +4,7 @@
 <!--Owner: @yao_dashuai-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 Node-API provides multiple methods for you to load in-project modules and files on the C++ side. The **napi_load_module_with_info** API is recommended.
 

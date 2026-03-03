@@ -8,7 +8,7 @@
 
 通知Web组件同层事件消费结果，支持的事件：[触摸事件的类型](../apis-arkui/arkui-ts/ts-appendix-enums.md#touchtype)和[鼠标事件的类型](../apis-arkui/arkui-ts/ts-appendix-enums.md#mouseaction8)，鼠标仅支持[左中右按键](../apis-arkui/arkui-ts/ts-appendix-enums.md#mousebutton8)。
 
-如果应用不消费该事件，则应设置消费结果为false，事件将会被Web组件消费；反之如果应用消费了该事件，则应将消费结果设置为true，Web组件将不消费该事件。若应用设置消费结果不符合以上使用规格，可能将产生和开发者预期不匹配的现象。
+如果应用不消费该事件，则应设置消费结果为false，事件将会被Web组件消费；反之如果应用消费了该事件，则应将消费结果设置为true，Web组件将不消费该事件。若应用设置消费结果不符合以上使用规格，将产生和开发者预期不匹配的现象。
 
 触摸事件示例代码参考[onNativeEmbedGestureEvent事件](./arkts-basic-components-web-events.md#onnativeembedgestureevent11)。
 

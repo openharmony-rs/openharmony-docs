@@ -303,7 +303,7 @@ Describes the actual template widget information.
 
 ## TemplateFormDetailInfoCallback<sup>23+</sup>
 
-type TemplateFormDetailInfoCallback =  (info: Array\<TemplateFormDetailInfo>): void
+type TemplateFormDetailInfoCallback =  (info: Array\<TemplateFormDetailInfo>) => void
 
 Callback for the actual template widget information.
 
@@ -356,7 +356,7 @@ Describes the control information about cross-bundle widget addition.
 
 ## PublishFormCrossBundleControlCallback<sup>23+</sup>
 
-type PublishFormCrossBundleControlCallback = (info: PublishFormCrossBundleInfo): boolean
+type PublishFormCrossBundleControlCallback = (info: PublishFormCrossBundleInfo) => boolean
 
 Callback for cross-bundle widget addition control.
 

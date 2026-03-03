@@ -30,13 +30,13 @@ Declares APIs for discovering and connecting to printers, printing files, and qu
 | [Print_Property](capi-oh-print-print-property.md)            | Print_Property          | Defines a struct for the printer property.               |
 | [Print_PropertyList](capi-oh-print-print-propertylist.md)    | Print_PropertyList      | Defines a struct for the printer property list.               |
 | [Print_Resolution](capi-oh-print-print-resolution.md)        | Print_Resolution        | Defines a struct for the printing resolution in dpi.|
-| [Print_Margin](capi-oh-print-print-margin.md)                | Print_Margin            | Defines a struct for the print margin.                 |
+| [Print_Margin](capi-oh-print-print-margin.md)                | Print_Margin            | Defines a struct for the page margin to print.                 |
 | [Print_PageSize](capi-oh-print-print-pagesize.md)            | Print_PageSize          | Defines a struct for the page size.             |
 | [Print_PrinterCapability](capi-oh-print-print-printercapability.md) | Print_PrinterCapability | Defines a struct for the printer capabilities.               |
 | [Print_DefaultValue](capi-oh-print-print-defaultvalue.md)    | Print_DefaultValue      | Defines a struct for the default property value.                 |
 | [Print_PrinterInfo](capi-oh-print-print-printerinfo.md)      | Print_PrinterInfo       | Defines a struct for the printer information.               |
 | [Print_PrintJob](capi-oh-print-print-printjob.md)            | Print_PrintJob          | Defines a struct for the print job.           |
-| [Print_Range](capi-oh-print-print-range.md)                  | Print_Range             | Defines a struct for the print range.           |
+| [Print_Range](capi-oh-print-print-range.md)                  | Print_Range             | Defines a struct for the page range to print.           |
 | [Print_PrintAttributes](capi-oh-print-print-printattributes.md) | Print_PrintAttributes   | Defines a struct for the print attributes.           |
 | [Print_PrintDocCallback](capi-oh-print-print-printdoccallback.md) | Print_PrintDocCallback  | Defines a struct for the print job status callback.   |
 
@@ -302,7 +302,7 @@ Defines a callback used to return the file write-back result.
 
 | Name             | Description           |
 | ------------------- | --------------- |
-| (const char \*jobId | Pointer to the print job ID.|
+| const char \*jobId | Pointer to the print job ID.|
 | uint32_t code       | File write-back result. |
 
 ### Print_OnStartLayoutWrite()
@@ -321,7 +321,7 @@ Defines a callback to be invoked when the file write-back starts.
 
 | Name                                                      | Description                |
 | ------------------------------------------------------------ | -------------------- |
-| (const char \*jobId                                          | Pointer to the print job ID.     |
+| const char \*jobId                                          | Pointer to the print job ID.     |
 | uint32_t fd                                                  | File descriptor to write.|
 | [const Print_PrintAttributes](capi-oh-print-print-printattributes.md) \*oldAttrs | Pointer to the old attribute.      |
 | [const Print_PrintAttributes](capi-oh-print-print-printattributes.md) \*newAttrs | Pointer to the new attribute.        |
@@ -343,7 +343,7 @@ Defines a callback to be invoked when the print job state changes.
 
 | Name             | Description                |
 | ------------------- | -------------------- |
-| (const char \*jobId | Pointer to the print job ID.     |
+| const char \*jobId | Pointer to the print job ID.     |
 | uint32_t state      | Print job state.|
 
 ### Print_PrinterDiscoveryCallback()
@@ -362,7 +362,7 @@ Defines a callback used to return the discovered printers.
 
 | Name                                                      | Description                        |
 | ------------------------------------------------------------ | ---------------------------- |
-| (Print_DiscoveryEvent event                                  | Printer discovery event.|
+| Print_DiscoveryEvent event                                  | Printer discovery event.|
 | [const Print_PrinterInfo](capi-oh-print-print-printerinfo.md) \*printerInfo | Printer information when the discovery event occurs.|
 
 ### Print_PrinterChangeCallback()
@@ -381,7 +381,7 @@ Defines a callback to be invoked when a printer is changed.
 
 | Name                                                      | Description                              |
 | ------------------------------------------------------------ | ---------------------------------- |
-| (Print_PrinterEvent event                                    | Printer change event during the running of the print service.|
+| Print_PrinterEvent event                                    | Printer change event during the running of the print service.|
 | [const Print_PrinterInfo](capi-oh-print-print-printerinfo.md) \*printerInfo | Printer information when the change event occurs.      |
 
 ### OH_Print_Init()
@@ -502,7 +502,7 @@ Connects to a printer by the printer ID.
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [Print_ErrorCode](capi-ohprint-h.md#print_errorcode) | [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode): Operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](capi-ohprint-h.md#print_errorcode): The ohos.permission.PRINT permission is required.<br>         [PRINT_ERROR_RPC_FAILURE](capi-ohprint-h.md#print_errorcode): Failed to connect to the print service.<br>         [PRINT_ERROR_INVALID_PRINTER](capi-ohprint-h.md#print_errorcode): Printer does not exist in the list of discovered printers.<br>         [PRINT_ERROR_SERVER_FAILURE](capi-ohprint-h.md#print_errorcode):Failed to find the printer extension.|
+| [Print_ErrorCode](capi-ohprint-h.md#print_errorcode) | [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode): Operation is successful.<br>         [PRINT_ERROR_NO_PERMISSION](capi-ohprint-h.md#print_errorcode): The ohos.permission.PRINT permission is required.<br>         [PRINT_ERROR_RPC_FAILURE](capi-ohprint-h.md#print_errorcode): Failed to connect to the print service.<br>         [PRINT_ERROR_INVALID_PRINTER](capi-ohprint-h.md#print_errorcode): Printer does not exist in the list of discovered printers.<br>         [PRINT_ERROR_SERVER_FAILURE](capi-ohprint-h.md#print_errorcode): Failed to find the printer extension.|
 
 ### OH_Print_StartPrintJob()
 

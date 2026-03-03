@@ -769,7 +769,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 
 > **说明：** 
 >
-> 单次批量传输的传输数据总量（包括pipe、endpoint、buffer、timeout）请控制在200KB以下。
+> 单次批量传输的传输数据总量（包括pipe、endpoint、buffer、timeout）请控制在200KB以下，数据总量过大会导致传输失败返回-1。
 >
 > 在调用接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)claim通信接口。
 

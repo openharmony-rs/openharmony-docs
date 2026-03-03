@@ -118,8 +118,8 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
 
   2.应用资源目录通过[Context.resourceDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context)获取，其子目录示例如下：
 
-  * /data/storage/el1/bundle/entry/resource/resfile
-  * /data/storage/el1/bundle/entry/resource/resfile/example
+  * /data/storage/el1/bundle/entry/resources/resfile
+  * /data/storage/el1/bundle/entry/resources/resfile/example
 
   3.从API version 21开始，还包括了应用缓存目录通过[Context.cacheDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context)获取，其子目录示例如下：
 

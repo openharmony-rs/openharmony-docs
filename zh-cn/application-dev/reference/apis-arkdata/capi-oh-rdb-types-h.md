@@ -40,7 +40,7 @@
 | -- | -- |
 | [OH_RDB_ReturningContext *OH_RDB_CreateReturningContext(void)](#oh_rdb_createreturningcontext) | 创建[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)的实例对象。 |
 | [void OH_RDB_DestroyReturningContext(OH_RDB_ReturningContext *context)](#oh_rdb_destroyreturningcontext) | 销毁[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例对象。 |
-| [int OH_RDB_SetReturningFields(OH_RDB_ReturningContext *context, const char *const fields[], int32_t len)](#oh_rdb_setreturningfields) | 设置結果集中返回的字段。 |
+| [int OH_RDB_SetReturningFields(OH_RDB_ReturningContext *context, const char *const fields[], int32_t len)](#oh_rdb_setreturningfields) | 设置结果集中返回的字段。 |
 | [int OH_RDB_SetMaxReturningCount(OH_RDB_ReturningContext *context, int32_t count)](#oh_rdb_setmaxreturningcount) | 设置返回结果集的最大行数量。 |
 | [OH_Cursor *OH_RDB_GetReturningValues(OH_RDB_ReturningContext *context)](#oh_rdb_getreturningvalues) | 获取数据变化的游标，默认包含1024条。 |
 | [int64_t OH_RDB_GetChangedCount(OH_RDB_ReturningContext *context)](#oh_rdb_getchangedcount) | 获取受此操作影响的数据行的数量。 |
@@ -114,7 +114,7 @@ int OH_RDB_SetReturningFields(OH_RDB_ReturningContext *context, const char *cons
 
 **描述**
 
-设置結果集中返回的字段。
+设置结果集中返回的字段。
 
 **起始版本：** 23
 

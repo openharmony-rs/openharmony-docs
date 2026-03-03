@@ -19,8 +19,8 @@
       - [密钥导入介绍及算法规格](huks-key-import-overview.md)
       - [明文导入密钥(ArkTS)](huks-import-key-in-plaintext-arkts.md)
       - [明文导入密钥(C/C++)](huks-import-key-in-plaintext-ndk.md)
-      - [加密导入密钥(ArkTS)](huks-import-wrapped-key-arkts.md)
-      - [加密导入密钥(C/C++)](huks-import-wrapped-key-ndk.md)
+      - [安全导入密钥(ArkTS)](huks-import-wrapped-key-arkts.md)
+      - [安全导入密钥(C/C++)](huks-import-wrapped-key-ndk.md)
       - [数字信封导入密钥(ArkTS)](huks-import-envelop-key-arkts.md)
       - [数字信封导入密钥(C/C++)](huks-import-envelop-key-ndk.md)
   - 密钥使用<!--huks-key-use-->
@@ -104,6 +104,7 @@
     - [通用查询介绍及规格](huks-ukey-general-query-overview.md)
     - [通用查询(ArkTS)](huks-ukey-general-query-arkts.md)
     - [通用查询(C/C++)](huks-ukey-general-query-ndk.md)
+  - [Ukey流程示例指导](huks-ukey-best-dev.md)
   - 驱动HAP ExtensionAbility适配指导<!--huks-extension-ability-support-->
     - [CryptoExtensionAbility扩展能力介绍](huks-extension-ability-support-overview.md)
     - [CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)<!--RP4--><!--RP4End-->

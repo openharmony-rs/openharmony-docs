@@ -46,7 +46,6 @@
     - [NativeWindow](capi-codecbase-nativewindow.md)
     - [OH_AVCodec](capi-codecbase-oh-avcodec.md)
     - [OH_AVBuffer](capi-core-oh-avbuffer.md)
-    - [OH_NativeBuffer](capi-core-oh-nativebuffer.md)
     - [OH_AVCodecBufferAttr](capi-core-oh-avcodecbufferattr.md)
     - [OH_AVFormat](capi-core-oh-avformat.md)
     - [OH_AVMemory](capi-core-oh-avmemory.md)

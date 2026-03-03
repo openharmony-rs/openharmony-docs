@@ -162,3 +162,4 @@ try {
 } catch (exception) {
   console.error(`Failed to save screenshot. Code: ${exception.code}, message: ${exception.message}`);
 };
+```

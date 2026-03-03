@@ -360,7 +360,7 @@ from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?:
 | -------- | -------- | -------- | -------- |
 | arrayBuffer | ArrayBuffer&nbsp;\|&nbsp;SharedArrayBuffer | 是 | 实例对象。 |
 | byteOffset | number | 否 | 字节偏移量，默认值：0。 |
-| length | number | 否 | 字节长度， 默认值:（arrayBuffer.byteLength - byteOffset）。 |
+| length | number | 否 | 字节长度， 默认值:（arrayBuffer.byteLength - byteOffset）。在传入null时字节长度为0。 |
 
 **返回值：**
 
@@ -818,7 +818,7 @@ while (!next.done) {
            buffer: 3,102
            buffer: 4,101
            buffer: 5,114
-  */
+   */
   next = pair.next();
 }
 ```
@@ -1034,7 +1034,7 @@ for (const key of keys) {
         3
         4
         5
-*/
+ */
 ```
 
 ### lastIndexOf
@@ -2117,7 +2117,7 @@ subarray(start?: number, end?: number): Buffer
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | start | number | 否 | 截取开始位置。默认值：0。 |
-| end | number | 否 |  截取结束位置（不包含结束位置）。默认值：当前对象的字节长度。 |
+| end | number | 否 |  截取结束位置（不包含结束位置）。默认值：当前对象的字节长度。在传入null时返回空Buffer。 |
 
 **返回值：**
 
@@ -2360,7 +2360,7 @@ while (!next.done) {
            102
            101
            114
-  */
+   */
   next = pair.next();
 }
 ```

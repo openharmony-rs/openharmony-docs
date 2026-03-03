@@ -909,7 +909,7 @@ Receives custom data sent by the input method application.
 
 > **NOTE**
 >
-> - This callback is triggered when the registered MeesageHandler receives custom communication data sent by the input method application.
+> - This callback is triggered when the registered MessageHandler receives custom communication data sent by the input method application.
 >
 > - The **msgId** parameter is mandatory, and the **msgParam** parameter is optional. If only the custom **msgId** data is received, confirm it with the data sender.
 

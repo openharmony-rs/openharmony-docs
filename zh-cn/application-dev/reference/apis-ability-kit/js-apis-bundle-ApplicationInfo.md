@@ -14,7 +14,7 @@
 > 
 > 从API version 9开始，该模块不再维护，建议使用[bundleManager-ApplicationInfo](js-apis-bundleManager-applicationInfo.md)替代。
 
-## ApplicationInfo<sup>(deprecated)<sup>
+## ApplicationInfo<sup>(deprecated)</sup>
 
 > **说明：**
 >

@@ -8,7 +8,7 @@
 
 ## JSVM调用结构
 
-小程序使用JSVM执行JS代码的过程大概可以分为 Native，JSVM-API，JSVM 三层：
+小程序使用JSVM执行JS代码的过程可以分为 Native，JSVM-API，JSVM 三层：
 
 - Native：小程序运行JS的逻辑层，使用JSVM提供的接口完成JS代码编译，运行，code cache生成等操作的逻辑排布和组合
 - JSVM-API：连接native和v8的接口兼容层，保持对不同版本JS引擎的兼容，提供JS引擎标准化的使用实践

@@ -17,7 +17,7 @@ The **transient_task_type.h** file declares the error codes and structs of a tra
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
-**Since**: 13
+**Since**: 11
 
 **Related module**: [TransientTask](capi-transienttask.md)
 
@@ -29,6 +29,12 @@ The **transient_task_type.h** file declares the error codes and structs of a tra
 |------------------------------------------------------------------------------------------| -- | -- |
 | [TransientTask_DelaySuspendInfo](capi-transienttask-transienttask-delaysuspendinfo.md)   | TransientTask_DelaySuspendInfo | A struct that describes the returned information about a transient task.|
 | [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md) | TransientTask_TransientTaskInfo | A struct that describes all transient task information.|
+
+### Macros
+
+| Name| Description|
+| -------- | -------- |
+| TRANSIENT_TASK_MAX_NUM 3| Defines the maximum number of transient tasks at the same time.<br>**Since**: 20 |
 
 ### Enums
 

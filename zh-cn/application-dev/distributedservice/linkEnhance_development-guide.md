@@ -62,7 +62,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 | start()                                    | 服务端开启服务。                                                                                         |   
 | stop()                                     | 服务端停止服务。                                                                                           |
 | close()                                    | 销毁Server对象，注销已注册的服务并取消已订阅的所有事件，调用该接口后Server对象将不能再使用。                    |
-| on(type: 'acceptConnected')                | Server端订阅收到对端连接的事件。                                                                           |
+| on(type: 'connectionAccepted')                | Server端订阅收到对端连接的事件。                                                                           |
 | on(type: 'serverStopped')                  | Server端订阅服务状态停止的事件。                                                                           |
 | createServer(name: string)                 | 创建一个server对象。                                                                                      |
 

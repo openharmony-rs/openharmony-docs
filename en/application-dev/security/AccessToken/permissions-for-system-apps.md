@@ -5510,6 +5510,34 @@ Allows an application to add the WiseCard of other applications.
 
 **Since**: 23
 
+## ohos.permission.MANAGE_LOCAL_EDUCATION_SPACES
+
+Allows a system application to manage the education space.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: tablets
+
+**Since**: 23
+
+## ohos.permission.QUERY_LOCAL_EDUCATION_SPACES
+
+Allows a system application to query the education space properties.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: tablets
+
+**Since**: 23
+
 ## ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
 
 Allows an application to acquire the local account authorization.
@@ -5523,5 +5551,33 @@ With this permission, the application can call the API to acquire the local acco
 **Enable via ACL**: true
 
 **Supported devices**: PC/2in1
+
+**Since**: 24
+
+## ohos.permission.GET_AGENT_CARD
+
+Allows a system application to obtain AgentCard information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: General
+
+**Since**: 24
+
+## ohos.permission.CONNECT_AGENT
+
+Allows a system application to connect to the Agent.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: General
 
 **Since**: 24

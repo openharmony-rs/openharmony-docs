@@ -21,6 +21,16 @@ MediaAlbumChangeRequest provides APIs for managing the media album change reques
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ```
 
+## Attributes
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name          | Type   | Read-Only  | Optional | Description  |
+| ------------ | ------ | ---- | ---- | ------- |
+| comment<sup>23+</sup>    | string | Yes   | No  | Used to verify the [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11) type.<br>If a class (such as **MediaAlbumChangeRequest**) object can be accessed, it is an implementation class of **MediaChangeRequest**.|
+
 ## constructor<sup>11+</sup>
 
 constructor(album: Album)

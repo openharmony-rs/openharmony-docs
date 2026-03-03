@@ -5499,6 +5499,34 @@
 
 **起始版本**：23
 
+## ohos.permission.MANAGE_LOCAL_EDUCATION_SPACES
+
+允许应用管理系统本地教育空间账号。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Tablet
+
+**起始版本**：23
+
+## ohos.permission.QUERY_LOCAL_EDUCATION_SPACES
+
+允许应用查询系统本地教育空间账号属性。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Tablet
+
+**起始版本**：23
+
 ## ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
 
 允许应用获取本地账号授权。
@@ -5512,5 +5540,33 @@
 **ACL使能**：true
 
 **支持设备**：PC/2in1
+
+**起始版本**：24
+
+## ohos.permission.GET_AGENT_CARD
+
+允许系统应用获取AgentCard信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：24
+
+## ohos.permission.CONNECT_AGENT
+
+允许系统应用连接智能体。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
 
 **起始版本**：24

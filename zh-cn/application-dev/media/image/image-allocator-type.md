@@ -8,7 +8,7 @@
 
 应用在进行图片解码操作时，需要申请对应内存。当前指导将介绍不同的内存类型，以及如何进行申请。
 
-应用侧通过解码API接口获取PixelMap，并将其传递给Image组件以进行显示。
+应用侧通过解码API接口获取PixelMap，并将其传递给[Image组件](../../../application-dev/reference/apis-arkui/arkui-js/js-components-basic-image.md)以进行显示。
 
 当PixelMap较大且使用共享内存时，RS主线程将经历较长的纹理上传时间，导致卡顿现象。图形侧提供了DMA内存零拷贝功能，可在绘制图片时避免纹理上传时间消耗。
 

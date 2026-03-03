@@ -29,7 +29,7 @@ Declares the APIs of **NativeDrag**.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) | ArkUI_NodeEvent | Defines a struct for a component event.|
-| [ArkUI_Context](capi-arkui-nativemodule-arkui-context.md) | ArkUI_Context | Defines a struct for a UI context object.|
+| [ArkUI_Context](capi-arkui-nativemodule-arkui-context.md) | ArkUI_Context | Defines a struct for a native UI context object.|
 | [ArkUI_Context*](capi-arkui-nativemodule-arkui-context8h.md) | ArkUI_ContextHandle | Defines the handle to the native UI context.|
 | [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md) | ArkUI_DragEvent | Defines a struct for a drag event.|
 | [ArkUI_DragPreviewOption](capi-arkui-nativemodule-arkui-dragpreviewoption.md) | ArkUI_DragPreviewOption | Defines a struct for custom drag preview options.|
@@ -111,6 +111,8 @@ Declares the APIs of **NativeDrag**.
 | [int32_t OH_ArkUI_StartDrag(ArkUI_DragAction* dragAction)](#oh_arkui_startdrag) | Initiates a drag action through the specified **DragAction** object.|
 | [int32_t OH_ArkUI_DragEvent_RequestDragEndPending(ArkUI_DragEvent* event, int32_t* requestIdentify)](#oh_arkui_dragevent_requestdragendpending) | Requests deferred processing of the drag end event, allowing the application to asynchronously confirm the operation result. The application must pass the final result back to the system via the [OH_ArkUI_NotifyDragResult](capi-drag-and-drop-h.md#oh_arkui_notifydragresult) API, and call [OH_ArkUI_NotifyDragEndPendingDone](capi-drag-and-drop-h.md#oh_arkui_notifydragendpendingdone) after all processing is completed. The maximum waiting time is 2 seconds.|
 | [int32_t OH_ArkUI_NotifyDragResult(int32_t requestIdentify, ArkUI_DragResult result)](#oh_arkui_notifydragresult) | Notifies the system of the final drag result. The system will verify whether the request identifier matches that returned by [OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending). If they do not match, this call will be ignored.|
+| [int32_t OH_ArkUI_NotifySuggestedDropOperation(int32_t requestIdentity, ArkUI_DropOperation operation)](#oh_arkui_notifysuggesteddropoperation) | Notifies the drag initiator of the operation type of the current drop. The drag process consists of starting drag, dragging, and dropping. The drag initiator can call [OH_ArkUI_DragEvent_GetDropOperation](#oh_arkui_dragevent_getdropoperation) in the drag end callback to obtain the operation type of the current drop and perform custom processing. The drag initiator can also ignore the notification. The system will verify whether the value of **requestIdentity** is the same as that returned by [OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending). If they are different, this API call does not take effect.|
+| [int32_t OH_ArkUI_NotifyDisableDefaultDropAnimation(int32_t requestIdentity, bool disable)](#oh_arkui_notifydisabledefaultdropanimation) | Notifies the system whether to disable the default drop animation. If the drag fails, the default drop animation is diffusion. If the drag succeeds, the default drop animation is shrinking and fading. Calling this API can disable the default animation and implement a custom drop animation as required. The system will verify whether the value of **requestIdentity** is the same as that returned by [OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending). If they are different, this API call does not take effect.|
 | [int32_t OH_ArkUI_NotifyDragEndPendingDone(int32_t requestIdentify)](#oh_arkui_notifydragendpendingdone) | Notifies the system that all asynchronous processing has been completed and the drag end pending state can be terminated.|
 | [ArkUI_ErrorCode OH_ArkUI_EnableDropDisallowedBadge(ArkUI_ContextHandle uiContext, bool enabled)](#oh_arkui_enabledropdisallowedbadge) | Sets whether the drop-disallowed badge can be displayed.|
 | [float OH_ArkUI_DragEvent_GetTouchPointXToGlobalDisplay(ArkUI_DragEvent* event)](#oh_arkui_dragevent_gettouchpointxtoglobaldisplay) | Obtains the x-coordinate of the drag touch point relative to the global display from the specified **ArkUI_DragEvent** object.|
@@ -1475,7 +1477,7 @@ Sets the drag previews for a drag action. Only pixel map objects are supported.
 | Name                                                                                 | Description|
 |--------------------------------------------------------------------------------------| -- |
 | [ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md)* dragAction          | Pointer to the target drag action object.|
-| OH_PixelmapNative* pixelmapArray[] | Array of the drag previews to set, which must be pixel maps.|
+| OH_PixelmapNative* pixelmapArray[] | Array of the drag previews to set, which must be pixel maps.<br>Note: This parameter must be an object allocated on the heap. You need to manually manage the lifecycle of the object.|
 | int32_t size                                                                         | Number of drag previews.|
 
 **Return value**
@@ -1797,7 +1799,7 @@ Requests deferred processing of the drag end event, allowing the application to 
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-native-type-h.md#arkui_errorcode) if the API is not called during the drop phase.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-native-type-h.md#arkui_errorcode) if the operation is not allowed at the current stage.|
 
 ### OH_ArkUI_NotifyDragResult()
 
@@ -1824,7 +1826,61 @@ Notifies the system of the final drag result. The system will verify whether the
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-native-type-h.md#arkui_errorcode) if the API is not called during the drop phase.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-native-type-h.md#arkui_errorcode) if the operation is not allowed at the current stage.|
+
+### OH_ArkUI_NotifySuggestedDropOperation()
+
+```c
+int32_t OH_ArkUI_NotifySuggestedDropOperation(int32_t requestIdentity, ArkUI_DropOperation operation)
+```
+
+**Description**
+
+
+Notifies the drag initiator of the operation type of the current drop. The drag initiator can call [OH_ArkUI_DragEvent_GetDropOperation](#oh_arkui_dragevent_getdropoperation) in the drag end callback to obtain the operation type of the current drop and perform custom processing. The drag initiator can also ignore the notification. The system will verify whether the value of **requestIdentity** is the same as that returned by [OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending). If they are different, this API call does not take effect.
+
+**Since**: 24
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| int32_t requestIdentify | Identifier returned by [OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending), which is used to identify the drag event.|
+| [ArkUI_DropOperation](capi-drag-and-drop-h.md#arkui_dropoperation) operation | Operation type of the current drop.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-native-type-h.md#arkui_errorcode) if the API is not called in the drop phase.|
+
+### OH_ArkUI_NotifyDisableDefaultDropAnimation()
+
+```c
+int32_t OH_ArkUI_NotifyDisableDefaultDropAnimation(int32_t requestIdentity, bool disable)
+```
+
+**Description**
+
+
+Notifies the system whether to disable the default drop animation. If the drag fails, the default drop animation is diffusion. If the drag succeeds, the default drop animation is shrinking and fading. Calling this API can disable the default animation and implement a custom drop animation as required. The system will verify whether the value of **requestIdentity** is the same as that returned by [OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending). If they are different, this API call does not take effect.
+
+**Since**: 24
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| int32_t requestIdentify | Identifier returned by [OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending), which is used to identify the drag event.|
+| bool disable | Whether to disable the default drop animation. **true** if disable; **false** otherwise.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-native-type-h.md#arkui_errorcode) if the API is not called in the drop phase.|
 
 ### OH_ArkUI_NotifyDragEndPendingDone()
 
@@ -1850,7 +1906,7 @@ Notifies the system that all asynchronous processing has been completed and the 
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-native-type-h.md#arkui_errorcode) if the API is not called during the drop phase.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-native-type-h.md#arkui_errorcode) if the operation is not allowed at the current stage.|
 
 ### OH_ArkUI_EnableDropDisallowedBadge()
 

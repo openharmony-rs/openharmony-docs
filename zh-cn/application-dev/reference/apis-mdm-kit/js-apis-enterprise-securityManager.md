@@ -330,7 +330,7 @@ try {
 
 setPasswordPolicy(admin: Want, policy: PasswordPolicy): void
 
-设置设备口令策略。
+设置设备锁屏口令策略。当用户设置锁屏口令时，如果设置的锁屏口令不符合要求，会有安全提示重新设置锁屏口令。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -345,7 +345,7 @@ setPasswordPolicy(admin: Want, policy: PasswordPolicy): void
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
-| policy | [PasswordPolicy](#passwordpolicy) | 是 | 设备口令策略。 |
+| policy | [PasswordPolicy](#passwordpolicy) | 是 | 设备锁屏口令策略。 |
 
 **错误码**：
 
@@ -387,7 +387,7 @@ try {
 
 getPasswordPolicy(admin: Want): PasswordPolicy
 
-获取设备口令策略。
+获取设备锁屏口令策略。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -405,7 +405,7 @@ getPasswordPolicy(admin: Want): PasswordPolicy
 
 | 类型                   | 说明                      |
 | --------------------- | ------------------------- |
-| [PasswordPolicy](#passwordpolicy) | 设备口令策略。 |
+| [PasswordPolicy](#passwordpolicy) | 设备锁屏口令策略。 |
 
 **错误码**：
 
@@ -1021,70 +1021,6 @@ try {
 }
 ```
 
-## CertBlob
-
-证书信息。
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-| 名称   | 类型       | 只读 | 可选 | 说明               |
-| ------ | ---------- | ---- | ---- | ------------------ |
-| inData | Uint8Array | 否   | 否 |证书的二进制内容。 |
-| alias  | string     | 否   | 否 |证书别名。         |
-
-## PasswordPolicy
-
-设备口令策略。
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-| 名称         | 类型     | 只读 | 可选 | 说明                            |
-| ----------- | --------| ---- | ---- | --------------------------- |
-| complexityRegex | string | 否 | 是 | 口令复杂度正则表达式。 |
-| validityPeriod | number | 否 | 是 | 密码有效期（单位：毫秒）。 |
-| additionalDescription | string | 否 | 是 | 描述文本。 |
-
-## ClipboardPolicy
-
-设备剪贴板策略。
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-| 名称         | 值 | 说明                            |
-| ----------- | -------- | ------------------------------- |
-| DEFAULT | 0  | 默认，表示无策略。 |
-| IN_APP | 1  | 剪贴板可在同一应用使用。 |
-| LOCAL_DEVICE | 2  | 剪贴板可在同一设备使用。 |
-| CROSS_DEVICE | 3  | 剪贴板可跨设备使用。 |
-
-## ApplicationInstance<sup>20+</sup>
-
-应用实例。
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-| 名称         | 类型     | 只读 | 可选 | 说明                            |
-| ----------- | --------| ---- | ---- | --------------------------- |
-| appIdentifier | string | 否 | 否 | 应用[唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)，如果应用没有appIdentifier可使用appId代替，可以通过接口[bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2)获取bundleInfo.signatureInfo.appIdentifier和bundleInfo.signatureInfo.appId。|
-| accountId  | number     | 否 | 否 | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。         |
-| appIndex  | number     | 否 | 否 | 表示分身应用的索引，默认值为0。<br> appIndex为0时，表示主应用。appIndex大于0时，表示指定的分身应用。        |
-
-## PermissionManagedState<sup>20+</sup>
-
-应用权限的管理状态。
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-| 名称         | 值 | 说明                            |
-| ----------- | -------- | ------------------------------- |
-| DEFAULT | 1  | 默认由用户授予。 |
-| GRANTED | 0  | 已静默授予。 |
-| DENIED | -1  | 已静默拒绝。 |
-
 ## securityManager.installEnterpriseReSignatureCertificate<sup>24+</sup>
 
 installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, fd: number, accountId: number): void
@@ -1217,3 +1153,67 @@ try {
     Code: ${err.code}, message: ${err.message}`);
 };
 ```
+
+## CertBlob
+
+证书信息。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称   | 类型       | 只读 | 可选 | 说明               |
+| ------ | ---------- | ---- | ---- | ------------------ |
+| inData | Uint8Array | 否   | 否 |证书的二进制内容。 |
+| alias  | string     | 否   | 否 |证书别名，别名长度小于40个字符。         |
+
+## PasswordPolicy
+
+设备锁屏口令策略。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称         | 类型     | 只读 | 可选 | 说明                            |
+| ----------- | --------| ---- | ---- | --------------------------- |
+| complexityRegex | string | 否 | 是 | 口令复杂度正则表达式。 |
+| validityPeriod | number | 否 | 是 | 密码有效期（单位：毫秒）。 |
+| additionalDescription | string | 否 | 是 | 口令复杂度描述文本，例如：密码中必须包含字母、数字、特殊字符，至少8个字符，最多30个字符。 |
+
+## ClipboardPolicy
+
+设备剪贴板策略。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称         | 值 | 说明                            |
+| ----------- | -------- | ------------------------------- |
+| DEFAULT | 0  | 默认，表示无策略。 |
+| IN_APP | 1  | 剪贴板可在同一应用使用。 |
+| LOCAL_DEVICE | 2  | 剪贴板可在同一设备使用。 |
+| CROSS_DEVICE | 3  | 剪贴板可跨设备使用。 |
+
+## ApplicationInstance<sup>20+</sup>
+
+应用实例。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 类型     | 只读 | 可选 | 说明                            |
+| ----------- | --------| ---- | ---- | --------------------------- |
+| appIdentifier | string | 否 | 否 | 应用[唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)，如果应用没有appIdentifier可使用appId代替，可以通过接口[bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2)获取bundleInfo.signatureInfo.appIdentifier和bundleInfo.signatureInfo.appId。|
+| accountId  | number     | 否 | 否 | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。         |
+| appIndex  | number     | 否 | 否 | 表示分身应用的索引，默认值为0。<br> appIndex为0时，表示主应用。appIndex大于0时，表示指定的分身应用。        |
+
+## PermissionManagedState<sup>20+</sup>
+
+应用权限的管理状态。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 值 | 说明                            |
+| ----------- | -------- | ------------------------------- |
+| DEFAULT | 1  | 默认由用户授予。 |
+| GRANTED | 0  | 已静默授予。 |
+| DENIED | -1  | 已静默拒绝。 |

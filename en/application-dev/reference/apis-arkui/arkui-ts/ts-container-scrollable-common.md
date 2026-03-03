@@ -759,8 +759,8 @@ Sets attributes of the **List** or **Grid** component in edit mode.
 
 | Name          | Type                                                        | Read-Only| Optional| Description                                                        |
 | ---------------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
-| enableGatherSelectedItemsAnimation | boolean | No  | Yes| Whether to enable the multi-selection animation. If this parameter is set to true, the collapse animation is enabled. If this parameter is set to false, the collapse animation is disabled.<br>The multi-selection collapse animation is displayed only when [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8) is set on GridItem or ListItem, responseType is set to [ResponseType](ts-appendix-enums.md#responsetype8).LongPress, and [preview](ts-universal-attributes-menu.md#contextmenuoptions10) is set to MenuPreviewMode.IMAGE or CustomBuilder.<br>If [Drag Event](ts-universal-events-drag-drop.md) is set on GridItem or ListItem, whether to enable the collapse animation is subject to the [dragPreviewOptions](ts-universal-attributes-drag-drop.md#dragpreviewoptions11) setting.<br>Default value: **false**.|
-| onGetPreviewBadge | [OnGetPreviewBadgeCallback](#ongetpreviewbadgecallback23) | No  | Yes| Callback triggered to obtain the number of selected items when the multi-select long-press clustering animation is about to start.<br>By default, the number of selected items displayed in the grid or list is used as the badge number of the menu preview image after the multi-select long-press clustering animation is performed.|
+| enableGatherSelectedItemsAnimation | boolean | No  | Yes| Whether to enable the multi-selection gather animation. If this parameter is set to **true**, the gather animation is enabled. If this parameter is set to **false**, the gather animation is disabled.<br>The multi-selection gather animation is displayed only when [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8) is set on **GridItem** or **ListItem**, **responseType** is set to [ResponseType](ts-appendix-enums.md#responsetype8).LongPress, and [preview](ts-universal-attributes-menu.md#contextmenuoptions10) is set to **MenuPreviewMode.IMAGE** or **CustomBuilder**.<br>If [drag events](ts-universal-events-drag-drop.md) are set on **GridItem** or **ListItem**, whether to enable the gather animation is subject to the [dragPreviewOptions](ts-universal-attributes-drag-drop.md#dragpreviewoptions11) setting.<br>Default value: **false**.|
+| onGetPreviewBadge | [OnGetPreviewBadgeCallback](#ongetpreviewbadgecallback23) | No  | Yes| Callback triggered to obtain the number of selected items when the animation for gathering selected items upon long press is about to start.<br>If this parameter is omitted, the number of selected items within the display range of the **Grid** or **List** component is used as the badge for the menu preview image shown after the animation for gathering selected items upon long press.|
 
 ## EffectEdge<sup>18+</sup>
 
@@ -851,13 +851,13 @@ Called when a list or grid element starts to be dragged.
 | Name   | Type                                                     | Mandatory| Description                  |
 | --------- | --------------------------------------------------------- | ---- | ---------------------- |
 | event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo) | Yes  | Information about the drag point.        |
-| itemIndex | number                                                    | Yes  | Index of the dragged item.|
+| itemIndex | number                                                    | Yes  | Index of the dragged element.|
 
 **Return value**
 
 | Type                         | Description                                 |
 | ----------------------------- | ------------------------------------ |
-| [CustomBuilder](ts-types.md#custombuilder8) |  Returns the CustomBuilder object used to build the drag diagram of the dragged element. If **void** is returned, the drag operation cannot be performed.|
+| [CustomBuilder](ts-types.md#custombuilder8) |  Returns a **CustomBuilder** object for constructing the drag preview of the dragged element. If **void** is returned, the drag operation cannot be performed.|
 
 ## OnGetPreviewBadgeCallback<sup>23+</sup>
 
@@ -875,7 +875,7 @@ Called to obtain the number of selected items when the animation for gathering s
 
 | Type                         | Description                                 |
 | ----------------------------- | ------------------------------------  |
-| boolean \| number |  Whether to display the number of selected items in the corner badge of the menu preview image after the animation for gathering selected items upon long press is performed, or the number of items to be displayed.<br>If true is returned, the number of selected items in the corner badge is displayed, which corresponds to the number of selected items in the display range of the grid or list. If false is returned, the corner badge is not displayed.<br>If a number is returned, the corner badge is displayed by default, and the number indicates the number of items to be displayed in the corner badge. Value range: [0, 2<sup>31</sup>-1]. If the value is out of the range, true is returned.<br>If a floating-point number is returned, it is rounded down.|
+| boolean \| number |  Whether to display a badge showing the count of selected items on the menu preview image after the animation for gathering selected items upon long press is played, or the specific number to display.<br>**true**: The number of selected items in a **Grid** or **List** component will be displayed as the badge. **false**: The badge is not displayed.<br>If a number is returned, it will be displayed as the badge by default,. Value range: [0, 2<sup>31</sup>-1]. If the value is out of the range, it is treated as **true**.<br>If a floating-point number is returned, it is rounded down.|
 
 ## ScrollResult<sup>12+</sup>
 
@@ -1274,7 +1274,6 @@ struct ListExample {
 ### Example 3: Setting the Clipping Region
 This example demonstrates how to use the **clipContent** attribute to modify the clipping region of the component's content layer.
 
-<!--code_no_check-->
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';

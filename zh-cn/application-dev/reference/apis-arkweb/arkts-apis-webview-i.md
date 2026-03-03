@@ -57,7 +57,7 @@ Web组件返回的请求/响应头对象。
 
 Web组件发送的资源请求信息。
 
-**系统能力：**: SystemCapability.Web.Webview.Core
+**系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称      | 类型   | 只读 | 可选 |说明        |
 | ---------| ------ | -----|------|--------  |
@@ -221,7 +221,7 @@ WebViewController与Web组件的绑定状态。
 | historyRawUrl | string                                 | 否   | 否   | 历史记录项的原始url地址。    |
 | title         | string                                 | 否   | 否   | 历史记录项的标题。           |
 
-## MediaInfo<sup>12+<sup>
+## MediaInfo<sup>12+</sup>
 
 [CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12)回调函数的一个参数。包含了网页中媒体的信息。应用可以根据这些信息来创建接管网页媒体播放的播放器。
 
@@ -241,7 +241,7 @@ WebViewController与Web组件的绑定状态。
 | headers | Record\<string, string\> | 否 | 否 | 播放器请求媒体资源时，需要携带的 HTTP 头。 |
 | attributes | Record\<string, string\> | 否 | 否 | `<video>` 或 `<audio>` 标签中的属性。 |
 
-## RectEvent<sup>12+<sup>
+## RectEvent<sup>12+</sup>
 
 矩形定义。
 

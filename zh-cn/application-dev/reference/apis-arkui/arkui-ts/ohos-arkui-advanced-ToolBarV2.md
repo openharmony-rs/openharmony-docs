@@ -13,6 +13,8 @@
 >
 > - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 该组件仅可在Stage模型下使用。
+>
 > - 如果ToolBarV2设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ToolBarV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ToolBarV2设置通用属性和通用事件。
 >
 > - 系统切换深浅色模式，工具栏背景色不支持自动切换。
@@ -733,9 +735,9 @@ struct Index {
         }),
         action: () => {
         },
-        accessibilityText: '剪贴', //该项屏幕朗读播报文本为‘剪贴’
-        accessibilityDescription: '单指双击即可剪贴', //该项屏幕朗读播报描述为'单指双击即可剪贴'
-        accessibilityLevel: 'yes'  //该项可被无障碍屏幕朗读聚焦
+        accessibilityText: '剪贴', // 该项屏幕朗读播报文本为‘剪贴’
+        accessibilityDescription: '单指双击即可剪贴', // 该项屏幕朗读播报描述为'单指双击即可剪贴'
+        accessibilityLevel: 'yes'  // 该项可被无障碍屏幕朗读聚焦
       })
     )
     this.toolbarList.push(
@@ -749,7 +751,7 @@ struct Index {
         action: () => {
         },
         state: ToolBarV2ItemState.DISABLE,
-        accessibilityLevel: 'no'  //该项将无法被无障碍屏幕朗读聚焦
+        accessibilityLevel: 'no'  // 该项将无法被无障碍屏幕朗读聚焦
       }))
     this.toolbarList.push(
       new ToolBarV2Item({

@@ -14,7 +14,7 @@
 
 详细的API说明请参考[AVMetadataExtractor API参考](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md)。
 
-1. 使用createAVMetadataExtractor()创建实例。
+1. 使用[createAVMetadataExtractor()](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavmetadataextractor11-1)创建实例。
    ```ts
    import { media } from '@kit.MediaKit';
    // 创建AVMetadataExtractor对象。
@@ -135,7 +135,7 @@
    import { image } from '@kit.ImageKit';
    // pixelMap对象声明，用于图片显示。
    @State pixelMap: image.PixelMap | undefined = undefined;
-   //获取专辑封面（callback模式）。
+   // 获取专辑封面（callback模式）。
    avMetadataExtractor.fetchAlbumCover((err, pixelMap) => {
      if (err) {
        console.error(TAG, `fetchAlbumCover callback failed, err = ${JSON.stringify(err)}`);

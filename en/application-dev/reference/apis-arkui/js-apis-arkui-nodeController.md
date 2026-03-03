@@ -34,6 +34,10 @@ Called when the [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) c
 
 This callback can also be invoked through the **rebuild()** method of **NodeController**.
 
+> **NOTE**
+>
+> [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) does not support cross-instance reuse. If [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) is reused across instances and [NodeController] (#nodecontroller-1) of [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) triggers the [makeNode] (#makenode) callback method, the [UIContext](./arkts-apis-uicontext-uicontext.md) object in the input parameter may be undefined. In this case, you need to check whether the [UIContext](./arkts-apis-uicontext-uicontext.md) object in the input parameter is undefined, which prevents the [invalid UIContext](../../ui/arkts-wrong-uicontext-debug.md#identifying-uicontext-errors) when the input parameter is used.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -228,7 +232,7 @@ This example demonstrates how to manage the lifecycle of a **NodeContainer** com
 It also shows how to mount a BuilderNode using **NodeController**.
 
 ```ts
-import {  NodeController, BuilderNode, Size, FrameNode ,UIContext } from '@kit.ArkUI';
+import { NodeController, BuilderNode, Size, FrameNode, UIContext } from '@kit.ArkUI';
 
 class Params {
   text: string = "this is a text"
@@ -258,7 +262,7 @@ class MyNodeController extends NodeController {
   }
 
   aboutToResize(size: Size) {
-    console.info("aboutToResize width : " + size.width + " height : " + size.height)
+    console.info(`aboutToResize width : ${size.width} height : ${size.height}`)
   }
 
   aboutToAppear() {
@@ -269,7 +273,7 @@ class MyNodeController extends NodeController {
     console.info("aboutToDisappear");
   }
 
-  onTouchEvent(event:TouchEvent) {
+  onTouchEvent(event: TouchEvent) {
     console.info("onTouchEvent");
   }
 }
@@ -299,6 +303,7 @@ when it is bound or unbound, using **onAttach**, **onDetach**, **onWillBind**, *
 
 ```ts
 import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
+
 class Params {
   text: string = "this is a text"
 }
@@ -334,20 +339,20 @@ class MyNodeController extends NodeController {
     console.info("myButton on detach");
   }
 
-  onWillBind(containerId: number): void{
-    console.info("myButton on WillBind" + containerId);
+  onWillBind(containerId: number): void {
+    console.info(`myButton on WillBind${containerId}`);
   }
 
-  onWillUnbind(containerId: number): void{
-    console.info("myButton on WillUnbind" + containerId);
+  onWillUnbind(containerId: number): void {
+    console.info(`myButton on WillUnbind${containerId}`);
   }
 
   onBind(containerId: number): void {
-    console.info("myButton on bind: " + containerId);
+    console.info(`myButton on bind: ${containerId}`);
   }
 
   onUnbind(containerId: number): void {
-    console.info("myButton on unbind: " + containerId);
+    console.info(`myButton on unbind: ${containerId}`);
   }
 }
 
@@ -358,11 +363,11 @@ struct Index {
   @State buttonIndex: number = 0
   private buttonController: MyNodeController = new MyNodeController();
   private buttonNull: null = null;
-  private buttonControllerArray: Array < MyNodeController | null > = [this.buttonController,this.buttonNull]
+  private buttonControllerArray: Array<MyNodeController | null> = [this.buttonController, this.buttonNull]
 
   build() {
     Column() {
-      Row(){
+      Row() {
         Button("Bind/Unbind")
           .onClick(() => {
             this.buttonIndex++;
@@ -372,11 +377,12 @@ struct Index {
             this.buttonShow = !this.buttonShow
           }).margin(5)
       }
-      if(this.buttonShow){
+
+      if (this.buttonShow) {
         NodeContainer(this.buttonControllerArray[this.buttonIndex % this.buttonControllerArray.length])
       }
     }
-    .padding({ left: 35, right: 35})
+    .padding({ left: 35, right: 35 })
     .width("100%")
     .height("100%")
   }

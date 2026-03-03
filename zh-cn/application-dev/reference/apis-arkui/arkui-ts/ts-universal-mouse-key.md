@@ -81,7 +81,8 @@ struct MouseEventExample {
   build() {
     Column({ space: 20 }) {
       Button(this.hoverText)
-        .width(180).height(80)
+        .width(180)
+        .height(80)
         .backgroundColor(this.color)
         .fontSize(24)
         .onHover((isHover: boolean, event: HoverEvent) => {

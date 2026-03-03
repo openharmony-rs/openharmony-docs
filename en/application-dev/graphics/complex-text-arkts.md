@@ -5,7 +5,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-When drawing text, simple text can be drawn and displayed by selecting appropriate fonts, sizes, and colors. Additionally, complex text drawing is supported by setting other styles, languages, paragraphs, etc.
+Simple text can be drawn and displayed with appropriate fonts, sizes, and colors selected. Additionally, complex text drawing is supported by setting other styles, languages, paragraphs, etc.
 
 Complex text drawing involves the following scenarios:
 
@@ -28,13 +28,20 @@ When multi-language text is used, you can specify the **locale** field in [TextS
 
 1. Obtain the canvas object through **context**.
 
-   ```ts
+   <!-- @[arkts_multi_language_text_drawing_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multilanguage/MultilanguageText.ets) -->
+   
+   ``` TypeScript
+   // Here is the drawing code logic.
    let canvas = context.canvas;
    ```
 
+   <!-- -->
+
 2. Initialize the text style.
 
-   ```ts
+   <!-- @[arkts_multi_language_text_drawing_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multilanguage/MultilanguageText.ets) -->
+   
+   ``` TypeScript
    let myTextStyle: text.TextStyle = {
      color: {
        alpha: 255,
@@ -48,17 +55,25 @@ When multi-language text is used, you can specify the **locale** field in [TextS
    };
    ```
 
+   <!-- -->
+
 3. Initialize the paragraph style.
 
-   ```ts
+   <!-- @[arkts_multi_language_text_drawing_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multilanguage/MultilanguageText.ets) -->
+   
+   ``` TypeScript
    let myParagraphStyle: text.ParagraphStyle = {
      textStyle: myTextStyle,
    };
    ```
 
+   <!-- -->
+
 4. Initialize the paragraph object and add text.
 
-   ```ts
+   <!-- @[arkts_multi_language_text_drawing_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multilanguage/MultilanguageText.ets) -->
+   
+   ``` TypeScript
    let fontCollection = text.FontCollection.getGlobalInstance();
    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
    // Push the text style.
@@ -67,9 +82,13 @@ When multi-language text is used, you can specify the **locale** field in [TextS
    paragraphBuilder.addText('你好，世界');
    ```
 
+   <!-- -->
+
 5. Layout the paragraph and draw the text.
 
-   ```ts
+   <!-- @[arkts_multi_language_text_drawing_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multilanguage/MultilanguageText.ets) -->
+   
+   ``` TypeScript
    // Generate a paragraph.
    let paragraph = paragraphBuilder.build();
    // Layout.
@@ -78,136 +97,9 @@ When multi-language text is used, you can specify the **locale** field in [TextS
    paragraph.paint(canvas, 10, 0);
    ```
 
+   <!-- -->
 
-### Sample Code
 
-In this example, the text to be drawn is Simplified Chinese. Setting the language preference to Simplified Chinese prioritizes matching the Simplified Chinese font when matching text fonts, thereby improving drawing efficiency.
-
-<!-- @[arkts_multi_language_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/multilanguage/MultilanguageText.ets) -->
-
-``` TypeScript
-import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
-import { UIContext } from '@kit.ArkUI'
-import { text } from '@kit.ArkGraphics2D'
-
-// Create a MyRenderNode class and draw the text.
-class MyRenderNode extends RenderNode {
-  async draw(context: DrawContext) {
-    // Here is the drawing code logic.
-    let canvas = context.canvas;
-
-    let myTextStyle: text.TextStyle = {
-      color: {
-        alpha: 255,
-        red: 255,
-        green: 0,
-        blue: 0
-      },
-      fontSize: 50,
-      // Set the preferred language to Simplified Chinese.
-      locale: 'zh-Hans'
-    };
-
-    let myParagraphStyle: text.ParagraphStyle = {
-      textStyle: myTextStyle,
-    };
-    let fontCollection = text.FontCollection.getGlobalInstance();
-    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-    // Push the text style.
-    paragraphBuilder.pushStyle(myTextStyle);
-    // Add text.
-    paragraphBuilder.addText('你好，世界');
-    // Generate a paragraph.
-    let paragraph = paragraphBuilder.build();
-    // Layout.
-    paragraph.layoutSync(1250);
-    // Draw the text.
-    paragraph.paint(canvas, 10, 0);
-  }
-}
-
-// Create a MyRenderNode object.
-const textNode = new MyRenderNode();
-// Define the pixel format of MyRenderNode.
-textNode.frame = {
-  x: 0,
-  y: 0,
-  width: 400,
-  height: 600
-};
-textNode.pivot = { x: 0.2, y: 0.8 };
-textNode.scale = { x: 1, y: 1 };
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode {
-    this.rootNode = new FrameNode(uiContext);
-    if (this.rootNode == null) {
-      return this.rootNode;
-    }
-    const renderNode = this.rootNode.getRenderNode();
-    if (renderNode != null) {
-      renderNode.frame = {
-        x: 0,
-        y: 0,
-        width: 10,
-        height: 500
-      };
-    }
-    return this.rootNode;
-  }
-
-  addNode(node: RenderNode): void {
-    if (this.rootNode == null) {
-      return;
-    }
-    const renderNode = this.rootNode.getRenderNode();
-    if (renderNode != null) {
-      renderNode.appendChild(node);
-    }
-  }
-
-  clearNodes(): void {
-    if (this.rootNode == null) {
-      return;
-    }
-    const renderNode = this.rootNode.getRenderNode();
-    if (renderNode != null) {
-      renderNode.clearChildren();
-    }
-  }
-}
-
-let myNodeController: MyNodeController = new MyNodeController();
-
-async function performTask() {
-  myNodeController.clearNodes();
-  myNodeController.addNode(textNode);
-}
-
-@Entry
-@Component
-struct Font08 {
-  @State src: Resource = $r('app.media.startIcon');
-  build() {
-    Column() {
-      Row() {
-        NodeContainer(myNodeController)
-          .height('100%')
-          .width('100%')
-        Image(this.src)
-          .width('0%').height('0%')
-          .onComplete(
-            () => {
-              performTask();
-            })
-      }
-      .width('100%')
-    }
-  }
-}
-```
 
 ### Effect
 
@@ -228,14 +120,20 @@ Multi-line text is more complex than single-line text. Generally, text typograph
 
 1. Obtain the canvas object through **context**.
 
-   ```ts
+   <!-- @[arkts_multi_line_text_drawing_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets) -->
+   
+   ``` TypeScript
    // Here is the drawing code logic.
    let canvas = context.canvas;
    ```
 
+   <!-- -->
+
 2. Initialize the text style.
 
-   ```ts
+   <!-- @[arkts_multi_line_text_drawing_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets) -->
+   
+   ``` TypeScript
    let myTextStyle: text.TextStyle = {
      color: {
        alpha: 255,
@@ -245,13 +143,17 @@ Multi-line text is more complex than single-line text. Generally, text typograph
      },
      fontSize: 50,
      // When wordBreak is set to text.WordBreak.BREAK_HYPHEN, you need to set the preferred language so that the paragraph can be displayed with the respective word break effect.
-     locale: "en-gb"
+     locale: 'en-gb'
    };
    ```
 
+   <!-- -->
+
 3. Initialize the paragraph style.
 
-   ```ts
+   <!-- @[arkts_multi_line_text_drawing_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets) -->
+   
+   ``` TypeScript
    let myParagraphStyle: text.ParagraphStyle = {
      textStyle: myTextStyle,
      // Text alignment mode
@@ -263,9 +165,13 @@ Multi-line text is more complex than single-line text. Generally, text typograph
    };
    ```
 
+   <!-- -->
+
 4. Initialize the paragraph object and add placeholders and text.
 
-   ```ts
+   <!-- @[arkts_multi_line_text_drawing_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets) -->
+   
+   ``` TypeScript
    let fontCollection = text.FontCollection.getGlobalInstance();
    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
    // Push the text style.
@@ -276,9 +182,13 @@ Multi-line text is more complex than single-line text. Generally, text typograph
      'Hello World Hello World Hello World Hello World Hello World ');
    ```
 
+   <!-- -->
+
 5. Layout the paragraph and draw the text.
 
-   ```ts
+   <!-- @[arkts_multi_line_text_drawing_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets) -->
+   
+   ``` TypeScript
    // Generate a paragraph.
    let paragraph = paragraphBuilder.build();
    // Layout.
@@ -287,149 +197,8 @@ Multi-line text is more complex than single-line text. Generally, text typograph
    paragraph.paint(canvas, 10, 0);
    ```
 
+   <!-- -->
 
-### Sample Code
-
-<!-- @[arkts_multi_line_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets) -->
-
-``` TypeScript
-import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
-import { UIContext } from '@kit.ArkUI'
-import { text } from '@kit.ArkGraphics2D'
-
-// Create a MyRenderNode class and draw the text.
-class MyRenderNode extends RenderNode {
-  async draw(context: DrawContext) {
-    // Here is the drawing code logic.
-    let canvas = context.canvas;
-
-    let myTextStyle: text.TextStyle = {
-      color: {
-        alpha: 255,
-        red: 255,
-        green: 0,
-        blue: 0
-      },
-      fontSize: 50,
-      // When wordBreak is set to text.WordBreak.BREAK_HYPHEN, you need to set the preferred language so that the paragraph can be displayed with the respective word break effect.
-      locale: 'en-gb'
-    };
-
-    let myParagraphStyle: text.ParagraphStyle = {
-      textStyle: myTextStyle,
-      // Text alignment mode
-      align: text.TextAlign.LEFT,
-      // Maximum number of lines
-      maxLines: 3,
-      // Word break policy
-      wordBreak: text.WordBreak.BREAK_WORD
-    };
-    let fontCollection = text.FontCollection.getGlobalInstance();
-    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-    // Push the text style.
-    paragraphBuilder.pushStyle(myTextStyle);
-    // Add text.
-    paragraphBuilder.addText('Hello World Hello World Hello World Hello World Hello World Hello World ' +
-      'Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World ' +
-      'Hello World Hello World Hello World Hello World Hello World ');
-    //When wordBreak is set to text.WordBreak.BREAK_HYPHEN, replace the text with the following:
-    // paragraphBuilder.addText('Modern embedded systems require robust communication protocols and efficient memory ' +
-    //   'management strategies. Developers often face challenges in optimizing performance while maintaining ' +
-    //   'modularity and portability. By leveraging a layered architecture and structured logging, applications can ' +
-    //   'detect anomalies and respond quickly to faults. This approach enhances reliability, especially in ' +
-    //   'time-critical environments such as IoT devices and real-time operating systems.');
-
-    // Generate a paragraph.
-    let paragraph = paragraphBuilder.build();
-    // Layout.
-    paragraph.layoutSync(1250);
-    // Draw the text.
-    paragraph.paint(canvas, 10, 0);
-  }
-}
-
-// Create a MyRenderNode object.
-const textNode = new MyRenderNode();
-// Define the pixel format of MyRenderNode.
-textNode.frame = {
-  x: 0,
-  y: 0,
-  width: 400,
-  height: 600
-};
-textNode.pivot = { x: 0.2, y: 0.8 };
-textNode.scale = { x: 1, y: 1 };
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode {
-    this.rootNode = new FrameNode(uiContext);
-    if (this.rootNode == null) {
-      return this.rootNode;
-    }
-    const renderNode = this.rootNode.getRenderNode();
-    if (renderNode != null) {
-      renderNode.frame = {
-        x: 0,
-        y: 0,
-        width: 10,
-        height: 500
-      }
-    }
-    return this.rootNode;
-  }
-
-  addNode(node: RenderNode): void {
-    if (this.rootNode == null) {
-      return;
-    }
-    const renderNode = this.rootNode.getRenderNode();
-    if (renderNode != null) {
-      renderNode.appendChild(node);
-    }
-  }
-
-  clearNodes(): void {
-    if (this.rootNode == null) {
-      return;
-    }
-    const renderNode = this.rootNode.getRenderNode();
-    if (renderNode != null) {
-      renderNode.clearChildren();
-    }
-  }
-}
-
-let myNodeController: MyNodeController = new MyNodeController();
-
-async function performTask() {
-  myNodeController.clearNodes();
-  myNodeController.addNode(textNode);
-}
-
-@Entry
-@Component
-struct Font08 {
-  @State src: Resource = $r('app.media.startIcon');
-  build() {
-    Column() {
-      Row() {
-        NodeContainer(myNodeController)
-          .height('100%')
-          .width('100%')
-        Image(this.src)
-          .width('0%').height('0%')
-          .onComplete(
-            () => {
-              performTask();
-            })
-      }
-      .width('100%')
-    }
-  }
-}
-```
 
 
 ### Effect
@@ -614,7 +383,7 @@ For details, see [Example 8](#example-8-line-spacing-adjustment).
 ### Example 1 (Decoration and Font Feature)
 The following uses the decoration and font feature in the text style as an example to describe how to draw and display multi-style text.
 
-<!-- @[arkts_complex_style_example1_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets) -->
+<!-- @[arkts_complex_style_example1_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets) -->
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
@@ -773,7 +542,7 @@ The following figures show the effect.
 ### Example 2 (Font Variation, Text Shadow, and Placeholder)
 The following uses the font variation, text shadow, and placeholder features as an example to describe how to draw and display multi-style text.
 
-<!-- @[arkts_complex_style_example2_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample2.ets) -->
+<!-- @[arkts_complex_style_example2_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample2.ets) -->
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
@@ -948,7 +717,7 @@ The following figures show the effect.
 ### Example 3 (Vertical Alignment)
 The following uses vertical alignment - center alignment as an example to describe the vertical typography feature.
 
-<!-- @[arkts_complex_style_example3_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample3.ets) -->
+<!-- @[arkts_complex_style_example3_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample3.ets) -->
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
@@ -1090,7 +859,7 @@ The following figures show the effect.
 ### Example 4 (Superscript and Subscript)
 The following uses the subscript style as an example to describe the superscript and subscript typography feature.
 
-<!-- @[arkts_complex_style_example4_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample4.ets) -->
+<!-- @[arkts_complex_style_example4_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample4.ets) -->
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
@@ -1240,7 +1009,7 @@ The following figures show the effect.
 ### Example 5 (High Contrast)
 The following uses high contrast as an example to describe how to draw and display high-contrast text.
 
-<!-- @[arkts_complex_style_example5_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample5.ets) -->
+<!-- @[arkts_complex_style_example5_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample5.ets) -->
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext} from '@kit.ArkUI'
@@ -1376,7 +1145,7 @@ The following figures show the effect.
 ### Example 6 (Line Height Adjustment: Method 1)
 In this example, the maximum and minimum line heights are set to the same value to show the drawing effect when the line height is fixed.
 
-  <!-- @[arkts_complex_style_example6_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample6.ets) -->
+  <!-- @[arkts_complex_style_example6_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample6.ets) -->
   
   ``` TypeScript
   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
@@ -1424,7 +1193,7 @@ In this example, the maximum and minimum line heights are set to the same value 
 
   // Create a MyRenderNode object.
   const textNode = new MyRenderNode()
-  // Define the pixel format of newNode.
+  // Define the pixel format of MyRenderNode.
   textNode.frame = {
     x: 0,
     y: 0,
@@ -1514,7 +1283,7 @@ The following figures show the effect.
 ### Example 7 (Line Height Adjustment: Method 2)
 The following uses line height scaling (**FontHeight**) as an example to describe how to draw and display text after the line height is adjusted.
 
-  <!-- @[arkts_complex_style_example7_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample7.ets) -->
+  <!-- @[arkts_complex_style_example7_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample7.ets) -->
   
   ``` TypeScript
   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
@@ -1564,7 +1333,7 @@ The following uses line height scaling (**FontHeight**) as an example to describ
 
   // Create a MyRenderNode object.
   const textNode = new MyRenderNode();
-  // Define the pixel format of newNode.
+  // Define the pixel format of MyRenderNode.
   textNode.frame = {
     x: 0,
     y: 0,
@@ -1653,7 +1422,7 @@ The following figures show the effect.
 ### Example 8 (Line Spacing Adjustment)
 The following uses the example of disabling the paragraph ascent and descent and setting the line spacing to show how to draw and display text after line spacing is increased.
 
-  <!-- @[arkts_complex_style_example8_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample8.ets) -->
+  <!-- @[arkts_complex_style_example8_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample8.ets) -->
   
   ``` TypeScript
   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
@@ -1701,7 +1470,7 @@ The following uses the example of disabling the paragraph ascent and descent and
 
   // Create a MyRenderNode object.
   const textNode = new MyRenderNode();
-  // Define the pixel format of newNode.
+  // Define the pixel format of MyRenderNode.
   textNode.frame = {
     x: 0,
     y: 0,
@@ -1786,4 +1555,5 @@ The following figures show the effect.
 | -------- | -------- |
 | DISABLE_ALL | ![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
 | ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |
+
 <!--no_check-->

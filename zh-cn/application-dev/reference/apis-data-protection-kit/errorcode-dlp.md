@@ -317,7 +317,7 @@ The system needs to be upgraded.
 
 **可能原因**
 
-当前系统版本版本需要升级。
+当前系统版本需要升级。
 
 **处理步骤**
 

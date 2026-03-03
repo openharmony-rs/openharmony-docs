@@ -36,7 +36,7 @@ getCount(): number
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -81,7 +81,7 @@ isAfterLast(): boolean
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -125,7 +125,7 @@ close(): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -174,7 +174,7 @@ getFirstObject(callback: AsyncCallback&lt;T&gt;): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -224,7 +224,7 @@ getFirstObject(): Promise&lt;T&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -271,7 +271,7 @@ getNextObject(callback: AsyncCallback&lt;T&gt;): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -326,7 +326,7 @@ getNextObject(): Promise&lt;T&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -374,7 +374,7 @@ getLastObject(callback: AsyncCallback&lt;T&gt;): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -424,7 +424,7 @@ getLastObject(): Promise&lt;T&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -470,7 +470,7 @@ getObjectByPosition(index: number, callback: AsyncCallback&lt;T&gt;): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -526,7 +526,7 @@ getObjectByPosition(index: number): Promise&lt;T&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -575,7 +575,7 @@ getAllObjects(callback: AsyncCallback&lt;Array&lt;T&gt;&gt;): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -625,7 +625,7 @@ getAllObjects(): Promise&lt;Array&lt;T&gt;&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |

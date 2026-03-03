@@ -313,7 +313,7 @@ minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBa
 | top | number | 否 | 是 | 设置侧边栏控制按钮距离容器上界限的间距。<br/>默认值：48vp<br/>单位：vp<br/>取值范围：[0, +∞) |
 | width | number | 否 | 是 | 设置侧边栏控制按钮的宽度。<br/>默认值：<br/>API version 9及之前版本：32vp<br/>从API version 10开始：24vp<br/>单位：vp<br/>取值范围：[0, +∞) |
 | height | number | 否 | 是 | 设置侧边栏控制按钮的高度。<br/>默认值：<br/>API version 9及之前版本：32vp<br/>从API version 10开始：24vp<br/>单位：vp<br/>取值范围：[0, +∞) |
-| icons | [ButtonIconOptions<sup>18+</sup>](#buttoniconoptions18对象说明) | 否 | 是 | 设置侧边栏控制按钮的图标。 |
+| icons | [ButtonIconOptions<sup>18+</sup>](#buttoniconoptions18对象说明) | 否 | 是 | 设置侧边栏控制按钮的图标。<br/>资源获取错误以及未设置该属性时，使用默认图标。 |
 
 ## ButtonIconOptions<sup>18+</sup>对象说明
 
@@ -332,10 +332,6 @@ minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBa
 | shown<sup>8+</sup>     | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 否   | 设置侧边栏显示时控制按钮的图标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。              |
 | hidden<sup>8+</sup>    | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 否   | 设置侧边栏隐藏时控制按钮的图标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。              |
 | switching<sup>8+</sup> | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 是   | 设置侧边栏显示和隐藏状态切换时控制按钮的图标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-
-> **说明：**
->
-> 资源获取错误时，使用默认图标。
 
 ## SideBarPosition<sup>9+</sup>枚举说明
 

@@ -112,6 +112,7 @@
           - 拉起指定应用<!--directional-redirection-->
             - [拉起指定应用概述](application-models/app-startup-overview.md)
             - [（可选）使用canOpenLink判断应用是否可访问](application-models/canopenlink.md)
+            - [获取目标应用的URL信息](application-models/obtaining-target-app-url-info.md)
             - [使用Deep Linking实现应用间跳转](application-models/deep-linking-startup.md)
             - [使用App Linking实现应用间跳转](application-models/app-linking-startup.md)
             - [显式Want跳转切换应用链接跳转适配指导](application-models/uiability-startup-adjust.md)
@@ -1333,15 +1334,13 @@
         - [Connectivity Kit术语](connectivity/terminology.md)
       - Distributed Service Kit（分布式管理服务）<!--distributed-service-kit-->
         - [Distributed Service Kit简介](distributedservice/distributedservice-kit-intro.md)
-        - [分布式设备管理](distributedservice/devicemanager-guidelines.md)
+        - [分布式设备管理开发指南](distributedservice/devicemanager-guidelines.md)
         - 应用跨设备连接管理<!--abilityconnect-distributed-->
           - [UIAbility与UIAbility连接开发指南](distributedservice/abilityconnectmanager-guidelines.md)
           <!--Del-->
           - [DistributedExtensionAbility开发指南（仅对系统应用开放）](distributedservice/distributedextension-guidelines-sys.md)
           <!--DelEnd-->
           - [增强连接开发指南](distributedservice/linkEnhance_development-guide.md)
-        - 硬件跨设备连接管理<!--devconnect-distributed-->
-          - [分布式相机开发指南](distributedservice/camera-distributed.md)
       - Network Kit（网络服务）<!--network-kit-->
         - [Network Kit简介](network/net-mgmt-overview.md)
         - 访问网络<!--network-kit-data-transmission-->
@@ -2038,7 +2037,7 @@
       - C/C++标准库<!--c-cpp-->
         - [C/C++标准库机制概述](napi/c-cpp-overview.md)
         - [fdsan使用指导](napi/fdsan.md)
-      - 使用Node-API实现跨语言交互<!--using-napi-interaction-with-cpp-->
+      - 使用Node-API实现ArkTS/JS与C/C++语言交互<!--using-napi-interaction-with-cpp-->
         - [Node-API简介](napi/napi-introduction.md)
         - [Node-API接口返回状态码介绍](napi/napi_status_introduction.md)
         - [Node-API支持的数据类型和接口](napi/napi-data-types-interfaces.md)
@@ -2289,6 +2288,7 @@
           - [@ohos.app.ability.UIExtensionAbility (带界面的ExtensionAbility组件)](reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)
           - [@ohos.app.ability.UIExtensionContentSession (UIExtensionAbility界面操作类)](reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md)
           - [@ohos.app.ability.sendableContextManager (sendable上下文管理)](reference/apis-ability-kit/js-apis-app-ability-sendableContextManager.md)
+          - [@ohos.app.ability.systemConfiguration (系统环境变量变化监听器)](reference/apis-ability-kit/js-apis-app-ability-systemConfiguration.md)
           - [@ohos.app.appstartup.StartupConfig (启动框架配置信息)](reference/apis-ability-kit/js-apis-app-appstartup-startupConfig.md)
           - [@ohos.app.appstartup.StartupConfigEntry (启动框架配置)](reference/apis-ability-kit/js-apis-app-appstartup-startupConfigEntry.md)
           - [@ohos.app.appstartup.StartupListener (启动框架任务监听器)](reference/apis-ability-kit/js-apis-app-appstartup-startupListener.md)

@@ -115,9 +115,11 @@ When a series of synchronous tasks needs to be scheduled using the same handle, 
                 // Receive results from the Worker thread.
                 w.onmessage = (e: MessageEvents): void => {
                   // Receive results from the Worker thread.
-                  console.info('main thread onmessage, ' + e.data);
+                  console.info('main thread onmessage, ' + e.data.message);
                   // Destroy the Worker.
-                  w.terminate();
+                  if (e.data.isTerminate) {
+                    w.terminate();
+                  }
                 }
               })
           }
@@ -167,13 +169,13 @@ When a series of synchronous tasks needs to be scheduled using the same handle, 
           let result: boolean = false;
           result = handler.syncSet(e.data.data);
           console.info("worker: result is " + result);
-          workerPort.postMessage('the result of syncSet() is ' + result);
+          workerPort.postMessage({'message': 'the result of syncSet() is ' + result, 'isTerminate': false});
           break;
         case 1:
           let num: number = 0;
           num = handler.syncGet();
           console.info("worker: num is " + num);
-          workerPort.postMessage('the result of syncGet() is ' + num);
+          workerPort.postMessage({'message': 'the result of syncGet() is ' + num, 'isTerminate': true});
           break;
       }
     }

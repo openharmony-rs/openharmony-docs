@@ -8,7 +8,7 @@
 
 The **router** capability of the [postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1) API can be used in a dynamic widget to quickly start a specific UIAbility of the widget provider. By leveraging this capability, an application can provide in the widget multiple buttons, each of which targets a different target UIAbility. For example, a camera widget can provide the buttons that redirect the user to the UIAbility for taking a photo and the UIAbility for recording a video.
 
-![WidgerCameraCard](figures/WidgerCameraCard.png)
+![WidgetCameraCard](figures/WidgetCameraCard.png)
 
 > **NOTE**
 >
@@ -159,7 +159,7 @@ The **router** capability of the [postCardAction](../reference/apis-arkui/js-api
 
 4. Create the UIAbility pages after redirection. Create **FunA.ets** and **FunB.ets** to build the page layout.
 
-   <!-- @[fun_a](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/funpages/FunA.ets) -->
+   <!-- @[fun_a](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/funpages/FunA.ets) --> 
    
    ``` TypeScript
    // src/main/ets/funpages/FunA.ets
@@ -210,7 +210,7 @@ The **router** capability of the [postCardAction](../reference/apis-arkui/js-api
    }
    ```
 
-   <!-- @[fun_b](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/funpages/FunB.ets) -->
+   <!-- @[fun_b](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/funpages/FunB.ets) --> 
    
    ``` TypeScript
    // src/main/ets/funpages/FunB.ets

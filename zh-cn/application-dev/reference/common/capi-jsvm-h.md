@@ -54,7 +54,7 @@
 | [JSVM_EXTERN JSVM_Status OH_JSVM_GetVM(JSVM_Env env,JSVM_VM* result)](#oh_jsvm_getvm) | 检索给定环境的虚拟机实例。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CompileScript(JSVM_Env env,JSVM_Value script,const uint8_t* cachedData,size_t cacheDataLength,bool eagerCompile,bool* cacheRejected,JSVM_Script* result)](#oh_jsvm_compilescript) | 编译一串JavaScript代码，并返回编译后的脚本。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOrigin(JSVM_Env env,JSVM_Value script,const uint8_t* cachedData,size_t cacheDataLength,bool eagerCompile,bool* cacheRejected,JSVM_ScriptOrigin* origin,JSVM_Script* result)](#oh_jsvm_compilescriptwithorigin) | 编译一串包含 sourcemap 信息的 JavaScript 代码，并返回编译后的脚本。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOptions(JSVM_Env env,JSVM_Value script,size_t optionCount,JSVM_CompileOptions options[],JSVM_Value* result)](#oh_jsvm_compilescriptwithoptions) | 编译一串JavaScript代码，并返回编译后的脚本。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOptions(JSVM_Env env,JSVM_Value script,size_t optionCount,JSVM_CompileOptions options[],JSVM_Script* result)](#oh_jsvm_compilescriptwithoptions) | 编译一串JavaScript代码，并返回编译后的脚本。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateCodeCache(JSVM_Env env,JSVM_Script script,const uint8_t** data,size_t* length)](#oh_jsvm_createcodecache) | 为编译后的脚本创建代码缓存。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_RunScript(JSVM_Env env,JSVM_Script script,JSVM_Value* result)](#oh_jsvm_runscript) | 执行一串JavaScript代码并返回其结果，其中包含以下注意事项：与eval不同的是，该函数不允许脚本访问当前词法作用域，因此也不允许访问模块作用域，这意味着require等伪全局变量将不可用。脚本可以访问全局作用域。脚本中的函数和var声明将被添加到全局对象。使用let和const的变量声明将全局可见，但不会被添加到全局对象。this的值在脚本内是global。如果没有 JIT 权限支持，执行含wasm的脚本会失败，在特定场景下存在性能差异，并打印一行日志提示开发者。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_SetInstanceData(JSVM_Env env,void* data,JSVM_Finalize finalizeCb,void* finalizeHint)](#oh_jsvm_setinstancedata) | 将data与当前运行的JSVM环境相关联。后续可以使用OH_JSVM_GetInstanceData()检索data。通过先前调用OH_JSVM_SetInstanceData()设置的任何与当前运行的JSVM环境相关联的现有数据都将被覆盖。如果先前提供了finalizeCb，则不会调用它。 |
@@ -250,9 +250,9 @@
 | [JSVM_EXTERN JSVM_Status OH_JSVM_SetDebugOption(JSVM_Env env, JSVM_DebugOption debugOption, bool isEnabled)](#oh_jsvm_setdebugoption) | 启用/禁用特定JSVM_Env的指定调试选项。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForFatalError(JSVM_VM vm,JSVM_HandlerForFatalError handler)](#oh_jsvm_sethandlerforfatalerror) | 为Fatal错误设置回调处理。当接口被重复调用时，仅最后一次生效。当传入的handler为null时，表示取消之前的设置。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForPromiseReject(JSVM_VM vm,JSVM_HandlerForPromiseReject handler)](#oh_jsvm_sethandlerforpromisereject) | 为PromiseReject错误设置回调处理。当接口被重复调用时，仅最后一次生效。当传入的handler为null时，表示取消之前的设置。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithOptions(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback constructor,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_Value parentClass,size_t optionCount,JSVM_DefineClassOptions options[],JSVM_Value* result)](#oh_jsvm_defineclasswithoptions) | 在封装一个 C++ 类时，通过构造函数传递的 C++ 构造函数回调应该是类中的一个静态方法，该方法调用实际的类构造函数，然后根据传入的不同选项，将新的 C++ 实例封装在一个 JavaScript 对象中并返回封装对象。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithOptions(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback constructor,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_Value parentClass,size_t option_count,JSVM_DefineClassOptions options[],JSVM_Value* result)](#oh_jsvm_defineclasswithoptions) | 在封装一个 C++ 类时，通过构造函数传递的 C++ 构造函数回调应该是类中的一个静态方法，该方法调用实际的类构造函数，然后根据传入的不同选项，将新的 C++ 实例封装在一个 JavaScript 对象中并返回封装对象。 |
 | [JSVM_Status JSVM_CDECL OH_JSVM_CreateExternalStringLatin1(JSVM_Env env,char* str,size_t length,JSVM_Finalize finalizeCallback,void* finalizeHint,JSVM_Value* result,bool* copied)](#oh_jsvm_createexternalstringlatin1) | 此 API 使用 ISO-8859-1 编码的 C 字符串，创建一个外部的 JavaScript 字符串。创建外部字符串失败时会复制原生字符串。 |
-| [JSVM_Status JSVM_CDECL OH_JSVM_CreateExternalStringUtf16(JSVM_Env env,char16_t* str,size_t length,JSVM_Finalize finalizecallback,void* finalizeHint,JSVM_Value* result,bool* copied)](#oh_jsvm_createexternalstringutf16) | 此 API 使用 UTF16-LE 编码的 C 字符串，创建一个外部的 JavaScript 字符串。创建外部字符串失败时会复制原生字符串。 |
+| [JSVM_Status JSVM_CDECL OH_JSVM_CreateExternalStringUtf16(JSVM_Env env,char16_t* str,size_t length,JSVM_Finalize finalizeCallback,void* finalizeHint,JSVM_Value* result,bool* copied)](#oh_jsvm_createexternalstringutf16) | 此 API 使用 UTF16-LE 编码的 C 字符串，创建一个外部的 JavaScript 字符串。创建外部字符串失败时会复制原生字符串。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreatePrivate(JSVM_Env env,JSVM_Value description,JSVM_Data* result)](#oh_jsvm_createprivate) | 创建一个 JavaScript private key 对象。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_SetPrivate(JSVM_Env env,JSVM_Value object,JSVM_Data key,JSVM_Value value)](#oh_jsvm_setprivate) | 为传入的object设置一个 private 属性。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_GetPrivate(JSVM_Env env,JSVM_Value object,JSVM_Data key,JSVM_Value *result)](#oh_jsvm_getprivate) | 从传入的object获取 private key 对应的 private 属性。 |
@@ -722,7 +722,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOrigin(JSVM_Env env,JSVM_Value 
 ### OH_JSVM_CompileScriptWithOptions()
 
 ```c
-JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOptions(JSVM_Env env,JSVM_Value script,size_t optionCount,JSVM_CompileOptions options[],JSVM_Value* result)
+JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOptions(JSVM_Env env,JSVM_Value script,size_t optionCount,JSVM_CompileOptions options[],JSVM_Script* result)
 ```
 
 **描述**
@@ -740,7 +740,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOptions(JSVM_Env env,JSVM_Value
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) script | 包含要编译的脚本的JavaScript代码。 |
 | size_t optionCount | 传入的 option 数组的长度。 |
 | JSVM_CompileOptions options[] | option 数组，存放所有的编译选项。 |
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 编译后的脚本。 |
+| [JSVM_Script](capi-jsvm-jsvm-value--8h.md)* result | 编译后的脚本。 |
 
 **返回：**
 
@@ -6069,7 +6069,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForPromiseReject(JSVM_VM vm,JSVM_Handl
 ### OH_JSVM_DefineClassWithOptions()
 
 ```c
-JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithOptions(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback constructor,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_Value parentClass,size_t optionCount,JSVM_DefineClassOptions options[],JSVM_Value* result)
+JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithOptions(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback constructor,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_Value parentClass,size_t option_count,JSVM_DefineClassOptions options[],JSVM_Value* result)
 ```
 
 **描述**
@@ -6090,7 +6090,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithOptions(JSVM_Env env,const char* 
 | size_t propertyCount                                                              | properties数组参数中的项目数量。 |
 | [const JSVM_PropertyDescriptor](capi-jsvm-jsvm-propertydescriptor.md)* properties | 类的属性描述符，用于定义类的属性和方法。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) parentClass             | 当前所定义的class的父类class。 |
-| size_t optionCount                                                                | options数组参数中的项目数量。 |
+| size_t option_count                                                                | options数组参数中的项目数量。 |
 | [JSVM_DefineClassOptions](capi-jsvm-jsvm-defineclassoptions.md) options[]                                             | 传入的用于定义class的选项数组。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result                 | 表示类的构造函数的JSVM_Value。 |
 
@@ -6134,7 +6134,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringLatin1(JSVM_Env env, char* s
 ### OH_JSVM_CreateExternalStringUtf16()
 
 ```c
-JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringUtf16(JSVM_Env env, char16_t* str, size_t length, JSVM_Finalize finalizecallback, void* finalizeHint, JSVM_Value* result, bool* copied)
+JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringUtf16(JSVM_Env env, char16_t* str, size_t length, JSVM_Finalize finalizeCallback, void* finalizeHint, JSVM_Value* result, bool* copied)
 ```
 
 **描述**
@@ -6304,7 +6304,6 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataReference(JSVM_Env env,JSVM_Data data,
 
 ```c
 JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceData(JSVM_Env env,JSVM_Ref ref,JSVM_Data* result)
-EXTERN_C_END
 ```
 
 **描述**

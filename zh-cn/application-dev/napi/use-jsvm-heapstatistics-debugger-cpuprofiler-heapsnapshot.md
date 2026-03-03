@@ -146,8 +146,8 @@ static JSVM_PropertyDescriptor descriptor[] = {
 const char *srcCallNative = R"JS(getHeapStatistics())JS";
 ```
 <!-- @[oh_jsvm_get_heap_statistics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/getheapstatistics/src/main/cpp/hello.cpp) -->
-预计的输出结果：
-```
+预计的输出结果（虚拟机堆的统计数据，会实时发生变化）：
+```txt
 JSVM API heap totalHeapSize: 1597440
 JSVM API heap totalHeapSizeExecutable: 0
 JSVM API heap totalPhysicalSize: 1323008

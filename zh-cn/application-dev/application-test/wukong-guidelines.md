@@ -122,6 +122,17 @@ wukong部件架构图以及部件内子模块职责如下所述。
     -B, --checkBWScreen        black and white screen detection
     -U, --Uri                  set Uri pages
     -x, --Uri-type             set Uri-type
+    -K, --knuckle              set percent of knuckle event
+    -f, --finger               set the number of fingers and proportions for tests such as swipe and knuckle gesture
+    -P, --pinch                set percent of pinch-to-zoom event
+    -D, --direction            set the swipe directions and proportions
+    -o, --pause                pause swiping for 1 second
+    -w, --crown                set percent of watch crown rotation event
+    -g, --gestures             set percent of watch gesture recognition events
+    -l, --idle                 set percent of watch idle event
+    -j, --keypress             set percent of watch physical button press event
+    -F, --float                set percent of float and split event
+    -W, --browser              set percent of browser operation event
   $ wukong special -help    #wukong专项测试帮助菜单
   usage: wukong special [<arguments>]
   These are wukong special arguments list:
@@ -150,29 +161,46 @@ wukong部件架构图以及部件内子模块职责如下所述。
 | 命令            | 功能                                 | 必选 | 说明                                     |
 | --------------- | ------------------------------------ | ---- | ---------------------------------------- |
 | -h,--help       | 获取当前测试的帮助信息。               | 否   |  -                        |
-| -c,--count      | 设置执行次数，与测试总时间-T冲突。二者取其一。   | 否   | 单位次数，默认10次。                       |
-| -i,--interval   | 设置执行间隔。                         | 否   | 单位ms，默认1500ms。                       |
+| -c,--count      | 设置执行次数，与测试总时间-T冲突。二者取其一。   | 否   | 单位次数，默认值为10次。                       |
+| -i,--interval   | 设置执行间隔。                         | 否   | 单位ms，默认值为1500ms。                       |
 | -s,--seed       | 设置随机种子。                         | 否   | 配置相同随机种子，会生成相同随机事件序列。 |
 | -b,--bundle[bundlename,……,bundlename]     | 设置本次测试的允许应用名单，与-p冲突。 | 否   | 默认测试当前设备所有应用（应用名称用英文逗号隔开）。                 |
 | -p,--prohibit[bundlename,……,bundlename]   | 设置本次测试的禁止应用名单，与-b冲突。 | 否   | 默认不禁止任何应用（应用名称用英文逗号隔开）。                       |
 | -d,--page[page,……,page]                   | 设置本次测试的禁止页面名单。 | 否  | 系统默认禁止pages/system页面（页面名称用逗号隔开）。 |
-| -a,--appswitch  | 设置应用随机拉起测试比例。             | 否   | 默认10%。                                  |
-| -t,--touch      | 设置屏幕随机触摸测试比例。            | 否   | 默认10%。                                  |
-| -S,--swap       | 设置屏幕随机移动测试比例。             | 否   | 默认3%。                                   |
-| -m,--mouse      | 设置屏幕随机鼠标测试比例。            | 否   | 默认1%。                                   |
-| -k,--keyboard   | 设置屏幕随机键盘操作测试比例。         | 否   | 默认2%。                                   |
-| -H,--hardkey    | 设置随机物理按键测试比例。              | 否   | 默认2%。                                   |
-| -r,--rotate     | 设置随机屏幕旋转测试比例。               | 否   | 默认2%。                                   |
-| -C, --component | 设置随机控件测试比例。                 | 否   | 默认70%。                                  |
+| -a,--appswitch  | 设置应用随机拉起测试比例。             | 否   | 取值范围0到1，默认值为10%。                                  |
+| -t,--touch      | 设置屏幕随机触摸测试比例。            | 否   | 取值范围0到1，默认值为10%。                                  |
+| -S,--swap       | 设置屏幕随机移动测试比例。             | 否   | 取值范围0到1，默认值为3%。                                   |
+| -m,--mouse      | 设置屏幕随机鼠标测试比例。            | 否   | 取值范围0到1，默认值为1%。                                   |
+| -k,--keyboard   | 设置屏幕随机键盘操作测试比例。         | 否   | 取值范围0到1，默认值为2%。                                   |
+| -H,--hardkey    | 设置随机物理按键测试比例。              | 否   | 取值范围0到1，默认值为2%。                                   |
+| -r,--rotate     | 设置随机屏幕旋转测试比例。               | 否   | 取值范围0到1，默认值为2%。                                   |
+| -C, --component | 设置随机控件测试比例。                 | 否   | 取值范围0到1，默认值为70%。                                  |
 | -I, --screenshot | 控件测试截图。                 | 否   | - |
-| -T,--time       | 设置测试总时间，与设置执行次数-c冲突。二者取其一。 | 否   | 单位分钟，默认10分钟。         |
+| -T,--time       | 设置测试总时间，与设置执行次数-c冲突。二者取其一。 | 否   | 单位分钟，默认值为10分钟。         |
 | -e, --allow ability   |  设置允许测试的ability。 | 否 | - |
 | -E, --block ability   |  设置禁止测试的ability。 | 否 | - |
 | -Y, --blockCompId     |  设置不进行注入的CompId。 | 否 | - |
 | -y, --blockCompType   |  设置不进行注入的CompType。 | 否 | - |
 | -B, --checkBWScreen   |  设置启用黑白屏检测。 | 否 | - |
-| -U, -uri              |  设置应用拉起页面uri。 | 否 | - |
-| -x, -uriType          |  设置应用拉起页面uriType。 | 否 | - |
+| -U, --Uri        | 设置应用拉起页面的URI。 | 否 | - |
+| -x, --UriType    | 设置应用拉起页面的URIType（统一资源标识符类型）。 | 否 | - |
+| -K, --knuckle    | 设置指关节敲击测试比例。       | 否 | 取值范围0到1，默认值为0。|
+| -f, --finger     | 设置滑动和指关节敲击测试的参与手指数量及比例。 | 否 | 支持配置1-4个手指，格式：-f <手指数1,比例>,<手指数2,比例>,<手指数3,比例>,<手指数4,比例>，例如:-f 1,0.25,2,0.25,3,0.25,4,0.25。|
+| -P, --pinch      | 设置双指捏合测试比例。     | 否 | 取值范围0到1，默认值为0。|
+| -D, --direction  | 设置滑动方向及比例。     | 否 | 支持配置上(u)、下(d)、左(l)、右(r)四个方向，格式：-D <方向1,比例>,<方向2,比例>,<方向3,比例>,<方向4,比例>，例如:u,0.25,r,0.25,d,0.25,l,0.25。| 
+| -o, --pause      | 设置滑动过程中支持暂停。    | 否 | 该参数缺省则不支持暂停。 |
+| -w, --crown      | 设置表冠操作测试比例。     | 否 | 仅Wearable设备支持，取值范围0到1，默认值为0。|
+| -g, --gestures   | 设置手势（如上滑、下滑、左滑、右滑等）操作测试比例。 | 否 | 仅Wearable设备支持，取值范围0到1，默认值为0。|
+| -l, --idle       | 设置待机状态下的操作测试比例。 | 否 | 仅Wearable设备支持，取值范围0到1，默认值为0。|
+| -j, --keypress   | 设置按键（电源键、智感窗按键）操作测试比例。 | 否 | 仅Wearable设备支持，取值范围0到1，默认值为0。|
+| -F, --float      | 设置应用分屏模式和悬浮窗模式的测试比例。 | 否 | 取值范围0到1，默认值为0。|
+| -W, --browser    | 设置浏览器操作测试比例。     | 否 | 取值范围0到1，默认值为0。|
+
+  >  **说明** 
+  >
+  > 上述参数的测试比例表示在当前测试中的操作，所有参数的测试比例之和需小于等于1。
+  >
+  > -K，-f，-P，-D，-o，-w，-g，-l，-j，-F，-W参数从API version 23开始支持。
 
 ### 使用示例
 
@@ -220,14 +248,14 @@ wukong部件架构图以及部件内子模块职责如下所述。
 | :------------------ | ---------------------- | ---- | :------------------ |
 | -h, --help          | 获取当前专项测试的帮助信息。 | 否   |  -    |
 | -k, --spec_insomnia | 休眠唤醒专项测试。       | 否   | -                   |
-| -c, --count         | 设置执行次数。           | 否   | 单位次数，默认10次。          |
-| -i, --interval      | 设置执行间隔。           | 否   | 单位ms，默认1500ms。  |
+| -c, --count         | 设置执行次数。           | 否   | 单位次数，默认值为10次。          |
+| -i, --interval      | 设置执行间隔。           | 否   | 单位ms，默认值为1500ms。  |
 | -S, --swap          | 滑动测试。               | 否   | -                   |
 | -s, --start[x,y]    | 设置滑动测试起点坐标。   | 否   | 坐标均为正值。           |
 | -e, --end[x,y]      | 设置滑动测试终点坐标。   | 否   | 坐标均为正值。          |
 | -b, --bilateral     | 设置往返滑动。           | 否   | 默认不往返滑动。      |
 | -t, --touch[x,y]    | 点击测试。               | 否   | -                   |
-| -T, --time          | 设置测试总时间。         | 否   | 单位分钟，默认10分钟。 |
+| -T, --time          | 设置测试总时间。         | 否   | 单位分钟，默认值为10分钟。 |
 | -C, --component     | 控件顺序遍历测试。       | 否   | 需要设置测试应用名称。 |
 | -r, --record     | 录制。       | 否   | 需要指定录制文件。 |
 | -R, --replay    |  回放。      | 否   | 需要指定回放文件。 |
@@ -248,22 +276,22 @@ $ wukong special -C [bundlename] -p
 | -n,--numberfocus       | 设置每个控件注入的次数。               | 否   | 单位次数。                 |
 | -f, --focustypes       | 设置需要专注的控件类型。               | 否   | 以英文逗号隔开。                         |
 | -h,--help       | 获取当前测试的帮助信息。               | 否   |  -                       |
-| -c,--count      | 设置执行次数，与设置执行时间-T冲突。二者取其一。   | 否   | 单位次数，默认10次。                       |
-| -i,--interval   | 设置执行间隔。                         | 否   | 单位ms，默认1500ms。                       |
+| -c,--count      | 设置执行次数，与设置执行时间-T冲突。二者取其一。   | 否   | 单位次数，默认值为10次。                       |
+| -i,--interval   | 设置执行间隔。                         | 否   | 单位ms，默认值为1500ms。                       |
 | -s,--seed       | 设置随机种子。                         | 否   | 配置相同随机种子，会生成相同随机事件序列。 |
 | -b,--bundle[bundlename,……,bundlename]     | 设置本次测试的允许应用名单，与-p冲突。 | 否   | 默认测试当前设备所有应用（应用名称用英文逗号隔开）。                 |
 | -p,--prohibit[bundlename,……,bundlename]   | 设置本次测试的禁止应用名单，与-b冲突。 | 否   | 默认不禁止任何应用（应用名称用英文逗号隔开）。                       |
 | -d,--page[page,……,page]                   | 设置本次测试的禁止页面名单。 | 否  | 系统默认禁止pages/system页面（页面名称用逗号隔开）。 |
-| -a,--appswitch  | 设置应用随机拉起测试比例。             | 否   | 默认10%。                                  |
-| -t,--touch      | 设置屏幕随机触摸测试比例。            | 否   | 默认10%。                                  |
-| -S,--swap       | 设置屏幕随机移动测试比例。             | 否   | 默认3%。                                   |
-| -m,--mouse      | 设置屏幕随机鼠标测试比例。            | 否   | 默认1%。                                   |
-| -k,--keyboard   | 设置屏幕随机键盘操作测试比例。         | 否   | 默认2%。                                   |
-| -H,--hardkey    | 设置随机物理按键测试比例。              | 否   | 默认2%。                                   |
-| -r,--rotate     | 设置随机屏幕旋转测试比例。               | 否   | 默认2%。                                   |
-| -C, --component | 设置随机控件测试比例。                 | 否   | 默认70%。                                  |
+| -a,--appswitch  | 设置应用随机拉起测试比例。             | 否   | 默认值为10%。                                  |
+| -t,--touch      | 设置屏幕随机触摸测试比例。            | 否   | 默认值为10%。                                  |
+| -S,--swap       | 设置屏幕随机移动测试比例。             | 否   | 默认值为3%。                                   |
+| -m,--mouse      | 设置屏幕随机鼠标测试比例。            | 否   | 默认值为1%。                                   |
+| -k,--keyboard   | 设置屏幕随机键盘操作测试比例。         | 否   | 默认值为2%。                                   |
+| -H,--hardkey    | 设置随机物理按键测试比例。              | 否   | 默认值为2%。                                   |
+| -r,--rotate     | 设置随机屏幕旋转测试比例。               | 否   | 默认值为2%。                                   |
+| -C, --component | 设置随机控件测试比例。                 | 否   | 默认值为70%。                                  |
 | -I, --screenshot | 控件测试截图。                 | 否   | - |
-| -T,--time       | 设置测试总时间，与设置执行次数-c冲突。二者取其一。 | 否   | 单位分钟，默认10分钟。         |
+| -T,--time       | 设置测试总时间，与设置执行次数-c冲突。二者取其一。 | 否   | 单位分钟，默认值为10分钟。         |
 | -e, --allow ability   |  设置允许测试的ability。 | 否 | - |
 | -E, --block ability   |  设置禁止测试的ability。 | 否 | - |
 | -Y, --blockCompId     |  设置不进行注入的CompId。 | 否 | - |

@@ -479,7 +479,7 @@ Defines the properties of all data records on the pasteboard, including the time
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- |-------------------------------|
-| additions | {[key:string]:object} | No| No| Additional property data. It does not allow for dynamic adding of properties. Properties can be added only by re-assigning values. This parameter is left empty by default. For details, see the example of **setProperty**.|
+| additions | Record<string, object> | No| No| Additional property data. It does not allow for dynamic adding of properties. Properties can be added only by re-assigning values. This parameter is left empty by default. For details, see the example of **setProperty**.|
 | mimeTypes | Array&lt;string&gt; | Yes| No| Non-repeating data types of the data records on the pasteboard.|
 | tag | string | No| No| Custom tag. This parameter is left empty by default.|
 | timestamp | number | Yes| No| Timestamp when data is written to the pasteboard (unit: ms).|
@@ -1244,7 +1244,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | Error Code ID| Error Message|
 | -------- | -------- |
 | 12900001 | The index is out of the record. |
-| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2018,7 +2018,7 @@ systemPasteboard.getData().then((pasteData: pasteboard.PasteData) => {
 
 hasRemoteData(): boolean
 
-Checks whether the pasteboard data is on a remote device. It takes a long time to transfer data across devices. Therefore, if the pasteboard data is on a remote device, you are advised not to perform either of the following operations in the UI thread:<br>1. Check whether the pasteboard data contains custom data types.<br>2. Read the pasteboard data.
+Checks whether the pasteboard data is on a remote device. It takes a long time to transfer data across devices. Therefore, if the pasteboard data is on a remote device, you are advised not to check whether the pasteboard data contains custom data types or read the pasteboard data.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
@@ -2028,7 +2028,7 @@ Checks whether the pasteboard data is on a remote device. It takes a long time t
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Returns a check result indicating whether the pasteboard data is on a remote device. The value **true** indicates that the pasteboard data is on a remote device, and **false** indicates the opposite. The default value can be **true** or **false**.|
+| boolean | Returns the check result. The value **true** indicates that the pasteboard data is on a remote device, and **false** indicates the opposite. Default value: **false**.|
 
 **Example**
 

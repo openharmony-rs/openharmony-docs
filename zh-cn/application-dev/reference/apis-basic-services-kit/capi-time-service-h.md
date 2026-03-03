@@ -12,6 +12,8 @@
 
 **库：** libtime_service_ndk.so
 
+**引用文件：** <BasicServicesKit/time_service.h>
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **起始版本：** 12

@@ -24,7 +24,9 @@ To convert an XML document into a JavaScript object and obtain the tag values, p
 
 1. Import the required module.
 
-   ```ts
+   <!-- @[xmlChange_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlConversion/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    import { convertxml } from '@kit.ArkTS';
    ```
 
@@ -34,14 +36,16 @@ To convert an XML document into a JavaScript object and obtain the tag values, p
    >
    > Ensure that the input XML text complies with the standard format. If the XML text to convert contains the ampersand (&), replace it with the entity reference **\&amp;**.
 
-   ```ts
+   <!-- @[xmlChange_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlConversion/entry/src/main/ets/pages/Index.ets) -->  
+   
+   ``` TypeScript
    let xml: string =
-    '<?xml version="1.0" encoding="utf-8"?>' +
-    '<note importance="high" logged="true">' +
-    '    <title>Happy</title>' +
-    '    <todo>Work</todo>' +
-    '    <todo>Play</todo>' +
-    '</note>';
+     '<?xml version="1.0" encoding="utf-8"?>' +
+       '<note importance="high" logged="true">' +
+       '    <title>Happy</title>' +
+       '    <todo>Work</todo>' +
+       '    <todo>Play</todo>' +
+       '</note>';
    let options: convertxml.ConvertOptions = {
      // trim: false, indicating that spaces before and after the text are not deleted after conversion.
      // declarationKey: "_declaration", indicating that _declaration is used to identify the file declaration after conversion.
@@ -56,23 +60,27 @@ To convert an XML document into a JavaScript object and obtain the tag values, p
      // nameKey: "_name", indicating that _name is used to identify tag names after conversion.
      // elementsKey: "_elements", indicating that _elements is used to identify elements after conversion.
      trim: false,
-     declarationKey: "_declaration",
-     instructionKey: "_instruction",
-     attributesKey: "_attributes",
-     textKey: "_text",
-     cdataKey: "_cdata",
-     doctypeKey: "_doctype",
-     commentKey: "_comment",
-     parentKey: "_parent",
-     typeKey: "_type",
-     nameKey: "_name",
-     elementsKey: "_elements"
+     declarationKey: '_declaration',
+     instructionKey: '_instruction',
+     attributesKey: '_attributes',
+     textKey: '_text',
+     cdataKey: '_cdata',
+     doctypeKey: '_doctype',
+     commentKey: '_comment',
+     parentKey: '_parent',
+     typeKey: '_type',
+     nameKey: '_name',
+     elementsKey: '_elements'
    }
    ```
 
+   <!-- @[xmlChange_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlConversion/entry/src/main/ets/pages/Index.ets) -->  
+
 3. Call the **fastConvertToJSObject** function and print the result.
 
-   ```ts
+   <!-- @[xmlChange_console](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlConversion/entry/src/main/ets/pages/Index.ets) -->  
+   
+   ``` TypeScript
    let conv: convertxml.ConvertXML = new convertxml.ConvertXML();
    let result: object = conv.fastConvertToJSObject(xml, options);
    let strRes: string = JSON.stringify(result); // Convert the JavaScript object into a JSON string for explicit output.

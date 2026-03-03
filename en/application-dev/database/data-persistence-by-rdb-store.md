@@ -29,7 +29,7 @@ Querying data from a large amount of data may take time or even cause applicatio
 **RelationalStore** provides APIs for applications to perform data operations. With SQLite as the underlying persistent storage engine, **RelationalStore** provides SQLite database features, including transactions, indexes, views, triggers, foreign keys, parameterized queries, prepared SQL statements, and more.
 
 **Figure 1** Working mechanism
-
+ 
 ![relationStore_local](figures/relationStore_local.jpg)
 
 
@@ -51,17 +51,17 @@ Querying data from a large amount of data may take time or even cause applicatio
 
 The following table lists the APIs used for RDB data persistence. Most of the APIs are executed asynchronously, using a callback or promise to return the result. The following table uses the callback-based APIs as an example. For more information about the APIs, see [RDB Store](../reference/apis-arkdata/arkts-apis-data-relationalStore.md).
 
-| API| Description|
+| API| Description| 
 | -------- | -------- |
 | getRdbStore(context: Context, config: StoreConfig, callback: AsyncCallback&lt;RdbStore&gt;): void | Obtains an **RdbStore** instance to implement RDB store operations. You can set **RdbStore** parameters based on actual requirements and use **RdbStore** APIs to perform data operations.|
 | createTransaction(options?: TransactionOptions): Promise&lt;Transaction&gt; | Creates a transaction object and starts the transaction.|
 | execute(sql: string, args?: Array&lt;ValueType&gt;):Promise&lt;ValueType&gt; | Executes an SQL statement that contains specified parameters.|
 | querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;ResultSet&gt; | Queries data in a store using the specified SQL statements.|
 | insert(table: string, values: ValuesBucket, conflict?: ConflictResolution): Promise&lt;number&gt; | Inserts a row of data into a table.|
-| update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;):void | Updates data in the RDB store based on the specified **predicates** instance.|
-| delete(predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;):void | Deletes data from the RDB store based on the specified **predicates** instance.|
-| query(predicates: RdbPredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;ResultSet&gt;):void | Queries data in the RDB store based on specified conditions.|
-| deleteRdbStore(context: Context, name: string, callback: AsyncCallback&lt;void&gt;): void | Deletes an RDB store.|
+| update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;):void | Updates data in the RDB store based on the specified **predicates** instance.| 
+| delete(predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;):void | Deletes data from the RDB store based on the specified **predicates** instance.| 
+| query(predicates: RdbPredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;ResultSet&gt;):void | Queries data in the RDB store based on specified conditions.| 
+| deleteRdbStore(context: Context, name: string, callback: AsyncCallback&lt;void&gt;): void | Deletes an RDB store.| 
 | isTokenizerSupported(tokenizer: Tokenizer): boolean | Checks whether the specified tokenizer is supported. (Tokenizer is a tool for breaking down text into smaller units, which can be words, subwords, characters, or other language fragments.)|
 
 ## How to Develop
@@ -71,14 +71,14 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
 
 1. Obtain an **RdbStore** instance, which includes operations of creating an RDB store and tables, and upgrading or downgrading the RDB store. You are advised to use transaction APIs to ensure the atomicity of the database upgrade process.
 
-   <br>Example:
+   Example:
    
    Stage model:
-   
+     
    <!--@[persistence_get_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 
    
    ``` TypeScript
-   import { relationalStore} from '@kit.ArkData'; // Import the relationalStore module.
+   import { relationalStore } from '@kit.ArkData'; // Import a module.
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    const DOMAIN = 0x0000;
@@ -142,7 +142,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
        // Upgrade the RDB store from version 1 to version 2.
        if (storeVersion === 1) {
          // version = 1: Table structure is EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS).
-         //=> version = 2: Table structure is EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY).
+         // => version = 2: Table structure is EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY).
          try {
            await transaction.execute('ALTER TABLE EMPLOYEE ADD COLUMN IDENTITY UNLIMITED INT');
            storeVersion = 2;
@@ -157,7 +157,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
        // Upgrade the RDB store from version 2 to version 3.
        if (storeVersion === 2) {
          // version = 2: Table structure is EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY).
-         //=> version = 3: Table structure is EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY).
+         // => version = 3: Table structure is EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY).
          try {
            await transaction.execute('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS');
            storeVersion = 3;
@@ -178,7 +178,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
    FA model:
 
    ```ts
-   import { relationalStore} from '@kit.ArkData'; // Import the relationalStore module.
+   import { relationalStore } from '@kit.ArkData'; // Import a module.
    import { featureAbility } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    
@@ -387,7 +387,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
    }
    if (store !== undefined) {
      try {
-       const resultSet = await store.querySql('SELECT name FROM example WHERE example MATCH ?', ['Test']);
+       const resultSet = await store.querySql('SELECT name FROM example WHERE example MATCH ?', ['测试']);
        while (resultSet.goToNextRow()) {
          const name = resultSet.getValue(resultSet.getColumnIndex('name'));
          hilog.info(DOMAIN, 'rdbDataPersistence', `name=${name}`);
@@ -403,6 +403,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
 5. Use the transaction object to insert, delete, and update data.
    
    Call the **createTransaction** method to create a transaction object and execute the corresponding operation.
+   
    The supported transaction types are **DEFERRED** (default), **IMMEDIATE**, and **EXCLUSIVE**.
 
    For details, see [Interface (RdbStore)](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#createtransaction14).
@@ -519,3 +520,5 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
      hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in deleting RdbStore.');
    });
    ```
+
+<!--no_check-->

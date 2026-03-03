@@ -13,7 +13,7 @@
 
 - [onDidBuild](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#ondidbuild12)：在组件首次渲染触发的build函数执行完成之后回调该接口，后续组件重新渲染将不回调该接口。开发者可以在这个阶段实现埋点数据上报等不影响实际UI的功能。
 
-- [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)：aboutToDisappear函数在自定义组件析构销毁之前执行。不允许在aboutToDisappear函数中改变状态变量，特别是@Link变量的修改可能会导致应用程序行为不稳定。
+- [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)：aboutToDisappear函数在自定义组件析构销毁之前执行。不允许在aboutToDisappear函数中改变状态变量，特别是[@Link变量](./arkts-link.md)的修改可能会导致应用程序行为不稳定。
 
 > **说明：**
 >
@@ -62,7 +62,7 @@
 
 通过以下示例，来详细说明自定义组件在嵌套使用时，自定义组件生命周期的调用时序：
 
-<!-- @[nested_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycle/entry/src/main/ets/pages/parent/Index.ets) --> 
+<!-- @[nested_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycle/entry/src/main/ets/pages/parent/Index.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -94,7 +94,7 @@ struct Parent {
       if (this.showChild) {
         Child()
       }
-      Button('delete Child')
+      Button(this.showChild ? 'delete Child' : 'add Child')
         .margin(20)
         .backgroundColor(this.btnColor)
         .onClick(() => {

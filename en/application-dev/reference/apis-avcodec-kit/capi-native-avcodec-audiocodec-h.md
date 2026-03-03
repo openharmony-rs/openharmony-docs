@@ -160,7 +160,7 @@ Sets an asynchronous callback so that your application can respond to events gen
 | Name| Description|
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to an OH_AVCodec instance.|
-| [OH_AVCodecCallback](capi-codecbase-oh-avcodecasynccallback.md) callback | All callback functions. For details, see [OH_AVCodecCallback](capi-codecbase-oh-avcodecasynccallback.md).|
+| [OH_AVCodecCallback](capi-codecbase-oh-avcodeccallback.md) callback | Set of all callback functions.|
 | void *userData | User-specific data.|
 
 **Returns**

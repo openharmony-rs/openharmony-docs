@@ -4,7 +4,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @hufeng20-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 Different package types serve various purposes and have distinct build processes. This requires you to consider different aspects when applying obfuscation. This topic provides tailored recommendations for three types of packages: [HAP](../quick-start/hap-package.md), [HAR](../quick-start/har-package.md), and [HSP](../quick-start/in-app-hsp.md), aiming to help you effectively implement obfuscation.
 

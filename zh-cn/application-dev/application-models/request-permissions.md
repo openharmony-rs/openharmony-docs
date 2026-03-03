@@ -10,7 +10,7 @@
 应用需要获取用户的隐私信息或使用系统能力时，例如获取位置信息、使用相机拍摄照片或录制视频等，需要向用户申请授权。
 
 
-在开发过程中，首先需要明确涉及的敏感权限并在config.json中声明需要的权限，同时通过接口requestPermissionsFromUser以动态弹窗的方式向用户申请授权。
+在开发过程中，开发者首先需要明确涉及的敏感权限，并在config.json中声明这些权限。然后在运行时通过requestPermissionsFromUser接口，以动态弹窗的方式向用户申请授权。
 
 
 在config.json声明需要的权限，在module下添加"reqPermissions"，并写入对应权限。

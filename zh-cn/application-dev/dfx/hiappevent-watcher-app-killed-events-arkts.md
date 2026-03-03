@@ -59,6 +59,8 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.foreground=${eventInfo.params['foreground']}`);
            // 开发者可以获取到应用终止事件发生的原因
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.reason=${eventInfo.params['reason']}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.app_running_unique_id=${eventInfo.params['app_running_unique_id']}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
          }
        }
      }
@@ -155,4 +157,6 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    HiAppEvent eventInfo.params.time=1717597063727
    HiAppEvent eventInfo.params.reason="RssThresholdKiller"
    HiAppEvent eventInfo.params.foreground=true
+   HiAppEvent eventInfo.params.app_running_unique_id=207544
+   HiAppEvent eventInfo.params.bundle_version=1000000
    ```

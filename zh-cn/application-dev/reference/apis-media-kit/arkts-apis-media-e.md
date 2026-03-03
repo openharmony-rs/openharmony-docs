@@ -22,7 +22,7 @@
 | :------------------------------------ | ------- | ------------------------------------ |
 | AVERR_OK                              | 0       | 表示操作成功。                       |
 | AVERR_NO_PERMISSION                   | 201     | 表示无权限执行此操作。               |
-| AVERR_INVALID_PARAMETER               | 401     | 表示传入入参无效。                   |
+| AVERR_INVALID_PARAMETER               | 401     | 表示传入参数无效。                   |
 | AVERR_UNSUPPORT_CAPABILITY            | 801     | 表示当前版本不支持该API能力。        |
 | AVERR_NO_MEMORY                       | 5400101 | 表示系统内存不足或服务数量达到上限。 |
 | AVERR_OPERATE_NOT_PERMIT              | 5400102 | 表示当前状态不允许或无权执行此操作。 |

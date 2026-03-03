@@ -8,7 +8,7 @@
 
 ## Overview
 
-Defines text styles and layout managers for the ArkUI text component on the native side.
+Defines the text style and layout manager for the component whose [type](../apis-arkui/capi-native-node-h.md#arkui_nodetype) is set to **ARKUI_NODE_TEXT** on the native side.
 
 **File to include**: <arkui/styled_string.h>
 
@@ -40,10 +40,10 @@ Defines text styles and layout managers for the ArkUI text component on the nati
 | [void OH_ArkUI_StyledString_PushTextStyle(ArkUI_StyledString* handle, OH_Drawing_TextStyle* style)](#oh_arkui_styledstring_pushtextstyle) | Pushes a text style to the top of the style stack of a styled string.|
 | [void OH_ArkUI_StyledString_AddText(ArkUI_StyledString* handle, const char* content)](#oh_arkui_styledstring_addtext) | Adds text for a styled string.|
 | [void OH_ArkUI_StyledString_PopTextStyle(ArkUI_StyledString* handle)](#oh_arkui_styledstring_poptextstyle) | Pops the style at the top of the style stack of a styled string.|
-| [OH_Drawing_Typography* OH_ArkUI_StyledString_CreateTypography(ArkUI_StyledString* handle)](#oh_arkui_styledstring_createtypography) | Creates an **OH_Drawing_Typography** object based on an **ArkUI_StyledString** object.|
+| [OH_Drawing_Typography* OH_ArkUI_StyledString_CreateTypography(ArkUI_StyledString* handle)](#oh_arkui_styledstring_createtypography) | Creates a pointer to the [OH_Drawing_Typography](../apis-arkgraphics2d/capi-drawing-oh-drawing-typography.md) object based on an **ArkUI_StyledString** object for text measurement and typesetting in advance.|
 | [void OH_ArkUI_StyledString_AddPlaceholder(ArkUI_StyledString* handle, OH_Drawing_PlaceholderSpan* placeholder)](#oh_arkui_styledstring_addplaceholder) | Adds a placeholder.|
 | [ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_Create(void)](#oh_arkui_styledstring_descriptor_create) | Creates an **ArkUI_StyledString_Descriptor** object.|
-| [void OH_ArkUI_StyledString_Descriptor_Destroy(ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_styledstring_descriptor_destroy) | Destroys an **ArkUI_StyledString_Descriptor** object and reclaims the memory occupied by the object.|
+| [void OH_ArkUI_StyledString_Descriptor_Destroy(ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_styledstring_descriptor_destroy) | Releases the memory occupied by the [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md) object.|
 | [int32_t OH_ArkUI_UnmarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSize, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_unmarshallstyledstringdescriptor) | Unmarshals a byte array containing styled string information into a styled string.|
 | [int32_t OH_ArkUI_MarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSize, ArkUI_StyledString_Descriptor* descriptor, size_t* resultSize)](#oh_arkui_marshallstyledstringdescriptor) | Marshals the styled string information into a byte array.|
 | [const char* OH_ArkUI_ConvertToHtml(ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_converttohtml) | Converts styled string information into HTML.|
@@ -63,7 +63,7 @@ ArkUI_StyledString* OH_ArkUI_StyledString_Create(OH_Drawing_TypographyStyle* sty
 
 **Description**
 
-Creates an **ArkUI_StyledString** object and returns its pointer.
+Creates a pointer to the **ArkUI_StyledString** object.
 
 **Since**: 12
 
@@ -72,7 +72,7 @@ Creates an **ArkUI_StyledString** object and returns its pointer.
 | Name| Description                                                                                                                                                              |
 | -- |------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [OH_Drawing_TypographyStyle](../apis-arkgraphics2d/capi-drawing-oh-drawing-typographystyle.md)* style | Pointer to an **OH_Drawing_TypographyStyle** object, obtained using [OH_Drawing_CreateTypographyStyle](../apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_createtypographystyle).|
-| [OH_Drawing_FontCollection](../apis-arkgraphics2d/capi-drawing-oh-drawing-fontcollection.md)* collection | Pointer to an **OH_Drawing_FontCollection** object, obtained using [OH_Drawing_CreateFontCollection](../apis-arkgraphics2d/capi-drawing-font-collection-h.md).                                                                                   |
+| [OH_Drawing_FontCollection](../apis-arkgraphics2d/capi-drawing-oh-drawing-fontcollection.md)* collection | Pointer to an **OH_Drawing_FontCollection** object, obtained using [OH_Drawing_CreateFontCollection](../apis-arkgraphics2d/capi-drawing-font-collection-h.md#oh_drawing_createfontcollection).                                                                                   |
 
 **Return value**
 
@@ -308,7 +308,7 @@ Converts styled string information into HTML.
 
 | Type| Description|
 | -- | -- |
-| const char* | HTML object. The pointer is managed internally and should be destroyed by calling **OH_ArkUI_StyledString_Descriptor_Destroy()** when no longer needed to free the memory.|
+| const char* | HTML object. This pointer is internally managed and is released when [OH_ArkUI_StyledString_Descriptor_Destroy()](#oh_arkui_styledstring_descriptor_destroy) is called.|
 
 ### OH_ArkUI_TextLayoutManager_Dispose()
 

@@ -356,6 +356,8 @@ napi_value CreateExternalArraybuffer(napi_env env, napi_callback_info info)
         napi_create_external_arraybuffer(env, dataArray, 5, FinalizeCallback, bufferData, &externalBuffer);
     if (status != napi_ok) {
         // 处理错误
+        delete[] dataArray;
+        delete bufferData;
         napi_throw_error(env, nullptr, "Node-API napi_create_external_arraybuffer fail");
         return nullptr;
     }

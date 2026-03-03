@@ -7,7 +7,7 @@
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The reminderAgentManager module provides APIs related to agent-powered reminders. When your application is frozen or exits, the application's scheduled notification capability will be taken over by a system service running in the background. You can use the APIs to create scheduled reminders for countdown timers, calendar events, and alarm clocks. For details, see [Agent-powered Reminder](../../task-management/agent-powered-reminder.md).
+The **reminderAgentManager** module provides APIs related to agent-powered reminders. When your application is frozen or exits, the application's scheduled notification capability will be taken over by a system service running in the background. You can use the APIs to create scheduled reminders for countdown timers, calendar events, and alarm clocks. For details, see [Agent-powered Reminder](../../task-management/agent-powered-reminder.md).
 
 > **NOTE**
 >
@@ -40,10 +40,10 @@ Once an agent-powered reminder is published, the notification center will displa
 
 **Parameters**
 
-  | Name| Type| Mandatory| Description|
-  | -------- | -------- | -------- | -------- |
-  | reminderReq | [ReminderRequest](#reminderrequest) | Yes| Request used for publishing the reminder.|
-  | callback | AsyncCallback\<number> | Yes| Callback used to return the published reminder's ID.|
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| reminderReq | [ReminderRequest](#reminderrequest) | Yes| Request used for publishing the reminder.|
+| callback | AsyncCallback\<number> | Yes| Callback used to return the published reminder's ID.|
 
 **Error codes**
 
@@ -94,9 +94,9 @@ If the value of [ReminderRequest.ringDuration](#reminderrequest) is greater than
 
 **Parameters**
 
-  | Name| Type| Mandatory| Description|
-  | -------- | -------- | -------- | -------- |
-  | reminderReq | [ReminderRequest](#reminderrequest) | Yes| Request used for publishing the reminder.|
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| reminderReq | [ReminderRequest](#reminderrequest) | Yes| Request used for publishing the reminder.|
 
 **Return value**
 

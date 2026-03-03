@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-**SegmentButtonV2** is a versatile component that organizes related options into visually grouped buttons. It supports three variants: tab-style, capsule-style single-select, and capsule-style multi-select.
+**SegmentButtonV2** is a versatile component that organizes related options into segmented buttons. It supports three variants: tab-style, capsule-style single-select, and capsule-style multi-select.
 
 > **NOTE:**
 >
@@ -23,7 +23,7 @@ import { TabSegmentButtonV2, CapsuleSegmentButtonV2, MultiCapsuleSegmentButtonV2
 
 ## TabSegmentButtonV2
 
-Tabbed segment button.
+Tab-style segmented button.
 
 **Decorator**: @ComponentV2
 
@@ -35,11 +35,11 @@ Tabbed segment button.
 
 | Name| Type | Mandatory| Decorator| Description|
 | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| backgroundSystemMaterial<sup>23+</sup> | [uiMaterial.Material](../arkts-apis-uimaterial-sys.md#material) | No| @Param | System material of the background of the segment button component. Different system materials have different attributes that affect the effect.<br>Default value: no material effect<br>This member is read-only and cannot be modified.<br>**System API**: This is a system API.|
+| backgroundSystemMaterial<sup>23+</sup> | [uiMaterial.Material](../arkts-apis-uimaterial-sys.md#material) | No| @Param | System material for the background of the **SegmentButtonV2** component. Different system materials have different attributes that affect the effect.<br>Default value: no material effect<br>This property is read-only.<br>**System API**: This is a system API.|
 
 ## CapsuleSegmentButtonV2
 
-Capsule segment button.
+Capsule-style segmented button.
 
 **Decorator**: @ComponentV2
 
@@ -51,12 +51,12 @@ Capsule segment button.
 
 | Name| Type | Mandatory| Decorator| Description|
 | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| backgroundSystemMaterial<sup>23+</sup> | [uiMaterial.Material](../arkts-apis-uimaterial-sys.md#material)  | No| @Param | System material of the background plate of the segmented button component. Different system materials contain different attributes that affect the effect.<br>Default value: no material effect<br>This member is read-only and cannot be modified.<br>**System API**: This is a system API.|
+| backgroundSystemMaterial<sup>23+</sup> | [uiMaterial.Material](../arkts-apis-uimaterial-sys.md#material)  | No| @Param | System material for the background of the **SegmentButtonV2** component. Different system materials have different attributes that affect the effect.<br>Default value: no material effect<br>This property is read-only.<br>**System API**: This is a system API.|
 
 ## Example
 
-### Example 1 (setting the background plate material)
-In the following example, the backgroundSystemMaterial attribute is used to set a translucent background plate material for the segmented button.
+### Example 1: Setting the Background Material
+This example demonstrates how to set the background to a semi-transparent material by using the **backgroundSystemMaterial** attribute.
 
 In API version 23 and later versions, the **backgroundSystemMaterial** attribute is added to [TabSegmentButtonV2](#tabsegmentbuttonv2) and [CapsuleSegmentButtonV2](#capsulesegmentbuttonv2).
 
@@ -70,7 +70,7 @@ struct SegmentButtonV2Example {
   @Local textItems: SegmentButtonV2Items = new SegmentButtonV2Items([
     { text: 'Phone'},
     { text: 'Tablet' },
-    { text: 'PC/2in1' },
+    { text: 'PC/2-in-1' },
     { text: 'Wearable' },
   ]);
   @Local textSelectedIndex: number = 0;
@@ -86,24 +86,24 @@ struct SegmentButtonV2Example {
   build() {
     Scroll() {
       Stack() {
-        // Background of the segmented button. Replace 'app.media.pic' with the image required by the developer.
+        // Background for the SegmentButton component. Replace ('app.media.pic') with the image you use.
         Image($r('app.media.pic'))
         Column({ space: 12 }) {
           VCard({ title: 'Text Button' }) {
             TabSegmentButtonV2({
               items: this.textItems,
               selectedIndex: this.textSelectedIndex!!,
-              // Set the material to be translucent.
+              // Set a semi-transparent material.
               backgroundSystemMaterial:
               new uiMaterial.Material({ type: uiMaterial.MaterialType.SEMI_TRANSPARENT } as uiMaterial.MaterialOptions)
             })
           }
 
-          VCard({ title: 'Icon-only option' }) {
+          VCard({ title: 'Symbol Button' }) {
             CapsuleSegmentButtonV2({
               items: this.imageItems,
               selectedIndex: this.imageSelectedIndex!!,
-              // Set the material to be translucent.
+              // Set a semi-transparent material.
               backgroundSystemMaterial:
               new uiMaterial.Material({ type: uiMaterial.MaterialType.SEMI_TRANSPARENT } as uiMaterial.MaterialOptions)
             })

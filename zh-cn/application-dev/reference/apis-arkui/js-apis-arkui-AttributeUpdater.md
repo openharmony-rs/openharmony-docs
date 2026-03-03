@@ -134,7 +134,7 @@ struct Index {
           .width('80%')
           .labelStyle({ maxLines: 2 })
           .onClick(() => {
-            this.flushTheButton = this.flushTheButton + ' Updated' ;
+            this.flushTheButton = this.flushTheButton + ' Updated';
           })
       }
       .width('100%')
@@ -276,7 +276,7 @@ class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
       .height(30);
   }
 
-  onComponentChanged(instance: ButtonAttribute) :void {
+  onComponentChanged(instance: ButtonAttribute): void {
     instance.backgroundColor('#ff2787d9')
       .width('50%')
       .height(30);
@@ -295,7 +295,7 @@ struct updaterDemo4 {
         Button("Test")
           .onClick(() => {
             this.btnState = !this.btnState;
-        })
+          })
 
         if (this.btnState) {
           Button("Button")

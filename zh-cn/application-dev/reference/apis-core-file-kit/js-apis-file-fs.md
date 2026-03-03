@@ -2880,6 +2880,10 @@ symlink(target: string, srcPath: string): Promise&lt;void&gt;
 
 基于文件路径创建符号链接，使用promise异步回调。
 
+> **说明：**
+>
+> 从API version 11开始，不支持三方应用使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -2918,6 +2922,10 @@ symlink(target: string, srcPath: string, callback: AsyncCallback&lt;void&gt;): v
 
 基于文件路径创建符号链接，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 11开始，不支持三方应用使用。
+
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
 **参数：**
@@ -2952,6 +2960,10 @@ symlink(target: string, srcPath: string, callback: AsyncCallback&lt;void&gt;): v
 symlinkSync(target: string, srcPath: string): void
 
 以同步的方法基于文件路径创建符号链接。
+
+> **说明：**
+>
+> 从API version 11开始，不支持三方应用使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -4374,6 +4386,7 @@ try {
   let file = new fs.AtomicFile(`${pathDir}/write.txt`);
   let writeStream = file.startWrite();
   writeStream.write("hello, world", "utf-8", ()=> {
+    file.finishWrite();
     console.info('AtomicFile write finished!');
   })
 } catch (err) {

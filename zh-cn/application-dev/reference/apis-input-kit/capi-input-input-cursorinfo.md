@@ -25,5 +25,5 @@ typedef struct Input_CursorInfo Input_CursorInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Input_CursorInfo_Create](capi-oh-input-manager-h.md#oh_input_cursorinfo_create) | 创建鼠标光标信息对象。 |
+| [OH_Input_CursorInfo_Create](capi-oh-input-manager-h.md#oh_input_cursorinfo_create) | 创建鼠标光标信息对象。通过调用[OH_Input_CursorInfo_Destroy](capi-oh-input-manager-h.md#oh_input_cursorinfo_destroy)销毁鼠标光标信息对象。 |
 | [OH_Input_CursorInfo_Destroy](capi-oh-input-manager-h.md#oh_input_cursorinfo_destroy) | 销毁鼠标光标信息对象。 |
