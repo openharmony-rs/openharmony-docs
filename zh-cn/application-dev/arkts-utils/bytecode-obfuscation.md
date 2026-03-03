@@ -109,7 +109,7 @@ test(a2);
 
 ![w3332](figures/bytecode-static-compilation-process.png)
 
-源码混淆仅适用于ArkTS-Dyn语言，ArkTS-Sta的字节码混淆不涉及源码混淆部分。
+ArkTS-Sta的字节码混淆不涉及源码混淆部分。
 
 开发者可以在模块的build-profile.json5配置文件中开启混淆功能，详细参考[字节码混淆开启指南](bytecode-obfuscation-guide.md)，从而在编译打包的过程中自动对abc进行混淆处理。
 
@@ -150,7 +150,7 @@ test(a2);
 | 功能 | 选项 |
 | --- | --- |
 |输出[keep规则](#已有保留选项汇总)所匹配到的类或属性到文件中|	[`-print-seeds`](#-print-seeds)|
-|输出已解析的全部配置到指定文件中|	[`-print-configuration`](#-print-configuration) filePath|
+|输出已解析的全部配置到指定文件中|	[`-print-configuration`](#-print-configuration)|
 
 ### -disable-obfuscation
 
