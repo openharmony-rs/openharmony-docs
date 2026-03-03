@@ -1150,7 +1150,7 @@ executeShellCommand(cmd: string, timeoutSecs?: number): Promise\<ShellCmdResult>
 | 参数名      | 类型   | 必填 | 说明                          |
 | ----------- | ------ | ---- | ----------------------------- |
 | cmd         | string | 是   | shell命令字符串。               |
-| timeoutSecs | number | 否   | 设定命令超时时间，单位秒（s）。 |
+| timeoutSecs | number | 否   | 设定命令超时时间，单位秒（s）。默认值为0，表示不设置超时时间。 |
 
 **返回值：**
 
