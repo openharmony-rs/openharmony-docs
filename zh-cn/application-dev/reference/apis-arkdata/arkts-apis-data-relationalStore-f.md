@@ -308,7 +308,6 @@ class EntryAbility extends UIAbility {
 }
 ```
 
-
 ## relationalStore.getRdbStoreSync<sup>24+</sup>
 
 getRdbStoreSync(context: Context, config: StoreConfig): RdbStore
