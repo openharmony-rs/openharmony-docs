@@ -246,6 +246,7 @@
 
    > **说明：**<br>
    > 通过dispatchSessionEvent方法设置的数据不会保存在会话对象或AVSession服务中。
+   
    <!-- @[dispatchSessionEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/DispatchSessionEvent.ets) -->
    
    ``` TypeScript
