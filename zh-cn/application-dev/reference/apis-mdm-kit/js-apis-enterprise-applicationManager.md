@@ -1290,7 +1290,7 @@ try {
 
 setKioskFeatures(admin: Want, features: Array\<KioskFeature>): void
 
-设置Kiosk模式的特征。通过本接口可以控制在[Kiosk模式](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode)下能否进入通知中心和控制中心。非Kiosk模式时，本接口可以正常调用，但是不会生效，进入Kiosk模式后才会生效。
+设置Kiosk模式的特征。通过本接口可以控制在[Kiosk模式](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode)下能否进入通知中心、控制中心、最近任务栏、侧边DOCK栏。非Kiosk模式时，本接口可以正常调用，但是不会生效，进入Kiosk模式后才会生效。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_KIOSK
 
@@ -1307,7 +1307,7 @@ setKioskFeatures(admin: Want, features: Array\<KioskFeature>): void
 | 参数名       | 类型                                                    | 必填 | 说明                   |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。         |
-| features | Array&lt;[KioskFeature](#kioskfeature20)&gt;           | 是   | Kiosk模式的特征集合。 <br> 当传入空数组时，系统会清空之前下发过的特征，恢复到Kiosk模式的默认状态，即禁用通知中心、控制中心、最近任务栏和侧边Dock（侧边Dock默认状态下能左滑悬停展示，设置后左滑悬停不展示）等能力。|
+| features | Array&lt;[KioskFeature](#kioskfeature20)&gt;           | 是   | Kiosk模式的特征集合。 <br> 当传入空数组时，系统会清空之前下发过的特征，恢复到Kiosk模式的默认状态。即：禁用通知中心、控制中心、最近任务栏等能力；允许使用侧边Dock栏。|
 
 **错误码**：
 
@@ -1354,10 +1354,10 @@ Kiosk模式的特征。
 
 | 名称                        | 值  | 说明    |
 | ----------------------------| ----| ------------------------------- |
-| ALLOW_NOTIFICATION_CENTER   | 1   | 允许进入通知中心。 |
-| ALLOW_CONTROL_CENTER        | 2   | 允许进入控制中心。 |
-| ALLOW_GESTURE_CONTROL<sup>24+</sup>    | 3   | 允许使用底部手势导航。 |
-| ALLOW_SIDE_DOCK<sup>24+</sup>    | 4   | 允许使用侧边Dock。 |
+| ALLOW_NOTIFICATION_CENTER   | 1   | 允许进入通知中心（通过单指左上方下滑进入）。 |
+| ALLOW_CONTROL_CENTER        | 2   | 允许进入控制中心（通过单指右上方下滑进入）。 |
+| ALLOW_GESTURE_CONTROL<sup>24+</sup>    | 3   | 允许进入最近任务栏（通过单指底部上滑停留进入）。 |
+| ALLOW_SIDE_DOCK<sup>24+</sup>    | 4   | 禁止进入侧边DOCK栏（通过单指边缘内滑停留进入）。 |
 
 ## applicationManager.addUserNonStopApps<sup>22+</sup>
 
