@@ -51,18 +51,18 @@
 
 2. 在[SelectionModel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/models/SelectionModel.ets)文件中，开发者可自定义划词模块管理类，用于统一管理划词内容、窗口等信息。并且实现一些get、set接口，便于信息的类间传递。
     <!-- @[SelectionModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/models/SelectionModel.ets) -->
-
+    
     ``` TypeScript
     import { selectionManager, SelectionExtensionContext } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
+    
     export class SelectionModel {
       private selectionInfo: selectionManager.SelectionInfo | undefined;
       private selectionContent: string | undefined;
       private selectionPanel: selectionManager.Panel | undefined;
       private context: SelectionExtensionContext | undefined;
       private listener: (selectionInfo: selectionManager.SelectionInfo) => void;
-
+    
       private constructor() {
         this.selectionInfo = undefined;
         this.selectionContent = undefined;
@@ -72,46 +72,46 @@
           hilog.info(0x0000, 'SelectionModel', `Received selection selectionInfo: ${selectionInfo}`);
         }
       }
-
+    
       public static getInstance(): SelectionModel {
         if (globalThis.instance == null) {
           globalThis.instance = new SelectionModel();
         }
         return globalThis.instance;
       }
-
+    
       public getSelectionInfo(): selectionManager.SelectionInfo | undefined {
         return this.selectionInfo;
       }
-
+    
       public setSelectionInfo(selectionInfo: selectionManager.SelectionInfo) {
         this.selectionInfo = selectionInfo;
       }
-
+    
       public getSelectionContent(): string | undefined {
         return this.selectionContent;
       }
-
+    
       public setSelectionContent(selectionContent: string) {
         this.selectionContent = selectionContent;
       }
-
+    
       public getSelectionPanel(): selectionManager.Panel | undefined {
         return this.selectionPanel;
       }
-
+    
       public setSelectionPanel(selectionPanel: selectionManager.Panel) {
         this.selectionPanel = selectionPanel;
       }
-
+    
       public getContext(): SelectionExtensionContext | undefined {
         return this.context;
       }
-
+    
       public setContext(context: SelectionExtensionContext) {
         this.context = context;
       }
-
+    
       public registerListener(listener: (selectionInfo: selectionManager.SelectionInfo) => void) {
         this.listener = listener;
       }
