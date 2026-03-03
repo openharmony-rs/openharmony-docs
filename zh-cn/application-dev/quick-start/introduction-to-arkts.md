@@ -2477,6 +2477,7 @@ console.info('hello');
 
 
 
+
 <!-- @[annotation_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->    
 
 ``` TypeScript
