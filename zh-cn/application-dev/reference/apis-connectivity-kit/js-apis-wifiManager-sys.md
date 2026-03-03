@@ -227,22 +227,21 @@ Wifi 代理配置。
 
 ## wifiManager.getDeviceConfig<sup>24+</sup>
 
-getDeviceConfig(networkId: int): WifiDeviceConfig
+getDeviceConfig(networkId: number): WifiDeviceConfig
 
 根据网络ID获取单条网络配置。
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.GET_WIFI_CONFIG(仅系统应用可申请)。
+**需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.GET_WIFI_CONFIG(仅系统应用可申请)
 
-**系统能力：**
-  SystemCapability.Communication.WiFi.STA
+**系统能力：** SystemCapability.Communication.WiFi.STA
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| networkId | int | 是 | 待查询的网络配置ID。 |
+| networkId | number | 是 | 待查询的网络配置ID。 |
 
 **返回值：**
 
@@ -252,7 +251,7 @@ getDeviceConfig(networkId: int): WifiDeviceConfig
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码 | 错误信息 |
 | -------- | -------- |
@@ -268,9 +267,9 @@ getDeviceConfig(networkId: int): WifiDeviceConfig
   try {
     let networkId = 0;
     let config = wifiManager.getDeviceConfig(networkId);
-    console.info("config:" + JSON.stringify(config));    
+    console.info(`config: ${JSON.stringify(config)}`);    
   }catch(error){
-    console.error("failed:" + JSON.stringify(error));
+    console.error(`failed: ${JSON.stringify(error)}`);
   }
 ```
 
