@@ -330,8 +330,8 @@ enum OH_AudioInterrupt_Hint
 | AUDIOSTREAM_INTERRUPT_HINT_STOP = 3 | 提示音频停止，彻底失去音频焦点。 |
 | AUDIOSTREAM_INTERRUPT_HINT_DUCK = 4 | 提示音频躲避开始，音频降低音量播放，而不会停止。 |
 | AUDIOSTREAM_INTERRUPT_HINT_UNDUCK = 5 | 提示音量躲避结束，音频恢复正常音量。 |
-| AUDIOSTREAM_INTERRUPT_HINT_MUTE = 6 |  |
-| AUDIOSTREAM_INTERRUPT_HINT_UNMUTE = 7 |  |
+| AUDIOSTREAM_INTERRUPT_HINT_MUTE = 6 | 提示音频静音。<br>**起始版本：** 20 |	 
+ | AUDIOSTREAM_INTERRUPT_HINT_UNMUTE = 7 | 提示音频解除静音。<br>**起始版本：** 20 |
 
 ### OH_AudioInterrupt_Mode
 
