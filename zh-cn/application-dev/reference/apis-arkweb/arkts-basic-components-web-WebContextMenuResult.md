@@ -42,7 +42,7 @@ closeContextMenu(): void
 
 copyImage(): void
 
-WebContextMenuParam有图片内容则复制图片，从API version 24开始支持对canvas图片进行复制。
+当WebContextMenuParam有图片内容时则复制图片，从API version 24开始支持对canvas图片进行复制。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
