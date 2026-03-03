@@ -337,7 +337,7 @@ export struct ContentPageNoAndTabLinkage {
               // app.string.homepage_content资源文件中的value值为“首页内容”
               Text($r('app.string.homepage_content')).width('100%').height('100%').backgroundColor('rgb(213,213,213)')
                 .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
-            //app.string.homepage资源文件中的value值为“首页”
+            // app.string.homepage资源文件中的value值为“首页”
             }.tabBar(this.tabBuilder($r('app.string.homepage'), 0))
 
             TabContent() {
