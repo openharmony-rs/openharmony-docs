@@ -18,14 +18,18 @@
 
 ### 使用Trace工具
 1. 使用[DevEco Profiler工具](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-optimization-overview#section2012922312284)抓取场景Trace，如果即使在静止状态，Trace仍然每一帧都相应Vsync，则有可能出现不可见刷新问题。
+
 ![](./figures/refresh.png)
 
 2. 通过Trace中的tag信息可以进一步确定标脏的组件ID。
+
 ![](./figures/componentid.png)
 
 3. 如果有明确的组件ID则可以直接使用inspector工具确定异常组件，如果组件ID是-1则大概率是空跑问题，可通过场景二分法确定。
+
 ### 使用inspector工具
 ![](./figures/inspector.png)
+
 通过使用Trace分析法获取组件ID后可以通过inspector工具或者抓取组件树的方法进一步确定异常组件的位置。
 ### 场景二分定位法
 如果组件不在组件树上，需要复现场景，抓取操作路径上的每个步骤的Trace二分查找，找到异常组件未下树的Trace重复上述两个方法。
@@ -35,7 +39,9 @@
 下方展示了使用[ImageAnimator](../reference/apis-arkui/arkui-ts/ts-basic-components-imageanimator.md)实现的动画组件，通过设置duration实现多个Pixelmap的循环播放。例如，当组件放置在Scroll容器中时，为避免组件划出屏幕导致的不可见空跑问题，可以通过监听组件移出屏幕的事件，修改动画播放状态，从而控制空跑。以下提供了几种接入可见性接口的实现方式，开发者可根据需要选择一种：
 
 [onVisibleAreaChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange)：可直接绑定到组件，当组件可见时每帧进行一次可见性计算，达到阈值时触发回调。
+
 [setOnVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-uicommonevent.md#setonvisibleareaapproximatechange)是onVisibleAreaChange()的低频优化版本，可以通过参数设置可见性计算的周期。例如，可以将expectedUpdateInterval设置为500ms。
+
 由于onVisibleAreaChange()在可见时会每帧进行一次计算检测，当组件数量较多、节点层次较深且帧率较高时，使用setOnVisibleAreaApproximateChange()可以减少计算负载，从而显著提升性能和降低功耗。
 
 ```ts
@@ -112,7 +118,7 @@ struct ImageAnimatorTest {
 
 
 ```ts
-import { apng, ApngController } from '@ohos/apng'; //开发者自行导入apng依赖库，详见上述说明。
+import { apng, ApngController } from '@ohos/apng'; // 开发者自行导入apng依赖库，详见上述说明。
 
 @Entry
 @Component
@@ -143,7 +149,7 @@ struct RefreshExample {
 
 ```ts
 // VisibleComponent/entry/src/main/ets/pages/Index.ets
-import { apng, ApngController } from '@ohos/apng'; //开发者自行导入apng依赖库，详见上述说明。
+import { apng, ApngController } from '@ohos/apng'; // 开发者自行导入apng依赖库，详见上述说明。
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
@@ -220,6 +226,7 @@ struct RefreshExample {
 
 ### 合理使用自定义动画
 不合理的使用animator、displaysync也会导致冗余刷新问题。主要表现在三方使用Canvas自绘制动画没有在适当时机停止、使用animator开始动画未停止、注册了displaysync未在合适的时机解注册等。
+
 另外，不合理的delay设置也会导致不可见刷新，如开发者使用animator等函数设置延迟3s的动画，同时间隔3.5s再次调用这个动画等。
 
 ## 系统组件默认策略
