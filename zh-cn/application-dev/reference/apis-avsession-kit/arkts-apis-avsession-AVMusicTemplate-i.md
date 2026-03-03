@@ -74,14 +74,7 @@
 
 ## Compilation<sup>23+</sup>
 
-```json
-[{
-  "problematic sentence": "合集的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)的子类",
-  "reason": "句子明显缺少结束标点",
-  "line_number": "",
-  "fixed sentence": "合集的定义是[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)的子类。"
-}]
-```
+合集的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult23)的子类。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
