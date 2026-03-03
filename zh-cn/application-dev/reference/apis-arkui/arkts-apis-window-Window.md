@@ -15183,9 +15183,11 @@ ArkTS-Sta: setWindowCornerRadius(cornerRadius: double): Promise&lt;void&gt;
 
 | 错误码ID   | 错误信息                                                                                                              |
 |---------|-------------------------------------------------------------------------------------------------------------------|
+| 401     | Parameter error. Possible cause: The corner radius is less than zero.                                             |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities.                              |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only subwindows and float windows are supported.     |
+| 1300003 | This window manager service works abnormally.                                                                     |
+| 1300004 | Unauthorized operation.                                                                                           |
 
 **示例：**
 
@@ -15233,11 +15235,11 @@ ArkTS-Sta: getWindowCornerRadius(): double
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
-| 错误码ID | 错误信息 |
-| ------- | ------------------------------ |
-| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.                    |
-| 1300003  | This window manager service works abnormally.                                                                |
-| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported.                                            |
+| 错误码ID   | 错误信息                                                                                                              |
+|---------|-------------------------------------------------------------------------------------------------------------------|
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.                              |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only subwindows and float windows are supported.     |
 
 **示例：**
 
