@@ -20,7 +20,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-## getStatus<sup>20+</sup>
+## getStatus<sup>23+</sup>
 
 getStatus(): Promise<AudioLoopbackStatus\>
 
@@ -28,7 +28,7 @@ getStatus(): Promise<AudioLoopbackStatus\>
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS-Dyn起始版本：** 23
 
 **返回值：**
 

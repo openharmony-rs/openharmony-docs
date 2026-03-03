@@ -25,7 +25,7 @@ getCurrentAudioRendererInfoArray(callback: AsyncCallback&lt;AudioRendererChangeI
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -110,7 +110,7 @@ getCurrentAudioRendererInfoArray(): Promise&lt;AudioRendererChangeInfoArray&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -195,7 +195,7 @@ getCurrentAudioRendererInfoArraySync(): AudioRendererChangeInfoArray
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -246,7 +246,7 @@ getCurrentAudioCapturerInfoArray(callback: AsyncCallback&lt;AudioCapturerChangeI
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -328,7 +328,7 @@ getCurrentAudioCapturerInfoArray(): Promise&lt;AudioCapturerChangeInfoArray&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -410,7 +410,7 @@ getCurrentAudioCapturerInfoArraySync(): AudioCapturerChangeInfoArray
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -504,7 +504,7 @@ audioStreamManager.on('audioRendererChange',  (audioRendererChangeInfoArray: aud
 });
 ```
 
-## onAudioRendererChange<sup>22+</sup>
+## onAudioRendererChange<sup>23+</sup>
 
 onAudioRendererChange(callback: Callback&lt;AudioRendererChangeInfoArray&gt;): void
 
@@ -516,7 +516,7 @@ onAudioRendererChange(callback: Callback&lt;AudioRendererChangeInfoArray&gt;): v
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -733,7 +733,7 @@ audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray: audi
 });
 ```
 
-## onAudioCapturerChange<sup>22+</sup>
+## onAudioCapturerChange<sup>23+</sup>
 
 onAudioCapturerChange(callback: Callback&lt;AudioCapturerChangeInfoArray&gt;): void
 
@@ -745,7 +745,7 @@ onAudioCapturerChange(callback: Callback&lt;AudioCapturerChangeInfoArray&gt;): v
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -845,7 +845,7 @@ audioStreamManager.on('audioCapturerChange', audioCapturerChangeCallback);
 audioStreamManager.off('audioCapturerChange', audioCapturerChangeCallback);
 ```
 
-## offAudioCapturerChange<sup>22+</sup>
+## offAudioCapturerChange<sup>23+</sup>
 
 offAudioCapturerChange(callback?: Callback&lt;AudioCapturerChangeInfoArray&gt;): void
 
@@ -857,7 +857,7 @@ offAudioCapturerChange(callback?: Callback&lt;AudioCapturerChangeInfoArray&gt;):
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
 **参数：**
 
@@ -1055,7 +1055,7 @@ getAudioEffectInfoArray(usage: StreamUsage, callback: AsyncCallback&lt;AudioEffe
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1117,7 +1117,7 @@ getAudioEffectInfoArray(usage: StreamUsage): Promise&lt;AudioEffectInfoArray&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1178,7 +1178,7 @@ getAudioEffectInfoArraySync(usage: StreamUsage): AudioEffectInfoArray
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

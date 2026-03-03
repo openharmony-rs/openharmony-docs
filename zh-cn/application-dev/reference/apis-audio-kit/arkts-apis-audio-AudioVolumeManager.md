@@ -27,7 +27,7 @@ ArkTS-Sta: getVolumeGroupManager(groupId: int, callback: AsyncCallback<AudioVolu
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -82,7 +82,7 @@ ArkTS-Sta: getVolumeGroupManager(groupId: int\): Promise<AudioVolumeGroupManager
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -138,7 +138,7 @@ ArkTS-Sta: getVolumeGroupManagerSync(groupId: int\): AudioVolumeGroupManager
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -187,7 +187,7 @@ ArkTS-Sta: getAppVolumePercentage(): Promise<int\>
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -229,7 +229,7 @@ ArkTS-Sta: setAppVolumePercentage(volume: int\): Promise<void\>
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -393,7 +393,7 @@ audioVolumeManager.on('appVolumeChange', (volumeEvent: audio.VolumeEvent) => {
 });
 ```
 
-## onAppVolumeChange<sup>22+</sup>
+## onAppVolumeChange<sup>23+</sup>
 
 onAppVolumeChange(callback: Callback\<VolumeEvent>): void
 
@@ -405,7 +405,7 @@ onAppVolumeChange(callback: Callback\<VolumeEvent>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -478,7 +478,7 @@ audioVolumeManager.on('appVolumeChange', appVolumeChangeCallback);
 audioVolumeManager.off('appVolumeChange', appVolumeChangeCallback);
 ```
 
-## offAppVolumeChange<sup>22+</sup>
+## offAppVolumeChange<sup>23+</sup>
 
 offAppVolumeChange(callback?: Callback\<VolumeEvent>): void
 
@@ -490,7 +490,7 @@ offAppVolumeChange(callback?: Callback\<VolumeEvent>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
