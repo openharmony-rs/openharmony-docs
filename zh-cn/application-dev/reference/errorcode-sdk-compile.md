@@ -18,7 +18,7 @@ XXX can't support form application.
 
 **可能原因**
 
-该接口暂不支持卡片能力。
+该接口不支持卡片能力。
 
 **处理步骤**
 
@@ -58,7 +58,7 @@ This API is used only in FA Mode, but the current Mode is Stage.
 
 **处理步骤**
 
-更换为Stage工程型支持的接口。
+更换为Stage工程支持的接口。
 
 ## 11706009 Stage模型接口在FA工程中使用
 
