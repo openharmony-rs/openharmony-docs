@@ -40,6 +40,7 @@
 | 名称                                                                  | typedef关键字                      | 描述                                |
 |---------------------------------------------------------------------|---------------------------------|-----------------------------------|
 | [DrawableDescriptor_AnimationStatus](#drawabledescriptor_animationstatus) | DrawableDescriptor_AnimationStatus | 定义DrawableDescriptor动图的播放状态。           |
+| [DrawableDescriptor_AnimationStopMode](#drawabledescriptor_animationstopmode) | DrawableDescriptor_AnimationStopMode | 定义[DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)动图的停止模式。<br>**起始版本：** 24 |
 
 ### 函数
 
@@ -60,6 +61,8 @@
 | [int32_t OH_ArkUI_DrawableDescriptor_GetAnimationFrameDurations(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t* durations, size_t* size)](#oh_arkui_drawabledescriptor_getanimationframedurations) | 获取动图中的单帧播放时间。 |
 | [int32_t OH_ArkUI_DrawableDescriptor_SetAnimationAutoPlay(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t autoPlay)](#oh_arkui_drawabledescriptor_setanimationautoplay) | 设置动图是否自动播放。 |
 | [int32_t OH_ArkUI_DrawableDescriptor_GetAnimationAutoPlay(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t* autoPlay)](#oh_arkui_drawabledescriptor_getanimationautoplay) | 获取动图是否自动播放。 |
+| [int32_t OH_ArkUI_DrawableDescriptor_SetAnimationStopMode(ArkUI_DrawableDescriptor* drawableDescriptor, DrawableDescriptor_AnimationStopMode mode)](#oh_arkui_drawabledescriptor_setanimationstopmode) | 设置动图的停止模式。 |
+| [int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStopMode(ArkUI_DrawableDescriptor* drawableDescriptor, DrawableDescriptor_AnimationStopMode* mode)](#oh_arkui_drawabledescriptor_getanimationstopmode) | 获取动图的停止模式。 |
 | [int32_t OH_ArkUI_DrawableDescriptor_CreateAnimationController(ArkUI_DrawableDescriptor* drawableDescriptor, ArkUI_NodeHandle node, ArkUI_DrawableDescriptor_AnimationController\*\* controller)](#oh_arkui_drawabledescriptor_createanimationcontroller) | 创建动图控制器。 |
 | [void OH_ArkUI_DrawableDescriptor_DisposeAnimationController( ArkUI_DrawableDescriptor_AnimationController* controller)](#oh_arkui_drawabledescriptor_disposeanimationcontroller) | 销毁动图控制器。 |
 | [int32_t OH_ArkUI_DrawableDescriptor_StartAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)](#oh_arkui_drawabledescriptor_startanimation) | 从首帧开始播放。 |
@@ -89,6 +92,23 @@ enum DrawableDescriptor_AnimationStatus
 | DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_RUNNING = 1 | 动画处于播放状态。 |
 | DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_PAUSED = 2 | 动画处于暂停状态。 |
 | DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_STOPPED = 3 | 动画处于停止状态。 |
+
+### DrawableDescriptor_AnimationStopMode
+
+```c
+enum DrawableDescriptor_AnimationStopMode
+```
+
+**描述：**
+
+定义[DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)动图的停止模式。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| DRAWABLE_DESCRIPTOR_ANIMATION_FIRST_FRAME = 0 | 动图停止时回到首帧。 |
+| DRAWABLE_DESCRIPTOR_ANIMATION_LAST_FRAME = 1 | 动图停止时停留在最后一帧。 |
 
 ## 函数说明
 
@@ -433,6 +453,56 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationAutoPlay(ArkUI_DrawableDescripto
 | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | DrawableDescriptor对象指针。 |
 | uint32_t* autoPlay | 是否自动播放。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
+
+### OH_ArkUI_DrawableDescriptor_SetAnimationStopMode()
+
+```c
+int32_t OH_ArkUI_DrawableDescriptor_SetAnimationStopMode(ArkUI_DrawableDescriptor* drawableDescriptor, DrawableDescriptor_AnimationStopMode mode)
+```
+
+**描述：**
+
+设置动图停止模式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | [DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象指针。 |
+| [DrawableDescriptor_AnimationStopMode](#drawabledescriptor_animationstopmode) mode | 动图停止模式。<br/>取值为[DrawableDescriptor_AnimationStopMode](#drawabledescriptor_animationstopmode)枚举值，默认值为[DRAWABLE_DESCRIPTOR_ANIMATION_FIRST_FRAME](#drawabledescriptor_animationstopmode)。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
+
+### OH_ArkUI_DrawableDescriptor_GetAnimationStopMode()
+
+```c
+int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStopMode(ArkUI_DrawableDescriptor* drawableDescriptor, DrawableDescriptor_AnimationStopMode* mode)
+```
+
+**描述：**
+
+获取动图停止模式。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | [DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象指针。 |
+| [DrawableDescriptor_AnimationStopMode](#drawabledescriptor_animationstopmode)* mode | 动图停止模式。 <br/>取值含义请参考[DrawableDescriptor_AnimationStopMode](#drawabledescriptor_animationstopmode)。|
 
 **返回：**
 
