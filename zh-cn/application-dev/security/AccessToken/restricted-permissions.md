@@ -1024,7 +1024,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION
 
-允许实现对象编辑框架的应用进行注册，以提供宿主应用嵌入本应用编辑界面的能力。
+允许应用注册ObjectEditorExtensionAbility组件。
 
 <!--RP66--><!--RP66End-->
 
