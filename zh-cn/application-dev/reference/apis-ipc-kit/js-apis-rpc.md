@@ -9532,7 +9532,6 @@ static restoreCallingIdentity(identity: string): void
 
 静态方法，将UID和PID恢复为远程用户的UID和PID。它通常在使用resetCallingIdentity后调用，需要resetCallingIdentity返回的远程用户的UID和PID。该接口仅支持在IPC上下文（[onRemoteMessageRequest](#onremotemessagerequest9)）中使用，否则直接返回。
 
-
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **参数：**
