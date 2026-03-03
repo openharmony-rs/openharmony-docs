@@ -163,7 +163,7 @@
 | [ArkUI_HorizontalAlignment](#arkui_horizontalalignment)             | ArkUI_HorizontalAlignment       | 定义语言方向对齐方式。                       |
 | [ArkUI_TextOverflow](#arkui_textoverflow)                           | ArkUI_TextOverflow              | 定义文本超长时的显示方式。                     |
 | [ArkUI_ImageSpanAlignment](#arkui_imagespanalignment)               | ArkUI_ImageSpanAlignment        | 定义图片基于文本的对齐方式。                    |
-| [ArkUI_ObjectFit](#arkui_objectfit)                                 | ArkUI_ObjectFit                 | 定义image填充效果。ImageSpanAlignment    |
+| [ArkUI_ObjectFit](#arkui_objectfit)                                 | ArkUI_ObjectFit                 | 定义[Image](arkui-ts/ts-basic-components-image.md)组件的图片填充效果。    |
 | [ArkUI_ImageInterpolation](#arkui_imageinterpolation)               | ArkUI_ImageInterpolation        | 定义图片插值效果。                         |
 | [ArkUI_DynamicRangeMode](#arkui_dynamicrangemode)                   | ArkUI_DynamicRangeMode          | 定义图像动态范围模式（例如：SDR/HDR），用于控制图像的明暗与色彩显示范围。 |
 | [ArkUI_ImageRotateOrientation](#arkui_imagerotateorientation)       | ArkUI_ImageRotateOrientation    | 定义图像旋转方向。                         |
@@ -432,7 +432,7 @@
 | [int32_t OH_ArkUI_AccessibilityValue_GetRangeCurrent(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getrangecurrent) | - | 用于获取范围组件的无障碍当前值信息。 |
 | [void OH_ArkUI_AccessibilityValue_SetText(ArkUI_AccessibilityValue* value, const char* text)](#oh_arkui_accessibilityvalue_settext) | - | 设置无障碍文本描述信息。 |
 | [const char* OH_ArkUI_AccessibilityValue_GetText(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_gettext) | - | 获取无障碍文本描述信息。 |
-| [ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(char* src)](#oh_arkui_imageanimatorframeinfo_createfromstring) | - | 使用图片路径创建帧图片信息，图片格式为svg，png和jpg。 |
+| [ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(char* src)](#oh_arkui_imageanimatorframeinfo_createfromstring) | - | 使用图片路径创建帧图片信息，图片格式为svg、png和jpg。 |
 | [ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor(ArkUI_DrawableDescriptor* drawable)](#oh_arkui_imageanimatorframeinfo_createfromdrawabledescriptor) | - | 使用 DrawableDescriptor 对象创建帧图片信息，图片格式为Resource和PixelMap。 |
 | [void OH_ArkUI_ImageAnimatorFrameInfo_Dispose(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_dispose) | - | 销毁帧图片对象指针。 |
 | [void OH_ArkUI_ImageAnimatorFrameInfo_SetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t width)](#oh_arkui_imageanimatorframeinfo_setwidth) | - | 设置图片宽度。 |
@@ -1007,8 +1007,8 @@ enum ArkUI_ShadowType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SHADOW_TYPE_COLOR = 0 | 颜色。 |
-| ARKUI_SHADOW_TYPE_BLUR = 1 | 模糊。 |
+| ARKUI_SHADOW_TYPE_COLOR = 0 | 彩色阴影。 |
+| ARKUI_SHADOW_TYPE_BLUR = 1 | 模糊阴影。 |
 
 ### ArkUI_DatePickerMode
 
@@ -1886,7 +1886,7 @@ enum ArkUI_ObjectFit
 **描述：**
 
 
-定义image填充效果。ImageSpanAlignment
+定义[Image](arkui-ts/ts-basic-components-image.md)组件的图片填充效果。
 
 **起始版本：** 12
 
@@ -1907,7 +1907,7 @@ enum ArkUI_ObjectFit
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_START = 12 | 图片大小不变，在image组件中底部起始端对齐。 |
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM = 13 | 图片大小不变，在image组件中底部横向居中对齐。 |
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END = 14 | 图片大小不变，在image组件中底部尾端对齐。 |
-| ARKUI_OBJECT_FIT_NONE_MATRIX = 15 | 不改变图像原始大小，需要配合NODE_IMAGE_IMAGE_MATRIX使用。<br/>**起始版本：** 21 |
+| ARKUI_OBJECT_FIT_NONE_MATRIX = 15 | 不改变图像原始大小，需要配合[NODE_IMAGE_IMAGE_MATRIX](capi-native-node-h.md#arkui_nodeattributetype)使用。<br/>**起始版本：** 21 |
 
 ### ArkUI_ImageInterpolation
 
@@ -1918,7 +1918,7 @@ enum ArkUI_ImageInterpolation
 **描述：**
 
 
-定义图片插值效果。
+定义图片插值效果。用于优化图片缩放时的锯齿问题。SVG类型图源不支持该属性。
 
 **起始版本：** 12
 
@@ -1944,7 +1944,7 @@ enum ArkUI_DynamicRangeMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | 高动态范围（High Dynamic Range，简称HDR），表示图片中显示亮度（brightness）的最小值和最大值的范围，范围越大图像的亮度表达更逼近真实环境，在太亮的环境下不会产生过曝（一片白），太暗的环境下产生过暗的效果（一片黑）。 |
+| ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | 高动态范围（High Dynamic Range，简称HDR），表示图片中显示亮度（brightness）的最小值和最大值的范围，范围越大图像的亮度表达更逼近真实环境，在太亮的环境下不会产生过曝（一片白），太暗的环境下不会产生过暗的效果（一片黑）。 |
 | ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT | 受限的高动态范围，包含比SDR更丰富的亮度和色彩，但不是完整的HDR，一般用于需要兼容SDR的情况。 |
 | ARKUI_DYNAMIC_RANGE_MODE_STANDARD | 标准动态范围（Standard Dynamic Range，简称SDR），表示亮度范围有限，一般在0~100尼特（亮度单位）左右，明暗对比度较小，暗部容易糊成黑，亮部容易爆白。 |
 
@@ -1963,7 +1963,7 @@ enum ArkUI_ImageRotateOrientation
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ORIENTATION_AUTO = 0 | 读取图片携带的EXIF元数据作为显示方向，支持旋转和镜像。 |
+| ARKUI_ORIENTATION_AUTO = 0 | 读取图片携带的EXIF元数据作为显示方向，支持旋转和镜像。EXIF（Exchangeable image file format）是专门为数码相机的照片设定的文件格式，可以记录数码照片的属性信息和拍摄数据。 |
 | ARKUI_ORIENTATION_UP | 默认按照当前图片的像素数据进行显示，不做任何处理。 |
 | ARKUI_ORIENTATION_RIGHT | 将当前图片顺时针旋转90度后显示。 |
 | ARKUI_ORIENTATION_DOWN  | 将当前图片顺时针旋转180度后显示。 |
@@ -7962,7 +7962,7 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(c
 **描述：**
 
 
-使用图片路径创建帧图片信息，图片格式为svg，png和jpg。
+使用图片路径创建帧图片信息，图片格式为svg、png和jpg。支持应用沙箱内的相对路径和绝对路径。
 
 **起始版本：** 12
 
@@ -7971,7 +7971,7 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(c
 
 | 参数项 | 描述 |
 | -- | -- |
-| char* src | 图片路径。 |
+| char* src | 图片路径，支持应用沙箱内的相对路径或绝对路径。 |
 
 **返回：**
 
@@ -7988,7 +7988,7 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawable
 **描述：**
 
 
-使用[DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象创建帧图片信息，图片格式为Resource和PixelMap。
+使用[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象创建帧图片信息。
 
 **起始版本：** 12
 
@@ -7997,7 +7997,7 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawable
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawable | 使用Resource或PixelMap创建的ArkUI_DrawableDescriptor对象指针。 |
+| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawable | 使用PixelMap创建的ArkUI_DrawableDescriptor对象指针。 |
 
 **返回：**
 
@@ -8044,7 +8044,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetWidth(ArkUI_ImageAnimatorFrameInfo* imag
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* imageInfo | 帧图片对象指针。 |
-| int32_t width | 图片宽度，单位为PX。 |
+| int32_t width | 图片宽度，单位为px。 |
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_GetWidth()
 
@@ -8232,7 +8232,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetDuration(ArkUI_ImageAnimatorFrameInfo* i
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* imageInfo | 帧图片对象指针。 |
-| int32_t duration | 图片的播放时长，单位为毫秒。 |
+| int32_t duration | 图片的播放时长，单位为ms。 |
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_GetDuration()
 
@@ -9588,7 +9588,7 @@ void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeCo
 **描述：**
 
 
-指定TextPickerRangeContent数组指定位置的icon数据。
+设置TextPickerRangeContent数组指定位置的icon数据。
 
 **起始版本：** 19
 
@@ -9598,8 +9598,8 @@ void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeCo
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md)* handle | 指向TextPickerRangeContent数组的指针。 |
-| char* icon | 图片地址。 |
-| int32_t index | 数组位置，从0开始。 |
+| char* icon | 图标路径。 |
+| int32_t index | 数组索引，从0开始。 |
 
 ### OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex()
 
@@ -9610,7 +9610,7 @@ void OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex(ArkUI_TextPickerRangeCo
 **描述：**
 
 
-指定TextPickerRangeContent数组指定位置的text数据。
+设置TextPickerRangeContent数组指定位置的text数据。
 
 **起始版本：** 19
 
@@ -9699,7 +9699,7 @@ void OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex(ArkUI_TextCasca
 **描述：**
 
 
-指定TextCascadePickerRangeContent数组指定位置的child数据。
+设置TextCascadePickerRangeContent数组指定位置的child数据。
 
 **起始版本：** 19
 
