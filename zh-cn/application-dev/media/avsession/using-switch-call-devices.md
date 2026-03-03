@@ -125,6 +125,99 @@
 3. 创建VOICE_COMMUNICATION类型的AudioRenderer，并开始播放。具体通话音频播放等实现，请参考[开发音频通话功能](../audio/audio-call-development.md)。
 
    <!-- @[start_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AudioRenderer.ets) -->         
+   
+   ``` TypeScript
+   import { audio } from '@kit.AudioKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
+   import { resourceManager } from '@kit.LocalizationKit';
+   import { fileIo } from '@kit.CoreFileKit';
+   
+   class Options {
+     public offset: number = 0;
+     public length: number = 0;
+   }
+   export default class AudioRenderer {
+     private audioRenderer: audio.AudioRenderer | undefined = undefined;
+     private audioStreamInfo: audio.AudioStreamInfo = {
+       // 请按照实际场景设置，当前参数仅参考。
+       samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+       channels: audio.AudioChannel.CHANNEL_2, // 通道。
+       sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+       encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+     }
+     public appContext?: common.UIAbilityContext | undefined = undefined;
+     private audioSource = 'test1.wav';
+     private fileDescriptor?: resourceManager.RawFileDescriptor | undefined = undefined;
+     // ...
+     async getStageFileDescriptor(fileName: string): Promise<resourceManager.RawFileDescriptor | undefined> {
+       let fileDescriptor: resourceManager.RawFileDescriptor | undefined = undefined;
+       if (this.appContext) {
+         let mgr = this.appContext.resourceManager;
+         this.fileDescriptor = mgr.getRawFdSync(fileName);
+         await mgr.getRawFd(fileName).then(value => {
+           fileDescriptor = value;
+           console.info('case getRawFileDescriptor success fileName: ' + fileName);
+         }).catch((error: BusinessError) => {
+           console.error('case getRawFileDescriptor err: ' + error);
+         });
+       }
+       return fileDescriptor;
+     }
+   
+     async startRenderer(): Promise<void> {
+       if (this.audioRenderer !== undefined) {
+         return;
+       }
+       this.getStageFileDescriptor(this.audioSource).then((res) => {
+         this.fileDescriptor = res;
+       });
+       if (!this.fileDescriptor) {
+         return;
+       }
+       let file: resourceManager.RawFileDescriptor = this.fileDescriptor;
+       try {
+         this.audioRenderer = await audio.createAudioRenderer(this.audioRendererOption);
+       } catch (error) {
+         console.error(`audioRenderer create : Error: ${JSON.stringify(error)}`);
+         return;
+       }
+       let bufferSize: number = this.fileDescriptor.offset;
+       let writeDataCallback = (buffer: ArrayBuffer) => {
+         let options: Options = {
+           offset: bufferSize,
+           length: buffer.byteLength
+         }
+         fileIo.readSync(file.fd, buffer, options);
+         bufferSize += buffer.byteLength;
+       };
+       this.audioRenderer.on('writeData', writeDataCallback);
+       await this.audioRenderer.start();
+     }
+   
+     async stopRenderer(): Promise<void> {
+       if (this.audioRenderer) {
+         await this.audioRenderer.release();
+         this.audioRenderer = undefined;
+       }
+       if (this.fileDescriptor) {
+         this.closeResource(this.audioSource);
+         this.fileDescriptor = undefined;
+       }
+     }
+   
+     async closeResource(fileName: string): Promise<void> {
+       if (this.appContext) {
+         let mgr = this.appContext.resourceManager;
+         await mgr.closeRawFd(fileName).then(() => {
+           console.info('case closeRawFd success fileName: ' + fileName);
+         }).catch((error: BusinessError) => {
+           console.error('case closeRawFd err: ' + error);
+         });
+       }
+     }
+   }
+   ```
   
 4. （可选）如果应用想知道设备切换情况，可以监听当前发声设备切换回调。
 
