@@ -5,11 +5,12 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
+
 > **说明：**
 >
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-调用[avMusicTemplate.createAVMusicTemplate](arkts-apis-avsession-AVMusicTemplate-f.md#avmusictemplatecreateavmusictemplate23)后，返回实例，可以获得ID，启动音频模板界面，设置数据获取方法，同步数据给模板控制方等操作。
+调用[avMusicTemplate.createAVMusicTemplate](arkts-apis-avsession-AVMusicTemplate-f.md#avmusictemplatecreateavmusictemplate23)后，返回实例，可以获得ID，启动音频模板界面，设置数据获取方法，同步数据给模板控制方，以及执行其他相关操作。
 
 ## 导入模块
 
@@ -131,7 +132,7 @@ export class TemplateManager {
 
 onQueryMainTabs(callback: QueryMainTabsEvent): void
 
-注册查询主标签监听。
+注册查询主标签的事件监听。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -220,7 +221,7 @@ offQueryMainTabs(callback?: QueryMainTabsEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明               |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
-| callback | [QueryMainTabsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymaintabsevent23) | 否   | 查询主选项卡事件。 |
+| callback | [QueryMainTabsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymaintabsevent23) | 否   | 查询主选项卡回调。 |
 
 **返回值：**
 
@@ -357,9 +358,9 @@ offQueryMediaTabContent(callback?: QueryMediaTabContentEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                       |
-| -------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| callback | [QueryMediaTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediatabcontentevent23) | 否   | 查询媒体标签页内容的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                           |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
+| callback | [QueryMediaTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediatabcontentevent23) | 否   | 查询媒体标签页内容的回调函数。 |
 
 **返回值：**
 
@@ -2297,7 +2298,7 @@ offSettingsChange(callback?: SettingsChangeEvent): void
 
 onProblemAndAdvice(callback: ProblemAndAdviceEvent): void
 
-注册问题与建议活动事件的监听。
+注册问题与建议事件的监听。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -2368,7 +2369,7 @@ export class TemplateManager {
 
 offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 
-注销问题与建议活动事件的监听。
+注销问题与建议事件的监听。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -2779,9 +2780,9 @@ setUserInfo(userInfo: UserInfo): Promise&lt;void&gt;
 
 **返回值：**
 
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+| 类型                | 说明         |
+| ------------------- | ------------ |
+| Promise&lt;void&gt; | 无返回结果。 |
 
 **示例：**
 
@@ -2840,9 +2841,9 @@ setDialogCommand(type: DialogControlType, dialogInfo: DialogInfo): Promise&lt;vo
 
 **返回值：**
 
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+| 类型                | 说明         |
+| ------------------- | ------------ |
+| Promise&lt;void&gt; | 无返回结果。 |
 
 **示例：**
 
@@ -2895,9 +2896,9 @@ setCurrentSingle(single: Single): Promise&lt;void&gt;
 
 **返回值：**
 
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+| 类型                | 说明         |
+| ------------------- | ------------ |
+| Promise&lt;void&gt; | 无返回结果。 |
 
 **示例：**
 
@@ -2983,9 +2984,9 @@ setMediaEntities(entities: MediaEntity[]): Promise&lt;void&gt;
 
 **返回值：**
 
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+| 类型                | 说明         |
+| ------------------- | ------------ |
+| Promise&lt;void&gt; | 无返回结果。 |
 
 **示例：**
 
@@ -3033,9 +3034,9 @@ setTabContent(tabId: string, tabContent: MediaTabContent): Promise&lt;void&gt;
 
 **返回值：**
 
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+| 类型                | 说明         |
+| ------------------- | ------------ |
+| Promise&lt;void&gt; | 无返回结果。 |
 
 **示例：**
 
@@ -3097,9 +3098,9 @@ setPlaylist(playlist: PageMediaEntity): Promise&lt;void&gt;
 
 **返回值：**
 
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+| 类型                | 说明         |
+| ------------------- | ------------ |
+| Promise&lt;void&gt; | 无返回结果。 |
 
 **示例：**
 
@@ -3157,9 +3158,9 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise&lt;void&gt;
 
 **返回值：**
 
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+| 类型                | 说明         |
+| ------------------- | ------------ |
+| Promise&lt;void&gt; | 无返回结果。 |
 
 **示例：**
 
@@ -3187,9 +3188,9 @@ setCustomElements(actionType: ActionType, customType: CustomType, customElement:
 
 **返回值：**
 
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+| 类型                | 说明         |
+| ------------------- | ------------ |
+| Promise&lt;void&gt; | 无返回结果。 |
 
 **示例：**
 
@@ -3251,9 +3252,9 @@ setSettings(settingItems: SettingItem[]): Promise&lt;void&gt;
 
 **返回值：**
 
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+| 类型                | 说明         |
+| ------------------- | ------------ |
+| Promise&lt;void&gt; | 无返回结果。 |
 
 **示例：**
 
@@ -3301,9 +3302,9 @@ reportExecuteAction(actionType: string, params: string): Promise&lt;void&gt;
 
 **返回值：**
 
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+| 类型                | 说明         |
+| ------------------- | ------------ |
+| Promise&lt;void&gt; | 无返回结果。 |
 
 **示例：**
 
@@ -3344,9 +3345,9 @@ setExtensionAbility(want: WantAgent): Promise&lt;void&gt;
 
 **返回值：**
 
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+| 类型                | 说明         |
+| ------------------- | ------------ |
+| Promise&lt;void&gt; | 无返回结果。 |
 
 **示例：**
 
@@ -3400,9 +3401,9 @@ destroy(): Promise&lt;void&gt;
 
 **返回值：**
 
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+| 类型                | 说明         |
+| ------------------- | ------------ |
+| Promise&lt;void&gt; | 无返回结果。 |
 
 **示例：**
 

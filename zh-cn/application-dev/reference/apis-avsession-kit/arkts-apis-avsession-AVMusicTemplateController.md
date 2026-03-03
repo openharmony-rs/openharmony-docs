@@ -2229,7 +2229,7 @@ offSettingsChange(callback?: Callback&lt;SettingItem[]&gt;): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                 |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------ |
-| callback | Callback<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem23)[]> | 否   | Callback类型的回调。返回设置项数组。 |
+| callback | Callback<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem23)[]> | 否   | 回调函数，用于接收并处理设置项数组。 |
 
 **示例：**
 
@@ -2263,9 +2263,9 @@ onReportExecuteAction(callback: ReportExecuteActionEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                 |
-| -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | [ReportExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteactionevent23) | 是   | 上报执行动作的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                   |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------ |
+| callback | [ReportExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteactionevent23) | 是   | 当用户点击音频模板界面按钮时，上报对应按钮动作的事件。 |
 
 **示例：**
 
@@ -2338,9 +2338,9 @@ onExtensionAbilityChange(callback: ReportExecuteAbilityEvent): void
 
 **参数：**
 
-| 参数名   | 类型                                                         | 必填 | 说明                                                 |
-| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| callback | [ReportExecuteAbilityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteabilityevent23) | 是   | 通知音频模板控制方拉起指定三方应用界面的信息的事件。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ReportExecuteAbilityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteabilityevent23) | 是   | 通知音频模板控制方拉起指定三方应用界面的事件，包含应用包名和界面名称等信息。 |
 
 **示例：**
 
@@ -2367,7 +2367,7 @@ export class ControllerManager {
 
 offExtensionAbilityChange(callback?: ReportExecuteAbilityEvent): void
 
-注销通知音频模板控制方拉起指定媒体应用界面的信息的回调。
+注销通知音频模板控制方拉起特定媒体应用播放界面的信息的回调。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -2379,7 +2379,7 @@ offExtensionAbilityChange(callback?: ReportExecuteAbilityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                 |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| callback | [ReportExecuteAbilityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteabilityevent23) | 否   | 通知音频模板控制方拉起指定三方应用界面的信息的事件。 |
+| callback | [ReportExecuteAbilityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteabilityevent23) | 否   | 通知音频模板控制器拉起特定第三方应用界面的事件回调。 |
 
 **示例：**
 
@@ -2403,7 +2403,7 @@ export class ControllerManager {
 
 destroy(): Promise&lt;void&gt;
 
-销毁控制器。
+销毁音频模板控制器。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
