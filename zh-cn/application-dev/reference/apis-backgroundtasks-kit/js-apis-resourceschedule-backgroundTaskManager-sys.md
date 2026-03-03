@@ -58,18 +58,18 @@ applyEfficiencyResources(request: EfficiencyResourcesRequest): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let request: backgroundTaskManager.EfficiencyResourcesRequest = {
-    resourceTypes: backgroundTaskManager.ResourceType.CPU,
-    isApply: true,
-    timeOut: 0,
-    reason: "apply",
-    isPersist: true,
-    isProcess: false,
+  resourceTypes: backgroundTaskManager.ResourceType.CPU,
+  isApply: true,
+  timeOut: 0,
+  reason: "apply",
+  isPersist: true,
+  isProcess: false,
 };
 try {
-    backgroundTaskManager.applyEfficiencyResources(request);
-    console.info("applyEfficiencyResources success. ");
+  backgroundTaskManager.applyEfficiencyResources(request);
+  console.info("applyEfficiencyResources success. ");
 } catch (error) {
-    console.error(`applyEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+  console.error(`applyEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
 
@@ -108,9 +108,9 @@ resetAllEfficiencyResources(): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    backgroundTaskManager.resetAllEfficiencyResources();
+  backgroundTaskManager.resetAllEfficiencyResources();
 } catch (error) {
-    console.error(`resetAllEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+  console.error(`resetAllEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
 
@@ -148,13 +148,13 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    backgroundTaskManager.getAllEfficiencyResources().then((res: backgroundTaskManager.EfficiencyResourcesInfo[]) => {
-        console.info(`Operation getAllEfficiencyResources succeeded. data: ` + JSON.stringify(res));
-    }).catch((error : BusinessError) => {
-        console.error(`Operation getAllEfficiencyResources failed. code is ${error.code} message is ${error.message}`);
-    });
+  backgroundTaskManager.getAllEfficiencyResources().then((res: backgroundTaskManager.EfficiencyResourcesInfo[]) => {
+    console.info(`Operation getAllEfficiencyResources succeeded. data: ` + JSON.stringify(res));
+  }).catch((error: BusinessError) => {
+    console.error(`Operation getAllEfficiencyResources failed. code is ${error.code} message is ${error.message}`);
+  });
 } catch (error) {
-    console.error(`Operation getAllEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+  console.error(`Operation getAllEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
 
@@ -199,23 +199,19 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 **系统API：** 此接口为系统接口。
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
-| CPU                     | 1    | CPU资源，申请后应用进程不被挂起。             |
-| COMMON_EVENT            | 2    | 公共事件资源，申请后应用进程被挂起后，可以收到公共事件。 |
-| TIMER                   | 4    | 计时器，申请后应用进程被挂起后，Timer仍然可以唤醒应用。 |
-| WORK_SCHEDULER          | 8    | 延迟任务资源，申请后延迟任务管控变宽松。 |
-| BLUETOOTH               | 16   | 蓝牙资源，申请后应用进程被挂起后，蓝牙相关事件仍然可以唤醒应用。 |
-| GPS                     | 32   | GPS资源，申请后应用进程被挂起后，GPS相关事件可以唤醒应用。 |
-| AUDIO                   | 64   | 音频资源，有音频播放时对应的应用进程不被挂起。 |
-| RUNNING_LOCK<sup>10+</sup> | 128 | RUNNING_LOCK资源，申请后挂起状态不会代理RUNNING_BACKGROUND锁。 |
-| SENSOR<sup>10+</sup> | 256 | 申请后不拦截Sensor回调。 |
+| CPU                     | 1    | CPU资源，申请后应用进程不被挂起。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23            |
+| COMMON_EVENT            | 2    | 公共事件资源，申请后应用进程被挂起后，可以收到公共事件。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| TIMER                   | 4    | 计时器，申请后应用进程被挂起后，Timer仍然可以唤醒应用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| WORK_SCHEDULER          | 8    | 延迟任务资源，申请后延迟任务管控变宽松。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| BLUETOOTH               | 16   | 蓝牙资源，申请后应用进程被挂起后，蓝牙相关事件仍然可以唤醒应用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| GPS                     | 32   | GPS资源，申请后应用进程被挂起后，GPS相关事件可以唤醒应用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO                   | 64   | 音频资源，有音频播放时对应的应用进程不被挂起。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23|
+| RUNNING_LOCK<sup>10+</sup> | 128 | RUNNING_LOCK资源，申请后挂起状态不会代理RUNNING_BACKGROUND锁。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
+| SENSOR<sup>10+</sup> | 256 | 申请后不拦截Sensor回调。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## EfficiencyResourcesInfo<sup>20+</sup>
 

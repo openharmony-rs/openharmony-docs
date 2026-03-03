@@ -22,19 +22,19 @@ startWork(work: WorkInfo): void
 
 申请延迟任务。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 **ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
-**参数**：
+**参数：**
 
 | 参数名  | 类型                    | 必填   | 说明             |
 | ---- | --------------------- | ---- | -------------- |
 | work | [WorkInfo](#workinfo) | 是    | 要添加到执行队列的延迟任务。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -47,31 +47,61 @@ startWork(work: WorkInfo): void
 | 9700004 | Check on workInfo failed. |
 | 9700005 | Calling startWork failed. |
 
-**示例**：
+**示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  
-  let workInfo: workScheduler.WorkInfo = {
-      workId: 1,
-      batteryStatus:workScheduler.BatteryStatus.BATTERY_STATUS_LOW,
-      isRepeat: false,
-      isPersisted: true,
-      bundleName: "com.example.myapplication",
-      abilityName: "MyExtension",
-      parameters: {
-          mykey0: 1,
-          mykey1: "string value",
-          mykey2: true,
-          mykey3: 1.5
-      }
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let workInfo: workScheduler.WorkInfo = {
+  workId: 1,
+  batteryStatus: workScheduler.BatteryStatus.BATTERY_STATUS_LOW,
+  isRepeat: false,
+  isPersisted: true,
+  bundleName: "com.example.myapplication",
+  abilityName: "MyExtension",
+  parameters: {
+    mykey0: 1,
+    mykey1: "string value",
+    mykey2: true,
+    mykey3: 1.5
   }
-  try{
-    workScheduler.startWork(workInfo);
-    console.info('workschedulerLog startWork success');
-  } catch (error) {
-    console.error(`workschedulerLog startwork failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-  }
+}
+try {
+  workScheduler.startWork(workInfo);
+  console.info('workschedulerLog startWork success');
+} catch (error) {
+  console.error(`workschedulerLog startwork failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const parameter: Record<string, int | double | string | boolean> = {
+  "mykey0": 1,
+  "mykey1": "string value",
+  "mykey2": true,
+  "mkkey3": 1.5
+};
+let workInfo: workScheduler.WorkInfo = {
+  workId: 1,
+  batteryStatus: workScheduler.BatteryStatus.BATTERY_STATUS_LOW,
+  isRepeat: false,
+  isPersisted: true,
+  bundleName: "com.example.myapplication",
+  abilityName: "MyExtension",
+  parameters: parameter
+}
+try {
+  workScheduler.startWork(workInfo);
+  console.info('workschedulerLog startWork success');
+} catch (error) {
+  console.error(`workschedulerLog startwork failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
 ```
 
 ## workScheduler.stopWork
@@ -80,20 +110,20 @@ stopWork(work: WorkInfo, needCancel?: boolean): void
 
 取消延迟任务。
 
-**系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
 **ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
-**参数**：
+**参数：**
 
 | 参数名        | 类型                    | 必填   | 说明         |
 | ---------- | --------------------- | ---- | ---------- |
 | work       | [WorkInfo](#workinfo) | 是    | 要停止或移除的延迟任务。 |
 | needCancel | boolean               | 否    | 是否需要移除任务。<br>true表示停止并移除，false表示只停止不移除。默认为false。|
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[workScheduler错误码](errorcode-workScheduler.md)。
 
@@ -105,31 +135,61 @@ stopWork(work: WorkInfo, needCancel?: boolean): void
 | 9700003 | System service operation failed. |
 | 9700004 | Check on workInfo failed. |
 
-**示例**：
+**示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let workInfo: workScheduler.WorkInfo = {
-      workId: 1,
-      batteryStatus:workScheduler.BatteryStatus.BATTERY_STATUS_LOW,
-      isRepeat: false,
-      isPersisted: true,
-      bundleName: "com.example.myapplication",
-      abilityName: "MyExtension",
-      parameters: {
-          mykey0: 1,
-          mykey1: "string value",
-          mykey2: true,
-          mykey3: 1.5
-      }
-     }
-  try{
-    workScheduler.stopWork(workInfo, false);
-    console.info('workschedulerLog stopWork success');
-  } catch (error) {
-    console.error(`workschedulerLog stopWork failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+const parameter: Record<string, int | double | string | boolean> = {
+  "mykey0": 1,
+  "mykey1": "string value",
+  "mykey2": true,
+  "mkkey3": 1.5
+};
+let workInfo: workScheduler.WorkInfo = {
+  workId: 1,
+  batteryStatus: workScheduler.BatteryStatus.BATTERY_STATUS_LOW,
+  isRepeat: false,
+  isPersisted: true,
+  bundleName: "com.example.myapplication",
+  abilityName: "MyExtension",
+  parameters: parameter
+}
+try {
+  workScheduler.stopWork(workInfo, false);
+  console.info('workschedulerLog stopWork success');
+} catch (error) {
+  console.error(`workschedulerLog stopWork failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let workInfo: workScheduler.WorkInfo = {
+  workId: 1,
+  batteryStatus: workScheduler.BatteryStatus.BATTERY_STATUS_LOW,
+  isRepeat: false,
+  isPersisted: true,
+  bundleName: "com.example.myapplication",
+  abilityName: "MyExtension",
+  parameters: {
+    mykey0: 1,
+    mykey1: "string value",
+    mykey2: true,
+    mykey3: 1.5
   }
+}
+try {
+  workScheduler.stopWork(workInfo, false);
+  console.info('workschedulerLog stopWork success');
+} catch (error) {
+  console.error(`workschedulerLog stopWork failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
 ```
 
 ## workScheduler.getWorkStatus
@@ -167,16 +227,32 @@ ArkTS-Sta: getWorkStatus(workId: int, callback : AsyncCallback\<WorkInfo>): void
 
 **示例：**
 
-```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  workScheduler.getWorkStatus(50, (error: BusinessError, res: workScheduler.WorkInfo) => {
-    if (error) {
-      console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
-    } else {
-      console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
-    }
-  });
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+workScheduler.getWorkStatus(50, (error: BusinessError, res: workScheduler.WorkInfo) => {
+  if (error) {
+    console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+workScheduler.getWorkStatus(50, (error: BusinessError<void> | null, res: workScheduler.WorkInfo | undefined) => {
+  if (error) {
+    console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
+  }
+});
 ```
 
 ## workScheduler.getWorkStatus
@@ -219,14 +295,28 @@ ArkTS-Sta: getWorkStatus(workId: int): Promise\<WorkInfo>
 
 **示例：**
 
-```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
-    console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
-  })
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
+  console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
+}).catch((error: BusinessError) => {
+  console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
+  console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
+}).catch((error) => {
+  console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
+})
 ```
 
 ## workScheduler.obtainAllWorks<sup>deprecated<sup>
@@ -286,16 +376,32 @@ obtainAllWorks(callback : AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
 
 **示例：**
 
-```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  workScheduler.obtainAllWorks((error: BusinessError, res: Array<workScheduler.WorkInfo>) =>{
-    if (error) {
-      console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
-    } else {
-      console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
-    }
-  });
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+workScheduler.obtainAllWorks((error: BusinessError, res: Array<workScheduler.WorkInfo>) => {
+  if (error) {
+    console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+workScheduler.obtainAllWorks((error: BusinessError<void> | null, res: Array<workScheduler.WorkInfo> | undefined) => {
+  if (error) {
+    console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
+  }
+});
 ```
 
 ## workScheduler.obtainAllWorks
@@ -329,14 +435,28 @@ obtainAllWorks(): Promise\<Array\<WorkInfo>>
 
 **示例：**
 
-```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  workScheduler.obtainAllWorks().then((res: Array<workScheduler.WorkInfo>) => {
-    console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
-  })
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+workScheduler.obtainAllWorks().then((res: Array<workScheduler.WorkInfo>) => {
+  console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
+}).catch((error: BusinessError) => {
+  console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+workScheduler.obtainAllWorks().then((res: Array<workScheduler.WorkInfo>) => {
+  console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
+}).catch((error) => {
+  console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
+})
 ```
 
 ## workScheduler.stopAndClearWorks
@@ -365,14 +485,14 @@ stopAndClearWorks(): void
 **示例：**
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try{
-    workScheduler.stopAndClearWorks();
-    console.info(`workschedulerLog stopAndClearWorks success`);
-  } catch (error) {
-    console.error(`workschedulerLog stopAndClearWorks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-  }
+try {
+  workScheduler.stopAndClearWorks();
+  console.info(`workschedulerLog stopAndClearWorks success`);
+} catch (error) {
+  console.error(`workschedulerLog stopAndClearWorks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
 ```
 
 ## workScheduler.isLastWorkTimeOut<sup>deprecated<sup>
@@ -439,16 +559,32 @@ ArkTS-Sta: isLastWorkTimeOut(workId: int, callback : AsyncCallback\<boolean>): v
 
 **示例：**
 
-```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  workScheduler.isLastWorkTimeOut(500, (error: BusinessError, res: boolean) =>{
-    if (error) {
-      console.error(`workschedulerLog isLastWorkTimeOut failed. code is ${error.code} message is ${error.message}`);
-    } else {
-      console.info(`workschedulerLog isLastWorkTimeOut success, data is: ${res}`);
-    }
-  });
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+workScheduler.isLastWorkTimeOut(500, (error: BusinessError, res: boolean) => {
+  if (error) {
+    console.error(`workschedulerLog isLastWorkTimeOut failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info(`workschedulerLog isLastWorkTimeOut success, data is: ${res}`);
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+workScheduler.isLastWorkTimeOut(500, (error: BusinessError<void> | null, res: boolean | undefined) => {
+  if (error) {
+    console.error(`workschedulerLog isLastWorkTimeOut failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info(`workschedulerLog isLastWorkTimeOut success, data is: ${res}`);
+  }
+});
 ```
 
 ## workScheduler.isLastWorkTimeOut
@@ -491,16 +627,32 @@ ArkTS-Sta: isLastWorkTimeOut(workId: int): Promise\<boolean>
 
 **示例：**
 
-```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  workScheduler.isLastWorkTimeOut(500)
-    .then((res: boolean) => {
-      console.info(`workschedulerLog isLastWorkTimeOut success, data is: ${res}`);
-    })
-    .catch((error: BusinessError) =>  {
-      console.error(`workschedulerLog isLastWorkTimeOut failed. code is ${error.code} message is ${error.message}`);
-    });
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+workScheduler.isLastWorkTimeOut(500)
+  .then((res: boolean) => {
+    console.info(`workschedulerLog isLastWorkTimeOut success, data is: ${res}`);
+  })
+  .catch((error: BusinessError) => {
+    console.error(`workschedulerLog isLastWorkTimeOut failed. code is ${error.code} message is ${error.message}`);
+  });
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+workScheduler.isLastWorkTimeOut(500)
+  .then((res: boolean) => {
+    console.info(`workschedulerLog isLastWorkTimeOut success, data is: ${res}`);
+  })
+  .catch((error) => {
+    console.error(`workschedulerLog isLastWorkTimeOut failed. code is ${error.code} message is ${error.message}`);
+  });
 ```
 
 ## WorkInfo
