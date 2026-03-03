@@ -24,7 +24,7 @@ An \@Provide decorated state variable exists in the ancestor component and is sa
 >
 > Since API version 20, you can set the [BuildOptions](../../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12) parameter **enableProvideConsumeCrossing** to **true** in [BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) to enable cross-[BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) two-way synchronization for \@Provide and \@Consume. Note that BuilderNode constructs nodes before adding them to the component tree. Therefore, \@Consume decorated variables defined within BuilderNode must have default values. After BuilderNode is mounted to the tree, it retrieves the latest @Provide data to establish two-way synchronization. For details, see [Using @Consume to Establish Two-Way Synchronization with @Provide Across BuilderNode Scenarios](#using-consume-to-establish-two-way-synchronization-with-provide-across-buildernode-scenarios).
 
-## Overview
+## **Overview**
 
 \@Provide/\@Consume decorated state variables have the following features:
 
@@ -65,7 +65,7 @@ When \@Provide specifies a variable alias, both the original variable name and a
 
   **Figure 1** \@Provide initialization rule 
 
-![provide-initialization](figures/provide-initialization.png)
+![provide-initialization](figures/provide-initialization.PNG)
 
 | \@Consume Decorator | Description                                                        |
 | -------------------- | ------------------------------------------------------------ |
@@ -78,7 +78,7 @@ When \@Provide specifies a variable alias, both the original variable name and a
   **Figure 2** \@Consume initialization rule 
 
 
-![consume-initialization](figures/consume-initialization.png)
+![consume-initialization](figures/consume-initialization.PNG)
 
 ## Observed Changes and Behavior
 
@@ -88,7 +88,7 @@ When \@Provide specifies a variable alias, both the original variable name and a
 
 - When the decorated variable is of the class or Object type, its value change and value changes of all its attributes, that is, the attributes that **Object.keys(observedObject)** returns, can be observed.
 
-- When the decorated variable is an array, you can observe changes to the array values, array elements, and API operations performed on the array.
+- When the decorated variable is an array, you can observe changes to the array values, array elements, and API operations performed on the array. For details, see [Decorating Variables of the Array Type](#decorating-variables-of-the-array-type).
 
 - When the decorated object is Date, you can view the overall value assignment of Date. In addition, you can call the setFullYear, setMonth, setDate, setHours, setMinutes, setSeconds, setMilliseconds, setTime, setUTCFullYear, setUTCMonth, setUTCDate, setUTCHours, setUTCMinutes, setUTCSeconds, setUTCMilliseconds interface of Date to update the attributes of Date. For details, see [Decorating Variables of the Date Type](#decorating-variables-of-the-date-type).
 
@@ -130,35 +130,35 @@ When \@Provide specifies a variable alias, both the original variable name and a
 
 2. \@Consume decorated variables cannot be initialized via constructor parameters. Otherwise, a compilation error is thrown. \@Consume can only be initialized by matching corresponding \@Provide decorated variables via **key** or, since API version 20, by using default values.
 
-    [Incorrect usage]
-  
-    ```ts
-    @Component
-    struct Child {
-      @Consume msg: string;
-    
-      build() {
-        Text(this.msg)
-      }
-    }
-    
-    @Entry
-    @Component
-    struct Parent {
-      @Provide message: string = 'Hello';
-    
-      build() {
-        Column() {
-          // Incorrect format. External initialization is not allowed.
-          Child({msg: 'Hello'})
-        }
-      }
-    }
-    ```
+   **Incorrect Usage**
 
-   [Correct usage]
-   <!-- @[provide_consume_proper_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemo.ets) -->
+   ```ts
+   @Component
+   struct Child {
+     @Consume msg: string;
    
+     build() {
+       Text(this.msg)
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Parent {
+     @Provide message: string = 'Hello';
+   
+     build() {
+       Column() {
+         // Incorrect format. External initialization is not allowed.
+         Child({msg: 'Hello'})
+       }
+     }
+   }
+   ```
+
+   **Correct Usage**
+   <!-- @[provide_consume_proper_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemo.ets) -->
+
    ``` TypeScript
    @Component
    struct Child {
@@ -202,7 +202,7 @@ When \@Provide specifies a variable alias, both the original variable name and a
 
 4. Before API version 20: A runtime error is thrown if no matching \@Provide decorated variable is found during \@Consume initialization. Since API version 20: A runtime error is thrown if no matching \@Provide is found and no default value is set for \@Consume.
 
-   [Incorrect usage]
+   **Incorrect Usage**
 
     ```ts
     @Component
@@ -231,9 +231,9 @@ When \@Provide specifies a variable alias, both the original variable name and a
     }
     ```
 
-   [Correct usage]
+   **Correct Usage**
    <!-- @[provide_consume_proper_demo_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemoTwo.ets) -->
-   
+
    ``` TypeScript
    @Component
    struct Child {
@@ -269,76 +269,114 @@ When \@Provide specifies a variable alias, both the original variable name and a
 6. Since API version 20, @Provide and @Consume support cross-BuilderNode pairing. When BuilderNode is constructed, \@Consume locates the nearest \@Provide by key matching. Both must have identical types; type mismatches result in runtime errors.
 
    You must verify type compatibility, including class instances. For example:
-```ts
-class A {}
-class B {}
-// Both variables are objects but have different constructors, making them incompatible types.
-@Provide message: A = new A();
-@Consume message: B = new B();
-```
-In non-BuilderNode scenarios, it is recommended that you maintain identical types for \@Provide/\@Consume pairs. Although runtime validation is not strict, the \@Consume variable undergoes implicit type conversion to match the \@Provide variable type during initialization.
 
-<!-- @[provide_consume_Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeBuilderNode.ets) -->
+   ```ts
+   class A {}
+   class B {}
+   // Both variables are objects but have different constructors, making them incompatible types.
+   @Provide message: A = new A();
+   @Consume message: B = new B();
+   ```
 
-``` TypeScript
-import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
+   In non-BuilderNode scenarios, it is recommended that you maintain identical types for \@Provide/\@Consume pairs. Although runtime validation is not strict, the \@Consume variable undergoes implicit type conversion to match the \@Provide variable type during initialization.
 
-@Builder
-function buildText() {
-  Column() {
-    Child()
-  }
-}
+   <!-- @[provide_consume_Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeBuilderNode.ets) -->
+   
+   ``` TypeScript
+   import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
+   
+   @Builder
+   function buildText() {
+     Column() {
+       Child()
+     }
+   }
+   
+   class TextNodeController extends NodeController {
+     private builderNode: BuilderNode<[]> | null = null;
+   
+     constructor() {
+       super();
+     }
+   
+     makeNode(context: UIContext): FrameNode | null {
+       this.builderNode = new BuilderNode(context);
+       // Configure cross-BuilderNode support for @Provide/@Consume.
+       this.builderNode.build(wrapBuilder(buildText), undefined,
+         { enableProvideConsumeCrossing: true });
+       // Mount the root node of the BuilderNode to the NodeContainer.
+       return this.builderNode.getFrameNode();
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     @Provide message: string = 'hello';
+     controller: TextNodeController = new TextNodeController();
+   
+     build() {
+       Column() {
+         NodeContainer(this.controller)
+           .width('100%')
+           .height(100)
+       }
+       .width('100%')
+       .height('100%')
+     }
+   }
+   
+   
+   @Component
+   struct Child {
+     // After the child component is mounted via BuilderNode, @Consume and @Provide in Index have incompatible types, causing a runtime error.
+     @Consume message: number = 0;
+   
+     build() {
+       Column() {
+         Text(`@Consume ${this.message}`)
+       }
+     }
+   }
+   ```
 
-class TextNodeController extends NodeController {
-  private builderNode: BuilderNode<[]> | null = null;
+7. If the parent component passes **undefined**, the variable decorated by \@Provide is still initialized using the local default value.
+   
+   <!-- @[provide_consume_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeUndefined.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   struct Parent {
+     @State count: number | undefined = undefined;
+   
+     build() {
+       Column() {
+         Text(`Parent count value: ${this.count}`)
+           .fontSize(20)
+           .margin(10)
+         Child({ count: this.count })
+       }
+     }
+   }
+   
+   @Component
+   struct Child {
+     @Provide count: number | undefined = 0;
+   
+     build() {
+       Column() {
+         Text(`Child count value: ${this.count}`)
+           .fontSize(20)
+           .margin(10)
+       }
+     }
+   }
+   ```
 
-  constructor() {
-    super();
-  }
+## When to Use
 
-  makeNode(context: UIContext): FrameNode | null {
-    this.builderNode = new BuilderNode(context);
-    // Configure cross-BuilderNode support for @Provide/@Consume.
-    this.builderNode.build(wrapBuilder(buildText), undefined,
-      { enableProvideConsumeCrossing: true });
-    // Mount the root node of the BuilderNode to the NodeContainer.
-    return this.builderNode.getFrameNode();
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @Provide message: string = 'hello';
-  controller: TextNodeController = new TextNodeController();
-
-  build() {
-    Column() {
-      NodeContainer(this.controller)
-        .width('100%')
-        .height(100)
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
-
-@Component
-struct Child {
-  // After the child component is mounted via BuilderNode, @Consume and @Provide in Index have incompatible types, causing a runtime error.
-  @Consume message: number = 0;
-
-  build() {
-    Column() {
-      Text(`@Consume ${this.message}`)
-    }
-  }
-}
-```
-
-## Use Cases
+### @Provide and @Consume Variables are Two-way Bound
 
 The following example demonstrates two-way synchronization between @Provide and @Consume variables in child components. When buttons in **ToDo** and **ToDoItem** components are clicked, **count** changes are synchronized bidirectionally across both components.
 
@@ -388,6 +426,77 @@ struct ToDo {
       Button(`count(${this.count}), count + 1`)
         .onClick(() => this.count += 1)
       ToDoDemo()
+    }
+  }
+}
+```
+
+### Decorating Variables of the Array Type
+
+In this example, the **message** variable is of the **number[]** type. When the button is clicked, the value of **message** changes, and the UI is re-rendered.
+
+<!-- @[provide_consume_array_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeArraySync.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct Index {
+  @Provide message: number[] = [0, 1, 2, 3];
+
+  build() {
+    Column() {
+      ForEach(this.message, (item: number) => {
+        Text(`Provide ${item}`)
+          .fontSize(20)
+          .margin(10)
+      })
+      // Add an element to the array, triggering UI update.
+      Button('Push element')
+        .onClick(() => {
+          this.message.push(4);
+        })
+        .width(300)
+        .margin(10)
+      // Delete an array element, triggering UI update.
+      Button('Pop element')
+        .onClick(() => {
+          this.message.pop();
+        })
+        .width(300)
+        .margin(10)
+      Child()
+    }
+  }
+}
+
+@Component
+struct Child {
+  @Consume message: number[] = [0, 1, 2, 3];
+
+  build() {
+    Row() {
+      Column() {
+        ForEach(this.message, (item: number) => {
+          Text(`Consume ${item}`)
+            .fontSize(20)
+            .margin(10)
+        })
+        // Reassign the value of the array, triggering UI update.
+        Button('Reset array')
+          .onClick(() => {
+            this.message = [9, 8, 7, 6];
+          })
+          .width(300)
+          .margin(10)
+        // Update the array element, triggering UI update.
+        Button('Modify element[0]')
+          .onClick(() => {
+            this.message[0] = 10;
+          })
+          .width(300)
+          .margin(10)
+      }
+      .width('100%')
     }
   }
 }
