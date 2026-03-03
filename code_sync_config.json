@@ -41147,13 +41147,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/say.ets",
-				"functions":[
-					{
-						"end_line":27,
-						"name":"module_import_async",
-						"start_line":19
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets",
@@ -41212,6 +41206,24 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/a.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/a.d.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Say.ets",
+				"functions":[
+					{
+						"end_line":27,
+						"name":"module_import_async",
+						"start_line":19
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets",
 				"functions":[
 					{
 						"end_line":37,
@@ -41224,18 +41236,63 @@
 						"start_line":38
 					},
 					{
+						"end_line":58,
+						"name":"annotation_interface",
+						"start_line":55
+					},
+					{
 						"end_line":53,
 						"name":"annotation_autoGenerate_dts",
 						"start_line":46
+					},
+					{
+						"end_line":32,
+						"name":"annotation_export_autoGenerate_dts",
+						"start_line":16
+					},
+					{
+						"end_line":68,
+						"name":"annotation_developerGenerate_dts",
+						"start_line":60
 					}
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/a.d.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets",
 				"functions":[
 					{
-						"end_line":19,
+						"end_line":35,
 						"name":"annotation_export_dts",
+						"start_line":32
+					},
+					{
+						"end_line":45,
+						"name":"annotation_name",
+						"start_line":42
+					},
+					{
+						"end_line":50,
+						"name":"annotation_anno",
+						"start_line":47
+					},
+					{
+						"end_line":30,
+						"name":"annotation_export_autoGenerate_dts",
+						"start_line":15
+					},
+					{
+						"end_line":60,
+						"name":"annotation_developerGenerate_dts",
+						"start_line":52
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ImportMyAnno.ets",
+				"functions":[
+					{
+						"end_line":24,
+						"name":"annotation_class",
 						"start_line":16
 					}
 				]
