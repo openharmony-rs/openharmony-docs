@@ -2919,6 +2919,8 @@ try {
 | URL                              | 0   | URL类型。                                                              |
 | NUMBER                        | 1   | 数字类型。                                                    |
 | EMAIL_ADDRESS | 2   | 邮箱地址类型。 |
+| HTTP_URL | 3   | HTTP web链接类型。 |
+| FLIGHT_NUMBER | 4   | 航班号类型。 |
 
 ### detectPatterns<sup>13+</sup>
 
