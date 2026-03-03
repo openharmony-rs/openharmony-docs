@@ -329,6 +329,20 @@ The domain account is already bound.
 
 同一域账号不允许绑定多个系统账号，请更换域账号或删除绑定的账号后再进行绑定。
 
+## 12300023 指定类型的账号数量已达到上限
+
+**错误信息**
+
+The number of accounts of the specified type has reached the upper limit.
+
+**可能原因**
+
+指定类型的系统账号已达上限。
+
+**处理步骤**
+
+请删除多余的账号后再重试。
+
 <!--DelEnd-->
 
 ## 12300101 凭据不正确

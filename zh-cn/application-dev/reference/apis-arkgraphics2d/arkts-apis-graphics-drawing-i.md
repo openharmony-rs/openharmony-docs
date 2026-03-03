@@ -68,7 +68,11 @@
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称    | 类型   | 只读 | 可选 | 说明   |
 | ------- | ------ | ---- | ---- | ------------------ |
 | name   | string | 否   | 否   | 字体特征的名称。常见的字体特征名称包含liga、frac、case等，需要对应的ttf文件支持才能生效。|
-| value | number | 否 | 否 | 字体特征的数值，浮点数。建议通过字体查看工具或查阅字体文档，确定具体的有效取值范围。|
+| value | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 字体特征的数值，浮点数。建议通过字体查看工具或查阅字体文档，确定具体的有效取值范围。|

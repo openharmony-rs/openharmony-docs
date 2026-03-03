@@ -123,7 +123,7 @@ Formatted object using %o: { name: 'John',
   address:
   { city: 'New York',
     country: 'USA' } }
-*/
+ */
 const percentage = 80;
 let arg = 'homework';
 formattedString = util.format('John finished %d%% of the %s', percentage, arg);
@@ -726,10 +726,10 @@ type PromisifiedFunc = (...args: FixedArray&lt;Any&gt;) => Promise&lt;Any&gt;
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称      | 类型 | 必填 | 说明               |
-| --------- | -------- | ---- | ------------------ |
-| fatal     | boolean  | 否   | 是否显示致命错误，true表示显示致命错误，false表示不显示致命错误，默认值是false。 |
-| ignoreBOM | boolean  | 否   | 是否忽略BOM标记，true表示忽略待解码数据的BOM标记，false表示会对BOM标记解码，默认值是false。  |
+| 名称      | 类型 | 只读 | 可选 | 说明               |
+| --------- | -------- | ---- | ---- | ------------------ |
+| fatal     | boolean  | 否   | 是 | 是否显示致命错误，true表示显示致命错误，false表示不显示致命错误，默认值是false。 |
+| ignoreBOM | boolean  | 否   | 是 | 是否忽略BOM标记，true表示忽略待解码数据的BOM标记，false表示会对BOM标记解码，默认值是false。  |
 
 ## DecodeToStringOptions<sup>12+</sup>
 
@@ -743,9 +743,9 @@ type PromisifiedFunc = (...args: FixedArray&lt;Any&gt;) => Promise&lt;Any&gt;
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| stream | boolean | 否 | 输入末尾出现的不完整字节序列是否需要追加在下次调用decodeToString的参数中处理。设置为true，则不完整的字节序列会存储在内部缓存区直到下次调用该函数，false则会在当前调用时直接解码。默认为false。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | -------- | ---- | ---- | ------------------ |
+| stream | boolean | 否 | 是 | 输入末尾出现的不完整字节序列是否需要追加在下次调用decodeToString的参数中处理。设置为true，则不完整的字节序列会存储在内部缓存区直到下次调用该函数，false则会在当前调用时直接解码。默认为false。 |
 
 ## DecodeWithStreamOptions<sup>11+</sup>
 
@@ -759,9 +759,9 @@ type PromisifiedFunc = (...args: FixedArray&lt;Any&gt;) => Promise&lt;Any&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| stream | boolean | 否 | 在随后的decodeWithStream()调用中是否跟随附加数据块。如果以块的形式处理数据，则设置为true；如果处理最后的数据未分块，则设置为false。默认为false。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | ---- | ---- | -------- |
+| stream | boolean | 否 | 是 | 在随后的decodeWithStream()调用中是否跟随附加数据块。如果以块的形式处理数据，则设置为true；如果处理最后的数据未分块，则设置为false。默认为false。 |
 
 ## Aspect<sup>11+</sup>
 
@@ -1079,7 +1079,7 @@ static create(encoding?: string, options?: TextDecoderOptions): TextDecoder
 | 参数名   | 类型   | 必填 | 说明                                             |
 | -------- | ------ | ---- | ------------------------------------------------ |
 | encoding | string | 否   | 编码格式，默认值是'utf-8'。                      |
-| options  | [TextDecoderOptions](#textdecoderoptions11) | 否   | 解码相关选项参数，存在两个属性fatal和ignoreBOM。|
+| options  | [TextDecoderOptions](#textdecoderoptions11) | 否   | 解码相关选项参数，存在两个属性fatal和ignoreBOM。此参数不填时，对应各属性取其默认值。 |
 
 **返回值：**
 
@@ -5060,7 +5060,7 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
   输出结果：result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
   aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
   aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
-  */
+   */
 
   // BASIC编码
   let base64Helper = new util.Base64Helper();
@@ -5076,7 +5076,7 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
   console.info("result = " + result);
   /*
   输出结果：result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
-  */
+   */
   
   // MIME_URL_SAFE编码
   let base64Helper = new util.Base64Helper();
@@ -5092,7 +5092,7 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
   console.info("result = " + result);
   /*
   输出结果：result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU
-  */
+   */
   // MIME_URL_SAFE编码
   let base64Helper = new util.Base64Helper();
   let array =
@@ -5109,7 +5109,7 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
   输出结果：result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
   aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
   aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU
-  */
+   */
   ```
 
 ### decodeSync<sup>9+</sup>
@@ -5156,7 +5156,7 @@ decodeSync(src: Uint8Array | string, options?: Type): Uint8Array
   console.info("result = " + result);
   /*
   输出结果：result = 77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101
-  */
+   */
   ```
 
 
@@ -5253,7 +5253,7 @@ encodeToString(src: Uint8Array, options?: Type): Promise&lt;string&gt;
     输出结果：TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
     aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
     aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
-    */
+     */
 
   })
   ```
@@ -5303,7 +5303,7 @@ decode(src: Uint8Array | string, options?: Type): Promise&lt;Uint8Array&gt;
     console.info(val.toString());
     /*
     输出结果：77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101
-    */
+     */
   })
   ```
 

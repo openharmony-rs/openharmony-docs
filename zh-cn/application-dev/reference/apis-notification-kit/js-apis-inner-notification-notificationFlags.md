@@ -17,10 +17,10 @@
 
 | 名称             | 类型                    | 只读 | 可选 | 说明                                         |
 | ---------------- | ---------------------- | ---- | -----|-------------------------------------------- |
-| soundEnabled     | [NotificationFlagStatus](#notificationflagstatus11) | 否  | 是 | 是否启用声音提示功能。从API version 23开始成为可写参数，设置时仅[TYPE_CLOSE](#notificationflagstatus11)会生效。    |
-| vibrationEnabled | [NotificationFlagStatus](#notificationflagstatus11) | 否  | 是 | 是否启用振动提醒功能。从API version 23开始成为可写参数，设置时仅[TYPE_CLOSE](#notificationflagstatus11)会生效。 |
-| bannerEnabled<sup>23+</sup> | [NotificationFlagStatus](#notificationflagstatus11) | 否  | 是 | 是否启用横幅功能。设置时仅[TYPE_CLOSE](#notificationflagstatus11)会生效。 |
-| lockScreenEnabled<sup>23+</sup> | [NotificationFlagStatus](#notificationflagstatus11) | 否  | 是 | 是否启用锁屏功能。设置时仅[TYPE_CLOSE](#notificationflagstatus11)会生效。 |
+| soundEnabled     | [NotificationFlagStatus](#notificationflagstatus11) | 否  | 是 | 是否启用声音提示功能。从API version 23开始成为可写参数，设置时仅[TYPE_CLOSE](#notificationflagstatus11)会生效。<br/>**ArkTS-Dyn起始版本**：8 <br/>**ArkTS-Sta起始版本**：23    |
+| vibrationEnabled | [NotificationFlagStatus](#notificationflagstatus11) | 否  | 是 | 是否启用振动提醒功能。从API version 23开始成为可写参数，设置时仅[TYPE_CLOSE](#notificationflagstatus11)会生效。<br/>**ArkTS-Dyn起始版本**：8 <br/>**ArkTS-Sta起始版本**：23 |
+| bannerEnabled<sup>23+</sup> | [NotificationFlagStatus](#notificationflagstatus11) | 否  | 是 | 是否启用横幅功能。设置时仅[TYPE_CLOSE](#notificationflagstatus11)会生效。<br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23 |
+| lockScreenEnabled<sup>23+</sup> | [NotificationFlagStatus](#notificationflagstatus11) | 否  | 是 | 是否启用锁屏功能。设置时仅[TYPE_CLOSE](#notificationflagstatus11)会生效。<br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23 |
 
 
 ## NotificationFlagStatus<sup>11+</sup>
@@ -29,9 +29,9 @@
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**ArkTS-Dyn起始版本**：8
+**ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称           | 值  | 说明                               |
 | -------------- | --- | --------------------------------- |

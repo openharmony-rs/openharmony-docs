@@ -23,7 +23,7 @@ getAudioHapticManager(): AudioHapticManager
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -45,7 +45,7 @@ let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.get
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                            |  值     | 说明                                         |
 | ------------------------------- | ------ | -------------------------------------------- |
@@ -60,12 +60,12 @@ let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.get
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
-| 名称      | 类型            |必填   | 说明                              |
-| --------- | -------------- | ---- | --------------------------------- |
-| muteAudio   | boolean      | 否   | 是否将音频静音，true表示将音频静音，false表示正常播放声音。若不填该参数，则默认为false。 |
-| muteHaptics | boolean      | 否   | 是否禁止振动，true表示将禁止振动，false表示正常振动。若不填该参数，则默认为false。 |
+| 名称      | 类型            |只读  | 可选 | 说明                              |
+| --------- | -------------- | ---- |---| --------------------------------- |
+| muteAudio   | boolean      | 否   | 是 | 是否将音频静音，true表示将音频静音，false表示正常播放声音。若不填该参数，则默认为false。 |
+| muteHaptics | boolean      | 否   | 是 | 是否禁止振动，true表示将禁止振动，false表示正常振动。若不填该参数，则默认为false。 |
 
 ## AudioHapticManager<sup>11+</sup>
 
@@ -83,7 +83,7 @@ ArkTS-Sta: registerSource(audioUri: string, hapticUri: string): Promise&lt;int&g
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -152,7 +152,7 @@ ArkTS-Sta: unregisterSource(id: int): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -232,7 +232,7 @@ ArkTS-Sta: setAudioLatencyMode(id:int, latencyMode: AudioLatencyMode): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -304,7 +304,7 @@ ArkTS-Sta: setStreamUsage(id: int, usage: audio.StreamUsage): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -383,7 +383,7 @@ ArkTS-Sta: createPlayer(id: int, options?: AudioHapticPlayerOptions): Promise&lt
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -472,7 +472,7 @@ audioHapticManagerInstance.createPlayer(id, options).then((value: audioHaptic.Au
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                            |  值     | 说明                                         |
 | ------------------------------- | ------ | -------------------------------------------- |
@@ -493,7 +493,7 @@ isMuted(type: AudioHapticType): boolean
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -533,7 +533,7 @@ start(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -585,7 +585,7 @@ stop(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -636,7 +636,7 @@ release(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -717,7 +717,7 @@ onEndOfStream(callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -770,7 +770,7 @@ audioHapticPlayerInstance.on('endOfStream', endOfStreamCallback);
 audioHapticPlayerInstance.off('endOfStream', endOfStreamCallback);
 ```
 
-### offEndOfStream<sup>22+</sup>
+### offEndOfStream<sup>23+</sup>
 
 offEndOfStream(callback?: Callback&lt;void&gt;): void
 
@@ -782,7 +782,7 @@ offEndOfStream(callback?: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -882,7 +882,7 @@ audioHapticPlayerInstance.on('audioInterrupt', (interruptEvent: audio.InterruptE
 });
 ```
 
-### onAudioInterrupt<sup>22+</sup>
+### onAudioInterrupt<sup>23+</sup>
 
 onAudioInterrupt(callback: Callback&lt;audio.InterruptEvent&gt;): void
 
@@ -894,7 +894,7 @@ onAudioInterrupt(callback: Callback&lt;audio.InterruptEvent&gt;): void
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1040,7 +1040,7 @@ audioHapticPlayerInstance.on('audioInterrupt', audioInterruptCallback);
 audioHapticPlayerInstance.off('audioInterrupt', audioInterruptCallback);
 ```
 
-### offAudioInterrupt<sup>22+</sup>
+### offAudioInterrupt<sup>23+</sup>
 
 offAudioInterrupt(callback?: Callback&lt;audio.InterruptEvent&gt;): void
 
@@ -1052,7 +1052,7 @@ offAudioInterrupt(callback?: Callback&lt;audio.InterruptEvent&gt;): void
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

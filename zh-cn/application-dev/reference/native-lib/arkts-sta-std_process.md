@@ -148,7 +148,7 @@ let time = StdProcess.uptime();
 
 on(type: string, listener: EventListener): void
 
-注册标准进程事件监听器，用于捕获当前线程中未处理的异步拒绝对象。
+注册标准进程事件监听器，用于捕获当前线程中的异常事件。
 
 当对应事件触发时，注册的listener将被回调，用于异常处理。
 
@@ -158,8 +158,8 @@ on(type: string, listener: EventListener): void
 
 | 参数名 | 类型   | 必填 | 说明      |
 | ------ | ------ | ---- | ------- |
-| type     | string | 是   | 事件类型，支持取值及对应含义如下所示：<br>'unhandledJobRejection': 注册未处理Job的监听器。<br> 'unhandledPromiseRejection': 注册未处理Promise的监听器。<br>|
-| listener | [EventListener](#eventlistener) | 是 | 事件回调函数，用于处理拒绝对象。|
+| type     | string | 是   | 事件类型，支持取值及对应含义如下所示：<br> 'unhandledPromiseRejection': 注册未处理Promise拒绝的监听器。<br> 'uncaughtError': 注册未捕获异常的监听器。|
+| listener | [EventListener](#eventlistener) | 是 | 事件回调函数。`unhandledPromiseRejection`对应[RejectedObjectListener](#rejectedobjectlistener)，`uncaughtError`对应[UncaughtErrorListener](#uncaughterrorlistener)。|
 
 **示例：**
 
@@ -186,25 +186,44 @@ try {
 
 type EventListener = RejectedObjectListener | UncaughtErrorListener
 
-事件监听器类型，可以是拒绝对象监听器或未捕获异常监听器。根据传入的事件类型，实际触发的回调类型可能不同。
+事件监听器类型，可以是拒绝对象监听器或未捕获异常监听器。不同异常场景应使用的回调类型如下：
+
+| 场景 | 事件类型（type） | 监听回调类型 |
+| ------ | ------ | ------ |
+| Promise未处理拒绝 | unhandledPromiseRejection | [RejectedObjectListener](#rejectedobjectlistener) |
+| 进程内其他未捕获异常 | uncaughtError | [UncaughtErrorListener](#uncaughterrorlistener) |
 
 | 类型 | 说明   |
 | ------ | ------ |
-| [RejectedObjectListener](#rejectedobjectlistener)     | 拒绝对象监听器回调函数，用于处理未处理的Promise拒绝或Job拒绝。 |
+| [RejectedObjectListener](#rejectedobjectlistener)     | 拒绝对象监听器回调函数，用于处理未处理的Promise拒绝。 |
 | [UncaughtErrorListener](#uncaughterrorlistener)      | 未捕获的异常监听器回调函数，用于处理进程中未被捕获的异常。 |
 
 ## RejectedObjectListener
 
 type RejectedObjectListener = (reason: Error, obj: Object) => void
 
-拒绝对象监听器回调函数，用于处理未处理的Promise拒绝或Job拒绝。
+拒绝对象监听器回调函数，用于处理未处理的Promise拒绝。
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明      |
 | ------ | ------ | ---- | ------- |
 | reason     | Error | 是   | 异步拒绝的原因。|
-| obj | Object | 是 | 被拒绝的对象，可能是Job或Promise。|
+| obj | Object | 是 | 被拒绝的Promise对象。|
+
+**示例：**
+
+```ts
+let promiseRejectedListener: StdProcess.RejectedObjectListener = (reason: Error, obj: Object) => {
+    console.info("unhandled promise rejection");
+    console.info("reason:", reason.message);
+}
+
+StdProcess.on("unhandledPromiseRejection", promiseRejectedListener);
+new Promise<void>((res, reject) => {
+    reject(new Error("promise rejected"));
+});
+```
 
 ## UncaughtErrorListener
 
@@ -217,6 +236,17 @@ type UncaughtErrorListener = (error: Object) => void
 | 参数名 | 类型   | 必填 | 说明      |
 | ------ | ------ | ---- | ------- |
 | error     | Object | 是   | 未被捕获的异常对象。|
+
+**示例：**
+
+```ts
+let uncaughtErrorListener: StdProcess.UncaughtErrorListener = (error: Object) => {
+    console.info("uncaught process error:", error.toString());
+}
+
+StdProcess.on("uncaughtError", uncaughtErrorListener);
+throw new Error("uncaught error in process");
+```
 
 ## ProcessManager
 
@@ -265,25 +295,40 @@ getThreadPriority(v: int): int
 | ------ | -------------------------------------------- |
 | int    | 返回线程的优先级。优先级顺序取决于当前操作系统。 |
 
+> **说明：**
+>
+> 在Unix语义下，优先级范围通常为[-20, 19]，数值越小优先级越高，0为默认优先级。-1既可能表示查询失败，也可能是合法优先级值。建议结合tid是否有效综合判断。
+
 **示例：**
 
 ```js
 let processManager = new StdProcess.ProcessManager();
 let tid = StdProcess.tid();
-let pres = processManager.getThreadPriority(tid);
+let pres0 = processManager.getThreadPriority(tid); // 合法线程优先级
+let invalidTid = 999999;
+let pres1 = processManager.getThreadPriority(invalidTid); // 线程不存在时返回-1
 ```
 
 ### getSystemConfig
 
 getSystemConfig(name: int): long
 
-获取系统配置信息。
+获取系统配置信息，name用于指定系统配置项编号。
 
 **参数：**
 
 | 参数名  | 类型   | 必填  | 说明                          |
 | ------ | ------ | ---- | ------------------------------ |
-| name   | int | 是   | 指定系统配置参数名。大于0的整数。 |
+| name   | int | 是   | 指定系统配置参数名（配置项编号）。非负整数。 |
+
+**常见配置项示例：**
+
+| 配置项（示例） | name取值 | 配置项含义 | 返回值含义 |
+| ------ | ------ | ------ | ------ |
+| _SC_ARG_MAX | 0 | 进程可接收命令行参数总长度上限 | 最大参数长度（字节） |
+| _SC_CLK_TCK | 2 | 每秒时钟滴答数 | 每秒滴答数 |
+| _SC_OPEN_MAX | 4 | 进程可打开文件描述符数上限 | 最大文件描述符数量 |
+| _SC_PAGE_SIZE | 8 | 内存页大小 | 页大小（字节） |
 
 **返回值：**
 
@@ -295,8 +340,8 @@ getSystemConfig(name: int): long
 
 ```js
 let processManager = new StdProcess.ProcessManager();
-let _SC_ARG_MAX = 0;
-let pres = processManager.getSystemConfig(_SC_ARG_MAX);
+let _SC_ARG_MAX = 0;  // 进程可接收命令行参数总长度上限
+let argMax = processManager.getSystemConfig(_SC_ARG_MAX); // 单位：字节
 ```
 
 ### getEnvironmentVar

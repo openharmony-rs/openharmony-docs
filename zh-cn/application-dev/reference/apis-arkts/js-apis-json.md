@@ -68,9 +68,9 @@ type Transformer = (this: Object, key: string, value: Object) => Object | undefi
 
 **ArkTS-Dyn起始版本：** 12
 
-| 名称 | 类型| 必填 |说明            |
-| ------ | ------ | ---- | --------------- |
-| bigIntMode   | [BigIntMode](#bigintmode) | 是 |定义处理BigInt的模式。|
+| 名称 | 类型| 只读 | 可选 |说明            |
+| ------ | ------ | ---- | ---- | --------------- |
+| bigIntMode   | [BigIntMode](#bigintmode) | 否 | 否 | 定义处理BigInt的模式。|
 
 ## JSON.parse
 

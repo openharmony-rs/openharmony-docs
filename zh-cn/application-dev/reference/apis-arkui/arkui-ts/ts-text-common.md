@@ -85,6 +85,99 @@ ArkTS-Sta: getGlyphPositionAtCoordinate(x: double, y: double): PositionWithAffin
 | --------------------------------------------- | ----------- |
 | ArkTS-Dyn: [PositionWithAffinity](#positionwithaffinity12) <br/> ArkTS-Sta: [PositionWithAffinity](#positionwithaffinity12) \| undefined | 字形位置信息。|
 
+### getCharacterPositionAtCoordinate<sup>24+</sup>
+
+ArkTS-Dyn: getCharacterPositionAtCoordinate(x: number, y: number): PositionWithAffinity | undefined
+
+ArkTS-Sta: getCharacterPositionAtCoordinate(x: double, y: double): PositionWithAffinity | undefined
+
+获取距给定坐标最近的字形的位置信息。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                 |
+| ------ | ------ | ---- | -------------------- |
+| x | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 相对于组件的横坐标。<br/>单位：[px](ts-pixel-units.md) |
+| y | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 相对于组件的纵坐标。<br/>单位：[px](ts-pixel-units.md) |
+
+**返回值：**
+
+| 类型                                          | 说明        |
+| --------------------------------------------- | ----------- |
+| ArkTS-Dyn: [PositionWithAffinity](#positionwithaffinity12) <br/> ArkTS-Sta: [PositionWithAffinity](#positionwithaffinity12) \| undefined | 字形位置信息。当[LayoutManager](#layoutmanager12)没有和组件绑定时，该接口会返回undefined。|
+
+### getGlyphRangeForCharacterRange<sup>24+</sup>
+
+ArkTS-Dyn: getGlyphRangeForCharacterRange(charRange: [TextRange](#textrange12)): Array&lt;[TextRange](#textrange12)&gt; | undefined
+
+ArkTS-Sta: getGlyphRangeForCharacterRange(charRange: [TextRange](#textrange12)): Array&lt;[TextRange](#textrange12)&gt; | undefined
+
+根据给定的文本字符范围来获取范围内的字形范围，以及实际的字符范围。例如文本为"世界Hello"，其中文本"世"的字形索引范围为[0, 1]，一个汉字占三个字符，所以其对应的字符索引范围为[0, 3]。如果指定的字符索引范围是[0, 1]，但无法解析出三分之一个汉字，所以实际的字符索引范围是[0, 3]。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                 |
+| ------ | ------ | ---- | -------------------- |
+| charRange | ArkTS-Dyn: [TextRange](#textrange12)<br/>ArkTS-Sta: [TextRange](#textrange12) | 是    | 文本的字符范围。 |
+| charRange | ArkTS-Dyn: [TextRange](#textrange12)<br/>ArkTS-Sta: [TextRange](#textrange12) | 是    | 文本的字符范围。 |
+
+**返回值：**
+
+| 类型                                          | 说明        |
+| --------------------------------------------- | ----------- |
+| ArkTS-Dyn:  Array&lt;[TextRange](#textrange12)&gt; \| undefined <br/> ArkTS-Sta:  Array&lt;[TextRange](#textrange12)&gt; \| undefined | 数组中含有两个元素，第一个元素是字形范围，第二个元素是实际的字符范围，当返回的范围是异常值时，范围内元素为-1。当[LayoutManager](#layoutmanager12)没有和组件绑定时，该接口会返回undefined。 |
+
+### getCharacterRangeForGlyphRange<sup>24+</sup>
+
+ArkTS-Dyn: getCharacterRangeForGlyphRange(glyphRange: [TextRange](#textrange12)): Array&lt;[TextRange](#textrange12)&gt; | undefined
+
+ArkTS-Sta: getCharacterRangeForGlyphRange(glyphRange: [TextRange](#textrange12)): Array&lt;[TextRange](#textrange12)&gt; | undefined
+
+根据给定的文本字形范围来获取范围内的字符范围，以及实际的字形范围。例如文本为"世界Hello"，其字形索引范围为[0, 7]，一个汉字占三个字符，所以其对应的字符索引范围为[0, 11]。如果指定的索引范围是[0, 11]，但字形一共只有7个，所以实际的字形索引范围是[0, 7]。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                 |
+| ------ | ------ | ---- | -------------------- |
+| glyphRange | ArkTS-Dyn: [TextRange](#textrange12)<br/>ArkTS-Sta: [TextRange](#textrange12) | 是    | 文本的字形范围。 |
+| glyphRange | ArkTS-Dyn: [TextRange](#textrange12)<br/>ArkTS-Sta: [TextRange](#textrange12) | 是    | 文本的字形范围。 |
+
+**返回值：**
+
+| 类型                                          | 说明        |
+| --------------------------------------------- | ----------- |
+| ArkTS-Dyn:  Array&lt;[TextRange](#textrange12)&gt; \| undefined <br/> ArkTS-Sta:  Array&lt;[TextRange](#textrange12)&gt; \| undefined | 数组中含有两个元素，第一个元素是字符范围，第二个元素是实际的字形范围，当返回的范围是异常值时，范围内元素为-1。当[LayoutManager](#layoutmanager12)没有和组件绑定时，该接口会返回undefined。|
+
 ### getLineMetrics
 
 ArkTS-Dyn: getLineMetrics(lineNumber: number): LineMetrics

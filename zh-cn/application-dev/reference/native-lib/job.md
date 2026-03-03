@@ -6,7 +6,7 @@ Await(): T
 
 用于获得[Job](#job)的值。
 
-**ArkTS 版本：** 本接口仅支持ArkTS1.2。
+**ArkTS 版本：** 本接口仅支持ArkTS-Sta。
 
 **返回值：**
 | 类型       | 说明                 |
@@ -25,6 +25,7 @@ function logNumber(arg: int): int {
 
 // 创建Worker并提交任务
 const worker = new EAWorker();
+worker.start();
 const job = worker.run<int>(logNumber, 42);
 
 // 获取异步结果
@@ -39,7 +40,7 @@ constructor()
 
 [CompletableJob](#completablejob)的构造器，用于构造一个开发者能够设置任务成功与失败的CompletableJob实例。
 
-**ArkTS 版本：** 本接口仅支持ArkTS1.2。
+**ArkTS 版本：** 本接口仅支持ArkTS-Sta。
 
 **示例：**
 ```ts
@@ -52,7 +53,7 @@ finish()
 
 用于将一个[CompletableJob](#completablejob)状态置为完成态，并将值设置为undefined。
 
-**ArkTS 版本：** 本接口仅支持ArkTS1.2。
+**ArkTS 版本：** 本接口仅支持ArkTS-Sta。
 
 **示例：**
 ```ts
@@ -65,7 +66,7 @@ finish\<T\>(value: T)
 
 用于将一个[CompletableJob](#completablejob)状态设置为完成态，并将其值设置为开发者传入的value。
 
-**ArkTS 版本：** 本接口仅支持ArkTS1.2。
+**ArkTS 版本：** 本接口仅支持ArkTS-Sta。
 
 **参数：**
 |参数名|类型|必填|说明|
@@ -83,7 +84,7 @@ fail()
 
 用于将一个[CompletableJob](#completablejob)状态设置为失败，并将值设置为一个空的Error。
 
-**ArkTS 版本：** 本接口仅支持ArkTS1.2。
+**ArkTS 版本：** 本接口仅支持ArkTS-Sta。
 
 **示例：**
 ```ts
@@ -96,7 +97,7 @@ fail(error: Error)
 
 用于将一个[CompletableJob](#completablejob)状态设置为失败，并将其值设置为开发者传入的error。
 
-**ArkTS 版本：** 本接口仅支持ArkTS1.2。
+**ArkTS 版本：** 本接口仅支持ArkTS-Sta。
 
 **参数：**
 |参数名|类型|必填|说明|
@@ -114,7 +115,7 @@ Await(): T
 
 用于获取[CompletableJob](#completablejob)的值。
 
-**ArkTS 版本：** 本接口仅支持ArkTS1.2。
+**ArkTS 版本：** 本接口仅支持ArkTS-Sta。
 
 **返回值：**
 | 类型       | 说明                 |

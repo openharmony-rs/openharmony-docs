@@ -24,7 +24,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -48,7 +48,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -71,7 +71,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -89,7 +89,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -113,7 +113,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -136,7 +136,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -151,7 +151,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -166,7 +166,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -189,7 +189,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -212,7 +212,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -227,7 +227,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -243,7 +243,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -258,7 +258,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -276,7 +276,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -296,7 +296,7 @@
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -316,7 +316,7 @@
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -338,7 +338,7 @@
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -360,7 +360,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -379,7 +379,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -398,7 +398,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -415,7 +415,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -433,7 +433,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -450,7 +450,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -467,7 +467,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -484,7 +484,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -501,7 +501,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -523,7 +523,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -540,7 +540,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -559,7 +559,7 @@
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -580,7 +580,7 @@
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -601,7 +601,7 @@
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -623,7 +623,7 @@
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -642,7 +642,7 @@
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -661,7 +661,7 @@
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -698,7 +698,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -715,7 +715,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -733,7 +733,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -750,7 +750,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -767,7 +767,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -784,7 +784,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -801,7 +801,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -819,7 +819,7 @@
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -836,7 +836,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -853,7 +853,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -870,7 +870,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -887,7 +887,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -904,7 +904,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -922,7 +922,7 @@
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -939,7 +939,7 @@
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -955,7 +955,7 @@
 
 **ArkTS-Dyn起始版本**：15
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -971,7 +971,7 @@
 
 **ArkTS-Dyn起始版本**：15
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -995,7 +995,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1012,7 +1012,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1029,7 +1029,7 @@
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1048,7 +1048,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1065,7 +1065,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.LOCATION
 
@@ -1093,7 +1093,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1112,7 +1112,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1131,7 +1131,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1148,7 +1148,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1166,7 +1166,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1184,7 +1184,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅方需要的权限：** 无
 
@@ -1202,7 +1202,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.GET_WIFI_INFO和ohos.permission.LOCATION
 
@@ -1221,7 +1221,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1238,7 +1238,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1255,7 +1255,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1272,7 +1272,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1289,7 +1289,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1308,7 +1308,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：15
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1326,7 +1326,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1353,7 +1353,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1372,7 +1372,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1389,7 +1389,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1411,7 +1411,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1429,7 +1429,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.GET_TELEPHONY_STATE（该权限仅系统应用可申请）
 
@@ -1447,7 +1447,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1464,7 +1464,7 @@ Wi-Fi状态变化。
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1483,7 +1483,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1504,7 +1504,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1519,7 +1519,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1534,7 +1534,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1548,7 +1548,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1563,7 +1563,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1578,7 +1578,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1593,7 +1593,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1609,7 +1609,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1624,7 +1624,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1639,7 +1639,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1654,7 +1654,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1669,7 +1669,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1684,7 +1684,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1699,7 +1699,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1715,7 +1715,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1730,7 +1730,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1744,7 +1744,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
 
@@ -1759,7 +1759,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
 
@@ -1773,7 +1773,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1788,7 +1788,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
 
@@ -1803,7 +1803,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
 
@@ -1818,7 +1818,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
 
@@ -1834,7 +1834,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
 
@@ -1849,7 +1849,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
 
@@ -1864,7 +1864,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
 
@@ -1879,7 +1879,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1893,7 +1893,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1908,7 +1908,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -1921,7 +1921,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -1936,7 +1936,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -1950,7 +1950,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -1966,7 +1966,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -1982,7 +1982,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -1997,7 +1997,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -2012,7 +2012,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -2027,7 +2027,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -2044,7 +2044,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2060,7 +2060,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.LOCATION和ohos.permission.USE_BLUETOOTH
 
@@ -2076,7 +2076,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -2091,7 +2091,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2105,7 +2105,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -2120,7 +2120,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
 
@@ -2134,7 +2134,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -2149,7 +2149,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -2163,7 +2163,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2177,7 +2177,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
 
@@ -2191,7 +2191,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.DISCOVER_BLUETOOTH
 
@@ -2205,7 +2205,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2219,7 +2219,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2233,7 +2233,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2247,7 +2247,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2261,7 +2261,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2275,7 +2275,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2289,7 +2289,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2303,7 +2303,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2317,7 +2317,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2331,7 +2331,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2345,7 +2345,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -2360,7 +2360,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -2374,7 +2374,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -2390,7 +2390,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
 
@@ -2404,7 +2404,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
 
@@ -2418,7 +2418,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
 
@@ -2432,7 +2432,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -2447,7 +2447,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -2461,7 +2461,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.USE_BLUETOOTH
 
@@ -2475,7 +2475,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
@@ -2489,7 +2489,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
@@ -2504,7 +2504,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
@@ -2518,7 +2518,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2532,7 +2532,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2547,7 +2547,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2562,7 +2562,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2576,7 +2576,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2590,7 +2590,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2605,7 +2605,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2619,7 +2619,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2635,7 +2635,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2649,7 +2649,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2663,7 +2663,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2677,7 +2677,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2692,7 +2692,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.GET_APP_ACCOUNTS（该权限仅系统应用可申请）
 
@@ -2706,7 +2706,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
 
@@ -2721,7 +2721,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.RECEIVER_STARTUP_COMPLETED（该权限仅系统应用可申请）
 
@@ -2736,7 +2736,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -2750,7 +2750,7 @@ Store Kit面向应用发布如下系统公共事件。
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
  
 **订阅者所需权限：** 无
 

@@ -37,7 +37,7 @@ ArkTS-Sta: getFamilyName(): string | undefined
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -69,15 +69,17 @@ if (typeface != undefined) {
 
 ## makeFromCurrent<sup>20+</sup>
 
-makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface
+ArkTS-Dyn: makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface
+
+ArkTS-Sta: makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface | undefined
 
 基于当前字体结合字体属性构造新的字体对象。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 | 参数名         | 类型                                       | 必填   | 说明                  |
@@ -88,9 +90,11 @@ makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface
 
 | 类型   | 说明                  |
 | ------ | -------------------- |
-| [Typeface](arkts-apis-graphics-drawing-Typeface.md) | 返回字体对象（异常情况下会返回空指针）。 |
+| ArkTS-Dyn: [Typeface](arkts-apis-graphics-drawing-Typeface.md)<br/>ArkTS-Sta: [Typeface](arkts-apis-graphics-drawing-Typeface.md) \| undefined | 返回字体对象（异常情况下会返回空指针）。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { RenderNode } from '@kit.ArkUI';
@@ -111,6 +115,36 @@ class TextRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class TextRenderNode extends RenderNode {
+  async draw(context: DrawContext) {
+    const canvas = context.canvas;
+    let typeArguments = new drawing.TypefaceArguments();
+    typeArguments.addVariation("wght", 100.0);
+    const myTypeFace = drawing.Typeface.makeFromFile("/system/fonts/HarmonyOS_Sans_SC.ttf");
+    if (myTypeFace == undefined) {
+      return;
+    }
+    const typeFace1 = myTypeFace.makeFromCurrent(typeArguments);
+    if (typeface1 == undefined) {
+      return;
+    }
+    let font = new drawing.Font();
+    font.setTypeface(typeFace1);
+    const textBlob = drawing.TextBlob.makeFromString("Hello World", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+    if (textBlob == undefined) {
+      return;
+    }
+    canvas.drawTextBlob(textBlob, 60.0, 100.0);
+  }
+}
+```
+
 ## makeFromFile<sup>12+</sup>
 
 ArkTS-Dyn: static makeFromFile(filePath: string): Typeface
@@ -125,7 +159,7 @@ ArkTS-Sta: static makeFromFile(filePath: string): Typeface | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -205,7 +239,7 @@ ArkTS-Sta: static makeFromRawFile(rawfile: Resource): Typeface | undefined
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -265,17 +299,19 @@ class TextRenderNode extends RenderNode {
 
 ## makeFromFileWithArguments<sup>20+</sup>
 
-static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceArguments): Typeface
+ArkTS-Dyn: static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceArguments): Typeface
+
+ArkTS-Sta: static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceArguments): Typeface | undefined
 
 根据字体文件路径和字体属性构造新的字体。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -288,12 +324,14 @@ static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceAr
 
 | 类型   | 说明                  |
 | ------ | -------------------- |
-| [Typeface](arkts-apis-graphics-drawing-Typeface.md) | undefined返回字体对象（异常情况下会返回空指针）。 |
+| ArkTS-Dyn: [Typeface](arkts-apis-graphics-drawing-Typeface.md)<br/>ArkTS-Sta: [Typeface](arkts-apis-graphics-drawing-Typeface.md) \| underfined | undefined返回字体对象（异常情况下会返回空指针）。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext, $rawfile } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class TextRenderNode extends RenderNode {
@@ -310,19 +348,47 @@ class TextRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { RenderNode, DrawContext, $rawfile } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class TextRenderNode extends RenderNode {
+  async draw(context: DrawContext) {
+    const canvas = context.canvas;
+    let font = new drawing.Font();
+    let str = "/system/fonts/HarmonyOS_Sans_Italic.ttf";
+    let typeFaceArgument = new drawing.TypefaceArguments();
+    const myTypeFace = drawing.Typeface.makeFromFileWithArguments(str, typeFaceArgument);
+    if (myTypeFace == undefined) {
+        return;
+    }
+    font.setTypeface(myTypeFace);
+    const textBlob = drawing.TextBlob.makeFromString("Hello World", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+    if (textBlob == undefined) {
+      return;
+    }
+    canvas.drawTextBlob(textBlob, 60.0, 100.0);
+  }
+}
+```
+
 ## makeFromRawFileWithArguments<sup>20+</sup>
 
-static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: TypefaceArguments): Typeface
+ArkTS-Dyn: static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: TypefaceArguments): Typeface
+
+ArkTS-Sta: static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: TypefaceArguments): Typeface | undefined
 
 使用指定的字体文件和字体属性构造字体，其中要求指定的字体文件需保存在应用资源文件夹的rawfile路径下。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -335,9 +401,11 @@ static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: Typefa
 
 | 类型   | 说明                 |
 | ------ | ------------------- |
-| [Typeface](arkts-apis-graphics-drawing-Typeface.md) | 返回字体对象（异常情况下会返回空指针）。 |
+| ArkTS-Dyn: [Typeface](arkts-apis-graphics-drawing-Typeface.md)<br/>ArkTS-Sta: [Typeface](arkts-apis-graphics-drawing-Typeface.md) \| undefined | 返回字体对象（异常情况下会返回空指针）。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { RenderNode } from '@kit.ArkUI';
@@ -352,6 +420,31 @@ class TextRenderNode extends RenderNode {
     font.setTypeface(myTypeFace);
     const textBlob = drawing.TextBlob.makeFromString("Hello World", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
     canvas.drawTextBlob(textBlob, 60, 100);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class TextRenderNode extends RenderNode {
+  async draw(context: DrawContext) {
+    const canvas = context.canvas;
+    let font = new drawing.Font();
+    let typeFaceArgument = new drawing.TypefaceArguments();
+    const myTypeFace = drawing.Typeface.makeFromRawFileWithArguments($rawfile('HarmonyOS_Sans_Bold.ttf'), typeFaceArgument);
+    if (myTypeFace == undefined) {
+        return;
+    }
+    font.setTypeface(myTypeFace);
+    const textBlob = drawing.TextBlob.makeFromString("Hello World", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+    if (textBlob == undefined) {
+      return;
+    }
+    canvas.drawTextBlob(textBlob, 60.0, 100.0);
   }
 }
 ```

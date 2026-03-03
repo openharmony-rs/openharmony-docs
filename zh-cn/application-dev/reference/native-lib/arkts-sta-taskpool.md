@@ -776,7 +776,7 @@ taskpool.execute(task3).then((res: Any) => {
 
 onEnqueued(callback: CallbackFunction): void
 
-注册一个回调函数，并在任务入队时调用它。必须在任务执行前完成注册，否则会抛出异常。
+注册一个回调函数，并在任务入队时调用它。该回调在taskpool工作线程（子线程）中执行。必须在任务执行前完成注册，否则会抛出异常。
 
 **参数：**
 
@@ -814,7 +814,7 @@ taskpool.execute(task).then((res: Any)=> {
 
 onStartExecution(callback: CallbackFunction): void
 
-注册一个回调函数，并在执行任务前调用它。必须在任务执行前完成注册，否则会抛出异常。
+注册一个回调函数，并在执行任务前调用它。该回调在taskpool工作线程（子线程）中执行。必须在任务执行前完成注册，否则会抛出异常。
 
 **参数：**
 
@@ -852,7 +852,7 @@ taskpool.execute(task).then((res: Any) => {
 
 onExecutionFailed(callback: CallbackFunctionWithError): void
 
-注册一个回调函数，并在任务执行失败时调用它。必须在任务执行前完成注册，否则会抛出异常。
+注册一个回调函数，并在任务执行失败时调用它。该回调在taskpool工作线程（子线程）中执行。必须在任务执行前完成注册，否则会抛出异常。
 
 **参数：**
 
@@ -891,7 +891,7 @@ taskpool.execute(task2).then((res: Any) => {
 
 onExecutionSucceeded(callback: CallbackFunction): void
 
-注册一个回调函数，并在任务执行成功时调用它。必须在任务执行前完成注册，否则会抛出异常。
+注册一个回调函数，并在任务执行成功时调用它。该回调在taskpool工作线程（子线程）中执行。必须在任务执行前完成注册，否则会抛出异常。
 
 **参数：**
 

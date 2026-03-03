@@ -834,7 +834,7 @@ import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionMa
 import hilog from '@ohos.hilog';
 
 let sessionId = 100;
-abilityConnectionManager.onDisconnect(sessionId,(callbackInfo) => {
+abilityConnectionManager.onConnect(sessionId,(callbackInfo) => {
   hilog.info(0x0000, 'testTag', 'session disconnect, sessionId is', callbackInfo.sessionId);
 });
 ```

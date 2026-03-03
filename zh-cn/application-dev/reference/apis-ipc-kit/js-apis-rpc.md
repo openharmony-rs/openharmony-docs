@@ -3242,6 +3242,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -4946,7 +4947,7 @@ rewindWrite(pos: number): boolean
 
 > **说明：**
 >
-> 从API version 7 开始支持，API version 9 开始废弃，建议使用[reWindWrite](#rewindwrite9)替代。
+> 从API version 7 开始支持，API version 9 开始废弃，建议使用[rewindWrite](#rewindwrite9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6845,6 +6846,7 @@ readException(): void
     }
   };
   let want: Want = {
+    // 获取服务端包名和ability名称
     bundleName: "com.ohos.server",
     abilityName: "com.ohos.server.EntryAbility",
   };
@@ -7892,6 +7894,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want  = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8144,7 +8147,7 @@ ArkTS-Sta: sendMessageRequest(code: int, data: MessageSequence, reply: MessageSe
 
   | 类型                         | 说明                                      |
   | ---------------------------- | ----------------------------------------- |
-  | Promise&lt;[RequestResult](#requestresult9)&gt; | 返回一个期约，兑现值是requestResult实例。 |
+  | Promise&lt;[RequestResult](#requestresult9)&gt; | Promise对象，返回一个期约，兑现值是requestResult实例。 |
 
 **错误码：**
 
@@ -8183,7 +8186,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 | 类型                                                         | 说明                                          |
 | ------------------------------------------------------------ | --------------------------------------------- |
-| Promise&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | 返回一个期约，兑现值是sendRequestResult实例。 |
+| Promise&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | Promise对象，返回一个期约，兑现值是sendRequestResult实例。 |
 
 ### sendMessageRequest<sup>9+</sup>
 
@@ -8207,7 +8210,7 @@ ArkTS-Sta: sendMessageRequest(code: int, data: MessageSequence, reply: MessageSe
   | data     | [MessageSequence](#messagesequence9) | 是   | 保存待发送数据的MessageSequence对象。                                 |
   | reply    | [MessageSequence](#messagesequence9) | 是   | 接收应答数据的MessageSequence对象。                                   |
   | options  | [MessageOption](#messageoption)      | 是   | 本次请求的同异步模式，默认同步调用。                                   |
-  | callback | AsyncCallback&lt;[RequestResult](#requestresult9)&gt;   | 是   | 接收发送结果的回调。                              |
+  | callback | AsyncCallback&lt;[RequestResult](#requestresult9)&gt;   | 是   | 回调函数。当消息发送成功时，可从RequestResult中读取服务端返回的数据。 |
 
 **错误码：**
 
@@ -8513,6 +8516,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
      }
   };
   let want: Want = {
+    // 获取服务端包名和ability名称
     bundleName: "com.ohos.server",
     abilityName: "com.ohos.server.EntryAbility",
   };
@@ -8579,7 +8583,7 @@ ArkTS-Sta: sendMessageRequest(code: int, data: MessageSequence, reply: MessageSe
 
   | 类型                         | 说明                                      |
   | ---------------------------- | ----------------------------------------- |
-  | Promise&lt;[RequestResult](#requestresult9)&gt; | 返回一个期约，兑现值是requestResult实例。 |
+  | Promise&lt;[RequestResult](#requestresult9)&gt; | Promise对象，返回一个期约，兑现值是requestResult实例。 |
 
 **错误码：**
 
@@ -8617,6 +8621,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8696,7 +8701,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 | 类型                                                         | 说明                                          |
 | ------------------------------------------------------------ | --------------------------------------------- |
-| Promise&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | 返回一个期约，兑现值是sendRequestResult实例。 |
+| Promise&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | Promise对象，返回一个期约，兑现值是sendRequestResult实例。 |
 
 **示例：**
 
@@ -8725,6 +8730,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
     }
   };
   let want: Want = {
+    // 获取服务端包名和ability名称
     bundleName: "com.ohos.server",
     abilityName: "com.ohos.server.EntryAbility",
   };
@@ -8794,7 +8800,7 @@ ArkTS-Sta: sendMessageRequest(code: int, data: MessageSequence, reply: MessageSe
   | data     | [MessageSequence](#messagesequence9) | 是   | 保存待发送数据的MessageSequence对象。                                            |
   | reply    | [MessageSequence](#messagesequence9) | 是   | 接收应答数据的MessageSequence对象。                                                    |
   | options  | [MessageOption](#messageoption)      | 是   | 本次请求的同异步模式，默认同步调用。                                                   |
-  | callback | AsyncCallback&lt;[RequestResult](#requestresult9)&gt;   | 是   | 接收发送结果的回调。                                                                   |
+  | callback | AsyncCallback&lt;[RequestResult](#requestresult9)&gt;   | 是   | 回调函数。当消息发送成功时，可从RequestResult中读取服务端返回的数据。 |
 
 **错误码：**
 
@@ -8890,6 +8896,7 @@ getLocalInterface(interface: string): IRemoteBroker
     }
   };
   let want: Want = {
+    // 获取服务端包名和ability名称
     bundleName: "com.ohos.server",
     abilityName: "com.ohos.server.EntryAbility",
   };
@@ -8977,6 +8984,7 @@ queryLocalInterface(interface: string): IRemoteBroker
     }
   };
   let want: Want = {
+    // 获取服务端包名和ability名称
     bundleName: "com.ohos.server",
     abilityName: "com.ohos.server.EntryAbility",
   };
@@ -9060,6 +9068,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -9153,6 +9162,7 @@ addDeathRecipient(recipient: DeathRecipient, flags: number): boolean
     }
   };
   let want: Want = {
+    // 获取服务端包名和ability名称
     bundleName: "com.ohos.server",
     abilityName: "com.ohos.server.EntryAbility",
   };
@@ -9241,6 +9251,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -9335,6 +9346,7 @@ removeDeathRecipient(recipient: DeathRecipient, flags: number): boolean
     }
   };
   let want: Want = {
+    // 获取服务端包名和ability名称
     bundleName: "com.ohos.server",
     abilityName: "com.ohos.server.EntryAbility",
   };
@@ -9421,6 +9433,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -9502,6 +9515,7 @@ getInterfaceDescriptor(): string
     }
   };
   let want: Want = {
+    // 获取服务端包名和ability名称
     bundleName: "com.ohos.server",
     abilityName: "com.ohos.server.EntryAbility",
   };
@@ -9573,6 +9587,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // 获取服务端包名和ability名称
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -9696,7 +9711,7 @@ ArkTS-Sta示例：
 
 isAsync(): boolean
 
-获取SendMessageRequest调用中确定同步或是异步的标志。
+获取[sendMessageRequest](#sendmessagerequest9-2)调用中确定同步或是异步的标志。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -9728,7 +9743,7 @@ try {
 
 setAsync(isAsync: boolean): void
 
-设置SendMessageRequest调用中确定同步或是异步的标志。
+设置[sendMessageRequest](#sendmessagerequest9-2)调用中确定同步或是异步的标志。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -9955,7 +9970,7 @@ ArkTS-Dyn: static getCallingPid(): number
 
 ArkTS-Sta: static getCallingPid(): int
 
-静态方法，获取调用者的PID。此方法由RemoteObject对象在onRemoteRequest方法中调用，不在IPC上下文环境（onRemoteRequest）中调用则返回本进程的PID。
+静态方法，获取调用者的PID。此方法由[RemoteObject](#remoteobject)对象在IPC上下文环境（[onRemoteMessageRequest](#onremotemessagerequest9)）中调用，不在则返回本进程的PID。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -10015,7 +10030,7 @@ ArkTS-Dyn: static getCallingUid(): number
 
 ArkTS-Sta: static getCallingUid(): int
 
-静态方法，获取调用者的UID。此方法由RemoteObject对象在onRemoteRequest方法中调用，不在IPC上下文环境（onRemoteRequest）中调用则返回本进程的UID。
+静态方法，获取调用者的UID。此方法由[RemoteObject](#remoteobject)对象在IPC上下文环境（[onRemoteMessageRequest](#onremotemessagerequest9)）中调用，不在则返回本进程的UID。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -10396,7 +10411,7 @@ class Stub extends rpc.RemoteObject {
 
 static restoreCallingIdentity(identity: string): void
 
-静态方法，将UID和PID恢复为远程用户的UID和PID。它通常在使用resetCallingIdentity后调用，需要resetCallingIdentity返回的远程用户的UID和PID。
+静态方法，将UID和PID恢复为远程用户的UID和PID。它通常在使用resetCallingIdentity后调用，需要resetCallingIdentity返回的远程用户的UID和PID。该接口仅支持在IPC上下文（[onRemoteMessageRequest](#onremotemessagerequest9)）中使用，否则直接返回。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -10627,7 +10642,7 @@ ArkTS-Sta: sendMessageRequest(code: int, data: MessageSequence, reply: MessageSe
 
 | 类型                                            | 说明                                      |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise&lt;[RequestResult](#requestresult9)&gt; | 返回一个期约，兑现值是RequestResult实例。 |
+| Promise&lt;[RequestResult](#requestresult9)&gt; | Promise对象，返回一个期约，兑现值是RequestResult实例。 |
 
 **错误码：**
 
@@ -10752,7 +10767,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 | 类型                                                         | 说明                                          |
 | ------------------------------------------------------------ | --------------------------------------------- |
-| Promise&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | 返回一个期约，兑现值是sendRequestResult实例。 |
+| Promise&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | Promise对象，返回一个期约，兑现值是sendRequestResult实例。 |
 
 **示例：**
 
@@ -10828,7 +10843,7 @@ ArkTS-Sta: sendMessageRequest(code: int, data: MessageSequence, reply: MessageSe
 | data          | [MessageSequence](#messagesequence9)                  | 是   | 保存待发送数据的MessageSequence对象。                  |
 | reply         | [MessageSequence](#messagesequence9)                  | 是   | 接收应答数据的MessageSequence对象。                          |
 | options       | [MessageOption](#messageoption)                       | 是   | 本次请求的同异步模式，默认同步调用。                         |
-| callback      | AsyncCallback&lt;[RequestResult](#requestresult9)&gt; | 是   | 接收发送结果的回调。                                         |
+| callback      | AsyncCallback&lt;[RequestResult](#requestresult9)&gt; | 是   | 回调函数。当消息发送成功时，可从RequestResult中读取服务端返回的数据。 |
 
 **错误码：**
 

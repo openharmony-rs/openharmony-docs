@@ -5396,7 +5396,7 @@ struct Index {
 
 ## pointer.setMouseScrollDirection<sup>24+</sup>
 
-setMouseScrollDirection(state: boolean): Promise\<void>
+setMouseScrollDirection(inverted: boolean): Promise\<void>
 
 设置鼠标滚轮滚轴的方向，使用Promise异步方式返回结果。
 
@@ -5424,7 +5424,7 @@ setMouseScrollDirection(state: boolean): Promise\<void>
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[鼠标广播错误码](./errorcode-pointer.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[鼠标指针错误码](./errorcode-pointer.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
@@ -5510,7 +5510,7 @@ getMouseScrollDirection(): Promise\<boolean>
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[鼠标广播错误码](./errorcode-pointer.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[鼠标指针错误码](./errorcode-pointer.md)。
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
