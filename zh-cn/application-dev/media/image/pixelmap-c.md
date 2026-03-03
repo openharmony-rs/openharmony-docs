@@ -206,7 +206,7 @@ Image_ErrorCode PixelmapConvertAlphaTypeTest()
 #include <cmath>
 #include <hilog/log.h>
 #include <multimedia/image_framework/image/pixelmap_native.h>
-// 颜色结构体
+// 颜色结构体。
 struct AverageColor {
     uint8_t r;
     uint8_t g;
