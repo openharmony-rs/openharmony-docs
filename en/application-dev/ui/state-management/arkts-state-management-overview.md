@@ -51,13 +51,13 @@ ArkUI state management V1 provides a diverse array of decorators. You can use th
 
 By data flow patterns and synchronization types, decorators can be categorized into read-only (one-way data flow) and mutable (two-way synchronization).
 
-The following figure illustrates the decorators. For details, see [Component State Management](arkts-state.md) and [Application State Management](arkts-application-state-management-overview.md). You can use these decorators to implement linkage between data and the UI.
+The following figure illustrates the decorators. For details, see <!--RP1-->[@State Decorator: State Owned by Component](arkts-state.md)<!--RP1End--> and <!--RP2-->[Application State Management Overview](arkts-application-state-management-overview.md)<!--RP2End-->. You can use these decorators to implement linkage between data and the UI.
 
 ![en-us_image_0000001502704640](figures/en-us_image_0000001502704640.png)
 
 In the preceding figure, the decorators in the **Components** area are used for component-level state management, while others are used for application-level state management. Specifically, you can use [@StorageLink](arkts-appstorage.md#storagelink) or [@LocalStorageLink](arkts-localstorage.md#localstoragelink) to implement two-way synchronization for the application and component state, and [@StorageProp](arkts-appstorage.md#storageprop) or [@LocalStorageProp](arkts-localstorage.md#localstorageprop) to implement one-way synchronization.
 
-Decorators for [component-level state management](arkts-state.md):
+<!--RP1-->[\@State Decorator: State Owned by Component](arkts-state.md)<!--RP1End-->, that is, state management at the component level in the figure.
 
 - [\@State](arkts-state.md): An \@State decorated variable holds the state of the owning component. It can be the source of one- or two-way synchronization with child components. When the variable changes, the dependent component will be updated.
 
@@ -76,7 +76,7 @@ Decorators for [component-level state management](arkts-state.md):
 > Only [\@Observed/\@ObjectLink](arkts-observed-and-objectlink.md) can be used to observe changes of nested properties. Other decorators can be used to observe top-level property changes. For details, see the "Observed Changes and Behavior" part in each decorator section.
 
 
-Decorators for [application-level state management](arkts-application-state-management-overview.md):
+<!--RP2-->[Application State Management Overview](arkts-application-state-management-overview.md)<!--RP2End-->, that is, state management at the application level in the figure.
 
 
 - [AppStorage](arkts-appstorage.md): a special [LocalStorage](arkts-localstorage.md) singleton instance. It is an application-wide database bound to the application process and can be linked to components through the [@StorageProp](arkts-appstorage.md#storageprop) and [@StorageLink](arkts-appstorage.md#storagelink) decorators.
@@ -181,4 +181,4 @@ State management of V2 provides a new set of decorators.
 | Built-in UI component library    | Built-in UI component library   | Built-in UI component libraries for their respective state management versions. Built-in UI components that work with V1 include the following: [Dialog](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md), [ProgressButton](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ProgressButton.md), and [SegmentButton](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md).<br>New V2-optimized components are available since API version 18, including [DialogV2](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-DialogV2.md), [ProgressButtonV2](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ProgressButtonV2.md), and [SegmentButtonV2](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md).|
 | animateTo | Partial support| When **animateTo** is used in V2, exceptions may occur under certain scenarios. For details, see [Using animateTo Failed in State Management V2](./arkts-new-local.md#using-animateto-failed-in-state-management-v2).|
 
-For details about how to migrate applications from V1 to V2, see [Migrating Applications from V1 to V2](./arkts-v1-v2-migration.md).<br>For details about how to use decorators of V1 and V2 together, see [Mixing Use of Custom Components](./arkts-custom-component-mixed-scenarios.md).
+For details about how to migrate applications from V1 to V2, see [V1 to V2 Migration Overview](./arkts-v1-v2-migration.md). <!--RP3-->For details about how to use decorators of V1 and V2 together, see [Mixed Use of State Management V1 and V2](./arkts-v1-v2-mixusage-before-api-version.md)<!--RP3End-->).
