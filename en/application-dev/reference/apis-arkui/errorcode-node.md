@@ -131,7 +131,7 @@ The current node has been adopted.
 
 **Description**
 
-This error code is reported when the current node has been adopted as a child node and does not support the current operation.
+This error code is reported when the current node has been adopted as a child node and does not support the requested operation.
 
 **Possible Causes**
 
@@ -208,11 +208,10 @@ This error code is reported when an attempt is made to manipulate nodes on a non
 **Possible Causes**
 
 1. The API can be called only on the UI thread.
-2. The API supports multi-threaded calls, but the passed node has already been mounted to the main UI tree.
-3. The API supports multi-threaded calls, but the passed node is not created using the thread-safe [createNode](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode) API.
+2. The API supports multi-thread calling, but the node operated by the API is in the attached state.
 
 **Solution**
 
 1. Adjust the API call timing to ensure the API is called from the UI thread.
-2. Unmount the passed node from the main UI tree before calling the API.
-3. Use the thread-safe [createNode](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode) API to create nodes before calling this API.
+2. Ensure that the node is created by the multi-threaded [createNode](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode) API.
+3. Remove all non-convertible attached components from the component tree where the component is located by referring to [Multi-threaded NDK API Set Specifications](../../ui/ndk-build-on-multi-thread.md#multi-threaded-ndk-api-set-specifications).
