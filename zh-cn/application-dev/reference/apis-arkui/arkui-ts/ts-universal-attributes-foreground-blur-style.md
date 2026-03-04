@@ -53,7 +53,7 @@ foregroundBlurStyle(style: Optional\<BlurStyle>, options?: ForegroundBlurStyleOp
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | 是   | 内容模糊样式。<br/>当style的值为undefined时，恢复为无模糊的内容。 |
+| style   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | 是   | 内容模糊样式。<br/>当style的值为undefined时，恢复为无模糊的内容。 |
 | options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions对象说明) | 否   | 内容模糊选项。默认值请参考[ForegroundBlurStyleOptions](#foregroundblurstyleoptions对象说明)。                                   |
 
 **返回值：**
@@ -81,7 +81,7 @@ foregroundBlurStyle(style: Optional\<BlurStyle>, options?: ForegroundBlurStyleOp
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | 是   | 内容模糊样式。<br/>当style的值为undefined时，恢复为无模糊的内容。 |
+| style   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | 是   | 内容模糊样式。<br/>当style的值为undefined时，恢复为无模糊的内容。 |
 | options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions对象说明) | 否   | 可选参数，内容模糊选项。                                     |
 | sysOptions   |  [SystemAdaptiveOptions](ts-universal-attributes-background.md#systemadaptiveoptions19)    |   否   |  系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
 
