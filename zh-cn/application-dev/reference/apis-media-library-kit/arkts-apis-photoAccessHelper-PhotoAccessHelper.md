@@ -1966,7 +1966,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 ## offSinglePhotoChange<sup>23+</sup> 
 
 offSinglePhotoChange(asset?: PhotoAsset, callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void;
-
 取消单个资产的监听。具体规则如下：<br>
 1）不携带参数时，取消所有单个资产监听。<br>
 2）携带asset，不携带callback时，取消该asset下所有callback监听。<br>
@@ -2120,7 +2119,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 ## offSinglePhotoAlbumChange<sup>23+</sup> 
 
 offSinglePhotoAlbumChange(album?: Album, callback?: Callback&lt;AlbumChangeInfos&gt;): void
-
 取消对单个相册的监听，具体规则如下：<br>
 1）不携带任何参数时，取消所有单个相册监听。<br>
 2）携带album，不携带callback时，取消该album下所有callback监听。<br>
