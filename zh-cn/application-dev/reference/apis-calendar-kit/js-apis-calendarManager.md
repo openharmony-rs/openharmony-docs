@@ -341,7 +341,7 @@ deleteCalendar(calendar: Calendar): Promise\<void>
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 801      | Capability not supported.  |
-| 23900004 | Internal program error. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **示例**：
 
@@ -399,7 +399,7 @@ getCalendar(callback: AsyncCallback\<Calendar>): void
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 801      | Capability not supported.  |
-| 23900004 | Internal program error. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **示例**：
 
@@ -450,7 +450,7 @@ getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calendar>
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 801      | Capability not supported.  |
 | 23900003 | The specified account was not found.  |
-| 23900004 | Internal program error. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **示例**：
 
@@ -515,7 +515,7 @@ getCalendar(calendarAccount?: CalendarAccount): Promise\<Calendar>
 | 401      | Parameter error. Possible causes: Incorrect parameter types.  |
 | 801      | Capability not supported.  |
 | 23900003 | The specified account was not found. |
-| 23900004 | Internal program error. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **示例**：
 
@@ -560,7 +560,7 @@ getAllCalendars(callback: AsyncCallback\<Calendar[]>): void
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 801      | Capability not supported.  |
-| 23900004 | Internal program error. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **示例**：
 
@@ -609,7 +609,7 @@ getAllCalendars(): Promise\<Calendar[]>
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: Incorrect parameter types.  |
 | 801      | Capability not supported.  |
-| 23900004 | Internal program error. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **示例**：
 
@@ -710,7 +710,7 @@ addEvent(event: Event, callback: AsyncCallback\<number>): void
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
-| 23900004 | Internal program error. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **示例**：
 
@@ -769,7 +769,7 @@ addEvent(event: Event): Promise\<number>
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
-| 23900004 | Internal program error. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **示例**：
 
@@ -821,7 +821,7 @@ addEvents(events: Event[], callback: AsyncCallback\<void>): void
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
-| 23900004 | Internal program error. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **示例**：
 
@@ -887,7 +887,7 @@ addEvents(events: Event[]): Promise\<void>
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
-| 23900004 | Internal program error. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **示例**：
 
@@ -1300,7 +1300,7 @@ API version 20之前，默认查询字段包括id、type、title、startTime、e
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
-| 23900004 | Internal program error. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **示例**：
 
@@ -1349,7 +1349,7 @@ getEvents(eventFilter: EventFilter, eventKey: (keyof Event)[], callback: AsyncCa
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
-| 23900004 | Internal program error. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **示例**：
 
@@ -1431,7 +1431,7 @@ getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise\<Event
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
-| 23900004 | Internal program error. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **示例**：
 
@@ -1672,7 +1672,7 @@ queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyo
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
-| 23900004 | Internal program error. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **示例**：
 
