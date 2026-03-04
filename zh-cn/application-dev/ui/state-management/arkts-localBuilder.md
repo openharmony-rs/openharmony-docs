@@ -89,12 +89,12 @@ struct Parent {
   build() {
     Column() {
       Child({ customBuilderParam: this.componentBuilder }) // Child组件内调用customBuilderParam显示字符串Child。
-      Child({ customBuilderParam: this.componentLocalBuilder }) // Child组件内调用customBuilderParam显示字符串Parent，传递函数本身写法。
+      Child({ customBuilderParam: this.componentLocalBuilder }) // 传递函数本身写法，Child组件内调用customBuilderParam显示字符串Parent。
       Child({
         customBuilderParam: () => {
           this.componentLocalBuilder()
         }
-      }) // Child组件内调用customBuilderParam显示字符串Parent，() => { 函数调用 }写法。
+      }) // () => { 函数调用 }写法，Child组件内调用customBuilderParam显示字符串Parent。
     }
   }
 }
