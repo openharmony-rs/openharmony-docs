@@ -127,7 +127,7 @@ backgroundTaskManager.getRemainingDelayTime(id, (error: BusinessError, res: numb
   if (error) {
     console.error(`callback => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
   } else {
-    console.log('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+    console.info('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
   }
 })
 ```
@@ -142,7 +142,7 @@ backgroundTaskManager.getRemainingDelayTime(id, (error: BusinessError<void> | nu
   if (error) {
     console.error(`callback => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
   } else {
-    console.log('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+    console.info('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
   }
 })
 ```
@@ -196,7 +196,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let id = 1;
 backgroundTaskManager.getRemainingDelayTime(id).then((res: number) => {
-  console.log('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+  console.info('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
 }).catch((error: BusinessError) => {
   console.error(`promise => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
 })
@@ -209,7 +209,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let id: int = 1;
 backgroundTaskManager.getRemainingDelayTime(id).then((res: int) => {
-  console.log('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+  console.info('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
 }).catch((error) => {
   console.error(`promise => Operation getRemainingDelayTime failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 })
@@ -288,8 +288,6 @@ getTransientTaskInfo(): Promise&lt;TransientTaskInfo&gt;
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -304,8 +302,6 @@ try {
   console.error(`Operation getTransientTaskInfo failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
-
-ArkTS-Sta示例：
 
 ## backgroundTaskManager.startBackgroundRunning
 
@@ -1471,9 +1467,9 @@ export default class EntryAbility extends UIAbility {
 
 | 名称             | 类型     | 只读     | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| slotType       | [notificationManager.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否    | 否    | 长时任务通知的渠道类型。<br/>**说明：** 长时任务申请或更新成功后不支持提示音。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
-| contentType | [notificationManager.ContentType](../apis-notification-kit/js-apis-notificationManager.md#contenttype) | 否    | 否    | 长时任务通知的内容类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
-| notificationId | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否    | 否    | 长时任务通知 Id。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
+| slotType       | [notificationManager.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否    | 否    | 长时任务通知的渠道类型。<br/>**说明：** 长时任务申请或更新成功后不支持提示音。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23  |
+| contentType | [notificationManager.ContentType](../apis-notification-kit/js-apis-notificationManager.md#contenttype) | 否    | 否    | 长时任务通知的内容类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23  |
+| notificationId | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否    | 否    | 长时任务通知 Id。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23  |
 | continuousTaskId<sup>15+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否    | 是    | 长时任务 Id。<br> **ArkTS-Dyn起始版本：** 15 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## ContinuousTaskCancelInfo<sup>15+</sup>

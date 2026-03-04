@@ -28,7 +28,7 @@ applyEfficiencyResources(request: EfficiencyResourcesRequest): void
 
 **ArkTS-Sta起始版本：** 23
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -85,7 +85,7 @@ resetAllEfficiencyResources(): void
 
 **ArkTS-Sta起始版本：** 23
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **错误码：**
 
@@ -122,7 +122,7 @@ getAllEfficiencyResources(): Promise&lt;EfficiencyResourcesInfo[]&gt;
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **返回值：**
 
@@ -182,7 +182,7 @@ try {
 
 **ArkTS-Sta起始版本：** 23
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
@@ -199,7 +199,7 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
@@ -219,7 +219,7 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称                             | 类型      | 只读   | 可选   | 说明          |
 |--------------------------------|---------| ---- | ---- |-------------|
