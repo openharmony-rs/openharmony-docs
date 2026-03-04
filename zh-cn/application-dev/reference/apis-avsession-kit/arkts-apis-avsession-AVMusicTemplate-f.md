@@ -40,11 +40,11 @@ createAVMusicTemplate(accessType: AVMusicTemplateType): AVMusicTemplate
 
 **错误码：**
 
-以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801      | Capability not supported.function createAVMusicTemplate can not work correctly due to limited device capabilities. |
 | 35000001 | Failed to create the AVMusicTemplate.                        |
 
 **示例：**
@@ -120,12 +120,13 @@ createAVMusicTemplateController(sessionId: string): AVMusicTemplateController
 
 **错误码：**
 
-以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verify failed.                                    |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 202      | Not System App.                                              |
+| 801      | Capability not supported.function createAVMusicTemplateController can not work correctly due to limited device capabilities. |
 | 35000002 | Failed to create the AVMusicTemplate controller.             |
 | 35000005 | AVMusicTemplate does not exist.                              |
 
@@ -167,7 +168,7 @@ export class ControllerManager {
     };
 
   /**
-   * 通过getAllAVMusicTemplateDescriptors创建模板
+   * 通过getAllAVMusicTemplateDescriptors创建模板。
    */
   public createAvMusicTemplateController(bundleName: string) {
     if (this.isStringEmpty(bundleName)) {
@@ -176,7 +177,7 @@ export class ControllerManager {
     }
     this.currentBundleName = bundleName;
     try {
-      // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES
+      // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES。
       let descriptors: avMusicTemplate.AVMusicTemplateDescriptor[] = avMusicTemplate.getAllAVMusicTemplateDescriptors();
       if (this.isEmptyArray(descriptors)) {
         console.info(TAG, 'createAvMusicTemplateController: descriptors is empty');
@@ -214,10 +215,10 @@ export class ControllerManager {
    */
   public registerAVMusicTemplateListener() {
     try {
-      // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES
+      // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES。
       avMusicTemplate.onAVMusicTemplateCreate(this.templateCreateCallback);
 
-      // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES
+      // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES。
       avMusicTemplate.onAVMusicTemplateDestroy(this.templateDestroyCallback);
     } catch (e) {
       console.error(TAG, `registerAVMusicTemplateListener: errCode: ${e?.code}`);
@@ -321,7 +322,7 @@ getAllAVMusicTemplateDescriptors(userId?: int): AVMusicTemplateDescriptor[]
 
 获取所有的音频模板描述，返回音频模板描述的集合。
 
-**需要权限：**ohos.permission.MANAGE_MEDIA_RESOURCES
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -339,12 +340,13 @@ getAllAVMusicTemplateDescriptors(userId?: int): AVMusicTemplateDescriptor[]
 
 **错误码：**
 
-以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verify failed.                                    |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 202      | Not System App.                                              |
+| 801      | Capability not supported.function getAllAVMusicTemplateDescriptors can not work correctly due to limited device capabilities. |
 
 **示例：**
 
@@ -366,7 +368,7 @@ export class ControllerManager {
     }
     this.currentBundleName = bundleName;
     try {
-      // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES
+      // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES。
       let descriptors: avMusicTemplate.AVMusicTemplateDescriptor[] = avMusicTemplate.getAllAVMusicTemplateDescriptors();
     } catch (e) {
       console.error(TAG, `getAllAVMusicTemplateDescriptors failed, errCode: ${e?.code}`);
@@ -385,7 +387,7 @@ onAVMusicTemplateCreate(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): vo
 
 注册音频模板创建监听。
 
-**需要权限：**ohos.permission.MANAGE_MEDIA_RESOURCES
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -399,12 +401,13 @@ onAVMusicTemplateCreate(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verify failed.                                    |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 202      | Not System App.                                              |
+| 801      | Capability not supported.function onAVMusicTemplateCreate can not work correctly due to limited device capabilities. |
 
 **示例：**
 
@@ -432,7 +435,7 @@ export class ControllerManager {
    */
   public registerAVMusicTemplateListener() {
     try {
-      // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES
+      // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES。
       avMusicTemplate.onAVMusicTemplateCreate(this.templateCreateCallback);
     } catch (e) {
       console.error(TAG, `registerAVMusicTemplateListener: errCode: ${e?.code}`);
@@ -447,7 +450,7 @@ offAVMusicTemplateCreate(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;): 
 
 注销音频模板创建监听。
 
-**需要权限：**ohos.permission.MANAGE_MEDIA_RESOURCES
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -461,12 +464,13 @@ offAVMusicTemplateCreate(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verify failed.                                    |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 202      | Not System App.                                              |
+| 801      | Capability not supported.function offAVMusicTemplateCreate can not work correctly due to limited device capabilities. |
 
 **示例：**
 
@@ -495,7 +499,7 @@ onAVMusicTemplateDestroy(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): v
 
 注册音频模板销毁监听。
 
-**需要权限：**ohos.permission.MANAGE_MEDIA_RESOURCES
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -509,12 +513,13 @@ onAVMusicTemplateDestroy(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verify failed.                                    |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 202      | Not System App.                                              |
+| 801      | Capability not supported.function onAVMusicTemplateDestroy can not work correctly due to limited device capabilities. |
 
 **示例：**
 
@@ -533,7 +538,7 @@ export class ControllerManager {
    */
   public registerAVMusicTemplateListener() {
     try {
-      // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES
+      // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES。
       avMusicTemplate.onAVMusicTemplateDestroy(this.templateDestroyCallback);
     } catch (e) {
       console.error(TAG, `registerAVMusicTemplateListener: errCode: ${e?.code}`);
@@ -548,7 +553,7 @@ offAVMusicTemplateDestroy(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;):
 
 注销音频模板销毁监听。
 
-**需要权限：**ohos.permission.MANAGE_MEDIA_RESOURCES
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -562,12 +567,13 @@ offAVMusicTemplateDestroy(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verify failed.                                    |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 202      | Not System App.                                              |
+| 801      | Capability not supported.function offAVMusicTemplateDestroy can not work correctly due to limited device capabilities. |
 
 **示例：**
 
