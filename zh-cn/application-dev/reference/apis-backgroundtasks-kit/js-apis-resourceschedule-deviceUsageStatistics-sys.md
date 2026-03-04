@@ -4,9 +4,11 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块接口为系统接口。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口为系统接口。
 
 ## 导入模块
 
@@ -23,6 +25,10 @@ isIdleState(bundleName: string, callback: AsyncCallback&lt;boolean&gt;): void
 **需要权限**：ohos.permission.BUNDLE_ACTIVE_INFO
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -69,6 +75,10 @@ isIdleState(bundleName: string): Promise&lt;boolean&gt;
 **需要权限**：ohos.permission.BUNDLE_ACTIVE_INFO
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -119,6 +129,10 @@ isIdleStateSync(bundleName: string): boolean
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名        | 类型                           | 必填   | 说明                                       |
@@ -154,7 +168,9 @@ let isIdleState: boolean = usageStatistics.isIdleStateSync("com.ohos.camera");
 
 ## usageStatistics.queryAppGroup
 
-queryAppGroup(): Promise&lt;number&gt;
+ArkTS-Dyn: queryAppGroup(): Promise&lt;number&gt;
+
+ArkTS-Sta: queryAppGroup(): Promise&lt;int&gt;
 
 查询当前应用的优先级分组，使用Promise异步回调。
 
@@ -162,11 +178,15 @@ queryAppGroup(): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值**：
 
 | 类型              | 说明                          |
 | --------------- | --------------------------- |
-| Promise&lt;number&gt; | Promise对象。返回当前应用优先级分组结果，值越小，优先级越高。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象。返回当前应用优先级分组结果，值越小，优先级越高。 |
 
 **错误码**：
 
@@ -200,7 +220,9 @@ usageStatistics.queryAppGroup().then((res: number) => {
 
 ## usageStatistics.queryAppGroup
 
-queryAppGroup(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: queryAppGroup(callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: queryAppGroup(callback: AsyncCallback&lt;int&gt;): void
 
 查询当前应用的优先级分组，使用Callback异步回调。
 
@@ -208,11 +230,15 @@ queryAppGroup(callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名      | 类型                    | 必填   | 说明                         |
 | -------- | --------------------- | ---- | -------------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数，返回当前应用优先级分组结果，值越小，优先级越高。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt; <br> ArkTS-Sta: AsyncCallback&lt;int&gt; | 是    | 回调函数，返回当前应用优先级分组结果，值越小，优先级越高。 |
 
 **错误码**：
 
@@ -248,7 +274,9 @@ usageStatistics.queryAppGroup((err: BusinessError, res: number) => {
 
 ## usageStatistics.queryAppGroupSync<sup>10+<sup>
 
-queryAppGroupSync(): number
+ArkTS-Dyn: queryAppGroupSync(): number
+
+ArkTS-Sta: queryAppGroupSync(): int
 
 查询当前应用的优先级分组，使用同步方式返回。
 
@@ -256,11 +284,15 @@ queryAppGroupSync(): number
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值**：
 
 | 类型              | 说明                          |
 | --------------- | --------------------------- |
-| number | 返回当前应用优先级分组结果，值越小，优先级越高。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 返回当前应用优先级分组结果，值越小，优先级越高。 |
 
 **错误码**：
 
@@ -288,13 +320,19 @@ let priorityGroup: number = usageStatistics.queryAppGroupSync();
 
 ## usageStatistics.queryAppGroup
 
-queryAppGroup(bundleName : string): Promise&lt;number&gt;
+ArkTS-Dyn: queryAppGroup(bundleName : string): Promise&lt;number&gt;
+
+ArkTS-Sta: queryAppGroup(bundleName : string): Promise&lt;int&gt;
 
 查询指定bundleName应用的优先级分组，使用Promise异步回调。
 
 **需要权限**：ohos.permission.BUNDLE_ACTIVE_INFO
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -306,7 +344,7 @@ queryAppGroup(bundleName : string): Promise&lt;number&gt;
 
 | 类型              | 说明                          |
 | --------------- | --------------------------- |
-| Promise&lt;number&gt; | Promise对象。返回指定应用的优先级分组结果，值越小，优先级越高。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象。返回指定应用的优先级分组结果，值越小，优先级越高。 |
 
 **错误码**：
 
@@ -342,7 +380,9 @@ usageStatistics.queryAppGroup(bundleName).then((res: number) => {
 
 ## usageStatistics.queryAppGroup
 
-queryAppGroup(bundleName : string, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: queryAppGroup(bundleName : string, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: queryAppGroup(bundleName : string, callback: AsyncCallback&lt;int&gt;): void
 
 查询指定bundleName应用的优先级分组，使用Callback异步回调。
 
@@ -350,12 +390,16 @@ queryAppGroup(bundleName : string, callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名        | 类型                    | 必填   | 说明                                       |
 | ---------- | --------------------- | ---- | ---------------------------------------- |
 | bundleName | string                | 是    | 应用的bundleName。 |
-| callback   | AsyncCallback&lt;number&gt; | 是    | 回调函数，返回指定应用的优先级分组结果，值越小，优先级越高。|
+| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt; <br> ArkTS-Sta: AsyncCallback&lt;int&gt; | 是    | 回调函数，返回指定应用的优先级分组结果，值越小，优先级越高。|
 
 **错误码**：
 
@@ -392,13 +436,19 @@ usageStatistics.queryAppGroup(bundleName, (err: BusinessError, res: number) => {
 
 ## usageStatistics.queryAppGroupSync<sup>10+<sup>
 
-queryAppGroupSync(bundleName: string): number
+ArkTS-Dyn: queryAppGroupSync(bundleName: string): number
+
+ArkTS-Sta: queryAppGroupSync(bundleName: string): int
 
 查询指定bundleName应用的优先级分组，使用同步方式返回。
 
 **需要权限**：ohos.permission.BUNDLE_ACTIVE_INFO
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -410,7 +460,7 @@ queryAppGroupSync(bundleName: string): number
 
 | 类型              | 说明                          |
 | --------------- | --------------------------- |
-| number | 返回应用的优先级分组结果，值越小，优先级越高。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 返回应用的优先级分组结果，值越小，优先级越高。 |
 
 **错误码**：
 
@@ -445,6 +495,10 @@ setAppGroup(bundleName: string, newGroup: GroupType): Promise&lt;void&gt;
 **需要权限**：ohos.permission.BUNDLE_ACTIVE_INFO
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -501,6 +555,10 @@ setAppGroup(bundleName: string, newGroup: GroupType, callback: AsyncCallback&lt;
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名        | 类型                  | 必填   | 说明                        |
@@ -545,7 +603,9 @@ usageStatistics.setAppGroup(bundleName, newGroup, (err: BusinessError) => {
 
 ## usageStatistics.queryBundleStatsInfos
 
-queryBundleStatsInfos(begin: number, end: number, callback: AsyncCallback&lt;BundleStatsMap&gt;): void
+ArkTS-Dyn: queryBundleStatsInfos(begin: number, end: number, callback: AsyncCallback&lt;BundleStatsMap&gt;): void
+
+ArkTS-Sta: queryBundleStatsInfos(begin: long, end: long, callback: AsyncCallback&lt;BundleStatsMap&gt;): void
 
 通过指定起始和结束时间，查询应用使用时长的具体信息，统计的最小颗粒度是天，使用Callback异步回调。
 
@@ -553,12 +613,16 @@ queryBundleStatsInfos(begin: number, end: number, callback: AsyncCallback&lt;Bun
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                      |
 | -------- | ---------------------------------------- | ---- | --------------------------------------- |
-| begin    | number                                   | 是    | 起始时间，以毫秒为单位。                                   |
-| end      | number                                   | 是    | 结束时间，以毫秒为单位。                                   |
+| begin    | ArkTS-Dyn: number <br> ArkTS-Sta: long                                   | 是    | 起始时间，以毫秒为单位。                                   |
+| end      | ArkTS-Dyn: number <br> ArkTS-Sta: long                                   | 是    | 结束时间，以毫秒为单位。                                   |
 | callback | AsyncCallback&lt;[BundleStatsMap](#bundlestatsmap)&gt; | 是    | 回调函数，返回指定时间段内应用使用时长的具体信息。 |
 
 **错误码**：
@@ -595,7 +659,9 @@ usageStatistics.queryBundleStatsInfos(0, 20000000000000, (err: BusinessError, re
 
 ## usageStatistics.queryBundleStatsInfos
 
-queryBundleStatsInfos(begin: number, end: number): Promise&lt;BundleStatsMap&gt;
+ArkTS-Dyn: queryBundleStatsInfos(begin: number, end: number): Promise&lt;BundleStatsMap&gt;
+
+ArkTS-Sta: queryBundleStatsInfos(begin: long, end: long): Promise&lt;BundleStatsMap&gt;
 
 通过指定起始和结束时间，查询应用使用时长的具体信息，统计的最小颗粒度是天，使用Promise异步回调。
 
@@ -603,12 +669,16 @@ queryBundleStatsInfos(begin: number, end: number): Promise&lt;BundleStatsMap&gt;
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| begin | number | 是    | 起始时间，以毫秒为单位。 |
-| end   | number | 是    | 结束时间，以毫秒为单位。 |
+| begin | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是    | 起始时间，以毫秒为单位。 |
+| end   | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是    | 结束时间，以毫秒为单位。 |
 
 **返回值**：
 
@@ -648,7 +718,9 @@ usageStatistics.queryBundleStatsInfos(0, 20000000000000).then((res:usageStatisti
 
 ## usageStatistics.queryAppStatsInfos<sup>15+</sup>
 
-queryAppStatsInfos(begin: number, end: number): Promise&lt;AppStatsMap&gt;
+ArkTS-Dyn: queryAppStatsInfos(begin: number, end: number): Promise&lt;AppStatsMap&gt;
+
+ArkTS-Sta: queryAppStatsInfos(begin: long, end: long): Promise&lt;AppStatsMap&gt;
 
 通过指定起始和结束时间，查询应用使用时长的具体信息，统计的最小颗粒度是天，使用Promise异步回调。
 
@@ -656,12 +728,16 @@ queryAppStatsInfos(begin: number, end: number): Promise&lt;AppStatsMap&gt;
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| begin | number | 是    | 起始时间，以毫秒为单位。 |
-| end   | number | 是    | 结束时间，以毫秒为单位。 |
+| begin | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是    | 起始时间，以毫秒为单位。 |
+| end   | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是    | 结束时间，以毫秒为单位。 |
 
 **返回值**：
 
@@ -701,7 +777,9 @@ usageStatistics.queryAppStatsInfos(0, 20000000000000).then((res:usageStatistics.
 
 ## usageStatistics.queryLastUseTime<sup>15+</sup>
 
-queryLastUseTime(appInfo: Record&lt;string, Array&lt;number&gt;&gt;): Promise&lt;AppStatsMap&gt;
+ArkTS-Dyn: queryLastUseTime(appInfo: Record&lt;string, Array&lt;number&gt;&gt;): Promise&lt;AppStatsMap&gt;
+
+ArkTS-Sta: queryLastUseTime(appInfo: Record&lt;string, Array&lt;long&gt;&gt;): Promise&lt;AppStatsMap&gt;
 
 通过指定bundleName和应用的index，查询应用使用具体信息，统计的最小颗粒度是天，使用Promise异步回调。
 
@@ -709,11 +787,15 @@ queryLastUseTime(appInfo: Record&lt;string, Array&lt;number&gt;&gt;): Promise&lt
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| appInfo | Record&lt;string, Array&lt;number&gt;&gt; | 是    | 参数为map结构，key是bundleName，value是查询应用的index（可以有多个，通过Array传入）。 |
+| appInfo | ArkTS-Dyn: Record&lt;string, Array&lt;number&gt;&gt; <br> ArkTS-Sta: Record&lt;string, Array&lt;long&gt;&gt; | 是    | 参数为map结构，key是bundleName，value是查询应用的index（可以有多个，通过Array传入）。 |
 
 **返回值**：
 
@@ -754,7 +836,9 @@ usageStatistics.queryLastUseTime({"com.ohos.camera": [0]}).then((res:usageStatis
 
 ## usageStatistics.queryBundleStatsInfoByInterval
 
-queryBundleStatsInfoByInterval(byInterval: IntervalType, begin: number, end: number, callback: AsyncCallback&lt;Array&lt;BundleStatsInfo&gt;&gt;): void
+ArkTS-Dyn: queryBundleStatsInfoByInterval(byInterval: IntervalType, begin: number, end: number, callback: AsyncCallback&lt;Array&lt;BundleStatsInfo&gt;&gt;): void
+
+ArkTS-Sta: queryBundleStatsInfoByInterval(byInterval: IntervalType, begin: long, end: long, callback: AsyncCallback&lt;Array&lt;BundleStatsInfo&gt;&gt;): void
 
 通过指定时间段间隔（天、周、月、年），查询应用使用时长的统计信息，使用Callback异步回调。
 
@@ -762,13 +846,17 @@ queryBundleStatsInfoByInterval(byInterval: IntervalType, begin: number, end: num
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名        | 类型                                       | 必填   | 说明                                       |
 | ---------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | byInterval | [IntervalType](#intervaltype)            | 是    | 查询类型。                                    |
-| begin      | number                                   | 是    | 起始时间，以毫秒为单位。                                    |
-| end        | number                                   | 是    | 结束时间，以毫秒为单位。                                    |
+| begin      | ArkTS-Dyn: number <br> ArkTS-Sta: long                                   | 是    | 起始时间，以毫秒为单位。                                    |
+| end        | ArkTS-Dyn: number <br> ArkTS-Sta: long                                   | 是    | 结束时间，以毫秒为单位。                                    |
 | callback   | AsyncCallback&lt;Array&lt;[BundleStatsInfo](#bundlestatsinfo)&gt;&gt; | 是    | 回调函数，返回指定时间段间隔内，应用使用时长的统计信息。 |
 
 **错误码**：
@@ -808,7 +896,9 @@ usageStatistics.queryBundleStatsInfoByInterval(0, 0, 20000000000000, (err: Busin
 
 ## usageStatistics.queryBundleStatsInfoByInterval
 
-queryBundleStatsInfoByInterval(byInterval: IntervalType, begin: number, end: number): Promise&lt;Array&lt;BundleStatsInfo&gt;&gt;
+ArkTS-Dyn: queryBundleStatsInfoByInterval(byInterval: IntervalType, begin: number, end: number): Promise&lt;Array&lt;BundleStatsInfo&gt;&gt;
+
+ArkTS-Sta: queryBundleStatsInfoByInterval(byInterval: IntervalType, begin: long, end: long): Promise&lt;Array&lt;BundleStatsInfo&gt;&gt;
 
 通过指定时间段间隔（天、周、月、年），查询应用使用时长的统计信息，使用Promise异步回调。
 
@@ -816,13 +906,17 @@ queryBundleStatsInfoByInterval(byInterval: IntervalType, begin: number, end: num
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App 
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名        | 类型                            | 必填   | 说明    |
 | ---------- | ----------------------------- | ---- | ----- |
 | byInterval | [IntervalType](#intervaltype) | 是    | 查询类型。 |
-| begin      | number                        | 是    | 起始时间，以毫秒为单位。 |
-| end        | number                        | 是    | 结束时间，以毫秒为单位。 |
+| begin      | ArkTS-Dyn: number <br> ArkTS-Sta: long                        | 是    | 起始时间，以毫秒为单位。 |
+| end        | ArkTS-Dyn: number <br> ArkTS-Sta: long                        | 是    | 结束时间，以毫秒为单位。 |
 
 **返回值**：
 
@@ -865,7 +959,9 @@ usageStatistics.queryBundleStatsInfoByInterval(0, 0, 20000000000000).then((res: 
 
 ## usageStatistics.queryBundleEvents
 
-queryBundleEvents(begin: number, end: number, callback: AsyncCallback&lt;Array&lt;BundleEvents&gt;&gt;): void
+ArkTS-Dyn: queryBundleEvents(begin: number, end: number, callback: AsyncCallback&lt;Array&lt;BundleEvents&gt;&gt;): void
+
+ArkTS-Sta: queryBundleEvents(begin: long, end: long, callback: AsyncCallback&lt;Array&lt;BundleEvents&gt;&gt;): void
 
 通过指定起始和结束时间，查询所有应用的事件集合，使用Callback异步回调。
 
@@ -873,12 +969,16 @@ queryBundleEvents(begin: number, end: number, callback: AsyncCallback&lt;Array&l
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                      |
 | -------- | ---------------------------------------- | ---- | --------------------------------------- |
-| begin    | number                                   | 是    | 起始时间，以毫秒为单位。                                   |
-| end      | number                                   | 是    | 结束时间，以毫秒为单位。                                   |
+| begin    | ArkTS-Dyn: number <br> ArkTS-Sta: long                                   | 是    | 起始时间，以毫秒为单位。                                   |
+| end      | ArkTS-Dyn: number <br> ArkTS-Sta: long                                   | 是    | 结束时间，以毫秒为单位。                                   |
 | callback | AsyncCallback&lt;Array&lt;[BundleEvents](#bundleevents)&gt;&gt; | 是    | 回调函数，返回起始和结束时间段内，所有应用的事件集合。 |
 
 **错误码**：
@@ -918,7 +1018,9 @@ usageStatistics.queryBundleEvents(0, 20000000000000, (err: BusinessError, res: A
 
 ## usageStatistics.queryBundleEvents
 
-queryBundleEvents(begin: number, end: number): Promise&lt;Array&lt;BundleEvents&gt;&gt;
+ArkTS-Dyn: queryBundleEvents(begin: number, end: number): Promise&lt;Array&lt;BundleEvents&gt;&gt;
+
+ArkTS-Sta: queryBundleEvents(begin: long, end: long): Promise&lt;Array&lt;BundleEvents&gt;&gt;
 
 通过指定起始和结束时间，查询所有应用的事件集合，使用Promise异步回调。
 
@@ -926,12 +1028,16 @@ queryBundleEvents(begin: number, end: number): Promise&lt;Array&lt;BundleEvents&
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| begin | number | 是    | 起始时间，以毫秒为单位。 |
-| end   | number | 是    | 结束时间，以毫秒为单位。 |
+| begin | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是    | 起始时间，以毫秒为单位。 |
+| end   | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是    | 结束时间，以毫秒为单位。 |
 
 **返回值**：
 
@@ -974,18 +1080,24 @@ usageStatistics.queryBundleEvents(0, 20000000000000).then((res: Array<usageStati
 
 ## usageStatistics.queryCurrentBundleEvents
 
-queryCurrentBundleEvents(begin: number, end: number, callback: AsyncCallback&lt;Array&lt;BundleEvents&gt;&gt;): void
+ArkTS-Dyn: queryCurrentBundleEvents(begin: number, end: number, callback: AsyncCallback&lt;Array&lt;BundleEvents&gt;&gt;): void
+
+ArkTS-Sta: queryCurrentBundleEvents(begin: long, end: long, callback: AsyncCallback&lt;Array&lt;BundleEvents&gt;&gt;): void
 
 通过指定起始和结束时间，查询当前应用的事件集合，使用Callback异步回调。
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                      |
 | -------- | ---------------------------------------- | ---- | --------------------------------------- |
-| begin    | number                                   | 是    | 起始时间，以毫秒为单位。                                   |
-| end      | number                                   | 是    | 结束时间，以毫秒为单位。                                   |
+| begin    | ArkTS-Dyn: number <br> ArkTS-Sta: long                                   | 是    | 起始时间，以毫秒为单位。                                   |
+| end      | ArkTS-Dyn: number <br> ArkTS-Sta: long                                   | 是    | 结束时间，以毫秒为单位。                                   |
 | callback | AsyncCallback&lt;Array&lt;[BundleEvents](#bundleevents)&gt;&gt; | 是    | 回调函数，返回指定起始和结束时间段内，当前应用的事件集合。 |
 
 **错误码**：
@@ -1024,18 +1136,24 @@ usageStatistics.queryCurrentBundleEvents(0, 20000000000000, (err: BusinessError,
 
 ## usageStatistics.queryCurrentBundleEvents
 
-queryCurrentBundleEvents(begin: number, end: number): Promise&lt;Array&lt;BundleEvents&gt;&gt;
+ArkTS-Dyn: queryCurrentBundleEvents(begin: number, end: number): Promise&lt;Array&lt;BundleEvents&gt;&gt;
+
+ArkTS-Sta: queryCurrentBundleEvents(begin: long, end: long): Promise&lt;Array&lt;BundleEvents&gt;&gt;
 
 通过指定起始和结束时间段内，查询当前应用的事件集合，使用Promise异步回调。
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| begin | number | 是    | 起始时间，以毫秒为单位。 |
-| end   | number | 是    | 结束时间，以毫秒为单位。 |
+| begin | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是    | 起始时间，以毫秒为单位。 |
+| end   | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是    | 结束时间，以毫秒为单位。 |
 
 **返回值**：
 
@@ -1077,7 +1195,9 @@ usageStatistics.queryCurrentBundleEvents(0, 20000000000000).then((res: Array<usa
 
 ## usageStatistics.queryDeviceEventStats
 
-queryDeviceEventStats(begin: number, end: number): Promise&lt;Array&lt;DeviceEventStats&gt;&gt;
+ArkTS-Dyn: queryDeviceEventStats(begin: number, end: number): Promise&lt;Array&lt;DeviceEventStats&gt;&gt;
+
+ArkTS-Sta: queryDeviceEventStats(begin: long, end: long): Promise&lt;Array&lt;DeviceEventStats&gt;&gt;
 
 通过指定起始和结束时间，查询系统事件（休眠、唤醒、解锁、锁屏）的统计信息，使用Promise异步回调。
 
@@ -1085,12 +1205,16 @@ queryDeviceEventStats(begin: number, end: number): Promise&lt;Array&lt;DeviceEve
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| begin | number | 是    | 起始时间，以毫秒为单位。 |
-| end   | number | 是    | 结束时间，以毫秒为单位。 |
+| begin | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是    | 起始时间，以毫秒为单位。 |
+| end   | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是    | 结束时间，以毫秒为单位。 |
 
 **返回值**：
 
@@ -1130,7 +1254,9 @@ usageStatistics.queryDeviceEventStats(0, 20000000000000).then((res: Array<usageS
 
 ## usageStatistics.queryDeviceEventStats
 
-queryDeviceEventStats(begin: number, end: number, callback: AsyncCallback&lt;Array&lt;DeviceEventStats&gt;&gt;): void
+ArkTS-Dyn: queryDeviceEventStats(begin: number, end: number, callback: AsyncCallback&lt;Array&lt;DeviceEventStats&gt;&gt;): void
+
+ArkTS-Sta: queryDeviceEventStats(begin: long, end: long, callback: AsyncCallback&lt;Array&lt;DeviceEventStats&gt;&gt;): void
 
 通过指定起始和结束时间，查询系统事件（休眠、唤醒、解锁、锁屏）的统计信息，使用Callback异步回调。
 
@@ -1138,12 +1264,16 @@ queryDeviceEventStats(begin: number, end: number, callback: AsyncCallback&lt;Arr
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| begin    | number                                   | 是    | 起始时间，以毫秒为单位。                                    |
-| end      | number                                   | 是    | 结束时间，以毫秒为单位。                                    |
+| begin    | ArkTS-Dyn: number <br> ArkTS-Sta: long                                   | 是    | 起始时间，以毫秒为单位。                                    |
+| end      | ArkTS-Dyn: number <br> ArkTS-Sta: long                                   | 是    | 结束时间，以毫秒为单位。                                    |
 | callback | AsyncCallback&lt;Array&lt;[DeviceEventStats](#deviceeventstats)&gt;&gt; | 是    | 回调函数，返回起始和结束时间段内，系统事件（休眠、唤醒、解锁、锁屏）的统计信息。 | 
 
 **错误码**：
@@ -1180,7 +1310,9 @@ usageStatistics.queryDeviceEventStats(0, 20000000000000, (err: BusinessError, re
 
 ## usageStatistics.queryNotificationEventStats
 
-queryNotificationEventStats(begin: number, end: number): Promise&lt;Array&lt;DeviceEventStats&gt;&gt;
+ArkTS-Dyn: queryNotificationEventStats(begin: number, end: number): Promise&lt;Array&lt;DeviceEventStats&gt;&gt;
+
+ArkTS-Sta: queryNotificationEventStats(begin: long, end: long): Promise&lt;Array&lt;DeviceEventStats&gt;&gt;
 
 通过指定起始和结束时间，查询所有应用的通知次数，使用Promise异步回调。
 
@@ -1188,12 +1320,16 @@ queryNotificationEventStats(begin: number, end: number): Promise&lt;Array&lt;Dev
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
-| begin | number | 是    | 起始时间，以毫秒为单位。 |
-| end   | number | 是    | 结束时间，以毫秒为单位。 |
+| begin | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是    | 起始时间，以毫秒为单位。 |
+| end   | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是    | 结束时间，以毫秒为单位。 |
 
 **返回值**：
 
@@ -1233,7 +1369,9 @@ usageStatistics.queryNotificationEventStats(0, 20000000000000).then((res: Array<
 
 ## usageStatistics.queryNotificationEventStats
 
-queryNotificationEventStats(begin: number, end: number, callback: AsyncCallback&lt;Array&lt;DeviceEventStats&gt;&gt;): void
+ArkTS-Dyn: queryNotificationEventStats(begin: number, end: number, callback: AsyncCallback&lt;Array&lt;DeviceEventStats&gt;&gt;): void
+
+ArkTS-Sta: queryNotificationEventStats(begin: long, end: long, callback: AsyncCallback&lt;Array&lt;DeviceEventStats&gt;&gt;): void
 
 通过指定起始和结束时间，查询所有应用的通知次数，使用Callback异步回调。
 
@@ -1241,12 +1379,16 @@ queryNotificationEventStats(begin: number, end: number, callback: AsyncCallback&
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| begin    | number                                   | 是    | 起始时间，以毫秒为单位。                                    |
-| end      | number                                   | 是    | 结束时间，以毫秒为单位。                                    |
+| begin    | ArkTS-Dyn: number <br> ArkTS-Sta: long                                   | 是    | 起始时间，以毫秒为单位。                                    |
+| end      | ArkTS-Dyn: number <br> ArkTS-Sta: long                                   | 是    | 结束时间，以毫秒为单位。                                    |
 | callback | AsyncCallback&lt;Array&lt;[DeviceEventStats](#deviceeventstats)&gt;&gt; | 是    | 回调函数，返回指定起始和结束时间段内，所有应用的通知次数。 |
 
 **错误码**：
@@ -1292,6 +1434,10 @@ queryModuleUsageRecords(): Promise&lt;Array&lt;HapModuleInfo&gt;&gt;
 **需要权限**：ohos.permission.BUNDLE_ACTIVE_INFO
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值**：
 
@@ -1343,6 +1489,10 @@ queryModuleUsageRecords(callback: AsyncCallback&lt;Array&lt;HapModuleInfo&gt;&gt
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                  |
@@ -1382,7 +1532,9 @@ usageStatistics.queryModuleUsageRecords((err: BusinessError, res: Array<usageSta
 
 ## usageStatistics.queryModuleUsageRecords
 
-queryModuleUsageRecords(maxNum: number): Promise&lt;Array&lt;HapModuleInfo&gt;&gt;
+ArkTS-Dyn: queryModuleUsageRecords(maxNum: number): Promise&lt;Array&lt;HapModuleInfo&gt;&gt;
+
+ArkTS-Sta: queryModuleUsageRecords(maxNum: int): Promise&lt;Array&lt;HapModuleInfo&gt;&gt;
 
 根据设置的maxNum，查询FA模型下各应用不用Hap包的使用记录。若Hap包中存在FA卡片，使用信息中也包含卡片信息。使用Promise异步回调。
 
@@ -1390,11 +1542,15 @@ queryModuleUsageRecords(maxNum: number): Promise&lt;Array&lt;HapModuleInfo&gt;&g
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明                                 |
 | ------ | ------ | ---- | ---------------------------------- |
-| maxNum | number | 是    | 使用记录的条数，取值范围为[1，1000]。 |
+| maxNum | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是    | 使用记录的条数，取值范围为[1，1000]。 |
 
 **返回值**：
 
@@ -1437,7 +1593,9 @@ usageStatistics.queryModuleUsageRecords(1000).then((res: Array<usageStatistics.H
 
 ## usageStatistics.queryModuleUsageRecords
 
-queryModuleUsageRecords(maxNum: number, callback: AsyncCallback&lt;Array&lt;HapModuleInfo&gt;&gt;): void
+ArkTS-Dyn: queryModuleUsageRecords(maxNum: number, callback: AsyncCallback&lt;Array&lt;HapModuleInfo&gt;&gt;): void
+
+ArkTS-Sta: queryModuleUsageRecords(maxNum: int, callback: AsyncCallback&lt;Array&lt;HapModuleInfo&gt;&gt;): void
 
 根据设置的maxNum，查询FA模型下各应用不用Hap包的使用记录。若Hap包中存在FA卡片，使用信息中也包含卡片信息。使用Callback异步回调。
 
@@ -1445,11 +1603,15 @@ queryModuleUsageRecords(maxNum: number, callback: AsyncCallback&lt;Array&lt;HapM
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                  |
 | -------- | ---------------------------------------- | ---- | ----------------------------------- |
-| maxNum   | number                                   | 是    |  使用记录的条数，取值范围为[1，1000]。 |
+| maxNum   | ArkTS-Dyn: number <br> ArkTS-Sta: int                                   | 是    |  使用记录的条数，取值范围为[1，1000]。 |
 | callback | AsyncCallback&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | 是    | 回调方法，返回不超过maxNum条，FA模型下各应用不用Hap包的使用记录。 |
 
 **错误码**：
@@ -1496,6 +1658,10 @@ registerAppGroupCallBack(groupCallback: Callback&lt;AppGroupCallbackInfo&gt;): P
 **需要权限**：ohos.permission.BUNDLE_ACTIVE_INFO
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1556,6 +1722,10 @@ registerAppGroupCallBack(groupCallback: Callback&lt;AppGroupCallbackInfo&gt;, ca
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型                                                         | 必填 | 说明                                         |
@@ -1612,6 +1782,10 @@ unregisterAppGroupCallBack(): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值**：
 
 | 类型            | 说明                       |
@@ -1656,6 +1830,10 @@ unregisterAppGroupCallBack(callback: AsyncCallback&lt;void&gt;): void;
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名      | 类型                  | 必填   | 说明             |
@@ -1698,20 +1876,24 @@ FA模型的使用信息属性集合。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                  | 类型                                       | 必填   | 说明                            |
 | -------------------- | ---------------------------------------- | ---- | ----------------------------- |
 | deviceId             | string                                   | 否    | 设备Id。                 |
 | bundleName           | string                                   | 是    | 应用名称。             |
 | moduleName           | string                                   | 是    | FA所属module名。                  |
 | abilityName          | string                                   | 否    | FA的MainAbility名。              |
-| appLabelId           | number                                   | 否    | FA的应用labelId。                 |
-| labelId              | number                                   | 否    | FA所属module的labelId。           |
-| descriptionId        | number                                   | 否    | FA所属的应用descriptionId。         |
-| abilityLableId       | number                                   | 否    | FA的MainAbility labelId。       |
-| abilityDescriptionId | number                                   | 否    | FA的MainAbility descriptionId。 |
-| abilityIconId        | number                                   | 否    | FA的MainAbility iconId。        |
-| launchedCount        | number                                   | 是    | FA的启动次数。                      |
-| lastModuleUsedTime   | number                                   | 是    | FA的上一次使用时间。                   |
+| appLabelId           | ArkTS-Dyn: number <br> ArkTS-Sta: long                                   | 否    | FA的应用labelId。                 |
+| labelId              | ArkTS-Dyn: number <br> ArkTS-Sta: long                                   | 否    | FA所属module的labelId。           |
+| descriptionId        | ArkTS-Dyn: number <br> ArkTS-Sta: long                                   | 否    | FA所属的应用descriptionId。         |
+| abilityLableId       | ArkTS-Dyn: number <br> ArkTS-Sta: long                                   | 否    | FA的MainAbility labelId。       |
+| abilityDescriptionId | ArkTS-Dyn: number <br> ArkTS-Sta: long                                   | 否    | FA的MainAbility descriptionId。 |
+| abilityIconId        | ArkTS-Dyn: number <br> ArkTS-Sta: long                                   | 否    | FA的MainAbility iconId。        |
+| launchedCount        | ArkTS-Dyn: number <br> ArkTS-Sta: int                                   | 是    | FA的启动次数。                      |
+| lastModuleUsedTime   | ArkTS-Dyn: number <br> ArkTS-Sta: long                                   | 是    | FA的上一次使用时间。                   |
 | formRecords          | Array&lt;[HapFormInfo](#hapforminfo)&gt; | 是    | FA中卡片的使用记录。                   |
 
 ## HapFormInfo
@@ -1720,13 +1902,17 @@ FA卡片的使用信息属性集合。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称              | 类型     | 必填   | 说明          |
 | ---------------- | ------ | ---- | ----------- |
 | formName         | string | 是    | 卡片名称。       |
-| formDimension    | number | 是    | 卡片尺寸。       |
-| formId           | number | 是    | 卡片Id。       |
-| formLastUsedTime | number | 是    | 卡片的上一次点击时间。 |
-| count            | number | 是    | 卡片的点击次数。    |
+| formDimension    | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是    | 卡片尺寸。       |
+| formId           | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是    | 卡片Id。       |
+| formLastUsedTime | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是    | 卡片的上一次点击时间。 |
+| count            | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是    | 卡片的点击次数。    |
 
 ## AppGroupCallbackInfo
 
@@ -1734,12 +1920,16 @@ FA卡片的使用信息属性集合。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型   | 必填 | 说明             |
 | ---------------- | ------ | ---- | ---------------- |
-| appOldGroup | number | 是   | 变化前的应用分组。 |
-| appNewGroup | number | 是   | 变化后的应用分组。|
-| userId           | number | 是   | 用户id。           |
-| changeReason     | number | 是   | 分组变化原因。<br>- 256:使用记录初创建时，默认匹配的原因。<br>- 512:计算优先级分组时异常。<br>- 768:使用时长变化。  <br>- 1024:有其他应用为当前应用强制设置优先级分组。|
+| appOldGroup | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 变化前的应用分组。 |
+| appNewGroup | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 变化后的应用分组。|
+| userId           | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 用户id。           |
+| changeReason     | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 分组变化原因。<br>- 256:使用记录初创建时，默认匹配的原因。<br>- 512:计算优先级分组时异常。<br>- 768:使用时长变化。  <br>- 1024:有其他应用为当前应用强制设置优先级分组。|
 | bundleName       | string | 是   | 应用名称。         |
 
 ## BundleStatsInfo
@@ -1751,16 +1941,16 @@ FA卡片的使用信息属性集合。
 | 名称                      | 类型     | 必填   | 说明                                       |
 | ------------------------ | ------ | ---- | ---------------------------------------- |
 | bundleName               | string | 否    | 应用包名。                                    |
-| abilityPrevAccessTime    | number | 否    | 应用最后一次使用的时间。                             |
-| abilityInFgTotalTime     | number | 否    | 应用在前台使用的总时间。                             |
-| id                       | number | 是    | 用户id。 |
-| abilityPrevSeenTime      | number | 否    | 应用最后一次在前台可见的时间。 |
-| abilitySeenTotalTime     | number | 否    | 应用在前台可见的总时间。 |
-| fgAbilityAccessTotalTime | number | 否    | 应用访问前台的总时间。 |
-| fgAbilityPrevAccessTime  | number | 否    | 应用最后一次访问前台的时间。|
-| infosBeginTime           | number | 否    | BundleActiveInfo对象中第一条应用使用统计的记录时间。 |
-| infosEndTime             | number | 否    | BundleActiveInfo对象中最后一条应用使用统计的记录时间。 |
-| appIndex<sup>15+</sup>                 | number | 否    | 应用程序的索引。 |
+| abilityPrevAccessTime    | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否    | 应用最后一次使用的时间。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                             |
+| abilityInFgTotalTime     | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否    | 应用在前台使用的总时间。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                             |
+| id                       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是    | 用户id。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| abilityPrevSeenTime      | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否    | 应用最后一次在前台可见的时间。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| abilitySeenTotalTime     | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否    | 应用在前台可见的总时间。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| fgAbilityAccessTotalTime | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否    | 应用访问前台的总时间。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| fgAbilityPrevAccessTime  | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否    | 应用最后一次访问前台的时间。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| infosBeginTime           | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否    | BundleActiveInfo对象中第一条应用使用统计的记录时间。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| infosEndTime             | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否    | BundleActiveInfo对象中最后一条应用使用统计的记录时间。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| appIndex<sup>15+</sup>                 | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 应用程序的索引。<br> **ArkTS-Dyn起始版本：** 15 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## BundleEvents
 
@@ -1768,12 +1958,16 @@ FA卡片的使用信息属性集合。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                   | 类型     | 必填   | 说明                                       |
 | --------------------- | ------ | ---- | ---------------------------------------- |
 | bundleName            | string | 否    | 应用包名。                                    |
-| eventId             | number | 否    | 应用事件类型。                                  |
-| eventOccurredTime     | number | 否    | 应用事件发生的时间戳。                              |
-| appGroup | number | 否    | 应用程序的使用优先级组。|
+| eventId             | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 应用事件类型。                                  |
+| eventOccurredTime     | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否    | 应用事件发生的时间戳。                              |
+| appGroup | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 应用程序的使用优先级组。|
 | indexOfLink           | string | 否    | 快捷方式id。|
 | nameOfClass           | string | 否    | 类名。|
 
@@ -1782,6 +1976,10 @@ FA卡片的使用信息属性集合。
 应用使用时长的具体信息。
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 |名称                           | 描述                                       |
 | ------------------------------ | ---------------------------------------- |
@@ -1793,6 +1991,10 @@ FA卡片的使用信息属性集合。
 
 **系统能力**：SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 |名称                           | 描述                                       |
 | ------------------------------ | ---------------------------------------- |
 | Record<string, Array<[BundleStatsInfo](#bundlestatsinfo)>> | 不同应用的使用统计信息（包含分身应用）。 |
@@ -1803,17 +2005,25 @@ FA卡片的使用信息属性集合。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.ResourceSchedule.UsageStatistics.App
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型     | 必填   | 说明                |
 | ------- | ------ | ---- | ----------------- |
 | name    | string | 是    | 通知应用包名或者系统事件名。    |
-| eventId | number | 是    | 通知、系统事件类型。        |
-| count   | number | 是    | 应用通知次数或者系统事件触发次数。 |
+| eventId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是    | 通知、系统事件类型。        |
+| count   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是    | 应用通知次数或者系统事件触发次数。 |
 
 ## IntervalType
 
 应用使用时长的查询类型。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.ResourceSchedule.UsageStatistics.App
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值  | 说明                                       |
 | ------------ | ---- | ---------------------------------------- |
@@ -1828,6 +2038,10 @@ FA卡片的使用信息属性集合。
 应用分组的设置类型。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 值  | 说明                |
 | ------------------ | ---- | ----------------- |
