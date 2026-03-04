@@ -1748,15 +1748,15 @@ let tempPath = '/data/stroage/el2/base/haps/entry/files/note.jpg';
 let file: fs.File;
 file = fs.openSync(tempPath, 4);
 
-let printJobData: print.printJobData = {
+let printJobData: print.PrintJobData = {
     printerId: "printerId",
     jobName: "jobName",
     documentFormat: print.PrintDocumentFormat.DOCUMENT_FORMAT_AUTO,
     docFlavor: print.DocFlavor.FILE_DESCRIPTOR,
     copyNumber: 1,
-    isLandscape: 0,
+    isLandscape: false,
     colorMode: print.PrintColorMode.COLOR_MODE_MONOCHROME,
-    dulpexMode: print.PrintDuplexMode.DUPLEX_MODE_NONE,
+    duplexMode: print.PrintDuplexMode.DUPLEX_MODE_NONE,
     pageSize: {id: "ISO_A4", name: "ISO_A4", width:8268, height: 11692},
     fdList: [file.fd],
 }
@@ -1796,7 +1796,7 @@ Enumerates the data source types for printing.
 | FILE_DESCRIPTOR | 0 | File data.|
 | BYTES | 1 | Binary data.|
 
-## printJobData<sup>23+</sup>
+## PrintJobData<sup>23+</sup>
 
 Defines a print job.
 
@@ -1811,7 +1811,7 @@ Defines a print job.
 | documentFormat | [PrintDocumentFormat](#printdocumentformat23) | No| No| Format of the print data.|
 | docFlavor | [DocFlavor](#docflavor23) | No| No| Data source type.|
 | copyNumber | number | No| No| Number of file list copies.|
-| isLandscape | boolean | No| No| Whether pages are printed in landscape mode.<br>The value **true** indicates that pages are printed in landscape mode, and **false** indicates that pages are printed in portrait mode.|
+| isLandscape | boolean | No| No| Whether pages are printed in landscape mode.<br>The value **true** indicates that pages are printed in landscape mode, and **false** indicates that pages are printed in portrait mode. The default value is **false**.|
 | colorMode | [PrintColorMode](#printcolormode11) | No| No| Color mode.|
 | duplexMode | [PrintDuplexMode](#printduplexmode11) | No| No| Simplex or duplex mode.|
 | pageSize | [PrintPageSize](./js-apis-print.md#printpagesize11) | No| No| Selected page size.|
