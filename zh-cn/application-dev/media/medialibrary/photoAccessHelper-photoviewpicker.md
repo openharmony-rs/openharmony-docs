@@ -49,6 +49,8 @@
    console.log('选择成功，返回结果: ' + JSON.stringify(result));
    console.log('选择的文件数量: ' + result.photoUris.length);
          
+
+         
    // 更新选中的URI列表
    this.selectedUris = result.photoUris;
    // 设置默认选中第一个URI用于读取操作

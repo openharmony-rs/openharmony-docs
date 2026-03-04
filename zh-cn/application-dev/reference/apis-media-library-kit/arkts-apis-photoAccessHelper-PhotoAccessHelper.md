@@ -161,7 +161,7 @@ getBurstAssets(burstKey: string, options: FetchOptions): Promise&lt;FetchResult&
 
 | 参数名  | 类型                | 必填 | 说明             |
 | ------- | ------------------- | ---- | ---------------- |
-| burstKey | string   | 是   | 一组连拍照片的唯一标识：uuid(可传入[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)的BURST_KEY)。字符串长度为36。 |
+| burstKey | string   | 是   | 一组连拍照片的唯一标识：uuid【可传入[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)的BURST_KEY】。字符串长度为36。 |
 | options | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions)   | 是   | 连拍照片检索选项。     |
 
 **返回值：**
@@ -898,7 +898,7 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 
 调用接口显示保存确认弹窗。如果用户同意保存，将返回一个已创建并授予保存权限的URI列表（此列表永久生效），应用可使用这些URI写入图片或视频。如果用户拒绝保存，将返回一个空列表。
 
-弹框需显示应用名称，但无法直接获取。因此，调用此接口时，请确保`module.json5`文件中的`abilities`标签已配置`label`和`icon`项。需要注意的是，图标不受`abilities`标签中的`icon`项影响，不支持修改。
+弹框需显示应用名称，但无法直接获取。因此，调用此接口时，请确保[module.json5](../../../application-dev/quick-start/module-configuration-file.md)文件中的`abilities`标签已配置`label`和`icon`项。需要注意的是，图标不受`abilities`标签中的`icon`项影响，不支持修改。
 
 > **说明：**
 >
@@ -969,8 +969,8 @@ showAssetsCreationDialogEx(srcFileUris: Array&lt;string&gt;, creationSettings: A
 
 > **说明：**
 >
-> - 用户同意后，返回已创建并授予保存权限的URI列表，该列表永久有效，支持写入图片/视频。用户拒绝时，返回空列表。
-> - 弹框需显示应用名称，名称和图标需在module.json5文件的abilities标签中配置label和icon项。
+> - 用户同意后，返回已创建并授予保存权限的uri列表，该列表永久有效，支持写入图片/视频。用户拒绝时，返回空列表。
+> - 弹框需显示应用名称，名称和图标需在[module.json5](../../../application-dev/quick-start/module-configuration-file.md)文件的abilities标签中配置label和icon项。
 > - 当传入URI为沙箱路径时，可正常保存图片或视频，但不显示界面预览。
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -1039,7 +1039,7 @@ showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSet
 > **说明：**
 >
 > - 如果用户同意保存，将返回一个已创建并授予保存权限的URI（此URI永久生效），应用可使用这个URI写入图片或视频。如果用户拒绝保存，将返回一个空字符串。
-> - 弹框需显示应用名称，但无法直接获取。因此，调用此接口时，请确保`module.json5`文件中的`abilities`标签已配置`label`和`icon`项。需要注意的是，图标不受`abilities`标签中的`icon`项影响，不支持修改。
+> - 弹框需显示应用名称，但无法直接获取。因此，调用此接口时，请确保[module.json5](../../../application-dev/quick-start/module-configuration-file.md)文件中的`abilities`标签已配置`label`和`icon`项。需要注意的是，图标不受`abilities`标签中的`icon`项影响，不支持修改。
 > - 当传入URI为沙箱路径时，可正常保存图片/视频，但无界面预览。
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -1181,7 +1181,7 @@ createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise&
 
 > **说明：**
 >
-> - 用户同意保存后，接口将返回已创建并授予保存权限的URI，应用可使用该URI写入图片/视频。
+> - 用户同意保存后，接口将返回已创建并授予保存权限的uri，应用可使用该uri写入图片/视频。
 > - 在用户同意后的5分钟内，若同一应用再次调用此接口，系统将无需弹框确认，直接返回已授权的URI，供应用保存图片/视频。退出应用会结束授权，再次进入需要重新弹出弹框进行确认授权。
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -1215,7 +1215,7 @@ createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise&
 
 requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Array&lt;string&gt;&gt;
 
-<!--RP1--><!--RP1End-->调用接口给未授权的URI进行授权，返回已创建并授予保存权限的URI列表。
+<!--RP1--><!--RP1End-->调用接口给未授权的URI进行授权，返回已创建并授予保存权限的uri列表。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -1846,7 +1846,7 @@ getAlbumIdByLpath(lpath: string): Promise&lt;number&gt;
 
 根据相册的虚拟路径获取媒体库相册的ID。使用Promise异步回调。
 
-该接口仅支持以下相册：相机相册('/DCIM/Camera')、截图相册('/Pictures/Screenshots')和屏幕录制相册('/Pictures/Screenrecords')。
+该接口仅支持以下相册：相机相册【'/DCIM/Camera'】、截图相册【'/Pictures/Screenshots'】和屏幕录制相册【'/Pictures/Screenrecords'】。
 
 ​**模型约束**： 此接口仅可在Stage模型下使用。
 
@@ -1967,7 +1967,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 offSinglePhotoChange(asset?: PhotoAsset, callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void;
 
-取消单个资产的监听。具体规则如下：1）不携带参数时，取消所有单个资产监听。2）携带asset，不携带callback时，取消该asset下所有callback监听。3）携带asset和callback时，仅取消指定callback监听。
+取消单个资产的监听。具体规则如下：<br>
+1）不携带参数时，取消所有单个资产监听。<br>
+2）携带asset，不携带callback时，取消该asset下所有callback监听。<br>
+3）携带asset和callback时，仅取消指定callback监听。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -2118,7 +2121,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 offSinglePhotoAlbumChange(album?: Album, callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
-取消对单个相册的监听，具体规则如下：1）不携带任何参数时，取消所有单个相册监听。2）携带album，不携带callback时，取消该album下所有callback监听。3）携带album和callback时，仅取消指定callback监听。
+取消对单个相册的监听，具体规则如下：<br>
+1）不携带任何参数时，取消所有单个相册监听。<br>
+2）携带album，不携带callback时，取消该album下所有callback监听。<br>
+3）携带album和callback时，仅取消指定callback监听。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
