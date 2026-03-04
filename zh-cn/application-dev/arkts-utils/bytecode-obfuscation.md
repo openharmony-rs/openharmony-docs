@@ -109,7 +109,7 @@ test(a2);
 
 ![w3332](figures/bytecode-static-compilation-process.png)
 
-ArkTS-Sta的字节码混淆不涉及源码混淆部分。
+由于ArkTS-Sta不支持源码混淆，ArkTS-Sta的字节码混淆不涉及源码混淆部分。
 
 开发者可以在模块的build-profile.json5配置文件中开启混淆功能，详细参考[字节码混淆开启指南](bytecode-obfuscation-guide.md)，从而在编译打包的过程中自动对abc进行混淆处理。
 
