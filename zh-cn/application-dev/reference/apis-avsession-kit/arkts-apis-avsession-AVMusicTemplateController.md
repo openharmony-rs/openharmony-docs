@@ -2794,7 +2794,7 @@ destroy(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
