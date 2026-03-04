@@ -1541,6 +1541,36 @@ struct Index {
 | start | number | 否   | 否   | 区间左侧端点索引，整数。|
 | end   | number | 否   | 否   | 区间右侧端点索引，整数。|
 
+## TextRectSize<sup>24+</sup>
+
+文本布局后的矩形尺寸。值为浮点数，单位为px。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称    | 类型   | 只读 | 可选 | 说明                       |
+| ----- | ------ | ---- | --- | -------------------------- |
+| width  | number | 否   | 否   | 文本矩形的宽度，浮点数，单位为px。|
+| height | number | 否   | 否   | 文本矩形的高度，浮点数，单位为px。|
+
+## TextLayoutResult<sup>24+</sup>
+
+文本布局结果。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称        | 类型                      | 只读 | 可选 | 说明                                    |
+| ----------- | ------------------------- | ---- | --- | --------------------------------------- |
+| fitStrRange | Array\<[Range](#range)\>  | 否   | 否   | 布局后可以容纳的字符范围数组。       |
+| correctRect  | [TextRectSize](#textrectsize24) | 否   | 否   | 布局后段落的矩形尺寸。 |
+
 ## Paragraph
 
 保存文本内容及样式的载体，支持排版与绘制操作。
@@ -1676,6 +1706,41 @@ struct Index {
 >示意图展示了点击按钮后layout接口示例代码的运行结果。
 >
 >![zh-ch_image_layout.png](figures/zh-ch_image_layout.png)
+
+### layoutWithConstraints<sup>24+</sup>
+
+layoutWithConstraints(size: TextRectSize): TextLayoutResult
+
+使用给定的高度和宽度进行排版并计算所有字形的位置。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                      | 必填 | 说明                       |
+| ----- | ----------------------------------------- | ---- | -------------------------- |
+| size  | [TextRectSize](#textrectsize24) | 是   | 约束的高度和宽度，单位为px。|
+
+**返回值：**
+
+| 类型                                        | 说明                                    |
+| ------------------------------------------- | --------------------------------------- |
+| [TextLayoutResult](#textlayoutresult24) | 布局后的实际尺寸和排版后容下的字符范围。|
+
+**示例：**
+
+```ts
+let size: text.TextRectSize = { width: 200, height: 100 };
+let result = paragraph.layoutWithConstraints(size); // 功能增强的 layoutSync
+console.info('Width: ' + result.correctRect.width + ', Height: ' + result.correctRect.height);
+for (let i = 0; i < result.fitStrRange.length; ++i) {
+  console.info('fitRange: [' + result.fitStrRange[i].start + ', ' + result.fitStrRange[i].end + ']');
+}
+```
 
 ### paint
 
