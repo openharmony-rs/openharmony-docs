@@ -8341,7 +8341,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/OperationNodeTree.ets",
 				"functions":[
 					{
-						"end_line":97,
+						"end_line":102,
 						"name":"operation_node_tree",
 						"start_line":16
 					}
@@ -8351,7 +8351,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/RenderingProperties.ets",
 				"functions":[
 					{
-						"end_line":218,
+						"end_line":228,
 						"name":"rendering_properties",
 						"start_line":16
 					}
