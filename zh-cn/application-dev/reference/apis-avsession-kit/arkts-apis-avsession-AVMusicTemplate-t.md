@@ -94,7 +94,7 @@ type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise&lt;PageM
 
 ## QueryCompilationEvent
 
-type QueryCompilationEvent = (compilationId: string, pageIndex: int) => Promise&lt;PageMediaEntity&gt;
+type QueryCompilationEvent = (compilationId: string, pageIndex: number) => Promise&lt;PageMediaEntity&gt;
 
 查询合集的事件类型。
 
@@ -121,7 +121,7 @@ type QueryCompilationEvent = (compilationId: string, pageIndex: int) => Promise&
 
 ## QueryPlaylistEvent
 
-type QueryPlaylistEvent = (pageIndex: int, sort: Sort) => Promise&lt;PageMediaEntity&gt;
+type QueryPlaylistEvent = (pageIndex: number, sort: Sort) => Promise&lt;PageMediaEntity&gt;
 
 查询播放列表的事件类型。
 
@@ -194,7 +194,7 @@ type QueryCompilationByKeywordEvent = (keyword: string) => Promise&lt;Compilatio
 
 ## QueryMediaEntityByKeywordEvent
 
-type QueryMediaEntityByKeywordEvent = (keyword: string, searchType: EntityType, pageIndex: int) => Promise&lt;PageMediaEntity&gt;
+type QueryMediaEntityByKeywordEvent = (keyword: string, searchType: EntityType, pageIndex: number) => Promise&lt;PageMediaEntity&gt;
 
 按关键字查询媒体实体的事件类型。
 

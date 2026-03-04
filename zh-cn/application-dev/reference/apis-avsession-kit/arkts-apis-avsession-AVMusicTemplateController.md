@@ -372,7 +372,7 @@ export class ControllerManager {
 
 ## queryCompilation
 
-queryCompilation(compilationId: string, pageIndex: int): Promise&lt;PageMediaEntity&gt;
+queryCompilation(compilationId: string, pageIndex: number): Promise&lt;PageMediaEntity&gt;
 
 查询合集。
 
@@ -441,7 +441,7 @@ export class ControllerManager {
 
 ## queryPlaylist
 
-queryPlaylist(pageIndex: int, sort: Sort): Promise&lt;PageMediaEntity&gt;
+queryPlaylist(pageIndex: number, sort: Sort): Promise&lt;PageMediaEntity&gt;
 
 查询播放列表。
 
@@ -635,7 +635,7 @@ export class ControllerManager {
 
 ## queryMediaEntityByKeyword
 
-queryMediaEntityByKeyword(keyword: string, searchType: EntityType, pageIndex: int): Promise&lt;PageMediaEntity&gt;
+queryMediaEntityByKeyword(keyword: string, searchType: EntityType, pageIndex: number): Promise&lt;PageMediaEntity&gt;
 
 按关键字查询媒体实体。
 

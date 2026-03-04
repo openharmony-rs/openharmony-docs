@@ -318,7 +318,7 @@ export class ControllerManager {
 
 ## avMusicTemplate.getAllAVMusicTemplateDescriptors
 
-getAllAVMusicTemplateDescriptors(userId?: int): AVMusicTemplateDescriptor[]
+getAllAVMusicTemplateDescriptors(userId?: number): AVMusicTemplateDescriptor[]
 
 获取所有的音频模板描述，返回音频模板描述的集合。
 
