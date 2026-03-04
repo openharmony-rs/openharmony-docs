@@ -392,11 +392,11 @@ import common from '@ohos.app.ability.common';
 struct AbilityContextTest {
   // abilityContext
   @State UIAbilityInfo: string = '获取 abilityInfo'
-  UIAbilityContext: common.UIAbilityContext
+  UIAbilityContext?: common.UIAbilityContext
 
   aboutToAppear() {
-    // getContext获取Context，转为abilityContext
-    this.UIAbilityContext = getContext(this) as common.UIAbilityContext
+    // getHostContext获取Context，转为abilityContext
+    this.UIAbilityContext = getHostContext() as common.UIAbilityContext
   }
 
   build() {
@@ -405,7 +405,7 @@ struct AbilityContextTest {
         Text(this.UIAbilityInfo)
           .fontSize(20)
           .onClick(() => {
-            this.UIAbilityInfo = JSON.stringify(this.UIAbilityContext.abilityInfo)
+            this.UIAbilityInfo = JSON.stringify(this.UIAbilityContext?.abilityInfo)
             console.info(`ContextDemo abilityInfo = ${this.UIAbilityInfo}`)
           })
       }
