@@ -140,12 +140,6 @@ onQueryMainTabs(callback: QueryMainTabsEvent): void
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
 | callback | [QueryMainTabsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymaintabsevent) | 是   | 查询主选项卡回调。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -225,12 +219,6 @@ offQueryMainTabs(callback?: QueryMainTabsEvent): void
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
 | callback | [QueryMainTabsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymaintabsevent) | 否   | 查询主选项卡回调。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -260,12 +248,6 @@ onQueryMediaTabContent(callback: QueryMediaTabContentEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                       |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------- |
 | callback | [QueryMediaTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediatabcontentevent) | 是   | 查询媒体标签页内容的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -380,12 +362,6 @@ offQueryMediaTabContent(callback?: QueryMediaTabContentEvent): void
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
 | callback | [QueryMediaTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediatabcontentevent) | 否   | 查询媒体标签页内容的回调函数。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -415,12 +391,6 @@ onQueryMediaEntity(callback: QueryMediaEntityEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [QueryMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentityevent) | 是   | 查询媒体实体的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -521,12 +491,6 @@ offQueryMediaEntity(callback?: QueryMediaEntityEvent): void
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [QueryMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentityevent) | 否   | 查询媒体实体的事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -556,12 +520,6 @@ onQueryCompilation(callback: QueryCompilationEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
 | callback | [QueryCompilationEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationevent) | 是   | 查询合集的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -662,12 +620,6 @@ offQueryCompilation(callback?: QueryCompilationEvent): void
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
 | callback | [QueryCompilationEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationevent) | 否   | 查询合集的事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -697,12 +649,6 @@ onQueryPlaylist(callback: QueryPlaylistEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [QueryPlaylistEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryplaylistevent) | 是   | 查询播放列表的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -803,12 +749,6 @@ offQueryPlaylist(callback?: QueryPlaylistEvent): void
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [QueryPlaylistEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryplaylistevent) | 否   | 查询播放列表的事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -838,12 +778,6 @@ onQueryCurrentSingle(callback: QueryCurrentSingleEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [QueryCurrentSingleEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycurrentsingleevent) | 是   | 查询当前单曲的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -955,12 +889,6 @@ offQueryCurrentSingle(callback?: QueryCurrentSingleEvent): void
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [QueryCurrentSingleEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycurrentsingleevent) | 否   | 查询当前单曲的事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -990,12 +918,6 @@ onQueryCompilationByKeyword(callback: QueryCompilationByKeywordEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | callback | [QueryCompilationByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationbykeywordevent) | 是   | 按关键字查询合集的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -1096,12 +1018,6 @@ offQueryCompilationByKeyword(callback?: QueryCompilationByKeywordEvent): void
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | callback | [QueryCompilationByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationbykeywordevent) | 否   | 按关键字查询合集的事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -1131,12 +1047,6 @@ onQueryMediaEntityByKeyword(callback: QueryMediaEntityByKeywordEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                         |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------- |
 | callback | [QueryMediaEntityByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentitybykeywordevent) | 是   | 按关键字查询媒体实体的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -1237,12 +1147,6 @@ offQueryMediaEntityByKeyword(callback?: QueryMediaEntityByKeywordEvent): void
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------- |
 | callback | [QueryMediaEntityByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentitybykeywordevent) | 否   | 按关键字查询媒体实体的事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -1272,12 +1176,6 @@ onQueryRecommendMediaEntityList(callback: QueryRecommendMediaEntityListEvent): v
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | callback | [QueryRecommendMediaEntityListEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryrecommendmediaentitylistevent) | 是   | 查询推荐媒体列表的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -1359,12 +1257,6 @@ offQueryRecommendMediaEntityList(callback?: QueryRecommendMediaEntityListEvent):
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | callback | [QueryRecommendMediaEntityListEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryrecommendmediaentitylistevent) | 否   | 查询推荐媒体列表的事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -1394,12 +1286,6 @@ onQueryHotWords(callback: QueryHotWordsEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
 | callback | [QueryHotWordsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryhotwordsevent) | 是   | 查询热词的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -1462,12 +1348,6 @@ offQueryHotWords(callback?: QueryHotWordsEvent): void
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
 | callback | [QueryHotWordsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryhotwordsevent) | 否   | 查询热词的事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -1497,12 +1377,6 @@ onQuerySearchHistory(callback: QuerySearchHistoryEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [QuerySearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querysearchhistoryevent) | 是   | 查询搜索历史的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -1565,12 +1439,6 @@ offQuerySearchHistory(callback?: QuerySearchHistoryEvent): void
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [QuerySearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querysearchhistoryevent) | 否   | 查询搜索历史的事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -1600,12 +1468,6 @@ onClearSearchHistory(callback: ClearSearchHistoryEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [ClearSearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#clearsearchhistoryevent) | 是   | 清除搜索历史的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -1680,12 +1542,6 @@ offClearSearchHistory(callback?: ClearSearchHistoryEvent): void
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [ClearSearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#clearsearchhistoryevent) | 否   | 清除搜索历史的事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -1715,12 +1571,6 @@ onLogin(callback: LoginEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明       |
 | -------- | ------------------------------------------------------------ | ---- | ---------- |
 | callback | [LoginEvent](arkts-apis-avsession-AVMusicTemplate-t.md#loginevent) | 是   | 登录事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -1802,12 +1652,6 @@ offLogin(callback?: LoginEvent): void
 | -------- | ------------------------------------------------------------ | ---- | ---------- |
 | callback | [LoginEvent](arkts-apis-avsession-AVMusicTemplate-t.md#loginevent) | 否   | 登录事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -1837,12 +1681,6 @@ onRequestDialogInfo(callback: RequestDialogInfoEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [RequestDialogInfoEvent](arkts-apis-avsession-AVMusicTemplate-t.md#requestdialoginfoevent) | 是   | 请求弹框信息的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -1930,12 +1768,6 @@ offRequestDialogInfo(callback?: RequestDialogInfoEvent): void
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [RequestDialogInfoEvent](arkts-apis-avsession-AVMusicTemplate-t.md#requestdialoginfoevent) | 否   | 请求弹框信息的事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -1965,12 +1797,6 @@ onHandleMemberPurchase(callback: HandleMemberPurchaseEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [HandleMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#handlememberpurchaseevent) | 是   | 处理购买会员的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -2058,12 +1884,6 @@ offHandleMemberPurchase(callback?: HandleMemberPurchaseEvent): void
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [HandleMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#handlememberpurchaseevent) | 否   | 处理购买会员的事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -2093,12 +1913,6 @@ onQueryMemberPurchase(callback: QueryMemberPurchaseEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [QueryMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymemberpurchaseevent) | 是   | 查询购买会员的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -2178,12 +1992,6 @@ offQueryMemberPurchase(callback?: QueryMemberPurchaseEvent): void
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [QueryMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymemberpurchaseevent) | 否   | 查询购买会员的事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -2213,12 +2021,6 @@ onQueryCustomContent(callback: QueryCustomContentEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                   |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------- |
 | callback | [QueryCustomContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycustomcontentevent) | 是   | 查询自定义内容的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -2314,12 +2116,6 @@ offQueryCustomContent(callback?: QueryCustomContentEvent): void
 | -------- | ------------------------------------------------------------ | ---- | ---------------------- |
 | callback | [QueryCustomContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycustomcontentevent) | 否   | 查询自定义内容的事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -2349,12 +2145,6 @@ onDownloadMediaEntity(callback: DownloadMediaEntityEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [DownloadMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#downloadmediaentityevent) | 是   | 下载媒体实体的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -2453,12 +2243,6 @@ offDownloadMediaEntity(callback?: DownloadMediaEntityEvent): void
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [DownloadMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#downloadmediaentityevent) | 否   | 下载媒体实体的事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -2488,12 +2272,6 @@ onSettingsChange(callback: SettingsChangeEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
 | callback | [SettingsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#settingschangeevent) | 是   | 设置改变的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -2574,12 +2352,6 @@ offSettingsChange(callback?: SettingsChangeEvent): void
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
 | callback | [SettingsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#settingschangeevent) | 否   | 设置改变的事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -2609,12 +2381,6 @@ onProblemAndAdvice(callback: ProblemAndAdviceEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                   |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------- |
 | callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md#problemandadviceevent) | 是   | 问题与建议的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -2689,12 +2455,6 @@ offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 | -------- | ------------------------------------------------------------ | ---- | ---------------------- |
 | callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md#problemandadviceevent) | 否   | 问题与建议的事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -2724,12 +2484,6 @@ onPlayForSearch(callback: PlayForSearchEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明         |
 | -------- | ------------------------------------------------------------ | ---- | ------------ |
 | callback | [PlayForSearchEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playforsearchevent) | 是   | 搜播的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -2805,12 +2559,6 @@ offPlayForSearch(callback?: PlayForSearchEvent): void
 | -------- | ------------------------------------------------------------ | ---- | ------------ |
 | callback | [PlayForSearchEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playforsearchevent) | 否   | 搜播的事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -2840,12 +2588,6 @@ onExecuteAction(callback: ExecuteActionEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
 | callback | [ExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#executeactionevent) | 是   | 执行操作的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -2907,12 +2649,6 @@ offExecuteAction(callback?: ExecuteActionEvent): void
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
 | callback | [ExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#executeactionevent) | 否   | 执行操作的事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -2942,12 +2678,6 @@ onPlayMediaEntity(callback: PlayMediaEntityEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [PlayMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playmediaentityevent) | 是   | 播放媒体实体的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -3004,12 +2734,6 @@ offPlayMediaEntity(callback?: PlayMediaEntityEvent): void
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [PlayMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playmediaentityevent) | 否   | 播放媒体实体的事件。 |
 
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
-
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -3039,12 +2763,6 @@ onFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [FavoriteMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#favoritemediaentityevent) | 是   | 收藏媒体实体的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
@@ -3119,12 +2837,6 @@ offFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [FavoriteMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#favoritemediaentityevent) | 否   | 收藏媒体实体的事件。 |
-
-**返回值：**
-
-| 类型 | 说明         |
-| ---- | ------------ |
-| void | 无返回结果。 |
 
 **错误码：**
 
