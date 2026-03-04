@@ -134,7 +134,7 @@ struct Index {
           .width('80%')
           .labelStyle({ maxLines: 2 })
           .onClick(() => {
-            this.flushTheButton = this.flushTheButton + ' Updated' ;
+            this.flushTheButton = this.flushTheButton + ' Updated';
           })
       }
       .width('100%')
@@ -207,7 +207,7 @@ struct updaterDemo2 {
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| updateConstructorParams | [C](#attributeupdatert-c--initializert) | No| No| Modifies component constructor parameters. **C** indicates the constructor type of the component, for example, **TextInterface** of the **Text** component and **ImageInterface** of the **Image** component.|
+| updateConstructorParams | [C](#attributeupdatert-c--initializert) | No| No| **C** indicates the constructor type of the component, for example, **TextInterface** of the **Text** component and **ImageInterface** of the **Image** component. The type is used to change the constructor input parameters of the component.|
 
 **Example**
 
@@ -276,7 +276,7 @@ class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
       .height(30);
   }
 
-  onComponentChanged(instance: ButtonAttribute) :void {
+  onComponentChanged(instance: ButtonAttribute): void {
     instance.backgroundColor('#ff2787d9')
       .width('50%')
       .height(30);
@@ -295,7 +295,7 @@ struct updaterDemo4 {
         Button("Test")
           .onClick(() => {
             this.btnState = !this.btnState;
-        })
+          })
 
         if (this.btnState) {
           Button("Button")

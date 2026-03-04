@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_AccessibleRangeInfo
 
 ## Overview
 
-Configures and obtains the current value, minimum value, and maximum value for specific components including **Slider**, **Rating**, and **Progress**.
+Sets and obtains the current value, maximum value, and minimum value of a specific component (such as [Slider](arkui-ts/ts-basic-components-slider.md), [Rating](arkui-ts/ts-basic-components-rating.md), or [Progress](arkui-ts/ts-basic-components-progress.md)).
 
 **Since**: 13
 
