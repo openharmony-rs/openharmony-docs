@@ -4086,6 +4086,10 @@ setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
 
 设置自定义键盘之间切换时，是否接续。
 
+设置为接续，切换输入框时，自定义键盘不会收起和重新拉起。
+
+设置为不接续，切换输入框时，自定义键盘会收起并重新拉起。
+
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
