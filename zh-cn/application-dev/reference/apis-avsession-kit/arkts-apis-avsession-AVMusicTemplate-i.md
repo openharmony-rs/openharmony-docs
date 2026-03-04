@@ -84,7 +84,7 @@
 
 ## Banner
 
-海报的定义。[MediaEn海报的定义。继承自[MediaEntity](#mediaentity)，用于展示媒体内容的视觉元素。* 从API version 23开始，该接口支持在原子化服务中使用。
+海报的定义。[MediaEn海报的定义。继承自[MediaEntity](#mediaentity)，用于展示媒体内容的视觉元素。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
