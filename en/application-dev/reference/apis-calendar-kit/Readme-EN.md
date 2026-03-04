@@ -9,5 +9,5 @@
 
 - ArkTS APIs<!--calendar-arkts-->
   - [@ohos.calendarManager (Calendar Manager)](js-apis-calendarManager.md)
-- Error Code<!--calendar-arkts-errorcode-->
-  - [Calendar Kit Error Codes](errorcode-calendarManager.md)
+- Error Codes<!--calendar-arkts-errorcode-->
+  - [Calendar Error Codes](errorcode-calendarManager.md)

@@ -355,7 +355,7 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -396,7 +396,7 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -431,7 +431,7 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -524,7 +524,7 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -573,7 +573,7 @@ For details about the error codes, see [Word Selection Service Error Codes](erro
 | 33600002   | This selection window has been destroyed. |
 
 **Example**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -604,7 +604,7 @@ Registers a callback to listen for the destroy event of the word selection panel
 | callback | Callback\<void> | Yes  | Callback used to return the result.      |
 
 **Example**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -633,7 +633,7 @@ Unregisters the callback used to listen for the destroy event of the word select
 | callback | Callback\<void> | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
 
 **Example**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -660,7 +660,7 @@ Registers a callback to listen for the hide event of the word selection panel. T
 | callback | Callback\<void> | Yes  | Callback used to return the result.      |
 
 **Example**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -689,7 +689,7 @@ Unregisters the callback used to listen for the hide event of the word selection
 | callback | Callback\<void> | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
 
 **Example**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
