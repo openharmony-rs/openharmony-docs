@@ -103,6 +103,86 @@ taskpool.execute(task3, taskpool.Priority.HIGH).then((value: Any) => {
 
 ## taskpool.execute
 
+execute(task: Task, configs: Configs): Promise\<Any>
+
+将创建好的任务添加到taskpool的内部任务队列中，任务不会立即执行，而是等待分发到工作线程执行。当前模式支持设置任务优先级、设置超时时间和通过cancel取消任务。使用Promise异步回调。
+
+> **说明：**
+>
+> - 不支持执行任务组任务。
+> - 不支持执行串行队列任务。
+> - 不支持执行异步队列任务。
+> - 不支持执行周期性任务。
+> - 不支持执行延迟任务。
+> - 不支持执行存在依赖的任务。
+> - 不支持任务重复执行。
+> - 设置过超时的任务无法被其他任务依赖，也无法依赖其他任务。
+> - 如果任务设置了失败监听，任务执行超时了，失败监听不会被触发。
+> - 如果任务使用sendData来往注册线程发消息，任务超时之后，注册线程不再接收到消息。
+> - 在抛出超时异常信息之后，执行中的任务还是会在线程中继续执行，但是最终不会返回执行结果。
+
+**参数：**
+
+| 参数名    | 类型                  | 必填 | 说明                                       |
+| -------- | --------------------- | ---- | ---------------------------------------- |
+| task     | [Task](#task)         | 是   | 需要在任务池中执行的任务。                  |
+| configs  | [Configs](#configs)   | 是   | 任务执行的配置，包含优先级和超时时间。        |
+
+**返回值：**
+
+| 类型              | 说明              |
+| ----------------  | ---------------- |
+| Promise\<Any> | Promise对象，返回任务函数的执行结果。 |
+
+**错误信息：**
+
+| 错误信息                                     | 说明                                     |
+| ------------------------------------------- | ---------------------------------------- |
+| groupTask cannot execute outside. | 不能执行任务组任务。<br>可能原因：执行的任务是任务组任务。<br>处理步骤：调用时，确保任务不是任务组任务。无法保证时，需捕获异常。 |
+| seqRunnerTask cannot execute outside. | 不能执行串行队列任务。<br>可能原因：执行的任务是串行队列任务。<br>处理步骤：调用时，确保任务不是串行队列任务。无法保证时，需捕获异常。 |
+| asyncRunnerTask cannot execute outside. | 不能执行异步队列任务。<br>可能原因：执行的任务是异步队列任务。<br>处理步骤：调用时，确保任务不是异步队列任务。无法保证时，需捕获异常。 |
+| timeout task with dependency cannot execute. | 有依赖关系的任务不能设置超时执行。<br>可能原因：执行的任务有依赖关系。<br>处理步骤：调用时，确保任务没有依赖关系。无法保证时，需捕获异常。 |
+| task has been executed. | 任务已被执行。<br>可能原因：该任务已被执行过。<br>处理步骤：执行任务前确保任务未被执行过。无法保证时，需捕获异常。 |
+| timeout task cannot be executed again. | 超时任务不能再次执行。<br>可能原因：该任务已设置超时并执行过。<br>处理步骤：超时任务仅支持执行一次，无法保证时，需捕获异常。 |
+| task has been timeout. | 任务执行超时。<br>可能原因：任务在指定的超时时间内未完成。<br>处理步骤：调整任务执行逻辑或增加超时时间。无法保证时，需捕获异常。 |
+
+**示例：**
+
+```ts
+import hilog from '@ohos.hilog';
+
+function printArgs(args: number): number {
+    hilog.info(0x0000, "testTag", "printArgs: " + args);
+    return args;
+}
+
+function longRunningTask(duration: int): string {
+    let start = Date.now();
+    while ((Date.now() - start) < duration) {
+        continue;
+    }
+    return 'success';
+}
+
+// 执行带超时配置的任务
+let task1: taskpool.Task = new taskpool.Task(printArgs, 100.0);
+taskpool.execute(task1, { timeout: 1000 }).then((value: Any) => {
+  hilog.info(0x0000, "testTag", "taskpool result: " + value);
+}).catch((e: Error) => {
+  hilog.info(0x0000, "testTag", "taskpool error: " + e.message);
+});
+
+// 执行带超时和优先级的任务
+let task2: taskpool.Task = new taskpool.Task(longRunningTask, 200);
+taskpool.execute(task2, { timeout: 100, priority: taskpool.Priority.HIGH }).then((value: Any) => {
+  hilog.info(0x0000, "testTag", "taskpool result: " + value);
+}).catch((e: Error) => {
+  hilog.info(0x0000, "testTag", "taskpool error: " + e.message);
+});
+```
+
+## taskpool.execute
+
 execute(group: TaskGroup, priority?: Priority): Promise\<Array\<Any>>
 
 将创建好的任务组放入taskpool内部任务队列，任务组中的任务不会立即执行，而是等待分发到工作线程执行。任务组中任务全部执行完成后，结果数组统一返回。当前执行模式适用于执行一组有关联的任务。任务组仅支持执行一次。使用Promise异步回调。
@@ -147,6 +227,81 @@ taskpool.execute(taskGroup1).then((res: Array<Any>) => {
 });
 taskpool.execute(taskGroup2).then((res: Array<Any>) => {
   hilog.info(0x0000, "testTag", "taskpool execute res is:" + res);
+});
+```
+
+## taskpool.execute
+
+execute(group: TaskGroup, configs: Configs): Promise\<Array\<Any>>
+
+将创建好的任务组放入taskpool内部任务队列执行，并支持配置优先级和超时时间。任务组中的任务不会立即执行，而是等待分发到工作线程执行。任务组中任务全部执行完成后，结果数组统一返回。当前执行模式适用于执行一组有关联的任务。使用Promise异步回调。
+
+configs配置里可以指定任务组执行的超时时间和优先级。指定的超时时间到了，但是任务组还未完成，则会抛出任务组超时的异常信息。
+
+> **说明：**
+>
+> - 不支持任务组重复执行。
+> - 在抛出超时异常信息之后，执行中的任务还是会在线程中继续执行，但是最终不会返回执行结果。
+ 	 
+
+**参数：**
+
+| 参数名     | 类型                        | 必填 | 说明                                                           |
+| --------- | --------------------------- | ---- | -------------------------------------------------------------- |
+| group     | [TaskGroup](#taskgroup)     | 是   | 需要在任务池中执行的任务组。                                      |
+| configs   | [Configs](#configs)         | 是   | 任务组执行的配置，包含优先级和超时时间。                              |
+
+**返回值：**
+
+| 类型                            | 说明                               |
+| ---------------------------    | ---------------------------------- |
+| Promise\<Array\<Any>>  | Promise对象数组，返回任务函数的执行结果。 |
+
+**错误信息：**
+
+| 错误信息 | 说明 |
+| --- | --- |
+| the taskGroup cannot be executed again, taskGroup cannot be set timeout | 任务组已执行过，不能设置超时。<br>可能原因：尝试对已执行的任务组设置超时。<br>处理步骤：确保任务组未被执行过再设置超时。无法保证时，需捕获异常。 |
+| task group has been timeout | 任务组执行超时。<br>可能原因：任务组在指定的超时时间内未完成。<br>处理步骤：调整任务组执行逻辑或增加超时时间。无法保证时，需捕获异常。 |
+
+**示例：**
+
+```ts
+import hilog from '@ohos.hilog';
+
+function printArgs(args: number): number {
+    hilog.info(0x0000, "testTag", "printArgs: " + args);
+    return args;
+}
+
+function longRunningTask(duration: int): string {
+    let start = Date.now();
+    while ((Date.now() - start) < duration) {
+        continue;
+    }
+    return 'success';
+}
+
+// 执行带超时配置的任务组
+let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
+taskGroup.addTask(longRunningTask, 50);
+taskGroup.addTask(printArgs, 100.0);
+
+taskpool.execute(taskGroup, { timeout: 100 }).then((res: Array<Any>) => {
+  hilog.info(0x0000, "testTag", "taskpool execute res is:" + res);
+}).catch((e: Error) => {
+  hilog.info(0x0000, "testTag", "taskpool error: " + e.message);
+});
+
+// 执行带超时和优先级的任务组
+let taskGroup2: taskpool.TaskGroup = new taskpool.TaskGroup();
+taskGroup2.addTask(longRunningTask, 50);
+taskGroup2.addTask(printArgs, 200.0);
+
+taskpool.execute(taskGroup2, { timeout: 100, priority: taskpool.Priority.HIGH }).then((res: Array<Any>) => {
+  hilog.info(0x0000, "testTag", "taskpool execute res is:" + res);
+}).catch((e: Error) => {
+  hilog.info(0x0000, "testTag", "taskpool error: " + e.message);
 });
 ```
 
@@ -396,6 +551,45 @@ getTaskPoolInfo(): TaskPoolInfo
 
 ```ts
 let taskpoolInfo: taskpool.TaskPoolInfo = taskpool.getTaskPoolInfo();
+```
+
+## Configs
+
+任务或任务组的配置项。
+
+| 名称      | 类型                  | 只读 | 可选 | 说明                                                         |
+| -------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
+| timeout  | double               | 否   | 是   | 超时时间，单位：ms。建议传入整数，若传入小数，会被向下取整。<br>如果省略该参数，timeout取默认值Infinity，表示不执行超时逻辑。<br>**注意**：<br>1. 该超时时间非精准时间，实际超时时间可能会与预期存在误差。<br>2. 如果值小于1，会被默认取Infinity。 |
+| priority | [Priority](#priority) | 否   | 是   | 任务的优先级。默认值为taskpool.Priority.MEDIUM。 |
+
+**示例：**
+
+```ts
+import hilog from '@ohos.hilog';
+
+function longRunningTask(duration: int): string {
+    let start = Date.now();
+    while ((Date.now() - start) < duration) {
+        continue;
+    }
+    return 'success';
+}
+
+// 配置超时时间为100毫秒
+let task1: taskpool.Task = new taskpool.Task(longRunningTask, 200);
+taskpool.execute(task1, { timeout: 100 }).then((value: Any) => {
+  hilog.info(0x0000, "testTag", "taskpool result: " + value);
+}).catch((e: Error) => {
+  hilog.info(0x0000, "testTag", "taskpool error: " + e.message);
+});
+
+// 配置超时时间为100毫秒，优先级为HIGH
+let task2: taskpool.Task = new taskpool.Task(longRunningTask, 50);
+taskpool.execute(task2, { timeout: 100, priority: taskpool.Priority.HIGH }).then((value: Any) => {
+  hilog.info(0x0000, "testTag", "taskpool result: " + value);
+}).catch((e: Error) => {
+  hilog.info(0x0000, "testTag", "taskpool error: " + e.message);
+});
 ```
 
 ## Priority
@@ -776,7 +970,7 @@ taskpool.execute(task3).then((res: Any) => {
 
 onEnqueued(callback: CallbackFunction): void
 
-注册一个回调函数，并在任务入队时调用它。必须在任务执行前完成注册，否则会抛出异常。
+注册一个回调函数，并在任务入队时调用它。该回调在taskpool工作线程（子线程）中执行。必须在任务执行前完成注册，否则会抛出异常。
 
 **参数：**
 
@@ -814,7 +1008,7 @@ taskpool.execute(task).then((res: Any)=> {
 
 onStartExecution(callback: CallbackFunction): void
 
-注册一个回调函数，并在执行任务前调用它。必须在任务执行前完成注册，否则会抛出异常。
+注册一个回调函数，并在执行任务前调用它。该回调在taskpool工作线程（子线程）中执行。必须在任务执行前完成注册，否则会抛出异常。
 
 **参数：**
 
@@ -852,7 +1046,7 @@ taskpool.execute(task).then((res: Any) => {
 
 onExecutionFailed(callback: CallbackFunctionWithError): void
 
-注册一个回调函数，并在任务执行失败时调用它。必须在任务执行前完成注册，否则会抛出异常。
+注册一个回调函数，并在任务执行失败时调用它。该回调在taskpool工作线程（子线程）中执行。必须在任务执行前完成注册，否则会抛出异常。
 
 **参数：**
 
@@ -891,7 +1085,7 @@ taskpool.execute(task2).then((res: Any) => {
 
 onExecutionSucceeded(callback: CallbackFunction): void
 
-注册一个回调函数，并在任务执行成功时调用它。必须在任务执行前完成注册，否则会抛出异常。
+注册一个回调函数，并在任务执行成功时调用它。该回调在taskpool工作线程（子线程）中执行。必须在任务执行前完成注册，否则会抛出异常。
 
 **参数：**
 

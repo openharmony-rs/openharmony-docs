@@ -39,7 +39,7 @@ constructor()
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -62,9 +62,10 @@ ArkTS-Sta: addVariation(axis: string, value: double): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
+
 | 参数名         | 类型                                       | 必填   | 说明             |
 | ----------- | ---------------------------------------- | ---- | -------------------   |
 | axis  | string           | 是   | 字体属性对象可变维度字重的标签'wght'。具体是否支持的该标签取决于加载的字体文件。请打开对应的字体文件具体查看支持的属性。   |
@@ -84,5 +85,5 @@ ArkTS-Sta: addVariation(axis: string, value: double): void
 import { drawing } from '@kit.ArkGraphics2D';
 
 let typeFaceArgument = new drawing.TypefaceArguments();
-typeFaceArgument.addVariation('wght', 10);
+typeFaceArgument.addVariation('wght', 10.0);
 ```

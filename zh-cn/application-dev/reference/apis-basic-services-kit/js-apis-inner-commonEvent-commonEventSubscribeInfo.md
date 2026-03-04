@@ -17,13 +17,13 @@
 
 **ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称                | 类型           | 只读 | 可选 | 说明                                                         |
 | ------------------- | -------------- | ---- | ---- | ------------------------------------------------------------ |
-| events              | Array\<string> | 否  | 否  | 表示要订阅的公共事件。 <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20 |
-| publisherPermission | string         | 否  | 是  | 表示发布者的权限，订阅方将只能接收到具有该权限的发送方发布的事件。 <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20 |
-| publisherDeviceId   | string         | 否  | 是  | 表示设备ID。通过[@ohos.deviceInfo](js-apis-device-info.md)获取udid，作为订阅者的设备ID。预留能力，暂不支持。 <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20 |
-| userId              | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 是  | 表示用户ID。此参数是可选的，默认值当前用户的ID。如果指定了此参数，则该值必须是系统中现有的用户ID。通过[getOsAccountLocalId](./js-apis-osAccount.md#getosaccountlocalid9)获取系统账号ID，作为订阅者的用户ID。 <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20|
-| priority            | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 是  | 表示订阅者的优先级。值的范围是-100到1000，超过上下限的优先级将被设置为上下限值。 <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：20 |
-| publisherBundleName<sup>11+</sup> | string  | 否  | 是  | 表示要订阅的发布者的bundleName。 <br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20 |
+| events              | Array\<string> | 否  | 否  | 表示要订阅的公共事件。 <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23 |
+| publisherPermission | string         | 否  | 是  | 表示发布者的权限，订阅方将只能接收到具有该权限的发送方发布的事件。 <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23 |
+| publisherDeviceId   | string         | 否  | 是  | 表示设备ID。通过[@ohos.deviceInfo](js-apis-device-info.md)获取udid，作为订阅者的设备ID。预留能力，暂不支持。 <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23 |
+| userId              | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 是  | 表示用户ID。此参数是可选的，默认值当前用户的ID。如果指定了此参数，则该值必须是系统中现有的用户ID。通过[getOsAccountLocalId](./js-apis-osAccount.md#getosaccountlocalid9)获取系统账号ID，作为订阅者的用户ID。 <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23|
+| priority            | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  | 是  | 表示订阅者的优先级。值的范围是-100到1000，超过上下限的优先级将被设置为上下限值。 <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23 |
+| publisherBundleName<sup>11+</sup> | string  | 否  | 是  | 表示要订阅的发布者的bundleName。 <br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |

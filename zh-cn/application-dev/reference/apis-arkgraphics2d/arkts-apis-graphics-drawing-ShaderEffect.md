@@ -29,15 +29,17 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 ## createComposeShader<sup>20+</sup>
 
-static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: ShaderEffect, blendMode: BlendMode): ShaderEffect
+ArkTS-Dyn: static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: ShaderEffect, blendMode: BlendMode): ShaderEffect
+
+ArkTS-Sta: static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: ShaderEffect, blendMode: BlendMode): ShaderEffect | undefined
 
 按照指定的混合模式对两个着色器进行叠加，生成一个新的着色器。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -51,7 +53,7 @@ static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: Shade
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回创建的着色器对象。 |
+| ArkTS-Dyn: [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md)<br/>ArkTS-Sta: [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) \| undefined | 返回创建的着色器对象。 |
 
 **错误码：**
 
@@ -73,15 +75,17 @@ let shader = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, draw
 
 ## createImageShader<sup>20+</sup>
 
-static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileMode, samplingOptions: SamplingOptions, matrix?: Matrix | null): ShaderEffect
+ArkTS-Dyn: static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileMode, samplingOptions: SamplingOptions, matrix?: Matrix | null): ShaderEffect
+
+ArkTS-Sta: static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileMode, samplingOptions: SamplingOptions, matrix?: Matrix | null): ShaderEffect | undefined
 
 基于图片创建一个着色器。此接口不建议用于录制类型的画布，会影响性能。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -97,7 +101,7 @@ static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileM
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回创建的着色器对象。 |
+| ArkTS-Dyn: [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md)<br/>ArkTS-Sta: [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) \| undefined | 返回创建的着色器对象。 |
 
 **错误码：**
 
@@ -159,7 +163,7 @@ ArkTS-Sta: static createColorShader(color: int): ShaderEffect | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -201,7 +205,7 @@ ArkTS-Sta: static createLinearGradient(startPt: common2D.Point, endPt: common2D.
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -254,7 +258,7 @@ ArkTS-Sta: static createRadialGradient(centerPt: common2D.Point, radius: double,
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -306,7 +310,7 @@ ArkTS-Sta: static createSweepGradient(centerPt: common2D.Point, colors: Array\<i
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -359,7 +363,7 @@ ArkTS-Sta: static createConicalGradient(startPt: common2D.Point, startRadius: do
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

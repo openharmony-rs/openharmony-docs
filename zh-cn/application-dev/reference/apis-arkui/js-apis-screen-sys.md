@@ -16,7 +16,7 @@
 > 
 > - 本模块接口为系统接口。
 > 
-> - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
+> - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 
 ## 导入模块
 

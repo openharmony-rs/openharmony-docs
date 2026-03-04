@@ -1,5 +1,16 @@
 # Input_DeviceListener
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct Input_DeviceListener {...} Input_DeviceListener
+```
+
 ## 概述
 
 定义一个结构体用于监听设备热插拔。

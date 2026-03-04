@@ -209,6 +209,10 @@
 
 **系统能力：**  SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 值   | 说明                          |
 | ---------- | ---- | ----------------------------- |
 | TOP_START  | 0    | 窗口左上角。|
@@ -263,18 +267,26 @@
 
 **系统能力：**  SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 值 | 说明                    |
 | ------ | --- | ------------------------ |
 | FULLSCREEN | 1 | 全屏窗口，二进制从右往左，第一个二进制位为1。  |
 | SPLIT  | 1 << 1 | 分屏窗口，二进制从右往左，第二个二进制位为1。 |
-| FLOAT   | 1 << 2  | 悬浮窗，二进制从右往左，第三个二进制位为1。 |
-| PIP   | 1 << 3  | 画中画，二进制从右往左，第四个二进制位为1。 |
+| FLOAT   | 1 << 2  | 悬浮窗，二进制从右往左，第三个二进制位为1。|
+| PIP   | 1 << 3  | 画中画，二进制从右往左，第四个二进制位为1。  |
 
 ## OcclusionState<sup>22+</sup>
 
 窗口可见性状态枚举。
 
 **系统能力：**  SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 值 | 说明                   |
 | ------ | ---- | --------------------- |
@@ -343,10 +355,14 @@ WindowStage生命周期的状态类型枚举。
 
 **系统能力：**  SystemCapability.WindowManager.WindowManager.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 值 | 说明                   |
 | ------ | ---- | --------------------- |
 | SYSTEM_SCREENSHOT | 0 | 系统截屏成功。 |
-| SYSTEM_SCREENSHOT_ABORT | 1 | 系统截屏中止。 |
+| SYSTEM_SCREENSHOT_ABORT | 1 | 系统截屏中止。|
 | SCROLL_SHOT_START | 2 | 滚动截屏开始。 |
 | SCROLL_SHOT_END | 3 | 滚动截屏结束。 |
-| SCROLL_SHOT_ABORT | 4 | 滚动截屏中止。 |
+| SCROLL_SHOT_ABORT | 4 | 滚动截屏中止。|

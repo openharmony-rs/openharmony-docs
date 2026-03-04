@@ -9,7 +9,10 @@ Worker的上下文对象和UI主线程的上下文对象是不同的，Worker线
 Worker使用过程中的相关注意点请查看[Worker注意事项](../../arkts-utils/worker-introduction.md#worker注意事项)。
 
 > **说明：**<br/>
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块仅适用于ArkTS-Dyn。
+>
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -37,9 +40,9 @@ Worker构造函数的选项信息，用于为Worker添加其他信息。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | -------- | ---- | ---- | -------------- |
 | type | 'classic' \| 'module' | 否   | 是 | Worker执行脚本的模式类型，暂不支持module类型，默认值为"classic"。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| name | string   | 否   | 是 | Worker的名称，默认值为 undefined 。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| shared | boolean | 否   | 是 | 表示Worker共享功能，此接口暂不支持。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| priority<sup>18+</sup> | [ThreadWorkerPriority](#threadworkerpriority18) | 否   | 是 | 表示Worker线程优先级。默认值为MEDIUM。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| name | string   | 否   | 是 | Worker的名称，默认值为 undefined 。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| shared | boolean | 否   | 是 | 表示Worker共享功能，此接口暂不支持。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| priority<sup>18+</sup> | [ThreadWorkerPriority](#threadworkerpriority18) | 否   | 是 | 表示Worker线程优先级。默认值为MEDIUM。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 
 ## ThreadWorkerPriority<sup>18+</sup>

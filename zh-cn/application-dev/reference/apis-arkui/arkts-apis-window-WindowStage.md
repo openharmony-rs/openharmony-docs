@@ -719,7 +719,7 @@ loadContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;void
 
 | 参数名   | 类型                                            | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| path     | string                                          | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。  |
+| path     | string                                          | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。不支持相对路径写法，需与main_pages.json中的src取值保持一致。 |
 | storage  | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 是   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性。 |
 | callback | AsyncCallback&lt;void&gt;                       | 是   | 回调函数。                                                   |
 
@@ -815,7 +815,7 @@ loadContent(path: string, storage?: LocalStorage): Promise&lt;void&gt;
 
 | 参数名  | 类型                                            | 必填 | 说明                                                         |
 | ------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| path    | string                                          | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。 |
+| path    | string                                          | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。不支持相对路径写法，需与main_pages.json中的src取值保持一致。 |
 | storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性。 |
 
 **返回值：**
@@ -914,7 +914,7 @@ loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明                 |
 | -------- | ------------------------- | ---- | -------------------- |
-| path     | string                    | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。 |
+| path     | string                    | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。不支持相对路径写法，需与main_pages.json中的src取值保持一致。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。           |
 
 **错误码：**
@@ -1857,9 +1857,9 @@ onWindowStageClose(callback: Callback&lt;void, boolean&gt;): void
 
 当重复注册窗口关闭事件的监听时，最后一次注册成功的监听事件生效。
 
-触发的回调函数是同步执行，主窗口的异步关闭事件监听参考[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose22)方法。
+触发的回调函数是同步执行，主窗口的异步关闭事件监听参考[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose23)方法。
 
-如果存在[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose22)监听事件，只响应[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose22)接口。
+如果存在[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose23)监听事件，只响应[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose23)接口。
 
 **ArkTS模式：** 该接口仅适用ArkTS-Sta。
 
@@ -2065,7 +2065,7 @@ setDefaultDensityEnabled(enabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2081,8 +2081,8 @@ setDefaultDensityEnabled(enabled: boolean): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300005 | This window stage is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The main window is not created or destroyed.|
+| 1300005 | This window stage is abnormal. Possible cause: The window stage is not created or destroyed.|
 
 **示例：**
 
@@ -2167,7 +2167,7 @@ ArkTS-Sta: setCustomDensity(density: double): void
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2183,8 +2183,8 @@ ArkTS-Sta: setCustomDensity(density: double): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300005 | This window stage is abnormal. |
+| 1300002 | This window state is abnormal.|
+| 1300005 | This window stage is abnormal.|
 
 **示例：**
 
@@ -2245,7 +2245,7 @@ ArkTS-Sta: setCustomDensity(density: double, applyToSubWindow?: boolean): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2524,7 +2524,7 @@ setWindowRectAutoSave(enabled: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2547,7 +2547,7 @@ setWindowRectAutoSave(enabled: boolean): Promise&lt;void&gt;
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003  | This window manager service works abnormally. |
 
 **示例：**
@@ -2636,7 +2636,7 @@ setWindowRectAutoSave(enabled: boolean, isSaveBySpecifiedFlag: boolean): Promise
 
 **ArkTS-Dyn起始版本：** 17
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2660,7 +2660,7 @@ setWindowRectAutoSave(enabled: boolean, isSaveBySpecifiedFlag: boolean): Promise
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Function setWindowRectAutoSave can not work correctly due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003  | This window manager service works abnormally. |
 
 **示例：**
@@ -2736,7 +2736,7 @@ isWindowRectAutoSave(): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2751,7 +2751,7 @@ isWindowRectAutoSave(): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**

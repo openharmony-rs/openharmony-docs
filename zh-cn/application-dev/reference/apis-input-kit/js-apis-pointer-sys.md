@@ -1,14 +1,21 @@
-# @ohos.multimodalInput.pointer (鼠标指针)(系统接口)
+# @ohos.multimodalInput.pointer (鼠标光标)(系统接口)
 
-鼠标指针管理模块，用于查询和设置鼠标指针相关属性。
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
+鼠标光标管理模块，用于查询和设置鼠标光标相关属性。
 
 > **说明**：
 >
 >- 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->- 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->- 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimodalInput.pointer (鼠标指针)](js-apis-pointer.md)。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimodalInput.pointer (鼠标光标)](js-apis-pointer.md)。
 
 ## 导入模块
 
@@ -48,12 +55,14 @@ ArkTS-Sta: setPointerSpeed(speed: int, callback: AsyncCallback&lt;void&gt;): voi
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
-**示例：**
+
+**示例**：
 
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -63,12 +72,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setPointerSpeed(5, (error: Error) => {
+            pointer.setPointerSpeed(5, (error: BusinessError) => {
               if (error) {
                 console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set pointer speed success`);
+              console.info(`Set pointer speed success`);
             });
           } catch (error) {
             console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -100,7 +109,7 @@ struct Index {
                 console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set pointer speed success`);
+              console.info(`Set pointer speed success`);
             });
           } catch (error) {
             console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -117,7 +126,7 @@ ArkTS-Dyn: setPointerSpeed(speed: number): Promise&lt;void&gt;
 
 ArkTS-Sta: setPointerSpeed(speed: int): Promise&lt;void&gt;
 
-设置鼠标移动速度，使用Promise异步方式返回结果。
+设置鼠标移动速度，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -135,13 +144,13 @@ ArkTS-Sta: setPointerSpeed(speed: int): Promise&lt;void&gt;
 
 **返回值**：
 
-| 参数                  | 说明               |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.devicestatus错误码](../apis-distributedservice-kit/errorcode-devicestatus.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
@@ -149,12 +158,13 @@ ArkTS-Sta: setPointerSpeed(speed: int): Promise&lt;void&gt;
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -165,8 +175,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerSpeed(5).then(() => {
-              console.log(`Set pointer speed success`);
-            });
+              console.info(`Set pointer speed success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set pointer failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -193,7 +205,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerSpeed(5).then(() => {
-              console.log(`Set pointer speed success`);
+              console.info(`Set pointer speed success`);
             });
           } catch (error) {
             console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -236,7 +248,7 @@ ArkTS-Sta: setPointerSpeedSync(speed: int): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -252,7 +264,7 @@ struct Index {
         .onClick(() => {
           try {
             let speed = pointer.setPointerSpeedSync(5);
-            console.log(`Set pointer speed success`);
+            console.info(`Set pointer speed success`);
           } catch (error) {
             console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -278,7 +290,7 @@ struct Index {
         .onClick(() => {
           try {
            pointer.setPointerSpeedSync(5);
-            console.log(`Set pointer speed success`);
+            console.info(`Set pointer speed success`);
           } catch (error) {
             console.error(`Set pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -316,15 +328,17 @@ ArkTS-Sta: getPointerSpeed(callback: AsyncCallback&lt;int&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | Permission denied, non-system app called system api.  |
+| 202  | Permission denied, non-system app called system api. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+
+**示例**：
 
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -334,12 +348,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getPointerSpeed((error: Error, speed: number) => {
+            pointer.getPointerSpeed((error: BusinessError, speed: number) => {
               if (error) {
                 console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
+              console.info(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
             });
           } catch (error) {
             console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -371,7 +385,7 @@ struct Index {
                 console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
+              console.info(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
             });
           } catch (error) {
             console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -386,7 +400,7 @@ struct Index {
 
 getPointerSpeed(): Promise&lt;number&gt;
 
-获取当前鼠标移动速度，使用Promise异步方式返回结果。
+获取当前鼠标移动速度，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -398,9 +412,9 @@ getPointerSpeed(): Promise&lt;number&gt;
 
 **返回值**：
 
-| 参数                    | 说明                  |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int| Promise实例，异步返回鼠标移动速度。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int| Promise对象，异步返回鼠标移动速度。 |
 
 **错误码**：
 
@@ -408,14 +422,15 @@ getPointerSpeed(): Promise&lt;number&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | Permission denied, non-system app called system api.  |
+| 202  | Permission denied, non-system app called system api. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -426,8 +441,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerSpeed().then(speed => {
-              console.log(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
-            });
+              console.info(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get pointer failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -454,7 +471,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerSpeed().then((speed: int) => {
-              console.log(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
+              console.info(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
             });
           } catch (error) {
             console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -483,7 +500,7 @@ ArkTS-Sta: getPointerSpeedSync(): int
 
 **返回值**：
 
-| 参数                    | 说明                  |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
 | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回鼠标移动速度。 |
 
@@ -496,7 +513,7 @@ ArkTS-Sta: getPointerSpeedSync(): int
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例:
 
@@ -512,7 +529,7 @@ struct Index {
         .onClick(() => {
           try {
             let speed = pointer.getPointerSpeedSync();
-            console.log(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
+            console.info(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
           } catch (error) {
             console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -538,7 +555,7 @@ struct Index {
         .onClick(() => {
           try {
             let speed = pointer.getPointerSpeedSync();
-            console.log(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
+            console.info(`Get pointer speed success, speed: ${JSON.stringify(speed)}`);
           } catch (error) {
             console.error(`Get pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -578,12 +595,13 @@ setHoverScrollState(state: boolean, callback: AsyncCallback&lt;void&gt;): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -593,12 +611,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setHoverScrollState(true, (error: Error) => {
+            pointer.setHoverScrollState(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Set the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set the mouse hover scroll success`);
+              console.info(`Set the mouse hover scroll success`);
             });
           } catch (error) {
             console.error(`Set the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -630,7 +648,7 @@ struct Index {
                 console.error(`Set the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set the mouse hover scroll success`);
+              console.info(`Set the mouse hover scroll success`);
             });
           } catch (error) {
             console.error(`Set the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -645,7 +663,7 @@ struct Index {
 
 setHoverScrollState(state: boolean): Promise&lt;void&gt;
 
-设置鼠标悬停滚动开关状态，使用Promise异步方式返回结果。
+设置鼠标悬停滚动开关状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -663,9 +681,9 @@ setHoverScrollState(state: boolean): Promise&lt;void&gt;
 
 **返回值**：
 
-| 参数                  | 说明               |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -676,12 +694,13 @@ setHoverScrollState(state: boolean): Promise&lt;void&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -692,8 +711,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setHoverScrollState(true).then(() => {
-              console.log(`Set the mouse hover scroll success`);
-            });
+              console.info(`Set the mouse hover scroll success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -719,7 +740,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setHoverScrollState(true).then(() => {
-              console.log(`Set the mouse hover scroll success`);
+              console.info(`Set the mouse hover scroll success`);
             });
           } catch (error) {
             console.error(`Set the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -758,12 +779,13 @@ getHoverScrollState(callback: AsyncCallback&lt;boolean&gt;): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -773,8 +795,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getHoverScrollState((error: Error, state: boolean) => {
-              console.log(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
+            pointer.getHoverScrollState((error: BusinessError, state: boolean) => {
+              if (error) {
+                console.error(`Get the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
+              }
             });
           } catch (error) {
             console.error(`Get the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -801,7 +827,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getHoverScrollState((error: BusinessError | null, state: boolean | undefined) => {
-              console.log(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
+              console.info(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`Get the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -816,7 +842,7 @@ struct Index {
 
 getHoverScrollState(): Promise&lt;boolean&gt;
 
-获取当前鼠标悬停滚动开关状态，使用Promise异步方式返回结果。
+获取当前鼠标悬停滚动开关状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -828,9 +854,9 @@ getHoverScrollState(): Promise&lt;boolean&gt;
 
 **返回值**：
 
-| 参数                    | 说明                  |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;boolean&gt; | Promise实例，异步返回鼠标悬停滚动开关状态。true代表开关开启，false代表开关关闭，默认开启。 |
+| Promise&lt;boolean&gt; | Promise对象，异步返回鼠标悬停滚动开关状态。true代表开关开启，false代表开关关闭，默认开启。 |
 
 **错误码**：
 
@@ -841,12 +867,13 @@ getHoverScrollState(): Promise&lt;boolean&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -857,8 +884,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getHoverScrollState().then((state: boolean) => {
-              console.log(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
-            });
+              console.info(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Get the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -884,7 +913,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getHoverScrollState().then((state: boolean) => {
-              console.log(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
+              console.info(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`Get the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -913,7 +942,7 @@ setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback&lt;void&gt
 
 | 参数名    | 类型                      | 必填  | 说明                                    |
 | -------- | ------------------------- | ----  | ------------------------------------- |
-| primary  | [PrimaryButton](js-apis-pointer.md#primarybutton10)   | 是    | 鼠标主键id。   |
+| primary  | [PrimaryButton](js-apis-pointer.md#primarybutton10)   | 是    | 鼠标主键类型。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。 |
 
 **错误码**：
@@ -925,12 +954,13 @@ setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback&lt;void&gt
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -940,12 +970,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setMousePrimaryButton(pointer.PrimaryButton.RIGHT, (error: Error) => {
+            pointer.setMousePrimaryButton(pointer.PrimaryButton.RIGHT, (error: BusinessError) => {
               if (error) {
                 console.error(`Set mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set mouse primary button success`);
+              console.info(`Set mouse primary button success`);
             });
           } catch (error) {
             console.error(`Set mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -976,7 +1006,7 @@ struct Index {
                 console.error(`Set mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set mouse primary button success`);
+              console.info(`Set mouse primary button success`);
             });
           } catch (error) {
             console.error(`Set mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -991,7 +1021,7 @@ struct Index {
 
 setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 
-设置鼠标主键，使用Promise异步方式返回结果。
+设置鼠标主键，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1005,13 +1035,13 @@ setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| primary | [PrimaryButton](js-apis-pointer.md#primarybutton10) | 是    | 鼠标主键id。 |
+| primary | [PrimaryButton](js-apis-pointer.md#primarybutton10) | 是    | 鼠标主键类型。 |
 
 **返回值**：
 
-| 参数                  | 说明               |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -1022,12 +1052,13 @@ setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1038,8 +1069,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setMousePrimaryButton(pointer.PrimaryButton.RIGHT).then(() => {
-              console.log(`Set mouse primary button success`);
-            });
+              console.info(`Set mouse primary button success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set mouse failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1065,7 +1098,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setMousePrimaryButton(pointer.PrimaryButton.RIGHT).then(() => {
-              console.log(`Set mouse primary button success`);
+              console.info(`Set mouse primary button success`);
             });
           } catch (error) {
             console.error(`Set mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1106,12 +1139,13 @@ getMousePrimaryButton(callback: AsyncCallback&lt;PrimaryButton&gt;): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1121,8 +1155,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getMousePrimaryButton((error: Error, primary: pointer.PrimaryButton) => {
-              console.log(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
+            pointer.getMousePrimaryButton((error: BusinessError, primary: pointer.PrimaryButton) => {
+              if (error) {
+                console.error(`Get mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
+              }
             });
           } catch (error) {
             console.error(`Get mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1149,7 +1187,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getMousePrimaryButton((error: BusinessError<void>|null, primary: pointer.PrimaryButton | undefined) => {
-              console.log(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
+              console.info(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
             });
           } catch (error) {
             console.error(`Get mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1164,7 +1202,7 @@ struct Index {
 
 getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 
-获取当前鼠标主键，使用Promise异步方式返回结果。
+获取当前鼠标主键，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1176,9 +1214,9 @@ getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 
 **返回值**：
 
-| 参数                    | 说明                  |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;[PrimaryButton](js-apis-pointer.md#primarybutton10)&gt; | Promise实例，异步返回鼠标主键。 |
+| Promise&lt;[PrimaryButton](js-apis-pointer.md#primarybutton10)&gt; | Promise对象，异步返回鼠标主键。 |
 
 **错误码**：
 
@@ -1189,12 +1227,13 @@ getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1205,8 +1244,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getMousePrimaryButton().then((primary: pointer.PrimaryButton) => {
-              console.log(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
-            });
+              console.info(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get mouse failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Get mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1233,7 +1274,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getMousePrimaryButton().then((primary: pointer.PrimaryButton) => {
-              console.log(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
+              console.info(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
             });
           } catch (error) {
             console.error(`Get mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1276,12 +1317,13 @@ ArkTS-Sta: setMouseScrollRows(rows: int, callback: AsyncCallback&lt;void&gt;): v
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1291,12 +1333,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setMouseScrollRows(1, (error: Error) => {
+            pointer.setMouseScrollRows(1, (error: BusinessError) => {
               if (error) {
                 console.error(`setMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setMouseScrollRows success`);
+              console.info(`setMouseScrollRows success`);
             });
           } catch (error) {
             console.error(`setMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1327,7 +1369,7 @@ struct Index {
                 console.error(`setMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setMouseScrollRows success`);
+              console.info(`setMouseScrollRows success`);
             });
           } catch (error) {
             console.error(`setMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1344,7 +1386,7 @@ ArkTS-Dyn: setMouseScrollRows(rows: number): Promise&lt;void&gt;
 
 ArkTS-Sta: setMouseScrollRows(rows: int): Promise&lt;void&gt;
 
-设置鼠标滚动行数，使用Promise异步方式返回结果。
+设置鼠标滚动行数，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1362,9 +1404,9 @@ ArkTS-Sta: setMouseScrollRows(rows: int): Promise&lt;void&gt;
 
 **返回值**：
 
-| 参数                  | 说明               |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -1375,12 +1417,13 @@ ArkTS-Sta: setMouseScrollRows(rows: int): Promise&lt;void&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1391,8 +1434,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setMouseScrollRows(20).then(() => {
-              console.log(`setMouseScrollRows success`);
-            });
+              console.info(`setMouseScrollRows success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set mouse scroll rows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1418,7 +1463,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setMouseScrollRows(20).then(() => {
-              console.log(`setMouseScrollRows success`);
+              console.info(`setMouseScrollRows success`);
             });
           } catch (error) {
             console.error(`setMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1460,12 +1505,13 @@ ArkTS-Sta: getMouseScrollRows(callback: AsyncCallback&lt;int&gt;): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1475,8 +1521,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getMouseScrollRows((error: Error, rows: number) => {
-              console.log(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
+            pointer.getMouseScrollRows((error: BusinessError, rows: number) => {
+              if (error) {
+                console.error(`getMouseScrollRows error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
+              }
             });
           } catch (error) {
             console.error(`getMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1503,7 +1553,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getMouseScrollRows((error: BusinessError<void> | null, rows: int | undefined) => {
-              console.log(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
+              console.info(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
             });
           } catch (error) {
             console.error(`getMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1520,7 +1570,7 @@ ArkTS-Dyn: getMouseScrollRows(): Promise&lt;number&gt;
 
 ArkTS-Sta: getMouseScrollRows(): Promise&lt;int&gt;
 
-获取当前鼠标滚动行数，使用Promise异步方式返回结果。
+获取当前鼠标滚动行数，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1532,9 +1582,9 @@ ArkTS-Sta: getMouseScrollRows(): Promise&lt;int&gt;
 
 **返回值**：
 
-| 参数                    | 说明                  |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt; | Promise实例，异步返回鼠标滚动行数。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，异步返回鼠标滚动行数。 |
 
 **错误码**：
 
@@ -1545,10 +1595,13 @@ ArkTS-Sta: getMouseScrollRows(): Promise&lt;int&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1559,8 +1612,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getMouseScrollRows().then((rows: number) => {
-              console.log(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
-            });
+              console.info(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get mouse scroll rows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1586,7 +1641,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getMouseScrollRows().then((rows: int) => {
-              console.log(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
+              console.info(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
             });
           } catch (error) {
             console.error(`getMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1627,10 +1682,13 @@ setTouchpadScrollSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1640,12 +1698,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadScrollSwitch(true, (error: Error) => {
+            pointer.setTouchpadScrollSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`setTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadScrollSwitch success`);
+              console.info(`setTouchpadScrollSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1676,7 +1734,7 @@ struct Index {
                 console.error(`setTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadScrollSwitch success`);
+              console.info(`setTouchpadScrollSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1691,7 +1749,7 @@ struct Index {
 
 setTouchpadScrollSwitch(state: boolean): Promise\<void>
 
-设置触控板滚轴开关，使用Promise异步方式返回结果。
+设置触控板滚轴开关，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1709,9 +1767,9 @@ setTouchpadScrollSwitch(state: boolean): Promise\<void>
 
 **返回值**：
 
-| 参数                  | 说明               |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -1722,12 +1780,13 @@ setTouchpadScrollSwitch(state: boolean): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1738,8 +1797,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadScrollSwitch(false).then(() => {
-              console.log(`setTouchpadScrollSwitch success`);
-            });
+              console.info(`setTouchpadScrollSwitch success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set touchpad scroll switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1765,7 +1826,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadScrollSwitch(false).then(() => {
-              console.log(`setTouchpadScrollSwitch success`);
+              console.info(`setTouchpadScrollSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1805,10 +1866,13 @@ getTouchpadScrollSwitch(callback:  AsyncCallback\<boolean>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1818,8 +1882,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getTouchpadScrollSwitch((error: Error, state: boolean) => {
-              console.log(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
+            pointer.getTouchpadScrollSwitch((error: BusinessError, state: boolean) => {
+              if (error) {
+                console.error(`getTouchpadScrollSwitch error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
+              }
             });
           } catch (error) {
             console.error(`getTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1846,7 +1914,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadScrollSwitch((error: BusinessError<void> | null, state: boolean  | undefined) => {
-              console.log(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1861,7 +1929,7 @@ struct Index {
 
 getTouchpadScrollSwitch(): Promise\<boolean>
 
-获取触控板滚轴能力开启状态，使用Promise异步方式返回结果。
+获取触控板滚轴能力开启状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1873,9 +1941,9 @@ getTouchpadScrollSwitch(): Promise\<boolean>
 
 **返回值**：
 
-| 参数                    | 说明                  |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise实例，异步返回触控板滚轴能力开启状态。true代表开启，false代表关闭，默认为开启。 |
+| Promise\<boolean> | Promise对象，异步返回触控板滚轴能力开启状态。true代表开启，false代表关闭，默认为开启。 |
 
 **错误码**：
 
@@ -1886,10 +1954,13 @@ getTouchpadScrollSwitch(): Promise\<boolean>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1900,8 +1971,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadScrollSwitch().then((state) => {
-              console.log(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
-            });
+              console.info(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get touchpad scroll switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1927,7 +2000,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadScrollSwitch().then((state: boolean) => {
-              console.log(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1968,10 +2041,13 @@ setTouchpadScrollDirection(state: boolean, callback: AsyncCallback\<void>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1981,12 +2057,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadScrollDirection(true, (error: Error) => {
+            pointer.setTouchpadScrollDirection(true, (error: BusinessError) => {
               if (error) {
                 console.error(`setTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadScrollDirection success`);
+              console.info(`setTouchpadScrollDirection success`);
             });
           } catch (error) {
             console.error(`setTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2017,7 +2093,7 @@ struct Index {
                 console.error(`setTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadScrollDirection success`);
+              console.info(`setTouchpadScrollDirection success`);
             });
           } catch (error) {
             console.error(`setTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2032,7 +2108,7 @@ struct Index {
 
 setTouchpadScrollDirection(state: boolean): Promise\<void>
 
-设置触控板滚轴的方向，使用Promise异步方式返回结果。
+设置触控板滚轴的方向，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2050,9 +2126,9 @@ setTouchpadScrollDirection(state: boolean): Promise\<void>
 
 **返回值**：
 
-| 参数                  | 说明               |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -2063,12 +2139,13 @@ setTouchpadScrollDirection(state: boolean): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2079,8 +2156,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadScrollDirection (false).then(() => {
-              console.log(`setTouchpadScrollDirection success`);
-            });
+              console.info(`setTouchpadScrollDirection success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set touchpad scroll direction failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2106,7 +2185,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadScrollDirection (false).then(() => {
-              console.log(`setTouchpadScrollDirection success`);
+              console.info(`setTouchpadScrollDirection success`);
             });
           } catch (error) {
             console.error(`setTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2146,6 +2225,8 @@ getTouchpadScrollDirection(callback:  AsyncCallback\<boolean>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
@@ -2159,8 +2240,8 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getTouchpadScrollDirection ((error: Error, state: boolean) => {
-              console.log(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
+            pointer.getTouchpadScrollDirection ((error: BusinessError, state: boolean) => {
+              console.info(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2187,7 +2268,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadScrollDirection ((error: BusinessError<void> | null, state: boolean | undefined) => {
-              console.log(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2202,7 +2283,7 @@ struct Index {
 
 getTouchpadScrollDirection(): Promise\<boolean>
 
-获取触控板滚轴方向，使用Promise异步方式返回结果。
+获取触控板滚轴方向，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2214,9 +2295,9 @@ getTouchpadScrollDirection(): Promise\<boolean>
 
 **返回值**：
 
-| 参数                    | 说明                  |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise实例，异步返回触控板滚轴方向。<br>true与手指滑动的方向一致，false与手指滑动的方向相反。<br>默认为true。 |
+| Promise\<boolean> | Promise对象，异步返回触控板滚轴方向。<br>true与手指滑动的方向一致，false与手指滑动的方向相反。<br>默认为true。 |
 
 **错误码**：
 
@@ -2227,12 +2308,13 @@ getTouchpadScrollDirection(): Promise\<boolean>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2243,8 +2325,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadScrollDirection().then((state: boolean) => {
-              console.log(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
-            });
+              console.info(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get touchpad scroll direction failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2270,7 +2354,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadScrollDirection().then((state: boolean) => {
-              console.log(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2311,10 +2395,13 @@ setTouchpadTapSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2324,15 +2411,15 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadTapSwitch(true, (error: Error) => {
+            pointer.setTouchpadTapSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadTapSwitch success`);
+              console.info(`setTouchpadTapSwitch success`);
             });
           } catch (error) {
-            console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`); 
           }
         })
     }
@@ -2360,7 +2447,7 @@ struct Index {
                 console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadTapSwitch success`);
+              console.info(`setTouchpadTapSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2375,7 +2462,7 @@ struct Index {
 
 setTouchpadTapSwitch(state: boolean): Promise\<void>
 
-设置触控板轻触功能开关，使用Promise异步方式返回结果。
+设置触控板轻触功能开关，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2393,9 +2480,9 @@ setTouchpadTapSwitch(state: boolean): Promise\<void>
 
 **返回值**：
 
-| 参数                  | 说明               |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -2406,12 +2493,13 @@ setTouchpadTapSwitch(state: boolean): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2422,8 +2510,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadTapSwitch(false).then(() => {
-              console.log(`setTouchpadTapSwitch success`);
-            });
+              console.info(`setTouchpadTapSwitch success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set touchpad tap switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2449,7 +2539,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadTapSwitch(false).then(() => {
-              console.log(`setTouchpadTapSwitch success`);
+              console.info(`setTouchpadTapSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2489,10 +2579,13 @@ getTouchpadTapSwitch(callback:  AsyncCallback\<boolean>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2502,8 +2595,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getTouchpadTapSwitch((error: Error, state: boolean) => {
-              console.log(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
+            pointer.getTouchpadTapSwitch((error: BusinessError, state: boolean) => {
+              if (error) {
+                console.error(`getTouchpadTapSwitch error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
+              }
             });
           } catch (error) {
             console.error(`getTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2530,7 +2627,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadTapSwitch((error: BusinessError<void> | null, state: boolean | undefined) => {
-              console.log(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2545,7 +2642,7 @@ struct Index {
 
 getTouchpadTapSwitch(): Promise\<boolean>
 
-获取触控板轻触功能开启状态，使用Promise异步方式返回结果。
+获取触控板轻触功能开启状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2557,9 +2654,9 @@ getTouchpadTapSwitch(): Promise\<boolean>
 
 **返回值**：
 
-| 参数                    | 说明                  |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise实例，异步返回触控板轻触功能开启状态，true代表开启，false代表关闭，默认开启。 |
+| Promise\<boolean> | Promise对象，异步返回触控板轻触功能开启状态，true代表开启，false代表关闭，默认开启。 |
 
 **错误码**：
 
@@ -2570,12 +2667,13 @@ getTouchpadTapSwitch(): Promise\<boolean>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2586,8 +2684,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadTapSwitch().then((state: boolean) => {
-              console.log(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
-            });
+              console.info(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get touchpad tap switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2613,7 +2713,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadTapSwitch().then((state: boolean) => {
-              console.log(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2656,10 +2756,13 @@ ArkTS-Sta: setTouchpadPointerSpeed(speed: int, callback: AsyncCallback\<void>): 
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2669,12 +2772,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadPointerSpeed(1, (error: Error) => {
+            pointer.setTouchpadPointerSpeed(1, (error: BusinessError) => {
               if (error) {
                 console.error(`setTouchpadPointerSpeedfailed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadPointerSpeed success`);
+              console.info(`setTouchpadPointerSpeed success`);
             });
           } catch (error) {
             console.error(`setTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2705,7 +2808,7 @@ struct Index {
                 console.error(`setTouchpadPointerSpeedfailed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadPointerSpeed success`);
+              console.info(`setTouchpadPointerSpeed success`);
             });
           } catch (error) {
             console.error(`setTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2722,7 +2825,7 @@ ArkTS-Dyn: setTouchpadPointerSpeed(speed: number): Promise\<void>
 
 ArkTS-Sta: setTouchpadPointerSpeed(speed: int): Promise\<void>
 
-设置触控板光标移动速度，使用Promise异步方式返回结果。
+设置触控板光标移动速度，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2740,9 +2843,9 @@ ArkTS-Sta: setTouchpadPointerSpeed(speed: int): Promise\<void>
 
 **返回值**：
 
-| 参数                  | 说明               |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -2753,12 +2856,13 @@ ArkTS-Sta: setTouchpadPointerSpeed(speed: int): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2769,8 +2873,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadPointerSpeed(10).then(() => {
-              console.log(`setTouchpadPointerSpeed success`);
-            });
+              console.info(`setTouchpadPointerSpeed success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set touchpad pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2796,7 +2902,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadPointerSpeed(10).then(() => {
-              console.log(`setTouchpadPointerSpeed success`);
+              console.info(`setTouchpadPointerSpeed success`);
             });
           } catch (error) {
             console.error(`setTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2838,10 +2944,13 @@ ArkTS-Sta: getTouchpadPointerSpeed(callback: AsyncCallback\<int>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2851,8 +2960,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getTouchpadPointerSpeed((error: Error, speed: number) => {
-              console.log(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
+            pointer.getTouchpadPointerSpeed((error: BusinessError, speed: number) => {
+              if (error) {
+                console.error(`getTouchpadPointerSpeed error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
+              }
             });
           } catch (error) {
             console.error(`getTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2879,7 +2992,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadPointerSpeed((error: BusinessError<void> | null, speed: int | undefined) => {
-              console.log(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
+              console.info(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
             });
           } catch (error) {
             console.error(`getTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2896,7 +3009,7 @@ ArkTS-Dyn: getTouchpadPointerSpeed(): Promise\<number>
 
 ArkTS-Sta: getTouchpadPointerSpeed(): int\<number>
 
-获取触控板光标移动速度，使用Promise异步方式返回结果。
+获取触控板光标移动速度，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -2908,9 +3021,9 @@ ArkTS-Sta: getTouchpadPointerSpeed(): int\<number>
 
 **返回值**：
 
-| 参数                    | 说明                  |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<int> | Promise实例，异步返回触控板光标移动速度。 |
+| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<int> | Promise对象，异步返回触控板光标移动速度。 |
 
 **错误码**：
 
@@ -2921,10 +3034,13 @@ ArkTS-Sta: getTouchpadPointerSpeed(): int\<number>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2935,8 +3051,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadPointerSpeed().then((speed: number) => {
-              console.log(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
-            });
+              console.info(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get touchpad pointer speed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -2962,7 +3080,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadPointerSpeed().then((speed: int) => {
-              console.log(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
+              console.info(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
             });
           } catch (error) {
             console.error(`getTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3003,10 +3121,13 @@ setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3016,12 +3137,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadPinchSwitch(true, (error: Error) => {
+            pointer.setTouchpadPinchSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadPinchSwitch success`);
+              console.info(`setTouchpadPinchSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3052,7 +3173,7 @@ struct Index {
                 console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadPinchSwitch success`);
+              console.info(`setTouchpadPinchSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3067,7 +3188,7 @@ struct Index {
 
 setTouchpadPinchSwitch(state: boolean): Promise\<void>
 
-设置触控板双指捏合功能开关，使用Promise异步方式返回结果。
+设置触控板双指捏合功能开关，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -3085,9 +3206,9 @@ setTouchpadPinchSwitch(state: boolean): Promise\<void>
 
 **返回值**：
 
-| 参数                  | 说明               |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -3098,12 +3219,13 @@ setTouchpadPinchSwitch(state: boolean): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3114,8 +3236,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadPinchSwitch(false).then(() => {
-              console.log(`setTouchpadPinchSwitch success`);
-            });
+              console.info(`setTouchpadPinchSwitch success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set touchpad pinch switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -3141,7 +3265,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadPinchSwitch(false).then(() => {
-              console.log(`setTouchpadPinchSwitch success`);
+              console.info(`setTouchpadPinchSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3181,10 +3305,13 @@ getTouchpadPinchSwitch(callback:  AsyncCallback\<boolean>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3194,8 +3321,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getTouchpadPinchSwitch((error: Error, state: boolean) => {
-              console.log(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
+            pointer.getTouchpadPinchSwitch((error: BusinessError, state: boolean) => {
+              if (error) {
+                console.error(`getTouchpadPinchSwitch error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
+              }
             });
           } catch (error) {
             console.error(`getTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3222,7 +3353,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadPinchSwitch((error: BusinessError<void> | null, state: boolean | undefined) => {
-              console.log(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3237,7 +3368,7 @@ struct Index {
 
 getTouchpadPinchSwitch(): Promise\<boolean>
 
-获取触控板双指捏合功能开启状态，使用Promise异步方式返回结果。
+获取触控板双指捏合功能开启状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -3249,9 +3380,9 @@ getTouchpadPinchSwitch(): Promise\<boolean>
 
 **返回值**：
 
-| 参数                    | 说明                  |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise实例，异步返回触控板双指捏合功能开启状态。true代表功能开启，false代表功能关闭，默认开启。 |
+| Promise\<boolean> | Promise对象，异步返回触控板双指捏合功能开启状态。true代表功能开启，false代表功能关闭，默认开启。 |
 
 **错误码**：
 
@@ -3262,12 +3393,13 @@ getTouchpadPinchSwitch(): Promise\<boolean>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3278,8 +3410,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadPinchSwitch().then((state: boolean) => {
-              console.log(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
-            });
+              console.info(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get touchpad pinch switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -3305,7 +3439,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadPinchSwitch().then((state: boolean) => {
-              console.log(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3346,10 +3480,13 @@ setTouchpadSwipeSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3359,12 +3496,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadSwipeSwitch(true, (error: Error) => {
+            pointer.setTouchpadSwipeSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`setTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadSwipeSwitch success`);
+              console.info(`setTouchpadSwipeSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3396,7 +3533,7 @@ struct Index {
                 console.error(`setTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadSwipeSwitch success`);
+              console.info(`setTouchpadSwipeSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3411,7 +3548,7 @@ struct Index {
 
 setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 
-设置触控板多指滑动功能开关，使用Promise异步方式返回结果。
+设置触控板多指滑动功能开关，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -3429,9 +3566,9 @@ setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 
 **返回值**：
 
-| 参数                  | 说明               |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -3442,12 +3579,13 @@ setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3458,8 +3596,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadSwipeSwitch(false).then(() => {
-              console.log(`setTouchpadSwipeSwitch success`);
-            });
+              console.info(`setTouchpadSwipeSwitch success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set touchpad swipe switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -3485,7 +3625,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadSwipeSwitch(false).then(() => {
-              console.log(`setTouchpadSwipeSwitch success`);
+              console.info(`setTouchpadSwipeSwitch success`);
             });
           } catch (error) {
             console.error(`setTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3525,10 +3665,13 @@ getTouchpadSwipeSwitch(callback:  AsyncCallback\<boolean>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3538,8 +3681,8 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getTouchpadSwipeSwitch((error: Error, state: boolean) => {
-              console.log(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
+            pointer.getTouchpadSwipeSwitch((error: BusinessError, state: boolean) => {
+              console.info(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3567,7 +3710,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadSwipeSwitch((error: BusinessError<void> | null, state: boolean  | undefined) => {
-              console.log(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3582,7 +3725,7 @@ struct Index {
 
 getTouchpadSwipeSwitch(): Promise\<boolean>
 
-获取触控板多指滑动功能开启状态，使用Promise异步方式返回结果。
+获取触控板多指滑动功能开启状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -3594,9 +3737,9 @@ getTouchpadSwipeSwitch(): Promise\<boolean>
 
 **返回值**：
 
-| 参数                    | 说明                  |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise实例，异步返回触控板多指滑动功能开启状态。 true代表多指滑动开启，false代表多指滑动关闭，默认开启。 |
+| Promise\<boolean> | Promise对象，异步返回触控板多指滑动功能开启状态。 true代表多指滑动开启，false代表多指滑动关闭，默认开启。 |
 
 **错误码**：
 
@@ -3607,12 +3750,13 @@ getTouchpadSwipeSwitch(): Promise\<boolean>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3623,8 +3767,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadSwipeSwitch().then((state: boolean) => {
-              console.log(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
-            });
+              console.info(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get touchpad swipe switch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -3650,7 +3796,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadSwipeSwitch().then((state: boolean) => {
-              console.log(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadSwipeSwitch success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadSwipeSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3691,10 +3837,13 @@ setTouchpadRightClickType(type: RightClickType, callback: AsyncCallback\<void>):
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3704,12 +3853,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadRightClickType(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON , (error: Error) => {
+            pointer.setTouchpadRightClickType(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON , (error: BusinessError) => {
               if (error) {
                 console.error(`setTouchpadRightClickType, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadRightClickType success`);
+              console.info(`setTouchpadRightClickType success`);
             });
           } catch (error) {
             console.error(`setTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3740,7 +3889,7 @@ struct Index {
                 console.error(`setTouchpadRightClickType, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadRightClickType success`);
+              console.info(`setTouchpadRightClickType success`);
             });
           } catch (error) {
             console.error(`setTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3755,7 +3904,7 @@ struct Index {
 
 setTouchpadRightClickType(type: RightClickType): Promise\<void>
 
-设置触控板右键菜单类型，使用Promise异步方式返回结果。
+设置触控板右键菜单类型，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -3773,9 +3922,9 @@ setTouchpadRightClickType(type: RightClickType): Promise\<void>
 
 **返回值**：
 
-| 参数                  | 说明               |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -3786,12 +3935,13 @@ setTouchpadRightClickType(type: RightClickType): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3802,8 +3952,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadRightClickType(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON).then(() => {
-              console.log(`setTouchpadRightClickType success`);
-            });
+              console.info(`setTouchpadRightClickType success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set touchpad right click type failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -3829,7 +3981,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadRightClickType(pointer.RightClickType.TOUCHPAD_RIGHT_BUTTON).then(() => {
-              console.log(`setTouchpadRightClickType success`);
+              console.info(`setTouchpadRightClickType success`);
             });
           } catch (error) {
             console.error(`setTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3869,10 +4021,13 @@ getTouchpadRightClickType(callback: AsyncCallback\<RightClickType>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3882,8 +4037,8 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getTouchpadRightClickType((error: Error, type: pointer.RightClickType) => {
-              console.log(`getTouchpadRightClickType success, type: ${JSON.stringify(type)}`);
+            pointer.getTouchpadRightClickType((error: BusinessError, type: pointer.RightClickType) => {
+              console.info(`getTouchpadRightClickType success, type: ${JSON.stringify(type)}`);
             });
           } catch (error) {
             console.error(`getTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3911,7 +4066,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadRightClickType((error: BusinessError<void> | null, type: pointer.RightClickType | undefined) => {
-              console.log(`getTouchpadRightClickType success, type: ${JSON.stringify(type)}`);
+              console.info(`getTouchpadRightClickType success, type: ${JSON.stringify(type)}`);
             });
           } catch (error) {
             console.error(`getTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3926,7 +4081,7 @@ struct Index {
 
 getTouchpadRightClickType(): Promise\<RightClickType>
 
-获取触控板右键菜单类型，使用Promise异步方式返回结果。
+获取触控板右键菜单类型，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -3938,9 +4093,9 @@ getTouchpadRightClickType(): Promise\<RightClickType>
 
 **返回值**：
 
-| 参数                    | 说明                  |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<[RightClickType](js-apis-pointer.md#rightclicktype10) > | Promise实例，异步返回触控板右键菜单类型。 |
+| Promise\<[RightClickType](js-apis-pointer.md#rightclicktype10) > | Promise对象，异步返回触控板右键菜单类型。 |
 
 **错误码**：
 
@@ -3951,7 +4106,7 @@ getTouchpadRightClickType(): Promise\<RightClickType>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -3967,7 +4122,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadRightClickType().then((type: pointer.RightClickType) => {
-              console.log(`getTouchpadRightClickType success, typeed: ${JSON.stringify(type)}`);
+              console.info(`getTouchpadRightClickType success, typeed: ${JSON.stringify(type)}`);
             });
           } catch (error) {
             console.error(`getTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3994,7 +4149,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadRightClickType().then((type: pointer.RightClickType) => {
-              console.log(`getTouchpadRightClickType success, typeed: ${JSON.stringify(type)}`);
+              console.info(`getTouchpadRightClickType success, typeed: ${JSON.stringify(type)}`);
             });
           } catch (error) {
             console.error(`getTouchpadRightClickType failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -4055,7 +4210,7 @@ struct Index {
                 console.error(`setPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setPointerSize success`);
+              console.info(`setPointerSize success`);
             });
           } catch (error) {
             console.error(`setPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -4087,7 +4242,7 @@ struct Index {
                 console.error(`setPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setPointerSize success`);
+              console.info(`setPointerSize success`);
             });
           } catch (error) {
             console.error(`setPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -4151,7 +4306,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerSize(3).then(() => {
-              console.log(`setPointerSize success`);
+              console.info(`setPointerSize success`);
             });
           } catch (error) {
             console.error(`setPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -4178,7 +4333,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerSize(3).then(() => {
-              console.log(`setPointerSize success`);
+              console.info(`setPointerSize success`);
             });
           } catch (error) {
             console.error(`setPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -4236,7 +4391,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerSizeSync(5);
-            console.log(`setPointerSizeSync success`);
+            console.info(`setPointerSizeSync success`);
           } catch (error) {
             console.error(`setPointerSizeSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -4262,7 +4417,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerSizeSync(5);
-            console.log(`setPointerSizeSync success`);
+            console.info(`setPointerSizeSync success`);
           } catch (error) {
             console.error(`setPointerSizeSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -4317,7 +4472,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerSize((error: Error, size: number) => {
-              console.log(`getPointerSize success, size: ${JSON.stringify(size)}`);
+              console.info(`getPointerSize success, size: ${JSON.stringify(size)}`);
             });
           } catch (error) {
             console.error(`getPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -4345,7 +4500,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerSize((error: BusinessError<void> | null, size: int | undefined) => {
-              console.log(`getPointerSize success, size: ${JSON.stringify(size)}`);
+              console.info(`getPointerSize success, size: ${JSON.stringify(size)}`);
             });
           } catch (error) {
             console.error(`getPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -4401,7 +4556,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerSize().then((size: number) => {
-              console.log(`getPointerSize success, size: ${JSON.stringify(size)}`);
+              console.info(`getPointerSize success, size: ${JSON.stringify(size)}`);
             });
           } catch (error) {
             console.error(`getPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -4428,7 +4583,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerSize().then((size: int) => {
-              console.log(`getPointerSize success, size: ${JSON.stringify(size)}`);
+              console.info(`getPointerSize success, size: ${JSON.stringify(size)}`);
             });
           } catch (error) {
             console.error(`getPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -4486,7 +4641,7 @@ struct Index {
         .onClick(() => {
           try {
             let pointerSize = pointer.getPointerSizeSync();
-            console.log(`getPointerSizeSync success, pointerSize: ${JSON.stringify(pointerSize)}`);
+            console.info(`getPointerSizeSync success, pointerSize: ${JSON.stringify(pointerSize)}`);
           } catch (error) {
             console.error(`getPointerSizeSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -4512,7 +4667,7 @@ struct Index {
         .onClick(() => {
           try {
             let pointerSize = pointer.getPointerSizeSync();
-            console.log(`getPointerSizeSync success, pointerSize: ${JSON.stringify(pointerSize)}`);
+            console.info(`getPointerSizeSync success, pointerSize: ${JSON.stringify(pointerSize)}`);
           } catch (error) {
             console.error(`getPointerSizeSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -4530,7 +4685,7 @@ ArkTS-Sta: setPointerColor(color: int, callback: AsyncCallback&lt;void&gt;): voi
 
 设置鼠标光标颜色，使用AsyncCallback异步方式返回结果。
 
-**说明**
+> **说明**：
 >
 > 设置和调试时，需连接外部设备，如鼠标、蓝牙等。
 
@@ -4558,10 +4713,13 @@ ArkTS-Sta: setPointerColor(color: int, callback: AsyncCallback&lt;void&gt;): voi
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -4571,12 +4729,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setPointerColor(0xF6C800, (error: Error) => {
+            pointer.setPointerColor(0xF6C800, (error: BusinessError) => {
               if (error) {
                 console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setPointerColor success`);
+              console.info(`setPointerColor success`);
             });
           } catch (error) {
             console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -4607,7 +4765,7 @@ struct Index {
                 console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setPointerColor success`);
+              console.info(`setPointerColor success`);
             });
         } catch (error) {
           console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -4624,9 +4782,9 @@ ArkTS-Dyn: setPointerColor(color: number): Promise&lt;void&gt;
 
 ArkTS-Sta: setPointerColor(color: int): Promise&lt;void&gt;
 
-设置鼠标光标颜色，使用Promise异步方式返回结果。
+设置鼠标光标颜色，使用Promise异步回调。
 
-**说明**
+> **说明**：
 >
 > 设置和调试时，需连接外部设备，如鼠标、蓝牙等。
 
@@ -4646,9 +4804,9 @@ ArkTS-Sta: setPointerColor(color: int): Promise&lt;void&gt;
 
 **返回值**：
 
-| 参数                  | 说明               |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -4659,12 +4817,13 @@ ArkTS-Sta: setPointerColor(color: int): Promise&lt;void&gt;
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -4675,8 +4834,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerColor(0xF6C800).then(() => {
-              console.log(`setPointerColor success`);
-            });
+              console.info(`setPointerColor success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set pointer color failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -4702,7 +4863,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerColor(0xF6C800).then(() => {
-              console.log(`setPointerColor success`);
+              console.info(`setPointerColor success`);
             });
           } catch (error) {
             console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -4721,7 +4882,7 @@ ArkTS-Sta: setPointerColorSync(color: int): void
 
 设置鼠标光标颜色，使用同步方式进行设置。
 
-**说明**
+> **说明**：
 >
 > 设置和调试时，需连接外部设备，如鼠标、蓝牙等。
 
@@ -4748,7 +4909,7 @@ ArkTS-Sta: setPointerColorSync(color: int): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例:
 
@@ -4764,7 +4925,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerColorSync(0xF6C800);
-            console.log(`setPointerColorSync success`);
+            console.info(`setPointerColorSync success`);
           } catch (error) {
             console.error(`setPointerColorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -4790,7 +4951,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerColorSync(0xF6C800);
-            console.log(`setPointerColorSync success`);
+            console.info(`setPointerColorSync success`);
           } catch (error) {
             console.error(`setPointerColorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -4831,10 +4992,13 @@ ArkTS-Sta: getPointerColor(callback: AsyncCallback&lt;int&gt;): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -4844,8 +5008,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getPointerColor((error: Error, color: number) => {
-              console.log(`getPointerColor success, color: ${JSON.stringify(color)}`);
+            pointer.getPointerColor((error: BusinessError, color: number) => {
+              if (error) {
+                console.error(`getPointerColor error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getPointerColor success, color: ${JSON.stringify(color)}`);
+              }
             });
           } catch (error) {
             console.error(`getPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -4872,7 +5040,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerColor((error: BusinessError<void> | null, color: int | undefined) => {
-              console.log(`getPointerColor success, color: ${JSON.stringify(color)}`);
+              console.info(`getPointerColor success, color: ${JSON.stringify(color)}`);
             });
           } catch (error) {
             console.error(`getPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -4889,7 +5057,7 @@ ArkTS-Dyn: getPointerColor(): Promise&lt;number&gt;
 
 ArkTS-Sta: getPointerColor(): Promise&lt;int&gt;
 
-获取当前鼠标光标颜色，使用Promise异步方式返回结果。
+获取当前鼠标光标颜色，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -4901,7 +5069,7 @@ ArkTS-Sta: getPointerColor(): Promise&lt;int&gt;
 
 **返回值**：
 
-| 参数                    | 说明                  |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
 | ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，异步返回鼠标光标颜色。 |
 
@@ -4914,10 +5082,13 @@ ArkTS-Sta: getPointerColor(): Promise&lt;int&gt;
 | 202  | SystemAPI permission error.  |
 
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -4928,8 +5099,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerColor().then((color: number) => {
-              console.log(`getPointerColor success, color: ${JSON.stringify(color)}`);
-            });
+              console.info(`getPointerColor success, color: ${JSON.stringify(color)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get pointer color failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -4955,7 +5128,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerColor().then((color: int) => {
-              console.log(`getPointerColor success, color: ${JSON.stringify(color)}`);
+              console.info(`getPointerColor success, color: ${JSON.stringify(color)}`);
             });
           } catch (error) {
             console.error(`getPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -4984,7 +5157,7 @@ ArkTS-Sta: getPointerColorSync(): int
 
 **返回值**：
 
-| 参数                    | 说明                  |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
 | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 鼠标光标颜色。 |
 
@@ -4997,7 +5170,7 @@ ArkTS-Sta: getPointerColorSync(): int
 | 202  | SystemAPI permission error.  |
 
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例:
 
@@ -5013,7 +5186,7 @@ struct Index {
         .onClick(() => {
           try {
             let pointerColor = pointer.getPointerColorSync();
-            console.log(`getPointerColorSync success, pointerColor: ${JSON.stringify(pointerColor)}`);
+            console.info(`getPointerColorSync success, pointerColor: ${JSON.stringify(pointerColor)}`);
           } catch (error) {
             console.error(`getPointerColorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -5039,7 +5212,7 @@ struct Index {
         .onClick(() => {
           try {
             let pointerColor = pointer.getPointerColorSync();
-            console.log(`getPointerColorSync success, pointerColor: ${JSON.stringify(pointerColor)}`);
+            console.info(`getPointerColorSync success, pointerColor: ${JSON.stringify(pointerColor)}`);
           } catch (error) {
             console.error(`getPointerColorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -5067,7 +5240,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| isOpen | boolean | 是    | 双击拖拽开关的状态，true代表开启，false代表关闭。|
+| isOpen | boolean | 是    | 双击拖拽开关的状态，true代表开启，false代表关闭。 |
 | callback | AsyncCallback\<void> | 是    | 回调函数。|
 
 **错误码**：
@@ -5079,10 +5252,13 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -5092,12 +5268,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadDoubleTapAndDragState(true, (error: Error) => {
+            pointer.setTouchpadDoubleTapAndDragState(true, (error: BusinessError) => {
               if (error) {
                 console.error(`setTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadDoubleTapAndDragState success`);
+              console.info(`setTouchpadDoubleTapAndDragState success`);
             });
           } catch (error) {
             console.error(`setTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -5128,7 +5304,7 @@ struct Index {
                 console.error(`setTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadDoubleTapAndDragState success`);
+              console.info(`setTouchpadDoubleTapAndDragState success`);
             });
           } catch (error) {
             console.error(`setTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -5143,7 +5319,7 @@ struct Index {
 
 setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 
-设置触控板双击拖拽开关状态，使用Promise异步方式返回结果。
+设置触控板双击拖拽开关状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -5157,13 +5333,13 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| state | boolean| 是    |  双击拖拽开关的状态，true代表开启，false代表关闭。 |
+| isOpen | boolean | 是    | 双击拖拽开关的状态，true代表开启，false代表关闭。 |
 
 **返回值**：
 
-| 参数                  | 说明               |
+| 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -5174,12 +5350,13 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -5190,8 +5367,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadDoubleTapAndDragState(false).then(() => {
-              console.log(`setTouchpadDoubleTapAndDragState success`);
-            });
+              console.info(`setTouchpadDoubleTapAndDragState success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set touchpad failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -5217,7 +5396,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setTouchpadDoubleTapAndDragState(false).then(() => {
-              console.log(`setTouchpadDoubleTapAndDragState success`);
+              console.info(`setTouchpadDoubleTapAndDragState success`);
             });
           } catch (error) {
             console.error(`setTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -5257,12 +5436,13 @@ getTouchpadDoubleTapAndDragState(callback: AsyncCallback\<boolean>): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -5272,8 +5452,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.getTouchpadDoubleTapAndDragState((error: Error, state: boolean) => {
-              console.log(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
+            pointer.getTouchpadDoubleTapAndDragState((error: BusinessError, state: boolean) => {
+              if (error) {
+                console.error(`getTouchpadDoubleTapAndDragState error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
+              }
             });
           } catch (error) {
             console.error(`getTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -5300,7 +5484,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadDoubleTapAndDragState((error: BusinessError<void> | null, state: boolean | undefined) => {
-              console.log(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -5315,7 +5499,7 @@ struct Index {
 
 getTouchpadDoubleTapAndDragState(): Promise\<boolean>
 
-获取触控板双击拖拽开关的开启状态，使用Promise异步方式返回结果。
+获取触控板双击拖拽开关的开启状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -5327,9 +5511,9 @@ getTouchpadDoubleTapAndDragState(): Promise\<boolean>
 
 **返回值**：
 
-| 参数                    | 说明                  |
+| 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<boolean> | Promise实例，异步返回触控板双击拖拽开启状态。true代表开启，false代表关闭。|
+| Promise\<boolean> | Promise对象，异步返回触控板双击拖拽开启状态。true代表开启，false代表关闭。|
 
 **错误码**：
 
@@ -5339,12 +5523,13 @@ getTouchpadDoubleTapAndDragState(): Promise\<boolean>
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -5355,8 +5540,10 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadDoubleTapAndDragState().then((state) => {
-              console.log(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
-            });
+              console.info(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get touchpad failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -5383,7 +5570,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadDoubleTapAndDragState().then((state: boolean) => {
-              console.log(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -5398,7 +5585,7 @@ struct Index {
 
 setMouseScrollDirection(inverted: boolean): Promise\<void>
 
-设置鼠标滚轮滚轴的方向，使用Promise异步方式返回结果。
+设置鼠标滚轮滚动的方向，使用Promise异步回调。
 
 **需要权限**: ohos.permission.INPUT_DEVICE_CONTROLLER
 
@@ -5412,44 +5599,47 @@ setMouseScrollDirection(inverted: boolean): Promise\<void>
 
 **参数**：
 
-| 参数名    | 类型     | 必填   | 说明                                  |
-| ----- | ------ | ---- | ----------------------------------- |
-| inverted | boolean| 是    |  inverted为鼠标滚轮滚动的方向。<br>true与鼠标滚轮滚动手指的方向一致，false与鼠标滚轮滚动手指的方向相反。<br>默认为true。|
+| 参数名 | 类型    | 必填 | 说明                                                                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------------------------------------------------------ |
+| inverted  | boolean | 是   | inverted为鼠标滚轮滚动的方向。<br>true与鼠标滚轮滚动的手指方向一致，false与鼠标滚轮滚动的手指方向相反。<br>默认为true。 |
 
 **返回值**：
 
-| 参数                  | 说明               |
-| ------------------- | ---------------- |
-| Promise\<void> | Promise对象。 |
+| 类型           | 说明                                   |
+| -------------- | -------------------------------------- |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[鼠标指针错误码](./errorcode-pointer.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[鼠标光标错误码](./errorcode-pointer.md)
 
-| 错误码ID  | 错误信息             |
-| ---- | --------------------- |
-| 201  | Permission denied.  |
-| 202  | SystemAPI permission error.  |
-| 3800001  | Input Service Exception. |
+| 错误码ID   | 错误信息                        |
+|---------|-----------------------------|
+| 201     | Permission denied.          |
+| 202     | SystemAPI permission error. |
+| 3800001 | Input service exception.    |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct Index {
   build() {
     RelativeContainer() {
-      Text("setMouseScrollDirection")
+      Button("setMouseScrollDirection")
         .onClick(() => {
           try {
-            pointer.setMouseScrollDirection (false).then(() => {
-              console.log(`setMouseScrollDirection success`);
-            });
+            pointer.setMouseScrollDirection(false).then(() => {
+              console.info(`setMouseScrollDirection success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set mouse scroll direction failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`setMouseScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -5475,7 +5665,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setMouseScrollDirection (false).then(() => {
-              console.log(`setMouseScrollDirection success`);
+              console.info(`setMouseScrollDirection success`);
             });
           } catch (error) {
             console.error(`setMouseScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -5490,7 +5680,7 @@ struct Index {
 
 getMouseScrollDirection(): Promise\<boolean>
 
-获取鼠标滚轮滚轴方向，使用Promise异步方式返回结果。
+获取鼠标滚轮滚动方向，使用Promise异步回调。
 
 **需要权限**: ohos.permission.INPUT_DEVICE_CONTROLLER
 
@@ -5504,38 +5694,41 @@ getMouseScrollDirection(): Promise\<boolean>
 
 **返回值**：
 
-| 参数                    | 说明                  |
-| --------------------- | ------------------- |
-| Promise\<boolean> | Promise实例，异步返回鼠标滚轮滚轴方向。<br>true与鼠标滚轮滚动的手指方向一致，false与鼠标滚轮滚动的手指方向相反。<br>默认为true。 |
+| 类型              | 说明                                                                                                                         |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Promise\<boolean> | Promise对象，异步返回获取鼠标滚轮滚动方向。<br>true与鼠标滚轮滚动的手指方向一致，false与鼠标滚轮滚动的手指方向相反。<br>默认为true。 |
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[鼠标指针错误码](./errorcode-pointer.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[鼠标光标错误码](./errorcode-pointer.md)
 
-| 错误码ID  | 错误信息             |
-| ---- | --------------------- |
-| 201  | Permission denied.  |
-| 202  | SystemAPI permission error.  |
-| 3800001  | Input Service Exception. |
+| 错误码ID   | 错误信息                                                                                                                                       |
+|---------| ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| 201     | Permission denied.          |
+| 202     | SystemAPI permission error. |
+| 3800001 | Input service exception.    |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct Index {
   build() {
     RelativeContainer() {
-      Text("getMouseScrollDirection")
+      Button("getMouseScrollDirection")
         .onClick(() => {
           try {
             pointer.getMouseScrollDirection().then((state: boolean) => {
-              console.log(`getMouseScrollDirection success, state: ${JSON.stringify(state)}`);
-            });
+              console.info(`getMouseScrollDirection success, state: ${JSON.stringify(state)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get mouse scroll direction failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`getMouseScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -5561,7 +5754,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadScrollDirection().then((state: boolean) => {
-              console.log(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
+              console.info(`getTouchpadScrollDirection success, state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`getTouchpadScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);

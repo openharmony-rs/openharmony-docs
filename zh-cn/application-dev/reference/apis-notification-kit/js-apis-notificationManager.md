@@ -25,7 +25,7 @@ publish(request: NotificationRequest, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -123,7 +123,7 @@ publish(request: NotificationRequest): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -220,7 +220,7 @@ ArkTS-Sta: cancel(id: int, label: string, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -286,7 +286,7 @@ ArkTS-Sta: cancel(id: int, label?: string): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -349,7 +349,7 @@ ArkTS-Sta: cancel(id: int, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -411,7 +411,7 @@ cancelAll(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -472,7 +472,7 @@ cancelAll(): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -524,7 +524,7 @@ addSlot(type: SlotType, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -587,7 +587,7 @@ addSlot(type: SlotType): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -649,7 +649,7 @@ ArkTS-Sta: getSlot(slotType: SlotType, callback: AsyncCallback\<NotificationSlot
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -719,7 +719,7 @@ ArkTS-Sta: getSlot(slotType: SlotType): Promise\<NotificationSlot|null\>;
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -780,7 +780,7 @@ getSlots(callback: AsyncCallback\<Array\<NotificationSlot>>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -842,7 +842,7 @@ getSlots(): Promise\<Array\<NotificationSlot>>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -894,7 +894,7 @@ removeSlot(slotType: SlotType, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -958,7 +958,7 @@ removeSlot(slotType: SlotType): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1019,7 +1019,7 @@ removeAllSlots(callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1078,7 +1078,7 @@ removeAllSlots(): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -1128,9 +1128,9 @@ isNotificationEnabled(callback: AsyncCallback\<boolean\>): void
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1191,9 +1191,9 @@ isNotificationEnabled(): Promise\<boolean\>
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**ArkTS-Dyn起始版本**：9
+**ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -1247,7 +1247,7 @@ isNotificationEnabledSync(): boolean
 
 **ArkTS-Dyn起始版本**：12
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -1288,7 +1288,7 @@ ArkTS-Sta: setBadgeNumber(badgeNumber: int): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1355,7 +1355,7 @@ ArkTS-Sta: setBadgeNumber(badgeNumber: int, callback: AsyncCallback\<void\>): vo
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1421,7 +1421,7 @@ ArkTS-Sta: getBadgeNumber(): Promise\<long\>
 
 **ArkTS-Dyn起始版本**：22
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -1475,7 +1475,7 @@ ArkTS-Sta: getActiveNotificationCount(callback: AsyncCallback\<long\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1538,7 +1538,7 @@ ArkTS-Sta: getActiveNotificationCount(): Promise\<long\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -1590,7 +1590,7 @@ getActiveNotifications(callback: AsyncCallback\<Array\<NotificationRequest>>): v
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1649,7 +1649,7 @@ getActiveNotifications(): Promise\<Array\<NotificationRequest\>\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -1701,7 +1701,7 @@ cancelGroup(groupName: string, callback: AsyncCallback\<void\>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1763,7 +1763,7 @@ cancelGroup(groupName: string): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1824,7 +1824,7 @@ isSupportTemplate(templateName: string, callback: AsyncCallback\<boolean\>): voi
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1886,7 +1886,7 @@ isSupportTemplate(templateName: string): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1954,7 +1954,7 @@ requestEnableNotification(context: UIAbilityContext, callback: AsyncCallback\<vo
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2043,7 +2043,7 @@ requestEnableNotification(context: UIAbilityContext): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2220,7 +2220,7 @@ isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2280,7 +2280,7 @@ isDistributedEnabled(): Promise\<boolean>
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -2337,7 +2337,7 @@ openNotificationSettings(context: UIAbilityContext): Promise\<void\>
 
 **ArkTS-Dyn起始版本**：13
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2360,7 +2360,7 @@ openNotificationSettings(context: UIAbilityContext): Promise\<void\>
 | 801 | Capability not supported. |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
-| 1600018  | the notification settings window is already displayed.           |
+| 1600018  | The notification settings window is already displayed.           |
 
 **示例：**
 
@@ -2425,7 +2425,7 @@ getNotificationSetting(): Promise\<NotificationSetting\>
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -2534,13 +2534,13 @@ hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is $
 
 | 名称                              | 值          | 说明               |
 | --------------------------------- | ----------- |------------------|
-| NOTIFICATION_CONTENT_BASIC_TEXT   | 0          | 普通文本类型通知。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：22 |
-| NOTIFICATION_CONTENT_LONG_TEXT    | 1          | 长文本类型通知。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：22 |
-| NOTIFICATION_CONTENT_PICTURE      | 2          | 图片类型通知。<br/> **ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：22 |
-| NOTIFICATION_CONTENT_CONVERSATION | 3          | 社交类型通知。预留能力，暂未支持。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：22|
-| NOTIFICATION_CONTENT_MULTILINE    | 4          | 多行文本类型通知。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：22 |
-| NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW<sup>11+</sup>    | 5 | 系统实况窗类型通知。不支持三方应用直接创建该类型通知。系统代理创建系统实况窗类型通知后，三方应用可以通过发布相同ID的通知来更新指定内容。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22|
-| NOTIFICATION_CONTENT_LIVE_VIEW<sup>11+</sup>    | 6 | 普通实况窗类型通知。仅系统应用可用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22 |
+| NOTIFICATION_CONTENT_BASIC_TEXT   | 0          | 普通文本类型通知。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23 |
+| NOTIFICATION_CONTENT_LONG_TEXT    | 1          | 长文本类型通知。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23 |
+| NOTIFICATION_CONTENT_PICTURE      | 2          | 图片类型通知。<br/> **ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23 |
+| NOTIFICATION_CONTENT_CONVERSATION | 3          | 社交类型通知。预留能力，暂未支持。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23|
+| NOTIFICATION_CONTENT_MULTILINE    | 4          | 多行文本类型通知。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23 |
+| NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW<sup>11+</sup>    | 5 | 系统实况窗类型通知。不支持三方应用直接创建该类型通知。系统代理创建系统实况窗类型通知后，三方应用可以通过发布相同ID的通知来更新指定内容。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23|
+| NOTIFICATION_CONTENT_LIVE_VIEW<sup>11+</sup>    | 6 | 普通实况窗类型通知。仅系统应用可用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
 
 ## SlotLevel
 
@@ -2550,7 +2550,7 @@ hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is $
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称                              | 值          | 说明               |
 | --------------------------------- | ----------- | ------------------ |
@@ -2571,13 +2571,13 @@ hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is $
 
 | 名称                 | 值       | 说明       |
 | -------------------- | -------- | ---------- |
-| UNKNOWN_TYPE         | 0 | 未知类型。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：22 |
-| SOCIAL_COMMUNICATION | 1 | 社交通信。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：22|
-| SERVICE_INFORMATION  | 2 | 服务提醒。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：22|
-| CONTENT_INFORMATION  | 3 | 内容资讯。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。 <br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：22|
-| LIVE_VIEW<sup>11+</sup>            | 4 | 实况窗。不支持三方应用直接创建该渠道类型通知，可以由系统代理创建后，三方应用发布同ID的通知来更新指定内容。该类型对应[SlotLevel](#slotlevel)为LEVEL_DEFAULT。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22 |
-| CUSTOMER_SERVICE<sup>11+</sup>     | 5 | 客服消息。该类型用于用户与商家之间的客服消息，需由用户主动发起。该类型对应[SlotLevel](#slotlevel)为LEVEL_DEFAULT。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22 |
-| OTHER_TYPES          | 0xFFFF | 其他。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：22 |
+| UNKNOWN_TYPE         | 0 | 未知类型。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23 |
+| SOCIAL_COMMUNICATION | 1 | 社交通信。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23|
+| SERVICE_INFORMATION  | 2 | 服务提醒。该类型对应[SlotLevel](#slotlevel)为LEVEL_HIGH。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23|
+| CONTENT_INFORMATION  | 3 | 内容资讯。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。 <br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23|
+| LIVE_VIEW<sup>11+</sup>            | 4 | 实况窗。不支持三方应用直接创建该渠道类型通知，可以由系统代理创建后，三方应用发布同ID的通知来更新指定内容。该类型对应[SlotLevel](#slotlevel)为LEVEL_DEFAULT。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| CUSTOMER_SERVICE<sup>11+</sup>     | 5 | 客服消息。该类型用于用户与商家之间的客服消息，需由用户主动发起。该类型对应[SlotLevel](#slotlevel)为LEVEL_DEFAULT。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| OTHER_TYPES          | 0xFFFF | 其他。该类型对应[SlotLevel](#slotlevel)为LEVEL_MIN。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23 |
 
 ## NotificationSetting<sup>20+</sup>
 
@@ -2587,7 +2587,7 @@ hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is $
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 | 名称             | 类型     | 只读 | 可选 | 说明                                         |
 | ---------------- | ------- | ---- | ---- | ------------------------------------------- |

@@ -19,9 +19,9 @@ import { media } from '@kit.MediaKit';
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
-| 名称                                                | 类型                                                         | 可读 | 可写 | 说明                                                         |
+| 名称                                                | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | --------------------------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| fdSrc<sup>12+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       | 是   | 是   | 媒体文件描述，通过该属性设置数据源。<br/> **使用示例**：<br/>假设一个连续存储的媒体文件，地址偏移:0，字节长度:100。其文件描述为 AVFileDescriptor { fd = 资源句柄; offset = 0; length = 100; }。<br>**说明：** <br> - 将资源句柄（fd）传递给 AVImageGenerator 实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个 AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致视频缩略图数据获取异常。 |
+| fdSrc<sup>12+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       | 否   | 否   | 媒体文件描述，通过该属性设置数据源。<br/> **使用示例**：<br/>假设一个连续存储的媒体文件，地址偏移:0，字节长度:100。其文件描述为 AVFileDescriptor { fd = 资源句柄; offset = 0; length = 100; }。<br>**说明：** <br> - 将资源句柄（fd）传递给 AVImageGenerator 实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个 AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致视频缩略图数据获取异常。 <br> **ArkTS-Dyn：** 12 <br> **ArkTS-Sta：** 23 |
 
 ## fetchFrameByTime<sup>12+</sup>
 
@@ -29,7 +29,13 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 
 异步方式获取视频缩略图。通过注册回调函数获取返回值。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是\<[fetchFrameByTime](../apis-image-kit/arkts-apis-image-PixelMap.md)>
+
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -93,6 +99,10 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 异步方式获取视频缩略图。通过Promise获取返回值。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -160,6 +170,10 @@ fetchScaledFrameByTime(timeUs: number, queryMode: AVImageQueryOptions, outputSiz
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                          | 必填 | 说明                                                 |
@@ -222,6 +236,10 @@ release(callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
@@ -268,6 +286,10 @@ release(): Promise\<void>
 异步方式释放资源。通过Promise获取返回值。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

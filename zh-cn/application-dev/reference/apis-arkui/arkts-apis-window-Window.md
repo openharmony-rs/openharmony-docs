@@ -1,4 +1,4 @@
-# Interface (Window)
+﻿# Interface (Window)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @waterwin-->
@@ -1241,7 +1241,7 @@ ArkTS-Sta: resize(width: int, height: int, callback: AsyncCallback&lt;void&gt;):
 
 若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用不报错不生效。
 
 > **说明：**
 >
@@ -1329,7 +1329,7 @@ ArkTS-Sta: resize(width: int, height: int): Promise&lt;void&gt;
 
 若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用不报错不生效。
 
 > **说明：**
 >
@@ -1509,7 +1509,7 @@ getWindowProperties(): WindowProperties
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1523,7 +1523,7 @@ getWindowProperties(): WindowProperties
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
 
 **示例：**
 
@@ -1558,7 +1558,7 @@ getWindowDensityInfo(): WindowDensityInfo
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -1575,7 +1575,7 @@ getWindowDensityInfo(): WindowDensityInfo
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal.Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 
 **示例：**
 
@@ -1610,6 +1610,10 @@ setWindowContainerColor(activeColor: string, inactiveColor: string): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **设备行为差异：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **需要权限：** ohos.permission.SET_WINDOW_TRANSPARENT
@@ -1629,7 +1633,7 @@ setWindowContainerColor(activeColor: string, inactiveColor: string): void
 | ------- | ------------------------------ |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The main window is not created or destroyed.|
 | 1300004 | Unauthorized operation.                      |
 
 **示例：**
@@ -1751,7 +1755,7 @@ getWindowAvoidArea(type: AvoidAreaType): AvoidArea
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1772,7 +1776,7 @@ getWindowAvoidArea(type: AvoidAreaType): AvoidArea
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Convert avoid area failed.|
 
 **示例：**
 
@@ -1815,6 +1819,10 @@ getWindowAvoidAreaIgnoringVisibility(type: AvoidAreaType): AvoidArea
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1834,9 +1842,9 @@ getWindowAvoidAreaIgnoringVisibility(type: AvoidAreaType): AvoidArea
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Convert avoid area failed.|
 | 1300003 | This window manager service works abnormally. |
-| 1300016 | Parameter error. Possible cause: 1. Parameter verification failed. |
+| 1300016 | Parameter error. |
 
 **示例：**
 
@@ -1859,7 +1867,7 @@ setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 18
   
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1882,9 +1890,9 @@ setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.|
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only global floating windows, dialog windows, or Window Type as system windows are supported.|
 
 **示例：**
 
@@ -1997,7 +2005,7 @@ isSystemAvoidAreaEnabled(): boolean
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -2014,43 +2022,58 @@ isSystemAvoidAreaEnabled(): boolean
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;2. Create js value failed.|
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type.|
 
 **示例：**
 
 ArkTS-Dyn示例：
 
 ```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
-let windowClass: window.Window | undefined = undefined;
-let config: window.Configuration = {
-  name: "test",
-  windowType: window.WindowType.TYPE_DIALOG,
-  decorEnabled: true,
-  ctx: this.context
-};
-try {
-  window.createWindow(config, (err: BusinessError, data) => {
-    const errCode: number = err.code;
-    if (errCode) {
-      console.error(`Failed to create the system window. Cause code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    windowClass = data;
-    windowClass.setUIContent("pages/Test");
-    let enabled = true;
-    let promise = windowClass.setSystemAvoidAreaEnabled(enabled);
-    promise.then(() => {
-      let enable = windowClass?.isSystemAvoidAreaEnabled();
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to obtain whether the system window can get avoid area. Cause code: ${err.code}, message: ${err.message}`);
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      let windowClass: window.Window | undefined = undefined;
+      let config: window.Configuration = {
+        name: "test",
+        windowType: window.WindowType.TYPE_DIALOG,
+        decorEnabled: true,
+        ctx: this.context
+      };
+      try {
+        window.createWindow(config, (err: BusinessError, data) => {
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(`Failed to create the system window. Cause code: ${err.code}, message: ${err.message}`);
+            return;
+          }
+          windowClass = data;
+          windowClass.setUIContent("pages/Test");
+          let promise = windowClass.setSystemAvoidAreaEnabled(true);
+          promise.then(() => {
+            let enabled = windowClass?.isSystemAvoidAreaEnabled();
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to obtain the system window avoid area enable. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        });
+      } catch (exception) {
+        console.error(`Failed to create the system window. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
     });
-  });
-} catch (exception) {
-  console.error(`Failed to create the system window. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
 }
 ```
 
@@ -2103,7 +2126,7 @@ setTitleAndDockHoverShown(isTitleHoverShown?: boolean, isDockHoverShown?: boolea
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2125,7 +2148,7 @@ setTitleAndDockHoverShown(isTitleHoverShown?: boolean, isDockHoverShown?: boolea
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300004 | Unauthorized operation. |
 
 **示例：**
@@ -2233,7 +2256,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2254,7 +2277,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -2342,7 +2365,7 @@ setImmersiveModeEnabledState(enabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 
 
@@ -2363,9 +2386,9 @@ setImmersiveModeEnabledState(enabled: boolean): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal IPC error.|
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported.            |
 
 **示例：**
 
@@ -2406,7 +2429,7 @@ getImmersiveModeEnabledState(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 | 类型     | 说明                                                                                 |
@@ -2419,9 +2442,8 @@ getImmersiveModeEnabledState(): boolean
 
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------------------- |
-| 1300002  | This window state is abnormal.               |
-| 1300003  | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation.               |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported.             |
 
 **示例：**
 
@@ -2454,6 +2476,10 @@ isImmersiveLayout(): boolean
 
 **系统能力**：SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 | 类型     | 说明                                                                                 |
 | ------- | ------------------------------------------------------------------------------------ |
@@ -2466,7 +2492,7 @@ isImmersiveLayout(): boolean
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------------------- |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal.               |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
 
 **示例：**
 
@@ -2496,7 +2522,7 @@ setWindowDelayRaiseOnDrag(isEnabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2511,7 +2537,7 @@ setWindowDelayRaiseOnDrag(isEnabled: boolean): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported.function setWindowDelayRaiseOnDrag can not work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -2653,7 +2679,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;2. Internal task error.              |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -2751,7 +2777,7 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2774,7 +2800,7 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.             |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -2866,7 +2892,7 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2886,9 +2912,8 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.             |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -2986,7 +3011,7 @@ getWindowSystemBarProperties(): SystemBarProperties
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3002,9 +3027,9 @@ getWindowSystemBarProperties(): SystemBarProperties
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
-| 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                       |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.|
+| 1300003 | This window manager service works abnormally. Possible cause: Create js object failed. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.                      |
 
 
 **示例：**
@@ -3076,7 +3101,7 @@ setStatusBarColor(color: ColorMetrics): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
 
@@ -3098,10 +3123,9 @@ setStatusBarColor(color: ColorMetrics): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported on this device. |
-| 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 **示例：**
 
@@ -3185,7 +3209,7 @@ getStatusBarProperty(): StatusBarProperty
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -3201,8 +3225,8 @@ getStatusBarProperty(): StatusBarProperty
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 801 | Capability not supported on this device. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error.|
+| 1300004 |  Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
 
@@ -3692,7 +3716,7 @@ setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | -------------------- |
-| path     | string                    | 是 | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。 |
+| path     | string                    | 是 | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。          |
 
 **错误码：**
@@ -3761,7 +3785,7 @@ setUIContent(path: string): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ------ | -- | ------------------ |
-| path | string | 是 | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。 |
+| path | string | 是 | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。 |
 
 **返回值：**
 
@@ -3834,7 +3858,7 @@ loadContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;void
 
 | 参数名   | 类型                                            | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| path     | string                                          | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。 |
+| path     | string                                          | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。不支持相对路径写法，需与main_pages.json中的src取值保持一致。 |
 | storage  | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 是   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性。 |
 | callback | AsyncCallback&lt;void&gt;                       | 是   | 回调函数。                                                   |
 
@@ -3902,7 +3926,7 @@ loadContent(path: string, storage: LocalStorage): Promise&lt;void&gt;
 
 | 参数名  | 类型                                            | 必填 | 说明                                                         |
 | ------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| path    | string                                          | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。 |
+| path    | string                                          | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。不支持相对路径写法，需与main_pages.json中的src取值保持一致。 |
 | storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 是   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性。 |
 
 **返回值：**
@@ -4432,7 +4456,7 @@ on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaOptions&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onAvoidAreaChange](#onavoidareachange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAvoidAreaChange](#onavoidareachange23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -4468,7 +4492,7 @@ try {
 }
 ```
 
-## onAvoidAreaChange<sup>22+</sup>
+## onAvoidAreaChange<sup>23+</sup>
 
 onAvoidAreaChange(callback: Callback&lt;AvoidAreaOptions&gt;): void
 
@@ -4481,7 +4505,7 @@ onAvoidAreaChange(callback: Callback&lt;AvoidAreaOptions&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4511,7 +4535,7 @@ off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaOptions&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offAvoidAreaChange](#offavoidareachange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAvoidAreaChange](#offavoidareachange23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -4555,7 +4579,7 @@ try {
 }
 ```
 
-## offAvoidAreaChange<sup>22+</sup>
+## offAvoidAreaChange<sup>23+</sup>
 
 offAvoidAreaChange(callback?: Callback&lt;AvoidAreaOptions&gt;): void
 
@@ -4567,7 +4591,7 @@ offAvoidAreaChange(callback?: Callback&lt;AvoidAreaOptions&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5712,7 +5736,7 @@ on(type: 'screenshot', callback: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onScreenshot](#onscreenshot22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onScreenshot](#onscreenshot23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -5745,7 +5769,7 @@ try {
 }
 ```
 
-## onScreenshot<sup>22+</sup>
+## onScreenshot<sup>23+</sup>
 
 onScreenshot(callback: Callback&lt;void&gt;): void
 
@@ -5757,7 +5781,7 @@ onScreenshot(callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5788,7 +5812,7 @@ off(type: 'screenshot', callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offScreenshot](#offscreenshot22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offScreenshot](#offscreenshot23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -5825,7 +5849,7 @@ try {
 }
 ```
 
-## offScreenshot<sup>22+</sup>
+## offScreenshot<sup>23+</sup>
 
 offScreenshot(callback?: Callback&lt;void&gt;): void
 
@@ -5837,7 +5861,7 @@ offScreenshot(callback?: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5868,7 +5892,11 @@ on(type: 'screenshotAppEvent', callback: Callback&lt;ScreenshotEventType&gt;): v
 
 开启屏幕截屏事件类型的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -5905,7 +5933,11 @@ off(type: 'screenshotAppEvent', callback?: Callback&lt;ScreenshotEventType&gt;):
 
 关闭屏幕截屏事件类型的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -6277,7 +6309,7 @@ on(type: 'displayIdChange', callback: Callback&lt;number&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onDisplayIdChange](#ondisplayidchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDisplayIdChange](#ondisplayidchange23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -6312,7 +6344,7 @@ try {
 }
 ```
 
-## onDisplayIdChange<sup>22+</sup>
+## onDisplayIdChange<sup>23+</sup>
 
 onDisplayIdChange(callback: Callback&lt;long&gt;): void
 
@@ -6324,7 +6356,7 @@ onDisplayIdChange(callback: Callback&lt;long&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6364,7 +6396,7 @@ off(type: 'displayIdChange', callback?: Callback&lt;number&gt;): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offDisplayIdChange](#offdisplayidchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDisplayIdChange](#offdisplayidchange23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -6405,7 +6437,7 @@ try {
 }
 ```
 
-## offDisplayIdChange<sup>22+</sup>
+## offDisplayIdChange<sup>23+</sup>
 
 offDisplayIdChange(callback?: Callback&lt;long&gt;): void
 
@@ -6417,7 +6449,7 @@ offDisplayIdChange(callback?: Callback&lt;long&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6658,7 +6690,11 @@ on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): voi
 - 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
 - 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动悬浮窗时返回的下层窗口依然是可见的。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -6696,7 +6732,11 @@ off(type: 'occlusionStateChanged', callback?: Callback&lt;OcclusionState&gt;): v
 
 关闭窗口可见性状态变化事件的监听。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -6745,7 +6785,7 @@ on(type: 'systemDensityChange', callback: Callback&lt;number&gt;): void
 
 **ArtTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSystemDensityChange](#onsystemdensitychange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSystemDensityChange](#onsystemdensitychange23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -6785,7 +6825,7 @@ try {
 }
 ```
 
-## onSystemDensityChange<sup>22+</sup>
+## onSystemDensityChange<sup>23+</sup>
 
 onSystemDensityChange(callback: Callback&lt;double&gt;): void
 
@@ -6797,7 +6837,7 @@ onSystemDensityChange(callback: Callback&lt;double&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6841,7 +6881,7 @@ off(type: 'systemDensityChange', callback?: Callback&lt;number&gt;): void
 
 **ArtTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offSystemDensityChange](#offsystemdensitychange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSystemDensityChange](#offsystemdensitychange23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -6882,7 +6922,7 @@ try {
 }
 ```
 
-## offSystemDensityChange<sup>22+</sup>
+## offSystemDensityChange<sup>23+</sup>
 
 offSystemDensityChange(callback?: Callback&lt;double&gt;): void
 
@@ -6894,7 +6934,7 @@ offSystemDensityChange(callback?: Callback&lt;double&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7497,7 +7537,7 @@ ArkTS-Sta: setWindowGrayScale(grayScale: double): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本** 12
 
-**ArkTS-Sta起始版本** 22
+**ArkTS-Sta起始版本** 23
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -7585,7 +7625,7 @@ on(type: 'windowTitleButtonRectChange', callback: Callback&lt;TitleButtonRect&gt
 
 **ArkTS模式：** 该接口仅适用ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowTitleButtonRectChange](#onwindowtitlebuttonrectchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowTitleButtonRectChange](#onwindowtitlebuttonrectchange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7624,7 +7664,7 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 })
 ```
 
-## onWindowTitleButtonRectChange<sup>22+</sup>
+## onWindowTitleButtonRectChange<sup>23+</sup>
 
 onWindowTitleButtonRectChange(callback: Callback&lt;TitleButtonRect&gt;): void
 
@@ -7636,7 +7676,7 @@ onWindowTitleButtonRectChange(callback: Callback&lt;TitleButtonRect&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7677,7 +7717,7 @@ off(type: 'windowTitleButtonRectChange', callback?: Callback&lt;TitleButtonRect&
 
 **ArkTS模式：** 该接口仅适用ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowTitleButtonRectChange](#offwindowtitlebuttonrectchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowTitleButtonRectChange](#offwindowtitlebuttonrectchange23)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7722,7 +7762,7 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 })
 ```
 
-## offWindowTitleButtonRectChange<sup>22+</sup>
+## offWindowTitleButtonRectChange<sup>23+</sup>
 
 offWindowTitleButtonRectChange(callback?: Callback&lt;TitleButtonRect&gt;): void
 
@@ -7734,7 +7774,7 @@ offWindowTitleButtonRectChange(callback?: Callback&lt;TitleButtonRect&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7781,7 +7821,7 @@ on(type:  'windowRectChange', callback: Callback&lt;RectChangeOptions&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowRectChange](#onwindowrectchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowRectChange](#onwindowrectchange23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -7819,7 +7859,7 @@ try {
 }
 ```
 
-## onWindowRectChange<sup>22+</sup>
+## onWindowRectChange<sup>23+</sup>
 
 onWindowRectChange(callback: Callback&lt;RectChangeOptions&gt;): void
 
@@ -7831,7 +7871,7 @@ onWindowRectChange(callback: Callback&lt;RectChangeOptions&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7870,7 +7910,7 @@ off(type: 'windowRectChange', callback?: Callback&lt;RectChangeOptions&gt;): voi
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowRectChange](#offwindowrectchange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowRectChange](#offwindowrectchange23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -7913,7 +7953,7 @@ try {
 }
 ```
 
-## offWindowRectChange<sup>22+</sup>
+## offWindowRectChange<sup>23+</sup>
 
 offWindowRectChange(callback?: Callback&lt;RectChangeOptions&gt;): void
 
@@ -7925,7 +7965,7 @@ offWindowRectChange(callback?: Callback&lt;RectChangeOptions&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8212,9 +8252,9 @@ onSubWindowClose(callback: Callback&lt;void&gt;): void
 
 当重复注册窗口关闭事件的监听时，最后一次注册成功的监听事件生效。
 
-该接口触发的窗口关闭事件监听回调函数是同步执行，子窗口的异步关闭事件监听参考[onWindowWillClose](#onwindowwillclose22)方法。
+该接口触发的窗口关闭事件监听回调函数是同步执行，子窗口的异步关闭事件监听参考[onWindowWillClose](#onwindowwillclose23)方法。
 
-如果存在[onWindowWillClose](#onwindowwillclose22)监听事件，只响应[onWindowWillClose](#onwindowwillclose22)接口。
+如果存在[onWindowWillClose](#onwindowwillclose23)监听事件，只响应[onWindowWillClose](#onwindowwillclose23)接口。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -8361,7 +8401,7 @@ on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&g
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowWillClose](#onwindowwillclose22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWindowWillClose](#onwindowwillclose23)。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -8422,7 +8462,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## onWindowWillClose<sup>22+</sup>
+## onWindowWillClose<sup>23+</sup>
 
 onWindowWillClose(callback: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
 
@@ -8438,7 +8478,7 @@ onWindowWillClose(callback: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8496,7 +8536,7 @@ off(type: 'windowWillClose', callback?: Callback&lt;void, Promise&lt;boolean&gt;
 
 **ArkTS模式：** 该接口仅适用ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowWillClose](#offwindowwillclose22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWindowWillClose](#offwindowwillclose23)。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -8560,7 +8600,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## offWindowWillClose<sup>22+</sup>
+## offWindowWillClose<sup>23+</sup>
 
 offWindowWillClose(callback?: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
 
@@ -8574,7 +8614,7 @@ offWindowWillClose(callback?: Callback&lt;void, Promise&lt;boolean&gt;&gt;): voi
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9281,7 +9321,7 @@ isWindowSupportWideGamut(callback: AsyncCallback&lt;boolean&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -9297,7 +9337,7 @@ isWindowSupportWideGamut(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal.  Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
 
 **示例：**
 
@@ -9343,7 +9383,7 @@ isWindowSupportWideGamut(): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -9357,7 +9397,7 @@ isWindowSupportWideGamut(): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
 
 **示例：**
 
@@ -9399,7 +9439,7 @@ setWindowColorSpace(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;):
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9415,7 +9455,7 @@ setWindowColorSpace(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;):
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
 
 **示例：**
 
@@ -9470,7 +9510,7 @@ setWindowColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9491,7 +9531,7 @@ setWindowColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
 
 **示例：**
 
@@ -9543,7 +9583,7 @@ getWindowColorSpace(): ColorSpace
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -9604,7 +9644,7 @@ Stage模型下，该接口需要在[loadContent()](#loadcontent9)或[setUIConten
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9618,8 +9658,7 @@ Stage模型下，该接口需要在[loadContent()](#loadcontent9)或[setUIConten
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.|
 
 **示例：**
 
@@ -9674,6 +9713,10 @@ setWindowShadowEnabled(enable: boolean): Promise&lt;void&gt;
 **设备行为差异：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1和Tablet设备中可正常调用，在Tablet设备时仅在开启[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下生效，在其他设备中返回801错误码。
 
 **需要权限：** ohos.permission.SET_WINDOW_TRANSPARENT
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9764,7 +9807,7 @@ ArkTS-Sta: setWindowBrightness(brightness: double, callback: AsyncCallback&lt;vo
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9780,7 +9823,7 @@ ArkTS-Sta: setWindowBrightness(brightness: double, callback: AsyncCallback&lt;vo
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal.  Possible cause: 1. The window is not created or destroyed; 2. Internal task error.             |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -9892,7 +9935,7 @@ ArkTS-Sta: setWindowBrightness(brightness: double): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9913,7 +9956,7 @@ ArkTS-Sta: setWindowBrightness(brightness: double): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.              |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -10158,7 +10201,7 @@ setWindowKeepScreenOn(isKeepScreenOn: boolean, callback: AsyncCallback&lt;void&g
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -10234,7 +10277,7 @@ setWindowKeepScreenOn(isKeepScreenOn: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -10315,7 +10358,7 @@ setWindowPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -10330,9 +10373,8 @@ setWindowPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. Possible cause: Need ohos.permission.PRIVACY_WINDOW permission. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;2. Internal task error.|
 
 **示例：**
 
@@ -10395,7 +10437,7 @@ setWindowPrivacyMode(isPrivacyMode: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -10415,9 +10457,8 @@ setWindowPrivacyMode(isPrivacyMode: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. Possible cause: Need ohos.permission.PRIVACY_WINDOW permission. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;2. Internal task error.|
 
 **示例：**
 
@@ -10618,7 +10659,7 @@ snapshot(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -10632,7 +10673,7 @@ snapshot(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;2. Get pixelMap failed; 3. Internal task error.|
 
 **示例：**
 
@@ -10682,7 +10723,7 @@ snapshot(): Promise&lt;image.PixelMap&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -10696,7 +10737,7 @@ snapshot(): Promise&lt;image.PixelMap&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;2. Get pixelMap failed; 3. Internal task error. |
 
 **示例：**
 
@@ -10741,6 +10782,10 @@ Stage模型下，该接口需要在[loadContent()](#loadcontent9)或[setUIConten
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                | 说明                      |
@@ -10754,7 +10799,7 @@ Stage模型下，该接口需要在[loadContent()](#loadcontent9)或[setUIConten
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal.Possible cause: 1. The window is not created or destroyed;2. Create pixelMap failed. |
 | 1300018 | Timeout. |
 
 **示例：**
@@ -10784,7 +10829,7 @@ snapshotIgnorePrivacy(): Promise&lt;image.PixelMap&gt;
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -10799,7 +10844,7 @@ snapshotIgnorePrivacy(): Promise&lt;image.PixelMap&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Function snapshotIgnorePrivacy can not work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed;2. Create pixelMap failed; 3. Internal task error.|
 
 **示例：**
 
@@ -11332,7 +11377,7 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -11347,7 +11392,7 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error; 3.Invalid window type. Only main windows, subwindows, and float windows are supported. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -11399,7 +11444,7 @@ minimize(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -11414,7 +11459,7 @@ minimize(): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error; 3.Invalid window type. Only main windows, subwindows, and float windows are supported. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -11458,7 +11503,7 @@ maximize(presentation?: MaximizePresentation): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -11556,7 +11601,7 @@ setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -11622,7 +11667,7 @@ setResizeByDragEnabled(enable: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -11698,7 +11743,7 @@ recover(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -11789,6 +11834,10 @@ restore(): Promise&lt;void&gt;
 
 **设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                | 说明                      |
@@ -11802,12 +11851,13 @@ restore(): Promise&lt;void&gt;
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 801          | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002      | This window state is abnormal.                               |
+| 1300002      | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.    |
 | 1300003      | This window manager service works abnormally.                |
-| 1300004      | Unauthorized operation.                                      |
+| 1300004      | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.                 |
 
 **示例**
 
+ArkTS-Dyn示例：
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -11831,6 +11881,35 @@ export default class EntryAbility extends UIAbility {
       }, 5000);
     } catch (exception) {
       console.error(`Failed to restore the window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    try {
+      let windowClass: window.Window = windowStage.getMainWindowSync();
+      // 调用minimize, 使主窗最小化
+      windowClass.minimize();
+      // 设置延时函数延时5秒钟后对主窗进行恢复。
+      setTimeout(()=>{
+        // 调用restore()函数对主窗进行恢复。
+        let promise = windowClass.restore();
+        promise.then(() => {
+          console.info('Succeeded in restoring the window.');
+        }).catch((err: Error) => {
+          console.error(`Failed to restore the window. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      }, 5000);
+    } catch (err: Error) {
+      console.error(`Failed to restore the window. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }
@@ -11995,7 +12074,7 @@ getWindowLimits(): WindowLimits
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -12049,7 +12128,7 @@ setWindowLimits(windowLimits: WindowLimits): Promise&lt;WindowLimits&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12144,7 +12223,7 @@ setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;Win
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12483,7 +12562,7 @@ setWindowDecorVisible(isVisible: boolean): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12499,7 +12578,7 @@ setWindowDecorVisible(isVisible: boolean): void
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -12567,15 +12646,11 @@ getWindowDecorVisible(): boolean
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：**
-
-在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
-
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不报错，返回false。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -12590,7 +12665,7 @@ getWindowDecorVisible(): boolean
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -12632,15 +12707,11 @@ setWindowTitle(titleName: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：**
-
-在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回1300002或801错误码。
-
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回1300002或801错误码。
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12662,7 +12733,7 @@ setWindowTitle(titleName: string): Promise&lt;void&gt;
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 
 **示例：**
 
@@ -12712,15 +12783,11 @@ setWindowTitleMoveEnabled(enabled: boolean): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：**
-
-在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
-
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12736,7 +12803,7 @@ setWindowTitleMoveEnabled(enabled: boolean): void
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300004  | Unauthorized operation.        |
 
 **示例：**
@@ -13030,7 +13097,7 @@ ArkTS-Sta: setWindowDecorHeight(height: int): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -13044,9 +13111,9 @@ ArkTS-Sta: setWindowDecorHeight(height: int): void
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible cause: Invalid parameter range. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例：**
 
@@ -13095,11 +13162,9 @@ setDecorButtonStyle(dectorStyle: DecorButtonStyle): void
 
 从OpenHarmony 5.1.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
-
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -13115,8 +13180,8 @@ setDecorButtonStyle(dectorStyle: DecorButtonStyle): void
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
-| 1300004  | Unauthorized operation. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
 
 **示例：**
 
@@ -13203,7 +13268,7 @@ getDecorButtonStyle(): DecorButtonStyle
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -13218,7 +13283,7 @@ getDecorButtonStyle(): DecorButtonStyle
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003  | This window manager service works abnormally. |
 | 1300004  | Unauthorized operation. |
 
@@ -13263,7 +13328,7 @@ ArkTS-Sta: getWindowDecorHeight(): int
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -13278,7 +13343,7 @@ ArkTS-Sta: getWindowDecorHeight(): int
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 
 **示例：**
 
@@ -13321,7 +13386,7 @@ getTitleButtonRect(): TitleButtonRect
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -13336,7 +13401,7 @@ getTitleButtonRect(): TitleButtonRect
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 
 **示例：**
 
@@ -13602,7 +13667,7 @@ ArkTS-Sta: setParentWindow(windowId: int): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -13623,7 +13688,7 @@ ArkTS-Sta: setParentWindow(windowId: int): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.    |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. |
 | 1300009 | The parent window is invalid. |
@@ -13682,6 +13747,10 @@ getParentWindow(): Window
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -13695,12 +13764,13 @@ getParentWindow(): Window
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.    |
 | 1300004 | Unauthorized operation. |
 | 1300009 | The parent window is invalid. |
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 try {
   let windowClass: window.Window = window.findWindow("subWindow");
@@ -13709,6 +13779,18 @@ try {
   console.info(`Succeeded in obtaining parent window properties. Property: ${JSON.stringify(properties)}`);
 } catch (exception) {
   console.error(`Failed to get the parent window. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例:
+```ts
+try {
+  let windowClass: window.Window = window.findWindow("subWindow");
+  let parentWindow: window.Window = windowClass.getParentWindow();
+  let properties = parentWindow.getWindowProperties();
+  console.info(`Succeeded in obtaining parent window properties. Property: ${JSON.stringify(properties)}`);
+} catch (err: Error) {
+  console.error(`Failed to get the parent window. Cause code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -13722,15 +13804,11 @@ setWindowTitleButtonVisible(isMaximizeButtonVisible: boolean, isMinimizeButtonVi
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：**
-
-在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
-
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -13748,7 +13826,7 @@ setWindowTitleButtonVisible(isMaximizeButtonVisible: boolean, isMinimizeButtonVi
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300004  | Unauthorized operation. |
 
 **示例：**
@@ -13838,7 +13916,7 @@ setWindowTopmost(isWindowTopmost: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
@@ -13865,8 +13943,8 @@ setWindowTopmost(isWindowTopmost: boolean): Promise&lt;void&gt;
 | 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
-| 1300004  | Unauthorized operation. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
 
@@ -14521,7 +14599,7 @@ startMoving(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -14666,7 +14744,7 @@ ArkTS-Sta: startMoving(offsetX: int, offsetY: int): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -14803,7 +14881,7 @@ stopMoving(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -14895,7 +14973,7 @@ setGestureBackEnabled(enabled: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -14917,9 +14995,9 @@ setGestureBackEnabled(enabled: boolean): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
-| 1300002  | This window state is abnormal.                                                                               |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.                                                                             |
 | 1300003  | This window manager service works abnormally.                                                                |
-| 1300004  | Unauthorized operation.                                                                                |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.                                                                              |
 
 **示例：**
 
@@ -15012,7 +15090,7 @@ isGestureBackEnabled(): boolean
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -15029,9 +15107,8 @@ isGestureBackEnabled(): boolean
 | 错误码ID | 错误信息                                                                                                     |
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
-| 1300002  | This window state is abnormal.                                                                               |
-| 1300003  | This window manager service works abnormally.                                                                |
-| 1300004  | Unauthorized operation.                                                                                |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.                                                                             |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.                                                                         |
 
 **示例：**
 
@@ -15113,7 +15190,7 @@ ArkTS-Sta: setWindowShadowRadius(radius: double): void
 
 **ArkTS-Dyn起始版本：** 17
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -15127,10 +15204,10 @@ ArkTS-Sta: setWindowShadowRadius(radius: double): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation.  |
+| 401     | Parameter error. Possible cause: The shadow radius is less than zero.                                              |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.                               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.  |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only subwindows and float windows are supported.      |
 
 **示例：**
 
@@ -15166,7 +15243,7 @@ ArkTS-Sta: setWindowCornerRadius(cornerRadius: double): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 17
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -15184,13 +15261,13 @@ ArkTS-Sta: setWindowCornerRadius(cornerRadius: double): Promise&lt;void&gt;
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
-| 错误码ID | 错误信息 |
-| ------- | ------------------------------ |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300003  | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.  |
+| 错误码ID   | 错误信息                                                                                                              |
+|---------|-------------------------------------------------------------------------------------------------------------------|
+| 401     | Parameter error. Possible cause: The corner radius is less than zero.                                             |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.                              |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300003 | This window manager service works abnormally.                                                                     |
+| 1300004 | Unauthorized operation.                                                                                           |
 
 **示例：**
 
@@ -15226,7 +15303,7 @@ ArkTS-Sta: getWindowCornerRadius(): double
 
 **ArkTS-Dyn起始版本：** 17
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -15238,11 +15315,11 @@ ArkTS-Sta: getWindowCornerRadius(): double
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
-| 错误码ID | 错误信息 |
-| ------- | ------------------------------ |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation.  |
+| 错误码ID   | 错误信息                                                                                                              |
+|---------|-------------------------------------------------------------------------------------------------------------------|
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.                              |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only subwindows and float windows are supported.     |
 
 **示例：**
 
@@ -15426,7 +15503,7 @@ setFollowParentMultiScreenPolicy(enabled: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 17
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -15615,7 +15692,7 @@ export default class EntryAbility extends UIAbility {
 
 setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor, offsetX?: number, offsetY?: number): Promise&lt;void&gt;
 
-该接口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效，用于设置一级子窗是否支持与主窗保持相对位置不变。使用Promise异步回调。
+用于设置一级子窗是否支持与主窗保持相对位置不变。使用Promise异步回调。
 
 该相对位置通过一级子窗与主窗之间锚点的偏移量表示，子窗和主窗使用的窗口锚点相同。
 
@@ -15629,7 +15706,15 @@ setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：**
+
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备（Phone设备除外，在Phone设备上调用该接口会返回801错误码）上可正常调用；在支持并不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不报错不生效；在不支持自由窗口的设备中返回801错误码。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持并不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不报错不生效；在不支持自由窗口的设备中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -15653,12 +15738,13 @@ setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor
 | 错误码ID | 错误信息                                                                                                     |
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 801      | Capability not supported.Function setRelativePositionToParentWindowEnabled can not work correctly due to limited device capabilities.|
-| 1300002  | This window state is abnormal.                                                                               |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.                    |
 | 1300003  | This window manager service works abnormally.                                                                |
-| 1300004  | Unauthorized operation.                                                                                |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported.                                            |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -15683,6 +15769,38 @@ export default class EntryAbility extends UIAbility {
           console.error(`setRelativePositionToParentWindowEnabled failed. ${error.code} ${error.message}`);
         })
       }).catch((error: BusinessError) => {
+        console.error(`createSubWindow failed. ${error.code} ${error.message}`);
+      })
+    });
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (loadError: BusinessError<void> | null): void => {
+      if (loadError && loadError.code) {
+        console.error(`Failed to load the content. Cause code: ${loadError.code}, message: ${loadError.message}`);
+        return;
+      }
+      console.info("Succeeded in loading the content.");
+      windowStage.createSubWindow("subWindow").then((subWindow: window.Window) => {
+        if (subWindow == null) {
+          console.error("Failed to create the subWindow. Cause: The data is empty");
+          return null;
+        }
+        subWindow.setRelativePositionToParentWindowEnabled(true).then(() => {
+          console.info("after set relative position to parent window enabled");
+        }).catch((error: Error) => {
+          console.error(`setRelativePositionToParentWindowEnabled failed. ${error.code} ${error.message}`);
+        })
+      }).catch((error: Error)=>{
         console.error(`createSubWindow failed. ${error.code} ${error.message}`);
       })
     });
@@ -16065,6 +16183,10 @@ isInFreeWindowMode(): boolean
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                | 说明                      |
@@ -16093,9 +16215,15 @@ on(type: 'freeWindowModeChange', callback: Callback&lt;boolean&gt;): void
 
 开启自由窗口模式变化事件的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFreeWindowModeChange](#onfreewindowmodechange23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -16125,15 +16253,64 @@ try {
 }
 ```
 
+## onFreeWindowModeChange<sup>23+</sup>
+
+onFreeWindowModeChange(callback: Callback&lt;boolean&gt;): void
+
+开启自由窗口模式变化事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('freeWindowModeChange')](#onfreewindowmodechange22)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。返回当前窗口是否在自由窗口模式，true表示是自由窗口模式，false表示非自由窗口模式。                           |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 1300002  | This window state is abnormal.                       |
+| 1300003  | This window manager service works abnormally.        |
+
+**示例：**
+
+```ts
+try {
+  windowClass.onFreeWindowModeChange((data) => {
+    console.info('Succeeded in enabling the listener for free window mode changes. Data: ' + JSON.stringify(data));
+  });
+} catch (exception: Error) {
+  console.error(`Failed to enable the listener for free window mode changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## off('freeWindowModeChange')<sup>22+</sup>
 
 off(type: 'freeWindowModeChange', callback?: Callback&lt;boolean&gt;): void
 
 关闭自由窗口模式变化事件的监听。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFreeWindowModeChange](#offfreewindowmodechange23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：**
 
@@ -16165,6 +16342,55 @@ try {
   // 如果通过on开启多个callback进行监听，同时关闭所有监听
   windowClass.off('freeWindowModeChange');
 } catch (exception) {
+  console.error(`Failed to disable the listener for free window mode change. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offFreeWindowModeChange<sup>23+</sup>
+
+offFreeWindowModeChange(callback?: Callback&lt;boolean&gt;): void
+
+关闭自由窗口模式变化事件的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('freeWindowModeChange')](#offfreewindowmodechange22)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                          | 必填 | 说明                                                     |
+| -------- | ----------------------------- | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数。返回当前窗口是否在自由窗口模式。如果传入参数，则关闭该监听。如果未传入参数，则关闭自由窗口模式变化事件的监听。                           |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 1300002  | This window state is abnormal.                       |
+| 1300003  | This window manager service works abnormally.        |
+
+**示例：**
+
+```ts
+const callback = (isInFreeWindowMode: boolean) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  windowClass.onFreeWindowModeChange(callback);
+  // 关闭指定callback的监听
+  windowClass.offFreeWindowModeChange(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听
+  windowClass.offFreeWindowModeChange();
+} catch (exception: Error) {
   console.error(`Failed to disable the listener for free window mode change. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
@@ -17435,7 +17661,7 @@ loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明                 |
 | -------- | ------------------------- | ---- | -------------------- |
-| path     | string                    | 是   | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。 |
+| path     | string                    | 是   | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。           |
 
 **示例：**
@@ -17469,7 +17695,7 @@ loadContent(path: string): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| path   | string | 是   | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。 |
+| path   | string | 是   | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。|
 
 **返回值：**
 

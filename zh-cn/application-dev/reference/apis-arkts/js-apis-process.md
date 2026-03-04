@@ -4,7 +4,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块仅适用于ArkTS-Dyn。
+>
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -22,9 +24,9 @@ import { process } from '@kit.ArkTS';
 
 | 名称             | 类型   | 只读 | 可选 | 说明             |
 | ---------------- | ------ | ---- | ---- | ---------------- |
-| uid              | number | 是   | 否   | 进程的用户标识。 |
-| pid              | number | 是   | 否   | 当前进程的pid。  |
-| tid<sup>8+</sup> | number | 是   | 否   | 当前线程的tid。  |
+| uid              | number | 是   | 否   | 进程的用户标识。|
+| pid              | number | 是   | 否   | 当前进程的pid。 |
+| tid<sup>8+</sup> | number | 是   | 否   | 当前线程的tid。 |
 
 
 ## EventListener

@@ -488,7 +488,7 @@ setUiContent(path: string): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import selectionManager from '@ohos.selectionInput.selectionManager';
@@ -534,7 +534,7 @@ show(): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import selectionManager from '@ohos.selectionInput.selectionManager';
@@ -574,7 +574,7 @@ hide(): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import selectionManager from '@ohos.selectionInput.selectionManager';
@@ -678,7 +678,7 @@ ArkTS-Sta: moveToGlobalDisplay(x: int, y: int): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import selectionManager from '@ohos.selectionInput.selectionManager';
@@ -714,7 +714,7 @@ on(type: 'destroyed', callback: Callback\<void>): void
 | callback | Callback\<void> | 是   | 回调函数，返回值为空       |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import selectionManager from '@ohos.selectionInput.selectionManager';
@@ -749,7 +749,7 @@ onDestroy(callback: Callback\<void>): void
 | callback | Callback\<void> | 是   | 回调函数，返回值为空       |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import selectionManager from '@ohos.selectionInput.selectionManager';
@@ -783,7 +783,7 @@ off(type: 'destroyed', callback?: Callback\<void>): void
 | callback | Callback\<void> | 否   | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。|
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import selectionManager from '@ohos.selectionInput.selectionManager';
@@ -816,7 +816,7 @@ offDestroy(callback?: Callback\<void>): void
 | callback | Callback\<void> | 否   | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。|
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import selectionManager from '@ohos.selectionInput.selectionManager';
@@ -848,7 +848,7 @@ on(type: 'hidden', callback: Callback\<void>): void
 | callback | Callback\<void> | 是   | 回调函数，返回值为空。       |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import selectionManager from '@ohos.selectionInput.selectionManager';
@@ -883,7 +883,7 @@ onHide(callback: Callback\<void>): void
 | callback | Callback\<void> | 是   | 回调函数，返回值为空。       |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import selectionManager from '@ohos.selectionInput.selectionManager';
@@ -917,7 +917,7 @@ off(type: 'hidden', callback?: Callback\<void>): void
 | callback | Callback\<void> | 否   | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import selectionManager from '@ohos.selectionInput.selectionManager';
@@ -950,7 +950,7 @@ offHide(callback?: Callback\<void>): void
 | callback | Callback\<void> | 否   | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import selectionManager from '@ohos.selectionInput.selectionManager';

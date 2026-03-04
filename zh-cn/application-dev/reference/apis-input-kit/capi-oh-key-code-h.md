@@ -1,8 +1,17 @@
 # oh_key_code.h
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 概述
 
-按键设备的键码值。
+按键设备的键值。
+
+**引用文件：** <multimodalinput/oh_key_code.h>
 
 **库：** libohinput.so
 
@@ -18,19 +27,19 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [Input_KeyCode](#input_keycode) | Input_KeyCode | 键码值。 |
+| [Input_KeyCode](#input_keycode) | Input_KeyCode | 键值。 |
 
 ## 枚举类型说明
 
 ### Input_KeyCode
 
-```
+```c
 enum Input_KeyCode
 ```
 
 **描述**
 
-键码值。
+键值。
 
 **起始版本：** 12
 
@@ -171,8 +180,8 @@ enum Input_KeyCode
 | KEYCODE_NUMPAD_RIGHT_PAREN = 2122 | 小键盘按键')' |
 | KEYCODE_MOUSE_ASSISTANT = 2732 | 鼠标AI助手键<br/>**起始版本：** 24 |
 | KEYCODE_MOUSE_INTELLIGENCE_SELECTION = 2733 | 鼠标智慧框选键<br/>**起始版本：** 24 |
-| KEYCODE_DAGGER_CLICK = 3211 | 智能手表智感窗按键单击<br/>**起始版本：** 18 |
-| KEYCODE_DAGGER_DOUBLE_CLICK = 3212 | 智能手表智感窗按键双击<br/>**起始版本：** 18 |
-| KEYCODE_DAGGER_LONG_PRESS = 3213 | 智能手表智感窗按键长按<br/>**起始版本：** 18 |
+| KEYCODE_DAGGER_CLICK = 3211 | 智能手表智感窗按键单击<br/>**起始版本：** 22 |
+| KEYCODE_DAGGER_DOUBLE_CLICK = 3212 | 智能手表智感窗按键双击<br/>**起始版本：** 22 |
+| KEYCODE_DAGGER_LONG_PRESS = 3213 | 智能手表智感窗按键长按<br/>**起始版本：** 22 |
 
 

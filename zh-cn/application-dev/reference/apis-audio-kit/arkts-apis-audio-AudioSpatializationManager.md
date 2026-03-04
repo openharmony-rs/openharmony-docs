@@ -25,7 +25,7 @@ isSpatializationEnabledForCurrentDevice(): boolean
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -81,7 +81,7 @@ audioSpatializationManager.on('spatializationEnabledChangeForCurrentDevice', (is
 });
 ```
 
-## onSpatializationEnabledChangeForCurrentDevice<sup>22+</sup>
+## onSpatializationEnabledChangeForCurrentDevice<sup>23+</sup>
 
 onSpatializationEnabledChangeForCurrentDevice(callback: Callback<boolean\>): void
 
@@ -93,7 +93,7 @@ onSpatializationEnabledChangeForCurrentDevice(callback: Callback<boolean\>): voi
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -155,7 +155,7 @@ import { audio } from '@kit.AudioKit';
 audioSpatializationManager.off('spatializationEnabledChangeForCurrentDevice');
 ```
 
-## offSpatializationEnabledChangeForCurrentDevice<sup>22+</sup>
+## offSpatializationEnabledChangeForCurrentDevice<sup>23+</sup>
 
 offSpatializationEnabledChangeForCurrentDevice(callback?: Callback<boolean\>): void
 
@@ -167,7 +167,7 @@ offSpatializationEnabledChangeForCurrentDevice(callback?: Callback<boolean\>): v
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

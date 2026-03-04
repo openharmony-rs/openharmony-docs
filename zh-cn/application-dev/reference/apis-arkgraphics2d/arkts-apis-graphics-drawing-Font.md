@@ -640,13 +640,19 @@ class DrawingRenderNode extends RenderNode {
 
 ## measureSingleCharacterWithFeatures<sup>20+</sup>
 
-measureSingleCharacterWithFeatures(text: string, features: Array\<FontFeature\>): number
+ArkTS-Dyn: measureSingleCharacterWithFeatures(text: string, features: Array\<FontFeature\>): number
+
+ArkTS-Sta: measureSingleCharacterWithFeatures(text: string, features: Array\<FontFeature\>): double
 
 测量单个字符的宽度，字符带有字体特征。当前字型中的字体不支持待测量字符时，退化到使用系统字体测量字符宽度。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
 
 **参数**
 
@@ -659,7 +665,7 @@ measureSingleCharacterWithFeatures(text: string, features: Array\<FontFeature\>)
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| number | 字符的宽度，浮点数，单位为px。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 字符的宽度，浮点数，单位为px。 |
 
 **错误码：**
 
@@ -680,7 +686,7 @@ class DrawingRenderNode extends RenderNode {
     const font = new drawing.Font();
     font.setSize(20);
     let fontFeatures : Array<drawing.FontFeature> = [];
-    fontFeatures.push({name: 'calt', value: 0});
+    fontFeatures.push({name: 'calt', value: 0.0});
     let width = font.measureSingleCharacterWithFeatures("你", fontFeatures);
   }
 }
