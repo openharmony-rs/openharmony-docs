@@ -60,4 +60,4 @@ Sets the callback for gesture interruption events.
 
 | Type| Description|
 | -- | -- |
-| int32_t | **0**: Success.<br>            **401**: Parameter error.|
+| int32_t | Error code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|

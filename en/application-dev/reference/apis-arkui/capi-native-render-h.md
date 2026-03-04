@@ -8,7 +8,7 @@
 
 ## Overview
 
-Declares the APIs of **NativeRender**.
+Declares the APIs of **NativeRender**. For details, see [Building a Rendering Node](../../ui/ndk-embed-render-components.md).
 
 **File to include**: <arkui/native_render.h>
 
@@ -20,7 +20,7 @@ Declares the APIs of **NativeRender**.
 
 **Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
 
-**Sample**: <!--RP1-->[native_render_node_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeRenderNodeSample)<!--RP1End-->
+**Sample**: <!--RP1-->[NativeRenderNodeSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeRenderNodeSample)<!--RP1End-->
 
 ## Summary
 
@@ -28,22 +28,22 @@ Declares the APIs of **NativeRender**.
 
 | Name                                                                                           | typedef Keyword                      | Description               |
 |-----------------------------------------------------------------------------------------------|----------------------------------|-------------------|
-| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)               | ArkUI_RenderNodeHandle         | Defines a struct for the render node pointer.        |
-| [ArkUI_RenderContentModifierHandle](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md)               | ArkUI_RenderContentModifierHandle                                | Defines a struct for the content modifier pointer.      |
-| [ArkUI_FloatPropertyHandle](./capi-arkui-nativemodule-arkui-floatpropertyhandle.md)               | ArkUI_FloatPropertyHandle                                | Defines a struct for the float property pointer.      |
-| [ArkUI_Vector2PropertyHandle](./capi-arkui-nativemodule-arkui-vector2propertyhandle.md)               | ArkUI_Vector2PropertyHandle                                | Defines a struct for the 2D vector property pointer.      |
-| [ArkUI_ColorPropertyHandle](./capi-arkui-nativemodule-arkui-colorpropertyhandle.md)               | ArkUI_ColorPropertyHandle                                | Defines a struct for the color property pointer.      |
-| [ArkUI_FloatAnimatablePropertyHandle](./capi-arkui-nativemodule-arkui-floatanimatablepropertyhandle.md)               | ArkUI_FloatAnimatablePropertyHandle                                | Defines a struct for the animatable float property pointer.      |
-| [ArkUI_Vector2AnimatablePropertyHandle](./capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md)               | ArkUI_Vector2AnimatablePropertyHandle                                | Defines a struct for the animatable 2D vector property pointer.      |
-| [ArkUI_ColorAnimatablePropertyHandle](./capi-arkui-nativemodule-arkui-coloranimatablepropertyhandle.md)               | ArkUI_ColorAnimatablePropertyHandle                                | Defines a struct for the animatable color property pointer.      |
-| [ArkUI_RectShapeOption](./capi-arkui-nativemodule-arkui-rectshapeoption.md)               | ArkUI_RectShapeOption                                | Defines a struct for the rectangle shape configuration.      |
-| [ArkUI_NodeBorderStyleOption](./capi-arkui-nativemodule-arkui-nodeborderstyleoption.md)               | ArkUI_NodeBorderStyleOption                                | Defines a struct for the node border style configuration.      |
-| [ArkUI_NodeBorderWidthOption](./capi-arkui-nativemodule-arkui-nodeborderwidthoption.md)               | ArkUI_NodeBorderWidthOption                                | Defines a struct for the node border width configuration.      |
-| [ArkUI_NodeBorderColorOption](./capi-arkui-nativemodule-arkui-nodebordercoloroption.md)               | ArkUI_NodeBorderColorOption                                | Defines a struct for the node border color configuration.      |
-| [ArkUI_NodeBorderRadiusOption](./capi-arkui-nativemodule-arkui-nodeborderradiusoption.md)               | ArkUI_NodeBorderRadiusOption                                | Defines a struct for the node border radius configuration.      |
-| [ArkUI_CircleShapeOption](./capi-arkui-nativemodule-arkui-circleshapeoption.md)               | ArkUI_CircleShapeOption                                | Defines a struct for the circle shape configuration.      |
-| [ArkUI_RoundRectShapeOption](./capi-arkui-nativemodule-arkui-roundrectshapeoption.md)               | ArkUI_RoundRectShapeOption                                | Defines a struct for the rounded rectangle shape configuration.      |
-| [ArkUI_CommandPathOption](./capi-arkui-nativemodule-arkui-commandpathoption.md)               | ArkUI_CommandPathOption                                | Defines a struct for the custom path configuration.      |
+| [ArkUI_RenderNode*](./capi-arkui-nativemodule-arkui-rendernodehandle.md)               | ArkUI_RenderNodeHandle         | Defines a struct for the render node pointer.        |
+| [ArkUI_RenderContentModifier*](./capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md)               | ArkUI_RenderContentModifierHandle                                | Defines a struct for the content modifier pointer.      |
+| [ArkUI_FloatProperty*](./capi-arkui-nativemodule-arkui-floatpropertyhandle.md)               | ArkUI_FloatPropertyHandle                                | Defines a struct for the float property pointer.      |
+| [ArkUI_Vector2Property*](./capi-arkui-nativemodule-arkui-vector2propertyhandle.md)               | ArkUI_Vector2PropertyHandle                                | Defines a struct for the 2D vector property pointer.      |
+| [ArkUI_ColorProperty*](./capi-arkui-nativemodule-arkui-colorpropertyhandle.md)               | ArkUI_ColorPropertyHandle                                | Defines a struct for the color property pointer.      |
+| [ArkUI_FloatAnimatableProperty*](./capi-arkui-nativemodule-arkui-floatanimatablepropertyhandle.md)               | ArkUI_FloatAnimatablePropertyHandle                                | Defines a struct for the animatable float property pointer.      |
+| [ArkUI_Vector2AnimatableProperty*](./capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md)               | ArkUI_Vector2AnimatablePropertyHandle                                | Defines a struct for the animatable 2D vector property pointer.      |
+| [ArkUI_ColorAnimatableProperty*](./capi-arkui-nativemodule-arkui-coloranimatablepropertyhandle.md)               | ArkUI_ColorAnimatablePropertyHandle                                | Defines a struct for the animatable color property pointer.      |
+| [ArkUI_RectShape](./capi-arkui-nativemodule-arkui-rectshapeoption.md)               | ArkUI_RectShapeOption                                | Defines a struct for the rectangle shape configuration.      |
+| [ArkUI_NodeBorderStyle](./capi-arkui-nativemodule-arkui-nodeborderstyleoption.md)               | ArkUI_NodeBorderStyleOption                                | Defines a struct for the node border style configuration.      |
+| [ArkUI_NodeBorderWidth](./capi-arkui-nativemodule-arkui-nodeborderwidthoption.md)               | ArkUI_NodeBorderWidthOption                                | Defines a struct for the node border width configuration.      |
+| [ArkUI_NodeBorderColor](./capi-arkui-nativemodule-arkui-nodebordercoloroption.md)               | ArkUI_NodeBorderColorOption                                | Defines a struct for the node border color configuration.      |
+| [ArkUI_NodeBorderRadius](./capi-arkui-nativemodule-arkui-nodeborderradiusoption.md)               | ArkUI_NodeBorderRadiusOption                                | Defines a struct for the node border radius configuration.      |
+| [ArkUI_CircleShape](./capi-arkui-nativemodule-arkui-circleshapeoption.md)               | ArkUI_CircleShapeOption                                | Defines a struct for the circle shape configuration.      |
+| [ArkUI_RoundRectShape](./capi-arkui-nativemodule-arkui-roundrectshapeoption.md)               | ArkUI_RoundRectShapeOption                                | Defines a struct for the rounded rectangle shape configuration.      |
+| [ArkUI_CommandPath](./capi-arkui-nativemodule-arkui-commandpathoption.md)               | ArkUI_CommandPathOption                                | Defines a struct for the custom path configuration.      |
 | [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md)               | ArkUI_RenderNodeMaskOption                                | Defines a struct for the render node mask configuration.      |
 | [ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)               | ArkUI_RenderNodeClipOption                                | Defines a struct for the render node clip configuration.      |
 
@@ -54,7 +54,7 @@ Declares the APIs of **NativeRender**.
 | [int32_t OH_ArkUI_RenderNodeUtils_AddRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child)](#oh_arkui_rendernodeutils_addrendernode) | - | Adds a child render node to the parent custom node.|
 | [int32_t OH_ArkUI_RenderNodeUtils_RemoveRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child)](#oh_arkui_rendernodeutils_removerendernode) | - | Removes all child render nodes from the specified node.|
 | [int32_t OH_ArkUI_RenderNodeUtils_ClearRenderNodeChildren(ArkUI_NodeHandle node)](#oh_arkui_rendernodeutils_clearrendernodechildren) | - | Clears child render nodes in the parent node.|
-| [int32_t OH_ArkUI_RenderNodeUtils_Invalidate(ArkUI_NodeHandle node)](#oh_arkui_rendernodeutils_invalidate) | - | Marks the target custom node as dirty, causing its child render nodes to re-render.|
+| [int32_t OH_ArkUI_RenderNodeUtils_Invalidate(ArkUI_NodeHandle node)](#oh_arkui_rendernodeutils_invalidate) | - | Marks the target node, triggering its lifecycle and child nodes to re-render.|
 | [ArkUI_RenderNodeHandle OH_ArkUI_RenderNodeUtils_CreateNode()](#oh_arkui_rendernodeutils_createnode) | - | Creates a render node.|
 | [int32_t OH_ArkUI_RenderNodeUtils_DisposeNode(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_disposenode) | - | Destroys the render node.|
 | [int32_t OH_ArkUI_RenderNodeUtils_AddChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child)](#oh_arkui_rendernodeutils_addchild) | - | Adds a child node to the target parent render node.|
@@ -273,7 +273,7 @@ int32_t OH_ArkUI_RenderNodeUtils_Invalidate(ArkUI_NodeHandle node)
 ```
 
 **Description**
-Marks the target custom node as dirty, causing its child render nodes to re-render.
+Marks the target node, triggering its lifecycle and child nodes to re-render.
 
 **Since**: 20
 
@@ -955,7 +955,7 @@ Obtains the translation offset of the render node.
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Target render node.|
 | float* x | Pointer used to store the horizontal translation offset.<br>Default value: **0**.|
-| float* y | Pointer used to store the horizontal translation offset.<br>Default value: **0**.|
+| float* y | Pointer used to store the vertical translation offset.<br>Default value: **0**.|
 
 **Return value**
 | Type| Description|
@@ -2367,7 +2367,7 @@ Creates a node border style option.
 **Return value**
 | Type| Description|
 | -- | -- |
-| [ArkUI_NodeBorderStyleOption](./capi-arkui-nativemodule-arkui-nodeborderstyleoption.md)* | Pointer to the node border style.|
+| [ArkUI_NodeBorderStyleOption](./capi-arkui-nativemodule-arkui-nodeborderstyleoption.md)* | Pointer to the node border style option.|
 
 ### OH_ArkUI_RenderNodeUtils_DisposeNodeBorderStyleOption()
 

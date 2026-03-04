@@ -3513,7 +3513,7 @@ struct Index {
 
 > **NOTE**
 >
-> Since API version 22, cross-BuilderNode pairing of @Provider and @Consumer is supported.
+> Since API version 23, cross-BuilderNode pairing of @Provider and @Consumer is supported.
 
 Set **enableProvideConsumeCrossing** in [BuildOptions](#buildoptions12) of the **BuilderNode** to **true** to support two-way synchronization between the @Consumer decorated state variable of the custom component inside the **BuilderNode** and the @Provider decorated state variable outside the **BuilderNode**.
 
@@ -3600,7 +3600,7 @@ struct AddChild {
 
 > **NOTE**
 >
-> Since API version 22, cross-BuilderNode pairing of @Provider and @Consumer is supported.
+> Since API version 23, cross-BuilderNode pairing of @Provider and @Consumer is supported.
 
 This example demonstrates how the synchronization relationship between @Consumer and @Provider changes when a BuilderNode is mounted to or unmounted from the component tree.
 
@@ -3724,7 +3724,7 @@ struct TestRemove {
 
 > **NOTE**
 >
-> Since API version 22, cross-BuilderNode pairing of @Provider and @Consumer is supported.
+> Since API version 23, cross-BuilderNode pairing of @Provider and @Consumer is supported.
 
 This example demonstrates how the synchronization relationship between @Consumer and @Provider changes when a BuilderNode is mounted to a different component tree.
 
@@ -3863,7 +3863,7 @@ struct ConsumerChild {
 
 > **NOTE**
 >
-> Since API version 22, cross-BuilderNode pairing of @Provider and @Consumer is supported.
+> Since API version 23, cross-BuilderNode pairing of @Provider and @Consumer is supported.
 
 This example demonstrates how the synchronization relationship between @Consumer and @Provider changes when BuilderNodes are nested.
 
@@ -3988,7 +3988,7 @@ struct BuildNodeToBuildNodeChild {
 
 > **NOTE**
 >
-> Since API version 22, cross-BuilderNode pairing of @Provider and @Consumer is supported.
+> Since API version 23, cross-BuilderNode pairing of @Provider and @Consumer is supported.
 
 This example demonstrates the synchronization relationship between @Consumer and @Provider when the custom component containing @Consumer is located under BuilderNode and has child components.
 
@@ -4137,7 +4137,7 @@ struct NestedComponentChildChld {
 
 > **NOTE**
 >
-> Since API version 22, cross-BuilderNode pairing of @Provider and @Consumer is supported.
+> Since API version 23, cross-BuilderNode pairing of @Provider and @Consumer is supported.
 
 This example demonstrates the synchronization relationship between @Consumer and @Provider in a component tree structured as @Provider-@Consumer-BuilderNode-@Consumer.
 
@@ -4298,7 +4298,7 @@ struct NestedComponentChild {
 
 > **NOTE**
 >
-> Since API version 22, cross-BuilderNode pairing of @Provider and @Consumer is supported.
+> Since API version 23, cross-BuilderNode pairing of @Provider and @Consumer is supported.
 
 This example demonstrates the synchronization relationship between @Consumer and @Provider in a component tree structured as @Provider-BuilderNode-@Provider-@Consumer.
 
