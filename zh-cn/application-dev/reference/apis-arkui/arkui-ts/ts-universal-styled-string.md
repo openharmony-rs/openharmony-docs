@@ -47,13 +47,12 @@ constructor(value: string | ImageAttachment | CustomSpan , styles?: Array\<Style
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  |   类型   |   只读   |   可选   |   说明   |
 | ------ | ------ | ------ | ------ | -------------- |
-| length | number |  是   | 否   | 属性字符串字符的长度。<br/>**说明：** <br/>属性字符串中的ImageAttachment和CustomSpan长度都计为1。 |
+| length | number |  是   | 否   | 属性字符串字符的长度。<br/>**说明：** <br/>属性字符串中的ImageAttachment和CustomSpan长度都计为1。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| fontConfigs<sup>24+</sup> | [FontConfigs](ts-text-common.md#fontconfigs24对象说明) |  否   | 是   | 属性字符串的字体配置。默认值继承[FontConfigs](ts-text-common.md#fontconfigs24对象说明)。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ### getString
 
@@ -2964,3 +2963,108 @@ struct styled_string_process_demo {
 ```
 
 ![styledString_17](figures/styledString_17.png)
+
+### 示例17（设置字体配置）
+
+该示例通过在TextStyle中设置[fontConfigs](ts-text-common.md#fontconfigs24对象说明)属性实现属性字符串的字体配置。从API version 24开始，新增支持fontConfigs属性。
+
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct StyledStringFontConfigsDemo {
+  controller1: TextController = new TextController();
+  controller2: TextController = new TextController();
+  scroller: Scroller = new Scroller();
+
+  aboutToAppear() {
+    // 示例1：启用可变字重
+    let textStyle1: TextStyle = new TextStyle({
+      fontColor: Color.Red,
+      fontSize: LengthMetrics.vp(18)
+    });
+    let styledString1: MutableStyledString = new MutableStyledString('StyledString with FontConfigs: ', [{
+      start: 0,
+      length: 30,
+      styledKey: StyledStringKey.FONT,
+      styledValue: textStyle1
+    }]);
+    // 为"字体粗细850"这段文本设置字体配置
+    let textStyle2: TextStyle = new TextStyle({
+      fontColor: Color.Blue,
+      fontSize: LengthMetrics.vp(24),
+      fontWeight: 850,
+      fontConfigs: {
+        fontWeightConfigs: {
+          enableVariableFontWeight: true
+        }
+      }
+    });
+    let styledString2: StyledString = new StyledString('字体粗细850', [{
+      start: 0,
+      length: 7,
+      styledKey: StyledStringKey.FONT,
+      styledValue: textStyle2
+    }]);
+    styledString1.appendStyledString(styledString2);
+    this.controller1.setStyledString(styledString1);
+
+    // 示例2：禁用设备字体粗细级别自动更新
+    let textStyle3: TextStyle = new TextStyle({
+      fontColor: Color.Red,
+      fontSize: LengthMetrics.vp(18)
+    });
+    let styledString3: MutableStyledString = new MutableStyledString('禁用跟随设备字重级别更新: ', [{
+      start: 0,
+      length: 12,
+      styledKey: StyledStringKey.FONT,
+      styledValue: textStyle3
+    }]);
+    let textStyle4: TextStyle = new TextStyle({
+      fontColor: Color.Green,
+      fontSize: LengthMetrics.vp(24),
+      fontWeight: 600,
+      fontConfigs: {
+        fontWeightConfigs: {
+          enableDeviceFontWeightCategory: false
+        }
+      }
+    });
+    let styledString4: StyledString = new StyledString('字体粗细600', [{
+      start: 0,
+      length: 7,
+      styledKey: StyledStringKey.FONT,
+      styledValue: textStyle4
+    }]);
+    styledString3.appendStyledString(styledString4);
+    this.controller2.setStyledString(styledString3);
+  }
+
+  build() {
+    Scroll(this.scroller) {
+      Column() {
+        Text('示例1：启用可变字体粗细调节，支持设置字体粗细为非整百')
+          .fontSize(16)
+          .margin({ bottom: 5 })
+
+        Text(undefined, { controller: this.controller1 })
+          .fontSize(20)
+          .margin({ bottom: 20 })
+
+        Text('示例2：设置文本字体粗细不跟随设备字重级别自动更新')
+          .fontSize(16)
+          .margin({ bottom: 5 })
+
+        Text(undefined, { controller: this.controller2 })
+          .fontSize(20)
+      }
+      .width('100%')
+      .padding(20)
+    }
+    .width('100%')
+  }
+}
+```
+![styledString_18](figures/styledString_18.png)
