@@ -18,152 +18,253 @@
 
 1. 创建voice_call类型的AVSession，AVSession在构造方法中支持不同的类型参数，由AVSessionType定义，voice_call表示通话类型，如果不创建，将显示空列表。
 
-   ```ts
-    import { avSession } from '@kit.AVSessionKit';
-    @Entry
-    @Component
-    struct Index {
-      @State message: string = 'hello world';
-    
-      build() { 
-        Column() {
-            Text(this.message)
-              .onClick(async ()=> {
-                try {
-                  let context = this.getUIContext().getHostContext() as Context;
-                // 通话开始时创建voice_call类型的avsession。
-                let session: avSession.AVSession = await avSession.createAVSession(context, 'voiptest', 'voice_call');
-                } catch (err) {
-                  console.error(`AVSession create :  Error: Code: ${err.code}, message: ${err.message}`);
-                }
-              })
-          }
-        .width('100%')
-        .height('100%')
-      }
-    }
+   <!-- @[create_voiceCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/Index.ets) -->    
+   
+   ``` TypeScript
+   import { AVCastPicker, AVCastPickerState, AVInputCastPicker, avSession } from '@kit.AVSessionKit';
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = '模拟通话';
+     @State session: avSession.AVSession | undefined = undefined;
+     @State context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+     // ...
+   
+     async init() {
+       try {
+         let context = this.getUIContext().getHostContext() as Context;
+         // 通话开始时创建voice_call类型的avsession。
+         this.session = await avSession.createAVSession(context, 'voiptest', 'voice_call');
+       } catch (err) {
+         console.error(`AVSession create :  Error: Code: ${err.code}, message: ${err.message}`);
+       }
+       // ...
+     }
+     // ...
+   }
    ```
 
 2. 在需要切换设备的通话界面创建AVCastPicker组件。
 
-   ```ts
+   <!-- @[create_castPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SwitchOutputDevice.ets) -->     
+   
+   ``` TypeScript
    import { AVCastPicker } from '@kit.AVSessionKit';
-
-   // 创建组件，并设置大小。
-   build() {
-     Row() {
-       Column() {
-         AVCastPicker()
-           .size({ height:45, width:45 })
+   
+   @Entry
+   @Component
+   struct OutputCastPicker {
+     @State normalColor:Color = Color.White;
+     @State activeColor:Color = Color.Blue;
+     @State pickerImage: ResourceStr = $r('app.media.sound'); // 自定义资源。
+     // ...
+     // 创建组件，并设置大小。
+     build() {
+       Row() {
+         Column() {
+           AVCastPicker({
+             normalColor: this.normalColor,
+             activeColor: this.activeColor,
+             customPicker: this.ImageBuilder.bind(this), // 新增自定义参数。
+           })
+             .size({ width: '50%', height: '20%' })
+             .id('AVCastPicker')
+           // ...
+         }
+         .width('100%')
+         .alignItems(HorizontalAlign.Center)
        }
+       .alignItems(VerticalAlign.Center)
+       .width('100%')
+       .height('100%')
+     }
+   
+     // 自定义内容。
+     @Builder
+     ImageBuilder() {
+       Text($r('app.string.switch_OutputDevice'))
+       Image(this.pickerImage)
+         .size({ width: '100%', height: '100%' })
+         .backgroundColor('#00000000')
+         .fillColor(Color.Black)
      }
    }
    ```
 
    或者创建AVCastPickerHelper组件。
 
-   ```ts
+   <!-- @[create_castPickerHelper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AVCastPickerHelper.ets) -->   
+   
+   ``` TypeScript
    import { common } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { avSession } from '@kit.AVSessionKit';
-
+   
    class MyPage {
-      private avCastPicker: avSession.AVCastPickerHelper;
-
-      constructor(context: common.Context) {
-        this.avCastPicker = new avSession.AVCastPickerHelper(context);
-      }
-
-      async selectCastDevice() {
-        const avCastPickerOptions: avSession.AVCastPickerOptions = {
-          sessionType: 'video',
-        };
-
-        this.avCastPicker.select(avCastPickerOptions).then(() => {
-          console.info('select successfully');
-        }).catch((err: BusinessError) => {
-          console.error('AVCastPicker.select failed with err: ${err.code}, ${err.message}');
-        });
-      }
-    }
+     private avCastPicker: avSession.AVCastPickerHelper;
+   
+     constructor(context: common.UIAbilityContext) {
+       this.avCastPicker = new avSession.AVCastPickerHelper(context);
+     }
+   
+     async selectCastDevice() {
+       const avCastPickerOptions: avSession.AVCastPickerOptions = {
+         sessionType: 'video',
+       };
+   
+       this.avCastPicker.select(avCastPickerOptions).then(() => {
+         console.info('select successfully');
+       }).catch((err: BusinessError) => {
+         console.error('AVCastPicker.select failed with err: ${err.code}, ${err.message}');
+       });
+     }
+   }
    ```
 
 3. 创建VOICE_COMMUNICATION类型的AudioRenderer，并开始播放。具体通话音频播放等实现，请参考[开发音频通话功能](../audio/audio-call-development.md)。
 
-   ```ts
+   <!-- @[start_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AudioRenderer.ets) -->         
+   
+   ``` TypeScript
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-
-   export default class AudioRenderer {
-    private audioRenderer: audio.AudioRenderer | undefined = undefined;
-    private audioStreamInfo: audio.AudioStreamInfo = {
-      // 请按照实际场景设置，当前参数仅参考。
-      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
-      channels: audio.AudioChannel.CHANNEL_2, // 通道。
-      sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
-      encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
-    }
-    private audioRendererInfo: audio.AudioRendererInfo = {
-      // 需使用通话场景相应的参数。
-      usage: audio.StreamUsage.STREAM_USAGE_VIDEO_COMMUNICATION, // 音频流使用类型：VOIP视频通话，默认为扬声器。
-      rendererFlags: 0 // 音频渲染器标志：默认为0即可。
-    }
-    private audioRendererOptions: audio.AudioRendererOptions = {
-      streamInfo: this.audioStreamInfo,
-      rendererInfo: this.audioRendererInfo
-    }
-
-    async start() {
-      // 初始化，创建通话audiorenderer实例，设置监听事件。
-      try {
-        this.audioRenderer = await audio.createAudioRenderer(this.audioRendererOptions);
-      } catch (err) {
-        console.error(`audioRender create :  Error: Code: ${err.code}, message: ${err.message}`);
-      }
-
-      this.audioRenderer?.start((err: BusinessError) => {
-        if (err) {
-          console.error(`audioRenderer start failed -Code : ${err.code}, Message ${err.message}`);
-        } else {
-          console.info('audioRender start success');
-        }
-      });
-    }
+   import { common } from '@kit.AbilityKit';
+   import { resourceManager } from '@kit.LocalizationKit';
+   import { fileIo } from '@kit.CoreFileKit';
+   
+   class Options {
+     public offset: number = 0;
+     public length: number = 0;
    }
-
-    @Entry
-    @Component
-
-    struct Index {
-     build() {
-       Column() {
-         Text('Hello World')
-           .fontSize(20)
-           .fontWeight(FontWeight.Bold)
-       }
-       .width('100%')
-       .height('100%')
+   export default class AudioRenderer {
+     private audioRenderer: audio.AudioRenderer | undefined = undefined;
+     private audioStreamInfo: audio.AudioStreamInfo = {
+       // 请按照实际场景设置，当前参数仅参考。
+       samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+       channels: audio.AudioChannel.CHANNEL_2, // 通道。
+       sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+       encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
      }
-    }
+     public appContext?: common.UIAbilityContext | undefined = undefined;
+     private audioSource = 'test1.wav';
+     private fileDescriptor?: resourceManager.RawFileDescriptor | undefined = undefined;
+     // ...
+     async getStageFileDescriptor(fileName: string): Promise<resourceManager.RawFileDescriptor | undefined> {
+       let fileDescriptor: resourceManager.RawFileDescriptor | undefined = undefined;
+       if (this.appContext) {
+         let mgr = this.appContext.resourceManager;
+         this.fileDescriptor = mgr.getRawFdSync(fileName);
+         await mgr.getRawFd(fileName).then(value => {
+           fileDescriptor = value;
+           console.info('case getRawFileDescriptor success fileName: ' + fileName);
+         }).catch((error: BusinessError) => {
+           console.error('case getRawFileDescriptor err: ' + error);
+         });
+       }
+       return fileDescriptor;
+     }
+   
+     async startRenderer(): Promise<void> {
+       if (this.audioRenderer !== undefined) {
+         return;
+       }
+       this.getStageFileDescriptor(this.audioSource).then((res) => {
+         this.fileDescriptor = res;
+       });
+       if (!this.fileDescriptor) {
+         return;
+       }
+       let file: resourceManager.RawFileDescriptor = this.fileDescriptor;
+       try {
+         this.audioRenderer = await audio.createAudioRenderer(this.audioRendererOption);
+       } catch (error) {
+         console.error(`audioRenderer create : Error: ${JSON.stringify(error)}`);
+         return;
+       }
+       let bufferSize: number = this.fileDescriptor.offset;
+       let writeDataCallback = (buffer: ArrayBuffer) => {
+         let options: Options = {
+           offset: bufferSize,
+           length: buffer.byteLength
+         }
+         fileIo.readSync(file.fd, buffer, options);
+         bufferSize += buffer.byteLength;
+       };
+       this.audioRenderer.on('writeData', writeDataCallback);
+       await this.audioRenderer.start();
+     }
+   
+     async stopRenderer(): Promise<void> {
+       if (this.audioRenderer) {
+         await this.audioRenderer.release();
+         this.audioRenderer = undefined;
+       }
+       if (this.fileDescriptor) {
+         this.closeResource(this.audioSource);
+         this.fileDescriptor = undefined;
+       }
+     }
+   
+     async closeResource(fileName: string): Promise<void> {
+       if (this.appContext) {
+         let mgr = this.appContext.resourceManager;
+         await mgr.closeRawFd(fileName).then(() => {
+           console.info('case closeRawFd success fileName: ' + fileName);
+         }).catch((error: BusinessError) => {
+           console.error('case closeRawFd err: ' + error);
+         });
+       }
+     }
+   }
    ```
-
+  
 4. （可选）如果应用想知道设备切换情况，可以监听当前发声设备切换回调。
 
-   ```ts
+   <!-- @[device_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AudioRenderer.ets) -->       
+   
+   ``` TypeScript
    import { audio } from '@kit.AudioKit';
-
-   let audioManager = audio.getAudioManager(); // 先创建audiomanager。
-   let audioRoutingManager = audioManager.getRoutingManager(); // 再调用AudioManager的方法创建AudioRoutingManager实例。
-
-   // 可选监听当前发声设备切换回调。
-   audioRoutingManager.on('preferOutputDeviceChangeForRendererInfo', this.audioRendererInfo, (desc: audio.AudioDeviceDescriptors) => {
-     console.info(`device change To : ${desc[0].deviceType}`); // 设备类型。
-   });
+   // ...
+   export default class AudioRenderer {
+     // ...
+     private audioManager: audio.AudioManager | undefined = undefined;
+     private audioRoutingManager: audio.AudioRoutingManager | undefined = undefined;
+     private audioRendererInfo: audio.AudioRendererInfo = {
+       // 需使用通话场景相应的参数。
+       usage: audio.StreamUsage.STREAM_USAGE_VIDEO_COMMUNICATION, // 音频流使用类型：VOIP视频通话，默认为扬声器。
+       rendererFlags: 0 // 音频渲染器标志：默认为0即可。
+     }
+     private  audioRendererOption: audio.AudioRendererOptions = {
+       streamInfo: this.audioStreamInfo,
+       rendererInfo: this.audioRendererInfo
+     };
+   
+     async observerDevices() {
+       this.audioManager = audio.getAudioManager(); // 先创建audiomanager。
+       if (!this.audioManager) {
+         console.error('get audioManager failed');
+         return;
+       }
+       // 再调用AudioManager的方法创建AudioRoutingManager实例。
+       this.audioRoutingManager = this.audioManager.getRoutingManager();
+       if(!this.audioRoutingManager) {
+         return;
+       }
+       // 可选监听当前发声设备切换回调。
+       this.audioRoutingManager.on('preferOutputDeviceChangeForRendererInfo', this.audioRendererInfo, (desc: audio.AudioDeviceDescriptors) => {
+         console.info(`device change to: ${desc[0].deviceType}`); // 设备类型。
+       });
+     }
+     // ...
+   }
    ```
 
 5. 通话结束后，销毁会话。
 
-   ```ts
+   <!-- @[destroy_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/Index.ets) -->     
+   
+   ``` TypeScript
    // 通话结束销毁第一步创建的session。
    this.session?.destroy((err) => {
      if (err) {
@@ -182,65 +283,80 @@
 
 存在差异的步骤如下所示。
 
-1. 创建自定义AVCastPicker，需要新增自定义参数。（对应默认样式实现步骤2）
+1. 创建自定义AVCastPicker，需要新增自定义参数（对应默认样式实现步骤2）。
 
-   ```ts
+   <!-- @[self_castPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SelfAVCastPicker.ets) -->    
+   
+   ``` TypeScript
    import { AVCastPicker } from '@kit.AVSessionKit';
-
-   @State pickerImage:ResourceStr = $r('app.media.earpiece'); // 自定义资源。
-
-   build() {
-     Row() {
-       Column() {
-         AVCastPicker(
-           {
-             customPicker: (): void => this.ImageBuilder() // 新增自定义参数。
-           }
-         ).size({ height: 45, width:45 })
+   // ...
+   
+   @Entry
+   @Component
+   struct SelfCastPicker {
+     @State pickerImage: ResourceStr = $r('app.media.earpiece'); // 自定义资源。
+     // ...
+     build() {
+       Row() {
+         Column() {
+           AVCastPicker(
+             {
+               customPicker: (): void => this.ImageBuilder() // 新增自定义参数。
+             }
+           ).size({ height: 45, width: 45 })
+         }
        }
      }
-   }
-
-   // 自定义内容。
-   @Builder
-   ImageBuilder() {
-     Image(this.pickerImage)
-       .size({ width: '100%', height: '100%' })
-       .backgroundColor('#00000000')
-       .fillColor(Color.Black)
+   
+     // 自定义内容。
+     @Builder
+     ImageBuilder() {
+       Image(this.pickerImage)
+         .size({ width: '100%', height: '100%' })
+         .backgroundColor('#00000000')
+         .fillColor(Color.Black)
+     }
    }
    ```
 
-2. 如果应用要根据出声设备变化而改变自定义样式，必须监听设备切换，然后实时刷新自定义样式。（对应默认样式实现步骤4）
+2. 如果应用要根据出声设备变化而改变自定义样式，必须监听设备切换，然后实时刷新自定义样式（对应默认样式实现步骤4）。
 
-   ```ts
+   <!-- @[device_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SelfAVCastPicker.ets) -->    
+   
+   ``` TypeScript
    import { audio } from '@kit.AudioKit';
-
-   async observerDevices() {
-     let audioManager = audio.getAudioManager();
-     let audioRoutingManager = audioManager.getRoutingManager();
-
-     // 初次拉起AVCastPicker时需获取当前设备,刷新显示。
-     this.changePickerShow(audioRoutingManager.getPreferredOutputDeviceForRendererInfoSync(this.audioRendererInfo));
-
-     // 监听当前发声设备切换，及时根据不同设备类型显示不同的样式。
-     audioRoutingManager.on('preferOutputDeviceChangeForRendererInfo', this.audioRendererInfo, (desc: audio.AudioDeviceDescriptors) => {
+   
+   @Entry
+   @Component
+   struct SelfCastPicker {
+     // ...
+     async selfObserverDevices() {
+       let audioManager = audio.getAudioManager();
+       let audioRoutingManager = audioManager.getRoutingManager();
+   
+       // 初次拉起AVCastPicker时需获取当前设备,刷新显示。
        this.changePickerShow(audioRoutingManager.getPreferredOutputDeviceForRendererInfoSync(this.audioRendererInfo));
-     });
-   }
-
-   // 设备更新后刷新自定义资源pickerImage。
-   private changePickerShow(desc: audio.AudioDeviceDescriptors) {
-     if(!desc || !desc.length || !desc[0]) {
-      return;
+   
+       // 监听当前发声设备切换，及时根据不同设备类型显示不同的样式。
+       audioRoutingManager.on('preferOutputDeviceChangeForRendererInfo', this.audioRendererInfo, (desc: audio.AudioDeviceDescriptors) => {
+         this.changePickerShow(audioRoutingManager.getPreferredOutputDeviceForRendererInfoSync(this.audioRendererInfo));
+       });
      }
-     if (desc[0].deviceType === 2) {
-       this.pickerImage = $r('app.media.sound');
-     } else if (desc[0].deviceType === 7) {
-       this.pickerImage = $r('app.media.bluetooth');
-     } else {
-       this.pickerImage = $r('app.media.earpiece');
+   
+     // 设备更新后刷新自定义资源pickerImage。
+     private changePickerShow(desc: audio.AudioDeviceDescriptors) {
+       if(!desc || !desc.length || !desc[0]) {
+         return;
+       }
+       if (desc[0].deviceType === 2) {
+         this.pickerImage = $r('app.media.sound');
+       } else if (desc[0].deviceType === 7) {
+         this.pickerImage = $r('app.media.bluetooth');
+       } else {
+         this.pickerImage = $r('app.media.earpiece');
+       }
      }
+     // ...
    }
    ```
 
@@ -258,30 +374,33 @@
 
 1. 在需要切换设备的通话界面创建AVInputCastPicker组件。
 
-   ```ts
+   <!-- @[default_InputCastPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/DefaultAVInputCastPicker.ets) -->   
+   
+   ``` TypeScript
    import { AVCastPickerState, AVInputCastPicker } from '@kit.AVSessionKit';
-
-   // 设备列表显示状态变化回调（可选）。
-   private onStateChange(state: AVCastPickerState) {
-     if (state === AVCastPickerState.STATE_APPEARING) {
-       console.info('The picker starts showing.');
-     } else if (state === AVCastPickerState.STATE_DISAPPEARING) {
-       console.info('The picker finishes presenting.');
-     }
-   }
-
-   // 创建组件，并设置大小。
-   build() {
-     Row() {
-       Column() {
-         AVInputCastPicker(
-         {
-           onStateChange: this.onStateChange
-         }
-         ).size({ height:45, width:45 })
+   
+   // ...
+     // 设备列表显示状态变化回调（可选）。
+     private onStateChange(state: AVCastPickerState) {
+       if (state === AVCastPickerState.STATE_APPEARING) {
+         console.info('The picker starts showing.');
+       } else if (state === AVCastPickerState.STATE_DISAPPEARING) {
+         console.info('The picker finishes presenting.');
        }
      }
-   }
+   
+     // 创建组件，并设置大小。
+     build() {
+       Row() {
+         Column() {
+           AVInputCastPicker(
+             {
+               onStateChange: this.onStateChange
+             }
+           ).size({ height: 45, width: 45 })
+         }
+       }
+     }
    ```
 
 2. 实现通话功能，请参考[开发音频通话功能](../audio/audio-call-development.md)。
@@ -292,23 +411,26 @@
 
 1. 创建自定义AVInputCastPicker，需要新增自定义参数。
 
-   ```ts
+   <!-- @[self_inputCastPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SwitchInputDevice.ets) -->   
+   
+   ``` TypeScript
    import { AVCastPickerState, AVInputCastPicker } from '@kit.AVSessionKit';
-
+   
    @Entry
    @Component
-   struct CastPicker {
-     @State pickerImage: ResourceStr = $r('app.media.startIcon'); // 自定义资源。
-
+   struct InputCastPicker {
+     @State pickerImage: ResourceStr = $r('app.media.sound'); // 自定义资源。
+     // ...
+   
      // 设备列表显示状态变化回调（可选）。
      private onStateChange(state: AVCastPickerState) {
-        if (state === AVCastPickerState.STATE_APPEARING) {
+       if (state === AVCastPickerState.STATE_APPEARING) {
          console.info('The picker starts showing.');
        } else if (state === AVCastPickerState.STATE_DISAPPEARING) {
          console.info('The picker finishes presenting.');
        }
      }
- 
+   
      build() {
        Row() {
          Column() {
@@ -317,14 +439,23 @@
                customPicker: this.ImageBuilder.bind(this), // 新增自定义参数。
                onStateChange: this.onStateChange
              }
-           ).size({ height: 45, width: 45 })
+           )
+             .size({ width: '50%', height: '20%' })
+             .id('AVInputCastPicker')
+           // ...
          }
+         .width('100%')
+         .alignItems(HorizontalAlign.Center)
        }
+       .alignItems(VerticalAlign.Center)
+       .width('100%')
+       .height('100%')
      }
-
+   
      // 自定义内容。
      @Builder
      ImageBuilder() {
+       Text($r('app.string.switch_InputDevice'))
        Image(this.pickerImage)
          .size({ width: '100%', height: '100%' })
          .backgroundColor('#00000000')
