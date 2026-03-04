@@ -6,8 +6,6 @@
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
-
-
 > **说明：**
 >
 > 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -15,8 +13,6 @@
 ## AVMusicTemplateDescriptor
 
 音频模板描述。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -31,8 +27,6 @@
 ## MediaTab
 
 媒体标签页的定义。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -49,8 +43,6 @@
 
 操作结果的定义。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -64,8 +56,6 @@
 
 媒体标签页内容的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)的子类
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -78,8 +68,6 @@
 ## Compilation
 
 合集的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)的子类。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -110,8 +98,6 @@
 
 专辑的定义。[MediaEntity](#mediaentity)的子类。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -127,8 +113,6 @@
 
 排行榜的定义。[MediaEntity](#mediaentity)的子类。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -140,8 +124,6 @@
 ## MediaEntity
 
 媒体实例的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)的子类。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -162,8 +144,6 @@
 
 查询媒体实例参数的定义。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -181,8 +161,6 @@
 
 剧集的范围的定义。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -195,8 +173,6 @@
 ## PageMediaEntity
 
 标签页媒体的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)的子类
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -217,8 +193,6 @@
 
 单曲的定义。[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)的子类
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -237,8 +211,6 @@
 ## PlayInfo
 
 播放信息的定义。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -269,8 +241,6 @@
 
 收藏/订阅的定义。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -284,8 +254,6 @@
 ## SettingItem
 
 设置项的定义。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -304,8 +272,6 @@
 
 设置内容的定义。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -320,8 +286,6 @@
 ## QrCodeInfo
 
 二维码信息的定义。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -343,8 +307,6 @@
 
 弹框动作信息的定义。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -358,8 +320,6 @@
 ## DialogInfo
 
 弹框的定义。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -379,8 +339,6 @@
 
 弹框按钮信息的定义。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -394,8 +352,6 @@
 ## MemberPurchaseInfo
 
 会员购买信息的定义。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -413,8 +369,6 @@
 
 我的页面的自定义元素的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)的子类。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -429,8 +383,6 @@
 ## UserInfo
 
 用户信息的定义。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -449,8 +401,6 @@
 
 搜播信息的定义。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -463,8 +413,6 @@
 ## SearchPlayMusicInfo
 
 搜播的音频信息的定义。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -482,8 +430,6 @@
 
 搜播的音频项目的定义。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -496,8 +442,6 @@
 ## SearchPlayVideoInfo
 
 搜播的视频信息的定义。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

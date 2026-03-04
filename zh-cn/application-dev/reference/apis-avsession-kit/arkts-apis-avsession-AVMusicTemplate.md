@@ -6,8 +6,6 @@
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
-
-
 > **说明：**
 >
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -21,8 +19,6 @@ import { aVMusicTemplate } from '@kit.AVSessionKit';
 ```
 
 ## 属性
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -93,8 +89,6 @@ startTemplate(): Promise&lt;OperResult&gt;
 
 启动音频模板界面。接口采用Promise异步返回形式，返回操作结果。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -135,8 +129,6 @@ export class TemplateManager {
 onQueryMainTabs(callback: QueryMainTabsEvent): void
 
 注册查询主标签的事件监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -213,8 +205,6 @@ offQueryMainTabs(callback?: QueryMainTabsEvent): void
 
 注销查询主标签事件监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -240,8 +230,6 @@ offQueryMainTabs(callback?: QueryMainTabsEvent): void
 onQueryMediaTabContent(callback: QueryMediaTabContentEvent): void
 
 注册查询媒体标签内容事件监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -352,8 +340,6 @@ offQueryMediaTabContent(callback?: QueryMediaTabContentEvent): void
 
 取消查询媒体标签内容监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -379,8 +365,6 @@ offQueryMediaTabContent(callback?: QueryMediaTabContentEvent): void
 onQueryMediaEntity(callback: QueryMediaEntityEvent): void
 
 注册查询媒体实体监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -477,8 +461,6 @@ offQueryMediaEntity(callback?: QueryMediaEntityEvent): void
 
 注销查询媒体实体监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -504,8 +486,6 @@ offQueryMediaEntity(callback?: QueryMediaEntityEvent): void
 onQueryCompilation(callback: QueryCompilationEvent): void
 
 注册查询合集的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -602,8 +582,6 @@ offQueryCompilation(callback?: QueryCompilationEvent): void
 
 注销查询合集的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -629,8 +607,6 @@ offQueryCompilation(callback?: QueryCompilationEvent): void
 onQueryPlaylist(callback: QueryPlaylistEvent): void
 
 注册查询播放列表的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -727,8 +703,6 @@ offQueryPlaylist(callback?: QueryPlaylistEvent): void
 
 注销查询播放列表的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -754,8 +728,6 @@ offQueryPlaylist(callback?: QueryPlaylistEvent): void
 onQueryCurrentSingle(callback: QueryCurrentSingleEvent): void
 
 注册查询当前单曲的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -863,8 +835,6 @@ offQueryCurrentSingle(callback?: QueryCurrentSingleEvent): void
 
 注销查询当前单曲的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -890,8 +860,6 @@ offQueryCurrentSingle(callback?: QueryCurrentSingleEvent): void
 onQueryCompilationByKeyword(callback: QueryCompilationByKeywordEvent): void
 
 注册按关键字查询合集的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -988,8 +956,6 @@ offQueryCompilationByKeyword(callback?: QueryCompilationByKeywordEvent): void
 
 注销按关键字查询合集的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -1015,8 +981,6 @@ offQueryCompilationByKeyword(callback?: QueryCompilationByKeywordEvent): void
 onQueryMediaEntityByKeyword(callback: QueryMediaEntityByKeywordEvent): void
 
 注册按关键字查询媒体实体的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1113,8 +1077,6 @@ offQueryMediaEntityByKeyword(callback?: QueryMediaEntityByKeywordEvent): void
 
 注销按关键字查询媒体实体的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -1140,8 +1102,6 @@ offQueryMediaEntityByKeyword(callback?: QueryMediaEntityByKeywordEvent): void
 onQueryRecommendMediaEntityList(callback: QueryRecommendMediaEntityListEvent): void
 
 注册查询推荐媒体列表的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1219,8 +1179,6 @@ offQueryRecommendMediaEntityList(callback?: QueryRecommendMediaEntityListEvent):
 
 注销查询推荐媒体列表的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -1246,8 +1204,6 @@ offQueryRecommendMediaEntityList(callback?: QueryRecommendMediaEntityListEvent):
 onQueryHotWords(callback: QueryHotWordsEvent): void
 
 注册查询热词的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1306,8 +1262,6 @@ offQueryHotWords(callback?: QueryHotWordsEvent): void
 
 注销查询热词的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -1333,8 +1287,6 @@ offQueryHotWords(callback?: QueryHotWordsEvent): void
 onQuerySearchHistory(callback: QuerySearchHistoryEvent): void
 
 注册查询搜索历史的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1393,8 +1345,6 @@ offQuerySearchHistory(callback?: QuerySearchHistoryEvent): void
 
 注销查询搜索历史的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -1420,8 +1370,6 @@ offQuerySearchHistory(callback?: QuerySearchHistoryEvent): void
 onClearSearchHistory(callback: ClearSearchHistoryEvent): void
 
 注册清除搜索历史的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1492,8 +1440,6 @@ offClearSearchHistory(callback?: ClearSearchHistoryEvent): void
 
 注销清除搜索历史的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -1519,8 +1465,6 @@ offClearSearchHistory(callback?: ClearSearchHistoryEvent): void
 onLogin(callback: LoginEvent): void
 
 注册登录事件的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1598,8 +1542,6 @@ offLogin(callback?: LoginEvent): void
 
 注销登录事件的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -1625,8 +1567,6 @@ offLogin(callback?: LoginEvent): void
 onRequestDialogInfo(callback: RequestDialogInfoEvent): void
 
 注册请求弹框信息的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1710,8 +1650,6 @@ offRequestDialogInfo(callback?: RequestDialogInfoEvent): void
 
 注销请求弹框信息的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -1737,8 +1675,6 @@ offRequestDialogInfo(callback?: RequestDialogInfoEvent): void
 onHandleMemberPurchase(callback: HandleMemberPurchaseEvent): void
 
 注册处理购买会员事件的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1822,8 +1758,6 @@ offHandleMemberPurchase(callback?: HandleMemberPurchaseEvent): void
 
 注销处理购买会员事件的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -1849,8 +1783,6 @@ offHandleMemberPurchase(callback?: HandleMemberPurchaseEvent): void
 onQueryMemberPurchase(callback: QueryMemberPurchaseEvent): void
 
 注册查询购买会员事件的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1926,8 +1858,6 @@ offQueryMemberPurchase(callback?: QueryMemberPurchaseEvent): void
 
 注销查询购买会员事件的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -1953,8 +1883,6 @@ offQueryMemberPurchase(callback?: QueryMemberPurchaseEvent): void
 onQueryCustomContent(callback: QueryCustomContentEvent): void
 
 注册查询自定义内容事件的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2046,8 +1974,6 @@ offQueryCustomContent(callback?: QueryCustomContentEvent): void
 
 注销查询自定义内容事件的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -2073,8 +1999,6 @@ offQueryCustomContent(callback?: QueryCustomContentEvent): void
 onDownloadMediaEntity(callback: DownloadMediaEntityEvent): void
 
 注册下载媒体实体事件的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2169,8 +2093,6 @@ offDownloadMediaEntity(callback?: DownloadMediaEntityEvent): void
 
 注销下载媒体实体事件的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -2196,8 +2118,6 @@ offDownloadMediaEntity(callback?: DownloadMediaEntityEvent): void
 onSettingsChange(callback: SettingsChangeEvent): void
 
 注册设置改变事件的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2274,8 +2194,6 @@ offSettingsChange(callback?: SettingsChangeEvent): void
 
 注销设置改变事件的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -2301,8 +2219,6 @@ offSettingsChange(callback?: SettingsChangeEvent): void
 onProblemAndAdvice(callback: ProblemAndAdviceEvent): void
 
 注册问题与建议事件的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2373,8 +2289,6 @@ offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 
 注销问题与建议事件的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -2400,8 +2314,6 @@ offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 onPlayForSearch(callback: PlayForSearchEvent): void
 
 注册搜播事件的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2473,8 +2385,6 @@ offPlayForSearch(callback?: PlayForSearchEvent): void
 
 注销搜播事件的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -2500,8 +2410,6 @@ offPlayForSearch(callback?: PlayForSearchEvent): void
 onExecuteAction(callback: ExecuteActionEvent): void
 
 注册执行操作事件的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2559,8 +2467,6 @@ offExecuteAction(callback?: ExecuteActionEvent): void
 
 注销执行操作事件的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -2586,8 +2492,6 @@ offExecuteAction(callback?: ExecuteActionEvent): void
 onPlayMediaEntity(callback: PlayMediaEntityEvent): void
 
 注册播放媒体实体事件的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2640,8 +2544,6 @@ offPlayMediaEntity(callback?: PlayMediaEntityEvent): void
 
 注销播放媒体实体事件的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -2667,8 +2569,6 @@ offPlayMediaEntity(callback?: PlayMediaEntityEvent): void
 onFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 
 注册收藏媒体实体事件的监听。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2740,8 +2640,6 @@ offFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 
 注销收藏媒体实体事件的监听。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -2767,8 +2665,6 @@ offFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 setUserInfo(userInfo: UserInfo): Promise&lt;void&gt;
 
 向音频模板控制方同步用户信息。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2828,8 +2724,6 @@ setDialogCommand(type: DialogControlType, dialogInfo: DialogInfo): Promise&lt;vo
 
 向音频模板控制方同步弹框命令。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -2883,8 +2777,6 @@ export class TemplateManager {
 setCurrentSingle(single: Single): Promise&lt;void&gt;
 
 向音频模板控制方同步当前单曲。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2972,8 +2864,6 @@ setMediaEntities(entities: MediaEntity[]): Promise&lt;void&gt;
 
 向音频模板控制方同步媒体资源变更信息。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -3020,8 +2910,6 @@ export class TemplateManager {
 setTabContent(tabId: string, tabContent: MediaTabContent): Promise&lt;void&gt;
 
 向音频模板控制方同步标签页内容信息。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3086,8 +2974,6 @@ setPlaylist(playlist: PageMediaEntity): Promise&lt;void&gt;
 
 向音频模板控制方同步播放列表。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -3146,8 +3032,6 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise&lt;void&gt;
 
 向音频模板控制方同步单曲下载状态信息。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -3173,8 +3057,6 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise&lt;void&gt;
 setCustomElements(actionType: ActionType, customType: CustomType, customElement: CustomElement): Promise&lt;void&gt;
 
 向音频模板控制方同步自定义元素变更信息。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3240,8 +3122,6 @@ setSettings(settingItems: SettingItem[]): Promise&lt;void&gt;
 
 向音频模板控制方同步设置信息。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -3289,8 +3169,6 @@ reportExecuteAction(actionType: string, params: string): Promise&lt;void&gt;
 
 向音频模板控制方同步执行操作信息。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -3332,8 +3210,6 @@ export class TemplateManager {
 setExtensionAbility(want: WantAgent): Promise&lt;void&gt;
 
 向音频模板控制方同步用于被拉起的Ability。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3394,8 +3270,6 @@ export class TemplateManager {
 destroy(): Promise&lt;void&gt;
 
 销毁音频模板实例。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

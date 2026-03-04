@@ -6,8 +6,6 @@
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
-
-
 > **说明：**
 >
 > 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -16,21 +14,17 @@
 
 表示音频模板类型的枚举。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称    | 值         | 说明     |
-| ------- | ---------- | -------- |
-| DEFAULT | 'smartCar' | 智选车。 |
+| 名称    | 值         | 说明          |
+| ------- | ---------- |-------------|
+| DEFAULT | 'smartCar' | 音频模板类型的默认值。 |
 
 ## EntityType
 
 表示媒体资源类型的枚举。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -50,8 +44,6 @@
 
 表示媒体资源的播放状态的枚举。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -68,25 +60,21 @@
 
 ## Sort
 
-表示排序类型的枚举。
-
-
+表示查询到的列表数据排序类型的枚举。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称          | 值   | 说明   |
-| ------------- | ---- | ------ |
-| NONE          | 0    | 无。   |
-| ORDER         | 1    | 正序。 |
-| REVERSE_ORDER | 2    | 倒序。 |
+| 名称          | 值   | 说明        |
+| ------------- | ---- |-----------|
+| NONE          | 0    | 默认值，默认正序。 |
+| ORDER         | 1    | 正序。       |
+| REVERSE_ORDER | 2    | 倒序。       |
 
 ## SettingType
 
 表示设置类型的枚举。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -102,28 +90,24 @@
 
 表示弹框类型的枚举。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称     | 值   | 说明       |
-| -------- | ---- | ---------- |
-| NORMAL   | 0    | 正常弹框。 |
-| INTERNET | 1    | 联网弹框。 |
-| FLOW     | 2    | 流程弹框。 |
-| PAID     | 3    | 付费弹框。 |
-| VIP      | 4    | VIP弹框。  |
-| LOGIN    | 5    | 登录弹框。 |
-| ERROR    | 6    | 错误弹框。 |
-| UNKNOWN  | 7    | 未知弹框。 |
+| 名称     | 值   | 说明     |
+| -------- | ---- |--------|
+| NORMAL   | 0    | 普通弹框。  |
+| INTERNET | 1    | 联网弹框。  |
+| FLOW     | 2    | 流程弹框。  |
+| PAID     | 3    | 付费弹框。  |
+| VIP      | 4    | VIP弹框。 |
+| LOGIN    | 5    | 登录弹框。  |
+| ERROR    | 6    | 错误弹框。  |
+| UNKNOWN  | 7    | 未知弹框。  |
 
 ## ButtonType
 
 表示按钮类型的枚举。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -138,22 +122,18 @@
 
 表示会员购买类型的枚举。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称   | 值       | 说明   |
-| ------ | -------- | ------ |
-| NORMAL | 'normal' | 常规。 |
-| BANNER | 'banner' | 横幅。 |
+| 名称   | 值       | 说明      |
+| ------ | -------- |---------|
+| NORMAL | 'normal' | 常规。     |
+| BANNER | 'banner' | 会员推广海报。 |
 
 ## SearchPlayInfoType
 
 表示搜播信息类型的枚举。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -167,8 +147,6 @@
 ## DownloadStatus
 
 表示下载状态类型的枚举。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

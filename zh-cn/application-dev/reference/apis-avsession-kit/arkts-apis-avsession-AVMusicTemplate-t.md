@@ -6,8 +6,6 @@
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
-
-
 > **说明：**
 >
 > 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -18,8 +16,6 @@ type NoParamAsyncCallback = () => Promise&lt;void&gt;
 
 定义无参数的异步回调函数类型。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -29,8 +25,6 @@ type NoParamAsyncCallback = () => Promise&lt;void&gt;
 type QueryMainTabsEvent = () => Promise<MediaTab[]>
 
 查询主选项卡的事件。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -51,8 +45,6 @@ type QueryMainTabsEvent = () => Promise<MediaTab[]>
 type QueryMediaTabContentEvent = (tabId: string) => Promise&lt;MediaTabContent&gt;
 
 查询媒体标签页内容的事件类型。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -80,8 +72,6 @@ type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise&lt;PageM
 
 查询媒体实例的事件类型。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -107,8 +97,6 @@ type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise&lt;PageM
 type QueryCompilationEvent = (compilationId: string, pageIndex: int) => Promise&lt;PageMediaEntity&gt;
 
 查询合集的事件类型。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -137,8 +125,6 @@ type QueryPlaylistEvent = (pageIndex: int, sort: Sort) => Promise&lt;PageMediaEn
 
 查询播放列表的事件类型。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -166,8 +152,6 @@ type QueryCurrentSingleEvent = () => Promise&lt;Single&gt;
 
 查询当前单曲的事件类型。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -187,8 +171,6 @@ type QueryCurrentSingleEvent = () => Promise&lt;Single&gt;
 type QueryCompilationByKeywordEvent = (keyword: string) => Promise&lt;Compilation[]&gt;
 
 按关键字查询合集的事件类型。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -215,8 +197,6 @@ type QueryCompilationByKeywordEvent = (keyword: string) => Promise&lt;Compilatio
 type QueryMediaEntityByKeywordEvent = (keyword: string, searchType: EntityType, pageIndex: int) => Promise&lt;PageMediaEntity&gt;
 
 按关键字查询媒体实体的事件类型。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -246,8 +226,6 @@ type QueryRecommendMediaEntityListEvent = () => Promise&lt;MediaEntity[]&gt;
 
 查询推荐媒体实体列表的事件类型。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -267,8 +245,6 @@ type QueryRecommendMediaEntityListEvent = () => Promise&lt;MediaEntity[]&gt;
 type QueryHotWordsEvent = () => Promise&lt;string[]&gt;
 
 查询热词的事件类型。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -290,8 +266,6 @@ type QuerySearchHistoryEvent = () => Promise&lt;string[]&gt;
 
 查询搜索历史的事件类型。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -312,8 +286,6 @@ type ClearSearchHistoryEvent = () => Promise&lt;OperResult&gt;
 
 清除搜索历史的事件类型。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -333,8 +305,6 @@ type ClearSearchHistoryEvent = () => Promise&lt;OperResult&gt;
 type LoginEvent = (controlType: LoginType, id?: string) => Promise&lt;QrCodeInfo[]&gt;
 
 登录的事件类型。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -365,8 +335,6 @@ type LoginType = 'queryLoginInfo' | 'refreshLoginInfo' | 'cancel' | 'logout'
 
 该类型可取的值为下表字符串。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -383,8 +351,6 @@ type LoginType = 'queryLoginInfo' | 'refreshLoginInfo' | 'cancel' | 'logout'
 type RequestDialogInfoEvent = (actionType: DialogActionType, actionInfo?: DialogActionInfo) => Promise&lt;DialogInfo&gt;
 
 请求对话框信息的事件类型。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -415,8 +381,6 @@ type DialogActionType = 'open' | 'close' | 'refresh'
 
 该类型可取的值为下表字符串。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -432,8 +396,6 @@ type DialogActionType = 'open' | 'close' | 'refresh'
 type HandleMemberPurchaseEvent = (info: MemberPurchaseInfo) => Promise&lt;DialogInfo&gt;
 
 处理购买会员的事件类型。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -461,8 +423,6 @@ type QueryMemberPurchaseEvent = (memberPurchaseType: MemberPurchaseType) => Prom
 
 查询购买会员的事件类型。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -488,8 +448,6 @@ type QueryMemberPurchaseEvent = (memberPurchaseType: MemberPurchaseType) => Prom
 type QueryCustomContentEvent = (queryType: CustomType[]) => Promise&lt;CustomElement&gt;
 
 查询自定义内容的事件类型。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -519,8 +477,6 @@ type CustomType = 'USER_INFO' | 'TAB' | 'COMPILATION' | 'SETTINGS'
 
 该类型可取的值为下表字符串。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -537,8 +493,6 @@ type CustomType = 'USER_INFO' | 'TAB' | 'COMPILATION' | 'SETTINGS'
 type DownloadMediaEntityEvent = (controlType: DownloadControlType, mediaEntity: MediaEntity) => Promise&lt;OperResult&gt;
 
 下载媒体实体的事件类型。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -569,8 +523,6 @@ type DownloadControlType = 'startDownload' | 'deleteDownload' | 'resumeDownload'
 
 该类型可取的值为下表字符串。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -587,8 +539,6 @@ type DownloadControlType = 'startDownload' | 'deleteDownload' | 'resumeDownload'
 type SettingsChangeEvent = (settingItem: SettingItem) => Promise&lt;SettingItem&gt;
 
 设置改变的事件类型。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -616,8 +566,6 @@ type ProblemAndAdviceEvent = (advice: string) => Promise&lt;OperResult&gt;
 
 问题与建议活动的事件类型。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -643,8 +591,6 @@ type ProblemAndAdviceEvent = (advice: string) => Promise&lt;OperResult&gt;
 type PlayForSearchEvent = (command: SearchPlayInfoType, args: SearchPlayInfo) => Promise&lt;OperResult&gt;
 
 搜播的事件类型。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -673,8 +619,6 @@ type ExecuteActionEvent = (actionType: string, params: string) => Promise&lt;str
 
 执行操作的事件类型。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -702,8 +646,6 @@ type PlayMediaEntityEvent = (mediaEntity: MediaEntity) => Promise&lt;void&gt;
 
 播放媒体实体的事件类型。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -723,8 +665,6 @@ type PlayMediaEntityEvent = (mediaEntity: MediaEntity) => Promise&lt;void&gt;
 type FavoriteMediaEntityEvent = (actionType: MediaFavoriteType, mediaEntity: MediaEntity) => Promise&lt;OperResult&gt;
 
 收藏媒体实体的事件类型。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -755,8 +695,6 @@ type MediaFavoriteType = 'addFavorite' | 'removeFavorite'
 
 该类型可取的值为下表字符串。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -773,8 +711,6 @@ type DialogControlType = 'open' | 'close' | 'refresh' | 'toast'
 弹框控制类型的定义。
 
 该类型可取的值为下表字符串。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -795,8 +731,6 @@ type ActionType = 'add' | 'remove'
 
 该类型可取的值为下表字符串。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -811,8 +745,6 @@ type ActionType = 'add' | 'remove'
 type ReportDialogCommandEvent = (type: DialogControlType, buttonInfo: DialogInfo) => void
 
 上报弹框命令的事件类型。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -835,8 +767,6 @@ type ReportTabContentEvent = (tabId: string, tabContent: MediaTabContent) => voi
 
 上报标签页内容的事件类型。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -857,8 +787,6 @@ type ReportTabContentEvent = (tabId: string, tabContent: MediaTabContent) => voi
 type ReportCustomElementsChangeEvent = (actionType: ActionType, customType: CustomType, customElement: CustomElement) => void
 
 上报自定义元素改变的事件类型。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -882,8 +810,6 @@ type ReportExecuteActionEvent = (actionType: string, params: string) => void
 
 上报执行动作的事件类型。
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -904,8 +830,6 @@ type ReportExecuteActionEvent = (actionType: string, params: string) => void
 type ReportExecuteAbilityEvent = (want: WantAgent) => void
 
 通知音频模板控制方拉起指定三方应用界面的信息的事件类型。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

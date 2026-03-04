@@ -6,8 +6,6 @@
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
-
-
 > **说明：**
 >
 > 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -23,8 +21,6 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 createAVMusicTemplate(accessType: AVMusicTemplateType): AVMusicTemplate
 
 创建音频模板，返回音频模板实例。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -106,15 +102,11 @@ export class TemplateManager {
 }
 ```
 
-
-
 ## avMusicTemplate.createAVMusicTemplateController
 
 createAVMusicTemplateController(sessionId: string): AVMusicTemplateController
 
 创建音频模板控制器，返回音频模板控制器对象。
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -331,8 +323,6 @@ getAllAVMusicTemplateDescriptors(userId?: int): AVMusicTemplateDescriptor[]
 
 **需要权限：**ohos.permission.MANAGE_MEDIA_RESOURCES
 
-
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
@@ -397,8 +387,6 @@ onAVMusicTemplateCreate(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): vo
 
 **需要权限：**ohos.permission.MANAGE_MEDIA_RESOURCES
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -461,8 +449,6 @@ offAVMusicTemplateCreate(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;): 
 
 **需要权限：**ohos.permission.MANAGE_MEDIA_RESOURCES
 
-
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -510,8 +496,6 @@ onAVMusicTemplateDestroy(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): v
 注册音频模板销毁监听。
 
 **需要权限：**ohos.permission.MANAGE_MEDIA_RESOURCES
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -565,8 +549,6 @@ offAVMusicTemplateDestroy(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;):
 注销音频模板销毁监听。
 
 **需要权限：**ohos.permission.MANAGE_MEDIA_RESOURCES
-
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
