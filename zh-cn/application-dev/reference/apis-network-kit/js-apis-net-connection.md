@@ -2460,7 +2460,7 @@ console.info(result);  // 预期结果：www.example.com
 
 createVlanInterface(ifName: string, vlanId: int): Promise\<void\>
 
-在网卡上创建vlan。使用Promise异步回调。
+在指定的以太网物理网卡上，创建一个由 vlanId 指定的 VLAN 虚拟网络接口。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2491,6 +2491,7 @@ createVlanInterface(ifName: string, vlanId: int): Promise\<void\>
 | ------- | --------------------------------- |
 | 201 | Permission denied. |
 | 202 | Nonsystem applications use system APIs. |
+| 2100001 | Invalid parameter value.          |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
 | 2100400 | The input network interface is incorrect. |
@@ -2513,7 +2514,7 @@ connection.createVlanInterface(ifName, vlanId).then(() => {
 
 destroyVlanInterface(ifName: string, vlanId: int): Promise\<void\>
 
-在网卡上删除vlan。使用Promise异步回调。
+删除指定以太网物理网卡上，由 vlanId 指定的 VLAN 虚拟网络接口。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2544,6 +2545,7 @@ destroyVlanInterface(ifName: string, vlanId: int): Promise\<void\>
 | ------- | --------------------------------- |
 | 201 | Permission denied. |
 | 202 | Nonsystem applications use system APIs. |
+| 2100001 | Invalid parameter value.          |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
 | 2100400 | The input network interface is incorrect. |
@@ -2566,7 +2568,7 @@ connection.destroyVlanInterface(ifName, vlanId).then(() => {
 
 addVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
 
-在vlan上配置IP地址和掩码。使用Promise异步回调。
+为指定以太网网卡上对应 vlanId 的 VLAN 虚拟网络接口，配置指定的 IP 地址及子网掩码。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2598,6 +2600,7 @@ addVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
 | ------- | --------------------------------- |
 | 201 | Permission denied. |
 | 202 | Nonsystem applications use system APIs. |
+| 2100001 | Invalid parameter value.          |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
 | 2100400 | The input network interface is incorrect. |
@@ -2629,7 +2632,7 @@ connection.addVlanIp(ifName, vlanId, address).then(() => {
 
 deleteVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
 
-在vlan上删除已配置的IP地址和掩码。使用Promise异步回调。
+从指定以太网网卡上对应 vlanId 的 VLAN 虚拟网络接口中，删除已配置的 IP 地址及子网掩码。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2661,6 +2664,7 @@ deleteVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
 | ------- | --------------------------------- |
 | 201 | Permission denied. |
 | 202 | Nonsystem applications use system APIs. |
+| 2100001 | Invalid parameter value.          |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
 | 2100400 | The input network interface is incorrect. |
