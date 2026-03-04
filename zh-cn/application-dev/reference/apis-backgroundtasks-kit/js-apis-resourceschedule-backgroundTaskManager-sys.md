@@ -170,7 +170,7 @@ try {
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
-| WIFI_INTERACTION        | 7    | WLAN相关。<br>**系统API**: 此接口为系统接口。 |
+| WIFI_INTERACTION        | 7    | WLAN相关。<br>**系统接口：** 此接口为系统接口。 |
 
 ## EfficiencyResourcesRequest
 
