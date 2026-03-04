@@ -270,7 +270,7 @@ let num = 10; // 编译器自动推断num为number类型
 ``` TypeScript
 interface Person {
   name: string;
-  age?: number;  // age 是可选属性
+  age?: number;  // age是可选属性
 }
 
 const person: Person = {
