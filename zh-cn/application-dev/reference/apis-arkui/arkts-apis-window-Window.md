@@ -16265,6 +16265,8 @@ onFreeWindowModeChange(callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
@@ -16355,6 +16357,8 @@ offFreeWindowModeChange(callback?: Callback&lt;boolean&gt;): void
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('freeWindowModeChange')](#offfreewindowmodechange22)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Sta起始版本：** 23
 

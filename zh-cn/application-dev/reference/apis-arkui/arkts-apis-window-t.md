@@ -120,6 +120,8 @@ type Callback<T, V = void> = (data: T) => V
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
