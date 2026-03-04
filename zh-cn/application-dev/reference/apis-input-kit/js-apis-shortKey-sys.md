@@ -1,5 +1,12 @@
 #  @ohos.multimodalInput.shortKey (系统预置全局快捷键)(系统接口)
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 通过本模块接口，可以设置快捷键拉起Ability的延迟时间，如设置长按快捷键3s后再截屏等。
 
 > **说明：**
@@ -23,7 +30,7 @@ ArkTS-Dyn： setKeyDownDuration(businessKey: string, delay: number, callback: As
 
 ArkTS-Sta： setKeyDownDuration(businessKey: string, delay: int, callback: AsyncCallback&lt;void&gt;): void
 
-设置快捷键拉起Ability的延迟时间，使用Callback异步回调。
+设置快捷键拉起Ability的延迟时间，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.ShortKey
 
@@ -48,10 +55,13 @@ ArkTS-Sta： setKeyDownDuration(businessKey: string, delay: int, callback: Async
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
 import { shortKey } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -61,12 +71,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            shortKey.setKeyDownDuration("businessId", 500, (error) => {
+            shortKey.setKeyDownDuration("businessId", 500, (error: BusinessError) => {
               if (error) {
                 console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set key down duration success`);
+              console.info(`Set key down duration success`);
             });
           } catch (error) {
             console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -97,7 +107,7 @@ struct Index {
               console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
               return;
             }
-            console.log(`Set key down duration success`);
+            console.info(`Set key down duration success`);
           });
           } catch (error) {
            console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -131,9 +141,9 @@ ArkTS-Sta：setKeyDownDuration(businessKey: string, delay: int): Promise&lt;void
 
 **返回值**：
 
-| 参数          | 说明          |
+| 类型          | 说明          |
 | ------------- | ------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -144,12 +154,13 @@ ArkTS-Sta：setKeyDownDuration(businessKey: string, delay: int): Promise&lt;void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { shortKey } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -160,8 +171,10 @@ struct Index {
         .onClick(() => {
           try {
             shortKey.setKeyDownDuration("businessId", 500).then(() => {
-              console.log(`Set key down duration success`);
-            });
+              console.info(`Set key down duration success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set key down failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -200,7 +213,7 @@ struct Index {
 
 ## FingerprintAction<sup>12+</sup>
 
-按键事件类型的枚举。
+指纹手势事件类型的枚举。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -213,13 +226,12 @@ struct Index {
 | DOWN                 | 0 | 按下事件。           |
 | UP                   | 1 | 抬起事件。           |
 | SLIDE                | 2 | 滑动事件。           |
-| RETOUCH              | 3 | 滑动事件。           |
-| CLICK                | 4 | 点击事件。           |
-
+| RETOUCH              | 3 | 第二次按下事件。           |
+| CLICK                | 4 | 双触事件。           |
 
 ## FingerprintEvent<sup>12+</sup>
 
-按键事件的类型和相对按键的偏移位置。
+指纹手势事件的类型和相对侧边指纹器件的偏移位置。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -229,6 +241,6 @@ struct Index {
 
 | 名称      | 类型                                       |只读   | 可选  |说明                    |
 | --------  | ------------------------                  |-------|------ |--------               |
-| action    | [FingerprintAction](#fingerprintaction12)   | 否    |  否   |按键事件类型。           |
-| distanceX | ArkTS-Dyn: number<br/>ArkTS-Sta: double      | 否    |  否   |相对于光标位置的x轴偏移量（正数表示向右移动，负数表示向左移动）。 |
-| distanceY | ArkTS-Dyn: number<br/>ArkTS-Sta: double     | 否    |  否   |相对于光标位置的y轴偏移量（正数表示向上移动，负数表示向下移动）。 |
+| action    | [FingerprintAction](#fingerprintaction12)   | 否    |  否   | 指纹手势事件类型的枚举。           |
+| distanceX | ArkTS-Dyn: number<br/>ArkTS-Sta: double      | 否    |  否   | 相对于侧边指纹器件短轴偏移量（正数表示向右移动，负数表示向左移动）。 |
+| distanceY | ArkTS-Dyn: number<br/>ArkTS-Sta: double     | 否    |  否   | 相对于侧边指纹器件长轴偏移量（正数表示向上移动，负数表示向下移动）。 |

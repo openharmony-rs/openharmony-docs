@@ -1,12 +1,19 @@
-# @ohos.multimodalInput.pointer (鼠标指针)
+# @ohos.multimodalInput.pointer (鼠标光标)
 
-本模块提供鼠标指针管理能力，包括查询、设置鼠标指针属性。
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
+本模块提供鼠标光标管理能力，包括查询、设置鼠标光标属性。
 
 > **说明**：
 >
 >- 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->- 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -18,7 +25,7 @@ import { pointer } from '@kit.InputKit';
 
 setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-设置鼠标指针显示或者隐藏，使用Callback异步回调。
+设置当前窗口的鼠标光标是否显示，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -30,7 +37,7 @@ setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名       | 类型                        | 必填   | 说明                                       |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
-| visible  | boolean                   | 是    | 鼠标指针是否显示。true表示显示，false表示不显示。 |
+| visible  | boolean                   | 是    | 当前窗口鼠标光标是否显示。true表示显示，false表示不显示。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。 |
 
 **错误码**：
@@ -41,6 +48,8 @@ setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801  | Capability not supported. |
+
+**示例**：
 
 ArkTS-Dyn示例:
 
@@ -60,7 +69,7 @@ struct Index {
                 console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set pointer visible success`);
+              console.info(`Set pointer visible success`);
             });
           } catch (error) {
             console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -91,7 +100,7 @@ struct Index {
                 console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set pointer visible success`);
+              console.info(`Set pointer visible success`);
             });
           } catch (error) {
             console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -106,7 +115,7 @@ struct Index {
 
 setPointerVisible(visible: boolean): Promise&lt;void&gt;
 
-设置鼠标指针显示或者隐藏，使用Promise异步回调。
+设置当前窗口的鼠标光标是否显示，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -118,13 +127,13 @@ setPointerVisible(visible: boolean): Promise&lt;void&gt;
 
 | 参数名      | 类型      | 必填   | 说明                                       |
 | ------- | ------- | ---- | ---------------------------------------- |
-| visible | boolean | 是    | 鼠标指针是否显示。true表示显示，false表示不显示。 |
+| visible | boolean | 是    | 当前窗口鼠标光标是否显示。true表示显示，false表示不显示。 |
 
 **返回值**：
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -135,7 +144,7 @@ setPointerVisible(visible: boolean): Promise&lt;void&gt;
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801  | Capability not supported. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -151,7 +160,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerVisible(false).then(() => {
-              console.log(`Set pointer visible success`);
+              console.info(`Set pointer visible success`);
             });
           } catch (error) {
             console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -178,7 +187,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerVisible(false).then(() => {
-              console.log(`Set pointer visible success`);
+              console.info(`Set pointer visible success`);
             });
           } catch (error) {
             console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -193,7 +202,7 @@ struct Index {
 
 setPointerVisibleSync(visible: boolean): void
 
-设置鼠标指针的显示或隐藏，使用同步方式。
+设置当前窗口鼠标光标的显示状态，使用同步方式。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -205,7 +214,7 @@ setPointerVisibleSync(visible: boolean): void
 
 | 参数名      | 类型      | 必填   | 说明                                       |
 | ------- | ------- | ---- | ---------------------------------------- |
-| visible | boolean | 是    | 鼠标指针是否显示。true表示显示，false表示不显示。 |
+| visible | boolean | 是    | 当前窗口鼠标光标是否显示。true表示显示，false表示不显示。 |
 
 **错误码**：
 
@@ -215,7 +224,7 @@ setPointerVisibleSync(visible: boolean): void
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -231,7 +240,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.setPointerVisibleSync(false);
-            console.log(`Set pointer visible success`);
+            console.info(`Set pointer visible success`);
           } catch (error) {
             console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -270,7 +279,7 @@ struct Index {
 
 isPointerVisible(callback: AsyncCallback&lt;boolean&gt;): void
 
-获取鼠标指针显示状态，使用callback异步回调。
+获取鼠标光标显示状态，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -282,7 +291,7 @@ isPointerVisible(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名       | 类型                           | 必填   | 说明             |
 | -------- | ---------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数，返回鼠标指针状态，true为显示，false为隐藏。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数，返回鼠标光标状态，true为显示，false为隐藏。 |
 
 **错误码**：
 
@@ -291,6 +300,8 @@ isPointerVisible(callback: AsyncCallback&lt;boolean&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**：
 
 ArkTS-Dyn示例:
 
@@ -310,7 +321,7 @@ struct Index {
                 console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
+              console.info(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
             });
           } catch (error) {
             console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -341,7 +352,7 @@ struct Index {
                 console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
+              console.info(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
             });
           } catch (error) {
             console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -356,7 +367,7 @@ struct Index {
 
 isPointerVisible(): Promise&lt;boolean&gt;
 
-获取鼠标指针显示状态，使用Promise异步回调。
+获取鼠标光标显示状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -368,7 +379,9 @@ isPointerVisible(): Promise&lt;boolean&gt;
 
 | 类型                     | 说明                  |
 | ---------------------- | ------------------- |
-| Promise&lt;boolean&gt; | Promise对象，返回鼠标指针状态查询结果。true代表显示状态，false代表隐藏状态。 |
+| Promise&lt;boolean&gt; | Promise对象，返回鼠标光标状态查询结果。true代表显示状态，false代表隐藏状态。 |
+
+**示例**：
 
 ArkTS-Dyn示例:
 
@@ -384,7 +397,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.isPointerVisible().then((visible: boolean) => {
-              console.log(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
+              console.info(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
             });
           } catch (error) {
             console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -411,7 +424,7 @@ struct Index {
         .onClick(() => {
           try {
             pointer.isPointerVisible().then((visible: boolean) => {
-              console.log(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
+              console.info(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
             });
           } catch (error) {
             console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -426,7 +439,7 @@ struct Index {
 
 isPointerVisibleSync(): boolean
 
-使用同步方式获取鼠标指针显示或者隐藏。
+获取当前窗口鼠标光标的显示状态，使用同步方式。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -438,9 +451,9 @@ isPointerVisibleSync(): boolean
 
 | 类型                     | 说明                  |
 | ---------------------- | ------------------- |
-| boolean | 返回鼠标指针显示或隐藏状态。true代表显示状态，false代表隐藏状态。 |
+| boolean | 返回鼠标光标显示或隐藏状态。true代表显示状态，false代表隐藏状态。 |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例:
 
@@ -456,7 +469,7 @@ struct Index {
         .onClick(() => {
           try {
             let visible: boolean = pointer.isPointerVisibleSync();
-            console.log(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
+            console.info(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
           } catch (error) {
             console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -482,7 +495,7 @@ struct Index {
         .onClick(() => {
           try {
             let visible: boolean = pointer.isPointerVisibleSync();
-            console.log(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
+            console.info(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
           } catch (error) {
             console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -498,7 +511,7 @@ ArkTS-Dyn: getPointerStyle(windowId: number, callback: AsyncCallback&lt;PointerS
 
 ArkTS-Sta: getPointerStyle(windowId: int, callback: AsyncCallback&lt;PointerStyle&gt;): void
 
-获取鼠标样式类型，使用Callback异步回调。
+获取指定窗口的鼠标样式类型，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -521,6 +534,8 @@ ArkTS-Sta: getPointerStyle(windowId: int, callback: AsyncCallback&lt;PointerStyl
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例**：
+
 ArkTS-Dyn示例:
 
 ```js
@@ -542,12 +557,12 @@ struct Index {
             }
             let windowId = win.getWindowProperties().id;
             if (windowId < 0) {
-              console.log(`Invalid windowId`);
+              console.info(`Invalid windowId`);
               return;
             }
             try {
               pointer.getPointerStyle(windowId, (error: Error, style: pointer.PointerStyle) => {
-                console.log(`Get pointer style success, style: ${JSON.stringify(style)}`);
+                console.info(`Get pointer style success, style: ${JSON.stringify(style)}`);
               });
             } catch (error) {
               console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -577,7 +592,7 @@ struct Index {
           let windowId: int = 100;
           try {
             pointer.getPointerStyle(windowId, (error:  BusinessError<void> | null, style: pointer.PointerStyle  | undefined) => {
-              console.log(`Get pointer style success, style: ${JSON.stringify(style)}`);
+              console.info(`Get pointer style success, style: ${JSON.stringify(style)}`);
             });
           } catch (error) {
             console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -612,7 +627,7 @@ ArkTS-Sta: getPointerStyle(windowId: int): Promise&lt;PointerStyle&gt;
 
 | 类型                                       | 说明                  |
 | ---------------------------------------- | ------------------- |
-| Promise&lt;[PointerStyle](#pointerstyle)&gt; | Promise实例，返回鼠标样式类型。 |
+| Promise&lt;[PointerStyle](#pointerstyle)&gt; | Promise对象，返回鼠标样式类型。 |
 
 **错误码**：
 
@@ -621,6 +636,8 @@ ArkTS-Sta: getPointerStyle(windowId: int): Promise&lt;PointerStyle&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**：
 
 ArkTS-Dyn示例:
 
@@ -643,12 +660,12 @@ struct Index {
             }
             let windowId = win.getWindowProperties().id;
             if (windowId < 0) {
-              console.log(`Invalid windowId`);
+              console.info(`Invalid windowId`);
               return;
             }
             try {
               pointer.getPointerStyle(windowId).then((style: pointer.PointerStyle) => {
-                console.log(`Get pointer style success, style: ${JSON.stringify(style)}`);
+                console.info(`Get pointer style success, style: ${JSON.stringify(style)}`);
               });
             } catch (error) {
               console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -678,7 +695,7 @@ struct Index {
           let windowId: int = 100;
           try {
             pointer.getPointerStyle(windowId).then((style: pointer.PointerStyle) => {
-              console.log(`Get pointer style success, style: ${JSON.stringify(style)}`);
+              console.info(`Get pointer style success, style: ${JSON.stringify(style)}`);
             });
           } catch (error) {
             console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -695,7 +712,7 @@ ArkTS-Dyn: getPointerStyleSync(windowId: number): PointerStyle
 
 ArkTS-Sta: getPointerStyleSync(windowId: int): PointerStyle
 
-查询鼠标样式类型，如向东箭头、向西箭头、向南箭头、向北箭头等。
+查询指定窗口的鼠标样式类型，如向东箭头、向西箭头、向南箭头、向北箭头等。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -707,7 +724,7 @@ ArkTS-Sta: getPointerStyleSync(windowId: int): PointerStyle
 
 | 参数名     | 类型   | 必填 | 说明     |
 | -------- | ------ | ---- | -------- |
-| windowId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyleSync]
+| windowId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyleSync](#pointersetpointerstylesync10)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
 
 **返回值**：
 
@@ -723,7 +740,7 @@ ArkTS-Sta: getPointerStyleSync(windowId: int): PointerStyle
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -740,7 +757,7 @@ struct Index {
           let windowId = -1;
           try {
             let style: pointer.PointerStyle = pointer.getPointerStyleSync(windowId);
-            console.log(`Get pointer style success, style: ${JSON.stringify(style)}`);
+            console.info(`Get pointer style success, style: ${JSON.stringify(style)}`);
           } catch (error) {
             console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -768,7 +785,7 @@ struct Index {
           let windowId: int = 100;
           try {
             let style: pointer.PointerStyle = pointer.getPointerStyleSync(windowId);
-            console.log(`Get pointer style success, style: ${JSON.stringify(style)}`);
+            console.info(`Get pointer style success, style: ${JSON.stringify(style)}`);
           } catch (error) {
             console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -784,7 +801,7 @@ ArkTS-Dyn: setPointerStyle(windowId: number, pointerStyle: PointerStyle, callbac
 
 ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle, callback: AsyncCallback&lt;void&gt;): void
 
-设置鼠标样式类型，使用Callback异步回调。
+设置指定窗口的鼠标样式类型，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -796,7 +813,7 @@ ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle, callback: 
 
 | 参数名           | 类型                             | 必填   | 说明                                  |
 | ------------ | ------------------------------ | ---- | ----------------------------------- |
-| windowId     | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口id。当windowId的值为-1，表示设置全局的鼠标样式，需要系统应用权限。 |
+| windowId     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                         | 是    | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](#pointergetpointerstyle)获取。 |
 | pointerStyle | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。                             |
 | callback     | AsyncCallback&lt;void&gt;      | 是    | 回调函数。 |
 
@@ -807,6 +824,8 @@ ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle, callback: 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**：
 
 ArkTS-Dyn示例:
 
@@ -829,12 +848,12 @@ struct Index {
             }
             let windowId = win.getWindowProperties().id;
             if (windowId < 0) {
-              console.log(`Invalid windowId`);
+              console.info(`Invalid windowId`);
               return;
             }
             try {
               pointer.setPointerStyle(windowId, pointer.PointerStyle.CROSS, error => {
-                console.log(`Set pointer style success`);
+                console.info(`Set pointer style success`);
               });
             } catch (error) {
               console.error(`Set pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -865,7 +884,7 @@ struct Index {
           try {
             pointer.setPointerStyle(windowId, pointer.PointerStyle.CROSS,
               (error: BusinessError<void> | null, data: undefined) => {
-                console.log(`Set pointer style success`);
+                console.info(`Set pointer style success`);
               });
           } catch (error) {
             console.error(`Set pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -882,7 +901,7 @@ ArkTS-Dyn: setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promis
 
 ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle): Promise&lt;void&gt;
 
-设置鼠标样式类型，使用Promise异步回调。
+设置指定窗口的鼠标样式类型，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -894,14 +913,14 @@ ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle): Promise&l
 
 | 参数名                  | 类型                             | 必填   | 说明               |
 | ------------------- | ------------------------------ | ---- | ---------------- |
-| windowId            | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口id。当windowId的值为-1，表示设置全局的鼠标样式，需要系统应用权限。 |
+| windowId            | ArkTS-Dyn: number<br/>ArkTS-Sta: int                         | 是    | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](#pointergetpointerstyle-1)获取。       |
 | pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。          |
 
 **返回值**：
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -910,6 +929,8 @@ ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle): Promise&l
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**：
 
 ArkTS-Dyn示例:
 
@@ -932,12 +953,14 @@ struct Index {
             }
             let windowId = win.getWindowProperties().id;
             if (windowId < 0) {
-              console.log(`Invalid windowId`);
+              console.info(`Invalid windowId`);
               return;
             }
             try {
               pointer.setPointerStyle(windowId, pointer.PointerStyle.CROSS).then(() => {
-                console.log(`Set pointer style success`);
+                console.info(`Set pointer style success`);
+              }).catch((error: BusinessError) => {
+               console.error(`Set pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
               });
             } catch (error) {
               console.error(`Set pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -967,7 +990,7 @@ struct Index {
           let windowId: int = 100;
           try {
             pointer.setPointerStyle(windowId, pointer.PointerStyle.CROSS).then(() => {
-              console.log(`Set pointer style success`);
+              console.info(`Set pointer style success`);
             });
           } catch (error) {
             console.error(`Set pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -984,7 +1007,7 @@ ArkTS-Dyn: setPointerStyleSync(windowId: number, pointerStyle: PointerStyle): vo
 
 ArkTS-Sta: setPointerStyleSync(windowId: int, pointerStyle: PointerStyle): void
 
-设置鼠标样式类型，使用同步方式返回结果。
+设置指定窗口的鼠标样式类型，使用同步方式返回结果。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -996,7 +1019,7 @@ ArkTS-Sta: setPointerStyleSync(windowId: int, pointerStyle: PointerStyle): void
 
 | 参数名                  | 类型                             | 必填   | 说明               |
 | ------------------- | ------------------------------ | ---- | ---------------- |
-| windowId            | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口id。当windowId的值为-1，表示设置全局的鼠标样式，需要系统应用权限。 |
+| windowId            | ArkTS-Dyn: number<br/>ArkTS-Sta: int                         | 是    | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyleSync](#pointergetpointerstylesync10)获取。       |
 | pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。          |
 
 **错误码**：
@@ -1006,6 +1029,8 @@ ArkTS-Sta: setPointerStyleSync(windowId: int, pointerStyle: PointerStyle): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**：
 
 ArkTS-Dyn示例:
 
@@ -1028,12 +1053,12 @@ struct Index {
             }
             let windowId = win.getWindowProperties().id;
             if (windowId < 0) {
-              console.log(`Invalid windowId`);
+              console.info(`Invalid windowId`);
               return;
             }
             try {
               pointer.setPointerStyleSync(windowId, pointer.PointerStyle.CROSS);
-              console.log(`Set pointer style success`);
+              console.info(`Set pointer style success`);
             } catch (error) {
               console.error(`getPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
             }
@@ -1062,7 +1087,7 @@ struct Index {
           let windowId: int = 100;
           try {
             pointer.setPointerStyleSync(windowId, pointer.PointerStyle.CROSS);
-            console.log(`Set pointer style success`);
+            console.info(`Set pointer style success`);
           } catch (error) {
             console.error(`getPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1107,7 +1132,7 @@ struct Index {
 
 ## PointerStyle
 
-鼠标样式类型。
+鼠标光标样式类型。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1159,8 +1184,8 @@ struct Index {
 | HORIZONTAL_TEXT_CURSOR<sup>10+</sup> | 39 | 垂直文本选择 |![Horizontal_Text_Cursor.png](./figures/Horizontal_Text_Cursor.png)|
 | CURSOR_CROSS<sup>10+</sup> | 40 | 十字光标 |![Cursor_Cross.png](./figures/Cursor_Cross.png)|
 | CURSOR_CIRCLE<sup>10+</sup> | 41 | 圆形光标 |![Cursor_Circle.png](./figures/Cursor_Circle.png)|
-| LOADING<sup>10+</sup> | 42 | 正在载入动画光标 |![Loading.png](./figures/Loading.png)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| RUNNING<sup>10+</sup> | 43 | 后台运行中动画光标 |![Running.png](./figures/Running.png)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| LOADING<sup>10+</sup> | 42 | 正在载入动画光标<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |![Loading.png](./figures/Loading.png)|
+| RUNNING<sup>10+</sup> | 43 | 后台运行中动画光标<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |![Running.png](./figures/Running.png)|
 | MIDDLE_BTN_EAST_WEST<sup>18+</sup>          | 44   | 向东西滚动 |![MID_Btn_East_West.png](./figures/MID_Btn_East_West.png)|
 | RUNNING_LEFT<sup>22+</sup>         | 45   | 后台运行中动画光标(拓展1) |![Loading_Left.png](./figures/Loading_Left.png)|
 | RUNNING_RIGHT<sup>22+</sup>         | 46   | 后台运行中动画光标(拓展2) |![Loading_Right.png](./figures/Loading_Right.png)|
@@ -1177,7 +1202,7 @@ ArkTS-Dyn: setCustomCursor(windowId: number, pixelMap: image.PixelMap, focusX?: 
 
 ArkTS-Sta: setCustomCursor(windowId: int, pixelMap: image.PixelMap, focusX?: int, focusY?: int): Promise&lt;void&gt;
 
-设置自定义光标样式，使用Promise异步回调。
+设置指定窗口的自定义光标样式，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1189,7 +1214,7 @@ ArkTS-Sta: setCustomCursor(windowId: int, pixelMap: image.PixelMap, focusX?: int
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| windowId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口id。                          |
+| windowId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口ID。                          |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 自定义光标资源。 |
 | focusX  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0。 |
 | focusY  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0。 |
@@ -1198,7 +1223,7 @@ ArkTS-Sta: setCustomCursor(windowId: int, pixelMap: image.PixelMap, focusX?: int
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -1207,6 +1232,8 @@ ArkTS-Sta: setCustomCursor(windowId: int, pixelMap: image.PixelMap, focusX?: int
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**：
 
 ArkTS-Dyn示例:
 
@@ -1224,22 +1251,25 @@ struct Index {
       Text()
         .onClick(() => {
           // app_icon为示例资源，请开发者根据实际需求配置资源文件。
-          this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
+          this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent(
+            $r("app.media.app_icon").id, (error: BusinessError, svgFileData: Uint8Array) => {
             const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
-            let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
-            let svgDecodingOptions: image.DecodingOptions = {desiredSize: { width: 50, height:50 }};
-            svgImagesource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
+            let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
+            let svgDecodingOptions: image.DecodingOptions = { desiredSize: { width: 50, height: 50 } };
+            svgImageSource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
               window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
                 let windowId = win.getWindowProperties().id;
                 try {
                   pointer.setCustomCursor(windowId, pixelMap).then(() => {
-                    console.log(`setCustomCursor success`);
+                    console.info(`setCustomCursor success`);
                   });
                 } catch (error) {
                   console.error(`setCustomCursor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 }
               });
-            });
+            }).catch((error: BusinessError) => {
+                console.error(`createPixelMap promise error: ${JSON.stringify(error, [`code`, `message`])}`);
+              });
           });
         })
     }
@@ -1279,7 +1309,7 @@ struct Index {
           };
           let img = image.createPixelMapSync(buffer, opts);
           let fnCallBack = () => {
-            console.log("setCustomCursor success");
+            console.info("setCustomCursor success");
           };
           // 此次根据实际获取窗口id
           let windowId: int = 100;
@@ -1330,7 +1360,7 @@ ArkTS-Dyn: setCustomCursor(windowId: number, cursor: CustomCursor, config: Curso
 
 ArkTS-Sta: setCustomCursor(windowId: int, cursor: CustomCursor, config: CursorConfig): Promise&lt;void&gt;
 
-设置自定义光标样式，使用Promise异步回调。
+设置指定窗口的自定义光标样式，使用Promise异步回调。
 应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
@@ -1343,7 +1373,7 @@ ArkTS-Sta: setCustomCursor(windowId: int, cursor: CustomCursor, config: CursorCo
 
 | 参数名    | 类型    | 必填    | 说明    |
 | -------- | -------- | -------- | -------- |
-| windowId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口id。                          |
+| windowId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口ID。                          |
 | cursor  | [CustomCursor](js-apis-pointer.md#customcursor15) | 是    | 自定义光标资源。 |
 | config  | [CursorConfig](js-apis-pointer.md#cursorconfig15) | 是    | 自定义光标配置，用于配置是否根据系统设置调整光标大小。如果CursorConfig中followSystem设置为true，则光标大小的可调整范围为：[光标资源图大小，256×256]。 |
 
@@ -1351,7 +1381,7 @@ ArkTS-Sta: setCustomCursor(windowId: int, cursor: CustomCursor, config: CursorCo
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -1361,6 +1391,8 @@ ArkTS-Sta: setCustomCursor(windowId: int, cursor: CustomCursor, config: CursorCo
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Abnormal windowId parameter passed in. 2. Abnormal pixelMap parameter passed in; 3. Abnormal focusX parameter passed in.4. Abnormal focusY parameter passed in. |
 | 26500001 | Invalid windowId. Possible causes: The window id does not belong to the current process. |
+
+**示例**：
 
 ArkTS-Dyn示例:
 
@@ -1378,22 +1410,26 @@ struct Index {
       Text()
         .onClick(() => {
           // app_icon为示例资源，请开发者根据实际需求配置资源文件。
-          this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
+          this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent(
+            $r("app.media.app_icon").id, (error: BusinessError, svgFileData: Uint8Array) => {
             const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
-            let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
-            let svgDecodingOptions: image.DecodingOptions = {desiredSize: { width: 50, height:50 }};
-            svgImagesource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
+            let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
+            let svgDecodingOptions: image.DecodingOptions = { desiredSize: { width: 50, height: 50 } };
+            svgImageSource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
               window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
                 let windowId = win.getWindowProperties().id;
                 try {
-                  pointer.setCustomCursor(windowId, {pixelMap: pixelMap, focusX: 25, focusY: 25}, {followSystem: false}).then(() => {
-                    console.log(`setCustomCursor success`);
+                  pointer.setCustomCursor(windowId, { pixelMap: pixelMap, focusX: 25, focusY: 25 },
+                    { followSystem: false }).then(() => {
+                    console.info(`setCustomCursor success`);
                   });
                 } catch (error) {
                   console.error(`setCustomCursor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 }
               });
-            });
+            }).catch((error: BusinessError) => {
+                console.error(`createPixelMap promise error: ${JSON.stringify(error, [`code`, `message`])}`);
+              });
           });
         })
     }
@@ -1438,7 +1474,7 @@ struct Index {
           let windowId: int = 100;
           try {
             pointer.setCustomCursor(windowId, customCursor, customConfig).then(() => {
-              console.log(`setCustomCursor success`);
+              console.info(`setCustomCursor success`);
             });
           } catch (error) {
             console.error(`setCustomCursor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1455,7 +1491,7 @@ ArkTS-Dyn: setCustomCursorSync(windowId: int, pixelMap: image.PixelMap, focusX?:
 
 ArkTS-Sta: setCustomCursorSync(windowId: int, pixelMap: image.PixelMap, focusX?: int, focusY?: int): void
 
-设置自定义光标样式，使用同步方式进行设置。
+设置指定窗口的自定义光标样式，使用同步方式进行设置。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
@@ -1467,7 +1503,7 @@ ArkTS-Sta: setCustomCursorSync(windowId: int, pixelMap: image.PixelMap, focusX?:
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| windowId  | int  | 是    | 窗口id。取值为大于0的整数。                          |
+| windowId  | int  | 是    | 窗口ID。取值为大于0的整数。                          |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 自定义光标资源。 |
 | focusX  | int | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0。 |
 | focusY  | int | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0。 |
@@ -1479,6 +1515,8 @@ ArkTS-Sta: setCustomCursorSync(windowId: int, pixelMap: image.PixelMap, focusX?:
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**：
 
 ArkTS-Dyn示例:
 
@@ -1496,20 +1534,23 @@ struct Index {
       Text()
         .onClick(() => {
           // app_icon为示例资源，请开发者根据实际需求配置资源文件。
-          const svgFileData = this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent($r("app.media.app_icon")).then((svgFileData) => {
-            const svgBuffer: ArrayBuffer = svgFileData.buffer.slice(0);
-            let svgImagesource: image.ImageSource = image.createImageSource(svgBuffer);
-            let svgDecodingOptions: image.DecodingOptions = {desiredSize: { width: 50, height:50 }};
-            svgImagesource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
+          this.getUIContext()?.getHostContext()?.resourceManager.getMediaContent(
+            $r("app.media.app_icon").id, (error: BusinessError, svgFileData: Uint8Array) => {
+            const svgBuffer = svgFileData.buffer;
+            let svgImageSource: image.ImageSource = image.createImageSource(svgBuffer);
+            let svgDecodingOptions: image.DecodingOptions = { desiredSize: { width: 50, height: 50 } };
+            svgImageSource.createPixelMap(svgDecodingOptions).then((pixelMap) => {
               window.getLastWindow(this.getUIContext().getHostContext(), (error: BusinessError, win: window.Window) => {
                 let windowId = win.getWindowProperties().id;
                 try {
                   pointer.setCustomCursorSync(windowId, pixelMap, 25, 25);
-                  console.log(`setCustomCursorSync success`);
+                  console.info(`setCustomCursorSync success`);
                 } catch (error) {
                   console.error(`setCustomCursorSync failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 }
               });
+            }).catch((error: BusinessError) => {
+              console.error(`createPixelMap promise error: ${JSON.stringify(error, [`code`, `message`])}`);
             });
           });
         })
@@ -1550,7 +1591,7 @@ struct Index {
           };
           let img = image.createPixelMapSync(buffer, opts);
           let fnCallBack = () => {
-            console.log("setCustomCursor success");
+            console.info("setCustomCursor success");
           };
           // 此次根据实际获取窗口id
           let windowId: int = 100;

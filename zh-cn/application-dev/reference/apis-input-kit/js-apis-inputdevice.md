@@ -1,5 +1,11 @@
 # @ohos.multimodalInput.inputDevice (输入设备)
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供输入设备管理能力，包括监听输入设备的连接和断开状态，查询设备名称等输入设备信息。
 
@@ -8,7 +14,7 @@
 >
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -24,7 +30,7 @@ ArkTS-Dyn: getDeviceList(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): vo
 
 ArkTS-Sta: getDeviceList(callback: AsyncCallback&lt;Array&lt;int&gt;&gt;): void
 
-获取所有输入设备的id列表，使用Callback回调。
+获取所有输入设备的ID列表，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -36,7 +42,7 @@ ArkTS-Sta: getDeviceList(callback: AsyncCallback&lt;Array&lt;int&gt;&gt;): void
 
 | 参数名     | 类型                                     | 必填 | 说明                                     |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| callback |ArkTS-Dyn: AsyncCallback&lt;Array&lt;number&gt;&gt; ArkTS-Sta:  AsyncCallback&lt;Array&lt;int&gt;&gt;| 是   | 回调函数，返回所有输入设备的id列表。id是输入设备的唯一标识。 |
+| callback |ArkTS-Dyn: AsyncCallback&lt;Array&lt;number&gt;&gt; ArkTS-Sta:  AsyncCallback&lt;Array&lt;int&gt;&gt;| 是   | 回调函数，返回所有输入设备的ID列表。ID是输入设备的唯一标识。 |
 
 **错误码**：
 
@@ -46,7 +52,7 @@ ArkTS-Sta: getDeviceList(callback: AsyncCallback&lt;Array&lt;int&gt;&gt;): void
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -66,7 +72,7 @@ struct Index {
                 console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Device id list: ${JSON.stringify(ids)}`);
+              console.info(`Device id list: ${JSON.stringify(ids)}`);
             });
           } catch (error) {
             console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -97,7 +103,7 @@ struct Index {
                 console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Device id list: ${JSON.stringify(ids)}`);
+              console.info(`Device id list: ${JSON.stringify(ids)}`);
             });
           } catch (error) {
             console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -114,7 +120,7 @@ ArkTS-Dyn: getDeviceList(): Promise&lt;Array&lt;number&gt;&gt;
 
 ArkTS-Sta: getDeviceList(): Promise&lt;Array&lt;int&gt;&gt;
 
-获取所有输入设备的id列表，使用Promise异步回调。
+获取所有输入设备的ID列表，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -126,9 +132,9 @@ ArkTS-Sta: getDeviceList(): Promise&lt;Array&lt;int&gt;&gt;
 
 | 类型                               | 说明                                        |
 | ---------------------------------- | ------------------------------------------- |
-| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt; <br>  ArkTS-Sta: Promise&lt;Array&lt;int&gt;&gt; | Promise对象，返回所有输入设备的id列表。 |
+| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt; <br>  ArkTS-Sta: Promise&lt;Array&lt;int&gt;&gt; | Promise对象，返回所有输入设备的ID列表。ID是输入设备的唯一标识。 |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -144,7 +150,7 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.getDeviceList().then((ids: Array<Number>) => {
-              console.log(`Device id list: ${JSON.stringify(ids)}`);
+              console.info(`Device id list: ${JSON.stringify(ids)}`);
             });
           } catch (error) {
             console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -171,7 +177,7 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.getDeviceList().then((ids: Array<int>) => {
-              console.log(`Device id list: ${JSON.stringify(ids)}`);
+              console.info(`Device id list: ${JSON.stringify(ids)}`);
             });
           } catch (error) {
             console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -200,8 +206,8 @@ ArkTS-Sta: getDeviceInfo(deviceId: int, callback: AsyncCallback&lt;InputDeviceDa
 
 | 参数名     | 类型                                                     | 必填 | 说明                                    |
 | -------- | -------------------------------------------------------- | ---- | --------------------------------------- |
-| deviceId | ArkTS-Dyn: number<br> ArkTS-Sta: int                                                 | 是   | 输入设备id。                  |
-| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数。返回输入设备信息，包括输入设备id、名称、支持的输入能力、物理地址、版本信息及产品信息等。 |
+| deviceId | ArkTS-Dyn: number<br> ArkTS-Sta: int                                                 | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。                  |
+| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数。返回输入设备信息，包括输入设备ID、名称、支持的输入能力、物理地址、版本信息及产品信息等。 |
 
 **错误码**：
 
@@ -211,7 +217,7 @@ ArkTS-Sta: getDeviceInfo(deviceId: int, callback: AsyncCallback&lt;InputDeviceDa
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -232,7 +238,7 @@ struct Index {
                 console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Device info: ${JSON.stringify(deviceData)}`);
+              console.info(`Device info: ${JSON.stringify(deviceData)}`);
             });
           } catch (error) {
             console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -257,14 +263,14 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 获取输入设备id为1的设备信息。
+          // 获取输入设备ID为1的设备信息。
           try {
             inputDevice.getDeviceInfo(1, (error: BusinessError<void>|null, deviceData: inputDevice.InputDeviceData | undefined) => {
               if (error) {
                 console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Device info: ${JSON.stringify(deviceData)}`);
+              console.info(`Device info: ${JSON.stringify(deviceData)}`);
             });
           } catch (error) {
             console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -293,13 +299,13 @@ ArkTS-Sta: getDeviceInfo(deviceId: int): Promise&lt;InputDeviceData&gt;
 
 | 参数名     | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| deviceId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 输入设备id。 |
+| deviceId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
 
 **返回值**：
 
 | 类型                                               | 说明                            |
 | -------------------------------------------------- | ------------------------------- |
-| Promise&lt;[InputDeviceData](#inputdevicedata)&gt; | Promise对象，返回输入设备信息。 |
+| Promise&lt;[InputDeviceData](#inputdevicedata)&gt; | Promise对象，返回输入设备信息，包括输入设备ID、名称、支持的输入能力、物理地址、版本信息及产品信息等。 |
 
 **错误码**：
 
@@ -309,7 +315,7 @@ ArkTS-Sta: getDeviceInfo(deviceId: int): Promise&lt;InputDeviceData&gt;
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -326,7 +332,7 @@ struct Index {
           // 获取输入设备id为1的设备信息。
           try {
             inputDevice.getDeviceInfo(1).then((deviceData: inputDevice.InputDeviceData) => {
-              console.log(`Device info: ${JSON.stringify(deviceData)}`);
+              console.info(`Device info: ${JSON.stringify(deviceData)}`);
             });
           } catch (error) {
             console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -351,10 +357,10 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 获取输入设备id为1的设备信息。
+          // 获取输入设备ID为1的设备信息。
           try {
             inputDevice.getDeviceInfo(1).then((deviceData: inputDevice.InputDeviceData) => {
-              console.log(`Device info: ${JSON.stringify(deviceData)}`);
+              console.info(`Device info: ${JSON.stringify(deviceData)}`);
             });
           } catch (error) {
             console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -383,13 +389,13 @@ ArkTS-Sta: getDeviceInfoSync(deviceId: int): InputDeviceData
 
 | 参数名     | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| deviceId | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 输入设备id。 |
+| deviceId | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
 
 **返回值**：
 
 | 类型                                               | 说明                            |
 | -------------------------------------------------- | ------------------------------- |
-| [InputDeviceData](#inputdevicedata) | 返回输入设备信息，包括输入设备id、名称、支持的源类型、物理地址、版本信息及产品信息等。 |
+| [InputDeviceData](#inputdevicedata) | 返回输入设备信息，包括输入设备ID、名称、支持的输入能力、物理地址、版本信息及产品信息等。 |
 
 **错误码**：
 
@@ -399,7 +405,7 @@ ArkTS-Sta: getDeviceInfoSync(deviceId: int): InputDeviceData
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -413,10 +419,10 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 获取输入设备id为1的设备信息。
+          // 获取输入设备ID为1的设备信息。
           try {
             let deviceData: inputDevice.InputDeviceData = inputDevice.getDeviceInfoSync(1);
-            console.log(`Device info: ${JSON.stringify(deviceData)}`);
+            console.info(`Device info: ${JSON.stringify(deviceData)}`);
           } catch (error) {
             console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -443,7 +449,7 @@ struct Index {
           // 获取输入设备id为1的设备信息。
           try {
             let deviceData: inputDevice.InputDeviceData = inputDevice.getDeviceInfoSync(1);
-            console.log(`Device info: ${JSON.stringify(deviceData)}`);
+            console.info(`Device info: ${JSON.stringify(deviceData)}`);
           } catch (error) {
             console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -454,11 +460,11 @@ struct Index {
 
 ```
 
-## inputDevice.on<sup>9+</sup>
+## inputDevice.on('change')<sup>9+</sup>
 
 on(type: "change", listener: Callback&lt;DeviceListener&gt;): void
 
-注册监听输入设备的热插拔事件，使用时需连接鼠标、键盘、触摸屏等外部设备。
+注册监听输入设备的热插拔事件，使用时需连接鼠标、键盘、触摸屏等外部设备。使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -483,7 +489,7 @@ on(type: "change", listener: Callback&lt;DeviceListener&gt;): void
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -498,9 +504,9 @@ struct Index {
           let isPhysicalKeyboardExist = true;
           try {
             inputDevice.on("change", (data: inputDevice.DeviceListener) => {
-              console.log(`Device event info: ${JSON.stringify(data)}`);
+              console.info(`Device event info: ${JSON.stringify(data)}`);
               inputDevice.getKeyboardType(data.deviceId, (err: Error, type: inputDevice.KeyboardType) => {
-                console.log("The keyboard type is: " + type);
+                console.info("The keyboard type is: " + type);
                 if (type == inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type == 'add') {
                   // 监听物理键盘已连接。
                   isPhysicalKeyboardExist = true;
@@ -564,7 +570,7 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.onChange((data: inputDevice.DeviceListener) => {
-              console.log(`Device event info: ${JSON.stringify(data)}`);
+              console.info(`Device event info: ${JSON.stringify(data)}`);
             });
           } catch (error) {
             console.error(`Get device info failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -575,11 +581,11 @@ struct Index {
 }
 ```
 
-## inputDevice.off<sup>9+</sup>
+## inputDevice.off('change')<sup>9+</sup>
 
 off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
 
-取消监听输入设备的热插拔事件。在应用退出前调用，取消监听。
+取消监听输入设备的热插拔事件。在应用退出前调用，取消监听。使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -604,7 +610,7 @@ off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -617,7 +623,7 @@ struct Index {
       Text()
         .onClick(() => {
           let callback = (data: inputDevice.DeviceListener) => {
-            console.log(`Report device event info: ${JSON.stringify(data, [`type`, `deviceId`])}`);
+            console.info(`Report device event info: ${JSON.stringify(data, [`type`, `deviceId`])}`);
           };
 
           try {
@@ -688,7 +694,7 @@ struct Index {
       Text()
         .onClick(() => {
           let callback = (data: inputDevice.DeviceListener) => {
-            console.log(`Report device event info: ${JSON.stringify(data, [`type`, `deviceId`])}`);
+            console.info(`Report device event info: ${JSON.stringify(data, [`type`, `deviceId`])}`);
           };
           try {
             inputDevice.onChange(callback);
@@ -746,7 +752,7 @@ struct Index {
               console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
               return;
             }
-            console.log(`Device id list: ${JSON.stringify(ids)}`);
+            console.info(`Device id list: ${JSON.stringify(ids)}`);
           });
         })
     }
@@ -758,9 +764,11 @@ struct Index {
 
 getDeviceIds(): Promise&lt;Array&lt;number&gt;&gt;
 
-获取所有输入设备的id列表，使用Promise异步回调。
+获取所有输入设备的ID列表，使用Promise异步回调。
 
-> 从API version 9 开始不再维护，建议使用[inputDevice.getDeviceList](#inputdevicegetdevicelist9)代替。
+> **说明**：
+>
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[inputDevice.getDeviceList](#inputdevicegetdevicelist9)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -768,12 +776,13 @@ getDeviceIds(): Promise&lt;Array&lt;number&gt;&gt;
 
 | 类型                               | 说明                                        |
 | ---------------------------------- | ------------------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回所有输入设备的id列表。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回所有输入设备的ID列表。ID是输入设备的唯一标识。 |
 
-**示例：**
+**示例**：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -782,9 +791,11 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          inputDevice.getDeviceIds().then((ids: Array<Number>) => {
-            console.log(`Device id list: ${JSON.stringify(ids)}`);
-          });
+          inputDevice.getDeviceIds().then((ids: Array<number>) => {
+            console.info(`Device id list: ${JSON.stringify(ids)}`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to get device id list, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          })
         })
     }
   }
@@ -795,9 +806,11 @@ struct Index {
 
 getDevice(deviceId: number, callback: AsyncCallback&lt;InputDeviceData&gt;): void
 
-获取指定id的输入设备信息，使用Callback异步回调。
+获取指定id的输入设备信息，使用callback异步回调。
 
-> 从API version 9 开始不再维护，建议使用[inputDevice.getDeviceInfo](#inputdevicegetdeviceinfo9)代替。
+> **说明**：
+>
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[inputDevice.getDeviceInfo](#inputdevicegetdeviceinfo9)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -805,13 +818,14 @@ getDevice(deviceId: number, callback: AsyncCallback&lt;InputDeviceData&gt;): voi
 
 | 参数名     | 类型                                                     | 必填 | 说明                             |
 | -------- | -------------------------------------------------------- | ---- | -------------------------------- |
-| deviceId | number                                                   | 是   | 输入设备id。                     |
-| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数，返回输入设备信息。 |
+| deviceId | number                                                   | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。                     |
+| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数，返回输入设备信息，包括输入设备ID、名称、支持的输入能力、物理地址、版本信息及产品信息等。 |
 
-**示例：**
+**示例**：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -820,13 +834,13 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 获取输入设备id为1的设备信息。
-          inputDevice.getDevice(1, (error: Error, deviceData: inputDevice.InputDeviceData) => {
+          // 获取输入设备ID为1的设备信息。
+          inputDevice.getDevice(1, (error: BusinessError, deviceData: inputDevice.InputDeviceData) => {
             if (error) {
               console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
               return;
             }
-            console.log(`Device info: ${JSON.stringify(deviceData)}`);
+            console.info(`Device info: ${JSON.stringify(deviceData)}`);
           });
         })
     }
@@ -840,7 +854,9 @@ getDevice(deviceId: number): Promise&lt;InputDeviceData&gt;
 
 获取指定id的输入设备信息，使用Promise异步回调。
 
-> 从API version 9 开始不再维护，建议使用[inputDevice.getDeviceInfo](#inputdevicegetdeviceinfo9)代替。
+> **说明**：
+>
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[inputDevice.getDeviceInfo](#inputdevicegetdeviceinfo9)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -848,18 +864,19 @@ getDevice(deviceId: number): Promise&lt;InputDeviceData&gt;
 
 | 参数名     | 类型   | 必填 | 说明         |
 | -------- | ------ | ---- | ------------ |
-| deviceId | number | 是   | 输入设备id。 |
+| deviceId | number | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
 
 **返回值**：
 
 | 类型                                               | 说明                                |
 | -------------------------------------------------- | ----------------------------------- |
-| Promise&lt;[InputDeviceData](#inputdevicedata)&gt; | Promise对象，返回输入设备信息。 |
+| Promise&lt;[InputDeviceData](#inputdevicedata)&gt; | Promise对象，返回输入设备信息，包括输入设备ID、名称、支持的输入能力、物理地址、版本信息及产品信息等。 |
 
-**示例：**
+**示例**：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -868,10 +885,12 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 获取输入设备id为1的设备信息。
+          // 获取输入设备ID为1的设备信息。
           inputDevice.getDevice(1).then((deviceData: inputDevice.InputDeviceData) => {
-            console.log(`Device info: ${JSON.stringify(deviceData)}`);
-          });
+            console.info(`Device info: ${JSON.stringify(deviceData)}`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to get device info, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          })
         })
     }
   }
@@ -897,8 +916,8 @@ ArkTS-Sta: supportKeys(deviceId: int, keys: Array&lt;KeyCode&gt;, callback: Asyn
 
 | 参数名     | 类型                                      | 必填 | 说明                                                   |
 | -------- | ----------------------------------------- | ---- | ------------------------------------------------------ |
-| deviceId | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是   | 输入设备的id。对于同一个物理设备，反复插拔会导致设备id发生变化。 |
-| keys     | Array[&lt;KeyCode&gt;](js-apis-keycode.md#keycode)  | 是   | 需要查询的键码值，最多支持5个按键查询。                |
+| deviceId | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
+| keys     | Array[&lt;KeyCode&gt;](js-apis-keycode.md#keycode)  | 是   | 需要查询的键值，最多支持5个按键查询。                |
 | callback | AsyncCallback&lt;Array&lt;boolean&gt;&gt; | 是   | 回调函数，返回查询结果。                           |
 
 **错误码**：
@@ -909,7 +928,7 @@ ArkTS-Sta: supportKeys(deviceId: int, keys: Array&lt;KeyCode&gt;, callback: Asyn
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -923,10 +942,10 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 查询id为1的输入设备对于17、22和2055按键的支持情况。
+          // 查询ID为1的输入设备对于17、22和2055按键的支持情况。
           try {
             inputDevice.supportKeys(1, [17, 22, 2055], (error: Error, supportResult: Array<Boolean>) => {
-              console.log(`Query result: ${JSON.stringify(supportResult)}`);
+              console.info(`Query result: ${JSON.stringify(supportResult)}`);
             });
           } catch (error) {
             console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -955,7 +974,7 @@ struct Index {
           try {
             let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_DOWN, KeyCode.KEYCODE_VOLUME_MUTE, KeyCode.KEYCODE_DEL];
             inputDevice.supportKeys(1, keys, (error: BusinessError<void> | null, supportResult: Array<Boolean> | undefined) => {
-                console.log(`Query result: ${JSON.stringify(supportResult)}`);
+                console.info(`Query result: ${JSON.stringify(supportResult)}`);
               });
           } catch (error) {
             console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -984,8 +1003,8 @@ ArkTS-Sta: supportKeys(deviceId: int, keys: Array&lt;KeyCode&gt;): Promise&lt;Ar
 
 | 参数名     | 类型                 | 必填 | 说明                                                   |
 | -------- | -------------------- | ---- | ------------------------------------------------------ |
-| deviceId | ArkTS-Dyn: number <br> ArkTS-Sta: int              | 是   | 输入设备的id。对于同一个物理设备，反复插拔会导致设备id发生变化。 |
-| keys     | Array[&lt;KeyCode&gt;](js-apis-keycode.md#keycode) | 是   | 需要查询的键码值，最多支持查询5个按键。                |
+| deviceId | ArkTS-Dyn: number <br> ArkTS-Sta: int              | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
+| keys     | Array[&lt;KeyCode&gt;](js-apis-keycode.md#keycode) | 是   | 需要查询的键值，最多支持查询5个按键。                |
 
 **返回值**：
 
@@ -1001,7 +1020,7 @@ ArkTS-Sta: supportKeys(deviceId: int, keys: Array&lt;KeyCode&gt;): Promise&lt;Ar
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -1015,10 +1034,10 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 查询id为1的输入设备对于17、22和2055按键的支持情况。
+          // 查询ID为1的输入设备对于17、22和2055按键的支持情况。
           try {
             inputDevice.supportKeys(1, [17, 22, 2055]).then((supportResult: Array<Boolean>) => {
-              console.log(`Query result: ${JSON.stringify(supportResult)}`);
+              console.info(`Query result: ${JSON.stringify(supportResult)}`);
             });
           } catch (error) {
             console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1047,7 +1066,7 @@ struct Index {
           try {
             let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_DOWN, KeyCode.KEYCODE_VOLUME_MUTE, KeyCode.KEYCODE_DEL];
             inputDevice.supportKeys(1, keys).then((supportResult: Array<Boolean>) => {
-                console.log(`Query result: ${JSON.stringify(supportResult)}`);
+                console.info(`Query result: ${JSON.stringify(supportResult)}`);
               });
           } catch (error) {
             console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1064,7 +1083,7 @@ ArkTS-Dyn: supportKeysSync(deviceId: number, keys: Array&lt;KeyCode&gt;): Array&
 
 ArkTS-Sta: supportKeysSync(deviceId: int, keys: Array&lt;KeyCode&gt;): Array&lt;boolean&gt;
 
-查询指定id的输入设备对指定键码值的支持情况。
+查询指定id的输入设备对指定键值的支持情况。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -1076,8 +1095,8 @@ ArkTS-Sta: supportKeysSync(deviceId: int, keys: Array&lt;KeyCode&gt;): Array&lt;
 
 | 参数名     | 类型                 | 必填 | 说明                                                   |
 | -------- | -------------------- | ---- | ------------------------------------------------------ |
-| deviceId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 输入设备的id。对于同一个物理设备，反复插拔会导致设备id发生变化。 |
-| keys     | Array[&lt;KeyCode&gt;](js-apis-keycode.md#keycode) | 是   | 需要查询的键码值，最多支持查询5个按键。                |
+| deviceId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
+| keys     | Array[&lt;KeyCode&gt;](js-apis-keycode.md#keycode) | 是   | 需要查询的键值，最多支持查询5个按键。                |
 
 **返回值**：
 
@@ -1093,7 +1112,7 @@ ArkTS-Sta: supportKeysSync(deviceId: int, keys: Array&lt;KeyCode&gt;): Array&lt;
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -1107,10 +1126,10 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 查询id为1的输入设备对于17、22和2055按键的支持情况。
+          // 查询ID为1的输入设备对于17、22和2055按键的支持情况。
           try {
             let supportResult: Array<Boolean> = inputDevice.supportKeysSync(1, [17, 22, 2055])
-            console.log(`Query result: ${JSON.stringify(supportResult)}`)
+            console.info(`Query result: ${JSON.stringify(supportResult)}`)
           } catch (error) {
             console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`)
           }
@@ -1138,7 +1157,7 @@ struct Index {
           try {
             let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_DOWN, KeyCode.KEYCODE_VOLUME_MUTE, KeyCode.KEYCODE_DEL];
             let supportResult: Array<Boolean> = inputDevice.supportKeysSync(1, keys);
-            console.log(`Query result: ${JSON.stringify(supportResult)}`)
+            console.info(`Query result: ${JSON.stringify(supportResult)}`)
           } catch (error) {
             console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`)
           }
@@ -1168,7 +1187,7 @@ ArkTS-Sta: getKeyboardType(deviceId: int, callback: AsyncCallback&lt;KeyboardTyp
 
 | 参数名     | 类型                                                | 必填 | 说明                                                         |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| deviceId | ArkTS-Dyn: number <br> ArkTS-Sta: int        | 是   | 输入设备的唯一标识，同一个物理设备反复插拔，设备id会发生变化。 |
+| deviceId | ArkTS-Dyn: number <br> ArkTS-Sta: int        | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
 | callback | AsyncCallback&lt;[KeyboardType](#keyboardtype9)&gt; | 是   | 回调函数，返回查询结果。                                 |
 
 **错误码**：
@@ -1179,12 +1198,13 @@ ArkTS-Sta: getKeyboardType(deviceId: int, callback: AsyncCallback&lt;KeyboardTyp
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1193,14 +1213,14 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 查询id为1的输入设备的键盘类型。
+          // 查询ID为1的输入设备的键盘类型。
           try {
-            inputDevice.getKeyboardType(1, (error: Error, type: Number) => {
+            inputDevice.getKeyboardType(1, (error: BusinessError, type: number) => {
               if (error) {
                 console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Keyboard type: ${JSON.stringify(type)}`);
+              console.info(`Keyboard type: ${JSON.stringify(type)}`);
             });
           } catch (error) {
             console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1234,7 +1254,7 @@ struct Index {
                 console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Keyboard type: ${type}`);
+              console.info(`Keyboard type: ${type}`);
 
             }
             inputDevice.getKeyboardType(tempType, funCallback)
@@ -1265,7 +1285,7 @@ ArkTS-Sta: getKeyboardType(deviceId: int): Promise&lt;KeyboardType&gt;
 
 | 参数名    | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| deviceId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 输入设备的唯一标识，同一个物理设备反复插拔，设备id会发生变化。 |
+| deviceId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
 
 **返回值**：
 
@@ -1281,7 +1301,7 @@ ArkTS-Sta: getKeyboardType(deviceId: int): Promise&lt;KeyboardType&gt;
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -1295,10 +1315,10 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 示例查询设备id为1的设备键盘类型。
+          // 示例查询设备ID为1的设备键盘类型。
           try {
-            inputDevice.getKeyboardType(1).then((type: Number) => {
-              console.log(`Keyboard type: ${JSON.stringify(type)}`);
+            inputDevice.getKeyboardType(1).then((type: number) => {
+              console.info(`Keyboard type: ${JSON.stringify(type)}`);
             });
           } catch (error) {
             console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1327,7 +1347,7 @@ struct Index {
           try {
             let id: int = 1;
             let fun = (type: inputDevice.KeyboardType) => {
-              console.log(`Keyboard type: ${JSON.stringify(type)}`);
+              console.info(`Keyboard type: ${JSON.stringify(type)}`);
             };
             inputDevice.getKeyboardType(id).then(fun);
           } catch (error) {
@@ -1357,7 +1377,7 @@ ArkTS-Sta: getKeyboardTypeSync(deviceId: int): KeyboardType
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| deviceId | ArkTS-Dyn: number <br> ArkTS-Sta: int| 是   | 输入设备的唯一标识，同一个物理设备反复插拔，设备id会发生变化。 |
+| deviceId | ArkTS-Dyn: number <br> ArkTS-Sta: int| 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
 
 **返回值**：
 
@@ -1373,7 +1393,7 @@ ArkTS-Sta: getKeyboardTypeSync(deviceId: int): KeyboardType
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -1387,10 +1407,10 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // 示例查询设备id为1的设备键盘类型。
+          // 示例查询设备ID为1的设备键盘类型。
           try {
             let type: number = inputDevice.getKeyboardTypeSync(1)
-            console.log(`Keyboard type: ${JSON.stringify(type)}`)
+            console.info(`Keyboard type: ${JSON.stringify(type)}`)
           } catch (error) {
             console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`)
           }
@@ -1417,7 +1437,7 @@ struct Index {
           // 示例查询设备id为1的设备键盘类型。
           try {
             let type: int = inputDevice.getKeyboardTypeSync(1)
-            console.log(`Keyboard type: ${JSON.stringify(type)}`)
+            console.info(`Keyboard type: ${JSON.stringify(type)}`)
           } catch (error) {
             console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`)
           }
@@ -1460,12 +1480,13 @@ isFunctionKeyEnabled(functionKey: FunctionKey): Promise&lt;boolean&gt;
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900002      | There is currently no keyboard device connected. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1476,8 +1497,10 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.isFunctionKeyEnabled(inputDevice.FunctionKey.CAPS_LOCK).then((state: boolean) => {
-              console.log(`capslock state: ${JSON.stringify(state)}`);
-            });
+              console.info(`capslock state: ${JSON.stringify(state)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get capslock state failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Failed to get capslock state, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -1503,7 +1526,7 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.isFunctionKeyEnabled(inputDevice.FunctionKey.CAPS_LOCK).then((state: boolean) => {
-              console.log(`capslock state: ${JSON.stringify(state)}`);
+              console.info(`capslock state: ${JSON.stringify(state)}`);
             });
           } catch (error) {
             console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1536,6 +1559,12 @@ setFunctionKeyEnabled(functionKey: FunctionKey, enabled: boolean): Promise&lt;vo
 | functionKey | [FunctionKey](#functionkey15) | 是   | 需要设置的功能键类型。 |
 | enabled  | boolean | 是   | 功能键使能状态。取值为true表示使能功能键，取值为false表示不使能功能键。 |
 
+**返回值**：
+
+| 类型                   | 说明                                                         |
+| ---------------------- | ------------------------------------------------------------ |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[输入设备错误码](errorcode-inputdevice.md)。
@@ -1548,7 +1577,7 @@ setFunctionKeyEnabled(functionKey: FunctionKey, enabled: boolean): Promise&lt;vo
 | 3900002      | There is currently no keyboard device connected. |
 | 3900003      | It is prohibited for non-input applications. |
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -1623,9 +1652,9 @@ ArkTS-Sta: getIntervalSinceLastInput(): Promise&lt;long&gt;
 
 | 参数                                          | 说明                            |
 | --------------------------------------------- | ------------------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回距离上次系统输入事件的时间间隔，单位为微秒（μs）。|
+| ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回距离上次系统输入事件的时间间隔，单位：μs。|
 
-**示例：**
+**示例**：
 
 ArkTS-Dyn示例：
 
@@ -1640,7 +1669,7 @@ struct Index {
       Text()
         .onClick(() => {
           inputDevice.getIntervalSinceLastInput().then((timeInterval: number) => {
-            console.log(`Interval since last input: ${JSON.stringify(timeInterval)}`);
+            console.info(`Interval since last input: ${JSON.stringify(timeInterval)}`);
           });
         })
     }
@@ -1663,7 +1692,7 @@ struct Index {
       Text()
         .onClick(() => {
           inputDevice.getIntervalSinceLastInput().then((timeInterval: long) => {
-            console.log(`Interval since last input: ${JSON.stringify(timeInterval)}`);
+            console.info(`Interval since last input: ${JSON.stringify(timeInterval)}`);
           });
         })
     }
@@ -1684,7 +1713,7 @@ struct Index {
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
 | type     | [ChangedType](#changedtype9)| 否 | 否 | 输入设备插入或者移除。|
-| deviceId | ArkTS-Dyn: number <br>ArkTS-Sta: int     | 否 | 否 | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备id会发生变化。 |
+| deviceId | ArkTS-Dyn: number <br>ArkTS-Sta: int     | 否 | 否 | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
 
 ## InputDeviceData
 
@@ -1698,9 +1727,9 @@ struct Index {
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
-| id                   | ArkTS-Dyn: number <br>ArkTS-Sta: int                                 | 否 | 否 | 输入设备的唯一标识，同一个物理设备反复插拔，设备id会发生变化。 |
+| id                   | ArkTS-Dyn: number <br>ArkTS-Sta: int                                 | 否 | 否 | 输入设备的唯一标识，同一个物理设备反复插拔，设备ID可能会发生变化。 |
 | name                 | string                                 | 否 | 否 | 输入设备的名称。                                             |
-| sources              | Array&lt;[SourceType](#sourcetype9)&gt; | 否 | 否 | 输入设备支持的输入能力。一个输入设备可以同时具备多种输入能力，如有的键盘上附带触摸板，则此设备有键盘和触摸板两种输入能力。 |
+| sources              | Array&lt;[SourceType](#sourcetype9)&gt; | 否 | 否 | 输入设备的输入能力。包括键盘、鼠标、触摸屏、轨迹球、触控板、操纵杆等。 |
 | axisRanges           | Array&lt;[AxisRange](#axisrange)&gt;  | 否 | 否 | 输入设备的轴信息。                                           |
 | bus<sup>9+</sup>     | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否 | 否 | 输入设备的总线类型，该值以输入设备上报为准。      |
 | product<sup>9+</sup> | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否 | 否 | 输入设备的产品信息。                                         |
@@ -1710,6 +1739,7 @@ struct Index {
 | uniq<sup>9+</sup>    | string                                 | 否 | 否 | 输入设备的唯一标识。                                         |
 | isVirtual<sup>23+</sup>    | boolean                                 | 否 | 是 | 输入设备是否为虚拟设备。<br>true表示是虚拟设备，false表示是非虚拟设备。                                      |
 | isLocal<sup>23+</sup>    | boolean                                 | 否 | 是 | 输入设备是否为本地设备。<br>true表示是本地设备，false表示是非本地设备。                                       |
+
 ## AxisType<sup>9+</sup>
 
 type AxisType = 'touchmajor' | 'touchminor' | 'orientation' | 'x' | 'y' | 'pressure' | 'toolminor' | 'toolmajor' | 'null'
@@ -1746,8 +1776,8 @@ type AxisType = 'touchmajor' | 'touchminor' | 'orientation' | 'x' | 'y' | 'press
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
-| source                  | [SourceType](#sourcetype9) | 否 | 否 | 轴的输入能力。 |
-| axis                    | [AxisType](#axistype9)    | 否 | 否 | 轴的类型。    |
+| source                  | [SourceType](#sourcetype9) | 否 | 否 | 输入设备的输入能力。包括键盘、鼠标、触摸屏、轨迹球、触控板、操纵杆等。 |
+| axis                    | [AxisType](#axistype9)    | 否 | 否 | 输入设备的轴类型。    |
 | max                     | ArkTS-Dyn: number <br>ArkTS-Sta: int| 否 | 否 | 轴的最大值。   |
 | min                     | ArkTS-Dyn: number <br>ArkTS-Sta: int| 否 | 否 | 轴的最小值。   |
 | fuzz<sup>9+</sup>       | ArkTS-Dyn: number <br>ArkTS-Sta: int| 否 | 否 | 轴的模糊值。   |
@@ -1758,7 +1788,7 @@ type AxisType = 'touchmajor' | 'touchminor' | 'orientation' | 'x' | 'y' | 'press
 
 type SourceType = 'keyboard' | 'mouse' | 'touchpad' | 'touchscreen' | 'joystick' | 'trackball'
 
-轴的输入能力。比如鼠标设备可上报x轴事件，则x轴的输入源就是鼠标。
+输入设备的输入能力。包括键盘、鼠标、触摸屏、轨迹球、触控板、操纵杆等。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -1772,7 +1802,7 @@ type SourceType = 'keyboard' | 'mouse' | 'touchpad' | 'touchscreen' | 'joystick'
 | 'touchscreen' | 表示输入设备是触摸屏。 |
 | 'mouse'       | 表示输入设备是鼠标。  |
 | 'trackball'   | 表示输入设备是轨迹球。 |
-| 'touchpad'    | 表示输入设备是触摸板。 |
+| 'touchpad'    | 表示输入设备是触控板。 |
 | 'joystick'   | 表示输入设备是操纵杆。 |
 
 ## ChangedType<sup>9+</sup>
