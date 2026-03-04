@@ -156,7 +156,7 @@ The input network interface is incorrect.
 
 **错误描述**
 
-接口调用传入的网卡名不是以太网。
+接口调用传入的网卡名不正确。
 
 **可能原因**
 
@@ -174,7 +174,7 @@ The input ip address not found.
 
 **错误描述**
 
-未在vlan上找到传入的ip地址。
+未找到传入的ip地址。
 
 **可能原因**
 
