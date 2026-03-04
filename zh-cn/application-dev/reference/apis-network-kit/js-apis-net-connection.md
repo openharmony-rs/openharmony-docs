@@ -2460,7 +2460,7 @@ console.info(result);  // 预期结果：www.example.com
 
 createVlanInterface(ifName: string, vlanId: int): Promise\<void\>
 
-在指定的以太网物理网卡上，创建一个由 vlanId 指定的 VLAN 虚拟网络接口。使用Promise异步回调。
+在指定的以太网网卡上，创建一个由 vlanId 指定的虚拟局域网。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2514,7 +2514,7 @@ connection.createVlanInterface(ifName, vlanId).then(() => {
 
 destroyVlanInterface(ifName: string, vlanId: int): Promise\<void\>
 
-删除指定以太网物理网卡上，由 vlanId 指定的 VLAN 虚拟网络接口。使用Promise异步回调。
+删除指定以太网网卡上由 vlanId 指定的虚拟局域网。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2568,7 +2568,7 @@ connection.destroyVlanInterface(ifName, vlanId).then(() => {
 
 addVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
 
-为指定以太网网卡上对应 vlanId 的 VLAN 虚拟网络接口，配置指定的 IP 地址及子网掩码。使用Promise异步回调。
+为以太网网卡上对应 vlanId 的虚拟局域网配置指定的 IP 地址及子网掩码。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2632,7 +2632,7 @@ connection.addVlanIp(ifName, vlanId, address).then(() => {
 
 deleteVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
 
-从指定以太网网卡上对应 vlanId 的 VLAN 虚拟网络接口中，删除已配置的 IP 地址及子网掩码。使用Promise异步回调。
+从以太网网卡上对应 vlanId 的虚拟局域网中，删除已配置的 IP 地址及子网掩码。使用Promise异步回调。
 
 > **说明：**
 >
