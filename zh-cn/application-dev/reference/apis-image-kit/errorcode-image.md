@@ -1214,6 +1214,10 @@ Unsupported options, e.g, cannot convert image into desired pixel format.
 
 Invalid parameter.
 
+ **错误描述**
+ 	 
+ 非法参数。
+
 **可能原因**
 
 输入的参数无效。
