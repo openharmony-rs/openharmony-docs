@@ -3378,7 +3378,7 @@ try {
 
 ## formHost.getFormIdsByFormLocation<sup>23+</sup>
 
-getFormIdsByFormLocation(location: formInfo.FormLocation): Promise<Array<string>>;
+getFormIdsByFormLocation(location: formInfo.FormLocation): Promise&lt;Array&lt;string&gt;&gt;
 
 获取设备上指定卡片位置的卡片标识列表。使用Promise异步回调。
 
