@@ -560,7 +560,7 @@ getAllCalendars(callback: AsyncCallback\<Calendar[]>): void
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 801      | Capability not supported.  |
-| 23900004 | Internal program error. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **示例**：
 
