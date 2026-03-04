@@ -1025,7 +1025,7 @@ enum ArkUI_InspectorErrorCode
 **描述：**
 
 
-[inspector](../../performance/arkUI-inspector.md)错误码的枚举。
+[inspector](../../ui/arkts-inspector-overview.md)错误码的枚举。
 
 **起始版本：** 15
 
