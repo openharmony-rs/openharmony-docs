@@ -24,7 +24,7 @@ The state management framework adds proxies to original objects of the class, Da
   import { UIUtils } from '@kit.ArkUI';
   ```
 
-- In state management V1, proxies are added to the following to observe changes in top-level properties or changes triggered by API calls: (1) instances of classes decorated with \@Observed; (2) objects of the Class, Date, Map, Set, and Array types decorated with [\@State](./arkts-state.md) or other state variable decorators.
+- In state management V1, proxies are added to the following to observe changes in top-level properties or changes triggered by API calls: (1) instances of classes decorated with \@Observed; (2) objects of the class, Date, Map, Set, and Array types decorated with [\@State](./arkts-state.md) or other state variable decorators.
 - In state management V2, proxies are added to the following to observe changes triggered by API calls: objects of the Date, Map, Set, and Array types decorated with [\@Trace](./arkts-new-observedV2-and-trace.md), [\@Local](./arkts-new-local.md), or other state variable decorators.
 
 The **getTarget** API is used to obtain the original objects of these proxy objects.

@@ -49,7 +49,7 @@ To change the unobservable data to observable data, you can use the [makeObserve
   let rawInfo: Info = UIUtils.makeObserved(new Info()); // Correct usage.
   ```
 
-- makeObserved does not support instances of classes decorated with [@ObservedV2](./arkts-new-observedV2-and-trace.md) or [@Observed](./arkts-observed-and-objectlink.md), nor proxy data already encapsulated by makeObserved. To prevent double-proxying, makeObserved returns the input parameter directly if it belongs to any of these types.
+- **makeObserved** does not support passing in instances of classes decorated with [@ObservedV2](./arkts-new-observedV2-and-trace.md) or [@Observed](./arkts-observed-and-objectlink.md), nor proxy data that has been wrapped by **makeObserved**. To prevent data from being double-proxied, **makeObserved** directly returns the input parameter when it is one of the preceding types.
   ```ts
   import { UIUtils } from '@kit.ArkUI';
   @ObservedV2

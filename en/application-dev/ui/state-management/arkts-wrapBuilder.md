@@ -108,7 +108,7 @@ Use the myBuilder method decorated with the \@Builder decorator as the parameter
 
 ## Assigning a Value to a Variable by the @Builder Method to Use the Variable in UI Syntax
 
-The custom component IndexItem uses ForEach to render different \@Builder functions. You can use the wrapBuilder array declared by builderArr to implement different \@Builder functions. This results in cleaner and more organized code.
+In this example, the custom component **IndexItem** uses **ForEach** to render different \@Builder functions. You can use the **wrapBuilder** array declared in **builderArr** to achieve different \@Builder function effects. This results in cleaner and more organized code.
 
 <!-- @[wrapbuilder_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageThree.ets) --> 
 
@@ -154,7 +154,7 @@ struct IndexItem {
 
 ## Assigning a Value to a Class or API Attribute Using the @Builder Method
 
-Use the MyBuilder method decorated by the \@Builder decorator as the parameter of wrapBuilder, and assign the return value of wrapBuilder to the attribute in the ChildOptions interface. The attribute can be transferred to other subcomponents in the form of data.
+Use the **MyBuilder** method decorated by the \@Builder decorator as the parameter of **wrapBuilder**, and assign the return value of **wrapBuilder** to the attribute in the **ChildOptions** API. The attribute can be transferred to other subcomponents in the form of data.
 
 ```ts
 @Builder
@@ -196,7 +196,7 @@ struct Child {
 
 ## Passing Parameters by Reference
 
-When parameters are transferred by reference, the change of the status variable causes the UI in the \@Builder method to be refreshed.
+When passing parameters by reference, changes to state variables will trigger a UI refresh within the \@Builder method.
 
 <!-- @[wrapbuilder_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFour.ets) -->
 
@@ -234,7 +234,7 @@ struct Parent {
 
 ### Failure of Duplicate wrapBuilder Initialization
 
-In the same custom component, the same **wrapBuilder** can be initialized only once. For example, after **builderObj** is initialized through **wrapBuilder (MyBuilderFirst)**, the **wrapBuilder(MyBuilderSecond)** value assigned to **builderObj** does not take effect.
+In the same custom component, the same **wrapBuilder** can be initialized only once. For example, after **builderObj** is initialized through **wrapBuilder(MyBuilderFirst)**, the **wrapBuilder(MyBuilderSecond)** value assigned to **builderObj** does not take effect.
 
 <!-- @[wrapbuilder_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFive.ets) -->
 
@@ -263,7 +263,7 @@ struct TestBuilderIndex {
 
   aboutToAppear(): void {
     setTimeout(() => {
-      // wrapBuilder (myBuilderSecond) does not take effect.
+      // wrapBuilder(myBuilderSecond) does not take effect.
       this.builderObj.globalBuilder = wrapBuilder(myBuilderSecond);
     }, 1000);
   }
