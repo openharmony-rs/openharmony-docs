@@ -469,7 +469,7 @@ Image_ErrorCode OH_ImageReceiverNative_Release(OH_ImageReceiverNative* receiver)
 
 > **说明：**
 >
-> 此接口需加锁保证释放后OH_ImageReceiverNative对象不被其他接口使用，具体使用方法可参考开发指南[使用imagereceiver完成图片接收](../../media/image/image-receiver-c.md#native接口调用)。
+> 此接口需加锁保证释放后OH_ImageReceiverNative对象不被其他接口使用，具体使用方法可参考开发指南[使用imagereceiver完成图片接收](../../media/image/image-receiver-c.md)。
 
 **起始版本：** 12
 
