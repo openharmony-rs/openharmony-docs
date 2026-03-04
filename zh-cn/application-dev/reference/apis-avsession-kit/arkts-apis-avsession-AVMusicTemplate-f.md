@@ -28,9 +28,9 @@ createAVMusicTemplate(accessType: AVMusicTemplateType): AVMusicTemplate
 
 **参数：**
 
-| 参数名     | 类型                                                         | 必填 | 说明               |
-| ---------- | ------------------------------------------------------------ | ---- | ------------------ |
-| accessType | [AVMusicTemplateType](arkts-apis-avsession-AVMusicTemplate-e.md#avmusictemplatetype) | 是   | 音频模板枚举类型。 |
+| 参数名     | 类型                                                         | 必填 | 说明                               |
+| ---------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
+| accessType | [AVMusicTemplateType](arkts-apis-avsession-AVMusicTemplate-e.md#avmusictemplatetype) | 是   | 音频模板枚举类型。默认为智慧车机。 |
 
 **返回值：**
 
@@ -324,6 +324,8 @@ getAllAVMusicTemplateDescriptors(userId?: number): AVMusicTemplateDescriptor[]
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **参数：**
@@ -385,7 +387,7 @@ export class ControllerManager {
 
 onAVMusicTemplateCreate(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): void
 
-注册音频模板创建监听。
+注册音频模板创建的监听。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -395,9 +397,9 @@ onAVMusicTemplateCreate(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): vo
 
 **参数：**
 
-| 参数名   | 类型                                                                                                         | 必填 | 说明                         |
-| -------- |------------------------------------------------------------------------------------------------------------| ---- | ---------------------------- |
-| callback | Callback<[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor)> | 是   | 回调函数，返回音频模板描述。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                 |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
+| callback | Callback<[AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplate-i.md#avmusictemplatedescriptor)> | 是   | 回调函数，返回音频模板描述。用于处理会话创建的命令。 |
 
 **错误码：**
 

@@ -21,7 +21,7 @@
 | 名称       | 类型   | 只读 | 可选 | 说明               |
 | ---------- | ------ | ---- | ---- | ------------------ |
 | sessionId  | string | 否   | 否   | 音频模板唯一标识。 |
-| bundleName | string | 否   | 否   | HAP的包名。        |
+| bundleName | string | 否   | 否   | 应用的包名。 |
 | userId     | number   | 否   | 否   | 用户ID。           |
 
 ## MediaTab
@@ -32,12 +32,12 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称          | 类型                                                         | 只读 | 可选 | 说明                 |
-| ------------- | ------------------------------------------------------------ | ---- | ---- | -------------------- |
-| tabId         | string                                                       | 否   | 否   | 标签页的标识。       |
-| tabName       | string                                                       | 否   | 否   | 标签页的名称。       |
-| tabIcon       | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 标签页的图标。       |
-| extraDataJson | string                                                       | 否   | 是   | 标签页上的附加内容。 |
+| 名称          | 类型                                                         | 只读 | 可选 | 说明                     |
+| ------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------ |
+| tabId         | string                                                       | 否   | 否   | 标签页的标识。           |
+| tabName       | string                                                       | 否   | 否   | 标签页的名称。           |
+| tabIcon       | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 标签页的图标，需要主页。 |
+| extraDataJson | string                                                       | 否   | 是   | 标签页上的附加内容。     |
 
 ## OperResult
 
@@ -54,7 +54,7 @@
 
 ## MediaTabContent
 
-媒体标签页内容的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)的子类
+媒体标签页内容的定义。继承自[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -67,7 +67,7 @@
 
 ## Compilation
 
-合集的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)的子类。
+合集的定义。继承自[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -84,34 +84,34 @@
 
 ## Banner
 
-海报的定义。[MediaEn海报的定义。继承自[MediaEntity](#mediaentity)，用于展示媒体内容的视觉元素。
+海报的定义。继承自[MediaEntity](#mediaentity)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称             | 类型    | 只读 | 可选 | 说明               |
-| ---------------- | ------- | ---- | ---- | ------------------ |
-| isSupportOnePlay | boolean | 否   | 否   | 是否支持一键启播。 |
+| 名称             | 类型    | 只读 | 可选 | 说明                                              |
+| ---------------- | ------- | ---- | ---- | ------------------------------------------------- |
+| isSupportOnePlay | boolean | 否   | 否   | 是否支持一键启播。true表示支持，false表示不支持。 |
 
 ## Album
 
-专辑的定义。[MediaEntity](#mediaentity)的子类。
+专辑的定义。继承自[MediaEntity](#mediaentity)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称             | 类型                            | 只读 | 可选 | 说明               |
+| 名称             | 类型                          | 只读 | 可选 | 说明               |
 | ---------------- | ----------------------------- | ---- | ---- | ------------------ |
-| singer           | string                        | 否   | 否   | 歌手。             |
+| singer           | string                        | 否   | 否   | 歌手名。           |
 | playCounts       | string                        | 否   | 否   | 播放量。           |
 | favSubscribeData | [FavoriteData](#favoritedata) | 否   | 否   | 收藏或订阅的信息。 |
 | episodeCounts    | string                        | 否   | 是   | 专辑的总音频数。   |
 
 ## Ranking
 
-排行榜的定义。[MediaEntity](#mediaentity)的子类。
+排行榜的定义。继承自[MediaEntity](#mediaentity)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -123,7 +123,7 @@
 
 ## MediaEntity
 
-媒体实例的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)的子类。
+媒体实例的定义。继承自[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -133,8 +133,8 @@
 | --------------- | ------------------------------------------------------------ | ---- | ---- | ----------------------- |
 | mediaId         | string                                                       | 否   | 否   | 媒体资源的ID。          |
 | mediaType       | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 媒体资源的类型。        |
-| parentId        | string                                                       | 否   | 否   | 父级的媒体资源ID。      |
-| parentMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 父级的媒体资源类型。    |
+| parentId        | string                                                       | 否   | 否   | 父节点的媒体资源ID。    |
+| parentMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 父节点的媒体资源类型。  |
 | title           | string                                                       | 否   | 否   | 媒体资源的标题。        |
 | desc            | string                                                       | 否   | 是   | 媒体资源的描述。        |
 | imageUrl        | string                                                       | 否   | 否   | 媒体资源的封面图片URL。 |
@@ -148,14 +148,14 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称          | 类型                                                                 | 只读 | 可选 | 说明                 |
-| ------------- |--------------------------------------------------------------------| ---- | ---- | -------------------- |
-| entityId      | string                                                             | 否   | 否   | 媒体实例的ID。       |
-| pageIndex     | number                                                               | 否   | 否   | 媒体标签页的索引。   |
-| type          | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 媒体资源类型。       |
-| subEntityType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 是   | 下级的媒体资源类型。 |
-| sort          | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort)             | 否   | 是   | 排序。               |
-| episodeRange  | [EpisodeRange](arkts-apis-avsession-AVMusicTemplate-i.md#episoderange) | 否   | 是   | 要查询的剧集区间。   |
+| 名称          | 类型                                                         | 只读 | 可选 | 说明                   |
+| ------------- | ------------------------------------------------------------ | ---- | ---- | ---------------------- |
+| entityId      | string                                                       | 否   | 否   | 媒体实例的ID。         |
+| pageIndex     | number                                                       | 否   | 否   | 媒体标签页的索引。     |
+| type          | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 媒体资源类型。         |
+| subEntityType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 是   | 子节点的媒体资源类型。 |
+| sort          | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort)       | 否   | 是   | 排序。                 |
+| episodeRange  | [EpisodeRange](arkts-apis-avsession-AVMusicTemplate-i.md#episoderange) | 否   | 是   | 要查询的剧集区间。     |
 
 ## EpisodeRange
 
@@ -172,26 +172,26 @@
 
 ## PageMediaEntity
 
-标签页媒体的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)的子类
+标签页媒体的定义。继承自[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称            | 类型                                                                   | 只读 | 可选 | 说明                                      |
-| --------------- |----------------------------------------------------------------------| ---- | ---- | ----------------------------------------- |
-| pageIndex       | number                                                                 | 否   | 否   | 页码。                                    |
-| pageSize        | number                                                                 | 否   | 否   | 页面的大小。                              |
-| hasMoreData     | boolean                                                              | 否   | 否   | 是否有下一页。true表示有，false表示没有。 |
-| totalSize       | number                                                                 | 否   | 否   | 数据总大小。                              |
-| memberMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype)   | 否   | 否   | 媒体资源类型。                            |
-| elements        | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[] | 否   | 否   | 媒体实例的数组                            |
-| sort            | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort)               | 否   | 是   | 排序                                      |
-| episodeRange    | [EpisodeRange](arkts-apis-avsession-AVMusicTemplate-i.md#episoderange) | 否   | 是   | 剧集区间                                  |
+| 名称            | 类型                                                         | 只读 | 可选 | 说明                                         |
+| --------------- | ------------------------------------------------------------ | ---- | ---- | -------------------------------------------- |
+| pageIndex       | number                                                       | 否   | 否   | 分页查询页码。                               |
+| pageSize        | number                                                       | 否   | 否   | 页面的大小。                                 |
+| hasMoreData     | boolean                                                      | 否   | 否   | 是否有下一页。true表示有，false表示没有。    |
+| totalSize       | number                                                       | 否   | 否   | 数据总大小。                                 |
+| memberMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 媒体资源类型。                               |
+| elements        | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[] | 否   | 否   | 查询数据内容（根据类型传递相应的结构数据）。 |
+| sort            | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort)       | 否   | 是   | 数据排序。                                   |
+| episodeRange    | [EpisodeRange](arkts-apis-avsession-AVMusicTemplate-i.md#episoderange) | 否   | 是   | 剧集区间                                     |
 
 ## Single
 
-单曲的定义。[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)的子类
+单曲的定义。继承自[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -229,7 +229,7 @@
 | isSupportSkipTail      | boolean  | 否   | 否   | 是否支持跳过结尾。true表示支持，false表示不支持。       |
 | isSupportPlayMode      | boolean  | 否   | 否   | 是否支持切换播放模式。true表示支持，false表示不支持。     |
 | isSupportPlayRate      | boolean  | 否   | 否   | 是否支持改变播放速率。true表示支持，false表示不支持。     |
-| supportedPlayRate      | string[] | 否   | 否   | 支持的播放速率的数组。                         |
+| supportedPlayRate      | string[] | 否   | 否   | 支持播放速率的数组。                         |
 | currentPlayRate        | string   | 否   | 否   | 当前的播放速率。                            |
 | isSupportSoundQuality  | boolean  | 否   | 否   | 是否支持声音质量。true表示支持，false表示不支持。       |
 | isSupportSoundEffect   | boolean  | 否   | 否   | 是否支持音效。true表示支持，false表示不支持。         |
@@ -259,14 +259,14 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称         | 类型                                                                                                                                                                                                                                                            | 只读 | 可选 | 说明                     |
-| ------------ |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ---- | ---- | ------------------------ |
-| id           | string                                                                                                                                                                                                                                                        | 否   | 否   | 设置项的ID。             |
-| title        | string                                                                                                                                                                                                                                                        | 否   | 否   | 设置项的标题。           |
-| desc         | string                                                                                                                                                                                                                                                        | 否   | 否   | 设置项的描述。           |
-| settingType  | [SettingType](arkts-apis-avsession-AVMusicTemplate-e.md#settingtype)                                                                                                                                                                                          | 否   | 是   | 设置项的类型。           |
-| settingValue | string \| boolean \| [SettingContent](arkts-apis-avsession-AVMusicTemplate-i.md#settingcontent)[] \| [WantAgent](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#WantAgent) | 否   | 是   | 设置项的值。             |
-| mediaId      | string                                                                                                                                                                                                                                                        | 否   | 否   | 与当前设置关联的媒体ID。 |
+| 名称         | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ------------ | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| id           | string                                                       | 否   | 否   | 设置项的唯一ID。                                             |
+| title        | string                                                       | 否   | 否   | 设置项的标题。                                               |
+| desc         | string                                                       | 否   | 否   | 设置项的描述。                                               |
+| settingType  | [SettingType](arkts-apis-avsession-AVMusicTemplate-e.md#settingtype) | 否   | 是   | 设置项的类型。                                               |
+| settingValue | string \| boolean \| [SettingContent](arkts-apis-avsession-AVMusicTemplate-i.md#settingcontent)[] \| [WantAgent](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#WantAgent) | 否   | 是   | 设置项的值。当settingType类型是SettingType.SWITCH时，本值数据类型是boolean。当settingType类型是SettingType.LIST时，本值数据类型是SettingContent数组。当settingType类型是SettingType.JUMP时，本值数据类型是string。 |
+| mediaId      | string                                                       | 否   | 否   | 与当前设置关联的媒体id。如果设置与当前媒体信息相关联，您需要设置mediaId；否则，不需要设置mediaId。 |
 
 ## SettingContent
 
@@ -276,12 +276,12 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称       | 类型                                                         | 只读 | 可选 | 说明                                                  |
-| ---------- | ------------------------------------------------------------ | ---- | ---- | ----------------------------------------------------- |
-| value      | string                                                       | 否   | 否   | 设置的内容。                                          |
-| isSelected | string                                                       | 否   | 否   | 是否选择本设置项内容。true表示选择，false表示不选择。 |
-| textTags   | string[]                                                     | 否   | 是   | 设置内容的描述的数组。                                |
-| imageTags  | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md)[] | 否   | 是   | 设置内容的标签描述的数组。                            |
+| 名称       | 类型                                                         | 只读 | 可选 | 说明                                              |
+| ---------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------- |
+| value      | string                                                       | 否   | 否   | 设置的内容。                                      |
+| isSelected | string                                                       | 否   | 否   | 是否选择本设置项。true表示选择，false表示不选择。 |
+| textTags   | string[]                                                     | 否   | 是   | 设置内容的描述的数组。                            |
+| imageTags  | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md)[] | 否   | 是   | 设置内容的标签描述的数组。                        |
 
 ## QrCodeInfo
 
@@ -367,7 +367,7 @@
 
 ## CustomElement
 
-我的页面的自定义元素的定义。[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)的子类。
+我的页面的自定义元素的定义。继承自[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
