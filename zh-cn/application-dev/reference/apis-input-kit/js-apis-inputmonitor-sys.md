@@ -1580,7 +1580,7 @@ on(type: 'keyPressed', keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEven
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[按键监听错误码](./errorcode-inputmonitor.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[按键前置监听错误码](./errorcode-inputmonitor.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1764,7 +1764,7 @@ on(type: 'swipeInward', receiver: Callback&lt;SwipeInward&gt;): void
 | 参数名   | 类型                                                        | 必填 | 说明                                 |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
 | type     | string                                                      | 是   | 输入事件类型，取唯一值'SwipeInward'。 |
-| receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward12)&gt;    | 是   | 回调函数，返回[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward12)&gt;。         |
+| receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward)&gt;    | 是   | 回调函数，返回[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward)&gt;。         |
 
 **错误码**：
 
@@ -1817,7 +1817,7 @@ off(type: 'swipeInward', receiver?: Callback&lt;SwipeInward&gt;): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 输入事件类型，取值'swipeInward'。                    |
-| receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward12)&gt; | 否   | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+| receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward)&gt; | 否   | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
 
 **错误码**：
 
