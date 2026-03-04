@@ -29,6 +29,8 @@ sendExecuteResult(instanceId: number, result: insightIntent.ExecuteResult): Prom
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -150,6 +152,8 @@ sendIntentResult(instanceId: number, result: insightIntent.IntentResult&lt;T&gt;
 [意图执行结果返回形式](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION后，应用将无需再通过[onExecute接口](./js-apis-app-ability-InsightIntentEntryExecutor.md#onexecute)的返回值返回意图执行结果。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
