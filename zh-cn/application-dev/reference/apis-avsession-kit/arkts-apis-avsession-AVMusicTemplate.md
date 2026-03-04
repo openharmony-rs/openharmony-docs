@@ -103,9 +103,9 @@ startTemplate(): Promise&lt;OperResult&gt;
 
 以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
 
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 错误码ID | 错误信息                  |
+| -------- | ------------------------- |
+| 801      | capability not supported. |
 
 **示例：**
 
@@ -145,6 +145,16 @@ onQueryMainTabs(callback: QueryMainTabsEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onQueryMainTabs can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -221,6 +231,16 @@ offQueryMainTabs(callback?: QueryMainTabsEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offQueryMainTabs can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onQueryMainTabs](#onquerymaintabs)的示例。
@@ -246,6 +266,16 @@ onQueryMediaTabContent(callback: QueryMediaTabContentEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onQueryMediaTabContent can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -356,6 +386,16 @@ offQueryMediaTabContent(callback?: QueryMediaTabContentEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offQueryMediaTabContent can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onQueryMediaTabContent](#onquerymediatabcontent)的示例。
@@ -381,6 +421,16 @@ onQueryMediaEntity(callback: QueryMediaEntityEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onQueryMediaEntity can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -419,7 +469,7 @@ export class TemplateManager {
   /**
    * 模拟获取PageMediaEntity。
    *
-   * @returns PageMediaEntity
+   * @returns PageMediaEntity实例。
    */
   private async createPageMediaEntity(): Promise<avMusicTemplate.PageMediaEntity> {
     let mediaEntity: avMusicTemplate.MediaEntity = await this.createMediaEntity();
@@ -477,6 +527,16 @@ offQueryMediaEntity(callback?: QueryMediaEntityEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offQueryMediaEntity can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onQueryMediaEntity](#onquerymediaentity)的示例。
@@ -502,6 +562,16 @@ onQueryCompilation(callback: QueryCompilationEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onQueryCompilation can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -540,7 +610,7 @@ export class TemplateManager {
   /**
    * 模拟获取PageMediaEntity。
    *
-   * @returns PageMediaEntity
+   * @returns PageMediaEntity实例。
    */
   private async createPageMediaEntity(): Promise<avMusicTemplate.PageMediaEntity> {
     let mediaEntity: avMusicTemplate.MediaEntity = await this.createMediaEntity();
@@ -598,6 +668,16 @@ offQueryCompilation(callback?: QueryCompilationEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offQueryCompilation can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onQueryCompilation](#onquerycompilation)的示例。
@@ -623,6 +703,16 @@ onQueryPlaylist(callback: QueryPlaylistEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onQueryPlaylist can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -661,7 +751,7 @@ export class TemplateManager {
   /**
    * 模拟获取PageMediaEntity。
    *
-   * @returns PageMediaEntity
+   * @returns PageMediaEntity实例。
    */
   private async createPageMediaEntity(): Promise<avMusicTemplate.PageMediaEntity> {
     let mediaEntity: avMusicTemplate.MediaEntity = await this.createMediaEntity();
@@ -719,6 +809,16 @@ offQueryPlaylist(callback?: QueryPlaylistEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offQueryPlaylist can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onQueryPlaylist](#onqueryplaylist)的示例。
@@ -744,6 +844,16 @@ onQueryCurrentSingle(callback: QueryCurrentSingleEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onQueryCurrentSingle can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -851,6 +961,16 @@ offQueryCurrentSingle(callback?: QueryCurrentSingleEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offQueryCurrentSingle can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onQueryCurrentSingle](#onquerycurrentsingle)的示例。
@@ -876,6 +996,16 @@ onQueryCompilationByKeyword(callback: QueryCompilationByKeywordEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onQueryCompilationByKeyword can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -972,6 +1102,16 @@ offQueryCompilationByKeyword(callback?: QueryCompilationByKeywordEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offQueryCompilationByKeyword can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onQueryCompilationByKeyword](#onquerycompilationbykeyword)的示例。
@@ -997,6 +1137,16 @@ onQueryMediaEntityByKeyword(callback: QueryMediaEntityByKeywordEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onQueryMediaEntityByKeyword can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -1035,7 +1185,7 @@ export class TemplateManager {
   /**
    * 模拟获取PageMediaEntity。
    *
-   * @returns PageMediaEntity
+   * @returns PageMediaEntity实例。
    */
   private async createPageMediaEntity(): Promise<avMusicTemplate.PageMediaEntity> {
     let mediaEntity: avMusicTemplate.MediaEntity = await this.createMediaEntity();
@@ -1093,6 +1243,16 @@ offQueryMediaEntityByKeyword(callback?: QueryMediaEntityByKeywordEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offQueryMediaEntityByKeyword can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onQueryMediaEntityByKeyword](#onquerymediaentitybykeyword)的示例。
@@ -1118,6 +1278,16 @@ onQueryRecommendMediaEntityList(callback: QueryRecommendMediaEntityListEvent): v
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onQueryRecommendMediaEntityList can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -1195,6 +1365,16 @@ offQueryRecommendMediaEntityList(callback?: QueryRecommendMediaEntityListEvent):
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offQueryRecommendMediaEntityList can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onQueryRecommendMediaEntityList](#onqueryrecommendmediaentitylist)的示例。
@@ -1220,6 +1400,16 @@ onQueryHotWords(callback: QueryHotWordsEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onQueryHotWords can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -1278,6 +1468,16 @@ offQueryHotWords(callback?: QueryHotWordsEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offQueryHotWords can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onQueryHotWords](#onqueryhotwords)的示例。
@@ -1303,6 +1503,16 @@ onQuerySearchHistory(callback: QuerySearchHistoryEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onQuerySearchHistory can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -1361,6 +1571,16 @@ offQuerySearchHistory(callback?: QuerySearchHistoryEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offQuerySearchHistory can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onQuerySearchHistory](#onquerysearchhistory)的示例。
@@ -1386,6 +1606,16 @@ onClearSearchHistory(callback: ClearSearchHistoryEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onClearSearchHistory can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -1456,6 +1686,16 @@ offClearSearchHistory(callback?: ClearSearchHistoryEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offClearSearchHistory can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onClearSearchHistory](#onclearsearchhistory)的示例。
@@ -1481,6 +1721,16 @@ onLogin(callback: LoginEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onLogin can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -1558,6 +1808,16 @@ offLogin(callback?: LoginEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offLogin can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onLogin](#onlogin)的示例。
@@ -1583,6 +1843,16 @@ onRequestDialogInfo(callback: RequestDialogInfoEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onRequestDialogInfo can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -1666,6 +1936,16 @@ offRequestDialogInfo(callback?: RequestDialogInfoEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offRequestDialogInfo can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onRequestDialogInfo](#onrequestdialoginfo)的示例。
@@ -1691,6 +1971,16 @@ onHandleMemberPurchase(callback: HandleMemberPurchaseEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onHandleMemberPurchase can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -1774,6 +2064,16 @@ offHandleMemberPurchase(callback?: HandleMemberPurchaseEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offHandleMemberPurchase can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onHandleMemberPurchase](#onhandlememberpurchase)的示例。
@@ -1799,6 +2099,16 @@ onQueryMemberPurchase(callback: QueryMemberPurchaseEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onQueryMemberPurchase can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -1874,6 +2184,16 @@ offQueryMemberPurchase(callback?: QueryMemberPurchaseEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offQueryMemberPurchase can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onQueryMemberPurchase](#onquerymemberpurchase)的示例。
@@ -1899,6 +2219,16 @@ onQueryCustomContent(callback: QueryCustomContentEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onQueryCustomContent can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -1990,6 +2320,16 @@ offQueryCustomContent(callback?: QueryCustomContentEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offQueryCustomContent can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onQueryCustomContent](#onquerycustomcontent)的示例。
@@ -2015,6 +2355,16 @@ onDownloadMediaEntity(callback: DownloadMediaEntityEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onDownloadMediaEntity can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -2061,7 +2411,7 @@ export class TemplateManager {
   /**
    * 模拟设置改变。
    *
-   * @returns Promise类型的设置条目
+   * @returns Promise类型的设置条目。
    */
   /**
    * 模拟操作结果。
@@ -2109,6 +2459,16 @@ offDownloadMediaEntity(callback?: DownloadMediaEntityEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offDownloadMediaEntity can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onDownloadMediaEntity](#ondownloadmediaentity)的示例。
@@ -2134,6 +2494,16 @@ onSettingsChange(callback: SettingsChangeEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onSettingsChange can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -2210,6 +2580,16 @@ offSettingsChange(callback?: SettingsChangeEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offSettingsChange can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onSettingsChange](#onsettingschange)的示例。
@@ -2235,6 +2615,16 @@ onProblemAndAdvice(callback: ProblemAndAdviceEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onProblemAndAdvice can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -2305,6 +2695,16 @@ offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offProblemAndAdvice can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onProblemAndAdvice](#onproblemandadvice)的示例。
@@ -2330,6 +2730,16 @@ onPlayForSearch(callback: PlayForSearchEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onPlayForSearch can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -2401,6 +2811,16 @@ offPlayForSearch(callback?: PlayForSearchEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offPlayForSearch can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onPlayForSearch](#onplayforsearch)的示例。
@@ -2426,6 +2846,16 @@ onExecuteAction(callback: ExecuteActionEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onExecuteAction can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -2483,6 +2913,16 @@ offExecuteAction(callback?: ExecuteActionEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offExecuteAction can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onExecuteAction](#onexecuteaction)的示例。
@@ -2508,6 +2948,16 @@ onPlayMediaEntity(callback: PlayMediaEntityEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onPlayMediaEntity can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -2560,6 +3010,16 @@ offPlayMediaEntity(callback?: PlayMediaEntityEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offPlayMediaEntity can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onPlayMediaEntity](#onplaymediaentity)的示例。
@@ -2585,6 +3045,16 @@ onFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 | 类型 | 说明         |
 | ---- | ------------ |
 | void | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function onFavoriteMediaEntity can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
 
 **示例：**
 
@@ -2656,6 +3126,16 @@ offFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 | ---- | ------------ |
 | void | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function offFavoriteMediaEntity can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000012 | AVMusicTemplate error.                                       |
+
 **示例：**
 
 请参考[onFavoriteMediaEntity](#onfavoritemediaentity)的示例。
@@ -2681,6 +3161,16 @@ setUserInfo(userInfo: UserInfo): Promise&lt;void&gt;
 | 类型                | 说明         |
 | ------------------- | ------------ |
 | Promise&lt;void&gt; | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function setUserInfo can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000011 | Thr data write error, data is invalid.                       |
 
 **示例：**
 
@@ -2741,6 +3231,16 @@ setDialogCommand(type: DialogControlType, dialogInfo: DialogInfo): Promise&lt;vo
 | ------------------- | ------------ |
 | Promise&lt;void&gt; | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function setDialogCommand can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000011 | Thr data write error, data is invalid.                       |
+
 **示例：**
 
 ```ts
@@ -2793,6 +3293,16 @@ setCurrentSingle(single: Single): Promise&lt;void&gt;
 | 类型                | 说明         |
 | ------------------- | ------------ |
 | Promise&lt;void&gt; | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function setCurrentSingle can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000011 | Thr data write error, data is invalid.                       |
 
 **示例：**
 
@@ -2880,6 +3390,16 @@ setMediaEntities(entities: MediaEntity[]): Promise&lt;void&gt;
 | ------------------- | ------------ |
 | Promise&lt;void&gt; | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function setMediaEntities can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000011 | Thr data write error, data is invalid.                       |
+
 **示例：**
 
 ```ts
@@ -2927,6 +3447,16 @@ setTabContent(tabId: string, tabContent: MediaTabContent): Promise&lt;void&gt;
 | 类型                | 说明         |
 | ------------------- | ------------ |
 | Promise&lt;void&gt; | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function setTabContent can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000011 | Thr data write error, data is invalid.                       |
 
 **示例：**
 
@@ -2990,6 +3520,16 @@ setPlaylist(playlist: PageMediaEntity): Promise&lt;void&gt;
 | ------------------- | ------------ |
 | Promise&lt;void&gt; | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function setPlaylist can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000011 | Thr data write error, data is invalid.                       |
+
 **示例：**
 
 ```ts
@@ -3048,6 +3588,16 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise&lt;void&gt;
 | ------------------- | ------------ |
 | Promise&lt;void&gt; | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function setDownloadMediaEntityStatus can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000011 | Thr data write error, data is invalid.                       |
+
 **示例：**
 
 请参考[onDownloadMediaEntity](#ondownloadmediaentity)的示例。
@@ -3075,6 +3625,16 @@ setCustomElements(actionType: ActionType, customType: CustomType, customElement:
 | 类型                | 说明         |
 | ------------------- | ------------ |
 | Promise&lt;void&gt; | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function setCustomElements can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000011 | Thr data write error, data is invalid.                       |
 
 **示例：**
 
@@ -3138,6 +3698,16 @@ setSettings(settingItems: SettingItem[]): Promise&lt;void&gt;
 | ------------------- | ------------ |
 | Promise&lt;void&gt; | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function setSettings can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000011 | Thr data write error, data is invalid.                       |
+
 **示例：**
 
 ```ts
@@ -3186,6 +3756,16 @@ reportExecuteAction(actionType: string, params: string): Promise&lt;void&gt;
 | ------------------- | ------------ |
 | Promise&lt;void&gt; | 无返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function reportExecuteAction can not work correctly due to limited device capabilities. |
+| 35000005 | AVMusicTemplate does not exist.                              |
+| 35000011 | Thr data write error, data is invalid.                       |
+
 **示例：**
 
 ```ts
@@ -3226,6 +3806,16 @@ setExtensionAbility(want: WantAgent): Promise&lt;void&gt;
 | 类型                | 说明         |
 | ------------------- | ------------ |
 | Promise&lt;void&gt; | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | -------------------------------------- |
+| 801      | capability not supported.              |
+| 35000005 | AVMusicTemplate does not exist.        |
+| 35000011 | Thr data write error, data is invalid. |
 
 **示例：**
 
@@ -3280,6 +3870,14 @@ destroy(): Promise&lt;void&gt;
 | 类型                | 说明         |
 | ------------------- | ------------ |
 | Promise&lt;void&gt; | 无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.function destroy can not work correctly due to limited device capabilities. |
 
 **示例：**
 
