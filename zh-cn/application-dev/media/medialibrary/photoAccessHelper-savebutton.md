@@ -213,11 +213,13 @@ async function example(
   context: common.UIAbilityContext
 ): Promise<string> {
   try {
+    
     // Specify the uri of the image in the application sandbox directory to be saved.
     let srcFileUri = context.filesDir + '/test.jpg';
     let srcFileUris: string[] = [
       srcFileUri
     ];
+
     //Set parameters for the image to save: file extension, image type, title and subtype (both optional)
     let photoCreationConfigs: photoAccessHelper.PhotoCreationConfig[] = [
       {
@@ -229,10 +231,12 @@ async function example(
     ];
 
     console.info('Source URI: ' + srcFileUri);
+
     // Obtain the target uri in the media library based on pop-up authorization.
     let desFileUris: string[] = 
       await phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs);
     console.info('Destination URIs: ' + JSON.stringify(desFileUris));
+
     // Write image from sandbox directory to target uri in media library.
     let desFile: fileIo.File = await fileIo.open(desFileUris[0], fileIo.OpenMode.WRITE_ONLY);
     let srcFile: fileIo.File = await fileIo.open(srcFileUri, fileIo.OpenMode.READ_ONLY);
