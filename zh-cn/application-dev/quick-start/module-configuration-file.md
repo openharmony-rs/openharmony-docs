@@ -1321,3 +1321,17 @@ definePermissions标签示例：
 executableBinaryPaths示例：
 
 <!-- @[module_executableBinaryPaths](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+    // ...
+    "executableBinaryPaths": [
+      {
+        "path": "framework/test.bin"
+      }
+    ],
+    // ...
+  },
+}
+```
