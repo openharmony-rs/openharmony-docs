@@ -6,7 +6,7 @@ constructor(handler: MessageHandler)
 
 Message的构造器，用于构造消息实例，需要传入[MessageHandler](./message_handler.md)来指定消息处理的逻辑。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **参数：**
 |参数名|类型|必填|说明|
@@ -28,7 +28,7 @@ constructor(what: int, handler: MessageHandler)
 
 Message的构造器，用于构造消息实例，需要传入消息标识符和[MessageHandler](./message_handler.md)来指定消息处理的逻辑。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **参数：**
 |参数名|类型|必填|说明|
@@ -53,7 +53,7 @@ constructor(what: int, obj: Object, handler: MessageHandler)
 
 Message的构造器，用于构造消息，需要传入消息标识符、[MessageHandler](./message_handler.md)和消息数据来指定消息处理的逻辑。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **参数：**
 |参数名|类型|必填|说明|
@@ -79,7 +79,7 @@ constructor(callback: ()=>void, handler: MessageHandler)
 
 Message的构造器，用于构造消息实例，需要传入回调函数和[MessageHandler](./message_handler.md)来指定消息处理的逻辑。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **参数：**
 |参数名|类型|必填|说明|
@@ -106,7 +106,7 @@ sendToTarget(): void
 
 将当前消息发送到构造时传入的消息处理器中进行处理。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **示例：**
 ```ts
@@ -128,7 +128,7 @@ getWhat(): int
 
 返回消息的标识符。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **返回值：**
 | 类型       | 说明                 |
@@ -153,7 +153,7 @@ getObject(): Object | undefined
 
 获取消息携带的数据对象。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **返回值：**
 | 类型       | 说明                 |
@@ -174,16 +174,16 @@ console.info("message get object is: ", msg.getObject());// message get object i
 ```
 
 ## getCallback
-getCallback(): ()=>void
+getCallback(): ()=>void | undefined
 
 获取消息的回调函数。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **返回值：**
 | 类型       | 说明                 |
 | -------- | ------------------ |
-| ()=>void   | 返回消息的回调函数，如果消息没有设置回调函数返回undefined。 |
+| ()=>void \| undefined  | 返回消息的回调函数，如果消息没有设置回调函数返回值为undefined。 |
 
 **示例：**
 ```ts
@@ -207,7 +207,7 @@ getTarget(): MessageHandler
 
 获取消息的目标处理器。
 
-**ArkTS版本：** 本接口仅支持ArkTS1.2。
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
 
 **返回值：**
 | 类型       | 说明                 |
@@ -224,4 +224,36 @@ let messageHandler = new concurrency.MessageHandler((msg:concurrency.Message)=>{
 let msg = new concurrency.Message(messageHandler);
 let res = (messageHandler == msg.getTarget());
 console.info("message handler equals: ", res);// message handler equals: true
+```
+
+## equals
+equals(other: Message): boolean
+
+判断当前消息是否与另一个消息相等。
+
+如果两个消息的目标处理器不同，则返回false；对于回调消息，会继续比较回调函数是否相同；对于携带消息标识符的消息，会继续比较消息标识符和携带数据对象是否相同。
+
+**ArkTS版本：** 本接口仅支持ArkTS-Sta。
+
+**参数：**
+|参数名|类型|必填|说明|
+|-----|----|--|----|
+|other|[Message](#message-eaworker消息)|是|用于比较的另一个消息。|
+
+**返回值：**
+| 类型       | 说明                 |
+| -------- | ------------------ |
+| boolean   | 如果两个消息相等则返回true，否则返回false。 |
+
+**示例：**
+```ts
+let eaw = new EAWorker();
+let messageHandler = new concurrency.MessageHandler((msg:concurrency.Message)=>{
+    // do nothing
+}, eaw);
+
+let msg1 = new concurrency.Message(1, "hello", messageHandler);
+let msg2 = new concurrency.Message(1, "hello", messageHandler);
+let res = msg1.equals(msg2);
+console.info("message equals: ", res);// message equals: true
 ```
