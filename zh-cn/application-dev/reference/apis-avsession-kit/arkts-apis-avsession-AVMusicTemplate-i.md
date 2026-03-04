@@ -22,7 +22,7 @@
 | ---------- | ------ | ---- | ---- | ------------------ |
 | sessionId  | string | 否   | 否   | 音频模板唯一标识。 |
 | bundleName | string | 否   | 否   | HAP的包名。        |
-| userId     | int    | 否   | 否   | 用户ID。           |
+| userId     | number   | 否   | 否   | 用户ID。           |
 
 ## MediaTab
 
@@ -49,7 +49,7 @@
 
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | --------- | ------ | ---- | ---- | ---------- |
-| errorCode | int    | 否   | 否   | 错误码。   |
+| errorCode | number   | 否   | 否   | 错误码。   |
 | errorMsg  | string | 否   | 是   | 错误信息。 |
 
 ## MediaTabContent
@@ -78,7 +78,7 @@
 | id              | string                                                    | 否   | 否   | 合集的标识。                                      |
 | title           | string                                                    | 否   | 否   | 合集的标题。                                      |
 | hasMoreData     | boolean                                                   | 否   | 否   | 是否有更多的合集数据。true表示有，false表示没有。 |
-| totalSize       | int                                                       | 否   | 否   | 合集内音频的个数。                                |
+| totalSize       | number                                                      | 否   | 否   | 合集内音频的个数。                                |
 | memberMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 合集的媒体资源类型                                |
 | topElements     | [MediaEntity](#mediaentity)                               | 否   | 否   | 合集的内容                                        |
 
@@ -151,7 +151,7 @@
 | 名称          | 类型                                                                 | 只读 | 可选 | 说明                 |
 | ------------- |--------------------------------------------------------------------| ---- | ---- | -------------------- |
 | entityId      | string                                                             | 否   | 否   | 媒体实例的ID。       |
-| pageIndex     | int                                                                | 否   | 否   | 媒体标签页的索引。   |
+| pageIndex     | number                                                               | 否   | 否   | 媒体标签页的索引。   |
 | type          | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 媒体资源类型。       |
 | subEntityType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 是   | 下级的媒体资源类型。 |
 | sort          | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort)             | 否   | 是   | 排序。               |
@@ -167,8 +167,8 @@
 
 | 名称  | 类型 | 只读 | 可选 | 说明         |
 | ----- | ---- | ---- | ---- | ------------ |
-| start | int  | 否   | 否   | 开始的索引。 |
-| end   | int  | 否   | 否   | 结束的索引。 |
+| start | number | 否   | 否   | 开始的索引。 |
+| end   | number | 否   | 否   | 结束的索引。 |
 
 ## PageMediaEntity
 
@@ -180,10 +180,10 @@
 
 | 名称            | 类型                                                                   | 只读 | 可选 | 说明                                      |
 | --------------- |----------------------------------------------------------------------| ---- | ---- | ----------------------------------------- |
-| pageIndex       | int                                                                  | 否   | 否   | 页码。                                    |
-| pageSize        | int                                                                  | 否   | 否   | 页面的大小。                              |
+| pageIndex       | number                                                                 | 否   | 否   | 页码。                                    |
+| pageSize        | number                                                                 | 否   | 否   | 页面的大小。                              |
 | hasMoreData     | boolean                                                              | 否   | 否   | 是否有下一页。true表示有，false表示没有。 |
-| totalSize       | int                                                                  | 否   | 否   | 数据总大小。                              |
+| totalSize       | number                                                                 | 否   | 否   | 数据总大小。                              |
 | memberMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype)   | 否   | 否   | 媒体资源类型。                            |
 | elements        | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[] | 否   | 否   | 媒体实例的数组                            |
 | sort            | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort)               | 否   | 是   | 排序                                      |
@@ -206,7 +206,7 @@
 | tags             | string[]                                                              | 否   | 是   | 歌曲标签信息的数组。                       |
 | settings         | [SettingItem](#settingitem)[]                                         | 否   | 是   | 歌曲设置项的数组。                         |
 | downloadStatus   | [DownloadStatus](arkts-apis-avsession-AVMusicTemplate-e.md#downloadstatus) | 否   | 是   | 下载状态。                                 |
-| downloadProgress | int                                                                   | 否   | 是   | 下载进度。                                 |
+| downloadProgress | number                                                                  | 否   | 是   | 下载进度。                                 |
 
 ## PlayInfo
 
@@ -223,8 +223,8 @@
 | isSupportPrev          | boolean  | 否   | 否   | 是否支持上一首。true表示支持，false表示不支持。        |
 | isSupportQuickForward  | boolean  | 否   | 否   | 是否支持快进。true表示支持，false表示不支持。         |
 | isSupportQuickBackward | boolean  | 否   | 否   | 是否支持快退。true表示支持，false表示不支持。         |
-| quickForwardStep       | int      | 否   | 否   | 每一次快进的幅度。                           |
-| quickBackwardStep      | int      | 否   | 否   | 每一次快退的幅度。                           |
+| quickForwardStep       | number     | 否   | 否   | 每一次快进的幅度。                           |
+| quickBackwardStep      | number     | 否   | 否   | 每一次快退的幅度。                           |
 | isSupportSkipHead      | boolean  | 否   | 否   | 是否支持跳过开头。true表示支持，false表示不支持。       |
 | isSupportSkipTail      | boolean  | 否   | 否   | 是否支持跳过结尾。true表示支持，false表示不支持。       |
 | isSupportPlayMode      | boolean  | 否   | 否   | 是否支持切换播放模式。true表示支持，false表示不支持。     |
@@ -233,8 +233,8 @@
 | currentPlayRate        | string   | 否   | 否   | 当前的播放速率。                            |
 | isSupportSoundQuality  | boolean  | 否   | 否   | 是否支持声音质量。true表示支持，false表示不支持。       |
 | isSupportSoundEffect   | boolean  | 否   | 否   | 是否支持音效。true表示支持，false表示不支持。         |
-| totalDuration          | int      | 否   | 否   | 总时长。                                |
-| currentPlayDuration    | int      | 否   | 否   | 当前播放的时长。                            |
+| totalDuration          | number     | 否   | 否   | 总时长。                                |
+| currentPlayDuration    | number     | 否   | 否   | 当前播放的时长。                            |
 | isSupportProgress      | boolean  | 否   | 否   | 是否支持进度。true表示支持，false表示不支持。默认值为true。 |
 
 ## FavoriteData
@@ -301,7 +301,7 @@
 | icon        | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 与二维码关联的应用图标。 |
 | content     | string                                                       | 否   | 否   | 二维码的内容。           |
 | codeData    | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 二维码图片。             |
-| validPeriod | int                                                          | 否   | 否   | 二维码有效期。单位：秒。 |
+| validPeriod | number                                                         | 否   | 否   | 二维码有效期。单位：秒。 |
 
 ## DialogActionInfo
 
@@ -451,5 +451,5 @@
 | ------------- | ------ | ---- | ---- | ---------------- |
 | entityId      | string | 否   | 否   | 视频的唯一标识。 |
 | episodeId     | string | 否   | 是   | 视频的集数ID。   |
-| episodeNumber | int    | 否   | 是   | 视频的集数。     |
+| episodeNumber | number   | 否   | 是   | 视频的集数。     |
 | extras        | string | 否   | 是   | 视频的额外信息。 |

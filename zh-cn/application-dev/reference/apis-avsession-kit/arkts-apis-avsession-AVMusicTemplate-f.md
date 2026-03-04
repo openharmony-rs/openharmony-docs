@@ -330,7 +330,7 @@ getAllAVMusicTemplateDescriptors(userId?: int): AVMusicTemplateDescriptor[]
 
 | 参数名 | 类型 | 必填 | 说明     |
 | ------ | ---- | ---- | -------- |
-| userId | int  | 否   | 用户ID。 |
+| userId | number  | 否   | 用户ID。 |
 
 **返回值：**
 

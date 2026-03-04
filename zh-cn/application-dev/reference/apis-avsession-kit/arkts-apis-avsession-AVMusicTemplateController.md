@@ -352,7 +352,7 @@ queryCompilation(compilationId: string, pageIndex: int): Promise&lt;PageMediaEnt
 | 参数名        | 类型   | 必填 | 说明           |
 | ------------- | ------ | ---- | -------------- |
 | compilationId | string | 是   | 合集的ID。     |
-| pageIndex     | int    | 是   | 标签页的索引。 |
+| pageIndex     | number    | 是   | 标签页的索引。 |
 
 **返回值：**
 
@@ -409,7 +409,7 @@ queryPlaylist(pageIndex: int, sort: Sort): Promise&lt;PageMediaEntity&gt;
 
 | 参数名    | 类型                                                     | 必填 | 说明           |
 | --------- | ------------------------------------------------------- | ---- | -------------- |
-| pageIndex | int                                                     | 是   | 标签页的索引。 |
+| pageIndex | number                                                     | 是   | 标签页的索引。 |
 | sort      | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort) | 是   | 排序类型。     |
 
 **返回值：**
@@ -572,7 +572,7 @@ queryMediaEntityByKeyword(keyword: string, searchType: EntityType, pageIndex: in
 | ---------- | ------------------------------------------------------------ | ---- | -------------- |
 | keyword    | string                                                       | 是   | 关键字。       |
 | searchType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 是   | 媒体资源类型。 |
-| pageIndex  | int                                                          | 是   | 标签页索引。   |
+| pageIndex  | number                                                          | 是   | 标签页索引。   |
 
 **返回值：**
 

@@ -107,7 +107,7 @@ type QueryCompilationEvent = (compilationId: string, pageIndex: int) => Promise&
 | 参数名        | 类型   | 必填 | 说明         |
 | ------------- | ------ | ---- | ------------ |
 | compilationId | string | 是   | 合集的ID。   |
-| pageIndex     | int    | 是   | 页面的索引。 |
+| pageIndex     | number    | 是   | 页面的索引。 |
 
 **返回值：**
 
@@ -133,7 +133,7 @@ type QueryPlaylistEvent = (pageIndex: int, sort: Sort) => Promise&lt;PageMediaEn
 
 | 参数名    | 类型                                                     | 必填 | 说明           |
 | --------- | ------------------------------------------------------ | ---- | -------------- |
-| pageIndex | int                                                    | 是   | 页面的索引。   |
+| pageIndex | number                                                    | 是   | 页面的索引。   |
 | sort      | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort) | 是   | 排序的枚举值。 |
 
 **返回值：**
@@ -208,7 +208,7 @@ type QueryMediaEntityByKeywordEvent = (keyword: string, searchType: EntityType, 
 | ---------- |--------------------------------------------------------------------| ---- | ---------------------- |
 | keyword    | string                                                             | 是   | 用于查找媒体的关键字。 |
 | searchType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 是   | 要搜索的媒体资源类型。 |
-| pageIndex  | int                                                                | 是   | 页面的索引。从0开始。  |
+| pageIndex  | number                                                                | 是   | 页面的索引。从0开始。  |
 
 **返回值：**
 
