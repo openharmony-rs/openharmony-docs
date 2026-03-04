@@ -68,7 +68,7 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
-| headers | Record\<string, string\> | 否  | 是 | 缓存下载任务在HTTP传输时使用的请求头。 |
+| headers | Record\<string, string\> | 否  | 是 | 缓存下载任务在HTTP传输时使用的请求头。默认值为空。 |
 | sslType<sup>21+</sup> | [SslType](#ssltype21) | 否  | 是 | 使用安全通信协议TLS或TLCP，默认使用TLS。当前TLS和TLCP均不支持双向认证。 |
 | caPath<sup>21+</sup> | string | 否  | 是 | CA证书路径。目前仅支持.pem格式证书，默认使用系统预设的CA证书。 |
 | cacheStrategy<sup>23+</sup> | [CacheStrategy](#cachestrategy23) | 否  | 是 | 使用缓存刷新策略FORCE或LAZY，默认使用FORCE。 |
@@ -155,7 +155,7 @@ download(url: string, options: CacheDownloadOptions): void
 
 | 参数名     | 类型                                                         | 必填 | 说明                             |
 |---------|------------------------------------------------------------|----|--------------------------------|
-| url     | string                                                     | 是  | 目标资源的地址。仅支持HTTP协议，长度不超过8192字节。 |
+| url     | string                                                     | 是  | 目标资源的地址。支持HTTP和HTTPS协议，长度不超过8192字节。 |
 | options | [CacheDownloadOptions](#cachedownloadoptions) | 是  | 目标资源的缓存下载选项。                   |
 
 **错误码：**
@@ -204,7 +204,7 @@ cancel(url: string): void
 
 | 参数名  | 类型     | 必填 | 说明                             |
 |------|--------|----|--------------------------------|
-| url  | string | 是  | 目标资源的地址。仅支持HTTP协议，长度不超过8192字节。 |
+| url  | string | 是  | 目标资源的地址。支持HTTP和HTTPS协议，长度不超过8192字节。 |
 
 **错误码：**
 
