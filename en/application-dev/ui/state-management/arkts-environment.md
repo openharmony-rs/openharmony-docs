@@ -8,7 +8,7 @@
 
 You may want your application to behave differently based on the device environment where the application is running, for example, switching to dark mode or a specific language. In this case, you need the **Environment** API for device environment query.
 
-The **Environment** API is a singleton object created by the ArkUI framework at application startup, providing [AppStorage](./arkts-appstorage.md) with immutable primitive-type properties reflecting the application's runtime state.
+The **Environment** API is a singleton object created by the ArkUI framework at application startup, providing [AppStorage](./arkts-appstorage.md) with properties reflecting the application's runtime state. All properties are immutable and simple types.
 
 The **Environment** API enables reading system environment variables and writing their values to AppStorage. You must access these values through AppStorage. For details, see [Environment Built-in Parameters](#environment-built-in-parameters).
 
