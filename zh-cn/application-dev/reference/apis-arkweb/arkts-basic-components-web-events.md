@@ -3394,6 +3394,15 @@ ArkTS-Dyn示例：
             this.showMenu = false;
           })
         MenuItem({
+          content: '保存图片',
+        })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.saveImage();
+            this.showMenu = false;
+          })
+        MenuItem({
           content: '剪切',
         })
           .width(100)
@@ -3523,6 +3532,15 @@ ArkTS-Sta示例：
           .height(50)
           .onClick(() => {
             this.result?.copyImage();
+            this.showMenu = false;
+          })
+        MenuItem({
+          content: '保存图片',
+        } as MenuItemOptions)
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.saveImage();
             this.showMenu = false;
           })
         MenuItem({
