@@ -34,7 +34,7 @@ Polygon(options?: PolygonOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [PolygonOptions](ts-drawing-components-polygon.md#polygonoptions18对象说明) | 否 | Polygon绘制区域。<br/>异常值undefined和null按照无效值处理。|
+| options | [PolygonOptions](ts-drawing-components-polygon.md#polygonoptions18对象说明) | 否 | Polygon绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。|
 
 ## PolygonOptions<sup>18+</sup>对象说明
 
@@ -93,7 +93,7 @@ fill(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                   |
 | ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 填充区域颜色。<br/>默认值：Color.Black<br/>异常值undefined、null、NaN和Infinity按照默认值处理。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 填充区域颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Black<br/>异常值undefined、null、NaN和Infinity按照默认值处理。 |
 
 ### fillOpacity
 
@@ -129,7 +129,7 @@ stroke(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 边框颜色。<br/>异常值undefined和null按照默认值处理，NaN和Infinity按照Color.Black处理。|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 边框颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Transparent<br/>异常值undefined和null按照默认值处理，NaN和Infinity按照[Color](ts-appendix-enums.md#color).Black处理。|
 
 ### strokeDashArray
 
@@ -328,7 +328,7 @@ struct PolygonTypeExample {
   build() {
     Column({ space: 10 }) {
       // 在 100 * 100 的矩形框中绘制一个三角形，起点(0, 0)，经过(50, 100)，终点(100, 0)
-      Polygon({ width: '100', height: '100' })//使用string类型
+      Polygon({ width: '100', height: '100' }) // 使用string类型
         .points([[0, 0], [50, 100], [100, 0]])
       // 在 100 * 100 的矩形框中绘制一个四边形，起点(0, 0)，经过(0, 100)和(100, 100)，终点(100, 0)
       Polygon({ width: 100, height: 100 })// 使用number类型
@@ -337,7 +337,7 @@ struct PolygonTypeExample {
         .strokeWidth(5)
         .stroke(Color.Blue)
       // 在 100 * 100 的矩形框中绘制一个五边形，起点(50, 0)，依次经过(0, 50)、(20, 100)和(80, 100)，终点(100, 50)
-      Polygon({ width: $r('app.string.PolygonWidth'), height: $r('app.string.PolygonHeight') })// 使用Resource类型，需用户自定义
+      Polygon({ width: $r('app.string.PolygonWidth'), height: $r('app.string.PolygonHeight') }) // 使用Resource类型，需用户自定义
         .points([[50, 0], [0, 50], [20, 100], [80, 100], [100, 50]])
         .fillOpacity(0.6)
     }.width('100%').margin({ top: 10 })

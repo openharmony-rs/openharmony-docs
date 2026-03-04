@@ -7,7 +7,7 @@
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The reminderAgentManager module provides APIs related to agent-powered reminders. When your application is frozen or exits, the application's scheduled notification capability will be taken over by a system service running in the background. You can use the APIs to create scheduled reminders for countdown timers, calendar events, and alarm clocks. For details, see [Agent-powered Reminder](../../task-management/agent-powered-reminder.md).
+The **reminderAgentManager** module provides APIs related to agent-powered reminders. When your application is frozen or exits, the application's scheduled notification capability will be taken over by a system service running in the background. You can use the APIs to create scheduled reminders for countdown timers, calendar events, and alarm clocks. For details, see [Agent-powered Reminder](../../task-management/agent-powered-reminder.md).
 
 > **NOTE**
 >
@@ -1080,8 +1080,8 @@ Defines a reminder for a calendar event.
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | dateTime | [LocalDateTime](#localdatetime) | No| No| Reminder time.|
-| repeatMonths | Array\<number> | No| Yes| Month in which the reminder repeats. The value range is [1, 12].|
-| repeatDays | Array\<number> | No| Yes| Day in which the reminder repeats. The value range is [1, 31].|
+| repeatMonths | Array\<number> | No| Yes| Month in which the reminder repeats. The value range is [1, 12]. This parameter must be used together with **repeatDays**.|
+| repeatDays | Array\<number> | No| Yes| Day in which the reminder repeats. The value range is [1, 31]. This parameter must be used together with **repeatMonths**.|
 | daysOfWeek<sup>11+</sup> | Array\<number> | No| Yes| Days of a week when the reminder repeats. The value ranges from 1 to 7, corresponding to the data from Monday to Sunday.|
 | endDateTime<sup>12+</sup> | [LocalDateTime](#localdatetime) | No| Yes| End time of the reminder.|
 
@@ -1137,7 +1137,7 @@ Defines the reminder information.
 
 | Name       | Type                               | Read Only| Optional| Description                |
 | ----------- | ----------------------------------- | ---- | ---- | -------------------- |
-| reminderId  | number                              | No  | No  | ID of the reminder.|
+| reminderId  | number                              | No  | No  | Reminder ID.|
 | reminderReq | [ReminderRequest](#reminderrequest) | No  | No  | Request used for publishing the reminder.      |
 
 ## ReminderState<sup>23+</sup>

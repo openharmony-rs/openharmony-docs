@@ -451,7 +451,7 @@ Collecting logs, please try again later.
 
 **处理步骤**
 
-等前一个日志收集任务完成（即收到[EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonlogcollected23)回调）后，再调用[systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23)接口创建日志收集任务。
+等前一个日志收集任务完成（即收到[EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23)回调）后，再调用[systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23)接口创建日志收集任务。
 
 ## 9201010 以太网网络接口配置失败
 

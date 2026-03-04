@@ -35,10 +35,15 @@ RenderNode的构造函数。
 **示例：**
 
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 100,
+  height: 100
+};
 renderNode.backgroundColor = 0xffff0000;
 
 // 继承NodeController实现自定义UI控制器
@@ -97,13 +102,23 @@ appendChild(node: RenderNode): void
 **示例：**
 
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 100,
+  height: 100
+};
 renderNode.backgroundColor = 0xffff0000;
 const child = new RenderNode();
-child.frame = { x: 10, y: 10, width: 50, height: 50 };
+child.frame = {
+  x: 10,
+  y: 10,
+  width: 50,
+  height: 50
+};
 child.backgroundColor = 0xff00ff00;
 renderNode.appendChild(child);
 
@@ -165,20 +180,35 @@ insertChildAfter(child: RenderNode, sibling: RenderNode | null): void
 **示例：**
 
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 200, height: 350 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 350
+};
 renderNode.backgroundColor = 0xffff0000;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
-  node.frame = { x: 10, y: 10 + 60 * i, width: 50, height: 50 };
+  node.frame = {
+    x: 10,
+    y: 10 + 60 * i,
+    width: 50,
+    height: 50
+  };
   node.backgroundColor = 0xff00ff00;
   renderNode.appendChild(node);
 }
 
 const child = new RenderNode();
-child.frame = { x: 70, y: 70, width: 50, height: 50 };
+child.frame = {
+  x: 70,
+  y: 70,
+  width: 50,
+  height: 50
+};
 child.backgroundColor = 0xffffff00;
 const sibling = renderNode.getChild(1);
 // 将child节点插入至sibling节点之后
@@ -231,14 +261,24 @@ removeChild(node: RenderNode): void
 
 **示例：**
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 200, height: 350 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 350
+};
 renderNode.backgroundColor = 0xffff0000;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
-  node.frame = { x: 10, y: 10 + 60 * i, width: 50, height: 50 };
+  node.frame = {
+    x: 10,
+    y: 10 + 60 * i,
+    width: 50,
+    height: 50
+  };
   node.backgroundColor = 0xff00ff00;
   renderNode.appendChild(node);
 }
@@ -438,14 +478,24 @@ getFirstChild(): RenderNode | null
 **示例：**
 
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 200, height: 350 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 350
+};
 renderNode.backgroundColor = 0xffff0000;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
-  node.frame = { x: 10, y: 10 + 60 * i, width: 50, height: 50 };
+  node.frame = {
+    x: 10,
+    y: 10 + 60 * i,
+    width: 50,
+    height: 50
+  };
   node.backgroundColor = 0xff00ff00;
   renderNode.appendChild(node);
 }
@@ -509,14 +559,24 @@ getNextSibling(): RenderNode | null
 
 **示例：**
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 200, height: 350 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 350
+};
 renderNode.backgroundColor = 0xffff0000;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
-  node.frame = { x: 10, y: 10 + 60 * i, width: 50, height: 50 };
+  node.frame = {
+    x: 10,
+    y: 10 + 60 * i,
+    width: 50,
+    height: 50
+  };
   node.backgroundColor = 0xff00ff00;
   renderNode.appendChild(node);
 }
@@ -553,10 +613,9 @@ struct Index {
           // 获取renderNode序列号为1的子节点后，再获取它的下一个同级节点
           const nextSibling = child!.getNextSibling()
           if (nextSibling === null || child === null) {
-            console.info('the child or nextChild is null');
+            console.error('the child or nextChild is null');
           } else {
-            console.info(`the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
-              `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
+            console.info(`the position of child is x: ${child.position.x}, y: ${child.position.y}, the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
           }
         })
     }
@@ -582,14 +641,24 @@ getPreviousSibling(): RenderNode | null
 
 **示例：**
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 200, height: 350 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 350
+};
 renderNode.backgroundColor = 0xffff0000;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
-  node.frame = { x: 10, y: 10 + 60 * i, width: 50, height: 50 };
+  node.frame = {
+    x: 10,
+    y: 10 + 60 * i,
+    width: 50,
+    height: 50
+  };
   node.backgroundColor = 0xff00ff00;
   renderNode.appendChild(node);
 }
@@ -628,8 +697,7 @@ struct Index {
           if (child === null || previousSibling === null) {
             console.error('the child or previousChild is null');
           } else {
-            console.info(`the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
-              `the position of previousSibling is x: ${previousSibling.position.x}, y: ${previousSibling.position.y}`);
+            console.info(`the position of child is x: ${child.position.x}, y: ${child.position.y}, the position of previousSibling is x: ${previousSibling.position.x}, y: ${previousSibling.position.y}`);
           }
         })
     }
@@ -1176,7 +1244,7 @@ renderNode.backgroundColor = 0xffff0000;
 renderNode.frame = { x: 10, y: 10, width: 100, height: 100 };
 // 设置renderNode的比例
 renderNode.scale = { x: 0.5, y: 1 };
-// 获取renderNode的轴心
+// 获取renderNode的比例
 const scale = renderNode.scale;
 
 // 继承NodeController实现自定义UI控制器

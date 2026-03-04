@@ -453,7 +453,7 @@ static removeAdsBlockAllowedList(domainSuffixes: Array\<string\>): void
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
-// 演示通过一个按钮的点击从AdsBlockManager的DisallowedList中删除域名元素
+// 演示通过一个按钮的点击从AdsBlockManager的AllowedList中删除域名元素
 @Entry
 @Component
 struct WebComponent {

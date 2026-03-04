@@ -11,9 +11,9 @@ The **workScheduler** module provides the APIs for registering, canceling, and q
 
 >  **NOTE**
 >
->  - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>  The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  - The APIs of this module can be used only in the stage model.
+>  The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -264,7 +264,7 @@ Obtains all the deferred tasks. This API uses an asynchronous callback to return
 
 | Name     | Type                  | Mandatory  | Description                             |
 | -------- | -------------------- | ---- | ------------------------------- |
-| callback |  AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt; | Yes   | Callback used to return the result. If all the deferred tasks are obtained, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback |  AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt; | Yes   | Callback used to return the list of all deferred tasks in the current application. If the list fails to be obtained, an exception is thrown.|
 
 **Error codes**
 
@@ -495,11 +495,11 @@ Represents the deferred task information, which is used to set the trigger condi
 >
 >  The following rules apply when setting WorkInfo parameters:
 >
->  - **workId**, **bundleName**, and **abilityName** are mandatory. **bundleName** must be set to the bundle name of the current application.
->  - The carried parameters can be of the number, string, or boolean type.
->  - At least one triggering condition must be set, including the network type, charging type, storage status, and battery status.
->  - For a cyclic task, the task execution interval must be at least 2 hours. When **repeatCycleTime** is set, you must set **isRepeat** or **repeatCount**.
->  - For optional parameters, if left default (not configured), it indicates that the triggering of the delayed task does not depend on the parameter's corresponding condition.
+>  1. **workId**, **bundleName**, and **abilityName** are mandatory. **bundleName** must be set to the bundle name of the current application.
+>  2. The carried parameters can be of the number, string, or boolean type.
+>  3. At least one triggering condition must be set, including the network type, charging type, storage status, and battery status.
+>  4. For a cyclic task, the task execution interval must be at least 2 hours. When **repeatCycleTime** is set, you must set **isRepeat** or **repeatCount**.
+>  5. For optional parameters, if left default (not configured), it indicates that the triggering of the delayed task does not depend on the parameter's corresponding condition.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -511,7 +511,7 @@ Represents the deferred task information, which is used to set the trigger condi
 | networkType     | [NetworkType](#networktype)       | No   | Yes   |Network type.            |
 | isCharging      | boolean                           | No   | Yes   |Whether the device needs to enter the charging state.<br>- **true**: The device needs to enter the charging state to trigger deferred task scheduling.<br>- **false**: The device does not need to enter the charging state to trigger deferred task scheduling.|
 | chargerType     | [ChargingType](#chargingtype)     | No   | Yes   |Charging type.            |
-| batteryLevel    | number                            | No   | Yes   |Battery level.             |
+| batteryLevel    | number                            | No   | Yes   |Battery level.<br>Value range: [0, 100]       |
 | batteryStatus   | [BatteryStatus](#batterystatus)   | No   | Yes   |Battery status.            |
 | storageRequest  | [StorageRequest](#storagerequest) | No   | Yes   |Storage status.            |
 | isRepeat        | boolean                           | No   | Yes   |Whether the task is repeated.<br>- **true**: The task is repeated.<br>- **false** (default): The task is not repeated.|

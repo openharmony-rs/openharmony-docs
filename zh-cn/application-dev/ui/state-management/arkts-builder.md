@@ -243,6 +243,8 @@ struct ParameterValue {
 
 5. \@Builder的参数必须按照对象字面量的形式，把所需属性一一传入，才会触发动态渲染UI，请参考[@Builder存在两个或两个以上参数](#builder存在两个或两个以上参数)。
 
+6. 不允许在\@Builder函数里修改参数的属性，否则会抛出运行时错误，从API version 23开始，将返回错误码[140109](../../reference/apis-arkui/errorcode-stateManagement.md#140109-builder非法触发参数属性赋值)，示例请参考[在@Builder装饰的函数内部修改入参内容](#在builder装饰的函数内部修改入参内容)。
+
 
 ## 使用场景
 
@@ -1706,9 +1708,9 @@ struct MakeBindingTest2 {
 }
 ```
 
-### 在\@Builder装饰的函数内部修改入参内容
+### 在@Builder装饰的函数内部修改入参内容
 
-不使用[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)的情况下，在\@Builder装饰的函数内部修改参数值，修改不会生效且可能造成运行时错误。
+不使用[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)的情况下，在\@Builder装饰的函数内部修改参数值，修改不会生效且可能造成运行时错误。从API version 23开始，将返回错误码[140109](../../reference/apis-arkui/errorcode-stateManagement.md#140109-builder非法触发参数属性赋值)。
 
 【反例】
 <!-- @[changing_input_parameters_builder_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ChangingIncorrectUsage.ets) -->

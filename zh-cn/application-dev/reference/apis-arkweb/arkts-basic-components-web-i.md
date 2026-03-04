@@ -417,7 +417,7 @@ Web同层渲染的配置。
 | handler  | [ClientAuthenticationHandler](./arkts-basic-components-web-ClientAuthenticationHandler.md) | 否 | 否 | 通知Web组件用户操作行为。  |
 | host     | string                                   | 否 | 否 | 请求证书服务器的主机名。    |
 | port     | number                                   | 否 | 否 | 请求证书服务器的端口号。    |
-| keyTypes | Array<string\>                           | 否 | 否 | 可接受的非对称秘钥类型。    |
+| keyTypes | Array<string\>                           | 否 | 否 | 可接受的非对称密钥类型。    |
 | issuers  | Array<string\>                           | 否 | 否 | 与私钥匹配的证书可接受颁发者。 |
 
 

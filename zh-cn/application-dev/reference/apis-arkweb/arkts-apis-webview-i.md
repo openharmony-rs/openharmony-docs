@@ -57,7 +57,7 @@ Web组件返回的请求/响应头对象。
 
 Web组件发送的资源请求信息。
 
-**系统能力：**: SystemCapability.Web.Webview.Core
+**系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称      | 类型   | 只读 | 可选 |说明        |
 | ---------| ------ | -----|------|--------  |
@@ -175,7 +175,7 @@ WebViewController与Web组件的绑定状态。
 | 名称        | 类型   | 只读 | 可选 |说明                 |
 | ----------- | ------ | -----|------|------------------- |
 | errCode | WebBlanklessErrorCode | 否   | 否   | 无白屏加载的异常错误码，见[WebBlanklessErrorCode](./arkts-apis-webview-e.md#webblanklesserrorcode20)定义。 |
-| similarity | number | 否   | 否   | 首屏相似度，根据历史加载首屏内容计算相似度，范围为0~1.0，1.0表示完全一致，数值越接近1，相似度越高。该值存在滞后性，本地加载的相似性将在下次加载时才可反映。建议当相似度较低时，应用不启用无白屏加载插帧方案。 |
+| similarity | number | 否   | 否   | 首屏相似度，根据历史加载首屏内容计算相似度，范围为[0, 1.0]，1.0表示完全一致，数值越接近1，相似度越高。该值存在滞后性，本地加载的相似性将在下次加载时才可反映。建议当相似度较低时，应用不启用无白屏加载插帧方案。 |
 | loadingTime | number | 否   | 否   | 根据历史加载首屏耗时预测本次加载耗时，单位ms，取值范围需大于0。 |
 
 ## BlanklessFrameInterpolationInfo<sup>23+</sup>
@@ -221,7 +221,7 @@ WebViewController与Web组件的绑定状态。
 | historyRawUrl | string                                 | 否   | 否   | 历史记录项的原始url地址。    |
 | title         | string                                 | 否   | 否   | 历史记录项的标题。           |
 
-## MediaInfo<sup>12+<sup>
+## MediaInfo<sup>12+</sup>
 
 [CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12)回调函数的一个参数。包含了网页中媒体的信息。应用可以根据这些信息来创建接管网页媒体播放的播放器。
 
@@ -241,7 +241,7 @@ WebViewController与Web组件的绑定状态。
 | headers | Record\<string, string\> | 否 | 否 | 播放器请求媒体资源时，需要携带的 HTTP 头。 |
 | attributes | Record\<string, string\> | 否 | 否 | `<video>` 或 `<audio>` 标签中的属性。 |
 
-## RectEvent<sup>12+<sup>
+## RectEvent<sup>12+</sup>
 
 矩形定义。
 

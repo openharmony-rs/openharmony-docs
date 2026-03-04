@@ -245,13 +245,51 @@ layoutGravity(alignment: LocalizedAlignment): T
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| left   | { anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) } |否|是| 设置左对齐参数。<br/>-&nbsp;anchor：设置作为锚点的组件的id值。<br/>-&nbsp;align：设置相对于锚点组件的对齐方式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| right  | { anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) } |否|是| 设置右对齐参数。<br/>-&nbsp;anchor：设置作为锚点的组件的id值。<br/>-&nbsp;align：设置相对于锚点组件的对齐方式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| middle | { anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) } |否|是| 设置横向居中对齐方式的参数。<br/>-&nbsp;anchor：设置作为锚点的组件的id值。<br/>-&nbsp;align：设置相对于锚点组件的对齐方式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| top    | { anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) } |否|是| 设置顶部对齐的参数。<br/>-&nbsp;anchor：设置作为锚点的组件的id值。<br/>-&nbsp;align：设置相对于锚点组件的对齐方式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| bottom | { anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) } |否|是| 设置底部对齐的参数。<br/>-&nbsp;anchor：设置作为锚点的组件的id值。<br/>-&nbsp;align：设置相对于锚点组件的对齐方式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| center | { anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) } |否|是| 设置纵向居中对齐方式的参数。<br/>-&nbsp;anchor：设置作为锚点的组件的id值。<br/>-&nbsp;align：设置相对于锚点组件的对齐方式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                 |
+| left   | [HorizontalAlignParam](#horizontalalignparam23对象说明) |否|是| 设置左对齐参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) }。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| right  | [HorizontalAlignParam](#horizontalalignparam23对象说明) |否|是| 设置右对齐参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) }。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| middle | [HorizontalAlignParam](#horizontalalignparam23对象说明) |否|是| 设置横向居中对齐方式的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) }。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| top    | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置顶部对齐的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| bottom | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置底部对齐的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| center | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置纵向居中对齐方式的参数。<br/>API version 23，之前入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                 |
 | bias<sup>11+</sup>   | [Bias](./ts-types.md#bias对象说明) |否|是| 设置组件在锚点约束下的偏移参数，其值为到左/上侧锚点的距离与锚点间总距离的比值。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+
+## HorizontalAlignParam<sup>23+</sup>对象说明
+
+定义在相对容器中子组件在水平方向上的对齐规则。
+
+> **说明：**
+>
+> 为规范匿名对象的定义，从API version 23开始，修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| anchor<sup>9+</sup>  | string  |否|否| 设置作为锚点的组件的id值。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| align<sup>9+</sup>   | [HorizontalAlign](ts-appendix-enums.md#horizontalalign)  |否|否| 设置相对于锚点组件的横向对齐方式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+
+## VerticalAlignParam<sup>23+</sup>对象说明
+
+定义在相对容器中子组件在垂直方向上的对齐规则。
+
+> **说明：**
+>
+> 为规范匿名对象的定义，从API version 23开始，修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| anchor<sup>9+</sup>  | string |否|否| 设置作为锚点的组件的id值。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| align<sup>9+</sup>   | [VerticalAlign](ts-appendix-enums.md#verticalalign)  |否|否| 设置相对于锚点组件的纵向对齐方式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## LocalizedAlignRuleOptions<sup>12+</sup>对象说明
 
@@ -589,8 +627,7 @@ struct Example3 {
 
 ### 示例4（镜像效果）
 
-通用布局属性支持[镜像能力](./../../../ui/arkts-internationalization.md#使用镜像能力)。
-下述示例从上到下依次通过[position](#position)，[offset](#offset)，[markAnchor](#markanchor)实现镜像效果，为对比镜像前后的差异，浅蓝色对应镜像前效果，深蓝色对应镜像后效果。
+通用布局属性支持[使用镜像能力](./../../../ui/arkts-internationalization.md#使用镜像能力)。下述示例从上到下依次通过[position](#position)、[offset](#offset)和[markAnchor](#markanchor)实现镜像效果，为对比镜像前后的差异，浅蓝色对应镜像前效果，深蓝色对应镜像后效果。
 
 ```ts
 // xxx.ets

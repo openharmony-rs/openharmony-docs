@@ -188,7 +188,7 @@
    }
    ```
 
-3. \@Provide的key重复定义时，框架会抛出运行时错误，提醒开发者重复定义key，如果开发者需要重复key，可以使用[allowoverride](#provide支持allowoverride参数)。
+3. \@Provide的key重复定义时，框架会抛出运行时错误，从API version 23开始，将返回错误码[140114](../../reference/apis-arkui/errorcode-stateManagement.md#140114-声明重复key的provide)，提醒开发者重复定义key。如果开发者需要重复key，可以使用[allowOverride](#provide支持allowoverride参数)。
 
     ```ts
     // 错误写法，a重复定义
@@ -200,7 +200,7 @@
     @Provide('b') num: number = 10;
     ```
 
-4. 在API version 20之前，初始化\@Consume变量时，如果开发者没有定义对应key的\@Provide变量，框架会抛出运行时错误，提示开发者初始化\@Consume变量失败，原因是无法找到其对应key的\@Provide变量。从API version 20开始，初始化\@Consume变量时，如果开发者没有定义对应key的\@Provide变量，同时没有设置默认值，框架会抛出运行时错误，提示开发者初始化\@Consume变量失败，原因是无法找到其对应key的\@Provide变量同时也没有设置默认值。
+4. 在API version 20之前，初始化\@Consume变量时，如果开发者没有定义对应key的\@Provide变量，框架会抛出运行时错误，提示开发者初始化\@Consume变量失败，原因是无法找到其对应key的\@Provide变量。从API version 20开始，初始化\@Consume变量时，如果开发者没有定义对应key的\@Provide变量，同时没有设置默认值，框架会抛出运行时错误，从API version 23开始，将返回错误码[140112](../../reference/apis-arkui/errorcode-stateManagement.md#140112-consume缺失对应的provide)，提示开发者初始化\@Consume变量失败，原因是无法找到其对应key的\@Provide变量同时也没有设置默认值。
 
    【反例】
 

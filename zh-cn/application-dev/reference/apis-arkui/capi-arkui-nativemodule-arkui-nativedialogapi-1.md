@@ -42,7 +42,7 @@ ArkUI提供的Native侧自定义弹窗接口集合。
 | [int32_t (\*enableCustomAnimation)(ArkUI_NativeDialogHandle handle, bool enableCustomAnimation)](#enablecustomanimation) | 弹窗容器是否使用自定义弹窗动画。 |
 | [int32_t (\*registerOnWillDismiss)(ArkUI_NativeDialogHandle handle, ArkUI_OnWillDismissEvent eventHandler)](#registeronwilldismiss) | 当触发系统定义的返回操作、键盘ESC关闭交互操作时，如果注册了该回调函数，弹窗不会立即关闭，而是由用户决定是否关闭。 |
 | [int32_t (\*show)(ArkUI_NativeDialogHandle handle, bool showInSubWindow)](#show) | 显示自定义弹窗。 |
-| [int32_t (\*close)(ArkUI_NativeDialogHandle handle)](#close) | 关闭自定义弹窗，如已关闭，则不生效。 |
+| [int32_t (\*close)(ArkUI_NativeDialogHandle handle)](#close) | 关闭自定义弹窗，如已关闭，则不生效。该接口后台执行是异步的，在关闭动画执行完成后弹窗节点才会下树。如需关闭后再次打开弹窗，请在延迟300ms以后再执行。 |
 | [int32_t (\*registerOnWillDismissWithUserData)(ArkUI_NativeDialogHandle handle, void* userData, void (\*callback)(ArkUI_DialogDismissEvent* event))](#registeronwilldismisswithuserdata) | 注册系统关闭自定义弹窗的监听事件。 |
 
 ## 成员函数说明
@@ -469,7 +469,7 @@ int32_t (*close)(ArkUI_NativeDialogHandle handle)
 **描述：**
 
 
-关闭自定义弹窗，如已关闭，则不生效。
+关闭自定义弹窗，如已关闭，则不生效。该接口后台执行是异步的，在关闭动画执行完成后弹窗节点才会下树。如需关闭后再次打开弹窗，请在延迟300ms以后再执行。
 
 **参数：**
 
@@ -481,7 +481,7 @@ int32_t (*close)(ArkUI_NativeDialogHandle handle)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。此时仅表示关闭指令下发成功，不代表弹窗完全关闭。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### registerOnWillDismissWithUserData()
 

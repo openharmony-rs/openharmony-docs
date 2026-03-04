@@ -4899,7 +4899,7 @@ let moduleName = 'entry';
 let profileType = bundleManager.ProfileType.INTENT_PROFILE;
 
 try {
-  let data = bundleManager.getJsonProfile(profileType, bundleName, moduleName)
+  let data = bundleManager.getJsonProfile(profileType, bundleName, moduleName);
   hilog.info(0x0000, 'testTag', 'getJsonProfile successfully. Data: %{public}s', data);
 } catch (err) {
   let message = (err as BusinessError).message;
@@ -6481,7 +6481,7 @@ try {
 
 recoverBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
 
-恢复指定用户下指定应用的备份数据。使用Promise异步回调。
+恢复指定用户下指定应用或分身应用的备份数据。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6543,7 +6543,7 @@ try {
 
 removeBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise\<void>
 
-删除指定用户下指定应用的备份数据。使用Promise异步回调。
+删除指定用户下指定应用或分身应用的备份数据。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 

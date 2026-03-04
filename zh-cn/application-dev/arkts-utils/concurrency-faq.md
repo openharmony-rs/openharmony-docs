@@ -16,7 +16,7 @@
 
    如果发现没有该维测日志表明taskpool.execute实际未调用，应用需排查taskpool.execute之前的其他业务逻辑是否执行完成。
 
-   <!-- @[is_execute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/IsExecute.ets) -->  
+   <!-- @[is_execute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/IsExecute.ets) -->
    
    ``` TypeScript
    import { taskpool } from '@kit.ArkTS';
@@ -40,7 +40,7 @@
              .fontWeight(FontWeight.Bold)
              .onClick(() => {
                console.info('test start');
-               // 其他业务逻辑。
+               // 其他业务逻辑
                // ...
                let task: taskpool.Task = new taskpool.Task(createTask, 1, 2);
                taskpool.execute(task);
@@ -53,7 +53,7 @@
      }
    }
    
-   // 如果test start在控制台打印，但是并未出现Task Allocation: taskId:的日志，则taskpool.execute没有执行，应用需要排查其他业务逻辑。
+   // 如果test start在控制台打印，但是并未出现Task Allocation: taskId:的日志，则taskpool.execute没有执行，应用需要排查其他业务逻辑
    ```
 
 
