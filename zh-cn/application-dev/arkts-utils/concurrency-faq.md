@@ -58,7 +58,9 @@
 
    调用taskpool.execute接口会打印TaskPool**调用态日志**（Task Allocation: taskId:）。 
    
-   定位到目标任务对应的Task Allocation: taskId:日志后，在日志中搜索taskId后跟随的Id号，正常情况会打印**执行态日志**（Task Perform: name:）和**结束态日志**（Task PerformTask End: taskId:）。
+   **日志输出格式可能与示例有差异, 重点关注日志信息中taskId参数。**
+   
+   定位到目标任务对应的Task Allocation: taskId日志后，在日志中搜索Task Allocation:后跟随的Id号，正常情况会打印**执行态日志**（Task Perform: name）和**结束态日志**（Task PerformTask End: taskId）。
 
    1.  如果只有调用态日志，没有执行态日志。可能是由于先执行的TaskPool任务阻塞了TaskPool工作线程，导致TaskPool工作线程不可用，后执行的TaskPool任务无法执行。应用可以排查自身业务逻辑，或者通过trace进一步定位。
 
@@ -73,16 +75,16 @@
    ```ts
    // hilog 日志片段（模拟），格式如下，具体数值由应用运行时决定
    // log1： 大量任务提交
-   taskpool:: Task Allocation: taskId: , priority: , executeState:
-   taskpool:: Task Allocation: taskId: , priority: , executeState:
-   taskpool:: Task Allocation: taskId: , priority: , executeState:
-   taskpool:: Task Allocation: taskId: , priority: , executeState:
-   taskpool:: Task Allocation: taskId: , priority: , executeState:
+   taskpool:: Task Allocation: taskId, priority
+   taskpool:: Task Allocation: taskId, priority
+   taskpool:: Task Allocation: taskId, priority
+   taskpool:: Task Allocation: taskId, priority
+   taskpool:: Task Allocation: taskId, priority
    ...
    // log2: 扩容日志
-   taskpool:: maxThreads: , created num: , total num:
+   taskpool: max:, create:, total:
    // log3: 执行态日志
-   taskpool:: Task Perform: name: , taskId: , priority:
+   taskpool:: Task Perform: name, taskId, runningLoop:
    ```
 
 3. **TaskPool任务执行时是否发生异常**。
@@ -171,8 +173,8 @@ taskpool:: add taskId: 393918673408 to seqRunner 393913878464
 // hilog 日志片段2（模拟）
 // 查看第二个任务, 发现任务执行到执行结束间隔2s
 18:28:28.223 taskpool:: taskId 394062838784 in seqRunner 393913878464 immediately.
-18:28:28.224 taskpool:: Task Perform: name : , taskId : 394062838784, priority : 0
-18:28:30.243 taskpool:: Task Perform End: taskId : 394062838784, performResult : Successful
+18:28:28.224 taskpool:: Task Perform: name, 394062838784, runningLoop: 3959344048
+18:28:30.243 taskpool:: Task Perform End: 394062838784, performResult : Successful
 ```
 
 **解决方案**
