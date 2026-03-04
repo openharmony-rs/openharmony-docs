@@ -123,7 +123,7 @@ struct ParentComponent {
   > 当useSharedStorage设置为true且storage已赋值时，useSharedStorage的值优先级更高。
 
   <!-- @[routeName_myPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/RouteName.ets) -->
-
+  
   ``` TypeScript
   @Entry({ routeName: 'myPage' })
   @Component
