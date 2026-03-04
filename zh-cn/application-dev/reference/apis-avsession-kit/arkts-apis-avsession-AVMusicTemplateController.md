@@ -100,7 +100,7 @@ export class ControllerManager {
     }
     this.currentBundleName = bundleName;
     try {
-      // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES
+      // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES。
       let descriptors: avMusicTemplate.AVMusicTemplateDescriptor[] = avMusicTemplate.getAllAVMusicTemplateDescriptors();
       if (this.isEmptyArray(descriptors)) {
         console.info(TAG, 'createAvMusicTemplateController: descriptors is empty');
@@ -138,7 +138,7 @@ export class ControllerManager {
    */
   public registerAVMusicTemplateListener() {
     try {
-      // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES
+      // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES。
       avMusicTemplate.onAVMusicTemplateCreate(this.templateCreateCallback);
     } catch (e) {
       console.error(TAG, `registerAVMusicTemplateListener: errCode: ${e?.code}`);
@@ -192,6 +192,17 @@ queryMainTabs(): Promise&lt;MediaTab[]&gt;
 | ------------------------------------------------------------ | --------------------------------- |
 | Promise<[MediaTab](arkts-apis-avsession-AVMusicTemplate-i.md#mediatab)[]> | Promise对象。返回媒体标签页数组。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
+
 **示例：**
 
 ```ts
@@ -243,6 +254,17 @@ queryMediaTabContent(tabId: string): Promise&lt;MediaTabContent&gt;
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
 | Promise<[MediaTabContent](arkts-apis-avsession-AVMusicTemplate-i.md#mediatabcontent)> | Promise对象。返回媒体标签页内容。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
 
 **示例：**
 
@@ -297,6 +319,17 @@ queryMediaEntity(params: QueryMediaEntityParam): Promise&lt;PageMediaEntity&gt;
 | 类型                                                         | 说明                                  |
 | ------------------------------------------------------------ | ------------------------------------- |
 | Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回标签页媒体实体内容。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
 
 **示例：**
 
@@ -360,6 +393,17 @@ queryCompilation(compilationId: string, pageIndex: int): Promise&lt;PageMediaEnt
 | ------------------------------------------------------------ | ------------------------------------- |
 | Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回标签页媒体实体内容。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
+
 **示例：**
 
 ```ts
@@ -418,6 +462,17 @@ queryPlaylist(pageIndex: int, sort: Sort): Promise&lt;PageMediaEntity&gt;
 | ------------------------------------------------------------ | ------------------------------------- |
 | Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回标签页媒体实体内容。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
+
 **示例：**
 
 ```ts
@@ -468,6 +523,17 @@ queryCurrentSingle(): Promise&lt;Single&gt;
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
 | Promise<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single)> | Promise对象。返回当前单曲。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
 
 **示例：**
 
@@ -522,6 +588,17 @@ queryCompilationByKeyword(keyword: string): Promise&lt;Compilation[]&gt;
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
 | Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md#compilation)[]> | Promise对象。返回合集数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
 
 **示例：**
 
@@ -580,6 +657,17 @@ queryMediaEntityByKeyword(keyword: string, searchType: EntityType, pageIndex: in
 | ------------------------------------------------------------ | --------------------------- |
 | Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md#compilation)[]> | Promise对象。返回合集数组。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
+
 **示例：**
 
 ```ts
@@ -632,6 +720,17 @@ queryRecommendMediaEntityList(): Promise&lt;MediaEntity[]&gt;
 | ------------------------------------------------------------ | ------------------------------- |
 | Promise<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[]> | Promise对象。返回媒体实体数组。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
+
 **示例：**
 
 ```ts
@@ -679,6 +778,17 @@ queryHotWords(): Promise&lt;string[]&gt;
 | 类型              | 说明                        |
 | ----------------- | --------------------------- |
 | Promise<string[]> | Promise对象。返回热词数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
 
 **示例：**
 
@@ -728,6 +838,17 @@ querySearchHistory(): Promise&lt;string[]&gt;
 | ----------------- | --------------------------------- |
 | Promise<string[]> | Promise对象。返回历史搜索词数组。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
+
 **示例：**
 
 ```ts
@@ -775,6 +896,17 @@ clearSearchHistory(): Promise&lt;OperResult&gt;
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
 | Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
 
 **示例：**
 
@@ -829,6 +961,17 @@ updateSettings(settingItem: SettingItem): Promise&lt;SettingItem&gt;
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
 | Promise<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem)> | Promise对象。返回更新后的设置项。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
 
 **示例：**
 
@@ -892,6 +1035,17 @@ reportProblemAndAdvice(advice: string): Promise&lt;OperResult&gt;
 | ------------------------------------------------------------ | --------------------------- |
 | Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
+
 **示例：**
 
 ```ts
@@ -947,6 +1101,17 @@ login(controlType: LoginType, id?: string): Promise&lt;QrCodeInfo[]&gt;
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
 | Promise<[QrCodeInfo](arkts-apis-avsession-AVMusicTemplate-i.md#qrcodeinfo)[]> | Promise对象。返回二维码信息的数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
 
 **示例：**
 
@@ -1005,6 +1170,17 @@ requestDialogInfo(actionType: DialogActionType, actionInfo?: DialogActionInfo): 
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
 | Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo)> | Promise对象。返回弹框信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
 
 **示例：**
 
@@ -1068,6 +1244,17 @@ handleMemberPurchase(info: MemberPurchaseInfo): Promise&lt;DialogInfo&gt;
 | ------------------------------------------------------------ | --------------------------- |
 | Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo)> | Promise对象。返回弹框信息。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
+
 **示例：**
 
 ```ts
@@ -1129,6 +1316,17 @@ queryMemberPurchase(memberPurchaseType: MemberPurchaseType): Promise&lt;MemberPu
 | ------------------------------------------------------------ | ------------------------------------- |
 | Promise<[MemberPurchaseInfo](arkts-apis-avsession-AVMusicTemplate-i.md#memberpurchaseinfo)[]> | Promise对象。返回购买会员信息的数组。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
+
 **示例：**
 
 ```ts
@@ -1183,6 +1381,17 @@ queryCustomContent(queryType: CustomType[]): Promise&lt;CustomElement&gt;
 | 类型                                                         | 说明                          |
 | ------------------------------------------------------------ | ----------------------------- |
 | Promise<[CustomElement](arkts-apis-avsession-AVMusicTemplate-i.md#customelement)> | Promise对象。返回自定义元素。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
 
 **示例：**
 
@@ -1240,6 +1449,17 @@ downloadMediaEntity(controlType: DownloadControlType, mediaEntity: MediaEntity):
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
 | Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
 
 **示例：**
 
@@ -1306,6 +1526,17 @@ playForSearch(command: SearchPlayInfoType, args: SearchPlayInfo): Promise&lt;Ope
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
 | Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
 
 **示例：**
 
@@ -1376,6 +1607,17 @@ executeAction(actionType: string, params: string): Promise&lt;string&gt;
 | --------------------- | ----------------------- |
 | Promise&lt;string&gt; | Promise对象。返回结果。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
+
 **示例：**
 
 ```ts
@@ -1426,11 +1668,16 @@ playMediaEntity(mediaEntity: MediaEntity): Promise&lt;void&gt;
 | ----------- | ------------------------------------------------------------ | ---- | ---------- |
 | mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity) | 是   | 包含标题、作者等元数据的媒体实体对象。 |
 
-**返回值：**
+**错误码：**
 
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果。 |
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
 
 **示例：**
 
@@ -1480,6 +1727,17 @@ favoriteMediaEntity(actionType: MediaFavoriteType, mediaEntity: MediaEntity): Pr
 | 类型                                                         | 说明                        |
 | ------------------------------------------------------------ | --------------------------- |
 | Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000003 | Template listener not registered.         |
+| 35000005 | AVMusicTemplate does not exist.           |
+| 35000006 | AVMusicTemplateController does not exist. |
 
 **示例：**
 
@@ -1540,6 +1798,16 @@ onUserInfoChange(callback: Callback&lt;UserInfo&gt;): void
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
 | callback | Callback<[UserInfo](arkts-apis-avsession-AVMusicTemplate-i.md#userinfo)> | 是   | Callback类型的回调。返回用户信息。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
+
 **示例：**
 
 ```ts
@@ -1576,6 +1844,16 @@ offUserInfoChange(callback?: Callback&lt;UserInfo&gt;): void
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
 | callback | Callback<[UserInfo](arkts-apis-avsession-AVMusicTemplate-i.md#userinfo)> | 否   | Callback类型的回调。返回用户信息。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
+
 **示例：**
 
 ```ts
@@ -1609,6 +1887,16 @@ onDialogCommandChange(callback: ReportDialogCommandEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明               |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
 | callback | [ReportDialogCommandEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportdialogcommandevent) | 是   | 上报弹框命令事件。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
 
 **示例：**
 
@@ -1647,6 +1935,16 @@ offDialogCommandChange(callback?: ReportDialogCommandEvent): void
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
 | callback | [ReportDialogCommandEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportdialogcommandevent) | 否   | 上报弹框命令事件。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
+
 **示例：**
 
 ```ts
@@ -1680,6 +1978,16 @@ onCurrentSingleChange(callback: Callback&lt;Single&gt;): void
 | 参数名   | 类型                                                         | 必填 | 说明                                     |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------- |
 | callback | Callback<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single)> | 是   | Callback类型的回调。返回当前单曲的信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
 
 **示例：**
 
@@ -1717,6 +2025,16 @@ offCurrentSingleChange(callback?: Callback&lt;Single&gt;): void
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------- |
 | callback | Callback<[Single](arkts-apis-avsession-AVMusicTemplate-i.md#single)> | 否   | Callback类型的回调。返回当前单曲的信息。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
+
 **示例：**
 
 ```
@@ -1750,6 +2068,16 @@ onMediaEntitiesChange(callback: Callback&lt;MediaEntity[]&gt;): void
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[]> | 是   | Callback类型的回调。返回媒体实体数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
 
 **示例：**
 
@@ -1788,6 +2116,16 @@ offMediaEntitiesChange(callback?: Callback&lt;MediaEntity[]&gt;): void
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[]> | 否   | Callback类型的回调。返回媒体实体数组。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
+
 **示例：**
 
 ```ts
@@ -1821,6 +2159,16 @@ onTabContentChange(callback: ReportTabContentEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                 |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [ReportTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reporttabcontentevent) | 是   | 上报标签页内容事件。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
 
 **示例：**
 
@@ -1859,6 +2207,16 @@ offTabContentChange(callback?: ReportTabContentEvent): void
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [ReportTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reporttabcontentevent) | 否   | 上报标签页内容事件。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
+
 **示例：**
 
 ```ts
@@ -1892,6 +2250,16 @@ onPlaylistChange(callback: Callback&lt;PageMediaEntity&gt;): void
 | 参数名   | 类型                                                         | 必填 | 说明                                         |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------- |
 | callback | Callback<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | 是   | Callback类型的回调。返回标签页媒体实体信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
 
 **示例：**
 
@@ -1930,6 +2298,16 @@ offPlaylistChange(callback?: Callback&lt;PageMediaEntity&gt;): void
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------- |
 | callback | Callback<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | 否   | Callback类型的回调。返回标签页媒体实体信息。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
+
 **示例：**
 
 ```ts
@@ -1963,6 +2341,16 @@ onDownloadMediaEntityStatusChange(callback: Callback&lt;MediaEntity&gt;): void
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)> | 是   | Callback类型的回调。返回媒体实体信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
 
 **示例：**
 
@@ -2001,6 +2389,16 @@ offDownloadMediaEntityStatusChange(callback?: Callback&lt;MediaEntity&gt;): void
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | callback | Callback<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)> | 否   | Callback类型的回调。返回媒体实体信息。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
+
 **示例：**
 
 ```ts
@@ -2034,6 +2432,16 @@ onCustomElementsChange(callback: ReportCustomElementsChangeEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | callback | [ReportCustomElementsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportcustomelementschangeevent) | 是   | 上报自定义元素改变事件。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
 
 **示例：**
 
@@ -2073,6 +2481,16 @@ offCustomElementsChange(callback?: ReportCustomElementsChangeEvent): void
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | callback | [ReportCustomElementsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportcustomelementschangeevent) | 否   | 上报自定义元素改变事件。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
+
 **示例：**
 
 ```ts
@@ -2106,6 +2524,16 @@ onSettingsChange(callback: Callback&lt;SettingItem[]&gt;): void
 | 参数名   | 类型                                                         | 必填 | 说明                                 |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------ |
 | callback | Callback<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem)[]> | 是   | Callback类型的回调。返回设置项数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
 
 **示例：**
 
@@ -2144,6 +2572,16 @@ offSettingsChange(callback?: Callback&lt;SettingItem[]&gt;): void
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------ |
 | callback | Callback<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem)[]> | 否   | 回调函数，用于接收并处理设置项数组。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
+
 **示例：**
 
 ```ts
@@ -2177,6 +2615,16 @@ onReportExecuteAction(callback: ReportExecuteActionEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                   |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------ |
 | callback | [ReportExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteactionevent) | 是   | 当用户点击音频模板界面按钮时，上报对应按钮动作的事件。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
 
 **示例：**
 
@@ -2215,6 +2663,16 @@ offReportExecuteAction(callback?: ReportExecuteActionEvent): void
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
 | callback | [ReportExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteactionevent) | 否   | 上报执行动作的事件。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
+
 **示例：**
 
 ```ts
@@ -2248,6 +2706,16 @@ onExtensionAbilityChange(callback: ReportExecuteAbilityEvent): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | [ReportExecuteAbilityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteabilityevent) | 是   | 通知音频模板控制方拉起指定三方应用界面的事件，包含应用包名和界面名称等信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
 
 **示例：**
 
@@ -2286,6 +2754,16 @@ offExtensionAbilityChange(callback?: ReportExecuteAbilityEvent): void
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
 | callback | [ReportExecuteAbilityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#reportexecuteabilityevent) | 否   | 通知音频模板控制方拉起特定三方应用界面的事件回调。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 801      | capability not supported.                 |
+| 35000006 | AVMusicTemplateController does not exist. |
+| 35000012 | AVMusicTemplate error.                    |
+
 **示例：**
 
 ```ts
@@ -2313,6 +2791,16 @@ destroy(): Promise&lt;void&gt;
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+
+**错误码：**
+
+以下错误码的详细介绍请参见[音频模板错误码](errorcode-avsession-avMusicTemplate.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
+
+| 错误码ID | 错误信息                  |
+| -------- | ------------------------- |
+| 801      | capability not supported. |
+
+**示例：**
 
 ```ts
 import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';
