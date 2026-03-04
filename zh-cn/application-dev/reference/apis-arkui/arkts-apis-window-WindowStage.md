@@ -1857,9 +1857,9 @@ onWindowStageClose(callback: Callback&lt;void, boolean&gt;): void
 
 当重复注册窗口关闭事件的监听时，最后一次注册成功的监听事件生效。
 
-触发的回调函数是同步执行，主窗口的异步关闭事件监听参考[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose22)方法。
+触发的回调函数是同步执行，主窗口的异步关闭事件监听参考[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose23)方法。
 
-如果存在[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose22)监听事件，只响应[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose22)接口。
+如果存在[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose23)监听事件，只响应[onWindowWillClose](arkts-apis-window-Window.md#onwindowwillclose23)接口。
 
 **ArkTS模式：** 该接口仅适用ArkTS-Sta。
 
@@ -2524,7 +2524,7 @@ setWindowRectAutoSave(enabled: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2636,7 +2636,7 @@ setWindowRectAutoSave(enabled: boolean, isSaveBySpecifiedFlag: boolean): Promise
 
 **ArkTS-Dyn起始版本：** 17
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2736,7 +2736,7 @@ isWindowRectAutoSave(): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

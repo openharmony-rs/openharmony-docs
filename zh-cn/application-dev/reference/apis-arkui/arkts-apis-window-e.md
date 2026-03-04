@@ -209,6 +209,10 @@
 
 **系统能力：**  SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 值   | 说明                          |
 | ---------- | ---- | ----------------------------- |
 | TOP_START  | 0    | 窗口左上角。|
