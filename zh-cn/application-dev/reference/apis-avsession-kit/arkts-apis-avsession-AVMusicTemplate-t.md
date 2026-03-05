@@ -24,7 +24,7 @@ type NoParamAsyncCallback = () => Promise&lt;void&gt;
 
 type QueryMainTabsEvent = () => Promise<MediaTab[]>
 
-查询主选项卡的事件。
+主标签页查询事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -44,7 +44,7 @@ type QueryMainTabsEvent = () => Promise<MediaTab[]>
 
 type QueryMediaTabContentEvent = (tabId: string) => Promise&lt;MediaTabContent&gt;
 
-查询媒体标签页内容的事件类型。
+媒体标签页内容查询事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -70,7 +70,7 @@ type QueryMediaTabContentEvent = (tabId: string) => Promise&lt;MediaTabContent&g
 
 type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise&lt;PageMediaEntity&gt;
 
-查询媒体实例的事件类型。
+媒体实体查询事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -84,9 +84,9 @@ type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise&lt;PageM
 
 **返回值：**
 
-| 类型                                                                                    | 说明                              |
-|---------------------------------------------------------------------------------------| --------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回分页内容的对象。 |
+| 类型                                                         | 说明                                      |
+| ------------------------------------------------------------ | ----------------------------------------- |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回查询的页面媒体实体对象。 |
 
 **示例：**
 
@@ -96,7 +96,7 @@ type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise&lt;PageM
 
 type QueryCompilationEvent = (compilationId: string, pageIndex: number) => Promise&lt;PageMediaEntity&gt;
 
-查询合集的事件类型。
+合集查询事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -111,9 +111,9 @@ type QueryCompilationEvent = (compilationId: string, pageIndex: number) => Promi
 
 **返回值：**
 
-| 类型                                                                                    | 说明                              |
-|---------------------------------------------------------------------------------------| --------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回分页内容的对象。 |
+| 类型                                                         | 说明                                      |
+| ------------------------------------------------------------ | ----------------------------------------- |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回查询的合集媒体实体对象。 |
 
 **示例：**
 
@@ -123,7 +123,7 @@ type QueryCompilationEvent = (compilationId: string, pageIndex: number) => Promi
 
 type QueryPlaylistEvent = (pageIndex: number, sort: Sort) => Promise&lt;PageMediaEntity&gt;
 
-查询播放列表的事件类型。
+播放列表查询事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -138,9 +138,9 @@ type QueryPlaylistEvent = (pageIndex: number, sort: Sort) => Promise&lt;PageMedi
 
 **返回值：**
 
-| 类型                                                                                    | 说明                              |
-|---------------------------------------------------------------------------------------| --------------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回分页内容的对象。 |
+| 类型                                                         | 说明                                          |
+| ------------------------------------------------------------ | --------------------------------------------- |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回查询的播放列表媒体实体对象。 |
 
 **示例：**
 
@@ -150,7 +150,7 @@ type QueryPlaylistEvent = (pageIndex: number, sort: Sort) => Promise&lt;PageMedi
 
 type QueryCurrentSingleEvent = () => Promise&lt;Single&gt;
 
-查询当前单曲的事件类型。
+当前单曲查询事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -170,7 +170,7 @@ type QueryCurrentSingleEvent = () => Promise&lt;Single&gt;
 
 type QueryCompilationByKeywordEvent = (keyword: string) => Promise&lt;Compilation[]&gt;
 
-按关键字查询合集的事件类型。
+按关键字查询合集的事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -184,9 +184,9 @@ type QueryCompilationByKeywordEvent = (keyword: string) => Promise&lt;Compilatio
 
 **返回值：**
 
-| 类型                                                                              | 说明                          |
-|---------------------------------------------------------------------------------| ----------------------------- |
-| Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md#compilation)[]> | Promise对象。返回合集的数组。 |
+| 类型                                                         | 说明                              |
+| ------------------------------------------------------------ | --------------------------------- |
+| Promise<[Compilation](arkts-apis-avsession-AVMusicTemplate-i.md#compilation)[]> | Promise对象。返回匹配的合集数组。 |
 
 **示例：**
 
@@ -196,7 +196,7 @@ type QueryCompilationByKeywordEvent = (keyword: string) => Promise&lt;Compilatio
 
 type QueryMediaEntityByKeywordEvent = (keyword: string, searchType: EntityType, pageIndex: number) => Promise&lt;PageMediaEntity&gt;
 
-按关键字查询媒体实体的事件类型。
+按关键字查询媒体实体的事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -212,9 +212,9 @@ type QueryMediaEntityByKeywordEvent = (keyword: string, searchType: EntityType, 
 
 **返回值：**
 
-| 类型                                                                                    | 说明                          |
-|---------------------------------------------------------------------------------------| ----------------------------- |
-| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回分页的实体。 |
+| 类型                                                         | 说明                                |
+| ------------------------------------------------------------ | ----------------------------------- |
+| Promise<[PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity)> | Promise对象。返回匹配的分页的实体。 |
 
 **示例：**
 
@@ -224,7 +224,7 @@ type QueryMediaEntityByKeywordEvent = (keyword: string, searchType: EntityType, 
 
 type QueryRecommendMediaEntityListEvent = () => Promise&lt;MediaEntity[]&gt;
 
-查询推荐媒体实体列表的事件类型。
+推荐媒体实体列表查询事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -232,9 +232,9 @@ type QueryRecommendMediaEntityListEvent = () => Promise&lt;MediaEntity[]&gt;
 
 **返回值：**
 
-| 类型                                                                              | 说明                              |
-|---------------------------------------------------------------------------------| --------------------------------- |
-| Promise<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[]> | Promise对象。返回媒体实例的数组。 |
+| 类型                                                         | 说明                                    |
+| ------------------------------------------------------------ | --------------------------------------- |
+| Promise<[MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[]> | Promise对象。返回推荐的媒体实例的数组。 |
 
 **示例：**
 
@@ -244,7 +244,7 @@ type QueryRecommendMediaEntityListEvent = () => Promise&lt;MediaEntity[]&gt;
 
 type QueryHotWordsEvent = () => Promise&lt;string[]&gt;
 
-查询热词的事件类型。
+热词查询事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -264,7 +264,7 @@ type QueryHotWordsEvent = () => Promise&lt;string[]&gt;
 
 type QuerySearchHistoryEvent = () => Promise&lt;string[]&gt;
 
-查询搜索历史的事件类型。
+搜索历史查询事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -284,7 +284,7 @@ type QuerySearchHistoryEvent = () => Promise&lt;string[]&gt;
 
 type ClearSearchHistoryEvent = () => Promise&lt;OperResult&gt;
 
-清除搜索历史的事件类型。
+清除搜索历史事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -292,9 +292,9 @@ type ClearSearchHistoryEvent = () => Promise&lt;OperResult&gt;
 
 **返回值：**
 
-| 类型                                                                          | 说明                              |
-|-----------------------------------------------------------------------------| --------------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果的对象。 |
+| 类型                                                         | 说明                                            |
+| ------------------------------------------------------------ | ----------------------------------------------- |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回清除搜索历史的操作结果的对象。 |
 
 **示例：**
 
@@ -304,7 +304,7 @@ type ClearSearchHistoryEvent = () => Promise&lt;OperResult&gt;
 
 type LoginEvent = (controlType: LoginType, id?: string) => Promise&lt;QrCodeInfo[]&gt;
 
-登录的事件类型。
+登录事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -312,10 +312,10 @@ type LoginEvent = (controlType: LoginType, id?: string) => Promise&lt;QrCodeInfo
 
 **参数：**
 
-| 参数名      | 类型                      | 必填 | 说明       |
+| 参数名      | 类型                    | 必填 | 说明       |
 | ----------- | ----------------------- | ---- | ---------- |
 | controlType | [LoginType](#logintype) | 是   | 登录类型。 |
-| id          | string                  | 否   | id。       |
+| id          | string                  | 否   | 二维码id。 |
 
 **返回值：**
 
@@ -331,9 +331,7 @@ type LoginEvent = (controlType: LoginType, id?: string) => Promise&lt;QrCodeInfo
 
 type LoginType = 'queryLoginInfo' | 'refreshLoginInfo' | 'cancel' | 'logout'
 
-登录的类型。
-
-该类型可取的值为下表字符串。
+登录的类型。该类型可取的值为下表字符串。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -350,7 +348,7 @@ type LoginType = 'queryLoginInfo' | 'refreshLoginInfo' | 'cancel' | 'logout'
 
 type RequestDialogInfoEvent = (actionType: DialogActionType, actionInfo?: DialogActionInfo) => Promise&lt;DialogInfo&gt;
 
-请求对话框信息的事件类型。
+对话框信息请求事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -358,16 +356,16 @@ type RequestDialogInfoEvent = (actionType: DialogActionType, actionInfo?: Dialog
 
 **参数：**
 
-| 参数名     | 类型                                                        | 必填 | 说明                 |
-| ---------- | --------------------------------------------------------- | ---- | -------------------- |
-| actionType | [DialogActionType](#dialogactiontype)                     | 是   | 弹框类型。           |
-| actionInfo | [DialogActionInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialogactioninfo) | 否   | 弹框动作结果的信息。 |
+| 参数名     | 类型                                                         | 必填 | 说明                   |
+| ---------- | ------------------------------------------------------------ | ---- | ---------------------- |
+| actionType | [DialogActionType](#dialogactiontype)                        | 是   | 对话框类型。           |
+| actionInfo | [DialogActionInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialogactioninfo) | 否   | 对话框动作结果的信息。 |
 
 **返回值：**
 
-| 类型                                                         | 说明                        |
-| ------------------------------------------------------------ | --------------------------- |
-| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo)> | Promise对象。返回弹框信息。 |
+| 类型                                                         | 说明                          |
+| ------------------------------------------------------------ | ----------------------------- |
+| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo)> | Promise对象。返回对话框信息。 |
 
 **示例：**
 
@@ -377,9 +375,7 @@ type RequestDialogInfoEvent = (actionType: DialogActionType, actionInfo?: Dialog
 
 type DialogActionType = 'open' | 'close' | 'refresh'
 
-弹框操作类型。
-
-该类型可取的值为下表字符串。
+对话框操作类型。该类型可取的值为下表字符串。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -395,7 +391,7 @@ type DialogActionType = 'open' | 'close' | 'refresh'
 
 type HandleMemberPurchaseEvent = (info: MemberPurchaseInfo) => Promise&lt;DialogInfo&gt;
 
-处理购买会员的事件类型。
+处理购买会员事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -409,9 +405,9 @@ type HandleMemberPurchaseEvent = (info: MemberPurchaseInfo) => Promise&lt;Dialog
 
 **返回值：**
 
-| 类型                                                         | 说明                        |
-| ------------------------------------------------------------ | --------------------------- |
-| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo)> | Promise对象。返回弹框信息。 |
+| 类型                                                         | 说明                          |
+| ------------------------------------------------------------ | ----------------------------- |
+| Promise<[DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo)> | Promise对象。返回对话框信息。 |
 
 **示例：**
 
@@ -421,7 +417,7 @@ type HandleMemberPurchaseEvent = (info: MemberPurchaseInfo) => Promise&lt;Dialog
 
 type QueryMemberPurchaseEvent = (memberPurchaseType: MemberPurchaseType) => Promise&lt;MemberPurchaseInfo[]&gt;
 
-查询购买会员的事件类型。
+购买会员查询事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -447,7 +443,7 @@ type QueryMemberPurchaseEvent = (memberPurchaseType: MemberPurchaseType) => Prom
 
 type QueryCustomContentEvent = (queryType: CustomType[]) => Promise&lt;CustomElement&gt;
 
-查询自定义内容的事件类型。
+自定义内容查询事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -473,9 +469,7 @@ type QueryCustomContentEvent = (queryType: CustomType[]) => Promise&lt;CustomEle
 
 type CustomType = 'USER_INFO' | 'TAB' | 'COMPILATION' | 'SETTINGS'
 
-自定义类型。
-
-该类型可取的值为下表字符串。
+自定义类型。该类型可取的值为下表字符串。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -492,7 +486,7 @@ type CustomType = 'USER_INFO' | 'TAB' | 'COMPILATION' | 'SETTINGS'
 
 type DownloadMediaEntityEvent = (controlType: DownloadControlType, mediaEntity: MediaEntity) => Promise&lt;OperResult&gt;
 
-下载媒体实体的事件类型。
+媒体实体下载事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -507,9 +501,9 @@ type DownloadMediaEntityEvent = (controlType: DownloadControlType, mediaEntity: 
 
 **返回值：**
 
-| 类型                                                         | 说明                            |
-| ------------------------------------------------------------ | ------------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果对象。 |
+| 类型                                                         | 说明                                          |
+| ------------------------------------------------------------ | --------------------------------------------- |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回下载媒体实体的操作结果对象。 |
 
 **示例：**
 
@@ -519,9 +513,7 @@ type DownloadMediaEntityEvent = (controlType: DownloadControlType, mediaEntity: 
 
 type DownloadControlType = 'startDownload' | 'deleteDownload' | 'resumeDownload' | 'pauseDownload'
 
-定义下载操作的控制类型，包括开始下载、删除下载、恢复下载和暂停下载。
-
-该类型可取的值为下表字符串。
+定义下载操作的控制类型，包括开始下载、删除下载、恢复下载和暂停下载。该类型可取的值为下表字符串。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -538,7 +530,7 @@ type DownloadControlType = 'startDownload' | 'deleteDownload' | 'resumeDownload'
 
 type SettingsChangeEvent = (settingItem: SettingItem) => Promise&lt;SettingItem&gt;
 
-设置改变的事件类型。
+设置变更事件类型。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -552,9 +544,9 @@ type SettingsChangeEvent = (settingItem: SettingItem) => Promise&lt;SettingItem&
 
 **返回值：**
 
-| 类型                                                         | 说明                      |
-| ------------------------------------------------------------ | ------------------------- |
-| Promise<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem)> | Promise对象。返回设置项。 |
+| 类型                                                         | 说明                              |
+| ------------------------------------------------------------ | --------------------------------- |
+| Promise<[SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem)> | Promise对象。返回变更过的设置项。 |
 
 **示例：**
 
@@ -564,7 +556,7 @@ type SettingsChangeEvent = (settingItem: SettingItem) => Promise&lt;SettingItem&
 
 type ProblemAndAdviceEvent = (advice: string) => Promise&lt;OperResult&gt;
 
-问题与建议活动的事件类型。
+问题与建议活动事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -578,9 +570,9 @@ type ProblemAndAdviceEvent = (advice: string) => Promise&lt;OperResult&gt;
 
 **返回值：**
 
-| 类型                                                         | 说明                            |
-| ------------------------------------------------------------ | ------------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果对象。 |
+| 类型                                                         | 说明                                            |
+| ------------------------------------------------------------ | ----------------------------------------------- |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回问题与建议活动的操作结果对象。 |
 
 **示例：**
 
@@ -590,7 +582,7 @@ type ProblemAndAdviceEvent = (advice: string) => Promise&lt;OperResult&gt;
 
 type PlayForSearchEvent = (command: SearchPlayInfoType, args: SearchPlayInfo) => Promise&lt;OperResult&gt;
 
-搜播的事件类型。
+搜播事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -605,9 +597,9 @@ type PlayForSearchEvent = (command: SearchPlayInfoType, args: SearchPlayInfo) =>
 
 **返回值：**
 
-| 类型                                                         | 说明                            |
-| ------------------------------------------------------------ | ------------------------------- |
-| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回操作结果对象。 |
+| 类型                                                         | 说明                                  |
+| ------------------------------------------------------------ | ------------------------------------- |
+| Promise<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象。返回搜播的操作结果对象。 |
 
 **示例：**
 
@@ -617,7 +609,7 @@ type PlayForSearchEvent = (command: SearchPlayInfoType, args: SearchPlayInfo) =>
 
 type ExecuteActionEvent = (actionType: string, params: string) => Promise&lt;string&gt;
 
-执行操作的事件类型。
+执行操作事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -644,7 +636,7 @@ type ExecuteActionEvent = (actionType: string, params: string) => Promise&lt;str
 
 type PlayMediaEntityEvent = (mediaEntity: MediaEntity) => Promise&lt;void&gt;
 
-播放媒体实体的事件类型。
+媒体实体播放事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -652,9 +644,9 @@ type PlayMediaEntityEvent = (mediaEntity: MediaEntity) => Promise&lt;void&gt;
 
 **参数：**
 
-| 参数名      | 类型                                                         | 必填 | 说明       |
-| ----------- | ------------------------------------------------------------ | ---- | ---------- |
-| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity) | 是   | 媒体实体。 |
+| 参数名      | 类型                                                         | 必填 | 说明                 |
+| ----------- | ------------------------------------------------------------ | ---- | -------------------- |
+| mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity) | 是   | 需要播放的媒体实体。 |
 
 **示例：**
 
@@ -664,7 +656,7 @@ type PlayMediaEntityEvent = (mediaEntity: MediaEntity) => Promise&lt;void&gt;
 
 type FavoriteMediaEntityEvent = (actionType: MediaFavoriteType, mediaEntity: MediaEntity) => Promise&lt;OperResult&gt;
 
-收藏媒体实体的事件类型。
+媒体实体收藏事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -679,9 +671,9 @@ type FavoriteMediaEntityEvent = (actionType: MediaFavoriteType, mediaEntity: Med
 
 **返回值：**
 
-| 类型                  | 说明                            |
-| --------------------- | ------------------------------- |
-| Promise&lt;string&gt; | Promise对象。返回操作结果对象。 |
+| 类型                      | 说明                                          |
+| ------------------------- | --------------------------------------------- |
+| Promise&lt;OperResult&gt; | Promise对象。返回收藏媒体实体的操作结果对象。 |
 
 **示例：**
 
@@ -691,9 +683,7 @@ type FavoriteMediaEntityEvent = (actionType: MediaFavoriteType, mediaEntity: Med
 
 type MediaFavoriteType = 'addFavorite' | 'removeFavorite'
 
-媒体收藏类型的定义。
-
-该类型可取的值为下表字符串。
+媒体收藏类型的定义。该类型可取的值为下表字符串。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -708,9 +698,7 @@ type MediaFavoriteType = 'addFavorite' | 'removeFavorite'
 
 type DialogControlType = 'open' | 'close' | 'refresh' | 'toast'
 
-弹框控制类型的定义。
-
-该类型可取的值为下表字符串。
+对话框控制类型的定义。该类型可取的值为下表字符串。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -727,9 +715,7 @@ type DialogControlType = 'open' | 'close' | 'refresh' | 'toast'
 
 type ActionType = 'add' | 'remove'
 
-操作类型的定义。
-
-该类型可取的值为下表字符串。
+操作类型的定义。该类型可取的值为下表字符串。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -744,7 +730,7 @@ type ActionType = 'add' | 'remove'
 
 type ReportDialogCommandEvent = (type: DialogControlType, buttonInfo: DialogInfo) => void
 
-上报弹框命令的事件类型。
+对话框命令上报事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -752,10 +738,10 @@ type ReportDialogCommandEvent = (type: DialogControlType, buttonInfo: DialogInfo
 
 **参数：**
 
-| 参数名     | 类型                                                        | 必填 | 说明           |
-| ---------- | --------------------------------------------------------- | ---- | -------------- |
-| type       | [DialogControlType](#dialogcontroltype)                   | 是   | 弹框控制类型。 |
-| buttonInfo | [DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo) | 是   | 弹框信息。     |
+| 参数名     | 类型                                                         | 必填 | 说明             |
+| ---------- | ------------------------------------------------------------ | ---- | ---------------- |
+| type       | [DialogControlType](#dialogcontroltype)                      | 是   | 对话框控制类型。 |
+| buttonInfo | [DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo) | 是   | 对话框信息。     |
 
 **示例：**
 
@@ -765,7 +751,7 @@ type ReportDialogCommandEvent = (type: DialogControlType, buttonInfo: DialogInfo
 
 type ReportTabContentEvent = (tabId: string, tabContent: MediaTabContent) => void
 
-上报标签页内容的事件类型。
+标签页内容上报事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -786,7 +772,7 @@ type ReportTabContentEvent = (tabId: string, tabContent: MediaTabContent) => voi
 
 type ReportCustomElementsChangeEvent = (actionType: ActionType, customType: CustomType, customElement: CustomElement) => void
 
-上报自定义元素改变的事件类型。
+上报自定义元素改变事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -808,7 +794,7 @@ type ReportCustomElementsChangeEvent = (actionType: ActionType, customType: Cust
 
 type ReportExecuteActionEvent = (actionType: string, params: string) => void
 
-上报执行动作的事件类型。
+执行动作上报事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -829,7 +815,7 @@ type ReportExecuteActionEvent = (actionType: string, params: string) => void
 
 type ReportExecuteAbilityEvent = (want: WantAgent) => void
 
-通知音频模板控制方拉起指定三方应用界面的信息的事件类型。
+通知音频模板控制方拉起指定三方应用界面的信息的事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

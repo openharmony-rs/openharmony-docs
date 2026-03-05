@@ -88,22 +88,22 @@
 
 ## DialogType
 
-表示弹框类型的枚举。
+表示对话框类型的枚举。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称     | 值   | 说明                                                         |
-| -------- | ---- | ------------------------------------------------------------ |
-| NORMAL   | 0    | 普通弹框。                                                   |
-| INTERNET | 1    | 联网弹框。                                                   |
-| FLOW     | 2    | 流程弹框。                                                   |
-| PAID     | 3    | 付费弹框。                                                   |
-| VIP      | 4    | VIP弹框。                                                    |
-| LOGIN    | 5    | xxxxxxxxxx import { common } from '@kit.AbilityKit';import { avSession } from '@kit.AVSessionKit';​async function onPickerStateChange(context: common.Context) {  let avCastPicker = new avSession.AVCastPickerHelper(context);  avCastPicker.off('pickerStateChange');}ts |
-| ERROR    | 6    | 错误弹框。                                                   |
-| UNKNOWN  | 7    | 未知弹框。                                                   |
+| 名称     | 值   | 说明         |
+| -------- | ---- | ------------ |
+| NORMAL   | 0    | 普通对话框。 |
+| INTERNET | 1    | 联网对话框。 |
+| FLOW     | 2    | 流程对话框。 |
+| PAID     | 3    | 付费对话框。 |
+| VIP      | 4    | VIP对话框。  |
+| LOGIN    | 5    | 登录对话框。 |
+| ERROR    | 6    | 错误对话框。 |
+| UNKNOWN  | 7    | 未知对话框。 |
 
 ## ButtonType
 
@@ -115,7 +115,7 @@
 
 | 名称      | 值   | 说明       |
 | --------- | ---- | ---------- |
-| NORMAL    | 0    | 正常按钮。 |
+| NORMAL    | 0    | 普通按钮。 |
 | EMPHASIZE | 1    | 强调按钮。 |
 
 ## MemberPurchaseType

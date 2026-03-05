@@ -59,14 +59,14 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称            | 类型                                                        | 只读 | 可选 | 说明                                              |
-| --------------- | --------------------------------------------------------- | ---- | ---- | ------------------------------------------------- |
-| id              | string                                                    | 否   | 否   | 合集的标识。                                      |
-| title           | string                                                    | 否   | 否   | 合集的标题。                                      |
-| hasMoreData     | boolean                                                   | 否   | 否   | 是否有更多的合集数据。true表示有，false表示没有。 |
-| totalSize       | number                                                      | 否   | 否   | 合集内音频的个数。                                |
+| 名称            | 类型                                                         | 只读 | 可选 | 说明                                              |
+| --------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------- |
+| id              | string                                                       | 否   | 否   | 合集的标识。                                      |
+| title           | string                                                       | 否   | 否   | 合集的标题。                                      |
+| hasMoreData     | boolean                                                      | 否   | 否   | 是否有更多的合集数据。true表示有，false表示没有。 |
+| totalSize       | number                                                       | 否   | 否   | 总个数。                                          |
 | memberMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 合集的媒体资源类型                                |
-| topElements     | [MediaEntity](#mediaentity)                               | 否   | 否   | 合集的内容                                        |
+| topElements     | [MediaEntity](#mediaentity)                                  | 否   | 否   | 合集的内容                                        |
 
 ## Banner
 
@@ -183,16 +183,16 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称             | 类型                                                                    | 只读 | 可选 | 说明                                       |
-| ---------------- |-----------------------------------------------------------------------| ---- | ---- | ------------------------------------------ |
-| isVip            | boolean                                                               | 否   | 否   | 是否是VIP歌曲。true表示是，false表示不是。 |
-| singer           | string                                                                | 否   | 否   | 歌手的名字。                               |
-| playInfo         | [PlayInfo](arkts-apis-avsession-AVMusicTemplate-i.md#playinfo)        | 否   | 否   | 播放信息。                                 |
+| 名称             | 类型                                                         | 只读 | 可选 | 说明                                       |
+| ---------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------ |
+| isVip            | boolean                                                      | 否   | 否   | 是否是VIP歌曲。true表示是，false表示不是。 |
+| singer           | string                                                       | 否   | 否   | 歌手的名字。                               |
+| playInfo         | [PlayInfo](arkts-apis-avsession-AVMusicTemplate-i.md#playinfo) | 否   | 否   | 播放信息。                                 |
 | favSubscribeData | [FavoriteData](arkts-apis-avsession-AVMusicTemplate-i.md#favoritedata) | 否   | 否   | 收藏或订阅的信息。                         |
-| tags             | string[]                                                              | 否   | 是   | 歌曲标签信息的数组。                       |
-| settings         | [SettingItem](#settingitem)[]                                         | 否   | 是   | 歌曲设置项的数组。                         |
-| downloadStatus   | [DownloadStatus](arkts-apis-avsession-AVMusicTemplate-e.md#downloadstatus) | 否   | 是   | 下载状态。                                 |
-| downloadProgress | number                                                                  | 否   | 是   | 下载进度。                                 |
+| tags             | string[]                                                     | 否   | 是   | 歌曲标签信息的数组。                       |
+| settings         | [SettingItem](#settingitem)[]                                | 否   | 是   | 歌曲设置项的数组。                         |
+| downloadStatus   | [DownloadStatus](arkts-apis-avsession-AVMusicTemplate-e.md#downloadstatus) | 否   | 是   | 歌曲下载状态。                             |
+| downloadProgress | number                                                       | 否   | 是   | 歌曲下载进度。                             |
 
 ## PlayInfo
 
@@ -215,11 +215,11 @@
 | isSupportSkipTail      | boolean  | 否   | 否   | 是否支持跳过结尾。true表示支持，false表示不支持。       |
 | isSupportPlayMode      | boolean  | 否   | 否   | 是否支持切换播放模式。true表示支持，false表示不支持。     |
 | isSupportPlayRate      | boolean  | 否   | 否   | 是否支持改变播放速率。true表示支持，false表示不支持。     |
-| supportedPlayRate      | string[] | 否   | 否   | 支持播放速率的数组。                         |
+| supportedPlayRate      | string[] | 否   | 否   | 支持的播放速率的数组。                        |
 | currentPlayRate        | string   | 否   | 否   | 当前的播放速率。                            |
 | isSupportSoundQuality  | boolean  | 否   | 否   | 是否支持声音质量。true表示支持，false表示不支持。       |
 | isSupportSoundEffect   | boolean  | 否   | 否   | 是否支持音效。true表示支持，false表示不支持。         |
-| totalDuration          | number     | 否   | 否   | 总时长。                                |
+| totalDuration          | number     | 否   | 否   | 播放总时长。                              |
 | currentPlayDuration    | number     | 否   | 否   | 当前播放的时长。                            |
 | isSupportProgress      | boolean  | 否   | 否   | 是否支持进度。true表示支持，false表示不支持。默认值为true。 |
 
@@ -231,11 +231,11 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称         | 类型    | 只读 | 可选 | 说明                                          |
-| ------------ | ------- | ---- | ---- | --------------------------------------------- |
-| isSupportFav | boolean | 否   | 否   | 是否支持收藏。true表示支持，false表示不支持。 |
-| isFavorite   | boolean | 否   | 否   | 是否收藏。true表示已收藏，false表示未收藏。   |
-| favCounts    | string  | 否   | 否   | 收藏的数量。                                  |
+| 名称         | 类型    | 只读 | 可选 | 说明                                                       |
+| ------------ | ------- | ---- | ---- | ---------------------------------------------------------- |
+| isSupportFav | boolean | 否   | 否   | 是否支持收藏/订阅。true表示支持，false表示不支持。         |
+| isFavorite   | boolean | 否   | 否   | 是否收藏/订阅。true表示已收藏/订阅，false表示未收藏/订阅。 |
+| favCounts    | string  | 否   | 否   | 收藏/订阅的数量。                                          |
 
 ## SettingItem
 
@@ -262,12 +262,12 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称       | 类型                                                         | 只读 | 可选 | 说明                                              |
-| ---------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------- |
-| value      | string                                                       | 否   | 否   | 设置的内容。                                      |
-| isSelected | string                                                       | 否   | 否   | 是否选择本设置项。true表示选择，false表示不选择。 |
-| textTags   | string[]                                                     | 否   | 是   | 设置内容的描述的数组。                            |
-| imageTags  | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md)[] | 否   | 是   | 设置内容的标签描述的数组。                        |
+| 名称       | 类型                                                         | 只读 | 可选 | 说明                                                |
+| ---------- | ------------------------------------------------------------ | ---- | ---- | --------------------------------------------------- |
+| value      | string                                                       | 否   | 否   | 设置的内容。                                        |
+| isSelected | boolean                                                      | 否   | 否   | 是否选择设置项内容。true表示选择，false表示不选择。 |
+| textTags   | string[]                                                     | 否   | 是   | 设置内容的描述的数组。                              |
+| imageTags  | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md)[] | 否   | 是   | 设置内容的标签描述的数组。                          |
 
 ## QrCodeInfo
 
@@ -287,25 +287,25 @@
 | icon        | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 与二维码关联的应用图标，用于微信登录的二维码应显示微信图标。 |
 | content     | string                                                       | 否   | 否   | 二维码的内容。                                               |
 | codeData    | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 二维码图片。                                                 |
-| validPeriod | number                                                       | 否   | 否   | 二维码有效期。单位：秒。                                     |
+| validPeriod | number                                                       | 否   | 否   | 二维码有效期（单位：秒）。当QR码到期时，QR码ID将用于再次查询并获得新的QR码。 |
 
 ## DialogActionInfo
 
-弹框动作信息的定义。
+对话框动作信息的定义。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称         | 类型    | 只读 | 可选 | 说明                                                        |
-| ------------ | ------- | ---- | ---- | ----------------------------------------------------------- |
-| dialogId     | string  | 否   | 否   | 弹框动作的唯一标识符。。                                    |
-| isChecked    | boolean | 否   | 否   | 弹窗中的复选框是否已选中。true表示已选中，false表示未选中。 |
-| clickedBtnId | string  | 否   | 否   | 用户点击的按钮的ID。                                        |
+| 名称         | 类型    | 只读 | 可选 | 说明                                                         |
+| ------------ | ------- | ---- | ---- | ------------------------------------------------------------ |
+| dialogId     | string  | 否   | 否   | 对话框动作的唯一标识符。                                     |
+| isChecked    | boolean | 否   | 否   | 对话框中的复选框是否已选中。true表示已选中，false表示未选中。 |
+| clickedBtnId | string  | 否   | 否   | 用户点击的按钮的ID。                                         |
 
 ## DialogInfo
 
-弹框信息的定义。
+对话框信息的定义。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -313,17 +313,17 @@
 
 | 名称        | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ----------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| dialogId    | string                                                       | 否   | 否   | 弹框的唯一id。                                               |
-| dialogType  | [DialogType](arkts-apis-avsession-AVMusicTemplate-e.md#dialogtype) | 否   | 否   | 弹框的类型。                                                 |
-| title       | string                                                       | 否   | 是   | 弹框的标题。                                                 |
-| text        | string                                                       | 否   | 是   | 弹框的内容。                                                 |
-| buttons     | [DialogButtonInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialogbuttoninfo)[] | 否   | 是   | 弹框的按钮的数组。                                           |
-| qrCodes     | [QrCodeInfo](#qrcodeinfo)[]                                  | 否   | 是   | 弹框的二维码。一旦设置了二维码信息，此弹窗将被识别为二维码弹框，并将优先显示二维码信息。最多可以设置两个。 |
+| dialogId    | string                                                       | 否   | 否   | 对话框的唯一id。                                             |
+| dialogType  | [DialogType](arkts-apis-avsession-AVMusicTemplate-e.md#dialogtype) | 否   | 否   | 对话框的类型。                                               |
+| title       | string                                                       | 否   | 是   | 对话框的标题。                                               |
+| text        | string                                                       | 否   | 是   | 对话框的内容。                                               |
+| buttons     | [DialogButtonInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialogbuttoninfo)[] | 否   | 是   | 对话框按钮的数组。                                           |
+| qrCodes     | [QrCodeInfo](#qrcodeinfo)[]                                  | 否   | 是   | 对话框二维码的数组。一旦设置了二维码信息，此对话框将被识别为二维码对话框，并将优先显示二维码信息。最多可以设置两个。 |
 | description | string                                                       | 否   | 是   | 对话框的其他信息。                                           |
 
 ## DialogButtonInfo
 
-弹框按钮信息的定义。
+对话框按钮信息的定义。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -374,14 +374,14 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称          | 类型    | 只读 | 可选 | 说明                                        |
-| ------------- | ------- | ---- | ---- | ------------------------------------------- |
-| userInfoId    | string  | 否   | 否   | 用户的唯一id。                              |
-| nickName      | string  | 否   | 否   | 用户昵称。                                  |
-| profilePicUrl | string  | 否   | 否   | 用户的头像图片URL。                         |
-| tips          | string  | 否   | 否   | 其他关于用户的描述。                        |
-| isLogin       | boolean | 否   | 否   | 是否登录。true表示已登录，false表示未登录。 |
-| isVip         | boolean | 否   | 否   | 是否是VIP。true表示是，false表示否。        |
+| 名称          | 类型    | 只读 | 可选 | 说明                                            |
+| ------------- | ------- | ---- | ---- | ----------------------------------------------- |
+| userInfoId    | string  | 否   | 否   | 用户的唯一id。                                  |
+| nickName      | string  | 否   | 否   | 用户昵称。                                      |
+| profilePicUrl | string  | 否   | 否   | 用户的头像图片URL。                             |
+| tips          | string  | 否   | 否   | 其他关于用户的描述。                            |
+| isLogin       | boolean | 否   | 否   | 用户是否登录。true表示已登录，false表示未登录。 |
+| isVip         | boolean | 否   | 否   | 用户是否是VIP。true表示是，false表示否。        |
 
 ## SearchPlayInfo
 
