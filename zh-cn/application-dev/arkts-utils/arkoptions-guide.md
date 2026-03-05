@@ -29,12 +29,10 @@ arkOptions中types字段示例：
 <!-- @[add_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/build-profile.json5) --> 
 
 ``` JSON5
-// 在/entry/build-profile.json5。
+// 在/entry/build-profile.json5
 "arkOptions": {
-  "types": [
-    "../node_modules/@types/chai/index", "../node_modules/@types/mocha/index", "./src/main/ets/pages/global"
-  ]
-},
+  "types": ["pako", "./oh_modules/@types/mime", "./src/main/ets/pages/global"]
+}
 ```
 
 types字段支持填写包名、包所在位置的相对路径以及声明文件所在相对路径，仅支持当前模块内的查找，若目录下存在同名文件（后缀不同），默认加载顺序.d.ets > .d.ts。<br />
