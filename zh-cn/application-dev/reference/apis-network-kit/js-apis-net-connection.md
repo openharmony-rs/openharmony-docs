@@ -2505,7 +2505,7 @@ import { connection } from '@kit.NetworkKit';
 let ifName = "eth0";
 let vlanId = 1;
 connection.createVlanInterface(ifName, vlanId).then(() => {
-  console.info(`create vlan success`);
+  console.info(`Create vlan success`);
 }).catch((error: BusinessError) => {
   console.error(`Failed to create vlan. Code:${error.code}, message:${error.message}`);
 });
@@ -2560,7 +2560,7 @@ import { connection } from '@kit.NetworkKit';
 let ifName = "eth0";
 let vlanId = 1;
 connection.destroyVlanInterface(ifName, vlanId).then(() => {
-  console.info(`destroy vlan success`);
+  console.info(`Destroy vlan success`);
 }).catch((error: BusinessError) => {
   console.error(`Failed to destroy vlan. Code:${error.code}, message:${error.message}`);
 });
@@ -2625,7 +2625,7 @@ let address: connection.LinkAddress = {
   prefixLength: 24
 }
 connection.addVlanIp(ifName, vlanId, address).then(() => {
-  console.info(`add vlan ip success`);
+  console.info(`Add vlan ip success`);
 }).catch((error: BusinessError) => {
   console.error(`Failed to add vlan ip. Code:${error.code}, message:${error.message}`);
 });
@@ -2691,7 +2691,7 @@ let address: connection.LinkAddress = {
   prefixLength: 24
 }
 connection.deleteVlanIp(ifName, vlanId, address).then(() => {
-  console.info(`delete vlan ip success`);
+  console.info(`Delete vlan ip success`);
 }).catch((error: BusinessError) => {
   console.error(`Failed to delete vlan ip. Code:${error.code}, message:${error.message}`);
 });
