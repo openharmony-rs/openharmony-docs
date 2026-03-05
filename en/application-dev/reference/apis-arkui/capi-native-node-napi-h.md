@@ -8,7 +8,7 @@
 
 ## Overview
 
-Declares the functions used to convert FrameNodes on the ArkTS side into NodeHandles.
+Provides the APIs used to convert [FrameNode](js-apis-arkui-frameNode.md) on the ArkTS side to [NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).
 
 **File to include**: <arkui/native_node_napi.h>
 
@@ -90,7 +90,7 @@ int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_C
 **Description**
 
 
-Obtains a **UIContext** object on the ArkTS side and maps it to an **ArkUI_ContextHandle** object on the native side.
+Obtains a [UIContext](arkts-apis-uicontext-uicontext.md) object on the ArkTS side and maps it to **ArkUI_ContextHandle** on the native side.
 
 **Since**: 12
 
@@ -156,7 +156,7 @@ Maps the [DrawableDescriptor](arkui-ts/ts-basic-components-image.md#drawabledesc
 | Name| Description|
 | -- | -- |
 | napi_env env | Pointer to the Node-API environment.|
-| napi_value value | **DrawableDescriptor** object created on the ArkTS side.|
+| napi_value value | [DrawableDescriptor](arkui-ts/ts-basic-components-image.md#drawabledescriptor10) object created on the ArkTS side.|
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)** drawableDescriptor | Double pointer used to receive the **ArkUI_DrawableDescriptor** object.|
 
 **Return value**
@@ -174,7 +174,7 @@ int32_t OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue(napi_env env, napi_v
 **Description**
 
 
-Maps the [$r](js-apis-arkui-resource.md) resource object created on the ArkTS side to the [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) object on the native side.
+Converts the resource object obtained by **$r()** on the ArkTS side to the [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) object that can be used on the native side.
 
 **Since**: 12
 
@@ -287,7 +287,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationNameByIndex(ArkUI_NodeHandle node, int
 **Description**
 
 
-Obtains the name of the page in the navigation stack where the specified node is located based on the given  index. The index starts from 0, which indicates the bottom of the stack.
+Obtains the name of the page in the navigation stack where the specified node is located based on the given index. The index starts from 0, which indicates the bottom of the stack.
 
 **Since**: 12
 
