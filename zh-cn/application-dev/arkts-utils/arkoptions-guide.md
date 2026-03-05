@@ -43,10 +43,12 @@ types字段支持填写包名、包所在位置的相对路径以及声明文件
 ### 注意事项
 
 如果在types字段中填写包名或者包所在位置的相对路径，需要在工程文件/entry/oh-package.json5中dependencies作如下配置：
-```json
+<!-- @[dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/oh-package.json5) -->
+
+``` JSON5
 "dependencies": {
-  "@types/chai": "latest",
-  "@types/mocha": "latest"
+  "@types/pako": "latest",
+  "@types/mime": "latest"
 }
 ```
 
@@ -60,13 +62,13 @@ declare namespace Global {
 ```
 
 通过types全局引入后，对全局类型的使用示例如下：
-<!-- @[call_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[test_party](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // 在entry/src/main/ets/pages/Index.ets
-let a: Chai.Message;
-let b: Mocha.HookFunction;
-let c: Global.ObjectType;
+let testPako: pako.constants = 0;
+let testMime: mime.TypeMap = {};
+let testGlobal: Global.ObjectType = 'test';
 ```
 
 ## maxFlowDepth
