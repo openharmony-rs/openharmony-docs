@@ -291,17 +291,17 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称        | 类型                                                         | 只读 | 可选 | 说明                     |
-| ----------- | ------------------------------------------------------------ | ---- | ---- | ------------------------ |
-| id          | string                                                       | 否   | 否   | 二维码ID。               |
-| price       | string                                                       | 否   | 否   | 购买价格。               |
-| titleName   | string                                                       | 否   | 否   | 标题名称。               |
-| detailName  | string                                                       | 否   | 否   | 详情名称。               |
-| tips        | string                                                       | 否   | 否   | 提示信息。               |
-| icon        | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 与二维码关联的应用图标。 |
-| content     | string                                                       | 否   | 否   | 二维码的内容。           |
-| codeData    | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 二维码图片。             |
-| validPeriod | number                                                         | 否   | 否   | 二维码有效期。单位：秒。 |
+| 名称        | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ----------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| id          | string                                                       | 否   | 否   | 用于唯一标识用户登录的二维码会话。当二维码过期时，MediaUI 将使用此 ID 从第三方查询并更新新的二维码。 |
+| price       | string                                                       | 否   | 否   | 购买价格。                                                   |
+| titleName   | string                                                       | 否   | 否   | 标题名称。                                                   |
+| detailName  | string                                                       | 否   | 否   | 详情名称。                                                   |
+| tips        | string                                                       | 否   | 否   | 提示信息。                                                   |
+| icon        | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 与二维码关联的应用图标，用于微信登录的二维码应显示微信图标。 |
+| content     | string                                                       | 否   | 否   | 二维码的内容。                                               |
+| codeData    | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 二维码图片。                                                 |
+| validPeriod | number                                                       | 否   | 否   | 二维码有效期。单位：秒。                                     |
 
 ## DialogActionInfo
 
@@ -311,29 +311,29 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称         | 类型    | 只读 | 可选 | 说明                           |
-| ------------ | ------- | ---- | ---- | ------------------------------ |
-| dialogId     | string  | 否   | 否   | 弹框ID。                       |
-| isChecked    | boolean | 否   | 否   | 弹出窗口中的复选框是否被选中。 |
-| clickedBtnId | string  | 否   | 否   | 用户点击的按钮的ID。           |
+| 名称         | 类型    | 只读 | 可选 | 说明                                                        |
+| ------------ | ------- | ---- | ---- | ----------------------------------------------------------- |
+| dialogId     | string  | 否   | 否   | 弹框动作的唯一标识符。。                                    |
+| isChecked    | boolean | 否   | 否   | 弹窗中的复选框是否已选中。true表示已选中，false表示未选中。 |
+| clickedBtnId | string  | 否   | 否   | 用户点击的按钮的ID。                                        |
 
 ## DialogInfo
 
-弹框的定义。
+弹框信息的定义。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称        | 类型                                                        | 只读 | 可选 | 说明                 |
-| ----------- | --------------------------------------------------------- | ---- | ---- | -------------------- |
-| dialogId    | string                                                    | 否   | 否   | 弹框的ID。           |
-| dialogType  | [DialogType](arkts-apis-avsession-AVMusicTemplate-e.md#dialogtype) | 否   | 否   | 弹框的类型。         |
-| title       | string                                                    | 否   | 是   | 弹框的标题。         |
-| text        | string                                                    | 否   | 是   | 弹框的内容。         |
-| buttons     | [DialogButtonInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialogbuttoninfo)[] | 否   | 是   | 弹框的按钮的数组。   |
-| qrCodes     | [QrCodeInfo](#qrcodeinfo)[]                               | 否   | 是   | 弹框的二维码的数组。 |
-| description | string                                                    | 否   | 是   | 对话框的其他信息。   |
+| 名称        | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ----------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| dialogId    | string                                                       | 否   | 否   | 弹框的唯一id。                                               |
+| dialogType  | [DialogType](arkts-apis-avsession-AVMusicTemplate-e.md#dialogtype) | 否   | 否   | 弹框的类型。                                                 |
+| title       | string                                                       | 否   | 是   | 弹框的标题。                                                 |
+| text        | string                                                       | 否   | 是   | 弹框的内容。                                                 |
+| buttons     | [DialogButtonInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialogbuttoninfo)[] | 否   | 是   | 弹框的按钮的数组。                                           |
+| qrCodes     | [QrCodeInfo](#qrcodeinfo)[]                                  | 否   | 是   | 弹框的二维码。一旦设置了二维码信息，此弹窗将被识别为二维码弹框，并将优先显示二维码信息。最多可以设置两个。 |
+| description | string                                                       | 否   | 是   | 对话框的其他信息。                                           |
 
 ## DialogButtonInfo
 
@@ -357,17 +357,17 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称               | 类型                                                         | 只读 | 可选 | 说明                                    |
-| ------------------ | ------------------------------------------------------------ | ---- | ---- | --------------------------------------- |
-| id                 | string                                                       | 否   | 否   | 会员购买信息的ID。                      |
-| diagramUrl         | string                                                       | 否   | 否   | 会员购买演示的URL必须采用21:9的宽高比。 |
-| diagramData        | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 会员购买图片。                          |
-| diagramContent     | string                                                       | 否   | 否   | 会员购买图片的内容。                    |
-| memberPurchaseType | [MemberPurchaseType](arkts-apis-avsession-AVMusicTemplate-e.md#memberpurchasetype) | 否   | 否   | 会员购买类型。                          |
+| 名称               | 类型                                                         | 只读 | 可选 | 说明                                        |
+| ------------------ | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------- |
+| id                 | string                                                       | 否   | 否   | 会员购买信息的唯一id。                      |
+| diagramUrl         | string                                                       | 否   | 否   | 会员购买演示的URL（必须采用21:9的宽高比）。 |
+| diagramData        | [image.PixelMap](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 会员购买图片。                              |
+| diagramContent     | string                                                       | 否   | 否   | 会员购买图片的内容。                        |
+| memberPurchaseType | [MemberPurchaseType](arkts-apis-avsession-AVMusicTemplate-e.md#memberpurchasetype) | 否   | 否   | 会员购买类型。                              |
 
 ## CustomElement
 
-我的页面的自定义元素的定义。继承自[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)。
+“我的主页”自定义元素的定义。继承自[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -390,10 +390,10 @@
 
 | 名称          | 类型    | 只读 | 可选 | 说明                                        |
 | ------------- | ------- | ---- | ---- | ------------------------------------------- |
-| userInfoId    | string  | 否   | 否   | 用户信息的ID。                              |
-| nickName      | string  | 否   | 否   | 昵称。                                      |
+| userInfoId    | string  | 否   | 否   | 用户的唯一id。                              |
+| nickName      | string  | 否   | 否   | 用户昵称。                                  |
 | profilePicUrl | string  | 否   | 否   | 用户的头像图片URL。                         |
-| tips          | string  | 否   | 否   | 对用户的描述。                          |
+| tips          | string  | 否   | 否   | 对用户的描述。                              |
 | isLogin       | boolean | 否   | 否   | 是否登录。true表示已登录，false表示未登录。 |
 | isVip         | boolean | 否   | 否   | 是否是VIP。true表示是，false表示否。        |
 
