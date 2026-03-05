@@ -248,14 +248,14 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_RenderFrame(OH_AudioSuitePipeline* audi
 
 Obtains the processed audio data from the pipeline (for single-output effect nodes).
 
->**NOTE**
->Applications need to call this function to obtain audio data that has been processed by effects.
- * When this function is called, the pipeline pulls data backward from the output node, apply effect processing,
- * and fill the processed data into the **audioData** pointer provided by the application.
- * The system attempts to fill the data based on the size specified by **requestFrameSize**, and the actual size of the processed data is returned to the application via **responseSize**.
- * When the application has prepared data for all input nodes and submits the last data through a callback, it should set the finish flag in the callback.
- * Once all inputs in the pipeline have passed the finish flag, the pipeline notifies the application through **finishedFlag** after processing is complete.
- * If **finishedFlag** is **true**, the application should not call this function again.
+> **NOTE**
+> Applications need to call this function to obtain audio data that has been processed by effects.
+> * When this function is called, the pipeline pulls data backward from the output node, apply effect processing,
+> * and fill the processed data into the **audioData** pointer provided by the application.
+> * The system attempts to fill the data based on the size specified by **requestFrameSize**, and the actual size of the processed data is returned to the application via **responseSize**.
+> * When the application has prepared data for all input nodes and submits the last data through a callback, it should set the finish flag in the callback.
+> * Once all inputs in the pipeline have passed the finish flag, the pipeline notifies the application through **finishedFlag** after processing is complete.
+> * If **finishedFlag** is **true**, the application should not call this function again.
 
 **Since**: 22
 
@@ -434,11 +434,11 @@ typedef int32_t (*OH_InputNode_RequestDataCallback)(OH_AudioNode* audioNode, voi
 
 Sets a callback function for the input node to request data.
 
->**NOTE**
->Applications should write the PCM audio data to be processed to **audioData**, from which OHAudioSuite obtains the data for audio creation.
- * Applications should write data to **audioData** that does not exceed the size specified by **audioDataSize**.
- * Once all data has been passed to the pipeline through this callback, the application should set **finished** to **true** in the last callback. After this, the pipeline will no longer call this function.
- * Only input nodes require this configuration; other nodes do not.
+> **NOTE**
+> Applications should write the PCM audio data to be processed to **audioData**, from which OHAudioSuite obtains the data for audio creation.
+> * Applications should write data to **audioData** that does not exceed the size specified by **audioDataSize**.
+> * Once all data has been passed to the pipeline through this callback, the application should set **finished** to **true** in the last callback. After this, the pipeline will no longer call this function.
+> * Only input nodes require this configuration; other nodes do not.
 
 **Since**: 22
 
@@ -617,7 +617,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_ConnectNodes(OH_AudioNode* sourceAudioN
 
 **Description**
 
- Connects two nodes, with data flowing from sourceAudioNode to destAudioNode. Connecting nodes will change the pipeline topology and may cause data loss. You are advised to perform this operation when the engine is stopped.<br> The connection order of nodes in a pipeline is as follows: input node -> effect node -> output node.
+Connects two nodes, with data flowing from **sourceAudioNode** to **destAudioNode**. Connecting nodes will change the pipeline topology and may cause data loss. You are advised to perform this operation when the engine is stopped.<br> The connection order of nodes in a pipeline is as follows: input node -> effect node -> output node.
 
 **Since**: 22
 
@@ -751,7 +751,7 @@ Obtains the configuration parameters of the sound field effect node.
 | Name| Description|
 | -- | -- |
 | [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Audio creation node handle, which is obtained by calling [OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode).|
-| [OH_SoundFieldType](capi-native-audio-suite-base-h.md#oh_soundfieldtype)* soundFieldType | Pointer to the configuration parameters of the sound field effect node.|
+| [OH_SoundFieldType](capi-native-audio-suite-base-h.md#oh_soundfieldtype)* soundFieldType | Configuration parameters of the sound field effect node.|
 
 **Returns**
 
@@ -801,7 +801,7 @@ Obtains the configuration parameters of the environment effect node.
 | Name| Description|
 | -- | -- |
 | [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Audio creation node handle, which is obtained by calling [OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode).|
-| [OH_EnvironmentType](capi-native-audio-suite-base-h.md#oh_environmenttype)* environmentType | Pointer to the configuration parameters of the environment effect node.|
+| [OH_EnvironmentType](capi-native-audio-suite-base-h.md#oh_environmenttype)* environmentType | Configuration parameters of the environment effect node.|
 
 **Returns**
 
@@ -851,7 +851,7 @@ Obtains the configuration parameters of the voice beautifier effect node.
 | Name| Description|
 | -- | -- |
 | [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Audio creation node handle, which is obtained by calling [OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode).|
-| [OH_VoiceBeautifierType](capi-native-audio-suite-base-h.md#oh_voicebeautifiertype)* voiceBeautifierType | Pointer to the configuration parameters of the voice beautifier effect node.|
+| [OH_VoiceBeautifierType](capi-native-audio-suite-base-h.md#oh_voicebeautifiertype)* voiceBeautifierType | Configuration parameters of the voice beautifier effect node.|
 
 **Returns**
 
