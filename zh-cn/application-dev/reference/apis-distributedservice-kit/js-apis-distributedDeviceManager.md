@@ -31,7 +31,7 @@ createDeviceManager(bundleName: string): DeviceManager
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -77,7 +77,7 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -117,14 +117,14 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
-| 名称                     | 类型                        | 必填   | 说明       |
-| ---------------------- | ------------------------- | ---- | -------- |
-| deviceId               | string                    | 是    | 设备标识符。实际值为udid-hash与appid和盐值基于sha256方式进行混淆后的值。|
-| deviceName             | string                    | 是    | 设备名称。    |
-| deviceType             | string                    | 是    | [设备类型](#getdevicetype)。    |
-| networkId              | string                    | 否    | 设备网络标识。  |
+| 名称                     | 类型              | 只读       | 可选   | 说明       |
+| ---------------------- | ------------------| --------- | ---- | -------- |
+| deviceId               | string            | 否        | 否    | 设备标识符。实际值为udid-hash与appid和盐值基于sha256方式进行混淆后的值。|
+| deviceName             | string            | 否        | 否    | 设备名称。    |
+| deviceType             | string            | 否        | 否    | [设备类型](#getdevicetype)。    |
+| networkId              | string            | 否        | 是    | 设备网络标识。  |
 
 ## DeviceStateChange
 
@@ -134,7 +134,7 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 值  | 说明              |
 | ----------- | ---- | --------------- |
@@ -142,7 +142,7 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 | AVAILABLE   | 1    | 设备可用状态，表示设备间信息已在分布式数据中同步完成，可以运行分布式业务。 |
 | UNAVAILABLE | 2    | 设备物理下线，此时状态未知。           |
 
-## DeviceStateChangeResult<sup>22+</sup>
+## DeviceStateChangeResult<sup>23+</sup>
 
 设备状态改变结果信息。
 
@@ -150,14 +150,14 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| action | [DeviceStateChange](#devicestatechange) | 是 | 设备状态信息。 |
-| device | [DeviceBasicInfo](#devicebasicinfo) | 是 | 分布式设备基本信息。 |
+| 名称 | 类型 | 只读       | 可选  | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| action | [DeviceStateChange](#devicestatechange) | 否 | 否 | 设备状态信息。 |
+| device | [DeviceBasicInfo](#devicebasicinfo) | 否 | 否| 分布式设备基本信息。 |
 
-## DeviceNameChangeResult<sup>22+</sup>
+## DeviceNameChangeResult<sup>23+</sup>
 
 设备名字改变结果信息。
 
@@ -165,13 +165,13 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **系统能力：**： SystemCapability.DistributedHardware.DeviceManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| deviceName | string | 是 | 设备名字。 |
+| 名称 | 类型 | 只读       | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| deviceName | string | 否 | 否 | 设备名字。 |
 
-## DiscoveryFailureResult<sup>22+</sup>
+## DiscoveryFailureResult<sup>23+</sup>
 
 设备发现失败原因。
 
@@ -179,13 +179,13 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| reason | int | 是 | 失败错误号。 |
+| 名称 | 类型 | 只读   | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| reason | int | 否 | 否 | 失败错误号。 |
 
-## DiscoverySuccessResult<sup>22+</sup>
+## DiscoverySuccessResult<sup>23+</sup>
 
 设备发现成功，发现的设备信息。
 
@@ -193,13 +193,13 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| device | [DeviceBasicInfo](#devicebasicinfo) | 是 | 分布式设备基本信息。 |
+| 名称 | 类型 | 只读   | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | --------|
+| device | [DeviceBasicInfo](#devicebasicinfo) | 否 | 否 | 分布式设备基本信息。 |
 
-## ServiceDieData<sup>22+</sup>
+## ServiceDieData<sup>23+</sup>
 
 DeviceManager 服务进程退出信息。
 
@@ -207,12 +207,12 @@ DeviceManager 服务进程退出信息。
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 
-## BindTargetResult<sup>22+</sup>
+## BindTargetResult<sup>23+</sup>
 
 认证设备结果信息。
 
@@ -220,11 +220,11 @@ DeviceManager 服务进程退出信息。
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| deviceId | string | 是 | 设备Id。 |
+| 名称 | 类型 | 只读   | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| deviceId | string | 否 | 否 | 设备Id。 |
 
 ## DeviceManager
 
@@ -234,7 +234,7 @@ DeviceManager 服务进程退出信息。
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ### getAvailableDeviceListSync
 
@@ -248,7 +248,7 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -292,7 +292,7 @@ getAvailableDeviceList(callback:AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&gt
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -343,7 +343,7 @@ getAvailableDeviceList(): Promise&lt;Array&lt;DeviceBasicInfo&gt;&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -392,7 +392,7 @@ getLocalDeviceNetworkId(): string
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -437,7 +437,7 @@ getLocalDeviceName(): string
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -484,7 +484,7 @@ ArkTS-Sta: getLocalDeviceType(): int
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -492,7 +492,7 @@ ArkTS-Dyn类型说明：
 
   | 类型                      | 说明              |
   | ------------------------- | ---------------- |
-  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | <!--RP1-->返回本地设备类型。<!--RP1End--> <br /> **ArkTS-Dyn起始版本：** 10 <br /> **ArkTS-Sta起始版本：** 22 |
+  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | <!--RP1-->返回本地设备类型。<!--RP1End--> <br /> **ArkTS-Dyn起始版本：** 10 <br /> **ArkTS-Sta起始版本：** 23 |
 
 **错误码：**
 
@@ -547,7 +547,7 @@ getLocalDeviceId(): string
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -592,7 +592,7 @@ getDeviceName(networkId: string): string
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -648,7 +648,7 @@ ArkTS-Sta: getDeviceType(networkId: string): int
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -660,7 +660,7 @@ ArkTS-Sta: getDeviceType(networkId: string): int
 
   | 类型                      | 说明              |
   | ------------------------- | ---------------- |
-  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | <!--RP2-->返回指定设备类型。<!--RP2End--> <br /> **ArkTS-Dyn起始版本：** 10 <br /> **ArkTS-Sta起始版本：** 22 |
+  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | <!--RP2-->返回指定设备类型。<!--RP2End--> <br /> **ArkTS-Dyn起始版本：** 10 <br /> **ArkTS-Sta起始版本：** 23 |
 
 **错误码：**
 
@@ -710,9 +710,9 @@ ArkTS-Sta示例：
 
 ### startDiscovering
 
-ArkTS-Dyn：startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptions?: {[key:&nbsp;string]:&nbsp;Object;} ): void
+ArkTS-Dyn: startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptions?: {[key:&nbsp;string]:&nbsp;Object;} ): void
 
-ArkTS-Sta：startDiscovering(discoverParam: Record&lt;string, int | string&gt;, filterOptions?: Record&lt;string, int | string&gt;): void;
+ArkTS-Sta: startDiscovering(discoverParam: Record&lt;string, int | string&gt;, filterOptions?: Record&lt;string, int | string&gt;): void;
 
 发现周边设备。发现状态持续两分钟，超过两分钟，会停止发现，最大发现数量99个。wifi场景要求同局域网。
 
@@ -722,7 +722,7 @@ ArkTS-Sta：startDiscovering(discoverParam: Record&lt;string, int | string&gt;, 
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -815,7 +815,7 @@ stopDiscovering(): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -855,7 +855,7 @@ ArkTS-Sta: bindTarget(deviceId: string, bindParam: Record&lt;string, int | strin
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -871,7 +871,7 @@ ArkTS-Sta参数：
   | ---------- | --------------------------------------------------- | ----- | ------------ |
   | deviceId   | string                                              | 是    | 设备标识。长度范围1~255字符。   |
   | bindParam  | Record&lt;string, int &#124; string&gt;                             | 是    | 认证参数。由开发者自行决定传入的键值对。默认会携带以下key值：<br /> bindType 此值是绑定的类型，必填。<br /> - 1：PIN码。<br /> targetPkgName 绑定目标的包名。<br /> appName 尝试绑定目标的应用程序名称。<br /> appOperation 应用程序要绑定目标的原因。<br /> customDescription 操作的详细说明。   |
-  | callback   | Callback&lt;[BindTargetResult](#BindTargetResult22)&gt; | 是    | 认证结果回调。 |
+  | callback   | Callback&lt;[BindTargetResult](#BindTargetResult23)&gt; | 是    | 认证结果回调。 |
 
 **错误码：**
 
@@ -880,7 +880,7 @@ ArkTS-Sta参数：
 | 错误码ID | 错误信息                                                         |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified deviceId is greater than 255.  |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified deviceId is greater than 255.  <br /> **ArkTS-Dyn起始版本：** 10|
 | 11600101 | Failed to execute the function.                                 |
 | 11600103 | Authentication unavailable.                                     |
 
@@ -962,7 +962,7 @@ unbindTarget(deviceId: string): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1004,7 +1004,7 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [onDeviceStateChange](#ondevicestatechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是 [onDeviceStateChange](#ondevicestatechange23)。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1055,7 +1055,7 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
   }
   ```
 
-### onDeviceStateChange<sup>22+</sup>
+### onDeviceStateChange<sup>23+</sup>
 
 onDeviceStateChange(callback: Callback&lt;DeviceStateChangeResult&gt;): void
 
@@ -1069,13 +1069,13 @@ onDeviceStateChange(callback: Callback&lt;DeviceStateChangeResult&gt;): void
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
   | 参数名       | 类型                                     | 必填   | 说明                             |
   | -------- | ---------------------------------------- | ---- | ------------------------------ |
-  | callback | Callback&lt;[DeviceStateChangeResult](#DeviceStateChangeResult22)&gt; | 是    | 指示要注册的设备状态回调，返回设备状态和设备信息。      |
+  | callback | Callback&lt;[DeviceStateChangeResult](#DeviceStateChangeResult23)&gt; | 是    | 指示要注册的设备状态回调，返回设备状态和设备信息。      |
 
 **错误码：**
 
@@ -1110,7 +1110,7 @@ off(type: 'deviceStateChange', callback?: Callback&lt;{ action: DeviceStateChang
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [offDeviceStateChange](#offdevicestatechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是 [offDeviceStateChange](#offdevicestatechange23)。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1161,7 +1161,7 @@ off(type: 'deviceStateChange', callback?: Callback&lt;{ action: DeviceStateChang
   }
   ```
 
-### offDeviceStateChange<sup>22+</sup>
+### offDeviceStateChange<sup>23+</sup>
 
 offDeviceStateChange(callback?: Callback&lt;DeviceStateChangeResult&gt;): void
 
@@ -1175,13 +1175,13 @@ offDeviceStateChange(callback?: Callback&lt;DeviceStateChangeResult&gt;): void
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
   | 参数名       | 类型                                     | 必填   | 说明                          |
   | -------- | ---------------------------------------- | ---- | ---- |
-  | callback | Callback&lt;[DeviceStateChangeResult](#DeviceStateChangeResult22)&gt; | 否    | 指示要取消注册的设备状态回调，返回设备状态和设备信息。 |
+  | callback | Callback&lt;[DeviceStateChangeResult](#DeviceStateChangeResult23)&gt; | 否    | 指示要取消注册的设备状态回调，返回设备状态和设备信息。 |
 
 **错误码：**
 
@@ -1216,7 +1216,7 @@ on(type: 'discoverSuccess', callback: Callback&lt;{ device: DeviceBasicInfo; }&g
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [onDiscoverSuccess](#ondiscoversuccess22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是 [onDiscoverSuccess](#ondiscoversuccess23)。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1266,7 +1266,7 @@ on(type: 'discoverSuccess', callback: Callback&lt;{ device: DeviceBasicInfo; }&g
   }
   ```
 
-### onDiscoverSuccess<sup>22+</sup>
+### onDiscoverSuccess<sup>23+</sup>
 
 onDiscoverSuccess(callback: Callback&lt;DiscoverySuccessResult&gt;): void
 
@@ -1280,13 +1280,13 @@ onDiscoverSuccess(callback: Callback&lt;DiscoverySuccessResult&gt;): void
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
   | 参数名       | 类型                                     | 必填   | 说明                         |
   | -------- | ---------------------------------------- | ---- | -------------------------- |
-  | callback | Callback&lt;[DiscoverySuccessResult](#DiscoverySuccessResult22)&gt; | 是    | 注册设备发现的回调方法。               |
+  | callback | Callback&lt;[DiscoverySuccessResult](#DiscoverySuccessResult23)&gt; | 是    | 注册设备发现的回调方法。               |
 
 **错误码：**
 
@@ -1321,7 +1321,7 @@ off(type: 'discoverSuccess', callback?: Callback&lt;{ device: DeviceBasicInfo; }
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [offDiscoverSuccess](#offdiscoversuccess22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是 [offDiscoverSuccess](#offdiscoversuccess23)。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1371,7 +1371,7 @@ off(type: 'discoverSuccess', callback?: Callback&lt;{ device: DeviceBasicInfo; }
   }
   ```
 
-### offDiscoverSuccess<sup>22+</sup>
+### offDiscoverSuccess<sup>23+</sup>
 
 offDiscoverSuccess(callback?: Callback&lt;DiscoverySuccessResult&gt;): void
 
@@ -1385,13 +1385,13 @@ offDiscoverSuccess(callback?: Callback&lt;DiscoverySuccessResult&gt;): void
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
   | 参数名       | 类型                                     | 必填   | 说明                             |
   | -------- | ---------------------------------------- | ---- | ------------------------------ |
-  | callback | Callback&lt;[DiscoverySuccessResult](#discoverysuccessresult)&gt; | 是    | 指示要取消注册的设备发现回调，返回设备状态和设备信息。              |
+  | callback | Callback&lt;[DiscoverySuccessResult](#discoverysuccessresult)&gt; | 否    | 指示要取消注册的设备发现回调，返回设备状态和设备信息。              |
 
 **错误码：**
 
@@ -1426,7 +1426,7 @@ on(type: 'deviceNameChange', callback: Callback&lt;{ deviceName: string; }&gt;):
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [onDeviceNameChange](#ondevicenamechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是 [onDeviceNameChange](#ondevicenamechange23)。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1471,7 +1471,7 @@ on(type: 'deviceNameChange', callback: Callback&lt;{ deviceName: string; }&gt;):
   }
   ```
 
-### onDeviceNameChange<sup>22+</sup>
+### onDeviceNameChange<sup>23+</sup>
 
 onDeviceNameChange(callback: Callback&lt;DeviceNameChangeResult&gt;): void
 
@@ -1485,13 +1485,13 @@ onDeviceNameChange(callback: Callback&lt;DeviceNameChangeResult&gt;): void
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
   | 参数名       | 类型                                     | 必填   | 说明                             |
   | -------- | ---------------------------------------- | ---- | ------------------------------ |
-  | callback | Callback&lt;[DeviceNameChangeResult](#DeviceNameChangeResult22)&gt; | 否    | 注册设备名称改变的回调方法。                 |
+  | callback | Callback&lt;[DeviceNameChangeResult](#DeviceNameChangeResult23)&gt; | 是    | 注册设备名称改变的回调方法。                 |
 
 **错误码：**
 
@@ -1526,7 +1526,7 @@ off(type: 'deviceNameChange', callback?: Callback&lt;{ deviceName: string; }&gt;
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [offDeviceNameChange](#offdevicenamechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是 [offDeviceNameChange](#offdevicenamechange23)。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1571,7 +1571,7 @@ off(type: 'deviceNameChange', callback?: Callback&lt;{ deviceName: string; }&gt;
   }
   ```
 
-### offDeviceNameChange<sup>22+</sup>
+### offDeviceNameChange<sup>23+</sup>
 
 offDeviceNameChange(callback?: Callback&lt;DeviceNameChangeResult&gt;): void
 
@@ -1585,13 +1585,13 @@ offDeviceNameChange(callback?: Callback&lt;DeviceNameChangeResult&gt;): void
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
   | 参数名       | 类型                                     | 必填   | 说明                             |
   | -------- | ---------------------------------------- | ---- | ------------------------------ |
-  | callback | Callback&lt;[DeviceNameChangeResult](#DeviceNameChangeResult22)&gt; | 是    | 指示要取消注册设备名称改变的回调方法。                 |
+  | callback | Callback&lt;[DeviceNameChangeResult](#DeviceNameChangeResult23)&gt; | 否    | 指示要取消注册设备名称改变的回调方法。                 |
 
 **错误码：**
 
@@ -1626,7 +1626,7 @@ on(type: 'discoverFailure', callback: Callback&lt;{ reason: number; }&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [onDiscoverFailure](#ondiscoverfailure22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是 [onDiscoverFailure](#ondiscoverfailure23)。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1671,7 +1671,7 @@ on(type: 'discoverFailure', callback: Callback&lt;{ reason: number; }&gt;): void
   }
   ```
 
-### onDiscoverFailure<sup>22+</sup>
+### onDiscoverFailure<sup>23+</sup>
 
 onDiscoverFailure(callback: Callback&lt;DiscoveryFailureResult&gt;): void
 
@@ -1685,13 +1685,13 @@ onDiscoverFailure(callback: Callback&lt;DiscoveryFailureResult&gt;): void
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
   | 参数名       | 类型                                     | 必填   | 说明                |
   | -------- | ---------------------------------------- | ---- | ----------------- |
-  | callback | Callback&lt;[DiscoveryFailureResult](#DiscoveryFailureResult22)&gt; | 否    | 注册设备发现失败的回调方法。 |
+  | callback | Callback&lt;[DiscoveryFailureResult](#DiscoveryFailureResult23)&gt; | 是    | 注册设备发现失败的回调方法。 |
 
 **错误码：**
 
@@ -1726,7 +1726,7 @@ off(type: 'discoverFailure', callback?: Callback&lt;{ reason: number; }&gt;): vo
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [offDiscoverFailure](#offdiscoverfailure22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是 [offDiscoverFailure](#offdiscoverfailure23)。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1771,7 +1771,7 @@ off(type: 'discoverFailure', callback?: Callback&lt;{ reason: number; }&gt;): vo
   }
   ```
 
-### offDiscoverFailure<sup>22+</sup>
+### offDiscoverFailure<sup>23+</sup>
 
 offDiscoverFailure(callback?: Callback&lt;DiscoveryFailureResult&gt;): void
 
@@ -1785,13 +1785,13 @@ offDiscoverFailure(callback?: Callback&lt;DiscoveryFailureResult&gt;): void
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
   | 参数名       | 类型                    | 必填   | 说明                                       |
   | -------- | ----------------------- | ---- | ---------------------------------------- |
-  | callback | Callback&lt;[DiscoveryFailureResult](#DiscoveryFailureResult22)&gt; | 否    | 指示要取消注册的设备发现失败回调。                       |
+  | callback | Callback&lt;[DiscoveryFailureResult](#DiscoveryFailureResult23)&gt; | 否    | 指示要取消注册的设备发现失败回调。                       |
 
 **错误码：**
 
@@ -1826,7 +1826,7 @@ on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [onServiceDie](#onservicedie22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是 [onServiceDie](#onservicedie23)。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1867,9 +1867,9 @@ on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
   }
   ```
 
-### onServiceDie<sup>22+</sup>
+### onServiceDie<sup>23+</sup>
 
-onServiceDie(callback?: Callback&lt;ServiceDieData&gt;): void
+onServiceDie(callback: Callback&lt;ServiceDieData&gt;): void
 
 注册设备管理服务死亡回调，以便在服务死亡时通知应用程序。使用callback异步回调。
 
@@ -1881,13 +1881,13 @@ onServiceDie(callback?: Callback&lt;ServiceDieData&gt;): void
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
   | 参数名       | 类型                    | 必填   | 说明                                       |
   | -------- | ----------------------- | ---- | ---------------------------------------- |
-  | callback | Callback&lt;[ServiceDieData](#ServiceDieData22)&gt; | 否    | 注册serviceDie的回调方法。                       |
+  | callback | Callback&lt;[ServiceDieData](#ServiceDieData23)&gt; | 是    | 注册serviceDie的回调方法。                       |
 
 **错误码：**
 
@@ -1922,7 +1922,7 @@ off(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [offServiceDie](#offservicedie22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是 [offServiceDie](#offservicedie23)。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1963,7 +1963,7 @@ off(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
   }
   ```
 
-### offServiceDie<sup>22+</sup>
+### offServiceDie<sup>23+</sup>
 
 offServiceDie(callback?: Callback&lt;ServiceDieData&gt;): void
 
@@ -1977,13 +1977,13 @@ offServiceDie(callback?: Callback&lt;ServiceDieData&gt;): void
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
   | 参数名       | 类型                    | 必填   | 说明                                       |
   | -------- | ----------------------- | ---- | ---------------------------------------- |
-  | callback | Callback&lt;[ServiceDieData](#ServiceDieData22)&gt; | 否    | 取消注册serviceDie的回调方法。                     |
+  | callback | Callback&lt;[ServiceDieData](#ServiceDieData23)&gt; | 否    | 取消注册serviceDie的回调方法。                     |
 
 **错误码：**
 
