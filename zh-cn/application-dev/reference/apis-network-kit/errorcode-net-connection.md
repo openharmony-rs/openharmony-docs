@@ -160,11 +160,11 @@ The input network interface is incorrect.
 
 **可能原因**
 
-接口调用传入的网卡名不是以太网eth0。
+接口调用传入的网卡名不是eth0等以太网网卡名。
 
 **处理步骤**
 
-确保传入的网卡名为以太网eth0。
+确保传入的网卡名为eth0等以太网网卡名。
 
 ## 2100401 未找到vlan上配置的ip地址
 
@@ -174,12 +174,12 @@ The input ip address not found.
 
 **错误描述**
 
-未找到传入的ip地址。
+未找到传入的IP地址。
 
 **可能原因**
 
-未在vlan上找到传入的ip地址。
+未在VLAN上找到传入的IP地址。
 
 **处理步骤**
 
-确保传入的ip地址已配置在vlan上。
+确保传入的IP地址已配置在VLAN上。
