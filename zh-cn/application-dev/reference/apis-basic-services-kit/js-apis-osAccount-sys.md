@@ -47,7 +47,7 @@ ArkTS-Sta: activateOsAccount(localId: int, callback: AsyncCallback&lt;void&gt;):
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -134,7 +134,7 @@ ArkTS-Sta: activateOsAccount(localId: int): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -223,7 +223,7 @@ ArkTS-Sta: deactivateOsAccount(localId: int): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -310,7 +310,7 @@ ArkTS-Sta: isOsAccountActivated(localId: int): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -395,7 +395,7 @@ ArkTS-Sta: isOsAccountConstraintEnabled(localId: int, constraint: string): Promi
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -483,7 +483,7 @@ ArkTS-Sta: isOsAccountUnlocked(localId: int): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -566,7 +566,7 @@ ArkTS-Sta: removeOsAccount(localId: int, callback: AsyncCallback&lt;void&gt;): v
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -660,7 +660,7 @@ ArkTS-Sta: removeOsAccount(localId: int): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -862,7 +862,7 @@ ArkTS-Sta: setOsAccountConstraints(localId: int, constraints: Array&lt;string&gt
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -951,7 +951,7 @@ ArkTS-Sta: setOsAccountConstraints(localId: int, constraints: Array&lt;string&gt
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1040,7 +1040,7 @@ ArkTS-Sta: setOsAccountName(localId: int, localName: string, callback: AsyncCall
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1128,7 +1128,7 @@ ArkTS-Sta: setOsAccountName(localId: int, localName: string): Promise&lt;void&gt
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1310,7 +1310,7 @@ ArkTS-Sta: queryMaxOsAccountNumber(callback: AsyncCallback&lt;int&gt;): void
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1384,7 +1384,7 @@ ArkTS-Sta: queryMaxOsAccountNumber(): Promise&lt;int&gt;
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1454,7 +1454,7 @@ ArkTS-Sta: queryMaxLoggedInOsAccountNumber(): Promise&lt;int&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1526,7 +1526,7 @@ ArkTS-Sta: getEnabledOsAccountConstraints(localId: int): Promise&lt;Array&lt;str
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1609,7 +1609,7 @@ queryAllCreatedOsAccounts(callback: AsyncCallback&lt;Array&lt;OsAccountInfo&gt;&
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1684,7 +1684,7 @@ queryAllCreatedOsAccounts(): Promise&lt;Array&lt;OsAccountInfo&gt;&gt;
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1755,7 +1755,7 @@ createOsAccount(localName: string, type: OsAccountType, callback: AsyncCallback&
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1843,9 +1843,9 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 
 | 参数名    | 类型                            | 必填 | 说明                   |
 | --------- | ------------------------------- | ---- | ---------------------- |
-| localName | string                          | 是   | 创建的系统账号的名称。<br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 22 |
-| type      | [OsAccountType](js-apis-osAccount.md#osaccounttype) | 是   | 创建的系统账号的类型。<br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 22 |
-| options<sup>12+</sup>      | [CreateOsAccountOptions](#createosaccountoptions12) | 否   | 创建系统账号的选项，默认为空。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 22|
+| localName | string                          | 是   | 创建的系统账号的名称。<br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
+| type      | [OsAccountType](js-apis-osAccount.md#osaccounttype) | 是   | 创建的系统账号的类型。<br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
+| options<sup>12+</sup>      | [CreateOsAccountOptions](#createosaccountoptions12) | 否   | 创建系统账号的选项，默认为空。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
 
 **返回值：**
 
@@ -1936,7 +1936,7 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, cal
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2026,15 +2026,15 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, opt
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型                                      | 必填 | 说明                 |
 | ---------- | ---------------------------------------- | ---- | -------------------- |
-| type       | [OsAccountType](js-apis-osAccount.md#osaccounttype)          | 是   | 创建的系统账号的类型。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 22 |
-| domainInfo | [DomainAccountInfo](#domainaccountinfo8) | 是   | 域账号信息。  <br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 22        |
-| options<sup>12+</sup>      | [CreateOsAccountForDomainOptions](#createosaccountfordomainoptions12) | 否   | 创建账号的可选参数，默认为空。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 22|
+| type       | [OsAccountType](js-apis-osAccount.md#osaccounttype)          | 是   | 创建的系统账号的类型。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
+| domainInfo | [DomainAccountInfo](#domainaccountinfo8) | 是   | 域账号信息。  <br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23        |
+| options<sup>12+</sup>      | [CreateOsAccountForDomainOptions](#createosaccountfordomainoptions12) | 否   | 创建账号的可选参数，默认为空。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
 
 **返回值：**
 
@@ -2126,7 +2126,7 @@ queryOsAccount(): Promise&lt;OsAccountInfo&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2199,7 +2199,7 @@ ArkTS-Sta: queryOsAccountById(localId: int, callback: AsyncCallback&lt;OsAccount
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2283,7 +2283,7 @@ ArkTS-Sta: queryOsAccountById(localId: int): Promise&lt;OsAccountInfo&gt;
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2369,7 +2369,7 @@ ArkTS-Sta: getOsAccountProfilePhoto(localId: int, callback: AsyncCallback&lt;str
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2453,7 +2453,7 @@ ArkTS-Sta: getOsAccountProfilePhoto(localId: int): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2539,7 +2539,7 @@ ArkTS-Sta: setOsAccountProfilePhoto(localId: int, photo: string, callback: Async
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2633,7 +2633,7 @@ ArkTS-Sta: setOsAccountProfilePhoto(localId: int, photo: string): Promise&lt;voi
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3158,7 +3158,7 @@ ArkTS-Sta: getBundleIdForUid(uid: int, callback: AsyncCallback&lt;int&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3236,7 +3236,7 @@ ArkTS-Sta: getBundleIdForUid(uid: int): Promise&lt;int&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3316,7 +3316,7 @@ ArkTS-Sta: getBundleIdForUidSync(uid: int): int
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3390,7 +3390,7 @@ onActivate(name: string, callback: Callback&lt;int&gt;): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3442,7 +3442,7 @@ onActivating(name: string, callback: Callback&lt;int&gt;): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3494,7 +3494,7 @@ offActivate(name: string, callback?: Callback&lt;int&gt;): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3547,7 +3547,7 @@ offActivating(name: string, callback?: Callback&lt;int&gt;): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3797,7 +3797,7 @@ isMainOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3872,7 +3872,7 @@ isMainOsAccount(): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3946,7 +3946,7 @@ ArkTS-Sta: getOsAccountConstraintSourceTypes(localId: int, constraint: string, c
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4029,7 +4029,7 @@ ArkTS-Sta: getOsAccountConstraintSourceTypes(localId: int, constraint: string): 
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4114,7 +4114,7 @@ ArkTS-Sta: getOsAccountType(localId: int): Promise&lt;OsAccountType&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4498,7 +4498,7 @@ constructor()
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -4527,7 +4527,7 @@ ArkTS-Sta: getVersion(): int
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -4581,7 +4581,7 @@ ArkTS-Sta: getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4658,7 +4658,7 @@ getProperty(request: GetPropertyRequest, callback: AsyncCallback&lt;ExecutorProp
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4754,7 +4754,7 @@ getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4852,7 +4852,7 @@ getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyTy
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4974,7 +4974,7 @@ setProperty(request: SetPropertyRequest, callback: AsyncCallback&lt;void&gt;): v
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5061,7 +5061,7 @@ setProperty(request: SetPropertyRequest): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5150,7 +5150,7 @@ prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5245,7 +5245,7 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5351,7 +5351,7 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5467,7 +5467,7 @@ ArkTS-Sta: authUser(userId: int, challenge: Uint8Array, authType: AuthType, auth
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5577,7 +5577,7 @@ cancelAuth(contextID: Uint8Array): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5661,7 +5661,7 @@ constructor()
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -5690,7 +5690,7 @@ registerInputer(inputer: IInputer): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5744,7 +5744,7 @@ unregisterInputer(): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -5779,7 +5779,7 @@ static registerInputer(authType: AuthType, inputer: IInputer): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5835,7 +5835,7 @@ static unregisterInputer(authType: AuthType): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7110,7 +7110,7 @@ static registerPlugin(plugin: DomainPlugin): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7209,7 +7209,7 @@ static unregisterPlugin(): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -7258,7 +7258,7 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUs
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7451,7 +7451,7 @@ authWithPopup(callback: IUserAuthCallback): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7531,7 +7531,7 @@ ArkTS-Sta: authWithPopup(localId: int, callback: IUserAuthCallback): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7609,7 +7609,7 @@ hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;bool
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7698,7 +7698,7 @@ hasAccount(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7789,7 +7789,7 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, call
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7878,7 +7878,7 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array): Pro
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7969,7 +7969,7 @@ getAccountInfo(options: GetDomainAccountInfoOptions, callback: AsyncCallback&lt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8060,7 +8060,7 @@ getAccountInfo(options: GetDomainAccountInfoOptions): Promise&lt;DomainAccountIn
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8153,7 +8153,7 @@ ArkTS-Sta: getAccessToken(businessParams: Record<string, RecordData>, callback: 
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8245,7 +8245,7 @@ ArkTS-Sta: getAccessToken(businessParams: Record&lt;string, RecordData&gt;): Pro
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8339,7 +8339,7 @@ isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise&lt;boolea
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8425,7 +8425,7 @@ constructor()
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -8454,7 +8454,7 @@ openSession(callback: AsyncCallback&lt;Uint8Array&gt;): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8531,13 +8531,13 @@ ArkTS-Sta: openSession(accountId?: int): Promise&lt;Uint8Array&gt;
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型    | 必填 | 说明        |
 | --------- | ------- | ---- | ----------- |
-| accountId<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否   | 系统账号标识，默认为空。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 22 |
+| accountId<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否   | 系统账号标识，默认为空。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
 
 **返回值：**
 
@@ -8613,7 +8613,7 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8734,7 +8734,7 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8880,13 +8880,13 @@ ArkTS-Sta: closeSession(accountId?: int): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型    | 必填 | 说明        |
 | --------- | ------- | ---- | ----------- |
-| accountId<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否   | 系统账号标识，默认为空。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 22 |
+| accountId<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否   | 系统账号标识，默认为空。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
 
 **错误码：**
 
@@ -8922,7 +8922,7 @@ cancel(challenge: Uint8Array): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8981,7 +8981,7 @@ delUser(token: Uint8Array, callback: IIdmCallback): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9052,7 +9052,7 @@ delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): vo
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9128,7 +9128,7 @@ getAuthInfo(callback: AsyncCallback&lt;Array&lt;EnrolledCredInfo&gt;&gt;): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9203,7 +9203,7 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback&lt;Array&lt;EnrolledCred
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9282,7 +9282,7 @@ getAuthInfo(authType?: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9361,7 +9361,7 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise&lt;Array&lt;EnrolledCredInfo&
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9451,7 +9451,7 @@ ArkTS-Sta: getEnrolledId(authType: AuthType, accountId?: int): Promise&lt;Uint8A
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9669,7 +9669,7 @@ onSetData: (authSubType: AuthSubType, data: Uint8Array) => void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9723,7 +9723,7 @@ onGetData: (authSubType: AuthSubType, callback: IInputData, options: GetInputDat
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9798,7 +9798,7 @@ ArkTS-Sta: onResult: (result: int, extraInfo: AuthResult) => void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9843,7 +9843,7 @@ ArkTS-Sta: onAcquireInfo?: (module: int, acquire: int, extraInfo: Uint8Array) =>
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9905,7 +9905,7 @@ ArkTS-Sta: onResult: (result: int, extraInfo: RequestResult) => void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9950,7 +9950,7 @@ ArkTS-Sta: onAcquireInfo?: (module: int, acquire: int, extraInfo: Uint8Array) =>
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -10003,9 +10003,9 @@ ArkTS-Sta示例：
 
 | 名称    | 类型                                                         | 只读  | 可选 | 说明                   |
 | -------- | ------------------------------------------------------------ | ----- | ----- | ----------------------- |
-| authType | [AuthType](#authtype8)                            | 否 | 否  | 身份验证凭据类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22        |
-| keys     | Array&lt;[GetPropertyType](#getpropertytype8)&gt; | 否 | 否  | 指示要获取的属性类型数组。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22 |
-| accountId<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是  | 系统账号标识，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| authType | [AuthType](#authtype8)                            | 否 | 否  | 身份验证凭据类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23        |
+| keys     | Array&lt;[GetPropertyType](#getpropertytype8)&gt; | 否 | 否  | 指示要获取的属性类型数组。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| accountId<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是  | 系统账号标识，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## SetPropertyRequest<sup>8+</sup>
 
@@ -10017,7 +10017,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型                                             | 只读  | 可选 | 说明                 |
 | -------- | ------------------------------------------------ | ----- | ----- | -------------------- |
@@ -10035,14 +10035,14 @@ ArkTS-Sta示例：
 
 | 名称         | 类型                         |  只读 | 可选 | 说明              |
 | ------------ | ---------------------------- | ----- | -----|----------------- |
-| result       | ArkTS-Dyn: number<br>ArkTS-Sta: int                       | 否    | 否   | 指示结果。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22         |
-| authSubType  | [AuthSubType](#authsubtype8) | 否    | 否   | 指示认证凭据子类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22|
-| remainTimes  | ArkTS-Dyn: number<br>ArkTS-Sta: int                       | 否    | 是   | 指示剩余次数，默认为-1。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22     |
-| freezingTime | ArkTS-Dyn: number<br>ArkTS-Sta: int                       | 否    | 是   | 指示冻结时间，默认为-1。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22     |
-| enrollmentProgress<sup>10+</sup> | string   | 否    | 是   | 指示录入进度，默认为空。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| sensorInfo<sup>10+</sup> | string           | 否    | 是   | 指示传感器信息，默认为空。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| nextPhaseFreezingTime<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 是   | 指示下次冻结时间，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| credentialLength<sup>20+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 是   | 指示凭据长度，默认为undefined。查询生物信息等无定长属性的凭据时返回undefined。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 22 |
+| result       | ArkTS-Dyn: number<br>ArkTS-Sta: int                       | 否    | 否   | 指示结果。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23         |
+| authSubType  | [AuthSubType](#authsubtype8) | 否    | 否   | 指示认证凭据子类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23|
+| remainTimes  | ArkTS-Dyn: number<br>ArkTS-Sta: int                       | 否    | 是   | 指示剩余次数，默认为-1。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
+| freezingTime | ArkTS-Dyn: number<br>ArkTS-Sta: int                       | 否    | 是   | 指示冻结时间，默认为-1。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
+| enrollmentProgress<sup>10+</sup> | string   | 否    | 是   | 指示录入进度，默认为空。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| sensorInfo<sup>10+</sup> | string           | 否    | 是   | 指示传感器信息，默认为空。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| nextPhaseFreezingTime<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 是   | 指示下次冻结时间，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| credentialLength<sup>20+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 是   | 指示凭据长度，默认为undefined。查询生物信息等无定长属性的凭据时返回undefined。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## AuthResult<sup>8+</sup>
 
@@ -10056,13 +10056,13 @@ ArkTS-Sta示例：
 
 | 名称        | 类型        |  只读 | 可选 | 说明              |
 | ------------ | ----------- | ----- | ----- | ----------------- |
-| token        | Uint8Array  | 否    | 是   | 指示认证令牌，默认为空。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22      |
-| remainTimes  | ArkTS-Dyn: number<br>ArkTS-Sta: int      | 否    | 是   | 指示剩余次数，默认为空。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22      |
-| freezingTime | ArkTS-Dyn: number<br>ArkTS-Sta: int      | 否    | 是   | 指示冻结时间，默认为空。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22      |
-| nextPhaseFreezingTime<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 是   | 指示下次冻结时间，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| credentialId<sup>12+</sup> | Uint8Array  | 否    | 是   | 指示凭据ID，默认为空。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| accountId<sup>12+</sup>         | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 是   | 指示系统账号标识，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| pinValidityPeriod<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否    | 是   | 指示认证有效期，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| token        | Uint8Array  | 否    | 是   | 指示认证令牌，默认为空。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23      |
+| remainTimes  | ArkTS-Dyn: number<br>ArkTS-Sta: int      | 否    | 是   | 指示剩余次数，默认为空。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23      |
+| freezingTime | ArkTS-Dyn: number<br>ArkTS-Sta: int      | 否    | 是   | 指示冻结时间，默认为空。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23      |
+| nextPhaseFreezingTime<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 是   | 指示下次冻结时间，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| credentialId<sup>12+</sup> | Uint8Array  | 否    | 是   | 指示凭据ID，默认为空。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| accountId<sup>12+</sup>         | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 是   | 指示系统账号标识，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| pinValidityPeriod<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否    | 是   | 指示认证有效期，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## CredentialInfo<sup>8+</sup>
 
@@ -10075,10 +10075,10 @@ ArkTS-Sta示例：
 
 | 名称        | 类型                                     |  只读 | 可选 | 说明              |
 | ------------ | ---------------------------------------- | ----- | ----- | ----------------- |
-| credType     | [AuthType](#authtype8)       | 否    | 否   | 指示凭据类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22     |
-| credSubType  | [AuthSubType](#authsubtype8) | 否    | 否   | 指示凭据子类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22   |
-| token        | Uint8Array                           | 否    | 否   | 指示认证令牌。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22     |
-| accountId<sup>12+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 是   | 系统账号标识，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| credType     | [AuthType](#authtype8)       | 否    | 否   | 指示凭据类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
+| credSubType  | [AuthSubType](#authsubtype8) | 否    | 否   | 指示凭据子类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23   |
+| token        | Uint8Array                           | 否    | 否   | 指示认证令牌。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
+| accountId<sup>12+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 是   | 系统账号标识，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | additionalInfo<sup>23+</sup>    | string | 否    | 是   | 凭据的附加信息，默认为空字符串。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## RequestResult<sup>8+</sup>
@@ -10091,7 +10091,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型        |  只读 | 可选 | 说明              |
 | ------------ | ----------- | ----- | ----- | ----------------- |
@@ -10108,12 +10108,12 @@ ArkTS-Sta示例：
 
 | 名称        | 类型                                     |  只读 | 可选 | 说明              |
 | ------------ | ---------------------------------------- | ----- | ----- | ------------------- |
-| credentialId | Uint8Array                               | 否    | 否   | 指示凭据索引。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22       |
-| authType     | [AuthType](#authtype8)       | 否    | 否   | 指示认证凭据类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22   |
-| authSubType  | [AuthSubType](#authsubtype8) | 否    | 否   | 指示认证凭据子类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22 |
-| templateId   | Uint8Array                               | 否    | 否   | 指示凭据模板ID。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22     |
-| isAbandoned<sup>20+</sup>   | boolean                      | 否    | 是   | 指示凭据是否废弃。废弃后的凭据可能作为备份凭据保存一段时间。true表示已废弃，false表示未废弃。默认为undefined，表示是否废弃未定义。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 22   |
-| validityPeriod<sup>20+</sup>   | ArkTS-Dyn: number<br>ArkTS-Sta: long                    | 否    | 是   | 指示凭据有效期。默认为undefined，表示有效期未定义。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 22     |
+| credentialId | Uint8Array                               | 否    | 否   | 指示凭据索引。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23       |
+| authType     | [AuthType](#authtype8)       | 否    | 否   | 指示认证凭据类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23   |
+| authSubType  | [AuthSubType](#authsubtype8) | 否    | 否   | 指示认证凭据子类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| templateId   | Uint8Array                               | 否    | 否   | 指示凭据模板ID。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
+| isAbandoned<sup>20+</sup>   | boolean                      | 否    | 是   | 指示凭据是否废弃。废弃后的凭据可能作为备份凭据保存一段时间。true表示已废弃，false表示未废弃。默认为undefined，表示是否废弃未定义。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23   |
+| validityPeriod<sup>20+</sup>   | ArkTS-Dyn: number<br>ArkTS-Sta: long                    | 否    | 是   | 指示凭据有效期。默认为undefined，表示有效期未定义。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23     |
 
 ## GetPropertyType<sup>8+</sup>
 
@@ -10126,13 +10126,13 @@ ArkTS-Sta示例：
 
 | 名称           | 值 | 说明      |
 | ------------- | ------ | --------- |
-| AUTH_SUB_TYPE | 1      | 认证子类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22 |
-| REMAIN_TIMES  | 2      | 剩余次数。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22   |
-| FREEZING_TIME | 3      | 冻结时间。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22   |
-| ENROLLMENT_PROGRESS<sup>10+</sup> | 4      | 录入进度。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22   |
-| SENSOR_INFO<sup>10+</sup> | 5      | 传感器信息。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22   |
-| NEXT_PHASE_FREEZING_TIME<sup>12+</sup> | 6 | 下次冻结时间。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| CREDENTIAL_LENGTH<sup>20+</sup> | 7 | 凭据长度。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 22 |
+| AUTH_SUB_TYPE | 1      | 认证子类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| REMAIN_TIMES  | 2      | 剩余次数。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23   |
+| FREEZING_TIME | 3      | 冻结时间。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23   |
+| ENROLLMENT_PROGRESS<sup>10+</sup> | 4      | 录入进度。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23   |
+| SENSOR_INFO<sup>10+</sup> | 5      | 传感器信息。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23   |
+| NEXT_PHASE_FREEZING_TIME<sup>12+</sup> | 6 | 下次冻结时间。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| CREDENTIAL_LENGTH<sup>20+</sup> | 7 | 凭据长度。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## SetPropertyType<sup>8+</sup>
 
@@ -10144,7 +10144,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值 | 说明        |
 | -------------- | ----- | ----------- |
@@ -10160,13 +10160,13 @@ ArkTS-Sta示例：
 
 | 名称  | 值 | 说明             |
 | ----- | ----- | ---------------- |
-| PIN   | 1     | 表示PIN认证类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22 |
-| FACE  | 2     | 表示脸部认证类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22|
-| FINGERPRINT<sup>10+</sup>   | 4     | 表示指纹认证类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| RECOVERY_KEY<sup>12+</sup> | 8 | 表示键恢复类型。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22|
-| PRIVATE_PIN<sup>14+</sup> | 16 | 表示隐私PIN类型。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 22 |
+| PIN   | 1     | 表示PIN认证类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| FACE  | 2     | 表示脸部认证类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23|
+| FINGERPRINT<sup>10+</sup>   | 4     | 表示指纹认证类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| RECOVERY_KEY<sup>12+</sup> | 8 | 表示键恢复类型。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| PRIVATE_PIN<sup>14+</sup> | 16 | 表示隐私PIN类型。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
 | COMPANION_DEVICE<sup>23+</sup> | 64 | 表示伴随设备认证类型。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
-| DOMAIN<sup>9+</sup>  | 1024     | 表示域认证类型。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22|
+| DOMAIN<sup>9+</sup>  | 1024     | 表示域认证类型。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23|
 
 ## AuthSubType<sup>8+</sup>
 
@@ -10179,18 +10179,18 @@ ArkTS-Sta示例：
 
 | 名称       | 值 | 说明               |
 | ---------- | ----- | ------------------ |
-| PIN_SIX    | 10000 | 表示6位凭证。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22       |
-| PIN_NUMBER | 10001 | 表示自定义数字凭证。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22 |
-| PIN_MIXED  | 10002 | 表示自定义混合凭据。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22 |
-| PIN_FOUR<sup>12+</sup>   | 10003 | 表示4位凭证。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| PIN_PATTERN<sup>12+</sup>  | 10004 | 表示图案凭据。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| PIN_QUESTION<sup>14+</sup>  | 10005 | 表示密保问题凭据。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 22 |
-| FACE_2D    | 20000 | 表示2D 人脸凭证。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22   |
-| FACE_3D    | 20001 | 表示3D 人脸凭证。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22   |
-| FINGERPRINT_CAPACITIVE<sup>10+</sup>    | 30000 | 表示电容式指纹。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22  |
-| FINGERPRINT_OPTICAL<sup>10+</sup>    | 30001 | 表示光学指纹。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22   |
-| FINGERPRINT_ULTRASONIC<sup>10+</sup>    | 30002 | 表示超声波指纹。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22   |
-| DOMAIN_MIXED<sup>9+</sup>    | 10240001 | 表示域认证混合凭证。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22   |
+| PIN_SIX    | 10000 | 表示6位凭证。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23       |
+| PIN_NUMBER | 10001 | 表示自定义数字凭证。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| PIN_MIXED  | 10002 | 表示自定义混合凭据。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| PIN_FOUR<sup>12+</sup>   | 10003 | 表示4位凭证。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| PIN_PATTERN<sup>12+</sup>  | 10004 | 表示图案凭据。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| PIN_QUESTION<sup>14+</sup>  | 10005 | 表示密保问题凭据。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| FACE_2D    | 20000 | 表示2D 人脸凭证。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23   |
+| FACE_3D    | 20001 | 表示3D 人脸凭证。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23   |
+| FINGERPRINT_CAPACITIVE<sup>10+</sup>    | 30000 | 表示电容式指纹。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23  |
+| FINGERPRINT_OPTICAL<sup>10+</sup>    | 30001 | 表示光学指纹。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23   |
+| FINGERPRINT_ULTRASONIC<sup>10+</sup>    | 30002 | 表示超声波指纹。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23   |
+| DOMAIN_MIXED<sup>9+</sup>    | 10240001 | 表示域认证混合凭证。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23   |
 
 ## AuthTrustLevel<sup>8+</sup>
 
@@ -10202,7 +10202,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 值 | 说明        |
 | ---- | ------ | ----------- |
@@ -10221,7 +10221,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值 | 说明                     |
 | --------- | ------ | ------------------------ |
@@ -10237,7 +10237,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                    | 值 | 说明                                     |
 | ----------------------- | ----- | ---------------------------------------- |
@@ -10263,7 +10263,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                          | 值 | 说明                                     |
 | ----------------------------- | ----- | ---------------------------------------- |
@@ -10290,14 +10290,14 @@ ArkTS-Sta示例：
 
 | 名称                          | 值 | 说明                                            |
 | ----------------------------- | ----- | ----------------------------------------------- |
-| FINGERPRINT_TIP_GOOD          | 0     | 表示采集的图像良好。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22                             |
-| FINGERPRINT_TIP_IMAGER_DIRTY  | 1     | 表示由于传感器上可疑或检测到污垢，指纹图像噪声过大。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22 |
-| FINGERPRINT_TIP_INSUFFICIENT  | 2     | 表示由于检测到的情况，指纹图像噪声太大，无法处理。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22   |
-| FINGERPRINT_TIP_PARTIAL       | 3     | 表示仅检测到部分指纹图像。   <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22                      |
-| FINGERPRINT_TIP_TOO_FAST      | 4     | 表示指纹图像由于快速运动而不完整。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22                 |
-| FINGERPRINT_TIP_TOO_SLOW      | 5     | 表示由于缺少运动，指纹图像无法读取。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22                |
-| FINGERPRINT_TIP_FINGER_DOWN<sup>10+</sup>   | 6     | 表示手指落下。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22                  |
-| FINGERPRINT_TIP_FINGER_UP<sup>10+</sup>     | 7     | 表示手指抬起。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22               |
+| FINGERPRINT_TIP_GOOD          | 0     | 表示采集的图像良好。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23                             |
+| FINGERPRINT_TIP_IMAGER_DIRTY  | 1     | 表示由于传感器上可疑或检测到污垢，指纹图像噪声过大。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| FINGERPRINT_TIP_INSUFFICIENT  | 2     | 表示由于检测到的情况，指纹图像噪声太大，无法处理。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23   |
+| FINGERPRINT_TIP_PARTIAL       | 3     | 表示仅检测到部分指纹图像。   <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23                      |
+| FINGERPRINT_TIP_TOO_FAST      | 4     | 表示指纹图像由于快速运动而不完整。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23                 |
+| FINGERPRINT_TIP_TOO_SLOW      | 5     | 表示由于缺少运动，指纹图像无法读取。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23                |
+| FINGERPRINT_TIP_FINGER_DOWN<sup>10+</sup>   | 6     | 表示手指落下。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                  |
+| FINGERPRINT_TIP_FINGER_UP<sup>10+</sup>     | 7     | 表示手指抬起。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23               |
 
 ## OsAccountInfo
 
@@ -10307,13 +10307,13 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称      | 类型   | 只读  | 可选  | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| shortName<sup>12+</sup> | string | 否 | 是  | 系统账号的短名称。<br>**系统接口：** 此接口为系统接口，默认为空。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| isLoggedIn<sup>12+</sup> | boolean | 否 | 是  | 是否登录。true表示已登录；false表示未登录。<br>**系统接口：** 此接口为系统接口，默认为false。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| shortName<sup>12+</sup> | string | 否 | 是  | 系统账号的短名称。<br>**系统接口：** 此接口为系统接口，默认为空。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| isLoggedIn<sup>12+</sup> | boolean | 否 | 是  | 是否登录。true表示已登录；false表示未登录。<br>**系统接口：** 此接口为系统接口，默认为false。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## OsAccountType
 
@@ -10323,12 +10323,12 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称   | 值 | 说明         |
 | ------ | ------ | ----------- |
-| PRIVATE<sup>12+</sup> | 1024  | 隐私账号。隐私账号只能有一个。<br>**系统接口：** 此接口为系统接口。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22  |
+| PRIVATE<sup>12+</sup> | 1024  | 隐私账号。隐私账号只能有一个。<br>**系统接口：** 此接口为系统接口。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23  |
 
 ## DomainAccountInfo<sup>8+</sup>
 
@@ -10338,12 +10338,12 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型   | 只读  | 可选  | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| accountId<sup>10+</sup> | string | 否 | 是  | 域账号标识。<br>**系统接口：** 此接口为系统接口，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| isAuthenticated<sup>11+</sup>| boolean | 否 | 是  | 指示域账号是否已认证。true表示指定的域账号已认证；false表示指定的域账号未认证。<br>**系统接口：** 此接口为系统接口，默认为false。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22|
+| accountId<sup>10+</sup> | string | 否 | 是  | 域账号标识。<br>**系统接口：** 此接口为系统接口，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| isAuthenticated<sup>11+</sup>| boolean | 否 | 是  | 指示域账号是否已认证。true表示指定的域账号已认证；false表示指定的域账号未认证。<br>**系统接口：** 此接口为系统接口，默认为false。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23|
 
 ## ConstraintSourceTypeInfo<sup>9+</sup>
 
@@ -10355,7 +10355,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型   | 只读  | 可选  | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
@@ -10372,7 +10372,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 值 | 说明         |
 | ------ | ------ | ------------ |
@@ -10391,7 +10391,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型   | 只读  | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
@@ -10408,7 +10408,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型   | 只读  | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
@@ -10444,9 +10444,9 @@ ArkTS-Sta示例：
 
 | 名称      | 类型   | 只读  | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| accountName | string | 否 | 否  | 域账号名。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| domain      | string | 否 | 是  | 域名。默认为undefined。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22|
-| serverConfigId<sup>12+</sup>| string | 否 | 是  | 域账号所属服务器标识。默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22|
+| accountName | string | 否 | 否  | 域账号名。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| domain      | string | 否 | 是  | 域名。默认为undefined。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|
+| serverConfigId<sup>12+</sup>| string | 否 | 是  | 域账号所属服务器标识。默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 
 ## GetDomainAccountInfoPluginOptions<sup>10+</sup>
 
@@ -10458,7 +10458,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型   | 只读  | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
@@ -10474,7 +10474,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
@@ -10509,9 +10509,9 @@ ArkTS-Sta示例：
 
 | 名称      | 类型   | 只读  | 可选   | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| shortName | string | 否 | 否   | 表示账号短名称（用作个人文件夹目录）。 <br/>**约束：** <br>1. 不允许出现的字符：\< \> \| : " * ? / \\<br>2. 不允许独立出现的字符串：.或..<br>3. 长度不超过255个字符。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22|
-| disallowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用禁止名单，名单中的应用不可被安装在设备上，默认为空列表。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 22|
-| allowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用允许名单，仅名单中的应用可以被安装在设备上，默认为std::nullopt。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 22|
+| shortName | string | 否 | 否   | 表示账号短名称（用作个人文件夹目录）。 <br/>**约束：** <br>1. 不允许出现的字符：\< \> \| : " * ? / \\<br>2. 不允许独立出现的字符串：.或..<br>3. 长度不超过255个字符。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| disallowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用禁止名单，名单中的应用不可被安装在设备上，默认为空列表。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23|
+| allowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用允许名单，仅名单中的应用可以被安装在设备上，默认为std::nullopt。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23|
 | token<sup>24+</sup> | Uint8Array | 否   | 是   | 表示从认证管理接口获取的token，默认为空。<br/>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
 
 ## CreateOsAccountForDomainOptions<sup>12+</sup>
@@ -10524,7 +10524,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型   | 只读  | 可选   | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
@@ -10557,7 +10557,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型                    | 只读  | 可选   | 说明       |
 | --------- | ---------------------- | ---- | ---- | ---------- |
@@ -10575,10 +10575,10 @@ ArkTS-Sta示例：
 
 | 名称     | 值   | 说明       |
 | -------- | --- | ---------- |
-| UNLOCK   | 1   | 解锁意图。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| SILENT_AUTH<sup>14+</sup>  | 2   | 静默认证意图。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 22 |
-| QUESTION_AUTH<sup>14+</sup>   | 3   | 密保问题认证意图。 <br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 22|
-| ABANDONED_PIN_AUTH<sup>20+</sup>   | 4   | 废弃PIN码认证意图。用户修改锁屏密码后，旧的PIN码被废弃。废弃PIN存在期间，用户如果忘记密码可以通过废弃PIN认证通过后重置锁屏密码。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 22 |
+| UNLOCK   | 1   | 解锁意图。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| SILENT_AUTH<sup>14+</sup>  | 2   | 静默认证意图。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| QUESTION_AUTH<sup>14+</sup>   | 3   | 密保问题认证意图。 <br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23|
+| ABANDONED_PIN_AUTH<sup>20+</sup>   | 4   | 废弃PIN码认证意图。用户修改锁屏密码后，旧的PIN码被废弃。废弃PIN存在期间，用户如果忘记密码可以通过废弃PIN认证通过后重置锁屏密码。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## RemoteAuthOptions<sup>12+</sup>
 
@@ -10590,7 +10590,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 类型    | 只读  | 可选 | 说明       |
 | ------------------ | ------ | ---- | ---- | ---------- |
@@ -10608,7 +10608,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 类型    | 只读  | 可选 | 说明       |
 | ------------------ | ------ | ---- | ---- | ---------- |
@@ -10626,7 +10626,7 @@ ArkTS-Sta示例：
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 类型    | 只读  | 可选 | 说明       |
 | ------------------ | ------ | ---- | ---- | ---------- |

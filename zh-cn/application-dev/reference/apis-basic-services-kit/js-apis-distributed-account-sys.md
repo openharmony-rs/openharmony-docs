@@ -48,7 +48,7 @@ ArkTS-Sta: getOsAccountDistributedInfoByLocalId(localId: int, callback: AsyncCal
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -126,7 +126,7 @@ ArkTS-Sta: getOsAccountDistributedInfoByLocalId(localId: int): Promise&lt;Distri
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -206,7 +206,7 @@ ArkTS-Sta: setOsAccountDistributedInfoByLocalId(localId: int, distributedInfo: D
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -290,7 +290,7 @@ ArkTS-Sta: setOsAccountDistributedInfoByLocalId(localId: int, distributedInfo: D
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

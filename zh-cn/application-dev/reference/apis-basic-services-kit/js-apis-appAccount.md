@@ -37,7 +37,7 @@ createAppAccountManager(): AppAccountManager
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -64,7 +64,7 @@ createAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -137,7 +137,7 @@ createAccount(name: string, options: CreateAccountOptions, callback: AsyncCallba
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -218,7 +218,7 @@ createAccount(name: string, options?: CreateAccountOptions): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -301,7 +301,7 @@ createAccountImplicitly(owner: string, callback: AuthCallback): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -428,7 +428,7 @@ createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, 
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -565,7 +565,7 @@ removeAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -637,7 +637,7 @@ removeAccount(name: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -711,7 +711,7 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean, callback: 
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -786,7 +786,7 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean): Promise&l
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -863,7 +863,7 @@ checkAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;bool
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -938,7 +938,7 @@ checkAppAccess(name: string, bundleName: string): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1015,7 +1015,7 @@ setDataSyncEnabled(name: string, isEnabled: boolean, callback: AsyncCallback&lt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1085,7 +1085,7 @@ setDataSyncEnabled(name: string, isEnabled: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1163,7 +1163,7 @@ checkDataSyncEnabled(name: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1239,7 +1239,7 @@ checkDataSyncEnabled(name: string): Promise&lt;boolean&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1314,7 +1314,7 @@ setCredential(name: string, credentialType: string, credential: string,callback:
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1388,7 +1388,7 @@ setCredential(name: string, credentialType: string, credential: string): Promise
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1464,7 +1464,7 @@ getCredential(name: string, credentialType: string, callback: AsyncCallback&lt;s
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1539,7 +1539,7 @@ getCredential(name: string, credentialType: string): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1615,7 +1615,7 @@ setCustomData(name: string, key: string, value: string, callback: AsyncCallback&
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1690,7 +1690,7 @@ setCustomData(name: string, key: string, value: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1767,7 +1767,7 @@ getCustomData(name: string, key: string, callback: AsyncCallback&lt;string&gt;):
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1841,7 +1841,7 @@ getCustomData(name: string, key: string): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1917,7 +1917,7 @@ getCustomDataSync(name: string, key: string): string
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1966,7 +1966,7 @@ getAllAccounts(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2036,7 +2036,7 @@ getAllAccounts(): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2101,7 +2101,7 @@ getAccountsByOwner(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccount
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2174,7 +2174,7 @@ getAccountsByOwner(owner: string): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2300,7 +2300,7 @@ onAccountChange(owners: Array&lt;string&gt;, callback: Callback&lt;Array&lt;AppA
 
 **系统能力：** SystemCapability.Account.AppAccount
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2316,7 +2316,7 @@ onAccountChange(owners: Array&lt;string&gt;, callback: Callback&lt;Array&lt;AppA
 | 错误码ID | 错误信息 |
 | ------- | ------- |
 | 12300001 | System service exception. |
-| 12300002 | Invalid type or owners. |
+| 12300002 | Invalid owners. |
 
 **示例：**
 
@@ -2400,7 +2400,7 @@ offAccountChange(callback?: Callback&lt;Array&lt;AppAccountInfo&gt;&gt;): void
 
 **系统能力：** SystemCapability.Account.AppAccount
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2453,7 +2453,7 @@ auth(name: string, owner: string, authType: string, callback: AuthCallback): voi
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2586,7 +2586,7 @@ ArkTS-Sta: auth(name: string, owner: string, authType: string, options: Record<s
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2727,7 +2727,7 @@ getAuthToken(name: string, owner: string, authType: string, callback: AsyncCallb
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2804,7 +2804,7 @@ getAuthToken(name: string, owner: string, authType: string): Promise&lt;string&g
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2881,7 +2881,7 @@ setAuthToken(name: string, authType: string, token: string, callback: AsyncCallb
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2956,7 +2956,7 @@ setAuthToken(name: string, authType: string, token: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3033,7 +3033,7 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string, ca
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3111,7 +3111,7 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string): P
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3189,7 +3189,7 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3268,7 +3268,7 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3349,7 +3349,7 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string, cal
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3426,7 +3426,7 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string): Pr
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3505,7 +3505,7 @@ getAllAuthTokens(name: string, owner: string, callback: AsyncCallback&lt;Array&l
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3579,7 +3579,7 @@ getAllAuthTokens(name: string, owner: string): Promise&lt;Array&lt;AuthTokenInfo
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3656,7 +3656,7 @@ getAuthList(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3731,7 +3731,7 @@ getAuthList(name: string, authType: string): Promise&lt;Array&lt;string&gt;&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3807,7 +3807,7 @@ getAuthCallback(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;):
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3913,7 +3913,7 @@ getAuthCallback(sessionId: string): Promise&lt;AuthCallback&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4020,7 +4020,7 @@ queryAuthenticatorInfo(owner: string, callback: AsyncCallback&lt;AuthenticatorIn
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4094,7 +4094,7 @@ queryAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4170,7 +4170,7 @@ checkAccountLabels(name: string, owner: string, labels: Array&lt;string&gt;, cal
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4251,7 +4251,7 @@ checkAccountLabels(name: string, owner: string, labels: Array&lt;string&gt;): Pr
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4334,7 +4334,7 @@ deleteCredential(name: string, credentialType: string, callback: AsyncCallback&l
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4408,7 +4408,7 @@ deleteCredential(name: string, credentialType: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4484,7 +4484,7 @@ selectAccountsByOptions(options: SelectAccountsOptions, callback: AsyncCallback&
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4567,7 +4567,7 @@ selectAccountsByOptions(options: SelectAccountsOptions): Promise&lt;Array&lt;App
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4648,7 +4648,7 @@ verifyCredential(name: string, owner: string, callback: AuthCallback): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4729,7 +4729,7 @@ verifyCredential(name: string, owner: string, options: VerifyCredentialOptions, 
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4820,7 +4820,7 @@ setAuthenticatorProperties(owner: string, callback: AuthCallback): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4899,7 +4899,7 @@ setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callbac
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7086,7 +7086,7 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型     | 只读  | 可选   | 说明          |
 | ----- | ------ | ---- | ---- | ----------- |
@@ -7101,7 +7101,7 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 类型            | 只读  | 可选   | 说明              |
 | -------------------- | -------------- | -----| ----- | ---------------- |
@@ -7136,7 +7136,7 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型     | 只读  | 可选   | 说明         |
 | ------- | ------ | ---- | ---- | ---------- |
@@ -7152,7 +7152,7 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型     | 只读  | 可选   | 说明         |
 | ------- | ------ | ---- | ---- | ---------- |
@@ -7167,7 +7167,7 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型     | 只读  | 可选   | 说明         |
 | ------- | ------ | ---- | ---- | ---------- |
@@ -7181,7 +7181,7 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型     | 只读  | 可选   | 说明         |
 | ------- | ------ | ---- | ---- | ---------- |
@@ -7197,7 +7197,7 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型                         | 只读  | 可选   | 说明                |
 | --------------- | --------------------------- | ----- | ----- | ------------------- |
@@ -7213,7 +7213,7 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型                   | 只读  | 可选   | 说明           |
 | -------------- | ---------------------- | ----- | ----- | -------------- |
@@ -7230,7 +7230,7 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型                    | 只读  | 可选   | 说明           |
 | ---------- | ---------------------- | ----- | ----- | -------------- |
@@ -7247,21 +7247,21 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 | -------------------------------- | ---------------------- | ----------------------- |
 | ACTION_ADD_ACCOUNT_IMPLICITLY<sup>(deprecated)</sup>    | 'addAccountImplicitly' | 表示操作，隐式添加账号。<br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。  <br/>**ArkTS-Dyn起始版本：** 8|
 | ACTION_AUTHENTICATE<sup>(deprecated)</sup>              | 'authenticate'         | 表示操作，鉴权。<br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 8         |
-| ACTION_CREATE_ACCOUNT_IMPLICITLY<sup>9+</sup>    | 'createAccountImplicitly' | 表示操作，隐式创建账号。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22  |
-| ACTION_AUTH<sup>9+</sup>              | 'auth'         | 表示操作，鉴权。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22         |
-| ACTION_VERIFY_CREDENTIAL<sup>9+</sup>    | 'verifyCredential' | 表示操作，验证凭据。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22  |
-| ACTION_SET_AUTHENTICATOR_PROPERTIES<sup>9+</sup> | 'setAuthenticatorProperties' | 表示操作，设置认证器属性。 <br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22     |
-| KEY_NAME                         | 'name'                 | 表示键名，应用账号的名称。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22  |
-| KEY_OWNER                        | 'owner'                | 表示键名，应用账号所有者的包名。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22|
-| KEY_TOKEN                        | 'token'                | 表示键名，令牌。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22         |
-| KEY_ACTION                       | 'action'               | 表示键名，操作。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22        |
-| KEY_AUTH_TYPE                    | 'authType'             | 表示键名，鉴权类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22     |
-| KEY_SESSION_ID                   | 'sessionId'            | 表示键名，会话标识。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22     |
-| KEY_CALLER_PID                   | 'callerPid'            | 表示键名，调用方PID。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22    |
-| KEY_CALLER_UID                   | 'callerUid'            | 表示键名，调用方UID。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22    |
-| KEY_CALLER_BUNDLE_NAME           | 'callerBundleName'     | 表示键名，调用方包名。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22    |
-| KEY_REQUIRED_LABELS<sup>9+</sup> | 'requiredLabels'       | 表示键名，必需的标签。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22    |
-| KEY_BOOLEAN_RESULT<sup>9+</sup>  | 'booleanResult'        | 表示键名，布尔返回值。 <br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22   |
+| ACTION_CREATE_ACCOUNT_IMPLICITLY<sup>9+</sup>    | 'createAccountImplicitly' | 表示操作，隐式创建账号。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
+| ACTION_AUTH<sup>9+</sup>              | 'auth'         | 表示操作，鉴权。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23         |
+| ACTION_VERIFY_CREDENTIAL<sup>9+</sup>    | 'verifyCredential' | 表示操作，验证凭据。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
+| ACTION_SET_AUTHENTICATOR_PROPERTIES<sup>9+</sup> | 'setAuthenticatorProperties' | 表示操作，设置认证器属性。 <br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23     |
+| KEY_NAME                         | 'name'                 | 表示键名，应用账号的名称。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23  |
+| KEY_OWNER                        | 'owner'                | 表示键名，应用账号所有者的包名。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23|
+| KEY_TOKEN                        | 'token'                | 表示键名，令牌。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23         |
+| KEY_ACTION                       | 'action'               | 表示键名，操作。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23        |
+| KEY_AUTH_TYPE                    | 'authType'             | 表示键名，鉴权类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
+| KEY_SESSION_ID                   | 'sessionId'            | 表示键名，会话标识。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
+| KEY_CALLER_PID                   | 'callerPid'            | 表示键名，调用方PID。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23    |
+| KEY_CALLER_UID                   | 'callerUid'            | 表示键名，调用方UID。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23    |
+| KEY_CALLER_BUNDLE_NAME           | 'callerBundleName'     | 表示键名，调用方包名。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23    |
+| KEY_REQUIRED_LABELS<sup>9+</sup> | 'requiredLabels'       | 表示键名，必需的标签。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23    |
+| KEY_BOOLEAN_RESULT<sup>9+</sup>  | 'booleanResult'        | 表示键名，布尔返回值。 <br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23   |
 
 ## ResultCode<sup>(deprecated)</sup>
 
@@ -7314,7 +7314,7 @@ ArkTS-Sta: onResult: (code: int, result?: AuthResult) =&gt; void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7384,7 +7384,7 @@ onRequestRedirected: (request: Want) =&gt; void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7468,7 +7468,7 @@ onRequestContinued?: () =&gt; void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -7617,7 +7617,7 @@ createAccountImplicitly(options: CreateAccountImplicitlyOptions, callback: AuthC
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7706,7 +7706,7 @@ verifyCredential(name: string, options: VerifyCredentialOptions, callback: AuthC
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7730,7 +7730,7 @@ setProperties(options: SetPropertiesOptions, callback: AuthCallback): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7753,7 +7753,7 @@ checkAccountLabels(name: string, labels: Array&lt;string&gt;, callback: AuthCall
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7777,7 +7777,7 @@ checkAccountRemovable(name: string, callback: AuthCallback): void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7800,7 +7800,7 @@ getRemoteObject(): rpc.RemoteObject
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
