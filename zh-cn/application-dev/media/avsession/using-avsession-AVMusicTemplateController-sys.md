@@ -67,7 +67,7 @@ OpenHarmony系统预置的媒体中心，作为音频模板控制方与音视频
      // ...
    
      /**
-      * 通过getAllAVMusicTemplateDescriptors创建模板
+      * 通过getAllAVMusicTemplateDescriptors创建模板。
       */
      public createAvMusicTemplateController(bundleName: string) {
        if (this.isStringEmpty(bundleName)) {
@@ -110,7 +110,7 @@ OpenHarmony系统预置的媒体中心，作为音频模板控制方与音视频
      }
    
      /**
-      * 注册模板监听
+      * 注册模板监听。
       */
      public registerAVMusicTemplateListener() {
        try {
@@ -155,7 +155,7 @@ OpenHarmony系统预置的媒体中心，作为音频模板控制方与音视频
    
      // ...
      /**
-      * 注销监听
+      * 注销监听。
       */
      public unregisterListener() {
        // 注销用户信息改变的监听。
@@ -193,7 +193,7 @@ OpenHarmony系统预置的媒体中心，作为音频模板控制方与音视频
      }
    
      /**
-      * 销毁控制器
+      * 销毁控制器。
       */
      public destroyController() {
        console.info(TAG, 'destroyController')
@@ -203,7 +203,7 @@ OpenHarmony系统预置的媒体中心，作为音频模板控制方与音视频
      }
    
      /**
-      * 反注册模板监听
+      * 反注册模板监听。
       */
      public unregisterAVMusicTemplateListener() {
        try {
@@ -253,9 +253,9 @@ OpenHarmony系统预置的媒体中心，作为音频模板控制方与音视频
      }
    
      /**
-      * 模拟查询媒体标签页内容
+      * 模拟查询媒体标签页内容。
       *
-      * @param tabId 标签页ID
+      * @param tabId 标签页ID。
       */
      public async queryMediaTabContent(tabId: string): Promise<avMusicTemplate.MediaTabContent | undefined> {
        try {
@@ -372,7 +372,7 @@ OpenHarmony系统预置的媒体中心，作为音频模板控制方与音视频
      private currentBundleName: string | undefined = undefined;
      // ...
      /**
-      * 注销监听
+      * 注销监听。
       */
      public unregisterListener() {
        // 注销用户信息改变的监听。
@@ -410,7 +410,7 @@ OpenHarmony系统预置的媒体中心，作为音频模板控制方与音视频
      }
    
      /**
-      * 销毁控制器
+      * 销毁控制器。
       */
      public destroyController() {
        console.info(TAG, 'destroyController')
@@ -420,7 +420,7 @@ OpenHarmony系统预置的媒体中心，作为音频模板控制方与音视频
      }
    
      /**
-      * 反注册模板监听
+      * 反注册模板监听。
       */
      public unregisterAVMusicTemplateListener() {
        try {
