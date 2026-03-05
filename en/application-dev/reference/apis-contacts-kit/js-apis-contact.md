@@ -919,7 +919,7 @@ Checks whether the ID of this contact is in the local address book. This API use
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 10. Use [isLocalContact](#contactislocalcontact10-1) instead.[isLocalContact](#contactislocalcontact10-1)
+> This API is supported since API version 7 and deprecated since API version 10. Use [isLocalContact](#contactislocalcontact10-1) instead.
 
 **Permission required**: ohos.permission.READ_CONTACTS
 
