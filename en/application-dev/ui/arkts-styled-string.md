@@ -15,7 +15,7 @@ Styled strings provide a variety of style objects that cover various common text
   You can use the [setStyledString](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#setstyledstring12) method provided by [TextController](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textcontroller11) to append the styled string to the **Text** component. It is recommended that the binding be triggered in the [onPageShow](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow) or [onAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear) callback of the **Text** component.
   > **NOTE**
   >
-  > When the **setStyledString** method is called in [aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear), the styled string cannot be displayed during page initialization because the component has not been created and mounted to the node tree.
+  > When the **setStyledString** method is called in [aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#abouttoappear), the styled string cannot be displayed during page initialization because the component has not been created and mounted to the node tree.
   >
   > Since API version 15, styled string content can be displayed upon page load when **setStyledString** is called in **aboutToAppear**.
 
