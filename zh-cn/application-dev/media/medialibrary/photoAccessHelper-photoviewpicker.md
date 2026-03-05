@@ -27,7 +27,9 @@
    const photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
    ```
 
-3. 配置可选的媒体文件类型和媒体文件的最大数目。以下示例以图片选择为例，媒体文件类型请参见[PhotoViewMIMETypes](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photoviewmimetypes)。
+3. 配置可选的媒体文件类型和媒体文件的最大数目。
+
+以下示例以图片选择为例，媒体文件类型请参见[PhotoViewMIMETypes](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photoviewmimetypes)。
 
    <!-- @[PickerMediaLibrary_configOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/pages/Index.ets) -->
    
