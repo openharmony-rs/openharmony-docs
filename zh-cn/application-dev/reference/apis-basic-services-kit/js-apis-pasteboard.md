@@ -532,18 +532,14 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
-**ArkTS-Dyn起始版本：** 7
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------------------------------|
-| additions | ArkTS-Dyn: Record<string, object> </br> ArkTS-Sta: [Record](../../quick-start/introduction-to-arkts.md#record类型的对象字面量)<string, RecordData> | 否 | 否 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty。 |
-| mimeTypes | Array&lt;string&gt; | 是 | 否 | 剪贴板内容条目的数据类型，非重复的类型列表。 |
-| tag | string | 否 | 否 | 用户自定义标签。 |
-| timestamp | ArkTS-Dyn: number </br> ArkTS-Sta: long | 是 | 否 | 剪贴板数据的写入时间戳（单位：已开机时间的ns数）。 |
-| localOnly | boolean | 否 | 否 | 配置剪贴板内容是否为“仅在本地”，默认值为false。其值会被shareOption属性覆盖，推荐使用[ShareOption](#shareoption9)属性。 |
-| shareOption<sup>9+</sup> | [ShareOption](#shareoption9) | 否 | 是 | 指示剪贴板数据可以粘贴到的范围。</br> ArkTS-Dyn起始版本: 9 </br> ArkTS-Sta起始版本: 23 |
+| additions | ArkTS-Dyn: Record<string, object> </br> ArkTS-Sta: [Record](../../quick-start/introduction-to-arkts.md#record类型的对象字面量)<string, RecordData> | 否 | 否 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
+| mimeTypes | Array&lt;string&gt; | 是 | 否 | 剪贴板内容条目的数据类型，非重复的类型列表。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
+| tag | string | 否 | 否 | 用户自定义标签。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
+| timestamp | ArkTS-Dyn: number </br> ArkTS-Sta: long | 是 | 否 | 剪贴板数据的写入时间戳（单位：已开机时间的ns数）。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
+| localOnly | boolean | 否 | 否 | 配置剪贴板内容是否为“仅在本地”，默认值为false。其值会被shareOption属性覆盖，推荐使用[ShareOption](#shareoption9)属性。</br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
+| shareOption<sup>9+</sup> | [ShareOption](#shareoption9) | 否 | 否 | 指示剪贴板数据可以粘贴到的范围。</br> ArkTS-Dyn起始版本: 9 </br> ArkTS-Sta起始版本: 23 |
 
 ## FileConflictOptions<sup>15+</sup>
 
@@ -609,6 +605,8 @@ type ProgressListener = (progress: ProgressInfo) => void
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：**
+
 | 参数名   | 类型                            | 必填 | 说明                                                         |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | progress | [ProgressInfo](#progressinfo15) | 是   | 定义进度上报的数据结构，且仅当进度指示选项[ProgressIndicator](#progressindicator15)设置为NONE时才会上报此信息。 |
@@ -623,7 +621,7 @@ type ProgressListener = (progress: ProgressInfo) => void
 
 **ArkTS-Sta起始版本：** 23
 
-### cancel
+### cancel<sup>15+</sup>
 
 cancel(): void
 
@@ -1471,9 +1469,9 @@ pasteData.setProperty(prop);
 
 ### getRecord<sup>9+</sup>
 
-ArkTS-Dyn:getRecord(index: number): PasteDataRecord
+ArkTS-Dyn: getRecord(index: number): PasteDataRecord
 
-ArkTS-Sta:getRecord(index: int): PasteDataRecord
+ArkTS-Sta: getRecord(index: int): PasteDataRecord
 
 获取剪贴板内容中指定下标的条目。
 
@@ -1522,9 +1520,9 @@ let record: pasteboard.PasteDataRecord = pasteData.getRecord(0);
 
 ### getRecordCount<sup>7+</sup>
 
-ArkTS-Dyn:getRecordCount(): number
+ArkTS-Dyn: getRecordCount(): number
 
-ArkTS-Sta:getRecordCount(): int
+ArkTS-Sta: getRecordCount(): int
 
 获取剪贴板内容中条目的个数。
 
@@ -1626,9 +1624,9 @@ let hasType: boolean = pasteData.hasType(pasteboard.MIMETYPE_TEXT_PLAIN);
 
 ### removeRecord<sup>9+</sup>
 
-ArkTS-Dyn:removeRecord(index: number): void
+ArkTS-Dyn: removeRecord(index: number): void
 
-ArkTS-Sta:removeRecord(index: int): void
+ArkTS-Sta: removeRecord(index: int): void
 
 移除剪贴板内容中指定下标的条目。
 
@@ -1671,9 +1669,9 @@ pasteData.removeRecord(0);
 
 ### replaceRecord<sup>9+</sup>
 
-ArkTS-Dyn:replaceRecord(index: number, record: PasteDataRecord): void
+ArkTS-Dyn: replaceRecord(index: number, record: PasteDataRecord): void
 
-ArkTS-Sta:replaceRecord(index: int, record: PasteDataRecord): void
+ArkTS-Sta: replaceRecord(index: int, record: PasteDataRecord): void
 
 替换剪贴板内容中指定下标的条目。
 
@@ -3554,7 +3552,7 @@ try {
 }
 ```
 
-### removeAppShareOptions<sup>12+</sup>
+### removeAppShareOptions<sup>14+</sup>
 
 removeAppShareOptions(): void
 
@@ -3564,7 +3562,7 @@ removeAppShareOptions(): void
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 14
 
 **ArkTS-Sta起始版本：** 23
 
@@ -3844,9 +3842,9 @@ struct PasteboardTest {
 
 ### getChangeCount<sup>18+</sup>
 
-ArkTS-Dyn:getChangeCount(): number
+ArkTS-Dyn: getChangeCount(): number
 
-ArkTS-Sta:getChangeCount(): long
+ArkTS-Sta: getChangeCount(): long
 
 获取剪贴板内容的变化次数。
 
