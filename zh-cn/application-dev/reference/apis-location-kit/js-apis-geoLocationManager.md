@@ -1603,7 +1603,7 @@ getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest): Pr
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | request | [CurrentLocationRequest](#currentlocationrequest) &#124; [SingleLocationRequest](#singlelocationrequest12) | 否 | 设置位置请求参数。<br/>SingleLocationRequest为API12新增参数。 |
+  | request | [CurrentLocationRequest](#currentlocationrequest) &#124; [SingleLocationRequest](#singlelocationrequest12) | 否 | 设置位置请求参数。<br/>SingleLocationRequest为API12新增参数。若无此参数设置，则默认填 CurrentLocationRequest。 |
 
 **返回值**：
 
