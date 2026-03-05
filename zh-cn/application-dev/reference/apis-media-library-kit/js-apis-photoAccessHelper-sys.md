@@ -5876,7 +5876,7 @@ convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise&lt
 | 201 | Permission denied.  | 
 | 202      | Called by non-system application. |
 | 23800151 | Scene parameters validate failed. Possible causes: 1. The original file does not exist locally in PhotoAsset. 2. The original file format is not within the supported range. 3. The original file is a temporary file or is being edited. 4. The title is the same with an image in the same album. 5. PhotoAsset is a photo in the trash or a hidden photo. 6. The title does not meet the parameter specifications. |
-| 23800301    | Internal system error. It is recommended to retry and check the kogs. Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+| 23800301    | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**
 
@@ -9519,7 +9519,7 @@ static createAnalysisAlbumRequest(context: Context, name: string, subtype: Album
 > **说明**
 >
 > 相册名的参数规格如下：
-> - 相册名字符串长度为[1, 255]。
+> - 相册名字符串长度的取值范围为[1, 255]。
 > - 不允许出现非法英文字符，包括：. .. \ / : * ? " ' ` < > | { } [ ]
 
 ​**模型约束**：此接口仅可在Stage模型下使用。
