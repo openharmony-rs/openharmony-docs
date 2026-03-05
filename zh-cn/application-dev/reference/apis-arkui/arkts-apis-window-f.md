@@ -987,9 +987,9 @@ export default class EntryAbility extends UIAbility {
       let displayId = 0;
       window.getWindowsByCoordinate(displayId, 2, 500, 500).then((data) => {
         console.info(`Succeeded in getting windows. Data: ${data}`);
-        for (let window of data) {
+        for (let windowObject of data) {
           // do something with window
-          windowClass = window;
+          windowClass = windowObject;
         }
       }).catch((err: BusinessError) => {
         console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
