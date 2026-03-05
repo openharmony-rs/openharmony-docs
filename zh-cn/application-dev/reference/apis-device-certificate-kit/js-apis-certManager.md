@@ -169,7 +169,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | 名称        | 类型                                | 只读 | 可选 | 说明  |
 | ----------- | ----------------------------------- | ---- | ---- | ---- |
 | certData    | Uint8Array                           | 否   | 否  | 表示证书文件数据。 |
-| certFormat  | [CertFileFormat](#certfileformat26+)   | 否   | 是  | 表示证书文件格式。 |
+| certFormat  | [CertFileFormat](#certfileformat26)   | 否   | 是  | 表示证书文件格式。 |
 | certScope   | [CertScope](#certscope18)         | 否   | 是  | 表示用户CA证书的存储位置。 |
 
 ## CMErrorCode
@@ -674,7 +674,7 @@ installUserTrustedCertificate(certificate: CertBlob) : Promise\<CMResult>
 
 | 参数名      | 类型                       | 必填 | 说明                                                         |
 | ----------- | -------------------------- | ---- | ------------------------------------------------------------ |
-| certificate | [CertBlob](#certblob26+) | 是   | 表示证书信息。                                           | |
+| certificate | [CertBlob](#certblob26) | 是   | 表示证书信息。                                           |
 
 **返回值**：
 
