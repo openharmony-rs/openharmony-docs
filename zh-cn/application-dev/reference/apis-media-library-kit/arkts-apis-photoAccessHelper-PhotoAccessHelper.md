@@ -161,7 +161,7 @@ getBurstAssets(burstKey: string, options: FetchOptions): Promise&lt;FetchResult&
 
 | 参数名  | 类型                | 必填 | 说明             |
 | ------- | ------------------- | ---- | ---------------- |
-| burstKey | string   | 是   | 一组连拍照片的唯一标识：uuid【可传入[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)的BURST_KEY】。字符串长度为36。 |
+| burstKey | string   | 是   | 一组连拍照片的唯一标识：uuid(可传入[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)的BURST_KEY)。字符串长度为36。 |
 | options | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions)   | 是   | 连拍照片检索选项。     |
 
 **返回值：**
@@ -1846,7 +1846,7 @@ getAlbumIdByLpath(lpath: string): Promise&lt;number&gt;
 
 根据相册的虚拟路径获取媒体库相册的ID。使用Promise异步回调。
 
-该接口仅支持以下相册：相机相册【'/DCIM/Camera'】、截图相册【'/Pictures/Screenshots'】和屏幕录制相册【'/Pictures/Screenrecords'】。
+该接口仅支持以下相册：相机相册('/DCIM/Camera')、截图相册('/Pictures/Screenshots')和屏幕录制相册('/Pictures/Screenrecords')。
 
 ​**模型约束**： 此接口仅可在Stage模型下使用。
 
@@ -1966,10 +1966,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 ## offSinglePhotoChange<sup>23+</sup> 
 
 offSinglePhotoChange(asset?: PhotoAsset, callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void;
-取消单个资产的监听。具体规则如下：<br>
-1）不携带参数时，取消所有单个资产监听。<br>
-2）携带asset，不携带callback时，取消该asset下所有callback监听。<br>
-3）携带asset和callback时，仅取消指定callback监听。
+ 取消单个资产的监听。具体规则如下：1）不携带参数时，取消所有单个资产监听。2）携带asset，不携带callback时，取消该asset下所有callback监听。3）携带asset和callback时，仅取消指定callback监听。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -2119,10 +2116,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 ## offSinglePhotoAlbumChange<sup>23+</sup> 
 
 offSinglePhotoAlbumChange(album?: Album, callback?: Callback&lt;AlbumChangeInfos&gt;): void
-取消对单个相册的监听，具体规则如下：<br>
-1）不携带任何参数时，取消所有单个相册监听。<br>
-2）携带album，不携带callback时，取消该album下所有callback监听。<br>
-3）携带album和callback时，仅取消指定callback监听。
+取消对单个相册的监听，具体规则如下：1）不携带任何参数时，取消所有单个相册监听。2）携带album，不携带callback时，取消该album下所有callback监听。3）携带album和callback时，仅取消指定callback监听。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
