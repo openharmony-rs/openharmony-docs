@@ -482,11 +482,11 @@ enum OH_Drawing_EllipsisModal
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ELLIPSIS_MODAL_HEAD = 0 | 头部省略号模式，即省略号位置出现在行首。该枚举值仅在[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)中maxLine设置为1时有效。 |
-| ELLIPSIS_MODAL_MIDDLE = 1 | 中部省略号模式，即省略号位置出现在行的中间。该枚举值仅在[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)中maxLine设置为1时有效。 |
-| ELLIPSIS_MODAL_TAIL = 2 | 尾部省略号模式，即省略号位置出现在行的尾部。该枚举值在[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)中maxLine设置为任何值时均有效。 |
-| ELLIPSIS_MODAL_MULTILINE_HEAD = 3 | 头部省略号模式，即省略号位置出现在行首。该枚举值在[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)中maxLine设置为任何值时均有效。<br>**起始版本：** 24 |
-| ELLIPSIS_MODAL_MULTILINE_MIDDLE = 4 | 中间省略号模式，即省略号位置出现在行的中间。该枚举值在[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)中maxLine设置为任何值时均有效。<br>**起始版本：** 24 |
+| ELLIPSIS_MODAL_HEAD = 0 | 头部省略号模式，即省略号位置出现在行首。该枚举值仅在使用[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置文本最大行数为1时有效。 |
+| ELLIPSIS_MODAL_MIDDLE = 1 | 中部省略号模式，即省略号位置出现在行的中间。该枚举值仅在使用[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置文本最大行数为1时有效。 |
+| ELLIPSIS_MODAL_TAIL = 2 | 尾部省略号模式，即省略号位置出现在行的尾部。该枚举值在使用[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置文本最大行数为任何值时均有效。 |
+| ELLIPSIS_MODAL_MULTILINE_HEAD = 3 | 头部省略号模式，即省略号位置出现在行首。该枚举值在使用[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置文本最大行数为任何值时均有效。<br>**起始版本：** 24 |
+| ELLIPSIS_MODAL_MULTILINE_MIDDLE = 4 | 中间省略号模式，即省略号位置出现在行的中间。该枚举值在使用[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置文本最大行数为任何值时均有效。<br>**起始版本：** 24 |
 
 ### OH_Drawing_BreakStrategy
 
