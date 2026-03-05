@@ -8,6 +8,11 @@
 
 本模块提供矩阵变换功能，支持对图形进行平移、旋转和缩放等。
 
+Matrix4的使用场景包括：
+
+[图形变换](arkui-ts/ts-universal-attributes-transformation.md)中的[transform](arkui-ts/ts-universal-attributes-transformation.md#transform18)接口通过使用图形变换矩阵Matrix4对象显示二维变换时的矩阵变换，[transform3D](arkui-ts/ts-universal-attributes-transformation.md#transform3d20)接口通过使用图形变换矩阵Matrix4对象设置组件的三维变换矩阵。
+
+
 > **说明：**
 >
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
