@@ -4467,7 +4467,9 @@ getAllBundleInstallInfo(): Promise\<Array\<Record\<string, Object\>\>\>
 
 | 名称                      | 类型    | 说明                 |
 | ------------------------- | ------ | -------------------- |
-| compatibleVersion              | number | 应用所需要最低的SDK版本。 |
+| compatibleVersion              | number | 应用所需要最低的SDK主版本。从API version 26.0.0开始，SDK版本由compatibleVersion、compatibleMinorVersion、compatiblePatchVersion拼接而成，版本形式为“主版本.次版本.补丁版本”，例如：26.0.0。API version 26.0.0之前的版本，仅用compatibleVersion表示，例如：15。 |
+| compatibleMinorVersion         | number | 应用所需要最低的SDK次版本。具体用法请参考compatibleVersion字段描述。从API version 26.0.0开始，支持该字段。 |
+| compatiblePatchVersion         | number | 应用所需要最低的SDK补丁版本。具体用法请参考compatibleVersion字段描述。从API version 26.0.0开始，支持该字段。 |
 | crowdtestDeadline              | number | 众测活动的截止日期（毫秒级时间戳），-1表示无截止日期约束。 |
 | bundleName                     | string | 应用的包名。 |
 | specifiedDistributionType      | string | 应用安装时指定的[分发类型](../../security/app-provision-structure.md)，默认值为空，最大长度128字节。|
