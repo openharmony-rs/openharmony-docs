@@ -134,6 +134,7 @@ export default class MyAbility extends UIAbility {
 | pss | number | 否 | 否 | Ability上次退出时所在进程实际使用的物理内存大小，单位KB。 <br/>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。|
 | timestamp | number | 否 | 否 | Ability上次退出时的时间戳。 <br/>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。|
 | processState<sup>20+</sup> | [appManager.ProcessState](js-apis-app-ability-appManager.md#processstate10) | 否 | 是 | Ability上次退出时的进程状态。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
+| killReason<sup>24+</sup> | string | 否 | 是 | Ability上次退出时的原因，取值详见[应用终止事件reason字段说明](../../dfx/hiappevent-watcher-app-killed-events.md#reason字段说明)。<br/>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。 |
 
 **示例**:
 
@@ -151,7 +152,8 @@ export default class MyAbility extends UIAbility {
       \n rss: ${launchParam.lastExitDetailInfo.rss}
       \n pss: ${launchParam.lastExitDetailInfo.pss}
       \n timestamp: ${launchParam.lastExitDetailInfo.timestamp}
-      \n processState: ${launchParam.lastExitDetailInfo.processState}.`
+      \n processState: ${launchParam.lastExitDetailInfo.processState}
+      \n killReason: ${launchParam.lastExitDetailInfo?.killReason}.`
       );
     }
   }
