@@ -26134,12 +26134,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/MainProcessSample.cpp",
 				"functions":[
 					{
-						"end_line":155,
+						"end_line":157,
 						"name":"main_handle_child_start_callback",
 						"start_line":17
 					},
 					{
-						"end_line":167,
+						"end_line":169,
 						"name":"main_processIpc_launch_native_child",
 						"start_line":16
 					}
@@ -30897,7 +30897,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/MainProcessSample.cpp",
 				"functions":[
 					{
-						"end_line":167,
+						"end_line":169,
 						"name":"main_processIpc_launch_native_child",
 						"start_line":16
 					}
