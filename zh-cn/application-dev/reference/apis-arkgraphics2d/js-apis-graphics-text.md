@@ -525,7 +525,9 @@ struct GetFontDescriptorsFromPathTest {
 ```
 
 ## text.getFontUnicodeSet<sup>23+</sup>
-getFontUnicodeSet(path: string | Resource, index: number): Promise&lt;Array&lt;number&gt;&gt;
+ArkTS-Dyn: getFontUnicodeSet(path: string | Resource, index: number): Promise&lt;Array&lt;number&gt;&gt;
+
+ArkTS-Sta: getFontUnicodeSet(path: string | Resource, index: int): Promise&lt;Array&lt;int&gt;&gt;
 
 根据字体文件路径获取字体unicode数组。使用Promise异步回调。
 
@@ -544,13 +546,13 @@ getFontUnicodeSet(path: string | Resource, index: number): Promise&lt;Array&lt;n
 | 参数名 | 类型               | 必填 | 说明                              |
 | -----  | ------------------ | ---- | --------------------------------- |
 |  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是 | 需要查询的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 $rawfile("工程中resources/rawfile目录下的文件名称")。 |
-|  index  | number | 是 | 字体文件格式为ttc/otc时，指定加载的字体索引。非ttc/otc格式文件索引值只能指定为0。如果该参数非法，将返回空数组。 |
+|  index  | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是 | 字体文件格式为ttc/otc时，指定加载的字体索引。非ttc/otc格式文件索引值只能指定为0。如果该参数非法，将返回空数组。 |
 
 **返回值：**
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回字体文件持有的unicode码。 |
+| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt;<br>ArkTS-Sta: Promise&lt;Array&lt;int&gt;&gt; | Promise对象，返回字体文件持有的unicode码。 |
 
 **示例：**
 
@@ -607,7 +609,9 @@ struct GetFontUnicodeSetTest {
 ```
 
 ## text.getFontCount<sup>23+</sup>
-getFontCount(path: string | Resource): number
+ArkTS-Dyn: getFontCount(path: string | Resource): number
+
+ArkTS-Sta: getFontCount(path: string | Resource): int
 
 根据字体文件路径获取包含的字体文件数。
 
@@ -633,7 +637,7 @@ getFontCount(path: string | Resource): number
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| number | 包含字体数量。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 包含字体数量。 |
 
 **示例：**
 
