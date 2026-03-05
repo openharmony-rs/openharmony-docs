@@ -1123,17 +1123,13 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称   | 值 | 说明      |
 | ------ | - | --------- |
-| START  | 0 | 开头省略号，只在[ParagraphStyle](#paragraphstyle)中设置maxLines为1时生效。|
-| MIDDLE | 1 | 中间省略号，只在[ParagraphStyle](#paragraphstyle)中设置maxLines为1时生效。|
-| END    | 2 | 末尾省略号。|
+| START  | 0 | 开头省略号，该枚举值只在[ParagraphStyle](#paragraphstyle)中设置maxLines为1时生效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| MIDDLE | 1 | 中间省略号，该枚举值只在[ParagraphStyle](#paragraphstyle)中设置maxLines为1时生效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| END    | 2 | 末尾省略号，该枚举值在[ParagraphStyle](#paragraphstyle)中maxLines设置为任何值时均有效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| MULTILINE_START<sup>24+</sup> | 3 | 开头省略号，该枚举值在[ParagraphStyle](#paragraphstyle)中maxLines设置为任何值时均有效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
+| MULTILINE_MIDDLE<sup>24+</sup> | 4 | 中间省略号，该枚举值在[ParagraphStyle](#paragraphstyle)中maxLines设置为任何值时均有效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
 
 ## TextShadow
 
@@ -2145,26 +2141,24 @@ struct Index {
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
-
 | 名称                 | 类型                                        | 只读 | 可选 | 说明                                          |
 | -------------------- | ------------------------------------------ | ---- | ---- | -------------------------------------------- |
-| textStyle            | [TextStyle](#textstyle)                    | 否   | 是   | 作用于整个段落的文本样式，默认为初始的文本样式。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
-| textDirection        | [TextDirection](#textdirection)            | 否   | 是   | 文本方向，默认为LTR。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                          |
-| align                | [TextAlign](#textalign)                    | 否   | 是   | 文本对齐方式，默认为START。若同时配置tab属性，制表符对齐方式将失效。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
-| wordBreak            | [WordBreak](#wordbreak)                    | 否   | 是   | 断词类型，默认为BREAK_WORD。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                    |
-| maxLines             | ArkTS-Dyn: number<br>ArkTS-Sta: int                                     | 否   | 是   | 最大行数限制，整数，默认为1e9。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                  |
-| breakStrategy        | [BreakStrategy](#breakstrategy)            | 否   | 是   | 断行策略，默认为GREEDY。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                        |
-| strutStyle           | [StrutStyle](#strutstyle)                  | 否   | 是   | 支柱样式，默认为初始的StrutStyle。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23               |
-| textHeightBehavior   | [TextHeightBehavior](#textheightbehavior)  | 否   | 是   | 文本高度修饰符模式，默认为ALL。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                              |
-| tab<sup>18+</sup>   | [TextTab](#texttab18)  | 否   | 是   | 表示段落中文本制表符后的文本对齐方式及位置，默认将制表符替换为一个空格。此参数与文本对齐方式（align属性）或省略号样式（[TextStyle](#textstyle)中的ellipsis属性）共同配置时无效。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
-| trailingSpaceOptimized<sup>20+</sup>   | boolean | 否   | 是   | 表示文本排版时行尾空格是否参与对齐计算。true表示行尾空格不参与计算，false表示行尾空格参与计算，默认值为false。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23|
-| autoSpace<sup>20+</sup>   | boolean | 否   | 是   | 设置文本排版时是否使能自动间距。true表示使能自动间距，则会在文本排版时自动调整CJK（中文字符、日文字符、韩文字符）与西文（拉丁字母、西里尔字母、希腊字母）、CJK与数字、CJK与版权符号、版权符号与数字、版权符号与西文之间的间距。false表示不使能自动间距，默认值为false。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23|
-| verticalAlign<sup>20+</sup>   | [TextVerticalAlign](#textverticalalign20) | 否   | 是   | 文本垂直对齐方式，开启行高缩放（即设置[TextStyle](#textstyle)的heightScale）或行内不同字号（即设置[TextStyle](#textstyle)的fontSize）文本混排时生效。若行内有上下标文本（即设置[TextStyle](#textstyle)的badgeType属性文本），上下标文本将与普通文本一样参与垂直对齐。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
-| lineSpacing<sup>21+</sup>   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 行间距，默认值为0。lineSpacing不受[TextStyle](#textstyle)中lineHeightMaximum和lineHeightMinimum限制。尾行默认添加行间距，可通过设置[TextStyle](#textstyle).textHeightBehavior为DISABLE_ALL或DISABLE_LAST_ASCENT禁用尾行行间距。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
-| compressHeadPunctuation<sup>23+</sup>   | boolean | 否   | 是   | 设置文本排版时是否使能行首标点压缩。true表示使能行首标点压缩，false表示不使能行首标点压缩，默认值为false。<br/>**说明：**<br/>1. 需要字体文件支持[FontFeature](#fontfeature)中的"ss08"特性，否则无法压缩。<br/>2. 在行首标点压缩范围内的标点才在本特性作用范围内。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
-| includeFontPadding<sup>23+</sup> | boolean | 否 | 是 | 设置文本排版时是否使能首尾行padding。true表示使能首尾行padding，false表示不使能首尾行padding，默认值为false。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
-| fallbackLineSpacing<sup>23+</sup> | boolean | 否 | 是 | 设置文本排版时是否使能行高回退，当设置的行高小于实际行高时，将行高回退为实际行高。true表示使能行高回退，false表示不使能行高回退，默认值为false。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| textStyle            | [TextStyle](#textstyle)                    | 否   | 是   | 作用于整个段落的文本样式，默认为初始的文本样式。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| textDirection        | [TextDirection](#textdirection)            | 否   | 是   | 文本方向，默认为LTR。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                          |
+| align                | [TextAlign](#textalign)                    | 否   | 是   | 文本对齐方式，默认为START。若同时配置tab属性，制表符对齐方式将失效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| wordBreak            | [WordBreak](#wordbreak)                    | 否   | 是   | 断词类型，默认为BREAK_WORD。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                    |
+| maxLines             | ArkTS-Dyn: number<br>ArkTS-Sta: int                                     | 否   | 是   | 最大行数限制，整数，默认为1e9。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                  |
+| breakStrategy        | [BreakStrategy](#breakstrategy)            | 否   | 是   | 断行策略，默认为GREEDY。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                        |
+| strutStyle           | [StrutStyle](#strutstyle)                  | 否   | 是   | 支柱样式，默认为初始的StrutStyle。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23               |
+| textHeightBehavior   | [TextHeightBehavior](#textheightbehavior)  | 否   | 是   | 文本高度修饰符模式，默认为ALL。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                              |
+| tab<sup>18+</sup>   | [TextTab](#texttab18)  | 否   | 是   | 表示段落中文本制表符后的文本对齐方式及位置，默认将制表符替换为一个空格。此参数与文本对齐方式（align属性）或省略号样式（[TextStyle](#textstyle)中的ellipsis属性）共同配置时无效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| trailingSpaceOptimized<sup>20+</sup>   | boolean | 否   | 是   | 表示文本排版时行尾空格是否参与对齐计算。true表示行尾空格不参与计算，false表示行尾空格参与计算，默认值为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23|
+| autoSpace<sup>20+</sup>   | boolean | 否   | 是   | 设置文本排版时是否使能自动间距。true表示使能自动间距，则会在文本排版时自动调整CJK（中文字符、日文字符、韩文字符）与西文（拉丁字母、西里尔字母、希腊字母）、CJK与数字、CJK与版权符号、版权符号与数字、版权符号与西文之间的间距。false表示不使能自动间距，默认值为false。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23|
+| verticalAlign<sup>20+</sup>   | [TextVerticalAlign](#textverticalalign20) | 否   | 是   | 文本垂直对齐方式，开启行高缩放（即设置[TextStyle](#textstyle)的heightScale）或行内不同字号（即设置[TextStyle](#textstyle)的fontSize）文本混排时生效。若行内有上下标文本（即设置[TextStyle](#textstyle)的badgeType属性文本），上下标文本将与普通文本一样参与垂直对齐。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| lineSpacing<sup>21+</sup>   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 行间距，默认值为0。lineSpacing不受[TextStyle](#textstyle)中lineHeightMaximum和lineHeightMinimum限制。尾行默认添加行间距，可通过设置[TextStyle](#textstyle).textHeightBehavior为DISABLE_ALL或DISABLE_LAST_ASCENT禁用尾行行间距。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
+| compressHeadPunctuation<sup>23+</sup>   | boolean | 否   | 是   | 设置文本排版时是否使能行首标点压缩。true表示使能行首标点压缩，false表示不使能行首标点压缩，默认值为false。<br/>**说明：**<br/>1. 需要字体文件支持[FontFeature](#fontfeature)中的"ss08"特性，否则无法压缩。<br/>2. 在行首标点压缩范围内的标点才在本特性作用范围内。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| includeFontPadding<sup>23+</sup> | boolean | 否 | 是 | 设置文本排版时是否使能首尾行padding。true表示使能首尾行padding，false表示不使能首尾行padding，默认值为false。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| fallbackLineSpacing<sup>23+</sup> | boolean | 否 | 是 | 设置文本排版时是否使能行高回退，当设置的行高小于实际行高时，将行高回退为实际行高。true表示使能行高回退，false表示不使能行高回退，默认值为false。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 
 行首压缩的标点范围:
 | 标点 | Unicode码位 | Unicode名称 |
