@@ -1967,7 +1967,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 offSinglePhotoChange(asset?: PhotoAsset, callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void;
 
- 取消单个资产的监听。具体规则如下：1）不携带参数时，取消所有单个资产监听。2）携带asset，不携带callback时，取消该asset下所有callback监听。3）携带asset和callback时，仅取消指定callback监听。
+取消单个资产的监听。具体规则如下：1）不携带参数时，取消所有单个资产监听。2）携带asset，不携带callback时，取消该asset下所有callback监听。3）携带asset和callback时，仅取消指定callback监听。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
