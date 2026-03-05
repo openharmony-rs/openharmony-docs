@@ -5364,7 +5364,7 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 **示例：**
 
 ```ts
-function calculateRect(info: window.RotationChangeInfo): window.Rect {
+let calculateRect(info: window.RotationChangeInfo): window.Rect {
     // calculate result with info
     let rect : window.Rect = {
       left: 0,
