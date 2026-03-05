@@ -31,8 +31,6 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是\<[fetchFrameByTime](../apis-image-kit/arkts-apis-image-PixelMap.md)>
-
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
 **ArkTS-Dyn起始版本：** 12
