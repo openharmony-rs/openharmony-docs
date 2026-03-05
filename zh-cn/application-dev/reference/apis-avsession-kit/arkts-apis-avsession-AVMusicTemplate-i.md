@@ -393,7 +393,7 @@
 | userInfoId    | string  | 否   | 否   | 用户的唯一id。                              |
 | nickName      | string  | 否   | 否   | 用户昵称。                                  |
 | profilePicUrl | string  | 否   | 否   | 用户的头像图片URL。                         |
-| tips          | string  | 否   | 否   | 对用户的描述。                              |
+| tips          | string  | 否   | 否   | 其他关于用户的描述。                        |
 | isLogin       | boolean | 否   | 否   | 是否登录。true表示已登录，false表示未登录。 |
 | isVip         | boolean | 否   | 否   | 是否是VIP。true表示是，false表示否。        |
 
@@ -418,13 +418,13 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称          | 类型                                            | 只读 | 可选 | 说明                                        |
+| 名称          | 类型                                          | 只读 | 可选 | 说明                                        |
 | ------------- | --------------------------------------------- | ---- | ---- | ------------------------------------------- |
-| items         | [SearchPlayMusicItem](#searchplaymusicitem)[] | 否   | 否   | 音频信息。                                  |
+| items         | [SearchPlayMusicItem](#searchplaymusicitem)[] | 否   | 否   | 音频列表。                                  |
 | displayName   | string                                        | 否   | 是   | 音频的显示名称。                            |
-| description   | string                                        | 否   | 是   | 对音频的描述。                          |
+| description   | string                                        | 否   | 是   | 对音频的描述。                              |
 | playMusicOnly | boolean                                       | 否   | 是   | 是否仅仅播放音频。true表示是，false表示否。 |
-| playMode      | string                                        | 否   | 是   | 播放模式。                                  |
+| playMode      | string                                        | 否   | 是   | 音频的播放模式。                            |
 
 ## SearchPlayMusicItem
 
