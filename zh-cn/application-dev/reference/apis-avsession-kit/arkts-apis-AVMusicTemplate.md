@@ -6,12 +6,11 @@
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
-音频模板提供数据写入和接收接口，目的是让媒体应用接入音频中心进行页面展示，并响应媒体中心的操作指令。
+音频模板提供数据写入和接收接口，目的是让媒体应用接入音频模板控制方进行统一风格页面展示，并响应音频模板控制方的操作指令。
 
-该模块提供以下媒体会话相关的常用功能：
+该模块提供如下功能：
 
-- [AVMusicTemplate](arkts-apis-avsession-AVMusicTemplate.md): 音频模板，可用于与媒体中心进行数据交互。
-- [AVMusicTemplateController](arkts-apis-avsession-AVMusicTemplateController-sys.md): 音频模板控制器，可用于查询音频模板页面数据，并下发页面操作指令。
+- [AVMusicTemplate](arkts-apis-avsession-AVMusicTemplate.md): 音频模板，可用于与音频模板控制方进行数据交互
 
 > **说明：**
 >

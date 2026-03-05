@@ -1,4 +1,4 @@
-# Class (AVMusicTemplateController)
+# Class (AVMusicTemplateController)(仅系统调用)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
@@ -10,7 +10,7 @@
 >
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-调用[avMusicTemplate.createAVMusicTemplateController](js-apis-avsession-AVMusicTemplateController-sys.md#avmusictemplatecreateavmusictemplatecontroller)后，返回实例，可以获得ID，查询等操作。
+调用[avMusicTemplate.createAVMusicTemplateController](js-apis-avsession-avMusicTemplate-sys.md#avmusictemplatecreateavmusictemplatecontroller)后，返回实例，可以获得ID，查询等操作。
 
 ## 导入模块
 
@@ -451,10 +451,10 @@ queryPlaylist(pageIndex: number, sort: Sort): Promise&lt;PageMediaEntity&gt;
 
 **参数：**
 
-| 参数名    | 类型                                                     | 必填 | 说明           |
-| --------- | ------------------------------------------------------- | ---- | -------------- |
-| pageIndex | number                                                     | 是   | 标签页的索引。 |
-| sort      | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort) | 是   | 排序类型。     |
+| 参数名    | 类型                                                   | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| pageIndex | number                                                 | 是   | 标签页的索引。                                               |
+| sort      | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort) | 是   | xxxxxxxxxx import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';​const TAG: string = 'ControllerManager';​export class ControllerManager {  /**   * 反注册模板监听。   */  public unregisterAVMusicTemplateListener() {    try {      avMusicTemplate.offAVMusicTemplateDestroy();    } catch (e) {      console.error(TAG, `unregisterAVMusicTemplateListener: errCode: ${e?.code}`);    }  }}ts |
 
 **返回值：**
 

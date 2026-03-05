@@ -10,20 +10,6 @@
 >
 > 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-## AVMusicTemplateDescriptor
-
-音频模板描述。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
-
-| 名称       | 类型   | 只读 | 可选 | 说明               |
-| ---------- | ------ | ---- | ---- | ------------------ |
-| sessionId  | string | 否   | 否   | 音频模板唯一标识。 |
-| bundleName | string | 否   | 否   | 应用的包名。 |
-| userId     | number   | 否   | 否   | 用户ID。           |
-
 ## MediaTab
 
 媒体标签页的定义。
