@@ -1635,11 +1635,11 @@ ArkTS-Sta: loadFontSyncWithCheck(name: string, path: string | Resource, index?: 
 
 同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf、ttc。
 
-**卡片能力：** 该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
-**原子化服务API**：该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 23
 
@@ -1756,11 +1756,11 @@ ArkTS-Sta: loadFontWithCheck(name: string, path: string | Resource, index?: int)
 
 加载自定义字体，使用Promise异步回调。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含：ttf、otf、ttc。
 
-**卡片能力：** 该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
-**原子化服务API**：该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 23
 
