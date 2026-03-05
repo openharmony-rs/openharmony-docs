@@ -1165,7 +1165,7 @@ float OH_ArkUI_PointerEvent_GetTiltY(const ArkUI_UIInputEvent* event, uint32_t p
 **Description**
 
 
-Obtains the angle relative to the XZ plane from a pointer event (for example, a touch event). The value range is [–90, 90], in deg. A positive value indicates a rightward tilt. This API is applicable only to stylus-based touch events from devices that support tilt angle reporting.
+Obtains the angle relative to the XZ plane from a pointer event (for example, a touch event). The value range is [–90, 90], in deg. A positive value indicates a downward tilt. This API is applicable only to stylus-based touch events from devices that support tilt angle reporting.
 
 **Since**: 12
 

@@ -1,7 +1,7 @@
 # Handling Touchscreen Input Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -15,7 +15,7 @@ It should be noted that for touch-like operations from non-touchscreen devices, 
 
 ## Touch Event
 
-Touch events can be captured using the universal attribute [onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch) on components. The callback response follows hit testing rules.
+Touch events can be captured using the universal event [onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch) on components. The callback response follows hit testing rules.
 
 The reporting frequency of touch events is downsampled by the system to match the screen refresh rate. For details, see [Resampling and Historical Points](#resampling-and-historical-points).
 
@@ -188,7 +188,7 @@ Below is the log output of the preceding example during the following operation 
 
 Press finger 1 -> Press finger 2 -> Press finger 3 -> Lift finger 2 -> Lift finger 3 -> Press finger 2 -> Lift finger 1 -> Lift finger 3
 
-```
+```text
   fingers start to press down   // Press finger 1.
   current all fingers: 0
   ... ...

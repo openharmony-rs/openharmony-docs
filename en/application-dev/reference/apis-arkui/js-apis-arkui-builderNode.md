@@ -91,7 +91,7 @@ Defines the optional build options.
 | ------------- | ----------------- | ---- | ---- | ------------------------------------------------------------ |
 | nestingBuilderSupported | boolean | No  | Yes  | Whether to support nested **@Builder** within **@Builder**. **true** if supported, **false** otherwise.<br>Default value: **false**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | localStorage<sup>20+</sup> | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | No  | Yes  | LocalStorage for the current BuilderNode. Custom components mounted under this BuilderNode will share the specified LocalStorage. **NOTE**<br>If LocalStorage is also passed through a custom component's constructor, the constructor parameter takes precedence.<br>Default value: **null**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| enableProvideConsumeCrossing<sup>20+</sup> | boolean | No  | Yes  | Defines whether data is synchronized between @Consume provided by [State Management V1](../../ui/state-management/arkts-state-management-overview.md#state-management-v1) in **BuilderNode** and @Provide outside **BuilderNode** and whether data is synchronized between @Consume provided by [State Management V2](../../ui/state-management/arkts-state-management-overview.md#state-management-v2) in **BuilderNode** and @Provider outside **BuilderNode**.<br>V1 custom component state management is supported since API version 20. V2 custom component state management is supported since API version 22.<br>The value **true** means that this feature is supported, and **false** means the opposite.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| enableProvideConsumeCrossing<sup>20+</sup> | boolean | No  | Yes  | Defines whether two-way synchronization is supported between the [@Consume](../../ui/state-management/arkts-provide-and-consume.md) decorated variable of the custom component of [state management V1](../../ui/state-management/arkts-state-management-overview.md#state-management-v1) inside the **BuilderNode** and the [@Provide](../../ui/state-management/arkts-provide-and-consume.md) decorated variable outside the **BuilderNode**, and whether two-way synchronization is supported between the [@Consumer](../../ui/state-management/arkts-new-provider-and-consumer.md) decorated variable of the custom component of [state management V2](../../ui/state-management/arkts-state-management-overview.md#state-management-v2) inside the **BuilderNode** and the [@Provider](../../ui/state-management/arkts-new-provider-and-consumer.md) decorated variable outside the **BuilderNode**.<br>API version 20 and later versions support two-way synchronization for the custom component of state management V1. API version 22 and later versions support two-way synchronization for the custom component of state management V2.<br>The value **true** means that this feature is supported, and **false** means the opposite.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## InputEventType<sup>20+</sup>
 
@@ -604,7 +604,7 @@ Posts a raw touch event to the FrameNode created by this BuilderNode.
 
 **postTouchEvent** dispatches the event from a middle node in the component tree downwards. To ensure the event is dispatched correctly, it needs to be transformed into the coordinate system of the parent component, as shown in the figure below.
 
-**OffsetA** indicates the offset of the BuildNode relative to the parent component. You can obtain this offset by calling [getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12) in the FrameNode. **OffsetB** indicates the offset of the touch point relative to the BuildNode. You can obtain this offset from the [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent) object. **OffsetC** is the sum of **OffsetA** and **OffsetB**. It represents the final offset that you need to pass to **postTouchEvent**.
+**OffsetA** indicates the offset of the BuilderNode relative to the parent component. You can obtain this offset by calling [getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12) in the FrameNode. **OffsetB** indicates the offset of the touch point relative to the BuilderNode. You can obtain this offset from the [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent) object. **OffsetC** is the sum of **OffsetA** and **OffsetB**. It represents the final offset that you need to pass to **postTouchEvent**.
 
 ![postTouchEvent](figures/postTouchEvent.PNG)
 
@@ -694,7 +694,7 @@ class MyNodeController extends NodeController {
     }
     // Post the event to the FrameNode created by BuilderNode. result indicates whether the post is successful.
     let result = this.rootNode.postTouchEvent(event);
-    console.info("result " + result);
+    console.info(`result ${result}`);
     return result;
   }
 }
@@ -933,7 +933,7 @@ struct ReusableChildComponent {
   aboutToRecycle(): void {
     console.info(`${TEST_TAG} ReusableChildComponent aboutToRecycle ${this.item}`);
 
-    // When the switch is open, pass the recycle event to the nested custom component, such as ReusableChildComponent2, through the BuilderNode's recycle API to complete recycling.
+    // When the switch is open, pass the reuse or recycle event to the nested custom component, such as ReusableChildComponent2, through the BuilderNode's reuse or recycle API to complete reuse or recycling.
     if (this.switch === 'open') {
       this.controller?.builderNode?.recycle();
     }
@@ -942,7 +942,7 @@ struct ReusableChildComponent {
   aboutToReuse(params: object): void {
     console.info(`${TEST_TAG} ReusableChildComponent aboutToReuse ${JSON.stringify(params)}`);
 
-    // When the switch is open, pass the reuse event to the nested custom component, such as ReusableChildComponent2, through the BuilderNode's reuse API to complete reuse.
+    // When the switch is open, pass the reuse or recycle event to the nested custom component, such as ReusableChildComponent2, through the BuilderNode's reuse or recycle API to complete reuse or recycling.
     if (this.switch === 'open') {
       this.controller?.builderNode?.reuse(params);
     }
@@ -1151,7 +1151,7 @@ struct Index {
         console.info('onMemoryLevel');
       },
       onConfigurationUpdated: (config: Configuration): void => {
-        console.info('onConfigurationUpdated ' + JSON.stringify(config));
+        console.info(`onConfigurationUpdated ${JSON.stringify(config)}`);
         this.getUIContext()?.postFrameCallback(new MyFrameCallback());
       }
     };
@@ -1205,7 +1205,7 @@ struct Index {
 
 isDisposed(): boolean
 
-Checks whether this BuilderNode object has released its reference to its backend entity node. All frontend nodes are bound to corresponding backend entity nodes. After **dispose()** is called, subsequent calls may cause crashes or return default values. This API facilitates validation of node validity prior to operations, thereby mitigating risks in scenarios where calls after disposal are required.
+Checks whether this BuilderNode object has released its reference to its backend entity node. Frontend nodes maintain references to corresponding backend entity nodes. After a node calls the **dispose** API to release this reference, subsequent API calls may cause crashes or return default values. This API facilitates validation of node validity prior to operations, thereby mitigating risks in scenarios where calls after disposal are required.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -1280,12 +1280,11 @@ class MyNodeController extends NodeController {
   }
 
   // Check whether the builderNode has been released.
-  isDisposed() : string{
+  isDisposed(): string {
     if (this.builderNode !== null) {
       if (this.builderNode.isDisposed()) {
         return 'builderNode isDisposed is true';
-      }
-      else {
+      } else {
         return 'builderNode isDisposed is false';
       }
     }
@@ -1419,7 +1418,8 @@ class Params {
   }
 }
 
-@Builder // Builder component
+@Builder
+// Builder component
 function buildText(params: Params) {
 
   Column() {
@@ -1558,7 +1558,8 @@ struct pageTwoStack { // Page 2
   }
 }
 
-@Component({ freezeWhenInactive: true }) // Set the freeze policy to freeze when inactive.
+@Component({ freezeWhenInactive: true })
+  // Set the freeze policy to inactive freeze.
 struct NavigationContentMsgStack {
   @Link message: number;
   @Link index: number;
@@ -1573,10 +1574,11 @@ struct NavigationContentMsgStack {
   }
 }
 
-@Component({ freezeWhenInactive: true }) // Set the freeze policy to freeze when inactive.
+@Component({ freezeWhenInactive: true })
+  // Set the freeze policy to inactive freeze.
 struct TextBuilder {
   @Prop @Watch("info") message: number = 0;
-  @State count : number = 0;
+  @State count: number = 0;
 
   info() {
     this.count++;
@@ -1715,7 +1717,7 @@ struct Index {
 
 getFrameNode(): FrameNode | null
 
-Obtains the [FrameNode](js-apis-arkui-frameNode.md) in the **ReactiveBuilderNode**. The FrameNode is generated only after the ReactiveBuilderNode executes the build operation.
+Obtains the [FrameNode](js-apis-arkui-frameNode.md) from the **ReactiveBuilderNode**. The FrameNode is generated only after the ReactiveBuilderNode executes the build operation.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1831,7 +1833,7 @@ Posts a raw touch event to the **FrameNode** created by a **ReactiveBuilderNode*
 
 **postTouchEvent** dispatches the event from a middle node in the component tree downwards. To ensure the event is dispatched correctly, it needs to be transformed into the coordinate system of the parent component, as shown in the figure below.
 
-**OffsetA** indicates the offset of the BuildNode relative to the parent component. You can obtain this offset by calling [getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12) in the FrameNode. **OffsetB** indicates the offset of the touch point relative to the BuildNode. You can obtain this offset from the [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent) object. **OffsetC** is the sum of **OffsetA** and **OffsetB**. It represents the final offset that you need to pass to **postTouchEvent**.
+**OffsetA** indicates the offset of the BuilderNode relative to the parent component. You can obtain this offset by calling [getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12) in the FrameNode. **OffsetB** indicates the offset of the touch point relative to the BuilderNode. You can obtain this offset from the [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent) object. **OffsetC** is the sum of **OffsetA** and **OffsetB**. It represents the final offset that you need to pass to **postTouchEvent**.
 
 ![postTouchEvent](figures/postTouchEvent.PNG)
 
@@ -1860,7 +1862,7 @@ Posts a raw touch event to the **FrameNode** created by a **ReactiveBuilderNode*
 
 | Type   | Description              |
 | ------- | ------------------ |
-| boolean | Whether the event is successfully dispatched. Returns **true** if the event is successfully dispatched; returns **false** otherwise.<br>**NOTE**<br>If the component is not hit as expected, check the following:<br>1. The coordinate system has been correctly transformed<br>2. The component is in an interactive state.<br>3. The event has been bound to the component.|
+| boolean | Whether the event is successfully dispatched. Returns **true** if the event is successfully dispatched; returns **false** otherwise.<br>**NOTE**<br>If the event does not hit the expected component, ensure the following:<br>1. The coordinate system has been correctly transformed<br>2. The component is in an interactive state.<br>3. The event has been bound to the component.|
 
 **Example**
 
@@ -1922,7 +1924,7 @@ class MyNodeController extends NodeController {
       }
     }
     let result = this.rootNode.postTouchEvent(event);
-    console.info('result ' + result);
+    console.info(`result ${result}`);
     return result;
   }
 }
@@ -2409,7 +2411,7 @@ struct Index {
         console.info('onMemoryLevel');
       },
       onConfigurationUpdated: (config: Configuration): void => {
-        console.info('onConfigurationUpdated ' + JSON.stringify(config));
+        console.info(`onConfigurationUpdated ${JSON.stringify(config)}`);
         this.getUIContext()?.postFrameCallback(new MyFrameCallback());
       }
     };
@@ -2491,14 +2493,16 @@ class GeneratedObjectLiteralInterface_1 {
   constructor(age: number) {
     this.age = age;
   }
+
   @Trace age: number = 0;
 }
 
 // Use a common class (V1 decorator style). You need to manually trigger the update.
 class GeneratedObjectLiteralInterface_2 {
-  constructor(age: number ) {
+  constructor(age: number) {
     this.age = age;
   }
+
   age: number = 0;
 }
 
@@ -2508,7 +2512,6 @@ struct Index {
   private content: NodeContent = new NodeContent();
   params: GeneratedObjectLiteralInterface_1 = new GeneratedObjectLiteralInterface_1(25);
   params2: GeneratedObjectLiteralInterface_2 = new GeneratedObjectLiteralInterface_2(25);
-
   private node1: ReactiveBuilderNode<[Binding<number>]> | null = null
 
   build() {
@@ -2589,7 +2592,7 @@ Posts the input event to the target node managed by the **ReactiveBuilderNode**.
 >
 > A forwarded event undergoes touch testing in the target component's subtree and triggers corresponding gestures. The original event also triggers gestures in the source component tree. There is no guaranteed outcome for gesture competition between these two types of gestures.
 >
-> For the event you constructs, the mandatory fields must be assigned values, for example, the **touches** field of the touch event and the **scrollStep** field of the axis event. In addition, ensure the completeness of the event, for example, both **DOWN** and **UP** in [TouchType](arkui-ts/ts-appendix-enums.md#touchtype) of the touch event must be included to prevent undefined behavior.
+> For the event you construct, the mandatory fields must be assigned values, for example, the **touches** field of the touch event and the **scrollStep** field of the axis event. In addition, ensure the completeness of the event, for example, both **DOWN** and **UP** in [TouchType](arkui-ts/ts-appendix-enums.md#touchtype) of the touch event must be included to prevent undefined behavior.
 >
 > [webview](../apis-arkweb/arkts-apis-webview.md) has already handled coordinate system transformation, so events can be dispatched delivered.
 >
@@ -2817,7 +2820,8 @@ struct pageTwoStack { // Page 2
   }
 }
 
-@Component({ freezeWhenInactive: true }) // Enable the freeze policy when the page is inactive.
+@Component({ freezeWhenInactive: true })
+  // Enable the freeze policy when the page is inactive.
 struct NavigationContentMsgStack {
   @Link message: number;
   @Link index: number;
@@ -2925,7 +2929,7 @@ class MyNodeController extends NodeController {
     this.rootNode = new FrameNode(uiContext);
     this.builderNode = new ReactiveBuilderNode(uiContext, { selfIdealSize: { width: 200, height: 100 } });
     // Build the ReactiveBuilderNode content and use WrappedBuilder to wrap the Builder function.
-    this.builderNode.build(new WrappedBuilder(buildComponent),{});
+    this.builderNode.build(new WrappedBuilder(buildComponent), {});
 
     const rootRenderNode = this.rootNode!.getRenderNode();
     if (rootRenderNode !== null) {
@@ -2946,12 +2950,11 @@ class MyNodeController extends NodeController {
   }
 
   // Check whether the node has been released.
-  isDisposed() : string{
+  isDisposed(): string {
     if (this.builderNode !== null) {
       if (this.builderNode.isDisposed()) {
         return 'builderNode isDisposed is true';
-      }
-      else {
+      } else {
         return 'builderNode isDisposed is false';
       }
     }
@@ -3073,12 +3076,8 @@ class MyNodeController extends NodeController {
 
     let mouseEvent = event as MouseEvent;
     if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x)
-      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y)
-      mouseEvent.displayX = uiContext.vp2px(offsetX + mouseEvent.x)
-      mouseEvent.displayY = uiContext.vp2px(offsetY + mouseEvent.y)
-      mouseEvent.x = uiContext.vp2px(mouseEvent.x)
-      mouseEvent.y = uiContext.vp2px(mouseEvent.y)
+      mouseEvent.x = uiContext.vp2px(offsetX + mouseEvent.x);
+      mouseEvent.y = uiContext.vp2px(offsetY + mouseEvent.y);
     }
     // Post the mouse event to the FrameNode created by BuilderNode. result indicates whether the post is successful.
     let result = this.rootNode.postInputEvent(event);
@@ -3098,19 +3097,15 @@ class MyNodeController extends NodeController {
     let changedTouchLen = touchEvent.changedTouches.length;
     for (let i = 0; i < changedTouchLen; i++) {
       if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-        touchEvent.changedTouches[i].windowX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-        touchEvent.changedTouches[i].windowY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
-        touchEvent.changedTouches[i].displayX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-        touchEvent.changedTouches[i].displayY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
+        touchEvent.changedTouches[i].x = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
+        touchEvent.changedTouches[i].y = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
       }
     }
     let touchesLen = touchEvent.touches.length;
     for (let i = 0; i < touchesLen; i++) {
       if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-        touchEvent.touches[i].windowX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-        touchEvent.touches[i].windowY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
-        touchEvent.touches[i].displayX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-        touchEvent.touches[i].displayY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
+        touchEvent.touches[i].x = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
+        touchEvent.touches[i].y = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
       }
     }
     // Post the touch event to the FrameNode created by BuilderNode. result indicates whether the post is successful.
@@ -3146,6 +3141,7 @@ struct MyComponent {
     }.offset({ top: 100 })
   }
 }
+
 ```
 
 ![OnMouse](figures/OnMouse.gif)
@@ -3155,13 +3151,14 @@ struct MyComponent {
 This example demonstrates the end-to-end process for intercepting touch events in a custom component and transforming touch point coordinates. The implementation: 1. iterates through **changedTouches** and **touches** arrays of [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent) in the [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch) callback; 2. for each touch point, adds the component offset to the X and Y coordinates and converts the result to pixels using **vp2px**; 3. updates the **windowX**, **windowY**, **displayX**, and **displayY** values of each touch point; 4. posts the processed touch event to child nodes using **rootNode.postInputEvent(event)**.
 
 ```ts
-import { NodeController, BuilderNode, FrameNode, UIContext, PromptAction, InputEventType  } from '@kit.ArkUI';
+import { NodeController, BuilderNode, FrameNode, UIContext, PromptAction, InputEventType } from '@kit.ArkUI';
 
 // Define the class for passing parameters.
 class Params {
   text: string = "this is a text"
   uiContext: UIContext | null = null
 }
+
 @Builder
 function ButtonBuilder(params: Params) {
   Column() {
@@ -3187,10 +3184,12 @@ function ButtonBuilder(params: Params) {
   .height(300)
   .backgroundColor(Color.Gray)
 }
+
 // Implement a custom UI controller by extending NodeController.
 class MyNodeController extends NodeController {
   private rootNode: BuilderNode<[Params]> | null = null;
   private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder);
+
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new BuilderNode(uiContext);
     this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
@@ -3212,19 +3211,15 @@ class MyNodeController extends NodeController {
       let changedTouchLen = touchEvent.changedTouches.length;
       for (let i = 0; i < changedTouchLen; i++) {
         if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-          touchEvent.changedTouches[i].windowX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-          touchEvent.changedTouches[i].windowY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
-          touchEvent.changedTouches[i].displayX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-          touchEvent.changedTouches[i].displayY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
+          touchEvent.changedTouches[i].x = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
+          touchEvent.changedTouches[i].y = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
         }
       }
       let touchesLen = touchEvent.touches.length;
       for (let i = 0; i < touchesLen; i++) {
         if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-          touchEvent.touches[i].windowX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-          touchEvent.touches[i].windowY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
-          touchEvent.touches[i].displayX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-          touchEvent.touches[i].displayY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
+          touchEvent.touches[i].x = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
+          touchEvent.touches[i].y = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
         }
       }
     }
@@ -3234,10 +3229,12 @@ class MyNodeController extends NodeController {
     return result;
   }
 }
+
 @Entry
 @Component
 struct MyComponent {
   private nodeController: MyNodeController = new MyNodeController();
+
   build() {
     Stack() {
       NodeContainer(this.nodeController)
@@ -3252,7 +3249,7 @@ struct MyComponent {
             this.nodeController.postInputEvent(event, this.getUIContext());
           }
         })
-    }.offset({top: 100})
+    }.offset({ top: 100 })
   }
 }
 ```
@@ -3271,6 +3268,7 @@ class Params {
   text: string = "this is a text"
   uiContext: UIContext | null = null
 }
+
 @Builder
 function ButtonBuilder(params: Params) {
   Column() {
@@ -3296,10 +3294,12 @@ function ButtonBuilder(params: Params) {
   .height(300)
   .backgroundColor(Color.Gray)
 }
+
 // Implement a custom UI controller by extending NodeController.
 class MyNodeController extends NodeController {
   private rootNode: BuilderNode<[Params]> | null = null;
   private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder);
+
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new BuilderNode(uiContext);
     this.rootNode.build(this.wrapBuilder, { text: "This is a string", uiContext })
@@ -3317,22 +3317,20 @@ class MyNodeController extends NodeController {
 
     let axisEvent = event as AxisEvent;
     if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      axisEvent.windowX = uiContext.vp2px(offsetX + axisEvent.x)
-      axisEvent.windowY = uiContext.vp2px(offsetY + axisEvent.y)
-      axisEvent.displayX = uiContext.vp2px(offsetX + axisEvent.x)
-      axisEvent.displayY = uiContext.vp2px(offsetY + axisEvent.y)
-      axisEvent.x = uiContext.vp2px(axisEvent.x)
-      axisEvent.y = uiContext.vp2px(axisEvent.y)
+      axisEvent.x = uiContext.vp2px(offsetX + axisEvent.x);
+      axisEvent.y = uiContext.vp2px(offsetY + axisEvent.y);
     }
     // Post the axis event to the FrameNode created by BuilderNode. result indicates whether the post is successful.
     let result = this.rootNode.postInputEvent(event);
     return result;
   }
 }
+
 @Entry
 @Component
 struct MyComponent {
   private nodeController: MyNodeController = new MyNodeController();
+
   build() {
     Stack() {
       NodeContainer(this.nodeController)
@@ -3347,7 +3345,7 @@ struct MyComponent {
             this.nodeController.postInputEvent(event, this.getUIContext());
           }
         })
-    }.offset({top: 100})
+    }.offset({ top: 100 })
   }
 }
 ```
@@ -3362,6 +3360,7 @@ import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
 // Define the class for passing parameters.
 class Params {
   text: string = ""
+
   constructor(text: string) {
     this.text = text;
   }
@@ -3381,12 +3380,14 @@ function buildText(params: Params) {
 // Implement a custom textNode controller by extending NodeController.
 class TextNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
+
   makeNode(context: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(context);
     if (globalBuilderNode === null) {
       globalBuilderNode = new BuilderNode(context);
       // Pass the external LocalStorage to be shared by all custom components mounted to the current BuilderNode.
-      globalBuilderNode.build(wrapBuilder<[Params]>(buildText), new Params('builder node text'), { localStorage: localStorage1 })
+      globalBuilderNode.build(wrapBuilder<[Params]>(buildText), new Params('builder node text'),
+        { localStorage: localStorage1 })
     }
     this.rootNode.appendChild(globalBuilderNode.getFrameNode());
     return this.rootNode;
@@ -3402,21 +3403,24 @@ localStorage1.setOrCreate('PropA', 'PropA');
 struct Index {
   private controller: TextNodeController = new TextNodeController();
   @LocalStorageLink('PropA') PropA: string = 'Hello World';
+
   build() {
     Row() {
       Column() {
         Text(this.PropA)
         NodeContainer(this.controller)
-        Button('changeLocalstorage').onClick(()=>{
-          localStorage1.set('PropA','AfterChange')
+        Button('changeLocalstorage').onClick(() => {
+          localStorage1.set('PropA', 'AfterChange')
         })
       }
     }
   }
 }
+
 @Component
 struct CustomComp {
   @LocalStorageLink('PropA') PropA: string = 'Hello World';
+
   build() {
     Row() {
       Column() {
@@ -3429,7 +3433,7 @@ struct CustomComp {
 
 ### Example 5: Configuring the BuilderNode for Cross-Boundary @Provide-@Consume Communication
 
-This example demonstrates how to enable data flow between @Provide in host components and @Consume in the BuilderNode's internal components by setting **enableProvideConsumeCrossing** to **true** in [BuildOptions](#buildoptions12).
+Set **enableProvideConsumeCrossing** in [BuildOptions](#buildoptions12) of the **BuilderNode** to **true** to implement two-way synchronization between the @Consume decorated variable of the custom component inside the **BuilderNode** and the @Provide decorated variable outside the **BuilderNode**.
 
 ```ts
 import { BuilderNode, NodeContent } from '@kit.ArkUI';
@@ -3437,7 +3441,7 @@ import { BuilderNode, NodeContent } from '@kit.ArkUI';
 // Custom component
 @Component
 struct ConsumeChild {
-  // Establish connection with external @Provider data.
+  // Two-way synchronization with the state variable decorated with the @Provider outside the BuilderNode.
   @Consume @Watch("ChangeData") message: string = ""
 
   ChangeData() {
@@ -3472,13 +3476,13 @@ function CreateText(textMessage: string) {
 @Entry
 @Component
 struct Index {
-  // Establish connection with internal @Consumer data.
+  // Two-way synchronization with the state variable decorated with the @Consumer inside the BuilderNode.
   @Provide message: string = 'Hello World';
   private content: NodeContent = new NodeContent();
   private builderNode: BuilderNode<[string]> = new BuilderNode<[string]>(this.getUIContext());
 
   aboutToAppear(): void {
-    // Set enableProvideConsumeCrossing to true. Enable data flow between @Provide in host components and @Consume in BuilderNode's internal components.
+    // Set enableProvideConsumeCrossing to true to support two-way synchronization between the @Consume decorated variable of the custom component ConsumeChild inside the BuilderNode and the @Provide decorated variable on the page where the ConsumeChild component is located.
     this.builderNode.build(wrapBuilder(CreateText), "Test Consume", { enableProvideConsumeCrossing: true })
     this.content.addFrameNode(this.builderNode.getFrameNode())
   }
@@ -3511,7 +3515,7 @@ struct Index {
 >
 > Since API version 22, cross-BuilderNode pairing of @Provider and @Consumer is supported.
 
-This example demonstrates how to enable data flow between @Provider in host components and @Consumer in the BuilderNode's internal components by setting **enableProvideConsumeCrossing** to **true** in [BuildOptions](#buildoptions12).
+Set **enableProvideConsumeCrossing** in [BuildOptions](#buildoptions12) of the **BuilderNode** to **true** to support two-way synchronization between the @Consumer decorated state variable of the custom component inside the **BuilderNode** and the @Provider decorated state variable outside the **BuilderNode**.
 
 ```ts
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -3534,7 +3538,7 @@ class TextNodeControllerAdd extends NodeController {
     console.info('TextNodeControllerAdd makeNode');
     this.builderNode = new BuilderNode(context);
     // Build the builderNode and set enableProvideConsumeCrossing to true.
-    this.builderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+    this.builderNode.build(wrapBuilder<[]>(buildText), undefined, { enableProvideConsumeCrossing: true });
     return this.builderNode.getFrameNode();
   }
 }
@@ -3542,7 +3546,9 @@ class TextNodeControllerAdd extends NodeController {
 @ComponentV2
 struct addChildChild {
   @Consumer() content: string = 'default value';
-  @Monitor('content') consumeWatch() {
+
+  @Monitor('content')
+  consumeWatch() {
     console.info(`Consumer change ${this.content}`);
   }
 
@@ -3561,9 +3567,11 @@ struct addChildChild {
 @Entry
 @ComponentV2
 struct AddChild {
-  // Establish connection with @Consumer data.
+  // Two-way synchronization with the state variable decorated with the @Consumer.
   @Provider() content: string = 'Index: hello world';
-  @Monitor('content') providerWatch() {
+
+  @Monitor('content')
+  providerWatch() {
     console.info(`Provider change ${this.content}`);
   }
 
@@ -3623,7 +3631,7 @@ class TextNodeController extends NodeController {
   addBuilderNode(): void {
     if (globalBuilderNode === null && this.uiContext) {
       globalBuilderNode = new BuilderNode(this.uiContext);
-      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, { enableProvideConsumeCrossing: true });
     }
     if (this.rootNode && globalBuilderNode) {
       this.rootNode.appendChild(globalBuilderNode.getFrameNode());
@@ -3647,13 +3655,16 @@ class TextNodeController extends NodeController {
 @ComponentV2
 struct RemoChildDisconnectProvider {
   @Provider() content: string = 'Index: hello world';
-  @Monitor('content') providerWatch() {
+
+  @Monitor('content')
+  providerWatch() {
     console.info(`Provider change ${this.content}`);
   }
+
   controllerIndex: TextNodeController = new TextNodeController();
 
   build() {
-    Column({space: 8}) {
+    Column({ space: 8 }) {
       Text(`Provider: ${this.content}`)
       Button('add child')
         .onClick(() => {
@@ -3668,7 +3679,7 @@ struct RemoChildDisconnectProvider {
       Button('dispose child')
         .onClick(() => {
           this.controllerIndex.disposeNode();
-      })
+        })
 
       Button('change Provider')
         .onClick(() => {
@@ -3685,7 +3696,9 @@ struct RemoChildDisconnectProvider {
 @ComponentV2
 struct TestRemove {
   @Consumer() content: string = 'default value';
-  @Monitor('content') consumerWatch() {
+
+  @Monitor('content')
+  consumerWatch() {
     console.info(`Consumer change ${this.content}`);
   }
 
@@ -3742,7 +3755,7 @@ class TextNodeController extends NodeController {
   addBuilderNode(): void {
     if (globalBuilderNode === null && this.uiContext) {
       globalBuilderNode = new BuilderNode(this.uiContext);
-      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, { enableProvideConsumeCrossing: true });
     }
     if (this.rootNode && globalBuilderNode) {
       this.rootNode.appendChild(globalBuilderNode.getFrameNode());
@@ -3760,19 +3773,22 @@ class TextNodeController extends NodeController {
 @ComponentV2
 struct AddRemoveAddToAnother {
   @Provider() content: string = 'Index: hello world';
-  @Monitor('content') providerWatch() {
+
+  @Monitor('content')
+  providerWatch() {
     console.info(`Provider change ${this.content}`);
   }
+
   controllerIndex: TextNodeController = new TextNodeController();
 
   build() {
-    Column({space: 8}) {
+    Column({ space: 8 }) {
       Text(`Index Provider: ${this.content}`)
 
       Button('add child')
         .onClick(() => {
           this.controllerIndex.addBuilderNode();
-      })
+        })
 
       Button('change Index Provide')
         .onClick(() => {
@@ -3781,7 +3797,7 @@ struct AddRemoveAddToAnother {
         })
 
       NodeContainer(this.controllerIndex);
-      ChildHasProvide({controllerIndex: this.controllerIndex});
+      ChildHasProvide({ controllerIndex: this.controllerIndex });
     }
     .width('100%')
     .height('100%')
@@ -3791,14 +3807,17 @@ struct AddRemoveAddToAnother {
 @ComponentV2
 struct ChildHasProvide {
   @Provider('content') content: string = 'Child: hello world';
-  @Monitor('content') providerWatch() {
+
+  @Monitor('content')
+  providerWatch() {
     console.info(`Provider change ${this.content}`);
   }
+
   @Param private controllerIndex: TextNodeController | undefined = undefined;
   controllerIndexChild: TextNodeController = new TextNodeController();
 
   build() {
-    Column() {
+    Column({ space: 8 }) {
       Text(`Child Provider: ${this.content}`)
 
       Button('change Child Provide')
@@ -3811,7 +3830,7 @@ struct ChildHasProvide {
         .onClick(() => {
           this.controllerIndex?.removeBuilderNode();
           this.controllerIndexChild.addBuilderNode();
-      })
+        })
       NodeContainer(this.controllerIndexChild);
     }
   }
@@ -3820,7 +3839,9 @@ struct ChildHasProvide {
 @ComponentV2
 struct ConsumerChild {
   @Consumer() content: string = 'default value';
-  @Monitor('content') consumerWatch() {
+
+  @Monitor('content')
+  consumerWatch() {
     console.info(`Consumer change ${this.content}`);
   }
 
@@ -3850,10 +3871,11 @@ This example demonstrates how the synchronization relationship between @Consumer
 import { BuilderNode, FrameNode, NodeContent, NodeController } from '@kit.ArkUI';
 
 let content: NodeContent = new NodeContent();
+
 @Builder
 function buildText() {
   Column() {
-    BuildNodeToBuildNodeChild().border({width: 2, color: Color.Pink, radius: 5});
+    BuildNodeToBuildNodeChild().border({ width: 2, color: Color.Pink, radius: 5 });
     ContentSlot(content);
   }
 }
@@ -3861,7 +3883,7 @@ function buildText() {
 @Builder
 function buildText2() {
   Column() {
-    BuildNodeToBuildNodeChild().border({width: 2, color: Color.Pink, radius: 5});
+    BuildNodeToBuildNodeChild().border({ width: 2, color: Color.Pink, radius: 5 });
   }
 }
 
@@ -3886,7 +3908,7 @@ class TextNodeControllerAdd extends NodeController {
   addBuilderNode(): void {
     if (globalBuilderNode === null && this.uiContext) {
       globalBuilderNode = new BuilderNode(this.uiContext);
-      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, { enableProvideConsumeCrossing: true });
     }
     if (this.rootNode && globalBuilderNode) {
       this.rootNode.appendChild(globalBuilderNode.getFrameNode());
@@ -3904,25 +3926,28 @@ class TextNodeControllerAdd extends NodeController {
 @ComponentV2
 struct BuildNodeToBuildNode {
   @Provider() content: string = 'Index: hello world';
-  @Monitor('content') providerWatch() {
+
+  @Monitor('content')
+  providerWatch() {
     console.info(`Provider change ${this.content}`);
   }
+
   controllerIndex: TextNodeControllerAdd = new TextNodeControllerAdd();
 
   build() {
-    Column({space: 8}) {
+    Column({ space: 8 }) {
       Text(`Provider: ${this.content}`)
       Button('add child')
         .onClick(() => {
           this.controllerIndex.addBuilderNode();
-      })
+        })
       // builderNode is nested in builderNode.
       Button('add to NodeContent')
         .onClick(() => {
           globalBuilderNode2 = new BuilderNode(this.getUIContext());
-          globalBuilderNode2.build(wrapBuilder<[]>(buildText2), undefined, {enableProvideConsumeCrossing: true});
+          globalBuilderNode2.build(wrapBuilder<[]>(buildText2), undefined, { enableProvideConsumeCrossing: true });
           content.addFrameNode(globalBuilderNode2.getFrameNode());
-      })
+        })
       Button('change Provider')
         .onClick(() => {
           // Modify the @Provider decorated variable.
@@ -3939,7 +3964,9 @@ struct BuildNodeToBuildNode {
 struct BuildNodeToBuildNodeChild {
   // When not mounted in the tree, the Test component has no parent view, and this node is off-screen. @Consumer cannot find the corresponding @Provider and uses the default value.
   @Consumer() content: string = 'default value';
-  @Monitor('content') consumerWatch() {
+
+  @Monitor('content')
+  consumerWatch() {
     console.info(`Consumer change ${this.content}`);
   }
 
@@ -3992,7 +4019,7 @@ class TextNodeController extends NodeController {
   addBuilderNode(): void {
     if (globalBuilderNode === null && this.uiContext) {
       globalBuilderNode = new BuilderNode(this.uiContext);
-      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, { enableProvideConsumeCrossing: true });
     }
     if (this.rootNode && globalBuilderNode) {
       this.rootNode.appendChild(globalBuilderNode.getFrameNode());
@@ -4016,29 +4043,32 @@ class TextNodeController extends NodeController {
 @ComponentV2
 struct NestedComponent {
   @Provider() content: string = 'Index: hello world';
-  @Monitor('content') providerWatch() {
+
+  @Monitor('content')
+  providerWatch() {
     console.info(`Provider change ${this.content}`);
   }
+
   controllerIndex: TextNodeController = new TextNodeController();
 
   build() {
-    Column({space: 8}) {
+    Column({ space: 8 }) {
       Text(`Provider: ${this.content}`)
 
       Button('add child')
         .onClick(() => {
           this.controllerIndex.addBuilderNode();
-      })
+        })
 
       Button('remove child')
         .onClick(() => {
           this.controllerIndex.removeBuilderNode();
-      })
+        })
 
       Button('dispose child')
         .onClick(() => {
           this.controllerIndex.disposeNode();
-      })
+        })
 
       Button('change Provider')
         .onClick(() => {
@@ -4055,7 +4085,9 @@ struct NestedComponent {
 @ComponentV2
 struct NestedComponentChild {
   @Consumer() content: string = 'default value';
-  @Monitor('content') consumerWatch() {
+
+  @Monitor('content')
+  consumerWatch() {
     console.info(`Consumer change ${this.content}`);
   }
 
@@ -4072,7 +4104,7 @@ struct NestedComponentChild {
           // Modify the @Consumer decorated variable.
           this.content += 'content';
         })
-      NestedComponentChildChld({content: this.content, addContent: () => this.content += 'content'});
+      NestedComponentChildChld({ content: this.content, addContent: () => this.content += 'content' });
     }
   }
 }
@@ -4080,9 +4112,11 @@ struct NestedComponentChild {
 @ComponentV2
 struct NestedComponentChildChld {
   // When not mounted in the tree, the Test component has no parent view, and this node is off-screen. @Consumer cannot find the corresponding @Provider and uses the default value.
-  @Param@Require content: string;
+  @Param @Require content: string;
   @Event addContent: () => void;
-  @Monitor('content') paramEventWatch() {
+
+  @Monitor('content')
+  paramEventWatch() {
     console.info(`ParamEvent change ${this.content}`);
   }
 
@@ -4139,7 +4173,7 @@ class TextNodeController extends NodeController {
   addBuilderNode(): void {
     if (globalBuilderNode === null && this.uiContext) {
       globalBuilderNode = new BuilderNode(this.uiContext);
-      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, { enableProvideConsumeCrossing: true });
     }
     if (this.rootNode && globalBuilderNode) {
       this.rootNode.appendChild(globalBuilderNode.getFrameNode());
@@ -4161,15 +4195,17 @@ class TextNodeController extends NodeController {
 
 @Entry
 @ComponentV2
-// Establish connection with @Consumer data.
+  // Two-way synchronization with the state variable decorated with the @Consumer.
 struct ProvideConsumeBuilderNodeConsume {
-  @Provider() content : Ob = new Ob();
-  @Monitor('content') providerWatch() {
+  @Provider() content: Ob = new Ob();
+
+  @Monitor('content')
+  providerWatch() {
     console.info(`Provider change ${this.content.a}`);
   }
 
   build() {
-    Column({space: 8}) {
+    Column({ space: 8 }) {
       Text(`Provide: ${this.content.a}`)
 
       Button('Change Provider a')
@@ -4189,30 +4225,33 @@ struct ProvideConsumeBuilderNodeConsume {
 
 // The component tree is in the @Provider-@Consumer-BuilderNode-@Consumer structure.
 @ComponentV2
-struct ProvideConsumeBuilderNodeConsumeChild{
+struct ProvideConsumeBuilderNodeConsumeChild {
   @Consumer() content: Ob = new Ob();
-  @Monitor('content') consumerWatch() {
+
+  @Monitor('content')
+  consumerWatch() {
     console.info(`ProvideConsumeBuilderNodeConsumeChild change ${this.content.a}`);
   }
-  controllerIndex : TextNodeController = new TextNodeController();
+
+  controllerIndex: TextNodeController = new TextNodeController();
 
   build() {
-    Column({space: 8}) {
+    Column({ space: 8 }) {
       Text(`Consumer: ${this.content.a}`)
       Button('add child')
         .onClick(() => {
           this.controllerIndex.addBuilderNode();
-      })
+        })
 
       Button('remove child')
         .onClick(() => {
           this.controllerIndex.removeBuilderNode();
-      })
+        })
 
       Button('dispose child')
         .onClick(() => {
           this.controllerIndex.disposeNode();
-      })
+        })
 
       Button('change consumer a')
         .onClick(() => {
@@ -4228,10 +4267,13 @@ struct ProvideConsumeBuilderNodeConsumeChild{
     .height('100%')
   }
 }
+
 @ComponentV2
 struct NestedComponentChild {
   @Consumer() content: Ob = new Ob();
-  @Monitor('content') consumer1Watch() {
+
+  @Monitor('content')
+  consumer1Watch() {
     console.info(`Consumer change ${this.content.a}`);
   }
 
@@ -4240,7 +4282,7 @@ struct NestedComponentChild {
   }
 
   build() {
-    Column({space: 8}) {
+    Column({ space: 8 }) {
       Text(`Consumer under builder node: ${this.content.a}`)
 
       Button('Consumer change content')
@@ -4292,7 +4334,7 @@ class TextNodeController extends NodeController {
   addBuilderNode(): void {
     if (globalBuilderNode === null && this.uiContext) {
       globalBuilderNode = new BuilderNode(this.uiContext);
-      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, {enableProvideConsumeCrossing: true});
+      globalBuilderNode.build(wrapBuilder<[]>(buildText), undefined, { enableProvideConsumeCrossing: true });
     }
     if (this.rootNode && globalBuilderNode) {
       this.rootNode.appendChild(globalBuilderNode.getFrameNode());
@@ -4316,15 +4358,18 @@ class TextNodeController extends NodeController {
 @Entry
 @ComponentV2
 struct Provider1 {
-  // Establish connection with @Consumer data.
-  @Provider() content : Ob = new Ob();
-  @Monitor('content') providerWatch() {
+  // Two-way synchronization with the state variable decorated with the @Consumer.
+  @Provider() content: Ob = new Ob();
+
+  @Monitor('content')
+  providerWatch() {
     console.info(`Provider change ${this.content.a}`);
   }
-  controllerIndex : TextNodeController = new TextNodeController();
+
+  controllerIndex: TextNodeController = new TextNodeController();
 
   build() {
-    Column({space: 8}) {
+    Column({ space: 8 }) {
       Text(`Provider1: ${this.content.a}`)
 
       Button('Change Provider1 a')
@@ -4338,17 +4383,17 @@ struct Provider1 {
       Button('add child')
         .onClick(() => {
           this.controllerIndex.addBuilderNode();
-      })
+        })
 
       Button('remove child')
         .onClick(() => {
           this.controllerIndex.removeBuilderNode();
-      })
+        })
 
       Button('dispose child')
         .onClick(() => {
           this.controllerIndex.disposeNode();
-      })
+        })
       NodeContainer(this.controllerIndex);
     }
     .width('100%')
@@ -4357,12 +4402,15 @@ struct Provider1 {
 }
 
 @ComponentV2
-struct Provider2{
+struct Provider2 {
   @Provider() content: Ob = new Ob();
-  @Monitor('content') consumerWatch() {
+
+  @Monitor('content')
+  consumerWatch() {
     console.info(`Provider2 change ${this.content.a}`);
   }
-  controllerIndex : TextNodeController = new TextNodeController();
+
+  controllerIndex: TextNodeController = new TextNodeController();
 
   build() {
     Column() {
@@ -4386,7 +4434,9 @@ struct Provider2{
 @ComponentV2
 struct defaultConsumer {
   @Consumer() content: Ob = new Ob();
-  @Monitor('content') consumer1Watch() {
+
+  @Monitor('content')
+  consumer1Watch() {
     console.info(`Consumer change ${this.content.a}`);
   }
 
@@ -4474,12 +4524,8 @@ class MyNodeController extends NodeController {
     let mouseEvent = event as MouseEvent;
     // Coordinate conversion: Convert the event coordinates to the node coordinates.
     if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x)
-      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y)
-      mouseEvent.displayX = uiContext.vp2px(offsetX + mouseEvent.x)
-      mouseEvent.displayY = uiContext.vp2px(offsetY + mouseEvent.y)
-      mouseEvent.x = uiContext.vp2px(mouseEvent.x)
-      mouseEvent.y = uiContext.vp2px(mouseEvent.y)
+      mouseEvent.x = uiContext.vp2px(offsetX + mouseEvent.x);
+      mouseEvent.y = uiContext.vp2px(offsetY + mouseEvent.y);
     }
     // Call postInputEvent to post the converted event to the ReactiveBuilderNode.
     let result = this.rootNode.postInputEvent(event);
@@ -4501,20 +4547,16 @@ class MyNodeController extends NodeController {
     let changedTouchLen = touchEvent.changedTouches.length;
     for (let i = 0; i < changedTouchLen; i++) {
       if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-        touchEvent.changedTouches[i].windowX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-        touchEvent.changedTouches[i].windowY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
-        touchEvent.changedTouches[i].displayX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-        touchEvent.changedTouches[i].displayY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
+        touchEvent.changedTouches[i].x = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
+        touchEvent.changedTouches[i].y = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
       }
     }
     // Convert the coordinates of all touch points in the touches array.
     let touchesLen = touchEvent.touches.length;
     for (let i = 0; i < touchesLen; i++) {
       if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-        touchEvent.touches[i].windowX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-        touchEvent.touches[i].windowY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
-        touchEvent.touches[i].displayX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-        touchEvent.touches[i].displayY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
+        touchEvent.touches[i].x = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
+        touchEvent.touches[i].y = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
       }
     }
     // Call postInputEvent to post the converted event to the ReactiveBuilderNode.
@@ -4619,20 +4661,16 @@ class MyNodeController extends NodeController {
       let changedTouchLen = touchEvent.changedTouches.length;
       for (let i = 0; i < changedTouchLen; i++) {
         if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-          touchEvent.changedTouches[i].windowX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-          touchEvent.changedTouches[i].windowY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
-          touchEvent.changedTouches[i].displayX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-          touchEvent.changedTouches[i].displayY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
+          touchEvent.changedTouches[i].x = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
+          touchEvent.changedTouches[i].y = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
         }
       }
       // Convert the coordinates of all touch points in the touches array.
       let touchesLen = touchEvent.touches.length;
       for (let i = 0; i < touchesLen; i++) {
         if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-          touchEvent.touches[i].windowX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-          touchEvent.touches[i].windowY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
-          touchEvent.touches[i].displayX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-          touchEvent.touches[i].displayY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
+          touchEvent.touches[i].x = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
+          touchEvent.touches[i].y = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
         }
       }
     }
@@ -4704,15 +4742,17 @@ function ButtonBuilder(text: string, uiContext: UIContext) {
   .height(200)
   .backgroundColor(Color.Gray)
 }
+
 // Implement a custom UI controller by extending NodeController.
 class MyNodeController extends NodeController {
   private rootNode: ReactiveBuilderNode<[text: string, uiContext: UIContext]> | null = null;
+  private wrapBuilder: WrappedBuilder<[text: string, uiContext: UIContext]> =
+    wrapBuilder<[text: string, uiContext: UIContext]>(ButtonBuilder);
 
-  private wrapBuilder: WrappedBuilder<[text: string, uiContext: UIContext]> = wrapBuilder<[text: string, uiContext: UIContext]>(ButtonBuilder);
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new ReactiveBuilderNode(uiContext);
     // Build the ReactiveBuilderNode and transfer the button text and UI context.
-    this.rootNode.build(this.wrapBuilder, {}, 'onAxisEvent', uiContext )
+    this.rootNode.build(this.wrapBuilder, {}, 'onAxisEvent', uiContext)
     return this.rootNode.getFrameNode();
   }
 
@@ -4728,22 +4768,20 @@ class MyNodeController extends NodeController {
 
     let axisEvent = event as AxisEvent;
     if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      axisEvent.windowX = uiContext.vp2px(offsetX + axisEvent.x)
-      axisEvent.windowY = uiContext.vp2px(offsetY + axisEvent.y)
-      axisEvent.displayX = uiContext.vp2px(offsetX + axisEvent.x)
-      axisEvent.displayY = uiContext.vp2px(offsetY + axisEvent.y)
-      axisEvent.x = uiContext.vp2px(axisEvent.x)
-      axisEvent.y = uiContext.vp2px(axisEvent.y)
+      axisEvent.x = uiContext.vp2px(offsetX + axisEvent.x);
+      axisEvent.y = uiContext.vp2px(offsetY + axisEvent.y);
     }
     // Call postInputEvent to post the converted event to the ReactiveBuilderNode.
     let result = this.rootNode.postInputEvent(event);
     return result;
   }
 }
+
 @Entry
 @Component
 struct MyComponent {
   private nodeController: MyNodeController = new MyNodeController();
+
   build() {
     Stack() {
       NodeContainer(this.nodeController)
@@ -4761,7 +4799,7 @@ struct MyComponent {
             this.nodeController.postInputEvent(event, this.getUIContext());
           }
         })
-    }.offset({top: 180})
+    }.offset({ top: 180 })
   }
 }
 ```
