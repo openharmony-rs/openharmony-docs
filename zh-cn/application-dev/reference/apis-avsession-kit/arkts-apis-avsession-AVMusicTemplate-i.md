@@ -154,7 +154,7 @@
 | pageIndex     | number                                                       | 否   | 否   | 媒体标签页的索引。     |
 | type          | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 媒体资源类型。         |
 | subEntityType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 是   | 子节点的媒体资源类型。 |
-| sort          | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort)       | 否   | 是   | 排序。                 |
+| sort          | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort)       | 否   | 是   | 查询到的列表数据排序。 |
 | episodeRange  | [EpisodeRange](arkts-apis-avsession-AVMusicTemplate-i.md#episoderange) | 否   | 是   | 要查询的剧集区间。     |
 
 ## EpisodeRange
@@ -418,13 +418,13 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称          | 类型                                          | 只读 | 可选 | 说明                                        |
-| ------------- | --------------------------------------------- | ---- | ---- | ------------------------------------------- |
-| items         | [SearchPlayMusicItem](#searchplaymusicitem)[] | 否   | 否   | 音频列表。                                  |
-| displayName   | string                                        | 否   | 是   | 音频的显示名称。                            |
-| description   | string                                        | 否   | 是   | 对音频的描述。                              |
-| playMusicOnly | boolean                                       | 否   | 是   | 是否仅仅播放音频。true表示是，false表示否。 |
-| playMode      | string                                        | 否   | 是   | 音频的播放模式。                            |
+| 名称          | 类型                                          | 只读 | 可选 | 说明                                                |
+| ------------- | --------------------------------------------- | ---- | ---- | --------------------------------------------------- |
+| items         | [SearchPlayMusicItem](#searchplaymusicitem)[] | 否   | 否   | 音频列表。                                          |
+| displayName   | string                                        | 否   | 是   | 音频的显示名称。                                    |
+| description   | string                                        | 否   | 是   | 对音频的描述。                                      |
+| playMusicOnly | boolean                                       | 否   | 是   | 是否仅执行播放音乐的操作。true表示是，false表示否。 |
+| playMode      | string                                        | 否   | 是   | 音频的播放模式。                                    |
 
 ## SearchPlayMusicItem
 
