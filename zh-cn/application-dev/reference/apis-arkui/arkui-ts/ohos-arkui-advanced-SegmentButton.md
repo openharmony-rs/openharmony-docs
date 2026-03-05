@@ -31,8 +31,8 @@ import { SegmentButton, SegmentButtonOptions } from '@kit.ArkUI';
 
 ## SegmentButton
 
-ArkTS-Dyn: SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItemClicked: Callback\<number\>, maxFontScale: number \| Resource }) <br/>
-ArkTS-Sta: SegmentButton({ options: SegmentButtonOptions, selectedIndexes: int[], onItemClicked: Callback\<int\>, maxFontScale: double \| Resource })
+ArkTS-Dyn: SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItemClicked: Callback\<number\>, maxFontScale: number \| Resource, enableStateAnimation: boolean }) <br/>
+ArkTS-Sta: SegmentButton({ options: SegmentButtonOptions, selectedIndexes: int[], onItemClicked: Callback\<int\>, maxFontScale: double \| Resource, enableStateAnimation: boolean })
 
 **装饰器类型：**@Component
 
@@ -44,6 +44,7 @@ ArkTS-Sta: SegmentButton({ options: SegmentButtonOptions, selectedIndexes: int[]
 | selectedIndexes | ArkTS-Dyn: number[]<br> ArkTS-Sta: int[]                                     | 是   | @Link       | 分段按钮的选中项编号，第一项的编号为0，之后顺序增加。<br/>**说明：**<br/>`selectedIndexes`使用[@Link装饰器：父子双向同步](../../../ui/state-management/arkts-link.md)，仅支持有效的按钮编号（第一个按钮编号为0，之后按顺序累加），如没有选中项可传入空数组`[]`。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
 | onItemClicked<sup>13+</sup> | ArkTS-Dyn: Callback\<number\><br/> ArkTS-Sta: Callback\<int\>  | 否 | - | 当分段按钮选项被点击时触发的回调函数，回调入参为被点击的选项下标。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23|
 | maxFontScale<sup>14+</sup> | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br> ArkTS-Sta: douoble&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | ArkTS-Dyn: @Prop<br/> ArkTs-Sta: @PropRef | 分段按钮选项文字的最大字体放大倍数。<br/>默认值：1<br/>取值范围：[1,2]<br/>**说明：** <br/>当设置的值小于1时，按值为1处理，设置的值大于2时，按值为2处理。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14 <br/> **ArkTS-Sta起始版本：** 23 |
+| enableStateAnimation<sup>24+</sup> | boolean | 是 | ArkTS-Dyn: @Prop<br/> ArkTS-Sta: @PropRef | 设置当通过变量修改selectedIndex时，是否开启分段按钮的属性动画。<br/>默认值：false<br/>**说明：** <br/>当enableStateAnimation值为true时使用属性动画，值为false时使用原有动画。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 24 <br/> **ArkTS-Sta起始版本：** 24 |
 
 >**说明：** 
 >
@@ -1972,3 +1973,109 @@ struct Index {
 ```
 
 ![segmentbutton-sample6](figures/segmentbutton-sample6.png)
+
+### 示例7（开启SegmentButton的属性动画）
+
+此示例展示了SegmentButton开启enableStateAnimation后，在通过状态变量修改selectedIndexes的值时，按钮切换也具有动画效果。
+
+从API version 24开始，[SegmentButton](#segmentbutton-1)新增enableStateAnimation属性。
+
+ArkTS-Dyn示例：
+
+```ts
+import { ItemRestriction, SegmentButton, SegmentButtonItemTuple, SegmentButtonOptions, SegmentButtonTextItem } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
+    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, {
+      text: '页签按钮3'
+    }] as ItemRestriction<SegmentButtonTextItem>,
+    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
+  });
+  @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
+    buttons: [{ text: '单选按钮1' }, { text: '单选按钮2' }, { text: '单选按钮3' }] as SegmentButtonItemTuple,
+    multiply: false,
+    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
+  });
+  @State tabSelectedIndexes: number[] = [0];
+  @State singleSelectCapsuleSelectedIndexes: number[] = [0];
+
+  build() {
+    Row() {
+      Column() {
+        Column({ space: 25 }) {
+          SegmentButton({
+            options: this.tabOptions,
+            selectedIndexes: $tabSelectedIndexes,
+            enableStateAnimation: true // 开启属性动画
+          })
+          SegmentButton({
+            options: this.singleSelectCapsuleOptions,
+            selectedIndexes: $singleSelectCapsuleSelectedIndexes,
+            enableStateAnimation: true
+          })
+
+          Button('change selectedIndexes').onClick((event: ClickEvent) => {
+            // 通过变量修改选中项的索引值
+            this.tabSelectedIndexes = [2]
+            this.singleSelectCapsuleSelectedIndexes = [2]
+          })
+        }.width('90%')
+      }.width('100%')
+    }.height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BlurStyle, Button, Column, ColumnOptions, Component, Entry } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { ItemRestriction, SegmentButton, SegmentButtonItemTuple, SegmentButtonOptions, SegmentButtonTextItem } from '@ohos.arkui.advanced.SegmentButton';
+
+@Entry
+@Component
+struct Index {
+  @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
+    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, {
+      text: '页签按钮3'
+    }] as ItemRestriction<SegmentButtonTextItem>,
+    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
+  });
+  @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
+    buttons: [{ text: '单选按钮1' }, { text: '单选按钮2' }, { text: '单选按钮3' }] as SegmentButtonItemTuple,
+    multiply: false,
+    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
+  });
+  @State tabSelectedIndexes: int[] = [0];
+  @State singleSelectCapsuleSelectedIndexes: int[] = [0];
+
+  build() {
+    Column({ space: 25 } as ColumnOptions) {
+      SegmentButton({
+        options: this.tabOptions,
+        selectedIndexes: this.tabSelectedIndexes,
+        enableStateAnimation: true // 开启属性动画
+      })
+      SegmentButton({
+        options: this.singleSelectCapsuleOptions,
+        selectedIndexes: this.singleSelectCapsuleSelectedIndexes,
+        enableStateAnimation: true
+      })
+      Button('change selectedIndexes')
+        .onClick(() => {
+          // 通过变量修改选中项的索引值
+          this.tabSelectedIndexes = [2];
+          this.singleSelectCapsuleSelectedIndexes = [2];
+        })
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+![segmentbutton-sample83](figures/segmentbutton-sample83.gif)
