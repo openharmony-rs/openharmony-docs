@@ -94,16 +94,16 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称     | 值   | 说明     |
-| -------- | ---- |--------|
-| NORMAL   | 0    | 普通弹框。  |
-| INTERNET | 1    | 联网弹框。  |
-| FLOW     | 2    | 流程弹框。  |
-| PAID     | 3    | 付费弹框。  |
-| VIP      | 4    | VIP弹框。 |
-| LOGIN    | 5    | 登录弹框。  |
-| ERROR    | 6    | 错误弹框。  |
-| UNKNOWN  | 7    | 未知弹框。  |
+| 名称     | 值   | 说明                                                         |
+| -------- | ---- | ------------------------------------------------------------ |
+| NORMAL   | 0    | 普通弹框。                                                   |
+| INTERNET | 1    | 联网弹框。                                                   |
+| FLOW     | 2    | 流程弹框。                                                   |
+| PAID     | 3    | 付费弹框。                                                   |
+| VIP      | 4    | VIP弹框。                                                    |
+| LOGIN    | 5    | xxxxxxxxxx import { common } from '@kit.AbilityKit';import { avSession } from '@kit.AVSessionKit';​async function onPickerStateChange(context: common.Context) {  let avCastPicker = new avSession.AVCastPickerHelper(context);  avCastPicker.off('pickerStateChange');}ts |
+| ERROR    | 6    | 错误弹框。                                                   |
+| UNKNOWN  | 7    | 未知弹框。                                                   |
 
 ## ButtonType
 

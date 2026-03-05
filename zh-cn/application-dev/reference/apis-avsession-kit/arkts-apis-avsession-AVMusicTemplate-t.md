@@ -759,7 +759,7 @@ type ReportDialogCommandEvent = (type: DialogControlType, buttonInfo: DialogInfo
 
 **示例：**
 
-请参考[onDialogCommandChange](arkts-apis-avsession-AVMusicTemplateController.md#ondialogcommandchange)的示例。
+请参考[onDialogCommandChange](arkts-apis-avsession-AVMusicTemplateController-sys.md#ondialogcommandchange)的示例。
 
 ## ReportTabContentEvent
 
@@ -780,7 +780,7 @@ type ReportTabContentEvent = (tabId: string, tabContent: MediaTabContent) => voi
 
 **示例：**
 
-请参考[onTabContentChange](arkts-apis-avsession-AVMusicTemplateController.md#ontabcontentchange)的示例。
+请参考[onTabContentChange](arkts-apis-avsession-AVMusicTemplateController-sys.md#ontabcontentchange)的示例。
 
 ## ReportCustomElementsChangeEvent
 
@@ -802,7 +802,7 @@ type ReportCustomElementsChangeEvent = (actionType: ActionType, customType: Cust
 
 **示例：**
 
-请参考[onCustomElementsChange](arkts-apis-avsession-AVMusicTemplateController.md#oncustomelementschange)的示例。
+请参考[onCustomElementsChange](arkts-apis-avsession-AVMusicTemplateController-sys.md#oncustomelementschange)的示例。
 
 ## ReportExecuteActionEvent
 
@@ -823,7 +823,7 @@ type ReportExecuteActionEvent = (actionType: string, params: string) => void
 
 **示例：**
 
-请参考[onReportExecuteAction](arkts-apis-avsession-AVMusicTemplateController.md#onreportexecuteaction)的示例。
+请参考[onReportExecuteAction](arkts-apis-avsession-AVMusicTemplateController-sys.md#onreportexecuteaction)的示例。
 
 ## ReportExecuteAbilityEvent
 
@@ -843,4 +843,4 @@ type ReportExecuteAbilityEvent = (want: WantAgent) => void
 
 **示例：**
 
-请参考[onExtensionAbilityChange](arkts-apis-avsession-AVMusicTemplateController.md#onextensionabilitychange)的示例。
+请参考[onExtensionAbilityChange](arkts-apis-avsession-AVMusicTemplateController-sys.md#onextensionabilitychange)的示例。

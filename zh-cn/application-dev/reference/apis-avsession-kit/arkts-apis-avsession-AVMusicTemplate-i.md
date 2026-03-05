@@ -129,16 +129,16 @@
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-| 名称            | 类型                                                         | 只读 | 可选 | 说明                    |
-| --------------- | ------------------------------------------------------------ | ---- | ---- | ----------------------- |
-| mediaId         | string                                                       | 否   | 否   | 媒体资源的ID。          |
-| mediaType       | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 媒体资源的类型。        |
-| parentId        | string                                                       | 否   | 否   | 父节点的媒体资源ID。    |
-| parentMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 父节点的媒体资源类型。  |
-| title           | string                                                       | 否   | 否   | 媒体资源的标题。        |
-| desc            | string                                                       | 否   | 是   | 媒体资源的描述。        |
-| imageUrl        | string                                                       | 否   | 否   | 媒体资源的封面图片URL。 |
-| playState       | [PlaybackState](arkts-apis-avsession-AVMusicTemplate-e.md#playbackstate) | 否   | 否   | 媒体资源的播放状态。    |
+| 名称            | 类型                                                         | 只读                                                         | 可选 | 说明                    |
+| --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---- | ----------------------- |
+| mediaId         | string                                                       | 否                                                           | 否   | 媒体资源的ID。          |
+| mediaType       | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否                                                           | 否   | 媒体资源的类型。        |
+| parentId        | string                                                       | 否                                                           | 否   | 父节点的媒体资源ID。    |
+| parentMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否                                                           | 否   | 父节点的媒体资源类型。  |
+| title           | string                                                       | xxxxxxxxxx import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';​const TAG: string = 'ControllerManager';​export class ControllerManager {  /**   * 反注册模板监听。   */  public unregisterAVMusicTemplateListener() {    try {      avMusicTemplate.offAVMusicTemplateDestroy();    } catch (e) {      console.error(TAG, `unregisterAVMusicTemplateListener: errCode: ${e?.code}`);    }  }}ts | 否   | 媒体资源的标题。        |
+| desc            | string                                                       | 否                                                           | 是   | 媒体资源的描述。        |
+| imageUrl        | string                                                       | 否                                                           | 否   | 媒体资源的封面图片URL。 |
+| playState       | [PlaybackState](arkts-apis-avsession-AVMusicTemplate-e.md#playbackstate) | 否                                                           | 否   | 媒体资源的播放状态。    |
 
 ## QueryMediaEntityParam
 
