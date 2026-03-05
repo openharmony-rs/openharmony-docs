@@ -158,18 +158,59 @@ ArkTS-Sta起始版本：23
 | 5400105  | Service died. Return by promise. |
 
 **示例：**
-
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit'
+
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
+  if (captureRecorder != null) {
+    avScreenCaptureRecorder = captureRecorder;
+    console.info('Succeeded in creating avScreenCaptureRecorder');
+  } else {
+    console.error('Failed to create avScreenCaptureRecorder');
+  }
+}).catch((error: BusinessError) => {
+  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
+});
 
 let windowIDs = [];
-avScreenCaptureRecorder.skipPrivacyMode(windowIDs).then(() => {
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.skipPrivacyMode(windowIDs).then(() => {
     console.info('Succeeded in skipping privacy mode');
-}).catch((err: BusinessError) => {
+  }).catch((err: BusinessError) => {
     console.info('Failed to skip privacy mode, error: ' + err.message);
-});
-```
+  });
+}
 
+```
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit'
+
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
+  if (captureRecorder != null) {
+    avScreenCaptureRecorder = captureRecorder;
+    console.info('Succeeded in creating avScreenCaptureRecorder');
+  } else {
+    console.error('Failed to create avScreenCaptureRecorder');
+  }
+}).catch(async (error: BusinessError) => {
+  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
+});
+
+let windowIDs = [];
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.skipPrivacyMode(windowIDs).then(() => {
+    console.info('Succeeded in skipping privacy mode');
+  }).catch(async (err: BusinessError) => {
+    console.info('Failed to skip privacy mode, error: ' + err.message);
+  });
+}
+```
 ## setMicEnabled<sup>12+</sup>
 
 setMicEnabled(enable: boolean): Promise\<void>
