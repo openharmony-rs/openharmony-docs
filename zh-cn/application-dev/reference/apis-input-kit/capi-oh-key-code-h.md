@@ -178,6 +178,8 @@ enum Input_KeyCode
 | KEYCODE_NUMPAD_EQUALS = 2120 | 小键盘按键'=' |
 | KEYCODE_NUMPAD_LEFT_PAREN = 2121 | 小键盘按键'(' |
 | KEYCODE_NUMPAD_RIGHT_PAREN = 2122 | 小键盘按键')' |
+| KEYCODE_MOUSE_ASSISTANT = 2732 | 鼠标AI助手键<br/>**起始版本：** 24 |
+| KEYCODE_MOUSE_INTELLIGENCE_SELECTION = 2733 | 鼠标智慧框选键<br/>**起始版本：** 24 |
 | KEYCODE_DAGGER_CLICK = 3211 | 智能手表智感窗按键单击<br/>**起始版本：** 22 |
 | KEYCODE_DAGGER_DOUBLE_CLICK = 3212 | 智能手表智感窗按键双击<br/>**起始版本：** 22 |
 | KEYCODE_DAGGER_LONG_PRESS = 3213 | 智能手表智感窗按键长按<br/>**起始版本：** 22 |
