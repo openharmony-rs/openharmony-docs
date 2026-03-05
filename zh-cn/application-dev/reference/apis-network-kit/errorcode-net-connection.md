@@ -166,7 +166,7 @@ The input network interface is incorrect.
 
 确保传入的网卡名为eth0等以太网网卡名。
 
-## 2100401 未找到vlan上配置的ip地址
+## 2100401 未找到VLAN上配置的IP地址
 
 **错误信息**
 
