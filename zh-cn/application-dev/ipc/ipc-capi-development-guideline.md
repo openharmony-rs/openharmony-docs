@@ -125,6 +125,8 @@ void NativeChildProcessMainProc()
 #include <IPCKit/ipc_kit.h>
 #include <AbilityKit/native_child_process.h>
 // ...
+int32_t g_result = -1;
+// ...
 static void OnNativeChildProcessStarted(int errCode, OHIPCRemoteProxy *remoteProxy)
 {
     if (errCode != NCP_NO_ERROR) {
