@@ -385,7 +385,7 @@ this.context.startAbility(
 **代码示例**
 
 ```ts
-import common from '@ohos.app.ability.common';
+import { common } from '@kit.AbilityKit';
 
 @Entry
 @Component
@@ -396,7 +396,7 @@ struct AbilityContextTest {
 
   aboutToAppear() {
     // getHostContext获取Context，转为abilityContext
-    this.UIAbilityContext = getHostContext() as common.UIAbilityContext
+    this.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext
   }
 
   build() {
