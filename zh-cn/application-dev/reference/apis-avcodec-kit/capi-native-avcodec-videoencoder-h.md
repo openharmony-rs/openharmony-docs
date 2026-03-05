@@ -91,9 +91,9 @@ enum OH_VideoEncodeBitrateMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CBR = 0 | 恒定码率模式。<br>**废弃版本：** 14<br>**替代接口：** [BITRATE_MODE_CBR](capi-native-avcodec-base-h.md#oh_bitratemode) |
-| VBR = 1 | 可变码率模式。<br>**废弃版本：** 14<br>**替代接口：** [BITRATE_MODE_VBR](capi-native-avcodec-base-h.md#oh_bitratemode) |
-| CQ = 2 | 恒定QP模式。<br>**废弃版本：** 14<br>**替代接口：** [BITRATE_MODE_CQ](capi-native-avcodec-base-h.md#oh_bitratemode) |
+| CBR = 0 | 恒定码率模式。<br>**替代接口：** [BITRATE_MODE_CBR](capi-native-avcodec-base-h.md#oh_bitratemode) |
+| VBR = 1 | 可变码率模式。<br>**替代接口：** [BITRATE_MODE_VBR](capi-native-avcodec-base-h.md#oh_bitratemode) |
+| CQ = 2 | 恒定QP模式。<br>**替代接口：** [BITRATE_MODE_CQ](capi-native-avcodec-base-h.md#oh_bitratemode) |
 
 
 ## 函数说明

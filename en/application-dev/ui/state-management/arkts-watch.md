@@ -29,8 +29,8 @@ An application can request to be notified whenever the value of the \@Watch deco
 
 | \@Watch Decorator| Description                                      |
 | -------------- | ---------------------------------------- |
-| Decorator parameters         | Mandatory. Constant string, which is quoted. Reference to a (string) => void custom component member function.|
-| Custom component variables that can be decorated   | All decorated state variables. Regular variables cannot be watched.              |
+| Parameters         | Mandatory. Constant string, which is quoted. Reference to a (string) => void custom component member function.|
+| Decorable custom component variables   | All decorated state variables. Regular variables cannot be watched.              |
 | Order of decorators        | The order of decorators does not affect the actual functions. You can determine it as required. It is recommended that the [\@State](./arkts-state.md), [\@Prop](./arkts-prop.md), and [\@Link](./arkts-link.md) decorators be placed before the \@Watch decorator, to keep the overall style consistent.|
 | Called when| The variable changes and is assigned a value. For details, see [Time for \@Watch to be Called](#time-for-watch-to-be-called).|
 
@@ -38,7 +38,7 @@ An application can request to be notified whenever the value of the \@Watch deco
 
 | Type                                      | Description                                      |
 | ---------------------------------------- | ---------------------------------------- |
-| (changedPropertyName? : string) =&gt; void | This function is a member function of the custom component. **changedPropertyName** indicates the name of the watched attribute.<br>It is useful when you use the same function as a callback to several watched attributes.<br>It takes the attribute name as a string input parameter and returns nothing.|
+| (changedPropertyName?&nbsp;:&nbsp;string)&nbsp;=&gt;&nbsp;void | This function is a member function of the custom component. **changedPropertyName** indicates the name of the watched attribute.<br>It is useful when you use the same function as a callback to several watched attributes.<br>It takes the attribute name as a string input parameter and returns nothing.|
 
 
 ## Observed Changes and Behavior
@@ -114,11 +114,14 @@ change() {
 This example is used to clarify the processing steps of custom component updates and \@Watch. **count** is decorated by \@State in **CountModifier** and \@Prop in **TotalView**.
 
 
-```ts
+<!-- @[count_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/CountModifier.ets) -->
+
+``` TypeScript
 @Component
 struct TotalView {
   @Prop @Watch('onCountUpdated') count: number = 0;
   @State total: number = 0;
+
   // @Watch callback
   onCountUpdated(propName: string): void {
     this.total += this.count;
@@ -138,7 +141,7 @@ struct CountModifier {
     Column() {
       Button('add to basket')
         .onClick(() => {
-          this.count++
+          this.count++;
         })
       TotalView({ count: this.count })
     }
@@ -160,14 +163,16 @@ Procedure:
 This example illustrates how to watch an \@Link decorated variable in a child component.
 
 
-```ts
+<!-- @[basket_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/BasketModifier.ets) -->
+
+``` TypeScript
 class PurchaseItem {
-  static NextId: number = 0;
+  public static nextId: number = 0;
   public id: number;
   public price: number;
 
   constructor(price: number) {
-    this.id = PurchaseItem.NextId++;
+    this.id = PurchaseItem.nextId++;
     this.price = price;
   }
 }
@@ -185,6 +190,7 @@ struct BasketViewer {
     }
     return total;
   }
+
   // @Watch callback
   onBasketUpdated(propName: string): void {
     this.totalPurchase = this.updateTotal();
@@ -212,7 +218,7 @@ struct BasketModifier {
     Column() {
       Button('Add to basket')
         .onClick(() => {
-          this.shopBasket.push(new PurchaseItem(Math.round(100 * Math.random())))
+          this.shopBasket.push(new PurchaseItem(Math.round(100 * Math.random())));
         })
       BasketViewer({ shopBasket: $shopBasket })
     }
@@ -230,40 +236,67 @@ The procedure is as follows:
 
 4. Because \@Link decorated shopBasket changes (a new item is added), the **ForEach** component executes the item Builder to render and build the new item. Because the @State decorated **totalPurchase** variable changes, the **Text** component is also re-rendered. Re-rendering happens asynchronously.
 
+Below is how the component looks with the spherical effect applied.
+
+![watch_001](figures/watch_001.gif)
+
 ### Time for \@Watch to be Called
 
 To show that the triggering time of the \@Watch callback is based on the actual change time of the state variable, this example uses the \@Link and [\@ObjectLink](./arkts-observed-and-objectlink.md) decorators in the child component to observe different status objects. You can change the state variable in the parent component and observe the calling sequence of the \@Watch callback to learn the relationship between the time for calling, value assignment, and synchronization.
 
-```ts
+<!-- @[parent_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/ParentComponent.ets) -->
+
+``` TypeScript
 @Observed
 class Task {
-  isFinished: boolean = false;
+  public isFinished: boolean = false;
 
-  constructor(isFinished : boolean) {
+  constructor(isFinished: boolean) {
     this.isFinished = isFinished;
   }
 }
+
+const DOMAIN = 0x0000;
 
 @Entry
 @Component
 struct ParentComponent {
   @State @Watch('onTaskAChanged') taskA: Task = new Task(false);
   @State @Watch('onTaskBChanged') taskB: Task = new Task(false);
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  // Replace $r('app.string.watch_text5') with the actual resource file. In this example, the value in the resource file is "Parent component task A state:".
+  @State type1: string = this.context!.resourceManager.getStringSync($r('app.string.watch_text5').id);
+  // Replace $r('app.string.watch_text6') with the actual resource file. In this example, the value in the resource file is "Parent component task B state:".
+  @State type2: string = this.context!.resourceManager.getStringSync($r('app.string.watch_text6').id);
 
   onTaskAChanged(changedPropertyName: string): void {
-    console.info(`Property of this parent component task is changed: ${changedPropertyName}`);
+    // Replace $r('app.string.watch_text12') with the actual resource file. In this example, the value in the resource file is "Property of this parent component task is changed:".
+    hilog.info(DOMAIN, this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text12').id), changedPropertyName);
   }
 
   onTaskBChanged(changedPropertyName: string): void {
-    console.info(`Property of this parent component task is changed: ${changedPropertyName}`);
+    // Replace $r('app.string.watch_text12') with the actual resource file. In this example, the value in the resource file is "Property of this parent component task is changed:".
+    hilog.info(DOMAIN, this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text12').id), changedPropertyName);
   }
 
   build() {
     Column() {
-      Text(`Parent component task A state: ${this.taskA.isFinished ? 'Finished' : 'Unfinished'}`)
-      Text(`Parent component task B state: ${this.taskB.isFinished ? 'Finished' : 'Unfinished'}`)
+      // Replace $r('app.string.watch_text7') with the actual resource file. In this example, the value in the resource file is "Finished".
+      // Replace $r('app.string.watch_text7') with the actual resource file. In this example, the value in the resource file is "Not Finished".
+      Text(`${this.type1} ${this.taskA.isFinished ? this.getUIContext()
+        .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text7').id) :
+        this.getUIContext()
+          .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text8').id)}`)
+      Text(`${this.type2} ${this.taskB.isFinished ? this.getUIContext()
+        .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text7').id) :
+        this.getUIContext()
+          .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text8').id)}`)
       ChildComponent({ taskA: this.taskA, taskB: this.taskB })
-      Button('Switch Task State')
+      // Replace $r('app.string.watch_text9') with the actual resource file. In this example, the value in the resource file is "Switch Task State".
+      Button(this.getUIContext()
+        .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text9').id))
         .onClick(() => {
           this.taskB = new Task(!this.taskB.isFinished);
           this.taskA = new Task(!this.taskA.isFinished);
@@ -276,19 +309,36 @@ struct ParentComponent {
 struct ChildComponent {
   @ObjectLink @Watch('onObjectLinkTaskChanged') taskB: Task;
   @Link @Watch('onLinkTaskChanged') taskA: Task;
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  // Replace $r('app.string.watch_text10') with the actual resource file. In this example, the value in the resource file is "Child component task A state:".
+  @State type1: string = this.context!.resourceManager.getStringSync($r('app.string.watch_text10').id);
+  // Replace $r('app.string.watch_text11') with the actual resource file. In this example, the value in the resource file is "Child component task B state:".
+  @State type2: string = this.context!.resourceManager.getStringSync($r('app.string.watch_text11').id);
 
   onObjectLinkTaskChanged(changedPropertyName: string): void {
-    console.info(`Property of @ObjectLink associated task of the child component is changed: ${changedPropertyName}`);
+    // Replace $r('app.string.watch_text13') with the actual resource file. In this example, the value in the resource file is "Property of @ObjectLink associated task of the child component is changed:".
+    hilog.info(DOMAIN, this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text13').id), changedPropertyName);
   }
 
   onLinkTaskChanged(changedPropertyName: string): void {
-    console.info(`Property of @Link associated task of the child component is changed: ${changedPropertyName}`);
+    // Replace $r('app.string.watch_text14') with the actual resource file. In this example, the value in the resource file is "Property of @Link associated task of the child component is changed:".
+    hilog.info(DOMAIN, this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text14').id), changedPropertyName);
   }
 
   build() {
     Column() {
-      Text(`Child component task A state: ${this.taskA.isFinished ? 'Finished' : 'Unfinished'}`)
-      Text(`Child component task B state: ${this.taskB.isFinished ? 'Finished' : 'Unfinished'}`)
+      // Replace $r('app.string.watch_text7') with the actual resource file. In this example, the value in the resource file is "Finished".
+      // Replace $r('app.string.watch_text7') with the actual resource file. In this example, the value in the resource file is "Not Finished".
+      Text(`${this.type1} ${this.taskA.isFinished ? this.getUIContext()
+        .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text7').id) :
+        this.getUIContext()
+          .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text8').id)}`)
+      Text(`${this.type2} ${this.taskB.isFinished ? this.getUIContext()
+        .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text7').id) :
+        this.getUIContext()
+          .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text8').id)}`)
     }
   }
 }
@@ -299,7 +349,7 @@ The procedure is as follows:
 1. When you click the button to switch the task state, the parent component updates **taskB** associated with \@ObjectLink and **taskA** associated with \@Link.
 
 2. The following information is displayed in sequence in the log:
-    ```
+    ```text
     Property of this parent component task is changed: taskB
     Property of this parent component task is changed: taskA
     Property of @Link associated task of the child component is changed: taskA
@@ -315,16 +365,19 @@ The procedure is as follows:
 The following example shows how to use **changedPropertyName** in the \@Watch function for different logic processing.
 
 
-```ts
+<!-- @[use_property_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/UsePropertyName.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct UsePropertyName {
   @State @Watch('countUpdated') apple: number = 0;
   @State @Watch('countUpdated') cabbage: number = 0;
   @State fruit: number = 0;
+
   // @Watch callback
   countUpdated(propName: string): void {
-    if (propName == 'apple') {
+    if (propName === 'apple') {
       this.fruit = this.apple;
     }
   }

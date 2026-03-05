@@ -89,7 +89,12 @@ struct Parent {
   build() {
     Column() {
       Child({ customBuilderParam: this.componentBuilder }) // Child component to display the string Child.
-      Child({ customBuilderParam: this.componentLocalBuilder }) // Child component to display the string Parent.
+      Child({ customBuilderParam: this.componentLocalBuilder }) // Child component to display the string Parent. The function is passed as is.
+      Child({
+        customBuilderParam: () => {
+          this.componentLocalBuilder()
+        }
+      }) // Child component to display the string Parent, written as () => { function call }.
     }
   }
 }
@@ -98,10 +103,9 @@ struct Parent {
 ## Constraints
 
 - @LocalBuilder declarations are component-bound. Global declarations are not allowed.
-
 - \@LocalBuilder cannot be used in conjunction with other decorators, whether built-in or custom.
-
 - \@LocalBuilder cannot be used to decorate static functions in custom components.
+- You are advised to pass the function itself or use the **() => { function call }** format, instead of directly passing the execution result of the function.
 
 ## Parameter Passing Rules
 

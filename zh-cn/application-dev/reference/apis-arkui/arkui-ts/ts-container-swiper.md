@@ -584,7 +584,7 @@ pageFlipMode(mode: Optional\<PageFlipMode>)
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | 是   | 鼠标滚轮翻页模式。<br/>取undefined时，按取值为PageFlipMode.CONTINUOUS处理。 |
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | 是   | 鼠标滚轮翻页模式。<br/>取undefined时，按取值为PageFlipMode.CONTINUOUS处理。 |
 
 ### maintainVisibleContentPosition<sup>20+</sup>
 
@@ -780,7 +780,7 @@ preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 
 | 参数名   | 类型   | 必填   | 说明                                     |
 | ----- | ------ | ---- | ---------------------------------------- |
-| indices | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<Array\<number>> | 是 | 需预加载的子节点的下标数组。|
+| indices | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<Array\<number>> | 是 | 需预加载的子节点的下标数组。|
 
 **返回值：**
 

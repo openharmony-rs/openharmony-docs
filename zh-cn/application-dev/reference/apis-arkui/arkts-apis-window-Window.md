@@ -2559,7 +2559,7 @@ setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | -------------------- |
-| path     | string                    | 是 | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。 |
+| path     | string                    | 是 | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。          |
 
 **错误码：**
@@ -2604,7 +2604,7 @@ setUIContent(path: string): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ------ | -- | ------------------ |
-| path | string | 是 | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。 |
+| path | string | 是 | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。 |
 
 **返回值：**
 
@@ -2654,7 +2654,7 @@ loadContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;void
 
 | 参数名   | 类型                                            | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| path     | string                                          | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。 |
+| path     | string                                          | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。不支持相对路径写法，需与main_pages.json中的src取值保持一致。 |
 | storage  | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 是   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性。 |
 | callback | AsyncCallback&lt;void&gt;                       | 是   | 回调函数。                                                   |
 
@@ -2700,7 +2700,7 @@ loadContent(path: string, storage: LocalStorage): Promise&lt;void&gt;
 
 | 参数名  | 类型                                            | 必填 | 说明                                                         |
 | ------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| path    | string                                          | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。 |
+| path    | string                                          | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。不支持相对路径写法，需与main_pages.json中的src取值保持一致。 |
 | storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 是   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性。 |
 
 **返回值：**
@@ -7061,7 +7061,7 @@ maximize(presentation?: MaximizePresentation, acrossDisplay?: boolean): Promise&
 | 参数名 | 类型  | 必填 | 说明 |
 | ----- | ---------------------------- | -- | --------------------------------- |
 | presentation | [MaximizePresentation](arkts-apis-window-e.md#maximizepresentation12) | 否 | 主窗口或子窗口最大化时的布局枚举。默认值window.MaximizePresentation.ENTER_IMMERSIVE，即默认最大化时进入全屏模式。 |
-| acrossDisplay | boolean | 否 | 控制悬停态下主窗口在最大化时的瀑布流模式行为。仅主窗口可设置此参数，非主窗口调用时返回错误码`1300004`。<br>取值为`true`时：<br>- 悬停态下，窗口将直接进入瀑布流模式；<br>- 展开态下，窗口进入最大化，并在悬停态下保持瀑布流模式。<br>取值为`false`时：<br>- 悬停态下，窗口将退出瀑布流模式，进入单面最大化（即窗口最大化时只在上半屏或下半屏显示）；<br>- 展开态下，窗口进入最大化，并在悬停态下退出瀑布流模式。<br>取值为`undefined`或不传值时，不修改窗口瀑布流模式行为：<br>- 悬停态下，窗口进入单面最大化；<br>- 展开态下，窗口进入最大化，并在悬停态下默认保持瀑布流模式。<br>**设备行为差异：** 仅在具备折叠功能的2in1设备可正常调用；在其他设备上调用不生效。 |
+| acrossDisplay | boolean | 否 | 控制悬停态下主窗口在最大化时的瀑布流模式行为。默认值为`undefined`。<br>仅主窗口可设置此参数，非主窗口调用时返回错误码`1300004`。<br>取值为`true`时：<br>- 悬停态下，窗口将直接进入瀑布流模式；<br>- 展开态下，窗口进入最大化，并在悬停态下保持瀑布流模式。<br>取值为`false`时：<br>- 悬停态下，窗口将退出瀑布流模式，进入单面最大化（即窗口最大化时只在上半屏或下半屏显示）；<br>- 展开态下，窗口进入最大化，并在悬停态下退出瀑布流模式。<br>取值为`undefined`时，不修改窗口瀑布流模式行为：<br>- 悬停态下，窗口进入单面最大化；<br>- 展开态下，窗口进入最大化，并在悬停态下默认保持瀑布流模式。<br>**设备行为差异：** 仅在具备折叠功能的2in1设备可正常调用；在其他设备上调用不生效。 |
 
 **返回值：**
 
@@ -11402,7 +11402,7 @@ loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明                 |
 | -------- | ------------------------- | ---- | -------------------- |
-| path     | string                    | 是   | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。 |
+| path     | string                    | 是   | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。           |
 
 **示例：**
@@ -11436,7 +11436,7 @@ loadContent(path: string): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| path   | string | 是   | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。 |
+| path   | string | 是   | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。|
 
 **返回值：**
 

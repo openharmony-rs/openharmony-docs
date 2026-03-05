@@ -299,7 +299,7 @@ The TCP socket connection process on the server is as follows:
 
 3. Specify a **MulticastSocket** object by the IP address and port number, and add it to the multicast group.
    ```ts
-   // Construct a object to add it to a multicast group.
+   // Construct an object to add it to a multicast group.
    let addr : socket.NetAddress = {
      address: '239.255.0.1',
      port: 32123,

@@ -154,9 +154,9 @@ int32_t (*setContentAlignment)(ArkUI_NativeDialogHandle handle, int32_t alignmen
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-|  int32_t alignment | 对齐方式，参数类型ArkUI_Alignment。 |
-|  float offsetX | 弹窗的水平偏移量，浮点型。 |
-|  float offsetY | 弹窗的垂直偏移量，浮点型。 |
+|  int32_t alignment | 对齐方式，参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)。 |
+|  float offsetX | 弹窗的水平偏移量，浮点型，单位：vp。 |
+|  float offsetY | 弹窗的垂直偏移量，浮点型，单位：vp。 |
 
 **返回：**
 
@@ -172,7 +172,7 @@ int32_t (*resetContentAlignment)(ArkUI_NativeDialogHandle handle)
 
 **描述：**
 
-重置setContentAlignment方法设置的属性，使用系统默认的对齐方式。
+重置setContentAlignment方法设置的属性，使用系统默认的对齐方式，默认值：ARKUI_ALIGNMENT_TOP_START，参考[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)。
 
 > **说明：** 
 >
@@ -318,10 +318,10 @@ int32_t (*setCornerRadius)(ArkUI_NativeDialogHandle handle, float topLeft, float
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-|  float topLeft | 设置弹窗背板左上角圆角半径。 |
-|  float topRight | 设置弹窗背板右上角圆角半径。 |
-| float bottomLeft | 设置弹窗背板左下圆角半径。 |
-|  float bottomRight | 设置弹窗背板右下角圆角半径。 |
+|  float topLeft | 设置弹窗背板左上角圆角半径，单位：vp。|
+|  float topRight | 设置弹窗背板右上角圆角半径，单位：vp。|
+| float bottomLeft | 设置弹窗背板左下圆角半径，单位：vp。|
+|  float bottomRight | 设置弹窗背板右下角圆角半径，单位：vp。|
 
 **返回：**
 
@@ -348,7 +348,7 @@ int32_t (*setGridColumnCount)(ArkUI_NativeDialogHandle handle, int32_t gridCount
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-|  int32_t gridCount | 默认为按照窗口大小自适应，最大栅格数为系统最大栅格数。 |
+|  int32_t gridCount | 默认为按照窗口大小自适应，最大栅格数为[系统最大栅格数](../../ui/arkts-layout-development-grid-layout.md#布局的总列数)。<br/>取值范围：大于等于0的整数。 |
 
 **返回：**
 
