@@ -390,12 +390,12 @@ import { common } from '@kit.AbilityKit';
 @Entry
 @Component
 struct AbilityContextTest {
-  // abilityContext
+  // UIAbilityContext
   @State UIAbilityInfo: string = '获取 abilityInfo'
   UIAbilityContext?: common.UIAbilityContext
 
   aboutToAppear() {
-    // getHostContext获取Context，转为abilityContext
+    // 通过getUIContext().getHostContext()获取UIAbilityContext
     this.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext
   }
 
