@@ -2464,7 +2464,7 @@ createVlanInterface(ifName: string, vlanId: int): Promise\<void\>
 
 > **说明：**
 >
->- 本接口当前仅支持PC设备。
+>- 本接口当前仅支持PC设备，其他设备类型上调用本接口返回错误码2100002。
 
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
@@ -2485,13 +2485,12 @@ createVlanInterface(ifName: string, vlanId: int): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)。
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------- |
 | 201 | Permission denied. |
 | 202 | Nonsystem applications use system APIs. |
-| 2100001 | Invalid parameter value.          |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
 | 2100400 | The input network interface is incorrect. |
@@ -2518,7 +2517,7 @@ destroyVlanInterface(ifName: string, vlanId: int): Promise\<void\>
 
 > **说明：**
 >
->- 本接口当前仅支持PC设备。
+>- 本接口当前仅支持PC设备，其他设备类型上调用本接口返回错误码2100002。
 
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
@@ -2539,13 +2538,12 @@ destroyVlanInterface(ifName: string, vlanId: int): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)。
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------- |
 | 201 | Permission denied. |
 | 202 | Nonsystem applications use system APIs. |
-| 2100001 | Invalid parameter value.          |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
 | 2100400 | The input network interface is incorrect. |
@@ -2572,7 +2570,7 @@ addVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
 
 > **说明：**
 >
->- 本接口当前仅支持PC设备。
+>- 本接口当前仅支持PC设备，其他设备类型上调用本接口返回错误码2100002。
 
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
@@ -2594,13 +2592,12 @@ addVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)。
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------- |
 | 201 | Permission denied. |
 | 202 | Nonsystem applications use system APIs. |
-| 2100001 | Invalid parameter value.          |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
 | 2100400 | The input network interface is incorrect. |
@@ -2636,7 +2633,7 @@ deleteVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
 
 > **说明：**
 >
->- 本接口当前仅支持PC设备。
+>- 本接口当前仅支持PC设备，其他设备类型上调用本接口返回错误码2100002。
 
 **需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
 
@@ -2658,13 +2655,12 @@ deleteVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)。
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------- |
 | 201 | Permission denied. |
 | 202 | Nonsystem applications use system APIs. |
-| 2100001 | Invalid parameter value.          |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
 | 2100400 | The input network interface is incorrect. |
