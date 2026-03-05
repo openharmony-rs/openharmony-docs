@@ -21088,7 +21088,7 @@
 						"start_line":208
 					},
 					{
-						"end_line":290,
+						"end_line":294,
 						"name":"custom_the_size_of_text",
 						"start_line":249
 					},
@@ -21153,7 +21153,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/EnableAutoSpacing.ets",
 				"functions":[
 					{
-						"end_line":68,
+						"end_line":69,
 						"name":"Enable_AutoSpacing",
 						"start_line":16
 					}
@@ -21263,9 +21263,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextHotSearch.ets",
 				"functions":[
 					{
-						"end_line":127,
+						"end_line":128,
 						"name":"the_text_fact_example",
-						"start_line":16
+						"start_line":17
 					}
 				]
 			},
