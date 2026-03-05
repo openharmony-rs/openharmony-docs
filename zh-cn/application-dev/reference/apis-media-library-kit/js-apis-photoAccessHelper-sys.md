@@ -3855,9 +3855,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       resultSet.goToRow(index);
       valuesArr.push(resultSet.getRow());
       index++;
-      if(index >= resultSet.rowCount){
-        break;
-      }
     }
     photoAssetArr = await phAccessHelper.getPhotoAssets(valuesArr);
     console.info('getPhotoAssets successfully');
