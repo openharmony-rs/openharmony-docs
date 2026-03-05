@@ -1888,7 +1888,8 @@ Navigation分割线颜色及上下边距。
 | ----- | ----- |------------------------------------------------------------ |
 | Stack | 0 |导航页与内容区独立显示，相当于两个页面。                     |
 | Split | 1 |导航页与内容区分两栏显示。<br/>**1.** navBarWidth最终取值与开发者设置值的关系参见表1。<br/>**2.** 缩小组件尺寸时，先缩小内容区的尺寸至minContentWidth，然后再缩小导航页的尺寸至minNavBarWidth。若继续缩小，先缩小内容区，内容区消失后再缩小导航页。<br/>**3.** 设置导航页为固定尺寸时，若持续缩小组件尺寸，导航页最后压缩显示。<br/>**4.** 若只设置了navBarWidth属性，则导航页宽度为navBarWidth，且分割线不可拖动。<br/>**5.** 分割线的热区左右各2vp，建议避让4vp以上。<br/>**6.** Split模式下，内容区若只存在一个页面，则页面左上角不会显示返回按钮。 |
-| Auto  | 2 |API version 9之前：窗口宽度>=520vp时，采用Split模式显示；窗口宽度<520vp时，采用Stack模式显示。<br/>API version 10及以上：窗口宽度>=600vp时，采用Split模式显示；窗口宽度<600vp时，采用Stack模式显示，600vp等于minNavBarWidth(240vp) + minContentWidth (360vp)。 |
+| Auto  | 2 |API version 9及之前版本，Navigation宽度>=520vp时，采用Split模式显示；Navigation宽度<520vp时，采用Stack模式显示。<br/>从API version 10开始：Navigation宽度>=600vp时，采用Split模式显示；Navigation宽度<600vp时，采用Stack模式显示，600vp等于minNavBarWidth(240vp) + minContentWidth (360vp)。 |
+| AUTO_WITH_ASPECT_RATIO<sup>24+</sup>  | 3 |Navigation宽度>=600vp且高宽比小于等于1.2时，采用Split模式显示；否则采用Stack模式显示。600vp等于minNavBarWidth(240vp) + minContentWidth (360vp)。 |
 
 **表1** navBarWidth最终取值与开发者设置值的关系表
 
