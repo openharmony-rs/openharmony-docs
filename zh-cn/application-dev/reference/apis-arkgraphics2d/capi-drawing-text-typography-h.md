@@ -2540,7 +2540,7 @@ void OH_Drawing_SetTypographyTextEllipsisModal(OH_Drawing_TypographyStyle* style
 
 >**说明：** 
 > 
-> API version 24之后，推荐使用[OH_Drawing_SetTypographyStyleAttributeInt](capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributeint)接口设置省略号样式，以支持更多省略号样式的枚举值。
+> 从API version 24开始，推荐使用[OH_Drawing_SetTypographyStyleAttributeInt](capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributeint)接口设置省略号样式，以支持更多省略号样式的枚举值。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
