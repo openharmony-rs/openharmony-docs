@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从 API version 11 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。本模块暂不支持模拟器。<br>
+> 本模块首批接口从 API version 11 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。<br>
 > 如下模块不支持在VpnExtensionAbility引用，可能会导致程序异常退出。<br>
 > - [@ohos.contact(联系人)](../apis-contacts-kit/js-apis-contact.md)<br>
 > - [@ohos.geolocation](../apis-location-kit/js-apis-geolocation.md)、[@ohos.geoLocationManager(位置服务)](../apis-location-kit/js-apis-geoLocationManager.md)<br>
