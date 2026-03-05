@@ -132,7 +132,7 @@ radius(value: Length | Array&lt;any&gt;)
 
 | 参数名 | 类型                                                         | 必填 | 说明                         |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------- |
-| value  | [Length](ts-types.md#length) \|&nbsp;Array&lt;any&gt; | 是   | 圆角半径大小。<br/>默认值：0<br/>默认单位：vp <br/>异常值undefined和null按照无效值处理。|
+| value  | [Length](ts-types.md#length) \|&nbsp;Array&lt;any&gt; | 是   | 圆角半径大小。<br/>默认值：0<br/>默认单位：vp <br/>异常值undefined和null按照[[0, 0], [0, 0], [0, 0], [0, 0]]处理。|
 
 ### fill
 
@@ -332,7 +332,7 @@ antiAlias(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | 是   | 是否开启抗锯齿效果。<br/>true：开启抗锯齿；false：关闭抗锯齿。<br/>默认值：true <br/>异常值undefined和null按照默认值处理。|
+| value  | boolean | 是   | 是否开启抗锯齿效果。<br/>true：开启抗锯齿；false：关闭抗锯齿。<br/>默认值：true <br/>异常值undefined和null按照false处理。|
 
 ## 示例
 
