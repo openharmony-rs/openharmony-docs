@@ -1,4 +1,4 @@
-# Functions
+# @ohos.multimedia.avMusicTemplate(音频模板)(系统接口)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->

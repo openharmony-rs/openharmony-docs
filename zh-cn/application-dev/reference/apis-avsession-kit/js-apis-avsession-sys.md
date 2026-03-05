@@ -49,11 +49,11 @@ getAllSessionDescriptors(callback: AsyncCallback\<Array\<Readonly\<AVSessionDesc
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。 
 
-| 错误码ID | 错误信息 | 
-| -------- | ---------------------------------------- | 
-| 201 | permission denied. | 
-| 202 | Not System App. |
-| 6600101  |Session service exception. | 
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| xxxxxxxxxx import avMusicTemplate from '@ohos.multimedia.avMusicTemplate';​export class TemplateManager {  private template: avMusicTemplate.AVMusicTemplate \| undefined = undefined;  private static sInstance: TemplateManager;​  private constructor() {  }​  /**   * 获取模板控制器实例。   *   * @returns 模板控制器实例。   */  public static getInstance(): TemplateManager {    if (!TemplateManager.sInstance) {      TemplateManager.sInstance = new TemplateManager();    }    return TemplateManager.sInstance;  };​  /**   * 创建音频模板。   */  public createTemplate() {    if (this.template) {      console.warn('createTemplate: template not undefined');      return    }    try {      this.template = avMusicTemplate.createAVMusicTemplate(avMusicTemplate.AVMusicTemplateType.DEFAULT);      console.info('createTemplate: success');      this.registerListener();    } catch (e) {      console.error(`createTemplate, errCode: ${e?.code}`);    }  }}ts | Not System App. |
+| 6600101  |Session service exception. |
 
 **示例：** 
 
@@ -704,7 +704,7 @@ on(type: 'sessionCreate', callback: (session: AVSessionDescriptor) => void): voi
 **系统接口：** 此接口为系统接口。 
 
 **参数：** 
- 
+
 | 参数名    | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                 | 是   | 事件回调类型，支持的事件是'sessionCreate'：会话创建事件，检测到会话创建时触发。|
@@ -762,17 +762,17 @@ on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => void): vo
 | -------- | ---------------| ---- | ------------------------------------------------------------ |
 | type     | string         | 是   | 事件回调类型，支持的事件是`'sessionDestroy'`：会话销毁事件，检测到会话销毁时触发。|
 | callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)) => void | 是   | 回调函数。参数为会话相关描述。 |
- 	 
+
  **错误码：** 
- 
+
  以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。 
- 
+
  | 错误码ID | 错误信息 | 
  | -------- | ---------------------------------------- | 
  | 202 | Not System App. | 
  | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. | 
  | 6600101  | Session service exception. | 
- 
+
 **示例：**
 
 ```ts
@@ -796,7 +796,7 @@ struct Index {
   }
 }
 ```
- 
+
 ## avSession.on('topSessionChange') 
 
 on(type: 'topSessionChange', callback: (session: AVSessionDescriptor) => void): void 
