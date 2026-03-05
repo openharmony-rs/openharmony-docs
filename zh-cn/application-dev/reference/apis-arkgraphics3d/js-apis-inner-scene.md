@@ -18,22 +18,6 @@ import { SceneResourceParameters, SceneNodeParameters, RaycastResult, RaycastPar
   SceneResourceFactory, SceneComponent, RenderContext, RenderConfiguration, RenderParameters, Scene } from '@kit.ArkGraphics3D';
 ```
 
-## ResourceStr<sup>20+</sup>
-type ResourceStr = string | Resource
-
-字符串类型，用于描述字符串入参可以使用的类型。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
-**ArkTS-Sta起始版本：** 22
-
-| 类型 | 说明 |
-| ---- | ---- |
-| string | 字符串类型。 |
-| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 资源引用类型，引入系统资源或者应用资源中的字符串。 |
-
 ## SceneResourceParameters
 场景资源参数对象，包含name和uri，用于提供场景资源的名称以及3D场景所需的资源文件路径。
 

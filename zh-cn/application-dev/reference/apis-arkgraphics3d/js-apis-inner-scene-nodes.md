@@ -470,7 +470,7 @@ function getNode(): void {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## Camera
 相机类型，Camera继承自[Node](#node)。

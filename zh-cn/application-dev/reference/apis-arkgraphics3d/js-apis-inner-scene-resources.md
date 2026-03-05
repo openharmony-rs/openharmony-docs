@@ -19,22 +19,6 @@ import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend
   SubMesh, Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image } from '@kit.ArkGraphics3D';
 ```
 
-## ResourceStr<sup>20+</sup>
-type ResourceStr = string | Resource
-
-字符串类型，用于描述字符串入参可以使用的类型。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
-**ArkTS-Sta起始版本：** 22
-
-| 类型 | 说明 |
-| ---- | ---- |
-| string | 字符串类型。 |
-| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 资源引用类型，引入系统资源或者应用资源中的字符串。 |
-
 ## SceneResourceType
 场景资源类型枚举，对场景中的资源进行分类。
 
@@ -372,7 +356,7 @@ function destroy(): void {
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## Animation
 动画类型，继承自[SceneResource](#sceneresource-1)。
