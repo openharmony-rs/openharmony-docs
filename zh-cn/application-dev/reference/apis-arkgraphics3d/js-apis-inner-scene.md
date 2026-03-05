@@ -933,10 +933,10 @@ function registerResourcePath(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| environment | [Environment](js-apis-inner-scene-resources.md#environment) | 否 | 否 | 环境对象。<br/>**ArkTS-Dyn起始版本:** 12<br>**ArkTS-Sta起始版本:** 23 |
-| animations | [Animation](js-apis-inner-scene-resources.md#animation)[] | 是 | 否 | 动画数组，用于保存3D场景中的动画对象。<br/>**ArkTS-Dyn起始版本:** 12<br>**ArkTS-Sta起始版本:** 23|
-| root | [Node](js-apis-inner-scene-nodes.md#node) \| null | 是 | 否 | 3D场景树根结点。<br/>**ArkTS-Dyn起始版本:** 12<br>**ArkTS-Sta起始版本:** 23 |
-| renderConfiguration | [RenderConfiguration](#renderconfiguration23)  | 是 | 否 | 渲染配置接口。<br/>**ArkTS-Dyn起始版本:** 23<br>**ArkTS-Sta起始版本:** 23 |
+| environment | [Environment](js-apis-inner-scene-resources.md#environment) | 否 | 否 | 环境对象。<br/>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| animations | [Animation](js-apis-inner-scene-resources.md#animation)[] | 是 | 否 | 动画数组，用于保存3D场景中的动画对象。<br/>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| root | [Node](js-apis-inner-scene-nodes.md#node) \| null | 是 | 否 | 3D场景树根结点。<br/>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| renderConfiguration<sup>23</sup> | [RenderConfiguration](#renderconfiguration23)  | 是 | 否 | 渲染配置接口。<br/>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 
 ### load
 static load(uri?: ResourceStr): Promise\<Scene>
