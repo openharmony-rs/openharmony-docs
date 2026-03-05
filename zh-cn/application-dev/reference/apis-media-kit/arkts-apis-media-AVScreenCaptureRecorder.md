@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 12开始支持。
 
@@ -128,8 +129,9 @@ avScreenCaptureRecorder.stopRecording().then(() => {
 
 ## skipPrivacyMode<sup>12+</sup>
 
-ArkTS-Dyn: skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
-ArkTS-Sta: skipPrivacyMode(windowIDs: Array\<int>): Promise\<void>
+**ArkTS-Dyn：** skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
+
+**ArkTS-Sta：** skipPrivacyMode(windowIDs: Array\<int>): Promise\<void>
 
 录屏时，应用可对本应用的隐私窗口做安全豁免。使用Promise异步回调。
 如录屏时，用户在本应用进行输入密码等操作，应用不会进行黑屏处理。
@@ -148,9 +150,11 @@ ArkTS-Sta起始版本：23
 
 | 类型           | 说明                             |
 | -------------- | -------------------------------- |
-| Promise\<void> | 豁免隐私窗口的Promise返回值. |
+| Promise\<void> | Promise对象，无返回结果. |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
