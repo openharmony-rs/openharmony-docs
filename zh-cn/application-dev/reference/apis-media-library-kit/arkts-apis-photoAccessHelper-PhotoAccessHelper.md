@@ -969,7 +969,7 @@ showAssetsCreationDialogEx(srcFileUris: Array&lt;string&gt;, creationSettings: A
 
 > **说明：**
 >
-> - 用户同意后，返回已创建并授予保存权限的uri列表，该列表永久有效，支持写入图片/视频。用户拒绝时，返回空列表。
+> - 用户同意后，返回已创建并授予保存权限的URI列表，该列表永久有效，支持写入图片/视频。用户拒绝时，返回空列表。
 > - 弹框需显示应用名称，名称和图标需在[module.json5](../../../application-dev/quick-start/module-configuration-file.md)文件的abilities标签中配置label和icon项。
 > - 当传入URI为沙箱路径时，可正常保存图片或视频，但不显示界面预览。
 
@@ -1181,7 +1181,7 @@ createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise&
 
 > **说明：**
 >
-> - 用户同意保存后，接口将返回已创建并授予保存权限的uri，应用可使用该uri写入图片/视频。
+> - 用户同意保存后，接口将返回已创建并授予保存权限的URI，应用可使用该URI写入图片/视频。
 > - 在用户同意后的5分钟内，若同一应用再次调用此接口，系统将无需弹框确认，直接返回已授权的URI，供应用保存图片/视频。退出应用会结束授权，再次进入需要重新弹出弹框进行确认授权。
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -1215,7 +1215,7 @@ createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise&
 
 requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Array&lt;string&gt;&gt;
 
-<!--RP1--><!--RP1End-->调用接口给未授权的URI进行授权，返回已创建并授予保存权限的uri列表。
+<!--RP1--><!--RP1End-->调用接口给未授权的URI进行授权，返回已创建并授予保存权限的URI列表。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 

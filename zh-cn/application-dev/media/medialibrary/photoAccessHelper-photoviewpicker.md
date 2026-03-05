@@ -48,11 +48,9 @@
    console.log('选择成功，返回结果: ' + JSON.stringify(result));
    console.log('选择的文件数量: ' + result.photoUris.length);
          
-
-         
-   // 更新选中的uri列表
+   // 更新选中的URI列表
    this.selectedUris = result.photoUris;
-   // 设置默认选中第一个uri用于读取操作
+   // 设置默认选中第一个URI用于读取操作
    if (this.selectedUris.length > 0) {
      this.selectedUriForRead = this.selectedUris[0];
    }
@@ -68,7 +66,7 @@
 
    如有获取元数据需求，可以通过[文件管理接口](../../reference/apis-core-file-kit/js-apis-file-fs.md)和[文件URI](../../reference/apis-core-file-kit/js-apis-file-fileuri.md)根据uri获取部分文件属性信息，比如文件大小、访问时间、修改时间、文件名、文件路径等。
 
-## 指定uri读取文件数据
+## 指定URI读取文件数据
 
 1. 待界面从图库返回后，再通过一个类似按钮的组件去调用其他函数，使用[fileIo.openSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync)接口，通过[媒体文件uri](../../file-management/user-file-uri-intro.md#媒体文件uri)打开这个文件得到fd。这里需要注意接口权限参数是fileIo.OpenMode.READ_ONLY。
 
@@ -101,9 +99,9 @@
    }
    ```
 
-## 指定uri获取图片或视频资源
+## 指定URI获取图片或视频资源
 
-媒体库支持Picker选择[媒体文件](../../file-management/user-file-uri-intro.md#媒体文件uri)uri后，根据指定uri获取图片或视频资源，下面以查询指定uri为'file://media/Photo/1/IMG_datetime_0001/displayName.jpg'为例。
+媒体库支持Picker选择[媒体文件](../../file-management/user-file-uri-intro.md#媒体文件uri)URI后，根据指定URI获取图片或视频资源，下面以查询指定URI为'file://media/Photo/1/IMG_datetime_0001/displayName.jpg'为例。
 
 1. 定义媒体资源处理器[MediaAssetDataHandler](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetDataHandler.md)，系统在资源准备就绪时向应用回调onDataPrepared。
 
