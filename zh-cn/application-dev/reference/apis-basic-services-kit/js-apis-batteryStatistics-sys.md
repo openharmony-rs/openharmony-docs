@@ -117,7 +117,8 @@ batteryStats.getBatteryStats((err: Error | null, data : batteryStats.BatteryStat
 
 ## batteryStats.getAppPowerValue
 
-ArkTS-Dyn: getAppPowerValue(uid: number): number  
+ArkTS-Dyn: getAppPowerValue(uid: number): number
+
 ArkTS-Sta: getAppPowerValue(uid: int): double
 
 获取应用的耗电量。
@@ -165,7 +166,8 @@ try {
 
 ## batteryStats.getAppPowerPercent
 
-ArkTS-Dyn: getAppPowerPercent(uid: number): number  
+ArkTS-Dyn: getAppPowerPercent(uid: number): number
+
 ArkTS-Sta: getAppPowerPercent(uid: int): double
 
 获取应用的耗电百分比。
@@ -213,7 +215,8 @@ try {
 
 ## batteryStats.getHardwareUnitPowerValue
 
-ArkTS-Dyn: getHardwareUnitPowerValue(type: ConsumptionType): number  
+ArkTS-Dyn: getHardwareUnitPowerValue(type: ConsumptionType): number
+
 ArkTS-Sta: getHardwareUnitPowerValue(type: ConsumptionType): double
 
 根据耗电类型获取硬件单元的耗电量。
@@ -261,7 +264,8 @@ try {
 
 ## batteryStats.getHardwareUnitPowerPercent
 
-ArkTS-Dyn: getHardwareUnitPowerPercent(type: ConsumptionType): number  
+ArkTS-Dyn: getHardwareUnitPowerPercent(type: ConsumptionType): number
+
 ArkTS-Sta: getHardwareUnitPowerPercent(type: ConsumptionType): double
 
 根据耗电类型获取硬件单元的耗电百分比。
