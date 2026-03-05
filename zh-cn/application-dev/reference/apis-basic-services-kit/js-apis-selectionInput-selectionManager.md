@@ -355,7 +355,7 @@ setUiContent(path: string): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -396,7 +396,7 @@ show(): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -431,7 +431,7 @@ hide(): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -524,7 +524,7 @@ moveTo(x: number, y: number): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -573,7 +573,7 @@ moveToGlobalDisplay(x: number, y: number): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -604,7 +604,7 @@ on(type: 'destroyed', callback: Callback\<void>): void
 | callback | Callback\<void> | 是   | 回调函数。       |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -633,7 +633,7 @@ off(type: 'destroyed', callback?: Callback\<void>): void
 | callback | Callback\<void> | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。|
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -660,7 +660,7 @@ on(type: 'hidden', callback: Callback\<void>): void
 | callback | Callback\<void> | 是   | 回调函数，返回当前划词服务的信息。       |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
@@ -689,7 +689,7 @@ off(type: 'hidden', callback?: Callback\<void>): void
 | callback | Callback\<void> | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 

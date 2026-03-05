@@ -12,7 +12,7 @@ typedef struct {...} Print_Margin
 
 ## Overview
 
-Defines a struct for the print margin.
+Defines a struct for the page margin to print.
 
 **Since**: 12
 

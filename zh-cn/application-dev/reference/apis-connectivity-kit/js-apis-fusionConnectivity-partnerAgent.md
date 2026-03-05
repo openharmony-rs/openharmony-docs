@@ -293,7 +293,7 @@ try {
 
 isDeviceControlEnabled(deviceAddress: PartnerDeviceAddress): boolean
 
-判断当前设备的互通功能是否已经关闭。
+判断当前设备的互通功能是否已经打开。
 
 - 调用[bindDevice](#partneragentbinddevice)接口注册设备后，设备的互通功能将默认开启，且可在系统设置应用设备详情页显示该功能已开启。
 - 如果该功能已关闭，可通过系统设置应用设备详情页信息互通功能开关使能该功能。
@@ -315,7 +315,7 @@ isDeviceControlEnabled(deviceAddress: PartnerDeviceAddress): boolean
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| boolean | 表示应用是否已注册该设备。true表示已注册，false表示未注册。 |
+| boolean | 表示当前设备是否已经打开互通功能。true表示已打开，false表示未打开。 |
 
 **错误码**：
 
@@ -356,8 +356,8 @@ try {
 
 | 名称                 | 类型   | 只读 | 可选   | 说明                                       |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
-| supportBR            | boolean | 否 | 是    | 该设备是否支持通过[ACL](../../connectivity/terminology.md#acl)连接的方式发现，建立ACL连接后会认为成功发现了该设备。true表示支持通过连接的方式发现，false表示不支持通过连接的方式发现。 |
-| supportBleAdvertiser | boolean | 否 | 是    | 该设备是否支持通过[BLE](../../connectivity/terminology.md#ble)扫描的方式发现，扫描到该设备后会认为成功发现了该设备。true表示支持通过BLE扫描的方式发现，false表示不支持通过BLE扫描的方式发现。<br> 注意：<br>  [supportBleAdvertiser](#partneragentdevicecapability)选项不能单独使用，必须与[supportBR](#partneragentdevicecapability)选项配合使用。 |
+| supportBR            | boolean | 否 | 是    | 该设备是否支持通过[ACL](../../connectivity/terminology.md#acl)连接的方式发现，建立ACL连接后会认为成功发现了该设备。发现设备后，会拉起[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程，并调用进程中[onDeviceDiscovered](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md#ondevicediscovered)方法。true表示支持通过连接的方式发现，false表示不支持通过连接的方式发现。未指定默认为false。 |
+| supportBleAdvertiser | boolean | 否 | 是    | 该设备是否支持通过[BLE](../../connectivity/terminology.md#ble)扫描的方式发现，扫描到该设备后会认为成功发现了该设备。发现设备后，会拉起PartnerAgentExtensionAbility进程，并调用进程中onDeviceDiscovered方法。true表示支持通过BLE扫描的方式发现，false表示不支持通过BLE扫描的方式发现。未指定默认为false。<br> 注意：<br>  选择[supportBleAdvertiser](#partneragentdevicecapability)选项，若扫描到该设备，3min内无ACL连接，会调用[onDestroyWithReason](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md#ondestroywithreason)并销毁已拉起的PartnerAgentExtensionAbility进程。 |
 
 ## partnerAgent.BusinessCapability
 
@@ -369,8 +369,8 @@ try {
 
 | 名称                 | 类型   | 只读 | 可选   | 说明                                       |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
-| supportMediaControl | boolean | 否 | 是 | 该设备是否支持媒体控制功能，例如控制媒体播放、音量调节、上一首和下一首等功能。true表示支持媒体控制功能，false表示不支持媒体控制功能。 |
-| supportTelephonyControl | boolean | 否 | 是 | 该设备是否支持通话控制功能，如接听和挂断电话。 true表示支持，false表示不支持。 |
+| supportMediaControl | boolean | 否 | 是 | 该设备是否支持媒体控制功能，例如控制媒体播放、音量调节、上一首和下一首等功能。true表示支持，false表示不支持。未指定默认为false。 |
+| supportTelephonyControl | boolean | 否 | 是 | 该设备是否支持通话控制功能，如接听和挂断电话。 true表示支持，false表示不支持。未指定默认为false。 <br> 注意：<br>  supportMediaControl和supportTelephonyControl均选择false时，[设备发现](#partneragentdevicecapability)时不会拉起[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)进程。 |
 
 ## partnerAgent.PartnerDeviceAddress
 

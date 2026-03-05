@@ -6,7 +6,14 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-拍照是相机的最重要功能之一，拍照模块基于相机复杂的逻辑，为了保证用户拍出的照片质量，在中间步骤可以设置分辨率、闪光灯、焦距、照片质量及旋转角度等信息。
+## 概述
+
+拍照是相机的重要功能之一，拍照模块基于相机复杂的逻辑，为了保证用户拍出的照片质量，在中间步骤可以设置分辨率、闪光灯、焦距、照片质量及旋转角度等信息。
+
+目前相机开发有两种相机拍照方案，分别是相机[分段式拍照](./native-camera-deferred-capture.md)和相机单段式拍照（**本文将以单段式拍照为基础进行说明**）。 
+
+- 分段式拍照是指相机拍照既可以输出低质量图用作缩略图，提升用户感知拍照速度，也可以使用高质量图保证最后的成图质量达到系统相机的水平。满足了图像处理算法的需求的同时，又不会阻塞前台的拍照速度，构筑相机性能竞争力，提升用户体验。 
+- 单段式拍照是指在拍照过程中通过多帧融合以及多个底层算法处理之后返回一张高质量图片，所以Shot2See（用户点击拍照控件到在缩略图显示区域显示缩略图的过程）完成时延较长。此外，单段式拍照支持通过[高性能拍照](#高性能拍照)功能调整[画质优先策略](#画质优先策略)，以加快出图速度或提升图片质量。 
 
 ## 开发步骤
 
@@ -491,6 +498,158 @@
        return ret;
    }
    ```
+
+## 高性能拍照
+
+从API version 21开始支持高性能拍照功能，即在进行单段式拍照时设置明确的[画质优先策略](#画质优先策略)。
+
+单段式拍照的体验主要由出图速度和最终图片质量衡量。因此，为满足开发者在不同场景下的差异化需求，对这两项指标的侧重也不同。例如，街头抓拍要求快速捕捉瞬间，而风景或人像拍摄则更追求极致的画质。
+
+> **注意：**
+>
+> 仅单段式拍照支持设置画质优先策略。若在分段式拍照中设置画质优先策略，该设置将无效。
+
+
+### 画质优先策略
+
+在使用单段式拍照时，支持设置速度优先和画质优先两种画质优先策略类型，并且分别对应着不同的[Camera_PhotoQualityPrioritization](../../reference/apis-camera-kit/capi-camera-h.md#camera_photoqualityprioritization)枚举类型。 
+
+- [CAMERA_PHOTO_QUALITY_PRIORITIZATION_SPEED](../../reference/apis-camera-kit/capi-camera-h.md#camera_photoqualityprioritization)对应着速度优先，表示降低画质来提升拍照的速度。如果开发者在进行单段式拍照时没有设置明确的画质优先策略，**单段式拍照就默认为速度优先状态**。 
+- [CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY](../../reference/apis-camera-kit/capi-camera-h.md#camera_photoqualityprioritization)对应着画质优先，表示通过较长的耗时来得到画质更高的图片。 
+
+### 如何正确设置画质优先策略
+
+为了正确的在单段式拍照中设置画质优先策略，高性能拍照功能提供了如下两个接口： 
+
+- [OH_PhotoOutput_IsPhotoQualityPrioritizationSupported](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_isphotoqualityprioritizationsupported)：查询当前设备是否支持指定的画质优先策略。返回true表示支持，返回false表示不支持。在进行设置画质优先策略之前，必须先查询将要设置的画质优先策略在当前设备上是否可用。 
+- [OH_PhotoOutput_SetPhotoQualityPrioritization](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_setphotoqualityprioritization)：画质优先策略设置接口，通过该接口设置对应的画质优先策略，实现高性能拍照。 
+
+### 开发步骤
+ 	 
+高性能拍照相关接口需要在[会话管理(C/C++)](native-camera-session-management.md)流程的使能步骤中进行调用。  
+ 	 
+具体调用时机如下： 
+
+- 在[会话管理(C/C++)](native-camera-session-management.md)流程中的使能步骤中的[OH_CaptureSession_CommitConfig()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig)结束之后进行调用。 
+
+  ```c++
+  Camera_ErrorCode StartSession(Camera_CaptureSession* captureSession, Camera_Input* cameraInput,
+    Camera_PreviewOutput* previewOutput, Camera_PhotoOutput* photoOutput)
+  {
+    // 向会话中添加相机输入流。
+    Camera_ErrorCode ret = OH_CaptureSession_AddInput(captureSession, cameraInput);
+    if (ret != CAMERA_OK) {
+      OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddInput failed.");
+      return ret;
+    }
+
+    // 向会话中添加预览输出流。
+    ret = OH_CaptureSession_AddPreviewOutput(captureSession, previewOutput);
+    if (ret != CAMERA_OK) {
+      OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddPreviewOutput failed.");
+      return ret;
+    }
+
+    // 向会话中添加拍照输出流。
+    ret = OH_CaptureSession_AddPhotoOutput(captureSession, photoOutput);
+    if (ret != CAMERA_OK) {
+      OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddPhotoOutput failed.");
+      return ret;
+    }
+
+    // 提交会话配置。
+    ret = OH_CaptureSession_CommitConfig(captureSession);
+    if (ret != CAMERA_OK) {
+      OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_CommitConfig failed.");
+      return ret;
+    }
+
+    // 启动会话。
+    ret = OH_CaptureSession_Start(captureSession);
+    if (ret != CAMERA_OK) {
+      OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_Start failed.");
+    }
+
+    SetHighQualityPhotoQualityPrioritization(photoOutput);
+    return ret;
+  }
+
+  void SetHighQualityPhotoQualityPrioritization(Camera_PhotoOutput* photoOutput)
+  {
+    Camera_PhotoQualityPrioritization quality = Camera_PhotoQualityPrioritization::CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY;
+    bool isSupported = false;
+    Camera_ErrorCode ret = OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(photoOutput, quality, isSupported);
+    if (isSupported) {
+      ret = OH_PhotoOutput_SetPhotoQualityPrioritization(photoOutput, quality);
+      if (ret != 0) {
+        OH_LOG_ERROR(LOG_APP, "OH_PhotoOutput_SetPhotoQualityPrioritization failed.");
+      }
+    } else {
+      OH_LOG_ERROR(LOG_APP, "OH_PhotoOutput_IsPhotoQualityPrioritizationSupported not supported.");
+    }
+  }
+  ```
+
+- 在[会话管理(C/C++)](native-camera-session-management.md)流程中的使能步骤中的[OH_CaptureSession_CommitConfig()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig)之前调用。 
+
+  ```c++
+  Camera_ErrorCode StartSession(Camera_CaptureSession* captureSession, Camera_Input* cameraInput,
+    Camera_PreviewOutput* previewOutput, Camera_PhotoOutput* photoOutput)
+  {
+    // 向会话中添加相机输入流。
+    Camera_ErrorCode ret = OH_CaptureSession_AddInput(captureSession, cameraInput);
+    if (ret != CAMERA_OK) {
+      OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddInput failed.");
+      return ret;
+    }
+
+    // 向会话中添加预览输出流。
+    ret = OH_CaptureSession_AddPreviewOutput(captureSession, previewOutput);
+    if (ret != CAMERA_OK) {
+      OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddPreviewOutput failed.");
+      return ret;
+    }
+
+    // 向会话中添加拍照输出流。
+    ret = OH_CaptureSession_AddPhotoOutput(captureSession, photoOutput);
+    if (ret != CAMERA_OK) {
+      OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddPhotoOutput failed.");
+      return ret;
+    }
+
+    SetHighQualityPhotoQualityPrioritization(photoOutput);
+    
+    // 提交会话配置。
+    ret = OH_CaptureSession_CommitConfig(captureSession);
+    if (ret != CAMERA_OK) {
+      OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_CommitConfig failed.");
+      return ret;
+    }
+
+    // 启动会话。
+    ret = OH_CaptureSession_Start(captureSession);
+    if (ret != CAMERA_OK) {
+      OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_Start failed.");
+    }
+
+    return ret;
+  }
+
+  void SetHighQualityPhotoQualityPrioritization(Camera_PhotoOutput* photoOutput)
+  {
+    Camera_PhotoQualityPrioritization quality = Camera_PhotoQualityPrioritization::CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY;
+    bool isSupported = false;
+    Camera_ErrorCode ret = OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(photoOutput, quality, isSupported);
+    if (isSupported) {
+      ret = OH_PhotoOutput_SetPhotoQualityPrioritization(photoOutput, quality);
+      if (ret != 0) {
+        OH_LOG_ERROR(LOG_APP, "OH_PhotoOutput_SetPhotoQualityPrioritization failed.");
+      }
+    } else {
+      OH_LOG_ERROR(LOG_APP, "OH_PhotoOutput_IsPhotoQualityPrioritizationSupported not supported.");
+    }
+  }
+  ```
 
 ## 状态监听
 

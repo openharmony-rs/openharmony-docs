@@ -741,30 +741,30 @@ struct ParticleExample {
           {
             emitter: {
               particle: {
-                type: ParticleType.POINT, //粒子类型
+                type: ParticleType.POINT, // 粒子类型
                 config: {
-                  radius: 10//圆点半径
+                  radius: 10 // 圆点半径
                 },
-                count: 500, //粒子总数
-                lifetime: 10000, //粒子生命周期，单位ms
-                lifetimeRange: 100//粒子生命周期取值范围，单位ms
+                count: 500, // 粒子总数
+                lifetime: 10000, // 粒子生命周期，单位ms
+                lifetimeRange: 100 // 粒子生命周期取值范围，单位ms
               },
-              emitRate: 10, //每秒发射粒子数
+              emitRate: 10, // 每秒发射粒子数
               position: [0, 0],
-              shape: ParticleEmitterShape.RECTANGLE//发射器形状
+              shape: ParticleEmitterShape.RECTANGLE // 发射器形状
             },
             color: {
-              range: [Color.Red, Color.Yellow], //初始颜色范围
+              range: [Color.Red, Color.Yellow], // 初始颜色范围
               distributionType: DistributionType.GAUSSIAN, // 初始颜色随机值分布
               updater: {
-                type: ParticleUpdater.CURVE, //变化方式为曲线变化
+                type: ParticleUpdater.CURVE, // 变化方式为曲线变化
                 config: [
                   {
-                    from: Color.White, //变化起始值
-                    to: Color.Pink, //变化终点值
-                    startMillis: 0, //开始时间
-                    endMillis: 3000, //结束时间
-                    curve: Curve.EaseIn//变化曲线
+                    from: Color.White, // 变化起始值
+                    to: Color.Pink, // 变化终点值
+                    startMillis: 0, // 开始时间
+                    endMillis: 3000, // 结束时间
+                    curve: Curve.EaseIn // 变化曲线
                   },
                   {
                     from: Color.Pink,
@@ -784,7 +784,7 @@ struct ParticleExample {
               }
             },
             opacity: {
-              range: [0.0, 1.0], //粒子透明度的初始值从【0.0到1.0】随机产生
+              range: [0.0, 1.0], // 粒子透明度的初始值从【0.0到1.0】随机产生
               updater: {
                 type: ParticleUpdater.CURVE,
                 config: [
@@ -821,11 +821,11 @@ struct ParticleExample {
               }
             },
             acceleration: {
-              //加速度的配置，从大小和方向两个维度变化，speed表示加速度大小，angle表示加速度方向
+              // 加速度的配置，从大小和方向两个维度变化，speed表示加速度大小，angle表示加速度方向
               speed: {
                 range: [3, 9],
                 updater: {
-                  type: ParticleUpdater.RANDOM, //Speed的变化方式是随机变化
+                  type: ParticleUpdater.RANDOM, // Speed的变化方式是随机变化
                   config: [1, 20]
                 }
               },
@@ -1256,28 +1256,28 @@ struct ParticleExample3 {
           {
             emitter: {
               particle: {
-                type: ParticleType.POINT, //粒子类型
+                type: ParticleType.POINT, // 粒子类型
                 config: {
-                  radius: 10//圆点半径
+                  radius: 10 // 圆点半径
                 },
-                count: 500, //粒子总数
-                lifetime: 10000//粒子生命周期，单位ms
+                count: 500, // 粒子总数
+                lifetime: 10000 // 粒子生命周期，单位ms
               },
-              emitRate: 10, //每秒发射粒子数
+              emitRate: 10, // 每秒发射粒子数
               position: [0, 0],
-              shape: ParticleEmitterShape.RECTANGLE//发射器形状
+              shape: ParticleEmitterShape.RECTANGLE // 发射器形状
             },
             color: {
-              range: [Color.Red, Color.Yellow], //初始颜色范围
+              range: [Color.Red, Color.Yellow], // 初始颜色范围
               updater: {
-                type: ParticleUpdater.CURVE, //变化方式为曲线变化
+                type: ParticleUpdater.CURVE, // 变化方式为曲线变化
                 config: [
                   {
-                    from: Color.White, //变化起始值
-                    to: Color.Pink, //变化终点值
-                    startMillis: 0, //开始时间
-                    endMillis: 3000, //结束时间
-                    curve: Curve.EaseIn//变化曲线
+                    from: Color.White, // 变化起始值
+                    to: Color.Pink, // 变化终点值
+                    startMillis: 0, // 开始时间
+                    endMillis: 3000, // 结束时间
+                    curve: Curve.EaseIn // 变化曲线
                   },
                   {
                     from: Color.Pink,
@@ -1297,7 +1297,7 @@ struct ParticleExample3 {
               }
             },
             opacity: {
-              range: [0.0, 1.0], //粒子透明度的初始值从[0.0,1.0]随机产生
+              range: [0.0, 1.0], // 粒子透明度的初始值从[0.0,1.0]随机产生
               updater: {
                 type: ParticleUpdater.CURVE,
                 config: [
@@ -1334,7 +1334,7 @@ struct ParticleExample3 {
               }
             },
             acceleration: {
-              //加速度的配置，从大小和方向两个维度变化，speed表示加速度大小，angle表示加速度方向
+              // 加速度的配置，从大小和方向两个维度变化，speed表示加速度大小，angle表示加速度方向
               speed: {
                 range: [3, 9],
                 updater: {
@@ -1393,14 +1393,14 @@ struct ParticleExample4 {
               particle: {
                 type: ParticleType.POINT, // 粒子类型
                 config: {
-                  radius: 5// 圆点半径
+                  radius: 5 // 圆点半径
                 },
                 count: 400, // 粒子总数
-                lifetime: -1// 粒子的生命周期，-1表示粒子生命周期无限大
+                lifetime: -1 // 粒子的生命周期，-1表示粒子生命周期无限大
               },
               emitRate: 10, // 每秒发射粒子数
               position: [0, 0], // 粒子发射位置
-              shape: ParticleEmitterShape.CIRCLE// 发射器形状
+              shape: ParticleEmitterShape.CIRCLE // 发射器形状
             },
             color: {
               range: [Color.Red, Color.Yellow], // 初始颜色范围
@@ -1444,7 +1444,7 @@ struct ParticleExample4 {
 ![particle](figures/emitters.gif)
 
 ### 示例5（环形发射器创建）
-描述粒子动画环形发射器创建的基础用法。
+该示例实现了粒子动画环形发射器每隔一秒钟沿着圆弧30度递增，周期性发射粒子，直至布满整个圆环。
 <!-- @[particle_example5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template5/Index.ets) -->
 
 ``` TypeScript
@@ -1462,16 +1462,16 @@ struct ParticleExample5 {
           {
             emitter: {
               particle: {
-                type: ParticleType.POINT, //粒子类型
+                type: ParticleType.POINT, // 粒子类型
                 config: {
-                  radius: 5//圆点半径
+                  radius: 5 // 圆点半径
                 },
-                count: 2000, //粒子总数
-                lifetime: 10000, //粒子生命周期，单位ms
-                lifetimeRange: 100//粒子生命周期取值范围，单位ms
+                count: 2000, // 粒子总数
+                lifetime: 10000, // 粒子生命周期，单位ms
+                lifetimeRange: 100 // 粒子生命周期取值范围，单位ms
               },
-              emitRate: 100, //每秒发射粒子数
-              shape: ParticleEmitterShape.ANNULUS,//环形发射器
+              emitRate: 100, // 每秒发射粒子数
+              shape: ParticleEmitterShape.ANNULUS, // 环形发射器
               annulusRegion:{
                 center:{x:LengthMetrics.percent(0.5),y:LengthMetrics.percent(0.5)}, // 圆环的圆心坐标
                 innerRadius:LengthMetrics.vp(100), // 圆环的外圆半径
@@ -1534,23 +1534,24 @@ struct ParticleExample5 {
 <!-- @[particle_example6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/particle/template6/Index.ets) -->
 
 ``` TypeScript
-import { LengthMetrics } from '@kit.ArkUI'
+import { LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct ParticleExample6 {
-
   @State radius: number = 1;
-  @State shape: ParticleEmitterShape = ParticleEmitterShape.ANNULUS;
+  @State shape: ParticleEmitterShape = ParticleEmitterShape.ANNULUS; // 圆环
   @State emitRate: number = 200;
-  @State count: number = 2000;
+  @State count: number = 4000;
   private timerID: number = -1;
   private centerX: LengthMetrics = LengthMetrics.percent(0.5);
   private centerY: LengthMetrics = LengthMetrics.percent(0.5);
   private inRadius: LengthMetrics = LengthMetrics.vp(120);
   private outRadius: LengthMetrics = LengthMetrics.vp(120);
-  private startAngle: number = 0;
-  private endAngle: number = 90;
+  private startAngle: number = -90;   // 时钟12点钟方向
+  private endAngle: number = -60;   // 时钟1点钟方向
+
+  // 粒子动画，环形发射器的更新参数设置
   @State emitterProperties: Array<EmitterProperty> = [
     {
       index: 0,
@@ -1559,24 +1560,48 @@ struct ParticleExample6 {
         center:{x:this.centerX, y: this.centerY}, // 圆环的圆心坐标
         outerRadius: this.outRadius, // 圆环的外圆半径
         innerRadius: this.inRadius, // 圆环的内圆半径
-        startAngle: -90, // 圆环的起始角度
-        endAngle: 0 // 圆环的结束角度
+        startAngle: this.startAngle, // 圆环的起始角度
+        endAngle: this.endAngle // 圆环的结束角度
       }
     }
   ]
+
+  // 创建的时候，环形发射器的初始设置
   @State region: ParticleAnnulusRegion = {
     center:{x:this.centerX, y: this.centerY},
     outerRadius: this.outRadius,
     innerRadius: this.inRadius,
     startAngle: -90,
-    endAngle: 0
+    endAngle: -60
   }
 
-  aboutToDisappear(): void {
-    // 页面销毁时清除计时器
-    if (this.timerID != -1) {
-      clearInterval(this.timerID);
-    }
+  onPageShow(): void {
+    // 创建定时器（每秒更新）
+    this.timerID = setInterval(() => {
+      this.emitterProperties = [
+        {
+          index: 0,
+          emitRate: this.emitRate,
+          annulusRegion: {
+            center:{x:this.centerX, y: this.centerY},
+            outerRadius: this.outRadius,
+            innerRadius: this.inRadius,
+            startAngle: this.startAngle,
+            endAngle: this.endAngle
+          }
+        }
+      ];
+      if (this.endAngle >= 360) {
+        if (this.timerID != -1) {
+          clearInterval(this.timerID);
+        }
+        return;
+      }
+      // 更新角度值（30度/秒）
+      this.startAngle += 30;
+      this.endAngle += 30;
+      console.info("angle: " + this.startAngle + ", " + this.endAngle);
+    }, 1000);
   }
 
   build() {
@@ -1598,7 +1623,7 @@ struct ParticleExample6 {
                   lifetime: -1 // 粒子的生命周期，-1表示粒子生命周期无限大
                 },
                 emitRate: this.emitRate, // 每秒发射粒子数
-                shape: this.shape, //发射器形状
+                shape: this.shape, // 发射器形状
                 annulusRegion: this.region
               },
               color: {
@@ -1609,39 +1634,6 @@ struct ParticleExample6 {
         }).width('100%')
           .height('100%')
           .emitter(this.emitterProperties)
-          .onClick(()=>{
-            // 清除已有定时器
-            if (this.timerID != -1) {
-              clearInterval(this.timerID);
-            }
-
-            // 创建定时器（每秒更新）
-            this.timerID = setInterval(() => {
-              this.emitterProperties = [
-                {
-                  index: 0,
-                  emitRate: this.emitRate,
-                  annulusRegion: {
-                    center:{x:this.centerX, y: this.centerY},
-                    outerRadius: this.outRadius,
-                    innerRadius: this.inRadius,
-                    startAngle: this.startAngle,
-                    endAngle: this.endAngle
-                  }
-                }
-              ];
-              if (this.endAngle >= 270) {
-                if (this.timerID != -1) {
-                  clearInterval(this.timerID);
-                }
-                return;
-              }
-              // 更新角度值（30度/秒）
-              this.startAngle += 30;
-              this.endAngle += 30;
-            }, 1000);
-
-          })
       }
       .width('100%')
       .height('100%')

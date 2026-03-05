@@ -729,7 +729,7 @@ OH_AVErrCode OH_AVPlayer_SetVolumeMode(OH_AVPlayer *player, OH_AudioStream_Volum
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**起始版本：** 18
+**起始版本：** 19
 
 **参数：**
 

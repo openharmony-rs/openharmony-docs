@@ -1572,7 +1572,7 @@ getIndexList(): Array&lt;string&gt;
 
   let indexUtil: i18n.IndexUtil = i18n.getInstance('zh-CN');
   // indexList = [ '...', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
-  //              'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '...' ]
+  // 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '...' ]
   let indexList: Array<string> = indexUtil.getIndexList();
   ```
 
@@ -4196,7 +4196,7 @@ constructor(numberFormat: Intl.NumberFormat, options?: AdvancedMeasureFormatOpti
 |   参数名  |      类型      | 必填 |     说明      |
 | --------- | ------------- | ---- | ------------- |
 | numberFormat | [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) | 是   | 用于格式化数字的对象。  |
-| options | [AdvancedMeasureFormatOptions](#advancedmeasureformatoptions23) | 否 | 指定数字格式化对象的配置项。  |
+| options | [AdvancedMeasureFormatOptions](#advancedmeasureformatoptions23) | 否 | 指定数字格式化对象的配置项。默认值：与[numberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)格式化效果一样。  |
 
 **示例：**
   ```ts

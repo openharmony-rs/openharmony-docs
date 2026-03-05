@@ -745,10 +745,10 @@ struct Index {
   @State rippleMaskRadius: number = 0.1
   build() {
     Stack() {
-      //转场前页面
+      // 转场前页面
       Image($r("app.media.before")).width("100%").height("100%")
         if (this.enterNewPage){
-          //转场后页面
+          // 转场后页面
           Column().width("100%").height("100%").backgroundImage($r("app.media.after"))
             .backgroundFilter(uiEffect.createFilter()
               .maskTransition(
@@ -1396,7 +1396,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   }
   let mask = uiEffect.Mask.createPixelMapMask(pixelMap, srcRect, dstRect, fillColor);
 }).catch((error: BusinessError)=>{
-  console.error('Failed to create pixelmap. code is ${error.code}, message is ${error.message}');
+  console.error(`Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
 })
 ```
 

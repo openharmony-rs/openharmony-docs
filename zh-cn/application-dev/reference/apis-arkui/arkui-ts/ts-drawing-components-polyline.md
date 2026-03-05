@@ -32,7 +32,7 @@ Polyline(options?: PolylineOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [PolylineOptions](ts-drawing-components-polyline.md#polylineoptions18对象说明) | 否 | Polyline绘制区域。<br/>异常值undefined和null按照无效值处理。|
+| options | [PolylineOptions](ts-drawing-components-polyline.md#polylineoptions18对象说明) | 否 | Polyline绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。|
 
 ## PolylineOptions<sup>18+</sup>对象说明
 
@@ -91,7 +91,7 @@ fill(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                   |
 | ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 填充区域颜色。<br/>默认值：Color.Black <br/>异常值undefined、null、NaN和Infinity按照默认值处理。|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 填充区域颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Black <br/>异常值undefined、null、NaN和Infinity按照默认值处理。|
 
 ### fillOpacity
 
@@ -127,7 +127,7 @@ stroke(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 边框颜色。 <br/>异常值undefined和null按照默认值处理，NaN和Infinity按照Color.Black处理。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 边框颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Transparent<br/>异常值undefined和null按照默认值处理，NaN和Infinity按照[Color](ts-appendix-enums.md#color).Black处理。 |
 
 ### strokeDashArray
 
@@ -323,17 +323,17 @@ struct PolylineTypeExample {
   build() {
     Column({ space: 10 }) {
       // 在 100 * 100 的矩形框中绘制一段折线，起点(0, 0)，经过(20,60)，到达终点(100, 100)
-      Polyline({ width: '100', height: '100' })//使用string类型
+      Polyline({ width: '100', height: '100' }) // 使用string类型
         .points([[0, 0], [20, 60], [100, 100]])
         .fillOpacity(0)
         .stroke(Color.Blue)
         .strokeWidth(3)
-      Polyline({ width: 100, height: 100 })// 使用number类型
+      Polyline({ width: 100, height: 100 }) // 使用number类型
         .points([[0, 0], [20, 60], [100, 100]])
         .fillOpacity(0)
         .stroke(Color.Blue)
         .strokeWidth(3)
-      Polyline({ width: $r('app.string.PolylineWidth'), height: $r('app.string.PolylineHeight') })// 使用Resource类型，需用户自定义
+      Polyline({ width: $r('app.string.PolylineWidth'), height: $r('app.string.PolylineHeight') }) // 使用Resource类型，需用户自定义
         .points([[0, 0], [20, 60], [100, 100]])
         .fillOpacity(0)
         .stroke(Color.Blue)

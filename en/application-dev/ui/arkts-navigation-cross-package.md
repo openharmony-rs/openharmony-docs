@@ -21,7 +21,7 @@ Different routing modes meet different requirements. Usability and scalability s
 
 ## System Routing Table
 
-The system routing table is an implementation of dynamic routing. **Navigation** supports the system routing table for dynamic routing since API version 12.
+The system routing table is an implementation of dynamic routing. **Navigation** supports the system routing table for dynamic routing since API version 12.<!--RP3--><!--RP3End-->
 
 The system routing table supports the Emulator but not the Previewer.
 
@@ -278,7 +278,7 @@ The following example shows how to implement cross-package redirection between s
    Configure the routing table in the [module.json5](../quick-start/module-configuration-file.md) file of each module.
 
     <!-- @[moduleJson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/module.json5) -->
-   
+    
     ``` JSON5
     {
       "module": {
@@ -294,7 +294,7 @@ The following example shows how to implement cross-package redirection between s
    Take **HapPageA** in the HAP package as an example:
 
     <!-- @[CrossPackagePageA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/HapPageA.ets) -->
-   
+    
     ``` TypeScript
     // For reference only. Create pages and modules based on your needs.
     import { ControlPanel } from './Common';
@@ -323,7 +323,7 @@ The following example shows how to implement cross-package redirection between s
    **Common** is a control panel component extracted for easy demonstration of page redirection. The following is an example:
 
     <!-- @[CrossPackageCommon](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/Common.ets) -->
-   
+    
     ``` TypeScript
     @Component
     export struct ControlPanel {
@@ -369,7 +369,7 @@ The following example shows how to implement cross-package redirection between s
 
    Configure the dependencies on the HAR and HSP in the **oh-package.json5** file of the HAP.
 
-    ``` json
+    ``` json5
     {
       "name": "entry",
       "version": "1.0.0",

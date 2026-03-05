@@ -134,32 +134,30 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
 > **说明**
 > 
-> 1、防火墙规则优先级说明（[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)和[addNetFirewallRule](#netfirewalladdnetfirewallrule)无调用顺序要求）：<br>
->- 调用[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)设置默认策略为阻止，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：<br>
->    - 显式阻止规则<br>
->    - 显式允许规则<br>
->    - 默认阻止策略<br>
->- 调用[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)设置默认策略为允许，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：<br>
->    - 显式允许规则<br>
->    - 显式阻止规则<br>
->    - 默认允许策略<br>
->- 防火墙IP规则和域名规则冲突时（域名解析的IP与IP规则的IP相同，规则行为冲突）：<br>
->    - 若以域名方式访问，则域名规则优先级高于IP规则，不受域名解析出的IP的规则影响。<br>
->    - 若以IP方式访问，遵循以下原则：<br>
->      - 域名规则放行，若以IP方式访问之前经历过域名解析过程，则IP规则拦截或者默认策略拦截是不生效的，最终以IP方式访问是放行的。<br>
->      - 域名规则放行，若以IP方式访问之前未经历过域名解析过程，则IP规则拦截或者默认策略拦截是生效的，最终以IP方式访问是拦截的。<br>
->      - 域名规则拦截，则IP规则放行或者默认策略放行是生效的，最终以IP方式访问是放行的。<br>
-> 
-> 2、规则类型补充说明：<br>
->- 当addNetFirewallRule的入参rule.type配置为RULE_IP时：<br>
->    - 若rule.action为RULE_ALLOW，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段允许通行；<br>
->    - 若rule.action 为RULE_DENY，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段拦截。<br>
->- 当addNetFirewallRule的入参rule.type配置为RULE_DOMAIN时，若rule.domains未配置， 该规则不生效。<br>
->
-> 3、防火墙规则添加上限说明： <br>
->- 单个系统用户ID添加的防火墙规则上限是1000，若超过该上限，则报错29400001。<br>
->- 所有的系统用户ID添加的防火墙规则总和的上限是2000，若超过该上限，则报错29400001。<br>
->- 所有的系统用户ID添加的模糊域名规则总和的上限是100，若超过该上限，则报错29400005。<br>
+> 1、防火墙规则优先级说明（[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)和[addNetFirewallRule](#netfirewalladdnetfirewallrule)无调用顺序要求）：
+>   - 调用[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)设置默认策略为阻止，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：
+>     - 显式阻止规则
+>     - 显式允许规则
+>     - 默认阻止策略
+>   - 调用[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)设置默认策略为允许，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：
+>     - 显式允许规则
+>     - 显式阻止规则
+>     - 默认允许策略
+>   - 防火墙IP规则和域名规则冲突时（域名解析的IP与IP规则的IP相同，规则行为冲突）：
+>     - 若以域名方式访问，则域名规则优先级高于IP规则，不受域名解析出的IP的规则影响。
+>     - 若以IP方式访问，遵循以下原则：
+>       - 域名规则放行，若以IP方式访问之前经历过域名解析过程，则IP规则拦截或者默认策略拦截是不生效的，最终以IP方式访问是放行的。
+>       - 域名规则放行，若以IP方式访问之前未经历过域名解析过程，则IP规则拦截或者默认策略拦截是生效的，最终以IP方式访问是拦截的。
+>       - 域名规则拦截，则IP规则放行或者默认策略放行是生效的，最终以IP方式访问是放行的。
+> 2、规则类型补充说明：
+>   - 当addNetFirewallRule的入参rule.type配置为RULE_IP时：
+>     - 若rule.action为RULE_ALLOW，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段允许通行；
+>     - 若rule.action 为RULE_DENY，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段拦截。
+>   - 当addNetFirewallRule的入参rule.type配置为RULE_DOMAIN时，若rule.domains未配置， 该规则不生效。
+> 3、防火墙规则添加上限说明： 
+>   - 单个系统用户ID添加的防火墙规则上限是1000，若超过该上限，则报错29400001。
+>   - 所有的系统用户ID添加的防火墙规则总和的上限是2000，若超过该上限，则报错29400001。
+>   - 所有的系统用户ID添加的模糊域名规则总和的上限是100，若超过该上限，则报错29400005。
 
 **需要权限**：ohos.permission.MANAGE_NET_FIREWALL
 
@@ -549,13 +547,13 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 | id          | number                                                      | 否 |是| 防火墙规则的ID。                                                       |
 | description | string                                                      | 否 |是 |规则描述，可选，最多256个字符。                                |
 | appUid      | number                                                      | 否 |是 |应用程序或服务UID。                                            |
-| localIps    | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | 否 |是 |本地IP地址。当ruleType=RULE_IP时有效，否则将被忽略，最多10个。         |
-| remoteIps   | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | 否 |是 |远端IP地址。当ruleType=RULE_IP时有效，否则将被忽略，最多10个。 |
-| protocol    | number                                                      | 否 | 是|协议，包含TCP：6，UDP：17。当ruleType=RULE_IP时有效。  |
-| localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 | 是|本地端口。当ruleType=RULE_IP时有效，否则将被忽略，最多10个。   |
-| remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 |是 |远端端口。当ruleType=RULE_IP时有效，否则将被忽略。最多10个。   |
-| domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | 否 |是 |域名列表，当ruleType=RULE_DOMAIN时有效，否则将被忽略，目前不支持中文域名。         |
-| dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | 否 |是 |DNS：当ruleType=RULE_DNS时有效，否则将被忽略。当ruleType=RULE_DNS时，该字段不能为空。                 |
+| localIps    | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | 否 |是 |本地IP地址。当type=RULE_IP时有效，否则将被忽略，最多10个。         |
+| remoteIps   | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | 否 |是 |远端IP地址。当type=RULE_IP时有效，否则将被忽略，最多10个。 |
+| protocol    | number                                                      | 否 | 是|协议，包含TCP：6，UDP：17。当type=RULE_IP时有效。  |
+| localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 | 是|本地端口。当type=RULE_IP时有效，否则将被忽略，最多10个。   |
+| remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 |是 |远端端口。当type=RULE_IP时有效，否则将被忽略。最多10个。   |
+| domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | 否 |是 |域名列表，当type=RULE_DOMAIN时有效，否则将被忽略，目前不支持中文域名。         |
+| dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | 否 |是 |DNS：当type=RULE_DNS时有效，否则将被忽略。当type=RULE_DNS时，该字段不能为空。                 |
 
 ## RequestParam
 

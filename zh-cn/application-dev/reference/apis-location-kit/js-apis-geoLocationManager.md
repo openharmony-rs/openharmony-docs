@@ -3086,7 +3086,7 @@ isWlanBssidMatched(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, n
 
 ## geoLocationManager.getActiveGeoFences<sup>23+</sup>
 
-getActiveGeoFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
+getActiveGeoFences(): Promise&lt;Map&lt;number, Geofence&gt;&gt;
 
 查询当前有效的围栏信息。使用Promise异步回调。
 
@@ -3098,7 +3098,7 @@ getActiveGeoFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;Map&lt;int, [Geofence](#geofence)&gt;&gt; | Promise对象，返回有效的围栏信息。Map中的key值为fenceId，value值为对应围栏的具体信息。 |
+  | Promise&lt;Map&lt;number, [Geofence](#geofence)&gt;&gt; | Promise对象，返回有效的围栏信息。Map中的key值为fenceId，value值为对应围栏的具体信息。 |
 
 **错误码**：
 

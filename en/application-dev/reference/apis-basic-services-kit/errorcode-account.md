@@ -186,7 +186,7 @@ No further action is required.
 
 **Error Message**
 
-The account service does not respond.
+The account service is busy.
 
 **Possible Causes**
 
@@ -369,6 +369,20 @@ The input domain account has been bound to a system account.
 **Solution**
 
 A domain account cannot be bound to multiple system accounts. Bind the domain account to another system account or delete the bound system account before binding to a new one.
+
+## 12300023 Accounts of a Specified Type Reached the Limit
+
+**Error Message**
+
+The number of accounts of the specified type has reached the upper limit.
+
+**Possible Causes**
+
+The number of system accounts of the specified type has reached the upper limit.
+
+**Solution**
+
+Delete unnecessary accounts and try again.
 
 <!--DelEnd-->
 
@@ -651,7 +665,6 @@ Delete the companion device and bind it again.
 The application does not exist.
 
 **Possible Causes**
-
 
 1. The target application does not exist when the application permission is set.
 2. The target application does not exist when the application permission is authorized.

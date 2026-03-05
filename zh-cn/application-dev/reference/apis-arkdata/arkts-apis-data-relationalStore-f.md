@@ -227,6 +227,85 @@ class EntryAbility extends UIAbility {
 }
 ```
 
+## relationalStore.getRdbStoreSync<sup>24+</sup>
+
+getRdbStoreSync(context: Context, config: StoreConfig): RdbStore
+
+创建或打开已有的关系型数据库。开发者可以根据自己的需求配置config参数，然后通过RdbStore调用相关接口执行数据操作。这是一个同步方法，会阻塞线程直到获取到RdbStore。
+
+对应沙箱路径下无数据库文件时，将创建数据库文件，文件创建位置详见[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)。对应路径下已有数据库文件时，将打开已有数据库文件。
+
+开发者在创建数据库时，应谨慎配置是否进行数据库加密的参数[encrypt](arkts-apis-data-relationalStore-i.md#storeconfig)，数据库创建后，禁止对该参数进行修改。如果有修改参数，则会报错误码。
+
+| 当前开库的加密类型  | 本设备上创建该数据库时的加密类型           | 结果 |
+| ------- | -------------------------------- | ---- |
+| 非加密 | 加密                          | 将数据库以加密方式打开。   |
+| 加密 | 非加密                          | 将数据库以非加密方式打开。   |
+
+getRdbStoreSync目前不支持多线程并发操作。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                             | 必填 | 说明                                                         |
+| ------- | -------------------------------- | ---- | ------------------------------------------------------------ |
+| context | Context                          | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| config  | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | 是   | 与此RDB存储相关的数据库配置。                                |
+
+**返回值**：
+
+| 类型                                      | 说明                              |
+| ----------------------------------------- | --------------------------------- |
+| [RdbStore](arkts-apis-data-relationalStore-RdbStore.md) | 返回RdbStore对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800001  | Invalid args. |
+| 14800010  | Invalid database path. |
+| 14800011  | The current operation failed because the database is corrupted.  |
+| 14801001  | The operation is supported in the stage model only.                               |
+| 14801002  | Invalid data group ID.                             |
+| 14800017  | Config changed. |
+| 14800020  | The secret key is corrupted or lost.   |
+| 14800021  | SQLite: Generic error. |
+| 14800027  | SQLite: Attempt to write a readonly database. |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. |
+| 14800029  | SQLite: The database is full. |
+| 14800030  | SQLite: Unable to open the database file. |
+
+**示例：**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let store: relationalStore.RdbStore | undefined = undefined;
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    const STORE_CONFIG: relationalStore.StoreConfig = {
+      name: "RdbTest.db",
+      securityLevel: relationalStore.SecurityLevel.S1
+    };
+
+    try {
+      store = relationalStore.getRdbStoreSync(this.context, STORE_CONFIG);
+      console.info('Get RdbStore successfully.');
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
 ## relationalStore.deleteRdbStore
 
 deleteRdbStore(context: Context, name: string, callback: AsyncCallback&lt;void&gt;): void

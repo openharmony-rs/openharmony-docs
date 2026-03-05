@@ -74,7 +74,7 @@ invalidate(): void
 
 type DrawingCanvas = Canvas
 
-可用于向XComponent上绘制内容的画布对象。
+可用于向DrawingRenderingContext上绘制内容的画布对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -94,8 +94,8 @@ DrawingRenderingContext的尺寸信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---------- | -------------- | ------ | ---------------- | ------------------------ |
-| width | number | 否 | 否 | 获取DrawingRenderingContext的宽度，其值为关联的Canvas组件的宽度。 |
-| height | number | 否 | 否 | 获取DrawingRenderingContext的高度，其值为关联的Canvas组件的高度。 |
+| width | number | 否 | 否 | 获取DrawingRenderingContext的宽度，其值为关联的Canvas组件的宽度。<br>支持单位：vp、px。<br>默认单位为vp。 |
+| height | number | 否 | 否 | 获取DrawingRenderingContext的高度，其值为关联的Canvas组件的高度。<br>支持单位：vp、px。<br>默认单位为vp。 |
 
 ## 示例
 

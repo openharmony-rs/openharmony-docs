@@ -42,7 +42,7 @@ Enables or disables the **always on** mode. This API uses a promise to return th
 | Name    | Type   | Mandatory| Description                                                   |
 | ---------- | ------- | ---- | ------------------------------------------------------- |
 | enable     | boolean | Yes  | Whether to enable the **always on** mode. The value **true** means to enable the **always on** mode, and the value **false** means the opposite.                                  |
-| bundleName | string  | Yes  | Bundle name of the application (generally a third-party application).|
+| bundleName | string  | Yes  | Bundle name of the third-party application.|
 
 **Return value**
 

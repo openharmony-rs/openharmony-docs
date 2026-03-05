@@ -826,7 +826,7 @@ struct AnimateToImmediatelyExample {
 
 animateTo(value: AnimateParam, event: () => void): void
 
-提供animateTo接口来指定由于闭包代码导致的状态变化插入过渡动效。
+提供animateTo接口，用于为闭包代码中的状态变化添加过渡动画效果。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2306,7 +2306,7 @@ vp2px(value : number) : number
 
 转换公式为：px值 = vp值 × 像素密度
 
-像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
+像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
 
 > **说明：**
 >
@@ -2364,7 +2364,7 @@ px2vp(value : number) : number
 
 转换公式为：vp值 = px值 ÷ 像素密度
 
-像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
+像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
 
 > **说明：**
 >
@@ -2422,7 +2422,7 @@ fp2px(value : number) : number
 
 转换公式为：px值 = fp值 × 像素密度 × 字体缩放比例
 
-像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
+像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
 
 字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](arkui-ts/ts-types.md#configuration)。
 
@@ -2480,7 +2480,7 @@ px2fp(value : number) : number
 
 转换公式为：fp值 = px值 ÷ 像素密度 ÷ 字体缩放比例
 
-像素密度：当前窗口生效的像素密度值，通常就是屏幕物理像素密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
+像素密度：当前窗口生效的像素密度值，即虚拟屏幕的密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
 
 字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](arkui-ts/ts-types.md#configuration)。
 
@@ -4085,6 +4085,10 @@ getMagnifier(): Magnifier
 setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
 
 设置自定义键盘之间切换时，是否接续。
+
+设置为接续，切换输入框时，自定义键盘不会收起和重新拉起。
+
+设置为不接续，切换输入框时，自定义键盘会收起并重新拉起。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 

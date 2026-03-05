@@ -6,7 +6,7 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-The module provides the screen capture capability.
+Provides the screen capture capability.
 
 >  **NOTE**
 >
@@ -162,3 +162,4 @@ try {
 } catch (exception) {
   console.error(`Failed to save screenshot. Code: ${exception.code}, message: ${exception.message}`);
 };
+```

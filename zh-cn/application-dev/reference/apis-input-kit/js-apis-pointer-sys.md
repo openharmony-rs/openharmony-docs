@@ -3437,3 +3437,121 @@ struct Index {
   }
 }
 ```
+
+## pointer.setMouseScrollDirection<sup>24+</sup>
+
+setMouseScrollDirection(inverted: boolean): Promise\<void>
+
+设置鼠标滚轮滚动的方向，使用Promise异步回调。
+
+**需要权限**: ohos.permission.INPUT_DEVICE_CONTROLLER
+
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**系统API**: 此接口为系统接口。
+
+**参数**：
+
+| 参数名 | 类型    | 必填 | 说明                                                                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------------------------------------------------------ |
+| inverted  | boolean | 是   | inverted为鼠标滚轮滚动的方向。<br>true与鼠标滚轮滚动的手指方向一致，false与鼠标滚轮滚动的手指方向相反。<br>默认为true。 |
+
+**返回值**：
+
+| 类型           | 说明                                   |
+| -------------- | -------------------------------------- |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[鼠标光标错误码](./errorcode-pointer.md)
+
+| 错误码ID   | 错误信息                        |
+|---------|-----------------------------|
+| 201     | Permission denied.          |
+| 202     | SystemAPI permission error. |
+| 3800001 | Input service exception.    |
+
+**示例**：
+
+```js
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button("setMouseScrollDirection")
+        .onClick(() => {
+          try {
+            pointer.setMouseScrollDirection(false).then(() => {
+              console.info(`setMouseScrollDirection success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set mouse scroll direction failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
+          } catch (error) {
+            console.error(`setMouseScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+## pointer.getMouseScrollDirection<sup>24+</sup>
+
+getMouseScrollDirection(): Promise\<boolean>
+
+获取鼠标滚轮滚动方向，使用Promise异步回调。
+
+**需要权限**: ohos.permission.INPUT_DEVICE_CONTROLLER
+
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**系统API**: 此接口为系统接口。
+
+**返回值**：
+
+| 类型              | 说明                                                                                                                         |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Promise\<boolean> | Promise对象，异步返回获取鼠标滚轮滚动方向。<br>true与鼠标滚轮滚动的手指方向一致，false与鼠标滚轮滚动的手指方向相反。<br>默认为true。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[鼠标光标错误码](./errorcode-pointer.md)
+
+| 错误码ID   | 错误信息                                                                                                                                       |
+|---------| ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| 201     | Permission denied.          |
+| 202     | SystemAPI permission error. |
+| 3800001 | Input service exception.    |
+
+**示例**：
+
+```js
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button("getMouseScrollDirection")
+        .onClick(() => {
+          try {
+            pointer.getMouseScrollDirection().then((state: boolean) => {
+              console.info(`getMouseScrollDirection success, state: ${JSON.stringify(state)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get mouse scroll direction failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
+          } catch (error) {
+            console.error(`getMouseScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```

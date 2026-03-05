@@ -466,7 +466,7 @@ Obtains the pasteboard data source.
 | -- | -- |
 | [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* pasteboard | Pointer to an [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md) instance.|
 | char* source | Pointer to the pasteboard data source instance. You need to allocate the memory for the pointer before calling this API.|
-| unsigned int len | Memory length corresponding to the source. If the memory length is insufficient, the API call will fail. The recommended length is 128.|
+| unsigned int len | Memory length corresponding to the source. If the memory length is insufficient, the API call will fail. The recommended length is 128 bytes.|
 
 **Returns**
 

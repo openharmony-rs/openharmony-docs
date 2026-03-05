@@ -280,8 +280,8 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 
 | 名称          | 类型   | 描述                                       |
 | ------------- | ------ | ---------------------------------------- |
-| selectedIndex | number | 当拖拽事件设在父容器的子元素时，selectedIndex表示当前被拖拽子元素是父容器第selectedIndex个子元素，selectedIndex从0开始。<br/>仅在[ListItem](ts-container-listitem.md)组件的拖拽事件中生效。 |
-| insertIndex   | number | 当前拖拽元素在List组件中放下时，insertIndex表示被拖拽元素插入该组件的第insertIndex个位置，insertIndex从0开始。<br/>仅在[List](ts-container-list.md)组件的拖拽事件中生效。 |
+| selectedIndex | number | 当拖拽事件设在父容器的子元素时，selectedIndex表示当前被拖拽子元素是父容器第selectedIndex个子元素，selectedIndex从0开始。<br/>仅在[ListItem](ts-container-listitem.md)组件的拖拽事件中生效，否则返回undefined。 |
+| insertIndex   | number | 当前拖拽元素在List组件中放下时，insertIndex表示被拖拽元素插入该组件的第insertIndex个位置，insertIndex从0开始。<br/>仅在[List](ts-container-list.md)组件的拖拽事件中生效，否则返回undefined。 |
 
 ## DragEvent<sup>7+</sup>
 
@@ -1207,7 +1207,7 @@ struct ImageExample {
               let filePath = context.filesDir + '/test.png';
               let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
               fs.writeSync(file.fd, arrayBuffer);
-              //获取图片的uri
+              // 获取图片的uri
               let uri = fileUri.getUriFromPath(filePath);
               let image: unifiedDataChannel.Image = new unifiedDataChannel.Image();
               image.imageUri = uri;

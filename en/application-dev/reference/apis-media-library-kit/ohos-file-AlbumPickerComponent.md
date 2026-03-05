@@ -6,7 +6,7 @@
 <!--Tester: @wangbeibei-->
 <!--Adviser: @w_Machine_cc-->
 
-The AlbumPickerComponent embedded in the UI of an application allows the application to access the albums in the user directory without any permission.
+The **AlbumPickerComponent** embedded in the UI of an application allows the application to access the albums in the user directory without any permission.
 
 This component must be used together with [PhotoPickerComponent](ohos-file-PhotoPickerComponent.md). When a user selects an album by using the **AlbumPickerComponent**, the **PhotoPickerComponent** is instructed to update the images and videos in the album.
 
@@ -20,18 +20,13 @@ This component must be used together with [PhotoPickerComponent](ohos-file-Photo
 import { AlbumPickerComponent, AlbumPickerOptions, AlbumInfo, photoAccessHelper, EmptyAreaClickCallback } from '@kit.MediaLibraryKit';
 ```
 
-## Properties
+## Attributes
 
-The [universal properties](../apis-arkui/arkui-ts/ts-component-general-attributes.md) are supported.
+The [universal attributes](../apis-arkui/arkui-ts/ts-component-general-attributes.md) are supported.
 
 ## AlbumPickerComponent
 
-AlbumPickerComponent({
-  albumPickerOptions?: AlbumPickerOptions,
-  onAlbumClick?: (albumInfo: AlbumInfo) => boolean,
-  onEmptyAreaClick?: EmptyAreaClickCallback,
-  albumPickerController?: AlbumPickerController
-})
+AlbumPickerComponent( {albumPickerOptions?: AlbumPickerOptions, onAlbumClick?: (albumInfo: AlbumInfo) => boolean, onEmptyAreaClick?: EmptyAreaClickCallback, albumPickerController?: AlbumPickerController })
 
 Allows the application to access the albums in the user directory without any permission.
 
@@ -58,7 +53,7 @@ Represents the **AlbumPicker** configuration.
 |----------------|-------|-----|-----|-------------------------------------------------------------|
 | themeColorMode | [PickerColorMode](ohos-file-PhotoPickerComponent.md#pickercolormode) | No| Yes  | Theme color of the album page. The options are **AUTO**, **Light**, and **Dark**. The default value is **AUTO**.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                        |
 | filterType<sup>13+</sup>     | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | No| Yes  | Type of the filter. You can use it to display images, videos, or both. If this parameter is not specified, images and videos are displayed in a specific album.<br> **Atomic service API**: This API can be used in atomic services since API version 13.|
-| fontSize<sup>20+</sup> | number \| string | No| Yes| Font size. For details about the value range, see [fontsize](../apis-arkui/arkui-ts/ts-basic-components-text.md#fontsize).<br> **Atomic service API**: This API can be used in atomic services since API version 20. |
+| fontSize<sup>20+</sup> | number \| string | No| Yes| Font size. For details about the value range, see [fontSize](../apis-arkui/arkui-ts/ts-basic-components-text.md#fontsize).<br> **Atomic service API**: This API can be used in atomic services since API version 20. |
 
 ## EmptyAreaClickCallback<sup>13+</sup>
 
@@ -105,7 +100,7 @@ Sets the font size of the album list.
 
 |  Name       | Type                                   | Mandatory | Description |
 | ------------------------- | ------------------ | ----- | --------------- |
-| fontSize | number \| string | Yes| Font size. For details about the value range, see [fontsize](../apis-arkui/arkui-ts/ts-basic-components-text.md#fontsize).|
+| fontSize | number \| string | Yes| Font size. For details about the value range, see [fontSize](../apis-arkui/arkui-ts/ts-basic-components-text.md#fontsize).|
 
 ## Example
 

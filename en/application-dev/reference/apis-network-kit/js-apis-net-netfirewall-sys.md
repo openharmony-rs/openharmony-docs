@@ -17,7 +17,7 @@ The **netFirewall** module implements the firewall query functionality. It allow
 ## Modules to Import
 
 ```ts
-import netfirewall from '@ohos.net.netFirewall';
+import { netFirewall } from '@kit.NetworkKit';
 ```
 
 ## netFirewall.getInterceptedRecords

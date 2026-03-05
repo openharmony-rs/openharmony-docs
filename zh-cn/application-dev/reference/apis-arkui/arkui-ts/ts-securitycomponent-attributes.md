@@ -71,7 +71,7 @@ position(value: Position): T
 
 | 参数名 | 类型 | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Position](ts-types.md#position) |是 |安全控件的左上角相对于父容器左上角的偏移位置。<br/>默认值：<br/>{<br/>x: 0,<br/>y: 0<br/>}。|
+| value | [Position](ts-types.md#position) |是 |安全控件的左上角相对于父容器左上角的偏移位置。<br/>**异常情况说明**：<br/>1.当入参为异常值（如入参不符合Position定义等）、入参为Position类型但x和y均为异常值（如null或其他与格式要求不符的字符串等）时，该属性不生效；<br/>2.当入参的Position中，x和y有且仅有一个异常值时，值异常的属性会被置为0。如输入{x: 0, y: 'a'}，最终效果按{x: 0, y: 0}显示。 |
 
 **返回值：**
 
@@ -737,7 +737,7 @@ maxLines(line: number | Resource): T
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| line  | number \| [Resource](ts-types.md#resource)<sup>20+</sup> | 是   | 文本的最大行数。<br/>number类型入参的取值范围：[1, +∞)。从API version 20开始，支持Resource类型。Resource类型仅支持'integer'，取值范围为[1, +∞)。<br/>**说明：** <br/>设置的值小于1时，按默认值100000处理。 |
+| line  | number \| [Resource](ts-types.md#resource)<sup>20+</sup> | 是   | 文本的最大行数。<br/>number类型入参的取值范围：[1, +∞)。从API version 20开始，支持Resource类型。Resource类型仅支持'integer'，取值范围为[1, +∞)。<br/>**说明：** <br/>设置的值小于1时，按默认值1000000处理。 |
 
 **返回值：**
 

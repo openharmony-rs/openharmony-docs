@@ -11,7 +11,8 @@ Audio-haptic enables users to get rhythmic auditory and haptic feedback while ha
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
->
+
+**Device behavior difference**: For a device without a vibration component, no vibration effect is generated.
 
 ## Modules to Import
 
@@ -84,7 +85,12 @@ Manages the audio-haptic feature. Before calling any API in AudioHapticManager, 
 
 registerSource(audioUri: string, hapticUri: string): Promise&lt;number&gt;
 
-Registers an audio-haptic source. This API uses a promise to return the result.
+Registers audio and haptic resources via URIs. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> A maximum of 128 resources can be registered at the same time for an application. Any attempt to register beyond this limit will fail (returning a negative resource ID). You are advised to reasonably manage the number of registered resources. For resources that are no longer used, you are advised to unregister them in a timely manner.
+
 
 **System capability**: SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -92,14 +98,14 @@ Registers an audio-haptic source. This API uses a promise to return the result.
 
 | Name  | Type                                     | Mandatory| Description                    |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
-| audioUri  | string                                  | Yes  | URI of the audio source. In normal latency mode, the supported audio resource formats and path formats are defined in [media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md). In low latency mode, the supported audio resource formats are defined in [SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool), and the path format must meet the requirements of [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen). In both modes, you are advised to pass in the absolute path of the file.          |
-| hapticUri | string                                  | Yes  | URI of the haptic source. The supported haptic resource formats are defined in [vibrator](../apis-sensor-service-kit/js-apis-vibrator.md#hapticfiledescriptor10). The path format must meet the requirements of [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen). You are advised to pass in the absolute path of the file.        |
+| audioUri  | string                                  | Yes  | URI of the audio source.<br>- For details about the supported audio resource formats and path formats in the normal latency mode, see [AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).<br>- For details about the supported audio resource formats in the low-latency mode, see [SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool). The path format must meet the requirements described in [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen).<br>- In both modes, you are advised to pass in the absolute path of the file.          |
+| hapticUri | string                                  | Yes  | URI of the haptic source.<br>For details about the supported vibration resource formats, see [HapticFileDescripto](../apis-sensor-service-kit/js-apis-vibrator.md#hapticfiledescriptor10). The path format must meet the requirements described in [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen).<br>You are advised to pass in the absolute path of the file.        |
 
 **Return value**
 
 | Type               | Description                           |
 | ------------------- | ------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the source ID.|
+| Promise&lt;number&gt; | Promise, which returns the registered resource ID.<br>In normal cases, the returned resource ID is a non-negative number. A negative ID indicates a registration failure. In this case, check whether the number of registered resources exceeds the upper limit.|
 
 **Error codes**
 
@@ -117,9 +123,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let audioUri = 'data/audioTest.wav'; // Change it to the URI of the target audio source.
 let hapticUri = 'data/hapticTest.json'; // Change it to the URI of the target haptic source.
 let id = 0;
-
+// A maximum of 128 resources can be registered at the same time for an application. Any attempt to register beyond this limit will fail (returning a negative resource ID). You are advised to reasonably manage the number of registered resources. For resources that are no longer used, you are advised to unregister them in a timely manner.
 audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
-  console.info(`Promise returned to indicate that the source id of the registerd source ${value}.`);
+  console.info(`Promise returned to indicate that the source id of the registered source ${value}.`);
   id = value;
 }).catch((err: BusinessError) => {
   console.error(`Failed to register source ${err}`);
@@ -130,7 +136,12 @@ audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: numb
 
 registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFileDescriptor): Promise&lt;number&gt;
 
-Registers audio-haptic resources through a file descriptor to ensure they are synchronized during playback. This API uses a promise to return the result.
+Registers audio and haptic resources via file descriptors. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> A maximum of 128 resources can be registered at the same time for an application. Any attempt to register beyond this limit will fail (returning a negative resource ID). You are advised to reasonably manage the number of registered resources. For resources that are no longer used, you are advised to unregister them in a timely manner.
+
 
 **System capability**: SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -145,7 +156,7 @@ Registers audio-haptic resources through a file descriptor to ensure they are sy
 
 | Type              | Description                          |
 | ------------------- | ------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the ID of the resource registered.|
+| Promise&lt;number&gt; | Promise, which returns the registered resource ID.<br>In normal cases, the returned resource ID is a non-negative number. A negative ID indicates a registration failure. In this case, check whether the number of registered resources exceeds the upper limit.|
 
 **Example**
 
@@ -170,7 +181,7 @@ let hapticFd: audioHaptic.AudioHapticFileDescriptor = {
   length: hapticFile.length,
 };
 let id = 0;
-
+// A maximum of 128 resources can be registered at the same time for an application. Any attempt to register beyond this limit will fail (returning a negative resource ID). You are advised to reasonably manage the number of registered resources. For resources that are no longer used, you are advised to unregister them in a timely manner.
 audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: number) => {
   console.info('Succeeded in doing registerSourceFromFd.');
   id = value;
@@ -184,6 +195,10 @@ audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: 
 unregisterSource(id: number): Promise&lt;void&gt;
 
 Unregisters an audio-haptic source. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> For resources that are no longer used, you are advised to unregister them in a timely manner to avoid issues such as resource leaks or the number of resources exceeding the upper limit.
 
 **System capability**: SystemCapability.Multimedia.AudioHaptic.Core
 

@@ -102,6 +102,16 @@
 | [ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)|ArkUI_Matrix4ScaleOptions|定义矩阵缩放的缩放对象。|
 | [ArkUI_Matrix4TranslationOptions](capi-arkui-nativemodule-arkui-matrix4translationoptions.md)|ArkUI_Matrix4TranslationOptions|定义矩阵平移的平移对象。|
 | [ArkUI_PointF](capi-arkui-nativemodule-arkui-pointf.md)|ArkUI_PointF|定义一个二维坐标点结构体，坐标以浮点类型存储。|
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md) | OH_ArkUI_DecorationStyleOptions | 定义装饰线样式。 |
+| [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) | OH_ArkUI_TextDataDetectorConfig | 定义文本实体识别的配置。 |
+| [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md) | OH_ArkUI_TextEditorSelectionMenuOptions | 定义文本编辑器的文本选择菜单选项。 |
+| [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md) | OH_ArkUI_TextEditorPlaceholderOptions | 定义文本编辑器无输入时的提示文本选项。 |
+| [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md) | OH_ArkUI_TextEditorStyledStringController | 定义文本编辑器的属性字符串控制器。 |
+| [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md) | OH_ArkUI_TextEditorParagraphStyle | 定义文本编辑器的段落样式。 |
+| [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md) | OH_ArkUI_ShadowOptions | 定义阴影选项。 |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md) | OH_ArkUI_TextEditorTextStyle | 定义文本编辑器的文本样式。 |
+| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md) | OH_ArkUI_FontWeightConfigs | 定义文本的字体粗细配置。可以通过[OH_ArkUI_FontWeightConfigs_Create](#oh_arkui_fontweightconfigs_create) 接口创建对应的文本字体粗细配置对象。可以通过[OH_ArkUI_FontWeightConfigs_Destroy](#oh_arkui_fontweightconfigs_destroy) 接口销毁文本字体粗细配置对象。配置创建后通过[OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight](#oh_arkui_fontweightconfigs_setenablevariablefontweight) 接口设置是否启用可变字体粗细调节。配置创建后通过[OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight](#oh_arkui_fontweightconfigs_getenablevariablefontweight) 接口查看是否启用了可变字体粗细调节。配置创建后通过[OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory](#oh_arkui_fontweightconfigs_setenabledevicefontweightcategory) 接口设置文本字体粗细是否跟随设备的字体粗细级别更新。配置创建后通过[OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory](#oh_arkui_fontweightconfigs_getenabledevicefontweightcategory) 接口查看文本字体粗细是否跟随设备的字体粗细级别更新。 |
+| [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md) | OH_ArkUI_FontConfigs | 定义文本的字体配置。可以通过[OH_ArkUI_FontConfigs_Create](#oh_arkui_fontconfigs_create) 接口创建文本字体配置对象。可以通过[OH_ArkUI_FontConfigs_Destroy](#oh_arkui_fontconfigs_destroy) 接口销毁文本字体配置对象。配置创建后通过[OH_ArkUI_FontConfigs_SetFontWeightConfigs](#oh_arkui_fontconfigs_setfontweightconfigs) 接口设置文本的字体粗细配置。配置创建后通过[OH_ArkUI_FontConfigs_GetFontWeightConfigs](#oh_arkui_fontconfigs_getfontweightconfigs) 接口查看文本的字体粗细配置。 |
 
 ### 枚举
 
@@ -168,7 +178,7 @@
 | [ArkUI_HorizontalAlignment](#arkui_horizontalalignment)             | ArkUI_HorizontalAlignment       | 定义语言方向对齐方式。                       |
 | [ArkUI_TextOverflow](#arkui_textoverflow)                           | ArkUI_TextOverflow              | 定义文本超长时的显示方式。                     |
 | [ArkUI_ImageSpanAlignment](#arkui_imagespanalignment)               | ArkUI_ImageSpanAlignment        | 定义图片基于文本的对齐方式。                    |
-| [ArkUI_ObjectFit](#arkui_objectfit)                                 | ArkUI_ObjectFit                 | 定义image填充效果。ImageSpanAlignment    |
+| [ArkUI_ObjectFit](#arkui_objectfit)                                 | ArkUI_ObjectFit                 | 定义[Image](arkui-ts/ts-basic-components-image.md)组件的图片填充效果。    |
 | [ArkUI_ImageInterpolation](#arkui_imageinterpolation)               | ArkUI_ImageInterpolation        | 定义图片插值效果。                         |
 | [ArkUI_DynamicRangeMode](#arkui_dynamicrangemode)                   | ArkUI_DynamicRangeMode          | 定义图像动态范围模式（例如：SDR/HDR），用于控制图像的明暗与色彩显示范围。 |
 | [ArkUI_ImageRotateOrientation](#arkui_imagerotateorientation)       | ArkUI_ImageRotateOrientation    | 定义图像旋转方向。                         |
@@ -202,9 +212,9 @@
 | [ArkUI_ButtonType](#arkui_buttontype)                               | ArkUI_ButtonType                | 定义按钮样式枚举值。                        |
 | [ArkUI_RenderFit](#arkui_renderfit)                                 | ArkUI_RenderFit   | 定义动画终态内容大小与位置的枚举值。 |
 | [ArkUI_SwiperIndicatorType](#arkui_swiperindicatortype)             | ArkUI_SwiperIndicatorType       | 定义Swiper组件的导航指示器类型。             |
-| [ArkUI_AnimationDirection](#arkui_animationdirection)               | ArkUI_AnimationDirection        | 动画播放模式。                           |
-| [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate)   | ArkUI_ListItemSwipeActionState  | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[SwipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的显隐模式。 |
-| [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect)     | ArkUI_ListItemSwipeEdgeEffect   | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[SwipeAction](./arkui-ts/ts-container-listitem.md#listitem10)方法的滚动模式。 |
+| [ArkUI_AnimationDirection](#arkui_animationdirection)               | ArkUI_AnimationDirection        | 动画播放方向。                           |
+| [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate)   | ArkUI_ListItemSwipeActionState  | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的显隐模式。 |
+| [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect)     | ArkUI_ListItemSwipeEdgeEffect   | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的滚动模式。 |
 | [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) | ArkUI_ListItemSwipeActionDirection | ListItem划出菜单的展开方向。 |
 | [ArkUI_AnimationStatus](#arkui_animationstatus)                     | ArkUI_AnimationStatus           | 定义帧动画的播放状态。                       |
 | [ArkUI_AnimationFillMode](#arkui_animationfillmode)                 | ArkUI_AnimationFillMode         | 定义帧动画组件在动画开始前和结束后的状态。             |
@@ -241,6 +251,11 @@
 | [ArkUI_MarqueeStartPolicy](#arkui_marqueestartpolicy)| ArkUI_MarqueeStartPolicy| 定义跑马灯启动策略枚举。 |
 | [ArkUI_MarqueeUpdatePolicy](#arkui_marqueeupdatepolicy)| ArkUI_MarqueeUpdatePolicy| 定义跑马灯更新策略枚举。 |
 | [ArkUI_PickerIndicatorType](#arkui_pickerindicatortype) | ArkUI_PickerIndicatorType | 选择器的选中指示器类型。 |
+| [OH_ArkUI_HapticFeedbackMode](#oh_arkui_hapticfeedbackmode) | OH_ArkUI_HapticFeedbackMode | 震动效果类型枚举。 |
+| [OH_ArkUI_TextEditorSpanType](#oh_arkui_texteditorspantype) | OH_ArkUI_TextEditorSpanType | 自定义文本选择菜单span类型枚举。 |
+| [OH_ArkUI_TextEditorResponseType](#oh_arkui_texteditorresponsetype) | OH_ArkUI_TextEditorResponseType | 自定义文本选择菜单响应类型枚举。 |
+| [OH_ArkUI_TextMenuType](#oh_arkui_textmenutype) | OH_ArkUI_TextMenuType | 文本菜单类型枚举。 |
+| [OH_ArkUI_LineBreakStrategy](#oh_arkui_linebreakstrategy) | OH_ArkUI_LineBreakStrategy | 换行策略类型枚举。 |
 
 ### 函数
 
@@ -437,7 +452,7 @@
 | [int32_t OH_ArkUI_AccessibilityValue_GetRangeCurrent(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getrangecurrent) | - | 用于获取范围组件的无障碍当前值信息。 |
 | [void OH_ArkUI_AccessibilityValue_SetText(ArkUI_AccessibilityValue* value, const char* text)](#oh_arkui_accessibilityvalue_settext) | - | 设置无障碍文本描述信息。 |
 | [const char* OH_ArkUI_AccessibilityValue_GetText(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_gettext) | - | 获取无障碍文本描述信息。 |
-| [ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(char* src)](#oh_arkui_imageanimatorframeinfo_createfromstring) | - | 使用图片路径创建帧图片信息，图片格式为svg，png和jpg。 |
+| [ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(char* src)](#oh_arkui_imageanimatorframeinfo_createfromstring) | - | 使用图片路径创建帧图片信息，图片格式为svg、png和jpg。 |
 | [ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor(ArkUI_DrawableDescriptor* drawable)](#oh_arkui_imageanimatorframeinfo_createfromdrawabledescriptor) | - | 使用 DrawableDescriptor 对象创建帧图片信息，图片格式为Resource和PixelMap。 |
 | [void OH_ArkUI_ImageAnimatorFrameInfo_Dispose(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_dispose) | - | 销毁帧图片对象指针。 |
 | [void OH_ArkUI_ImageAnimatorFrameInfo_SetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t width)](#oh_arkui_imageanimatorframeinfo_setwidth) | - | 设置图片宽度。 |
@@ -657,6 +672,16 @@
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4_TransformPoint(const ArkUI_Matrix4* matrix, const ArkUI_PointF* oriPoint, ArkUI_PointF* result)](#oh_arkui_matrix4_transformpoint) | - | 计算一个点经过矩阵变换后的新坐标位置。 |
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4_SetPolyToPoly(ArkUI_Matrix4* matrix, const ArkUI_PointF* src, const ArkUI_PointF* dst, const uint32_t pointCount)](#oh_arkui_matrix4_setpolytopoly) | - | 将一个多边形的顶点坐标映射到另一个多边形的顶点坐标，并计算所需的矩阵。 |
 | [ArkUI_ErrorCode OH_ArkUI_Matrix4_GetElements(const ArkUI_Matrix4* matrix, float* result)](#oh_arkui_matrix4_getelements) | - | 获取四阶矩阵的16个元素。 |
+| [OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontWeightConfigs_Create()](#oh_arkui_fontweightconfigs_create) | - | 创建文本字体粗细配置对象。 |
+| [void OH_ArkUI_FontWeightConfigs_Destroy(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_destroy) | - | 销毁文本字体粗细配置对象。 |
+| [void OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option, bool enable)](#oh_arkui_fontweightconfigs_setenablevariablefontweight) | - | 设置是否启用可变字体粗细调节。 |
+| [bool OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_getenablevariablefontweight) | - | 获取文本字体粗细配置对象是否启用了可变字体粗细调节。 |
+| [void OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory(OH_ArkUI_FontWeightConfigs* option, bool enable)](#oh_arkui_fontweightconfigs_setenabledevicefontweightcategory) | - | 设置设备的字体粗细级别改变时文本字体粗细是否自动更新。 |
+| [bool OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_getenabledevicefontweightcategory) | - | 获取文本字体粗细是否跟随设备的字体粗细级别更新。 |
+| [OH_ArkUI_FontConfigs* OH_ArkUI_FontConfigs_Create()](#oh_arkui_fontconfigs_create) | - | 创建文本字体配置对象。 |
+| [void OH_ArkUI_FontConfigs_Destroy(OH_ArkUI_FontConfigs* option)](#oh_arkui_fontconfigs_destroy) | - | 销毁文本字体配置对象。 |
+| [void OH_ArkUI_FontConfigs_SetFontWeightConfigs(OH_ArkUI_FontConfigs* option, OH_ArkUI_FontWeightConfigs* fontWeightConfigs)](#oh_arkui_fontconfigs_setfontweightconfigs) | - | 设置文本字体配置对象的文本字体粗细配置。 |
+| [OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontConfigs_GetFontWeightConfigs(OH_ArkUI_FontConfigs* option)](#oh_arkui_fontconfigs_getfontweightconfigs) | - | 获取文本字体配置对象的文本字体粗细配置。 |
 
 ## 枚举类型说明
 
@@ -1059,8 +1084,8 @@ enum ArkUI_ShadowType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SHADOW_TYPE_COLOR = 0 | 颜色。 |
-| ARKUI_SHADOW_TYPE_BLUR = 1 | 模糊。 |
+| ARKUI_SHADOW_TYPE_COLOR = 0 | 彩色阴影。 |
+| ARKUI_SHADOW_TYPE_BLUR = 1 | 模糊阴影。 |
 
 ### ArkUI_DatePickerMode
 
@@ -1386,12 +1411,12 @@ enum ArkUI_ShadowStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS = 0 | 超小阴影。 |
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM = 1 | 小阴影。 |
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD = 2 | 中阴影。 |
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG = 3 | 大阴影。 |
-| ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM = 4 | 浮动小阴影。 |
-| ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD = 5 | 浮动中阴影。 |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS = 0 | 超小阴影。<br/>![defaultxs](figures/defaultxs.png) |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM = 1 | 小阴影。<br/>![defaultsm](figures/defaultsm.png) |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD = 2 | 中阴影。<br/>![defaultmd](figures/defaultmd.png) |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG = 3 | 大阴影。<br/>![defaultlg](figures/defaultlg.png) |
+| ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM = 4 | 浮动小阴影。<br/>![floatingsm](figures/floatingsm.png) |
+| ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD = 5 | 浮动中阴影。<br/>![floatingmd](figures/floatingmd.png) |
 
 ### ArkUI_AnimationCurve
 
@@ -1412,7 +1437,7 @@ enum ArkUI_AnimationCurve
 | ARKUI_CURVE_EASE = 1 | 动画以低速开始，然后加快，在结束前变慢。 |
 | ARKUI_CURVE_EASE_IN = 2 | 动画以低速开始。 |
 | ARKUI_CURVE_EASE_OUT = 3 | 动画以低速结束。 |
-| ARKUI_CURVE_EASE_IN_OUT = 4 | 动画以低速开始和结束。 |
+| ARKUI_CURVE_EASE_IN_OUT = 4 | 动画以低速开始和结束，提供平滑自然的动画过渡效果。 |
 | ARKUI_CURVE_FAST_OUT_SLOW_IN = 5 | 动画标准曲线。 |
 | ARKUI_CURVE_LINEAR_OUT_SLOW_IN = 6 | 动画减速曲线。 |
 | ARKUI_CURVE_FAST_OUT_LINEAR_IN = 7 | 动画加速曲线。 |
@@ -1725,8 +1750,8 @@ enum ArkUI_AnimationPlayMode
 | -- | -- |
 | ARKUI_ANIMATION_PLAY_MODE_NORMAL = 0 | 动画正向播放。 |
 | ARKUI_ANIMATION_PLAY_MODE_REVERSE = 1 | 动画反向播放。 |
-| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE = 2 | 动画在奇数次（1、3、5...）正向播放，在偶数次（2、4、6...）反向播放。 |
-| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE = 3 | 动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。 |
+| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE = 2 | 动画交替循环播放，在奇数次正向播放，在偶数次反向播放。 |
+| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE = 3 | 动画反向交替循环播放，在奇数次反向播放，在偶数次正向播放。 |
 
 ### ArkUI_ImageSize
 
@@ -1817,19 +1842,19 @@ enum ArkUI_BlurStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_BLUR_STYLE_THIN = 0 | 轻薄材质模糊。 |
-| ARKUI_BLUR_STYLE_REGULAR = 1 | 普通厚度材质模糊。 |
-| ARKUI_BLUR_STYLE_THICK = 2 | 厚材质模糊。 |
-| ARKUI_BLUR_STYLE_BACKGROUND_THIN = 3 | 近距景深模糊。 |
-| ARKUI_BLUR_STYLE_BACKGROUND_REGULAR = 4 | 中距景深模糊。 |
-| ARKUI_BLUR_STYLE_BACKGROUND_THICK = 5 | 远距景深模糊。 |
-| ARKUI_BLUR_STYLE_BACKGROUND_ULTRA_THICK = 6 | 超远距景深模糊。 |
-| ARKUI_BLUR_STYLE_NONE = 7 | 关闭模糊。 |
-| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THIN = 8 | 组件超轻薄材质模糊。 |
-| ARKUI_BLUR_STYLE_COMPONENT_THIN = 9 | 组件轻薄材质模糊。 |
-| ARKUI_BLUR_STYLE_COMPONENT_REGULAR = 10 | 组件普通材质模糊。 |
-| ARKUI_BLUR_STYLE_COMPONENT_THICK = 11 | 组件厚材质模糊。 |
-| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THICK = 12 | 组件超厚材质模糊。 |
+| ARKUI_BLUR_STYLE_THIN = 0 | 轻薄材质模糊。<br/>![thin](figures/thin.png) |
+| ARKUI_BLUR_STYLE_REGULAR = 1 | 普通厚度材质模糊。<br/>![regular](figures/regular.png) |
+| ARKUI_BLUR_STYLE_THICK = 2 | 厚材质模糊。<br/>![thick](figures/thick.png) |
+| ARKUI_BLUR_STYLE_BACKGROUND_THIN = 3 | 近距景深模糊。<br/>![backgroundthin](figures/backgroundthin.png) |
+| ARKUI_BLUR_STYLE_BACKGROUND_REGULAR = 4 | 中距景深模糊。<br/>![backgroundregular](figures/backgroundregular.png) |
+| ARKUI_BLUR_STYLE_BACKGROUND_THICK = 5 | 远距景深模糊。<br/>![backgroundthick](figures/backgroundthick.png) |
+| ARKUI_BLUR_STYLE_BACKGROUND_ULTRA_THICK = 6 | 超远距景深模糊。<br/>![backgroundultrathick](figures/backgroundultrathick.png) |
+| ARKUI_BLUR_STYLE_NONE = 7 | 关闭模糊。<br/>![none](figures/none.png) |
+| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THIN = 8 | 组件超轻薄材质模糊。<br/>![componentultrathin](figures/componentultrathin.png) |
+| ARKUI_BLUR_STYLE_COMPONENT_THIN = 9 | 组件轻薄材质模糊。<br/>![componentthin](figures/componentthin.png) |
+| ARKUI_BLUR_STYLE_COMPONENT_REGULAR = 10 | 组件普通材质模糊。<br/>![componentregular](figures/componentregular.png) |
+| ARKUI_BLUR_STYLE_COMPONENT_THICK = 11 | 组件厚材质模糊。<br/>![componentthick](figures/componentthick.png) |
+| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THICK = 12 | 组件超厚材质模糊。<br/>![componentultrathick](figures/componentultrathick.png) |
 
 ### ArkUI_BlurStyleActivePolicy
 
@@ -1938,7 +1963,7 @@ enum ArkUI_ObjectFit
 **描述：**
 
 
-定义image填充效果。ImageSpanAlignment
+定义[Image](arkui-ts/ts-basic-components-image.md)组件的图片填充效果。
 
 **起始版本：** 12
 
@@ -1959,7 +1984,7 @@ enum ArkUI_ObjectFit
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_START = 12 | 图片大小不变，在image组件中底部起始端对齐。 |
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM = 13 | 图片大小不变，在image组件中底部横向居中对齐。 |
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END = 14 | 图片大小不变，在image组件中底部尾端对齐。 |
-| ARKUI_OBJECT_FIT_NONE_MATRIX = 15 | 不改变图像原始大小，需要配合NODE_IMAGE_IMAGE_MATRIX使用。<br/>**起始版本：** 21 |
+| ARKUI_OBJECT_FIT_NONE_MATRIX = 15 | 不改变图像原始大小，需要配合[NODE_IMAGE_IMAGE_MATRIX](capi-native-node-h.md#arkui_nodeattributetype)使用。<br/>**起始版本：** 21 |
 
 ### ArkUI_ImageInterpolation
 
@@ -1970,7 +1995,7 @@ enum ArkUI_ImageInterpolation
 **描述：**
 
 
-定义图片插值效果。
+定义图片插值效果。用于优化图片缩放时的锯齿问题。SVG类型图源不支持该属性。
 
 **起始版本：** 12
 
@@ -1996,7 +2021,7 @@ enum ArkUI_DynamicRangeMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | 高动态范围（High Dynamic Range，简称HDR），表示图片中显示亮度（brightness）的最小值和最大值的范围，范围越大图像的亮度表达更逼近真实环境，在太亮的环境下不会产生过曝（一片白），太暗的环境下产生过暗的效果（一片黑）。 |
+| ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | 高动态范围（High Dynamic Range，简称HDR），表示图片中显示亮度（brightness）的最小值和最大值的范围，范围越大图像的亮度表达更逼近真实环境，在太亮的环境下不会产生过曝（一片白），太暗的环境下不会产生过暗的效果（一片黑）。 |
 | ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT | 受限的高动态范围，包含比SDR更丰富的亮度和色彩，但不是完整的HDR，一般用于需要兼容SDR的情况。 |
 | ARKUI_DYNAMIC_RANGE_MODE_STANDARD | 标准动态范围（Standard Dynamic Range，简称SDR），表示亮度范围有限，一般在0~100尼特（亮度单位）左右，明暗对比度较小，暗部容易糊成黑，亮部容易爆白。 |
 
@@ -2015,7 +2040,7 @@ enum ArkUI_ImageRotateOrientation
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ORIENTATION_AUTO = 0 | 读取图片携带的EXIF元数据作为显示方向，支持旋转和镜像。 |
+| ARKUI_ORIENTATION_AUTO = 0 | 读取图片携带的EXIF元数据作为显示方向，支持旋转和镜像。EXIF（Exchangeable image file format）是专门为数码相机的照片设定的文件格式，可以记录数码照片的属性信息和拍摄数据。 |
 | ARKUI_ORIENTATION_UP | 默认按照当前图片的像素数据进行显示，不做任何处理。 |
 | ARKUI_ORIENTATION_RIGHT | 将当前图片顺时针旋转90度后显示。 |
 | ARKUI_ORIENTATION_DOWN  | 将当前图片顺时针旋转180度后显示。 |
@@ -2121,7 +2146,7 @@ enum ArkUI_ColorStrategy
 **描述：**
 
 
-前景色枚举值。
+前景和阴影的枚举值。
 
 **起始版本：** 12
 
@@ -2238,8 +2263,7 @@ enum ArkUI_MaskType
 
 **描述：**
 
-
-遮罩类型枚举。
+遮罩类型枚举。遮罩是一种用于限制组件显示区域的手段，它利用特定的形状对组件内容进行裁剪，从而实现只有遮罩区域内的内容才可见的效果。
 
 **起始版本：** 12
 
@@ -2390,10 +2414,10 @@ enum ArkUI_TransitionEdge
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_TRANSITION_EDGE_TOP = 0 | 窗口的上边缘。 |
-| ARKUI_TRANSITION_EDGE_BOTTOM = 1 | 窗口的下边缘。 |
-| ARKUI_TRANSITION_EDGE_START = 2 | 窗口的左边缘。 |
-| ARKUI_TRANSITION_EDGE_END = 3 | 窗口的右边缘。 |
+| ARKUI_TRANSITION_EDGE_TOP = 0 | 转场从窗口的上边缘滑入和滑出。 |
+| ARKUI_TRANSITION_EDGE_BOTTOM = 1 | 转场从窗口的下边缘滑入和滑出。 |
+| ARKUI_TRANSITION_EDGE_START = 2 | 转场从窗口的左边缘滑入和滑出。 |
+| ARKUI_TRANSITION_EDGE_END = 3 | 转场从窗口的右边缘滑入和滑出。 |
 
 ### ArkUI_FinishCallbackType
 
@@ -2404,14 +2428,14 @@ enum ArkUI_FinishCallbackType
 **描述：**
 
 
-在动画中定义onFinish回调的类型。
+在动画中定义[onFinish](./capi-native-animate-h.md#oh_arkui_animatoroption_registeronfinishcallback)回调的类型。
 
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_FINISH_CALLBACK_REMOVED = 0 | 当整个动画结束并立即删除时，将触发回调。 |
-| ARKUI_FINISH_CALLBACK_LOGICALLY = 1 | 当动画在逻辑上处于下降状态，但可能仍处于其长尾状态时，将触发回调。 |
+| ARKUI_FINISH_CALLBACK_LOGICALLY = 1 | 当动画在逻辑上处于下降状态，但可能仍处于其长尾状态时，将触发回调。长尾状态是指动画即将完全停止前的残余变化过程，此时动画的数值变化已非常微小，接近目标值。 |
 
 ### ArkUI_ListItemAlignment
 
@@ -2695,7 +2719,7 @@ enum ArkUI_AnimationDirection
 **描述：**
 
 
-动画播放模式。
+动画播放方向。
 
 **起始版本：** 12
 
@@ -2703,8 +2727,8 @@ enum ArkUI_AnimationDirection
 | -- | -- |
 | ARKUI_ANIMATION_DIRECTION_NORMAL = 0 | 动画正向循环播放。 |
 | ARKUI_ANIMATION_DIRECTION_REVERSE = 1 | 动画反向循环播放。 |
-| ARKUI_ANIMATION_DIRECTION_ALTERNATE = 2 | 动画交替循环播放，奇数次正向播放，偶数次反向播放。 |
-| ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE = 3 | 动画反向交替循环播放，奇数次反向播放，偶数次正向播放。 |
+| ARKUI_ANIMATION_DIRECTION_ALTERNATE = 2 | 动画交替循环播放，在奇数次正向播放，在偶数次反向播放。 |
+| ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE = 3 | 动画反向交替循环播放，在奇数次反向播放，在偶数次正向播放。 |
 
 ### ArkUI_ListItemSwipeActionState
 
@@ -2734,7 +2758,7 @@ enum ArkUI_ListItemSwipeEdgeEffect
 **描述：**
 
 
-定义Listitem组件[SwipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的滚动模式，默认值为ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING。
+定义Listitem组件[swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的滚动模式，默认值为ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING。
 
 **起始版本：** 12
 
@@ -2797,8 +2821,8 @@ enum ArkUI_AnimationFillMode
 | -- | -- |
 | ARKUI_ANIMATION_FILL_MODE_NONE = 0 | 动画未执行时不会将任何样式应用于目标，动画播放完成之后恢复初始默认状态。 |
 | ARKUI_ANIMATION_FILL_MODE_FORWARDS = 1 | 目标将保留动画执行期间最后一个关键帧的状态。 |
-| ARKUI_ANIMATION_FILL_MODE_BACKWARDS = 2 | 动画将在应用于目标时立即应用第一个关键帧中定义的值，并在delay期间保留此值。 |
-| ARKUI_ANIMATION_FILL_MODE_BOTH = 3 | 动画将遵循Forwards和Backwards的规则，从而在两个方向上扩展动画属性。 |
+| ARKUI_ANIMATION_FILL_MODE_BACKWARDS = 2 | 动画将在应用于目标时立即应用第一个关键帧中定义的值，并在[delay](./capi-native-animate-h.md#oh_arkui_animateoption_setdelay)期间保留此值。 |
+| ARKUI_ANIMATION_FILL_MODE_BOTH = 3 | 动画将遵循[ARKUI_ANIMATION_FILL_MODE_FORWARDS](#arkui_animationfillmode)和[ARKUI_ANIMATION_FILL_MODE_BACKWARDS](#arkui_animationfillmode)的规则，从而在两个方向上扩展动画属性。 |
 
 ### ArkUI_ErrorCode
 
@@ -2846,9 +2870,9 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 |  当前渲染节点存在父组件。错误码的详细介绍请参见[渲染节点错误码](../apis-arkui/errorcode-node-render.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST = 106404 |  未找到对应的渲染子节点。错误码的详细介绍请参见[渲染节点错误码](../apis-arkui/errorcode-node-render.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE = 106405 |  参数值超出范围。错误码的详细介绍请参见[渲染节点错误码](../apis-arkui/errorcode-node-render.md)。<br>**起始版本：** 20 |
-| ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE = 106406 |  当前渲染节点从FrameNode中获取。错误码的详细介绍请参见[渲染节点错误码](../apis-arkui/errorcode-node-render.md#106406-当前渲染节点从framenode中获取)。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 |  当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁。错误码的详细介绍请参见[渲染节点错误码](../apis-arkui/errorcode-node-render.md#106407-当前渲染节点从framenode中获取且该framenode已被取消接纳为附属节点或销毁)。<br>**起始版本：** 22 |
-| ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE = 106408 |  当前节点不处于被接纳状态。错误码的详细介绍请参见[渲染节点错误码](../apis-arkui/errorcode-node-render.md#106408-当前节点不处于被接纳状态)。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE = 106406 |  当前渲染节点从[FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)中获取。错误码的详细介绍请参见[106406-当前渲染节点从framenode中获取](../apis-arkui/errorcode-node-render.md#106406-当前渲染节点从framenode中获取)。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 |  当前渲染节点从[FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)中获取且该[FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)已被取消接纳为附属节点或销毁。错误码的详细介绍请参见[106407-当前渲染节点从framenode中获取且该framenode已被取消接纳为附属节点或销毁](../apis-arkui/errorcode-node-render.md#106407-当前渲染节点从framenode中获取且该framenode已被取消接纳为附属节点或销毁)。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE = 106408 |  当前节点不处于被接纳状态。错误码的详细介绍请参见[106408-当前节点不处于被接纳状态](../apis-arkui/errorcode-node-render.md#106408-当前节点不处于被接纳状态)。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE = 150001 |  当前节点无法获得焦点。错误码的详细介绍请参见[焦点错误码](../apis-arkui/errorcode-focus.md#150001-节点无法获得焦点)。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 |  当前节点对应的祖先节点中存在无法获焦节点。错误码的详细介绍请参见[焦点错误码](../apis-arkui/errorcode-focus.md#150002-祖先节点无法获得焦点)。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT = 150003 |  当前节点不存在。错误码的详细介绍请参见[焦点错误码](../apis-arkui/errorcode-focus.md#150003-节点不存在)。<br>**起始版本：** 15 |
@@ -3026,7 +3050,7 @@ enum ArkUI_ExpandMode
 | -- | -- |
 | ARKUI_NOT_EXPAND = 0 | 不展开。 |
 | ARKUI_EXPAND = 1 | 展开。 |
-| ARKUI_LAZY_EXPAND = 2 | 懒展开，按需展开当前节点的子节点。 |
+| ARKUI_LAZY_EXPAND = 2 | 懒展开，按需展开当前节点的子节点，节点展开条件可以参考[LazyForEach：数据懒加载](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)。 |
 
 ### ArkUI_NavDestinationState
 
@@ -3062,7 +3086,7 @@ enum ArkUI_RouterPageState
 **描述：**
 
 
-定义[Router Page](js-apis-router.md)（路由页面）的状态。
+定义[Router Page](arkts-apis-uicontext-router.md)（路由页面）的状态。
 
 **起始版本：** 12
 
@@ -3371,6 +3395,8 @@ enum ArkUI_TextMenuItemId
 | ARKUI_TEXT_MENU_ITEM_ID_ADDRESS = 13 | 导航前往。对选中的地址提供跳转服务，拉起地图应用。 |
 | ARKUI_TEXT_MENU_ITEM_ID_DATA_TIME = 14 | 新建日程。对选中的日期和时间提供跳转服务，拉起新建日程页面。 |
 | ARKUI_TEXT_MENU_ITEM_ID_ASK_AI = 15 | 问问AI。对选中的文本提供AI问询能力。 |
+| ARKUI_TEXT_MENU_ITEM_ID_AUTO_FILL = 16 | 自动填充。例如自动填充账号密码。<br>**起始版本：** 24 |
+| ARKUI_TEXT_MENU_ITEM_ID_PASSWORD_VAULT = 17 | 密码保险箱。<br>**起始版本：** 24 |
 | ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_BEGIN = 10000 | 应用自定义菜单项起始id，除了系统内置的菜单项id，应用还可以自定义菜单项id。 |
 | ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_END = 20000 | 应用自定义菜单项结束id，除了系统内置的菜单项id，应用还可以自定义菜单项id。 |
 
@@ -3543,6 +3569,98 @@ enum ArkUI_PickerIndicatorType
 | -- | -- |
 | ARKUI_PICKER_INDICATOR_BACKGROUND  = 0 | 背景样式。 |
 | ARKUI_PICKER_INDICATOR_DIVIDER  = 1 | 分割线样式。 |
+
+### OH_ArkUI_HapticFeedbackMode
+
+```c
+enum OH_ArkUI_HapticFeedbackMode
+```
+
+**描述**
+
+震动效果类型枚举。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_HAPTIC_FEEDBACK_MODE_DISABLED = 0 | 无震动效果。 |
+| OH_ARKUI_HAPTIC_FEEDBACK_MODE_ENABLED = 1 | 有震动效果。 |
+| OH_ARKUI_HAPTIC_FEEDBACK_MODE_AUTO = 2 | 跟随系统的震动效果。 |
+
+### OH_ArkUI_TextEditorSpanType
+
+```c
+enum OH_ArkUI_TextEditorSpanType
+```
+
+**描述**
+
+自定义文本选择菜单span类型枚举。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_TEXT = 0 | 文本span |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_IMAGE = 1 | 图片span。 |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_MIXED = 2 | 混合span。 |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_BUILDER = 3 | 自定义布局span。 |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_DEFAULT = 4 | 默认span。 |
+
+### OH_ArkUI_TextEditorResponseType
+
+```c
+enum OH_ArkUI_TextEditorResponseType
+```
+
+**描述**
+
+自定义文本选择菜单响应类型枚举。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_RIGHT_CLICK = 0 | 通过鼠标右键触发菜单弹出。 |
+| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_LONG_PRESS = 1 | 通过长按触发菜单弹出。 |
+| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_SELECT = 2 | 通过鼠标选中触发菜单弹出。 |
+| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_DEFAULT = 3 | 默认响应类型。 |
+
+### OH_ArkUI_TextMenuType
+
+```c
+enum OH_ArkUI_TextMenuType
+```
+
+**描述**
+
+文本菜单类型枚举。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_TEXT_EDITOR_SELECTION_MENU = 0 | 文本选择菜单。 |
+| OH_ARKUI_TEXT_EDITOR_PREVIEW_MENU = 1 | 预览菜单。 |
+
+### OH_ArkUI_LineBreakStrategy
+
+```c
+enum OH_ArkUI_LineBreakStrategy
+```
+
+**描述**
+
+换行策略类型枚举。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_LINE_BREAK_STRATEGY_GREEDY = 0 | 贪婪模式。<br>使每一行尽可能显示多的字符，直到这一行不能显示更多字符时进行折行。 |
+| OH_ARKUI_LINE_BREAK_STRATEGY_HIGH_QUALITY = 1 | 高质量模式。<br>在平衡模式的基础上，尽可能填满行，同时最后一行的权重较低，可能出现最后一行留白较多的情形。 |
+| OH_ARKUI_LINE_BREAK_STRATEGY_BALANCE = 2 | 平衡模式。<br>在不拆词的情况下，尽量使一个段落中每一行的宽度相同。 |
 
 ## 函数说明
 
@@ -3908,7 +4026,7 @@ void* OH_ArkUI_DrawContext_GetCanvas(ArkUI_DrawContext* context)
 **描述：**
 
 
-获取绘制canvas指针，可以转换为图形库的OH_Drawing_Canvas指针进行绘制。
+获取绘制canvas指针，可以转换为图形库的[OH_Drawing_Canvas](../apis-arkgraphics2d/capi-drawing-oh-drawing-canvas.md)指针进行绘制。
 
 **起始版本：** 12
 
@@ -5952,7 +6070,7 @@ void OH_ArkUI_SwiperIndicator_SetSelectedColor(ArkUI_SwiperIndicator* indicator,
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md)* indicator | 导航指示器对象指针。 |
-| uint32_t selectedColor | 颜色类型，0xargb格式，形如 0xFFFF0000 表示红色。 |
+| uint32_t selectedColor | 颜色类型，0xargb格式，形如0xFFFF0000表示红色。<br/>默认值：'\#007DFF'，蓝色。 |
 
 ### OH_ArkUI_SwiperIndicator_GetSelectedColor()
 
@@ -7036,7 +7154,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetActionAreaDistance(ArkUI_ListItemSwipeA
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | ListItemSwipeActionItem实例。 |
-| float distance | 组件长距离滑动删除距离阈值。 |
+| float distance | 组件长距离滑动删除距离阈值，单位vp。 |
 
 ### OH_ArkUI_ListItemSwipeActionItem_GetActionAreaDistance()
 
@@ -7062,7 +7180,7 @@ float OH_ArkUI_ListItemSwipeActionItem_GetActionAreaDistance(ArkUI_ListItemSwipe
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 组件长距离滑动删除距离阈值。异常时返回值：0。 |
+| float | 组件长距离滑动删除距离阈值，单位vp，异常时返回值：0。 |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionArea()
 
@@ -7094,7 +7212,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionAreaWithUserData(ArkUI_Lis
 **描述：**
 
 
-设置滑动条目进入删除区域时调用的事件。
+设置滑动条目进入删除区域时调用的事件，回调事件会传入用户自定义数据。
 
 **起始版本：** 12
 
@@ -7116,7 +7234,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnAction(ArkUI_ListItemSwipeActionItem*
 **描述：**
 
 
-设置组件进入长距删除区后删除ListItem时调用的事件。
+设置组件进入长距删除区后删除[ListItem](./arkui-ts/ts-container-listitem.md)时调用的事件。
 
 **起始版本：** 12
 
@@ -7180,7 +7298,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionAreaWithUserData(ArkUI_List
 **描述：**
 
 
-设置滑动条目退出删除区域时调用的事件。
+设置滑动条目退出删除区域时调用的事件，回调事件会传入用户自定义数据。
 
 **起始版本：** 12
 
@@ -7212,7 +7330,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChange(ArkUI_ListItemSwipeAction
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | ListItemSwipeActionItem实例。 |
-| callback | 回调事件。swipeActionState 变化后的状态。 |
+| callback | 回调事件。传入参数为swipeActionState，表示列表项滑动状态。 |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData()
 
@@ -7234,7 +7352,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData(ArkUI_ListIte
 | -- | -- |
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | ListItemSwipeActionItem实例。 |
 |  void* userData | 用户自定义数据。 |
-| callback | 回调事件。swipeActionState 变化后的状态。 |
+| callback | 回调事件。传入参数为swipeActionState，表示列表项滑动状态。 |
 
 ### OH_ArkUI_ListItemSwipeActionOption_Create()
 
@@ -7326,7 +7444,7 @@ void OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect(ArkUI_ListItemSwipeActionO
 **描述：**
 
 
-设置滑动效果。
+设置边缘滑动效果。
 
 **起始版本：** 12
 
@@ -7336,7 +7454,7 @@ void OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect(ArkUI_ListItemSwipeActionO
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | ListItemSwipeActionItem实例。 |
-| [ArkUI_ListItemSwipeEdgeEffect](capi-native-type-h.md#arkui_listitemswipeedgeeffect) edgeEffect | 滑动效果。 |
+| [ArkUI_ListItemSwipeEdgeEffect](capi-native-type-h.md#arkui_listitemswipeedgeeffect) edgeEffect | 边缘滑动效果。 |
 
 ### OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect()
 
@@ -7347,7 +7465,7 @@ int32_t OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect(ArkUI_ListItemSwipeActi
 **描述：**
 
 
-获取滑动效果。
+获取边缘滑动效果。
 
 **起始版本：** 12
 
@@ -7362,7 +7480,7 @@ int32_t OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect(ArkUI_ListItemSwipeActi
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 滑动效果。默认返回值：[ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING](#arkui_listitemswipeedgeeffect)。 |
+| int32_t | 边缘滑动效果。默认返回值：[ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING](#arkui_listitemswipeedgeeffect)。 |
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange()
 
@@ -7383,7 +7501,7 @@ void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange(ArkUI_ListItemSwipeAct
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | ListItemSwipeActionItem实例。 |
-| callback | 回调事件。offset 滑动偏移量。 |
+| callback | 回调事件。offset 滑动偏移量，单位vp。 |
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData()
 
@@ -7405,7 +7523,7 @@ void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData(ArkUI_List
 | -- | -- |
 | [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | ListItemSwipeActionItem实例。 |
 |  void* userData | 用户自定义数据。 |
-| callback | 回调事件。offset 滑动偏移量。 |
+| callback | 回调事件。offset 滑动偏移量，单位vp。 |
 
 ### OH_ArkUI_ListItemSwipeAction_Expand()
 
@@ -8017,7 +8135,7 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(c
 **描述：**
 
 
-使用图片路径创建帧图片信息，图片格式为svg，png和jpg。
+使用图片路径创建帧图片信息，图片格式为svg、png和jpg。支持应用沙箱内的相对路径和绝对路径。
 
 **起始版本：** 12
 
@@ -8026,7 +8144,7 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(c
 
 | 参数项 | 描述 |
 | -- | -- |
-| char* src | 图片路径。 |
+| char* src | 图片路径，支持应用沙箱内的相对路径或绝对路径。 |
 
 **返回：**
 
@@ -8043,7 +8161,7 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawable
 **描述：**
 
 
-使用[DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象创建帧图片信息，图片格式为Resource和PixelMap。
+使用[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象创建帧图片信息。
 
 **起始版本：** 12
 
@@ -8052,7 +8170,7 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawable
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawable | 使用Resource或PixelMap创建的ArkUI_DrawableDescriptor对象指针。 |
+| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawable | 使用PixelMap创建的ArkUI_DrawableDescriptor对象指针。 |
 
 **返回：**
 
@@ -8099,7 +8217,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetWidth(ArkUI_ImageAnimatorFrameInfo* imag
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* imageInfo | 帧图片对象指针。 |
-| int32_t width | 图片宽度，单位为PX。 |
+| int32_t width | 图片宽度，单位为px。 |
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_GetWidth()
 
@@ -8287,7 +8405,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetDuration(ArkUI_ImageAnimatorFrameInfo* i
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* imageInfo | 帧图片对象指针。 |
-| int32_t duration | 图片的播放时长，单位为毫秒。 |
+| int32_t duration | 图片的播放时长，单位为ms。 |
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_GetDuration()
 
@@ -8363,7 +8481,7 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildre
 **描述：**
 
 
-设置List组件的ChildrenMainSizeOption默认大小。
+设置[List](./arkui-ts/ts-container-list.md)组件列表项在主轴方向的默认尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。
 
 **起始版本：** 12
 
@@ -8373,7 +8491,7 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildre
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
-| float defaultMainSize | List下的ListItem的默认大小，单位为vp。 |
+| float defaultMainSize | 列表项在主轴方向的默认尺寸值，单位为vp。 |
 
 **返回：**
 
@@ -8390,7 +8508,7 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenM
 **描述：**
 
 
-获取List组件的ChildrenMainSizeOption默认大小。
+获取[List](./arkui-ts/ts-container-list.md)组件的列表项在主轴方向的默认尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。
 
 **起始版本：** 12
 
@@ -8405,7 +8523,7 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenM
 
 | 类型 | 说明 |
 | -- | -- |
-| float | List下的ListItem的默认大小，默认为0，单位为vp，option为空指针时返回-1。 |
+| float | 列表项在主轴方向的默认尺寸值，默认为0，单位为[vp](../apis-arkui/arkui-ts/ts-types.md#vp10)，option为空指针时返回-1。 |
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Resize()
 
@@ -8416,7 +8534,7 @@ void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* opti
 **描述：**
 
 
-重置List组件的ChildrenMainSizeOption的数组大小。
+调整[List](./arkui-ts/ts-container-list.md)组件子项主轴尺寸数组的容量大小。
 
 **起始版本：** 12
 
@@ -8426,7 +8544,7 @@ void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* opti
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
-| int32_t totalSize | 数组大小。 |
+| int32_t totalSize | 目标数组容量大小。 |
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Splice()
 
@@ -8437,7 +8555,7 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* o
 **描述：**
 
 
-对List组件的ChildrenMainSizeOption数组操作大小调整。
+对[List](./arkui-ts/ts-container-list.md)组件子项主轴尺寸数组进行大小调整。
 
 **起始版本：** 12
 
@@ -8447,9 +8565,9 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* o
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
-| int32_t index | 要修改MainSize的数组起始位置。 |
-| int32_t deleteCount | 要删除的MainSize数组从index开始的数量。 |
-| int32_t addCount | 要添加的MainSize数组从index开始的数量。 |
+| int32_t index | 操作起始索引位置。 |
+| int32_t deleteCount | 从起始位置开始删除的元素数量。 |
+| int32_t addCount | 从起始位置开始新增的元素数量。 |
 
 **返回：**
 
@@ -8466,7 +8584,7 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSiz
 **描述：**
 
 
-更新List组件的ChildrenMainSizeOption数组的值。
+更新[List](./arkui-ts/ts-container-list.md)组件子项主轴尺寸数组中指定索引位置的尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。
 
 **起始版本：** 12
 
@@ -8476,8 +8594,8 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSiz
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
-| int32_t index | 要修改MainSize的数组起始位置。 |
-| float mainSize | 实际修改的值。 |
+| int32_t index | 目标元素的数组索引位置。 |
+| float mainSize | 要设置的主轴尺寸值，单位为vp。 |
 
 **返回：**
 
@@ -8494,7 +8612,7 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetMainSize(ArkUI_ListChildrenMainSize
 **描述：**
 
 
-获取List组件的ChildrenMainSizeOption数组的值。
+获取[List](./arkui-ts/ts-container-list.md)组件子项主轴尺寸数组中指定索引位置的尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。
 
 **起始版本：** 12
 
@@ -8504,7 +8622,7 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetMainSize(ArkUI_ListChildrenMainSize
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
-| int32_t index | 要获取的值的下标位置。 |
+| int32_t index | 目标元素的数组索引位置。 |
 
 **返回：**
 
@@ -8575,7 +8693,7 @@ float OH_ArkUI_CustomSpanMeasureInfo_GetFontSize(ArkUI_CustomSpanMeasureInfo* in
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 父节点Text的字体大小。若函数参数异常，返回0.0f。<br> 异常返回原因：传入参数验证失败，参数不能为空。 |
+| float | 父节点Text的字体大小，单位为fp。若函数参数异常，返回0.0f。<br> 异常返回原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_CustomSpanMetrics_Create()
 
@@ -8635,7 +8753,7 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, fl
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* metrics | CustomSpanMetrics实例。 |
-| float width | 宽度大小，单位为vp。 |
+| float width | 宽度大小，单位为vp。默认值为0.0f，负值与默认值效果一致。 |
 
 **返回：**
 
@@ -8662,7 +8780,7 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, f
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* metrics | CustomSpanMetrics实例。 |
-| float height | 高度大小，单位为vp。 |
+| float height | 高度大小，单位为vp。默认值为0.0f，负值与默认值效果一致。 |
 
 **返回：**
 
@@ -8733,7 +8851,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | x轴偏移值。若函数参数异常，返回0.0f。<br> 异常返回原因：传入参数验证失败，参数不能为空。 |
+| float | x轴偏移值，单位为px。若函数参数异常，返回0.0f。<br> 异常返回原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_CustomSpanDrawInfo_GetLineTop()
 
@@ -8759,7 +8877,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetLineTop(ArkUI_CustomSpanDrawInfo* info)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 上边距值。若函数参数异常，返回0.0f。<br> 异常返回原因：传入参数验证失败，参数不能为空。 |
+| float | 上边距值，单位为px。若函数参数异常，返回0.0f。<br> 异常返回原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_CustomSpanDrawInfo_GetLineBottom()
 
@@ -8785,7 +8903,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 下边距值。若函数参数异常，返回0.0f。<br> 异常返回原因：传入参数验证失败，参数不能为空。 |
+| float | 下边距值，单位为px。若函数参数异常，返回0.0f。<br> 异常返回原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_CustomSpanDrawInfo_GetBaseline()
 
@@ -8811,7 +8929,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 基线偏移量值。若函数参数异常，返回0.0f。<br> 异常返回原因：传入参数验证失败，参数不能为空。 |
+| float | 基线偏移量值，单位为px。若函数参数异常，返回0.0f。<br> 异常返回原因：传入参数验证失败，参数不能为空。 |
 
 ### OH_ArkUI_CustomProperty_Destroy()
 
@@ -8822,7 +8940,7 @@ void OH_ArkUI_CustomProperty_Destroy(ArkUI_CustomProperty* handle)
 **描述：**
 
 
-销毁CustomProperty实例。
+销毁[ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md)实例。
 
 **起始版本：** 14
 
@@ -8831,7 +8949,7 @@ void OH_ArkUI_CustomProperty_Destroy(ArkUI_CustomProperty* handle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md)* handle | 要销毁的CustomProperty实例。 |
+| [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md)* handle | 要销毁的实例。 |
 
 ### OH_ArkUI_CustomProperty_GetStringValue()
 
@@ -8842,7 +8960,7 @@ const char* OH_ArkUI_CustomProperty_GetStringValue(ArkUI_CustomProperty* handle)
 **描述：**
 
 
-获取自定义属性value信息。
+获取自定义属性对象的value信息。
 
 **起始版本：** 14
 
@@ -8857,7 +8975,7 @@ const char* OH_ArkUI_CustomProperty_GetStringValue(ArkUI_CustomProperty* handle)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | 自定义属性value信息。 |
+| const char* | 自定义属性对象的value信息。 |
 
 ### OH_ArkUI_HostWindowInfo_GetName()
 
@@ -8868,7 +8986,7 @@ const char* OH_ArkUI_HostWindowInfo_GetName(ArkUI_HostWindowInfo* info)
 **描述：**
 
 
-获取HostWindowInfo对象中的窗口名称。
+获取[ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)对象中的窗口名称。
 
 **起始版本：** 15
 
@@ -8883,7 +9001,7 @@ const char* OH_ArkUI_HostWindowInfo_GetName(ArkUI_HostWindowInfo* info)
 
 | 类型 | 说明 |
 | -- | -- |
-| const char* | HostWindowInfo对象中的窗口名称。 |
+| const char* | [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)对象中的窗口名称。 |
 
 ### OH_ArkUI_HostWindowInfo_Destroy()
 
@@ -8894,7 +9012,7 @@ void OH_ArkUI_HostWindowInfo_Destroy(ArkUI_HostWindowInfo* info)
 **描述：**
 
 
-销毁HostWindowInfo对象。
+销毁[ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)对象。
 
 **起始版本：** 15
 
@@ -8903,7 +9021,7 @@ void OH_ArkUI_HostWindowInfo_Destroy(ArkUI_HostWindowInfo* info)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)* info | 要销毁的HostWindowInfo对象。 |
+| [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)* info | 要销毁的[ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)对象。 |
 
 ### OH_ArkUI_ActiveChildrenInfo_Destroy()
 
@@ -8914,7 +9032,7 @@ void OH_ArkUI_ActiveChildrenInfo_Destroy(ArkUI_ActiveChildrenInfo* handle)
 **描述：**
 
 
-销毁ActiveChildrenInfo实例。
+销毁[ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)实例。
 
 **起始版本：** 14
 
@@ -8923,7 +9041,7 @@ void OH_ArkUI_ActiveChildrenInfo_Destroy(ArkUI_ActiveChildrenInfo* handle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)* handle | 要销毁的ActiveChildrenInfo实例。 |
+| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)* handle | 要销毁的[ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)实例。 |
 
 ### OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex()
 
@@ -8934,7 +9052,7 @@ ArkUI_NodeHandle OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(ArkUI_ActiveChildren
 **描述：**
 
 
-获取ActiveChildrenInfo结构体的下标为index的子节点。
+获取[ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)结构体的下标为index的子节点。
 
 **起始版本：** 14
 
@@ -8943,7 +9061,7 @@ ArkUI_NodeHandle OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(ArkUI_ActiveChildren
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)* handle | 要获取信息的ActiveChildrenInfo实例。 |
+| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)* handle | 要获取信息的[ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)实例。 |
 | int32_t index | 子节点的下标。 |
 
 **返回：**
@@ -8961,7 +9079,7 @@ int32_t OH_ArkUI_ActiveChildrenInfo_GetCount(ArkUI_ActiveChildrenInfo* handle)
 **描述：**
 
 
-获取ActiveChildrenInfo结构体内的节点数量。
+获取[ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)结构体内的节点数量。
 
 **起始版本：** 14
 
@@ -8970,7 +9088,7 @@ int32_t OH_ArkUI_ActiveChildrenInfo_GetCount(ArkUI_ActiveChildrenInfo* handle)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)* handle | 要获取信息的ActiveChildrenInfo实例。 |
+| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)* handle | 要获取信息的[ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)实例。 |
 
 **返回：**
 
@@ -9036,7 +9154,7 @@ void OH_ArkUI_ProgressLinearStyleOption_SetSmoothEffectEnabled(ArkUI_ProgressLin
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ProgressLinearStyleOption](capi-arkui-nativemodule-arkui-progresslinearstyleoption.md)* option | 线性进度条样式信息。 |
-| bool enabled | 进度平滑动效的开关。开启平滑动效后设置进度，进度会从当前值渐变至设定值，否则进度从当前值突变至设定值。默认值：true。 |
+| bool enabled | 进度平滑动效的开关。开启平滑动效后设置进度，进度会从当前值渐变至设定值，否则进度从当前值突变至设定值。<br/>true：表示开启进度平滑动效。<br/>false：表示关闭进度平滑动效。<br/>默认值：true。 |
 
 ### OH_ArkUI_ProgressLinearStyleOption_SetScanEffectEnabled()
 
@@ -9057,7 +9175,7 @@ void OH_ArkUI_ProgressLinearStyleOption_SetScanEffectEnabled(ArkUI_ProgressLinea
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ProgressLinearStyleOption](capi-arkui-nativemodule-arkui-progresslinearstyleoption.md)* option | 线性进度条样式信息。 |
-| bool enabled | 扫光效果的开关。默认值：false。 |
+| bool enabled | 扫光效果的开关。<br/>true：表示开启扫光效果。<br/>false：表示关闭扫光效果。<br/>默认值：false。 |
 
 ### OH_ArkUI_ProgressLinearStyleOption_SetStrokeWidth()
 
@@ -9125,7 +9243,7 @@ bool OH_ArkUI_ProgressLinearStyleOption_GetSmoothEffectEnabled(ArkUI_ProgressLin
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 是否开启平滑动效。 |
+| bool | 是否开启平滑动效。<br/>true：表示开启进度平滑动效。<br/>false：表示关闭进度平滑动效。<br/>默认值：true。 |
 
 ### OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled()
 
@@ -9151,7 +9269,7 @@ bool OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled(ArkUI_ProgressLinea
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 是否开启扫光效果。 |
+| bool | 是否开启扫光效果。<br/>true：表示开启扫光效果。<br/>false：表示关闭扫光效果。<br/>默认值：false。 |
 
 ### OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth()
 
@@ -9380,7 +9498,7 @@ void OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus(ArkUI_CrossLanguageO
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | 跨语言配置项实例。 |
-| bool enabled | 是否允许跨语言修改属性。默认值：false。 |
+| bool enabled | 是否允许跨语言修改属性。true表示允许跨语言修改属性，false表示不允许跨语言修改属性，默认值：false。 |
 
 ### OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus()
 
@@ -9406,7 +9524,7 @@ bool OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(ArkUI_CrossLanguageO
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 是否允许跨语言修改属性。 |
+| bool | 是否允许跨语言修改属性。true表示允许跨语言修改属性，false表示不允许跨语言修改属性。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_Create()
 
@@ -9643,7 +9761,7 @@ void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeCo
 **描述：**
 
 
-指定TextPickerRangeContent数组指定位置的icon数据。
+设置TextPickerRangeContent数组指定位置的icon数据。
 
 **起始版本：** 19
 
@@ -9653,8 +9771,8 @@ void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeCo
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md)* handle | 指向TextPickerRangeContent数组的指针。 |
-| char* icon | 图片地址。 |
-| int32_t index | 数组位置，从0开始。 |
+| char* icon | 图标路径。 |
+| int32_t index | 数组索引，从0开始。 |
 
 ### OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex()
 
@@ -9665,7 +9783,7 @@ void OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex(ArkUI_TextPickerRangeCo
 **描述：**
 
 
-指定TextPickerRangeContent数组指定位置的text数据。
+设置TextPickerRangeContent数组指定位置的text数据。
 
 **起始版本：** 19
 
@@ -9754,7 +9872,7 @@ void OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex(ArkUI_TextCasca
 **描述：**
 
 
-指定TextCascadePickerRangeContent数组指定位置的child数据。
+设置TextCascadePickerRangeContent数组指定位置的child数据。
 
 **起始版本：** 19
 
@@ -9835,7 +9953,7 @@ void OH_ArkUI_EmbeddedComponentOption_SetOnError(ArkUI_EmbeddedComponentOption* 
 **描述：**
 
 
-设置EmbeddedComponent组件的onError回调。EmbeddedComponent组件在运行过程中发生异常时触发本回调。
+设置EmbeddedComponent组件的[onError](../apis-arkui/arkui-ts/ts-container-embedded-component.md#onerror)回调。EmbeddedComponent组件在运行过程中发生异常时触发本回调。
 
 **起始版本：** 20
 
@@ -9857,7 +9975,7 @@ void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(ArkUI_EmbeddedComponentOpt
 **描述：**
 
 
-设置EmbeddedComponent组件的onTerminated回调。EmbeddedComponent组件正常退出时触发本回调。
+设置EmbeddedComponent组件的[onTerminated](../apis-arkui/arkui-ts/ts-container-embedded-component.md#onterminated)回调。EmbeddedComponent组件正常退出时触发本回调。
 
 **起始版本：** 20
 
@@ -9867,7 +9985,7 @@ void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(ArkUI_EmbeddedComponentOpt
 | 参数项 | 描述                           |
 | -- |------------------------------|
 | [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md)* option | EmbeddedComponent组件选项的对象的指针。 |
-| void (\*callback)(int32_t code, [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md)* want) | 开发者自定义回调函数。<br>- code：被拉起EmbeddedUIExtensionAbility退出时返回的结果码。若Ability通过调用terminateSelfWithResult退出，结果码为Ability设置的值。若Ability通过调用terminateSelf退出，结果码为默认值"0"。<br>- want：被拉起EmbeddedUIExtensionAbility退出时返回的数据。   |
+| void (\*callback)(int32_t code, [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md)* want) | 开发者自定义回调函数。<br>- code：被拉起[EmbeddedUIExtensionAbility](../apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)退出时返回的结果码。若Ability通过调用[terminateSelfWithResult](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateselfwithresult)退出，结果码为Ability设置的值。若Ability通过调用[terminateSelf](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateself)退出，结果码为默认值"0"。<br>- want：被拉起EmbeddedUIExtensionAbility退出时返回的数据。   |
 
 ### OH_ArkUI_PositionEdges_Create()
 
@@ -13511,3 +13629,204 @@ ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureDivider(ArkUI_PickerIndic
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_FontWeightConfigs_Create()
+
+```c
+OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontWeightConfigs_Create()
+```
+
+**描述**
+
+创建文本字体粗细配置对象。
+
+**起始版本：** 24
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_ArkUI_FontWeightConfigs*](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md) | 返回指向文本字体粗细配置对象的指针。如果创建失败，返回空指针。 |
+
+### OH_ArkUI_FontWeightConfigs_Destroy()
+
+```c
+void OH_ArkUI_FontWeightConfigs_Destroy(OH_ArkUI_FontWeightConfigs* option)
+```
+
+**描述**
+
+销毁文本字体粗细配置对象。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | 指向要销毁的文本字体粗细配置对象的指针。 |
+
+### OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight()
+
+```c
+void OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option, bool enable)
+```
+
+**描述**
+
+设置是否启用可变字体粗细调节。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | 指向待修改的文本字体粗细配置对象的指针。 |
+| bool enable | 是否启用可变字体粗细。true表示启用可变字体粗细。此时如果设置的字重weight取值为[100, 900]范围内任意整数，则字重取值为weight，否则取默认值400。false表示禁用可变字体粗细。此时如果设置的字重weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。默认值为false。 |
+
+### OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight()
+
+```c
+bool OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option)
+```
+
+**描述**
+
+获取文本字体粗细配置对象是否启用了可变字体粗细调节。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | 指向文本字体粗细配置对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 返回是否启用可变字体粗细调节。<br>        true表示启用可变字体粗细。此时如果设置的字重weight取值为[100, 900]范围内任意整数，则字重取值为weight，否则取默认值400。<br>         false表示禁用可变字体粗细。此时如果设置的字重weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。<br>         默认值为false。字重weight取值为[100, 900]范围外的值，字重取默认值400。 |
+
+### OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory()
+
+```c
+void OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory(OH_ArkUI_FontWeightConfigs* option, bool enable)
+```
+
+**描述**
+
+设置设备的字体粗细级别改变时文本字体粗细是否自动更新。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | 指向待修改的文本文本字体粗配置对象的指针。 |
+| bool enable | 是否启用文本字体粗细跟随设备的字体粗细级别更新。true表示当设备的字体粗细级别改变时，文本字体粗细将自动更新。false表示当设备的字体粗细级别改变时，文本字体粗不会自动更新。默认值为true。 |
+
+### OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory()
+
+```c
+bool OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory(OH_ArkUI_FontWeightConfigs* option)
+```
+
+**描述**
+
+获取文本字体粗细是否跟随设备的字体粗细级别更新。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* option | 指向文本字体粗细配置对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 返回文本字体粗细是否跟随设备的字体粗细级别更新。<br>         true表示当设备的字体粗细级别改变时，文本字体粗细将自动更新。<br>         false表示当设备的字体粗细级别改变时，文本字体粗不会自动更新。 |
+
+### OH_ArkUI_FontConfigs_Create()
+
+```c
+OH_ArkUI_FontConfigs* OH_ArkUI_FontConfigs_Create()
+```
+
+**描述**
+
+创建文本字体配置对象。
+
+**起始版本：** 24
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_ArkUI_FontConfigs*](capi-arkui-nativemodule-oh-arkui-fontconfigs.md) | 返回指向文本字体配置对象的指针。如果创建失败，返回空指针。 |
+
+### OH_ArkUI_FontConfigs_Destroy()
+
+```c
+void OH_ArkUI_FontConfigs_Destroy(OH_ArkUI_FontConfigs* option)
+```
+
+**描述**
+
+销毁文本字体配置对象。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md)* option | 指向要销毁的文本字体配置对象的指针。 |
+
+### OH_ArkUI_FontConfigs_SetFontWeightConfigs()
+
+```c
+void OH_ArkUI_FontConfigs_SetFontWeightConfigs(OH_ArkUI_FontConfigs* option, OH_ArkUI_FontWeightConfigs* fontWeightConfigs)
+```
+
+**描述**
+
+设置文本字体配置对象的文本字体粗细配置。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md)* option | 指向待修改的文本字体配置对象的指针。 |
+| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* fontWeightConfigs | 文本字体粗细配置。 |
+
+### OH_ArkUI_FontConfigs_GetFontWeightConfigs()
+
+```c
+OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontConfigs_GetFontWeightConfigs(OH_ArkUI_FontConfigs* option)
+```
+
+**描述**
+
+获取文本字体配置对象的文本字体粗细配置。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md)* option | 指向文本字体配置对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_ArkUI_FontWeightConfigs*](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md) | 返回文本字体粗细配置。 |
