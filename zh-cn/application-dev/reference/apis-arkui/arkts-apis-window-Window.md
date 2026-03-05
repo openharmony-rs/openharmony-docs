@@ -2598,7 +2598,6 @@ ArkTS-Dyn示例：
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -2636,7 +2635,6 @@ ArkTS-Sta示例：
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { window } from '@kit.ArkUI';
 
 class EntryAbility extends UIAbility {
   // ...
@@ -11169,7 +11167,6 @@ ArkTS-Dyn示例：
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -11196,7 +11193,6 @@ ArkTS-Sta示例：
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { window } from '@kit.ArkUI';
 
 class EntryAbility extends UIAbility {
   // ...
@@ -11584,8 +11580,6 @@ ArkTS-Dyn示例：
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { window } from '@kit.ArkUI';
-
 export default class EntryAbility extends UIAbility {
   // ...
 
@@ -11616,7 +11610,6 @@ ArkTS-Sta示例：
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -11631,7 +11624,6 @@ export default class EntryAbility extends UIAbility {
       }
       if (windowClass != undefined) {
         let promise = windowClass.maximize();
-        // let promise = windowClass.maximize(window.MaximizePresentation.ENTER_IMMERSIVE);
         promise.then(() => {
         console.info('Succeeded in maximizing the window.');
         }).catch((err: Error) => {
@@ -11689,7 +11681,6 @@ ArkTS-Dyn示例：
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   // ...
@@ -11718,7 +11709,6 @@ ArkTS-Sta示例：
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { window } from '@kit.ArkUI';
 
 class EntryAbility extends UIAbility {
   // ...
@@ -11752,7 +11742,7 @@ setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -11818,7 +11808,7 @@ setResizeByDragEnabled(enable: boolean): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12272,6 +12262,10 @@ getWindowLimitsVP(): WindowLimits
 对于系统窗口和全局悬浮窗，默认窗口宽高的系统限制最小值为1px，通过此接口获取到的1vp，是计算取整后的值。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
