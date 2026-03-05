@@ -162,7 +162,7 @@ export struct Scene2 {
                 await phAccessHelper.applyChanges(assetChangeRequest);
 
                 this.uriString = assetChangeRequest.getAsset().uri;
-                this.statusMessage = 'createAsset successfully, : ' + this.uriString;
+                this.statusMessage = 'createAsset successfully, uri: ' + this.uriString;
                 console.info('createAsset successfully, uri: ' + this.uriString);
               } catch (err) {
                 this.statusMessage = `create asset failed with error: ${err.code}, ${err.message}`;
