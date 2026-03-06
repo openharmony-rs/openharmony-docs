@@ -42,6 +42,8 @@ on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本**：24
 
 **参数：**
@@ -125,6 +127,8 @@ off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本**：24
 
 **参数：**
@@ -196,6 +200,8 @@ getSelectionContent(): Promise\<string>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本**：24
 
 **ArkTS-Sta起始版本**：24
@@ -211,7 +217,6 @@ getSelectionContent(): Promise\<string>
 
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
-| 202 | Permission denied. Called by non-system application. |
 | 33600001   | Selection service exception. |
 | 33600004   | The interface is called too frequently. |
 | 33600005   | The interface is called at the wrong time. |
@@ -564,6 +569,8 @@ hide(): Promise\<void>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本**：24
 
 **ArkTS-Sta起始版本**：24
@@ -714,6 +721,8 @@ on(type: 'destroyed', callback: Callback\<void>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本**：24
 
 **参数：**
@@ -783,6 +792,8 @@ off(type: 'destroyed', callback?: Callback\<void>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本**：24
 
 **参数：**
@@ -847,6 +858,8 @@ on(type: 'hidden', callback: Callback\<void>): void
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 
@@ -916,6 +929,8 @@ off(type: 'hidden', callback?: Callback\<void>): void
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 
