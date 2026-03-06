@@ -237,7 +237,7 @@
 
 3. 在音频模板控制方无法直接感知的场景，需要媒体应用主动向已注册了对应接口的音频模板控制方同步数据。例如扫码登录成功的场景，需要如下接口，详情请查看[AVMusicTemplate API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。
    
-   - setUserInfo：向音频模板控制方同步用户信息。用户在音频模板控制方界面扫码登录，由于登录状态只有音频模板控制方能感知，所以需要主动同步数据。
+   - setUserInfo：向音频模板控制方同步用户信息。当用户在音频模板控制方界面扫码登录，由于登录状态只有音频模板提供方能感知，所以需要调用此方法给音频模板控制方同步数据。
    
    <!-- @[set_user_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
    
@@ -279,7 +279,7 @@
    }
    ```
    
-4. 媒体应用根据实际注册，在退出时及时注销事件监听，并释放资源。详情请查看[AVMusicTemplate API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。
+4. 媒体应用启动时注册的事件监听需要在退出时注销，以释放资源。详情请查看[AVMusicTemplate API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplate.md)。
 
    <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
    
