@@ -551,8 +551,8 @@ horizontalScrollBarAccess(horizontalScrollBar: boolean)
 
 > **说明：**
 >
-> - 通过@State变量控制横向滚动条的隐藏/显示后，需要调用[controller.refresh()](./arkts-apis-webview-WebviewController.md#refresh)生效。
-> - 通过@State变量频繁动态改变时，建议切换开关变量和Web组件一一对应。
+> - 通过[@State](../../ui/state-management/arkts-state.md)变量控制横向滚动条的隐藏/显示后，需要调用[controller.refresh()](./arkts-apis-webview-WebviewController.md#refresh)生效。
+> - 通过[@State](../../ui/state-management/arkts-state.md)变量频繁动态改变时，建议切换开关变量和Web组件一一对应。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

@@ -167,7 +167,7 @@ build() {
 	(6) 获取Web组件的滚动偏移量：webController.[getPageOffset()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageoffset20);
 5. 如何让Scroll组件不滚动。
 	
-	Scroll组件绑定[onScrollFrameBegin](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#onscrollframebegin9)事件，将剩余滚动偏移量返回0，scroll组件就不滚动，也不会停止惯性滚动动画。
+	Scroll组件绑定[onScrollFrameBegin](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#onscrollframebegin9)事件，将剩余滚动偏移量返回0，Scroll组件就不滚动，也不会停止惯性滚动动画。
 6. 滚动偏移量如何派发给List。
     ```ts
     this.listScroller.scrollBy(0, offset)

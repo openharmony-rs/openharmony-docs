@@ -570,6 +570,7 @@ struct WebComponent {
   @State imgUrl: string = '';
   context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
+  // 拷贝本地路径图片到指定目录
   copyLocalPicToDir(rawfilePath: string, newFileName: string): string {
     let srcFileDes = this.context.resourceManager.getRawFdSync(rawfilePath);
     let dstPath = this.context.filesDir + '/' +newFileName;
@@ -591,6 +592,7 @@ struct WebComponent {
     return dest.path;
   }
 
+  // 拷贝在线资源图片到指定目录
   async copyUrlPicToDir(picUrl: string, newFileName: string): Promise<string> {
     let uri = '';
     let httpRequest = http.createHttp();
@@ -615,12 +617,14 @@ struct WebComponent {
                 let context = this.context;
                 let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
                 let uri = '';
+                // 判断源路径是本地资源还是在线资源
                 if (this.imgUrl?.includes('rawfile')) {
                   let rawFileName: string = this.imgUrl.substring(this.imgUrl.lastIndexOf('/') + 1);
                   uri = this.copyLocalPicToDir(rawFileName, 'copyFile.png');
                 } else if (this.imgUrl?.includes('http') || this.imgUrl?.includes('https')) {
                   uri = await this.copyUrlPicToDir(this.imgUrl, `onlinePic${systemDateTime.getTime()}.png`);
                 }
+                // 对媒体资源实施修改
                 let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
                   photoAccessHelper.MediaAssetChangeRequest.createImageAssetRequest(context,  uri);
                 await phAccessHelper.applyChanges(assetChangeRequest);
