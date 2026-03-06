@@ -164,7 +164,7 @@
      /**
       * 模拟获取主界面的所有TAB。
       *
-      * @returns Promise类型MediaTab数组。
+      * @returns Promise类型MediaTab数组
       */
      private async getMainTabs(): Promise<avMusicTemplate.MediaTab[]> {
        let homeTab: avMusicTemplate.MediaTab = {
@@ -197,7 +197,7 @@
      /**
       * 模拟获取合集数据。
       *
-      * @returns 合集。
+      * @returns 合集
       */
      private async createCompilation(): Promise<avMusicTemplate.Compilation> {
        let mediaEntity: avMusicTemplate.MediaEntity = await this.createMediaEntity();
@@ -214,9 +214,9 @@
      };
    
      /**
-      * 模拟获取媒体数据。
+      * 模拟获取媒体数据
       *
-      * @returns 媒体数据。
+      * @returns 媒体数据
       */
      private async createMediaEntity(): Promise<avMusicTemplate.MediaEntity> {
        let mediaEntity: avMusicTemplate.MediaEntity = {
