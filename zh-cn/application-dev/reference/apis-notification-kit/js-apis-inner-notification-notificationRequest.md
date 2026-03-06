@@ -68,3 +68,21 @@
 | isDistributed          | boolean        | 否   | 是   | 是否支持跨设备协同通知。<br/> - true：支持跨设备协同通知。<br/> - false：不支持跨设备协同通知。                  |
 | supportDisplayDevices  | Array\<string> | 否   | 是   | 可以同步通知到的设备列表。           |
 | supportOperateDevices  | Array\<string> | 否   | 是   | 可以打开通知的设备列表。             |
+
+## NotificationParameters<sup>24+</sup>
+ 	 
+描述[NotificationRequest](#notificationrequest-1)中wantAgent的部分信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
+| 名称                   | 类型            | 只读 | 可选 | 说明                               |
+| -----------------------| -------------- | ---- | ---- | --------------------------------- |
+| wantAction          | string        | 否   | 是   | 应用在创建wantAgent时，传入的want的action字段，具体含义请参考[action](../apis-ability-kit/js-apis-app-ability-want.md#want)。 |
+| wantUri  | string | 否   | 是   | 应用在创建wantAgent时，传入的want的uri字段，具体含义请参考[uri](../apis-ability-kit/js-apis-app-ability-want.md#want)。 |
+| wantParameters  | ArkTS-Dyn: Record\<string, Object><br/>ArkTS-Sta: Record\<string, RecordData> | 否   | 是   | 应用在创建wantAgent时，传入的want的parameters字段，具体含义请参考[parameters](../apis-ability-kit/js-apis-app-ability-want.md#want)。 |
