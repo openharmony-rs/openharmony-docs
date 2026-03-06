@@ -656,3 +656,17 @@ With this permission, the application allows the system to dump application memo
 **Supported devices**: 2in1
 
 **Since**: 23
+
+## ohos.permission.STYLUS_FRAME_BOOST
+
+Allow the app to use the handwriting pen tracking enhancement interface.
+
+After obtaining this permission, the app can optimize the pen tracking performance and improve the responsiveness and experience of handwriting with a stylus in the app.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Valid since**: 26.0.0
