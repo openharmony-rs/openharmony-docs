@@ -13319,7 +13319,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetPreviewText(OH_ArkU
 | [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | 指向[OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)对象的指针。 |
 | uint32_t* offset | 预上屏文本位置。 |
 | char* buffer | 预上屏文本内容写入内存的缓冲区，内存空间需由开发者分配。 |
-| 缓冲区最多可写入的字符的数量。 |  |
+| int32_t bufferSize | 缓冲区最多可写入的字符的数量。 |
 | int32_t* writeLength | 实际写入缓冲区的字符的数量。 |
 
 **返回：**
@@ -13480,7 +13480,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetLeadingMarginPixelMap(OH_Ar
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
-| [struct OH_PixelmapNative](capi-arkui-nativemodule-oh-pixelmapnative.md)* pixelmap | 段落缩进的像素图。 |
+| [struct OH_PixelmapNative](../../reference/apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md)* pixelmap | 段落缩进的像素图。 |
 
 **返回：**
 
@@ -13505,7 +13505,7 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetLeadingMarginPixelMap(OH_Ar
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)* style | 指向[OH_ArkUI_TextEditorParagraphStyle](capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md)对象的指针。 |
-| [struct OH_PixelmapNative](capi-arkui-nativemodule-oh-pixelmapnative.md)** pixelmap | 段落缩进的像素图。 |
+| [struct OH_PixelmapNative](../../reference/apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.mdoh-pixelmapnative.md)** pixelmap | 段落缩进的像素图。 |
 
 **返回：**
 
