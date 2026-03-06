@@ -37,7 +37,7 @@ export default class EntryAbility extends UIAbility {
 
 启用BFCache后仅能存储一个页面，Web组件默认进入BFCache的页面可保持存活状态600秒。开发者可通过调用[setBackForwardCacheOptions()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setbackforwardcacheoptions12)设置每个Web实例的前进后退缓存策略。包括调整缓存中页面的最大数量，使BFCache能够容纳更多页面，从而在用户连续进行前进后退操作时，提供更快的加载速度。同时，开发者还能修改每个页面在缓存中的停留时间，延长页面在BFCache中的驻留期限，进而优化用户的浏览体验。
 
-在下面的示例中，设置Web组件可以缓存的最大数量为10，每个页面在缓存中停留300s。
+在下面的示例中，设置Web组件可以缓存的最大数量为10，每个页面在缓存中停留300秒。
   
 <!-- @[web_module_page_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry2/src/main/ets/pages/Index.ets) -->
 
