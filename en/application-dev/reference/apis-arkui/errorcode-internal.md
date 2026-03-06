@@ -24,6 +24,8 @@ When used for the [Navigation](arkui-ts/ts-basic-components-navigation.md) routi
 
 When used for [@ohos.arkui.componentSnapshot](js-apis-arkui-componentSnapshot.md): "The builder is not a valid build function."
 
+When used for [@ohos.arkui.componentUtils](js-apis-arkui-componentUtils.md): "UI execution context not found."
+
 **Symptom**
 
 For [@ohos.animator](js-apis-animator.md) and [@ohos.promptAction](js-apis-promptAction.md), this error code is reported when an internal error that cannot be rectified by developers occurs, with specific details included in the error message.
@@ -44,7 +46,7 @@ For [@ohos.promptAction](js-apis-promptAction.md): failure to obtain the renderi
 
 For [@ohos.arkui.componentSnapshot](js-apis-arkui-componentSnapshot.md): failure to obtain a valid UI instance, null pointer exception, failed internal state validation of the UI instance, inability to query the node (because the component is not added to the tree), or snapshot size exceeding hardware limits (which may vary by hardware platform).
 
-For [UIContext](./arkts-apis-uicontext-uicontext.md): insufficient memory or JS VM exceptions leading to failed UI instance creation.
+For [UIContext](./arkts-apis-uicontext-uicontext.md): failure to create a UI instance because <!--Del-->the color picking parameters are not set as required by the API or in invalid types, <!--DelEnd-->the memory is insufficient, or the JS VM is abnormal.
 
 **Solution**
 

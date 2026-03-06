@@ -270,6 +270,8 @@
     - [ColumnSplit](arkui-ts/ts-container-columnsplit.md)
     - [RowSplit](arkui-ts/ts-container-rowsplit.md)
     - [SideBarContainer](arkui-ts/ts-container-sidebarcontainer.md)
+  - 动态布局<!--dynamic-layout-->
+    - [DynamicLayout](arkui-ts/ts-container-dynamiclayout.md)
   - 滚动与滑动<!--scroll-and-swipe-->
     - [List](arkui-ts/ts-container-list.md)
     - [ListItem](arkui-ts/ts-container-listitem.md)
@@ -597,6 +599,8 @@
     - [ArkUI_DragAndDropInfo](capi-arkui-nativemodule-arkui-draganddropinfo.md)
     - [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)
     - [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md)
+    - [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md)
+    - [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)
     - [OH_PixelmapNative*](capi-arkui-nativemodule-oh-pixelmapnative8h.md)
     - [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md)
     - [ArkUI_AnimateCompleteCallback](capi-arkui-nativemodule-arkui-animatecompletecallback.md)

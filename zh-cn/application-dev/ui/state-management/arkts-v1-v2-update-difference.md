@@ -160,7 +160,7 @@ Button('Change state variable')
 
 ### V2组件的更新
 
-V2状态管理相比相比V1状态管理，新增异步执行@Computed，@Monitor和节点标脏步骤：
+V2状态管理相比V1状态管理，新增异步执行@Computed，@Monitor和节点标脏步骤：
 
 步骤1：事件触发修改V2状态变量， 抛[Promise](../../arkts-utils/async-concurrency-overview.md#promise)异步任务；
 

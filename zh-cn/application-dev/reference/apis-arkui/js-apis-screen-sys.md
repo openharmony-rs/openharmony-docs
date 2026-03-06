@@ -13,6 +13,8 @@
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
 > - 本模块接口为系统接口。
+> 
+> - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 
 ## 导入模块
 
@@ -366,6 +368,8 @@ makeUnique(uniqueScreen: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在Phone设备、PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效不报错。
 
 **参数：**
 
@@ -1448,7 +1452,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 setOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): void
 
-设置屏幕方向，使用callback异步回调。
+设置屏幕方向，使用callback异步回调。当设置的方向符合[应用旋转策略](../../quick-start/module-configuration-file.md#abilities标签)（可通过配置module.json5文件中abilities标签的orientation字段设置应用旋转策略）时，屏幕方向才会发生改变；当设置方向不符合应用旋转策略时，屏幕方向不会发生变化，且接口不会抛异常。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1514,7 +1518,7 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 setOrientation(orientation: Orientation): Promise&lt;void&gt;
 
-设置屏幕方向，使用Promise异步回调。
+设置屏幕方向，使用Promise异步回调。当设置的方向符合[应用旋转策略](../../quick-start/module-configuration-file.md#abilities标签)（可通过配置module.json5文件中abilities标签的orientation字段设置应用旋转策略）时，屏幕方向才会发生改变；当设置方向不符合应用旋转策略时，屏幕方向不会发生变化，且接口不会抛异常。
 
 **系统接口：** 此接口为系统接口。
 

@@ -5621,7 +5621,7 @@ Converts and formats the parameters under the control of the string format and t
 | Name| Type                         | Mandatory| Description                  |
 | ------ | ----------------------------- | ---- | ---------------------- |
 | format | string                        | Yes  | Format descriptors and plain text.|
-| ...args   | Array&lt;string \| number&gt; | No  | List of variable parameters.        |
+| ...args   | Array&lt;string \| number&gt; | No  | List of variable parameters. If variable parameters are passed, for example, **gzprintf("name is %s, age is %d", "Tom", 23)**, the content **"name is Tom, age is 23"** is written. If no variable parameter is passed, for example, **gzprintf("name is %s, age is %d")**, the content **"name is %s, age is %d"** is written.     |
 
 **Return value**
 

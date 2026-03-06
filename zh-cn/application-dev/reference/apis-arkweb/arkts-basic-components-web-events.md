@@ -2114,6 +2114,15 @@ onContextMenuShow(callback: Callback\<OnContextMenuShowEvent, boolean\>)
             this.showMenu = false;
           })
         MenuItem({
+          content: '保存图片',
+        })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.saveImage();
+            this.showMenu = false;
+          })
+        MenuItem({
           content: '剪切',
         })
           .width(100)
@@ -3569,6 +3578,11 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
 
 收到网站安全风险检查结果时触发的回调。
 
+> **说明：**
+>
+> - 需要使用release包，debug包不生效。
+> - 开启未成年模式，设置网页内容拦截，触发回调。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -3605,6 +3619,11 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
 onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
 
 网站安全风险检查结束时触发的回调。
+
+> **说明：**
+>
+> - 需要使用release包，debug包不生效。
+> - 开启未成年模式，设置网页内容拦截，触发回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3978,6 +3997,10 @@ onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void)
 onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionCallback)
 
 智能防跟踪功能使能时，当追踪者cookie被拦截时触发该回调。
+
+> **说明：**
+>
+> - 需要使用release包，debug包不生效。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

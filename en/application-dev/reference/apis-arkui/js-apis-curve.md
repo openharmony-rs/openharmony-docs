@@ -231,7 +231,7 @@ Creates a responsive spring animation curve. It is a special case of [springMoti
 
 | Type                          | Description            |
 | ---------------------------------- | ---------------- |
-| [ICurve](#icurve9) | Curve.<br>**NOTE**<br>1. To apply custom settings for a spring animation, you are advised to use **springMotion**. When using **responsiveSpringMotion**, you are advised to retain the default settings.<br>2. The duration of the responsive spring animation depends on the **responsiveSpringMotion** parameters and the previous velocity, rather than the duration parameter in [animation](arkui-ts/ts-animatorproperty.md), [animateTo](arkui-ts/ts-explicit-animation.md), or [pageTransition](arkui-ts/ts-page-transition-animation.md). In addition, the interpolation cannot be obtained using the [interpolate](#interpolate9) function of the curve.|
+| [ICurve](#icurve9) | Curve.<br>**NOTE**<br>1. **ResponsiveSpringMotion** is a special case of **springMotion**, with the only difference in the default values. To apply custom settings for a spring animation, you are advised to use **springMotion**. When using **responsiveSpringMotion**, you are advised to retain the default settings.<br>2. The duration of the responsive spring animation depends on the **responsiveSpringMotion** parameters and the previous velocity, rather than the duration parameter in [animation](arkui-ts/ts-animatorproperty.md), [animateTo](arkui-ts/ts-explicit-animation.md), or [pageTransition](arkui-ts/ts-page-transition-animation.md). In addition, the interpolation cannot be obtained using the [interpolate](#interpolate9) function of the curve.|
 
 **Example**
 

@@ -40,6 +40,7 @@ Declares the APIs for accessing Native Accessibility features.
 | [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) | ArkUI_AccessibilityProvider |  Defines a third-party accessibility provider to implement callback functions.|
 | [ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md) | ArkUI_AccessibilityActionArguments | Sets the parameters of accessibility actions.|
 | [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md) | ArkUI_AccessibilityElementInfoList | Provides a list instance of the encapsulated **ArkUI_AccessibilityElementInfo**.|
+| [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | Defines the pointer to an ArkUI native component object.|
 
 ### Enums
 
@@ -58,7 +59,7 @@ Declares the APIs for accessing Native Accessibility features.
 | -- | -- |
 | [int32_t OH_ArkUI_AccessibilityProviderRegisterCallback(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityProviderCallbacks* callbacks)](#oh_arkui_accessibilityproviderregistercallback) | Defines a struct for third-party accessibility provider callback functions, which third-party platforms need to implement. These functions are registered with the system side through **OH_ArkUI_AccessibilityProviderRegisterCallback**.|
 | [int32_t OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(const char* instanceId,ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityProviderCallbacksWithInstance* callbacks)](#oh_arkui_accessibilityproviderregistercallbackwithinstance) | Registers accessibility provider callback functions for third-party platforms in multi-instance scenarios.|
-| [void OH_ArkUI_SendAccessibilityAsyncEvent(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityEventInfo* eventInfo,void (\*callback)(int32_t errorCode))](#oh_arkui_sendaccessibilityasyncevent) | Proactively reports an event to notify the accessibility service.|
+| [void OH_ArkUI_SendAccessibilityAsyncEvent(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityEventInfo* eventInfo,void (\*callback)(int32_t errorCode))](#oh_arkui_sendaccessibilityasyncevent) | Proactively sends an event to notify the accessibility service.|
 | [ArkUI_AccessibilityElementInfo* OH_ArkUI_AddAndGetAccessibilityElementInfo(ArkUI_AccessibilityElementInfoList* list)](#oh_arkui_addandgetaccessibilityelementinfo) | Adds an **ArkUI_AccessibilityElementInfo** member to the specified list and returns the **ArkUI_AccessibilityElementInfo** struct.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetElementId(ArkUI_AccessibilityElementInfo* elementInfo, int32_t elementId)](#oh_arkui_accessibilityelementinfosetelementid) | Sets the component ID for an **ArkUI_AccessibilityElementInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetParentId(ArkUI_AccessibilityElementInfo* elementInfo, int32_t parentId)](#oh_arkui_accessibilityelementinfosetparentid) | Sets the parent ID for an **ArkUI_AccessibilityElementInfo** object.|
@@ -96,21 +97,23 @@ Declares the APIs for accessing Native Accessibility features.
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_AccessibilityElementInfo* elementInfo, int32_t offset)](#oh_arkui_accessibilityelementinfosetaccessibilityoffset) | Sets the offset for an **ArkUI_AccessibilityElementInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityGroup)](#oh_arkui_accessibilityelementinfosetaccessibilitygroup) | Sets whether the **ArkUI_AccessibilityElementInfo** object should be treated as an accessibility group.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityLevel)](#oh_arkui_accessibilityelementinfosetaccessibilitylevel) | Sets the accessibility level for the **ArkUI_AccessibilityElementInfo** object.|
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t zIndex)](#oh_arkui_accessibilityelementinfosetzindex) | Sets the z-index for an **ArkUI_AccessibilityElementInfo** object.|
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t zIndex)](#oh_arkui_accessibilityelementinfosetzindex) | Sets the z-order of the component for the **ArkUI_AccessibilityElementInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(ArkUI_AccessibilityElementInfo* elementInfo, float opacity)](#oh_arkui_accessibilityelementinfosetaccessibilityopacity) | Sets the opacity for the **ArkUI_AccessibilityElementInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundColor)](#oh_arkui_accessibilityelementinfosetbackgroundcolor) | Sets the background color for the **ArkUI_AccessibilityElementInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundImage)](#oh_arkui_accessibilityelementinfosetbackgroundimage) | Sets the background image for the **ArkUI_AccessibilityElementInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetBlur(ArkUI_AccessibilityElementInfo* elementInfo, const char* blur)](#oh_arkui_accessibilityelementinfosetblur) | Sets the blur value for the **ArkUI_AccessibilityElementInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityElementInfo* elementInfo, const char* hitTestBehavior)](#oh_arkui_accessibilityelementinfosethittestbehavior) | Sets the hit test mode for the **ArkUI_AccessibilityElementInfo** object.|
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier(ArkUI_AccessibilityElementInfo* elementInfo, const char* identifier)](#oh_arkui_accessibilityelementinfosetcomponentidentifier) | Sets the component identifier for the accessibility node information of the **ArkUI_AccessibilityElementInfo** object, which can be used to identify specific components in automated tests.|
 | [ArkUI_AccessibilityElementInfo* OH_ArkUI_CreateAccessibilityElementInfo(void)](#oh_arkui_createaccessibilityelementinfo) | Creates an **ArkUI_AccessibilityElementInfo** object, which must be destroyed with **OH_ArkUI_DestoryAccessibilityElementInfo**.|
 | [void OH_ArkUI_DestoryAccessibilityElementInfo(ArkUI_AccessibilityElementInfo* elementInfo)](#oh_arkui_destoryaccessibilityelementinfo) | Destroys an **ArkUI_AccessibilityElementInfo** object.|
 | [ArkUI_AccessibilityEventInfo* OH_ArkUI_CreateAccessibilityEventInfo(void)](#oh_arkui_createaccessibilityeventinfo) | Creates an **ArkUI_AccessibilityEventInfo** object, which must be destroyed with **OH_ArkUI_DestoryAccessibilityEventInfo**.|
 | [void OH_ArkUI_DestoryAccessibilityEventInfo(ArkUI_AccessibilityEventInfo* eventInfo)](#oh_arkui_destoryaccessibilityeventinfo) | Destroys an **ArkUI_AccessibilityEventInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityEventSetEventType(ArkUI_AccessibilityEventInfo* eventInfo,  ArkUI_AccessibilityEventType eventType)](#oh_arkui_accessibilityeventseteventtype) | Sets the event type for an **ArkUI_AccessibilityEventInfo** object.|
-| [int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_AccessibilityEventInfo* eventInfo,  const char* textAnnouncedForAccessibility)](#oh_arkui_accessibilityeventsettextannouncedforaccessibility) | Sets the announcement text for an **ArkUI_AccessibilityEventInfo** object.|
+| [int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_AccessibilityEventInfo* eventInfo,  const char* textAnnouncedForAccessibility)](#oh_arkui_accessibilityeventsettextannouncedforaccessibility) | Sets the content for auto-broadcasting for the **ArkUI_AccessibilityEventInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInfo* eventInfo,  int32_t requestFocusId)](#oh_arkui_accessibilityeventsetrequestfocusid) | Sets the focus request ID for an **ArkUI_AccessibilityEventInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityEventSetElementInfo(ArkUI_AccessibilityEventInfo* eventInfo,  ArkUI_AccessibilityElementInfo* elementInfo)](#oh_arkui_accessibilityeventsetelementinfo) | Sets the element information for an **ArkUI_AccessibilityEventInfo** object.|
 | [int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionArguments* arguments, const char* key, char** value)](#oh_arkui_findaccessibilityactionargumentbykey) | Obtains the value associated with the specified key in **ArkUI_AccessibilityActionArguments**.|
+| [int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* node, ArkUI_AccessibilityProvider** provider)](#oh_arkui_nativemodule_getnativeaccessibilityprovider) |Obtains the level-2 pointer variable of the pointer to the [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) object.<br>The [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) object corresponds to the [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) instance passed.<br>A third-party framework maps its UI components as [RenderNode](js-apis-arkui-renderNode.md) of the [ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype) type to obtain [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).<br>Then, it calls **OH_ArkUI_NativeModule_GetNativeAccessibilityProvider** to obtain the [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) pointer and register an accessibility callback.<br>Finally, the ArkUI accessibility service can identify the UI of the third-party framework and trigger events.<br>This API takes effect only when the third-party framework maps its UI components as [RenderNode](js-apis-arkui-renderNode.md) of the [ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype) type. Otherwise, an error code will be reported.<br>This API uses [RenderNode](js-apis-arkui-renderNode.md) to implement the access of the third-party framework. Only [ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype) can access the accessibility service to obtain the accessibility control tree.<br>Multi-thread concurrency is not supported. The third-party framework ensures thread security during the API calling.|
 
 ## Enum Description
 
@@ -139,10 +142,10 @@ Enumerates accessibility action types.
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_COPY = 0x00000400 | Copies the current text selection.                                                                                                                     |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_PASTE = 0x00000800 | Pastes content to the text component.                                                                                                                     |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CUT = 0x00001000 | Cuts the current text selection to the pasteboard.                                                                                                                     |
-| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SELECT_TEXT = 0x00002000 | Selects a range of text within an editable area in a text component. Used together with **ArkUI_AccessibilityActionArguments** to configure **selectTextStart**, **selectTextEnd**, and **selectTextInForWard**.                                                                     |
+| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SELECT_TEXT = 0x00002000 | Selects a range of text within an editable area in a text component. Selects a range of text within an editable area by using **ArkUI_AccessibilityActionArguments** and setting **selectTextBegin** (indicates the start position of the selection), **selectTextEnd** (indicates the end position of the selection), and **selectTextInForWard** (**true** indicates to select text forward, and **false** indicates to select text backward).                                                                   |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SET_TEXT = 0x00004000 | Sets the text content of the text component.                                                                                                                     |
-| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SET_CURSOR_POSITION = 0x00100000 | Sets the text cursor position. Used together with **ArkUI_AccessibilityActionArguments** to configure **offset**.|
-| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_NEXT_HTML_ITEM = 0x02000000 | Moves focus to the next focusable component. Note: "HTML" indicates the web-like navigation capability, not actual web elements. This API requires implementation of **findNextFocusAccessibilityNode**.<br>**Since**: 15|
+| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SET_CURSOR_POSITION = 0x00100000 | Sets the cursor position where the text can be entered for the text component. This API is used together with **ArkUI_AccessibilityActionArguments**.|
+| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_NEXT_HTML_ITEM = 0x02000000 | Moves focus to the next focusable component. Note: "HTML" indicates the web-like navigation capability, not actual web elements. This attribute is available only when the [findNextFocusAccessibilityNode](./capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md#findnextfocusaccessibilitynode) capability is implemented.<br>**Since**: 15|
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_PREVIOUS_HTML_ITEM = 0x04000000 | Moves focus to the previous focusable component. Note: "HTML" indicates the web-like navigation capability, not actual web elements. This API requires implementation of **findNextFocusAccessibilityNode**.<br>**Since**: 15    |
 
 ### ArkUI_AccessibilityEventType
@@ -383,7 +386,7 @@ Sets the component ID for an **ArkUI_AccessibilityElementInfo** object.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to an **ArkUI_AccessibilityElementInfo** instance.|
+| [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to an **ArkUI_AccessibilityElementInfo** object.|
 | int32_t elementId | Unique ID of the accessibility element.|
 
 **Returns**
@@ -1274,7 +1277,7 @@ Sets the offset for an **ArkUI_AccessibilityElementInfo** object.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to the target **ArkUI_AccessibilityElementInfo** object.|
-| int32_t offset | Scroll offset, in pixels, of the content area relative to the element's top coordinate. Applicable to scrollable components such as **List** and **Grid**.|
+| int32_t offset | Scrolling pixel offset of the content area relative to the top coordinate of the element for scrollable controls, such as [List](./arkui-ts/ts-container-list.md) and [Grid](./arkui-ts/ts-container-grid.md).|
 
 **Returns**
 
@@ -1345,7 +1348,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInf
 **Description**
 
 
-Sets the z-index for an **ArkUI_AccessibilityElementInfo** object.
+Sets the z-order of the component for the **ArkUI_AccessibilityElementInfo** object.
 
 **Since**: 13
 
@@ -1355,7 +1358,7 @@ Sets the z-index for an **ArkUI_AccessibilityElementInfo** object.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to the target **ArkUI_AccessibilityElementInfo** object.|
-| int32_t zIndex | Z-order of the component, used to control the position of the component along the z-axis perpendicular to the screen. Required for UITest.|
+| int32_t zIndex | Z-order of the component, used to control the position of the component along the z-axis perpendicular to the screen. This parameter is required for [UiTest](../apis-test-kit/js-apis-uitest.md).|
 
 **Returns**
 
@@ -1382,7 +1385,7 @@ Sets the opacity for the **ArkUI_AccessibilityElementInfo** object.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to the target **ArkUI_AccessibilityElementInfo** object.|
-| float opacity | Opacity. The value ranges from 0 to 1, where **1** indicates opaque and **0** indicates completely transparent. Required for UITest.|
+| float opacity | Opacity. The value ranges from 0 to 1, where **1** indicates opaque and **0** indicates completely transparent. This parameter is required for [UiTest](../apis-test-kit/js-apis-uitest.md).|
 
 **Returns**
 
@@ -1409,7 +1412,7 @@ Sets the background color for the **ArkUI_AccessibilityElementInfo** object.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to the target **ArkUI_AccessibilityElementInfo** object.|
-| const char* backgroundColor | Background color. Required for UITest.|
+| const char* backgroundColor | Background color. This parameter is required for [UiTest](../apis-test-kit/js-apis-uitest.md).|
 
 **Returns**
 
@@ -1436,7 +1439,7 @@ Sets the background image for the **ArkUI_AccessibilityElementInfo** object.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to the target **ArkUI_AccessibilityElementInfo** object.|
-| const char* backgroundImage | Background image. Required for UITest.|
+| const char* backgroundImage | Background image. This parameter is required for [UiTest](../apis-test-kit/js-apis-uitest.md).|
 
 **Returns**
 
@@ -1463,7 +1466,7 @@ Sets the blur value for the **ArkUI_AccessibilityElementInfo** object.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to the target **ArkUI_AccessibilityElementInfo** object.|
-| const char* blur | Blur value. Required for UITest.|
+| const char* blur | Blur value. This parameter is required for [UiTest](../apis-test-kit/js-apis-uitest.md).|
 
 **Returns**
 
@@ -1491,6 +1494,33 @@ Sets the hit test mode for the **ArkUI_AccessibilityElementInfo** object.
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to the target **ArkUI_AccessibilityElementInfo** object.|
 | const char* hitTestBehavior | Hit test mode. For details about the value range, see [HitTestMode](./arkui-ts/ts-appendix-enums.md#hittestmode9).|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.<br>Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter error occurs.|
+
+### OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier()
+
+```c
+int32_t OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier(ArkUI_AccessibilityElementInfo* elementInfo, const char* identifier)
+```
+
+**Description**
+
+
+Sets the component identifier for the accessibility node information of the **ArkUI_AccessibilityElementInfo** object, which can be used to identify specific components in automated tests.
+
+**Since**: 24
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Element information of an accessibility node.|
+| const char* identifier | Unique identifier of a component.<br>Ensure that the component identifier in the reported component tree is unique and the character string contains a maximum of 1024 characters. If the character string exceeds 1024 characters, it will be truncated.|
 
 **Returns**
 
@@ -1612,7 +1642,7 @@ int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_Access
 **Description**
 
 
-Sets the announcement text for an **ArkUI_AccessibilityEventInfo** object.
+Sets the content for auto-broadcasting for the **ArkUI_AccessibilityEventInfo** object.
 
 **Since**: 13
 
@@ -1622,7 +1652,7 @@ Sets the announcement text for an **ArkUI_AccessibilityEventInfo** object.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md)* eventInfo | Pointer to an **ArkUI_AccessibilityEventInfo** object.|
-| const char* textAnnouncedForAccessibility | Announcement text.|
+| const char* textAnnouncedForAccessibility | Content for auto-broadcasting.|
 
 **Returns**
 
@@ -1711,3 +1741,42 @@ Obtains the value associated with a specified key in an **ArkUI_AccessibilityAct
 | Type| Description|
 | -- | -- |
 | int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful.<br>Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter error occurs.|
+
+### OH_ArkUI_NativeModule_GetNativeAccessibilityProvider()
+
+```c
+int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* node, ArkUI_AccessibilityProvider** provider)
+```
+
+**Description**
+
+Obtains the level-2 pointer variable of the pointer to the [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) object.
+
+The [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) object corresponds to the [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) instance passed.
+
+A third-party framework maps its UI components as [RenderNode](js-apis-arkui-renderNode.md) of the [ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype) type to obtain [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).
+
+Then, it calls **OH_ArkUI_NativeModule_GetNativeAccessibilityProvider** to obtain the [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) pointer and register an accessibility callback.
+
+Finally, the ArkUI accessibility service can identify the UI of the third-party framework and trigger events.
+
+This API takes effect only when the third-party framework maps its UI components as [RenderNode](js-apis-arkui-renderNode.md) of the [ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype) type. Otherwise, an error code will be reported.
+
+This API uses [RenderNode](js-apis-arkui-renderNode.md) to implement the access of the third-party framework. Only [ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype) can access the accessibility service to obtain the accessibility control tree.
+
+Multi-thread concurrency is not supported. The third-party framework ensures thread security during the API calling.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)* node | Pointer to an **ArkUI_NodeHandle** object.|
+| [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)** provider | Pointer to an object of the **ArkUI_AccessibilityProvider** type. **provider** is used to register an accessibility callback function.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Status code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>Parameter error: 1. The input parameter **node** or **provider** is a null pointer.<br>2. The **ArkUI_NodeHandle** type corresponding to **node** is not **ARKUI_NODE_CUSTOM**.|

@@ -5510,6 +5510,34 @@ Allows an application to add the WiseCard of other applications.
 
 **Since**: 23
 
+## ohos.permission.MANAGE_LOCAL_EDUCATION_SPACES
+
+Allows a system application to manage the education space.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: tablets
+
+**Since**: 23
+
+## ohos.permission.QUERY_LOCAL_EDUCATION_SPACES
+
+Allows a system application to query the education space properties.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: tablets
+
+**Since**: 23
+
 ## ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
 
 Allows an application to acquire the local account authorization.

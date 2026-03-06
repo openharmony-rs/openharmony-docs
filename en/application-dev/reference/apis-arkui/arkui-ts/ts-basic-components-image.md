@@ -1155,7 +1155,7 @@ struct ImageExample2 {
 }
 ```
 
-![zh-cn_image_0000001607845173](figures/zh-cn_image_view2.png)
+![en-us_image_0000001607845173](figures/en-us_image_view2.png)
 
 ### Example 3: Downloading and Displaying Online GIF Images
 

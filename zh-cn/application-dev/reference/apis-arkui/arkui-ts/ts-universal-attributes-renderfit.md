@@ -52,7 +52,7 @@ renderFit(fitMode: Optional\<RenderFit>): T
 
 | 参数名  | 类型                                       | 必填 | 说明                                                         |
 | ------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| fitMode | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[RenderFit](ts-appendix-enums.md#renderfit10)> | 是   | 设置宽高动画过程中的组件内容填充方式。<br/>当fitMode的值为undefined时，取默认值。恢复为内容填充方式为RenderFit.TOP_LEFT的效果。 |
+| fitMode | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[RenderFit](ts-appendix-enums.md#renderfit10)> | 是   | 设置宽高动画过程中的组件内容填充方式。<br/>当fitMode的值为undefined时，取默认值。恢复为内容填充方式为RenderFit.TOP_LEFT的效果。 |
 
 **返回值：**
 

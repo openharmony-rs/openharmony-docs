@@ -93,7 +93,7 @@ struct FillStyleExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           // 使用string设置fillStyle属性
           offContext.fillStyle = '#0000ff'
@@ -125,7 +125,7 @@ struct FillStyleExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           // 使用number设置fillStyle属性
           offContext.fillStyle = 0x0000FF
@@ -172,14 +172,14 @@ struct LineWidthExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           // 设置lineWidth属性
           offContext.lineWidth = 5
           offContext.strokeRect(25, 25, 85, 105)
           let image = this.offCanvas.transferToImageBitmap()
           this.context.transferFromImageBitmap(image)
-      })
+        })
     }
     .width('100%')
     .height('100%')
@@ -219,7 +219,7 @@ struct StrokeStyleExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.lineWidth = 10
           // 使用string设置strokeStyle属性
@@ -252,7 +252,7 @@ struct StrokeStyleExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.lineWidth = 10
           // 使用number设置strokeStyle属性
@@ -300,7 +300,7 @@ struct LineCapExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.lineWidth = 8
           offContext.beginPath()
@@ -351,7 +351,7 @@ struct LineJoinExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.beginPath()
           offContext.lineWidth = 8
@@ -403,7 +403,7 @@ struct MiterLimit {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.lineWidth = 8
           offContext.lineJoin = 'miter'
@@ -648,7 +648,7 @@ struct GlobalAlpha {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.fillStyle = 'rgb(0,0,255)'
           offContext.fillRect(0, 0, 50, 50)
@@ -698,10 +698,10 @@ struct LineDashOffset {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.arc(100, 75, 50, 0, 6.28)
-          offContext.setLineDash([10,20])
+          offContext.setLineDash([10, 20])
           // 设置lineDashOffset属性
           offContext.lineDashOffset = 10.0
           offContext.stroke()
@@ -940,7 +940,7 @@ struct ShadowBlur {
         .width('100%')
         .height('100%')
         .backgroundColor('rgb(213,213,213)')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           // 设置shadowBlur属性
           offContext.shadowBlur = 30
@@ -1038,7 +1038,7 @@ struct ShadowOffsetX {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.shadowBlur = 10
           // 设置shadowOffsetX属性
@@ -1088,7 +1088,7 @@ struct ShadowOffsetY {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.shadowBlur = 10
           // 设置shadowOffsetY属性
@@ -1140,11 +1140,11 @@ struct ImageSmoothingEnabled {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           // 设置imageSmoothingEnabled属性
           offContext.imageSmoothingEnabled = false
-          offContext.drawImage(this.img,0,0,400,200)
+          offContext.drawImage(this.img, 0, 0, 400, 200)
           let image = this.offCanvas.transferToImageBitmap()
           this.context.transferFromImageBitmap(image)
       })
@@ -1191,7 +1191,7 @@ justifyContent: FlexAlign.Center }) {
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let offctx = offContext
             offctx.imageSmoothingEnabled = true
@@ -1242,7 +1242,7 @@ justifyContent: FlexAlign.Center }) {
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let offctx = offContext
             offctx.font = '48px serif';
@@ -1435,9 +1435,9 @@ fillRect(x: number, y: number, w: number, h: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('rgb(213,213,213)')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
-            offContext.fillRect(30,30,100,100)
+            offContext.fillRect(30, 30, 100, 100)
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
          })
@@ -1489,7 +1489,7 @@ strokeRect(x: number, y: number, w: number, h: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.strokeRect(30, 30, 200, 150)
             let image = this.offCanvas.transferToImageBitmap()
@@ -1543,14 +1543,14 @@ clearRect(x: number, y: number, w: number, h: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillStyle = 'rgb(0,0,255)'
-            offContext.fillRect(20,20,200,200)
-            offContext.clearRect(30,30,150,100)
+            offContext.fillRect(20, 20, 200, 200)
+            offContext.clearRect(30, 30, 150, 100)
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
-        })
+          })
       }
       .width('100%')
       .height('100%')
@@ -1599,7 +1599,7 @@ fillText(text: string, x: number, y: number, maxWidth?: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.font = '30px sans-serif'
             offContext.fillText("Hello World!", 20, 100)
@@ -1654,7 +1654,7 @@ strokeText(text: string, x: number, y: number, maxWidth?: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.font = '55px sans-serif'
             offContext.strokeText("Hello World!", 20, 60)
@@ -1928,7 +1928,7 @@ moveTo(x: number, y: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.beginPath()
             offContext.moveTo(10, 10)
@@ -1983,7 +1983,7 @@ lineTo(x: number, y: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.beginPath()
             offContext.moveTo(10, 10)
@@ -2031,7 +2031,7 @@ closePath(): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
               let offContext = this.offCanvas.getContext("2d", this.settings)
               offContext.beginPath()
               offContext.moveTo(30, 30)
@@ -2310,7 +2310,7 @@ arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, 
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.beginPath()
             offContext.arc(100, 75, 50, 0, 6.28)
@@ -2367,7 +2367,7 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
 
             // 切线
@@ -2458,7 +2458,7 @@ ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.beginPath()
             offContext.ellipse(200, 200, 50, 100, Math.PI * 0.25, Math.PI * 0.5, Math.PI * 2, false)
@@ -2517,7 +2517,7 @@ rect(x: number, y: number, w: number, h: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.rect(20, 20, 100, 100) // Create a 100*100 rectangle at (20, 20)
             offContext.stroke()
@@ -2669,7 +2669,7 @@ fill(fillRule?: CanvasFillRule): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillStyle = '#000000'
             offContext.rect(20, 20, 100, 100) // Create a 100*100 rectangle at (20, 20)
@@ -2722,7 +2722,7 @@ struct Fill {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           let region = new Path2D()
           region.moveTo(30, 90)
@@ -2782,7 +2782,7 @@ clip(fillRule?: CanvasFillRule): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.rect(0, 0, 100, 200)
             offContext.stroke()
@@ -2837,7 +2837,7 @@ clip(path: Path2D, fillRule?: CanvasFillRule): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let region = new Path2D()
             region.moveTo(30, 90)
@@ -2890,7 +2890,7 @@ reset(): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillStyle = '#0000ff'
             offContext.fillRect(20, 20, 150, 100)
@@ -2938,16 +2938,16 @@ saveLayer(): void
           .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillStyle = "#0000ff"
-            offContext.fillRect(50,100,300,100)
+            offContext.fillRect(50, 100, 300, 100)
             offContext.fillStyle = "#00ffff"
-            offContext.fillRect(50,150,300,100)
+            offContext.fillRect(50, 150, 300, 100)
             offContext.globalCompositeOperation = 'destination-over'
             offContext.saveLayer()
             offContext.globalCompositeOperation = 'source-over'
             offContext.fillStyle = "#ff0000"
-            offContext.fillRect(100,50,100,300)
+            offContext.fillRect(100, 50, 100, 300)
             offContext.fillStyle = "#00ff00"
-            offContext.fillRect(150,50,100,300)
+            offContext.fillRect(150, 50, 100, 300)
             offContext.restoreLayer()
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
@@ -3053,7 +3053,7 @@ rotate(angle: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.rotate(45 * Math.PI / 180)
             offContext.fillRect(70, 20, 50, 50)
@@ -3106,7 +3106,7 @@ scale(x: number, y: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.lineWidth = 3
             offContext.strokeRect(30, 30, 50, 50)
@@ -3248,7 +3248,7 @@ setTransform方法使用的参数和transform()方法相同，但setTransform()�
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillStyle = 'rgb(255,0,0)'
             offContext.fillRect(0, 0, 100, 100)
@@ -3304,7 +3304,7 @@ setTransform(transform?: Matrix2D): void
           .width('230vp')
           .height('160vp')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.offcontext1.fillRect(100, 20, 50, 50);
             this.offcontext1.setTransform(1, 0.5, -0.5, 1, 10, 10);
             this.offcontext1.fillRect(100, 20, 50, 50);
@@ -3316,7 +3316,7 @@ setTransform(transform?: Matrix2D): void
           .width('230vp')
           .height('160vp')
           .backgroundColor('#0ffff0')
-          .onReady(() =>{
+          .onReady(() => {
             this.offcontext2.fillRect(100, 20, 50, 50);
             let storedTransform = this.offcontext1.getTransform();
             this.offcontext2.setTransform(storedTransform);
@@ -3359,9 +3359,11 @@ getTransform(): Matrix2D
   struct TransFormDemo {
     private settings: RenderingContextSettings = new RenderingContextSettings(true);
     private context1: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-    private offcontext1: OffscreenCanvasRenderingContext2D = new OffscreenCanvasRenderingContext2D(600, 100, this.settings);
+    private offcontext1: OffscreenCanvasRenderingContext2D =
+      new OffscreenCanvasRenderingContext2D(600, 100, this.settings);
     private context2: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-    private offcontext2: OffscreenCanvasRenderingContext2D = new OffscreenCanvasRenderingContext2D(600, 100, this.settings);
+    private offcontext2: OffscreenCanvasRenderingContext2D =
+      new OffscreenCanvasRenderingContext2D(600, 100, this.settings);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -3370,9 +3372,9 @@ getTransform(): Matrix2D
           .width('230vp')
           .height('120vp')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.offcontext1.fillRect(50, 50, 50, 50);
-            this.offcontext1.setTransform(1.2, Math.PI/8, Math.PI/6, 0.5, 30, -25);
+            this.offcontext1.setTransform(1.2, Math.PI / 8, Math.PI / 6, 0.5, 30, -25);
             this.offcontext1.fillRect(50, 50, 50, 50);
             let image = this.offcontext1.transferToImageBitmap();
             this.context1.transferFromImageBitmap(image);
@@ -3382,14 +3384,12 @@ getTransform(): Matrix2D
           .width('230vp')
           .height('120vp')
           .backgroundColor('#0ffff0')
-          .onReady(() =>{
+          .onReady(() => {
             this.offcontext2.fillRect(50, 50, 50, 50);
             let storedTransform = this.offcontext1.getTransform();
-            console.info("Matrix [scaleX = " + storedTransform.scaleX + ", scaleY = " + storedTransform.scaleY +
-            ", rotateX = " + storedTransform.rotateX + ", rotateY = " + storedTransform.rotateY +
-            ", translateX = " + storedTransform.translateX + ", translateY = " + storedTransform.translateY + "]")
+            console.info(`Matrix [scaleX = ${storedTransform.scaleX}, scaleY = ${storedTransform.scaleY}, rotateX = ${storedTransform.rotateX}, rotateY = ${storedTransform.rotateY}, translateX = ${storedTransform.translateX}, translateY = ${storedTransform.translateY}]`)
             this.offcontext2.setTransform(storedTransform);
-            this.offcontext2.fillRect(50,50,50,50);
+            this.offcontext2.fillRect(50, 50, 50, 50);
             let image = this.offcontext2.transferToImageBitmap();
             this.context2.transferFromImageBitmap(image);
           })
@@ -3438,7 +3438,7 @@ translate(x: number, y: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillRect(10, 10, 50, 50)
             offContext.translate(70, 70)
@@ -3800,11 +3800,11 @@ getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
-            offContext.drawImage(this.img,0,0,130,130)
+            offContext.drawImage(this.img, 0, 0, 130, 130)
             let imageData = offContext.getImageData(50,50,130,130)
-            offContext.putImageData(imageData,150,150)
+            offContext.putImageData(imageData, 150, 150)
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
           })
@@ -4095,7 +4095,7 @@ toDataURL(type?: string, quality?: any): string
           .height(100)
           .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
-            offContext.fillRect(0,0,100,100)
+            offContext.fillRect(0, 0, 100, 100)
             this.dataURL = offContext.toDataURL()
           })
         Text(this.dataURL)
@@ -4201,7 +4201,7 @@ restore(): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.save() // save the default state
             offContext.fillStyle = "#00ff00"
@@ -4249,7 +4249,7 @@ save(): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.save() // save the default state
             offContext.fillStyle = "#00ff00"
@@ -4312,7 +4312,7 @@ createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGrad
           .width('100%')
           .height('100%')
           .backgroundColor('rgb(213,213,213)')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let grad = offContext.createLinearGradient(50,0, 300,100)
             grad.addColorStop(0.0, 'rgb(39,135,217)')
@@ -4379,7 +4379,7 @@ createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number,
           .width('100%')
           .height('100%')
           .backgroundColor('rgb(213,213,213)')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let grad = offContext.createRadialGradient(200,200,50, 200,200,200)
             grad.addColorStop(0.0, 'rgb(39,135,217)')
@@ -4440,7 +4440,7 @@ struct OffscreenCanvasConicGradientPage {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffffff')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           let grad = offContext.createConicGradient(0, 50, 80)
           grad.addColorStop(0.0, '#ff0000')
