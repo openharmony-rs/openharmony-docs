@@ -160,9 +160,7 @@ import { UIUtils } from '@kit.ArkUI';
           .margin(20)
           .onClick(() => {
             // test1：调用applySync接口，日志打印两次
-            // UIUtils.applySync(() => {
-            //   this.message = 'Hello World';
-            // })
+            // UIUtils.applySync(() => { this.message = 'Hello World'; })
   
             // test2：调用flushUpdates接口，日志打印两次
             // this.message = 'Hello World';
@@ -252,7 +250,7 @@ import { UIUtils } from '@kit.ArkUI';
               UIUtils.flushUIUpdates(); // 在applySync中，flushUIUpdates被忽略
             });
             this.h = 100;
-            UIUtils.flushUpdates(); //会生效
+            UIUtils.flushUpdates(); // 会生效
   
             this.getUIContext().animateTo({
               duration: 1000

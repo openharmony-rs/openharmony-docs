@@ -627,7 +627,7 @@ struct Page {
       .width(200)
       .height(400)
       .translate({
-        x: this.translateObj.translateX //this.translateObj.translateX 绑定在Stack和Button组件上。
+        x: this.translateObj.translateX // this.translateObj.translateX 绑定在Stack和Button组件上。
       })
       Button('move')
         .translate({

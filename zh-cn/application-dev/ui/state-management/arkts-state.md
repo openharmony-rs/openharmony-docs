@@ -463,7 +463,7 @@ struct SetSample {
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.fruits.entries()), (item: [number, number]) => {
+        ForEach(Array.from(this.fruits.entries()), (item: [string, string]) => {
           Text(`${item[0]}`)
             .fontSize(20)
             .margin(10)

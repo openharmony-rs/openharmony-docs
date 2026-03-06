@@ -739,7 +739,7 @@ class ClassA {
   @Local cls : ClassA = new ClassA(100, 100);
 
   @SyncMonitor('cls.*')
-  onClsChanged(m :IMonitor) {
+  onClsChanged(m: IMonitor) {
     hilog.info(0xFF00, 'testTag', '%{public}s', `### onClsChanged, dirty: ${m.dirty.toString()}`);
   }
 
@@ -1052,14 +1052,14 @@ struct DocSampleArrayOfArrays {
           this.topArray.shift();
         })
 
-      // 不会触发路径为'topArray.1.*的@SyncMonitor的回调
+      // 不会触发路径为'topArray.1.*'的@SyncMonitor的回调
       // 因为脏的路径中包含'topArray.*'，会触发路径为'topArray.*'的@SyncMonitor的回调
       Button('topArray[0] = new ArrayOfPerson')
         .onClick(() => {
           this.topArray[0] = new ArrayOfPerson(new Person(), new Person());
         })
 
-      // 不会触发路径为'topArray.1.*的@SyncMonitor的回调
+      // 不会触发路径为'topArray.1.*'的@SyncMonitor的回调
       // 不会触发路径为'topArray.*'的@SyncMonitor的回调
       Button('topArray[1][0].last update')
         .onClick(() => {

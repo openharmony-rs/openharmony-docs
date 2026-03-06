@@ -302,11 +302,9 @@ struct Page4 {
         .color('blue')
         .margin(5)
 
-      /****************************改变数据长度的api**************************/
+      // 改变数据长度的API
       Scroll(this.scroller) {
         Column({ space: 10 }) {
-          // Divider()
-          //   .color('blue')
           // push: 新增新元素
           Button('push')
             .width('50%')
@@ -354,7 +352,7 @@ struct Page4 {
           Divider()
             .color('blue')
 
-          /****************************************改变数组item本身*****************/
+          // 改变数组item本身
           // sort：从大到小排序
           Button('sort')
             .width('50%')
@@ -368,7 +366,7 @@ struct Page4 {
               this.arrCollect.fill(new Info(5), 0, 2);
             })
 
-          /*****************************不会改变数组本身API***************************/
+          // 不会改变数组本身的API
           // slice：返回新的数组，根据start end对原数组的拷贝，不会改变原数组，所以直接调用slice不会触发UI刷新
           // 可以构建用例为返回的浅拷贝的数据赋值给this.arrCollect,需要注意这里依然要调用makeObserved，否则this.arrCollect被普通变量赋值后，会丧失观察能力
           Button('slice')

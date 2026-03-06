@@ -807,7 +807,7 @@ struct Page1 {
 
   build() {
     Column() {
-      /**************************** 显示数据 **************************/
+      // 显示数据
       // 被@Trace修饰的数据可以自动持久化进磁盘
       Text('Key SampleGlobalConnect: ' + this.p.father.childId.toString())
         .onClick(() => {
@@ -833,15 +833,15 @@ struct Page1 {
         })
         .fontSize(25)
         .fontColor(Color.Red)
-      /**************************** keys接口 **************************/
-      // keys 本身不会刷新，需要借助状态变量刷新
+      // keys接口
+      // keys本身不会刷新，需要借助状态变量刷新
       Text('Persist keys: ' + PersistenceV2.keys().toString() + ' refresh: ' + this.refresh)
         .onClick(() => {
           this.refresh += 1;
         })
         .fontSize(25)
 
-      /**************************** remove接口 **************************/
+      // remove接口
       Text('Remove key SampleGlobalConnect: ' + 'refresh: ' + this.refresh)
         .onClick(() => {
           // 删除这个key，会导致和p失去联系，之后p无法存储，即使reconnect
@@ -870,7 +870,7 @@ struct Page1 {
           this.refresh += 1;
         })
         .fontSize(25)
-      /**************************** reConnect **************************/
+      // reConnect
       // 重新连接也无法和之前的状态变量建立联系，因此无法保存数据
       Text('ReConnect key global2: ' + 'refresh: ' + this.refresh)
         .onClick(() => {
@@ -880,7 +880,7 @@ struct Page1 {
         })
         .fontSize(25)
 
-      /**************************** save接口 **************************/
+      // save接口
       Text('not save key SampleGlobalConnect: ' + this.p.father.groupId.toString() + ' refresh: ' + this.refresh)
         .onClick(() => {
           // 未被@Trace保存的对象无法自动存储
@@ -963,7 +963,7 @@ struct Page1 {
 
   build() {
     Column() {
-      /**************************** 显示数据 **************************/
+      // 显示数据
       Text('Key globalConnect1: ' + this.p1.father.childId.toString())
         .onClick(() => {
           this.p1.father.childId += 1;
@@ -977,7 +977,7 @@ struct Page1 {
         .fontSize(25)
         .fontColor(Color.Red)
 
-      /**************************** 跳转 **************************/
+      // 跳转
       Button('Jump to newModule')
         .onClick(() => { // 不同module之间使用，建议使用globalConnect
           let want: Want = {
@@ -1043,7 +1043,7 @@ struct Page1 {
 
   build() {
     Column() {
-      /**************************** 显示数据 **************************/
+      // 显示数据
       Text('Key globalConnect1: ' + this.p1.father.childId.toString())
         .onClick(() => {
           this.p1.father.childId += 1;
@@ -1110,7 +1110,7 @@ struct Page1 {
 
   build() {
     Column({ space: 5 }) {
-      /**************************** 显示数据 **************************/
+      // 显示数据
       Text('Key connect3: ' + this.p.father.childId.toString())
         .onClick(() => {
           this.p.father.childId += 1;
@@ -1118,7 +1118,7 @@ struct Page1 {
         .fontSize(25)
         .fontColor(Color.Red)
 
-      /**************************** save接口 **************************/
+      // save接口
       // 未被@Trace装饰的变量需要借助状态变量refresh才能刷新
       Text('save key connect3: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
@@ -1192,7 +1192,7 @@ struct Page1 {
 
   build() {
     Column({ space: 5 }) {
-      /**************************** 显示数据 **************************/
+      // 显示数据
       Text('Key connect4: ' + this.p.father.childId.toString())
         .onClick(() => {
           this.p.father.childId += 1;
@@ -1200,7 +1200,7 @@ struct Page1 {
         .fontSize(25)
         .fontColor(Color.Red)
 
-      /**************************** save接口 **************************/
+      // save接口
       // 未被@Trace装饰的变量需要借助状态变量refresh才能刷新
       Text('save key connect4: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {

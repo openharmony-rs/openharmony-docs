@@ -418,7 +418,7 @@ struct MyNavigationTestStack {
             .height(40)
             .margin(20)
             .onClick(() => {
-              this.pageInfo.pushPath({ name: 'pageOne' }); //将name指定的NavDestination页面信息入栈
+              this.pageInfo.pushPath({ name: 'pageOne' }); // 将name指定的NavDestination页面信息入栈
             })
         }
       }.title('NavIndex')
@@ -1161,7 +1161,7 @@ struct MyNavigationTestStack {
             .height(40)
             .margin(20)
             .onClick(() => {
-              this.pageInfo.pushPath({ name: 'pageOne' }); //将name指定的NavDestination页面信息入栈
+              this.pageInfo.pushPath({ name: 'pageOne' }); // 将name指定的NavDestination页面信息入栈
             })
         }
       }.title('NavIndex')
