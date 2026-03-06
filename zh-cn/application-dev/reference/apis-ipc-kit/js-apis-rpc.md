@@ -7927,7 +7927,7 @@ if (proxy != undefined) {
 }
 ```
 
-## OnRemoteDiedFunc
+## OnRemoteDiedFunc<sup>23+</sup>
 
 type OnRemoteDiedFunc = () => void
 
