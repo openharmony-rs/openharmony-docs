@@ -5641,7 +5641,7 @@ initSync(opMode: CryptoMode, key: Key, params: ParamsSpec | null): void
 
 ArkTS-Dyn: update(data: DataBlob, callback: AsyncCallback\<DataBlob>): void
 
-ArkTS-Sta: update(data: DataBlob, callback: AsyncCallback\<DataBlob> | null): void
+ArkTS-Sta: update(data: DataBlob, callback: AsyncCallback\<DataBlob | null>): void
 
 分段更新加密或者解密数据操作，通过注册回调函数获取加/解密数据。
 
@@ -5699,7 +5699,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 ArkTS-Dyn: update(data: DataBlob): Promise\<DataBlob>
 
-ArkTS-Sta: update(data: DataBlob): Promise\<DataBlob> | null
+ArkTS-Sta: update(data: DataBlob): Promise\<DataBlob | null>
 
 分段更新加密或者解密数据操作，通过Promise获取加/解密数据。
 
@@ -5795,7 +5795,7 @@ ArkTS-Sta: updateSync(data: DataBlob): DataBlob | null
 
 ArkTS-Dyn: doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
 
-ArkTS-Sta: doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob> | null): void
+ArkTS-Sta: doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob | null>): void
 
 （1）在对称加解密中doFinal用于处理剩余数据和本次传入的数据，并最终结束加密或解密操作，通过注册回调函数获取加密或解密后的数据。如果数据量较小，可以在 `doFinal` 中一次性传入数据，而不使用update；如果在本次加解密流程中已经使用[update](#update)传入过数据，可以在doFinal的data参数处传入null。根据对称加解密的模式不同，doFinal的输出有以下区别：
 
@@ -5956,7 +5956,7 @@ function cipherByCallback() {
 
 ArkTS-Dyn: doFinal(data: DataBlob | null): Promise\<DataBlob>
 
-ArkTS-Sta: doFinal(data: DataBlob | null): Promise\<DataBlob> | null
+ArkTS-Sta: doFinal(data: DataBlob | null): Promise\<DataBlob | null>
 
 （1）在对称加解密中，doFinal加/解密（分组模式产生的）剩余数据和本次传入的数据，最后结束加密或者解密数据操作，通过Promise获取加密或者解密数据。<br/>如果数据量较小，可以在doFinal中一次性传入数据，而不使用update；如果在本次加解密流程中，已经使用update传入过数据，可以在doFinal的data参数处传入null。<br/>根据对称加解密的模式不同，doFinal的输出有如下区别：
 
@@ -6934,13 +6934,61 @@ function signBySync() {
 
 ### setSignSpec<sup>10+</sup>
 
-ArkTS-Dyn: setSignSpec(itemType: SignSpecItem, itemValue: number): void
+setSignSpec(itemType: SignSpecItem, itemValue: number): void
+
+设置签名参数。常用签名参数可通过[createSign](#cryptoframeworkcreatesign)指定，其他参数则通过本接口设置。
+
+只支持RSA算法、SM2算法，从API version11开始，支持SM2算法设置签名参数。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[setSignSpec](#setsignspec11)。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+
+**ArkTS-Dyn起始版本：** 10
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明       |
+| -------- | -------------------- | ---- | ---------- |
+| itemType     | [SignSpecItem](#signspecitem10)              | 是   | 用于指定需要设置的签名参数。 |
+| itemValue | number | 是   | 用于指定签名参数的具体值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | this operation is not supported.          |
+| 17620001 | memory operation failed.          |
+| 17630001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+function testSetSignSpec() {
+  let signer = cryptoFramework.createSign("RSA|PSS|SHA256|MGF1_SHA256");
+  let setN = 20;
+  signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+}
+```
+
+### setSignSpec<sup>11+</sup>
 
 ArkTS-Dyn: setSignSpec(itemType: SignSpecItem, itemValue: number \| Uint8Array): void
 
 ArkTS-Sta: setSignSpec(itemType: SignSpecItem, itemValue: int \| Uint8Array): void
 
-设置签名参数。常用签名参数可通过 [createSign](#cryptoframeworkcreatesign) 指定，其他参数则通过本接口设置。
+设置签名参数。常用签名参数可通过[createSign](#cryptoframeworkcreatesign)指定，其他参数则通过本接口设置。
 
 
 只支持RSA算法、SM2算法，从API version11开始，支持SM2算法设置签名参数。
@@ -6951,7 +6999,7 @@ ArkTS-Sta: setSignSpec(itemType: SignSpecItem, itemValue: int \| Uint8Array): vo
 
 API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
 
@@ -6960,7 +7008,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | 参数名   | 类型                 | 必填 | 说明       |
 | -------- | -------------------- | ---- | ---------- |
 | itemType     | [SignSpecItem](#signspecitem10)              | 是   | 用于指定需要设置的签名参数。 |
-| itemValue | ArkTS-Dyn: number \| Uint8Array<sup>11+</sup><br>ArkTS-Sta: int \| Uint8Array<sup>11+</sup> | 是   | 用于指定签名参数的具体值。 |
+| itemValue | ArkTS-Dyn: number \| Uint8Array<br>ArkTS-Sta: int \| Uint8Array | 是   | 用于指定签名参数的具体值。 |
 
 **错误码：**
 
@@ -7785,13 +7833,63 @@ recoverSync(signatureData: DataBlob): DataBlob | null
 
 ### setVerifySpec<sup>10+</sup>
 
-ArkTS-Dyn: setVerifySpec(itemType: SignSpecItem, itemValue: number): void
+setVerifySpec(itemType: SignSpecItem, itemValue: number): void
+
+设置验签参数。常用的签名参数可以直接通过[createVerify](#cryptoframeworkcreateverify)来指定，剩余参数可以通过本接口指定。
+
+支持RSA算法和SM2算法，从API version 11开始，支持SM2算法设置验签参数。
+
+验签的参数应当与签名的参数保持一致。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[setVerifySpec](#setverifyspec11)。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+
+**ArkTS-Dyn起始版本：** 10
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明       |
+| -------- | -------------------- | ---- | ---------- |
+| itemType     | [SignSpecItem](#signspecitem10)              | 是   | 用于指定需要设置的验签参数。 |
+| itemValue | number | 是   | 用于指定验签参数的具体值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | this operation is not supported.          |
+| 17620001 | memory operation failed.          |
+| 17630001 | crypto operation error. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
+function testSetVerifySpec() {
+  let verifier = cryptoFramework.createVerify("RSA2048|PSS|SHA256|MGF1_SHA256");
+  let setN = 20;
+  verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+}
+```
+
+### setVerifySpec<sup>11+</sup>
 
 ArkTS-Dyn: setVerifySpec(itemType: SignSpecItem, itemValue: number \| Uint8Array): void
 
 ArkTS-Sta: setVerifySpec(itemType: SignSpecItem, itemValue: int \| Uint8Array): void
 
-设置验签参数。常用的签名参数可以直接通过[createVerify](#cryptoframeworkcreateverify) 来指定，剩余参数可以通过本接口指定。
+设置验签参数。常用的签名参数可以直接通过[createVerify](#cryptoframeworkcreateverify)来指定，剩余参数可以通过本接口指定。
 
 支持RSA算法和SM2算法，从API version 11开始，支持SM2算法设置验签参数。
 
@@ -7803,7 +7901,7 @@ ArkTS-Sta: setVerifySpec(itemType: SignSpecItem, itemValue: int \| Uint8Array): 
 
 API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
 
@@ -7812,7 +7910,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | 参数名   | 类型                 | 必填 | 说明       |
 | -------- | -------------------- | ---- | ---------- |
 | itemType     | [SignSpecItem](#signspecitem10)              | 是   | 用于指定需要设置的验签参数。 |
-| itemValue | ArkTS-Dyn: number \| Uint8Array<sup>11+</sup><br>ArkTS-Sta: int \| Uint8Array<sup>11+</sup> | 是   | 用于指定验签参数的具体值。 |
+| itemValue | ArkTS-Dyn: number \| Uint8Array<br>ArkTS-Sta: int \| Uint8Array | 是   | 用于指定验签参数的具体值。 |
 
 **错误码：**
 
