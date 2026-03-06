@@ -23,7 +23,6 @@
   <!--DelEnd-->
   - [使用通话设备切换组件](using-switch-call-devices.md)<!--RP1--><!--RP1End-->
 
-- 音频模板
-
+- 音频模板<!--music-template-->
   - [音频模板提供方](using-avsession-AVMusicTemplate.md)
   - [音频模板开发指南(仅对系统应用开放)](using-avsession-AVMusicTemplateController-sys.md)
