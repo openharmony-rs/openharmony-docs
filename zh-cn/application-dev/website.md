@@ -2388,6 +2388,7 @@
             - [AbilityStateData](reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md)
             - [AgentCard](reference/apis-ability-kit/js-apis-inner-application-AgentCard.md)
             - [AgentExtensionConnectCallback](reference/apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback.md)
+            - [AgentExtensionContext (智能体扩展组件上下文)](reference/apis-ability-kit/js-apis-inner-application-agentExtensionContext.md)
             - [AgentHostProxy](reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)
             - [AgentProxy](reference/apis-ability-kit/js-apis-inner-application-agentProxy.md)
             - [ApplicationContext (应用上下文)](reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)
