@@ -27,7 +27,7 @@ import { PanelInfo, PanelType } from '@ohos.selectionInput.SelectionPanel';
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 
@@ -47,7 +47,7 @@ import { PanelInfo, PanelType } from '@ohos.selectionInput.SelectionPanel';
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 
