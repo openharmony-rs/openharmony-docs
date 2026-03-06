@@ -30,7 +30,6 @@ typedef struct ScsiPeripheral_Request {...} ScsiPeripheral_Request
 | uint8_t cdbLength | 命令描述符块的长度。 |
 | int8_t dataTransferDirection | 数据传输方向：-1为纯命令，-2为写操作，-3为读操作，-4为双向传输。 |
 | ScsiPeripheral_DeviceMemMap* data | 数据传输的缓冲区。 |
-| ScsiPeripheral_DeviceMemMap* data | 数据传输的缓冲区。 |
 | uint32_t timeout | 超时时间（单位：毫秒）。 |
 
 
