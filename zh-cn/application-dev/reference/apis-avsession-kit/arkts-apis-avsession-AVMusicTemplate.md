@@ -2870,9 +2870,9 @@ setUserInfo(userInfo: UserInfo): Promise&lt;void&gt;
 
 **返回值：**
 
-| 类型                | 说明         |
-| ------------------- | ------------ |
-| Promise&lt;void&gt; | 无返回结果。 |
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2939,9 +2939,9 @@ setDialogCommand(type: DialogControlType, dialogInfo: DialogInfo): Promise&lt;vo
 
 **返回值：**
 
-| 类型                | 说明         |
-| ------------------- | ------------ |
-| Promise&lt;void&gt; | 无返回结果。 |
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3002,9 +3002,9 @@ setCurrentSingle(single: Single): Promise&lt;void&gt;
 
 **返回值：**
 
-| 类型                | 说明         |
-| ------------------- | ------------ |
-| Promise&lt;void&gt; | 无返回结果。 |
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3098,9 +3098,9 @@ setMediaEntities(entities: MediaEntity[]): Promise&lt;void&gt;
 
 **返回值：**
 
-| 类型                | 说明         |
-| ------------------- | ------------ |
-| Promise&lt;void&gt; | 无返回结果。 |
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3156,9 +3156,9 @@ setTabContent(tabId: string, tabContent: MediaTabContent): Promise&lt;void&gt;
 
 **返回值：**
 
-| 类型                | 说明         |
-| ------------------- | ------------ |
-| Promise&lt;void&gt; | 无返回结果。 |
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3228,9 +3228,9 @@ setPlaylist(playlist: PageMediaEntity): Promise&lt;void&gt;
 
 **返回值：**
 
-| 类型                | 说明         |
-| ------------------- | ------------ |
-| Promise&lt;void&gt; | 无返回结果。 |
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3296,9 +3296,9 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise&lt;void&gt;
 
 **返回值：**
 
-| 类型                | 说明         |
-| ------------------- | ------------ |
-| Promise&lt;void&gt; | 无返回结果。 |
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3334,9 +3334,9 @@ setCustomElements(actionType: ActionType, customType: CustomType, customElement:
 
 **返回值：**
 
-| 类型                | 说明         |
-| ------------------- | ------------ |
-| Promise&lt;void&gt; | 无返回结果。 |
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3406,9 +3406,9 @@ setSettings(settingItems: SettingItem[]): Promise&lt;void&gt;
 
 **返回值：**
 
-| 类型                | 说明         |
-| ------------------- | ------------ |
-| Promise&lt;void&gt; | 无返回结果。 |
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3464,9 +3464,9 @@ reportExecuteAction(actionType: string, params: string): Promise&lt;void&gt;
 
 **返回值：**
 
-| 类型                | 说明         |
-| ------------------- | ------------ |
-| Promise&lt;void&gt; | 无返回结果。 |
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3515,9 +3515,9 @@ setExtensionAbility(want: WantAgent): Promise&lt;void&gt;
 
 **返回值：**
 
-| 类型                | 说明         |
-| ------------------- | ------------ |
-| Promise&lt;void&gt; | 无返回结果。 |
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3579,9 +3579,9 @@ destroy(): Promise&lt;void&gt;
 
 **返回值：**
 
-| 类型                | 说明         |
-| ------------------- | ------------ |
-| Promise&lt;void&gt; | 无返回结果。 |
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

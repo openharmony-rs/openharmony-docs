@@ -20,6 +20,12 @@ type NoParamAsyncCallback = () => Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
 ## QueryMainTabsEvent
 
 type QueryMainTabsEvent = () => Promise<MediaTab[]>
@@ -647,6 +653,12 @@ type PlayMediaEntityEvent = (mediaEntity: MediaEntity) => Promise&lt;void&gt;
 | 参数名      | 类型                                                         | 必填 | 说明                 |
 | ----------- | ------------------------------------------------------------ | ---- | -------------------- |
 | mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity) | 是   | 需要播放的媒体实体。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 

@@ -1668,6 +1668,12 @@ playMediaEntity(mediaEntity: MediaEntity): Promise&lt;void&gt;
 | ----------- | ------------------------------------------------------------ | ---- | ---------- |
 | mediaEntity | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity) | 是   | 包含标题、作者等元数据的媒体实体对象。 |
 
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avMusicTemplate.md)。
@@ -2791,6 +2797,12 @@ destroy(): Promise&lt;void&gt;
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

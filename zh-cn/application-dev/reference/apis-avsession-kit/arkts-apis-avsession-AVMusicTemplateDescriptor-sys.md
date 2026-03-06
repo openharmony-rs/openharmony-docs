@@ -33,7 +33,7 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 **示例：**
 
 ```ts
-let sessionId: string = currentAVSession.sessionId;
-let sessionType: avSession.AVSessionType = currentAVSession.sessionType;
+let sessionId: string = avMusicTemplateDescriptor.sessionId;
+let bundleName: string = avMusicTemplateDescriptor.bundleName;
+let userId: number = avMusicTemplateDescriptor.userId;
 ```
-
