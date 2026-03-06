@@ -16,7 +16,7 @@
    
    ``` TypeScript
    import { fileIo } from '@kit.CoreFileKit';
-   import photoAccessHelper from '@ohos.file.photoAccessHelper';
+   import { photoAccessHelper } from '@kit.MediaLibraryKit';
    ```
 
 2. 创建图片-音频类型文件选择选项实例。
