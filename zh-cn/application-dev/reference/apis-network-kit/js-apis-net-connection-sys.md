@@ -496,7 +496,7 @@ connection.getProxyMode().then(mode => {
 
 ## connection.createVlanInterface<sup>23+</sup>
 
-createVlanInterface(ifName: string, vlanId: int): Promise\<void\>
+createVlanInterface(ifName: string, vlanId: number): Promise\<void\>
 
 在指定的以太网网卡上，创建一个由vlanId指定的虚拟局域网。使用Promise异步回调。
 
@@ -553,7 +553,7 @@ connection.createVlanInterface(ifName, vlanId).then(() => {
 
 ## connection.destroyVlanInterface<sup>23+</sup>
 
-destroyVlanInterface(ifName: string, vlanId: int): Promise\<void\>
+destroyVlanInterface(ifName: string, vlanId: number): Promise\<void\>
 
 删除指定以太网网卡上由vlanId指定的虚拟局域网。使用Promise异步回调。
 
@@ -610,7 +610,7 @@ connection.destroyVlanInterface(ifName, vlanId).then(() => {
 
 ## connection.addVlanIp<sup>23+</sup>
 
-addVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
+addVlanIp(ifName: string, vlanId: number, address: LinkAddress): Promise\<void\>
 
 为以太网网卡上对应vlanId的虚拟局域网配置指定的IP地址及子网掩码。使用Promise异步回调。
 
@@ -677,7 +677,7 @@ connection.addVlanIp(ifName, vlanId, address).then(() => {
 
 ## connection.deleteVlanIp<sup>23+</sup>
 
-deleteVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
+deleteVlanIp(ifName: string, vlanId: number, address: LinkAddress): Promise\<void\>
 
 从以太网网卡上对应vlanId的虚拟局域网中，删除已配置的IP地址及子网掩码。使用Promise异步回调。
 
