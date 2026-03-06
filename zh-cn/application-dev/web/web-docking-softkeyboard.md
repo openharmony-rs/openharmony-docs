@@ -212,7 +212,7 @@ ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
 <!-- @[soft_keyboard_setmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
 
 ``` TypeScript
-//Index.ets
+// Index.ets
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -283,7 +283,7 @@ ArkWeb组件根据避让模式进行避让，效果见图3。
 - 使用完全由应用程序自定义的软键盘
 
 ```ts
-  //Index.ets
+  // Index.ets
   import { webview } from '@kit.ArkWeb';
   import { inputMethodEngine } from '@kit.IMEKit';
 
