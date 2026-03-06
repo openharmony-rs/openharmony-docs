@@ -9609,7 +9609,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/entry3ability/Entry3Ability.ets",
 				"functions":[
 					{
-						"end_line":51,
+						"end_line":49,
 						"name":"create_main_window",
 						"start_line":19
 					}
