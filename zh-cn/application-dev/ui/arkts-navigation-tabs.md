@@ -700,7 +700,7 @@ struct MyComponent {
 ```
 基于以上示例代码为例，不同场景下的缓存策略如下：
 
-1. 如图16所示，使用默认翻页动画，CACHE_BOTH_SIDE模式，n设置为2，点击TabBar切换到yellow页，TabContent1~3被缓存。再切换到red页，TabContent1~2释放，TabContent3~5被缓存。
+1. 如图16所示，使用默认翻页动画，CACHE_BOTH_SIDE模式，n设置为2，点击TabBar切换到yellow页，TabContent1\~3被缓存。再切换到red页，TabContent1、2释放，TabContent3\~5被缓存。
 
    **图16** 默认翻页动画，CACHE_BOTH_SIDE模式示意图
 
