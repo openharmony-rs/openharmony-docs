@@ -129,9 +129,9 @@ avScreenCaptureRecorder.stopRecording().then(() => {
 
 ## skipPrivacyMode<sup>12+</sup>
 
-**ArkTS-Dyn：** skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
+ArkTS-Dyn: skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
 
-**ArkTS-Sta：** skipPrivacyMode(windowIDs: Array\<int>): Promise\<void>
+ArkTS-Sta: skipPrivacyMode(windowIDs: Array\<int>): Promise\<void>
 
 录屏时，应用可对本应用的隐私窗口做安全豁免。使用Promise异步回调。
 如录屏时，用户在本应用进行输入密码等操作，应用不会进行黑屏处理。

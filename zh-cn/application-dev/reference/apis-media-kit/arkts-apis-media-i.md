@@ -3,7 +3,6 @@
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
->
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## AVFileDescriptor<sup>9+</sup>
@@ -404,7 +403,7 @@ async function setupPlayer() {
 | fd                | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 否   | 录制输出的文件fd。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                                           |
 | frameWidth        | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 是   | 录屏的视频宽度。<br>默认屏幕宽度，根据不同屏幕默认值不同，单位为像素（px）。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | frameHeight       | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 是   | 录屏的视频高度。<br>默认屏幕高度，根据不同屏幕默认值不同，单位为像素（px）。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
-| videoBitrate      | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 是   | 录屏的视频比特率。<br>，默认为10000000。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                            |
+| videoBitrate      | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 是   | 录屏的视频比特率。<br>默认为10000000。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                            |
 | audioSampleRate   | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 是   | 录屏的音频采样率。<br>内录的系统音和外录的麦克风都是用此采样率，默认48000，仅支持设置48000或16000。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | audioChannelCount | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 是   | 录屏的音频通道数，内录的系统音和外录的麦克风都是用此通道数，默认2声道，仅支持设置1或2声道。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | audioBitrate      | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 是   | 录屏的音频比特率，内录的系统音和外录的麦克风都是用此比特率，默认96000。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
