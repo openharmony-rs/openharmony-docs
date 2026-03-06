@@ -6,6 +6,12 @@
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
+音频模板控制相关接口，可用于向接入音频模板的媒体应用查询数据，然后进行统一风格的页面展示，并下发页面操作指令。
+
+该模块提供如下功能：
+
+- [AVMusicTemplateDescriptor](arkts-apis-avsession-AVMusicTemplateDescriptor-sys.md): 音频模板描述，包含音频模板唯一标识，应用的包名和用户ID信息。
+
 > **说明：**
 >
 > 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -15,6 +21,10 @@
 ```ts
 import { avMusicTemplate } from '@kit.AVSessionKit';
 ```
+
+## 使用说明
+
+本文档仅提供系统接口说明，以下接口的使用说明均需先创建实例，请参考公开接口[avMusicTemplate.createAVMusicTemplate](js-apis-avsession-avMusicTemplate.md#avmusictemplatecreateavmusictemplate)的说明及示例，创建对应实例。
 
 ## avMusicTemplate.createAVMusicTemplateController
 
@@ -525,3 +535,19 @@ export class ControllerManager {
   }
 }
 ```
+
+## AVMusicTemplateDescriptor
+
+音频模板描述。包含音频模板唯一标识，应用的包名和用户ID。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+
+| 名称       | 类型   | 只读 | 可选 | 说明               |
+| ---------- | ------ | ---- | ---- | ------------------ |
+| sessionId  | string | 否   | 否   | 音频模板唯一标识。 |
+| bundleName | string | 否   | 否   | 应用的包名。       |
+| userId     | number | 否   | 否   | 用户ID。           |
