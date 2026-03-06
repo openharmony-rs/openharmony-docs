@@ -95,7 +95,7 @@
 ```
 
 ```ts
-// Index.ets
+//Index.ets
 import { webview } from '@kit.ArkWeb';
 import { inputMethod } from '@kit.IMEKit';
 
@@ -169,7 +169,7 @@ onWindowStageCreate(windowStage: window.WindowStage) {
 <!-- @[soft_keyboard_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// Index.ets
+//Index.ets
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -212,7 +212,7 @@ ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
 <!-- @[soft_keyboard_setmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
 
 ``` TypeScript
-// Index.ets
+//Index.ets
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -223,7 +223,7 @@ struct KeyboardAvoidExample {
     Column() {
       Row().height('50%').width('100%').backgroundColor(Color.Gray)
       Web({ src: $rawfile('index.html'),controller: this.controller})
-        .keyboardAvoidMode(WebKeyboardAvoidMode.OVERLAYS_CONTENT) // 此时ArkWeb组件不会调整任何视口的大小。
+        .keyboardAvoidMode(WebKeyboardAvoidMode.OVERLAYS_CONTENT) //此时ArkWeb组件不会调整任何视口的大小。
       Text('I can see the bottom of the page')    
         .width('100%')
         .textAlign(TextAlign.Center)
@@ -283,7 +283,7 @@ ArkWeb组件根据避让模式进行避让，效果见图3。
 - 使用完全由应用程序自定义的软键盘
 
 ```ts
-  // Index.ets
+  //Index.ets
   import { webview } from '@kit.ArkWeb';
   import { inputMethodEngine } from '@kit.IMEKit';
 
