@@ -19,8 +19,10 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 > 未特殊说明的字段，数据长度最大值为96字节。
 
 **系统能力**：SystemCapability.Startup.SystemInfo。
-**ArkTs-Dyn起始版本**：6
-**ArkTs-Sta起始版本**：20
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 20
 
 
 **权限**：以下各项所需要的权限有所不同，详见下表。
