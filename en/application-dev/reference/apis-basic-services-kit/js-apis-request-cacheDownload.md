@@ -541,7 +541,7 @@ Unsubscribes from the pre-download completion events. This API uses an asynchron
 
 | Name| Type    | Mandatory| Description                  |
 |-----|--------|----|----------------------|
-| url | string | Yes | URL to be registered, with a maximum of 8192 bytes.|
+| url | string | Yes | URL to be unregistered, with a maximum of 8192 bytes.|
 | callback | Callback&lt;void&gt; | No| Callback to unregister. If this parameter is left blank, all completion callback functions of the URL are unregistered.|
 
 **Example**:
