@@ -2477,7 +2477,7 @@ createVlanInterface(ifName: string, vlanId: int): Promise\<void\>
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ----------------- |
 | ifName | string | 是 | 网卡名。 |
-| vlanId | int | 是 | vlan标识符，取值范围[0,4094]。 |
+| vlanId | number | 是 | vlan标识符，取值范围[0,4094]。 |
 
 **返回值：**
 
@@ -2532,7 +2532,7 @@ destroyVlanInterface(ifName: string, vlanId: int): Promise\<void\>
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ----------------- |
 | ifName | string | 是 | 网卡名。 |
-| vlanId | int | 是 | vlan标识符，取值范围[0,4094]。 |
+| vlanId | number | 是 | vlan标识符，取值范围[0,4094]。 |
 
 **返回值：**
 
@@ -2570,7 +2570,7 @@ connection.destroyVlanInterface(ifName, vlanId).then(() => {
 
 addVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
 
-为以太网网卡上对应vlanId的虚拟局域网配置指定的 IP 地址及子网掩码。使用Promise异步回调。
+为以太网网卡上对应vlanId的虚拟局域网配置指定的IP地址及子网掩码。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2587,7 +2587,7 @@ addVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ----------------- |
 | ifName | string | 是 | 网卡名。 |
-| vlanId | int | 是 | vlan标识符，取值范围[0,4094]。 |
+| vlanId | number | 是 | vlan标识符，取值范围[0,4094]。 |
 | address | [LinkAddress](#linkaddress) | 是 | 链路信息。 |
 
 **返回值：**
@@ -2635,7 +2635,7 @@ connection.addVlanIp(ifName, vlanId, address).then(() => {
 
 deleteVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
 
-从以太网网卡上对应vlanId的虚拟局域网中，删除已配置的 IP 地址及子网掩码。使用Promise异步回调。
+从以太网网卡上对应vlanId的虚拟局域网中，删除已配置的IP地址及子网掩码。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2652,7 +2652,7 @@ deleteVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise\<void\>
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ----------------- |
 | ifName | string | 是 | 网卡名。 |
-| vlanId | int | 是 | vlan标识符，取值范围[0,4094]。 |
+| vlanId | number | 是 | vlan标识符，取值范围[0,4094]。 |
 | address | [LinkAddress](#linkaddress) | 是 | 链路信息。 |
 
 **返回值：**
