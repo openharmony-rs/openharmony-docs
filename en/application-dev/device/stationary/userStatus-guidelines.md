@@ -10,6 +10,10 @@ The UserStatus module, designed for user status awareness, empowers the system t
 
 For details about the APIs, see the [userStatus API Reference](../../reference/apis-multimodalawareness-kit/js-apis-awareness-userStatus.md).
 
+> **NOTE**
+> 
+> The APIs of this module are supported since API version 20 and deprecated since API version 24.
+
 ## How to Develop 
 ### When to Use
 An application can invoke the UserStatus module when it needs to obtain the age group of users. This way, the application can determine, for example, whether the individual interacting with the device is a child or an adult.
