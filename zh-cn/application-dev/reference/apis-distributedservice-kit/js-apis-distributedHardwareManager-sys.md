@@ -29,8 +29,8 @@ import { hardwareManager } from '@kit.DistributedServiceKit';
 
 | 名称         | 类型                                                | 只读 | 可选 | 说明                                                         |
 | ------------ | --------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| type         | [DistributedHardwareType](#distributedhardwaretype) | 否   | 是   | 分布式硬件类型。 |
-| srcNetworkId | string                                              | 否   | 否   | 表示源端设备，缺省时表示所有源端设备。 |
+| type         | [DistributedHardwareType](#distributedhardwaretype) | 否   | 否   | 分布式硬件类型。 |
+| srcNetworkId | string                                              | 否   | 是   | 表示源端设备，缺省时表示所有源端设备。 |
 
 ## DistributedHardwareType
 
@@ -40,7 +40,7 @@ import { hardwareManager } from '@kit.DistributedServiceKit';
 
 | 名称          | 值   | 说明                         |
 | :------------ | ---- | ---------------------------- |
-| ALL           | 0    | 表示所有分布式应用。         |
+| ALL           | 0    | 表示所有分布式硬件。         |
 | CAMERA        | 1    | 表示分布式相机。             |
 | SCREEN        | 8    | 表示分布式屏幕。             |
 | MODEM_MIC     | 256  | 表示分布式移动通话的麦克风。 |

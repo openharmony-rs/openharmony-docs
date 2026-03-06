@@ -162,9 +162,9 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
 
 Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将设备上的domain socket转发到电脑上。
 
-**推荐使用[自动映射WebView调试链接](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-run-debug-configurations#section48387420516)**。
+<!--RP1-->
+<!--RP1End-->
 
-若当前DevEco版本低，可参考以下方法：
 1. 先在hdc shell里执行如下命令，查询ArkWeb在设备里创建的domain socket。  
    ```shell
    cat /proc/net/unix | grep devtools

@@ -4,7 +4,7 @@
 <!--Owner: @lvzhenjie-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 该模块为应用提供备份/恢复数据的能力。
 
@@ -122,6 +122,22 @@ import { backup } from '@kit.CoreFileKit';
 > file.backup.File与@ohos.file.fs中的提供的[File](js-apis-file-fs.md#file)是带有不同的涵义，前者是继承[FileMeta](#filemeta)和[FileData](#filedata)的对象而后者只有一个文件描述符的对象。请注意区分，不要混淆。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+## FileSystemRequestConfig<sup>23+</sup>
+
+配置系统执行碎片清理所需的参数。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.backup
+
+| 名称        | 类型   | 只读 | 可选 | 说明                                                   |
+| ----------- | ------ | ---- | ---- | ------------------------------------------------------ |
+| triggerType | number |  否  |  否  | 制定碎片清理的触发类型，当前仅支持触发类型0，表示执行器件碎片清理功能。|
+| writeSize   | number |  否  |  否  | 碎片清理功能的清理目标，预期可清理出目标大小的可用存储单元。单位：MB，取值范围：0-2097152MB。|
+| waitTime    | number |  否  |  否  | 执行碎片清理功能最大允许时间，超过此时间认为任务超时。单位：秒，取值范围：0-180秒。|
 
 ## GeneralCallbacks
 
@@ -261,7 +277,6 @@ onBundleEnd: AsyncCallback&lt;string, void | string&gt;
 | 13600001 | IPC error.                       |
 | 13900005 | I/O error.                      |
 | 13900011 | Out of memory.                   |
-| 13900020 | Invalid argument.                |
 | 13900025 | No space left on device.         |
 | 13900042 | Unknown error.                   |
 
@@ -344,7 +359,7 @@ onResultReport (bundleName: string, result: string)
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
-**返回值：**
+**参数：**
 
 | 参数名     | 类型   | 必填 | 说明                            |
 | ---------- | ------ | ---- | ------------------------------- |
@@ -386,7 +401,7 @@ onProcess (bundleName: string, process: string)
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
-**返回值：**
+**参数：**
 
 | 参数名     | 类型   | 必填 | 说明                            |
 | ---------- | ------ | ---- | ------------------------------- |
@@ -420,6 +435,62 @@ onProcess (bundleName: string, process: string)
     console.info('onProcess processInfo : ' + process);
   }
   ```
+
+## backup.fileSystemServiceRequest<sup>23+</sup>
+
+fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;number&gt;
+
+整理存储器件碎片化空间，改善用户卡顿体验。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.BACKUP
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**参数**：
+| 参数名   | 类型                                       | 必填 | 说明                                               |
+| -------- | ------------------------------------------ | ---- | -------------------------------------------------- |
+|  config  | [FileSystemRequestConfig](#filesystemrequestconfig23)| 是 | 系统执行碎片清理所需参数。 |
+
+**返回值：**
+
+| 类型                | 说明                    |
+| ------------------- | ----------------------- |
+| Promise&lt;number&gt;  | Promise对象。返回执行碎片清理操作时产生的错误码。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 13900020 | Invalid argument.|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { backup } from '@kit.CoreFileKit';
+
+async function testFunction(size: number) {
+  try {
+    const result = await backup.fileSystemServiceRequest({
+      triggerType: 0,
+      writeSize: size,
+      waitTime: 180
+    });
+    return result;
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`fileSystemServiceRequest err:` + err);
+  }
+}
+```
 
 ## backup.getBackupVersion<sup>18+</sup>
 
@@ -646,7 +717,6 @@ getLocalCapabilities(dataList:Array&lt;IncrementalBackupTime&gt;): Promise&lt;Fi
 | 13600001 | IPC error.                                                                                      |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 
@@ -660,7 +730,7 @@ getLocalCapabilities(dataList:Array&lt;IncrementalBackupTime&gt;): Promise&lt;Fi
     try {
       let backupApps: backup.IncrementalBackupTime[] = [{
         bundleName: "com.example.hiworld",
-        lastIncrementalTime: 1700107870 //调用者根据上次记录的增量备份时间
+        lastIncrementalTime: 1700107870 // 调用者根据上次记录的增量备份时间
       }];
       let fileData = await backup.getLocalCapabilities(backupApps);
       console.info('getLocalCapabilities success');
@@ -705,7 +775,7 @@ getBackupInfo(bundleToBackup: string): string
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **示例：**
 
@@ -758,7 +828,7 @@ updateTimer(bundleName: string, timeout: number): boolean
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **示例：**
 
@@ -816,7 +886,7 @@ updateSendRate(bundleName: string, sendRate: number): boolean
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **示例：**
 
@@ -1046,7 +1116,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
         console.info('fileData info:' + fileData.fd);
         if (!fs.accessSync(basePath)) {
           fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+          console.info('create success' + basePath);
         }
         fs.copyFileSync(fileData.fd, path); // 将获取的本地能力文件保存到本地
         fs.closeSync(fileData.fd);
@@ -1099,7 +1169,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
 
 getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime\>): Promise&lt;void&gt;
 
-用于获取应用待备份数据量，在appendBundles之前调用。以异步callback方式（generalCallbacks中的onBackupSizeReport）每隔固定时间（每隔5秒返回一次，如果5秒内获取完则立即返回）返回一次扫描结果，直到datalist中所有的应用数据量全部返回。
+用于获取应用待备份数据量，在appendBundles之前调用。 与onBackupSizeReport配套使用。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1140,12 +1210,12 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileIo as fs, backup } from '@kit.CoreFileKit';
 
-  interface scannedInfos { //用于解析扫描结果
+  interface scannedInfos { // 用于解析扫描结果
     scanned: [];
     scanning: string;
   }
 
-  interface ScannedInfo { //用于解析单个应用的扫描结果
+  interface ScannedInfo { // 用于解析单个应用的扫描结果
     bundleName: string;
     dataSize: number;
     incDataSize: number;
@@ -1190,7 +1260,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
     onProcess: (bundleName: string, process: string) => {
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     },
-    onBackupSizeReport: (OnBackupSizeReport) => { // 回调函数 与getBackupDataSize配套使用，返回已获取到应用的数据量大小和正在获取数据量的应用的包名
+    onBackupSizeReport: (OnBackupSizeReport) => { // 回调函数 与getBackupDataSize配套使用，返回已获取到应用的数据量大小和正在获取数据量的应用的包名。generalCallbacks中的onBackupSizeReport每隔5秒（如果5秒内获取完则立即返回）返回一次扫描结果，直到dataList中所有的应用数据量全部返回。
       console.info('dataSizeCallback success');
       const jsonObj: scannedInfos | null = JSON.parse(OnBackupSizeReport); // 解析返回的信息并打印
       if (jsonObj) {
@@ -1221,7 +1291,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
 
 **异步返回JSON串示例：**
 
-```json
+```json5
 {
  "scanned": [ // 本次扫描完成的应用，已返回结果的应用在下一次回调中不会再继续返回
      {
@@ -2031,7 +2101,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
         console.info('fileData info:' + fileData.fd);
         if (!fs.accessSync(basePath)) {
           fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+          console.info('create success' + basePath);
         }
         fs.copyFileSync(fileData.fd, path); // 将获取的本地能力文件保存到本地
         fs.closeSync(fileData.fd);
@@ -2197,6 +2267,7 @@ appendBundles(remoteCapabilitiesFd: number, bundlesToBackup: string[], callback:
 appendBundles(remoteCapabilitiesFd: number, bundlesToBackup: string[], infos?: string[]): Promise&lt;void&gt;
 
 添加需要恢复的应用。从API version 12开始，新增可选参数infos，可携带应用恢复所需信息，infos和bundlesToBackup根据索引一一对应。
+
 当前整个流程中，在获取SessionRestore类的实例后只能调用一次。使用Promise异步回调。
 
 > **说明：**
@@ -2959,7 +3030,7 @@ cancel(bundleName: string): number
     let fileData: backup.FileData = {
       fd: -1
     }
-    fileData = await backup.getLocalCapabilities(); //备份恢复框架提供的getLocalCapabilities接口获取能力集文件。
+    fileData = await backup.getLocalCapabilities(); // 备份恢复框架提供的getLocalCapabilities接口获取能力集文件。
     let backupBundles: Array<string> = ["com.example.helloWorld"];
     sessionRestore.appendBundles(fileData.fd, backupBundles);
   }
@@ -3061,7 +3132,7 @@ cleanBundleTempDir(bundleName: string): Promise&lt;boolean&gt;
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     }
   };
-  let sessionRestore = new backup.SessionRestore(generalCallbacks); //  创建恢复流程
+  let sessionRestore = new backup.SessionRestore(generalCallbacks); // 创建恢复流程
   ```
 
 ### getCompatibilityInfo<sup>20+</sup>
@@ -3146,7 +3217,7 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise&lt;string&gt;
   };
 
   async function getRestoreCompatibilityInfo() {
-    let sessionRestore = new backup.SessionRestore(generalCallbacks); //  创建恢复流程
+    let sessionRestore = new backup.SessionRestore(generalCallbacks); // 创建恢复流程
     let bundleName = "com.example.helloWorld";
     let extInfo = ""; // 空表示无需给应用传额外信息
     try {
@@ -3353,7 +3424,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
         console.info('fileData info:' + fileData.fd);
         if (!fs.accessSync(basePath)) {
           fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+          console.info('create success' + basePath);
         }
         fs.copyFileSync(fileData.fd, path); // 将获取的本地能力文件保存到本地
         fs.closeSync(fileData.fd);
@@ -3406,7 +3477,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
 
 getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime\>): Promise&lt;void&gt;
 
-用于获取应用待备份数据量，在appendBundles之前调用。以异步callback方式（generalCallbacks中的onBackupSizeReport）每隔固定时间（每隔5秒返回一次，如果5秒内获取完则立即返回）返回一次扫描结果，直到datalist中所有的应用数据量全部返回。
+用于获取应用待备份数据量，在appendBundles之前调用。 与onBackupSizeReport配套使用。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -3497,7 +3568,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
     onProcess: (bundleName: string, process: string) => {
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     },
-    onBackupSizeReport: (OnBackupSizeReport) => { // 回调函数 与getBackupDataSize配套使用，返回已获取到应用的数据量大小和正在获取数据量的应用的包名
+    onBackupSizeReport: (OnBackupSizeReport) => { // 回调函数 与getBackupDataSize配套使用，返回已获取到应用的数据量大小和正在获取数据量的应用的包名。generalCallbacks中的onBackupSizeReport每隔5秒（如果5秒内获取完则立即返回）返回一次扫描结果，直到dataList中所有的应用数据量全部返回。
       console.info('dataSizeCallback success');
       const jsonObj: scannedInfos | null = JSON.parse(OnBackupSizeReport); // 解析返回的信息并打印
       if (jsonObj) {
@@ -3529,7 +3600,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
 
 **异步返回JSON串示例：**
 
-```json
+```json5
 {
  "scanned": [ // 本次扫描完成的应用，已返回结果的应用在下一次回调中不会再继续返回
      {
@@ -3584,7 +3655,6 @@ appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;): Promise&lt;v
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 
@@ -3650,7 +3720,7 @@ appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;): Promise&lt;v
 
 ### appendBundles<sup>12+</sup>
 
-appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;, infos: string[]): Promise&lt;void&gt;
+appendBundles(bundlesToAppend: Array&lt;IncrementalBackupData&gt;, infos: string[]): Promise&lt;void&gt;
 
 添加需要增量备份的应用。当前整个流程中，触发Release接口之前都可以进行appendBundles的调用。使用Promise异步回调。
 
@@ -3664,7 +3734,7 @@ appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;, infos: string
 
 | 参数名          | 类型                                                           | 必填 | 说明                       |
 | --------------- | -------------------------------------------------------------- | ---- | -------------------------- |
-| bundlesToBackup | Array&lt;[IncrementalBackupData](#incrementalbackupdata12)&gt; | 是   | 需要增量备份的应用的数组。 |
+| bundlesToAppend | Array&lt;[IncrementalBackupData](#incrementalbackupdata12)&gt; | 是   | 需要增量备份的应用的数组。 |
 | infos  | string[] | 是   | 备份时各应用所需要扩展信息的数组, 与bundlesToBackup根据索引一一对应。从API version 12开始支持。 |
 
 **返回值：**
@@ -3686,7 +3756,6 @@ appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;, infos: string
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 
@@ -3961,7 +4030,7 @@ cancel(bundleName: string): number
   let backupBundles: Array<backup.IncrementalBackupData> = [];
   let bundleData: backup.IncrementalBackupData = {
     bundleName: "com.example.helloWorld",
-    lastIncrementalTime: 1700107870, //调用者传递上一次备份的时间戳
+    lastIncrementalTime: 1700107870, // 调用者传递上一次备份的时间戳
     manifestFd: 1 // 调用者传递上一次备份的manifest文件句柄
   }
   backupBundles.push(bundleData);
@@ -4065,7 +4134,7 @@ cleanBundleTempDir(bundleName: string): Promise&lt;boolean&gt;
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     }
   };
-  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); //  创建增量备份流程
+  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
   ```
 
 ### getCompatibilityInfo<sup>20+</sup>
@@ -4150,7 +4219,7 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise&lt;string&gt;
   };
 
   async function getIncBackupCompatibilityInfo() {
-    let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); //  创建增量备份流程
+    let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
     let bundleName = "com.example.helloWorld";
     let extInfo = ""; // 空表示无需给应用传额外信息
     try {

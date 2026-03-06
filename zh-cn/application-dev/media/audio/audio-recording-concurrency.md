@@ -1,4 +1,4 @@
-# 共享音频输入
+# 录音并发策略说明
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -18,7 +18,7 @@
 
 通常，当应用请求录音时，它是独占音频输入的。然而，在某些情况下，可能会有两个或多个应用同时或先后请求录音，在同一时间段内都希望从音频输入中获得数据，这种情况称为录音并发，录音并发又细分为：录音并存和录音并行。
 
-- 录音并存是指一个或多个应用创建的不同录音客户端（AudioCapturer）在同一时间段内同时存在的状态。
+- 录音并存是指一个或多个应用创建的不同录音客户端（[AudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md)）在同一时间段内同时存在的状态。
 - 录音并行是指在录音并存的基础上，不同录音客户端（AudioCapturer）启动的录音流在同一时间段内同时处于运行（Running）状态，即同时进行音频录制。
 
 当录音并发发生时，每个请求录音的应用都希望能够获得音频输入数据，但此时会面临将同一音频源同时传输给多个应用的问题。
@@ -59,10 +59,10 @@
 
 ### 对开发者的建议
 
-- 了解[音频焦点策略](audio-playback-concurrency.md#音频焦点策略)，做好焦点适配，及时[处理焦点变化](audio-playback-concurrency.md#处理音频焦点变化)。
+- 了解[音频焦点策略](audio-playback-concurrency.md#音频焦点策略)，做好焦点适配，及时[处理音频焦点变化](audio-playback-concurrency.md#处理音频焦点变化)。
 - 尽量避免并发录音场景，在应用设计时尽量避免与其他录音任务重叠。如需要，可以在界面中提示用户“当前存在其他录音任务”。
 
   如果必须进行并发录音，建议在界面上明确告知用户音频质量可能会受到影响。
-- [选择合适的录音流类型](using-right-streamusage-and-sourcetype.md)，不同的录音流类型对应着不同的系统优化处理策略，建议开发者根据需求选择合适的[录音流类型](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)。
+- 不同的录音流类型对应着不同的系统优化处理策略，建议开发者根据需求选择合适的[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)，具体可参考指南：[使用合适的音频流类型](using-right-streamusage-and-sourcetype.md)。
 - 在没有录音需求时，应及时停止并释放录音资源，避免对其他录音流产生影响，并减少不必要的系统开销。
 - 应用实现不应过度依赖固定的录音并发规则，而应根据系统接口返回的状态进行自适应处理。

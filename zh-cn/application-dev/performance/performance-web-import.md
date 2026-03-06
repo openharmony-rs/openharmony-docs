@@ -66,7 +66,7 @@ struct Index {
 
 性能打点数据如下，getMessageData进程中的Duration为加载页面开始到结束的耗时：
 
-![](figures/web_enginee_un_init.png)
+![](figures/web_engine_un_init.png)
 
 
 【正例】
@@ -75,41 +75,41 @@ struct Index {
 
 1. 初始化Web内核
 
-```typescript
-// EntryAbility.ets
-import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
-import { webview } from '@kit.ArkWeb';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    webview.WebviewController.initializeWebEngine();
-  }
-}
-```
+   ```typescript
+   // EntryAbility.ets
+   import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+   import { webview } from '@kit.ArkWeb';
+   
+   export default class EntryAbility extends UIAbility {
+     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+       webview.WebviewController.initializeWebEngine();
+     }
+   }
+   ```
 
 2. 加载Web组件
 
-```typescript
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct Index {
-   controller: webview.WebviewController = new webview.WebviewController();
-
-   build() {
-      Column() {
-         Web({ src: 'https://www.example.com/example.html', controller: this.controller })
-            .fileAccess(true)
+   ```typescript
+   // xxx.ets
+   import { webview } from '@kit.ArkWeb';
+   
+   @Entry
+   @Component
+   struct Index {
+      controller: webview.WebviewController = new webview.WebviewController();
+   
+      build() {
+         Column() {
+            Web({ src: 'https://www.example.com/example.html', controller: this.controller })
+               .fileAccess(true)
+         }
       }
    }
-}
-```
+   ```
 
 性能打点数据如下，getMessageData进程中的Duration为加载页面开始到结束的耗时：
 
-![](figures/web_enginee_init.png)
+![](figures/web_engine_init.png)
 
 
 **总结**
@@ -272,7 +272,7 @@ struct WebComponent {
       // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContainer中。
       // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新。
       makeNode(uiContext: UIContext): FrameNode | null {
-        console.info(" uicontext is undifined : "+ (uiContext === undefined));
+        console.info(" uicontext is undefined : "+ (uiContext === undefined));
         if (this.rootnode != null) {
           // 返回FrameNode节点。
           return this.rootnode.getFrameNode();
@@ -404,76 +404,76 @@ struct WebComponent {
 
 1. 通过initializeWebEngine()来提前初始化Web组件的内核，然后在初始化内核后调用prefetchResource()预获取将要加载页面中的POST请求。
 
-```typescript
-// EntryAbility.ets
-import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
-import { webview } from '@kit.ArkWeb';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    console.info('EntryAbility onCreate.');
-    webview.WebviewController.initializeWebEngine();
-    // 预获取时，需要将"https://www.example1.com/POST?e=f&g=h"替换成为真实要访问的网站地址。
-    webview.WebviewController.prefetchResource(
-      {
-        url: 'https://www.example.com/POST?e=f&g=h',
-        method: 'POST',
-        formData: 'a=x&b=y'
-      },
-      [{
-        headerKey: 'c',
-        headerValue: 'z'
-      }],
-      'KeyX', 500
-    );
-    AppStorage.setOrCreate('abilityWant', want);
-    console.info('EntryAbility onCreate done.');
-  }
-}
-```
+   ```typescript
+   // EntryAbility.ets
+   import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+   import { webview } from '@kit.ArkWeb';
+   
+   export default class EntryAbility extends UIAbility {
+     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+       console.info('EntryAbility onCreate.');
+       webview.WebviewController.initializeWebEngine();
+       // 预获取时，需要将"https://www.example1.com/POST?e=f&g=h"替换成为真实要访问的网站地址。
+       webview.WebviewController.prefetchResource(
+         {
+           url: 'https://www.example.com/POST?e=f&g=h',
+           method: 'POST',
+           formData: 'a=x&b=y'
+         },
+         [{
+           headerKey: 'c',
+           headerValue: 'z'
+         }],
+         'KeyX', 500
+       );
+       AppStorage.setOrCreate('abilityWant', want);
+       console.info('EntryAbility onCreate done.');
+     }
+   }
+   ```
 
 2. 通过Web组件，加载包含POST请求的Web页面。
 
-```typescript
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  webviewController: webview.WebviewController = new webview.WebviewController();
-  
-  build() {
-    Column() {
-      Web({ src: 'https://www.example.com/', controller: this.webviewController })
-        .onPageEnd(() => {
-          // 清除后续不再使用的预获取资源缓存
-          webview.WebviewController.clearPrefetchedResource(['KeyX']);
-        })
-    }
-  }
-}
-```
+   ```typescript
+   // xxx.ets
+   import { webview } from '@kit.ArkWeb';
+   
+   @Entry
+   @Component
+   struct WebComponent {
+     webviewController: webview.WebviewController = new webview.WebviewController();
+     
+     build() {
+       Column() {
+         Web({ src: 'https://www.example.com/', controller: this.webviewController })
+           .onPageEnd(() => {
+             // 清除后续不再使用的预获取资源缓存
+             webview.WebviewController.clearPrefetchedResource(['KeyX']);
+           })
+       }
+     }
+   }
+   ```
 
 3. 在页面将要加载的JavaScript文件中，发起POST请求，设置请求响应头ArkWebPostCacheKey为对应预取时设置的cachekey值'KeyX'。
 
-```typescript
-const xhr = new XMLHttpRequest();
-xhr.open('POST', 'https://www.example.com/POST?e=f&g=h', true);
-xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-xhr.setRequestHeader('ArkWebPostCacheKey', 'KeyX');
-xhr.onload = function () {
-  if (xhr.status >= 200 && xhr.status < 300) {
-    console.info('成功', xhr.responseText);
-  } else {
-    console.error('请求失败');
-  }
-}
-const formData = new FormData();
-formData.append('a', 'x');
-formData.append('b', 'y');
-xhr.send(formData);
-```
+   ```typescript
+   const xhr = new XMLHttpRequest();
+   xhr.open('POST', 'https://www.example.com/POST?e=f&g=h', true);
+   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+   xhr.setRequestHeader('ArkWebPostCacheKey', 'KeyX');
+   xhr.onload = function () {
+     if (xhr.status >= 200 && xhr.status < 300) {
+       console.info('成功', xhr.responseText);
+     } else {
+       console.error('请求失败');
+     }
+   }
+   const formData = new FormData();
+   formData.append('a', 'x');
+   formData.append('b', 'y');
+   xhr.send(formData);
+   ```
 
 
 **场景二：加载包含POST请求的下一页**
@@ -512,63 +512,63 @@ struct WebComponent {
 
 1. 当前页面完成显示后，使用onPageEnd()对即将要加载页面中的POST请求进行预获取。
 
-```typescript
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  webviewController: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      // 在适当的时机加载业务用Web组件，本例以Button点击触发为例。
-      Button('加载页面')
-        .onClick(() => {
-          // url请替换为真实地址。
-          this.webviewController.loadUrl('https://www.example1.com/');
-        })
-      Web({ src: 'https://www.example.com/', controller: this.webviewController })
-        .onPageEnd(() => {
-          // 预获取时，需要将"https://www.example1.com/POST?e=f&g=h"替换成为真实要访问的网站地址。
-          webview.WebviewController.prefetchResource(
-            {
-              url: 'https://www.example1.com/POST?e=f&g=h',
-              method: 'POST',
-              formData: 'a=x&b=y'
-            },
-            [{
-              headerKey: 'c',
-              headerValue: 'z'
-            }],
-            'KeyX', 500
-          );
-        })
-    }
-  }
-}
-```
+   ```typescript
+   // xxx.ets
+   import { webview } from '@kit.ArkWeb';
+   
+   @Entry
+   @Component
+   struct WebComponent {
+     webviewController: webview.WebviewController = new webview.WebviewController();
+   
+     build() {
+       Column() {
+         // 在适当的时机加载业务用Web组件，本例以Button点击触发为例。
+         Button('加载页面')
+           .onClick(() => {
+             // url请替换为真实地址。
+             this.webviewController.loadUrl('https://www.example1.com/');
+           })
+         Web({ src: 'https://www.example.com/', controller: this.webviewController })
+           .onPageEnd(() => {
+             // 预获取时，需要将"https://www.example1.com/POST?e=f&g=h"替换成为真实要访问的网站地址。
+             webview.WebviewController.prefetchResource(
+               {
+                 url: 'https://www.example1.com/POST?e=f&g=h',
+                 method: 'POST',
+                 formData: 'a=x&b=y'
+               },
+               [{
+                 headerKey: 'c',
+                 headerValue: 'z'
+               }],
+               'KeyX', 500
+             );
+           })
+       }
+     }
+   }
+   ```
 
 2. 将要加载的页面中，js正式发起POST请求，设置请求响应头ArkWebPostCacheKey为对应预取时设置的cachekey值'KeyX'。
 
-```typescript
-const xhr = new XMLHttpRequest();
-xhr.open('POST', 'https://www.example1.com/POST?e=f&g=h', true);
-xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-xhr.setRequestHeader('ArkWebPostCacheKey', 'KeyX');
-xhr.onload = function () {
-  if (xhr.status >= 200 && xhr.status < 300) {
-    console.info('成功', xhr.responseText);
-  } else {
-    console.error('请求失败');
-  }
-}
-const formData = new FormData();
-formData.append('a', 'x');
-formData.append('b', 'y');
-xhr.send(formData);
-```
+   ```typescript
+   const xhr = new XMLHttpRequest();
+   xhr.open('POST', 'https://www.example1.com/POST?e=f&g=h', true);
+   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+   xhr.setRequestHeader('ArkWebPostCacheKey', 'KeyX');
+   xhr.onload = function () {
+     if (xhr.status >= 200 && xhr.status < 300) {
+       console.info('成功', xhr.responseText);
+     } else {
+       console.error('请求失败');
+     }
+   }
+   const formData = new FormData();
+   formData.append('a', 'x');
+   formData.append('b', 'y');
+   xhr.send(formData);
+   ```
 
 
 ### JSBridge优化
@@ -1251,58 +1251,58 @@ struct Index {
 
 1. 配置预编译的JavaScript文件信息。
 
-```typescript
-import { webview } from '@kit.ArkWeb';
-
-interface Config {
-  url: string,
-  localPath: string, // 本地资源路径。
-  options: webview.CacheOptions
-}
-
-@Entry
-@Component
-struct Index {
-  // 配置预编译的JavaScript文件信息。
-  configs: Array<Config> = [
-    {
-      url: 'https://www/example.com/example.js',
-      localPath: 'example.js',
-      options: {
-        responseHeaders: [
-          { headerKey: 'E-Tag', headerValue: 'aWO42N9P9dG/5xqYQCxsx+vDOoU=' },
-          { headerKey: 'Last-Modified', headerValue: 'Web, 21 Mar 2024 10:38:41 GMT' }
-        ]
-      }
-    }
-  ]
-  // ...
-}
-```
+   ```typescript
+   import { webview } from '@kit.ArkWeb';
+   
+   interface Config {
+     url: string,
+     localPath: string, // 本地资源路径。
+     options: webview.CacheOptions
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     // 配置预编译的JavaScript文件信息。
+     configs: Array<Config> = [
+       {
+         url: 'https://www/example.com/example.js',
+         localPath: 'example.js',
+         options: {
+           responseHeaders: [
+             { headerKey: 'E-Tag', headerValue: 'aWO42N9P9dG/5xqYQCxsx+vDOoU=' },
+             { headerKey: 'Last-Modified', headerValue: 'Web, 21 Mar 2024 10:38:41 GMT' }
+           ]
+         }
+       }
+     ]
+     // ...
+   }
+   ```
 
 2. 读取配置，进行预编译。
 
-```typescript
-Web({ src: 'https://www.example.com/a.html', controller: this.controller })
-  .onControllerAttached(async () => {
-    // 读取配置，进行预编译。
-    for (const config of this.configs) {
-      let content = await (this.getUIContext()
-            .getHostContext() as Context).resourceManager.getRawFileContentSync(config.localPath);
-
-      try {
-        this.controller.precompileJavaScript(config.url, content, config.options)
-          .then((errCode: number) => {
-            console.info('precompile successfully!' );
-          }).catch((errCode: number) => {
-          console.error('precompile failed.' + errCode);
-        })
-      } catch (err) {
-        console.error('precompile failed!.' + err.code + err.message);
-      }
-    }
-  })
-```
+   ```typescript
+   Web({ src: 'https://www.example.com/a.html', controller: this.controller })
+     .onControllerAttached(async () => {
+       // 读取配置，进行预编译。
+       for (const config of this.configs) {
+         let content = await (this.getUIContext()
+               .getHostContext() as Context).resourceManager.getRawFileContentSync(config.localPath);
+   
+         try {
+           this.controller.precompileJavaScript(config.url, content, config.options)
+             .then((errCode: number) => {
+               console.info('precompile successfully!' );
+             }).catch((errCode: number) => {
+             console.error('precompile failed.' + errCode);
+           })
+         } catch (err) {
+           console.error('precompile failed!.' + err.code + err.message);
+         }
+       }
+     })
+   ```
 
 
 点击“加载页面”按钮，性能打点数据如下，getMessageData进程中的Duration为加载页面开始到结束的耗时：
@@ -1419,62 +1419,62 @@ struct Index {
 
 1. 将scheme对象属性isCodeCacheSupported设置为true，支持自定义协议的JavaScript生成字节码缓存。
 
-```typescript
-scheme: webview.WebCustomScheme = { schemeName: 'scheme', isSupportCORS: true, isSupportFetch: true, isCodeCacheSupported: true };
-```
+   ```typescript
+   scheme: webview.WebCustomScheme = { schemeName: 'scheme', isSupportCORS: true, isSupportFetch: true, isCodeCacheSupported: true };
+   ```
 
 2. 在Web组件运行前，向Web组件注册自定义协议。
 
-> 说明
-> 不得与Web内核内置协议相同。
-
-```typescript
-// xxx.ets
-aboutToAppear(): void {
-  try {
-    webview.WebviewController.customizeSchemes([this.scheme]);
-  } catch (error) {
-    const e: BusinessError = error as BusinessError;
-    console.error(`ErrorCode: ${e.code}, Message: ${e.message}`);
-  }
-}
-```
+   > 说明
+   > 不得与Web内核内置协议相同。
+   
+   ```typescript
+   // xxx.ets
+   aboutToAppear(): void {
+     try {
+       webview.WebviewController.customizeSchemes([this.scheme]);
+     } catch (error) {
+       const e: BusinessError = error as BusinessError;
+       console.error(`ErrorCode: ${e.code}, Message: ${e.message}`);
+     }
+   }
+   ```
 
 3. 拦截自定义协议的JavaScript，设置ResponseData和ResponseDataID。ResponseData为JS内容，ResponseDataID用于区分JS内容是否发生变更。
 
-> 说明
-> 若JS内容变更，ResponseDataID需要一起变更。
+   > 说明
+   > 若JS内容变更，ResponseDataID需要一起变更。
 
-```typescript
-// xxx.ets
-Web({
-  // 需将'https://www.example.com/'替换为真是的包含自定义协议的JavaScript的Web页面地址。
-  src: 'https://www.example.com/',
-  controller: this.controller
-})
-  .fileAccess(true)
-  .javaScriptAccess(true)
-  .onInterceptRequest(event => {
-    const responseResource: WebResourceResponse = new WebResourceResponse();
-    // 拦截页面请求。
-    if (event?.request.getRequestUrl() === 'scheme1://www.example.com/test.js') {
-      responseResource.setResponseHeader([
-        {
-          headerKey: 'ResponseDataId',
-          // 格式：不超过13位的纯数字。JS识别码，JS有更新时必须更新该字段。
-          headerValue: '0000000000001'
-        }
-      ]);
-      responseResource.setResponseData(this.jsData2);
-      responseResource.setResponseEncoding('utf-8');
-      responseResource.setResponseMimeType('application/javascript');
-      responseResource.setResponseCode(200);
-      responseResource.setReasonMessage('OK');
-      return responseResource;
-    }
-    return null;
-  })
-```
+   ```typescript
+   // xxx.ets
+   Web({
+     // 需将'https://www.example.com/'替换为真是的包含自定义协议的JavaScript的Web页面地址。
+     src: 'https://www.example.com/',
+     controller: this.controller
+   })
+     .fileAccess(true)
+     .javaScriptAccess(true)
+     .onInterceptRequest(event => {
+       const responseResource: WebResourceResponse = new WebResourceResponse();
+       // 拦截页面请求。
+       if (event?.request.getRequestUrl() === 'scheme1://www.example.com/test.js') {
+         responseResource.setResponseHeader([
+           {
+             headerKey: 'ResponseDataId',
+             // 格式：不超过13位的纯数字。JS识别码，JS有更新时必须更新该字段。
+             headerValue: '0000000000001'
+           }
+         ]);
+         responseResource.setResponseData(this.jsData2);
+         responseResource.setResponseEncoding('utf-8');
+         responseResource.setResponseMimeType('application/javascript');
+         responseResource.setResponseCode(200);
+         responseResource.setReasonMessage('OK');
+         return responseResource;
+       }
+       return null;
+     })
+   ```
 
 性能打点数据如下，getMessageData进程中的Duration为加载页面开始到结束的耗时：
 
@@ -1499,50 +1499,50 @@ Web({
 
 1. 注册三方协议配置时，传入ARKWEB_SCHEME_OPTION_CODE_CACHE_ENABLED参数。
 
-```c
-// 注册三方协议的配置，需要在Web内核初始化之前调用，否则会注册失败。
-static napi_value RegisterCustomSchemes(napi_env env, napi_callback_info info)
-{
-  OH_LOG_INFO(LOG_APP, "register custom schemes");
-  OH_ArkWeb_RegisterCustomSchemes("custom", ARKWEB_SCHEME_OPTION_STANDARD | ARKWEB_SCHEME_OPTION_CORS_ENABLED | ARKWEB_SCHEME_OPTION_CODE_CACHE_ENABLED);
-  return nullptr;
-}
-```
+   ```c
+   // 注册三方协议的配置，需要在Web内核初始化之前调用，否则会注册失败。
+   static napi_value RegisterCustomSchemes(napi_env env, napi_callback_info info)
+   {
+     OH_LOG_INFO(LOG_APP, "register custom schemes");
+     OH_ArkWeb_RegisterCustomSchemes("custom", ARKWEB_SCHEME_OPTION_STANDARD | ARKWEB_SCHEME_OPTION_CORS_ENABLED | ARKWEB_SCHEME_OPTION_CODE_CACHE_ENABLED);
+     return nullptr;
+   }
+   ```
 
 2. 设置ResponsesDataId。
 
-```c
-// 在worker线程中读取rawfile，并通过ResourceHandler返回给Web内核。
-void RawfileRequest::ReadRawfileDataOnWorkerThread() {
-    // ...
-    if ('test-cc.js' == rawfilePath()) {
-        OH_ArkWebResponse_SetHeaderByName(response(), "ResponseDataID", "0000000000001", true);
-    }
-    OH_ArkWebResponse_SetCharset(response(), "UTF-8");
-}
-```
+   ```c
+   // 在worker线程中读取rawfile，并通过ResourceHandler返回给Web内核。
+   void RawfileRequest::ReadRawfileDataOnWorkerThread() {
+       // ...
+       if ('test-cc.js' == rawfilePath()) {
+           OH_ArkWebResponse_SetHeaderByName(response(), "ResponseDataID", "0000000000001", true);
+       }
+       OH_ArkWebResponse_SetCharset(response(), "UTF-8");
+   }
+   ```
 
 3. 注册三方协议的配置，设置SchemeHandler。
 
-```typescript
-// EntryAbility.ets
-import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
-import { webview } from '@kit.ArkWeb';
-import { window } from '@kit.ArkUI';
-import testNapi from 'libentry.so';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    // 注册三方协议的配置。
-    testNapi.registerCustomSchemes();
-    // 初始化Web组件内核，该操作会初始化Brownser进程以及创建BrownserContext。
-    webview.WebviewController.initializeWebEngine();
-    // 设置SchemeHandler。
-    testNapi.setSchemeHandler();
-  }
-  // ...
-}
-```
+   ```typescript
+   // EntryAbility.ets
+   import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+   import { webview } from '@kit.ArkWeb';
+   import { window } from '@kit.ArkUI';
+   import testNapi from 'libentry.so';
+   
+   export default class EntryAbility extends UIAbility {
+     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+       // 注册三方协议的配置。
+       testNapi.registerCustomSchemes();
+       // 初始化Web组件内核，该操作会初始化Browser进程以及创建BrowserContext。
+       webview.WebviewController.initializeWebEngine();
+       // 设置SchemeHandler。
+       testNapi.setSchemeHandler();
+     }
+     // ...
+   }
+   ```
 
 
 性能打点数据如下，getMessageData进程中的Avg Wall Duration为两次加载页面开始到结束的平均耗时：
@@ -1618,70 +1618,69 @@ struct Index {
 
 1. 创建资源配置。
 
-```typescript
-interface ResourceConfig {
-  urlList: Array<string>;
-  type: webview.OfflineResourceType;
-  responseHeaders: Array<Header>;
-  localPath: string; // 本地资源存放在rawfile目录下的路径。
-}
-
-const configs: Array<ResourceConfig> = [
-  {
-    localPath: 'example.png',
-    urlList: [
-      // 多url场景，第一个url作为资源的源。
-      'https://www.example.com/',
-      'https://www.example.com/path1/example.png',
-      'https://www.example.com/path2/example.png'
-    ],
-    type: webview.OfflineResourceType.IMAGE,
-    responseHeaders: [
-      { headerKey: 'Cache-Control', headerValue: 'max-age=1000' },
-      { headerKey: 'Content-Type', headerValue: 'image/png' }
-    ]
-  },
-  {
-    localPath: 'example.js',
-    urlList: [
-      // 仅提供一个url，这个url既作为资源的源，也作为资源的网络请求地址。
-      'https://www.example.com/example.js'
-    ],
-    type: webview.OfflineResourceType.CLASSIC_JS,
-    responseHeaders: [
-      // 以<script crossorigin='anonymous'/>方式使用，提供额外的响应头。
-      { headerKey: 'Cross-Origin', headerValue: 'anonymous' }
-    ]
-  }
-];
-
-```
+   ```typescript
+   interface ResourceConfig {
+     urlList: Array<string>;
+     type: webview.OfflineResourceType;
+     responseHeaders: Array<Header>;
+     localPath: string; // 本地资源存放在rawfile目录下的路径。
+   }
+   
+   const configs: Array<ResourceConfig> = [
+     {
+       localPath: 'example.png',
+       urlList: [
+         // 多url场景，第一个url作为资源的源。
+         'https://www.example.com/',
+         'https://www.example.com/path1/example.png',
+         'https://www.example.com/path2/example.png'
+       ],
+       type: webview.OfflineResourceType.IMAGE,
+       responseHeaders: [
+         { headerKey: 'Cache-Control', headerValue: 'max-age=1000' },
+         { headerKey: 'Content-Type', headerValue: 'image/png' }
+       ]
+     },
+     {
+       localPath: 'example.js',
+       urlList: [
+         // 仅提供一个url，这个url既作为资源的源，也作为资源的网络请求地址。
+         'https://www.example.com/example.js'
+       ],
+       type: webview.OfflineResourceType.CLASSIC_JS,
+       responseHeaders: [
+         // 以<script crossorigin='anonymous'/>方式使用，提供额外的响应头。
+         { headerKey: 'Cross-Origin', headerValue: 'anonymous' }
+       ]
+     }
+   ];
+   ```
 
 2. 读取配置，注入资源。
 
-```typescript
-Web({ src: 'https://www.example.com/a.html', controller: this.controller })
-  .onControllerAttached(async () => {
-    try {
-      const resourceMapArr: Array<webview.OfflineResourceMap> = [];
-      // 读取配置，从rawfile目录中读取文件内容。
-      for (const config of this.configs) {
-        const buf: Uint8Array = await (this.getUIContext()
-            .getHostContext() as Context).resourceManager.getRawFileContentSync(config.localPath);
-        resourceMapArr.push({
-          urlList: config.urlList,
-          resource: buf,
-          responseHeaders: config.responseHeaders,
-          type: config.type
-        });
-      }
-      // 注入资源。
-      this.controller.injectOfflineResources(resourceMapArr);
-    } catch (err) {
-      console.error('error: ' + err.code + ' ' + err.message);
-    }
-  })
-```
+   ```typescript
+   Web({ src: 'https://www.example.com/a.html', controller: this.controller })
+     .onControllerAttached(async () => {
+       try {
+         const resourceMapArr: Array<webview.OfflineResourceMap> = [];
+         // 读取配置，从rawfile目录中读取文件内容。
+         for (const config of this.configs) {
+           const buf: Uint8Array = await (this.getUIContext()
+               .getHostContext() as Context).resourceManager.getRawFileContentSync(config.localPath);
+           resourceMapArr.push({
+             urlList: config.urlList,
+             resource: buf,
+             responseHeaders: config.responseHeaders,
+             type: config.type
+           });
+         }
+         // 注入资源。
+         this.controller.injectOfflineResources(resourceMapArr);
+       } catch (err) {
+         console.error('error: ' + err.code + ' ' + err.message);
+       }
+     })
+   ```
 
 性能打点数据如下，getMessageData进程中的Duration为加载页面开始到结束的耗时：
 

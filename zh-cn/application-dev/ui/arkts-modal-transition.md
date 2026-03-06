@@ -618,18 +618,18 @@ import { common } from '@kit.AbilityKit';
 @Component
 struct ModalTransitionWithIf {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  // $r('app.string.modal_transition_text29')需要替换为实际资源文件，在本示例中该资源文件的value值为“蓝牙”
-  private listArr: ResourceStr[] = ['WLAN', $r('app.string.modal_transition_text29'),
-    // $r('app.string.modal_transition_text30')需要替换为实际资源文件，在本示例中该资源文件的value值为“个人热点”
-    $r('app.string.modal_transition_text30'),
-    // $r('app.string.modal_transition_text31')需要替换为实际资源文件，在本示例中该资源文件的value值为“连接与共享”
-    $r('app.string.modal_transition_text31')];
-  // $r('app.string.modal_transition_text32')需要替换为实际资源文件，在本示例中该资源文件的value值为“投屏”
-  private shareArr: ResourceStr[] = [$r('app.string.modal_transition_text32'),
-    // $r('app.string.modal_transition_text33')需要替换为实际资源文件，在本示例中该资源文件的value值为“打印”
-    $r('app.string.modal_transition_text33'), 'VPN',
-    // $r('app.string.modal_transition_text34')需要替换为实际资源文件，在本示例中该资源文件的value值为“私人DNS”
-    $r('app.string.modal_transition_text34'), 'NFC'];
+  // 请在resources\base\element\string.json文件中配置name为'modal_transition_text29'，value为非空字符串的资源
+  private listArr: ResourceStr[] = ['WLAN', this.context.resourceManager.getStringByNameSync('modal_transition_text29'),
+    // 请在resources\base\element\string.json文件中配置name为'modal_transition_text30'，value为非空字符串的资源
+    this.context.resourceManager.getStringByNameSync('modal_transition_text30'),
+    // 请在resources\base\element\string.json文件中配置name为'modal_transition_text31'，value为非空字符串的资源
+    this.context.resourceManager.getStringByNameSync('modal_transition_text31')];
+  // 请在resources\base\element\string.json文件中配置name为'modal_transition_text32'，value为非空字符串的资源
+  private shareArr: ResourceStr[] = [this.context.resourceManager.getStringByNameSync('modal_transition_text32'),
+    // 请在resources\base\element\string.json文件中配置name为'modal_transition_text33'，value为非空字符串的资源
+    this.context.resourceManager.getStringByNameSync('modal_transition_text33'), 'VPN',
+    // 请在resources\base\element\string.json文件中配置name为'modal_transition_text34'，value为非空字符串的资源
+    this.context.resourceManager.getStringByNameSync('modal_transition_text34'), 'NFC'];
   // 第一步：定义状态变量控制页面显示
   @State isShowShare: boolean = false;
 
@@ -644,7 +644,7 @@ struct ModalTransitionWithIf {
     Stack() {
       Column() {
         Column() {
-          // $r('app.string.modal_transition_text35')需要替换为实际资源文件，在本示例中该资源文件的value值为“设置”
+          // 请将$r('app.string.modal_transition_text35')替换为实际资源文件，在本示例中该资源文件的value值为“设置”
           Text($r('app.string.modal_transition_text35'))
             .fontSize(28)
             .fontColor(0x333333)
@@ -652,7 +652,7 @@ struct ModalTransitionWithIf {
         .width('90%')
         .padding({ top: 30, bottom: 15 })
         .alignItems(HorizontalAlign.Start)
-        // $r('app.string.modal_transition_text36')需要替换为实际资源文件，在本示例中该资源文件的value值为“输入关键字搜索”
+        // 请将$r('app.string.modal_transition_text36')替换为实际资源文件，在本示例中该资源文件的value值为“输入关键字搜索”
         TextInput({ placeholder: $r('app.string.modal_transition_text36') })
           .width('90%')
           .height(40)
@@ -705,6 +705,7 @@ struct ModalTransitionWithIf {
             .width('100%')
             .onClick(() => {
               // 第五步：改变状态变量，显示模态页面
+              // 请在resources\base\element\string.json文件中配置name为'modal_transition_text37'，value为非空字符串的资源
               if (item.slice(-2) === this.context.resourceManager.getStringByNameSync('modal_transition_text37')) {
                 this.shareFunc();
               }
@@ -736,7 +737,7 @@ struct ModalTransitionWithIf {
               .onClick(() => {
                 this.shareFunc();
               })
-              // $r('app.string.modal_transition_text31')需要替换为实际资源文件，在本示例中该资源文件的value值为“连接与共享”
+              // 请将$r('app.string.modal_transition_text31')替换为实际资源文件，在本示例中该资源文件的value值为“连接与共享”
               Text($r('app.string.modal_transition_text31'))
                 .fontSize(28)
                 .fontColor(0x333333)

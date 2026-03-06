@@ -35,6 +35,7 @@ Enumerates enterprise device management policies.
 ## ApplicationInstance
 
 Defines application instance data.
+
 It is used as an input parameter in the [addUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanageraddusernonstopapps22), [removeUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanagerremoveusernonstopapps22), [addFreezeExemptedApps](./js-apis-enterprise-applicationManager.md#applicationmanageraddfreezeexemptedapps22), and [removeFreezeExemptedApps](./js-apis-enterprise-applicationManager.md#applicationmanagerremovefreezeexemptedapps22) APIs.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -48,7 +49,8 @@ It is used as an input parameter in the [addUserNonStopApps](./js-apis-enterpris
 ## InstallationResult
 
 An object that holds the application installation result.
-This object is used as a callback parameter in [EnterpriseAdminExtensionAbility.onMarketAppInstallResult](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonmarketappinstallresult22).
+
+This object is used as a callback parameter in [EnterpriseAdminExtensionAbility.onMarketAppInstallResult](./js-apis-EnterpriseAdminExtensionAbility.md#onmarketappinstallresult22).
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -67,3 +69,17 @@ Enumerates application installation results.
 | ----------- | -------- | ------------------------------- |
 | SUCCESS | 0  | The application is installed successfully.|
 | FAIL | -1  | The application fails to be installed.|
+
+## EnterpriseAdminExtensionContext<sup>23+</sup>
+
+type EnterpriseAdminExtensionContext = _EnterpriseAdminExtensionContext.default
+
+**EnterpriseAdminExtensionContext** is the context of [EnterpriseAdminExtensionAbility](js-apis-EnterpriseAdminExtensionAbility.md) and inherits from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Type| Description|
+| --- | --- |
+| [_EnterpriseAdminExtensionContext.default](js-apis-application-EnterpriseAdminExtensionContext.md) | Context of the **EnterpriseAdminExtensionAbility** component.|

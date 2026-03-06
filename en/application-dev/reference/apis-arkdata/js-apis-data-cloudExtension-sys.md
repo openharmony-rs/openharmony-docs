@@ -405,13 +405,13 @@ createAssetLoaderStub(instance: AssetLoader): Promise&lt;rpc.RemoteObject&gt;
 
 Creates a [RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) instance based on an [AssetLoader](#assetloader) instance. The system uses this object to call the APIs of the [AssetLoader](#assetloader) instance. This API uses a promise to return the result.
 
+**System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
+
 **Parameters**
 
 | Name  | Type                         | Mandatory| Description                                             |
 | -------- | ----------------------------- | ---- | ------------------------------------------------- |
 | instance | [AssetLoader](#assetloader) | Yes  | [AssetLoader](#assetloader) instance.|
-
-**System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
 **Return value**
 
@@ -1569,7 +1569,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
 
 changeConfirmation(userId: number, bundleName: string, sharingResource: string, state: cloudData.sharing.State): Promise&lt;Result&lt;void&gt;&gt;
 
-Changes the confirmation state of a share invitation. This API uses a promise to return the result. The application, shared resource ID, and the new conformation state need to be specified. This API uses a promise to return the result.
+Changes the confirmation state of a share invitation. This API uses a promise to return the result. The application, shared resource ID, and the new confirmation state need to be specified. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -2017,4 +2017,4 @@ export default class MyServiceExtension extends ServiceExtensionAbility {
   }
 }
 ```
-
+ 

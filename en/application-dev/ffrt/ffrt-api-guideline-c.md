@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Task Management
 
@@ -1500,7 +1500,7 @@ ffrt_mutexattr_destroy(&attr);
 
 ### ffrt_mutex_t
 
-- Implements `pthread_mutex_t`, but does not supports initialization of `PTHREAD_MUTEX_INITIALIZER`.
+- Implements `pthread_mutex_t`, but does not support initialization of `PTHREAD_MUTEX_INITIALIZER`.
 
 **Declaration**
 
@@ -1890,7 +1890,7 @@ int main()
 
 ### ffrt_cond_t
 
-- Implements the pthread semaphore function, but does not supports initialization of `PTHREAD_COND_INITIALIZER`.
+- Implements the pthread semaphore function, but does not support initialization of `PTHREAD_COND_INITIALIZER`.
 
 **Declaration**
 

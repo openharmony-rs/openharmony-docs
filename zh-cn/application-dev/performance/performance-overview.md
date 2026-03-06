@@ -1,5 +1,12 @@
 # 应用性能优化概览
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 优化应用性能对于应用开发至关重要。通过高性能编程、减少丢帧卡顿、提升应用启动和响应速度，可以有效提升用户体验。本文将介绍一些优化应用性能的方法，以及常用的性能调优工具。
 
 ## ArkTS高性能编程
@@ -43,7 +50,7 @@
   将不必要的资源延迟加载可以减少应用启动时间。使用[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)以及[Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md)等容器组件时，配合系统提供的[LazyForEach数据懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)能力，可以有效减少应用启动时间和内存占用。
   
 - **使用缓存：**
-  选择合适的[缓存策略](list-perf-improvment.md#缓存列表项)可以提高应用程序的性能和响应速度，从而提升应用响应速度。
+  选择合适的[缓存策略](list-perf-improvement.md#缓存列表项)可以提高应用程序的性能和响应速度，从而提升应用响应速度。
   
 - **使用异步加载：**
   使用异步加载([异步并发概述](../arkts-utils/async-concurrency-overview.md))可以在后台线程中处理耗时操作，从而提升应用响应速度。

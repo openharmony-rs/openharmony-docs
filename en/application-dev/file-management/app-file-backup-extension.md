@@ -4,7 +4,7 @@
 <!--Owner: @lvzhenjie-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 You can use **BackupExtensionAbility** to enable an application to access the backup and restore framework.
 
@@ -218,17 +218,22 @@ Assume that the application backup path is **data/storage/el2/base/files/A/**. D
     - If **fullBackupOnly** is set to **true**, data will be decompressed to the **/restore/data/storage/el2/base/files/A/** directory under the temporary path (**backupDir**).
 
 2. When setting **compatibleDirMapping**, observe the following: 
+
     The length of the array cannot exceed 1,000. 
+
     The **restoreDir** configuration in each element must be included in the **includes** configuration. Otherwise, the **compatibleDirMapping** configuration will not take effect. This field does not support wildcards. 
+    
     Neither **backupDir** nor **restoreDir** in each element can contain the string \|\|\|\|.
 
     **Example of the field configuration:** 
+
     "compatibleDirMapping": [
     {"backupDir": "/data/storage/el2/base/files/nulldir", "restoreDir": "/data/storage/el2/base/files/restore/nulldir"},
     {"backupDir": "/data/storage/el2/base/files/zerofile", "restoreDir": "/data/storage/el2/base/files/restore/zerofile"}
 ]    
 
     Simply adding this configuration item will not take effect. You need to return the list of paths to be enabled in JSON string format in the **onBackupEx** implementation. 
+
     The path list must match the **restoreDir** values configured in the **compatibleDirMapping** field of **backup_config**. It can include all or a subset of these paths, or be left empty to indicate that path mapping is disabled.
 
     **Example of the return value of onBackupEx:** 

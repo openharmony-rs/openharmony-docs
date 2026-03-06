@@ -91,8 +91,9 @@ static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null,
 import { RenderNode } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
+
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
+  draw(context: DrawContext) {
     const width = 1000;
     const height = 1000;
     const bufferSize = width * height * 4;
@@ -106,15 +107,25 @@ class DrawingRenderNode extends RenderNode {
       colorData[i+3] = 255;
     }
 
-    let opts : image.InitializationOptions = {
+    let opts: image.InitializationOptions = {
       editable: true,
       pixelFormat: 3,
       size: { height, width }
     }
 
     let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
-    let srcRect: common2D.Rect = { left: 10, top: 10, right: 80, bottom: 80 };
-    let dstRect: common2D.Rect = { left: 200, top: 200, right: 400, bottom: 400 };
+    let srcRect: common2D.Rect = {
+      left: 10,
+      top: 10,
+      right: 80,
+      bottom: 80
+    };
+    let dstRect: common2D.Rect = {
+      left: 200,
+      top: 200,
+      right: 400,
+      bottom: 400
+    };
     if (pixelMap != null) {
       let filter = drawing.ImageFilter.createFromImage(pixelMap, srcRect, dstRect);
     }
@@ -236,6 +247,7 @@ static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
+
 let imgFilter = drawing.ImageFilter.createBlurImageFilter(5, 10, drawing.TileMode.CLAMP);
 let colorFilter = drawing.ColorFilter.createSRGBGammaToLinear();
 let imgFilter1 = drawing.ImageFilter.createFromColorFilter(colorFilter, imgFilter);

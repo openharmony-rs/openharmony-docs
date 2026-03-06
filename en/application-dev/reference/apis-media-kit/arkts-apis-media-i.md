@@ -305,6 +305,21 @@ Describes the output size of the video thumbnail fetched.
 | width  | number | No  | Yes  | Width of the thumbnail.<br>- If this parameter is set to a value less than 0, the width will be the original video width.<br>- If the value is **0** or is not assigned, the scaling ratio is the same as the height ratio.<br>- If neither width nor height is assigned, the output is the width and height of the original video frame.|
 | height | number | No  | Yes  | Height of the thumbnail.<br>- If this parameter is set to a value less than 0, the height will be the original video height.<br>- If the value is **0** or is not assigned, the scaling ratio is the same as the width ratio.<br>- If neither width nor height is assigned, the output is the width and height of the original video frame.|
 
+## FrameInfo<sup>23+</sup>
+
+Describes the return value of the operation for obtaining video thumbnails in batches, including the time point for requesting frame extraction, actual time point for frame extraction, format of thumbnails output from the video, and result of obtaining a single thumbnail.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+| Name  | Type  | Read-Only| Optional| Description                                                                           |
+|--------|--------|------|------|---------------------------------------------------------------------------------|
+| requestedTimeUs  | number | No  | No  | Time point for requesting frame extraction.|
+| actualTimeUs | number | No  | Yes  | Actual time point for frame extraction.|
+| image | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No  | Yes  | Format of the thumbnail output from the video.|
+| result | [FetchResult](arkts-apis-media-e.md#fetchresult23) | No  | No  | Result of the task for obtaining a single thumbnail. For example, the task is successful, failed, or canceled.|
+
 ## MediaStream<sup>19+</sup>
 
 Defines the media stream data information.
@@ -337,7 +352,8 @@ Defines a media data loader, which needs to be implemented by applications.
 **Example**
 
 ```ts
-import HashMap from '@ohos.util.HashMap';
+import { HashMap } from '@kit.ArkTS';
+import { media } from '@kit.MediaKit';
 
 let headers: Record<string, string> = {"User-Agent" : "User-Agent-Value"};
 let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://xxx",  headers);
@@ -402,8 +418,9 @@ Describes the screen capture strategy.
 
 | Name                 | Type   | Read-Only| Optional| Description                |
 | --------------------- | ------- | --- | --- | -------------------- |
-| keepCaptureDuringCall | boolean | No| Yes | Whether to keep screen capture during a cellular call.|
+| keepCaptureDuringCall | boolean | No| Yes | Whether to keep screen capture during a cellular call. The value **true** means to keep screen capture during a cellular call, and **false** means the opposite. The default value is **false**.|
 | enableBFrame | boolean | No| Yes| Whether to enable B-frame encoding for screen capture. **true** to enable, **false** otherwise. The default value is **false**.<br>For details about the restrictions on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints). If the current environment does not meet the restrictions, B-frames will be skipped during screen capture, and no error will be returned.|
+| privacyMaskMode<sup>23+</sup> | number | No| Yes| Mask mode for privacy windows during screen capture.<br> - **0**: Full-screen mask mode for privacy windows. The default value is **0**.<br> - **1**: Window mask mode for privacy windows.<br> - If this parameter is set to other values, an error is returned.<br> **Model restriction**: This API can be used only in the stage model.|
 
 ## AVScreenCaptureRecordConfig<sup>12+</sup>
 
@@ -425,10 +442,22 @@ Defines the screen capture parameters.
 | fillMode<sup>18+</sup>            | [AVScreenCaptureFillMode](arkts-apis-media-e.md#avscreencapturefillmode18)| No  | Yes  | Video fill mode during screen capture.|
 | strategy<sup>20+</sup>            | [AVScreenCaptureStrategy](#avscreencapturestrategy20)| No  | Yes  | Screen capture strategy.|
 
+## AVMetricsEvent<sup>23+</sup>
+
+Describes the information about a metric event.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+| Name  | Type  | Read-Only| Optional| Description                                                        |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| event  | [AVMetricsEventType](arkts-apis-media-e.md#avmetricseventtype23) | No  | No  | Type of the metric event.<br>**Model restriction**: This API can be used only in the stage model.|
+| timeStamp | number | No  | No  | System time when an event occurs.|
+| playbackPosition | number | No  | No  | Playback position when an event occurs.|
+| details | Record\<string, Object> | No  | No  | Detailed information about an event. The information contained in an event varies according to the event type.<br>The information includes the stalling duration (**duration**: number) and the media type (**media**: [MediaType](arkts-apis-media-e.md#mediatype8)) of the stalling.<br>**Model restriction**: This API can be used only in the stage model.|
+
 ## AudioRecorderConfig<sup>(deprecated)</sup>
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVRecorderConfig](#avrecorderconfig9) instead.
 
 Describes audio recording configurations.

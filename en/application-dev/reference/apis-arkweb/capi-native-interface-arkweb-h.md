@@ -205,7 +205,7 @@ Displays the list of registered objects and function names.
 | const char** methodList | Name of the registered method list.|
 | [NativeArkWeb_OnJavaScriptProxyCallback](#nativearkweb_onjavascriptproxycallback)* callback | Registered callback.|
 | int32_t size | Number of registered callbacks.|
-| bool needRefresh | Whether a page need to be refreshed.|
+| bool needRefresh | Whether a page need to be refreshed. The value **true** indicates that the page needs to be refreshed, and **false** indicates the opposite.|
 
 ### OH_NativeArkWeb_UnregisterJavaScriptProxy()
 

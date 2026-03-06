@@ -17,7 +17,7 @@
 
 ## Modules to Import
 
-```
+```ts
 import { HalfScreenLaunchComponent } from '@kit.ArkUI';
 ```
 
@@ -30,13 +30,7 @@ The [universal attributes](ts-component-general-attributes.md) are not supported
 
 ## HalfScreenLaunchComponent
 
-HalfScreenLaunchComponent({  
-&emsp;content: Callback\<void>,  
-&emsp;appId: string,  
-&emsp;options?: AtomicServiceOptions,  
-&emsp;onError?: ErrorCallback,  
-&emsp;onTerminated?: Callback&lt;TerminationInfo&gt;   
-  })
+HalfScreenLaunchComponent({&emsp;content: Callback\<void>,&emsp;appId: string,&emsp;options?: AtomicServiceOptions,&emsp;onError?: ErrorCallback,&emsp;onTerminated?: Callback&lt;TerminationInfo&gt; })
 
 **Decorator**: \@Component
 

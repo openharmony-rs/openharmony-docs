@@ -158,7 +158,7 @@ libnet_connection.so
    ```
 5. 在index.ets文件中对上述封装好的接口进行调用。
 
-   <!-- @[build_project5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[build_project5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/ets/pages/Index.ets) -->    
    
    ``` TypeScript
    import testNetManager from 'libentry.so';
@@ -231,12 +231,14 @@ libnet_connection.so
          }
        // ...
      }
+     // ...
+   }
    ```
 6. 配置`CMakeLists.txt`，本模块需要用到的共享库是`libnet_connection.so`，在工程自动生成的`CMakeLists.txt`中的`target_link_libraries`中添加此共享库。
 
    > **注意：**
    >
-   > 如图所示，在`add_library`中的`entry`是工程自动生成的`modename`。若要做修改，需和步骤3中`.nm_modname`保持一致。
+   > 如图所示，在`add_library`中的`entry`是工程自动生成的`modname`。若要做修改，需和步骤3中`.nm_modname`保持一致。
 
    ![netmanager-4.png](./figures/netmanager-4.png)
 

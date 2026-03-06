@@ -12,7 +12,7 @@ typedef struct ArkUI_AccessibilityProvider ArkUI_AccessibilityProvider
 
 ## Overview
 
-Defines a third-party accessibility provider, which implements callback functions for accessibility services.
+Defines as a third-party operation provider to implement callback functions.
 
 **Since**: 13
 

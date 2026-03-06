@@ -1738,7 +1738,7 @@ import { taskpool } from '@kit.ArkTS';
 function delay(args: number): number {
   let t: number = Date.now();
   while ((Date.now() - t) < 1000) {
-	  continue;
+    continue;
   }
   return args;
 }
@@ -1787,7 +1787,7 @@ import { taskpool } from '@kit.ArkTS';
 function delay(args: number): number {
   let t: number = Date.now();
   while ((Date.now() - t) < 1000) {
-	  continue;
+    continue;
   }
   return args;
 }
@@ -1889,7 +1889,7 @@ import { taskpool } from '@kit.ArkTS';
 function delay(args: number): number {
   let t: number = Date.now();
   while ((Date.now() - t) < 1000) {
-	  continue;
+    continue;
   }
   return args;
 }
@@ -1981,7 +1981,9 @@ Describes a callback function with an error message.
 ## LongTask<sup>12+</sup>
 
 Describes a continuous task. **LongTask** inherits from [Task](#task).
+
 No upper limit is set for the execution time of a continuous task, and no timeout exception is thrown if a continuous task runs for a long period of time. However, a continuous task cannot be executed in a task group or executed for multiple times.
+
 The thread for executing a continuous task exists until [terminateTask](#taskpoolterminatetask12) is called after the execution is complete. The thread is reclaimed when it is idle.
 
 **System capability**: SystemCapability.Utils.Lang
@@ -2004,6 +2006,7 @@ let task: taskpool.LongTask = new taskpool.LongTask(printArgs, "this is my first
 ## GenericsTask<sup>13+</sup>
 
 Implements a generic task. **GenericsTask** inherits from [Task](#task).
+
 During the creation of a generic task, the passed-in parameter types and return value types of concurrent functions are verified in the compilation phase. Other behaviors are the same as those during the creation of a task.
 
 **System capability**: SystemCapability.Utils.Lang

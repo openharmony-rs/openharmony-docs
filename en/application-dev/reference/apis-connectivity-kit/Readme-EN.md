@@ -27,6 +27,9 @@
   - [@ohos.secureElement (SE Management)](js-apis-secureElement.md)
   - [@ohos.wifiManager (WLAN) (Recommended)](js-apis-wifiManager.md)
   - [@ohos.wifiManagerExt (WLAN Extension) (Recommended)](js-apis-wifiManagerExt.md)
+  - [@ohos.FusionConnectivity.partnerAgent (Device Status Notification Module)](js-apis-fusionConnectivity-partnerAgent.md)
+  - [@ohos.FusionConnectivity.PartnerAgentExtensionContext (Context for Device Status Notifications)](js-apis-fusionConnectivity-partnerAgentExtensionContext.md)
+  - [@ohos.FusionConnectivity.PartnerAgentExtensionAbility (ExtensionAbility Component Supporting Device Status Notifications)](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)
   <!--Del-->
   - [@ohos.bluetooth.a2dp (Bluetooth A2DP Module) (System API)](js-apis-bluetooth-a2dp-sys.md)
   - [@ohos.bluetooth.access (Bluetooth Access Module) (System API)](js-apis-bluetooth-access-sys.md)
@@ -45,6 +48,7 @@
   - [@ohos.nfc.cardEmulation (Standard NFC Card Emulation) (System API)](js-apis-cardEmulation-sys.md)
   - [@ohos.nfc.tag (Standard NFC Tags) (System API)](js-apis-nfcTag-sys.md)
   - [@ohos.wifiManager (WLAN) (Recommended) (System API)](js-apis-wifiManager-sys.md)
+  - [@ohos.FusionConnectivity.partnerAgent (Device Status Notification Module) (System API)](js-apis-fusionConnectivity-partnerAgent-sys.md)
   <!--DelEnd-->
   - tag<!--connectivity-nfc-tag-arkts-->
     - [nfctech (Standard NFC Technologies)](js-apis-nfctech.md)
@@ -61,6 +65,7 @@
   - [Wi-Fi Error Codes](errorcode-wifi.md)
   - [NFC Error Codes](errorcode-nfc.md)
   - [SE Error Codes](errorcode-se.md)
+  - [Error Codes of the Converged Short-Range Service Subsystem](errorcode-fusionConnectivity.md)
 - APIs No Longer Maintained<!--connectivity-arkts-dep-->
   - [@ohos.bluetooth (Bluetooth)](js-apis-bluetooth.md)
   - [@ohos.bluetoothManager (Bluetooth)](js-apis-bluetoothManager.md)

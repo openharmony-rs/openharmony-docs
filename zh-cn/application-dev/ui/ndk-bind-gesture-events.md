@@ -1,7 +1,7 @@
 # 绑定手势事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -70,9 +70,10 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
 通过上文的示例已经了解了如何将手势绑定在节点上，接下来将分别介绍不同手势的创建方法。
 
 - 点击手势
+
   通过给组件绑定点击手势可在组件被点击时触发此回调，可指定触发回调需要的点击次数和手指个数。
 
-    <!-- @[create_tap_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+  <!-- @[create_tap_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     // 获取手势Native接口集合
@@ -84,8 +85,9 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
 
 
 - 滑动手势
+
   通过给组件绑定滑动手势可在用户滑动组件时触发回调，可指定触发回调需要的手指个数、滑动方向、滑动距离。单位为px。
-    <!-- @[create_pan_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+  <!-- @[create_pan_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     // 获取手势Native接口集合
@@ -97,9 +99,10 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
 
 
 - 长按手势
+
   通过给组件绑定长按手势可在用户长按组件时触发回调，可指定触发回调需要的手指个数、长按时间（单位毫秒）、是否连续触发。
 
-    <!-- @[create_long_press_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+  <!-- @[create_long_press_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     // 获取手势Native接口集合
@@ -112,39 +115,42 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
 
 
 - 捏合手势
+
   通过给组件绑定捏合手势可在用户捏合组件时触发回调，可指定触发回调需要的手指个数（最小为2）、捏合距离（单位px）。
 
-    <!-- @[create_pinch_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
-    
-    ``` C
-    // 获取手势Native接口集合
-    auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
-        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
-    // 创建捏合手势
-    // NUMBER_10 = 10
-    auto pinchGesture = gestureApi->createPinchGesture(1, NUMBER_10);
-    ```
+  <!-- @[create_pinch_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+  
+  ``` C
+  // 获取手势Native接口集合
+  auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
+      OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
+  // 创建捏合手势
+  // NUMBER_2 = 2，NUMBER_10 = 10
+  auto pinchGesture = gestureApi->createPinchGesture(NUMBER_2, NUMBER_10);
+  ```
 
 
 - 旋转手势
+
   通过给组件绑定旋转手势可在用户旋转组件时触发回调，可指定触发回调需要的手指个数（最小为2）、旋转角度。
 
-    <!-- @[create_rotation_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
-    
-    ``` C
-    // 获取手势Native接口集合
-    auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
-        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
-    // 创建旋转手势
-    // NUMBER_10 = 10
-    auto rotationGesture = gestureApi->createRotationGesture(1, NUMBER_10);
-    ```
+  <!-- @[create_rotation_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+  
+  ``` C
+  // 获取手势Native接口集合
+  auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
+      OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
+  // 创建旋转手势
+  // NUMBER_2 = 2，NUMBER_10 = 10
+  auto rotationGesture = gestureApi->createRotationGesture(NUMBER_2, NUMBER_10);
+  ```
 
 
 - 快滑手势
+
   通过给组件绑定快滑手势可在用户快速滑动组件时触发回调，可指定触发回调需要的手指个数（最小为1）、滑动方向、滑动速度（单位px/s）。
 
-    <!-- @[create_swiper_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+  <!-- @[create_swiper_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     // 获取手势Native接口集合
@@ -173,6 +179,7 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
 <!-- @[long_press_and_swipe_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/LongPressAndSwipeGesture.h) -->
 
 ``` C
+// LongPressAndSwipeGesture.h
 #include <arkui/native_animate.h>
 #include <arkui/native_gesture.h>
 #include <arkui/native_interface.h>
@@ -182,7 +189,7 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
 #include <hilog/log.h>
 #include "Common.h"
 #include "Function.h"
-// ···
+// ...
 ArkUI_NodeHandle LongPressAndSwipeGesture()
 {
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
@@ -327,6 +334,7 @@ ArkUI_NodeHandle LongPressAndSwipeGesture()
 <!-- @[long_press_and_flick_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/LongPressAndFlickGesture.h) -->
 
 ``` C
+// LongPressAndFlickGesture.h
 #include <arkui/native_animate.h>
 #include <arkui/native_gesture.h>
 #include <arkui/native_interface.h>
@@ -336,7 +344,7 @@ ArkUI_NodeHandle LongPressAndSwipeGesture()
 #include <hilog/log.h>
 #include "Common.h"
 #include "Function.h"
-// ···
+// ...
 
 ArkUI_NodeHandle LongPressAndFlickGesture()
 {
@@ -484,6 +492,7 @@ ArkUI_NodeHandle LongPressAndFlickGesture()
 <!-- @[swipe_and_pinch_exclusive_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/SwipeAndPinchExclusiveGesture.h) -->
 
 ``` C
+// SwipeAndPinchExclusiveGesture.h
 #include <arkui/native_animate.h>
 #include <arkui/native_gesture.h>
 #include <arkui/native_interface.h>
@@ -493,7 +502,7 @@ ArkUI_NodeHandle LongPressAndFlickGesture()
 #include <hilog/log.h>
 #include "Common.h"
 #include "Function.h"
-// ···
+// ...
 
 ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
 {

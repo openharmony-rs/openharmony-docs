@@ -31,10 +31,13 @@ CMAC通过使用分组密码（如AES）和一个密钥来生成认证码，确�
 
 7. 调用[OH_CryptoMac_GetLength](../../reference/apis-crypto-architecture-kit/capi-crypto-mac-h.md#oh_cryptomac_getlength)，获取MAC消息认证码的长度，单位为字节。
 
-```C++
+<!-- @[message_auth_cmac_single_time](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/cpp/types/project/cmac/singleTime.cpp) -->
+
+``` C++
+
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
-#include <stdio.h>
-#include <string.h>
+#include <cstdio>
+#include <cstring>
 
 static OH_CryptoSymKey *GenerateAesKey(const char *algoName)
 {
@@ -52,19 +55,10 @@ static OH_CryptoSymKey *GenerateAesKey(const char *algoName)
     return keyCtx;
 }
 
-static OH_Crypto_ErrCode doTestCmacOnce()
+static OH_Crypto_ErrCode CreateCmacContext(OH_CryptoSymKey *keyCtx, OH_CryptoMac **ctx)
 {
-    // 生成AES128密钥。
-    OH_CryptoSymKey *keyCtx = GenerateAesKey("AES128");
-    if (keyCtx == nullptr) {
-        return CRYPTO_OPERTION_ERROR;
-    }
-
-    // 创建CMAC生成器。
-    OH_CryptoMac *ctx = nullptr;
-    OH_Crypto_ErrCode ret = OH_CryptoMac_Create("CMAC", &ctx);
+    OH_Crypto_ErrCode ret = OH_CryptoMac_Create("CMAC", ctx);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoSymKey_Destroy(keyCtx);
         return ret;
     }
 
@@ -74,71 +68,112 @@ static OH_Crypto_ErrCode doTestCmacOnce()
         .data = reinterpret_cast<uint8_t *>(const_cast<char *>(cipherName)),
         .len = strlen(cipherName)
     };
-    ret = OH_CryptoMac_SetParam(ctx, CRYPTO_MAC_CIPHER_NAME_STR, &cipherNameData);
+    ret = OH_CryptoMac_SetParam(*ctx, CRYPTO_MAC_CIPHER_NAME_STR, &cipherNameData);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoMac_Destroy(ctx);
-        OH_CryptoSymKey_Destroy(keyCtx);
+        OH_CryptoMac_Destroy(*ctx);
         return ret;
     }
 
     // 初始化CMAC计算。
-    ret = OH_CryptoMac_Init(ctx, keyCtx);
+    ret = OH_CryptoMac_Init(*ctx, keyCtx);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoMac_Destroy(ctx);
-        OH_CryptoSymKey_Destroy(keyCtx);
+        OH_CryptoMac_Destroy(*ctx);
         return ret;
     }
 
+    return CRYPTO_SUCCESS;
+}
+
+static OH_Crypto_ErrCode UpdateCmacData(OH_CryptoMac *ctx)
+{
     // 一次性传入所有数据。
     const char *message = "cmacTestMessage";
     Crypto_DataBlob input = {
         .data = reinterpret_cast<uint8_t *>(const_cast<char *>(message)),
         .len = strlen(message)
     };
-    ret = OH_CryptoMac_Update(ctx, &input);
+    OH_Crypto_ErrCode ret = OH_CryptoMac_Update(ctx, &input);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoMac_Destroy(ctx);
-        OH_CryptoSymKey_Destroy(keyCtx);
         return ret;
     }
 
+    return CRYPTO_SUCCESS;
+}
+
+static OH_Crypto_ErrCode FinalizeCmac(OH_CryptoMac *ctx, Crypto_DataBlob *out, uint32_t *macLen)
+{
     // 完成CMAC计算并获取结果。
-    Crypto_DataBlob out = {0};
-    ret = OH_CryptoMac_Final(ctx, &out);
+    OH_Crypto_ErrCode ret = OH_CryptoMac_Final(ctx, out);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoMac_Destroy(ctx);
-        OH_CryptoSymKey_Destroy(keyCtx);
         return ret;
     }
 
     // 获取CMAC值的长度。
-    uint32_t macLen = 0;
-    ret = OH_CryptoMac_GetLength(ctx, &macLen);
+    ret = OH_CryptoMac_GetLength(ctx, macLen);
     if (ret != CRYPTO_SUCCESS) {
-        OH_Crypto_FreeDataBlob(&out);
-        OH_CryptoMac_Destroy(ctx);
-        OH_CryptoSymKey_Destroy(keyCtx);
+        OH_Crypto_FreeDataBlob(out);
         return ret;
+    }
+
+    return CRYPTO_SUCCESS;
+}
+
+OH_Crypto_ErrCode doTestCmacOnce()
+{
+    OH_CryptoSymKey *keyCtx = nullptr;
+    OH_CryptoMac *ctx = nullptr;
+    Crypto_DataBlob out = {0};
+    OH_Crypto_ErrCode ret = CRYPTO_SUCCESS;
+    uint32_t macLen = 0;
+
+    // 生成AES128密钥。
+    keyCtx = GenerateAesKey("AES128");
+    if (keyCtx == nullptr) {
+        ret = CRYPTO_OPERTION_ERROR;
+        goto cleanup;
+    }
+
+    // 创建CMAC上下文。
+    ret = CreateCmacContext(keyCtx, &ctx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto cleanup;
+    }
+
+    // 一次性传入所有数据。
+    ret = UpdateCmacData(ctx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto cleanup;
+    }
+
+    // 完成CMAC计算。
+    ret = FinalizeCmac(ctx, &out, &macLen);
+    if (ret != CRYPTO_SUCCESS) {
+        goto cleanup;
     }
 
     printf("CMAC calculation success, length: %u\n", macLen);
 
+cleanup:
     // 清理资源。
     OH_Crypto_FreeDataBlob(&out);
     OH_CryptoMac_Destroy(ctx);
     OH_CryptoSymKey_Destroy(keyCtx);
-    return CRYPTO_SUCCESS;
+    return ret;
 }
 ```
+
 
 ### CMAC（分段传入）
 
 与一次性传入的步骤基本相同，区别在于多次调用[OH_CryptoMac_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-mac-h.md#oh_cryptomac_update)来处理分段数据。
 
-```C++
+<!-- @[message_auth_cmac_segmentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/cpp/types/project/cmac/segmentation.cpp) -->
+
+``` C++
+
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
-#include <stdio.h>
-#include <string.h>
+#include <cstdio>
+#include <cstring>
 
 static OH_CryptoSymKey *GenerateAesKey(const char *algoName)
 {
@@ -156,19 +191,10 @@ static OH_CryptoSymKey *GenerateAesKey(const char *algoName)
     return keyCtx;
 }
 
-static OH_Crypto_ErrCode doTestCmacBySegments()
+static OH_Crypto_ErrCode CreateCmacContext(OH_CryptoSymKey *keyCtx, OH_CryptoMac **ctx)
 {
-    // 生成AES128密钥。
-    OH_CryptoSymKey *keyCtx = GenerateAesKey("AES128");
-    if (keyCtx == nullptr) {
-        return CRYPTO_OPERTION_ERROR;
-    }
-
-    // 创建CMAC生成器。
-    OH_CryptoMac *ctx = nullptr;
-    OH_Crypto_ErrCode ret = OH_CryptoMac_Create("CMAC", &ctx);
+    OH_Crypto_ErrCode ret = OH_CryptoMac_Create("CMAC", ctx);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoSymKey_Destroy(keyCtx);
         return ret;
     }
 
@@ -178,21 +204,24 @@ static OH_Crypto_ErrCode doTestCmacBySegments()
         .data = reinterpret_cast<uint8_t *>(const_cast<char *>(cipherName)),
         .len = strlen(cipherName)
     };
-    ret = OH_CryptoMac_SetParam(ctx, CRYPTO_MAC_CIPHER_NAME_STR, &cipherNameData);
+    ret = OH_CryptoMac_SetParam(*ctx, CRYPTO_MAC_CIPHER_NAME_STR, &cipherNameData);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoMac_Destroy(ctx);
-        OH_CryptoSymKey_Destroy(keyCtx);
+        OH_CryptoMac_Destroy(*ctx);
         return ret;
     }
 
     // 初始化CMAC计算。
-    ret = OH_CryptoMac_Init(ctx, keyCtx);
+    ret = OH_CryptoMac_Init(*ctx, keyCtx);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoMac_Destroy(ctx);
-        OH_CryptoSymKey_Destroy(keyCtx);
+        OH_CryptoMac_Destroy(*ctx);
         return ret;
     }
 
+    return CRYPTO_SUCCESS;
+}
+
+static OH_Crypto_ErrCode ProcessCmacSegments(OH_CryptoMac *ctx)
+{
     // 分段传入数据。
     const char *message = "aaaaa.....bbbbb.....ccccc.....ddddd.....eee";
     size_t messageLen = strlen(message);
@@ -204,39 +233,74 @@ static OH_Crypto_ErrCode doTestCmacBySegments()
             .data = reinterpret_cast<uint8_t *>(const_cast<char *>(message + i)),
             .len = currentSize
         };
-        ret = OH_CryptoMac_Update(ctx, &segment);
+        OH_Crypto_ErrCode ret = OH_CryptoMac_Update(ctx, &segment);
         if (ret != CRYPTO_SUCCESS) {
-            OH_CryptoMac_Destroy(ctx);
-            OH_CryptoSymKey_Destroy(keyCtx);
             return ret;
         }
     }
 
+    return CRYPTO_SUCCESS;
+}
+
+static OH_Crypto_ErrCode FinalizeCmac(OH_CryptoMac *ctx, Crypto_DataBlob *out, uint32_t *macLen)
+{
     // 完成CMAC计算并获取结果。
-    Crypto_DataBlob out = {0};
-    ret = OH_CryptoMac_Final(ctx, &out);
+    OH_Crypto_ErrCode ret = OH_CryptoMac_Final(ctx, out);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoMac_Destroy(ctx);
-        OH_CryptoSymKey_Destroy(keyCtx);
         return ret;
     }
 
     // 获取CMAC值的长度。
-    uint32_t macLen = 0;
-    ret = OH_CryptoMac_GetLength(ctx, &macLen);
+    ret = OH_CryptoMac_GetLength(ctx, macLen);
     if (ret != CRYPTO_SUCCESS) {
-        OH_Crypto_FreeDataBlob(&out);
-        OH_CryptoMac_Destroy(ctx);
-        OH_CryptoSymKey_Destroy(keyCtx);
+        OH_Crypto_FreeDataBlob(out);
         return ret;
+    }
+
+    return CRYPTO_SUCCESS;
+}
+
+OH_Crypto_ErrCode doTestCmacBySegments()
+{
+    OH_CryptoSymKey *keyCtx = nullptr;
+    OH_CryptoMac *ctx = nullptr;
+    Crypto_DataBlob out = {0};
+    OH_Crypto_ErrCode ret = CRYPTO_SUCCESS;
+    uint32_t macLen = 0;
+
+    // 生成AES128密钥。
+    keyCtx = GenerateAesKey("AES128");
+    if (keyCtx == nullptr) {
+        ret = CRYPTO_OPERTION_ERROR;
+        goto cleanup;
+    }
+
+    // 创建CMAC上下文。
+    ret = CreateCmacContext(keyCtx, &ctx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto cleanup;
+    }
+
+    // 分段处理数据。
+    ret = ProcessCmacSegments(ctx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto cleanup;
+    }
+
+    // 完成CMAC计算。
+    ret = FinalizeCmac(ctx, &out, &macLen);
+    if (ret != CRYPTO_SUCCESS) {
+        goto cleanup;
     }
 
     printf("CMAC calculation success, length: %u\n", macLen);
 
+cleanup:
     // 清理资源。
     OH_Crypto_FreeDataBlob(&out);
     OH_CryptoMac_Destroy(ctx);
     OH_CryptoSymKey_Destroy(keyCtx);
-    return CRYPTO_SUCCESS;
+    return ret;
 }
 ```
+

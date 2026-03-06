@@ -447,7 +447,7 @@ on(type: 'scrollEvent', options: observer.ObserverOptions, callback: Callback\<o
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'scrollEvent'，即滚动事件的开始和结束。 |
-| options  | [observer.ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | Observer选项，包含指定监听的滚动组件的id。                    |
+| options  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | Observer选项，包含指定监听的滚动组件的id。                    |
 | callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | 是   | 回调函数。返回滚动事件的信息。                 |
 
 **示例：**
@@ -469,7 +469,7 @@ off(type: 'scrollEvent', options: observer.ObserverOptions, callback?: Callback\
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'scrollEvent'，即滚动事件的开始和结束。 |
-| options  | [observer.ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | Observer选项，包含指定监听的滚动组件的id。                    |
+| options  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | Observer选项，包含指定监听的滚动组件的id。                    |
 | callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | 否   | 回调函数。返回滚动事件的信息。不传参数时，取消所有滚动事件的监听回调。                 |
 
 **示例：**
@@ -1676,7 +1676,7 @@ off(type: 'tabChange', config: observer.ObserverOptions, callback?: Callback\<ob
 
 参考[on('tabChange')](#ontabchange22-1)接口示例。
 
-## uiObserver.on('textChange')<sup>22+</sup>
+## on('textChange')<sup>22+</sup>
 
 on(type: 'textChange', callback: Callback\<observer.TextChangeEventInfo\>): void
 
@@ -1779,7 +1779,7 @@ struct TextUiObserver {
   }
 }
 ```
-## uiObserver.off('textChange')<sup>22+</sup>
+## off('textChange')<sup>22+</sup>
 
 off(type: 'textChange', callback?: Callback\<observer.TextChangeEventInfo\>): void
 
@@ -1798,9 +1798,9 @@ off(type: 'textChange', callback?: Callback\<observer.TextChangeEventInfo\>): vo
 
 **示例：**
 
-参考[uiObserver.on('textChange')](#uiobserverontextchange22)示例。
+参考[on('textChange')](#ontextchange22)示例。
 
-## uiObserver.on('textChange')<sup>22+</sup>
+## on('textChange')<sup>22+</sup>
 
 on(type: 'textChange', identity: observer.ObserverOptions, callback:Callback\<observer.TextChangeEventInfo\>): void
 
@@ -1820,9 +1820,9 @@ on(type: 'textChange', identity: observer.ObserverOptions, callback:Callback\<ob
 
 **示例：**
 
-参考[uiObserver.on('textChange')](#uiobserverontextchange22)示例。
+参考[on('textChange')](#ontextchange22)示例。
 
-## uiObserver.off('textChange')<sup>22+</sup>
+## off('textChange')<sup>22+</sup>
 
 off(type: 'textChange', identity: observer.ObserverOptions, callback?: Callback\<observer.TextChangeEventInfo\>): void
 
@@ -1842,7 +1842,7 @@ off(type: 'textChange', identity: observer.ObserverOptions, callback?: Callback\
 
 **示例：**
 
-参考[uiObserver.on('textChange')](#uiobserverontextchange22)示例。
+参考[on('textChange')](#ontextchange22)示例。
 
 ## on('beforePanStart')<sup>19+</sup>
 
@@ -2018,7 +2018,7 @@ on(type: 'afterPanStart', callback: PanListenerCallback): void
 
 off(type: 'afterPanStart', callback?: PanListenerCallback): void
 
-取消[on('afterPanStart')](#onafterpanstart19)监听Pan手势[onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#事件)事件执行后的callback回调。
+取消[on('afterPanStart')](#onafterpanstart19)监听Pan手势[onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#onactionstart)事件执行后的callback回调。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 

@@ -142,7 +142,7 @@
        // 当前数据库存在并且版本为1，数据库需要从1版本升级到2版本
        if (storeVersion === 1) {
          // version = 1：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS)
-         //=> version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY)
+         // => version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY)
          try {
            await transaction.execute('ALTER TABLE EMPLOYEE ADD COLUMN IDENTITY UNLIMITED INT');
            storeVersion = 2;
@@ -157,7 +157,7 @@
        // 当前数据库存在并且版本为2，数据库需要从2版本升级到3版本
        if (storeVersion === 2) {
          // version = 2：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, ADDRESS, IDENTITY)
-         //=> version = 3：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY)
+         // => version = 3：表结构：EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY)
          try {
            await transaction.execute('ALTER TABLE EMPLOYEE DROP COLUMN ADDRESS');
            storeVersion = 3;

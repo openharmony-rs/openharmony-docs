@@ -7,7 +7,7 @@
 <!--Tester: @yhl0101; @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-- [Introduction to ArkGraphics 2D](arkgraphics2D-introduction.md)
+- [About This Kit](arkgraphics2D-introduction.md)
 - Using Variable Frame Rates<!--displaysync-->
   - [Introduction to Variable Frame Rates](displaysync-overview.md)
   - [Requesting Frame Rates for Animations](displaysync-animation.md)

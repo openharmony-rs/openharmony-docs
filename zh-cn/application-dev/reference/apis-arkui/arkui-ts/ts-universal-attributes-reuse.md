@@ -9,7 +9,7 @@
 
 reuse属性用于给\@ReusableV2装饰的自定义组件指定复用选项。
 
-本文档仅为API参考说明。实际功能使用与限制见[@ReusableV2装饰器：组件复用](../../../ui/state-management/arkts-new-reusableV2.md)。
+本文档仅为API参考说明。实际功能使用与限制见[@ReusableV2装饰器：V2组件复用](../../../ui/state-management/arkts-new-reusableV2.md)。
 
 >  **说明：**
 >

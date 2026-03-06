@@ -356,7 +356,7 @@ struct WebComponent {
 
 ``` TypeScript
 import { util } from '@kit.ArkTS';
-import fileStream from '@ohos.file.fs';
+import { fileIo as fs } from '@kit.CoreFileKit';
 
 const helper = new util.Base64Helper();
 
@@ -386,7 +386,7 @@ export namespace  DownloadUtil {
 
   export function fileExists(filePath: string): boolean {
     try {
-      return fileStream.accessSync(filePath);
+      return fs.accessSync(filePath);
     } catch (error) {
       return false;
     }
@@ -394,19 +394,19 @@ export namespace  DownloadUtil {
 
   export function mkDirectorySync(directoryPath: string, recursion?: boolean): void {
     try {
-      fileStream.mkdirSync(directoryPath, recursion ?? false);
+      fs.mkdirSync(directoryPath, recursion ?? false);
     } catch (error) {
       console.error(`mk dir error. err message: ${error.message}, err code: ${error.code}`);
     }
   }
 
   export function writeToFileSync(dir: string, fileName: string, msg: string): void {
-    let file = fileStream.openSync(dir + '/' + fileName, fileStream.OpenMode.WRITE_ONLY | fileStream.OpenMode.CREATE);
-    fileStream.writeSync(file.fd, msg);
+    let file = fs.openSync(dir + '/' + fileName, fs.OpenMode.WRITE_ONLY | fs.OpenMode.CREATE);
+    fs.writeSync(file.fd, msg);
   }
 
   export function readFileSync(dir: string, fileName: string): string {
-    return fileStream.readTextSync(dir + '/' + fileName);
+    return fs.readTextSync(dir + '/' + fileName);
   }
 
 }

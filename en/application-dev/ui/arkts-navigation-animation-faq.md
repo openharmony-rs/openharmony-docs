@@ -1,16 +1,16 @@
-# Navigation Animation FAQs
+# FAQs About Navigation Animation
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## Dialog-Type NavDestination Animation Is Not Smooth
 
 **Symptom**
 
-During use of the default transition for **NavDestinationMode.DIALOG**, the following issues occur:
+When the default transition animation [NavDestinationMode.DIALOG](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#navdestinationmode11) is used, the following two problems occur:
 
 - If a mask background color is set for the page, the mask does not disappear immediately when the page is popped; it persists until the content has fully slid out.
 
@@ -24,7 +24,7 @@ Expected behavior: The mask should fade out while the content area slides down.
 
 **Solution**
 
-Explicitly control the background color animation in the **onWillAppear** and **onWillDisappear** lifecycle callbacks. Example:
+Execute the background color animation in the [onWillAppear](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onwillappear12) and [onWillDisappear](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onwilldisappear12) life cycles. The following is an example:
 
 <!-- @[DialogNavDesAnimation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/animation/DialogNavDestination.ets) -->
 
@@ -135,17 +135,13 @@ this.stack.pushPath({ name: 'animation-BasicNavDestination' }, { launchMode: Lau
 
 The system does not provide an end callback for the default transition animation. Only [custom transition animations](./arkts-navigation-animation.md#defining-a-custom-transition) support an end callback. Related APIs: [NavDestinationTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#navdestinationtransition15) and [NavigationAnimatedTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationanimatedtransition11).
 
-## Are There Different Pre-Built System Transition Types?
-
-Yes. Use the [NavDestination.systemTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#systemtransition14) API, which provides a set of predefined animation type enumerations.
-
 ## How Do I Implement a Shared Element Transition Between Navigation and NavDestination Components?
 
 Shared element transitions are only supported between **NavDestination** pages; transitions between the **NavBar** and a **NavDestination** do not support shared element transitions.
 
-To implement a shared element transition in **Navigation**, use the [geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md) API and pay attention to the following:
+The shared element transition requires the [geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md) API call and following operations:
 
-- [Disable transitions](./arkts-navigation-animation.md#disabling-transitions).
+- [Disable the transition](./arkts-navigation-animation.md).
 - Execute navigation operations inside an [animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) closure.
 - Apply [geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md) to the content components, not to the **NavDestination** itself.
 
@@ -156,7 +152,3 @@ For details, see [Shared Element Transition](./arkts-navigation-animation.md#sha
 The [zIndex](../reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md#zindex) attribute modifies a component's display layer. Setting it on the **NavDestination** component overrides the system-managed layering and may break transition animations. As such, avoid setting **zIndex** directly on **NavDestination**.
 
 Similarly, avoid setting the following attributes directly on **NavDestination** (they may conflict with system animations): [transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transition), [geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md), [sharedTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md#sharedtransition), and [animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md). If these effects are required for your design, apply the attributes to the content nodes inside the **NavDestination** component instead.
-
-## What Is the Default Transition Animation Duration for NavDestination?
-
-The default transition uses a [spring curve](./arkts-spring-curve.md). Its duration depends on the curve's physical parameters and may vary across devices. Therefore, the default animation duration is not controllable. Avoid couple the default duration with service logic. To listen for animation completion, implement a [custom transition](./arkts-navigation-animation.md#defining-a-custom-transition).

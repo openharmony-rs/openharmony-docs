@@ -1,5 +1,12 @@
 # ArkTS Syntax Usage
 
+<!--Kit: ArkUI--> 
+<!--Subsystem: ArkUI--> 
+<!--Owner: @zzq212050299;@zhangboren;@maorh-->  
+<!--Designer: @s10021109;@keerecles-->  
+<!--Tester: @TerryTsao--> 
+<!--Adviser: @zhang_yixin13-->
+<!--deprecated_code_no_check-->
 
 ## How do I dynamically create components using code in ArkUI? (API version 9)
 
@@ -7,12 +14,12 @@
 
 ArkUI uses the ArkTS declarative development paradigm. Developers cannot hold component instances. During declaration, you can control component creation by rendering control syntax and dynamically building UI elements.
 
-**Example**
+**Code Example**
 
-```
+```ts
 // Create a component using the if statement.
 if(this.isTrue) {
-  Text("Create Text Component").fontSize(30)
+  Text ("Create Text Component").fontSize (30)
 }
 // Create a component using the ForEach statement.
 ForEach(this.nums,(item) => {
@@ -22,7 +29,7 @@ ForEach(this.nums,(item) => {
 
 **Reference**
 
-[Overview of Rendering Control](../ui/rendering-control/arkts-rendering-control-overview.md)
+[Rendering Control Overview](../ui/rendering-control/arkts-rendering-control-overview.md)
 
 
 ## What is the difference between an @Builder decorated method and a regular method? (API version 9)
@@ -55,15 +62,19 @@ The \@Builder decorated method allows for use of a custom component, while regul
 
 ## How do I listen for object changes in an array? (API version 9)
 
+**Symptom**
+
+Object instance is stored in an array, and object attribute changes need to be listened.
+
 **Solution**
 
 To listen for object changes in an array, use the \@Observed and \@ObjectLink decorators. \@Observed applies to classes, and \@ObjectLink applies to variables.
 
-**Example**
+**Code Example**
 
 1. Use \@Observed on a class.
 
-   ```
+   ```ts
    @Observed
    class ClassA {
      public name: string
@@ -79,7 +90,7 @@ To listen for object changes in an array, use the \@Observed and \@ObjectLink de
 
 2. Use \@ObjectLink on a component variable.
 
-   ```
+   ```ts
    @Component
    struct ViewA {
      label: string = 'ViewA1'
@@ -98,22 +109,22 @@ To listen for object changes in an array, use the \@Observed and \@ObjectLink de
 
 **Reference**
 
-[\@Observed and \@ObjectLink: Observing Property Changes in Nested Class Objects](../ui/state-management/arkts-observed-and-objectlink.md)
+[@Observed and @ObjectLink Decorators: Observing Property Changes in Nested Class Objects](../ui/state-management/arkts-observed-and-objectlink.md)
 
 
 ## How do I transfer values through the parent component to \@Link decorated variables in a child component? (API version 9)
 
 **Solution**
 
-To enable a child component to receive the value from the parent component through \@Link, **'$'** must be used to first establish a reference relationship between variables in the child and parent components.  
+To enable a child component to receive the value from the parent component through \@Link, **'$'** must be used to first establish a reference relationship between variables in the child and parent components, so that synchronization can be implemented.
 
-**Example**
+**Code Example**
 
-The \@Link semantics are derived from the **'$'** operator. In other words, **\$isPlaying** enables two-way binding of the internal state **this.isPlaying**. When the button in the **PlayButton** child component is touched, the value of the @Link decorated variable is changed, and **PlayButton** together with the **Image** and **Text** components of the parent component is refreshed. Similarly, when the button in the parent component is touched, the value of **this.isPlaying** is changed, and **PlayButton** together with the **Text** and **Button** components of the parent component is refreshed.
+The **\@Link** semantics are derived from the **'$'** operator. In other words, **\$isPlaying** is the two-way binding of the internal state **this.isPlaying**. When the button in the **PlayButton** child component is touched, the value of the @Link decorated variable is changed, and **PlayButton** together with the **Image** and **Text** components of the parent component is refreshed. Similarly, when the button in the parent component is touched, the value of **this.isPlaying** is changed, and **PlayButton** together with the **Text** and **Button** components of the parent component is refreshed.
 
 1. Use the \@State decorator in the parent component and use the **'$'** operator to create a reference for transferring data.
 
-   ```
+   ```ts
    @Entry
    @Component
    struct Player {
@@ -135,7 +146,7 @@ The \@Link semantics are derived from the **'$'** operator. In other words, **\$
 
 2. Use @Link in the child component to receive data.
 
-   ```
+   ```ts
    @Component
    struct PlayButton {
      @Link buttonPlaying: boolean
@@ -169,7 +180,7 @@ The \@Link semantics are derived from the **'$'** operator. In other words, **\$
 
 1. Include a child component in the component. Employ @Provide in the component to provide the **reviewVote** parameter to its grandchild component.
 
-   ```
+   ```ts
    @Entry
    @Component
    struct Father{
@@ -187,7 +198,7 @@ The \@Link semantics are derived from the **'$'** operator. In other words, **\$
 
 2. Include the grandchild component in the child component.
 
-   ```
+   ```ts
    @Component
    struct Son{
      build() {
@@ -200,7 +211,7 @@ The \@Link semantics are derived from the **'$'** operator. In other words, **\$
 
 3. Employ @Consume in the grandchild component to receive the **reviewVote** parameter.
 
-   ```
+   ```ts
    @Component
    struct GrandSon{
      @Consume("reviewVote") reviewVotes: number
@@ -218,7 +229,7 @@ The \@Link semantics are derived from the **'$'** operator. In other words, **\$
 
 1. Decorate **reviewVote** with @State in the component **Father**.
 
-   ```
+   ```ts
    @Entry
    @Component
    struct Father {
@@ -236,7 +247,7 @@ The \@Link semantics are derived from the **'$'** operator. In other words, **\$
 
 2. Decorate **reviewVote** with \@Link in the child component **Son** to receive the value passed from **Father**.
 
-   ```
+   ```ts
    @Component
    struct Son{
      @Link reviewVotes: number;
@@ -251,7 +262,7 @@ The \@Link semantics are derived from the **'$'** operator. In other words, **\$
 
 3. Decorate **reviewVote** with \@Link in the grandchild component **GrandSon** to receive the value passed from **Son**.
 
-   ```
+   ```ts
    @Component
    struct Grandson{
      @Link reviewVotes: number;
@@ -272,16 +283,16 @@ The \@Link semantics are derived from the **'$'** operator. In other words, **\$
 
 The following is an example to illustrate how to define a callback function:
 
-1. Define the callback function.
+1. Defining a Callback
 
-   ```
+   ```ts
    // Define a callback function that contains two parameters and returns void.
    myCallback: (a:number,b:string) => void
    ```
 
 2. Initialize the callback function by assigning values.
 
-   ```
+   ```ts
    aboutToAppear() {
      // Initialize the callback function.
      this.myCallback= (a,b)=>{
@@ -303,9 +314,9 @@ Use the state management module for the purpose. Currently, the minimum update i
 
 You can use the arrow function for this purpose.
 
-**Example**
+**Code Example**
 
-```
+```c
 const obj = {
   start:() => {
     return this.num
@@ -324,9 +335,9 @@ Data needs to be obtained before page rendering so that the page can be rendered
 
 In the **aboutToAppear** function, use an asynchronous API to obtain page data. After the data is obtained, the page is automatically refreshed with the \@State decorated variable.
 
-**Example**
+**Code Example**
 
-```
+```ts
 @Entry
 @Component
 struct Test6Page {
@@ -353,11 +364,11 @@ struct Test6Page {
 ```
 
 
-## How do I display sensor data in the Text component on the UI? (API version 9)
+## How do I display sensor data in the \<Text> component on the UI? (API version 9)
 
 **Solution**
 
-The type of data returned by the sensor is double. To display it in the Text component, first convert the data from double to string.
+The type of data returned by the sensor is double. To display it in the \<Text> component, first convert the data from double to string.
 
 
 ## How do I listen for screen rotation events? (API version 9)
@@ -366,7 +377,7 @@ The type of data returned by the sensor is double. To display it in the Text com
 
 To listen for screen rotation events, use the **mediaquery** API.
 
-```
+```ts
 import mediaquery from '@ohos.mediaquery'
 let listener = mediaquery.matchMediaSync('(orientation: landscape)'); // Listen for landscape events.
 function onPortrait(mediaQueryResult) {
@@ -376,7 +387,7 @@ function onPortrait(mediaQueryResult) {
    // do something here
   }
 }
-listener.on('change', onPortrait) // Register a callback.
+listener.on('change', onPortrait) // Register the media query listener.
 listener.off('change', onPortrait) // Deregister a callback.
 ```
 
@@ -404,16 +415,16 @@ To share an instance across pages, it must be created at the UIAbility or applic
 
 If the string is in the yyyy-MM-dd format, you can convert it to a Date object by calling **new Date("yyyy-MM-dd"\)**.
 
-```
+```ts
 new Date("2021-05-23");
 new Date("2020/2/29");
-new Date("2020-14-03");
-new Date("14-02-2021");
+new Date("2020-11-03");
+new Date("11-02-2021");
 ```
 
-If the string is in any other format, you can convert it to a Date object by calling **new Date(year:number,month:number,day?:number,hour?:number,minute?:number,second?:number,ms?:number)**.
+If the string is in other formats, you can convert it to a date object by calling **new Date(year:number,month:number,day?:number,hour?:number,minute?:number,second?:number,ms?:number)**.
 
-```
+```ts
 // Syntax for creating a date based on parameters:
 new Date(yearValue, IndexOfMonth, dayValue, hours, minutes, seconds)
 ```
@@ -439,11 +450,11 @@ Pass the date parameters as arguments.
 
 Refer to the following code:
 
-```
-stringToArray(str:string) {
-  var arr = [];
-  for(var i = 0,j = str.length;i<j;++i) {
- arr.push(str.charCodeAt(i))
+```ts
+function stringToArray(testString : string): number[] {
+  let arr : number[] = [];
+  for(let i : number = 0, j : number = testString.length; i < j; ++i) {
+    arr.push(testString.charCodeAt(i));
   }
   return arr;
 }
@@ -469,7 +480,7 @@ Use **import** and **export** statements.
 
 - Exporting namespaces from the database:
 
-  ```
+  ```ts
   namespace Util{
       export function getTime(){
           return Date.now()
@@ -480,7 +491,7 @@ Use **import** and **export** statements.
 
 - Importing namespaces
 
-  ```
+  ```ts
   import Util from './util'
   Util.getTime()
   ```
@@ -514,9 +525,9 @@ The data returned by the server is encoded using Base64 in XML format and needs 
 
 Use the Base64-related APIs in the **util** module to decode data, and then use the **convertxml** module to parse data in XML format.
 
-**Example**
+**Code Example**
 
-```
+```ts
 import convertxml from '@ohos.convertxml';
 import util from '@ohos.util';
 
@@ -603,15 +614,15 @@ None of the above restrictions apply to anonymous function implementations of ev
 
 **Symptom**
 
- 
+An application requires that a badge be set for each of the four corners of an image.
 
 **Solution**
 
 You can use absolute positioning to set the offset of the element anchor relative to the top start point of the parent container. In the layout container, setting this attribute does not affect the layout of the parent container.
 
-**Example**
+Example:
 
-```
+```ts
 @Entry
 @Component
 struct PositionExample2 {
@@ -662,53 +673,49 @@ No. The Worker thread and the main thread are not in the same context. They inte
 
 **Symptom**
 
- 
+How do I display different application icons for different device types?
 
 **Solution**
 
 To configure your application icon to show on different device types, use resource qualifiers.
 
-**Example**
+**Sample Code**
 
 1. Create a resource directory and add resource files to the directory. In this example, a **tablet** resource directory is created in **src/main/resources** and a **media** resource folder in the **tablet** directory.
 
-```
-├─base
-│  ├─element
-│  ├─media
-│  └─profile
-├─rawfile
-├─tablet
-│  ├─element
-│  └─media
-```
+   ```text
+   ├─base
+   │  ├─element
+   │  ├─media
+   │  └─profile
+   ├─rawfile
+   ├─tablet
+   │  ├─element
+   │  └─media
+   ```
 
 2. Add the icon file to be displayed when the device type is tablet to the **media** folder. Reference the icon file on the UI.
 
-```
-@Entry @Component struct Index { build() {
-   Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-     Text($r("app.string.my_string"))
-       .fontSize($r("app.float.my_float"))
-       .fontColor($r("app.color.my_color"))
-     Image($r("app.media.my_image"))
-       .width(100)
-       .height(100)
-   }
-   .width('100%')
-   .height('100%') } }
-```
-
-**Reference**
-
- 
+   ```ts
+   @Entry @Component struct Index { build() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+        Text($r("app.string.my_string"))
+          .fontSize($r("app.float.my_float"))
+          .fontColor($r("app.color.my_color"))
+        Image($r("app.media.my_image"))
+          .width(100)
+          .height(100)
+      }
+      .width('100%')
+      .height('100%') } }
+   ```
 
 
 ## How do I prevent this in a method from changing to 'undefined' when the method is called? (API version 9)
 
 **Symptom**
 
- 
+How do I specify the instance pointed by **this**?
 
 **Solution**
 
@@ -721,7 +728,7 @@ Method 2: Use the arrow function.
 
 **Solution**
 
-**systemTime.getCurrentTime(false)** is equivalent to **new Date().getTime()**, returning the number of milliseconds since January 1, 1970. **systemTime.getCurrentTime(true)** returns the number of nanoseconds since January 1, 1970. The system time is used in both APIs.
+**systemTime.getCurrentTime(false)** is equivalent to **new Date().getTime()**, returning the number of milliseconds since January 1, 1970. **systemTime.getCurrentTime(true)** returns the number of nanoseconds since January 1, 1970. Both methods return the system time.
 
 
 ## How do I implement the ArkTS counterpart of the JS slot feature? (API version 9)
@@ -732,14 +739,14 @@ Use @Build and @BuilderParam in ArkTS.
 
 **Reference**
 
-[@BuilderParam Decorator: @Builder Function Reference](../ui/state-management/arkts-builderparam.md)
+[@BuilderParam Decorator: Referencing the @Builder Function](../ui/state-management/arkts-builderparam.md)
 
 
 ## Why is text not centered vertically when lineHeight is set? (API version 9)
 
-**Cause**
+**Possible Cause**
 
-Text in the **Text** component is centered by default. You do not need to set the **lineHeight** attribute. As the text is drawn from the bottom, an appropriate line height can have the text centered. However, if the line height is too large, the text appears aligned toward the bottom. In general cases, use the **lineHeight** attribute together with the **padding** attribute to adjust the line spacing.
+Text in the **Text** component is centered by default. You do not need to set the **lineHeight** attribute. Text is rendered from the bottom. Setting an appropriate lineHeight can achieve a centering effect for the text; however, if **lineHeight** is set too high, the text will appear slightly lower. Generally, the **lineHeight** attribute is used in conjunction with the **padding** attribute to adjust the vertical line spacing within the **Text** component.
 
 **Reference**
 
@@ -750,9 +757,9 @@ Text in the **Text** component is centered by default. You do not need to set th
 
 **Solution**
 
-Use the global function **encodeURI** for encoding and **decodeURI** for decoding. For example, the space character "" is encoded as %20.
+Use the global function **encodeURI** for encoding and **decodeURI** for decoding. For example, the space character ""is encoded as %20.
 
-```
+```ts
 let a = encodeURI(" ")
 console.log(a) // %20
 ```
@@ -771,7 +778,7 @@ You can use the **convert** API of the **ConvertXML** module to parse XML text i
 
 ## What should I do if the .stateStyles doesn't conform standard error is reported with the use of the @Styles decorator? (API version 9)
 
-**Cause**
+**Possible Cause**
 
 The @Styles decorator is used for non-universal attributes.
 
@@ -780,17 +787,17 @@ The @Styles decorator is used for non-universal attributes.
 Use the @Styles decorator only for non-universal attributes. Alternatively, use Builder to extract common components.
 
 
-## When do I use $$ for the Radio component? (API version 9)
+## When do I use $$ for the \<Radio> component? (API version 9)
 
 **Solution**
 
-You can use **$$** for two-way binding of a variable for the **Radio** component. In this way, changes to the variable trigger re-render of only the owning component, improving the rendering speed.
+You can use **$$** for two-way binding of a variable for the **\<Radio>** component. In this way, changes to the variable trigger re-render of only the owning component, improving the rendering speed.
 
-When the state of the **Radio** component changes, the bound variable is not automatically updated.
+When the state of the **\<Radio>** component changes, the bound variable is not automatically updated.
 
 **Reference**
 
-[$$ Syntax: Two-Way Synchronization of Built-in Components](../ui/state-management/arkts-two-way-sync.md)
+[Two-Way Synchronization for Built-in Components](../ui/state-management/arkts-two-way-sync.md)
 
 ## What should I do if ForEach does not work on a real device?
 
@@ -798,7 +805,7 @@ When the state of the **Radio** component changes, the bound variable is not aut
 
 **ForEach** works in the previewer, but not on a real device.
 
-**Cause**
+**Possible Cause**
 
 If the system version on the real device is 3.2 beta5 or later, the minimum update policy is enabled by default.
 
@@ -808,7 +815,7 @@ However, minimum update is not enabled in DevEco Studio of an earlier version. A
 
 Add the **metadata** configuration item to the **module.json5** file.
 
-```
+```ts
 {
   "module": {
     "metadata": [
@@ -820,7 +827,7 @@ Add the **metadata** configuration item to the **module.json5** file.
 }
 ```
 
-## Does AppStorage allow for object sharing between threads? If not, what's the workaround? (API version 10)
+## Does AppStorage support object sharing between threads? Why? What is the recommended alternative? (API version 10)
 
 **Solution**
 
@@ -832,7 +839,7 @@ As AppStorage must run on the UI thread, it does not allow for object sharing wi
 
 **Reference**
 
-[AppStorage: Application-wide UI State Storage](../ui/state-management/arkts-appstorage.md)
+[AppStorage: Storing Application-wide UI State](../ui/state-management/arkts-appstorage.md)
 
 ## How do I register custom fonts? Where can I find the recommended font resources? How do I obtain them? (API version 10)
 
@@ -845,7 +852,7 @@ To reference custom font resources, the $rawfile mode is recommended. The resour
 
 [@ohos.font (Custom Font Registration)](../reference/apis-arkui/js-apis-font.md)
 
-## How does the Text component load Unicode characters? (API version 10)
+## How does the \<Text> component load Unicode characters? (API version 10)
 
 **Solution**
 
@@ -870,11 +877,11 @@ struct text {
 
 **Solution**
 
-ArkUI provides a more lightweight mechanism for reusing UI elements: \@Builder. An \@Builder decorated function is a special function that serves similar purposes as the **build** function. The \@Builder decorated function follows the same syntax rules as the **build()** function. You can abstract reusable UI elements into a method and call the method in **build**.
-ArkUI also provides @BuilderParam, a decorator used to decorate a custom component variable of type Reference to an \@Builder method. When initializing a custom component, you can add the specific feature to it by assigning a value to the variable. This decorator can be used to declare an element of any UI description, similar to a slot placeholder.
- 
+ArkUI provides a lightweight mechanism for reusing UI elements, that is, @Builder. A function decorated by @Builder follows the build() function syntax, allowing developers to abstract frequently used UI elements into a method that can be called within the build method.
+ArkUI also offers the @BuilderParam decorator, which is used to decorate a custom component variable of type Reference to an @Builder method. When initializing a custom component, you can add a specific feature to it by assigning a value to the variable. This decorator can be used to declare an element of any UI description, similar to a slot placeholder.
+See @Builder and @BuilderParam.
 
 **Reference**
 
 1. [@Builder Decorator: Custom Builder Function](../ui/state-management/arkts-builder.md)
-2. [@BuilderParam Decorator: @Builder Function Reference](../ui/state-management/arkts-builderparam.md)
+2. [@BuilderParam Decorator: Referencing the @Builder Function](../ui/state-management/arkts-builderparam.md)

@@ -44,7 +44,7 @@ struct WebComponent {
 }
 ```
 
-You can also use the [setLazyInitializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#setlazyinitializewebengine22) API to skip ArkWeb kernel initialization when the value of a single cookie is set to **value=test** for **www\.example.com**, thereby reducing the [configCookieSync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11) API call time. For details about features and usage of other APIs, see [WebCookieManager()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md).
+Since API version 22, you can use the [setLazyInitializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#setlazyinitializewebengine22) API to skip ArkWeb kernel initialization when the value of a single cookie is set to **value=test** for **www\.example.com**, thereby reducing the [configCookieSync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#configcookiesync11) API call time. For details about features and usage of other APIs, see [WebCookieManager()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md).
 
 <!-- @[set_lazy_initialize_web_engine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/CookieManagement_LazyInitializeWebEngine.ets) -->
 

@@ -42,31 +42,31 @@ The following describes how to configure a static shortcut in a project.
     {
       "shortcuts": [
        {
-          "shortcutId": "id_test1",  // Shortcut ID. If an application has multiple shortcuts, this field can be used as the unique identifier of a shortcut. This field cannot be configured using the resource index (**$string**).
-          "label": "$string:add",  // Shortcut name.
-          "icon": "$media:add_icon", // Shortcut icon. You need to add an image named add_icon to entry/src/main/resources/base/media.
+          "shortcutId": "id_test1",
+          "label": "$string:add",
+          "icon": "$media:add_icon",
           "wants": [
             {
-              "bundleName": "com.ohos.hello",   // Bundle name of the component to start.
-              "moduleName": "entry",    // Module name of the component to start.
-              "abilityName": "EntryAbility1",   // Ability name of the component to start.
+              "bundleName": "com.ohos.hello",
+              "moduleName": "entry",
+              "abilityName": "EntryAbility1",
               "parameters": {
-                "testKey": "testValue"   // Custom data of the started shortcut.
+                "testKey": "testValue"
               }
             }
           ]
         },
         {
-          "shortcutId": "id_test2",  // Shortcut ID. If an application has multiple shortcuts, this field can be used as the unique identifier of a shortcut. This field cannot be configured using the resource index (**$string**).
-          "label": "$string:share",  // Shortcut name.
-          "icon": "$media:share_icon", // Shortcut icon. You need to add an image named share_icon to entry/src/main/resources/base/media.
+          "shortcutId": "id_test2",
+          "label": "$string:share",
+          "icon": "$media:share_icon",
           "wants": [
             {
-              "bundleName": "com.ohos.hello",   // Bundle name of the component to start.
-              "moduleName": "entry",    // Module name of the component to start.
-              "abilityName": "EntryAbility",   // Component name of the component to start.
+              "bundleName": "com.ohos.hello",
+              "moduleName": "entry",
+              "abilityName": "EntryAbility",
               "parameters": {
-                "testKey": "testValue"   // Custom data of the started shortcut.
+                "testKey": "testValue"
               }
             }
           ]

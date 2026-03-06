@@ -38,6 +38,74 @@
 | 24 | EMFILE | Too many open files |
 | 25 | ENOTTY | Inappropriate ioctl for device |
 | 26 | ETXTBSY | Text file busy |
+| 27 | EFBIG |File too large |
+| 28 | ENOSPC |No space left on device |
+| 29 | ESPIPE |Illegal seek |
+| 30 | EROFS |Read-only file system |
+| 31 | EMLINK |Too many links |
+| 32 | EPIPE |Broken pipe |
+| 33 | EDOM |Math argument out of domain of func |
+| 34 | ERANGE |Math result not representable |
+| 35 | EDEADLK |Resource deadlock would occur |
+| 36 | ENAMETOOLONG |File name too long |
+| 37 | ENOLCK |No record locks available |
+| 38 | ENOSYS |Function not implemented |
+| 39 | ENOTEMPTY |Directory not empty |
+| 40 | ELOOP |Too many symbolic links encountered |
+| EAGAIN| EWOULDBLOCK |Operation would block |
+| 42 | ENOMSG |No message of desired type |
+| 43 | EIDRM |Identifier removed |
+| 44 | ECHRNG |Channel number out of range |
+| 45 | EL2NSYNC |Level 2 not synchronized |
+| 46 | EL3HLT |Level 3 halted |
+| 47 | EL3RST |Level 3 reset |
+| 48 | ELNRNG |Link number out of range |
+| 49 | EUNATCH |Protocol driver not attached |
+| 50 | ENOCSI |No CSI structure available |
+| 51 | EL2HLT |Level 2 halted |
+| 52 | EBADE |Invalid exchange |
+| 53 | EBADR |Invalid request descriptor |
+| 54 | EXFULL |Exchange full |
+| 55 | ENOANO |No anode |
+| 56 | EBADRQC | Invalid request code |
+| 57 | EBADSLT | Invalid slot |
+| 59 | EBFONT |Bad font file format |
+| 60 | ENOSTR |Device not a stream |
+| 61 | ENODATA | No data available |
+| 62 | ETIME |Timer expired |
+| 63 | ENOSR |Out of streams resources |
+| 64 | ENONET |Machine is not on the network |
+| 65 | ENOPKG |Package not installed |
+| 66 | EREMOTE | Object is remote |
+| 67 | ENOLINK | Link has been severed |
+| 68 | EADV |Advertise error |
+| 69 | ESRMNT |Srmount error |
+| 70 | ECOMM |Communication error on send |
+| 71 | EPROTO |Protocol error |
+| 72 | EMULTIHOP |Multihop attempted |
+| 73 | EDOTDOT | RFS specific error |
+| 74 | EBADMSG | Not a data message |
+| 75 | EOVERFLOW |Value too large for defined data type |
+| 76 | ENOTUNIQ |Name not unique on network |
+| 77 | EBADFD |File descriptor in bad state |
+| 78 | EREMCHG | Remote address changed |
+| 79 | ELIBACC | Can not access a needed shared library |
+| 80 | ELIBBAD | Accessing a corrupted shared library |
+| 81 | ELIBSCN | .lib section in a.out corrupted |
+| 82 | ELIBMAX | Attempting to link in too many shared libraries|
+| 83 | ELIBEXEC |Cannot exec a shared library directly |
+| 84 | EILSEQ |Illegal byte sequence |
+| 85 | ERESTART |Interrupted system call should be restarted |
+| 86 | ESTRPIPE |Streams pipe error |
+| 87 | EUSERS |Too many users |
+| 88 | ENOTSOCK |Socket operation on non-socket |
+| 89 | EDESTADDRREQ |Destination address required |
+| 90 | EMSGSIZE |Message too long |
+| 91 | EPROTOTYPE |Protocol wrong type for socket |
+| 92 | ENOPROTOOPT | Protocol not available |
+| 93 | EPROTONOSUPPORT | Protocol not supported |
+| 94 | ESOCKTNOSUPPORT | Socket type not supported |
+| 95 | EOPNOTSUPP |Operation not supported on transport endpoint |
 | 96 | EPFNOSUPPORT | Protocol family not supported |
 | 97 | EAFNOSUPPORT | Address family not supported by protocol |
 | 98 | EADDRINUSE | Address already in use |

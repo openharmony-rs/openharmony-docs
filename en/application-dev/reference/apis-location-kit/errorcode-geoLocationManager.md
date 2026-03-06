@@ -52,6 +52,8 @@ Display a prompt asking for enabling the location service.
 
 ## 3301200 Failed to Obtain the Positioning Result
 
+### 1. The positioning fails due to network unavailability.
+
 **Error Message**
 
 The network locating is failed because the network cannot be accessed.
@@ -60,10 +62,15 @@ The network locating is failed because the network cannot be accessed.
 
 This error code is reported if network positioning fails because network access is denied.
 
+**Possible Cause**
+
+The device cannot access the network.
+
 **Procedure**
 
 Check the device for Internet or Wi-Fi connectivity and an installed SIM card.<br>
-</br>
+
+### 2. The positioning result does not meet the precision requirement. As a result, the positioning times out.
 
 **Error Message**
 
@@ -73,6 +80,10 @@ The positioning result does not meet the precision requirement (maxAccuracy) in 
 
 This error code is reported if positioning times out because the positioning result does not meet the requirement of **maxAccuracy**.
 
+**Possible Cause**
+
+The value of **maxAccuracy** in the positioning request parameters [LocationRequest](./js-apis-geoLocationManager.md#locationrequest) and [CurrentLocationRequest](./js-apis-geoLocationManager.md#currentlocationrequest) is too small.
+
 **Procedure**
 
 Increase the value of **maxAccuracy** for [LocationRequest](./js-apis-geoLocationManager.md#locationrequest) and [CurrentLocationRequest](./js-apis-geoLocationManager.md#currentlocationrequest) as follows:
@@ -80,6 +91,8 @@ Increase the value of **maxAccuracy** for [LocationRequest](./js-apis-geoLocatio
 - If [scenario](./js-apis-geoLocationManager.md#locationrequestscenario) is set to **NAVIGATION**, **TRAJECTORY_TRACKING** or **CAR_HAILING**, or [priority](./js-apis-geoLocationManager.md#locationrequestpriority) is set to **ACCURACY**, you are advised to set **maxAccuracy** to a value greater than **10**.
 
 - If [scenario](./js-apis-geoLocationManager.md#locationrequestscenario) is set to **DAILY_LIFE_SERVICE** or **NO_POWER**, or [priority](./js-apis-geoLocationManager.md#locationrequestpriority) is set to **LOW_POWER** or **FIRST_FIX**, you are advised to set **maxAccuracy** to a value greater than **100**.<br>
+
+### 3. Unable to obtain the cached location.
 
 **Error Message**
 
@@ -89,10 +102,15 @@ The system does not have a cache location.
 
 This error code is reported if the application fails to obtain the previous location because the system has not cached the location information.
 
+**Possible Cause**
+
+If the system has not cached the location information, the application attempts to obtain the cached location information.
+
 **Procedure**
 
 If the system has not cached the location information, call [getCurrentLocation](./js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation) to obtain the real-time location information.<br>
-</br>
+
+### 4. Location failed due to other reasons.
 
 **Error Message**
 
@@ -104,15 +122,15 @@ This error code is reported if the location service fails, leading to a failure 
 
 **Possible Cause**
 
-1. Positioning times out because of weak GNSS signals.
+- Positioning times out because of weak GNSS signals.
 
-2. The system time is incorrectly set.
+- The system time is incorrectly set.
 
 **Procedure**
 
-1. Move to an open area and try again.
+- Move to an open area and initiate positioning again.
 
-2. Enable automatic setting on the **Time & Date** page.
+- Enable automatic setting on the **Time & Date** page.
 
 
 ## 3301300 Query Failed During Reverse Geocoding

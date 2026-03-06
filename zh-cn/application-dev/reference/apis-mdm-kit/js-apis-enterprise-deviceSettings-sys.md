@@ -208,7 +208,7 @@ installUserCertificate(admin: Want, certificate: CertBlob, callback: AsyncCallba
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。            |
-| certificate    | [CertBlob](#certblob)     | 是    | 证书信息。证书文件应放在应用沙箱路径等应用有权限访问的路径下。 |
+| certificate    | [CertBlob](#certblob)     | 是    | 证书信息。证书文件应放在应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径下。 |
 | callback | AsyncCallback&lt;string&gt;            | 是    | 回调函数，当接口调用成功，err为null，否则为错误对象。      |
 
 **错误码**：
@@ -276,7 +276,7 @@ installUserCertificate(admin: Want, certificate: CertBlob): Promise&lt;string&gt
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| certificate    | [CertBlob](#certblob)     | 是    | 证书信息。证书文件应放在应用沙箱路径等应用有权限访问的路径下。 |
+| certificate    | [CertBlob](#certblob)     | 是    | 证书信息。证书文件应放在应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径下。 |
 
 **返回值：**
 
@@ -338,7 +338,7 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
 | 名称         | 类型     | 只读 | 可选 | 说明                            |
 | ----------- | --------| ----- | ---- | ------------------------------- |
 | inData | Uint8Array | 否 | 否 |证书的二进制内容。 |
-| alias | string | 否 | 否 |证书别名。 |
+| alias | string | 否 | 否 |证书别名，别名长度小于40个字符。 |
 
 ## deviceSettings.uninstallUserCertificate
 

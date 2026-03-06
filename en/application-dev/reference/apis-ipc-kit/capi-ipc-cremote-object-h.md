@@ -10,6 +10,8 @@
 
 Provides C APIs for creating and destroying a remote object, transferring data, and observing the dead status of a remote object.
 
+**File to include**: <IPCKit/ipc_cremote_object.h>
+
 **Library**: libipc_capi.so
 
 **System capability**: SystemCapability.Communication.IPC.Core

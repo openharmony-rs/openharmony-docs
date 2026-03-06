@@ -165,9 +165,9 @@ napi_threadsafe_function 提供了接口来创建一个可以在多线程间共�
 通过std::thread创建子线程，在子线程中通过napi_call_threadsafe_function调用线程安全函数tsfn，把CallbackContext 结构体数据作为参数传入ThreadSafeCallJs。这里在子线程中进行了简单的业务处理，开发者可以根据自身实际需求进行相应的业务操作。  
 
   ```c++
-//   src/main/cpp/hello.cpp
-
-// 在子线程中调用线程安全函数
+    // src/main/cpp/hello.cpp
+    
+    // 在子线程中调用线程安全函数
     for (int i = 0; i < g_threadNum; i++) {
         // 创建回调参数
         auto asyncContext = new CallbackContext();
@@ -358,3 +358,7 @@ work_cb位于子线程中，执行实际的业务逻辑；after_work_cb位于主
 ## 总结
 线程安全函数和libuv方案都是在子线程的执行函数运行结束后回到主线程，并将JavaScript回调函数push到主线程的event-loop队列里等待被执行。  
 两者的差异在于libuv的子线程属于libuv线程池，而线程安全函数的子线程需要根据业务要求自己创建。另外在libuv中，JavaScript回调函数只能在子线程的主函数执行完毕后被动被执行；而在线程安全函数中，JavaScript回调函数则可以在任意线程中主动调用。  
+
+## 示例代码
+
+[NativeThreadsCallJS](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/PerformanceLibrary/feature/nativeThreadsCallJS)

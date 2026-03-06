@@ -36,6 +36,8 @@ Defines JSVM-API types. JSVM-API is used to provide independent, standard, and c
 | [JSVM_TypeTag](capi-jsvm-jsvm-typetag.md)                                                         | JSVM_TypeTag                            | Defines the type tag, which is stored as a 128-bit value of two unsigned 64-bit integers. As a UUID, it can tag JavaScript objects to ensure that their types remain unchanged.                                                                                                                                                                                                                                                                                                                                                |
 | [JSVM_PropertyHandlerConfigurationStruct](capi-jsvm-jsvm-propertyhandlerconfigurationstruct.md)   | JSVM_PropertyHandlerConfigurationStruct | Defines a struct for triggering the corresponding callback when the getter, setter, deleter, or enumerator of an object is executed.                                                                                                                                                                                                                                                                                                                                                                |
 | [JSVM_ScriptOrigin](capi-jsvm-jsvm-scriptorigin.md)                                               | JSVM_ScriptOrigin                       | Defines the original information about a JavaScript code segment, such as the source map path, source file name, and start line/column number in the source file.                                                                                                                                                                                                                                                                                                                                                                        |
+| [JSVM_CompileOptions](capi-jsvm-jsvm-compileoptions.md)                                               | JSVM_CompileOptions                       | JSVM compilation options, which includes the content and ID.                                                                                                                                                                                                                                                                                                                                                                        |
+| [JSVM_CodeCache](capi-jsvm-jsvm-codecache.md)                                               | JSVM_CodeCache                       | Address and size of the JSVM code cache.                                                                                                                                                                                                                                                                                                                                                                        |
 | [JSVM_PropertyHandler](capi-jsvm-jsvm-propertyhandler.md)                                         | JSVM_PropertyHandler                    | Defines the pointer to the callback function triggered when a class is called as a function, and the pointer collection of the callback function triggered when an instance object property is accessed.                                                                                                                                                                                                                                                                                                                                                                     |
 | [JSVM_DefineClassOptions](capi-jsvm-jsvm-defineclassoptions.md)                                   | JSVM_DefineClassOptions                 | Defines class options.                                                                                                                                                                                                                                                                                                                                                                                                                |
 | [JSVM_VM__*](capi-jsvm-jsvm-vm--8h.md)                                                            | JSVM_VM                                 | Defines a JavaScript VM instance.                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -67,6 +69,8 @@ Defines JSVM-API types. JSVM-API is used to provide independent, standard, and c
 | [JSVM_KeyFilter](#jsvm_keyfilter) | JSVM_KeyFilter | Enumerates key filters. You can use OR to construct a composite filter.|
 | [JSVM_KeyConversion](#jsvm_keyconversion) | JSVM_KeyConversion | Enumerates key conversion options.|
 | [JSVM_MemoryPressureLevel](#jsvm_memorypressurelevel) | JSVM_MemoryPressureLevel | Enumerates memory pressure levels.|
+| [JSVM_CompileMode](#jsvm_compilemode) | JSVM_CompileMode | JSVM compilation mode.|
+| [JSVM_CompileOptionId](#jsvm_compileoptionid) | JSVM_CompileOptionId | ID of a JSVM compilation option.|
 | [JSVM_RegExpFlags](#jsvm_regexpflags) | JSVM_RegExpFlags | Enumerates regular expression flags. They can be used to enable a set of flags.|
 | [JSVM_InitializedFlag](#jsvm_initializedflag) | JSVM_InitializedFlag | Enumerates the initialization modes of flags.|
 | [JSVM_WasmOptLevel](#jsvm_wasmoptlevel) | JSVM_WasmOptLevel | Enumerates WebAssembly optimization levels.|
@@ -96,7 +100,7 @@ Defines JSVM-API types. JSVM-API is used to provide independent, standard, and c
 
 | Name| typedef Keyword| Description|
 | ---- | ------------- | ---- |
-| uint16_t    | char16_t   | Create an alias, **char16_t**, for **uint16_t**.<br>This code ensures that the **char16_t** type is available in all target compilation environments, even in some old environments that do not support it. **char16_t** is a new basic data type introduced in C++11. It is used to store 16-bit characters and represent UTF-16-encoded characters.<br>If the compiler does not recognize **char16_t**, manually define a custom type whose underlying implementation is a 16-bit unsigned integer. Prerequisite is as follows: The current compiler is not a C++ compiler|or| the compiler is a Microsoft Visual C++ compiler and the version is earlier than Visual Studio 2015 (excluded).|
+| uint16_t    | char16_t   | Create an alias, **char16_t**, for **uint16_t**.<br>This code ensures that the **char16_t** type is available in all target compilation environments, even in some old environments that do not support it. **char16_t** is a new basic data type introduced in C++11. It is used to store 16-bit characters and represent UTF-16-encoded characters.<br>If the compiler does not recognize **char16_t**, manually define a custom type whose underlying implementation is a 16-bit unsigned integer. The prerequisite is as follows: the current compiler is not a C++ compiler, or it is a Microsoft Visual C++ compiler with a version earlier than Visual Studio 2015 (exclusive).|
 
 ## Enum Description
 
@@ -118,7 +122,7 @@ Enumerates the behaviors of controlling JavaScript object properties.
 | JSVM_WRITABLE = 1 << 0                                                                | Writable property.                                           |
 | JSVM_ENUMERABLE = 1 << 1                                                              | Enumerable property.                                          |
 | JSVM_CONFIGURABLE = 1 << 2                                                            | Configurable property.                                          |
-| JSVM_NO_RECEIVER_CHECK = 1 << 3                                                       | Receiver used to mark the local methods does not need to be checked. If **JSVM_NO_RECEIVER_CHECK** is not set, the method accepts only the instance of the defined class as the receiver. Otherwise, an exception "TypeError: illegal call" is thrown to JSVM.                                          |
+| JSVM_NO_RECEIVER_CHECK = 1 << 3                                                       | Receiver used to mark the local methods does not need to be checked. If **JSVM_NO_RECEIVER_CHECK** is not set, the method accepts only the instance of the defined class as the receiver. Otherwise, an exception "TypeError: illegal call" is thrown to the JSVM.                                          |
 | JSVM_STATIC = 1 << 10                                                                 | Static property of the class, instead of the default instance property. Used only by **OH_JSVM_DefineClass**.|
 | JSVM_DEFAULT_METHOD = JSVM_WRITABLE \| JSVM_CONFIGURABLE                              | Configurable, writable, but not enumerable property, like a method of a JavaScript class.                     |
 | JSVM_METHOD_NO_RECEIVER_CHECK = JSVM_DEFAULT_METHOD \| JSVM_NO_RECEIVER_CHECK         | Class method whose receiver does not need to be checked.                     |
@@ -289,6 +293,46 @@ Enumerates memory pressure levels.
 | JSVM_MEMORY_PRESSURE_LEVEL_NONE | No pressure.|
 | JSVM_MEMORY_PRESSURE_LEVEL_MODERATE | Moderate pressure.|
 | JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL | Critical pressure.|
+| JSVM_MEMORY_PRESSURE_LEVEL_LOW_MEMORY | Notifies the system of insufficient memory.<br>Warning: This has a significant negative impact on GC performance.<br>Suggestion: Use other values to affect the GC plan.<br>**Since**: 22 |
+
+### JSVM_CompileMode
+
+```c
+enum JSVM_CompileMode
+```
+
+**Description**
+
+Defines an enum for the compilation modes when **id** is **JSVM_COMPILE_MODE**.
+
+**Since**: 12
+| Enum Item| Description|
+| -- | -- |
+| JSVM_COMPILE_MODE_DEFAULT | Default compilation mode.|
+| JSVM_COMPILE_MODE_CONSUME_CODE_CACHE | Mode that consumes the code cache.|
+| JSVM_COMPILE_MODE_EAGER_COMPILE | Eager compilation mode.|
+| JSVM_COMPILE_MODE_PRODUCE_COMPILE_PROFILE | Mode that generates the compilation profile.|
+| JSVM_COMPILE_MODE_CONSUME_COMPILE_PROFILE | Mode that consumes the compilation profile.|
+
+### JSVM_CompileOptionId
+
+```c
+enum JSVM_CompileOptionId
+```
+
+**Description**
+
+Defines an enum for **id** in **JSVM_CompileOptions**. Each **id** corresponds to a **content** value. The value **JSVM_COMPILE_ENABLE_SOURCE_MAP** is a Boolean, and is valid only when **sourceMapUrl** in **JSVM_ScriptOrigin** is not empty.
+
+**Since**: 12
+
+| Enum Item| Description|
+| -- | -- |
+| JSVM_COMPILE_MODE | JSVM compilation mode.|
+| JSVM_COMPILE_CODE_CACHE | JSVM code cache.|
+| JSVM_COMPILE_SCRIPT_ORIGIN | JSVM script origin.|
+| JSVM_COMPILE_COMPILE_PROFILE | JSVM compilation profile.|
+| JSVM_COMPILE_ENABLE_SOURCE_MAP | Source map enablement status of JSVM.|
 
 ### JSVM_RegExpFlags
 
@@ -401,7 +445,7 @@ Enumerates categories of the JSVM internal trace events.
 | JSVM_TRACE_COMPILE | Collects the calls of compilation APIs, for example, background compilation.|
 | JSVM_TRACE_EXECUTE | Collects the calls of APIs related to the running status, for example, task interruption and microtasks.|
 | JSVM_TRACE_RUNTIME | Collects information about the external function calls.|
-| JSVM_TRACE_STACK_TRACE | Collects information about the return stack in JSVM.|
+| JSVM_TRACE_STACK_TRACE | Collects stack trace information from the JSVM.|
 | JSVM_TRACE_WASM | Collects the calls of main WASM APIs, for example, compiling and instantiating WASM modules.|
 | JSVM_TRACE_WASM_DETAILED | Collects detailed WASM API calls, for example, background compilation and jumpboard compilation.|
 
@@ -571,7 +615,7 @@ Defines a pointer to the callback of the ASCII output stream. **data** indicates
 
 | Type| Description|
 | -- | -- |
-| bool | Returns **true** if the stream can continue to receive data; returns **false** if the stream is terminated.|
+| bool | Returns **true** if the stream can continue to receive data; returns **false** if the stream is closed.|
 
 ### JSVM_HandlerForGC()
 

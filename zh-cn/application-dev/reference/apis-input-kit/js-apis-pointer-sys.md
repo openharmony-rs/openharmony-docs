@@ -11,9 +11,9 @@
 
 > **说明**：
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimodalInput.pointer (鼠标光标)](js-apis-pointer.md)。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimodalInput.pointer (鼠标光标)](js-apis-pointer.md)。
 
 ## 导入模块
 
@@ -499,7 +499,11 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getHoverScrollState((error: BusinessError, state: boolean) => {
-              console.info(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
+              if (error) {
+                console.error(`Get the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`Get the mouse hover scroll success, state: ${JSON.stringify(state)}`);
+              }
             });
           } catch (error) {
             console.error(`Get the mouse hover scroll failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -718,7 +722,11 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getMousePrimaryButton((error: BusinessError, primary: pointer.PrimaryButton) => {
-              console.info(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
+              if (error) {
+                console.error(`Get mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`Get mouse primary button success, primary: ${JSON.stringify(primary)}`);
+              }
             });
           } catch (error) {
             console.error(`Get mouse primary button failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -937,7 +945,11 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getMouseScrollRows((error: BusinessError, rows: number) => {
-              console.info(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
+              if (error) {
+                console.error(`getMouseScrollRows error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getMouseScrollRows success, rows: ${JSON.stringify(rows)}`);
+              }
             });
           } catch (error) {
             console.error(`getMouseScrollRows failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1156,7 +1168,11 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadScrollSwitch((error: BusinessError, state: boolean) => {
-              console.info(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
+              if (error) {
+                console.error(`getTouchpadScrollSwitch error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getTouchpadScrollSwitch success, state: ${JSON.stringify(state)}`);
+              }
             });
           } catch (error) {
             console.error(`getTouchpadScrollSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1487,7 +1503,7 @@ struct Index {
               console.info(`setTouchpadTapSwitch success`);
             });
           } catch (error) {
-            console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`); 
           }
         })
     }
@@ -1594,7 +1610,11 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadTapSwitch((error: BusinessError, state: boolean) => {
-              console.info(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
+              if (error) {
+                console.error(`getTouchpadTapSwitch error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getTouchpadTapSwitch success, state: ${JSON.stringify(state)}`);
+              }
             });
           } catch (error) {
             console.error(`getTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1813,7 +1833,11 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadPointerSpeed((error: BusinessError, speed: number) => {
-              console.info(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
+              if (error) {
+                console.error(`getTouchpadPointerSpeed error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getTouchpadPointerSpeed success, speed: ${JSON.stringify(speed)}`);
+              }
             });
           } catch (error) {
             console.error(`getTouchpadPointerSpeed failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1917,7 +1941,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadTapSwitch(true, (error: BusinessError) => {
+            pointer.setTouchpadPinchSwitch(true, (error: BusinessError) => {
               if (error) {
                 console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -2032,7 +2056,11 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadPinchSwitch((error: BusinessError, state: boolean) => {
-              console.info(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
+              if (error) {
+                console.error(`getTouchpadPinchSwitch error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getTouchpadPinchSwitch success, state: ${JSON.stringify(state)}`);
+              }
             });
           } catch (error) {
             console.error(`getTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -2738,7 +2766,11 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerSize((error: BusinessError, size: number) => {
-              console.info(`getPointerSize success, size: ${JSON.stringify(size)}`);
+              if (error) {
+                console.error(`getPointerSize error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getPointerSize success, size: ${JSON.stringify(size)}`);
+              }
             });
           } catch (error) {
             console.error(`getPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3067,7 +3099,11 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getPointerColor((error: BusinessError, color: number) => {
-              console.info(`getPointerColor success, color: ${JSON.stringify(color)}`);
+              if (error) {
+                console.error(`getPointerColor error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getPointerColor success, color: ${JSON.stringify(color)}`);
+              }
             });
           } catch (error) {
             console.error(`getPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3194,7 +3230,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| isOpen | boolean | 是    | 双击拖拽开关的状态，true代表开启，false代表关闭。|
+| isOpen | boolean | 是    | 双击拖拽开关的状态，true代表开启，false代表关闭。 |
 | callback | AsyncCallback\<void> | 是    | 回调函数。|
 
 **错误码**：
@@ -3250,7 +3286,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| state | boolean| 是    |  双击拖拽开关的状态，true代表开启，false代表关闭。 |
+| isOpen | boolean | 是    | 双击拖拽开关的状态，true代表开启，false代表关闭。 |
 
 **返回值**：
 
@@ -3335,7 +3371,11 @@ struct Index {
         .onClick(() => {
           try {
             pointer.getTouchpadDoubleTapAndDragState((error: BusinessError, state: boolean) => {
-              console.info(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
+              if (error) {
+                console.error(`getTouchpadDoubleTapAndDragState error: ${JSON.stringify(error, [`code`, `message`])}`);
+              } else {
+                console.info(`getTouchpadDoubleTapAndDragState success, state: ${JSON.stringify(state)}`);
+              }
             });
           } catch (error) {
             console.error(`getTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -3391,6 +3431,124 @@ struct Index {
             })
           } catch (error) {
             console.error(`getTouchpadDoubleTapAndDragState failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+## pointer.setMouseScrollDirection<sup>24+</sup>
+
+setMouseScrollDirection(inverted: boolean): Promise\<void>
+
+设置鼠标滚轮滚动的方向，使用Promise异步回调。
+
+**需要权限**: ohos.permission.INPUT_DEVICE_CONTROLLER
+
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**系统API**: 此接口为系统接口。
+
+**参数**：
+
+| 参数名 | 类型    | 必填 | 说明                                                                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------------------------------------------------------ |
+| inverted  | boolean | 是   | inverted为鼠标滚轮滚动的方向。<br>true与鼠标滚轮滚动的手指方向一致，false与鼠标滚轮滚动的手指方向相反。<br>默认为true。 |
+
+**返回值**：
+
+| 类型           | 说明                                   |
+| -------------- | -------------------------------------- |
+| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[鼠标光标错误码](./errorcode-pointer.md)
+
+| 错误码ID   | 错误信息                        |
+|---------|-----------------------------|
+| 201     | Permission denied.          |
+| 202     | SystemAPI permission error. |
+| 3800001 | Input service exception.    |
+
+**示例**：
+
+```js
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button("setMouseScrollDirection")
+        .onClick(() => {
+          try {
+            pointer.setMouseScrollDirection(false).then(() => {
+              console.info(`setMouseScrollDirection success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set mouse scroll direction failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
+          } catch (error) {
+            console.error(`setMouseScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+## pointer.getMouseScrollDirection<sup>24+</sup>
+
+getMouseScrollDirection(): Promise\<boolean>
+
+获取鼠标滚轮滚动方向，使用Promise异步回调。
+
+**需要权限**: ohos.permission.INPUT_DEVICE_CONTROLLER
+
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**系统API**: 此接口为系统接口。
+
+**返回值**：
+
+| 类型              | 说明                                                                                                                         |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Promise\<boolean> | Promise对象，异步返回获取鼠标滚轮滚动方向。<br>true与鼠标滚轮滚动的手指方向一致，false与鼠标滚轮滚动的手指方向相反。<br>默认为true。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[鼠标光标错误码](./errorcode-pointer.md)
+
+| 错误码ID   | 错误信息                                                                                                                                       |
+|---------| ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| 201     | Permission denied.          |
+| 202     | SystemAPI permission error. |
+| 3800001 | Input service exception.    |
+
+**示例**：
+
+```js
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button("getMouseScrollDirection")
+        .onClick(() => {
+          try {
+            pointer.getMouseScrollDirection().then((state: boolean) => {
+              console.info(`getMouseScrollDirection success, state: ${JSON.stringify(state)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get mouse scroll direction failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
+          } catch (error) {
+            console.error(`getMouseScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }

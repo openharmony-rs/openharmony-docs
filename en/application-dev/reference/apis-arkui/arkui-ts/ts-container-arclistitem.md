@@ -5,7 +5,7 @@
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **ArcListItem** component is used to display individual child components in an [ArcList](ts-container-arclist.md) component and must be used in conjunction with **ArcList**.
 
@@ -17,8 +17,23 @@ The **ArcListItem** component is used to display individual child components in 
 
 ## Modules to Import
 
+> **NOTE**
+>
+> - **ArcListItemAttribute** is a key API used to configure the attributes of the **ArcListItem** component. In API version 21 and earlier, you must manually import **ArcListItemAttribute** after importing the **ArcListItem** component. Otherwise, a compilation error is reported. However, starting from API version 22, the compilation toolchain automatically imports **ArcListItemAttribute** when it detects the **ArcListItem** component, so manual import is no longer necessary.
+>
+> - If you manually import **ArcListItemAttribute**, DevEco Studio shows it as disabled (grayed out). In API version 21 and earlier, removing this import causes a compilation error. But from API version 22 onward, removing it does not affect the functionality.
+
+
+API version 21 and earlier:
+
 ```ts
 import { ArcListItem, ArcListItemAttribute } from '@kit.ArkUI';
+```
+
+API version 22 and later:
+
+```ts
+import { ArcListItem } from '@kit.ArkUI';
 ```
 
 ## Child Components
@@ -26,8 +41,6 @@ import { ArcListItem, ArcListItemAttribute } from '@kit.ArkUI';
 This component can contain a single child component.
 
 ## APIs
-
-### ArcListItem
 
 ArcListItem()
 
@@ -55,7 +68,7 @@ Sets whether to enable auto-scaling for the **ArcListItem** component.
 
 | Name| Type              | Mandatory| Description                                       |
 | ------ | ------------------ | ---- | ------------------------------------------- |
-| enable | Optional\<boolean> | Yes  | Whether to enable auto-scaling.<br>**true**: Enable auto-scaling.<br>**false**: Disable auto-scaling.<br>Default value: **true**.|
+| enable | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable auto-scaling.<br>**true**: Enable auto-scaling.<br>**false**: Disable auto-scaling.<br>Default value: **true**.|
 
 ### swipeAction
 
@@ -71,7 +84,7 @@ Sets the swipe action item displayed when the **ArcListItem** component is swipe
 
 | Name | Type                                                        | Mandatory| Description                   |
 | ------- | ------------------------------------------------------------ | ---- | ----------------------- |
-| options | [Optional\<SwipeActionOptions>](ts-container-listitem.md#swipeactionoptions9) | Yes  | Swipe action item displayed when the **ArcListItem** component is swiped out from the screen edge.|
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[SwipeActionOptions](ts-container-listitem.md#swipeactionoptions9)&gt; | Yes  | Swipe action item displayed when the **ArcListItem** component is swiped out from the screen edge.|
 
 ## Example
 
@@ -80,13 +93,14 @@ This example demonstrates the visual differences when auto-scaling is enabled or
 ```ts
 // xxx.ets
 import { LengthMetrics, CircleShape } from '@kit.ArkUI';
+// Starting from API version 22, you do not need to manually import ArcListAttribute and ArcListItemAttribute. For details, refer to the Modules to Import section of the ArcList and ArcListItem reference documents.
 import { ArcList, ArcListItem, ArcListAttribute, ArcListItemAttribute } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct ArcListItemExample {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  private watchSize: string = '466px'; // Default watch size: 466*466
+  private watchSize: string = '466px'; // Default watch size: 466 x 466
   private itemSize: string = '414px' // Item width
 
   @Builder

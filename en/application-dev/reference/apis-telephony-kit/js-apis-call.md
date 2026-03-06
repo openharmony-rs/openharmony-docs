@@ -48,7 +48,7 @@ Initiates a call. This API uses an asynchronous callback to return the result.
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.dial("138xxxxxxxx", (err: BusinessError, data: boolean) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -84,7 +84,7 @@ let dialOptions: call.DialOptions = {
     extras: false
 }
 call.dial("138xxxxxxxx", dialOptions, (err: BusinessError, data: boolean) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -124,7 +124,7 @@ let dialOptions: call.DialOptions = {
     extras: false
 }
 call.dial("138xxxxxxxx", dialOptions).then((data: boolean) => {
-    console.log(`dial success, promise: data->${JSON.stringify(data)}`);
+    console.info(`dial success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`dial fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -168,7 +168,7 @@ call.makeCall("138xxxxxxxx", (err: BusinessError) => {
     if (err) {
         console.error(`makeCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`makeCall success`);
+        console.info(`makeCall success`);
     }
 });
 ```
@@ -214,7 +214,7 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 // The tel URI format is supported since API version 15, for example, tel:13xxxx.
 call.makeCall("138xxxxxxxx").then(() => {
-    console.log(`makeCall success`);
+    console.info(`makeCall success`);
 }).catch((err: BusinessError) => {
     console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -266,7 +266,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let context = this.getUIContext().getHostContext() as Context;
 // The tel URI format is supported since API version 15, for example, tel:13xxxx.
 call.makeCall(context, "138xxxxxxxx").then(() => {
-    console.log(`makeCall success`);
+    console.info(`makeCall success`);
 }).catch((err: BusinessError) => {
     console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -295,7 +295,7 @@ call.hasCall((err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`hasCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`hasCall success, data->${JSON.stringify(data)}`);
+        console.info(`hasCall success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -321,7 +321,7 @@ Checks whether a call is in progress. This API uses a promise to return the resu
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.hasCall().then(() => {
-    console.log(`hasCall success`);
+    console.info(`hasCall success`);
 }).catch((err: BusinessError) => {
     console.error(`hasCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -345,7 +345,7 @@ Checks whether a call is in progress.
 
 ```ts
 let hasCall: boolean = call.hasCallSync();
-console.log(`hasCallSync success, has call is ` + hasCall);
+console.info(`hasCallSync success, has call is ` + hasCall);
 ```
 
 
@@ -372,7 +372,7 @@ call.getCallState((err: BusinessError, data: call.CallState) => {
     if (err) {
         console.error(`getCallState fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getCallState success, data->${JSON.stringify(data)}`);
+        console.info(`getCallState success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -398,7 +398,7 @@ Obtains the call status. This API uses a promise to return the result.
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallState().then((data: call.CallState) => {
-    console.log(`getCallState success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCallState success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getCallState fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -422,7 +422,7 @@ Obtains the call status.
 
 ```ts
 let callState: call.CallState = call.getCallStateSync();
-console.log(`the call state is:` + callState);
+console.info(`the call state is:` + callState);
 ```
 
 ## call.hasVoiceCapability<sup>7+</sup>
@@ -441,7 +441,7 @@ Checks whether a device supports voice calls.
 
 ```ts
 let result: boolean = call.hasVoiceCapability();
-console.log(`hasVoiceCapability: ${JSON.stringify(result)}`);
+console.info(`hasVoiceCapability: ${JSON.stringify(result)}`);
 ```
 
 ## call.isEmergencyPhoneNumber<sup>7+</sup>
@@ -480,7 +480,7 @@ call.isEmergencyPhoneNumber("138xxxxxxxx", (err: BusinessError, data: boolean) =
     if (err) {
         console.error(`isEmergencyPhoneNumber fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
+        console.info(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -524,7 +524,7 @@ call.isEmergencyPhoneNumber("112", options, (err: BusinessError, data: boolean) 
     if (err) {
         console.error(`isEmergencyPhoneNumber fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
+        console.info(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -570,7 +570,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let options: call.EmergencyNumberOptions = {slotId: 1}
 call.isEmergencyPhoneNumber("138xxxxxxxx", options).then((data: boolean) => {
-    console.log(`isEmergencyPhoneNumber success, promise: data->${JSON.stringify(data)}`);
+    console.info(`isEmergencyPhoneNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isEmergencyPhoneNumber fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -614,7 +614,7 @@ call.formatPhoneNumber("138xxxxxxxx", (err: BusinessError, data: string) => {
     if (err) {
         console.error(`formatPhoneNumber fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
+        console.info(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -661,7 +661,7 @@ call.formatPhoneNumber("138xxxxxxxx", options, (err: BusinessError, data: string
     if (err) {
         console.error(`formatPhoneNumber fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
+        console.info(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -711,7 +711,7 @@ let options: call.NumberFormatOptions = {
     countryCode: "CN"
 }
 call.formatPhoneNumber("138xxxxxxxx", options).then((data: string) => {
-    console.log(`formatPhoneNumber success, promise: data->${JSON.stringify(data)}`);
+    console.info(`formatPhoneNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`formatPhoneNumber fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -756,7 +756,7 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN", (err: BusinessError, data: str
     if (err) {
         console.error(`formatPhoneNumberToE164 fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`formatPhoneNumberToE164 success, data->${JSON.stringify(data)}`);
+        console.info(`formatPhoneNumberToE164 success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -805,11 +805,154 @@ For details about the error codes, see [ohos.telephony (Telephony) Error Codes](
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
-    console.log(`formatPhoneNumberToE164 success, promise: data->${JSON.stringify(data)}`);
+    console.info(`formatPhoneNumberToE164 success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`formatPhoneNumberToE164 fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+
+## call.answerCall<sup>23+</sup>
+
+answerCall\(callback: AsyncCallback\<void\>\): void
+
+Answers a call. This API uses an asynchronous callback to return the result.
+
+**Required permissions**: ohos.permission.ANSWER_CALL or ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+- ohos.permission.ANSWER_CALL is available only for system applications.
+
+**System capability**: SystemCapability.Telephony.CallManager
+
+**Parameters**
+
+| Name  | Type                     | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the call is answered successfully, the value of **err** is **undefined**. Otherwise, the value is an error object.|
+
+**Error codes**
+
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.answerCall((err: BusinessError) => {
+    if (err) {
+        console.error(`answerCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`answerCall success.`);
+    }
+});
+```
+
+
+## call.hangUpCall<sup>23+</sup>
+
+hangUpCall\(callback: AsyncCallback\<void\>\): void
+
+Ends a call. This API uses an asynchronous callback to return the result.
+
+**Required permissions**: ohos.permission.ANSWER_CALL, ohos.permission.SET_TELEPHONY_STATE, or ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+- ohos.permission.ANSWER_CALL and ohos.permission.SET_TELEPHONY_STATE is available only for system applications.
+
+**System capability**: SystemCapability.Telephony.CallManager
+
+**Parameters**
+
+| Name  | Type                     | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the call is hung up successfully, the value of **err** is **undefined**. Otherwise, the value is an error object.|
+
+**Error codes**
+
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.hangUpCall((err: BusinessError) => {
+    if (err) {
+        console.error(`hangUpCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`hangUpCall success.`);
+    }
+});
+```
+
+
+## call.rejectCall<sup>23+</sup>
+
+rejectCall\(callback: AsyncCallback\<void\>\): void
+
+Rejects a call. This API uses an asynchronous callback to return the result.
+
+**Required permissions**: ohos.permission.ANSWER_CALL or ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+- ohos.permission.ANSWER_CALL is available only for system applications.
+
+**System capability**: SystemCapability.Telephony.CallManager
+
+**Parameters**
+
+| Name  | Type                     | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the call is rejected successfully, the value of **err** is **undefined**. Otherwise, the value is an error object.|
+
+**Error codes**
+
+For details about the error codes, see [ohos.telephony (Telephony) Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.rejectCall((err: BusinessError) => {
+    if (err) {
+        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`rejectCall success.`);
+    }
+});
+```
+
 
 ## DialOptions
 
@@ -819,7 +962,7 @@ Provides an option for determining whether a call is a video call.
 
 |        Name             | Type                              | Read-Only| Optional| Description                                                                                            |
 | ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |
-| extras                   | boolean                            | No  | Yes  | Whether the call is a video call. <br>- **true**: video call<br>- **false** (default): voice call  | 
+| extras                   | boolean                            | No  | Yes  | Whether the call is a video call. <br>- **true**: video call<br>- **false** (default): voice call  |
 
 ## CallState
 
@@ -850,6 +993,26 @@ Enumerates call states.
 | TEL_CALL_STATE_OFFHOOK | 2    | At least one call is being dialed, and no new incoming call is in the ringing or waiting state.|
 | TEL_CALL_STATE_ANSWERED | 3    | The incoming call is answered.|
 | TEL_CALL_STATE_CONNECTED | 4    | The call is being connected or placed on hold.                                   |
+
+## CCallState<sup>23+</sup>
+
+Carrier call state code.
+
+**System capability**: SystemCapability.Telephony.CallManager
+
+| Name              | Value  | Description                                                        |
+| ------------------ | ---- | ------------------------------------------------------------ |
+| CCALL_STATE_UNKNOWN       | -1   | The call status fails to be obtained and is unknown.                        |
+| CCALL_STATE_ACTIVE       | 0    | The call is connected.                                    |
+| CCALL_STATE_HOLDING      | 1    | The call is on hold.                                   |
+| CCALL_STATE_DIALING      | 2    | The outgoing call is in the dialing process, and the peer end has not received the ringing.|
+| CCALL_STATE_ALERTING     | 3    | The outgoing call is in the ringing process, and the peer end is ringing.|
+| CCALL_STATE_INCOMING     | 4    | Indicates that an incoming call is received.                                   |
+| CCALL_STATE_WAITING      | 5    | Indicates that another incoming call is received when there is an ongoing call in the same card slot.      |
+| CCALL_STATE_DISCONNECTED | 6    | Indicates that the call has been released.                                |
+| CCALL_STATE_DISCONNECTING| 7    | Indicates that the call is being released.                         |
+| CCALL_STATE_IDLE         | 8    | No call is in progress.                                |
+| CCALL_STATE_ANSWERED     | 9    | The incoming call is answered.                                    |
 
 
 ## EmergencyNumberOptions<sup>7+</sup>

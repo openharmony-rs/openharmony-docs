@@ -193,6 +193,10 @@ Listens for changes in the system memory level status. Called when the available
 
 This API returns the result synchronously and does not support asynchronous callbacks.
 
+> **NOTE**
+> 
+> Releasing UI components in the **onMemoryLevel** callback may block the main thread tasks of the current process. Therefore, you are advised not to release UI components in this callback.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core

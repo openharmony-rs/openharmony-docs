@@ -630,19 +630,19 @@ export class Calc {
   public constructor() {}
   public static staticAdd(a: number, b: number): number {
     let c = a + b;
-    console.log("DynamicImport I'm harLibrary in staticAdd, %d + %d = %d", a, b, c);
+    console.info("DynamicImport I'm harLibrary in staticAdd, %d + %d = %d", a, b, c);
     return c;
   }
   public instanceAdd(a: number, b: number): number {
     let c = a + b;
-    console.log("DynamicImport I'm harLibrary in instanseAdd, %d + %d = %d", a, b, c);
+    console.info("DynamicImport I'm harLibrary in instanceAdd, %d + %d = %d", a, b, c);
     return c;
   }
 }
 
 export function addHarLibrary(a: number, b: number): number {
   let c = a + b;
-  console.log("DynamicImport I'm harLibrary in addHarLibrary, %d + %d = %d", a, b, c);
+  console.info("DynamicImport I'm harLibrary in addHarLibrary, %d + %d = %d", a, b, c);
   return c;
 }
 

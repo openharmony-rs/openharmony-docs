@@ -1,5 +1,12 @@
 # 事件错误码
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
@@ -179,7 +186,7 @@ The count of subscriber exceed system specification.
 
 **可能原因**
 
-订阅者不再使用时未及时取消订阅。
+订阅者不再使用时未及时取消订阅。公共事件限制每个进程最多订阅200个订阅者，进程内所有业务共享订阅者数量。
 
 **处理步骤**
 

@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-设置组件与下方画布已有内容进行混合的图像效果。
+本模块提供设置组件的模糊、阴影、球面效果以及设置图片的图像效果等相关接口。
 
 > **说明：**
 >
@@ -51,7 +51,7 @@ advancedBlendMode(effect: BlendMode | Blender, type?: BlendApplyType): T
 | ---------------| ------ | ---------------------------------------------------------------- |
 | OFFSCREEN_WITH_BACKGROUND<sup>23+</sup> | 2 |创建离屏画布时，先拷贝一份背景初始化画布，再将此组件和子组件内容绘制到离屏画布上，然后整体进行混合。 <br> **系统接口：** 此接口为系统接口。 |
 
-## excludeFromRenderGroup<sup>23+</sup>
+## excludeFromRenderGroup<sup>22+</sup>
 
 excludeFromRenderGroup(exclude: boolean \| undefined): T
 
@@ -69,6 +69,8 @@ excludeFromRenderGroup(exclude: boolean \| undefined): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**系统接口：** 此接口为系统接口。
+
 **参数：** 
 
 | 参数名  | 类型               | 必填 | 说明                                                         |
@@ -80,6 +82,44 @@ excludeFromRenderGroup(exclude: boolean \| undefined): T
 | 类型 | 说明 |
 | -------- | -------- |
 | T | 返回当前组件。 |
+
+## systemMaterial<sup>23+</sup>
+
+systemMaterial(material: SystemUiMaterial | undefined): T
+
+设置组件的系统材质。不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。使用示例请参考[设置系统材质](../arkts-apis-uimaterial-sys.md#示例1设置系统材质)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：** 
+
+| 参数名 | 类型                            | 必填 | 说明                                                         |
+| ------ | ------------------------------- | ---- | ------------------------------------------------------------ |
+| material  | [SystemUiMaterial](#systemuimaterial23) &nbsp;\|&nbsp; undefined  | 是   | 组件的系统材质对象。设置为undefined时恢复为无材质的效果。  |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前组件。 |
+
+## SystemUiMaterial<sup>23+</sup>
+
+type SystemUiMaterial = uiMaterial.Material
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+| 类型                              | 说明           |
+| --------------------------------- | -------------- |
+| [uiMaterial.Material](../arkts-apis-uimaterial-sys.md#material)     | 系统材质对象。 |
 
 ## 示例
 ### 示例1（设置组件提亮）
@@ -145,7 +185,65 @@ struct Index {
 
 ![advancedBlendMode](figures/advancedBlendMode.jpg)
 
-### 示例2（设置组件提亮并渐隐）
+### 示例2（设置节点组剔除属性）
+
+该示例演示在组件的属性动画场景下，如何通过使用节点组剔除属性[excludeFromRenderGroup](#excludefromrendergroup22)，避免节点组缓存反复失效。
+
+从API version 22开始，新增[excludeFromRenderGroup](#excludefromrendergroup22)属性。
+
+``` ts
+// xxx.ets
+@Entry
+@Component
+struct ExcludeFromRenderGroupDemo {
+  readonly color1: ResourceColor = '#2787d9';
+  readonly color2: ResourceColor = '#ffc000';
+  @State myColor: ResourceColor = this.color1;
+  @State isExcluded: boolean = false;
+  animationCnt: number = 0;
+
+  build() {
+    Column() {
+      Column({ space: 10 }) {
+        Column()
+          .width(100)
+          .height(100)
+          .backgroundColor(this.myColor)
+          .excludeFromRenderGroup(this.isExcluded)// 设置excludeFromRenderGroup属性。该组件做背景色动画时，实际显示效果需频繁更新属性，且该组件区域只占节点组区域的一部分，因此设置excludeFromRenderGroup属性以复用节点组缓存
+          .onClick(() => {
+            this.isExcluded = true; // 在播放动画前，修改节点组剔除属性为true
+            this.animationCnt++;
+            this.getUIContext().animateTo({
+              duration: 600,
+              onFinish: () => {
+                this.animationCnt--;
+                if (this.animationCnt == 0) { // animationCnt变为0表示所有动画都结束
+                  this.isExcluded = false; // 在组件动画结束后，组件上不再发生属性变化时，可以重置节点组剔除属性
+                }
+              }
+            }, () => {
+              this.myColor = (this.myColor === this.color1) ? this.color2 : this.color1;
+            })
+          })
+        // 节点组内的其他组件
+        Image($r('app.media.bg1'))// $r('app.media.bg1')需要替换为开发者所需的图像资源文件
+          .width(100)
+          .height(100)
+        Image($r('app.media.bg1'))// $r('app.media.bg1')需要替换为开发者所需的图像资源文件
+          .width(100)
+          .height(100)
+      }.renderGroup(true)
+      .width('100%')
+      .height('70%')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+![excludeFromRenderGroup](figures/excludeFromRenderGroup.gif)
+
+### 示例3（设置组件提亮并渐隐）
 
 从API version 23开始，该示例主要演示如何通过advancedBlendMode给组件同时添加提亮和渐隐效果。
 
@@ -205,61 +303,3 @@ struct Index {
 ```
 
 ![advancedBlendMode2](figures/advancedBlendMode2.jpg)
-
-### 示例3（设置excludeFromRenderGroup属性）
-
-该示例演示在组件的属性动画场景下，如何通过使用节点组剔除属性[excludeFromRenderGroup](#excludefromrendergroup23)，避免节点组缓存反复失效。
-
-从API version 23开始，新增[excludeFromRenderGroup](#excludefromrendergroup23)属性。
-
-``` ts
-// xxx.ets
-@Entry
-@Component
-struct ExcludeFromRenderGroupDemo {
-  readonly color1: ResourceColor = '#2787d9';
-  readonly color2: ResourceColor = '#ffc000';
-  @State myColor: ResourceColor = this.color1;
-  @State isExcluded: boolean = false;
-  animationCnt: number = 0;
-
-  build() {
-    Column() {
-      Column({ space: 10 }) {
-        Column()
-          .width(100)
-          .height(100)
-          .backgroundColor(this.myColor)
-          .excludeFromRenderGroup(this.isExcluded)// 设置excludeFromRenderGroup属性。该组件做背景色动画时，实际显示效果需频繁更新属性，且该组件区域只占节点组区域的一部分，因此设置excludeFromRenderGroup属性以复用节点组缓存
-          .onClick(() => {
-            this.isExcluded = true; // 在播放动画前，修改节点组剔除属性为true
-            this.animationCnt++;
-            this.getUIContext().animateTo({
-              duration: 600,
-              onFinish: () => {
-                this.animationCnt--;
-                if (this.animationCnt == 0) { // animationCnt变为0表示所有动画都结束
-                  this.isExcluded = false; // 在组件动画结束后，组件上不再发生属性变化时，可以重置节点组剔除属性
-                }
-              }
-            }, () => {
-              this.myColor = (this.myColor === this.color1) ? this.color2 : this.color1;
-            })
-          })
-        // 节点组内的其他组件
-        Image($r('app.media.bg1'))// $r('app.media.bg1')需要替换为开发者所需的图像资源文件
-          .width(100)
-          .height(100)
-        Image($r('app.media.bg1'))// $r('app.media.bg1')需要替换为开发者所需的图像资源文件
-          .width(100)
-          .height(100)
-      }.renderGroup(true)
-      .width('100%')
-      .height('70%')
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
-![excludeFromRenderGroup](figures/excludeFromRenderGroup.gif)

@@ -27,3 +27,22 @@ Parameter error.
 **处理步骤**
 
 传入正确的参数。
+
+## 103702 绘制上下文未绑定Canvas组件
+
+**错误信息**
+
+The drawingContext is not bound to a canvas component.
+
+**错误描述**
+
+当前绘制上下文未绑定任何Canvas组件。
+
+**可能原因**
+
+当前绘制上下文没有绑定任何Canvas组件。
+
+**处理步骤**
+
+将绘制上下文绑定至一个Canvas组件后再调用[getContext2DFromDrawingContext](./arkui-ts/ts-canvasrenderingcontext2d.md#getcontext2dfromdrawingcontext23)方法。
+

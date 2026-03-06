@@ -23,13 +23,17 @@
 import { XComponentNode } from "@kit.ArkUI";
 ```
 
-## XComponentNode
+## XComponentNode<sup>(deprecated)</sup>
 
-### constructor
+### constructor<sup>(deprecated)</sup>
 
 constructor(uiContext: UIContext, options: RenderOptions, id: string, type: XComponentType, libraryName?: string)
 
 XComponentNode的构造函数。
+
+> **说明：**
+>
+> 从API version 11开始支持，从API version 12开始废弃，建议使用[createNode](./js-apis-arkui-frameNode.md#createnodexcomponent12)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,11 +51,15 @@ XComponentNode的构造函数。
 >
 > 需要显式指定[RenderOptions](./js-apis-arkui-builderNode.md#renderoptions)中的selfIdealSize，否则XComponentNode内容大小为空，不显示任何内容。
 
-### onCreate
+### onCreate<sup>(deprecated)</sup>
 
 onCreate(event?: Object): void
 
 XComponentNode加载完成时触发该回调。
+
+> **说明：**
+>
+> 从API version 11开始支持，从API version 12开始废弃，建议使用[onLoad](arkui-ts/ts-basic-components-xcomponent.md#onload)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,19 +69,27 @@ XComponentNode加载完成时触发该回调。
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | event  | Object | 否   | 获取XComponent实例对象的context，context上挂载的方法由开发者在C++层定义。 |
 
-### onDestroy
+### onDestroy<sup>(deprecated)</sup>
 
 onDestroy(): void
 
 XComponentNode销毁时触发该回调。
 
+> **说明：**
+>
+> 从API version 11开始支持，从API version 12开始废弃，建议使用[onDestroy](arkui-ts/ts-basic-components-xcomponent.md#ondestroy)替代。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-### changeRenderType
+### changeRenderType<sup>(deprecated)</sup>
 
 changeRenderType(type: NodeRenderType): boolean
 
 修改XComponentNode的渲染类型。
+
+> **说明：**
+>
+> 从API version 11开始支持，从API version 12开始废弃，建议使用[appendChild](./js-apis-arkui-frameNode.md#appendchild12)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

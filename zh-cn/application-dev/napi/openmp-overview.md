@@ -1,7 +1,7 @@
 # OpenMP简介
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yangming4249-->
+<!--Owner: @rePeek-->
 <!--Designer: @ychen3--->
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @fang-jinxu-->

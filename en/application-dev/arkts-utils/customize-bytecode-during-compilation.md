@@ -4,7 +4,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @hufeng20-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 You can modify Ark bytecode files using the customization capabilities provided by the ArkTS compilation toolchain.
 
@@ -40,19 +40,19 @@ Below is a template for a dynamic library, which you can use to implement the sp
 
    Windows:
 
-   ```
+   ```bash
    g++ --shared -o example.dll example.cpp
    ```
 
    Linux:
 
-   ```
+   ```bash
    g++ --shared -o example.so example.cpp
    ```
 
    macOS:
 
-   ```
+   ```bash
    g++ --shared -o example.so example.cpp
    ```
 

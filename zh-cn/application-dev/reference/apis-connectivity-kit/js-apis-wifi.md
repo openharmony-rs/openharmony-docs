@@ -136,7 +136,7 @@ import wifi from '@ohos.wifi';
 
 wifi.getScanInfos().then(result => {
     let len = result.length;
-    console.log("wifi received scan info: " + len);
+    console.info("wifi received scan info: " + len);
     for (let i = 0; i < len; ++i) {
         console.info("ssid: " + result[i].ssid);
         console.info("bssid: " + result[i].bssid);
@@ -155,6 +155,10 @@ wifi.getScanInfos().then(result => {
 ## WifiScanInfo<sup>(deprecated)</sup>
 
 WLAN热点信息。
+
+> **说明：**
+>
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[WifiScanInfo](js-apis-wifiManager.md#wifiscaninfo)替代。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 

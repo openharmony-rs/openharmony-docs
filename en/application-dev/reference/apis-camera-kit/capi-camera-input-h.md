@@ -45,6 +45,9 @@ The file declares the camera input concepts.
 | [Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input* cameraInput, bool* isVariable)](#oh_camerainput_isphysicalcameraorientationvariable) | - | Checks whether the physical camera orientation is adjustable in different fold states of the device.|
 | [Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* cameraInput, uint32_t* orientation)](#oh_camerainput_getphysicalcameraorientation) | - | Obtains the physical camera orientation in the current fold state of the device.|
 | [Camera_ErrorCode OH_CameraInput_UsePhysicalCameraOrientation(Camera_Input* cameraInput, bool isUsed)](#oh_camerainput_usephysicalcameraorientation) | - | Enables or disables the use of the physical camera orientation.|
+| [typedef void (\*OH_CameraInput_OnOcclusionDetectionCallback)(const Camera_Input* cameraInput, Camera_OcclusionDetectionResult occlusionDetectionResult)](#oh_camerainput_onocclusiondetectioncallback) | OH_CameraInput_OnOcclusionDetectionCallback | Defines a callback used to return the check result for whether a camera lens is blocked or dirty.|
+| [Camera_ErrorCode OH_CameraInput_RegisterOcclusionDetectionCallback(Camera_Input* cameraInput, OH_CameraInput_OnOcclusionDetectionCallback occlusionDetectionCallback)](#oh_camerainput_registerocclusiondetectioncallback) | - | Registers a callback used to check whether a camera lens is blocked or dirty.|
+| [Camera_ErrorCode OH_CameraInput_UnregisterOcclusionDetectionCallback(Camera_Input* cameraInput, OH_CameraInput_OnOcclusionDetectionCallback occlusionDetectionCallback)](#oh_camerainput_unregisterocclusiondetectioncallback) | - | Unregisters the callback used to check whether a camera lens is blocked or dirty.|
 
 ## Function Description
 
@@ -59,7 +62,6 @@ typedef void (*OH_CameraInput_OnError)(const Camera_Input* cameraInput, Camera_E
 Defines the callback defined in the [CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md) struct and used to report camera input errors.
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -91,7 +93,6 @@ Registers a callback to listen for camera input events.
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -116,7 +117,6 @@ Camera_ErrorCode OH_CameraInput_UnregisterCallback(Camera_Input* cameraInput, Ca
 Unregisters the callback used to listen for camera input events.
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -143,7 +143,6 @@ Opens a camera.
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -167,7 +166,6 @@ Camera_ErrorCode OH_CameraInput_OpenSecureCamera(Camera_Input* cameraInput, uint
 Opens a camera in secure mode.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -194,7 +192,6 @@ Opens the camera based on the specified concurrency type.
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name| Description|
@@ -220,7 +217,6 @@ Closes a camera.
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -241,12 +237,9 @@ Camera_ErrorCode OH_CameraInput_Release(Camera_Input* cameraInput)
 
 **Description**
 
-Releases a Camera_Input instance.
-
-Either this function or [OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close) needs to be called.
+Releases a Camera_Input instance.<br>Either this function or [OH_CameraInput_Close](capi-camera-input-h.md#oh_camerainput_close) needs to be called.
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -271,7 +264,6 @@ Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input
 Checks whether the physical camera orientation is adjustable in different fold states of the device.
 
 **Since**: 22
-
 
 **Parameters**
 
@@ -298,7 +290,6 @@ Obtains the physical camera orientation in the current fold state of the device.
 
 **Since**: 22
 
-
 **Parameters**
 
 | Name| Description|
@@ -324,7 +315,6 @@ Enables or disables the use of the physical camera orientation.
 
 **Since**: 22
 
-
 **Parameters**
 
 | Name| Description|
@@ -337,3 +327,72 @@ Enables or disables the use of the physical camera orientation.
 | Type| Description|
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_OPERATION_NOT_ALLOWED**: The operation is not allowed.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
+
+### OH_CameraInput_OnOcclusionDetectionCallback()
+
+```c
+typedef void (*OH_CameraInput_OnOcclusionDetectionCallback)(const Camera_Input* cameraInput, Camera_OcclusionDetectionResult occlusionDetectionResult)
+```
+
+**Description**
+
+Defines a callback used to return the check result for whether a camera lens is blocked or dirty.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const Camera_Input* cameraInput | Pointer to the target Camera_Input instance.|
+| [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md) occlusionDetectionResult | Check result for whether a camera lens is blocked or dirty.|
+
+### OH_CameraInput_RegisterOcclusionDetectionCallback()
+
+```c
+Camera_ErrorCode OH_CameraInput_RegisterOcclusionDetectionCallback(Camera_Input* cameraInput, OH_CameraInput_OnOcclusionDetectionCallback occlusionDetectionCallback)
+```
+
+**Description**
+
+Registers a callback used to check whether a camera lens is blocked or dirty.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Pointer to the target Camera_Input instance.|
+| [OH_CameraInput_OnOcclusionDetectionCallback](capi-camera-input-h.md#oh_camerainput_onocclusiondetectioncallback) occlusionDetectionCallback | Callback used to check whether a camera lens is blocked or dirty.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.|
+
+### OH_CameraInput_UnregisterOcclusionDetectionCallback()
+
+```c
+Camera_ErrorCode OH_CameraInput_UnregisterOcclusionDetectionCallback(Camera_Input* cameraInput, OH_CameraInput_OnOcclusionDetectionCallback occlusionDetectionCallback)
+```
+
+**Description**
+
+Unregisters the callback used to check whether a camera lens is blocked or dirty.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Pointer to the target Camera_Input instance.|
+| [OH_CameraInput_OnOcclusionDetectionCallback](capi-camera-input-h.md#oh_camerainput_onocclusiondetectioncallback) occlusionDetectionCallback | Callback used to check whether a camera lens is blocked or dirty.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.|

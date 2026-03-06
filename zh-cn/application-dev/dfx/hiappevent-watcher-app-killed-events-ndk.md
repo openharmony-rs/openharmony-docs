@@ -5,7 +5,7 @@
 <!--Owner: @xuxinao-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 应用终止事件规格说明
 
@@ -98,11 +98,17 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
                           auto time = params["time"].asInt64();
                           auto reason = params["reason"].asString();
                           auto foreground = params["foreground"].asString();
+                          auto appRunningUniqueId = params["app_running_unique_id"].asString();
+                          auto bundleVersion = params["bundle_version"].asString();
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.reason=%{public}s",
                                       reason.c_str());
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}s",
                                       foreground.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.app_running_unique_id=%{public}s",
+                                      appRunningUniqueId.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s",
+                                      bundleVersion.c_str());
                       }
                   }
               }
@@ -194,11 +200,13 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
       HiAppEvent eventInfo.params.time=1717597063727
       HiAppEvent eventInfo.params.reason="RssThresholdKiller"
       HiAppEvent eventInfo.params.foreground=true
+      HiAppEvent eventInfo.params.app_running_unique_id=207544
+      HiAppEvent eventInfo.params.bundle_version=1000000
     ```
 
     > **说明：**
     >
-    > 根据日志报错内容，可查看具体[终止原因](./hiappevent-watcher-app-killed-events.md)。
+    > 根据日志报错内容，可查看具体[应用终止事件介绍](./hiappevent-watcher-app-killed-events.md#事件字段说明)。
 
 10. 移除事件观察者：
 

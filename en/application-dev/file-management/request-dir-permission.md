@@ -4,7 +4,7 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Obtaining and Accessing a User Directory (ArkTS)
 
@@ -131,7 +131,7 @@ You can use [ohos.file.environment](../reference/apis-core-file-kit/js-apis-file
 
 ## Obtaining and Accessing a User Directory (C/C++)
 
-In addition to ArkTS APIs, you can use C/C++ APIs to allow a third-party application to obtain and access a user directory. For details about the APIs, see [Environment](../reference/apis-core-file-kit/capi-oh-environment-h.md).
+In addition to ArkTS APIs, you can use C/C++ APIs to allow a third-party application to obtain and access a user directory. For details about the APIs, see [oh_environment.h](../reference/apis-core-file-kit/capi-oh-environment-h.md).
 
  **Constraints**
  - The device must have SystemCapability.FileManagement.File.Environment.FolderObtain.
@@ -139,7 +139,7 @@ In addition to ArkTS APIs, you can use C/C++ APIs to allow a third-party applica
 
 ### Available APIs
 
-For details about the APIs, see [API Reference](../reference/apis-core-file-kit/capi-oh-environment-h.md).
+For details about the APIs, see [oh_environment.h](../reference/apis-core-file-kit/capi-oh-environment-h.md).
 
 | API                                                                | Description                          |
 | ------------------------------------------------------------------------ | ------------------------------ |

@@ -15,7 +15,8 @@
 > - 本Class首批接口从API version 8开始支持。
 >
 > - 从API version 8开始支持，从API version 23开始不再维护，建议使用[WebCookieManager](./arkts-apis-webview-WebCookieManager.md)代替。
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+>
+> - 示例效果请以真机运行为准。
 
 ## constructor<sup>(deprecated)</sup>
 

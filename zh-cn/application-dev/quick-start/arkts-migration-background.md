@@ -42,52 +42,48 @@ buddy.getName().length; // 运行时异常：name is undefined
 
 ArkTS要求属性显式初始化，代码应如下所示：
 
-```typescript
+<!-- @[def_person](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
 class Person {
-  name: string = '';
-  
+  name: string = ''; // undefined
+
   setName(n: string): void {
     this.name = n;
   }
-  
-  // 类型为"string"，不可能为"null"或者"undefined"
+
+  // 类型为"string"，不可能为"null"或者"undefined"。
   getName(): string {
     return this.name;
   }
 }
-
-let buddy = new Person()
-// 假设代码中没有对name的赋值，例如没有调用"buddy.setName('John')"
-buddy.getName().length; // 0, 没有运行时异常
+// ...
+  let buddy = new Person()
+  // 假设代码中没有对name的赋值，例如没有调用"buddy.setName('John')"。
+  let len = buddy.getName().length; // 0, 没有运行时异常。
 ```
 
 如果`name`可以是`undefined`，其类型应在代码中精确标注。
 
-```typescript
-class Person {
-    name?: string; // 可能为undefined
+<!-- @[def_personFix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/Index.ets) -->  
 
-    setName(n: string): void {
-        this.name = n;
-    }
+``` TypeScript
+class Person1 {
+  name?: string; // 可能为undefined。
 
-    // 编译时错误：name可能为"undefined"，所以不能将这个API的返回类型标注为"string"
-    getNameWrong(): string {
-        return this.name;
-    }
+  setName(n: string): void {
+    this.name = n;
+  }
 
-    getName(): string | undefined { // 返回类型匹配name的类型
-        return this.name;
-    }
+  getName(): string | undefined { // 返回类型匹配name的类型。
+    return this.name;
+  }
 }
+// ...
+  let buddy = new Person1()
+  // 假设代码中没有对name的赋值，例如没有调用"buddy.setName('John')"。
 
-let buddy = new Person()
-// 假设代码中没有对name的赋值，例如没有调用"buddy.setName('John')"
-
-// 编译时错误：编译器认为下一行代码有可能访问"undefined"的属性，报错
-buddy.getName().length;  // 编译失败
-
-buddy.getName()?.length; // 编译成功，没有运行时错误
+  let len = buddy.getName()?.length; // 编译成功，没有运行时错误。
 ```
 
 ## 程序性能
@@ -97,12 +93,15 @@ buddy.getName()?.length; // 编译成功，没有运行时错误
 
 **Null Safety**
 
-```typescript
+<!-- @[def_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 function notify(who: string, what: string) {
   console.info(`Dear ${who}, a message for you: ${what}`);
 }
 
-notify('Jack', 'You look great today');
+// ...
+  notify('Jack', 'You look great today');
 ```
 
 在大多数情况下，函数`notify`会接受两个`string`类型的变量作为输入，产生一个新的字符串。但是，如果将一些特殊值作为输入，例如`notify(null, undefined)`，情况会怎么样呢？
@@ -181,15 +180,24 @@ foo(c);
 5. 禁止循环依赖
 
     循环依赖示例:
-    ```typescript
+    
+    <!-- @[import_v](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/bar.ets) -->  
+    
+    ``` TypeScript
     // bar.ets
     import {v} from './foo'; // bar.ets依赖foo.ets
     export let u = 0;
+    console.info(`v: ${v}`);
+    ```
 
+    <!-- @[import_u](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/foo.ets) -->  
+    
+    ``` TypeScript
     // foo.ets
     import {u} from './bar'; // foo.ets同时又依赖bar.ets
     export let v = 0;
-
+    console.info(`u: ${u}`);
+    
     //应用加载失败
     ```
 

@@ -10,6 +10,8 @@
 
 Defines C APIs for the radio module.
 
+**File to include**: <telephony/core_service/telephony_radio.h>
+
 **Library**: libtelephony_radio.so
 
 **System capability**: SystemCapability.Telephony.CoreService

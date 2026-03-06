@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_NodeAdapter* ArkUI_NodeAdapterHandle
+```
+
 ## Overview
 
 Defines a component adapter object, which is used for lazy loading of elements in scrollable components.

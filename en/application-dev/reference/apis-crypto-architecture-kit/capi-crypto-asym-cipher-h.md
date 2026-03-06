@@ -40,14 +40,14 @@ Defines APIs for encrypting and decrypting asymmetric keys.
 
 | Name| Description|
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoAsymCipher_Create(const char *algoName, OH_CryptoAsymCipher **ctx)](#oh_cryptoasymcipher_create) | Creates an asymmetric encryption instance based on the given algorithm name.|
+| [OH_Crypto_ErrCode OH_CryptoAsymCipher_Create(const char *algoName, OH_CryptoAsymCipher **ctx)](#oh_cryptoasymcipher_create) | Creates an asymmetric encryption instance based on the given algorithm name.<br> Note: The created resource must be destroyed by calling [OH_CryptoAsymCipher_Destroy](capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_destroy).|
 | [OH_Crypto_ErrCode OH_CryptoAsymCipher_Init(OH_CryptoAsymCipher *ctx, Crypto_CipherMode mode, OH_CryptoKeyPair *key)](#oh_cryptoasymcipher_init) | Initializes asymmetric encryption.|
-| [OH_Crypto_ErrCode OH_CryptoAsymCipher_Final(OH_CryptoAsymCipher *ctx, const Crypto_DataBlob *in, Crypto_DataBlob *out)](#oh_cryptoasymcipher_final) | Finalizes asymmetric encryption.|
+| [OH_Crypto_ErrCode OH_CryptoAsymCipher_Final(OH_CryptoAsymCipher *ctx, const Crypto_DataBlob *in, Crypto_DataBlob *out)](#oh_cryptoasymcipher_final) | Finalizes asymmetric encryption.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
 | [void OH_CryptoAsymCipher_Destroy(OH_CryptoAsymCipher *ctx)](#oh_cryptoasymcipher_destroy) | Destroys an asymmetric encryption context.|
-| [OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Create(Crypto_DataBlob *sm2Ciphertext, OH_CryptoSm2CiphertextSpec **spec)](#oh_cryptosm2ciphertextspec_create) | Creates SM2 ciphertext specifications.|
-| [OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_GetItem(OH_CryptoSm2CiphertextSpec *spec, CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *out)](#oh_cryptosm2ciphertextspec_getitem) | Obtains a specified item in SM2 ciphertext specifications.|
+| [OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Create(Crypto_DataBlob *sm2Ciphertext, OH_CryptoSm2CiphertextSpec **spec)](#oh_cryptosm2ciphertextspec_create) | Creates SM2 ciphertext specifications.<br> Note: The created resource must be destroyed by calling [OH_CryptoSm2CiphertextSpec_Destroy](capi-crypto-asym-cipher-h.md#oh_cryptosm2ciphertextspec_destroy).|
+| [OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_GetItem(OH_CryptoSm2CiphertextSpec *spec, CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *out)](#oh_cryptosm2ciphertextspec_getitem) | Obtains a specified item in SM2 ciphertext specifications.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
 | [OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_SetItem(OH_CryptoSm2CiphertextSpec *spec, CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *in)](#oh_cryptosm2ciphertextspec_setitem) | Sets a specified item in SM2 ciphertext specifications.|
-| [OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Encode(OH_CryptoSm2CiphertextSpec *spec, Crypto_DataBlob *out)](#oh_cryptosm2ciphertextspec_encode) | Encodes SM2 ciphertext specifications into DER ciphertext.|
+| [OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Encode(OH_CryptoSm2CiphertextSpec *spec, Crypto_DataBlob *out)](#oh_cryptosm2ciphertextspec_encode) | Encodes SM2 ciphertext specifications into DER ciphertext.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
 | [void OH_CryptoSm2CiphertextSpec_Destroy(OH_CryptoSm2CiphertextSpec *spec)](#oh_cryptosm2ciphertextspec_destroy) | Destroys SM2 ciphertext specifications.|
 
 ## Enum Description
@@ -82,16 +82,15 @@ OH_Crypto_ErrCode OH_CryptoAsymCipher_Create(const char *algoName, OH_CryptoAsym
 
 **Description**
 
-Creates an asymmetric encryption instance based on the given algorithm name.
+Creates an asymmetric encryption instance based on the given algorithm name.<br> Note: The created resource must be destroyed by calling [OH_CryptoAsymCipher_Destroy](capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_destroy).
 
 **Since**: 20
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| const char *algoName | Pointer to the algorithm used to generate an encryption instance.<br>For example, **'RSA\|PKCS1_OAEP\|SHA384\|MGF1_SHA384'**, **'SM2\|SM3'**| | | | |
+| const char *algoName | Pointer to the algorithm used to generate an encryption instance.<br>For example, **RSA\|PKCS1_OAEP\|SHA384\|MGF1_SHA384** or **SM2\|SM3**.|
 | [OH_CryptoAsymCipher](capi-cryptoasymcipherapi-oh-cryptoasymcipher.md) **ctx | Pointer to the asymmetric encryption context.|
 
 **Returns**
@@ -112,7 +111,6 @@ Initializes asymmetric encryption.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -129,21 +127,20 @@ Initializes asymmetric encryption.
 
 **Reference**
 
-[OH_CryptoAsymCipher_Final](#oh_cryptoasymcipher_final)
+[OH_CryptoAsymCipher_Final](capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_final)
 
 
 ### OH_CryptoAsymCipher_Final()
 
 ```c
-OH_Crypto_ErrCode OH_CryptoAsymCipher_Final(OH_CryptoAsymCipher *ctx, const Crypto_DataBlob *in,Crypto_DataBlob *out)
+OH_Crypto_ErrCode OH_CryptoAsymCipher_Final(OH_CryptoAsymCipher *ctx, const Crypto_DataBlob *in, Crypto_DataBlob *out)
 ```
 
 **Description**
 
-Finalizes asymmetric encryption.
+Finalizes asymmetric encryption.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -161,7 +158,7 @@ Finalizes asymmetric encryption.
 
 **Reference**
 
-[OH_CryptoAsymCipher_Init](#oh_cryptoasymcipher_init)
+[OH_CryptoAsymCipher_Init](capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_init)
 
 
 ### OH_CryptoAsymCipher_Destroy()
@@ -188,10 +185,9 @@ OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Create(Crypto_DataBlob *sm2Cipherte
 
 **Description**
 
-Creates SM2 ciphertext specifications.
+Creates SM2 ciphertext specifications.<br> Note: The created resource must be destroyed by calling [OH_CryptoSm2CiphertextSpec_Destroy](capi-crypto-asym-cipher-h.md#oh_cryptosm2ciphertextspec_destroy).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -209,22 +205,21 @@ Creates SM2 ciphertext specifications.
 ### OH_CryptoSm2CiphertextSpec_GetItem()
 
 ```c
-OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_GetItem(OH_CryptoSm2CiphertextSpec *spec,CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *out)
+OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_GetItem(OH_CryptoSm2CiphertextSpec *spec, CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *out)
 ```
 
 **Description**
 
-Obtains a specified item in SM2 ciphertext specifications.
+Obtains a specified item in SM2 ciphertext specifications.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 20
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_CryptoSm2CiphertextSpec](capi-cryptoasymcipherapi-oh-cryptosm2ciphertextspec.md) *spec | Pointer to the SM2 ciphertext specifications.|
-| [CryptoSm2CiphertextSpec_item](#cryptosm2ciphertextspec_item) item | Pointer to the SM2 ciphertext specifications.|
+| [CryptoSm2CiphertextSpec_item](capi-crypto-asym-cipher-h.md#cryptosm2ciphertextspec_item) item | Pointer to the SM2 ciphertext specifications.|
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | Pointer to the output data.|
 
 **Returns**
@@ -236,7 +231,7 @@ Obtains a specified item in SM2 ciphertext specifications.
 ### OH_CryptoSm2CiphertextSpec_SetItem()
 
 ```c
-OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_SetItem(OH_CryptoSm2CiphertextSpec *spec,CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *in)
+OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_SetItem(OH_CryptoSm2CiphertextSpec *spec, CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *in)
 ```
 
 **Description**
@@ -245,13 +240,12 @@ Sets a specified item in SM2 ciphertext specifications.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_CryptoSm2CiphertextSpec](capi-cryptoasymcipherapi-oh-cryptosm2ciphertextspec.md) *spec | Pointer to the SM2 ciphertext specifications.|
-| [CryptoSm2CiphertextSpec_item](#cryptosm2ciphertextspec_item) item | Pointer to the SM2 ciphertext specifications.|
+| [CryptoSm2CiphertextSpec_item](capi-crypto-asym-cipher-h.md#cryptosm2ciphertextspec_item) item | Pointer to the SM2 ciphertext specifications.|
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *in | Pointer to the input data.|
 
 **Returns**
@@ -268,10 +262,9 @@ OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Encode(OH_CryptoSm2CiphertextSpec *
 
 **Description**
 
-Encodes SM2 ciphertext specifications into DER ciphertext.
+Encodes SM2 ciphertext specifications into DER ciphertext.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -297,7 +290,6 @@ void OH_CryptoSm2CiphertextSpec_Destroy(OH_CryptoSm2CiphertextSpec *spec)
 Destroys SM2 ciphertext specifications.
 
 **Since**: 20
-
 
 **Parameters**
 

@@ -17,7 +17,7 @@ For details about the APIs, see [Vibrator](../../reference/apis-sensor-service-k
 
 | Name                                                        | Description                          |
 | ------------------------------------------------------------ | ------------------------------ |
-| OHOS::Sensors::OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute) | Configures the vibrator to vibrate continuously for a given duration.|
+| OHOS::Sensors::OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute) | Controls the vibrator to vibrate continuously for a given duration.|
 | OHOS::Sensors::OH_Vibrator_PlayVibrationCustom(Vibrator_FileDescription fileDescription, Vibrator_Attribute vibrateAttribute) | Configures the vibrator to vibrate with the custom sequence.          |
 | OHOS::Sensors::OH_Vibrator_Cancel()                          | Stops the vibration.                |
 
@@ -128,7 +128,7 @@ Custom vibration enables you to design desired vibration effects by customizing 
        // argv[0] is the first parameter of the function, which is a JS resource object. The  OH_ResourceManager_InitNativeResourceManager function converts this JS resource object into a native object.
        NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
        if (mNativeResMgr == nullptr) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, VIBRATOR_LOG_DOMAIN, TAG, "Get native resourceMagr failed");
+           OH_LOG_Print(LOG_APP, LOG_ERROR, VIBRATOR_LOG_DOMAIN, TAG, "Get native resource manager failed");
            return nullptr;
        }
        // Obtain the rawFile pointer object.

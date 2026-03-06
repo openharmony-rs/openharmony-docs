@@ -26,8 +26,7 @@ singleton is the default launch type.
 
 Each time [startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) is called, if a [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) instance of this type already exists in the application process, the instance is reused. In other words, UIAbility of this type can have only one instance in the system, meaning that only one mission is displayed in the recent task list.
 
-**Figure 1** Demonstration effect in singleton mode
-
+**Figure 1** Demonstration effect in singleton mode 
 ![uiability-launch-type1](figures/uiability-launch-type1.gif)  
 
 > **NOTE**
@@ -58,8 +57,7 @@ To use the singleton mode, set **launchType** in the [module.json5 file](../quic
 
 In multiton mode, each time [startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) is called, a new [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) instance is created in the application process. Multiple missions are displayed for UIAbility of this type in the recent task list.  
 
-**Figure 2** Demonstration effect in multiton mode
-
+**Figure 2** Demonstration effect in multiton mode 
 ![uiability-launch-type2](figures/uiability-launch-type2.gif)  
 
 To use the multiton mode, set **launchType** in the [module.json5 file](../quick-start/module-configuration-file.md) to **multiton**.
@@ -86,8 +84,7 @@ To use the multiton mode, set **launchType** in the [module.json5 file](../quick
 
 The specified mode is used in some special scenarios. For example, in a document application, you may want a document instance to be created each time you create a document, and you may also want to use the same document instance when you open an existing document.
 
-**Figure 3** Principle in specified mode
-
+**Figure 3** Principle in specified mode 
 ![uiability-launch-type3-principle](figures/uiability-launch-type3-principle.png)  
 
 This section assumes that an application has two [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) instances: EntryAbility and SpecifiedAbility, and EntryAbility will start SpecifiedAbility in specified mode. The basic principle is as follows:
@@ -98,8 +95,7 @@ This section assumes that an application has two [UIAbility](../reference/apis-a
       * If a UIAbility instance is matched, that UIAbility instance is started, and its [onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant) lifecycle callback is invoked.
       * If no UIAbility instance is matched, a new UIAbility instance is created, and its [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) and [onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate) lifecycle callbacks are invoked.
 
-**Figure 4** Demonstration effect in specified mode
-
+**Figure 4** Demonstration effect in specified mode  
 ![uiability-launch-type3](figures/uiability-launch-type3.gif)  
 
 1. In SpecifiedAbility, set **launchType** in the [module.json5 file](../quick-start/module-configuration-file.md) to **specified**.
@@ -147,10 +143,10 @@ This section assumes that an application has two [UIAbility](../reference/apis-a
       build() {
         Row() {
           Column() {
-            // ···
-            // The value of app.string.new_doc in the resource file is 'Create document'.
+            // ...
+            // Replace $r('app.string.new_doc') with the actual resource file. In this example, the value in the resource file is "Create a document".
             Button($r('app.string.new_doc'))
-            // ···
+            // ...
               .onClick(() => {
                 let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
                 // context is the UIAbilityContext of the initiator UIAbility.
@@ -172,9 +168,9 @@ This section assumes that an application has two [UIAbility](../reference/apis-a
                 this.KEY_NEW = this.KEY_NEW + 'a';
               })
     
-            // The value of app.string.open_old_doc in the resource file is 'Open saved document'.
+            // Replace $r('app.string.open_old_doc') with the actual resource file. In this example, the value in the resource file is "Open a saved document".
             Button($r('app.string.open_old_doc'))
-            // ···
+            // ...
               .onClick(() => {
                 let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
                 // context is the UIAbilityContext of the initiator UIAbility.
@@ -227,14 +223,22 @@ This section assumes that an application has two [UIAbility](../reference/apis-a
 
    > **NOTE**
    >
-   > - If [startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) is called to start an existing UIAbility instance in specified mode, and the [onAcceptWant()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onacceptwant) callback of [AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md) matches that UIAbility instance, that instance is started, and no new UIAbility instance is created. In this case, the **onNewWant()** callback is invoked, but the **onCreate()** and **onWindowStageCreate()** callbacks are not.
-   > - AbilityStage is not automatically generated by default in the project of DevEco Studio. For details about how to create an AbilityStage file, see [AbilityStage Component Container](abilitystage.md#how-to-develop).
+   > 1. If [startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) is called to start an existing UIAbility instance in specified mode, and the [onAcceptWant()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onacceptwant) callback of [AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md) matches that UIAbility instance, that instance is started, and no new UIAbility instance is created. In this case, the **onNewWant()** callback is invoked, but the **onCreate()** and **onWindowStageCreate()** callbacks are not.
+   > 2. AbilityStage is not automatically generated by default in the project of DevEco Studio. For details about how to create an AbilityStage file, see [AbilityStage Component Container](abilitystage.md#how-to-develop).
 
-For example, in the document application, different keys are bound to different document instances. Each time a document is created, a new key (for example, file path) is passed in, and a new [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) instance is created when the UIAbility is started in [AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md). However, when an existing document is opened, the same UIAbility instance is started again in AbilityStage.
+   For example, in the document application, different keys are bound to different document instances. Each time a document is created, a new key (for example, file path) is passed in, and a new [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) instance is created when the UIAbility is started in [AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md). However, when an existing document is opened, the same UIAbility instance is started again in AbilityStage.
 
-The following steps are used as an example.
+   The following steps are used as an example.
 
    1. Open file A. A UIAbility instance, UIAbility instance 1, is started.
    2. Close the process of file A in the recent task list. UIAbility instance 1 is destroyed. Return to the home screen and open file A again. A new UIAbility instance, UIAbility instance 2, is started.
    3. Return to the home screen and open file B. A new UIAbility instance, UIAbility instance 3, is started.
    4. Return to the home screen and open file A again. UIAbility instance 2 is started. This is because the system automatically matches the key with the UIAbility instance and starts the UIAbility instance that has a matching key. In this example, UIAbility instance 2 has the same key as file A. Therefore, the system pulls back UIAbility instance 2 and focuses it without creating a new instance.
+
+## Samples
+
+The following samples are provided to help you better understand how to start a UIAbility:
+
+- [Ability Launch Type (ArkTS, API version 9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/AbilityStartMode)
+<!--RP1-->
+<!--RP1End-->

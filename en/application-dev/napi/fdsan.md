@@ -277,6 +277,19 @@ Tid:15312, Name:e.myapplication
 ```
 The stack information provides information about **bad_close** and all opened files, helping quickly locate faults.
 
+**OpenFiles** lists all opened files.
+
+**Field description**:
+
+**fd->object description**: ID of the kernel object associated with the file descriptor **fd**.
+
+**[Content in square brackets]**: Internal ID of the object, including the following:
+- For socket/pipe: Pseudo file system ID allocated by the kernel.
+- For a common file: Inode ID of the file system (data structure used by the OS to manage the file metadata and data blocks).
+- For **anon_inode**: Object type name.
+
+**native object of unknown type 0**: The tag value of the **fd** is 0.
+
 ```txt
 OpenFiles:
 0->/dev/null native object of unknown type 0

@@ -7,7 +7,7 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
-- [Introduction to MindSpore Lite Kit](MindSpore-Lite-Kit-Introduction.md)
+- [About This Kit](MindSpore-Lite-Kit-Introduction.md)
 - [Using MindSpore Lite for Offline Model Conversion and Inference](mindspore-lite-converter-guidelines.md)
 - Model Deployment<!--deployment-->
   - [Using MindSpore Lite for Model Inference (C/C++)](mindspore-lite-guidelines.md)

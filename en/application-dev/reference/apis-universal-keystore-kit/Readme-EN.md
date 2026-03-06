@@ -12,6 +12,7 @@
   - [@ohos.security.CryptoExtensionAbility (Key Extension Ability)](js-apis-CryptoExtensionAbility.md)
   <!--Del-->
   - [@ohos.security.huks (HUKS) (System API)](js-apis-huks-sys.md)
+  - [@ohos.security.huksExternalCrypto (External Key Management) (System API)](js-apis-huksExternalCrypto-sys.md)
   <!--DelEnd-->
 - C APIs<!--universal-keystore-c-->
   - Modules<!--universal-keystore-module-->
@@ -44,4 +45,3 @@
     - [OH_Huks_KeyAliasSet](capi-hukstypeapi-oh-huks-keyaliasset.md)
 - Error Codes<!--universal-keystore-arkts-errcode-->
   - [HUKS Error Codes](errorcode-huks.md)
-<!--no_check-->

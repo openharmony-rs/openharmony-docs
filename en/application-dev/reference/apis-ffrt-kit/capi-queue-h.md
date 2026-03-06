@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
@@ -45,7 +45,7 @@ The **queue.h** file declares the queue APIs in C.
 | [FFRT_C_API ffrt_qos_t ffrt_queue_attr_get_qos(const ffrt_queue_attr_t* attr)](#ffrt_queue_attr_get_qos) | Obtains the queue QoS.|
 | [FFRT_C_API void ffrt_queue_attr_set_timeout(ffrt_queue_attr_t* attr, uint64_t timeout_us)](#ffrt_queue_attr_set_timeout) | Sets the queue timeout. The minimum timeout value is 1 ms. Any value set below this threshold will default to 1 ms.|
 | [FFRT_C_API uint64_t ffrt_queue_attr_get_timeout(const ffrt_queue_attr_t* attr)](#ffrt_queue_attr_get_timeout) | Obtains the queue timeout.|
-| [FFRT_C_API void ffrt_queue_attr_set_callback(ffrt_queue_attr_t* attr, ffrt_function_header_t* f)](#ffrt_queue_attr_set_callback) | Sets a callback that is invoked when a queue task times out.|
+| [FFRT_C_API void ffrt_queue_attr_set_callback(ffrt_queue_attr_t* attr, ffrt_function_header_t* f)](#ffrt_queue_attr_set_callback) | Sets a callback that is invoked when a queue task times out.<br> You are not advised to call the `exit` function in `f`. Otherwise, undefined behavior may occur.|
 | [FFRT_C_API ffrt_function_header_t* ffrt_queue_attr_get_callback(const ffrt_queue_attr_t* attr)](#ffrt_queue_attr_get_callback) | Obtains the callback that is invoked when a queue task times out.|
 | [FFRT_C_API void ffrt_queue_attr_set_max_concurrency(ffrt_queue_attr_t* attr, const int max_concurrency)](#ffrt_queue_attr_set_max_concurrency) | Sets the maximum concurrency for a queue, which must be a concurrent queue.|
 | [FFRT_C_API int ffrt_queue_attr_get_max_concurrency(const ffrt_queue_attr_t* attr)](#ffrt_queue_attr_get_max_concurrency) | Obtains the maximum concurrency of a queue, which must be a concurrent queue.|
@@ -60,13 +60,13 @@ The **queue.h** file declares the queue APIs in C.
 | [FFRT_C_API void ffrt_queue_wait(ffrt_task_handle_t handle)](#ffrt_queue_wait) | Waits until a task in the queue is complete.|
 | [FFRT_C_API int ffrt_queue_cancel(ffrt_task_handle_t handle)](#ffrt_queue_cancel) | Cancels a task in the queue.|
 | [FFRT_C_API ffrt_queue_t ffrt_get_main_queue(void)](#ffrt_get_main_queue) | Obtains the main thread queue.|
-| [FFRT_C_API ffrt_queue_t ffrt_get_current_queue(void)](#ffrt_get_current_queue) | Obtains the ArkTS Worker thread queue.|
+| [FFRT_C_API ffrt_queue_t ffrt_get_current_queue(void)](#ffrt_get_current_queue) | Obtains the ArkTS Worker thread queue. (It is deprecated since API version 18.)|
 
 ## Enum Description
 
 ### ffrt_queue_type_t
 
-```
+```c
 enum ffrt_queue_type_t
 ```
 
@@ -87,7 +87,7 @@ Enumerates the queue types.
 
 ### ffrt_queue_attr_init()
 
-```
+```c
 FFRT_C_API int ffrt_queue_attr_init(ffrt_queue_attr_t* attr)
 ```
 
@@ -96,7 +96,6 @@ FFRT_C_API int ffrt_queue_attr_init(ffrt_queue_attr_t* attr)
 Initializes the queue attribute.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -112,7 +111,7 @@ Initializes the queue attribute.
 
 ### ffrt_queue_attr_destroy()
 
-```
+```c
 FFRT_C_API void ffrt_queue_attr_destroy(ffrt_queue_attr_t* attr)
 ```
 
@@ -122,7 +121,6 @@ Destroys the queue attribute.
 
 **Since**: 10
 
-
 **Parameters**
 
 | Name| Description|
@@ -131,7 +129,7 @@ Destroys the queue attribute.
 
 ### ffrt_queue_attr_set_qos()
 
-```
+```c
 FFRT_C_API void ffrt_queue_attr_set_qos(ffrt_queue_attr_t* attr, ffrt_qos_t qos)
 ```
 
@@ -141,17 +139,16 @@ Sets the queue QoS.
 
 **Since**: 10
 
-
 **Parameters**
 
-| Name                                                      | Description|
-|-----------------------------------------------------------| -- |
+| Name| Description|
+| -- | -- |
 | [ffrt_queue_attr_t](capi-ffrt-ffrt-queue-attr-t.md)* attr | Pointer to the queue attribute.|
 | [ffrt_qos_t](capi-type-def-h.md#variables) qos                  | QoS.|
 
 ### ffrt_queue_attr_get_qos()
 
-```
+```c
 FFRT_C_API ffrt_qos_t ffrt_queue_attr_get_qos(const ffrt_queue_attr_t* attr)
 ```
 
@@ -160,7 +157,6 @@ FFRT_C_API ffrt_qos_t ffrt_queue_attr_get_qos(const ffrt_queue_attr_t* attr)
 Obtains the queue QoS.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -176,7 +172,7 @@ Obtains the queue QoS.
 
 ### ffrt_queue_attr_set_timeout()
 
-```
+```c
 FFRT_C_API void ffrt_queue_attr_set_timeout(ffrt_queue_attr_t* attr, uint64_t timeout_us)
 ```
 
@@ -185,7 +181,6 @@ FFRT_C_API void ffrt_queue_attr_set_timeout(ffrt_queue_attr_t* attr, uint64_t ti
 Sets the serial queue timeout. The minimum timeout value is 1 ms. Any value set below this threshold will default to 1 ms.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -196,7 +191,7 @@ Sets the serial queue timeout. The minimum timeout value is 1 ms. Any value set 
 
 ### ffrt_queue_attr_get_timeout()
 
-```
+```c
 FFRT_C_API uint64_t ffrt_queue_attr_get_timeout(const ffrt_queue_attr_t* attr)
 ```
 
@@ -205,7 +200,6 @@ FFRT_C_API uint64_t ffrt_queue_attr_get_timeout(const ffrt_queue_attr_t* attr)
 Obtains the serial queue timeout.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -221,17 +215,17 @@ Obtains the serial queue timeout.
 
 ### ffrt_queue_attr_set_callback()
 
-```
+```c
 FFRT_C_API void ffrt_queue_attr_set_callback(ffrt_queue_attr_t* attr, ffrt_function_header_t* f)
 ```
 
 **Description**
 
 Sets a callback that is invoked when a queue task times out.
+
 You are not advised to call the `exit` function in `f`. Otherwise, undefined behavior may occur.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -242,7 +236,7 @@ You are not advised to call the `exit` function in `f`. Otherwise, undefined beh
 
 ### ffrt_queue_attr_get_callback()
 
-```
+```c
 FFRT_C_API ffrt_function_header_t* ffrt_queue_attr_get_callback(const ffrt_queue_attr_t* attr)
 ```
 
@@ -252,7 +246,6 @@ Obtains the callback that is invoked when a queue task times out.
 
 **Since**: 10
 
-
 **Parameters**
 
 | Name| Description|
@@ -261,13 +254,13 @@ Obtains the callback that is invoked when a queue task times out.
 
 **Returns**
 
-| Type                                    | Description|
-|----------------------------------------| -- |
+| Type| Description|
+| -- | -- |
 | FFRT_C_API [ffrt_function_header_t](capi-ffrt-ffrt-function-header-t.md)* | Returns the callback.|
 
 ### ffrt_queue_attr_set_max_concurrency()
 
-```
+```c
 FFRT_C_API void ffrt_queue_attr_set_max_concurrency(ffrt_queue_attr_t* attr, const int max_concurrency)
 ```
 
@@ -276,7 +269,6 @@ FFRT_C_API void ffrt_queue_attr_set_max_concurrency(ffrt_queue_attr_t* attr, con
 Sets the maximum concurrency for a concurrent queue.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -287,7 +279,7 @@ Sets the maximum concurrency for a concurrent queue.
 
 ### ffrt_queue_attr_get_max_concurrency()
 
-```
+```c
 FFRT_C_API int ffrt_queue_attr_get_max_concurrency(const ffrt_queue_attr_t* attr)
 ```
 
@@ -296,7 +288,6 @@ FFRT_C_API int ffrt_queue_attr_get_max_concurrency(const ffrt_queue_attr_t* attr
 Obtains the maximum concurrency of a concurrent queue.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -312,7 +303,7 @@ Obtains the maximum concurrency of a concurrent queue.
 
 ### ffrt_queue_attr_set_thread_mode()
 
-```
+```c
 FFRT_C_API void ffrt_queue_attr_set_thread_mode(ffrt_queue_attr_t* attr, bool mode)
 ```
 
@@ -321,7 +312,6 @@ FFRT_C_API void ffrt_queue_attr_set_thread_mode(ffrt_queue_attr_t* attr, bool mo
 Sets the running mode of tasks in the queue. By default, the coroutine mode is used.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -332,7 +322,7 @@ Sets the running mode of tasks in the queue. By default, the coroutine mode is u
 
 ### ffrt_queue_attr_get_thread_mode()
 
-```
+```c
 FFRT_C_API bool ffrt_queue_attr_get_thread_mode(const ffrt_queue_attr_t* attr)
 ```
 
@@ -341,7 +331,6 @@ FFRT_C_API bool ffrt_queue_attr_get_thread_mode(const ffrt_queue_attr_t* attr)
 Obtains the running mode of tasks in the queue.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -357,7 +346,7 @@ Obtains the running mode of tasks in the queue.
 
 ### ffrt_queue_create()
 
-```
+```c
 FFRT_C_API ffrt_queue_t ffrt_queue_create(ffrt_queue_type_t type, const char* name, const ffrt_queue_attr_t* attr)
 ```
 
@@ -366,7 +355,6 @@ FFRT_C_API ffrt_queue_t ffrt_queue_create(ffrt_queue_type_t type, const char* na
 Creates a queue.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -378,13 +366,13 @@ Creates a queue.
 
 **Returns**
 
-| Type                         | Description|
-|-----------------------------| -- |
+| Type| Description|
+| -- | -- |
 | FFRT_C_API [ffrt_queue_t](capi-ffrt-ffrt-queue-t.md) | Returns a non-null queue handle if the queue is created;<br>          returns a null pointer otherwise.|
 
 ### ffrt_queue_destroy()
 
-```
+```c
 FFRT_C_API void ffrt_queue_destroy(ffrt_queue_t queue)
 ```
 
@@ -394,7 +382,6 @@ Destroys a queue.
 
 **Since**: 10
 
-
 **Parameters**
 
 | Name| Description|
@@ -403,7 +390,7 @@ Destroys a queue.
 
 ### ffrt_queue_submit()
 
-```
+```c
 FFRT_C_API void ffrt_queue_submit(ffrt_queue_t queue, ffrt_function_header_t* f, const ffrt_task_attr_t* attr)
 ```
 
@@ -412,7 +399,6 @@ FFRT_C_API void ffrt_queue_submit(ffrt_queue_t queue, ffrt_function_header_t* f,
 Submits a task to a queue.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -424,7 +410,7 @@ Submits a task to a queue.
 
 ### ffrt_queue_submit_h()
 
-```
+```c
 FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h(ffrt_queue_t queue, ffrt_function_header_t* f, const ffrt_task_attr_t* attr)
 ```
 
@@ -433,7 +419,6 @@ FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h(ffrt_queue_t queue, ffrt_funct
 Submits a task to a queue, and obtains the task handle.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -445,13 +430,13 @@ Submits a task to a queue, and obtains the task handle.
 
 **Returns**
 
-| Type                               | Description|
-|-----------------------------------| -- |
+| Type| Description|
+| -- | -- |
 | FFRT_C_API [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | Returns a non-null task handle if the task is submitted;<br>          returns a null pointer otherwise.|
 
 ### ffrt_queue_submit_f()
 
-```
+```c
 FFRT_C_API void ffrt_queue_submit_f(ffrt_queue_t queue, ffrt_function_t func, void* arg, const ffrt_task_attr_t* attr)
 ```
 
@@ -460,7 +445,6 @@ FFRT_C_API void ffrt_queue_submit_f(ffrt_queue_t queue, ffrt_function_t func, vo
 Submits a task to a queue. It is a simplified wrapper of **ffrt_queue_submit**. This API assumes that the callback function does not need to be destroyed. The task function and parameters are encapsulated into a queue task structure, which is then passed to **ffrt_queue_submit** along with other parameters.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -478,7 +462,7 @@ Submits a task to a queue. It is a simplified wrapper of **ffrt_queue_submit**. 
 
 ### ffrt_queue_submit_h_f()
 
-```
+```c
 FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h_f(ffrt_queue_t queue, ffrt_function_t func, void* arg, const ffrt_task_attr_t* attr)
 ```
 
@@ -487,7 +471,6 @@ FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h_f(ffrt_queue_t queue, ffrt_fun
 Submits a task to a queue, and obtains the task handle. It is a simplified wrapper of **ffrt_queue_submit_h**. This API assumes that the callback function does not need to be destroyed. The task function and parameters are encapsulated into a queue task structure, which is then passed to **ffrt_queue_submit_h** along with other parameters.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -511,7 +494,7 @@ Submits a task to a queue, and obtains the task handle. It is a simplified wrapp
 
 ### ffrt_queue_wait()
 
-```
+```c
 FFRT_C_API void ffrt_queue_wait(ffrt_task_handle_t handle)
 ```
 
@@ -521,7 +504,6 @@ Waits until a task in the queue is complete.
 
 **Since**: 10
 
-
 **Parameters**
 
 | Name| Description|
@@ -530,7 +512,7 @@ Waits until a task in the queue is complete.
 
 ### ffrt_queue_cancel()
 
-```
+```c
 FFRT_C_API int ffrt_queue_cancel(ffrt_task_handle_t handle)
 ```
 
@@ -539,7 +521,6 @@ FFRT_C_API int ffrt_queue_cancel(ffrt_task_handle_t handle)
 Cancels a task in the queue.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -555,7 +536,7 @@ Cancels a task in the queue.
 
 ### ffrt_get_main_queue()
 
-```
+```c
 FFRT_C_API ffrt_queue_t ffrt_get_main_queue(void)
 ```
 
@@ -573,7 +554,7 @@ Obtains the main thread queue.
 
 ### ffrt_get_current_queue()
 
-```
+```c
 FFRT_C_API ffrt_queue_t ffrt_get_current_queue(void)
 ```
 

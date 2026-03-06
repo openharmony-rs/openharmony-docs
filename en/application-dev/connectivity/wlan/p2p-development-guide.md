@@ -10,7 +10,7 @@
 The peer-to-peer (P2P) mode provides a point-to-point connection between devices in a WLAN. It enables the direct establishment of a TCP/IP connection between two stations (STAs) without the involvement of an access point (AP).
 
 ## When to Use
-You can use the APIs provided by the **wifiManager** module to:
+You can use the APIs provided to:
 
 - Create or remove a P2P group.
 - Set up a P2P connection.

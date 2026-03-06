@@ -30,15 +30,28 @@ The following table lists the APIs used to manipulate data of the **ArrayBuffer*
 
 If you are just starting out with Node-API, see [Node-API Development Process](use-napi-process.md). The following demonstrates only the C++ and ArkTS code related to **ArrayBuffer** management.
 
+The following header files are required for the C++ code:
+```cpp
+#include "napi/native_api.h"
+#include <cstring>
+#include "hilog/log.h"
+```
+The following modules are required for the ArkTS code:
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import testNapi from 'libentry.so';
+```
+
 ### napi_is_arraybuffer
 
 Call **napi_is_arraybuffer** to check whether a JS value is an **ArrayBuffer** object.
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_is_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// napi_is_arraybuffer
 static napi_value IsArrayBuffer(napi_env env, napi_callback_info info)
 {
     // Obtain a parameter.
@@ -47,7 +60,7 @@ static napi_value IsArrayBuffer(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // Call napi_is_arraybuffer to check whether the input parameter is an **ArrayBuffer** object.
     bool result = false;
-    napi_status status = napi_is_arraybuffer(env, args[0], &result);  
+    napi_status status = napi_is_arraybuffer(env, args[0], &result);
     if (status != napi_ok) {
         napi_throw_error(env, nullptr, "Node-API napi_is_arraybuffer fail");
         return nullptr;
@@ -58,31 +71,39 @@ static napi_value IsArrayBuffer(napi_env env, napi_callback_info info)
     return returnValue;
 }
 ```
-<!-- @[napi_is_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
-export const isArrayBuffer: <T>(arrayBuffer: T) => boolean | undefined;
-```
+index.d.ts
+
 <!-- @[napi_is_arraybuffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const isArrayBuffer: <T>(arrayBuffer: T) => boolean | undefined; // napi_is_arraybuffer
+```
+
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_is_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// test interface napi_is_arraybuffer
 try {
   let value = new ArrayBuffer(1);
   let data = "123";
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_arraybuffer: %{public}s', testNapi.isArrayBuffer(value));
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_arraybuffer: %{public}s', testNapi.isArrayBuffer(data));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_arraybuffer: %{public}s',
+    testNapi.isArrayBuffer(value));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_arraybuffer: %{public}s',
+    testNapi.isArrayBuffer(data));
+  // ...
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API napi_is_arraybuffer error: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_is_arraybuffer error: %{public}s',
+    error.message);
+  // ...
 }
 ```
-<!-- @[ark_napi_is_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
+
 
 Log output:
 
@@ -91,14 +112,14 @@ Test Node-API napi_is_arraybuffer: false
 
 ### napi_get_arraybuffer_info
 
-Call **napi_get_arraybuffer_info** to obtain the underlying data buffer and length of an **ArrayBuffer** object. This API can process only **ArrayBuffer** objects. Do not pass other types to the API. To obtain an **ArrayBuffer** object from a **Uint8Array** object, you need to execute the **.buffer()** operation on the ArkTS side.
+Call **napi_get_arraybuffer_info** to obtain the underlying data buffer and length of an **ArrayBuffer** object. This API can process only **ArrayBuffer** objects. Do not pass other types to the API. To obtain an **ArrayBuffer** object from a **Uint8Array** object, you need to execute the **.buffer** operation on the ArkTS side.
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
-#include <cstring>
+<!-- @[napi_get_arraybuffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// napi_get_arraybuffer_info
 static napi_value GetArrayBufferInfo(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -135,26 +156,28 @@ static napi_value GetArrayBufferInfo(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_get_arraybuffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
+index.d.ts
+
+<!-- @[napi_get_arraybuffer_info_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
 export class ArrayBufferInfo {
   byteLength: number;
   buffer: ArrayBuffer;
 }
-export const getArrayBufferInfo: (data: ArrayBuffer) => ArrayBufferInfo | undefined;
+export const getArrayBufferInfo: (data: ArrayBuffer) => ArrayBufferInfo | undefined; // napi_get_arraybuffer_info
 ```
-<!-- @[napi_get_arraybuffer_info_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_get_arraybuffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// test interface napi_get_arraybuffer_info
 try {
   let typedArray = new Uint8Array([1, 2, 3, 4, 5]);
   let buffer = typedArray.buffer;
@@ -165,11 +188,10 @@ try {
   hilog.error(0x0000, 'testTag', 'Test Node-API get_arrayBuffer_info error: %{public}s', error.message);
 }
 ```
-<!-- @[ark_napi_get_arraybuffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
 
 Log output:
 
-Test Node-API get_arrayBuffer_info:{"byteLength":10,"buffer":{}}
+Test Node-API napi_get_arraybuffer_info byteLength: 5 buffer: {"0":1,"1":2,"2":3,"3":4,"4":5}
 
 ### napi_detach_arraybuffer
 
@@ -181,9 +203,10 @@ Call **napi_is_detached_arraybuffer** to check whether an **ArrayBuffer** object
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_detach_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// napi_detach_arraybuffer
 static napi_value DetachedArrayBuffer(napi_env env, napi_callback_info info)
 {
     // Call napi_detach_arraybuffer to detach the underlying data from an ArrayBuffer object.
@@ -196,6 +219,7 @@ static napi_value DetachedArrayBuffer(napi_env env, napi_callback_info info)
     return arrayBuffer;
 }
 
+// napi_is_detach_arraybuffer
 static napi_value IsDetachedArrayBuffer(napi_env env, napi_callback_info info)
 {
     // Call napi_is_detached_arraybuffer to check whether the specified ArrayBuffer object has been detached.
@@ -211,31 +235,40 @@ static napi_value IsDetachedArrayBuffer(napi_env env, napi_callback_info info)
     return returnValue;
 }
 ```
-<!-- @[napi_detach_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
+
 
 API declaration:
 
-```ts
-// index.d.ts
-export const detachedArrayBuffer: (buffer:ArrayBuffer) => ArrayBuffer;
-export const isDetachedArrayBuffer: (arrayBuffer: ArrayBuffer) => boolean;
-```
+index.d.ts
+
 <!-- @[napi_detach_arraybuffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const detachedArrayBuffer: (buffer:ArrayBuffer) => ArrayBuffer; // napi_detach_arraybuffer
+export const isDetachedArrayBuffer: (arrayBuffer: ArrayBuffer) => boolean; //napi_is_detached_arraybuffer
+```
+
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_detach_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// test interface napi_detach_arraybuffer and napi_is_detached_arraybuffer
 try {
   const bufferArray = new ArrayBuffer(8);
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_detached_arraybuffer one: %{public}s', testNapi.isDetachedArrayBuffer(bufferArray));
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_detached_arraybuffer two: %{public}s ', testNapi.isDetachedArrayBuffer(testNapi.detachedArrayBuffer(bufferArray)));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_detached_arraybuffer one: %{public}s',
+    testNapi.isDetachedArrayBuffer(bufferArray));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_detached_arraybuffer two: %{public}s ',
+    testNapi.isDetachedArrayBuffer(testNapi.detachedArrayBuffer(bufferArray)));
+  // ...
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API napi_is_detached_arraybuffer error: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_is_detached_arraybuffer error: %{public}s',
+    error.message);
+  // ...
 }
 ```
-<!-- @[ark_napi_detach_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
+
 
 Log output:
 
@@ -252,10 +285,10 @@ Call **napi_create_arraybuffer** to create an ArkTS **ArrayBuffer** object with 
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
-#include "hilog/log.h"
+<!-- @[napi_create_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// napi_create_arraybuffer
 static napi_value CreateArrayBuffer(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -272,35 +305,38 @@ static napi_value CreateArrayBuffer(napi_env env, napi_callback_info info)
     // Create an ArrayBuffer object.
     napi_create_arraybuffer(env, length, &data, &result);
     if (data != nullptr) {
-      // Check data before using it for subsequent operations.
+        // Check data before using it for subsequent operations.
     } else {
-      // Handle the memory allocation failure.
-      OH_LOG_ERROR(LOG_APP, "Failed to allocate memory for ArrayBuffer");
-      return nullptr;
+        // Handle the memory allocation failure.
+        OH_LOG_ERROR(LOG_APP, "Failed to allocate memory for ArrayBuffer");
+        return nullptr;
     }
     // Return the ArrayBuffer object.
     return result;
 }
 ```
-<!-- @[napi_create_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
+
 
 API declaration:
 
-```ts
-// index.d.ts
-export const createArrayBuffer: (size: number) => ArrayBuffer;
-```
+index.d.ts
+
 <!-- @[napi_create_arraybuffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const createArrayBuffer: (size: number) => ArrayBuffer; // napi_create_arraybuffer
+```
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
-
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_arraybuffer:%{public}s', testNapi.createArrayBuffer(10).toString());
-```
 <!-- @[ark_napi_create_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// test interface napi_create_arraybuffer
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_arraybuffer:%{public}s',
+  testNapi.createArrayBuffer(10).toString());
+```
+
 
 To print logs in the native CPP, add the following information to the **CMakeLists.txt** file and add the header file by using **#include "hilog/log.h"**.
 

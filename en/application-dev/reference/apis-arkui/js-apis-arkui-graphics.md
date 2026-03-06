@@ -366,9 +366,9 @@ Enumerates length units.
 
 ## LengthMetrics<sup>12+</sup>
 
-Defines the length properties. When the length unit is PERCENT, the value **1** indicates 100%.
+Defines the length attribute. When the length unit is PERCENT, the value **1** indicates 100%.
 
-### Properties
+### Attributes
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -393,7 +393,7 @@ A constructor used to create a **LengthMetrics** instance. If the **unit** param
 
 | Name| Type         | Mandatory| Description        |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | Yes  | Value of the length property.<br>Value range: (-∞, +∞).|
+| value   | number | Yes  | Value of the length property.<br>Value range: [0, +∞).|
 | unit   | [LengthUnit](#lengthunit12) | No  | Unit of the length property.|
 
 ### px<sup>12+</sup>
@@ -814,7 +814,7 @@ function getBlendColor(baseColor: ResourceColor): ColorMetrics {
     // Error codes 401 and 180003 of the ArkUI subsystem may be returned.
     // 61 157 180
     sourceColor = ColorMetrics.resourceColor(baseColor).blendColor(ColorMetrics.resourceColor("#083d9db4"));
-    console.info('current color is '+sourceColor.color+ ' r:'+sourceColor.red +' g:'+sourceColor.green+' b:'+sourceColor.blue+ ' a :'+sourceColor.alpha );
+    console.info(`current color is ${sourceColor.color} r:${sourceColor.red} g:${sourceColor.green} b:${sourceColor.blue} a :${sourceColor.alpha}`);
   } catch (error) {
     console.error("getBlendColor failed, code = " + (error as BusinessError).code + ", message = " +
     (error as BusinessError).message);
@@ -844,13 +844,13 @@ struct ColorMetricsSample {
         .width('80%')
         .align(Alignment.Center)
         .height(50)
-        .backgroundColor(ColorMetrics.rgba(0,74,175,255).color)
+        .backgroundColor(ColorMetrics.rgba(0, 74, 175, 255).color)
         .margin(10)
       Button("ColorMetrics colorWithSpace")
         .width('80%')
         .align(Alignment.Center)
         .height(50)
-        .backgroundColor(ColorMetrics.colorWithSpace(ColorSpace.SRGB,  0.4392, 0.4392, 0.4392).color)
+        .backgroundColor(ColorMetrics.colorWithSpace(ColorSpace.SRGB, 0.4392, 0.4392, 0.4392).color)
         .margin(10)
     }
     .width('100%')
@@ -960,7 +960,7 @@ Describes the command for drawing a path.
 
 Describes the shape mask.
 
-### Properties
+### Attributes
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -968,8 +968,8 @@ Describes the shape mask.
 
 | Name           | Type   | Read-Only| Optional| Description                                               |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
-| fillColor       | number | No  | No  | Describes the fill color of the mask, in ARGB format. The default value is **0XFF000000**.<br> Blended using [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode). |
-| strokeColor     | number | No  | No  | Sets the stroke color for the mask, in ARGB format. The default value is **0XFF000000**.<br> Blended using [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode).|
+| fillColor       | number | No  | No  | Describes the fill color of the mask, in ARGB format. The default value is **0XFF000000**.<br> A color with only the transparency is generated based on the transparency and brightness of **fillColor**. The higher the brightness, the more transparent the color. Then, the color is blended with the color of **RenderNode** using the [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) API to generate the final color.|
+| strokeColor     | number | No  | No  | Sets the stroke color for the mask, in ARGB format. The default value is **0XFF000000**.<br>  A color with only the transparency is generated based on the transparency and brightness of **strokeColor**. The higher the brightness, the more transparent the color. Then, the color is blended with the color of **RenderNode** using the [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) API to generate the final color.|
 | strokeWidth     | number | No  | No  | Sets the stroke width for the mask, in px. The default value is **0**.  |
 
 ### constructor<sup>12+</sup>
@@ -1010,11 +1010,21 @@ class MyNodeController extends NodeController {
     this.rootNode = new FrameNode(uiContext);
 
     const mask = new ShapeMask();
-    mask.setRectShape({ left: 0, right: uiContext.vp2px(150), top: 0, bottom: uiContext.vp2px(150) });
+    mask.setRectShape({
+      left: 0,
+      right: uiContext.vp2px(150),
+      top: 0,
+      bottom: uiContext.vp2px(150)
+    });
     mask.fillColor = 0X55FF0000;
 
     const renderNode = new RenderNode();
-    renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+    renderNode.frame = {
+      x: 0,
+      y: 0,
+      width: 150,
+      height: 150
+    };
     renderNode.backgroundColor = 0XFF00FF00;
     renderNode.shapeMask = mask;
 
@@ -1139,7 +1149,12 @@ class MyNodeController extends NodeController {
     mask.fillColor = 0X55FF0000;
 
     const renderNode = new RenderNode();
-    renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+    renderNode.frame = {
+      x: 0,
+      y: 0,
+      width: 150,
+      height: 150
+    };
     renderNode.backgroundColor = 0XFF00FF00;
     renderNode.shapeMask = mask;
 
@@ -1249,7 +1264,12 @@ mask.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
 mask.fillColor = 0X55FF0000;
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.shapeMask = mask;
 
@@ -1614,7 +1634,12 @@ const clip = new ShapeClip();
 clip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.shapeClip = clip;
 
@@ -1643,7 +1668,7 @@ struct Index {
       NodeContainer(this.myNodeController)
         .borderWidth(1)
       Button("setCommandPath")
-        .onClick(()=>{
+        .onClick(() => {
           renderNode.shapeClip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
         })
     }
@@ -1741,10 +1766,20 @@ Generates an **edgeWidths** object with the specified edge width for all edges.
 import { RenderNode, FrameNode, NodeController, edgeWidths } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.borderWidth = edgeWidths(8);
-renderNode.borderColor = { left: 0xFF0000FF, top: 0xFF0000FF, right: 0xFF0000FF, bottom: 0xFF0000FF };
+renderNode.borderColor = {
+  left: 0xFF0000FF,
+  top: 0xFF0000FF,
+  right: 0xFF0000FF,
+  bottom: 0xFF0000FF
+};
 
 
 class MyNodeController extends NodeController {
@@ -1803,10 +1838,25 @@ Generates a border style object with the specified border style color for all bo
 import { RenderNode, FrameNode, NodeController, borderStyles } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
 renderNode.backgroundColor = 0XFF00FF00;
-renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
-renderNode.borderColor = { left: 0xFF0000FF, top: 0xFF0000FF, right: 0xFF0000FF, bottom: 0xFF0000FF };
+renderNode.borderWidth = {
+  left: 8,
+  top: 8,
+  right: 8,
+  bottom: 8
+};
+renderNode.borderColor = {
+  left: 0xFF0000FF,
+  top: 0xFF0000FF,
+  right: 0xFF0000FF,
+  bottom: 0xFF0000FF
+};
 renderNode.borderStyle = borderStyles(BorderStyle.Dotted);
 
 
@@ -1863,10 +1913,15 @@ Generates a **borderRadiuses** object with the specified radius for all border c
 **Example**
 
 ```ts
-import { RenderNode, FrameNode, NodeController, borderRadiuses }  from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController, borderRadiuses } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 150,
+  height: 150
+};
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.borderRadius = borderRadiuses(32);
 

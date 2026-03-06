@@ -10,7 +10,7 @@
 >
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## WebviewController<sup>9+</sup>
 
@@ -370,7 +370,7 @@ onTextSelectionChange的回调函数，选区内容改变时触发。
 
 ## OnFirstScreenPaintCallback<sup>23+<sup>
 
-type OnFirstScreenPaintCallback = (event: FirstScreenPaint) => void
+type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void
 
 检测到首屏渲染结束时会触发此回调。
 
@@ -380,7 +380,7 @@ type OnFirstScreenPaintCallback = (event: FirstScreenPaint) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| event | [FirstScreenPaint](./arkts-basic-components-web-i.md#firstscreenpaint23) | 是 | 检测到首屏渲染时的详细信息。 |
+| firstScreenPaint | [FirstScreenPaint](./arkts-basic-components-web-i.md#firstscreenpaint23) | 是 | 检测到首屏渲染时的详细信息。 |
 
 **示例：**
 

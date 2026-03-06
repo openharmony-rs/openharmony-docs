@@ -236,7 +236,7 @@ A font descriptor is a data structure that describes font features. It contains 
 
 | Name| Type| Mandatory| Description|
 | - | - | - | - |
-| fullName | string | Yes| Font name, It is obtained by calling [getSystemFontFullNamesByType](#textgetsystemfontfullnamesbytype14).|
+| fullName | string | Yes| Font name. It is obtained with [getSystemFontFullNamesByType](#textgetsystemfontfullnamesbytype14) called.|
 | fontType | [SystemFontType](#systemfonttype14) | Yes| Font type.|
 
 **Return value**
@@ -307,7 +307,7 @@ Obtains an array of font descriptors by font file path. This API uses a promise 
 
 | Name| Type              | Mandatory| Description                             |
 | -----  | ------------------ | ---- | --------------------------------- |
-|  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes| Path of the font file to be queried. The value must be in the format of "file:// + Absolute path of the font file" or $rawfile (Name of the file in the resources/rawfile directory of the project).|
+|  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes| Path of the font file to be queried. The path must be in the format of "**file://** + Absolute path of the font file" or **$rawfile** (a file path relative to the **resources/rawfile** directory in the project, which includes the font file name).|
 
 **Return value**
 
@@ -365,8 +365,8 @@ An empty array is returned if the font file is not found, the font file path is 
 
 | Name| Type              | Mandatory| Description                             |
 | -----  | ------------------ | ---- | --------------------------------- |
-|  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes| Path of the font file to be queried. The value must be in the format of "file:// + Absolute path of the font file" or $rawfile (Name of the file in the resources/rawfile directory of the project).|
-|  index  | number | Yes| Font index to be loaded when the font file format is TTC or OTC. The index value of a non-TTC/OTC file can only be 0. If this parameter is invalid, an empty array is returned.|
+|  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes| Path of the font file to be queried. The path must be in the format of "**file://** + Absolute path of the font file" or **$rawfile** (a file path relative to the **resources/rawfile** directory in the project, which includes the font file name).|
+|  index  | number | Yes| Font index to be loaded when the font file format is TTC or OTC. The index value of a non-TTC/OTC file can only be **0**. If this parameter is invalid, an empty array is returned.|
 
 **Return value**
 
@@ -417,7 +417,7 @@ Returns **0** if the font file is not found, the font file path is invalid, the 
 
 | Name| Type              | Mandatory| Description                             |
 | -----  | ------------------ | ---- | --------------------------------- |
-|  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes| Path of the font file to be queried. The value must be in the format of "file:// + Absolute path of the font file" or $rawfile (Name of the file in the resources/rawfile directory of the project).|
+|  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes| Path of the font file to be queried. The path must be in the format of "**file://** + Absolute path of the font file" or **$rawfile** (a file path relative to the **resources/rawfile** directory in the project, which includes the font file name).|
 
 **Return value**
 
@@ -493,6 +493,52 @@ struct GetFontPathsByTypeTest {
   }
 }
 ```
+
+## text.isFontSupported<sup>23+</sup>
+
+isFontSupported(fontURL: string | Resource): boolean
+
+Checks whether the system supports the specified font file.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| - | - | - | - |
+| fontURL  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes  | Path of the font file to be checked. The path must be in the format of "**file://** + Absolute path of the font file" or **$rawfile** (a file path relative to the **resources/rawfile** directory in the project, which includes the font file name).|
+
+**Return value**
+
+| Type          | Description                     |
+| -------------- | ------------------------- |
+| boolean | Whether the system supports the specified font file. **true** means yes; **false** otherwise.|
+
+**Example**
+
+``` ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct isFontSupportedTest {
+  build() {
+    Column({ space: 10 }) {
+      Button("is font supported")
+        .onClick(() => {
+          let filePath = "file:///system/fonts/NotoSansCJK-Regular.ttc"
+          let isSupported = text.isFontSupported(filePath)
+          console.info("is font supported: " + isSupported)
+        })
+    }.width("100%")
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 
 ## TextHighContrast<sup>20+</sup>
 
@@ -901,7 +947,7 @@ Describes the font descriptor information.
 | localPostscriptName<sup>23+</sup> | string | No| Yes| Extracts the unique font ID based on the system language configuration. If the font file does not contain the configuration corresponding to the current language, the information corresponding to **en** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | localFullName<sup>23+</sup> | string | No| Yes| Extracts the full font name based on the system language configuration. If the font file does not contain the configuration corresponding to the current language, the information corresponding to **en** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | localFamilyName<sup>23+</sup> | string | No| Yes| Extracts the font family name based on the system language configuration. If the font file does not contain the configuration corresponding to the current language, the information corresponding to **en** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| localSubFamilyName<sup>23+</sup> | string | No| Yes| Extracts the sub-font family name based on the system language configuration. If the font file does not contain the configuration corresponding to the current language, the information corresponding to **en** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| localSubFamilyName<sup>23+</sup> | string | No| Yes| Extracts the font subfamily name based on the system language configuration. If the font file does not contain the configuration corresponding to the current language, the information corresponding to **en** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | version<sup>23+</sup> | string | No| Yes| Font version. Any string is acceptable. The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | manufacture<sup>23+</sup> | string | No| Yes| Font manufacturer information. Any string is acceptable. The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | copyright<sup>23+</sup> | string | No| Yes| Font copyright information. Any string is acceptable. The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
@@ -981,7 +1027,7 @@ let fontCollection = text.FontCollection.getLocalInstance();
 
 loadFontSync(name: string, path: string | Resource): void
 
-Loads a custom font. This API returns the result synchronously. In this API, **name** specifies the alias of the font, and the custom font effect can be displayed only when the value of **name** is set in **fontFamilies** in **[TextStyle](#textstyle)**. The supported font file formats are .ttf and .otf.
+Loads a custom font. This API returns the result synchronously. In this API, **name** specifies the alias of the font, and the custom font effect can be displayed only when the value of **name** is set in **fontFamilies** in **[TextStyle](#textstyle)**. The supported font file formats are TTF and OTF.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 22.
 
@@ -994,7 +1040,7 @@ Loads a custom font. This API returns the result synchronously. In this API, **n
 | Name| Type              | Mandatory| Description                             |
 | ----- | ------------------ | ---- | --------------------------------------------------------------------------------- |
 | name  | string             | Yes  | Name of the font.                                               |
-| path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes  | Path of the font file to import. The value must be **file://***absolute path of the font file* or **rawfile/***directory or file name*.|
+| path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes  | Path of the font file to be imported. The path must be in the format of "**file://** + Absolute path of the font file" or **$rawfile** (a file path relative to the **resources/rawfile** directory in the project, which includes the font file name).|
 
 **Example**
 
@@ -1017,7 +1063,7 @@ struct RenderTest {
     }
     let paragraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
 
-    let textData = "Test loadFontSync to load the font HarmonyClock_01.ttf."
+    let textData = "Test loadFontSync to load the font file HarmonyClock_01.ttf.";
     paragraphBuilder.addText(textData);
     let paragraph: text.Paragraph = paragraphBuilder.build();
     paragraph.layoutSync(600);
@@ -1036,7 +1082,7 @@ struct RenderTest {
 
 loadFont(name: string, path: string | Resource): Promise\<void>
 
-Loads a custom font. This API uses a promise to return the result. In this API, **name** specifies the alias of the font, and the custom font effect can be displayed only when the value of **name** is set in **fontFamilies** in **[TextStyle](#textstyle)**. The supported font file formats are ttf and otf.
+Loads a custom font. This API uses a promise to return the result. In this API, **name** specifies the alias of the font, and the custom font effect can be displayed only when the value of **name** is set in **fontFamilies** in **[TextStyle](#textstyle)**. The supported font file formats are TTF and OTF.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 22.
 
@@ -1049,7 +1095,7 @@ Loads a custom font. This API uses a promise to return the result. In this API, 
 |   Name| Type              | Mandatory| Description                             |
 |   -----  | ------------------ | ---- | --------------------------------------------------------------------------------- |
 |   name   | string             | Yes  | Name of the font. Any string is acceptable.|
-|   path   | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes  | Path of the font file to load. The value must be **file://***absolute path of the font file* or **rawfile/***directory or file name*.|
+|   path   | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes  | Path of the font file to be loaded. The path must be in the format of "**file://** + Absolute path of the font file" or **$rawfile** (a file path relative to the **resources/rawfile** directory in the project, which includes the font file name).|
 
 **Return value**
 
@@ -1098,18 +1144,18 @@ loadFontSyncWithCheck(name: string, path: string | Resource, index?: number): vo
 
 Loads a custom font. This API returns the result synchronously. In this API, **name** specifies the alias of the font, and the custom font effect can be displayed only when the value of **name** is set in **fontFamilies** in **[TextStyle](#textstyle)**. The supported font file formats are TTF, OTF, and TTC.
 
-**Widget capability**: This API can be used in ArkTS widgets.
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
-**Atomic service API**: This API can be used in atomic services.
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **Parameters**
 
 | Name| Type              | Mandatory| Description                             |
 | ----- | ------------------ | ---- | --------------------------------------------------------------------------------- |
 | name  | string             | Yes  | Name of the font. Any string is acceptable.|
-| path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes  | Path of the font file to load. The value must be "**file://***absolute path of the font file*" or **$rawfile**"*font file path*".|
+| path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes  | Path of the font file to be loaded. The path must be in the format of "**file://** + Absolute path of the font file" or **$rawfile** (a file path relative to the **resources/rawfile** directory in the project, which includes the font file name).|
 |   index  | number | No  | Font index to be loaded when the font file format is TTC. The default value is **0**, indicating that the first font of the TTC file is loaded.<br>The index value of a non-TTC file is meaningless. If an index is specified, the value can only be **0**.|
 
 **Error codes**
@@ -1171,18 +1217,18 @@ loadFontWithCheck(name: string, path: string | Resource, index?: number): Promis
 
 Loads a custom font. This API uses a promise to return the result. In this API, **name** specifies the alias of the font, and the custom font effect can be displayed only when the value of **name** is set in **fontFamilies** in **[TextStyle](#textstyle)**. The supported font file formats are TTF, OTF, and TTC.
 
-**Widget capability**: This API can be used in ArkTS widgets.
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
-**Atomic service API**: This API can be used in atomic services.
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **Parameters**
 
 |   Name| Type              | Mandatory| Description                             |
 |   -----  | ------------------ | ---- | --------------------------------------------------------------------------------- |
 |   name   | string             | Yes  | Name of the font. Any string is acceptable.|
-|   path   | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes  | Path of the font file to load. The value must be "**file://***absolute path of the font file*" or **$rawfile**"*font file path*".|
+|   path   | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | Yes  | Path of the font file to be loaded. The path must be in the format of "**file://** + Absolute path of the font file" or **$rawfile** (a file path relative to the **resources/rawfile** directory in the project, which includes the font file name).|
 |   index  | number | No  | Font index to be loaded when the font file format is TTC. The default value is **0**, indicating that the first font of the TTC file is loaded.<br>The index value of a non-TTC file is meaningless. If an index is specified, the value can only be **0**.|
 
 **Return value**
@@ -1419,7 +1465,7 @@ Describes a paragraph style.
 | autoSpace<sup>20+</sup>   | boolean | No  | Yes  | Sets whether to enable automatic spacing during text typography. **true** indicates that the automatic spacing feature is enabled. In this case, automatic spacing applies between CJK (Chinese, Japanese, and Korean) and Western characters (Latin, Cyrillic, and Greek), between CJK and digits, between CJK and copyright symbols, between copyright symbols and digits, and between copyright symbols and Western characters. **false** (default) indicates that the automatic spacing feature is disabled.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 | verticalAlign<sup>20+</sup>   | [TextVerticalAlign](#textverticalalign20) | No  | Yes  | Vertical alignment of text. This parameter takes effect when line height scaling (that is, **heightScale** of [TextStyle](#textstyle)) is enabled or different font sizes (that is, **fontSize** of [TextStyle](#textstyle)) are set for text in a line. If superscript and subscript text (that is, **badgeType** of [TextStyle](#textstyle)) is set in a line, the superscript and subscript text will participate in vertical alignment as common text.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 | lineSpacing<sup>21+</sup>   | number | No  | Yes  | Line spacing. The default value is **0**. **lineSpacing** is not restricted by **lineHeightMaximum** and **lineHeightMinimum** in [TextStyle](#textstyle). By default, line spacing is added to the last line. You can set **textHeightBehavior** in [TextStyle](#textstyle) to **DISABLE_ALL** or **DISABLE_LAST_ASCENT** to disable the line spacing of the last line.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
-| compressHeadPunctuation<sup>23+</sup>   | boolean | No  | Yes  | Sets whether to use punctuation compression at the beginning of a line in text layout. **true** means yes; **false** otherwise. The default value is **false**.<br>**NOTE**<br>1. The font file must support the ss08 feature in [FontFeature](#fontfeature). Otherwise, the compression cannot be performed.<br>2. Only the punctuations within the punctuation compression range at the beginning of a line are in the scope of this feature.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| compressHeadPunctuation<sup>23+</sup>   | boolean | No  | Yes  | Sets whether to use punctuation compression at the beginning of a line in text layout. **true** means yes; **false** otherwise. The default value is **false**.<br>**NOTE**<br>1. The font file must support the ss08 feature in [FontFeature](#fontfeature). Otherwise, compression cannot be performed.<br>2. Only the punctuations within the punctuation compression range at the beginning of a line are in the scope of this feature.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | includeFontPadding<sup>23+</sup> | boolean | No| Yes| Sets whether to use padding at the beginning and end of a line in text layout. **true** means yes; **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | fallbackLineSpacing<sup>23+</sup> | boolean | No| Yes| Sets whether to enable line height rollback during text layout. If the set line height is less than the actual line height, the line height is rolled back to the actual line height. **true** means yes; **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
@@ -2112,14 +2158,14 @@ Obtains the actually visible text range in the specified line, excluding any ove
 
 | Name| Type  | Mandatory| Description     |
 | ----- | ------ | ---- | --------- |
-| lineNumber  | number | Yes  | Line number of the text range, starting from 0. This API can only be used to obtain the bounds of existing lines. That is, the line number must start from 0, and the maximum line number is [getLineCount](#getlinecount) - 1.|
+| lineNumber  | number | Yes  | Line number of the text range, starting from 0. This API can only be used to obtain the bounds of existing lines. That is, the line number must start from 0, and the maximum line number is [getLineCount](#getlinecount) – 1.|
 | includeSpaces  | boolean | Yes  | Whether spaces are included. The value **true** means that spaces are contained, and **false** means the opposite.|
 
 **Return value**
 
 | Type            | Description                                             |
 | ---------------- | ------------------------------------------------ |
-| [Range](#range)  | Text range obtained. If the line index is invalid, **start** and **end** are both 0.|
+| [Range](#range)  | Text range obtained. If the line index is invalid, **start** and **end** are both **0**.|
 
 **Example**
 
@@ -2586,7 +2632,7 @@ Inserts a text string into the paragraph being built.
 
 | Name  | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
-| text    | string  | Yes  | Exact text string inserted into the paragraph. If an invalid Unicode character is provided, it is displayed as  .|
+| text    | string  | Yes  | Exact text string inserted into the paragraph. If an invalid Unicode character is provided, it is displayed as �.|
 
 **Example**
 
@@ -2826,7 +2872,7 @@ struct Index {
 
 ## TypographicBounds<sup>18+</sup>
 
-Describes the typographic boundaries of a text line. These boundaries depend on the typographic font and font size, not on the characters themselves. For example, for the string " a b " (which has a space before "a" and a space after "b"), the typographic boundaries include the spaces at the beginning and end of the line. Similarly, the strings "j" and "E" have identical typographic boundaries, which are independent of the characters themselves.
+Describes the typographic boundaries of a text line. These boundaries depend on the typographic font and font size, but not on the characters themselves. For example, for the string " a b " (which has a space before "a" and a space after "b"), the typographic boundaries include the spaces at the beginning and end of the line. Similarly, the strings "j" and "E" have identical typographic boundaries, independent of the characters themselves.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -3016,7 +3062,7 @@ Creates a truncated text line object.
 | -| - | - |-------------------------------|
 | width | number | Yes| Width of the line after truncation. The value is a floating point number.                 |
 | ellipsisMode | [EllipsisMode](#ellipsismode) | Yes| Ellipsis mode. Currently, only **START** and **END** are supported.|
-| ellipsis | string | Yes| String used to mark a truncation.                    |
+| ellipsis | string | Yes| String used to mark truncation.                    |
 
 **Return value**
 
@@ -3062,7 +3108,7 @@ struct Index {
 
 getTypographicBounds(): TypographicBounds
 
-Obtains the typographic boundaries of this text line. These boundaries depend on the typographic font and font size, but not on the characters themselves. For example, for the string " a b " (which has a space before "a" and a space after "b"), the typographic boundaries include the spaces at the beginning and end of the line. Similarly, the strings "j" and "E" have identical typographic boundaries, which are independent of the characters themselves.
+Obtains the typographic boundaries of the text line. These boundaries depend on the typographic font and font size, but not on the characters themselves. For example, for the string " a b " (which has a space before "a" and a space after "b"), the typographic boundaries include the spaces at the beginning and end of the line. Similarly, the strings "j" and "E" have identical typographic boundaries, independent of the characters themselves.
 
 >**NOTE**
 >
@@ -3095,7 +3141,7 @@ console.info('textLine ascent:' + bounds.ascent + ', descent:' + bounds.descent 
 
 getImageBounds(): common2D.Rect
 
-Obtains the image boundaries of this text line. The image boundaries, equivalent to visual boundaries, depend on the font, font size, and characters. For example, for the string " a b " (which has a space before "a" and a space after "b"), only "a b" are visible to users, and therefore the image boundaries do not include these spaces at the beginning and end of the line. For the strings "j" and "E", their image boundaries are different. Specifically, the width of the boundary for "j" is narrower than that for "E", and the height of the boundary for "j" is taller than that for "E".
+Obtains the image boundaries of this text line. The image boundaries, equivalent to visual boundaries, depend on the font, font size, and characters. For example, for the string " a b " (which has a space before "a" and a space after "b"), only "a b" is visible to users, and therefore the image boundaries do not include these spaces at the beginning and end of the line. For the strings "j" and "E", their image boundaries are different. Specifically, the width of the boundary for "j" is narrower than that for "E", and the height of the boundary for "j" is taller than that for "E".
 
 >**NOTE**
 >
@@ -3322,7 +3368,7 @@ Obtains the index of each glyph in the specified range of this run.
 
 | Name   | Type   | Mandatory| Description                      |
 | -------- | ------- | ---- | -------------------------- |
-| range    | [Range](#range)   | Yes  | Range of the glyphs, where **range.start** indicates the start position of the range, and **range.end** indicates the length of the range. If the length is 0, the range is from **range.start** to the end of the run. If **range.end** or **range.start** is set to a negative value, **null**, or **undefined**, **undefined** is returned.|
+| range    | [Range](#range)   | Yes  | Range of the glyphs, where **range.start** indicates the start position of the range, and **range.end** indicates the length of the range. If the length is **0**, the range is from **range.start** to the end of the run. If **range.end** or **range.start** is set to a negative value, **null**, or **undefined**, **undefined** is returned.|
 
 **Return value**
 
@@ -3394,7 +3440,7 @@ Obtains the position array of each glyph relative to the respective line within 
 
 | Name   | Type   | Mandatory| Description                      |
 | -------- | ------- | ---- | -------------------------- |
-| range    | [Range](#range)   | Yes  | Range of the glyphs, where **range.start** indicates the start position of the range, and **range.end** indicates the length of the range. If the length is 0, the range is from **range.start** to the end of the run. If **range.end** or **range.start** is set to a negative value, **null**, or **undefined**, **undefined** is returned.|
+| range    | [Range](#range)   | Yes  | Range of the glyphs, where **range.start** indicates the start position of the range, and **range.end** indicates the length of the range. If the length is **0**, the range is from **range.start** to the end of the run. If **range.end** or **range.start** is set to a negative value, **null**, or **undefined**, **undefined** is returned.|
 
 **Return value**
 
@@ -3567,7 +3613,7 @@ Obtains an array of character indices for glyphs within a specified range of thi
 
 | Name   | Type   | Mandatory| Description                      |
 | -------- | ------- | ---- | -------------------------- |
-| range    | [Range](#range)   | No  | Range of the glyphs, where **range.start** indicates the start position of the range, and **range.end** indicates the length of the range. If the length is 0, the range is from **range.start** to the end of the run. If **range.end** or **range.start** is set to a negative value, **null**, or **undefined**, **undefined** is returned. If this parameter is not passed, the entire run is obtained.|
+| range    | [Range](#range)   | No  | Range of the glyphs, where **range.start** indicates the start position of the range, and **range.end** indicates the length of the range. If the length is **0**, the range is from **range.start** to the end of the run. If **range.end** or **range.start** is set to a negative value, **null**, or **undefined**, **undefined** is returned. If this parameter is not passed, the entire run is obtained.|
 
 **Return value**
 
@@ -3608,7 +3654,7 @@ struct Index {
 
 getImageBounds(): common2D.Rect
 
-Obtains the image boundary of this run. The image boundary, equivalent to a visual boundary, is related to the font, font size, and characters. For example, for the string " a b " (which has a space before "a" and a space after "b"), only "a b" are visible to users, and therefore the image boundary does not include these spaces at the beginning and end.
+Obtains the image boundaries of the typographic unit. Equivalent to visual boundaries, these boundaries are associated with the typographic font, font size, and characters. For example, for the string " a b " (which has a space before "a" and a space after "b"), only "a b" is visible to users, and therefore the image boundaries do not include these spaces at the beginning and end of the line.
 
 >**NOTE**
 >
@@ -3640,7 +3686,7 @@ let bounds = runs[0].getImageBounds();
 
 getTypographicBounds(): TypographicBounds
 
-Obtain the typographic boundaries of this run. These boundaries depend on the typographic font and font size, but not on the characters themselves. For example, for the string " a b " (which has a space before "a" and a space after "b"), the typographic boundaries include the spaces at the beginning and end of the line.
+Obtains the typographic boundaries of the typographic unit. These boundaries are associated with the typographic font and font size, but not with the characters. For example, for the string " a b " (which has a space before "a" and a space after "b"), the typographic boundaries include the spaces at the beginning and end of the line.
 
 >**NOTE**
 >
@@ -3704,7 +3750,7 @@ Obtains the glyph width array of each glyph within the specified range of the ru
 
 | Name   | Type   | Mandatory| Description                      |
 | -------- | ------- | ---- | -------------------------- |
-| range    | [Range](#range)   | Yes  | Range of the glyph position to be obtained. **range.start** indicates the start position of the range, and **range.end** indicates the range length. If the length is 0, the range starts from **range.start** and ends at the end of the rendering block. If **range.end** or **range.start** is set to a negative value, **null**, or **undefined**, **undefined** is returned.|
+| range    | [Range](#range)   | Yes  | Range of the glyph position to be obtained. **range.start** indicates the start position of the range, and **range.end** indicates the range length. If the length is **0**, the range starts from **range.start** and ends at the end of the run. If **range.end** or **range.start** is set to a negative value, **null**, or **undefined**, **undefined** is returned.|
 
 **Return value**
 
@@ -3763,4 +3809,3 @@ Enumerates the font types, which can be combined through bitwise OR operations.
 | STYLISH  | 1 << 2 | Style font type. The style font type is designed for 2-in-1 devices.|
 | INSTALLED  | 1 << 3 | Font type that has been installed.|
 | CUSTOMIZED<sup>18+</sup>  | 1 << 4 | Custom font type.|
-<!--no_check-->

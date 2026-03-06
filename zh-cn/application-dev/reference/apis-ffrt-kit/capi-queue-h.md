@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -45,7 +45,7 @@
 | [FFRT_C_API ffrt_qos_t ffrt_queue_attr_get_qos(const ffrt_queue_attr_t* attr)](#ffrt_queue_attr_get_qos) | 获取队列QoS属性。 |
 | [FFRT_C_API void ffrt_queue_attr_set_timeout(ffrt_queue_attr_t* attr, uint64_t timeout_us)](#ffrt_queue_attr_set_timeout) | 设置串行队列timeout属性。超时时间的最小值是1ms，如果设置的值小于1ms，那么超时时间被设置为1ms。 |
 | [FFRT_C_API uint64_t ffrt_queue_attr_get_timeout(const ffrt_queue_attr_t* attr)](#ffrt_queue_attr_get_timeout) | 获取串行队列任务执行的timeout时间。 |
-| [FFRT_C_API void ffrt_queue_attr_set_callback(ffrt_queue_attr_t* attr, ffrt_function_header_t* f)](#ffrt_queue_attr_set_callback) | 设置串行队列超时回调方法。 |
+| [FFRT_C_API void ffrt_queue_attr_set_callback(ffrt_queue_attr_t* attr, ffrt_function_header_t* f)](#ffrt_queue_attr_set_callback) | 设置串行队列超时回调方法。<br> 不建议在`f`中调用`exit`函数，可能导致未定义行为。 |
 | [FFRT_C_API ffrt_function_header_t* ffrt_queue_attr_get_callback(const ffrt_queue_attr_t* attr)](#ffrt_queue_attr_get_callback) | 获取串行队列超时回调方法。 |
 | [FFRT_C_API void ffrt_queue_attr_set_max_concurrency(ffrt_queue_attr_t* attr, const int max_concurrency)](#ffrt_queue_attr_set_max_concurrency) | 设置并行队列最大并发度。 |
 | [FFRT_C_API int ffrt_queue_attr_get_max_concurrency(const ffrt_queue_attr_t* attr)](#ffrt_queue_attr_get_max_concurrency) | 获取并行队列最大并发度。 |
@@ -60,7 +60,7 @@
 | [FFRT_C_API void ffrt_queue_wait(ffrt_task_handle_t handle)](#ffrt_queue_wait) | 等待队列中一个任务执行完成。 |
 | [FFRT_C_API int ffrt_queue_cancel(ffrt_task_handle_t handle)](#ffrt_queue_cancel) | 取消队列中一个任务。 |
 | [FFRT_C_API ffrt_queue_t ffrt_get_main_queue(void)](#ffrt_get_main_queue) | 获取主线程队列。 |
-| [FFRT_C_API ffrt_queue_t ffrt_get_current_queue(void)](#ffrt_get_current_queue) | 获取应用Worker(ArkTs)线程队列。 |
+| [FFRT_C_API ffrt_queue_t ffrt_get_current_queue(void)](#ffrt_get_current_queue) | 获取应用Worker(ArkTs)线程队列。(API18废弃) |
 
 ## 枚举类型说明
 
@@ -97,7 +97,6 @@ FFRT_C_API int ffrt_queue_attr_init(ffrt_queue_attr_t* attr)
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -122,7 +121,6 @@ FFRT_C_API void ffrt_queue_attr_destroy(ffrt_queue_attr_t* attr)
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -141,11 +139,10 @@ FFRT_C_API void ffrt_queue_attr_set_qos(ffrt_queue_attr_t* attr, ffrt_qos_t qos)
 
 **起始版本：** 10
 
-
 **参数：**
 
-| 参数项                                                       | 描述 |
-|-----------------------------------------------------------| -- |
+| 参数项 | 描述 |
+| -- | -- |
 | [ffrt_queue_attr_t](capi-ffrt-ffrt-queue-attr-t.md)* attr | 队列属性指针。 |
 | [ffrt_qos_t](capi-type-def-h.md#变量) qos                   | QoS属性值。 |
 
@@ -160,7 +157,6 @@ FFRT_C_API ffrt_qos_t ffrt_queue_attr_get_qos(const ffrt_queue_attr_t* attr)
 获取队列QoS属性。
 
 **起始版本：** 10
-
 
 **参数：**
 
@@ -186,7 +182,6 @@ FFRT_C_API void ffrt_queue_attr_set_timeout(ffrt_queue_attr_t* attr, uint64_t ti
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -205,7 +200,6 @@ FFRT_C_API uint64_t ffrt_queue_attr_get_timeout(const ffrt_queue_attr_t* attr)
 获取串行队列任务执行的timeout时间。
 
 **起始版本：** 10
-
 
 **参数：**
 
@@ -233,7 +227,6 @@ FFRT_C_API void ffrt_queue_attr_set_callback(ffrt_queue_attr_t* attr, ffrt_funct
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -253,7 +246,6 @@ FFRT_C_API ffrt_function_header_t* ffrt_queue_attr_get_callback(const ffrt_queue
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -262,8 +254,8 @@ FFRT_C_API ffrt_function_header_t* ffrt_queue_attr_get_callback(const ffrt_queue
 
 **返回：**
 
-| 类型                                     | 说明 |
-|----------------------------------------| -- |
+| 类型 | 说明 |
+| -- | -- |
 | FFRT_C_API [ffrt_function_header_t](capi-ffrt-ffrt-function-header-t.md)* | 返回串行队列超时回调方法。 |
 
 ### ffrt_queue_attr_set_max_concurrency()
@@ -277,7 +269,6 @@ FFRT_C_API void ffrt_queue_attr_set_max_concurrency(ffrt_queue_attr_t* attr, con
 设置并行队列最大并发度。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -297,7 +288,6 @@ FFRT_C_API int ffrt_queue_attr_get_max_concurrency(const ffrt_queue_attr_t* attr
 获取并行队列最大并发度。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -323,7 +313,6 @@ FFRT_C_API void ffrt_queue_attr_set_thread_mode(ffrt_queue_attr_t* attr, bool mo
 
 **起始版本：** 20
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -342,7 +331,6 @@ FFRT_C_API bool ffrt_queue_attr_get_thread_mode(const ffrt_queue_attr_t* attr)
 获取队列中的任务是以协程模式还是以线程模式运行。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -368,7 +356,6 @@ FFRT_C_API ffrt_queue_t ffrt_queue_create(ffrt_queue_type_t type, const char* na
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -379,8 +366,8 @@ FFRT_C_API ffrt_queue_t ffrt_queue_create(ffrt_queue_type_t type, const char* na
 
 **返回：**
 
-| 类型                          | 说明 |
-|-----------------------------| -- |
+| 类型 | 说明 |
+| -- | -- |
 | FFRT_C_API [ffrt_queue_t](capi-ffrt-ffrt-queue-t.md) | 创建队列成功返回非空队列句柄，<br>          创建队列失败返回空指针。 |
 
 ### ffrt_queue_destroy()
@@ -394,7 +381,6 @@ FFRT_C_API void ffrt_queue_destroy(ffrt_queue_t queue)
 销毁队列。
 
 **起始版本：** 10
-
 
 **参数：**
 
@@ -413,7 +399,6 @@ FFRT_C_API void ffrt_queue_submit(ffrt_queue_t queue, ffrt_function_header_t* f,
 提交一个任务到队列中调度执行。
 
 **起始版本：** 10
-
 
 **参数：**
 
@@ -435,7 +420,6 @@ FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h(ffrt_queue_t queue, ffrt_funct
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -446,8 +430,8 @@ FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h(ffrt_queue_t queue, ffrt_funct
 
 **返回：**
 
-| 类型                                | 说明 |
-|-----------------------------------| -- |
+| 类型 | 说明 |
+| -- | -- |
 | FFRT_C_API [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | 提交成功返回非空任务句柄，<br>          提交失败返回空指针。 |
 
 ### ffrt_queue_submit_f()
@@ -461,7 +445,6 @@ FFRT_C_API void ffrt_queue_submit_f(ffrt_queue_t queue, ffrt_function_t func, vo
 提交一个任务到队列中调度执行，是ffrt_queue_submit接口的简化包装形式。该接口假定任务不需要销毁回调函数，给定的任务函数和参数被包装为队列任务结构，并将封装后的任务结构和其他参数传递给ffrt_queue_submit接口。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -488,7 +471,6 @@ FFRT_C_API ffrt_task_handle_t ffrt_queue_submit_h_f(ffrt_queue_t queue, ffrt_fun
 提交一个任务到队列中调度执行，并返回任务句柄，是ffrt_queue_submit_h接口的简化包装形式。该接口假定任务不需要销毁回调函数，给定的任务函数和参数被包装为队列任务结构，并将封装后的任务结构和其他参数传递给ffrt_queue_submit_h接口。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -522,7 +504,6 @@ FFRT_C_API void ffrt_queue_wait(ffrt_task_handle_t handle)
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -540,7 +521,6 @@ FFRT_C_API int ffrt_queue_cancel(ffrt_task_handle_t handle)
 取消队列中一个任务。
 
 **起始版本：** 10
-
 
 **参数：**
 

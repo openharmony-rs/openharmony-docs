@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 When multiple steps are required to complete a task, you can use the **\<stepper>** component to navigate your users through the whole process. For details, see [stepper](../reference/apis-arkui/arkui-js/js-components-container-stepper.md).
@@ -85,7 +85,7 @@ text{
 
 ![en-us_image_0000001234011019](figures/en-us_image_0000001234011019.gif)
 
-Set the **label** attribute to customize the label for the **\<stepper-item>**.
+Set the **label** attribute to customize the button text for the **\<stepper-item>**.
 
 ```html
 <!-- xxx.hml -->
@@ -267,14 +267,14 @@ export default {
     })
   },
   stepperChange(e){
-    console.log("stepperChange"+e.index)
+    console.info("stepperChange"+e.index)
     promptAction.showToast({
       // index indicates the sequence number of the current step.
       message: 'Previous step: '+e.prevIndex+"-------Current step:"+e.index
     })
   },
   stepperNext(e){
-    console.log("stepperNext"+e.index)
+    console.info("stepperNext"+e.index)
     promptAction.showToast({
       // pendingIndex indicates the sequence number of the step to be redirected to.
       message: 'Current step:'+e.index+"-------Next step:"+e.pendingIndex
@@ -283,7 +283,7 @@ export default {
     return index;
   },
   stepperBack(e){
-    console.log("stepperBack"+e.index)
+    console.info("stepperBack"+e.index)
     var index = {pendingIndex: e.pendingIndex }
     return index;
   }

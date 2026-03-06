@@ -10,7 +10,7 @@
 ## When to Use
 
 The deployment process is as follows:
-1. Use the MindSpore Lite model conversion tool to convert the original model (for example, ONNX or CAFFE) to a .ms model file. You can check the supported operators against the [MindSpore Lite Kit operator list](mindspore-lite-supported-operators.md) to ensure that the model conversion is successful.
+1. Use the MindSpore Lite model conversion tool to convert the original model (for example, ONNX or CAFFE) to a .ms model file. You can check the supported ONNX operators against the [MindSpore Lite Kit operator list](mindspore-lite-supported-operators.md) to ensure that the model conversion is successful.
 2. Call APIs of the MindSpore Lite inference engine to perform [model inference](mindspore-lite-guidelines.md).
 
 ## Obtaining the Model Conversion Tool
@@ -21,7 +21,7 @@ You can obtain the MindSpore Lite model conversion tool in either of the followi
 
 | Component                                                   | Hardware Platform| OS    | URL                                                        | SHA-256                                                      |
 | ------------------------------------------------------- | -------- | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| On-device inference and training benchmark tool, converter tool, and cropper tool| CPU      | Linux-x86_64 | [mindspore-lite-2.3.0-linux-x64.tar.gz](https://ms-release.obs.cn-north-4.myhuaweicloud.com/2.3.0/MindSpore/lite/release/linux/x86_64/mindspore-lite-2.3.0-linux-x64.tar.gz) | 060d698a171b52c38b64c8d65927816daf4b81d8e2b5069718aeb91a9f8a154c |
+| On-device inference and training benchmark tool, converter tool, and cropper tool| CPU      | Linux-x86_64 | [mindspore-lite-2.7.0-linux-x64.tar.gz](https://ms-release.obs.cn-north-4.myhuaweicloud.com/2.7.0/MindSporeLite/lite/release/linux/x86_64/mindspore-lite-2.7.0-linux-x64.tar.gz) | 8bb1097100c9fec12675670ba2d4264a2cd6da3a9be093eb56631d00fc0c455b |
 
 ### Source Code Building
 
@@ -41,12 +41,11 @@ You can obtain the MindSpore Lite model conversion tool in either of the followi
      -  CMake >= 3.18.3
      -  Git >= 2.28.0
 
-2. Obtain the [MindSpore Lite source code](https://gitcode.com/openharmony/third_party_mindspore).
-   The complete source code of MindSpore Lite is available at `mindspore-src/source/`.
+2. Obtain the [MindSpore Lite source code](https://gitcode.com/openharmony/third_party_mindspore). The complete source code of MindSpore Lite is available at `mindspore-src/source/`.
 
 3. Start building.
 
-   To obtain the conversion tool that supports PyTorch model conversion, run `export MSLITE_ENABLE_CONVERT_PYTORCH_MODEL=on && export LIB_TORCH_PATH="/home/user/libtorch"` before you begin model building. Add the libtorch environment variable `export LD_LIBRARY_PATH="/home/user/libtorch/lib:${LD_LIBRARY_PATH}"` before conversion. You can download the libtorch package of the CPU version and decompress it to `/home/user/libtorch`.
+   To obtain the conversion tool that supports PyTorch model conversion, run **export MSLITE_ENABLE_CONVERT_PYTORCH_MODEL=on && export LIB_TORCH_PATH="/home/user/libtorch"** before you begin model building. Add the libtorch environment variable by running **export LD_LIBRARY_PATH="/home/user/libtorch/lib:${LD_LIBRARY_PATH}"** before conversion. You can download the libtorch package of the CPU version and decompress it to `/home/user/libtorch`.
 
    ```bash
    cd mindspore-src/source/
@@ -63,14 +62,14 @@ After obtaining the model conversion tool, you need to add the dynamic link libr
 export LD_LIBRARY_PATH=${PACKAGE_PATH}/tools/converter/lib:${LD_LIBRARY_PATH}
 ```
 
-${PACKAGE_PATH} indicates the path where the MindSpore Lite release package is decompressed.
+**${PACKAGE_PATH}** indicates the path where the MindSpore Lite release package is decompressed.
 
 
 ## Parameter Description
 
 The MindSpore Lite model conversion tool provides multiple parameter settings. You can use them as required. In addition, you can run `./converter_lite --help` to obtain the help information in real time.
-The following describes the parameters in detail.
 
+The following describes the parameters in detail.
 
 |        Name       | Mandatory           | Description                                                    | Value Range                                        |
 | :----------------: | ------------------- | ------------------------------------------------------------ | ------------------------------------------------ |
@@ -85,7 +84,7 @@ The following describes the parameters in detail.
 | --inputDataFormat  | No                 | Input format of the exported model. This parameter is valid only for 4D input.<br>The default value is **NHWC**.| NHWC or NCHW                                      |
 |  --inputDataType   | No                 | Data type of the input tensor of the quantization model. This parameter is valid only when the quantization parameters (**scale** and **zero point**) are configured for the input tensor. The data type is the same as that of the input tensor of the original model by default.<br>The default value is **DEFAULT**.| FLOAT32, INT8, UINT8, or DEFAULT                   |
 |  --outputDataType  | No                 | Data type of the output tensor of the quantization model. This parameter is valid only when the quantization parameters (**scale** and **zero point**) are configured for the output tensor. The data type is the same as that of the output tensor of the original model by default.<br>The default value is **DEFAULT**.| FLOAT32, INT8, UINT8, or DEFAULT                   |
-| --outputDataFormat | No                 | Output format of the exported model. This parameter is valid only for 4D input.                | NHWC or NCHW                                      |
+| --outputDataFormat | No                 | Output format of the exported model. This parameter is valid only for 4D output.                | NHWC or NCHW                                      |
 
 > **NOTE**
 > - The parameter name and value are separated by an equal sign (=) and no space is allowed between them.
@@ -99,6 +98,7 @@ The following conversion command uses the CAFFE model LeNet as an example.
 ./converter_lite --fmk=CAFFE --modelFile=lenet.prototxt --weightFile=lenet.caffemodel --outputFile=lenet
 ```
 In this example, the CAFFE model is used. Therefore, you need to specify two input files: model structure and model weight. In addition, add other mandatory parameters, that is, fmk type and output path.
+
 The command output is as follows:
 
 ```bash

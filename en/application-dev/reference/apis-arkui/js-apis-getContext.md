@@ -9,7 +9,7 @@
 To obtain the current Ability's Context within a page, call the **getContext** API to obtain the [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) or [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md) associated with the current page.
 
 > **NOTE**
-> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12) in [UIContext](arkts-apis-uicontext-uicontext.md) instead.
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - This API applies only to the stage model.
 
 ## getContext<sup>(deprecated)</sup>
@@ -20,9 +20,8 @@ Obtains the **Context** object associated with an ability on the page.
 
 > **NOTE**
 > 
-> This API is deprecated since API version 18. You are advised to use [getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12) in [UIContext](arkts-apis-uicontext-uicontext.md) instead.
->
-> Since API version 12, you can use the [getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12) API in [UIContext](arkts-apis-uicontext-uicontext.md), which ensures that the time picker dialog box is shown in the intended UI instance.
+> This API is supported since API version 9 and deprecated since API version 18. You are advised to use **getHostContext** instead. [getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12) has effect only after first a [UIContext](arkts-apis-uicontext-uicontext.md) instance is obtained.
+
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -106,6 +105,7 @@ export default class EntryAbility extends UIAbility {
 ```
 In **Index.ets**, **getContext** is used to obtain the context. In this example, the return value type is UIAbilityContext.
 
+<!--deprecated_code_no_check-->
 ```ts
 //pages/Index.ets
 @Entry

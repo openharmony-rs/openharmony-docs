@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhangjun; @gzhuangzhuang-->
 <!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 OpenHarmony is prebuilt with the **FileManager** application. You can also develop your own file manager application as required.
 
@@ -13,6 +13,7 @@ OpenHarmony is prebuilt with the **FileManager** application. You can also devel
 For details about the APIs for developing the user file manager, see [User File Access and Management](../reference/apis-core-file-kit/js-apis-fileAccess-sys.md).
 
 1. Request permissions required.
+
    Request the ohos.permission.FILE_ACCESS_MANAGER and ohos.permission.GET_BUNDLE_INFO_PRIVILEGED permissions. For details, see [Requesting Permissions for System_basic Applications](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
 
    > **NOTE**
@@ -31,6 +32,7 @@ For details about the APIs for developing the user file manager, see [User File 
    The **fileAccess** module provides APIs for basic file operations, and the **fileExtensionInfo** module provides key structs for application development.
 
 3. Query device information.
+
    You can obtain attributes of the devices managed by one or all file management servers in the system. You can also filter devices as required.
 
    In the user file access framework, **RootInfo** indicates the attribute information of a device. For example, obtain **RootInfo** of all devices.
@@ -81,6 +83,7 @@ For details about the APIs for developing the user file manager, see [User File 
    ```
 
 4. View directories.
+
    In the user file access framework, **FileInfo** indicates basic information about a file or folder. You can use **listfile()** to obtain a **FileIterator** object that traverses all files (folder) of the next level or use **scanfile()** to obtain a **FileIterator** object that meets the specified conditions.
 
     Currently, **listfile()** and **scanfile()** can be called by the **RootInfo** object to traverse the next-level files or filter the entire directory tree. In addition, **listfile()** and **scanfile()** can be called by the **FileInfo** object to traverse the next-level files or filter the specified directories.
@@ -139,6 +142,7 @@ For details about the APIs for developing the user file manager, see [User File 
    ```
 
 5. Perform operations on files or directories.
+
    You can integrate APIs of the user file access framework to implement user behaviors, such as deleting, renaming, creating, and moving a file or folder. The following example shows how to create a file. For details about other APIs, see [User File Access and Management](../reference/apis-core-file-kit/js-apis-fileAccess-sys.md).
 
    ```ts

@@ -111,8 +111,7 @@ PluginManager.Request方法接收到的回调结果。
 
 ### OnPushEventCallback
 
-type OnPushEventCallback = (source: Want, template: PluginComponentTemplate, data: KVObject,
-    extraData: KVObject) => void
+type OnPushEventCallback = (source: Want, template: PluginComponentTemplate, data: KVObject, extraData: KVObject) => void
 
 对应Push事件的监听回调函数。
 

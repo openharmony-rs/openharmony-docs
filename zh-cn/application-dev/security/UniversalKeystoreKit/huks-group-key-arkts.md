@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-群组密钥支持的HUKS密钥操作及详细介绍参考[群组密钥介绍](huks-group-key-overview.md)，本文档以[AES/CBC/PKCS7加解密](#aescbcpkcs7加解密)、[X25519非对称密钥协商](#x25519非对称密钥协商)、[PBKDF2派生密钥](#pbkdf2派生密钥)为例展示群组密钥使用方法。
+从API 23开始，HUKS支持群组密钥功能。群组密钥支持的HUKS密钥操作及详细介绍参考[群组密钥介绍](huks-group-key-overview.md)，本文档以[AES/CBC/PKCS7加解密](#aescbcpkcs7加解密)、[X25519非对称密钥协商](#x25519非对称密钥协商)、[PBKDF2派生密钥](#pbkdf2派生密钥)为例展示群组密钥使用方法。
 
 **配置文件**
 
@@ -33,7 +33,7 @@
 
 2. 指定待加密的数据。
 
-3. 指定加密[算法参数配置](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam)。需要添加群组密钥标签[HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)。
+3. 使用[HuksParam](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam)设置加密算法参数配置。需要添加群组密钥标签[HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)。
 
 4. 调用[initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，并获取会话的句柄handle。
 
@@ -45,7 +45,7 @@
 
 2. 指定待解密的密文。
 
-3. 指定解密[算法参数配置](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam)。需要添加群组密钥标签[HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)。
+3. 使用[HuksParam](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam)设置解密算法参数配置。需要添加群组密钥标签[HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)。
 
 4. 调用[initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，并获取会话的句柄handle。
 

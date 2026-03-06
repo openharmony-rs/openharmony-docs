@@ -26,6 +26,7 @@ import { privacyManager } from '@kit.AbilityKit';
 addPermissionUsedRecord(tokenID: number, permissionName: Permissions, successCount: number, failCount: number, options?: AddPermissionUsedRecordOptions): Promise&lt;void&gt;
 
 Adds a permission usage record when an application protected by the permission is called by another service or application. This API uses a promise to return the result.
+
 The permission usage record includes the application identity (token ID) of the caller, name of the permission used, and number of successful and failed accesses to the target application.
 
 **Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
@@ -92,6 +93,7 @@ privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1,
 addPermissionUsedRecord(tokenID: number, permissionName: Permissions, successCount: number, failCount: number, callback: AsyncCallback&lt;void&gt;): void
 
 Adds a permission usage record when an application protected by the permission is called by another service or application. This API uses an asynchronous callback to return the result.
+
 The permission usage record includes the application identity (token ID) of the caller, name of the permission used, and number of successful and failed accesses to the target application.
 
 **Required permissions**: ohos.permission.PERMISSION_USED_STATS (available only to system applications)
@@ -773,7 +775,7 @@ During unsubscribing, if no callback is passed, all callbacks in **permissionLis
 | Name            | Type                  | Mandatory| Description                                                         |
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string                | Yes  | Event type. The value is **'activeStateChange'**, which indicates the permission usage change.  |
-| permissionList | Array&lt;Permissions&gt;   | Yes  | List of target permissions. The value must be the same as that in [on](#privacymanageron). If this parameter is not specified, this API will unsubscribe from usage changes for all permissions. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| permissionList | Array&lt;Permissions&gt;   | Yes  | List of target permissions. The value must be the same as that in [on](#privacymanageron). If this parameter is not specified, this API will unsubscribe from state changes for all permissions. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
 | callback | Callback&lt;[ActiveChangeResponse](#activechangeresponse)&gt; | No| Callback used to return the object of canceling the subscription to state changes of the specified token ID and permission.|
 
 **Error codes**

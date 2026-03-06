@@ -1,5 +1,4 @@
 # @ohos.bundle.appDomainVerify (Application Domain Name Verification) (System API)
-
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @hw-xpc-->
@@ -58,9 +57,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | System API accessed by non-system app. |
 | 401 | Parameter error.|
-| 29900001 | System internal error. |
+| 29900001 |  Internal error. |
 
 **Example**
 
@@ -107,9 +106,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | System API accessed by non-system app. |
 | 401 | Parameter error.|
-| 29900001 | System internal error. |
+| 29900001 |  Internal error. |
 
 **Example**
 

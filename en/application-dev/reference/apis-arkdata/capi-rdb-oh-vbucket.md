@@ -181,7 +181,7 @@ int (*clear)(OH_VBucket *bucket)
 
 **Description**
 
-Clears an **OH_VBucket** object.
+Clears the [OH_VBucket](capi-rdb-oh-vbucket.md) object.
 
 **Since**: 10
 
@@ -205,7 +205,7 @@ int (*destroy)(OH_VBucket *bucket)
 
 **Description**
 
-Destroys an **OH_VBucket** object and reclaims the memory occupied.
+Destroys the [OH_VBucket](capi-rdb-oh-vbucket.md) object and reclaims the memory occupied by the object.
 
 **Since**: 10
 

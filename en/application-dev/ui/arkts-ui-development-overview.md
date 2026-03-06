@@ -53,6 +53,7 @@ Powered by the ArkTS-based declarative development paradigm, ArkUI is a simplifi
   - Language compiler and runtime optimization: The productivity punch includes unified bytecode, efficient Foreign Function Interface (FFI), ahead-of-time (AOT), engine minimization, and type optimization.
 
 - Promising ecosystem
+
   ArkUI can gain traction with its relatively neutral and developer-friendly programming language. It can tap on the ecosystems of mainstream languages and advance along an evolutionary path with standards organizations.
 
 
@@ -66,18 +67,23 @@ Powered by the ArkTS-based declarative development paradigm, ArkUI is a simplifi
 
 
 - **Declarative UI frontend**
+
   Provides basic language specifications of the UI development paradigm, built-in UI components, layout, and animations, and multiple state management mechanisms, with a wide array of APIs for you to call as required.
 
 - **Language runtime**
+
   Provides the parsing capability for the UI paradigm syntax and allows for cross-language API calls for a high-performance operating environment of the TS language.
 
 - **Declarative UI backend engine**
+
   Provides UI rendering pipelines that are compatible with different development paradigms, multiple basic components, layout calculation, animations, and interaction events, with state management and drawing capabilities.
 
 - **Render engine**
+
   Provides efficient drawing capabilities, which enable rendering instructions collected by the rendering pipeline to be drawn to the screen.
 
 - **Platform adaptation layer**
+
   Provides abstract APIs to connect to different systems, such as system rendering pipelines and lifecycle scheduling.
 
 
@@ -119,4 +125,3 @@ The table below lists the main tasks involved in UI development with ArkUI.
   (1) If a default value is specified for the parameter, it is used.
 
   (2) If no default value is specified for the parameter, the property or API associated with that parameter is ineffective.
-<!--no_check-->

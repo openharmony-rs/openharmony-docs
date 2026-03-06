@@ -1,4 +1,11 @@
-# IntelligentVoice错误码
+# 智能语音错误码
+
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @y00416036-->
+<!--Designer: @jinjunwen-->
+<!--Tester: @gx1016-->
+<!--Adviser: @fang-jinxu-->
 
 > **说明：**
 >

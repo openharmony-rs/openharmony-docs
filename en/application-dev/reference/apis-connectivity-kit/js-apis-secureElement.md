@@ -13,7 +13,7 @@ The instances of the following types are mentioned in this topic:
 
 | Type   | Description                                          |
 | ------- | ---------------------------------------------- |
-| Reader  | SE supported by the device. If eSE, SIM, and SIM2 are supported, three instances will be returned.|
+| Reader  | SE supported by the device. If eSE, SIM, and SIM2 are supported, three instances will be returned. SIM2 is supported since API version 22.|
 | Session | Session created on an SE **Reader** instance.|
 | Channel | Channel set up by a **Session** instance. The channel can be a basic channel or a logical channel.  |
 
@@ -418,7 +418,7 @@ try {
 ```
 ## Reader
 
-A Reader instance indicates the SEs supported by a device. If eSE, SIM, and SIM2 are supported, three instances will be returned. You can use [SEService.getReaders](#seservicegetreaders) to obtain a **Reader** instance.
+Obtains the SE supported by the device. If eSE, SIM, and SIM2 are supported, three instances will be returned. SIM2 is supported since API version 22. You can use [SEService.getReaders](#seservicegetreaders) to obtain a **Reader** instance.
 
 ### Reader.getName
 
@@ -436,7 +436,7 @@ Obtains the name of this reader. The name is **SIM** for a SIM reader, **SIM2** 
 
 **Error codes**
 
-For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
+For details about error codes, see [NFC Error Codes](errorcode-nfc.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |

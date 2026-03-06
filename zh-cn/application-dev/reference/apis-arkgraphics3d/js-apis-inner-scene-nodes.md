@@ -443,7 +443,7 @@ raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| viewPosition | [Vec2](js-apis-inner-scene-types.md#vec2) | 是 | 使用UI坐标系定义的屏幕归一化坐标，取值范围为[0, 1]。其中(0,0)表示Component3D控件的左上角，(1,1)表示Component3D控件的右下角。|
+| viewPosition | [Vec2](js-apis-inner-scene-types.md#vec2) | 是 | 使用屏幕归一化坐标，取值范围为[0, 1]。其中(0,0)表示Component3D控件的左上角，(1,1)表示Component3D控件的右下角。|
 | params | [RaycastParameters](js-apis-inner-scene.md#raycastparameters20) | 是 | 射线检测的配置参数（如检测范围、过滤节点等）。|
 
 **返回值：**
@@ -586,8 +586,6 @@ function GetViewMatrix(): void {
       // 创建相机
       let camera: Camera = await sceneFactory.createCamera(sceneCameraParameter);
       camera.enabled = true;
-      // 设置相机视角
-      lookAt(camera, { x: 0, y: 0, z: -3 }, { x: 0, y: 0, z: 0 }, { x: 0, y: 1, z: 0 });
       // 获取相机的视图矩阵
       let viewMatrix: Mat4x4 = camera.getViewMatrix();
     });
@@ -622,8 +620,6 @@ function GetProjectionMatrix(): void {
       // 创建相机
       let camera: Camera = await sceneFactory.createCamera(sceneCameraParameter);
       camera.enabled = true;
-      // 设置相机视角
-      lookAt(camera, { x: 0, y: 0, z: -3 }, { x: 0, y: 0, z: 0 }, { x: 0, y: 1, z: 0 });
       // 获取相机的投影矩阵
       let projectionMatrix: Mat4x4 = camera.getProjectionMatrix();
     });

@@ -12,7 +12,7 @@ typedef struct InputMethod_InputMethodProxy InputMethod_InputMethodProxy
 
 ## 概述
 
-输入法代理对象。使用此对象可以用于调用使用输入法的方法。
+应用与输入法服务之间的交互代理对象，应用可通过此对象调用输入法服务的相关接口，并接收输入法服务的事件回调。
 
 **起始版本：** 12
 

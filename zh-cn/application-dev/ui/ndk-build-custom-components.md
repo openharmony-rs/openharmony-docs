@@ -155,8 +155,8 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
    #endif // MYAPPLICATION_ARKUICUSTOMCONTAINERNODE_H
    ```
 
-3. 使用自定义容器创建带文本的示例界面，并沿用[定时器模块相关简单实现](ndk-embed-arkts-components.md)。
-   <!-- @[entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomContainerSample/entry/src/main/cpp/NativeEntry.cpp) -->
+3. 使用自定义容器创建带文本的示例界面。
+   <!-- @[entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomContainerSample/entry/src/main/cpp/NativeEntry.cpp) --> 
    
    ``` C++
    #include "NativeEntry.h"
@@ -195,10 +195,11 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
            textNode->SetBackgroundColor(0xFFfffacd);
            textNode->SetTextAlign(ARKUI_TEXT_ALIGNMENT_CENTER);
            node->AddChild(textNode);
-           CreateNativeTimer(env, textNode.get(), 1, [](void *userData, int32_t count) {
-               auto textNode = reinterpret_cast<ArkUITextNode *>(userData);
+           auto onClick = [](ArkUI_NodeEvent *event) {
+               auto textNode = (ArkUITextNode *)OH_ArkUI_NodeEvent_GetUserData(event);
                textNode->SetFontColor(0xFF00FF7F);
-           });
+           };
+           textNode->RegisterOnClick(onClick, textNode.get());
    
            // 保持Native侧对象到管理类中，维护生命周期。
            NativeEntry::GetInstance()->SetRootNode(node);
@@ -371,8 +372,8 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
    #endif // MYAPPLICATION_ARKUICUSTOMNODE_H
    ```
 
-3. 使用自定义绘制组件和自定义容器创建示例界面，并沿用[定时器模块相关简单实现](ndk-embed-arkts-components.md)。
-   <!-- @[entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawSample/entry/src/main/cpp/NativeEntry.cpp) -->
+3. 使用自定义绘制组件和自定义容器创建示例界面。
+   <!-- @[entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawSample/entry/src/main/cpp/NativeEntry.cpp) --> 
    
    ``` C++
    
@@ -413,10 +414,11 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
            customNode->SetWidth(width);
            customNode->SetHeight(height);
            node->AddChild(customNode);
-           CreateNativeTimer(env, customNode.get(), 1, [](void *userData, int32_t count) {
-               auto customNode = reinterpret_cast<ArkUICustomNode *>(userData);
+           auto onClick = [](ArkUI_NodeEvent *event) {
+               auto customNode = (ArkUICustomNode *)OH_ArkUI_NodeEvent_GetUserData(event);
                customNode->SetRectColor(0xFF00FF7F);
-           });
+           };
+           customNode->RegisterOnClick(onClick, customNode.get());
    
            // 保持Native侧对象到管理类中，维护生命周期。
            NativeEntry::GetInstance()->SetRootNode(node);

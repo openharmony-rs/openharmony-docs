@@ -38,7 +38,7 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 
 ## Styles
 
-Only the **width**, **height**, **margin**, **margin-[left|top|right|bottom]**, and **margin-[start|end]** styles in [Universal Styles](js-components-common-styles.md) are supported.
+Only the **width**, **height**, **margin**, **margin-[left | top | right | bottom]**, and **margin-[start | end]** styles in [Universal Styles](js-components-common-styles.md) are supported.
 
 
 ## Events

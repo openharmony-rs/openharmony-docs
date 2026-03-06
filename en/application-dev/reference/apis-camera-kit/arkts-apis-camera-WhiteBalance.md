@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-WhiteBalance inherits from [WhiteBalanceQuery](arkts-apis-camera-WhiteBalanceQuery.md).
+**WhiteBalance** inherits from [WhiteBalanceQuery](arkts-apis-camera-WhiteBalanceQuery.md).
 
 It provides APIs to process white balance, including obtaining and setting the white balance mode and white balance value.
 
@@ -25,9 +25,7 @@ import { camera } from '@kit.CameraKit';
 
 setWhiteBalanceMode(mode: WhiteBalanceMode): void
 
-Sets a white balance mode.
-
-Before the setting, run [isWhiteBalanceModeSupported](arkts-apis-camera-WhiteBalanceQuery.md#iswhitebalancemodesupported20) to check whether the device supports the specified white balance mode.
+Sets a white balance mode. Before the setting, run [isWhiteBalanceModeSupported](arkts-apis-camera-WhiteBalanceQuery.md#iswhitebalancemodesupported20) to check whether the device supports the specified white balance mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -110,7 +108,7 @@ setWhiteBalance(whiteBalance: number): void
 
 Sets a white balance value.
 
-Before the setting, run [isWhiteBalanceModeSupported](arkts-apis-camera-WhiteBalanceQuery.md#iswhitebalancemodesupported20) to check the white balance value range supported by the device.
+Before the setting, run [getWhiteBalanceRange](arkts-apis-camera-WhiteBalanceQuery.md#getwhitebalancerange20) to check the white balance value range supported by the device.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 

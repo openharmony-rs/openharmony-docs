@@ -310,6 +310,8 @@ Sets the default audio output device. This API uses a promise to return the resu
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
+**Device behavior difference**: If the default audio output device is set to earpiece on a device without a earpiece, the speaker will still be used for audio output.
+
 **Parameters**
 
 | Name    | Type            | Mandatory  | Description                                                     |
@@ -633,8 +635,7 @@ try {
 
 getSelectedMediaInputDevice(): AudioDeviceDescriptor
 
-Obtains the media input device set by calling [selectMediaInputDevice](#selectmediainputdevice21).
-If no device has been specified, the device with **deviceType** set to **INVALID** is returned.
+Obtains the media input device set by calling [selectMediaInputDevice](#selectmediainputdevice21). If no device has been specified, the device with **deviceType** set to **INVALID** is returned.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
@@ -853,4 +854,65 @@ let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.C
 audioSessionManager.on('currentInputDeviceChanged', currentInputDeviceChangedCallback);
 
 audioSessionManager.off('currentInputDeviceChanged', currentInputDeviceChangedCallback);
+```
+
+## enableMuteSuggestionWhenMixWithOthers<sup>23+</sup>
+
+enableMuteSuggestionWhenMixWithOthers(enable: boolean): void
+
+Enables mute suggestion notifications for mixed playback.
+
+Typically, when the audio mixing mode is used, if two applications plays audio at the same time, their audio streams are mixed. In certain scenarios (such as games or broadcasts), applications can mute their own audio to provide a better user experience.
+
+If this feature is enabled, mute and unmute suggestions will be sent through the [AudioSessionStateChangedEvent](arkts-apis-audio-i.md#audiosessionstatechangedevent20) callback after the audio session state change event is subscribed to. Receiving the muted suggestion indicates that another application starts to play audio, and the played audio and the audio of this application cannot be mixed.
+
+This feature can be used only by audio sessions for which [AudioSessionScene](./arkts-apis-audio-e.md#audiosessionscene20) has been set and the **CONCURRENCY_MIX_WITH_OTHERS** mode has been activated. This feature takes effect only once when the audio session is activated. You need to enable it again before each activation of the audio session.
+
+For details, see [Enabling Mute Suggestion Notifications for Mixed Playback](../../media/audio/audio-session-management.md#enabling-mute-suggestion-notifications-for-mixed-playback).
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+**Parameters**
+
+| Name  | Type              | Mandatory| Description     |
+| -------- | ----------------- | ---- | --------- |
+| enable   | boolean           | Yes  | Whether to enable mute suggestion notifications for mixed playback. **true** to enable, **false** otherwise.|
+
+**Error codes**
+
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| ID| Error Message|
+| ------- | ---------------------------------------------|
+| 6800103 | Function is called without setting [AudioSessionScene](./arkts-apis-audio-e.md#audiosessionscene20) or called after audio session activation.|
+| 6800301 | Audio client call audio service error, system internal error. |
+
+**Example**
+
+```ts
+audio.getAudioManager().getSessionManager().enableMuteSuggestionWhenMixWithOthers(true);
+```
+
+## isOtherMediaPlaying<sup>23+</sup>
+
+isOtherMediaPlaying(): boolean
+
+Check whether any other application is currently playing audio of the four media types: **MUSIC**, **MOVIE**, **AUDIOBOOK**, and **GAME**. Audio sessions that have activated these media types will also be checked.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+**Return value**
+
+| Type                                             | Description                                   |
+| ------------------------------------------------- |---------------------------------------|
+| boolean | Whether another application is playing audio of certain media types. **true** means yes; **false** otherwise.|
+
+**Example**
+
+```ts
+let isExistence = audioSessionManager.isOtherMediaPlaying();
 ```

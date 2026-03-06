@@ -8,7 +8,7 @@
 
 ## 功能介绍
 
-MDM Kit为企业MDM应用提供设备管理能力，包括企业设备管理与事件监听、应用管理、禁用管理、安全管理、设备设置、设备控制、设备信息获取、硬件外设管理、系统管理、网络通信管理等，具体API接口说明详见<!--RP7-->[API参考](../reference/apis-mdm-kit/Readme-CN.md)<!--RP7End-->。
+MDM Kit为[MDM应用](./mdm-kit-term.md#mdm应用设备管理应用)提供设备管理能力，包括企业设备管理与事件监听、应用管理、禁用管理、安全管理、设备设置、设备控制、设备信息获取、硬件外设管理、系统管理、网络通信管理等，具体API接口说明详见<!--RP7-->[API参考](../reference/apis-mdm-kit/Readme-CN.md)<!--RP7End-->。
 
 设备管理应用：具备[企业设备管理扩展能力](./mdm-kit-admin.md)的应用。
 
@@ -101,6 +101,8 @@ MDM Kit为企业MDM应用提供设备管理能力，包括企业设备管理与�
 hdc shell edm enable-admin -n 包名 -a 企业设备管理扩展能力类名
 # 激活为BYOD设备管理应用
 hdc shell edm enable-admin -n 包名 -a 企业设备管理扩展能力类名 -t byod
+# 从API version 23开始支持激活为普通设备管理应用，该命令在PC/2in1设备可正常使用，在其他形态设备中使用会报错
+hdc shell edm enable-admin -n 包名 -a 企业设备管理扩展能力类名 -t da
 # 解除激活
 hdc shell edm disable-admin -n 包名
 ```

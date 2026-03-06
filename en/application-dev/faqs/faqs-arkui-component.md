@@ -1,4 +1,10 @@
 # ArkUI Component Development (ArkTS)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @piggyguy; @jiyujia926; @yangfan229-->
+<!--Designer: @piggyguy; @s10021109; @yangfan229-->
+<!--Tester: @fredyuan912-->
+<!--Adviser: @HelloCrease-->
 
 
 ## Can custom dialog boxes be defined and used in .ts files? (API version 9)
@@ -24,11 +30,11 @@ The variable defined in a custom dialog box needs to be transferred to the page 
 
 - Method 3: Use AppStorage or LocalStorage to manage page state and implement state sharing between the custom dialog box and page.
 
-**Example**
+**Code Example**
 
 - Method 1:
 
-  ```
+  ``` ts
   @CustomDialog
   struct CustomDialog01 {
     @Link inputValue: string
@@ -67,7 +73,7 @@ The variable defined in a custom dialog box needs to be transferred to the page 
 
 - Method 2:
 
-  ```
+  ``` ts
   @CustomDialog
   struct CustomDialog02 {
     private inputValue: string
@@ -110,7 +116,7 @@ The variable defined in a custom dialog box needs to be transferred to the page 
 
 - Method 3:
 
-  ```
+  ``` ts
   let storage = LocalStorage.GetShared()
   @CustomDialog
   struct CustomDialog03 {
@@ -174,19 +180,25 @@ A click-to-clear feature is required to remove all characters in the **TextInput
 
 Convert the **text** attribute of the **TextInput** and **TextArea** component to a state variable. Assign an empty string to the state variable when the click-to-clear event is performed.
 
-**Example**
+**Code Example**
 
-```
+```ts
+// xxx.ets
+@Entry
+@Component
 struct Index {
-@State text: string = 'Hello World'
-controller: TextInputController = new TextInputController()
+  @State text: string = 'Hello World';
+  controller: TextInputController = new TextInputController();
+
   build() {
     Row() {
       Column() {
-        TextInput({ placeholder: 'Please input your words.', text: this.text,
-          controller:this.controller}).onChange((value) => {
-            this.text = value
-          })
+        TextInput({
+          placeholder: 'Please input your words.', text: this.text,
+          controller: this.controller
+        }).onChange((value: string) => {
+          this.text = value;
+        })
         Button("Clear TextInput").onClick(() => {
           this.text = "";
         })
@@ -293,6 +305,10 @@ The eye icon itself cannot be customized. You can use set the **showPasswordIcon
 
 ## How do I use the onSubmit event of the TextInput component? (API version 9)
 
+**Symptom**
+
+How do I trigger the **onSubmit** event of the **TextInput** component and what are the meanings of the parameters passed back by the event callback?
+
 **Solution**
 
 The **onSubmit** event is triggered when a user presses **Enter** on the (physical or soft) keyboard. The callback parameter in the event is the current Enter key type. The Enter key type can be set through the **enterKeyType** attribute of the **TextInput** component. Setting the key style of the soft keyboard requires support by the input method.
@@ -314,9 +330,9 @@ When the **TextInput** component obtains focus, the caret automatically moves to
 
 2. Call the **setTimeout** API for asynchronous processing. Then call the **TextInputController.caretPosition** API in the event callback to set the caret position.
 
-**Example**
+**Code Example**
 
-```
+``` ts
 @Entry
 @Component
 struct TextInputDemo {
@@ -344,6 +360,10 @@ struct TextInputDemo {
 
 ## How do I obtain the current scrolling offset of a scrollable component? (API version 9)
 
+**Symptom**
+
+Scrollable components include **List**, **Grid**, and **Scroll**.
+
 **Solution**
 
 1. During initialization of the scrollable component, such as **List**, **Grid**, and **Scroll**, set the **scroller** parameter to bind the component to a scroll controller.
@@ -365,9 +385,9 @@ Text cannot be aligned vertically in the **Text** component.
 
 Text is aligned horizontally in the **Text** component. To enable text to align vertically, you can split the file, include it in a **Flex** container, and set the container's main axis direction to vertical.
 
-**Example**
+**Code Example**
 
-```
+``` ts
 @Entry
 @Component
 struct Index15 {
@@ -387,13 +407,17 @@ struct Index15 {
 
 ## How do I set the UI of an ability to transparent? (API version 9)
 
+**Symptom**
+
+How do I set the UI of an ability to transparent?
+
 **Solution**
 
 Set the background color of the top container component to transparent, and then set the **opacity** attribute of the XComponent to **0.01**.
 
-**Example**
+Example:
 
-```
+``` ts
 build() {
   Stack() {
     XComponent({
@@ -414,7 +438,7 @@ build() {
 
 ## Why do the constraintSize settings fail to take effect? (API version 9)
 
-Applicable to: stage model
+Applicable to the stage model.
 
 **Symptom**
 
@@ -434,7 +458,7 @@ Set **backgroundColor** to **'\#00000000'**.
 
 ## What should I do if the Scroll component cannot scroll to the bottom? (API version 9)
 
-Applicable to: stage model
+Applicable to the stage model.
 
 **Symptom**
 
@@ -447,7 +471,7 @@ Set the height of the **Scroll** component or use the flex layout to limit this 
 
 ## How do I customize the control bar style of the Video component? (API version 9)
 
-Applicable to: stage model
+Applicable to the stage model.
 
 **Solution**
 
@@ -457,25 +481,30 @@ Applicable to: stage model
 
 3. Implement a custom control bar in ArkTS and use **VideoController** to control video playback.
 
-**Example**
+**Code Example**
 
-```
+```ts
 // xxx.ets
-@Entry@Componentstruct VideoCreateComponent {
+@Entry
+@Component
+struct VideoCreateComponent {
   @State videoSrc: Resource = $rawfile('video1.mp4')
   @State previewUri: Resource = $r('app.media.poster1')
   @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X
   @State isAutoPlay: boolean = false
-  @State showControls: boolean = true
+  @State showControls: boolean = false
   controller: VideoController = new VideoController()
-   build() {
+
+  build() {
     Column() {
       Video({
         src: this.videoSrc,
         previewUri: this.previewUri,
         currentProgressRate: this.curRate,
         controller: this.controller
-      }).width('100%').height(600)
+      })
+        .width('100%')
+        .height(600)
         .autoPlay(this.isAutoPlay)
         .controls(this.showControls)
         .onStart(() => {
@@ -502,7 +531,7 @@ Applicable to: stage model
         .onUpdate((e) => {
           console.info('onUpdate is ' + e.time)
         })
-             Row() {
+      Row() {
         Button('src').onClick(() => {
           this.videoSrc = $rawfile('video2.mp4') // Switch the video source.
         }).margin(5)
@@ -514,7 +543,8 @@ Applicable to: stage model
           this.showControls =! this.showControls // Specify whether to show the control bar.
         }).margin(5)
       }
-       Row() {
+
+      Row() {
         Button('start').onClick(() => {
           this.controller.start() // Start playback.
         }).margin(5)
@@ -528,7 +558,8 @@ Applicable to: stage model
           this.controller.setCurrentTime(10, SeekMode.Accurate) // Seek to the 10s position of the video.
         }).margin(5)
       }
-       Row() {
+
+      Row() {
         Button('rate 0.75').onClick(() => {
           this.curRate = PlaybackSpeed.Speed_Forward_0_75_X // Play the video at the 0.75x speed.
         }).margin(5)
@@ -540,7 +571,8 @@ Applicable to: stage model
         }).margin(5)
       }
     }
-  }}
+  }
+}
 ```
 
 **Reference**
@@ -549,14 +581,17 @@ Applicable to: stage model
 
 ## How do I set state-specific styles for a component? (API version 9)
 
+**Symptom**
+
+How do I set the display style for a component in different states (such as no state, pressed, disabled, focused, and clicked)?
 
 **Solution**
 
 You can use the **stateStyles** attribute to set styles of a component for different states (stateless, pressed, disabled, focused, or clicked).
 
-**Example**
+**Code Example**
 
-```
+``` ts
 //xxx.ts
 @Entry
 @Component
@@ -606,7 +641,7 @@ struct StyleExample {
 
 ## What should I do if the flex width and height in the Scroll component conflicts with the scrolling? (API version 9)
 
-Applicable to: stage model
+Applicable to the stage model.
 
 **Symptom**
 
@@ -619,36 +654,38 @@ Do not set a size for any container component in the **Scroll** component. In th
 
 ## How does a component process click events in its child components? (API version 9)
 
-Applicable to: stage model
+Applicable to the stage model.
 
 When a child component is initialized in the parent component, the method defined in the parent component is transferred to and invoked in the child component. This process is similar to variable transfer.
 
-**Example**
+**Code Example**
 
-```
+``` ts
 class Model {
-  value: string
+  value: string = "";
 }
+
 @Entry
 @Component
 struct EntryComponent {
   test() {
     console.log('testTag test in my component');
   }
+
   build() {
     Column() {
-      MyComponent({ title: { value: 'Hello World 2' }, count: 7, onClick: this.test }) // The defined method is transferred during initialization.
+      MyComponent({ title: { value: 'Hello World 2' }, count: 7, click: this.test }) // The defined method is transferred during initialization.
     }
   }
 }
 
 @Component
 struct MyComponent {
-  @State title: Model = { value: 'Hello World' }
-  @State count: number = 0
-  onClick: any;
-  private toggle: string = 'Hello World'
-  private increaseBy: number = 1
+  @State title: Model = { value: 'Hello World' };
+  @State count: number = 0;
+  click: () => void = () => {
+  };
+  private increaseBy: number = 1;
 
   build() {
     Column() {
@@ -657,8 +694,8 @@ struct MyComponent {
         .margin(20)
         .onClick(() => {
           // Change the count value of the internal state variable.
-          this.count += this.increaseBy
-          this.onClick.call();
+          this.count += this.increaseBy;
+          this.click();
         })
     }
   }
@@ -681,20 +718,19 @@ You can use **focusControl.requestFocus** to control the focus of the text input
 
 **Solution**
 
-Refer to the following sample code:
+The sample code is as follows:
 
-```
+``` ts
 @Entry
 @Component
 struct SideBarContainerExample {
-  normalIcon : Resource = $r("app.media.icon")
+  normalIcon: Resource = $r("app.media.icon")
   selectedIcon: Resource = $r("app.media.icon")
   @State arr: number[] = [1, 2, 3]
   @State current: number = 1
 
   build() {
-    SideBarContainer(SideBarContainerType.Embed)
-    {
+    SideBarContainer(SideBarContainerType.Embed) {
       Column() {
         ForEach(this.arr, (item, index) => {
           Column({ space: 5 }) {
@@ -721,13 +757,15 @@ struct SideBarContainerExample {
     }
     .sideBarWidth(150)
     .minSideBarWidth(50)
-    .controlButton({left:32,
-      top:32,
-      width:32,
-      height:32, 
-      icons:{shown: $r("app.media.icon"),
+    .controlButton({
+      left: 32,
+      top: 32,
+      width: 32,
+      height: 32,
+      icons: { shown: $r("app.media.icon"),
         hidden: $r("app.media.icon"),
-        switching: $r("app.media.icon")}})
+        switching: $r("app.media.icon") }
+    })
     .maxSideBarWidth(300)
     .onChange((value: boolean) => {
       console.info('status:' + value)
@@ -741,6 +779,7 @@ struct SideBarContainerExample {
 **Solution**
 
 In the **Canvas** component, there are two types of content: 1. content rendered with universal attributes of components, such as the background color and boarder;
+
 2. content drawn by the application through the **CanvasRenderingContext2D** API. The first type of content is updated through state variables. The second type of content is updated in the next frame once the API is called, thanks to the built-in dirty table feature of the API. You do not need to explicitly refresh this type of content.
 
 **Reference**
@@ -749,7 +788,7 @@ In the **Canvas** component, there are two types of content: 1. content rendered
 
 ## What should I do if the List component cannot scroll to the bottom with its height not specified? (API version 10)
 
-**Cause**
+**Possible Cause**
 
 If no height is set for a **List** component and the total height of its child components is greater than the height of its parent component, the component is displayed at the height of its parent component. In this case, if the **List** component has sibling nodes, part of it may be pushed outside of the display area of the parent component, making it seemingly unable to be scrolled to the bottom.
 
@@ -777,7 +816,7 @@ Add the **layoutWeight(1)** attribute for the **List** component so that it take
 
 **Solution**
 
-Obtain the **uiContext** instance of the main window and then call **router.push** to jump to the new page.
+During route redirection, you need to obtain the **uiContext** of the main window and then call the route redirection.
 
 **Reference**
 
@@ -789,11 +828,11 @@ Obtain the **uiContext** instance of the main window and then call **router.push
 
 1. Progress: ArkUI-X is now an open-source tool, with first version officially released on December 15, 2023. It runs Android and iOS, with support for desktop and web platforms well on the way.
 
-2. [Roadmap](https://gitee.com/arkui-x/docs/blob/master/en/roadmap)
+2. [Roadmap](https://gitcode.com/arkui-x/docs/blob/master/en/roadmap)
 
 **Reference**
 
-[ArkUI-X](https://gitee.com/arkui-x)
+[ArkUI-X](https://gitcode.com/arkui-x)
 
 ## How does an application track component data or state in the build process of custom components? (API version 10)
 
@@ -805,7 +844,7 @@ Logs cannot be inserted into the **build** method of the UI. As a result, the ap
 
 Use the @Watch callback to listen for changes in state variables. If the callback function is executed, it indicates that the UI using the state variable will be re-rendered during the next VSync signal.
 
-The sample code is as follows:
+Example reference code:
 
 ```ts
 @Prop @Watch('onCountUpdated') count: number = 0; 
@@ -830,6 +869,45 @@ In the declarative UI, custom components do not support inheritance. To extend f
 
 **Solution**
 
-ArkUI provides several pixel units:<br>px: physical pixel unit of the screen. 1 px indicates a pixel on the screen. lpx: logical pixel unit of the window. It is the ratio of the actual screen width to the logical width (configured by **designWidth**), representing the baseline width for page design. The size of an element is scaled at this ratio to the actual screen width. vp: virtual pixel unit. fp: font pixel unit. The formula for calculating vp is as follows: vp = px/(DPI/160). 
-A virtual pixel (vp) describes the virtual size of a device for an application. It is different from the unit used by the screen hardware, pixel (px). Its use allows elements to have a consistent visual volume on devices with different densities. By default, the font pixel (fp) size is the same as that of the virtual pixel size. That is, 1 fp = 1 vp. If you select a larger font size in **Settings**, the actual font size is the virtual pixel size multiplied by the scale coefficient. That is, 1 fp = 1 vp \* scale. Percentage: The unit must be %, for example, **'10%'**. 
+ArkUI provides several pixel units:<br>px: physical pixel unit of the screen. 1 px indicates a pixel on the screen. lpx: logical pixel unit of the window. It is the ratio of the actual screen width to the logical width (configured by **designWidth**), representing the baseline width for page design. The size of an element is scaled at this ratio to the actual screen width. vp: virtual pixel unit. fp: font pixel unit. The formula for calculating vp is as follows: vp = px/(DPI/160).
+
+A virtual pixel (vp) describes the virtual size of a device for an application. It is different from the unit used by the screen hardware, pixel (px). Its use allows elements to have a consistent visual volume on devices with different densities. By default, the font pixel (fp) size is the same as that of the virtual pixel size. That is, 1 fp = 1 vp. If you select a larger font size in **Settings**, the actual font size is the virtual pixel size multiplied by the scale coefficient. That is, 1 fp = 1 vp \* scale. Percentage: The unit must be %, for example, **'10%'**.
+
 Resource: Size referenced from system or application resources.
+
+## What should I do if the **XComponent** component in surface mode displays abnormally after renderFit is set? (API version 10)
+
+**Solution**
+
+When the content of the **XComponent** component in surface mode is inconsistent with the component size, you can set the [renderFit](../reference/apis-arkui/arkui-ts/ts-universal-attributes-renderfit.md#renderfit18) attribute to adjust the layout mode of the drawing content within the component size range, for example, stretching, centering, and proportional scaling.
+
+Before API version 18, the [renderFit](../reference/apis-arkui/arkui-ts/ts-universal-attributes-renderfit.md#renderfit18) attribute of the **XComponent** component in surface mode can only be set to **RenderFit.RESIZE_FILL**. If this attribute is set to other values, the display may be abnormal on some device models. If you need to set other attributes, upgrade to API version 18 or add the keyword **RenderFitSurface** to the **id** field of the **XComponent** component to correct the display effect.
+
+Example reference code:
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State xc_width: number = 500;
+  @State xc_height: number = 700;
+  myXComponentController: XComponentController = new XComponentController();
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Start }) {
+      XComponent({
+        id: 'myXComponent_RenderFitSurface', // When the id string contains RenderFitSurface, RenderFit can be displayed correctly.
+        type: XComponentType.SURFACE,
+        controller: this.myXComponentController
+      })
+        .width(this.xc_width)
+        .height(this.xc_height)
+        .renderFit(RenderFit.CENTER)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+```

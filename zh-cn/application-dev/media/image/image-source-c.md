@@ -30,7 +30,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 > **说明：**
 >
-> 部分接口在API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
+> 部分接口（如：[OH_ImageSourceNative_GetSupportedFormats](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getsupportedformats)）在API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
 
 1. 导入相关头文件。
 

@@ -305,7 +305,7 @@ int32_t OH_ImageSource_GetSupportedFormats(struct OhosImageSourceSupportedFormat
 
 | 参数项 | 描述 |
 | -- | -- |
-| struct OhosImageSourceSupportedFormatList* res | 表明指向[OhosImageSourceSupportedFormatList](capi-image-ohosimagesourcesupportedformatlist.md)结构的列表指针。<br>当supportedFormatList为nullptr并且size以res为0作为输入时，它将以ressize返回支持的格式大小。<br>为了获得所有的格式标记，它需要比supportedFormatList中的结果大小大的足够空间，还需要为[OhosImageSourceSupportedFormat](capi-image-ohosimagesourcesupportedformat.md)项目中的每个格式提供足够的空间。 |
+| struct OhosImageSourceSupportedFormatList* res | 表明指向[OhosImageSourceSupportedFormatList](capi-image-ohosimagesourcesupportedformatlist.md)结构体的指针。该结构体包含supportedFormatList和size两个属性。<br>该接口需要调用两次才能正确获取支持的格式列表。<br>第一次调用需将res->supportedFormatList置空，res->size会获取支持的格式数量。<br>第二次调用前，需完成内存初始化，首先将res->supportedFormatList初始化为包含res->size个[OhosImageSourceSupportedFormat](capi-image-ohosimagesourcesupportedformat.md)的列表，再为每个[OhosImageSourceSupportedFormat](capi-image-ohosimagesourcesupportedformat.md)申请内存，确保其format属性有足够的空间获取图片格式信息。 |
 
 **返回：**
 

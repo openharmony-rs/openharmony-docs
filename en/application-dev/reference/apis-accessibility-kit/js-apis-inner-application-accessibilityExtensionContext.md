@@ -33,6 +33,8 @@ class EntryAbility extends AccessibilityExtensionAbility {
 
 Provides attribute names and value types of a node element.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 ### Attributes
@@ -399,7 +401,7 @@ Obtains the root element of a window. This API uses a promise to return the resu
 
 | Name     | Type    | Mandatory  | Description                    |
 | -------- | ------ | ---- | ---------------------- |
-| windowId | number | No   | Window for which you want to obtain the root element. If this parameter is not specified, it indicates the current active window.|
+| windowId | number | No   | ID of the window whose root element is to be obtained. If this parameter is not specified, it indicates the current active window.|
 
 **Return value**
 
@@ -493,7 +495,7 @@ Obtains the root element of a window. This API uses an asynchronous callback to 
 
 | Name     | Type                                      | Mandatory  | Description                    |
 | -------- | ---------------------------------------- | ---- | ---------------------- |
-| windowId | number                                   | Yes   | Window for which you want to obtain the root element. If this parameter is not specified, it indicates the current active window.|
+| windowId | number                                   | Yes   | ID of the window whose root element is to be obtained. If this parameter is not specified, it indicates the current active window.|
 | callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Yes   | Callback used to return the root element.    |
 
 **Error codes**
@@ -798,6 +800,8 @@ axContext.injectGestureSync(gesturePath);
 
 Defines the **AccessibilityElement**. Before calling APIs of **AccessibilityElement**, you must call [AccessibilityExtensionContext.getFocusElement()](#accessibilityextensioncontextgetfocuselementdeprecated) or [AccessibilityExtensionContext.getWindowRootElement()](#accessibilityextensioncontextgetwindowrootelementdeprecated) to obtain an **AccessibilityElement** instance.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 ### attributeNames<sup>(deprecated)</sup>
@@ -919,8 +923,7 @@ rootElement.attributeValue(attributeName).then((data: string) => {
 
 ### attributeValue<sup>(deprecated)</sup>
 
-attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T, 
-    callback: AsyncCallback\<ElementAttributeValues[T]>): void;
+attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T, callback: AsyncCallback\<ElementAttributeValues[T]>): void
 
 Obtains the attribute value based on an attribute name. This API uses an asynchronous callback to return the result.
 
@@ -1097,8 +1100,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // rootElement is an instance of AccessibilityElement.
 // Sample code of setSelection
 rootElement.performAction('setSelection', {
-  selectTextBegin: '0', // Indicates the start position of selection.
-  selectTextEnd: '8',   // Indicates the end position of selection.
+  selectTextBegin: '0', // Start position of the selection.
+  selectTextEnd: '8',   // End position of the selection.
   selectTextInForWard: true   // true indicates the insertion point, and false indicates the selection range.
 }).then(() => {
   console.info(`Succeeded in perform action`);

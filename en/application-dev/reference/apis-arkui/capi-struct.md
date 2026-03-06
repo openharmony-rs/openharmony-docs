@@ -6,13 +6,13 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-```
-struct OH_PixelmapNative
+```c
+typedef struct OH_PixelmapNative
 ```
 
 ## Overview
 
-The struct describes the pixel image information.
+Describes the pixel image information.
 
 **Since**: 15
 

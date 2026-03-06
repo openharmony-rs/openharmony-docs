@@ -10,6 +10,8 @@ ImageReceiver类，用于获取组件surface id、接收最新的图片和读取
 
 在调用以下方法前需要先通过[image.createImageReceiver](arkts-apis-image-f.md#imagecreateimagereceiver11)创建ImageReceiver实例。
 
+从API version 23开始，更推荐使用[image.createImageReceiver](arkts-apis-image-f.md#imagecreateimagereceiver23)，通过传入[ImageReceiverOptions](arkts-apis-image-i.md#imagereceiveroptions23)创建ImageReceiver实例。
+
 由于图片占用内存较大，所以当ImageReceiver实例使用完成后，应主动调用[release](#release9)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 > **说明：**
@@ -29,9 +31,9 @@ import { image } from '@kit.ImageKit';
 
 | 名称     | 类型                         | 只读 | 可选 | 说明               |
 | -------- | ---------------------------- | ---- | ---- | ------------------ |
-| size<sup>9+</sup>     | [Size](arkts-apis-image-i.md#size)                | 是   | 否   | 图片大小。该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。         |
-| capacity<sup>9+</sup> | number                       | 是   | 否   | 同时访问的图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
-| format<sup>9+</sup>   | [ImageFormat](arkts-apis-image-e.md#imageformat9) | 是   | 否   | 图像格式，取值为[ImageFormat](arkts-apis-image-e.md#imageformat9)常量（目前仅支持 ImageFormat:JPEG，实际返回格式由生产者决定，如相机）        |
+| size<sup>9+</sup>     | [Size](arkts-apis-image-i.md#size)  | 是   | 否   | 图片大小。该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。         |
+| capacity<sup>9+</sup> | number    | 是   | 否   | 同时访问的图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
+| format<sup>9+</sup>   | [ImageFormat](arkts-apis-image-e.md#imageformat9) | 是   | 否   | 图像格式，取值为[ImageFormat](arkts-apis-image-e.md#imageformat9)常量（目前仅支持 ImageFormat:JPEG，实际返回格式由生产者决定，如相机）。        |
 
 ## getReceivingSurfaceId<sup>9+</sup>
 

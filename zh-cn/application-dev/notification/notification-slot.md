@@ -74,7 +74,7 @@
    获取对应渠道是否创建以及该渠道支持的通知提醒方式，比如是否有声音提示，是否有震动，锁屏是否可见等。
 
    <!-- @[get_type_channel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationWays.ets) -->
-    
+   
    ``` TypeScript
    // getSlot回调
    let getSlotCallback = (err: BusinessError, data: notificationManager.NotificationSlot): void => {

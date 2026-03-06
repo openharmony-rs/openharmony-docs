@@ -386,6 +386,8 @@ sppWrite(clientSocket: number, data: ArrayBuffer): void
 - 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。
 - 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
 - 若开发者需感知传输过程中异常断连等错误，建议使用[socket.sppWriteAsync](#socketsppwriteasync18)。
+- 按照蓝牙协议规范，数据通道在空闲状态需进入休眠模式以降低功耗。蓝牙子系统实现上，通道在5-7s内没有数据交互时会进入休眠模式，将导致下次调用此接口发送数据前，会耗费500ms左右退出休眠模式才开始发送数据。
+- 若想减少每次发送数据前退休眠模式的耗时，建议每3s左右可往数据通道上发送一次任意大小的心跳数据，对数据通道进行保活，可防止进入休眠模式，但同时也会提高设备功耗。
 <!--RP1--><!--RP1End-->
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
@@ -523,6 +525,8 @@ sppWriteAsync(clientSocket: number, data: ArrayBuffer): Promise&lt;void&gt;
 - 仅在双方成功建立连接后，调用本接口才有效。
 - 若客户端使用，需在调用[socket.sppConnect](#socketsppconnect)后，且连接成功后使用。
 - 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
+- 按照蓝牙协议规范，数据通道在空闲状态需进入休眠模式以降低功耗。蓝牙子系统实现上，通道在5-7s内没有数据交互时会进入休眠模式，将导致下次调用此接口发送数据前，会耗费500ms左右退出休眠模式才开始发送数据。
+- 若想减少每次发送数据前退休眠模式的耗时，建议每3s左右可往数据通道上发送一次任意大小的心跳数据，对数据通道进行保活，可防止进入休眠模式，但同时也会提高设备功耗。
 <!--RP3--><!--RP3End-->
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core

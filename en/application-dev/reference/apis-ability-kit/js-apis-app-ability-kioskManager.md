@@ -30,7 +30,7 @@ Enters kiosk mode. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API can be properly called only on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called only on phones, PC/2-in-1 devices, and tablets. On other devices, it returns the error code 801.
 
 **Parameters**
 
@@ -98,7 +98,7 @@ This API takes effect only for applications that have entered kiosk mode.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API can be properly called only on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called only on phones, PC/2-in-1 devices, and tablets. On other devices, it returns the error code 801.
 
 **Parameters**
 

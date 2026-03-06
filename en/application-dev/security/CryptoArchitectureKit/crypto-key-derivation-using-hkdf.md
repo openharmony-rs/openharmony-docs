@@ -14,14 +14,16 @@ For details about the corresponding algorithm specifications, see [HKDF](crypto-
 
    **HKDFSpec** is a child class of [KdfSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#kdfspec11). You need to specify the following:
 
-   - **algName**: algorithm to used, which is **'HKDF'**.
+   - **algName**: algorithm to use, which is **'HKDF'**.
    - **key**: original key material.
+
       If **key** is of the string type, pass in the data used for key derivation instead of the string type such as HexString or base64. In addition, ensure that the string is encoded in UTF-8 format. Otherwise, the derived key may be different from what you expected.
+  
    - **salt**: salt value.
    - **info**: optional context and application information used to extend the short key. This parameter can be empty.
    - **keySize**: length of the key to derive, in bytes. The value must be a positive integer.
 
-2. Use [cryptoFramework.createKdf](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekdf11) with the string parameter **'HKDF|SHA256|EXTRACT_AND_EXPAND'**** to create a **Kdf** instance. The key derivation algorithm is **HKDF**, HMAC algorithm is **SHA256**, and mode is **extract and expand**.
+2. Call [cryptoFramework.createKdf](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekdf11) with the string parameter **'HKDF|SHA256|EXTRACT_AND_EXPAND'** to create a key derivation function object (**Kdf**). The key derivation algorithm is **HKDF**, HMAC algorithm is **SHA256**, and mode is **EXTRACT_AND_EXPAND**.
 
 3. Call [Kdf.generateSecret](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesecret11) with the **HKDFSpec** object to generate a derived key.
 
@@ -35,14 +37,17 @@ For details about the corresponding algorithm specifications, see [HKDF](crypto-
 
 - Return the result using **await**:
 
-  ```ts
+  <!-- @[use_hkdf_for_key_derivation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/HKDFDerivation/entry/src/main/ets/pages/Await.ets) -->
+  
+  ``` TypeScript
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   async function kdfAwait() {
-    let keyData = new Uint8Array(buffer.from("012345678901234567890123456789", "utf-8").buffer);
-    let saltData = new Uint8Array(buffer.from("0123456789", "utf-8").buffer);
-    let infoData = new Uint8Array(buffer.from("infostring", "utf-8").buffer);
+    let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
+    let saltData = new Uint8Array(buffer.from('0123456789', 'utf-8').buffer);
+    let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
     let spec: cryptoFramework.HKDFSpec = {
       algName: 'HKDF',
       key: keyData,
@@ -52,21 +57,24 @@ For details about the corresponding algorithm specifications, see [HKDF](crypto-
     };
     let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
     let secret = await kdf.generateSecret(spec);
-    console.info("key derivation output is " + secret.data);
+    console.info('key derivation output: ' + secret.data);
   }
   ```
 
-- Return the result using a promise:
 
-  ```ts
+- Return the result using a promise:
+  <!-- @[use_hkdf_for_key_derivation_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/HKDFDerivation/entry/src/main/ets/pages/Promise.ets) -->
+  
+  ``` TypeScript
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function kdfPromise() {
-    let keyData = new Uint8Array(buffer.from("012345678901234567890123456789", "utf-8").buffer);
-    let saltData = new Uint8Array(buffer.from("0123456789", "utf-8").buffer);
-    let infoData = new Uint8Array(buffer.from("infostring", "utf-8").buffer);
+    let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
+    let saltData = new Uint8Array(buffer.from('0123456789', 'utf-8').buffer);
+    let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
     let spec: cryptoFramework.HKDFSpec = {
       algName: 'HKDF',
       key: keyData,
@@ -77,23 +85,26 @@ For details about the corresponding algorithm specifications, see [HKDF](crypto-
     let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
     let kdfPromise = kdf.generateSecret(spec);
     kdfPromise.then((secret) => {
-      console.info("key derivation output is " + secret.data);
+      console.info('key derivation output: ' + secret.data);
     }).catch((error: BusinessError) => {
-      console.error("key derivation error.");
+      console.error(`key derivation failed: errCode: ${error.code}, message: ${error.message}`);
     });
   }
   ```
 
+
 - Return the result synchronously:
 
-  ```ts
+  <!-- @[use_hkdf_for_key_derivation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/HKDFDerivation/entry/src/main/ets/pages/Sync.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function kdfSync() {
-    let keyData = new Uint8Array(buffer.from("012345678901234567890123456789", "utf-8").buffer);
-    let saltData = new Uint8Array(buffer.from("0123456789", "utf-8").buffer);
-    let infoData = new Uint8Array(buffer.from("infostring", "utf-8").buffer);
+    let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
+    let saltData = new Uint8Array(buffer.from('0123456789', 'utf-8').buffer);
+    let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
     let spec: cryptoFramework.HKDFSpec = {
       algName: 'HKDF',
       key: keyData,
@@ -103,6 +114,6 @@ For details about the corresponding algorithm specifications, see [HKDF](crypto-
     };
     let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
     let secret = kdf.generateSecretSync(spec);
-    console.info("[Sync]key derivation output is " + secret.data);
+    console.info('[Sync]key derivation output: ' + secret.data);
   }
   ```

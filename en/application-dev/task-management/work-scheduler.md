@@ -20,7 +20,7 @@ If an application needs to execute a non-real-time task after switching to the b
 
 An application calls the deferred task API to add, delete, and query deferred tasks. The deferred task management module determines the scheduling time based on the task conditions (set by the [WorkInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md#workinfo) parameter, including the network type, charging type, and storage status) and system status (including the memory, power consumption, device temperature, and user habits).
 
-When the scheduling conditions are met or the task scheduling ends, the system calls back **onWorkStart()** or **onWorkStop()** in [WorkSchedulerExtensionAbility](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md). The system also creates an independent process for the **WorkSchedulerExtensionAbility** and provides a duration for the **WorkSchedulerExtensionAbility** to run. You can implement your own service logic in the callback functions.
+When the scheduling conditions are met or the task scheduling ends, the system calls back **onWorkStart()** or **onWorkStop()** in [WorkSchedulerExtensionAbility](../reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md). The system also creates an independent process for the **WorkSchedulerExtensionAbility** and sets a period for the **WorkSchedulerExtensionAbility** to run. You can implement your own service logic in the callback functions.
 
 
 ### Constraints
@@ -37,8 +37,8 @@ When the scheduling conditions are met or the task scheduling ends, the system c
   | Group of commonly used applications| At a minimum interval of 24 hours|
   | Group of rarely used applications| At a minimum interval of 48 hours|
   | Group of restricted applications| Forbidden|
-  | Group of applications never used| Forbidden|<!--Del-->
-  | Efficiency resource exemption group| No restriction|<!--DelEnd-->
+  | Group of applications never used| Forbidden|
+  | <!--DelRow-->Exemption group for efficiency resources| No restriction|
   
 - **Timeout**: The WorkSchedulerExtensionAbility can run for a maximum of 2 minutes for a single callback. If the application does not cancel the deferred task upon a timeout, the system forcibly terminates the process for the WorkSchedulerExtensionAbility. <!--Del-->Privileged system applications can request the WORK_SCHEDULER resource to extend the duration to 20 minutes in the charging state and 10 minutes in the non-charging state.<!--DelEnd-->
 

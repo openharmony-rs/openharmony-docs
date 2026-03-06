@@ -952,7 +952,7 @@ export default class MyAbility extends UIAbility {
 
 ## Caller
 
-调用方Caller UIAbility（仅支持系统应用）可以通过[startAbilityByCall](js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口拉起目标Callee UIAbility（可以为三方应用）。目标UIAbility启动成功后，会返回一个Caller对象给调用方进行通信。
+调用方Caller UIAbility通过[startAbilityByCall](js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口拉起目标Callee UIAbility，目标UIAbility启动成功后，返回一个Caller对象给调用方进行通信。
 
 ### call
 
@@ -1578,7 +1578,9 @@ export default class MainUIAbility extends UIAbility {
 
 ## OnReleaseCallback
 
-type OnReleaseCallback = (msg: string) => void
+### (msg: string)
+
+(msg: string): void
 
 注册通用组件服务端Stub（桩）断开监听通知的回调函数类型。
 
@@ -1592,7 +1594,9 @@ type OnReleaseCallback = (msg: string) => void
 
 ## OnRemoteStateChangeCallback<sup>10+</sup>
 
-type OnRemoteStateChangeCallback = (msg: string) => void
+### (msg: string)<sup>10+</sup>
+
+(msg: string): void
 
 注册协同场景下跨设备组件状态变化监听通知的回调函数类型。
 
@@ -1606,7 +1610,9 @@ type OnRemoteStateChangeCallback = (msg: string) => void
 
 ## CalleeCallback
 
-type CalleeCallback = (indata: rpc.MessageSequence) => rpc.Parcelable
+### (indata: rpc.MessageSequence)
+
+(indata: rpc.MessageSequence): rpc.Parcelable
 
 通用组件服务端注册消息通知的回调函数类型。
 

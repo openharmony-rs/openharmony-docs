@@ -4,7 +4,7 @@
 <!--Owner: @wangchen965-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -32,7 +32,7 @@ console.info("data is ", data);
 
 ```typescript
 Module loaded!
-1
+data is  1
 ```
 
 **产生的副作用**
@@ -55,7 +55,7 @@ console.info("data is ", data);
 输出内容：
 
 ```typescript
-1
+data is  1
 ```
 
 优化方式2：将可能引发副作用的代码放在函数或方法内部，只有在需要时再执行，而不是在模块加载时立即执行。
@@ -75,7 +75,7 @@ console.info("data is ", data);
 输出内容：
 
 ```typescript
-1
+data is  1
 ```
 
 ### 修改全局对象
@@ -91,7 +91,7 @@ globalThis.someGlobalVar = 100; // 改变了全局状态
 
 // sideEffectModule.ets
 export let data2 = "data from side effect module"
-globalThis.someGlobalVar = 200; // 也变了全局状态
+globalThis.someGlobalVar = 200; // 也改变了全局状态
 
 // moduleUseGlobalVar.ets
 import { data1 } from './module' // 此时可能预期全局变量someGlobalVar的值为100
@@ -115,8 +115,8 @@ function maybeNotCalledAtAll() {
 输出内容：
 
 ```text
-data from module
-200
+data1 is  data from module
+globalThis.someGlobalVar is  200
 ```
 
 **产生的副作用**
@@ -163,8 +163,8 @@ function maybeNotCalledAtAll() {
 输出内容：
 
 ```text
-data from module
-100
+data1 is  data from module
+globalThis.someGlobalVar is  100
 ```
 
 ### 修改应用级ArkUI组件的状态变量信息
@@ -338,8 +338,8 @@ console.info("data is ", data); // 使用到module模块的变量，此时module
 输出内容：
 
 ```text
-undefined
-data from module
+globalThis.someGlobalVar undefined
+data is  data from module
 ```
 
 **产生的副作用**
@@ -367,8 +367,8 @@ console.info("data is ", data);
 输出内容：
 
 ```text
-100
-data from module
+globalThis.someGlobalVar is  100
+data is  data from module
 ```
 
 ## 通过import路径展开优化性能

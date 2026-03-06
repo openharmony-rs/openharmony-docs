@@ -409,7 +409,6 @@
 |FUNC|glIsTransformFeedback|
 |FUNC|glPauseTransformFeedback|
 |FUNC|glResumeTransformFeedback|
-|FUNC|glDrawTransformFeedbackStream|
 |FUNC|glBeginQueryIndexed|
 |FUNC|glEndQueryIndexed|
 |FUNC|glGetQueryIndexediv|
@@ -496,12 +495,9 @@
 |FUNC|glDrawElementsInstancedBaseInstance|
 |FUNC|glDrawElementsInstancedBaseVertexBaseInstance|
 |FUNC|glGetInternalformativ|
-|FUNC|glGetActiveAtomicCounterBufferiv|
 |FUNC|glTexStorage1D|
 |FUNC|glTexStorage2D|
 |FUNC|glTexStorage3D|
-|FUNC|glDrawTransformFeedbackInstanced|
-|FUNC|glDrawTransformFeedbackStreamInstanced|
 |FUNC|glDispatchCompute|
 |FUNC|glDispatchComputeIndirect|
 |FUNC|glFramebufferParameteri|

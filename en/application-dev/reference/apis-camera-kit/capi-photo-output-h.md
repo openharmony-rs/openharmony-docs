@@ -28,7 +28,7 @@ The file declares the photo output concepts.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md) | PhotoOutput_Callbacks | Describes the callbacks related to photo output.|
-| [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md) | Camera_PhotoOutput | Describes the photo output object.<br> You can use [OH_CameraManager_CreatePhotoOutput](capi-camera-manager-h.md#oh_cameramanager_createphotooutput) to create such an object.|
+| [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md) | Camera_PhotoOutput | Describes the photo output object.<br>You can use [OH_CameraManager_CreatePhotoOutput](capi-camera-manager-h.md#oh_cameramanager_createphotooutput) to create such an object.|
 
 ### Functions
 
@@ -49,6 +49,7 @@ The file declares the photo output concepts.
 | [Camera_ErrorCode OH_PhotoOutput_UnregisterCallback(Camera_PhotoOutput* photoOutput, PhotoOutput_Callbacks* callback)](#oh_photooutput_unregistercallback) | - | Unregisters the callback used to listen for photo output events.|
 | [Camera_ErrorCode OH_PhotoOutput_RegisterCaptureStartWithInfoCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureStartWithInfo callback)](#oh_photooutput_registercapturestartwithinfocallback) | - | Registers a callback to listen for capture start events.|
 | [Camera_ErrorCode OH_PhotoOutput_GetPhotoRotation(Camera_PhotoOutput* photoOutput, int deviceDegree, Camera_ImageRotation* imageRotation)](#oh_photooutput_getphotorotation) | - | Obtains the photo rotation angle.|
+| [Camera_ErrorCode OH_PhotoOutput_GetPhotoRotationWithoutDeviceDegree(Camera_PhotoOutput* photoOutput, Camera_ImageRotation* imageRotation)](#oh_photooutput_getphotorotationwithoutdevicedegree) | - | Obtains the photo rotation angle.|
 | [Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureStartWithInfoCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureStartWithInfo callback)](#oh_photooutput_unregistercapturestartwithinfocallback) | - | Unregisters the callback used to listen for capture start events.|
 | [Camera_ErrorCode OH_PhotoOutput_RegisterCaptureEndCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureEnd callback)](#oh_photooutput_registercaptureendcallback) | - | Registers a callback to listen for capture end events.|
 | [Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureEndCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureEnd callback)](#oh_photooutput_unregistercaptureendcallback) | - | Unregisters the callback used to listen for capture end events.|
@@ -88,7 +89,6 @@ Defines the callback defined in the [PhotoOutput_Callbacks](capi-oh-camera-photo
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -106,7 +106,6 @@ typedef void (*OH_PhotoOutput_OnFrameShutter)(Camera_PhotoOutput* photoOutput, C
 Defines the callback defined in the [PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md) struct and used to report frame shutter events.
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -127,7 +126,6 @@ Defines the callback defined in the [PhotoOutput_Callbacks](capi-oh-camera-photo
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -146,7 +144,6 @@ typedef void (*OH_PhotoOutput_OnError)(Camera_PhotoOutput* photoOutput, Camera_E
 Defines the callback defined in the [PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md) struct and used to report photo output errors.
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -172,7 +169,6 @@ Defines the callback invoked when the capture ends.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -191,7 +187,6 @@ typedef void (*OH_PhotoOutput_CaptureStartWithInfo)(Camera_PhotoOutput* photoOut
 Defines the callback invoked when the capture starts.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -212,7 +207,6 @@ Defines the callback invoked when frame shutter ends.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -232,7 +226,6 @@ Defines the callback invoked when the camera is ready to take photos. When the c
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -250,7 +243,6 @@ typedef void (*OH_PhotoOutput_EstimatedCaptureDuration)(Camera_PhotoOutput* phot
 Defines the callback for the estimated capture duration.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -271,7 +263,6 @@ Defines the callback invoked when a high-resolution photo is available.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -291,7 +282,6 @@ Defines the callback invoked when a photo asset is available.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -310,7 +300,6 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCallback(Camera_PhotoOutput* photoOutput
 Registers a callback to listen for photo output events.
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -337,7 +326,6 @@ Unregisters the callback used to listen for photo output events.
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -362,7 +350,6 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCaptureStartWithInfoCallback(Camera_Phot
 Registers a callback to listen for capture start events.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -389,13 +376,37 @@ Obtains the photo rotation angle.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | Pointer to the target PhotoOutput instance.|
 | int deviceDegree | Rotation angle of the device.|
+| [Camera_ImageRotation](capi-camera-h.md#camera_imagerotation)* imageRotation | Pointer to the rotation angle of the photo.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
+
+### OH_PhotoOutput_GetPhotoRotationWithoutDeviceDegree()
+
+```c
+Camera_ErrorCode OH_PhotoOutput_GetPhotoRotationWithoutDeviceDegree(Camera_PhotoOutput* photoOutput, Camera_ImageRotation* imageRotation)
+```
+
+**Description**
+
+Obtains the photo rotation angle.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | Pointer to the target PhotoOutput instance.|
 | [Camera_ImageRotation](capi-camera-h.md#camera_imagerotation)* imageRotation | Pointer to the rotation angle of the photo.|
 
 **Returns**
@@ -416,13 +427,12 @@ Unregisters the callback used to listen for capture start events.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | Pointer to the target PhotoOutput instance.|
-| [OH_PhotoOutput_CaptureStartWithInfo](#oh_photooutput_capturestartwithinfo) callback | Target callback.|
+| [OH_PhotoOutput_CaptureStartWithInfo](capi-photo-output-h.md#oh_photooutput_capturestartwithinfo) callback | Target callback.|
 
 **Returns**
 
@@ -442,13 +452,12 @@ Registers a callback to listen for capture end events.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | Pointer to the target PhotoOutput instance.|
-| [OH_PhotoOutput_CaptureEnd](#oh_photooutput_captureend) callback | Target callback.|
+| [OH_PhotoOutput_CaptureEnd](capi-photo-output-h.md#oh_photooutput_captureend) callback | Target callback.|
 
 **Returns**
 
@@ -468,13 +477,12 @@ Unregisters the callback used to listen for capture end events.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | Pointer to the target PhotoOutput instance.|
-| [OH_PhotoOutput_CaptureEnd](#oh_photooutput_captureend) callback | Target callback.|
+| [OH_PhotoOutput_CaptureEnd](capi-photo-output-h.md#oh_photooutput_captureend) callback | Target callback.|
 
 **Returns**
 
@@ -494,13 +502,12 @@ Registers a callback to listen for frame shutter end events.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | Pointer to the target PhotoOutput instance.|
-| [OH_PhotoOutput_OnFrameShutterEnd](#oh_photooutput_onframeshutterend) callback | Target callback.|
+| [OH_PhotoOutput_OnFrameShutterEnd](capi-photo-output-h.md#oh_photooutput_onframeshutterend) callback | Target callback.|
 
 **Returns**
 
@@ -520,13 +527,12 @@ Unregisters the callback used to listen for frame shutter end events.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | Pointer to the target PhotoOutput instance.|
-| [OH_PhotoOutput_OnFrameShutterEnd](#oh_photooutput_onframeshutterend) callback | Target callback.|
+| [OH_PhotoOutput_OnFrameShutterEnd](capi-photo-output-h.md#oh_photooutput_onframeshutterend) callback | Target callback.|
 
 **Returns**
 
@@ -546,13 +552,12 @@ Registers a callback to listen for camera ready events. When the callback is rec
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | Pointer to the target PhotoOutput instance.|
-| [OH_PhotoOutput_CaptureReady](#oh_photooutput_captureready) callback | Target callback.|
+| [OH_PhotoOutput_CaptureReady](capi-photo-output-h.md#oh_photooutput_captureready) callback | Target callback.|
 
 **Returns**
 
@@ -572,13 +577,12 @@ Unregisters the callback used to listen for camera ready events.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | Pointer to the target PhotoOutput instance.|
-| [OH_PhotoOutput_CaptureReady](#oh_photooutput_captureready) callback | Target callback.|
+| [OH_PhotoOutput_CaptureReady](capi-photo-output-h.md#oh_photooutput_captureready) callback | Target callback.|
 
 **Returns**
 
@@ -598,13 +602,12 @@ Registers a callback to listen for estimated capture duration events.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | Pointer to the target PhotoOutput instance.|
-| [OH_PhotoOutput_EstimatedCaptureDuration](#oh_photooutput_estimatedcaptureduration) callback | Target callback.|
+| [OH_PhotoOutput_EstimatedCaptureDuration](capi-photo-output-h.md#oh_photooutput_estimatedcaptureduration) callback | Target callback.|
 
 **Returns**
 
@@ -624,13 +627,12 @@ Unregisters the callback used to listen for estimated capture duration events.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | Pointer to the target PhotoOutput instance.|
-| [OH_PhotoOutput_EstimatedCaptureDuration](#oh_photooutput_estimatedcaptureduration) callback | Target callback.|
+| [OH_PhotoOutput_EstimatedCaptureDuration](capi-photo-output-h.md#oh_photooutput_estimatedcaptureduration) callback | Target callback.|
 
 **Returns**
 
@@ -650,13 +652,12 @@ Registers a callback to listen for photo availability events.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | Pointer to the target PhotoOutput instance.|
-| [OH_PhotoOutput_PhotoAvailable](#oh_photooutput_photoavailable) callback | Target callback.|
+| [OH_PhotoOutput_PhotoAvailable](capi-photo-output-h.md#oh_photooutput_photoavailable) callback | Target callback.|
 
 **Returns**
 
@@ -676,13 +677,12 @@ Unregisters the callback used to listen for photo availability events.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | Pointer to the target PhotoOutput instance.|
-| [OH_PhotoOutput_PhotoAvailable](#oh_photooutput_photoavailable) callback | Target callback.|
+| [OH_PhotoOutput_PhotoAvailable](capi-photo-output-h.md#oh_photooutput_photoavailable) callback | Target callback.|
 
 **Returns**
 
@@ -702,13 +702,12 @@ Registers a callback to listen for photo asset availability events.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | Pointer to the target PhotoOutput instance.|
-| [OH_PhotoOutput_PhotoAssetAvailable](#oh_photooutput_photoassetavailable) callback | Target callback.|
+| [OH_PhotoOutput_PhotoAssetAvailable](capi-photo-output-h.md#oh_photooutput_photoassetavailable) callback | Target callback.|
 
 **Returns**
 
@@ -728,13 +727,12 @@ Unregisters the callback used to listen for photo asset availability events.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | Pointer to the target PhotoOutput instance.|
-| [OH_PhotoOutput_PhotoAssetAvailable](#oh_photooutput_photoassetavailable) callback | Target callback.|
+| [OH_PhotoOutput_PhotoAssetAvailable](capi-photo-output-h.md#oh_photooutput_photoassetavailable) callback | Target callback.|
 
 **Returns**
 
@@ -750,12 +748,9 @@ Camera_ErrorCode OH_PhotoOutput_Capture(Camera_PhotoOutput* photoOutput)
 
 **Description**
 
-Captures a photo.
-
-This function must be called in prior to [OH_PreviewOutput_Release](capi-preview-output-h.md#oh_previewoutput_release). Otherwise, photo capture fails.
+Captures a photo.<br>This function must be called in prior to [OH_PreviewOutput_Release](capi-preview-output-h.md#oh_previewoutput_release). Otherwise, photo capture fails.
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -780,7 +775,6 @@ Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSetting(Camera_PhotoOutput* p
 Captures a photo with photographing parameters.
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -807,7 +801,6 @@ Releases a PhotoOutput instance.
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -831,7 +824,6 @@ Camera_ErrorCode OH_PhotoOutput_IsMirrorSupported(Camera_PhotoOutput* photoOutpu
 Checks whether mirroring is supported.
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -858,7 +850,6 @@ Enables dynamic photo capture.
 
 **Since**: 13
 
-
 **Parameters**
 
 | Name| Description|
@@ -883,7 +874,6 @@ Camera_ErrorCode OH_PhotoOutput_GetActiveProfile(Camera_PhotoOutput* photoOutput
 Obtains the profile of a PhotoOutput instance.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -910,7 +900,6 @@ Deletes the profile of a PhotoOutput instance.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -935,7 +924,6 @@ Checks whether moving photos are supported.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -957,17 +945,16 @@ Camera_ErrorCode OH_PhotoOutput_EnableMovingPhoto(Camera_PhotoOutput* photoOutpu
 
 **Description**
 
-Enables moving photos.
+Enables or disables moving photos.
 
 **Since**: 12
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | Pointer to the target PhotoOutput instance.|
-| bool enabled | Whether to enable or disable moving photos. **true** to enable, **false** otherwise.|
+| bool enabled | Whether to enable moving photos. **true** to enable, **false** otherwise.|
 
 **Returns**
 
@@ -986,7 +973,6 @@ Camera_ErrorCode OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(Camera_Pho
 Checks whether the specified photo quality prioritization strategy is supported.
 
 **Since**: 21
-
 
 **Parameters**
 
@@ -1013,7 +999,6 @@ Camera_ErrorCode OH_PhotoOutput_SetPhotoQualityPrioritization(Camera_PhotoOutput
 Sets the photo quality prioritization strategy.
 
 **Since**: 21
-
 
 **Parameters**
 

@@ -6,7 +6,7 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The module provides APIs for obtaining resource information, including [BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md) and [LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md).
+The module provides APIs for obtaining resource information, including [BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md) and [LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md).
 
 > **NOTE**
 >
@@ -103,7 +103,7 @@ try {
 
 ### bundleResourceManager.getLauncherAbilityResourceInfo
 
-getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag)): Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>
+getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag)): Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>
 
 Obtains the bundle information of the entry ability of an application based on the given bundle name and resource flags. This API returns the result synchronously.
 
@@ -124,7 +124,7 @@ Obtains the bundle information of the entry ability of an application based on t
 
 | Type                                                       | Description                                 |
 | ----------------------------------------------------------- | ------------------------------------- |
-| Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)> | Resource information of the entry ability obtained.|
+| Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)> | Resource information of the entry ability obtained.|
 
 **Error codes**
 
@@ -265,7 +265,7 @@ try {
 
 ### bundleResourceManager.getAllLauncherAbilityResourceInfo
 
-getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag), callback: AsyncCallback<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>>): void
+getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag), callback: AsyncCallback<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>>): void
 
 Obtains the resource information of the entry abilities of the current application based on the given resource flags. This API uses an asynchronous callback to return the result.
 
@@ -280,7 +280,7 @@ Obtains the resource information of the entry abilities of the current applicati
 | Name    | Type  | Mandatory| Description               |
 | ----------- | ------ | ---- | --------------------- |
 | resourceFlags | [number](#resourceflag) | Yes  | Type of the resource information to obtain.|
-| callback | AsyncCallback\<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the information is successfully obtained, **err** is **null** and **data** is a LauncherAbilityResourceInfo array. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the information is successfully obtained, **err** is **null** and **data** is a LauncherAbilityResourceInfo array. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -317,7 +317,7 @@ try {
 
 ### bundleResourceManager.getAllLauncherAbilityResourceInfo
 
-getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag)): Promise<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>>
+getAllLauncherAbilityResourceInfo(resourceFlags: [number](#resourceflag)): Promise<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>>
 
 Obtains the resource information of the entry abilities of the current application based on the given resource flags. This API uses a promise to return the result.
 
@@ -337,7 +337,7 @@ Obtains the resource information of the entry abilities of the current applicati
 
 | Type                                                        | Description                            |
 | ------------------------------------------------------------ | -------------------------------- |
-| Promise\<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>> | Promise used to return the LauncherAbilityResourceInfo array.|
+| Promise\<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>> | Promise used to return the LauncherAbilityResourceInfo array.|
 
 **Error codes**
 
@@ -431,7 +431,7 @@ try {
 
 ### bundleResourceManager.getLauncherAbilityResourceInfo<sup>12+</sup>
 
-getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag), appIndex?: number): Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)>
+getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag), appIndex?: number): Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>
 
 Obtains the launcher ability resource information of an application based on the given bundle name, resource flags, and app index. This API returns the result synchronously.
 
@@ -453,7 +453,7 @@ Obtains the launcher ability resource information of an application based on the
 
 | Type                                                       | Description                                 |
 | ----------------------------------------------------------- | ------------------------------------- |
-| Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)> | Resource information of the entry ability obtained.|
+| Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)> | Resource information of the entry ability obtained.|
 
 **Error codes**
 
@@ -512,7 +512,7 @@ Obtains the ExtensionAbility resource information of an application based on the
 
 | Type                                                       | Description                                 |
 | ----------------------------------------------------------- | ------------------------------------- |
-| Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)> | ExtensionAbility resource information of the application, including the icon and name.|
+| Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)> | ExtensionAbility resource information of the application, including the icon and name.|
 
 **Error codes**
 
@@ -521,7 +521,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                             |
 | -------- | ------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api.|
+| 202 | Permission denied, non-system app called system api. |
 | 17700001 | The specified bundleName is not found. |
 | 17700061 | AppIndex not in valid range or not found. |
 
@@ -615,14 +615,14 @@ Obtains the launcher ability resource information of each application correspond
 
 | Name       | Type                                                        | Mandatory| Description                                                        |
 | ------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| optionsList   | Array\<[BundleOptions](js-apis-bundleManager-BundleInfo-sys.md#bundleoptions)> | Yes  | Parameters of the applications to query. **bundleName**, **moduleName**, and **abilityName** are mandatory. If **appIndex** is not specified, the default value **0** is used.|
+| optionsList   | Array\<[BundleOptions](js-apis-bundleManager-BundleInfo-sys.md#bundleoptions)> | Yes  | Parameters of the applications to query.<br>**bundleName**, **moduleName**, and **abilityName** are mandatory parameters.<br>Value range of **appIndex**: [0, 5]. The default value is **0** if not specified.<br>**userId** is an invalid parameter. It does not need to be passed, and will not take effect if passed.|
 | resourceFlags | number                                                       | Yes  | Resource information flags, which indicate the type of resource information to obtain. The value is an enumerated value of [ResourceFlag](#resourceflag), excluding [ResourceFlag](#resourceflag).GET_RESOURCE_INFO_WITH_SORTED_BY_LABEL and [ResourceFlag](#resourceflag).GET_RESOURCE_INFO_ONLY_WITH_MAIN_ABILITY.|
 
 **Return value**
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promise\<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md#launcherabilityresourceinfo)>> | Promise used to return the launcher ability resource information of the specified application list.|
+| Promise\<Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md#launcherabilityresourceinfo)>> | Promise used to return the launcher ability resource information of the specified application list.|
 
 **Error codes**
 
@@ -631,11 +631,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
 | 201      | Permission denied.                                   |
-| 202      | Permission denied, non-system app called system api. |
-| 17700001 | The specified bundleName is not found.               |
-| 17700002 | The specified moduleName is not existed.             |
-| 17700003 | The specified abilityName is not existed.            |
-| 17700061 | AppIndex not in valid range or not found.            |
+| 202      | Permission denied. A non-system application is not allowed to call a system API. |
+| 801      | Capability not supported. |
+| 17700001 | The specified bundle is not found.  |
+| 17700002 | The specified module is not found.  |
+| 17700003 | The specified ability is not found. |
+| 17700061 | The specified app index is invalid. |
 
 **Example**
 
@@ -694,4 +695,6 @@ Defines the entry icon and name of an application.
 
 | Type                                                        | Description          |
 | ------------------------------------------------------------ | -------------- |
-| [_LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md#launcherabilityresourceinfo) |Entry icon and name of the application.|
+| [_LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md#launcherabilityresourceinfo) |Defines the entry icon and name of an application.|
+
+<!--no_check-->

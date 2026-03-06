@@ -12,6 +12,7 @@
 为确保编解码行为符合预期，请通过音视频编解码能力接口查询系统支持的编解码器及其能力，选择符合开发需求的编解码器，并正确配置参数。
 
 ## 通用开发指导
+
 1. 在CMake脚本中链接动态库。
 
    ``` cmake
@@ -24,7 +25,6 @@
    > **说明：**
    >
    > 上述'sample'字样仅为示例，此处由开发者根据实际工程目录自定义。
-   >
 
 2. 添加头文件。
 
@@ -41,12 +41,14 @@
    支持两种方式获取音视频编解码能力实例。
    
    方式一：通过`OH_AVCodec_GetCapability`获取系统推荐的音视频编解码器能力实例。推荐策略与`OH_XXX_CreateByMime`系列接口一致。
+
    ```c++
    // 获取系统推荐的音频AAC解码器能力实例。
    OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, false);
    ```
    
    方式二：通过`OH_AVCodec_GetCapabilityByCategory`获取指定软硬件的编解码能力实例。
+
    ```c++
    // 获取指定硬件的视频AVC编码器能力实例。
    OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
@@ -56,6 +58,7 @@
 4. 按需调用相应的查询接口。详细的API说明请参考[API文档](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md)。
 
 ## 场景化开发
+
 基于开发过程中可能遇到的具体场景，此处将举例说明能力查询接口的使用方法。
 
 ### 创建指定名称的编解码器
@@ -312,7 +315,7 @@ if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
 }
 OH_AVFormat_Destroy(format);
 
-// 6.启动编码器，开始编码。
+// 6. 启动编码器，开始编码。
 ret = OH_VideoEncoder_Prepare(videoEnc);
 if (ret != AV_ERR_OK) {
    // 异常处理。
@@ -738,6 +741,7 @@ if (!isMatched) {
 ### 查询编解码特性支持情况并获取特性属性信息
 
 编解码特性是指在特定编解码场景中使用的可选特性，例如视频编码场景的时域可分级编码、 低时延编解码等。具体请参考[OH_AVCapabilityFeature](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapabilityfeature)。
+
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
 | OH_AVCapability_IsFeatureSupported              | 确认当前编解码器是否支持给定的特性。 |

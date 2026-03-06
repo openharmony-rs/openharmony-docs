@@ -51,7 +51,7 @@ The file declares the native APIs used for audio decoding.
 
 ### OH_AudioDecoder_CreateByMime()
 
-```
+```c
 OH_AVCodec *OH_AudioDecoder_CreateByMime(const char *mime)
 ```
 
@@ -81,7 +81,7 @@ Creates an audio decoder instance based on a MIME type. This function is recomme
 
 ### OH_AudioDecoder_CreateByName()
 
-```
+```c
 OH_AVCodec *OH_AudioDecoder_CreateByName(const char *name)
 ```
 
@@ -111,7 +111,7 @@ Creates an audio decoder instance based on a decoder name. To use this function,
 
 ### OH_AudioDecoder_Destroy()
 
-```
+```c
 OH_AVErrCode OH_AudioDecoder_Destroy(OH_AVCodec *codec)
 ```
 
@@ -141,7 +141,7 @@ Clears the internal resources of an audio decoder and destroys the decoder insta
 
 ### OH_AudioDecoder_SetCallback()
 
-```
+```c
 OH_AVErrCode OH_AudioDecoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallback callback, void *userData)
 ```
 
@@ -173,7 +173,7 @@ Sets an asynchronous callback so that your application can respond to events gen
 
 ### OH_AudioDecoder_Configure()
 
-```
+```c
 OH_AVErrCode OH_AudioDecoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 ```
 
@@ -204,7 +204,7 @@ Configures an audio decoder. Typically, you need to configure the audio descript
 
 ### OH_AudioDecoder_Prepare()
 
-```
+```c
 OH_AVErrCode OH_AudioDecoder_Prepare(OH_AVCodec *codec)
 ```
 
@@ -234,7 +234,7 @@ Prepares internal resources for an audio decoder. This function must be called a
 
 ### OH_AudioDecoder_Start()
 
-```
+```c
 OH_AVErrCode OH_AudioDecoder_Start(OH_AVCodec *codec)
 ```
 
@@ -264,7 +264,7 @@ Starts an audio decoder after it is prepared successfully. After being started, 
 
 ### OH_AudioDecoder_Stop()
 
-```
+```c
 OH_AVErrCode OH_AudioDecoder_Stop(OH_AVCodec *codec)
 ```
 
@@ -296,7 +296,7 @@ After the decoder is stopped, you can call **Start** to start it again. If you h
 
 ### OH_AudioDecoder_Flush()
 
-```
+```c
 OH_AVErrCode OH_AudioDecoder_Flush(OH_AVCodec *codec)
 ```
 
@@ -328,7 +328,7 @@ This function invalidates the indexes of all buffers previously reported through
 
 ### OH_AudioDecoder_Reset()
 
-```
+```c
 OH_AVErrCode OH_AudioDecoder_Reset(OH_AVCodec *codec)
 ```
 
@@ -358,7 +358,7 @@ Resets an audio decoder. To continue decoding, you must call **Configure** to co
 
 ### OH_AudioDecoder_GetOutputDescription()
 
-```
+```c
 OH_AVFormat *OH_AudioDecoder_GetOutputDescription(OH_AVCodec *codec)
 ```
 
@@ -390,7 +390,7 @@ The caller must manually release the OH_AVFormat instance in the return value.
 
 ### OH_AudioDecoder_SetParameter()
 
-```
+```c
 OH_AVErrCode OH_AudioDecoder_SetParameter(OH_AVCodec *codec, OH_AVFormat *format)
 ```
 
@@ -423,7 +423,7 @@ This function can be called only after the decoder is started. Incorrect paramet
 
 ### OH_AudioDecoder_PushInputData()
 
-```
+```c
 OH_AVErrCode OH_AudioDecoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH_AVCodecBufferAttr attr)
 ```
 
@@ -459,7 +459,7 @@ In addition, some decoders require the input of specific data to initialize the 
 
 ### OH_AudioDecoder_FreeOutputData()
 
-```
+```c
 OH_AVErrCode OH_AudioDecoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -490,7 +490,7 @@ Frees an output buffer of an audio decoder.
 
 ### OH_AudioDecoder_IsValid()
 
-```
+```c
 OH_AVErrCode OH_AudioDecoder_IsValid(OH_AVCodec *codec, bool *isValid)
 ```
 

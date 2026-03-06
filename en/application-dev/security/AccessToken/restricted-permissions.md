@@ -901,7 +901,7 @@ With this permission, the application can load external dynamic link libraries (
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Since**: 22
+**Since**: 23
 
 ## ohos.permission.GET_IP_MAC_INFO
 
@@ -964,3 +964,59 @@ Allows an application to load shared libraries signed with binary certificates.
 **Since**: 20
 
 **Changelog**: This permission is available only to system applications in API versions 20 to 21. From API version 22, it's also available to normal applications.
+
+## ohos.permission.CRYPTO_EXTENSION_REGISTER
+
+Allows an application to register and deregister the crypto extension.
+
+<!--RP62--><!--RP62End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 22
+
+## ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
+
+Allows an application to obtain and manage the media resources playing on a device.
+
+<!--RP63--><!--RP63End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | cars
+
+**Since**: 23
+
+## ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+Allows an application to manage call status, such as retieving incoming call numbers, answering, rejecting, and ending calls.
+
+<!--RP64--><!--RP64End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 23
+
+## ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME
+
+Allows an application to customize the BLE advertiser name.
+
+<!--RP65--><!--RP65End-->
+
+**Permission level**：system_basic
+
+**Authorization mode**：system_grant
+
+**Supported devices**：General
+
+**Since**：23

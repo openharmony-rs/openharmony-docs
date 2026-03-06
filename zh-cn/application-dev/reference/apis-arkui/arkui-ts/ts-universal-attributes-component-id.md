@@ -10,7 +10,7 @@ id为组件的唯一标识，在整个应用内唯一。本模块提供组件标
 
 >  **说明：**
 >
-> - 从API Version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 若同一个组件设置了多个id或者key，最后设置的生效。
 
@@ -281,19 +281,22 @@ class Utils {
   static rect_bottom: number;
   static rect_value: Record<string, number>;
 
-  //获取组件所占矩形区域坐标
-  static getComponentRect(key:string):Record<string, number> {
+  // 获取组件所占矩形区域坐标
+  static getComponentRect(key: string): Record<string, number> {
     let strJson = getInspectorByKey(key);
-    let obj:Record<string, string> = JSON.parse(strJson);
+    let obj: Record<string, string> = JSON.parse(strJson);
     console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
-    let rectInfo:string[] = JSON.parse('[' + obj.$rect + ']');
+    let rectInfo: string[] = JSON.parse('[' + obj.$rect + ']');
     console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
-    Utils.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0];     // 相对于组件左上角的水平方向坐标
-    Utils.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1];     // 相对于组件左上角的垂直方向坐标
-    Utils.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0];    // 相对于组件右下角的水平方向坐标
-    Utils.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1];   // 相对于组件右下角的垂直方向坐标
+    Utils.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0]; // 相对于组件左上角的水平方向坐标
+    Utils.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1]; // 相对于组件左上角的垂直方向坐标
+    Utils.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0]; // 相对于组件右下角的水平方向坐标
+    Utils.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1]; // 相对于组件右下角的垂直方向坐标
     return Utils.rect_value = {
-      "left": Utils.rect_left, "top": Utils.rect_top, "right": Utils.rect_right, "bottom": Utils.rect_bottom
+      "left": Utils.rect_left,
+      "top": Utils.rect_top,
+      "right": Utils.rect_right,
+      "bottom": Utils.rect_bottom
     };
   };
 }
@@ -329,28 +332,28 @@ struct IdExample {
         Text('longClick').fontSize(25).fontWeight(FontWeight.Bold)
       }.margin({ top: 20 }).backgroundColor('#0D9FFB')
       .gesture(
-      LongPressGesture().onActionEnd(() => {
-        console.info('long clicked');
-        this.text = "Button 'longClick' is longclicked";
-        setTimeout(() => {
-          let rect = Utils.getComponentRect('onTouch'); // 获取id为"onTouch"组件的矩形区域坐标
-          let touchPoint: TouchObject = {
-            id: 1,
-            type: TouchType.Down,
-            x: rect.left + (rect.right - rect.left) / 2, // 相对于组件左上角的水平方向坐标
-            y: rect.top + (rect.bottom - rect.top) / 2, // 相对于组件左上角的垂直方向坐标
-            screenX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标，API10已废弃，采用windowX替代
-            screenY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标，API10已废弃，采用windowY替代
-            windowX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
-            windowY: rect.top + (rect.bottom - rect.top), // 相对于应用窗口左上角的垂直方向坐标
-            displayX: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的水平方向坐标
-            displayY: rect.top + (rect.bottom - rect.top) / 2, // 相对于设备屏幕左上角的垂直方向坐标
-          };
-          sendTouchEvent(touchPoint); // 发送触摸事件
-          touchPoint.type = TouchType.Up;
-          sendTouchEvent(touchPoint); // 发送触摸事件
-        }, 2000)
-      })).id('longClick')
+        LongPressGesture().onActionEnd(() => {
+          console.info('long clicked');
+          this.text = "Button 'longClick' is longclicked";
+          setTimeout(() => {
+            let rect = Utils.getComponentRect('onTouch'); // 获取id为"onTouch"组件的矩形区域坐标
+            let touchPoint: TouchObject = {
+              id: 1,
+              type: TouchType.Down,
+              x: rect.left + (rect.right - rect.left) / 2, // 相对于组件左上角的水平方向坐标
+              y: rect.top + (rect.bottom - rect.top) / 2, // 相对于组件左上角的垂直方向坐标
+              screenX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标，API10已废弃，采用windowX替代
+              screenY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标，API10已废弃，采用windowY替代
+              windowX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
+              windowY: rect.top + (rect.bottom - rect.top), // 相对于应用窗口左上角的垂直方向坐标
+              displayX: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的水平方向坐标
+              displayY: rect.top + (rect.bottom - rect.top) / 2, // 相对于设备屏幕左上角的垂直方向坐标
+            };
+            sendTouchEvent(touchPoint); // 发送触摸事件
+            touchPoint.type = TouchType.Up;
+            sendTouchEvent(touchPoint); // 发送触摸事件
+          }, 2000)
+        })).id('longClick')
 
       Button() {
         Text('onTouch').fontSize(25).fontWeight(FontWeight.Bold)

@@ -17,7 +17,7 @@ For example, delete a 256-bit HKDF key.
 
 1. Specify the key alias. For details about the naming rules, see [Key Generation Overview and Algorithm Specifications](huks-key-generation-overview.md).
 
-2. Initialize the key property set to specify [the property tags of keys](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag). When a single key is to be deleted, **TAG** can be empty.
+2. Initialize the key property set to specify the properties for deleting the key. If a single key or non-group key is deleted, this set can be left empty.
 
 3. Use [deleteKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksdeletekeyitem9) to delete the key.
 
@@ -112,14 +112,14 @@ async function deleteKey(keyAlias: string, huksOptions: huks.HuksOptions): Promi
 async function executeKeyLifecycle(): Promise<string> {
   try {
     /* 1. Generate a key. */
-    console.log('start generateKey...');
+    console.info('start generateKey...');
     await generateKey(keyAlias, generateHuksOptions);
-    console.log('end generateKey...');
+    console.info('end generateKey...');
 
     /* 2. Delete the key. */
-    console.log('start deleteKey...');
+    console.info('start deleteKey...');
     await deleteKey(keyAlias, deleteHuksOptions);
-    console.log('end deleteKey...');
+    console.info('end deleteKey...');
 
     console.info('Key lifecycle completed successfully');
     return 'Success';
@@ -129,4 +129,3 @@ async function executeKeyLifecycle(): Promise<string> {
   }
 }
 ```
-<!--no_check-->

@@ -14,7 +14,7 @@ Implements the **JsResult** object to confirm or cancel a dialog box. For detail
 >
 > - The initial APIs of this class are supported since API version 8.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## constructor
 

@@ -64,13 +64,13 @@ The sample code is as follows:
   }
   ```
 
-
+![](figures/text_faq_Word_Break.gif)
 
 ### How Do I Implement Text Expansion at the End of the Line?
 
 **Solution**
 
-Calculate the truncated characters and append an expansion indicator (such as "…") at the end of the line as part of the component content. For details about the implementation, see [the API for converting a styled string to a paragraph array](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)<!--RP1--><!--RP1End-->.
+Calculate the truncated characters and append an expansion indicator (such as "...") at the end of the line as part of the component content. For details about the implementation, see [the API for converting a styled string to a paragraph array](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)<!--RP1--><!--RP1End-->.
 
 ### How Do I Implement Automatic Ellipsis for Overflowing Text?
 
@@ -94,7 +94,7 @@ The sample code is as follows:
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
-    // The value in the 'Text_Adaptive_Layout' resource file is 'Mixed Hello World! Chinese and English digits in multiple lines 1282378283 ~'.
+    // The value in the 'Text_Adaptive_Layout' resource file is 'Mixed Hello World! Chinese and English digits in multiple lines 1282378283!'.
     @State message: string = this.manager.getStringByNameSync('Text_Adaptive_Layout');
     @State fontSize: number = 25;
     build() {
@@ -126,13 +126,13 @@ The sample code is as follows:
   }
   ```
 
-
+![](figures/EllipsisDemo2.gif)
 
 ### How Do I Add Custom Tags Before and After Text?
 
 **Question**
 
-How do I add tags (for example, "Topic" or "Top1") before or after text and customize their [background styles](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md) and [sizes](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md)?
+How do I add tags (for example, "Topic" or "Top1") before or after text and customize their [backgrounds](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md) and [sizes](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md)?
 
 **Solution 1**
 
@@ -156,7 +156,7 @@ Implementation steps:
 
 2. In the [aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) callback, use [measureTextSize](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#measuretextsize12) to calculate the prefix tag's width, which serves as the first-line indentation for the main text.
 
-3. In the **aboutToAppear** callback, use [getparagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20) to calculate the last line width and non-last line height of the main text for suffix tag offset.
+3. In the **aboutToAppear** callback, use [getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20) to calculate the last line width and non-last line height of the main text for suffix tag offset.
 
 4. Set the offset of the suffix tag relative to the upper left corner of the **Stack** container.
 
@@ -259,7 +259,7 @@ Example:
   }
   ```
 
-
+![](figures/text_tag_case_2.png)
 
 ### How Do I Display Emojis with Text?
 
@@ -274,7 +274,7 @@ Parse emoji codes using a regular expression, map them to image resources, and d
   <!-- @[Displayed_Together](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisplayedTogether.ets) -->
 
   ``` TypeScript
-  // Replace $r('app.media.xxx') with the image resource file you use.
+  // Replace $r('app.media.xxx') with the actual resource file.
   import { common } from '@kit.AbilityKit';
   @Entry
   @Component
@@ -297,7 +297,7 @@ Parse emoji codes using a regular expression, map them to image resources, and d
   
       while ((match = emojiRegex.exec(input)) !== null) {
         // Add the preceding text segment.
-        if (match.index > lastIndex) {
+        if (match.index >= lastIndex) {
           resultMap.get('text')?.push(input.substring(lastIndex, match.index));
         }
         // Add the matched emoji code.
@@ -317,11 +317,15 @@ Parse emoji codes using a regular expression, map them to image resources, and d
         switch (emojis[i]) {
           case 'rolling_on_the_floor_laughing':
             emojisImg.push($r('app.media.rolling_on_the_floor_laughing'))
+            break;
           case 'slightly_smiling_face':
             emojisImg.push($r('app.media.slightly_smiling_face'))
+            break;
           case 'grin':
             emojisImg.push($r('app.media.grin'))
+            break;
           default:
+            break;
         }
       }
       return emojisImg
@@ -330,8 +334,8 @@ Parse emoji codes using a regular expression, map them to image resources, and d
     build() {
       NavDestination() {
         Column() {
-          // The value in the 'app.string.Text_emoji' resource file is 'Enter text with emojis. Example: Hello [grin].'
           TextInput({
+            // Replace $r('app.string.Text_emoji') with the actual resource file. In this example, the value in the resource file is "Enter text with emojis. Example: Hello [grin]."
             placeholder: $r('app.string.Text_emoji')
           })
             .width('80%')
@@ -370,7 +374,7 @@ Parse emoji codes using a regular expression, map them to image resources, and d
   }
   ```
 
-
+![](figures/text-emoji.png)
 
 ### How Do I Display Overflowing Text?
 
@@ -414,7 +418,7 @@ This example limits the **Text** component to three lines:
   }
   ```
 
-
+![](figures/text_too_long_maxLines.png)
 
 **Solution 2**
 
@@ -451,13 +455,13 @@ Solution 1 truncates content. To display all text, place the **Text** component 
   }
   ```
 
-
+![](figures/text_too_long_scroll.gif)
 
 ### How Do I Trigger a Custom Menu via selection and Set Its Font Size?
 
 **Question**
 
-When using [bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#bindselectionmenu11) to implement a custom text selection menu, how can I trigger the menu via the [selection](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#selection11) attribute and control the menu's font size?
+**TextResponseType** in the [bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#bindselectionmenu11) attribute specifies the response type of the text selection menu. How can I trigger the menu via the [selection](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#selection11) attribute and control the menu's font size?
 
 **Solution**
 
@@ -557,3 +561,73 @@ struct TextExample8 {
 ```
 
 <!--RP4--><!--RP4End-->
+
+## FAQs about Text Input (TextInput/TextArea/Search)
+
+This section describes FAQs about text input using the [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md), [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md), and [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md) components.
+
+### Why Does the Caret Not Disappear When TextInput Is Covered?
+
+**Symptom**
+
+Multiple components are stacked in the **Stack** component, including an input box (**TextInput**). When the **TextInput** component is covered, a handle with small circles occasionally appears on other components.
+
+**Solution**
+
+When the **TextInput** component is selected, and a handle is displayed, the selected area and the handle may not be rendered on the same layer. That is, the selected area and **TextInput** are on the same layer, while the handle is on a higher layer. Therefore, when **TextInput** is covered by other elements, the selected area is also covered, but the handle remains visible.
+
+When **TextInput** is covered, if the focus and selected area are set through [TextInputController](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textinputcontroller8), the preceding issue occurs. The involved APIs for setting the selected area include [selectAll](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#selectall11) and [setTextSelection](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#settextselection10). You are advised to check the calling time of the following APIs in the code to avoid setting the selected area after **TextInput** is covered.
+
+| Component     | API             |
+|-----------|-------------------|
+| Search    | [setTextSelection](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md#settextselection12)  |
+| TextArea  | [setTextSelection](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#settextselection10)  |
+| TextInput | [selectAll](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#selectall11)         |
+| TextInput | [setTextSelection](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#settextselection10)  |
+
+The following example shows a typical issue where a **TextInput** with the content "Invisible TextInput" is hidden. However, after you click the **Show Handles** button, a handle appears on the image. In this case, you need to ensure that the selected area is not set in the code when the **TextInput** is covered. If it is set, removing the related code logic can solve the problem.
+
+<!--@[Cursor_Persists_When_TextInput_Is_Covered](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/faq/CursorPersistsWhenTextInputIsCovered.ets)-->
+
+``` TypeScript
+@Entry
+@Component
+export struct CursorPersistsWhenTextInputIsCoveredExample {
+  controller: TextInputController = new TextInputController();
+  @State message1: string = 'Invisible TextInput'
+
+  build() {
+    NavDestination() {
+      Column({ space: 50 }) {
+        Stack() {
+          TextInput({ text: this.message1, controller: this.controller })
+            .copyOption(CopyOptions.LocalDevice)
+            .backgroundColor(Color.Green)
+            .width(200)
+            .id('textInput_1')
+
+          // Replace $r('app.media.foreground') with the image resource file you use.
+          Image($r('app.media.foreground'))
+            .width(200)
+            .height(200)
+            .backgroundColor('rgb(213,213,213)')
+        }
+
+        Button('Show Handles')
+          .onClick(() => {
+            this.getUIContext().getFocusController().requestFocus('textInput_1')
+            this.controller.setTextSelection(0, 5, { menuPolicy: MenuPolicy.HIDE })
+          })
+      }
+      .padding('10%')
+      .alignItems(HorizontalAlign.Center)
+      .height('100%')
+      .width('90%')
+    }
+    .backgroundColor('#f1f2f3')
+    .title($r('app.string.Cursor_Persists_When_TextInput_Is_Covered'))
+  }
+}
+```
+
+![textInput_faq_show_handle](figures/textInput_faq_show_handle.gif)

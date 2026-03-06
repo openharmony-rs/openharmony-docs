@@ -165,8 +165,7 @@ class UIEntryAbility extends UIServiceExtensionAbility {
 
 ## UIServiceExtensionContext.startAbilityByType
 
-startAbilityByType(type: string, wantParam: Record&lt;string, Object&gt;,
-    abilityStartCallback: AbilityStartCallback): Promise&lt;void&gt;
+startAbilityByType(type: string, wantParam: Record&lt;string, Object&gt;, abilityStartCallback: AbilityStartCallback): Promise&lt;void&gt;
 
 按目标ability的类型启动[UIAbility](js-apis-app-ability-uiAbility.md)或[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)。仅支持处于前台的应用调用。使用Promise异步回调。
 

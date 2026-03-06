@@ -66,3 +66,14 @@ Defines a reminder for a calendar event.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | rruleWantAgent<sup>12+</sup> | [WantAgent](./js-apis-reminderAgentManager.md#wantagent) | No| Yes| Custom reminder, which specifies the ServiceExtensionAbility to start.|
+
+## ReminderRequest
+
+Defines the request for publishing a reminder.
+
+**System capability**: SystemCapability.Notification.ReminderAgent
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| notDistributed<sup>23+</sup> | boolean | No| Yes| Whether notifications are not displayed in all scenarios across devices. The default value is **false**. For details, see [NotificationRequest.notDistributed](../apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md#notificationrequest).<br> - **true**: Notifications are displayed only on the local device.<br> - **false**: Notifications are displayed on all collaborative devices.<br> **System API**: This is a system API.|
+| forceDistributed<sup>23+</sup> | boolean | No| Yes| Whether notifications are forcibly displayed in all scenarios across devices. The default value is **false**. For details, see [NotificationRequest.forceDistributed](../apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md#notificationrequest).<br> - **true**: Notifications are displayed on all collaboration devices.<br> - **false**: Notifications are displayed on the applications that are on the collaborative management list.<br> **System API**: This is a system API.|

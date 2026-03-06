@@ -10,6 +10,8 @@
 
 Provides an entry to the IPC header files for you to reference.
 
+**File to include**: <IPCKit/ipc_kit.h>
+
 **Library**: libipc_capi.so
 
 **System capability**: SystemCapability.Communication.IPC.Core

@@ -40,7 +40,7 @@ The file declares the APIs for a window to filter multimodal key events. When a 
 
 ### OH_NativeWindowManager_KeyEventFilter()
 
-```
+```c
 typedef bool (*OH_NativeWindowManager_KeyEventFilter)(Input_KeyEvent* keyEvent)
 ```
 
@@ -65,7 +65,7 @@ Defines a function for filtering multimodal key events.
 
 ### OH_NativeWindowManager_RegisterKeyEventFilter()
 
-```
+```c
 WindowManager_ErrorCode OH_NativeWindowManager_RegisterKeyEventFilter(int32_t windowId,OH_NativeWindowManager_KeyEventFilter keyEventFilter)
 ```
 
@@ -91,7 +91,7 @@ Registers a function for filtering multimodal key events.
 
 ### OH_NativeWindowManager_UnregisterKeyEventFilter()
 
-```
+```c
 WindowManager_ErrorCode OH_NativeWindowManager_UnregisterKeyEventFilter(int32_t windowId)
 ```
 
@@ -116,7 +116,7 @@ Unregisters a function for filtering multimodal key events.
 
 ### OH_NativeWindowManager_MouseEventFilter()
 
-```
+```c
 typedef bool (*OH_NativeWindowManager_MouseEventFilter)(Input_MouseEvent* mouseEvent)
 ```
 
@@ -141,7 +141,7 @@ Defines a function for filtering multimodal mouse events.
 
 ### OH_NativeWindowManager_RegisterMouseEventFilter()
 
-```
+```c
 WindowManager_ErrorCode OH_NativeWindowManager_RegisterMouseEventFilter(int32_t windowId,OH_NativeWindowManager_MouseEventFilter mouseEventFilter)
 ```
 
@@ -167,7 +167,7 @@ Registers a function for filtering multimodal mouse events.
 
 ### OH_NativeWindowManager_UnregisterMouseEventFilter()
 
-```
+```c
 WindowManager_ErrorCode OH_NativeWindowManager_UnregisterMouseEventFilter(int32_t windowId)
 ```
 
@@ -192,7 +192,7 @@ Unregisters a function for filtering multimodal mouse events.
 
 ### OH_NativeWindowManager_TouchEventFilter()
 
-```
+```c
 typedef bool (*OH_NativeWindowManager_TouchEventFilter)(Input_TouchEvent* touchEvent)
 ```
 
@@ -217,7 +217,7 @@ Defines a function for filtering multimodal touch events.
 
 ### OH_NativeWindowManager_RegisterTouchEventFilter()
 
-```
+```c
 WindowManager_ErrorCode OH_NativeWindowManager_RegisterTouchEventFilter(int32_t windowId,OH_NativeWindowManager_TouchEventFilter touchEventFilter)
 ```
 
@@ -243,7 +243,7 @@ Registers a function for filtering multimodal touch events.
 
 ### OH_NativeWindowManager_UnregisterTouchEventFilter()
 
-```
+```c
 WindowManager_ErrorCode OH_NativeWindowManager_UnregisterTouchEventFilter(int32_t windowId)
 ```
 

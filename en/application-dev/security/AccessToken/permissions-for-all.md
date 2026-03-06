@@ -68,7 +68,7 @@ Allows an application to obtain the print framework capability.
 
 Allows an application to configure Bluetooth on a device, initiate or cancel a scan for Bluetooth devices, and pair with Bluetooth devices.
 
- 
+
 
 **Permission level**: normal
 
@@ -80,7 +80,7 @@ Allows an application to configure Bluetooth on a device, initiate or cancel a s
 
 Allows an application to read data from an acceleration sensor, uncalibrated acceleration sensor, or linear acceleration sensor.
 
- 
+
 
 **Permission level**: normal
 
@@ -150,7 +150,7 @@ With this permission, the application can obtain Wi-Fi information, including th
 
 Allows an application to read data from a gyroscope sensor or uncalibrated gyroscope sensor.
 
- 
+
 
 **Permission level**: normal
 
@@ -272,36 +272,6 @@ With this permission, the application can publish sticky common events, so that 
 
 **Valid since**: 7
 
-## ohos.permission.MODIFY_AUDIO_SETTINGS
-
-Allows an application to modify audio settings.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Valid since**: 8
-
-## ohos.permission.RUNNING_LOCK
-
-Allows an application to obtain a running lock.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Valid since**: 7
-
-## ohos.permission.SET_WALLPAPER
-
-Allows an application to set wallpapers.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Valid since**: 7
-
 ## ohos.permission.ACCESS_CERT_MANAGER
 
 Allows an application to query certificates and private credentials.
@@ -311,16 +281,6 @@ Allows an application to query certificates and private credentials.
 **Authorization mode**: system_grant
 
 **Valid since**: 9
-
-## ohos.permission.hsdr.HSDR_ACCESS
-
-Allows an application to access OpenHarmony Security Detection and Response Framework.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Valid since**: 10
 
 ## ohos.permission.RUN_DYN_CODE
 
@@ -639,7 +599,7 @@ With this permission, the application can customize its icon in the shortcut men
 
 **Supported devices**: PCs/2-in-1 devices | tablets
 
-**Since**: 22
+**Since**: 23
 
 ## ohos.permission.kernel.EXEMPT_ANONYMOUS_EXECUTABLE_MEMORY
 
@@ -680,5 +640,19 @@ With this permission, the application can query whether the system is in the Do 
 **Authorization mode**: system_grant
 
 **Supported devices**: phones | tablets
+
+**Since**: 23
+
+## ohos.permission.ALLOW_COREDUMP
+
+Allows the system to dump the memory of an application process to the application sandbox.
+
+With this permission, the application allows the system to dump application memory to the sandbox.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: 2in1
 
 **Since**: 23

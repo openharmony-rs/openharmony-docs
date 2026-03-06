@@ -39,7 +39,7 @@ The following describes the instructions for writing a specific component refere
 >
 > - **Document title**: Use phrases that summarize the component functionalities. Examples: `Button` and `Slider`.
 > - **Heading levels**: Use the document title as the level-1 heading, which is prefixed with `#` followed by a space. Use the functions, classes, interfaces, enums, and types as level-2 headings, which are prefixed with `##` followed by a space. Use the properties and functions under classes as level-3 headings, which are prefixed with `###` followed by a space.
-> - **Initial version description**: Use the greater-than symbol (>) to indent the description about the initial version of the component. Use a line break after **NOTE**.<br>Place the version description after the component description. A component has only one initial version.<br>Use the following sentence: "This component is supported since API version *x*. Newly added APIs will be marked with a superscript to indicate their earliest API version." Change ***x*** to the actual version number.
+> - **Initial version description**: Use the greater-than symbol (`>`) to indent the description about the initial version of the component. Use a line break after **NOTE**.<br>Place the version description after the component description. A component has only one initial version.<br>Use the following sentence: "This component is supported since API version *x*. Newly added APIs will be marked with a superscript to indicate their earliest API version." Change ***x*** to the actual version number.
 
 Describe the component from its functionalities, use cases, and recommendations in this section. 
 
@@ -72,7 +72,7 @@ import { font } from '@kit.ArkUI';
 
 > *Writing Instructions*
 >
-> - This section is mandatory if the document is about a built-in component that contains child components.
+> - This section is mandatory if the document is about a component that contains child components.
 > - If there are restrictions on the use of child components, describe them here.
 
 Example: Supported
@@ -81,7 +81,7 @@ Example: Supported
 
 >*Writing Instructions*
 >
-> - This section is mandatory if the document is about a built-in component and the component has APIs.
+> - This section is mandatory if the document is about a component and the component has APIs.
 > - The description of the API calling mode must be the same as that in the .d.ts file and include the parameter type and parameter name. 
 > - The parameter description must include the meaning and purpose of the parameter, the scenarios in which the parameter is used, suggestions for selection, and relationships between parameters.
 > - The parameter value description must include the value range, unit, default value, principles for selection, or recommended value. If the boundary value involves restrictions/exceptions, describe the specific scenario. If there is a fixed format, provide a format example, especially for URIs.
@@ -90,7 +90,7 @@ Example: Supported
 > - Do not use a semicolon (;) at the end of the complete method name.
 > - If a custom parameter type (such as object and enum) appears for the first time, describe the parameter type in the form of level-2 headings. If this type has been described in other places, use a relative link to reference it.
 > - Note: The angle bracket (<>) may be identified as a label and not displayed. To ensure normal display, you can either add a backslash (\\) (in the format of "\\<>") or use escape characters \&lt; and \&gt;.
-> - Note: The method in the component interface has no return value and is not presented in the form of level-2 or level-3 headings. It must also meet requirements described in [Methods](#methods).
+> - Note: The method in the component interface does not have a return value. The other requirements are the same as those described in [Methods](#methods).
 > - Note: The default value, unit, and value range must be described in a separate line in the description.
 
 If an API has two or more constructors, describe their differences.
@@ -124,7 +124,7 @@ Column(value?:&nbsp;{space?: string&nbsp;|&nbsp;number})
 > - Create a link for a custom type (such as object and enum) to the corresponding interface or enum.
 > - Note: The default value, unit, and value range must be described in a separate line in the description.
 
-If the document is about a built-in component, specify whether the component supports universal properties.
+If the document is about a system component, specify whether the component supports universal properties.
 
 Example:
 
@@ -152,7 +152,7 @@ Applies a grayscale effect to the component.
 > - The description of the event method calling mode must be the same as that in the .d.ts file and include the parameter type and parameter name. 
 > - Create a link for a custom type (such as object and enum) to the corresponding interface or enum. If this type appears for the first time, describe it under the event in the form of a level-2 heading. If this type has been described in other places, use a relative link to reference it.
 
-If the document is about a built-in component, specify whether the component supports universal events.
+If the document is about a system component, specify whether the component supports universal events.
 
 Example:
 
@@ -226,7 +226,7 @@ Provide the display effect of the example.
 > // Declare all variables that are used.
 > // Mark the programming language of the sample code.
 > 
-> // Write an actual case that can be easily used, rather than the parameter names themselves. Use comments to describe the content that are not user-defined.
+> // Write an actual case that can be easily used, rather than the parameter names themselves. Use comments to describe the content that is not user-defined.
 > // Example: var result = xxx.createExample(parameterOne); // parameterOne is automatically obtained by scanning.
 > 
 > // The layout of the image must be clear, the color must be simple and elegant, and the image must be copyrighted.

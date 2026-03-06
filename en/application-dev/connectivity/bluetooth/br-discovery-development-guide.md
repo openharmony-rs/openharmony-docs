@@ -111,7 +111,7 @@ try {
 ```
 
 ### Retrieving Information About Paired Devices
-To streamline device scanning, check if the device is paired before initiating a scan. You can also initiate connection and data transmission processes for paired devices. For details, see [Device Pairing](br-pair-device-development-guide.md) and [SPP-based Data Transmission](spp-development-guide.md).
+To streamline device scanning, check if the device is paired before initiating a scan. You can also initiate connection and data transmission processes for paired devices. For details, see [Device Pairing](br-pair-device-development-guide.md) and [SPP-based Connection and Data Transmission](spp-development-guide.md).
 
 ```ts
 try {

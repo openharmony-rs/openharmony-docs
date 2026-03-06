@@ -91,7 +91,7 @@ const TAG: string = '[AnimatorTest]';
 @Entry
 @Component
 struct SpringMotionDemo {
-  // Step 1: Declare the related state variables.
+  // Step 1: Declare the related state variable.
   @State positionX: number = 100;
   @State positionY: number = 100;
   diameter: number = 50;
@@ -129,13 +129,13 @@ struct SpringMotionDemo {
       .backgroundColor(Color.Orange)
 
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Start, justifyContent: FlexAlign.Center }) {
-        // The value in the $r('app.string.drag') resource file is 'Drag the ball.'
+        // Replace $r('app.string.drag') with the actual resource file. In this example, the value in the resource file is "Drag the ball."
         Text($r('app.string.drag')).fontSize(16)
       }
       .width('100%')
 
       Row() {
-        // The value in the $r('app.string.location') resource file is 'Click position:'.
+        // Replace $r('app.string.location') with the actual resource file. In this example, the value in the resource file is "Clicked at:".
         Text($r('app.string.location') + ' [x: ' + Math.round(this.positionX) + ', y:' + Math.round(this.positionY) + ']').fontSize(16)
       }
       .padding(10)

@@ -39,9 +39,6 @@ export default class EntryAbility extends UIAbility {
 
 在下面的示例中，设置Web组件可以缓存的最大数量为10，每个页面在缓存中停留300s。
   
-```ts
-// Index.ets
-```
 <!-- @[web_module_page_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry2/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript

@@ -549,7 +549,7 @@ console.info("params: foo " + that.params.get("foo")); // params: foo 1
 
 let urlObj = url.URL.parseURL('http://testhost:80/directory/file?foo=1');
 console.info("port " + urlObj.port); // port 
-console.info("toString " + urlObj.port); // toString http://testhost/directory/file?foo=1
+console.info("toString " + urlObj.toString()); // toString http://testhost/directory/file?foo=1
 ```
 
 ### constructor<sup>(deprecated)</sup>

@@ -21,7 +21,7 @@ The preceding system capability is available since API version 20. From API vers
 
 **Since**: 9
 
-**Related module:** [HuksTypeApi](capi-hukstypeapi.md)
+**Related module**: [HuksTypeApi](capi-hukstypeapi.md)
 
 ## Summary
 
@@ -80,7 +80,7 @@ The preceding system capability is available since API version 20. From API vers
 | OH_HUKS_BITS_PER_BYTE 8 | Number of bits in each byte.<br>**Since**: 9|
 | OH_HUKS_MAX_KEY_SIZE 2048 | Maximum key size, in bytes.<br>**Since**: 9|
 | OH_HUKS_AE_NONCE_LEN 12 | Length of the AEAD one-time random number, in bytes.<br>**Since**: 9|
-| OH_HUKS_MAX_KEY_ALIAS_LEN 128 | Maximum length of a key alias, in bytes.<br>**Since**: 9|
+| OH_HUKS_MAX_KEY_ALIAS_LEN 64 | Maximum length of a key alias, in bytes.<br>**Since**: 9|
 | OH_HUKS_MAX_PROCESS_NAME_LEN 50 | Maximum length of a process name, in bytes.<br>**Since**: 9|
 | OH_HUKS_MAX_RANDOM_LEN 1024 | Maximum length of a random number, in bytes.<br>**Since**: 9|
 | OH_HUKS_SIGNATURE_MIN_SIZE 64 | Minimum length of the signature result, in bytes.<br>**Since**: 9|
@@ -90,7 +90,7 @@ The preceding system capability is available since API version 20. From API vers
 | TOKEN_CHALLENGE_LEN 32 | Byte length of the challenge value during access control.<br>**Since**: 9|
 | SHA256_SIGN_LEN 32 | Byte length of the SHA-256 signature.<br>**Since**: 9|
 | TOKEN_SIZE 32 | Byte length of the challenge value during access control.<br>**Since**: 9|
-| MAX_AUTH_TIMEOUT_SECOND 600 | Maximum user authentication timeout.<br>**Since**: 9|
+| MAX_AUTH_TIMEOUT_SECOND 60 | Maximum user authentication timeout.<br>**Since**: 9|
 | SECURE_SIGN_VERSION 0x01000001 | Version of the secure signature data.<br>**Since**: 9|
 
 ## Enum Description
@@ -285,14 +285,17 @@ Key material format for **OH_HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING**:
 |      kek_nonce_length       (4 Byte) |      kek_nonce      |   kek_aead_tag_len   (4 Byte) | kek_aead_tag 
 |   key_material_size_len     (4 Byte) |  key_material_size  |   key_mat_enc_length (4 Byte) | key_mat_enc_data
 ```
-
+Key material format for **OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING**:
+```txt
+| kek_SM4_enc_length (4 Byte) | EN_SM4_key | importkey_enc_length (4 Byte) | importkey_enc |
+```
 **Since**: 9
 
 | Enum| Description|
 | -- | -- |
-| OH_HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING = 1 | Key material in Length-Value format, using X25519 for key agreement and AES-256-GCM for encryption and decryption: For details about the material format, see the preceding description.|
-| OH_HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING = 2 | Key material in Length-Value format, using ECDH-p256 for key agreement and AES-256-GCM for encryption and decryption: For details about the material format, see the preceding description.|
-
+| OH_HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING = 1 | Key material in Length-Value format, using X25519 for key agreement and AES-256-GCM for encryption and decryption. For details about the material format, see the preceding description.|
+| OH_HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING = 2 | Key material in Length-Value format, using ECDH-p256 for key agreement and AES-256-GCM for encryption and decryption. For details about the material format, see the preceding description.|
+| OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING = 5 | Key material in Length-Value format, using the temporary SM4 key to encrypt the imported key and using the SM2 key that has been imported to HUKS to encrypt the SM4 key. For details about the material format, see the preceding description.<br>**Since**: 23|
 ### OH_Huks_KeyGenerateType
 
 ```c
@@ -420,6 +423,13 @@ Enumerates error codes.
 | OH_HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET = 12000016 | The lock screen password required is not set.<br>**Since**: 11|
 | OH_HUKS_ERR_CODE_KEY_ALREADY_EXIST = 12000017 | A key with the same name already exists.<br>**Since**: 20|
 | OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 | An input parameter is invalid.<br>**Since**: 20|
+| OH_HUKS_ERR_CODE_ITEM_EXISTS = 12000019 | The entity already exists.<br>**Since**: 22|
+| OH_HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020 | The provider or Ukey internal execution fails.<br>**Since**: 22|
+| OH_HUKS_ERR_CODE_PIN_LOCKED = 12000021 | PIN locked.<br>**Since**: 22|
+| OH_HUKS_ERR_CODE_PIN_INCORRECT = 12000022 | Incorrect PIN.<br>**Since**: 22|
+| OH_HUKS_ERR_CODE_PIN_NO_AUTH = 12000023 | PIN authentication fails.<br>**Since**: 22|
+| OH_HUKS_ERR_CODE_BUSY = 12000024 | The provider or Ukey resources are being used.<br>**Since**: 22|
+| OH_HUKS_ERR_CODE_EXCEED_LIMIT = 12000025 | The resource limit is exceeded.<br>**Since**: 22|
 
 ### OH_Huks_TagType
 
@@ -522,7 +532,7 @@ Enumerates the types of the challenge generated when a key is used.
 
 **Reference:**
 
-[OH_Huks_ChallengePosition](#oh_huks_challengeposition)
+[OH_Huks_ChallengePosition](capi-native-huks-type-h.md#oh_huks_challengeposition)
 
 
 ### OH_Huks_UserAuthMode
@@ -637,16 +647,16 @@ Enumerates the tags contained in a parameter set.<br> 1 to 200: key parameter ta
 | OH_HUKS_TAG_INFO = OH_HUKS_TAG_TYPE_BYTES \| 11 | Information generated during key derivation.|
 | OH_HUKS_TAG_SALT = OH_HUKS_TAG_TYPE_BYTES \| 12 | Salt value used for key derivation.|
 | OH_HUKS_TAG_ITERATION = OH_HUKS_TAG_TYPE_UINT \| 14 | Number of iterations for key derivation.|
-| OH_HUKS_TAG_KEY_GENERATE_TYPE = OH_HUKS_TAG_TYPE_UINT \| 15 | Type of the generated key. For details, see [OH_Huks_KeyGenerateType](#oh_huks_keygeneratetype).|
+| OH_HUKS_TAG_KEY_GENERATE_TYPE = OH_HUKS_TAG_TYPE_UINT \| 15 | Type of the generated key. For details, see [OH_Huks_KeyGenerateType](capi-native-huks-type-h.md#oh_huks_keygeneratetype).|
 | OH_HUKS_TAG_AGREE_ALG = OH_HUKS_TAG_TYPE_UINT \| 19 | Algorithm used in key agreement.|
 | OH_HUKS_TAG_AGREE_PUBLIC_KEY_IS_KEY_ALIAS = OH_HUKS_TAG_TYPE_BOOL \| 20 | Alias of the public key used for key agreement.|
 | OH_HUKS_TAG_AGREE_PRIVATE_KEY_ALIAS = OH_HUKS_TAG_TYPE_BYTES \| 21 | Alias of the private key used for key agreement.|
 | OH_HUKS_TAG_AGREE_PUBLIC_KEY = OH_HUKS_TAG_TYPE_BYTES \| 22 | Public key used for key agreement.|
 | OH_HUKS_TAG_KEY_ALIAS = OH_HUKS_TAG_TYPE_BYTES \| 23 | Key alias.|
 | OH_HUKS_TAG_DERIVE_KEY_SIZE = OH_HUKS_TAG_TYPE_UINT \| 24 | Size of the derived key.|
-| OH_HUKS_TAG_IMPORT_KEY_TYPE = OH_HUKS_TAG_TYPE_UINT \| 25 | Type of the key to import. For details, see [OH_Huks_ImportKeyType](#oh_huks_importkeytype).|
+| OH_HUKS_TAG_IMPORT_KEY_TYPE = OH_HUKS_TAG_TYPE_UINT \| 25 | Type of the imported key. For details, see [OH_Huks_ImportKeyType](capi-native-huks-type-h.md#oh_huks_importkeytype).|
 | OH_HUKS_TAG_UNWRAP_ALGORITHM_SUITE = OH_HUKS_TAG_TYPE_UINT \| 26 | Algorithm suite used for importing a key in ciphertext.|
-| OH_HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG = OH_HUKS_TAG_TYPE_UINT \| 29 | Storage type of the derived key or key produced after key agreement. It is a value of [OH_Huks_KeyStorageType](#oh_huks_keystoragetype).|
+| OH_HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG = OH_HUKS_TAG_TYPE_UINT \| 29 | Storage type of the derived key or key produced after key agreement. For details, see [OH_Huks_KeyStorageType](capi-native-huks-type-h.md#oh_huks_keystoragetype).|
 | OH_HUKS_TAG_RSA_PSS_SALT_LEN_TYPE = OH_HUKS_TAG_TYPE_UINT \| 30 | Salt length type when the PSS padding mode is used with the RSA algorithm.|
 | OH_HUKS_TAG_ALL_USERS = OH_HUKS_TAG_TYPE_BOOL \| 301 | All users in the multi-user scenario.|
 | OH_HUKS_TAG_USER_ID = OH_HUKS_TAG_TYPE_UINT \| 302 | Multi-user ID.|
@@ -654,13 +664,13 @@ Enumerates the tags contained in a parameter set.<br> 1 to 200: key parameter ta
 | OH_HUKS_TAG_USER_AUTH_TYPE = OH_HUKS_TAG_TYPE_UINT \| 304 | User authentication type in key access control.|
 | OH_HUKS_TAG_AUTH_TIMEOUT = OH_HUKS_TAG_TYPE_UINT \| 305 | Timeout duration for key access.|
 | OH_HUKS_TAG_AUTH_TOKEN = OH_HUKS_TAG_TYPE_BYTES \| 306 | Authentication token for the key.|
-| OH_HUKS_TAG_KEY_AUTH_ACCESS_TYPE = OH_HUKS_TAG_TYPE_UINT \| 307 | Key access control type, which must be set together with the user authentication type. It is a value of [OH_Huks_AuthAccessType](#oh_huks_authaccesstype).|
+| OH_HUKS_TAG_KEY_AUTH_ACCESS_TYPE = OH_HUKS_TAG_TYPE_UINT \| 307 | Key access control type, which must be set together with the user authentication type. For details, see [OH_Huks_AuthAccessType](capi-native-huks-type-h.md#oh_huks_authaccesstype).|
 | OH_HUKS_TAG_KEY_SECURE_SIGN_TYPE = OH_HUKS_TAG_TYPE_UINT \| 308 | Signature type of the key generated or imported.|
-| OH_HUKS_TAG_CHALLENGE_TYPE = OH_HUKS_TAG_TYPE_UINT \| 309 | Challenge type, which is a value of [OH_Huks_ChallengeType](#oh_huks_challengetype).|
-| OH_HUKS_TAG_CHALLENGE_POS = OH_HUKS_TAG_TYPE_UINT \| 310 | Position of the 8-byte valid value in a custom challenge. For details, see [OH_Huks_ChallengePosition](#oh_huks_challengeposition).|
+| OH_HUKS_TAG_CHALLENGE_TYPE = OH_HUKS_TAG_TYPE_UINT \| 309 | Challenge type. For details, see [OH_Huks_ChallengeType](capi-native-huks-type-h.md#oh_huks_challengetype).|
+| OH_HUKS_TAG_CHALLENGE_POS = OH_HUKS_TAG_TYPE_UINT \| 310 | Position of the 8-byte valid value in a custom challenge. For details, see [OH_Huks_ChallengePosition](capi-native-huks-type-h.md#oh_huks_challengeposition).|
 | OH_HUKS_TAG_KEY_AUTH_PURPOSE = OH_HUKS_TAG_TYPE_UINT \| 311 | Type of the key authentication purpose.|
-| OH_HUKS_TAG_AUTH_STORAGE_LEVEL = OH_HUKS_TAG_TYPE_UINT \| 316 | Security levels for storing the key. For details, see [OH_Huks_AuthStorageLevel](#oh_huks_authstoragelevel).<br>**Since**: 11|
-| OH_HUKS_TAG_USER_AUTH_MODE = OH_HUKS_TAG_TYPE_UINT \| 319 | User authentication mode in key access control. For details, see [OH_Huks_UserAuthMode](#oh_huks_userauthmode).<br>**Since**: 12|
+| OH_HUKS_TAG_AUTH_STORAGE_LEVEL = OH_HUKS_TAG_TYPE_UINT \| 316 | Security levels for storing the key. For details, see [OH_Huks_AuthStorageLevel](capi-native-huks-type-h.md#oh_huks_authstoragelevel).<br>**Since**: 11|
+| OH_HUKS_TAG_USER_AUTH_MODE = OH_HUKS_TAG_TYPE_UINT \| 319 | User authentication mode in key access control. For details, see [OH_Huks_UserAuthMode](capi-native-huks-type-h.md#oh_huks_userauthmode).<br>**Since**: 12|
 | OH_HUKS_TAG_ATTESTATION_CHALLENGE = OH_HUKS_TAG_TYPE_BYTES \| 501 | Challenge value used in the attestation.|
 | OH_HUKS_TAG_ATTESTATION_APPLICATION_ID = OH_HUKS_TAG_TYPE_BYTES \| 502 | ID of the application, to which the key belongs, in key attestation.|
 | OH_HUKS_TAG_ATTESTATION_ID_ALIAS = OH_HUKS_TAG_TYPE_BYTES \| 511 | Alias used in key attestation.|
@@ -669,13 +679,14 @@ Enumerates the tags contained in a parameter set.<br> 1 to 200: key parameter ta
 | OH_HUKS_TAG_KEY_OVERRIDE = OH_HUKS_TAG_TYPE_BOOL \| 520 | Whether to overwrite the key with the same name.<br>**Since**: 20|
 | OH_HUKS_TAG_AE_TAG_LEN = OH_HUKS_TAG_TYPE_UINT \| 521 | **AEAD** length in CCM mode.<br>**Since**: 22|
 | OH_HUKS_TAG_KEY_CLASS = OH_HUKS_TAG_TYPE_UINT \| 522 | Key type, which is used to distinguish the key managed by HUKS on the device from the key stored in an external device.<br>**Since**: 22|
+| OH_HUKS_TAG_KEY_ACCESS_GROUP = OH_HUKS_TAG_TYPE_BYTES \| 523 | Group ID. Keys can be shared among the same group of developers with the same developer ID.<br>**Since**: 23|
 | OH_HUKS_TAG_IS_KEY_ALIAS = OH_HUKS_TAG_TYPE_BOOL \| 1001 | Whether it is a key alias.|
-| OH_HUKS_TAG_KEY_STORAGE_FLAG = OH_HUKS_TAG_TYPE_UINT \| 1002 | Key storage mode. For details, see [OH_Huks_KeyStorageType](#oh_huks_keystoragetype).|
+| OH_HUKS_TAG_KEY_STORAGE_FLAG = OH_HUKS_TAG_TYPE_UINT \| 1002 | Key storage mode. For details, see [OH_Huks_KeyStorageType](capi-native-huks-type-h.md#oh_huks_keystoragetype).|
 | OH_HUKS_TAG_IS_ALLOWED_WRAP = OH_HUKS_TAG_TYPE_BOOL \| 1003 | Whether to allow the key to be wrapped.|
 | OH_HUKS_TAG_KEY_WRAP_TYPE = OH_HUKS_TAG_TYPE_UINT \| 1004 | Key wrap type.|
 | OH_HUKS_TAG_KEY_AUTH_ID = OH_HUKS_TAG_TYPE_BYTES \| 1005 | Authentication ID.|
 | OH_HUKS_TAG_KEY_ROLE = OH_HUKS_TAG_TYPE_UINT \| 1006 | Role of the key.|
-| OH_HUKS_TAG_KEY_FLAG = OH_HUKS_TAG_TYPE_UINT \| 1007 | Key flag. For details, see [OH_Huks_KeyFlag](#oh_huks_keyflag).|
+| OH_HUKS_TAG_KEY_FLAG = OH_HUKS_TAG_TYPE_UINT \| 1007 | Key flag. For details, see [OH_Huks_KeyFlag](capi-native-huks-type-h.md#oh_huks_keyflag).|
 | OH_HUKS_TAG_IS_ASYNCHRONIZED = OH_HUKS_TAG_TYPE_UINT \| 1008 | Whether the invocation is asynchronous.|
 | OH_HUKS_TAG_KEY_DOMAIN = OH_HUKS_TAG_TYPE_UINT \| 1011 | Key domain.|
 | OH_HUKS_TAG_IS_DEVICE_PASSWORD_SET = OH_HUKS_TAG_TYPE_BOOL \| 1012 | Whether the key is accessible only when the user sets a lock screen password.<br> **True** indicates that the key can be generated and used only when a password is set.<br>**Since**: 11|

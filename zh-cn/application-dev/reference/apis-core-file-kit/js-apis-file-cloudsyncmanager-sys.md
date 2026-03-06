@@ -1,10 +1,10 @@
 # @ohos.file.cloudSyncManager (端云同步管理能力)(系统接口)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @zsyztt; @Hermits; @reminder2352-->
-<!--Designer: @yunlanying-->
+<!--Owner: @Hermits; @reminder2352-->
+<!--Designer: @oh_create_jiawei-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 该模块向云空间应用提供端云同步管理能力：包括使能/去使能端云协同能力、修改应用同步开关，云端数据变化通知以及账号退出清理/保留云相关文件等。
 
@@ -292,10 +292,10 @@ notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&l
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
-| 201 | Permission verification failed. |
-| 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. |
-| 13600001  | IPC error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| 202 | Permission verification failed, application which is not a system application uses system API. |
+| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 13600001  | IPC error. |
 
 **示例：**
 
@@ -596,8 +596,8 @@ clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCall
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
-| 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| 202 | Permission verification failed, application which is not a system application uses system API. |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
@@ -655,7 +655,7 @@ constructor(bundleName: string)
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.                                                                                                 |
 | 202      | Permission verification failed, application which is not a system application uses system API.                                                                                    |
-| 13900020 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
@@ -815,7 +815,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let bundleName: string = "com.demo.a";
 let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
 downgradeMgr.startDownload((data: cloudSyncManager.DownloadProgress) => {
-  console.info(`Dwongrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+  console.info(`Downgrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
 }).then(() => {
   console.info("Downgrade started successfully.");
 }).catch((err: BusinessError) => {
@@ -832,7 +832,7 @@ if (needStop) {
 }
 ```
 
-  ## LocalFilePresentStatus<sup>22+</sup>
+  ## LocalFilePresentStatus<sup>23+</sup>
 
   检测结果对象，包含应用包名及其在云盘存储空间内是否存在未上云文件的状态信息。
 
@@ -846,7 +846,7 @@ if (needStop) {
   | bundleName | string | 否 | 否 | 应用包名。 |
   | isLocalFilePresent | boolean | 否 | 否 | 该应用在云盘存储空间内是否存在尚未同步至云端的本地文件。true 表示存在， false 表示不存在。 |
 
-  ## cloudSyncManager.getBundlesLocalFilePresentStatus<sup>22+</sup>
+  ## cloudSyncManager.getBundlesLocalFilePresentStatus<sup>23+</sup>
 
   getBundlesLocalFilePresentStatus(bundleNames: Array&lt;string&gt;): Promise&lt;Array&lt;LocalFilePresentStatus&gt;&gt;
 
@@ -868,7 +868,7 @@ if (needStop) {
 
   | 类型 | 说明 |
   | ---- | ---- |
-  | Promise&lt;Array&lt;[LocalFilePresentStatus](#localfilepresentstatus22)&gt;&gt; | Promise 对象，返回对象数组，数组内每个对象包含指定检测的应用包名及其本地文件存在状态。 |
+  | Promise&lt;Array&lt;[LocalFilePresentStatus](#localfilepresentstatus23)&gt;&gt; | Promise 对象，返回对象数组，数组内每个对象包含指定检测的应用包名及其本地文件存在状态。 |
 
   **错误码：**
 
@@ -876,10 +876,10 @@ if (needStop) {
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
-  | 202 | Permission verification failed, application which is not a system application uses system API. |
+  | 201 | Permission verification failed. |
+  | 202 | The caller is not a system application. |
   | 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
-  | 13900010 | Try again. Possible causes: 1. The operation timed out. 2. The operation needs to be retried. |
+  | 13900010 | Try again. |
   | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified. 2. The length of the input parameter exceeds the upper limit. 3. The input parameter contains an invalid bundleName. |
   | 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 

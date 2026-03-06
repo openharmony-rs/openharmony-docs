@@ -63,7 +63,7 @@ Applications can detect abnormal termination in either of the following ways:
 
 1. Obtain the termination reason from the **onCreate** callback parameter of the ability. Specifically, set the **LastExitReason** parameter in **LaunchParam**. For details, see [LastExitReason](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#lastexitreason).
 
-2. Subscribe to the **APP_KILLED** event through HiAppEvent. For details, see [HiAppEvent](hiappevent-watcher-app-killed-events.md).
+2. Subscribe to the **APP_KILLED** event through HiAppEvent. For details, see [Application Killed Event Overview](hiappevent-watcher-app-killed-events.md).
 
 ## Analysis Method and Procedure
 

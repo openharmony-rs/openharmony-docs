@@ -1164,8 +1164,8 @@ let unifiedData = new unifiedDataChannel.UnifiedData(form);
 | -------- | -------- | -------- | -------- | -------- |
 | appId       | string | 否 | 否 | 图标对应的应用id。      |
 | appName     | string | 否 | 否 | 图标对应的应用名。       |
-| appIconId   | string | 否 | 否 | 图标的图片id。        |
-| appLabelId  | string | 否 | 否 | 图标名称对应的标签id。    |
+| appIconId   | string | 否 | 否 | 图标的图片id。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>        |
+| appLabelId  | string | 否 | 否 | 图标名称对应的标签id。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>    |
 | bundleName  | string | 否 | 否 | 图标对应的应用bundle名。 |
 | abilityName | string | 否 | 否 | 图标对应的应用ability名。 |
 
@@ -2016,9 +2016,9 @@ setAppShareOptions(intention: Intention, shareOptions: ShareOptions): void
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 201          | Permission verification failed. The application does not have the permission required to call the API. |
+| 201          | Permission denied. Interface caller does not have permission "ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION". |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 20400001     | Settings already exist. To reconfigure, remove the existing sharing options.       |
+| 20400001     | Settings already exist.       |
 
 **示例：**
 
@@ -2057,7 +2057,7 @@ removeAppShareOptions(intention: Intention): void
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 201          | Permission verification failed. The application does not have the permission required to call the API. |
+| 201          | Permission denied. Interface caller does not have permission "ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION". |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**

@@ -7,11 +7,13 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 工具栏用于展示针对当前界面内容的操作选项，在界面底部显示。底部最多显示5个入口，超过则收纳入“更多”子项中，在最右侧显示。<br />
-该组件基于[状态管理V2](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理V1](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理V2增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理V2，开发者可以通过该组件更灵活地控制工具栏的数据和状态，实现更高效的用户界面刷新。<br>
+该组件基于[状态管理（V2）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理（V1）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理（V2）增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理（V2），开发者可以通过该组件更灵活地控制工具栏的数据和状态，实现更高效的用户界面刷新。<br>
 
 > **说明：**
 >
 > - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件仅可在Stage模型下使用。
 >
 > - 如果ToolBarV2设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ToolBarV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ToolBarV2设置通用属性和通用事件。
 >
@@ -50,6 +52,9 @@ ToolbarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifi
 | toolBarModifier<sup> | [ToolBarV2Modifier](#toolbarv2modifier)                          | 否  | @Param              | 工具栏属性，可设置工具栏高度、背景色、内边距（仅在工具栏子项数量小于5时生效）、是否显示按压态。<br />默认不生效。 |
 
 ## ToolBarV2Item
+
+ToolbarV2({content?: ToolBarV2ItemText, action?: ToolBarV2ItemAction, icon?: 	ToolBarV2ItemIconType, state?: ToolBarV2ItemState, accessibilityText?: ResourceStr, accessibilityDescription?: ResourceStr, accessibilityLevel?: string})
+
 定义工具栏子项。
 
 **装饰器类型：**@ObservedV2
@@ -92,6 +97,8 @@ ToolBarV2Item的构造函数。
 
 ## ToolBarV2ItemOptions
 
+ToolBarV2ItemOptions({content?: ToolBarV2ItemText, action?: ToolBarV2ItemAction, icon?: ToolBarV2ItemIconType, state?: ToolBarV2ItemState, accessibilityText?: ResourceStr, accessibilityDescription?: ResourceStr, accessibilityLevel?: string})
+
 用于构建ToolBarV2Item对象。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
@@ -129,6 +136,8 @@ type ToolBarV2ItemAction = (index: number) => void
 | index | number | 是  |工具栏子项点击事件的回调。<br /> -index: 表示触发事件的工具栏子项索引。    |
 
 ## ToolBarV2ItemText
+
+ToolBarV2ItemText({text?: ResourceStr, color?: ColorMetrics, activatedColor?: ColorMetrics})
 
 定义工具栏子项的文本。
 
@@ -168,6 +177,8 @@ ToolBarV2ItemText的构造函数。
 
 ## ToolBarV2ItemTextOptions
 
+ToolBarV2ItemTextOptions({text?: ResourceStr, color?: ColorMetrics, activatedColor?: ColorMetrics})
+
 用于构建ToolBarV2ItemText对象。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
@@ -183,6 +194,8 @@ ToolBarV2ItemText的构造函数。
 | activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 工具栏子项在激活态下文本的颜色。<br/>默认值：$r('sys.color.font_emphasize') |
 
 ## ToolBarV2ItemImage
+
+ToolBarV2ItemImage({src?: ResourceStr, color?: ColorMetrics, activatedColor?: ColorMetrics})
 
 定义工具栏子项的普通图标。
 
@@ -221,6 +234,8 @@ ToolBarV2ItemImage的构造函数。
 | options | [ToolBarV2ItemImageOptions](#toolbarv2itemimageoptions) | 是  | 工具栏子项图标信息。 |
 
 ## ToolBarV2ItemImageOptions
+
+ToolBarV2ItemImageOptions({src?: ResourceStr, color?: ColorMetrics, activatedColor?: ColorMetrics})
 
 用于构建ToolBarV2ItemImage对象。
 
@@ -377,6 +392,8 @@ stateEffect(stateEffect: boolean): ToolBarV2Modifier
 
 ## ToolBarV2SymbolGlyph
 
+ToolBarV2SymbolGlyph({normal?: SymbolGlyphModifier, activated?: SymbolGlyphModifier})
+
 ToolBarV2SymbolGlyph定义Symbol图标的属性。
 
 **装饰器类型**：@ObservedV2
@@ -413,6 +430,8 @@ ToolBarV2SymbolGlyph的构造函数。
 | options | [ToolBarV2SymbolGlyphOptions](#toolbarv2symbolglyphoptions) | 是  | Symbol图标信息。 |
 
 ## ToolBarV2SymbolGlyphOptions
+
+ToolBarV2SymbolGlyphOptions({normal?: SymbolGlyphModifier, activated?: SymbolGlyphModifier})
 
 ToolBarV2SymbolGlyphOptions定义图标的属性。
 
@@ -716,9 +735,9 @@ struct Index {
         }),
         action: () => {
         },
-        accessibilityText: '剪贴', //该项屏幕朗读播报文本为‘剪贴’
-        accessibilityDescription: '单指双击即可剪贴', //该项屏幕朗读播报描述为'单指双击即可剪贴'
-        accessibilityLevel: 'yes'  //该项可被无障碍屏幕朗读聚焦
+        accessibilityText: '剪贴', // 该项屏幕朗读播报文本为‘剪贴’
+        accessibilityDescription: '单指双击即可剪贴', // 该项屏幕朗读播报描述为'单指双击即可剪贴'
+        accessibilityLevel: 'yes'  // 该项可被无障碍屏幕朗读聚焦
       })
     )
     this.toolbarList.push(
@@ -732,7 +751,7 @@ struct Index {
         action: () => {
         },
         state: ToolBarV2ItemState.DISABLE,
-        accessibilityLevel: 'no'  //该项将无法被无障碍屏幕朗读聚焦
+        accessibilityLevel: 'no'  // 该项将无法被无障碍屏幕朗读聚焦
       }))
     this.toolbarList.push(
       new ToolBarV2Item({

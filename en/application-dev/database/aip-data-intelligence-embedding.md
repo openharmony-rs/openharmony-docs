@@ -47,15 +47,15 @@ The following table lists the APIs related to application data vectorization. Fo
 | API| Description| 
 | -------- | -------- |
 | getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt; | Obtains a text embedding model.| 
-| loadModel(): Promise&lt;void&gt; | Loads this text embedding model.| 
+| loadModel(): Promise&lt;void&gt; | Loads the text embedding model.| 
 | splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt; | Splits text.| 
 | getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt; | Obtains the embedding vector of the given text.| 
 | getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt; | Obtains the embedding vector of a given batch of text.|
-| releaseModel(): Promise&lt;void&gt; | Releases this text embedding model.| 
+| releaseModel(): Promise&lt;void&gt; | Releases the text embedding model.| 
 | getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt; | Obtains an image embedding model.| 
-| loadModel(): Promise&lt;void&gt; | Loads this image embedding model.| 
+| loadModel(): Promise&lt;void&gt; | Loads the image embedding model.| 
 | getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt; | Obtains the embedding vector of the given image.| 
-| releaseModel(): Promise&lt;void&gt; | Releases this image embedding model.| 
+| releaseModel(): Promise&lt;void&gt; | Releases the image embedding model.| 
 
 ## How to Develop Text Vectorization
 
@@ -69,11 +69,12 @@ The following table lists the APIs related to application data vectorization. Fo
    ```
 
 2. Obtain a text embedding model.
+
    Use the **getTextEmbeddingModel** method to obtain a text embedding model. The sample code is as follows:
 
    <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
-    ``` TypeScript
+   ``` TypeScript
    let textConfig:intelligence.ModelConfig = {
      version:intelligence.ModelVersion.BASIC_MODEL,
      isNpuAvailable:false,
@@ -83,7 +84,7 @@ The following table lists the APIs related to application data vectorization. Fo
    ```
    <!-- @[aip_loadTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
-    ``` TypeScript
+   ``` TypeScript
    intelligence.getTextEmbeddingModel(textConfig)
      .then((data:intelligence.TextEmbedding) => {
        console.info('Succeeded in getting TextModel');
@@ -97,6 +98,7 @@ The following table lists the APIs related to application data vectorization. Fo
    ```
 
 3. Load the text embedding model.
+
    Use the **loadModel** method to load the text embedding model. The sample code is as follows:
 
    <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
@@ -114,6 +116,7 @@ The following table lists the APIs related to application data vectorization. Fo
    ```
 
 4. Split text. If the data length exceeds the limit, call **splitText()** to split the data into smaller text blocks and then vectorize them.
+
     The sample code is as follows:
 
    <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
@@ -137,11 +140,12 @@ The following table lists the APIs related to application data vectorization. Fo
    ```
 
 5. Obtain the embedding vector of the given text using the **getEmbedding** method. The given text can be a single piece of text or a collection of multiple text entries.
+
     The sample code is as follows:
 
    <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
    
-    ``` TypeScript
+   ``` TypeScript
    let text = 'text';
    textEmbedding.getEmbedding(text)
      .then((data:Array<number>) => {
@@ -166,6 +170,7 @@ The following table lists the APIs related to application data vectorization. Fo
    ```
 
 6. Release the text embedding model.
+
    Use the **releaseModel** method to release the text embedding model. The sample code is as follows:
 
    <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
@@ -194,6 +199,7 @@ The following table lists the APIs related to application data vectorization. Fo
    ```
 
 2. Obtain an image embedding model.
+
    Use the **getImageEmbeddingModel** method to obtain an image embedding model. The sample code is as follows:
 
    <!-- @[aip_getImageEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
@@ -222,6 +228,7 @@ The following table lists the APIs related to application data vectorization. Fo
    ```
 
 3. Load the image embedding model.
+
    Use the **loadModel** method to load the image embedding model. The sample code is as follows:
 
     <!-- @[aip_loadImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
@@ -239,6 +246,7 @@ The following table lists the APIs related to application data vectorization. Fo
    ```
 
 4. Obtain the embedding vector of the given image.
+
    Use the **getEmbedding** method to obtain the embedding vector of the given image. The sample code is as follows:
 
     <!-- @[aip_getImageEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
@@ -257,6 +265,7 @@ The following table lists the APIs related to application data vectorization. Fo
    ```
 
 5. Release the image embedding model.
+
    Use the **releaseModel** method to release the image embedding model. The sample code is as follows:
 
    <!-- @[aip_releaseImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->

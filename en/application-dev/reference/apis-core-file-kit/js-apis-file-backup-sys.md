@@ -4,7 +4,7 @@
 <!--Owner: @lvzhenjie-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The **file.backup** module provides APIs for backing up and restoring data for applications.
 
@@ -102,6 +102,7 @@ Represents an incremental backup object, which inherits from [IncrementalBackupT
 ## File
 
 Defines a file object, which inherits from [FileMeta](#filemeta) and [FileData](#filedata).
+
  
 
 > **NOTE**
@@ -113,6 +114,7 @@ Defines a file object, which inherits from [FileMeta](#filemeta) and [FileData](
 ## File<sup>12+</sup>
 
 Defines a file object, which inherits from [FileMeta](#filemeta), [FileData](#filedata), and [FileManifestData](#filemanifestdata12).
+
  
 
 > **NOTE**
@@ -120,6 +122,22 @@ Defines a file object, which inherits from [FileMeta](#filemeta), [FileData](#fi
 > **file.backup.File** is different from [File](js-apis-file-fs.md#file) provided in @ohos.file.fs. The former is an object that inherits from [FileMeta](#filemeta) and [FileData](#filedata), while the latter has only one FD object. Pay attention to the difference between them.
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
+
+## FileSystemRequestConfig<sup>23+</sup>
+
+Configures the parameters required for the system to perform defragmentation.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.StorageService.backup
+
+| Name       | Type  | Read-Only| Optional| Description                                                  |
+| ----------- | ------ | ---- | ---- | ------------------------------------------------------ |
+| triggerType | number |  No |  No | Trigger type for defragmentation. Currently, only the value **0** is supported, which indicates the execution of device defragmentation.|
+| writeSize   | number |  No |  No | Target size for defragmentation. The expected available storage space that can be freed up is equal to this target value. The unit is MB. The value ranges from 0 to 2097152.|
+| waitTime    | number |  No |  No | Maximum duration for defragmentation. If the actual duration exceeds the value, the task times out. The unit is second. The value ranges from 0 to 180.|
 
 ## GeneralCallbacks
 
@@ -342,7 +360,7 @@ Called when the backup or restore is complete. If the callback is invoked succes
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-**Return value**
+**Parameters**
 
 | Name    | Type  | Mandatory| Description                           |
 | ---------- | ------ | ---- | ------------------------------- |
@@ -384,7 +402,7 @@ Called to report the backup or restore progress information. If the callback is 
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-**Return value**
+**Parameters**
 
 | Name    | Type  | Mandatory| Description                           |
 | ---------- | ------ | ---- | ------------------------------- |
@@ -418,6 +436,62 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     console.info('onProcess processInfo : ' + process);
   }
   ```
+
+## backup.fileSystemServiceRequest<sup>23+</sup>
+
+fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;number&gt;
+
+Sorts out the fragmented space of storage components to improve user experience. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.BACKUP
+
+**System capability**: SystemCapability.FileManagement.StorageService.Backup
+
+**Parameters**
+| Name  | Type                                      | Mandatory| Description                                              |
+| -------- | ------------------------------------------ | ---- | -------------------------------------------------- |
+|  config  | [FileSystemRequestConfig](#filesystemrequestconfig23)| Yes| Parameters required for the system to perform defragmentation.|
+
+**Return value**
+
+| Type               | Description                   |
+| ------------------- | ----------------------- |
+| Promise&lt;number&gt;  | Promise that returns the error code generated during defragmentation.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID| Error Message               |
+| -------- | ----------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 13900020 | Invalid argument.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { backup } from '@kit.CoreFileKit';
+
+async function testFunction(size: number) {
+  try {
+    const result = await backup.fileSystemServiceRequest({
+      triggerType: 0,
+      writeSize: size,
+      waitTime: 180
+    });
+    return result;
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`fileSystemServiceRequest err:` + err);
+  }
+}
+```
 
 ## backup.getBackupVersion<sup>18+</sup>
 
@@ -703,7 +777,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **Example**
 
@@ -756,7 +830,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **Example**
 
@@ -814,7 +888,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **Example**
 
@@ -1044,7 +1118,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         console.info('fileData info:' + fileData.fd);
         if (!fs.accessSync(basePath)) {
           fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+          console.info('create success' + basePath);
         }
         fs.copyFileSync(fileData.fd, path); // Save the obtained local capability file to the local host.
         fs.closeSync(fileData.fd);
@@ -1097,7 +1171,7 @@ The capability file can be obtained by using [fs.stat](js-apis-file-fs.md#fsstat
 
 getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime\>): Promise&lt;void&gt;
 
-Obtains the amount of data to be backed up. This method is called before **appendBundles**. The scanning result is returned at a fixed interval of 5 seconds by calling the general callback **onBackupSizeReport** asynchronously until all application data in the datalist is returned.
+Obtains the amount of data to be backed up. This method is called before **appendBundles**. **getBackupDataSize** is used together with **onBackupSizeReport**. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1188,7 +1262,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     onProcess: (bundleName: string, process: string) => {
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     },
-    onBackupSizeReport: (OnBackupSizeReport) => { // The callback function is used together with getBackupDataSize to return the obtained application data size and the bundle name of the application that is obtaining the data size.
+    onBackupSizeReport: (OnBackupSizeReport) => { // The callback function is used together with getBackupDataSize to return the obtained application data size and the bundle name of the application whose data size is being retrieved. onBackupSizeReport in generalCallbacks returns the scan result every 5 seconds, or immediately if the data retrieval process is completed within 5 seconds, until all application data in dataList is returned.
       console.info('dataSizeCallback success');
       const jsonObj: scannedInfos | null = JSON.parse(OnBackupSizeReport); // Parse and print the returned information.
       if (jsonObj) {
@@ -2029,7 +2103,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         console.info('fileData info:' + fileData.fd);
         if (!fs.accessSync(basePath)) {
           fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+          console.info('create success' + basePath);
         }
         fs.copyFileSync(fileData.fd, path); // Save the obtained local capability file to the local host.
         fs.closeSync(fileData.fd);
@@ -3351,7 +3425,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         console.info('fileData info:' + fileData.fd);
         if (!fs.accessSync(basePath)) {
           fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+          console.info('create success' + basePath);
         }
         fs.copyFileSync(fileData.fd, path); // Save the obtained local capability file to the local host.
         fs.closeSync(fileData.fd);
@@ -3404,7 +3478,7 @@ The capability file can be obtained by using [fs.stat](js-apis-file-fs.md#fsstat
 
 getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime\>): Promise&lt;void&gt;
 
-Obtains the amount of data to be backed up. This method is called before **appendBundles**. The scanning result is returned at a fixed interval of 5 seconds by calling the general callback **onBackupSizeReport** asynchronously until all application data in the datalist is returned.
+Obtains the amount of data to be backed up. This method is called before **appendBundles**. **getBackupDataSize** is used together with **onBackupSizeReport**. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -3495,7 +3569,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     onProcess: (bundleName: string, process: string) => {
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     },
-    onBackupSizeReport: (OnBackupSizeReport) => { // The callback function is used together with getBackupDataSize to return the obtained application data size and the bundle name of the application that is obtaining the data size.
+    onBackupSizeReport: (OnBackupSizeReport) => { // The callback function is used together with getBackupDataSize to return the obtained application data size and the bundle name of the application whose data size is being retrieved. onBackupSizeReport in generalCallbacks returns the scan result every 5 seconds, or immediately if the data retrieval process is completed within 5 seconds, until all application data in dataList is returned.
       console.info('dataSizeCallback success');
       const jsonObj: scannedInfos | null = JSON.parse(OnBackupSizeReport); // Parse and print the returned information.
       if (jsonObj) {
@@ -3582,7 +3656,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 
@@ -3648,7 +3721,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ### appendBundles<sup>12+</sup>
 
-appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;, infos: string[]): Promise&lt;void&gt;
+appendBundles(bundlesToAppend: Array&lt;IncrementalBackupData&gt;, infos: string[]): Promise&lt;void&gt;
 
 Appends applications that require incremental backup. In the current process, **appendBundles** can be called before **Release()** is called. This API uses a promise to return the result.
 
@@ -3662,7 +3735,7 @@ Appends applications that require incremental backup. In the current process, **
 
 | Name         | Type                                                          | Mandatory| Description                      |
 | --------------- | -------------------------------------------------------------- | ---- | -------------------------- |
-| bundlesToBackup | Array&lt;[IncrementalBackupData](#incrementalbackupdata12)&gt; | Yes  | Array of applications that require incremental backup.|
+| bundlesToAppend | Array&lt;[IncrementalBackupData](#incrementalbackupdata12)&gt; | Yes  | Array of applications that require incremental backup.|
 | infos  | string[] | Yes  | Array of the information about each application to be backed up. The mappings between **infos** and **bundlesToBackup** are identified by index. This parameter is supported since API version 12.|
 
 **Return value**
@@ -3684,7 +3757,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 

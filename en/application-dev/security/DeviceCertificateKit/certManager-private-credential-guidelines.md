@@ -69,24 +69,34 @@ The following table describes the commonly used APIs.
    
 3. Install an application certificate, obtain the certificate, use it to sign and verify data. Then, uninstall the certificate.
 
-   ```ts
+   <!-- @[certificate_management_development_guidance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/pages/CertManagerGuidelines.ets) -->
+   
+   ``` TypeScript
+   import { certificateManager } from '@kit.DeviceCertificateKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { util } from '@kit.ArkTS';
+   
    async function privateCredSample() {
      /* The data of the certificate to be installed must be assigned based on the service. The data in this example is not the real certificate data. */
-     let keystore: Uint8Array = new Uint8Array([
-       0x30, 0x82, 0x04, 0x6a, 0x02, 0x01, 0x03, 0x30, 0x82, 0x04, 0x30, 0x06, 0x09,
-     ]);
+     let keystoreBase64Str = 'MIIMJgIBAzCCC+AGCSqGSIb3DQEHAaCCC9EEggvNMIILyTCCBW4GCSqGSIb3DQEH' +
+       // ...
+       'G615kxCjeS6uixCHuij3pgQUhHiChcSeohRPrVkVPSPmYr9tjAYCAgQA';
+     /* Convert credential data to Uint8Array, where the credential data is in DER format */
+     let keystore: Uint8Array = new util.Base64Helper().decodeSync(keystoreBase64Str);
    
      /* Keystore password of the certificate to be installed. */
-     let keystorePwd: string = '123456';
+     let keystorePwd: string = 'huawei';
      let appKeyUri: string = '';
      try {
        /* Install an application certificate. */
-       const res: certificateManager.CMResult = await certificateManager.installPrivateCertificate(keystore, keystorePwd, "testPriCredential");
+       const res: certificateManager.CMResult = await certificateManager.installPrivateCertificate(keystore, keystorePwd, 'testPriCredential');
        appKeyUri = (res.uri != undefined) ? res.uri : '';
+       console.info(`InstallPrivateCertificate success appKeyUri: ${appKeyUri}`);
      } catch (err) {
-       console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
+       let e: BusinessError = err as BusinessError;
+       console.error(`Failed to install private certificate. Code: ${e.code}, message: ${e.message}`);
      }
-      
+   
      try {
        /* Obtain the application certificate. */
        let res: certificateManager.CMResult = await certificateManager.getPrivateCertificate(appKeyUri);
@@ -98,47 +108,49 @@ The following table describes the commonly used APIs.
        }
      } catch (err) {
        console.error(`Failed to get private certificate. Code: ${err.code}, message: ${err.message}`);
-    }
+     }
    
      try {
        /* srcData is the data to be signed and verified. */
        let srcData: Uint8Array = new Uint8Array([
          0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01,
        ]);
-       
+   
        /* Construct the parameters used for signing. */
        const signSpec: certificateManager.CMSignatureSpec = {
          purpose: certificateManager.CmKeyPurpose.CM_KEY_PURPOSE_SIGN,
          padding: certificateManager.CmKeyPadding.CM_PADDING_PSS,
          digest: certificateManager.CmKeyDigest.CM_DIGEST_SHA256
        };
-       
+   
        /* Generate a signature. */
        const signHandle: certificateManager.CMHandle = await certificateManager.init(appKeyUri, signSpec);
        await certificateManager.update(signHandle.handle, srcData);
        const signResult: certificateManager.CMResult = await certificateManager.finish(signHandle.handle);
-       
+   
        /* Construct the parameters for signature verification. */
        const verifySpec: certificateManager.CMSignatureSpec = {
          purpose: certificateManager.CmKeyPurpose.CM_KEY_PURPOSE_VERIFY,
          padding: certificateManager.CmKeyPadding.CM_PADDING_PSS,
          digest: certificateManager.CmKeyDigest.CM_DIGEST_SHA256
        };
-       
+   
        /** Verify the signature. */
        const verifyHandle: certificateManager.CMHandle = await certificateManager.init(appKeyUri, verifySpec);
        await certificateManager.update(verifyHandle.handle, srcData);
        const verifyResult = await certificateManager.finish(verifyHandle.handle, signResult.outData);
        console.info('Succeeded in signing and verifying.');
      } catch (err) {
-       console.error(`Failed to sign or verify. Code: ${err.code}, message: ${err.message}`);
+       let e: BusinessError = err as BusinessError;
+       console.error(`Failed to sign or verify. Code: ${e.code}, message: ${e.message}`);
      }
-       
+   
      try {
        /* Uninstall the application certificate. */
        await certificateManager.uninstallPrivateCertificate(appKeyUri);
      } catch (err) {
-       console.error(`Failed to uninstall private certificate. Code: ${err.code}, message: ${err.message}`);
+       let e: BusinessError = err as BusinessError;
+       console.error(`Failed to uninstall private certificate. Code: ${e.code}, message: ${e.message}`);
      }
    }
    ```

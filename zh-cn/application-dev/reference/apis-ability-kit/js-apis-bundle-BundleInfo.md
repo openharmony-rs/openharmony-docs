@@ -14,7 +14,7 @@
 > 
 > 从API version 9开始，该模块不再维护，建议使用[bundleManager-BundleInfo](js-apis-bundleManager-bundleInfo.md)替代。
 
-## BundleInfo<sup>(deprecated)<sup>
+## BundleInfo<sup>(deprecated)</sup>
 
 > **说明：**
 >
@@ -50,7 +50,7 @@
 
 
 
-## ReqPermissionDetail<sup>(deprecated)<sup>
+## ReqPermissionDetail<sup>(deprecated)</sup>
 
 > **说明：**
 >
@@ -68,7 +68,7 @@
 
 
 
-## UsedScene<sup>(deprecated)<sup>
+## UsedScene<sup>(deprecated)</sup>
 
 > **说明：**
 >

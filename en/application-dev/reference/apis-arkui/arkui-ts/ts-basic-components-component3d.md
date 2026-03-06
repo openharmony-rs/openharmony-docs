@@ -6,7 +6,7 @@
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
 
-The **Component3D** component is used to load 3D model resources and create custom rendering. It is typically used to present 3D animations.
+The **Component3D** component used to render ArkGraphics 3D scenes or glTF models (.gltf and .glb files) into the ArkUI. It supports both custom scene mode and automatic scene mode, and provides the capability for custom rendering pipelines.
 
 >  **NOTE**
 >
@@ -42,7 +42,7 @@ Provides the 3D scene configuration options.
 
 | Name       | Type                              | Read-Only| Optional  | Description                                      |
 | --------- | -------------------------------- | ---- | ---- | ---------------------------------------- |
-| scene     | [ResourceStr](ts-types.md#resourcestr) \| [Scene](#scene12) | No   | Yes   | 3D model resource file or scene object. Default value: **undefined**.<br>**NOTE**<br>Currently, only GLTF files are supported.|
+| scene     | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[Scene](#scene12) | No   | Yes   | 3D model resource file or scene object. Default value: **undefined**.<br>When a glTF model (.gltf or .glb file) resource path is passed, the component runs in automatic scene mode. The framework automatically creates a basic camera, lighting, and provides default gesture interactions (rotate and zoom). The related parameters are managed internally by the framework and cannot be modified externally. You can only configure the display effects through the attributes of **Component3D**.<br>When a **Scene** object is passed, the component runs in custom scene mode. You can create and manage the camera, light source, and interactions through ArkGraphics 3D APIs.<br>When this parameter is not specified, the component serves only as an output container for a custom rendering pipeline (shader/customRender).<br>**NOTE**<br>In custom scene mode, the component does not have a built-in camera controller. Therefore, it does not automatically respond to drag or pinch gestures. If interactions are required, you need to integrate gestures and update the camera's position and rotation parameters.|
 | modelType | [ModelType](#modeltype) | No   | Yes   | Composition mode of the 3D scene.<br>Default value: **ModelType.SURFACE**.<br>**NOTE**<br>**ModelType.TEXTURE**: The GPU is used for composition.<br>**ModelType.SURFACE**: Dedicated hardware is used for composition.<br>In general cases, leave this parameter at its default settings.|
 
 ## ModelType

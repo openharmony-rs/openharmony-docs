@@ -9,7 +9,7 @@
 
 ## Overview
 
-This file declares the common types used in the NativeBuffer module.
+This file declares the common types used in the **NativeBuffer** module.
 
 **File to include**: <native_buffer/buffer_common.h>
 
@@ -197,10 +197,10 @@ Before API version 22, use this enum only if **native_buffer.h** is referenced. 
 | NATIVEBUFFER_PIXEL_FMT_UYVY_422_PKG | UYVY422 packed.<br>**Since**: 12|
 | NATIVEBUFFER_PIXEL_FMT_YVYU_422_PKG | YVYU422 packed.<br>**Since**: 12|
 | NATIVEBUFFER_PIXEL_FMT_VYUY_422_PKG | VYUY422 packed.<br>**Since**: 12|
-| NATIVEBUFFER_PIXEL_FMT_RGBA_1010102 | RGBA_1010102 packed.|
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_P010 | YCBCR420 semi-planar 10-bit packed.|
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_P010 | YCRCB420 semi-planar 10-bit packed.|
-| NATIVEBUFFER_PIXEL_FMT_RAW10 | Raw 10-bit packed.|
+| NATIVEBUFFER_PIXEL_FMT_RGBA_1010102 | RGBA_1010102 packed.<br>**Since**: 12|
+| NATIVEBUFFER_PIXEL_FMT_YCBCR_P010 | YCBCR420 semi-planar 10-bit packed.<br>**Since**: 12|
+| NATIVEBUFFER_PIXEL_FMT_YCRCB_P010 | YCRCB420 semi-planar 10-bit packed.<br>**Since**: 12|
+| NATIVEBUFFER_PIXEL_FMT_RAW10 | Raw 10-bit packed.<br>**Since**: 12|
 | NATIVEBUFFER_PIXEL_FMT_BLOB | BLOB.<br>**Since**: 15|
 | NATIVEBUFFER_PIXEL_FMT_RGBA16_FLOAT | RGBA16 float.<br>**Since**: 15|
 | NATIVEBUFFER_PIXEL_FMT_Y8 = 40 | Y8.<br>**Since**: 20|

@@ -182,7 +182,7 @@ enum InputMethod_ErrorCode
 | 枚举项 | 描述 |
 | -- | -- |
 | IME_ERR_OK = 0 | 成功。 |
-| IME_ERR_UNDEFINED = 1 | 查询失败。 |
+| IME_ERR_UNDEFINED = 1 | 未定义错误。 |
 | IME_ERR_PARAMCHECK = 401 | 参数检查失败。 |
 | IME_ERR_PACKAGEMANAGER = 12800001 | 包管理异常。 |
 | IME_ERR_IMENGINE = 12800002 | 输入法应用异常。 |

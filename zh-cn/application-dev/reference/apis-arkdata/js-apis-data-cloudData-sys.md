@@ -67,17 +67,9 @@ import { cloudData } from '@kit.ArkData';
 // databaseScopes:云上数据库类型
 // recordTypes:云上数据库表名
 
-interface ExtraData {
+let extraData: cloudData.ExtraData = {
   eventId: "cloud_data_change",
-  extraData: '{
-    "data": "{
-     "accountId": "aaa",
-     "bundleName": "com.bbb.xxx",
-     "containerName": "alias",
-     "databaseScopes": ["private", "shared"],
-     "recordTypes": ["xxx", "yyy", "zzz"]
-    }"
-  }'
+  extraData: '{"data": "{"accountId": "aaa", "bundleName": "com.bbb.xxx", "containerName": "alias", "databaseScopes": ["private", "shared"], "recordTypes": ["xxx", "yyy", "zzz"]}"}',
 }
 
 ```
@@ -1160,7 +1152,7 @@ let appActions: Record<string, cloudData.ClearAction> = {
   'test_bundleName2': cloudData.ClearAction.CLEAR_CLOUD_DATA_AND_INFO,
   'test_bundleName3': cloudData.ClearAction.CLEAR_CLOUD_NONE,
 };
-let config: Record<stringm, cloudData.ClearConfig> = {
+let config: Record<string, cloudData.ClearConfig> = {
   'test_bundleName': {
     dbInfo: {
       'test_storeName': {

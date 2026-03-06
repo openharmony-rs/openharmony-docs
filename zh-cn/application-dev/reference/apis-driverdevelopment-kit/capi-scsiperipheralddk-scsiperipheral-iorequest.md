@@ -16,7 +16,7 @@ typedef struct ScsiPeripheral_IORequest {...} ScsiPeripheral_IORequest
 
 **起始版本：** 18
 
-**相关模块：** [SCSIPeripheralDDK](capi-scsiperipheralddk.md)
+**相关模块：** [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
 
 **所在头文件：** [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 

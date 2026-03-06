@@ -41,6 +41,7 @@
     - [@ohos.app.ability.OpenLinkOptions (openLink的可选参数)](js-apis-app-ability-openLinkOptions.md)
     - [@ohos.app.ability.ShareExtensionAbility (支持分享详情页接入的ExtensionAbility组件)](js-apis-app-ability-shareExtensionAbility.md)
     - [@ohos.app.ability.StartOptions (startAbility的可选参数)](js-apis-app-ability-startOptions.md)
+    - [@ohos.app.ability.systemConfiguration (系统环境变量变化监听器)](js-apis-app-ability-systemConfiguration.md)
     - [@ohos.app.ability.UIAbility (带界面的应用组件)](js-apis-app-ability-uiAbility.md)
     - [@ohos.app.ability.UIExtensionAbility (带界面的ExtensionAbility组件)](js-apis-app-ability-uiExtensionAbility.md)
     - [@ohos.app.ability.UIExtensionContentSession (UIExtensionAbility界面操作类)](js-apis-app-ability-uiExtensionContentSession.md)
@@ -51,6 +52,8 @@
     - [@ohos.app.appstartup.startupManager (启动框架管理能力)](js-apis-app-appstartup-startupManager.md)
     - [@ohos.app.appstartup.StartupTask (启动框架任务)](js-apis-app-appstartup-startupTask.md)
     - [@ohos.app.ability.autoStartupManager (开机自启管理能力)](js-apis-app-ability-autoStartupManager.md)
+    - [@ohos.app.agent.AgentExtensionAbility (智能体扩展组件)](js-apis-app-agent-agentExtensionAbility.md)
+    - [@ohos.continuation.continuationManager (流转/协同管理)](js-apis-continuation-continuationManager.md)
     <!--Del-->
     - [@ohos.app.ability.AbilityConstant (Ability相关常量)(系统接口)](js-apis-app-ability-abilityConstant-sys.md)
     - [@ohos.app.ability.application (Application)(系统接口)](js-apis-app-ability-application-sys.md)
@@ -67,6 +70,17 @@
     - [@ohos.app.ability.verticalPanelManager (垂域面板管理)(系统接口)](js-apis-app-ability-verticalpanelmanager-sys.md)
     - [@ohos.app.ability.UIExtensionContentSession (UIExtensionAbility界面操作类)(系统接口)](js-apis-app-ability-uiExtensionContentSession-sys.md)
     <!--DelEnd-->
+     - continuation<!--stage-model-continuation-->
+       - [continuationExtraParams](js-apis-continuation-continuationExtraParams.md)
+       - [continuationResult](js-apis-continuation-continuationResult.md)
+       <!--Del-->
+       - [ContinuableInfo(系统接口)](js-apis-inner-application-continuableInfo-sys.md)
+ 	   - [ContinueCallback(系统接口)](js-apis-inner-application-continueCallback-sys.md)
+ 	   - [ContinueMissionInfo(系统接口)](js-apis-inner-application-continueMissionInfo-sys.md)
+ 	   - [MissionCallbacks(系统接口)](js-apis-inner-application-missionCallbacks-sys.md)
+ 	   - [MissionDeviceInfo(系统接口)](js-apis-inner-application-missionDeviceInfo-sys.md)
+ 	   - [MissionParameter(系统接口)](js-apis-inner-application-missionParameter-sys.md)
+       <!--DelEnd-->
   - FA模型能力的接口<!--fa-model-->
     - [@ohos.ability.ability (Ability模块)](js-apis-ability-ability.md)
     - [@ohos.ability.featureAbility (FeatureAbility模块)](js-apis-ability-featureAbility.md)
@@ -100,6 +114,7 @@
     - [@ohos.ability.screenLockFileManager (锁屏敏感数据管理)(系统接口)](js-apis-screenLockFileManager-sys.md)
     - [@ohos.app.ability.abilityManager (AbilityManager)(系统接口)](js-apis-app-ability-abilityManager-sys.md)
     - [@ohos.app.ability.appManager (appManager)(系统接口)](js-apis-app-ability-appManager-sys.md)
+    - [@ohos.app.agent.agentManager (Agent智能组件管理)(系统接口)](js-apis-app-agent-agentManager-sys.md)
     - [@ohos.app.ability.kioskManager (Kiosk管理模块)(系统接口)](js-apis-app-ability-kioskManager-sys.md)
     - [@ohos.app.ability.missionManager (missionManager)(系统接口)](js-apis-app-ability-missionManager-sys.md)
     - [@ohos.app.ability.quickFixManager (quickFixManager)(系统接口)](js-apis-app-ability-quickFixManager-sys.md)
@@ -141,6 +156,10 @@
       - [AbilityStageMonitor](js-apis-inner-application-abilityStageMonitor.md)
       - [AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md)
       - [AbilityStateData](js-apis-inner-application-abilityStateData.md)
+      - [AgentCard](js-apis-inner-application-AgentCard.md)
+      - [AgentExtensionConnectCallback](js-apis-inner-application-agentExtensionConnectCallback.md)
+      - [AgentHostProxy](js-apis-inner-application-agentHostProxy.md)
+      - [AgentProxy](js-apis-inner-application-agentProxy.md)
       - [ApplicationContext (应用上下文)](js-apis-inner-application-applicationContext.md)
       - [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md)
       - [AppServiceExtensionContext (应用后台服务扩展组件上下文)](js-apis-inner-application-appServiceExtensionContext.md)
@@ -176,17 +195,11 @@
       - [AutoStartupCallback(系统接口)](js-apis-inner-application-autoStartupCallback-sys.md)
       - [AutoStartupInfo(系统接口)](js-apis-inner-application-autoStartupInfo-sys.md)
       - [Context(系统接口)](js-apis-inner-application-context-sys.md)
-      - [ContinuableInfo(系统接口)](js-apis-inner-application-continuableInfo-sys.md)
-      - [ContinueCallback(系统接口)](js-apis-inner-application-continueCallback-sys.md)
       - [ContinueDeviceInfo(系统接口)](js-apis-inner-application-continueDeviceInfo-sys.md)
-      - [ContinueMissionInfo(系统接口)](js-apis-inner-application-continueMissionInfo-sys.md)
       - [CustomData (系统接口)](js-apis-inner-application-customData-sys.md)
       - [ExtensionRunningInfo(系统接口)](js-apis-inner-application-extensionRunningInfo-sys.md)
-      - [MissionCallbacks(系统接口)](js-apis-inner-application-missionCallbacks-sys.md)
-      - [MissionDeviceInfo(系统接口)](js-apis-inner-application-missionDeviceInfo-sys.md)
       - [MissionInfo(系统接口)](js-apis-inner-application-missionInfo-sys.md)
       - [MissionListener(系统接口)](js-apis-inner-application-missionListener-sys.md)
-      - [MissionParameter(系统接口)](js-apis-inner-application-missionParameter-sys.md)
       - [MissionSnapshot(系统接口)](js-apis-inner-application-missionSnapshot-sys.md)
       - [MultiAppMode (系统接口)](js-apis-inner-application-multiAppMode-sys.md)
       - [PageNodeInfo(系统接口)](js-apis-inner-application-pageNodeInfo-sys.md)
@@ -221,10 +234,10 @@
       - [BundleResourceInfo (系统接口)](js-apis-bundleManager-BundleResourceInfo-sys.md)
       - [BusinessAbilityInfo (系统接口)](js-apis-bundleManager-businessAbilityInfo-sys.md)
       - [dispatchInfo (系统接口)](js-apis-bundleManager-dispatchInfo-sys.md)
-      - [LauncherAbilityResourceInfo (系统接口)](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)
+      - [LauncherAbilityResourceInfo (系统接口)](js-apis-LauncherAbilityResourceInfo-sys.md)
       - [permissionDef (系统接口)](js-apis-bundleManager-permissionDef-sys.md)
       - [PluginBundleInfo (系统接口)](js-apis-bundleManager-pluginBundleInfo-sys.md)
-      - [recoverableApplicationInfo (系统接口)](js-apis-bundleManager-recoverableApplicationInfo-sys.md)
+      - [recoverableApplicationInfo (系统接口)](js-apis-recoverableApplicationInfo-sys.md)
       - [remoteAbilityInfo (系统接口)](js-apis-bundleManager-remoteAbilityInfo-sys.md)
       - [SharedBundleInfo (系统接口)](js-apis-bundleManager-sharedBundleInfo-sys.md)
       <!--DelEnd-->
@@ -245,7 +258,6 @@
     - [@ohos.application.Configuration (Configuration)](js-apis-application-configuration.md)
     - [@ohos.application.ConfigurationConstant (ConfigurationConstant)](js-apis-application-configurationConstant.md)
     - [@ohos.application.Want (Want)](js-apis-application-want.md)
-    - [@ohos.continuation.continuationManager (流转/协同管理)](js-apis-continuation-continuationManager.md)
     - [@ohos.wantAgent (WantAgent模块)](js-apis-wantAgent.md)
     <!--Del-->
     - [@ohos.ability.wantConstant (wantConstant)(系统接口)](js-apis-ability-wantConstant-sys.md)
@@ -264,8 +276,6 @@
     - ability<!--ability-deprecated-->
       - [want](js-apis-inner-ability-want.md)
     - continuation<!--ability--continuation-->
-      - [continuationExtraParams](js-apis-continuation-continuationExtraParams.md)
-      - [continuationResult](js-apis-continuation-continuationResult.md)
     - bundle<!--bundle-->
       - [abilityInfo](js-apis-bundle-AbilityInfo.md)
       - [applicationInfo](js-apis-bundle-ApplicationInfo.md)

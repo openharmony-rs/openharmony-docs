@@ -64,9 +64,9 @@ Represents the **OppServerProfile** class. Before using APIs of this class, you 
 
 ### sendFile
 
-sendFile(deviceId: string, fileHolds: Array&lt;FileHolder&lt;): Promise&lt;void&gt;
+sendFile(deviceId: string, fileHolds: Array&lt;FileHolder&gt;): Promise&lt;void&gt;
 
-Send files over Bluetooth. This API uses a promise to return the result.
+Sends files over Bluetooth. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -153,7 +153,7 @@ Receives files over Bluetooth. This API uses a promise to return the result.
 
 | Name    | Type                         | Mandatory  | Description                      |
 | ------- | --------------------------- | ---- | ------------------------ |
-| accept | boolean | Yes   | Whether to accept the file transfer request. The value **true** means to accept the file transfer request, and the value **false** means the opposite.|
+| accept | boolean | Yes   | Whether to accept the file receiving request. The value **true** means to accept the file receiving request, and the value **false** means the opposite.|
 | fileFd | number| Yes   | File descriptor, which must be enabled during file receiving.|
 
 **Return value**
@@ -381,7 +381,7 @@ Unsubscribes from Bluetooth file transfer completion events.
 
 | Name     | Type                                      | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| type     | string                                   | Yes   | Event type. The field has a fixed value of **receiveIncomingFile**. After **off('receiveIncomingFile')** is called, an event will be returned when file transfer is complete.|
+| type     | string                                   | Yes   | Event type. The field has a fixed value of **receiveIncomingFile**. After **off('receiveIncomingFile')** is called, an event will be returned when file transfer stops.|
 
 **Error codes**
 
@@ -477,7 +477,7 @@ Obtains the information about the file that is being transferred. This API uses 
 
 | Type                                      | Description                        |
 | ---------------------------------------- | -------------------------- |
-| Promise&lt;[OppTransferInformation](#opptransferinformation)&gt; | Promise that returns the file information object being transferred.|
+| Promise&lt;[OppTransferInformation](#opptransferinformation)&gt; | Promise used to return the current file information object.|
 
 **Error codes**
 

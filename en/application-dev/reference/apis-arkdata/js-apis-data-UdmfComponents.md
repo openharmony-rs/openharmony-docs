@@ -48,9 +48,9 @@ Enumerates content card types, including large, medium, and small.
 
 | Name         | Value| Description               |
 |-------------|---|-------------------|
-| TYPE_BIG | 0 | 4 × 4. The default card width and height are both 200.|
-| TYPE_MID | 1 | 4 × 2. The default card width and height are 200 and 100, respectively.|
-| TYPE_SMALL | 2 | 2 × 1. The default card width and height are 137 and 83, respectively.|
+| TYPE_BIG | 0 | 4 × 4. The default card width and height are both **200**.|
+| TYPE_MID | 1 | 4 × 2. The default card width and height are **200** and **100**, respectively.|
+| TYPE_SMALL | 2 | 2 × 1. The default card width and height are **137** and **83**, respectively.|
 
 ## Example
 

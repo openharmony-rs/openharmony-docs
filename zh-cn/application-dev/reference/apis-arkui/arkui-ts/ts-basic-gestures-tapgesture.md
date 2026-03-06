@@ -137,7 +137,6 @@ struct TapGestureExample {
 @Entry
 @Component
 struct TapGestureExample {
-  @State value: string = ''
 
   build() {
     Column() {
@@ -158,7 +157,6 @@ struct TapGestureExample {
               }
             })
         )
-      Text(this.value)
     }
     .height(200)
     .width(300)

@@ -4159,7 +4159,7 @@ try {
 
 getResultSize(query: Query, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the number of results that matches the specified **Query** object. This API uses an asynchronous callback to return the result.
+Obtains the number of results that match the specified **Query** object. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -4223,7 +4223,7 @@ try {
 
 getResultSize(query: Query): Promise&lt;number&gt;
 
-Obtains the number of results that matches the specified **Query** object. This API uses a promise to return the result.
+Obtains the number of results that match the specified **Query** object. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -7139,7 +7139,7 @@ try {
 
 getResultSize(deviceId: string, query: Query, callback: AsyncCallback&lt;number&gt;): void;
 
-Obtains the number of results that matches the specified device ID and **Query** object. This API uses an asynchronous callback to return the result.
+Obtains the number of results that match the specified device ID and **Query** object. This API uses an asynchronous callback to return the result.
 > **NOTE**
 >
 > **deviceId** can be obtained by [deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync).
@@ -7212,7 +7212,7 @@ try {
 
 getResultSize(deviceId: string, query: Query): Promise&lt;number&gt;
 
-Obtains the number of results that matches the specified device ID and **Query** object. This API uses a promise to return the result.
+Obtains the number of results that match the specified device ID and **Query** object. This API uses a promise to return the result.
 > **NOTE**
 >
 > **deviceId** can be obtained by [deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync).

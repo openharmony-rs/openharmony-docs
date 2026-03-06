@@ -36,7 +36,7 @@ Polyline(options?: PolylineOptions)
 
 ## PolylineOptions<sup>18+</sup>
 
-Describes the options for drawing a polyline.
+Describes the drawing attributes of the Polyline component.
 
 > **NOTE**
 >
@@ -73,7 +73,7 @@ Sets the list of coordinates through which the line passes. The [attributeModifi
 
 | Name| Type                                                        | Mandatory| Description                               |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------- |
-| value  | Array&lt;any&gt; | Yes  | List of coordinates that the polyline passes through. A two-dimensional array is passed. Each subarray indicates the [x, y] coordinates of a vertex.<br>Default value: [] (empty array)<br>Default unit: vp.<br>The **undefined** and **null** values are treated as the default value.|
+| value  | Array&lt;any&gt; | Yes  | List of coordinates that the polyline passes through. A two-dimensional array is passed. Each subarray indicates the [x, y] coordinates of a vertex.<br>Default value: [] (empty array)<br>Default unit: vp.<br>The **undefined** and **null** values are invalid and treated as the default value.|
 
 ### fill
 
@@ -109,7 +109,7 @@ Sets the opacity of the fill area. This attribute can be dynamically set using [
 
 | Name| Type                                                        | Mandatory| Description                          |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------ |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Opacity of the fill area.<br>**NOTE**<br>The value range of the number format is [0.0, 1.0]. If the specified value is less than 0.0, the value is 0.0. If the specified value is greater than 1.0, the value is 1.0. Other abnormal values are processed as 1.0.<br>The string format supports the string format of the number format. The value range is the same as that of the number format.<br>The Resource format supports character strings in system resources or application resources. The value range is the same as that of the number format.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.<br>Default value: **1.0**.|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Opacity of the fill area.<br>**NOTE**<br>The value range of the number format is [0.0, 1.0]. If the specified value is less than 0.0, the value is 0.0. If the specified value is greater than 1.0, the value is 1.0. Other abnormal values are processed as 1.0.<br>The string format supports the string format of the number format. The value range is the same as that of the number format.<br>The Resource format supports character strings in system resources or application resources. The value range is the same as that of the number format.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.<br>Default value: **1.0**.|
 
 ### stroke
 
@@ -133,7 +133,7 @@ Sets the stroke color. This attribute can be dynamically set using [attributeMod
 
 strokeDashArray(value: Array&lt;any&gt;)
 
-Sets the stroke dashes. The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) method can be used to dynamically set attributes. Line segments may overlap when they intersect. The value must be greater than or equal to 0. Invalid values are treated as the default value.
+Sets the line gap. The [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) method can be used to dynamically set attributes. Line segments may overlap when they intersect. The value must be greater than or equal to 0. Invalid values are treated as the default value.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -145,13 +145,13 @@ Sets the stroke dashes. The [attributeModifier](ts-universal-attributes-attribut
 
 | Name| Type            | Mandatory| Description                     |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | Yes  | Array defining the dash pattern for the polyline outline. Elements alternate between dash length and gap length.<br>Default value: [] (empty array)<br>Default unit: vp.<br>The **undefined** and **null** values are treated as the default value.<br>**NOTE**<br>Empty array: solid line<br>Even-numbered array: Elements cycle sequentially, for example, [a, b, c, d] represents: dash a -> gap b -> dash c -> gap d -> dash a -> ...<br>Odd-numbered array: Elements are duplicated to create an even-numbered array, for example, [a, b, c] becomes [a, b, c, a, b, c], representing: dash a -> gap b -> dash c -> gap a -> dash b -> gap c -> dash a -> ...|
+| value  | Array&lt;any&gt; | Yes  | Array defining the dash pattern for the polyline outline. Elements alternate between dash length and gap length.<br>Default value: [] (empty array)<br>Default unit: vp.<br>The **undefined** and **null** values are invalid and treated as the default value.<br>**NOTE**<br>Empty array: solid line<br>Even-numbered array: Elements cycle sequentially, for example, [a, b, c, d] represents: dash a -> gap b -> dash c -> gap d -> dash a -> ...<br>Odd-numbered array: Elements are duplicated to create an even-numbered array, for example, [a, b, c] becomes [a, b, c, a, b, c], representing: dash a -> gap b -> dash c -> gap a -> dash b -> gap c -> dash a -> ...|
 
 ### strokeDashOffset
 
 strokeDashOffset(value: number | string)
 
-Sets the offset of the line drawing start point. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+Sets the offset of the line drawing start point. A positive value shifts the start point to the left. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -163,7 +163,7 @@ Sets the offset of the line drawing start point. This attribute can be dynamical
 
 | Name| Type                      | Mandatory| Description                                |
 | ------ | -------------------------- | ---- | ------------------------------------ |
-| value  | number \| string | Yes  | Offset of the start point for drawing the stroke.<br>Default value: **0**.<br>Default unit: vp.<br>Abnormal values undefined and null are processed based on the default values. NaN and Infinity will cause strokeDashArray to become invalid.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Offset of the start point for drawing the stroke.<br>Default value: **0**.<br>Default unit: vp.<br>Abnormal values undefined and null are processed based on the default values. NaN and Infinity will cause strokeDashArray to become invalid.|
 
 ### strokeLineCap
 
@@ -187,7 +187,7 @@ Sets the style of end points of lines. This attribute can be dynamically set usi
 
 strokeLineJoin(value: LineJoinStyle)
 
-Sets the join style of the stroke. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+Sets the join style of lines. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -199,7 +199,7 @@ Sets the join style of the stroke. This attribute can be dynamically set using [
 
 | Name| Type                                               | Mandatory| Description                                              |
 | ------ | --------------------------------------------------- | ---- | -------------------------------------------------- |
-| value  | [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) | Yes  | Join style of lines.<br>Default value: **LineJoinStyle.Miter**<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.|
+| value  | [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) | Yes  | Join style of lines.<br>Default value: **LineJoinStyle.Miter**<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
 
 ### strokeMiterLimit
 
@@ -217,7 +217,7 @@ Sets the limit on the ratio of the miter length to the value of stroke width use
 
 | Name| Type                      | Mandatory| Description                                          |
 | ------ | -------------------------- | ---- | ---------------------------------------------- |
-| value  | number \| string | Yes  | Limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join.<br>Default value: **4**<br>The valid value of this attribute must be greater than or equal to 1.0. If the value is within the [0, 1) range, 1.0 is used.<br>The abnormal values undefined, null, and NaN are processed based on the default values. Infinity causes the stroke failure.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join.<br>Default value: **4**<br>The valid value of this attribute must be greater than or equal to 1.0. If the value is within the [0, 1) range, 1.0 is used.<br>The abnormal values undefined, null, and NaN are processed based on the default values. Infinity causes the stroke failure.|
 
 ### strokeOpacity
 
@@ -235,7 +235,7 @@ Sets the stroke opacity. This attribute can be dynamically set using [attributeM
 
 | Name| Type                                                        | Mandatory| Description                      |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------- |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Stroke opacity. The value range is [0.0, 1.0].<br>Default value: opacityset by the [stroke](#stroke) API.<br>If the given value is less than 0.0, the value is 0.0. If the given value is greater than 1.0, the value is 1.0.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Stroke opacity. The value range is [0.0, 1.0].<br>Default value: opacityset by the [stroke](#stroke) API.<br>If the given value is less than 0.0, the value is 0.0. If the given value is greater than 1.0, the value is 1.0.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.|
 
 ### strokeWidth
 
@@ -271,7 +271,7 @@ Sets whether to enable anti-aliasing. This attribute can be dynamically set usin
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | Yes  | Whether anti-aliasing is enabled.<br>**true**: Anti-aliasing is enabled.<br>**false**: Anti-aliasing is disabled.<br>Default value: **true**<br>The **undefined** and **null** values are treated as the default value.|
+| value  | boolean | Yes  | Whether anti-aliasing is enabled.<br>**true**: Anti-aliasing is enabled.<br>**false**: Anti-aliasing is disabled.<br>Default value: **true**<br>The **undefined** and **null** values are invalid and treated as the default value.|
 
 ## Example
 
@@ -311,7 +311,7 @@ struct PolylineExample {
 
 ![en-us_image_0000001219744185](figures/en-us_image_0000001219744185.png)
 
-### Example 2 (Using Different Parameter Types for Width and Height to Draw a Polyline)
+### Example 2: Using Different Parameter Types for Width and Height to Draw a Polyline
 
 The width and height attributes are used to draw a graph of different length types.
 

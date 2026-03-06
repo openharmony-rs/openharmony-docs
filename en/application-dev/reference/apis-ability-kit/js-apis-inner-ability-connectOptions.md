@@ -20,19 +20,11 @@ import { common } from '@kit.AbilityKit';
 
 ## ConnectOptions
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+### onConnect
 
-| Name| Type| Read-Only| Optional| Description|
-| ---- | ---- | ---- | ---- | ---- |
-| onConnect | [OnConnectFn](#onconnectfn23) | No   | No   | Called when the connection to the specified background service is successfully established.<br>**NOTE**<br>Starting from API version 23, the original **onConnect()** API is changed to a property, but its usage remains unchanged.|
-| onDisconnect | [OnDisconnectFn](#ondisconnectfn23) | No   | No   | Called when the connection to the specified background service is successfully disconnected.<br>**NOTE**<br>Starting from API version 23, the original **onDisconnect()** API is changed to a property, but its usage remains unchanged.|
-| onFailed | [OnFailedFn](#onfailedfn23) | No   | No   | Called when the connection to the specified background service fails.<br>**NOTE**<br>Starting from API version 23, the original **onFailed()** API is changed to a property, but its usage remains unchanged.|
+onConnect(elementName: ElementName, remote: rpc.IRemoteObject): void
 
-## OnConnectFn<sup>23+</sup>
-
-type OnConnectFn = (elementName: ElementName, remote: rpc.IRemoteObject) => void
-
-Called when the connection to the specified background service is successfully established.
+Called when a connection is set up.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -74,11 +66,11 @@ class EntryAbility extends UIAbility {
 }
 ```
 
-## OnDisconnectFn<sup>23+</sup>
+### onDisconnect
 
-type OnDisconnectFn = (elementName: ElementName) => void
+onDisconnect(elementName: ElementName): void
 
-Called when the connection to the specified background service is successfully disconnected.
+Called when a connection is interrupted.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -119,11 +111,11 @@ class EntryAbility extends UIAbility {
 }
 ```
 
-## OnFailedFn<sup>23+</sup>
+### onFailed
 
-type OnFailedFn = (code: int) => void
+onFailed(code: number): void
 
-Called when the connection to the specified background service fails. The error code regarding the connection failure is returned.
+Called when a connection fails.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

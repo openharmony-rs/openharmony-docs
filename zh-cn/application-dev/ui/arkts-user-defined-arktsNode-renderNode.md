@@ -78,7 +78,7 @@ export struct OperationNodeTree {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Row() {
         NodeContainer(this.myNodeController)
           .width(200)
@@ -97,10 +97,9 @@ export struct OperationNodeTree {
           });
       };
 
-    // ···
+      // ...
   }
 }
-
 ```
 
 ## 设置和获取渲染相关属性
@@ -398,7 +397,7 @@ export struct CustomDraw {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Column() {
         NodeContainer(this.myNodeController)
           .width('100%');
@@ -411,10 +410,9 @@ export struct CustomDraw {
           });
       };
 
-    // ···
+      // ...
   }
 }
-
 ```
 
 ## 调整自定义绘制Canvas的变换矩阵
@@ -553,7 +551,7 @@ export struct CustomDrawCanvas {
   myNodeController1: MyNodeController1 = new MyNodeController1();
 
   build() {
-    // ···
+    // ...
       Row() {
         Column() {
           NodeContainer(this.myNodeController)
@@ -568,10 +566,9 @@ export struct CustomDrawCanvas {
         .width('45%');
       };
 
-    // ···
+      // ...
   }
 }
-
 ```
 
 ![RenderNode-canvas](./figures/renderNode-canvas.png)
@@ -739,15 +736,14 @@ export struct CustomDrawCanvasNative {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Row() {
         NodeContainer(this.myNodeController);
       };
 
-    // ···
+      // ...
   }
 }
-
 ```
 
 ## 设置标签
@@ -792,7 +788,7 @@ export struct SetLabel {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Column() {
         NodeContainer(this.myNodeController)
           .width(300)
@@ -800,15 +796,14 @@ export struct SetLabel {
           .backgroundColor(Color.Gray);
       };
 
-    // ···
+      // ...
   }
 }
-
 ```
 
 ## 查询当前RenderNode是否解除引用
 
-前端节点均绑定有相应的后端实体节点，当节点调用dispose接口解除绑定后，再次调用接口可能会出现crash、返回默认值的情况。
+前端节点均绑定有相应的后端实体节点，当节点调用dispose接口解除绑定后，再次调用接口可能会出现crash、返回默认值的情况。在ArkUI框架中，前端节点是在ArkTS代码层面创建的节点，负责与开发者交互；后端节点是在ArkUI框架底层维护的实体节点，负责具体逻辑的处理。
 
 从API version 20开始，使用[isDisposed](../reference/apis-arkui/js-apis-arkui-renderNode.md#isdisposed20)接口查询当前RenderNode对象是否已解除与后端实体节点的引用关系，从而可以在操作节点前检查其有效性，避免潜在风险。
 
@@ -857,7 +852,7 @@ export struct CheckRanderNodeDisposed {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    // ···
+    // ...
       Column({ space: 4 }) {
         NodeContainer(this.myNodeController);
         Button('RenderNode dispose')
@@ -879,8 +874,7 @@ export struct CheckRanderNodeDisposed {
       .width('100%')
       .height('100%');
 
-    // ···
+      // ...
   }
 }
-
 ```

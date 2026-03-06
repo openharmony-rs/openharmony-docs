@@ -6,7 +6,7 @@
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @fang-jinxu-->
 
-OpenHarmony NDK默认使用CMake作为构建系统，随包提供了符合OpenHarmony工具链的基础配置文件ohos.toolchain.cmake，用于预定义CMake变量来简化开发者配置。
+OpenHarmony NDK默认使用CMake作为构建系统，随包提供了符合OpenHarmony工具链的基础配置文件<!--RP2-->ohos.toolchain.cmake<!--RP2End-->，用于预定义CMake变量来简化开发者配置。
 
 
 常用的NDK工程构建方式有：

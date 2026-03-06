@@ -129,7 +129,8 @@ struct ProgressCase1 {
       Column() {
         Progress({value:0, total:100, type:ProgressType.Capsule}).width(200).height(50).value(this.progressValue)
         Row().width('100%').height(5)
-        Button('进度条+5')
+        // 请将$r('app.string.progress_add')替换为实际资源文件，在本示例中该资源文件的value值为"进度条+5"
+        Button($r('app.string.progress_add'))
           .onClick(()=>{
             this.progressValue += 5;
             if (this.progressValue > 100){

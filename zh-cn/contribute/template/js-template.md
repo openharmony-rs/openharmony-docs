@@ -34,6 +34,91 @@
 | @extends | 继承 |  带有该标签或实际存在extends关系但未带该标签时，在相关描述处应明确说明“xxx继承自xxx（提供链接）。” |
 | @装饰器名称 | 装饰器类型 | 若Class/Interface/属性被装饰器修饰，则需要在相关描述处明确说明“**装饰器类型**：@装饰器名称”，例如“**装饰器类型**：@Sendable”。|
 
+
+## 对系统接口与公共接口的写作要求
+ 	 
+为了使文档能够同时配套Full SDK与Public SDK发布，System API（系统接口）与Public API（公共接口）的API参考文档需要在不同的markdown文件中写作。
+
+按照一个模块的接口定义文件是否包含系统接口，可以分为三种情况：
+
+* [整个模块是公共接口](#整个模块是公共接口)
+* [整个模块是系统接口](#整个模块是系统接口)
+* [ 一个模块中包含系统接口与公共接口](#一个模块中包含系统接口与公共接口)
+
+> **Tip：如何判别属于上述哪种情况？**
+
+> 以[模块的d.ts文件](https://gitcode.com/openharmony/interface_sdk-js/tree/master/api)为参考基准:
+> 
+> - 如果整个模块中没有包含`@systemapi`标签，则表明整个模块是公共接口。
+> - 如果在整个模块上标注了`@systemapi`标签，则表示整个模块是系统接口。
+>   也有时候在整个模块上没有打`@systemapi`标签，但是模块中的每个API都打了`@systemapi`标签，这种情况大概率整个模块是系统接口，但是也不一定，需要与接口设计人员确认。如果是模块漏打标记，需要提单处理。
+> - 其他情况大多数属于既包含系统接口，又包含开放接口。
+ 	 
+ 	 
+### 整个模块是公共接口
+ 	 
+无特殊要求。
+ 	 
+### 整个模块是系统接口
+ 	 
+1. **文件名称**：以`-sys.md`结尾，例如`xxx-sys.md`。
+2. **文档标题**：`# @ohos.xxx (xxx)(系统接口)`。
+
+> **说明：** 
+> 
+> - 括号使用英文括号，且两个括号中间无空格。
+> - 如果是系统接口对应的指南，则标题名称为`# @ohos.xxx (xxx)(仅对系统应用开放)`。
+
+3. **模块说明**：在模块说明中添加：`本模块为系统接口。`
+    样例：
+
+    接口描述xxxxx。
+    
+    > **说明：**
+    > 
+    > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+    >
+    > 本模块接口为系统接口。
+ 	   
+### 一个模块中包含系统接口与公共接口
+ 	 
+1. **文件位置**：系统接口与公共接口文件位于同一个文件夹中。
+2. **文件名称**：系统接口的文件名在公共接口文件名后增加`-sys.md`，即命名为`xxx-sys.md`。
+3. **文档标题**：`# @ohos.xxx (xxx)(系统接口)`。
+4. **模块说明**：在模块说明里添加`当前页面仅包含本模块的系统接口，其他公开接口参见[xxx](js-apis-xxx.md)。`
+ 	    
+    样例：
+        
+    接口描述xxxxx。
+
+    > **说明：**
+    > 
+    > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+    >
+    > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.common (Ability公共模块)](js-apis-app-ability-common.md)。
+ 	 
+ 	     
+ 	 
+### 其他注意事项
+ 	 
+1. 在Readme文件中，系统接口文件位置位于公共接口后面，且需要使用`<!--Del--><!--DelEnd-->`删除标签。
+
+    样例：
+
+    ```md
+    // Readme-CN.md
+
+    - [@ohos.app.ability.Ability (Ability基类)](js-apis-app-ability-ability.md)
+    - [@ohos.app.ability.AbilityConstant (Ability相关常量)](js-apis-app-ability-abilityConstant.md)
+    <!--Del-->
+    - [@ohos.app.ability.AbilityConstant (Ability相关常量)(系统接口)](js-apis-app-ability-abilityConstant-sys.md)
+    - [@ohos.app.ability.application (Application)(系统接口)](js-apis-app-ability-application-sys.md)
+    <!--DelEnd-->
+    ```
+
+2. 系统接口文件可以链接到公共接口文件，但是公共接口文件不允许链接到系统接口文件。因为这会导致发布Public文档时出现断链。
+
+
 下面进入具体每个API的写作。
 
 ***

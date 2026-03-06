@@ -100,7 +100,7 @@
    } catch (error) {
      console.error(`Operation resetAllEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
    }
-   //应用在后台完成了工作后，部分释放能效资源
+   // 应用在后台完成了工作后，部分释放能效资源
    let request: backgroundTaskManager.EfficiencyResourcesRequest = {
      resourceTypes: backgroundTaskManager.ResourceType.CPU,
      isApply: false, // 释放资源

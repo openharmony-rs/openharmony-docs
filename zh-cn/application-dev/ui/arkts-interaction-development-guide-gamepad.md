@@ -10,11 +10,9 @@
 
 由于不同品牌和型号的手柄在硬件设计与信号输出上存在差异，其上报的键值和轴值可能并不统一，开发者在处理交互逻辑时应注意进行兼容性适配。
 
-下面以常见的游戏手柄为例，说明其按键和操纵杆的常见映射关系，以供参考。
+下面以常见的游戏手柄为例，说明其按键及操纵杆的常见映射关系：按键通常被映射为离散的键值（方向键有时也可映射为轴值），操纵杆则映射为连续的轴值。[KeyCode](../reference/apis-input-kit/js-apis-keycode.md#keycode)针对游戏手柄提供了可支持的键值，[AxisModel](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axismodel15)则提供了可支持的轴值。
 
 ![gamepad_map](figures/gamepad_map.PNG)
-
-从API version 23开始，支持对更多轴类型的事件进行处理，具体支持处理的轴类型可参考[AxisMoel](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axismodel15)。
 
 ## 处理按键输入
 

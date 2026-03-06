@@ -79,6 +79,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
    static OH_ImageReceiverNative* g_receiver = nullptr;
    
    static std::mutex g_mutex;
+   static bool g_isCallbackRunning = false;
    static std::condition_variable g_condVar;
    static bool g_imageReady = false;
    static OH_ImageNative* g_imageInfoResult = nullptr;
@@ -197,18 +198,29 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
      {
          OH_LOG_INFO(LOG_APP, "ImageReceiverNativeCTest buffer available.");
      
+         std::lock_guard<std::mutex> lock(g_mutex);
+         if (g_isCallbackRunning || receiver == nullptr) {
+             OH_LOG_WARN(LOG_APP, "Callback is running or receiver is null, skip.");
+             return;
+         }
+         g_isCallbackRunning = true;
+     
          OH_ImageNative* image = nullptr;
          Image_ErrorCode errCode = OH_ImageReceiverNative_ReadNextImage(receiver, &image);
          if (errCode != IMAGE_SUCCESS) {
              OH_LOG_ERROR(LOG_APP, "ImageReceiverNativeCTest get image receiver next image failed,"
                           "errCode: %{public}d.", errCode);
-             OH_ImageNative_Release(image);
+             if (image != nullptr) {
+                 OH_ImageNative_Release(image);
+                 image = nullptr;
+             }
+             g_isCallbackRunning = false;
              return;
-         } else {
-             std::lock_guard<std::mutex> lock(g_mutex);
-             g_imageInfoResult = image;
-             g_imageReady = true;
          }
+     
+         g_imageInfoResult = image;
+         g_imageReady = true;
+         g_isCallbackRunning = false;
          g_condVar.notify_one();
      }
      ```
@@ -258,10 +270,14 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
      ``` C++
      static napi_value ImageReceiverNativeCTest(napi_env env, napi_callback_info info)
      {
+         std::lock_guard<std::mutex> lock(g_mutex);
          if (g_receiver != nullptr) {
              OH_ImageReceiverNative_Off(g_receiver);
              OH_ImageReceiverNative_Release(g_receiver);
              g_receiver = nullptr;
+             g_isCallbackRunning = false;
+             g_imageReady = false;
+             g_imageInfoResult = nullptr;
          }
      
          OH_ImageReceiverOptions* options = nullptr;
@@ -396,8 +412,9 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
      <!-- @[start_captureSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
      
      ``` C++
-     static Camera_ErrorCode StartCaptureSession(Camera_Manager* mgr, Camera_Input* input, Camera_PhotoOutput* photoOutput,
-         Camera_CaptureSession** sessionOut)
+     static Camera_ErrorCode StartCaptureSession(Camera_Manager* mgr, Camera_Input* input,
+                                                 Camera_PreviewOutput* previewOutput,
+                                                 Camera_CaptureSession** sessionOut)
      {
          *sessionOut = CreateAndStartSession(mgr, input, NORMAL_PHOTO);
          if (*sessionOut == nullptr) {
@@ -405,9 +422,9 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
              return CAMERA_INVALID_ARGUMENT;
          }
      
-         Camera_ErrorCode ret = OH_CaptureSession_AddPhotoOutput(*sessionOut, photoOutput);
+         Camera_ErrorCode ret = OH_CaptureSession_AddPreviewOutput(*sessionOut, previewOutput);
          if (ret != CAMERA_OK) {
-             OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddPhotoOutput failed.");
+             OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddPreviewOutput failed.");
              return ret;
          }
      
@@ -421,6 +438,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
          if (ret != CAMERA_OK) {
              OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_Start failed.");
          }
+         
          return ret;
      }
      ```
@@ -432,6 +450,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
      ``` C++
      Camera_ErrorCode StartTakePhoto(char* str)
      {
+         char* photoSurfaceId = str;
          Camera_Manager* cameraManager = nullptr;
          Camera_Device* cameras = nullptr;
          uint32_t size = 0;
@@ -442,11 +461,12 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
          Camera_OutputCapability* cameraOutputCapability = nullptr;
          ret = GetCameraOutputCapability(cameraManager, cameras, 0, cameraOutputCapability);
          if (ret != CAMERA_OK) return ret;
-         const Camera_Profile* photoProfile = cameraOutputCapability->photoProfiles[0];
-         Camera_PhotoOutput* photoOutput = nullptr;
-         ret = OH_CameraManager_CreatePhotoOutput(cameraManager, photoProfile, str, &photoOutput);
-         if (photoProfile == nullptr || photoOutput == nullptr || ret != CAMERA_OK) {
-             OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreatePhotoOutput failed.");
+         
+         const Camera_Profile* photoProfile = cameraOutputCapability->previewProfiles[0];
+         Camera_PreviewOutput* previewOutput = nullptr;
+         ret = OH_CameraManager_CreatePreviewOutput(cameraManager, photoProfile, photoSurfaceId, &previewOutput);
+         if (photoProfile == nullptr || previewOutput == nullptr || ret != CAMERA_OK) {
+             OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreatePreviewOutput failed.");
              return ret;
          }
      
@@ -457,17 +477,12 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
          }
      
          Camera_CaptureSession* captureSession = nullptr;
-         ret = StartCaptureSession(cameraManager, cameraInput, photoOutput, &captureSession);
+         ret = StartCaptureSession(cameraManager, cameraInput, previewOutput, &captureSession);
          if (ret != CAMERA_OK) {
              OH_LOG_ERROR(LOG_APP, "StartCaptureSession failed.");
              return ret;
          }
-     
-         ret = OH_PhotoOutput_Capture(photoOutput);
-         if (ret != CAMERA_OK) {
-             OH_LOG_ERROR(LOG_APP, "OH_PhotoOutput_Capture failed.");
-             return ret;
-         }
+         
          return CAMERA_OK;
      }
      ```
@@ -479,6 +494,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
      ``` C++
      static napi_value TakePhoto(napi_env env, napi_callback_info info)
      {
+         std::lock_guard<std::mutex> lock(g_mutex);
          if (g_receiver == nullptr) {
              OH_LOG_ERROR(LOG_APP, "ImageReceiver not initialized.");
              return GetJsResultDemo(env, IMAGE_BAD_PARAMETER);
@@ -696,20 +712,32 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
    ``` C++
    static napi_value ReleaseImageReceiver(napi_env env, napi_callback_info info)
    {
+       std::lock_guard<std::mutex> lock(g_mutex);
        if (g_receiver == nullptr) {
            OH_LOG_INFO(LOG_APP, "No image receiver to release.");
-           return nullptr;
+           return GetJsResultDemo(env, IMAGE_SUCCESS);
        }
-       Image_ErrorCode errCode = OH_ImageReceiverNative_Off(g_receiver);
+   
+       Image_ErrorCode errCode = IMAGE_SUCCESS;
+       errCode = OH_ImageReceiverNative_Off(g_receiver);
        if (errCode != IMAGE_SUCCESS) {
-           OH_LOG_ERROR(LOG_APP, "ImageReceiverNativeCTest image receiver off failed, errCode: %{public}d.", errCode);
+           OH_LOG_ERROR(LOG_APP, "ImageReceiverNativeTest image receiver off failed, errCode: %{public}d.", errCode);
        }
+   
        errCode = OH_ImageReceiverNative_Release(g_receiver);
        if (errCode != IMAGE_SUCCESS) {
            OH_LOG_ERROR(LOG_APP, "Release image receiver failed, errCode: %{public}d.", errCode);
        }
+       
        g_receiver = nullptr;
-   
+       g_isCallbackRunning = false;
+       g_imageReady = false;
+       if (g_imageInfoResult != nullptr) {
+           OH_ImageNative_Release(g_imageInfoResult);
+           g_imageInfoResult = nullptr;
+       }
+      
+       OH_LOG_INFO(LOG_APP, "Release image receiver success, reset all global states");
        return GetJsResultDemo(env, errCode);
    }
    ```

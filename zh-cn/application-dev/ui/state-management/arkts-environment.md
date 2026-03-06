@@ -111,7 +111,7 @@ Environment和[UIContext](../../reference/apis-arkui/arkts-apis-uicontext-uicont
   const lang: SubscribedAbstractProperty<string> = AppStorage.prop('languageCode');
   
   if (lang.get() === 'zh') {
-    // app.string.AppliedLogic_Hello 资源文件中的value值为'你好'
+    // 请将$r('app.string.AppliedLogic_Hello')替换为实际资源文件，在本示例中该资源文件的value值为"你好"
     hilog.info(DOMAIN, TAG, `${$r('app.string.AppliedLogic_Hello')}`);
   } else {
     hilog.info(DOMAIN, TAG, 'Hello!');
