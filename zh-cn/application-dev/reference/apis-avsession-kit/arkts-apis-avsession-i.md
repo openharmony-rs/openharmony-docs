@@ -188,7 +188,7 @@
 | castCategory   | [AVCastCategory](arkts-apis-avsession-e.md#avcastcategory10)        | 否 | 否   | 投播的类别。  <br> **系统能力：** SystemCapability.Multimedia.AVSession.Core  <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | deviceId   | string | 否 | 否   | 播放设备的ID。<br> **系统能力：** SystemCapability.Multimedia.AVSession.Core  <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | deviceName | string | 否  | 否   | 播放设备的名称。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| deviceType | DeviceType | 否 | 否   | 播放设备的类型。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| deviceType | [DeviceType](arkts-apis-avsession-e.md#devicetype10) | 否 | 否   | 播放设备的类型。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | supportedProtocols<sup>11+</sup> | number | 否 | 是  | 播放设备支持的协议。<br>默认为TYPE_LOCAL,具体取值来自[ProtocolType](arkts-apis-avsession-e.md#protocoltype11)，可以是protocolType中的某个协议或者多个协议的组合。<br>设备仅支持一种协议，返回对应枚举值；设备支持多种协议，返回对应枚举值之和。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast   <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | supportedDrmCapabilities<sup>12+</sup> | Array\<string> | 否 | 是 | 播放设备支持的DRM能力。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast   <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | manufacturer<sup>13+</sup> | string | 否 | 是  | 播放设备生产厂家。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast  <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。|
