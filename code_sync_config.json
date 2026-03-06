@@ -19434,7 +19434,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page4.ets",
 				"functions":[
 					{
-						"end_line":167,
+						"end_line":165,
 						"name":"makeObserved_collections_Array_Set_Map",
 						"start_line":15
 					}
@@ -41415,7 +41415,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/FlushUIUpdatesUse.ets",
 				"functions":[
 					{
-						"end_line":57,
+						"end_line":55,
 						"name":"FlushUIUpdatesUse",
 						"start_line":16
 					}
