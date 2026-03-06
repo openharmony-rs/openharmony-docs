@@ -95,7 +95,7 @@
 ```
 
 ```ts
-//Index.ets
+// Index.ets
 import { webview } from '@kit.ArkWeb';
 import { inputMethod } from '@kit.IMEKit';
 
