@@ -37,7 +37,7 @@ isSubpixel(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -67,7 +67,7 @@ isLinearMetrics(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -99,7 +99,7 @@ ArkTS-Sta: getSkewX(): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -129,7 +129,7 @@ isEmbolden(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -161,7 +161,7 @@ ArkTS-Sta: getScaleX(): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -193,7 +193,7 @@ ArkTS-Sta: getHinting(): FontHinting | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -224,7 +224,7 @@ ArkTS-Sta: getEdging(): FontEdging | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -253,7 +253,7 @@ enableSubpixel(isSubpixel: boolean): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -290,7 +290,7 @@ enableEmbolden(isEmbolden: boolean): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -327,7 +327,7 @@ enableLinearMetrics(isLinearMetrics: boolean): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -366,7 +366,7 @@ ArkTS-Sta: setSize(textSize: double): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -405,7 +405,7 @@ ArkTS-Sta: getSize(): double
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -435,7 +435,7 @@ setTypeface(typeface: Typeface): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -474,7 +474,7 @@ ArkTS-Sta: getTypeface(): Typeface | undefined
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -493,7 +493,9 @@ let typeface = font.getTypeface();
 
 ## getMetrics
 
-getMetrics(): FontMetrics
+ArkTS-Dyn: getMetrics(): FontMetrics
+
+ArkTS-Sta: getMetrics(): FontMetrics | undefined
 
 获取与字体关联的FontMetrics属性。
 
@@ -503,13 +505,13 @@ getMetrics(): FontMetrics
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型                        | 说明              |
 | --------------------------- | ----------------- |
-| [FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics) | FontMetrics属性。 |
+| ArkTS-Dyn: [FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics)<br/>ArkTS-Sta: [FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics) \| undefined | FontMetrics属性。获取失败时返回undefined |
 
 **示例：**
 
@@ -538,7 +540,7 @@ ArkTS-Sta: measureText(text: string, encoding: TextEncoding): double
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -584,7 +586,7 @@ ArkTS-Sta: measureSingleCharacter(text: string): double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -706,7 +708,7 @@ ArkTS-Sta: setScaleX(scaleX: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -783,7 +785,7 @@ ArkTS-Sta: setSkewX(skewX: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -858,7 +860,7 @@ setEdging(edging: FontEdging): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -895,7 +897,7 @@ setHinting(hinting: FontHinting): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -934,7 +936,7 @@ ArkTS-Sta: countText(text: string): int
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -978,7 +980,7 @@ setBaselineSnap(isBaselineSnap: boolean): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1016,7 +1018,7 @@ isBaselineSnap(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1047,7 +1049,7 @@ setEmbeddedBitmaps(isEmbeddedBitmaps: boolean): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1086,7 +1088,7 @@ isEmbeddedBitmaps(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1117,7 +1119,7 @@ setForceAutoHinting(isForceAutoHinting: boolean): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1156,7 +1158,7 @@ isForceAutoHinting(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1189,7 +1191,7 @@ ArkTS-Sta: getWidths(glyphs: Array\<int>): Array\<double> | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1255,7 +1257,7 @@ ArkTS-Sta: textToGlyphs(text: string, glyphCount?: int): Array\<int> | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1316,7 +1318,7 @@ ArkTS-Sta: getBounds(glyphs: Array\<int>): Array\<common2D.Rect> | undefined
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1376,7 +1378,7 @@ ArkTS-Sta: getTextPath(text: string, byteLength: int, x: double, y: double): Pat
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1458,7 +1460,7 @@ ArkTS-Sta: createPathForGlyph(index: int): Path | undefined
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1532,7 +1534,7 @@ setThemeFontFollowed(followed: boolean): void
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1570,7 +1572,7 @@ isThemeFontFollowed(): boolean
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

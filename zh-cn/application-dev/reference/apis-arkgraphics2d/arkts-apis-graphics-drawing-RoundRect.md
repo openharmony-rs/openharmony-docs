@@ -33,11 +33,11 @@ constructor(roundRect: RoundRect)
 
 拷贝一个圆角矩形。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -50,8 +50,8 @@ constructor(roundRect: RoundRect)
 ```ts
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
-let rect: common2D.Rect = {left : 100, top : 100, right : 500, bottom : 300};
-let roundRect = new drawing.RoundRect(rect, 50, 50);
+let rect: common2D.Rect = {left : 100.0, top : 100.0, right : 500.0, bottom : 300.0};
+let roundRect = new drawing.RoundRect(rect, 50.0, 50.0);
 let roundRect2 = new drawing.RoundRect(roundRect);
 ```
 
@@ -67,7 +67,7 @@ ArkTS-Sta: constructor(rect: common2D.Rect, xRadii: double, yRadii: double)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -106,7 +106,7 @@ ArkTS-Sta: setCorner(pos: CornerPos, x: double, y: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -145,7 +145,7 @@ ArkTS-Sta: getCorner(pos: CornerPos): common2D.Point | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -203,7 +203,7 @@ ArkTS-Sta: offset(dx: double, dy: double): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

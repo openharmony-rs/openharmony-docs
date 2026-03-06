@@ -203,9 +203,9 @@ pen.setImageFilter(null);
 
 ## getColorFilter<sup>12+</sup>
 
-getColorFilter(): ColorFilter
+ArkTS-Dyn: getColorFilter(): ColorFilter
 
-getColorFilter(): ColorFilter | undefined
+ArkTS-Sta: getColorFilter(): ColorFilter | undefined
 
 获取画笔的颜色滤波器。
 
@@ -223,7 +223,7 @@ getColorFilter(): ColorFilter | undefined
 
 **示例：**
 
-ArkTS-Dync示例：
+ArkTS-Dyn示例：
 ```ts 
 import { drawing } from '@kit.ArkGraphics2D';
 
@@ -429,7 +429,7 @@ ArkTS-Sta: getColor4f(): common2D.Color4f | undefined
 
 | 类型           | 说明            |
 | -------------- | -------------- |
-|ArkTS-Dyn: [common2D.Color4f](js-apis-graphics-common2D.md#color4f20)<br/>AtkTS-Sta:  [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) \| undefined | 返回画笔的颜色。获取失败时返回undefined。 |
+|ArkTS-Dyn: [common2D.Color4f](js-apis-graphics-common2D.md#color4f20)<br/>ArkTS-Sta:  [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) \| undefined | 返回画笔的颜色。获取失败时返回undefined。 |
 
 **示例：**
 
@@ -685,7 +685,7 @@ setColorFilter(filter: ColorFilter | null) : void
 
 | 参数名 | 类型                        | 必填 | 说明         |
 | ------ | --------------------------- | ---- | ------------ |
-| filter | ArkTS-Dyn: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md)<br/>ArkTS-Sta: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) \| null | 是   | 颜色滤波器。null表示清空颜色滤波器。 |
+| filter | [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) \| null | 是   | 颜色滤波器。null表示清空颜色滤波器。 |
 
 **错误码：**
 
