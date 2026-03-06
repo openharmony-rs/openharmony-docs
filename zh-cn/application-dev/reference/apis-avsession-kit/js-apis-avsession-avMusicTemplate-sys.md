@@ -36,7 +36,7 @@ createAVMusicTemplateController(sessionId: string): AVMusicTemplateController
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES。
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -254,7 +254,7 @@ getAllAVMusicTemplateDescriptors(userId?: number): AVMusicTemplateDescriptor[]
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES。
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -323,7 +323,7 @@ onAVMusicTemplateCreate(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): vo
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES。
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -388,7 +388,7 @@ offAVMusicTemplateCreate(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;): 
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES。
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -439,7 +439,7 @@ onAVMusicTemplateDestroy(callback: Callback&lt;AVMusicTemplateDescriptor&gt;): v
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES。
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -495,7 +495,7 @@ offAVMusicTemplateDestroy(callback?: Callback&lt;AVMusicTemplateDescriptor&gt;):
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES。
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 

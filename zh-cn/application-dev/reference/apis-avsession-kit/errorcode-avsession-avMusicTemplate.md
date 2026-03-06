@@ -40,11 +40,11 @@ Failed to create the AVMusicTemplate controller.
 
 **可能原因**
 
-1. 创建controller的参数sessionId不合法。
+创建controller的参数sessionId不合法。
 
 **处理步骤**
 
-1. 检查sessionId是否为空或者是否有创建过该sessionId对应的AVMusicTemplate的应用。
+检查sessionId是否为空或者是否有创建过该sessionId对应的AVMusicTemplate的应用。
 
 ## 35000003 模板监听未注册
 
@@ -58,7 +58,7 @@ Template listener not registered.
 
 **可能原因**
 
-1. template listener 注册失败。
+template listener 注册失败。
 
 **处理步骤**
 
@@ -77,7 +77,7 @@ Controller callback not registered.
 
 **可能原因**
 
-1. controller callback 注册失败。
+controller callback 注册失败。
 
 **处理步骤**
 
@@ -96,7 +96,7 @@ Controller callback not registered.
 
 **可能原因**
 
-1. AVMusicTemplate不存在。
+AVMusicTemplate不存在。
 
 **处理步骤**
 
@@ -115,7 +115,7 @@ AVMusicTemplateController does not exist.
 
 **可能原因**
 
-1. AVMusicTemplateController不存在。
+AVMusicTemplateController不存在。
 
 **处理步骤**
 
@@ -134,11 +134,11 @@ AVMusicTemplateController already exists.
 
 **可能原因**
 
-1. AVMusicTemplateController已存在，不需要重复创建
+AVMusicTemplateController已存在，不需要重复创建。
 
 **处理步骤**
 
-1. 在一个应用进程内，一个sessionId对应一个AVMusicTemplateController，不需要重复创建
+在一个应用进程内，一个sessionId对应一个AVMusicTemplateController，不需要重复创建。
 
 ## 35000008 音频模板管理服务不存在
 
@@ -152,11 +152,11 @@ AVMusicTemplate Manager services do not exist.
 
 **可能原因**
 
-1. 媒体增强服务启动失败。
+媒体增强服务启动失败。
 
 **处理步骤**
 
-1. 可以尝试重启设备。
+可以尝试重启设备。
 
 ## 35000009 音频模板管理服务异常
 
@@ -170,7 +170,7 @@ AVMusicTemplate Manager services exception.
 
 **可能原因**
 
-1. 媒体增强服务通信出现异常。
+媒体增强服务通信出现异常。
 
 **处理步骤**
 
@@ -189,11 +189,11 @@ The data exceeds the maximum allowable transmission capacity.
 
 **可能原因**
 
-1. 传输的数据超过允许传输的1MB容量限制。
+传输的数据超过允许传输的1MB容量限制。
 
 **处理步骤**
 
-1. 针对超过1MB的数据采用分批传输。
+针对超过1MB的数据采用分批传输。
 
 ## 350000011 写数据失败，数据不可用
 
@@ -207,11 +207,11 @@ The data write error, data is invalid.
 
 **可能原因**
 
-1. 数据写入失败。
+数据写入失败。
 
 **处理步骤**
 
-1. 检查待传输的数据是否存在不合法的属性或者值。
+检查待传输的数据是否存在不合法的属性或者值。
 
 ## 350000012 音频模板错误
 
@@ -225,7 +225,7 @@ AVMusicTemplate error.
 
 **可能原因**
 
-1. 媒体增强服务的音频内容配置错误。
+媒体增强服务的音频内容配置错误。
 
 **处理步骤**
 

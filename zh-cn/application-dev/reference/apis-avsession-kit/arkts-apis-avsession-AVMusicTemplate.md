@@ -6,11 +6,11 @@
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
+调用[avMusicTemplate.createAVMusicTemplate](js-apis-avsession-avMusicTemplate.md#avmusictemplatecreateavmusictemplate)后，返回实例，可以获得ID，启动音频模板界面，设置数据获取方法，同步数据给模板控制方，以及执行其他相关操作。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
-调用[avMusicTemplate.createAVMusicTemplate](js-apis-avsession-avMusicTemplate.md#avmusictemplatecreateavmusictemplate)后，返回实例，可以获得ID，启动音频模板界面，设置数据获取方法，同步数据给模板控制方，以及执行其他相关操作。
 
 ## 导入模块
 

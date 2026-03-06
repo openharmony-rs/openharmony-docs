@@ -10,7 +10,7 @@
 
 该模块提供如下功能：
 
-- [AVMusicTemplate](arkts-apis-avsession-AVMusicTemplate.md): 音频模板，可用于与音频模板控制方进行数据交互
+- [AVMusicTemplate](arkts-apis-avsession-AVMusicTemplate.md): 音频模板，可用于与音频模板控制方进行数据交互。
 
 > **说明：**
 >
