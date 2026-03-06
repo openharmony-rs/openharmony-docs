@@ -970,7 +970,7 @@ showAssetsCreationDialogEx(srcFileUris: Array&lt;string&gt;, creationSettings: A
 > **说明：**
 >
 > - 用户同意后，返回已创建并授予保存权限的URI列表，该列表永久有效，支持写入图片/视频。用户拒绝时，返回空列表。
-> - 弹框需显示应用名称，名称和图标需在[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)的abilities标签中配置label和icon项。
+> - 弹框需显示应用名称，名称和图标需在[module.json5配置文件](../../../application-dev/quick-start/module-configuration-file.md)的`abilities`标签中配置`label`和`icon`项。
 > - 当传入URI为沙箱路径时，可正常保存图片或视频，但不显示界面预览。
 
 **模型约束**：此接口仅可在Stage模型下使用。
