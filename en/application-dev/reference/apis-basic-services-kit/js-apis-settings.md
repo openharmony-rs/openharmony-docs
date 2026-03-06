@@ -522,7 +522,7 @@ Obtains the value of a data item. Unlike **getValue**, this API returns the resu
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
-// Update the value of .SCREEN_BRIGHTNESS_STATUS (this data item already exists in the database).
+// Update the value of SCREEN_BRIGHTNESS_STATUS (this data item already exists in the database).
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let value = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100',  settings.domainName.DEVICE_SHARED);
