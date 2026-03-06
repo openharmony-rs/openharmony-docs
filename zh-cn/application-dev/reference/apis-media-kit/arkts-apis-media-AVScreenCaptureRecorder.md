@@ -137,8 +137,10 @@ avScreenCaptureRecorder.stopRecording().then(() => {
 如录屏时，用户在本应用进行输入密码等操作，应用不会进行黑屏处理。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
-ArkTS-Dyn起始版本：12
-ArkTS-Sta起始版本：23
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -150,7 +152,7 @@ ArkTS-Sta起始版本：23
 
 | 类型           | 说明                             |
 | -------------- | -------------------------------- |
-| Promise\<void> | Promise对象，无返回结果. |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -162,6 +164,7 @@ ArkTS-Sta起始版本：23
 | 5400105  | Service died. Return by promise. |
 
 **示例：**
+
 ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -187,8 +190,8 @@ if (avScreenCaptureRecorder != undefined) {
     console.info('Failed to skip privacy mode, error: ' + err.message);
   });
 }
-
 ```
+
 ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
