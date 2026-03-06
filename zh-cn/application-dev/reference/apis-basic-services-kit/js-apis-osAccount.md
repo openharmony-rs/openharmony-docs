@@ -3974,6 +3974,10 @@ ArkTS-Sta: getForegroundOsAccountLocalId(): Promise&lt;int&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                   | 说明                                                               |
@@ -4035,13 +4039,19 @@ getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;
 
 **需要权限：** ohos.permission.GET_DOMAIN_ACCOUNTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限允许系统应用和企业应用进行申请。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getOsAccountDomainInfo](#getOsAccountDomainInfo23)。
+
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ----------- |
-| localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。 |
+| localId | number | 是   | 系统账号ID。 |
 
 **返回值：**
 
@@ -4081,25 +4091,31 @@ accountManager.getOsAccountDomainInfo(localId).then((domainAccountInfo: osAccoun
 
 ### getOsAccountDomainInfo<sup>23+</sup>
 
-getOsAccountDomainInfo(localId: int): Promise&lt;DomainAccountInfo | null&gt;
+getOsAccountDomainInfo(localId: int): Promise&lt;DomainAccountInfo|null&gt;
 
 获取指定系统账号关联的域账号信息。
 
 **需要权限：** ohos.permission.GET_DOMAIN_ACCOUNTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限允许系统应用和企业应用进行申请。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[getOsAccountDomainInfo](#getOsAccountDomainInfo15)。
+
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ----------- |
-| localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。 |
+| localId | int | 是   | 系统账号ID。 |
 
 **返回值：**
 
 | 类型                   | 说明                                                               |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | Promise对象。返回与指定系统账号关联的域账号信息。 |
+| Promise&lt;[DomainAccountInfo](#domainaccountinfo8)\|null&gt; | Promise对象。返回与指定系统账号关联的域账号信息。 |
 
 **错误码：**
 

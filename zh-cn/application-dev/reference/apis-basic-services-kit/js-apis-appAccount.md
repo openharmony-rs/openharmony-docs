@@ -2576,17 +2576,17 @@ ArkTS-Sta示例：
 
 ### auth<sup>9+</sup>
 
-ArkTS-Dyn: auth(name: string, owner: string, authType: string, options: Record<string, Object>, callback: AuthCallback): void
-
-ArkTS-Sta: auth(name: string, owner: string, authType: string, options: Record<string, RecordData>, callback: AuthCallback): void
+auth(name: string, owner: string, authType: string, options: Record<string, Object>, callback: AuthCallback): void
 
 对应用账号进行鉴权以获取授权令牌。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[auth](#auth23)。
 
 **系统能力：** SystemCapability.Account.AppAccount
 
 **ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2595,7 +2595,7 @@ ArkTS-Sta: auth(name: string, owner: string, authType: string, options: Record<s
 | name     | string                | 是    | 应用账号的名称。     |
 | owner    | string                | 是    | 应用账号所有者的包名。  |
 | authType | string                | 是    | 鉴权类型。           |
-| options  | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta: Record&lt;string, RecordData&gt;  | 是    | 鉴权所需的可选项。       |
+| options  | Record<string, Object>  | 是    | 鉴权所需的可选项。       |
 | callback | [AuthCallback](#authcallback9) | 是    | 回调对象，返回鉴权结果。 |
 
 **错误码：**
@@ -2614,7 +2614,6 @@ ArkTS-Sta: auth(name: string, owner: string, authType: string, options: Record<s
 
 **示例：**
 
-ArkTS-Dyn示例：
   ```ts
   import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2662,7 +2661,45 @@ ArkTS-Dyn示例：
   }
   ```
 
-ArkTS-Sta示例：
+### auth<sup>23+</sup>
+
+auth(name: string, owner: string, authType: string, options: Record<string, RecordData>, callback: AuthCallback): void
+
+对应用账号进行鉴权以获取授权令牌。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[auth](#auth9-1)。
+
+**系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                    | 必填   | 说明              |
+| -------- | --------------------- | ---- | --------------- |
+| name     | string                | 是    | 应用账号的名称。     |
+| owner    | string                | 是    | 应用账号所有者的包名。  |
+| authType | string                | 是    | 鉴权类型。           |
+| options  | Record&lt;string, RecordData&gt;  | 是    | 鉴权所需的可选项。       |
+| callback | [AuthCallback](#authcallback9) | 是    | 回调对象，返回鉴权结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息|
+| ------- | -------|
+| 12300001 | System service exception. |
+| 12300002 | Invalid name, owner, authType or options. |
+| 12300003 | Account not found. |
+| 12300010 | Account service busy. |
+| 12300113 | Authenticator service not found. |
+| 12300114 | Authenticator service exception. |
+
+**示例：**
+
   ```ts
   import appAccount from '@ohos.account.appAccount';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -7245,8 +7282,8 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 | 名称                            | 值                    | 说明                   |
 | -------------------------------- | ---------------------- | ----------------------- |
-| ACTION_ADD_ACCOUNT_IMPLICITLY<sup>(deprecated)</sup>    | 'addAccountImplicitly' | 表示操作，隐式添加账号。<br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。  <br/>**ArkTS-Dyn起始版本：** 8|
-| ACTION_AUTHENTICATE<sup>(deprecated)</sup>              | 'authenticate'         | 表示操作，鉴权。<br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 8         |
+| ACTION_ADD_ACCOUNT_IMPLICITLY<sup>(deprecated)</sup>    | 'addAccountImplicitly' | 表示操作，隐式添加账号。<br>**说明：** 从API version 8开始支持，从API version 9开始废弃，建议使用ACTION_CREATE_ACCOUNT_IMPLICITLY替代。 <br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。  <br/>**ArkTS-Dyn起始版本：** 8 |
+| ACTION_AUTHENTICATE<sup>(deprecated)</sup>              | 'authenticate'         | 表示操作，鉴权。<br>**说明：** 从API version 8开始支持，从API version 9开始废弃，建议使用ACTION_AUTH替代。<br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 8 |
 | ACTION_CREATE_ACCOUNT_IMPLICITLY<sup>9+</sup>    | 'createAccountImplicitly' | 表示操作，隐式创建账号。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
 | ACTION_AUTH<sup>9+</sup>              | 'auth'         | 表示操作，鉴权。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23         |
 | ACTION_VERIFY_CREDENTIAL<sup>9+</sup>    | 'verifyCredential' | 表示操作，验证凭据。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
@@ -7653,13 +7690,17 @@ addAccountImplicitly(authType: string, callerBundleName: string, options: {[key:
 
 ### auth<sup>9+</sup>
 
-ArkTS-Dyn: auth(name: string, authType: string, options: Record<string, Object>, callback: AuthCallback): void
-
-ArkTS-Sta: auth(name: string, authType: string, options: Record&lt;string, RecordData&gt;, callback: AuthCallback): void
+auth(name: string, authType: string, options: Record&lt;string, Object&gt;, callback: AuthCallback): void
 
 对应用账号进行鉴权以获取授权令牌。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[auth](#auth23-1)。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -7667,7 +7708,30 @@ ArkTS-Sta: auth(name: string, authType: string, options: Record&lt;string, Recor
 | ---------------- | --------------------- | ---- | --------------- |
 | name             | string                | 是    | 应用账号的名称。        |
 | authType         | string                | 是    | 应用账号的鉴权类型。      |
-| options          | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta: Record&lt;string, RecordData&gt;| 是    | 鉴权所需要的可选项。      |
+| options          | Record<string, Object> | 是    | 鉴权所需要的可选项。      |
+| callback         | [AuthCallback](#authcallback9) | 是    | 回调对象，用于返回鉴权结果。 |
+
+### auth<sup>23+</sup>
+
+auth(name: string, authType: string, options: Record&lt;string, RecordData&gt;, callback: AuthCallback): void
+
+对应用账号进行鉴权以获取授权令牌。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[auth](#auth9-2)。
+
+**系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名              | 类型                    | 必填   | 说明              |
+| ---------------- | --------------------- | ---- | --------------- |
+| name             | string                | 是    | 应用账号的名称。        |
+| authType         | string                | 是    | 应用账号的鉴权类型。      |
+| options          | Record&lt;string, RecordData&gt;| 是    | 鉴权所需要的可选项。      |
 | callback         | [AuthCallback](#authcallback9) | 是    | 回调对象，用于返回鉴权结果。 |
 
 ### authenticate<sup>(deprecated)</sup>
