@@ -823,7 +823,8 @@ ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle, callback: 
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202 | Permission denied, non-system app called system api. When the windowId value is -1, the system permission is required to set the global style.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -928,7 +929,8 @@ ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle): Promise&l
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202 | Permission denied, non-system app called system api. When the windowId value is -1, the system permission is required to set the global style.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1028,7 +1030,8 @@ ArkTS-Sta: setPointerStyleSync(windowId: int, pointerStyle: PointerStyle): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202 | Permission denied, non-system app called system api. When the windowId value is -1, the system permission is required to set the global style.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1487,7 +1490,7 @@ struct Index {
 
 ## pointer.setCustomCursorSync<sup>11+</sup>
 
-ArkTS-Dyn: setCustomCursorSync(windowId: int, pixelMap: image.PixelMap, focusX?: int, focusY?: int): void
+ArkTS-Dyn: setCustomCursorSync(windowId: number, pixelMap: image.PixelMap, focusX?: number, focusY?: number): void
 
 ArkTS-Sta: setCustomCursorSync(windowId: int, pixelMap: image.PixelMap, focusX?: int, focusY?: int): void
 
@@ -1503,10 +1506,10 @@ ArkTS-Sta: setCustomCursorSync(windowId: int, pixelMap: image.PixelMap, focusX?:
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| windowId  | int  | 是    | 窗口ID。取值为大于0的整数。                          |
+| windowId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口ID。取值为大于0的整数。                          |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 自定义光标资源。 |
-| focusX  | int | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0。 |
-| focusY  | int | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0。 |
+| focusX  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0。 |
+| focusY  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0。 |
 
 **错误码**：
 
