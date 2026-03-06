@@ -154,6 +154,7 @@ module.json5配置文件包含以下标签。
 | formWidgetModule | 在[独立卡片包](../form/arkts-ui-widget-creation.md#方式二独立包方式创建卡片)中，应用包需要配置该标签，用来关联卡片包。取值为卡片包的模块名称，对应卡片包module.json5中的name标签。具体使用方式请参考[FormExtensionAbility配置](../form/arkts-ui-widget-configuration.md#formextensionability配置)。<br/>**说明：**<br/> 1. 从API version 20开始，支持该标签。<br/> 2. 仅在独立卡片包的应用包中，该标签配置生效，且要求对应的卡片包模块必须配置formExtensionModule标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
 | formExtensionModule | 在[独立卡片包](../form/arkts-ui-widget-creation.md#方式二独立包方式创建卡片)中，卡片包需要配置该标签，用来关联应用包。取值为应用包的模块名称，对应应用包module.json5中的name标签。具体使用方式请参考[独立卡片包配置](../form/arkts-ui-widget-configuration.md#独立卡片包配置)。<br/>**说明：**<br/>1. 从API version 20开始，支持该标签。<br/>2. 仅在独立卡片包的卡片包中，该标签配置生效，且要求对应的应用包模块必须配置formWidgetModule标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
 | shareFiles | 标识应用沙箱中分享目录的配置文件路径，用于为应用文件提供有安全保障的开放范围，保护应用资产。只允许entry类型模块配置，取值为长度不超过255字节的字符串。具体使用方式请参考[应用共享目录配置](../file-management/share-app-file-configuration.md)。<br/>**说明：**<br/>从API version 23开始，支持该标签。 | 字符串 | 该标签可缺省，缺省值为空。  |
+| [executableBinaryPaths](#executablebinarypaths标签) | 标识应用内可执行二进制文件的路径信息。<br/>**说明：** <br/>从API version 24开始，支持该标签。 | 对象数组 | 该标签可缺省，缺省值为空。 |
 <!--RP6--><!--RP6End-->
 
 ## deviceTypes标签
@@ -1305,3 +1306,32 @@ definePermissions标签示例：
 }
 ```
 <!--DelEnd-->
+
+## executableBinaryPaths标签
+
+标识应用内可执行二进制文件的路径信息。
+
+**表31** executableBinaryPaths标签说明
+
+| 属性名称 | 含义 | 数据类型 | 是否可缺省 |
+| -------- | -------- | -------- | -------- |
+| path | 标识可执行文件的路径。该路径是相对路径，其根目录为libs库的解压路径。 | 字符串 | 该标签可缺省，缺省值为空。 |
+
+
+executableBinaryPaths示例：
+
+<!-- @[module_executableBinaryPaths](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+    // ...
+    "executableBinaryPaths": [
+      {
+        "path": "framework/test.bin"
+      }
+    ],
+    // ...
+  },
+}
+```

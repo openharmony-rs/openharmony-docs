@@ -3406,6 +3406,27 @@ APP包签名不正确或没有签名。
 
 方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
 
+
+### 9568449 二进制文件校验失败
+**错误信息**
+
+error: check bin file failed.
+
+**错误描述**
+
+用户安装应用时，二进制文件校验失败。
+
+**可能原因**
+
+1. 在应用的module.json5配置文件中配置了[executableBinaryPaths标签](../quick-start/module-configuration-file.md#executablebinarypaths标签)，但是应用未配置解压模式。
+2. 该设备不支持安装配置了[executableBinaryPaths标签](../quick-start/module-configuration-file.md#executablebinarypaths标签)的应用。
+
+**处理步骤**
+
+1. 配置应用为解压模式，即在应用的[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中设置compressNativeLibs标签为true。
+2. 更换为PC/2in1设备。
+
+
 <!--Del-->
 ## 常见问题
 
