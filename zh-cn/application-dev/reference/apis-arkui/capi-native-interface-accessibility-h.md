@@ -1358,7 +1358,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInf
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfo的指针。 |
-| int32_t zIndex | 组件z序，用于控制元素在垂直于屏幕的z轴上的位置。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。 |
+| int32_t zIndex | 组件z序，用于控制元素在垂直于屏幕的z轴上的位置。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。|
 
 **返回：**
 
@@ -1385,7 +1385,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(ArkUI_Accessibi
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfo的指针。 |
-| float opacity | 表示透明度。其取值范围是0到1，其中1表示完全不透明，0表示完全透明。需要使用方保证参数合理性。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。 |
+| float opacity | 表示透明度。其取值范围是0到1，其中1表示完全不透明，0表示完全透明。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。|
 
 **返回：**
 
@@ -1412,7 +1412,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityE
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfo的指针。 |
-| const char* backgroundColor | 表示背景色。数据为"##ARGB"格式，例如非透明白色，即'#FFFFFFFF'的字符串。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。 |
+| const char* backgroundColor | 表示背景色。数据为"#ARGB"格式，例如非透明白色，即"#FFFFFFFF"。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。|
 
 **返回：**
 
@@ -1439,7 +1439,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityE
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfo的指针。 |
-| const char* backgroundImage | 表示背景图片。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。 |
+| const char* backgroundImage | 表示背景图片。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。|
 
 **返回：**
 
@@ -1466,7 +1466,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetBlur(ArkUI_AccessibilityElementInfo*
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfo的指针。 |
-| const char* blur | 表示模糊度。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。 |
+| const char* blur | 表示模糊度。[UiTest](../apis-test-kit/js-apis-uitest.md)需要使用。|
 
 **返回：**
 
