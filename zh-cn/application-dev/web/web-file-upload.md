@@ -425,12 +425,10 @@ struct WebComponent {
     Column() {
       Web({ src: $rawfile('index.html'), controller: this.controller })
         .onShowFileSelector((event) => {
-          // 通过接口获取前端h5的配置
           console.info('onShowFileSelector Suggested Name is ' + event.fileSelector.getSuggestedName());
           console.info('onShowFileSelector Default Path is ' + event.fileSelector.getDefaultPath());
           console.info('onShowFileSelector Descriptions are ' + event.fileSelector.getDescriptions());
           console.info('onShowFileSelector AcceptAllOptionExcluded is ' + event.fileSelector.isAcceptAllOptionExcluded());
-          // 配置文件保存选项
           const documentSaveOptions = new picker.DocumentSaveOptions();
           documentSaveOptions.newFileNames = new Array<string>();
           documentSaveOptions.newFileNames.push(getFileName(event.fileSelector.getSuggestedName()));
@@ -453,7 +451,6 @@ struct WebComponent {
             documentSaveOptions.fileSuffixChoices.push('所有文件(*.*)' + '|' + '*.*');
           }
           let uri: string | null = null;
-          // 创建并拉起文件保存Picker
           const documentViewPicker = new picker.DocumentViewPicker();
           documentViewPicker.save(documentSaveOptions).then((documentSelectResult) => {
             uri = documentSelectResult[0];
