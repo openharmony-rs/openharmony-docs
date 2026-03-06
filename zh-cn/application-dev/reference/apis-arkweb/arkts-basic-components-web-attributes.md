@@ -1428,7 +1428,7 @@ struct NewWebViewComp {
                     }
                 })
                 .onActivateContent(() => {
-                    //该Web需要展示到前台，建议应用在这里进行tab或window切换的动作
+                    // 该Web需要展示到前台，建议应用在这里进行tab或window切换的动作
                     console.info("NewWebViewComp onActivateContent")
                 })
         }
