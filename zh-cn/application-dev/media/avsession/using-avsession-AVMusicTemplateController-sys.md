@@ -277,7 +277,13 @@ OpenHarmony系统预置的媒体中心，作为音频模板控制方与音视频
    
 3. 音频模板控制方根据操作下发指令给媒体提供方（需要媒体提供方已经注册相关监听）。例如搜播需要接口如下，详情请查看[AVMusicTemplateController API](../../reference/apis-avsession-kit/arkts-apis-avsession-AVMusicTemplateController.md)。
 
-   - playForSearch：搜播。支持音视频，示例仅以音频为例。视频需将实体类SearchPlayInfo的成员变量更换为SearchPlayVideoInfo类型的videoInfo。
+   - playForSearch：搜播。
+   
+      
+      > **说明：**
+      >
+      > - 支持音视频，示例仅以音频为例。
+      > - 视频需将实体类SearchPlayInfo的成员变量更换为SearchPlayVideoInfo类型的videoInfo。
 
    <!-- @[play_for_search](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
    
