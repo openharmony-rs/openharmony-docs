@@ -95,7 +95,7 @@
 ```
 
 ```ts
-//Index.ets
+// Index.ets
 import { webview } from '@kit.ArkWeb';
 import { inputMethod } from '@kit.IMEKit';
 
@@ -169,7 +169,7 @@ onWindowStageCreate(windowStage: window.WindowStage) {
 <!-- @[soft_keyboard_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-//Index.ets
+// Index.ets
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -198,7 +198,7 @@ ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
 2.在UIContext的键盘避让模式为Offset模式时，应用可通过[WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12)设置ArkWeb组件的键盘避让模式。Web组件的[WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12)接口优先级高于W3C侧virtualKeyboard.overlayContent。
 
 - RESIZE_VISUAL：仅调整可视视口的大小，而不调整布局视口的大小。
-- RESIZE_CONTENT：调整视觉视口和布局视口的大小。
+- RESIZE_CONTENT：调整可视视口和布局视口的大小。
 - OVERLAYS_CONTENT：不调整任何视口的大小，获焦input元素没有滚动到可视区域的行为。
 
 >**说明：** 
@@ -223,7 +223,7 @@ struct KeyboardAvoidExample {
     Column() {
       Row().height('50%').width('100%').backgroundColor(Color.Gray)
       Web({ src: $rawfile('index.html'),controller: this.controller})
-        .keyboardAvoidMode(WebKeyboardAvoidMode.OVERLAYS_CONTENT) //此时ArkWeb组件不会调整任何视口的大小。
+        .keyboardAvoidMode(WebKeyboardAvoidMode.OVERLAYS_CONTENT) // 此时ArkWeb组件不会调整任何视口的大小。
       Text('I can see the bottom of the page')    
         .width('100%')
         .textAlign(TextAlign.Center)
