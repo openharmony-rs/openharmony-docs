@@ -196,8 +196,8 @@ struct Index {
 
 | 名称                               | 类型 | 只读   | 可选   | 说明  |
 | -------------------------------- | ---- | ------ | ------ | ------ |
-| max                       | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是 | 否 | 最大支持频率，单位：Hz。 |
-| min                       | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是  | 否 | 最小支持频率，单位：Hz。 |
+| max                       | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 否 | 最大支持频率，单位：Hz。 |
+| min                       | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 否 | 最小支持频率，单位：Hz。 |
 
 ## infraredEmitter.hasIrEmitter<sup>23+</sup>
 
