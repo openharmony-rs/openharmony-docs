@@ -1293,6 +1293,11 @@
 						"end_line":105,
 						"name":"module_definePermissions",
 						"start_line":17
+					},
+					{
+						"end_line":104,
+						"name":"module_executableBinaryPaths",
+						"start_line":18
 					}
 				]
 			},
