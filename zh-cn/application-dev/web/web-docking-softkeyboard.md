@@ -122,7 +122,7 @@ struct WebComponent {
 
 在移动设备上，支持设置Web页面的软键盘避让模式。
 
-1. 在应用代码中设置UIContext的软键盘避让模式[setKeyboardAvoidMode()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#setkeyboardavoidmode11)。ArkWeb组件支持Resize和Offset两种模式。
+1. 在应用代码中设置[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)的软键盘避让模式[setKeyboardAvoidMode()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#setkeyboardavoidmode11)。ArkWeb组件支持Resize和Offset两种模式。
 
 - Resize模式下，应用窗口高度可缩小避开软键盘，ArkWeb组件跟随ArkUI重新布局。
 - Offset模式下（以及默认模式），应用窗口高度不变，ArkWeb组件根据自身的避让模式进行避让。
@@ -191,7 +191,7 @@ ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
 
 ![default-keyboardavoid](figures/default-keyboardavoid.png)
 
-**图2**  Web组件网页跟随Arkui软键盘避让模式
+**图2**  Web组件网页跟随ArkUI软键盘避让模式
 
 ![arkui-keyboardavoid](figures/arkui-keyboardavoid.png)
 
