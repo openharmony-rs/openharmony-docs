@@ -2455,7 +2455,7 @@ console.info(result);  // 预期结果：www.示例.com
 let result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
 console.info(result);  // 预期结果：www.example.com
 ```
- 
+
 ## NetConnection
 
 网络连接的句柄。
