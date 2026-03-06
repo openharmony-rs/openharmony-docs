@@ -3394,7 +3394,7 @@ getFormIdsByFormLocation(location: formInfo.FormLocation): Promise&lt;Array&lt;s
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
-| location | [formInfo.FormLocation](js-apis-app-form-formInfo-sys.md#formlocation12) | 是 | 卡片位置 |
+| location | [formInfo.FormLocation](js-apis-app-form-formInfo-sys.md#formlocation12) | 是 | 卡片位置。 |
 
 **返回值：**
 
