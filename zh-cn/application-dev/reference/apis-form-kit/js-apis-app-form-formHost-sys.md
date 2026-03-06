@@ -3382,6 +3382,8 @@ getFormIdsByFormLocation(location: formInfo.FormLocation): Promise&lt;Array&lt;s
 
 获取设备上指定卡片位置的卡片标识列表。使用Promise异步回调。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.Ability.Form
@@ -3392,7 +3394,7 @@ getFormIdsByFormLocation(location: formInfo.FormLocation): Promise&lt;Array&lt;s
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
-| location | formInfo.FormLocation | 是 | 卡片位置 |
+| location | [formInfo.FormLocation](js-apis-app-form-formInfo-sys.md#formlocation12) | 是 | 卡片位置 |
 
 **返回值：**
 
