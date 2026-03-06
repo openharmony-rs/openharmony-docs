@@ -385,18 +385,18 @@ this.context.startAbility(
 **代码示例**
 
 ```ts
-import common from '@ohos.app.ability.common';
+import { common } from '@kit.AbilityKit';
 
 @Entry
 @Component
 struct AbilityContextTest {
-  // abilityContext
+  // UIAbilityContext
   @State UIAbilityInfo: string = '获取 abilityInfo'
-  UIAbilityContext: common.UIAbilityContext
+  UIAbilityContext?: common.UIAbilityContext
 
   aboutToAppear() {
-    // getContext获取Context，转为abilityContext
-    this.UIAbilityContext = getContext(this) as common.UIAbilityContext
+    // 通过getUIContext().getHostContext()获取UIAbilityContext
+    this.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext
   }
 
   build() {
@@ -405,7 +405,7 @@ struct AbilityContextTest {
         Text(this.UIAbilityInfo)
           .fontSize(20)
           .onClick(() => {
-            this.UIAbilityInfo = JSON.stringify(this.UIAbilityContext.abilityInfo)
+            this.UIAbilityInfo = JSON.stringify(this.UIAbilityContext?.abilityInfo)
             console.info(`ContextDemo abilityInfo = ${this.UIAbilityInfo}`)
           })
       }
