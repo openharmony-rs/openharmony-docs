@@ -3076,8 +3076,8 @@ class MyNodeController extends NodeController {
 
     let mouseEvent = event as MouseEvent;
     if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      mouseEvent.x = uiContext.vp2px(offsetX + mouseEvent.x);
-      mouseEvent.y = uiContext.vp2px(offsetY + mouseEvent.y);
+      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x);
+      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y);
     }
     // 将鼠标事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEvent(event);
@@ -3097,15 +3097,15 @@ class MyNodeController extends NodeController {
     let changedTouchLen = touchEvent.changedTouches.length;
     for (let i = 0; i < changedTouchLen; i++) {
       if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-        touchEvent.changedTouches[i].x = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-        touchEvent.changedTouches[i].y = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
+        touchEvent.changedTouches[i].windowX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
+        touchEvent.changedTouches[i].windowY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
       }
     }
     let touchesLen = touchEvent.touches.length;
     for (let i = 0; i < touchesLen; i++) {
       if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-        touchEvent.touches[i].x = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-        touchEvent.touches[i].y = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
+        touchEvent.touches[i].windowX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
+        touchEvent.touches[i].windowY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
       }
     }
     // 将触摸事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
@@ -3211,15 +3211,15 @@ class MyNodeController extends NodeController {
       let changedTouchLen = touchEvent.changedTouches.length;
       for (let i = 0; i < changedTouchLen; i++) {
         if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-          touchEvent.changedTouches[i].x = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-          touchEvent.changedTouches[i].y = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
+          touchEvent.changedTouches[i].windowX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
+          touchEvent.changedTouches[i].windowY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
         }
       }
       let touchesLen = touchEvent.touches.length;
       for (let i = 0; i < touchesLen; i++) {
         if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-          touchEvent.touches[i].x = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-          touchEvent.touches[i].y = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
+          touchEvent.touches[i].windowX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
+          touchEvent.touches[i].windowY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
         }
       }
     }
@@ -3317,8 +3317,8 @@ class MyNodeController extends NodeController {
 
     let axisEvent = event as AxisEvent;
     if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      axisEvent.x = uiContext.vp2px(offsetX + axisEvent.x);
-      axisEvent.y = uiContext.vp2px(offsetY + axisEvent.y);
+      axisEvent.windowX = uiContext.vp2px(offsetX + axisEvent.x);
+      axisEvent.windowY = uiContext.vp2px(offsetY + axisEvent.y);
     }
     // 将轴事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEvent(event);
@@ -3513,7 +3513,7 @@ struct Index {
 
 > **说明：**
 >
-> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+> 从API version 23开始，支持跨BuilderNode配对\@Provider和\@Consumer。
 
 设置BuilderNode的[BuildOptions](#buildoptions12)中enableProvideConsumeCrossing为true，以实现BuilderNode内部自定义组件的@Consumer变量与所在自定义组件的@Provider装饰的状态变量双向同步。
 
@@ -3600,7 +3600,7 @@ struct AddChild {
 
 > **说明：**
 >
-> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+> 从API version 23开始，支持跨BuilderNode配对\@Provider和\@Consumer。
 
 该示例演示了BuilderNode挂载到组件树和从组件树卸载时，@Consumer与@Provider的同步关系变化。
 
@@ -3724,7 +3724,7 @@ struct TestRemove {
 
 > **说明：**
 >
-> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+> 从API version 23开始，支持跨BuilderNode配对\@Provider和\@Consumer。
 
 该示例演示了BuilderNode挂载到组件树后，再挂载到另一个组件树时，@Consumer与@Provider的同步关系变化。
 
@@ -3863,7 +3863,7 @@ struct ConsumerChild {
 
 > **说明：**
 >
-> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+> 从API version 23开始，支持跨BuilderNode配对\@Provider和\@Consumer。
 
 该示例演示了BuilderNode互相嵌套场景下@Consumer和@Provider的同步关系变化。
 
@@ -3988,7 +3988,7 @@ struct BuildNodeToBuildNodeChild {
 
 > **说明：**
 >
-> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+> 从API version 23开始，支持跨BuilderNode配对\@Provider和\@Consumer。
 
 该示例演示了当@Consumer所在的自定义组件在BuilderNode下且该自定义组件存在子组件时，@Consumer和@Provider之间的同步关系。
 
@@ -4137,7 +4137,7 @@ struct NestedComponentChildChld {
 
 > **说明：**
 >
-> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+> 从API version 23开始，支持跨BuilderNode配对\@Provider和\@Consumer。
 
 该示例演示了组件树为@Provider-@Consumer-BuilderNode-@Consumer的情况时，@Consumer和@Provider之间的同步关系。
 
@@ -4298,7 +4298,7 @@ struct NestedComponentChild {
 
 > **说明：**
 >
-> 从API version 22开始，支持跨BuilderNode配对\@Provider和\@Consumer。
+> 从API version 23开始，支持跨BuilderNode配对\@Provider和\@Consumer。
 
 该示例演示了组件树为@Provider-BuilderNode-@Provider-@Consumer的情况时，@Consumer和@Provider之间的同步关系。
 
@@ -4524,8 +4524,8 @@ class MyNodeController extends NodeController {
     let mouseEvent = event as MouseEvent;
     // 坐标转换：将事件坐标转换为节点坐标系
     if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      mouseEvent.x = uiContext.vp2px(offsetX + mouseEvent.x);
-      mouseEvent.y = uiContext.vp2px(offsetY + mouseEvent.y);
+      mouseEvent.windowX = uiContext.vp2px(offsetX + mouseEvent.x);
+      mouseEvent.windowY = uiContext.vp2px(offsetY + mouseEvent.y);
     }
     // 调用postInputEvent将转换后的事件传递给ReactiveBuilderNode
     let result = this.rootNode.postInputEvent(event);
@@ -4547,16 +4547,16 @@ class MyNodeController extends NodeController {
     let changedTouchLen = touchEvent.changedTouches.length;
     for (let i = 0; i < changedTouchLen; i++) {
       if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-        touchEvent.changedTouches[i].x = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-        touchEvent.changedTouches[i].y = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
+        touchEvent.changedTouches[i].windowX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
+        touchEvent.changedTouches[i].windowY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
       }
     }
     // 转换touches数组中的所有触摸点坐标
     let touchesLen = touchEvent.touches.length;
     for (let i = 0; i < touchesLen; i++) {
       if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-        touchEvent.touches[i].x = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-        touchEvent.touches[i].y = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
+        touchEvent.touches[i].windowX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
+        touchEvent.touches[i].windowY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
       }
     }
     // 调用postInputEvent将转换后的事件传递给ReactiveBuilderNode
@@ -4661,16 +4661,16 @@ class MyNodeController extends NodeController {
       let changedTouchLen = touchEvent.changedTouches.length;
       for (let i = 0; i < changedTouchLen; i++) {
         if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-          touchEvent.changedTouches[i].x = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
-          touchEvent.changedTouches[i].y = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
+          touchEvent.changedTouches[i].windowX = uiContext.vp2px(offsetX + touchEvent.changedTouches[i].x);
+          touchEvent.changedTouches[i].windowY = uiContext.vp2px(offsetY + touchEvent.changedTouches[i].y);
         }
       }
       // 转换touches数组中的所有触摸点坐标
       let touchesLen = touchEvent.touches.length;
       for (let i = 0; i < touchesLen; i++) {
         if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-          touchEvent.touches[i].x = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
-          touchEvent.touches[i].y = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
+          touchEvent.touches[i].windowX = uiContext.vp2px(offsetX + touchEvent.touches[i].x);
+          touchEvent.touches[i].windowY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
         }
       }
     }
@@ -4768,8 +4768,8 @@ class MyNodeController extends NodeController {
 
     let axisEvent = event as AxisEvent;
     if (offsetX != null && offsetY != null && offsetX != undefined && offsetY != undefined) {
-      axisEvent.x = uiContext.vp2px(offsetX + axisEvent.x);
-      axisEvent.y = uiContext.vp2px(offsetY + axisEvent.y);
+      axisEvent.windowX = uiContext.vp2px(offsetX + axisEvent.x);
+      axisEvent.windowY = uiContext.vp2px(offsetY + axisEvent.y);
     }
     // 调用postInputEvent将转换后的事件传递给ReactiveBuilderNode
     let result = this.rootNode.postInputEvent(event);

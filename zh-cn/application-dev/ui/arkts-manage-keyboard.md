@@ -236,12 +236,12 @@ struct demo_text_1 {
 系统路由表配置
 
 在跳转目标模块的配置文件module.json5添加路由表配置
-```json
+```json5
 {
   "module": {
-    //...
+    // ...
     "routerMap": "$profile:route_map",
-    //...
+    // ...
   }
 }
 
@@ -249,7 +249,7 @@ struct demo_text_1 {
 
 在工程resources/base/profile中创建route_map.json文件。添加如下配置信息
 
-```json
+```json5
 // route_map.json
 {
   "routerMap": [
@@ -270,16 +270,18 @@ struct demo_text_1 {
 
 以下示例展示了如何通过[TextInputController](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textinputcontroller8)收起软键盘。
 
-```ts
-@Entry
-@Component
-struct demo {
+<!-- @[textInputController_CloseKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/TextInputControllerCloseKeyboard.ets) --> 
+
+``` TypeScript
+struct textInputControllerCloseKeyboard {
   controller: TextInputController = new TextInputController();
-  @State inputValue: string = "";
+  @State inputValue: string = '';
 
   build() {
+    NavDestination() {
     Column({ space: 30 }) {
-      Button('关闭键盘').onClick(() => {
+      // 请将$r('app.string.close_keyboard')替换为实际资源文件，在本示例中该资源文件的value值为"close keyboard"
+      Button($r('app.string.close_keyboard')).onClick(() => {
         this.controller.stopEditing()
       })
       TextInput({ controller: this.controller, text: this.inputValue })
@@ -288,6 +290,7 @@ struct demo {
     .height('100%')
     .margin('10%')
     .justifyContent(FlexAlign.Center)
+    }
   }
 }
 ```
@@ -302,24 +305,28 @@ struct demo {
 与通过输入框的controller退出编辑态方法相比，焦点转移到不需要软键盘的组件方法的优势在于，页面包含多个输入框时，开发者无需为每个输入框设置controller、再通过controller收起软键盘。
 
 以下示例展示了点击按钮时，调用[requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9)方法，焦点从输入框转移到按钮上，软键盘收起的场景。
-``` ts
-@Entry
-@Component
-struct TextInputExample {
+
+<!-- @[requestFocus_CloseKeyBoard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/RequestFocusCloseKeyBoard.ets) -->
+
+``` TypeScript
+struct requestFocusCloseKeyBoard {
   controller: TextInputController = new TextInputController();
-  @State inputValue: string = "";
+  @State inputValue: string = '';
 
   build() {
+    NavDestination() {
     Column({ space: 20 }) {
-      Button('change focus').onClick(() => {
-        this.getUIContext().getFocusController().requestFocus("button")
-      }).id("button")
+      // 请将$r('app.string.button_get_focus')替换为实际资源文件，在本示例中该资源文件的value值为"按钮获得焦点"
+      Button($r('app.string.button_get_focus')).onClick(() => {
+        this.getUIContext().getFocusController().requestFocus('button')
+      }).id('button')
       TextInput({ controller: this.controller, text: this.inputValue })
     }
     .justifyContent(FlexAlign.Center)
     .height('100%')
     .width('80%')
     .margin('10%')
+  }
   }
 }
 ```

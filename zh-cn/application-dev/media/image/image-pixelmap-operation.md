@@ -95,14 +95,14 @@
     *
     * @param pixelMap - 被复制的原PixelMap。
     * @param desiredPixelFormat - 新PixelMap的像素格式。如果不指定，则仍使用原PixelMap的像素格式。
-    * @returns 新PixelMap。
+    * @returns 新PixelMap的Promise。
     */
-   function clonePixelMap(pixelMap: PixelMap, desiredPixelFormat?: image.PixelMapFormat): PixelMap {
+   async function clonePixelMap(pixelMap: PixelMap, desiredPixelFormat?: image.PixelMapFormat): Promise<PixelMap> {
      // 获取原PixelMap的图片信息。
      const imageInfo = pixelMap.getImageInfoSync();
      // 读取原PixelMap的像素数据，并按照原PixelMap的像素格式写入缓冲区。
      const buffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
-     pixelMap.readPixelsToBufferSync(buffer);
+     await pixelMap.readPixelsToBuffer(buffer);
 
      // 根据原PixelMap的图片信息，生成初始化选项。
      const options: image.InitializationOptions = {
@@ -117,7 +117,7 @@
      };
 
      // 根据像素数据和初始化选项，创建新PixelMap。
-     return image.createPixelMapSync(buffer, options);
+     return await image.createPixelMap(buffer, options);
    }
    ```
 
@@ -132,7 +132,7 @@
 2. 参考以下代码对两张PixelMap进行拼接。
 
    ```ts
-   function concatPixelMap(pixelMap1: PixelMap, pixelMap2: PixelMap): PixelMap {
+   async function concatPixelMap(pixelMap1: PixelMap, pixelMap2: PixelMap): Promise<PixelMap> {
      // 将pixelMap1的像素数据读取至area1.pixels中。
      const imageInfo1 = pixelMap1.getImageInfoSync();
      const area1: image.PositionArea = {
@@ -145,7 +145,7 @@
          y: 0
        }
      };
-     pixelMap1.readPixels(area1);
+     await pixelMap1.readPixels(area1);
 
      // 将pixelMap2的像素数据读取至area2.pixels中。
      const imageInfo2 = pixelMap2.getImageInfoSync();
@@ -159,7 +159,7 @@
          y: 0
        }
      };
-     pixelMap2.readPixels(area2);
+     await pixelMap2.readPixels(area2);
 
      // 创建一个新的空白PixelMap，其宽度与pixelMap1和pixelMap2相等，高度为pixelMap1和pixelMap2相加。
      const options: image.InitializationOptions = {
@@ -173,9 +173,9 @@
      const newPixelMap = image.createPixelMapSync(options);
 
      // 将之前获取的pixelMap1和pixelMap2的像素数据按顺序写入新PixelMap。
-     newPixelMap.writePixels(area1);
+     await newPixelMap.writePixels(area1);
      area2.region.y = imageInfo1.size.height; // pixelMap2像素的写入位置应该从pixelMap1末行像素的下一行开始。
-     newPixelMap.writePixels(area2);
+     await newPixelMap.writePixels(area2);
 
      return newPixelMap;
    }

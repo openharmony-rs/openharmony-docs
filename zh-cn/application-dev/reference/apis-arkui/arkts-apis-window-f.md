@@ -649,27 +649,26 @@ getWindowsByCoordinate(displayId: number, windowNumber?: number, x?: number, y?:
 ```ts
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility } from '@kit.AbilityKit';
 
-try {
-  let displayId = 0;
-  window.getWindowsByCoordinate(displayId).then((data) => {
-    console.info(`Succeeded in getting windows. Data: ${data}`);
-    for (let window of data) {
-      // do something with window
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let windowClass: window.Window | undefined = undefined;
+    try {
+      let displayId = 0;
+      window.getWindowsByCoordinate(displayId, 2, 500, 500).then((data) => {
+        console.info(`Succeeded in getting windows. Data: ${data}`);
+        for (let windowObject of data) {
+          // do something with window
+          windowClass = windowObject;
+        }
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to get window from point. Cause code: ${exception.code}, message: ${exception.message}`);
     }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
-  });
-  window.getWindowsByCoordinate(displayId, 2, 500, 500).then((data) => {
-    console.info(`Succeeded in getting windows. Data: ${data}`);
-    for (let window of data) {
-      // do something with window
-    }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get window from point. Cause code: ${err.code}, message: ${err.message}`);
-  });
-} catch (exception) {
-  console.error(`Failed to get window from point. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
 }
 ```
 

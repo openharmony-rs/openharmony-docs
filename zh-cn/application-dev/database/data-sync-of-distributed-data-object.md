@@ -196,174 +196,7 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 >
 > - 目前仅支持迁移分布式文件目录下的文件，非分布式文件目录下的文件可以复制或移动到分布式文件目录下再进行迁移。文件的操作和URI的获取详见[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)和[文件URI](../reference/apis-core-file-kit/js-apis-file-fileuri.md)。
 
-<!-- @[data_sync_on_distributed_data_object_cross_device_collaboration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataObject/CrossDeviceCollaboration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets)--> 
-
-``` TypeScript
-import { AbilityConstant, Caller, UIAbility, Want } from '@kit.AbilityKit';
-import { distributedDataObject } from '@kit.ArkData';
-import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { JSON } from '@kit.ArkTS';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-// 业务数据定义
-class Data {
-  public title: string | undefined;
-  public text: string | undefined;
-
-  constructor(title: string | undefined, text: string | undefined) {
-    this.title = title;
-    this.text = text;
-  }
-}
-
-const DOMAIN: number = 0x0000;
-const TAG: string = '[DistributedDataObject]';
-
-let sessionId: string;
-let caller: Caller;
-let dataObject: distributedDataObject.DataObject;
-const changeCallBack: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
-  console.info(`change, sessionId: ${sessionId}, fields: ${JSON.stringify(fields)}`);
-}
-
-export default class EntryAbility extends UIAbility {
-  // 1. 调用端调用startAbilityByCall接口拉起对端Ability
-  callRemote() {
-    if (caller) {
-      hilog.error(DOMAIN, TAG, 'call remote already');
-      return;
-    }
-
-    // 1.1 调用genSessionId接口创建一个sessionId，通过分布式设备管理接口获取对端设备networkId
-    sessionId = distributedDataObject.genSessionId();
-    hilog.info(DOMAIN, TAG, `gen sessionId: ${sessionId}`);
-    let deviceId = getRemoteDeviceId();
-    if (deviceId === '') {
-      hilog.warn(DOMAIN, TAG, 'no remote device');
-      return;
-    }
-    hilog.info(DOMAIN, TAG, `get remote deviceId: ${deviceId}`);
-
-    // 1.2 组装want，并将sessionId放入want
-    let want: Want = {
-      bundleName: 'com.example.collaboration',
-      abilityName: 'EntryAbility',
-      deviceId: deviceId,
-      parameters: {
-        'ohos.aafwk.param.callAbilityToForeground': true, // 前台启动，非必须
-        'distributedSessionId': sessionId
-      }
-    }
-    try {
-      // 1.3 调用startAbilityByCall接口拉起对端Ability
-      this.context.startAbilityByCall(want).then((res) => {
-        if (!res) {
-          hilog.error(DOMAIN, TAG, 'startAbilityByCall failed');
-        }
-        caller = res;
-      })
-    } catch (e) {
-      let err = e as BusinessError;
-      hilog.error(DOMAIN, TAG, `get remote deviceId error, error code: ${err.code}, error message: ${err.message}`);
-    }
-  }
-
-  // 2. 拉起对端Ability后创建分布式数据对象
-  createDataObject() {
-    if (!caller) {
-      hilog.error(DOMAIN, TAG, 'call remote first');
-      return;
-    }
-    if (dataObject) {
-      hilog.error(DOMAIN, TAG, 'create dataObject already');
-      return;
-    }
-
-    // 2.1 创建分布式数据对象实例
-    let data = new Data('The title', 'The text');
-    dataObject = distributedDataObject.create(this.context, data);
-
-    // 2.2 注册数据变更监听
-    dataObject.on('change', changeCallBack);
-    // 2.3 设置同步sessionId加入组网
-    dataObject.setSessionId(sessionId);
-  }
-
-  // 3. 被调用端被拉起后创建和恢复分布式数据对象
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    if (want.parameters && want.parameters.distributedSessionId) {
-      // 3.1 创建分布式数据对象实例
-      let data = new Data(undefined, undefined);
-      dataObject = distributedDataObject.create(this.context, data);
-
-      // 3.2 注册数据变更监听
-      dataObject.on('change', changeCallBack);
-      // 3.3 从want中获取源端放入的sessionId，使用这个sessionId加入组网
-      let sessionId = want.parameters.distributedSessionId as string;
-      hilog.info(DOMAIN, TAG, `onCreate get sessionId: ${sessionId}`);
-      dataObject.setSessionId(sessionId);
-    }
-  }
-}
-
-// 获取可信组网中的设备
-function getRemoteDeviceId() {
-  let deviceId = '';
-  try {
-    let deviceManager = distributedDeviceManager.createDeviceManager('com.example.collaboration');
-    let devices = deviceManager.getAvailableDeviceListSync();
-    if (devices[0] && devices[0].networkId) {
-      deviceId = devices[0].networkId;
-    }
-  } catch (e) {
-    let err = e as BusinessError;
-    hilog.error(DOMAIN, TAG, `get remote deviceId error, error code: ${err.code}, error message: ${err.message}`);
-  }
-  return deviceId;
-}
-```
-               
-
-### 在多端协同中使用分布式数据对象
-
-1. 调用端调用startAbilityByCall接口拉起对端Ability：
-
-    1.1 调用genSessionId接口创建一个sessionId，通过分布式设备管理接口获取对端设备networkId。
-
-    1.2 组装want，并将sessionId放入want。
-
-    1.3 调用startAbilityByCall接口拉起对端Ability。
-
-2. 调用端拉起对端Ability后创建分布式数据对象并加入组网：
-
-   2.1 创建分布式数据对象实例。
-
-   2.2 注册数据变更监听。
-
-   2.3 设置同步sessionId加入组网。
-
-3. 被调用端被拉起后创建和恢复分布式数据对象：
-
-   3.1 创建分布式数据对象实例。
-
-   3.2 注册数据变更监听。
-
-   3.3 从want中获取源端放入的sessionId，使用这个sessionId加入组网。
-
-> **说明：**
->
-> - 暂时只支持在[通过跨设备Call调用实现多端协同](../application-models/uiability-cross-device-interaction.md)的场景中使用分布式数据对象进行数据同步。
->
-> - 跨设备Call调用实现的多端协同开发需要申请`ohos.permission.DISTRIBUTED_DATASYNC`权限和配置单实例启动标签，详见[通过跨设备Call调用实现多端协同](../application-models/uiability-cross-device-interaction.md)。
->
-> - wantParam中的"sessionId"字段可能被其他服务占用，建议自定义一个key存取sessionId。
->
-> - 使用分布式设备管理获取对端设备networkId详见[设备信息查询开发指导](../distributedservice/devicemanager-guidelines.md#设备信息查询开发指导)。
-
- 示例代码如下：
-
-<!-- @[data_sync_on_distributed_data_object_cross_device_migration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataObject/CrossDeviceMigration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets)--> 
+<!-- @[data_sync_on_distributed_data_object_cross_device_migration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataObject/CrossDeviceMigration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets)-->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -528,6 +361,173 @@ export default class EntryAbility extends UIAbility {
     hilog.info(DOMAIN, TAG, `get sessionId: ${sessionId}`);
     dataObject.setSessionId(sessionId);
   }
+}
+```
+               
+
+### 在多端协同中使用分布式数据对象
+
+1. 调用端调用startAbilityByCall接口拉起对端Ability：
+
+    1.1 调用genSessionId接口创建一个sessionId，通过分布式设备管理接口获取对端设备networkId。
+
+    1.2 组装want，并将sessionId放入want。
+
+    1.3 调用startAbilityByCall接口拉起对端Ability。
+
+2. 调用端拉起对端Ability后创建分布式数据对象并加入组网：
+
+   2.1 创建分布式数据对象实例。
+
+   2.2 注册数据变更监听。
+
+   2.3 设置同步sessionId加入组网。
+
+3. 被调用端被拉起后创建和恢复分布式数据对象：
+
+   3.1 创建分布式数据对象实例。
+
+   3.2 注册数据变更监听。
+
+   3.3 从want中获取源端放入的sessionId，使用这个sessionId加入组网。
+
+> **说明：**
+>
+> - 暂时只支持在[通过跨设备Call调用实现多端协同](../application-models/uiability-cross-device-interaction.md)的场景中使用分布式数据对象进行数据同步。
+>
+> - 跨设备Call调用实现的多端协同开发需要申请`ohos.permission.DISTRIBUTED_DATASYNC`权限和配置单实例启动标签，详见[通过跨设备Call调用实现多端协同](../application-models/uiability-cross-device-interaction.md)。
+>
+> - wantParam中的"sessionId"字段可能被其他服务占用，建议自定义一个key存取sessionId。
+>
+> - 使用分布式设备管理获取对端设备networkId详见[设备信息查询开发指导](../distributedservice/devicemanager-guidelines.md#设备信息查询开发指导)。
+
+ 示例代码如下：
+
+<!-- @[data_sync_on_distributed_data_object_cross_device_collaboration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataObject/CrossDeviceCollaboration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets)-->
+
+``` TypeScript
+import { AbilityConstant, Caller, UIAbility, Want } from '@kit.AbilityKit';
+import { distributedDataObject } from '@kit.ArkData';
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { JSON } from '@kit.ArkTS';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 业务数据定义
+class Data {
+  public title: string | undefined;
+  public text: string | undefined;
+
+  constructor(title: string | undefined, text: string | undefined) {
+    this.title = title;
+    this.text = text;
+  }
+}
+
+const DOMAIN: number = 0x0000;
+const TAG: string = '[DistributedDataObject]';
+
+let sessionId: string;
+let caller: Caller;
+let dataObject: distributedDataObject.DataObject;
+const changeCallBack: distributedDataObject.DataObserver = (sessionId: string, fields: Array<string>) => {
+  console.info(`change, sessionId: ${sessionId}, fields: ${JSON.stringify(fields)}`);
+}
+
+export default class EntryAbility extends UIAbility {
+  // 1. 调用端调用startAbilityByCall接口拉起对端Ability
+  callRemote() {
+    if (caller) {
+      hilog.error(DOMAIN, TAG, 'call remote already');
+      return;
+    }
+
+    // 1.1 调用genSessionId接口创建一个sessionId，通过分布式设备管理接口获取对端设备networkId
+    sessionId = distributedDataObject.genSessionId();
+    hilog.info(DOMAIN, TAG, `gen sessionId: ${sessionId}`);
+    let deviceId = getRemoteDeviceId();
+    if (deviceId === '') {
+      hilog.warn(DOMAIN, TAG, 'no remote device');
+      return;
+    }
+    hilog.info(DOMAIN, TAG, `get remote deviceId: ${deviceId}`);
+
+    // 1.2 组装want，并将sessionId放入want
+    let want: Want = {
+      bundleName: 'com.example.collaboration',
+      abilityName: 'EntryAbility',
+      deviceId: deviceId,
+      parameters: {
+        'ohos.aafwk.param.callAbilityToForeground': true, // 前台启动，非必须
+        'distributedSessionId': sessionId
+      }
+    }
+    try {
+      // 1.3 调用startAbilityByCall接口拉起对端Ability
+      this.context.startAbilityByCall(want).then((res) => {
+        if (!res) {
+          hilog.error(DOMAIN, TAG, 'startAbilityByCall failed');
+        }
+        caller = res;
+      })
+    } catch (e) {
+      let err = e as BusinessError;
+      hilog.error(DOMAIN, TAG, `get remote deviceId error, error code: ${err.code}, error message: ${err.message}`);
+    }
+  }
+
+  // 2. 拉起对端Ability后创建分布式数据对象
+  createDataObject() {
+    if (!caller) {
+      hilog.error(DOMAIN, TAG, 'call remote first');
+      return;
+    }
+    if (dataObject) {
+      hilog.error(DOMAIN, TAG, 'create dataObject already');
+      return;
+    }
+
+    // 2.1 创建分布式数据对象实例
+    let data = new Data('The title', 'The text');
+    dataObject = distributedDataObject.create(this.context, data);
+
+    // 2.2 注册数据变更监听
+    dataObject.on('change', changeCallBack);
+    // 2.3 设置同步sessionId加入组网
+    dataObject.setSessionId(sessionId);
+  }
+
+  // 3. 被调用端被拉起后创建和恢复分布式数据对象
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    if (want.parameters && want.parameters.distributedSessionId) {
+      // 3.1 创建分布式数据对象实例
+      let data = new Data(undefined, undefined);
+      dataObject = distributedDataObject.create(this.context, data);
+
+      // 3.2 注册数据变更监听
+      dataObject.on('change', changeCallBack);
+      // 3.3 从want中获取源端放入的sessionId，使用这个sessionId加入组网
+      let sessionId = want.parameters.distributedSessionId as string;
+      hilog.info(DOMAIN, TAG, `onCreate get sessionId: ${sessionId}`);
+      dataObject.setSessionId(sessionId);
+    }
+  }
+}
+
+// 获取可信组网中的设备
+function getRemoteDeviceId() {
+  let deviceId = '';
+  try {
+    let deviceManager = distributedDeviceManager.createDeviceManager('com.example.collaboration');
+    let devices = deviceManager.getAvailableDeviceListSync();
+    if (devices[0] && devices[0].networkId) {
+      deviceId = devices[0].networkId;
+    }
+  } catch (e) {
+    let err = e as BusinessError;
+    hilog.error(DOMAIN, TAG, `get remote deviceId error, error code: ${err.code}, error message: ${err.message}`);
+  }
+  return deviceId;
 }
 ```
 

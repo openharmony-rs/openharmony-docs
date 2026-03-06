@@ -310,7 +310,7 @@ export class GlobalStaticSnapshot {
         resultPixmap = pixmap;
       })
       .catch((err: Error) => {
-        console.error('error: ' + err);
+        console.error(`error: ${err}`);
       })
     return resultPixmap;
   }

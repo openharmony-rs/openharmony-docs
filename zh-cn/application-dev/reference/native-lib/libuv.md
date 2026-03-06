@@ -144,6 +144,11 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 ```ts
 export const test:() => number;
 ```
+在CMakeLists.txt中添加以下动态链接库：
+
+```txt
+libhilog_ndk.z.so
+```
 
 **正确示例：**
 
@@ -228,6 +233,11 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 在index.d.ts文件中添加如下代码：
 ```index.d.ts
 export const test:() => number;
+```
+在CMakeLists.txt中添加以下动态链接库：
+
+```txt
+libhilog_ndk.z.so
 ```
 
 ### 场景二、在Native侧向应用主循环抛fd事件，接口无法生效
@@ -343,6 +353,11 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 
 ```ts
 export const testClose:() => number;
+```
+在CMakeLists.txt中添加以下动态链接库：
+
+```txt
+libhilog_ndk.z.so
 ```
 
 在上述代码中，流程如下：
@@ -466,6 +481,11 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 ```ts
 export const testClose:() => number;
 ```
+在CMakeLists.txt中添加以下动态链接库：
+
+```txt
+libhilog_ndk.z.so
+```
 
 ## libuv使用指导
 
@@ -485,16 +505,16 @@ export const testClose:() => number;
 
 ```cpp
 /**
-* @brief 创建一个新的异步工作
-*
-* @param env 指向当前环境的指针
-* @param async_resource 可选的资源对象，用于跟踪异步操作
-* @param async_resource_name 可选的字符串，用于描述异步资源
-* @param execute 一个回调函数，它将在一个新的线程中执行异步操作
-* @param complete 一个回调函数，它将在异步操作完成后被调用
-* @param data 用户定义的数据，它将被传递给execute和complete回调函数
-* @param result 指向新创建的异步工作的指针
-*/
+ * @brief 创建一个新的异步工作
+ *
+ * @param env 指向当前环境的指针
+ * @param async_resource 可选的资源对象，用于跟踪异步操作
+ * @param async_resource_name 可选的字符串，用于描述异步资源
+ * @param execute 一个回调函数，它将在一个新的线程中执行异步操作
+ * @param complete 一个回调函数，它将在异步操作完成后被调用
+ * @param data 用户定义的数据，它将被传递给execute和complete回调函数
+ * @param result 指向新创建的异步工作的指针
+ */
 napi_status napi_create_async_work(napi_env env,
                                   napi_value async_resource,
                                   napi_value async_resource_name,
@@ -504,19 +524,19 @@ napi_status napi_create_async_work(napi_env env,
                                   napi_async_work* result);
 
 /**
-* @brief 将异步工作添加到队列中
-*
-* @param env 指向当前环境的指针
-* @param work 指向异步工作的指针
-*/
+ * @brief 将异步工作添加到队列中
+ *
+ * @param env 指向当前环境的指针
+ * @param work 指向异步工作的指针
+ */
 napi_status napi_queue_async_work(napi_env env, napi_async_work work);
 
 /**
-* @brief 删除异步工作
-*
-* @param env 指向当前环境的指针
-* @param work 指向异步工作的指针
-*/
+ * @brief 删除异步工作
+ *
+ * @param env 指向当前环境的指针
+ * @param work 指向异步工作的指针
+ */
 napi_status napi_delete_async_work(napi_env env, napi_async_work work);
 ```
 
@@ -535,20 +555,20 @@ Node-API与之对应的接口为[napi_threadsafe_function](../../napi/use-napi-t
 
 ```cpp
 /**
-* @brief 用于创建一个线程安全的函数，该函数可以在多个线程中调用，而不需要担心数据竞争或其他线程安全问题
-*
-* @param env 指向NAPI环境的指针，用于创建和操作Javascript值
-* @param func 指向JavaScript函数的指针
-* @param async_resource 异步资源，通常是一个表示异步操作的对象
-* @param async_resource_name 指向资源名称的指针，这个名称将用于日志和调试
-* @param max_queue_size 一个整数，表示队列的最大大小，当队列满时，新的调用将被丢弃
-* @param initial_thread_count 无符号整数，表示在创建线程安全函数时，初始的线程数量
-* @param thread_finalize_data 一个指向在所有线程之前需要清理的数据
-* @param napi_finalize thread_finalize_cb 回调函数，当所有线程完成时被调用，用于清理资源
-* @param context 指向上下文的指针，这个上下文将被传递给call_js_func函数
-* @param call_js_cb 指向回调函数的指针，这个函数将在Javascript函数被调用时被调用
-* @param result 指向napi_threadsafe_function结构的指针，这个结构将被填充为新创建的线程安全函数
-*/
+ * @brief 用于创建一个线程安全的函数，该函数可以在多个线程中调用，而不需要担心数据竞争或其他线程安全问题
+ *
+ * @param env 指向NAPI环境的指针，用于创建和操作Javascript值
+ * @param func 指向JavaScript函数的指针
+ * @param async_resource 异步资源，通常是一个表示异步操作的对象
+ * @param async_resource_name 指向资源名称的指针，这个名称将用于日志和调试
+ * @param max_queue_size 一个整数，表示队列的最大大小，当队列满时，新的调用将被丢弃
+ * @param initial_thread_count 无符号整数，表示在创建线程安全函数时，初始的线程数量
+ * @param thread_finalize_data 一个指向在所有线程之前需要清理的数据
+ * @param napi_finalize thread_finalize_cb 回调函数，当所有线程完成时被调用，用于清理资源
+ * @param context 指向上下文的指针，这个上下文将被传递给call_js_func函数
+ * @param call_js_cb 指向回调函数的指针，这个函数将在Javascript函数被调用时被调用
+ * @param result 指向napi_threadsafe_function结构的指针，这个结构将被填充为新创建的线程安全函数
+ */
 napi_status napi_create_threadsafe_function(napi_env env,
                                             napi_value func,
                                             napi_value async_resource,
@@ -562,27 +582,27 @@ napi_status napi_create_threadsafe_function(napi_env env,
                                             napi_threadsafe_function* result);
 
 /**
-* @brief 获取一个线程安全的函数
-*
-* @param function 指向线程安全函数的指针
-*/
+ * @brief 获取一个线程安全的函数
+ *
+ * @param function 指向线程安全函数的指针
+ */
 napi_status napi_acquire_threadsafe_function(napi_threadsafe_function function);
 
 /**
-* @brief 调用一个线程安全的函数
-* @param function 指向线程安全函数的指针
-* @param data 用户数据
-* @param is_blocking 枚举值，它决定调用JavaScript函数是阻塞的还是非阻塞的
-*/
+ * @brief 调用一个线程安全的函数
+ * @param function 指向线程安全函数的指针
+ * @param data 用户数据
+ * @param is_blocking 枚举值，它决定调用JavaScript函数是阻塞的还是非阻塞的
+ */
 napi_status napi_call_threadsafe_function(napi_threadsafe_function function,
                                           void* data,
                                           napi_threadsafe_function_call_mode is_blocking);
 /**
-* @brief 释放一个线程安全的函数
-*
-* @param function 指向线程安全函数的指针
-* @param is_blocking 枚举值，它决定调用JavaScript函数是阻塞的还是非阻塞的
-*/
+ * @brief 释放一个线程安全的函数
+ *
+ * @param function 指向线程安全函数的指针
+ * @param is_blocking 枚举值，它决定调用JavaScript函数是阻塞的还是非阻塞的
+ */
 napi_status napi_release_threadsafe_function(napi_threadsafe_function function,
                                              napi_threadsafe_function_call_mode is_blocking);
 
@@ -1258,8 +1278,8 @@ int main()
 
 该示例代码仅仅描述了一个简单的场景，步骤如下：
 
-1. 在主线程中初始化async句柄
-2. 新建一个子线程，在里面每隔100毫秒触发一次`uv_async_send`。10次以后调用`uv_close`关闭async句柄。
+1. 在主线程中初始化async句柄；
+2. 新建一个子线程，在里面每隔100毫秒触发一次`uv_async_send`。10次以后调用`uv_close`关闭async句柄；
 3. 在主线程运行事件循环。
 
 可以看到，每触发一次，主线程都会执行一次回调函数。
@@ -1317,25 +1337,6 @@ after_work_cb：loop所在线程要执行的回调函数。
 
 在OpenHarmony中，`uv_queue_work`函数在UI线程的工作流程为：将`work_cb`抛到FFRT对应优先级的线程池中，然后待FFRT调度执行该任务，并将`after_work_cb`抛到eventhandler对应优先级的event queue中，等待eventhandler调度并回到loop线程执行。需要注意的是，`uv_queue_work`调用完后，并不代表其中的任何一个任务执行完，仅代表将work_cb插入到FFRT对应优先级的线程池中。taskpool和jsworker线程的工作流程和原生libuv逻辑保持一致。
 
-对于一些特定场景，比如对内存开销敏感的场景中，同一个request可以重复使用，前提是保证同一类任务之间的顺序，并且要确保最后一次调用`uv_queue_work`时做好对该request的释放工作。
-
-```C
-uv_work_t* work = new uv_work_t;
-uv_queue_work(loop, work, [](uv_work_t* work) {
-        //do something
-    },
-    [](uv_work_t* work, int status) {
-        // do something
-        uv_queue_work(loop, work, [](...) {/* do something*/}, [](...) {
-            //do something
-            if (last_task) {  // 最后一个任务执行完以后，释放该request
-                delete work;
-            }
-        });
-    },
-    )
-```
-
 **3. uv_queue_work使用约束**
 
 特别强调，开发者需要明确，`uv_queue_work`函数仅用于抛异步任务，**异步任务的execute回调被提交到线程池后会经过调度执行，因此并不保证多次提交的任务及其回调按照时序关系执行**。
@@ -1360,17 +1361,17 @@ uv_queue_work(loop, work, [](uv_work_t* work) {
 
 ```cpp
 /**
-* @brief 将一个工作请求添加到事件循环的队列中。
-* 
-* @param loop 事件循环
-* @param req 随机数请求
-* @param buf 存储随机数的缓冲区
-* @param buflen 缓冲区的长度
-* @param flags 一个无符号整数，表示生成随机数的选项
-* @param cb  随机数生成完成后的回调函数
-*
-* @return 成功返回0，失败返回错误码
-*/
+ * @brief 将一个工作请求添加到事件循环的队列中。
+ * 
+ * @param loop 事件循环
+ * @param req 随机数请求
+ * @param buf 存储随机数的缓冲区
+ * @param buflen 缓冲区的长度
+ * @param flags 一个无符号整数，表示生成随机数的选项
+ * @param cb  随机数生成完成后的回调函数
+ *
+ * @return 成功返回0，失败返回错误码
+ */
 int uv_random(uv_loop_t* loop,
              uv_random_t* req,
              void* buf,
@@ -1385,15 +1386,15 @@ int uv_random(uv_loop_t* loop,
 
 ```cpp
 /**
-* @brief 将一个工作请求添加到事件循环的队列中。当事件循环在下一次迭代时，work_cb函数将会在一个新的线程中被调用。当work_cb函数完成时，after_work_cb函数将会在事件循环的线程中被调用。
-* 
-* @param loop 事件循环
-* @param req 工作请求
-* @param work_cb 在新线程中被调用的函数
-* @param after_work_cb 在事件循环线程中被调用的函数
-*
-* @return 成功返回0，失败返回-1
-*/
+ * @brief 将一个工作请求添加到事件循环的队列中。当事件循环在下一次迭代时，work_cb函数将会在一个新的线程中被调用。当work_cb函数完成时，after_work_cb函数将会在事件循环的线程中被调用。
+ *
+ * @param loop 事件循环
+ * @param req 工作请求
+ * @param work_cb 在新线程中被调用的函数
+ * @param after_work_cb 在事件循环线程中被调用的函数
+ *
+ * @return 成功返回0，失败返回-1
+ */
 int uv_queue_work(uv_loop_t* loop,
                   uv_work_t* req,
                   uv_work_cb work_cb,
@@ -1406,17 +1407,17 @@ int uv_queue_work(uv_loop_t* loop,
 
 ```cpp
 /**
-* @brief 异步读取文件
-*
-* @param loop 事件循环
-* @param req 文件操作请求
-* @param file 文件描述符
-* @param bufs 读取数据的缓冲区
-* @param nbufs 缓冲区的数量
-* @param off 文件的偏移量
-* @param cb 完成后的回调函数
-* @return 成功返回0，失败返回-1
-*/
+ * @brief 异步读取文件
+ *
+ * @param loop 事件循环
+ * @param req 文件操作请求
+ * @param file 文件描述符
+ * @param bufs 读取数据的缓冲区
+ * @param nbufs 缓冲区的数量
+ * @param off 文件的偏移量
+ * @param cb 完成后的回调函数
+ * @return 成功返回0，失败返回-1
+ */
 int uv_fs_read(uv_loop_t* loop, uv_fs_t* req,
               uv_file file, 
               const uv_buf_t bufs[],
@@ -1425,17 +1426,17 @@ int uv_fs_read(uv_loop_t* loop, uv_fs_t* req,
               uv_fs_cb cb);
 
 /**
-* @brief 异步打开文件
-*
-* @param loop 事件循环
-* @param req 文件操作请求
-* @param path 文件路径
-* @param flags 打开文件的方式
-* @param mode 文件权限
-* @param cb 完成后的回调函数
-*
-* @return 成功返回0，失败返回-1
-*/
+ * @brief 异步打开文件
+ *
+ * @param loop 事件循环
+ * @param req 文件操作请求
+ * @param path 文件路径
+ * @param flags 打开文件的方式
+ * @param mode 文件权限
+ * @param cb 完成后的回调函数
+ *
+ * @return 成功返回0，失败返回-1
+ */
 int uv_fs_open(uv_loop_t* loop, 
                uv_fs_t* req,
                const char* path,
@@ -1444,18 +1445,18 @@ int uv_fs_open(uv_loop_t* loop,
                uv_fs_cb cb);
 
 /**
-* @brief 异步发送文件
-*
-* @param loop 事件循环
-* @param req 文件操作请求
-* @param out_fd 输出文件描述符
-* @param in_fd 输入文件描述符
-* @param off 文件的偏移量
-* @param len 发送的长度
-* @param cb 完成后的回调函数
-*
-* @return 成功返回0，失败返回-1
-*/
+ * @brief 异步发送文件
+ *
+ * @param loop 事件循环
+ * @param req 文件操作请求
+ * @param out_fd 输出文件描述符
+ * @param in_fd 输入文件描述符
+ * @param off 文件的偏移量
+ * @param len 发送的长度
+ * @param cb 完成后的回调函数
+ *
+ * @return 成功返回0，失败返回-1
+ */
 int uv_fs_sendfile(uv_loop_t* loop,
                    uv_fs_t* req,
                    uv_file out_fd,
@@ -1465,18 +1466,18 @@ int uv_fs_sendfile(uv_loop_t* loop,
                    uv_fs_cb cb);
 
 /**
-* @brief 异步写入文件
-*
-* @param loop 事件循环
-* @param req 文件操作请求
-* @param file 文件描述符
-* @param bufs 要写入的数据
-* @param nbufs 数据的数量
-* @param off 文件的偏移量
-* @param cb 完成后的回调函数
-*
-* @return 成功返回0，失败返回-1
-*/
+ * @brief 异步写入文件
+ *
+ * @param loop 事件循环
+ * @param req 文件操作请求
+ * @param file 文件描述符
+ * @param bufs 要写入的数据
+ * @param nbufs 数据的数量
+ * @param off 文件的偏移量
+ * @param cb 完成后的回调函数
+ *
+ * @return 成功返回0，失败返回-1
+ */
 int uv_fs_write(uv_loop_t* loop, 
                 uv_fs_t* req,
                 uv_file file,
@@ -1486,17 +1487,17 @@ int uv_fs_write(uv_loop_t* loop,
                 uv_fs_cb cb);
 
 /**
-* @brief 异步复制文件
-*
-* @param loop 事件循环
-* @param req 文件操作请求
-* @param path 源文件路径
-* @param new_path 目标文件路径
-* @param flags 复制选项
-* @param cb 完成后的回调函数
-*
-* @return 成功返回0，失败返回-1
-*/
+ * @brief 异步复制文件
+ *
+ * @param loop 事件循环
+ * @param req 文件操作请求
+ * @param path 源文件路径
+ * @param new_path 目标文件路径
+ * @param flags 复制选项
+ * @param cb 完成后的回调函数
+ *
+ * @return 成功返回0，失败返回-1
+ */
 int uv_fs_copyfile(uv_loop_t* loop,
                    uv_fs_t* req,
                    const char* path,
@@ -1511,17 +1512,17 @@ int uv_fs_copyfile(uv_loop_t* loop,
 
 ```cpp
 /**
-* @brief 异步获取地址信息
-*
-* @param loop 事件循环
-* @param req 地址信息请求
-* @param cb 完成后的回调函数
-* @param hostname 主机名
-* @param service 服务名
-* @param hints 地址信息提示
-*
-* @return 成功返回0，失败返回-1
-*/
+ * @brief 异步获取地址信息
+ *
+ * @param loop 事件循环
+ * @param req 地址信息请求
+ * @param cb 完成后的回调函数
+ * @param hostname 主机名
+ * @param service 服务名
+ * @param hints 地址信息提示
+ *
+ * @return 成功返回0，失败返回-1
+ */
 int uv_getaddrinfo(uv_loop_t* loop,
                    uv_getaddrinfo_t* req,
                    uv_getaddrinfo_cb cb,
@@ -1536,16 +1537,16 @@ int uv_getaddrinfo(uv_loop_t* loop,
 
 ```cpp
 /**
-* @brief 异步获取名称信息
-*
-* @param loop 事件循环
-* @param req 名称信息请求
-* @param getnameinfo_cb 完成后的回调函数
-* @param addr 地址
-* @param flags 标志
-*
-* @return 成功返回0，失败返回-1
-*/
+ * @brief 异步获取名称信息
+ *
+ * @param loop 事件循环
+ * @param req 名称信息请求
+ * @param getnameinfo_cb 完成后的回调函数
+ * @param addr 地址
+ * @param flags 标志
+ *
+ * @return 成功返回0，失败返回-1
+ */
 int uv_getnameinfo(uv_loop_t* loop,
                    uv_getnameinfo_t* req,
                    uv_getnameinfo_cb getnameinfo_cb,

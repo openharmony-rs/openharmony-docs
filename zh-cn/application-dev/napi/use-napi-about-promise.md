@@ -17,7 +17,7 @@ Promise是ArkTS中用来处理异步操作的对象，Promise有pending（待定
 - **同步**：同步是指代码按顺序执行，一行代码执行完后继续执行下一行。如果某个操作耗时较长，整个程序会被阻塞。
 - **异步**：异步是指任务可以同时执行，不需要等待上一个任务结束。常见的异步操作有定时器、事件监听和网络请求等。异步任务不会阻塞后续任务的执行，而是通过回调函数或Promise对象来处理任务的结果。
 - **Promise**：Promise是一个ArkTS对象，用于处理异步操作。通过then、catch和finally方法添加自定义逻辑。
-- **deferred**：deferred是延迟对象，与Promise关联，设置Promise的回调函数resolve和reject。维护异步模型状态。
+- **deferred**：deferred是用来控制Promise状态的对象，通过它可以在未来的某个时刻将Promise的状态标记为已完成fulfilled（已兑现）或rejected（已拒绝）。
 - **resolve**：此函数可以将Promise的状态从pending（待定）改为fulfilled（已兑现），向resolve中传入的参数可以在Promise对象的then方法中获取。
 - **reject**：此函数可以将Promise的状态从pending（待定）改为rejected（已拒绝），向reject中传入的参数可以在Promise对象的catch方法中获取。
 
@@ -44,9 +44,10 @@ Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程
 
 cpp部分代码
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_is_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// napi_is_promise
 static napi_value IsPromise(napi_env env, napi_callback_info info)
 {
     napi_value argv[1] = {nullptr};
@@ -67,28 +68,26 @@ static napi_value IsPromise(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_is_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
-```ts
-// index.d.ts
-export const isPromise: <T>(value: T) => boolean;
-```
 <!-- @[napi_is_promise_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const isPromise: <T>(value: T) => boolean; // napi_is_promise
+```
 
 ArkTS侧示例代码
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_is_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// napi_is_promise
 let value = Promise.resolve();
 // 传入的对象为Promise时，返回true，否则返回false
 hilog.info(0x0000, 'Node-API', 'napi_is_promise %{public}s', testNapi.isPromise(value));
 hilog.info(0x0000, 'Node-API', 'napi_is_promise string %{public}s', testNapi.isPromise(''));
 ```
-<!-- @[ark_napi_is_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_create_promise
 
@@ -125,11 +124,10 @@ napi_value NapiPromiseDemo(napi_env env, napi_callback_info info)
 
 CPP部分代码
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_resolve_reject_deferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/napi_init.cpp) -->
 
-static constexpr int INT_ARG_2 = 2; // 入参索引
-
+``` C++
+// napi_resolve_deferred & napi_reject_deferred
 static napi_value CreatePromise(napi_env env, napi_callback_info info)
 {
     // deferred是一个延迟对象，作用是将函数延迟一定时间再执行
@@ -178,50 +176,55 @@ static napi_value ResolveRejectDeferred(napi_env env, napi_callback_info info)
     }
     // 根据第三个参数设置resolve或reject
     if (promiseStatus) {
-        napi_resolve_deferred(env, deferred, args[0]);
+        napi_resolve_deferred(env, deferred, args[INT_ARG_0]);
     } else {
-        napi_reject_deferred(env, deferred, args[1]);
+        napi_reject_deferred(env, deferred, args[INT_ARG_1]);
     }
     // 返回设置了resolve或reject的Promise对象
     return promise;
 }
 ```
-<!-- @[napi_resolve_reject_deferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明示例
 
-```ts
-// index.d.ts
-export const createPromise: () => boolean | undefined;
+<!-- @[napi_resolve_reject_deferred_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const createPromise: () => boolean | undefined; // napi_resolve_deferred & napi_reject_deferred
+
 export const resolveRejectDeferred: (resolve: string, reject: string, status: boolean) => Promise<string> | undefined;
 ```
-<!-- @[napi_resolve_reject_deferred_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_resolve_reject_deferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// napi_resolve_deferred & napi_reject_deferred
 // 创建promise如果创建成功返回true，创建失败返回false
 hilog.info(0x0000, 'Node-API', 'napi_create_promise %{public}s', testNapi.createPromise());
 // 调用resolveRejectDeferred函数设置resolve和reject的返回结果以及Promise状态
 // Promise状态为true时设置resolve，返回结果在then函数中获得
-let promiseSuccess: Promise<string> = testNapi.resolveRejectDeferred('success', 'fail', true) as Promise<string>;
+let promiseSuccess: Promise<string> =
+  testNapi.resolveRejectDeferred('success', 'fail', true) as Promise<string>;
 promiseSuccess.then((res) => {
-  hilog.info(0x0000, 'Node-API', 'get_resolve_deferred resolve %{public}s', res)
+  hilog.info(0x0000, 'Node-API', 'get_resolve_deferred resolve %{public}s', res);
+  // ...
 }).catch((err: Error) => {
-  hilog.info(0x0000, 'Node-API', 'get_resolve_deferred reject %{public}s', err)
+  hilog.info(0x0000, 'Node-API', 'get_resolve_deferred reject %{public}s', err);
+  // ...
 })
 // Promise状态为false时设置reject，返回结果在catch函数中获得
-let promiseFail: Promise<string> = testNapi.resolveRejectDeferred('success', 'fail', false) as Promise<string>;
+let promiseFail: Promise<string> =
+  testNapi.resolveRejectDeferred('success', 'fail', false) as Promise<string>;
 promiseFail.then((res) => {
-  hilog.info(0x0000, 'Node-API', 'get_resolve_deferred resolve %{public}s', res)
+  hilog.info(0x0000, 'Node-API', 'get_resolve_deferred resolve %{public}s', res);
+  // ...
 }).catch((err: Error) => {
-  hilog.info(0x0000, 'Node-API', 'get_resolve_deferred reject %{public}s', err)
+  hilog.info(0x0000, 'Node-API', 'get_resolve_deferred reject %{public}s', err);
+  // ...
 })
 ```
-<!-- @[ark_napi_resolve_reject_deferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/ets/pages/Index.ets) -->
 
 以上代码如果要在native cpp中打印日志，需在CMakeLists.txt文件中添加以下配置信息（并添加头文件：#include "hilog/log.h"）：
 
