@@ -27,6 +27,6 @@ FFRT互斥锁结构。
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t storage[(ffrt_mutex_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | FFRT互斥锁所占空间 |
+| uint32_t storage[(ffrt_mutex_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | FFRT互斥锁占用空间 |
 
 
