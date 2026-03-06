@@ -632,7 +632,7 @@ addVlanIp(ifName: string, vlanId: number, address: LinkAddress): Promise\<void\>
 | ------ | ------ | ---- | ----------------- |
 | ifName | string | 是 | 网卡名。 |
 | vlanId | number | 是 | vlan标识符，取值范围[0,4094]。 |
-| address | [LinkAddress](#linkaddress) | 是 | 链路信息。 |
+| address | [LinkAddress](js-apis-net-connection.md#linkaddress) | 是 | 链路信息。 |
 
 **返回值：**
 
@@ -699,7 +699,7 @@ deleteVlanIp(ifName: string, vlanId: number, address: LinkAddress): Promise\<voi
 | ------ | ------ | ---- | ----------------- |
 | ifName | string | 是 | 网卡名。 |
 | vlanId | number | 是 | vlan标识符，取值范围[0,4094]。 |
-| address | [LinkAddress](#linkaddress) | 是 | 链路信息。 |
+| address | [LinkAddress](js-apis-net-connection.md#linkaddress) | 是 | 链路信息。 |
 
 **返回值：**
 
