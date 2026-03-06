@@ -1217,9 +1217,7 @@ import { ItemRestriction, SegmentButton, SegmentButtonItemTuple, SegmentButtonOp
 @Component
 struct Index {
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
-    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, {
-      text: '页签按钮3'
-    }] as ItemRestriction<SegmentButtonTextItem>,
+    buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, { text: '页签按钮3' }] as ItemRestriction<SegmentButtonTextItem>,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
   });
   @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
@@ -1227,8 +1225,9 @@ struct Index {
     multiply: false,
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
   });
-  @State tabSelectedIndexes: number[] = [0];
-  @State singleSelectCapsuleSelectedIndexes: number[] = [0];
+  @State tabSelectedIndexes: number[] = [0]; // 页签按钮的选中索引值，默认选中第一个
+  @State singleSelectCapsuleSelectedIndexes: number[] = [0]; // 单选按钮的选中索引值，默认选中第一个
+  @State currentSelectedIndex: number = 0; // 切换选中项的索引计数器
 
   build() {
     Row() {
@@ -1242,13 +1241,14 @@ struct Index {
           SegmentButton({
             options: this.singleSelectCapsuleOptions,
             selectedIndexes: $singleSelectCapsuleSelectedIndexes,
-            enableStateAnimation: true
+            enableStateAnimation: true // 开启属性动画
           })
 
           Button('change selectedIndexes').onClick((event: ClickEvent) => {
-            // 修改选中项的索引值
-            this.tabSelectedIndexes = [2]
-            this.singleSelectCapsuleSelectedIndexes = [2]
+            // 通过状态变量自增修改选中项的索引值，若超出最大索引则重置为0
+            this.currentSelectedIndex = this.currentSelectedIndex < 2 ? this.currentSelectedIndex + 1 : 0;
+            this.tabSelectedIndexes = [this.currentSelectedIndex];
+            this.singleSelectCapsuleSelectedIndexes = [this.currentSelectedIndex];
           })
         }.width('90%')
       }.width('100%')
