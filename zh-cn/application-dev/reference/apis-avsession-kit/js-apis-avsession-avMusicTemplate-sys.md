@@ -24,7 +24,7 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 
 ## 使用说明
 
-本文档仅提供系统接口说明，以下接口的使用说明均需先创建实例，请参考公开接口[avMusicTemplate.createAVMusicTemplate](js-apis-avsession-avMusicTemplate.md#avmusictemplatecreateavmusictemplate)的说明及示例，创建对应实例。
+本文档仅提供系统接口说明，以下接口的使用说明均需先创建实例，请参考公开接口[avMusicTemplate.createAVMusicTemplate](arkts-apis-avsession-AVMusicTemplate-f.md#avmusictemplatecreateavmusictemplate)的说明及示例，创建对应实例。
 
 ## avMusicTemplate.createAVMusicTemplateController
 

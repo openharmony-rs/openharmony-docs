@@ -1,4 +1,5 @@
-# @ohos.multimedia.avMusicTemplate(音频模板)
+# Functions
+
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
