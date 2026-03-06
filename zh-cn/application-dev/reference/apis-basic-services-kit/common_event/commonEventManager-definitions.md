@@ -1282,6 +1282,16 @@ AppGallery Kit面向应用发布如下系统公共事件。
 
 以下事件为预留公共事件，暂未支持。
 
+### COMMON_EVENT_LOCKED_BOOT_COMPLETED
+
+（预留事件，暂未支持）提示用户已完成引导，系统已加载，但屏幕仍锁定。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.LOCKED_BOOT_COMPLETED"
+
 
 ### COMMON_EVENT_PACKAGE_FIRST_LAUNCH
 
