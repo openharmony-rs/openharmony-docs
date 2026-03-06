@@ -213,12 +213,12 @@ async function example(
   context: common.UIAbilityContext
 ): Promise<string> {
   try {
-    // Specify the URI of the image in the application sandbox directory to be saved.
+    // 指定要保存到应用程序沙盒目录中的图片的URI。
     let srcFileUri = context.filesDir + '/test.jpg';
     let srcFileUris: string[] = [
       srcFileUri
     ];
-    //Set parameters for the image to save: file extension, image type, title and subtype (both optional)
+    // 设置要保存的图片的参数：文件扩展名、图片类型、标题和子类型（后两者为可选）。
     let photoCreationConfigs: photoAccessHelper.PhotoCreationConfig[] = [
       {
         title: 'test', // This parameter is optional.
@@ -229,11 +229,11 @@ async function example(
     ];
 
     console.info('Source URI: ' + srcFileUri);
-    // Obtain the target URI in the media library based on pop-up authorization.
+    // 基于弹窗授权获取媒体库中的目标URI。
     let desFileUris: string[] = 
       await phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs);
     console.info('Destination URIs: ' + JSON.stringify(desFileUris));
-    // Write image from sandbox directory to target URI in media library.
+    // 将图片从沙盒目录写入媒体库中的目标URI。
     let desFile: fileIo.File = await fileIo.open(desFileUris[0], fileIo.OpenMode.WRITE_ONLY);
     let srcFile: fileIo.File = await fileIo.open(srcFileUri, fileIo.OpenMode.READ_ONLY);
     await fileIo.copyFile(srcFile.fd, desFile.fd);

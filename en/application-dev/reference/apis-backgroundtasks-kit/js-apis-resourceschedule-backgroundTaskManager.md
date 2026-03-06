@@ -67,17 +67,17 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
 let myReason = 'test requestSuspendDelay';
 try {
-    let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
-    // Callback function, which is triggered when the transient task is about to time out. The application can carry out data clear and annotation, and cancel the task in the callback.
-    // The callback is independent of the service of the application. After the request for the transient task is successful, the application normally executes its own service logic.
-        console.info("Request suspension delay will time out.");
-    })
-    let id = delayInfo.requestId;
-    let time = delayInfo.actualDelayTime;
-    console.info("The requestId is: " + id);
-    console.info("The actualDelayTime is: " + time);
+  let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
+  // Callback function, which is triggered when the transient task is about to time out. The application can carry out data clear and annotation, and cancel the task in the callback.
+  // The callback is independent of the service of the application. After the request for the transient task is successful, the application normally executes its own service logic.
+    console.info("Request suspension delay will time out.");
+  })
+  let id = delayInfo.requestId;
+  let time = delayInfo.actualDelayTime;
+  console.info("The requestId is: " + id);
+  console.info("The actualDelayTime is: " + time);
 } catch (error) {
-    console.error(`requestSuspendDelay failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+  console.error(`requestSuspendDelay failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
 
@@ -120,11 +120,11 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
 let id = 1;
 backgroundTaskManager.getRemainingDelayTime(id, (error: BusinessError, res: number) => {
-    if(error) {
-        console.error(`callback => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
-    } else {
-        console.info('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
-    }
+  if(error) {
+    console.error(`callback => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+  }
 })
 ```
 
@@ -171,9 +171,9 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
 let id = 1;
 backgroundTaskManager.getRemainingDelayTime(id).then((res: number) => {
-    console.info('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+  console.info('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
 }).catch((error: BusinessError) => {
-    console.error(`promise => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
+  console.error(`promise => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
 })
 ```
 
@@ -251,13 +251,13 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    backgroundTaskManager.getTransientTaskInfo().then((res: backgroundTaskManager.TransientTaskInfo) => {
-        console.info(`Operation getTransientTaskInfo succeeded. data: ` + JSON.stringify(res));
-    }).catch((error : BusinessError) => {
-        console.error(`Operation getTransientTaskInfo failed. code is ${error.code} message is ${error.message}`);
-    });
+  backgroundTaskManager.getTransientTaskInfo().then((res: backgroundTaskManager.TransientTaskInfo) => {
+    console.info(`Operation getTransientTaskInfo succeeded. data: ` + JSON.stringify(res));
+  }).catch((error : BusinessError) => {
+    console.error(`Operation getTransientTaskInfo failed. code is ${error.code} message is ${error.message}`);
+  });
 } catch (error) {
-    console.error(`Operation getTransientTaskInfo failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+  console.error(`Operation getTransientTaskInfo failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
 
@@ -309,46 +309,46 @@ import { wantAgent, WantAgent } from '@kit.AbilityKit';
 // In atomic services, please remove the WantAgent import.
 
 function callback(error: BusinessError, data: void) {
-    if (error) {
-        console.error(`Operation startBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
-    } else {
-        console.info("Operation startBackgroundRunning succeeded");
-    }
+  if (error) {
+    console.error(`Operation startBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info("Operation startBackgroundRunning succeeded");
+  }
 }
 
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        let wantAgentInfo: wantAgent.WantAgentInfo = {
-            // List of operations to be executed after the notification is clicked.
-            wants: [
-                {
-                    bundleName: "com.example.myapplication",
-                    abilityName: "EntryAbility"
-                }
-            ],
-            // Type of the operation to perform after the notification is clicked.
-            actionType: wantAgent.OperationType.START_ABILITY,
-            // Custom request code.
-            requestCode: 0,
-            // Execution attribute of the operation to perform after the notification is clicked.
-            wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
-        };
-
-        try {
-            // Obtain the WantAgent object by using the getWantAgent API of the wantAgent module.
-            // In atomic services, please replace the following line of code with wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {.
-            wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
-                try {
-                    backgroundTaskManager.startBackgroundRunning(this.context,
-                        backgroundTaskManager.BackgroundMode.AUDIO_PLAYBACK, wantAgentObj, callback)
-                } catch (error) {
-                    console.error(`Operation startBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-                }
-            });
-        } catch (error) {
-            console.error(`Operation getWantAgent failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    let wantAgentInfo: wantAgent.WantAgentInfo = {
+      // List of operations to be executed after the notification is clicked.
+      wants: [
+        {
+          bundleName: "com.example.myapplication",
+          abilityName: "EntryAbility"
         }
+      ],
+      // Type of the operation to perform after the notification is clicked.
+      actionType: wantAgent.OperationType.START_ABILITY,
+      // Custom request code.
+      requestCode: 0,
+      // Execution attribute of the operation to perform after the notification is clicked.
+      wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+    };
+
+    try {
+      // Obtain the WantAgent object by using the getWantAgent API of the wantAgent module.
+      // In atomic services, please replace the following line of code with wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {.
+      wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
+        try {
+          backgroundTaskManager.startBackgroundRunning(this.context,
+            backgroundTaskManager.BackgroundMode.AUDIO_PLAYBACK, wantAgentObj, callback)
+        } catch (error) {
+          console.error(`Operation startBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+        }
+      });
+    } catch (error) {
+      console.error(`Operation getWantAgent failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
+  }
 };
 ```
 
@@ -405,42 +405,42 @@ import { wantAgent, WantAgent } from '@kit.AbilityKit';
 // In atomic services, please remove the WantAgent import.
 
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        let wantAgentInfo: wantAgent.WantAgentInfo = {
-            // List of operations to be executed after the notification is clicked.
-            wants: [
-                {
-                    bundleName: "com.example.myapplication",
-                    abilityName: "EntryAbility"
-                }
-            ],
-            // Type of the operation to perform after the notification is clicked.
-            actionType: wantAgent.OperationType.START_ABILITY,
-            // Custom request code.
-            requestCode: 0,
-            // Execution attribute of the operation to perform after the notification is clicked.
-            wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
-        };
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    let wantAgentInfo: wantAgent.WantAgentInfo = {
+      // List of operations to be executed after the notification is clicked.
+      wants: [
+        {
+          bundleName: "com.example.myapplication",
+          abilityName: "EntryAbility"
+        }
+      ],
+      // Type of the operation to perform after the notification is clicked.
+      actionType: wantAgent.OperationType.START_ABILITY,
+      // Custom request code.
+      requestCode: 0,
+      // Execution attribute of the operation to perform after the notification is clicked.
+      wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+    };
 
+    try {
+      // Obtain the WantAgent object by using the getWantAgent API of the wantAgent module.
+      // In atomic services, please replace the following line of code with wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {.
+      wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
         try {
-            // Obtain the WantAgent object by using the getWantAgent API of the wantAgent module.
-            // In atomic services, please replace the following line of code with wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {.
-            wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
-                try {
-                    backgroundTaskManager.startBackgroundRunning(this.context,
-                        backgroundTaskManager.BackgroundMode.AUDIO_PLAYBACK, wantAgentObj).then(() => {
-                        console.info("Operation startBackgroundRunning succeeded");
-                    }).catch((error: BusinessError) => {
-                        console.error(`Operation startBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
-                    });
-                } catch (error) {
-                    console.error(`Operation startBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-                }
+          backgroundTaskManager.startBackgroundRunning(this.context,
+            backgroundTaskManager.BackgroundMode.AUDIO_PLAYBACK, wantAgentObj).then(() => {
+              console.info("Operation startBackgroundRunning succeeded");
+            }).catch((error: BusinessError) => {
+              console.error(`Operation startBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
             });
         } catch (error) {
-            console.error(`Operation getWantAgent failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+          console.error(`Operation startBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
         }
+      });
+    } catch (error) {
+      console.error(`Operation getWantAgent failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
+  }
 };
 ```
 
@@ -484,21 +484,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 function callback(error: BusinessError, data: void) {
-    if (error) {
-        console.error(`Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
-    } else {
-        console.info("Operation stopBackgroundRunning succeeded");
-    }
+  if (error) {
+    console.error(`Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info("Operation stopBackgroundRunning succeeded");
+  }
 }
 
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        try {
-            backgroundTaskManager.stopBackgroundRunning(this.context, callback);
-        } catch (error) {
-            console.error(`Operation stopBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-        }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    try {
+      backgroundTaskManager.stopBackgroundRunning(this.context, callback);
+    } catch (error) {
+      console.error(`Operation stopBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
+  }
 };
 ```
 
@@ -547,17 +547,17 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        try {
-            backgroundTaskManager.stopBackgroundRunning(this.context).then(() => {
-                console.info("Operation stopBackgroundRunning succeeded");
-            }).catch((error: BusinessError) => {
-                console.error(`Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
-            });
-        } catch (error) {
-            console.error(`Operation stopBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-        }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    try {
+      backgroundTaskManager.stopBackgroundRunning(this.context).then(() => {
+        console.info("Operation stopBackgroundRunning succeeded");
+      }).catch((error: BusinessError) => {
+        console.error(`Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+      });
+    } catch (error) {
+      console.error(`Operation stopBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
+  }
 };
 ```
 
@@ -744,19 +744,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        try {
-            // You must call startBackgroundRunning before updateBackgroundRunning. Here it is assumed that you have called startBackgroundRunning.
-            let list: Array<string> = ["audioPlayback"];
-            backgroundTaskManager.updateBackgroundRunning(this.context, list).then(() => {
-                console.info("Operation updateBackgroundRunning succeeded");
-            }).catch((error: BusinessError) => {
-                console.error(`Operation updateBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
-            });
-        } catch (error) {
-            console.error(`Operation updateBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-        }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    try {
+      // You must call startBackgroundRunning before updateBackgroundRunning. Here it is assumed that you have called startBackgroundRunning.
+      let list: Array<string> = ["audioPlayback"];
+      backgroundTaskManager.updateBackgroundRunning(this.context, list).then(() => {
+        console.info("Operation updateBackgroundRunning succeeded");
+      }).catch((error: BusinessError) => {
+        console.error(`Operation updateBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+      });
+    } catch (error) {
+      console.error(`Operation updateBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
+  }
 };
 ```
 
@@ -801,18 +801,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        try {
-            // If no continuous task is requested, an empty array is obtained.
-            backgroundTaskManager.getAllContinuousTasks(this.context).then((res: backgroundTaskManager.ContinuousTaskInfo[]) => {
-                console.info(`Operation getAllContinuousTasks succeeded. data: ` + JSON.stringify(res));
-            }).catch((error: BusinessError) => {
-                console.error(`Operation getAllContinuousTasks failed. code is ${error.code} message is ${error.message}`);
-            });
-        } catch (error) {
-            console.error(`Operation getAllContinuousTasks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-        }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    try {
+      // If no continuous task is requested, an empty array is obtained.
+      backgroundTaskManager.getAllContinuousTasks(this.context).then((res: backgroundTaskManager.ContinuousTaskInfo[]) => {
+        console.info(`Operation getAllContinuousTasks succeeded. data: ` + JSON.stringify(res));
+      }).catch((error: BusinessError) => {
+        console.error(`Operation getAllContinuousTasks failed. code is ${error.code} message is ${error.message}`);
+      });
+    } catch (error) {
+      console.error(`Operation getAllContinuousTasks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
+  }
 };
 ```
 
@@ -858,18 +858,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        try {
-            // If no continuous task is requested, an empty array is obtained.
-            backgroundTaskManager.getAllContinuousTasks(this.context, false).then((res: backgroundTaskManager.ContinuousTaskInfo[]) => {
-                console.info(`Operation getAllContinuousTasks succeeded. data: ` + JSON.stringify(res));
-            }).catch((error: BusinessError) => {
-                console.error(`Operation getAllContinuousTasks failed. code is ${error.code} message is ${error.message}`);
-            });
-        } catch (error) {
-            console.error(`Operation getAllContinuousTasks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-        }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    try {
+      // If no continuous task is requested, an empty array is obtained.
+      backgroundTaskManager.getAllContinuousTasks(this.context, false).then((res: backgroundTaskManager.ContinuousTaskInfo[]) => {
+        console.info(`Operation getAllContinuousTasks succeeded. data: ` + JSON.stringify(res));
+      }).catch((error: BusinessError) => {
+        console.error(`Operation getAllContinuousTasks failed. code is ${error.code} message is ${error.message}`);
+      });
+    } catch (error) {
+      console.error(`Operation getAllContinuousTasks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
+  }
 };
 ```
 
@@ -912,13 +912,13 @@ function callback(info: backgroundTaskManager.ContinuousTaskCancelInfo) {
 }
 
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        try {
-            backgroundTaskManager.on("continuousTaskCancel", callback);
-        } catch (error) {
-            console.error(`Operation onContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-        }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    try {
+      backgroundTaskManager.on("continuousTaskCancel", callback);
+    } catch (error) {
+      console.error(`Operation onContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
+  }
 };
 ```
 ## backgroundTaskManager.off('continuousTaskCancel')<sup>15+</sup>
@@ -960,13 +960,13 @@ function callback(info: backgroundTaskManager.ContinuousTaskCancelInfo) {
 }
 
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        try {
-            backgroundTaskManager.off("continuousTaskCancel", callback);
-        } catch (error) {
-            console.error(`Operation onContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-        }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    try {
+      backgroundTaskManager.off("continuousTaskCancel", callback);
+    } catch (error) {
+      console.error(`Operation onContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
+  }
 };
 ```
 ## backgroundTaskManager.on('continuousTaskSuspend')<sup>20+</sup>
@@ -1010,13 +1010,13 @@ function callback(info: backgroundTaskManager.ContinuousTaskSuspendInfo) {
 }
 
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        try {
-            backgroundTaskManager.on("continuousTaskSuspend", callback);
-        } catch (error) {
-            console.error(`Operation onContinuousTaskSuspend failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-        }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    try {
+      backgroundTaskManager.on("continuousTaskSuspend", callback);
+    } catch (error) {
+      console.error(`Operation onContinuousTaskSuspend failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
+  }
 };
 ```
 ## backgroundTaskManager.off('continuousTaskSuspend')<sup>20+</sup>
@@ -1059,13 +1059,13 @@ function callback(info: backgroundTaskManager.ContinuousTaskSuspendInfo) {
 }
 
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        try {
-            backgroundTaskManager.off("continuousTaskSuspend", callback);
-        } catch (error) {
-            console.error(`Operation offContinuousTaskSuspend failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-        }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    try {
+      backgroundTaskManager.off("continuousTaskSuspend", callback);
+    } catch (error) {
+      console.error(`Operation offContinuousTaskSuspend failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
+  }
 };
 ```
 ## backgroundTaskManager.on('continuousTaskActive')<sup>20+</sup>
@@ -1106,13 +1106,13 @@ function callback(info: backgroundTaskManager.ContinuousTaskActiveInfo) {
 }
 
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        try {
-            backgroundTaskManager.on("continuousTaskActive", callback);
-        } catch (error) {
-            console.error(`Operation onContinuousTaskActive failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-        }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    try {
+      backgroundTaskManager.on("continuousTaskActive", callback);
+    } catch (error) {
+      console.error(`Operation onContinuousTaskActive failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
+  }
 };
 ```
 ## backgroundTaskManager.off('continuousTaskActive')<sup>20+</sup>
@@ -1153,13 +1153,13 @@ function callback(info: backgroundTaskManager.ContinuousTaskActiveInfo) {
 }
 
 export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        try {
-            backgroundTaskManager.off("continuousTaskActive", callback);
-        } catch (error) {
-            console.error(`Operation offContinuousTaskActive failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-        }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    try {
+      backgroundTaskManager.off("continuousTaskActive", callback);
+    } catch (error) {
+      console.error(`Operation offContinuousTaskActive failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
+  }
 };
 ```
 
@@ -1336,7 +1336,7 @@ export default class EntryAbility extends UIAbility {
           let modeList: Array<number> = [backgroundTaskManager.BackgroundTaskMode.MODE_LOCATION];
           let subModeList: Array<number> = [backgroundTaskManager.BackgroundTaskSubmode.SUBMODE_NORMAL_NOTIFICATION];
           let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
-          continuousTaskRequest.backgroundTaskModes =  modeList;
+          continuousTaskRequest.backgroundTaskModes = modeList;
           continuousTaskRequest.backgroundTaskSubmodes = subModeList;
           continuousTaskRequest.wantAgent = wantAgentObj;
           continuousTaskRequest.combinedTaskNotification = false;
@@ -1402,13 +1402,13 @@ export default class EntryAbility extends UIAbility {
   continuousTaskId: number = 0;
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     try {
-        backgroundTaskManager.stopBackgroundRunning(this.context, this.continuousTaskId).then(() => {
-            console.info("Operation stopBackgroundRunning succeeded");
-        }).catch((error: BusinessError) => {
-            console.error(`Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
-        });
+      backgroundTaskManager.stopBackgroundRunning(this.context, this.continuousTaskId).then(() => {
+        console.info("Operation stopBackgroundRunning succeeded");
+      }).catch((error: BusinessError) => {
+        console.error(`Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+      });
     } catch (error) {
-        console.error(`Operation stopBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+      console.error(`Operation stopBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
   }
 };
@@ -1569,8 +1569,8 @@ Describes the continuous task information.
 | uid         | number   | No   | No   | Application UID.              |
 | pid         | number   | No   | No   | Application PID.              |
 | isFromWebView | boolean  | No   | No   | Whether to request a continuous task in WebView mode, that is, whether to request a continuous task through the system proxy application. The value **true** indicates that the Webview mode is used, and the value **false** indicates that the Webview mode is not used.|
-| [backgroundModes](#backgroundmode) | string[] | No   | No   | Type of the continuous task.              |
-| [backgroundSubModes](#backgroundsubmode16) | string[] | No   | No   | Subtype of a continuous task.             |
+| backgroundModes | string[] | No   | No   | [Type of a continuous task](#backgroundmode).              |
+| backgroundSubModes | string[] | No   | No   | [Subtype of a continuous task](#backgroundsubmode16).             |
 | notificationId | number   | No   | No   | Notification ID.               |
 | continuousTaskId | number   | No   | No   | Continuous task ID.             |
 | abilityId | number   | No   | No   | UIAbility ID.        |
@@ -1582,13 +1582,13 @@ Describes the continuous task information.
 
 ## ContinuousTaskRequest<sup>21+</sup>
 
-Specifies details of the continuous task being requested or updated. It is typically used as input for the [startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning21) and [updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21) APIs. Note that:
+Specifies details of the continuous task being requested or updated. It is typically used as input for the [startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning21) and [updateBackgroundRunning()](#backgroundtaskmanagerupdatebackgroundrunning21) APIs. Note that:
 1. When requesting a continuous task via [startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning21), notifications will be combined if the main type and subtype of the continuous task to be requested are the same as those of the existing continuous task in the current application, and the **combinedTaskNotification** value is **true** for both tasks. Otherwise, notifications will not be combined.
 2. Notifications will not be combined if the continuous task has no notification. For details about whether notifications are sent for the continuous task, see [BackgroundTaskMode](#backgroundtaskmode21).
 3. Notifications cannot be combined if the continuous task includes data transmission.
 4. Notifications that have been combined cannot be canceled. If notifications have been combined, they cannot be updated to uncombined.
 5. After notifications are combined, tapping the notification will redirect to the UIAbility corresponding to the first requested continuous task. If the update API is called, the redirection will target the UIAbility corresponding to the last updated continuous task.
-6. When the [updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21) API is called to update a continuous task, the input **continuousTaskId** must exist. Otherwise, the update fails.
+6. When the [updateBackgroundRunning()](#backgroundtaskmanagerupdatebackgroundrunning21) API is called to update a continuous task, the input **continuousTaskId** must exist. Otherwise, the update fails.
 7. [MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21) is supported since API version 22. This task type must be used independently and notifications cannot be combined. Specifically, when you request or update a continuous task, it must be of the **MODE_SPECIAL_SCENARIO_PROCESSING** type. Otherwise, an error is returned.
 
 ### Properties
@@ -1688,7 +1688,7 @@ import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function callbackAuth(authResult: backgroundTaskManager.UserAuthResult) {
-    console.info('Operation requestAuthFromUser success. auth result: ' + JSON.stringify(authResult));
+  console.info('Operation requestAuthFromUser success. auth result: ' + JSON.stringify(authResult));
 }
 
 export default class EntryAbility extends UIAbility {

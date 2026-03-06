@@ -35,7 +35,7 @@ Create a **\<grid-container>** component in the .hml file under **pages/index** 
 }
 ```
 
-![en-us_image_0000001276162725](figures/en-us_image_0000001276162725.png)
+![en-us_image_0000001226897009](figures/en-us_image_0000001226897009.png)
 
 > **NOTE**
 >
@@ -161,7 +161,7 @@ text{
 }
 ```
 
-![en-us_image_0000001231683124](figures/en-us_image_0000001231683124.png)
+![en-us_image_0000001227135731](figures/en-us_image_0000001227135731.png)
 
 > **NOTE**
 >
@@ -237,4 +237,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001276003501](figures/en-us_image_0000001276003501.gif)
+![en-us_image_0000001263160403](figures/en-us_image_0000001263160403.gif)

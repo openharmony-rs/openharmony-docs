@@ -40,10 +40,10 @@ Once an agent-powered reminder is published, the notification center will displa
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| reminderReq | [ReminderRequest](#reminderrequest) | Yes| Request used for publishing the reminder.|
-| callback | AsyncCallback\<number> | Yes| Callback used to return the published reminder's ID.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | reminderReq | [ReminderRequest](#reminderrequest) | Yes| Request used for publishing the reminder.|
+  | callback | AsyncCallback\<number> | Yes| Callback used to return the published reminder's ID.|
 
 **Error codes**
 
@@ -94,9 +94,9 @@ If the value of [ReminderRequest.ringDuration](#reminderrequest) is greater than
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| reminderReq | [ReminderRequest](#reminderrequest) | Yes| Request used for publishing the reminder.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | reminderReq | [ReminderRequest](#reminderrequest) | Yes| Request used for publishing the reminder.|
 
 **Return value**
 
@@ -1080,8 +1080,8 @@ Defines a reminder for a calendar event.
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | dateTime | [LocalDateTime](#localdatetime) | No| No| Reminder time.|
-| repeatMonths | Array\<number> | No| Yes| Month in which the reminder repeats. The value range is [1, 12].|
-| repeatDays | Array\<number> | No| Yes| Day in which the reminder repeats. The value range is [1, 31].|
+| repeatMonths | Array\<number> | No| Yes| Month in which the reminder repeats. The value range is [1, 12]. This parameter must be used together with **repeatDays**.|
+| repeatDays | Array\<number> | No| Yes| Day in which the reminder repeats. The value range is [1, 31]. This parameter must be used together with **repeatMonths**.|
 | daysOfWeek<sup>11+</sup> | Array\<number> | No| Yes| Days of a week when the reminder repeats. The value ranges from 1 to 7, corresponding to the data from Monday to Sunday.|
 | endDateTime<sup>12+</sup> | [LocalDateTime](#localdatetime) | No| Yes| End time of the reminder.|
 
@@ -1137,7 +1137,7 @@ Defines the reminder information.
 
 | Name       | Type                               | Read Only| Optional| Description                |
 | ----------- | ----------------------------------- | ---- | ---- | -------------------- |
-| reminderId  | number                              | No  | No  | ID of the reminder.|
+| reminderId  | number                              | No  | No  | Reminder ID.|
 | reminderReq | [ReminderRequest](#reminderrequest) | No  | No  | Request used for publishing the reminder.      |
 
 ## ReminderState<sup>23+</sup>

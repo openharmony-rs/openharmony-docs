@@ -115,7 +115,7 @@ struct Parent {
 
 - 在\@LocalBuilder修饰的函数内部，不允许改变参数值。
 
-- \@LocalBuilder内的UI语法遵循[UI语法规则](arkts-create-custom-components.md#build函数-1)。
+- \@LocalBuilder内的UI语法遵循[UI语法规则](arkts-create-custom-components.md#build函数实现规则)。
 
 - 按回调传递和按引用传递时，支持\@Builder函数内UI组件刷新。按引用传递只在传入一个参数且该参数直接传入对象字面量时生效，有多个参数时不支持@Builder函数内UI组件刷新。
 
@@ -549,7 +549,7 @@ struct Child {
       this.customBuilder()
       Button('add child size')
         .onClick(() => {
-          this.layoutSize.size += 1; //子组件传入的参数发生变化，由@Link传入父组件@State，刷新父组件声明的@LocalBuilder函数的UI。
+          this.layoutSize.size += 1; // 子组件传入的参数发生变化，由@Link传入父组件@State，刷新父组件声明的@LocalBuilder函数的UI。
         })
     }
   }

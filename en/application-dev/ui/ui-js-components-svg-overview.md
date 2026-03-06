@@ -6,17 +6,17 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **&lt;svg&gt;** component is used as the root node of the SVG canvas and can be nested in the SVG. For details, see [svg](../reference/apis-arkui/arkui-js/js-components-svg.md).
+The **\<svg>** component is used as the root node of the SVG canvas and can be nested in the SVG. For details, see [svg](../reference/apis-arkui/arkui-js/js-components-svg.md).
 
 
 > **NOTE**
-> 
-> The width and height must be defined for the **&lt;svg&gt;** parent component or **&lt;svg&gt;** component. Otherwise, the component is not drawn.
+>
+> The width and height must be defined for the **\<svg>** parent component or **\<svg>** component. Otherwise, the component is not drawn.
 
 
-## Creating an &lt;svg&gt; Component
+## Creating an \<svg> Component
 
-Create an **&lt;svg&gt;** component in the .hml file under **pages/index**.
+Create an **\<svg>** component in the .hml file under **pages/index**.
 
 
 ```html
@@ -42,12 +42,12 @@ svg{
 }
 ```
 
-![en-us_image_0000001232162324](figures/en-us_image_0000001232162324.png)
+![en-us_image_0000001218280036](figures/en-us_image_0000001218280036.png)
 
 
 ## Setting Attributes
 
-Set the **width**, **height**, **x**, **y**, and **viewBox** attributes to define the width, height, X coordinate, Y coordinate, and SVG viewport of the **&lt;svg&gt;** component.
+Set the **width**, **height**, **x**, **y**, and **viewBox** attributes to define the width, height, x-coordinate, y-coordinate, and SVG viewport of the **\<svg>** component.
 
 
 ```html
@@ -79,10 +79,9 @@ svg{
 }
 ```
 
-![en-us_image_0000001231683152](figures/en-us_image_0000001231683152.png)
+![en-us_image_0000001218599996](figures/en-us_image_0000001218599996.png)
 
 > **NOTE**
+> - If the **\<svg>** component is the root node, the x-axis and y-axis attributes are invalid.
 >
-> - If the **&lt;svg&gt;** component is the root node, the x-axis and y-axis attributes are invalid.
->
-> - If the width and height of **viewBox** are inconsistent with those of the **&lt;svg&gt;** component, the view box will be scaled in center-aligned mode.
+> - If the width and height of **viewBox** are inconsistent with those of the **\<svg>** component, the view box will be scaled in center-aligned mode.
