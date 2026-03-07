@@ -21,7 +21,7 @@ zipFile(inFile: string, outFile: string, options: Options): Promise\<void>
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[zlib.compressFile](#zlibcompressfile9)。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[zlib.compressFile](#zlibcompressfile9)替代。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -68,7 +68,7 @@ unzipFile(inFile:string, outFile:string, options: Options): Promise\<void>
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[zlib.decompressFile](#zlibdecompressfile9)。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[zlib.decompressFile](#zlibdecompressfile9)替代。
 >
 > 传入的压缩包内部文件或者文件夹名称不能包含“..”或者以“/”为开头，否则会返回-1错误码。
 
@@ -5735,6 +5735,8 @@ async function demo() {
 
 ## Options
 
+Options用于指定在压缩或解压Zip文件时的选项。
+
 **系统能力：** SystemCapability.BundleManager.Zlib
 
 **ArkTS-Dyn起始版本：** 7
@@ -5746,7 +5748,8 @@ async function demo() {
 | level    | [CompressLevel](#compresslevel)         | 否   | 是  | 参考[CompressLevel枚举定义](#compresslevel)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
 | memLevel | [MemLevel](#memlevel)                   | 否   | 是  | 参考[MemLevel枚举定义](#memlevel)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
 | strategy | [CompressStrategy](#compressstrategy)   | 否   | 是  | 参考[CompressStrategy枚举定义](#compressstrategy)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 7<br>**ArkTS-Sta起始版本：** 23 |
-| parallel | [ParallelStrategy](#parallelstrategy18) | 否   | 是  | 参考[ParallelStrategy枚举定义](#parallelstrategy18)。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| parallel<sup>18+</sup> | [ParallelStrategy](#parallelstrategy18) | 否   | 是  | 参考[ParallelStrategy枚举定义](#parallelstrategy18)。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| pathSeparatorStrategy<sup>21+</sup> | [PathSeparatorStrategy](#pathseparatorstrategy21) | 否   | 是  | 解压时指定的压缩包内文件路径中分隔符的处理策略。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
 
 ## CompressLevel
 
@@ -5814,13 +5817,28 @@ async function demo() {
 | PARALLEL_STRATEGY_SEQUENTIAL             | 0    | 默认值，串行压缩/解压策略。|
 | PARALLEL_STRATEGY_PARALLEL_DECOMPRESSION | 1    | 并行解压策略。            |
 
+## PathSeparatorStrategy<sup>21+</sup>
+
+PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解压时目标压缩包内文件路径中分隔符的处理策略。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.BundleManager.Zlib
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                                      | 值   | 说明                                       |
+| ----------------------------------------- | ---- | ----------------------------------------- |
+| PATH_SEPARATOR_STRATEGY_DEFAULT           | 0    | 默认值，压缩包内文件路径中的分隔符不做处理。    |
+| PATH_SEPARATOR_STRATEGY_REPLACE_BACKSLASH | 1    | 压缩包内文件路径中的反斜杠'\\'替换为斜杠'/'。|
+
 ## ErrorCode<sup>(deprecated)<sup>
 
 > **说明：**
 > 
-> 本模块首批接口从API version 7 开始支持。
-> 
-> 从API Version 9开始，该模块不再维护。
+> 从API version 7开始支持，从API version 9开始废弃，暂无替代接口。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
