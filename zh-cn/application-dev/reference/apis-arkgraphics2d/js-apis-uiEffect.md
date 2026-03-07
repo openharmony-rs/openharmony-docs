@@ -7,6 +7,7 @@
 
 > **说明：**
 > 
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -21,6 +22,10 @@ createFilter(): Filter
 创建Filter实例用于给组件添加多种filter效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -41,6 +46,10 @@ createEffect(): VisualEffect
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                          | 说明                       |
@@ -57,16 +66,23 @@ let visualEffect : uiEffect.VisualEffect = uiEffect.createEffect()
 Filter效果类，用于将相应的效果添加到指定的组件上。在调用Filter的方法前，需要先通过[createFilter](#uieffectcreatefilter)创建一个Filter实例。
 
 ### blur
-blur(blurRadius: number): Filter
+
+ArkTS-Dyn: blur(blurRadius: number): Filter
+
+ArkTS-Sta: blur(blurRadius: double): Filter
 
 将模糊效果添加至组件上。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 | 参数名       | 类型   | 必填 | 说明       |
 | ----------- | -------| ---- | --------- |
-| blurRadius  | number | 是   | 模糊半径。<br/>取值需大于等于0，模糊半径越大，模糊效果越强。<br/>模糊半径为0时无模糊效果。 |
+| blurRadius  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 模糊半径。<br/>取值需大于等于0，模糊半径越大，模糊效果越强。<br/>模糊半径为0时无模糊效果。 |
 
 **返回值：**
 
