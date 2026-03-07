@@ -2,7 +2,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## AVFileDescriptor<sup>9+</sup>
 
@@ -397,19 +398,19 @@ async function setupPlayer() {
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
-| 名称              | 类型                                                         | 必填 | 说明                                                         |
-| ----------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| fd                | number                                                       | 是   | 录制输出的文件fd。                                           |
-| frameWidth        | number                                                       | 否   | 录屏的视频宽度，默认屏幕宽度，根据不同屏幕默认值不同，单位px。 |
-| frameHeight       | number                                                       | 否   | 录屏的视频高度，默认屏幕高度，根据不同屏幕默认值不同，单位px。 |
-| videoBitrate      | number                                                       | 否   | 录屏的视频比特率，默认10000000。                             |
-| audioSampleRate   | number                                                       | 否   | 录屏的音频采样率，内录的系统音和外录的麦克风都是用此采样率，默认48000，仅支持设置48000或16000。 |
-| audioChannelCount | number                                                       | 否   | 录屏的音频通道数，内录的系统音和外录的麦克风都是用此通道数，默认2声道，仅支持设置1或2声道。 |
-| audioBitrate      | number                                                       | 否   | 录屏的音频比特率，内录的系统音和外录的麦克风都是用此比特率，默认96000。 |
-| preset            | [AVScreenCaptureRecordPreset](arkts-apis-media-e.md#avscreencapturerecordpreset12) | 否   | 录屏使用的编码和封装格式，默认SCREEN_RECORD_PRESET_H264_AAC_MP4格式。 |
-| displayId<sup>15+</sup>            | number | 否   | 指定录屏使用的屏幕，默认主屏幕。 |
-| fillMode<sup>18+</sup>            | [AVScreenCaptureFillMode](arkts-apis-media-e.md#avscreencapturefillmode18)| 否   | 录屏时视频流的填充模式。 |
-| strategy<sup>20+</sup>            | [AVScreenCaptureStrategy](#avscreencapturestrategy20)| 否   | 录屏策略。 |
+| 名称              | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ----------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| fd                | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 否   | 录制输出的文件fd。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                                           |
+| frameWidth        | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 是   | 录屏的视频宽度。<br>默认屏幕宽度，根据不同屏幕默认值不同，单位为像素（px）。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| frameHeight       | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 是   | 录屏的视频高度。<br>默认屏幕高度，根据不同屏幕默认值不同，单位为像素（px）。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| videoBitrate      | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 是   | 录屏的视频比特率。<br>默认为10000000。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                            |
+| audioSampleRate   | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 是   | 录屏的音频采样率。<br>内录的系统音和外录的麦克风都是用此采样率，默认48000，仅支持设置48000或16000。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| audioChannelCount | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 是   | 录屏的音频通道数，内录的系统音和外录的麦克风都是用此通道数，默认2声道，仅支持设置1或2声道。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| audioBitrate      | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 是   | 录屏的音频比特率，内录的系统音和外录的麦克风都是用此比特率，默认96000。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| preset            | [AVScreenCaptureRecordPreset](arkts-apis-media-e.md#avscreencapturerecordpreset12) | 否   | 是   | 录屏使用的编码和封装格式，默认SCREEN_RECORD_PRESET_H264_AAC_MP4格式。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| displayId<sup>15+</sup>            | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 指定录屏使用的屏幕，默认主屏幕。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23 |
+| fillMode<sup>18+</sup>            | [AVScreenCaptureFillMode](arkts-apis-media-e.md#avscreencapturefillmode18)| 否   | 是   | 录屏时视频流的填充模式。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| strategy<sup>20+</sup>            | [AVScreenCaptureStrategy](#avscreencapturestrategy20)| 否   | 是   | 录屏策略。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 
 ## AudioRecorderConfig<sup>(deprecated)</sup>
 
