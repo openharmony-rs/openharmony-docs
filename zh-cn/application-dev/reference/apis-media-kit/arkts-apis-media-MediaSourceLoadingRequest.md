@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 18开始支持。
 
@@ -17,6 +18,10 @@ import { media } from '@kit.MediaKit';
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
+**ArkTS-Dyn起始版本：** 18
+	 
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型    | 只读   | 可选   | 说明                |
 | --------------------------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | url       | string                        | 否   | 否   | 资源url，需要应用程序打开的资源路径。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
@@ -24,7 +29,9 @@ import { media } from '@kit.MediaKit';
 
 ## respondData<sup>18+</sup>
 
-respondData(uuid: number, offset: number, buffer: ArrayBuffer): number
+ArkTS-Dyn: respondData(uuid: number, offset: number, buffer: ArrayBuffer): number
+ 	 
+ArkTS-Sta: respondData(uuid: long, offset: long, buffer: ArrayBuffer): int | undefined
 
 用于应用程序向播放器发送数据。
 
@@ -32,19 +39,23 @@ respondData(uuid: number, offset: number, buffer: ArrayBuffer): number
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| uuid | number | 是  | 	资源句柄的标识。 |
-| offset | number | 是  | 	当前媒体数据相对于资源起始位置的偏移量。 |
+| uuid | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是  | 	资源句柄的标识。 |
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是  | 	当前媒体数据相对于资源起始位置的偏移量。 |
 | buffer | ArrayBuffer | 是  | 	响应播放器的媒体数据。<br/>**注意：** 不要传输无关数据，会影响正常数据解析和播放。 |
 
 **返回值：**
 
 | 类型           | 说明                                |
 | -------------- | ----------------------------------- |
-| number | 当前服务端接受的字节数。<br>- 返回值小于0表示操作失败。<br>- 返回值为-2时，表示播放器不再需要当前数据，客户端应停止当前读取过程。<br>- 返回值为-3时，表示播放器的缓冲区已满，客户端应等待下一次读取。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int|undefined | 当前服务端接受的字节数。<br>- 返回值小于0表示操作失败。<br>- 返回值为-2时，表示播放器不再需要当前数据，客户端应停止当前读取过程。<br>- 返回值为-3时，表示播放器的缓冲区已满，客户端应等待下一次读取。 |
 
 **示例：**
 
@@ -68,6 +79,10 @@ respondHeader(uuid: number, header?: Record<string, string>, redirectUrl?: strin
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -107,6 +122,10 @@ finishLoading(uuid: number, state: LoadingRequestError): void
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
