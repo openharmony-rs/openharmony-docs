@@ -15,6 +15,7 @@
     - 静态自定义组件<!--arkts-static-custom-components-->
       - [\@Component装饰器: 自定义组件](../ui/state-management-static/arkts-static-create-component.md)
       - [\@ComponentV2装饰器：自定义组件](../ui/state-management-static/arkts-static-componentv2.md)
+      - [自定义组件生命周期](state-management-static/arkts-custom-components-new-lifecycle.md)
       - [自定义组件冻结](../ui/state-management-static/arkts-static-custom-components-v1-v2-freeze.md)
         - [V1自定义组件冻结场景](../ui/state-management-static/arkts-static-freeze.md)
         - [V2自定义组件冻结场景](../ui/state-management-static/arkts-static-custom-components-freezeV2.md)

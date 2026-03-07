@@ -1132,6 +1132,55 @@ struct Index {
 }
 ```
 
+### getLifecycle<sup>24+</sup>
+
+static getLifecycle\<T extends IVariableOwner\>(customComponent: T): CustomComponentLifecycle
+
+getLifecycle用于获取[自定义组件的生命周期](./arkui-ts/ts-custom-component-new-lifecycle.md)实例。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明     |
+| ------ | ---- | ---- | ------------ |
+| customComponent | T    | 是   | 自定义组件实例。 |
+
+**返回值：**
+
+| 类型 | 说明                                             |
+| ---- | ------------------------------------------------ |
+| [CustomComponentLifecycle](./arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecycle)    | 自定义组件的生命周期实例。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { UIUtils, ComponentAppear, Entry, Component, State, Text } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State lifecycleState: int = -1;
+
+  @ComponentAppear
+  myAppear() {
+    // UIUtils.getLifecycle获得自定义组件的生命周期实例，getCurrentState查询自定义组件当前生命周期。
+    // 预期查询到的生命周期为CustomComponentLifecycleState.APPEARED = 1。
+    this.lifecycleState = UIUtils.getLifecycle(this).getCurrentState();
+  }
+
+  build() {
+    Text(`${this.lifecycleState}`)
+  }
+}
+```
+
 ### makeBinding\<T\>
 
 static makeBinding\<T\>(getter: GetterCallback\<T\>): Binding\<T\>
