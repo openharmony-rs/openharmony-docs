@@ -1621,12 +1621,12 @@ Check kernel permission compression failed.
 
 **可能原因**
 
-1. 模块的[module.json5](../quick-start/module-configuration-file.md)中配置了[executableBinaryPaths](../quick-start/module-configuration-file.md#executableBinaryPaths标签)字段（表示模块具有内核权限）。
-2. compressNativeLibs和extractNativeLibs两个配置项的值都为false。
+1. 模块的[module.json5](../quick-start/module-configuration-file.md)中配置了[executableBinaryPaths](../quick-start/module-configuration-file.md#executablebinarypaths标签)字段。
+2. 在module.json5的[配置文件标签](../quick-start/module-configuration-file.md#配置文件标签)中所配置的compressNativeLibs和extractNativeLibs两个配置项的值都为false。
 
 **处理步骤**
 
-对于具有内核权限的模块（配置了executableBinaryPaths），需要在module.json5中配置extractNativeLibs或compressNativeLibs中至少一项为true。
+对于模块的module.json5中配置了executableBinaryPaths字段，需要在配置文件标签中配置extractNativeLibs或compressNativeLibs中至少一项为true。
 
 ### 10013001 解析module.json或config.json文件异常
 **错误信息**
