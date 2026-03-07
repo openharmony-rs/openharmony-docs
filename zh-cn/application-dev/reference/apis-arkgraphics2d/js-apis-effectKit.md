@@ -324,7 +324,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称   | 类型   | 可读 | 可写 | 说明              |
+| 名称   | 类型   | 只读 | 可选 | 说明              |
 | ------ | ----- | ---- | ---- | ---------------- |
 | red   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 红色分量值，取值范围[0x0, 0xFF]。           |
 | green | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 绿色分量值，取值范围[0x0, 0xFF]。           |
