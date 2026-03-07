@@ -270,6 +270,8 @@
     - [ColumnSplit](arkui-ts/ts-container-columnsplit.md)
     - [RowSplit](arkui-ts/ts-container-rowsplit.md)
     - [SideBarContainer](arkui-ts/ts-container-sidebarcontainer.md)
+  - 动态布局<!--dynamic-layout-->
+    - [DynamicLayout](arkui-ts/ts-container-dynamiclayout.md)
   - 滚动与滑动<!--scroll-and-swipe-->
     - [List](arkui-ts/ts-container-list.md)
     - [ListItem](arkui-ts/ts-container-listitem.md)
@@ -803,6 +805,8 @@
     - [交互事件错误码](errorcode-event.md)
     - [Canvas错误码](errorcode-canvas.md)
     - [自定义节点错误码](errorcode-node.md)
+    - [动态属性设置错误码](errorcode-attributeModifier.md)
+    - [逻辑组件错误码](errorcode-rendering-control.md)
     - [UIExtension错误码](errorcode-uiextension.md)
     - [用户界面外观服务错误码](errorcode-uiappearance.md)
     - [NodeAdapter错误码](errorcode-nodeadapter.md)

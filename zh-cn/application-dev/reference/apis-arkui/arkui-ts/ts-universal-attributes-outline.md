@@ -62,7 +62,7 @@ outline(options: Optional\<OutlineOptions>): T
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
-## OutlineStyle<sup>11+</sup>枚举说明
+## OutlineStyle枚举说明
 
 外描边样式。
 
@@ -94,7 +94,7 @@ outlineStyle(value: OutlineStyle | EdgeOutlineStyles): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                  |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| value  | [OutlineStyle](#outlinestyle11枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](ts-types.md#edgeoutlinestyles11对象说明) | 是   | 设置元素的外描边样式。|
+| value  | [OutlineStyle](#outlinestyle枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](ts-types.md#edgeoutlinestyles11对象说明) | 是   | 设置元素的外描边样式。|
 
 **返回值：**
 
@@ -118,7 +118,7 @@ outlineStyle(style: Optional\<OutlineStyle | EdgeOutlineStyles>): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OutlineStyle](#outlinestyle11枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](ts-types.md#edgeoutlinestyles11对象说明)> | 是   | 设置元素的外描边样式。<br/>当style的值为undefined时，恢复为无外描边样式的效果。 |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OutlineStyle](#outlinestyle枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](ts-types.md#edgeoutlinestyles11对象说明)> | 是   | 设置元素的外描边样式。<br/>当style的值为undefined时，恢复为无外描边样式的效果。 |
 
 **返回值：**
 

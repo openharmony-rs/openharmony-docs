@@ -420,20 +420,17 @@
 8.  配置[module.json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/module.json5)文件。
 
     在`extensionAbilities`字段中配置划词扩展类文件路径。
-
-    ```json
-    {
-      "module": {
-        "extensionAbilities": [
-          {
-            "name": "SelectionExtAbility",
-            "srcEntry": "./ets/selectionextability/SelectionExtAbility.ets",
-            "type": "selection",
-            "exported": false,
-          }
-        ]
+    <!-- @[extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/module.json5) -->
+    
+    ``` JSON5
+    "extensionAbilities": [
+      {
+        "name": "SelectionExtAbility",
+        "srcEntry": "./ets/selectionextability/SelectionExtAbility.ets",
+        "type": "selection",
+        "exported": false,
       }
-    }
+    ]
     ```
 
 9.  配置签名。

@@ -19,7 +19,7 @@
 | -------- | -------- |
 | isNotificationEnabled():Promise\<boolean\>       | 查询通知是否授权。  |
 | requestEnableNotification(context: UIAbilityContext): Promise\<void\> | 请求发送通知的许可，第一次调用会弹窗让用户选择。     |
-| openNotificationSettingsWithResult(context: UIAbilityContext): Promise\<NotificationSetting\>  | 拉起通知管理弹窗, 用户设置完成后返回设置结果。|
+| openNotificationSettingsWithResult(context: UIAbilityContext): Promise\<NotificationSetting\>  | 拉起应用的通知设置界面，该页面以半模态形式呈现，可用于设置通知开关、通知提醒方式等。当半模态窗口关闭时返回用户设置的状态。|
 
 
 ## 开发步骤
