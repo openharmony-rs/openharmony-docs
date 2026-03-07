@@ -76,6 +76,8 @@ openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGran
 
 打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权"允许获取本机通知"开关与"已获取的本机通知"应用开关。使用Promise异步回调，当半模态窗口关闭时返回用户设置的授权的结果。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Notification.Notification
 
 **需要权限**：ohos.permission.SUBSCRIBE_NOTIFICATION
@@ -94,7 +96,7 @@ openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGran
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -388,6 +390,8 @@ type GrantedBundleInfo = _GrantedBundleInfo
 type UserGrantSetting = _UserGrantSetting
 
 用户授权的设置信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**： SystemCapability.Notification.Notification
 

@@ -133,6 +133,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 |scenarioReading|获取阅读场景感知信息|
 |scenarioShortVideo|获取短视频场景的感知信息|
 |scenarioTodo|获取待办场景的感知信息|
+|QuickSnap|获取单次截屏信息。**使用规格**：仅在trigger接口使用，capList仅传递"QuickSnap"时生效，其它使用接口均返回401错误码|
 
 ## OnscreenAwarenessOptions<sup>23+</sup>
 
@@ -336,9 +337,8 @@ sendControlEvent(event: [ControlEvent](#controlevent)): Promise&lt;void&gt;
    ```
 
 ## onScreen.subscribe<sup>23+</sup>
-subscribe(capability: OnscreenAwarenessCap, 
-          callback: Callback&lt;OnscreenAwarenessInfo&gt;, 
-          options?: OnscreenAwarenessOptions): void
+
+subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwarenessInfo&gt;, options?: OnscreenAwarenessOptions): void
 
 开启屏幕内容主动感知，并订阅屏幕感知结果。
 
@@ -400,8 +400,7 @@ subscribe(capability: OnscreenAwarenessCap,
    ```
 ## onScreen.unsubscribe<sup>23+</sup>
 
-unsubscribe(capability: OnscreenAwarenessCap, 
-            callback?: Callback&lt;OnscreenAwarenessInfo&gt;): void
+unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwarenessInfo&gt;): void
 
 关闭屏幕内容主动感知，并取消订阅屏幕感知结果。
 
@@ -451,8 +450,7 @@ try {
 
 ## onScreen.trigger<sup>23+</sup>
 
-trigger(capability: OnscreenAwarenessCap, 
-        options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo&gt;
+unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwarenessInfo&gt;): void
 
 主动触发屏幕内容感知，获取当前屏幕感知结果。
 
@@ -475,6 +473,7 @@ trigger(capability: OnscreenAwarenessCap,
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
   | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。 |
+  
 **错误码**：
 
 以下错误码的详细介绍请参见[用户状态感知错误码](errorcode-userStatus.md)和[通用错误码](../errorcode-universal.md)。
