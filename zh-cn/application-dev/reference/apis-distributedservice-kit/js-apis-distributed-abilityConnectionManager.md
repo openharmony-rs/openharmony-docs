@@ -20,11 +20,13 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 
 ## abilityConnectionManager.createAbilityConnectionSession
 
-createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Context,&nbsp;peerInfo:&nbsp;PeerInfo ,&nbsp;connectOptions:&nbsp;ConnectOptions):&nbsp;number
+createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Context,&nbsp;peerInfo:&nbsp;PeerInfo ,&nbsp;connectOptions:&nbsp;ConnectOptions):&nbsp;int
 
 创建应用间的协同会话。
 
 **需要权限**：ohos.permission.INTERNET、ohos.permission.GET_NETWORK_INFO、ohos.permission.SET_NETWORK_INFO和ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -45,7 +47,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| number | 成功创建的协同会话ID。 |
+| int | 成功创建的协同会话ID。 |
 
 **错误码：**
 
@@ -264,7 +266,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
    import AbilityConstant from '@ohos.app.ability.AbilityConstant';
    import common from '@ohos.app.ability.common';
    import { AppStorage } from '@ohos.arkui.stateManagement';
- 
+    
    export default class EntryAbility extends UIAbility {
      onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
        hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
@@ -272,7 +274,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
        this.onCollab(param);
        return AbilityConstant.CollaborateResult.ACCEPT;
      }
- 
+    
      onCollab(collabParam: Record<string, Object>) {
        const sessionId = this.createSessionFromWant(collabParam);
        if (sessionId == -1) {
@@ -280,14 +282,14 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
          return;
        }
      }
- 
+    
      createSessionFromWant(collabParam: Record<string, Object>): number {
        let sessionId = -1;
        const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo;
        if (peerInfo == undefined) {
          return sessionId;
        }
- 
+    
        const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
        try {
          sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
@@ -303,9 +305,11 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 
 ## abilityConnectionManager.destroyAbilityConnectionSession
 
-destroyAbilityConnectionSession(sessionId:&nbsp;number):&nbsp;void
+destroyAbilityConnectionSession(sessionId:&nbsp;int):&nbsp;void
 
 销毁应用间的协同会话。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -317,7 +321,7 @@ destroyAbilityConnectionSession(sessionId:&nbsp;number):&nbsp;void
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| sessionId | number  | 是    | 待销毁的协同会话ID。   |
+| sessionId | int | 是    | 待销毁的协同会话ID。   |
 
 **示例：**
 
@@ -344,13 +348,15 @@ abilityConnectionManager.destroyAbilityConnectionSession(sessionId);
 
 ## abilityConnectionManager.getPeerInfoById
 
-getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
+getPeerInfoById(sessionId:&nbsp;int):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 
 获取指定会话中对端应用信息。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[getPeerInfoById](#abilityConnectionManagergetPeerInfoById23)。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -360,7 +366,7 @@ getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| sessionId | number  | 是    | 协同会话ID。   |
+| sessionId | int | 是    | 协同会话ID。   |
 
 **返回值：**
 
@@ -389,11 +395,13 @@ const peerInfo = abilityConnectionManager.getPeerInfoById(sessionId);
 
 ## abilityConnectionManager.getPeerInfoById<sup>23+</sup>
 
-getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;null
+getPeerInfoById(sessionId:&nbsp;int):&nbsp;PeerInfo&nbsp;|&nbsp;null
 
 获取指定会话中对端应用信息。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -403,7 +411,7 @@ getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;null
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| sessionId | number  | 是    | 协同会话ID。   |
+| sessionId | int | 是    | 协同会话ID。   |
 
 **返回值：**
 
@@ -432,9 +440,11 @@ const peerInfo = abilityConnectionManager.getPeerInfoById(sessionId);
 
 ## abilityConnectionManager.connect
 
-connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
+connect(sessionId:&nbsp;int):&nbsp;Promise&lt;ConnectResult&gt;
 
 创建协同会话成功并获得会话ID后，设备A上可进行UIAbility的连接。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -446,7 +456,7 @@ connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 
 | 参数名       | 类型                                      | 必填   | 说明        |
 | --------- | --------------------------------------- | ---- | --------- |
-| sessionId | number | 是    | 已创建的协同会话ID。    |
+| sessionId | int | 是    | 已创建的协同会话ID。    |
 
 **返回值：**
 
@@ -502,9 +512,11 @@ abilityConnectionManager.connect(sessionId).then((ConnectResult) => {
 
 ## abilityConnectionManager.acceptConnect
 
-acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;void&gt;
+acceptConnect(sessionId:&nbsp;int,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;void&gt;
 
 设备B上的应用，在创建协同会话成功并获得会话ID后，调用acceptConnect()方法接受连接。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -516,7 +528,7 @@ acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 已创建的协同会话ID。    |
+| sessionId | int | 是    | 已创建的协同会话ID。    |
 | token | string | 是    | 设备A应用传入的token值。    |
 
 **返回值：**
@@ -647,9 +659,11 @@ export default class EntryAbility extends UIAbility {
 
 ## abilityConnectionManager.disconnect
 
-disconnect(sessionId:&nbsp;number):&nbsp;void
+disconnect(sessionId:&nbsp;int):&nbsp;void
 
 当协同业务执行完毕后，协同双端的任意一台设备，应断开UIAbility的连接，结束协同状态。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -661,7 +675,7 @@ disconnect(sessionId:&nbsp;number):&nbsp;void
 
 | 参数名       | 类型                                    | 必填   | 说明        |
 | --------- | ------------------------------------- | ---- | --------- |
-| sessionId | number | 是    | 协同会话ID     |
+| sessionId | int | 是    | 协同会话ID     |
 
 **示例：**
 
@@ -692,6 +706,8 @@ abilityConnectionManager.disconnect(sessionId);
 reject(token:&nbsp;string,&nbsp;reason:&nbsp;string):&nbsp;void;
 
 在跨端应用协同过程中，在拒绝对端的连接请求后，向对端发送拒绝原因。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -766,6 +782,8 @@ on(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callba
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[onConnect](#abilityConnectionManageronConnect23)。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Dyn起始版本：** 18
@@ -808,6 +826,8 @@ onConnect(sessionId: int,callback: Callback&lt;EventCallbackInfo&gt;): void
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('connect')](#abilityConnectionManageronConnect)。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Sta起始版本：** 23
@@ -849,6 +869,8 @@ off(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Call
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[offConnect](#abilityConnectionManageroffConnect23)。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Dyn起始版本：** 18
@@ -883,10 +905,12 @@ abilityConnectionManager.off("connect", sessionId);
 offConnect(sessionId: int,callback?: Callback&lt;EventCallbackInfo&gt;): void
 
 取消connect事件的回调监听。
-  
+
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[off('connect')](#abilityConnectionManageroffconnect)。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -921,10 +945,12 @@ abilityConnectionManager.offConnect(sessionId,(callbackInfo) => {});
 on(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void
 
 注册disconnect事件的回调监听。
-  
+
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[onDisconnect](#abilityConnectionManageronDisconnect23)。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -957,16 +983,18 @@ abilityConnectionManager.on("disconnect", sessionId,(callbackInfo) => {
   hilog.info(0x0000, 'testTag', 'session disconnect, sessionId is', callbackInfo.sessionId);
 });
 ```
-  
+
 ## abilityConnectionManager.onDisconnect<sup>23+</sup>
 
 onDisconnect(sessionId: int,callback: Callback&lt;EventCallbackInfo&gt;): void
 
 注册disconnect事件的回调监听。
-  
+
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('disconnect')](#abilityConnectionManageronDisconnect)。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -1009,6 +1037,8 @@ off(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;C
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[offDisconnect](#abilityConnectionManageroffDisconnect23)。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Dyn起始版本：** 18
@@ -1049,6 +1079,8 @@ offDisconnect(sessionId: int,callback?: Callback&lt;EventCallbackInfo&gt;): void
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[off('disconnect')](#abilityConnectionManageroffDisconnect)。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Sta起始版本：** 23
@@ -1087,6 +1119,8 @@ on(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[onReceiveMessage](#abilityConnectionManageronReceiveMessage23)。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -1131,6 +1165,8 @@ onReceiveMessage(sessionId: int,callback: Callback&lt;EventCallbackInfo&gt;): vo
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('receiveMessage')](#abilityConnectionManageronreceiveMessage)。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Sta起始版本：** 23
@@ -1172,6 +1208,8 @@ off(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nb
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[offReceiveMessage](#abilityConnectionManageroffReceiveMessage23)。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Dyn起始版本：** 18
@@ -1211,6 +1249,8 @@ offReceiveMessage(sessionId: int,callback?: Callback&lt;EventCallbackInfo&gt; ):
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[off('receiveMessage')](#abilityConnectionManageroffreceiveMessage)。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -1252,6 +1292,8 @@ on(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Ca
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[onReceiveData](#abilityConnectionManageronReceiveData23)。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -1295,6 +1337,8 @@ onReceiveData(sessionId: int,callback: Callback&lt;EventCallbackInfo&gt;): void
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('receiveData')](#abilityConnectionManageronreceiveData)。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Sta起始版本：** 23
@@ -1336,6 +1380,8 @@ off(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[offReceiveData](#abilityConnectionManageroffReceiveData23)。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Dyn起始版本：** 18
@@ -1376,6 +1422,8 @@ offReceiveData(sessionId: int,callback?: Callback&lt;EventCallbackInfo&gt;): voi
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[off('receiveData')](#abilityConnectionManageroffreceiveData)。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Sta起始版本：** 23
@@ -1409,9 +1457,11 @@ abilityConnectionManager.offReceiveData(sessionId,(callbackInfo) => {
 
 ## abilityConnectionManager.sendMessage
 
-sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void&gt;
+sendMessage(sessionId:&nbsp;int,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void&gt;
 
 应用连接成功后，设备A或设备B可向对端设备发送文本信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -1423,7 +1473,7 @@ sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 协同会话ID。 |
+| sessionId | int | 是    | 协同会话ID。 |
 | msg | string | 是    | 文本信息内容（内容最大限制为1KB）。 |
 
 **返回值：**
@@ -1472,9 +1522,11 @@ abilityConnectionManager.sendMessage(sessionId, "message send success").then(() 
 
 ## abilityConnectionManager.sendData
 
-sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&gt;
+sendData(sessionId:&nbsp;int,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&gt;
 
 应用连接成功后，设备A或设备B可向对端设备发送[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)字节流。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -1486,7 +1538,7 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 协同会话ID。 |
+| sessionId | int | 是    | 协同会话ID。 |
 | data | [ArrayBuffer](../../arkts-utils/arraybuffer-object.md) | 是    | 字节流信息。 |
 
 **返回值：**
@@ -1545,6 +1597,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 
 应用协同信息。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Dyn起始版本：** 18
@@ -1563,6 +1617,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 
 应用连接时所需的连接选项。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Dyn起始版本：** 18
@@ -1578,6 +1634,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 ## ConnectResult
 
 连接的结果。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -1595,6 +1653,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 
 回调方法的接收信息。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Dyn起始版本：** 18
@@ -1603,7 +1663,7 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 
 | 名称       | 类型    | 只读 | 可选 | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| sessionId | number   | 否   | 否   |   表示当前事件对应的协同会话ID。 |
+| sessionId | int | 否   | 否   |   表示当前事件对应的协同会话ID。 |
 | reason | [DisconnectReason](#disconnectreason)     | 否   | 是   |   表示断连原因。 |
 | msg | string   | 否   | 是   |   表示接收的消息。 |
 | data  | ArrayBuffer | 否   | 是   |   表示接收的字节流。 |
@@ -1611,6 +1671,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 ## CollaborateEventInfo
 
 协同事件信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -1626,6 +1688,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 ## ConnectErrorCode
 
 连接的错误码。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -1646,6 +1710,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 
 启动选项参数的枚举。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Dyn起始版本：** 18
@@ -1659,6 +1725,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 ## CollaborateEventType
 
 协同事件类型的枚举。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -1674,6 +1742,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 ## DisconnectReason
 
 当前断连原因的枚举。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -1691,6 +1761,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 
 应用协作键值的枚举。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Dyn起始版本：** 18
@@ -1706,6 +1778,8 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
 ## CollaborationValues
 
 应用协作相关值的枚举。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
