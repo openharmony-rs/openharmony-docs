@@ -1819,10 +1819,19 @@ function CustomButton(mutableParam1: MutableBinding<number>, mutableParam2: Muta
 | 名称 | 类型 | 只读  | 可选 | 说明     |
 | ------ | ---- | ---- |---- | ------------ |
 | decoratorName | string  | 否 | 否   | 当对象被[@Observed](./../../ui/state-management-static/arkts-static-observed-and-objectlink.md)装饰时，值为对象关联的装饰器名称。<br/> 当对象属性使用[@Track](./../../ui/state-management-static/arkts-static-track.md)时，值为：`@Track`。<br/> 当对象属性使用[@Trace](./../../ui/state-management-static/arkts-static-new-observedV2-and-trace.md)时，值为：`@Trace`。<br/> 当对象经过[makeObserved](#makeobserved)转换时，值为：`MakeObserved`。<br/> 当对象为被V1装饰器装饰的built-in类型时，值为对象关联的装饰器名称。<br/> 当对象为被V1装饰器装饰的interface字面量时，值为对象关联的装饰器名称。<br/> 当对象被@Observed装饰且使用在V2组件中时，值为：`@Observed(mix used in V2)`。 <br/> 当对象为被V1装饰器装饰的built-in类型且使用在V2组件中时，值为：`V1 Decorated BuiltInType(mix used in V2)`。<br> 当对象为被V1装饰器装饰的interface字面量且使用在V2组件中时，值为：`V1 Decorated ObjectLiteral(mix used in V2)`。<br> 当对象为被V2装饰器装饰的built-in类型时，值为：`V2 Decorated BuiltInType`。 |
-| stateVariableName | string  | 否 | 否   | 被装饰器装饰的属性名称。<br/>在V1组件中被状态管理V1装饰器装饰的@Observed装饰的对象、interface字面量和built-in类型对象返回V1装饰器的名称。<br/>使用@Track装饰器、@Trace装饰器时返回属性名。<br/>使用V2装饰器装饰或makeObserved转换的built-in对象时，返回可观测属性的名称。<br>makeObserved转换的interface字面量返回`Unknown Object Literal Property`。 |
+| stateVariableName | string  | 否 | 否   | 被装饰器装饰的属性名称。<br/>在V1组件中被状态管理V1装饰器装饰的@Observed装饰的对象、interface字面量和built-in类型对象返回V1装饰器的名称。<br/>使用@Track装饰器、@Trace装饰器时返回属性名。<br/>使用V2装饰器装饰或makeObserved转换的built-in对象时，返回可观测属性的名称。常见的框架内置可观察属性见下表。<br>makeObserved转换的interface字面量返回`Any Object Literal Property`。 |
 | owningComponentOrClassName | string  | 否 | 否   | 在V1组件中被状态管理V1装饰器装饰的@Observed装饰的对象、interface字面量和built-in类型对象返回V1组件名称。<br/>使用@Track装饰器、@Trace装饰器时返回对象名称。<br/>使用V2装饰器装饰或makeObserved转换的built-in对象时，返回对象名称。<br/>使用makeObserved转换的interface字面量时，返回字面量的定义名称。 |
 | owningComponentId | int | 否 | 否   | 在V1组件中被状态管理V1装饰器装饰的@Observed装饰的对象、interface字面量和built-in类型对象返回V1组件ID。<br/>其余情况返回-1。 |
 | dependentInfo | Array\<[ElementInfo](#elementinfo24)\> | 否 | 否   | 使用该可观察对象的组件信息。若对象没有用在任何UI上，则返回空数组。 |
+
+**常见框架内置可观察属性表**
+
+| 名称                   | 说明                                                         |
+| ---------------------- | ------------------------------------------------------------ |
+| "\_\_OB\_LENGTH"       | 容器的长度（Array的length属性/Map的size属性/Set的size属性）变化时，通知关联的组件刷新。 |
+| "\_\_OB\_ANY\_INDEX"    | Array的任意元素变化时，通知关联的组件刷新。                    |
+| "\_\_OB\_ANY\_PROPERTY" | Map/Set的任意元素变化时，通知关联的组件刷新。                  |
+| "\_\_OB\_DATE"         | Date的内置属性变化时，通知关联的组件刷新。                     |
 
 ## ElementInfo<sup>24+</sup>
 
