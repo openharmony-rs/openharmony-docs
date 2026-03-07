@@ -38,14 +38,17 @@ ExceptionPrompt({ options: PromptOptions, onTipClick?: ()=>void, onActionTextCli
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
+**ArkTS-Dyn起始版本：** 11
 
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| options | [PromptOptions](#promptoptions) | 是 | ArkTS-Dyn: \@Prop<br/>ArkTS-Sta: \@PropRef | 指定当前异常提示的配置信息。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
-| onTipClick | ()=>void | 否 | - | 点击左侧提示文本的回调函数。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
-| onActionTextClick | ()=>void | 否 | - | 点击右侧图标按钮的回调函数。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
+| options | [PromptOptions](#promptoptions) | 是 | ArkTS-Dyn: \@Prop<br/>ArkTS-Sta: \@PropRef | 指定当前异常提示的配置信息。|
+| onTipClick | ()=>void | 否 | - | 点击左侧提示文本的回调函数。|
+| onActionTextClick | ()=>void | 否 | - | 点击右侧图标按钮的回调函数。 |
 
 ## PromptOptions
 
@@ -55,13 +58,13 @@ PromptOptions定义options的类型。
 
 | 名称 | 类型 | 必填 | 说明                                                                                                                                                                                                                                                                                             |
 | -------- | -------- | -------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | 指定当前异常提示的异常图标样式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
-| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 指定当前异常提示的异常Symbol图标样式，优先级大于icon。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 22 |
-| tip | [ResourceStr](ts-types.md#resourcestr) | 否 | 指定当前异常提示的文字提示内容。<br />支持默认内置四种状态文字资源如下：<br />1.无网络状态：显示网络未连接：引用ohos_network_not_connected。<br />2.网络差状态：显示网络连接不稳定，请点击重试：引用ohos_network_connected_unstable。<br />3.连不上服务器状态：显示无法连接到服务器，请点击重试：引用ohos_unstable_connect_server。<br />4.有网但是获取不到内容状态：显示无法获取位置，请点击重试：引用ohos_custom_network_tips_left。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
-| marginType | [MarginType](#margintype) | 是 | 指定当前异常提示的边距样式。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
-| actionText | [ResourceStr](ts-types.md#resourcestr) | 否 | 指定当前异常提示的右侧图标按钮的文字内容。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
-| marginTop | [Dimension](ts-types.md#dimension10) | 是 | 指定当前异常提示的距离顶部的位置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
-| isShown | boolean | 否 | 指定当前异常提示的显隐状态。<br />true：显示状态。<br />false：隐藏状态。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
+| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | 指定当前异常提示的异常图标样式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 指定当前异常提示的异常Symbol图标样式，优先级大于icon。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| tip | [ResourceStr](ts-types.md#resourcestr) | 否 | 指定当前异常提示的文字提示内容。<br />支持默认内置四种状态文字资源如下：<br />1.无网络状态：显示网络未连接：引用ohos_network_not_connected。<br />2.网络差状态：显示网络连接不稳定，请点击重试：引用ohos_network_connected_unstable。<br />3.连不上服务器状态：显示无法连接到服务器，请点击重试：引用ohos_unstable_connect_server。<br />4.有网但是获取不到内容状态：显示无法获取位置，请点击重试：引用ohos_custom_network_tips_left。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| marginType | [MarginType](#margintype) | 是 | 指定当前异常提示的边距样式。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| actionText | [ResourceStr](ts-types.md#resourcestr) | 否 | 指定当前异常提示的右侧图标按钮的文字内容。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| marginTop | [Dimension](ts-types.md#dimension10) | 是 | 指定当前异常提示的距离顶部的位置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| isShown | boolean | 否 | 指定当前异常提示的显隐状态。<br />true：显示状态。<br />false：隐藏状态。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## MarginType
 
@@ -73,7 +76,7 @@ MarginType定义marginType的类型。
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
