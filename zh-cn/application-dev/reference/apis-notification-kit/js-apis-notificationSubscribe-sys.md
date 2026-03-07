@@ -59,7 +59,7 @@ subscribe(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, c
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//subscribe回调
+// subscribe回调
 let subscribeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
@@ -73,7 +73,7 @@ let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
-//不会对bundleNames进行校验，开发者自己确定需要订阅哪些bundleName
+// 不会对bundleNames进行校验，开发者自己确定需要订阅哪些bundleName
 let info: notificationSubscribe.NotificationSubscribeInfo = {
   bundleNames: ["bundleName1","bundleName2"]
 };
@@ -947,7 +947,7 @@ distributeOperation(hashcode: string, operationInfo?: OperationInfo): Promise\<v
 | 参数名   | 类型         | 必填 | 说明       |
 | ------ | ------------ | ---- | ---------- |
 | hashcode | string | 是   | 通知唯一ID。 |
-| operationInfo | [OperationInfo](#operationinfo18) | 否   | 跨设备协同操作信息。 |
+| operationInfo | [OperationInfo](#operationinfo18) | 否   | 跨设备协同操作信息，默认为空。 |
 
 **返回值：**
 
