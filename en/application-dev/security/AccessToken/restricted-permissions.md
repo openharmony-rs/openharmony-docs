@@ -1029,10 +1029,10 @@ Allows an application to customize the BLE advertiser name.
 
 <!--RP65--><!--RP65End-->
 
-**Permission level**：system_basic
+**Permission level**: system_basic
 
-**Authorization mode**：system_grant
+**Authorization mode**: system_grant
 
-**Supported devices**：General
+**Supported devices**: General
 
-**Since**：23
+**Since**: 23
